@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
-import time
 from dateutil.relativedelta import relativedelta
 import itertools
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
@@ -545,7 +544,6 @@ class ForecastComplete(Wizard):
 
     def _complete(self, data):
         pool = Pool()
-        forecast_obj = pool.get('stock.forecast')
         forecast_line_obj = pool.get('stock.forecast.line')
         product_obj = pool.get('product.product')
 
