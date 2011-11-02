@@ -52,7 +52,7 @@ class StockTestCase(unittest.TestCase):
         '''
         Test Move.internal_quantity.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             category_id = self.category.create({
                 'name': 'Test Move.internal_quantity',
                 })
@@ -301,7 +301,7 @@ class StockTestCase(unittest.TestCase):
         '''
         Test period.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             category_id = self.category.create({
                 'name': 'Test period',
                 })

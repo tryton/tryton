@@ -169,8 +169,6 @@ class Product(ModelSQL, ModelView):
                 and quantity as value
         """
         pool = Pool()
-        uom_obj = pool.get("product.uom")
-        product_obj = pool.get("product.product")
         rule_obj = pool.get('ir.rule')
         location_obj = pool.get('stock.location')
         date_obj = pool.get('ir.date')

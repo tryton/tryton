@@ -1048,7 +1048,6 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         that are in the outgoing moves.
         """
         move_obj = Pool().get('stock.move')
-        uom_obj = Pool().get('product.uom')
         self.write(shipment.id, {
             'state': 'waiting',
             })
@@ -1311,7 +1310,6 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             return {'delivery_address': False}
         party_obj = Pool().get("party.party")
         address_id = party_obj.address_get(values['customer'], type='delivery')
-        party = party_obj.browse(values['customer'])
         return {
                 'delivery_address': address_id,
             }
@@ -2109,9 +2107,6 @@ class PickingList(CompanyReport):
     _name = 'stock.shipment.out.picking_list'
 
     def parse(self, report, objects, datas, localcontext):
-        move_obj = Pool().get('stock.move')
-        shipment_out_obj = Pool().get('stock.shipment.out')
-
         compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
@@ -2156,9 +2151,6 @@ class SupplierRestockingList(CompanyReport):
     _name = 'stock.shipment.in.restocking_list'
 
     def parse(self, report, objects, datas, localcontext):
-        move_obj = Pool().get('stock.move')
-        shipment_in_obj = Pool().get('stock.shipment.in')
-
         compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
@@ -2203,9 +2195,6 @@ class CustomerReturnRestockingList(CompanyReport):
     _name = 'stock.shipment.out.return.restocking_list'
 
     def parse(self, report, objects, datas, localcontext):
-        move_obj = Pool().get('stock.move')
-        shipment_in_obj = Pool().get('stock.shipment.out.return')
-
         compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}
@@ -2250,9 +2239,6 @@ class InteralShipmentReport(CompanyReport):
     _name = 'stock.shipment.internal.report'
 
     def parse(self, report, objects, datas, localcontext=None):
-        move_obj = Pool().get('stock.move')
-        shipment_in_obj = Pool().get('stock.shipment.internal')
-
         compare_context = self.get_compare_context(report, objects, datas)
 
         sorted_moves = {}

@@ -91,7 +91,6 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             })
 
     def wkf_done(self, inventory):
-        date_obj = Pool().get('ir.date')
         line_obj = Pool().get('stock.inventory.line')
 
         for line in inventory.lines:
@@ -140,7 +139,6 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         pool = Pool()
         line_obj = pool.get('stock.inventory.line')
         product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
 
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -227,7 +225,6 @@ class InventoryLine(ModelSQL, ModelView):
 
     def on_change_product(self, vals):
         product_obj = Pool().get('product.product')
-        uom_obj = Pool().get('product.uom')
         res = {}
         res['unit_digits'] = 2
         if vals.get('product'):

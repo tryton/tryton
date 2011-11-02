@@ -259,7 +259,6 @@ class Move(ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         company = Transaction().context.get('company')
         if company:
             company = company_obj.browse(company)
@@ -725,7 +724,7 @@ class Move(ModelSQL, ModelView):
                     self.write(move.id, values)
                     first = False
                 else:
-                    move_id = self.copy(move.id, default=values)
+                    self.copy(move.id, default=values)
 
                 qty_default_uom = uom_obj.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
