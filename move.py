@@ -86,7 +86,6 @@ class Move(ModelSQL, ModelView):
         pool = Pool()
         location_obj = pool.get('stock.location')
         product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
         date_obj = pool.get('ir.date')
 
         today = date_obj.today()
