@@ -54,7 +54,7 @@ class ProductTestCase(unittest.TestCase):
                 })
             transaction.cursor.rollback()
 
-            uom_id = self.uom.create({
+            self.uom.create({
                 'name': 'Test',
                 'symbol': 'T',
                 'category': category_id,
@@ -123,7 +123,7 @@ class ProductTestCase(unittest.TestCase):
             ('centimeter', 'rate'),
             ('Foot', 'factor'),
         ]
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             for name, result in tests:
                 uom_id = self.uom.search([
                     ('name', '=', name),
@@ -143,7 +143,7 @@ class ProductTestCase(unittest.TestCase):
             ('Second', 25, 'Hour', 0.0069444444444444441, 0.01),
             ('Millimeter', 3, 'Inch', 0.11811023622047245, 0.12),
         ]
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             for from_name, qty, to_name, result, rounded_result in tests:
                 from_uom = self.uom.browse(self.uom.search(
                     [
@@ -176,7 +176,7 @@ class ProductTestCase(unittest.TestCase):
             ('Second', Decimal('25'), 'Hour', Decimal('90000')),
             ('Millimeter', Decimal('3'), 'Inch', Decimal('76.2')),
         ]
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             for from_name, price, to_name, result in tests:
                 from_uom = self.uom.browse(self.uom.search(
                     [

@@ -95,7 +95,6 @@ class Uom(ModelSQL, ModelView):
         return 2
 
     def default_category(self):
-        category_obj = Pool().get('product.uom.category')
         product_obj = Pool().get('product.product')
         context = Transaction().context
         if 'category' in context:
