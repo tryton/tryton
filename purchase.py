@@ -183,7 +183,6 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         company = Transaction().context.get('company')
         if company:
             company = company_obj.browse(company)
@@ -1060,7 +1059,6 @@ class PurchaseLine(ModelSQL, ModelView):
         pool = Pool()
         party_obj = pool.get('party.party')
         product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
         tax_rule_obj = pool.get('account.tax.rule')
 
         if not vals.get('product'):
@@ -1132,8 +1130,6 @@ class PurchaseLine(ModelSQL, ModelView):
         if not vals.get('product'):
             return {}
         res = {}
-
-        product = product_obj.browse(vals['product'])
 
         context = {}
         if vals.get('_parent_purchase.currency'):
@@ -1609,7 +1605,6 @@ class ProductSupplierPrice(ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         company = None
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
@@ -2033,7 +2028,6 @@ class HandleShipmentException(Wizard):
         pool = Pool()
         purchase_obj = pool.get('purchase.purchase')
         purchase_line_obj = pool.get('purchase.line')
-        move_obj = pool.get('stock.move')
         to_recreate = data['form']['recreate_moves'][0][1]
         domain_moves = data['form']['domain_moves'][0][1]
 
@@ -2127,7 +2121,6 @@ class HandleInvoiceException(Wizard):
 
     def _handle_invoices(self, data):
         purchase_obj = Pool().get('purchase.purchase')
-        invoice_obj = Pool().get('account.invoice')
         to_recreate = data['form']['recreate_invoices'][0][1]
         domain_invoices = data['form']['domain_invoices'][0][1]
 
