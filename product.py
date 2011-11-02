@@ -163,7 +163,6 @@ class Template(ModelSQL, ModelView):
         return False
 
     def get_account(self, ids, name):
-        account_obj = Pool().get('account.account')
         res = {}
         name = name[:-5]
         for product in self.browse(ids):
