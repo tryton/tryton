@@ -214,7 +214,6 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         company = Transaction().context.get('company')
         if company:
             return company_obj.browse(company).currency.id
@@ -1224,7 +1223,6 @@ class SaleLine(ModelSQL, ModelView):
         pool = Pool()
         party_obj = pool.get('party.party')
         product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
         tax_rule_obj = pool.get('account.tax.rule')
 
         if not vals.get('product'):
@@ -1699,8 +1697,6 @@ class Move(ModelSQL, ModelView):
         ], 'Exception State'), 'get_sale_exception_state')
 
     def get_sale(self, ids, name):
-        sale_obj = Pool().get('sale.sale')
-
         res = {}
         for move in self.browse(ids):
             res[move.id] = False
@@ -1944,8 +1940,6 @@ class HandleShipmentException(Wizard):
         pool = Pool()
         sale_obj = pool.get('sale.sale')
         sale_line_obj = pool.get('sale.line')
-        move_obj = pool.get('stock.move')
-        shipment_obj = pool.get('stock.shipment.out')
         to_recreate = data['form']['recreate_moves'][0][1]
         domain_moves = data['form']['domain_moves'][0][1]
 
@@ -2036,7 +2030,6 @@ class HandleInvoiceException(Wizard):
 
     def _handle_invoices(self, data):
         sale_obj = Pool().get('sale.sale')
-        invoice_obj = Pool().get('account.invoice')
         to_recreate = data['form']['recreate_invoices'][0][1]
         domain_invoices = data['form']['domain_invoices'][0][1]
 
