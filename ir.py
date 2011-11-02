@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import math
 from lxml import etree
-from trytond.model import Model, fields
+from trytond.model import Model
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.pool import Pool
