@@ -749,7 +749,9 @@ class Selection(Char):
         self.update_selection(record)
         model = self.get_model(self.selection)
         editable.set_model(model)
-        editable.set_text_column(0)
+        # GTK 2.24 and above use a ComboBox instead of a ComboBoxEntry
+        if hasattr(editable, 'set_text_column'):
+            editable.set_text_column(0)
         completion = gtk.EntryCompletion()
         #Only available in PyGTK 2.6 and above.
         if hasattr(completion, 'set_inline_selection'):
