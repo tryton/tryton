@@ -892,8 +892,8 @@ class Button(object):
         store = self.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
 
-        state_changes = PYSONDecoder().decode(record.expr_eval(
-            self.attrs.get('states', {}), check_load=False))
+        state_changes = record.expr_eval(
+            self.attrs.get('states', {}), check_load=False)
         if state_changes.get('invisible') \
                 or state_changes.get('readonly'):
             return True
