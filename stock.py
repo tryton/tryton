@@ -1,6 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 import copy
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, Bool
@@ -112,6 +111,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         pool = Pool()
         product_obj = pool.get('product.product')
         tax_rule_obj = pool.get('account.tax.rule')
+        currency_obj = pool.get('currency.currency')
 
         if not shipment.cost:
             return {}

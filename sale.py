@@ -3,7 +3,7 @@
 import copy
 from trytond.model import Model, fields
 from trytond.transaction import Transaction
-from trytond.pyson import Not, Equal, Eval, Bool, Get
+from trytond.pyson import Eval, Bool
 from trytond.pool import Pool
 
 
