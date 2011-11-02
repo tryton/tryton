@@ -152,6 +152,7 @@ class Work(ModelSQL, ModelView):
         company_obj = pool.get('company.company')
         model_data_obj = pool.get('ir.model.data')
         uom_obj = pool.get('product.uom')
+        currency_obj = pool.get('currency.currency')
 
         if not vals.get('product'):
             return {}
