@@ -41,8 +41,6 @@ class InvoiceLine(ModelSQL, ModelView):
             with_rec_name=with_rec_name)
 
     def read(self, ids, fields_names=None):
-        selection_obj = Pool().get('analytic_account.account.selection')
-
         int_id = False
         if isinstance(ids, (int, long)):
             int_id = True
