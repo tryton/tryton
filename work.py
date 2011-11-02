@@ -2,7 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 import copy
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Eval
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
