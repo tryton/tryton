@@ -83,7 +83,6 @@ class Account(ModelSQL, ModelView):
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
-        currency_obj = Pool().get('currency.currency')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
