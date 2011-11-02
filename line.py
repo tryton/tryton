@@ -32,8 +32,6 @@ class Line(ModelSQL, ModelView):
 
     def default_employee(self):
         user_obj = Pool().get('res.user')
-        employee_obj = Pool().get('company.employee')
-
         employee_id = None
         if Transaction().context.get('employee'):
             employee_id = Transaction().context['employee']
