@@ -122,7 +122,6 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
 
     def default_employee(self):
         user_obj = Pool().get('res.user')
-        employee_obj = Pool().get('company.employee')
 
         employee_id = False
         if Transaction().context.get('employee'):
