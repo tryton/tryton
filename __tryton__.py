@@ -12,7 +12,7 @@
     'description': '''Add continental stock accounting for real-time stock valuation.
 ''',
     'description_ca_ES': '''Afegeix comptabilitat d'estocs continental per 
-la aloració d'estocs en temps real.''',
+la valoració d'estocs en temps real.''',
     'description_de_DE': '''
     - Fügt die kontinentale Methode der Lagerbewertung in Echt-Zeit hinzu.
 ''',
