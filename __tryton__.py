@@ -16,7 +16,7 @@
 ''',
     'description_ca_ES': '''Afegeix les hores de treball al dia, setmana, mes i 
 any per companyia.
-'''
+''',
     'depends': [
         'ir',
         'company',
