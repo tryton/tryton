@@ -555,15 +555,17 @@ class Move(ModelSQL, ModelView):
             for move in moves:
                 if vals['state'] == 'cancel':
                     vals['effective_date'] = False
-                    if move.from_location.type == 'supplier' \
-                            and move.state != 'cancel' \
-                            and move.product.cost_price_method == 'average':
+                    if (move.from_location.type == 'supplier'
+                            and move.to_location.type == 'storage'
+                            and move.state != 'cancel'
+                            and move.product.cost_price_method == 'average'):
                         self._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, today)
-                    if move.to_location.type == 'supplier' \
-                            and move.state != 'cancel' \
-                            and move.product.cost_price_method == 'average':
+                    if (move.to_location.type == 'supplier'
+                            and move.from_location.type == 'storage'
+                            and move.state != 'cancel'
+                            and move.product.cost_price_method == 'average'):
                         self._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, today)
@@ -580,15 +582,17 @@ class Move(ModelSQL, ModelView):
                         self.raise_user_error('set_state_done')
                     vals['effective_date'] = effective_date
 
-                    if move.from_location.type == 'supplier' \
-                            and move.state != 'done' \
-                            and move.product.cost_price_method == 'average':
+                    if (move.from_location.type == 'supplier'
+                            and move.to_location.type == 'storage'
+                            and move.state != 'done'
+                            and move.product.cost_price_method == 'average'):
                         self._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
-                    if move.to_location.type == 'supplier' \
-                            and move.state != 'done' \
-                            and move.product.cost_price_method == 'average':
+                    if (move.to_location.type == 'supplier'
+                            and move.from_location.type == 'storage'
+                            and move.state != 'done'
+                            and move.product.cost_price_method == 'average'):
                         self._update_product_cost_price( move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)

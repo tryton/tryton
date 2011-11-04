@@ -1,3 +1,5 @@
+* Update cost_price only from supplier to storage
+
 Version 2.2.0 - 2011-10-25
 * Bug fixes (see mercurial logs for details)
 * Ensure coherence between planned date of shipments and moves
