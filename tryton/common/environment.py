@@ -12,8 +12,11 @@ class EvalEnvironment(dict):
         self.eval_type = eval_type
 
     def __getitem__(self, item):
+        if item == 'id':
+            return self.parent.id
         if item == '_parent_' + self.parent.parent_name and self.parent.parent:
-            return EvalEnvironment(self.parent.parent, self.check_load)
+            return EvalEnvironment(self.parent.parent, self.check_load,
+                eval_type=self.eval_type)
         if self.eval_type == 'eval':
             return self.parent.get_eval(check_load=self.check_load)[item]
         else:
@@ -39,6 +42,11 @@ class EvalEnvironment(dict):
     __repr__ = __str__
 
     def __contains__(self, item):
+        if item == 'id':
+            return True
         if item == '_parent_' + self.parent.parent_name and self.parent.parent:
-            return item in EvalEnvironment(self.parent.parent, self.check_load)
-        return item in self.parent.get_eval(check_load=self.check_load)
+            return True
+        if self.eval_type == 'eval':
+            return item in self.parent.get_eval(check_load=self.check_load)
+        else:
+            return item in self.parent.group.fields
