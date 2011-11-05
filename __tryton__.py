@@ -14,7 +14,6 @@
     'description_ca_ES': '''Afegeix comptabilitat d'estocs anglo-saxona per
 la valoració d'estocs en temps real.
 ''',
-    -
     'description_de_DE': '''
     - Fügt die angelsächsische Methode der Lagerbewertung in Echt-Zeit hinzu.
 ''',
