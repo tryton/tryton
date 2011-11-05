@@ -3,6 +3,7 @@
 {
     'name': 'Account',
     'name_bg_BG': 'Фактури',
+    'name_ca_ES': 'Comptabilitat',
     'name_de_DE': 'Buchhaltung',
     'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
@@ -43,6 +44,22 @@ And with reports:
     - Баланс на външен партньор
     - Хронологичен баланс
     - Общ дневник
+''',
+    'description_ca_ES': '''El mòdul Financer i de Comptabilitat compte amb:
+    - Comptabilitat General
+    - Gestió d'anys fiscals
+    - Administració d'impostos
+    - Llibres diaris
+    - Conciliació
+
+I amb els informes:
+    - Llibre major
+    - Balanç de sumes i saldos
+    - Balanç de situació
+    - Balanç Pèrdues i guanys
+    - Balanç de tercers
+    - Saldo vençut
+    - Diari
 ''',
     'description_de_DE': '''Buchhaltungsmodul mit:
     - Allgemeiner Buchhaltung
@@ -143,6 +160,7 @@ Met bijbehorende rapporten:
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_CO.po',
