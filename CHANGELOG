@@ -1,3 +1,5 @@
+* Change record rule for work to use the current company instead of main
+
 Version 2.2.0 - 2011-10-25
 * Bug fixes (see mercurial logs for details)
 

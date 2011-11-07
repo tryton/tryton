@@ -246,7 +246,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field" search="[('name', '=', 'company'),
                                         ('model.model', '=', 'timesheet.work')]"/>
             <field name="operator">=</field>
-            <field name="operand">User/Main Company</field>
+            <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_work"/>
         </record>
         <record model="ir.rule.group" id="rule_group_work_admin">
