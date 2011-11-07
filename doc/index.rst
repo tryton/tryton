@@ -22,7 +22,7 @@ fields:
 
 
 Timesheet Line
-##############
+**************
 
 A timesheet line express the fact that one employee spend a part of
 his/her time on a specific work at a given date. An optional
