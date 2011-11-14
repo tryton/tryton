@@ -1918,13 +1918,14 @@ class CreateChartAccount(Wizard):
             ('company', '=', datas['form']['company']),
             ], context=context)
         property_obj.delete(cursor, 0, property_ids, context=context)
-        property_obj.create(cursor, 0, {
-            'name': 'account_receivable',
-            'field': account_receivable_field_id,
-            'value': 'account.account,' + \
-                    str(datas['form']['account_receivable']),
-            'company': datas['form']['company'],
-            }, context=context)
+        if datas['form']['account_receivable']:
+            property_obj.create(cursor, 0, {
+                'name': 'account_receivable',
+                'field': account_receivable_field_id,
+                'value': 'account.account,' + \
+                        str(datas['form']['account_receivable']),
+                'company': datas['form']['company'],
+                }, context=context)
 
         account_payable_field_id = model_field_obj.search(cursor, user, [
             ('model.model', '=', 'party.party'),
@@ -1936,13 +1937,14 @@ class CreateChartAccount(Wizard):
             ('company', '=', datas['form']['company']),
             ], context=context)
         property_obj.delete(cursor, 0, property_ids, context=context)
-        property_obj.create(cursor, 0, {
-            'name': 'account_payable',
-            'field': account_payable_field_id,
-            'value': 'account.account,' + \
-                    str(datas['form']['account_payable']),
-            'company': datas['form']['company'],
-            }, context=context)
+        if datas['form']['account_payable']:
+            property_obj.create(cursor, 0, {
+                'name': 'account_payable',
+                'field': account_payable_field_id,
+                'value': 'account.account,' + \
+                        str(datas['form']['account_payable']),
+                'company': datas['form']['company'],
+                }, context=context)
         return {}
 
 CreateChartAccount()
