@@ -1438,7 +1438,8 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
                     if x.state not in ('assigned', 'done', 'cancel')], {
                     'planned_date': incoming_date,
                     })
-            move_obj.write([x.id for x in shipment.inventory_moves], {
+            move_obj.write([x.id for x in shipment.inventory_moves
+                    if x.state not in ('assigned', 'done', 'cancel')], {
                     'planned_date': inventory_date,
                     })
 
