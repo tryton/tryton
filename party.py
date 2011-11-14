@@ -79,16 +79,7 @@ class Party(ModelSQL, ModelView):
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
         user = user_obj.browse(user_id)
-        if Transaction().context.get('company'):
-            child_company_ids = company_obj.search([
-                ('parent', 'child_of', [user.main_company.id]),
-                ], order=[])
-            if Transaction().context['company'] in child_company_ids:
-                company_id = Transaction().context['company']
-
-        if not company_id:
-            company_id = user.company.id or user.main_company.id
-
+        company_id = user.company.id
         if not company_id:
             return res
 
