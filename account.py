@@ -1807,13 +1807,14 @@ class CreateChartAccount(Wizard):
             ])
         with Transaction().set_user(0):
             property_obj.delete(property_ids)
-            property_obj.create({
-                'name': 'account_receivable',
-                'field': account_receivable_field_id,
-                'value': 'account.account,' + \
-                        str(datas['form']['account_receivable']),
-                'company': datas['form']['company'],
-                })
+            if datas['form']['account_receivable']:
+                property_obj.create({
+                    'name': 'account_receivable',
+                    'field': account_receivable_field_id,
+                    'value': 'account.account,' + \
+                            str(datas['form']['account_receivable']),
+                    'company': datas['form']['company'],
+                    })
 
         account_payable_field_id = model_field_obj.search([
             ('model.model', '=', 'party.party'),
@@ -1826,13 +1827,14 @@ class CreateChartAccount(Wizard):
             ])
         with Transaction().set_user(0):
             property_obj.delete(property_ids)
-            property_obj.create({
-                'name': 'account_payable',
-                'field': account_payable_field_id,
-                'value': 'account.account,' + \
-                        str(datas['form']['account_payable']),
-                'company': datas['form']['company'],
-                })
+            if datas['form']['account_payable']:
+                property_obj.create({
+                    'name': 'account_payable',
+                    'field': account_payable_field_id,
+                    'value': 'account.account,' + \
+                            str(datas['form']['account_payable']),
+                    'company': datas['form']['company'],
+                    })
         return {}
 
 CreateChartAccount()
