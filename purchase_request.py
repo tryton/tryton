@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 import operator
+from itertools import groupby
+from functools import partial
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import If, In, Eval, Get
@@ -561,6 +563,27 @@ class CreatePurchase(Wizard):
 
         return {'party': request.party.id,'company': request.company.id}
 
+    def _group_purchase_key(self, requests, request):
+        '''
+        The key to group lines by purchases
+
+        :param requests: a list of requests
+        :param request: the request
+
+        :return: a list of key-value as tuples of the purchase
+        '''
+        party_obj = Pool().get('party.party')
+
+        return (
+            ('company', request.company.id),
+            ('party', request.party.id),
+            ('payment_term', request.party.supplier_payment_term.id),
+            ('warehouse', request.warehouse.id),
+            ('currency', request.company.currency.id), # XXX use function field
+            ('invoice_address', party_obj.address_get(request.party.id,
+                    type='invoice')),
+            )
+
     def _create_purchase(self, data):
         pool = Pool()
         request_obj = pool.get('purchase.request')
@@ -597,57 +620,36 @@ class CreatePurchase(Wizard):
         today = date_obj.today()
         requests = request_obj.browse(data['ids'])
         purchases = {}
-        # collect data
-        for request in requests:
-            if request.purchase_line:
-                continue
 
-            if not request.party.supplier_payment_term:
-                return 'ask_user_term'
+        requests = [r for r in requests if not r.purchase_line]
+        if any(r for r in requests if not r.party.supplier_payment_term):
+            return 'ask_user_term'
 
-            key = (request.party.id, request.company.id, request.warehouse.id)
-            if key not in purchases:
-                if request.purchase_date and request.purchase_date >= today:
-                    purchase_date = request.purchase_date
-                else:
+        keyfunc = partial(self._group_purchase_key, requests)
+        requests = sorted(requests, key=keyfunc)
+
+        with Transaction().set_user(0, set_context=True):
+            for key, grouped_requests in groupby(requests, key=keyfunc):
+                grouped_requests = list(grouped_requests)
+                try:
+                    purchase_date = min(r.purchase_date for r in grouped_requests
+                        if r.purchase_date)
+                except ValueError:
                     purchase_date = today
-                purchase = {
-                    'company': request.company.id,
-                    'party': request.party.id,
+                if purchase_date < today:
+                    purchase_date = today
+                values = {
                     'purchase_date': purchase_date,
-                    'payment_term': request.party.supplier_payment_term.id,
-                    'warehouse': request.warehouse.id,
-                    'currency': request.company.currency.id,
-                    'invoice_address': party_obj.address_get(request.party.id,
-                            type='invoice'),
-                    'lines': [],
                     }
-
-                purchases[key] = purchase
-            else:
-                purchase = purchases[key]
-
-            line = self.compute_purchase_line(request)
-            purchase['lines'].append(line)
-            if request.purchase_date:
-                if purchase.get('purchase_date'):
-                    purchase['purchase_date'] = min(purchase['purchase_date'],
-                                                    request.purchase_date)
-                else:
-                    purchase['purchase_date'] = request.purchase_date
-
-        # Create all
-        for purchase in purchases.itervalues():
-            lines = purchase.pop('lines')
-            with Transaction().set_user(0, set_context=True):
-                purchase_id = purchase_obj.create(purchase)
-            for line in lines:
-                request_id = line.pop('request')
-                line['purchase'] = purchase_id
-                with Transaction().set_user(0):
-                    line_id = line_obj.create(line)
-                request_obj.write(request_id, {'purchase_line': line_id})
-
+                values.update(dict(key))
+                purchase_id = purchase_obj.create(values)
+                for request in grouped_requests:
+                    values = self.compute_purchase_line(request)
+                    values['purchase'] = purchase_id
+                    line_id = line_obj.create(values)
+                    request_obj.write(request.id, {
+                            'purchase_line': line_id,
+                            })
         return 'end'
 
     def _get_tax_rule_pattern(self, request):
@@ -669,7 +671,6 @@ class CreatePurchase(Wizard):
             'product': request.product.id,
             'unit': request.uom.id,
             'quantity': request.quantity,
-            'request': request.id,
             'description': request.product.name,
             }
 

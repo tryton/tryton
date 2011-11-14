@@ -1,3 +1,5 @@
+* Group purchases using a key
+
 Version 2.2.0 - 2011-10-25
 * Bug fixes (see mercurial logs for details)
 * Add wizard to create purchase requests
