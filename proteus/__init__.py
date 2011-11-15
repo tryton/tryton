@@ -14,6 +14,7 @@ from proteus.pyson import PYSONDecoder
 
 _MODELS = threading.local()
 
+
 class _EvalEnvironment(dict):
     'Dictionary for evaluation'
     def __init__(self, parent):
@@ -296,7 +297,7 @@ class MetaModelFactory(object):
         'text': CharDescriptor,
         'sha': CharDescriptor,
         'binary': CharDescriptor,
-        'selection': CharDescriptor, # TODO implement its own descriptor
+        'selection': CharDescriptor,  # TODO implement its own descriptor
         'integer': IntegerDescriptor,
         'biginteger': IntegerDescriptor,
         'float': FloatDescriptor,
@@ -334,6 +335,7 @@ class MetaModelFactory(object):
         models_key = 'c%s' % id(self.config)
         if not hasattr(_MODELS, models_key):
             setattr(_MODELS, models_key, {})
+
         class MetaModel(type):
             'Meta class for Model'
             def __new__(mcs, name, bases, dict):
@@ -485,11 +487,11 @@ class Model(object):
         self.__id = id or Model.__counter
         if self.__id < 0:
             Model.__counter -= 1
-        self._values = {} # store the values of fields
-        self._changed = set() # store the changed fields
-        self._parent = None # store the parent record
-        self._parent_field_name = '' # store the field name in parent record
-        self._parent_name = '' # store the field name to parent record
+        self._values = {}  # store the values of fields
+        self._changed = set()  # store the changed fields
+        self._parent = None  # store the parent record
+        self._parent_field_name = ''  # store the field name in parent record
+        self._parent_name = ''  # store the field name to parent record
         if self.id < 0:
             self._default_get()
 

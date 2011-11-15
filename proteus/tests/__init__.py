@@ -4,6 +4,7 @@ import os
 import sys
 import unittest
 
+
 def test_suite():
     suite = unittest.TestSuite()
     loader = unittest.TestLoader()
@@ -14,6 +15,7 @@ def test_suite():
             module = sys.modules[modname]
             suite.addTests(loader.loadTestsFromModule(module))
     return suite
+
 
 def main():
     suite = test_suite()

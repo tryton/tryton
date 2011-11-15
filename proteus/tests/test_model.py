@@ -39,7 +39,7 @@ class TestModel(TestCase):
         admin.create_uid = admin
         admin.create_uid = None
 
-        test = User(write_uid=False)
+        User(write_uid=False)
 
     def test_one2many(self):
         Group = Model.get('res.group')

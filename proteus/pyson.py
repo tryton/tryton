@@ -250,7 +250,8 @@ class If(PYSON):
     def __init__(self, condition, then_statement, else_statement=None):
         super(If, self).__init__()
         if isinstance(condition, PYSON):
-            assert condition.types() == set([bool]), 'condition must be boolean'
+            assert condition.types() == set([bool]), \
+                'condition must be boolean'
         else:
             assert isinstance(condition, bool), 'condition must be boolean'
         if isinstance(then_statement, PYSON):

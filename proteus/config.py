@@ -8,9 +8,9 @@ __all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
 import xmlrpclib
 import threading
 from decimal import Decimal
-from types import NoneType
 import datetime
 import time
+
 
 def dump_decimal(self, value, write):
     write("<value><double>")
@@ -21,6 +21,7 @@ xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpclib.Marshaller.dispatch[datetime.date] = \
         lambda self, value, write: self.dump_datetime(
                 datetime.datetime.combine(value, datetime.time()), write)
+
 
 def _end_double(self, data):
     self.append(Decimal(data))
@@ -77,6 +78,7 @@ class _TrytondMethod(object):
                 transaction.cursor.commit()
         Cache.resets(self._config.database_name)
         return res
+
 
 class TrytondProxy(object):
     'Proxy for function call for trytond'
@@ -147,8 +149,9 @@ class TrytondConfig(Config):
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):
-        return "proteus.config.TrytondConfig('%s', '%s', '%s', config_file=%s)"\
-                % (self.database_name, self._user, self.database_type,
+        return "proteus.config.TrytondConfig"\
+            "('%s', '%s', '%s', config_file=%s)"\
+            % (self.database_name, self._user, self.database_type,
                 self.config_file)
     __repr__.__doc__ = object.__repr__.__doc__
 
@@ -173,6 +176,7 @@ class TrytondConfig(Config):
         proxy = self.get_proxy(name, type=type)
         return [x for x in proxy._object._rpc]
 
+
 def set_trytond(database_name=None, user='admin', database_type=None,
         language='en_US', password='', config_file=None):
     'Set trytond package as backend'
@@ -193,6 +197,7 @@ class XmlrpcProxy(object):
     def __getattr__(self, name):
         'Return attribute value'
         return getattr(self._object, name)
+
 
 class XmlrpcConfig(Config):
     'Configuration for XML-RPC'
@@ -229,10 +234,12 @@ class XmlrpcConfig(Config):
                 if x.startswith(object_)
                 and '.' not in x[len(object_) + 1:]]
 
+
 def set_xmlrpc(url):
     'Set XML-RPC as backend'
     _CONFIG.current = XmlrpcConfig(url)
     return _CONFIG.current
+
 
 def get_config():
     return _CONFIG.current
