@@ -1,13 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 __all__ = ['PYSONEncoder', 'PYSONDecoder', 'Eval', 'Not', 'Bool', 'And', 'Or',
-        'Equal', 'Greater', 'Less', 'If', 'Get', 'In', 'Date', 'DateTime']
-import sys
-if sys.version_info < (2, 6):
+    'Equal', 'Greater', 'Less', 'If', 'Get', 'In', 'Date', 'DateTime']
+try:
     import simplejson as json
-else:
+except ImportError:
     import json
 import datetime
+from functools import reduce
 
 
 class PYSON(object):
@@ -21,6 +21,64 @@ class PYSON(object):
     @staticmethod
     def eval(dct, context):
         raise NotImplementedError
+
+    def __invert__(self):
+        if self.types() != set([bool]):
+            return Not(Bool(self))
+        else:
+            return Not(self)
+
+    def __and__(self, other):
+        if (isinstance(self, And)
+                and not isinstance(self, Or)):
+            self._statements.append(other)
+            return self
+        if (isinstance(other, PYSON)
+                and other.types() != set([bool])):
+            other = Bool(other)
+        if self.types() != set([bool]):
+            return And(Bool(self), other)
+        else:
+            return And(self, other)
+
+    def __or__(self, other):
+        if isinstance(self, Or):
+            self._statements.append(other)
+            return self
+        if (isinstance(other, PYSON)
+                and other.types() != set([bool])):
+            other = Bool(other)
+        if self.types() != set([bool]):
+            return Or(Bool(self), other)
+        else:
+            return Or(self, other)
+
+    def __eq__(self, other):
+        return Equal(self, other)
+
+    def __ne__(self, other):
+        return Not(Equal(self, other))
+
+    def __gt__(self, other):
+        return Greater(self, other)
+
+    def __ge__(self, other):
+        return Greater(self, other, True)
+
+    def __lt__(self, other):
+        return Less(self, other)
+
+    def __le__(self, other):
+        return Less(self, other, True)
+
+    def get(self, k, d=''):
+        return Get(self, k, d)
+
+    def in_(self, obj):
+        return In(self, obj)
+
+    def contains(self, k):
+        return In(k, self)
 
 
 class PYSONEncoder(json.JSONEncoder):
@@ -133,7 +191,7 @@ class And(PYSON):
                 assert isinstance(statement, bool), \
                         'statement must be boolean'
         assert len(statements) >= 2, 'must have at least 2 statements'
-        self._statements = statements
+        self._statements = list(statements)
 
     def pyson(self):
         return {
@@ -408,7 +466,7 @@ class Date(PYSON):
             date = date.replace(year=year)
         if dct['dM']:
             month = date.month + dct['dM']
-            year = date.year + month / 12
+            year = date.year + month // 12
             month = month % 12
             date = date.replace(year=year, month=month)
         if dct['dd']:
