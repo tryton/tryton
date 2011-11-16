@@ -197,7 +197,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     report = base64.decodestring(report)
                     cursor.execute('UPDATE "' + self._table + '" '
                         'SET invoice_report_cache = %s '
-                        'WHERE id = %s', (invoice_id, report))
+                        'WHERE id = %s', (report, invoice_id))
                 table.drop_column('invoice_report')
 
         # Add index on create_date
