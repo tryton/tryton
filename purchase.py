@@ -56,7 +56,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         domain=[('party', '=', Eval('party'))], states=_STATES,
         depends=['state', 'party'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
-        domain=[('type', '=', 'warehouse')], required=True, states=_STATES,
+        domain=[('type', '=', 'warehouse')], states=_STATES,
         depends=_DEPENDS)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
@@ -125,6 +125,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         self._error_messages.update({
                 'invoice_addresse_required': 'Invoice addresses must be '
                 'defined for the quotation.',
+                'warehouse_required': 'A warehouse must be defined for the ' \
+                    'quotation.',
                 'missing_account_payable': 'It misses ' \
                         'an "Account Payable" on the party "%s"!',
             })
@@ -152,6 +154,10 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         cursor.execute("UPDATE " + self._table + " "\
                 "SET invoice_method = 'shipment' "\
                 "WHERE invoice_method = 'packing'")
+
+        table = TableHandler(cursor, self, module_name)
+        # Migration from 2.2: warehouse is no more required
+        table.not_null_action('warehouse', 'remove')
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -594,6 +600,11 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         purchase = self.browse(purchase_id)
         if not purchase.invoice_address:
             self.raise_user_error('invoice_addresse_required')
+        for line in purchase.lines:
+            if (not line.to_location
+                    and line.product
+                    and line.product.type in ('stockable', 'consumable')):
+                self.raise_user_error('warehouse_required')
         return True
 
     def set_reference(self, purchase_id):
@@ -955,6 +966,10 @@ class PurchaseLine(ModelSQL, ModelView):
     move_done = fields.Function(fields.Boolean('Moves Done'), 'get_move_done')
     move_exception = fields.Function(fields.Boolean('Moves Exception'),
             'get_move_exception')
+    from_location = fields.Function(fields.Many2One('stock.location',
+            'From Location'), 'get_from_location')
+    to_location = fields.Function(fields.Many2One('stock.location',
+            'To Location'), 'get_to_location')
 
     def __init__(self):
         super(PurchaseLine, self).__init__()
@@ -1188,6 +1203,21 @@ class PurchaseLine(ModelSQL, ModelView):
                 res[line.id] = Decimal('0.0')
         return res
 
+    def get_from_location(self, ids, name):
+        result = {}
+        for line in self.browse(ids):
+            result[line.id] = line.purchase.party.supplier_location.id
+        return result
+
+    def get_to_location(self, ids, name):
+        result = {}
+        for line in self.browse(ids):
+            if line.purchase.warehouse:
+                result[line.id] = line.purchase.warehouse.input_location.id
+            else:
+                result[line.id] = False
+        return result
+
     def get_invoice_line(self, line):
         '''
         Return invoice line values for purchase line
@@ -1289,8 +1319,8 @@ class PurchaseLine(ModelSQL, ModelView):
         vals['quantity'] = quantity
         vals['uom'] = line.unit.id
         vals['product'] = line.product.id
-        vals['from_location'] = line.purchase.party.supplier_location.id
-        vals['to_location'] = line.purchase.warehouse.input_location.id
+        vals['from_location'] = line.from_location.id
+        vals['to_location'] = line.to_location.id
         vals['state'] = 'draft'
         vals['company'] = line.purchase.company.id
         vals['unit_price'] = line.unit_price
