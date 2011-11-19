@@ -223,7 +223,7 @@ class Or(And):
             elif is_leaf(part) and self.base(part[0]) == symbol:
                 result.append(part)
             else:
-                field, _, _ = part
+                field = part[0]
                 field = self.base(field)
                 if (field in context
                         and eval_leaf(part, context, operator.or_)):
