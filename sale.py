@@ -69,7 +69,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             },
         depends=['party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
-        domain=[('type', '=', 'warehouse')], required=True, states={
+        domain=[('type', '=', 'warehouse')], states={
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
@@ -155,6 +155,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'wrong_method': 'Wrong combination of method!',
             'addresses_required': 'Invoice and Shipment addresses must be '
             'defined for the quotation.',
+            'warehouse_required': 'Warehouse must be defined for the ' \
+                'quotation.',
             'missing_account_receivable': 'It misses '
                     'an "Account Receivable" on the party "%s"!',
         })
@@ -644,6 +646,11 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         sale = self.browse(sale_id)
         if not sale.invoice_address or not sale.shipment_address:
             self.raise_user_error('addresses_required')
+        for line in sale.lines:
+            if (not line.from_location
+                    and line.product
+                    and line.product.type in ('stockable', 'consumable')):
+                self.raise_user_error('warehouse_required')
         return True
 
     def set_reference(self, sale_id):
@@ -796,8 +803,15 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         :return: a list of key-value as tuples of the shipment
         '''
+        sale_line_obj = Pool().get('sale.line')
+        line_id, move = move
+        line = sale_line_obj.browse(line_id)
+
         planned_date = max(m['planned_date'] for m in moves)
-        return (('planned_date', planned_date),)
+        return (
+            ('planned_date', planned_date),
+            ('warehouse', line.warehouse.id),
+            )
 
     def create_shipment(self, sale_id):
         '''
@@ -828,7 +842,6 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     'customer': sale.party.id,
                     'delivery_address': sale.shipment_address.id,
                     'reference': sale.reference,
-                    'warehouse': sale.warehouse.id,
                     'company': sale.company.id,
                     }
                 values.update(dict(key))
@@ -1107,6 +1120,12 @@ class SaleLine(ModelSQL, ModelView):
     move_done = fields.Function(fields.Boolean('Moves Done'), 'get_move_done')
     move_exception = fields.Function(fields.Boolean('Moves Exception'),
             'get_move_exception')
+    warehouse = fields.Function(fields.Many2One('stock.location',
+            'Warehouse'), 'get_warehouse')
+    from_location = fields.Function(fields.Many2One('stock.location',
+            'From Location'), 'get_from_location')
+    to_location = fields.Function(fields.Many2One('stock.location',
+            'To Location'), 'get_to_location')
 
     def __init__(self):
         super(SaleLine, self).__init__()
@@ -1335,6 +1354,27 @@ class SaleLine(ModelSQL, ModelView):
                 res[line.id] = Decimal('0.0')
         return res
 
+    def get_warehouse(self, ids, name):
+        result = {}
+        for line in self.browse(ids):
+            result[line.id] = line.sale.warehouse.id
+        return result
+
+    def get_from_location(self, ids, name):
+        result = {}
+        for line in self.browse(ids):
+            if line.warehouse:
+                result[line.id] = line.warehouse.output_location.id
+            else:
+                result[line.id] = False
+        return result
+
+    def get_to_location(self, ids, name):
+        result = {}
+        for line in self.browse(ids):
+            result[line.id] = line.sale.party.customer_location.id
+        return result
+
     def get_invoice_line(self, line):
         '''
         Return invoice line values for sale line
@@ -1436,8 +1476,8 @@ class SaleLine(ModelSQL, ModelView):
         res['quantity'] = quantity
         res['uom'] = line.unit.id
         res['product'] = line.product.id
-        res['from_location'] = line.sale.warehouse.output_location.id
-        res['to_location'] = line.sale.party.customer_location.id
+        res['from_location'] = line.from_location.id
+        res['to_location'] = line.to_location.id
         res['state'] = 'draft'
         res['company'] = line.sale.company.id
         res['unit_price'] = line.unit_price
