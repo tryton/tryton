@@ -223,7 +223,7 @@ class BrowseRecord(object):
         self._context = self._context.copy()
         prev_lang = self._context.get('language') or 'en_US'
         self._context['language'] = lang
-        for cache in (self._cache, self._local_cache):
+        for cache in (self._cache, {self._model_name: self._local_data}):
             language_cache = cache['_language_cache']
             for model in cache:
                 if model == '_language_cache':
