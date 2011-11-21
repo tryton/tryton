@@ -194,7 +194,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 'FROM "' + self._table + '"')
             for invoice_id, report in cursor.fetchall():
                 if report:
-                    report = base64.decodestring(report)
+                    report = base64.decodestring(str(report))
                     cursor.execute('UPDATE "' + self._table + '" '
                         'SET invoice_report_cache = %s '
                         'WHERE id = %s', (report, invoice_id))
