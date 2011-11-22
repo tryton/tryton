@@ -6,6 +6,7 @@ from setuptools import setup, find_packages
 import os
 import glob
 import sys
+import re
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -273,7 +274,7 @@ elif os.name == 'mac' \
             'gtk+-2.0'], stdout=PIPE).stdout.read().strip()
 
         dist_dir = dist.command_obj['py2app'].dist_dir
-        resources_dir = os.path.join(dist_dir, 'tryton.app', 'Contents', 'Resources')
+        resources_dir = os.path.join(dist_dir, 'Tryton.app', 'Contents', 'Resources')
         gtk_2_dist_dir = os.path.join(resources_dir, 'lib', 'gtk-2.0')
         pango_dist_dir = os.path.join(resources_dir, 'lib', 'pango')
 
@@ -293,10 +294,6 @@ elif os.name == 'mac' \
         pangorc.write('ModuleFiles=./pango.modules\n')
         pangorc.close()
 
-        if os.path.isdir(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'loaders')):
-            shutil.rmtree(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'loaders'))
-        shutil.copytree(os.path.join(gtk_dir, 'lib', 'gtk-2.0', gtk_binary_version,
-                'loaders'), os.path.join(gtk_2_dist_dir, gtk_binary_version, 'loaders'))
         if not os.path.isdir(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'engines')):
             os.makedirs(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'engines'))
         shutil.copyfile(os.path.join(gtk_dir, 'lib', 'gtk-2.0', gtk_binary_version,
@@ -305,6 +302,15 @@ elif os.name == 'mac' \
 
         query_loaders = Popen(os.path.join(gtk_dir,'bin','gdk-pixbuf-query-loaders'),
                 stdout=PIPE).stdout.read()
+        loader_dir, = re.findall('# LoaderDir = (.*)', query_loaders)
+        loader_pkg = (loader_dir.replace(os.path.join(gtk_dir,'lib'), '').
+                split(os.path.sep)[-3])
+        loader_dist_dir = os.path.join(resources_dir, 'lib', loader_pkg,
+                gtk_binary_version, 'loaders')
+        if os.path.isdir(loader_dist_dir):
+            shutil.rmtree(loader_dist_dir)
+        if os.path.isdir(loader_dir):
+            shutil.copytree(loader_dir, loader_dist_dir)
         query_loaders = query_loaders.replace(gtk_dir, '@executable_path/../Resources')
         loaders = open(os.path.join(resources_dir, 'gdk-pixbuf.loaders'), 'w')
         loaders.write(query_loaders)
@@ -333,7 +339,7 @@ elif os.name == 'mac' \
 
         # fix pathes within shared libraries
         for library in chain(
-                iglob(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'loaders', '*.so')),
+                iglob(os.path.join(loader_dist_dir, '*.so')),
                 iglob(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'engines', '*.so')),
                 iglob(os.path.join(gtk_2_dist_dir, gtk_binary_version, 'immodules', '*.so')),
                 iglob(os.path.join(pango_dist_dir,'*','modules','*.so'))):
