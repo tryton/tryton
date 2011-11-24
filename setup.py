@@ -89,8 +89,7 @@ if os.name == 'nt':
         args['windows'][0]['other_resources'] = [(24, 1, manifest)]
 
 
-elif os.name == 'mac' \
-        or (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
+elif sys.platform == 'darwin':
     import py2app
     from modulegraph.find_modules import PY_SUFFIXES
     PY_SUFFIXES.append('')
@@ -253,8 +252,7 @@ if os.name == 'nt':
             Popen([makensis, "/DVERSION=" + VERSION,
                 str(os.path.join(os.path.dirname(__file__),
                     'setup-single.nsi'))]).wait()
-elif os.name == 'mac' \
-        or (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
+elif sys.platform == 'darwin':
     def find_gtk_dir():
         for directory in os.environ['PATH'].split(':'):
             if not os.path.isdir(directory):

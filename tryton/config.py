@@ -30,8 +30,7 @@ if not os.path.isdir(get_config_dir()):
 def find_path(progs, args):
     if os.name == 'nt':
         return ''
-    if os.name == 'mac' or \
-            (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
+    if sys.platform == 'darwin':
         return ''
     paths = [x for x in os.environ['PATH'].split(':')
             if os.path.isdir(x)]

@@ -8,6 +8,7 @@ from version import PACKAGE
 from tryton.client import CURRENT_DIR, PREFIX
 import logging
 import gtk
+import sys
 
 _ = gettext.gettext
 
@@ -169,8 +170,7 @@ def setlang(lang=None, locale_dict=None):
             lang2 = lang
             if os.name == 'nt':
                 lang2 = _LOCALE2WIN32.get(lang, lang)
-            elif os.name == 'mac' or \
-                    (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
+            elif sys.platform == 'darwin':
                 encoding = 'UTF-8'
             # ensure environment variable are str
             lang, lang2, encoding = str(lang), str(lang2), str(encoding)

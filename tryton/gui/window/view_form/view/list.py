@@ -351,9 +351,7 @@ class ViewList(ParserView):
         elif self.widget_tree.sequence:
             dnd = True
         # Disable DnD on mac until it is fully supported
-        if os.name == 'mac':
-            dnd = False
-        elif hasattr(os, 'uname') and os.uname()[0] == 'Darwin':
+        if sys.platform == 'darwin':
             dnd = False
         if screen.readonly:
             dnd = False
@@ -480,8 +478,7 @@ class ViewList(ParserView):
         # Don't use set_with_data on mac see:
         # http://bugzilla.gnome.org/show_bug.cgi?id=508601
         if selection.count_selected_rows() < 100 \
-                or os.name == 'mac' \
-                or (hasattr(os, 'uname') and os.uname()[0] == 'Darwin'):
+                or sys.platform == 'darwin':
             data = []
             selection.selected_foreach(self.copy_foreach, data)
             clipboard.set_text('\n'.join(data))
