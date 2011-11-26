@@ -168,7 +168,11 @@ class Report(URLMixin):
                 pool.get('ir.translation'))
         localcontext['setLang'] = lambda language: translate.set_language(language)
 
-        if not report.report_content:
+        # Convert to str as buffer from DB is not supported by StringIO
+        report_content = str(report.report_content)
+        style_content = str(report.style_content)
+
+        if not report_content:
             raise Exception('Error', 'Missing report file!')
 
         fd, path = tempfile.mkstemp(
@@ -177,14 +181,14 @@ class Report(URLMixin):
         outzip = zipfile.ZipFile(path, mode='w')
 
         content_io = StringIO.StringIO()
-        content_io.write(report.report_content)
+        content_io.write(report_content)
         content_z = zipfile.ZipFile(content_io, mode='r')
 
         style_info = None
         style_xml = None
         manifest = None
         for f in content_z.infolist():
-            if f.filename == 'styles.xml' and report.style_content:
+            if f.filename == 'styles.xml' and style_content:
                 style_info = f
                 style_xml = content_z.read(f.filename)
                 continue
@@ -193,13 +197,13 @@ class Report(URLMixin):
                 continue
             outzip.writestr(f, content_z.read(f.filename))
 
-        if report.style_content:
+        if style_content:
             pictures = []
 
             #cStringIO difference:
             #calling StringIO() with a string parameter creates a read-only object
             new_style_io = StringIO.StringIO()
-            new_style_io.write(report.style_content)
+            new_style_io.write(style_content)
             new_style_z = zipfile.ZipFile(new_style_io, mode='r')
             new_style_xml = new_style_z.read('styles.xml')
             for file in new_style_z.namelist():
