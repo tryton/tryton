@@ -184,7 +184,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return new_ids
 
     def _credit(self, line):
-        selection_obj = Pool().get('analytic_account.account.selection')
+        selection_obj = self.pool.get('analytic_account.account.selection')
 
         result = super(InvoiceLine, self)._credit(line)
 
