@@ -48,7 +48,8 @@ class CurrencyTestCase(unittest.TestCase):
         Create currencies
         '''
 
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             cu1_id = self.currency.create({
                 'name': 'cu1',
                 'symbol': 'cu1',
@@ -69,7 +70,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Check grouping
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1_id = self.get_currency('cu1')
 
             self.assertRaises(Exception, self.currency.write, cu1_id, 
@@ -88,7 +89,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Create rates.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
 
@@ -114,7 +116,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Rate unicity
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             today = self.date.today()
 
             cu_id = self.currency.create({
@@ -141,7 +144,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Simple conversion
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
 
@@ -157,7 +161,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Conversion with rounding on non-finite decimal representation
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
 
@@ -171,7 +175,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Same without rounding
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
 
@@ -185,7 +189,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Conversion to the same currency
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1_id = self.get_currency('cu1')
     
             amount = Decimal("10")
@@ -197,7 +201,7 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Conversion with zero amount
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
     
@@ -211,7 +215,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Conversion with zero rate
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
             cu2_id = self.get_currency('cu2')
     
@@ -233,7 +238,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Conversion with missing rate
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             cu1_id = self.get_currency('cu1')
             cu3_id = self.currency.create({
                 'name': 'cu3',
@@ -253,7 +259,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Conversion with both missing rate
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             cu3_id = self.currency.create({
                 'name': 'cu3',
                 'symbol': 'cu3',
@@ -275,7 +282,8 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         Test deletion of currency deletes rates
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             codes = ['cu%s' % (i + 1) for i in range(2)]
             currency_ids = [self.get_currency(i) for i in codes]
             self.currency.delete(currency_ids)
