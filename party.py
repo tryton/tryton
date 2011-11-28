@@ -60,7 +60,6 @@ class Party(ModelSQL, ModelView):
         res = {}
         pool = Pool()
         move_line_obj = pool.get('account.move.line')
-        company_obj = pool.get('company.company')
         user_obj = pool.get('res.user')
         date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
@@ -74,7 +73,6 @@ class Party(ModelSQL, ModelView):
         if not ids:
             return {}
 
-        company_id = None
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
