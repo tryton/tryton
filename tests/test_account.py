@@ -43,7 +43,8 @@ class AccountTestCase(unittest.TestCase):
 
     def test0010account_chart(self):
         'Test creation of minimal chart of accounts'
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             account_template_id, = self.account_template.search([
                 ('parent', '=', False),
                 ])
