@@ -22,7 +22,8 @@ class ModelSingletonTestCase(unittest.TestCase):
         '''
         Test read method.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             singleton = self.singleton.read(1, ['name'])
             self.assert_(singleton['name'] == 'test')
             self.assert_(singleton['id'] == 1)
@@ -48,7 +49,8 @@ class ModelSingletonTestCase(unittest.TestCase):
         '''
         Test create method.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             singleton_id = self.singleton.create({'name': 'bar'})
             self.assert_(singleton_id)
 
@@ -70,7 +72,8 @@ class ModelSingletonTestCase(unittest.TestCase):
         '''
         Test copy method.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             singleton_id = self.singleton.search([])[0]
 
             singleton2_id = self.singleton.copy(singleton_id)
@@ -91,7 +94,8 @@ class ModelSingletonTestCase(unittest.TestCase):
         '''
         Test default_get method.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             default = self.singleton.default_get(['name'])
             self.assert_(default == {'name': 'test'})
 
@@ -120,7 +124,8 @@ class ModelSingletonTestCase(unittest.TestCase):
         '''
         Test search method.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             singleton_ids = self.singleton.search([])
             self.assert_(singleton_ids == [1])
 

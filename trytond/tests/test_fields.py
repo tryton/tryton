@@ -67,7 +67,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Boolean.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             boolean1_id = self.boolean.create({
                 'boolean': True,
                 })
@@ -159,7 +160,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Integer.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             integer1_id = self.integer.create({
                 'integer': 1,
                 })
@@ -345,7 +347,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Float.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             float1_id = self.float.create({
                 'float': 1.1,
                 })
@@ -538,7 +541,7 @@ class FieldsTestCase(unittest.TestCase):
 
             self.failUnlessRaises(Exception, self.float_digits.write, float6_id, {
                 'float': 1.11,
-                }, CONTEXT)
+                })
 
             self.failUnlessRaises(Exception, self.float_digits.write, float6_id, {
                 'digits': 0,
@@ -564,7 +567,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Numeric.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             numeric1_id = self.numeric.create({
                 'numeric': Decimal('1.1'),
                 })
@@ -791,7 +795,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Char.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             for char in (self.char, self.char_translate):
                 char1_id = char.create({
                     'char': 'Test',
@@ -1050,7 +1055,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Text.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             for text in (self.text, self.text_translate):
                 text1_id = text.create({
                     'text': 'Test',
@@ -1313,7 +1319,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Sha.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             sha1_id = self.sha.create({
                 'sha': 'Test',
                 })
@@ -1559,7 +1566,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test Date.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             today = datetime.date(2009, 1, 1)
             tomorrow = today + datetime.timedelta(1)
             yesterday = today - datetime.timedelta(1)
@@ -1813,7 +1821,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test DateTime.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             today = datetime.datetime(2009, 1, 1, 12, 0, 0)
             tomorrow = today + datetime.timedelta(1)
             yesterday = today - datetime.timedelta(1)
@@ -2084,7 +2093,8 @@ class FieldsTestCase(unittest.TestCase):
         '''
         Test One2One.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             target1_id = self.one2one_target.create({
                 'name': 'target1',
                 })

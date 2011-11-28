@@ -98,7 +98,8 @@ class MPTTTestCase(unittest.TestCase):
         '''
         Create tree.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             new_records = [False]
             for j in range(3):
                 parent_records = new_records
@@ -120,7 +121,8 @@ class MPTTTestCase(unittest.TestCase):
         '''
         Re-order.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.ReOrder()
             transaction.cursor.rollback()
 
@@ -128,12 +130,14 @@ class MPTTTestCase(unittest.TestCase):
         '''
         Re-parent.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.ReParent()
             transaction.cursor.rollback()
 
     def test0040active(self):
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             record_ids = self.mptt.search([])
             for record_id in record_ids:
                 if record_id % 2:
@@ -148,7 +152,8 @@ class MPTTTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             record_ids = self.mptt.search([])
             self.mptt.write(record_ids[:len(record_ids) // 2], {
                     'active': False
@@ -157,7 +162,8 @@ class MPTTTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             record_ids = self.mptt.search([])
             self.mptt.write(record_ids, {
                     'active': False
@@ -173,7 +179,8 @@ class MPTTTestCase(unittest.TestCase):
         '''
         Delete.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             record_ids = self.mptt.search([])
             for record_id in record_ids:
                 if record_id % 2:
@@ -182,14 +189,16 @@ class MPTTTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             record_ids = self.mptt.search([])
             self.mptt.delete(record_ids[:len(record_ids) // 2])
             self.CheckTree()
 
             transaction.cursor.rollback()
 
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             record_ids = self.mptt.search([])
             self.mptt.delete(record_ids)
             self.CheckTree()

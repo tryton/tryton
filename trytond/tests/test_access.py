@@ -24,7 +24,8 @@ class ModelAccessTestCase(unittest.TestCase):
         '''
         Test Read Access
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             model_id, = self.model.search([('model', '=', 'test.access')])
 
             test_id = self.test_access.create({})
@@ -108,7 +109,8 @@ class ModelAccessTestCase(unittest.TestCase):
         '''
         Test Write Access
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             model_id, = self.model.search([('model', '=', 'test.access')])
 
             test_id = self.test_access.create({})
@@ -192,7 +194,8 @@ class ModelAccessTestCase(unittest.TestCase):
         '''
         Test Create Access
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             model_id, = self.model.search([('model', '=', 'test.access')])
 
             # Without model access
@@ -271,7 +274,8 @@ class ModelAccessTestCase(unittest.TestCase):
         '''
         Test Delete Access
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             model_id, = self.model.search([('model', '=', 'test.access')])
 
             test_ids = [self.test_access.create({}) for x in range(11)]
@@ -368,7 +372,8 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         '''
         Test Read Access
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             field1_id, = self.field.search([
                 ('model.model', '=', 'test.access'),
                 ('name', '=', 'field1'),
@@ -578,7 +583,8 @@ class ModelFieldAccessTestCase(unittest.TestCase):
         '''
         Test Write Access
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             field1_id, = self.field.search([
                 ('model.model', '=', 'test.access'),
                 ('name', '=', 'field1'),

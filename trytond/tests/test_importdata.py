@@ -34,7 +34,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test boolean.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.boolean.import_data(['boolean'],
                 [['True']]) == (1, 0, 0, 0))
 
@@ -62,7 +63,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test integer.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.integer.import_data(['integer'],
                 [['1']]) == (1, 0, 0, 0))
 
@@ -90,7 +92,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test float.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.float.import_data(['float'],
                 [['1.1']]) == (1, 0, 0, 0))
 
@@ -115,7 +118,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test numeric.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.numeric.import_data(['numeric'],
                 [['1.1']]) == (1, 0, 0, 0))
 
@@ -140,7 +144,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test char.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.char.import_data(['char'],
                 [['test']]) == (1, 0, 0, 0))
 
@@ -156,7 +161,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test text.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.text.import_data(['text'],
                 [['test']]) == (1, 0, 0, 0))
 
@@ -172,7 +178,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test sha.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.sha.import_data(['sha'],
                 [['test']]) == (1, 0, 0, 0))
 
@@ -188,7 +195,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test date.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.date.import_data(['date'],
                 [['2010-01-01']]) == (1, 0, 0, 0))
 
@@ -207,7 +215,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test datetime.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.datetime.import_data(['datetime'],
                 [['2010-01-01 12:00:00']]) == (1, 0, 0, 0))
 
@@ -227,7 +236,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test selection.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.selection.import_data(['selection'],
                 [['select1']]) == (1, 0, 0, 0))
 
@@ -246,7 +256,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test many2one.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.many2one.import_data(['many2one'],
                 [['Test']]) == (1, 0, 0, 0))
 
@@ -277,7 +288,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test many2many.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.many2many.import_data(['many2many'],
                 [['Test 1']]) == (1, 0, 0, 0))
 
@@ -322,7 +334,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test one2many.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.one2many.import_data(['name', 'one2many/name'],
                 [['Test', 'Test 1']]) == (1, 0, 0, 0))
 
@@ -339,7 +352,8 @@ class ImportDataTestCase(unittest.TestCase):
         '''
         Test reference.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             self.assert_(self.reference.import_data(['reference'],
                 [['test.import_data.reference.selection,Test']]) ==
                 (1, 0, 0, 0))

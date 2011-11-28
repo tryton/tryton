@@ -22,7 +22,8 @@ class SequenceTestCase(unittest.TestCase):
         '''
         Test incremental
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             sequence_id = self.sequence.create({
                 'name': 'Test incremental',
                 'code': 'test',
@@ -49,7 +50,8 @@ class SequenceTestCase(unittest.TestCase):
         '''
         Test Decimal Timestamp
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             sequence_id = self.sequence.create({
                 'name': 'Test decimal timestamp',
                 'code': 'test',
@@ -75,7 +77,8 @@ class SequenceTestCase(unittest.TestCase):
         '''
         Test Hexadecimal Timestamp
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             sequence_id = self.sequence.create({
                 'name': 'Test hexadecimal timestamp',
                 'code': 'test',
@@ -102,7 +105,7 @@ class SequenceTestCase(unittest.TestCase):
         '''
         Test prefix/suffix
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             sequence_id = self.sequence.create({
                 'name': 'Test incremental',
                 'code': 'test',

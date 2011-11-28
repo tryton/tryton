@@ -24,7 +24,7 @@ class UrlTestCase(unittest.TestCase):
 
     def testModelURL(self):
         "Test model URLs"
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             self.assertEqual(self.urlmodel.get_url(),
                 'tryton://%s/%s/model/test.urlobject' % (self.hostname,
                     urllib.quote(DB_NAME)))
@@ -37,7 +37,7 @@ class UrlTestCase(unittest.TestCase):
 
     def testWizardURL(self):
         "Test wizard URLs"
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             CONFIG['hostname'] = None
             self.assertEqual(self.urlwizard.get_url(),
                 'tryton://%s/%s/wizard/test.test_wizard' % (self.hostname,

@@ -16,7 +16,8 @@ class WorkflowTestCase(unittest.TestCase):
 
     def test0010object_creation(self):
         'Test workflow object creation'
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             wkf_id = self.workflow_obj.create({
                     'name': 'value = 3',
                     'value': 3,
@@ -39,7 +40,7 @@ class WorkflowTestCase(unittest.TestCase):
 
     def test0020object_modification(self):
         'Test workflow object modification'
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             wkf_id = self.workflow_obj.create({
                     'name': 'value = 3',
                     'value': 3,

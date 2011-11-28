@@ -25,7 +25,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test boolean.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'boolean': True,
                 })
@@ -47,7 +48,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test integer.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'integer': 2,
                 })
@@ -69,7 +71,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test float.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'float': 1.1,
                 })
@@ -91,7 +94,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test numeric.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'numeric': Decimal('1.1'),
                 })
@@ -113,7 +117,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test char.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'char': 'test',
                 })
@@ -135,7 +140,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test text.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'text': 'test',
                 })
@@ -157,7 +163,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test sha.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'sha': 'Test',
                 })
@@ -170,7 +177,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test date.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'date': datetime.date(2010, 1, 1),
                 })
@@ -192,7 +200,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test datetime.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'datetime': datetime.datetime(2010, 1, 1, 12, 0, 0),
                 })
@@ -215,7 +224,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test selection.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({
                 'selection': 'select1',
                 })
@@ -237,7 +247,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test many2one.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             target_id = self.export_data_target.create({
                 'name': 'Target Test',
                 })
@@ -262,7 +273,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test many2many.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             target1_id = self.export_data_target.create({
                 'name': 'Target 1',
                 })
@@ -298,7 +310,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test one2many.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             export1_id = self.export_data.create({})
             target1_id = self.export_data_target.create({
                 'name': 'Target 1',
@@ -329,7 +342,8 @@ class ExportDataTestCase(unittest.TestCase):
         '''
         Test reference.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             target1_id = self.export_data_target.create({})
             export1_id = self.export_data.create({
                 'reference': 'test.export_data.target,%s' % target1_id,
