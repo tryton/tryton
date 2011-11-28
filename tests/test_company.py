@@ -42,7 +42,8 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Create company.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             currency1_id = self.currency.search([
                 ('code', '=', 'cu1'),
                 ], 0, 1, None)[0]
@@ -58,7 +59,7 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Test company recursion.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             currency1_id = self.currency.search([
                 ('code', '=', 'cu1'),
                 ], 0, 1, None)[0]
@@ -83,7 +84,8 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Create employee.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             company1_id = self.company.search([
                 ('name', '=', 'B2CK'),
                 ], 0, 1, None)[0]
@@ -98,7 +100,8 @@ class CompanyTestCase(unittest.TestCase):
         '''
         Test user company
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             currency1_id = self.currency.search([
                 ('code', '=', 'cu1'),
                 ], 0, 1, None)[0]
