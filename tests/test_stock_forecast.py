@@ -64,7 +64,7 @@ class StockForecastTestCase(unittest.TestCase):
         '''
         Test create_moves.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             category_id = self.category.create({
                     'name': 'Test create_moves',
                     })
