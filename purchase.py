@@ -34,18 +34,16 @@ class ProductSupplier(ModelSQL, ModelView):
         return res
 
     def compute_purchase_date(self, product_supplier, date):
-        earlier_date = None
+        later_date = None
         for day in product_supplier.weekdays:
             weekday = int(day.weekday)
-            diff = date.weekday() - weekday
-            if diff > 0:
-                diff -= 7
-            new_date = date + datetime.timedelta(diff)
-            if earlier_date and earlier_date <= new_date:
+            diff = (date.weekday() - weekday) % 7
+            new_date = date - datetime.timedelta(diff)
+            if later_date and later_date >= new_date:
                 continue
-            earlier_date = new_date
-        if earlier_date:
-            date = earlier_date
+            later_date = new_date
+        if later_date:
+            date = later_date
         return super(ProductSupplier, self).compute_purchase_date(
                 product_supplier, date)
 
