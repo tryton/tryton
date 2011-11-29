@@ -32,9 +32,15 @@ class Party(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, select=1,
         states=STATES, depends=DEPENDS)
     code = fields.Char('Code', required=True, select=1,
-            readonly=True, order_field="%(table)s.code_length %(order)s, " \
-                    "%(table)s.code %(order)s")
+        order_field="%(table)s.code_length %(order)s, " \
+            "%(table)s.code %(order)s",
+        states={
+            'readonly': Eval('code_readonly', True),
+            },
+        depends=['code_readonly'])
     code_length = fields.Integer('Code Length', select=1, readonly=True)
+    code_readonly = fields.Function(fields.Boolean('Code Readonly'),
+        'get_code_readonly')
     lang = fields.Many2One("ir.lang", 'Language', states=STATES,
         depends=DEPENDS)
     vat_number = fields.Char('VAT Number', help="Value Added Tax number",
@@ -96,6 +102,14 @@ class Party(ModelSQL, ModelView):
         config_obj = Pool().get('party.configuration')
         config = config_obj.browse(1)
         return config.party_lang.id
+
+    def default_code_readonly(self):
+        config_obj = Pool().get('party.configuration')
+        config = config_obj.browse(1)
+        return bool(config.party_sequence)
+
+    def get_code_readonly(self, ids, name):
+        return dict((x, True) for x in ids)
 
     def on_change_with_vat_code(self, vals):
         return (vals.get('vat_country') or '') + (vals.get('vat_number') or '')
