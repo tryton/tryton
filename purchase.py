@@ -1302,7 +1302,7 @@ class PurchaseLine(ModelSQL, ModelView):
                     vals['planned_date'] = \
                             product_supplier_obj.compute_supply_date(
                                     product_supplier,
-                                    date=line.purchase.purchase_date)[0]
+                                    date=line.purchase.purchase_date)
                     break
 
         with Transaction().set_user(0, set_context=True):
@@ -1562,15 +1562,13 @@ class ProductSupplier(ModelSQL, ModelView):
 
         :param product_supplier: a BrowseRecord of the Product Supplier
         :param date: the date of the purchase if None the current date
-        :return: a tuple with the supply date and the next one
+        :return: the supply date
         '''
         date_obj = Pool().get('ir.date')
 
         if not date:
             date = date_obj.today()
-        next_date = date + datetime.timedelta(1)
-        return (date + datetime.timedelta(product_supplier.delivery_time),
-                next_date + datetime.timedelta(product_supplier.delivery_time))
+        return date + datetime.timedelta(product_supplier.delivery_time)
 
     def compute_purchase_date(self, product_supplier, date):
         '''
