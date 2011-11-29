@@ -10,11 +10,9 @@ class ProductSupplier(ModelSQL, ModelView):
             'Week Days')
 
     def compute_supply_date(self, product_supplier, date=None):
-        res = super(ProductSupplier, self).compute_supply_date(
+        date = super(ProductSupplier, self).compute_supply_date(
                 product_supplier, date=date)
         earlier_date = None
-        date = res[0]
-        next_date = res[1]
         for day in product_supplier.weekdays:
             weekday = int(day.weekday)
             diff = weekday - date.weekday()
@@ -25,13 +23,7 @@ class ProductSupplier(ModelSQL, ModelView):
             if earlier_date and earlier_date <= new_date:
                 continue
             earlier_date = new_date
-
-            diff = weekday - next_date.weekday()
-            if diff < 0:
-                diff += 7
-            new_next_date = next_date + datetime.timedelta(diff)
-            res = (new_date, new_next_date)
-        return res
+        return earlier_date
 
     def compute_purchase_date(self, product_supplier, date):
         later_date = None

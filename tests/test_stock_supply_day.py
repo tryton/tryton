@@ -71,7 +71,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
                     delivery_time, weekday)
                 product_supplier = self.product_supplier.browse(
                     product_supplier_id)
-                date, _ = self.product_supplier.compute_supply_date(
+                date = self.product_supplier.compute_supply_date(
                     product_supplier, purchase_date)
                 self.assertEqual(date, supply_date)
 
