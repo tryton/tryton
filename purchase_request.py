@@ -280,8 +280,13 @@ class PurchaseRequest(ModelSQL, ModelView):
         today = date_obj.today()
 
         for product_supplier in product.product_suppliers:
-            supply_date, next_supply_date = product_supplier_obj.\
-                    compute_supply_date(product_supplier, date=today)
+            supply_date = product_supplier_obj.compute_supply_date(
+                    product_supplier, date=today)
+            # TODO next_day is by default today + 1 but should depends
+            # on the CRON activity
+            next_day = today + datetime.timedelta(1)
+            next_supply_date = product_supplier_obj.compute_supply_date(
+                            product_supplier, date=next_day)
             if (not min_date) or supply_date < min_date:
                 min_date = supply_date
             if (not max_date):
@@ -310,7 +315,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         today = date_obj.today()
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier_obj.compute_supply_date(
-                    product_supplier, date=today)[0]
+                    product_supplier, date=today)
             sup_timedelta = date - supply_date
             if not supplier:
                 supplier = product_supplier.party
