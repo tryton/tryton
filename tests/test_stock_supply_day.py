@@ -159,8 +159,12 @@ class StockSupplyDayTestCase(unittest.TestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    from trytond.modules.stock_supply.tests import test_stock_supply
-    for test in test_stock_supply.suite():
+    from trytond.modules.company.tests import test_company
+    for test in test_company.suite():
+        if test not in suite:
+            suite.addTest(test)
+    from trytond.modules.account.tests import test_account
+    for test in test_account.suite():
         if test not in suite:
             suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
