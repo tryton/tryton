@@ -101,10 +101,11 @@ class StockSupplyTestCase(unittest.TestCase):
             })
         category_id = self.category.create({'name': 'ProdCategoryTest'})
         product_id = self.product.create({
-            'name': 'ProductTest',
-            'default_uom': uom_id,
-            'category': category_id,
-            })
+                'name': 'ProductTest',
+                'default_uom': uom_id,
+                'category': category_id,
+                'account_category': True,
+                })
         company_id, = self.company.search([('name', '=', 'B2CK')])
         self.user.write(USER, {
             'main_company': company_id,
