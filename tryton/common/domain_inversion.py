@@ -4,6 +4,12 @@
 import operator
 import types
 
+def in_(a, b):
+    if isinstance(a, (list, tuple)):
+        return any(operator.contains(b, x) for x in a)
+    else:
+        return operator.contains(b, a)
+
 OPERATORS = {
     '=': operator.eq,
     '>': operator.gt,
@@ -11,8 +17,8 @@ OPERATORS = {
     '<=': operator.le,
     '>=': operator.ge,
     '!=': operator.ne,
-    'in': lambda a, b: operator.contains(b, a),
-    'not in': lambda a, b: not operator.contains(b, a),
+    'in': in_,
+    'not in': lambda a, b: not in_(b, a),
     # Those operators are not supported (yet ?)
     'like': lambda a, b: True,
     'ilike': lambda a, b: True,
@@ -389,6 +395,13 @@ def test_evaldomain():
     domain = [['x', '>', 5]]
     assert eval_domain(domain, {'x': 6})
     assert not eval_domain(domain, {'x': 4})
+
+    domain = [['x', 'in', [3, 5]]]
+    assert eval_domain(domain, {'x': 3})
+    assert not eval_domain(domain, {'x': 4})
+    assert eval_domain(domain, {'x': [3]})
+    assert eval_domain(domain, {'x': [3, 4]})
+    assert not eval_domain(domain, {'x': [1, 2]})
 
     domain = ['OR', ['x', '>', 10], ['x', '<', 0]]
     assert eval_domain(domain, {'x': 11})
