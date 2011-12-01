@@ -42,9 +42,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
-    sale_date = fields.Date('Sale Date', required=True,
+    sale_date = fields.Date('Sale Date',
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ~Eval('state').in_(['draft', 'quotation']),
+            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             },
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
@@ -186,6 +187,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 "SET invoice_method = 'shipment' "
                 "WHERE invoice_method = 'packing'")
 
+        table = TableHandler(cursor, self, module_name)
+        # Migration from 2.2
+        table.not_null_action('sale_date', 'remove')
+
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
@@ -209,10 +214,6 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
     def default_state(self):
         return 'draft'
-
-    def default_sale_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
@@ -640,6 +641,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         default['invoices'] = False
         default['invoices_ignored'] = False
         default['shipment_state'] = 'none'
+        default.setdefault('sale_date', False)
         return super(Sale, self).copy(ids, default=default)
 
     def check_for_quotation(self, sale_id):
@@ -676,12 +678,13 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             })
         return True
 
-    def set_sale_date(self, sale_id):
+    def set_sale_date(self, sale):
         date_obj = Pool().get('ir.date')
 
-        self.write(sale_id, {
-                'sale_date': date_obj.today(),
-                })
+        if not sale.sale_date:
+            self.write(sale.id, {
+                    'sale_date': date_obj.today(),
+                    })
         return True
 
     def _get_invoice_line_sale_line(self, sale):
@@ -865,7 +868,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         self.write(sale.id, {'state': 'quotation'})
 
     def wkf_confirmed(self, sale):
-        self.set_sale_date(sale.id)
+        self.set_sale_date(sale)
         self.write(sale.id, {'state': 'confirmed'})
 
     def wkf_waiting_invoice_sale(self, sale):
