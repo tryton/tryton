@@ -43,8 +43,12 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
-    purchase_date = fields.Date('Purchase Date', required=True, states=_STATES,
-        depends=_DEPENDS)
+    purchase_date = fields.Date('Purchase Date',
+        states={
+            'readonly': ~Eval('state').in_(['draft', 'quotation']),
+            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            },
+        depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
     party = fields.Many2One('party.party', 'Party', change_default=True,
@@ -159,6 +163,9 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         # Migration from 2.2: warehouse is no more required
         table.not_null_action('warehouse', 'remove')
 
+        # Migration from 2.2: purchase_date is no more required
+        table.not_null_action('purchase_date', 'remove')
+
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
@@ -182,10 +189,6 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
     def default_state(self):
         return 'draft'
-
-    def default_purchase_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
@@ -594,6 +597,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         default['invoices'] = False
         default['invoices_ignored'] = False
         default['shipment_state'] = 'none'
+        default.setdefault('purchase_date', False)
         return super(Purchase, self).copy(ids, default=default)
 
     def check_for_quotation(self, purchase_id):
@@ -623,12 +627,13 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             })
         return True
 
-    def set_purchase_date(self, purchase_id):
+    def set_purchase_date(self, purchase):
         date_obj = Pool().get('ir.date')
 
-        self.write(purchase_id, {
-            'purchase_date': date_obj.today(),
-            })
+        if not purchase.purchase_date:
+            self.write(purchase.id, {
+                'purchase_date': date_obj.today(),
+                })
         return True
 
     def _get_invoice_line_purchase_line(self, purchase):
@@ -741,7 +746,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         self.write(purchase.id, {'state': 'quotation'})
 
     def wkf_confirmed(self, purchase):
-        self.set_purchase_date(purchase.id)
+        self.set_purchase_date(purchase)
         self.write(purchase.id, {'state': 'confirmed'})
 
     def wkf_invoice_waiting(self, purchase):

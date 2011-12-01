@@ -1,3 +1,4 @@
+* Purchase date is required only at confirmation
 * compute_supply_date returns only one date
 * warehouse is not always required
 
