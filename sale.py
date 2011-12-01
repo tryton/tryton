@@ -1129,6 +1129,9 @@ class SaleLine(ModelSQL, ModelView):
             'From Location'), 'get_from_location')
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
+    delivery_date = fields.Function(fields.Date('Delivery Date',
+            on_change_with=['product', '_parent_sale.sale_date']),
+        'get_delivery_date')
 
     def __init__(self):
         super(SaleLine, self).__init__()
@@ -1378,6 +1381,25 @@ class SaleLine(ModelSQL, ModelView):
             result[line.id] = line.sale.party.customer_location.id
         return result
 
+    def _compute_delivery_date(self, product, date):
+        product_obj = Pool().get('product.product')
+        return product_obj.compute_delivery_date(product, date=date)
+
+    def on_change_with_delivery_date(self, values):
+        product_obj = Pool().get('product.product')
+        if values.get('product'):
+            product = product_obj.browse(values['product'])
+            return self._compute_delivery_date(product,
+                values.get('_parent_sale.sale_date'))
+        return False
+
+    def get_delivery_date(self, ids, name):
+        dates = {}
+        for line in self.browse(ids):
+            dates[line.id] = self._compute_delivery_date(line.product,
+                line.sale.sale_date)
+        return dates
+
     def get_invoice_line(self, line):
         '''
         Return invoice line values for sale line
@@ -1485,8 +1507,7 @@ class SaleLine(ModelSQL, ModelView):
         res['company'] = line.sale.company.id
         res['unit_price'] = line.unit_price
         res['currency'] = line.sale.currency.id
-        res['planned_date'] = product_obj.compute_delivery_date(
-            line.product)
+        res['planned_date'] = line.delivery_date
         return res
 
 SaleLine()
