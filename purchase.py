@@ -975,6 +975,10 @@ class PurchaseLine(ModelSQL, ModelView):
             'From Location'), 'get_from_location')
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
+    delivery_date = fields.Function(fields.Date('Delivery Date',
+            on_change_with=['product', '_parent_purchase.purchase_date',
+                '_parent_purchase.party']),
+        'get_delivery_date')
 
     def __init__(self):
         super(PurchaseLine, self).__init__()
@@ -1223,6 +1227,34 @@ class PurchaseLine(ModelSQL, ModelView):
                 result[line.id] = False
         return result
 
+    def _compute_delivery_date(self, product, party, date):
+        product_supplier_obj = Pool().get('purchase.product_supplier')
+        if not product.product_suppliers:
+            return False
+        for product_supplier in product.product_suppliers:
+            if product_supplier.party.id == party.id:
+                return product_supplier_obj.compute_supply_date(
+                    product_supplier, date=date)
+        return False
+
+    def on_change_with_delivery_date(self, values):
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        party_obj = pool.get('party.party')
+        if values.get('product') and values.get('_parent_purchase.party'):
+            product = product_obj.browse(values['product'])
+            party = party_obj.browse(values['_parent_purchase.party'])
+            return self._compute_delivery_date(product, party,
+                values.get('_parent_purchase.purchase_date'))
+        return False
+
+    def get_delivery_date(self, ids, name):
+        dates = {}
+        for line in self.browse(ids):
+            dates[line.id] = self._compute_delivery_date(line.product,
+                line.purchase.party, line.purchase.purchase_date)
+        return dates
+
     def get_invoice_line(self, line):
         '''
         Return invoice line values for purchase line
@@ -1302,7 +1334,6 @@ class PurchaseLine(ModelSQL, ModelView):
         pool = Pool()
         move_obj = pool.get('stock.move')
         uom_obj = pool.get('product.uom')
-        product_supplier_obj = pool.get('purchase.product_supplier')
 
         vals = {}
         if line.type != 'line':
@@ -1330,15 +1361,7 @@ class PurchaseLine(ModelSQL, ModelView):
         vals['company'] = line.purchase.company.id
         vals['unit_price'] = line.unit_price
         vals['currency'] = line.purchase.currency.id
-
-        if line.product.product_suppliers:
-            for product_supplier in line.product.product_suppliers:
-                if product_supplier.party.id == line.purchase.party.id:
-                    vals['planned_date'] = \
-                            product_supplier_obj.compute_supply_date(
-                                    product_supplier,
-                                    date=line.purchase.purchase_date)
-                    break
+        vals['planned_date'] = line.delivery_date
 
         with Transaction().set_user(0, set_context=True):
             move_id = move_obj.create(vals)

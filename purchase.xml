@@ -719,6 +719,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="unit_price"/>
                             <label name="amount"/>
                             <field name="amount"/>
+                            <label name="delivery_date"/>
+                            <field name="delivery_date"/>
                             <field name="taxes" colspan="4"/>
                         </page>
                         <page string="Notes" id="notes">
