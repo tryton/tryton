@@ -90,10 +90,13 @@ class GenericXMLRPCRequestHandler:
                     }
                 return dispatch(host, port, 'XML-RPC', database_name, user,
                         session, object_type, object_name, method, *params)
-            except (UserError, UserWarning, NotLogged,
-                    ConcurrencyException), exception:
-                        raise xmlrpclib.Fault(exception.code,
-                            '\n'.join(exception.args))
+            except (NotLogged, ConcurrencyException), exception:
+                raise xmlrpclib.Fault(exception.code,
+                    '\n'.join(exception.args))
+            except (UserError, UserWarning), exception:
+                error, description = exception.args
+                raise xmlrpclib.Fault(exception.code,
+                    '\n'.join((error,) + description))
             except Exception:
                 tb_s = ''
                 for line in traceback.format_exception(*sys.exc_info()):
