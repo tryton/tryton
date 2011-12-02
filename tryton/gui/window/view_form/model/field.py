@@ -569,7 +569,7 @@ class O2MField(CharField):
                 args = ('model', self.attrs['relation'], 'fields_get',
                         field_names, context)
                 try:
-                    fields = rpc.execute(*args)
+                    fields.update(rpc.execute(*args))
                 except TrytonServerError, exception:
                     fields = common.process_exception(exception, *args)
                     if not fields:
