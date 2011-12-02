@@ -92,6 +92,14 @@ class CharDescriptor(FieldDescriptor):
         super(CharDescriptor, self).__set__(instance, value or '')
 
 
+class BinaryDescriptor(FieldDescriptor):
+    default = None
+
+    def __set__(self, instance, value):
+        assert isinstance(value, (basestring, buffer)) or value in (None, False)
+        super(BinaryDescriptor, self).__set__(instance, value or '')
+
+
 class IntegerDescriptor(FieldDescriptor):
     default = 0
 
@@ -296,7 +304,7 @@ class MetaModelFactory(object):
         'char': CharDescriptor,
         'text': CharDescriptor,
         'sha': CharDescriptor,
-        'binary': CharDescriptor,
+        'binary': BinaryDescriptor,
         'selection': CharDescriptor,  # TODO implement its own descriptor
         'integer': IntegerDescriptor,
         'biginteger': IntegerDescriptor,

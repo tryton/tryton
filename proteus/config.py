@@ -17,10 +17,17 @@ def dump_decimal(self, value, write):
     write(str(value))
     write("</double></value>\n")
 
+def dump_buffer(self, value, write):
+    self.write = write
+    value = xmlrpclib.Binary(value)
+    value.encode(self)
+    del self.write
+
 xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpclib.Marshaller.dispatch[datetime.date] = \
         lambda self, value, write: self.dump_datetime(
                 datetime.datetime.combine(value, datetime.time()), write)
+xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
 
 
 def _end_double(self, data):
