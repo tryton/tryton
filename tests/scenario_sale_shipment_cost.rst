@@ -16,7 +16,8 @@ Imports::
 
 Create database::
 
-    >>> config = config.set_trytond(':memory:')
+    >>> config = config.set_trytond()
+    >>> config.pool.test = True
 
 Install sale_shipment_cost, sale and account_invoice::
 
