@@ -1229,12 +1229,11 @@ class PurchaseLine(ModelSQL, ModelView):
 
     def _compute_delivery_date(self, product, party, date):
         product_supplier_obj = Pool().get('purchase.product_supplier')
-        if not product.product_suppliers:
-            return False
-        for product_supplier in product.product_suppliers:
-            if product_supplier.party.id == party.id:
-                return product_supplier_obj.compute_supply_date(
-                    product_supplier, date=date)
+        if product and product.product_suppliers:
+            for product_supplier in product.product_suppliers:
+                if product_supplier.party.id == party.id:
+                    return product_supplier_obj.compute_supply_date(
+                        product_supplier, date=date)
         return False
 
     def on_change_with_delivery_date(self, values):
