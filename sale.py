@@ -1383,7 +1383,10 @@ class SaleLine(ModelSQL, ModelView):
 
     def _compute_delivery_date(self, product, date):
         product_obj = Pool().get('product.product')
-        return product_obj.compute_delivery_date(product, date=date)
+        if product:
+            return product_obj.compute_delivery_date(product, date=date)
+        else:
+            return False
 
     def on_change_with_delivery_date(self, values):
         product_obj = Pool().get('product.product')
