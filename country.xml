@@ -58,6 +58,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Subdivision">
+                    <label name="country"/>
+                    <field name="country"/>
+                    <newline/>
                     <label name="name"/>
                     <field name="name"/>
                     <label name="code"/>
