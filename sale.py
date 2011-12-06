@@ -150,7 +150,7 @@ class Sale(Model):
             values['lines'] = []
         for line in values['lines']:
             if line.get('shipment_cost'):
-                if line['shipment_cost'] != cost_line['shipment_cost']:
+                if line['shipment_cost'] != cost_line.get('shipment_cost'):
                     to_remove = line['id']
                     values['lines'].remove(line)
                     if cost_line:
