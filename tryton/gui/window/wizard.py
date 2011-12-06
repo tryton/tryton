@@ -99,7 +99,7 @@ class Wizard(SignalEvent):
             elif res['type'] == 'print':
                 self.datas['report_id'] = res.get('report_id', False)
                 if res.get('get_id_from_action', False):
-                    backup_ids = datas['ids']
+                    backup_ids = self.datas['ids']
                     self.datas['ids'] = self.datas['form']['ids']
                     Action.exec_report(res['report'], self.datas, self.window,
                             direct_print=self.direct_print,
