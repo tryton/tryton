@@ -401,6 +401,12 @@ class ActionReport(ModelSQL, ModelView):
 
     def get_style_content(self, ids, name):
         res = {}
+        converter = buffer
+        default = False
+        format_ = Transaction().context.pop('%s.%s' % (self._name, name), '')
+        if format_ == 'size':
+            converter = len
+            default = 0
         for report in self.browse(ids):
             try:
                 with file_open( report.style.replace('/', os.sep),
@@ -408,7 +414,7 @@ class ActionReport(ModelSQL, ModelView):
                     data = fp.read()
             except Exception:
                 data = False
-            res[report.id] = data
+            res[report.id] = converter(data) if data else default
         return res
 
     def get_pyson(self, ids, name):
