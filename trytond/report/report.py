@@ -169,8 +169,10 @@ class Report(URLMixin):
         localcontext['setLang'] = lambda language: translate.set_language(language)
 
         # Convert to str as buffer from DB is not supported by StringIO
-        report_content = str(report.report_content)
-        style_content = str(report.style_content)
+        report_content = (str(report.report_content) if report.report_content
+            else False)
+        style_content = (str(report.style_content) if report.style_content
+            else False)
 
         if not report_content:
             raise Exception('Error', 'Missing report file!')
