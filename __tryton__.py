@@ -23,6 +23,7 @@
         'sale',
         'currency',
         'account_invoice',
+        'stock',
     ],
     'xml' : [
         'sale.xml',

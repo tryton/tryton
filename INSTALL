@@ -10,6 +10,7 @@ Prerequisites
  * trytond_sale (http://www.tryton.org/)
  * trytond_currency (http://www.tryton.org/)
  * trytond_account_invoice (http://www.tryton.org/)
+ * trytond_stock (http://www.tryton.org/)
 
 Installation
 ------------
