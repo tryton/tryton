@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import Model, fields
 from trytond.pyson import Eval
-import luhn
+from . import luhn
 
 
 class Address(Model):
