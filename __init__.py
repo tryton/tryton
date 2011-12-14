@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-from company import *
-from cron import *
-import party
+from .company import *
+from .cron import *
+from . import party
