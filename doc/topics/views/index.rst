@@ -135,9 +135,6 @@ Display a field of the object with the value of the current record.
 
     * ``widget``: The widget that must be used instead of the default one.
 
-    * ``saves``: Only for One2Many fields: it is a boolean that defines if
-      changes made in the list must be saved directly.
-
     * ``help``: The string that will be displayed when the cursor stays over the
       widget.
 
