@@ -288,12 +288,6 @@ class Screen(SignalEvent):
 
     def default_row_activate(self):
         from tryton.action import Action
-        from tryton.gui.main import Main
-        main = Main.get_main()
-        current_form = main.get_page()
-        if current_form:
-            for dialog in current_form.dialogs:
-                dialog.hide()
 
         if (self.current_view.view_type == 'tree' and
                 self.current_view.widget_tree.keyword_open):
