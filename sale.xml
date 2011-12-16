@@ -100,7 +100,7 @@ this repository contains the full copyright notices and license terms. -->
                                 <field name="tax_amount" xalign="1.0" xexpand="0"/>
                                 <label name="total_amount" xalign="1.0" xexpand="1"/>
                                 <field name="total_amount" xalign="1.0" xexpand="0"/>
-                                <group col="6" colspan="2" id="buttons">
+                                <group col="7" colspan="2" id="buttons">
                                     <button name="cancel" string="Cancel"
                                         states="{'invisible': Or(Equal(Eval('state'), 'cancel'), And(Not(In(Eval('state'), ['draft', 'quotation'])), Not(Equal(Eval('invoice_state'), 'exception')), Not(Equal(Eval('shipment_state'), 'exception')))), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                         icon="tryton-cancel"/>
@@ -122,6 +122,9 @@ this repository contains the full copyright notices and license terms. -->
                                             icon="tryton-go-next"/>
                                     <button name="confirm" string="Confirm"
                                         states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
+                                        icon="tryton-go-next"/>
+                                    <button name="process" string="Process"
+                                        states="{'invisible': Not(Equal(Eval('state'), 'confirmed')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                         icon="tryton-go-next"/>
                                 </group>
                             </group>
@@ -342,6 +345,24 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_sale_form" action="act_sale_form_confirmed"
             id="menu_sale_form_confirmed" sequence="40"/>
 
+        <record model="ir.action.act_window" id="act_sale_form_processing">
+            <field name="name">Processing Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain">[('state', '=', 'processing')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_processing_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_form_processing"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_sale_form_processing_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_form_processing"/>
+        </record>
+        <menuitem parent="menu_sale_form" action="act_sale_form_processing"
+            id="menu_sale_form_processing" sequence="50"/>
+
         <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
             <field name="perm_read" eval="False"/>
@@ -397,8 +418,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow.activity" id="sale_activity_confirmed">
             <field name="name">Confirmed</field>
             <field name="workflow" ref="sale_workflow"/>
-            <field name="split_mode">AND</field>
+            <field name="split_mode">XOR</field>
             <field name="method">wkf_confirmed</field>
+        </record>
+        <record model="workflow.activity" id="sale_activity_processing">
+            <field name="name">Processing</field>
+            <field name="workflow" ref="sale_workflow"/>
+            <field name="split_mode">AND</field>
+            <field name="method">wkf_processing</field>
         </record>
         <record model="workflow.activity" id="sale_activity_invoice_method">
             <field name="name">Invoice Method</field>
@@ -545,14 +572,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="signal">confirm</field>
             <field name="group" ref="group_sale"/>
         </record>
+        <record model="workflow.transition" id="sale_transition_confirmed_processing">
+            <field name="act_from" ref="sale_activity_confirmed"/>
+            <field name="act_to" ref="sale_activity_processing"/>
+            <field name="signal">process</field>
+            <field name="group" ref="group_sale"/>
+        </record>
         <record model="workflow.transition" id="sale_transition_quotation_cancel">
             <field name="act_from" ref="sale_activity_quotation"/>
             <field name="act_to" ref="sale_activity_cancel"/>
             <field name="signal">cancel</field>
             <field name="group" ref="group_sale"/>
         </record>
-        <record model="workflow.transition" id="sale_transition_confirmed_invoice_method">
-            <field name="act_from" ref="sale_activity_confirmed"/>
+        <record model="workflow.transition" id="sale_transition_processing_invoice_method">
+            <field name="act_from" ref="sale_activity_processing"/>
             <field name="act_to" ref="sale_activity_invoice_method"/>
         </record>
 
@@ -653,8 +686,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_from" ref="sale_activity_invoice_method_done"/>
             <field name="act_to" ref="sale_activity_done"/>
         </record>
-        <record model="workflow.transition" id="sale_transition_confirmed_shipment_method">
-            <field name="act_from" ref="sale_activity_confirmed"/>
+        <record model="workflow.transition" id="sale_transition_processing_shipment_method">
+            <field name="act_from" ref="sale_activity_processing"/>
             <field name="act_to" ref="sale_activity_shipment_method"/>
         </record>
         <record model="workflow.transition" id="sale_transition_shipment_method_shipment_method_done">

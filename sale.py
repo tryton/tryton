@@ -39,6 +39,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('quotation', 'Quotation'),
         ('confirmed', 'Confirmed'),
+        ('processing', 'Processing'),
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
@@ -190,6 +191,16 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         table = TableHandler(cursor, self, module_name)
         # Migration from 2.2
         table.not_null_action('sale_date', 'remove')
+
+        # state confirmed splitted into confirmed and processing
+        confirmed2processing = []
+        for sale in self.browse(self.search([
+                        ('state', '=', 'confirmed'),
+                        ])):
+            if sale.invoices or sale.moves:
+                confirmed2processing.append(sale.id)
+        if confirmed2processing:
+            self.write(confirmed2processing, {'state': 'processing'})
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
@@ -870,6 +881,9 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     def wkf_confirmed(self, sale):
         self.set_sale_date(sale)
         self.write(sale.id, {'state': 'confirmed'})
+
+    def wkf_processing(self, sale):
+        self.write(sale.id, {'state': 'processing'})
 
     def wkf_waiting_invoice_sale(self, sale):
         self.create_invoice(sale.id)
