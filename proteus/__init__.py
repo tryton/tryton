@@ -709,8 +709,12 @@ class Model(object):
                 for vals in value.get('add', []):
                     relation = Model.get(self._fields[field]['relation'],
                             self._config)
+                    record = relation()
+                    for i, j in vals.iteritems():
+                        record._values[i] = j
+                        record._changed.add(i)
                     # append without signal
-                    list.append(getattr(self, field), relation(**vals))
+                    list.append(getattr(self, field), record)
                 for vals in value.get('update', []):
                     if 'id' not in vals:
                         continue
@@ -743,8 +747,6 @@ class Model(object):
                 self._on_change_set(field, value)
             for field, value in later.iteritems():
                 self._on_change_set(field, value)
-            if self._parent:
-                self._parent._changed.add(self._parent_field_name)
         for field, definition in self._fields.iteritems():
             if not definition.get('on_change_with'):
                 continue
@@ -757,6 +759,9 @@ class Model(object):
             res = getattr(self._proxy, 'on_change_with_%s' % field)(args,
                     context)
             self._on_change_set(field, res)
+        if self._parent:
+            self._parent._changed.add(self._parent_field_name)
+            self._parent._on_change(self._parent_field_name)
 
 
 class Wizard(object):
