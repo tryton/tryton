@@ -192,8 +192,9 @@ Sale products with cost on shipment::
     >>> sale.save()
     >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
     >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
+    >>> Sale.workflow_trigger_validate(sale.id, 'process', config.context)
     >>> sale.state
-    u'confirmed'
+    u'processing'
     >>> sale.untaxed_amount == Decimal('103')
     True
 
@@ -261,8 +262,9 @@ Sale products with cost on order::
     >>> sale.save()
     >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
     >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
+    >>> Sale.workflow_trigger_validate(sale.id, 'process', config.context)
     >>> sale.state
-    u'confirmed'
+    u'processing'
     >>> sale.untaxed_amount == Decimal('63')
     True
 
