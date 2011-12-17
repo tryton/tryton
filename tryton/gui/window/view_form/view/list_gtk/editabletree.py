@@ -265,5 +265,5 @@ class EditableTreeView(gtk.TreeView):
         record = model.get_value(model.get_iter(path), 0)
         if isinstance(entry, gtk.Entry):
             self.on_quit_cell(record, column.name, entry.get_text())
-        elif isinstance(entry, gtk.ComboBoxEntry):
+        elif isinstance(entry, (gtk.ComboBoxEntry, gtk.ComboBox)):
             self.on_quit_cell(record, column.name, entry.get_active_text())

@@ -36,7 +36,7 @@ def send_keys(renderer, editable, position, treeview):
     editable.connect('key_press_event', treeview.on_keypressed)
     editable.editing_done_id = editable.connect('editing_done',
             treeview.on_editing_done)
-    if isinstance(editable, gtk.ComboBoxEntry):
+    if isinstance(editable, (gtk.ComboBoxEntry, gtk.ComboBox)):
         editable.connect('changed', treeview.on_editing_done)
 
 def sort_model(column, treeview, screen):
