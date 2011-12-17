@@ -262,8 +262,9 @@ Sale 2 products::
     >>> sale.save()
     >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
     >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
+    >>> Sale.workflow_trigger_validate(sale.id, 'process', config.context)
     >>> sale.state
-    u'confirmed'
+    u'processing'
 
 Send 2 products::
 
