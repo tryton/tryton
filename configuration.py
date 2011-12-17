@@ -63,7 +63,6 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
             property_obj.delete(property_ids)
             if value:
                 property_obj.create({
-                    'name': name[8:],
                     'field': account_field_id,
                     'value': 'account.account,%s' % value,
                     'company': company_id,
