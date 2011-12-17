@@ -182,20 +182,23 @@ class Sale(Model):
         shipment_obj = pool.get('stock.shipment.out')
         carrier_obj = pool.get('carrier')
 
-        shipment_id = super(Sale, self).create_shipment(sale_id)
+        shipment_ids = super(Sale, self).create_shipment(sale_id)
         sale = self.browse(sale_id)
-        if shipment_id and sale.carrier:
-            shipment = shipment_obj.browse(shipment_id)
-            with Transaction().set_context(
-                    shipment_obj.get_carrier_context(shipment)):
-                cost, currency_id = carrier_obj.get_sale_price(sale.carrier)
-            with Transaction().set_user(0, set_context=True):
-                shipment_obj.write(shipment_id, {
-                    'carrier': sale.carrier.id,
-                    'cost': cost,
-                    'cost_currency': currency_id,
-                })
-        return shipment_id
+        if shipment_ids and sale.carrier:
+            shipments = shipment_obj.browse(shipment_ids)
+            for shipment in shipments:
+                with Transaction().set_context(
+                        shipment_obj.get_carrier_context(shipment, values={
+                                'carrier': sale.carrier.id,
+                                })):
+                    cost, currency_id = carrier_obj.get_sale_price(sale.carrier)
+                with Transaction().set_user(0, set_context=True):
+                    shipment_obj.write(shipment.id, {
+                        'carrier': sale.carrier.id,
+                        'cost': cost,
+                        'cost_currency': currency_id,
+                    })
+        return shipment_ids
 
     def _get_invoice_line_sale_line(self, sale):
         result = super(Sale, self)._get_invoice_line_sale_line(sale)
