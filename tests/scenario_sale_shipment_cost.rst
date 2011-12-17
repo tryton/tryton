@@ -185,8 +185,8 @@ Sale products with cost on shipment::
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
     True
-    >>> cost_line.quantity
-    1.0
+    >>> cost_line.quantity == 1
+    True
     >>> cost_line.amount == Decimal('3')
     True
     >>> sale.save()
@@ -254,8 +254,8 @@ Sale products with cost on order::
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
     True
-    >>> cost_line.quantity
-    1.0
+    >>> cost_line.quantity == 1
+    True
     >>> cost_line.amount == Decimal('3')
     True
     >>> sale.save()
