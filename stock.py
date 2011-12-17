@@ -93,6 +93,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             result = super(ShipmentOut, self).on_change_inventory_moves(values)
         except AttributeError:
             result = {}
+        if not values.get('carrier'):
+            return result
         carrier = carrier_obj.browse(values['carrier'])
         with Transaction().set_context(
                 self._get_carrier_context(values)):
