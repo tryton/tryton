@@ -148,8 +148,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(Sale, self).__init__()
-        self._order[0] = ('sale_date', 'DESC')
-        self._order[0] = ('id', 'DESC')
+        self._order.insert(0, ('sale_date', 'DESC'))
+        self._order.insert(1, ('id', 'DESC'))
         self._constraints += [
             ('check_method', 'wrong_method')
         ]
