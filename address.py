@@ -23,8 +23,7 @@ class Address(ModelSQL, ModelView):
     name = fields.Char('Name', states=STATES, depends=DEPENDS)
     street = fields.Char('Street', states=STATES, depends=DEPENDS)
     streetbis = fields.Char('Street (bis)', states=STATES, depends=DEPENDS)
-    zip = fields.Char('Zip', change_default=True,
-        states=STATES, depends=DEPENDS)
+    zip = fields.Char('Zip', states=STATES, depends=DEPENDS)
     city = fields.Char('City', states=STATES, depends=DEPENDS)
     country = fields.Many2One('country.country', 'Country',
         on_change=['country', 'subdivision'], states=STATES, depends=DEPENDS)
