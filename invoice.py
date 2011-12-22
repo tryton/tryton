@@ -73,7 +73,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         depends=['state'])
     accounting_date = fields.Date('Accounting Date', states=_STATES,
         depends=_DEPENDS)
-    party = fields.Many2One('party.party', 'Party', change_default=True,
+    party = fields.Many2One('party.party', 'Party',
         required=True, states=_STATES, depends=_DEPENDS,
         on_change=['party', 'payment_term', 'type', 'company'])
     party_lang = fields.Function(fields.Char('Party Language',
