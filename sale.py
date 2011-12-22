@@ -54,8 +54,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    party = fields.Many2One('party.party', 'Party', change_default=True,
-        required=True, select=1, states={
+    party = fields.Many2One('party.party', 'Party', required=True, select=1,
+        states={
             'readonly': Eval('state') != 'draft',
             }, on_change=['party', 'payment_term'],
         depends=['state'])
