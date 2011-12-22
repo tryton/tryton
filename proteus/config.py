@@ -13,9 +13,10 @@ import time
 
 
 def dump_decimal(self, value, write):
-    write("<value><double>")
-    write(str(value))
-    write("</double></value>\n")
+    value = {'__class__': 'Decimal',
+        'decimal': str(value),
+        }
+    self.dump_struct(value, write)
 
 def dump_buffer(self, value, write):
     self.write = write
@@ -23,17 +24,34 @@ def dump_buffer(self, value, write):
     value.encode(self)
     del self.write
 
+def dump_date(self, value, write):
+    value = {'__class__': 'date',
+        'year': value.year,
+        'month': value.month,
+        'day': value.day,
+        }
+    self.dump_struct(value, write)
+
 xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
-xmlrpclib.Marshaller.dispatch[datetime.date] = \
-        lambda self, value, write: self.dump_datetime(
-                datetime.datetime.combine(value, datetime.time()), write)
+xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
 
-
-def _end_double(self, data):
-    self.append(Decimal(data))
+def end_struct(self, data):
+    mark = self._marks.pop()
+    # map structs to Python dictionaries
+    dct = {}
+    items = self._stack[mark:]
+    for i in range(0, len(items), 2):
+        dct[xmlrpclib._stringify(items[i])] = items[i+1]
+    if '__class__' in dct:
+        if dct['__class__'] == 'date':
+            dct = datetime.date(dct['year'], dct['month'], dct['day'])
+        elif dct['__class__'] == 'Decimal':
+            dct = Decimal(dct['decimal'])
+    self._stack[mark:] = [dct]
     self._value = 0
-xmlrpclib.Unmarshaller.dispatch["double"] = _end_double
+
+xmlrpclib.Unmarshaller.dispatch['struct'] = end_struct
 
 _CONFIG = threading.local()
 _CONFIG.current = None
