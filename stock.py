@@ -114,6 +114,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
         pool = Pool()
         product_obj = pool.get('product.product')
         tax_rule_obj = pool.get('account.tax.rule')
+        currency_obj = pool.get('currency.currency')
 
         if not shipment.cost:
             return {}
