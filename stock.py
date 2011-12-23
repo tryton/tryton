@@ -112,6 +112,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
     def get_cost_invoice_line(self, shipment, invoice):
         product_obj = self.pool.get('product.product')
         tax_rule_obj = self.pool.get('account.tax.rule')
+        currency_obj = self.pool.get('currency.currency')
 
         if not shipment.cost:
             return {}
