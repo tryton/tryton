@@ -18,7 +18,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             'Cost Currency', states={
             'invisible': ~Eval('carrier'),
             'required': Bool(Eval('carrier')),
-            'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
+            'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
+                    'packed']),
             }, depends=['carrier', 'state'])
     cost_currency_digits = fields.Function(fields.Integer(
         'Cost Currency Digits', on_change_with=['currency']),
@@ -26,7 +27,8 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
     cost = fields.Numeric('Cost',
             digits=(16, Eval('cost_currency_digits', 2)), states={
             'invisible': ~Eval('carrier'),
-            'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
+            'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
+                    'packed']),
             }, depends=['carrier', 'state', 'cost_currency_digits'])
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)
