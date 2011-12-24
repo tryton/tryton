@@ -137,6 +137,10 @@ class ModelField(ModelSQL, ModelView):
                     fields_names.append('name')
                     to_delete.append('name')
 
+        int_id = False
+        if isinstance(ids, (int, long)):
+            int_id = True
+            ids = [ids]
         res = super(ModelField, self).read(ids, fields_names=fields_names)
 
         if (Transaction().context.get('language')
@@ -189,6 +193,8 @@ class ModelField(ModelSQL, ModelView):
             for rec in res:
                 for field in to_delete:
                     del rec[field]
+        if int_id:
+            res = res[0]
         return res
 
 ModelField()
