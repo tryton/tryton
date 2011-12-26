@@ -6,7 +6,7 @@
     'name_es_CO': 'Histórico del costo para productos',
     'name_es_ES': 'Histórico del precio de coste de producto',
     'name_fr_FR': 'Historique prix de revient produit',
-    'version': '1.6.1',
+    'version': '1.6.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
