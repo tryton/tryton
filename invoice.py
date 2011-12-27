@@ -190,14 +190,22 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
 
         if (table.column_exist('invoice_report')
                 and table.column_exist('invoice_report_cache')):
-            cursor.execute('SELECT id, invoice_report '
+            limit = cursor.IN_MAX
+            cursor.execute('SELECT COUNT(id) '
                 'FROM "' + self._table + '"')
-            for invoice_id, report in cursor.fetchall():
-                if report:
-                    report = buffer(base64.decodestring(str(report)))
-                    cursor.execute('UPDATE "' + self._table + '" '
-                        'SET invoice_report_cache = %s '
-                        'WHERE id = %s', (report, invoice_id))
+            invoice_count, = cursor.fetchone()
+            for offset in range(0, invoice_count, limit):
+                cursor.execute(cursor.limit_clause(
+                    'SELECT id, invoice_report '
+                    'FROM "' + self._table + '"'
+                    'ORDER BY id',
+                    limit, offset))
+                for invoice_id, report in cursor.fetchall():
+                    if report:
+                        report = buffer(base64.decodestring(str(report)))
+                        cursor.execute('UPDATE "' + self._table + '" '
+                            'SET invoice_report_cache = %s '
+                            'WHERE id = %s', (report, invoice_id))
             table.drop_column('invoice_report')
 
         # Add index on create_date
