@@ -97,10 +97,10 @@ class Property(Function):
               ' THEN '  + \
                 self.get_condition(sql_type, clause) + \
               ' ELSE '\
-                'FALSE '\
+                '%s '\
               'END',
             [model._name, name] + property_val + \
-                    self.get_condition_args(clause))
+                    self.get_condition_args(clause) + [False])
 
         props = cursor.fetchall()
         default = None
