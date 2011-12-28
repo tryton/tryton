@@ -348,14 +348,22 @@ class ActionReport(ModelSQL, ModelView):
         # report_content_custom to remove base64 encoding
         if (table.column_exist('report_content_data')
                 and table.column_exist('report_content_custom')):
-            cursor.execute('SELECT id, report_content_data '
+            limit = cursor.IN_MAX
+            cursor.execute('SELECT COUNT(id) '
                 'FROM "' + self._table + '"')
-            for report_id, content in cursor.fetchall():
-                if content:
-                    content = base64.decodestring(str(content))
-                    cursor.execute('UPDATE "' + self._table + '" '
-                        'SET report_content_custom = %s '
-                        'WHERE id = %s', (content, report_id))
+            report_count, = cursor.fetchone()
+            for offset in range(0, report_count, limit):
+                cursor.execute(cursor.limit_clause(
+                    'SELECT id, report_content_data '
+                    'FROM "' + self._table + '"'
+                    'ORDER BY id',
+                    limit, offset))
+                for report_id, report in cursor.fetchall():
+                    if report:
+                        report = buffer(base64.decodestring(str(report)))
+                        cursor.execute('UPDATE "' + self._table + '" '
+                            'SET report_content_custom = %s '
+                            'WHERE id = %s', (report, report_id))
             table.drop_column('report_content_data')
 
     def default_type(self):
