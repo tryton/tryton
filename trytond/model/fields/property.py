@@ -120,9 +120,9 @@ class Property(Function):
               ' THEN '  + \
                 conditions + \
               ' ELSE '\
-                'FALSE '\
+                '%s '\
               'END',
-            [model._name, name] + property_val + cond_args)
+            [model._name, name] + property_val + cond_args + [False])
 
         props = cursor.fetchall()
         default = None
