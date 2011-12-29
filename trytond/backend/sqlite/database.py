@@ -81,6 +81,8 @@ def date_trunc(_type, date):
         return "%i-%02i-%02i 00:00:00" % (date.year, date.month, date.day)
 
 def split_part(text, delimiter, count):
+    if text is None:
+        return None
     return (text.split(delimiter) + [''] * (count - 1))[count - 1]
 
 def replace(text, pattern, replacement):
