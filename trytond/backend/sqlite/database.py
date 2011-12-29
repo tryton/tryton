@@ -81,6 +81,8 @@ def date_trunc(_type, date):
                 tm_tuple.tm_mday)
 
 def split_part(text, delimiter, count):
+    if text is None:
+        return None
     return (text.split(delimiter) + [''] * (count - 1))[count - 1]
 
 def replace(text, pattern, replacement):
