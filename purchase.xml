@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
                 ref="purchase.purchase_activity_invoice_done"/>
             <field name="trigger_model">account.invoice.line</field>
             <field name="trigger_ids">wkf_triggered_invoice_lines</field>
-            <field name="condition">invoice_paid</field>
+            <field name="condition">wkf_invoice_waiting2invoice_done</field>
         </record>
 
         <record model="workflow.transition"
@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
                 ref="purchase.purchase_activity_invoice_shipment_done"/>
             <field name="trigger_model">account.invoice.line</field>
             <field name="trigger_ids">wkf_triggered_invoice_lines</field>
-            <field name="condition">invoice_paid</field>
+            <field name="condition">wkf_waiting_invoice_shipment2invoice_shipment_done</field>
         </record>
 
     </data>
