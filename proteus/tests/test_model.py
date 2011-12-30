@@ -241,7 +241,7 @@ class TestModel(TestCase):
         self.assertNotEqual(admin1, None)
         self.assertNotEqual(admin1, False)
 
-        self.failUnlessRaises(NotImplementedError, lambda: admin1 == 1)
+        self.assertRaises(NotImplementedError, lambda: admin1 == 1)
 
     def test_default_set(self):
         User = Model.get('res.user')
