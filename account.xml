@@ -126,7 +126,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Analytic Accounts">
+                <tree string="Analytic Accounts" keyword_open="1">
                     <field name="name"/>
                     <field name="code"/>
                     <field name="debit"/>
