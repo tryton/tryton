@@ -152,8 +152,8 @@ class Type(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
         ondelete="RESTRICT", domain=[
-            ('company', '=', Eval('context', {}).get('company')),
-            ])
+            ('company', '=', Eval('company')),
+            ], depends=['company'])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company')),
