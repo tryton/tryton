@@ -177,8 +177,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_work_hours_board"/>
         </record>
 
-        <record model="ir.ui.view" id="work_open_init_view_form">
-            <field name="model">timesheet.work.open.init</field>
+        <record model="ir.ui.view" id="work_open_start_view_form">
+            <field name="model">timesheet.work.open.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[

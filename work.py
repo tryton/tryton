@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Not, Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -144,48 +144,36 @@ class Work(ModelSQL, ModelView):
 Work()
 
 
-class OpenWorkInit(ModelView):
-    'Open Work Init'
-    _name = 'timesheet.work.open.init'
+class OpenWorkStart(ModelView):
+    'Open Work'
+    _name = 'timesheet.work.open.start'
     _description = __doc__
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
-OpenWorkInit()
+
+OpenWorkStart()
 
 
 class OpenWork(Wizard):
     'Open Work'
     _name = 'timesheet.work.open'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'timesheet.work.open.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_work',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _action_open_work(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('timesheet', 'act_work_hours_board')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'from_date': data['form']['from_date'],
-            'to_date': data['form']['to_date'],
-            })
-        return res
+    start = StateView('timesheet.work.open.start',
+        'timesheet.work_open_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('timesheet.act_work_hours_board')
+
+    def do_open_(self, session, action):
+        action['pyson_context'] = PYSONEncoder().encode({
+                'from_date': session.start.from_date,
+                'to_date': session.start.to_date,
+                })
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenWork()
 
@@ -193,43 +181,23 @@ OpenWork()
 class OpenWork2(OpenWork):
     _name = 'timesheet.work.open2'
 
-    def _action_open_work(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('timesheet', 'act_work_form2')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'from_date': data['form']['from_date'],
-            'to_date': data['form']['to_date'],
-            })
-        return res
+    open_ = StateAction('timesheet.act_work_form2')
 
 OpenWork2()
 
 
 class OpenWorkGraph(Wizard):
     _name = 'timesheet.work.open_graph'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_work',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'open_'
+    open_ = StateAction('timesheet.act_work_form3')
 
-    def _action_open_work(self, data):
+    def do_open_(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         work_obj = pool.get('timesheet.work')
 
-        act_window_id = model_data_obj.get_id('timesheet', 'act_work_form3')
-        res = act_window_obj.read(act_window_id)
         if 'active_id' in Transaction().context:
             work = work_obj.browse(Transaction().context['active_id'])
-            res['name'] = res['name'] + ' - ' + work.rec_name
-        return res
+            action['name'] = action['name'] + ' - ' + work.rec_name
+        return action, {}
 
 OpenWorkGraph()

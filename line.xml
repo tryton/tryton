@@ -81,8 +81,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_timesheet_admin"/>
         </record>
 
-        <record model="ir.ui.view" id="enter_lines_init_view_form">
-            <field name="model">timesheet.enter_lines.init</field>
+        <record model="ir.ui.view" id="line_enter_start_view_form">
+            <field name="model">timesheet.line.enter.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -96,12 +96,12 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="act_enter_lines">
+        <record model="ir.action.wizard" id="act_line_enter">
             <field name="name">Enter Timesheet</field>
-            <field name="wiz_name">timesheet.enter_lines</field>
+            <field name="wiz_name">timesheet.line.enter</field>
         </record>
-        <menuitem parent="menu_timesheet" action="act_enter_lines"
-            id="menu_enter_lines" sequence="20"/>
+        <menuitem parent="menu_timesheet" action="act_line_enter"
+            id="menu_line_enter" sequence="20"/>
 
         <record model="ir.ui.view" id="hours_employee_view_tree">
             <field name="model">timesheet.hours_employee</field>
@@ -172,8 +172,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_timesheet_admin"/>
         </record>
 
-        <record model="ir.ui.view" id="open_hours_employee_init_view_form">
-            <field name="model">timesheet.open_hours_employee.init</field>
+        <record model="ir.ui.view" id="hours_employee_open_start_view_form">
+            <field name="model">timesheet.hours_employee.open.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -186,12 +186,12 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.wizard" id="act_open_hours_employee">
+        <record model="ir.action.wizard" id="act_hours_employee_open">
             <field name="name">Hours per Employee</field>
-            <field name="wiz_name">timesheet.open_hours_employee</field>
+            <field name="wiz_name">timesheet.hours_employee.open</field>
         </record>
-        <menuitem parent="menu_reporting" action="act_open_hours_employee"
-            icon="tryton-list" id="menu_open_hours_employee"/>
+        <menuitem parent="menu_reporting" action="act_hours_employee_open"
+            icon="tryton-list" id="menu_hours_employee_open"/>
 
         <record model="ir.ui.view" id="hours_employee_weekly_view_tree">
             <field name="model">timesheet.hours_employee_weekly</field>
@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_hours_employee_weekly_form"/>
         </record>
         <menuitem parent="menu_reporting" action="act_hours_employee_weekly_form"
-            id="menu_open_hours_employee_weekly"/>
+            id="menu_hours_employee_open_weekly"/>
 
         <record model="ir.ui.view" id="hours_employee_monthly_view_tree">
             <field name="model">timesheet.hours_employee_monthly</field>
@@ -247,6 +247,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_hours_employee_monthly_form"/>
         </record>
         <menuitem parent="menu_reporting" action="act_hours_employee_monthly_form"
-            id="menu_open_hours_employee_monthly"/>
+            id="menu_hours_employee_open_monthly"/>
     </data>
 </tryton>

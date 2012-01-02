@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.backend import FIELDS
 from trytond.pyson import Eval, PYSONEncoder, Date, Get
 from trytond.transaction import Transaction
@@ -58,9 +58,9 @@ class Line(ModelSQL, ModelView):
 Line()
 
 
-class EnterLinesInit(ModelView):
-    'Enter Lines Init'
-    _name = 'timesheet.enter_lines.init'
+class EnterLinesStart(ModelView):
+    'Enter Lines'
+    _name = 'timesheet.line.enter.start'
     _description = __doc__
     employee = fields.Many2One('company.employee', 'Employee', required=True,
             domain=[('company', '=', Get(Eval('context', {}), 'company'))])
@@ -74,55 +74,36 @@ class EnterLinesInit(ModelView):
         line_obj = Pool().get('timesheet.line')
         return line_obj.default_date()
 
-EnterLinesInit()
+EnterLinesStart()
 
 
 class EnterLines(Wizard):
     'Enter Lines'
-    _name = 'timesheet.enter_lines'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'timesheet.enter_lines.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('enter', 'Enter', 'tryton-ok', True),
-                ],
-            },
-        },
-        'enter': {
-            'result': {
-                'type': 'action',
-                'action': '_action_enter_lines',
-                'state': 'end',
-            },
-        }
-    }
+    _name = 'timesheet.line.enter'
 
-    def _action_enter_lines(self, data):
-        pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
-        employee_obj = pool.get('company.employee')
-        act_window_id = model_data_obj.get_id('timesheet', 'act_line_form')
-        res = act_window_obj.read(act_window_id)
-        date = data['form']['date']
-        date = Date(date.year, date.month, date.day)
-        res['pyson_domain'] = PYSONEncoder().encode([
-            ('employee', '=', data['form']['employee']),
-            ('date', '=', date),
+    start = StateView('timesheet.line.enter.start',
+        'timesheet.line_enter_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Enter', 'enter', 'tryton-ok', default=True),
             ])
-        res['pyson_context'] = PYSONEncoder().encode({
-            'employee': data['form']['employee'],
-            'date': date,
-            })
+    enter = StateAction('timesheet.act_line_form')
 
-        if data['form']['employee']:
-            employee = employee_obj.browse(data['form']['employee'])
-            res['name'] += " - " + employee.rec_name
+    def do_enter(self, session, action):
+        date = session.start.date
+        date = Date(date.year, date.month, date.day)
+        action['pyson_domain'] = PYSONEncoder().encode([
+                ('employee', '=', session.start.employee.id),
+                ('date', '=', date),
+                ])
+        action['pyson_context'] = PYSONEncoder().encode({
+                'employee': session.start.employee.id,
+                'date': date,
+                })
+        action['name'] += " - " + session.start.employee.rec_name
+        return action, {}
 
-        return res
+    def transition_enter(self, session):
+        return 'end'
 
 EnterLines()
 
@@ -159,50 +140,36 @@ class HoursEmployee(ModelSQL, ModelView):
 HoursEmployee()
 
 
-class OpenHoursEmployeeInit(ModelView):
-    'Open Hours Employee Init'
-    _name = 'timesheet.open_hours_employee.init'
+class OpenHoursEmployeeStart(ModelView):
+    'Open Hours per Employee'
+    _name = 'timesheet.hours_employee.open.start'
     _description = __doc__
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 
-OpenHoursEmployeeInit()
+OpenHoursEmployeeStart()
 
 
 class OpenHoursEmployee(Wizard):
     'Open Hours per Employee'
-    _name = 'timesheet.open_hours_employee'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'timesheet.open_hours_employee.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'timesheet.hours_employee.open'
 
-    def _action_open(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('timesheet',
-            'act_hours_employee_form')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'start_date': data['form']['start_date'],
-            'end_date': data['form']['end_date'],
-            })
-        return res
+    start = StateView('timesheet.hours_employee.open.start',
+        'timesheet.hours_employee_open_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('timesheet.act_hours_employee_form')
+
+    def do_open_(self, session, action):
+        action['pyson_context'] = PYSONEncoder().encode({
+                'start_date': session.start.start_date,
+                'end_date': session.start.end_date,
+                })
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenHoursEmployee()
 
