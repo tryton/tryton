@@ -1,9 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateAction
 from trytond.pyson import PYSONEncoder
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class ProductCostHistory(ModelSQL, ModelView):
@@ -47,34 +48,24 @@ ProductCostHistory()
 class OpenProductCostHistory(Wizard):
     'Open Product Cost History'
     _name = 'product.product.cost_history.open'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_open',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'open'
 
-    def _open(self, data):
+    open = StateAction('product_cost_history.act_product_cost_history_form')
+
+    def do_open(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         product_obj = pool.get('product.product')
-        act_window_id = model_data_obj.get_id('product_cost_history',
-                'act_product_cost_history_form')
-        res = act_window_obj.read(act_window_id)
 
-        if not data['id'] or data['id'] < 0:
-            res['pyson_domain'] = PYSONEncoder().encode([
+        active_id = Transaction().context.get('active_id')
+        if not active_id or active_id < 0:
+            action['pyson_domain'] = PYSONEncoder().encode([
                 ('template', '=', False),
             ])
         else:
-            product = product_obj.browse(data['id'])
-            res['pyson_domain'] = PYSONEncoder().encode([
+            product = product_obj.browse(active_id)
+            action['pyson_domain'] = PYSONEncoder().encode([
                 ('template', '=', product.template.id),
             ])
-        return res
+        return action, {}
 
 OpenProductCostHistory()
