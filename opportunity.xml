@@ -589,8 +589,8 @@
             <field name="rule_group" ref="rule_group_opportunity_employee"/>
         </record>
 
-        <record model="ir.ui.view" id="open_sale_opportunity_employee_init_view_form">
-            <field name="model">sale.open_opportunity_employee.init</field>
+        <record model="ir.ui.view" id="opportunity_employee_open_start_view_form">
+            <field name="model">sale.opportunity_employee.open.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -604,12 +604,12 @@
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="act_open_sale_opportunity_employee">
+        <record model="ir.action.wizard" id="act_opportunity_employee_open">
             <field name="name">Opportunities per Employee</field>
-            <field name="wiz_name">sale.open_opportunity_employee</field>
+            <field name="wiz_name">sale.opportunity_employee.open</field>
         </record>
-        <menuitem parent="menu_reporting" action="act_open_sale_opportunity_employee"
-            icon="tryton-list" id="menu_open_sale_opportunity_employee"/>
+        <menuitem parent="menu_reporting" action="act_opportunity_employee_open"
+            icon="tryton-list" id="menu_opportunity_employee_open"/>
 
         <record model="ir.ui.view" id="opportunity_monthly_view_tree">
             <field name="model">sale.opportunity_monthly</field>

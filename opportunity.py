@@ -4,7 +4,7 @@
 import datetime
 import time
 from trytond.model import ModelView, ModelSQL, ModelWorkflow, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.backend import FIELDS
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
@@ -577,50 +577,33 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
 SaleOpportunityEmployee()
 
 
-class OpenSaleOpportunityEmployeeInit(ModelView):
-    'Open Sale Opportunity per Employee Init'
-    _name = 'sale.open_opportunity_employee.init'
+class OpenSaleOpportunityEmployeeStart(ModelView):
+    'Open Sale Opportunity per Employee'
+    _name = 'sale.opportunity_employee.open.start'
     _description = __doc__
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 
-OpenSaleOpportunityEmployeeInit()
+OpenSaleOpportunityEmployeeStart()
 
 
 class OpenSaleOpportunityEmployee(Wizard):
     'Open Sale Opportunity per Employee'
-    _name = 'sale.open_opportunity_employee'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'sale.open_opportunity_employee.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'sale.opportunity_employee.open'
 
-    def _action_open(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('sale_opportunity',
-                'act_opportunity_employee_form')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'start_date': data['form']['start_date'],
-            'end_date': data['form']['end_date'],
-            })
-        return res
+    start = StateView('sale.opportunity_employee.open.start',
+        'sale_opportunity.opportunity_employee_open_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('sale_opportunity.act_opportunity_employee_form')
+
+    def do_open_(self, session, action):
+        action['pyson_context'] = PYSONEncoder().encode({
+                'start_date': session.start.start_date,
+                'end_date': session.start.end_date,
+                })
+        return action, {}
 
 OpenSaleOpportunityEmployee()
 
