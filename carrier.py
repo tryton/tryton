@@ -24,6 +24,15 @@ class Carrier(ModelSQL, ModelView):
     def default_carrier_cost_method(self):
         return 'product'
 
+    def get_rec_name(self, ids, name):
+        if not ids:
+            return {}
+        names = {}
+        for carrier in self.browse(ids):
+            names[carrier.id] = '%s - %s' % (carrier.party.rec_name,
+                carrier.carrier_product.rec_name)
+        return names
+
     def copy(self, ids, default=None):
         party_obj = Pool().get('party.party')
 

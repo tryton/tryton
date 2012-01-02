@@ -75,6 +75,11 @@ this repository contains the full copyright notices and license terms. -->
                         position="replace_attributes">
                         <tree string="Carriers"/>
                     </xpath>
+                    <xpath expr="/tree/field[@name='name']"
+                        position="after">
+                        <field name="carrier_product"/>
+                        <field name="carrier_cost_method"/>
+                    </xpath>
                 </data>
                 ]]>
             </field>
