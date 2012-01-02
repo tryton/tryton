@@ -8,9 +8,9 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Invoices" parent="account.menu_account"
             id="menu_invoices" sequence="20"/>
 
-        <record model="ir.action.wizard" id="wizard_pay_invoice">
+        <record model="ir.action.wizard" id="wizard_pay">
             <field name="name">Pay Invoice</field>
-            <field name="wiz_name">account.invoice.pay_invoice</field>
+            <field name="wiz_name">account.invoice.pay</field>
             <field name="model">account.invoice</field>
         </record>
 
@@ -108,7 +108,7 @@ this repository contains the full copyright notices and license terms. -->
                                         <button name="open" string="_Open"
                                             states="{'invisible': Not(In(Eval('state'), ['draft', 'proforma'])), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
                                             icon="tryton-ok"/>
-                                        <button name="%(wizard_pay_invoice)d" string="_Pay"
+                                        <button name="%(wizard_pay)d" string="_Pay"
                                             type="action"
                                             states="{'invisible': Not(Equal(Eval('state'), 'open')), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
@@ -776,8 +776,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.ui.view" id="pay_invoice_init_view_form">
-            <field name="model">account.invoice.pay_invoice.init</field>
+        <record model="ir.ui.view" id="pay_start_view_form">
+            <field name="model">account.invoice.pay.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -798,8 +798,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="pay_invoice_ask_view_form">
-            <field name="model">account.invoice.pay_invoice.ask</field>
+        <record model="ir.ui.view" id="pay_ask_view_form">
+            <field name="model">account.invoice.pay.ask</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -840,9 +840,6 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="second_currency_digits" tree_invisible="1"/>
                         </tree>
                     </field>
-                    <field name="description" colspan="4" invisible="1"/>
-                    <field name="journal" colspan="4" invisible="1"/>
-                    <field name="date" colspan="4" invisible="1"/>
                     <field name="company" colspan="4" invisible="1"/>
                     <field name="invoice" colspan="4" invisible="1"/>
                 </form>
@@ -850,8 +847,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="print_invoice_report_warning_view_form">
-            <field name="model">account.invoice.print_invoice_report.warning</field>
+        <record model="ir.ui.view" id="print_warning_view_form">
+            <field name="model">account.invoice.print.warning</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -870,19 +867,19 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="print_invoice_report">
+        <record model="ir.action.wizard" id="print">
             <field name="name">Invoice</field>
-            <field name="wiz_name">account.invoice.print_invoice_report</field>
+            <field name="wiz_name">account.invoice.print</field>
             <field name="model">account.invoice</field>
         </record>
-        <record model="ir.action.keyword" id="print_invoice_report_keyword">
+        <record model="ir.action.keyword" id="print_keyword">
             <field name="keyword">form_print</field>
             <field name="model">account.invoice,-1</field>
-            <field name="action" ref="print_invoice_report"/>
+            <field name="action" ref="print"/>
         </record>
 
-        <record model="ir.ui.view" id="credit_invoice_init_view_form">
-            <field name="model">account.invoice.credit_invoice.init</field>
+        <record model="ir.ui.view" id="credit_start_view_form">
+            <field name="model">account.invoice.credit.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -901,15 +898,15 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="credit_invoice">
+        <record model="ir.action.wizard" id="credit">
             <field name="name">Credit</field>
-            <field name="wiz_name">account.invoice.credit_invoice</field>
+            <field name="wiz_name">account.invoice.credit</field>
             <field name="model">account.invoice</field>
         </record>
-        <record model="ir.action.keyword" id="credit_invoice_keyword">
+        <record model="ir.action.keyword" id="credit_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.invoice,-1</field>
-            <field name="action" ref="credit_invoice"/>
+            <field name="action" ref="credit"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_invoice">

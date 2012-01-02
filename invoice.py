@@ -5,7 +5,8 @@ import base64
 import operator
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.report import Report
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
+    Button
 from trytond.backend import TableHandler, FIELDS
 from trytond.pyson import If, Eval, Bool
 from trytond.tools import reduce_ids
@@ -1167,7 +1168,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         Generate invoice report and store it in invoice_report field.
         '''
         invoice_report = Pool().get('account.invoice', type='report')
-        invoice_report.execute([invoice_id], {'id': invoice_id})
+        invoice_report.execute([invoice_id], {})
         return
 
     def _credit(self, invoice):
@@ -2061,78 +2062,43 @@ class InvoiceTax(ModelSQL, ModelView):
 InvoiceTax()
 
 
-class PrintInvoiceReportWarning(ModelView):
+class PrintInvoiceWarning(ModelView):
     'Print Invoice Report Warning'
-    _name = 'account.invoice.print_invoice_report.warning'
+    _name = 'account.invoice.print.warning'
     _description = __doc__
 
-PrintInvoiceReportWarning()
+PrintInvoiceWarning()
 
 
-class PrintInvoiceReport(Wizard):
+class PrintInvoice(Wizard):
     'Print Invoice Report'
-    _name = 'account.invoice.print_invoice_report'
-    states = {
-        'init': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_choice',
-            },
-        },
-        'warning': {
-            'result': {
-                'type': 'form',
-                'object': 'account.invoice.print_invoice_report.warning',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('print', 'Print', 'tryton-ok', True),
-                ],
-            },
-        },
-        'print': {
-            'actions': ['_print_init'],
-            'result': {
-                'type': 'print',
-                'report': 'account.invoice',
-                'state': 'print_next',
-                'get_id_from_action': True,
-            },
-        },
-        'print_next': {
-            'actions': ['_next_id'],
-            'result': {
-                'type': 'choice',
-                'next_state': '_print_next',
-            },
-        }
-    }
+    _name = 'account.invoice.print'
 
-    def _choice(self, data):
-        if len(data['ids']) > 1:
+    start = StateTransition()
+    warning = StateView('account.invoice.print.warning',
+        'account_invoice.print_warning_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account_invoice.report_invoice')
+
+    def transition_start(self, session):
+        if len(Transaction().context['active_ids']) > 1:
             return 'warning'
-        return 'print'
+        return 'print_'
 
-    def _print_init(self, data):
-        res = {}
-        if 'ids' in data['form']:
-            res['ids'] = data['form']['ids']
-        else:
-            res['ids'] = data['ids']
-        return res
+    def do_print_(self, session, action):
+        data = {}
+        data['id'] = Transaction().context['active_ids'].pop()
+        data['ids'] = [data['id']]
+        return action, data
 
-    def _next_id(self, data):
-        res = {}
-        if data['form']['ids']:
-            data['form']['ids'].pop(0)
-        res['ids'] = data['form']['ids']
-        return res
+    def transition_print_(self, session):
+        if Transaction().context['active_ids']:
+            return 'print_'
+        return 'end'
 
-    def _print_next(self, data):
-        if not data['form']['ids']:
-            return 'end'
-        return 'print'
-
-PrintInvoiceReport()
+PrintInvoice()
 
 
 class InvoiceReport(Report):
@@ -2142,11 +2108,11 @@ class InvoiceReport(Report):
         super(InvoiceReport, self).__init__()
         self._rpc['execute'] = True
 
-    def execute(self, ids, datas):
+    def execute(self, ids, data):
         invoice_obj = Pool().get('account.invoice')
 
-        res = super(InvoiceReport, self).execute(ids, datas)
-        if len(ids) > 1 or datas['id'] != ids[0]:
+        res = super(InvoiceReport, self).execute(ids, data)
+        if len(ids) > 1:
             res = (res[0], res[1], True, res[3])
         else:
             invoice = invoice_obj.browse(ids[0])
@@ -2154,13 +2120,13 @@ class InvoiceReport(Report):
                 res = (res[0], res[1], res[2], res[3] + ' - ' + invoice.number)
         return res
 
-    def _get_objects(self, ids, model, datas):
+    def _get_objects(self, ids, model, data):
         invoice_obj = Pool().get('account.invoice')
 
         with Transaction().set_context(language=False):
             return invoice_obj.browse([ids[0]])
 
-    def parse(self, report, objects, datas, localcontext):
+    def parse(self, report, objects, data, localcontext):
         user_obj = Pool().get('res.user')
         invoice_obj = Pool().get('account.invoice')
 
@@ -2172,7 +2138,7 @@ class InvoiceReport(Report):
 
         user = user_obj.browse(Transaction().user)
         localcontext['company'] = user.company
-        res = super(InvoiceReport, self).parse(report, objects, datas,
+        res = super(InvoiceReport, self).parse(report, objects, data,
                 localcontext)
         # If the invoice is open or paid and the report not saved in
         # invoice_report_cache there was an error somewhere. So we save it now
@@ -2187,9 +2153,9 @@ class InvoiceReport(Report):
 InvoiceReport()
 
 
-class PayInvoiceInit(ModelView):
-    'Pay Invoice Init'
-    _name = 'account.invoice.pay_invoice.init'
+class PayInvoiceStart(ModelView):
+    'Pay Invoice'
+    _name = 'account.invoice.pay.start'
     _description = __doc__
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
@@ -2212,12 +2178,12 @@ class PayInvoiceInit(ModelView):
             return currency.digits
         return 2
 
-PayInvoiceInit()
+PayInvoiceStart()
 
 
 class PayInvoiceAsk(ModelView):
-    'Pay Invoice Ask'
-    _name = 'account.invoice.pay_invoice.ask'
+    'Pay Invoice'
+    _name = 'account.invoice.pay.ask'
     _description = __doc__
     type = fields.Selection([
         ('writeoff', 'Write-Off'),
@@ -2271,12 +2237,7 @@ class PayInvoiceAsk(ModelView):
         states={
             'invisible': Eval('type') != 'writeoff',
             }, depends=['type'])
-    description = fields.Char('Description', size=None, readonly=True)
-    journal = fields.Many2One('account.journal', 'Journal', readonly=True,
-            domain=[('type', '=', 'cash')])
-    date = fields.Date('Date', readonly=True)
     company = fields.Many2One('company.company', 'Company', readonly=True)
-    account = fields.Many2One('account.account', 'Account', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
 
     def default_type(self):
@@ -2308,44 +2269,20 @@ PayInvoiceAsk()
 
 class PayInvoice(Wizard):
     'Pay Invoice'
-    _name = 'account.invoice.pay_invoice'
-    states = {
-        'init': {
-            'actions': ['_init'],
-            'result': {
-                'type': 'form',
-                'object': 'account.invoice.pay_invoice.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('choice', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'choice': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_choice',
-            },
-        },
-        'ask': {
-            'actions': ['_ask'],
-            'result': {
-                'type': 'form',
-                'object': 'account.invoice.pay_invoice.ask',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('pay', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'pay': {
-            'result': {
-                'type': 'action',
-                'action': '_action_pay',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.invoice.pay'
+
+    start = StateView('account.invoice.pay.start',
+        'account_invoice.pay_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'choice', 'tryton-ok', default=True),
+            ])
+    choice = StateTransition()
+    ask = StateView('account.invoice.pay.ask',
+        'account_invoice.pay_ask_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'pay', 'tryton-ok', default=True),
+            ])
+    pay = StateTransition()
 
     def __init__(self):
         super(PayInvoice, self).__init__()
@@ -2354,169 +2291,152 @@ class PayInvoice(Wizard):
                     'payment with an amount greater then the amount to pay!',
             })
 
-    def _init(self, data):
+    def default_start(self, session, fields):
         invoice_obj = Pool().get('account.invoice')
-        res = {}
-        invoice = invoice_obj.browse(data['id'])
-        res['currency'] = invoice.currency.id
-        res['currency_digits'] = invoice.currency.digits
-        res['amount'] = invoice.amount_to_pay_today or invoice.amount_to_pay
-        res['description'] = invoice.number
-        return res
+        default = {}
+        invoice = invoice_obj.browse(Transaction().context['active_id'])
+        default['currency'] = invoice.currency.id
+        default['currency_digits'] = invoice.currency.digits
+        default['amount'] = invoice.amount_to_pay_today or invoice.amount_to_pay
+        default['description'] = invoice.number
+        return default
 
-    def _choice(self, data):
+    def transition_choice(self, session):
         invoice_obj = Pool().get('account.invoice')
         currency_obj = Pool().get('currency.currency')
 
-        invoice = invoice_obj.browse(data['id'])
+        invoice = invoice_obj.browse(Transaction().context['active_id'])
 
-        with Transaction().set_context(date=data['form']['date']):
-            amount = currency_obj.compute(data['form']['currency'],
-                    data['form']['amount'], invoice.company.currency.id)
-        res = invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
-        if res[1] == Decimal('0.0') and amount <= invoice.amount_to_pay:
+        with Transaction().set_context(date=session.start.date):
+            amount = currency_obj.compute(session.start.currency.id,
+                session.start.amount, invoice.company.currency.id)
+        _, remainder = invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
+        if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
 
-    def _ask(self, data):
+    def default_ask(self, session, fields):
         pool = Pool()
         invoice_obj = pool.get('account.invoice')
         currency_obj = pool.get('currency.currency')
         line_obj = pool.get('account.move.line')
 
-        res = {}
-        invoice = invoice_obj.browse(data['id'])
-        res['lines_to_pay'] = [x.id for x in invoice.lines_to_pay
+        default = {}
+        invoice = invoice_obj.browse(Transaction().context['active_id'])
+        default['lines_to_pay'] = [x.id for x in invoice.lines_to_pay
                 if not x.reconciliation]
 
-        res['amount'] = data['form']['amount']
-        res['currency'] = data['form']['currency']
-        res['currency_digits'] = data['form']['currency_digits']
-        res['description'] = data['form']['description']
-        res['journal'] = data['form']['journal']
-        res['date'] = data['form']['date']
-        res['company'] = invoice.company.id
+        default['amount'] = session.start.amount
+        default['currency'] = session.start.currency.id
+        default['currency_digits'] = session.start.currency_digits
+        default['company'] = invoice.company.id
 
-        with Transaction().set_context(date=data['form']['date']):
-            amount = currency_obj.compute(data['form']['currency'],
-                data['form']['amount'], invoice.company.currency.id)
+        with Transaction().set_context(date=session.start.date):
+            amount = currency_obj.compute(session.start.currency.id,
+                session.start.amount, invoice.company.currency.id)
 
         if currency_obj.is_zero(invoice.company.currency, amount):
-            res['lines'] = [x.id for x in invoice.lines_to_pay]
+            default['lines'] = [x.id for x in invoice.lines_to_pay]
         else:
-            res['lines'] = invoice_obj.get_reconcile_lines_for_amount(invoice,
-                    amount)[0]
-        for line_id in res['lines'][:]:
-            if line_id not in res['lines_to_pay']:
-                res['lines'].remove(line_id)
+            default['lines'], _ = \
+                invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
+        for line_id in default['lines'][:]:
+            if line_id not in default['lines_to_pay']:
+                default['lines'].remove(line_id)
 
-        res['amount_writeoff'] = Decimal('0.0')
-        for line in line_obj.browse(res['lines']):
-            res['amount_writeoff'] += line.debit - line.credit
+        default['amount_writeoff'] = Decimal('0.0')
+        for line in line_obj.browse(default['lines']):
+            default['amount_writeoff'] += line.debit - line.credit
         for line in invoice.payment_lines:
-            res['amount_writeoff'] += line.debit - line.credit
+            default['amount_writeoff'] += line.debit - line.credit
         if invoice.type in ('in_invoice', 'out_credit_note'):
-            res['amount_writeoff'] = - res['amount_writeoff'] - amount
+            default['amount_writeoff'] = - default['amount_writeoff'] - amount
         else:
-            res['amount_writeoff'] = res['amount_writeoff'] - amount
+            default['amount_writeoff'] = default['amount_writeoff'] - amount
 
-        res['currency_writeoff'] = invoice.company.currency.id
-        res['currency_digits_writeoff'] = invoice.company.currency.digits
-        res['invoice'] = invoice.id
-        res['payment_lines'] = [x.id for x in invoice.payment_lines
+        default['currency_writeoff'] = invoice.company.currency.id
+        default['currency_digits_writeoff'] = invoice.company.currency.digits
+        default['invoice'] = invoice.id
+        default['payment_lines'] = [x.id for x in invoice.payment_lines
                 if not x.reconciliation]
 
         if amount > invoice.amount_to_pay \
                 or currency_obj.is_zero(invoice.company.currency, amount):
-            res['type'] = 'writeoff'
-        return res
+            default['type'] = 'writeoff'
+        return default
 
-    def _action_pay(self, data):
+    def transition_pay(self, session):
         pool = Pool()
         invoice_obj = pool.get('account.invoice')
         currency_obj = pool.get('currency.currency')
         move_line_obj = pool.get('account.move.line')
 
-        invoice = invoice_obj.browse(data['id'])
+        invoice = invoice_obj.browse(Transaction().context['active_id'])
 
-        with Transaction().set_context(date=data['form']['date']):
-            amount = currency_obj.compute(data['form']['currency'],
-                    data['form']['amount'], invoice.company.currency.id)
+        with Transaction().set_context(date=session.start.date):
+            amount = currency_obj.compute(session.start.currency.id,
+                session.start.amount, invoice.company.currency.id)
 
-        reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(invoice,
-                amount)
+        reconcile_lines, remainder = \
+            invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
 
         amount_second_currency = False
         second_currency = False
-        if data['form']['currency'] != invoice.company.currency.id:
-            amount_second_currency = data['form']['amount']
-            second_currency = data['form']['currency']
+        if session.start.currency.id != invoice.company.currency.id:
+            amount_second_currency = session.start.amount
+            second_currency = session.start.currency
 
         if amount > invoice.amount_to_pay and \
-                data['form'].get('type') != 'writeoff':
+                session.ask.type != 'writeoff':
             self.raise_user_error('amount_greater_amount_to_pay')
 
         line_id = False
         if not currency_obj.is_zero(invoice.company.currency, amount):
-            line_id = invoice_obj.pay_invoice(data['id'], amount,
-                    data['form']['journal'], data['form']['date'],
-                    data['form']['description'], amount_second_currency,
-                    second_currency)
+            line_id = invoice_obj.pay_invoice(invoice.id, amount,
+                session.start.journal.id, session.start.date,
+                session.start.description, amount_second_currency,
+                second_currency)
 
-        if reconcile_lines[1] != Decimal('0.0'):
-            if data['form'].get('type') == 'writeoff':
-                line_ids = data['form']['lines'][0][1] + \
-                        [x.id for x in invoice.payment_lines
-                                if not x.reconciliation]
+        if remainder != Decimal('0.0'):
+            if session.ask.type == 'writeoff':
+                line_ids = [x.id for x in session.ask.lines] + \
+                    [x.id for x in invoice.payment_lines
+                        if not x.reconciliation]
                 if line_ids:
                     move_line_obj.reconcile(line_ids,
-                            journal_id=data['form']['journal_writeoff'],
-                            date=data['form']['date'],
-                            account_id=data['form']['account_writeoff'])
+                        journal_id=session.ask.journal_writeoff,
+                        date=session.start.date,
+                        account_id=session.ask.account_writeoff)
         else:
-            line_ids = reconcile_lines[0]
             if line_id:
-                line_ids += [line_id]
-            if line_ids:
-                move_line_obj.reconcile(line_ids)
-        return {}
+                reconcile_lines += [line_id]
+            if reconcile_lines:
+                move_line_obj.reconcile(reconcile_lines)
+        return 'end'
 
 PayInvoice()
 
 
-class CreditInvoiceInit(ModelView):
+class CreditInvoiceStart(ModelView):
     'Credit Invoice Init'
-    _name = 'account.invoice.credit_invoice.init'
+    _name = 'account.invoice.credit.start'
     _description = __doc__
     with_refund = fields.Boolean('With Refund', help='If true, ' \
             'the current invoice(s) will be paid.')
 
-CreditInvoiceInit()
+CreditInvoiceStart()
 
 
 class CreditInvoice(Wizard):
     'Credit Invoice'
-    _name = 'account.invoice.credit_invoice'
-    states = {
-        'init': {
-            'actions': ['_init'],
-            'result': {
-                'type': 'form',
-                'object': 'account.invoice.credit_invoice.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('credit', 'Credit', 'tryton-ok', True),
-                ],
-            }
-        },
-        'credit': {
-            'result': {
-                'type': 'action',
-                'action': '_action_credit',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.invoice.credit'
+
+    start = StateView('account.invoice.credit.start',
+        'account_invoice.credit_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Credit', 'credit', 'tryton-ok', default=True),
+            ])
+    credit = StateAction('account_invoice.act_invoice_form')
 
     def __init__(self):
         super(CreditInvoice, self).__init__()
@@ -2527,40 +2447,36 @@ class CreditInvoice(Wizard):
                     'an invoice with payments!',
             })
 
-    def _init(self, data):
+    def default_start(self, session, fields):
         invoice_obj = Pool().get('account.invoice')
-        res = {
+        default = {
             'with_refund': True,
         }
-        for invoice in invoice_obj.browse(data['ids']):
+        for invoice in invoice_obj.browse(Transaction().context['active_ids']):
             if invoice.state != 'open' or invoice.payment_lines:
-                res['with_refund'] = False
+                default['with_refund'] = False
                 break
-        return res
+        return default
 
-    def _action_credit(self, data):
+    def do_credit(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         invoice_obj = pool.get('account.invoice')
 
-        refund = data['form']['with_refund']
+        refund = session.start.with_refund
+        invoice_ids = Transaction().context['active_ids']
 
         if refund:
-            for invoice in invoice_obj.browse(data['ids']):
+            for invoice in invoice_obj.browse(invoice_ids):
                 if invoice.state != 'open':
                     self.raise_user_error('refund_non_open')
                 if invoice.payment_lines:
                     self.raise_user_error('refund_with_payement')
 
-        invoice_ids = invoice_obj.credit(data['ids'], refund=refund)
+        invoice_ids = invoice_obj.credit(invoice_ids, refund=refund)
 
-        act_window_id = model_data_obj.get_id('account_invoice',
-                'act_invoice_form')
-        res = act_window_obj.read(act_window_id)
-        res['res_id'] = invoice_ids
+        data = {'res_id': invoice_ids}
         if len(invoice_ids) == 1:
-            res['views'].reverse()
-        return res
+            action['views'].reverse()
+        return action, data
 
 CreditInvoice()
