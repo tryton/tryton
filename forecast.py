@@ -4,7 +4,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 import itertools
 from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
@@ -439,7 +439,7 @@ ForecastLineMove()
 
 
 class ForecastCompleteAsk(ModelView):
-    'Forecast Complete Ask'
+    'Complete Forecast'
     _name = 'stock.forecast.complete.ask'
     _description = __doc__
     from_date = fields.Date('From Date', required=True)
@@ -449,7 +449,7 @@ ForecastCompleteAsk()
 
 
 class ForecastCompleteChoose(ModelView):
-    'Forecast Complete Choose'
+    'Complete Forecast'
     _name = 'stock.forecast.complete.choose'
     _description = __doc__
     products = fields.Many2Many('product.product', None, None, 'Products')
@@ -460,41 +460,20 @@ ForecastCompleteChoose()
 class ForecastComplete(Wizard):
     'Complete Forecast'
     _name = 'stock.forecast.complete'
-    states = {
-        'init': {
-            'actions': ['_set_default_dates'],
-            'result': {
-                'type': 'form',
-                'object': 'stock.forecast.complete.ask',
-                'state': [
-                    ('end', 'cancel', 'tryton-cancel'),
-                    ('choose', 'Choose products', 'tryton-go-next'),
-                    ('complete', 'Complete', 'tryton-ok', True),
-                ],
-            },
-        },
-
-        'choose': {
-            'actions': ['_set_default_products'],
-            'result': {
-                'type': 'form',
-                'object': 'stock.forecast.complete.choose',
-                'state': [
-                    ('end', 'cancel', 'tryton-cancel'),
-                    ('init', 'Choose Dates', 'tryton-go-previous'),
-                    ('complete', 'Complete', 'tryton-ok', True),
-                ],
-            },
-        },
-
-        'complete': {
-            'result': {
-                'type': 'action',
-                'action': '_complete',
-                'state': 'end',
-                },
-            },
-        }
+    start_state = 'ask'
+    ask = StateView('stock.forecast.complete.ask',
+        'stock_forecast.forecast_comlete_ask_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Choose Products', 'choose', 'tryton-go-next'),
+            Button('Complete', 'complete', 'tryton-ok', default=True),
+            ])
+    choose = StateView('stock.forecast.complete.choose',
+        'stock_forecast.forecast_comlete_choose_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Choose Dates', 'ask', 'tryton-go-previous'),
+            Button('Complete', 'complete', 'tryton-ok', default=True),
+            ])
+    complete = StateTransition()
 
     def __init__(self):
         super(ForecastComplete, self).__init__()
@@ -503,65 +482,66 @@ class ForecastComplete(Wizard):
             })
 
 
-    def _set_default_dates(self, data):
+    def default_ask(self, session, fields):
         """
         Forecast dates shifted by one year.
         """
         forecast_obj = Pool().get('stock.forecast')
-        forecast = forecast_obj.browse(data['id'])
+        forecast = forecast_obj.browse(Transaction().context['active_id'])
 
         res = {}
         for field in ("to_date", "from_date"):
             res[field] = forecast[field] - relativedelta(years=1)
         return res
 
-    def _get_product_quantity(self, data):
+    def _get_product_quantity(self, session):
         forecast_obj = Pool().get('stock.forecast')
         product_obj = Pool().get('product.product')
-        forecast = forecast_obj.browse(data['id'])
-        if data['form']['from_date'] > data['form']['to_date']:
+        forecast = forecast_obj.browse(Transaction().context['active_id'])
+        if session.ask.from_date > session.ask.to_date:
             self.raise_user_error('from_to_date')
 
         with Transaction().set_context(
                 stock_destination=[forecast.destination.id],
-                stock_date_start=data['form']['from_date'],
-                stock_date_end=data['form']['to_date']):
+                stock_date_start=session.ask.from_date,
+                stock_date_end=session.ask.to_date):
             return product_obj.products_by_location([forecast.warehouse.id],
                     with_childs=True, skip_zero=False)
 
-    def _set_default_products(self, data):
+    def default_choose(self, session, fields):
         """
         Collect products for which there is an outgoing stream between
         the given location and the destination.
         """
-        pbl = self._get_product_quantity(data)
+        if session.choose.products:
+            return {'products': [x.id for x in session.choose.products]}
+        pbl = self._get_product_quantity(session)
         products = []
         for (_, product), qty in pbl.iteritems():
             if qty < 0:
                 products.append(product)
-        data['form'].update({'products': products})
-        return data['form']
+        return {'products': products}
 
-    def _complete(self, data):
+    def transition_complete(self, session):
         pool = Pool()
         forecast_line_obj = pool.get('stock.forecast.line')
         product_obj = pool.get('product.product')
 
         prod2line = {}
         forecast_line_ids = forecast_line_obj.search([
-            ('forecast', '=', data['id']),
-            ])
+                ('forecast', '=', Transaction().context['active_id']),
+                ])
         for forecast_line in forecast_line_obj.browse(forecast_line_ids):
             prod2line[forecast_line.product.id] = forecast_line.id
 
-        pbl = self._get_product_quantity(data)
+        pbl = self._get_product_quantity(session)
         product_ids = [x[1] for x in pbl]
         prod2uom = {}
         for product in product_obj.browse(product_ids):
             prod2uom[product.id] = product.default_uom.id
 
-        if data['form'].get('products'):
-            products = data['form']['products'][0][1]
+        if session.choose.products:
+            products = [x.id for x in session.choose.products]
         else:
             products = None
 
@@ -573,20 +553,20 @@ class ForecastComplete(Wizard):
                 continue
             if product in prod2line:
                 forecast_line_obj.write(prod2line[product],{
-                    'product': product,
-                    'quantity': -qty,
-                    'uom': prod2uom[product],
-                    'forecast': data['id'],
-                    'minimal_quantity': min(1, -qty),
-                    })
+                        'product': product,
+                        'quantity': -qty,
+                        'uom': prod2uom[product],
+                        'forecast': Transaction().context['active_id'],
+                        'minimal_quantity': min(1, -qty),
+                        })
             else:
                 forecast_line_obj.create({
-                    'product': product,
-                    'quantity': -qty,
-                    'uom': prod2uom[product],
-                    'forecast': data['id'],
-                    'minimal_quantity': min(1, -qty),
-                    })
-        return {}
+                        'product': product,
+                        'quantity': -qty,
+                        'uom': prod2uom[product],
+                        'forecast': Transaction().context['active_id'],
+                        'minimal_quantity': min(1, -qty),
+                        })
+        return 'end'
 
 ForecastComplete()
