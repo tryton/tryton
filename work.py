@@ -4,7 +4,7 @@ import datetime
 from collections import deque, defaultdict
 from heapq import heappop, heappush
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateTransition
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -723,20 +723,12 @@ PredecessorSuccessor()
 class Leveling(Wizard):
     'Tasks Leveling'
     _name = 'project_plan.work.leveling'
+    start_state = 'leveling'
+    leveling = StateTransition()
 
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_leveling',
-                'state': 'end',
-                },
-            },
-        }
-
-    def _leveling(self, data):
+    def transition_leveling(self, session):
         work_obj = Pool().get('project.work')
-        work_obj.create_leveling(data['id'])
-        return {}
+        work_obj.create_leveling(Transaction().context['active_id'])
+        return 'end'
 
 Leveling()
