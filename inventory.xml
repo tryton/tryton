@@ -21,8 +21,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="stock.group_stock"/>
         </record>
 
-        <record model="ir.ui.view" id="inventory_create_init_view_form">
-            <field name="model">stock.inventory.create.init</field>
+        <record model="ir.ui.view" id="inventory_create_start_view_form">
+            <field name="model">stock.inventory.create.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[

@@ -1,14 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
-class CreateInventoriesInit(ModelView):
-    'Create Inventories Init'
-    _name = 'stock.inventory.create.init'
+class CreateInventoriesStart(ModelView):
+    'Create Inventories'
+    _name = 'stock.inventory.create.start'
     _description = __doc__
 
     date = fields.Date('Date', required=True)
@@ -29,54 +29,38 @@ class CreateInventoriesInit(ModelView):
     def default_company(self):
         return Transaction().context.get('company') or False
 
-CreateInventoriesInit()
+CreateInventoriesStart()
 
 
 class CreateInventories(Wizard):
     'Create Inventories'
     _name = 'stock.inventory.create'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'stock.inventory.create.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('create', 'Create', 'tryton-ok', True),
-                ],
-            },
-        },
-        'create': {
-            'result': {
-                'type': 'action',
-                'action': '_action_create_inventory',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _action_create_inventory(self, data):
+    start = StateView('stock.inventory.create.start',
+        'stock_inventory_location.inventory_create_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Create', 'create_', 'tryton-ok', default=True),
+            ])
+    create_ = StateAction('stock.act_inventory_form')
+
+    def do_create_(self, session, action):
         pool = Pool()
         inventory_obj = pool.get('stock.inventory')
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
 
         inventory_ids = []
-        location_ids = data['form']['locations'][0][1] or []
+        location_ids = [x.id for x in session.start.locations]
 
         for location_id in location_ids:
             inventory_ids.append(inventory_obj.create({
-                'location': location_id,
-                'date': data['form']['date'],
-                'lost_found': data['form']['lost_found'],
-                'company': data['form']['company'],
-                }))
+                        'location': location_id,
+                        'date': session.start.date,
+                        'lost_found': session.start.lost_found.id,
+                        'company': session.start.company.id,
+                        }))
 
         inventory_obj.complete_lines(inventory_ids)
 
-        act_window_id = model_data_obj.get_id('stock', 'act_inventory_form')
-        res = act_window_obj.read(act_window_id)
-        res['res_id'] = inventory_ids
-        return res
+        data = {'res_id': inventory_ids}
+        return action, data
 
 CreateInventories()
