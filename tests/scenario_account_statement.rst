@@ -26,7 +26,7 @@ Install account_statement and account_invoice::
     ...     ('name', 'in', ('account_statement', 'account_invoice')),
     ... ])
     >>> Module.button_install([x.id for x in modules], config.context)
-    >>> Wizard('ir.module.module.install_upgrade').execute('start')
+    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
@@ -88,11 +88,11 @@ Create chart of accounts::
     >>> Account = Model.get('account.account')
     >>> AccountJournal = Model.get('account.journal')
     >>> account_template, = AccountTemplate.find([('parent', '=', False)])
-    >>> create_chart_account = Wizard('account.account.create_chart_account')
-    >>> create_chart_account.execute('account')
-    >>> create_chart_account.form.account_template = account_template
-    >>> create_chart_account.form.company = company
-    >>> create_chart_account.execute('create_account')
+    >>> create_chart = Wizard('account.create_chart')
+    >>> create_chart.execute('account')
+    >>> create_chart.form.account_template = account_template
+    >>> create_chart.form.company = company
+    >>> create_chart.execute('create_account')
     >>> receivable, = Account.find([
     ...     ('kind', '=', 'receivable'),
     ...     ('company', '=', company.id),
@@ -113,9 +113,9 @@ Create chart of accounts::
     ...     ('name', '=', 'Main Cash'),
     ...     ('company', '=', company.id),
     ... ])
-    >>> create_chart_account.form.account_receivable = receivable
-    >>> create_chart_account.form.account_payable = payable
-    >>> create_chart_account.execute('create_properties')
+    >>> create_chart.form.account_receivable = receivable
+    >>> create_chart.form.account_payable = payable
+    >>> create_chart.execute('create_properties')
 
 Create parties::
 
