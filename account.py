@@ -3,7 +3,7 @@
 from decimal import Decimal
 import copy
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -295,50 +295,36 @@ class Account(ModelSQL, ModelView):
 Account()
 
 
-class OpenChartAccountInit(ModelView):
-    'Open Chart Account Init'
-    _name = 'analytic_account.account.open_chart_account.init'
+class OpenChartAccountStart(ModelView):
+    'Open Chart of Accounts'
+    _name = 'analytic_account.open_chart.start'
     _description = __doc__
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
 
-OpenChartAccountInit()
+OpenChartAccountStart()
 
 
 class OpenChartAccount(Wizard):
-    'Open Chart Of Account'
-    _name = 'analytic_account.account.open_chart_account'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'analytic_account.account.open_chart_account.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_chart',
-                'state': 'end',
-            },
-        },
-    }
+    'Open Chart of Accounts'
+    _name = 'analytic_account.open_chart'
 
-    def _action_open_chart(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('analytic_account',
-                'act_account_tree2')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'start_date': data['form']['start_date'],
-            'end_date': data['form']['end_date'],
-            })
-        return res
+    start = StateView('analytic_account.open_chart.start',
+        'analytic_account.open_chart_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('analytic_account.act_account_tree2')
+
+    def do_open_(self, session, action):
+        action['pyson_context'] = PYSONEncoder().encode({
+                'start_date': session.start.start_date,
+                'end_date': session.start.end_date,
+                })
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenChartAccount()
 

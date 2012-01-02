@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import time
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateAction
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
@@ -131,36 +131,25 @@ MoveLine()
 class OpenAccount(Wizard):
     'Open Account'
     _name = 'analytic_account.line.open_account'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_account',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'open_'
+    open_ = StateAction('analytic_account.act_line_form')
 
-    def _action_open_account(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-
-        act_window_id = model_data_obj.get_id('analytic_account',
-                'act_line_form')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_domain'] = [
-            ('account', '=', data['id']),
-        ]
-
+    def do_open_(self, session, action):
+        action['pyson_domain'] = [
+            ('account', '=', Transaction().context['active_id']),
+            ]
         if Transaction().context.get('start_date'):
-            res['pyson_domain'].append(
-                    ('date', '>=', Transaction().context['start_date'])
-                    )
+            action['pyson_domain'].append(
+                ('date', '>=', Transaction().context['start_date'])
+                )
         if Transaction().context.get('end_date'):
-            res['pyson_domain'].append(
-                    ('date', '<=', Transaction().context['end_date'])
-                    )
-        res['pyson_domain'] = PYSONEncoder().encode(res['pyson_domain'])
-        return res
+            action['pyson_domain'].append(
+                ('date', '<=', Transaction().context['end_date'])
+                )
+        action['pyson_domain'] = PYSONEncoder().encode(action['pyson_domain'])
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenAccount()
