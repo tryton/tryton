@@ -5,7 +5,8 @@ import operator
 from itertools import groupby
 from functools import partial
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
+    Button
 from trytond.pyson import If, In, Eval, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -427,51 +428,32 @@ class PurchaseRequest(ModelSQL, ModelView):
 PurchaseRequest()
 
 
-class CreatePurchaseRequestInit(ModelView):
-    'Create Purchase Request Init'
-    _name = 'purchase.request.create_purchase_request.init'
+class CreatePurchaseRequestStart(ModelView):
+    'Create Purchase Request'
+    _name = 'purchase.request.create.start'
     _description = __doc__
 
-CreatePurchaseRequestInit()
+CreatePurchaseRequestStart()
 
 
 class CreatePurchaseRequest(Wizard):
     'Create Purchase Request'
-    _name = 'purchase.request.create_purchase_request'
+    _name = 'purchase.request.create'
 
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'purchase.request.create_purchase_request.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('create', 'Create', 'tryton-ok', True),
-                    ],
-                },
-            },
-        'create': {
-            'actions': ['_create_purchase_request'],
-            'result': {
-                'type': 'action',
-                'action': '_open',
-                'state': 'end',
-                },
-            },
-        }
+    start = StateView('purchase.request.create.start',
+        'stock_supply.purchase_request_create_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Create', 'create_', 'tryton-ok', default=True),
+            ])
+    create_ = StateAction('stock_supply.act_purchase_request_form_draft')
 
-    def _create_purchase_request(self, data):
+    def do_create_(self, sesion, action):
         purchase_request_obj = Pool().get('purchase.request')
         purchase_request_obj.generate_requests()
-        return {}
+        return action, {}
 
-    def _open(self, data):
-        pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('stock_supply',
-            'act_purchase_request_form_draft')
-        return act_window_obj.read(act_window_id)
+    def transition_create_(self, session):
+        return 'end'
 
 CreatePurchaseRequest()
 
@@ -501,41 +483,17 @@ class CreatePurchase(Wizard):
     'Create Purchase'
     _name = 'purchase.request.create_purchase'
 
-    states = {
-
-        'init': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_create_purchase',
-                },
-            },
-
-
-        'ask_user_party': {
-            'actions': ['_set_default_party'],
-            'result': {
-                'type': 'form',
-                'object': 'purchase.request.create_purchase.ask_party',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('init', 'Continue', 'tryton-go-next', True),
-                    ],
-                },
-            },
-
-        'ask_user_term': {
-            'actions': ['_set_default_term'],
-            'result': {
-                'type': 'form',
-                'object': 'purchase.request.create_purchase.ask_term',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('init', 'Continue', 'tryton-go-next', True),
-                    ],
-                },
-            },
-
-        }
+    start = StateTransition()
+    ask_party = StateView('purchase.request.create_purchase.ask_party',
+        'stock_supply.purchase_request_create_purchase_ask_party', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Continue', 'start', 'tryton-go-next', default=True),
+            ])
+    ask_term = StateView('purchase.request.create_purchase.ask_term',
+        'stock_supply.purchase_request_create_purchase_ask_term_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Continue', 'start', 'tryton-go-next', default=True),
+            ])
 
     def __init__(self):
         super(CreatePurchase, self).__init__()
@@ -544,29 +502,37 @@ class CreatePurchase(Wizard):
             'please_update': 'This price is necessary for creating purchase.'
             })
 
-    def _set_default_party(self, data):
-
+    def default_ask_party(self, session, fields):
         request_obj = Pool().get('purchase.request')
-        requests = request_obj.browse(data['ids'])
+        requests = request_obj.browse(Transaction().context['active_ids'])
         for request in requests:
             if request.purchase_line:
                 continue
             if not request.party:
-                return {'product': request.product.id,'company': request.company.id}
+                return {
+                    'product': request.product.id,
+                    'company': request.company.id,
+                    }
+        return {
+            'product': request.product.id,
+            'company': request.company.id,
+            }
 
-        return {'product': request.product.id,'company': request.company.id}
-
-    def _set_default_term(self, data):
-
+    def default_ask_term(self, session, fields):
         request_obj = Pool().get('purchase.request')
-        requests = request_obj.browse(data['ids'])
+        requests = request_obj.browse(Transaction().context['active_ids'])
         for request in requests:
             if (not request.party) or request.purchase_line:
                 continue
             if not request.party.supplier_payment_term:
-                return {'party': request.party.id,'company': request.company.id}
-
-        return {'party': request.party.id,'company': request.company.id}
+                return {
+                    'party': request.party.id,
+                    'company': request.company.id,
+                    }
+        return {
+            'party': request.party.id,
+            'company': request.company.id,
+            }
 
     def _group_purchase_key(self, requests, request):
         '''
@@ -589,7 +555,7 @@ class CreatePurchase(Wizard):
                     type='invoice')),
             )
 
-    def _create_purchase(self, data):
+    def transition_start(self, session):
         pool = Pool()
         request_obj = pool.get('purchase.request')
         party_obj = pool.get('party.party')
@@ -597,38 +563,46 @@ class CreatePurchase(Wizard):
         line_obj = pool.get('purchase.line')
         date_obj = pool.get('ir.date')
 
-        form = data['form']
-        if form.get('product') and form.get('party') and \
-                form.get('company'):
-            req_ids = request_obj.search([
-                ('id', 'in', data['ids']),
-                ('party', '=', False),
-                ])
-            if req_ids:
-                request_obj.write(req_ids, {'party': form['party']})
+        request_ids = Transaction().context['active_ids']
 
-        elif form.get('payment_term') and form.get('party') and \
-                form.get('company'):
-            with Transaction().set_context(company=form['company']):
-                party_obj.write(form['party'],{
-                    'supplier_payment_term': form['payment_term']
-                    })
+        if (session.ask_party.product
+                and session.ask_party.party
+                and session.ask_party.company):
+            req_ids = request_obj.search([
+                    ('id', 'in', request_ids),
+                    ('party', '=', False),
+                    ])
+            if req_ids:
+                request_obj.write(req_ids, {'party': session.ask_party.id})
+            session.ask_party.product = False
+            session.ask_party.party = False
+            session.ask_party.company = False
+        elif (session.ask_term.payment_term
+                and session.ask_term.party
+                and session.ask_term.company):
+            with Transaction().set_context(company=session.ask_term.company.id):
+                party_obj.write(session.ask_term.party.id, {
+                        'supplier_payment_term': \
+                            session.ask_term.payment_term.id,
+                        })
+            session.ask_term.payment_term = False
+            session.ask_term.party = False
+            session.ask_term.company = False
 
         req_ids = request_obj.search([
-            ('id', 'in', data['ids']),
-            ('purchase_line', '=', False),
-            ('party', '=', False),
-            ])
+                ('id', 'in', request_ids),
+                ('purchase_line', '=', False),
+                ('party', '=', False),
+                ])
         if req_ids:
-            return 'ask_user_party'
+            return 'ask_party'
 
         today = date_obj.today()
-        requests = request_obj.browse(data['ids'])
-        purchases = {}
+        requests = request_obj.browse(request_ids)
 
         requests = [r for r in requests if not r.purchase_line]
         if any(r for r in requests if not r.party.supplier_payment_term):
-            return 'ask_user_term'
+            return 'ask_term'
 
         keyfunc = partial(self._group_purchase_key, requests)
         requests = sorted(requests, key=keyfunc)

@@ -112,13 +112,13 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_purchase_request_form" sequence="20"
             action="act_purchase_request_form_draft" id="menu_purchase_request_form_draft"/>
 
-        <record model="ir.action.wizard" id="act_purchase_request_create_purchase_request">
+        <record model="ir.action.wizard" id="act_purchase_request_create">
             <field name="name">Create Purchase Requests</field>
-            <field name="wiz_name">purchase.request.create_purchase_request</field>
+            <field name="wiz_name">purchase.request.create</field>
         </record>
 
-        <record model="ir.ui.view" id="create_purchase_request_init_view_form">
-            <field name="model">purchase.request.create_purchase_request.init</field>
+        <record model="ir.ui.view" id="purchase_request_create_start_view_form">
+            <field name="model">purchase.request.create.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -133,10 +133,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <menuitem parent="menu_purchase_request_form" sequence="10"
-            action="act_purchase_request_create_purchase_request"
-            id="menu_create_purchase_request"/>
+            action="act_purchase_request_create"
+            id="menu_purchase_request_create"/>
 
-        <record model="ir.ui.view" id="purchase_request_create_purchase_ask_view_form">
+        <record model="ir.ui.view" id="purchase_request_create_purchase_ask_term_view_form">
             <field name="model">purchase.request.create_purchase.ask_term</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
