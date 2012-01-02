@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import copy
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.report import Report
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -253,52 +253,48 @@ class SequenceStrict(Sequence):
 SequenceStrict()
 
 
-class CompanyConfigInit(ModelView):
-    'Company Config Init'
-    _name = 'company.company.config.init'
+class CompanyConfigStart(ModelView):
+    'Company Config'
+    _name = 'company.company.config.start'
     _description = __doc__
 
-CompanyConfigInit()
+CompanyConfigStart()
 
 
 class CompanyConfig(Wizard):
-    'Configure companies'
+    'Configure Company'
     _name = 'company.company.config'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'company.company.config.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('company', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'company': {
-            'result': {
-                'type': 'form',
-                'object': 'company.company',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('add', 'Add', 'tryton-ok', True),
-                ],
-            },
-        },
-        'add': {
-            'result': {
-                'type': 'action',
-                'action': '_add',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _add(self, data):
+    start = StateView('company.company.config.start',
+        'company.company_config_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'company', 'tryton-ok', True),
+            ])
+    company = StateView('company.company',
+        'company.company_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Add', 'add', 'tryton-ok', True),
+            ])
+    add = StateTransition()
+
+    def transition_add(self, session):
         company_obj = Pool().get('company.company')
         user_obj = Pool().get('res.user')
 
-        company_id = company_obj.create(data['form'])
+        values = session.data['company'].copy()
+        for fname in values.keys():
+            if fname in ('id', 'party'):
+                del values[fname]
+                continue
+            if fname in company_obj._columns:
+                field = company_obj._columns[fname]
+            else:
+                field = company_obj._inherit_fields[fname][2]
+            if field._type == 'one2many':
+                values[fname] = [('create', v) for v in values[fname]]
+            elif field._type == 'many2many':
+                values[fname] = [('set', values[fname])]
+        company_id = company_obj.create(values)
         user_ids = user_obj.search([
             ('main_company', '=', False),
             ])
@@ -306,7 +302,7 @@ class CompanyConfig(Wizard):
             'main_company': company_id,
             'company': company_id,
             })
-        return {}
+        return 'end'
 
 CompanyConfig()
 

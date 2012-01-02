@@ -286,8 +286,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
-        <record model="ir.ui.view" id="company_config_init_view_form">
-            <field name="model">company.company.config.init</field>
+        <record model="ir.ui.view" id="company_config_start_view_form">
+            <field name="model">company.company.config.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -300,9 +300,15 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.action.wizard" id="act_company_config">
+            <field name="name">Configure Company</field>
+            <field name="wiz_name">company.company.config</field>
+        </record>
+
         <record model="ir.module.module.config_wizard.item"
             id="config_wizard_item_company">
-            <field name="name">company.company.config</field>
+            <field name="action" ref="act_company_config"/>
         </record>
 
         <record model="ir.ui.view" id="employee_view_form">
