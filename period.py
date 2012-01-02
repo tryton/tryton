@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, OPERATORS
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateTransition
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -254,48 +254,38 @@ class Period(ModelSQL, ModelView):
             ])
         journal_period_obj.close(journal_period_ids)
 
+    def open_(self, ids):
+        "Open Journal"
+        self.write(ids, {
+                'state': 'open',
+                })
+
 Period()
 
 
 class ClosePeriod(Wizard):
     'Close Period'
-    _name = 'account.period.close_period'
-    states = {
-        'init': {
-            'actions': ['_close'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.period.close'
+    start_state = 'close'
+    close = StateTransition()
 
-    def _close(self, data):
+    def transition_close(self, session):
         period_obj = Pool().get('account.period')
-        period_obj.close(data['ids'])
-        return {}
+        period_obj.close(Transaction().context['active_ids'])
+        return 'end'
 
 ClosePeriod()
 
 
 class ReOpenPeriod(Wizard):
     'Re-Open Period'
-    _name = 'account.period.reopen_period'
-    states = {
-        'init': {
-            'actions': ['_reopen'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.period.reopen'
+    start_state = 'reopen'
+    reopen = StateTransition()
 
-    def _reopen(self, data):
+    def transition_reopen(self, session):
         period_obj = Pool().get('account.period')
-        period_obj.write(data['ids'], {
-            'state': 'open',
-            })
-        return {}
+        period_obj.open_(Transaction().context['active_ids'])
+        return 'end'
 
 ReOpenPeriod()

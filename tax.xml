@@ -245,12 +245,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tax_code_view_tree2"/>
             <field name="act_window" ref="act_tax_code_tree2"/>
         </record>
-        <record model="ir.ui.view" id="open_chart_code_init">
-            <field name="model">account.tax.open_chart_code.init</field>
+        <record model="ir.ui.view" id="tax_code_open_chart_start_view_form">
+            <field name="model">account.tax.code.open_chart.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Open Chart Of Tax Codes" col="2">
+                <form string="Open Chart of Tax Codes" col="2">
                     <label name="method"/>
                     <field name="method"/>
                     <label name="fiscalyear"/>
@@ -260,12 +260,12 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.wizard" id="act_open_chart_code">
+        <record model="ir.action.wizard" id="act_code_tax_open_chart">
             <field name="name">Open Chart of Tax Codes</field>
-            <field name="wiz_name">account.tax.open_chart_code</field>
+            <field name="wiz_name">account.tax.code.open_chart</field>
         </record>
-        <menuitem parent="menu_charts" action="act_open_chart_code"
-            icon="tryton-tree" id="menu_open_chart_code"/>
+        <menuitem parent="menu_charts" action="act_code_tax_open_chart"
+            icon="tryton-tree" id="menu_code_tax_open_chart"/>
 
         <record model="ir.model.access" id="access_tax_code">
             <field name="model" search="[('model', '=', 'account.tax.code')]"/>

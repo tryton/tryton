@@ -346,26 +346,26 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_entries" action="act_journal_period_tree2"
             id="menu_journal_period_tree2"/>
 
-        <record model="ir.action.wizard" id="act_close_journal_period">
+        <record model="ir.action.wizard" id="act_journal_period_close">
             <field name="name">Close Journals - Periods</field>
-            <field name="wiz_name">account.journal.close_period</field>
+            <field name="wiz_name">account.journal.period.close</field>
             <field name="model">account.journal.period</field>
         </record>
-        <record model="ir.action.keyword" id="act_close_journal_period_keyword">
+        <record model="ir.action.keyword" id="act_journal_period_close_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.journal.period,-1</field>
-            <field name="action" ref="act_close_journal_period"/>
+            <field name="action" ref="act_journal_period_close"/>
         </record>
 
-        <record model="ir.action.wizard" id="act_reopen_journal_period">
+        <record model="ir.action.wizard" id="act_journal_period_reopen">
             <field name="name">Re-Open Journals - Periods</field>
-            <field name="wiz_name">account.journal.reopen_period</field>
+            <field name="wiz_name">account.journal.period.reopen</field>
             <field name="model">account.journal.period</field>
         </record>
-        <record model="ir.action.keyword" id="act_reopen_journal_period_keyword">
+        <record model="ir.action.keyword" id="act_journal_period_reopen_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.journal.period,-1</field>
-            <field name="action" ref="act_reopen_journal_period"/>
+            <field name="action" ref="act_journal_period_reopen"/>
         </record>
 
         <record model="ir.action.act_window" id="act_journal_period_form">

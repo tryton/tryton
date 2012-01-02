@@ -9,7 +9,8 @@ except ImportError:
     hashlib = None
     import md5
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
+    Button
 from trytond.report import Report
 from trytond.backend import TableHandler, FIELDS
 from trytond.pyson import Eval, PYSONEncoder
@@ -1324,89 +1325,79 @@ OpenJournalAsk()
 class OpenJournal(Wizard):
     'Open Journal'
     _name = 'account.move.open_journal'
-    states = {
-        'init': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_next',
-            },
-        },
-        'ask': {
-            'result': {
-                'type': 'form',
-                'object': 'account.move.open_journal.ask',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_journal',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _next(self, data):
-        if data.get('model', '') == 'account.journal.period' \
-                and data.get('id'):
-            return 'open'
+    start = StateTransition()
+    ask = StateView('account.move.open_journal.ask',
+        'account.open_journal_ask_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_move_line_form')
+
+    def transition_start(self, session):
+        if (Transaction().context.get('active_model', '') == 'account.journal.period'
+                and Transaction().context.get('active_id')):
+            return 'open_'
         return 'ask'
 
-    def _get_journal_period(self, data):
+    def default_ask(self, session, fields):
         journal_period_obj = Pool().get('account.journal.period')
-        if data.get('model', '') == 'account.journal.period' \
-                and data.get('id'):
-            journal_period = journal_period_obj.browse(data['id'])
+        if (Transaction().context.get('active_model', '') ==
+                'account.journal.period'
+                and Transaction().context.get('active_id')):
+            journal_period = \
+                journal_period_obj.browse(Transaction().context['active_id'])
             return {
                 'journal': journal_period.journal.id,
                 'period': journal_period.period.id,
             }
         return {}
 
-    def _action_open_journal(self, data):
+    def do_open_(self, session, action):
         pool = Pool()
         journal_period_obj = pool.get('account.journal.period')
         journal_obj = pool.get('account.journal')
         period_obj = pool.get('account.period')
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
-        if data.get('model', '') == 'account.journal.period' \
-                and data.get('id'):
-            journal_period = journal_period_obj.browse(data['id'])
+
+        if (Transaction().context.get('active_model', '') ==
+                'account.journal.period'
+                and Transaction().context.get('active_id')):
+            journal_period = \
+                journal_period_obj.browse(Transaction().context['active_id'])
             journal_id = journal_period.journal.id
             period_id = journal_period.period.id
         else:
-            journal_id = data['form']['journal']
-            period_id = data['form']['period']
-        if not journal_period_obj.search([
-            ('journal', '=', journal_id),
-            ('period', '=', period_id),
-            ]):
-            journal = journal_obj.browse(journal_id)
-            period = period_obj.browse(period_id)
-            journal_period_obj.create({
-                'name': journal.name + ' - ' + period.name,
-                'journal': journal.id,
-                'period': period.id,
-                })
-
-        act_window_id = model_data_obj.get_id('account', 'act_move_line_form')
-        res = act_window_obj.read(act_window_id)
-        # Remove name to use the one from view_header_get
-        del res['name']
-        res['pyson_domain'] = PYSONEncoder().encode([
+            journal_id = session.ask.journal.id
+            period_id = session.ask.period.id
+        journal_period_ids = journal_period_obj.search([
             ('journal', '=', journal_id),
             ('period', '=', period_id),
             ])
-        res['pyson_context'] = PYSONEncoder().encode({
+        if not journal_period_ids:
+            journal = journal_obj.browse(journal_id)
+            period = period_obj.browse(period_id)
+            journal_period_id = journal_period_obj.create({
+                    'name': journal.name + ' - ' + period.name,
+                    'journal': journal.id,
+                    'period': period.id,
+                    })
+        else:
+            journal_period_id = journal_period_ids[0]
+        journal_period = journal_period_obj.browse(journal_period_id)
+
+        action['name'] += ' - %s' % journal_period.rec_name
+        action['pyson_domain'] = PYSONEncoder().encode([
+            ('journal', '=', journal_id),
+            ('period', '=', period_id),
+            ])
+        action['pyson_context'] = PYSONEncoder().encode({
             'journal': journal_id,
             'period': period_id,
             })
-        return res
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenJournal()
 
@@ -1414,20 +1405,11 @@ OpenJournal()
 class OpenAccount(Wizard):
     'Open Account'
     _name = 'account.move.open_account'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_account',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'open_'
+    open_ = StateAction('account.act_move_line_form')
 
-    def _action_open_account(self, data):
+    def do_open_(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         fiscalyear_obj = pool.get('account.fiscalyear')
 
         if not Transaction().context.get('fiscalyear'):
@@ -1442,19 +1424,17 @@ class OpenAccount(Wizard):
             for period in fiscalyear.periods:
                 period_ids.append(period.id)
 
-        act_window_id = model_data_obj.get_id('account', 'act_move_line_form')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_domain'] = [
+        action['pyson_domain'] = [
             ('period', 'in', period_ids),
-            ('account', '=', data['id']),
+            ('account', '=', Transaction().context['active_id']),
             ]
         if Transaction().context.get('posted'):
-            res['pyson_domain'].append(('move.state', '=', 'posted'))
-        res['pyson_domain'] = PYSONEncoder().encode(res['pyson_domain'])
-        res['pyson_context'] = PYSONEncoder().encode({
+            action['pyson_domain'].append(('move.state', '=', 'posted'))
+        action['pyson_domain'] = PYSONEncoder().encode(action['pyson_domain'])
+        action['pyson_context'] = PYSONEncoder().encode({
             'fiscalyear': Transaction().context.get('fiscalyear'),
         })
-        return res
+        return action, {}
 
 OpenAccount()
 
@@ -1478,39 +1458,22 @@ ReconcileLinesWriteOff()
 class ReconcileLines(Wizard):
     'Reconcile Lines'
     _name = 'account.move.reconcile_lines'
-    states = {
-        'init': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_check_writeoff',
-            },
-        },
-        'writeoff': {
-            'result': {
-                'type': 'form',
-                'object': 'account.move.reconcile_lines.writeoff',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('reconcile', 'Reconcile', 'tryton-ok', True),
-                ],
-            },
-        },
-        'reconcile': {
-            'actions': ['_reconcile'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _check_writeoff(self, data):
+    start = StateTransition()
+    writeoff = StateView('account.move.reconcile_lines.writeoff',
+        'account.reconcile_lines_writeoff_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Reconcile', 'reconcile', 'tryton-ok', default=True),
+            ])
+    reconcile = StateTransition()
+
+    def transition_start(self, session):
         line_obj = Pool().get('account.move.line')
         currency_obj = Pool().get('currency.currency')
 
         company = None
         amount = Decimal('0.0')
-        for line in line_obj.browse(data['ids']):
+        for line in line_obj.browse(Transaction().context['active_ids']):
             amount += line.debit - line.credit
             if not company:
                 company = line.account.company
@@ -1520,111 +1483,85 @@ class ReconcileLines(Wizard):
             return 'reconcile'
         return 'writeoff'
 
-    def _reconcile(self, data):
+    def transiton_reconcile(self, session):
         line_obj = Pool().get('account.move.line')
 
-        if data['form']:
-            journal_id = data['form'].get('journal')
-            date = data['form'].get('date')
-            account_id = data['form'].get('account')
-        else:
-            journal_id = False
-            date = False
-            account_id = False
-        line_obj.reconcile(data['ids'], journal_id, date, account_id)
-        return {}
+        journal_id = False
+        date = False
+        account_id = False
+        if session.writeoff.journal:
+            journal_id = session.writeoff.journal.id
+        if session.writeoff.date:
+            date = session.writeoff.date
+        if session.writeoff.account:
+            account_id = session.writeoff.account.id
+        line_obj.reconcile(Transaction().context['active_ids'], journal_id,
+            date, account_id)
+        return 'end'
 
 ReconcileLines()
 
 
-class UnreconcileLinesInit(ModelView):
-    'Unreconcile Lines Init'
-    _name = 'account.move.unreconcile_lines.init'
+class UnreconcileLinesStart(ModelView):
+    'Unreconcile Lines'
+    _name = 'account.move.unreconcile_lines.start'
     _description = __doc__
 
-UnreconcileLinesInit()
+UnreconcileLinesStart()
 
 
 class UnreconcileLines(Wizard):
     'Unreconcile Lines'
     _name = 'account.move.unreconcile_lines'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.move.unreconcile_lines.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('unreconcile', 'Unreconcile', 'tryton-ok', True),
-                ],
-            },
-        },
-        'unreconcile': {
-            'actions': ['_unreconcile'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _unreconcile(self, data):
+    start = StateView('account.move.unreconcile_lines.start',
+        'account.unreconcile_lines_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Unreconcile', 'unreconcile', 'tryton-ok', default=True),
+            ])
+    unreconcile = StateTransition()
+
+    def transition_unreconcile(self, session):
         line_obj = Pool().get('account.move.line')
         reconciliation_obj = Pool().get('account.move.reconciliation')
 
-        lines = line_obj.browse(data['ids'])
+        lines = line_obj.browse(Transaction().context['active_ids'])
         reconciliation_ids = [x.reconciliation.id for x in lines \
                 if x.reconciliation]
         if reconciliation_ids:
             reconciliation_obj.delete(reconciliation_ids)
-        return {}
+        return 'end'
 
 UnreconcileLines()
 
 
-class OpenReconcileLinesInit(ModelView):
-    'Open Reconcile Lines Init'
-    _name = 'account.move.open_reconcile_lines.init'
+class OpenReconcileLinesStart(ModelView):
+    'Open Reconcile Lines'
+    _name = 'account.move.open_reconcile_lines.start'
     _description = __doc__
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view'), ('reconcile', '=', True)])
 
-OpenReconcileLinesInit()
+OpenReconcileLinesStart()
 
 
 class OpenReconcileLines(Wizard):
     'Open Reconcile Lines'
     _name = 'account.move.open_reconcile_lines'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.move.open_reconcile_lines.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_reconcile_lines',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _action_open_reconcile_lines(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('account', 'act_move_line_form')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_domain'] = PYSONEncoder().encode([
-            ('account', '=', data['form']['account']),
+    start = StateView('account.move.open_reconcile_lines.start',
+        'account.open_reconcile_lines_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_move_line_form')
+
+    def do_open_(self, session, action):
+        action['pyson_domain'] = PYSONEncoder().encode([
+            ('account', '=', session.start.account.id),
             ('reconciliation', '=', False),
             ])
-        return res
+        return action, {}
 
 OpenReconcileLines()
 
@@ -1650,9 +1587,9 @@ class FiscalYear(ModelSQL, ModelView):
 FiscalYear()
 
 
-class PrintGeneralJournalInit(ModelView):
-    'Print General Journal Init'
-    _name = 'account.move.print_general_journal.init'
+class PrintGeneralJournalStart(ModelView):
+    'Print General Journal'
+    _name = 'account.move.print_general_journal.start'
     _description = __doc__
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
@@ -1673,31 +1610,28 @@ class PrintGeneralJournalInit(ModelView):
     def default_posted(self):
         return False
 
-PrintGeneralJournalInit()
+PrintGeneralJournalStart()
 
 
 class PrintGeneralJournal(Wizard):
     'Print General Journal'
     _name = 'account.move.print_general_journal'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.move.print_general_journal.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('print', 'Print', 'tryton-print', True),
-                ],
-            },
-        },
-        'print': {
-            'result': {
-                'type': 'print',
-                'report': 'account.move.general_journal',
-                'state': 'end',
-            },
-        },
-    }
+
+    start = StateView('account.move.print_general_journal.start',
+        'account.print_general_journal_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account.report_general_journal')
+
+    def do_print_(self, session, action):
+        data = {
+            'company': session.start.company.id,
+            'from_date': session.start.from_date,
+            'to_date': session.start.to_date,
+            'posted': session.start.posted,
+            }
+        return action, data
 
 PrintGeneralJournal()
 
@@ -1705,30 +1639,30 @@ PrintGeneralJournal()
 class GeneralJournal(Report):
     _name = 'account.move.general_journal'
 
-    def _get_objects(self, ids, model, datas):
+    def _get_objects(self, ids, model, data):
         move_obj = Pool().get('account.move')
 
         clause = [
-            ('date', '>=', datas['form']['from_date']),
-            ('date', '<=', datas['form']['to_date']),
+            ('date', '>=', data['from_date']),
+            ('date', '<=', data['to_date']),
             ]
-        if datas['form']['posted']:
+        if data['posted']:
             clause.append(('state', '=', 'posted'))
         move_ids = move_obj.search(clause,
                 order=[('date', 'ASC'), ('reference', 'ASC'), ('id', 'ASC')])
         return move_obj.browse(move_ids)
 
-    def parse(self, report, objects, datas, localcontext):
+    def parse(self, report, objects, data, localcontext):
         company_obj = Pool().get('company.company')
 
-        company = company_obj.browse(datas['form']['company'])
+        company = company_obj.browse(data['company'])
 
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
-        localcontext['from_date'] = datas['form']['from_date']
-        localcontext['to_date'] = datas['form']['to_date']
+        localcontext['from_date'] = data['from_date']
+        localcontext['to_date'] = data['to_date']
 
-        return super(GeneralJournal, self).parse(report, objects, datas,
-                localcontext)
+        return super(GeneralJournal, self).parse(report, objects, data,
+            localcontext)
 
 GeneralJournal()

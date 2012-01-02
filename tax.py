@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
@@ -301,9 +301,9 @@ class Code(ModelSQL, ModelView):
 Code()
 
 
-class OpenChartCodeInit(ModelView):
-    'Open Chart Code Init'
-    _name = 'account.tax.open_chart_code.init'
+class OpenChartTaxCodeStart(ModelView):
+    'Open Chart of Tax Codes'
+    _name = 'account.tax.code.open_chart.start'
     _description = __doc__
     method = fields.Selection([
         ('fiscalyear', 'By Fiscal Year'),
@@ -323,48 +323,35 @@ class OpenChartCodeInit(ModelView):
     def default_method(self):
         return 'periods'
 
-OpenChartCodeInit()
+OpenChartTaxCodeStart()
 
 
-class OpenChartCode(Wizard):
-    'Open Chart Of Tax Code by Fiscal Year'
-    _name = 'account.tax.open_chart_code'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.tax.open_chart_code.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_chart',
-                'state': 'end',
-            },
-        },
-    }
+class OpenChartTaxCode(Wizard):
+    'Open Chart of Tax Codes'
+    _name = 'account.tax.code.open_chart'
 
-    def _action_open_chart(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('account', 'act_tax_code_tree2')
-        res = act_window_obj.read(act_window_id)
-        if data['form']['method'] == 'fiscalyear':
-            res['pyson_context'] = PYSONEncoder().encode({
-                'fiscalyear': data['form']['fiscalyear'],
-            })
+    start = StateView('account.tax.code.open_chart.start',
+        'account.tax_code_open_chart_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_tax_code_tree2')
+
+    def do_open_(self, session, action):
+        if session.start.method == 'fiscalyear':
+            action['pyson_context'] = PYSONEncoder().encode({
+                    'fiscalyear': session.start.fiscalyear.id,
+                    })
         else:
-            res['pyson_context'] = PYSONEncoder().encode({
-                'periods': data['form']['periods'][0][1],
-            })
-        return res
+            action['pyson_context'] = PYSONEncoder().encode({
+                    'periods': [x.id for x in session.start.periods],
+                    })
+        return action, {}
 
-OpenChartCode()
+    def transition_open_(self, session):
+        return 'end'
+
+OpenChartTaxCode()
 
 
 class TaxTemplate(ModelSQL, ModelView):
@@ -1313,20 +1300,11 @@ RuleLine()
 class OpenCode(Wizard):
     'Open Code'
     _name = 'account.tax.open_code'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_code',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'open_'
+    open_ = StateAction('account.act_tax_line_form')
 
-    def _action_open_code(self, data):
+    def do_open_(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         fiscalyear_obj = pool.get('account.fiscalyear')
         period_obj = pool.get('account.period')
 
@@ -1345,21 +1323,19 @@ class OpenCode(Wizard):
         else:
             period_ids = Transaction().context['periods']
 
-        act_window_id = model_data_obj.get_id('account', 'act_tax_line_form')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_domain'] = PYSONEncoder().encode([
-            ('move_line.period', 'in', period_ids),
-            ('code', '=', data['id']),
-            ])
+        action['pyson_domain'] = PYSONEncoder().encode([
+                ('move_line.period', 'in', period_ids),
+                ('code', '=', Transaction().context['active_id']),
+                ])
         if Transaction().context.get('fiscalyear'):
-            res['pyson_context'] = PYSONEncoder().encode({
-                'fiscalyear': Transaction().context['fiscalyear'],
-            })
+            action['pyson_context'] = PYSONEncoder().encode({
+                    'fiscalyear': Transaction().context['fiscalyear'],
+                    })
         else:
-            res['pyson_context'] = PYSONEncoder().encode({
-                'periods': period_ids,
-            })
-        return res
+            action['pyson_context'] = PYSONEncoder().encode({
+                    'periods': period_ids,
+                    })
+        return action, {}
 
 OpenCode()
 

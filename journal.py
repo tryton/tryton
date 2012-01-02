@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateTransition
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -252,48 +252,38 @@ class Period(ModelSQL, ModelView):
             'state': 'close',
             })
 
+    def open_(self, ids):
+        "Open journal - period"
+        self.write(ids, {
+                'state': 'open',
+                })
+
 Period()
 
 
 class ClosePeriod(Wizard):
     'Close Journal - Period'
-    _name = 'account.journal.close_period'
-    states = {
-        'init': {
-            'actions': ['_close'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.journal.period.close'
+    start_state = 'close'
+    close = StateTransition()
 
-    def _close(self, data):
+    def transition_close(self, session):
         journal_period_obj = Pool().get('account.journal.period')
-        journal_period_obj.close(data['ids'])
-        return {}
+        journal_period_obj.close(Transaction().context['active_ids'])
+        return 'end'
 
 ClosePeriod()
 
 
 class ReOpenPeriod(Wizard):
     'Re-Open Journal - Period'
-    _name = 'account.journal.reopen_period'
-    states = {
-        'init': {
-            'actions': ['_reopen'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.journal.period.reopen'
+    start_state = 'reopen'
+    reopen = StateTransition()
 
-    def _reopen(self, data):
+    def transition_reopen(self, session):
         journal_period_obj = Pool().get('account.journal.period')
-        journal_period_obj.write(data['ids'], {
-            'state': 'open',
-            })
-        return {}
+        journal_period_obj.open_(Transaction().context['active_ids'])
+        return 'end'
 
 ReOpenPeriod()

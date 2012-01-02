@@ -44,11 +44,11 @@ this repository contains the full copyright notices and license terms. -->
                     <group col="1" colspan="2" id="buttons">
                         <button name="close" string="Close Fiscal Year" type="object"
                             states="{'invisible': Not(Equal(Eval('state'), 'open'))}"
-                            icon="'tryton-readonly'"
+                            icon="tryton-readonly"
                             confirm="Are you sure to close fiscal year?"/>
                         <button name="reopen" string="Re-Open Fiscal Year" type="object"
                             states="{'invisible': Not(Equal(Eval('state'), 'close'))}"
-                            icon="'tryton-clear'"/>
+                            icon="tryton-clear"/>
                     </group>
                 </form>
                 ]]>
@@ -111,8 +111,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_fiscalyear"/>
         </record>
 
-        <record model="ir.ui.view" id="fiscalyear_close_fiscalyear_init_view_form">
-            <field name="model">account.fiscalyear.close_fiscalyear.init</field>
+        <record model="ir.ui.view" id="fiscalyear_close_start_view_form">
+            <field name="model">account.fiscalyear.close.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -126,7 +126,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.wizard" id="act_close_fiscalyear">
             <field name="name">Close Fiscal Year</field>
-            <field name="wiz_name">account.fiscalyear.close_fiscalyear</field>
+            <field name="wiz_name">account.fiscalyear.close</field>
         </record>
         <menuitem parent="menu_processing" action="act_close_fiscalyear"
             id="menu_close_fiscalyear"/>

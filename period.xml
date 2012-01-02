@@ -81,25 +81,25 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.action.wizard" id="act_close_period">
+        <record model="ir.action.wizard" id="act_period_close">
             <field name="name">Close Periods</field>
-            <field name="wiz_name">account.period.close_period</field>
+            <field name="wiz_name">account.period.close</field>
             <field name="model">account.period</field>
         </record>
-        <record model="ir.action.keyword" id="act_close_period_keyword">
+        <record model="ir.action.keyword" id="act_period_close_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.period,-1</field>
-            <field name="action" ref="act_close_period"/>
+            <field name="action" ref="act_period_close"/>
         </record>
-        <record model="ir.action.wizard" id="act_reopen_period">
+        <record model="ir.action.wizard" id="act_period_reopen">
             <field name="name">Re-Open Periods</field>
-            <field name="wiz_name">account.period.reopen_period</field>
+            <field name="wiz_name">account.period.reopen</field>
             <field name="model">account.period</field>
         </record>
-        <record model="ir.action.keyword" id="act_reopen_period_keyword">
+        <record model="ir.action.keyword" id="act_period_reopen_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.period,-1</field>
-            <field name="action" ref="act_reopen_period"/>
+            <field name="action" ref="act_period_reopen"/>
         </record>
         <record model="ir.action.act_window" id="act_period_form2">
             <field name="name">Periods</field>

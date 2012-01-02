@@ -14,6 +14,7 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
+from trytond.wizard import Session
 
 
 class AccountTestCase(unittest.TestCase):
@@ -25,8 +26,8 @@ class AccountTestCase(unittest.TestCase):
         trytond.tests.test_tryton.install_module('account')
         self.account_template = POOL.get('account.account.template')
         self.account = POOL.get('account.account')
-        self.account_create_chart_account = POOL.get(
-                'account.account.create_chart_account', type='wizard')
+        self.account_create_chart = POOL.get(
+            'account.create_chart', type='wizard')
         self.company = POOL.get('company.company')
         self.user = POOL.get('res.user')
         self.fiscalyear = POOL.get('account.fiscalyear')
@@ -58,12 +59,13 @@ class AccountTestCase(unittest.TestCase):
                     })
             CONTEXT.update(self.user.get_preferences(context_only=True))
 
-            self.account_create_chart_account._action_create_account({
-                    'form': {
-                        'account_template': account_template_id,
-                        'company': company_id,
-                        },
+            session_id, _, _ = self.account_create_chart.create()
+            session = Session(self.account_create_chart, session_id)
+            session.data['account'].update({
+                    'account_template': account_template_id,
+                    'company': company_id,
                     })
+            self.account_create_chart.transition_create_account(session)
             receivable_id, = self.account.search([
                     ('kind', '=', 'receivable'),
                     ('company', '=', company_id),
@@ -72,13 +74,13 @@ class AccountTestCase(unittest.TestCase):
                     ('kind', '=', 'payable'),
                     ('company', '=', company_id),
                     ])
-            self.account_create_chart_account._action_create_properties({
-                    'form': {
-                        'company': company_id,
-                        'account_receivable': receivable_id,
-                        'account_payable': payable_id,
-                        },
+            session.data['properties'].update({
+                    'company': company_id,
+                    'account_receivable': receivable_id,
+                    'account_payable': payable_id,
                     })
+            self.account_create_chart.transition_create_properties(
+                session)
             transaction.cursor.commit()
 
     def test0020fiscalyear(self):

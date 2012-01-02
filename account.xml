@@ -474,12 +474,12 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="account_create_chart_account_init_view_form">
-            <field name="model">account.account.create_chart_account.init</field>
+        <record model="ir.ui.view" id="create_chart_start_view_form">
+            <field name="model">account.create_chart.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Create Chart of Account" col="2">
+                <form string="Create Chart of Accounts" col="2">
                     <image name="tryton-dialog-information" xexpand="0"
                         xfill="0"/>
                     <label string="You can now create a chart of account for your company by selecting a chart of account template."
@@ -490,12 +490,12 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="account_create_chart_account_account_view_form">
-            <field name="model">account.account.create_chart_account.account</field>
+        <record model="ir.ui.view" id="create_chart_account_view_form">
+            <field name="model">account.create_chart.account</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Create Chart of Account" col="2">
+                <form string="Create Chart of Accounts" col="2">
                     <label name="company"/>
                     <field name="company" widget="selection"/>
                     <label name="account_template"/>
@@ -505,8 +505,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="account_create_chart_account_properties_view_form">
-            <field name="model">account.account.create_chart_account.properties</field>
+        <record model="ir.ui.view" id="create_chart_properties_view_form">
+            <field name="model">account.create_chart.properties</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -520,23 +520,23 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_create_chart_account">
-            <field name="name">Create Chart of Account from Template</field>
-            <field name="wiz_name">account.account.create_chart_account</field>
+        <record model="ir.action.wizard" id="wizard_create_chart">
+            <field name="name">Create Chart of Accounts from Template</field>
+            <field name="wiz_name">account.create_chart</field>
         </record>
         <menuitem parent="menu_general_account_configuration"
-            action="wizard_create_chart_account" id="menu_create_chart_account"/>
+            action="wizard_create_chart" id="menu_create_chart"/>
         <record model="ir.module.module.config_wizard.item"
             id="config_wizard_item_chart_account">
-            <field name="name">account.account.create_chart_account</field>
+            <field name="action" ref="wizard_create_chart"/>
         </record>
 
-        <record model="ir.ui.view" id="account_update_chart_account_init_view_form">
-            <field name="model">account.account.update_chart_account.init</field>
+        <record model="ir.ui.view" id="update_chart_start_view_form">
+            <field name="model">account.update_chart.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Update Chart of Account" col="2">
+                <form string="Update Chart of Accounts" col="2">
                     <label name="account"/>
                     <field name="account"/>
                 </form>
@@ -544,26 +544,26 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="account_update_chart_account_start_view_form">
-            <field name="model">account.account.update_chart_account.start</field>
+        <record model="ir.ui.view" id="update_chart_succeed_view_form">
+            <field name="model">account.update_chart.succeed</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Update Chart of Account">
+                <form string="Update Chart of Accounts">
                     <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
-                    <label string="Update Chart of Account Succeed!" id="succeed"
+                    <label string="Update Chart of Accounts Succeed!" id="succeed"
                         yalign="0.0" xalign="0.0" xexpand="1"/>
                 </form>
                 ]]>
             </field>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_update_chart_account">
-            <field name="name">Update Chart of Account from Template</field>
-            <field name="wiz_name">account.account.update_chart_account</field>
+        <record model="ir.action.wizard" id="wizard_update_chart">
+            <field name="name">Update Chart of Accounts from Template</field>
+            <field name="wiz_name">account.update_chart</field>
         </record>
         <menuitem parent="menu_general_account_configuration"
-            action="wizard_update_chart_account" id="menu_update_chart_account"/>
+            action="wizard_update_chart" id="menu_update_chart"/>
 
         <record model="ir.ui.view" id="account_view_form">
             <field name="model">account.account</field>
@@ -702,12 +702,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_tree2"/>
             <field name="act_window" ref="act_account_tree2"/>
         </record>
-        <record model="ir.action.wizard" id="act_open_chart_account">
+
+        <record model="ir.action.wizard" id="act_open_chart">
             <field name="name">Open Chart of Accounts</field>
-            <field name="wiz_name">account.account.open_chart_account</field>
+            <field name="wiz_name">account.open_chart</field>
         </record>
-        <menuitem parent="menu_charts" action="act_open_chart_account"
-            icon="tryton-tree" id="menu_open_chart_account"/>
+        <menuitem parent="menu_charts" action="act_open_chart"
+            icon="tryton-tree" id="menu_open_chart"/>
+
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'account.account')]"/>
             <field name="perm_read" eval="True"/>
@@ -735,8 +737,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_account"/>
         </record>
 
-        <record model="ir.ui.view" id="open_chart_account_init_view_form">
-            <field name="model">account.account.open_chart_account.init</field>
+        <record model="ir.ui.view" id="open_chart_start_view_form">
+            <field name="model">account.open_chart.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -750,8 +752,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="print_general_ledger_init_view_form">
-            <field name="model">account.account.print_general_ledger.init</field>
+        <record model="ir.ui.view" id="print_general_ledger_start_view_form">
+            <field name="model">account.print_general_ledger.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -775,7 +777,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.wizard" id="wizard_print_general_ledger">
             <field name="name">Print General Legder</field>
-            <field name="wiz_name">account.account.print_general_ledger</field>
+            <field name="wiz_name">account.print_general_ledger</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_print_general_ledger"
             id="menu_print_general_ledger" icon="tryton-print"/>
@@ -783,12 +785,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.report" id="report_general_ledger">
             <field name="name">General Ledger</field>
             <field name="model"></field>
-            <field name="report_name">account.account.general_ledger</field>
+            <field name="report_name">account.general_ledger</field>
             <field name="report">account/general_ledger.odt</field>
         </record>
 
-        <record model="ir.ui.view" id="print_trial_balance_init_view_form">
-            <field name="model">account.account.print_trial_balance.init</field>
+        <record model="ir.ui.view" id="print_trial_balance_start_view_form">
+            <field name="model">account.print_trial_balance.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -812,7 +814,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.wizard" id="wizard_print_trial_balance">
             <field name="name">Print Trial Balance</field>
-            <field name="wiz_name">account.account.print_trial_balance</field>
+            <field name="wiz_name">account.print_trial_balance</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_print_trial_balance"
             id="menu_print_trial_balance" icon="tryton-print"/>
@@ -820,12 +822,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.report" id="report_trial_balance">
             <field name="name">Trial Balance</field>
             <field name="model"></field>
-            <field name="report_name">account.account.trial_balance</field>
+            <field name="report_name">account.trial_balance</field>
             <field name="report">account/trial_balance.odt</field>
         </record>
 
-        <record model="ir.ui.view" id="open_balance_sheet_init_view_form">
-            <field name="model">account.account.open_balance_sheet.init</field>
+        <record model="ir.ui.view" id="open_balance_sheet_start_view_form">
+            <field name="model">account.open_balance_sheet.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -867,14 +869,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.wizard" id="wizard_open_balance_sheet">
             <field name="name">Open Balance Sheet</field>
-            <field name="wiz_name">account.account.open_balance_sheet</field>
+            <field name="wiz_name">account.open_balance_sheet</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_balance_sheet"
             id="menu_open_balance_sheet" icon="tryton-tree"
             name="Balance Sheet"/>
 
-        <record model="ir.ui.view" id="open_income_statement_init_view_form">
-            <field name="model">account.account.open_income_statement.init</field>
+        <record model="ir.ui.view" id="open_income_statement_start_view_form">
+            <field name="model">account.open_income_statement.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -921,14 +923,14 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.wizard" id="wizard_open_income_statement">
             <field name="name">Open Income Statement</field>
-            <field name="wiz_name">account.account.open_income_statement</field>
+            <field name="wiz_name">account.open_income_statement</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_income_statement"
             id="menu_open_income_statement" icon="tryton-tree"
             name="Income Statement"/>
 
-        <record model="ir.ui.view" id="open_third_party_balance_init_view_form">
-            <field name="model">account.account.open_third_party_balance.init</field>
+        <record model="ir.ui.view" id="open_third_party_balance_start_view_form">
+            <field name="model">account.open_third_party_balance.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -947,19 +949,19 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.report" id="report_third_party_balance">
             <field name="name">Third Party Balance</field>
             <field name="model"></field>
-            <field name="report_name">account.account.third_party_balance</field>
+            <field name="report_name">account.third_party_balance</field>
             <field name="report">account/third_party_balance.odt</field>
         </record>
         <record model="ir.action.wizard" id="wizard_open_third_party_balance">
             <field name="name">Open Third Party Balance</field>
-            <field name="wiz_name">account.account.open_third_party_balance</field>
+            <field name="wiz_name">account.open_third_party_balance</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_third_party_balance"
             id="menu_third_party_balance" icon="tryton-print"
             name="Third Party Balance"/>
 
-        <record model="ir.ui.view" id="open_aged_balance_init_view_form">
-            <field name="model">account.account.open_aged_balance.init</field>
+        <record model="ir.ui.view" id="open_aged_balance_start_view_form">
+            <field name="model">account.open_aged_balance.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -992,12 +994,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.report" id="report_aged_balance">
             <field name="name">Aged Balance</field>
             <field name="model"></field>
-            <field name="report_name">account.account.aged_balance</field>
+            <field name="report_name">account.aged_balance</field>
             <field name="report">account/aged_balance.odt</field>
         </record>
         <record model="ir.action.wizard" id="wizard_open_aged_balance">
             <field name="name">Open Aged Balance</field>
-            <field name="wiz_name">account.account.open_aged_balance</field>
+            <field name="wiz_name">account.open_aged_balance</field>
         </record>
         <menuitem parent="menu_reporting" action="wizard_open_aged_balance"
             id="menu_aged_balance" icon="tryton-print"

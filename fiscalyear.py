@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.tools import datetime_strftime
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -287,44 +287,31 @@ class FiscalYear(ModelSQL, ModelView):
 FiscalYear()
 
 
-class CloseFiscalYearInit(ModelView):
-    'Close Fiscal Year Init'
-    _name = 'account.fiscalyear.close_fiscalyear.init'
+class CloseFiscalYearStart(ModelView):
+    'Close Fiscal Year'
+    _name = 'account.fiscalyear.close.start'
     _description = __doc__
     close_fiscalyear = fields.Many2One('account.fiscalyear',
             'Fiscal Year to close', required=True,
             domain=[('state', '!=', 'close')])
 
-CloseFiscalYearInit()
+CloseFiscalYearStart()
 
 
 class CloseFiscalYear(Wizard):
     'Close Fiscal Year'
-    _name = 'account.fiscalyear.close_fiscalyear'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.fiscalyear.close_fiscalyear.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('close', 'Close', 'tryton-ok', True),
-                ],
-            },
-        },
-        'close': {
-            'actions': ['_close'],
-            'result': {
-                'type': 'state',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.fiscalyear.close'
 
-    def _close(self, data):
+    start = StateView('account.fiscalyear.close.start',
+        'account.fiscalyear_close_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Close', 'close', 'tryton-ok', default=True),
+            ])
+    close = StateTransition()
+
+    def transition_close(self, session):
         fiscalyear_obj = Pool().get('account.fiscalyear')
-
-        fiscalyear_obj.close(data['form']['close_fiscalyear'])
-        return {}
+        fiscalyear_obj.close(session.start.close_fiscalyear)
+        return 'end'
 
 CloseFiscalYear()

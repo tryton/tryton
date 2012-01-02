@@ -4,7 +4,7 @@ from decimal import Decimal
 import datetime
 import operator
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, StateTransition, Button
 from trytond.report import Report
 from trytond.tools import reduce_ids
 from trytond.pyson import Eval, PYSONEncoder, Date
@@ -1039,9 +1039,9 @@ class AccountDeferral(ModelSQL, ModelView):
 AccountDeferral()
 
 
-class OpenChartAccountInit(ModelView):
-    'Open Chart Account Init'
-    _name = 'account.account.open_chart_account.init'
+class OpenChartAccountStart(ModelView):
+    'Open Chart of Accounts'
+    _name = 'account.open_chart.start'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Leave empty for all open fiscal year')
@@ -1050,49 +1050,36 @@ class OpenChartAccountInit(ModelView):
     def default_posted(self):
         return False
 
-OpenChartAccountInit()
+OpenChartAccountStart()
 
 
 class OpenChartAccount(Wizard):
-    'Open Chart Of Account'
-    _name = 'account.account.open_chart_account'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.open_chart_account.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_chart',
-                'state': 'end',
-            },
-        },
-    }
+    'Open Chart of Accounts'
+    _name = 'account.open_chart'
 
-    def _action_open_chart(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('account', 'act_account_tree2')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'fiscalyear': data['form']['fiscalyear'],
-            'posted': data['form']['posted'],
+    start = StateView('account.open_chart.start',
+        'account.open_chart_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_account_tree2')
+
+    def do_open_(self, session, action):
+        action['pyson_context'] = PYSONEncoder().encode({
+            'fiscalyear': session.start.fiscalyear,
+            'posted': session.start.posted,
             })
-        return res
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenChartAccount()
 
 
-class PrintGeneralLegderInit(ModelView):
+class PrintGeneralLegderStart(ModelView):
     'Print General Ledger'
-    _name = 'account.account.print_general_ledger.init'
+    _name = 'account.print_general_ledger.start'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
@@ -1135,86 +1122,96 @@ class PrintGeneralLegderInit(ModelView):
             'end_period': False,
         }
 
-PrintGeneralLegderInit()
+PrintGeneralLegderStart()
 
 
 class PrintGeneralLegder(Wizard):
     'Print General Legder'
-    _name = 'account.account.print_general_ledger'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.print_general_ledger.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('print', 'Print', 'tryton-print', True),
-                ],
-            },
-        },
-        'print': {
-            'result': {
-                'type': 'print',
-                'report': 'account.account.general_ledger',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.print_general_ledger'
+
+    start = StateView('account.print_general_ledger.start',
+        'account.print_general_ledger_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account.report_general_ledger')
+
+    def do_print_(self, session, action):
+        if session.start.start_period:
+            start_period = session.start.start_period.id
+        else:
+            start_period = False
+        if session.start.end_period:
+            end_period = session.start.end_period.id
+        else:
+            end_period = False
+        data = {
+            'company': session.start.company.id,
+            'fiscalyear': session.start.fiscalyear.id,
+            'start_period': start_period,
+            'end_period': end_period,
+            'posted': session.start.posted,
+            'empty_account': session.start.empty_account,
+            }
+        return action, data
+
+    def transition_print_(self, session):
+        return 'end'
 
 PrintGeneralLegder()
 
 
 class GeneralLegder(Report):
-    _name = 'account.account.general_ledger'
+    _name = 'account.general_ledger'
 
-    def parse(self, report, objects, datas, localcontext):
+    def parse(self, report, objects, data, localcontext):
         pool = Pool()
         account_obj = pool.get('account.account')
         period_obj = pool.get('account.period')
         company_obj = pool.get('company.company')
 
-        company = company_obj.browse(datas['form']['company'])
+        company = company_obj.browse(data['company'])
 
         account_ids = account_obj.search([
-            ('company', '=', datas['form']['company']),
-            ('kind', '!=', 'view'),
-            ], order=[('code', 'ASC'), ('id', 'ASC')])
+                ('company', '=', data['company']),
+                ('kind', '!=', 'view'),
+                ], order=[('code', 'ASC'), ('id', 'ASC')])
 
         start_period_ids = [0]
-        if datas['form']['start_period']:
-            start_period = period_obj.browse(datas['form']['start_period'])
+        if data['start_period']:
+            start_period = period_obj.browse(data['start_period'])
             start_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ('end_date', '<=', start_period.start_date),
-                ])
+                    ('fiscalyear', '=', data['fiscalyear']),
+                    ('end_date', '<=', start_period.start_date),
+                    ])
 
         with Transaction().set_context(
-                fiscalyear=datas['form']['fiscalyear'],
+                fiscalyear=data['fiscalyear'],
                 periods=start_period_ids,
-                posted=datas['form']['posted']):
+                posted=data['posted']):
             start_accounts = account_obj.browse(account_ids)
         id2start_account = {}
         for account in start_accounts:
             id2start_account[account.id] = account
 
         end_period_ids = []
-        if datas['form']['end_period']:
-            end_period = period_obj.browse(datas['form']['end_period'])
+        if data['end_period']:
+            end_period = period_obj.browse(data['end_period'])
             end_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ('end_date', '<=', end_period.start_date),
-                ])
-            if datas['form']['end_period'] not in end_period_ids:
-                end_period_ids.append(datas['form']['end_period'])
+                    ('fiscalyear', '=', data['fiscalyear']),
+                    ('end_date', '<=', end_period.start_date),
+                    ])
+            if data['end_period'] not in end_period_ids:
+                end_period_ids.append(data['end_period'])
         else:
             end_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ])
+                    ('fiscalyear', '=', data['fiscalyear']),
+                    ])
 
         with Transaction().set_context(
-                fiscalyear=datas['form']['fiscalyear'],
+                fiscalyear=data['fiscalyear'],
                 periods=end_period_ids,
-                posted=datas['form']['posted']):
+                posted=data['posted']):
             end_accounts = account_obj.browse(account_ids)
         id2end_account = {}
         for account in end_accounts:
@@ -1226,16 +1223,16 @@ class GeneralLegder(Report):
         periods.sort(lambda x, y: cmp(x.end_date, y.end_date))
         localcontext['end_period'] = periods[-1]
 
-        if not datas['form']['empty_account']:
+        if not data['empty_account']:
             account_id2lines = self.get_lines(account_ids,
-                    end_period_ids, datas['form']['posted'])
+                end_period_ids, data['posted'])
             for account_id in (set(account_ids) - set(account_id2lines)):
                 account_ids.remove(account_id)
             account_id2lines = None
 
         account_id2lines = self.lines(account_ids,
-                list(set(end_period_ids).difference(set(start_period_ids))),
-                datas['form']['posted'])
+            list(set(end_period_ids).difference(set(start_period_ids))),
+            data['posted'])
 
         localcontext['accounts'] = account_obj.browse(account_ids)
         localcontext['id2start_account'] = id2start_account
@@ -1244,8 +1241,8 @@ class GeneralLegder(Report):
         localcontext['lines'] = lambda account_id: account_id2lines[account_id]
         localcontext['company'] = company
 
-        return super(GeneralLegder, self).parse(report, objects, datas,
-                localcontext)
+        return super(GeneralLegder, self).parse(report, objects, data,
+            localcontext)
 
     def get_lines(self, account_ids, period_ids, posted):
         move_line_obj = Pool().get('account.move.line')
@@ -1288,9 +1285,9 @@ class GeneralLegder(Report):
 GeneralLegder()
 
 
-class PrintTrialBalanceInit(ModelView):
-    'Print Trial Balance Init'
-    _name = 'account.account.print_trial_balance.init'
+class PrintTrialBalanceStart(ModelView):
+    'Print Trial Balance'
+    _name = 'account.print_trial_balance.start'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'],
@@ -1335,84 +1332,94 @@ class PrintTrialBalanceInit(ModelView):
             'end_period': False,
         }
 
-PrintTrialBalanceInit()
+PrintTrialBalanceStart()
 
 
 class PrintTrialBalance(Wizard):
     'Print Trial Balance'
-    _name = 'account.account.print_trial_balance'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.print_trial_balance.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('print', 'Print', 'tryton-print', True),
-                ],
-            },
-        },
-        'print': {
-            'result': {
-                'type': 'print',
-                'report': 'account.account.trial_balance',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.print_trial_balance'
+
+    start = StateView('account.print_trial_balance.start',
+        'account.print_general_ledger_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account.report_trial_balance')
+
+    def do_print_(self, session, action):
+        if session.start.start_period:
+            start_period = session.start.start_period.id
+        else:
+            start_period = False
+        if session.start.end_period:
+            end_period = session.start.end_period.id
+        else:
+            end_period = False
+        data = {
+            'company': session.start.company.id,
+            'fiscalyear': session.start.fiscalyear.id,
+            'start_period': start_period,
+            'end_period': end_period,
+            'posted': session.start.posted,
+            'empty_account': session.start.empty_account,
+            }
+        return action, data
+
+    def transition_print_(self, session):
+        return 'end'
 
 PrintTrialBalance()
 
 
 class TrialBalance(Report):
-    _name = 'account.account.trial_balance'
+    _name = 'account.trial_balance'
 
-    def parse(self, report, objects, datas, localcontext):
+    def parse(self, report, objects, data, localcontext):
         pool = Pool()
         account_obj = pool.get('account.account')
         period_obj = pool.get('account.period')
         company_obj = pool.get('company.company')
 
-        company = company_obj.browse(datas['form']['company'])
+        company = company_obj.browse(data['company'])
 
         account_ids = account_obj.search([
-            ('company', '=', datas['form']['company']),
+            ('company', '=', data['company']),
             ('kind', '!=', 'view'),
             ])
 
         start_period_ids = [0]
-        if datas['form']['start_period']:
-            start_period = period_obj.browse(datas['form']['start_period'])
+        if data['start_period']:
+            start_period = period_obj.browse(data['start_period'])
             start_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ('end_date', '<=', start_period.start_date),
-                ])
+                    ('fiscalyear', '=', data['fiscalyear']),
+                    ('end_date', '<=', start_period.start_date),
+                    ])
 
         end_period_ids = []
-        if datas['form']['end_period']:
-            end_period = period_obj.browse(datas['form']['end_period'])
+        if data['end_period']:
+            end_period = period_obj.browse(data['end_period'])
             end_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ('end_date', '<=', end_period.start_date),
-                ])
+                    ('fiscalyear', '=', data['fiscalyear']),
+                    ('end_date', '<=', end_period.start_date),
+                    ])
             end_period_ids = list(set(end_period_ids).difference(
-                set(start_period_ids)))
-            if datas['form']['end_period'] not in end_period_ids:
-                end_period_ids.append(datas['form']['end_period'])
+                    set(start_period_ids)))
+            if data['end_period'] not in end_period_ids:
+                end_period_ids.append(data['end_period'])
         else:
             end_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ])
+                    ('fiscalyear', '=', data['fiscalyear']),
+                    ])
             end_period_ids = list(set(end_period_ids).difference(
-                set(start_period_ids)))
+                    set(start_period_ids)))
 
         with Transaction().set_context(
-                fiscalyear=datas['form']['fiscalyear'],
+                fiscalyear=data['fiscalyear'],
                 periods=end_period_ids,
-                posted=datas['form']['posted']):
+                posted=data['posted']):
             accounts = account_obj.browse(account_ids)
 
-        if not datas['form']['empty_account']:
+        if not data['empty_account']:
             to_remove = []
             for account in accounts:
                 if account.debit == Decimal('0.0') \
@@ -1432,8 +1439,8 @@ class TrialBalance(Report):
         localcontext['digits'] = company.currency.digits
         localcontext['sum'] = lambda accounts, field: self.sum(accounts, field)
 
-        return super(TrialBalance, self).parse(report, objects, datas,
-                localcontext)
+        return super(TrialBalance, self).parse(report, objects, data,
+            localcontext)
 
     def sum(self, accounts, field):
         amount = Decimal('0.0')
@@ -1444,9 +1451,9 @@ class TrialBalance(Report):
 TrialBalance()
 
 
-class OpenBalanceSheetInit(ModelView):
-    'Open Balance Sheet Init'
-    _name = 'account.account.open_balance_sheet.init'
+class OpenBalanceSheetStart(ModelView):
+    'Open Balance Sheet'
+    _name = 'account.open_balance_sheet.start'
     _description = __doc__
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
@@ -1462,40 +1469,25 @@ class OpenBalanceSheetInit(ModelView):
     def default_posted(self):
         return False
 
-OpenBalanceSheetInit()
+OpenBalanceSheetStart()
 
 
 class OpenBalanceSheet(Wizard):
     'Open Balance Sheet'
-    _name = 'account.account.open_balance_sheet'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.open_balance_sheet.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.open_balance_sheet'
 
-    def _action_open(self, datas):
+    start = StateView('account.open_balance_sheet.start',
+        'account.open_balance_sheet_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_account_balance_sheet_tree')
+
+    def do_open_(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
-        company_obj = pool.get('company.company')
         lang_obj = pool.get('ir.lang')
 
-        company = company_obj.browse(datas['form']['company'])
+        company = session.start.company
         for code in [Transaction().language, 'en_US']:
             lang_ids = lang_obj.search([
                 ('code', '=', code),
@@ -1504,27 +1496,27 @@ class OpenBalanceSheet(Wizard):
                 break
         lang = lang_obj.browse(lang_ids[0])
 
-        date = lang_obj.strftime(datas['form']['date'], lang.code, lang.date)
+        date = lang_obj.strftime(session.start.date, lang.code, lang.date)
 
-        act_window_id = model_data_obj.get_id('account',
-                'act_account_balance_sheet_tree')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'date': Date(datas['form']['date'].year,
-                datas['form']['date'].month,
-                datas['form']['date'].day),
-            'posted': datas['form']['posted'],
-            'company': datas['form']['company'],
-            })
-        res['name'] = res['name'] + ' - '+ date + ' - ' + company.name
-        return res
+        action['pyson_context'] = PYSONEncoder().encode({
+                'date': Date(session.start.date.year,
+                    session.start.date.month,
+                    session.start.date.day),
+                'posted': session.start.posted,
+                'company': company.id,
+                })
+        action['name'] += ' - '+ date + ' - ' + company.name
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenBalanceSheet()
 
 
-class OpenIncomeStatementInit(ModelView):
-    'Open Income Statement Init'
-    _name = 'account.account.open_income_statement.init'
+class OpenIncomeStatementStart(ModelView):
+    'Open Income Statement'
+    _name = 'account.open_income_statement.start'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'],
@@ -1564,88 +1556,69 @@ class OpenIncomeStatementInit(ModelView):
             'end_period': False,
         }
 
-OpenIncomeStatementInit()
+OpenIncomeStatementStart()
 
 
 class OpenIncomeStatement(Wizard):
     'Open Income Statement'
-    _name = 'account.account.open_income_statement'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.open_income_statement.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.open_income_statement'
 
-    def _action_open(self, datas):
+    start = StateView('account.open_income_statement.start',
+        'account.open_income_statement_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('account.act_account_income_statement_tree')
+
+    def do_open_(self, session, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         period_obj = pool.get('account.period')
 
         start_period_ids = [0]
-        if datas['form']['start_period']:
-            start_period = period_obj.browse(datas['form']['start_period'])
+        if session.start.start_period:
             start_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ('end_date', '<=', start_period.start_date),
-                ])
+                    ('fiscalyear', '=', session.start.fiscalyear.id),
+                    ('end_date', '<=', session.start.start_period.start_date),
+                    ])
 
         end_period_ids = []
-        if datas['form']['end_period']:
-            end_period = period_obj.browse(datas['form']['end_period'])
+        if session.start.end_period:
             end_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ('end_date', '<=', end_period.start_date),
-                ])
+                    ('fiscalyear', '=', session.start.fiscalyear.id),
+                    ('end_date', '<=', session.start.end_period.start_date),
+                    ])
             end_period_ids = list(set(end_period_ids).difference(
-                set(start_period_ids)))
-            if datas['form']['end_period'] not in end_period_ids:
-                end_period_ids.append(datas['form']['end_period'])
+                    set(start_period_ids)))
+            if session.start.end_period.id not in end_period_ids:
+                end_period_ids.append(session.start.end_period.id)
         else:
             end_period_ids = period_obj.search([
-                ('fiscalyear', '=', datas['form']['fiscalyear']),
-                ])
+                    ('fiscalyear', '=', session.start.fiscalyear.id),
+                    ])
             end_period_ids = list(set(end_period_ids).difference(
-                set(start_period_ids)))
+                    set(start_period_ids)))
 
-        act_window_id = model_data_obj.get_id('account',
-                'act_account_income_statement_tree')
-        res = act_window_obj.read(act_window_id)
-        res['pyson_context'] = PYSONEncoder().encode({
-            'periods': end_period_ids,
-            'posted': datas['form']['posted'],
-            'company': datas['form']['company'],
-            })
-        return res
+        action['pyson_context'] = PYSONEncoder().encode({
+                'periods': end_period_ids,
+                'posted': session.start.posted,
+                'company': session.start.company.id,
+                })
+        return action, {}
 
 OpenIncomeStatement()
 
 
-class CreateChartAccountInit(ModelView):
-    'Create Chart Account Init'
-    _name = 'account.account.create_chart_account.init'
+class CreateChartStart(ModelView):
+    'Create Chart'
+    _name = 'account.create_chart.start'
     _description = __doc__
 
-CreateChartAccountInit()
+CreateChartStart()
 
 
-class CreateChartAccountAccount(ModelView):
-    'Create Chart Account Account'
-    _name = 'account.account.create_chart_account.account'
+class CreateChartAccount(ModelView):
+    'Create Chart'
+    _name = 'account.create_chart.account'
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
@@ -1654,12 +1627,12 @@ class CreateChartAccountAccount(ModelView):
     def default_company(self):
         return Transaction().context.get('company') or False
 
-CreateChartAccountAccount()
+CreateChartAccount()
 
 
-class CreateChartAccountPropertites(ModelView):
-    'Create Chart Account Properties'
-    _name = 'account.account.create_chart_account.properties'
+class CreateChartPropertites(ModelView):
+    'Create Chart'
+    _name = 'account.create_chart.properties'
     _description = __doc__
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
@@ -1677,54 +1650,32 @@ class CreateChartAccountPropertites(ModelView):
             ],
             depends=['company'])
 
-CreateChartAccountPropertites()
+CreateChartPropertites()
 
 
-class CreateChartAccount(Wizard):
-    'Create chart account from template'
-    _name = 'account.account.create_chart_account'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.create_chart_account.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('account', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'account': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.create_chart_account.account',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('create_account', 'Create', 'tryton-ok', True),
-                ],
-            },
-        },
-        'create_account': {
-            'actions': ['_action_create_account'],
-            'result': {
-                'type': 'form',
-                'object': 'account.account.create_chart_account.properties',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('create_properties', 'Create', 'tryton-ok', True),
-                ],
-            },
-        },
-        'create_properties': {
-            'result': {
-                'type': 'action',
-                'action': '_action_create_properties',
-                'state': 'end',
-            },
-        },
-    }
+class CreateChart(Wizard):
+    'Create Chart'
+    _name = 'account.create_chart'
 
-    def _action_create_account(self, datas):
+    start = StateView('account.create_chart.start',
+        'account.create_chart_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'account', 'tryton-ok', default=True),
+            ])
+    account = StateView('account.create_chart.account',
+        'account.create_chart_account_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Create', 'create_account', 'tryton-ok', default=True),
+            ])
+    create_account = StateTransition()
+    properties = StateView('account.create_chart.properties',
+        'account.create_chart_properties_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Create', 'create_properties', 'tryton-ok', default=True),
+            ])
+    create_properties = StateTransition()
+
+    def transition_create_account(self, session):
         pool = Pool()
         account_type_template_obj = \
                 pool.get('account.account.type.template')
@@ -1736,45 +1687,44 @@ class CreateChartAccount(Wizard):
                 pool.get('account.tax.rule.line.template')
 
         with Transaction().set_context(language='en_US'):
-            account_template = account_template_obj.browse(
-                    datas['form']['account_template'])
+            account_template = session.account.account_template
 
             # Create account types
             template2type = {}
             account_type_template_obj.create_type(account_template.type,
-                    datas['form']['company'], template2type=template2type)
+                session.account.company.id, template2type=template2type)
 
             # Create accounts
             template2account = {}
             account_template_obj.create_account(account_template,
-                    datas['form']['company'],
-                    template2account=template2account,
-                    template2type=template2type)
+                session.account.company.id,
+                template2account=template2account,
+                template2type=template2type)
 
             # Create tax codes
             template2tax_code = {}
             tax_code_template_ids = tax_code_template_obj.search([
-                ('account', '=', datas['form']['account_template']),
-                ('parent', '=', False),
-                ])
+                    ('account', '=', account_template.id),
+                    ('parent', '=', False),
+                    ])
             for tax_code_template in tax_code_template_obj.browse(
                     tax_code_template_ids):
                 tax_code_template_obj.create_tax_code(tax_code_template,
-                        datas['form']['company'],
-                        template2tax_code=template2tax_code)
+                    session.account.company.id,
+                    template2tax_code=template2tax_code)
 
             # Create taxes
             template2tax = {}
             tax_template_ids = tax_template_obj.search([
-                ('account', '=', datas['form']['account_template']),
-                ('parent', '=', False),
-                ])
+                    ('account', '=', account_template.id),
+                    ('parent', '=', False),
+                    ])
             for tax_template in tax_template_obj.browse(tax_template_ids):
                 tax_template_obj.create_tax(tax_template,
-                        datas['form']['company'],
-                        template2tax_code=template2tax_code,
-                        template2account=template2account,
-                        template2tax=template2tax)
+                    session.account.company.id,
+                    template2tax_code=template2tax_code,
+                    template2account=template2account,
+                    template2tax=template2tax)
 
             # Update taxes on accounts
             account_template_obj.update_account_taxes(account_template,
@@ -1783,117 +1733,111 @@ class CreateChartAccount(Wizard):
             # Create tax rules
             template2rule = {}
             tax_rule_template_ids = tax_rule_template_obj.search([
-                ('account', '=', datas['form']['account_template']),
-                ])
+                    ('account', '=', account_template.id),
+                    ])
             for tax_rule_template in tax_rule_template_obj.browse(
                     tax_rule_template_ids):
                 tax_rule_template_obj.create_rule(tax_rule_template,
-                        datas['form']['company'], template2rule=template2rule)
+                    session.account.company.id, template2rule=template2rule)
 
             # Create tax rule lines
             template2rule_line = {}
             tax_rule_line_template_ids = tax_rule_line_template_obj.search([
-                ('rule.account', '=', datas['form']['account_template']),
-                ])
+                    ('rule.account', '=', account_template.id),
+                    ])
             for tax_rule_line_template in tax_rule_line_template_obj.browse(
                     tax_rule_line_template_ids):
                 tax_rule_line_template_obj.create_rule_line(
-                        tax_rule_line_template, template2tax, template2rule,
-                        template2rule_line=template2rule_line)
+                    tax_rule_line_template, template2tax, template2rule,
+                    template2rule_line=template2rule_line)
+        return 'properties'
 
-        return {'company': datas['form']['company']}
+    def default_properties(self, session, fields):
+        return {
+            'company': session.account.company.id,
+            }
 
-    def _action_create_properties(self, datas):
-        property_obj = Pool().get('ir.property')
-        model_field_obj = Pool().get('ir.model.field')
+    def transition_create_properties(self, session):
+        pool = Pool()
+        property_obj = pool.get('ir.property')
+        model_field_obj = pool.get('ir.model.field')
 
-        account_receivable_field_id = model_field_obj.search([
-            ('model.model', '=', 'party.party'),
-            ('name', '=', 'account_receivable'),
-            ], limit=1)[0]
+        account_receivable_field_id, = model_field_obj.search([
+                ('model.model', '=', 'party.party'),
+                ('name', '=', 'account_receivable'),
+                ], limit=1)
         property_ids = property_obj.search([
-            ('field', '=', account_receivable_field_id),
-            ('res', '=', False),
-            ('company', '=', datas['form']['company']),
-            ])
+                ('field', '=', account_receivable_field_id),
+                ('res', '=', False),
+                ('company', '=', session.properties.company.id),
+                ])
         with Transaction().set_user(0):
             property_obj.delete(property_ids)
-            if datas['form']['account_receivable']:
+            if session.properties.account_receivable:
                 property_obj.create({
-                    'field': account_receivable_field_id,
-                    'value': 'account.account,' + \
-                            str(datas['form']['account_receivable']),
-                    'company': datas['form']['company'],
-                    })
+                        'field': account_receivable_field_id,
+                        'value': 'account.account,' + \
+                            str(session.properties.account_receivable.id),
+                        'company': session.properties.company.id,
+                        })
 
-        account_payable_field_id = model_field_obj.search([
-            ('model.model', '=', 'party.party'),
-            ('name', '=', 'account_payable'),
-            ], limit=1)[0]
+        account_payable_field_id, = model_field_obj.search([
+                ('model.model', '=', 'party.party'),
+                ('name', '=', 'account_payable'),
+                ], limit=1)
         property_ids = property_obj.search([
-            ('field', '=', account_payable_field_id),
-            ('res', '=', False),
-            ('company', '=', datas['form']['company']),
-            ])
+                ('field', '=', account_payable_field_id),
+                ('res', '=', False),
+                ('company', '=', session.properties.company.id),
+                ])
         with Transaction().set_user(0):
             property_obj.delete(property_ids)
-            if datas['form']['account_payable']:
+            if session.properties.account_payable:
                 property_obj.create({
-                    'field': account_payable_field_id,
-                    'value': 'account.account,' + \
-                            str(datas['form']['account_payable']),
-                    'company': datas['form']['company'],
-                    })
-        return {}
+                        'field': account_payable_field_id,
+                        'value': 'account.account,' + \
+                            str(session.properties.account_payable.id),
+                        'company': session.properties.company.id,
+                        })
+        return 'end'
 
-CreateChartAccount()
+CreateChart()
 
 
-class UpdateChartAccountInit(ModelView):
-    'Update Chart Account from Template Init'
-    _name = 'account.account.update_chart_account.init'
+class UpdateChartStart(ModelView):
+    'Update Chart'
+    _name = 'account.update_chart.start'
     _description = __doc__
     account = fields.Many2One('account.account', 'Root Account',
             required=True, domain=[('parent', '=', False)])
 
-UpdateChartAccountInit()
+UpdateChartStart()
 
 
-class UpdateChartAccountStart(ModelView):
-    'Update Chart Account from Template Start'
-    _name = 'account.account.update_chart_account.start'
+class UpdateChartSucceed(ModelView):
+    'Update Chart'
+    _name = 'account.update_chart.succeed'
     _description = __doc__
 
-UpdateChartAccountStart()
+UpdateChartSucceed()
 
 
-class UpdateChartAccount(Wizard):
-    'Update Chart Account from Template'
-    _name = 'account.account.update_chart_account'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.update_chart_account.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('start', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'start': {
-            'actions': ['_action_update_account'],
-            'result': {
-                'type': 'form',
-                'object': 'account.account.update_chart_account.start',
-                'state': [
-                    ('end', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-    }
+class UpdateChart(Wizard):
+    'Update Chart'
+    _name = 'account.update_chart'
 
-    def _action_update_account(self, datas):
+    start = StateView('account.update_chart.start',
+        'account.update_chart_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Update', 'update', 'tryton-ok', default=True),
+            ])
+    update = StateTransition()
+    succeed = StateView('account.update_chart.succeed',
+        'account.update_chart_succeed_view_form', [
+            Button('Ok', 'end', 'tryton-ok', default=True),
+            ])
+
+    def transition_update(self, session):
         pool = Pool()
         account_type_obj = pool.get('account.account.type')
         account_type_template_obj = \
@@ -1910,7 +1854,7 @@ class UpdateChartAccount(Wizard):
         tax_rule_line_template_obj = \
                 pool.get('account.tax.rule.line.template')
 
-        account = account_obj.browse(datas['form']['account'])
+        account = session.start.account
 
         # Update account types
         template2type = {}
@@ -2012,14 +1956,14 @@ class UpdateChartAccount(Wizard):
                 tax_rule_line_template_obj.create_rule_line(
                         tax_rule_line_template, template2tax, template2rule,
                         template2rule_line=template2rule_line)
-        return {}
+        return 'succeed'
 
-UpdateChartAccount()
+UpdateChart()
 
 
-class OpenThirdPartyBalanceInit(ModelView):
-    'Open Third Party Balance Init'
-    _name = 'account.account.open_third_party_balance.init'
+class OpenThirdPartyBalanceStart(ModelView):
+    'Open Third Party Balance'
+    _name = 'account.open_third_party_balance.start'
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
@@ -2041,39 +1985,38 @@ class OpenThirdPartyBalanceInit(ModelView):
     def default_company(self):
         return Transaction().context.get('company') or False
 
-OpenThirdPartyBalanceInit()
+OpenThirdPartyBalanceStart()
 
 
 class OpenThirdPartyBalance(Wizard):
     'Open Third Party Balance'
-    _name = 'account.account.open_third_party_balance'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.open_third_party_balance.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('print', 'Print', 'tryton-ok', True),
-                ],
-            },
-        },
-        'print': {
-            'result': {
-                'type': 'print',
-                'report': 'account.account.third_party_balance',
-                'state': 'end',
-            },
-        },
-    }
+    _name = 'account.open_third_party_balance'
+
+    start = StateView('account.open_third_party_balance.start',
+        'account.open_balance_sheet_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account.report_third_party_balance')
+
+    def do_print_(self, session, action):
+        data = {
+            'company': session.start.company.id,
+            'fiscalyear': session.start.fiscalyear.id,
+            'posted': session.start.posted,
+            }
+        return action, data
+
+    def transition_print_(self, session):
+        return 'end'
 
 OpenThirdPartyBalance()
 
 
 class ThirdPartyBalance(Report):
-    _name = 'account.account.third_party_balance'
+    _name = 'account.third_party_balance'
 
-    def parse(self, report, objects, datas, localcontext):
+    def parse(self, report, objects, data, localcontext):
         pool = Pool()
         party_obj = pool.get('party.party')
         move_line_obj = pool.get('account.move.line')
@@ -2081,13 +2024,13 @@ class ThirdPartyBalance(Report):
         date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
 
-        company = company_obj.browse(datas['form']['company'])
+        company = company_obj.browse(data['company'])
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
-        localcontext['fiscalyear'] = datas['form']['fiscalyear']
+        localcontext['fiscalyear'] = data['fiscalyear']
         with Transaction().set_context(context=localcontext):
             line_query, _ = move_line_obj.query_get()
-        if datas['form']['posted']:
+        if data['posted']:
             posted_clause = "AND m.state = 'posted' "
         else:
             posted_clause = ""
@@ -2107,7 +2050,7 @@ class ThirdPartyBalance(Report):
                     + posted_clause + \
                 'GROUP BY l.party ' \
                 'HAVING (SUM(l.debit) != 0 OR SUM(l.credit) != 0)',
-                (datas['form']['company'], date_obj.today()))
+                (data['company'], date_obj.today()))
 
         res = cursor.fetchall()
         id2party = {}
@@ -2124,15 +2067,15 @@ class ThirdPartyBalance(Report):
         localcontext['total_credit'] = sum((x['credit'] for x in objects))
         localcontext['total_solde'] = sum((x['solde'] for x in objects))
 
-        return super(ThirdPartyBalance, self).parse(report, objects, datas,
-                localcontext)
+        return super(ThirdPartyBalance, self).parse(report, objects, data,
+            localcontext)
 
 ThirdPartyBalance()
 
 
-class OpenAgedBalanceInit(ModelView):
-    'Open Aged Balance Init'
-    _name = 'account.account.open_aged_balance.init'
+class OpenAgedBalanceStart(ModelView):
+    'Open Aged Balance'
+    _name = 'account.open_aged_balance.start'
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
@@ -2176,33 +2119,19 @@ class OpenAgedBalanceInit(ModelView):
     def default_company(self):
         return Transaction().context.get('company') or False
 
-OpenAgedBalanceInit()
+OpenAgedBalanceStart()
 
 
 class OpenAgedBalance(Wizard):
     'Open Aged Party Balance'
-    _name = 'account.account.open_aged_balance'
+    _name = 'account.open_aged_balance'
 
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'account.account.open_aged_balance.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('print', 'Print', 'tryton-ok', True),
-                ],
-            },
-        },
-        'print': {
-            'actions': ['check',],
-            'result': {
-                'type': 'print',
-                'report': 'account.account.aged_balance',
-                'state': 'end',
-            },
-        },
-    }
+    start = StateView('account.open_aged_balance.start',
+        'account.open_balance_sheet_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Print', 'print_', 'tryton-print', default=True),
+            ])
+    print_ = StateAction('account.report_aged_balance')
 
     def __init__(self):
         super(OpenAgedBalance, self).__init__()
@@ -2210,20 +2139,33 @@ class OpenAgedBalance(Wizard):
                 'warning': 'Warning',
                 'term_overlap_desc': 'You cannot define overlapping terms'})
 
-    def check(self, datas):
-        if not (datas['form']['term1'] < datas['form']['term2'] \
-                  < datas['form']['term3']):
+    def do_print_(self, session, action):
+        if not (session.start.term1 < session.start.term2
+                < session.start.term3):
             self.raise_user_error(error="warning",
                     error_description="term_overlap_desc")
-        return datas['form']
+        data = {
+            'company': session.start.company.id,
+            'fiscalyear': session.start.fiscalyear.id,
+            'term1': session.start.term1,
+            'term2': session.start.term3,
+            'term3': session.start.term3,
+            'unit': session.start.unit,
+            'posted': session.start.posted,
+            'balance_type': session.start.balance_type,
+            }
+        return action, data
+
+    def transition_print_(self, session):
+        return 'end'
 
 OpenAgedBalance()
 
 
 class AgedBalance(Report):
-    _name = 'account.account.aged_balance'
+    _name = 'account.aged_balance'
 
-    def parse(self, report, objects, datas, localcontext):
+    def parse(self, report, objects, data, localcontext):
         pool = Pool()
         party_obj = pool.get('party.party')
         move_line_obj = pool.get('account.move.line')
@@ -2231,25 +2173,24 @@ class AgedBalance(Report):
         date_obj = pool.get('ir.date')
         cursor = Transaction().cursor
 
-        company = company_obj.browse(datas['form']['company'])
+        company = company_obj.browse(data['company'])
         localcontext['digits'] = company.currency.digits
-        localcontext['fiscalyear'] = datas['form']['fiscalyear']
-        localcontext['posted'] = datas['form']['posted']
+        localcontext['fiscalyear'] = data['fiscalyear']
+        localcontext['posted'] = data['posted']
         with Transaction().set_context(context=localcontext):
             line_query, _ = move_line_obj.query_get()
 
-        terms = (datas['form']['term1'],
-                  datas['form']['term2'],
-                  datas['form']['term3'])
-        if datas['form']['unit'] == 'month':
+        terms = (data['term1'], data['term2'], data['term3'])
+        if data['unit'] == 'month':
             coef = 30
         else:
             coef = 1
 
-        kind = {'both': ('payable','receivable'),
-                'supplier': ('payable',),
-                'customer': ('receivable',),
-                }[datas['form']['balance_type']]
+        kind = {
+            'both': ('payable', 'receivable'),
+            'supplier': ('payable',),
+            'customer': ('receivable',),
+            }[data['balance_type']]
 
         res = {}
         for position,term in enumerate(terms):
@@ -2280,7 +2221,7 @@ class AgedBalance(Report):
                         'AND ' + line_query + ' ' \
                     'GROUP BY l.party ' \
                     'HAVING (SUM(l.debit) - SUM(l.credit) != 0)',
-                    kind + (datas['form']['company'],) + term_args)
+                    kind + (data['company'],) + term_args)
             for party, solde in cursor.fetchall():
                 if party in res:
                     res[party][position] = solde
@@ -2292,8 +2233,8 @@ class AgedBalance(Report):
             ])
         parties = party_obj.browse(party_ids)
 
-        localcontext['main_title'] = datas['form']['balance_type']
-        localcontext['unit'] = datas['form']['unit']
+        localcontext['main_title'] = data['balance_type']
+        localcontext['unit'] = data['unit']
         for i in range(3):
             localcontext['total' + str(i)] = sum((v[i] for v in res.itervalues()))
             localcontext['term' + str(i)] = terms[i]
@@ -2306,7 +2247,7 @@ class AgedBalance(Report):
             'amount2': res[p.id][2],
             } for p in parties]
 
-        return super(AgedBalance, self).parse(report, objects, datas,
-                localcontext)
+        return super(AgedBalance, self).parse(report, objects, data,
+            localcontext)
 
 AgedBalance()
