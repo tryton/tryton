@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import logging
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -267,17 +267,17 @@ class PartyCategory(ModelSQL):
 PartyCategory()
 
 
-class CheckVIESNoCheck(ModelView):
-    'Check VIES - No Check'
-    _name = 'party.check_vies.no_check'
+class CheckVIESNoResult(ModelView):
+    'Check VIES'
+    _name = 'party.check_vies.no_result'
     _description = __doc__
 
-CheckVIESNoCheck()
+CheckVIESNoResult()
 
 
-class CheckVIESCheck(ModelView):
-    'Check VIES - Check'
-    _name = 'party.check_vies.check'
+class CheckVIESResult(ModelView):
+    'Check VIES'
+    _name = 'party.check_vies.result'
     _description = __doc__
     parties_succeed = fields.Many2Many('party.party', None, None,
         'Parties Succeed', readonly=True, states={
@@ -288,39 +288,23 @@ class CheckVIESCheck(ModelView):
             'invisible': ~Eval('parties_failed'),
             })
 
-CheckVIESCheck()
+CheckVIESResult()
 
 
 class CheckVIES(Wizard):
     'Check VIES'
     _name = 'party.check_vies'
-    states = {
-        'init': {
-            'result': {
-                'type': 'choice',
-                'next_state': '_choice',
-            },
-        },
-        'no_check': {
-            'result': {
-                'type': 'form',
-                'object': 'party.check_vies.no_check',
-                'state': [
-                    ('end', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'check': {
-            'actions': ['_check'],
-            'result': {
-                'type': 'form',
-                'object': 'party.check_vies.check',
-                'state': [
-                    ('end', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-    }
+    start_state = 'check'
+
+    check = StateTransition()
+    result = StateView('party.check_vies.result',
+        'party.check_vies_result', [
+            Button('Ok', 'end', 'tryton-ok', True),
+            ])
+    no_result = StateView('party.check_vies.no_result',
+        'party.check_vies_no_result', [
+            Button('Ok', 'end', 'tryton-ok', True),
+            ])
 
     def __init__(self):
         super(CheckVIES, self).__init__()
@@ -329,31 +313,28 @@ class CheckVIES(Wizard):
                     'try again later.',
             })
 
-    def _choice(self, data):
-        if not HAS_VATNUMBER or not hasattr(vatnumber, 'check_vies'):
-            return 'no_check'
-        return 'check'
-
-    def _check(self, data):
+    def transition_check(self, session):
         party_obj = Pool().get('party.party')
-        res = {
-            'parties_succeed': [],
-            'parties_failed': [],
-        }
-        parties = party_obj.browse(data['ids'])
+
+        if not HAS_VATNUMBER or not hasattr(vatnumber, 'check_vies'):
+            return 'no_result'
+
+        parties_succeed = []
+        parties_failed = []
+        parties = party_obj.browse(Transaction().context.get('active_ids'))
         for party in parties:
             if not party.vat_code:
                 continue
             try:
                 if not vatnumber.check_vies(party.vat_code):
-                    res['parties_failed'].append(party.id)
+                    parties_failed.append(party.id)
                 else:
-                    res['parties_succeed'].append(party.id)
+                    parties_succeed.append(party.id)
             except Exception, e:
                 if hasattr(e, 'faultstring') \
                         and hasattr(e.faultstring, 'find'):
                     if e.faultstring.find('INVALID_INPUT'):
-                        res['parties_failed'].append(party.id)
+                        parties_failed.append(party.id)
                         continue
                     if e.faultstring.find('SERVICE_UNAVAILABLE') \
                             or e.faultstring.find('MS_UNAVAILABLE') \
@@ -361,6 +342,14 @@ class CheckVIES(Wizard):
                             or e.faultstring.find('SERVER_BUSY'):
                         self.raise_user_error('vies_unavailable')
                 raise
-        return res
+        session.result.parties_succeed = parties_succeed
+        session.result.parties_failed = parties_failed
+        return 'result'
+
+    def default_result(self, session, fields):
+        return {
+            'parties_succeed': [p.id for p in session.result.parties_succeed],
+            'parties_failed': [p.id for p in session.result.parties_failed],
+            }
 
 CheckVIES()

@@ -176,8 +176,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_check_vies"/>
         </record>
 
-        <record model="ir.ui.view" id="check_vies_no_check">
-            <field name="model">party.check_vies.no_check</field>
+        <record model="ir.ui.view" id="check_vies_no_result">
+            <field name="model">party.check_vies.no_result</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -191,8 +191,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="check_vies_check">
-            <field name="model">party.check_vies.check</field>
+        <record model="ir.ui.view" id="check_vies_result">
+            <field name="model">party.check_vies.result</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
