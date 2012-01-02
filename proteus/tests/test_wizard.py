@@ -12,14 +12,18 @@ class TestWizard(TestCase):
     def test_translation_clean(self):
         translation_clean = Wizard('ir.translation.clean')
         self.assertEqual(translation_clean.form.__class__.__name__,
-                'ir.translation.clean.init')
-        translation_clean.execute('start')
+                'ir.translation.clean.start')
+        translation_clean.execute('clean')
+        self.assertEqual(translation_clean.form.__class__.__name__,
+            'ir.translation.clean.succeed')
 
     def test_translation_export(self):
+        Lang = Model.get('ir.lang')
+        Module = Model.get('ir.module.module')
         translation_export = Wizard('ir.translation.export')
-        translation_export.form.lang = 'en_US'
-        translation_export.form.module = 'ir'
-        translation_export.execute('start')
+        translation_export.form.language, = Lang.find([('code', '=', 'en_US')])
+        translation_export.form.module, = Module.find([('name', '=', 'ir')])
+        translation_export.execute('export')
         self.assert_(translation_export.form.file)
         translation_export.execute('end')
 

@@ -650,6 +650,8 @@ class Model(object):
 
     def _default_set(self, values):
         for field, value in values.iteritems():
+            if '.' in field:
+                continue
             definition = self._fields[field]
             if definition['type'] in ('one2many', 'many2many'):
                 if value and len(value) and isinstance(value[0], (int, long)):
@@ -672,13 +674,17 @@ class Model(object):
         values['id'] = self.id
         return values
 
-    def _on_change_args(self, args):
-        res = {}
+    def _get_on_change_value(self):
         values = self._get_eval()
         del values['id']
         for field, definition in self._fields.iteritems():
             if definition['type'] in ('one2many', 'many2many'):
                 values[field] = [x._get_eval() for x in getattr(self, field)]
+        return values
+
+    def _on_change_args(self, args):
+        res = {}
+        values = self._get_on_change_value()
         if self._parent:
             values['_parent_%s' % self._parent_name] = \
                     _EvalEnvironment(self._parent)
@@ -774,62 +780,53 @@ class Wizard(object):
             assert len(set(type(x) for x in models)) == 1
         super(Wizard, self).__init__()
         self.name = name
-        self.state = None
-        self.states = ['init']
         self.form = None
+        self.form_state = None
         self._config = config or proteus.config.get_config()
         self._context = context or {}
         self._proxy = self._config.get_proxy(name, type='wizard')
-        self.id = self._proxy.create(self._config.context)
-        if models:
-            self.datas = {
-                    'model': models[0].__class__.__name__,
-                    'id': models[0].id,
-                    'ids': [model.id for model in models]
-                    }
-        else:
-            self.datas = {}
-        self.execute('init')
+        result = self._proxy.create(self._config.context)
+        self.session_id, self.start_state, self.end_state = result
+        self.states = [self.start_state]
+        self.models = models
+        self.execute(self.start_state)
 
     def execute(self, state):
         assert state in self.states
-
-        if 'form' not in self.datas:
-            self.datas['form'] = {}
-
-        if self.form:
-            self.datas['form'].update(self.form._get_values())
 
         self.state = state
         while self.state != 'end':
             ctx = self._context.copy()
             ctx.update(self._config.context)
-            ctx['active_id'] = self.datas.get('id')
-            ctx['active_ids'] = self.datas.get('ids')
+            if self.models:
+                ctx['active_id'] = self.models[0].id
+                ctx['active_ids'] = [model.id for model in self.models]
+                ctx['active_model'] = self.models[0].__class__.__name__
+            else:
+                ctx['active_id'] = None
+                ctx['active_ids'] = None
+                ctx['active_model'] = None
 
-            res = self._proxy.execute(self.id, self.datas, self.state, ctx)
-            if not res:
-                break
+            if self.form:
+                data = {self.form_state: self.form._get_on_change_value()}
+            else:
+                data = {}
 
-            if 'datas' in res:
-                self.datas['form'] = res['datas']
-            elif res['type'] == 'form':
-                self.datas['form'] = {}
+            result = self._proxy.execute(self.session_id, data, self.state,
+                ctx)
 
-            if res['type'] == 'form':
-                self.states = [x[0] for x in res['state']]
-                # XXX set context
-                self.form = Model.get(res['object'])()
-                self.form._default_set(self.datas['form'])
+            if 'view' in result:
+                view = result['view']
+                self.form = Model.get(view['fields_view']['model'])()
+                self.form._default_set(view['defaults'])
+                self.states = [b['state'] for b in view['buttons']]
+                self.form_state = view['state']
                 return
-            elif res['type'] == 'action':
-                # TODO run action
-                self.state = res['state']
-            elif res['type'] == 'print':
-                # TODO run print
-                self.state = res['state']
-            elif res['type'] == 'state':
-                self.state = res['state']
+            else:
+                self.state = self.end_state
 
-        if self.state == 'end':
-            self._proxy.delete(self.id, self._config.context)
+            if 'actions' in result:
+                pass  # TODO
+
+        if self.state == self.end_state:
+            self._proxy.delete(self.session_id, self._config.context)
