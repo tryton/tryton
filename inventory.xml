@@ -3,16 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.action.wizard" id="wizard_complete_inventory">
-            <field name="name">Complete Inventory</field>
-            <field name="wiz_name">stock.inventory.complete</field>
-            <field name="model">stock.inventory</field>
-        </record>
-        <record model="ir.action-res.group"
-            id="wizard_complete_inventory_group_stock">
-            <field name="action" ref="wizard_complete_inventory"/>
-            <field name="group" ref="group_stock"/>
-        </record>
 
         <record model="ir.ui.view" id="inventory_view_form">
             <field name="model">stock.inventory</field>
@@ -29,8 +19,8 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="company"/>
                         <field name="company"/>
                         <label colspan="2" id="empty"/>
-                        <button string="Complete Inventory" type="action"
-                            name="%(wizard_complete_inventory)d"
+                        <button string="Complete Inventory" type="object"
+                            name="complete_lines"
                             states="{'readonly': Not(Equal(Eval('state'), 'draft'))}"
                             colspan="2"
                             help="Add an inventory line for each missing products"/>

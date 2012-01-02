@@ -29,7 +29,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <tree string="Product Stock">
+                    <tree string="Location Quantity">
                         <field name="name"/>
                         <field name="quantity"/>
                         <field name="forecast_quantity"/>
@@ -41,39 +41,39 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_location_quantity_tree">
-            <field name="name">Product Stock</field>
+            <field name="name">Location Quantity</field>
             <field name="res_model">stock.location</field>
             <field name="domain">[('parent', '=', False)]</field>
-            <field name="window_name" eval="False"/>
+            <field name="window_name" eval="True"/>
         </record>
         <record model="ir.action.act_window.view" id="act_location_quantity_tree_view">
             <field name="sequence" eval="10"/>
             <field name="view" ref="location_quantity_view_tree"/>
             <field name="act_window" ref="act_location_quantity_tree"/>
         </record>
-        <record model="ir.action.wizard" id="wizard_location_open">
+        <record model="ir.action.wizard" id="wizard_product_by_location">
             <field name="name">Product by Location</field>
-            <field name="wiz_name">stock.location.open</field>
+            <field name="wiz_name">product.by_location</field>
             <field name="model">product.product</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_location_quantity_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">product.product,-1</field>
-            <field name="action" ref="wizard_location_open"/>
+            <field name="action" ref="wizard_product_by_location"/>
         </record>
         <record model="ir.action-res.group"
-            id="wizard_location_open-group_stock">
-            <field name="action" ref="wizard_location_open"/>
+            id="wizard_product_by_location-group_stock">
+            <field name="action" ref="wizard_product_by_location"/>
             <field name="group" ref="group_stock"/>
         </record>
 
-        <record model="ir.ui.view" id="product_stock_date_init_view_form">
-            <field name="model">stock.product_stock_date.init</field>
+        <record model="ir.ui.view" id="product_by_location_start_view_form">
+            <field name="model">product.by_location.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Product Quantity.">
+                <form string="Product by Location">
                     <label name="forecast_date"/>
                     <field name="forecast_date"/>
                 </form>

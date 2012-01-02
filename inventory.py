@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
@@ -52,6 +51,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
     def __init__(self):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
+        self._rpc['complete_lines'] = True
 
     def init(self, module_name):
         super(Inventory, self).init(module_name)
@@ -332,25 +332,3 @@ class InventoryLine(ModelSQL, ModelView):
         }
 
 InventoryLine()
-
-
-class CompleteInventory(Wizard):
-    'Complete Inventory'
-    _name = 'stock.inventory.complete'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_complete',
-                'state': 'end',
-                },
-            },
-        }
-
-    def _complete(self, data):
-        inventory_obj = Pool().get('stock.inventory')
-        inventory_obj.complete_lines(data['ids'])
-
-        return {}
-
-CompleteInventory()

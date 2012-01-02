@@ -240,8 +240,8 @@ this repository contains the full copyright notices and license terms. -->
                   action="act_shipment_in_return_form"
                   id="menu_shipment_in_return_form"/>
 
-        <record model="ir.ui.view" id="shipment_in_return_assign_assign_failed_view_form">
-            <field name="model">stock.shipment.in.return.assign.assign_failed</field>
+        <record model="ir.ui.view" id="shipment_in_return_assign_failed_view_form">
+            <field name="model">stock.shipment.in.return.assign.failed</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -444,8 +444,8 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_shipment_out_form" sequence="30"
             action="act_shipment_out_form_ready" id="menu_shipment_out_ready"/>
 
-        <record model="ir.ui.view" id="shipment_out_assign_assign_failed_view_form">
-            <field name="model">stock.shipment.out.assign.assign_failed</field>
+        <record model="ir.ui.view" id="shipment_out_assign_failed_view_form">
+            <field name="model">stock.shipment.out.assign.failed</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -623,8 +623,8 @@ this repository contains the full copyright notices and license terms. -->
                   action="act_shipment_internal_assigned_form"
                   id="menu_shipment_internal_assigned_form"/>
 
-        <record model="ir.ui.view" id="shipment_internal_assign_assign_failed_view_form">
-            <field name="model">stock.shipment.internal.assign.assign_failed</field>
+        <record model="ir.ui.view" id="shipment_internal_assign_failed_view_form">
+            <field name="model">stock.shipment.internal.assign.failed</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[

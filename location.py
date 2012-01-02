@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, Button, StateAction
 from trytond.backend import TableHandler
 from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
 from trytond.transaction import Transaction
@@ -173,22 +173,6 @@ class Location(ModelSQL, ModelView):
 
         return dict([(loc,qty) for (loc,prod), qty in pbl])
 
-    def view_header_get(self, value, view_type='form'):
-        product_obj = Pool().get('product.product')
-        value = super(Location, self).view_header_get(value,
-                view_type=view_type)
-        if (Transaction().context.get('product')
-                and isinstance(Transaction().context['product'], (int, long))):
-            with Transaction().set_context(active_test=False):
-                product_ids = product_obj.search([
-                    ('id', '=', Transaction().context['product']),
-                    ], limit=1)
-            if product_ids:
-                product = product_obj.browse(product_ids[0])
-                return value + ': ' + product.rec_name + \
-                        ' (' + product.default_uom.rec_name + ')'
-        return value
-
     def _set_warehouse_parent(self, locations):
         '''
         Set the parent of child location of warehouse if not set
@@ -319,9 +303,10 @@ class Party(ModelSQL, ModelView):
 Party()
 
 
-class ChooseStockDateInit(ModelView):
-    _name = 'stock.location_stock_date.init'
-    _description = "Compute stock quantities"
+class ProductsByLocationsStart(ModelView):
+    'Products by Locations'
+    _name = 'stock.products_by_locations.start'
+    _description = __doc__
     forecast_date = fields.Date(
         'At Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
@@ -332,48 +317,26 @@ class ChooseStockDateInit(ModelView):
         date_obj = Pool().get('ir.date')
         return date_obj.today()
 
-ChooseStockDateInit()
+ProductsByLocationsStart()
 
 
-class OpenProduct(Wizard):
-    'Open Products'
-    _name = 'stock.product.open'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'stock.location_stock_date.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_product',
-                'state': 'end',
-            },
-        },
-    }
+class ProductsByLocations(Wizard):
+    'Products by Locations'
+    _name = 'stock.products_by_locations'
 
-    def _action_open_product(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('stock',
-                'act_product_by_location')
-        res = act_window_obj.read(act_window_id)
+    start = StateView('stock.products_by_locations.start',
+        'stock.products_by_locations_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open', 'tryton-ok', True),
+            ])
+    open = StateAction('stock.act_products_by_locations')
 
+    def do_open(self, session, action):
         context = {}
-        context['locations'] = data['ids']
-        if data['form']['forecast_date']:
-            date = data['form']['forecast_date']
-        else:
-            date = datetime.date.max
+        context['locations'] = Transaction().context.get('active_ids')
+        date = session.start.forecast_date or datetime.date.max
         context['stock_date_end'] = Date(date.year, date.month, date.day)
-        res['pyson_context'] = PYSONEncoder().encode(context)
+        action['pyson_context'] = PYSONEncoder().encode(context)
+        return action, {}
 
-        return res
-
-OpenProduct()
+ProductsByLocations()

@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.tools import safe_eval
@@ -527,9 +527,10 @@ class Product(ModelSQL, ModelView):
 Product()
 
 
-class ChooseStockDateInit(ModelView):
-    _name = 'stock.product_stock_date.init'
-    _description = "Compute stock quantities"
+class ProductByLocationStart(ModelView):
+    'Product by Location'
+    _name = 'product.by_location.start'
+    _description = __doc__
     forecast_date = fields.Date(
         'At Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
@@ -540,46 +541,46 @@ class ChooseStockDateInit(ModelView):
         date_obj = Pool().get('ir.date')
         return date_obj.today()
 
-ChooseStockDateInit()
+ProductByLocationStart()
 
-class OpenLocation(Wizard):
-    'Products by Locations'
-    _name = 'stock.location.open'
-    states = {
-        'init': {
-            'result': {
-                'type': 'form',
-                'object': 'stock.product_stock_date.init',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('open', 'Open', 'tryton-ok', True),
-                ],
-            },
-        },
-        'open': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open_location',
-                'state': 'end',
-            },
-        },
-    }
 
-    def _action_open_location(self, data):
-        model_data_obj = Pool().get('ir.model.data')
-        act_window_obj = Pool().get('ir.action.act_window')
-        act_window_id = model_data_obj.get_id('stock',
-                'act_location_quantity_tree')
-        res = act_window_obj.read(act_window_id)
+class ProductByLocation(Wizard):
+    'Product by Location'
+    _name = 'product.by_location'
+
+    start = StateView('product.by_location.start',
+        'stock.product_by_location_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open', 'tryton-ok', default=True),
+            ])
+    open = StateAction('stock.act_location_quantity_tree')
+
+    def do_open(self, session, action):
+        product_obj = Pool().get('product.product')
+        lang_obj = Pool().get('ir.lang')
 
         context = {}
-        context['product'] = data['id']
-        if data['form']['forecast_date']:
-            context['stock_date_end'] = data['form']['forecast_date']
+        product_id = Transaction().context['active_id']
+        context['product'] = product_id
+        if session.start.forecast_date:
+            context['stock_date_end'] = session.start.forecast_date
         else:
             context['stock_date_end'] = datetime.date.max
-        res['pyson_context'] = PYSONEncoder().encode(context)
+        action['pyson_context'] = PYSONEncoder().encode(context)
+        product = product_obj.browse(product_id)
 
-        return res
+        for code in [Transaction().language, 'en_US']:
+            lang_ids = lang_obj.search([
+                    ('code', '=', code),
+                    ])
+            if lang_ids:
+                break
+        lang = lang_obj.browse(lang_ids[0])
+        date = lang_obj.strftime(context['stock_date_end'],
+            lang.code, lang.date)
 
-OpenLocation()
+        action['name'] += ' - %s (%s) @ %s' % (product.rec_name,
+            product.default_uom.rec_name, date)
+        return action, {}
+
+ProductByLocation()

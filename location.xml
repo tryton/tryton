@@ -104,7 +104,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_configuration" sequence="10"
             action="act_location_form" id="menu_location_form"/>
 
-        <record model="ir.action.act_window" id="act_product_by_location">
+        <record model="ir.action.act_window" id="act_products_by_locations">
             <field name="name">Products by Locations</field>
             <field name="res_model">product.product</field>
             <field name="window_name" eval="False"/>
@@ -113,24 +113,24 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view" id="act_product_form_view2">
             <field name="sequence" eval="10"/>
             <field name="view" ref="product_view_tree_qty"/>
-            <field name="act_window" ref="act_product_by_location"/>
+            <field name="act_window" ref="act_products_by_locations"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view">
             <field name="sequence" eval="20"/>
             <field name="view" ref="product.product_view_form"/>
-            <field name="act_window" ref="act_product_by_location"/>
+            <field name="act_window" ref="act_products_by_locations"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_product_open">
-            <field name="name">Product Quantities</field>
-            <field name="wiz_name">stock.product.open</field>
+        <record model="ir.action.wizard" id="wizard_products_by_locations">
+            <field name="name">Products by Locations</field>
+            <field name="wiz_name">stock.products_by_locations</field>
             <field name="model">stock.location</field>
         </record>
         <record model="ir.action.keyword"
-                id="act_product_by_location_keyword1">
+                id="act_products_by_locations_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,-1</field>
-            <field name="action" ref="wizard_product_open"/>
+            <field name="action" ref="wizard_products_by_locations"/>
         </record>
 
         <record model="ir.model.access" id="access_location">
@@ -170,12 +170,12 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="location_stock_date_init_view_form">
-            <field name="model">stock.location_stock_date.init</field>
+        <record model="ir.ui.view" id="products_by_locations_start_view_form">
+            <field name="model">stock.products_by_locations.start</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Product Quantity.">
+                <form string="Products by Locations">
                     <label name="forecast_date"/>
                     <field name="forecast_date"/>
                 </form>
