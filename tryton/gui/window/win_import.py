@@ -145,9 +145,6 @@ class WinImport(object):
         self.import_csv_enc = gtk.combo_box_new_text()
         self.import_csv_enc.append_text("UTF-8")
         self.import_csv_enc.append_text("Latin1")
-        cboxent_import_csv_enc = gtk.Entry()
-        cboxent_import_csv_enc.unset_flags(gtk.CAN_FOCUS)
-        self.import_csv_enc.add(cboxent_import_csv_enc)
         table.attach(self.import_csv_enc, 1, 2, 1, 2)
 
         label_import_csv_skip = gtk.Label(_("Lines to Skip:"))
