@@ -7,7 +7,8 @@ from itertools import groupby
 from functools import partial
 from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
-from trytond.wizard import Wizard
+from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
+    Button
 from trytond.backend import TableHandler
 from trytond.pyson import If, Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
@@ -1912,27 +1913,17 @@ Invoice()
 class OpenCustomer(Wizard):
     'Open Customers'
     _name = 'sale.open_customer'
-    states = {
-        'init': {
-            'result': {
-                'type': 'action',
-                'action': '_action_open',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'open_'
+    open_ = StateAction('party.act_party_form')
 
-    def _action_open(self, datas):
+    def do_open_(self, session, action):
         pool = Pool()
         model_data_obj = pool.get('ir.model.data')
-        act_window_obj = pool.get('ir.action.act_window')
         wizard_obj = pool.get('ir.action.wizard')
-        act_window_id = model_data_obj.get_id('party', 'act_party_form')
-        res = act_window_obj.read(act_window_id)
         Transaction().cursor.execute("SELECT DISTINCT(party) FROM sale_sale")
         customer_ids = [line[0] for line in Transaction().cursor.fetchall()]
-        res['pyson_domain'] = PYSONEncoder().encode(
-                [('id', 'in', customer_ids)])
+        action['pyson_domain'] = PYSONEncoder().encode(
+            [('id', 'in', customer_ids)])
 
         model_data_ids = model_data_obj.search([
             ('fs_id', '=', 'act_open_customer'),
@@ -1942,14 +1933,17 @@ class OpenCustomer(Wizard):
         model_data = model_data_obj.browse(model_data_ids[0])
         wizard = wizard_obj.browse(model_data.db_id)
 
-        res['name'] = wizard.name
-        return res
+        action['name'] = wizard.name
+        return action, {}
+
+    def transition_open_(self, session):
+        return 'end'
 
 OpenCustomer()
 
 
 class HandleShipmentExceptionAsk(ModelView):
-    'Shipment Exception Ask'
+    'Handle Shipment Exception'
     _name = 'sale.handle.shipment.exception.ask'
     _description = __doc__
 
@@ -1968,64 +1962,44 @@ class HandleShipmentExceptionAsk(ModelView):
                 (module_name,))
         super(HandleShipmentExceptionAsk, self).init(module_name)
 
-    def default_recreate_moves(self):
-        return self.default_domain_moves()
-
-    def default_domain_moves(self):
-        sale_line_obj = Pool().get('sale.line')
-        active_id = Transaction().context.get('active_id')
-        if not active_id:
-            return []
-
-        line_ids = sale_line_obj.search([
-            ('sale', '=', active_id),
-            ])
-        lines = sale_line_obj.browse(line_ids)
-
-        domain_moves = []
-        for line in lines:
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_recreated)
-            for move in line.moves:
-                if move.state == 'cancel' and move.id not in skip_ids:
-                    domain_moves.append(move.id)
-
-        return domain_moves
-
 HandleShipmentExceptionAsk()
+
 
 class HandleShipmentException(Wizard):
     'Handle Shipment Exception'
     _name = 'sale.handle.shipment.exception'
-    states = {
-        'init': {
-            'actions': [],
-            'result': {
-                'type': 'form',
-                'object': 'sale.handle.shipment.exception.ask',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('ok', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'ok': {
-            'result': {
-                'type': 'action',
-                'action': '_handle_moves',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'ask'
+    ask = StateView('sale.handle.shipment.exception.ask',
+        'sale.handle_shipment_exception_ask_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'handle', 'tryton-ok', default=True),
+            ])
+    handle = StateTransition()
 
-    def _handle_moves(self, data):
+    def default_ask(self, session, fields):
+        sale_obj = Pool().get('sale.sale')
+        sale = sale_obj.browse(Transaction().context.get('active_id'))
+
+        moves = []
+        for line in sale.lines:
+            skip_ids = set(x.id for x in line.moves_ignored)
+            skip_ids.update(x.id for x in line.moves_recreated)
+            for move in line.moves:
+                if move.state == 'cancel' and move.id not in skip_ids:
+                    moves.append(move.id)
+        return {
+            'recreate_moves': moves,
+            'domain_moves': moves,
+            }
+
+    def transition_handle(self, session):
         pool = Pool()
         sale_obj = pool.get('sale.sale')
         sale_line_obj = pool.get('sale.line')
-        to_recreate = data['form']['recreate_moves'][0][1]
-        domain_moves = data['form']['domain_moves'][0][1]
+        to_recreate = [x.id for x in session.ask.recreate_moves]
+        domain_moves = [x.id for x in session.ask.domain_moves]
 
-        sale = sale_obj.browse(data['id'])
+        sale = sale_obj.browse(Transaction().context['active_id'])
 
         for line in sale.lines:
             moves_ignored = []
@@ -2045,13 +2019,13 @@ class HandleShipmentException(Wizard):
                 'moves_recreated': [('add', moves_recreated)],
                 })
 
-        sale_obj.workflow_trigger_validate(data['id'], 'shipment_ok')
+        sale_obj.workflow_trigger_validate(sale.id, 'shipment_ok')
 
 HandleShipmentException()
 
 
 class HandleInvoiceExceptionAsk(ModelView):
-    'Invoice Exception Ask'
+    'Handle Invoice Exception'
     _name = 'sale.handle.invoice.exception.ask'
     _description = __doc__
 
@@ -2064,58 +2038,41 @@ class HandleInvoiceExceptionAsk(ModelView):
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
-    def default_recreate_invoices(self):
-        return self.default_domain_invoices()
-
-    def default_domain_invoices(self):
-        sale_obj = Pool().get('sale.sale')
-        active_id = Transaction().context.get('active_id')
-        if not active_id:
-            return []
-
-        sale = sale_obj.browse(active_id)
-        skip_ids = set(x.id for x in sale.invoices_ignored)
-        skip_ids.update(x.id for x in sale.invoices_recreated)
-        domain_invoices = []
-        for invoice in sale.invoices:
-            if invoice.state == 'cancel' and invoice.id not in skip_ids:
-                domain_invoices.append(invoice.id)
-
-        return domain_invoices
-
 HandleInvoiceExceptionAsk()
 
 
 class HandleInvoiceException(Wizard):
     'Handle Invoice Exception'
     _name = 'sale.handle.invoice.exception'
-    states = {
-        'init': {
-            'actions': [],
-            'result': {
-                'type': 'form',
-                'object': 'sale.handle.invoice.exception.ask',
-                'state': [
-                    ('end', 'Cancel', 'tryton-cancel'),
-                    ('ok', 'Ok', 'tryton-ok', True),
-                ],
-            },
-        },
-        'ok': {
-            'result': {
-                'type': 'action',
-                'action': '_handle_invoices',
-                'state': 'end',
-            },
-        },
-    }
+    start_state = 'ask'
+    ask = StateView('sale.handle.invoice.exception.ask',
+        'sale.handle_invoice_exception_ask_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'handle', 'tryton-ok', default=True),
+            ])
+    handle = StateTransition()
 
-    def _handle_invoices(self, data):
+    def default_ask(self, session, fields):
         sale_obj = Pool().get('sale.sale')
-        to_recreate = data['form']['recreate_invoices'][0][1]
-        domain_invoices = data['form']['domain_invoices'][0][1]
 
-        sale = sale_obj.browse(data['id'])
+        sale = sale_obj.browse(Transaction().context['active_id'])
+        skip_ids = set(x.id for x in sale.invoices_ignored)
+        skip_ids.update(x.id for x in sale.invoices_recreated)
+        invoices = []
+        for invoice in sale.invoices:
+            if invoice.state == 'cancel' and invoice.id not in skip_ids:
+                invoices.append(invoice.id)
+        return {
+            'to_recreate': invoices,
+            'domain_invoices': invoices,
+            }
+
+    def transition_handle(self, session):
+        sale_obj = Pool().get('sale.sale')
+        to_recreate = [x.id for x in session.ask.recreate_moves]
+        domain_invoices = [x.id for x in session.ask.domain_invoices]
+
+        sale = sale_obj.browse(Transaction().context['active_id'])
 
         skip_ids = set(x.id for x in sale.invoices_ignored)
         skip_ids.update(x.id for x in sale.invoices_recreated)
@@ -2134,6 +2091,6 @@ class HandleInvoiceException(Wizard):
             'invoices_recreated': [('add', invoices_recreated)],
              })
 
-        sale_obj.workflow_trigger_validate(data['id'], 'invoice_ok')
+        sale_obj.workflow_trigger_validate(sale.id, 'invoice_ok')
 
 HandleInvoiceException()

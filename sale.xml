@@ -205,7 +205,7 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="handle_shipment_exception_view_form">
+        <record model="ir.ui.view" id="handle_shipment_exception_ask_view_form">
             <field name="model">sale.handle.shipment.exception.ask</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
@@ -229,7 +229,7 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="handle_invoice_exception_view_form">
+        <record model="ir.ui.view" id="handle_invoice_exception_ask_view_form">
             <field name="model">sale.handle.invoice.exception.ask</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
