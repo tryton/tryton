@@ -212,7 +212,8 @@ class Reference(WidgetInterface):
                 WinSearch(model, callback, sel_multi=False, ids=ids,
                         context=context, domain=domain)
                 return
-        self.field.set_client(self.record, ('', (name, name)))
+        else:
+            self.field.set_client(self.record, ('', (name, name)))
         self.focus_out = True
         self.changed = True
         self.display(self.record, self.field)
