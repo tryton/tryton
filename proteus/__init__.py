@@ -5,6 +5,15 @@ A library to access Tryton's models like a client.
 '''
 __version__ = "2.3.0"
 __all__ = ['Model', 'Wizard']
+import sys
+try:
+    import cdecimal
+    # Use cdecimal globally
+    if 'decimal' not in sys.modules:
+        sys.modules['decimal'] = cdecimal
+except ImportError:
+    import decimal
+    sys.modules['cdecimal'] = decimal
 from types import NoneType
 import threading
 import datetime

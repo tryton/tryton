@@ -40,6 +40,7 @@ setup(name='proteus',
         'trytond': ['trytond >= %s.%s, < %s.%s' %
             (major_version, minor_version, major_version, minor_version + 1)],
         'simplejson': ['simplejson'],
+        'cdecimal': ['cdecimal'],
     },
     test_suite='proteus.tests',
     tests_require=('trytond >= %s.%s, < %s.%s' %
