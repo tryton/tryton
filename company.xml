@@ -16,16 +16,6 @@ this repository contains the full copyright notices and license terms. -->
                         <form string="Company"/>
                     </xpath>
                     <xpath
-                        expr="/form/label[@name=&quot;code&quot;]"
-                        position="replace">
-                        <label name="parent"/>
-                    </xpath>
-                    <xpath
-                        expr="/form/field[@name=&quot;code&quot;]"
-                        position="replace">
-                        <field name="parent"/>
-                    </xpath>
-                    <xpath
                         expr="/form/group[@id=&quot;checkboxes&quot;]"
                         position="after">
                         <label name="currency"/>
@@ -38,8 +28,10 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath
                         expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                        <page string="Employees" col="1" id="employees">
-                            <field name="employees"/>
+                        <page string="Company" col="2" id="company">
+                            <label name="parent"/>
+                            <field name="parent"/>
+                            <field name="employees" colspan="2"/>
                         </page>
                         <page string="Reports" col="1" id="reports">
                             <separator name="header"/>
@@ -317,14 +309,9 @@ this repository contains the full copyright notices and license terms. -->
                         position="replace_attributes">
                         <form string="Employee"/>
                     </xpath>
-                    <xpath
-                        expr="/form/label[@name=&quot;code&quot;]"
-                        position="replace">
+                    <xpath expr="/form/group/label[@name='active']"
+                        position="before">
                         <label name="company"/>
-                    </xpath>
-                    <xpath
-                        expr="/form/field[@name=&quot;code&quot;]"
-                        position="replace">
                         <field name="company"/>
                     </xpath>
                 </data>
