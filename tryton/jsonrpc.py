@@ -29,7 +29,7 @@ class ResponseError(xmlrpclib.ResponseError):
 class Fault(xmlrpclib.Fault):
 
     def __init__(self, faultCode, faultString='', **extra):
-        super(Fault, self).__init__(faultCode, str(faultString), **extra)
+        super(Fault, self).__init__(faultCode, faultString, **extra)
         self.args = faultString
 
 
