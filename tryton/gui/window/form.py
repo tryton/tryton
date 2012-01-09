@@ -476,6 +476,7 @@ class Form(SignalEvent, TabContent):
         self.activate_save()
 
     def modified_save(self, reload=True):
+        self.screen.current_view.set_value()
         if self.screen.modified():
             value = sur_3b(
                     _('This record has been modified\n' \
