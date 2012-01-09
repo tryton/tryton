@@ -1139,7 +1139,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 'amount_second_currency': amount_second_currency,
                 'second_currency': second_currency,
             })
-            if invoice.account.id == journal.debit_account.id:
+            if invoice.account.id == journal.credit_account.id:
                 self.raise_user_error('same_credit_account')
             if not journal.credit_account:
                 self.raise_user_error('missing_credit_account')
