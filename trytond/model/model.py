@@ -87,7 +87,9 @@ class Model(object):
             assert (k in self._columns) or (k in self._inherit_fields), \
             'Default function defined in %s but field %s does not exist!' % \
                 (self._name, k,)
+        self._update_rpc()
 
+    def _update_rpc(self):
         for field_name in self._columns.keys() + self._inherit_fields.keys():
             if field_name in self._columns:
                 field = self._columns[field_name]
@@ -120,7 +122,8 @@ class Model(object):
                 res[field_name] = (model, self._inherits[model],
                         self.pool.get(model)._inherit_fields[field_name][2])
         self._inherit_fields = res
-        self._reset_xxx2many_targets()
+        self._reset_columns()
+        self._update_rpc()
         # Update objects that uses this one to update their _inherits fields
         for obj_name in self.pool.object_name_list():
             obj = self.pool.get(obj_name)
