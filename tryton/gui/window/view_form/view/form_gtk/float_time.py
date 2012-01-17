@@ -37,8 +37,9 @@ class FloatTime(WidgetInterface):
         value = self.entry.get_text()
         if not value:
             return model_field.set_client(model, 0.0)
+        digits = model.expr_eval(model_field.attrs.get('digits', (16, 2)))
         return model_field.set_client(model,
-                common.text_to_float_time(value, self.conv))
+                round(common.text_to_float_time(value, self.conv), digits[1]))
 
     def display(self, model, model_field):
         super(FloatTime, self).display(model, model_field)
