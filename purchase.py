@@ -1557,6 +1557,8 @@ class Product(ModelSQL, ModelView):
         for product in self.browse(ids):
             res[product.id] = product.cost_price
             default_uom = product.default_uom
+            default_currency = (user.company.currency.id if user.company
+                else False)
             if not uom:
                 uom = default_uom
             if Transaction().context.get('supplier') and product.product_suppliers:
@@ -1568,16 +1570,15 @@ class Product(ModelSQL, ModelView):
                                     price.quantity, uom) <= quantity:
                                 res[product.id] = price.unit_price
                                 default_uom = product.purchase_uom
+                                default_currency = product_supplier.currency.id
                         break
             res[product.id] = uom_obj.compute_price(default_uom,
                     res[product.id], uom)
-            if currency and user.company:
-                if user.company.currency.id != currency.id:
-                    date = Transaction().context.get('purchase_date') or today
-                    with Transaction().set_context(date=date):
-                        res[product.id] = currency_obj.compute(
-                            user.company.currency.id, res[product.id],
-                            currency.id, round=False)
+            if currency and default_currency:
+                date = Transaction().context.get('purchase_date') or today
+                with Transaction().set_context(date=date):
+                    res[product.id] = currency_obj.compute(default_currency,
+                        res[product.id], currency.id, round=False)
         return res
 
 Product()
@@ -1605,13 +1606,51 @@ class ProductSupplier(ModelSQL, ModelView):
             ])
     delivery_time = fields.Integer('Delivery Time',
             help="In number of days")
+    currency = fields.Many2One('currency.currency', 'Currency', required=True,
+        ondelete='RESTRICT')
 
     def __init__(self):
         super(ProductSupplier, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
 
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        # Migration from 2.2 new field currency
+        created_currency = table.column_exist('currency')
+
+        super(ProductSupplier, self).init(module_name)
+
+        # Migration from 2.2 fill currency
+        if not created_currency:
+            company_obj = Pool().get('company.company')
+            limit = cursor.IN_MAX
+            cursor.execute('SELECT count(id) FROM "' + self._table + '"')
+            product_supplier_count, = cursor.fetchone()
+            for offset in range(0, product_supplier_count, limit):
+                cursor.execute(cursor.limit_clause(
+                        'SELECT p.id, c.currency '
+                        'FROM "' + self._table + '" AS p '
+                        'INNER JOIN "' + company_obj._table + '" AS c '
+                            'ON p.company = c.id '
+                        'ORDER BY p.id',
+                        limit, offset))
+                for product_supplier_id, currency_id in cursor.fetchall():
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET currency = %s '
+                        'WHERE id = %s', (currency_id, product_supplier_id))
+
     def default_company(self):
         return Transaction().context.get('company') or False
+
+    def default_currency(self):
+        company_obj = Pool().get('company.company')
+        company = None
+        if Transaction().context.get('company'):
+            company = company_obj.browse(Transaction().context['company'])
+            return company.currency.id
+        return False
 
     def compute_supply_date(self, product_supplier, date=None):
         '''
@@ -1658,14 +1697,6 @@ class ProductSupplierPrice(ModelSQL, ModelView):
     def __init__(self):
         super(ProductSupplierPrice, self).__init__()
         self._order.insert(0, ('quantity', 'ASC'))
-
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
-        company = None
-        if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
-            return company.currency.id
-        return False
 
 ProductSupplierPrice()
 

@@ -789,6 +789,9 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="code"/>
                     <label name="delivery_time"/>
                     <field name="delivery_time"/>
+                    <newline/>
+                    <label name="currency"/>
+                    <field name="currency"/>
                     <field name="prices" colspan="4"/>
                 </form>
                 ]]>
