@@ -162,6 +162,8 @@ class SimpleThreadedXMLRPCServer(SocketServer.ThreadingMixIn,
     def server_bind(self):
         self.socket.setsockopt(socket.SOL_SOCKET,
                 socket.SO_REUSEADDR, 1)
+        self.socket.setsockopt(socket.SOL_SOCKET,
+            socket.SO_KEEPALIVE, 1)
         SimpleXMLRPCServer.SimpleXMLRPCServer.server_bind(self)
 
 
