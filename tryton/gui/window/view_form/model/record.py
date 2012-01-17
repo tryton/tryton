@@ -566,5 +566,8 @@ class Record(SignalEvent):
         super(Record, self).destroy()
         self.window = None
         self.group = None
+        for v in self.value.itervalues():
+            if hasattr(v, 'destroy'):
+                v.destroy()
         self.value = None
         self.next = None
