@@ -503,7 +503,9 @@ class FloatTime(Char):
         return common.float_time_to_text(val, self.conv)
 
     def value_from_text(self, record, text):
-        return common.text_to_float_time(text, self.conv)
+        field = record[self.field_name]
+        digits = record.expr_eval(field.attrs.get('digits', (16, 2)))
+        return round(common.text_to_float_time(text, self.conv), digits[1])
 
 class M2O(Char):
 

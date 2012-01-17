@@ -36,8 +36,9 @@ class FloatTime(WidgetInterface):
         value = self.entry.get_text()
         if not value:
             return field.set_client(record, 0.0)
+        digits = record.expr_eval(field.attrs.get('digits', (16, 2)))
         return field.set_client(record,
-                common.text_to_float_time(value, self.conv))
+                round(common.text_to_float_time(value, self.conv), digits[1]))
 
     def display(self, record, field):
         super(FloatTime, self).display(record, field)
