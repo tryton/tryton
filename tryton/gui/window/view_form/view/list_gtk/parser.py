@@ -501,7 +501,9 @@ class FloatTime(Char):
 
     def value_from_text(self, record, text, callback=None):
         field = record[self.field_name]
-        field.set_client(record, common.text_to_float_time(text, self.conv))
+        digits = record.expr_eval(field.attrs.get('digits', (16, 2)))
+        field.set_client(record,
+            round(common.text_to_float_time(text, self.conv), digits[1]))
         if callback:
             callback()
 
