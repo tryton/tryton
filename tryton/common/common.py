@@ -954,7 +954,7 @@ def send_bugtracker(msg):
                     and 'roundup.cgi.exceptions.Unauthorised' in
                     exception.faultString):
                 message(_('Connection error!\nBad username or password!'))
-                return send_bugtracker(msg, parent)
+                return send_bugtracker(msg)
             tb_s = reduce(lambda x, y: x + y,
                     traceback.format_exception(sys.exc_type,
                         sys.exc_value, sys.exc_traceback))
