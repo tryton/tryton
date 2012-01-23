@@ -1066,7 +1066,7 @@ class OpenChartAccount(Wizard):
 
     def do_open_(self, session, action):
         action['pyson_context'] = PYSONEncoder().encode({
-            'fiscalyear': session.start.fiscalyear,
+            'fiscalyear': session.start.fiscalyear.id,
             'posted': session.start.posted,
             })
         return action, {}
