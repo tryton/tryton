@@ -573,7 +573,7 @@ class CreatePurchase(Wizard):
                     ('party', '=', False),
                     ])
             if req_ids:
-                request_obj.write(req_ids, {'party': session.ask_party.id})
+                request_obj.write(req_ids, {'party': session.ask_party.party.id})
             session.ask_party.product = False
             session.ask_party.party = False
             session.ask_party.company = False
