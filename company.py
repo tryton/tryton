@@ -74,29 +74,40 @@ class Employee(ModelSQL, ModelView):
 Employee()
 
 
+class UserEmployee(ModelSQL):
+    'User - Employee'
+    _name = 'res.user-company.employee'
+    _description = __doc__
+    user = fields.Many2One('res.user', 'User', ondelete='CASCADE', select=True,
+        required=True)
+    employee = fields.Many2One('company.employee', 'Employee',
+        ondelete='CASCADE', select=True, required=True)
+
+UserEmployee()
+
+
 class User(ModelSQL, ModelView):
     _name = 'res.user'
     main_company = fields.Many2One('company.company', 'Main Company',
-            on_change=['main_company'])
+        on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
-            domain=[('parent', 'child_of', [Eval('main_company')], 'parent')],
-            depends=['main_company'])
+        domain=[('parent', 'child_of', [Eval('main_company')], 'parent')],
+        depends=['main_company'], on_change=['company', 'employees'])
     companies = fields.Function(fields.One2Many('company.company', None,
         'Current Companies'), 'get_companies')
+    employees = fields.Many2Many('res.user-company.employee', 'user',
+        'employee', 'Employees')
     employee = fields.Many2One('company.employee', 'Employee',
-        domain=[('company', 'child_of', [Eval('main_company')], 'parent')],
-        depends=['main_company'])
+        domain=[
+            ('company', '=', Eval('company')),
+            ('id', 'in', Eval('employees', [])),
+            ],
+        depends=['company', 'employees'])
 
     def __init__(self):
         super(User, self).__init__()
         self._context_fields.insert(0, 'company')
-        self._constraints += [
-                ('check_company', 'child_company'),
-                ]
-        self._error_messages.update({
-            'child_company': 'You can not set a company that is not ' \
-                    'a child of your main company!',
-        })
+        self._context_fields.insert(0, 'employee')
 
     def default_main_company(self):
         return Transaction().context.get('company') or False
@@ -136,26 +147,31 @@ class User(ModelSQL, ModelView):
         return res
 
     def on_change_main_company(self, vals):
-        return {'company': vals.get('main_company', False)}
+        return {
+            'company': vals.get('main_company', False),
+            'employee': False,
+            }
 
-    def check_company(self, ids):
-        company_obj = Pool().get('company.company')
-        for user in self.browse(ids):
-            if user.main_company:
-                companies = company_obj.search([
-                    ('parent', 'child_of', [user.main_company.id]),
+    def on_change_company(self, values):
+        employee_obj = Pool().get('company.employee')
+        result = {
+            'employee': False,
+            }
+        if values.get('company') and values.get('employees'):
+            employee_ids = employee_obj.search([
+                    ('id', 'in', [e['id'] for e in values['employees']]),
+                    ('company', '=', values['company']),
                     ])
-                if user.company.id and (user.company.id not in companies):
-                    return False
-            elif user.company:
-                return False
-        return True
+            if employee_ids:
+                result['employee'] = employee_ids[0]
+        return result
 
     def _get_preferences(self, user, context_only=False):
         res = super(User, self)._get_preferences(user,
                 context_only=context_only)
         if not context_only:
             res['main_company'] = user.main_company.id
+            res['employees'] = [e.id for e in user.employees]
         if user.employee:
             res['employee'] = user.employee.id
         return res

@@ -142,6 +142,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="company" widget="selection"/>
                             <label name="employee"/>
                             <field name="employee"/>
+                            <field name="employees" colspan="4"/>
                         </xpath>
                     </data>
                 ]]>
@@ -158,6 +159,8 @@ this repository contains the full copyright notices and license terms. -->
                             position="before">
                             <label name="company"/>
                             <field name="company" widget="selection"/>
+                            <label name="employee"/>
+                            <field name="employee" widget="selection"/>
                         </xpath>
                     </data>
                 ]]>
@@ -307,6 +310,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">company.employee</field>
             <field name="type">form</field>
             <field name="inherit" ref="party.party_view_form"/>
+            <field name="priority">10</field>
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
@@ -324,6 +328,23 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="employee_view_form2">
+            <field name="model">company.employee</field>
+            <field name="type">form</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Employee">
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="employee_view_tree">
             <field name="model">company.employee</field>
             <field name="type">tree</field>
@@ -348,7 +369,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.view" id="act_employee_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="employee_view_form"/>
+            <field name="view" ref="employee_view_form2"/>
             <field name="act_window" ref="act_employee_form"/>
         </record>
         <menuitem parent="party.menu_configuration" action="act_employee_form"
