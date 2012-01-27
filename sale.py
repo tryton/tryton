@@ -13,6 +13,7 @@ from trytond.backend import TableHandler
 from trytond.pyson import If, Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.config import CONFIG
 
 
 class Sale(ModelWorkflow, ModelSQL, ModelView):
@@ -328,7 +329,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             party = party_obj.browse(vals['party'])
             if party.lang:
                 return party.lang.code
-        return 'en_US'
+        return CONFIG['language']
 
     def get_party_lang(self, sales):
         '''
@@ -343,7 +344,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             if sale.party.lang:
                 res[sale.id] = sale.party.lang.code
             else:
-                res[sale.id] = 'en_US'
+                res[sale.id] = CONFIG['language']
         return res
 
 
