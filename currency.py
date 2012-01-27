@@ -204,13 +204,10 @@ class Currency(ModelSQL, ModelView):
             else:
                 name = to_currency.name
 
-            for code in [Transaction().language, 'en_US']:
-                lang_ids = lang_obj.search([
-                    ('code', '=', code),
+            lang_id, = lang_obj.search([
+                    ('code', '=', Transaction().language),
                     ])
-                if lang_ids:
-                    break
-            lang = lang_obj.browse(lang_ids[0])
+            lang = lang_obj.browse(lang_id)
 
             self.raise_user_error('no_rate', (name,
                 datetime_strftime(date, str(lang.date))))
