@@ -494,6 +494,14 @@ class Product(ModelSQL, ModelView):
                 if location not in location_ids:
                     del res[(location, product)]
 
+        # Round quantities
+        default_uom = dict((p.id, p.default_uom) for p in
+            self.browse(list(res_product_ids)))
+        for key, quantity in res.iteritems():
+            location, product = key
+            uom = default_uom[product]
+            res[key] = uom_obj.round(quantity, uom.rounding)
+
         # Complete result with missing products if asked
         if not skip_zero:
             # Search for all products, even if not linked with moves

@@ -106,13 +106,14 @@ class StockTestCase(unittest.TestCase):
             category_id = self.category.create({
                 'name': 'Test products_by_location',
                 })
-            unit_id, = self.uom.search([('name', '=', 'Unit')])
+            kg_id, = self.uom.search([('name', '=', 'Kilogram')])
+            g_id, = self.uom.search([('name', '=', 'Gram')])
             product_id = self.product.create({
                 'name': 'Test products_by_location',
                 'type': 'stockable',
                 'category': category_id,
                 'cost_price_method': 'fixed',
-                'default_uom': unit_id,
+                'default_uom': kg_id,
                 })
             supplier_id, = self.location.search([('code', '=', 'SUP')])
             customer_id, = self.location.search([('code', '=', 'CUS')])
@@ -129,7 +130,7 @@ class StockTestCase(unittest.TestCase):
 
             self.move.create({
                 'product': product_id,
-                'uom': unit_id,
+                'uom': kg_id,
                 'quantity': 5,
                 'from_location': supplier_id,
                 'to_location': storage_id,
@@ -142,7 +143,7 @@ class StockTestCase(unittest.TestCase):
                 })
             self.move.create({
                 'product': product_id,
-                'uom': unit_id,
+                'uom': kg_id,
                 'quantity': 1,
                 'from_location': supplier_id,
                 'to_location': storage_id,
@@ -154,7 +155,7 @@ class StockTestCase(unittest.TestCase):
                 })
             self.move.create({
                 'product': product_id,
-                'uom': unit_id,
+                'uom': kg_id,
                 'quantity': 1,
                 'from_location': storage_id,
                 'to_location': customer_id,
@@ -167,7 +168,7 @@ class StockTestCase(unittest.TestCase):
                 })
             self.move.create({
                 'product': product_id,
-                'uom': unit_id,
+                'uom': kg_id,
                 'quantity': 1,
                 'from_location': storage_id,
                 'to_location': customer_id,
@@ -179,7 +180,7 @@ class StockTestCase(unittest.TestCase):
                 })
             self.move.create({
                 'product': product_id,
-                'uom': unit_id,
+                'uom': kg_id,
                 'quantity': 2,
                 'from_location': storage_id,
                 'to_location': customer_id,
@@ -191,7 +192,7 @@ class StockTestCase(unittest.TestCase):
                 })
             self.move.create({
                 'product': product_id,
-                'uom': unit_id,
+                'uom': kg_id,
                 'quantity': 5,
                 'from_location': supplier_id,
                 'to_location': storage_id,
@@ -283,6 +284,23 @@ class StockTestCase(unittest.TestCase):
                 today + relativedelta(days=-3),
                 today + relativedelta(days=-2),
             ]
+
+            self.move.create({
+                'product': product_id,
+                'uom': g_id,
+                'quantity': 1,
+                'from_location': supplier_id,
+                'to_location': storage_id,
+                'planned_date': today + relativedelta(days=-5),
+                'effective_date': today + relativedelta(days=-5),
+                'state': 'done',
+                'company': company_id,
+                'unit_price': Decimal('1'),
+                'currency': currency_id,
+                })
+            # Nothing should change when adding a small quantity
+            test_products_by_location()
+
             for period_date in periods:
                 period_id = self.period.create({
                     'date': period_date,
