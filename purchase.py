@@ -11,6 +11,7 @@ from trytond.backend import TableHandler
 from trytond.pyson import Eval, Bool, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.config import CONFIG
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -270,7 +271,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             party = party_obj.browse(vals['party'])
             if party.lang:
                 return party.lang.code
-        return 'en_US'
+        return CONFIG['language']
 
     def get_tax_context(self, purchase):
         party_obj = Pool().get('party.party')
@@ -379,7 +380,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             if purchase.party.lang:
                 res[purchase.id] = purchase.party.lang.code
             else:
-                res[purchase.id] = 'en_US'
+                res[purchase.id] = CONFIG['language']
         return res
 
     def get_untaxed_amount(self, purchases):
