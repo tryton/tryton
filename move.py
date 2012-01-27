@@ -16,6 +16,7 @@ from trytond.backend import TableHandler, FIELDS
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.config import CONFIG
 
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
@@ -1250,10 +1251,10 @@ class Line(ModelSQL, ModelView):
                     account = line.account
             amount = currency_obj.round(account.currency, amount)
             period_id = period_obj.find(account.company.id, date=date)
-            lang_code = 'en_US'
+            lang_code = CONFIG['language']
             if account.company.lang:
                 lang_code = account.company.lang.code
-            writeoff = translation_obj._get_source(
+            writeoff = translation_obj.get_source(
                     'account.move.reconcile_lines.writeoff', 'view', lang_code,
                     'Write-Off') or 'Write-Off'
             move_id = move_obj.create({

@@ -8,6 +8,7 @@ from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.pool import Pool
+from trytond.config import CONFIG
 
 
 class Group(ModelSQL, ModelView):
@@ -104,7 +105,7 @@ class CodeTemplate(ModelSQL, ModelView):
 
             new_id = tax_code_obj.create(vals)
 
-            prev_lang = template._context.get('language') or 'en_US'
+            prev_lang = template._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -274,7 +275,7 @@ class Code(ModelSQL, ModelView):
             if vals:
                 self.write(code.id, vals)
 
-            prev_lang = code._context.get('language') or 'en_US'
+            prev_lang = code._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in code.template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -510,7 +511,7 @@ class TaxTemplate(ModelSQL, ModelView):
 
             new_id = tax_obj.create(vals)
 
-            prev_lang = template._context.get('language') or 'en_US'
+            prev_lang = template._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -858,7 +859,7 @@ class Tax(ModelSQL, ModelView):
             if vals:
                 self.write(tax.id, vals)
 
-            prev_lang = tax._context.get('language') or 'en_US'
+            prev_lang = tax._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in tax.template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -975,7 +976,7 @@ class RuleTemplate(ModelSQL, ModelView):
             vals['company'] = company_id
             new_id = rule_obj.create(vals)
 
-            prev_lang = template._context.get('language') or 'en_US'
+            prev_lang = template._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -1065,7 +1066,7 @@ class Rule(ModelSQL, ModelView):
             if vals:
                 self.write(rule.id, vals)
 
-            prev_lang = rule._context.get('language') or 'en_US'
+            prev_lang = rule._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in rule.template._columns.iteritems():
                 if getattr(field, 'translate', False):

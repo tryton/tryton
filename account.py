@@ -10,6 +10,7 @@ from trytond.tools import reduce_ids
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.config import CONFIG
 
 
 class TypeTemplate(ModelSQL, ModelView):
@@ -114,7 +115,7 @@ class TypeTemplate(ModelSQL, ModelView):
 
             new_id = type_obj.create(vals)
 
-            prev_lang = template._context.get('language') or 'en_US'
+            prev_lang = template._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -279,7 +280,7 @@ class Type(ModelSQL, ModelView):
             if vals:
                 self.write(type.id, vals)
 
-            prev_lang = type._context.get('language') or 'en_US'
+            prev_lang = type._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in type.template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -440,7 +441,7 @@ class AccountTemplate(ModelSQL, ModelView):
 
             new_id = account_obj.create(vals)
 
-            prev_lang = template._context.get('language') or 'en_US'
+            prev_lang = template._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -914,7 +915,7 @@ class Account(ModelSQL, ModelView):
             if vals:
                 self.write(account.id, vals)
 
-            prev_lang = account._context.get('language') or 'en_US'
+            prev_lang = account._context.get('language') or CONFIG['language']
             prev_data = {}
             for field_name, field in account.template._columns.iteritems():
                 if getattr(field, 'translate', False):
@@ -1488,13 +1489,10 @@ class OpenBalanceSheet(Wizard):
         lang_obj = pool.get('ir.lang')
 
         company = session.start.company
-        for code in [Transaction().language, 'en_US']:
-            lang_ids = lang_obj.search([
-                ('code', '=', code),
+        lang_id, = lang_obj.search([
+                ('code', '=', Transaction().language),
                 ])
-            if lang_ids:
-                break
-        lang = lang_obj.browse(lang_ids[0])
+        lang = lang_obj.browse(lang_id)
 
         date = lang_obj.strftime(session.start.date, lang.code, lang.date)
 
@@ -1686,7 +1684,7 @@ class CreateChart(Wizard):
         tax_rule_line_template_obj = \
                 pool.get('account.tax.rule.line.template')
 
-        with Transaction().set_context(language='en_US'):
+        with Transaction().set_context(language=CONFIG['language']):
             account_template = session.account.account_template
 
             # Create account types
