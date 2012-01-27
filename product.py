@@ -169,6 +169,7 @@ class Product(ModelSQL, ModelView):
                 and quantity as value
         """
         pool = Pool()
+        uom_obj = pool.get('product.uom')
         rule_obj = pool.get('ir.rule')
         location_obj = pool.get('stock.location')
         date_obj = pool.get('ir.date')
@@ -492,6 +493,14 @@ class Product(ModelSQL, ModelView):
             for location, product in res.keys():
                 if location not in location_ids:
                     del res[(location, product)]
+
+        # Round quantities
+        default_uom = dict((p.id, p.default_uom) for p in
+            self.browse(list(res_product_ids)))
+        for key, quantity in res.iteritems():
+            location, product = key
+            uom = default_uom[product]
+            res[key] = uom_obj.round(quantity, uom.rounding)
 
         # Complete result with missing products if asked
         if not skip_zero:
