@@ -12,6 +12,7 @@ from trytond.pyson import If, Eval, Bool
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.config import CONFIG
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -346,7 +347,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             party = party_obj.browse(vals['party'])
             if party.lang:
                 return party.lang.code
-        return 'en_US'
+        return CONFIG['language']
 
     def get_party_language(self, ids, name):
         '''
@@ -362,7 +363,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             if invoice.party.lang:
                 res[invoice.id] = invoice.party.lang.code
             else:
-                res[invoice.id] = 'en_US'
+                res[invoice.id] = CONFIG['language']
         return res
 
     def get_type_name(self, ids, name):
@@ -1470,7 +1471,7 @@ class InvoiceLine(ModelSQL, ModelView):
             party = party_obj.browse(vals['party'])
             if party.lang:
                 return party.lang.code
-        return 'en_US'
+        return CONFIG['language']
 
     def get_party_language(self, ids, name):
         '''
@@ -1486,7 +1487,7 @@ class InvoiceLine(ModelSQL, ModelView):
             if line.party and line.party.lang:
                 res[line.id] = line.party.lang.code
             else:
-                res[line.id] = 'en_US'
+                res[line.id] = CONFIG['language']
         return res
 
     def on_change_with_amount(self, vals):
