@@ -148,13 +148,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         if not ids:
             return {}
 
-        for code in [Transaction().language, 'en_US']:
-            lang_ids = lang_obj.search([
-                ('code', '=', code),
+        lang_id, = lang_obj.search([
+                ('code', '=', Transaction().language),
                 ])
-            if lang_ids:
-                break
-        lang = lang_obj.browse(lang_ids[0])
+        lang = lang_obj.browse(lang_id)
 
         res = {}
         for statement in self.browse(ids):
@@ -266,13 +263,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         for line in statement.lines:
             computed_end_balance += line.amount
         if computed_end_balance != statement.end_balance:
-            for code in [Transaction().language, 'en_US']:
-                lang_ids = lang_obj.search([
-                    ('code', '=', code),
+            lang_id, = lang_obj.search([
+                    ('code', '=', Transaction().language),
                     ])
-                if lang_ids:
-                    break
-            lang = lang_obj.browse(lang_ids[0])
+            lang = lang_obj.browse(lang_id)
 
             amount = lang_obj.format(lang,
                     '%.' + str(statement.journal.currency.digits) + 'f',
@@ -462,13 +456,10 @@ class Line(ModelSQL, ModelView):
                         line.invoice.amount_to_pay,
                         line.statement.journal.currency.id)
             if amount_to_pay < abs(line.amount):
-                for code in [Transaction().language, 'en_US']:
-                    lang_ids = lang_obj.search([
-                        ('code', '=', code),
+                lang_id, = lang_obj.search([
+                        ('code', '=', Transaction().language),
                         ])
-                    if lang_ids:
-                        break
-                lang = lang_obj.browse(lang_ids[0])
+                lang = lang_obj.browse(lang_id)
 
                 amount = lang_obj.format(lang,
                         '%.' + str(line.statement.journal.currency.digits) + 'f',
