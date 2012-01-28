@@ -67,6 +67,16 @@ class ToolsTestCase(unittest.TestCase):
                     reduce_ids('id', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15,
                         18, 19, 21]))
 
+    def test0055reduce_ids_float(self):
+        '''
+        Test reduce_ids with integer as float.
+        '''
+        self.assert_(('(((id >= %s) AND (id <= %s)) OR (id IN (%s,%s,%s,%s)))',
+                [1.0, 12.0, 15.0, 18.0, 19.0, 21.0]) == \
+                    reduce_ids('id', [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,
+                    9.0, 10.0, 11.0, 12.0, 15.0, 18.0, 19.0, 21.0]))
+        self.assertRaises(AssertionError, reduce_ids, 'id', [1.1])
+
     def test0060safe_eval_builtin(self):
         '''
         Attempt to access a unsafe builtin.
