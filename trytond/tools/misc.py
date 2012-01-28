@@ -523,7 +523,9 @@ def reduce_ids(field, ids):
     '''
     if not ids:
         return '(%s)', [False]
-    ids = ids[:]
+    assert all(x.is_integer() for x in ids if isinstance(x, float)), \
+        'ids must be integer'
+    ids = map(int, ids)
     ids.sort()
     prev = ids.pop(0)
     continue_list = [prev, prev]
@@ -546,7 +548,7 @@ def reduce_ids(field, ids):
         prev = i
     if continue_list[-1] - continue_list[0] < 5:
         discontinue_list.extend([continue_list[0] + x for x in
-            range(int(continue_list[-1] - continue_list[0] + 1))])
+            range(continue_list[-1] - continue_list[0] + 1)])
     else:
         sql.append('((' + field + ' >= %s) AND (' + field + ' <= %s))')
         args.append(continue_list[0])
