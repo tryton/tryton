@@ -228,7 +228,7 @@ class WinImport(object):
         try:
             return rpc.execute(*args)
         except TrytonServerError, exception:
-            return common.process_exception(exception, self.dialog, *args)
+            return common.process_exception(exception, *args)
 
     def on_row_expanded(self, treeview, iter, path):
         child = self.model1.iter_children(iter)
@@ -242,8 +242,7 @@ class WinImport(object):
     def sig_autodetect(self, widget=None):
         fname = self.import_csv_file.get_filename()
         if not fname:
-            common.message(_('You must select an import file first!'),
-                    self.dialog)
+            common.message(_('You must select an import file first!'))
             return True
         csvsep = self.import_csv_sep.get_text()
         csvdel = self.import_csv_del.get_text()
@@ -255,8 +254,7 @@ class WinImport(object):
             data = csv.reader(open(fname, 'rb'), quotechar=csvdel,
                     delimiter=csvsep)
         except IOError:
-            common.warning(_('Error opening CSV file'), self.dialog,
-                    _('Error'))
+            common.warning(_('Error opening CSV file'), _('Error'))
             return True
         self.sig_unsel_all()
         word = ''
@@ -284,9 +282,8 @@ class WinImport(object):
                     name = self.fields[word][0]
                     field = word
                 else:
-                    common.warning(
-                            _('Error processing the file at field %s.') %
-                            word, self.dialog, _('Error'))
+                    common.warning(_('Error processing the file at field %s.')
+                        % word, _('Error'))
                     return True
                 num = self.model2.append()
                 self.model2.set(num, 0, name, 1, field)
@@ -353,7 +350,7 @@ class WinImport(object):
             res = rpc.execute('model', model, 'import_data', fields, datas,
                     rpc.CONTEXT)
         except TrytonServerError, exception:
-            common.process_exception(exception, self.dialog)
+            common.process_exception(exception)
             return False
         if res[0] >= 0:
             if res[0] == 1:
