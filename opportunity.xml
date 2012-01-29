@@ -41,8 +41,6 @@
                             <field name="start_date"/>
                             <label name="end_date"/>
                             <field name="end_date"/>
-                            <label name="warehouse"/>
-                            <field name="warehouse"/>
                             <label name="payment_term"/>
                             <field name="payment_term"/>
                             <label name="sale"/>

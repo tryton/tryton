@@ -51,13 +51,6 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
             'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'], help='Estimated revenue amount')
-    warehouse = fields.Many2One('stock.location', 'Warehouse',
-        domain=[('type', '=', 'warehouse')], states={
-            'required': Eval('state') == 'converted',
-            'readonly': In(Eval('state'),
-                ['converted', 'lost', 'cancelled']),
-            },
-        depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
             'required': Eval('state') == 'converted',
@@ -139,13 +132,6 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
             return payment_term_ids[0]
         return False
 
-    def default_warehouse(self):
-        location_obj = Pool().get('stock.location')
-        location_ids = location_obj.search(self.warehouse.domain)
-        if len(location_ids) == 1:
-            return location_ids[0]
-        return False
-
     def get_currency(self, ids, name):
         res = {}
         for opportunity in self.browse(ids):
@@ -221,7 +207,6 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
             'party': opportunity.party.id,
             'payment_term': opportunity.payment_term.id,
             'company': opportunity.company.id,
-            'warehouse': opportunity.warehouse.id,
             'invoice_address': opportunity.address and opportunity.address.id,
             'shipment_address': opportunity.address and opportunity.address.id,
             'currency': opportunity.company.currency.id,
