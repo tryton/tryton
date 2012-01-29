@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 import datetime
+from decimal import Decimal
 
 
 class PurchaseRequest(ModelSQL, ModelView):
@@ -638,6 +639,7 @@ class CreatePurchase(Wizard):
         party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         tax_rule_obj = self.pool.get('account.tax.rule')
+        line_obj = self.pool.get('purchase.line')
 
         line = {
             'product': request.product.id,
@@ -655,6 +657,8 @@ class CreatePurchase(Wizard):
         product_price = product_obj.get_purchase_price(
             cursor, user, [request.product.id], request.quantity,
             context=local_context)[request.product.id]
+        product_price = product_price.quantize(
+            Decimal(1) / 10 ** line_obj.unit_price.digits[1])
 
         if not product_price:
             self.raise_user_error(
