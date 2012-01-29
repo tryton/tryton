@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from __future__ import with_statement
 import datetime
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard
 from trytond.pyson import If, In, Eval, Get
@@ -594,6 +595,7 @@ class CreatePurchase(Wizard):
         party_obj = self.pool.get('party.party')
         product_obj = self.pool.get('product.product')
         tax_rule_obj = self.pool.get('account.tax.rule')
+        line_obj = self.pool.get('purchase.line')
 
         line = {
             'product': request.product.id,
@@ -609,6 +611,8 @@ class CreatePurchase(Wizard):
                 currency=request.company.currency.id):
             product_price = product_obj.get_purchase_price(
                     [request.product.id], request.quantity)[request.product.id]
+            product_price = product_price.quantize(
+                Decimal(1) / 10 ** line_obj.unit_price.digits[1])
 
         if not product_price:
             self.raise_user_error('missing_price', (request.product.name,
