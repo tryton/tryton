@@ -402,26 +402,26 @@ class Translation(ModelSQL, ModelView, Cacheable):
         if not vals.get('module'):
             if vals.get('type', '') in ('odt', 'view', 'wizard_button',
                     'selection', 'error'):
-                cursor.execute('SELECT module FROM ir_translation ' \
-                        'WHERE name = %s ' \
-                            'AND res_id = %s ' \
-                            'AND lang = %s ' \
-                            'AND type = %s ' \
-                            'AND src = %s ',
-                        (vals.get('name', ''), vals.get('res_id', 0), 'en_US',
-                            vals.get('type', ''), vals.get('src', '')))
+                cursor.execute('SELECT module FROM ir_translation '
+                    'WHERE name = %s '
+                        'AND res_id = %s '
+                        'AND lang = %s '
+                        'AND type = %s '
+                        'AND src = %s ',
+                    (vals.get('name') or '', vals.get('res_id') or 0, 'en_US',
+                        vals.get('type') or '', vals.get('src') or ''))
                 fetchone = cursor.fetchone()
                 if fetchone:
                     vals = vals.copy()
                     vals['module'] = fetchone[0]
             else:
-                cursor.execute('SELECT module, src FROM ir_translation ' \
-                        'WHERE name = %s ' \
-                            'AND res_id = %s ' \
-                            'AND lang = %s ' \
-                            'AND type = %s',
-                        (vals.get('name', ''), vals.get('res_id', 0), 'en_US',
-                            vals.get('type', '')))
+                cursor.execute('SELECT module, src FROM ir_translation '
+                    'WHERE name = %s '
+                        'AND res_id = %s '
+                        'AND lang = %s '
+                        'AND type = %s',
+                    (vals.get('name') or '', vals.get('res_id') or 0, 'en_US',
+                        vals.get('type') or ''))
                 fetchone = cursor.fetchone()
                 if fetchone:
                     vals = vals.copy()
