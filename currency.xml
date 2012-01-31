@@ -47,26 +47,7 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Rates" id="rates">
                             <label name="rate"/>
                             <field name="rate"/>
-                            <field name="rates" colspan="4" mode="tree,form,graph">
-                                <tree string="Rates">
-                                    <field name="date"/>
-                                    <field name="rate"/>
-                                </tree>
-                                <form string="Rate">
-                                    <label name="date"/>
-                                    <field name="date"/>
-                                    <label name="rate"/>
-                                    <field name="rate"/>
-                                </form>
-                                <graph string="Rates" type="line">
-                                    <x>
-                                        <field name="date"/>
-                                    </x>
-                                    <y>
-                                        <field name="rate" yfill="1" empty="0"/>
-                                    </y>
-                                </graph>
-                            </field>
+                            <field name="rates" colspan="4" mode="tree,form,graph"/>
                         </page>
                         <page string="Formatting" col="6" id="formatting">
                             <label name="digits"/>
@@ -152,6 +133,56 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.ui.view" id="currency_rate_view_list">
+            <field name="model">currency.currency.rate</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Rates">
+                    <field name="currency"/>
+                    <field name="date"/>
+                    <field name="rate"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="currency_rate_view_form">
+            <field name="model">currency.currency.rate</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Rate">
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <newline/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="rate"/>
+                    <field name="rate"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="currency_rate_view_graph">
+            <field name="model">currency.currency.rate</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <graph string="Rates" type="line">
+                    <x>
+                        <field name="date"/>
+                    </x>
+                    <y>
+                        <field name="rate" fill="1" empty="0"/>
+                    </y>
+                </graph>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.model.access" id="access_currency_rate">
             <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
             <field name="perm_read" eval="True"/>
