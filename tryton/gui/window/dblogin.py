@@ -26,6 +26,7 @@ class DBListEditor(object):
         self.profiles = profiles
         self.current_database = None
         self.old_profile, self.current_profile = None, None
+        self.db_cache = None
         self.updating_db = False
 
         # GTK Stuffs
@@ -290,6 +291,8 @@ class DBListEditor(object):
         port = self.port_entry.get_text()
         if not (host and port):
             return
+        if (host, port, self.current_profile['name']) == self.db_cache:
+            return
         if self.updating_db:
             return
         if dbname is None:
@@ -307,6 +310,7 @@ class DBListEditor(object):
 
         def callback(dbs, createdb):
             self.updating_db = False
+            self.db_cache = (host, port, self.current_profile['name'])
 
             if dbs is None and createdb is None:
                 pass
@@ -343,6 +347,7 @@ class DBListEditor(object):
         port = int(self.port_entry.get_text())
         dia = DBCreate(host, port)
         dbname = dia.run()
+        self.db_cache = None
         self.username_entry.set_text('admin')
         self.display_dbwidget(None, None, dbname)
 
