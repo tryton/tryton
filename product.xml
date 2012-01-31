@@ -12,25 +12,7 @@ this repository contains the full copyright notices and license terms. -->
                     <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
                       <page string="Default Locations" id="default_locations">
-                          <field name="locations" colspan="4">
-                              <tree string="Product Locations"
-                                    sequence="sequence">
-                                  <field name="warehouse"/>
-                                  <field name="location"/>
-                                  <field name="sequence"
-                                    tree_invisible="1"/>
-                              </tree>
-                              <form string="Product Location"
-                                  cursor="warehouse">
-                                  <label name="sequence"/>
-                                  <field name="sequence"/>
-                                  <newline/>
-                                  <label name="warehouse"/>
-                                  <field name="warehouse"/>
-                                  <label name="location"/>
-                                  <field name="location"/>
-                              </form>
-                          </field>
+                          <field name="locations" colspan="4"/>
                       </page>
                     </xpath>
                 </data>
