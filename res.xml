@@ -15,16 +15,8 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Dashboard" id="dashboard" col="2">
                             <label name="dashboard_layout"/>
                             <field name="dashboard_layout"/>
-                            <field name="dashboard_actions" colspan="2">
-                                <tree string="Dashboard Actions"
-                                    sequence="sequence" fill="1">
-                                    <field name="act_window"/>
-                                </tree>
-                                <form string="Dashboard Action">
-                                    <label name="act_window"/>
-                                    <field name="act_window"/>
-                                </form>
-                            </field>
+                            <field name="dashboard_actions" colspan="2"
+                                view_ids="dashboard.action_view_tree_sequence"/>
                         </page>
                     </xpath>
                 </data>
@@ -43,16 +35,8 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Dashboard" id="dashboard" col="2">
                             <label name="dashboard_layout"/>
                             <field name="dashboard_layout"/>
-                            <field name="dashboard_actions" colspan="2">
-                                <tree string="Dashboard Actions"
-                                    sequence="sequence" fill="1">
-                                    <field name="act_window"/>
-                                </tree>
-                                <form string="Dashboard Action">
-                                    <label name="act_window"/>
-                                    <field name="act_window" widget="selection"/>
-                                </form>
-                            </field>
+                            <field name="dashboard_actions" colspan="2"
+                                view_ids="dashboard.action_view_tree_sequence"/>
                         </page>
                     </xpath>
                 </data>

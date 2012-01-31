@@ -12,10 +12,11 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Dashboard Action">
                     <label name="user"/>
                     <field name="user"/>
+                    <newline/>
+                    <label name="act_window"/>
+                    <field name="act_window" widget="selection"/>
                     <label name="sequence"/>
                     <field name="sequence"/>
-                    <label name="act_window"/>
-                    <field name="act_window"/>
                 </form>
                 ]]>
             </field>
@@ -24,11 +25,25 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="action_view_tree">
             <field name="model">dashboard.action</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Dashboard Actions">
                     <field name="user"/>
                     <field name="sequence"/>
+                    <field name="act_window"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="action_view_tree_sequence">
+            <field name="model">dashboard.action</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Dashboard Actions" sequence="sequence" fill="1">
                     <field name="act_window"/>
                 </tree>
                 ]]>
