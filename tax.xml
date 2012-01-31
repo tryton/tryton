@@ -329,12 +329,8 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="credit_note_account"/>
                             <field name="credit_note_account"/>
                             <newline/>
-                            <field name="childs" colspan="4">
-                                <tree string="Taxes" sequence="sequence">
-                                    <field name="name"/>
-                                    <field name="type"/>
-                                </tree>
-                            </field>
+                            <field name="childs" colspan="4"
+                                view_ids="account.tax_view_list"/>
                         </page>
                         <page string="Code" id="code">
                             <separator string="Invoice" colspan="4" id="invoice"/>
@@ -440,13 +436,8 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="credit_note_account"/>
                             <field name="credit_note_account"/>
                             <newline/>
-                            <field name="childs" colspan="4">
-                                <tree string="Taxes" sequence="sequence">
-                                    <field name="name"/>
-                                    <field name="type"/>
-                                    <field name="active"/>
-                                </tree>
-                            </field>
+                            <field name="childs" colspan="4"
+                                view_ids="account.tax_view_list"/>
                         </page>
                         <page string="Code" id="code">
                             <separator string="Invoice" colspan="4" id="invoice"/>
@@ -706,14 +697,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="company"/>
                     <field name="company"/>
-                    <field name="lines" colspan="4">
-                        <tree string="Tax Rule Line Templates"
-                            sequence="sequence">
-                            <field name="group"/>
-                            <field name="origin_tax"/>
-                            <field name="tax"/>
-                        </tree>
-                    </field>
+                    <field name="lines" colspan="4"
+                        view_ids="account.tax_rule_line_view_tree_sequence"/>
                 </form>
                 ]]>
             </field>
@@ -847,10 +832,26 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="tax_rule_line_view_tree">
             <field name="model">account.tax.rule.line</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Tax Rule Lines">
                     <field name="rule"/>
+                    <field name="group"/>
+                    <field name="origin_tax"/>
+                    <field name="tax"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_rule_line_view_tree_sequence">
+            <field name="model">account.tax.rule.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Tax Rule Lines" sequence="sequence">
                     <field name="group"/>
                     <field name="origin_tax"/>
                     <field name="tax"/>

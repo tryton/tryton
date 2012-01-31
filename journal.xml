@@ -92,26 +92,8 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Journal View" col="2">
                     <label name="name"/>
                     <field name="name"/>
-                    <field name="columns" colspan="2">
-                        <tree string="View Columns" sequence="sequence" editable="bottom">
-                            <field name="name"/>
-                            <field name="field"/>
-                            <field name="required"/>
-                            <field name="readonly"/>
-                        </tree>
-                        <form string="View Column">
-                            <label name="name"/>
-                            <field name="name"/>
-                            <label name="sequence"/>
-                            <field name="sequence"/>
-                            <label name="field"/>
-                            <field name="field"/>
-                            <newline/>
-                            <label name="required"/>
-                            <field name="required"/>
-                            <label name="readonly"/>
-                            <field name="readonly"/>
-                        </form>
+                    <field name="columns" colspan="2"
+                        view_ids="account.journal_view_column_view_list_sequence">
                     </field>
                 </form>
                 ]]>
@@ -154,6 +136,78 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_journal_view_account_admin">
             <field name="model" search="[('model', '=', 'account.journal.view')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_column_view_list">
+            <field name="model">account.journal.view.column</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="View Columns">
+                    <field name="view"/>
+                    <field name="name"/>
+                    <field name="field"/>
+                    <field name="required"/>
+                    <field name="readonly"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_column_view_list_sequence">
+            <field name="model">account.journal.view.column</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="View Columns" sequence="sequence" editable="bottom">
+                    <field name="name"/>
+                    <field name="field"/>
+                    <field name="required"/>
+                    <field name="readonly"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_view_column_view_form">
+            <field name="model">account.journal.view.column</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="View Column">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="field"/>
+                    <field name="field"/>
+                    <label name="view"/>
+                    <field name="view"/>
+                    <label name="required"/>
+                    <field name="required"/>
+                    <label name="readonly"/>
+                    <field name="readonly"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.model.access" id="access_journal_view_column">
+            <field name="model" search="[('model', '=', 'account.journal.view.column')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_journal_view_column_account_admin">
+            <field name="model" search="[('model', '=', 'account.journal.view.column')]"/>
             <field name="group" ref="group_account_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

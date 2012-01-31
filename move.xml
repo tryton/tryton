@@ -21,58 +21,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="date"/>
                     <label name="post_date"/>
                     <field name="post_date"/>
-                    <field name="lines" colspan="4">
-                        <tree string="Account Move Lines" editable="top">
-                            <field name="move"/>
-                            <field name="name"/>
-                            <field name="reference"/>
-                            <field name="party"/>
-                            <field name="account"/>
-                            <field name="debit" sum="Debit"/>
-                            <field name="credit" sum="Credit"/>
-                            <field name="tax_lines"/>
-                            <field name="reconciliation"/>
-                        </tree>
-                        <form string="Account Move Line">
-                            <label name="name"/>
-                            <field name="name"/>
-                            <label name="active"/>
-                            <field name="active" xexpand="0" width="100"/>
-                            <notebook colspan="4">
-                                <page string="General Information" id="general">
-                                    <label name="account"/>
-                                    <field name="account"/>
-                                    <newline/>
-                                    <label name="reference"/>
-                                    <field name="reference"/>
-                                    <label name="party"/>
-                                    <field name="party"/>
-                                    <label name="journal"/>
-                                    <field name="journal"/>
-                                    <label name="period"/>
-                                    <field name="period"/>
-                                    <label name="debit"/>
-                                    <field name="debit"/>
-                                    <label name="credit"/>
-                                    <field name="credit"/>
-                                    <separator string="Optional Information" colspan="4"
-                                        id="optional_information"/>
-                                    <field name="tax_lines" colspan="4"/>
-                                    <label name="amount_second_currency"/>
-                                    <field name="amount_second_currency"/>
-                                    <label name="second_currency"/>
-                                    <field name="second_currency"/>
-                                    <label name="reconciliation"/>
-                                    <field name="reconciliation"/>
-                                    <label name="maturity_date"/>
-                                    <field name="maturity_date"/>
-                                    <label id="empty" colspan="2"/>
-                                    <label name="state"/>
-                                    <field name="state"/>
-                                </page>
-                            </notebook>
-                        </form>
-                    </field>
+                    <field name="lines" colspan="4"
+                        view_ids="account.move_line_view_tree_move,account.move_line_view_form_move"/>
                     <label name="state"/>
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
@@ -232,6 +182,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="move_line_view_form">
             <field name="model">account.move.line</field>
             <field name="type">form</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Account Move Line">
@@ -281,9 +232,60 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="move_line_view_form_move">
+            <field name="model">account.move.line</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Move Line">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                    <notebook colspan="4">
+                        <page string="General Information" id="general">
+                            <label name="account"/>
+                            <field name="account"/>
+                            <newline/>
+                            <label name="reference"/>
+                            <field name="reference"/>
+                            <label name="party"/>
+                            <field name="party"/>
+                            <label name="journal"/>
+                            <field name="journal"/>
+                            <label name="period"/>
+                            <field name="period"/>
+                            <label name="debit"/>
+                            <field name="debit"/>
+                            <label name="credit"/>
+                            <field name="credit"/>
+                            <separator string="Optional Information" colspan="4"
+                                id="optional_information"/>
+                            <field name="tax_lines" colspan="4"/>
+                            <label name="amount_second_currency"/>
+                            <field name="amount_second_currency"/>
+                            <label name="second_currency"/>
+                            <field name="second_currency"/>
+                            <label name="reconciliation"/>
+                            <field name="reconciliation"/>
+                            <label name="maturity_date"/>
+                            <field name="maturity_date"/>
+                            <label id="empty" colspan="2"/>
+                            <label name="state"/>
+                            <field name="state"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="move_line_view_tree">
             <field name="model">account.move.line</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Move Lines" editable="top"
@@ -305,6 +307,28 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="move_line_view_tree_move">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Move Lines" editable="top">
+                    <field name="move"/>
+                    <field name="name"/>
+                    <field name="reference"/>
+                    <field name="party"/>
+                    <field name="account"/>
+                    <field name="debit" sum="Debit"/>
+                    <field name="credit" sum="Credit"/>
+                    <field name="tax_lines"/>
+                    <field name="reconciliation"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.action.act_window" id="act_move_line_form">
             <field name="name">Account Move Lines</field>
             <field name="res_model">account.move.line</field>
