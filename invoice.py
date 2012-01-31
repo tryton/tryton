@@ -1153,6 +1153,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             'date': date,
             'lines': [('create', x) for x in lines],
             })
+        move_obj.post(move_id)
 
         move = move_obj.browse(move_id)
 
