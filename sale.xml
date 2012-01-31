@@ -71,20 +71,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="warehouse"/>
                             <label name="currency"/>
                             <field name="currency"/>
-                            <field name="lines" colspan="4">
-                                <tree string="Lines" sequence="sequence" fill="1">
-                                    <field name="type"/>
-                                    <field name="product"/>
-                                    <field name="description"/>
-                                    <field name="quantity"/>
-                                    <field name="unit"/>
-                                    <field name="unit_price"/>
-                                    <field name="taxes"/>
-                                    <field name="amount"/>
-                                    <field name="sequence" tree_invisible="1"/>
-                                    <field name="unit_digits" tree_invisible="1"/>
-                                </tree>
-                            </field>
+                            <field name="lines" colspan="4"
+                                view_ids="sale.sale_line_view_tree_sequence"/>
                             <group col="2" colspan="2" id="states">
                                 <label name="invoice_state"/>
                                 <field name="invoice_state"/>
@@ -141,37 +129,11 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="comment" colspan="4" spell="Eval('party_lang')"/>
                         </page>
                         <page string="Invoices" id="invoices">
-                            <field name="invoices" colspan="4">
-                                <tree>
-                                  <field name="number"/>
-                                  <field name="reference"/>
-                                  <field name="invoice_date"/>
-                                  <field name="party"/>
-                                  <field name="currency"/>
-                                  <field name="untaxed_amount"/>
-                                  <field name="tax_amount"/>
-                                  <field name="total_amount"/>
-                                  <field name="state"/>
-                                  <field name="sale_exception_state"/>
-                                  <field name="amount_to_pay_today"/>
-                                  <field name="description"/>
-                                  <field name="currency_digits" tree_invisible="1"/>
-                              </tree>
-                            </field>
+                            <field name="invoices" colspan="4"/>
                         </page>
                         <page string="Shipments" id="shipments">
-                            <field name="moves" colspan="4">
-                                <tree string="Moves">
-                                    <field name="product"/>
-                                    <field name="from_location"/>
-                                    <field name="to_location"/>
-                                    <field name="quantity"/>
-                                    <field name="uom"/>
-                                    <field name="state"/>
-                                    <field name="sale_exception_state"/>
-                                    <field name="unit_digits" tree_invisible="1"/>
-                                </tree>
-                            </field>
+                            <field name="moves" colspan="4"
+                                view_ids="sale.move_view_list_shipment"/>
                             <field name="shipments" colspan="4"/>
                         </page>
                     </notebook>
@@ -216,14 +178,8 @@ this repository contains the full copyright notices and license terms. -->
                     <label string="Choose move to recreate"
                         id="choose"
                         yalign="0.0" xalign="0.0" xexpand="1"/>
-                    <field name="recreate_moves" colspan="2">
-                        <tree string="Recreate Moves" fill="1">
-                            <field name="product"/>
-                            <field name="quantity"/>
-                            <field name="uom"/>
-                            <field name="unit_digits" tree_invisible="1"/>
-                        </tree>
-                    </field>
+                    <field name="recreate_moves" colspan="2"
+                        view_ids="stock.move_view_tree_simple"/>
                 </form>
                 ]]>
             </field>
@@ -833,18 +789,8 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="sequence"/>
                             <field name="sequence"/>
                             <label name="product"/>
-                            <field name="product">
-                                <tree string="Products">
-                                    <field name="name"/>
-                                    <field name="code"/>
-                                    <field name="list_price_uom"/>
-                                    <field name="cost_price_uom"/>
-                                    <field name="quantity"/>
-                                    <field name="forecast_quantity"/>
-                                    <field name="default_uom"/>
-                                    <field name="active"/>
-                                </tree>
-                            </field>
+                            <field name="product"
+                                view_ids="sale.product_view_list_sale_line"/>
                             <newline/>
                             <label name="description"/>
                             <field name="description" colspan="3"
@@ -872,13 +818,36 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
         <record model="ir.ui.view" id="sale_line_view_tree">
             <field name="model">sale.line</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Sale Lines">
                     <field name="sale"/>
+                    <field name="type"/>
+                    <field name="product"/>
+                    <field name="description"/>
+                    <field name="quantity"/>
+                    <field name="unit"/>
+                    <field name="unit_price"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_line_view_tree_sequence">
+            <field name="model">sale.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Sale Lines" sequence="sequence" fill="1">
                     <field name="type"/>
                     <field name="product"/>
                     <field name="description"/>

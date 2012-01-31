@@ -149,6 +149,8 @@ Biedt mogelijkheden tot:
         'sale.xml',
         'configuration.xml',
         'party.xml',
+        'stock.xml',
+        'product.xml',
     ],
     'translation': [
         'locale/bg_BG.po',
