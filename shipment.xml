@@ -29,18 +29,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="warehouse"/>
                         <notebook colspan="6">
                             <page string="Incoming Moves" id="incoming_moves">
-                                <field name="incoming_moves" colspan="4">
-                                    <tree string="Moves">
-                                        <field name="product"/>
-                                        <field name="from_location"/>
-                                        <field name="to_location"/>
-                                        <field name="quantity"/>
-                                        <field name="uom"/>
-                                        <field name="planned_date"/>
-                                        <field name="state"/>
-                                        <field name="unit_digits" tree_invisible="1"/>
-                                    </tree>
-                                </field>
+                                <field name="incoming_moves" colspan="4"/>
                             </page>
                             <page string="Inventory Moves" id="inventory_moves">
                                 <field name="inventory_moves" colspan="4"/>
@@ -249,14 +238,8 @@ this repository contains the full copyright notices and license terms. -->
                     <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
                     <separator string="Unable to assign those products:"
                         id="unable"/>
-                    <field name="moves" colspan="2">
-                        <tree string="Moves" fill="1">
-                            <field name="product"/>
-                            <field name="quantity"/>
-                            <field name="uom"/>
-                            <field name="unit_digits" tree_invisible="1"/>
-                        </tree>
-                    </field>
+                    <field name="moves" colspan="2"
+                        view_ids="stock.move_view_tree_simple"/>
                 </form>
                 ]]>
             </field>
@@ -453,14 +436,8 @@ this repository contains the full copyright notices and license terms. -->
                     <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
                     <separator string="Unable to assign those products:"
                         id="unable"/>
-                    <field name="inventory_moves" colspan="2">
-                        <tree string="Inventory Moves" fill="1">
-                            <field name="product"/>
-                            <field name="quantity"/>
-                            <field name="uom"/>
-                            <field name="unit_digits" tree_invisible="1"/>
-                        </tree>
-                    </field>
+                    <field name="inventory_moves" colspan="2"
+                        view_ids="stock.move_view_tree_simple"/>
                 </form>
                 ]]>
             </field>
@@ -632,14 +609,8 @@ this repository contains the full copyright notices and license terms. -->
                     <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
                     <separator string="Unable to assign those products:"
                         id="unable"/>
-                    <field name="moves" colspan="2">
-                        <tree string="Moves"  fill="1">
-                            <field name="product"/>
-                            <field name="quantity"/>
-                            <field name="uom"/>
-                            <field name="unit_digits" tree_invisible="1"/>
-                        </tree>
-                    </field>
+                    <field name="moves" colspan="2"
+                        view_ids="stock.move_view_tree_simple"/>
                 </form>
                 ]]>
             </field>
@@ -670,18 +641,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="warehouse"/>
                         <notebook colspan="6">
                             <page string="Incoming Moves" id="incoming_moves">
-                                <field name="incoming_moves" colspan="4">
-                                    <tree string="Moves">
-                                        <field name="product"/>
-                                        <field name="from_location"/>
-                                        <field name="to_location"/>
-                                        <field name="quantity"/>
-                                        <field name="uom"/>
-                                        <field name="planned_date"/>
-                                        <field name="state"/>
-                                        <field name="unit_digits" tree_invisible="1"/>
-                                    </tree>
-                                </field>
+                                <field name="incoming_moves" colspan="4"/>
                             </page>
                             <page string="Inventory Moves" id="inventory_moves">
                                 <field name="inventory_moves" colspan="4"/>

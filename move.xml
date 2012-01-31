@@ -41,6 +41,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="move_view_tree">
             <field name="model">stock.move</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                     <tree string="Moves">
@@ -49,6 +50,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="to_location"/>
                         <field name="quantity"/>
                         <field name="uom"/>
+                        <field name="planned_date"/>
                         <field name="state"/>
                         <field name="unit_digits" tree_invisible="1"/>
                         <field name="create_date" tree_invisible="1"/>
@@ -56,6 +58,23 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="move_view_tree_simple">
+            <field name="model">stock.move</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Moves" fill="1">
+                    <field name="product"/>
+                    <field name="quantity"/>
+                    <field name="uom"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Moves</field>
             <field name="res_model">stock.move</field>
