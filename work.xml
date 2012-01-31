@@ -117,15 +117,7 @@ this repository contains the full copyright notices and license terms. -->
                         </page>
                         <page string="Children" id="children"
                               states="{'invisible': Not(Equal(Eval('type'), 'project'))}">
-                            <field name="children" colspan="4">
-                                <tree string="Children">
-                                  <field name="name"/>
-                                  <field name="hours" widget="float_time" float_time="company_work_time"/>
-                                  <field name="total_effort" widget="float_time" float_time="company_work_time"/>
-                                  <field name="type"/>
-                                  <field name="state"/>
-                                </tree>
-                            </field>
+                              <field name="children" colspan="4"/>
                         </page>
                         <page string="Timesheet" id="timesheet_lines"
                               states="{'invisible': Not(Bool(Eval('timesheet_available')))}">
