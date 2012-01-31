@@ -25,14 +25,6 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="list_price"/>
                             <field name="list_price"/>
                     </xpath>
-
-                    <xpath expr="/form/notebook/page[@id='children']/field[@name='children']/tree/field[@name='total_effort']"
-                        position="after">
-                        <field name="product"/>
-                        <field name="list_price"/>
-                        <field name="revenue"/>
-                        <field name="cost"/>
-                    </xpath>
                 </data>
                 ]]>
             </field>
