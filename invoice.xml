@@ -43,38 +43,12 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="payment_term"/>
                             <label name="currency"/>
                             <field name="currency"/>
-                            <field name="lines" colspan="6">
-                                <tree string="Lines" sequence="sequence" fill="1">
-                                    <field name="type"/>
-                                    <field name="product"/>
-                                    <field name="account" tree_invisible="1"/>
-                                    <field name="description"/>
-                                    <field name="quantity"/>
-                                    <field name="unit"/>
-                                    <field name="unit_price"/>
-                                    <field name="taxes"/>
-                                    <field name="amount"/>
-                                    <field name="sequence" tree_invisible="1"/>
-                                    <field name="unit_digits" tree_invisible="1"/>
-                                    <field name="currency_digits" tree_invisible="1"/>
-                                </tree>
-                            </field>
+                            <field name="lines" colspan="6"
+                                view_ids="account_invoice.invoice_line_view_tree_sequence"/>
                             <group col="2" colspan="6" id="taxes_amount_state_buttons">
                                 <group col="1" colspan="1" id="taxes">
-                                    <field name="taxes">
-                                        <tree string="Taxes" sequence="sequence" fill="1">
-                                            <field name="description"/>
-                                            <field name="base"/>
-                                            <field name="amount"/>
-                                            <field name="sequence" tree_invisible="1"/>
-                                            <field name="manual" tree_invisible="1"/>
-                                            <field name="base_code" tree_invisible="1"/>
-                                            <field name="base_sign" tree_invisible="1"/>
-                                            <field name="tax_code" tree_invisible="1"/>
-                                            <field name="tax_sign" tree_invisible="1"/>
-                                            <field name="account" tree_invisible="1"/>
-                                        </tree>
-                                    </field>
+                                    <field name="taxes"
+                                        view_ids="account_invoice.invoice_tax_view_tree_sequence"/>
                                 </group>
                                 <group col="4" colspan="1" id="amount_state_buttons">
                                     <group col="2" colspan="2" id="reconciled_state">
@@ -134,18 +108,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="amount_to_pay_today"/>
                             <label name="amount_to_pay"/>
                             <field name="amount_to_pay"/>
-                            <field name="payment_lines" colspan="4">
-                                <tree string="Payment Lines">
-                                    <field name="date"/>
-                                    <field name="debit" sum="Debit"/>
-                                    <field name="credit" sum="Credit"/>
-                                    <field name="amount_second_currency"
-                                        sum="Amount Second Currency"/>
-                                    <field name="second_currency"/>
-                                    <field name="currency_digits" tree_invisible="1"/>
-                                    <field name="second_currency_digits" tree_invisible="1"/>
-                                </tree>
-                            </field>
+                            <field name="payment_lines" colspan="4"
+                                view_ids="account_invoice.move_line_view_list_payment"/>
                         </page>
                     </notebook>
                     <field name="currency_digits" invisible="1" colspan="6"/>
@@ -631,16 +595,7 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="sequence"/>
                             <field name="sequence"/>
                             <label name="product"/>
-                            <field name="product">
-                                <tree string="Products">
-                                    <field name="name"/>
-                                    <field name="code"/>
-                                    <field name="list_price_uom"/>
-                                    <field name="cost_price_uom"/>
-                                    <field name="default_uom"/>
-                                    <field name="active"/>
-                                </tree>
-                            </field>
+                            <field name="product"/>
                             <label name="account"/>
                             <field name="account"/>
                             <newline/>
@@ -673,6 +628,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="invoice_line_view_tree">
             <field name="model">account.invoice.line</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Invoice Lines">
@@ -692,6 +648,30 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="invoice_line_view_tree_sequence">
+            <field name="model">account.invoice.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Invoice Lines" sequence="sequence" fill="1">
+                    <field name="type"/>
+                    <field name="product"/>
+                    <field name="account" tree_invisible="1"/>
+                    <field name="description"/>
+                    <field name="quantity"/>
+                    <field name="unit"/>
+                    <field name="unit_price"/>
+                    <field name="taxes"/>
+                    <field name="amount"/>
+                    <field name="unit_digits" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.model.access" id="access_invoice_line">
             <field name="model" search="[('model', '=', 'account.invoice.line')]"/>
             <field name="perm_read" eval="False"/>
@@ -746,6 +726,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="invoice_tax_view_tree">
             <field name="model">account.invoice.tax</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Invoice Taxes">
@@ -760,6 +741,29 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="invoice_tax_view_tree_sequence">
+            <field name="model">account.invoice.tax</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Taxes" sequence="sequence" fill="1">
+                    <field name="description"/>
+                    <field name="base"/>
+                    <field name="amount"/>
+                    <field name="sequence" tree_invisible="1"/>
+                    <field name="manual" tree_invisible="1"/>
+                    <field name="base_code" tree_invisible="1"/>
+                    <field name="base_sign" tree_invisible="1"/>
+                    <field name="tax_code" tree_invisible="1"/>
+                    <field name="tax_sign" tree_invisible="1"/>
+                    <field name="account" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.model.access" id="access_invoice_tax">
             <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
             <field name="perm_read" eval="True"/>
@@ -818,28 +822,10 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="account_writeoff"/>
                     <label name="journal_writeoff"/>
                     <field name="journal_writeoff"/>
-                    <field name="lines" colspan="4">
-                        <tree string="Lines to Pay" fill="1">
-                            <field name="maturity_date"/>
-                            <field name="debit" sum="Debit"/>
-                            <field name="credit" sum="Credit"/>
-                            <field name="amount_second_currency" sum="Amount Second Currency"/>
-                            <field name="second_currency"/>
-                            <field name="currency_digits" tree_invisible="1"/>
-                            <field name="second_currency_digits" tree_invisible="1"/>
-                        </tree>
-                    </field>
-                    <field name="payment_lines" colspan="4">
-                        <tree string="Payment Lines" fill="1">
-                            <field name="date"/>
-                            <field name="debit" sum="Debit"/>
-                            <field name="credit" sum="Credit"/>
-                            <field name="amount_second_currency" sum="Amount Second Currency"/>
-                            <field name="second_currency"/>
-                            <field name="currency_digits" tree_invisible="1"/>
-                            <field name="second_currency_digits" tree_invisible="1"/>
-                        </tree>
-                    </field>
+                    <field name="lines" colspan="4"
+                        view_ids="account_invoice.move_line_view_list_to_pay"/>
+                    <field name="payment_lines" colspan="4"
+                        view_ids="account_invoice.move_line_view_list_payment"/>
                     <field name="company" colspan="4" invisible="1"/>
                     <field name="invoice" colspan="4" invisible="1"/>
                 </form>

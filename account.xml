@@ -50,5 +50,45 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="move_line_view_list_payment">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Lines">
+                    <field name="date"/>
+                    <field name="debit" sum="Debit"/>
+                    <field name="credit" sum="Credit"/>
+                    <field name="amount_second_currency"
+                        sum="Amount Second Currency"/>
+                    <field name="second_currency"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                    <field name="second_currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_list_to_pay">
+            <field name="model">account.move.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Lines to Pay" fill="1">
+                    <field name="maturity_date"/>
+                    <field name="debit" sum="Debit"/>
+                    <field name="credit" sum="Credit"/>
+                    <field name="amount_second_currency" sum="Amount Second Currency"/>
+                    <field name="second_currency"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                    <field name="second_currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
     </data>
 </tryton>

@@ -15,37 +15,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="active" xexpand="0" width="100"/>
                     <notebook colspan="4">
                         <page name="lines">
-                            <field name="lines" colspan="4">
-                                <tree string="Payment Term Line" sequence="sequence">
-                                    <field name="type"/>
-                                    <field name="percentage"/>
-                                    <field name="amount"/>
-                                    <field name="currency"/>
-                                    <field name="days"/>
-                                    <field name="delay"/>
-                                    <field name="sequence" tree_invisible="1"/>
-                                    <field name="currency_digits" tree_invisible="1"/>
-                                </tree>
-                                <form string="Payment Term Lines">
-                                    <label name="type"/>
-                                    <field name="type"/>
-                                    <group col="1" id="label_amount_percent">
-                                        <label name="percentage" yfill="1" xexpand="1" yexpand="1"/>
-                                        <label name="amount" yfill="1" xexpand="1" yexpand="1"/>
-                                    </group>
-                                    <group col="3" id="amount_percent">
-                                        <field name="percentage" colspan="3"/>
-                                        <field name="amount"/>
-                                        <label name="currency"/>
-                                        <field name="currency"/>
-                                    </group>
-                                    <label name="days"/>
-                                    <field name="days"/>
-                                    <label name="delay"/>
-                                    <field name="delay"/>
-                                    <field name="currency_digits" invisible="1"/>
-                                </form>
-                            </field>
+                            <field name="lines" colspan="4"
+                                view_ids="account_invoice.payment_term_line_view_list_sequence"/>
                         </page>
                         <page name="description">
                             <field name="description" colspan="4"/>
@@ -99,6 +70,76 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_list">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Term Line">
+                    <field name="payment"/>
+                    <field name="type"/>
+                    <field name="percentage"/>
+                    <field name="amount"/>
+                    <field name="currency"/>
+                    <field name="days"/>
+                    <field name="delay"/>
+                    <field name="sequence" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_list_sequence">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Payment Term Line" sequence="sequence">
+                    <field name="type"/>
+                    <field name="percentage"/>
+                    <field name="amount"/>
+                    <field name="currency"/>
+                    <field name="days"/>
+                    <field name="delay"/>
+                    <field name="sequence" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="payment_term_line_view_form">
+            <field name="model">account.invoice.payment_term.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Payment Term Lines">
+                    <label name="type"/>
+                    <field name="type"/>
+                    <group col="1" id="label_amount_percent">
+                        <label name="percentage" yfill="1" xexpand="1" yexpand="1"/>
+                        <label name="amount" yfill="1" xexpand="1" yexpand="1"/>
+                    </group>
+                    <group col="3" id="amount_percent">
+                        <field name="percentage" colspan="3"/>
+                        <field name="amount"/>
+                        <label name="currency"/>
+                        <field name="currency"/>
+                    </group>
+                    <label name="days"/>
+                    <field name="days"/>
+                    <label name="delay"/>
+                    <field name="delay"/>
+                    <field name="currency_digits" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.model.access" id="access_payment_term_line">
             <field name="model" search="[('model', '=', 'account.invoice.payment_term.line')]"/>
             <field name="perm_read" eval="True"/>
