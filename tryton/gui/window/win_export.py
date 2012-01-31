@@ -369,9 +369,12 @@ class WinExport(object):
                                 (prefix + parent):
                             self.on_row_expanded(self.view1, iter,
                                     self.model1.get_path(iter))
+                            iter = self.model1.iter_children(iter)
+                            prefix = parent + '/'
                             break
-                        iter = self.model1.iter_next(iter)
-                    prefix = parent + '/'
+                        else:
+                            iter = self.model1.iter_next(iter)
+                    
             if field not in self.fields_data:
                 continue
             self.model2.append((self.fields_data[field]['string'], field))
