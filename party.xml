@@ -63,35 +63,16 @@ this repository contains the full copyright notices and license terms. -->
                     </group>
                     <notebook colspan="6">
                         <page string="General" id="general">
-                            <field name="addresses" mode="form,tree" colspan="4">
-                                <tree string="Addresses" sequence="sequence"
-                                    fill="1">
-                                    <field name="name"/>
-                                    <field name="street"/>
-                                    <field name="streetbis"/>
-                                    <field name="zip"/>
-                                    <field name="city"/>
-                                    <field name="country"/>
-                                    <field name="subdivision"/>
-                                </tree>
-                            </field>
+                            <field name="addresses" mode="form,tree" colspan="4"
+                                view_ids="party.address_view_form,party.address_view_tree_sequence"/>
                             <group col="2" colspan="4" id="lang">
                                 <label name="lang"/>
                                 <field name="lang" widget="selection"/>
                             </group>
-                            <field name="contact_mechanisms" colspan="2">
-                                <tree string="Contact Mechanisms" sequence="sequence"
-                                    fill="1">
-                                    <field name="type"/>
-                                    <field name="value"/>
-                                    <field name="comment"/>
-                                </tree>
-                            </field>
-                            <field name="categories" colspan="2">
-                                <tree string="Categories" fill="1">
-                                    <field name="rec_name"/>
-                                </tree>
-                            </field>
+                            <field name="contact_mechanisms" colspan="2"
+                                view_ids="party.contact_mechanism_view_tree_sequence"/>
+                            <field name="categories" colspan="2"
+                                view_ids="party.category_view_list"/>
                         </page>
                         <page string="Accounting" id="accounting">
                             <separator string="VAT" colspan="4" id="vat"/>
@@ -197,20 +178,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="VAT Information Exchange System Results" col="1">
-                    <field name="parties_succeed">
-                        <tree string="Parties Succeed" fill="1">
-                            <field name="code"/>
-                            <field name="name"/>
-                            <field name="vat_code"/>
-                        </tree>
-                    </field>
-                    <field name="parties_failed">
-                        <tree string="Parties Failed" fill="1">
-                            <field name="code"/>
-                            <field name="name"/>
-                            <field name="vat_code"/>
-                        </tree>
-                    </field>
+                    <field name="parties_succeed"/>
+                    <field name="parties_failed"/>
                 </form>
                 ]]>
             </field>

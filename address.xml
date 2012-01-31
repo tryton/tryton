@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="address_view_tree">
             <field name="model">party.address</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Addresses">
@@ -22,6 +23,26 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="address_view_tree_sequence">
+            <field name="model">party.address</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Addresses" sequence="sequence" fill="1">
+                    <field name="name"/>
+                    <field name="street"/>
+                    <field name="streetbis"/>
+                    <field name="zip"/>
+                    <field name="city"/>
+                    <field name="country"/>
+                    <field name="subdivision"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="address_view_form">
             <field name="model">party.address</field>
             <field name="type">form</field>
