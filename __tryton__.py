@@ -108,6 +108,8 @@ Avec la possibilité:
         'purchase.xml',
         'configuration.xml',
         'party.xml',
+        'stock.xml',
+        'product.xml',
     ],
     'translation': [
         'locale/bg_BG.po',
