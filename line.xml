@@ -118,22 +118,5 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="move_view_form">
-            <field name="model">account.move</field>
-            <field name="inherit" ref="account.move_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/field[@name='lines']/form/notebook/page[@id=&quot;general&quot;]"
-                        position="after">
-                        <page string="Analytic" col="1" id="analytic">
-                            <field name="analytic_lines"/>
-                        </page>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
-        </record>
-
     </data>
 </tryton>
