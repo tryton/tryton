@@ -37,6 +37,7 @@ class Many2Many(WidgetInterface):
         self.wid_text.set_property('width_chars', 13)
         self.wid_text.connect('activate', self._sig_activate)
         self.wid_text.connect('focus-out-event', self._focus_out)
+        self.focus_out = True
         hbox.pack_start(self.wid_text, expand=True, fill=True)
 
         self.but_add = gtk.Button()
@@ -120,10 +121,13 @@ class Many2Many(WidgetInterface):
             self._sig_add()
 
     def _sig_add(self, *args):
+        if not self.focus_out:
+            return
         domain = self.field.domain_get(self.record)
         context = self.field.context_get(self.record)
         value = self.wid_text.get_text()
 
+        self.focus_out = False
         try:
             if value:
                 dom = [('rec_name', 'ilike', '%' + value + '%'), domain]
@@ -133,12 +137,14 @@ class Many2Many(WidgetInterface):
                     dom , 0, CONFIG['client.limit'], None, context)
         except TrytonServerError, exception:
             common.process_exception(exception)
+            self.focus_out = True
             return False
 
         def callback(ids):
             res_id = None
             if ids:
                 res_id = ids[0]
+            self.focus_out = True
             self.screen.load(ids, modified=True)
             self.screen.display(res_id=res_id)
             if self.screen.current_view:
