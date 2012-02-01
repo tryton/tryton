@@ -44,7 +44,6 @@ class DBListEditor(object):
         self.cell.set_property('editable', True)
         self.cell.connect('edited', self.edit_profilename)
         self.cell.connect('editing-started', self.edit_started)
-        self.cell.connect('editing-canceled', self.edit_canceled)
         self.profile_tree = gtk.TreeView()
         self.profile_tree.set_model(profile_store)
         self.profile_tree.insert_column_with_attributes(-1, _(u'Profile'),
@@ -231,12 +230,6 @@ class DBListEditor(object):
                 self.current_database = entry_value
 
         self.display_dbwidget(None, None, self.current_database)
-
-    def edit_canceled(self, renderer):
-        model = self.profile_tree.get_model()
-        for i, row in enumerate(list(model)):
-            if not row[0]:
-                del model[i]
 
     def check_edit_cancel(self, editable, event, renderer, path):
         renderer.emit('edited', path, editable.get_text())
