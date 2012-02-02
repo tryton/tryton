@@ -467,6 +467,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="tax_view_tree">
             <field name="model">account.tax</field>
             <field name="type">tree</field>
+            <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -484,6 +485,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="tax_view_list">
             <field name="model">account.tax</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Taxes" sequence="sequence">
