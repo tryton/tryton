@@ -87,7 +87,6 @@ Create chart of accounts::
 
     >>> AccountTemplate = Model.get('account.account.template')
     >>> Account = Model.get('account.account')
-    >>> AccountJournal = Model.get('account.journal')
     >>> account_template, = AccountTemplate.find([('parent', '=', False)])
     >>> create_chart = Wizard('account.create_chart')
     >>> create_chart.execute('account')
@@ -118,7 +117,6 @@ Create chart of accounts::
     >>> create_chart.form.account_receivable = receivable
     >>> create_chart.form.account_payable = payable
     >>> create_chart.execute('create_properties')
-    >>> stock_journal, = AccountJournal.find([('code', '=', 'STO')])
 
 Create parties::
 
@@ -155,9 +153,6 @@ Create product::
     >>> product.account_stock_supplier = stock_supplier
     >>> product.account_stock_customer = stock_customer
     >>> product.account_stock_lost_found = stock_lost_found
-    >>> product.account_journal_stock_supplier = stock_journal
-    >>> product.account_journal_stock_customer = stock_journal
-    >>> product.account_journal_stock_lost_found = stock_journal
     >>> product.save()
     >>> product_average = Product(Product.copy(product.id, config.context))
     >>> product_average.cost_price_method = 'average'

@@ -4,16 +4,16 @@ Account Stock Continental Module
 The account_stock_continental module adds continental accounting model for
 stock valuation.
 
-Five new fields are added to Product and Category:
+A new configuration field for accounting is added:
+
+- Journal Stock: The journal used for stock move.
+
+Four new fields are added to Product and Category:
 
 - Account Stock: The account which is used to record stock value.
 - Account Stock Supplier: The counter part account for supplier stock move.
 - Account Stock Customer: The counter part account for customer stock move.
 - Account Stock Lost and Found: The counter part account for lost and found
-  stock move.
-- Account Journal Stock Supplier: The journal used for supplier stock move.
-- Account Journal Stock Customer: The journal used for customer stock move.
-- Account Journal Stock Lost and Found: The journal used for lost and found
   stock move.
 
 As usual, if the "Use Category's accounts" is checked it is the category one

@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import Model, ModelView, ModelSQL, fields
 from trytond.pool import Pool
 
 
@@ -61,25 +61,18 @@ class Move(ModelSQL, ModelView):
             move_line['credit'] = Decimal('0.0')
         return move_line
 
-    def _get_account_stock_move(self, move, move_lines, type_):
+    def _get_account_stock_move(self, move, move_lines):
         '''
         Return account move value for stock move
         '''
         date_obj = Pool().get('ir.date')
         period_obj = Pool().get('account.period')
-        assert type_.startswith('in_') or type_.startswith('out_'), 'wrong type'
+        account_configuration_obj = Pool().get('account.configuration')
 
         date = move.effective_date or date_obj.today()
         period_id = period_obj.find(move.company.id, date=date)
-
-        if type_.startswith('in_'):
-            journal_type = type_[3:]
-        else:
-            journal_type = type_[4:]
-
-        journal_id = getattr(move.product,
-                'account_journal_stock_%s_used' % journal_type).id
-
+        account_configuration = account_configuration_obj.browse(1)
+        journal_id = account_configuration.stock_journal.id
         return {
             'journal': journal_id,
             'period': period_id,
@@ -123,7 +116,7 @@ class Move(ModelSQL, ModelView):
                 self._get_account_stock_move_line(move, amount))
 
         account_move_id = account_move_obj.create(
-                self._get_account_stock_move(move, account_move_lines, type_))
+                self._get_account_stock_move(move, account_move_lines))
         self.write(move.id, {
             'account_move': account_move_id,
             })

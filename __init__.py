@@ -3,3 +3,4 @@
 
 from .stock import *
 from .product import *
+from .account import *
