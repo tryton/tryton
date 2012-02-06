@@ -22,6 +22,50 @@ class Move(ModelSQL, ModelView):
     def default_anglo_saxon_quantity(self):
         return 0.0
 
+    def _get_account_stock_move_lines(self, move, type_):
+        uom_obj = Pool().get('product.uom')
+        currency_obj = Pool().get('currency.currency')
+        lines = super(Move, self)._get_account_stock_move_lines(move, type_)
+        if (type_.endswith('supplier')
+                and move.product.cost_price_method == 'fixed'):
+            move_line = {
+                'name': move.rec_name,
+                }
+            cost_price = uom_obj.compute_price(move.product.default_uom,
+                move.cost_price, move.uom)
+            amount = currency_obj.round(move.company.currency,
+                Decimal(str(move.quantity)) * (move.unit_price - cost_price))
+            if currency_obj.is_zero(move.company.currency, amount):
+                return lines
+            if type_.startswith('in_'):
+                if amount > Decimal(0):
+                    move_line['debit'] = Decimal(0)
+                    move_line['credit'] = amount
+                else:
+                    move_line['debit'] = -amount
+                    move_line['credit'] = Decimal(0)
+                account_type = type_[3:]
+            else:
+                if amount > Decimal(0):
+                    move_line['debit'] = amount
+                    move_line['credit'] = Decimal(0)
+                else:
+                    move_line['debit'] = Decimal(0)
+                    move_line['credit'] = -amount
+                account_type = type_[4:]
+            move_line['account'] = getattr(move.product,
+                'account_stock_%s_used' % account_type).id
+            lines.append(move_line)
+            move_line = move_line.copy()
+            move_line['debit'], move_line['credit'] = \
+                move_line['credit'], move_line['debit']
+            if account_type == 'supplier':
+                move_line['account'] = move.product.account_expense_used.id
+            else:
+                move_line['account'] = move.product.account_revenue_used.id
+            lines.append(move_line)
+        return lines
+
     def _get_anglo_saxon_move(self, moves, quantity):
         '''
         Generator of (move, qty) where move is the move to be consumed and qty

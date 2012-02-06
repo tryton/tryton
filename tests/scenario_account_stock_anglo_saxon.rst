@@ -153,6 +153,7 @@ Create product::
     >>> product.salable = True
     >>> product.list_price = Decimal('10')
     >>> product.cost_price = Decimal('5')
+    >>> product.cost_price_method = 'fixed'
     >>> product.account_expense = expense
     >>> product.account_revenue = revenue
     >>> product.account_stock = stock
@@ -164,6 +165,9 @@ Create product::
     >>> product.account_journal_stock_customer = stock_journal
     >>> product.account_journal_stock_lost_found = stock_journal
     >>> product.save()
+    >>> product_average = Product(Product.copy(product.id, config.context))
+    >>> product_average.cost_price_method = 'average'
+    >>> product_average.save()
 
 Create payment term::
 
@@ -174,7 +178,7 @@ Create payment term::
     >>> payment_term.lines.append(payment_term_line)
     >>> payment_term.save()
 
-Purchase 5 products::
+Purchase 12 products::
 
     >>> Purchase = Model.get('purchase.purchase')
     >>> PurchaseLine = Model.get('purchase.line')
@@ -186,6 +190,12 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
+    >>> purchase_line.unit_price = Decimal(4)
+    >>> purchase_line = PurchaseLine()
+    >>> purchase.lines.append(purchase_line)
+    >>> purchase_line.product = product_average
+    >>> purchase_line.quantity = 7.0
+    >>> purchase_line.unit_price = Decimal(6)
     >>> purchase.save()
     >>> Purchase.workflow_trigger_validate(purchase.id, 'quotation',
     ...     config.context)
@@ -194,7 +204,7 @@ Purchase 5 products::
     >>> purchase.state
     u'confirmed'
 
-Receive 4 products::
+Receive 9 products::
 
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> Move = Model.get('stock.move')
@@ -202,6 +212,9 @@ Receive 4 products::
     >>> move = Move(purchase.moves[0].id)
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 4.0
+    >>> move = Move(purchase.moves[1].id)
+    >>> shipment.incoming_moves.append(move)
+    >>> move.quantity = 5.0
     >>> shipment.save()
     >>> ShipmentIn.workflow_trigger_validate(shipment.id, 'received',
     ...     config.context)
@@ -211,11 +224,15 @@ Receive 4 products::
     u'done'
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('0.00'), Decimal('20.00'))
+    ... (Decimal('4.00'), Decimal('50.00'))
     True
     >>> stock.reload()
     >>> (stock.debit, stock.credit) == \
-    ... (Decimal('20.00'), Decimal('0.00'))
+    ... (Decimal('50.00'), Decimal('0.00'))
+    True
+    >>> expense.reload()
+    >>> (expense.debit, expense.credit) == \
+    ... (Decimal('0.00'), Decimal('4.00'))
     True
 
 Open supplier invoice::
@@ -223,31 +240,28 @@ Open supplier invoice::
     >>> Invoice = Model.get('account.invoice')
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
-    >>> invoice_line, = invoice.lines
+    >>> invoice_line = invoice.lines[0]
     >>> invoice_line.unit_price = Decimal('6')
+    >>> invoice_line = invoice.lines[1]
+    >>> invoice_line.unit_price = Decimal('4')
     >>> invoice.save()
     >>> Invoice.workflow_trigger_validate(invoice.id, 'open', config.context)
     >>> invoice.state
     u'open'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('24.00'))
+    ... (Decimal('0.00'), Decimal('44.00'))
     True
     >>> expense.reload()
     >>> (expense.debit, expense.credit) == \
-    ... (Decimal('24.00'), Decimal('20.00'))
+    ... (Decimal('44.00'), Decimal('50.00'))
     True
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('20.00'), Decimal('20.00'))
+    ... (Decimal('50.00'), Decimal('50.00'))
     True
 
-Update cost price of product::
-
-    >>> product.cost_price = Decimal('6')
-    >>> product.save()
-
-Sale 2 products::
+Sale 5 products::
 
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
@@ -259,6 +273,10 @@ Sale 2 products::
     >>> sale.lines.append(sale_line)
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
+    >>> sale_line = SaleLine()
+    >>> sale.lines.append(sale_line)
+    >>> sale_line.product = product_average
+    >>> sale_line.quantity = 3.0
     >>> sale.save()
     >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
     >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
@@ -266,7 +284,7 @@ Sale 2 products::
     >>> sale.state
     u'processing'
 
-Send 2 products::
+Send 5 products::
 
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
@@ -286,11 +304,11 @@ Send 2 products::
     u'done'
     >>> stock_customer.reload()
     >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('12.00'), Decimal('0.00'))
+    ... (Decimal('28.00'), Decimal('0.00'))
     True
     >>> stock.reload()
     >>> (stock.debit, stock.credit) == \
-    ... (Decimal('20.00'), Decimal('12.00'))
+    ... (Decimal('50.00'), Decimal('28.00'))
     True
 
 Open customer invoice::
@@ -302,17 +320,17 @@ Open customer invoice::
     u'open'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal('20.00'), Decimal('0.00'))
+    ... (Decimal('50.00'), Decimal('0.00'))
     True
     >>> revenue.reload()
     >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal('0.00'), Decimal('20.00'))
+    ... (Decimal('0.00'), Decimal('50.00'))
     True
     >>> stock_customer.reload()
     >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('12.00'), Decimal('12.00'))
+    ... (Decimal('28.00'), Decimal('28.00'))
     True
     >>> cogs.reload()
     >>> (cogs.debit, cogs.credit) == \
-    ... (Decimal('12.00'), Decimal('0.00'))
+    ... (Decimal('28.00'), Decimal('0.00'))
     True
