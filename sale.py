@@ -103,7 +103,8 @@ class Sale(Model):
         cost_line = {}
         product_ids = [line['product'] for line in values.get('lines') or []
                 if line.get('product')]
-        stockable = any(product.salable for product in product_obj.browse(product_ids))
+        stockable = any(product.type in ('stockable', 'consumable')
+            for product in product_obj.browse(product_ids))
         if cost and currency_id and stockable:
             if (values.get('currency')
                     and currency_id != values['currency']):
