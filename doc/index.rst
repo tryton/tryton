@@ -23,9 +23,10 @@ An Account Move is created for each Stock Move for which one Stock Location has
 the type "Storage" and an the other has the type "Supplier", "Customer" or
 "Lost and Found".
 
-If the Stock Move has a "Supplier" Location as origin, then the Account
-Stock of the Product is debited and the Account Stock Supplier of the Product is
-credited. The amount is the Unit Price of the move.
+If the Stock Move has a "Supplier" Location as origin, then the Account Stock
+of the Product is debited and the Account Stock Supplier of the Product is
+credited. The amount is the Unit Price of the move or the Cost Price of the
+Product if it uses the "fixed" method.
 The account move is inverted if it is the destination.
 
 If the Stock Move has a "Customer" Location as destination, then the Account

@@ -22,7 +22,8 @@ class Move(ModelSQL, ModelView):
         move_line = {
             'name': move.rec_name,
         }
-        if type_.endswith('supplier'):
+        if (type_.endswith('supplier')
+                and move.product.cost_price_method != 'fixed'):
             unit_price = move.unit_price
         else:
             unit_price = uom_obj.compute_price(move.product.default_uom,
