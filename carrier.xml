@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="inherit" ref="carrier.carrier_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/notebook/page[@id='carrier']/field[@name='carrier_cost_method']"
+                        position="after">
+                        <newline/>
+                        <label name="percentage"/>
+                        <field name="percentage"/>
+                        <newline/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="carrier_view_form2">
+            <field name="model">carrier</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="carrier.carrier_view_form2"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/field[@name='carrier_cost_method']"
+                        position="after">
+                        <newline/>
+                        <label name="percentage"/>
+                        <field name="percentage"/>
+                        <newline/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
