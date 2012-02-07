@@ -327,7 +327,7 @@ class WinExport(object):
         try:
             new_id = rpc.execute(*args)
         except TrytonServerError, exception:
-            new_ids = common.process_exception(exception, self.dialog, *args)
+            new_id = common.process_exception(exception, self.dialog, *args)
             if not new_id:
                 return
         self.predef_model.append((

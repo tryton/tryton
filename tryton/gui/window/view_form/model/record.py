@@ -584,5 +584,8 @@ class Record(SignalEvent):
     def destroy(self):
         super(Record, self).destroy()
         self.group = None
+        for v in self.value.itervalues():
+            if hasattr(v, 'destroy'):
+                v.destroy()
         self.value = None
         self.next = None

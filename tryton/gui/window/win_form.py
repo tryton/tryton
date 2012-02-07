@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from tryton.common import TRYTON_ICON
+from tryton.common import TRYTON_ICON, COLOR_SCHEMES
 import tryton.common as common
 from tryton.config import CONFIG
 import gtk
@@ -8,6 +8,7 @@ import pango
 import gettext
 from tryton.exceptions import TrytonServerError
 from tryton.gui.window.nomodal import NoModal
+import tryton.rpc as rpc
 
 _ = gettext.gettext
 
@@ -56,7 +57,7 @@ class WinForm(NoModal):
         if new and many:
             self.but_ok.add_accelerator('clicked',
                 self.accel_group, gtk.keysyms.Return,
-                gtk.gdk.CONTROL_MASK|gtk.gdk.SHIFT_MASK,
+                gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK,
                 gtk.ACCEL_VISIBLE)
 
             self.but_new = self.win.add_button(gtk.STOCK_NEW,
@@ -130,7 +131,8 @@ class WinForm(NoModal):
             tooltips.set_tip(self.but_del, _('Delete selected record'))
             self.but_del.connect('clicked', self._sig_remove)
             img_del = gtk.Image()
-            img_del.set_from_stock('tryton-delete', gtk.ICON_SIZE_SMALL_TOOLBAR)
+            img_del.set_from_stock('tryton-delete',
+                gtk.ICON_SIZE_SMALL_TOOLBAR)
             img_del.set_alignment(0.5, 0.5)
             self.but_del.add(img_del)
             self.but_del.set_relief(gtk.RELIEF_NONE)
@@ -142,7 +144,8 @@ class WinForm(NoModal):
             tooltips.set_tip(but_pre, _('Previous'))
             but_pre.connect('clicked', self._sig_previous)
             img_pre = gtk.Image()
-            img_pre.set_from_stock('tryton-go-previous', gtk.ICON_SIZE_SMALL_TOOLBAR)
+            img_pre.set_from_stock('tryton-go-previous',
+                gtk.ICON_SIZE_SMALL_TOOLBAR)
             img_pre.set_alignment(0.5, 0.5)
             but_pre.add(img_pre)
             but_pre.set_relief(gtk.RELIEF_NONE)
@@ -155,7 +158,8 @@ class WinForm(NoModal):
             tooltips.set_tip(but_next, _('Next'))
             but_next.connect('clicked', self._sig_next)
             img_next = gtk.Image()
-            img_next.set_from_stock('tryton-go-next', gtk.ICON_SIZE_SMALL_TOOLBAR)
+            img_next.set_from_stock('tryton-go-next',
+                gtk.ICON_SIZE_SMALL_TOOLBAR)
             img_next.set_alignment(0.5, 0.5)
             but_next.add(img_next)
             but_next.set_relief(gtk.RELIEF_NONE)
@@ -167,7 +171,8 @@ class WinForm(NoModal):
             tooltips.set_tip(but_switch, _('Switch'))
             but_switch.connect('clicked', self.switch_view)
             img_switch = gtk.Image()
-            img_switch.set_from_stock('tryton-fullscreen', gtk.ICON_SIZE_SMALL_TOOLBAR)
+            img_switch.set_from_stock('tryton-fullscreen',
+                gtk.ICON_SIZE_SMALL_TOOLBAR)
             img_switch.set_alignment(0.5, 0.5)
             but_switch.add(img_switch)
             but_switch.set_relief(gtk.RELIEF_NONE)
@@ -251,6 +256,7 @@ class WinForm(NoModal):
         from tryton.gui.window.win_search import WinSearch
         domain = []
         context = rpc.CONTEXT.copy()
+        model_name = self.screen.model_name
 
         try:
             if self.wid_text.get_text():
@@ -258,7 +264,7 @@ class WinForm(NoModal):
                         '%' + self.wid_text.get_text() + '%'), domain]
             else:
                 dom = domain
-            ids = rpc.execute('model', self.attrs['relation'], 'search', dom,
+            ids = rpc.execute('model', model_name, 'search', dom,
                     0, CONFIG['client.limit'], None, context)
         except TrytonServerError, exception:
             common.process_exception(exception)
@@ -275,9 +281,8 @@ class WinForm(NoModal):
             self.wid_text.set_text('')
 
         if len(ids) != 1:
-            WinSearch(self.attrs['relation'], callback, sel_multi=True,
-                ids=ids, context=context, domain=domain,
-                views_preload=self.attrs.get('views', {}))
+            WinSearch(model_name, callback, sel_multi=True,
+                ids=ids, context=context, domain=domain)
         else:
             callback(ids)
 

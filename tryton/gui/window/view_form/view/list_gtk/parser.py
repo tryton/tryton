@@ -90,6 +90,7 @@ class ParserTree(ParserInterface):
         treeview.sequence = attrs.get('sequence', False)
         treeview.colors = attrs.get('colors', '"black"')
         treeview.keyword_open = attrs.get('keyword_open', False)
+        treeview.connect('focus', self.set_selection)
         self.treeview = treeview
         treeview.set_property('rules-hint', True)
         if not self.title:
@@ -257,6 +258,12 @@ class ParserTree(ParserInterface):
             treeview.append_column(col)
         treeview.set_fixed_height_mode(True)
         return treeview, dict_widget, button_list, on_write, [], None
+
+    def set_selection(self, treeview, direction):
+        selection = treeview.get_selection()
+        if len(treeview.get_model()):
+            selection.select_path(0)
+        return False
 
 
 class Char(object):
@@ -501,7 +508,9 @@ class FloatTime(Char):
 
     def value_from_text(self, record, text, callback=None):
         field = record[self.field_name]
-        field.set_client(record, common.text_to_float_time(text, self.conv))
+        digits = record.expr_eval(field.attrs.get('digits', (16, 2)))
+        field.set_client(record,
+            round(common.text_to_float_time(text, self.conv), digits[1]))
         if callback:
             callback()
 

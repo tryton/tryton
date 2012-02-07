@@ -2,10 +2,13 @@
 #this repository contains the full copyright notices and license terms.
 'Parser'
 import gtk
-from tryton.gui.window.view_form.view.form_gtk.parser import _container
+import gettext
+from tryton.gui.window.view_form.view.form_gtk.parser import _container, VBox
 import tryton.common as common
 from action import Action
-from tryton.config import CONFIG, TRYTON_ICON
+from tryton.config import CONFIG
+
+_ = gettext.gettext
 
 
 class ParserBoard(object):
@@ -47,13 +50,6 @@ class ParserBoard(object):
                     xexpand=xexpand, xfill=xfill)
             elif node.localName == 'separator':
                 text = attrs.get('string', '')
-                if 'string' in attrs or 'name' in attrs:
-                    if not text:
-                        if 'name' in attrs and attrs['name'] in fields:
-                            if 'states' in fields[attrs['name']]:
-                                attrs['states'] = \
-                                        fields[attrs['name']]['states']
-                            text = fields[attrs['name']]['string']
                 vbox = VBox(attrs=attrs)
                 if text:
                     label = gtk.Label(text)
@@ -68,22 +64,6 @@ class ParserBoard(object):
                     xexpand=xexpand, xfill=xfill)
             elif node.localName == 'label':
                 text = attrs.get('string', '')
-                if not text:
-                    if 'name' in attrs and attrs['name'] in fields:
-                        if 'states' in fields[attrs['name']]:
-                            attrs['states'] = fields[attrs['name']]['states']
-                        if gtk.widget_get_default_direction() == gtk.TEXT_DIR_RTL:
-                            text = _(':') + fields[attrs['name']]['string']
-                        else:
-                            text = fields[attrs['name']]['string'] + _(':')
-                        if 'align' not in attrs:
-                            attrs['align'] = 1.0
-                    else:
-                        for node in node.childNodes:
-                            if node.nodeType == node.TEXT_NODE:
-                                text += node.data
-                            else:
-                                text += node.toxml()
                 if not text:
                     container.empty_add(int(attrs.get('colspan', 1)))
                     continue
@@ -115,7 +95,8 @@ class ParserBoard(object):
                 container.wid_add(notebook,
                     colspan=int(attrs.get('colspan', 4)),
                     yexpand=True, yfill=True)
-                widget, new_widgets = self.parse(node, notebook, tooltips=tooltips)
+                widget, new_widgets = self.parse(node, notebook,
+                    tooltips=tooltips)
                 widgets += new_widgets
             elif node.localName == 'page':
                 if CONFIG['client.form_tab'] == 'left':
@@ -124,9 +105,10 @@ class ParserBoard(object):
                     angle = -90
                 else:
                     angle = 0
-                label = gtk.Label(attrs.get('string','No String Attr.'))
+                label = gtk.Label(attrs.get('string', _('No String Attr.')))
                 label.set_angle(angle)
-                widget, new_widgets = self.parse(node, notebook, tooltips=tooltips)
+                widget, new_widgets = self.parse(node, notebook,
+                    tooltips=tooltips)
                 widgets += new_widgets
                 notebook.append_page(widget, label)
             elif node.localName == 'group':
@@ -145,7 +127,8 @@ class ParserBoard(object):
                 hpaned = gtk.HPaned()
                 container.wid_add(hpaned, colspan=int(attrs.get('colspan', 4)),
                         yexpand=True, yfill=True)
-                widget, new_widgets = self.parse(node, paned=hpaned, tooltips=tooltips)
+                widget, new_widgets = self.parse(node, paned=hpaned,
+                    tooltips=tooltips)
                 widgets += new_widgets
                 if 'position' in attrs:
                     hpaned.set_position(int(attrs['position']))
@@ -153,19 +136,20 @@ class ParserBoard(object):
                 vpaned = gtk.VPaned()
                 container.wid_add(vpaned, colspan=int(attrs.get('colspan', 4)),
                         yexpand=True, yfill=True)
-                widget, new_widgets = self.parse(node, paned=vpaned, tooltips=tooltips)
+                widget, new_widgets = self.parse(node, paned=vpaned,
+                    tooltips=tooltips)
                 widgets += new_widgets
                 if 'position' in attrs:
                     vpaned.set_position(int(attrs['position']))
             elif node.localName == 'child':
-                widget, new_widgets = self.parse(node, paned=paned, tooltips=tooltips)
+                widget, new_widgets = self.parse(node, paned=paned,
+                    tooltips=tooltips)
                 widgets += new_widgets
                 if not paned.get_child1():
                     paned.pack1(widget, resize=True, shrink=True)
                 elif not paned.get_child2():
                     paned.pack2(widget, resize=True, shrink=True)
             elif node.localName == 'action':
-                name = str(attrs['name'])
                 widget_act = Action(attrs, self.context)
                 widgets.append(widget_act)
                 yexpand = bool(attrs.get('yexpand', 1))
