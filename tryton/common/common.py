@@ -1461,11 +1461,17 @@ def safe_eval(source, data=None):
         'dict': dict,
         }}, data)
 
-def timezoned_date(date):
-    if pytz and rpc.CONTEXT.get('timezone'):
+def timezoned_date(date, reverse=False):
+    if pytz and rpc.CONTEXT.get('timezone') and rpc.TIMEZONE:
         lzone = pytz.timezone(rpc.CONTEXT['timezone'])
         szone = pytz.timezone(rpc.TIMEZONE)
+        if reverse:
+            lzone, szone = szone, lzone
         sdt = szone.localize(date, is_dst=True)
         ldt = sdt.astimezone(lzone)
         date = ldt
     return date
+
+
+def untimezoned_date(date):
+    return timezoned_date(date, reverse=True).replace(tzinfo=None)

@@ -8,7 +8,7 @@ import locale
 from interface import WidgetInterface
 import tryton.rpc as rpc
 from tryton.common import DT_FORMAT, DHM_FORMAT, HM_FORMAT, message, \
-        TRYTON_ICON, timezoned_date
+        TRYTON_ICON, timezoned_date, untimezoned_date
 from tryton.common import date_widget, Tooltips, datetime_strftime, \
         get_toplevel_window
 from tryton.translate import date_format
@@ -192,7 +192,7 @@ class DateTime(WidgetInterface):
             date = datetime.datetime(*time.strptime(value, self.format)[:6])
         except ValueError:
             return False
-        date = timezoned_date(date)
+        date = untimezoned_date(date)
         return datetime_strftime(date, DHM_FORMAT)
 
     def set_value(self, record, field):

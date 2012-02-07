@@ -446,7 +446,7 @@ class Datetime(Date):
         try:
             date = datetime.datetime(*time.strptime(text,
                 self.display_format)[:6])
-            date = common.timezoned_date(date)
+            date = common.untimezoned_date(date)
             date = common.datetime_strftime(date, self.server_format)
         except ValueError:
             date = False
