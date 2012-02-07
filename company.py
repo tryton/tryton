@@ -309,7 +309,7 @@ class CompanyConfig(Wizard):
             if field._type == 'one2many':
                 values[fname] = [('create', v) for v in values[fname]]
             elif field._type == 'many2many':
-                values[fname] = [('set', values[fname])]
+                values[fname] = [('set', [v['id'] for v in values[fname]])]
         company_id = company_obj.create(values)
         user_ids = user_obj.search([
             ('main_company', '=', False),
