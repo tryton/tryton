@@ -173,6 +173,12 @@ class DateTimeDescriptor(FieldDescriptor):
         super(DateTimeDescriptor, self).__set__(instance, value)
 
 
+class TimeDescriptor(FieldDescriptor):
+    def __set__(self, instance, value):
+        assert isinstance(value, datetime.time) or value in (None, False)
+        super(TimeDescriptor, self).__set__(instance, value)
+
+
 class Many2OneDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         relation = Model.get(self.definition['relation'], instance._config)
@@ -323,6 +329,7 @@ class MetaModelFactory(object):
         'reference': ReferenceDescriptor,
         'date': DateDescriptor,
         'datetime': DateTimeDescriptor,
+        'time': TimeDescriptor,
         'many2one': Many2OneDescriptor,
         'one2many': One2ManyDescriptor,
         'many2many': Many2ManyDescriptor,
