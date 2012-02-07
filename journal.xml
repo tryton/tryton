@@ -316,30 +316,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Default Account Journal</field>
             <field name="code">account.journal</field>
         </record>
-        <record model="account.journal" id="journal_revenue">
-            <field name="name">Revenue</field>
-            <field name="code">REV</field>
-            <field name="type">revenue</field>
-            <field name="sequence" ref="sequence_account_journal"/>
-        </record>
-        <record model="account.journal" id="journal_expense">
-            <field name="name">Expense</field>
-            <field name="code">EXP</field>
-            <field name="type">expense</field>
-            <field name="sequence" ref="sequence_account_journal"/>
-        </record>
-        <record model="account.journal" id="journal_cash">
-            <field name="name">Cash</field>
-            <field name="code">CASH</field>
-            <field name="type">cash</field>
-            <field name="sequence" ref="sequence_account_journal"/>
-        </record>
-        <record model="account.journal" id="journal_stock">
-            <field name="name">Stock</field>
-            <field name="code">STO</field>
-            <field name="type">general</field>
-            <field name="sequence" ref="sequence_account_journal"/>
-        </record>
 
         <record model="ir.ui.view" id="journal_period_view_form">
             <field name="model">account.journal.period</field>
@@ -462,6 +438,33 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record model="account.journal" id="journal_revenue">
+            <field name="name">Revenue</field>
+            <field name="code">REV</field>
+            <field name="type">revenue</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_expense">
+            <field name="name">Expense</field>
+            <field name="code">EXP</field>
+            <field name="type">expense</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_cash">
+            <field name="name">Cash</field>
+            <field name="code">CASH</field>
+            <field name="type">cash</field>
+            <field name="sequence" ref="sequence_account_journal"/>
+        </record>
+        <record model="account.journal" id="journal_stock">
+            <field name="name">Stock</field>
+            <field name="code">STO</field>
+            <field name="type">general</field>
+            <field name="sequence" ref="sequence_account_journal"/>
         </record>
     </data>
 </tryton>

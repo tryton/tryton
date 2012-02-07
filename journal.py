@@ -161,6 +161,9 @@ class Journal(ModelSQL, ModelView):
             return [('code',) + clause[1:]]
         return [(self._rec_name,) + clause[1:]]
 
+    def check_xml_record(self, ids, values):
+        return True
+
 Journal()
 
 
