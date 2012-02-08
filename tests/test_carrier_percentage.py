@@ -48,7 +48,7 @@ class CarrierWeightTestCase(unittest.TestCase):
         '''
         Test compute_percentage.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             party_id = self.party.create({
                     'name': 'Carrier',
                     })
