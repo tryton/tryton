@@ -146,6 +146,9 @@ Create products::
     >>> product.account_journal_stock_customer = stock_journal
     >>> product.account_journal_stock_lost_found = stock_journal
     >>> product.save()
+    >>> product_average = Product(Product.copy(product.id, config.context))
+    >>> product_average.cost_price_method = 'average'
+    >>> product_average.save()
 
     >>> carrier_product = Product()
     >>> carrier_product.name = 'Carrier Product'
@@ -181,7 +184,15 @@ Receive a single product line::
     >>> move.from_location = supplier_location
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
-    >>> move.quantity = 50
+    >>> move.quantity = 30
+    >>> move.unit_price == Decimal('8')
+    True
+    >>> move = Move()
+    >>> shipment.incoming_moves.append(move)
+    >>> move.from_location = supplier_location
+    >>> move.to_location = shipment.warehouse.input_location
+    >>> move.product = product_average
+    >>> move.quantity = 20
     >>> move.unit_price == Decimal('8')
     True
     >>> shipment.carrier = carrier
@@ -195,12 +206,14 @@ Receive a single product line::
     >>> shipment.reload()
     >>> shipment.state
     u'received'
-    >>> move, = shipment.incoming_moves
+    >>> move, move_average = shipment.incoming_moves
     >>> move.unit_price == Decimal('8.0600')
+    True
+    >>> move_average.unit_price == Decimal('8.0600')
     True
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ...     (Decimal('0.00'), Decimal('400.00'))
+    ...     (Decimal('0.00'), Decimal('398.20'))
     True
     >>> expense.reload()
     >>> (expense.debit, expense.credit) == \
@@ -208,7 +221,7 @@ Receive a single product line::
     True
     >>> stock.reload()
     >>> (stock.debit, stock.credit) == \
-    ...     (Decimal('403.00'), Decimal('0.00'))
+    ...     (Decimal('401.20'), Decimal('0.00'))
     True
 
 Receive many product lines::
@@ -236,7 +249,7 @@ Receive many product lines::
     True
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ...     (Decimal('0.00'), Decimal('472.00'))
+    ...     (Decimal('0.00'), Decimal('467.20'))
     True
     >>> expense.reload()
     >>> (expense.debit, expense.credit) == \
@@ -244,5 +257,5 @@ Receive many product lines::
     True
     >>> stock.reload()
     >>> (stock.debit, stock.credit) == \
-    ...     (Decimal('478.00'), Decimal('0.00'))
+    ...     (Decimal('473.20'), Decimal('0.00'))
     True
