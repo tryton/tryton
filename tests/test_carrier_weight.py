@@ -49,7 +49,7 @@ class CarrierWeightTestCase(unittest.TestCase):
         '''
         Test compute_weight_price.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             party_id = self.party.create({
                     'name': 'Carrier',
                     })
