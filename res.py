@@ -124,7 +124,7 @@ class User(ModelSQL, ModelView):
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
             [(dn, attrs)] = self.ldap_search_user(login, con, connection,
                     attrs=[str(connection.auth_uid)])
-            if con.simple_bind_s(dn, password):
+            if password and con.simple_bind_s(dn, password):
                 user_id, _, _ = self._get_login(login)
                 if user_id:
                     return user_id
