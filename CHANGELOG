@@ -1,3 +1,5 @@
+* Always check if a password is not empty to avoid unauthenticated bind.
+
 Version 2.0.0 - 2011-04-27
 * Bug fixes (see mercurial logs for details)
 
