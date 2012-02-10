@@ -23,7 +23,7 @@ class Template(ModelSQL, ModelView):
     _name = 'product.template'
 
     account_cogs = fields.Property(fields.Many2One('account.account',
-            'Account Cost of Good Sold', domain=[
+            'Account Cost of Goods Sold', domain=[
                 ('kind', '!=', 'view'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
