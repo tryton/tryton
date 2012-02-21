@@ -374,7 +374,7 @@ class WinExport(object):
                             break
                         else:
                             iter = self.model1.iter_next(iter)
-                    
+
             if field not in self.fields_data:
                 continue
             self.model2.append((self.fields_data[field]['string'], field))
