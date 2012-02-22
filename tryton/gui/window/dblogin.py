@@ -173,10 +173,12 @@ class DBListEditor(object):
     def clear_entries(self):
         for entryname in ('host', 'port', 'database', 'username'):
             entry = getattr(self, '%s_entry' % entryname)
+            entry.handler_block_by_func(self.update_profiles)
             if entryname == 'port':
                 entry.set_text('8000')
             else:
                 entry.set_text('')
+            entry.handler_unblock_by_func(self.update_profiles)
         self.current_database = None
         self.database_combo.set_active(-1)
         self.database_combo.get_model().clear()
