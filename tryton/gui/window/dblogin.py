@@ -41,7 +41,6 @@ class DBListEditor(object):
         vbox_profiles = gtk.VBox(homogeneous=False, spacing=6)
         self.cell = gtk.CellRendererText()
         self.cell.set_property('editable', True)
-        self.cell.connect('edited', self.edit_profilename)
         self.cell.connect('editing-started', self.edit_started)
         self.profile_tree = gtk.TreeView()
         self.profile_tree.set_model(profile_store)
@@ -224,16 +223,13 @@ class DBListEditor(object):
 
         self.display_dbwidget(None, None, self.current_database)
 
-    def check_edit_cancel(self, editable, event, renderer, path):
-        renderer.emit('edited', path, editable.get_text())
-        return False
-
     def edit_started(self, renderer, editable, path):
         if isinstance(editable, gtk.Entry):
-            editable.connect('focus-out-event', self.check_edit_cancel,
+            editable.connect('focus-out-event', self.edit_profilename,
                 renderer, path)
 
-    def edit_profilename(self, renderer, path, newtext):
+    def edit_profilename(self, editable, event, renderer, path):
+        newtext = editable.get_text()
         model = self.profile_tree.get_model()
         oldname = model[path][0]
         if oldname == newtext == '':
