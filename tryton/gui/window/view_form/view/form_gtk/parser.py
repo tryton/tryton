@@ -732,7 +732,7 @@ class ParserForm(ParserInterface):
                 scrolledwindow.set_size_request(-1, 80)
                 scrolledwindow.add(textview)
                 textview.set_accepts_tab(False)
-                return scrolledwindow, gtk.FILL | gtk.EXPAND
+                return textview, gtk.FILL | gtk.EXPAND
             else:
                 return None, False
 
