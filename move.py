@@ -438,6 +438,9 @@ class Move(ModelSQL, ModelView):
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(cursor, user, uom, context=context)
+        if isinstance(currency, (int, long)):
+            currency = currency_obj.browse(cursor, user, currency,
+                context=context)
         if isinstance(company, (int, long)):
             company = company_obj.browse(cursor, user, company, context=context)
 
@@ -489,6 +492,10 @@ class Move(ModelSQL, ModelView):
             if not vals.get('effective_date'):
                 vals['effective_date'] = date_obj.today(cursor, user,
                         context=context)
+            currency_id = vals.get('currency', self.default_currency(cursor,
+                    user, context=context))
+            company_id = vals.get('company', self.default_company(cursor, user,
+                    context=context))
             from_location = location_obj.browse(cursor, user,
                     vals['from_location'], context=context)
             to_location = location_obj.browse(cursor, user,
@@ -499,14 +506,14 @@ class Move(ModelSQL, ModelView):
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(
                     cursor, user, vals['product'], vals['quantity'],
-                    vals['uom'], vals['unit_price'], vals['currency'],
-                    vals['company'], context=context)
+                    vals['uom'], vals['unit_price'], currency_id,
+                    company_id, context=context)
             if to_location.type == 'supplier' \
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(
                     cursor, user, vals['product'], -vals['quantity'],
-                    vals['uom'], vals['unit_price'], vals['currency'],
-                    vals['company'], context=context)
+                    vals['uom'], vals['unit_price'], currency_id,
+                    company_id, context=context)
             if not vals.get('cost_price'):
                 # Re-read product to get the updated cost_price
                 product = product_obj.browse(cursor, user, vals['product'],
