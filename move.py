@@ -522,13 +522,15 @@ class Move(ModelSQL, ModelView):
             company_id = vals.get('company', self.default_company())
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
-            if from_location.type == 'supplier' \
-                    and product.cost_price_method == 'average':
+            if (from_location.type == 'supplier'
+                    and to_location.type == 'storage'
+                    and product.cost_price_method == 'average'):
                 self._update_product_cost_price(vals['product'],
                         vals['quantity'], vals['uom'], vals['unit_price'],
                         currency_id, company_id, effective_date)
-            if to_location.type == 'supplier' \
-                    and product.cost_price_method == 'average':
+            if (to_location.type == 'supplier'
+                    and from_location.type == 'storage'
+                    and product.cost_price_method == 'average'):
                 self._update_product_cost_price(vals['product'],
                         -vals['quantity'], vals['uom'], vals['unit_price'],
                         currency_id, company_id, effective_date)
