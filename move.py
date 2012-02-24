@@ -386,6 +386,8 @@ class Move(ModelSQL, ModelView):
 
         if isinstance(uom, (int, long)):
             uom = uom_obj.browse(uom)
+        if isinstance(currency, (int, long)):
+            currency = currency_obj.browse(currency)
         if isinstance(company, (int, long)):
             company = company_obj.browse(company)
 
@@ -435,6 +437,8 @@ class Move(ModelSQL, ModelView):
         if vals.get('state') == 'done':
             if not vals.get('effective_date'):
                 vals['effective_date'] = date_obj.today()
+            currency_id = vals.get('currency', self.default_currency())
+            company_id = vals.get('company', self.default_company())
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
             product = product_obj.browse(vals['product'])
@@ -442,12 +446,12 @@ class Move(ModelSQL, ModelView):
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(vals['product'],
                         vals['quantity'], vals['uom'], vals['unit_price'],
-                        vals['currency'], vals['company'])
+                        currency_id, company_id)
             if to_location.type == 'supplier' \
                     and product.cost_price_method == 'average':
                 self._update_product_cost_price(vals['product'],
                         -vals['quantity'], vals['uom'], vals['unit_price'],
-                        vals['currency'], vals['company'])
+                        currency_id, company_id)
             if not vals.get('cost_price'):
                 # Re-read product to get the updated cost_price
                 product = product_obj.browse(vals['product'])
