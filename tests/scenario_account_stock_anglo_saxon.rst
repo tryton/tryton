@@ -223,8 +223,9 @@ Receive 9 products::
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
+    >>> stock.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('4.00'), Decimal('50.00'))
+    ... (Decimal('0.00'), Decimal('46.00'))
     True
     >>> stock.reload()
     >>> (stock.debit, stock.credit) == \
@@ -258,7 +259,7 @@ Open supplier invoice::
     True
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('50.00'), Decimal('50.00'))
+    ... (Decimal('46.00'), Decimal('46.00'))
     True
 
 Sale 5 products::
