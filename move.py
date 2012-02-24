@@ -95,13 +95,15 @@ class Move(ModelSQL, ModelView):
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
             product = product_obj.browse(vals['product'])
-            if from_location.type == 'supplier' \
-                    and product.cost_price_method == 'fifo':
+            if (from_location.type == 'supplier'
+                    and to_location.type == 'storage'
+                    and product.cost_price_method == 'fifo'):
                 self._update_product_cost_price(vals['product'],
                         vals['quantity'], vals['uom'], vals['unit_price'],
                         vals['currency'], effective_date)
-            if to_location.type == 'supplier' \
-                    and product.cost_price_method == 'fifo':
+            if (to_location.type == 'supplier'
+                    and from_location.type == 'storage'
+                    and product.cost_price_method == 'fifo'):
                 self._update_product_cost_price(vals['product'],
                         -vals['quantity'], vals['uom'], vals['unit_price'],
                         vals['currency'], effective_date)
@@ -127,29 +129,33 @@ class Move(ModelSQL, ModelView):
         if 'state' in vals and vals['state'] == 'done':
             for move in self.browse(ids):
                 if vals['state'] == 'cancel':
-                    if move.from_location.type == 'supplier' \
-                            and move.state != 'cancel' \
-                            and move.product.cost_price_method == 'fifo':
+                    if (move.from_location.type == 'supplier'
+                            and move.to_location.type == 'storage'
+                            and move.state != 'cancel'
+                            and move.product.cost_price_method == 'fifo'):
                         self._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
-                    if move.to_location.type == 'supplier' \
-                            and move.state != 'cancel' \
-                            and move.product.cost_price_method == 'fifo':
+                    if (move.to_location.type == 'supplier'
+                            and move.from_location.type == 'storage'
+                            and move.state != 'cancel'
+                            and move.product.cost_price_method == 'fifo'):
                         self._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
 
                 elif vals['state'] == 'done':
-                    if move.from_location.type == 'supplier' \
-                            and move.state != 'done' \
-                            and move.product.cost_price_method == 'fifo':
+                    if (move.from_location.type == 'supplier'
+                            and move.to_location.type == 'storage'
+                            and move.state != 'done'
+                            and move.product.cost_price_method == 'fifo'):
                         self._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
-                    if move.to_location.type == 'supplier' \
-                            and move.state != 'done' \
-                            and move.product.cost_price_method == 'fifo':
+                    if (move.to_location.type == 'supplier'
+                            and move.from_location.type == 'storage'
+                            and move.state != 'done'
+                            and move.product.cost_price_method == 'fifo'):
                         self._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
