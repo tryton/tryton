@@ -2021,6 +2021,7 @@ class HandleShipmentException(Wizard):
                 })
 
         sale_obj.workflow_trigger_validate(sale.id, 'shipment_ok')
+        return 'end'
 
 HandleShipmentException()
 
@@ -2070,7 +2071,7 @@ class HandleInvoiceException(Wizard):
 
     def transition_handle(self, session):
         sale_obj = Pool().get('sale.sale')
-        to_recreate = [x.id for x in session.ask.recreate_moves]
+        to_recreate = [x.id for x in session.ask.recreate_invoices]
         domain_invoices = [x.id for x in session.ask.domain_invoices]
 
         sale = sale_obj.browse(Transaction().context['active_id'])
@@ -2093,5 +2094,6 @@ class HandleInvoiceException(Wizard):
              })
 
         sale_obj.workflow_trigger_validate(sale.id, 'invoice_ok')
+        return 'end'
 
 HandleInvoiceException()
