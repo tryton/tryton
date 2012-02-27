@@ -224,9 +224,13 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         party_obj = pool.get('party.party')
         address_obj = pool.get('party.address')
         payment_term_obj = pool.get('account.invoice.payment_term')
+        currency_obj = pool.get('currency.currency')
+        cursor = Transaction().cursor
         res = {
             'invoice_address': False,
             'payment_term': False,
+            'currency': self.default_currency(),
+            'currency_digits': self.default_currency_digits(),
         }
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
@@ -234,6 +238,20 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                     type='invoice')
             if party.supplier_payment_term:
                 res['payment_term'] = party.supplier_payment_term.id
+
+            subquery = cursor.limit_clause('SELECT currency '
+                'FROM "' + self._table + '" '
+                'WHERE party = %s '
+                'ORDER BY id DESC', 10)
+            cursor.execute('SELECT currency FROM (' + subquery + ') AS p '
+                'GROUP BY currency '
+                'ORDER BY COUNT(1) DESC', (party.id,))
+            row = cursor.fetchone()
+            if row:
+                currency_id, = row
+                currency = currency_obj.browse(currency_id)
+                res['currency'] = currency.id
+                res['currency_digits'] = currency.digits
 
         if res['invoice_address']:
             res['invoice_address.rec_name'] = address_obj.browse(
@@ -1603,7 +1621,7 @@ class ProductSupplier(ModelSQL, ModelView):
     product = fields.Many2One('product.template', 'Product', required=True,
             ondelete='CASCADE', select=1)
     party = fields.Many2One('party.party', 'Supplier', required=True,
-            ondelete='CASCADE', select=1)
+            ondelete='CASCADE', select=1, on_change=['party'])
     name = fields.Char('Name', size=None, translate=True, select=1)
     code = fields.Char('Code', size=None, select=1)
     sequence = fields.Integer('Sequence')
@@ -1662,6 +1680,21 @@ class ProductSupplier(ModelSQL, ModelView):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
         return False
+
+    def on_change_party(self, values):
+        cursor = Transaction().cursor
+        changes = {
+            'currency': self.default_currency(),
+            }
+        if values.get('party'):
+            cursor.execute('SELECT currency FROM "' + self._table + '" '
+                'WHERE party = %s '
+                'GROUP BY currency '
+                'ORDER BY COUNT(1) DESC', (values['party'],))
+            row = cursor.fetchone()
+            if row:
+                changes['currency'], = row
+        return changes
 
     def compute_supply_date(self, product_supplier, date=None):
         '''
