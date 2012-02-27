@@ -335,3 +335,44 @@ Create an Inventory::
     >>> (stock.debit, stock.credit) == \
     ... (Decimal('50.00'), Decimal('39.00'))
     True
+
+Create Move from Supplier to Customer::
+
+    >>> supplier_location, = Location.find([('code', '=', 'SUP')])
+    >>> customer_location, = Location.find([('code', '=', 'CUS')])
+    >>> move = Move()
+    >>> move.product = product
+    >>> move.quantity = 3
+    >>> move.from_location = supplier_location
+    >>> move.to_location = customer_location
+    >>> move.unit_price = Decimal(6)
+    >>> move.cost_price = move.unit_price
+    >>> move.currency = currency
+    >>> move.state = 'done'
+    >>> move.save()
+    >>> stock_supplier.reload()
+    >>> (stock_supplier.debit, stock_supplier.credit) == \
+    ... (Decimal(0), Decimal(68))
+    True
+    >>> stock_customer.reload()
+    >>> (stock_customer.debit, stock_customer.credit) == \
+    ... (Decimal(46), Decimal(0))
+    True
+    >>> move = Move()
+    >>> move.product = product_average
+    >>> move.quantity = 4
+    >>> move.from_location = supplier_location
+    >>> move.to_location = customer_location
+    >>> move.unit_price = Decimal(5)
+    >>> move.cost_price = move.unit_price
+    >>> move.currency = currency
+    >>> move.state = 'done'
+    >>> move.save()
+    >>> stock_supplier.reload()
+    >>> (stock_supplier.debit, stock_supplier.credit) == \
+    ... (Decimal(0), Decimal(88))
+    True
+    >>> stock_customer.reload()
+    >>> (stock_customer.debit, stock_customer.credit) == \
+    ... (Decimal('66'), Decimal(0))
+    True

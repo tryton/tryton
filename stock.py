@@ -53,6 +53,8 @@ class Move(ModelSQL, ModelView):
             'name': move.rec_name,
             'account': move.product.account_stock_used.id,
         }
+        if not amount:
+            return
         if amount >= Decimal('0.0'):
             move_line['debit'] = Decimal('0.0')
             move_line['credit'] = amount
@@ -97,6 +99,10 @@ class Move(ModelSQL, ModelView):
             return 'out_lost_found'
         elif type_ == ('lost_found', 'storage'):
             return 'in_lost_found'
+        elif type_ == ('supplier', 'customer'):
+            return 'supplier_customer'
+        elif type_ == ('customer', 'supplier'):
+            return 'customer_supplier'
 
     def _create_account_stock_move(self, move):
         '''
@@ -107,13 +113,25 @@ class Move(ModelSQL, ModelView):
         if not type_:
             return
         assert not move.account_move, 'account move field not empty'
-        account_move_lines = self._get_account_stock_move_lines(move, type_)
+        if type_  == 'supplier_customer':
+            account_move_lines = self._get_account_stock_move_lines(move,
+                'in_supplier')
+            account_move_lines.extend(self._get_account_stock_move_lines(move,
+                    'out_customer'))
+        elif type_ == 'customer_supplier':
+            account_move_lines = self._get_account_stock_move_lines(move,
+                'in_customer')
+            account_move_lines.extend(self._get_account_stock_move_lines(move,
+                    'out_supplier'))
+        else:
+            account_move_lines = self._get_account_stock_move_lines(move, type_)
 
         amount = Decimal('0.0')
         for line in account_move_lines:
             amount += line['debit'] - line['credit']
-        account_move_lines.append(
-                self._get_account_stock_move_line(move, amount))
+        move_line = self._get_account_stock_move_line(move, amount)
+        if move_line:
+            account_move_lines.append(move_line)
 
         account_move_id = account_move_obj.create(
                 self._get_account_stock_move(move, account_move_lines))
