@@ -1328,12 +1328,11 @@ class PurchaseLine(ModelSQL, ModelView):
         default['invoice_lines'] = False
         return super(PurchaseLine, self).copy(ids, default=default)
 
-    def create_move(self, line):
+    def get_move(self, line):
         '''
-        Create move line
+        Return move values for purchase line
         '''
         pool = Pool()
-        move_obj = pool.get('stock.move')
         uom_obj = pool.get('product.uom')
 
         vals = {}
@@ -1363,7 +1362,18 @@ class PurchaseLine(ModelSQL, ModelView):
         vals['unit_price'] = line.unit_price
         vals['currency'] = line.purchase.currency.id
         vals['planned_date'] = line.delivery_date
+        return vals
 
+    def create_move(self, line):
+        '''
+        Create move line
+        '''
+        pool = Pool()
+        move_obj = pool.get('stock.move')
+
+        vals = self.get_move(line)
+        if not vals:
+            return
         with Transaction().set_user(0, set_context=True):
             move_id = move_obj.create(vals)
 
