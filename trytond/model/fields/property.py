@@ -76,6 +76,10 @@ class Property(Function):
 
         property_query, property_val = rule_obj.domain_get('ir.property')
 
+        property_clause = ''
+        if property_query:
+            property_clause = 'AND ' + property_query
+
         #Fetch res ids that comply with the domain
         cursor.execute(
             'SELECT CAST(' \
@@ -92,8 +96,8 @@ class Property(Function):
             'WHERE '\
               'CASE WHEN "' +\
                 model_obj._table + '".model = %s ' \
-                'AND "' + field_obj._table + '".name = %s AND ' \
-                + property_query + \
+                'AND "' + field_obj._table + '".name = %s ' \
+                + property_clause + \
               ' THEN '  + \
                 self.get_condition(sql_type, clause) + \
               ' ELSE '\
@@ -109,8 +113,15 @@ class Property(Function):
                 default = prop[1]
                 break
 
-        if not default:
-            return [('id', 'in', [x[0] for x in props])]
+        if not default \
+                or (clause[2] is False and clause[1] in ['=', '!=']) \
+                or (clause[1] in ['not like', 'not ilike', 'not in', '!=']):
+            operator = 'in' #  default operator
+            if (clause[2] is False and clause[1] == '=') \
+                    or (clause[2] is not False
+                    and clause[1] in ['not like', 'not ilike', 'not in', '!=']):
+                operator = 'not in'
+            return [('id', operator, [x[0] for x in props])]
 
         #Fetch the res ids that doesn't use the default value
         cursor.execute(
@@ -136,13 +147,27 @@ class Property(Function):
 
     @staticmethod
     def get_condition(sql_type, clause):
+        operator = '%s'
+        if sql_type == 'NUMERIC':
+            operator = 'CAST(%s AS NUMERIC)'
+
+        # All negative clauses will be negated later
         if clause[1] in ('in', 'not in'):
-            return ("(cast(split_part(value,',',2) as %s) %s ("+ \
-                ",".join(('%%s',) * len(clause[2])) + ")) ") % \
-                (sql_type, clause[1])
+            operator = operator % '%%s'
+            return ("(cast(split_part(value,',',2) as %s) in ("+ \
+                ",".join((operator,) * len(clause[2])) + ")) ") % sql_type
+        elif clause[2] is False and clause[1] in ['=', '!=']:
+            return "((cast(split_part(value,',',2) as %s) IS NULL " \
+                ") = %%s) " % sql_type
+        elif clause[1] in ['not like', 'not ilike']:
+            return "(cast(split_part(value,',',2) as %s) %s %s) " % \
+                (sql_type, clause[1].split()[1], operator)
+        elif clause[1] == '!=':
+            return "(cast(split_part(value,',',2) as %s) = %s) " % \
+                (sql_type, operator)
         else:
-            return "(cast(split_part(value,',',2) as %s) %s %%s) " % \
-                (sql_type, clause[1])
+            return "(cast(split_part(value,',',2) as %s) %s %s) " % \
+                (sql_type, clause[1], operator)
 
     @staticmethod
     def get_condition_args(clause):

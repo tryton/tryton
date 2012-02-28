@@ -421,3 +421,19 @@ class One2OneRequiredRelation(ModelSQL):
 
 One2OneRequiredRelation()
 
+
+class Property(ModelSQL):
+    'Property'
+    _name = 'test.property'
+    _description = __doc__
+
+    char = fields.Property(fields.Char('Test Char'))
+    many2one = fields.Property(fields.Many2One('test.char',
+            'Test Many2One'))
+    numeric = fields.Property(fields.Numeric('Test Numeric'))
+    selection = fields.Property(fields.Selection([
+                ('option_a', 'Option A'),
+                ('option_b', 'Option B')
+            ], 'Test Selection'))
+
+Property()

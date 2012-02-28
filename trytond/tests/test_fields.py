@@ -64,6 +64,8 @@ class FieldsTestCase(unittest.TestCase):
         self.one2one_target = POOL.get('test.one2one.target')
         self.one2one_required = POOL.get('test.one2one_required')
 
+        self.property_ = POOL.get('test.property')
+
     def test0010boolean(self):
         '''
         Test Boolean.
@@ -2204,6 +2206,281 @@ class FieldsTestCase(unittest.TestCase):
             self.assert_(one2one3_id)
 
             transaction.cursor.rollback()
+
+    def test0110property(self):
+        '''
+        Test Property with supported field types.
+        '''
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+
+            # Test Char
+            prop_id_a = self.property_.create({'char': 'Test'})
+            self.assert_(prop_id_a)
+
+            prop_id_b = self.property_.create({})
+            self.assert_(prop_id_b)
+
+            prop_id_c = self.property_.create({'char': 'FooBar'})
+            self.assert_(prop_id_c)
+
+            prop_a = self.property_.read(prop_id_a, ['char'])
+            self.assert_(prop_a['char'] == 'Test')
+
+            prop_ids = self.property_.search([('char', '=', 'Test')])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([('char', '=', False)])
+            self.assert_(prop_ids == [prop_id_b])
+
+            prop_ids = self.property_.search([('char', '!=', False)])
+            self.assert_(prop_ids == [prop_id_a, prop_id_c])
+
+            prop_ids = self.property_.search([('char', 'like', 'Tes%')])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([('char', 'like', '%Bar')])
+            self.assert_(prop_ids == [prop_id_c])
+
+            prop_ids = self.property_.search([('char', 'not like', 'Tes%')])
+            self.assert_(prop_ids == [prop_id_b, prop_id_c])
+
+            prop_ids = self.property_.search([('char', 'ilike', 'tes%')])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([('char', 'ilike', '%bar')])
+            self.assert_(prop_ids == [prop_id_c])
+
+            prop_ids = self.property_.search([('char', 'not ilike', 'tes%')])
+            self.assert_(prop_ids == [prop_id_b, prop_id_c])
+
+            prop_ids = self.property_.search([('char', 'in', ['Test'])])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([
+                    ('char', 'in', ['Test', 'FooBar'])])
+            self.assert_(prop_ids == [prop_id_a, prop_id_c])
+
+            prop_ids = self.property_.search([
+                    ('char', 'not in', ['Test', 'FooBar'])])
+            self.assert_(prop_ids == [prop_id_b])
+
+            model_field_obj = POOL.get('ir.model.field')
+            property_obj = POOL.get('ir.property')
+
+            # Test default value
+            property_field_id, = model_field_obj.search([
+                        ('model.model', '=', 'test.property'),
+                        ('name', '=', 'char'),
+                    ], limit=1)
+            property_obj.create({
+                        'field': property_field_id,
+                        'value': ',DEFAULT_VALUE',
+                    })
+
+            prop_id_d = self.property_.create({})
+            self.assert_(prop_id_d)
+
+            prop = self.property_.read(prop_id_d, ['char'])
+            self.assert_(prop['char'] == 'DEFAULT_VALUE')
+
+            prop_ids = self.property_.search([('char', '!=', False)])
+            self.assert_(prop_ids == [prop_id_a, prop_id_c, prop_id_d])
+
+            self.property_.write(prop_id_a, {'char': False})
+            prop_a = self.property_.read(prop_id_a, ['char'])
+            self.assert_(prop_a['char'] == False)
+
+            self.property_.write(prop_id_b, {'char': 'Test'})
+            prop_b = self.property_.read(prop_id_b, ['char'])
+            self.assert_(prop_b['char'] == 'Test')
+
+            transaction.cursor.rollback()
+
+
+            # Test Many2One
+            char_id_a = self.char.create({'char': 'Test'})
+            self.assert_(char_id_a)
+
+            char_id_b = self.char.create({'char': 'FooBar'})
+            self.assert_(char_id_b)
+
+            prop_id_a = self.property_.create({'many2one': char_id_a})
+            self.assert_(prop_id_a)
+
+            prop_id_b = self.property_.create({'many2one': char_id_b})
+            self.assert_(prop_id_b)
+
+            prop_id_c = self.property_.create({})
+            self.assert_(prop_id_c)
+
+            prop_ids = self.property_.search([('many2one', '=', char_id_a)])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([('many2one', '!=', False)])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([('many2one', '=', False)])
+            self.assert_(prop_ids == [prop_id_c])
+
+            prop_a = self.property_.read(prop_id_a, ['many2one'])
+            self.assert_(prop_a['many2one'] == char_id_a)
+
+            prop_ids = self.property_.search([
+                    ('many2one', 'in', [char_id_a, char_id_b])])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([
+                    ('many2one', 'not in', [char_id_a, char_id_b])])
+            self.assert_(prop_ids == [prop_id_c])
+
+            self.property_.write(prop_id_b, {'many2one': char_id_a})
+            prop_b = self.property_.read(prop_id_b, ['many2one'])
+            self.assert_(prop_b['many2one'] == char_id_a)
+
+            transaction.cursor.rollback()
+
+
+            # Test Numeric
+            prop_id_a = self.property_.create({'numeric': Decimal('1.1')})
+            self.assert_(prop_id_a)
+
+            prop_id_b = self.property_.create({'numeric': Decimal('2.6')})
+            self.assert_(prop_id_b)
+
+            prop_id_c = self.property_.create({})
+            self.assert_(prop_id_c)
+
+            prop_ids = self.property_.search([('numeric', '!=', False)])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([('numeric', '=', False)])
+            self.assert_(prop_ids == [prop_id_c])
+
+            prop_ids = self.property_.search([('numeric', '=', Decimal('1.1'))])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([
+                    ('numeric', '!=', Decimal('1.1'))])
+            self.assert_(prop_ids == [prop_id_b, prop_id_c])
+
+            prop_ids = self.property_.search([('numeric', '<', Decimal('2.6'))])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([
+                    ('numeric', '<=', Decimal('2.6'))])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([('numeric', '>', Decimal('1.1'))])
+            self.assert_(prop_ids == [prop_id_b])
+
+            prop_ids = self.property_.search([
+                    ('numeric', '>=', Decimal('1.1'))])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([
+                    ('numeric', 'in', [Decimal('1.1')])])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([
+                    ('numeric', 'in', [Decimal('1.1'), Decimal('2.6')])])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([
+                    ('numeric', 'not in', [Decimal('1.1')])])
+            self.assert_(prop_ids == [prop_id_b, prop_id_c])
+
+            prop_ids = self.property_.search([
+                    ('numeric', 'not in', [Decimal('1.1'), Decimal('2.6')])])
+            self.assert_(prop_ids == [prop_id_c])
+
+            # Test default value
+            property_field_id, = model_field_obj.search([
+                        ('model.model', '=', 'test.property'),
+                        ('name', '=', 'numeric'),
+                    ], limit=1)
+            property_obj.create({
+                        'field': property_field_id,
+                        'value': ',3.7',
+                    })
+
+            prop_id_d = self.property_.create({})
+            self.assert_(prop_id_d)
+
+            prop_d = self.property_.read(prop_id_d, ['numeric'])
+            self.assert_(prop_d['numeric'] == Decimal('3.7'))
+
+            self.property_.write(prop_id_a, {'numeric': False})
+            prop_a = self.property_.read(prop_id_a, ['numeric'])
+            self.assert_(prop_a['numeric'] == False)
+
+            self.property_.write(prop_id_b, {'numeric': Decimal('3.11')})
+            prop_b = self.property_.read(prop_id_b, ['numeric'])
+            self.assert_(prop_b['numeric'] == Decimal('3.11'))
+
+            transaction.cursor.rollback()
+
+
+            # Test Selection
+            prop_id_a = self.property_.create({'selection': 'option_a'})
+            self.assert_(prop_id_a)
+
+            prop_id_b = self.property_.create({'selection': 'option_b'})
+            self.assert_(prop_id_b)
+
+            prop_id_c = self.property_.create({})
+            self.assert_(prop_id_c)
+
+            prop_ids = self.property_.search([('selection', '=', 'option_a')])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([('selection', '!=', False)])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([('selection', '=', False)])
+            self.assert_(prop_ids == [prop_id_c])
+
+            prop_ids = self.property_.search([('selection', '!=', 'option_a')])
+            self.assert_(prop_ids == [prop_id_b, prop_id_c])
+
+            prop_ids = self.property_.search([
+                    ('selection', 'in', ['option_a'])])
+            self.assert_(prop_ids == [prop_id_a])
+
+            prop_ids = self.property_.search([
+                    ('selection', 'in', ['option_a', 'option_b'])])
+            self.assert_(prop_ids == [prop_id_a, prop_id_b])
+
+            prop_ids = self.property_.search([
+                    ('selection', 'not in', ['option_a'])])
+            self.assert_(prop_ids == [prop_id_b, prop_id_c])
+
+            # Test default value
+            property_field_id, = model_field_obj.search([
+                        ('model.model', '=', 'test.property'),
+                        ('name', '=', 'selection'),
+                    ], limit=1)
+            property_obj.create({
+                        'field': property_field_id,
+                        'value': ',option_a',
+                    })
+
+            prop_id_d = self.property_.create({})
+            self.assert_(prop_id_d)
+
+            prop_d = self.property_.read(prop_id_d, ['selection'])
+            self.assert_(prop_d['selection'] == 'option_a')
+
+            self.property_.write(prop_id_a, {'selection': False})
+            prop_a = self.property_.read(prop_id_a, ['selection'])
+            self.assert_(prop_a['selection'] == False)
+
+            self.property_.write(prop_id_c, {'selection': 'option_b'})
+            prop_c = self.property_.read(prop_id_c, ['selection'])
+            self.assert_(prop_c['selection'] == 'option_b')
+
+            transaction.cursor.rollback()
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(FieldsTestCase)
