@@ -462,7 +462,11 @@ class ModelStorage(Model):
         :param context: the context
         :return: a list of domain clause
         '''
-        return [(self._rec_name,) + clause[1:]]
+        rec_name = self._rec_name
+        if (rec_name not in self._columns
+                and rec_name not in self._inherit_fields):
+            return []
+        return [(rec_name,) + clause[1:]]
 
     def browse(self, cursor, user, ids, context=None):
         '''
