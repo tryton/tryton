@@ -511,6 +511,8 @@ class O2MField(CharField):
                     get_readonly=readonly)
                 values.pop(parent_name, None)
                 result.append(('create', values))
+        if not result[0][1]:
+            del result[0]
         if record_removed:
             result.append(('unlink', [x.id for x in record_removed]))
         if record_deleted:
