@@ -319,6 +319,8 @@ class Module(ModelSQL, ModelView):
             if x.name not in depends])
         if depends is None:
             depends = []
+        # Restart Browse Cache for deleted dependencies
+        module = self.browse(module.id)
         dependency_names = [x.name for x in module.dependencies]
         for depend in depends:
             if depend not in dependency_names:
