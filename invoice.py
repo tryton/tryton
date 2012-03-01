@@ -9,6 +9,13 @@ class Invoice(ModelSQL, ModelView):
     purchases = fields.Many2Many('purchase.purchase-account.invoice',
             'invoice', 'purchase', 'Purchases', readonly=True)
 
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('purchases', False)
+        return super(Invoice, self).copy(ids, default=default)
+
 Invoice()
 
 
@@ -17,5 +24,12 @@ class InvoiceLine(ModelSQL, ModelView):
 
     purchase_lines = fields.Many2Many('purchase.line-account.invoice.line',
             'invoice_line', 'purchase_line', 'Purchase Lines', readonly=True)
+
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('purchase_lines', False)
+        return super(InvoiceLine, self).copy(ids, default=default)
 
 InvoiceLine()
