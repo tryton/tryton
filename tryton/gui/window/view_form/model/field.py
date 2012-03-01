@@ -377,6 +377,8 @@ class O2MField(CharField):
             else:
                 result.append(('create',
                     record2.get(check_load=check_load, get_readonly=readonly)))
+        if not result[0][1]:
+            del result[0]
         if record.value[self.name].record_removed:
             result.append(('unlink', [x.id for x in \
                     record.value[self.name].record_removed]))
