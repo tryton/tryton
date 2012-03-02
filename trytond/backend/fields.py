@@ -103,6 +103,8 @@ class Date(Field):
         # subclass of date
         assert(not isinstance(value, datetime.datetime)
                 or value.time() == datetime.time())
+        if isinstance(value, datetime.datetime):
+            value = value.date()
         return value
 
 
