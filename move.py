@@ -58,7 +58,7 @@ class Move(ModelSQL, ModelView):
 
     def __init__(self):
         super(Move, self).__init__()
-        self._check_modify_exclude = ['state', 'reference', 'post_date']
+        self._check_modify_exclude = ['state']
         self._constraints += [
             ('check_centralisation', 'period_centralized_journal'),
             ('check_company', 'company_in_move'),
