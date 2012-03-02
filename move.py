@@ -162,6 +162,8 @@ class Move(ModelSQL, ModelView):
 
     def check_modify(self, ids):
         'Check posted moves for modifications.'
+        if isinstance(ids, (int, long)):
+            ids = [ids]
         for move in self.browse(ids):
             if move.state == 'posted':
                 self.raise_user_error('modify_posted_move',
