@@ -33,7 +33,8 @@ class Move(ModelSQL, ModelView):
     _name = 'account.move'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True)
+    name = fields.Char('Name', size=None, required=True, states=_MOVE_STATES,
+            depends=_MOVE_DEPENDS)
     reference = fields.Char('Reference', size=None, readonly=True,
             help='Also known as Folio Number')
     period = fields.Many2One('account.period', 'Period', required=True,
@@ -57,6 +58,7 @@ class Move(ModelSQL, ModelView):
 
     def __init__(self):
         super(Move, self).__init__()
+        self._check_modify_exclude = ['state']
         self._constraints += [
             ('check_centralisation', 'period_centralized_journal'),
             ('check_company', 'company_in_move'),
@@ -72,8 +74,10 @@ class Move(ModelSQL, ModelView):
             'del_posted_move': 'You can not delete posted moves!',
             'post_empty_move': 'You can not post an empty move!',
             'post_unbalanced_move': 'You can not post an unbalanced move!',
-            'modify_posted_move': 'You can not modify a posted move ' \
-                    'in this journal!',
+            'draft_posted_move_journal': 'You can not set a posted move ' \
+                    'to draft in this journal!',
+            'modify_posted_move': 'Move "%s" is already posted!\n'
+                    'You can not modify a posted move.',
             'period_centralized_journal': 'You can not create more than ' \
                     'one move per period\n' \
                     'in a centralized journal!',
@@ -156,6 +160,14 @@ class Move(ModelSQL, ModelView):
                 return False
         return True
 
+    def check_modify(self, ids):
+        'Check posted moves for modifications.'
+        for move in self.browse(ids):
+            if move.state == 'posted':
+                self.raise_user_error('modify_posted_move',
+                    error_args=(move.name,))
+        return
+
     def search_rec_name(self, name, clause):
         ids = self.search(['OR',
             ('reference',) + clause[1:],
@@ -165,6 +177,12 @@ class Move(ModelSQL, ModelView):
 
     def write(self, ids, vals):
         res = super(Move, self).write(ids, vals)
+        keys = vals.keys()
+        for key in self._check_modify_exclude:
+            if key in keys:
+                keys.remove(key)
+        if len(keys):
+            self.check_modify(ids)
         self.validate(ids)
         return res
 
@@ -201,9 +219,8 @@ class Move(ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
         move_line_obj = Pool().get('account.move.line')
+        self.check_modify(ids)
         for move in self.browse(ids):
-            if move.state == 'posted':
-                self.raise_user_error('del_posted_move')
             if move.lines:
                 move_line_ids = [x.id for x in move.lines]
                 move_line_obj.delete(move_line_ids)
@@ -336,7 +353,7 @@ class Move(ModelSQL, ModelView):
     def draft(self, ids):
         for move in self.browse(ids):
             if not move.journal.update_posted:
-                self.raise_user_error('modify_posted_move')
+                self.raise_user_error('draft_posted_move_journal')
         return self.write(ids, {
             'state': 'draft',
             })
