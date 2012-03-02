@@ -149,7 +149,7 @@ class Template(ModelSQL, ModelView):
     customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
         'Customer Taxes Used'), 'get_taxes')
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
-        'Customer Taxes Used'), 'get_taxes')
+        'Supplier Taxes Used'), 'get_taxes')
 
     def __init__(self):
         super(Template, self).__init__()
