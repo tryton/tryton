@@ -16,7 +16,17 @@ import tempfile
 QUOTE_SEPARATION = re.compile(r"(.*?)('.*?')", re.DOTALL)
 EXTRACT_EPOCH_PATTERN = re.compile(r'EXTRACT\s*\(\s*EPOCH\s+FROM',
         re.I)
-CAST_VARCHAR_PATTERN = re.compile(r'CAST\s*\((.*)AS VARCHAR\)', re.I)
+CAST_VARCHAR_PATTERN = re.compile(r' AS VARCHAR\)', re.I)
+CAST_INTEGER_PATTERN = re.compile(r' AS (INTEGER|BIGINT)\)', re.I)
+SPLIT_PART_LEFT_PATTERN = re.compile(r'SPLIT_PART\((.*?),', re.I)
+SPLIT_PART_RIGHT_PATTERN = re.compile(r'^,(\d)', re.I)
+def _replace_split_part_right(mobj):
+    pos = int(mobj.group(1))
+    if pos not in (1, 2):
+        raise Exception('SPLIT_PART is only partially implemented for MySQL')
+    if pos == 2:
+        return ', -1'
+    return ', 1'
 DatabaseIntegrityError = None
 DatabaseOperationalError = None
 
@@ -234,12 +244,22 @@ class Cursor(CursorInterface):
 
     def execute(self, sql, params=None):
         buf = ""
+        split_part_found = False
         for nquote, quote in QUOTE_SEPARATION.findall(sql+"''"):
             nquote = nquote.replace('ilike', 'like')
             nquote = re.sub(EXTRACT_EPOCH_PATTERN, r'UNIX_TIMESTAMP(',
                     nquote)
-            nquote = re.sub(CAST_VARCHAR_PATTERN, r'CAST(\1AS CHAR)',
+            nquote = re.sub(CAST_VARCHAR_PATTERN, r' AS CHAR)',
                     nquote)
+            nquote = re.sub(CAST_INTEGER_PATTERN, r' AS SIGNED INTEGER)',
+                    nquote)
+            if split_part_found:
+                nquote = re.sub(SPLIT_PART_RIGHT_PATTERN, 
+                        _replace_split_part_right, nquote)
+                split_part_found = False
+            nquote, split_part_found = re.subn(SPLIT_PART_LEFT_PATTERN,
+                    r'SUBSTRING_INDEX(\1, ', nquote)
+
             buf += nquote + quote
         sql = buf[:-2]
         try:
