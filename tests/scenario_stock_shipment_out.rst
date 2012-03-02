@@ -13,7 +13,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
     >>> today = datetime.date.today()
-    
+
 Create database::
 
     >>> config = config.set_trytond()
