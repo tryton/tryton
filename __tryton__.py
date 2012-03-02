@@ -54,7 +54,6 @@
     'xml': [
         'statement.xml',
         'journal.xml',
-        'invoice.xml',
         ],
     'translation': [
         'locale/bg_BG.po',
