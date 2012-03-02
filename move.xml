@@ -92,6 +92,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_stock" sequence="40"
             action="act_move_form" id="menu_move_form"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_move_form_group_stock">
+            <field name="menu" ref="menu_move_form"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
 
 
         <record model="ir.action.act_window" id="act_move_form_supp">
