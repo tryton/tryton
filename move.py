@@ -178,13 +178,13 @@ class Move(ModelSQL, ModelView):
         return [('id', 'in', ids)]
 
     def write(self, ids, vals):
-        res = super(Move, self).write(ids, vals)
         keys = vals.keys()
         for key in self._check_modify_exclude:
             if key in keys:
                 keys.remove(key)
         if len(keys):
             self.check_modify(ids)
+        res = super(Move, self).write(ids, vals)
         self.validate(ids)
         return res
 
