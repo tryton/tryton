@@ -491,7 +491,7 @@ class ModelSQL(ModelStorage):
             if '_timestamp' in fields_pre:
                 if not self.table_query():
                     fields_pre2 += ['CAST(EXTRACT(EPOCH FROM '
-                            '(COALESCE("%s".write_date, "%s".create_date)))'
+                            '(COALESCE("%s".write_date, "%s".create_date))) '
                             'AS VARCHAR) AS _timestamp' %
                             (self._table, self._table)]
 
