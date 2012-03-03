@@ -44,8 +44,8 @@ this repository contains the full copyright notices and license terms. -->
                         expr="/form/notebook/page[@id=&quot;accounting&quot;]/field[@name=&quot;vat_number&quot;]"
                         position="after">
                         <separator string="Payment Terms" colspan="4" id="payment_terms"/>
-                        <label name="payment_term"/>
-                        <field name="payment_term"/>
+                        <label name="customer_payment_term"/>
+                        <field name="customer_payment_term"/>
                         <label name="supplier_payment_term"/>
                         <field name="supplier_payment_term"/>
                     </xpath>

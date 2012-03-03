@@ -260,8 +260,8 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             party = party_obj.browse(party_id)
             if type_ in ('out_invoice', 'out_credit_note'):
                 result['account'] = party.account_receivable.id
-                if type_ == 'out_invoice' and party.payment_term:
-                    result['payment_term'] = party.payment_term.id
+                if type_ == 'out_invoice' and party.customer_payment_term:
+                    result['payment_term'] = party.customer_payment_term.id
             elif type_ in ('in_invoice', 'in_credit_note'):
                 result['account'] = party.account_payable.id
                 if type_ == 'in_invoice' and party.supplier_payment_term:
@@ -269,7 +269,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         if company_id and type_ in ('out_credit_note', 'in_credit_note'):
             company = company_obj.browse(company_id)
             if type_ == 'out_credit_note':
-                result['payment_term'] = company.payment_term.id
+                result['payment_term'] = company.customer_payment_term.id
             else:
                 result['payment_term'] = company.supplier_payment_term.id
         if result['account']:

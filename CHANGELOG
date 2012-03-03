@@ -1,3 +1,5 @@
+* Rename field payment_term to customer_payment_term
+
 Version 2.2.0 - 2011-10-24
 * Bug fixes (see mercurial logs for details)
 
