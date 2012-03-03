@@ -274,8 +274,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     type='invoice')
             res['shipment_address'] = party_obj.address_get(party.id,
                     type='delivery')
-            if party.payment_term:
-                res['payment_term'] = party.payment_term.id
+            if party.customer_payment_term:
+                res['payment_term'] = party.customer_payment_term.id
 
         if res['invoice_address']:
             res['invoice_address.rec_name'] = address_obj.browse(
