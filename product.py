@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder
@@ -12,17 +13,19 @@ from trytond.pool import Pool
 class Template(ModelSQL, ModelView):
     _name = "product.template"
 
-    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
+    quantity = fields.Function(fields.Float('Quantity'), 'sum_product')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
-            'get_quantity')
+            'sum_product')
+    cost_value = fields.Function(fields.Numeric('Cost Value'),
+        'sum_product')
 
-    def get_quantity(self, ids, name):
+    def sum_product(self, ids, name):
         res = {}
-        if name not in ('quantity', 'forecast_quantity'):
+        if name not in ('quantity', 'forecast_quantity', 'cost_value'):
             raise Exception('Bad argument')
 
         for template in self.browse(ids):
-            res[template.id] = 0.0
+            res[template.id] = 0. if name != 'cost_value' else Decimal(0)
             for product in template.products:
                 res[template.id] += product[name]
         return res
@@ -66,6 +69,8 @@ class Product(ModelSQL, ModelView):
             searcher='search_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
             'get_quantity', searcher='search_quantity')
+    cost_value = fields.Function(fields.Numeric('Cost Value'),
+        'get_cost_value')
 
     def get_quantity(self, ids, name):
         date_obj = Pool().get('ir.date')
@@ -139,7 +144,17 @@ class Product(ModelSQL, ModelView):
                     if self._search_quantity_eval_domain(line, domain)]
         return [('id', 'in', res)]
 
-
+    def get_cost_value(self, ids, name):
+        cost_values = {}
+        context = {}
+        trans_context = Transaction().context
+        if 'stock_date_end' in context:
+            context['_datetime'] = trans_context['stock_date_end']
+        with Transaction().set_context(context):
+            for product in self.browse(ids):
+                cost_values[product.id] = (Decimal(str(product.quantity))
+                    * product.cost_price)
+        return cost_values
 
     def products_by_location(self, location_ids, product_ids=None,
             with_childs=False, skip_zero=True):

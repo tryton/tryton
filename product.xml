@@ -13,6 +13,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="name"/>
                         <field name="code"/>
                         <field name="quantity"/>
+                        <field name="cost_value"/>
                         <field name="forecast_quantity"/>
                         <field name="default_uom"/>
                         <field name="type"/>
@@ -33,6 +34,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="name"/>
                         <field name="quantity"/>
                         <field name="forecast_quantity"/>
+                        <field name="cost_value"/>
                         <field name="parent" tree_invisible="1"/>
                         <field name="childs" tree_invisible="1"/>
                     </tree>
@@ -41,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_location_quantity_tree">
-            <field name="name">Location Quantity</field>
+            <field name="name">Location Quantity &amp; Cost Value</field>
             <field name="res_model">stock.location</field>
             <field name="domain">[('parent', '=', False)]</field>
             <field name="window_name" eval="True"/>

@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateAction
 from trytond.backend import TableHandler
@@ -82,6 +83,8 @@ class Location(ModelSQL, ModelView):
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
             'get_quantity')
+    cost_value = fields.Function(fields.Numeric('Cost Value'),
+        'get_cost_value')
 
     def __init__(self):
         super(Location, self).__init__()
@@ -172,6 +175,22 @@ class Location(ModelSQL, ModelView):
                     with_childs=True, skip_zero=False).iteritems()
 
         return dict([(loc,qty) for (loc,prod), qty in pbl])
+
+    def get_cost_value(self, ids, name):
+        product_obj = Pool().get('product.product')
+        trans_context = Transaction().context
+        product_id = trans_context.get('product')
+        if not product_id:
+            return dict((id, False) for id in ids)
+        cost_values, context = {}, {}
+        if 'stock_date_end' in trans_context:
+            context['_datetime'] = trans_context['stock_date_end']
+        with Transaction().set_context(context):
+            product = product_obj.browse(product_id)
+            for location in self.browse(ids):
+                cost_values[location.id] = (Decimal(str(location.quantity))
+                    * product.cost_price)
+        return cost_values
 
     def _set_warehouse_parent(self, locations):
         '''
