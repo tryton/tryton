@@ -18,6 +18,8 @@ for dep in info.get('depends', []):
                     minor_version + 1))
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
+tests_require = ['proteus >= %s.%s, < %s.%s' %
+    (major_version, minor_version, major_version, minor_version + 1)]
 
 setup(name='trytond_stock',
     version=info.get('version', '0.0.1'),
@@ -68,4 +70,5 @@ setup(name='trytond_stock',
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
 )

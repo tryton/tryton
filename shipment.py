@@ -1019,12 +1019,12 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             if outgoing_qty.get(move.product.id, 0.0) > 0.0:
                 exc_qty = uom_obj.compute_qty(move.product.default_uom,
                         outgoing_qty[move.product.id], move.uom)
-                move_obj.write(move.id,{
-                    'quantity': max(0.0, move.quantity-exc_qty),
-                    })
                 removed_qty = uom_obj.compute_qty(move.uom,
                         min(exc_qty, move.quantity), move.product.default_uom,
                         round=False)
+                move_obj.write(move.id,{
+                    'quantity': max(0.0, move.quantity-exc_qty),
+                    })
                 outgoing_qty[move.product.id] -= removed_qty
 
         move_obj.write([x.id for x in shipment.outgoing_moves
