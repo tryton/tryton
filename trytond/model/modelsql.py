@@ -1283,7 +1283,19 @@ class ModelSQL(ModelStorage):
                     res.remove(data['id'])
                 res.append(data['id'])
                 ids_date[data['id']] = data['_datetime']
-            return res
+            to_delete = set()
+            for i in range(0, len(res), cursor.IN_MAX):
+                sub_ids = res[i:i + cursor.IN_MAX]
+                reduced_sql, reduced_ids = reduce_ids('id', sub_ids)
+                cursor.execute(('SELECT id, write_date '
+                        'FROM "%s__history" WHERE %s'
+                        'AND (write_date IS NOT NULL AND create_date IS NULL)'
+                        ) % (self._table, reduced_sql),
+                    reduced_ids)
+                for deleted_id, delete_date in cursor.fetchall():
+                    if ids_date[deleted_id] < delete_date:
+                        to_delete.add(deleted_id)
+            return filter(lambda x: x not in to_delete, res)
 
         return [x['id'] for x in datas]
 
