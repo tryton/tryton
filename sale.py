@@ -31,7 +31,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', 0)),
             ],
         depends=['state', 'lines'])
-    reference = fields.Char('Reference', readonly=True, select=1)
+    reference = fields.Char('Reference', readonly=True, select=True)
     description = fields.Char('Description',
         states={
             'readonly': Eval('state') != 'draft',
@@ -56,7 +56,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    party = fields.Many2One('party.party', 'Party', required=True, select=1,
+    party = fields.Many2One('party.party', 'Party', required=True, select=True,
         states={
             'readonly': Eval('state') != 'draft',
             }, on_change=['party', 'payment_term'],
@@ -1020,10 +1020,10 @@ class SaleInvoice(ModelSQL):
     _name = 'sale.sale-account.invoice'
     _table = 'sale_invoices_rel'
     _description = __doc__
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True,
             required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 SaleInvoice()
 
@@ -1033,10 +1033,10 @@ class SaleIgnoredInvoice(ModelSQL):
     _name = 'sale.sale-ignored-account.invoice'
     _table = 'sale_invoice_ignored_rel'
     _description = __doc__
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True,
             required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 SaleIgnoredInvoice()
 
@@ -1046,10 +1046,10 @@ class SaleRecreatedInvoice(ModelSQL):
     _name = 'sale.sale-recreated-account.invoice'
     _table = 'sale_invoice_recreated_rel'
     _description = __doc__
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1,
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True,
             required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 SaleRecreatedInvoice()
 
@@ -1060,14 +1060,14 @@ class SaleLine(ModelSQL, ModelView):
     _rec_name = 'description'
     _description = __doc__
 
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=1)
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True)
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=1, required=True)
+        ], 'Type', select=True, required=True)
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
@@ -1538,9 +1538,9 @@ class SaleLineTax(ModelSQL):
     _table = 'sale_line_account_tax'
     _description = __doc__
     line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 SaleLineTax()
 
@@ -1551,9 +1551,9 @@ class SaleLineInvoiceLine(ModelSQL):
     _table = 'sale_line_invoice_lines_rel'
     _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 SaleLineInvoiceLine()
 
@@ -1564,9 +1564,9 @@ class SaleLineIgnoredMove(ModelSQL):
     _table = 'sale_line_moves_ignored_rel'
     _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 SaleLineIgnoredMove()
 
@@ -1577,9 +1577,9 @@ class SaleLineRecreatedMove(ModelSQL):
     _table = 'sale_line_moves_recreated_rel'
     _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 SaleLineRecreatedMove()
 
@@ -1767,12 +1767,12 @@ ShipmentOut()
 class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
-    sale_line = fields.Many2One('sale.line', 'Sale Line', select=1,
+    sale_line = fields.Many2One('sale.line', 'Sale Line', select=True,
         states={
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=1),
+    sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=True),
             'get_sale', searcher='search_sale')
     sale_exception_state = fields.Function(fields.Selection([
         ('', ''),
