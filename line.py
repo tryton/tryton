@@ -14,11 +14,11 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-        select=1, domain=[('company', '=', Get(Eval('context', {}), 'company'))])
-    date = fields.Date('Date', required=True, select=1)
+        select=True, domain=[('company', '=', Get(Eval('context', {}), 'company'))])
+    date = fields.Date('Date', required=True, select=True)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
-            required=True, select=1, domain=[
+            required=True, select=True, domain=[
                 ('timesheet_available', '=', 'True'),
             ])
     description = fields.Char('Description')
@@ -113,7 +113,7 @@ class HoursEmployee(ModelSQL, ModelView):
     _name = 'timesheet.hours_employee'
     _description = __doc__
 
-    employee = fields.Many2One('company.employee', 'Employee', select=1)
+    employee = fields.Many2One('company.employee', 'Employee', select=True)
     hours = fields.Float('Hours', digits=(16, 2))
 
     def table_query(self):
@@ -179,10 +179,10 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
     _name = 'timesheet.hours_employee_weekly'
     _description = __doc__
 
-    year = fields.Char('Year', select=1)
-    week = fields.Integer('Week', select=1)
-    employee = fields.Many2One('company.employee', 'Employee', select=1)
-    hours = fields.Float('Hours', digits=(16, 2), select=1)
+    year = fields.Char('Year', select=True)
+    week = fields.Integer('Week', select=True)
+    employee = fields.Many2One('company.employee', 'Employee', select=True)
+    hours = fields.Float('Hours', digits=(16, 2), select=True)
 
     def __init__(self):
         super(HoursEmployeeWeekly, self).__init__()
@@ -217,10 +217,10 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     _name = 'timesheet.hours_employee_monthly'
     _description = __doc__
 
-    year = fields.Char('Year', select=1)
-    month = fields.Integer('Month', select=1)
-    employee = fields.Many2One('company.employee', 'Employee', select=1)
-    hours = fields.Float('Hours', digits=(16, 2), select=1)
+    year = fields.Char('Year', select=True)
+    month = fields.Integer('Month', select=True)
+    employee = fields.Many2One('company.employee', 'Employee', select=True)
+    hours = fields.Float('Hours', digits=(16, 2), select=True)
 
     def __init__(self):
         super(HoursEmployeeMonthly, self).__init__()

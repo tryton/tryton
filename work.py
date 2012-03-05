@@ -15,9 +15,9 @@ class Work(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active')
     parent = fields.Many2One('timesheet.work', 'Parent', left="left",
-            right="right", select=2, ondelete="RESTRICT")
-    left = fields.Integer('Left', required=True, select=1)
-    right = fields.Integer('Right', required=True, select=1)
+            right="right", select=True, ondelete="RESTRICT")
+    left = fields.Integer('Left', required=True, select=True)
+    right = fields.Integer('Right', required=True, select=True)
     children = fields.One2Many('timesheet.work', 'parent', 'Children')
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
         help="Total time spent on this work"), 'get_hours')
