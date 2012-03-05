@@ -8,7 +8,7 @@ class DashboardAction(ModelSQL, ModelView):
     _name = "dashboard.action"
 
     user = fields.Many2One('res.user', 'User', required=True,
-            select=1)
+            select=True)
     sequence = fields.Integer('Sequence')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             required=True, ondelete='CASCADE', domain=[
