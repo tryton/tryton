@@ -8,7 +8,7 @@ from . import luhn
 class Address(Model):
     _name = 'party.address'
 
-    siret_nic = fields.Char('SIRET NIC', select=1, states={
+    siret_nic = fields.Char('SIRET NIC', select=True, states={
             'readonly': ~Eval('active', True),
             }, size=5, depends=['active'])
     siret = fields.Function(fields.Char('SIRET'), 'get_siret')

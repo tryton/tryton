@@ -8,7 +8,7 @@ from . import luhn
 class Party(Model):
     _name = 'party.party'
 
-    siren = fields.Char('SIREN', select=1, states={
+    siren = fields.Char('SIREN', select=True, states={
             'readonly': ~Eval('active', True),
             }, size=9, depends=['active'])
 
