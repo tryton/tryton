@@ -101,7 +101,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             depends=['currency_digits']), 'get_function_fields')
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
-            ('order', 'On Order Confirmed'),
+            ('order', 'On Order Processed'),
             ('shipment', 'On Shipment Sent'),
             ],
         'Invoice Method', required=True, states={
@@ -126,7 +126,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'get_function_fields')
     shipment_method = fields.Selection([
             ('manual', 'Manual'),
-            ('order', 'On Order Confirmed'),
+            ('order', 'On Order Processed'),
             ('invoice', 'On Invoice Paid'),
             ], 'Shipment Method', required=True,
         states={

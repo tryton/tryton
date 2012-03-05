@@ -49,12 +49,12 @@ optional or completed with sensible default values:
 - Tax: The tax amount.
 - Total: The total amount.
 - State: The state of the sale. May take one of the following
-  values: Draft, Quotation, Confirmed, Cancelled.
+  values: Draft, Quotation, Confirmed, Processing, Cancelled.
 - Company: The company which issue the sale order.
 - Invoice Method: May take one of the following values:
 
-  - On Order Confirmed: The invoice is created when the sale order is
-    confirmed.
+  - On Order Processed: The invoice is created when the sale order is
+    processed.
   - On Shipment Sent: The invoice is created when the shipment is sent
     and will contains the shipped quantities. If there are several
     shipments for the same sale, several invoices will be created.
@@ -62,8 +62,8 @@ optional or completed with sensible default values:
 
 - Shipment Method: May take one of the following values:
 
-  - On Order Confirmed: The customer shipment is created when the sale
-    order is confirmed.
+  - On Order Processed: The customer shipment is created when the sale
+    order is processed.
   - On Invoice Paid: The customer shipment is created when the invoice
     is paid.
   - Manual: Tryton doesn't create any shipment automatically.

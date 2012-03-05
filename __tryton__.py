@@ -21,11 +21,11 @@ With the possibilities:
     - to follow invoice and shipment states from the sale order.
     - to define invoice method:
         - Manual
-        - On Order Confirmed
+        - On Order Processed
         - On shipment Sent
     - to define shipment method:
         - Manual
-        - On Order Confirmed
+        - On Order Processed
         - On Invoice Paid
 ''',
     'description_bg_BG': ''' Задаване на поръчка за продажба.

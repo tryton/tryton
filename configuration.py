@@ -17,14 +17,14 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                 ], required=True))
     sale_invoice_method = fields.Property(fields.Selection([
                 ('manual', 'Manual'),
-                ('order', 'On Order Confirmed'),
+                ('order', 'On Order Processed'),
                 ('shipment', 'On Shipment Sent')
                 ], 'Sale Invoice Method', states={
                 'required': Bool(Eval('context', {}).get('company', 0)),
                 }))
     sale_shipment_method = fields.Property(fields.Selection([
                 ('manual', 'Manual'),
-                ('order', 'On Order Confirmed'),
+                ('order', 'On Order Processed'),
                 ('invoice', 'On Invoice Paid'),
                 ], 'Sale Shipment Method', states={
                 'required': Bool(Eval('context', {}).get('company', 0)),
