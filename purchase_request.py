@@ -19,11 +19,11 @@ class PurchaseRequest(ModelSQL, ModelView):
     _description = __doc__
 
     product = fields.Many2One(
-        'product.product', 'Product', required=True, select=1, readonly=True,
+        'product.product', 'Product', required=True, select=True, readonly=True,
         domain=[('purchasable', '=', True)])
-    party = fields.Many2One('party.party', 'Party',  select=1)
+    party = fields.Many2One('party.party', 'Party',  select=True)
     quantity = fields.Float('Quantity', required=True)
-    uom = fields.Many2One('product.uom', 'UOM', required=True, select=1)
+    uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
     computed_uom = fields.Many2One('product.uom', 'Computed UOM', readonly=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
