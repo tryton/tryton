@@ -16,7 +16,7 @@ class Address(ModelSQL, ModelView):
     _name = 'party.address'
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', required=True,
-        ondelete='CASCADE', select=1,  states={
+        ondelete='CASCADE', select=True,  states={
             'readonly': If(~Eval('active'), True, Eval('id', 0) > 0),
             },
         depends=['active', 'id'])

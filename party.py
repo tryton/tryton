@@ -29,16 +29,16 @@ class Party(ModelSQL, ModelView):
     _description = __doc__
     _name = "party.party"
 
-    name = fields.Char('Name', required=True, select=1,
+    name = fields.Char('Name', required=True, select=True,
         states=STATES, depends=DEPENDS)
-    code = fields.Char('Code', required=True, select=1,
+    code = fields.Char('Code', required=True, select=True,
         order_field="%(table)s.code_length %(order)s, " \
             "%(table)s.code %(order)s",
         states={
             'readonly': Eval('code_readonly', True),
             },
         depends=['code_readonly'])
-    code_length = fields.Integer('Code Length', select=1, readonly=True)
+    code_length = fields.Integer('Code Length', select=True, readonly=True)
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
     lang = fields.Many2One("ir.lang", 'Language', states=STATES,
@@ -62,7 +62,7 @@ class Party(ModelSQL, ModelView):
         'Contact Mechanisms', states=STATES, depends=DEPENDS)
     categories = fields.Many2Many('party.party-party.category',
         'party', 'category', 'Categories', states=STATES, depends=DEPENDS)
-    active = fields.Boolean('Active', select=1)
+    active = fields.Boolean('Active', select=True)
     full_name = fields.Function(fields.Char('Full Name'), 'get_full_name')
     phone = fields.Function(fields.Char('Phone'), 'get_mechanism')
     mobile = fields.Function(fields.Char('Mobile'), 'get_mechanism')
@@ -260,9 +260,9 @@ class PartyCategory(ModelSQL):
     _table = 'party_category_rel'
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
-            required=True, select=1)
+            required=True, select=True)
     category = fields.Many2One('party.category', 'Category', ondelete='CASCADE',
-            required=True, select=1)
+            required=True, select=True)
 
 PartyCategory()
 

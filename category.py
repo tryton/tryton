@@ -18,7 +18,7 @@ class Category(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, states=STATES, translate=True,
         depends=DEPENDS)
     parent = fields.Many2One('party.category', 'Parent',
-        select=1, states=STATES, depends=DEPENDS)
+        select=True, states=STATES, depends=DEPENDS)
     childs = fields.One2Many('party.category', 'parent',
        'Children', states=STATES, depends=DEPENDS)
     active = fields.Boolean('Active')
