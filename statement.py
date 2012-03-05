@@ -17,7 +17,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
     _description = __doc__
 
     company = fields.Many2One('company.company', 'Company', required=True,
-        select=1, states=_STATES, domain=[
+        select=True, states=_STATES, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ],
@@ -29,12 +29,12 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines'),
             },
-        on_change=['journal', 'state', 'lines'], select=1,
+        on_change=['journal', 'state', 'lines'], select=True,
         depends=['state', 'lines'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['journal']), 'get_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
-        select=1)
+        select=True)
     start_balance = fields.Numeric('Start Balance',
         digits=(16, Eval('currency_digits', 2)),
         states=_STATES, depends=['state', 'currency_digits'])
@@ -57,7 +57,7 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         ('validated', 'Validated'),
         ('cancel', 'Canceled'),
         ('posted', 'Posted'),
-        ], 'State', readonly=True, select=1)
+        ], 'State', readonly=True, select=True)
     move_lines = fields.Function(fields.One2Many('account.move.line',
         None, 'Move Lines'), 'get_move_lines')
 
