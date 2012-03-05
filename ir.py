@@ -66,16 +66,20 @@ class View(Model):
                 if group is None:
                     root.append(element)
                     group = etree.Element('group', {
-                        'col': '1',
-                        })
+                            'col': '1',
+                            'yexpand': '1',
+                            'yfill': '1',
+                            })
                     root.append(group)
                 else:
                     group.append(element)
         elif user.dashboard_layout == 'stack_left':
             root.set('col', '2')
             group = etree.Element('group', {
-                'col': '1',
-                })
+                    'col': '1',
+                    'yexpand': '1',
+                    'yfill': '1',
+                    })
             root.append(group)
             first = True
             for action in user.dashboard_actions:
@@ -88,9 +92,9 @@ class View(Model):
         elif user.dashboard_layout == 'stack_top':
             root.set('col', '1')
             group = etree.Element('group', {
-                'col': str(len(user.dashboard_actions) - 1),
-                'expand': '1',
-                })
+                    'col': str(len(user.dashboard_actions) - 1),
+                    'xexpand': '1',
+                    })
             root.append(group)
             first = True
             for action in user.dashboard_actions:
@@ -103,9 +107,9 @@ class View(Model):
         elif user.dashboard_layout == 'stack_bottom':
             root.set('col', '1')
             group = etree.Element('group', {
-                'col': str(len(user.dashboard_actions) - 1),
-                'expand': '1',
-                })
+                    'col': str(len(user.dashboard_actions) - 1),
+                    'xexpand': '1',
+                    })
             first = True
             for action in user.dashboard_actions:
                 element = self._dashboard_element_action(action)
