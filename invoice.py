@@ -42,12 +42,12 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
     _description = __doc__
     _order_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
-        states=_STATES, select=1, domain=[
+        states=_STATES, select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ],
         depends=_DEPENDS)
-    type = fields.Selection(_TYPE, 'Type', select=1, on_change=['type',
+    type = fields.Selection(_TYPE, 'Type', select=True, on_change=['type',
             'party', 'company'],
         required=True, states={
             'readonly': ((Eval('state') != 'draft')
@@ -55,7 +55,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 | (Eval('lines') & Eval('type'))),
             }, depends=['state', 'lines'])
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
-    number = fields.Char('Number', size=None, readonly=True, select=1)
+    number = fields.Char('Number', size=None, readonly=True, select=True)
     reference = fields.Char('Reference', size=None, states=_STATES,
         depends=_DEPENDS)
     description = fields.Char('Description', size=None, states=_STATES,
@@ -1270,9 +1270,9 @@ class InvoicePaymentLine(ModelSQL):
     _name = 'account.invoice-account.move.line'
     _description = __doc__
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     line = fields.Many2One('account.move.line', 'Payment Line',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
 
 InvoicePaymentLine()
 
@@ -1284,19 +1284,19 @@ class InvoiceLine(ModelSQL, ModelView):
     _description = __doc__
 
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-        select=1, states={
+        select=True, states={
             'required': (~Eval('invoice_type') & Eval('party')
                 & Eval('currency') & Eval('company')),
             'invisible': Bool(Eval('context', {}).get('standalone')),
             },
         depends=['invoice_type', 'party', 'company', 'currency'])
-    invoice_type = fields.Selection(_TYPE, 'Invoice Type', select=1,
+    invoice_type = fields.Selection(_TYPE, 'Invoice Type', select=True,
         states={
             'readonly': Eval('context', {}).get('type') | Eval('type'),
             'required': ~Eval('invoice'),
             },
         depends=['invoice', 'type'])
-    party = fields.Many2One('party.party', 'Party', select=1,
+    party = fields.Many2One('party.party', 'Party', select=True,
         states={
             'required': ~Eval('invoice'),
             },
@@ -1328,7 +1328,7 @@ class InvoiceLine(ModelSQL, ModelView):
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=1, required=True, states={
+        ], 'Type', select=True, required=True, states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
         })
     quantity = fields.Float('Quantity',
@@ -1877,7 +1877,7 @@ class InvoiceLineTax(ModelSQL):
     _table = 'account_invoice_line_account_tax'
     _description = __doc__
     line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
@@ -1891,7 +1891,7 @@ class InvoiceTax(ModelSQL, ModelView):
     _description = __doc__
 
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=1)
+            select=True)
     description = fields.Char('Description', size=None, required=True)
     sequence = fields.Integer('Sequence')
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
