@@ -51,7 +51,7 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('done', 'Done'),
         ('cancel', 'Cancel'),
-        ], 'State', readonly=True, select=1)
+        ], 'State', readonly=True, select=True)
 
     def __init__(self):
         super(Forecast, self).__init__()
@@ -431,9 +431,9 @@ class ForecastLineMove(ModelSQL):
     _table = 'forecast_line_stock_move_rel'
     _description = __doc__
     line = fields.Many2One('stock.forecast.line', 'Forecast Line',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
 
 ForecastLineMove()
 
