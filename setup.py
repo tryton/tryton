@@ -39,7 +39,9 @@ setup(name='proteus',
         'Topic :: Office/Business',
     ],
     license='GPL-3',
-    install_requires=SIMPLEJSON,
+    install_requires=SIMPLEJSON + [
+        "python-dateutil",
+        ],
     extras_require={
         'trytond': ['trytond >= %s.%s, < %s.%s' %
             (major_version, minor_version, major_version, minor_version + 1)],
