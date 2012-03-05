@@ -355,9 +355,13 @@ class WizardDialog(Wizard, NoModal):
             if current_form:
                 for dialog in current_form.dialogs:
                     dialog.show()
-        if hasattr(self.page, 'screen'):
-            self.page.screen.reload(written=True)
         super(WizardDialog, self).destroy()
+        if self.page.dialogs:
+            dialog = self.page.dialogs[-1]
+        else:
+            dialog = self.page
+        if hasattr(dialog, 'screen'):
+            dialog.screen.reload(written=True)
 
     def end(self):
         super(WizardDialog, self).end()
