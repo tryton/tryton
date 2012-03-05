@@ -1773,12 +1773,16 @@ class ModelSQL(ModelStorage):
                                 qu2.append('%')
                                 add_null = True
                             else:
-                                qu2.append(arg[2])
+                                qu2.append(FIELDS[
+                                        table._columns[arg[0]]._type
+                                        ].sql_format(arg[2]))
                         elif arg[1] in ('not like', 'not ilike'):
                             if not arg[2]:
                                 qu2.append('')
                             else:
-                                qu2.append(arg[2])
+                                qu2.append(FIELDS[
+                                        table._columns[arg[0]]._type
+                                        ].sql_format(arg[2]))
                                 add_null = True
                         else:
                             if arg[0] in table._columns:
