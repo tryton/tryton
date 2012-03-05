@@ -89,7 +89,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     _name = 'company.employee_cost_price'
     _description = __doc__
     _rec_name = 'date'
-    date = fields.Date('Date', required=True, select=1)
+    date = fields.Date('Date', required=True, select=True)
     cost_price = fields.Numeric('Cost Price',
             digits=(16, Eval('currency_digits', 2)),
             required=True, depends=['currency_digits'],
