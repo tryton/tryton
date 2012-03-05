@@ -313,15 +313,15 @@ class AccountTemplate(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', size=None, required=True, translate=True,
-            select=1)
-    code = fields.Char('Code', size=None, select=1)
+            select=True)
+    code = fields.Char('Code', size=None, select=True)
     type = fields.Many2One('account.account.type.template', 'Type',
         ondelete="RESTRICT",
         states={
             'invisible': Eval('kind') == 'view',
             'required': Eval('kind') != 'view',
             }, depends=['kind'])
-    parent = fields.Many2One('account.account.template', 'Parent', select=1,
+    parent = fields.Many2One('account.account.template', 'Parent', select=True,
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
     reconcile = fields.Boolean('Reconcile',
@@ -519,9 +519,9 @@ class Account(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', size=None, required=True, translate=True,
-            select=1)
-    code = fields.Char('Code', size=None, select=1)
-    active = fields.Boolean('Active', select=2)
+            select=True)
+    code = fields.Char('Code', size=None, select=True)
+    active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
     currency = fields.Function(fields.Many2One('currency.currency',
@@ -539,10 +539,10 @@ class Account(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
             ], depends=['kind', 'company'])
-    parent = fields.Many2One('account.account', 'Parent', select=1,
+    parent = fields.Many2One('account.account', 'Parent', select=True,
             left="left", right="right", ondelete="RESTRICT")
-    left = fields.Integer('Left', required=True, select=1)
-    right = fields.Integer('Right', required=True, select=1)
+    left = fields.Integer('Left', required=True, select=True)
+    right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many('account.account', 'parent', 'Children')
     balance = fields.Function(fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
@@ -992,9 +992,9 @@ class AccountDeferral(ModelSQL, ModelView):
     _description = 'Account Deferral'
 
     account = fields.Many2One('account.account', 'Account', required=True,
-            select=1)
+            select=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, select=1)
+            required=True, select=True)
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),

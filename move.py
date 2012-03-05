@@ -38,7 +38,7 @@ class Move(ModelSQL, ModelView):
     reference = fields.Char('Reference', size=None, readonly=True,
             help='Also known as Folio Number')
     period = fields.Many2One('account.period', 'Period', required=True,
-            states=_MOVE_STATES, depends=_MOVE_DEPENDS, select=1)
+            states=_MOVE_STATES, depends=_MOVE_DEPENDS, select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
@@ -47,7 +47,7 @@ class Move(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
-        ], 'State', required=True, readonly=True, select=1)
+        ], 'State', required=True, readonly=True, select=True)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
             states=_MOVE_STATES, depends=_MOVE_DEPENDS,
             context={
@@ -452,10 +452,10 @@ class Line(ModelSQL, ModelView):
                     'tax_lines', 'journal'])
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')],
-            select=1,
+            select=True,
             on_change=['account', 'debit', 'credit', 'tax_lines',
                 'journal', 'move'])
-    move = fields.Many2One('account.move', 'Move', select=1, required=True,
+    move = fields.Many2One('account.move', 'Move', select=True, required=True,
         states={
             'required': False,
             'readonly': Eval('state') == 'valid',
@@ -479,7 +479,7 @@ class Line(ModelSQL, ModelView):
             help='The second currency')
     party = fields.Many2One('party.party', 'Party',
             on_change=['move', 'party', 'account', 'debit', 'credit',
-                'journal'], select=1, depends=['debit', 'credit', 'account',
+                'journal'], select=True, depends=['debit', 'credit', 'account',
                     'journal'])
     maturity_date = fields.Date('Maturity Date',
             help='This field is used for payable and receivable lines. \n' \
@@ -487,10 +487,10 @@ class Line(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('valid', 'Valid'),
-        ], 'State', readonly=True, required=True, select=1)
-    active = fields.Boolean('Active', select=2)
+        ], 'State', readonly=True, required=True, select=True)
+    active = fields.Boolean('Active', select=True)
     reconciliation = fields.Many2One('account.move.reconciliation',
-            'Reconciliation', readonly=True, ondelete='SET NULL', select=2)
+            'Reconciliation', readonly=True, ondelete='SET NULL', select=True)
     tax_lines = fields.One2Many('account.tax.line', 'move_line', 'Tax Lines')
     move_state = fields.Function(fields.Selection([
         ('draft', 'Draft'),
@@ -1592,9 +1592,9 @@ class FiscalYearLine(ModelSQL):
     _table = 'account_fiscalyear_line_rel'
     _description = __doc__
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            ondelete='CASCADE', select=1)
+            ondelete='CASCADE', select=True)
     line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 FiscalYearLine()
 

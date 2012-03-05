@@ -141,12 +141,12 @@ class Code(ModelSQL, ModelView):
     _name = 'account.tax.code'
     _description = __doc__
 
-    name = fields.Char('Name', size=None, required=True, select=1,
+    name = fields.Char('Name', size=None, required=True, select=True,
                        translate=True)
-    code = fields.Char('Code', size=None, select=1)
-    active = fields.Boolean('Active', select=2)
+    code = fields.Char('Code', size=None, select=True)
+    active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    parent = fields.Many2One('account.tax.code', 'Parent', select=1,
+    parent = fields.Many2One('account.tax.code', 'Parent', select=True,
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
@@ -897,11 +897,12 @@ class Line(ModelSQL, ModelView):
         on_change_with=['move_line']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
-    code = fields.Many2One('account.tax.code', 'Code', select=1, required=True)
-    tax = fields.Many2One('account.tax', 'Tax', select=1, ondelete='RESTRICT',
-            on_change=['tax'])
+    code = fields.Many2One('account.tax.code', 'Code', select=True,
+        required=True)
+    tax = fields.Many2One('account.tax', 'Tax', select=True,
+        ondelete='RESTRICT', on_change=['tax'])
     move_line = fields.Many2One('account.move.line', 'Move Line',
-            required=True, select=1, ondelete='CASCADE')
+            required=True, select=True, ondelete='CASCADE')
 
     def on_change_with_currency_digits(self, vals):
         move_line_obj = Pool().get('account.move.line')
@@ -1008,7 +1009,7 @@ class Rule(ModelSQL, ModelView):
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-        select=1, domain=[
+        select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ])
@@ -1190,7 +1191,7 @@ class RuleLine(ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'tax'
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
-            select=1, ondelete='CASCADE')
+            select=True, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
         domain=[
@@ -1347,9 +1348,9 @@ class AccountTemplateTaxTemplate(ModelSQL):
     _table = 'account_account_template_tax_rel'
     _description = __doc__
     account = fields.Many2One('account.account.template', 'Account Template',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax.template', 'Tax Template',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 AccountTemplateTaxTemplate()
 
@@ -1369,9 +1370,9 @@ class AccountTax(ModelSQL):
     _table = 'account_account_tax_rel'
     _description = __doc__
     account = fields.Many2One('account.account', 'Account', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 AccountTax()
 

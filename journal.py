@@ -56,8 +56,8 @@ class Column(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True)
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain=[('model.model', '=', 'account.move.line')])
-    view = fields.Many2One('account.journal.view', 'View', select=1)
-    sequence = fields.Integer('Sequence', select=2)
+    view = fields.Many2One('account.journal.view', 'View', select=True)
+    sequence = fields.Integer('Sequence', select=True)
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
@@ -81,7 +81,7 @@ class Journal(ModelSQL, ModelView):
 
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
-    active = fields.Boolean('Active', select=2)
+    active = fields.Boolean('Active', select=True)
     type = fields.Selection('get_types', 'Type', required=True)
     view = fields.Many2One('account.journal.view', 'View')
     centralised = fields.Boolean('Centralised counterpart')
@@ -178,7 +178,8 @@ class Period(ModelSQL, ModelView):
     period = fields.Many2One('account.period', 'Period', required=True,
             ondelete='CASCADE', states=STATES, depends=DEPENDS)
     icon = fields.Function(fields.Char('Icon'), 'get_icon')
-    active = fields.Boolean('Active', select=2, states=STATES, depends=DEPENDS)
+    active = fields.Boolean('Active', select=True, states=STATES,
+        depends=DEPENDS)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),

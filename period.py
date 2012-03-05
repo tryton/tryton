@@ -20,11 +20,11 @@ class Period(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     code = fields.Char('Code')
     start_date = fields.Date('Starting Date', required=True, states=_STATES,
-        depends=_DEPENDS, select=1)
+        depends=_DEPENDS, select=True)
     end_date = fields.Date('Ending Date', required=True, states=_STATES,
-        depends=_DEPENDS, select=1)
+        depends=_DEPENDS, select=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, states=_STATES, depends=_DEPENDS, select=1)
+        required=True, states=_STATES, depends=_DEPENDS, select=True)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
@@ -38,7 +38,7 @@ class Period(ModelSQL, ModelView):
             ('standard', 'Standard'),
             ('adjustment', 'Adjustment'),
             ], 'Type', required=True,
-        states=_STATES, depends=_DEPENDS, select=1)
+        states=_STATES, depends=_DEPENDS, select=True)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'get_company', searcher='search_company')
 
