@@ -34,8 +34,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', 0)),
             ],
         depends=['state', 'lines'])
-    reference = fields.Char('Reference', size=None, readonly=True, select=1)
-    supplier_reference = fields.Char('Supplier Reference', select=1)
+    reference = fields.Char('Reference', size=None, readonly=True, select=True)
+    supplier_reference = fields.Char('Supplier Reference', select=True)
     description = fields.Char('Description', size=None, states=_STATES,
         depends=_DEPENDS)
     state = fields.Selection([
@@ -55,7 +55,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
     party = fields.Many2One('party.party', 'Party',
             required=True, states=_STATES, on_change=['party', 'payment_term'],
-            select=1, depends=_DEPENDS)
+            select=True, depends=_DEPENDS)
     party_lang = fields.Function(fields.Char('Party Language',
         on_change_with=['party']), 'get_function_fields')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
@@ -868,9 +868,9 @@ class PurchaseInvoice(ModelSQL):
     _table = 'purchase_invoices_rel'
     _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 PurchaseInvoice()
 
@@ -881,9 +881,9 @@ class PuchaseIgnoredInvoice(ModelSQL):
     _table = 'purchase_invoice_ignored_rel'
     _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 PuchaseIgnoredInvoice()
 
@@ -894,9 +894,9 @@ class PurchaseRecreadtedInvoice(ModelSQL):
     _table = 'purchase_invoice_recreated_rel'
     _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 PurchaseRecreadtedInvoice()
 
@@ -908,14 +908,14 @@ class PurchaseLine(ModelSQL, ModelView):
     _description = __doc__
 
     purchase = fields.Many2One('purchase.purchase', 'Purchase', ondelete='CASCADE',
-            select=1, required=True)
+            select=True, required=True)
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
         ('title', 'Title'),
         ('comment', 'Comment'),
-        ], 'Type', select=1, required=True)
+        ], 'Type', select=True, required=True)
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
@@ -1409,10 +1409,10 @@ class PurchaseLineTax(ModelSQL):
     _table = 'purchase_line_account_tax'
     _description = __doc__
     line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=1, required=True,
+            ondelete='CASCADE', select=True, required=True,
             domain=[('type', '=', 'line')])
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=1, required=True, domain=[('parent', '=', False)])
+            select=True, required=True, domain=[('parent', '=', False)])
 
 PurchaseLineTax()
 
@@ -1423,9 +1423,9 @@ class PurchaseLineInvoiceLine(ModelSQL):
     _table = 'purchase_line_invoice_lines_rel'
     _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 PurchaseLineInvoiceLine()
 
@@ -1436,9 +1436,9 @@ class PurchaseLineIgnoredMove(ModelSQL):
     _table = 'purchase_line_moves_ignored_rel'
     _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 PurchaseLineIgnoredMove()
 
@@ -1449,9 +1449,9 @@ class PurchaseLineRecreatedMove(ModelSQL):
     _table = 'purchase_line_moves_recreated_rel'
     _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
-            select=1, required=True)
+            select=True, required=True)
 
 PurchaseLineRecreatedMove()
 
@@ -1619,16 +1619,16 @@ class ProductSupplier(ModelSQL, ModelView):
     _description = __doc__
 
     product = fields.Many2One('product.template', 'Product', required=True,
-            ondelete='CASCADE', select=1)
+            ondelete='CASCADE', select=True)
     party = fields.Many2One('party.party', 'Supplier', required=True,
-            ondelete='CASCADE', select=1, on_change=['party'])
-    name = fields.Char('Name', size=None, translate=True, select=1)
-    code = fields.Char('Code', size=None, select=1)
+            ondelete='CASCADE', select=True, on_change=['party'])
+    name = fields.Char('Name', size=None, translate=True, select=True)
+    code = fields.Char('Code', size=None, select=True)
     sequence = fields.Integer('Sequence')
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
-        ondelete='CASCADE', select=1,
+        ondelete='CASCADE', select=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
@@ -1811,13 +1811,13 @@ ShipmentIn()
 class Move(ModelSQL, ModelView):
     _name = 'stock.move'
 
-    purchase_line = fields.Many2One('purchase.line', 'Purchase Line', select=1,
-        states={
+    purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
+        select=True, states={
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
     purchase = fields.Function(fields.Many2One('purchase.purchase', 'Purchase',
-            select=1, states={
+            select=True, states={
                 'invisible': ~Eval('purchase_visible', False),
                 }, depends=['purchase_visible']), 'get_purchase',
         searcher='search_purchase')
@@ -1845,7 +1845,7 @@ class Move(ModelSQL, ModelView):
     purchase_visible = fields.Function(fields.Boolean('Purchase Visible',
         on_change_with=['from_location']), 'get_purchase_visible')
     supplier = fields.Function(fields.Many2One('party.party', 'Supplier',
-        select=1), 'get_supplier', searcher='search_supplier')
+        select=True), 'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),
         ('ignored', 'Ignored'),
