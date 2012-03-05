@@ -225,7 +225,7 @@ class Rate(ModelSQL, ModelView):
     _name = 'currency.currency.rate'
     _description = __doc__
     _rec_name = 'date'
-    date = fields.Date('Date', required=True, select=1)
+    date = fields.Date('Date', required=True, select=True)
     rate = fields.Numeric('Rate', digits=(12, 6), required=1)
     currency = fields.Many2One('currency.currency', 'Currency',
             ondelete='CASCADE',)
