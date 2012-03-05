@@ -13,7 +13,7 @@ class ProductLocation(ModelSQL, ModelView):
     _description = 'Product Location'
 
     product = fields.Many2One('product.product', 'Product', required=True,
-            select=1)
+            select=True)
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
             domain=[('type', '=', 'warehouse')])
     location = fields.Many2One('stock.location', 'Storage Location',
