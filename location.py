@@ -22,8 +22,8 @@ class Location(ModelSQL, ModelView):
     name = fields.Char("Name", size=None, required=True, states=STATES,
         depends=DEPENDS, translate=True)
     code = fields.Char("Code", size=None, states=STATES, depends=DEPENDS,
-        select=1)
-    active = fields.Boolean('Active', select=1)
+        select=True)
+    active = fields.Boolean('Active', select=True)
     address = fields.Many2One("party.address", "Address",
         states={
             'invisible': Not(Equal(Eval('type'), 'warehouse')),
@@ -39,10 +39,10 @@ class Location(ModelSQL, ModelView):
         ('production', 'Production'),
         ('view', 'View'),
         ], 'Location type', states=STATES, depends=DEPENDS)
-    parent = fields.Many2One("stock.location", "Parent", select=1,
+    parent = fields.Many2One("stock.location", "Parent", select=True,
             left="left", right="right")
-    left = fields.Integer('Left', required=True, select=1)
-    right = fields.Integer('Right', required=True, select=1)
+    left = fields.Integer('Left', required=True, select=True)
+    right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many("stock.location", "parent", "Children")
     input_location = fields.Many2One(
         "stock.location", "Input", states={

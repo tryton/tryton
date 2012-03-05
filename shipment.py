@@ -35,7 +35,7 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                 Get(Eval('context', {}), 'company', 0)),
             ],
         depends=['state'])
-    reference = fields.Char("Reference", size=None, select=1,
+    reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
@@ -83,7 +83,7 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment_in', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True,
         depends=['company'])
-    code = fields.Char("Code", size=None, select=1, readonly=True)
+    code = fields.Char("Code", size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -434,8 +434,8 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
                 Get(Eval('context', {}), 'company', 0)),
             ],
         depends=['state'])
-    code = fields.Char("Code", size=None, select=1, readonly=True)
-    reference = fields.Char("Reference", size=None, select=1,
+    code = fields.Char("Code", size=None, select=True, readonly=True)
+    reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
@@ -701,7 +701,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, domain=[('party', '=', Eval('customer'))],
         depends=['state', 'customer'])
-    reference = fields.Char("Reference", size=None, select=1,
+    reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
@@ -732,7 +732,7 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment_out', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
-    code = fields.Char("Code", size=None, select=1, readonly=True)
+    code = fields.Char("Code", size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -1192,7 +1192,7 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, domain=[('party', '=', Eval('customer'))],
         depends=['state', 'customer'])
-    reference = fields.Char("Reference", size=None, select=1,
+    reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
@@ -1222,7 +1222,7 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
-    code = fields.Char("Code", size=None, select=1, readonly=True)
+    code = fields.Char("Code", size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -1624,8 +1624,8 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
                 Get(Eval('context', {}), 'company', 0)),
             ],
         depends=['state'])
-    code = fields.Char("Code", size=None, select=1, readonly=True)
-    reference = fields.Char("Reference", size=None, select=1,
+    code = fields.Char("Code", size=None, select=True, readonly=True)
+    reference = fields.Char("Reference", size=None, select=True,
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])

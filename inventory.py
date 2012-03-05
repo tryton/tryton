@@ -46,7 +46,7 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('done', 'Done'),
         ('cancel', 'Canceled'),
-        ], 'State', readonly=True, select=1)
+        ], 'State', readonly=True, select=True)
 
     def __init__(self):
         super(Inventory, self).__init__()

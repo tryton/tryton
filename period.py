@@ -24,7 +24,7 @@ class Period(ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
-        ], 'State', select=1, readonly=True)
+        ], 'State', select=True, readonly=True)
 
     def __init__(self):
         super(Period, self).__init__()
@@ -113,11 +113,11 @@ class Cache(ModelSQL, ModelView):
     _description = __doc__
 
     period = fields.Many2One('stock.period', 'Period', required=True,
-        readonly=True, select=1, ondelete='CASCADE')
+        readonly=True, select=True, ondelete='CASCADE')
     location = fields.Many2One('stock.location', 'Location', required=True,
-        readonly=True, select=1, ondelete='CASCADE')
+        readonly=True, select=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product', required=True,
-        readonly=True, select=1, ondelete='CASCADE')
+        readonly=True, select=True, ondelete='CASCADE')
     internal_quantity = fields.Float('Internal Quantity', readonly=True)
 
 Cache()
