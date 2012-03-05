@@ -24,15 +24,15 @@ class Line(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['move_line']), 'get_currency_digits')
     account = fields.Many2One('analytic_account.account', 'Account',
-            required=True, select=1, domain=[('type', '!=', 'view')])
+            required=True, select=True, domain=[('type', '!=', 'view')])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
             ondelete='CASCADE', required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-            select=1)
+            select=True)
     date = fields.Date('Date', required=True)
     reference = fields.Char('Reference')
     party = fields.Many2One('party.party', 'Party')
-    active = fields.Boolean('Active', select=2)
+    active = fields.Boolean('Active', select=True)
 
     def __init__(self):
         super(Line, self).__init__()

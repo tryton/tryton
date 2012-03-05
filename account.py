@@ -14,9 +14,9 @@ class Account(ModelSQL, ModelView):
     _name = 'analytic_account.account'
     _description = __doc__
 
-    name = fields.Char('Name', required=True, translate=True, select=1)
-    code = fields.Char('Code', select=1)
-    active = fields.Boolean('Active', select=2)
+    name = fields.Char('Name', required=True, translate=True, select=True)
+    code = fields.Char('Code', select=True)
+    active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Function(fields.Integer('Currency Digits',
@@ -26,14 +26,14 @@ class Account(ModelSQL, ModelView):
         ('view', 'View'),
         ('normal', 'Normal'),
         ], 'Type', required=True)
-    root = fields.Many2One('analytic_account.account', 'Root', select=2,
+    root = fields.Many2One('analytic_account.account', 'Root', select=True,
         domain=[('parent', '=', False)],
         states={
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
             },
         depends=['type'])
-    parent = fields.Many2One('analytic_account.account', 'Parent', select=2,
+    parent = fields.Many2One('analytic_account.account', 'Parent', select=True,
         domain=[('parent', 'child_of', Eval('root'))],
         states={
             'invisible': Eval('type') == 'root',
@@ -381,8 +381,8 @@ class AccountAccountSelection(ModelSQL):
     _description = __doc__
     _table = 'analytic_account_account_selection_rel'
     selection = fields.Many2One('analytic_account.account.selection',
-            'Selection', ondelete='CASCADE', required=True, select=1)
+            'Selection', ondelete='CASCADE', required=True, select=True)
     account = fields.Many2One('analytic_account.account', 'Account',
-            ondelete='RESTRICT', required=True, select=1)
+            ondelete='RESTRICT', required=True, select=True)
 
 AccountAccountSelection()
