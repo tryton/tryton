@@ -8,8 +8,8 @@ class Country(ModelSQL, ModelView):
     _name = 'country.country'
     _description = __doc__
     name = fields.Char('Name', required=True, translate=True,
-           help='The full name of the country.', select=1)
-    code = fields.Char('Code', size=2, select=1,
+           help='The full name of the country.', select=True)
+    code = fields.Char('Code', size=2, select=True,
            help='The ISO country code in two chars.\n'
            'You can use this field for quick search.', required=True)
     subdivisions = fields.One2Many('country.subdivision',
@@ -51,9 +51,9 @@ class Subdivision(ModelSQL, ModelView):
     _name = 'country.subdivision'
     _description = __doc__
     country = fields.Many2One('country.country', 'Country',
-            required=True, select=1)
-    name = fields.Char('Name', required=True, select=1, translate=True)
-    code = fields.Char('Code', required=True, select=1)
+            required=True, select=True)
+    name = fields.Char('Name', required=True, select=True, translate=True)
+    code = fields.Char('Code', required=True, select=True)
     type = fields.Selection([
         ('administration', 'Administration'),
         ('administrative area', 'Administrative area'),
