@@ -34,7 +34,7 @@ class Work(ModelSQL, ModelView):
             ('project', 'Project'),
             ('task', 'Task')
             ],
-        'Type', required=True, select=1,
+        'Type', required=True, select=True,
         states={
             'invisible': Eval('context', {}).get('type', False),
             })
@@ -65,7 +65,7 @@ class Work(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'task',
             'required': Eval('type') == 'task',
-            }, select=1, depends=['type'])
+            }, select=True, depends=['type'])
     sequence = fields.Integer('Sequence')
 
     def default_type(self):
