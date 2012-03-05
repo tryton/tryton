@@ -115,9 +115,9 @@ class PurchaseInvoiceLine(ModelSQL):
     _table = 'purchase_invoice_line_rel'
     _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 PurchaseInvoiceLine()
 
@@ -128,8 +128,8 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
     _table = 'purchase_invoice_line_ignored_rel'
     _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=1, required=True)
+            ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=1, required=True)
+            ondelete='RESTRICT', select=True, required=True)
 
 PurchaseIgnoredInvoiceLine()
