@@ -6,6 +6,7 @@ try:
 except ImportError:
     import json
 import datetime
+from dateutil.relativedelta import relativedelta
 from functools import reduce
 
 
@@ -453,23 +454,14 @@ class Date(PYSON):
 
     @staticmethod
     def eval(dct, context):
-        date = datetime.date.today()
-        replace = {}
-        for i, j in (('y', 'year'), ('M', 'month'), ('d', 'day')):
-            if dct[i] is not None:
-                replace[j] = dct[i]
-        date = date.replace(**replace)
-        if dct['dy']:
-            year = date.year + dct['dy']
-            date = date.replace(year=year)
-        if dct['dM']:
-            month = date.month + dct['dM']
-            year = date.year + month // 12
-            month = month % 12
-            date = date.replace(year=year, month=month)
-        if dct['dd']:
-            date += datetime.timedelta(days=dct['dd'])
-        return date
+        return datetime.date.today() + relativedelta(
+            year=dct['y'],
+            month=dct['M'],
+            day=dct['d'],
+            years=dct['dy'],
+            months=dct['dM'],
+            days=dct['dd'],
+            )
 
 
 class DateTime(Date):
@@ -517,22 +509,22 @@ class DateTime(Date):
 
     @staticmethod
     def eval(dct, context):
-        date = Date.eval(dct, context)
-        datetime_ = datetime.datetime.combine(date,
-                datetime.datetime.now().time())
-        replace = {}
-        for i, j in (('h', 'hour'), ('m', 'minute'), ('s', 'second'),
-                ('ms', 'microsecond')):
-            if dct[i] is not None:
-                replace[j] = dct[i]
-        datetime_ = datetime_.replace(**replace)
-        delta = {}
-        for i, j in (('dh', 'hours'), ('dm', 'minutes'), ('ds', 'seconds'),
-                ('dms', 'microseconds')):
-            if dct[i]:
-                delta[j] = dct[i]
-        datetime_ += datetime.timedelta(**delta)
-        return datetime_
+        return datetime.datetime.now() + relativedelta(
+            year=dct['y'],
+            month=dct['M'],
+            day=dct['d'],
+            hour=dct['h'],
+            minute=dct['m'],
+            second=dct['s'],
+            microsecond=dct['ms'],
+            years=dct['dy'],
+            months=dct['dM'],
+            days=dct['dd'],
+            hours=dct['dh'],
+            minutes=dct['dm'],
+            seconds=dct['ds'],
+            microseconds=dct['dms'],
+            )
 
 CONTEXT = {
     'Eval': Eval,
