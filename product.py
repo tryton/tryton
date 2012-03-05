@@ -17,7 +17,7 @@ class Template(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', size=None, required=True, translate=True,
-        select=1, states=STATES, depends=DEPENDS)
+        select=True, states=STATES, depends=DEPENDS)
     type = fields.Selection([
             ('stockable', 'Stockable'),
             ('consumable', 'Consumable'),
@@ -40,7 +40,7 @@ class Template(ModelSQL, ModelView):
             depends=DEPENDS))
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
         states=STATES, depends=DEPENDS)
-    active = fields.Boolean('Active', select=1)
+    active = fields.Boolean('Active', select=True)
     products = fields.One2Many('product.product', 'template', 'Products',
         states=STATES, depends=DEPENDS)
 
@@ -85,8 +85,8 @@ class Product(ModelSQL, ModelView):
     _inherits = {'product.template': 'template'}
 
     template = fields.Many2One('product.template', 'Product Template',
-            required=True, ondelete='CASCADE', select=1)
-    code = fields.Char("Code", size=None, select=1)
+            required=True, ondelete='CASCADE', select=True)
+    code = fields.Char("Code", size=None, select=True)
     description = fields.Text("Description", translate=True)
 
     def get_rec_name(self, ids, name):
