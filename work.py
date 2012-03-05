@@ -666,9 +666,9 @@ class PredecessorSuccessor(ModelSQL):
     _description = __doc__
 
     predecessor = fields.Many2One('project.work', 'Predecessor',
-            ondelete='CASCADE', required=True, select=1)
+            ondelete='CASCADE', required=True, select=True)
     successor = fields.Many2One('project.work', 'Successor',
-            ondelete='CASCADE', required=True, select=1)
+            ondelete='CASCADE', required=True, select=True)
 
     def write(self, ids, values):
         work_obj = Pool().get('project.work')

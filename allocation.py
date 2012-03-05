@@ -11,9 +11,9 @@ class Allocation(ModelSQL, ModelView):
     _rec_name = 'employee'
 
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            select=1)
+            select=True)
     work = fields.Many2One('project.work', 'Work', required=True,
-            select=1)
+            select=True)
     percentage = fields.Float('Percentage', digits=(16, 2), required=True)
 
     def default_percentage(self):
