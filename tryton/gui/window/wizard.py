@@ -135,8 +135,8 @@ class Wizard(object):
         try:
             rpc.execute('wizard', self.action, 'delete', self.wiz_id,
                 rpc.CONTEXT)
-            #XXX to remove when company displayed in status bar
-            rpc.context_reload()
+            if self.action == 'ir.module.module.config_wizard':
+                rpc.context_reload()
         except TrytonServerError:
             pass
 
