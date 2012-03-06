@@ -1417,12 +1417,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(sha_ids == [sha1_id])
 
         sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'like', '640ab2bae07bedc4c163f679a746f7ab7fb5d1fa'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [sha1_id])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'like', '640a%'),
+            ('sha', 'like', 'Test'),
             ], 0, None, None, CONTEXT)
         self.assert_(sha_ids == [sha1_id])
 
@@ -1432,17 +1427,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(sha_ids == [])
 
         sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'like', 'F%'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'ilike', '640AB2BAE07BEDC4C163F679A746F7AB7FB5D1FA'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [sha1_id])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'ilike', '640A%'),
+            ('sha', 'ilike', 'Test'),
             ], 0, None, None, CONTEXT)
         self.assert_(sha_ids == [sha1_id])
 
@@ -1452,17 +1437,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(sha_ids == [])
 
         sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'ilike', 'f%'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'not like', '640ab2bae07bedc4c163f679a746f7ab7fb5d1fa'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'not like', '640a%'),
+            ('sha', 'not like', 'Test'),
             ], 0, None, None, CONTEXT)
         self.assert_(sha_ids == [])
 
@@ -1472,27 +1447,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assert_(sha_ids == [sha1_id])
 
         sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'not like', 'F%'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [sha1_id])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'not ilike', '640AB2BAE07BEDC4C163F679A746F7AB7FB5D1FA'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'not ilike', '640A%'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [])
-
-        sha_ids = self.sha.search(cursor, USER, [
             ('sha', 'not ilike', 'foo'),
-            ], 0, None, None, CONTEXT)
-        self.assert_(sha_ids == [sha1_id])
-
-        sha_ids = self.sha.search(cursor, USER, [
-            ('sha', 'not ilike', 'f%'),
             ], 0, None, None, CONTEXT)
         self.assert_(sha_ids == [sha1_id])
 
