@@ -96,8 +96,7 @@ class Preference(object):
                     try:
                         rpc.execute(*args)
                     except TrytonServerError, exception:
-                        if not common.process_exception(exception, self.win,
-                                *args):
+                        if not common.process_exception(exception, *args):
                             continue
                     res = True
                     break
