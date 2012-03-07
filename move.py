@@ -1503,7 +1503,7 @@ class ReconcileLines(Wizard):
             return 'reconcile'
         return 'writeoff'
 
-    def transiton_reconcile(self, session):
+    def transition_reconcile(self, session):
         line_obj = Pool().get('account.move.line')
 
         journal_id = False
