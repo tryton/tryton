@@ -230,7 +230,7 @@ class One2Many(WidgetInterface):
                 self.screen.display()
                 return
         ctx = {}
-        ctx.update(self.record.expr_eval(self.attrs.get('context', {})))
+        ctx.update(self.field.context_get(self.record))
         sequence = None
         if self.screen.current_view.view_type == 'tree':
             sequence = self.screen.current_view.widget_tree.sequence
