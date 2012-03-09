@@ -192,7 +192,8 @@ class DateTime(WidgetInterface):
             date = datetime.datetime(*time.strptime(value, self.format)[:6])
         except ValueError:
             return False
-        date = untimezoned_date(date)
+        if timezone:
+            date = untimezoned_date(date)
         return datetime_strftime(date, DHM_FORMAT)
 
     def set_value(self, record, field):
