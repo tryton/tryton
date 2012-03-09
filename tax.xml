@@ -189,6 +189,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_tax_code_tree">
             <field name="name">Tax Codes</field>
             <field name="res_model">account.tax.code</field>
+            <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_code_tree_view1">
             <field name="sequence" eval="10"/>
