@@ -27,13 +27,13 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines'),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ],
-        depends=['state', 'lines'])
+        depends=['state'])
     reference = fields.Char('Reference', size=None, readonly=True, select=True)
     supplier_reference = fields.Char('Supplier Reference', select=True)
     description = fields.Char('Description', size=None, states=_STATES,
@@ -67,9 +67,9 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines') & Eval('currency'))),
+                | (Eval('lines', [0]) & Eval('currency'))),
             },
-        depends=['state', 'lines'])
+        depends=['state'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'get_function_fields')
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
