@@ -211,7 +211,8 @@ class DateTime(WidgetInterface):
             self.entry.clear()
         else:
             date = datetime.datetime(*time.strptime(dt_val, DHM_FORMAT)[:6])
-            date = timezoned_date(date)
+            if timezone:
+                date = timezoned_date(date)
             value = datetime_strftime(date, self.format)
             if len(value) > self.entry.get_width_chars():
                 self.entry.set_width_chars(len(value))
