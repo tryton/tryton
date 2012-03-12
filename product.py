@@ -13,8 +13,12 @@ class Category(ModelSQL, ModelView):
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': ~Eval('context', {}, ).get('company'),
-                }))
+                'invisible': (~Eval('context', {}, ).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
+    account_cogs_used = fields.Function(fields.Many2One('account.account',
+        'Account Cost of Goods Sold Used'), 'get_account')
 
 Category()
 
