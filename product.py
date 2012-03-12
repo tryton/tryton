@@ -13,32 +13,48 @@ class Category(ModelSQL, ModelView):
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': ~Eval('context', {}).get('company'),
-                }))
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
     account_stock_supplier = fields.Property(fields.Many2One('account.account',
             'Account Stock Supplier', domain=[
                 ('kind', '!=', 'view'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': ~Eval('context', {}).get('company'),
-                }))
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
     account_stock_customer = fields.Property(fields.Many2One('account.account',
             'Account Stock Customer', domain=[
                 ('kind', '!=', 'view'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': ~Eval('context', {}).get('company'),
-                }))
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found', domain=[
                 ('kind', '!=', 'view'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'invisible': ~Eval('context', {}).get('company'),
-                }))
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
+    account_stock_used = fields.Function(fields.Many2One('account.account',
+        'Account Stock Used'), 'get_account')
+    account_stock_supplier_used = fields.Function(fields.Many2One(
+        'account.account', 'Account Stock Supplier Used'), 'get_account')
+    account_stock_customer_used = fields.Function(fields.Many2One(
+        'account.account', 'Account Stock Customer Used'), 'get_account')
+    account_stock_lost_found_used = fields.Function(fields.Many2One(
+        'account.account', 'Account Stock Lost and Found'), 'get_account')
 
 Category()
 
