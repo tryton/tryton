@@ -104,8 +104,7 @@ class CursorInterface(object):
     IN_MAX = 1000
 
     def __init__(self):
-        from trytond.cache import LRUDict
-        self.cache = LRUDict(CONTEXT_CACHE_SIZE)
+        self.cache = {}
 
     def get_cache(self, context=None):
         '''
