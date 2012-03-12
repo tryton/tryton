@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.backend import TableHandler
 
 STATES = {
     'readonly': ~Eval('active', True),
@@ -23,7 +24,7 @@ class Template(ModelSQL, ModelView):
             ('consumable', 'Consumable'),
             ('service', 'Service')
             ], 'Type', required=True, states=STATES, depends=DEPENDS)
-    category = fields.Many2One('product.category', 'Category', required=True,
+    category = fields.Many2One('product.category', 'Category',
         states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
             digits=(16, 4), depends=DEPENDS))
@@ -43,6 +44,15 @@ class Template(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     products = fields.One2Many('product.product', 'template', 'Products',
         states=STATES, depends=DEPENDS)
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+
+        super(Template, self).init(module_name)
+
+        table = TableHandler(cursor, self, module_name)
+        # Migration from 2.2: category is no more required
+        table.not_null_action('category', 'remove')
 
     def default_active(self):
         return True
