@@ -1,7 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import copy
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Or
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -10,26 +11,89 @@ from trytond.pool import Pool
 class Category(ModelSQL, ModelView):
     _name = 'product.category'
 
+    account_parent = fields.Boolean('Use Parent\'s accounts',
+        help='Use the accounts defined on the parent category')
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ], on_change=['account_expense'],
             states={
-                'invisible': ~Eval('context', {}).get('company'),
-                }))
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
     account_revenue = fields.Property(fields.Many2One( 'account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ], on_change=['account_revenue'],
             states={
-                'invisible': ~Eval('context', {}).get('company'),
-                }))
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
+    account_expense_used = fields.Function(fields.Many2One('account.account',
+            'Account Expense Used'), 'get_account')
+    account_revenue_used = fields.Function(fields.Many2One('account.account',
+            'Account Revenue Used'), 'get_account')
+    taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
+        help='Use the taxes defined on the parent category')
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
-            'category', 'tax', 'Customer Taxes', domain=[('parent', '=', False)])
+        'category', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
+        states={
+            'invisible': (~Eval('context', {}).get('company')
+                | Eval('taxes_parent')),
+            },
+        depends=['taxes_parent'])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
-            'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)])
+        'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
+        states={
+            'invisible': (~Eval('context', {}).get('company')
+                | Eval('taxes_parent')),
+            },
+        depends=['taxes_parent'])
+    customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
+            'Customer Taxes Used'), 'get_taxes')
+    supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
+            'Supplier Taxes Used'), 'get_taxes')
+
+    def __init__(self):
+        super(Category, self).__init__()
+        self._error_messages.update({
+            'missing_account': ('There is no account '
+                    'expense/revenue defined on the category '
+                    '%s (%d)'),
+            })
+        self.parent = copy.copy(self.parent)
+        self.parent.states = copy.copy(self.parent.states)
+        self.parent.states['required'] = Or(
+            self.parent.states.get('required', False),
+            Eval('account_parent', False) | Eval('taxes_parent', False))
+        self.parent.depends = copy.copy(self.parent.depends)
+        self.parent.depends.extend(['account_parent', 'taxes_parent'])
+        self._reset_columns()
+
+    def get_account(self, ids, name):
+        accounts = {}
+        for category in self.browse(ids):
+            if category.account_parent:
+                accounts[category.id] = category.parent[name].id
+            elif category[name[:-5]]:
+                accounts[category.id] = category[name[:-5]].id
+            else:
+                self.raise_user_error('missing_account',
+                    (category.name, category.id))
+        return accounts
+
+    def get_taxes(self, ids, name):
+        taxes = {}
+        for category in self.browse(ids):
+            if category.taxes_parent:
+                taxes[category.id] = [x.id for x in category.parent[name]]
+            else:
+                taxes[category.id] = [x.id for x in category[name[:-5]]]
+        return taxes
 
     def on_change_account_expense(self, values):
         account_obj = Pool().get('account.account')
@@ -158,33 +222,38 @@ class Template(ModelSQL, ModelView):
                     'expense/revenue defined on the product ' \
                     '%s (%d)',
             })
+        self.category = copy.copy(self.category)
+        self.category.states = copy.copy(self.category.states)
+        self.category.states['required'] = Or(
+            self.category.states.get('required', False),
+            Eval('account_category', False) | Eval('taxes_category', False))
+        self.category.depends = copy.copy(self.category.depends)
+        self.category.depends.extend(['account_category', 'taxes_category'])
+        self._reset_columns()
 
     def default_taxes_category(self):
         return False
 
     def get_account(self, ids, name):
-        res = {}
-        name = name[:-5]
+        accounts = {}
         for product in self.browse(ids):
-            if product[name]:
-                res[product.id] = product[name].id
+            if product.account_category:
+                accounts[product.id] = product.category[name].id
+            elif product[name[:-5]]:
+                accounts[product.id] = product[name[:-5]].id
             else:
-                if product.category[name]:
-                    res[product.id] = product.category[name].id
-                else:
-                    self.raise_user_error('missing_account',
-                            (product.name, product.id))
-        return res
+                self.raise_user_error('missing_account',
+                    (product.name, product.id))
+        return accounts
 
     def get_taxes(self, ids, name):
-        res = {}
-        name = name[:-5]
+        taxes = {}
         for product in self.browse(ids):
             if product.taxes_category:
-                res[product.id] = [x.id for x in product.category[name]]
+                taxes[product.id] = [x.id for x in product.category[name]]
             else:
-                res[product.id] = [x.id for x in product[name]]
-        return res
+                taxes[product.id] = [x.id for x in product[name[:-5]]]
+        return taxes
 
     def on_change_account_expense(self, values):
         account_obj = Pool().get('account.account')
