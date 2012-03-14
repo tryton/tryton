@@ -1317,7 +1317,7 @@ class InvoiceLine(ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ],
-        depends=['invoice'])
+        depends=['invoice'], select=True)
 
     sequence = fields.Integer('Sequence',
         states={
