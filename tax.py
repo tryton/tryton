@@ -145,7 +145,8 @@ class Code(ModelSQL, ModelView):
                        translate=True)
     code = fields.Char('Code', size=None, select=True)
     active = fields.Boolean('Active', select=True)
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            select=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=True,
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
@@ -587,7 +588,7 @@ class Tax(ModelSQL, ModelView):
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
-            ])
+            ], select=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
             ('company', '=', Eval('company')),

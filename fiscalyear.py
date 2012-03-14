@@ -46,7 +46,7 @@ class FiscalYear(ModelSQL, ModelView):
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
-            ])
+            ], select=True)
 
     def __init__(self):
         super(FiscalYear, self).__init__()
