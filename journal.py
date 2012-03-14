@@ -14,7 +14,8 @@ class Journal(ModelSQL, ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         domain=[('type', '=', 'statement')])
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            select=True)
 
     def default_currency(self):
         if Transaction().context.get('company'):
