@@ -15,7 +15,8 @@ class CreateInventoriesStart(ModelView):
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')])
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+            select=True)
     locations = fields.Many2Many('stock.location', None, None,
             'Locations', required=True, domain=[('type', '=', 'storage')])
 
