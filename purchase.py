@@ -33,7 +33,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ],
-        depends=['state'])
+        depends=['state'], select=True)
     reference = fields.Char('Reference', size=None, readonly=True, select=True)
     supplier_reference = fields.Char('Supplier Reference', select=True)
     description = fields.Char('Description', size=None, states=_STATES,
@@ -918,8 +918,8 @@ class PurchaseLine(ModelSQL, ModelView):
     _rec_name = 'description'
     _description = __doc__
 
-    purchase = fields.Many2One('purchase.purchase', 'Purchase', ondelete='CASCADE',
-            select=True, required=True)
+    purchase = fields.Many2One('purchase.purchase', 'Purchase',
+            ondelete='CASCADE', select=True, required=True)
     sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
