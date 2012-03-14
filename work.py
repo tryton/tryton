@@ -23,7 +23,8 @@ class Work(ModelSQL, ModelView):
         help="Total time spent on this work"), 'get_hours')
     timesheet_available = fields.Boolean('Available on timesheets',
             help="Allow to fill in timesheets with this work")
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+        select=True)
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
         'Timesheet Lines',
         depends=['timesheet_available', 'active'],
