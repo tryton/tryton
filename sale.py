@@ -30,7 +30,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ],
-        depends=['state'])
+        depends=['state'], select=True)
     reference = fields.Char('Reference', readonly=True, select=True)
     description = fields.Char('Description',
         states={
