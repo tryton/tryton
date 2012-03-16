@@ -77,7 +77,7 @@ Create products::
     >>> product.name = 'Product'
     >>> product.category = category
     >>> product.default_uom = unit
-    >>> product.type = 'stockable'
+    >>> product.type = 'goods'
     >>> product.list_price = Decimal('20')
     >>> product.cost_price = Decimal('8')
     >>> product.save()
