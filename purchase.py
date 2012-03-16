@@ -628,7 +628,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         for line in purchase.lines:
             if (not line.to_location
                     and line.product
-                    and line.product.type in ('stockable', 'consumable')):
+                    and line.product.type in ('goods', 'assets')):
                 self.raise_user_error('warehouse_required')
         return True
 
