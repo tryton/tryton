@@ -78,13 +78,22 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_function_fields')
+            depends=['currency_digits']), 'get_untaxed_amount')
+    untaxed_amount_cache = fields.Numeric('Untaxed Cache',
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
     tax_amount = fields.Function(fields.Numeric('Tax',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_function_fields')
+            depends=['currency_digits']), 'get_tax_amount')
+    tax_amount_cache = fields.Numeric('Tax Cache',
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
     total_amount = fields.Function(fields.Numeric('Total',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_function_fields')
+            depends=['currency_digits']), 'get_total_amount')
+    total_amount_cache = fields.Numeric('Total Cache',
+        digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'Based On Order'),
@@ -136,6 +145,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                 'missing_account_payable': 'It misses ' \
                         'an "Account Payable" on the party "%s"!',
             })
+        # The states where amounts are cached
+        self._states_cached = ['confirmed', 'done', 'cancel']
 
     def init(self, module_name):
         cursor = Transaction().cursor
@@ -365,12 +376,6 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             res['currency_digits'] = self.get_currency_digits(purchases)
         if 'party_lang' in names:
             res['party_lang'] = self.get_party_lang(purchases)
-        if 'untaxed_amount' in names:
-            res['untaxed_amount'] = self.get_untaxed_amount(purchases)
-        if 'tax_amount' in names:
-            res['tax_amount'] = self.get_tax_amount(purchases)
-        if 'total_amount' in names:
-            res['total_amount'] = self.get_total_amount(purchases)
         if 'invoice_paid' in names:
             res['invoice_paid'] = self.get_invoice_paid(purchases)
         if 'invoice_exception' in names:
@@ -401,43 +406,41 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                 res[purchase.id] = CONFIG['language']
         return res
 
-    def get_untaxed_amount(self, purchases):
+    def get_untaxed_amount(self, ids, name):
         '''
         Return the untaxed amount for each purchases
-
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            the untaxed amount as value
         '''
         currency_obj = Pool().get('currency.currency')
-        res = {}
-        for purchase in purchases:
-            res.setdefault(purchase.id, Decimal('0.0'))
-            for line in purchase.lines:
-                if line.type != 'line':
-                    continue
-                res[purchase.id] += line.amount
-            res[purchase.id] = currency_obj.round(purchase.currency,
-                    res[purchase.id])
-        return res
+        amounts = {}
+        for purchase in self.browse(ids):
+            # TODO test for not None
+            if (purchase.state in self._states_cached
+                    and purchase.untaxed_amount_cache):
+                amounts[purchase.id] = purchase.untaxed_amount_cache
+                continue
+            amount = sum((l.amount for l in purchase.lines
+                    if l.type == 'line'), Decimal(0))
+            amounts[purchase.id] = currency_obj.round(purchase.currency,
+                    amount)
+        return amounts
 
-    def get_tax_amount(self, purchases):
+    def get_tax_amount(self, ids, name):
         '''
         Return the tax amount for each purchases
-
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            the tax amount as value
         '''
         pool = Pool()
         currency_obj = pool.get('currency.currency')
         tax_obj = pool.get('account.tax')
         invoice_obj = pool.get('account.invoice')
 
-        res = {}
-        for purchase in purchases:
+        amounts = {}
+        for purchase in self.browse(ids):
+            # TODO test for not None
+            if (purchase.state in self._states_cached
+                    and purchase.tax_amount_cache):
+                amounts[purchase.id] = purchase.tax_amount_cache
+                continue
             context = self.get_tax_context(purchase)
-            res.setdefault(purchase.id, Decimal('0.0'))
             taxes = {}
             for line in purchase.lines:
                 if line.type != 'line':
@@ -452,29 +455,27 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
                         taxes[key] = val['amount']
                     else:
                         taxes[key] += val['amount']
-            for key in taxes:
-                res[purchase.id] += currency_obj.round(purchase.currency,
-                        taxes[key])
-            res[purchase.id] = currency_obj.round(purchase.currency,
-                    res[purchase.id])
-        return res
+            amount = sum((currency_obj.round(purchase.currency, tax)
+                    for tax in taxes.itervalues()), Decimal(0))
+            amounts[purchase.id] = currency_obj.round(purchase.currency,
+                amount)
+        return amounts
 
-    def get_total_amount(self, purchases):
+    def get_total_amount(self, ids, name):
         '''
         Return the total amount of each purchases
-
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            total amount as value
         '''
         currency_obj = Pool().get('currency.currency')
-        res = {}
-        untaxed_amounts = self.get_untaxed_amount(purchases)
-        tax_amounts = self.get_tax_amount(purchases)
-        for purchase in purchases:
-            res[purchase.id] = currency_obj.round(purchase.currency,
-                    untaxed_amounts[purchase.id] + tax_amounts[purchase.id])
-        return res
+        amounts = {}
+        for purchase in self.browse(ids):
+            # TODO test for not None
+            if (purchase.state in self._states_cached
+                    and purchase.total_amount_cache):
+                amounts[purchase.id] = purchase.total_amount_cache
+                continue
+            amounts[purchase.id] = currency_obj.round(purchase.currency,
+                    purchase.untaxed_amount + purchase.tax_amount)
+        return amounts
 
     def get_invoice_paid(self, purchases):
         '''
@@ -767,7 +768,12 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
     def wkf_confirmed(self, purchase):
         self.set_purchase_date(purchase)
-        self.write(purchase.id, {'state': 'confirmed'})
+        self.write(purchase.id, {
+                'state': 'confirmed',
+                'untaxed_amount_cache': purchase.untaxed_amount,
+                'tax_amount_cache': purchase.tax_amount,
+                'total_amount_cache': purchase.total_amount,
+                })
 
     def wkf_invoice_waiting(self, purchase):
         self.create_invoice(purchase.id)
@@ -807,7 +813,12 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         self.write(purchase.id, {'state': 'done'})
 
     def wkf_cancel(self, purchase):
-        self.write(purchase.id, {'state': 'cancel'})
+        self.write(purchase.id, {
+                'state': 'cancel',
+                'untaxed_amount_cache': purchase.untaxed_amount,
+                'tax_amount_cache': purchase.tax_amount,
+                'total_amount_cache': purchase.total_amount,
+                })
 
     def wkf_draft2quotation(self, purchase):
         return bool(purchase.lines)

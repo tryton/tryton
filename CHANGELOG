@@ -1,3 +1,4 @@
+* Add cache on amount fields in readonly states
 * Use the most used currency by party on the 10 last records as default value
   for purchase and product_supplier
 * Add currency on product_supplier
