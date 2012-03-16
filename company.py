@@ -171,14 +171,37 @@ class User(ModelSQL, ModelView):
                 context_only=context_only)
         if not context_only:
             res['main_company'] = user.main_company.id
+            if user.main_company.id:
+                res['main_company.rec_name'] = user.main_company.rec_name
             res['employees'] = [e.id for e in user.employees]
         if user.employee:
             res['employee'] = user.employee.id
+            if user.employee.id:
+                res['employee.rec_name'] = user.employee.rec_name
         return res
 
     def get_preferences_fields_view(self):
+        pool = Pool()
+        company_obj = pool.get('company.company')
+
         res = super(User, self).get_preferences_fields_view()
         res = copy.deepcopy(res)
+
+        def convert2selection(definition, name):
+            del definition[name]['relation']
+            definition[name]['type'] = 'selection'
+            selection = []
+            definition[name]['selection'] = selection
+            return selection
+
+        if 'company' in res['fields']:
+            selection = convert2selection(res['fields'], 'company')
+            user = self.browse(Transaction().user)
+            company_ids = company_obj.search([
+                    ('parent', 'child_of', [user.main_company.id], 'parent'),
+                    ])
+            for company in company_obj.browse(company_ids):
+                selection.append((company.id, company.rec_name))
         return res
 
     def read(self, ids, fields_names=None):
