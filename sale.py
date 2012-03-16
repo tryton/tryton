@@ -669,7 +669,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         for line in sale.lines:
             if (not line.from_location
                     and line.product
-                    and line.product.type in ('stockable', 'consumable')):
+                    and line.product.type in ('goods', 'assets')):
                 self.raise_user_error('warehouse_required')
         return True
 
