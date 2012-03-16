@@ -54,7 +54,7 @@ class InvoiceLine(ModelSQL, ModelView):
             return result
         if not line.product:
             return result
-        if line.product.type == 'service':
+        if line.product.type != 'goods':
             return result
 
         moves = []

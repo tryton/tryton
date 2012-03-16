@@ -34,7 +34,7 @@ class Template(ModelSQL, ModelView):
             states={
                 'invisible': ((~Eval('context', {}).get('company'))
                     | Eval('account_category')),
-                'required': (Eval('type').in_(['stockable', 'consumable'])
+                'required': ((Eval('type') == 'goods')
                     & Eval('context', {}).get('company')
                     & ~Eval('account_category')),
                 },
