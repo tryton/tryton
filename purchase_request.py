@@ -145,11 +145,12 @@ class PurchaseRequest(ModelSQL, ModelView):
                 (order_point.warehouse_location.id, order_point.product.id)
                 ] = order_point
 
-        # fetch stockable products
+        # fetch goods
         product_ids = product_obj.search([
-            ('type', '=', 'stockable'),
-            ('purchasable', '=', True),
-            ])
+                ('type', '=', 'goods'),
+                ('consumable', '=', False),
+                ('purchasable', '=', True),
+                ])
         #aggregate product by minimum supply date
         date2products = {}
         for product in product_obj.browse(product_ids):

@@ -18,7 +18,8 @@ class OrderPoint(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product', required=True,
         select=True,
         domain=[
-            ('type', '=', 'stockable'),
+            ('type', '=', 'goods'),
+            ('consumable', '=', False),
             ('purchasable', 'in', If(Equal(Eval('type'), 'purchase'),
                     [True], [True, False])),
             ],
