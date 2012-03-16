@@ -109,6 +109,8 @@ class Move(ModelSQL, ModelView):
         Create account move for stock move
         '''
         account_move_obj = Pool().get('account.move')
+        if move.product.type != 'goods':
+            return
         type_ = self._get_account_stock_move_type(move)
         if not type_:
             return
