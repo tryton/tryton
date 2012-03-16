@@ -134,7 +134,6 @@ class Move(ModelSQL, ModelView):
                 'Move can be on only one Shipment'),
         ]
         self._constraints += [
-            ('check_product_type', 'service_product'),
             ('check_period_closed', 'period_closed'),
         ]
         self._order[0] = ('id', 'DESC')
@@ -143,7 +142,6 @@ class Move(ModelSQL, ModelView):
             'set_state_assigned': 'You can not set state to assigned!',
             'set_state_done': 'You can not set state to done!',
             'del_draft_cancel': 'You can only delete draft or cancelled moves!',
-            'service_product': 'You can not use service products for a move!',
             'period_closed': 'You can not modify move in closed period!',
             'modify_assigned_done_cancel': ('You can not modify a move '
                 'in the state: "Assigned", "Done" or "Cancel"'),
@@ -371,12 +369,6 @@ class Move(ModelSQL, ModelView):
             if move.to_location.type == 'customer':
                 res[move.id] = True
         return res
-
-    def check_product_type(self, ids):
-        for move in self.browse(ids):
-            if move.product.type == 'service':
-                return False
-        return True
 
     def check_period_closed(self, ids):
         period_obj = Pool().get('stock.period')
@@ -664,7 +656,7 @@ class Move(ModelSQL, ModelView):
                 to_pick.append((location, available_qty))
                 needed_qty -= available_qty
         # Force assignation for consumables:
-        if move.product.type == "consumable":
+        if move.product.consumable:
             to_pick.append((move.from_location, needed_qty))
             return to_pick
         return to_pick

@@ -62,7 +62,7 @@ class StockTestCase(unittest.TestCase):
             g_id, = self.uom.search([('name', '=', 'Gram')])
             product_id = self.product.create({
                 'name': 'Test Move.internal_quantity',
-                'type': 'stockable',
+                'type': 'goods',
                 'category': category_id,
                 'cost_price_method': 'fixed',
                 'default_uom': kg_id,
@@ -119,7 +119,7 @@ class StockTestCase(unittest.TestCase):
             g_id, = self.uom.search([('name', '=', 'Gram')])
             product_id = self.product.create({
                 'name': 'Test products_by_location',
-                'type': 'stockable',
+                'type': 'goods',
                 'category': category_id,
                 'cost_price_method': 'fixed',
                 'default_uom': kg_id,
@@ -329,7 +329,7 @@ class StockTestCase(unittest.TestCase):
             unit_id, = self.uom.search([('name', '=', 'Unit')])
             product_id = self.product.create({
                 'name': 'Test period',
-                'type': 'stockable',
+                'type': 'goods',
                 'category': category_id,
                 'cost_price_method': 'fixed',
                 'default_uom': unit_id,

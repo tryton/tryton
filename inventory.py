@@ -154,9 +154,11 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             # Index some data
             product2uom = {}
             product2type = {}
+            product2consumable = {}
             for product in product_obj.browse([line[1] for line in pbl]):
                 product2uom[product.id] = product.default_uom.id
                 product2type[product.id] = product.type
+                product2consumable[product.id] = product.consumable
 
             product_qty = {}
             for (location, product), quantity in pbl.iteritems():
@@ -165,7 +167,8 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             # Update existing lines
             for line in inventory.lines:
                 if not (line.product.active and
-                        line.product.type == 'stockable'):
+                        line.product.type == 'goods'
+                        and not line.product.consumable):
                     line_obj.delete(line.id)
                     continue
                 if line.product.id in product_qty:
@@ -180,7 +183,8 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
 
             # Create lines if needed
             for product_id in product_qty:
-                if product2type[product_id] != 'stockable':
+                if (product2type[product_id] != 'goods'
+                        and not product2consumable[product_id]):
                     continue
                 quantity, uom_id = product_qty[product_id]
                 values = line_obj.create_values4complete(product_id, inventory,
@@ -197,7 +201,11 @@ class InventoryLine(ModelSQL, ModelView):
     _rec_name = 'product'
 
     product = fields.Many2One('product.product', 'Product', required=True,
-            domain=[('type', '=', 'stockable')], on_change=['product'])
+        domain=[
+            ('type', '=', 'goods'),
+            ('consumable', '=', False),
+            ],
+        on_change=['product'])
     uom = fields.Function(fields.Many2One('product.uom', 'UOM'), 'get_uom')
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
