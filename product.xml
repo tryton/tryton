@@ -46,16 +46,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                    <form string="Product Template">
+                    <form string="Product Template" col="6">
                       <label name="name"/>
                       <field name="name" xexpand="1"/>
                       <label name="active"/>
                       <field name="active" xexpand="0" width="100"/>
-                      <notebook colspan="4">
+                      <notebook colspan="6">
                           <page string="General" id="general">
                               <label name="type"/>
                               <field name="type"/>
-                              <newline/>
+                              <label name="consumable"/>
+                              <field name="consumable"/>
                               <label name="category"/>
                               <field name="category" />
                               <label name="default_uom"/>
@@ -109,8 +110,8 @@ this repository contains the full copyright notices and license terms. -->
                         <form string="Products"/>
                     </xpath>
                     <xpath
-                        expr="/form/notebook/page[@id=&quot;general&quot;]/label[@name=&quot;type&quot;]"
-                        position="before">
+                        expr="/form/field[@name='name']"
+                        position="after">
                         <label name="code"/>
                         <field name="code"/>
                     </xpath>

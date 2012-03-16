@@ -20,10 +20,16 @@ class Template(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, translate=True,
         select=True, states=STATES, depends=DEPENDS)
     type = fields.Selection([
-            ('stockable', 'Stockable'),
-            ('consumable', 'Consumable'),
+            ('goods', 'Goods'),
+            ('assets', 'Assets'),
             ('service', 'Service')
             ], 'Type', required=True, states=STATES, depends=DEPENDS)
+    consumable = fields.Boolean('Consumable',
+        states={
+            'readonly': ~Eval('active', True),
+            'invisible': Eval('type', 'goods') != 'goods',
+            },
+        depends=['active', 'type'])
     category = fields.Many2One('product.category', 'Category',
         states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
@@ -54,11 +60,18 @@ class Template(ModelSQL, ModelView):
         # Migration from 2.2: category is no more required
         table.not_null_action('category', 'remove')
 
+        # Migration from 2.2: new types
+        cursor.execute('UPDATE "' + self._table + '" '
+            'SET consumable = %s WHERE type = %s', (True, 'consumable'))
+        cursor.execute('UPDATE "' + self._table + '" '
+            'SET type = %s WHERE type IN (%s, %s)',
+            ('goods', 'stockable', 'consumable'))
+
     def default_active(self):
         return True
 
     def default_type(self):
-        return 'stockable'
+        return 'goods'
 
     def default_cost_price_method(self):
         return 'fixed'
