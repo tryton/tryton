@@ -1,3 +1,4 @@
+* Add cache on amount fields in readonly states
 * Confirmed state split into Confirmed and Processing
 * Add a Function field delivery_date to sale line
 * Sale date is required only at confirmation

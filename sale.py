@@ -92,13 +92,25 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_function_fields')
+            depends=['currency_digits']), 'get_untaxed_amount')
+    untaxed_amount_cache = fields.Numeric('Untaxed Cache',
+        digits=(16, Eval('currency_digits', 2)),
+        readonly=True,
+        depends=['currency_digits'])
     tax_amount = fields.Function(fields.Numeric('Tax',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_function_fields')
+            depends=['currency_digits']), 'get_tax_amount')
+    tax_amount_cache = fields.Numeric('Tax Cache',
+        digits=(16, Eval('currency_digits', 2)),
+        readonly=True,
+        depends=['currency_digits'])
     total_amount = fields.Function(fields.Numeric('Total',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_function_fields')
+            depends=['currency_digits']), 'get_total_amount')
+    total_amount_cache = fields.Numeric('Total Tax',
+        digits=(16, Eval('currency_digits', 2)),
+        readonly=True,
+        depends=['currency_digits'])
     invoice_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'On Order Processed'),
@@ -164,6 +176,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'missing_account_receivable': 'It misses '
                     'an "Account Receivable" on the party "%s"!',
         })
+        # The states where amounts are cached
+        self._states_cached = ['confirmed', 'processing', 'done', 'cancel']
 
     def init(self, module_name):
         cursor = Transaction().cursor
@@ -411,12 +425,6 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             res['currency_digits'] = self.get_currency_digits(sales)
         if 'party_lang' in names:
             res['party_lang'] = self.get_party_lang(sales)
-        if 'untaxed_amount' in names:
-            res['untaxed_amount'] = self.get_untaxed_amount(sales)
-        if 'tax_amount' in names:
-            res['tax_amount'] = self.get_tax_amount(sales)
-        if 'total_amount' in names:
-            res['total_amount'] = self.get_total_amount(sales)
         if 'invoice_paid' in names:
             res['invoice_paid'] = self.get_invoice_paid(sales)
         if 'invoice_exception' in names:
@@ -431,78 +439,75 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             res['shipment_exception'] = self.get_shipment_exception(sales)
         return res
 
-    def get_untaxed_amount(self, sales):
+    def get_untaxed_amount(self, ids, name):
         '''
         Compute the untaxed amount for each sales
-
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            untaxed amount as value
         '''
         currency_obj = Pool().get('currency.currency')
-        res = {}
-        for sale in sales:
-            res.setdefault(sale.id, Decimal('0.0'))
-            for line in sale.lines:
-                if line.type != 'line':
-                    continue
-                res[sale.id] += line.amount
-            res[sale.id] = currency_obj.round(sale.currency, res[sale.id])
-        return res
+        amounts = {}
+        for sale in self.browse(ids):
+            # TODO test for not None
+            if (sale.state in self._states_cached
+                    and sale.untaxed_amount_cache):
+                amounts[sale.id] = sale.untaxed_amount_cache
+                continue
+            amount = sum((l.amount for l in sale.lines if l.type == 'line'),
+                Decimal(0))
+            amounts[sale.id] = currency_obj.round(sale.currency, amount)
+        return amounts
 
-    def get_tax_amount(self, sales):
+    def get_tax_amount(self, ids, name):
         '''
         Compute tax amount for each sales
-
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            tax amount as value
         '''
         pool = Pool()
         currency_obj = pool.get('currency.currency')
         tax_obj = pool.get('account.tax')
         invoice_obj = pool.get('account.invoice')
 
-        res = {}
-        for sale in sales:
-            res.setdefault(sale.id, Decimal('0.0'))
+        amounts = {}
+        for sale in self.browse(ids):
+            # TODO test for not None
+            if (sale.state in self._states_cached
+                    and sale.tax_amount_cache):
+                amounts[sale.id] = sale.tax_amount_cache
+                continue
+            context = self.get_tax_context(sale)
             taxes = {}
             for line in sale.lines:
                 if line.type != 'line':
                     continue
-                # Don't round on each line to handle rounding error
-                tax_list = ()
-                with Transaction().set_context(self.get_tax_context(sale)):
+                with Transaction().set_context(context):
                     tax_list = tax_obj.compute(
                             [t.id for t in line.taxes], line.unit_price,
                             line.quantity)
+                # Don't round on each line to handle rounding error
                 for tax in tax_list:
                     key, val = invoice_obj._compute_tax(tax, 'out_invoice')
                     if not key in taxes:
                         taxes[key] = val['amount']
                     else:
                         taxes[key] += val['amount']
-            for key in taxes:
-                res[sale.id] += currency_obj.round(sale.currency, taxes[key])
-            res[sale.id] = currency_obj.round(sale.currency, res[sale.id])
-        return res
+            amount = sum((currency_obj.round(sale.currency, taxes[key])
+                    for key in taxes), Decimal(0))
+            amounts[sale.id] = currency_obj.round(sale.currency, amount)
+        return amounts
 
-    def get_total_amount(self, sales):
+    def get_total_amount(self, ids, name):
         '''
         Return the total amount of each sales
-
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            total amount as value
         '''
         currency_obj = Pool().get('currency.currency')
-        res = {}
-        untaxed_amounts = self.get_untaxed_amount(sales)
-        tax_amounts = self.get_tax_amount(sales)
-        for sale in sales:
-            res[sale.id] = currency_obj.round(sale.currency,
-                    untaxed_amounts[sale.id] + tax_amounts[sale.id])
-        return res
+        amounts = {}
+        for sale in self.browse(ids):
+            # TODO test for not None
+            if (sale.state in self._states_cached
+                    and sale.total_amount_cache):
+                amounts[sale.id] = sale.total_amount_cache
+                continue
+            amounts[sale.id] = currency_obj.round(sale.currency,
+                sale.untaxed_amount + sale.tax_amount)
+        return amounts
 
     def get_invoice_paid(self, sales):
         '''
@@ -882,7 +887,12 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
     def wkf_confirmed(self, sale):
         self.set_sale_date(sale)
-        self.write(sale.id, {'state': 'confirmed'})
+        self.write(sale.id, {
+                'state': 'confirmed',
+                'untaxed_amount_cache': sale.untaxed_amount,
+                'tax_amount_cache': sale.tax_amount,
+                'total_amount_cache': sale.total_amount,
+                })
 
     def wkf_processing(self, sale):
         self.write(sale.id, {'state': 'processing'})
@@ -941,7 +951,12 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         self.write(sale.id, {'state': 'done'})
 
     def wkf_cancel(self, sale):
-        self.write(sale.id, {'state': 'cancel'})
+        self.write(sale.id, {
+                'state': 'cancel',
+                'untaxed_amount_cache': sale.untaxed_amount,
+                'tax_amount_cache': sale.tax_amount,
+                'total_amount_cache': sale.total_amount,
+                })
 
     def wkf_draft2quotation(self, sale):
         return bool(sale.lines)
