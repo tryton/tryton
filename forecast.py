@@ -228,7 +228,11 @@ class ForecastLine(ModelSQL, ModelView):
     _rec_name = 'product'
 
     product = fields.Many2One('product.product', 'Product', required=True,
-            domain=[('type', '=', 'stockable')], on_change=['product'])
+        domain=[
+            ('type', '=', 'goods'),
+            ('consumable', '=', False),
+            ],
+        on_change=['product'])
     uom = fields.Many2One('product.uom', 'UOM', required=True,
         domain=[
             ('category', '=',

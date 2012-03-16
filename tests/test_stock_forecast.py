@@ -71,7 +71,7 @@ class StockForecastTestCase(unittest.TestCase):
             unit_id, = self.uom.search([('name', '=', 'Unit')])
             product_id = self.product.create({
                     'name': 'Test create_moves',
-                    'type': 'stockable',
+                    'type': 'goods',
                     'category': category_id,
                     'cost_price_method': 'fixed',
                     'default_uom': unit_id,
