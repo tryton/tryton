@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
                         expr="/form/notebook"
                         position="inside">
                         <page string="Measurements" col="3" id="measurements"
-                            states="{'invisible': ~Eval('type').in_(['stockable', 'consumable'])}">
+                            states="{'invisible': Eval('type').in_(['service'])}">
                             <label name="length"/>
                             <field name="length"/>
                             <field name="length_uom"/>

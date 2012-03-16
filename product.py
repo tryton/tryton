@@ -4,7 +4,7 @@ from trytond.model import Model, fields
 from trytond.pyson import Eval, Bool, Id
 from trytond.pool import Pool
 
-MEASURABLE = ['stockable', 'consumable']
+NON_MEASURABLE = ['service']
 
 
 class Template(Model):
@@ -13,13 +13,13 @@ class Template(Model):
     length = fields.Float('Length',
         digits=(16, Eval('length_digits', 2)),
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             },
         depends=['type', 'length_digits'])
     length_uom = fields.Many2One('product.uom', 'Length Uom',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('length')),
             },
         depends=['type', 'length'])
@@ -28,13 +28,13 @@ class Template(Model):
     height = fields.Float('Height',
         digits=(16, Eval('height_digits', 2)),
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             },
         depends=['type', 'height_digits'])
     height_uom = fields.Many2One('product.uom', 'Height Uom',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('height')),
             },
         depends=['type', 'height'])
@@ -43,13 +43,13 @@ class Template(Model):
     width = fields.Float('Width',
         digits=(16, Eval('width_digits', 2)),
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             },
         depends=['type', 'width_digits'])
     width_uom = fields.Many2One('product.uom', 'Width Uom',
         domain=[('category', '=', Id('product', 'uom_cat_length'))],
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('width')),
             },
         depends=['type', 'width'])
@@ -58,13 +58,13 @@ class Template(Model):
     weight = fields.Float('Weight',
         digits=(16, Eval('weight_digits', 2)),
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             },
         depends=['type', 'weight_digits'])
     weight_uom = fields.Many2One('product.uom', 'Weight Uom',
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
-            'invisible': ~Eval('type').in_(MEASURABLE),
+            'invisible': Eval('type').in_(NON_MEASURABLE),
             'required': Bool(Eval('weight')),
             },
         depends=['type', 'weight'])
