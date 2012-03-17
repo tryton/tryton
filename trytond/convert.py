@@ -370,8 +370,12 @@ class Fs2bdAccessor:
             record_ids.setdefault(rec.model, [])
             record_ids[rec.model].append(rec.db_id)
 
+        object_name_list = set(self.pool.object_name_list())
+
         self.browserecord[module] = {}
         for model_name in record_ids.keys():
+            if model_name not in object_name_list:
+                continue
             model_obj = self.pool.get(model_name)
             self.browserecord[module][model_name] = {}
             for i in range(0, len(record_ids[model_name]), cursor.IN_MAX):
@@ -939,6 +943,7 @@ def post_import(pool, module, to_delete):
             ('module', '=', module),
             ], order=[('id', 'DESC')])
 
+    object_name_list = set(pool.object_name_list())
     for mrec in modeldata_obj.browse(mdata_ids):
         mdata_id, model, db_id = mrec.id, mrec.model, mrec.db_id
 
@@ -988,9 +993,14 @@ def post_import(pool, module, to_delete):
                 'Deleting %s@%s' % (db_id, model))
         try:
             # Deletion of the record
-            model_obj = pool.get(model)
-            model_obj.delete(db_id)
-            mdata_delete.append(mdata_id)
+            if model in object_name_list:
+                model_obj = pool.get(model)
+                model_obj.delete(db_id)
+                mdata_delete.append(mdata_id)
+            else:
+                logging.getLogger("convert").warning(
+                        'Could not delete id %d of model %s because model no '
+                        'longer exists.' % (db_id, model))
             cursor.commit()
         except Exception:
             cursor.rollback()
