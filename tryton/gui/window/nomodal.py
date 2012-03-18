@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import gtk
+
 from tryton.gui.main import Main
 import tryton.common as common
 
@@ -22,6 +24,9 @@ class NoModal(object):
 
     def destroy(self):
         self.page.dialogs.remove(self)
+        # Test if the parent is not already destroyed
+        if self.parent not in gtk.window_list_toplevels():
+            return
         self.parent.present()
         self.sensible_widget.props.sensitive = True
         if self.parent_focus:
