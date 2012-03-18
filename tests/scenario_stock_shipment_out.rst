@@ -13,7 +13,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
     >>> today = datetime.date.today()
-    
+
 Create database::
 
     >>> config = config.set_trytond()
@@ -24,7 +24,7 @@ Install stock Module::
     >>> Module = Model.get('ir.module.module')
     >>> modules = Module.find([('name', '=', 'stock')])
     >>> Module.button_install([x.id for x in modules], config.context)
-    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
+    >>> Wizard('ir.module.module.install_upgrade').execute('start')
 
 Create company::
 
