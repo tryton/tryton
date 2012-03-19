@@ -6,7 +6,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.tools import safe_eval
+from trytond.tools import safe_eval, reduce_ids
 from trytond.pool import Pool
 
 
@@ -397,9 +397,9 @@ class Product(ModelSQL, ModelView):
         product_template_join = ""
         product_template_join_period = ""
         if product_ids:
-            where_clause += "AND product in (" + \
-                ",".join(('%s',) * len(product_ids)) + ")"
-            where_vals += product_ids
+            red_clause, red_vals = reduce_ids('product', product_ids)
+            where_clause += "AND " + red_clause
+            where_vals += red_vals
         else:
             where_clause += "AND product_template.active = %s"
             where_vals.append(True)
