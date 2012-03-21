@@ -890,7 +890,7 @@ class PurchaseLine(ModelSQL, ModelView):
             states={
                 'invisible': "type not in ('line', 'subtotal')",
                 'readonly': "not globals().get('_parent_purchase')",
-            }, on_change_with=['type', 'quantity', 'unit_price',
+            }, on_change_with=['type', 'quantity', 'unit_price', 'unit',
                 '_parent_purchase.currency'])
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
