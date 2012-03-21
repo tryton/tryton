@@ -981,7 +981,7 @@ class PurchaseLine(ModelSQL, ModelView):
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 'readonly': ~Eval('_parent_purchase'),
-                }, on_change_with=['type', 'quantity', 'unit_price',
+                }, on_change_with=['type', 'quantity', 'unit_price', 'unit',
                 '_parent_purchase.currency'],
             depends=['type']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
