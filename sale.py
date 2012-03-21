@@ -991,7 +991,7 @@ class SaleLine(ModelSQL, ModelView):
             states={
                 'invisible': "type not in ('line', 'subtotal')",
                 'readonly': "not globals().get('_parent_sale')",
-            }, on_change_with=['type', 'quantity', 'unit_price',
+            }, on_change_with=['type', 'quantity', 'unit_price', 'unit',
                 '_parent_sale.currency'])
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
