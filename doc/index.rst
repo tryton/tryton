@@ -42,7 +42,7 @@ Template and Product.
 The Product Template model contains the following fields: 
 
 - Name.
-- Type, whose value can be *Stockable*, *Consumable*, *Service*.
+- Type, whose value can be *Goods*, *Assets*, *Service*.
 - Category.
 - List Price, the default sale price expressed in the List Price UOM.
   product.
