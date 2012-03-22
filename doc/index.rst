@@ -55,7 +55,7 @@ compute stock value at any time (and to update the cost prices if the
 choosen cost price method is *Average*). A move also defines a planned
 date (when one plan to do the move) and an effective date (when the
 move is actually made). Products that are used in stock move must of
-of type *Stockable* or *Consumable*. Stock levels are ignored for
+of type *Goods* or *Assets*. Stock levels are ignored for
 consumable, this means that they can be always assigned. *Service*
 products are ignored by the stock module.
 
