@@ -108,9 +108,9 @@ Add two shipment lines of same product::
     ...     move.quantity = 1
     ...     move.from_location = output_loc
     ...     move.to_location = customer_loc
-    ...     move.company = company 
-    ...     move.unit_price = Decimal('1') 
-    ...     move.currency = currency 
+    ...     move.company = company
+    ...     move.unit_price = Decimal('1')
+    ...     move.currency = currency
     >>> shipment_out.save()
 
 Set the shipment state to waiting::
@@ -193,5 +193,3 @@ Set the state as Done::
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
     ...     sum([m.quantity for m in shipment_out.outgoing_moves])
     True
-
-
