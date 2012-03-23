@@ -46,7 +46,7 @@ class Uom(ModelSQL, ModelView):
             'coef (base unit) = 1 (this unit)')
     rounding = fields.Float('Rounding Precision', digits=(12, 12),
         required=True, states=STATES, depends=DEPENDS)
-    digits = fields.Integer('Display Digits')
+    digits = fields.Integer('Display Digits', required=True)
     active = fields.Boolean('Active')
 
     def init(self, module_name):

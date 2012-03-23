@@ -33,11 +33,11 @@ class Template(ModelSQL, ModelView):
     category = fields.Many2One('product.category', 'Category',
         states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
-            digits=(16, 4), depends=DEPENDS))
+            digits=(16, 4), depends=DEPENDS, required=True))
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=(16, 4)), 'get_price_uom')
     cost_price = fields.Property(fields.Numeric('Cost Price',
-            states=STATES, digits=(16, 4), depends=DEPENDS))
+            states=STATES, digits=(16, 4), depends=DEPENDS, required=True))
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
         digits=(16, 4)), 'get_price_uom')
     cost_price_method = fields.Property(fields.Selection([
