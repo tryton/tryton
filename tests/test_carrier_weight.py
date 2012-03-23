@@ -64,6 +64,8 @@ class CarrierWeightTestCase(unittest.TestCase):
                     'default_uom': uom_id,
                     'category': category_id,
                     'type': 'service',
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
                     })
             weight_uom_id, = self.uom.search([
                     ('name', '=', 'Kilogram'),

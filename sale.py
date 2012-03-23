@@ -49,9 +49,10 @@ class Sale(Model):
                     product = id2product[line['product']]
                     quantity = uom_obj.compute_qty(id2unit[line['unit']],
                         line['quantity'], product.default_uom, round=False)
-                    weight += uom_obj.compute_qty(product.weight_uom,
-                        product.weight * quantity, carrier.weight_uom,
-                        round=False)
+                    if product.weight:
+                        weight += uom_obj.compute_qty(product.weight_uom,
+                            product.weight * quantity, carrier.weight_uom,
+                            round=False)
             weights.append(weight)
         return context
 
