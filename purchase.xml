@@ -56,9 +56,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Week Day" editable="bottom" fill="1">
+                <tree string="Week Day" editable="bottom">
                     <field name="product_supplier"/>
-                    <field name="weekday"/>
+                    <field name="weekday" expand="1"/>
                 </tree>
                 ]]>
             </field>
