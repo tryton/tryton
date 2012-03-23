@@ -76,6 +76,7 @@ class StockForecastTestCase(unittest.TestCase):
                     'cost_price_method': 'fixed',
                     'default_uom': unit_id,
                     'list_price': Decimal('1'),
+                    'cost_price': Decimal(0),
                     })
             customer_id, = self.location.search([('code', '=', 'CUS')])
             warehouse_id, = self.location.search([('code', '=', 'WH')])

@@ -171,23 +171,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_forecast">
             <field name="name">Forecast</field>
             <field name="model">stock.forecast</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="forecast_act_draft">
             <field name="workflow" ref="wkf_forecast"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="forecast_act_cancel">
             <field name="workflow" ref="wkf_forecast"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Cancel</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="forecast_act_done">
             <field name="workflow" ref="wkf_forecast"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>
