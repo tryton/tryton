@@ -150,7 +150,7 @@ class CompanyTestCase(unittest.TestCase):
                     self.assertEqual(company_id, False)
 
                     user1, user2 = self.user.browse([user1_id, user2_id])
-                    self.assertEqual(user1.company.id, False)
+                    self.assertEqual(user1.company.id, None)
                     self.assertEqual(user2.company.id, company2_id)
 
 
