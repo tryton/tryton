@@ -22,7 +22,7 @@ class ProductLocation(ModelSQL, ModelView):
             ('parent', 'child_of', If(Bool(Eval('warehouse')),
                     [Eval('warehouse')], [])),
             ], depends=['warehouse'])
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
 
     def __init__(self):
         super(ProductLocation, self).__init__()
