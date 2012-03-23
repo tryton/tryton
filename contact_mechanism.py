@@ -36,7 +36,7 @@ class ContactMechanism(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
     active = fields.Boolean('Active', select=True)
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',

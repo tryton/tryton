@@ -31,7 +31,7 @@ class Address(ModelSQL, ModelView):
             'Subdivision', domain=[('country', '=', Eval('country'))],
             states=STATES, depends=['active', 'country'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer("Sequence")
+    sequence = fields.Integer("Sequence", required=True)
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
