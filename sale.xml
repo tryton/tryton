@@ -847,7 +847,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Sale Lines" sequence="sequence" fill="1">
+                <tree string="Sale Lines" sequence="sequence">
                     <field name="type"/>
                     <field name="product"/>
                     <field name="description"/>
@@ -855,7 +855,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="unit"/>
                     <field name="unit_price"/>
                     <field name="taxes"/>
-                    <field name="amount"/>
+                    <field name="amount" expand="1"/>
                     <field name="unit_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
