@@ -18,6 +18,7 @@ from types import NoneType
 import threading
 import datetime
 from decimal import Decimal
+from types import NoneType
 import proteus.config
 from proteus.pyson import PYSONDecoder
 
@@ -110,25 +111,25 @@ class BinaryDescriptor(FieldDescriptor):
 
 
 class IntegerDescriptor(FieldDescriptor):
-    default = 0
 
     def __set__(self, instance, value):
-        assert isinstance(value, (int, long))
+        assert isinstance(value, (int, long, NoneType))
         super(IntegerDescriptor, self).__set__(instance, value)
 
 
 class FloatDescriptor(FieldDescriptor):
-    default = 0.0
 
     def __set__(self, instance, value):
-        super(FloatDescriptor, self).__set__(instance, float(value))
+        assert isinstance(value, (int, long, float, Decimal, NoneType))
+        if value is not None:
+            value = float(value)
+        super(FloatDescriptor, self).__set__(instance, value)
 
 
 class NumericDescriptor(FieldDescriptor):
-    default = Decimal('0.0')
 
     def __set__(self, instance, value):
-        assert isinstance(value, Decimal)
+        assert isinstance(value, (NoneType, Decimal))
         # TODO add digits validation
         super(NumericDescriptor, self).__set__(instance, value)
 
