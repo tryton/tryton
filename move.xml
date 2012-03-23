@@ -65,10 +65,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Moves" fill="1">
+                <tree string="Moves">
                     <field name="product"/>
                     <field name="quantity"/>
-                    <field name="uom"/>
+                    <field name="uom" expand="1"/>
                     <field name="unit_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
