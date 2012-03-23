@@ -130,7 +130,7 @@ Create payment term::
     >>> PaymentTerm = Model.get('account.invoice.payment_term')
     >>> PaymentTermLine = Model.get('account.invoice.payment_term.line')
     >>> payment_term = PaymentTerm(name='Direct')
-    >>> payment_term_line = PaymentTermLine(type='remainder')
+    >>> payment_term_line = PaymentTermLine(type='remainder', days=0)
     >>> payment_term.lines.append(payment_term_line)
     >>> payment_term.save()
 

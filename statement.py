@@ -35,10 +35,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
         on_change_with=['journal']), 'get_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
         select=True)
-    start_balance = fields.Numeric('Start Balance',
+    start_balance = fields.Numeric('Start Balance', required=True,
         digits=(16, Eval('currency_digits', 2)),
         states=_STATES, depends=['state', 'currency_digits'])
-    end_balance = fields.Numeric('End Balance',
+    end_balance = fields.Numeric('End Balance', required=True,
         digits=(16, Eval('currency_digits', 2)),
         states=_STATES, depends=['state', 'currency_digits'])
     balance = fields.Function(
@@ -202,9 +202,10 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
 
     def on_change_with_balance(self, values):
         if not set(('end_balance', 'start_balance')) <= set(values):
-            return 0
+            return Decimal(0)
         else:
-            return values['end_balance'] - values['start_balance']
+            return Decimal(values.get('end_balance') or 0
+                - values.get('start_balance') or 0)
 
     def on_change_lines(self, values):
         pool = Pool()
@@ -347,6 +348,10 @@ class Line(ModelSQL, ModelView):
             'amount_greater_invoice_amount_to_pay': 'Amount (%s) greater than '\
                     'the amount to pay of invoice!',
             })
+        self._sql_constraints += [
+            ('check_statement_line_amount', 'CHECK(amount != 0)',
+                'Amount should be a positive or negative value!'),
+            ]
 
     def on_change_party(self, value):
         party_obj = Pool().get('party.party')
@@ -439,7 +444,7 @@ class Line(ModelSQL, ModelView):
 
         move_lines = self._get_move_lines(line)
         move_id = move_obj.create({
-                'name': line.date,
+                'name': unicode(line.date),
                 'period': period_id,
                 'journal': line.statement.journal.journal.id,
                 'date': line.date,
@@ -514,16 +519,17 @@ class Line(ModelSQL, ModelView):
             second_currency = statement_line.statement.journal.currency.id
             amount_second_currency = abs(statement_line.amount)
         else:
-            amount_second_currency = False
+            amount_second_currency = None
             second_currency = None
 
+        party_id = statement_line.party.id if statement_line.party else None
         vals = []
         vals.append({
-            'name': statement_line.date,
+            'name': unicode(statement_line.date),
             'debit': amount < zero and -amount or zero,
             'credit': amount >= zero and amount or zero,
             'account': statement_line.account.id,
-            'party': statement_line.party and statement_line.party.id,
+            'party': party_id,
             'second_currency': second_currency,
             'amount_second_currency': amount_second_currency,
             })
@@ -538,11 +544,11 @@ class Line(ModelSQL, ModelView):
         if statement_line.account.id == account.id:
             self.raise_user_error('same_debit_credit_account')
         vals.append({
-            'name': statement_line.date,
+            'name': unicode(statement_line.date),
             'debit': amount >= zero and amount or zero,
             'credit': amount < zero and -amount or zero,
             'account': account.id,
-            'party': statement_line.party and statement_line.party.id,
+            'party': party_id,
             'second_currency': second_currency,
             'amount_second_currency': amount_second_currency,
             })

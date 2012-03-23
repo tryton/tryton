@@ -230,11 +230,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_statement">
             <field name="name">Statement</field>
             <field name="model">account.statement</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="statement_act_draft">
             <field name="workflow" ref="wkf_statement"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="statement_act_validated">
