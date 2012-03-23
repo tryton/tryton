@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import time
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateAction
 from trytond.backend import TableHandler
@@ -16,9 +17,9 @@ class Line(ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
+        required=True, depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
+        required=True, depends=['currency_digits'])
     currency = fields.Function(fields.Many2One('currency.currency', 'Currency',
         on_change_with=['move_line']), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits',
@@ -64,6 +65,12 @@ class Line(ModelSQL, ModelView):
 
     def default_active(self):
         return True
+
+    def default_debit(self):
+        return Decimal(0)
+
+    def default_credit(self):
+        return Decimal(0)
 
     def on_change_with_currency(self, vals):
         move_line_obj = Pool().get('account.move.line')
