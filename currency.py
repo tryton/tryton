@@ -20,15 +20,15 @@ class Currency(ModelSQL, ModelView):
         on_change_with=['rates']), 'get_rate')
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
     rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
-    digits = fields.Integer('Display Digits')
+    digits = fields.Integer('Display Digits', required=True)
     active = fields.Boolean('Active')
 
     # monetary formatting
     mon_grouping = fields.Char('Grouping', required=True)
     mon_decimal_point = fields.Char('Decimal Separator', required=True)
     mon_thousands_sep = fields.Char('Thousands Separator')
-    p_sign_posn = fields.Integer('Positive Sign Position')
-    n_sign_posn = fields.Integer('Negative Sign Position')
+    p_sign_posn = fields.Integer('Positive Sign Position', required=True)
+    n_sign_posn = fields.Integer('Negative Sign Position', required=True)
     positive_sign = fields.Char('Positive Sign')
     negative_sign = fields.Char('Negative Sign')
     p_cs_precedes = fields.Boolean('Positive Currency Symbol Precedes')
@@ -235,6 +235,8 @@ class Rate(ModelSQL, ModelView):
         self._sql_constraints = [
             ('date_currency_uniq', 'UNIQUE(date, currency)',
                 'A currency can only have one rate by date!'),
+            ('check_currency_rate', 'CHECK(rate >= 0)',
+                'The currency rate must greater than or equal to 0'),
         ]
         self._order.insert(0, ('date', 'DESC'))
 
