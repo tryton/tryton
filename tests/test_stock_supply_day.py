@@ -10,6 +10,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import datetime
+from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
     test_depends
@@ -125,6 +126,8 @@ class StockSupplyDayTestCase(unittest.TestCase):
                 'default_uom': uom_id,
                 'category': category_id,
                 'account_category': True,
+                'list_price': Decimal(0),
+                'cost_price': Decimal(0),
                 })
         company_id, = self.company.search([('name', '=', 'B2CK')])
         self.user.write(USER, {
