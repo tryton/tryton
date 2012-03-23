@@ -138,7 +138,7 @@ class PriceListLine(ModelSQL, ModelView):
     price_list = fields.Many2One('product.price_list', 'Price List',
             required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product')
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
