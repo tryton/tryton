@@ -5,7 +5,7 @@ import datetime
 import time
 from trytond.model import ModelView, ModelSQL, ModelWorkflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.backend import FIELDS
+from trytond.backend import FIELDS, TableHandler
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -75,7 +75,7 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         states=_STATES_STOP, depends=_DEPENDS_STOP)
     state = fields.Selection(STATES, 'State', required=True, select=True,
             sort=False, readonly=True)
-    probability = fields.Integer('Conversion Probability',
+    probability = fields.Integer('Conversion Probability', required=True,
             states={
                 'readonly': Not(In(Eval('state'), ['opportunity', 'lead'])),
             }, depends=['state'], help="Percentage between 0 and 100")
@@ -285,7 +285,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     _history = True
 
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('salable', '=', True)], on_change=['product', 'unit'])
     quantity = fields.Float('Quantity', required=True,
