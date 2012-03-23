@@ -66,7 +66,7 @@ class Work(ModelSQL, ModelView):
             'invisible': Eval('type') != 'task',
             'required': Eval('type') == 'task',
             }, select=True, depends=['type'])
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
 
     def default_type(self):
         if Transaction().context.get('type') == 'project':
@@ -75,6 +75,9 @@ class Work(ModelSQL, ModelView):
 
     def default_state(self):
         return 'opened'
+
+    def default_effort(self):
+        return 0.0
 
     def init(self, module_name):
         timesheet_work_obj = Pool().get('timesheet.work')
