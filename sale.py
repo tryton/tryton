@@ -383,7 +383,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             for line in vals['lines']:
                 if line.get('type', 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.get('amount', Decimal('0.0'))
+                res['untaxed_amount'] += line.get('amount') or Decimal(0)
                 tax_list = ()
                 with Transaction().set_context(self.get_tax_context(vals)):
                     tax_list = tax_obj.compute(line.get('taxes', []),
@@ -446,9 +446,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = Pool().get('currency.currency')
         amounts = {}
         for sale in self.browse(ids):
-            # TODO test for not None
             if (sale.state in self._states_cached
-                    and sale.untaxed_amount_cache):
+                    and sale.untaxed_amount_cache is not None):
                 amounts[sale.id] = sale.untaxed_amount_cache
                 continue
             amount = sum((l.amount for l in sale.lines if l.type == 'line'),
@@ -467,9 +466,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
 
         amounts = {}
         for sale in self.browse(ids):
-            # TODO test for not None
             if (sale.state in self._states_cached
-                    and sale.tax_amount_cache):
+                    and sale.tax_amount_cache is not None):
                 amounts[sale.id] = sale.tax_amount_cache
                 continue
             context = self.get_tax_context(sale)
@@ -500,9 +498,8 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = Pool().get('currency.currency')
         amounts = {}
         for sale in self.browse(ids):
-            # TODO test for not None
             if (sale.state in self._states_cached
-                    and sale.total_amount_cache):
+                    and sale.total_amount_cache is not None):
                 amounts[sale.id] = sale.total_amount_cache
                 continue
             amounts[sale.id] = currency_obj.round(sale.currency,
@@ -1075,8 +1072,9 @@ class SaleLine(ModelSQL, ModelView):
     _rec_name = 'description'
     _description = __doc__
 
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True)
-    sequence = fields.Integer('Sequence')
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
+        select=True)
+    sequence = fields.Integer('Sequence', required=True)
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1188,11 +1186,8 @@ class SaleLine(ModelSQL, ModelView):
     def default_type(self):
         return 'line'
 
-    def default_quantity(self):
-        return 0.0
-
-    def default_unit_price(self):
-        return Decimal('0.0')
+    def default_unit_digits(self):
+        return 2
 
     def on_change_with_unit_digits(self, vals):
         uom_obj = Pool().get('product.uom')
@@ -1625,6 +1620,7 @@ class Template(ModelSQL, ModelView):
     delivery_time = fields.Integer('Delivery Time', states={
             'readonly': ~Eval('active', True),
             'invisible': ~Eval('salable', False),
+            'required': Eval('salable', False),
             },
         depends=['active', 'salable'],
         help='In number of days')
@@ -1653,6 +1649,9 @@ class Template(ModelSQL, ModelView):
 
     def default_salable(self):
         return True if Transaction().context.get('salable') else False
+
+    def default_delivery_time(self):
+        return 0
 
     def on_change_with_sale_uom(self, vals):
         uom_obj = Pool().get('product.uom')
