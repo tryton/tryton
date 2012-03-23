@@ -146,7 +146,7 @@ class Code(ModelSQL, ModelView):
     code = fields.Char('Code', size=None, select=True)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-            select=True)
+        select=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=True,
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
@@ -364,7 +364,7 @@ class TaxTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True)
     group = fields.Many2One('account.tax.group', 'Group')
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     amount = fields.Numeric('Amount', digits=(16, 8))
     percentage = fields.Numeric('Percentage', digits=(16, 8))
     type = fields.Selection([
@@ -564,17 +564,19 @@ class Tax(ModelSQL, ModelView):
                 'invisible': Bool(Eval('parent')),
             }, depends=['parent'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer('Sequence',
+    sequence = fields.Integer('Sequence', required=True,
             help='Use to order the taxes')
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['company']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         states={
+            'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
             }, help='In company\'s currency',
         depends=['type', 'currency_digits'])
     percentage = fields.Numeric('Percentage', digits=(16, 8),
         states={
+            'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
             }, help='In %', depends=['type'])
     type = fields.Selection([
@@ -617,6 +619,7 @@ class Tax(ModelSQL, ModelView):
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
+            'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
     invoice_tax_code = fields.Many2One('account.tax.code',
@@ -627,6 +630,7 @@ class Tax(ModelSQL, ModelView):
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
+            'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_base_code = fields.Many2One('account.tax.code',
@@ -637,6 +641,7 @@ class Tax(ModelSQL, ModelView):
     credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
+            'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
@@ -647,6 +652,7 @@ class Tax(ModelSQL, ModelView):
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
+            'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
     template = fields.Many2One('account.tax.template', 'Template')
@@ -897,7 +903,7 @@ class Line(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['move_line']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
+        required=True, depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=True,
         required=True)
     tax = fields.Many2One('account.tax', 'Tax', select=True,
@@ -1113,7 +1119,7 @@ class RuleLineTemplate(ModelSQL, ModelView):
             ('group', '=', Eval('group')),
             ],
         depends=['group'])
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
 
     def __init__(self):
         super(RuleLineTemplate, self).__init__()
@@ -1208,7 +1214,7 @@ class RuleLine(ModelSQL, ModelView):
             ('group', '=', Eval('group')),
             ],
         depends=['group'])
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
     def __init__(self):

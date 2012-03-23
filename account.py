@@ -996,9 +996,9 @@ class AccountDeferral(ModelSQL, ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, select=True)
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
+        required=True, depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'])
+        required=True, depends=['currency_digits'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
 

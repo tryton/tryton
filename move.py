@@ -443,13 +443,15 @@ class Line(ModelSQL, ModelView):
 
     name = fields.Char('Name', size=None, required=True)
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
-            on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'], depends=['currency_digits', 'credit',
-                    'tax_lines', 'journal'])
+        required=True,
+        on_change=['account', 'debit', 'credit', 'tax_lines', 'journal',
+            'move'],
+        depends=['currency_digits', 'credit', 'tax_lines', 'journal'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
-            on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'], depends=['currency_digits', 'debit',
-                    'tax_lines', 'journal'])
+        required=True,
+        on_change=['account', 'debit', 'credit', 'tax_lines', 'journal',
+            'move'],
+        depends=['currency_digits', 'debit', 'tax_lines', 'journal'])
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')],
             select=True,
@@ -569,6 +571,12 @@ class Line(ModelSQL, ModelView):
 
     def default_currency_digits(self):
         return 2
+
+    def default_debit(self):
+        return Decimal(0)
+
+    def default_credit(self):
+        return Decimal(0)
 
     def default_get(self, fields, with_rec_name=True):
         pool = Pool()

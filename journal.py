@@ -57,7 +57,7 @@ class Column(ModelSQL, ModelView):
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain=[('model.model', '=', 'account.move.line')])
     view = fields.Many2One('account.journal.view', 'View', select=True)
-    sequence = fields.Integer('Sequence', select=True)
+    sequence = fields.Integer('Sequence', select=True, required=True)
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
@@ -160,9 +160,6 @@ class Journal(ModelSQL, ModelView):
         if ids:
             return [('code',) + clause[1:]]
         return [(self._rec_name,) + clause[1:]]
-
-    def check_xml_record(self, ids, values):
-        return True
 
 Journal()
 
