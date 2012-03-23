@@ -77,12 +77,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Lines to Pay" fill="1">
+                <tree string="Lines to Pay">
                     <field name="maturity_date"/>
                     <field name="debit" sum="Debit"/>
                     <field name="credit" sum="Credit"/>
                     <field name="amount_second_currency" sum="Amount Second Currency"/>
-                    <field name="second_currency"/>
+                    <field name="second_currency" expand="1"/>
                     <field name="currency_digits" tree_invisible="1"/>
                     <field name="second_currency_digits" tree_invisible="1"/>
                 </tree>

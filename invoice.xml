@@ -655,7 +655,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Invoice Lines" sequence="sequence" fill="1">
+                <tree string="Invoice Lines" sequence="sequence">
                     <field name="type"/>
                     <field name="product"/>
                     <field name="account" tree_invisible="1"/>
@@ -664,7 +664,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="unit"/>
                     <field name="unit_price"/>
                     <field name="taxes"/>
-                    <field name="amount"/>
+                    <field name="amount" expand="1"/>
                     <field name="unit_digits" tree_invisible="1"/>
                     <field name="currency_digits" tree_invisible="1"/>
                 </tree>
@@ -748,10 +748,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Taxes" sequence="sequence" fill="1">
+                <tree string="Taxes" sequence="sequence">
                     <field name="description"/>
                     <field name="base"/>
-                    <field name="amount"/>
+                    <field name="amount" expand="1"/>
                     <field name="sequence" tree_invisible="1"/>
                     <field name="manual" tree_invisible="1"/>
                     <field name="base_code" tree_invisible="1"/>
