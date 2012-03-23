@@ -42,6 +42,7 @@ class Work(ModelSQL, ModelView):
         digits=(16, Eval('currency_digits', 2)),
         states={
             'invisible': Eval('type') != 'task',
+            'required': Eval('type') == 'task',
             }, depends=['type', 'currency_digits'])
     revenue = fields.Function(fields.Numeric('Revenue',
             digits=(16, Eval('currency_digits', 2)),

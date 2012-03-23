@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.cacheable import Cacheable
 from trytond.pyson import Eval
@@ -105,6 +106,9 @@ class EmployeeCostPrice(ModelSQL, ModelView):
                 'A employee can only have one cost price by date!'),
         ]
         self._order.insert(0, ('date', 'DESC'))
+
+    def default_cost_price(self):
+        return Decimal(0)
 
     def default_date(self):
         date_obj = Pool().get('ir.date')
