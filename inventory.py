@@ -209,11 +209,11 @@ class InventoryLine(ModelSQL, ModelView):
     uom = fields.Function(fields.Many2One('product.uom', 'UOM'), 'get_uom')
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
-    expected_quantity = fields.Float('Expected Quantity',
+    expected_quantity = fields.Float('Expected Quantity', required=True,
             digits=(16, Eval('unit_digits', 2)), readonly=True,
             depends=['unit_digits'])
-    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-            depends=['unit_digits'])
+    quantity = fields.Float('Quantity', required=True,
+        digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
     move = fields.Many2One('stock.move', 'Move', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
             ondelete='CASCADE')

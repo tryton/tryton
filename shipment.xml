@@ -714,23 +714,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_shipmentin">
             <field name="name">Supplier Shipment</field>
             <field name="model">stock.shipment.in</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="shipmentin_act_draft">
             <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipmentin_act_cancel">
             <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Canceled</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipmentin_act_done">
             <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>
@@ -779,23 +779,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_shipmentout">
             <field name="name">Customer Shipment</field>
             <field name="model">stock.shipment.out</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="shipmentout_act_draft">
             <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="name">Draft</field>
             <field name="method">wkf_draft</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_cancel">
             <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Canceled</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipmentout_act_done">
             <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>
@@ -977,23 +977,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_shipmentinternal">
             <field name="name">Internal Shipment</field>
             <field name="model">stock.shipment.internal</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_draft">
             <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_cancel">
             <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Canceled</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipmentinternal_act_done">
             <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>
@@ -1083,23 +1083,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_shipment_out_return">
             <field name="name">Customer Return Shipment</field>
             <field name="model">stock.shipment.out.return</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="shipment_out_return_act_draft">
             <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipment_out_return_act_cancel">
             <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Canceled</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipment_out_return_act_done">
             <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>
@@ -1147,23 +1147,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_shipment_in_return">
             <field name="name">Supplier Return Shipment</field>
             <field name="model">stock.shipment.in.return</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_draft">
             <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_cancel">
             <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Canceled</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="shipment_in_return_act_done">
             <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>

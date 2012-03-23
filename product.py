@@ -1,10 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import copy
 import datetime
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import PYSONEncoder
+from trytond.pyson import PYSONEncoder, Eval, Or
 from trytond.transaction import Transaction
 from trytond.tools import safe_eval, reduce_ids
 from trytond.pool import Pool
@@ -36,6 +37,14 @@ class Template(ModelSQL, ModelView):
                 'change_default_uom': 'You cannot change the default uom for '\
                     'a product which is associated to stock moves.',
             })
+        self.cost_price = copy.copy(self.cost_price)
+        self.cost_price.states = copy.copy(self.cost_price.states)
+        self.cost_price.states['required'] = Or(
+            self.cost_price.states.get('required', True),
+            Eval('type').in_(['goods', 'assets']))
+        self.cost_price.depends = copy.copy(self.cost_price.depends)
+        self.cost_price.depends.append('type')
+        self._reset_columns()
 
     def write(self, ids, vals):
         move_obj = Pool().get('stock.move')

@@ -63,6 +63,8 @@ class StockTestCase(unittest.TestCase):
             product_id = self.product.create({
                 'name': 'Test Move.internal_quantity',
                 'type': 'goods',
+                'list_price': Decimal(0),
+                'cost_price': Decimal(0),
                 'category': category_id,
                 'cost_price_method': 'fixed',
                 'default_uom': kg_id,
@@ -120,6 +122,8 @@ class StockTestCase(unittest.TestCase):
             product_id = self.product.create({
                 'name': 'Test products_by_location',
                 'type': 'goods',
+                'list_price': Decimal(0),
+                'cost_price': Decimal(0),
                 'category': category_id,
                 'cost_price_method': 'fixed',
                 'default_uom': kg_id,
@@ -333,6 +337,8 @@ class StockTestCase(unittest.TestCase):
                 'category': category_id,
                 'cost_price_method': 'fixed',
                 'default_uom': unit_id,
+                'list_price': Decimal(0),
+                'cost_price': Decimal(0),
                 })
             supplier_id, = self.location.search([('code', '=', 'SUP')])
             customer_id, = self.location.search([('code', '=', 'CUS')])

@@ -142,23 +142,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="workflow" id="wkf_inventory">
             <field name="name">Inventory</field>
             <field name="model">stock.inventory</field>
-            <field name="on_create">True</field>
+            <field name="on_create" eval="True"/>
         </record>
         <record model="workflow.activity" id="inventory_act_draft">
             <field name="workflow" ref="wkf_inventory"/>
-            <field name="flow_start">True</field>
+            <field name="flow_start" eval="True"/>
             <field name="method">wkf_draft</field>
             <field name="name">Draft</field>
         </record>
         <record model="workflow.activity" id="inventory_act_cancel">
             <field name="workflow" ref="wkf_inventory"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Canceled</field>
             <field name="method">wkf_cancel</field>
         </record>
         <record model="workflow.activity" id="inventory_act_done">
             <field name="workflow" ref="wkf_inventory"/>
-            <field name="flow_stop">True</field>
+            <field name="flow_stop" eval="True"/>
             <field name="name">Done</field>
             <field name="method">wkf_done</field>
         </record>
