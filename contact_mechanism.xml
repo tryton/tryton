@@ -25,10 +25,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Contact Mechanisms" sequence="sequence" fill="1">
+                <tree string="Contact Mechanisms" sequence="sequence">
                     <field name="type"/>
                     <field name="value"/>
-                    <field name="comment"/>
+                    <field name="comment" expand="1"/>
                 </tree>
                 ]]>
             </field>

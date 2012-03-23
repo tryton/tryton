@@ -30,14 +30,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Addresses" sequence="sequence" fill="1">
+                <tree string="Addresses" sequence="sequence">
                     <field name="name"/>
                     <field name="street"/>
                     <field name="streetbis"/>
                     <field name="zip"/>
                     <field name="city"/>
                     <field name="country"/>
-                    <field name="subdivision"/>
+                    <field name="subdivision" expand="1"/>
                 </tree>
                 ]]>
             </field>
