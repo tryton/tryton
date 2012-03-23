@@ -7,7 +7,7 @@ from trytond.pyson import Not, Eval, Bool
 class Location(ModelSQL, ModelView):
     "Stock Location"
     _name = 'stock.location'
-    sequence = fields.Integer('Sequence', states={
+    sequence = fields.Integer('Sequence', required=True, states={
             'readonly': Not(Bool(Eval('active'))),
             },
         depends=['active'])
