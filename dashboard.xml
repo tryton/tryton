@@ -43,8 +43,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Dashboard Actions" sequence="sequence" fill="1">
-                    <field name="act_window"/>
+                <tree string="Dashboard Actions" sequence="sequence">
+                    <field name="act_window" expand="1"/>
                 </tree>
                 ]]>
             </field>
