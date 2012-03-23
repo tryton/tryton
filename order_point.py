@@ -4,6 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Equal, Eval, Not, In, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.backend import TableHandler
 
 
 class OrderPoint(ModelSQL, ModelView):
@@ -75,15 +76,23 @@ class OrderPoint(ModelSQL, ModelView):
             ('check_uniqueness', 'unique_op'),
             ]
         self._sql_constraints += [
-            ('check_min_max_quantity',
-             'CHECK( max_quantity is null or min_quantity is null or max_quantity >= min_quantity )',
-             'Maximal quantity must be bigger than Minimal quantity'),
+            ('check_max_qty_greater_min_qty',
+                'CHECK(max_quantity >= min_quantity)',
+                'Maximal quantity must be bigger than Minimal quantity'),
             ]
         self._error_messages.update(
             {'unique_op': 'Only one order point is allowed '\
                  'for each product-location pair.',
              'concurrent_internal_op': 'You can not define two order points '\
                  'on the same product with opposite locations.',})
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        # Migration from 2.2
+        table = TableHandler(cursor, self, module_name)
+        table.drop_constraint('check_min_max_quantity')
+
+        super(OrderPoint, self).init(module_name)
 
     def default_type(self):
         return "purchase"

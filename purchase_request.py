@@ -56,6 +56,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         self._error_messages.update({
             'create_request': 'Purchase requests are only created by the system.',
             })
+        self._sql_constraints += [
+            ('check_purchase_request_quantity', 'CHECK(quantity > 0)',
+                'The requested quantity must be greater than 0'),
+            ]
 
     def init(self, module_name):
         cursor = Transaction().cursor
