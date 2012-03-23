@@ -335,7 +335,7 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
             for line in vals['lines']:
                 if line.get('type', 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.get('amount', Decimal('0.0'))
+                res['untaxed_amount'] += line.get('amount') or Decimal(0)
 
                 with Transaction().set_context(context):
                     tax_list = tax_obj.compute(line.get('taxes', []),
@@ -413,9 +413,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = Pool().get('currency.currency')
         amounts = {}
         for purchase in self.browse(ids):
-            # TODO test for not None
             if (purchase.state in self._states_cached
-                    and purchase.untaxed_amount_cache):
+                    and purchase.untaxed_amount_cache is not None):
                 amounts[purchase.id] = purchase.untaxed_amount_cache
                 continue
             amount = sum((l.amount for l in purchase.lines
@@ -435,9 +434,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
 
         amounts = {}
         for purchase in self.browse(ids):
-            # TODO test for not None
             if (purchase.state in self._states_cached
-                    and purchase.tax_amount_cache):
+                    and purchase.tax_amount_cache is not None):
                 amounts[purchase.id] = purchase.tax_amount_cache
                 continue
             context = self.get_tax_context(purchase)
@@ -468,9 +466,8 @@ class Purchase(ModelWorkflow, ModelSQL, ModelView):
         currency_obj = Pool().get('currency.currency')
         amounts = {}
         for purchase in self.browse(ids):
-            # TODO test for not None
             if (purchase.state in self._states_cached
-                    and purchase.total_amount_cache):
+                    and purchase.total_amount_cache is not None):
                 amounts[purchase.id] = purchase.total_amount_cache
                 continue
             amounts[purchase.id] = currency_obj.round(purchase.currency,
@@ -920,7 +917,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1035,12 +1032,6 @@ class PurchaseLine(ModelSQL, ModelView):
 
     def default_type(self):
         return 'line'
-
-    def default_quantity(self):
-        return 0.0
-
-    def default_unit_price(self):
-        return Decimal('0.0')
 
     def get_move_done(self, ids, name):
         uom_obj = Pool().get('product.uom')
@@ -1635,7 +1626,7 @@ class ProductSupplier(ModelSQL, ModelView):
             ondelete='CASCADE', select=True, on_change=['party'])
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -1644,7 +1635,7 @@ class ProductSupplier(ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ])
-    delivery_time = fields.Integer('Delivery Time',
+    delivery_time = fields.Integer('Delivery Time', required=True,
             help="In number of days")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
@@ -1720,6 +1711,8 @@ class ProductSupplier(ModelSQL, ModelView):
 
         if not date:
             date = date_obj.today()
+        if not product_supplier.delivery_time:
+            return datetime.date.max
         return date + datetime.timedelta(product_supplier.delivery_time)
 
     def compute_purchase_date(self, product_supplier, date):
@@ -1752,6 +1745,9 @@ class ProductSupplierPrice(ModelSQL, ModelView):
     def __init__(self):
         super(ProductSupplierPrice, self).__init__()
         self._order.insert(0, ('quantity', 'ASC'))
+
+    def default_quantity(self):
+        return 0.0
 
 ProductSupplierPrice()
 
