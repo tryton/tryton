@@ -360,11 +360,11 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Sales Leads/Opportunities Lines" fill="1" sequence="sequence">
+                <tree string="Sales Leads/Opportunities Lines" sequence="sequence">
                     <field name="opportunity"/>
                     <field name="product"/>
                     <field name="quantity"/>
-                    <field name="unit"/>
+                    <field name="unit" expand="1"/>
                     <field name="sequence" tree_invisible="1"/>
                 </tree>
                 ]]>
