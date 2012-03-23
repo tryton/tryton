@@ -121,7 +121,7 @@ class PaymentTermLine(ModelSQL, ModelView):
     'Payment Term Line'
     _name = 'account.invoice.payment_term.line'
     _description = __doc__
-    sequence = fields.Integer('Sequence',
+    sequence = fields.Integer('Sequence', required=True,
             help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True, ondelete="CASCADE")
@@ -144,7 +144,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             }, depends=['type'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'get_currency_digits')
-    days = fields.Integer('Number of Days')
+    days = fields.Integer('Number of Days', required=True)
     delay = fields.Selection('get_delay', 'Condition', required=True)
 
     def __init__(self):
@@ -167,6 +167,9 @@ class PaymentTermLine(ModelSQL, ModelView):
 
     def default_delay(self):
         return 'net_days'
+
+    def default_currency_digits(self):
+        return 2
 
     def get_type(self):
         type_obj = Pool().get('account.invoice.payment_term.line.type')

@@ -400,7 +400,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             for line in vals['lines']:
                 if line.get('type', 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.get('amount', Decimal('0.0'))
+                res['untaxed_amount'] += line.get('amount') or 0
                 with Transaction().set_context(**context):
                     taxes = tax_obj.compute(line.get('taxes', []),
                             line.get('unit_price', Decimal('0.0')),
@@ -1319,7 +1319,7 @@ class InvoiceLine(ModelSQL, ModelView):
             ],
         depends=['invoice'], select=True)
 
-    sequence = fields.Integer('Sequence',
+    sequence = fields.Integer('Sequence', required=True,
         states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
             })
@@ -1454,17 +1454,14 @@ class InvoiceLine(ModelSQL, ModelView):
             return company.currency.digits
         return 2
 
+    def default_unit_digits(self):
+        return 2
+
     def default_company(self):
         return Transaction().context.get('company') or False
 
     def default_type(self):
         return 'line'
-
-    def default_quantity(self):
-        return 0.0
-
-    def default_unit_price(self):
-        return Decimal('0.0')
 
     def on_change_with_party_lang(self, vals):
         party_obj = Pool().get('party.party')
@@ -1893,7 +1890,7 @@ class InvoiceTax(ModelSQL, ModelView):
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=True)
     description = fields.Char('Description', size=None, required=True)
-    sequence = fields.Integer('Sequence')
+    sequence = fields.Integer('Sequence', required=True)
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -1901,21 +1898,21 @@ class InvoiceTax(ModelSQL, ModelView):
             ('kind', '!=', 'view'),
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ])
-    base = fields.Numeric('Base',
+    base = fields.Numeric('Base', required=True,
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
-    amount = fields.Numeric('Amount',
+    amount = fields.Numeric('Amount', required=True,
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ])
-    base_sign = fields.Numeric('Base Sign', digits=(2, 0))
+    base_sign = fields.Numeric('Base Sign', digits=(2, 0), required=True)
     tax_code = fields.Many2One('account.tax.code', 'Tax Code',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ])
-    tax_sign = fields.Numeric('Tax Sign', digits=(2, 0))
+    tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True)
     tax = fields.Many2One('account.tax', 'Tax')
 
     def __init__(self):
@@ -2160,7 +2157,7 @@ class PayInvoiceStart(ModelView):
     _name = 'account.invoice.pay.start'
     _description = __doc__
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        depends=['currency_digits'])
+        depends=['currency_digits'], required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Integer('Currency Digits', readonly=True,
             on_change_with=['currency'])
@@ -2172,6 +2169,9 @@ class PayInvoiceStart(ModelView):
     def default_date(self):
         date_obj = Pool().get('ir.date')
         return date_obj.today()
+
+    def default_currency_digits(self):
+        return 2
 
     def on_change_with_currency_digits(self, vals):
         currency_obj = Pool().get('currency.currency')
@@ -2221,7 +2221,7 @@ class PayInvoiceAsk(ModelView):
             'invisible': Eval('type') != 'writeoff',
             }, depends=['type'])
     currency_digits_writeoff = fields.Integer('Write-Off Currency Digits',
-            readonly=True)
+            required=True, readonly=True)
     lines_to_pay = fields.Many2Many('account.move.line', None, None,
             'Lines to Pay', readonly=True)
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
