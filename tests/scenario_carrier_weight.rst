@@ -25,7 +25,7 @@ Install carrier_weight, purchase_shipment_cost and sale_shipment_cost::
     ...         ('name', 'in', ['carrier_weight',
     ...                 'purchase_shipment_cost', 'sale_shipment_cost']),
     ...         ])
-    >>> Module.button_install([x.id for x in modules], config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -200,8 +200,7 @@ Receive a single product line::
     >>> shipment.cost_currency == currency
     True
     >>> shipment.save()
-    >>> ShipmentIn.workflow_trigger_validate(shipment.id, 'received',
-    ...     config.context)
+    >>> ShipmentIn.receive([shipment.id], config.context)
     >>> shipment.reload()
     >>> shipment.state
     u'received'
@@ -240,9 +239,9 @@ Sale products with cost on shipment::
     >>> cost_line.amount == Decimal(40)
     True
     >>> sale.save()
-    >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
-    >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
-    >>> Sale.workflow_trigger_validate(sale.id, 'process', config.context)
+    >>> Sale.quote([sale.id], config.context)
+    >>> Sale.confirm([sale.id], config.context)
+    >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
     >>> sale.untaxed_amount == Decimal(140)
@@ -268,18 +267,15 @@ Send products::
     u'waiting'
     >>> shipment.save()
     >>> shipment.reload()
-    >>> ShipmentOut.workflow_trigger_validate(shipment.id, 'force_assign',
-    ...         config.context)
+    >>> ShipmentOut.assign_force([shipment.id], config.context)
     >>> shipment.state
     u'assigned'
     >>> shipment.reload()
-    >>> ShipmentOut.workflow_trigger_validate(shipment.id, 'packed',
-    ...         config.context)
+    >>> ShipmentOut.pack([shipment.id], config.context)
     >>> shipment.state
     u'packed'
     >>> shipment.reload()
-    >>> ShipmentOut.workflow_trigger_validate(shipment.id, 'done',
-    ...         config.context)
+    >>> ShipmentOut.done([shipment.id], config.context)
     >>> shipment.state
     u'done'
 
@@ -310,9 +306,9 @@ Sale products with cost on order::
     >>> cost_line.amount == Decimal(25)
     True
     >>> sale.save()
-    >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
-    >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
-    >>> Sale.workflow_trigger_validate(sale.id, 'process', config.context)
+    >>> Sale.quote([sale.id], config.context)
+    >>> Sale.confirm([sale.id], config.context)
+    >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
     >>> sale.untaxed_amount == Decimal(85)
