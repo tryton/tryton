@@ -5,7 +5,7 @@ from decimal import Decimal
 import datetime
 from itertools import groupby
 from functools import partial
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
@@ -16,7 +16,7 @@ from trytond.pool import Pool
 from trytond.config import CONFIG
 
 
-class Sale(ModelWorkflow, ModelSQL, ModelView):
+class Sale(Workflow, ModelSQL, ModelView):
     'Sale'
     _name = 'sale.sale'
     _rec_name = 'reference'
@@ -121,21 +121,17 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             },
         depends=['state'])
     invoice_state = fields.Selection([
-        ('none', 'None'),
-        ('waiting', 'Waiting'),
-        ('paid', 'Paid'),
-        ('exception', 'Exception'),
-    ], 'Invoice State', readonly=True, required=True)
+            ('none', 'None'),
+            ('waiting', 'Waiting'),
+            ('paid', 'Paid'),
+            ('exception', 'Exception'),
+            ], 'Invoice State', readonly=True, required=True)
     invoices = fields.Many2Many('sale.sale-account.invoice',
             'sale', 'invoice', 'Invoices', readonly=True)
     invoices_ignored = fields.Many2Many('sale.sale-ignored-account.invoice',
             'sale', 'invoice', 'Ignored Invoices', readonly=True)
     invoices_recreated = fields.Many2Many('sale.sale-recreated-account.invoice',
             'sale', 'invoice', 'Recreated Invoices', readonly=True)
-    invoice_paid = fields.Function(fields.Boolean('Invoices Paid'),
-            'get_function_fields')
-    invoice_exception = fields.Function(fields.Boolean('Invoices Exception'),
-            'get_function_fields')
     shipment_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'On Order Processed'),
@@ -146,18 +142,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             },
         depends=['state'])
     shipment_state = fields.Selection([
-        ('none', 'None'),
-        ('waiting', 'Waiting'),
-        ('sent', 'Sent'),
-        ('exception', 'Exception'),
-    ], 'Shipment State', readonly=True, required=True)
+            ('none', 'None'),
+            ('waiting', 'Waiting'),
+            ('sent', 'Sent'),
+            ('exception', 'Exception'),
+            ], 'Shipment State', readonly=True, required=True)
     shipments = fields.Function(fields.One2Many('stock.shipment.out', None,
         'Shipments'), 'get_function_fields')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
-            'get_function_fields')
-    shipment_done = fields.Function(fields.Boolean('Shipment Done'),
-            'get_function_fields')
-    shipment_exception = fields.Function(fields.Boolean('Shipments Exception'),
             'get_function_fields')
 
     def __init__(self):
@@ -176,6 +168,36 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             'missing_account_receivable': 'It misses '
                     'an "Account Receivable" on the party "%s"!',
         })
+        self._transitions |= set((
+                ('draft', 'quotation'),
+                ('quotation', 'confirmed'),
+                ('confirmed', 'processing'),
+                ('processing', 'processing'),
+                ('draft', 'cancel'),
+                ('quotation', 'cancel'),
+                ('quotation', 'draft'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': ((Eval('state') == 'cancel')
+                        | (~Eval('state').in_(['draft', 'quotation'])
+                            & (Eval('invoice_state') != 'exception')
+                            & (Eval('shipment_state') != 'exception'))),
+                    },
+                'draft': {
+                    'invisible': Eval('state') != 'quotation',
+                    },
+                'quote': {
+                    'invisible': Eval('state') != 'draft',
+                    'readonly': ~Eval('lines', []),
+                    },
+                'confirm': {
+                    'invisible': Eval('state') != 'quotation',
+                    },
+                'process': {
+                    'invisible': Eval('state') != 'confirmed',
+                    },
+                })
         # The states where amounts are cached
         self._states_cached = ['confirmed', 'processing', 'done', 'cancel']
 
@@ -425,18 +447,10 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             res['currency_digits'] = self.get_currency_digits(sales)
         if 'party_lang' in names:
             res['party_lang'] = self.get_party_lang(sales)
-        if 'invoice_paid' in names:
-            res['invoice_paid'] = self.get_invoice_paid(sales)
-        if 'invoice_exception' in names:
-            res['invoice_exception'] = self.get_invoice_exception(sales)
         if 'shipments' in names:
             res['shipments'] = self.get_shipments(sales)
         if 'moves' in names:
             res['moves'] = self.get_moves(sales)
-        if 'shipment_done' in names:
-            res['shipment_done'] = self.get_shipment_done(sales)
-        if 'shipment_exception' in names:
-            res['shipment_exception'] = self.get_shipment_exception(sales)
         return res
 
     def get_untaxed_amount(self, ids, name):
@@ -506,47 +520,31 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 sale.untaxed_amount + sale.tax_amount)
         return amounts
 
-    def get_invoice_paid(self, sales):
+    def get_invoice_state(self, sale):
         '''
-        Return if all invoices have been paid for each sales
+        Return the invoice state for the sale.
+        '''
+        skip_ids = set(x.id for x in sale.invoices_ignored)
+        skip_ids.update(x.id for x in sale.invoices_recreated)
+        invoices = [i for i in sale.invoices if i.id not in skip_ids]
+        if invoices:
+            if any(i.state == 'cancel' for i in invoices):
+                return 'exception'
+            elif all(i.state == 'paid' for i in invoices):
+                return 'paid'
+            else:
+                return 'waiting'
+        return 'none'
 
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            a boolean as value
+    def set_invoice_state(self, sale):
         '''
-        res = {}
-        for sale in sales:
-            val = True
-            skip_ids = set(x.id for x in sale.invoices_ignored)
-            skip_ids.update(x.id for x in sale.invoices_recreated)
-            for invoice in sale.invoices:
-                if invoice.state != 'paid' \
-                        and invoice.id not in skip_ids:
-                    val = False
-                    break
-            res[sale.id] = val
-        return res
-
-    def get_invoice_exception(self, sales):
+        Set the invoice state.
         '''
-        Return if there is an invoice exception for each sales
-
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            a boolean as value
-        '''
-        res = {}
-        for sale in sales:
-            val = False
-            skip_ids = set(x.id for x in sale.invoices_ignored)
-            skip_ids.update(x.id for x in sale.invoices_recreated)
-            for invoice in sale.invoices:
-                if invoice.state == 'cancel' \
-                        and invoice.id not in skip_ids:
-                    val = True
-                    break
-            res[sale.id] = val
-        return res
+        state = self.get_invoice_state(sale)
+        if sale.invoice_state != state:
+            self.write(sale.id, {
+                    'invoice_state': state,
+                    })
 
     def get_shipments(self, sales):
         '''
@@ -581,41 +579,28 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                 res[sale.id].extend([x.id for x in line.moves])
         return res
 
-    def get_shipment_done(self, sales):
+    def get_shipment_state(self, sale):
         '''
-        Return if all the shipments have been done for each sales
+        Return the shipment state for the sale.
+        '''
+        if sale.moves:
+            if any(l.move_exception for l in sale.lines):
+                return 'exception'
+            elif all(l.move_done for l in sale.lines):
+                return 'sent'
+            else:
+                return 'waiting'
+        return 'none'
 
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            a boolean as value
+    def set_shipment_state(self, sale):
         '''
-        res = {}
-        for sale in sales:
-            val = True
-            for line in sale.lines:
-                if not line.move_done:
-                    val = False
-                    break
-            res[sale.id] = val
-        return res
-
-    def get_shipment_exception(self, sales):
+        Set the shipment state.
         '''
-        Return if there is a shipment exception for each sales
-
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            a boolean as value
-        '''
-        res = {}
-        for sale in sales:
-            val = False
-            for line in sale.lines:
-                if line.move_exception:
-                    val = True
-                    break
-            res[sale.id] = val
-        return res
+        state = self.get_shipment_state(sale)
+        if sale.shipment_state != state:
+            self.write(sale.id, {
+                    'shipment_state': state,
+                    })
 
     def check_method(self, ids):
         '''
@@ -659,48 +644,49 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         default.setdefault('sale_date', False)
         return super(Sale, self).copy(ids, default=default)
 
-    def check_for_quotation(self, sale_id):
-        sale = self.browse(sale_id)
-        if not sale.invoice_address or not sale.shipment_address:
-            self.raise_user_error('addresses_required')
-        for line in sale.lines:
-            if (not line.from_location
-                    and line.product
-                    and line.product.type in ('goods', 'assets')):
-                self.raise_user_error('warehouse_required')
-        return True
+    def check_for_quotation(self, ids):
+        sales = self.browse(ids)
+        for sale in sales:
+            if not sale.invoice_address or not sale.shipment_address:
+                self.raise_user_error('addresses_required')
+            for line in sale.lines:
+                if (not line.from_location
+                        and line.product
+                        and line.product.type in ('goods', 'assets')):
+                    self.raise_user_error('warehouse_required')
 
-    def set_reference(self, sale_id):
+    def set_reference(self, ids):
         '''
         Fill the reference field with the sale sequence
-
-        :param sale_id: the id of the sale
-
-        :return: True if succeed
         '''
         sequence_obj = Pool().get('ir.sequence')
         config_obj = Pool().get('sale.configuration')
 
-        sale = self.browse(sale_id)
-
-        if sale.reference:
-            return True
-
         config = config_obj.browse(1)
-        reference = sequence_obj.get_id(config.sale_sequence.id)
-        self.write(sale_id, {
-            'reference': reference,
-            })
-        return True
-
-    def set_sale_date(self, sale):
-        date_obj = Pool().get('ir.date')
-
-        if not sale.sale_date:
+        sales = self.browse(ids)
+        for sale in sales:
+            if sale.reference:
+                continue
+            reference = sequence_obj.get_id(config.sale_sequence.id)
             self.write(sale.id, {
-                    'sale_date': date_obj.today(),
+                'reference': reference,
+                })
+
+    def set_sale_date(self, ids):
+        date_obj = Pool().get('ir.date')
+        for sale in self.browse(ids):
+            if not sale.sale_date:
+                self.write(sale.id, {
+                        'sale_date': date_obj.today(),
+                        })
+
+    def store_cache(self, ids):
+        for sale in self.browse(ids):
+            self.write(sale.id, {
+                    'untaxed_amount_cache': sale.untaxed_amount,
+                    'tax_amount_cache': sale.tax_amount,
+                    'total_amount_cache': sale.total_amount,
                     })
-        return True
 
     def _get_invoice_line_sale_line(self, sale):
         '''
@@ -749,20 +735,14 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             }
         return res
 
-    def create_invoice(self, sale_id):
+    def create_invoice(self, sale):
         '''
-        Create an invoice for the sale
-
-        :param sale_id: the sale id
-
-        :return: the created invoice id or None
+        Create an invoice for the sale and return the id
         '''
         pool = Pool()
         invoice_obj = pool.get('account.invoice')
         invoice_line_obj = pool.get('account.invoice.line')
         sale_line_obj = pool.get('sale.line')
-
-        sale = self.browse(sale_id)
 
         if not sale.party.account_receivable:
             self.raise_user_error('missing_account_receivable',
@@ -791,7 +771,7 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
         with Transaction().set_user(0, set_context=True):
             invoice_obj.update_taxes([invoice_id])
 
-        self.write(sale_id, {
+        self.write(sale.id, {
             'invoices': [('add', invoice_id)],
         })
         return invoice_id
@@ -831,20 +811,15 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
             ('warehouse', line.warehouse.id),
             )
 
-    def create_shipment(self, sale_id):
+    def create_shipment(self, sale):
         '''
         Create a shipment for the sale
-
-        :param sale_id: the sale id
-
-        :return: the list of created shipment id or None
+        and return the list of created shipment ids
         '''
         pool = Pool()
         shipment_obj = pool.get('stock.shipment.out')
         move_obj = pool.get('stock.move')
         sale_line_obj = pool.get('sale.line')
-
-        sale = self.browse(sale_id)
 
         moves = self._get_move_sale_line(sale)
         if not moves:
@@ -871,158 +846,51 @@ class Sale(ModelWorkflow, ModelSQL, ModelView):
                     sale_line_obj.write(line_id, {
                         'moves': [('add', move_id)],
                     })
-                shipment_obj.workflow_trigger_validate(shipment_id, 'waiting')
+            shipment_obj.wait(shipments)
         return shipments
 
-    def wkf_draft(self, sale):
-        self.write(sale.id, {'state': 'draft'})
+    def is_done(self, sale):
+        return sale.invoice_state == 'paid' and sale.shipment_state == 'sent'
 
-    def wkf_quotation(self, sale):
-        self.check_for_quotation(sale.id)
-        self.set_reference(sale.id)
-        self.write(sale.id, {'state': 'quotation'})
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
+        self.store_cache(ids)
 
-    def wkf_confirmed(self, sale):
-        self.set_sale_date(sale)
-        self.write(sale.id, {
-                'state': 'confirmed',
-                'untaxed_amount_cache': sale.untaxed_amount,
-                'tax_amount_cache': sale.tax_amount,
-                'total_amount_cache': sale.total_amount,
-                })
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        pass
 
-    def wkf_processing(self, sale):
-        self.write(sale.id, {'state': 'processing'})
+    @ModelView.button
+    @Workflow.transition('quotation')
+    def quote(self, ids):
+        self.check_for_quotation(ids)
+        self.set_reference(ids)
 
-    def wkf_waiting_invoice_sale(self, sale):
-        self.create_invoice(sale.id)
-        self.write(sale.id, {'invoice_state': 'waiting'})
+    @ModelView.button
+    @Workflow.transition('confirmed')
+    def confirm(self, ids):
+        self.set_sale_date(ids)
+        self.store_cache(ids)
 
-    def wkf_invoice_sale_exception(self, sale):
-        self.write(sale.id, {'invoice_state': 'exception'})
-
-    def wkf_invoice_sale_done(self, sale):
-        self.write(sale.id, {'invoice_state': 'paid'})
-
-    def wkf_shipment_invoice(self, sale):
-        self.create_shipment(sale.id)
-
-    def wkf_waiting_shipment_invoice(self, sale):
-        self.write(sale.id, {'shipment_state': 'waiting'})
-        self.create_shipment(sale.id)
-
-    def wkf_shipment_invoice_exception(self, sale):
-        self.write(sale.id, {'shipment_state': 'exception'})
-
-    def wkf_shipment_invoice_done(self, sale):
-        self.write(sale.id, {'shipment_state': 'sent'})
-
-    def wkf_shipment(self, sale):
-        self.create_shipment(sale.id)
-
-    def wkf_waiting_shipment(self, sale):
-        self.write(sale.id, {'shipment_state': 'waiting'})
-        self.create_shipment(sale.id)
-
-    def wkf_shipment_exception(self, sale):
-        self.write(sale.id, {'shipment_state': 'exception'})
-
-    def wkf_invoice_shipment(self, sale):
-        self.create_invoice(sale.id)
-        self.write(sale.id, {'invoice_state': 'waiting'})
-
-    def wkf_waiting_invoice_shipment(self, sale):
-        self.write(sale.id,
-            {'invoice_state': 'waiting', 'shipment_state': 'sent'})
-
-    def wkf_invoice_shipment_exception(self, sale):
-        self.write(sale.id, {'invoice_state': 'exception'})
-
-    def wkf_invoice_shipment_done(self, sale):
-        self.write(sale.id, {'invoice_state': 'paid'})
-
-    def wkf_invoice_shipment_method_done(self, sale):
-        self.write(sale.id, {'shipment_state': 'sent'})
-
-    def wkf_done(self, sale):
-        self.write(sale.id, {'state': 'done'})
-
-    def wkf_cancel(self, sale):
-        self.write(sale.id, {
-                'state': 'cancel',
-                'untaxed_amount_cache': sale.untaxed_amount,
-                'tax_amount_cache': sale.tax_amount,
-                'total_amount_cache': sale.total_amount,
-                })
-
-    def wkf_draft2quotation(self, sale):
-        return bool(sale.lines)
-
-    def wkf_invoice_method2waiting_invoice_sale(self, sale):
-        return sale.invoice_method == 'order'
-
-    def wkf_invoice_method2invoice_method_done(self, sale):
-        return sale.invoice_method != 'order'
-
-    def wkf_triggered_invoices(self, sale):
-        return [x.id for x in sale.invoices]
-
-    def wkf_waiting_invoice_sale2invoice_sale_exception(self, sale):
-        return sale.invoice_exception
-
-    def wkf_waiting_invoice_sale2invoice_sale_done(self, sale):
-        return sale.invoice_paid
-
-    def wkf_shipment_invoice_method2shipment_invoice_method_done(self, sale):
-        return sale.shipment_method != 'invoice'
-
-    def wkf_shipment_invoice_method2shipment_invoice(self, sale):
-        return self.shipment_method == 'invoice'
-
-    def wkf_triggered_shipments(self, sale):
-        return [x.id for x in sale.shipments]
-
-    def wkf_waiting_shipment_invoice2shipment_invoice_exception(self, sale):
-        return sale.shipment_exception
-
-    def wkf_waiting_shipment_invoice2shipment_invoice_done(self, sale):
-        return sale.shipment_done
-
-    def wkf_shipment_method2shipment_method_done(self, sale):
-        return sale.shipment_method != 'order'
-
-    def wkf_shipment_method2shipment(self, sale):
-        return sale.shipment_method == 'order'
-
-    def wkf_waiting_shipment2shipment_exception(self, sale):
-        return sale.shipment_exception
-
-    def wkf_waiting_shipment2invoice_shipment_method(self, sale):
-        return not sale.shipment_exception
-
-    def wkf_waiting_shipment2invoice_shipment_method_nosignal(self, sale):
-        return sale.shipment_done
-
-    def wkf_invoice_shipment_method2invoice_shipment(self, sale):
-        return sale.invoice_method == 'shipment'
-
-    def wkf_invoice_shipment_method2invoice_shipment_method_done(self, sale):
-        return sale.invoice_method != 'shipment' and sale.shipment_done
-
-    def wkf_invoice_shipment_method2waiting_shipment(self, sale):
-        return sale.invoice_method != 'shipment' and not sale.shipment_done
-
-    def wkf_invoice_shipment2waiting_shipment(self, sale):
-        return not sale.shipment_done
-
-    def wkf_invoice_shipment2waiting_invoice_shipment(self, sale):
-        return sale.shipment_done
-
-    def wkf_waiting_invoice_shipment2invoice_shipment_exception(self, sale):
-        return sale.invoice_exception
-
-    def wkf_waiting_invoice_shipment2invoice_shipment_done(self, sale):
-        return sale.invoice_paid
+    @ModelView.button
+    @Workflow.transition('processing')
+    def process(self, ids):
+        done = []
+        for sale in self.browse(ids):
+            if sale.state in ('done', 'cancel'):
+                continue
+            self.create_invoice(sale)
+            self.set_invoice_state(sale)
+            self.create_shipment(sale)
+            self.set_shipment_state(sale)
+            if self.is_done(sale):
+                done.append(sale.id)
+        if done:
+            self.write(done, {
+                    'state': 'done',
+                    })
 
 Sale()
 
@@ -1764,7 +1632,8 @@ class ShipmentOut(ModelSQL, ModelView):
                     if sale_line.sale.id not in sale_ids:
                         sale_ids.append(sale_line.sale.id)
 
-            sale_obj.workflow_trigger_validate(sale_ids, 'shipment_update')
+            with Transaction().set_user(0, set_context=True):
+                sale_obj.process(sale_ids)
         return res
 
     def button_draft(self, ids):
@@ -1832,8 +1701,8 @@ class Move(ModelSQL, ModelView):
                 for sale_line in sale_line_obj.browse(sale_line_ids):
                     sale_ids.add(sale_line.sale.id)
             if sale_ids:
-                sale_obj.workflow_trigger_validate(list(sale_ids),
-                        'shipment_update')
+                with Transaction().set_user(0, set_context=True):
+                    sale_obj.process(list(sale_ids))
         return res
 
     def delete(self, ids):
@@ -1854,8 +1723,8 @@ class Move(ModelSQL, ModelView):
             for sale_line in sale_line_obj.browse(sale_line_ids):
                 sale_ids.add(sale_line.sale.id)
             if sale_ids:
-                sale_obj.workflow_trigger_validate(list(sale_ids),
-                        'shipment_update')
+                with Transaction().set_user(0, set_context=True):
+                    sale_obj.process(list(sale_ids))
         return res
 
 Move()
@@ -1879,7 +1748,8 @@ class Invoice(ModelSQL, ModelView):
                     'an invoice generated by a sale.',
             })
 
-    def button_draft(self, ids):
+    @Workflow.transition('draft')
+    def draft(self, ids):
         sale_obj = Pool().get('sale.sale')
         sale_ids = sale_obj.search([
             ('invoices', 'in', ids),
@@ -1888,7 +1758,7 @@ class Invoice(ModelSQL, ModelView):
         if sale_ids:
             self.raise_user_error('reset_invoice_sale')
 
-        return super(Invoice, self).button_draft(ids)
+        return super(Invoice, self).draft(ids)
 
     def get_sale_exception_state(self, ids, name):
         sale_obj = Pool().get('sale.sale')
@@ -2033,8 +1903,7 @@ class HandleShipmentException(Wizard):
                 'moves_ignored': [('add', moves_ignored)],
                 'moves_recreated': [('add', moves_recreated)],
                 })
-
-        sale_obj.workflow_trigger_validate(sale.id, 'shipment_ok')
+        sale_obj.process([sale.id])
         return 'end'
 
 HandleShipmentException()
@@ -2106,8 +1975,7 @@ class HandleInvoiceException(Wizard):
             'invoices_ignored': [('add', invoices_ignored)],
             'invoices_recreated': [('add', invoices_recreated)],
              })
-
-        sale_obj.workflow_trigger_validate(sale.id, 'invoice_ok')
+        sale_obj.process([sale.id])
         return 'end'
 
 HandleInvoiceException()

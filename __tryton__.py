@@ -139,7 +139,6 @@ Biedt mogelijkheden tot:
         'account',
         'product',
         'account_invoice',
-        'workflow',
         'res',
         'ir',
         'currency',

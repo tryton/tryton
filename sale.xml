@@ -89,14 +89,11 @@ this repository contains the full copyright notices and license terms. -->
                                 <label name="total_amount" xalign="1.0" xexpand="1"/>
                                 <field name="total_amount" xalign="1.0" xexpand="0"/>
                                 <group col="7" colspan="2" id="buttons">
-                                    <button name="cancel" string="Cancel"
-                                        states="{'invisible': Or(Equal(Eval('state'), 'cancel'), And(Not(In(Eval('state'), ['draft', 'quotation'])), Not(Equal(Eval('invoice_state'), 'exception')), Not(Equal(Eval('shipment_state'), 'exception')))), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
+                                    <button name="cancel" type="object" string="Cancel"
                                         icon="tryton-cancel"/>
-                                    <button name="draft" string="Draft"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
+                                    <button name="draft" type="object" string="Draft"
                                         icon="tryton-go-previous"/>
-                                    <button name="quotation" string="Quotation"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Or(Not(Bool(Eval('lines'))), Not(In(%(group_sale)d, Eval('groups', []))))}"
+                                    <button name="quote" type="object" string="Quote"
                                         icon="tryton-go-next"/>
                                     <button name="%(wizard_invoice_handle_exception)d"
                                             string="Handle Invoice Exception"
@@ -108,11 +105,9 @@ this repository contains the full copyright notices and license terms. -->
                                             string="Handle Shipment Exception"
                                             states="{'invisible': Or(Not(Equal(Eval('shipment_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
-                                    <button name="confirm" string="Confirm"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'quotation')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
+                                    <button name="confirm" type="object" string="Confirm"
                                         icon="tryton-go-next"/>
-                                    <button name="process" string="Process"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'confirmed')), 'readonly': Not(In(%(group_sale)d, Eval('groups', [])))}"
+                                    <button name="process" type="object" string="Process"
                                         icon="tryton-go-next"/>
                                 </group>
                             </group>
@@ -335,6 +330,51 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="sale_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_cancel_button_group_sale">
+            <field name="button" ref="sale_cancel_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_draft_button">
+            <field name="name">draft</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_draft_button_group_sale">
+            <field name="button" ref="sale_draft_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_quote_button">
+            <field name="name">quote</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_quote_button_group_sale">
+            <field name="button" ref="sale_quote_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_confirm_button">
+            <field name="name">confirm</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_confirm_button_group_sale">
+            <field name="button" ref="sale_confirm_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="sale_process_button">
+            <field name="name">process</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_process_button_group_sale">
+            <field name="button" ref="sale_process_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
         <record model="ir.sequence.type" id="sequence_type_sale">
             <field name="name">Sale</field>
             <field name="code">sale.sale</field>
@@ -353,412 +393,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence" id="sequence_sale">
             <field name="name">Sale</field>
             <field name="code">sale.sale</field>
-        </record>
-
-        <record model="workflow" id="sale_workflow">
-            <field name="name">Sale workflow</field>
-            <field name="model">sale.sale</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_draft">
-            <field name="name">Draft</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_draft</field>
-            <field name="flow_start" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_quotation">
-            <field name="name">Quotation</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_quotation</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_confirmed">
-            <field name="name">Confirmed</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="split_mode">XOR</field>
-            <field name="method">wkf_confirmed</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_processing">
-            <field name="name">Processing</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="split_mode">AND</field>
-            <field name="method">wkf_processing</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_method">
-            <field name="name">Invoice Method</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="split_mode">OR</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_waiting_invoice_sale">
-            <field name="name">Waiting Invoice</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_waiting_invoice_sale</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_sale_exception">
-            <field name="name">Invoice Exception</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_invoice_sale_exception</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_sale_done">
-            <field name="name">Invoice Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_invoice_sale_done</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_invoice_method">
-            <field name="name">Shipment Invoice Method</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="split_mode">OR</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_invoice">
-            <field name="name">Shipment Invoice</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_shipment_invoice</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_waiting_shipment_invoice">
-            <field name="name">Waiting Shipment Invoice</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_waiting_shipment_invoice</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_invoice_exception">
-            <field name="name">Shipment Invoice Exception</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_shipment_invoice_exception</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_invoice_done">
-            <field name="name">Shipment Invoice Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_shipment_invoice_done</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_invoice_method_done">
-            <field name="name">Shipment Invoice Method Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_method_done">
-            <field name="name">Invoice Method Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_method">
-            <field name="name">Shipment Method</field>
-            <field name="workflow" ref="sale_workflow"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment">
-            <field name="name">Shipment</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_shipment</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_waiting_shipment">
-            <field name="name">Waiting Shipment</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_waiting_shipment</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_exception">
-            <field name="name">Shipment Exception</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_shipment_exception</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_shipment_method">
-            <field name="name">Invoice Shipment Method</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="split_mode">OR</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_shipment">
-            <field name="name">Invoice Shipment</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_invoice_shipment</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_waiting_invoice_shipment">
-            <field name="name">Waiting Invoice Shipment</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_waiting_invoice_shipment</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_shipment_exception">
-            <field name="name">Invoice Shipment Exception</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_invoice_shipment_exception</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_shipment_done">
-            <field name="name">Invoice Shipment Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_invoice_shipment_done</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_invoice_shipment_method_done">
-            <field name="name">Invoice Shipment Method Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_invoice_shipment_method_done</field>
-        </record>
-        <record model="workflow.activity" id="sale_activity_shipment_method_done">
-            <field name="name">Shipment Method Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_done">
-            <field name="name">Done</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="join_mode">AND</field>
-            <field name="method">wkf_done</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="sale_activity_cancel">
-            <field name="name">Canceled</field>
-            <field name="workflow" ref="sale_workflow"/>
-            <field name="method">wkf_cancel</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-
-        <record model="workflow.transition" id="sale_transition_draft_quotation">
-            <field name="act_from" ref="sale_activity_draft"/>
-            <field name="act_to" ref="sale_activity_quotation"/>
-            <field name="condition">wkf_draft2quotation</field>
-            <field name="signal">quotation</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_draft_cancel">
-            <field name="act_from" ref="sale_activity_draft"/>
-            <field name="act_to" ref="sale_activity_cancel"/>
-            <field name="signal">cancel</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_quotation_draft">
-            <field name="act_from" ref="sale_activity_quotation"/>
-            <field name="act_to" ref="sale_activity_draft"/>
-            <field name="signal">draft</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_quotation_confirmed">
-            <field name="act_from" ref="sale_activity_quotation"/>
-            <field name="act_to" ref="sale_activity_confirmed"/>
-            <field name="signal">confirm</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_confirmed_processing">
-            <field name="act_from" ref="sale_activity_confirmed"/>
-            <field name="act_to" ref="sale_activity_processing"/>
-            <field name="signal">process</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_quotation_cancel">
-            <field name="act_from" ref="sale_activity_quotation"/>
-            <field name="act_to" ref="sale_activity_cancel"/>
-            <field name="signal">cancel</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_processing_invoice_method">
-            <field name="act_from" ref="sale_activity_processing"/>
-            <field name="act_to" ref="sale_activity_invoice_method"/>
-        </record>
-
-        <record model="workflow.transition" id="sale_transition_invoice_method_waiting_invoice_sale">
-            <field name="act_from" ref="sale_activity_invoice_method"/>
-            <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
-            <field name="condition">wkf_invoice_method2waiting_invoice_sale</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_method_invoice_method_done">
-            <field name="act_from" ref="sale_activity_invoice_method"/>
-            <field name="act_to" ref="sale_activity_invoice_method_done"/>
-            <field name="condition">wkf_invoice_method2invoice_method_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoice_sale_exception">
-            <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
-            <field name="act_to" ref="sale_activity_invoice_sale_exception"/>
-            <field name="trigger_model">account.invoice</field>
-            <field name="trigger_ids">wkf_triggered_invoices</field>
-            <field
-                name="condition">wkf_waiting_invoice_sale2invoice_sale_exception</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_sale_exception_invoice_sale">
-            <field name="act_from" ref="sale_activity_invoice_sale_exception"/>
-            <field name="act_to" ref="sale_activity_waiting_invoice_sale"/>
-            <field name="signal">invoice_ok</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_sale_exception_cancel">
-            <field name="act_from" ref="sale_activity_invoice_sale_exception"/>
-            <field name="act_to" ref="sale_activity_cancel"/>
-            <field name="signal">cancel</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_invoice_sale_invoic_sale_done">
-            <field name="act_from" ref="sale_activity_waiting_invoice_sale"/>
-            <field name="act_to" ref="sale_activity_invoice_sale_done"/>
-            <field name="trigger_model">account.invoice</field>
-            <field name="trigger_ids">wkf_triggered_invoices</field>
-            <field name="condition">wkf_waiting_invoice_sale2invoice_sale_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_sale_done">
-            <field name="act_from" ref="sale_activity_invoice_sale_done"/>
-            <field name="act_to" ref="sale_activity_shipment_invoice_method"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_method_shipment_invoice_method_done">
-            <field name="act_from" ref="sale_activity_shipment_invoice_method"/>
-            <field name="act_to" ref="sale_activity_shipment_invoice_method_done"/>
-            <field
-                name="condition">wkf_shipment_invoice_method2shipment_invoice_method_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_method_shipment_invoice">
-            <field name="act_from" ref="sale_activity_shipment_invoice_method"/>
-            <field name="act_to" ref="sale_activity_shipment_invoice"/>
-            <field
-                name="condition">wkf_shipment_invoice_method2shipment_invoice</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_waiting_shipment_invoice">
-            <field name="act_from" ref="sale_activity_shipment_invoice"/>
-            <field name="act_to" ref="sale_activity_waiting_shipment_invoice"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_shipment_invoice_exception">
-            <field name="act_from" ref="sale_activity_waiting_shipment_invoice"/>
-            <field name="act_to" ref="sale_activity_shipment_invoice_exception"/>
-            <field name="trigger_model">stock.shipment.out</field>
-            <field name="trigger_ids">wkf_triggered_shipments</field>
-            <field
-                name="condition">wkf_waiting_shipment_invoice2shipment_invoice_exception</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_exception_cancel">
-            <field name="act_from" ref="sale_activity_shipment_invoice_exception"/>
-            <field name="act_to" ref="sale_activity_cancel"/>
-            <field name="signal">cancel</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_exception_waiting_shipment_invoice">
-            <field name="act_from" ref="sale_activity_shipment_invoice_exception"/>
-            <field name="act_to" ref="sale_activity_waiting_shipment_invoice"/>
-            <field name="signal">shipment_ok</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_waiting_shipment_invoice_shipment_invoice_done">
-            <field name="act_from" ref="sale_activity_waiting_shipment_invoice"/>
-            <field name="act_to" ref="sale_activity_shipment_invoice_done"/>
-            <field name="trigger_model">stock.shipment.out</field>
-            <field name="trigger_ids">wkf_triggered_shipments</field>
-            <field
-                name="condition">wkf_waiting_shipment_invoice2shipment_invoice_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_done_shipment_invoice_method_done">
-            <field name="act_from" ref="sale_activity_shipment_invoice_done"/>
-            <field name="act_to" ref="sale_activity_shipment_invoice_method_done"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_invoice_method_done_invoice_method_done">
-            <field name="act_from" ref="sale_activity_shipment_invoice_method_done"/>
-            <field name="act_to" ref="sale_activity_invoice_method_done"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_method_done_done">
-            <field name="act_from" ref="sale_activity_invoice_method_done"/>
-            <field name="act_to" ref="sale_activity_done"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_processing_shipment_method">
-            <field name="act_from" ref="sale_activity_processing"/>
-            <field name="act_to" ref="sale_activity_shipment_method"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_method_shipment_method_done">
-            <field name="act_from" ref="sale_activity_shipment_method"/>
-            <field name="act_to" ref="sale_activity_shipment_method_done"/>
-            <field name="condition">wkf_shipment_method2shipment_method_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_method_shipment">
-            <field name="act_from" ref="sale_activity_shipment_method"/>
-            <field name="act_to" ref="sale_activity_shipment"/>
-            <field name="condition">wkf_shipment_method2shipment</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_waiting_shipment">
-            <field name="act_from" ref="sale_activity_shipment"/>
-            <field name="act_to" ref="sale_activity_waiting_shipment"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_shipment_shipment_exception">
-            <field name="act_from" ref="sale_activity_waiting_shipment"/>
-            <field name="act_to" ref="sale_activity_shipment_exception"/>
-            <field name="signal">shipment_update</field>
-            <field name="condition">wkf_waiting_shipment2shipment_exception</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_exception_cancel">
-            <field name="act_from" ref="sale_activity_shipment_exception"/>
-            <field name="act_to" ref="sale_activity_cancel"/>
-            <field name="signal">cancel</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_exception_waiting_shipment">
-            <field name="act_from" ref="sale_activity_shipment_exception"/>
-            <field name="act_to" ref="sale_activity_waiting_shipment"/>
-            <field name="signal">shipment_ok</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_shipment_invoice_shipment_method">
-            <field name="act_from" ref="sale_activity_waiting_shipment"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment_method"/>
-            <field name="signal">shipment_update</field>
-            <field
-                name="condition">wkf_waiting_shipment2invoice_shipment_method</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_shipment_invoice_shipment_method2">
-            <field name="act_from" ref="sale_activity_waiting_shipment"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment_method"/>
-            <field
-                name="condition">wkf_waiting_shipment2invoice_shipment_method_nosignal</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_method_invoice_shipment">
-            <field name="act_from" ref="sale_activity_invoice_shipment_method"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment"/>
-            <field
-                name="condition">wkf_invoice_shipment_method2invoice_shipment</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_method_invoice_shipment_method_done">
-            <field name="act_from" ref="sale_activity_invoice_shipment_method"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment_method_done"/>
-            <field
-                name="condition">wkf_invoice_shipment_method2invoice_shipment_method_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_method_waiting_shipment">
-            <field name="act_from" ref="sale_activity_invoice_shipment_method"/>
-            <field name="act_to" ref="sale_activity_waiting_shipment"/>
-            <field
-                name="condition">wkf_invoice_shipment_method2waiting_shipment</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_waiting_shipment">
-            <field name="act_from" ref="sale_activity_invoice_shipment"/>
-            <field name="act_to" ref="sale_activity_waiting_shipment"/>
-            <field name="condition">wkf_invoice_shipment2waiting_shipment</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_waiting_invoice_shipment">
-            <field name="act_from" ref="sale_activity_invoice_shipment"/>
-            <field name="act_to" ref="sale_activity_waiting_invoice_shipment"/>
-            <field
-                name="condition">wkf_invoice_shipment2waiting_invoice_shipment</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_invoice_shipment_invoice_shipment_exception">
-            <field name="act_from" ref="sale_activity_waiting_invoice_shipment"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment_exception"/>
-            <field name="trigger_model">account.invoice</field>
-            <field name="trigger_ids">wkf_triggered_invoices</field>
-            <field
-                name="condition">wkf_waiting_invoice_shipment2invoice_shipment_exception</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_exception_cancel">
-            <field name="act_from" ref="sale_activity_invoice_shipment_exception"/>
-            <field name="act_to" ref="sale_activity_cancel"/>
-            <field name="signal">cancel</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_exception_waiting_invoice_shipment">
-            <field name="act_from" ref="sale_activity_invoice_shipment_exception"/>
-            <field name="act_to" ref="sale_activity_waiting_invoice_shipment"/>
-            <field name="signal">invoice_ok</field>
-            <field name="group" ref="group_sale"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_waiting_invoice_shipment_invoice_shipment_done">
-            <field name="act_from" ref="sale_activity_waiting_invoice_shipment"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment_done"/>
-            <field name="trigger_model">account.invoice</field>
-            <field name="trigger_ids">wkf_triggered_invoices</field>
-            <field
-                name="condition">wkf_waiting_invoice_shipment2invoice_shipment_done</field>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_done_invoice_shipment_method_done">
-            <field name="act_from" ref="sale_activity_invoice_shipment_done"/>
-            <field name="act_to" ref="sale_activity_invoice_shipment_method_done"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_invoice_shipment_method_done_shipment_method_done">
-            <field name="act_from" ref="sale_activity_invoice_shipment_method_done"/>
-            <field name="act_to" ref="sale_activity_shipment_method_done"/>
-        </record>
-        <record model="workflow.transition" id="sale_transition_shipment_method_done_done">
-            <field name="act_from" ref="sale_activity_shipment_method_done"/>
-            <field name="act_to" ref="sale_activity_done"/>
         </record>
 
         <record model="ir.action.report" id="report_sale">
