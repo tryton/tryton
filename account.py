@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import Model, ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool
 
@@ -213,3 +213,37 @@ class Period(ModelSQL, ModelView):
         return super(Period, self).write(ids, vals)
 
 Period()
+
+
+class Reconciliation(Model):
+    _name = 'account.move.reconciliation'
+
+    def create(self, values):
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+
+        result = super(Reconciliation, self).create(values)
+        reconciliation = self.browse(result)
+        move_ids = set(l.move.id for l in reconciliation.lines)
+        invoice_ids = invoice_obj.search([
+                ('move', 'in', list(move_ids)),
+                ])
+        invoice_obj.process(invoice_ids)
+        return result
+
+    def delete(self, ids):
+        pool = Pool()
+        invoice_obj = pool.get('account.invoice')
+
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        reconciliations = self.browse(ids)
+        move_ids = set(l.move.id for r in reconciliations for l in r.lines)
+        invoice_ids = invoice_obj.search([
+                ('move', 'in', list(move_ids)),
+                ])
+        result = super(Reconciliation, self).delete(ids)
+        invoice_obj.process(invoice_ids)
+        return result
+
+Reconciliation()

@@ -102,7 +102,6 @@ Met de mogelijkheid tot:
         'party',
         'product',
         'res',
-        'workflow',
         'currency',
         'account_product',
     ],

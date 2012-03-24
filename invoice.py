@@ -3,7 +3,7 @@
 from decimal import Decimal
 import base64
 import operator
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -36,7 +36,7 @@ _TYPE2JOURNAL = {
 _ZERO = Decimal('0.0')
 
 
-class Invoice(ModelWorkflow, ModelSQL, ModelView):
+class Invoice(Workflow, ModelSQL, ModelView):
     'Invoice'
     _name = 'account.invoice'
     _description = __doc__
@@ -140,9 +140,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         super(Invoice, self).__init__()
         self._check_modify_exclude = ['state', 'payment_lines',
                 'invoice_report_cache', 'invoice_report_format']
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._constraints += [
             ('check_account', 'account_different_company'),
             ('check_account2', 'same_account_on_line'),
@@ -178,6 +175,32 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             'same_account_on_line': 'You can not use the same account\n' \
                     'as on invoice line!',
             })
+        self._transitions |= set((
+                ('draft', 'proforma'),
+                ('proforma', 'open'),
+                ('draft', 'open'),
+                ('open', 'paid'),
+                ('proforma', 'draft'),
+                ('paid', 'open'),
+                ('draft', 'cancel'),
+                ('proforma', 'cancel'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': ~Eval('state').in_(['draft', 'proforma']),
+                    },
+                'draft': {
+                    'invisible': ~Eval('state').in_(['cancel', 'proforma']),
+                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
+                        'tryton-go-previous'),
+                    },
+                'proforma': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'open': {
+                    'invisible': ~Eval('state').in_(['draft', 'proforma']),
+                    },
+                })
 
     def init(self, module_name):
         super(Invoice, self).init(module_name)
@@ -667,15 +690,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
-    def button_draft(self, ids):
-        invoices = self.browse(ids)
-        for invoice in invoices:
-            if invoice.move:
-                self.raise_user_error('reset_draft')
-        self.workflow_trigger_create([x.id for x in invoices])
-        self.write(ids, {'state': 'draft'})
-        return True
-
     def get_tax_context(self, invoice):
         party_obj = Pool().get('party.party')
         res = {}
@@ -831,14 +845,16 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         res['party'] = invoice.party.id
         return res
 
-    def create_move(self, invoice_id):
+    def create_move(self, invoice):
+        '''
+        Create account move for the invoice and return the created move id
+        '''
         pool = Pool()
         payment_term_obj = pool.get('account.invoice.payment_term')
         currency_obj = pool.get('currency.currency')
         move_obj = pool.get('account.move')
         period_obj = pool.get('account.period')
 
-        invoice = self.browse(invoice_id)
         if invoice.move:
             return True
         self.update_taxes([invoice.id], exception=True)
@@ -877,16 +893,17 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         move_obj.post(move_id)
         return move_id
 
-    def set_number(self, invoice_id):
+    def set_number(self, invoice):
+        '''
+        Set number to the invoice
+        '''
         pool = Pool()
         period_obj = pool.get('account.period')
         sequence_obj = pool.get('ir.sequence.strict')
         date_obj = pool.get('ir.date')
 
-        invoice = self.browse(invoice_id)
-
         if invoice.number:
-            return True
+            return
 
         test_state = True
         if invoice.type in ('in_invoice', 'in_credit_note'):
@@ -905,7 +922,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             if not invoice.invoice_date:
                 vals['invoice_date'] = Transaction().context['date']
         self.write(invoice.id, vals)
-        return True
 
     def check_modify(self, ids):
         '''
@@ -956,8 +972,6 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
         res = super(Invoice, self).write(ids, vals)
         if update_tax_ids:
             self.update_taxes(update_tax_ids)
-        if 'state' in vals and vals['state'] in ('paid', 'cancel'):
-            self.workflow_trigger_trigger(ids)
         return res
 
     def copy(self, ids, default=None):
@@ -1165,13 +1179,14 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                 return line.id
         raise Exception('Missing account')
 
-    def print_invoice(self, invoice_id):
+    def print_invoice(self, invoice):
         '''
         Generate invoice report and store it in invoice_report field.
         '''
+        if invoice.invoice_report_cache:
+            return
         invoice_report = Pool().get('account.invoice', type='report')
-        invoice_report.execute([invoice_id], {})
-        return
+        invoice_report.execute([invoice.id], {})
 
     def _credit(self, invoice):
         '''
@@ -1228,7 +1243,7 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             new_id = self.create(vals)
             new_ids.append(new_id)
             if refund:
-                self.workflow_trigger_validate(new_id, 'open')
+                self.open([new_id])
                 new_invoice = self.browse(new_id)
                 if new_invoice.state == 'open':
                     line_ids = [x.id for x in invoice.lines_to_pay
@@ -1238,29 +1253,45 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
                     move_line_obj.reconcile(line_ids)
         return new_ids
 
-    def wkf_draft(self, invoice):
-        self.write(invoice.id, {'state': 'draft'})
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        pass
 
-    def wkf_proforma(self, invoice):
-        self.write(invoice.id, {'state': 'proforma'})
+    @ModelView.button
+    @Workflow.transition('proforma')
+    def proforma(self, ids):
+        pass
 
-    def wkf_open(self, invoice):
-        self.set_number(invoice.id)
-        self.create_move(invoice.id)
-        self.write(invoice.id, {'state': 'open'})
-        self.print_invoice(invoice.id)
+    @ModelView.button
+    @Workflow.transition('open')
+    def open(self, ids):
+        for invoice in self.browse(ids):
+            self.set_number(invoice)
+            self.create_move(invoice)
+            self.print_invoice(invoice)
 
-    def wkf_paid(self, invoice):
-        self.write(invoice.id, {'state': 'paid'})
+    def process(self, ids):
+        paid = []
+        open_ = []
+        for invoice in self.browse(ids):
+            if invoice.state not in ('open', 'paid'):
+                continue
+            if invoice.reconciled:
+                paid.append(invoice.id)
+            else:
+                open_.append(invoice.id)
+        self.paid(paid)
+        self.open(open_)
 
-    def wkf_cancel(self, invoice):
-        self.write(invoice.id, {'state': 'cancel'})
+    @Workflow.transition('paid')
+    def paid(self, ids):
+        pass
 
-    def wkf_triggered_moves(self, invoice):
-        return [x.id for x in invoice.lines_to_pay]
-
-    def wkf_open2paid(self, invoice):
-        return invoice.reconciled
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
+        pass
 
 Invoice()
 
