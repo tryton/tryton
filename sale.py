@@ -178,13 +178,12 @@ class Sale(Model):
             lines.setdefault('add', []).append(cost_line)
         return result
 
-    def create_shipment(self, sale_id):
+    def create_shipment(self, sale):
         pool = Pool()
         shipment_obj = pool.get('stock.shipment.out')
         carrier_obj = pool.get('carrier')
 
-        shipment_ids = super(Sale, self).create_shipment(sale_id)
-        sale = self.browse(sale_id)
+        shipment_ids = super(Sale, self).create_shipment(sale)
         if shipment_ids and sale.carrier:
             shipments = shipment_obj.browse(shipment_ids)
             for shipment in shipments:
@@ -209,14 +208,13 @@ class Sale(Model):
                     del result[line.id]
         return result
 
-    def create_invoice(self, sale_id):
+    def create_invoice(self, sale):
         pool = Pool()
         invoice_obj = pool.get('account.invoice')
         invoice_line_obj = pool.get('account.invoice.line')
         shipment_obj = pool.get('stock.shipment.out')
 
-        invoice_id = super(Sale, self).create_invoice(sale_id)
-        sale = self.browse(sale_id)
+        invoice_id = super(Sale, self).create_invoice(sale)
         if (invoice_id
                 and sale.shipment_cost_method == 'shipment'):
             with Transaction().set_user(0, set_context=True):

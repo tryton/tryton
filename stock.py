@@ -1,13 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import copy
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Model, fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
-class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
+class ShipmentOut(Model):
     _name = 'stock.shipment.out'
 
     carrier = fields.Many2One('carrier', 'Carrier', states={
