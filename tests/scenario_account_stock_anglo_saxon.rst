@@ -26,7 +26,7 @@ Install account_stock_continental, sale and purchase::
     ...         ('name', 'in', ('account_stock_anglo_saxon',
     ...             'sale', 'purchase')),
     ...     ])
-    >>> Module.button_install([x.id for x in modules], config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -198,10 +198,8 @@ Purchase 12 products::
     >>> purchase_line.quantity = 7.0
     >>> purchase_line.unit_price = Decimal(6)
     >>> purchase.save()
-    >>> Purchase.workflow_trigger_validate(purchase.id, 'quotation',
-    ...     config.context)
-    >>> Purchase.workflow_trigger_validate(purchase.id, 'confirm',
-    ...     config.context)
+    >>> Purchase.quote([purchase.id], config.context)
+    >>> Purchase.confirm([purchase.id], config.context)
     >>> purchase.state
     u'confirmed'
 
@@ -217,10 +215,8 @@ Receive 9 products::
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 5.0
     >>> shipment.save()
-    >>> ShipmentIn.workflow_trigger_validate(shipment.id, 'received',
-    ...     config.context)
-    >>> ShipmentIn.workflow_trigger_validate(shipment.id, 'done',
-    ...     config.context)
+    >>> ShipmentIn.receive([shipment.id], config.context)
+    >>> ShipmentIn.done([shipment.id], config.context)
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
@@ -247,7 +243,7 @@ Open supplier invoice::
     >>> invoice_line = invoice.lines[1]
     >>> invoice_line.unit_price = Decimal('4')
     >>> invoice.save()
-    >>> Invoice.workflow_trigger_validate(invoice.id, 'open', config.context)
+    >>> Invoice.open([invoice.id], config.context)
     >>> invoice.state
     u'open'
     >>> payable.reload()
@@ -280,9 +276,9 @@ Sale 5 products::
     >>> sale_line.product = product_average
     >>> sale_line.quantity = 3.0
     >>> sale.save()
-    >>> Sale.workflow_trigger_validate(sale.id, 'quotation', config.context)
-    >>> Sale.workflow_trigger_validate(sale.id, 'confirm', config.context)
-    >>> Sale.workflow_trigger_validate(sale.id, 'process', config.context)
+    >>> Sale.quote([sale.id], config.context)
+    >>> Sale.confirm([sale.id], config.context)
+    >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
 
@@ -290,18 +286,16 @@ Send 5 products::
 
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
-    >>> ShipmentOut.workflow_trigger_validate(shipment.id, 'assign',
-    ...     config.context)
+    >>> ShipmentOut.assign_try([shipment.id], config.context)
+    True
     >>> shipment.state
     u'assigned'
     >>> shipment.reload()
-    >>> ShipmentOut.workflow_trigger_validate(shipment.id, 'packed',
-    ...     config.context)
+    >>> ShipmentOut.pack([shipment.id], config.context)
     >>> shipment.state
     u'packed'
     >>> shipment.reload()
-    >>> ShipmentOut.workflow_trigger_validate(shipment.id, 'done',
-    ...     config.context)
+    >>> ShipmentOut.done([shipment.id], config.context)
     >>> shipment.state
     u'done'
     >>> stock_customer.reload()
@@ -317,7 +311,7 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> Invoice.workflow_trigger_validate(invoice.id, 'open', config.context)
+    >>> Invoice.open([invoice.id], config.context)
     >>> invoice.state
     u'open'
     >>> receivable.reload()
