@@ -26,7 +26,7 @@ Install purchase_shipment_cost::
     ...         ('name', 'in', ['purchase_shipment_cost',
     ...                 'account_stock_continental']),
     ...         ])
-    >>> Module.button_install([x.id for x in modules], config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -201,8 +201,7 @@ Receive a single product line::
     >>> shipment.cost_currency == currency
     True
     >>> shipment.save()
-    >>> ShipmentIn.workflow_trigger_validate(shipment.id, 'received',
-    ...     config.context)
+    >>> ShipmentIn.receive([shipment.id], config.context)
     >>> shipment.reload()
     >>> shipment.state
     u'received'
@@ -239,8 +238,7 @@ Receive many product lines::
     >>> shipment.cost == Decimal('3')
     True
     >>> shipment.save()
-    >>> ShipmentIn.workflow_trigger_validate(shipment.id, 'received',
-    ...     config.context)
+    >>> ShipmentIn.receive([shipment.id], config.context)
     >>> shipment.reload()
     >>> shipment.state
     u'received'

@@ -4,7 +4,7 @@ import copy
 from decimal import Decimal, ROUND_DOWN, ROUND_HALF_EVEN
 from operator import itemgetter
 
-from trytond.model import Model, fields
+from trytond.model import Model, ModelView, Workflow, fields
 from trytond.pyson import Eval, Bool
 from trytond.pool import Pool
 from trytond.transaction import Transaction
@@ -153,15 +153,17 @@ class ShipmentIn(Model):
                     'unit_shipment_cost': cost['unit_shipment_cost'],
                     })
 
-    def wkf_received(self, shipment):
+    @ModelView.button
+    @Workflow.transition('received')
+    def receive(self, ids):
         carrier_obj = Pool().get('carrier')
-
-        if shipment.carrier:
-            allocation_method = shipment.carrier.carrier_cost_allocation_method
-        else:
-            allocation_method = carrier_obj.default_carrier_cost_method()
-        getattr(self, 'allocate_cost_by_%s' % allocation_method)(shipment)
-        super(ShipmentIn, self).wkf_received(shipment)
+        for shipment in self.browse(ids):
+            if shipment.carrier:
+                allocation_method = shipment.carrier.carrier_cost_allocation_method
+            else:
+                allocation_method = carrier_obj.default_carrier_cost_method()
+            getattr(self, 'allocate_cost_by_%s' % allocation_method)(shipment)
+        super(ShipmentIn, self).receive(ids)
 
 ShipmentIn()
 
