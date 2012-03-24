@@ -1,9 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import Model, fields
+from trytond.pool import Pool
 
 
-class Invoice(ModelSQL, ModelView):
+class Invoice(Model):
     _name = 'account.invoice'
 
     purchases = fields.Many2Many('purchase.purchase-account.invoice',
@@ -16,10 +17,24 @@ class Invoice(ModelSQL, ModelView):
         default.setdefault('purchases', False)
         return super(Invoice, self).copy(ids, default=default)
 
+    def paid(self, ids):
+        pool = Pool()
+        purchase_obj = pool.get('purchase.purchase')
+        super(Invoice, self).paid(ids)
+        invoices = self.browse(ids)
+        purchase_obj.process(p.id for i in invoices for p in i.purchases)
+
+    def cancel(self, ids):
+        pool = Pool()
+        purchase_obj = pool.get('purchase.purchase')
+        super(Invoice, self).cancel(ids)
+        invoices = self.browse(ids)
+        purchase_obj.process(p.id for i in invoices for p in i.purchases)
+
 Invoice()
 
 
-class InvoiceLine(ModelSQL, ModelView):
+class InvoiceLine(Model):
     _name = 'account.invoice.line'
 
     purchase_lines = fields.Many2Many('purchase.line-account.invoice.line',

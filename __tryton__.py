@@ -98,7 +98,6 @@ Avec la possibilité:
         'account',
         'product',
         'account_invoice',
-        'workflow',
         'res',
         'ir',
         'currency',
