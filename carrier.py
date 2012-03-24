@@ -56,7 +56,8 @@ class Carrier(ModelSQL, ModelView):
         'Compute carrier sale price with currency'
         user_obj = Pool().get('res.user')
         if carrier.carrier_cost_method == 'product':
-            user = user_obj.browse(Transaction().user)
+            user = user_obj.browse(Transaction().user
+                or Transaction().context.get('user'))
             return carrier.carrier_product.list_price, user.company.currency.id
         return 0, False
 
