@@ -2,10 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 import copy
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Model, fields
 
 
-class Invoice(ModelWorkflow, ModelSQL, ModelView):
+class Invoice(Model):
     _name = 'account.invoice'
     open_date = fields.DateTime('Open Date')
 
