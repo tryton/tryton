@@ -105,7 +105,7 @@ class StockForecastTestCase(unittest.TestCase):
                             ),
                         ],
                     })
-            self.forecast.workflow_trigger_validate(forecast_id, 'done')
+            self.forecast.confirm([forecast_id])
 
             self.forecast.create_moves([forecast_id])
             forecast = self.forecast.browse(forecast_id)

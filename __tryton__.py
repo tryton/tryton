@@ -75,7 +75,6 @@ prévisions.
     'depends': [
         'ir',
         'res',
-        'workflow',
         'stock',
         'product',
         'company',

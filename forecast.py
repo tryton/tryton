@@ -3,7 +3,7 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 import itertools
-from trytond.model import ModelView, ModelWorkflow, ModelSQL, fields
+from trytond.model import ModelView, Workflow, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
@@ -17,7 +17,7 @@ STATES = {
 DEPENDS = ['state']
 
 
-class Forecast(ModelWorkflow, ModelSQL, ModelView):
+class Forecast(Workflow, ModelSQL, ModelView):
     "Stock Forecast"
     _name = "stock.forecast"
     _description = __doc__
@@ -72,6 +72,23 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                 })
         self._order.insert(0, ('from_date', 'DESC'))
         self._order.insert(1, ('warehouse', 'ASC'))
+        self._transitions |= set((
+                ('draft', 'done'),
+                ('draft', 'cancel'),
+                ('done', 'draft'),
+                ('cancel', 'draft'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'draft': {
+                    'invisible': Eval('state') == 'draft',
+                    },
+                'confirm': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                })
 
     def init(self, module_name):
         location_obj = Pool().get('stock.location')
@@ -154,24 +171,20 @@ class Forecast(ModelWorkflow, ModelSQL, ModelView):
                 return False
         return True
 
-    def button_draft(self, ids):
-        self.workflow_trigger_create(ids)
-        return True
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        pass
 
-    def wkf_draft(self, forecast):
-        self.write(forecast.id, {
-            'state': 'draft',
-            })
+    @ModelView.button
+    @Workflow.transition('done')
+    def confirm(self, ids):
+        pass
 
-    def wkf_cancel(self, forecast):
-        self.write(forecast.id, {
-            'state': 'cancel',
-            })
-
-    def wkf_done(self, forecast):
-        self.write(forecast.id, {
-            'state': 'done',
-            })
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
+        pass
 
     def create_moves(self, forecast_ids):
         'Create stock moves for the forecast ids'

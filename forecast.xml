@@ -49,19 +49,12 @@ this repository contains the full copyright notices and license terms. -->
                             <label name="state"/>
                             <field name="state"/>
                             <group colspan="2" col="3" id="buttons">
-                                <button string="Reset to Draft"
-                                        name="button_draft"
-                                        type="object"
-                                        states="{'invisible': Equal(Eval('state'), 'draft'), 'readonly': Not(In(%(group_stock_forecast)d, Eval('groups', [])))}"
-                                        icon="tryton-clear"/>
-                                <button string="Cancel"
-                                        name="cancel"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock_forecast)d, Eval('groups', [])))}"
-                                        icon="tryton-cancel"/>
-                                <button string="Confirm"
-                                        name="done"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock_forecast)d, Eval('groups', [])))}"
-                                        icon="tryton-ok"/>
+                                <button string="Reset to Draft" name="draft"
+                                    type="object" icon="tryton-clear"/>
+                                <button string="Cancel" name="cancel"
+                                    type="object" icon="tryton-cancel"/>
+                                <button string="Confirm" name="confirm"
+                                    type="object" icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>
@@ -167,45 +160,6 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!-- Workflow forecast -->
-        <record model="workflow" id="wkf_forecast">
-            <field name="name">Forecast</field>
-            <field name="model">stock.forecast</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="forecast_act_draft">
-            <field name="workflow" ref="wkf_forecast"/>
-            <field name="flow_start" eval="True"/>
-            <field name="method">wkf_draft</field>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="forecast_act_cancel">
-            <field name="workflow" ref="wkf_forecast"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Cancel</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="forecast_act_done">
-            <field name="workflow" ref="wkf_forecast"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.transition"
-                id="forecast_trans_draft_cancel">
-            <field name="act_from" ref="forecast_act_draft"/>
-            <field name="act_to" ref="forecast_act_cancel"/>
-            <field name="group" ref="group_stock_forecast"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="forecast_trans_draft_done">
-            <field name="act_from" ref="forecast_act_draft"/>
-            <field name="act_to" ref="forecast_act_done"/>
-            <field name="group" ref="group_stock_forecast"/>
-            <field name="signal">done</field>
-        </record>
-
         <record model="ir.ui.view" id="forecast_comlete_ask_view_form">
             <field name="model">stock.forecast.complete.ask</field>
             <field name="type">form</field>
@@ -263,6 +217,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_cancel_button_group_stock_forecast">
+            <field name="button" ref="forecast_cancel_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_draft_button">
+            <field name="name">draft</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_draft_button_group_stock_forecast">
+            <field name="button" ref="forecast_draft_button"/>
+            <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_confirm_button">
+            <field name="name">confirm</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="forecaset_confirm_button_group_stock_forecast">
+            <field name="button" ref="forecast_confirm_button"/>
+            <field name="group" ref="group_stock_forecast"/>
         </record>
 
     </data>
