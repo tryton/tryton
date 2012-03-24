@@ -19,24 +19,18 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="company"/>
                         <field name="company"/>
                         <label colspan="2" id="empty"/>
-                        <button string="Complete Inventory" type="object"
-                            name="complete_lines"
-                            states="{'readonly': Not(Equal(Eval('state'), 'draft'))}"
-                            colspan="2"
+                        <button string="Complete Inventory"
+                            name="complete_lines" type="object" colspan="2"
                             help="Add an inventory line for each missing products"/>
                         <field name="lines" colspan="4"/>
                         <group col="4" colspan="4" id="group_buttons">
                             <label name="state"/>
                             <field name="state"/>
                             <group colspan="2" col="3" id="buttons">
-                                <button string="Cancel"
-                                    name="cancel"
-                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-cancel" />
-                                <button string="Confirm"
-                                    name="done"
-                                    states="{'invisible': In(Eval('state'), ['done','cancel']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-ok"/>
+                                <button string="Cancel" name="cancel"
+                                    type="object" icon="tryton-cancel" />
+                                <button string="Confirm" name="confirm"
+                                    type="object" icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>
@@ -138,45 +132,6 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!-- Workflow inventory -->
-        <record model="workflow" id="wkf_inventory">
-            <field name="name">Inventory</field>
-            <field name="model">stock.inventory</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="inventory_act_draft">
-            <field name="workflow" ref="wkf_inventory"/>
-            <field name="flow_start" eval="True"/>
-            <field name="method">wkf_draft</field>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="inventory_act_cancel">
-            <field name="workflow" ref="wkf_inventory"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Canceled</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="inventory_act_done">
-            <field name="workflow" ref="wkf_inventory"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.transition"
-                id="inventory_trans_draft_cancel">
-            <field name="act_from" ref="inventory_act_draft"/>
-            <field name="act_to" ref="inventory_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="inventory_trans_draft_done">
-            <field name="act_from" ref="inventory_act_draft"/>
-            <field name="act_to" ref="inventory_act_done"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">done</field>
-        </record>
-
         <record model="ir.model.access" id="access_inventory">
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
             <field name="perm_read" eval="False"/>
@@ -207,6 +162,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="inventory_confirm_button">
+            <field name="name">confirm</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="inventory_confirm_button_group_stock">
+            <field name="button" ref="inventory_confirm_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="inventory_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="inventory_cancel_button_group_stock">
+            <field name="button" ref="inventory_cancel_button"/>
+            <field name="group" ref="group_stock"/>
         </record>
 
     </data>

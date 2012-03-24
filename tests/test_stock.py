@@ -319,7 +319,7 @@ class StockTestCase(unittest.TestCase):
                     'date': period_date,
                     'company': company_id,
                 })
-                self.period.button_close([period_id])
+                self.period.close([period_id])
                 test_products_by_location()
 
     def test0030period(self):
@@ -410,7 +410,7 @@ class StockTestCase(unittest.TestCase):
                     'date': today + relativedelta(days=days),
                     'company': company_id,
                 })
-                self.period.button_close([period_id])
+                self.period.close([period_id])
 
                 period = self.period.read(period_id, ['state', 'caches'])
                 self.assertEqual(period['state'], 'closed')
@@ -458,13 +458,13 @@ class StockTestCase(unittest.TestCase):
                 'date': today,
                 'company': company_id,
             })
-            self.assertRaises(Exception, self.period.button_close, [period_id])
+            self.assertRaises(Exception, self.period.close, [period_id])
 
             period_id = self.period.create({
                 'date': today + relativedelta(days=1),
                 'company': company_id,
             })
-            self.assertRaises(Exception, self.period.button_close, [period_id])
+            self.assertRaises(Exception, self.period.close, [period_id])
 
 
 def doctest_dropdb(test):

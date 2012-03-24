@@ -28,18 +28,23 @@ class Period(ModelSQL, ModelView):
 
     def __init__(self):
         super(Period, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-            'button_close': True,
-        })
         self._error_messages.update({
             'close_period_future_today': ('You can not close a period '
                 'in the future or today!'),
             'close_period_assigned_move': ('You can not close a period when '
                 'there is still assigned moves!'),
         })
+        self._buttons.update({
+                'draft': {
+                    'invisible': Eval('state') == 'draft',
+                    },
+                'close': {
+                    'invisible': Eval('state') == 'closed',
+                    },
+                })
 
-    def button_draft(self, ids):
+    @ModelView.button
+    def draft(self, ids):
         cache_obj = Pool().get('stock.period.cache')
         cache_ids = []
         for i in xrange(0, len(ids), Transaction().cursor.IN_MAX):
@@ -50,9 +55,9 @@ class Period(ModelSQL, ModelView):
         self.write(ids, {
             'state': 'draft',
         })
-        return True
 
-    def button_close(self, ids):
+    @ModelView.button
+    def close(self, ids):
         pool = Pool()
         product_obj = pool.get('product.product')
         location_obj = pool.get('stock.location')
@@ -98,7 +103,6 @@ class Period(ModelSQL, ModelView):
         self.write(ids, {
             'state': 'closed',
         })
-        return True
 
 Period()
 

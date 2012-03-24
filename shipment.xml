@@ -40,18 +40,13 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-cancel"/>
-                                <button string="Received" name="received"
-                                    states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-go-next"/>
-                                <button string="Done" name="done"
-                                    states="{'invisible': Not(Equal(Eval('state'), 'received')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                    type="object" icon="tryton-cancel"/>
+                                <button string="Receive" name="receive"
+                                    type="object" icon="tryton-go-next"/>
+                                <button string="Done" name="done" type="object"
                                     icon="tryton-ok"/>
-                                <button string="Reset to Draft" name="button_draft"
-                                    type="object"
-                                    states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-clear"/>
+                                <button string="Reset to Draft" name="draft"
+                                    type="object" icon="tryton-clear"/>
                             </group>
                         </group>
                     </form>
@@ -165,25 +160,18 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <group col="6" colspan="2" id="buttons">
+                        <group col="5" colspan="2" id="buttons">
                             <button string="Cancel" name="cancel"
-                                states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                icon="tryton-cancel"/>
-                            <button string="Draft" name="draft"
-                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                                type="object" icon="tryton-cancel"/>
+                            <button string="Draft" name="draft" type="object"
                                 icon="tryton-go-previous"/>
-                            <button string="Waiting" name="waiting"
-                                states="{'invisible': Not(In(Eval('state'), ['assigned', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', ''))}"/>
+                            <button string="Wait" name="wait"
+                                type="object"/>
                             <button string="Assign" name="%(wizard_shipment_in_return_assign)d"
                                 type="action"
                                 states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-go-next"/>
-                            <button string="Reset to Draft" name="button_draft"
-                                type="object"
-                                states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                icon="tryton-clear"/>
-                            <button string="Done" name="done"
-                                states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                            <button string="Done" name="done" type="object"
                                 icon="tryton-ok"/>
                         </group>
                     </form>
@@ -285,29 +273,21 @@ this repository contains the full copyright notices and license terms. -->
                         <group col="4" colspan="4" id="state_buttons">
                             <label name="state"/>
                             <field name="state"/>
-                            <group col="7" colspan="2" id="buttons">
+                            <group col="6" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                        states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                        icon="tryton-cancel"/>
+                                    type="object" icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                        icon="tryton-go-previous"/>
-                                <button string="Waiting" name="waiting"
-                                        states="{'invisible': Not(In(Eval('state'), ['assigned', 'waiting', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'waiting'), 'tryton-clear', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', '')))}"/>
+                                    type="object"/>
+                                <button string="Waiting" name="wait"
+                                    type="object"/>
                                 <button string="Assign" name="%(wizard_shipment_out_assign)d"
                                         type="action"
                                         states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                         icon="tryton-go-next"/>
-                                <button string="Make shipment" name="packed"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                        icon="tryton-go-next"/>
-                                <button string="Done" name="done"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'packed')), 'readonly': Not(In(%(group_stock)d , Eval('groups', [])))}"
-                                        icon="tryton-ok"/>
-                                <button string="Reset to Draft" name="button_draft"
-                                        type="object"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                        icon="tryton-clear"/>
+                                <button string="Make shipment" name="pack"
+                                    type="object" icon="tryton-go-next"/>
+                                <button string="Done" name="done" type="object"
+                                    icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>
@@ -473,25 +453,17 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="moves"  colspan="4"/>
                         <label name="state"/>
                         <field name="state"/>
-                        <group col="6" colspan="2" id="buttons">
-                            <button string="Cancel" name="cancel"
-                                states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                        <group col="5" colspan="2" id="buttons">
+                            <button string="Cancel" name="cancel" type="object"
                                 icon="tryton-cancel"/>
-                            <button string="Draft" name="draft"
-                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                icon="tryton-go-previous"/>
-                            <button string="Waiting" name="waiting"
-                                states="{'invisible': Not(In(Eval('state'), ['assigned', 'waiting', 'draft'])), 'readonly': Not(In(%(group_stock)d, Eval('groups', []))), 'icon': If(Equal(Eval('state'), 'assigned'), 'tryton-go-previous', If(Equal(Eval('state'), 'waiting'), 'tryton-clear', If(Equal(Eval('state'), 'draft'), 'tryton-go-next', '')))}"/>
+                            <button string="Draft" name="draft" type="object"/>
+                            <button string="Waiting" name="wait"
+                                type="object"/>
                             <button string="Assign" name="%(wizard_shipment_internal_assign)d"
                                 type="action"
                                 states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
                                 icon="tryton-go-next"/>
-                            <button string="Reset to Draft" name="button_draft"
-                                type="object"
-                                states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                icon="tryton-clear"/>
-                            <button string="Done" name="done"
-                                states="{'invisible': Not(Equal(Eval('state'), 'assigned')), 'readonly': Not(In(%(group_stock)d , Eval('groups', [])))}"
+                            <button string="Done" name="done" type="object"
                                 icon="tryton-ok"/>
                         </group>
                     </form>
@@ -652,18 +624,14 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    states="{'invisible': In(Eval('state'), ['cancel', 'done']), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-cancel"/>
-                                <button string="Received" name="received"
-                                    states="{'invisible': Not(Equal(Eval('state'), 'draft')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-go-next"/>
+                                    type="object" icon="tryton-cancel"/>
+                                <button string="Draft" name="draft"
+                                    type="object" icon="tryton-clear"/>
+                                <button string="Received" name="receive"
+                                    type="object" icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                    states="{'invisible': Not(Equal(Eval('state'), 'received')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-ok"/>
-                                <button string="Reset to Draft" name="button_draft"
                                     type="object"
-                                    states="{'invisible': Not(Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                    icon="tryton-clear"/>
+                                    icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>
@@ -709,199 +677,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_shipment_out_form" sequence="40"
                   action="act_shipment_out_return_form"
                   id="menu_shipment_out_return_form"/>
-
-        <!-- Workflow shipment in -->
-        <record model="workflow" id="wkf_shipmentin">
-            <field name="name">Supplier Shipment</field>
-            <field name="model">stock.shipment.in</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="shipmentin_act_draft">
-            <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="flow_start" eval="True"/>
-            <field name="method">wkf_draft</field>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="shipmentin_act_cancel">
-            <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Canceled</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="shipmentin_act_done">
-            <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.activity" id="shipmentin_act_received">
-            <field name="name">Received</field>
-            <field name="workflow" ref="wkf_shipmentin"/>
-            <field name="method">wkf_received</field>
-        </record>
-
-        <record model="workflow.transition"
-                id="shipmentin_trans_draft_received">
-            <field name="act_from" ref="shipmentin_act_draft"/>
-            <field name="act_to" ref="shipmentin_act_received"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">received</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentin_trans_received_draft">
-            <field name="act_from" ref="shipmentin_act_received"/>
-            <field name="act_to" ref="shipmentin_act_draft"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">draft</field>
-        </record>
-        <record model="workflow.transition" id="shipmentin_trans_received_done">
-            <field name="act_from" ref="shipmentin_act_received"/>
-            <field name="act_to" ref="shipmentin_act_done"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">done</field>
-        </record>
-        <record model="workflow.transition" id="shipmentin_trans_draft_cancel">
-            <field name="act_from" ref="shipmentin_act_draft"/>
-            <field name="act_to" ref="shipmentin_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentin_trans_received_cancel">
-            <field name="act_from" ref="shipmentin_act_received"/>
-            <field name="act_to" ref="shipmentin_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-
-
-        <!-- Workflow shipment out -->
-        <record model="workflow" id="wkf_shipmentout">
-            <field name="name">Customer Shipment</field>
-            <field name="model">stock.shipment.out</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="shipmentout_act_draft">
-            <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="flow_start" eval="True"/>
-            <field name="name">Draft</field>
-            <field name="method">wkf_draft</field>
-        </record>
-        <record model="workflow.activity" id="shipmentout_act_cancel">
-            <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Canceled</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="shipmentout_act_done">
-            <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.activity" id="shipmentout_act_waiting">
-            <field name="name">Waiting</field>
-            <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="method">wkf_waiting</field>
-        </record>
-        <record model="workflow.activity" id="shipmentout_act_assigned">
-            <field name="name">Assigned</field>
-            <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="method">wkf_assigned</field>
-        </record>
-        <record model="workflow.activity" id="shipmentout_act_packed">
-            <field name="name">Packed</field>
-            <field name="workflow" ref="wkf_shipmentout"/>
-            <field name="method">wkf_packed</field>
-        </record>
-
-        <record model="workflow.transition"
-                id="shipmentout_trans_waiting_assigned">
-            <field name="act_from" ref="shipmentout_act_waiting"/>
-            <field name="act_to" ref="shipmentout_act_assigned"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">assign</field>
-            <field name="condition">wkf_assign_try</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_assigned_waiting">
-            <field name="act_from" ref="shipmentout_act_assigned"/>
-            <field name="act_to" ref="shipmentout_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_waiting_waiting">
-            <field name="act_from" ref="shipmentout_act_waiting"/>
-            <field name="act_to" ref="shipmentout_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_waiting_assigned_force">
-            <field name="act_from" ref="shipmentout_act_waiting"/>
-            <field name="act_to" ref="shipmentout_act_assigned"/>
-            <field name="group" ref="group_stock_force_assignment"/>
-            <field name="signal">force_assign</field>
-            <field name="condition">wkf_assign_force</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_draft_waiting">
-            <field name="act_from" ref="shipmentout_act_draft"/>
-            <field name="act_to" ref="shipmentout_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_waiting_draft">
-            <field name="act_from" ref="shipmentout_act_waiting"/>
-            <field name="act_to" ref="shipmentout_act_draft"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">draft</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_waiting_cancel">
-            <field name="act_from" ref="shipmentout_act_waiting"/>
-            <field name="act_to" ref="shipmentout_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_draft_cancel">
-            <field name="act_from" ref="shipmentout_act_draft"/>
-            <field name="act_to" ref="shipmentout_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_assigned_packed">
-            <field name="act_from" ref="shipmentout_act_assigned"/>
-            <field name="act_to" ref="shipmentout_act_packed"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">packed</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_packed_done">
-            <field name="act_from" ref="shipmentout_act_packed"/>
-            <field name="act_to" ref="shipmentout_act_done"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">done</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_assigned_cancel">
-            <field name="act_from" ref="shipmentout_act_assigned"/>
-            <field name="act_to" ref="shipmentout_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentout_trans_packed_cancel">
-            <field name="act_from" ref="shipmentout_act_packed"/>
-            <field name="act_to" ref="shipmentout_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-
 
         <record model="ir.action.report" id="report_shipment_out_delivery_note">
             <field name="name">Delivery Note</field>
@@ -971,275 +746,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_print</field>
             <field name="model">stock.shipment.internal,-1</field>
             <field name="action" ref="report_shipment_internal"/>
-        </record>
-
-        <!-- Workflow internal shipment -->
-        <record model="workflow" id="wkf_shipmentinternal">
-            <field name="name">Internal Shipment</field>
-            <field name="model">stock.shipment.internal</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="shipmentinternal_act_draft">
-            <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="flow_start" eval="True"/>
-            <field name="method">wkf_draft</field>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="shipmentinternal_act_cancel">
-            <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Canceled</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="shipmentinternal_act_done">
-            <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.activity" id="shipmentinternal_act_waiting">
-            <field name="name">Waiting</field>
-            <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="method">wkf_waiting</field>
-        </record>
-        <record model="workflow.activity" id="shipmentinternal_act_assigned">
-            <field name="name">Assigned</field>
-            <field name="workflow" ref="wkf_shipmentinternal"/>
-            <field name="method">wkf_assigned</field>
-        </record>
-
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_draft_waiting">
-            <field name="act_from" ref="shipmentinternal_act_draft"/>
-            <field name="act_to" ref="shipmentinternal_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_waiting_draft">
-            <field name="act_from" ref="shipmentinternal_act_waiting"/>
-            <field name="act_to" ref="shipmentinternal_act_draft"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">draft</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_waiting_waiting">
-            <field name="act_from" ref="shipmentinternal_act_waiting"/>
-            <field name="act_to" ref="shipmentinternal_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_waiting_assigned">
-            <field name="act_from" ref="shipmentinternal_act_waiting"/>
-            <field name="act_to" ref="shipmentinternal_act_assigned"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">assign</field>
-            <field name="condition">wkf_assign_try</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_assigned_waiting">
-            <field name="act_from" ref="shipmentinternal_act_assigned"/>
-            <field name="act_to" ref="shipmentinternal_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_waiting_assigned_force">
-            <field name="act_from" ref="shipmentinternal_act_waiting"/>
-            <field name="act_to" ref="shipmentinternal_act_assigned"/>
-            <field name="group" ref="group_stock_force_assignment"/>
-            <field name="signal">force_assign</field>
-            <field name="condition">wkf_assign_force</field>
-        </record>
-        <record model="workflow.transition" id="shipmentinternal_trans_assigned_done">
-            <field name="act_from" ref="shipmentinternal_act_assigned"/>
-            <field name="act_to" ref="shipmentinternal_act_done"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">done</field>
-        </record>
-        <record model="workflow.transition" id="shipmentinternal_trans_draft_cancel">
-            <field name="act_from" ref="shipmentinternal_act_draft"/>
-            <field name="act_to" ref="shipmentinternal_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_waiting_cancel">
-            <field name="act_from" ref="shipmentinternal_act_waiting"/>
-            <field name="act_to" ref="shipmentinternal_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipmentinternal_trans_assigned_cancel">
-            <field name="act_from" ref="shipmentinternal_act_assigned"/>
-            <field name="act_to" ref="shipmentinternal_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-
-        <!-- Workflow shipment out return -->
-        <record model="workflow" id="wkf_shipment_out_return">
-            <field name="name">Customer Return Shipment</field>
-            <field name="model">stock.shipment.out.return</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="shipment_out_return_act_draft">
-            <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="flow_start" eval="True"/>
-            <field name="method">wkf_draft</field>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="shipment_out_return_act_cancel">
-            <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Canceled</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="shipment_out_return_act_done">
-            <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.activity" id="shipment_out_return_act_received">
-            <field name="name">Received</field>
-            <field name="workflow" ref="wkf_shipment_out_return"/>
-            <field name="method">wkf_received</field>
-        </record>
-
-        <record model="workflow.transition"
-                id="shipment_out_return_trans_draft_received">
-            <field name="act_from" ref="shipment_out_return_act_draft"/>
-            <field name="act_to" ref="shipment_out_return_act_received"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">received</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_out_return_trans_received_draft">
-            <field name="act_from" ref="shipment_out_return_act_received"/>
-            <field name="act_to" ref="shipment_out_return_act_draft"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">draft</field>
-        </record>
-        <record model="workflow.transition" id="shipment_out_return_trans_received_done">
-            <field name="act_from" ref="shipment_out_return_act_received"/>
-            <field name="act_to" ref="shipment_out_return_act_done"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">done</field>
-        </record>
-        <record model="workflow.transition" id="shipment_out_return_trans_draft_cancel">
-            <field name="act_from" ref="shipment_out_return_act_draft"/>
-            <field name="act_to" ref="shipment_out_return_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_out_return_trans_received_cancel">
-            <field name="act_from" ref="shipment_out_return_act_received"/>
-            <field name="act_to" ref="shipment_out_return_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-
-        <!-- Workflow purchase return shipment -->
-        <record model="workflow" id="wkf_shipment_in_return">
-            <field name="name">Supplier Return Shipment</field>
-            <field name="model">stock.shipment.in.return</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="shipment_in_return_act_draft">
-            <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="flow_start" eval="True"/>
-            <field name="method">wkf_draft</field>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="shipment_in_return_act_cancel">
-            <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Canceled</field>
-            <field name="method">wkf_cancel</field>
-        </record>
-        <record model="workflow.activity" id="shipment_in_return_act_done">
-            <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="flow_stop" eval="True"/>
-            <field name="name">Done</field>
-            <field name="method">wkf_done</field>
-        </record>
-        <record model="workflow.activity" id="shipment_in_return_act_waiting">
-            <field name="name">Waiting</field>
-            <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="method">wkf_waiting</field>
-        </record>
-        <record model="workflow.activity" id="shipment_in_return_act_assigned">
-            <field name="name">Assigned</field>
-            <field name="workflow" ref="wkf_shipment_in_return"/>
-            <field name="method">wkf_assigned</field>
-        </record>
-
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_draft_waiting">
-            <field name="act_from" ref="shipment_in_return_act_draft"/>
-            <field name="act_to" ref="shipment_in_return_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_waiting_draft">
-            <field name="act_from" ref="shipment_in_return_act_waiting"/>
-            <field name="act_to" ref="shipment_in_return_act_draft"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">draft</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_waiting_assigned">
-            <field name="act_from" ref="shipment_in_return_act_waiting"/>
-            <field name="act_to" ref="shipment_in_return_act_assigned"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">assign</field>
-            <field name="condition">wkf_assign_try</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_assigned_waiting">
-            <field name="act_from" ref="shipment_in_return_act_assigned"/>
-            <field name="act_to" ref="shipment_in_return_act_waiting"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">waiting</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_waiting_assigned_force">
-            <field name="act_from" ref="shipment_in_return_act_waiting"/>
-            <field name="act_to" ref="shipment_in_return_act_assigned"/>
-            <field name="group" ref="group_stock_force_assignment"/>
-            <field name="signal">force_assign</field>
-            <field name="condition">wkf_assign_force</field>
-        </record>
-        <record model="workflow.transition" id="shipment_in_return_trans_assigned_done">
-            <field name="act_from" ref="shipment_in_return_act_assigned"/>
-            <field name="act_to" ref="shipment_in_return_act_done"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">done</field>
-        </record>
-        <record model="workflow.transition" id="shipment_in_return_trans_draft_cancel">
-            <field name="act_from" ref="shipment_in_return_act_draft"/>
-            <field name="act_to" ref="shipment_in_return_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_waiting_cancel">
-            <field name="act_from" ref="shipment_in_return_act_waiting"/>
-            <field name="act_to" ref="shipment_in_return_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
-        </record>
-        <record model="workflow.transition"
-                id="shipment_in_return_trans_assigned_cancel">
-            <field name="act_from" ref="shipment_in_return_act_assigned"/>
-            <field name="act_to" ref="shipment_in_return_act_cancel"/>
-            <field name="group" ref="group_stock"/>
-            <field name="signal">cancel</field>
         </record>
 
         <!-- Sequence shipment out -->
@@ -1403,6 +909,50 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="shipment_in_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_cancel_button_group_stock">
+            <field name="button" ref="shipment_in_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_draft_button_group_stock">
+            <field name="button" ref="shipment_in_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_receive_button">
+            <field name="name">receive</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_receive_button_group_stock">
+            <field name="button" ref="shipment_in_receive_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_done_button_group_stock">
+            <field name="button" ref="shipment_in_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
         <record model="ir.model.access" id="access_shipment_out">
             <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
             <field name="perm_read" eval="False"/>
@@ -1425,6 +975,83 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_cancel_button_group_stock">
+            <field name="button" ref="shipment_out_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_draft_button_group_stock">
+            <field name="button" ref="shipment_out_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_wait_button">
+            <field name="name">wait</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_wait_button_group_stock">
+            <field name="button" ref="shipment_out_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_pack_button">
+            <field name="name">pack</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_pack_button_group_stock">
+            <field name="button" ref="shipment_out_pack_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_done_button_group_stock">
+            <field name="button" ref="shipment_out_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_assign_try_button_group_stock">
+            <field name="button" ref="shipment_out_assign_try_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_assign_force_button_group_stock_force_assignment">
+            <field name="button" ref="shipment_out_assign_force_button"/>
+            <field name="group" ref="group_stock_force_assignment"/>
         </record>
 
         <record model="ir.model.access" id="access_shipment_internal">
@@ -1451,6 +1078,72 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="shipment_internal_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_cancel_button_group_stock">
+            <field name="button" ref="shipment_internal_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_draft_button_group_stock">
+            <field name="button" ref="shipment_internal_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_wait_button">
+            <field name="name">wait</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_wait_button_group_stock">
+            <field name="button" ref="shipment_internal_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_done_button_group_stock">
+            <field name="button" ref="shipment_internal_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_assign_try_button_group_stock">
+            <field name="button" ref="shipment_internal_assign_try_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_internal_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.internal')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_internal_assign_force_button_group_stock_force_assignment">
+            <field name="button" ref="shipment_internal_assign_force_button"/>
+            <field name="group" ref="group_stock_force_assignment"/>
+        </record>
+
         <record model="ir.model.access" id="access_shipment_out_return">
             <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
             <field name="perm_read" eval="False"/>
@@ -1475,6 +1168,50 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="shipment_out_return_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_cancel_button_group_stock">
+            <field name="button" ref="shipment_out_return_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_draft_button_group_stock">
+            <field name="button" ref="shipment_out_return_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_receive_button">
+            <field name="name">receive</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_receive_button_group_stock">
+            <field name="button" ref="shipment_out_return_receive_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_return_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_return_done_button_group_stock">
+            <field name="button" ref="shipment_out_return_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
         <record model="ir.model.access" id="access_shipment_in_return">
             <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
             <field name="perm_read" eval="False"/>
@@ -1497,6 +1234,72 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_cancel_button_group_stock">
+            <field name="button" ref="shipment_in_return_cancel_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_draft_button_group_stock">
+            <field name="button" ref="shipment_in_return_draft_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_wait_button">
+            <field name="name">wait</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_wait_button_group_stock">
+            <field name="button" ref="shipment_in_return_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_done_button_group_stock">
+            <field name="button" ref="shipment_in_return_done_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_assign_try_button_group_stock">
+            <field name="button" ref="shipment_in_return_assign_try_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_in_return_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.in.return')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_in_return_assign_force_button_group_stock_force_assignment">
+            <field name="button" ref="shipment_in_return_assign_force_button"/>
+            <field name="group" ref="group_stock_force_assignment"/>
         </record>
 
         <!-- Rule definition -->

@@ -108,7 +108,6 @@ Et les rapports:
 ''',
     'depends': [
         'ir',
-        'workflow',
         'party',
         'product',
         'company',

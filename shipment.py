@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import operator
 import itertools
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
@@ -16,7 +16,7 @@ STATES = {
 }
 
 
-class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
+class ShipmentIn(Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     _name = 'stock.shipment.in'
     _description = __doc__
@@ -103,6 +103,25 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             'inventory_move_input_source': 'Inventory Moves must ' \
                     'have the warehouse input location as source location!',
             })
+        self._transitions |= set((
+                ('draft', 'received'),
+                ('received', 'done'),
+                ('draft', 'cancel'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'draft': {
+                    'invisible': Eval('state') != 'cancel',
+                    },
+                'receive': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'done': {
+                    'invisible': Eval('state') != 'received',
+                    },
+                })
 
     def init(self, module_name):
         cursor = Transaction().cursor
@@ -121,16 +140,6 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
                 "WHERE (relation like '%%packing%%' "\
                     "OR name like '%%packing%%') AND module = %s",
                 (module_name,))
-
-        cursor.execute("UPDATE wkf "\
-                "SET model = 'stock.shipment.in' "\
-                "where model = 'stock.packing.in'")
-        cursor.execute("UPDATE wkf_instance "\
-                "SET res_type = 'stock.shipment.in' "\
-                "where res_type = 'stock.packing.in'")
-        cursor.execute("UPDATE wkf_trigger "\
-                "SET model = 'stock.shipment.in' "\
-                "WHERE model = 'stock.packing.in'")
 
         old_table = 'stock_packing_in'
         if TableHandler.table_exist(cursor, old_table):
@@ -285,53 +294,6 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
             'moves': value,
             })
 
-    def wkf_done(self, shipment):
-        move_obj = Pool().get('stock.move')
-        date_obj = Pool().get('ir.date')
-
-        move_obj.write([m.id for m in shipment.inventory_moves
-            if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-                })
-        self.write(shipment.id,{
-            'state': 'done',
-            'effective_date': date_obj.today(),
-            })
-
-    def wkf_cancel(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.incoming_moves
-            if m.state != 'cancel'] +
-            [m.id for m in shipment.inventory_moves
-                if m.state != 'cancel'], {
-                    'state': 'cancel',
-                    })
-        self.write(shipment.id, {
-            'state': 'cancel',
-            })
-
-    def wkf_received(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.incoming_moves
-            if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-            })
-        self.write(shipment.id, {
-            'state': 'received'
-            })
-        self.create_inventory_moves(shipment.id)
-
-    def wkf_draft(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.incoming_moves
-            if m.state != 'draft'], {
-            'state': 'draft',
-            })
-        move_obj.delete([m.id for m in shipment.inventory_moves])
-        self.write(shipment.id, {
-            'state': 'draft',
-            })
-
     def _get_move_planned_date(self, shipment):
         '''
         Return the planned date for incoming moves and inventory_moves
@@ -398,23 +360,67 @@ class ShipmentIn(ModelWorkflow, ModelSQL, ModelView):
         res['company'] = incoming_move.company.id
         return res
 
-    def create_inventory_moves(self, shipment_id):
-        shipment = self.browse(shipment_id)
-        for incoming_move in shipment.incoming_moves:
-            vals = self._get_inventory_moves(incoming_move)
-            if vals:
-                self.write(shipment.id, {
-                    'inventory_moves': [('create', vals)],
-                    })
+    def create_inventory_moves(self, shipments):
+        for shipment in shipments:
+            for incoming_move in shipment.incoming_moves:
+                vals = self._get_inventory_moves(incoming_move)
+                if vals:
+                    self.write(shipment.id, {
+                        'inventory_moves': [('create', vals)],
+                        })
 
-    def button_draft(self, ids):
-        self.workflow_trigger_create(ids)
-        return True
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.incoming_moves
+                if m.state != 'cancel']
+            + [m.id for s in shipments for m in s.inventory_moves
+                if m.state != 'cancel'], {
+                'state': 'cancel',
+                })
+
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.incoming_moves
+                if m.state != 'draft'], {
+                'state': 'draft',
+                })
+        move_obj.delete([m.id for s in shipments for m in s.inventory_moves])
+
+    @ModelView.button
+    @Workflow.transition('received')
+    def receive(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.incoming_moves
+                if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.create_inventory_moves(shipments)
+
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(self, ids):
+        move_obj = Pool().get('stock.move')
+        date_obj = Pool().get('ir.date')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves
+                if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(ids,{
+                'effective_date': date_obj.today(),
+                })
 
 ShipmentIn()
 
 
-class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
+class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     _name = 'stock.shipment.in.return'
     _description = __doc__
@@ -472,26 +478,47 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ], 'State', readonly=True)
 
-    def default_state(self):
-        return 'draft'
-
-    def button_draft(self, ids):
-        self.workflow_trigger_create(ids)
-        return True
+    def __init__(self):
+        super(ShipmentInReturn, self).__init__()
+        self._rpc.update({
+            'button_draft': True,
+        })
+        self._order[0] = ('id', 'DESC')
+        self._transitions |= set((
+                ('draft', 'waiting'),
+                ('waiting', 'assigned'),
+                ('waiting', 'draft'),
+                ('assigned', 'done'),
+                ('assigned', 'waiting'),
+                ('draft', 'cancel'),
+                ('waiting', 'cancel'),
+                ('assigned', 'cancel'),
+                ('cancel', 'draft'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    },
+                'draft': {
+                    'invisible': ~Eval('state').in_(['waiting', 'cancel']),
+                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
+                        'tryton-go-previous'),
+                    },
+                'wait': {
+                    'invisible': ~Eval('state').in_(['assigned', 'draft']),
+                    'icon': If(Eval('state') == 'assigned',
+                        'tryton-go-previous', 'tryton-go-next'),
+                    },
+                'done': {
+                    'invisible': Eval('state') != 'assigned',
+                    },
+                'assign_try': {},
+                'assign_force': {},
+                })
 
     def init(self, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE wkf "\
-                "SET model = 'stock.shipment.in.return' "\
-                "where model = 'stock.packing.in.return'")
-        cursor.execute("UPDATE wkf_instance "\
-                "SET res_type = 'stock.shipment.in.return' "\
-                "where res_type = 'stock.packing.in.return'")
-        cursor.execute("UPDATE wkf_trigger "\
-                "SET model = 'stock.shipment.in.return' "\
-                "WHERE model = 'stock.packing.in.return'")
-
         old_table = 'stock_packing_in_return'
         if TableHandler.table_exist(cursor, old_table):
             TableHandler.table_rename(cursor, old_table, self._table)
@@ -528,12 +555,11 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         table = TableHandler(cursor, self, module_name)
         table.index_action('create_date', action='add')
 
-    def __init__(self):
-        super(ShipmentInReturn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
-        self._order[0] = ('id', 'DESC')
+    def default_state(self):
+        return 'draft'
+
+    def default_company(self):
+        return Transaction().context.get('company') or False
 
     def _get_move_planned_date(self, shipment):
         '''
@@ -572,58 +598,63 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
         self._set_move_planned_date(ids)
         return result
 
-    def default_company(self):
-        return Transaction().context.get('company') or False
-
-    def wkf_draft(self, shipment):
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
         move_obj = Pool().get('stock.move')
-        self.write(shipment.id, {
-            'state': 'draft',
-            })
-        move_obj.write([m.id for m in shipment.moves if m.state != 'draft'], {
-            'state': 'draft',
-            })
-
-    def wkf_waiting(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.moves
-            if m.state not in ('cancel', 'draft')], {
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state != 'draft'], {
                 'state': 'draft',
-                'planned_date': shipment.planned_date,
                 })
 
-        self.write(shipment.id, {
-            'state': 'waiting',
-            })
+    @ModelView.button
+    @Workflow.transition('waiting')
+    def wait(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        for shipment in shipments:
+            move_obj.write([m.id for m in shipment.moves
+                    if m.state not in ('cancel', 'draft')], {
+                    'state': 'draft',
+                    'planned_date': shipment.planned_date,
+                    })
 
-    def wkf_assigned(self, shipment):
-        self.write(shipment.id, {
-            'state': 'assigned',
-            })
+    @Workflow.transition('assigned')
+    def assign(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves], {
+                'state': 'assigned',
+                })
 
-    def wkf_done(self, shipment):
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(self, ids):
         move_obj = Pool().get('stock.move')
         date_obj = Pool().get('ir.date')
 
-        move_obj.write([m.id for m in shipment.moves
-            if m.state not in ('done', 'cancel')], {
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
-        self.write(shipment.id, {
-            'state': 'done',
-            'effective_date': date_obj.today(),
-            })
+        self.write(ids, {
+                'effective_date': date_obj.today(),
+                })
 
-    def wkf_cancel(self, shipment):
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.moves if m.state != 'cancel'], {
-            'state': 'cancel',
-            })
-        self.write(shipment.id, {
-            'state': 'cancel',
-            })
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state != 'cancel'], {
+                'state': 'cancel',
+                })
 
-    def wkf_assign_try(self, shipment):
+    @ModelView.button
+    def assign_try(self, ids):
         pool = Pool()
         product_obj = pool.get('product.product')
         uom_obj = pool.get('product.uom')
@@ -632,14 +663,16 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
 
         Transaction().cursor.lock(move_obj._table)
 
-        location_ids = [m.from_location.id for m in shipment.moves]
+        shipments = self.browse(ids)
+        moves = [m for s in shipments for m in s.moves]
+        location_ids = [m.from_location.id for m in moves]
         with Transaction().set_context(
                 stock_date_end=date_obj.today(),
                 stock_assign=True):
             pbl = product_obj.products_by_location(location_ids=location_ids,
-                    product_ids=[m.product.id for m in shipment.moves])
+                    product_ids=[m.product.id for m in moves])
 
-        for move in shipment.moves:
+        for move in moves:
             if move.state != 'draft':
                 continue
             if (move.from_location.id, move.product.id) in pbl:
@@ -652,24 +685,17 @@ class ShipmentInReturn(ModelWorkflow, ModelSQL, ModelView):
                     pbl[(move.from_location.id, move.product.id)] - qty_default_uom
             else:
                 return False
-
-        move_obj.write([m.id for m in shipment.moves], {
-            'state': 'assigned',
-            })
+        self.assign(ids)
         return True
 
-    def wkf_assign_force(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.moves], {
-            'state': 'assigned',
-            })
-        return True
-
+    @ModelView.button
+    def assign_force(self, ids):
+        self.assign(ids)
 
 ShipmentInReturn()
 
 
-class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
+class ShipmentOut(Workflow, ModelSQL, ModelView):
     "Customer Shipment"
     _name = 'stock.shipment.out'
     _description = __doc__
@@ -754,20 +780,49 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             'inventory_move_output_dest': 'Inventory Moves must have the ' \
                     'warehouse output location as destination location!',
             })
+        self._transitions |= set((
+                ('draft', 'waiting'),
+                ('waiting', 'assigned'),
+                ('assigned', 'packed'),
+                ('packed', 'done'),
+                ('assigned', 'waiting'),
+                ('waiting', 'waiting'),
+                ('waiting', 'draft'),
+                ('draft', 'cancel'),
+                ('waiting', 'cancel'),
+                ('assigned', 'cancel'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': Eval('state').in_(['cancel', 'packed', 'done']),
+                    },
+                'draft': {
+                    'invisible': ~Eval('state').in_(['waiting', 'cancel']),
+                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
+                        'tryton-go-previous'),
+                    },
+                'wait': {
+                    'invisible': ~Eval('state').in_(['assigned', 'waiting',
+                            'draft']),
+                    'icon': If(Eval('state') == 'assigned',
+                        'tryton-go-previous',
+                        If(Eval('state') == 'waiting',
+                            'tryton-clear',
+                            'tryton-go-next')),
+                    },
+                'pack': {
+                    'invisible': Eval('state') != 'assigned',
+                    },
+                'done': {
+                    'invisible': Eval('state') != 'packed',
+                    },
+                'assign_try': {},
+                'assign_force': {},
+                })
 
     def init(self, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE wkf "\
-                "SET model = 'stock.shipment.out' "\
-                "where model = 'stock.packing.out'")
-        cursor.execute("UPDATE wkf_instance "\
-                "SET res_type = 'stock.shipment.out' "\
-                "where res_type = 'stock.packing.out'")
-        cursor.execute("UPDATE wkf_trigger "\
-                "SET model = 'stock.shipment.out' "\
-                "WHERE model = 'stock.packing.out'")
-
         old_table = 'stock_packing_out'
         if TableHandler.table_exist(cursor, old_table):
             TableHandler.table_rename(cursor, old_table, self._table)
@@ -930,155 +985,158 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
             'moves': value,
             })
 
-    def wkf_assigned(self, shipment):
-        self.write(shipment.id, {
-            'state': 'assigned',
-            })
-
-    def wkf_draft(self, shipment):
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
         move_obj = Pool().get('stock.move')
-        self.write(shipment.id, {
-            'state': 'draft',
-            })
-        move_obj.write([m.id for m in
-            shipment.inventory_moves + shipment.outgoing_moves
-            if m.state != 'draft'], {
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments
+                for m in s.inventory_moves + s.outgoing_moves
+                if m.state != 'draft'], {
                 'state': 'draft',
                 })
 
-    def wkf_done(self, shipment):
-        move_obj = Pool().get('stock.move')
-        date_obj = Pool().get('ir.date')
-
-        move_obj.write([m.id for m in shipment.outgoing_moves
-            if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-                })
-        self.write(shipment.id, {
-            'state': 'done',
-            'effective_date': date_obj.today(),
-            })
-
-    def wkf_packed(self, shipment):
-        move_obj = Pool().get('stock.move')
-        uom_obj = Pool().get('product.uom')
-        move_obj.write([m.id for m in shipment.inventory_moves
-            if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-                })
-        self.write(shipment.id, {
-            'state': 'packed',
-            })
-        # Sum all outgoing quantities
-        outgoing_qty = {}
-        for move in shipment.outgoing_moves:
-            if move.state == 'cancel': continue
-            quantity = uom_obj.compute_qty(move.uom, move.quantity,
-                    move.product.default_uom, round=False)
-            outgoing_qty.setdefault(move.product.id, 0.0)
-            outgoing_qty[move.product.id] += quantity
-
-        for move in shipment.inventory_moves:
-            if move.state == 'cancel': continue
-            qty_default_uom = uom_obj.compute_qty(move.uom, move.quantity,
-                    move.product.default_uom, round=False)
-            # Check if the outgoing move doesn't exist already
-            if outgoing_qty.get(move.product.id):
-                # If it exist, decrease the sum
-                if qty_default_uom <= outgoing_qty[move.product.id]:
-                    outgoing_qty[move.product.id] -= qty_default_uom
-                    continue
-                # Else create the complement
-                else:
-                    out_quantity = qty_default_uom - outgoing_qty[move.product.id]
-                    out_quantity = uom_obj.compute_qty(
-                            move.product.default_uom, out_quantity, move.uom)
-                    outgoing_qty[move.product.id] = 0.0
-            else:
-                out_quantity = move.quantity
-
-            unit_price = uom_obj.compute_price(move.product.default_uom,
-                    move.product.list_price, move.uom)
-            move_obj.create({
-                    'from_location': move.to_location.id,
-                    'to_location': shipment.customer.customer_location.id,
-                    'product': move.product.id,
-                    'uom': move.uom.id,
-                    'quantity': out_quantity,
-                    'shipment_out': shipment.id,
-                    'state': 'draft',
-                    'planned_date': shipment.planned_date,
-                    'company': move.company.id,
-                    'currency': move.company.currency.id,
-                    'unit_price': unit_price,
-                    })
-
-        #Re-read the shipment and remove exceeding quantities
-        for move in shipment.outgoing_moves:
-            if move.state == 'cancel': continue
-            if outgoing_qty.get(move.product.id, 0.0) > 0.0:
-                exc_qty = uom_obj.compute_qty(move.product.default_uom,
-                        outgoing_qty[move.product.id], move.uom)
-                removed_qty = uom_obj.compute_qty(move.uom,
-                        min(exc_qty, move.quantity), move.product.default_uom,
-                        round=False)
-                move_obj.write(move.id,{
-                    'quantity': max(0.0, move.quantity-exc_qty),
-                    })
-                outgoing_qty[move.product.id] -= removed_qty
-
-        move_obj.write([x.id for x in shipment.outgoing_moves
-            if x.state != 'cancel'], {
-                'state': 'assigned',
-                })
-
-    def wkf_cancel(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in
-            shipment.outgoing_moves + shipment.inventory_moves
-            if m.state != 'cancel'], {
-                'state': 'cancel',
-                })
-        self.write(shipment.id, {
-            'state': 'cancel',
-            })
-
-    def wkf_waiting(self, shipment):
+    @ModelView.button
+    @Workflow.transition('waiting')
+    def wait(self, ids):
         """
         Complete inventory moves to match the products and quantities
         that are in the outgoing moves.
         """
         move_obj = Pool().get('stock.move')
-        self.write(shipment.id, {
-            'state': 'waiting',
-            })
 
-        if shipment.inventory_moves:
-            move_obj.write( [x.id for x in shipment.inventory_moves], {
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves], {
                 'state': 'draft',
                 })
-            move_obj.delete([x.id for x in shipment.inventory_moves])
+        move_obj.delete([m.id for s in shipments for m in s.inventory_moves])
 
-            # Re-Browse because moves have been deleted
-            shipment = self.browse(shipment.id)
+        # Re-Browse because moves have been deleted
+        shipments = self.browse(ids)
 
-        for move in shipment.outgoing_moves:
-            if move.state in ('cancel', 'done'):
-                continue
-            move_obj.create({
-                    'from_location': \
-                        move.shipment_out.warehouse.storage_location.id,
-                    'to_location': move.from_location.id,
-                    'product': move.product.id,
-                    'uom': move.uom.id,
-                    'quantity': move.quantity,
-                    'shipment_out': shipment.id,
-                    'planned_date': move.planned_date,
-                    'state': 'draft',
-                    'company': move.company.id,
-                    'currency': move.currency.id,
-                    'unit_price': move.unit_price,
-                    })
+        for shipment in shipments:
+            for move in shipment.outgoing_moves:
+                if move.state in ('cancel', 'done'):
+                    continue
+                move_obj.create({
+                        'from_location': \
+                            move.shipment_out.warehouse.storage_location.id,
+                        'to_location': move.from_location.id,
+                        'product': move.product.id,
+                        'uom': move.uom.id,
+                        'quantity': move.quantity,
+                        'shipment_out': shipment.id,
+                        'planned_date': move.planned_date,
+                        'state': 'draft',
+                        'company': move.company.id,
+                        'currency': move.currency.id,
+                        'unit_price': move.unit_price,
+                        })
+
+    @Workflow.transition('assigned')
+    def assign(self, ids):
+        pass
+
+    @ModelView.button
+    @Workflow.transition('packed')
+    def pack(self, ids):
+        move_obj = Pool().get('stock.move')
+        uom_obj = Pool().get('product.uom')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves
+                if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+
+        for shipment in shipments:
+            # Sum all outgoing quantities
+            outgoing_qty = {}
+            for move in shipment.outgoing_moves:
+                if move.state == 'cancel': continue
+                quantity = uom_obj.compute_qty(move.uom, move.quantity,
+                        move.product.default_uom, round=False)
+                outgoing_qty.setdefault(move.product.id, 0.0)
+                outgoing_qty[move.product.id] += quantity
+
+            for move in shipment.inventory_moves:
+                if move.state == 'cancel': continue
+                qty_default_uom = uom_obj.compute_qty(move.uom, move.quantity,
+                        move.product.default_uom, round=False)
+                # Check if the outgoing move doesn't exist already
+                if outgoing_qty.get(move.product.id):
+                    # If it exist, decrease the sum
+                    if qty_default_uom <= outgoing_qty[move.product.id]:
+                        outgoing_qty[move.product.id] -= qty_default_uom
+                        continue
+                    # Else create the complement
+                    else:
+                        out_quantity = qty_default_uom - outgoing_qty[move.product.id]
+                        out_quantity = uom_obj.compute_qty(
+                                move.product.default_uom, out_quantity, move.uom)
+                        outgoing_qty[move.product.id] = 0.0
+                else:
+                    out_quantity = move.quantity
+
+                unit_price = uom_obj.compute_price(move.product.default_uom,
+                        move.product.list_price, move.uom)
+                move_obj.create({
+                        'from_location': move.to_location.id,
+                        'to_location': shipment.customer.customer_location.id,
+                        'product': move.product.id,
+                        'uom': move.uom.id,
+                        'quantity': out_quantity,
+                        'shipment_out': shipment.id,
+                        'state': 'draft',
+                        'planned_date': shipment.planned_date,
+                        'company': move.company.id,
+                        'currency': move.company.currency.id,
+                        'unit_price': unit_price,
+                        })
+
+            #Re-read the shipment and remove exceeding quantities
+            for move in shipment.outgoing_moves:
+                if move.state == 'cancel': continue
+                if outgoing_qty.get(move.product.id, 0.0) > 0.0:
+                    exc_qty = uom_obj.compute_qty(move.product.default_uom,
+                            outgoing_qty[move.product.id], move.uom)
+                    removed_qty = uom_obj.compute_qty(move.uom,
+                            min(exc_qty, move.quantity), move.product.default_uom,
+                            round=False)
+                    move_obj.write(move.id,{
+                        'quantity': max(0.0, move.quantity-exc_qty),
+                        })
+                    outgoing_qty[move.product.id] -= removed_qty
+
+        move_obj.write([m.id for s in shipments for m in s.outgoing_moves
+                if m.state != 'cancel'], {
+                'state': 'assigned',
+                })
+
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(self, ids):
+        move_obj = Pool().get('stock.move')
+        date_obj = Pool().get('ir.date')
+
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.outgoing_moves
+                if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.write(ids, {
+                'effective_date': date_obj.today(),
+                })
+
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments
+                for m in s.outgoing_moves + s.inventory_moves
+                if m.state != 'cancel'], {
+                'state': 'cancel',
+                })
 
     def _get_move_planned_date(self, shipment):
         '''
@@ -1142,25 +1200,31 @@ class ShipmentOut(ModelWorkflow, ModelSQL, ModelView):
                     uom_index[target_uom])
         return res
 
-    def wkf_assign_try(self, shipment):
+    @ModelView.button
+    def assign_try(self, ids):
         move_obj = Pool().get('stock.move')
-        return move_obj.assign_try(shipment.inventory_moves)
+        shipments = self.browse(ids)
+        if move_obj.assign_try([m for s in shipments
+                    for m in s.inventory_moves]):
+            self.assign(ids)
+            return True
+        else:
+            return False
 
-    def wkf_assign_force(self, shipment):
+    @ModelView.button
+    def assign_force(self, ids):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.inventory_moves], {
-            'state': 'assigned',
-            })
-        return True
-
-    def button_draft(self, ids):
-        self.workflow_trigger_create(ids)
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves], {
+                'state': 'assigned',
+                })
+        self.assign(ids)
 
 ShipmentOut()
 
 
 
-class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
+class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     _name = 'stock.shipment.out.return'
     _description = __doc__
@@ -1242,20 +1306,31 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
             'inventory_move_input_source': 'Inventory Moves must ' \
                     'have the warehouse input location as source location!',
             })
+        self._transitions |= set((
+                ('draft', 'received'),
+                ('received', 'done'),
+                ('received', 'draf'),
+                ('draft', 'cancel'),
+                ('cancel', 'draft'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'draft': {
+                    'invisible': Eval('state') != 'cancel',
+                    },
+                'receive': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'done': {
+                    'invisible': Eval('state') != 'received',
+                    },
+                })
 
     def init(self, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE wkf "\
-                "SET model = 'stock.shipment.out.return' "\
-                "where model = 'stock.packing.out.return'")
-        cursor.execute("UPDATE wkf_instance "\
-                "SET res_type = 'stock.shipment.out.return' "\
-                "where res_type = 'stock.packing.out.return'")
-        cursor.execute("UPDATE wkf_trigger "\
-                "SET model = 'stock.shipment.out.return' "\
-                "WHERE model = 'stock.packing.out.return'")
-
         old_table = 'stock_packing_out_return'
         if TableHandler.table_exist(cursor, old_table):
             TableHandler.table_rename(cursor, old_table, self._table)
@@ -1468,54 +1543,52 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         return super(ShipmentOutReturn, self).copy(ids, default=default)
 
 
-    def button_draft(self, ids):
-        self.workflow_trigger_create(ids)
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.incoming_moves
+                if m.state != 'draft'], {
+                'state': 'draft',
+                })
+        move_obj.delete([m.id for s in shipments for m in s.inventory_moves])
 
-    def wkf_done(self, shipment):
+    @ModelView.button
+    @Workflow.transition('received')
+    def receive(self, ids):
+        move_obj = Pool().get('stock.move')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.incoming_moves
+                if m.state not in ('done', 'cancel')], {
+                'state': 'done',
+                })
+        self.create_inventory_moves(shipments)
+
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(self, ids):
         move_obj = Pool().get('stock.move')
         date_obj = Pool().get('ir.date')
-
-        move_obj.write([m.id for m in shipment.inventory_moves
-            if m.state not in ('done', 'cancel')], {
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves
+                if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
-        self.write(shipment.id,{
-            'state': 'done',
-            'effective_date': date_obj.today(),
-            })
+        self.write(ids,{
+                'effective_date': date_obj.today(),
+                })
 
-    def wkf_cancel(self, shipment):
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in
-            shipment.incoming_moves + shipment.inventory_moves
-            if m.state != 'cancel'], {
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments
+                for m in s.incoming_moves + s.inventory_moves
+                if m.state != 'cancel'], {
                 'state': 'cancel',
                 })
-        self.write(shipment.id, {
-            'state': 'cancel',
-            })
-
-    def wkf_received(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.incoming_moves
-            if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-                })
-        self.write(shipment.id, {
-            'state': 'received'
-            })
-        self.create_inventory_moves(shipment.id)
-
-    def wkf_draft(self, shipment):
-        move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.incoming_moves
-            if m.state != 'draft'], {
-            'state': 'draft',
-            })
-        move_obj.delete([m.id for m in shipment.inventory_moves])
-        self.write(shipment.id, {
-            'state': 'draft',
-            })
 
     def _get_inventory_moves(self, incoming_move):
         res = {}
@@ -1534,14 +1607,14 @@ class ShipmentOutReturn(ModelWorkflow, ModelSQL, ModelView):
         res['company'] = incoming_move.company.id
         return res
 
-    def create_inventory_moves(self, shipment_id):
-        shipment = self.browse(shipment_id)
-        for incoming_move in shipment.incoming_moves:
-            vals = self._get_inventory_moves(incoming_move)
-            if vals:
-                self.write(shipment.id, {
-                    'inventory_moves': [('create', vals)],
-                    })
+    def create_inventory_moves(self, shipments):
+        for shipment in shipments:
+            for incoming_move in shipment.incoming_moves:
+                vals = self._get_inventory_moves(incoming_move)
+                if vals:
+                    self.write(shipment.id, {
+                        'inventory_moves': [('create', vals)],
+                        })
 
 ShipmentOutReturn()
 
@@ -1584,27 +1657,23 @@ class AssignShipmentOut(Wizard):
 
     def transition_start(self, session):
         pool = Pool()
-        shipment_out_obj = pool.get('stock.shipment.out')
+        shipment_obj = pool.get('stock.shipment.out')
 
-        shipment_id = Transaction().context['active_id']
-        shipment_out_obj.workflow_trigger_validate(shipment_id, 'assign')
-        shipment = shipment_out_obj.browse(shipment_id)
-        if not [x.id for x in shipment.inventory_moves if x.state == 'draft']:
+        if shipment_obj.assign_try([Transaction().context['active_id']]):
             return 'end'
         else:
             return 'failed'
 
     def transition_force(self, session):
-        shipment_out_obj = Pool().get('stock.shipment.out')
+        shipment_obj = Pool().get('stock.shipment.out')
 
-        shipment_id = Transaction().context['active_id']
-        shipment_out_obj.workflow_trigger_validate(shipment_id, 'force_assign')
+        shipment_obj.assign_force([Transaction().context['active_id']])
         return 'end'
 
 AssignShipmentOut()
 
 
-class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
+class ShipmentInternal(Workflow, ModelSQL, ModelView):
     "Internal Shipment"
     _name = 'stock.shipment.internal'
     _description = __doc__
@@ -1668,19 +1737,52 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ], 'State', readonly=True)
 
+    def __init__(self):
+        super(ShipmentInternal, self).__init__()
+        self._rpc.update({
+            'button_draft': True,
+        })
+        self._order[0] = ('id', 'DESC')
+        self._transitions |= set((
+                ('draft', 'waiting'),
+                ('waiting', 'waiting'),
+                ('waiting', 'assigned'),
+                ('assigned', 'done'),
+                ('waiting', 'draft'),
+                ('assigned', 'waiting'),
+                ('draft', 'cancel'),
+                ('waiting', 'cancel'),
+                ('assigned', 'cancel'),
+                ))
+        self._buttons.update({
+                'cancel': {
+                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    },
+                'draft': {
+                    'invisible': ~Eval('state').in_(['cancel', 'waiting']),
+                    'icon': If(Eval('state') == 'cancel',
+                        'tryton-clear',
+                        'tryton-go-previous'),
+                    },
+                'wait': {
+                    'invisible': ~Eval('state').in_(['assigned', 'waiting',
+                            'draft']),
+                    'icon': If(Eval('state') == 'assigned',
+                        'tryton-go-previous',
+                        If(Eval('state') == 'waiting',
+                            'tryton-clear',
+                            'tryton-go-next')),
+                    },
+                'done': {
+                    'invisible': Eval('state') != 'assigned',
+                    },
+                'assign_try': {},
+                'assign_force': {},
+                })
+
     def init(self, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE wkf "\
-                "SET model = 'stock.shipment.internal' "\
-                "where model = 'stock.packing.internal'")
-        cursor.execute("UPDATE wkf_instance "\
-                "SET res_type = 'stock.shipment.internal' "\
-                "where res_type = 'stock.packing.internal'")
-        cursor.execute("UPDATE wkf_trigger "\
-                "SET model = 'stock.shipment.internal' "\
-                "WHERE model = 'stock.packing.internal'")
-
         old_table = 'stock_packing_internal'
         if TableHandler.table_exist(cursor, old_table):
             TableHandler.table_rename(cursor, old_table, self._table)
@@ -1723,17 +1825,6 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
     def default_company(self):
         return Transaction().context.get('company') or False
 
-    def button_draft(self, ids):
-        self.workflow_trigger_create(ids)
-        return True
-
-    def __init__(self):
-        super(ShipmentInternal, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
-        self._order[0] = ('id', 'DESC')
-
     def create(self, values):
         sequence_obj = Pool().get('ir.sequence')
         config_obj = Pool().get('stock.configuration')
@@ -1744,63 +1835,76 @@ class ShipmentInternal(ModelWorkflow, ModelSQL, ModelView):
                 config.shipment_internal_sequence.id)
         return super(ShipmentInternal, self).create(values)
 
-    def wkf_draft(self, shipment):
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
         move_obj = Pool().get('stock.move')
-        self.write(shipment.id, {
-            'state': 'draft',
-            })
-        move_obj.write([m.id for m in shipment.moves], {
-            'state': 'draft',
-            })
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves], {
+                'state': 'draft',
+                })
 
-    def wkf_waiting(self, shipment):
+    @ModelView.button
+    @Workflow.transition('waiting')
+    def wait(self, ids):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.moves], {
-            'from_location': shipment.from_location.id,
-            'to_location': shipment.to_location.id,
-            'state': 'draft',
-            'planned_date': shipment.planned_date,
-            })
-        self.write(shipment.id, {
-            'state': 'waiting',
-            })
+        shipments = self.browse(ids)
+        # First reset state to draft to allow update from and to location
+        move_obj.write([m.id for s in shipments for m in s.moves], {
+                'state': 'draft',
+                })
+        for shipment in shipments:
+            move_obj.write([m.id for m in shipment.moves ], {
+                'from_location': shipment.from_location.id,
+                'to_location': shipment.to_location.id,
+                'planned_date': shipment.planned_date,
+                })
 
-    def wkf_assigned(self, shipment):
-        self.write(shipment.id, {
-            'state': 'assigned',
-            })
+    @Workflow.transition('assigned')
+    def assign(self, ids):
+        pass
 
-    def wkf_done(self, shipment):
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(self, ids):
         move_obj = Pool().get('stock.move')
         date_obj = Pool().get('ir.date')
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves], {
+                'state': 'done',
+                })
+        self.write(ids, {
+                'effective_date': date_obj.today(),
+                })
 
-        move_obj.write([m.id for m in shipment.moves], {
-            'state': 'done',
-            })
-        self.write(shipment.id, {
-            'state': 'done',
-            'effective_date': date_obj.today(),
-            })
-
-    def wkf_cancel(self, shipment):
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.moves], {
-            'state': 'cancel',
-            })
-        self.write(shipment.id, {
-            'state': 'cancel',
-            })
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves], {
+                'state': 'cancel',
+                })
 
-    def wkf_assign_try(self, shipment):
+    @ModelView.button
+    def assign_try(self, ids):
         move_obj = Pool().get('stock.move')
-        return move_obj.assign_try(shipment.moves)
+        shipments = self.browse(ids)
+        if move_obj.assign_try([m for s in shipments
+                    for m in s.moves]):
+            self.assign(ids)
+            return True
+        else:
+            return False
 
-    def wkf_assign_force(self, shipment):
+    @ModelView.button
+    def assign_force(self, ids):
         move_obj = Pool().get('stock.move')
-        move_obj.write([m.id for m in shipment.moves], {
-            'state': 'assigned',
-            })
-        return True
+        shipments = self.browse(ids)
+        move_obj.write([m.id for s in shipments for m in s.moves], {
+                'state': 'assigned',
+                })
+        self.assign(ids)
 
 ShipmentInternal()
 
@@ -1850,22 +1954,17 @@ class AssignShipmentInternal(Wizard):
 
     def transition_start(self, session):
         pool = Pool()
-        shipment_internal_obj = pool.get('stock.shipment.internal')
+        shipment_obj = pool.get('stock.shipment.internal')
 
-        shipment_id = Transaction().context['active_id']
-        shipment_internal_obj.workflow_trigger_validate(shipment_id, 'assign')
-        shipment = shipment_internal_obj.browse(shipment_id)
-        if not [x.id for x in shipment.moves if x.state == 'draft']:
+        if shipment_obj.assign_try([Transaction().context['active_id']]):
             return 'end'
         else:
             return 'failed'
 
     def transition_force(self, session):
-        shipment_internal_obj = Pool().get('stock.shipment.internal')
+        shipment_obj = Pool().get('stock.shipment.internal')
 
-        shipment_id = Transaction().context['active_id']
-        shipment_internal_obj.workflow_trigger_validate(shipment_id,
-            'force_assign')
+        shipment_obj.assign_force([Transaction().context['active_id']])
         return 'end'
 
 AssignShipmentInternal()
@@ -1909,22 +2008,17 @@ class AssignShipmentInReturn(Wizard):
 
     def transition_start(self, session):
         pool = Pool()
-        shipment_internal_obj = pool.get('stock.shipment.in.return')
+        shipment_obj = pool.get('stock.shipment.in.return')
 
-        shipment_id = Transaction().context['active_id']
-        shipment_internal_obj.workflow_trigger_validate(shipment_id, 'assign')
-        shipment = shipment_internal_obj.browse(shipment_id)
-        if not [x.id for x in shipment.moves if x.state == 'draft']:
+        if shipment_obj.assign_try([Transaction().context['active_id']]):
             return 'end'
         else:
             return 'failed'
 
     def transition_force(self, session):
-        shipment_internal_obj = Pool().get('stock.shipment.in.return')
+        shipment_obj = Pool().get('stock.shipment.in.return')
 
-        shipment_id = Transaction().context['active_id']
-        shipment_internal_obj.workflow_trigger_validate(shipment_id,
-                'force_assign')
+        shipment_obj.assign_force([Transaction().context['active_id']])
         return 'end'
 
 AssignShipmentInReturn()

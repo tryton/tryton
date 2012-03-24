@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Not, Equal, Eval, Or, Bool
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
@@ -12,7 +12,7 @@ STATES = {
 DEPENDS = ['state']
 
 
-class Inventory(ModelWorkflow, ModelSQL, ModelView):
+class Inventory(Workflow, ModelSQL, ModelView):
     'Stock Inventory'
     _name = 'stock.inventory'
     _description = __doc__
@@ -51,7 +51,21 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
     def __init__(self):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
-        self._rpc['complete_lines'] = True
+        self._transitions |= set((
+                ('draft', 'done'),
+                ('draft', 'cancel'),
+                ))
+        self._buttons.update({
+                'confirm': {
+                    'invisible': Eval('state').in_(['done', 'cancel']),
+                    },
+                'cancel': {
+                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    },
+                'complete_lines': {
+                    'readonly': Eval('state') != 'draft',
+                    },
+                })
 
     def init(self, module_name):
         super(Inventory, self).init(module_name)
@@ -78,26 +92,20 @@ class Inventory(ModelWorkflow, ModelSQL, ModelView):
             return location_ids[0]
         return False
 
-    def wkf_draft(self, inventory):
-        self.write(inventory.id, {
-            'state': 'draft',
-            })
-
-    def wkf_cancel(self, inventory):
-        line_obj = Pool().get("stock.inventory.line")
-        line_obj.cancel_move(inventory.lines)
-        self.write(inventory.id, {
-            'state': 'cancel',
-            })
-
-    def wkf_done(self, inventory):
+    @ModelView.button
+    @Workflow.transition('done')
+    def confirm(self, ids):
         line_obj = Pool().get('stock.inventory.line')
+        for inventory in self.browse(ids):
+            for line in inventory.lines:
+                line_obj.create_move(line)
 
-        for line in inventory.lines:
-            line_obj.create_move(line)
-        self.write(inventory.id, {
-            'state': 'done',
-            })
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
+        line_obj = Pool().get("stock.inventory.line")
+        inventories = self.browse(ids)
+        line_obj.cancel_move([l for i in inventories for l in i.lines])
 
     def copy(self, ids, default=None):
         date_obj = Pool().get('ir.date')

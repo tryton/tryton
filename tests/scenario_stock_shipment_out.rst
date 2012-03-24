@@ -23,7 +23,7 @@ Install stock Module::
 
     >>> Module = Model.get('ir.module.module')
     >>> modules = Module.find([('name', '=', 'stock')])
-    >>> Module.button_install([x.id for x in modules], config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -115,8 +115,7 @@ Add two shipment lines of same product::
 
 Set the shipment state to waiting::
 
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'waiting', config.context)
+    >>> ShipmentOut.wait([shipment_out.id], config.context)
     >>> shipment_out.reload()
     >>> len(shipment_out.outgoing_moves)
     2
@@ -141,8 +140,8 @@ Make 1 unit of the product available::
 
 Assign the shipment now::
 
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'assign', config.context)
+    >>> ShipmentOut.assign_try([shipment_out.id], config.context)
+    False
     >>> shipment_out.reload()
     >>> len(shipment_out.outgoing_moves)
     2
@@ -160,10 +159,9 @@ Delete the draft move, assign and pack shipment::
     ...         break
     >>> shipment_out.inventory_moves.remove(move)
     >>> shipment_out.save()
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'assign', config.context)
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'packed', config.context)
+    >>> ShipmentOut.assign_try([shipment_out.id], config.context)
+    True
+    >>> ShipmentOut.pack([shipment_out.id], config.context)
     >>> shipment_out.reload()
     >>> set([m.state for m in shipment_out.outgoing_moves])
     set([u'assigned'])
@@ -179,8 +177,7 @@ Delete the draft move, assign and pack shipment::
 
 Set the state as Done::
 
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'done', config.context)
+    >>> ShipmentOut.done([shipment_out.id], config.context)
     >>> shipment_out.reload()
     >>> set([m.state for m in shipment_out.outgoing_moves])
     set([u'done'])

@@ -16,11 +16,9 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="state"/>
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
-                        <button name="button_draft" type="object" string="Draft"
-                            states="{'invisible': Equal(Eval('state'), 'draft'), 'readonly': Not(In(%(group_stock_admin)d, Eval('groups', [])))}"
+                        <button name="draft" type="object" string="Draft"
                             icon="tryton-clear"/>
-                        <button name="button_close" type="object" string="Close"
-                            states="{'invisible': Equal(Eval('state'), 'closed'), 'readonly': Not(In(%(group_stock_admin)d, Eval('groups', [])))}"
+                        <button name="close" type="object" string="Close"
                             icon="tryton-ok"/>
                     </group>
                 </form>
@@ -80,6 +78,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="period_draft_button">
+            <field name="name">draft</field>
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="period_draft_button_group_stock_admin">
+            <field name="button" ref="period_draft_button"/>
+            <field name="group" ref="group_stock_admin"/>
+        </record>
+
+        <record model="ir.model.button" id="period_close_button">
+            <field name="name">close</field>
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="period_close_button_group_stock_admin">
+            <field name="button" ref="period_close_button"/>
+            <field name="group" ref="group_stock_admin"/>
         </record>
 
         <record model="ir.ui.view" id="period_cache_view_form">
