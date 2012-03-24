@@ -86,7 +86,7 @@ class Uom(ModelSQL, ModelView):
         return 1.0
 
     def default_active(self):
-        return 1
+        return True
 
     def default_rounding(self):
         return 0.01
