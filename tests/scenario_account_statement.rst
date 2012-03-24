@@ -25,7 +25,7 @@ Install account_statement and account_invoice::
     >>> modules = Module.find([
     ...     ('name', 'in', ('account_statement', 'account_invoice')),
     ... ])
-    >>> Module.button_install([x.id for x in modules], config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -148,8 +148,7 @@ Create 2 customer invoices::
     >>> invoice_line.account = revenue
     >>> invoice_line.description = 'Test'
     >>> customer_invoice1.save()
-    >>> Invoice.workflow_trigger_validate(customer_invoice1.id, 'open',
-    ...     config.context)
+    >>> Invoice.open([customer_invoice1.id], config.context)
     >>> customer_invoice1.state
     u'open'
 
@@ -163,8 +162,7 @@ Create 2 customer invoices::
     >>> invoice_line.account = revenue
     >>> invoice_line.description = 'Test'
     >>> customer_invoice2.save()
-    >>> Invoice.workflow_trigger_validate(customer_invoice2.id, 'open',
-    ...     config.context)
+    >>> Invoice.open([customer_invoice2.id], config.context)
     >>> customer_invoice2.state
     u'open'
 
@@ -180,8 +178,7 @@ Create 1 supplier invoices::
     >>> invoice_line.account = expense
     >>> invoice_line.description = 'Test'
     >>> supplier_invoice.save()
-    >>> Invoice.workflow_trigger_validate(supplier_invoice.id, 'open',
-    ...     config.context)
+    >>> Invoice.open([supplier_invoice.id], config.context)
     >>> supplier_invoice.state
     u'open'
 
@@ -252,8 +249,7 @@ Paid 50 to supplier::
 
 Validate statement::
 
-    >>> Statement.workflow_trigger_validate(statement.id, 'validated',
-    ...     config.context)
+    >>> Statement.validate([statement.id], config.context)
     >>> statement.state
     u'validated'
 

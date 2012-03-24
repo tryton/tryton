@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelWorkflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
@@ -11,7 +11,7 @@ _STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
 
 
-class Statement(ModelWorkflow, ModelSQL, ModelView):
+class Statement(Workflow, ModelSQL, ModelView):
     'Account Statement'
     _name = 'account.statement'
     _description = __doc__
@@ -63,13 +63,30 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(Statement, self).__init__()
-        self._rpc.update({
-            'draft_workflow': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'wrong_end_balance': 'End Balance must be %s!',
             })
+        self._transitions |= set((
+                ('draft', 'validated'),
+                ('validated', 'posted'),
+                ('validated', 'cancel'),
+                ('cancel', 'draft'),
+                ))
+        self._buttons.update({
+                'draft': {
+                    'invisible': Eval('state') != 'cancel',
+                    },
+                'validate': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'post': {
+                    'invisible': Eval('state') != 'validated',
+                    },
+                'cancel': {
+                    'invisible': Eval('state') != 'validated',
+                    },
+                })
 
     def init(self, module_name):
         cursor = Transaction().cursor
@@ -256,51 +273,51 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                             amount_to_pay - abs(line['amount'])
         return res
 
-    def wkf_validated(self, statement):
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        pass
+
+    @ModelView.button
+    @Workflow.transition('validated')
+    def validate(self, ids):
         statement_line_obj = Pool().get('account.statement.line')
         lang_obj = Pool().get('ir.lang')
 
-        computed_end_balance = statement.start_balance
-        for line in statement.lines:
-            computed_end_balance += line.amount
-        if computed_end_balance != statement.end_balance:
-            lang_id, = lang_obj.search([
-                    ('code', '=', Transaction().language),
-                    ])
-            lang = lang_obj.browse(lang_id)
+        for statement in self.browse(ids):
+            computed_end_balance = statement.start_balance
+            for line in statement.lines:
+                computed_end_balance += line.amount
+            if computed_end_balance != statement.end_balance:
+                lang_id, = lang_obj.search([
+                        ('code', '=', Transaction().language),
+                        ])
+                lang = lang_obj.browse(lang_id)
 
-            amount = lang_obj.format(lang,
-                    '%.' + str(statement.journal.currency.digits) + 'f',
-                    computed_end_balance, True)
-            self.raise_user_error('wrong_end_balance', error_args=(amount,))
-        for line in statement.lines:
-            statement_line_obj.create_move(line)
-        self.write(statement.id, {
-            'state':'validated',
-            })
+                amount = lang_obj.format(lang,
+                        '%.' + str(statement.journal.currency.digits) + 'f',
+                        computed_end_balance, True)
+                self.raise_user_error('wrong_end_balance', error_args=(amount,))
+            for line in statement.lines:
+                statement_line_obj.create_move(line)
 
-    def wkf_posted(self, statement):
+    @ModelView.button
+    @Workflow.transition('posted')
+    def post(self, ids):
         statement_line_obj = Pool().get('account.statement.line')
 
-        statement_line_obj.post_move(statement.lines)
-        self.write(statement.id, {
-            'state':'posted',
-            })
+        statements = self.browse(ids)
+        lines = [l for s in statements for l in s.lines]
+        statement_line_obj.post_move(lines)
 
-    def wkf_cancel(self, statement):
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(self, ids):
         statement_line_obj = Pool().get('account.statement.line')
 
-        statement_line_obj.delete_move(statement.lines)
-        self.write(statement.id, {
-            'state':'cancel',
-            })
-
-    def draft_workflow(self, ids):
-        self.workflow_trigger_create(ids)
-        self.write(ids, {
-            'state': 'draft',
-            })
-        return True
+        statements = self.browse(ids)
+        lines = [l for s in statements for l in s.lines]
+        statement_line_obj.delete_move(lines)
 
 Statement()
 
@@ -426,10 +443,7 @@ class Line(ModelSQL, ModelView):
 
     def create_move(self, line):
         '''
-        Create move for the statement line
-
-        :param line: a BrowseRecord of the line
-        :return: the move id
+        Create move for the statement line and return move id if created.
         '''
         pool = Pool()
         move_obj = pool.get('account.move')
@@ -438,6 +452,9 @@ class Line(ModelSQL, ModelView):
         currency_obj = pool.get('currency.currency')
         move_line_obj = pool.get('account.move.line')
         lang_obj = pool.get('ir.lang')
+
+        if line.move:
+            return
 
         period_id = period_obj.find(line.statement.company.id,
                 date=line.date)

@@ -43,15 +43,14 @@ this repository contains the full copyright notices and license terms. -->
                                 <label name="state"/>
                                 <field name="state"/>
                                 <group col="4" colspan="2" id="buttons">
-                                    <button string="Validate" name="validated"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"/>
+                                    <button string="Validate" name="validate"
+                                        type="object"/>
                                     <button string="Cancel" name="cancel"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
-                                    <button string="Post" name="posted"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'validated'))}"/>
-                                    <button string="Reset to Draft" name="draft_workflow"
-                                        type="object"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'cancel'))}"/>
+                                        type="object"/>
+                                    <button string="Post" name="post"
+                                        type="object"/>
+                                    <button string="Reset to Draft" name="draft"
+                                        type="object"/>
                                 </group>
                             </group>
                         </page>
@@ -226,53 +225,6 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!-- Statement workflow -->
-        <record model="workflow" id="wkf_statement">
-            <field name="name">Statement</field>
-            <field name="model">account.statement</field>
-            <field name="on_create" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="statement_act_draft">
-            <field name="workflow" ref="wkf_statement"/>
-            <field name="flow_start" eval="True"/>
-            <field name="name">Draft</field>
-        </record>
-        <record model="workflow.activity" id="statement_act_validated">
-            <field name="workflow" ref="wkf_statement"/>
-            <field name="method">wkf_validated</field>
-            <field name="name">Validated</field>
-        </record>
-        <record model="workflow.activity" id="statement_act_posted">
-            <field name="workflow" ref="wkf_statement"/>
-            <field name="method">wkf_posted</field>
-            <field name="name">Posted</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="statement_act_cancel">
-            <field name="workflow" ref="wkf_statement"/>
-            <field name="method">wkf_cancel</field>
-            <field name="name">Canceled</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-        <record model="workflow.transition" id="statement_trans_draft_validated">
-            <field name="act_from" ref="statement_act_draft"/>
-            <field name="act_to" ref="statement_act_validated"/>
-            <field name="group" ref="account.group_account"/>
-            <field name="signal">validated</field>
-        </record>
-        <record model="workflow.transition" id="statement_trans_validated_posted">
-            <field name="act_from" ref="statement_act_validated"/>
-            <field name="act_to" ref="statement_act_posted"/>
-            <field name="group" ref="account.group_account"/>
-            <field name="signal">posted</field>
-        </record>
-        <record model="workflow.transition" id="statement_trans_validated_cancel">
-            <field name="act_from" ref="statement_act_validated"/>
-            <field name="act_to" ref="statement_act_cancel"/>
-            <field name="group" ref="account.group_account_admin"/>
-            <field name="signal">cancel</field>
-        </record>
-
         <record model="ir.model.access" id="access_statement_account_admin">
             <field name="model" search="[('model', '=', 'account.statement')]"/>
             <field name="group" ref="account.group_account_admin"/>
@@ -321,6 +273,50 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_draft_button_group_account">
+            <field name="button" ref="statement_draft_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_validate_button">
+            <field name="name">validate</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_validate_button_group_account">
+            <field name="button" ref="statement_validate_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_post_button">
+            <field name="name">post</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_post_button_group_account">
+            <field name="button" ref="statement_post_button"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+
+        <record model="ir.model.button" id="statement_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'account.statement')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="statement_cancel_button_group_account">
+            <field name="button" ref="statement_cancel_button"/>
+            <field name="group" ref="account.group_account_admin"/>
         </record>
 
     </data>
