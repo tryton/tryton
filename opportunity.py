@@ -3,7 +3,7 @@
 "Sales extension for managing leads and opportunities"
 import datetime
 import time
-from trytond.model import ModelView, ModelSQL, ModelWorkflow, fields
+from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.backend import FIELDS, TableHandler
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
@@ -27,7 +27,7 @@ _STATES_STOP = {
 _DEPENDS_STOP = ['state']
 
 
-class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
+class SaleOpportunity(Workflow, ModelSQL, ModelView):
     'Sale Opportunity'
     _name = "sale.opportunity"
     _description = __doc__
@@ -96,9 +96,37 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
                 'CHECK(probability >= 0 AND probability <= 100)',
                 'Probability must be between 0 and 100!')
         ]
-        self._rpc.update({
-            'button_lead': True,
-        })
+        self._transitions |= set((
+                ('lead', 'opportunity'),
+                ('lead', 'lost'),
+                ('lead', 'cancelled'),
+                ('opportunity', 'converted'),
+                ('opportunity', 'lead'),
+                ('opportunity', 'lost'),
+                ('opportunity', 'cancelled'),
+                ('lost', 'lead'),
+                ('cancelled', 'lead'),
+                ))
+        self._buttons.update({
+                'lead': {
+                    'invisible': ~Eval('state').in_(
+                        ['cancelled', 'lost', 'opportunity']),
+                    'icon': If(Eval('state').in_(['cancelled', 'lost']),
+                        'tryton-clear', 'tryton-go-previous'),
+                    },
+                'opportunity': {
+                    'invisible': ~Eval('state').in_(['lead']),
+                    },
+                'convert': {
+                    'invisible': ~Eval('state').in_(['opportunity']),
+                    },
+                'lost': {
+                    'invisible': ~Eval('state').in_(['lead', 'opportunity']),
+                    },
+                'cancel': {
+                    'invisible': ~Eval('state').in_(['lead', 'opportunity']),
+                    },
+                })
 
     def default_state(self):
         return 'lead'
@@ -173,10 +201,6 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
                     res['payment_term']).rec_name
         return res
 
-    def button_lead(self, ids):
-        self.workflow_trigger_create(ids)
-        return True
-
     def _get_sale_line_opportunity_line(self, opportunity):
         '''
         Return sale line values for each opportunity line
@@ -189,6 +213,8 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         line_obj = Pool().get('sale.opportunity.line')
         res = {}
         for line in opportunity.lines:
+            if line.sale_line:
+                continue
             val = line_obj.get_sale_line(line)
             if val:
                 res[line.id] = val
@@ -214,18 +240,17 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
         }
         return res
 
-    def create_sale(self, opportunity_id):
+    def create_sale(self, opportunity):
         '''
-        Create a sale for the opportunity
-
-        :param opportunity_id: the id of the opportunity
+        Create a sale for the opportunity and return the sale id
         '''
         pool = Pool()
         sale_obj = pool.get('sale.sale')
         sale_line_obj = pool.get('sale.line')
         line_obj = pool.get('sale.opportunity.line')
 
-        opportunity = self.browse(opportunity_id)
+        if opportunity.sale:
+            return
 
         values = self._get_sale_opportunity(opportunity)
         sale_line_values = self._get_sale_line_opportunity_line(opportunity)
@@ -241,37 +266,45 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
                 'sale_line': sale_line_id,
                 })
 
-        self.write(opportunity_id, {
+        self.write(opportunity.id, {
             'sale': sale_id,
             })
         return sale_id
 
-    def wkf_lead(self, opportunity):
-        self.write(opportunity.id, {'state': 'lead'})
+    @ModelView.button
+    @Workflow.transition('lead')
+    def lead(self, ids):
+        pass
 
-    def wkf_opportunity(self, opportunity):
-        self.write(opportunity.id, {'state': 'opportunity'})
+    @ModelView.button
+    @Workflow.transition('opportunity')
+    def opportunity(self, ids):
+        pass
 
-    def wkf_converted(self, opportunity):
+    @ModelView.button
+    @Workflow.transition('converted')
+    def convert(self, ids):
         date_obj = Pool().get('ir.date')
-        self.write(opportunity.id, {
+        self.write(ids, {
                 'end_date': date_obj.today(),
-                'state': 'converted',
                 })
-        self.create_sale(opportunity.id)
+        for opportunity in self.browse(ids):
+            self.create_sale(opportunity)
 
-    def wkf_cancelled(self, opportunity):
+    @ModelView.button
+    @Workflow.transition('lost')
+    def lost(self, ids):
         date_obj = Pool().get('ir.date')
-        self.write(opportunity.id, {
+        self.write(ids, {
                 'end_date': date_obj.today(),
-                'state': 'cancelled',
                 })
 
-    def wkf_lost(self, opportunity):
+    @ModelView.button
+    @Workflow.transition('cancelled')
+    def cancel(self, ids):
         date_obj = Pool().get('ir.date')
-        self.write(opportunity.id, {
+        self.write(ids, {
                 'end_date': date_obj.today(),
-                'state': 'lost',
                 })
 
 SaleOpportunity()

@@ -53,26 +53,22 @@
                                 <label name="state"/>
                                 <field name="state"/>
                             </group>
-                            <group col="6" colspan="2" id="buttons">
-                                <button name="cancelled" string="Cancel"
-                                    states="{'invisible': Not(In(Eval('state'), ['lead', 'opportunity']))}"
+                            <group col="5" colspan="2" id="buttons">
+                                <button name="cancel" type="object"
+                                    string="Cancel"
                                     icon="tryton-cancel"/>
-                                <button name="lost_lead" string="Mark as Lost"
-                                    states="{'invisible':Not(In(Eval('state'), ['lead','opportunity']))}"
+                                <button name="lost" type="object"
+                                    string="Mark as Lost"
                                     icon="tryton-cancel"/>
-                                <button name="set_as_lead" string="Set as Lead"
-                                    states="{'invisible':Not(In(Eval('state'), ['opportunity']))}"
+                                <button name="lead" type="object"
+                                    string="Set as Lead"
                                     icon="tryton-go-previous"/>
-                                <button name="convert_to_opportunity" string="Convert to Opportunity"
-                                    states="{'invisible': Not(In(Eval('state'), ['lead']))}"
+                                <button name="opportunity" type="object"
+                                    string="Convert to Opportunity"
                                     icon="tryton-go-next"/>
-                                <button name="convert_to_sale" string="Convert to Sale"
-                                    states="{'invisible': Not(In(Eval('state'), ['opportunity']))}"
+                                <button name="convert" type="object"
+                                    string="Convert to Sale"
                                     icon="tryton-go-next"/>
-                                <button name="button_lead" string="Reset as Lead"
-                                    type="object"
-                                    states="{'invisible': Not(In(Eval('state'), ['lost', 'cancelled']))}"
-                                    icon="tryton-clear"/>
                             </group>
                         </page>
                         <page name="lines">
@@ -237,6 +233,56 @@
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="opportunity_lead_button">
+            <field name="name">lead</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_lead_button_group_opportinity">
+            <field name="button" ref="opportunity_lead_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_opportunity_button">
+            <field name="name">opportunity</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_opportunity_button_group_opportunity">
+            <field name="button" ref="opportunity_opportunity_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_convert_button">
+            <field name="name">convert</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_convert_button_group_opportinity">
+            <field name="button" ref="opportunity_convert_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_lost_button">
+            <field name="name">lost</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_lost_button_group_opportinity">
+            <field name="button" ref="opportunity_lost_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
+        <record model="ir.model.button" id="opportunity_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="opportunity_cancel_button_group_opportinity">
+            <field name="button" ref="opportunity_cancel_button"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_opportunity">
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
             <field name="global_p" eval="True"/>
@@ -246,91 +292,6 @@
             <field name="operator">=</field>
             <field name="operand">User/Current Company</field>
             <field name="rule_group" ref="rule_group_opportunity"/>
-        </record>
-
-        <record model="workflow" id="opportunity_workflow">
-            <field name="name">Sales Opportunity Workflow</field>
-            <field name="model">sale.opportunity</field>
-            <field name="on_create" eval="True" />
-        </record>
-
-        <record model="workflow.activity" id="opportunity_activity_lead">
-            <field name="name">Lead</field>
-            <field name="workflow" ref="opportunity_workflow"/>
-            <field name="method">wkf_lead</field>
-            <field name="flow_start" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="opportunity_activity_opportunity">
-            <field name="name">Opportunity</field>
-            <field name="workflow" ref="opportunity_workflow"/>
-            <field name="method">wkf_opportunity</field>
-        </record>
-        <record model="workflow.activity" id="opportunity_activity_converted">
-            <field name="name">Converted</field>
-            <field name="workflow" ref="opportunity_workflow"/>
-            <field name="method">wkf_converted</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="opportunity_activity_cancelled">
-            <field name="name">Cancelled</field>
-            <field name="workflow" ref="opportunity_workflow"/>
-            <field name="method">wkf_cancelled</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-        <record model="workflow.activity" id="opportunity_activity_lost">
-            <field name="name">Lost</field>
-            <field name="workflow" ref="opportunity_workflow"/>
-            <field name="method">wkf_lost</field>
-            <field name="flow_stop" eval="True"/>
-        </record>
-
-        <record model="workflow.transition" id="opportunity_transition_lead_opportunity">
-            <field name="act_from" ref="opportunity_activity_lead"/>
-            <field name="act_to" ref="opportunity_activity_opportunity"/>
-            <field name="signal">convert_to_opportunity</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_opportunity_converted">
-            <field name="act_from" ref="opportunity_activity_opportunity"/>
-            <field name="act_to" ref="opportunity_activity_converted"/>
-            <field name="signal">convert_to_sale</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_opportunity_lead">
-            <field name="act_from" ref="opportunity_activity_opportunity"/>
-            <field name="act_to" ref="opportunity_activity_lead"/>
-            <field name="signal">set_as_lead</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_cancelled_lead">
-            <field name="act_from" ref="opportunity_activity_cancelled"/>
-            <field name="act_to" ref="opportunity_activity_lead"/>
-            <field name="signal">set_as_lead</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_lead_lost">
-            <field name="act_from" ref="opportunity_activity_lead"/>
-            <field name="act_to" ref="opportunity_activity_lost"/>
-            <field name="signal">lost_lead</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_opportunity_lost">
-            <field name="act_from" ref="opportunity_activity_opportunity"/>
-            <field name="act_to" ref="opportunity_activity_lost"/>
-            <field name="signal">lost_lead</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_lead_cancelled">
-            <field name="act_from" ref="opportunity_activity_lead"/>
-            <field name="act_to" ref="opportunity_activity_cancelled"/>
-            <field name="signal">cancelled</field>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="workflow.transition" id="opportunity_transition_opp_cancelled">
-            <field name="act_from" ref="opportunity_activity_opportunity"/>
-            <field name="act_to" ref="opportunity_activity_cancelled"/>
-            <field name="signal">cancelled</field>
-            <field name="group" ref="sale.group_sale"/>
         </record>
 
         <record model="ir.ui.view" id="opportunity_line_view_form">
