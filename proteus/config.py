@@ -99,10 +99,15 @@ class _TrytondMethod(object):
         from trytond.cache import Cache
         from trytond.transaction import Transaction
 
-        assert self._name in self._object._rpc
+        if self._name in self._object._rpc:
+            readonly = not self._object._rpc[self._name]
+        elif self._name in getattr(self._object, '_buttons', {}):
+            readonly = False
+        else:
+            raise TypeError('%s is not callable' % self._name)
 
         with Transaction().start(self._config.database_name,
-                self._config.user) as transaction:
+                self._config.user, readonly=readonly) as transaction:
             Cache.clean(self._config.database_name)
             args = list(args)
             context = args.pop()
@@ -111,7 +116,7 @@ class _TrytondMethod(object):
                 del context['_timestamp']
             transaction.context = context
             res = getattr(self._object, self._name)(*args)
-            if self._object._rpc[self._name]:
+            if not readonly:
                 transaction.cursor.commit()
         Cache.resets(self._config.database_name)
         return res
@@ -211,7 +216,10 @@ class TrytondConfig(Config):
     def get_proxy_methods(self, name, type='model'):
         'Return list of methods'
         proxy = self.get_proxy(name, type=type)
-        return [x for x in proxy._object._rpc]
+        methods = [x for x in proxy._object._rpc]
+        if hasattr(proxy._object, '_buttons'):
+            methods += [x for x in proxy._object._buttons]
+        return methods
 
 
 def set_trytond(database_name=None, user='admin', database_type=None,
