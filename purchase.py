@@ -24,14 +24,14 @@ class Purchase(ModelSQL, ModelView):
 
         super(Purchase, self).init(module_name)
 
-    def create_invoice(self, purchase_id):
+    def create_invoice(self, purchase):
         invoice_obj = Pool().get('account.invoice')
         invoice_line_obj = Pool().get('account.invoice.line')
 
-        res = super(Purchase, self).create_invoice(purchase_id)
+        invoice_id = super(Purchase, self).create_invoice(purchase)
 
-        if res:
-            invoice = invoice_obj.browse(res)
+        if invoice_id:
+            invoice = invoice_obj.browse(invoice_id)
             line_ids = [x.id for x in invoice.lines]
             with Transaction().set_user(0, set_context=True):
                 invoice_line_obj.write(line_ids, {
@@ -41,46 +41,30 @@ class Purchase(ModelSQL, ModelView):
                     'currency': invoice.currency.id,
                     'company': invoice.company.id,
                     })
-            self.write(purchase_id, {
-                'invoices': [('unlink', res)],
+            self.write(purchase.id, {
+                'invoices': [('unlink', invoice_id)],
                 'invoice_lines': [('add', line_ids)],
                 })
             with Transaction().set_user(0, set_context=True):
-                invoice_obj.workflow_trigger_validate(res, 'cancel')
-                invoice_obj.delete(res)
-            res = None
-        return res
+                invoice_obj.cancel([invoice_id])
+                invoice_obj.delete(invoice_id)
+            return None
+        return invoice_id
 
-    def get_invoice_paid(self, purchases):
-        res = super(Purchase, self).get_invoice_paid(purchases)
-        for purchase in purchases:
-            val = True
-            ignored_ids = [x.id for x in purchase.invoice_lines_ignored]
-            for invoice_line in purchase.invoice_lines:
-                if not invoice_line.invoice:
-                    val = False
-                    break
-                if invoice_line.invoice.state != 'paid' \
-                        and invoice_line.id not in ignored_ids:
-                    val = False
-                    break
-            res[purchase.id] = val
-        return res
-
-    def get_invoice_exception(self, purchases):
-        res = super(Purchase, self).get_invoice_exception(purchases)
-
-        for purchase in purchases:
-            val = False
-            ignored_ids = [x.id for x in purchase.invoice_lines_ignored]
-            for invoice_line in purchase.invoice_lines:
-                if invoice_line.invoice \
-                        and invoice_line.invoice.state == 'cancel' \
-                        and invoice_line.id not in ignored_ids:
-                    val = True
-                    break
-            res[purchase.id] = val
-        return res
+    def get_invoice_state(self, purchase):
+        state = super(Purchase, self).get_invoice_state(purchase)
+        skip_ids = set(x.id for x in purchase.invoice_lines_ignored)
+        invoice_lines = [l for l in purchase.invoice_lines
+            if l.id not in skip_ids]
+        if invoice_lines:
+            if any(l.invoice and l.invoice.state == 'cancel'
+                    for l in invoice_lines):
+                return 'exception'
+            elif (state == 'paid'
+                    and all(l.invoice for l in invoice_lines)
+                    and all(l.invoice.state == 'paid' for l in invoice_lines)):
+                return 'paid'
+        return state
 
     def copy(self, ids, default=None):
         if default is None:
@@ -102,9 +86,6 @@ class Purchase(ModelSQL, ModelView):
             self.write(purchase_id, {
                 'invoice_lines_ignored': [('add', x) for x in invoice_line_ids],
                 })
-
-    def wkf_triggered_invoice_lines(self, purchase):
-        return [x.id for x in purchase.invoice_lines]
 
 Purchase()
 

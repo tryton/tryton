@@ -5,27 +5,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
-class Invoice(ModelSQL, ModelView):
-    _name = 'account.invoice'
-
-    def write(self, ids, vals):
-        invoice_line_obj = Pool().get('account.invoice.line')
-        purchase_obj = Pool().get('purchase.purchase')
-        res = super(Invoice, self).write(ids, vals)
-        if 'state' in vals and vals['state'] in ('paid', 'cancel'):
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            purchase_ids = purchase_obj.search([
-                ('invoices', 'in', ids),
-                ])
-            for purchase in purchase_obj.browse(purchase_ids):
-                invoice_line_obj.workflow_trigger_trigger(
-                        [x.id for x in purchase.invoice_lines])
-        return res
-
-Invoice()
-
-
 class InvoiceLine(ModelSQL, ModelView):
     _name = 'account.invoice.line'
 
