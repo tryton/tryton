@@ -40,7 +40,7 @@ class Category(ModelSQL, ModelView):
         self._order.insert(1, ('name', 'ASC'))
 
     def default_active(self):
-        return 1
+        return True
 
     def check_name(self, ids):
         for category in self.browse(ids):
