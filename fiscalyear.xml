@@ -27,12 +27,12 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Periods" id="periods">
                             <field name="periods" colspan="4"/>
                             <group col="2" colspan="4" id="buttons">
-                                <button name="create_period" string="Create Monthly Periods"
-                                    type="object"
-                                    states="{'invisible': Or(Not(Equal(Eval('state'), 'open')), Bool(Eval('periods')))}"/>
-                                <button name="create_period_3" string="Create 3 Months Periods"
-                                    type="object"
-                                    states="{'invisible': Or(Not(Equal(Eval('state'), 'open')), Bool(Eval('periods')))}"/>
+                                <button name="create_period"
+                                    string="Create Monthly Periods"
+                                    type="object"/>
+                                <button name="create_period_3"
+                                    string="Create 3 Months Periods"
+                                    type="object"/>
                             </group>
                         </page>
                         <page string="Sequences" id="sequences">
@@ -43,11 +43,9 @@ this repository contains the full copyright notices and license terms. -->
                     <label string="" colspan="2" id="empty"/>
                     <group col="1" colspan="2" id="buttons">
                         <button name="close" string="Close Fiscal Year" type="object"
-                            states="{'invisible': Not(Equal(Eval('state'), 'open'))}"
                             icon="tryton-readonly"
                             confirm="Are you sure to close fiscal year?"/>
                         <button name="reopen" string="Re-Open Fiscal Year" type="object"
-                            states="{'invisible': Not(Equal(Eval('state'), 'close'))}"
                             icon="tryton-clear"/>
                     </group>
                 </form>

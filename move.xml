@@ -26,11 +26,9 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="state"/>
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
-                        <button string="Post" name="button_post" type="object"
-                            states="{'invisible': Equal(Eval('state'), 'posted')}"
+                        <button string="Post" name="post" type="object"
                             icon="tryton-ok"/>
-                        <button string="Draft" name="button_draft" type="object"
-                            states="{'invisible': Equal(Eval('state'), 'draft')}"
+                        <button string="Draft" name="draft" type="object"
                             icon="tryton-clear"/>
                     </group>
                 </form>
@@ -423,21 +421,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_reconcile_lines"/>
         </record>
 
-        <record model="ir.ui.view" id="unreconcile_lines_start_view_form">
-            <field name="model">account.move.unreconcile_lines.start</field>
-            <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Unreconcile" col="2">
-                    <image name="tryton-dialog-information" xexpand="0"
-                        xfill="0"/>
-                    <label string="If you unreconcile lines, the workflows, on those lines, will not be canceled."
-                        id="workflows"
-                        yalign="0.0" xalign="0.0" xexpand="1"/>
-                </form>
-                ]]>
-            </field>
-        </record>
         <record model="ir.action.wizard" id="act_unreconcile_lines">
             <field name="name">Unreconcile Lines</field>
             <field name="wiz_name">account.move.unreconcile_lines</field>

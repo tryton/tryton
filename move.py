@@ -64,10 +64,6 @@ class Move(ModelSQL, ModelView):
             ('check_company', 'company_in_move'),
             ('check_date', 'date_outside_period'),
         ]
-        self._rpc.update({
-            'button_post': True,
-            'button_draft': True,
-        })
         self._order.insert(0, ('date', 'DESC'))
         self._order.insert(1, ('reference', 'DESC'))
         self._error_messages.update({
@@ -86,6 +82,14 @@ class Move(ModelSQL, ModelView):
             'date_outside_period': 'You can not create move ' \
                     'with a date outside the period!',
             })
+        self._buttons.update({
+                'post': {
+                    'invisible': Eval('state') == 'posted',
+                    },
+                'draft': {
+                    'invisible': Eval('state') == 'draft',
+                    },
+                })
 
     def init(self, module_name):
         super(Move, self).init(module_name)
@@ -322,6 +326,7 @@ class Move(ModelSQL, ModelView):
                 })
         return
 
+    @ModelView.button
     def post(self, ids):
         pool = Pool()
         currency_obj = pool.get('currency.currency')
@@ -352,6 +357,7 @@ class Move(ModelSQL, ModelView):
                 })
         return
 
+    @ModelView.button
     def draft(self, ids):
         for move in self.browse(ids):
             if not move.journal.update_posted:
@@ -359,12 +365,6 @@ class Move(ModelSQL, ModelView):
         return self.write(ids, {
             'state': 'draft',
             })
-
-    def button_post(self, ids):
-        return self.post(ids)
-
-    def button_draft(self, ids):
-        return self.draft(ids)
 
 Move()
 
@@ -392,19 +392,13 @@ class Reconciliation(ModelSQL, ModelView):
             })
 
     def create(self, vals):
-        move_line_obj = Pool().get('account.move.line')
         sequence_obj = Pool().get('ir.sequence')
 
         if 'name' not in vals:
             vals = vals.copy()
             vals['name'] = sequence_obj.get('account.move.reconciliation')
 
-        res = super(Reconciliation, self).create(vals)
-        reconciliation = self.browse(res)
-
-        move_line_obj.workflow_trigger_trigger(
-                [x.id for x in reconciliation.lines])
-        return res
+        return super(Reconciliation, self).create(vals)
 
     def write(self, ids, vals):
         self.raise_user_error('modify')
@@ -1541,12 +1535,8 @@ UnreconcileLinesStart()
 class UnreconcileLines(Wizard):
     'Unreconcile Lines'
     _name = 'account.move.unreconcile_lines'
+    start_state = 'unreconcile'
 
-    start = StateView('account.move.unreconcile_lines.start',
-        'account.unreconcile_lines_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Unreconcile', 'unreconcile', 'tryton-ok', default=True),
-            ])
     unreconcile = StateTransition()
 
     def transition_unreconcile(self, session):

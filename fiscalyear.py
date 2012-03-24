@@ -50,12 +50,6 @@ class FiscalYear(ModelSQL, ModelView):
 
     def __init__(self):
         super(FiscalYear, self).__init__()
-        self._rpc.update({
-            'create_period': True,
-            'create_period_3': True,
-            'close': True,
-            'reopen': True,
-        })
         self._constraints += [
             ('check_dates', 'fiscalyear_overlaps'),
             ('check_post_move_sequence', 'different_post_move_sequence'),
@@ -76,6 +70,22 @@ class FiscalYear(ModelSQL, ModelView):
             'reopen_error': 'You can not reopen a fiscal year until ' \
                     'there is more recent fiscal year closed!',
             })
+        self._buttons.update({
+                'create_period': {
+                    'invisible': ((Eval('state') != 'open')
+                        | Eval('periods', [0])),
+                    },
+                'create_period_3': {
+                    'invisible': ((Eval('state') != 'open')
+                        | Eval('periods', [0])),
+                    },
+                'close': {
+                    'invisible': Eval('state') != 'open',
+                    },
+                'reopen': {
+                    'invisible': Eval('state') != 'close',
+                    },
+                })
 
     def default_state(self):
         return 'open'
@@ -134,6 +144,7 @@ class FiscalYear(ModelSQL, ModelView):
         period_obj.delete(period_ids)
         return super(FiscalYear, self).delete(ids)
 
+    @ModelView.button
     def create_period(self, ids, interval=1):
         '''
         Create periods for the fiscal years with month interval
@@ -161,6 +172,7 @@ class FiscalYear(ModelSQL, ModelView):
                 period_start_date = period_end_date + relativedelta(days=1)
         return True
 
+    @ModelView.button
     def create_period_3(self, ids):
         '''
         Create periods for the fiscal years with 3 months interval
@@ -215,74 +227,64 @@ class FiscalYear(ModelSQL, ModelView):
                 'credit': account.credit,
                 })
 
-    def close(self, fiscalyear_id):
+    @ModelView.button
+    def close(self, ids):
         '''
         Close a fiscal year
-
-        :param fiscalyear_id: the fiscal year id
         '''
         period_obj = Pool().get('account.period')
         account_obj = Pool().get('account.account')
 
-        if isinstance(fiscalyear_id, list):
-            fiscalyear_id = fiscalyear_id[0]
-
-        fiscalyear = self.browse(fiscalyear_id)
-
-        if self.search([
-            ('end_date', '<=', fiscalyear.start_date),
-            ('state', '=', 'open'),
-            ('company', '=', fiscalyear.company.id),
-            ]):
-            self.raise_user_error('close_error')
-
-        #First close the fiscalyear to be sure
-        #it will not have new period created between.
-        self.write(fiscalyear_id, {
-            'state': 'close',
-            })
-        period_ids = period_obj.search([
-            ('fiscalyear', '=', fiscalyear_id),
-            ])
-        period_obj.close(period_ids)
-
-        with Transaction().set_context(fiscalyear=fiscalyear_id,
-                date=False):
-            account_ids = account_obj.search([
+        for fiscalyear in self.browse(ids):
+            if self.search([
+                ('end_date', '<=', fiscalyear.start_date),
+                ('state', '=', 'open'),
                 ('company', '=', fiscalyear.company.id),
-                ])
-            accounts = account_obj.browse(account_ids)
-        for account in accounts:
-            self._process_account(account, fiscalyear)
+                ]):
+                self.raise_user_error('close_error')
 
-    def reopen(self, fiscalyear_id):
+            #First close the fiscalyear to be sure
+            #it will not have new period created between.
+            self.write(fiscalyear.id, {
+                'state': 'close',
+                })
+            period_ids = period_obj.search([
+                ('fiscalyear', '=', fiscalyear.id),
+                ])
+            period_obj.close(period_ids)
+
+            with Transaction().set_context(fiscalyear=fiscalyear.id,
+                    date=False):
+                account_ids = account_obj.search([
+                    ('company', '=', fiscalyear.company.id),
+                    ])
+                accounts = account_obj.browse(account_ids)
+            for account in accounts:
+                self._process_account(account, fiscalyear)
+
+    @ModelView.button
+    def reopen(self, ids):
         '''
         Re-open a fiscal year
-
-        :param fiscalyear_id: the fiscal year id
         '''
         deferral_obj = Pool().get('account.account.deferral')
 
-        if isinstance(fiscalyear_id, list):
-            fiscalyear_id = fiscalyear_id[0]
+        for fiscalyear in self.browse(ids):
+            if self.search([
+                ('start_date', '>=', fiscalyear.end_date),
+                ('state', '=', 'close'),
+                ('company', '=', fiscalyear.company.id),
+                ]):
+                self.raise_user_error('reopen_error')
 
-        fiscalyear = self.browse(fiscalyear_id)
+            deferral_ids = deferral_obj.search([
+                ('fiscalyear', '=', fiscalyear.id),
+                ])
+            deferral_obj.delete(deferral_ids)
 
-        if self.search([
-            ('start_date', '>=', fiscalyear.end_date),
-            ('state', '=', 'close'),
-            ('company', '=', fiscalyear.company.id),
-            ]):
-            self.raise_user_error('reopen_error')
-
-        deferral_ids = deferral_obj.search([
-            ('fiscalyear', '=', fiscalyear_id),
-            ])
-        deferral_obj.delete(deferral_ids)
-
-        self.write(fiscalyear_id, {
-            'state': 'open',
-            })
+            self.write(fiscalyear.id, {
+                'state': 'open',
+                })
 
 FiscalYear()
 
