@@ -852,16 +852,15 @@ class PurchaseLine(ModelSQL, ModelView):
             'required': Bool(Eval('product')),
             'invisible': Eval('type') != 'line',
             'readonly': ~Eval('_parent_purchase'),
-            }, domain=[
-            ('category', '=',
-                (Eval('product'), 'product.default_uom.category')),
-            ],
-        context={
-            'category': (Eval('product'), 'product.default_uom.category'),
             },
+        domain=[
+            If(Bool(Eval('product_uom_category')),
+                ('category', '=', Eval('product_uom_category')),
+                ('category', '!=', -1)),
+            ],
         on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
             '_parent_purchase.party'],
-        depends=['product', 'type'])
+        depends=['product', 'type', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
         on_change_with=['unit']), 'get_unit_digits')
     product = fields.Many2One('product.product', 'Product',
@@ -881,6 +880,10 @@ class PurchaseLine(ModelSQL, ModelView):
             'purchasable': True,
             'stock_skip_warehouse': True,
             }, depends=['type'])
+    product_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', 'Product Uom Category',
+            on_change_with=['product']),
+        'get_product_uom_category')
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
             'invisible': Eval('type') != 'line',
@@ -1083,6 +1086,22 @@ class PurchaseLine(ModelSQL, ModelView):
         vals['type'] = 'line'
         res['amount'] = self.on_change_with_amount(vals)
         return res
+
+    def on_change_with_product_uom_category(self, values):
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        if values.get('product'):
+            product = product_obj.browse(values['product'])
+            return product.default_uom_category.id
+
+    def get_product_uom_category(self, ids, name):
+        categories = {}
+        for line in self.browse(ids):
+            if line.product:
+                categories[line.id] = line.product.default_uom_category.id
+            else:
+                categories[line.id] = None
+        return categories
 
     def on_change_quantity(self, vals):
         product_obj = Pool().get('product.product')
@@ -1395,10 +1414,9 @@ class Template(ModelSQL, ModelView):
             'invisible': ~Eval('purchasable'),
             'required': Eval('purchasable', False),
             },
-        domain=[('category', '=', (Eval('default_uom'), 'uom.category'))],
-        context={'category': (Eval('default_uom'), 'uom.category')},
+        domain=[('category', '=', Eval('default_uom_category'))],
         on_change_with=['default_uom', 'purchase_uom', 'purchasable'],
-        depends=['active', 'default_uom', 'purchasable'])
+        depends=['active', 'purchasable', 'default_uom_category'])
 
     def __init__(self):
         super(Template, self).__init__()
