@@ -365,11 +365,11 @@ class Move(ModelSQL, ModelView):
         location_obj = Pool().get('stock.location')
         if vals.get('from_location'):
             from_location = location_obj.browse(vals['from_location'])
-            if from_location.type == 'supplier':
+            if from_location.type in ('supplier', 'production'):
                 return True
         if vals.get('to_location'):
             to_location = location_obj.browse(vals['to_location'])
-            if to_location.type == 'customer':
+            if to_location.type in ('customer', 'production'):
                 return True
         return False
 
@@ -377,7 +377,7 @@ class Move(ModelSQL, ModelView):
         res = {}
         for move in self.browse(ids):
             res[move.id] = False
-            if move.from_location.type == 'supplier':
+            if move.from_location.type in ('supplier', 'production'):
                 res[move.id] = True
             if move.to_location.type == 'customer':
                 res[move.id] = True
@@ -527,7 +527,7 @@ class Move(ModelSQL, ModelView):
             company_id = vals.get('company', self.default_company())
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
-            if (from_location.type == 'supplier'
+            if (from_location.type in ('supplier', 'production')
                     and to_location.type == 'storage'
                     and product.cost_price_method == 'average'):
                 self._update_product_cost_price(vals['product'],
@@ -566,7 +566,7 @@ class Move(ModelSQL, ModelView):
             for move in moves:
                 if vals['state'] == 'cancel':
                     vals['effective_date'] = False
-                    if (move.from_location.type == 'supplier'
+                    if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'cancel'
                             and move.product.cost_price_method == 'average'):
@@ -593,7 +593,7 @@ class Move(ModelSQL, ModelView):
                         self.raise_user_error('set_state_done')
                     vals['effective_date'] = effective_date
 
-                    if (move.from_location.type == 'supplier'
+                    if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'done'
                             and move.product.cost_price_method == 'average'):
