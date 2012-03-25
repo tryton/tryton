@@ -1030,7 +1030,11 @@ class SaleLine(ModelSQL, ModelView):
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
-            on_change_with=['product', '_parent_sale.sale_date']),
+            on_change_with=['product', '_parent_sale.sale_date'],
+            states={
+                'invisible': Eval('type') != 'line',
+                },
+            depends=['type']),
         'get_delivery_date')
 
     def __init__(self):
