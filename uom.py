@@ -2,10 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.model.modelstorage import OPERATORS
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 
 STATES = {
     'readonly': ~Eval('active', True),
@@ -93,26 +91,6 @@ class Uom(ModelSQL, ModelView):
 
     def default_digits(self):
         return 2
-
-    def default_category(self):
-        product_obj = Pool().get('product.product')
-        context = Transaction().context
-        if 'category' in context:
-            if isinstance(context['category'], (tuple, list)) \
-                    and len(context['category']) > 1 \
-                    and context['category'][1] in ('uom.category',
-                            'product.default_uom.category'):
-                if context['category'][1] == 'uom.category':
-                    if not context['category'][0]:
-                        return False
-                    uom = self.browse(context['category'][0])
-                    return uom.category.id
-                else:
-                    if not context['category'][0]:
-                        return False
-                    product = product_obj.browse(context['category'][0])
-                    return product.default_uom.category.id
-        return False
 
     def on_change_factor(self, value):
         if value.get('factor', 0.0) == 0.0:
@@ -247,39 +225,5 @@ class Uom(ModelSQL, ModelView):
             new_price = new_price / Decimal(rate_format % to_uom.rate)
 
         return new_price
-
-    def search(self, args, offset=0, limit=None, order=None,
-            count=False, query_string=False):
-        product_obj = Pool().get('product.product')
-        args = args[:]
-        def process_args(args):
-            i = 0
-            while i < len(args):
-                #add test for xmlrpc that doesn't handle tuple
-                if (isinstance(args[i], tuple) \
-                        or (isinstance(args[i], list) and len(args[i]) > 2 \
-                        and args[i][1] in OPERATORS)) \
-                        and args[i][0] == 'category' \
-                        and isinstance(args[i][2], (list, tuple)) \
-                        and len(args[i][2]) == 2 \
-                        and args[i][2][1] in ('product.default_uom.category',
-                                'uom.category'):
-                    if not args[i][2][0]:
-                        args[i] = ('id', '!=', '0')
-                    else:
-                        if args[i][2][1] == 'product.default_uom.category':
-                            product = product_obj.browse(args[i][2][0])
-                            category_id = product.default_uom.category.id
-                        else:
-                            uom = self.browse(args[i][2][0])
-                            category_id = uom.category.id
-                        args[i] = (args[i][0], args[i][1], category_id)
-                elif isinstance(args[i], list):
-                    process_args(args[i])
-                i += 1
-        process_args(args)
-        return super(Uom, self).search(args, offset=offset, limit=limit,
-                order=order, count=count,
-                query_string=query_string)
 
 Uom()

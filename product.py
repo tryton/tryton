@@ -47,6 +47,10 @@ class Template(ModelSQL, ModelView):
             depends=DEPENDS))
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
         states=STATES, depends=DEPENDS)
+    default_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', 'Default UOM Category',
+            on_change_with=['default_uom']),
+        'get_default_uom_category')
     active = fields.Boolean('Active', select=True)
     products = fields.One2Many('product.product', 'template', 'Products',
         states=STATES, depends=DEPENDS)
@@ -75,6 +79,19 @@ class Template(ModelSQL, ModelView):
 
     def default_cost_price_method(self):
         return 'fixed'
+
+    def on_change_with_default_uom_category(self, values):
+        pool = Pool()
+        uom_obj = pool.get('product.uom')
+        if values.get('default_uom'):
+            uom = uom_obj.browse(values['default_uom'])
+            return uom.category.id
+
+    def get_default_uom_category(self, ids, name):
+        categories = {}
+        for template in self.browse(ids):
+            categories[template.id] = template.default_uom.category.id
+        return categories
 
     def get_price_uom(self, ids, name):
         product_uom_obj = Pool().get('product.uom')
