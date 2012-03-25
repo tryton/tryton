@@ -1837,13 +1837,6 @@ class Move(ModelSQL, ModelView):
                         res[name][move.id] = move.purchase_line[name[9:]].id
         return res
 
-    def default_purchase_visible(self):
-        from_location = self.default_from_location()
-        vals = {
-            'from_location': from_location,
-        }
-        return self.on_change_with_purchase_visible(vals)
-
     def on_change_with_purchase_visible(self, vals):
         location_obj = Pool().get('stock.location')
         if vals.get('from_location'):
