@@ -95,7 +95,7 @@ class Move(ModelSQL, ModelView):
             from_location = location_obj.browse(vals['from_location'])
             to_location = location_obj.browse(vals['to_location'])
             product = product_obj.browse(vals['product'])
-            if (from_location.type == 'supplier'
+            if (from_location.type in ('supplier', 'production')
                     and to_location.type == 'storage'
                     and product.cost_price_method == 'fifo'):
                 self._update_product_cost_price(vals['product'],
@@ -129,7 +129,7 @@ class Move(ModelSQL, ModelView):
         if 'state' in vals and vals['state'] == 'done':
             for move in self.browse(ids):
                 if vals['state'] == 'cancel':
-                    if (move.from_location.type == 'supplier'
+                    if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'cancel'
                             and move.product.cost_price_method == 'fifo'):
@@ -145,7 +145,7 @@ class Move(ModelSQL, ModelView):
                                 move.currency, move.company, effective_date)
 
                 elif vals['state'] == 'done':
-                    if (move.from_location.type == 'supplier'
+                    if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'done'
                             and move.product.cost_price_method == 'fifo'):
