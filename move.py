@@ -25,17 +25,17 @@ class Move(ModelSQL, ModelView):
             'from_location', 'to_location'],
         domain=[('type', '!=', 'service')],
         depends=DEPENDS)
+    product_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', 'Product Uom Category',
+            on_change_with=['product']),
+        'get_product_uom_category')
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
         domain=[
-            ('category', '=',
-                (Eval('product'), 'product.default_uom.category')),
+            ('category', '=', Eval('product_uom_category')),
             ],
-        context={
-            'category': (Eval('product'), 'product.default_uom.category'),
-            },
         on_change=['product', 'currency', 'uom', 'company',
             'from_location', 'to_location'],
-        depends=['state', 'product'])
+        depends=['state', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
         on_change_with=['uom']), 'get_unit_digits')
     quantity = fields.Float("Quantity", required=True,
@@ -308,6 +308,19 @@ class Move(ModelSQL, ModelView):
                             unit_price, currency, round=False)
                 res['unit_price'] = unit_price
         return res
+
+    def on_change_with_product_uom_category(self, values):
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        if values.get('product'):
+            product = product_obj.browse(values['product'])
+            return product.default_uom_category.id
+
+    def get_product_uom_category(self, ids, name):
+        categories = {}
+        for move in self.browse(ids):
+            categories[move.id] = move.product.default_uom_category.id
+        return categories
 
     def on_change_uom(self, vals):
         pool = Pool()
