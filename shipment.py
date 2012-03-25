@@ -45,6 +45,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                     Bool(Eval('incoming_moves'))), Bool(Eval('supplier'))),
             }, on_change=['supplier'], required=True,
         depends=['state', 'incoming_moves', 'supplier'])
+    supplier_location = fields.Function(fields.Many2One('stock.location',
+            'Supplier Location', on_change_with=['supplier']),
+        'get_supplier_location')
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -56,29 +59,45 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             'readonly': Or(In(Eval('state'), ['cancel', 'done']),
                 Bool(Eval('incoming_moves'))),
             }, depends=['state', 'incoming_moves'])
+    warehouse_input = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Input', on_change_with=['warehouse']),
+        'get_warehouse_input')
+    warehouse_storage = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Storage', on_change_with=['warehouse']),
+        'get_warehouse_storage')
     incoming_moves = fields.Function(fields.One2Many('stock.move', None,
-        'Incoming Moves', add_remove=[
-            ('shipment_in', '=', False),
-            ('from_location.type', '=', 'supplier'),
-            ('state', '=', 'draft'),
-            ('to_location_warehouse', '=', Eval('warehouse')),
-        ],
-        states={
-            'readonly': Or(In(Eval('state'), ['received', 'done', 'cancel']),
-                Not(Bool(Eval('warehouse')))),
-        }, context={
-            'warehouse': Eval('warehouse'),
-            'type': 'incoming',
-            'supplier': Eval('supplier'),
-        }, depends=['state', 'warehouse']),
+            'Incoming Moves',
+            add_remove=[
+                ('shipment_in', '=', False),
+                ('from_location', '=', Eval('supplier_location')),
+                ('state', '=', 'draft'),
+                ('to_location', '=', Eval('warehouse_input')),
+                ],
+            domain=[
+                ('from_location', '=', Eval('supplier_location')),
+                ('to_location', '=', Eval('warehouse_input')),
+                ('company', '=', Eval('company')),
+                ],
+            states={
+                'readonly': (Eval('state').in_(['received', 'done', 'cancel'])
+                    | ~Eval('warehouse') | ~Eval('supplier')),
+                },
+            depends=['state', 'warehouse', 'supplier_location',
+                'warehouse_input', 'company']),
         'get_incoming_moves', setter='set_incoming_moves')
     inventory_moves = fields.Function(fields.One2Many('stock.move', None,
-        'Inventory Moves', states={
-            'readonly': In(Eval('state'), ['draft', 'done', 'cancel']),
-        }, context={
-            'warehouse': Eval('warehouse'),
-            'type': 'inventory_in',
-        }, depends=['state', 'warehouse']),
+            'Inventory Moves',
+            domain=[
+                ('from_location', '=', Eval('warehouse_input')),
+                ('to_location', 'child_of', [Eval('warehouse_storage', -1)],
+                    'parent'),
+                ('company', '=', Eval('company')),
+                ],
+            states={
+                'readonly': In(Eval('state'), ['draft', 'done', 'cancel']),
+                },
+            depends=['state', 'warehouse', 'warehouse_input',
+                'warehouse_storage', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_in', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True,
@@ -196,6 +215,61 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         address_id = party_obj.address_get(values['supplier'])
         return {'contact_address': address_id}
 
+    def on_change_with_supplier_location(self, values):
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        if values.get('supplier'):
+            supplier = party_obj.browse(values['supplier'])
+            return supplier.supplier_location.id
+
+    def get_supplier_location(self, ids, name):
+        locations = {}
+        for shipment in self.browse(ids):
+            locations[shipment.id] = shipment.supplier.supplier_location.id
+        return locations
+
+    def default_warehouse_input(self):
+        warehouse = self.default_warehouse()
+        if warehouse:
+            value = self.on_change_with_warehouse_input({
+                    'warehouse': warehouse,
+                    })
+            return value
+
+    def on_change_with_warehouse_input(self, values):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        if values.get('warehouse'):
+            warehouse = location_obj.browse(values['warehouse'])
+            return warehouse.input_location.id
+
+    def get_warehouse_input(self, ids, name):
+        inputs = {}
+        for shipment in self.browse(ids):
+            inputs[shipment.id] = shipment.warehouse.input_location.id
+        return inputs
+
+    def default_warehouse_storage(self):
+        warehouse = self.default_warehouse()
+        if warehouse:
+            value = self.on_change_with_warehouse_storage({
+                    'warehouse': warehouse,
+                    })
+            return value
+
+    def on_change_with_warehouse_storage(self, values):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        if values.get('warehouse'):
+            warehouse = location_obj.browse(values['warehouse'])
+            return warehouse.storage_location.id
+
+    def get_warehouse_storage(self, ids, name):
+        storages = {}
+        for shipment in self.browse(ids):
+            storages[shipment.id] = shipment.warehouse.storage_location.id
+        return storages
+
     def get_incoming_moves(self, ids, name):
         res = {}
         for shipment in self.browse(ids):
@@ -206,41 +280,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         return res
 
     def set_incoming_moves(self, ids, name, value):
-        move_obj = Pool().get('stock.move')
-
         if not value:
             return
-
-        shipments = self.browse(ids)
-        move_ids = []
-        for act in value:
-            if act[0] == 'create':
-                if 'to_location' in act[1]:
-                    for shipment in shipments:
-                        if act[1]['to_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error('incoming_move_input_dest')
-            elif act[0] == 'write':
-                if 'to_location' in act[2]:
-                    for shipment in shipments:
-                        if act[2]['to_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error('incoming_move_input_dest')
-            elif act[0] == 'add':
-                if isinstance(act[1], (int, long)):
-                    move_ids.append(act[1])
-                else:
-                    move_ids.extend(act[1])
-            elif act[0] == 'set':
-                move_ids.extend(act[1])
-
-        moves = move_obj.browse(move_ids)
-        for move in moves:
-            for shipment in shipments:
-                if move.to_location.id != \
-                        shipment.warehouse.input_location.id:
-                    self.raise_user_error('incoming_move_input_dest')
-
         self.write(ids, {
             'moves': value,
             })
@@ -255,41 +296,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         return res
 
     def set_inventory_moves(self, ids, name, value):
-        move_obj = Pool().get('stock.move')
-
         if not value:
             return
-
-        shipments = self.browse(ids)
-        move_ids = []
-        for act in value:
-            if act[0] == 'create':
-                if 'from_location' in act[1]:
-                    for shipment in shipments:
-                        if act[1]['from_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error('inventory_move_input_source')
-            elif act[0] == 'write':
-                if 'from_location' in act[2]:
-                    for shipment in shipments:
-                        if act[2]['from_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error('inventory_move_input_source')
-            elif act[0] == 'add':
-                if isinstance(act[1], (int, long)):
-                    move_ids.append(act[1])
-                else:
-                    move_ids.extend(act[1])
-            elif act[0] == 'set':
-                move_ids.extend(act[1])
-
-        moves = move_obj.browse(move_ids)
-        for move in moves:
-            for shipment in shipments:
-                if move.from_location.id != \
-                        shipment.warehouse.input_location.id:
-                    self.raise_user_error('inventory_move_input_source')
-
         self.write(ids, {
             'moves': value,
             })
@@ -463,12 +471,11 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     Not(Bool(Eval('from_location')))),
                 Bool(Eval('to_location'))),
             },
-        domain=[('company', '=', Eval('company'))],
-        context={
-            'from_location': Eval('from_location'),
-            'to_location': Eval('to_location'),
-            'planned_date': Eval('planned_date'),
-            },
+        domain=[
+            ('from_location', '=', Eval('from_location')),
+            ('to_location', '=', Eval('to_location')),
+            ('company', '=', Eval('company')),
+            ],
         depends=['state', 'from_location', 'to_location', 'company'])
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -721,6 +728,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 Bool(Eval('outgoing_moves'))),
             }, on_change=['customer'],
         depends=['state', 'outgoing_moves'])
+    customer_location = fields.Function(fields.Many2One('stock.location',
+            'Customer Location', on_change_with=['customer']),
+        'get_customer_location')
     delivery_address = fields.Many2One('party.address',
         'Delivery Address', required=True,
         states={
@@ -737,23 +747,39 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 Bool(Eval('outgoing_moves'))),
             }, domain=[('type', '=', 'warehouse')],
         depends=['state', 'outgoing_moves'])
+    warehouse_storage = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Storage', on_change_with=['warehouse']),
+        'get_warehouse_storage')
+    warehouse_output = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Output', on_change_with=['warehouse']),
+        'get_warehouse_output')
     outgoing_moves = fields.Function(fields.One2Many('stock.move', None,
-            'Outgoing Moves', states={
-                'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                    Not(Bool(Eval('warehouse')))),
-                }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'outgoing',
-                'customer': Eval('customer'),
-                }, depends=['state', 'warehouse', 'customer']),
+            'Outgoing Moves',
+            domain=[
+                ('from_location', '=', Eval('warehouse_output')),
+                ('to_location', '=', Eval('customer_location')),
+                ('company', '=', Eval('company')),
+                ],
+            states={
+                'readonly': ((Eval('state') != 'draft')
+                    | ~Eval('warehouse') | ~Eval('customer')),
+                },
+            depends=['state', 'warehouse', 'customer', 'warehouse_output',
+                'customer_location', 'company']),
         'get_outgoing_moves', setter='set_outgoing_moves')
     inventory_moves = fields.Function(fields.One2Many('stock.move', None,
-            'Inventory Moves', states={
-                'readonly': In(Eval('state'), ['draft', 'packed', 'done']),
-                }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'inventory_out',
-                }, depends=['state', 'warehouse']),
+            'Inventory Moves',
+            domain=[
+                ('from_location', 'child_of', [Eval('warehouse_storage', -1)],
+                    'parent'),
+                ('to_location', '=', Eval('warehouse_output')),
+                ('company', '=', Eval('company')),
+                ],
+            states={
+                'readonly': Eval('state').in_(['draft', 'packed', 'done']),
+                },
+            depends=['state', 'warehouse', 'warehouse_storage',
+                'warehouse_output', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
@@ -774,12 +800,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             'button_draft': True,
         })
         self._order[0] = ('id', 'DESC')
-        self._error_messages.update({
-            'outgoing_move_output_source': 'Outgoing Moves must ' \
-                    'have the warehouse output location as source location!',
-            'inventory_move_output_dest': 'Inventory Moves must have the ' \
-                    'warehouse output location as destination location!',
-            })
         self._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -883,6 +903,61 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         address_id = party_obj.address_get(values['customer'], type='delivery')
         return {'delivery_address': address_id}
 
+    def on_change_with_customer_location(self, values):
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        if values.get('customer'):
+            customer = party_obj.browse(values['customer'])
+            return customer.customer_location.id
+
+    def get_customer_location(self, ids, name):
+        locations = {}
+        for shipment in self.browse(ids):
+            locations[shipment.id] = shipment.customer.customer_location.id
+        return locations
+
+    def default_warehouse_storage(self):
+        warehouse = self.default_warehouse()
+        if warehouse:
+            value = self.on_change_with_warehouse_storage({
+                    'warehouse': warehouse,
+                    })
+            return value
+
+    def on_change_with_warehouse_storage(self, values):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        if values.get('warehouse'):
+            warehouse = location_obj.browse(values['warehouse'])
+            return warehouse.storage_location.id
+
+    def get_warehouse_storage(self, ids, name):
+        storages = {}
+        for shipment in self.browse(ids):
+            storages[shipment.id] = shipment.warehouse.storage_location.id
+        return storages
+
+    def default_warehouse_output(self):
+        warehouse = self.default_warehouse()
+        if warehouse:
+            value = self.on_change_with_warehouse_output({
+                    'warehouse': warehouse,
+                    })
+            return value
+
+    def on_change_with_warehouse_output(self, values):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        if values.get('warehouse'):
+            warehouse = location_obj.browse(values['warehouse'])
+            return warehouse.output_location.id
+
+    def get_warehouse_output(self, ids, name):
+        outputs = {}
+        for shipment in self.browse(ids):
+            outputs[shipment.id] = shipment.warehouse.output_location.id
+        return outputs
+
     def get_outgoing_moves(self, ids, name):
         res = {}
         for shipment in self.browse(ids):
@@ -894,42 +969,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         return res
 
     def set_outgoing_moves(self, ids, name, value):
-        move_obj = Pool().get('stock.move')
-
         if not value:
             return
-
-        shipments = self.browse(ids)
-        move_ids = []
-        for act in value:
-            if act[0] == 'create':
-                if 'from_location' in act[1]:
-                    for shipment in shipments:
-                        if act[1]['from_location'] != \
-                                shipment.warehouse.output_location.id:
-                            self.raise_user_error(
-                                    'outgoing_move_output_source')
-            elif act[0] == 'write':
-                if 'from_location' in act[2]:
-                    for shipment in shipments:
-                        if act[2]['from_location'] != \
-                                shipment.warehouse.output_location.id:
-                            self.raise_user_error(
-                                    'outgoing_move_output_source')
-            elif act[0] == 'add':
-                if isinstance(act[1], (int, long)):
-                    move_ids.append(act[1])
-                else:
-                    move_ids.extend(act[1])
-            elif act[0] == 'set':
-                move_ids.extend(act[1])
-
-        moves = move_obj.browse(move_ids)
-        for move in moves:
-            for shipment in shipments:
-                if move.from_location.id != \
-                        shipment.warehouse.output_location.id:
-                    self.raise_user_error('outgoing_move_output_source')
         self.write(ids, {
             'moves': value,
             })
@@ -945,42 +986,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         return res
 
     def set_inventory_moves(self, ids, name, value):
-        move_obj = Pool().get('stock.move')
-
         if not value:
             return
-
-        shipments = self.browse(ids)
-        move_ids = []
-        for act in value:
-            if act[0] == 'create':
-                if 'to_location' in act[1]:
-                    for shipment in shipments:
-                        if act[1]['to_location'] != \
-                                shipment.warehouse.output_location.id:
-                            self.raise_user_error(
-                                    'inventory_move_output_dest')
-            elif act[0] == 'write':
-                if 'to_location' in act[2]:
-                    for shipment in shipments:
-                        if act[2]['to_location'] != \
-                                shipment.warehouse.output_location.id:
-                            self.raise_user_error(
-                                    'inventory_move_output_dest')
-            elif act[0] == 'add':
-                if isinstance(act[1], (int, long)):
-                    move_ids.append(act[1])
-                else:
-                    move_ids.extend(act[1])
-            elif act[0] == 'set':
-                move_ids.extend(act[1])
-
-        moves = move_obj.browse(move_ids)
-        for move in moves:
-            for shipment in shipments:
-                if move.to_location.id != \
-                        shipment.warehouse.output_location.id:
-                    self.raise_user_error('inventory_move_output_dest')
         self.write(ids, {
             'moves': value,
             })
@@ -1250,6 +1257,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                 Bool(Eval('incoming_moves'))),
             }, on_change=['customer'],
         depends=['state', 'incoming_moves'])
+    customer_location = fields.Function(fields.Many2One('stock.location',
+            'Customer Location', on_change_with=['customer']),
+        'get_customer_location')
     delivery_address = fields.Many2One('party.address',
         'Delivery Address', required=True,
         states={
@@ -1266,22 +1276,39 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                 Bool(Eval('incoming_moves'))),
             }, domain=[('type', '=', 'warehouse')],
         depends=['state', 'incoming_moves'])
+    warehouse_storage = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Storage', on_change_with=['warehouse']),
+        'get_warehouse_storage')
+    warehouse_output = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Output', on_change_with=['warehouse']),
+        'get_warehouse_output')
     incoming_moves = fields.Function(fields.One2Many('stock.move', None,
-            'Incoming Moves', states={
-                'readonly': Not(Equal(Eval('state'), 'draft')),
-                }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'incoming',
-                'customer': Eval('customer'),
-                }, depends=['state', 'warehouse', 'customer']),
+            'Incoming Moves',
+            domain=[
+                ('from_location', '=', Eval('customer_location')),
+                ('to_location', '=', Eval('warehouse_output')),
+                ('company', '=', Eval('company')),
+                ],
+            states={
+                'readonly': ((Eval('state') != 'draft')
+                    | ~Eval('warehouse') | ~Eval('customer')),
+                },
+            depends=['state', 'warehouse', 'customer', 'customer_location',
+                'warehouse_output', 'company']),
         'get_incoming_moves', setter='set_incoming_moves')
     inventory_moves = fields.Function(fields.One2Many('stock.move', None,
-            'Inventory Moves', states={
-                'readonly': In(Eval('state'), ['draft', 'cancel', 'done']),
-                }, context={
-                'warehouse': Eval('warehouse'),
-                'type': 'inventory_out',
-                }, depends=['state', 'warehouse']),
+            'Inventory Moves',
+            domain=[
+                ('from_location', '=', Eval('warehouse_output')),
+                ('to_location', 'child_of', [Eval('warehouse_storage', -1)],
+                    'parent'),
+                ('company', '=', Eval('company')),
+                ],
+            states={
+                'readonly': Eval('state').in_(['draft', 'cancel', 'done']),
+                },
+            depends=['state', 'warehouse', 'warehouse_output',
+                'warehouse_storage', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
@@ -1300,12 +1327,6 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             'button_draft': True,
         })
         self._order[0] = ('id', 'DESC')
-        self._error_messages.update({
-            'incoming_move_input_dest': 'Incoming Moves must ' \
-                    'have the warehouse input location as destination location!',
-            'inventory_move_input_source': 'Inventory Moves must ' \
-                    'have the warehouse input location as source location!',
-            })
         self._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -1390,6 +1411,61 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                 'delivery_address': address_id,
             }
 
+    def on_change_with_customer_location(self, values):
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        if values.get('customer'):
+            customer = party_obj.browse(values['customer'])
+            return customer.customer_location.id
+
+    def get_customer_location(self, ids, name):
+        locations = {}
+        for shipment in self.browse(ids):
+            locations[shipment.id] = shipment.customer.customer_location.id
+        return locations
+
+    def default_warehouse_storage(self):
+        warehouse = self.default_warehouse()
+        if warehouse:
+            value = self.on_change_with_warehouse_storage({
+                    'warehouse': warehouse,
+                    })
+            return value
+
+    def on_change_with_warehouse_storage(self, values):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        if values.get('warehouse'):
+            warehouse = location_obj.browse(values['warehouse'])
+            return warehouse.storage_location.id
+
+    def get_warehouse_storage(self, ids, name):
+        storages = {}
+        for shipment in self.browse(ids):
+            storages[shipment.id] = shipment.warehouse.storage_location.id
+        return storages
+
+    def default_warehouse_output(self):
+        warehouse = self.default_warehouse()
+        if warehouse:
+            value = self.on_change_with_warehouse_output({
+                    'warehouse': warehouse,
+                    })
+            return value
+
+    def on_change_with_warehouse_output(self, values):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        if values.get('warehouse'):
+            warehouse = location_obj.browse(values['warehouse'])
+            return warehouse.output_location.id
+
+    def get_warehouse_output(self, ids, name):
+        outputs = {}
+        for shipment in self.browse(ids):
+            outputs[shipment.id] = shipment.warehouse.output_location.id
+        return outputs
+
     def get_incoming_moves(self, ids, name):
         res = {}
         for shipment in self.browse(ids):
@@ -1401,41 +1477,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         return res
 
     def set_incoming_moves(self, ids, name, value):
-        move_obj = Pool().get('stock.move')
-
         if not value:
             return
-
-        shipments = self.browse(ids)
-        move_ids = []
-        for act in value:
-            if act[0] == 'create':
-                if 'to_location' in act[1]:
-                    for shipment in shipments:
-                        if act[1]['to_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error('incoming_move_input_dest')
-            elif act[0] == 'write':
-                if 'to_location' in act[2]:
-                    for shipment in shipments:
-                        if act[2]['to_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error('incoming_move_input_dest')
-            elif act[0] == 'add':
-                if isinstance(act[1], (int, long)):
-                    move_ids.append(act[1])
-                else:
-                    move_ids.extend(act[1])
-            elif act[0] == 'set':
-                move_ids.extend(act[1])
-
-        moves = move_obj.browse(move_ids)
-        for move in moves:
-            for shipment in shipments:
-                if move.to_location.id != \
-                        shipment.warehouse.input_location.id:
-                    self.raise_user_error('incoming_move_input_dest')
-
         self.write(ids, {
             'moves': value,
             })
@@ -1451,43 +1494,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         return res
 
     def set_inventory_moves(self, ids, name, value):
-        move_obj = Pool().get('stock.move')
-
         if not value:
             return
-
-        shipments = self.browse(ids)
-        move_ids = []
-        for act in value:
-            if act[0] == 'create':
-                if 'from_location' in act[1]:
-                    for shipment in shipments:
-                        if act[1]['from_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error(
-                                    'inventory_move_input_source')
-            elif act[0] == 'write':
-                if 'from_location' in act[2]:
-                    for shipment in shipments:
-                        if act[2]['from_location'] != \
-                                shipment.warehouse.input_location.id:
-                            self.raise_user_error(
-                                    'inventory_move_input_source')
-            elif act[0] == 'add':
-                if isinstance(act[1], (int, long)):
-                    move_ids.append(act[1])
-                else:
-                    move_ids.extend(act[1])
-            elif act[0] == 'set':
-                move_ids.extend(act[1])
-
-        moves = move_obj.browse(move_ids)
-        for move in moves:
-            for shipment in shipments:
-                if move.from_location.id != \
-                        shipment.warehouse.input_location.id:
-                    self.raise_user_error('inventory_move_input_source')
-
         self.write(ids, {
             'moves': value,
             })
@@ -1717,16 +1725,14 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             ], depends=['state', 'moves'])
     moves = fields.One2Many('stock.move', 'shipment_internal', 'Moves',
         states={
-            'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
-                    Not(Bool(Eval('from_location')))),
-                Bool(Eval('to_location'))),
+            'readonly': ((Eval('state') != 'draft')
+                | ~Eval('from_location') | ~Eval('to_location')),
             },
-        domain=[('company', '=', Eval('company'))],
-        context={
-            'from_location': Eval('from_location'),
-            'to_location': Eval('to_location'),
-            'planned_date': Eval('planned_date'),
-            },
+        domain=[
+            ('from_location', '=', Eval('from_location')),
+            ('to_location', '=', Eval('to_location')),
+            ('company', '=', Eval('company')),
+            ],
         depends=['state', 'from_location', 'to_location', 'planned_date',
             'company'])
     state = fields.Selection([

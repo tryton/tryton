@@ -1,3 +1,4 @@
+* Remove default from and to location and instead use domain
 * Update cost_price only from supplier to storage
 
 Version 2.2.0 - 2011-10-25

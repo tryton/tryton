@@ -192,63 +192,6 @@ class Move(ModelSQL, ModelView):
     def default_planned_date(self):
         return Transaction().context.get('planned_date') or False
 
-    def default_to_location(self):
-        location_obj = Pool().get('stock.location')
-        party_obj = Pool().get('party.party')
-        res = False
-
-        warehouse = None
-        if Transaction().context.get('warehouse'):
-            warehouse = location_obj.browse(Transaction().context['warehouse'])
-
-        if Transaction().context.get('type', '') == 'inventory_in':
-            if warehouse:
-                res = warehouse.storage_location.id
-        elif Transaction().context.get('type', '') == 'inventory_out':
-            if warehouse:
-                res = warehouse.output_location.id
-        elif Transaction().context.get('type', '') == 'incoming':
-            if warehouse:
-                res = warehouse.input_location.id
-        elif Transaction().context.get('type', '') == 'outgoing':
-            if Transaction().context.get('customer'):
-                customer = party_obj.browse(Transaction().context['customer'])
-                res = customer.customer_location.id
-
-        if Transaction().context.get('to_location'):
-            res = Transaction().context['to_location']
-        return res
-
-    def default_from_location(self):
-        location_obj = Pool().get('stock.location')
-        party_obj = Pool().get('party.party')
-        res = False
-
-        warehouse = None
-        if Transaction().context.get('warehouse'):
-            warehouse = location_obj.browse(Transaction().context['warehouse'])
-
-        if Transaction().context.get('type', '') == 'inventory_in':
-            if warehouse:
-                res = warehouse.input_location.id
-        elif Transaction().context.get('type', '') == 'inventory_out':
-            if warehouse:
-                res = warehouse.storage_location.id
-        elif Transaction().context.get('type', '') == 'outgoing':
-            if warehouse:
-                res = warehouse.output_location.id
-        elif Transaction().context.get('type', '') == 'incoming':
-            if Transaction().context.get('supplier'):
-                supplier = party_obj.browse(Transaction().context['supplier'])
-                res = supplier.supplier_location.id
-            elif Transaction().context.get('customer'):
-                customer = party_obj.browse(Transaction().context['customer'])
-                res = customer.customer_location.id
-
-        if Transaction().context.get('from_location'):
-            res = Transaction().context['from_location']
-        return res
-
     def default_state(self):
         return 'draft'
 
@@ -351,15 +294,6 @@ class Move(ModelSQL, ModelView):
                             unit_price, currency, round=False)
                 res['unit_price'] = unit_price
         return res
-
-    def default_unit_price_required(self):
-        from_location = self.default_from_location()
-        to_location = self.default_to_location()
-        vals = {
-            'from_location': from_location,
-            'to_location': to_location,
-            }
-        return self.on_change_with_unit_price_required(vals)
 
     def on_change_with_unit_price_required(self, vals):
         location_obj = Pool().get('stock.location')
