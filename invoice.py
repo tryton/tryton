@@ -1375,13 +1375,11 @@ class InvoiceLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             },
         domain=[
-            ('category', '=',
-                (Eval('product'), 'product.default_uom.category')),
+            If(Bool(Eval('product_uom_category')),
+                ('category', '=', Eval('product_uom_category')),
+                ('category', '!=', -1)),
             ],
-        context={
-            'category': (Eval('product'), 'product.default_uom.category'),
-            },
-        depends=['product', 'type'])
+        depends=['product', 'type', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
         on_change_with=['unit']), 'get_unit_digits')
     product = fields.Many2One('product.product', 'Product',
@@ -1393,6 +1391,10 @@ class InvoiceLine(ModelSQL, ModelView):
             '_parent_invoice.currency', '_parent_invoice.currency_date',
             'party', 'currency', 'invoice'],
         depends=['type'])
+    product_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', 'Product Uom Category',
+            on_change_with=['product']),
+        'get_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
         domain=[
             ('kind', '!=', 'view'),
@@ -1740,6 +1742,22 @@ class InvoiceLine(ModelSQL, ModelView):
         vals['type'] = 'line'
         res['amount'] = self.on_change_with_amount(vals)
         return res
+
+    def on_change_with_product_uom_category(self, values):
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        if values.get('product'):
+            product = product_obj.browse(values['product'])
+            return product.default_uom_category.id
+
+    def get_product_uom_category(self, ids, name):
+        categories = {}
+        for line in self.browse(ids):
+            if line.product:
+                categories[line.id] = line.product.default_uom_category.id
+            else:
+                categories[line.id] = None
+        return categories
 
     def on_change_account(self, values):
         account_obj = Pool().get('account.account')
