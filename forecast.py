@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 import itertools
 from trytond.model import ModelView, Workflow, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.pyson import Not, Equal, Eval, Or, Bool
+from trytond.pyson import Not, Equal, Eval, Or, Bool, If
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -246,11 +246,16 @@ class ForecastLine(ModelSQL, ModelView):
             ('consumable', '=', False),
             ],
         on_change=['product'])
+    product_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', 'Product Uom Category',
+            on_change_with=['product']),
+        'get_product_uom_category')
     uom = fields.Many2One('product.uom', 'UOM', required=True,
         domain=[
-            ('category', '=',
-                (Eval('product'), 'product.default_uom.category')),
-            ], on_change=['uom'], depends=['product'])
+            If(Bool(Eval('product_uom_category')),
+                ('category', '=', Eval('product_uom_category')),
+                ('category', '!=', -1)),
+            ], on_change=['uom'], depends=['product', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
@@ -294,6 +299,22 @@ class ForecastLine(ModelSQL, ModelView):
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
         return res
+
+    def on_change_with_product_uom_category(self, values):
+        pool = Pool()
+        product_obj = pool.get('product.product')
+        if values.get('product'):
+            product = product_obj.browse(values['product'])
+            return product.default_uom_category.id
+
+    def get_product_uom_category(self, ids, name):
+        categories = {}
+        for line in self.browse(ids):
+            if line.product:
+                categories[line.id] = line.product.default_uom_category.id
+            else:
+                categories[line.id] = None
+        return categories
 
     def on_change_uom(self, vals):
         uom_obj = Pool().get('product.uom')
