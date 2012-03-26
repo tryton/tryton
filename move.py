@@ -206,6 +206,9 @@ class Move(ModelSQL, ModelView):
             return company.currency.id
         return False
 
+    def default_unit_digits(self):
+        return 2
+
     def on_change_with_unit_digits(self, vals):
         uom_obj = Pool().get('product.uom')
         if vals.get('uom'):
