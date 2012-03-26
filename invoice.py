@@ -22,14 +22,14 @@ class Invoice(Model):
         sale_obj = pool.get('sale.sale')
         super(Invoice, self).paid(ids)
         invoices = self.browse(ids)
-        sale_obj.process(s.id for i in invoices for s in i.sales)
+        sale_obj.process([s.id for i in invoices for s in i.sales])
 
     def cancel(self, ids):
         pool = Pool()
         sale_obj = pool.get('sale.sale')
         super(Invoice, self).cancel(ids)
         invoices = self.browse(ids)
-        sale_obj.process(s.id for i in invoices for s in i.sales)
+        sale_obj.process([s.id for i in invoices for s in i.sales])
 
 Invoice()
 
