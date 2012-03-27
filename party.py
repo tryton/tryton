@@ -184,8 +184,8 @@ class Party(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['code'] = False
-        default['addresses'] = False
+        default['code'] = None
+        default['addresses'] = None
         new_ids = []
         for party in self.browse(ids):
             new_id = super(Party, self).copy(party.id, default=default)
@@ -216,7 +216,7 @@ class Party(ModelSQL, ModelView):
             [("party", "=", party_id), ("active", "=", True)],
             order=[('sequence', 'ASC'), ('id', 'ASC')])
         if not address_ids:
-            return False
+            return None
         default_address = address_ids[0]
         if not type:
             return default_address

@@ -112,12 +112,12 @@ class Address(ModelSQL, ModelView):
 
     def on_change_country(self, vals):
         subdivision_obj = Pool().get('country.subdivision')
-        result = dict((k, vals.get(k, False))
+        result = dict((k, vals.get(k))
             for k in ('country', 'subdivision'))
         if vals['subdivision']:
             subdivision = subdivision_obj.browse(vals['subdivision'])
             if subdivision.country.id != vals['country']:
-                result['subdivision'] = False
+                result['subdivision'] = None
         return result
 
 Address()
