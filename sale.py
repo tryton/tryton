@@ -90,7 +90,7 @@ class Sale(Model):
 
         today = date_obj.today()
 
-        cost, currency_id = 0, False
+        cost, currency_id = 0, None
         if values.get('carrier'):
             carrier = carrier_obj.browse(values['carrier'])
             with Transaction().set_context(
@@ -143,7 +143,7 @@ class Sale(Model):
                     continue
                 taxes.append(tax.id)
             if party and party.customer_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, False,
+                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, None,
                     pattern)
                 if tax_ids:
                     taxes.extend(tax_ids)
