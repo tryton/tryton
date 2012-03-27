@@ -247,7 +247,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
-        return False
 
     def default_currency_digits(self):
         company_obj = Pool().get('company.company')
@@ -257,14 +256,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
         return 2
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_payment_term(self):
         payment_term_obj = Pool().get('account.invoice.payment_term')
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
-        return False
 
     def __get_account_payment_term(self, type_, party_id, company_id):
         '''
@@ -277,7 +275,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         payment_term_obj = pool.get('account.invoice.payment_term')
 
         result = {
-            'account': False,
+            'account': None,
             }
         if party_id:
             party = party_obj.browse(party_id)
@@ -323,7 +321,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         party_obj = pool.get('party.party')
         address_obj = pool.get('party.address')
         res = {
-            'invoice_address': False,
+            'invoice_address': None,
         }
         res.update(self.__get_account_payment_term(vals.get('type'),
                 vals.get('party'), vals.get('company')))
@@ -831,7 +829,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res['second_currency'] = invoice.currency.id
         else:
             res['amount_second_currency'] = Decimal('0.0')
-            res['second_currency'] = False
+            res['second_currency'] = None
         if amount >= Decimal('0.0'):
             res['debit'] = Decimal('0.0')
             res['credit'] = amount
@@ -988,16 +986,16 @@ class Invoice(Workflow, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default['state'] = 'draft'
-        default['number'] = False
-        default['move'] = False
-        default['invoice_report_cache'] = False
-        default['invoice_report_format'] = False
-        default['payment_lines'] = False
-        default['lines'] = False
-        default['taxes'] = False
-        default.setdefault('invoice_date', False)
-        default.setdefault('accounting_date', False)
-        default['lines_to_pay'] = False
+        default['number'] = None
+        default['move'] = None
+        default['invoice_report_cache'] = None
+        default['invoice_report_format'] = None
+        default['payment_lines'] = None
+        default['lines'] = None
+        default['taxes'] = None
+        default.setdefault('invoice_date', None)
+        default.setdefault('accounting_date', None)
+        default['lines_to_pay'] = None
 
         new_ids = []
         for invoice in self.browse(ids):
@@ -1090,7 +1088,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         return (lines, remainder)
 
     def pay_invoice(self, invoice_id, amount, journal_id, date, description,
-            amount_second_currency=False, second_currency=False):
+            amount_second_currency=None, second_currency=None):
         '''
         Add a payment to an invoice
 
@@ -1426,7 +1424,7 @@ class InvoiceLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
-        'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
+        'line', 'tax', 'Taxes', domain=[('parent', '=', None)],
         states={
             'invisible': Eval('type') != 'line',
             },
@@ -1478,7 +1476,6 @@ class InvoiceLine(ModelSQL, ModelView):
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
-        return False
 
     def default_currency_digits(self):
         company_obj = Pool().get('company.company')
@@ -1491,7 +1488,7 @@ class InvoiceLine(ModelSQL, ModelView):
         return 2
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_type(self):
         return 'line'
@@ -1594,7 +1591,7 @@ class InvoiceLine(ModelSQL, ModelView):
         res = {}
         for line in self.browse(ids):
             if not line.invoice:
-                res[line.id] = False
+                res[line.id] = None
                 continue
             context = invoice_obj.get_tax_context(line.invoice)
             tax_ids = [x.id for x in line.taxes]
@@ -1693,7 +1690,7 @@ class InvoiceLine(ModelSQL, ModelView):
                     continue
                 res['taxes'].append(tax.id)
             if party and party.supplier_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, False,
+                tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, None,
                         pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
@@ -1721,7 +1718,7 @@ class InvoiceLine(ModelSQL, ModelView):
                     continue
                 res['taxes'].append(tax.id)
             if party and party.customer_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, False,
+                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, None,
                         pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
@@ -1871,7 +1868,7 @@ class InvoiceLine(ModelSQL, ModelView):
         else:
             amount = line.amount
             res['amount_second_currency'] = Decimal('0.0')
-            res['second_currency'] = False
+            res['second_currency'] = None
         if line.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
@@ -2066,7 +2063,7 @@ class InvoiceTax(ModelSQL, ModelView):
         else:
             amount = tax.amount
             res['amount_second_currency'] = Decimal('0.0')
-            res['second_currency'] = False
+            res['second_currency'] = None
         if tax.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
@@ -2089,7 +2086,7 @@ class InvoiceTax(ModelSQL, ModelView):
             res['tax_lines'] = [('create', {
                 'code': tax.tax_code.id,
                 'amount': amount * tax.tax_sign,
-                'tax': tax.tax and tax.tax.id or False
+                'tax': tax.tax and tax.tax.id or None
             })]
         return [res]
 
@@ -2431,8 +2428,8 @@ class PayInvoice(Wizard):
         reconcile_lines, remainder = \
             invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
 
-        amount_second_currency = False
-        second_currency = False
+        amount_second_currency = None
+        second_currency = None
         if session.start.currency.id != invoice.company.currency.id:
             amount_second_currency = session.start.amount
             second_currency = session.start.currency
@@ -2441,7 +2438,7 @@ class PayInvoice(Wizard):
                 session.ask.type != 'writeoff':
             self.raise_user_error('amount_greater_amount_to_pay')
 
-        line_id = False
+        line_id = None
         if not currency_obj.is_zero(invoice.company.currency, amount):
             line_id = invoice_obj.pay_invoice(invoice.id, amount,
                 session.start.journal.id, session.start.date,

@@ -13,7 +13,7 @@ class FiscalYear(ModelSQL, ModelView):
             ('code', '=', 'account.invoice'),
             ['OR',
                 ('company', '=', Eval('company')),
-                ('company', '=', False),
+                ('company', '=', None),
                 ],
             ],
         context={
@@ -27,7 +27,7 @@ class FiscalYear(ModelSQL, ModelView):
             ('code', '=', 'account.invoice'),
             ['OR',
                 ('company', '=', Eval('company')),
-                ('company', '=', False),
+                ('company', '=', None),
                 ],
             ],
         context={
@@ -41,7 +41,7 @@ class FiscalYear(ModelSQL, ModelView):
             ('code', '=', 'account.invoice'),
             ['OR',
                 ('company', '=', Eval('company')),
-                ('company', '=', False),
+                ('company', '=', None),
                 ],
             ],
         context={
@@ -54,7 +54,7 @@ class FiscalYear(ModelSQL, ModelView):
             ('code', '=', 'account.invoice'),
             ['OR',
                 ('company', '=', Eval('company')),
-                ('company', '=', False),
+                ('company', '=', None),
                 ],
             ],
         context={
@@ -102,7 +102,7 @@ class FiscalYear(ModelSQL, ModelView):
                         if invoice_obj.search([
                             ('invoice_date', '>=', fiscalyear.start_date),
                             ('invoice_date', '<=', fiscalyear.end_date),
-                            ('number', '!=', False),
+                            ('number', '!=', None),
                             ('type', '=', sequence[:-9]),
                             ]):
                             self.raise_user_error('change_invoice_sequence')
@@ -206,7 +206,7 @@ class Period(ModelSQL, ModelView):
                         if invoice_obj.search([
                             ('invoice_date', '>=', period.start_date),
                             ('invoice_date', '<=', period.end_date),
-                            ('number', '!=', False),
+                            ('number', '!=', None),
                             ('type', '=', sequence[:-9]),
                             ]):
                             self.raise_user_error('change_invoice_sequence')

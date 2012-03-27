@@ -189,7 +189,7 @@ class PaymentTermLine(ModelSQL, ModelView):
         res = {}
         if vals['type'] != 'fixed':
             res['amount'] = Decimal('0.0')
-            res['currency'] =  False
+            res['currency'] =  None
         if vals['type'] != 'percent':
             res['percentage'] =  Decimal('0.0')
         return res
