@@ -36,14 +36,14 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
             ], limit=1)
         property_ids = property_obj.search([
             ('field', '=', account_field_id),
-            ('res', '=', False),
+            ('res', '=', None),
             ('company', '=', company_id),
             ], limit=1)
         if property_ids:
             prop = property_obj.browse(property_ids[0])
             value = int(prop.value.split(',')[1])
         else:
-            value = False
+            value = None
         return dict((x, value) for x in ids)
 
     def set_account(self, ids, name, value):
@@ -56,7 +56,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
             ], limit=1)
         property_ids = property_obj.search([
             ('field', '=', account_field_id),
-            ('res', '=', False),
+            ('res', '=', None),
             ('company', '=', company_id),
             ])
         with Transaction().set_user(0):

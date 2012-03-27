@@ -35,7 +35,7 @@ class FiscalYear(ModelSQL, ModelView):
             required=True, domain=[('code', '=', 'account.move'),
                 ['OR',
                     ('company', '=', Eval('company')),
-                    ('company', '=', False)
+                    ('company', '=', None)
                 ]],
             context={
                 'code': 'account.move',
@@ -91,7 +91,7 @@ class FiscalYear(ModelSQL, ModelView):
         return 'open'
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def check_dates(self, ids):
         cursor = Transaction().cursor
@@ -199,7 +199,7 @@ class FiscalYear(ModelSQL, ModelView):
             if exception:
                 self.raise_user_error('no_fiscalyear_date')
             else:
-                return False
+                return None
         return ids[0]
 
     def _process_account(self, account, fiscalyear):
@@ -254,7 +254,7 @@ class FiscalYear(ModelSQL, ModelView):
             period_obj.close(period_ids)
 
             with Transaction().set_context(fiscalyear=fiscalyear.id,
-                    date=False):
+                    date=None):
                 account_ids = account_obj.search([
                     ('company', '=', fiscalyear.company.id),
                     ])

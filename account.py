@@ -85,7 +85,7 @@ class TypeTemplate(ModelSQL, ModelView):
         return res
 
     def create_type(self, template, company_id, template2type=None,
-            parent_id=False):
+            parent_id=None):
         '''
         Create recursively types based on template.
 
@@ -403,7 +403,7 @@ class AccountTemplate(ModelSQL, ModelView):
         return res
 
     def create_account(self, template, company_id, template2account=None,
-            template2type=None, parent_id=False):
+            template2type=None, parent_id=None):
         '''
         Create recursively accounts based on template.
 
@@ -437,7 +437,7 @@ class AccountTemplate(ModelSQL, ModelView):
             vals = self._get_account_value(template)
             vals['company'] = company_id
             vals['parent'] = parent_id
-            vals['type'] = template2type.get(template.type.id, False)
+            vals['type'] = template2type.get(template.type.id)
 
             new_id = account_obj.create(vals)
 
@@ -604,7 +604,7 @@ class Account(ModelSQL, ModelView):
         return True
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company') or None
 
     def default_reconcile(self):
         return False
@@ -712,7 +712,7 @@ class Account(ModelSQL, ModelView):
                         res[account_id] += deferral.debit - deferral.credit
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=False):
+                        date=None):
                     res2 = self.get_balance(ids, name)
                 for account_id in ids:
                     res[account_id] += res2[account_id]
@@ -812,7 +812,7 @@ class Account(ModelSQL, ModelView):
                             res[name][account_id] += deferral[name]
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=False):
+                        date=None):
                     res2 = self.get_credit_debit(ids, names)
                 for account_id in ids:
                     for name in names:
@@ -851,7 +851,7 @@ class Account(ModelSQL, ModelView):
         default['left'] = 0
         default['right'] = 0
         res = super(Account, self).copy(ids, default=default)
-        self._rebuild_tree('parent', False, 0)
+        self._rebuild_tree('parent', None, 0)
         return res
 
     def write(self, ids, vals):
@@ -908,10 +908,8 @@ class Account(ModelSQL, ModelView):
         if account.template:
             vals = template_obj._get_account_value(account.template,
                     account=account)
-            if account.type.id != template2type.get(account.template.type.id,
-                    False):
-                vals['type'] = template2type.get(account.template.type.id,
-                        False)
+            if account.type.id != template2type.get(account.template.type.id):
+                vals['type'] = template2type.get(account.template.type.id)
             if vals:
                 self.write(account.id, vals)
 
@@ -1103,13 +1101,12 @@ class PrintGeneralLegderStart(ModelView):
     def default_fiscalyear(self):
         fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company', False), exception=False)
+                Transaction().context.get('company'), exception=False)
         if fiscalyear_id:
             return fiscalyear_id
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_posted(self):
         return False
@@ -1119,8 +1116,8 @@ class PrintGeneralLegderStart(ModelView):
 
     def on_change_fiscalyear(self, vals):
         return {
-            'start_period': False,
-            'end_period': False,
+            'start_period': None,
+            'end_period': None,
         }
 
 PrintGeneralLegderStart()
@@ -1141,11 +1138,11 @@ class PrintGeneralLegder(Wizard):
         if session.start.start_period:
             start_period = session.start.start_period.id
         else:
-            start_period = False
+            start_period = None
         if session.start.end_period:
             end_period = session.start.end_period.id
         else:
-            end_period = False
+            end_period = None
         data = {
             'company': session.start.company.id,
             'fiscalyear': session.start.fiscalyear.id,
@@ -1313,13 +1310,12 @@ class PrintTrialBalanceStart(ModelView):
     def default_fiscalyear(self):
         fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company') or False, exception=False)
+                Transaction().context.get('company'), exception=False)
         if fiscalyear_id:
             return fiscalyear_id
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_posted(self):
         return False
@@ -1329,8 +1325,8 @@ class PrintTrialBalanceStart(ModelView):
 
     def on_change_fiscalyear(self, vals):
         return {
-            'start_period': False,
-            'end_period': False,
+            'start_period': None,
+            'end_period': None,
         }
 
 PrintTrialBalanceStart()
@@ -1351,11 +1347,11 @@ class PrintTrialBalance(Wizard):
         if session.start.start_period:
             start_period = session.start.start_period.id
         else:
-            start_period = False
+            start_period = None
         if session.start.end_period:
             end_period = session.start.end_period.id
         else:
-            end_period = False
+            end_period = None
         data = {
             'company': session.start.company.id,
             'fiscalyear': session.start.fiscalyear.id,
@@ -1465,7 +1461,7 @@ class OpenBalanceSheetStart(ModelView):
         return date_obj.today()
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_posted(self):
         return False
@@ -1537,21 +1533,20 @@ class OpenIncomeStatementStart(ModelView):
     def default_fiscalyear(self):
         fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company') or False, exception=False)
+                Transaction().context.get('company'), exception=False)
         if fiscalyear_id:
             return fiscalyear_id
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_posted(self):
         return False
 
     def on_change_fiscalyear(self, vals):
         return {
-            'start_period': False,
-            'end_period': False,
+            'start_period': None,
+            'end_period': None,
         }
 
 OpenIncomeStatementStart()
@@ -1620,10 +1615,10 @@ class CreateChartAccount(ModelView):
     _description = __doc__
     company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
-            'Account Template', required=True, domain=[('parent', '=', False)])
+            'Account Template', required=True, domain=[('parent', '=', None)])
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 CreateChartAccount()
 
@@ -1703,7 +1698,7 @@ class CreateChart(Wizard):
             template2tax_code = {}
             tax_code_template_ids = tax_code_template_obj.search([
                     ('account', '=', account_template.id),
-                    ('parent', '=', False),
+                    ('parent', '=', None),
                     ])
             for tax_code_template in tax_code_template_obj.browse(
                     tax_code_template_ids):
@@ -1715,7 +1710,7 @@ class CreateChart(Wizard):
             template2tax = {}
             tax_template_ids = tax_template_obj.search([
                     ('account', '=', account_template.id),
-                    ('parent', '=', False),
+                    ('parent', '=', None),
                     ])
             for tax_template in tax_template_obj.browse(tax_template_ids):
                 tax_template_obj.create_tax(tax_template,
@@ -1766,7 +1761,7 @@ class CreateChart(Wizard):
                 ], limit=1)
         property_ids = property_obj.search([
                 ('field', '=', account_receivable_field_id),
-                ('res', '=', False),
+                ('res', '=', None),
                 ('company', '=', session.properties.company.id),
                 ])
         with Transaction().set_user(0):
@@ -1785,7 +1780,7 @@ class CreateChart(Wizard):
                 ], limit=1)
         property_ids = property_obj.search([
                 ('field', '=', account_payable_field_id),
-                ('res', '=', False),
+                ('res', '=', None),
                 ('company', '=', session.properties.company.id),
                 ])
         with Transaction().set_user(0):
@@ -1807,7 +1802,7 @@ class UpdateChartStart(ModelView):
     _name = 'account.update_chart.start'
     _description = __doc__
     account = fields.Many2One('account.account', 'Root Account',
-            required=True, domain=[('parent', '=', False)])
+            required=True, domain=[('parent', '=', None)])
 
 UpdateChartStart()
 
@@ -1876,7 +1871,7 @@ class UpdateChart(Wizard):
         template2tax_code = {}
         tax_code_ids = tax_code_obj.search([
             ('company', '=', account.company.id),
-            ('parent', '=', False),
+            ('parent', '=', None),
             ])
         for tax_code in tax_code_obj.browse(tax_code_ids):
             tax_code_obj.update_tax_code(tax_code,
@@ -1885,7 +1880,7 @@ class UpdateChart(Wizard):
         if account.template:
             tax_code_template_ids = tax_code_template_obj.search([
                 ('account', '=', account.template.id),
-                ('parent', '=', False),
+                ('parent', '=', None),
                 ])
             for tax_code_template in tax_code_template_obj.browse(
                     tax_code_template_ids):
@@ -1897,7 +1892,7 @@ class UpdateChart(Wizard):
         template2tax = {}
         tax_ids = tax_obj.search([
             ('company', '=', account.company.id),
-            ('parent', '=', False),
+            ('parent', '=', None),
             ])
         for tax in tax_obj.browse(tax_ids):
             tax_obj.update_tax(tax, template2tax_code=template2tax_code,
@@ -1907,7 +1902,7 @@ class UpdateChart(Wizard):
         if account.template:
             tax_template_ids = tax_template_obj.search([
                 ('account', '=', account.template.id),
-                ('parent', '=', False),
+                ('parent', '=', None),
                 ])
             for tax_template in tax_template_obj.browse(tax_template_ids):
                 tax_template_obj.create_tax(tax_template, account.company.id,
@@ -1972,16 +1967,15 @@ class OpenThirdPartyBalanceStart(ModelView):
     def default_fiscalyear(self):
         fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company') or False, exception=False)
+                Transaction().context.get('company'), exception=False)
         if fiscalyear_id:
             return fiscalyear_id
-        return False
 
     def default_posted(self):
         return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 OpenThirdPartyBalanceStart()
 
@@ -2091,10 +2085,9 @@ class OpenAgedBalanceStart(ModelView):
     def default_fiscalyear(self):
         fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company') or False, exception=False)
+                Transaction().context.get('company'), exception=False)
         if fiscalyear_id:
             return fiscalyear_id
-        return False
 
     def default_balance_type(self):
         return "customer"
@@ -2115,7 +2108,7 @@ class OpenAgedBalanceStart(ModelView):
         return 'day'
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 OpenAgedBalanceStart()
 

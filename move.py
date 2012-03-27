@@ -103,7 +103,7 @@ class Move(ModelSQL, ModelView):
 
     def default_period(self):
         period_obj = Pool().get('account.period')
-        return period_obj.find(Transaction().context.get('company') or False,
+        return period_obj.find(Transaction().context.get('company'),
                 exception=False)
 
     def default_state(self):
@@ -123,8 +123,8 @@ class Move(ModelSQL, ModelView):
         period_obj = Pool().get('account.period')
         res = vals['date']
         line_ids = line_obj.search([
-            ('journal', '=', vals.get('journal', False)),
-            ('period', '=', vals.get('period', False)),
+            ('journal', '=', vals.get('journal')),
+            ('period', '=', vals.get('period')),
             ], order=[('id', 'DESC')], limit=1)
         if line_ids:
             line = line_obj.browse(line_ids[0])
@@ -243,10 +243,10 @@ class Move(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['reference'] = False
+        default['reference'] = None
         default['state'] = self.default_state()
-        default['post_date'] = False
-        default['lines'] = False
+        default['post_date'] = None
+        default['lines'] = None
 
         new_ids = []
         for move in self.browse(ids):
@@ -544,8 +544,8 @@ class Line(ModelSQL, ModelView):
 
         res = date_obj.today()
         line_ids = self.search([
-            ('journal', '=', Transaction().context.get('journal', False)),
-            ('period', '=', Transaction().context.get('period', False)),
+            ('journal', '=', Transaction().context.get('journal')),
+            ('period', '=', Transaction().context.get('period')),
             ], order=[('id', 'DESC')], limit=1)
         if line_ids:
             line = self.browse(line_ids[0])
@@ -639,7 +639,7 @@ class Line(ModelSQL, ModelView):
                             code_id = tax.credit_note_tax_code.id
                             account_id = tax.credit_note_account.id
                     if base_id in line_code_taxes or not base_id:
-                        taxes.setdefault((account_id, code_id, tax.id), False)
+                        taxes.setdefault((account_id, code_id, tax.id), None)
                 for tax_line in line.tax_lines:
                     taxes[(line.account.id, tax_line.code.id,
                             tax_line.tax.id)] = True
@@ -656,14 +656,14 @@ class Line(ModelSQL, ModelView):
         if 'account' in fields:
             if total >= Decimal('0.0'):
                 values.setdefault('account', move.journal.credit_account \
-                        and move.journal.credit_account.id or False)
+                        and move.journal.credit_account.id or None)
             else:
                 values.setdefault('account', move.journal.debit_account \
-                        and move.journal.debit_account.id or False)
+                        and move.journal.debit_account.id or None)
 
         if ('debit' in fields) or ('credit' in fields):
-            values.setdefault('debit',  total < 0 and - total or False)
-            values.setdefault('credit', total > 0 and total or False)
+            values.setdefault('debit',  total < 0 and - total or None)
+            values.setdefault('credit', total > 0 and total or None)
 
         if move.journal.type in ('expense', 'revenue'):
             for account_id, code_id, tax_id in taxes:
@@ -1171,7 +1171,7 @@ class Line(ModelSQL, ModelView):
                     'period': (vals.get('period')
                         or Transaction().context.get('period')),
                     'journal': journal_id,
-                    'date': vals.get('date', False),
+                    'date': vals.get('date'),
                     })
         res = super(Line, self).create(vals)
         line = self.browse(res)
@@ -1183,9 +1183,9 @@ class Line(ModelSQL, ModelView):
         if default is None:
             default = {}
         if 'move' not in default:
-            default['move'] = False
+            default['move'] = None
         if 'reconciliation' not in default:
-            default['reconciliation'] = False
+            default['reconciliation'] = None
         return super(Line, self).copy(ids, default=default)
 
     def view_header_get(self, value, view_type='form'):
@@ -1246,7 +1246,7 @@ class Line(ModelSQL, ModelView):
                 return True
         return result
 
-    def reconcile(self, ids, journal_id=False, date=False, account_id=False):
+    def reconcile(self, ids, journal_id=None, date=None, account_id=None):
         pool = Pool()
         move_obj = pool.get('account.move')
         currency_obj = pool.get('currency.currency')
@@ -1338,7 +1338,7 @@ class OpenJournalAsk(ModelView):
 
     def default_period(self):
         period_obj = Pool().get('account.period')
-        return period_obj.find(Transaction().context.get('company') or False,
+        return period_obj.find(Transaction().context.get('company'),
                 exception=False)
 
 OpenJournalAsk()
@@ -1508,9 +1508,9 @@ class ReconcileLines(Wizard):
     def transition_reconcile(self, session):
         line_obj = Pool().get('account.move.line')
 
-        journal_id = False
-        date = False
-        account_id = False
+        journal_id = None
+        date = None
+        account_id = None
         if session.writeoff.journal:
             journal_id = session.writeoff.journal.id
         if session.writeoff.date:
@@ -1577,7 +1577,7 @@ class OpenReconcileLines(Wizard):
     def do_open_(self, session, action):
         action['pyson_domain'] = PYSONEncoder().encode([
             ('account', '=', session.start.account.id),
-            ('reconciliation', '=', False),
+            ('reconciliation', '=', None),
             ])
         return action, {}
 
@@ -1623,7 +1623,7 @@ class PrintGeneralJournalStart(ModelView):
         return date_obj.today()
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_posted(self):
         return False

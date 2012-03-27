@@ -40,7 +40,7 @@ class CodeTemplate(ModelSQL, ModelView):
     parent = fields.Many2One('account.tax.code.template', 'Parent')
     childs = fields.One2Many('account.tax.code.template', 'parent', 'Children')
     account = fields.Many2One('account.account.template', 'Account Template',
-            domain=[('parent', '=', False)], required=True)
+            domain=[('parent', '=', None)], required=True)
     description = fields.Text('Description', translate=True)
 
     def __init__(self):
@@ -74,7 +74,7 @@ class CodeTemplate(ModelSQL, ModelView):
         return res
 
     def create_tax_code(self, template, company_id, template2tax_code=None,
-            parent_id=False):
+            parent_id=None):
         '''
         Create recursively tax codes based on template.
 
@@ -173,7 +173,7 @@ class Code(ModelSQL, ModelView):
         return True
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def on_change_with_currency_digits(self, vals):
         company_obj = Pool().get('company.company')
@@ -391,7 +391,7 @@ class TaxTemplate(ModelSQL, ModelView):
             'Credit Note Tax Code')
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0))
     account = fields.Many2One('account.account.template', 'Account Template',
-            domain=[('parent', '=', False)], required=True)
+            domain=[('parent', '=', None)], required=True)
 
     def __init__(self):
         super(TaxTemplate, self).__init__()
@@ -446,7 +446,7 @@ class TaxTemplate(ModelSQL, ModelView):
         return res
 
     def create_tax(self, template, company_id, template2tax_code,
-            template2account, template2tax=None, parent_id=False):
+            template2account, template2tax=None, parent_id=None):
         '''
         Create recursively taxes based on template.
 
@@ -483,32 +483,32 @@ class TaxTemplate(ModelSQL, ModelView):
                 vals['invoice_account'] = \
                         template2account[template.invoice_account.id]
             else:
-                vals['invoice_account'] =  False
+                vals['invoice_account'] = None
             if template.credit_note_account:
                 vals['credit_note_account'] = \
                         template2account[template.credit_note_account.id]
             else:
-                vals['credit_note_account'] = False
+                vals['credit_note_account'] = None
             if template.invoice_base_code:
                 vals['invoice_base_code'] = \
                         template2tax_code[template.invoice_base_code.id]
             else:
-                vals['invoice_base_code'] = False
+                vals['invoice_base_code'] = None
             if template.invoice_tax_code:
                 vals['invoice_tax_code'] = \
                         template2tax_code[template.invoice_tax_code.id]
             else:
-                vals['invoice_tax_code'] = False
+                vals['invoice_tax_code'] = None
             if template.credit_note_base_code:
                 vals['credit_note_base_code'] = \
                         template2tax_code[template.credit_note_base_code.id]
             else:
-                vals['credit_note_base_code'] = False
+                vals['credit_note_base_code'] = None
             if template.credit_note_tax_code:
                 vals['credit_note_tax_code'] = \
                         template2tax_code[template.credit_note_tax_code.id]
             else:
-                vals['credit_note_tax_code'] = False
+                vals['credit_note_tax_code'] = None
 
             new_id = tax_obj.create(vals)
 
@@ -691,7 +691,7 @@ class Tax(ModelSQL, ModelView):
         return Decimal('1')
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def on_change_with_currency_digits(self, vals):
         company_obj = Pool().get('company.company')
@@ -804,64 +804,52 @@ class Tax(ModelSQL, ModelView):
             vals = template_obj._get_tax_value(tax.template, tax=tax)
             if tax.template.invoice_account \
                     and tax.invoice_account.id != \
-                    template2account.get(tax.template.invoice_account.id,
-                            False):
+                    template2account.get(tax.template.invoice_account.id):
                 vals['invoice_account'] = \
-                        template2account.get(tax.template.invoice_account.id,
-                                False)
+                        template2account.get(tax.template.invoice_account.id)
             elif not tax.template.invoice_account \
                     and tax.invoice_account:
-                vals['invoice_account'] =  False
+                vals['invoice_account'] = None
             if tax.template.credit_note_account \
                     and tax.credit_note_account.id != \
-                    template2account.get(tax.template.credit_note_account.id,
-                            False):
+                    template2account.get(tax.template.credit_note_account.id):
                 vals['credit_note_account'] = \
-                        template2account.get(tax.template.credit_note_account.id,
-                                False)
+                        template2account.get(tax.template.credit_note_account.id)
             elif not tax.template.credit_note_account \
                     and tax.credit_note_account:
-                vals['credit_note_account'] = False
+                vals['credit_note_account'] = None
             if tax.template.invoice_base_code \
                     and tax.invoice_base_code.id != \
-                    template2tax_code.get(tax.template.invoice_base_code.id,
-                            False):
+                    template2tax_code.get(tax.template.invoice_base_code.id):
                 vals['invoice_base_code'] = \
-                        template2tax_code.get(tax.template.invoice_base_code.id,
-                                False)
+                        template2tax_code.get(tax.template.invoice_base_code.id)
             elif not tax.template.invoice_base_code \
                     and tax.invoice_base_code:
-                vals['invoice_base_code'] = False
+                vals['invoice_base_code'] = None
             if tax.template.invoice_tax_code \
                     and tax.invoice_tax_code.id != \
-                    template2tax_code.get(tax.template.invoice_tax_code.id,
-                            False):
+                    template2tax_code.get(tax.template.invoice_tax_code.id):
                 vals['invoice_tax_code'] = \
-                        template2tax_code.get(tax.template.invoice_tax_code.id,
-                                False)
+                        template2tax_code.get(tax.template.invoice_tax_code.id)
             elif not tax.template.invoice_tax_code \
                     and tax.invoice_tax_code:
-                vals['invoice_tax_code'] = False
+                vals['invoice_tax_code'] = None
             if tax.template.credit_note_base_code \
                     and tax.credit_note_base_code.id != \
-                    template2tax_code.get(tax.template.credit_note_base_code.id,
-                            False):
+                    template2tax_code.get(tax.template.credit_note_base_code.id):
                 vals['credit_note_base_code'] = \
-                        template2tax_code.get(tax.template.credit_note_base_code.id,
-                                False)
+                        template2tax_code.get(tax.template.credit_note_base_code.id)
             elif not tax.template.credit_note_base_code \
                     and tax.credit_note_base_code:
-                vals['credit_note_base_code'] = False
+                vals['credit_note_base_code'] = None
             if tax.template.credit_note_tax_code \
                     and tax.credit_note_tax_code.id != \
-                    template2tax_code.get(tax.template.credit_note_tax_code.id,
-                            False):
+                    template2tax_code.get(tax.template.credit_note_tax_code.id):
                 vals['credit_note_tax_code'] = \
-                        template2tax_code.get(tax.template.credit_note_tax_code.id,
-                                False)
+                        template2tax_code.get(tax.template.credit_note_tax_code.id)
             elif not tax.template.credit_note_tax_code \
                     and tax.credit_note_tax_code:
-                vals['credit_note_tax_code'] = False
+                vals['credit_note_tax_code'] = None
 
             if vals:
                 self.write(tax.id, vals)
@@ -926,7 +914,7 @@ class Line(ModelSQL, ModelView):
 
     def on_change_tax(self, vals):
         res = {
-            'code': False,
+            'code': None,
             }
         return res
 
@@ -940,7 +928,7 @@ class RuleTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     lines = fields.One2Many('account.tax.rule.line.template', 'rule', 'Lines')
     account = fields.Many2One('account.account.template', 'Account Template',
-            domain=[('parent', '=', False)], required=True)
+            domain=[('parent', '=', None)], required=True)
 
     def _get_tax_rule_value(self, template, rule=None):
         '''
@@ -1031,7 +1019,7 @@ class Rule(ModelSQL, ModelView):
         :param tax: a tax id or the BrowseRecord of the tax
         :param pattern: a dictonary with rule line field as key
                 and match value as value
-        :return: a list of the tax id to use or False
+        :return: a list of the tax id to use or None
         '''
         tax_obj = Pool().get('account.tax')
         rule_line_obj = Pool().get('account.tax.rule.line')
@@ -1043,13 +1031,13 @@ class Rule(ModelSQL, ModelView):
             tax = tax_obj.browse(tax)
 
         pattern = pattern.copy()
-        pattern['group'] = tax and tax.group.id or False
-        pattern['origin_tax'] = tax and tax.id or False
+        pattern['group'] = tax and tax.group.id or None
+        pattern['origin_tax'] = tax and tax.id or None
 
         for line in rule.lines:
             if rule_line_obj.match(line, pattern):
                 return rule_line_obj.get_taxes(line)
-        return tax and [tax.id] or False
+        return tax and [tax.id] or None
 
     def update_rule(self, rule, template2rule=None):
         '''
@@ -1178,11 +1166,11 @@ class RuleLineTemplate(ModelSQL, ModelView):
             if template.origin_tax:
                 vals['origin_tax'] = template2tax[template.origin_tax.id]
             else:
-                vals['origin_tax'] = False
+                vals['origin_tax'] = None
             if template.tax:
                 vals['tax'] = template2tax[template.tax.id]
             else:
-                vals['tax'] = False
+                vals['tax'] = None
             new_id = rule_line_obj.create(vals)
             template2rule_line[template.id] = new_id
         else:
@@ -1256,7 +1244,7 @@ class RuleLine(ModelSQL, ModelView):
         '''
         if line.tax:
             return [line.tax.id]
-        return False
+        return None
 
     def update_rule_line(self, rule_line, template2tax, template2rule,
             template2rule_line=None):
@@ -1366,7 +1354,7 @@ class AccountTemplate(ModelSQL, ModelView):
     _name = 'account.account.template'
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
-            domain=[('parent', '=', False)])
+            domain=[('parent', '=', None)])
 
 AccountTemplate()
 
@@ -1390,7 +1378,7 @@ class Account(ModelSQL, ModelView):
             'account', 'tax', 'Default Taxes',
             domain=[
                 ('company', '=', Eval('company')),
-                ('parent', '=', False),
+                ('parent', '=', None),
             ],
             help='Default tax for manual encoding of move lines \n' \
                     'for journal types: "expense" and "revenue"',

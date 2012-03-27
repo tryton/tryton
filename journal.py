@@ -145,7 +145,7 @@ class Journal(ModelSQL, ModelView):
         return False
 
     def default_sequence(self):
-        return False
+        return None
 
     def get_types(self):
         type_obj = Pool().get('account.journal.type')

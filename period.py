@@ -138,7 +138,7 @@ class Period(ModelSQL, ModelView):
         :param date: the date searched
         :param exception: a boolean to raise or not an exception
         :param test_state: a boolean if true will search on non-closed periods
-        :return: the period id found or False
+        :return: the period id found or None
         '''
         date_obj = Pool().get('ir.date')
 
@@ -157,7 +157,7 @@ class Period(ModelSQL, ModelView):
             if exception:
                 self.raise_user_error('no_period_date')
             else:
-                return False
+                return None
         return ids[0]
 
     def _check(self, ids):
