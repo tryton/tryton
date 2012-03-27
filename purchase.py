@@ -206,17 +206,15 @@ class Purchase(Workflow, ModelSQL, ModelView):
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
-        return False
 
     def default_warehouse(self):
         location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_state(self):
         return 'draft'
@@ -227,7 +225,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
         if company:
             company = company_obj.browse(company)
             return company.currency.id
-        return False
 
     def default_currency_digits(self):
         company_obj = Pool().get('company.company')
@@ -256,8 +253,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
         currency_obj = pool.get('currency.currency')
         cursor = Transaction().cursor
         res = {
-            'invoice_address': False,
-            'payment_term': False,
+            'invoice_address': None,
+            'payment_term': None,
             'currency': self.default_currency(),
             'currency_digits': self.default_currency_digits(),
         }
@@ -591,12 +588,12 @@ class Purchase(Workflow, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default['state'] = 'draft'
-        default['reference'] = False
+        default['reference'] = None
         default['invoice_state'] = 'none'
-        default['invoices'] = False
-        default['invoices_ignored'] = False
+        default['invoices'] = None
+        default['invoices_ignored'] = None
         default['shipment_state'] = 'none'
-        default.setdefault('purchase_date', False)
+        default.setdefault('purchase_date', None)
         return super(Purchase, self).copy(ids, default=default)
 
     def check_for_quotation(self, ids):
@@ -873,7 +870,7 @@ class PurchaseLine(ModelSQL, ModelView):
         context={
             'locations': If(Bool(Eval('_parent_purchase', {}).get(
                         'warehouse')),
-                [Eval('_parent_purchase', {}).get('warehouse', False)],
+                [Eval('_parent_purchase', {}).get('warehouse', None)],
                 []),
             'stock_date_end': Eval('_parent_purchase', {}).get(
                 'purchase_date'),
@@ -901,7 +898,7 @@ class PurchaseLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
-        'line', 'tax', 'Taxes', domain=[('parent', '=', False)],
+        'line', 'tax', 'Taxes', domain=[('parent', '=', None)],
         states={
             'invisible': Eval('type') != 'line',
             }, depends=['type'])
@@ -1065,7 +1062,7 @@ class PurchaseLine(ModelSQL, ModelView):
                 continue
             res['taxes'].append(tax.id)
         if party and party.supplier_tax_rule:
-            tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, False,
+            tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, None,
                     pattern)
             if tax_ids:
                 res['taxes'].extend(tax_ids)
@@ -1179,7 +1176,7 @@ class PurchaseLine(ModelSQL, ModelView):
             if line.purchase.warehouse:
                 result[line.id] = line.purchase.warehouse.input_location.id
             else:
-                result[line.id] = False
+                result[line.id] = None
         return result
 
     def _compute_delivery_date(self, product, party, date):
@@ -1189,7 +1186,6 @@ class PurchaseLine(ModelSQL, ModelView):
                 if product_supplier.party.id == party.id:
                     return product_supplier_obj.compute_supply_date(
                         product_supplier, date=date)
-        return False
 
     def on_change_with_delivery_date(self, values):
         pool = Pool()
@@ -1200,7 +1196,6 @@ class PurchaseLine(ModelSQL, ModelView):
             party = party_obj.browse(values['_parent_purchase.party'])
             return self._compute_delivery_date(product, party,
                 values.get('_parent_purchase.purchase_date'))
-        return False
 
     def get_delivery_date(self, ids, name):
         dates = {}
@@ -1275,10 +1270,10 @@ class PurchaseLine(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['moves'] = False
-        default['moves_ignored'] = False
-        default['moves_recreated'] = False
-        default['invoice_lines'] = False
+        default['moves'] = None
+        default['moves_ignored'] = None
+        default['moves_recreated'] = None
+        default['invoice_lines'] = None
         return super(PurchaseLine, self).copy(ids, default=default)
 
     def get_move(self, line):
@@ -1347,7 +1342,7 @@ class PurchaseLineTax(ModelSQL):
             ondelete='CASCADE', select=True, required=True,
             domain=[('type', '=', 'line')])
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
-            select=True, required=True, domain=[('parent', '=', False)])
+            select=True, required=True, domain=[('parent', '=', None)])
 
 PurchaseLineTax()
 
@@ -1449,7 +1444,7 @@ class Template(ModelSQL, ModelView):
 
     def on_change_with_purchase_uom(self, vals):
         uom_obj = Pool().get('product.uom')
-        res = False
+        res = None
 
         if vals.get('default_uom'):
             default_uom = uom_obj.browse(vals['default_uom'])
@@ -1521,7 +1516,7 @@ class Product(ModelSQL, ModelView):
             res[product.id] = product.cost_price
             default_uom = product.default_uom
             default_currency = (user.company.currency.id if user.company
-                else False)
+                else None)
             if not uom:
                 uom = default_uom
             if Transaction().context.get('supplier') and product.product_suppliers:
@@ -1605,7 +1600,7 @@ class ProductSupplier(ModelSQL, ModelView):
                         'WHERE id = %s', (currency_id, product_supplier_id))
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
@@ -1613,7 +1608,6 @@ class ProductSupplier(ModelSQL, ModelView):
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
-        return False
 
     def on_change_party(self, values):
         cursor = Transaction().cursor
@@ -1794,7 +1788,7 @@ class Move(ModelSQL, ModelView):
     def get_purchase(self, ids, name):
         res = {}
         for move in self.browse(ids):
-            res[move.id] = False
+            res[move.id] = None
             if move.purchase_line:
                 res[move.id] = move.purchase_line.purchase.id
         return res
@@ -1825,7 +1819,7 @@ class Move(ModelSQL, ModelView):
                 elif name[9:] == 'unit_digits':
                     res[name][move.id] = 2
                 else:
-                    res[name][move.id] = False
+                    res[name][move.id] = None
             if move.purchase_line:
                 for name in res.keys():
                     if name[9:] == 'currency':
@@ -1856,7 +1850,7 @@ class Move(ModelSQL, ModelView):
     def get_supplier(self, ids, name):
         res = {}
         for move in self.browse(ids):
-            res[move.id] = False
+            res[move.id] = None
             if move.purchase_line:
                 res[move.id] = move.purchase_line.purchase.party.id
         return res
@@ -1994,7 +1988,7 @@ class OpenSupplier(Wizard):
         model_data_ids = model_data_obj.search([
             ('fs_id', '=', 'act_open_supplier'),
             ('module', '=', 'purchase'),
-            ('inherit', '=', False),
+            ('inherit', '=', None),
             ], limit=1)
         model_data = model_data_obj.browse(model_data_ids[0])
         wizard = wizard_obj.browse(model_data.db_id)

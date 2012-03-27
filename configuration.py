@@ -12,7 +12,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     purchase_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Purchase Reference Sequence', domain=[
                 ('company', 'in',
-                    [Eval('context', {}).get('company', 0), False]),
+                    [Eval('context', {}).get('company', 0), None]),
                 ('code', '=', 'purchase.purchase'),
                 ], required=True))
     purchase_invoice_method = fields.Property(fields.Selection([

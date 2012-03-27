@@ -14,7 +14,7 @@ class Invoice(Model):
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('purchases', False)
+        default.setdefault('purchases', None)
         return super(Invoice, self).copy(ids, default=default)
 
     def paid(self, ids):
@@ -44,7 +44,7 @@ class InvoiceLine(Model):
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('purchase_lines', False)
+        default.setdefault('purchase_lines', None)
         return super(InvoiceLine, self).copy(ids, default=default)
 
 InvoiceLine()
