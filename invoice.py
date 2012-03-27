@@ -19,7 +19,7 @@ class InvoiceLine(ModelSQL, ModelView):
         move_line = {}
         move_line['name'] = line.description
         move_line['amount_second_currency'] = Decimal('0.0')
-        move_line['second_currency'] = False
+        move_line['second_currency'] = None
 
         if type_.startswith('in_'):
             move_line['debit'] = amount
