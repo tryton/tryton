@@ -40,14 +40,14 @@ class Category(ModelSQL, ModelView):
     taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
         help='Use the taxes defined on the parent category')
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
-        'category', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
+        'category', 'tax', 'Customer Taxes', domain=[('parent', '=', None)],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_parent')),
             },
         depends=['taxes_parent'])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
-        'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
+        'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', None)],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_parent')),
@@ -199,13 +199,13 @@ class Template(ModelSQL, ModelView):
     taxes_category = fields.Boolean('Use Category\'s Taxes',
             help='Use the taxes defined on the category')
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
-        'product', 'tax', 'Customer Taxes', domain=[('parent', '=', False)],
+        'product', 'tax', 'Customer Taxes', domain=[('parent', '=', None)],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_category')),
             }, depends=['taxes_category'])
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
-        'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', False)],
+        'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', None)],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_category')),
@@ -232,7 +232,7 @@ class Template(ModelSQL, ModelView):
         self._reset_columns()
 
     def default_taxes_category(self):
-        return False
+        return None
 
     def get_account(self, ids, name):
         accounts = {}
