@@ -54,7 +54,7 @@ class PriceList(ModelSQL, ModelView):
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def _get_context_price_list_line(self, party, product, unit_price,
             quantity, uom):
@@ -116,7 +116,7 @@ class PriceList(ModelSQL, ModelView):
             pattern = {}
 
         pattern = pattern.copy()
-        pattern['product'] = product and product.id or False
+        pattern['product'] = product and product.id or None
         pattern['quantity'] = uom_obj.compute_qty(uom, quantity,
                 product.default_uom, round=False)
 
