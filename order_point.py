@@ -100,7 +100,7 @@ class OrderPoint(ModelSQL, ModelView):
     def on_change_product(self, vals):
         product_obj = Pool().get('product.product')
         res = {
-            'unit': False,
+            'unit': None,
             'unit.rec_name': '',
             'unit_digits': 2,
         }
@@ -199,7 +199,7 @@ class OrderPoint(ModelSQL, ModelView):
             elif op.type == 'internal':
                 res[op.id] = op.storage_location.id
             else:
-                res[op.id] = False
+                res[op.id] = None
         return res
 
     def search_location(self, name, domain=None):
@@ -212,6 +212,6 @@ class OrderPoint(ModelSQL, ModelView):
         return [('id', 'in', ids)]
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 OrderPoint()

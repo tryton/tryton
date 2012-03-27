@@ -63,7 +63,7 @@ class ShipmentInternal(ModelSQL, ModelView):
         shipment_ids = self.search([
             ('state', '=', 'draft'), ['OR', 
                 ('planned_date', '<=', today),
-                ('planned_date', '=', False),
+                ('planned_date', '=', None),
                 ],
             ])
         for shipment in self.browse(shipment_ids):

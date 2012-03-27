@@ -87,7 +87,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         return res
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def get_purchase(self, ids, name):
         res = {}
@@ -97,7 +97,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             if request.purchase_line:
                 res[request.id] = request.purchase_line.purchase.id
             else:
-                res[request.id] = False
+                res[request.id] = None
         return res
 
     def get_state(self, ids, name):
@@ -215,13 +215,13 @@ class PurchaseRequest(ModelSQL, ModelView):
         uom_obj = pool.get('product.uom')
         request_obj = pool.get('purchase.request')
         req_ids = request_obj.search([
-            ('purchase_line', '=', False),
+            ('purchase_line', '=', None),
             ('origin', 'like', 'stock.order_point,%'),
             ])
         request_obj.delete(req_ids)
 
         req_ids = request_obj.search([
-                ('purchase_line.moves', '=', False),
+                ('purchase_line.moves', '=', None),
                 ('purchase_line.purchase.state', '!=', 'cancel'),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
@@ -576,13 +576,13 @@ class CreatePurchase(Wizard):
                 and session.ask_party.company):
             req_ids = request_obj.search([
                     ('id', 'in', request_ids),
-                    ('party', '=', False),
+                    ('party', '=', None),
                     ])
             if req_ids:
                 request_obj.write(req_ids, {'party': session.ask_party.party.id})
-            session.ask_party.product = False
-            session.ask_party.party = False
-            session.ask_party.company = False
+            session.ask_party.product = None
+            session.ask_party.party = None
+            session.ask_party.company = None
         elif (session.ask_term.payment_term
                 and session.ask_term.party
                 and session.ask_term.company):
@@ -591,14 +591,14 @@ class CreatePurchase(Wizard):
                         'supplier_payment_term': \
                             session.ask_term.payment_term.id,
                         })
-            session.ask_term.payment_term = False
-            session.ask_term.party = False
-            session.ask_term.company = False
+            session.ask_term.payment_term = None
+            session.ask_term.party = None
+            session.ask_term.company = None
 
         req_ids = request_obj.search([
                 ('id', 'in', request_ids),
-                ('purchase_line', '=', False),
-                ('party', '=', False),
+                ('purchase_line', '=', None),
+                ('party', '=', None),
                 ])
         if req_ids:
             return 'ask_party'
