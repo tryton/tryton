@@ -112,7 +112,7 @@ class Template(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['products'] = False
+        default['products'] = None
         return super(Template, self).copy(ids, default=default)
 
 Template()
@@ -178,7 +178,7 @@ class Product(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['products'] = False
+        default['products'] = None
         new_ids = []
         for product in self.browse(ids):
             default['template'] = template_obj.copy(product.template.id)

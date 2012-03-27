@@ -198,7 +198,7 @@ class Uom(ModelSQL, ModelView):
                 amount = self.round(amount, to_uom.rounding)
         return amount
 
-    def compute_price(self, from_uom, price, to_uom=False):
+    def compute_price(self, from_uom, price, to_uom=None):
         """
         Convert price for given uom's.
 
