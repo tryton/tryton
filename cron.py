@@ -22,8 +22,8 @@ class Cron(ModelSQL, ModelView):
             })
             super(Cron, self)._callback(cron)
         user_obj.write(cron.user.id, {
-            'company': False,
-            'main_company': False,
+            'company': None,
+            'main_company': None,
         })
 
     def default_companies(self):

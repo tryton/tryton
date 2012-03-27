@@ -16,6 +16,6 @@ class Configuration(Model):
         self.party_sequence.domain = copy.copy(self.party_sequence.domain)
         self.party_sequence.domain = [
             self.party_sequence.domain,
-            ('company', 'in', [Eval('context', {}).get('company'), False])]
+            ('company', 'in', [Eval('context', {}).get('company'), None])]
 
 Configuration()

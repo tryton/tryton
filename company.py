@@ -110,7 +110,7 @@ class User(ModelSQL, ModelView):
         self._context_fields.insert(0, 'employee')
 
     def default_main_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_company(self):
         return self.default_main_company()
@@ -121,7 +121,7 @@ class User(ModelSQL, ModelView):
         company_childs = {}
         for user in self.browse(ids):
             res[user.id] = []
-            company_id = False
+            company_id = None
             if user.company:
                 company_id = user.company.id
             elif user.main_company:
@@ -148,14 +148,14 @@ class User(ModelSQL, ModelView):
 
     def on_change_main_company(self, vals):
         return {
-            'company': vals.get('main_company', False),
-            'employee': False,
+            'company': vals.get('main_company'),
+            'employee': None,
             }
 
     def on_change_company(self, values):
         employee_obj = Pool().get('company.employee')
         result = {
-            'employee': False,
+            'employee': None,
             }
         if values.get('company') and values.get('employees'):
             employee_ids = employee_obj.search([
@@ -261,7 +261,7 @@ class Property(ModelSQL, ModelView):
 
     def search(self, domain, offset=0, limit=None, order=None, count=False):
         if Transaction().user == 0 and not 'user' in Transaction().context:
-            domain = ['AND', domain[:], ('company', '=', False)]
+            domain = ['AND', domain[:], ('company', '=', None)]
         return super(Property, self).search(domain, offset=offset,
                 limit=limit, order=order, count=count)
 
@@ -281,7 +281,7 @@ class Sequence(ModelSQL, ModelView):
         self._order.insert(0, ('company', 'ASC'))
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 Sequence()
 
@@ -335,7 +335,7 @@ class CompanyConfig(Wizard):
                 values[fname] = [('set', [v['id'] for v in values[fname]])]
         company_id = company_obj.create(values)
         user_ids = user_obj.search([
-            ('main_company', '=', False),
+            ('main_company', '=', None),
             ])
         user_obj.write(user_ids, {
             'main_company': company_id,
