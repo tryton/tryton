@@ -22,7 +22,7 @@ class View(Model):
         model_data_ids = model_data_obj.search([
             ('fs_id', '=', 'view_dashboard'),
             ('module', '=', 'dashboard'),
-            ('inherit', '=', False),
+            ('inherit', '=', None),
             ], limit=1)
         if not model_data_ids:
             return 0
