@@ -145,7 +145,7 @@ class Work(ModelSQL, ModelView):
         else:
             child_project_works = self.browse(ids)
             child_timesheet_work_ids = [x.work.id for x in child_project_works]
-            parent_timesheet_work_id = False
+            parent_timesheet_work_id = None
 
         timesheet_work_obj.write(child_timesheet_work_ids, {
                 'parent': parent_timesheet_work_id
