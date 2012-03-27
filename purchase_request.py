@@ -159,31 +159,36 @@ class PurchaseRequest(ModelSQL, ModelView):
         date2products = {}
         for product in product_obj.browse(product_ids):
             min_date, max_date = self.get_supply_dates(product)
-            date2products.setdefault(min_date, []).append((product, max_date))
+            date2products.setdefault((min_date, max_date), []).append(product)
 
         # compute requests
         new_requests = []
-        for min_date in date2products:
-            product_ids = [x[0].id for x in date2products[min_date]]
-            with Transaction().set_context(forecast=True,
-                    stock_date_end=min_date or datetime.date.max):
-                pbl = product_obj.products_by_location(warehouse_ids,
-                    product_ids, with_childs=True, skip_zero=False)
-            for product, max_date in date2products[min_date]:
+        cursor = Transaction().cursor
+        for dates, products in date2products.iteritems():
+            min_date, max_date = dates
+            for i in range(0, len(products), cursor.IN_MAX):
+                product_ids = [p.id for p in products[i:i + cursor.IN_MAX]]
+                with Transaction().set_context(forecast=True,
+                        stock_date_end=min_date or datetime.date.max):
+                    pbl = product_obj.products_by_location(warehouse_ids,
+                        product_ids, with_childs=True, skip_zero=False)
                 for warehouse_id in warehouse_ids:
-                    qty = pbl.pop((warehouse_id, product.id))
-                    order_point = product2ops.get((warehouse_id, product.id))
+                    min_date_qties = dict((x, pbl.pop((warehouse_id, x)))
+                        for x in product_ids)
                     # Search for shortage between min-max
-                    shortage_date, product_quantity = self.get_shortage(
-                        warehouse_id, product.id, min_date, max_date,
-                        min_date_qty=qty, order_point=order_point)
+                    shortages = self.get_shortage(warehouse_id, product_ids,
+                        min_date, max_date, min_date_qties=min_date_qties,
+                        order_points=product2ops)
 
-                    if shortage_date == None or product_quantity == None:
-                        continue
-                    # generate request values
-                    request_val = self.compute_request(product, warehouse_id,
-                        shortage_date, product_quantity, company, order_point)
-                    new_requests.append(request_val)
+                    for product in products[i:i + cursor.IN_MAX]:
+                        shortage_date, product_quantity = shortages[product.id]
+                        if shortage_date == None or product_quantity == None:
+                            continue
+                        # generate request values
+                        request_val = self.compute_request(product,
+                            warehouse_id, shortage_date, product_quantity,
+                            company, order_point)
+                        new_requests.append(request_val)
 
         new_requests = self.compare_requests(new_requests)
 
@@ -379,51 +384,54 @@ class PurchaseRequest(ModelSQL, ModelView):
                 'origin': origin,
                 }
 
-    def get_shortage(self, location_id, product_id, min_date,
-                     max_date, min_date_qty, order_point=None):
+    def get_shortage(self, location_id, product_ids, min_date, max_date,
+            min_date_qties, order_points):
         """
-        Return between min_date and max_date  the first date where the
-            stock quantity is less than the minimal quantity and
-            the smallest stock quantity in the interval
-            or None if there is no date where stock quantity is less than
-            the minimal quantity
-        The minimal quantity comes from the order_point or is zero
+        Return for each product the first date between min_date and max_date
+        where the stock quantity is less than the minimal quantity and the
+        smallest stock quantity in the interval or None if there is no date
+        where stock quantity is less than the minimal quantity.
 
-        :param location_id: the stock location id
-        :param produc_id: the product id
-        :param min_date: the minimal date
-        :param max_date: the maximal date
-        :param min_date_qty: the stock quantity at the minimal date
-        :param order_point: a BrowseRecord of the Order Point
-        :return: a tuple with the date and the quantity
+        The minimal quantity comes from the order point or is zero.
+
+        min_date_qty is the quantities for each products at the min_date.
+        order_points is a dictionary that links products to order point.
         """
         product_obj = Pool().get('product.product')
 
-        res_date = None
-        res_qty = None
+        res_dates = {}
+        res_qties = {}
 
-        min_quantity = order_point and order_point.min_quantity or 0.0
+        min_quantities = dict((x, order_points.get(x, 0.0))
+            for x in product_ids)
 
         current_date = min_date
-        current_qty = min_date_qty
+        current_qties = min_date_qties.copy()
         while (current_date < max_date) or (current_date == min_date):
-            if current_qty < min_quantity:
-                if not res_date:
-                    res_date = current_date
-                if (not res_qty) or (current_qty < res_qty):
-                    res_qty = current_qty
+            for product_id in product_ids:
+                current_qty = current_qties[product_id]
+                min_quantity = min_quantities[product_id]
+                res_qty = res_qties.get(product_id)
+                res_date = res_dates.get(product_id)
+                if current_qty < min_quantity:
+                    if not res_date:
+                        res_dates[product_id] = current_date
+                    if (not res_qty) or (current_qty < res_qty):
+                        res_qties[product_id] = current_qty
 
             with Transaction().set_context(stock_date_start=current_date,
                     stock_date_end=current_date):
-                res = product_obj.products_by_location([location_id],
-                [product_id], with_childs=True, skip_zero=False)
-            for qty in res.itervalues():
-                current_qty += qty
+                pbl = product_obj.products_by_location([location_id],
+                    product_ids, with_childs=True, skip_zero=False)
+            for key, qty in pbl.iteritems():
+                _, product_id = key
+                current_qties[product_id] += qty
             if current_date == datetime.date.max:
                 break
             current_date += datetime.timedelta(1)
 
-        return (res_date, res_qty)
+        return dict((x, (res_dates.get(x), res_qties.get(x)))
+            for x in product_ids)
 
     def create(self, vals):
         for field_name in ('product', 'quantity', 'uom', 'warehouse', 'company'):
