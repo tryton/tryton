@@ -77,7 +77,6 @@ class Line(ModelSQL, ModelView):
         if vals.get('move_line'):
             move_line = move_line_obj.browse(vals['move_line'])
             return move_line.account.company.currency.id
-        return False
 
     def get_currency(self, ids, name):
         res = {}

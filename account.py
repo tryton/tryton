@@ -27,7 +27,7 @@ class Account(ModelSQL, ModelView):
         ('normal', 'Normal'),
         ], 'Type', required=True)
     root = fields.Many2One('analytic_account.account', 'Root', select=True,
-        domain=[('parent', '=', False)],
+        domain=[('parent', '=', None)],
         states={
             'invisible': Eval('type') == 'root',
             'required': Eval('type') != 'root',
@@ -79,14 +79,13 @@ class Account(ModelSQL, ModelView):
         return True
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
         if Transaction().context.get('company'):
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
-        return False
 
     def default_type(self):
         return 'normal'
@@ -255,7 +254,7 @@ class Account(ModelSQL, ModelView):
         element_accounts = res[0]
 
         root_account_ids = self.search([
-            ('parent', '=', False),
+            ('parent', '=', None),
             ])
         if not root_account_ids:
             element_accounts.getparent().getparent().remove(
@@ -278,7 +277,7 @@ class Account(ModelSQL, ModelView):
             fields_names = []
 
         root_account_ids = self.search([
-            ('parent', '=', False),
+            ('parent', '=', None),
             ])
         for account in self.browse(root_account_ids):
             name = 'analytic_account_' + str(account.id)
@@ -354,7 +353,7 @@ class AccountSelection(ModelSQL, ModelView):
         account_obj = Pool().get('analytic_account.account')
 
         root_account_ids = account_obj.search([
-            ('parent', '=', False),
+            ('parent', '=', None),
             ])
         root_accounts = account_obj.browse(root_account_ids)
 
