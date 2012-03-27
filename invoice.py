@@ -41,7 +41,7 @@ class Invoice(Model):
         if default is None:
             default = {}
         default = default.copy()
-        default['open_date'] = False
+        default['open_date'] = None
         return super(Invoice, self).copy(ids, default=default)
 
 Invoice()
