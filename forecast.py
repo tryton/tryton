@@ -139,10 +139,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
                 self.destination.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def check_date_overlap(self, ids):
         cursor = Transaction().cursor
@@ -216,7 +215,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['lines'] = False
+        default['lines'] = None
 
         new_ids = []
         for forecast in self.browse(ids):
@@ -380,7 +379,7 @@ class ForecastLine(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['moves'] = False
+        default['moves'] = None
         return super(ForecastLine, self).copy(ids, default=default)
 
     def create_moves(self, line):
@@ -404,7 +403,7 @@ class ForecastLine(ModelSQL, ModelView):
         nb_packet = int((line.quantity - line.quantity_executed)
             / line.minimal_quantity)
         distribution = self.distribute(delta, nb_packet)
-        unit_price = False
+        unit_price = None
         if line.forecast.destination.type == 'customer':
             unit_price = line.product.list_price
             unit_price = uom_obj.compute_price(line.product.default_uom,
