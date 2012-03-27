@@ -70,7 +70,7 @@ class InvoiceLine(ModelSQL, ModelView):
             for line in lines:
                 for root_id in root_ids:
                     id2record[line.id]['analytic_account_' \
-                            + str(root_id)] = False
+                            + str(root_id)] = None
                 if line.type != 'line':
                     continue
                 if not line.analytic_accounts:
