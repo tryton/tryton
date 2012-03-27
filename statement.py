@@ -113,7 +113,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_state(self):
         return 'draft'
@@ -254,7 +254,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                                 amount_to_pay):
                             res['lines']['update'].append({
                                 'id': line['id'],
-                                'invoice': False,
+                                'invoice': None,
                                 })
                         else:
                             res['lines']['update'].append({
@@ -267,7 +267,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                             vals['amount'] = abs(line['amount']) - amount_to_pay
                             if line['amount'] < 0:
                                 vals['amount'] = - vals['amount']
-                            vals['invoice'] = False
+                            vals['invoice'] = None
                             res['lines']['add'].append(vals)
                     invoice_id2amount_to_pay[line['invoice']] = \
                             amount_to_pay - abs(line['amount'])
@@ -389,9 +389,9 @@ class Line(ModelSQL, ModelView):
             if value.get('party'):
                 invoice = invoice_obj.browse(value['invoice'])
                 if invoice.party != value['party']:
-                    res['invoice'] = False
+                    res['invoice'] = None
             else:
-                res['invoice'] = False
+                res['invoice'] = None
         return res
 
     def on_change_amount(self, value):
@@ -423,9 +423,9 @@ class Line(ModelSQL, ModelView):
                     amount_to_pay = currency_obj.compute(invoice.currency.id,
                         invoice.amount_to_pay, journal.currency.id)
                 if abs(value['amount']) > amount_to_pay:
-                    res['invoice'] = False
+                    res['invoice'] = None
             else:
-                res['invoice'] = False
+                res['invoice'] = None
         return res
 
     def on_change_account(self, value):
@@ -436,9 +436,9 @@ class Line(ModelSQL, ModelView):
             if value.get('account'):
                 invoice = invoice_obj.browse(value['invoice'])
                 if invoice.account.id != value['account']:
-                    res['invoice'] = False
+                    res['invoice'] = None
             else:
-                res['invoice'] = False
+                res['invoice'] = None
         return res
 
     def create_move(self, line):

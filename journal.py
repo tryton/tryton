@@ -22,9 +22,8 @@ class Journal(ModelSQL, ModelView):
             company_obj = Pool().get('company.company')
             company = company_obj.browse(Transaction().context['company'])
             return company.currency.id
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 Journal()
