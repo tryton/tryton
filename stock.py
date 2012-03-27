@@ -34,7 +34,7 @@ def _percentage_amount(lines, company):
         elif hasattr(move_obj, 'default_currency'):
             currency_id = move_obj.default_currency()
         else:
-            currency_id = False
+            currency_id = None
         if currency_id:
             unit_price = currency_obj.compute(currency_id, unit_price,
                 company.currency.id, round=False)
