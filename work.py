@@ -52,7 +52,7 @@ class Work(ModelSQL, ModelView):
         return True
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def check_parent_company(self, ids):
         for work in self.browse(ids):
@@ -126,7 +126,7 @@ class Work(ModelSQL, ModelView):
             default = {}
         default = default.copy()
         if 'timesheet_lines' not in default:
-            default['timesheet_lines'] = False
+            default['timesheet_lines'] = None
         return super(Work, self).copy(ids, default=default)
 
     def write(self, ids, vals):

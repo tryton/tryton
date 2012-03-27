@@ -41,7 +41,6 @@ class Line(ModelSQL, ModelView):
                 employee_id = user.employee.id
         if employee_id:
             return employee_id
-        return False
 
     def default_date(self):
         date_obj = Pool().get('ir.date')
