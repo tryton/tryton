@@ -54,9 +54,9 @@ class Address(ModelSQL, ModelView):
                 'streetbis': address.streetbis,
                 'zip': address.zip,
                 'city': address.city,
-                'country': address.country and address.country.name or False,
+                'country': address.country and address.country.name or None,
                 'subdivision': address.subdivision and \
-                        address.subdivision.name or False,
+                        address.subdivision.name or None,
             }
             res[address.id] = self._get_url(vals)
         return res
