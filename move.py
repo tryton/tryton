@@ -237,11 +237,17 @@ class Move(ModelSQL, ModelView):
             res['uom'] = product.default_uom.id
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
-            to_location = None
+            from_location, to_location = None, None
+            if vals.get('from_location'):
+                from_location = location_obj.browse(vals['from_location'])
             if vals.get('to_location'):
                 to_location = location_obj.browse(vals['to_location'])
-            if to_location and to_location.type == 'storage':
+            if from_location and from_location.type in ('supplier',
+                    'production'):
                 unit_price = product.cost_price
+            elif to_location and to_location.type == 'customer':
+                unit_price = product.list_price
+            if unit_price:
                 if vals.get('uom') and vals['uom'] != product.default_uom.id:
                     uom = uom_obj.browse(vals['uom'])
                     unit_price = uom_obj.compute_price(product.default_uom,
