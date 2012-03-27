@@ -39,11 +39,11 @@ class Sale(Model):
         party_obj = Pool().get('party.party')
         price_list_obj = Pool().get('product.price_list')
         res = super(Sale, self).on_change_party(values)
-        res['price_list'] = False
+        res['price_list'] = None
         if values.get('party'):
             party = party_obj.browse(values['party'])
             res['price_list'] = party.sale_price_list and \
-                    party.sale_price_list.id or False
+                    party.sale_price_list.id or None
         if res['price_list']:
             res['price_list.rec_name'] = price_list_obj.browse(
                     res['price_list']).rec_name
