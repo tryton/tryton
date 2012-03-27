@@ -35,7 +35,7 @@ class Purchase(ModelSQL, ModelView):
             line_ids = [x.id for x in invoice.lines]
             with Transaction().set_user(0, set_context=True):
                 invoice_line_obj.write(line_ids, {
-                    'invoice': False,
+                    'invoice': None,
                     'invoice_type': invoice.type,
                     'party': invoice.party,
                     'currency': invoice.currency.id,
@@ -70,8 +70,8 @@ class Purchase(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['invoice_lines'] = False
-        default['invoice_lines_ignored'] = False
+        default['invoice_lines'] = None
+        default['invoice_lines_ignored'] = None
         return super(Purchase, self).copy(ids, default=default)
 
     def ignore_invoice_exception(self, purchase_id):
