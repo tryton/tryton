@@ -139,26 +139,23 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         return 50
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_employee(self):
         user_obj = Pool().get('res.user')
 
-        employee_id = False
         if Transaction().context.get('employee'):
-            employee_id = Transaction().context['employee']
+            return Transaction().context['employee']
         else:
             user = user_obj.browse(Transaction().user)
             if user.employee:
-                employee_id = user.employee.id
-        return employee_id
+                return user.employee.id
 
     def default_payment_term(self):
         payment_term_obj = Pool().get('account.invoice.payment_term')
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
-        return False
 
     def get_currency(self, ids, name):
         res = {}
@@ -188,7 +185,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         payment_term_obj = Pool().get('account.invoice.payment_term')
 
         res = {
-            'payment_term': False,
+            'payment_term': None,
         }
         if values.get('party'):
             party = party_obj.browse(values['party'])
