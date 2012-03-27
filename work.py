@@ -246,7 +246,7 @@ class Work(ModelSQL, ModelView):
                         db_field: value \
                                 and datetime.datetime.combine(value,
                                     datetime.time()) \
-                                or False,
+                                or None,
                         })
                 break
 
@@ -521,7 +521,7 @@ class Work(ModelSQL, ModelView):
                              set(s.id for s in w.successors))
 
         work = self.browse(work_id)
-        parent_id = work.parent and work.parent.id or False
+        parent_id = work.parent and work.parent.id or None
         sibling_ids = self.search([
                 ('parent', '=', parent_id)
                 ])
@@ -596,7 +596,7 @@ class Work(ModelSQL, ModelView):
                 yield sibling, delay
 
         work = self.browse(work_id)
-        parent_id = work.parent and work.parent.id or False
+        parent_id = work.parent and work.parent.id or None
         sibling_ids = self.search([
                 ('parent', '=', parent_id)
                 ])
