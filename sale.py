@@ -249,17 +249,15 @@ class Sale(Workflow, ModelSQL, ModelView):
         payment_term_ids = payment_term_obj.search(self.payment_term.domain)
         if len(payment_term_ids) == 1:
             return payment_term_ids[0]
-        return False
 
     def default_warehouse(self):
         location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_state(self):
         return 'draft'
@@ -269,7 +267,6 @@ class Sale(Workflow, ModelSQL, ModelView):
         company = Transaction().context.get('company')
         if company:
             return company_obj.browse(company).currency.id
-        return False
 
     def default_currency_digits(self):
         company_obj = Pool().get('company.company')
@@ -300,9 +297,9 @@ class Sale(Workflow, ModelSQL, ModelView):
         address_obj = pool.get('party.address')
         payment_term_obj = pool.get('account.invoice.payment_term')
         res = {
-            'invoice_address': False,
-            'shipment_address': False,
-            'payment_term': False,
+            'invoice_address': None,
+            'shipment_address': None,
+            'payment_term': None,
         }
         if vals.get('party'):
             party = party_obj.browse(vals['party'])
@@ -636,12 +633,12 @@ class Sale(Workflow, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default['state'] = 'draft'
-        default['reference'] = False
+        default['reference'] = None
         default['invoice_state'] = 'none'
-        default['invoices'] = False
-        default['invoices_ignored'] = False
+        default['invoices'] = None
+        default['invoices_ignored'] = None
         default['shipment_state'] = 'none'
-        default.setdefault('sale_date', False)
+        default.setdefault('sale_date', None)
         return super(Sale, self).copy(ids, default=default)
 
     def check_for_quotation(self, ids):
@@ -1009,7 +1006,7 @@ class SaleLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
-        domain=[('parent', '=', False)], states={
+        domain=[('parent', '=', None)], states={
             'invisible': Eval('type') != 'line',
             }, depends=['type'])
     invoice_lines = fields.Many2Many('sale.line-account.invoice.line',
@@ -1183,7 +1180,7 @@ class SaleLine(ModelSQL, ModelView):
                 continue
             res['taxes'].append(tax.id)
         if party and party.customer_tax_rule:
-            tax_ids = tax_rule_obj.apply(party.customer_tax_rule, False,
+            tax_ids = tax_rule_obj.apply(party.customer_tax_rule, None,
                     pattern)
             if tax_ids:
                 res['taxes'].extend(tax_ids)
@@ -1289,7 +1286,7 @@ class SaleLine(ModelSQL, ModelView):
             if line.warehouse:
                 result[line.id] = line.warehouse.output_location.id
             else:
-                result[line.id] = False
+                result[line.id] = None
         return result
 
     def get_to_location(self, ids, name):
@@ -1303,7 +1300,7 @@ class SaleLine(ModelSQL, ModelView):
         if product:
             return product_obj.compute_delivery_date(product, date=date)
         else:
-            return False
+            return None
 
     def on_change_with_delivery_date(self, values):
         product_obj = Pool().get('product.product')
@@ -1311,7 +1308,7 @@ class SaleLine(ModelSQL, ModelView):
             product = product_obj.browse(values['product'])
             return self._compute_delivery_date(product,
                 values.get('_parent_sale.sale_date'))
-        return False
+        return None
 
     def get_delivery_date(self, ids, name):
         dates = {}
@@ -1384,10 +1381,10 @@ class SaleLine(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['moves'] = False
-        default['moves_ignored'] = False
-        default['moves_recreated'] = False
-        default['invoice_lines'] = False
+        default['moves'] = None
+        default['moves_ignored'] = None
+        default['moves_recreated'] = None
+        default['invoice_lines'] = None
         return super(SaleLine, self).copy(ids, default=default)
 
     def get_move(self, line):
@@ -1545,19 +1542,17 @@ class Template(ModelSQL, ModelView):
 
     def on_change_with_sale_uom(self, vals):
         uom_obj = Pool().get('product.uom')
-        res = False
 
         if vals.get('default_uom'):
             default_uom = uom_obj.browse(vals['default_uom'])
             if vals.get('sale_uom'):
                 sale_uom = uom_obj.browse(vals['sale_uom'])
                 if default_uom.category.id == sale_uom.category.id:
-                    res = sale_uom.id
+                    return sale_uom.id
                 else:
-                    res = default_uom.id
+                    return default_uom.id
             else:
-                res = default_uom.id
-        return res
+                return default_uom.id
 
 Template()
 
@@ -1688,7 +1683,7 @@ class Move(ModelSQL, ModelView):
     def get_sale(self, ids, name):
         res = {}
         for move in self.browse(ids):
-            res[move.id] = False
+            res[move.id] = None
             if move.sale_line:
                 res[move.id] = move.sale_line.sale.id
         return res
@@ -1835,7 +1830,7 @@ class OpenCustomer(Wizard):
         model_data_ids = model_data_obj.search([
             ('fs_id', '=', 'act_open_customer'),
             ('module', '=', 'sale'),
-            ('inherit', '=', False),
+            ('inherit', '=', None),
             ], limit=1)
         model_data = model_data_obj.browse(model_data_ids[0])
         wizard = wizard_obj.browse(model_data.db_id)
