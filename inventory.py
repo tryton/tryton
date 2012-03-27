@@ -25,10 +25,9 @@ class CreateInventoriesStart(ModelView):
         location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
 CreateInventoriesStart()
 
