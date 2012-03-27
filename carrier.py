@@ -59,7 +59,7 @@ class Carrier(ModelSQL, ModelView):
             user = user_obj.browse(Transaction().user
                 or Transaction().context.get('user'))
             return carrier.carrier_product.list_price, user.company.currency.id
-        return 0, False
+        return 0, None
 
     def get_purchase_price(self, carrier):
         'Compute carrier purchase price with currency'
@@ -67,6 +67,6 @@ class Carrier(ModelSQL, ModelView):
         if carrier.carrier_cost_method == 'product':
             user = user_obj.browse(Transaction().user)
             return carrier.carrier_product.cost_price, user.company.currency.id
-        return 0, False
+        return 0, None
 
 Carrier()
