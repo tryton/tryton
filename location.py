@@ -54,7 +54,7 @@ class Location(ModelSQL, ModelView):
             ('type','=','storage'),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
-                ('parent', '=', False),
+                ('parent', '=', None),
                 ],
             ],
         depends=['type', 'active', 'id'])
@@ -67,7 +67,7 @@ class Location(ModelSQL, ModelView):
         domain=[('type','=','storage'),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
-                ('parent', '=', False)]],
+                ('parent', '=', None)]],
         depends=['type', 'active', 'id'])
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
@@ -78,7 +78,7 @@ class Location(ModelSQL, ModelView):
         domain=[('type','=','storage'),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
-                ('parent', '=', False)]],
+                ('parent', '=', None)]],
         depends=['type', 'active', 'id'])
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
@@ -181,7 +181,7 @@ class Location(ModelSQL, ModelView):
         trans_context = Transaction().context
         product_id = trans_context.get('product')
         if not product_id:
-            return dict((id, False) for id in ids)
+            return dict((id, None) for id in ids)
         cost_values, context = {}, {}
         if 'stock_date_end' in trans_context:
             context['_datetime'] = trans_context['stock_date_end']
@@ -270,10 +270,10 @@ class Location(ModelSQL, ModelView):
 
                 wh_default = default.copy()
                 wh_default['type'] = 'view'
-                wh_default['input_location'] = False
-                wh_default['output_location'] = False
-                wh_default['storage_location'] = False
-                wh_default['childs'] = False
+                wh_default['input_location'] = None
+                wh_default['output_location'] = None
+                wh_default['storage_location'] = None
+                wh_default['childs'] = None
 
                 new_id = super(Location, self).copy(location.id,
                         default=wh_default)

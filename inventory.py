@@ -83,14 +83,13 @@ class Inventory(Workflow, ModelSQL, ModelView):
         return date_obj.today()
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_lost_found(self):
         location_obj = Pool().get('stock.location')
         location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     @ModelView.button
     @Workflow.transition('done')
@@ -120,7 +119,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default['date'] = date_obj.today()
-        default['lines'] = False
+        default['lines'] = None
 
         new_ids = []
         for inventory in self.browse(ids):
@@ -128,7 +127,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             line_obj.copy([x.id for x in inventory.lines],
                     default={
                         'inventory': new_id,
-                        'move': False,
+                        'move': None,
                         })
             self.complete_lines(new_id)
             new_ids.append(new_id)
@@ -269,7 +268,7 @@ class InventoryLine(ModelSQL, ModelView):
             })
         move_obj.delete([l.move.id for l in lines if l.move])
         self.write([l.id for l in lines if l.move], {
-            'move': False,
+            'move': None,
             })
 
     def create_move(self, line):

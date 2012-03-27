@@ -190,13 +190,13 @@ class Move(ModelSQL, ModelView):
         table.index_action('create_date', action='add')
 
     def default_planned_date(self):
-        return Transaction().context.get('planned_date') or False
+        return Transaction().context.get('planned_date')
 
     def default_state(self):
         return 'draft'
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
@@ -204,7 +204,6 @@ class Move(ModelSQL, ModelView):
         if company:
             company = company_obj.browse(company)
             return company.currency.id
-        return False
 
     def on_change_with_unit_digits(self, vals):
         uom_obj = Pool().get('product.uom')
@@ -499,7 +498,7 @@ class Move(ModelSQL, ModelView):
         if 'state' in vals:
             for move in moves:
                 if vals['state'] == 'cancel':
-                    vals['effective_date'] = False
+                    vals['effective_date'] = None
                     if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'cancel'
