@@ -17,7 +17,7 @@ class Invoice(ModelSQL, ModelView):
             ('party', '=', Eval('party')),
             ('currency', '=', Eval('currency')),
             ('company', '=', Eval('company')),
-            ('invoice', '=', False),
+            ('invoice', '=', None),
         ]
 
         if not self.lines.add_remove:
