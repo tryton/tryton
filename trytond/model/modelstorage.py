@@ -10,6 +10,7 @@ from trytond.tools import safe_eval, reduce_domain
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import CONFIG
+from trytond.model.modelview import ModelView
 import datetime
 import time
 from decimal import Decimal
@@ -36,18 +37,19 @@ class ModelStorage(Model):
 
     def __init__(self):
         super(ModelStorage, self).__init__()
-        self._rpc.update({
-            'create': True,
-            'read': False,
-            'write': True,
-            'delete': True,
-            'copy': True,
-            'search': False,
-            'search_count': False,
-            'search_read': False,
-            'export_data': False,
-            'import_data': True,
-        })
+        if isinstance(self, ModelView):
+            self._rpc.update({
+                'create': True,
+                'read': False,
+                'write': True,
+                'delete': True,
+                'copy': True,
+                'search': False,
+                'search_count': False,
+                'search_read': False,
+                'export_data': False,
+                'import_data': True,
+            })
         self._constraints = []
 
     def default_create_uid(self, cursor, user, context=None):
