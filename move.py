@@ -242,6 +242,7 @@ class Move(ModelSQL, ModelView):
                 from_location = location_obj.browse(vals['from_location'])
             if vals.get('to_location'):
                 to_location = location_obj.browse(vals['to_location'])
+            unit_price = None
             if from_location and from_location.type in ('supplier',
                     'production'):
                 unit_price = product.cost_price
