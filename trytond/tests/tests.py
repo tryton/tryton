@@ -1,10 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, ModelView, fields
 
 
-class Boolean(ModelSQL):
+class Boolean(ModelSQL, ModelView):
     'Boolean'
     _name = 'tests.boolean'
     _description = __doc__
@@ -14,7 +14,7 @@ class Boolean(ModelSQL):
 Boolean()
 
 
-class BooleanDefault(ModelSQL):
+class BooleanDefault(ModelSQL, ModelView):
     'Boolean Default'
     _name = 'tests.boolean_default'
     _description = __doc__
@@ -27,7 +27,7 @@ class BooleanDefault(ModelSQL):
 BooleanDefault()
 
 
-class Integer(ModelSQL):
+class Integer(ModelSQL, ModelView):
     'Integer'
     _name = 'tests.integer'
     _description = __doc__
@@ -37,7 +37,7 @@ class Integer(ModelSQL):
 Integer()
 
 
-class IntegerDefault(ModelSQL):
+class IntegerDefault(ModelSQL, ModelView):
     'Integer Default'
     _name = 'tests.integer_default'
     _description = __doc__
@@ -50,7 +50,7 @@ class IntegerDefault(ModelSQL):
 IntegerDefault()
 
 
-class IntegerRequired(ModelSQL):
+class IntegerRequired(ModelSQL, ModelView):
     'Integer Required'
     _name = 'tests.integer_required'
     _description = __doc__
@@ -60,7 +60,7 @@ class IntegerRequired(ModelSQL):
 IntegerRequired()
 
 
-class Float(ModelSQL):
+class Float(ModelSQL, ModelView):
     'Float'
     _name = 'tests.float'
     _description = __doc__
@@ -70,7 +70,7 @@ class Float(ModelSQL):
 Float()
 
 
-class FloatDefault(ModelSQL):
+class FloatDefault(ModelSQL, ModelView):
     'Float Default'
     _name = 'tests.float_default'
     _description = __doc__
@@ -83,7 +83,7 @@ class FloatDefault(ModelSQL):
 FloatDefault()
 
 
-class FloatRequired(ModelSQL):
+class FloatRequired(ModelSQL, ModelView):
     'Float Required'
     _name = 'tests.float_required'
     _description = __doc__
@@ -93,7 +93,7 @@ class FloatRequired(ModelSQL):
 FloatRequired()
 
 
-class Numeric(ModelSQL):
+class Numeric(ModelSQL, ModelView):
     'Numeric'
     _name = 'tests.numeric'
     _description = __doc__
@@ -103,7 +103,7 @@ class Numeric(ModelSQL):
 Numeric()
 
 
-class NumericDefault(ModelSQL):
+class NumericDefault(ModelSQL, ModelView):
     'Numeric Default'
     _name = 'tests.numeric_default'
     _description = __doc__
@@ -116,7 +116,7 @@ class NumericDefault(ModelSQL):
 NumericDefault()
 
 
-class NumericRequired(ModelSQL):
+class NumericRequired(ModelSQL, ModelView):
     'Numeric Required'
     _name = 'tests.numeric_required'
     _description = __doc__
@@ -126,7 +126,7 @@ class NumericRequired(ModelSQL):
 NumericRequired()
 
 
-class Char(ModelSQL):
+class Char(ModelSQL, ModelView):
     'Char'
     _name = 'tests.char'
     _description = __doc__
@@ -136,7 +136,7 @@ class Char(ModelSQL):
 Char()
 
 
-class CharDefault(ModelSQL):
+class CharDefault(ModelSQL, ModelView):
     'Char Default'
     _name = 'tests.char_default'
     _description = __doc__
@@ -149,7 +149,7 @@ class CharDefault(ModelSQL):
 CharDefault()
 
 
-class CharRequired(ModelSQL):
+class CharRequired(ModelSQL, ModelView):
     'Char Required'
     _name = 'tests.char_required'
     _description = __doc__
@@ -159,7 +159,7 @@ class CharRequired(ModelSQL):
 CharRequired()
 
 
-class CharSize(ModelSQL):
+class CharSize(ModelSQL, ModelView):
     'Char Size'
     _name = 'tests.char_size'
     _description = __doc__
@@ -169,7 +169,7 @@ class CharSize(ModelSQL):
 CharSize()
 
 
-class Text(ModelSQL):
+class Text(ModelSQL, ModelView):
     'Text'
     _name = 'tests.text'
     _description = __doc__
@@ -179,7 +179,7 @@ class Text(ModelSQL):
 Text()
 
 
-class TextDefault(ModelSQL):
+class TextDefault(ModelSQL, ModelView):
     'Text Default'
     _name = 'tests.text_default'
     _description = __doc__
@@ -192,7 +192,7 @@ class TextDefault(ModelSQL):
 TextDefault()
 
 
-class TextRequired(ModelSQL):
+class TextRequired(ModelSQL, ModelView):
     'Text Required'
     _name = 'tests.text_required'
     _description = __doc__
@@ -202,7 +202,7 @@ class TextRequired(ModelSQL):
 TextRequired()
 
 
-class TextSize(ModelSQL):
+class TextSize(ModelSQL, ModelView):
     'Text Size'
     _name = 'tests.text_size'
     _description = __doc__
@@ -212,7 +212,7 @@ class TextSize(ModelSQL):
 TextSize()
 
 
-class Sha(ModelSQL):
+class Sha(ModelSQL, ModelView):
     'Sha'
     _name = 'tests.sha'
     _description = __doc__
@@ -222,7 +222,7 @@ class Sha(ModelSQL):
 Sha()
 
 
-class ShaDefault(ModelSQL):
+class ShaDefault(ModelSQL, ModelView):
     'Sha Default'
     _name = 'tests.sha_default'
     _description = __doc__
@@ -235,7 +235,7 @@ class ShaDefault(ModelSQL):
 ShaDefault()
 
 
-class ShaRequired(ModelSQL):
+class ShaRequired(ModelSQL, ModelView):
     'Sha Required'
     _name = 'tests.sha_required'
     _description = __doc__

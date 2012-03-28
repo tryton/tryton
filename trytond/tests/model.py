@@ -1,9 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSingleton, ModelSQL, fields
+from trytond.model import ModelSingleton, ModelSQL, ModelView, fields
 
 
-class Singleton(ModelSingleton, ModelSQL):
+class Singleton(ModelSingleton, ModelSQL, ModelView):
     'Singleton'
     _name = 'tests.singleton'
     _description = __doc__
