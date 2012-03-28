@@ -143,6 +143,13 @@ class Move(ModelSQL, ModelView):
         account_move_obj.post(account_move_id)
         return account_move_id
 
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('account_move', None)
+        return super(Move, self).copy(ids, default=default)
+
     def create(self, vals):
         new_id = super(Move, self).create(vals)
         if vals.get('state') == 'done':
