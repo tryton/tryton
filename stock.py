@@ -81,4 +81,11 @@ class Move(ModelSQL, ModelView):
             cost += product.cost_price * Decimal(str(qty))
         return cost
 
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('anglo_saxon_quantity', None)
+        return super(Move, self).copy(ids, default=default)
+
 Move()
