@@ -265,11 +265,6 @@ class WorkflowTransitionInstance(ModelSQL):
     inst_id = fields.Many2One('workflow.instance', 'Instance',
             ondelete='CASCADE', select=1, required=True)
 
-    def __init__(self):
-        super(WorkflowTransitionInstance, self).__init__()
-        for i in ('create', 'write', 'delete', 'copy'):
-            del self._rpc[i]
-
     def fields_get(self, fields_names=None):
         res = super(WorkflowTransitionInstance, self).fields_get(
                 fields_names=fields_names)

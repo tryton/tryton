@@ -26,6 +26,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict
 from trytond.config import CONFIG
+from .modelview import ModelView
 
 
 class ModelStorage(Model):
@@ -42,18 +43,19 @@ class ModelStorage(Model):
 
     def __init__(self):
         super(ModelStorage, self).__init__()
-        self._rpc.update({
-            'create': True,
-            'read': False,
-            'write': True,
-            'delete': True,
-            'copy': True,
-            'search': False,
-            'search_count': False,
-            'search_read': False,
-            'export_data': False,
-            'import_data': True,
-        })
+        if isinstance(self, ModelView):
+            self._rpc.update({
+                'create': True,
+                'read': False,
+                'write': True,
+                'delete': True,
+                'copy': True,
+                'search': False,
+                'search_count': False,
+                'search_read': False,
+                'export_data': False,
+                'import_data': True,
+            })
         self._constraints = []
 
     def default_create_uid(self):
