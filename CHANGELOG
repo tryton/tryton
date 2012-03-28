@@ -1,3 +1,5 @@
+* Don't allow rpc call on ModelStorage without ModelView (CVE-2012-0215)
+
 Version 1.8.5 - 2011-12-26
 * Bug fixes (see mercurial logs for details)
 
