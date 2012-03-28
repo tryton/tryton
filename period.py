@@ -114,7 +114,7 @@ class Cache(ModelSQL, ModelView):
     It is used to store cached computation of stock quantities.
     '''
     _name = 'stock.period.cache'
-    _description = __doc__
+    _description = __doc__.splitlines()[0]
 
     period = fields.Many2One('stock.period', 'Period', required=True,
         readonly=True, select=True, ondelete='CASCADE')
