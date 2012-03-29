@@ -1278,14 +1278,14 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
             'Warehouse Storage', on_change_with=['warehouse']),
         'get_warehouse_storage')
-    warehouse_output = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Output', on_change_with=['warehouse']),
-        'get_warehouse_output')
+    warehouse_input = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Input', on_change_with=['warehouse']),
+        'get_warehouse_input')
     incoming_moves = fields.Function(fields.One2Many('stock.move', None,
             'Incoming Moves',
             domain=[
                 ('from_location', '=', Eval('customer_location')),
-                ('to_location', '=', Eval('warehouse_output')),
+                ('to_location', '=', Eval('warehouse_input')),
                 ('company', '=', Eval('company')),
                 ],
             states={
@@ -1293,12 +1293,12 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                     | ~Eval('warehouse') | ~Eval('customer')),
                 },
             depends=['state', 'warehouse', 'customer', 'customer_location',
-                'warehouse_output', 'company']),
+                'warehouse_input', 'company']),
         'get_incoming_moves', setter='set_incoming_moves')
     inventory_moves = fields.Function(fields.One2Many('stock.move', None,
             'Inventory Moves',
             domain=[
-                ('from_location', '=', Eval('warehouse_output')),
+                ('from_location', '=', Eval('warehouse_input')),
                 ('to_location', 'child_of', [Eval('warehouse_storage', -1)],
                     'parent'),
                 ('company', '=', Eval('company')),
@@ -1306,7 +1306,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             states={
                 'readonly': Eval('state').in_(['draft', 'cancel', 'done']),
                 },
-            depends=['state', 'warehouse', 'warehouse_output',
+            depends=['state', 'warehouse', 'warehouse_input',
                 'warehouse_storage', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
@@ -1443,26 +1443,26 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             storages[shipment.id] = shipment.warehouse.storage_location.id
         return storages
 
-    def default_warehouse_output(self):
+    def default_warehouse_input(self):
         warehouse = self.default_warehouse()
         if warehouse:
-            value = self.on_change_with_warehouse_output({
+            value = self.on_change_with_warehouse_input({
                     'warehouse': warehouse,
                     })
             return value
 
-    def on_change_with_warehouse_output(self, values):
+    def on_change_with_warehouse_input(self, values):
         pool = Pool()
         location_obj = pool.get('stock.location')
         if values.get('warehouse'):
             warehouse = location_obj.browse(values['warehouse'])
-            return warehouse.output_location.id
+            return warehouse.input_location.id
 
-    def get_warehouse_output(self, ids, name):
-        outputs = {}
+    def get_warehouse_input(self, ids, name):
+        inputs = {}
         for shipment in self.browse(ids):
-            outputs[shipment.id] = shipment.warehouse.output_location.id
-        return outputs
+            inputs[shipment.id] = shipment.warehouse.input_location.id
+        return inputs
 
     def get_incoming_moves(self, ids, name):
         res = {}
