@@ -59,21 +59,6 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <!-- list view for projects (wihtout type and state fields) -->
-        <record model="ir.ui.view" id="work_view_list3">
-            <field name="model">project.work</field>
-            <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Projects">
-                    <field name="name"/>
-                    <field name="hours" widget="float_time" float_time="company_work_time"/>
-                    <field name="total_effort" widget="float_time" float_time="company_work_time"/>
-                    <field name="active" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
-        </record>
         <record model="ir.ui.view" id="work_view_form">
             <field name="model">project.work</field>
             <field name="type">form</field>
@@ -190,7 +175,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_project_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="work_view_list3"/>
+            <field name="view" ref="work_view_list2"/>
             <field name="act_window" ref="act_project_form"/>
         </record>
         <record model="ir.action.act_window.view"

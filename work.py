@@ -61,11 +61,7 @@ class Work(ModelSQL, ModelView):
     state = fields.Selection([
             ('opened', 'Opened'),
             ('done', 'Done'),
-            ], 'State',
-        states={
-            'invisible': Eval('type') != 'task',
-            'required': Eval('type') == 'task',
-            }, select=True, depends=['type'])
+            ], 'State', required=True, select=True)
     sequence = fields.Integer('Sequence', required=True)
 
     def default_type(self):
@@ -110,6 +106,19 @@ class Work(ModelSQL, ModelView):
                  'timesheet work by task/project!'),
         ]
         self._order.insert(0, ('sequence', 'ASC'))
+        self._constraints += [
+            ('check_state',
+                'A work can not be closed if its children are still opened'),
+            ]
+
+    def check_state(self, ids):
+        for work in self.browse(ids):
+            if ((work.state == 'opened'
+                        and (work.parent and work.parent.state == 'done'))
+                    or (work.state == 'done'
+                        and any(c.state == 'opened' for c in work.children))):
+                return False
+        return True
 
     def get_parent(self, ids, name):
         res = dict.fromkeys(ids, None)
