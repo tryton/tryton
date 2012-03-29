@@ -26,6 +26,7 @@ class Model(WarningErrorMixin):
 
     def _reset_columns(self):
         self.__columns = None
+        self.__defaults = None
         self._reset_xxx2many_targets()
 
     def _getcolumns(self):
