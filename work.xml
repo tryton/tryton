@@ -63,20 +63,5 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.ui.view" id="work_view_list3">
-            <field name="model">project.work</field>
-            <field name="inherit" ref="project.work_view_list3"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/tree/field[@name='total_effort']" position="after">
-                        <field name="revenue"/>
-                        <field name="cost"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
-        </record>
-
     </data>
 </tryton>
