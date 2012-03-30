@@ -111,7 +111,7 @@ Create chart of accounts::
     ...         ('company', '=', company.id),
     ...         ])
     >>> stock, stock_supplier, stock_lost_found, stock_customer = Account.find([
-    ...         ('kind', '=', 'other'),
+    ...         ('kind', '=', 'stock'),
     ...         ('company', '=', company.id),
     ...         ('name', 'like', 'Stock%'),
     ...         ], order=[('name', 'ASC')])
