@@ -381,10 +381,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def cancel(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.incoming_moves
-                if m.state != 'cancel']
-            + [m.id for s in shipments for m in s.inventory_moves
-                if m.state != 'cancel'], {
+        move_obj.write([m.id for s in shipments
+                for m in s.incoming_moves + s.inventory_moves
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -655,7 +654,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments for m in s.moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -1140,7 +1139,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments
                 for m in s.outgoing_moves + s.inventory_moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -1592,7 +1591,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments
                 for m in s.incoming_moves + s.inventory_moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -1886,7 +1885,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def cancel(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
