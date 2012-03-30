@@ -83,15 +83,13 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="company"/>
                     <notebook colspan="8">
                         <page string="General" id="general">
-                            <group colspan="2" col="2" id="left">
-                                <label name="party"/>
-                                <field name="party"/>
-                                <label name="hours"/>
-                                <field name="hours" widget="float_time" float_time="company_work_time"/>
-                            </group>
-                            <group colspan="2" col="2" id="right">
-                                <label name="party_address"/>
-                                <field name="party_address"/>
+                            <label name="party"/>
+                            <field name="party"/>
+                            <label name="party_address"/>
+                            <field name="party_address"/>
+                            <label name="hours"/>
+                            <field name="hours" widget="float_time" float_time="company_work_time"/>
+                            <group id="effort" colspan="2">
                                 <label name="effort"/>
                                 <field name="effort" widget="float_time" float_time="company_work_time"/>
                                 <label name="total_effort"/>
