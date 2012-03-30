@@ -150,19 +150,25 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_work_tree"
             action="act_work_list" id="menu_work_list"/>
 
-        <record model="ir.action.act_window" id="act_work_form">
-            <field name="name">Works</field>
+        <record model="ir.action.act_window" id="act_project_tree">
+            <field name="name">Projects</field>
             <field name="res_model">project.work</field>
             <field name="domain">[('parent', '=', False)]</field>
         </record>
         <record model="ir.action.act_window.view"
-            id="act_work_form_view1">
+            id="act_project_tree_view1">
             <field name="sequence" eval="10"/>
             <field name="view" ref="work_view_tree"/>
-            <field name="act_window" ref="act_work_tree"/>
+            <field name="act_window" ref="act_project_tree"/>
         </record>
-        <menuitem parent="menu_project" action="act_work_tree"
-            id="menu_project_tree" name="Projects"/>
+        <record model="ir.action.act_window.view"
+            id="act_project_tree_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="work_view_form"/>
+            <field name="act_window" ref="act_project_tree"/>
+        </record>
+        <menuitem parent="menu_project" action="act_project_tree"
+            id="menu_project_tree"/>
 
         <record model="ir.action.act_window" id="act_project_form">
             <field name="name">Projects</field>
