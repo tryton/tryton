@@ -2742,7 +2742,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Valeur d'acquisition</field>
             <field name="code">300</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_1"/>
             <field name="parent" ref="30"/>
         </record>
@@ -2751,7 +2751,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeur actées</field>
             <field name="code">309</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_1"/>
             <field name="parent" ref="30"/>
         </record>
@@ -2768,7 +2768,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Valeur d'acquisition</field>
             <field name="code">310</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_1"/>
             <field name="parent" ref="31"/>
         </record>
@@ -2777,7 +2777,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeur actées</field>
             <field name="code">319</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_1"/>
             <field name="parent" ref="31"/>
         </record>
@@ -2794,7 +2794,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Valeur d'acquisition</field>
             <field name="code">320</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_1"/>
             <field name="parent" ref="32"/>
         </record>
@@ -2803,7 +2803,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeur actées</field>
             <field name="code">329</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_1"/>
             <field name="parent" ref="32"/>
         </record>
@@ -2820,7 +2820,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Valeur d'acquisition</field>
             <field name="code">330</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_2"/>
             <field name="parent" ref="33"/>
         </record>
@@ -2829,7 +2829,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeur actées</field>
             <field name="code">339</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_2"/>
             <field name="parent" ref="33"/>
         </record>
@@ -2846,7 +2846,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Valeur d'acquisition</field>
             <field name="code">340</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_4"/>
             <field name="parent" ref="34"/>
         </record>
@@ -2855,7 +2855,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeur actées</field>
             <field name="code">349</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_4"/>
             <field name="parent" ref="34"/>
         </record>
@@ -2872,7 +2872,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Valeur d'acquisition</field>
             <field name="code">350</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_5"/>
             <field name="parent" ref="35"/>
         </record>
@@ -2881,7 +2881,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Réductions de valeurs actées</field>
             <field name="code">359</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="actif_VI_A_5"/>
             <field name="parent" ref="35"/>
         </record>
@@ -4559,7 +4559,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">de matières premières</field>
             <field name="code">6090</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_II_A_2"/>
             <field name="parent" ref="609"/>
         </record>
@@ -4568,7 +4568,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">de fournitures</field>
             <field name="code">6091</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_II_A_2"/>
             <field name="parent" ref="609"/>
         </record>
@@ -4577,7 +4577,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">de marchandises</field>
             <field name="code">6094</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_II_A_2"/>
             <field name="parent" ref="609"/>
         </record>
@@ -4586,7 +4586,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">d'immeubles achetés destinés à la vente</field>
             <field name="code">6095</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_II_A_2"/>
             <field name="parent" ref="609"/>
         </record>
@@ -5737,7 +5737,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Des en-cours de fabrication</field>
             <field name="code">712</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_I_B"/>
             <field name="parent" ref="71"/>
         </record>
@@ -5746,7 +5746,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Des produits finis</field>
             <field name="code">713</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_I_B"/>
             <field name="parent" ref="71"/>
         </record>
@@ -5755,7 +5755,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Des immeubles construits destinés à la vente</field>
             <field name="code">715</field>
             <field name="deferral" eval="False"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
             <field name="type" ref="resultats_I_B"/>
             <field name="parent" ref="71"/>
         </record>
