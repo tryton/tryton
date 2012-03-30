@@ -103,7 +103,7 @@ class Work(ModelSQL, ModelView):
             if not work.children:
                 leafs.add(work.id)
 
-            if work.type == 'task':
+            if work.type == 'task' and work.list_price:
                 res[work.id] = work.list_price * Decimal(str(work.total_effort))
             else:
                 res[work.id] = Decimal('0')
