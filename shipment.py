@@ -112,9 +112,6 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentIn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'incoming_move_input_dest': 'Incoming Moves must ' \
@@ -485,9 +482,6 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentInReturn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'waiting'),
@@ -795,9 +789,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentOut, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'waiting'),
@@ -1321,9 +1312,6 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentOutReturn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'received'),
@@ -1742,9 +1730,6 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentInternal, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'waiting'),
