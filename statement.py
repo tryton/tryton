@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import Workflow, ModelView, ModelSQL, fields
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 from trytond.pool import Pool
@@ -338,9 +338,15 @@ class Line(ModelSQL, ModelView):
             on_change=['amount', 'party', 'invoice'])
     account = fields.Many2One('account.account', 'Account', required=True,
         on_change=['account', 'invoice'], domain=[
-            ('kind', '!=', 'view'),
             ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
-            ])
+            If(Bool(Eval('party')),
+                If(Eval('amount', 0) > 0,
+                    ('kind', '=', 'receivable'),
+                    ('kind', '=', 'payable')),
+                ('kind', 'in', ['payable', 'receivable', 'revenue', 'expense',
+                        'other'])),
+            ],
+        depends=['party', 'amount'])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
