@@ -289,6 +289,14 @@ class TestModel(TestCase):
         trigger.on_create = True
         self.assertEqual(trigger.on_time, False)
 
+    def test_on_change_with(self):
+        Attachment = Model.get('ir.attachment')
+
+        attachment = Attachment()
+
+        attachment.description = 'Test'
+        self.assertEqual(attachment.summary, 'Test')
+
     def test_on_change_set(self):
         User = Model.get('res.user')
         Group = Model.get('res.group')
