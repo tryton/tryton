@@ -8,20 +8,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
-class TimesheetWork(ModelSQL, ModelView):
-    _name = 'timesheet.work'
-
-    def __init__(self):
-        super(TimesheetWork, self).__init__()
-
-        self.parent = copy.copy(self.parent)
-        self.parent.context = copy.copy(self.parent.context)
-        self.parent.context['type'] = Eval('type')
-        self._reset_columns()
-
-TimesheetWork()
-
-
 class Work(ModelSQL, ModelView):
     'Work Effort'
     _name = 'project.work'
@@ -34,10 +20,7 @@ class Work(ModelSQL, ModelView):
             ('project', 'Project'),
             ('task', 'Task')
             ],
-        'Type', required=True, select=True,
-        states={
-            'invisible': Eval('context', {}).get('type', False),
-            })
+        'Type', required=True, select=True)
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
@@ -65,8 +48,6 @@ class Work(ModelSQL, ModelView):
     sequence = fields.Integer('Sequence', required=True)
 
     def default_type(self):
-        if Transaction().context.get('type') == 'project':
-            return 'project'
         return 'task'
 
     def default_state(self):
@@ -227,7 +208,7 @@ class Work(ModelSQL, ModelView):
         id2work = {}
         leafs = set()
         for work in works:
-            res[work.id] = work.effort
+            res[work.id] = work.effort or 0
             id2work[work.id] = work
             if not work.children:
                 leafs.add(work.id)
