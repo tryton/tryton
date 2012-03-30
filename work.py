@@ -97,7 +97,7 @@ class Work(ModelSQL, ModelView):
 
         Transaction().cursor.execute(clause, all_ids + args)
 
-        hours_by_wt = dict((i[0], i[1]) for i in 
+        hours_by_wt = dict((i[0], i[1]) for i in
             Transaction().cursor.fetchall())
         to_compute = dict.fromkeys(all_ids, True)
         works = self.browse(all_ids)
