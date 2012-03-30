@@ -96,10 +96,12 @@ class Invoice(Workflow, ModelSQL, ModelView):
         states=_STATES, depends=_DEPENDS, domain=[('centralised', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
-        states=_STATES, depends=_DEPENDS,
+        states=_STATES, depends=_DEPENDS + ['type'],
         domain=[
             ('company', '=', Eval('context', {}).get('company', 0)),
-            ('kind', '!=', 'view'),
+            If(Eval('type').in_(['out_invoice', 'out_credit_note']),
+                ('kind', '=', 'receivable'),
+                ('kind', '=', 'payable')),
             ])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
@@ -1395,10 +1397,12 @@ class InvoiceLine(ModelSQL, ModelView):
         'get_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
         domain=[
-            ('kind', '!=', 'view'),
             ('company', '=', Eval('_parent_invoice', {}).get('company',
                     Eval('context', {}).get('company', 0))),
-            ('id', '!=', Eval('_parent_invoice', {}).get('account', 0)),
+            If(Eval('_parent_invoice', {}).get('type').in_(['out_invoice',
+                        'out_credit_note']),
+                ('kind', '=', 'revenue'),
+                ('kind', '=', 'expense')),
             ],
         on_change=['account', 'product'],
         states={
