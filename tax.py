@@ -594,7 +594,7 @@ class Tax(ModelSQL, ModelView):
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
             ('company', '=', Eval('company')),
-            ('kind', '!=', 'view'),
+            ('kind', 'not in', ['view', 'receivable', 'payable']),
             ],
         states={
             'readonly': (Eval('type') == 'none') | ~Eval('company'),
@@ -604,7 +604,7 @@ class Tax(ModelSQL, ModelView):
     credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
         domain=[
             ('company', '=', Eval('company')),
-            ('kind', '!=', 'view'),
+            ('kind', 'not in', ['view', 'receivable', 'payable']),
             ],
         states={
             'readonly': (Eval('type') == 'none') | ~Eval('company'),

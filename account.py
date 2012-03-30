@@ -329,13 +329,14 @@ class AccountTemplate(ModelSQL, ModelView):
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
     kind = fields.Selection([
-        ('other', 'Other'),
-        ('payable', 'Payable'),
-        ('revenue', 'Revenue'),
-        ('receivable', 'Receivable'),
-        ('expense', 'Expense'),
-        ('view', 'View'),
-        ], 'Kind', required=True)
+            ('other', 'Other'),
+            ('payable', 'Payable'),
+            ('revenue', 'Revenue'),
+            ('receivable', 'Receivable'),
+            ('expense', 'Expense'),
+            ('stock', 'Stock'),
+            ('view', 'View'),
+            ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
@@ -561,13 +562,14 @@ class Account(ModelSQL, ModelView):
             }, depends=['kind'])
     note = fields.Text('Note')
     kind = fields.Selection([
-        ('other', 'Other'),
-        ('payable', 'Payable'),
-        ('revenue', 'Revenue'),
-        ('receivable', 'Receivable'),
-        ('expense', 'Expense'),
-        ('view', 'View'),
-        ], 'Kind', required=True)
+            ('other', 'Other'),
+            ('payable', 'Payable'),
+            ('revenue', 'Revenue'),
+            ('receivable', 'Receivable'),
+            ('expense', 'Expense'),
+            ('stock', 'Stock'),
+            ('view', 'View'),
+            ], 'Kind', required=True)
     deferral = fields.Boolean('Deferral', states={
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])

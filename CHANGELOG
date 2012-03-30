@@ -1,3 +1,5 @@
+* Add new account type stock
+
 Version 2.2.0 - 2011-10-24
 * Bug fixes (see mercurial logs for details)
 * Add test creation of minimal chart of accounts
