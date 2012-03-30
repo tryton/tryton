@@ -9,7 +9,7 @@ class Category(ModelSQL, ModelView):
 
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock', domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -19,7 +19,7 @@ class Category(ModelSQL, ModelView):
             depends=['account_parent']))
     account_stock_supplier = fields.Property(fields.Many2One('account.account',
             'Account Stock Supplier', domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -29,7 +29,7 @@ class Category(ModelSQL, ModelView):
             depends=['account_parent']))
     account_stock_customer = fields.Property(fields.Many2One('account.account',
             'Account Stock Customer', domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -39,7 +39,7 @@ class Category(ModelSQL, ModelView):
             depends=['account_parent']))
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found', domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -65,7 +65,7 @@ class Template(ModelSQL, ModelView):
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock',
             domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -80,7 +80,7 @@ class Template(ModelSQL, ModelView):
     account_stock_supplier = fields.Property(fields.Many2One('account.account',
             'Account Stock Supplier',
             domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -95,7 +95,7 @@ class Template(ModelSQL, ModelView):
     account_stock_customer = fields.Property(fields.Many2One('account.account',
             'Account Stock Customer',
             domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
@@ -110,7 +110,7 @@ class Template(ModelSQL, ModelView):
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found',
             domain=[
-                ('kind', '!=', 'view'),
+                ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={

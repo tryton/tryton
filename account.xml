@@ -41,7 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
         </record>
 
         <record model="account.account.template" id="account_template_stock_supplier">
@@ -50,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
         </record>
 
         <record model="account.account.template" id="account_template_stock_customer">
@@ -59,7 +59,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
         </record>
 
         <record model="account.account.template" id="account_template_stock_lost_found">
@@ -68,7 +68,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root"/>
-            <field name="kind">other</field>
+            <field name="kind">stock</field>
         </record>
 
     </data>
