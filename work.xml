@@ -82,21 +82,20 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="company"/>
                         <field name="company"/>
                     <notebook colspan="8">
-                        <page string="General" id="general">
+                        <page string="General" id="general" col="6">
                             <label name="party"/>
                             <field name="party"/>
                             <label name="party_address"/>
                             <field name="party_address"/>
+                            <newline/>
                             <label name="hours"/>
                             <field name="hours" widget="float_time" float_time="company_work_time"/>
-                            <group id="effort" colspan="2">
-                                <label name="effort"/>
-                                <field name="effort" widget="float_time" float_time="company_work_time"/>
-                                <label name="total_effort"/>
-                                <field name="total_effort" widget="float_time" float_time="company_work_time"/>
-                            </group>
-                            <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4"/>
+                            <label name="total_effort"/>
+                            <field name="total_effort" widget="float_time" float_time="company_work_time"/>
+                            <label name="effort"/>
+                            <field name="effort" widget="float_time" float_time="company_work_time"/>
+                            <separator name="comment" colspan="6"/>
+                            <field name="comment" colspan="6"/>
                         </page>
                         <page string="Children" id="children"
                               states="{'invisible': Not(Equal(Eval('type'), 'project'))}">
