@@ -33,7 +33,7 @@ class PaymentTerm(ModelSQL, ModelView):
     def compute(self, amount, currency, payment_term, date=None):
         """Calculate payment terms and return a list of tuples
         with (date, amount) for each payment term line.
-       
+
         amount must be a Decimal used for the calculation and
         both currency and payment_term must be BrowseRecord. If
         specified, date will be used as the start date, otherwise
@@ -123,7 +123,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             ('9', 'September'),
             ('10', 'October'),
             ('11', 'November'),
-            ('12','December'),
+            ('12', 'December'),
             ], 'Month', sort=False)
     weekday = fields.Selection([
             (None, ''),
@@ -143,11 +143,11 @@ class PaymentTermLine(ModelSQL, ModelView):
         super(PaymentTermLine, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
         self._sql_constraints += [
-            ('day', 'CHECK(day BETWEEN 1 AND 31)', 
-                'Day of month must be between 1 and 31.'), 
+            ('day', 'CHECK(day BETWEEN 1 AND 31)',
+                'Day of month must be between 1 and 31.'),
             ]
         self._constraints += [
-            ('check_percentage_and_divisor', 'invalid_percentage_and_divisor'), 
+            ('check_percentage_and_divisor', 'invalid_percentage_and_divisor'),
             ]
         self._error_messages.update({
                 'invalid_percentage_and_divisor': 'Percentage and '
@@ -174,7 +174,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             for line in self.browse(ids):
                 if line.percentage:
                     self.write(line.id, {
-                            'divisor': self.round(Decimal('100.0') / 
+                            'divisor': self.round(Decimal('100.0') /
                                 line.percentage, self.divisor.digits[1]),
                             })
 
@@ -217,7 +217,7 @@ class PaymentTermLine(ModelSQL, ModelView):
         if not value.get('divisor'):
             return {'percentage': 0.0}
         return {
-            'percentage': self.round(Decimal('100.0') / value['divisor'], 
+            'percentage': self.round(Decimal('100.0') / value['divisor'],
                 self.percentage.digits[1]),
             }
 
@@ -293,5 +293,3 @@ class PaymentTermLine(ModelSQL, ModelView):
         return True
 
 PaymentTermLine()
-
-

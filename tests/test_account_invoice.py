@@ -2,7 +2,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -43,7 +44,7 @@ class AccountInvoiceTestCase(unittest.TestCase):
         '''
         Test payment_term.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, CONTEXT):
             cu1_id = self.currency.create({
                     'name': 'cu1',
                     'symbol': 'cu1',
@@ -86,14 +87,13 @@ class AccountInvoiceTestCase(unittest.TestCase):
                     })
             term = self.payment_term.browse(term_id)
             terms = term.compute(Decimal('1587.35'), cu1, term,
-                    date=datetime.date(2011,10,1))
+                    date=datetime.date(2011, 10, 1))
             self.assertEqual(terms, [
-                    (datetime.date(2011,10,31), Decimal('396.84')),
-                    (datetime.date(2011,11,01), Decimal('396.84')),
-                    (datetime.date(2011,12,01), Decimal('396.84')),
-                    (datetime.date(2012,01,14), Decimal('396.83')),
+                    (datetime.date(2011, 10, 31), Decimal('396.84')),
+                    (datetime.date(2011, 11, 01), Decimal('396.84')),
+                    (datetime.date(2011, 12, 01), Decimal('396.84')),
+                    (datetime.date(2012, 01, 14), Decimal('396.83')),
                     ])
-
 
 
 def suite():

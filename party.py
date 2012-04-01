@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
@@ -25,8 +24,8 @@ class Party(ModelSQL, ModelView):
         # Migration from 2.2: property field payment_term renamed
         # to customer_payment_term
         field_ids = ir_model_field_obj.search([
-                ('name','=','payment_term'),
-                ('model.model','=','party.party')
+                ('name', '=', 'payment_term'),
+                ('model.model', '=', 'party.party')
                 ])
         if field_ids:
             ir_model_field_obj.write(field_ids, {
