@@ -3,6 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <menuitem name="Payment Terms" parent="account.menu_account_configuration"
+            id="menu_payment_terms_configuration"/>
         <record model="ir.ui.view" id="payment_term_view_form">
             <field name="model">account.invoice.payment_term</field>
             <field name="type">form</field>
@@ -83,8 +85,12 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="percentage"/>
                     <field name="amount"/>
                     <field name="currency"/>
+                    <field name="months"/>
+                    <field name="month"/>
+                    <field name="weeks"/>
+                    <field name="weekday"/>
                     <field name="days"/>
-                    <field name="delay"/>
+                    <field name="day"/>
                     <field name="sequence" tree_invisible="1"/>
                     <field name="currency_digits" tree_invisible="1"/>
                 </tree>
@@ -103,8 +109,12 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="percentage"/>
                     <field name="amount"/>
                     <field name="currency"/>
+                    <field name="months"/>
+                    <field name="month"/>
+                    <field name="weeks"/>
+                    <field name="weekday"/>
                     <field name="days"/>
-                    <field name="delay"/>
+                    <field name="day"/>
                     <field name="sequence" tree_invisible="1"/>
                     <field name="currency_digits" tree_invisible="1"/>
                 </tree>
@@ -120,21 +130,28 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Payment Term Lines">
                     <label name="type"/>
                     <field name="type"/>
-                    <group col="1" id="label_amount_percent">
-                        <label name="percentage" yfill="1" xexpand="1" yexpand="1"/>
-                        <label name="amount" yfill="1" xexpand="1" yexpand="1"/>
-                    </group>
-                    <group col="3" id="amount_percent">
-                        <field name="percentage" colspan="3"/>
-                        <field name="amount"/>
-                        <label name="currency"/>
-                        <field name="currency"/>
-                    </group>
+                    <newline/>
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="currency"/>
+                    <field name="currency"/>
+                    <newline/>
+                    <label name="percentage"/>
+                    <field name="percentage"/>
+                    <label name="divisor"/>
+                    <field name="divisor"/>
+                    <label name="months"/>
+                    <field name="months"/>
+                    <label name="month"/>
+                    <field name="month"/>
+                    <label name="weeks"/>
+                    <field name="weeks"/>
+                    <label name="weekday"/>
+                    <field name="weekday"/>
                     <label name="days"/>
                     <field name="days"/>
-                    <label name="delay"/>
-                    <field name="delay"/>
-                    <field name="currency_digits" invisible="1"/>
+                    <label name="day"/>
+                    <field name="day"/>
                 </form>
                 ]]>
             </field>
@@ -157,39 +174,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="account.invoice.payment_term.line.type"
-            id="payment_term_line_type_fixed">
-            <field name="name">Fixed</field>
-            <field name="code">fixed</field>
-        </record>
-        <record model="account.invoice.payment_term.line.type"
-            id="payment_term_line_type_percent">
-            <field name="name">Percentage</field>
-            <field name="code">percent</field>
-        </record>
-        <record model="account.invoice.payment_term.line.type"
-            id="payment_term_line_type_remainder">
-            <field name="name">Remainder</field>
-            <field name="code">remainder</field>
-        </record>
-
-        <record model="account.invoice.payment_term.line.delay"
-            id="payment_term_line_delay_net_days">
-            <field name="name">Net Days</field>
-            <field name="code">net_days</field>
-        </record>
-        <record model="account.invoice.payment_term.line.delay"
-            id="payment_term_line_delay_end_month">
-            <field name="name">End Month</field>
-            <field name="code">end_month</field>
-        </record>
-        <record model="ir.model.access" id="access_payment_term_line_type">
-            <field name="model"
-                search="[('model', '=', 'account.invoice.payment_term.line.type')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
     </data>
 </tryton>

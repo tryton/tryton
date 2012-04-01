@@ -1,3 +1,6 @@
+* Add divisor field to Payment Term Lines
+* Allow setting months, weeks, days as well as month, weekday and day in
+  Payment Term Lines
 * Rename field payment_term to customer_payment_term
 
 Version 2.2.0 - 2011-10-24

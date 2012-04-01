@@ -3,8 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Payment Terms" parent="account.menu_account_configuration"
-            id="menu_payment_terms_configuration"/>
         <menuitem name="Invoices" parent="account.menu_account"
             id="menu_invoices" sequence="20"/>
 
