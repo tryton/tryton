@@ -1,3 +1,4 @@
+* Remove special to_location_warehouse search clause
 * Remove default from and to location and instead use domain
 * Update cost_price only from supplier to storage
 

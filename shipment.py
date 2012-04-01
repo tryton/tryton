@@ -68,7 +68,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     incoming_moves = fields.Function(fields.One2Many('stock.move', None,
             'Incoming Moves',
             add_remove=[
-                ('shipment_in', '=', False),
+                ('shipment_in', '=', None),
                 ('from_location', '=', Eval('supplier_location')),
                 ('state', '=', 'draft'),
                 ('to_location', '=', Eval('warehouse_input')),
@@ -112,9 +112,6 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentIn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
             'incoming_move_input_dest': 'Incoming Moves must ' \
@@ -203,14 +200,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def on_change_supplier(self, values):
         if not values.get('supplier'):
-            return {'contact_address': False}
+            return {'contact_address': None}
         party_obj = Pool().get("party.party")
         address_id = party_obj.address_get(values['supplier'])
         return {'contact_address': address_id}
@@ -347,8 +343,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= False
-        default['incoming_moves']= False
+        default['inventory_moves']= None
+        default['incoming_moves']= None
         return super(ShipmentIn, self).copy(ids, default=default)
 
     def _get_inventory_moves(self, incoming_move):
@@ -364,7 +360,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         res['state'] = 'draft'
         # Product will be considered in stock only when the inventory
         # move will be made:
-        res['planned_date'] = False
+        res['planned_date'] = None
         res['company'] = incoming_move.company.id
         return res
 
@@ -382,10 +378,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def cancel(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.incoming_moves
-                if m.state != 'cancel']
-            + [m.id for s in shipments for m in s.inventory_moves
-                if m.state != 'cancel'], {
+        move_obj.write([m.id for s in shipments
+                for m in s.incoming_moves + s.inventory_moves
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -487,9 +482,6 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentInReturn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'waiting'),
@@ -566,7 +558,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def _get_move_planned_date(self, shipment):
         '''
@@ -656,7 +648,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments for m in s.moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -761,7 +753,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': ((Eval('state') != 'draft')
+                'readonly': ((Eval('state').in_(['waiting', 'done', 'cancel']))
                     | ~Eval('warehouse') | ~Eval('customer')),
                 },
             depends=['state', 'warehouse', 'customer', 'warehouse_output',
@@ -776,7 +768,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': Eval('state').in_(['draft', 'packed', 'done']),
+                'readonly': Eval('state').in_(
+                    ['draft', 'packed', 'done', 'cancel']),
                 },
             depends=['state', 'warehouse', 'warehouse_storage',
                 'warehouse_output', 'company']),
@@ -796,9 +789,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentOut, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'waiting'),
@@ -891,14 +881,13 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def on_change_customer(self, values):
         if not values.get('customer'):
-            return {'delivery_address': False}
+            return {'delivery_address': None}
         party_obj = Pool().get("party.party")
         address_id = party_obj.address_get(values['customer'], type='delivery')
         return {'delivery_address': address_id}
@@ -1141,7 +1130,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments
                 for m in s.outgoing_moves + s.inventory_moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -1190,8 +1179,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= False
-        default['outgoing_moves']= False
+        default['inventory_moves']= None
+        default['outgoing_moves']= None
         return super(ShipmentOut, self).copy(ids, default=default)
 
 
@@ -1279,14 +1268,14 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
             'Warehouse Storage', on_change_with=['warehouse']),
         'get_warehouse_storage')
-    warehouse_output = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Output', on_change_with=['warehouse']),
-        'get_warehouse_output')
+    warehouse_input = fields.Function(fields.Many2One('stock.location',
+            'Warehouse Input', on_change_with=['warehouse']),
+        'get_warehouse_input')
     incoming_moves = fields.Function(fields.One2Many('stock.move', None,
             'Incoming Moves',
             domain=[
                 ('from_location', '=', Eval('customer_location')),
-                ('to_location', '=', Eval('warehouse_output')),
+                ('to_location', '=', Eval('warehouse_input')),
                 ('company', '=', Eval('company')),
                 ],
             states={
@@ -1294,12 +1283,12 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                     | ~Eval('warehouse') | ~Eval('customer')),
                 },
             depends=['state', 'warehouse', 'customer', 'customer_location',
-                'warehouse_output', 'company']),
+                'warehouse_input', 'company']),
         'get_incoming_moves', setter='set_incoming_moves')
     inventory_moves = fields.Function(fields.One2Many('stock.move', None,
             'Inventory Moves',
             domain=[
-                ('from_location', '=', Eval('warehouse_output')),
+                ('from_location', '=', Eval('warehouse_input')),
                 ('to_location', 'child_of', [Eval('warehouse_storage', -1)],
                     'parent'),
                 ('company', '=', Eval('company')),
@@ -1307,7 +1296,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             states={
                 'readonly': Eval('state').in_(['draft', 'cancel', 'done']),
                 },
-            depends=['state', 'warehouse', 'warehouse_output',
+            depends=['state', 'warehouse', 'warehouse_input',
                 'warehouse_storage', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
     moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
@@ -1323,9 +1312,6 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentOutReturn, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'received'),
@@ -1397,14 +1383,13 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         location_ids = location_obj.search(self.warehouse.domain)
         if len(location_ids) == 1:
             return location_ids[0]
-        return False
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def on_change_customer(self, values):
         if not values.get('customer'):
-            return {'delivery_address': False}
+            return {'delivery_address': None}
         party_obj = Pool().get("party.party")
         address_id = party_obj.address_get(values['customer'], type='delivery')
         return {
@@ -1445,26 +1430,26 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             storages[shipment.id] = shipment.warehouse.storage_location.id
         return storages
 
-    def default_warehouse_output(self):
+    def default_warehouse_input(self):
         warehouse = self.default_warehouse()
         if warehouse:
-            value = self.on_change_with_warehouse_output({
+            value = self.on_change_with_warehouse_input({
                     'warehouse': warehouse,
                     })
             return value
 
-    def on_change_with_warehouse_output(self, values):
+    def on_change_with_warehouse_input(self, values):
         pool = Pool()
         location_obj = pool.get('stock.location')
         if values.get('warehouse'):
             warehouse = location_obj.browse(values['warehouse'])
-            return warehouse.output_location.id
+            return warehouse.input_location.id
 
-    def get_warehouse_output(self, ids, name):
-        outputs = {}
+    def get_warehouse_input(self, ids, name):
+        inputs = {}
         for shipment in self.browse(ids):
-            outputs[shipment.id] = shipment.warehouse.output_location.id
-        return outputs
+            inputs[shipment.id] = shipment.warehouse.input_location.id
+        return inputs
 
     def get_incoming_moves(self, ids, name):
         res = {}
@@ -1546,8 +1531,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= False
-        default['incoming_moves']= False
+        default['inventory_moves']= None
+        default['incoming_moves']= None
         return super(ShipmentOutReturn, self).copy(ids, default=default)
 
 
@@ -1594,7 +1579,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments
                 for m in s.incoming_moves + s.inventory_moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 
@@ -1611,7 +1596,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         res['state'] = 'draft'
         # Product will be considered in stock only when the inventory
         # move will be made:
-        res['planned_date'] = False
+        res['planned_date'] = None
         res['company'] = incoming_move.company.id
         return res
 
@@ -1745,9 +1730,6 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     def __init__(self):
         super(ShipmentInternal, self).__init__()
-        self._rpc.update({
-            'button_draft': True,
-        })
         self._order[0] = ('id', 'DESC')
         self._transitions |= set((
                 ('draft', 'waiting'),
@@ -1829,7 +1811,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         return 'draft'
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def create(self, values):
         sequence_obj = Pool().get('ir.sequence')
@@ -1888,7 +1870,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def cancel(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
 

@@ -190,13 +190,13 @@ class Move(ModelSQL, ModelView):
         table.index_action('create_date', action='add')
 
     def default_planned_date(self):
-        return Transaction().context.get('planned_date') or False
+        return Transaction().context.get('planned_date')
 
     def default_state(self):
         return 'draft'
 
     def default_company(self):
-        return Transaction().context.get('company') or False
+        return Transaction().context.get('company')
 
     def default_currency(self):
         company_obj = Pool().get('company.company')
@@ -204,7 +204,9 @@ class Move(ModelSQL, ModelView):
         if company:
             company = company_obj.browse(company)
             return company.currency.id
-        return False
+
+    def default_unit_digits(self):
+        return 2
 
     def on_change_with_unit_digits(self, vals):
         uom_obj = Pool().get('product.uom')
@@ -235,11 +237,18 @@ class Move(ModelSQL, ModelView):
             res['uom'] = product.default_uom.id
             res['uom.rec_name'] = product.default_uom.rec_name
             res['unit_digits'] = product.default_uom.digits
-            to_location = None
+            from_location, to_location = None, None
+            if vals.get('from_location'):
+                from_location = location_obj.browse(vals['from_location'])
             if vals.get('to_location'):
                 to_location = location_obj.browse(vals['to_location'])
-            if to_location and to_location.type == 'storage':
+            unit_price = None
+            if from_location and from_location.type in ('supplier',
+                    'production'):
                 unit_price = product.cost_price
+            elif to_location and to_location.type == 'customer':
+                unit_price = product.list_price
+            if unit_price:
                 if vals.get('uom') and vals['uom'] != product.default_uom.id:
                     uom = uom_obj.browse(vals['uom'])
                     unit_price = uom_obj.compute_price(product.default_uom,
@@ -342,32 +351,6 @@ class Move(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         return [('product',) + clause[1:]]
-
-    def search(self, args, offset=0, limit=None, order=None, count=False,
-            query_string=False):
-        location_obj = Pool().get('stock.location')
-
-        args = args[:]
-        def process_args(args):
-            i = 0
-            while i < len(args):
-                #add test for xmlrpc that doesn't handle tuple
-                if (isinstance(args[i], tuple) or \
-                        (isinstance(args[i], list) and len(args[i]) > 2 and \
-                        args[i][1] in OPERATORS)) and \
-                        args[i][0] == 'to_location_warehouse':
-                    location_id = False
-                    if args[i][2]:
-                        location = location_obj.browse(args[i][2])
-                        if location.type == 'warehouse':
-                            location_id = location.input_location.id
-                    args[i] = ('to_location', args[i][1], location_id)
-                elif isinstance(args[i], list):
-                    process_args(args[i])
-                i += 1
-        process_args(args)
-        return super(Move, self).search(args, offset=offset, limit=limit,
-                order=order, count=count, query_string=query_string)
 
     def _update_product_cost_price(self, product_id, quantity, uom, unit_price,
             currency, company, date):
@@ -499,7 +482,7 @@ class Move(ModelSQL, ModelView):
         if 'state' in vals:
             for move in moves:
                 if vals['state'] == 'cancel':
-                    vals['effective_date'] = False
+                    vals['effective_date'] = None
                     if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'cancel'

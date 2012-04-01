@@ -77,7 +77,7 @@ class Period(ModelSQL, ModelView):
         if move_obj.search([
                 ('state', '=', 'assigned'),
                 ['OR', [
-                    ('effective_date', '=', False),
+                    ('effective_date', '=', None),
                     ('planned_date', '<=', recent_date),
                 ],
                     ('effective_date', '<=', recent_date),
