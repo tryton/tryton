@@ -213,7 +213,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="priority" eval="20"/>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Statement Lines">
+                <tree string="Statement Lines" editable="bottom">
                     <field name="date"/>
                     <field name="amount" sum="Amount"/>
                     <field name="party"/>
