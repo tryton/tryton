@@ -76,6 +76,7 @@ optional or completed with sensible default values:
 - Invoices: The list of related invoices.
 - Moves: The list of related stock moves.
 - Shipments: The list of related shipments.
+- Return Shipments: The list of related shipments return.
 
 The *Sale* report allow to print the sale orders or to send
 them by mail.
