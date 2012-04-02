@@ -69,12 +69,12 @@ class FieldDescriptor(object):
         self.__doc__ = definition['string']
 
     def __get__(self, instance, owner):
-        if instance.id > 0 and self.name not in instance._values:
+        if instance.id > 0:
             instance._read(self.name)
         return instance._values.get(self.name, self.default)
 
     def __set__(self, instance, value):
-        if instance.id > 0 and self.name not in instance._values:
+        if instance.id > 0:
             instance._read(self.name)
         previous = getattr(instance, self.name)
         instance._values[self.name] = value
@@ -644,12 +644,15 @@ class Model(object):
 
     def _read(self, name):
         'Read field'
-        fields = []
-        if not self._values:
+        fields = [name]
+        if name in self._values:
+            return
+        loading = self._fields[name]['loading']
+        if loading == 'eager':
             fields = [x for x, y in self._fields.iteritems()
-                    if y['type'] not in ('one2many', 'many2many', 'binary')]
+                    if y['loading'] == 'eager']
+        if not self._fields:
             fields.append('_timestamp')
-        fields.append(name)
         self._values.update(self._proxy.read(self.id, fields,
             self._config.context))
         for field in fields:
