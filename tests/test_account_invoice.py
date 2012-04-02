@@ -44,7 +44,7 @@ class AccountInvoiceTestCase(unittest.TestCase):
         '''
         Test payment_term.
         '''
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1_id = self.currency.create({
                     'name': 'cu1',
                     'symbol': 'cu1',
