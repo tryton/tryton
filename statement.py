@@ -376,6 +376,9 @@ class Line(ModelSQL, ModelView):
                 'Amount should be a positive or negative value!'),
             ]
 
+    def default_amount(self):
+        return Decimal(0)
+
     def on_change_party(self, value):
         party_obj = Pool().get('party.party')
         invoice_obj = Pool().get('account.invoice')
