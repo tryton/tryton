@@ -35,20 +35,15 @@ class Work(ModelSQL, ModelView):
 
     product = fields.Many2One('product.product', 'Product',
         states={
-            'invisible': Eval('type') != 'task',
-            }, on_change=['product', 'party', 'hours', 'company'],
-            depends=['type', 'party', 'hours', 'company'])
+            'invisible': ~Eval('timesheet_available'),
+            },
+        depends=['timesheet_available'],
+        on_change=['product', 'party', 'hours', 'company'])
     list_price = fields.Numeric('List Price',
-        digits=(16, Eval('currency_digits', 2)),
-        states={
-            'invisible': Eval('type') != 'task',
-            'required': Eval('type') == 'task',
-            }, depends=['type', 'currency_digits'])
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     revenue = fields.Function(fields.Numeric('Revenue',
             digits=(16, Eval('currency_digits', 2)),
-            states={
-                'invisible': Eval('type') != 'project',
-                }, depends=['type', 'currency_digits']), 'get_revenue')
+            depends=['currency_digits']), 'get_revenue')
     cost = fields.Function(fields.Numeric('Cost',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_cost')
