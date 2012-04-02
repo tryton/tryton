@@ -22,7 +22,10 @@ class Work(ModelSQL, ModelView):
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
         help="Total time spent on this work"), 'get_hours')
     timesheet_available = fields.Boolean('Available on timesheets',
-            help="Allow to fill in timesheets with this work")
+        states={
+            'readonly': Bool(Eval('timesheet_lines', [0])),
+            },
+        help="Allow to fill in timesheets with this work")
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
