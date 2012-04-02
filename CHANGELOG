@@ -1,3 +1,4 @@
+* Warehouse is not always required
 * get_shortage works on a list of products
 * Group purchases using a key
 

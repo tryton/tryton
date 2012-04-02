@@ -30,8 +30,14 @@ class PurchaseRequest(ModelSQL, ModelView):
     supply_date = fields.Date('Expected Supply Date', readonly=True)
     stock_level =  fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
-        'stock.location', "Warehouse", required=True,
-        domain=[('type', '=', 'warehouse')], readonly=True)
+        'stock.location', "Warehouse",
+        states={
+            'required': Eval('warehouse_required', False),
+            },
+        domain=[('type', '=', 'warehouse')], depends=['warehouse_required'],
+        readonly=True)
+    warehouse_required = fields.Function(fields.Boolean('Warehouse Required'),
+        'get_warehouse_required')
     purchase_line = fields.Many2One(
         'purchase.line', 'Purchase Line',readonly=True)
     purchase = fields.Function(fields.Many2One('purchase.purchase',
@@ -75,7 +81,10 @@ class PurchaseRequest(ModelSQL, ModelView):
             ids = [ids]
         res = {}
         for pr in self.browse(ids):
-            res[pr.id] = "%s@%s" % (pr.product.name, pr.warehouse.name)
+            if pr.warehouse:
+                res[pr.id] = "%s@%s" % (pr.product.name, pr.warehouse.name)
+            else:
+                res[pr.id] = pr.product.name
         return res
 
     def search_rec_name(self, name, clause):
@@ -111,6 +120,12 @@ class PurchaseRequest(ModelSQL, ModelView):
                 else:
                     res[request.id] = 'purchased'
         return res
+
+    def get_warehouse_required(self, ids, name):
+        requireds = {}
+        for request in self.browse(ids):
+            requireds[request.id] = request.product.type in ('goods', 'assets')
+        return requireds
 
     def origin_get(self):
         model_obj = Pool().get('ir.model')
@@ -434,7 +449,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             for x in product_ids)
 
     def create(self, vals):
-        for field_name in ('product', 'quantity', 'uom', 'warehouse', 'company'):
+        for field_name in ('product', 'quantity', 'uom', 'company'):
             if not vals.get(field_name):
                 self.raise_user_error('create_request')
         return super(PurchaseRequest, self).create(vals)
