@@ -148,7 +148,10 @@ class Sale(Workflow, ModelSQL, ModelView):
             ('exception', 'Exception'),
             ], 'Shipment State', readonly=True, required=True)
     shipments = fields.Function(fields.One2Many('stock.shipment.out', None,
-        'Shipments'), 'get_function_fields')
+        'Shipments'), 'get_shipments')
+    shipment_returns = fields.Function(
+        fields.One2Many('stock.shipment.out.return', None, 'Shipment Returns'),
+        'get_shipment_returns')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
             'get_function_fields')
 
@@ -444,8 +447,6 @@ class Sale(Workflow, ModelSQL, ModelView):
             res['currency_digits'] = self.get_currency_digits(sales)
         if 'party_lang' in names:
             res['party_lang'] = self.get_party_lang(sales)
-        if 'shipments' in names:
-            res['shipments'] = self.get_shipments(sales)
         if 'moves' in names:
             res['moves'] = self.get_moves(sales)
         return res
@@ -543,23 +544,23 @@ class Sale(Workflow, ModelSQL, ModelView):
                     'invoice_state': state,
                     })
 
-    def get_shipments(self, sales):
-        '''
-        Return shipment_out ids for each sales
+    def get_shipments_returns(attribute):
+        "Computes the returns or shipments"
+        def method(self, ids, name):
+            shipments = {}
+            for sale in self.browse(ids):
+                shipments[sale.id] = []
+                for line in sale.lines:
+                    for move in line.moves:
+                        ship_or_return = getattr(move, attribute)
+                        if bool(ship_or_return):
+                            if ship_or_return.id not in shipments[sale.id]:
+                                shipments[sale.id].append(ship_or_return.id)
+            return shipments
+        return method
 
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            a list of shipment_out id as value
-        '''
-        res = {}
-        for sale in sales:
-            res[sale.id] = []
-            for line in sale.lines:
-                for move in line.moves:
-                    if move.shipment_out:
-                        if move.shipment_out.id not in res[sale.id]:
-                            res[sale.id].append(move.shipment_out.id)
-        return res
+    get_shipments = get_shipments_returns('shipment_out')
+    get_shipment_returns = get_shipments_returns('shipment_out_return')
 
     def get_moves(self, sales):
         '''
@@ -647,7 +648,11 @@ class Sale(Workflow, ModelSQL, ModelView):
             if not sale.invoice_address or not sale.shipment_address:
                 self.raise_user_error('addresses_required')
             for line in sale.lines:
-                if (not line.from_location
+                if line.quantity >= 0:
+                    location = line.from_location
+                else:
+                    location = line.to_location
+                if (not location
                         and line.product
                         and line.product.type in ('goods', 'assets')):
                     self.raise_user_error('warehouse_required')
@@ -685,31 +690,24 @@ class Sale(Workflow, ModelSQL, ModelView):
                     'total_amount_cache': sale.total_amount,
                     })
 
-    def _get_invoice_line_sale_line(self, sale):
+    def _get_invoice_line_sale_line(self, sale, invoice_type):
         '''
-        Return invoice line values for each sale lines
-
-        :param sale: the BrowseRecord of the sale
-
-        :return: a dictionary with invoiced sale line id as key
-            and a list of invoice lines values as value
+        Return invoice line values for each sale lines according to
+        invoice_type
         '''
         line_obj = Pool().get('sale.line')
         res = {}
         for line in sale.lines:
+            if (invoice_type == 'out_invoice') != (line.quantity >= 0):
+                continue
             val = line_obj.get_invoice_line(line)
             if val:
                 res[line.id] = val
         return res
 
-    def _get_invoice_sale(self, sale):
+    def _get_invoice_sale(self, sale, invoice_type):
         '''
-        Return invoice values for sale
-
-        :param sale: the BrowseRecord of the sale
-
-        :return: a dictionary with invoice fields as key and
-            invoice values as value
+        Return invoice values of type invoice_type for sale
         '''
         journal_obj = Pool().get('account.journal')
 
@@ -721,7 +719,7 @@ class Sale(Workflow, ModelSQL, ModelView):
 
         res = {
             'company': sale.company.id,
-            'type': 'out_invoice',
+            'type': invoice_type,
             'reference': sale.reference,
             'journal': journal_id,
             'party': sale.party.id,
@@ -732,9 +730,9 @@ class Sale(Workflow, ModelSQL, ModelView):
             }
         return res
 
-    def create_invoice(self, sale):
+    def create_invoice(self, sale, invoice_type):
         '''
-        Create an invoice for the sale and return the id
+        Create an invoice of type invoice_type for the sale and return the id
         '''
         pool = Pool()
         invoice_obj = pool.get('account.invoice')
@@ -745,12 +743,12 @@ class Sale(Workflow, ModelSQL, ModelView):
             self.raise_user_error('missing_account_receivable',
                     error_args=(sale.party.rec_name,))
 
-        invoice_lines = self._get_invoice_line_sale_line(sale)
+        invoice_lines = self._get_invoice_line_sale_line(sale, invoice_type)
         if not invoice_lines:
             return
 
 
-        vals = self._get_invoice_sale(sale)
+        vals = self._get_invoice_sale(sale, invoice_type)
         with Transaction().set_user(0, set_context=True):
             invoice_id = invoice_obj.create(vals)
 
@@ -773,19 +771,21 @@ class Sale(Workflow, ModelSQL, ModelView):
         })
         return invoice_id
 
-    def _get_move_sale_line(self, sale):
+    def _get_move_sale_line(self, sale, shipment_type):
         '''
-        Return a dictionary of move values for each sale lines
-
-        :param sale: the BrowseRecord of the sale
-
-        :return: a dictionary with move as key and move values as value
+        Return a dictionary of move values for each sale lines of the right
+        shipment_type
         '''
         line_obj = Pool().get('sale.line')
         res = {}
         for line in sale.lines:
             val = line_obj.get_move(line)
-            if val:
+            if not val:
+                continue
+            out_move = (val['to_location']
+                == line.sale.party.customer_location.id)
+            out_shipment = shipment_type == 'out'
+            if out_move == out_shipment:
                 res[line.id] = val
         return res
 
@@ -808,20 +808,28 @@ class Sale(Workflow, ModelSQL, ModelView):
             ('warehouse', line.warehouse.id),
             )
 
-    def create_shipment(self, sale):
+    _group_return_key = _group_shipment_key
+
+    def create_shipment(self, sale, shipment_type):
         '''
-        Create a shipment for the sale
+        Create a shipment of type shipment_type for the sale
         and return the list of created shipment ids
         '''
         pool = Pool()
-        shipment_obj = pool.get('stock.shipment.out')
         move_obj = pool.get('stock.move')
         sale_line_obj = pool.get('sale.line')
 
-        moves = self._get_move_sale_line(sale)
+        moves = self._get_move_sale_line(sale, shipment_type)
         if not moves:
             return
-        keyfunc = partial(self._group_shipment_key, moves.values())
+        if shipment_type == 'out':
+            keyfunc = partial(self._group_shipment_key, moves.values())
+            move_shipment_key = 'shipment_out'
+            shipment_obj = pool.get('stock.shipment.out')
+        elif shipment_type == 'return':
+            keyfunc = partial(self._group_return_key, moves.values())
+            move_shipment_key = 'shipment_out_return'
+            shipment_obj = pool.get('stock.shipment.out.return')
         moves = moves.items()
         moves = sorted(moves, key=keyfunc)
 
@@ -838,12 +846,13 @@ class Sale(Workflow, ModelSQL, ModelView):
                 shipment_id = shipment_obj.create(values)
                 shipments.append(shipment_id)
                 for line_id, values in grouped_moves:
-                    values['shipment_out'] = shipment_id
+                    values[move_shipment_key] = shipment_id
                     move_id = move_obj.create(values)
                     sale_line_obj.write(line_id, {
                         'moves': [('add', move_id)],
                     })
-            shipment_obj.wait(shipments)
+            if shipment_type == 'out':
+                shipment_obj.wait(shipments)
         return shipments
 
     def is_done(self, sale):
@@ -878,9 +887,11 @@ class Sale(Workflow, ModelSQL, ModelView):
         for sale in self.browse(ids):
             if sale.state in ('done', 'cancel'):
                 continue
-            self.create_invoice(sale)
+            self.create_invoice(sale, 'out_invoice')
+            self.create_invoice(sale, 'out_credit_note')
             self.set_invoice_state(sale)
-            self.create_shipment(sale)
+            self.create_shipment(sale, 'out')
+            self.create_shipment(sale, 'return')
             self.set_shipment_state(sale)
             if self.is_done(sale):
                 done.append(sale.id)
@@ -1283,16 +1294,22 @@ class SaleLine(ModelSQL, ModelView):
     def get_from_location(self, ids, name):
         result = {}
         for line in self.browse(ids):
-            if line.warehouse:
+            if line.quantity >= 0 and line.warehouse:
                 result[line.id] = line.warehouse.output_location.id
             else:
-                result[line.id] = None
+                result[line.id] = line.sale.party.customer_location.id
         return result
 
     def get_to_location(self, ids, name):
         result = {}
         for line in self.browse(ids):
-            result[line.id] = line.sale.party.customer_location.id
+            if line.quantity >= 0:
+                result[line.id] = line.sale.party.customer_location.id
+            else:
+                if line.warehouse:
+                    result[line.id] = line.warehouse.input_location.id
+                else:
+                    result[line.id] = None
         return result
 
     def _compute_delivery_date(self, product, date):
@@ -1339,7 +1356,7 @@ class SaleLine(ModelSQL, ModelView):
         if (line.sale.invoice_method == 'order'
                 or not line.product
                 or line.product.type == 'service'):
-            quantity = line.quantity
+            quantity = abs(line.quantity)
         else:
             quantity = 0.0
             for move in line.moves:
@@ -1406,7 +1423,7 @@ class SaleLine(ModelSQL, ModelView):
         if line.product.type == 'service':
             return
         skip_ids = set(x.id for x in line.moves_recreated)
-        quantity = line.quantity
+        quantity = abs(line.quantity)
         for move in line.moves:
             if move.id not in skip_ids:
                 quantity -= uom_obj.compute_qty(move.uom, move.quantity,
@@ -1542,17 +1559,19 @@ class Template(ModelSQL, ModelView):
 
     def on_change_with_sale_uom(self, vals):
         uom_obj = Pool().get('product.uom')
+        res = None
 
         if vals.get('default_uom'):
             default_uom = uom_obj.browse(vals['default_uom'])
             if vals.get('sale_uom'):
                 sale_uom = uom_obj.browse(vals['sale_uom'])
                 if default_uom.category.id == sale_uom.category.id:
-                    return sale_uom.id
+                    res = sale_uom.id
                 else:
-                    return default_uom.id
+                    res = default_uom.id
             else:
-                return default_uom.id
+                res = default_uom.id
+        return res
 
 Template()
 
@@ -1653,15 +1672,66 @@ class ShipmentOut(ModelSQL, ModelView):
                 sale_obj.process(sale_ids)
         return res
 
-    def button_draft(self, ids):
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
         for shipment in self.browse(ids):
             for move in shipment.outgoing_moves:
                 if move.state == 'cancel' and move.sale_line:
                     self.raise_user_error('reset_move')
 
-        return super(ShipmentOut, self).button_draft(ids)
+        return super(ShipmentOut, self).draft(ids)
 
 ShipmentOut()
+
+
+class ShipmentOutReturn(ModelSQL, ModelView):
+    _name = 'stock.shipment.out.return'
+
+    def __init__(self):
+        super(ShipmentOutReturn, self).__init__()
+        self._error_messages.update({
+                'reset_move': 'You cannot reset to draft a move generated '
+                    'by a sale.',
+            })
+
+    def write(self, ids, vals):
+        sale_obj = Pool().get('sale.sale')
+        sale_line_obj = Pool().get('sale.line')
+
+        res = super(ShipmentOutReturn, self).write(ids, vals)
+
+        if 'state' in vals and vals['state'] == 'received':
+            sale_ids = []
+            move_ids = []
+            if isinstance(ids, (int, long)):
+                ids = [ids]
+            for shipment in self.browse(ids):
+                move_ids.extend([x.id for x in shipment.incoming_moves])
+
+            sale_line_ids = sale_line_obj.search([
+                ('moves', 'in', move_ids),
+                ])
+            if sale_line_ids:
+                for sale_line in sale_line_obj.browse(sale_line_ids):
+                    if sale_line.sale.id not in sale_ids:
+                        sale_ids.append(sale_line.sale.id)
+
+            with Transaction().set_user(0, set_context=True):
+                sale_obj.process(sale_ids)
+        return res
+
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(self, ids):
+        for shipment in self.browse(ids):
+            for move in shipment.incoming_moves:
+                if move.state == 'cancel' and move.sale_line:
+                    self.raise_user_error('reset_move')
+
+        return super(ShipmentOutReturn, self).draft(ids)
+
+ShipmentOutReturn()
 
 
 class Move(ModelSQL, ModelView):
@@ -1996,3 +2066,47 @@ class HandleInvoiceException(Wizard):
         return 'end'
 
 HandleInvoiceException()
+
+
+class ReturnSaleAsk(ModelView):
+    _name = 'sale.return_sale.ask'
+    sale_lines = fields.Many2Many('sale.line', None, None, 'Return Lines',
+        domain=[('sale', '=', Eval('sale'))], depends=['sale'])
+    sale = fields.Many2One('sale.sale', 'Sale')
+
+ReturnSaleAsk()
+
+
+class ReturnSale(Wizard):
+    _name = 'sale.return_sale'
+    start_state = 'ask'
+    ask = StateView('sale.return_sale.ask', 'sale.return_sale_ask_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'make_return', 'tryton-ok', default=True),
+            ])
+    make_return = StateTransition()
+
+    def default_ask(self, session, fields):
+        return {
+            'sale': Transaction().context['active_id'],
+            }
+
+    def transition_make_return(self, session):
+        pool = Pool()
+        sale_obj = pool.get('sale.sale')
+        line_obj = pool.get('sale.line')
+
+        sale = sale_obj.browse(session.ask.sale.id)
+        new_sale_type = 'return' if sale.type == 'sale' else 'sale'
+        new_sale_id = sale_obj.copy(session.ask.sale.id, {
+                'type': new_sale_type,
+                })
+        new_line_ids = line_obj.copy([x.id for x in session.ask.sale_lines])
+        for new_line in line_obj.browse(new_line_ids):
+            line_obj.write(new_line.id, {'quantity': -new_line.quantity})
+        sale_obj.write(new_sale_id, {
+                'lines': [('set', new_line_ids)],
+                })
+        return 'end'
+
+ReturnSale()

@@ -130,6 +130,7 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="moves" colspan="4"
                                 view_ids="sale.move_view_list_shipment"/>
                             <field name="shipments" colspan="4"/>
+                            <field name="shipment_returns" colspan="4"/>
                         </page>
                     </notebook>
                     <field name="currency_digits" invisible="1" colspan="6"/>
@@ -174,7 +175,7 @@ this repository contains the full copyright notices and license terms. -->
                         id="choose"
                         yalign="0.0" xalign="0.0" xexpand="1"/>
                     <field name="recreate_moves" colspan="2"
-                        view_ids="stock.move_view_tree_simple"/>
+                        view_ids="stock.move_view_tree"/>
                 </form>
                 ]]>
             </field>
@@ -207,6 +208,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_relate</field>
             <field name="model">sale.sale,-1</field>
             <field name="action" ref="act_shipment_form"/>
+        </record>
+        <record model="ir.action.act_window" id="act_return_form">
+            <field name="name">Returns</field>
+            <field name="res_model">stock.shipment.out.return</field>
+            <field name="domain">[("id", "in", Eval('shipment_returns'))]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_shipment_return_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="act_return_form"/>
         </record>
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">Invoices</field>
