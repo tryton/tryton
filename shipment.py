@@ -126,7 +126,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 ))
         self._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state') != 'draft',
+                    'invisible': Eval('state').in_(['cancel', 'done']),
                     },
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
@@ -804,7 +804,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 ))
         self._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'packed', 'done']),
+                    'invisible': Eval('state').in_(['cancel', 'done']),
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
@@ -1322,7 +1322,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                 ))
         self._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state') != 'draft',
+                    'invisible': Eval('state').in_(['cancel', 'done']),
                     },
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
