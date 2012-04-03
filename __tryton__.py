@@ -7,7 +7,7 @@
     'name_de_DE': 'Verkauf Preislisten',
     'name_es_CO': 'Lista de Precios de Venta',
     'name_es_ES': 'Lista de precios de venta',
-    'name_fr_FR' : 'Listes de prix de vente',
+    'name_fr_FR': 'Listes de prix de vente',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,7 +16,7 @@
 ''',
     'description_bg_BG': '''Задаване на ценова листа за партньор и поръчка за продажба
 ''',
-    'description_ca_ES': '''Permet definir la llista de preus per tercer i 
+    'description_ca_ES': '''Permet definir la llista de preus per tercer i
 comanda de venda.
 ''',
     'description_de_DE': '''Preislisten für Verkauf

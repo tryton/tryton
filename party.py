@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, Bool, Not, Get
 
+
 class Party(ModelSQL, ModelView):
     _name = 'party.party'
 
