@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -138,7 +139,8 @@ class CompanyTestCase(unittest.TestCase):
                 self.assertEqual(user2.company.id, company2_id)
 
                 with transaction.set_context({'company': company2_id}):
-                    company_id = self.user.read(user1_id, ['company'])['company']
+                    company_id = self.user.read(user1_id,
+                        ['company'])['company']
                     self.assertEqual(company_id, company2_id)
 
                     user1, user2 = self.user.browse([user1_id, user2_id])
@@ -146,7 +148,8 @@ class CompanyTestCase(unittest.TestCase):
                     self.assertEqual(user2.company.id, company2_id)
 
                 with transaction.set_context({'company': False}):
-                    company_id = self.user.read(user1_id, ['company'])['company']
+                    company_id = self.user.read(user1_id,
+                        ['company'])['company']
                     self.assertEqual(company_id, False)
 
                     user1, user2 = self.user.browse([user1_id, user2_id])
@@ -160,7 +163,8 @@ def suite():
     for test in test_currency.suite():
         if test not in suite:
             suite.addTest(test)
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(CompanyTestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            CompanyTestCase))
     return suite
 
 if __name__ == '__main__':
