@@ -1,6 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.backend import TableHandler
@@ -157,7 +156,8 @@ class Work(ModelSQL, ModelView):
         # we need to convert them to timesheet_work ids
         operands = set()
         for _, _, operand in timesheet_work_domain:
-            if isinstance(operand, (int, long)) and not isinstance(operand, bool):
+            if (isinstance(operand, (int, long))
+                    and not isinstance(operand, bool)):
                 operands.add(operand)
             elif isinstance(operand, list):
                 for o in operand:
