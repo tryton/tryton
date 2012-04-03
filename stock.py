@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import Model, ModelView, ModelSQL, fields
+from trytond.model import Model, fields
 from trytond.pool import Pool
 
 
-class Move(ModelSQL, ModelView):
+class Move(Model):
     _name = 'stock.move'
 
     account_move = fields.Many2One('account.move', 'Account Move',
@@ -17,7 +17,8 @@ class Move(ModelSQL, ModelView):
         '''
         uom_obj = Pool().get('product.uom')
         currency_obj = Pool().get('currency.currency')
-        assert type_.startswith('in_') or type_.startswith('out_'), 'wrong type'
+        assert type_.startswith('in_') or type_.startswith('out_'), \
+            'wrong type'
 
         move_line = {
             'name': move.rec_name,
@@ -115,7 +116,7 @@ class Move(ModelSQL, ModelView):
         if not type_:
             return
         assert not move.account_move, 'account move field not empty'
-        if type_  == 'supplier_customer':
+        if type_ == 'supplier_customer':
             account_move_lines = self._get_account_stock_move_lines(move,
                 'in_supplier')
             account_move_lines.extend(self._get_account_stock_move_lines(move,
@@ -126,7 +127,8 @@ class Move(ModelSQL, ModelView):
             account_move_lines.extend(self._get_account_stock_move_lines(move,
                     'out_supplier'))
         else:
-            account_move_lines = self._get_account_stock_move_lines(move, type_)
+            account_move_lines = self._get_account_stock_move_lines(move,
+                type_)
 
         amount = Decimal('0.0')
         for line in account_move_lines:

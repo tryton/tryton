@@ -132,4 +132,3 @@ class Template(ModelSQL, ModelView):
         'account.account', 'Account Stock Lost and Found'), 'get_account')
 
 Template()
-
