@@ -27,7 +27,8 @@ class Move(ModelSQL, ModelView):
     def default_fifo_quantity(self):
         return 0.0
 
-    def _update_fifo_out_product_cost_price(self, product, quantity, uom, date):
+    def _update_fifo_out_product_cost_price(self, product, quantity, uom,
+            date):
         '''
         Update the product cost price of the given product. Update
         fifo_quantity on the concerned incomming moves. Return the
@@ -51,7 +52,6 @@ class Move(ModelSQL, ModelView):
 
         fifo_moves = template_obj.get_fifo_move(product.template.id, total_qty)
 
-
         cost_price = Decimal("0.0")
         consumed_qty = 0.0
         for move, move_qty in fifo_moves:
@@ -71,14 +71,13 @@ class Move(ModelSQL, ModelView):
                 'fifo_quantity': (move.fifo_quantity or 0.0) + move_qty,
                 })
 
-
         if Decimal(str(consumed_qty)) != Decimal("0"):
             cost_price = cost_price / Decimal(str(consumed_qty))
 
         if cost_price != Decimal("0"):
             digits = self.cost_price.digits
             return cost_price.quantize(
-                    Decimal(str(10.0**-digits[1])))
+                Decimal(str(10.0 ** -digits[1])))
         else:
             return product.cost_price
 

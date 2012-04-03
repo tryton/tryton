@@ -17,7 +17,7 @@ Once installed, the price of the stock moves from a supplier or to a
 customer will update automatically the cost price of the related
 product (if the cost price method is FIFO)
 ''',
-    'description_bg_BG':'''Добавя FIFO начин на остойностяване в формата на продукт
+    'description_bg_BG': '''Добавя FIFO начин на остойностяване в формата на продукт
     - Добавя FIFO (първи влязъл първи излязъл) като начин на изчисляване на
       цената на продукт.
     - След инсталиране на този модул цената на даден продукт (ако е избран този
@@ -25,11 +25,11 @@ product (if the cost price method is FIFO)
       наличност от доставчик или към клиент
 ''',
     'description_ca_ES': '''Afegeix el mètode de cost FIFO al formulari de producte.
-Un cop instal·lat, el preu dels moviments d'estoc des d'un proveïdor o un client, 
+Un cop instal·lat, el preu dels moviments d'estoc des d'un proveïdor o un client,
 actualitzarà automàticament el preu de cost del producte relacionat (si el mètode
 de càlcul del preu de cost és FIFO).
 ''',
-    'description_de_DE':'''Kostenpreisermittlung für Artikel nach Methode 'FIFO'
+    'description_de_DE': '''Kostenpreisermittlung für Artikel nach Methode 'FIFO'
     - Fügt 'FIFO' (First In - First Out) zu den Methoden für die
       Kostenpreisermittlung für Artikel hinzu.
     - Nach Installation dieses Moduls wird der Kostenpreis eines Artikels (für
@@ -46,7 +46,7 @@ Una vez instalado, el precio de los movimientos de stock desde un proveedor o
 a un cliente actualizará automáticamente el precio de coste del producto
 relacionado (si el método de cálculo del precio de coste es FIFO)
 ''',
-    'description_fr_FR':'''Ajoute 'FIFO' parmi les méthodes de coût du produit.
+    'description_fr_FR': '''Ajoute 'FIFO' parmi les méthodes de coût du produit.
 Une fois le module installé, le prix de chaque mouvement de stock
 depuis un fournisseur ou vers un client modifiera automatiquement le
 prix de revient du produit concerné (si la méthode de coût est FIFO).

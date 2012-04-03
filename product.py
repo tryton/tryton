@@ -67,9 +67,11 @@ class Template(ModelSQL, ModelView):
 
                 if avail_qty <= quantity:
                     if avail_qty > 0.0:
-                        fifo_moves.append((move, min(qty, quantity - avail_qty)))
+                        fifo_moves.append(
+                            (move, min(qty, quantity - avail_qty)))
                     else:
-                        fifo_moves.append((move, min(quantity, qty + avail_qty)))
+                        fifo_moves.append(
+                            (move, min(quantity, qty + avail_qty)))
                         break
 
         fifo_moves.reverse()
