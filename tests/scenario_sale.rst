@@ -7,6 +7,7 @@ Imports::
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
+    >>> from operator import attrgetter
     >>> from proteus import config, Model, Wizard
     >>> today = datetime.date.today()
 
@@ -312,7 +313,8 @@ Checking Shipments::
 Checking the invoice::
 
     >>> mix.reload()
-    >>> mix_invoice, mix_credit_note = mix.invoices
+    >>> mix_invoice, mix_credit_note = sorted(mix.invoices,
+    ...     key=attrgetter('type'), reverse=True)
     >>> mix_invoice.type, mix_credit_note.type
     (u'out_invoice', u'out_credit_note')
     >>> Invoice.open([mix_invoice.id], config.context)
