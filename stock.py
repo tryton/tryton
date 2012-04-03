@@ -120,7 +120,7 @@ class ShipmentIn(Model):
 
         costs = []
         digit = move_obj.unit_price.digits[1]
-        exp = Decimal(str(10.0**-digit))
+        exp = Decimal(str(10.0 ** -digit))
         difference = cost
         for move in moves:
             quantity = Decimal(str(move.quantity))
@@ -145,9 +145,11 @@ class ShipmentIn(Model):
 
         for cost in costs:
             move = cost['move']
-            unit_shipment_cost = currency_obj.compute(shipment.company.currency,
-                cost['unit_shipment_cost'], move.currency, round=False)
-            unit_shipment_cost = unit_shipment_cost.quantize(exp, rounding=ROUND_HALF_EVEN)
+            unit_shipment_cost = currency_obj.compute(
+                shipment.company.currency, cost['unit_shipment_cost'],
+                move.currency, round=False)
+            unit_shipment_cost = unit_shipment_cost.quantize(
+                exp, rounding=ROUND_HALF_EVEN)
             move_obj.write(move.id, {
                     'unit_price': move.unit_price + cost['unit_shipment_cost'],
                     'unit_shipment_cost': cost['unit_shipment_cost'],
@@ -159,7 +161,8 @@ class ShipmentIn(Model):
         carrier_obj = Pool().get('carrier')
         for shipment in self.browse(ids):
             if shipment.carrier:
-                allocation_method = shipment.carrier.carrier_cost_allocation_method
+                allocation_method = \
+                    shipment.carrier.carrier_cost_allocation_method
             else:
                 allocation_method = carrier_obj.default_carrier_cost_method()
             getattr(self, 'allocate_cost_by_%s' % allocation_method)(shipment)
