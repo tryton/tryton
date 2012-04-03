@@ -1,15 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
-    "name" : "Purchase Invoice Line Standalone",
-    "name_bg_BG" : "Ред от независима фактура към покупка",
+    "name": "Purchase Invoice Line Standalone",
+    "name_bg_BG": "Ред от независима фактура към покупка",
     'name_ca_ES': 'Línia de factura de compres independents',
-    "name_de_DE" : "Einkauf ungebundene Rechnungsposition",
-    "name_es_CO" : "Línea de Factura autónoma en Compras",
-    "name_es_ES" : "Línea de factura de compra independiente",
-    "name_fr_FR" : "Ligne de facture autonome - Achat",
-    "version" : "2.3.0",
-    "author" : "B2CK",
+    "name_de_DE": "Einkauf ungebundene Rechnungsposition",
+    "name_es_CO": "Línea de Factura autónoma en Compras",
+    "name_es_ES": "Línea de factura de compra independiente",
+    "name_fr_FR": "Ligne de facture autonome - Achat",
+    "version": "2.3.0",
+    "author": "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     "description": '''
@@ -23,7 +23,7 @@ from differents purchases.
     - Позволява създаване на фактури с редове от различни покупки.
 ''',
     'description_ca_ES': '''Modifica el comportament de les comandes de compra
-perquè crei línies de factura enlloc d'una factura completa. Això permet crear 
+perquè crei línies de factura enlloc d'una factura completa. Això permet crear
 factures amb línies provinents de diferents compres.
 ''',
     "description_de_DE": '''Einkäufe mit ungebundenen Rechnungspositionen
@@ -45,12 +45,12 @@ facturas con líneas originadas en diferentes compras.
 facture autonomes au lieu de factures complètes. Cela permet de
 composer des factures avec des lignes provenant de différents achats.
 ''',
-    "depends" : [
+    "depends": [
         "ir",
         "purchase",
         "account_invoice_line_standalone",
     ],
-    "xml" : [
+    "xml": [
         "purchase.xml",
     ],
     'translation': [

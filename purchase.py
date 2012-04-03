@@ -84,8 +84,9 @@ class Purchase(ModelSQL, ModelView):
                 invoice_line_ids.append(invoice_line.id)
         if invoice_line_ids:
             self.write(purchase_id, {
-                'invoice_lines_ignored': [('add', x) for x in invoice_line_ids],
-                })
+                    'invoice_lines_ignored': [
+                        ('add', x) for x in invoice_line_ids],
+                    })
 
 Purchase()
 
