@@ -2,7 +2,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
-    'name' : 'Party',
+    'name': 'Party',
     'name_bg_BG': 'Партньор',
     'name_ca_ES': 'Tercers',
     'name_de_DE': 'Parteien',
@@ -11,8 +11,8 @@
     'name_fr_FR': 'Tiers',
     'name_nl_NL': 'Relaties',
     'name_ru_RU': 'Контрагенты',
-    'version' : '2.3.0',
-    'author' : 'B2CK',
+    'version': '2.3.0',
+    'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Define parties, addresses and co.',
@@ -24,12 +24,12 @@
     'description_fr_FR': 'Définit des tiers, des adresses, etc.',
     'description_nl_NL': 'Definieert relaties, adressen en bedrijven.',
     'description_ru_RU': 'Определение контрагентов, адресов и тп.',
-    'depends' : [
+    'depends': [
         'ir',
         'res',
         'country',
     ],
-    'xml' : [
+    'xml': [
         'party.xml',
         'category.xml',
         'address.xml',

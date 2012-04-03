@@ -49,7 +49,7 @@ class ContactMechanism(ModelSQL, ModelView):
         'readonly': ~Eval('active', True),
         }, on_change=['website'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
-    skype = fields.Function(fields.Char('Skype',states={
+    skype = fields.Function(fields.Char('Skype', states={
         'invisible': Eval('type') != 'skype',
         'required': Eval('type') == 'skype',
         'readonly': ~Eval('active', True),

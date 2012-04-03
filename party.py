@@ -119,7 +119,8 @@ class Party(ModelSQL, ModelView):
             return []
         res = {}
         for party in self.browse(ids):
-            res[party.id] = (party.vat_country or '') + (party.vat_number or '')
+            res[party.id] = ((party.vat_country or '')
+                + (party.vat_number or ''))
         return res
 
     def search_vat_code(self, name, clause):
@@ -261,8 +262,8 @@ class PartyCategory(ModelSQL):
     _description = __doc__
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
             required=True, select=True)
-    category = fields.Many2One('party.category', 'Category', ondelete='CASCADE',
-            required=True, select=True)
+    category = fields.Many2One('party.category', 'Category',
+        ondelete='CASCADE', required=True, select=True)
 
 PartyCategory()
 

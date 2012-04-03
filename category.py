@@ -52,6 +52,7 @@ class Category(ModelSQL, ModelView):
         if not ids:
             return {}
         res = {}
+
         def _name(category):
             if category.id in res:
                 return res[category.id]
