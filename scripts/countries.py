@@ -29,4 +29,3 @@ for subdivision in pycountry.subdivisions:
     print '''\
             <field name="country" ref="%s"/>
         </record>''' % subdivision.country.alpha2.lower()
-
