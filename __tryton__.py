@@ -16,7 +16,7 @@
 ''',
     'description_bg_BG': '''Добавя възможност за планиране на проекти
 ''',
-    'description_ca_ES': '''Afegeix la capacitat de planificació de 
+    'description_ca_ES': '''Afegeix la capacitat de planificació de
 projectes.''',
     'description_de_DE': '''Projektmodul Planung:
     - Fügt Planungsmöglichkeiten für Projekte hinzu

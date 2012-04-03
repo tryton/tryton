@@ -150,7 +150,6 @@ class Work(ModelSQL, ModelView):
                 leafs = parents
             res['duration'] = durations
 
-
         fun_fields = ('early_start_date', 'early_finish_date',
                       'late_start_date', 'late_finish_date',
                       'actual_start_date', 'actual_finish_date',
@@ -272,7 +271,7 @@ class Work(ModelSQL, ModelView):
 
     def add_hours(self, company, date, hours):
         while hours:
-            if hours !=  intfloor(hours):
+            if hours != intfloor(hours):
                 minutes = (hours - intfloor(hours)) * 60
                 date = self.add_minutes(company, date, minutes)
             hours = intfloor(hours)
@@ -300,7 +299,7 @@ class Work(ModelSQL, ModelView):
         day_per_week = company.hours_per_work_week / company.hours_per_work_day
 
         while days:
-            if days !=  intfloor(days):
+            if days != intfloor(days):
                 hours = (days - intfloor(days)) * company.hours_per_work_day
                 date = self.add_hours(company, date, hours)
             days = intfloor(days)
@@ -313,7 +312,7 @@ class Work(ModelSQL, ModelView):
             if weeks:
                 date = self.add_weeks(company, date, weeks)
 
-            date += datetime.timedelta(days= -date.weekday() + intfloor(days))
+            date += datetime.timedelta(days=-date.weekday() + intfloor(days))
 
             days = days - intfloor(days)
 
@@ -322,12 +321,12 @@ class Work(ModelSQL, ModelView):
     def add_weeks(self, company, date, weeks):
         day_per_week = company.hours_per_work_week / company.hours_per_work_day
 
-        if weeks !=  intfloor(weeks):
+        if weeks != intfloor(weeks):
             days = (weeks - intfloor(weeks)) * day_per_week
             if days:
                 date = self.add_days(company, date, days)
 
-        date += datetime.timedelta(days= 7 * intfloor(weeks))
+        date += datetime.timedelta(days=7 * intfloor(weeks))
 
         return date
 
@@ -338,9 +337,8 @@ class Work(ModelSQL, ModelView):
             'early_finish_time', work['early_finish_time'])
         get_late_start = lambda work: values.get(work, {}).get(
             'late_start_time', work['late_start_time'])
-        maxdate = lambda x,y: x and y and max(x,y) or x or y
-        mindate = lambda x,y: x and y and min(x,y) or x or y
-
+        maxdate = lambda x, y: x and y and max(x, y) or x or y
+        mindate = lambda x, y: x and y and min(x, y) or x or y
 
         # propagate constraint_start_time
         constraint_start = reduce(maxdate, (pred.early_finish_time \
@@ -545,11 +543,13 @@ class Work(ModelSQL, ModelView):
         # define some helper functions
         get_key = lambda w: (set(p.id for p in w.predecessors),
                              set(s.id for s in w.successors))
-        over_alloc = lambda current_alloc, work: \
-            reduce(lambda res, alloc: res or current_alloc[alloc.employee.id] + \
-                       alloc.percentage > 100,
-                   work.allocations,
-                   False)
+        over_alloc = lambda current_alloc, work: (
+            reduce(lambda res, alloc: (res
+                    or (current_alloc[alloc.employee.id]
+                        + alloc.percentage) > 100),
+                work.allocations,
+                False))
+
         def sum_allocs(current_alloc, work):
             res = defaultdict(float)
             for alloc in work.allocations:
@@ -602,7 +602,8 @@ class Work(ModelSQL, ModelView):
                 ])
 
         refkey = get_key(work)
-        siblings = [s for s in self.browse(sibling_ids) if get_key(s) == refkey]
+        siblings = [s for s in self.browse(sibling_ids)
+            if get_key(s) == refkey]
 
         for sibling, delay in compute_delays(siblings):
             self.write(sibling.id, {
@@ -628,7 +629,7 @@ class Work(ModelSQL, ModelView):
                 self.reset_leveling(work_id)
         fields = ('constraint_start_time', 'constraint_finish_time',
                   'effort')
-        if reduce(lambda x, y : x or y in values, fields, False):
+        if reduce(lambda x, y: x or y in values, fields, False):
             for work_id in ids:
                 self.compute_dates(work_id)
         return res
@@ -657,7 +658,6 @@ class Work(ModelSQL, ModelView):
 
         return res
 Work()
-
 
 
 class PredecessorSuccessor(ModelSQL):
