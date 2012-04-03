@@ -2,7 +2,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -35,6 +36,7 @@ class AccountStatementTestCase(unittest.TestCase):
         '''
         test_depends()
 
+
 def doctest_dropdb(test):
     '''
     Remove sqlite memory database
@@ -46,6 +48,7 @@ def doctest_dropdb(test):
         cursor.commit()
     finally:
         cursor.close()
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

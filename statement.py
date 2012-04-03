@@ -22,7 +22,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', 0)),
             ],
         depends=_DEPENDS)
-    journal = fields.Many2One('account.statement.journal', 'Journal', required=True,
+    journal = fields.Many2One('account.statement.journal', 'Journal',
+        required=True,
         domain=[
             ('company', '=', Eval('context', {}).get('company', 0)),
             ],
@@ -243,9 +244,9 @@ class Statement(Workflow, ModelSQL, ModelView):
             invoice_id2amount_to_pay = {}
             for invoice in invoice_obj.browse(list(invoice_ids)):
                 with Transaction().set_context(date=invoice.currency_date):
-                    invoice_id2amount_to_pay[invoice.id] = currency_obj.compute(
-                        invoice.currency.id, invoice.amount_to_pay,
-                        journal.currency.id)
+                    invoice_id2amount_to_pay[invoice.id] = (
+                        currency_obj.compute(invoice.currency.id,
+                            invoice.amount_to_pay, journal.currency.id))
 
             for line in values['lines']:
                 if line['invoice'] and line['id']:
@@ -266,7 +267,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                             res['lines'].setdefault('add', [])
                             vals = line.copy()
                             del vals['id']
-                            vals['amount'] = abs(line['amount']) - amount_to_pay
+                            vals['amount'] = (abs(line['amount'])
+                                - amount_to_pay)
                             if line['amount'] < 0:
                                 vals['amount'] = - vals['amount']
                             vals['invoice'] = None
@@ -309,7 +311,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                 amount = lang_obj.format(lang,
                         '%.' + str(statement.journal.currency.digits) + 'f',
                         computed_end_balance, True)
-                self.raise_user_error('wrong_end_balance', error_args=(amount,))
+                self.raise_user_error('wrong_end_balance',
+                    error_args=(amount,))
             for line in statement.lines:
                 statement_line_obj.create_move(line)
 
@@ -343,7 +346,7 @@ class Line(ModelSQL, ModelView):
             required=True, ondelete='CASCADE')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('_parent_statement', {}).get( 'currency_digits', 2)),
+        digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)),
         on_change=['amount', 'party', 'account', 'invoice',
             '_parent_statement.journal'])
     party = fields.Many2One('party.party', 'Party',
@@ -376,12 +379,12 @@ class Line(ModelSQL, ModelView):
     def __init__(self):
         super(Line, self).__init__()
         self._error_messages.update({
-            'debit_credit_account_statement_journal': 'Please provide debit and ' \
-                    'credit account on statement journal.',
-            'same_debit_credit_account': 'Credit or debit account on ' \
-                    'journal is the same than the statement line account!',
-            'amount_greater_invoice_amount_to_pay': 'Amount (%s) greater than '\
-                    'the amount to pay of invoice!',
+            'debit_credit_account_statement_journal': 'Please provide debit '
+                'and credit account on statement journal.',
+            'same_debit_credit_account': 'Credit or debit account on '
+                'journal is the same than the statement line account!',
+            'amount_greater_invoice_amount_to_pay': 'Amount (%s) greater than '
+                'the amount to pay of invoice!',
             })
         self._sql_constraints += [
             ('check_statement_line_amount', 'CHECK(amount != 0)',
@@ -439,7 +442,8 @@ class Line(ModelSQL, ModelView):
         if value.get('invoice'):
             if value.get('amount') and value.get('_parent_statement.journal'):
                 invoice = invoice_obj.browse(value['invoice'])
-                journal = journal_obj.browse(value['_parent_statement.journal'])
+                journal = journal_obj.browse(
+                    value['_parent_statement.journal'])
                 with Transaction().set_context(date=invoice.currency_date):
                     amount_to_pay = currency_obj.compute(invoice.currency.id,
                         invoice.amount_to_pay, journal.currency.id)
@@ -505,8 +509,8 @@ class Line(ModelSQL, ModelView):
                 lang = lang_obj.browse(lang_id)
 
                 amount = lang_obj.format(lang,
-                        '%.' + str(line.statement.journal.currency.digits) + 'f',
-                        line.amount, True)
+                    '%.' + str(line.statement.journal.currency.digits) + 'f',
+                    line.amount, True)
                 self.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
