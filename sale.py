@@ -170,6 +170,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                 'quotation.',
             'missing_account_receivable': 'It misses '
                     'an "Account Receivable" on the party "%s"!',
+            'delete_cancel': 'Sale "%s" must be cancelled before deletion!',
         })
         self._transitions |= set((
                 ('draft', 'quotation'),
@@ -857,6 +858,16 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     def is_done(self, sale):
         return sale.invoice_state == 'paid' and sale.shipment_state == 'sent'
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for sale in self.browse(ids):
+            if sale.state != 'cancel':
+                self.raise_user_error('delete_cancel', sale.rec_name)
+        return super(Sale, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('cancel')
