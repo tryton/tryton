@@ -33,8 +33,8 @@ setup(name='trytond_account_invoice_line_standalone',
         'trytond.modules.account_invoice_line_standalone.tests',
     ],
     package_data={
-        'trytond.modules.account_invoice_line_standalone': info.get('xml', []) \
-                + info.get('translation', []),
+        'trytond.modules.account_invoice_line_standalone': \
+            info.get('xml', []) + info.get('translation', []),
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
