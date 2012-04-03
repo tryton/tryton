@@ -26,7 +26,7 @@ And with report:
 ''',
     'description_ca_ES': '''Mòdul financer i de comptabilitat amb:
     - Comptabilitat analítica amb plans analítics il·limitats
-    
+
 I amb informes:
     - Balanc comptable analític
 ''',
