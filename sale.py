@@ -23,9 +23,10 @@ class Sale(Model):
         context = context.copy()
         amount = 0
         for line in values.get('lines') or []:
-            if (line.get('unit_price' ) and line.get('quantity')
+            if (line.get('unit_price') and line.get('quantity')
                     and not line.get('shipment_cost')):
-                amount += line['unit_price'] * Decimal(str(line['quantity'] or 0))
+                amount += (line['unit_price']
+                    * Decimal(str(line['quantity'] or 0)))
         context['amount'] = amount
         context['currency'] = values['currency']
         return context
