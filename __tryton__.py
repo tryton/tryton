@@ -2,12 +2,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
-    'name' : 'Carrier',
-    'name_es_ES' : 'Transportista',
+    'name': 'Carrier',
+    'name_es_ES': 'Transportista',
     'name_de_DE': 'Frachtführer',
     'name_fr_FR': 'Transporteur',
-    'version' : '2.3.0',
-    'author' : 'B2CK',
+    'version': '2.3.0',
+    'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Define carriers.',
@@ -16,13 +16,13 @@
     - Ermöglicht die Definition von Frachtführern.
     ''',
     'description_fr_FR': 'Définit des transporteurs.',
-    'depends' : [
+    'depends': [
         'ir',
         'res',
         'party',
         'product',
     ],
-    'xml' : [
+    'xml': [
         'carrier.xml',
     ],
     'translation': [
