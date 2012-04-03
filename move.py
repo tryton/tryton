@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from functools import reduce
-from trytond.model import ModelView, ModelSQL, fields, OPERATORS
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
@@ -141,7 +141,8 @@ class Move(ModelSQL, ModelView):
             'set_state_draft': 'You can not set state to draft!',
             'set_state_assigned': 'You can not set state to assigned!',
             'set_state_done': 'You can not set state to done!',
-            'del_draft_cancel': 'You can only delete draft or cancelled moves!',
+            'del_draft_cancel': 'You can only delete draft ' \
+                'or cancelled moves!',
             'period_closed': 'You can not modify move in closed period!',
             'modify_assigned_done_cancel': ('You can not modify a move '
                 'in the state: "Assigned", "Done" or "Cancel"'),
@@ -150,7 +151,7 @@ class Move(ModelSQL, ModelView):
     def init(self, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        table  = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, self, module_name)
         table.drop_constraint('check_packing')
         for suffix in ('in', 'out', 'in_return', 'out_return', 'internal'):
             old_column = 'packing_%s' % suffix
@@ -183,7 +184,7 @@ class Move(ModelSQL, ModelView):
             table.not_null_action('internal_quantity', action='add')
 
         # Migration from 1.0 check_packing_in_out has been removed
-        table  = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, self, module_name)
         table.drop_constraint('check_packing_in_out')
 
         # Add index on create_date
@@ -346,7 +347,8 @@ class Move(ModelSQL, ModelView):
         res = {}
         moves = self.browse(ids)
         for m in moves:
-            res[m.id] = "%s%s %s" % (m.quantity, m.uom.symbol, m.product.rec_name)
+            res[m.id] = ("%s%s %s"
+                % (m.quantity, m.uom.symbol, m.product.rec_name))
         return res
 
     def search_rec_name(self, name, clause):
@@ -412,7 +414,7 @@ class Move(ModelSQL, ModelView):
         else:
             digits = product_template_obj.cost_price.digits
         new_cost_price = new_cost_price.quantize(
-                Decimal(str(10.0**-digits[1])))
+            Decimal(str(10.0 ** -digits[1])))
 
         with Transaction().set_user(0, set_context=True):
             product_obj.write(product.id, {
@@ -424,7 +426,6 @@ class Move(ModelSQL, ModelView):
         internal_quantity = uom_obj.compute_qty(uom, quantity,
                 product.default_uom, round=True)
         return internal_quantity
-
 
     def create(self, vals):
         pool = Pool()
@@ -521,7 +522,7 @@ class Move(ModelSQL, ModelView):
                             and move.from_location.type == 'storage'
                             and move.state != 'done'
                             and move.product.cost_price_method == 'average'):
-                        self._update_product_cost_price( move.product.id,
+                        self._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
 
@@ -661,10 +662,12 @@ class Move(ModelSQL, ModelView):
                 qty_default_uom = uom_obj.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
 
-                pbl[(from_location.id, move.product.id)] = \
-                    pbl.get((from_location.id, move.product.id), 0.0) - qty_default_uom
-                pbl[(to_location.id, move.product.id)]= \
-                    pbl.get((to_location.id, move.product.id), 0.0) + qty_default_uom
+                pbl[(from_location.id, move.product.id)] = (
+                    pbl.get((from_location.id, move.product.id), 0.0)
+                    - qty_default_uom)
+                pbl[(to_location.id, move.product.id)] = (
+                    pbl.get((to_location.id, move.product.id), 0.0)
+                    + qty_default_uom)
         return success
 
 Move()

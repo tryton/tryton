@@ -2,7 +2,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -82,7 +83,7 @@ class StockTestCase(unittest.TestCase):
             tests = [
                 (kg_id, 10, 10),
                 (g_id, 100, 0.1),
-                (g_id, 1, 0), # rounded
+                (g_id, 1, 0),  # rounded
             ]
             for uom_id, quantity, internal_quantity in tests:
                 move_id = self.move.create({

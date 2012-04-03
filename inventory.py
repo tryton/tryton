@@ -198,7 +198,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     quantity, uom_id = 0.0, product2uom[line.product.id]
                 else:
                     quantity, uom_id = 0.0, line.product.default_uom.id
-                values = line_obj.update_values4complete(line, quantity, uom_id)
+                values = line_obj.update_values4complete(line, quantity,
+                    uom_id)
                 if values:
                     line_obj.write(line.id, values)
 
@@ -277,7 +278,7 @@ class InventoryLine(ModelSQL, ModelView):
 
     def cancel_move(self, lines):
         move_obj = Pool().get('stock.move')
-        move_obj.write( [l.move.id for l in lines if l.move], {
+        move_obj.write([l.move.id for l in lines if l.move], {
             'state': 'cancel',
             })
         move_obj.delete([l.move.id for l in lines if l.move])

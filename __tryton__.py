@@ -82,7 +82,7 @@ Y con los informes:
     - Lista de recálculo de existencias (con envios de proveedores y envios de devoluciones de clientes)
     - Productos por ubicación
 ''',
-    'description_fr_FR':'''Gestion des stocks et contrôle de l'inventaire avec:
+    'description_fr_FR': '''Gestion des stocks et contrôle de l'inventaire avec:
     - Emplacement
     - Mouvement de stock
     - Expédition client, fournisseur et interne. Retour d'expédition client et founisseur.

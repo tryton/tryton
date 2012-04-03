@@ -21,7 +21,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                     [Get(Eval('context', {}), 'company'), None]),
                 ('code', '=', 'stock.shipment.in.return'),
                 ], required=True))
-    shipment_out_sequence = fields.Property(fields.Many2One( 'ir.sequence',
+    shipment_out_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Customer Shipment Sequence', domain=[
                 ('company', 'in',
                     [Get(Eval('context', {}), 'company'), None]),

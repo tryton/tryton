@@ -71,6 +71,7 @@ class Template(ModelSQL, ModelView):
 
 Template()
 
+
 class Product(ModelSQL, ModelView):
     _name = "product.product"
 
@@ -117,7 +118,7 @@ class Product(ModelSQL, ModelView):
         if operator not in ("=", ">=", "<=", ">", "<", "!="):
             return False
         if operator == "=":
-            operator= "=="
+            operator = "=="
         return (safe_eval(str(value) + operator + str(operand)))
 
     def search_quantity(self, name, domain=None):
@@ -145,12 +146,14 @@ class Product(ModelSQL, ModelView):
 
         processed_lines = []
         for (location, product), quantity in pbl:
-            processed_lines.append({'location': location, #XXX useful ?
-                                    'product': product,
-                                    name: quantity})
+            processed_lines.append({
+                    'location': location,  # XXX useful ?
+                    'product': product,
+                    name: quantity,
+                    })
 
-        res= [line['product'] for line in processed_lines \
-                    if self._search_quantity_eval_domain(line, domain)]
+        res = [line['product'] for line in processed_lines
+            if self._search_quantity_eval_domain(line, domain)]
         return [('id', 'in', res)]
 
     def get_cost_value(self, ids, name):
@@ -178,11 +181,11 @@ class Product(ModelSQL, ModelView):
                     missing).
                 stock_assign: if set compute also the assigned moves as done.
                 forecast: if set compute the forecast quantity.
-                stock_destinations: A list of location ids. If set, restrict the
-                    computation to moves from and to those locations.
+                stock_destinations: A list of location ids. If set, restrict
+                    the computation to moves from and to those locations.
                 stock_skip_warehouse: if set, quantities on a warehouse are no
-                    more quantities of all child locations but quantities of the
-                    storage zone.
+                    more quantities of all child locations but quantities of
+                    the storage zone.
 
         :param location_ids: the ids of locations
         :param product_ids: the ids of the products
@@ -424,7 +427,6 @@ class Product(ModelSQL, ModelView):
                 "JOIN product_template "
                     "ON (product_product.template = product_template.id) ")
 
-
         if context.get('stock_destinations'):
             destinations = context.get('stock_destinations')
             dest_clause_from = " AND from_location in ("
@@ -497,7 +499,8 @@ class Product(ModelSQL, ModelView):
             leafs = set(all_location_ids)
             parent = {}
             for location in locations:
-                if not location.parent: continue
+                if not location.parent:
+                    continue
                 if location.parent.id in leafs:
                     leafs.remove(location.parent.id)
                 parent[location.id] = location.parent.id
@@ -510,7 +513,7 @@ class Product(ModelSQL, ModelView):
                     next_leafs.add(parent[l])
                     for product in res_product_ids:
                         res.setdefault((parent[l], product), 0)
-                        res[(parent[l], product)] += res.get((l,product), 0)
+                        res[(parent[l], product)] += res.get((l, product), 0)
                 leafs = next_leafs
 
             # clean result
@@ -533,7 +536,7 @@ class Product(ModelSQL, ModelView):
                 all_product_ids = product_ids
             else:
                 all_product_ids = Pool().get("product.product").search([])
-            keys = ((l,p) for l in location_ids for p in all_product_ids)
+            keys = ((l, p) for l in location_ids for p in all_product_ids)
             for location_id, product_id in keys:
                 if (location_id, product_id) not in res:
                     res[(location_id, product_id)] = 0.0

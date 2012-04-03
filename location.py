@@ -51,7 +51,7 @@ class Location(ModelSQL, ModelView):
             'required': Equal(Eval('type'), 'warehouse'),
             },
         domain=[
-            ('type','=','storage'),
+            ('type', '=', 'storage'),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None),
@@ -64,7 +64,8 @@ class Location(ModelSQL, ModelView):
             'readonly': Not(Bool(Eval('active'))),
             'required': Equal(Eval('type'), 'warehouse'),
         },
-        domain=[('type','=','storage'),
+        domain=[
+            ('type', '=', 'storage'),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None)]],
@@ -75,7 +76,8 @@ class Location(ModelSQL, ModelView):
             'readonly': Not(Bool(Eval('active'))),
             'required': Equal(Eval('type'), 'warehouse'),
         },
-        domain=[('type','=','storage'),
+        domain=[
+            ('type', '=', 'storage'),
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None)]],
@@ -97,7 +99,8 @@ class Location(ModelSQL, ModelView):
             'recursive_locations': 'You can not create recursive locations!',
             'invalid_type_for_moves': 'A location with existing moves ' \
                 'cannot be changed to a type that does not support moves.',
-            'child_of_warehouse': 'Location "%s" must be a child of warehouse "%s"!',
+            'child_of_warehouse': 'Location "%s" must be a child of ' \
+                'warehouse "%s"!',
         })
 
     def init(self, module_name):
@@ -174,7 +177,7 @@ class Location(ModelSQL, ModelView):
                     product_ids=[Transaction().context['product']],
                     with_childs=True, skip_zero=False).iteritems()
 
-        return dict([(loc,qty) for (loc,prod), qty in pbl])
+        return dict([(loc, qty) for (loc, prod), qty in pbl])
 
     def get_cost_value(self, ids, name):
         product_obj = Pool().get('product.product')
@@ -298,8 +301,10 @@ class Location(ModelSQL, ModelView):
                 if location.id in warehouse_locations.values():
                     for field, loc_id in warehouse_locations.iteritems():
                         if loc_id == location.id:
-                            self.write(Transaction().context['cp_warehouse_id'],
-                                    {field: new_id})
+                            self.write(
+                                Transaction().context['cp_warehouse_id'], {
+                                    field: new_id,
+                                    })
 
             res.append(new_id)
 

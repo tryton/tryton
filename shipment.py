@@ -114,8 +114,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         super(ShipmentIn, self).__init__()
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
-                'incoming_move_input_dest': 'Incoming Moves must ' \
-                    'have the warehouse input location as destination location!',
+                'incoming_move_input_dest': 'Incoming Moves must have ' \
+                    'the warehouse input location as destination location!',
                 'inventory_move_input_source': 'Inventory Moves must ' \
                     'have the warehouse input location as source location!',
                 'delete_cancel': 'Supplier Shipment "%s" must be cancelled '\
@@ -289,7 +289,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         for shipment in self.browse(ids):
             res[shipment.id] = []
             for move in shipment.moves:
-                if move.from_location.id == shipment.warehouse.input_location.id:
+                if (move.from_location.id ==
+                        shipment.warehouse.input_location.id):
                     res[shipment.id].append(move.id)
         return res
 
@@ -345,8 +346,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= None
-        default['incoming_moves']= None
+        default['inventory_moves'] = None
+        default['incoming_moves'] = None
         return super(ShipmentIn, self).copy(ids, default=default)
 
     def _get_inventory_moves(self, incoming_move):
@@ -428,7 +429,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
-        self.write(ids,{
+        self.write(ids, {
                 'effective_date': date_obj.today(),
                 })
 
@@ -441,7 +442,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date =fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date', readonly=True)
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -706,8 +707,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                         qty_default_uom, move.uom, round=False)
                 if qty < move.quantity:
                     return False
-                pbl[(move.from_location.id, move.product.id)] = \
-                    pbl[(move.from_location.id, move.product.id)] - qty_default_uom
+                pbl[(move.from_location.id, move.product.id)] = (
+                    pbl[(move.from_location.id, move.product.id)]
+                    - qty_default_uom)
             else:
                 return False
         self.assign(ids)
@@ -1078,16 +1080,18 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             # Sum all outgoing quantities
             outgoing_qty = {}
             for move in shipment.outgoing_moves:
-                if move.state == 'cancel': continue
+                if move.state == 'cancel':
+                    continue
                 quantity = uom_obj.compute_qty(move.uom, move.quantity,
                         move.product.default_uom, round=False)
                 outgoing_qty.setdefault(move.product.id, 0.0)
                 outgoing_qty[move.product.id] += quantity
 
             for move in shipment.inventory_moves:
-                if move.state == 'cancel': continue
+                if move.state == 'cancel':
+                    continue
                 qty_default_uom = uom_obj.compute_qty(move.uom, move.quantity,
-                        move.product.default_uom, round=False)
+                    move.product.default_uom, round=False)
                 # Check if the outgoing move doesn't exist already
                 if outgoing_qty.get(move.product.id):
                     # If it exist, decrease the sum
@@ -1096,9 +1100,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                         continue
                     # Else create the complement
                     else:
-                        out_quantity = qty_default_uom - outgoing_qty[move.product.id]
+                        out_quantity = (qty_default_uom
+                            - outgoing_qty[move.product.id])
                         out_quantity = uom_obj.compute_qty(
-                                move.product.default_uom, out_quantity, move.uom)
+                            move.product.default_uom, out_quantity, move.uom)
                         outgoing_qty[move.product.id] = 0.0
                 else:
                     out_quantity = move.quantity
@@ -1121,16 +1126,17 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
             #Re-read the shipment and remove exceeding quantities
             for move in shipment.outgoing_moves:
-                if move.state == 'cancel': continue
+                if move.state == 'cancel':
+                    continue
                 if outgoing_qty.get(move.product.id, 0.0) > 0.0:
                     exc_qty = uom_obj.compute_qty(move.product.default_uom,
                             outgoing_qty[move.product.id], move.uom)
                     removed_qty = uom_obj.compute_qty(move.uom,
-                            min(exc_qty, move.quantity), move.product.default_uom,
-                            round=False)
-                    move_obj.write(move.id,{
-                        'quantity': max(0.0, move.quantity-exc_qty),
-                        })
+                        min(exc_qty, move.quantity), move.product.default_uom,
+                        round=False)
+                    move_obj.write(move.id, {
+                            'quantity': max(0.0, move.quantity - exc_qty),
+                            })
                     outgoing_qty[move.product.id] -= removed_qty
 
         move_obj.write([m.id for s in shipments for m in s.outgoing_moves
@@ -1209,8 +1215,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= None
-        default['outgoing_moves']= None
+        default['inventory_moves'] = None
+        default['outgoing_moves'] = None
         return super(ShipmentOut, self).copy(ids, default=default)
 
     def delete(self, ids):
@@ -1256,7 +1262,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         self.assign(ids)
 
 ShipmentOut()
-
 
 
 class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
@@ -1574,8 +1579,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves']= None
-        default['incoming_moves']= None
+        default['inventory_moves'] = None
+        default['incoming_moves'] = None
         return super(ShipmentOutReturn, self).copy(ids, default=default)
 
     def delete(self, ids):
@@ -1620,7 +1625,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                 if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
-        self.write(ids,{
+        self.write(ids, {
                 'effective_date': date_obj.today(),
                 })
 
@@ -1724,7 +1729,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     _description = __doc__
     _rec_name = 'code'
 
-    effective_date =fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date', readonly=True)
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -1908,7 +1913,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 'state': 'draft',
                 })
         for shipment in shipments:
-            move_obj.write([m.id for m in shipment.moves ], {
+            move_obj.write([m.id for m in shipment.moves], {
                 'from_location': shipment.from_location.id,
                 'to_location': shipment.to_location.id,
                 'planned_date': shipment.planned_date,
@@ -2114,7 +2119,8 @@ class CreateShipmentOutReturn(Wizard):
                             'quantity': move.quantity,
                             'uom': move.uom.id,
                             'from_location': move.to_location.id,
-                            'to_location': shipment_out.warehouse.input_location.id,
+                            'to_location': \
+                                shipment_out.warehouse.input_location.id,
                             'company': move.company.id,
                             }))
             shipment_out_return_ids.append(
@@ -2164,8 +2170,8 @@ class PickingList(CompanyReport):
         for shipment in objects:
             sorted_moves[shipment.id] = sorted(
                 shipment.inventory_moves,
-                lambda x,y: cmp(self.get_compare_key(x, compare_context),
-                                self.get_compare_key(y, compare_context))
+                lambda x, y: cmp(self.get_compare_key(x, compare_context),
+                    self.get_compare_key(y, compare_context))
                 )
 
         localcontext['moves'] = sorted_moves
@@ -2185,9 +2191,10 @@ class PickingList(CompanyReport):
         from_location_ids = location_obj.search(list(from_location_ids))
         to_location_ids = location_obj.search(list(to_location_ids))
 
-        return {'from_location_ids' : from_location_ids,
-                'to_location_ids' : to_location_ids}
-
+        return {
+            'from_location_ids': from_location_ids,
+            'to_location_ids': to_location_ids,
+            }
 
     def get_compare_key(self, move, compare_context):
         from_location_ids = compare_context['from_location_ids']
@@ -2208,8 +2215,8 @@ class SupplierRestockingList(CompanyReport):
         for shipment in objects:
             sorted_moves[shipment.id] = sorted(
                 shipment.inventory_moves,
-                lambda x,y: cmp(self.get_compare_key(x, compare_context),
-                                self.get_compare_key(y, compare_context))
+                lambda x, y: cmp(self.get_compare_key(x, compare_context),
+                    self.get_compare_key(y, compare_context))
                 )
 
         localcontext['moves'] = sorted_moves
@@ -2229,9 +2236,10 @@ class SupplierRestockingList(CompanyReport):
         from_location_ids = location_obj.search(list(from_location_ids))
         to_location_ids = location_obj.search(list(to_location_ids))
 
-        return {'from_location_ids' : from_location_ids,
-                'to_location_ids' : to_location_ids}
-
+        return {
+            'from_location_ids': from_location_ids,
+            'to_location_ids': to_location_ids,
+            }
 
     def get_compare_key(self, move, compare_context):
         from_location_ids = compare_context['from_location_ids']
@@ -2252,8 +2260,8 @@ class CustomerReturnRestockingList(CompanyReport):
         for shipment in objects:
             sorted_moves[shipment.id] = sorted(
                 shipment.inventory_moves,
-                lambda x,y: cmp(self.get_compare_key(x, compare_context),
-                                self.get_compare_key(y, compare_context))
+                lambda x, y: cmp(self.get_compare_key(x, compare_context),
+                    self.get_compare_key(y, compare_context))
                 )
 
         localcontext['moves'] = sorted_moves
@@ -2273,9 +2281,10 @@ class CustomerReturnRestockingList(CompanyReport):
         from_location_ids = location_obj.search(list(from_location_ids))
         to_location_ids = location_obj.search(list(to_location_ids))
 
-        return {'from_location_ids' : from_location_ids,
-                'to_location_ids' : to_location_ids}
-
+        return {
+            'from_location_ids': from_location_ids,
+            'to_location_ids': to_location_ids,
+            }
 
     def get_compare_key(self, move, compare_context):
         from_location_ids = compare_context['from_location_ids']
@@ -2296,8 +2305,8 @@ class InteralShipmentReport(CompanyReport):
         for shipment in objects:
             sorted_moves[shipment.id] = sorted(
                 shipment.moves,
-                lambda x,y: cmp(self.get_compare_key(x, compare_context),
-                                self.get_compare_key(y, compare_context))
+                lambda x, y: cmp(self.get_compare_key(x, compare_context),
+                    self.get_compare_key(y, compare_context))
                 )
 
         localcontext['moves'] = sorted_moves
@@ -2317,9 +2326,10 @@ class InteralShipmentReport(CompanyReport):
         from_location_ids = location_obj.search(list(from_location_ids))
         to_location_ids = location_obj.search(list(to_location_ids))
 
-        return {'from_location_ids' : from_location_ids,
-                'to_location_ids' : to_location_ids}
-
+        return {
+            'from_location_ids': from_location_ids,
+            'to_location_ids': to_location_ids,
+            }
 
     def get_compare_key(self, move, compare_context):
         from_location_ids = compare_context['from_location_ids']
