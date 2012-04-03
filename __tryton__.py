@@ -11,9 +11,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Take care of forecast when generating purchase requests.
 ''',
-    'description_ca_ES': '''Té en compte les previsions quan es generen 
+    'description_ca_ES': '''Té en compte les previsions quan es generen
 peticions de compra.
-''',   
+''',
     'description_de_DE': '''Bestellwesen mit Bedarfsermittlung
     - Berücksichtigt die Vorhersagen der Bedarfsermittlung im Bestellwesen
 ''',
