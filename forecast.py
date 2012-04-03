@@ -67,8 +67,10 @@ class Forecast(Workflow, ModelSQL, ModelView):
             ('check_date_overlap', 'date_overlap'),
             ]
         self._error_messages.update({
-                'date_overlap': 'You can not create forecasts for the same '
-                'locations with overlapping dates'
+                'date_overlap': 'You can not create forecasts for the same ' \
+                    'locations with overlapping dates',
+                'delete_cancel': 'Forecast "%s" must be cancelled before '\
+                    'deletion!',
                 })
         self._order.insert(0, ('from_date', 'DESC'))
         self._order.insert(1, ('warehouse', 'ASC'))
@@ -169,6 +171,16 @@ class Forecast(Workflow, ModelSQL, ModelView):
             if rowcount:
                 return False
         return True
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for forecast in self.browse(ids):
+            if forecast.state != 'cancel':
+                self.raise_user_error('delete_cancel', forecast.rec_name)
+        return super(Forecast, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('draft')
