@@ -176,6 +176,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'with account from a different invoice company!',
             'same_account_on_line': 'You can not use the same account\n' \
                     'as on invoice line!',
+            'delete_cancel': 'Invoice "%s" must be cancelled before deletion!',
             })
         self._transitions |= set((
                 ('draft', 'proforma'),
@@ -957,6 +958,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
         if isinstance(ids, (int, long)):
             ids = [ids]
         self.check_modify(ids)
+        # Cancel before delete
+        self.cancel(ids)
+        for invoice in self.browse(ids):
+            if invoice.state != 'cancel':
+                self.raise_user_error('delete_cancel', invoice.rec_name)
         return super(Invoice, self).delete(ids)
 
     def write(self, ids, vals):
