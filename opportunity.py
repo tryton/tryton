@@ -96,6 +96,10 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 'CHECK(probability >= 0 AND probability <= 100)',
                 'Probability must be between 0 and 100!')
         ]
+        self._error_messages.update({
+                'delete_cancel': 'Sale Opportunity "%s" must be cancelled '\
+                    'before deletion!',
+                })
         self._transitions |= set((
                 ('lead', 'opportunity'),
                 ('lead', 'lost'),
@@ -267,6 +271,16 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'sale': sale_id,
             })
         return sale_id
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for opportunity in self.browse(ids):
+            if opportunity.state != 'cancel':
+                self.raise_user_error('delete_cancel', opportunity.rec_name)
+        return super(SaleOpportunity, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('lead')
