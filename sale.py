@@ -6,6 +6,7 @@ from itertools import groupby
 from trytond.model import Model
 from trytond.pool import Pool
 
+
 class Sale(Model):
     _name = 'sale.sale'
 

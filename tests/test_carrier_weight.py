@@ -125,7 +125,8 @@ def suite():
     for test in test_currency.suite():
         if test not in suite:
             suite.addTest(test)
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(CarrierWeightTestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            CarrierWeightTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_carrier_weight.rst',
         setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
