@@ -10,6 +10,7 @@ STATES = {
     }
 DEPENDS = ['active']
 
+
 class UomCategory(ModelSQL, ModelView):
     'Product uom category'
     _name = 'product.uom.category'

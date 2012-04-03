@@ -2,7 +2,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
-    'name' : 'Product',
+    'name': 'Product',
     'name_bg_BG': 'Продукт',
     'name_ca_ES': 'Productes',
     'name_de_DE': 'Artikel',
@@ -11,8 +11,8 @@
     'name_fr_FR': 'Produit',
     'name_nl_NL': 'Producten',
     'name_ru_RU': 'ТМЦ',
-    'version' : '2.3.0',
-    'author' : 'B2CK',
+    'version': '2.3.0',
+    'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Define products, categories of product, units ' \
@@ -29,13 +29,13 @@ de mesura, categories d'unitats de mesura.''',
  - Unité de mesure
  - Catégorie d'unité de mesure
 ''',
-	'description_nl_NL': 'Definieert producten, productcategorieën, meeteenheden en categorieën van meeteenheden.',
+    'description_nl_NL': 'Definieert producten, productcategorieën, meeteenheden en categorieën van meeteenheden.',
     'description_ru_RU': 'Определение ТМЦ, категорий ТМЦ, единиц измерения, категорий единиц измерения.',
-    'depends' : [
+    'depends': [
         'ir',
         'res',
     ],
-    'xml' : [
+    'xml': [
         'product.xml',
         'category.xml',
         'uom.xml',
@@ -52,4 +52,3 @@ de mesura, categories d'unitats de mesura.''',
         'locale/ru_RU.po',
     ]
 }
-

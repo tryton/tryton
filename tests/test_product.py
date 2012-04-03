@@ -2,7 +2,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -14,6 +15,7 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
     test_depends
 from trytond.transaction import Transaction
+
 
 class ProductTestCase(unittest.TestCase):
     '''
@@ -133,7 +135,6 @@ class ProductTestCase(unittest.TestCase):
                 uom = self.uom.browse(uom_id)
                 self.assert_(result == self.uom.select_accurate_field(uom))
 
-
     def test0040uom_compute_qty(self):
         '''
         Test uom compute_qty function.
@@ -190,6 +191,7 @@ class ProductTestCase(unittest.TestCase):
                     ], limit=1)[0])
                 self.assert_(result == self.uom.compute_price(from_uom,
                     price, to_uom))
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

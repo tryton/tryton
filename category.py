@@ -9,7 +9,7 @@ class Category(ModelSQL, ModelView):
     _description = __doc__
 
     name = fields.Char('Name', required=True, translate=True)
-    parent = fields.Many2One('product.category','Parent', select=True)
+    parent = fields.Many2One('product.category', 'Parent', select=True)
     childs = fields.One2Many('product.category', 'parent',
             string='Children')
 
@@ -28,6 +28,7 @@ class Category(ModelSQL, ModelView):
         if not ids:
             return {}
         res = {}
+
         def _name(category):
             if category.id in res:
                 return res[category.id]
