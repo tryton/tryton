@@ -183,7 +183,8 @@ class SaleLine(ModelSQL, ModelView):
         return new_ids
 
     def get_invoice_line(self, line):
-        account_selection_obj = Pool().get('analytic_account.account.selection')
+        pool = Pool()
+        account_selection_obj = pool.get('analytic_account.account.selection')
 
         res = super(SaleLine, self).get_invoice_line(line)
         if not res:
@@ -191,7 +192,8 @@ class SaleLine(ModelSQL, ModelView):
 
         selection_id = False
         if line.analytic_accounts:
-            selection_id = account_selection_obj.copy(line.analytic_accounts.id)
+            selection_id = account_selection_obj.copy(
+                line.analytic_accounts.id)
         for vals in res:
             vals['analytic_accounts'] = selection_id
         return res
