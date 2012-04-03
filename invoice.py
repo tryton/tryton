@@ -219,21 +219,24 @@ class Account(ModelSQL, ModelView):
     def delete(self, ids):
         account_invoice_line_obj = Pool().get('account.invoice.line')
         res = super(Account, self).delete(ids)
-        # Restart the cache on the fields_view_get method of account.invoice.line
+        # Restart the cache on the fields_view_get method of
+        # account.invoice.line
         account_invoice_line_obj.fields_view_get.reset()
         return res
 
     def create(self, vals):
         account_invoice_line_obj = Pool().get('account.invoice.line')
         res = super(Account, self).create(vals)
-        # Restart the cache on the fields_view_get method of account.invoice.line
+        # Restart the cache on the fields_view_get method of
+        # account.invoice.line
         account_invoice_line_obj.fields_view_get.reset()
         return res
 
     def write(self, ids, vals):
         account_invoice_line_obj = Pool().get('account.invoice.line')
         res = super(Account, self).write(ids, vals)
-        # Restart the cache on the fields_view_get method of account.invoice.line
+        # Restart the cache on the fields_view_get method of
+        # account.invoice.line
         account_invoice_line_obj.fields_view_get.reset()
         return res
 
