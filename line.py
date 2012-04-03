@@ -14,7 +14,9 @@ class Line(ModelSQL, ModelView):
     _description = __doc__
 
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-        select=True, domain=[('company', '=', Get(Eval('context', {}), 'company'))])
+        select=True, domain=[
+            ('company', '=', Get(Eval('context', {}), 'company')),
+            ])
     date = fields.Date('Date', required=True, select=True)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',

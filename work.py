@@ -121,6 +121,7 @@ class Work(ModelSQL, ModelView):
         if not ids:
             return {}
         res = {}
+
         def _name(work):
             if work.parent:
                 return _name(work.parent) + '\\' + work.name
