@@ -130,7 +130,7 @@ class ShipmentOut(Model):
         with Transaction().set_context(party_context):
             values['description'] = product_obj.browse(product.id).rec_name
 
-        values['quantity'] = 1 # XXX
+        values['quantity'] = 1  # XXX
         values['unit'] = product.sale_uom.id
         cost = shipment.cost
         if invoice.currency != shipment.cost_currency:

@@ -124,13 +124,13 @@ class Sale(Model):
                 'type': 'line',
                 'product': product.id,
                 'description': description,
-                'quantity': 1, #XXX
+                'quantity': 1,  # XXX
                 'unit': product.sale_uom.id,
                 'unit_price': cost,
                 'shipment_cost': cost,
                 'amount': cost,
                 'taxes': taxes,
-                'sequence': 9999, #XXX
+                'sequence': 9999,  # XXX
             }
             pattern = sale_line_obj._get_tax_rule_pattern(party,
                 cost_line)
@@ -191,7 +191,8 @@ class Sale(Model):
                         shipment_obj.get_carrier_context(shipment, values={
                                 'carrier': sale.carrier.id,
                                 })):
-                    cost, currency_id = carrier_obj.get_sale_price(sale.carrier)
+                    cost, currency_id = carrier_obj.get_sale_price(
+                        sale.carrier)
                 with Transaction().set_user(0, set_context=True):
                     shipment_obj.write(shipment.id, {
                         'carrier': sale.carrier.id,
