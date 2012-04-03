@@ -1,15 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
-    "name" : "Stock Product Location",
-    "name_bg_BG" : "Местонахождение на наличност на продукт",
+    "name": "Stock Product Location",
+    "name_bg_BG": "Местонахождение на наличност на продукт",
     'name_ca_ES': 'Ubicació d''estoc de producte',
-    "name_de_DE" : "Lagerverwaltung Artikel Lagerort",
-    "name_es_CO" : "Ubicación de existencias de producto",
-    "name_es_ES" : "Ubicación de existencias de producto",
-    "name_fr_FR" : "Emplacement de produit",
-    "version" : "2.3.0",
-    "author" : "B2CK",
+    "name_de_DE": "Lagerverwaltung Artikel Lagerort",
+    "name_es_CO": "Ubicación de existencias de producto",
+    "name_es_ES": "Ubicación de existencias de producto",
+    "name_fr_FR": "Emplacement de produit",
+    "version": "2.3.0",
+    "author": "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     "description": '''Define default storage location by warehouse on product.
@@ -20,8 +20,8 @@ inventory moves.
     на продукт по склад. Тези местонахождения ще бъдат използвани при пратки
     от доставчик за генериране на движения за инвентаризация.
 ''',
-    'description_ca_ES': '''Defineix la ubicació del magatzem predeterminat pel 
-dipòsit i producte. Aquestes ubicacions s'utilitzaran en l'enviament de proveïdor 
+    'description_ca_ES': '''Defineix la ubicació del magatzem predeterminat pel
+dipòsit i producte. Aquestes ubicacions s'utilitzaran en l'enviament de proveïdor
 per generar moviments d'inventari.
 ''',
     "description_de_DE": '''Standardlagerorte für Artikel
@@ -41,12 +41,12 @@ Estas ubicaciones se utilizarán en el envio de proveedor para generar movimient
 Ces emplacements seront utilisés par les colisages fournisseurs pour
 générer les mouvements internes.
 ''',
-    "depends" : [
+    "depends": [
         "ir",
         "product",
         "stock",
     ],
-    "xml" : [
+    "xml": [
         "location.xml",
         "product.xml",
     ],
