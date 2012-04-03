@@ -18,17 +18,17 @@ class PurchaseRequest(ModelSQL, ModelView):
     _name = 'purchase.request'
     _description = __doc__
 
-    product = fields.Many2One(
-        'product.product', 'Product', required=True, select=True, readonly=True,
-        domain=[('purchasable', '=', True)])
+    product = fields.Many2One('product.product', 'Product', required=True,
+        select=True, readonly=True, domain=[('purchasable', '=', True)])
     party = fields.Many2One('party.party', 'Party',  select=True)
     quantity = fields.Float('Quantity', required=True)
     uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
-    computed_uom = fields.Many2One('product.uom', 'Computed UOM', readonly=True)
+    computed_uom = fields.Many2One('product.uom', 'Computed UOM',
+        readonly=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
-    stock_level =  fields.Float('Stock at Supply Date', readonly=True)
+    stock_level = fields.Float('Stock at Supply Date', readonly=True)
     warehouse = fields.Many2One(
         'stock.location', "Warehouse",
         states={
@@ -38,8 +38,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         readonly=True)
     warehouse_required = fields.Function(fields.Boolean('Warehouse Required'),
         'get_warehouse_required')
-    purchase_line = fields.Many2One(
-        'purchase.line', 'Purchase Line',readonly=True)
+    purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
+        readonly=True)
     purchase = fields.Function(fields.Many2One('purchase.purchase',
         'Purchase'), 'get_purchase')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -60,8 +60,9 @@ class PurchaseRequest(ModelSQL, ModelView):
         super(PurchaseRequest, self).__init__()
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
-            'create_request': 'Purchase requests are only created by the system.',
-            })
+                'create_request': 'Purchase requests are only created ' \
+                    'by the system.',
+                })
         self._sql_constraints += [
             ('check_purchase_request_quantity', 'CHECK(quantity > 0)',
                 'The requested quantity must be greater than 0'),
@@ -151,8 +152,8 @@ class PurchaseRequest(ModelSQL, ModelView):
 
         # fetch warehouses:
         warehouse_ids = location_obj.search([
-            ('type','=','warehouse'),
-            ])
+                ('type', '=', 'warehouse'),
+                ])
         # fetch order points
         order_point_ids = order_point_obj.search([
             ('type', '=', 'purchase'),
@@ -217,12 +218,13 @@ class PurchaseRequest(ModelSQL, ModelView):
             if new_req['supply_date'] == datetime.date.max:
                 new_req['supply_date'] = None
             if new_req['quantity'] > 0.0:
-                new_req.update({'product': new_req['product'].id,
-                                'party': new_req['party'] and new_req['party'].id,
-                                'uom': new_req['uom'].id,
-                                'computed_uom': new_req['computed_uom'].id,
-                                'company': new_req['company'].id
-                                })
+                new_req.update({
+                        'product': new_req['product'].id,
+                        'party': new_req['party'] and new_req['party'].id,
+                        'uom': new_req['uom'].id,
+                        'computed_uom': new_req['computed_uom'].id,
+                        'company': new_req['company'].id
+                        })
                 request_obj.create(new_req)
 
     def compare_requests(self, new_requests):
@@ -266,13 +268,15 @@ class PurchaseRequest(ModelSQL, ModelView):
 
             existing_req.setdefault(
                 (request.product.id, request.warehouse.id),
-                []).append({'supply_date': request.supply_date or datetime.date.max,
-                            'quantity': quantity,
-                            'uom': uom}
-                           )
+                []).append({
+                        'supply_date': \
+                            request.supply_date or datetime.date.max,
+                        'quantity': quantity,
+                        'uom': uom,
+                        })
 
         for i in existing_req.itervalues():
-            i.sort(lambda r,s: cmp(r['supply_date'],s['supply_date']))
+            i.sort(lambda r, s: cmp(r['supply_date'], s['supply_date']))
 
         # Update new requests to take existing requests into account
         new_requests.sort(key=operator.itemgetter('supply_date'))
@@ -282,7 +286,8 @@ class PurchaseRequest(ModelSQL, ModelView):
                 if old_req['supply_date'] <= new_req['supply_date']:
                     quantity = uom_obj.compute_qty(old_req['uom'],
                             old_req['quantity'], new_req['uom'])
-                    new_req['quantity'] = max(0.0, new_req['quantity'] - quantity)
+                    new_req['quantity'] = max(0.0,
+                        new_req['quantity'] - quantity)
                     new_req['computed_quantity'] = new_req['quantity']
                     old_req['quantity'] = uom_obj.compute_qty(new_req['uom'],
                         max(0.0, quantity - new_req['quantity']),
@@ -382,7 +387,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 product.purchase_uom or product.default_uom)
 
         if order_point:
-            origin = 'stock.order_point,%s'%order_point.id
+            origin = 'stock.order_point,%s' % order_point.id
         else:
             origin = 'stock.order_point,-1'
         return {'product': product,
@@ -503,6 +508,7 @@ class CreatePurchaseAskTerm(ModelView):
 
 CreatePurchaseAskTerm()
 
+
 class CreatePurchaseAskParty(ModelView):
     'Create Purchase Ask Party'
     _name = 'purchase.request.create_purchase.ask_party'
@@ -512,6 +518,7 @@ class CreatePurchaseAskParty(ModelView):
     party = fields.Many2One('party.party', 'Supplier', required=True)
 
 CreatePurchaseAskParty()
+
 
 class CreatePurchase(Wizard):
     'Create Purchase'
@@ -532,7 +539,8 @@ class CreatePurchase(Wizard):
     def __init__(self):
         super(CreatePurchase, self).__init__()
         self._error_messages.update({
-            'missing_price': 'Purchase price is missing for product: %s (id: %s)!',
+            'missing_price': 'Purchase price is missing for product: %s ' \
+                '(id: %s)!',
             'please_update': 'This price is necessary for creating purchase.'
             })
 
@@ -584,7 +592,8 @@ class CreatePurchase(Wizard):
             ('party', request.party.id),
             ('payment_term', request.party.supplier_payment_term.id),
             ('warehouse', request.warehouse.id),
-            ('currency', request.company.currency.id), # XXX use function field
+            # XXX use function field
+            ('currency', request.company.currency.id),
             ('invoice_address', party_obj.address_get(request.party.id,
                     type='invoice')),
             )
@@ -607,14 +616,17 @@ class CreatePurchase(Wizard):
                     ('party', '=', None),
                     ])
             if req_ids:
-                request_obj.write(req_ids, {'party': session.ask_party.party.id})
+                request_obj.write(req_ids, {
+                        'party': session.ask_party.party.id,
+                        })
             session.ask_party.product = None
             session.ask_party.party = None
             session.ask_party.company = None
         elif (session.ask_term.payment_term
                 and session.ask_term.party
                 and session.ask_term.company):
-            with Transaction().set_context(company=session.ask_term.company.id):
+            with Transaction().set_context(
+                    company=session.ask_term.company.id):
                 party_obj.write(session.ask_term.party.id, {
                         'supplier_payment_term': \
                             session.ask_term.payment_term.id,
@@ -645,7 +657,8 @@ class CreatePurchase(Wizard):
             for key, grouped_requests in groupby(requests, key=keyfunc):
                 grouped_requests = list(grouped_requests)
                 try:
-                    purchase_date = min(r.purchase_date for r in grouped_requests
+                    purchase_date = min(r.purchase_date
+                        for r in grouped_requests
                         if r.purchase_date)
                 except ValueError:
                     purchase_date = today

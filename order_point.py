@@ -80,11 +80,13 @@ class OrderPoint(ModelSQL, ModelView):
                 'CHECK(max_quantity >= min_quantity)',
                 'Maximal quantity must be bigger than Minimal quantity'),
             ]
-        self._error_messages.update(
-            {'unique_op': 'Only one order point is allowed '\
-                 'for each product-location pair.',
-             'concurrent_internal_op': 'You can not define two order points '\
-                 'on the same product with opposite locations.',})
+        self._error_messages.update({
+                'unique_op': 'Only one order point is allowed '\
+                    'for each product-location pair.',
+                'concurrent_internal_op': 'You can not define ' \
+                    'two order points on the same product ' \
+                    'with opposite locations.',
+                })
 
     def init(self, module_name):
         cursor = Transaction().cursor
@@ -148,8 +150,10 @@ class OrderPoint(ModelSQL, ModelView):
         return not bool(ids)
 
     def _type2field(self, type=None):
-        t2f = {'purchase': 'warehouse_location',
-               'internal': 'storage_location',}
+        t2f = {
+            'purchase': 'warehouse_location',
+            'internal': 'storage_location',
+            }
         if type == None:
             return t2f
         else:
@@ -165,10 +169,11 @@ class OrderPoint(ModelSQL, ModelView):
         for op in self.browse(ids):
             field = self._type2field(op.type)
             arg = ['AND',
-                   ('product', '=', op.product.id),
-                   (field, '=', op[field].id),
-                   ('id', '!=', op.id),
-                   ('company', '=', op.company.id),]
+                ('product', '=', op.product.id),
+                (field, '=', op[field].id),
+                ('id', '!=', op.id),
+                ('company', '=', op.company.id),
+                ]
             query.append(arg)
         ids = self.search(query)
         return not bool(ids)

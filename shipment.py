@@ -46,8 +46,8 @@ class ShipmentInternal(ModelSQL, ModelView):
             location_ids.append(op.storage_location.id)
 
         with Transaction().set_context(stock_date_end=today):
-            pbl = product_obj.products_by_location(location_ids, 
-                    list(id2product.iterkeys()), with_childs=True)
+            pbl = product_obj.products_by_location(location_ids,
+                list(id2product.iterkeys()), with_childs=True)
 
         # Create a list of move to create
         moves = {}
@@ -61,11 +61,12 @@ class ShipmentInternal(ModelSQL, ModelView):
 
         # Compare with existing draft shipments
         shipment_ids = self.search([
-            ('state', '=', 'draft'), ['OR', 
-                ('planned_date', '<=', today),
-                ('planned_date', '=', None),
-                ],
-            ])
+                ('state', '=', 'draft'),
+                ['OR',
+                    ('planned_date', '<=', today),
+                    ('planned_date', '=', None),
+                    ],
+                ])
         for shipment in self.browse(shipment_ids):
             for move in shipment.moves:
                 key = (shipment.to_location.id,
@@ -73,16 +74,16 @@ class ShipmentInternal(ModelSQL, ModelView):
                        move.product.id)
                 if key not in moves:
                     continue
-                quantity = uom_obj.compute_qty( move.uom, move.quantity,
+                quantity = uom_obj.compute_qty(move.uom, move.quantity,
                     id2product[move.product.id].default_uom)
                 moves[key] = max(0, moves[key] - quantity)
 
         # Group moves by {from,to}_location
         shipments = {}
-        for key,qty in moves.iteritems():
+        for key, qty in moves.iteritems():
             from_location, to_location, product = key
             shipments.setdefault(
-                (from_location, to_location),[]).append((product, qty))
+                (from_location, to_location), []).append((product, qty))
         # Create shipments and moves
         for shipment, moves in shipments.iteritems():
             from_location, to_location = shipment
@@ -96,13 +97,15 @@ class ShipmentInternal(ModelSQL, ModelView):
                 product, qty = move
                 values['moves'].append(
                     ('create',
-                     {'from_location': from_location,
-                      'to_location': to_location,
-                      'product': product,
-                      'quantity': qty,
-                      'uom': id2product[product].default_uom.id,
-                      'company': user_record.company.id,}
-                     ))
+                        {
+                            'from_location': from_location,
+                            'to_location': to_location,
+                            'product': product,
+                            'quantity': qty,
+                            'uom': id2product[product].default_uom.id,
+                            'company': user_record.company.id,
+                            }
+                        ))
             self.create(values)
 
 ShipmentInternal()
