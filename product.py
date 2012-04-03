@@ -23,7 +23,7 @@ class Category(ModelSQL, ModelView):
                     | Eval('account_parent')),
                 },
             depends=['account_parent']))
-    account_revenue = fields.Property(fields.Many2One( 'account.account',
+    account_revenue = fields.Property(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
                 ('company', '=', Eval('context', {}).get('company', 0)),

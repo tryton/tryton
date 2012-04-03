@@ -21,7 +21,7 @@
     - сметка за разходи / приходу
     - данъци за клиент / доставчик
 ''',
-    'description_ca_ES': '''Afegeix propietats de comptabilitat a productes i 
+    'description_ca_ES': '''Afegeix propietats de comptabilitat a productes i
 categories com:
     - Comptes de despeses i ingressos
     - Impostos per client i proveïdor
