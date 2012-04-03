@@ -187,6 +187,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 ('paid', 'open'),
                 ('draft', 'cancel'),
                 ('proforma', 'cancel'),
+                ('cancel', 'draft'),
                 ))
         self._buttons.update({
                 'cancel': {
