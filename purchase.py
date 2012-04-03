@@ -365,8 +365,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     else:
                         taxes[key] += val['amount']
             if currency:
-                for key in taxes:
-                    res['tax_amount'] += currency_obj.round(currency, taxes[key])
+                for value in taxes.itervalues():
+                    res['tax_amount'] += currency_obj.round(currency, value)
         if currency:
             res['untaxed_amount'] = currency_obj.round(currency,
                     res['untaxed_amount'])
@@ -1166,8 +1166,8 @@ class PurchaseLine(ModelSQL, ModelView):
                 for line2 in line.purchase.lines:
                     if line2.type == 'line':
                         res[line.id] += currency_obj.round(
-                                line2.purchase.currency,
-                                Decimal(str(line2.quantity)) * line2.unit_price)
+                            line2.purchase.currency,
+                            Decimal(str(line2.quantity)) * line2.unit_price)
                     elif line2.type == 'subtotal':
                         if line.id == line2.id:
                             break
@@ -1256,7 +1256,6 @@ class PurchaseLine(ModelSQL, ModelView):
                 quantity -= uom_obj.compute_qty(invoice_line.unit,
                         invoice_line.quantity, line.unit)
         res['quantity'] = quantity
-
 
         if res['quantity'] <= 0.0:
             return []
@@ -1428,8 +1427,8 @@ class Template(ModelSQL, ModelView):
     def __init__(self):
         super(Template, self).__init__()
         self._error_messages.update({
-                'change_purchase_uom': 'Purchase prices are based on the purchase uom, '\
-                    'are you sure to change it?',
+                'change_purchase_uom': 'Purchase prices are based ' \
+                    'on the purchase uom, are you sure to change it?',
             })
         self.account_expense = copy.copy(self.account_expense)
         self.account_expense.states = copy.copy(self.account_expense.states)
@@ -1531,7 +1530,8 @@ class Product(ModelSQL, ModelView):
                 else None)
             if not uom:
                 uom = default_uom
-            if Transaction().context.get('supplier') and product.product_suppliers:
+            if (Transaction().context.get('supplier')
+                    and product.product_suppliers):
                 supplier_id = Transaction().context['supplier']
                 for product_supplier in product.product_suppliers:
                     if product_supplier.party.id == supplier_id:
@@ -1952,8 +1952,10 @@ class Invoice(ModelSQL, ModelView):
 
         purchases = purchase_obj.browse(purchase_ids)
 
-        recreated_ids = tuple(i.id for p in purchases for i in p.invoices_recreated)
-        ignored_ids = tuple(i.id for p in purchases for i in p.invoices_ignored)
+        recreated_ids = tuple(i.id for p in purchases
+            for i in p.invoices_recreated)
+        ignored_ids = tuple(i.id for p in purchases
+            for i in p.invoices_ignored)
 
         res = {}.fromkeys(ids, '')
         for invoice in self.browse(ids):
@@ -2034,6 +2036,7 @@ class HandleShipmentExceptionAsk(ModelView):
         super(HandleShipmentExceptionAsk, self).init(module_name)
 
 HandleShipmentExceptionAsk()
+
 
 class HandleShipmentException(Wizard):
     'Handle Shipment Exception'
