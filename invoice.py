@@ -878,7 +878,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             move_lines.append(val)
         if not currency_obj.is_zero(invoice.currency,
                 remainder_total_currency):
-            move_lines[-1]['amount_second_currency'] += remainder_total_currency
+            move_lines[-1]['amount_second_currency'] += \
+                remainder_total_currency
 
         accounting_date = invoice.accounting_date or invoice.invoice_date
         period_id = period_obj.find(invoice.company.id, date=accounting_date)
@@ -1074,7 +1075,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 lines = [line.id]
                 remainder = test_amount
 
-            test_amount = (amount + payment_amount) + (line.debit - line.credit)
+            test_amount = (amount + payment_amount)
+            test_amount += (line.debit - line.credit)
             if currency_obj.is_zero(invoice.currency, test_amount):
                 return ([line.id] + payment_lines, Decimal('0.0'))
             if abs(test_amount) < abs(remainder):
@@ -1532,7 +1534,8 @@ class InvoiceLine(ModelSQL, ModelView):
     def on_change_with_amount(self, vals):
         currency_obj = Pool().get('currency.currency')
         if vals.get('type') == 'line':
-            currency = vals.get('_parent_invoice.currency') or vals.get('currency')
+            currency = (vals.get('_parent_invoice.currency')
+                or vals.get('currency'))
             if isinstance(currency, (int, long)) and currency:
                 currency = currency_obj.browse(currency)
             amount = Decimal(str(vals.get('quantity') or '0.0')) * \
@@ -1585,8 +1588,8 @@ class InvoiceLine(ModelSQL, ModelView):
                 for line2 in line.invoice.lines:
                     if line2.type == 'line':
                         res[line.id] += currency_obj.round(
-                                line2.invoice.currency,
-                                Decimal(str(line2.quantity)) * line2.unit_price)
+                            line2.invoice.currency,
+                            Decimal(str(line2.quantity)) * line2.unit_price)
                     elif line2.type == 'subtotal':
                         if line.id == line2.id:
                             break
@@ -2356,7 +2359,8 @@ class PayInvoice(Wizard):
         invoice = invoice_obj.browse(Transaction().context['active_id'])
         default['currency'] = invoice.currency.id
         default['currency_digits'] = invoice.currency.digits
-        default['amount'] = invoice.amount_to_pay_today or invoice.amount_to_pay
+        default['amount'] = (invoice.amount_to_pay_today
+            or invoice.amount_to_pay)
         default['description'] = invoice.number
         return default
 
@@ -2369,7 +2373,8 @@ class PayInvoice(Wizard):
         with Transaction().set_context(date=session.start.date):
             amount = currency_obj.compute(session.start.currency.id,
                 session.start.amount, invoice.company.currency.id)
-        _, remainder = invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
+        _, remainder = invoice_obj.get_reconcile_lines_for_amount(invoice,
+            amount)
         if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
