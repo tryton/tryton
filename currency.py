@@ -248,4 +248,3 @@ class Rate(ModelSQL, ModelView):
         return True
 
 Rate()
-
