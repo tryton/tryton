@@ -132,7 +132,7 @@ class FiscalYear(ModelSQL, ModelView):
             operator = ['delete', 'unlink_all', 'unlink', 'create', 'write',
                     'add', 'set']
             vals['periods'].sort(
-                    lambda x, y: cmp(operator.index(x[0]), operator.index(y[0])))
+                lambda x, y: cmp(operator.index(x[0]), operator.index(y[0])))
         return super(FiscalYear, self).write(ids, vals)
 
     def delete(self, ids):

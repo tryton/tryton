@@ -29,9 +29,9 @@ class Period(ModelSQL, ModelView):
         ('open', 'Open'),
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
-    post_move_sequence =fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain=[('code', '=', 'account.move')],
-            context={'code': 'account.move'}, states={
+    post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
+        required=True, domain=[('code', '=', 'account.move')],
+        context={'code': 'account.move'}, states={
             'required': False,
             })
     type = fields.Selection([
@@ -174,6 +174,7 @@ class Period(ModelSQL, ModelView):
     def search(self, args, offset=0, limit=None, order=None, count=False,
             query_string=False):
         args = args[:]
+
         def process_args(args):
             i = 0
             while i < len(args):
@@ -187,7 +188,8 @@ class Period(ModelSQL, ModelView):
                         args[i] = ('id', '!=', '0')
                     else:
                         period = self.browse(args[i][2][0])
-                        args[i] = (args[i][0], args[i][1], period[args[i][2][1]])
+                        args[i] = (args[i][0], args[i][1],
+                            period[args[i][2][1]])
                 elif isinstance(args[i], list):
                     process_args(args[i])
                 i += 1

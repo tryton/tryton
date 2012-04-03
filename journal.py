@@ -127,7 +127,7 @@ class Journal(ModelSQL, ModelView):
         # Migration from 1.0 sequence Many2One change into Property
         if table.column_exist('sequence'):
             property_obj = Pool().get('ir.property')
-            cursor.execute('SELECT id, sequence FROM "' + self._table +'"')
+            cursor.execute('SELECT id, sequence FROM "' + self._table + '"')
             with Transaction().set_user(0):
                 for journal_id, sequence_id in cursor.fetchall():
                     property_obj.set('sequence', self._name,

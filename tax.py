@@ -197,18 +197,17 @@ class Code(ModelSQL, ModelView):
         child_ids = self.search([('parent', 'child_of', ids)])
         all_ids = {}.fromkeys(ids + child_ids).keys()
         line_query, _ = move_line_obj.query_get()
-        cursor.execute('SELECT c.id, ' \
-                    'SUM(tl.amount) ' \
-                'FROM account_tax_code c, ' \
-                    'account_tax_line tl, ' \
-                    'account_move_line l ' \
-                'WHERE c.id = tl.code ' \
-                    'AND tl.move_line = l.id ' \
-                    'AND c.id IN (' + \
-                        ','.join(('%s',) * len(all_ids))+ ') ' \
-                    'AND ' + line_query + ' ' \
-                    'AND c.active ' \
-                'GROUP BY c.id', all_ids)
+        cursor.execute('SELECT c.id, SUM(tl.amount) '
+            'FROM account_tax_code c, '
+                'account_tax_line tl, '
+                'account_move_line l '
+            'WHERE c.id = tl.code '
+                'AND tl.move_line = l.id '
+                'AND c.id IN (' +
+                    ','.join(('%s',) * len(all_ids)) + ') '
+                'AND ' + line_query + ' '
+                'AND c.active '
+            'GROUP BY c.id', all_ids)
         code_sum = {}
         for code_id, sum in cursor.fetchall():
             # SQLite uses float for SUM
@@ -386,10 +385,12 @@ class TaxTemplate(ModelSQL, ModelView):
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0))
     credit_note_base_code = fields.Many2One('account.tax.code.template',
             'Credit Note Base Code')
-    credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0))
+    credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
+        digits=(2, 0))
     credit_note_tax_code = fields.Many2One('account.tax.code.template',
             'Credit Note Tax Code')
-    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0))
+    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign',
+        digits=(2, 0))
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
 
@@ -454,8 +455,8 @@ class TaxTemplate(ModelSQL, ModelView):
                 used for tax creation
         :param company_id: the id of the company for which taxes are created
         :param template2tax_code: a dictionary with tax code template id as key
-                and tax code id as value, used to convert tax code template into
-                tax code
+                and tax code id as value, used to convert tax code template
+                into tax code
         :param template2account: a dictionary with account template id as key
                 and account id as value, used to convert account template into
                 account code
@@ -601,7 +602,8 @@ class Tax(ModelSQL, ModelView):
             'required': (Eval('type') != 'none') & Eval('company'),
             },
         depends=['company', 'type'])
-    credit_note_account = fields.Many2One('account.account', 'Credit Note Account',
+    credit_note_account = fields.Many2One('account.account',
+        'Credit Note Account',
         domain=[
             ('company', '=', Eval('company')),
             ('kind', 'not in', ['view', 'receivable', 'payable']),
@@ -638,8 +640,8 @@ class Tax(ModelSQL, ModelView):
         states={
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
-    credit_note_base_sign = fields.Numeric('Credit Note Base Sign', digits=(2, 0),
-        help='Usualy 1 or -1',
+    credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
+        digits=(2, 0), help='Usualy 1 or -1',
         states={
             'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
@@ -649,8 +651,8 @@ class Tax(ModelSQL, ModelView):
         states={
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
-    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign', digits=(2, 0),
-        help='Usualy 1 or -1',
+    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign',
+        digits=(2, 0), help='Usualy 1 or -1',
         states={
             'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
@@ -782,8 +784,8 @@ class Tax(ModelSQL, ModelView):
 
         :param tax: a tax id or the BrowseRecord of the tax
         :param template2tax_code: a dictionary with tax code template id as key
-                and tax code id as value, used to convert tax code template into
-                tax code
+                and tax code id as value, used to convert tax code template
+                into tax code
         :param template2account: a dictionary with account template id as key
                 and account id as value, used to convert account template into
                 account code
@@ -802,53 +804,53 @@ class Tax(ModelSQL, ModelView):
 
         if tax.template:
             vals = template_obj._get_tax_value(tax.template, tax=tax)
-            if tax.template.invoice_account \
-                    and tax.invoice_account.id != \
-                    template2account.get(tax.template.invoice_account.id):
-                vals['invoice_account'] = \
-                        template2account.get(tax.template.invoice_account.id)
-            elif not tax.template.invoice_account \
-                    and tax.invoice_account:
+            if (tax.template.invoice_account
+                    and tax.invoice_account.id != template2account.get(
+                        tax.template.invoice_account.id)):
+                vals['invoice_account'] = template2account.get(
+                    tax.template.invoice_account.id)
+            elif (not tax.template.invoice_account
+                    and tax.invoice_account):
                 vals['invoice_account'] = None
-            if tax.template.credit_note_account \
-                    and tax.credit_note_account.id != \
-                    template2account.get(tax.template.credit_note_account.id):
-                vals['credit_note_account'] = \
-                        template2account.get(tax.template.credit_note_account.id)
-            elif not tax.template.credit_note_account \
-                    and tax.credit_note_account:
+            if (tax.template.credit_note_account
+                    and tax.credit_note_account.id != template2account.get(
+                        tax.template.credit_note_account.id)):
+                vals['credit_note_account'] = template2account.get(
+                    tax.template.credit_note_account.id)
+            elif (not tax.template.credit_note_account
+                    and tax.credit_note_account):
                 vals['credit_note_account'] = None
-            if tax.template.invoice_base_code \
-                    and tax.invoice_base_code.id != \
-                    template2tax_code.get(tax.template.invoice_base_code.id):
-                vals['invoice_base_code'] = \
-                        template2tax_code.get(tax.template.invoice_base_code.id)
-            elif not tax.template.invoice_base_code \
-                    and tax.invoice_base_code:
+            if (tax.template.invoice_base_code
+                    and tax.invoice_base_code.id != template2tax_code.get(
+                        tax.template.invoice_base_code.id)):
+                vals['invoice_base_code'] = template2tax_code.get(
+                    tax.template.invoice_base_code.id)
+            elif (not tax.template.invoice_base_code
+                    and tax.invoice_base_code):
                 vals['invoice_base_code'] = None
-            if tax.template.invoice_tax_code \
-                    and tax.invoice_tax_code.id != \
-                    template2tax_code.get(tax.template.invoice_tax_code.id):
-                vals['invoice_tax_code'] = \
-                        template2tax_code.get(tax.template.invoice_tax_code.id)
-            elif not tax.template.invoice_tax_code \
-                    and tax.invoice_tax_code:
+            if (tax.template.invoice_tax_code
+                    and tax.invoice_tax_code.id != template2tax_code.get(
+                        tax.template.invoice_tax_code.id)):
+                vals['invoice_tax_code'] = template2tax_code.get(
+                    tax.template.invoice_tax_code.id)
+            elif (not tax.template.invoice_tax_code
+                    and tax.invoice_tax_code):
                 vals['invoice_tax_code'] = None
-            if tax.template.credit_note_base_code \
-                    and tax.credit_note_base_code.id != \
-                    template2tax_code.get(tax.template.credit_note_base_code.id):
-                vals['credit_note_base_code'] = \
-                        template2tax_code.get(tax.template.credit_note_base_code.id)
-            elif not tax.template.credit_note_base_code \
-                    and tax.credit_note_base_code:
+            if (tax.template.credit_note_base_code
+                    and tax.credit_note_base_code.id != template2tax_code.get(
+                        tax.template.credit_note_base_code.id)):
+                vals['credit_note_base_code'] = template2tax_code.get(
+                    tax.template.credit_note_base_code.id)
+            elif (not tax.template.credit_note_base_code
+                    and tax.credit_note_base_code):
                 vals['credit_note_base_code'] = None
-            if tax.template.credit_note_tax_code \
-                    and tax.credit_note_tax_code.id != \
-                    template2tax_code.get(tax.template.credit_note_tax_code.id):
-                vals['credit_note_tax_code'] = \
-                        template2tax_code.get(tax.template.credit_note_tax_code.id)
-            elif not tax.template.credit_note_tax_code \
-                    and tax.credit_note_tax_code:
+            if (tax.template.credit_note_tax_code
+                    and tax.credit_note_tax_code.id != template2tax_code.get(
+                        tax.template.credit_note_tax_code.id)):
+                vals['credit_note_tax_code'] = template2tax_code.get(
+                    tax.template.credit_note_tax_code.id)
+            elif (not tax.template.credit_note_tax_code
+                    and tax.credit_note_tax_code):
                 vals['credit_note_tax_code'] = None
 
             if vals:

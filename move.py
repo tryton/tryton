@@ -42,7 +42,7 @@ class Move(ModelSQL, ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
-            depends=_MOVE_DEPENDS, on_change_with=['period', 'journal', 'date'])
+        depends=_MOVE_DEPENDS, on_change_with=['period', 'journal', 'date'])
     post_date = fields.Date('Post Date', readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -313,17 +313,17 @@ class Move(ModelSQL, ModelView):
                             'centralised_line': centralised_line_id,
                             })
                     else:
-                        move_line_obj.write( move.centralised_line.id, {
-                            'debit': debit,
-                            'credit': credit,
-                            'account': account_id,
-                            })
+                        move_line_obj.write(move.centralised_line.id, {
+                                'debit': debit,
+                                'credit': credit,
+                                'account': account_id,
+                                })
                 continue
             if not draft_lines:
                 continue
-            move_line_obj.write( [x.id for x in draft_lines], {
-                'state': 'valid',
-                })
+            move_line_obj.write([x.id for x in draft_lines], {
+                    'state': 'valid',
+                    })
         return
 
     @ModelView.button
@@ -733,8 +733,9 @@ class Line(ModelSQL, ModelView):
                 if name == 'currency_digits':
                     res[name][line.id] = line.account.currency_digits
                 elif name == 'second_currency_digits':
-                    if line.account.second_currency:
-                        res[name][line.id] = line.account.second_currency.digits
+                    second_currency = line.account.second_currency
+                    if second_currency:
+                        res[name][line.id] = second_currency.digits
         return res
 
     def on_change_debit(self, vals):
@@ -865,7 +866,7 @@ class Line(ModelSQL, ModelView):
             # SQLite uses float for SUM
             if not isinstance(amount, Decimal):
                 amount = Decimal(str(amount))
-            if not currency_obj.is_zero( party.account_receivable.currency,
+            if not currency_obj.is_zero(party.account_receivable.currency,
                     amount):
                 if amount > Decimal('0.0'):
                     res['credit'] = currency_obj.round(
@@ -880,7 +881,7 @@ class Line(ModelSQL, ModelView):
             else:
                 cursor.execute(query, (party.id, party.account_payable.id))
                 amount = cursor.fetchone()[0]
-                if not currency_obj.is_zero( party.account_payable.currency,
+                if not currency_obj.is_zero(party.account_payable.currency,
                         amount):
                     if amount > Decimal('0.0'):
                         res['credit'] = currency_obj.round(
@@ -1019,42 +1020,42 @@ class Line(ModelSQL, ModelView):
             ids = ','.join(
                     str(int(x)) for x in Transaction().context['periods'])
             if Transaction().context.get('posted'):
-                return (obj + '.active ' \
-                        'AND ' + obj + '.state != \'draft\' ' \
-                        'AND ' + obj + '.move IN (' \
-                            'SELECT id FROM account_move ' \
-                                'WHERE period IN (' + ids + ') ' \
-                                    'AND state = \'posted\' ' \
-                            ')', [])
+                return (obj + '.active '
+                    'AND ' + obj + '.state != \'draft\' '
+                    'AND ' + obj + '.move IN ('
+                        'SELECT id FROM account_move '
+                        'WHERE period IN (' + ids + ') '
+                            'AND state = \'posted\' '
+                        ')', [])
             else:
-                return (obj + '.active ' \
-                        'AND ' + obj + '.state != \'draft\' ' \
-                        'AND ' + obj + '.move IN (' \
-                            'SELECT id FROM account_move ' \
-                                'WHERE period IN (' + ids + ')' \
-                            ')', [])
+                return (obj + '.active '
+                    'AND ' + obj + '.state != \'draft\' '
+                    'AND ' + obj + '.move IN ('
+                        'SELECT id FROM account_move '
+                        'WHERE period IN (' + ids + ')'
+                        ')', [])
         else:
             if Transaction().context.get('posted'):
-                return (obj + '.active ' \
-                        'AND ' + obj + '.state != \'draft\' ' \
-                        'AND ' + obj + '.move IN (' \
-                            'SELECT id FROM account_move ' \
-                                'WHERE period IN (' \
-                                    'SELECT id FROM account_period ' \
-                                    'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
-                                    ') ' \
-                                    'AND state = \'posted\' ' \
-                            ')', fiscalyear_ids)
+                return (obj + '.active '
+                    'AND ' + obj + '.state != \'draft\' '
+                    'AND ' + obj + '.move IN ('
+                        'SELECT id FROM account_move '
+                        'WHERE period IN ('
+                            'SELECT id FROM account_period '
+                            'WHERE fiscalyear IN (' + fiscalyear_clause + ')'
+                            ') '
+                            'AND state = \'posted\' '
+                        ')', fiscalyear_ids)
             else:
-                return (obj + '.active ' \
-                        'AND ' + obj + '.state != \'draft\' ' \
-                        'AND ' + obj + '.move IN (' \
-                            'SELECT id FROM account_move ' \
-                                'WHERE period IN (' \
-                                    'SELECT id FROM account_period ' \
-                                    'WHERE fiscalyear IN (' + fiscalyear_clause + ')' \
-                                ')' \
-                            ')', fiscalyear_ids)
+                return (obj + '.active '
+                    'AND ' + obj + '.state != \'draft\' '
+                    'AND ' + obj + '.move IN ('
+                        'SELECT id FROM account_move '
+                        'WHERE period IN ('
+                            'SELECT id FROM account_period '
+                            'WHERE fiscalyear IN (' + fiscalyear_clause + ')'
+                            ')'
+                        ')', fiscalyear_ids)
 
     def on_write(self, ids):
         lines = self.browse(ids)
@@ -1230,7 +1231,8 @@ class Line(ModelSQL, ModelView):
                     attrs.append('required="1"')
                 else:
                     attrs.append('required="0"')
-                xml += '<field name="%s" %s/>\n' % (column.field.name, ' '.join(attrs))
+                xml += ('<field name="%s" %s/>\n'
+                    % (column.field.name, ' '.join(attrs)))
                 for depend in getattr(self, column.field.name).depends:
                     fields.add(depend)
             fields.add('state')
@@ -1357,7 +1359,8 @@ class OpenJournal(Wizard):
     open_ = StateAction('account.act_move_line_form')
 
     def transition_start(self, session):
-        if (Transaction().context.get('active_model', '') == 'account.journal.period'
+        if (Transaction().context.get('active_model', '')
+                == 'account.journal.period'
                 and Transaction().context.get('active_id')):
             return 'open_'
         return 'ask'

@@ -3,7 +3,7 @@
 from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval
 
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
@@ -14,16 +14,16 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     default_account_receivable = fields.Function(fields.Many2One(
         'account.account', 'Default Account Receivable',
         domain=[
-            ('kind', '=', 'receivable'),
-            ('company', '=', Eval('context', {}).get('company')),
-        ]),
+                ('kind', '=', 'receivable'),
+                ('company', '=', Eval('context', {}).get('company')),
+                ]),
         'get_account', setter='set_account')
     default_account_payable = fields.Function(fields.Many2One(
         'account.account', 'Default Account Payable',
         domain=[
-            ('kind', '=', 'payable'),
-            ('company', '=', Eval('context', {}).get('company')),
-        ]), 
+                ('kind', '=', 'payable'),
+                ('company', '=', Eval('context', {}).get('company')),
+                ]),
         'get_account', setter='set_account')
 
     def get_account(self, ids, name):

@@ -4,7 +4,8 @@ from decimal import Decimal
 import datetime
 import operator
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateView, StateAction, StateTransition, Button
+from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
+    Button
 from trytond.report import Report
 from trytond.tools import reduce_ids
 from trytond.pyson import Eval, PYSONEncoder, Date
@@ -20,7 +21,8 @@ class TypeTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One('account.account.type.template', 'Parent',
             ondelete="RESTRICT")
-    childs = fields.One2Many('account.account.type.template', 'parent', 'Children')
+    childs = fields.One2Many('account.account.type.template', 'parent',
+        'Children')
     sequence = fields.Integer('Sequence', required=True)
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
@@ -52,6 +54,7 @@ class TypeTemplate(ModelSQL, ModelView):
         if not ids:
             return {}
         res = {}
+
         def _name(type):
             if type.parent:
                 return _name(type.parent) + '\\' + type.name
@@ -240,6 +243,7 @@ class Type(ModelSQL, ModelView):
         if not ids:
             return {}
         res = {}
+
         def _name(type):
             if type.parent:
                 return _name(type.parent) + '\\' + type.name
@@ -529,9 +533,9 @@ class Account(ModelSQL, ModelView):
         'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
-    second_currency = fields.Many2One('currency.currency', 'Secondary currency',
-            help='Force all moves for this account \n' \
-                    'to have this secondary currency.', ondelete="RESTRICT")
+    second_currency = fields.Many2One('currency.currency',
+        'Secondary Currency', help='Force all moves for this account \n' \
+            'to have this secondary currency.', ondelete="RESTRICT")
     type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
         states={
             'invisible': Eval('kind') == 'view',
@@ -1273,13 +1277,14 @@ class GeneralLegder(Report):
             for line in lines:
                 balance += line.debit - line.credit
                 res[account_id].append({
-                    'date': line.date,
-                    'debit': line.debit,
-                    'credit': line.credit,
-                    'balance': balance,
-                    'name': line.name,
-                    'state': state_selections.get(line.move.state, line.move.state),
-                    })
+                        'date': line.date,
+                        'debit': line.debit,
+                        'credit': line.credit,
+                        'balance': balance,
+                        'name': line.name,
+                        'state': state_selections.get(line.move.state,
+                            line.move.state),
+                        })
         return res
 
 GeneralLegder()
@@ -1501,7 +1506,7 @@ class OpenBalanceSheet(Wizard):
                 'posted': session.start.posted,
                 'company': company.id,
                 })
-        action['name'] += ' - '+ date + ' - ' + company.name
+        action['name'] += ' - ' + date + ' - ' + company.name
         return action, {}
 
     def transition_open_(self, session):
@@ -1965,7 +1970,6 @@ class OpenThirdPartyBalanceStart(ModelView):
             required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-
     def default_fiscalyear(self):
         fiscalyear_obj = Pool().get('account.fiscalyear')
         fiscalyear_id = fiscalyear_obj.find(
@@ -2186,35 +2190,35 @@ class AgedBalance(Report):
             }[data['balance_type']]
 
         res = {}
-        for position,term in enumerate(terms):
+        for position, term in enumerate(terms):
             if position == 0:
                 term_query = '(l.maturity_date <= %s '\
                     'OR l.maturity_date IS NULL) '
                 term_args = (date_obj.today() +
-                        datetime.timedelta(days=term*coef),)
+                        datetime.timedelta(days=term * coef),)
             else:
                 term_query = '(l.maturity_date <= %s '\
                     'AND l.maturity_date > %s) '
                 term_args = (
-                    date_obj.today() + datetime.timedelta(days=term*coef),
+                    date_obj.today() + datetime.timedelta(days=term * coef),
                     date_obj.today()
-                    + datetime.timedelta(days=terms[position-1]*coef),
+                    + datetime.timedelta(days=terms[position - 1] * coef),
                     )
 
-            cursor.execute('SELECT l.party, SUM(l.debit) - SUM(l.credit) ' \
-                    'FROM account_move_line l ' \
-                        'JOIN account_move m ON (l.move = m.id) '
-                        'JOIN account_account a ON (l.account = a.id) '
-                    'WHERE l.party IS NOT NULL '\
-                        'AND a.active ' \
-                        'AND a.kind IN ('+ ','.join(('%s',) * len(kind)) + ") "\
-                        'AND l.reconciliation IS NULL ' \
-                        'AND a.company = %s ' \
-                        'AND '+ term_query+\
-                        'AND ' + line_query + ' ' \
-                    'GROUP BY l.party ' \
+            cursor.execute('SELECT l.party, SUM(l.debit) - SUM(l.credit) '
+                'FROM account_move_line l '
+                'JOIN account_move m ON (l.move = m.id) '
+                'JOIN account_account a ON (l.account = a.id) '
+                'WHERE l.party IS NOT NULL '
+                    'AND a.active '
+                    'AND a.kind IN (' + ','.join(('%s',) * len(kind)) + ") "
+                    'AND l.reconciliation IS NULL '
+                    'AND a.company = %s '
+                    'AND ' + term_query + ' '
+                    'AND ' + line_query + ' '
+                    'GROUP BY l.party '
                     'HAVING (SUM(l.debit) - SUM(l.credit) != 0)',
-                    kind + (data['company'],) + term_args)
+                kind + (data['company'],) + term_args)
             for party, solde in cursor.fetchall():
                 if party in res:
                     res[party][position] = solde
@@ -2229,16 +2233,17 @@ class AgedBalance(Report):
         localcontext['main_title'] = data['balance_type']
         localcontext['unit'] = data['unit']
         for i in range(3):
-            localcontext['total' + str(i)] = sum((v[i] for v in res.itervalues()))
+            localcontext['total' + str(i)] = sum(
+                (v[i] for v in res.itervalues()))
             localcontext['term' + str(i)] = terms[i]
 
         localcontext['company'] = company
-        localcontext['parties']= [{
-            'name': p.rec_name,
-            'amount0': res[p.id][0],
-            'amount1': res[p.id][1],
-            'amount2': res[p.id][2],
-            } for p in parties]
+        localcontext['parties'] = [{
+                'name': p.rec_name,
+                'amount0': res[p.id][0],
+                'amount1': res[p.id][1],
+                'amount2': res[p.id][2],
+                } for p in parties]
 
         return super(AgedBalance, self).parse(report, objects, data,
             localcontext)

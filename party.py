@@ -93,21 +93,20 @@ class Party(ModelSQL, ModelView):
                         'OR l.maturity_date IS NULL) '
                 today_value = [date_obj.today()]
 
-            cursor.execute('SELECT l.party, ' \
-                        'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                    'FROM account_move_line AS l, ' \
-                        'account_account AS a ' \
-                    'WHERE a.id = l.account ' \
-                        'AND a.active ' \
-                        'AND a.kind = %s ' \
-                        'AND l.party IN ' \
-                            '(' + ','.join(('%s',) * len(ids)) + ') ' \
-                        'AND l.reconciliation IS NULL ' \
-                        'AND ' + line_query + ' ' \
-                        + today_query + \
-                        'AND a.company = %s ' \
-                    'GROUP BY l.party',
-                    [code,] + ids + today_value + [company_id])
+            cursor.execute('SELECT l.party, '
+                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
+                'FROM account_move_line AS l, account_account AS a '
+                'WHERE a.id = l.account '
+                    'AND a.active '
+                    'AND a.kind = %s '
+                    'AND l.party IN '
+                        '(' + ','.join(('%s',) * len(ids)) + ') '
+                    'AND l.reconciliation IS NULL '
+                    'AND ' + line_query + ' '
+                    + today_query +
+                    'AND a.company = %s '
+                'GROUP BY l.party',
+                [code] + ids + today_value + [company_id])
             for party_id, sum in cursor.fetchall():
                 # SQLite uses float for SUM
                 if not isinstance(sum, Decimal):
@@ -157,20 +156,19 @@ class Party(ModelSQL, ModelView):
         line_query, _ = move_line_obj.query_get()
 
         cursor.execute('SELECT l.party '
-                'FROM account_move_line AS l, '
-                    'account_account AS a '
-                'WHERE a.id = l.account '
-                    'AND a.active '
-                    'AND a.kind = %s '
-                    'AND l.party IS NOT NULL '
-                    'AND l.reconciliation IS NULL '
-                    'AND ' + line_query + ' ' \
-                    + today_query + \
-                    'AND a.company = %s '
-                'GROUP BY l.party '
-                'HAVING (SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                        + clause[1] + ' %s)',
-                    [code] + today_value + [company_id] + [Decimal(clause[2])])
+            'FROM account_move_line AS l, account_account AS a '
+            'WHERE a.id = l.account '
+                'AND a.active '
+                'AND a.kind = %s '
+                'AND l.party IS NOT NULL '
+                'AND l.reconciliation IS NULL '
+                'AND ' + line_query + ' '
+                + today_query +
+                'AND a.company = %s '
+            'GROUP BY l.party '
+            'HAVING (SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
+                + clause[1] + ' %s)',
+            [code] + today_value + [company_id] + [Decimal(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
 Party()
