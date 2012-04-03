@@ -130,8 +130,9 @@ class Sale(Workflow, ModelSQL, ModelView):
             'sale', 'invoice', 'Invoices', readonly=True)
     invoices_ignored = fields.Many2Many('sale.sale-ignored-account.invoice',
             'sale', 'invoice', 'Ignored Invoices', readonly=True)
-    invoices_recreated = fields.Many2Many('sale.sale-recreated-account.invoice',
-            'sale', 'invoice', 'Recreated Invoices', readonly=True)
+    invoices_recreated = fields.Many2Many(
+        'sale.sale-recreated-account.invoice', 'sale', 'invoice',
+        'Recreated Invoices', readonly=True)
     shipment_method = fields.Selection([
             ('manual', 'Manual'),
             ('order', 'On Order Processed'),
@@ -384,7 +385,6 @@ class Sale(Workflow, ModelSQL, ModelView):
                 res[sale.id] = CONFIG['language']
         return res
 
-
     def on_change_lines(self, vals):
         pool = Pool()
         currency_obj = pool.get('currency.currency')
@@ -413,7 +413,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                             line.get('unit_price', Decimal('0.0')),
                             line.get('quantity', 0.0))
                 for tax in tax_list:
-                    key, val = invoice_obj._compute_tax(tax,'out_invoice')
+                    key, val = invoice_obj._compute_tax(tax, 'out_invoice')
                     if not key in taxes:
                         taxes[key] = val['amount']
                     else:
@@ -748,7 +748,6 @@ class Sale(Workflow, ModelSQL, ModelView):
         if not invoice_lines:
             return
 
-
         vals = self._get_invoice_sale(sale, invoice_type)
         with Transaction().set_user(0, set_context=True):
             invoice_id = invoice_obj.create(vals)
@@ -919,8 +918,8 @@ class SaleInvoice(ModelSQL):
     _name = 'sale.sale-account.invoice'
     _table = 'sale_invoices_rel'
     _description = __doc__
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True,
-            required=True)
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
+        select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
 
@@ -932,8 +931,8 @@ class SaleIgnoredInvoice(ModelSQL):
     _name = 'sale.sale-ignored-account.invoice'
     _table = 'sale_invoice_ignored_rel'
     _description = __doc__
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True,
-            required=True)
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
+        select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
 
@@ -945,8 +944,8 @@ class SaleRecreatedInvoice(ModelSQL):
     _name = 'sale.sale-recreated-account.invoice'
     _table = 'sale_invoice_recreated_rel'
     _description = __doc__
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE', select=True,
-            required=True)
+    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
+        select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
 
@@ -1002,7 +1001,7 @@ class SaleLine(ModelSQL, ModelView):
         on_change=['product', 'unit', 'quantity', 'description',
             '_parent_sale.party', '_parent_sale.currency'],
         context={
-            'locations': If(Bool(Eval('_parent_sale', {}).get( 'warehouse')),
+            'locations': If(Bool(Eval('_parent_sale', {}).get('warehouse')),
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
             'salable': True,
@@ -1185,7 +1184,7 @@ class SaleLine(ModelSQL, ModelView):
         product = product_obj.browse(vals['product'])
 
         with Transaction().set_context(
-                self._get_context_sale_price(product,vals)):
+                self._get_context_sale_price(product, vals)):
             res['unit_price'] = product_obj.get_sale_price([product.id],
                     vals.get('quantity', 0))[product.id]
             if res['unit_price']:
@@ -1424,7 +1423,6 @@ class SaleLine(ModelSQL, ModelView):
         :return: a dictionary of values of move
         '''
         uom_obj = Pool().get('product.uom')
-        product_obj = Pool().get('product.product')
 
         res = {}
         if line.type != 'line':
@@ -1866,7 +1864,8 @@ class Invoice(ModelSQL, ModelView):
 
         sales = sale_obj.browse(sale_ids)
 
-        recreated_ids = tuple(i.id for p in sales for i in p.invoices_recreated)
+        recreated_ids = tuple(i.id for p in sales
+            for i in p.invoices_recreated)
         ignored_ids = tuple(i.id for p in sales for i in p.invoices_ignored)
 
         res = {}.fromkeys(ids, '')
@@ -1997,10 +1996,10 @@ class HandleShipmentException(Wizard):
                 else:
                     moves_ignored.append(move.id)
 
-            sale_line_obj.write(line.id,{
-                'moves_ignored': [('add', moves_ignored)],
-                'moves_recreated': [('add', moves_recreated)],
-                })
+            sale_line_obj.write(line.id, {
+                    'moves_ignored': [('add', moves_ignored)],
+                    'moves_recreated': [('add', moves_recreated)],
+                    })
         sale_obj.process([sale.id])
         return 'end'
 
@@ -2069,10 +2068,10 @@ class HandleInvoiceException(Wizard):
             else:
                 invoices_ignored.append(invoice.id)
 
-        sale_obj.write(sale.id,{
-            'invoices_ignored': [('add', invoices_ignored)],
-            'invoices_recreated': [('add', invoices_recreated)],
-             })
+        sale_obj.write(sale.id, {
+                'invoices_ignored': [('add', invoices_ignored)],
+                'invoices_recreated': [('add', invoices_recreated)],
+                })
         sale_obj.process([sale.id])
         return 'end'
 

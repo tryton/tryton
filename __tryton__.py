@@ -51,8 +51,8 @@ With the possibilities:
     - Seguir els estats de facturació i enviament des de la comanda de venda.
     - Definir el mètode de facturació:
         - Manual
-	- A la confirmació de la comanda
-	- A l'enviar-la
+    - A la confirmació de la comanda
+    - A l'enviar-la
     - Definir el mètode d'enviament:
         - Manual
         - A la confirmació de la comanda
@@ -117,7 +117,7 @@ Avec la possibilité:
         - Sur confirmation de la commande
         - Au paiement de la facture
 ''',
-	'description_nl_NL': '''Verkoopmodule.
+    'description_nl_NL': '''Verkoopmodule.
 Voegt verkoopinformatie toe aan producten.
 Zet de catalogusprijs als verkoopprijs.
 
