@@ -90,7 +90,8 @@ class Move(ModelSQL, ModelView):
 
         for move in moves:
             assert move.product == product, 'wrong product'
-        assert type_.startswith('in_') or type_.startswith('out_'), 'wrong type'
+        assert type_.startswith('in_') or type_.startswith('out_'), \
+            'wrong type'
 
         total_qty = uom_obj.compute_qty(uom, quantity, product.default_uom,
                 round=False)

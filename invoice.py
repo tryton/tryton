@@ -13,7 +13,8 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         Return account move for anglo-saxon stock accounting
         '''
-        assert type_.startswith('in_') or type_.startswith('out_'), 'wrong type'
+        assert type_.startswith('in_') or type_.startswith('out_'), \
+            'wrong type'
 
         result = []
         move_line = {}
