@@ -178,13 +178,13 @@ class Sale(Model):
             lines.setdefault('add', []).append(cost_line)
         return result
 
-    def create_shipment(self, sale):
+    def create_shipment(self, sale, shipment_type):
         pool = Pool()
         shipment_obj = pool.get('stock.shipment.out')
         carrier_obj = pool.get('carrier')
 
-        shipment_ids = super(Sale, self).create_shipment(sale)
-        if shipment_ids and sale.carrier:
+        shipment_ids = super(Sale, self).create_shipment(sale, shipment_type)
+        if shipment_type == 'out' and shipment_ids and sale.carrier:
             shipments = shipment_obj.browse(shipment_ids)
             for shipment in shipments:
                 with Transaction().set_context(
@@ -200,22 +200,24 @@ class Sale(Model):
                     })
         return shipment_ids
 
-    def _get_invoice_line_sale_line(self, sale):
-        result = super(Sale, self)._get_invoice_line_sale_line(sale)
+    def _get_invoice_line_sale_line(self, sale, invoice_type):
+        result = super(Sale, self)._get_invoice_line_sale_line(sale,
+            invoice_type)
         if sale.shipment_cost_method == 'shipment':
             for line in sale.lines:
                 if line.id in result and line.shipment_cost:
                     del result[line.id]
         return result
 
-    def create_invoice(self, sale):
+    def create_invoice(self, sale, invoice_type):
         pool = Pool()
         invoice_obj = pool.get('account.invoice')
         invoice_line_obj = pool.get('account.invoice.line')
         shipment_obj = pool.get('stock.shipment.out')
 
-        invoice_id = super(Sale, self).create_invoice(sale)
+        invoice_id = super(Sale, self).create_invoice(sale, invoice_type)
         if (invoice_id
+                and invoice_type == 'out_invoice'
                 and sale.shipment_cost_method == 'shipment'):
             with Transaction().set_user(0, set_context=True):
                 invoice = invoice_obj.browse(invoice_id)
