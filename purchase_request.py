@@ -417,8 +417,13 @@ class PurchaseRequest(ModelSQL, ModelView):
         res_dates = {}
         res_qties = {}
 
-        min_quantities = dict((x, order_points.get(x, 0.0))
-            for x in product_ids)
+        min_quantities = {}
+        for product_id in product_ids:
+            order_point = order_points.get((location_id, product_id))
+            if order_point:
+                min_quantities[product_id] = order_point.min_quantity
+            else:
+                min_quantities[product_id] = 0.0
 
         current_date = min_date
         current_qties = min_date_qties.copy()
