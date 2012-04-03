@@ -1,15 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 {
-    "name" : "Stock Supply with Week Days",
-    "name_bg_BG" : "Доставка на налиност с дни от седмицата",
-    'name_ca_ES' : 'Estoc per dies de la setmana',
-    "name_de_DE" : "Lagerverwaltung Bestellwesen nach Wochentagen",
-    "name_es_CO" : "Existencias por días de la semana",
-    "name_es_ES" : "Suministro de existencias por días de la semana",
-    "name_fr_FR" : "Approvisionnement par jours de semaine",
-    "version" : "2.3.0",
-    "author" : "B2CK",
+    "name": "Stock Supply with Week Days",
+    "name_bg_BG": "Доставка на налиност с дни от седмицата",
+    'name_ca_ES': 'Estoc per dies de la setmana',
+    "name_de_DE": "Lagerverwaltung Bestellwesen nach Wochentagen",
+    "name_es_CO": "Existencias por días de la semana",
+    "name_es_ES": "Suministro de existencias por días de la semana",
+    "name_fr_FR": "Approvisionnement par jours de semaine",
+    "version": "2.3.0",
+    "author": "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     "description": '''Define the delivery days of the week by suppliers.
@@ -18,7 +18,7 @@ Impact supply dates computations.
     "description_bg_BG": '''Задаване на дните за доставка в седмицата по доставчици
     - Оказва влияние върху изчисляването на датите
  ''',
-    'description_ca_ES': '''Defineix els dies de la setmana d'entrega dels 
+    'description_ca_ES': '''Defineix els dies de la setmana d'entrega dels
 proveïdors. Afecta el càlcul de dates de subministre.
 ''',
     "description_de_DE": '''Bestellwesen nach Wochentagen
@@ -34,11 +34,11 @@ Afecta al cálculo de las fechas de suministro.
     "description_fr_FR": '''Défini les jours de livraisons par fournisseurs.
 Impacte les calculs de dates de livraisons.
  ''',
-    "depends" : [
+    "depends": [
         "ir",
         "purchase",
     ],
-    "xml" : [
+    "xml": [
         "purchase.xml",
     ],
     'translation': [

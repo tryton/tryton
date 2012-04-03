@@ -6,8 +6,8 @@ from trytond.model import ModelView, ModelSQL, fields
 
 class ProductSupplier(ModelSQL, ModelView):
     _name = 'purchase.product_supplier'
-    weekdays = fields.One2Many('purchase.product_supplier.day', 'product_supplier',
-            'Week Days')
+    weekdays = fields.One2Many('purchase.product_supplier.day',
+        'product_supplier', 'Week Days')
 
     def compute_supply_date(self, product_supplier, date=None):
         date = super(ProductSupplier, self).compute_supply_date(
