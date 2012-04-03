@@ -130,7 +130,8 @@ class User(ModelSQL, ModelView):
                     return user_id
                 elif connection.auth_create_user:
                     user_id = self.create({
-                        'name': attrs.get(str(connection.auth_uid), [login])[0],
+                        'name': attrs.get(str(connection.auth_uid),
+                                [login])[0],
                         'login': login,
                         })
                     return user_id

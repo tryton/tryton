@@ -29,4 +29,3 @@ class Connection(ModelSingleton, ModelSQL, ModelView):
         return False
 
 Connection()
-

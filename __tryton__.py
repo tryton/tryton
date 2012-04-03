@@ -2,9 +2,9 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'LDAP Authentication',
-    'name_bg_BG' : 'LDAP Проверка',
+    'name_bg_BG': 'LDAP Проверка',
     'name_ca_ES': 'Autenticació LDAP',
-    'name_de_DE' : 'LDAP Authentifizierung',
+    'name_de_DE': 'LDAP Authentifizierung',
     'name_es_CO': 'Autentificación LDAP',
     'name_es_ES': 'Autentificación LDAP',
     'name_fr_FR': 'Authentification LDAP',
@@ -15,7 +15,7 @@
     'description': '''Authenticate users with LDAP server.''',
     'description_bg_BG': 'Проверка на потребители чрез LDAP сървър.',
     'description_ca_ES': '''Autentica els usuaris contra un servidor LDAP.''',
-    'description_de_DE' : '''Authentifizierung über LDAP
+    'description_de_DE': '''Authentifizierung über LDAP
     - Fügt Unterstützung für Authentifizierung über einen LDAP-Server hinzu.
 ''',
     'description_es_CO': 'Autentica usuarios frente a un servidor LDAP.',
