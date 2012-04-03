@@ -65,8 +65,10 @@ class Statement(Workflow, ModelSQL, ModelView):
         super(Statement, self).__init__()
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
-            'wrong_end_balance': 'End Balance must be %s!',
-            })
+                'wrong_end_balance': 'End Balance must be %s!',
+                'delete_cancel': 'Statement "%s" must be cancelled before ' \
+                    'deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'validated'),
                 ('validated', 'posted'),
@@ -272,6 +274,16 @@ class Statement(Workflow, ModelSQL, ModelView):
                     invoice_id2amount_to_pay[line['invoice']] = \
                             amount_to_pay - abs(line['amount'])
         return res
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for statement in self.browse(ids):
+            if statement.state != 'cancel':
+                self.raise_user_error('delete_cancel', statement.rec_name)
+        return super(Statement, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('draft')
