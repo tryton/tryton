@@ -114,11 +114,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         super(ShipmentIn, self).__init__()
         self._order[0] = ('id', 'DESC')
         self._error_messages.update({
-            'incoming_move_input_dest': 'Incoming Moves must ' \
+                'incoming_move_input_dest': 'Incoming Moves must ' \
                     'have the warehouse input location as destination location!',
-            'inventory_move_input_source': 'Inventory Moves must ' \
+                'inventory_move_input_source': 'Inventory Moves must ' \
                     'have the warehouse input location as source location!',
-            })
+                'delete_cancel': 'Supplier Shipment "%s" must be cancelled '\
+                    'before deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -373,6 +375,16 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                         'inventory_moves': [('create', vals)],
                         })
 
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for shipment in self.browse(ids):
+            if shipment.state != 'cancel':
+                self.raise_user_error('delete_cancel', shipment.rec_name)
+        return super(ShipmentIn, self).delete(ids)
+
     @ModelView.button
     @Workflow.transition('cancel')
     def cancel(self, ids):
@@ -483,6 +495,10 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     def __init__(self):
         super(ShipmentInReturn, self).__init__()
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+                'delete_cancel': 'Supplier Return Shipment "%s" must be '\
+                    'cancelled before deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -596,6 +612,16 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         result = super(ShipmentInReturn, self).write(ids, values)
         self._set_move_planned_date(ids)
         return result
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for shipment in self.browse(ids):
+            if shipment.state != 'cancel':
+                self.raise_user_error('delete_cancel', shipment.rec_name)
+        return super(ShipmentInReturn, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('draft')
@@ -790,6 +816,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def __init__(self):
         super(ShipmentOut, self).__init__()
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+                'delete_cancel': 'Customer Shipment "%s" must be cancelled '\
+                    'before deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -1183,6 +1213,15 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         default['outgoing_moves']= None
         return super(ShipmentOut, self).copy(ids, default=default)
 
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for shipment in self.browse(ids):
+            if shipment.state != 'cancel':
+                self.raise_user_error('delete_cancel', shipment.rec_name)
+        return super(ShipmentOut, self).delete(ids)
 
     def _location_amount(self, target_uom, qty_uom, uom_index):
         """
@@ -1313,6 +1352,10 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     def __init__(self):
         super(ShipmentOutReturn, self).__init__()
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+                'delete_cancel': 'Customer Return Shipment "%s" must be '\
+                    'cancelled before deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -1535,6 +1578,15 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         default['incoming_moves']= None
         return super(ShipmentOutReturn, self).copy(ids, default=default)
 
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cance before delete
+        self.cancel(ids)
+        for shipment in self.browse(ids):
+            if shipment.state != 'cancel':
+                self.raise_user_error('delete_cancel', shipment.rec_name)
+        return super(ShipmentOutReturn, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('draft')
@@ -1731,6 +1783,10 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def __init__(self):
         super(ShipmentInternal, self).__init__()
         self._order[0] = ('id', 'DESC')
+        self._error_messages.update({
+                'delete_cancel': 'Internal Shipment "%s" must be cancelled '\
+                    'before deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'waiting'),
@@ -1822,6 +1878,16 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         values['code'] = sequence_obj.get_id(
                 config.shipment_internal_sequence.id)
         return super(ShipmentInternal, self).create(values)
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for shipment in self.browse(ids):
+            if shipment.state != 'cancel':
+                self.raise_user_error('delete_cancel', shipment.rec_name)
+        return super(ShipmentInternal, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('draft')

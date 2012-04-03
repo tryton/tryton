@@ -51,6 +51,10 @@ class Inventory(Workflow, ModelSQL, ModelView):
     def __init__(self):
         super(Inventory, self).__init__()
         self._order.insert(0, ('date', 'DESC'))
+        self._error_messages.update({
+                'delete_cancel': 'Inventory "%s" must be cancelled before ' \
+                    'deletion!',
+                })
         self._transitions |= set((
                 ('draft', 'done'),
                 ('draft', 'cancel'),
@@ -90,6 +94,16 @@ class Inventory(Workflow, ModelSQL, ModelView):
         location_ids = location_obj.search(self.lost_found.domain)
         if len(location_ids) == 1:
             return location_ids[0]
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for inventory in self.browse(ids):
+            if inventory.state != 'cancel':
+                self.raise_user_error('delete_cancel', inventory.rec_name)
+        return super(Inventory, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('done')
