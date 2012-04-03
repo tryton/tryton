@@ -29,6 +29,7 @@ class TimesheetLine(ModelSQL, ModelView):
 
 TimesheetLine()
 
+
 class Work(ModelSQL, ModelView):
     'Work Effort'
     _name = 'project.work'
@@ -99,7 +100,8 @@ class Work(ModelSQL, ModelView):
                 leafs.add(work.id)
 
             if work.type == 'task' and work.list_price:
-                res[work.id] = work.list_price * Decimal(str(work.total_effort))
+                res[work.id] = (work.list_price
+                    * Decimal(str(work.total_effort)))
             else:
                 res[work.id] = Decimal('0')
 

@@ -116,15 +116,15 @@ class EmployeeCostPrice(ModelSQL, ModelView):
 
     def delete(self, ids):
         Pool().get('company.employee').clear()
-        return super(EmployeeCostPrice , self).delete(ids)
+        return super(EmployeeCostPrice, self).delete(ids)
 
     def create(self, vals):
         Pool().get('company.employee').clear()
-        return super(EmployeeCostPrice , self).create(vals)
+        return super(EmployeeCostPrice, self).create(vals)
 
     def write(self, ids, vals):
         Pool().get('company.employee').clear()
-        return super(EmployeeCostPrice , self).write(ids, vals)
+        return super(EmployeeCostPrice, self).write(ids, vals)
 
     def get_currency_digits(self, ids, name):
         res = {}

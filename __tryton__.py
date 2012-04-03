@@ -27,14 +27,14 @@ Define allowed services for each employees.
     - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
     - Ermöglicht die Definition von Dienstleistungen, die für einen Mitarbeiter verwendet werden können.
 ''',
-    'description_es_CO':''' - Se añade el producto a las tarjetas de registro de tiempos.
+    'description_es_CO': ''' - Se añade el producto a las tarjetas de registro de tiempos.
  - Se define por empleado los servicios que tiene autorizados.
 ''',
-    'description_es_ES':'''Beneficio de proyecto:
+    'description_es_ES': '''Beneficio de proyecto:
     - Añade productos a las líneas de los partes de trabajo.
     - Define servicios permitidos por cada empleado.
 ''',
-    'description_fr_FR':'''Ajoute le produit sur la ligne de présence.
+    'description_fr_FR': '''Ajoute le produit sur la ligne de présence.
 Défini par employé quels services sont autorisés.
 ''',
     'depends': [
