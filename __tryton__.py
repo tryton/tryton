@@ -14,7 +14,7 @@
     'website': 'http://www.tryton.org/',
     'description': '''
 ''',
-    'description_ca_ES': '''Afegeix les hores de treball al dia, setmana, mes i 
+    'description_ca_ES': '''Afegeix les hores de treball al dia, setmana, mes i
 any per companyia.
 ''',
     'depends': [
