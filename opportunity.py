@@ -5,7 +5,7 @@ import datetime
 import time
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.backend import FIELDS, TableHandler
+from trytond.backend import FIELDS
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -339,7 +339,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         on_change_with=['unit']), 'get_unit_digits')
     sale_line = fields.Many2One('sale.line', 'Sale Line', readonly=True,
         states={
-            'invisible': (Eval('_parent_opportunity', {}).get( 'state')
+            'invisible': (Eval('_parent_opportunity', {}).get('state')
                 != 'converted'),
             })
 
@@ -435,14 +435,13 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
     }, depends=['state'])
     description = fields.Char('Description')
     comment = fields.Text('Comment')
-    lines = fields.Function(fields.One2Many('sale.opportunity.line', None, 'Lines',
-            datetime_field='date'), 'get_lines')
+    lines = fields.Function(fields.One2Many('sale.opportunity.line', None,
+            'Lines', datetime_field='date'), 'get_lines')
     state = fields.Selection(STATES, 'State')
     probability = fields.Integer('Conversion Probability')
     lost_reason = fields.Text('Reason for loss', states={
         'invisible': Not(Equal(Eval('state'), 'lost')),
     }, depends=['state'])
-
 
     def __init__(self):
         super(SaleOpportunityHistory, self).__init__()
@@ -454,9 +453,12 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         return [
             'MIN("%s".__id) AS id' % table,
             '"%s".id AS opportunity' % table,
-            'MIN(COALESCE("%s".write_date, "%s".create_date)) AS date' % (table, table),
-            'COALESCE("%s".write_uid, "%s".create_uid) AS user' % (table, table),
-        ] + ['"%s"."%s"' % (table, name) for name, field in self._columns.iteritems()
+            ('MIN(COALESCE("%s".write_date, "%s".create_date)) AS date'
+                % (table, table)),
+            ('COALESCE("%s".write_uid, "%s".create_uid) AS user'
+                % (table, table)),
+            ] + ['"%s"."%s"' % (table, name)
+                for name, field in self._columns.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
@@ -490,7 +492,6 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                 ('opportunity', '=', history.opportunity.id),
             ])
         return result
-
 
     def read(self, ids, fields_names=None):
         res = super(SaleOpportunityHistory, self).read(ids,
@@ -576,7 +577,8 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
         res = {}
         for record in self.browse(ids):
             if record.number:
-                res[record.id] = float(record.converted) / record.number * 100.0
+                res[record.id] = (float(record.converted)
+                    / record.number * 100.0)
             else:
                 res[record.id] = 0.0
         return res
@@ -712,7 +714,8 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
         res = {}
         for record in self.browse(ids):
             if record.number:
-                res[record.id] = float(record.converted) / record.number * 100.0
+                res[record.id] = (float(record.converted)
+                    / record.number * 100.0)
             else:
                 res[record.id] = 0.0
         return res
@@ -826,7 +829,8 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
         res = {}
         for record in self.browse(ids):
             if record.number:
-                res[record.id] = float(record.converted) / record.number * 100.0
+                res[record.id] = (float(record.converted)
+                    / record.number * 100.0)
             else:
                 res[record.id] = 0.0
         return res
