@@ -136,6 +136,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     'quotation.',
                 'missing_account_payable': 'It misses ' \
                         'an "Account Payable" on the party "%s"!',
+                'delete_cancel': 'Purchase "%s" must be cancelled before '\
+                    'deletion!',
             })
         self._transitions |= set((
                 ('draft', 'quotation'),
@@ -738,6 +740,16 @@ class Purchase(Workflow, ModelSQL, ModelView):
     def is_done(self, purchase):
         return (purchase.invoice_state == 'paid'
             and purchase.shipment_state == 'received')
+
+    def delete(self, ids):
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        # Cancel before delete
+        self.cancel(ids)
+        for purchase in self.browse(ids):
+            if purchase.state != 'cancel':
+                self.raise_user_error('delete_cancel', purchase.rec_name)
+        return super(Purchase, self).delete(ids)
 
     @ModelView.button
     @Workflow.transition('cancel')
