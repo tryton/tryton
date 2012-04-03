@@ -50,8 +50,8 @@ class PurchaseLine(ModelSQL, ModelView):
     def _view_look_dom_arch(self, tree, type, field_children=None):
         analytic_account_obj = Pool().get('analytic_account.account')
         analytic_account_obj.convert_view(tree)
-        arch, fields = super(PurchaseLine, self)._view_look_dom_arch(tree, type,
-            field_children=field_children)
+        arch, fields = super(PurchaseLine, self)._view_look_dom_arch(tree,
+            type, field_children=field_children)
         return arch, fields
 
     def fields_get(self, fields_names=None):
@@ -214,7 +214,8 @@ class PurchaseLine(ModelSQL, ModelView):
         return new_ids
 
     def get_invoice_line(self, line):
-        account_selection_obj = Pool().get('analytic_account.account.selection')
+        pool = Pool()
+        account_selection_obj = pool.get('analytic_account.account.selection')
 
         res = super(PurchaseLine, self).get_invoice_line(line)
         if not res:
@@ -222,7 +223,8 @@ class PurchaseLine(ModelSQL, ModelView):
 
         selection_id = False
         if line.analytic_accounts:
-            selection_id = account_selection_obj.copy(line.analytic_accounts.id)
+            selection_id = account_selection_obj.copy(
+                line.analytic_accounts.id)
         for vals in res:
             vals['analytic_accounts'] = selection_id
         return res
