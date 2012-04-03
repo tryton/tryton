@@ -14,11 +14,11 @@ try:
 except ImportError:
     import decimal
     sys.modules['cdecimal'] = decimal
-from types import NoneType
 import threading
 import datetime
 from decimal import Decimal
 from types import NoneType
+
 import proteus.config
 from proteus.pyson import PYSONDecoder
 
@@ -106,7 +106,8 @@ class BinaryDescriptor(FieldDescriptor):
     default = None
 
     def __set__(self, instance, value):
-        assert isinstance(value, (basestring, buffer)) or value in (None, False)
+        assert (isinstance(value, (basestring, buffer))
+            or value in (None, False))
         super(BinaryDescriptor, self).__set__(instance, value or '')
 
 

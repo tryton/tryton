@@ -18,11 +18,13 @@ def dump_decimal(self, value, write):
         }
     self.dump_struct(value, write)
 
+
 def dump_buffer(self, value, write):
     self.write = write
     value = xmlrpclib.Binary(value)
     value.encode(self)
     del self.write
+
 
 def dump_date(self, value, write):
     value = {'__class__': 'date',
@@ -46,13 +48,14 @@ xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
 xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
 
+
 def end_struct(self, data):
     mark = self._marks.pop()
     # map structs to Python dictionaries
     dct = {}
     items = self._stack[mark:]
     for i in range(0, len(items), 2):
-        dct[xmlrpclib._stringify(items[i])] = items[i+1]
+        dct[xmlrpclib._stringify(items[i])] = items[i + 1]
     if '__class__' in dct:
         if dct['__class__'] == 'date':
             dct = datetime.date(dct['year'], dct['month'], dct['day'])

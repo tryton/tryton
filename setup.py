@@ -2,13 +2,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from setuptools import setup, find_packages
-import sys
 import os
 import proteus
 
 major_version, minor_version, _ = proteus.__version__.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
+
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
