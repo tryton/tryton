@@ -2,7 +2,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
             '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -141,6 +142,7 @@ class StockForecastTestCase(unittest.TestCase):
             self.assertEqual(line.quantity_executed, 2)
             self.assertEqual(len(line.moves), 4)
             self.assertEqual(sum(move.quantity for move in line.moves), 8)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

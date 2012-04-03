@@ -20,7 +20,7 @@ past. Once the form confirmed, the corresponding moves are created and
 spread homogeneously across the period. Those moves will allow other
 process to take forecasts into account.
 ''',
-    'description_bg_BG':'''Предоставя модел за "прогнозиране" при управление на инвентазирация
+    'description_bg_BG': '''Предоставя модел за "прогнозиране" при управление на инвентазирация
     - Формата за "Прогноза" позволява да се зададат очакваните движения на наличност
       към клиенти в бъдещ период. Помощник позволява да се изчислят очакваните
       количества отчитайки периоди в миналто. След потвърждаване на формата, съответните
@@ -30,12 +30,12 @@ process to take forecasts into account.
     'description_ca_ES': '''Proveeix el model de «Previsió» en la gestió d'inventaris.
 El formulari de previsió permet definir els moviments d'estoc previstos
 cap a clients en el futur. Un assistent permet calcular les quantitats previstes
-respecte a un període en el passat. Una vegada el formulari es confirma, els 
-moviments corresponents es creen i es distribueixen homogèniament al llarg del 
-període. Aquests moviments permetran a altres processos tenir en compte les 
+respecte a un període en el passat. Una vegada el formulari es confirma, els
+moviments corresponents es creen i es distribueixen homogèniament al llarg del
+període. Aquests moviments permetran a altres processos tenir en compte les
 previsions.
 ''',
-    'description_de_DE':'''Bedarfsermittlung für die Lagerverwaltung
+    'description_de_DE': '''Bedarfsermittlung für die Lagerverwaltung
     - Fügt das Modell "Vorhersage" zur Lagerverwaltung hinzu.
     - Das Formular "Bedarfsermittlung" ermöglicht die Erstellung von zu
       erwartenden Lagerbewegungen zu Kunden in einem beliebigen Zeitraum in der
@@ -63,7 +63,7 @@ en el pasado. Una vez el formulario se confirma, los movimientos
 correspondientes se crean y se distribuyen homogeneamente a lo largo del
 periodo. Dichos movimientos permitirá a otros procesos tener en cuenta las previsiones.
 ''',
-    'description_fr_FR':'''Fournit le modèle "Prévision" dans la gestion des stocks.
+    'description_fr_FR': '''Fournit le modèle "Prévision" dans la gestion des stocks.
 Le formulaire de prévision permet de définir les mouvements attendus
 vers les clients pour n'importe quelle période dans le futur. Un
 wizard permet de calculer les quantités attendues en fonction d'une

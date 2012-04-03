@@ -108,6 +108,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
         if migrate_warehouse:
             location2warehouse = {}
+
             def find_warehouse(location):
                 if location.type == 'warehouse':
                     return location.id
@@ -115,7 +116,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     return find_warehouse(location.parent)
             cursor.execute('SELECT id, location FROM "%s"' % self._table)
             for forecast_id, location_id in cursor.fetchall():
-                warehouse_id = location_id # default fallback
+                warehouse_id = location_id  # default fallback
                 if location_id in location2warehouse:
                     warehouse_id = location2warehouse[location_id]
                 else:
@@ -123,7 +124,8 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     warehouse_id = find_warehouse(location) or location_id
                     location2warehouse[location_id] = warehouse_id
                 cursor.execute('UPDATE "%s" SET warehouse = %%s '
-                    'WHERE id = %%s' % self._table, (warehouse_id, forecast_id))
+                    'WHERE id = %%s' % self._table,
+                    (warehouse_id, forecast_id))
             table.not_null_action('warehouse',
                 action=self.warehouse.required and 'add' or 'remove')
             table.drop_column('location', True)
@@ -275,7 +277,7 @@ class ForecastLine(ModelSQL, ModelView):
         digits=(16, Eval('unit_digits', 2)), required=True,
         depends=['unit_digits'])
     moves = fields.Many2Many('stock.forecast.line-stock.move',
-            'line', 'move','Moves', readonly=True)
+        'line', 'move', 'Moves', readonly=True)
     forecast = fields.Many2One(
         'stock.forecast', 'Forecast', required=True, ondelete='CASCADE')
     quantity_executed = fields.Function(fields.Float('Quantity Executed',
@@ -378,9 +380,10 @@ class ForecastLine(ModelSQL, ModelView):
                         'AND COALESCE(m.effective_date, m.planned_date) <= %s '
                         'AND lm.id IS NULL '
                     'GROUP BY m.product',
-                    red_ids + [forecast.warehouse.left, forecast.warehouse.right,
-                        forecast.destination.left, forecast.destination.right,
-                        'cancel', forecast.from_date, forecast.to_date])
+                    red_ids + [forecast.warehouse.left,
+                        forecast.warehouse.right, forecast.destination.left,
+                        forecast.destination.right, 'cancel',
+                        forecast.from_date, forecast.to_date])
                 for product_id, quantity in cursor.fetchall():
                     line = product2line[product_id]
                     result[line.id] = uom_obj.compute_qty(
@@ -434,7 +437,7 @@ class ForecastLine(ModelSQL, ModelView):
                 'planned_date': (line.forecast.from_date
                         + datetime.timedelta(day)),
                 'company': line.forecast.company.id,
-                'currency':line.forecast.company.currency.id,
+                'currency': line.forecast.company.currency.id,
                 'unit_price': unit_price,
                 })
             moves.append(mid)
@@ -452,21 +455,22 @@ class ForecastLine(ModelSQL, ModelView):
         while qty > 0:
             if qty > delta:
                 for i in range_delta:
-                    a[i] += qty//delta
-                qty = qty%delta
-            elif delta//qty > 1:
+                    a[i] += qty // delta
+                qty = qty % delta
+            elif delta // qty > 1:
                 i = 0
                 while i < qty:
-                    a[i*delta//qty + (delta//qty/2)] += 1
+                    a[i * delta // qty + (delta // qty / 2)] += 1
                     i += 1
                 qty = 0
             else:
                 for i in range_delta:
                     a[i] += 1
-                qty = delta-qty
+                qty = delta - qty
                 i = 0
                 while i < qty:
-                    a[delta - ((i*delta//qty) + (delta//qty/2)) - 1] -= 1
+                    a[delta - ((i * delta // qty) + (delta // qty / 2)) - 1
+                        ] -= 1
                     i += 1
                 qty = 0
         return a
@@ -529,7 +533,6 @@ class ForecastComplete(Wizard):
         self._error_messages.update({
             'from_to_date': '"From Date" should be smaller than "To Date"!',
             })
-
 
     def default_ask(self, session, fields):
         """
@@ -601,7 +604,7 @@ class ForecastComplete(Wizard):
             if -qty <= 0:
                 continue
             if product in prod2line:
-                forecast_line_obj.write(prod2line[product],{
+                forecast_line_obj.write(prod2line[product], {
                         'product': product,
                         'quantity': -qty,
                         'uom': prod2uom[product],
