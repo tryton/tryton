@@ -486,7 +486,7 @@ class CreatePurchaseRequest(Wizard):
             ])
     create_ = StateAction('stock_supply.act_purchase_request_form_draft')
 
-    def do_create_(self, sesion, action):
+    def do_create_(self, session, action):
         purchase_request_obj = Pool().get('purchase.request')
         purchase_request_obj.generate_requests()
         return action, {}
