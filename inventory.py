@@ -253,6 +253,9 @@ class InventoryLine(ModelSQL, ModelView):
     def default_unit_digits(self):
         return 2
 
+    def default_expected_quantity(self):
+        return 0.
+
     def on_change_product(self, vals):
         product_obj = Pool().get('product.product')
         res = {}
