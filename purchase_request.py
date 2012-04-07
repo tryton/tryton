@@ -200,6 +200,8 @@ class PurchaseRequest(ModelSQL, ModelView):
                         shortage_date, product_quantity = shortages[product.id]
                         if shortage_date == None or product_quantity == None:
                             continue
+                        order_point = product2ops.get(
+                            (warehouse_id, product.id))
                         # generate request values
                         request_val = self.compute_request(product,
                             warehouse_id, shortage_date, product_quantity,
