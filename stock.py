@@ -123,7 +123,8 @@ class Move(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('anglo_saxon_quantity', None)
+        default.setdefault('anglo_saxon_quantity',
+            self.default_anglo_saxon_quantity())
         return super(Move, self).copy(ids, default=default)
 
 Move()
