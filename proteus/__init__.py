@@ -667,11 +667,8 @@ class Model(object):
         return res
 
     def _on_change_set(self, field, value):
-        if self._fields[field]['type'] in ('one2many', 'many2many'):
-            if isinstance(value, (list, tuple)):
-                self._values[field] = value
-                self._changed.add(field)
-                return
+        if (self._fields[field]['type'] in ('one2many', 'many2many')
+                and not isinstance(value, (list, tuple))):
             to_remove = []
             if value and value.get('remove'):
                 for record_id in value['remove']:
@@ -687,6 +684,8 @@ class Model(object):
                             self._config)
                     record = relation()
                     for i, j in vals.iteritems():
+                        if '.' in i:
+                            continue
                         record._values[i] = j
                         record._changed.add(i)
                     # append without signal
@@ -697,11 +696,13 @@ class Model(object):
                     for record in getattr(self, field):
                         if record.id == vals['id']:
                             for i, j in vals.iteritems():
+                                if '.' in i:
+                                    continue
                                 record._values[i] = j
                                 record._changed.add(i)
         else:
             self._values[field] = value
-            self._changed.add(field)
+        self._changed.add(field)
 
     def _on_change(self, name):
         'Call on_change for field'
