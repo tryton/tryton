@@ -667,11 +667,8 @@ class Model(object):
         return res
 
     def _on_change_set(self, field, value):
-        if self._fields[field]['type'] in ('one2many', 'many2many'):
-            if isinstance(value, (list, tuple)):
-                self._values[field] = value
-                self._changed.add(field)
-                return
+        if (self._fields[field]['type'] in ('one2many', 'many2many')
+                and not isinstance(value, (list, tuple))):
             to_remove = []
             if value and value.get('remove'):
                 for record_id in value['remove']:
@@ -697,7 +694,7 @@ class Model(object):
                                 record._changed.add(i)
         else:
             self._values[field] = value
-            self._changed.add(field)
+        self._changed.add(field)
 
     def _on_change(self, name):
         'Call on_change for field'
