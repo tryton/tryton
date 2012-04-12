@@ -20,7 +20,7 @@ attlist.form &= attribute on_write { text }?
 attlist.form &= [ a:defaultValue = "4" ] attribute col { text }?
 attlist.form &= attribute cursor { text }?
 
-tree = element tree { attlist.tree, field+ }
+tree = element tree { attlist.tree, field }
 attlist.tree &=
   [ a:defaultValue = "Unknown" ] attribute string { text }?
 attlist.tree &= attribute on_write { text }?

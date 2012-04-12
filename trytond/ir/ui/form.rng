@@ -42,9 +42,7 @@
   <define name="tree">
     <element name="tree">
       <ref name="attlist.tree"/>
-      <oneOrMore>
-        <ref name="field"/>
-      </oneOrMore>
+      <ref name="field"/>
     </element>
   </define>
   <define name="attlist.tree" combine="interleave">
@@ -502,11 +500,6 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="help"/>
-    </optional>
-  </define>
-  <define name="attlist.image" combine="interleave">
-    <optional>
       <attribute name="xexpand" a:defaultValue="0">
         <choice>
           <value>0</value>
@@ -523,6 +516,11 @@
           <value>1</value>
         </choice>
       </attribute>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
+      <attribute name="help"/>
     </optional>
   </define>
   <define name="attlist.image" combine="interleave">
