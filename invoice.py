@@ -30,9 +30,9 @@ class Invoice(Model):
             self.payment_term.depends.append('open_date')
         self._reset_columns()
 
-    def set_number(self, invoice_id):
-        res = super(Invoice, self).set_number(invoice_id)
-        self.write(invoice_id, {
+    def set_number(self, invoice):
+        res = super(Invoice, self).set_number(invoice)
+        self.write(invoice.id, {
             'open_date': datetime.datetime.now(),
             })
         return res
