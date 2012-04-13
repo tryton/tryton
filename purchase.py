@@ -1250,6 +1250,8 @@ class PurchaseLine(ModelSQL, ModelView):
         else:
             ignored_ids = ()
         for invoice_line in line.invoice_lines:
+            if invoice_line.type != 'line':
+                continue
             if ((invoice_line.invoice and
                     invoice_line.invoice.state != 'cancel') or
                 invoice_line.id in ignored_ids):
