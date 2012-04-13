@@ -42,9 +42,9 @@
   <define name="tree">
     <element name="tree">
       <ref name="attlist.tree"/>
-      <oneOrMore>
+      <zeroOrMore>
         <ref name="field"/>
-      </oneOrMore>
+      </zeroOrMore>
     </element>
   </define>
   <define name="attlist.tree" combine="interleave">
