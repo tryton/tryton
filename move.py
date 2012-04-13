@@ -762,6 +762,8 @@ class Line(ModelSQL, ModelView):
         tax_code_obj = self.pool.get('account.tax.code')
         tax_obj = self.pool.get('account.tax')
         move_obj = self.pool.get('account.move')
+        tax_line_obj = pool.get('account.tax.line')
+
         if vals.get('move'):
             #Only for first line
             return res
@@ -796,14 +798,18 @@ class Line(ModelSQL, ModelView):
                 for code_id, tax_id in base_amounts:
                     if not base_amounts[code_id, tax_id]:
                         continue
-                    res.setdefault('add', []).append({
-                        'amount': base_amounts[code_id, tax_id],
-                        'currency_digits': account.currency_digits,
-                        'code': code_id,
-                        'code.rec_name': tax_code_obj.browse(code_id).rec_name,
-                        'tax': tax_id,
-                        'tax.rec_name': tax_obj.browse(tax_id).rec_name,
-                    })
+                    value = tax_line_obj.default_get(
+                        tax_line_obj._columns.keys())
+                    value.update({
+                            'amount': base_amounts[code_id, tax_id],
+                            'currency_digits': account.currency_digits,
+                            'code': code_id,
+                            'code.rec_name': tax_code_obj.browse(
+                                code_id).rec_name,
+                            'tax': tax_id,
+                            'tax.rec_name': tax_obj.browse(tax_id).rec_name,
+                            })
+                    res.setdefault('add', []).append(value)
         return res
 
     def on_change_party(self, vals):
