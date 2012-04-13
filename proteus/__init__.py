@@ -506,7 +506,7 @@ class Model(object):
     _config = None
     _fields = None
 
-    def __init__(self, id=None, **kwargs):
+    def __init__(self, id=None, _default=True, **kwargs):
         super(Model, self).__init__()
         if id:
             assert not kwargs
@@ -518,7 +518,7 @@ class Model(object):
         self._parent = None  # store the parent record
         self._parent_field_name = ''  # store the field name in parent record
         self._parent_name = ''  # store the field name to parent record
-        if self.id < 0:
+        if self.id < 0 and _default:
             self._default_get()
 
         for field_name, value in kwargs.iteritems():
@@ -735,7 +735,7 @@ class Model(object):
                 for vals in value.get('add', []):
                     relation = Model.get(self._fields[field]['relation'],
                             self._config)
-                    record = relation()
+                    record = relation(_default=False)
                     for i, j in vals.iteritems():
                         if '.' in i:
                             continue
