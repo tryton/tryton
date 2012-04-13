@@ -459,7 +459,9 @@ class Invoice(ModelWorkflow, ModelSQL, ModelView):
             if key not in tax_keys:
                 res['tax_amount'] += computed_taxes[key]['amount']
                 res['taxes'].setdefault('add', [])
-                res['taxes']['add'].append(computed_taxes[key])
+                value = tax_obj.default_get(tax_obj._columns.keys())
+                value.update(computed_taxes[key])
+                res['taxes']['add'].append(value)
         if currency:
             res['untaxed_amount'] = currency_obj.round(currency,
                     res['untaxed_amount'])
