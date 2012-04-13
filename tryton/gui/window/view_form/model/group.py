@@ -201,16 +201,16 @@ class Group(SignalEvent, list):
 
         new_records = []
         for id in ids:
-            if self.get(id):
-                continue
-            new_record = Record(self.model_name, id, self.window,
-                group=self)
-            self.append(new_record)
+            new_record = self.get(id)
+            if not new_record:
+                new_record = Record(self.model_name, id, self.window,
+                    group=self)
+                self.append(new_record)
+                new_record.signal_connect(self, 'record-changed',
+                    self._record_changed)
+                new_record.signal_connect(self, 'record-modified',
+                    self._record_modified)
             new_records.append(new_record)
-            new_record.signal_connect(self, 'record-changed',
-                self._record_changed)
-            new_record.signal_connect(self, 'record-modified',
-                self._record_modified)
 
         # Remove previously removed or deleted records
         for record in self.record_removed[:]:
