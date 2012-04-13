@@ -158,8 +158,8 @@ class Image(WidgetInterface):
             try:
                 loader = gtk.gdk.PixbufLoader(ftype)
                 loader.write(data, len(data))
-                pixbuf = loader.get_pixbuf()
                 loader.close()
+                pixbuf = loader.get_pixbuf()
             except:
                 continue
             if pixbuf:
@@ -167,8 +167,8 @@ class Image(WidgetInterface):
         if not pixbuf:
             loader = gtk.gdk.PixbufLoader('png')
             loader.write(NOIMAGE, len(NOIMAGE))
-            pixbuf = loader.get_pixbuf()
             loader.close()
+            pixbuf = loader.get_pixbuf()
 
         img_height = pixbuf.get_height()
         if img_height > self.height:
