@@ -116,18 +116,20 @@ class Sale(Model):
             with Transaction().set_context(party_context):
                 description = product_obj.browse(product.id).rec_name
             taxes = []
-            cost_line = {
-                'type': 'line',
-                'product': product.id,
-                'description': description,
-                'quantity': 1, #XXX
-                'unit': product.sale_uom.id,
-                'unit_price': cost,
-                'shipment_cost': cost,
-                'amount': cost,
-                'taxes': taxes,
-                'sequence': 9999, #XXX
-            }
+            cost_line = sale_line_obj.default_get(
+                sale_line_obj._columns.keys())
+            cost_line.update({
+                    'type': 'line',
+                    'product': product.id,
+                    'description': description,
+                    'quantity': 1,  # XXX
+                    'unit': product.sale_uom.id,
+                    'unit_price': cost,
+                    'shipment_cost': cost,
+                    'amount': cost,
+                    'taxes': taxes,
+                    'sequence': 9999,  # XXX
+                    })
             pattern = sale_line_obj._get_tax_rule_pattern(party,
                 cost_line)
             for tax in product.customer_taxes_used:
