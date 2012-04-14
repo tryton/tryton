@@ -3,11 +3,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Purchase Shipment Cost',
+    'name_de_DE': 'Einkauf Versandkosten',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add purchase shipment cost',
+    'description_de_DE': '''
+    - Fügt Versandkosten für Einkäufe hinzu
+    ''',
      'depends': [
         'ir',
         'res',
@@ -24,5 +28,6 @@
         'carrier.xml',
     ],
     'translation': [
+        'locale/de_DE.po',
     ],
 }
