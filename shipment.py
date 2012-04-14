@@ -10,6 +10,7 @@ from trytond.backend import TableHandler
 from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Get, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import reduce_ids
 
 STATES = {
     'readonly': "state in ('cancel', 'done')",
@@ -187,7 +188,12 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                self.write(shipment_ids, {'company': company_id})
+                for i in range(0, len(shipment_ids), cursor.IN_MAX):
+                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                    red_sql, red_ids = reduce_ids('id', sub_ids)
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET company = %s WHERE ' + red_sql,
+                        [company_id] + red_ids)
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -564,7 +570,12 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                self.write(shipment_ids, {'company': company_id})
+                for i in range(0, len(shipment_ids), cursor.IN_MAX):
+                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                    red_sql, red_ids = reduce_ids('id', sub_ids)
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET company = %s WHERE ' + red_sql,
+                        [company_id] + red_ids)
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -895,7 +906,12 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                self.write(shipment_ids, {'company': company_id})
+                for i in range(0, len(shipment_ids), cursor.IN_MAX):
+                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                    red_sql, red_ids = reduce_ids('id', sub_ids)
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET company = %s WHERE ' + red_sql,
+                        [company_id] + red_ids)
             table.not_null_action('company', action='add')
 
         # Migration from 1.0 customer_location is no more used
@@ -1416,7 +1432,12 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                self.write(shipment_ids, {'company': company_id})
+                for i in range(0, len(shipment_ids), cursor.IN_MAX):
+                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                    red_sql, red_ids = reduce_ids('id', sub_ids)
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET company = %s WHERE ' + red_sql,
+                        [company_id] + red_ids)
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -1861,7 +1882,12 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                self.write(shipment_ids, {'company': company_id})
+                for i in range(0, len(shipment_ids), cursor.IN_MAX):
+                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                    red_sql, red_ids = reduce_ids('id', sub_ids)
+                    cursor.execute('UPDATE "' + self._table + '" '
+                        'SET company = %s WHERE ' + red_sql,
+                        [company_id] + red_ids)
             table.not_null_action('company', action='add')
 
         # Add index on create_date
