@@ -3,11 +3,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Carrier Percentage',
+    'name_de_DE': 'Frachtkosten Prozentsatz',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add cost method based on percentage',
+    'description_de_DE': '''
+    - Fügt eine Kostenmethode basierend auf Prozentsatz hinzu.
+    ''',
     'depends': [
         'ir',
         'res',
@@ -22,5 +26,6 @@
         'carrier.xml',
         ],
     'translation': [
+        'locale/de_DE.po',
         ],
     }
