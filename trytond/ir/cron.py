@@ -68,6 +68,7 @@ class Cron(ModelSQL, ModelView):
         table.column_rename('numbercall', 'number_calls')
         table.column_rename('doall', 'repeat_missed')
         table.column_rename('nextcall', 'next_call')
+        table.drop_column('running')
 
         super(Cron, self).init(module_name)
 
