@@ -3,11 +3,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Carrier Weight',
+    'name_de_DE': 'Frachtkosten Gewicht',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add cost method based on weight',
+    'description_de_DE': '''
+    - Fügt eine Kostenmethode basierend auf Gewicht hinzu.
+    ''',
     'depends': [
         'ir',
         'res',
@@ -25,5 +29,6 @@
         'carrier.xml',
         ],
     'translation': [
+        'locale/de_DE.po',
         ],
     }
