@@ -3,11 +3,15 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Measurements',
+    'name_de_DE': 'Artikel Abmessungen',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add measurements to product',
+    'description_de_DE': '''
+    - Fügt Abmessungen für Artikel hinzu.
+    ''',
     'depends': [
         'ir',
         'res',
@@ -17,5 +21,6 @@
         'product.xml',
     ],
     'translation': [
+        'locale/de_DE.po',
     ]
 }
