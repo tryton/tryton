@@ -16,7 +16,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
     'Stock Inventory'
     _name = 'stock.inventory'
     _description = __doc__
-    _rec_name = 'location'
 
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
