@@ -10,7 +10,7 @@
     'website': 'http://www.tryton.org/',
     'description': 'Add purchase shipment cost',
     'description_de_DE': '''
-    - Fügt Versandkosten für Einkäufe hinzu
+    - Fügt Versandkosten für Einkäufe hinzu.
     ''',
      'depends': [
         'ir',

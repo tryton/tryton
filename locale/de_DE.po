@@ -26,18 +26,6 @@ msgctxt "field:stock.shipment.in,cost_currency_digits:"
 msgid "Cost Currency Digits"
 msgstr "Kosten Währung Stellen "
 
-msgctxt "model:carrier,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.move,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.in,name:"
-msgid ""
-msgstr ""
-
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
 msgstr "Nach Wert"
