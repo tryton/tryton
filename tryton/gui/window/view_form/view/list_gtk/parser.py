@@ -518,8 +518,8 @@ class M2O(Char):
 
     def value_from_text(self, record, text, callback=None):
         field = record.group.fields[self.field_name]
-        if not text and not field.get_state_attrs(
-                record)['required']:
+        if not text:
+            field.set_client(record, (False, ''))
             if callback:
                 callback()
             return False
@@ -527,11 +527,7 @@ class M2O(Char):
         relation = record[self.field_name].attrs['relation']
         domain = record[self.field_name].domain_get(record)
         context = record[self.field_name].context_get(record)
-        if text:
-            dom = [('rec_name', 'ilike', '%' + text + '%'),
-                    domain]
-        else:
-            dom = domain
+        dom = [('rec_name', 'ilike', '%' + text + '%'), domain]
         args = ('model', relation, 'search', dom, 0, None, None,
                 context)
         try:
@@ -539,7 +535,7 @@ class M2O(Char):
         except TrytonServerError, exception:
             ids = common.process_exception(exception, *args)
             if not ids:
-                field.set_client(record, '???')
+                field.set_client(record, (False, ''))
                 if callback:
                     callback()
                 return
