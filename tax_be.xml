@@ -1756,13 +1756,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.rule.line.template"
-            id="tax_rule_line_ventes_intracommunautaires_1">
-            <field name="rule" ref="tax_rule_ventes_intracommunautaires"/>
-            <field name="group" ref="group_tva_vente_biens"/>
-            <field name="tax" ref="tva_vente_biens_intracommunautaires_0"/>
-        </record>
-
-        <record model="account.tax.rule.line.template"
             id="tax_rule_line_ventes_intracommunautaires_2">
             <field name="rule" ref="tax_rule_ventes_intracommunautaires"/>
             <field name="group" ref="group_tva_vente_services"/>
