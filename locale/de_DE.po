@@ -6,22 +6,6 @@ msgctxt "field:carrier,percentage:"
 msgid "Percentage"
 msgstr "Prozentsatz"
 
-msgctxt "model:carrier,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:sale.sale,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.in,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.out,name:"
-msgid ""
-msgstr ""
-
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Percentage"
 msgstr "Prozentsatz"
