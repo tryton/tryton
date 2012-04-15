@@ -655,15 +655,15 @@ class Line(ModelSQL, ModelView):
 
         if 'account' in fields:
             if total >= Decimal('0.0'):
-                values.setdefault('account', move.journal.credit_account \
+                values['account'] = (move.journal.credit_account \
                         and move.journal.credit_account.id or None)
             else:
-                values.setdefault('account', move.journal.debit_account \
+                values['account'] = (move.journal.debit_account \
                         and move.journal.debit_account.id or None)
 
         if ('debit' in fields) or ('credit' in fields):
-            values.setdefault('debit',  total < 0 and - total or None)
-            values.setdefault('credit', total > 0 and total or None)
+            values['debit'] = total < 0 and - total or Decimal(0)
+            values['credit'] = total > 0 and total or Decimal(0)
 
         if move.journal.type in ('expense', 'revenue'):
             for account_id, code_id, tax_id in taxes:
