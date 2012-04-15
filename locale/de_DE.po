@@ -50,10 +50,6 @@ msgctxt "field:product.template,width_uom:"
 msgid "Width Uom"
 msgstr "Breite Maßeinheit"
 
-msgctxt "model:product.template,name:"
-msgid ""
-msgstr ""
-
 msgctxt "view:product.template:"
 msgid "Measurements"
 msgstr "Abmessungen"
