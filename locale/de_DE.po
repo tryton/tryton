@@ -58,24 +58,8 @@ msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "model:carrier,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "carrier.weight_price_list"
-msgstr ""
-
-msgctxt "model:sale.sale,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.in,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.out,name:"
-msgid ""
 msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
