@@ -2,28 +2,32 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.move:0"
+msgctxt "error:stock.move:"
 msgid "Anglo-Saxon quantity can not be greater than quantity!"
 msgstr ""
 "Anzahl nach angelsächsicher Bewertung kann nicht größer als Anzahl sein!"
 
-msgctxt "field:product.category,account_cogs:0"
+msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Konto Kosten der verkauften Waren"
 
-msgctxt "field:product.template,account_cogs:0"
-msgid "Account Cost of Good Sold"
-msgstr "Konto Kosten der verkauften Waren"
-
-msgctxt "field:product.template,account_cogs_used:0"
+msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Verwendetes Konto Kosten verkaufte Waren"
 
-msgctxt "field:stock.move,anglo_saxon_quantity:0"
+msgctxt "field:product.template,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto Kosten der verkauften Waren"
+
+msgctxt "field:product.template,account_cogs_used:"
+msgid "Account Cost of Goods Sold Used"
+msgstr "Verwendetes Konto Kosten verkaufte Waren"
+
+msgctxt "field:stock.move,anglo_saxon_quantity:"
 msgid "Anglo-Saxon Quantity"
 msgstr "Anzahl (Angelsächsische Bewertung)"
 
-msgctxt "help:product.template,account_cogs:0"
+msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt "
