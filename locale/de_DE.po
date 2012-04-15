@@ -5616,7 +5616,7 @@ msgstr "Umsatzsteuer"
 
 msgctxt "model:account.tax.code.template,name:tax_code_USTVA"
 msgid "Chart of Tax Codes SKR03 (Germany)"
-msgstr "Kenzifferntabelle SKR03"
+msgstr "Kennzifferntabelle SKR03"
 
 msgctxt "model:account.tax.code.template,name:tax_code_UZ19"
 msgid ""
