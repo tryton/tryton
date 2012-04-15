@@ -1762,43 +1762,44 @@ class CreateChart(Wizard):
         property_obj = pool.get('ir.property')
         model_field_obj = pool.get('ir.model.field')
 
-        account_receivable_field_id, = model_field_obj.search([
-                ('model.model', '=', 'party.party'),
-                ('name', '=', 'account_receivable'),
-                ], limit=1)
-        property_ids = property_obj.search([
-                ('field', '=', account_receivable_field_id),
-                ('res', '=', None),
-                ('company', '=', session.properties.company.id),
-                ])
-        with Transaction().set_user(0):
-            property_obj.delete(property_ids)
-            if session.properties.account_receivable:
-                property_obj.create({
-                        'field': account_receivable_field_id,
-                        'value': 'account.account,' + \
-                            str(session.properties.account_receivable.id),
-                        'company': session.properties.company.id,
-                        })
+        with Transaction().set_context(company=session.properties.company.id):
+            account_receivable_field_id, = model_field_obj.search([
+                    ('model.model', '=', 'party.party'),
+                    ('name', '=', 'account_receivable'),
+                    ], limit=1)
+            property_ids = property_obj.search([
+                    ('field', '=', account_receivable_field_id),
+                    ('res', '=', None),
+                    ('company', '=', session.properties.company.id),
+                    ])
+            with Transaction().set_user(0):
+                property_obj.delete(property_ids)
+                if session.properties.account_receivable:
+                    property_obj.create({
+                            'field': account_receivable_field_id,
+                            'value': 'account.account,' + \
+                                str(session.properties.account_receivable.id),
+                            'company': session.properties.company.id,
+                            })
 
-        account_payable_field_id, = model_field_obj.search([
-                ('model.model', '=', 'party.party'),
-                ('name', '=', 'account_payable'),
-                ], limit=1)
-        property_ids = property_obj.search([
-                ('field', '=', account_payable_field_id),
-                ('res', '=', None),
-                ('company', '=', session.properties.company.id),
-                ])
-        with Transaction().set_user(0):
-            property_obj.delete(property_ids)
-            if session.properties.account_payable:
-                property_obj.create({
-                        'field': account_payable_field_id,
-                        'value': 'account.account,' + \
-                            str(session.properties.account_payable.id),
-                        'company': session.properties.company.id,
-                        })
+            account_payable_field_id, = model_field_obj.search([
+                    ('model.model', '=', 'party.party'),
+                    ('name', '=', 'account_payable'),
+                    ], limit=1)
+            property_ids = property_obj.search([
+                    ('field', '=', account_payable_field_id),
+                    ('res', '=', None),
+                    ('company', '=', session.properties.company.id),
+                    ])
+            with Transaction().set_user(0):
+                property_obj.delete(property_ids)
+                if session.properties.account_payable:
+                    property_obj.create({
+                            'field': account_payable_field_id,
+                            'value': 'account.account,' + \
+                                str(session.properties.account_payable.id),
+                            'company': session.properties.company.id,
+                            })
         return 'end'
 
 CreateChart()
