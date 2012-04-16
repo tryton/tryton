@@ -121,7 +121,7 @@ class Request(ModelSQL, ModelView):
             request_history_obj.create(cursor, user, values, context=context)
         self.write(cursor, user, ids, {
             'state': 'waiting',
-            'date_send': datetime.datetime.now(),
+            'date_sent': datetime.datetime.now(),
             }, context=context)
         return True
 
