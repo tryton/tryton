@@ -118,7 +118,7 @@ class Request(ModelSQL, ModelView):
             request_history_obj.create(cursor, user, values, context=context)
         self.write(cursor, user, ids, {
             'state': 'waiting',
-            'date_send': time.strftime('%Y-%m-%d %H:%M:%S'),
+            'date_sent': time.strftime('%Y-%m-%d %H:%M:%S'),
             }, context=context)
         return True
 
