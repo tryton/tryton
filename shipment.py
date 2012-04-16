@@ -126,6 +126,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 ('draft', 'received'),
                 ('received', 'done'),
                 ('draft', 'cancel'),
+                ('received', 'cancel'),
+                ('cancel', 'draft'),
                 ))
         self._buttons.update({
                 'cancel': {
@@ -409,10 +411,11 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments for m in s.incoming_moves
-                if m.state != 'draft'], {
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
-        move_obj.delete([m.id for s in shipments for m in s.inventory_moves])
+        move_obj.delete([m.id for s in shipments for m in s.inventory_moves
+                if m.state in ('draft', 'cancel')])
 
     @ModelView.button
     @Workflow.transition('received')
@@ -641,7 +644,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments for m in s.moves
-                if m.state != 'draft'], {
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
 
@@ -652,7 +655,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         shipments = self.browse(ids)
         for shipment in shipments:
             move_obj.write([m.id for m in shipment.moves
-                    if m.state not in ('cancel', 'draft')], {
+                    if m.state not in ('cancel', 'draft', 'done')], {
                     'state': 'draft',
                     'planned_date': shipment.planned_date,
                     })
@@ -661,7 +664,8 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     def assign(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('assigned', 'cancel', 'done')], {
                 'state': 'assigned',
                 })
 
@@ -844,6 +848,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 ('draft', 'cancel'),
                 ('waiting', 'cancel'),
                 ('assigned', 'cancel'),
+                ('packed', 'cancel'),
+                ('cancel', 'draft'),
                 ))
         self._buttons.update({
                 'cancel': {
@@ -1036,7 +1042,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments
                 for m in s.inventory_moves + s.outgoing_moves
-                if m.state != 'draft'], {
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
 
@@ -1050,10 +1056,12 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
 
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.inventory_moves], {
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
-        move_obj.delete([m.id for s in shipments for m in s.inventory_moves])
+        move_obj.delete([m.id for s in shipments for m in s.inventory_moves
+                if m.state in ('draft', 'cancel')])
 
         # Re-Browse because moves have been deleted
         shipments = self.browse(ids)
@@ -1156,7 +1164,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     outgoing_qty[move.product.id] -= removed_qty
 
         move_obj.write([m.id for s in shipments for m in s.outgoing_moves
-                if m.state != 'cancel'], {
+                if m.state not in ('cancel', 'done')], {
                 'state': 'assigned',
                 })
 
@@ -1272,7 +1280,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def assign_force(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.inventory_moves], {
+        move_obj.write([m.id for s in shipments for m in s.inventory_moves
+                if m.state not in ('cancel', 'done')], {
                 'state': 'assigned',
                 })
         self.assign(ids)
@@ -1382,6 +1391,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                 ('received', 'done'),
                 ('received', 'draf'),
                 ('draft', 'cancel'),
+                ('received', 'cancel'),
                 ('cancel', 'draft'),
                 ))
         self._buttons.update({
@@ -1620,10 +1630,11 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
         move_obj.write([m.id for s in shipments for m in s.incoming_moves
-                if m.state != 'draft'], {
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
-        move_obj.delete([m.id for s in shipments for m in s.inventory_moves])
+        move_obj.delete([m.id for s in shipments for m in s.inventory_moves
+                if m.state in ('draft', 'cancel')])
 
     @ModelView.button
     @Workflow.transition('received')
@@ -1925,7 +1936,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def draft(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
 
@@ -1935,11 +1947,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
         # First reset state to draft to allow update from and to location
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
         for shipment in shipments:
-            move_obj.write([m.id for m in shipment.moves], {
+            move_obj.write([m.id for m in shipment.moves
+                    if m.state != 'done'], {
                 'from_location': shipment.from_location.id,
                 'to_location': shipment.to_location.id,
                 'planned_date': shipment.planned_date,
@@ -1955,7 +1969,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         move_obj = Pool().get('stock.move')
         date_obj = Pool().get('ir.date')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
         self.write(ids, {
@@ -1987,7 +2002,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def assign_force(self, ids):
         move_obj = Pool().get('stock.move')
         shipments = self.browse(ids)
-        move_obj.write([m.id for s in shipments for m in s.moves], {
+        move_obj.write([m.id for s in shipments for m in s.moves
+                if m.state not in ('assigned', 'done')], {
                 'state': 'assigned',
                 })
         self.assign(ids)
