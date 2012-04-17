@@ -2982,11 +2982,11 @@ msgstr "A recevoir"
 
 msgctxt "selection:account.account,kind:"
 msgid "Revenue"
-msgstr "Revenu"
+msgstr "Produit"
 
 msgctxt "selection:account.account,kind:"
 msgid "Revenue"
-msgstr "Revenu"
+msgstr "Produit"
 
 msgctxt "selection:account.account,kind:"
 msgid "View"
@@ -3050,11 +3050,11 @@ msgstr "A recevoir"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
-msgstr "Revenu"
+msgstr "Produit"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
-msgstr "Revenu"
+msgstr "Produit"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "View"
