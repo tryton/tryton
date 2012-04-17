@@ -2,117 +2,121 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:0"
+msgctxt "error:company.company:"
 msgid "You can not create recursive companies!"
 msgstr "Vous ne pouvez pas créer des sociétés récursives !"
 
-msgctxt "error:res.user:0"
+msgctxt "error:company.company:"
+msgid "You can not create recursive companies!"
+msgstr "Vous ne pouvez pas créer des sociétés récursives !"
+
+msgctxt "error:res.user:"
 msgid "You can not set a company that is not a child of your main company!"
 msgstr ""
 "Vous ne pouvez pas choisir une société qui n'est pas enfant de votre société"
 " principale !"
 
-msgctxt "field:company.company,childs:0"
+msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Enfants"
 
-msgctxt "field:company.company,currency:0"
+msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr "Devise"
 
-msgctxt "field:company.company,employees:0"
+msgctxt "field:company.company,employees:"
 msgid "Employees"
 msgstr "Employés"
 
-msgctxt "field:company.company,footer:0"
+msgctxt "field:company.company,footer:"
 msgid "Footer"
 msgstr "Pied de Page"
 
-msgctxt "field:company.company,header:0"
+msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Entête de Page"
 
-msgctxt "field:company.company,parent:0"
+msgctxt "field:company.company,parent:"
 msgid "Parent"
 msgstr "Parent"
 
-msgctxt "field:company.company,party:0"
+msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Tiers"
 
-msgctxt "field:company.company,rec_name:0"
+msgctxt "field:company.company,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:company.employee,company:0"
+msgctxt "field:company.employee,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:company.employee,party:0"
+msgctxt "field:company.employee,party:"
 msgid "Party"
 msgstr "Tiers"
 
-msgctxt "field:company.employee,rec_name:0"
+msgctxt "field:company.employee,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.cron,companies:0"
+msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr "Sociétés"
 
-msgctxt "field:ir.cron-company.company,company:0"
+msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:ir.cron-company.company,cron:0"
+msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
 msgstr "Cron"
 
-msgctxt "field:ir.cron-company.company,rec_name:0"
+msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:ir.property,company:0"
+msgctxt "field:ir.property,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:ir.sequence,company:0"
+msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:ir.sequence.strict,company:0"
+msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:res.user,companies:0"
+msgctxt "field:res.user,companies:"
 msgid "Current Companies"
 msgstr "Sociétés courantes"
 
-msgctxt "field:res.user,company:0"
+msgctxt "field:res.user,company:"
 msgid "Current Company"
 msgstr "Société courante"
 
-msgctxt "field:res.user,employee:0"
+msgctxt "field:res.user,employee:"
 msgid "Employee"
 msgstr "Employé"
 
-msgctxt "field:res.user,main_company:0"
+msgctxt "field:res.user,main_company:"
 msgid "Main Company"
 msgstr "Société principale"
 
-msgctxt "help:ir.cron,companies:0"
+msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
 msgstr "Sociétés enregistrées pour ce planificateur"
 
-msgctxt "model:company.company,name:0"
+msgctxt "model:company.company,name:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "model:company.company.config.init,name:0"
+msgctxt "model:company.company.config.init,name:"
 msgid "Company Config Init"
 msgstr "Société config - Init"
 
-msgctxt "model:company.employee,name:0"
+msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Employé"
 
@@ -132,7 +136,7 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Lettre"
 
-msgctxt "model:ir.cron-company.company,name:0"
+msgctxt "model:ir.cron-company.company,name:"
 msgid "ir.cron-company.company"
 msgstr ""
 
@@ -148,94 +152,142 @@ msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
 msgstr "Employés"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
 msgid "Best Regards,"
 msgstr "Bien cordialement,"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
+msgid "Best Regards,"
+msgstr "Bien cordialement,"
+
+msgctxt "odt:party.letter:"
 msgid "Date:"
 msgstr "Date :"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
+msgid "Date:"
+msgstr "Date :"
+
+msgctxt "odt:party.letter:"
 msgid "Dear Madams and Sirs,"
 msgstr "Chère madame, cher monsieur,"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
+msgid "Dear Madams and Sirs,"
+msgstr "Chère madame, cher monsieur,"
+
+msgctxt "odt:party.letter:"
 msgid "E-Mail:"
 msgstr "E-Mail :"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
+msgid "E-Mail:"
+msgstr "E-Mail :"
+
+msgctxt "odt:party.letter:"
 msgid "Phone:"
 msgstr "Téléphone"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
+msgid "Phone:"
+msgstr "Téléphone"
+
+msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Sujet :"
 
-msgctxt "odt:party.letter:0"
+msgctxt "odt:party.letter:"
+msgid "Subject:"
+msgstr "Sujet :"
+
+msgctxt "odt:party.letter:"
 msgid "VAT Number:"
 msgstr "Numéro TVA :"
 
-msgctxt "view:company.company.config.init:0"
+msgctxt "odt:party.letter:"
+msgid "VAT Number:"
+msgstr "Numéro TVA :"
+
+msgctxt "view:company.company.config.init:"
 msgid "Create Company"
 msgstr "Créer une société"
 
-msgctxt "view:company.company.config.init:0"
+msgctxt "view:company.company.config.init:"
 msgid "You can now add your company into the system."
 msgstr "Vous pouvez maintenant ajouter votre société dans le système."
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.company:"
 msgid "Addresses"
 msgstr "Adresses"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.company:"
 msgid "Companies"
 msgstr "Sociétés"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.company:"
+msgid "Companies"
+msgstr "Sociétés"
+
+msgctxt "view:company.company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "view:company.company:"
 msgid "Employees"
 msgstr "Employés"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.company:"
 msgid "General"
 msgstr "Général"
 
-msgctxt "view:company.company:0"
+msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Rapports"
 
-msgctxt "view:company.employee:0"
+msgctxt "view:company.company:"
+msgid "Reports"
+msgstr "Rapports"
+
+msgctxt "view:company.employee:"
 msgid "Addresses"
 msgstr "Adresses"
 
-msgctxt "view:company.employee:0"
+msgctxt "view:company.employee:"
 msgid "Employee"
 msgstr "Employé"
 
-msgctxt "view:company.employee:0"
+msgctxt "view:company.employee:"
+msgid "Employee"
+msgstr "Employé"
+
+msgctxt "view:company.employee:"
 msgid "Employees"
 msgstr "Employés"
 
-msgctxt "view:company.employee:0"
+msgctxt "view:company.employee:"
+msgid "Employees"
+msgstr "Employés"
+
+msgctxt "view:company.employee:"
 msgid "General"
 msgstr "Général"
 
-msgctxt "wizard_button:company.company.config,company,add:0"
+msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
 msgstr "Ajouter"
 
-msgctxt "wizard_button:company.company.config,company,end:0"
+msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
 msgstr "Annuler"
 
-msgctxt "wizard_button:company.company.config,init,company:0"
+msgctxt "wizard_button:company.company.config,init,company:"
 msgid "Ok"
 msgstr "Ok"
 
-msgctxt "wizard_button:company.company.config,init,end:0"
+msgctxt "wizard_button:company.company.config,init,end:"
 msgid "Cancel"
 msgstr "Annuler"
