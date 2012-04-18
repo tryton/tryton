@@ -22,6 +22,18 @@ msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:country.country,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:country.country,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:country.country,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:country.country,name:"
 msgid "Name"
 msgstr "Nom"
@@ -34,6 +46,14 @@ msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Subdivisions"
 
+msgctxt "field:country.country,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:country.country,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Code"
@@ -41,6 +61,18 @@ msgstr "Code"
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
 msgstr "Pays"
+
+msgctxt "field:country.subdivision,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:country.subdivision,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:country.subdivision,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -57,6 +89,14 @@ msgstr "Nom"
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "Type"
+
+msgctxt "field:country.subdivision,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:country.subdivision,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
 
 msgctxt "help:country.country,code:"
 msgid ""
