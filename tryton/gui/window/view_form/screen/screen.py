@@ -643,8 +643,8 @@ class Screen(SignalEvent):
         return [x.id for x in self.models if x.id]
 
     def clear(self):
-        self.models.clear()
         self.current_model = None
+        self.models.clear()
 
     def on_change(self, fieldname, attr):
         self.current_model.on_change(fieldname, attr)
