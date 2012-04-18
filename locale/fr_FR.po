@@ -18,6 +18,14 @@ msgctxt "field:company.company,hours_per_work_year:"
 msgid "Hours per Work Year"
 msgstr "Heures par année de travail"
 
+msgctxt "model:company.company,name:"
+msgid ""
+msgstr ""
+
+msgctxt "model:res.user,name:"
+msgid ""
+msgstr ""
+
 msgctxt "view:company.company:"
 msgid "Work Time"
 msgstr "Temps de travail"
