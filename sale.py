@@ -2080,45 +2080,21 @@ class HandleInvoiceException(Wizard):
 HandleInvoiceException()
 
 
-class ReturnSaleAsk(ModelView):
-    _name = 'sale.return_sale.ask'
-    sale_lines = fields.Many2Many('sale.line', None, None, 'Return Lines',
-        domain=[('sale', '=', Eval('sale'))], depends=['sale'])
-    sale = fields.Many2One('sale.sale', 'Sale')
-
-ReturnSaleAsk()
-
-
 class ReturnSale(Wizard):
     _name = 'sale.return_sale'
-    start_state = 'ask'
-    ask = StateView('sale.return_sale.ask', 'sale.return_sale_ask_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Ok', 'make_return', 'tryton-ok', default=True),
-            ])
+    start_state = 'make_return'
     make_return = StateTransition()
-
-    def default_ask(self, session, fields):
-        return {
-            'sale': Transaction().context['active_id'],
-            }
 
     def transition_make_return(self, session):
         pool = Pool()
         sale_obj = pool.get('sale.sale')
         line_obj = pool.get('sale.line')
 
-        sale = sale_obj.browse(session.ask.sale.id)
-        new_sale_type = 'return' if sale.type == 'sale' else 'sale'
-        new_sale_id = sale_obj.copy(session.ask.sale.id, {
-                'type': new_sale_type,
-                })
-        new_line_ids = line_obj.copy([x.id for x in session.ask.sale_lines])
+        sale_id = Transaction().context['active_id']
+        new_sale_id = sale_obj.copy(sale_id)
+        new_line_ids = line_obj.search([('sale', '=', new_sale_id)])
         for new_line in line_obj.browse(new_line_ids):
             line_obj.write(new_line.id, {'quantity': -new_line.quantity})
-        sale_obj.write(new_sale_id, {
-                'lines': [('set', new_line_ids)],
-                })
         return 'end'
 
 ReturnSale()

@@ -576,6 +576,17 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"
             id="menu_customer"/>
 
+        <record model="ir.action.wizard" id="wizard_return_sale">
+            <field name="name">Create Return Sale</field>
+            <field name="wiz_name">sale.return_sale</field>
+            <field name="model">sale.sale</field>
+        </record>
+        <record model="ir.action.keyword" id="act_wizard_return_sale_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">sale.sale,-1</field>
+            <field name="action" ref="wizard_return_sale"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_sale">
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
             <field name="global_p" eval="True"/>
