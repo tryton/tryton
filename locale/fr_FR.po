@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "model:account.invoice,name:"
+msgid ""
+msgstr ""
+
+msgctxt "model:account.invoice.line,name:"
+msgid ""
+msgstr ""
+
 msgctxt "model:ir.action,name:act_invoice_line_in_credit_note_form"
 msgid "Supplier Credit Note Lines"
 msgstr "Ligne de note de crédit fournisseur"
