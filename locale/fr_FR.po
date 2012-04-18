@@ -11,6 +11,10 @@ msgid "Amount (%s) greater than the amount to pay of invoice!"
 msgstr "Le montant (%s) est plus grand que le montant à payer de la facture !"
 
 msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value!"
+msgstr "Le montant doit être une valeur positive ou négative"
+
+msgctxt "error:account.statement.line:"
 msgid ""
 "Credit or debit account on journal is the same than the statement line "
 "account!"
@@ -43,6 +47,10 @@ msgstr "Le solde final doit être %s !"
 msgctxt "error:account.statement:"
 msgid "End Balance must be %s!"
 msgstr "Le solde final doit être %s !"
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion!"
+msgstr "Le relevé \"%s\" doit être annulé avant suppression"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -51,6 +59,14 @@ msgstr "Balance"
 msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Société"
+
+msgctxt "field:account.statement,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
@@ -63,6 +79,10 @@ msgstr "Date"
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr "Solde final"
+
+msgctxt "field:account.statement,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -88,13 +108,33 @@ msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "État"
 
+msgctxt "field:account.statement,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
 msgstr "Société"
 
+msgctxt "field:account.statement.journal,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement.journal,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
 msgstr "Devise"
+
+msgctxt "field:account.statement.journal,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -108,6 +148,14 @@ msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:account.statement.journal,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement.journal,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
 msgstr "Compte"
@@ -116,6 +164,14 @@ msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "Montant"
 
+msgctxt "field:account.statement.line,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.statement.line,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Date"
@@ -123,6 +179,10 @@ msgstr "Date"
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Description"
+
+msgctxt "field:account.statement.line,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
@@ -143,6 +203,14 @@ msgstr "Nom"
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Relevé"
+
+msgctxt "field:account.statement.line,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.statement.line,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
@@ -259,6 +327,10 @@ msgstr "Journaux de relevés"
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
 msgstr "Journaux de relevés"
+
+msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Montant"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
