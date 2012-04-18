@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.category:"
+msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgstr "Il n'y a pas de compte de dépenses/revenus définé sur la catégorie"
+
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
@@ -16,21 +20,57 @@ msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Compte de charges"
 
+msgctxt "field:product.category,account_expense_used:"
+msgid "Account Expense Used"
+msgstr "Compte de charges utilisé"
+
+msgctxt "field:product.category,account_parent:"
+msgid "Use Parent's accounts"
+msgstr "Utiliser les comptes du parent"
+
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
 msgstr "Compte de produits"
+
+msgctxt "field:product.category,account_revenue_used:"
+msgid "Account Revenue Used"
+msgstr "Compte de produits utilisé"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
 msgstr "Taxes client"
 
+msgctxt "field:product.category,customer_taxes_used:"
+msgid "Customer Taxes Used"
+msgstr "Taxes client utilisées"
+
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Taxes fournisseur"
 
+msgctxt "field:product.category,supplier_taxes_used:"
+msgid "Supplier Taxes Used"
+msgstr "Taxes fournisseur utilisées"
+
+msgctxt "field:product.category,taxes_parent:"
+msgid "Use the Parent's Taxes"
+msgstr "Utiliser les taxes du parent"
+
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
 msgstr "Catégorie"
+
+msgctxt "field:product.category-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:product.category-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:product.category-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Name"
@@ -40,9 +80,29 @@ msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
 msgstr "Taxe"
 
+msgctxt "field:product.category-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:product.category-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
 msgstr "Catégorie"
+
+msgctxt "field:product.category-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:product.category-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:product.category-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Name"
@@ -51,6 +111,14 @@ msgstr "Nom"
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Taxe"
+
+msgctxt "field:product.category-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:product.category-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
 
 msgctxt "field:product.template,account_category:"
 msgid "Use Category's accounts"
@@ -78,7 +146,7 @@ msgstr "Taxes Client"
 
 msgctxt "field:product.template,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr "Taxes utilisées"
+msgstr "Taxes client utilisées"
 
 msgctxt "field:product.template,supplier_taxes:"
 msgid "Supplier Taxes"
@@ -86,11 +154,23 @@ msgstr "Taxes Fournisseur"
 
 msgctxt "field:product.template,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Taxes client utilisées"
+msgstr "Taxes Fournisseur utilisées"
 
 msgctxt "field:product.template,taxes_category:"
 msgid "Use Category's Taxes"
 msgstr "Utiliser les taxes de la catégorie"
+
+msgctxt "field:product.template-customer-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:product.template-customer-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:product.template-customer-account.tax,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
@@ -104,6 +184,26 @@ msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
 msgstr "Taxe"
 
+msgctxt "field:product.template-customer-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:product.template-supplier-account.tax,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:product.template-supplier-account.tax,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:product.template-supplier-account.tax,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
 msgstr "Modèle produit"
@@ -115,6 +215,22 @@ msgstr "Nom"
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Taxe"
+
+msgctxt "field:product.template-supplier-account.tax,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:product.template-supplier-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "help:product.category,account_parent:"
+msgid "Use the accounts defined on the parent category"
+msgstr "Utiliser les comptes de la catégorie parente"
+
+msgctxt "help:product.category,taxes_parent:"
+msgid "Use the taxes defined on the parent category"
+msgstr "Utiliser les taxes de la catégorie parente"
 
 msgctxt "help:product.template,account_category:"
 msgid "Use the accounts defined on the category"
@@ -132,6 +248,10 @@ msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"
 msgstr "Utiliser les taxes de la catégorie"
 
+msgctxt "model:product.category,name:"
+msgid ""
+msgstr ""
+
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
 msgstr "Catégorie - Taxe client"
@@ -139,6 +259,10 @@ msgstr "Catégorie - Taxe client"
 msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
 msgstr "Catégorie - Taxe fournisseur"
+
+msgctxt "model:product.template,name:"
+msgid ""
+msgstr ""
 
 msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
@@ -155,6 +279,10 @@ msgstr "Comptabilité"
 msgctxt "view:product.category:"
 msgid "Accounting"
 msgstr "Comptabilité"
+
+msgctxt "view:product.category:"
+msgid "Accounts"
+msgstr "Comptes"
 
 msgctxt "view:product.category:"
 msgid "Taxes"
