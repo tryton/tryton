@@ -700,8 +700,8 @@ class Screen(SignalEvent):
         return [x.id for x in self.group if x.id]
 
     def clear(self):
-        self.group.clear()
         self.current_record = None
+        self.group.clear()
 
     def on_change(self, fieldname, attr):
         self.current_record.on_change(fieldname, attr)
