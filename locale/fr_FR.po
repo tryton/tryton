@@ -10,6 +10,10 @@ msgctxt "error:currency.currency.rate:"
 msgid "A currency can only have one rate by date!"
 msgstr "Une devise ne peut avoir qu'un seul taux par date"
 
+msgctxt "error:currency.currency.rate:"
+msgid "The currency rate must greater than or equal to 0"
+msgstr "Le taux de la devise doit être plus grand ou égal à zéro"
+
 msgctxt "error:currency.currency:"
 msgid "Invalid Grouping!"
 msgstr "Groupement invalide"
@@ -34,9 +38,21 @@ msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:currency.currency,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:currency.currency,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
 msgstr "Décimale affichée"
+
+msgctxt "field:currency.currency,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
@@ -110,6 +126,22 @@ msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
 msgstr "Symbole"
 
+msgctxt "field:currency.currency,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:currency.currency,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:currency.currency.rate,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:currency.currency.rate,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -118,6 +150,10 @@ msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
 msgstr "Date"
 
+msgctxt "field:currency.currency.rate,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Taux"
@@ -125,6 +161,14 @@ msgstr "Taux"
 msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:currency.currency.rate,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:currency.currency.rate,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -877,6 +921,14 @@ msgstr "Devises"
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administration Devises"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Taux"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rates"
+msgstr "Taux"
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
