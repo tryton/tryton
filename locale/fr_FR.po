@@ -5,3 +5,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "field:account.invoice.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
+
+msgctxt "model:account.invoice.line,name:"
+msgid ""
+msgstr ""
+
+msgctxt "model:analytic_account.account,name:"
+msgid ""
+msgstr ""
