@@ -17,8 +17,6 @@ import tempfile
 QUOTE_SEPARATION = re.compile(r"(.*?)('.*?')", re.DOTALL)
 EXTRACT_EPOCH_PATTERN = re.compile(r'EXTRACT\s*\(\s*EPOCH\s+FROM',
         re.I)
-DatabaseIntegrityError = None
-DatabaseOperationalError = None
 
 
 class Database(DatabaseInterface):
