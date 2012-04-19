@@ -1757,7 +1757,7 @@ msgstr "Mercredi"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
-msgstr "Etes-vous sur de créditer ces factures"
+msgstr "Etes-vous sûr de créditer ces factures ?"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Credit Invoice"
