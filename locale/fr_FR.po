@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:stock.location,sequence:0"
+msgctxt "field:stock.location,sequence:"
 msgid "Sequence"
 msgstr "Séquence"
+
+msgctxt "model:stock.location,name:"
+msgid ""
+msgstr ""
