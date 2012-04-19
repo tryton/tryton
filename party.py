@@ -28,6 +28,9 @@ class Party(Model):
         for party in self.browse(cursor, user, ids):
             if party.siren and not luhn.validate(party.siren):
                 return False
+            if party.siren:
+                if len(party.siren) != 9 or not luhn.validate(party.siren):
+                    return False
         return True
 
 Party()

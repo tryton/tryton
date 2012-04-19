@@ -36,8 +36,9 @@ class Address(Model):
         Check validity of SIRET
         '''
         for address in self.browse(cursor, user, ids):
-            if address.siret and not luhn.validate(address.siret):
-                return False
+            if address.siret:
+                if len(address.siret) != 14 or not luhn.validate(address.siret):
+                    return False
         return True
 
 Address()
