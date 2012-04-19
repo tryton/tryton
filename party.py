@@ -26,8 +26,10 @@ class Party(Model):
         Check validity of SIREN
         '''
         for party in self.browse(ids):
-            if party.siren and not luhn.validate(party.siren):
-                return False
+            if party.siren:
+                if len(party.siren) != 9 or not luhn.validate(party.siren):
+                    return False
+            print party.addresses
         return True
 
 Party()
