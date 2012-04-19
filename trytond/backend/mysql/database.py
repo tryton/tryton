@@ -27,8 +27,6 @@ def _replace_split_part_right(mobj):
     if pos == 2:
         return ', -1'
     return ', 1'
-DatabaseIntegrityError = None
-DatabaseOperationalError = None
 
 
 class Database(DatabaseInterface):
