@@ -277,9 +277,9 @@ class Record(SignalEvent):
         if not records:
             return
         record = records[0]
-        group = record.group
+        root_group = record.group.root_group
         assert all(r.model_name == record.model_name for r in records)
-        assert all(r.group == group for r in records)
+        assert all(r.group.root_group == root_group for r in records)
         records = [r for r in records if r.id >= 0]
         ctx = {}
         ctx.update(rpc.CONTEXT)
@@ -288,7 +288,7 @@ class Record(SignalEvent):
         for rec in records:
             ctx['_timestamp'].update(rec.get_timestamp())
         record_ids = set(r.id for r in records)
-        reload_ids = set(group.on_write_ids(list(record_ids)))
+        reload_ids = set(root_group.on_write_ids(list(record_ids)))
         reload_ids -= record_ids
         reload_ids = list(reload_ids)
         args = ('model', record.model_name, 'delete', list(record_ids), ctx)
@@ -298,7 +298,7 @@ class Record(SignalEvent):
             if not common.process_exception(exception, *args):
                 return False
         if reload_ids:
-            group.root_group.reload(reload_ids)
+            root_group.reload(reload_ids)
         return True
 
     def default_get(self, domain=None, context=None):
