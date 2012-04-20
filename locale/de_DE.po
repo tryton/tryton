@@ -385,18 +385,6 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "field:sale.return_sale.ask,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.return_sale.ask,sale:"
-msgid "Sale"
-msgstr "Verkauf"
-
-msgctxt "field:sale.return_sale.ask,sale_lines:"
-msgid "Return Lines"
-msgstr "Rücknahme Positionen"
-
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Kommentar"
@@ -716,6 +704,10 @@ msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
 msgstr "Rechnungsvorbehalt bearbeiten"
 
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Create Return Sale"
+msgstr "Rücknahme erstellen"
+
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
@@ -803,10 +795,6 @@ msgstr "Verkauf Position - Bewegung Ignoriert"
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Verkauf Position - Bewegung Nachgebildet"
-
-msgctxt "model:sale.return_sale.ask,name:"
-msgid "sale.return_sale.ask"
-msgstr ""
 
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
@@ -1185,13 +1173,5 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
-msgid "Ok"
-msgstr "OK"
-
-msgctxt "wizard_button:sale.return_sale,ask,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "wizard_button:sale.return_sale,ask,make_return:"
 msgid "Ok"
 msgstr "OK"
