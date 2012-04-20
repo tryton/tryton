@@ -699,9 +699,7 @@ class Sale(Workflow, ModelSQL, ModelView):
         line_obj = Pool().get('sale.line')
         res = {}
         for line in sale.lines:
-            if (invoice_type == 'out_invoice') != (line.quantity >= 0):
-                continue
-            val = line_obj.get_invoice_line(line)
+            val = line_obj.get_invoice_line(line, invoice_type)
             if val:
                 res[line.id] = val
         return res
@@ -779,13 +777,8 @@ class Sale(Workflow, ModelSQL, ModelView):
         line_obj = Pool().get('sale.line')
         res = {}
         for line in sale.lines:
-            val = line_obj.get_move(line)
-            if not val:
-                continue
-            out_move = (val['to_location']
-                == line.sale.party.customer_location.id)
-            out_shipment = shipment_type == 'out'
-            if out_move == out_shipment:
+            val = line_obj.get_move(line, shipment_type)
+            if val:
                 res[line.id] = val
         return res
 
@@ -1344,13 +1337,10 @@ class SaleLine(ModelSQL, ModelView):
                 line.sale.sale_date)
         return dates
 
-    def get_invoice_line(self, line):
+    def get_invoice_line(self, line, invoice_type):
         '''
-        Return invoice line values for sale line
-
-        :param line: the BrowseRecord of the line
-
-        :return: a list of invoice line values
+        Return a list of invoice line values for sale line according to
+        invoice_type
         '''
         uom_obj = Pool().get('product.uom')
         property_obj = Pool().get('ir.property')
@@ -1361,7 +1351,17 @@ class SaleLine(ModelSQL, ModelView):
         res['description'] = line.description
         res['note'] = line.note
         if line.type != 'line':
-            return [res]
+            if (line.sale.invoice_method == 'order'
+                    and (all(l.quantity >= 0 for l in line.sale.lines
+                            if l.type == 'line')
+                        or all(l.quantity <= 0 for l in line.sale.lines
+                            if l.type == 'line'))):
+                return [res]
+            else:
+                return []
+
+        if (invoice_type == 'out_invoice') != (line.quantity >= 0):
+            return []
 
         if (line.sale.invoice_method == 'order'
                 or not line.product
@@ -1416,13 +1416,9 @@ class SaleLine(ModelSQL, ModelView):
         default['invoice_lines'] = None
         return super(SaleLine, self).copy(ids, default=default)
 
-    def get_move(self, line):
+    def get_move(self, line, shipment_type):
         '''
-        Return move values for the sale line
-
-        :param line: the BrowseRecord of the line
-
-        :return: a dictionary of values of move
+        Return move values for the sale line according ot shipment_type
         '''
         uom_obj = Pool().get('product.uom')
 
@@ -1432,6 +1428,8 @@ class SaleLine(ModelSQL, ModelView):
         if not line.product:
             return
         if line.product.type == 'service':
+            return
+        if (shipment_type == 'out') != (line.quantity >= 0):
             return
         skip_ids = set(x.id for x in line.moves_recreated)
         quantity = abs(line.quantity)
