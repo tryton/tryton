@@ -313,7 +313,7 @@ class CloseFiscalYear(Wizard):
 
     def transition_close(self, session):
         fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_obj.close(session.start.close_fiscalyear)
+        fiscalyear_obj.close([session.start.close_fiscalyear.id])
         return 'end'
 
 CloseFiscalYear()
