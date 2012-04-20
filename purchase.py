@@ -1232,7 +1232,14 @@ class PurchaseLine(ModelSQL, ModelView):
         res['description'] = line.description
         res['note'] = line.note
         if line.type != 'line':
-            return [res]
+            if (line.purchase.invoice_method == 'order'
+                    and (all(l.quantity >= 0 for l in line.sale.lines
+                            if l.type == 'line')
+                        or all(l.quantity <= 0 for l in line.sale.lines
+                            if l.type == 'line'))):
+                return [res]
+            else:
+                return []
         if (line.purchase.invoice_method == 'order'
                 or not line.product
                 or line.product.type == 'service'):
