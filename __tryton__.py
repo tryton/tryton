@@ -5,6 +5,7 @@
     'name_bg_BG': 'Отчет на сметка',
     'name_ca_ES': 'Estat de comptes',
     'name_de_DE': 'Buchhaltung Bankauszüge',
+    'name_es_AR': 'Estado de Cuentas',
     'name_es_CO': 'Estado de Cuentas',
     'name_es_ES': 'Estado de cuentas',
     'name_fr_FR': 'Relevé comptable',
@@ -27,6 +28,10 @@
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Bankauszüge mit
     - Abstimmung von Bankauszügen und Rechnungen
+''',
+    'description_es_AR': '''Módulo financiero y contable con:
+    - Estado de cuentas
+    - Diario de estado de cuentas
 ''',
     'description_es_CO': '''Módulo Financiero y Contable con:
     - Estado de cuentas
@@ -60,6 +65,7 @@
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
