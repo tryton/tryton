@@ -5,6 +5,7 @@
     'name_bg_BG': 'Аналитична сметка',
     'name_ca_ES': 'Comptabilitat analítica',
     'name_de_DE': 'Kostenstellen',
+    'name_es_AR': 'Contabilidad Analítica',
     'name_es_CO': 'Contabilidad Analítica',
     'name_es_ES': 'Contabilidad analítica',
     'name_fr_FR': 'Comptabilité analytique',
@@ -35,6 +36,12 @@ I amb informes:
 
 Zugehörige Berichte:
     - Plan für Kostenstellen
+''',
+    'description_es_AR': '''Módulo financiero y de contabilidad con:
+    - Contabilidad analítica con cualquier cantidad de planes analíticos
+
+Y con informes:
+    - Balance contable analítico
 ''',
     'description_es_CO': '''Módulo Financiero y de Contabilidad con:
     - Contabilidad Analítica con cualquier cantidad de planes analíticos
@@ -72,6 +79,7 @@ Et le rapport:
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
