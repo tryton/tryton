@@ -5,6 +5,7 @@
     'name_bg_BG': 'LDAP Проверка',
     'name_ca_ES': 'Autenticació LDAP',
     'name_de_DE': 'LDAP Authentifizierung',
+    'name_es_AR': 'Autentificación LDAP',
     'name_es_CO': 'Autentificación LDAP',
     'name_es_ES': 'Autentificación LDAP',
     'name_fr_FR': 'Authentification LDAP',
@@ -18,6 +19,7 @@
     'description_de_DE': '''Authentifizierung über LDAP
     - Fügt Unterstützung für Authentifizierung über einen LDAP-Server hinzu.
 ''',
+    'description_es_AR': 'Autentifica usuarios contra un servidor LDAP.',
     'description_es_CO': 'Autentica usuarios frente a un servidor LDAP.',
     'description_es_ES': 'Autentifica usuarios contra un servidor LDAP.',
     'description_fr_FR': '''Authentification des utilisateurs via un serveur LDAP.''',
@@ -34,6 +36,7 @@
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
