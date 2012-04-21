@@ -5,6 +5,7 @@
     'name_bg_BG': 'Аналитична фактура',
     'name_ca_ES': 'Facturació analítica',
     'name_de_DE': 'Kostenstellen Rechnungsstellung',
+    'name_es_AR': 'Facturación Analítica',
     'name_es_CO': 'Facturación Analítica',
     'name_es_ES': 'Facturación analítica',
     'name_fr_FR': 'Facturation analytique',
@@ -22,6 +23,8 @@ i genera línies analítiques pels assentaments de la factura.
     'description_de_DE': ''' - Fügt Kostenstellen zu Rechnungszeilen hinzu
  - Erstellt Positionen für Kostenstellen bei Buchung von Rechnungen
 ''',
+    'description_es_AR': '''Añade contabilidad analítica en las líneas de
+factura y genera líneas analíticas en los asientos de la factura.''',
     'description_es_CO': ''' - Adición de contabilidad analítica a las líneas de facturación
  -  Generación de líneas analíticas en la factura.
 ''',
@@ -43,6 +46,7 @@ i genera línies analítiques pels assentaments de la factura.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
