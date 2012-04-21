@@ -6,6 +6,7 @@
     'name_bg_BG': 'Табло',
     'name_ca_ES': 'Escriptori',
     'name_de_DE': 'Dashboard',
+    'name_es_AR': 'Tablero',
     'name_es_CO': 'Escritorio',
     'name_es_ES': 'Escritorio',
     'name_fr_FR': 'Tableau de bord',
@@ -26,6 +27,9 @@
 ''',
     'description_de_DE': '''Dashboard:
     - Ermöglicht die Einrichtung einer personalisierten Startseite.
+''',
+    'description_es_AR': '''Tablero:
+    - Permite la creación de una página de inicio personalizada.
 ''',
     'description_es_CO': '''Escritorio:
     - Permite la creación de una página de inicio personalizada.
@@ -56,6 +60,7 @@
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
