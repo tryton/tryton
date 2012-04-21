@@ -5,6 +5,7 @@
     "name_bg_BG": "Ред от независима фактура към сметка",
     "name_ca_ES": "Línia de factura independent",
     "name_de_DE": "Fakturierung ungebundene Rechnungsposition",
+    "name_es_AR": "Línea de factura independiente",
     "name_es_CO": "Línea de factura autónoma",
     "name_es_ES": "Línea de factura independiente",
     "name_fr_FR": "Ligne de facture autonome",
@@ -28,6 +29,10 @@ el mateix tipus, empresa i tercer.
       Rechnungen mit Status Entwurf hinzugefügt werden können.
     - Innerhalb einer Rechnung können nur Rechnungspositionen mit
       übereinstimmendem Typ, Unternehmen, Währung und Partei verwendet werden.
+''',
+    "description_es_AR": '''Permite crear líneas de factura independientes y
+añadirlas a una factura borrador. La factura solo aceptará líneas de factura
+con el mismo tipo, empresa, divisa y entidad.
 ''',
     "description_es_CO": '''Permite crear líneas individuales para facturación y añadirlas
 posteriormente a una factura en borrador. La factuara aceptará únicamente líneas de factura del
@@ -53,6 +58,7 @@ que des lignes qui ont les même type, société, devis et tiers.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
