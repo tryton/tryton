@@ -5,6 +5,7 @@
     'name_bg_BG': 'Фактуриране',
     'name_ca_ES': 'Facturació',
     'name_de_DE': 'Fakturierung',
+    'name_es_AR': 'Facturación',
     'name_es_CO': 'Facturación',
     'name_es_ES': 'Facturación',
     'name_fr_FR': 'Facturation',
@@ -52,6 +53,16 @@ Ermöglicht:
     - die Verfolgung der Bezahlung von Rechnungen
     - die Definition von Rechnungssequenzen für das Geschäftsjahr bzw. die Buchungszeiträume
     - die Erstellung von Gutschriften zu jeglicher Rechnung
+''',
+    'description_es_AR': '''Módulo financiero y de contabilidad con:
+    - Plazos de Pago
+    - Factura / Nota de crédito
+    - Factura de proveedor / Nota de crédito de proveedor
+
+Con las posibilidades de:
+    - hacer seguimientos del pago de facturas.
+    - definir secuencias de facturas por ejercicio fiscal o período.
+    - pagar cualquier factura.
 ''',
     'description_es_CO': '''Módulo Financiero y de Contabilidad con:
     - Términos de Pago
@@ -116,6 +127,7 @@ Met de mogelijkheid tot:
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
