@@ -64,7 +64,7 @@ msgstr "Los valores porcentaje y divisor no son coherentes."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Invalid payment term line!"
-msgstr "La línea del plazo de pago no es válida."
+msgstr "La línea del plazo de pago no es correcta."
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Payment term missing a remainder line!"
@@ -832,11 +832,11 @@ msgstr "Plazo de pago del proveedor"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
-msgstr "Si es cierto, la factura(s) actual será pagada."
+msgstr "Si está marcada, la factura(s) actual será pagada."
 
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
-msgstr "Usar para ordenar las líneas ascendentemente."
+msgstr "Sirve para ordenar las líneas ascendentemente."
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
