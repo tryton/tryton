@@ -5,6 +5,7 @@
     'name_bg_BG': 'Google карти',
     'name_ca_ES': 'Mapes de Google',
     'name_de_DE': 'Google Maps',
+    'name_es_AR': 'Mapas de Google',
     'name_es_CO': 'Mapas de Google',
     'name_es_ES': 'Mapas de Google',
     'name_fr_FR': 'Cartes Google',
@@ -18,6 +19,7 @@
 el Google Maps.
 ''',
     'description_de_DE': 'Fügt einen Link für den automatischen Aufruf von Google Maps zu Adressen hinzu.',
+    'description_es_AR': 'Añade un enlace de la dirección a Google Maps',
     'description_es_CO': 'Añade un enlace a la dirección en Google Maps',
     'description_es_ES': 'Añade un enlace de la dirección a Google Maps',
     'description_fr_FR': 'Ajoute un lien sur les adresses vers les cartes de Google',
@@ -33,6 +35,7 @@ el Google Maps.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
