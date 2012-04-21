@@ -5,6 +5,7 @@
     'name_bg_BG': 'Аналитични покупки',
     'name_ca_ES': 'Compra analítica',
     'name_de_DE': 'Kostenstellen Einkauf',
+    'name_es_AR': 'Compra Analítica',
     'name_es_CO': 'Compra Analítica',
     'name_es_ES': 'Compra analítica',
     'name_fr_FR': 'Achat analytique',
@@ -20,6 +21,8 @@
 comandes de compra.
 ''',
     'description_de_DE': '''Fügt kostenstellen zu Einkaufspositionen hinzu
+''',
+    'description_es_AR': '''Añade contabilidad analítica a las líneas de compra.
 ''',
     'description_es_CO': '''Adiciona contabilidad analítica a las líneas de compra.
 ''',
@@ -38,6 +41,7 @@ comandes de compra.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
