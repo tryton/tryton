@@ -14,9 +14,10 @@ msgctxt "field:account.invoice.payment_term.line.delay,create_uid:"
 msgid "Create User"
 msgstr "Usuario creación"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delay,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.line.delay,rec_name:"
 msgid ""
