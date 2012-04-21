@@ -4,6 +4,7 @@
     'name': 'Account Belgium',
     'name_ca_ES': 'Comptabilitat Belga',
     'name_de_DE': 'Buchhaltung Belgien',
+    'name_es_AR': 'Contabilidad Belga',
     'name_fr_FR': 'Comptabilité belge',
     'version': '2.3.0',
     'author': 'B2CK',
