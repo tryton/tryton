@@ -2,27 +2,47 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:carrier,carrier_cost_method:0"
+msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Método del costo de transportista"
+msgstr "Método del coste de transportista"
 
-msgctxt "field:carrier,carrier_product:0"
+msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
 msgstr "Productos del transportista"
 
-msgctxt "field:carrier,party:0"
+msgctxt "field:carrier,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:carrier,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:carrier,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:carrier,party:"
 msgid "Party"
 msgstr "Tercero"
 
-msgctxt "field:carrier,rec_name:0"
+msgctxt "field:carrier,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "help:carrier,carrier_cost_method:0"
-msgid "Method to compute carrier cost"
-msgstr "Método para procesar el costo del transportista"
+msgctxt "field:carrier,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
 
-msgctxt "model:carrier,name:0"
+msgctxt "field:carrier,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "help:carrier,carrier_cost_method:"
+msgid "Method to compute carrier cost"
+msgstr "Método para procesar el coste del transportista."
+
+msgctxt "model:carrier,name:"
 msgid "carrier"
 msgstr "Transportista"
 
@@ -30,34 +50,26 @@ msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Transportistas"
 
-msgctxt "model:ir.action,name:act_carrier_form2"
-msgid "Carrier"
-msgstr "Transportista"
-
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier Management"
-msgstr "Manejo de Transporte"
+msgstr "Transportista"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
 msgstr "Transportistas"
 
-msgctxt "model:ir.ui.menu,name:menu_carrier_form2"
-msgid "New Carrier"
-msgstr "Nuevo Transportista"
-
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administración de Transportista"
+msgstr "Administración de transportista"
 
-msgctxt "selection:carrier,carrier_cost_method:0"
+msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
 msgstr "Precio del producto"
 
-msgctxt "view:carrier:0"
+msgctxt "view:carrier:"
 msgid "Carrier"
 msgstr "Transportista"
 
-msgctxt "view:carrier:0"
+msgctxt "view:carrier:"
 msgid "Carriers"
 msgstr "Transportistas"
