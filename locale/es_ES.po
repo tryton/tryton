@@ -2,119 +2,163 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:0"
+msgctxt "error:currency.currency.rate:"
 msgid "A currency can only have one rate by date!"
-msgstr "Una divisa solo puede tener un valor por fecha"
+msgstr "Una divisa sólo puede tener una tasa de cambio por fecha."
 
-msgctxt "error:currency.currency:0"
+msgctxt "error:currency.currency.rate:"
+msgid "The currency rate must greater than or equal to 0"
+msgstr "El rango de la tasa de cambio de la divisa debe ser mas grande o igual a 0."
+
+msgctxt "error:currency.currency:"
 msgid "Invalid Grouping!"
-msgstr "Agrupamiento no válido"
+msgstr "El agrupamiento no es correcto."
 
-msgctxt "error:currency.currency:0"
+msgctxt "error:currency.currency:"
 msgid "No rate found for the currency: %s at the date: %s"
-msgstr "No se ha encontrado una conversión para la divisa «%s» con fecha: %s"
+msgstr "No se ha encontrado una tasa de cambio para la divisa «%s» con fecha: %s."
 
-msgctxt "field:currency.currency,active:0"
+msgctxt "field:currency.currency,active:"
 msgid "Active"
-msgstr "Activa"
+msgstr "Activo"
 
-msgctxt "field:currency.currency,code:0"
+msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Código"
 
-msgctxt "field:currency.currency,digits:0"
+msgctxt "field:currency.currency,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:currency.currency,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
 msgstr "Dígitos a mostrar"
 
-msgctxt "field:currency.currency,mon_decimal_point:0"
+msgctxt "field:currency.currency,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
 msgstr "Separador decimal"
 
-msgctxt "field:currency.currency,mon_grouping:0"
+msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
 msgstr "Agrupación"
 
-msgctxt "field:currency.currency,mon_thousands_sep:0"
+msgctxt "field:currency.currency,mon_thousands_sep:"
 msgid "Thousands Separator"
 msgstr "Separador de miles"
 
-msgctxt "field:currency.currency,n_cs_precedes:0"
+msgctxt "field:currency.currency,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
 msgstr "El signo negativo va delante"
 
-msgctxt "field:currency.currency,n_sep_by_space:0"
+msgctxt "field:currency.currency,n_sep_by_space:"
 msgid "Negative Separate by Space"
 msgstr "Signo negativo separado por espacio"
 
-msgctxt "field:currency.currency,n_sign_posn:0"
+msgctxt "field:currency.currency,n_sign_posn:"
 msgid "Negative Sign Position"
 msgstr "Posición del signo negativo"
 
-msgctxt "field:currency.currency,name:0"
+msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:currency.currency,negative_sign:0"
+msgctxt "field:currency.currency,negative_sign:"
 msgid "Negative Sign"
 msgstr "Signo negativo"
 
-msgctxt "field:currency.currency,numeric_code:0"
+msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Código numérico"
 
-msgctxt "field:currency.currency,p_cs_precedes:0"
+msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
 msgstr "El signo positivo va delante"
 
-msgctxt "field:currency.currency,p_sep_by_space:0"
+msgctxt "field:currency.currency,p_sep_by_space:"
 msgid "Positive Separate by Space"
 msgstr "Signo positivo separado por espacio"
 
-msgctxt "field:currency.currency,p_sign_posn:0"
+msgctxt "field:currency.currency,p_sign_posn:"
 msgid "Positive Sign Position"
 msgstr "Posición del signo positivo"
 
-msgctxt "field:currency.currency,positive_sign:0"
+msgctxt "field:currency.currency,positive_sign:"
 msgid "Positive Sign"
 msgstr "Signo positivo"
 
-msgctxt "field:currency.currency,rate:0"
+msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
 msgstr "Tasa de cambio actual"
 
-msgctxt "field:currency.currency,rates:0"
+msgctxt "field:currency.currency,rates:"
 msgid "Rates"
 msgstr "Tasas de cambio"
 
-msgctxt "field:currency.currency,rec_name:0"
+msgctxt "field:currency.currency,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:currency.currency,rounding:0"
+msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
 msgstr "Factor de redondeo"
 
-msgctxt "field:currency.currency,symbol:0"
+msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
 msgstr "Símbolo"
 
-msgctxt "field:currency.currency.rate,currency:0"
+msgctxt "field:currency.currency,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:currency.currency,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:currency.currency.rate,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:currency.currency.rate,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
 msgstr "Divisa"
 
-msgctxt "field:currency.currency.rate,date:0"
+msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
 msgstr "Fecha"
 
-msgctxt "field:currency.currency.rate,rate:0"
+msgctxt "field:currency.currency.rate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Tasa de cambio"
 
-msgctxt "field:currency.currency.rate,rec_name:0"
+msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "model:currency.currency,name:0"
+msgctxt "field:currency.currency.rate,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:currency.currency.rate,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Divisa"
 
@@ -228,7 +272,7 @@ msgstr "Dólar canadiense"
 
 msgctxt "model:currency.currency,name:cdf"
 msgid "Congolese Franc"
-msgstr "Congolese Franc"
+msgstr "Franco congolés"
 
 msgctxt "model:currency.currency,name:che"
 msgid "WIR Euro"
@@ -464,7 +508,7 @@ msgstr "Rupia de Sri Lanka"
 
 msgctxt "model:currency.currency,name:lrd"
 msgid "Liberian Dollar"
-msgstr "Dóla liberiano"
+msgstr "Dólar liberiano"
 
 msgctxt "model:currency.currency,name:lsl"
 msgid "Loti"
@@ -548,7 +592,7 @@ msgstr "Metical mozambiqueño"
 
 msgctxt "model:currency.currency,name:nad"
 msgid "Namibia Dollar"
-msgstr "Dóla namibio"
+msgstr "Dólar namibio"
 
 msgctxt "model:currency.currency,name:ngn"
 msgid "Naira"
@@ -708,7 +752,7 @@ msgstr "Dólar de Trinidad y Tobago"
 
 msgctxt "model:currency.currency,name:twd"
 msgid "New Taiwan Dollar"
-msgstr "nuevo Dólar taiwanés"
+msgstr "Dólar nuevo taiwanés"
 
 msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
@@ -764,7 +808,7 @@ msgstr "Tala"
 
 msgctxt "model:currency.currency,name:xaf"
 msgid "CFA Franc BEAC"
-msgstr "franco CFA BEAC"
+msgstr "Franco CFA BEAC"
 
 msgctxt "model:currency.currency,name:xag"
 msgid "Silver"
@@ -808,7 +852,7 @@ msgstr "Franco UIC"
 
 msgctxt "model:currency.currency,name:xof"
 msgid "CFA Franc BCEAO"
-msgstr "franco CFA BCEAO"
+msgstr "Franco CFA BCEAO"
 
 msgctxt "model:currency.currency,name:xpd"
 msgid "Palladium"
@@ -846,7 +890,7 @@ msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
 msgstr "Dólar zimbabuense"
 
-msgctxt "model:currency.currency.rate,name:0"
+msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Tasa de cambio"
 
@@ -854,10 +898,9 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Divisas"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Gestión de divisas"
+msgstr "Divisas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
@@ -867,22 +910,30 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Administración de divisas"
 
-msgctxt "view:currency.currency:0"
-msgid "Currencies"
-msgstr "Divisas"
-
-msgctxt "view:currency.currency:0"
-msgid "Currency"
-msgstr "Divisa"
-
-msgctxt "view:currency.currency:0"
-msgid "Formatting"
-msgstr "Formato"
-
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency.rate:"
 msgid "Rate"
 msgstr "Tasa de cambio"
 
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency.rate:"
+msgid "Rates"
+msgstr "Tasas de cambio"
+
+msgctxt "view:currency.currency:"
+msgid "Currencies"
+msgstr "Divisas"
+
+msgctxt "view:currency.currency:"
+msgid "Currency"
+msgstr "Divisa"
+
+msgctxt "view:currency.currency:"
+msgid "Formatting"
+msgstr "Formato"
+
+msgctxt "view:currency.currency:"
+msgid "Rate"
+msgstr "Tasa de cambio"
+
+msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Tasas de cambio"
