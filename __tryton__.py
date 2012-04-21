@@ -6,6 +6,7 @@
     'name_bg_BG': 'Фирма',
     'name_ca_ES': 'Companyia',
     'name_de_DE': 'Unternehmen',
+    'name_es_AR': 'Empresa',
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Empresa',
     'name_fr_FR': 'Société',
@@ -41,6 +42,13 @@ Make the scheduler run on each companies.
  - Ermöglicht die Definition eines neuen Berichtsanalysierers mit Unternehmen im Berichtskopf.
  - Fügt den Kontakten die Berichtsvorlage für Briefe hinzu.
  - Initialisiert die Aufgaben des Zeitplaners für jedes Unternehmen.
+''',
+    'description_es_AR': '''Define empresa y empleados.
+ - Añade la empresa principal y predeterminada en las preferencias de los usuarios.
+ - Añade empresa a las propiedades.
+ - Define un nuevo analizador de informe para los informes con el encabezado de la empresa.
+ - Añade una plantilla de carta en entidades.
+ - Hace que el programador de tareas se ejecute por empresa.
 ''',
     'description_es_CO': ''' - Define compañía y empleados.
  - Añade compañía principal y predeterminada de acuerdo a preferencia de usuarios.
@@ -92,6 +100,7 @@ Lance les planificateurs sur chaque société.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
