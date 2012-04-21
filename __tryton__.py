@@ -5,6 +5,7 @@
     'name_bg_BG': 'Аналитична продажба',
     'name_ca_ES': 'Vendes analítiques',
     'name_de_DE': 'Kostenstellen Verkauf',
+    'name_es_AR': 'Venta Analítica',
     'name_es_CO': 'Ventas Analíticas',
     'name_es_ES': 'Venta analítica',
     'name_fr_FR': 'Vente analytique',
@@ -19,6 +20,8 @@
     'description_ca_ES': '''Afegeix un compte analític a les línies de les
 comandes de venda.''',
     'description_de_DE': '''Fügt Kostenstellen zu den Verkaufspositionen hinzu
+''',
+    'description_es_AR': '''Añade contabilidad analítica a las líneas de venta.
 ''',
     'description_es_CO': '''Añade cuentas analíticas a las líneas de ventas.
 ''',
@@ -37,6 +40,7 @@ comandes de venda.''',
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
