@@ -2,119 +2,91 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.category,account_journal_stock_customer:0"
-msgid "Journal Stock Customer"
-msgstr "Journal du stock client"
+msgctxt "field:account.configuration,stock_journal:"
+msgid "Stock Journal"
+msgstr "Journal de stock"
 
-msgctxt "field:product.category,account_journal_stock_lost_found:0"
-msgid "Journal Stock Lost and Found"
-msgstr "Journal de stock \"pertes et surplus\""
-
-msgctxt "field:product.category,account_journal_stock_supplier:0"
-msgid "Journal Stock Supplier"
-msgstr "Journal de stock fournisseur"
-
-msgctxt "field:product.category,account_stock:0"
+msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr "Compte de stock"
 
-msgctxt "field:product.category,account_stock_customer:0"
+msgctxt "field:product.category,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Compte de stock client"
 
-msgctxt "field:product.category,account_stock_lost_found:0"
-msgid "Account Stock Lost and Found"
-msgstr "Compte de stock \"pertes et surplus\""
-
-msgctxt "field:product.category,account_stock_supplier:0"
-msgid "Account Stock Supplier"
-msgstr "Compte de stock fournisseur"
-
-msgctxt "field:product.template,account_journal_stock_customer:0"
-msgid "Account Journal Stock Customer"
-msgstr "Journal du compte stock client"
-
-msgctxt "field:product.template,account_journal_stock_customer_used:0"
-msgid "Journal Stock Customer"
-msgstr "Journal du stock client"
-
-msgctxt "field:product.template,account_journal_stock_lost_found:0"
-msgid "Account Journal Stock Lost and Found"
-msgstr "Journa du compte de stock \"pertes et surplus\""
-
-msgctxt "field:product.template,account_journal_stock_lost_found_used:0"
-msgid "Journal Stock Lost and Found"
-msgstr "Journal de stock \"pertes et surplus\""
-
-msgctxt "field:product.template,account_journal_stock_supplier:0"
-msgid "Account Journal Stock Supplier"
-msgstr "Journal du compte stock fournisseur"
-
-msgctxt "field:product.template,account_journal_stock_supplier_used:0"
-msgid "Journal Stock Supplier"
-msgstr "Journal de stock fournisseur"
-
-msgctxt "field:product.template,account_stock:0"
-msgid "Account Stock"
-msgstr "Compte de stock"
-
-msgctxt "field:product.template,account_stock_customer:0"
-msgid "Account Stock Customer"
-msgstr "Compte de stock client"
-
-msgctxt "field:product.template,account_stock_customer_used:0"
+msgctxt "field:product.category,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
 msgstr "Compte de stock client utilisé"
 
-msgctxt "field:product.template,account_stock_lost_found:0"
+msgctxt "field:product.category,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte de stock \"pertes et surplus\""
 
-msgctxt "field:product.template,account_stock_lost_found_used:0"
+msgctxt "field:product.category,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte de stock \"pertes et surplus\""
 
-msgctxt "field:product.template,account_stock_supplier:0"
+msgctxt "field:product.category,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Compte de stock fournisseur"
 
-msgctxt "field:product.template,account_stock_supplier_used:0"
+msgctxt "field:product.category,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr "Compte de stock fournisseur utilisé"
 
-msgctxt "field:product.template,account_stock_used:0"
+msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Compte de stock utilisé"
 
-msgctxt "field:stock.move,account_move:0"
+msgctxt "field:product.template,account_stock:"
+msgid "Account Stock"
+msgstr "Compte de stock"
+
+msgctxt "field:product.template,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Compte de stock client"
+
+msgctxt "field:product.template,account_stock_customer_used:"
+msgid "Account Stock Customer Used"
+msgstr "Compte de stock client utilisé"
+
+msgctxt "field:product.template,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock \"pertes et surplus\""
+
+msgctxt "field:product.template,account_stock_lost_found_used:"
+msgid "Account Stock Lost and Found"
+msgstr "Compte de stock \"pertes et surplus\""
+
+msgctxt "field:product.template,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Compte de stock fournisseur"
+
+msgctxt "field:product.template,account_stock_supplier_used:"
+msgid "Account Stock Supplier Used"
+msgstr "Compte de stock fournisseur utilisé"
+
+msgctxt "field:product.template,account_stock_used:"
+msgid "Account Stock Used"
+msgstr "Compte de stock utilisé"
+
+msgctxt "field:stock.move,account_move:"
 msgid "Account Move"
 msgstr "Mouvement comptable"
 
-msgctxt "help:product.template,account_journal_stock_customer:0"
-msgid "This journal will be used instead of the one defined on the category."
-msgstr "Ce journal sera utilisé à la place de celui définit sur la catégorie"
-
-msgctxt "help:product.template,account_journal_stock_lost_found:0"
-msgid "This journal will be used instead of the one defined on the category."
-msgstr "Ce journal sera utilisé à la place de celui définit sur la catégorie"
-
-msgctxt "help:product.template,account_journal_stock_supplier:0"
-msgid "This journal will be used instead of the one defined on the category."
-msgstr "Ce journal sera utilisé à la place de celui définit sur la catégorie."
-
-msgctxt "help:product.template,account_stock:0"
+msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
 
-msgctxt "help:product.template,account_stock_customer:0"
+msgctxt "help:product.template,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
 
-msgctxt "help:product.template,account_stock_lost_found:0"
+msgctxt "help:product.template,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
 
-msgctxt "help:product.template,account_stock_supplier:0"
+msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
 
