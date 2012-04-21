@@ -5,6 +5,7 @@
     'name_bg_BG': 'Сметка за продукт',
     'name_ca_ES': 'Comptabilitat de productes',
     'name_de_DE': 'Buchhaltung Artikel',
+    'name_es_AR': 'Contabilidad de productos',
     'name_es_CO': 'Contabilidad de Inventarios',
     'name_es_ES': 'Contabilidad de productos',
     'name_fr_FR': 'Compte produit',
@@ -29,6 +30,10 @@ categories com:
     'description_de_DE': '''Fügt Eigenschaften für die Buchhaltung zu Artikeln und Artikelkategorien hinzu:
     - Aufwands- und Ertragskonto
     - Steuern für Kunden und Lieferanten
+''',
+    'description_es_AR': '''Añade propiedades de contabilidad en productos y categorías como:
+    - Cuenta para gastos / ingresos
+    - Impuestos para cliente / proveedor
 ''',
     'description_es_CO': '''Adiciona propiedades contables en productos y categorías:
     - contabilidad para gastos / ganancias
@@ -60,6 +65,7 @@ categories com:
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
