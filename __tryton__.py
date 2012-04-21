@@ -5,6 +5,7 @@
     'name_bg_BG': 'Фактури',
     'name_ca_ES': 'Comptabilitat',
     'name_de_DE': 'Buchhaltung',
+    'name_es_AR': 'Contabilidad',
     'name_es_CO': 'Contabilidad',
     'name_es_ES': 'Contabilidad',
     'name_fr_FR': 'Comptabilité',
@@ -76,6 +77,22 @@ Zugehörige Berichte:
     - Offene Posten
     - Fälligkeitsliste
     - Allgemeines Journal
+''',
+    'description_es_AR': '''Módulo financiero y de contabilidad con:
+    - Contabilidad General
+    - Gestión de ejercicios fiscales
+    - Gestión de impuestos
+    - Libros diarios
+    - Conciliación
+
+Y con los informes:
+    - Libro mayor
+    - Balance de sumas y saldos
+    - Balance general
+    - Estado de pérdidas y ganancias
+    - Balance de una Entidad
+    - Saldo Vencido
+    - Libro diario
 ''',
     'description_es_CO': '''El módulo Financiero y de Contabilidad cuenta con:
     - Contabilidad General
@@ -163,6 +180,7 @@ Met bijbehorende rapporten:
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
