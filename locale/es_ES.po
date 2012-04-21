@@ -32,7 +32,7 @@ msgstr "No puede eliminar cuentas que contienen apuntes."
 
 msgctxt "error:account.account:"
 msgid "You can not delete accounts that have children!"
-msgstr "No puede borrar cuentas que tienen hijos."
+msgstr "No puede eliminar cuentas que tienen hijos."
 
 msgctxt "error:account.fiscalyear:"
 msgid "No fiscal year defined for this date!"
@@ -68,7 +68,7 @@ msgstr "No puede crear un diario-período en un período cerrado."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not modify/delete a journal - period with moves!"
-msgstr "No puede modificar/borrar un diario-período con asientos."
+msgstr "No puede modificar/eliminar un diario-período con asientos."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not open a journal - period from a closed period!"
@@ -152,7 +152,7 @@ msgstr "No puede crear un asiento con la fecha fuera del período."
 
 msgctxt "error:account.move:"
 msgid "You can not delete posted moves!"
-msgstr "No puede borrar asientos confirmados."
+msgstr "No puede eliminar asientos confirmados."
 
 msgctxt "error:account.move:"
 msgid "You can not post an empty move!"
@@ -200,7 +200,7 @@ msgstr "No puede tener dos períodos que se solapen."
 
 msgctxt "error:account.period:"
 msgid "You can not modify/delete a period with moves!"
-msgstr "No puede modificar/borrar un período con asientos."
+msgstr "No puede modificar/eliminar un período con asientos."
 
 msgctxt "error:account.period:"
 msgid "You can not open a period from a closed fiscal year!"
@@ -1544,7 +1544,7 @@ msgstr "ID"
 
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
-msgstr "Cuenta de la factura"
+msgstr "Cuenta de factura"
 
 msgctxt "field:account.tax,invoice_base_code:"
 msgid "Invoice Base Code"
@@ -2024,7 +2024,7 @@ msgstr "ID"
 
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
-msgstr "Cuenta de la factura"
+msgstr "Cuenta de factura"
 
 msgctxt "field:account.tax.template,invoice_base_code:"
 msgid "Invoice Base Code"
@@ -2142,7 +2142,7 @@ msgstr ""
 
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
-msgstr "Usar para ordenar el tipo de cuenta."
+msgstr "Sirve para ordenar el tipo de cuenta."
 
 msgctxt "help:account.move,reference:"
 msgid "Also known as Folio Number"
@@ -2234,11 +2234,11 @@ msgstr "Normalmente 1 o -1."
 
 msgctxt "help:account.tax,percentage:"
 msgid "In %"
-msgstr "En %"
+msgstr "En %."
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
-msgstr "Usar para ordenar los impuestos."
+msgstr "Sirve para ordenar los impuestos."
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
@@ -2250,11 +2250,11 @@ msgstr "Dejarlo vacío para todos los períodos de todos los ejercicios fiscales
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid "If the original tax is filled, the rule will be applied only for this tax."
-msgstr "Si se rellena el impuesto original, la regla se aplicará solo para este impuesto."
+msgstr "Si se rellena el impuesto original, la regla se aplicará sólo para este impuesto."
 
 msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid "If the original tax template is filled, the rule will be applied only for this tax template."
-msgstr "Si se rellena la plantilla de impuesto original, la regla se aplicará solo para esta plantilla de impuesto."
+msgstr "Si se rellena la plantilla de impuesto original, la regla se aplicará sólo para esta plantilla de impuesto."
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
