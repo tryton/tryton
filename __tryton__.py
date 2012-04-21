@@ -4,6 +4,7 @@
     'name': 'German Chart of Accounts SKR03',
     'name_ca_ES': 'Pla de comptes alemany',
     'name_de_DE': 'Deutscher Kontenrahmen SKR03',
+    'name_es_AR': 'Plan de cuentas alemán SKR03',
     'version': '2.3.0',
     'author': 'virtual things',
     'email': 'info@virtual-things.biz',
