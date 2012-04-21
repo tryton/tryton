@@ -5,6 +5,7 @@
     'name_bg_BG': 'Валута',
     'name_ca_ES': 'Divisa',
     'name_de_DE': 'Währung',
+    'name_es_AR': 'Divisa',
     'name_es_CO': 'Moneda',
     'name_es_ES': 'Divisa',
     'name_fr_FR': 'Devise',
@@ -23,6 +24,9 @@ Permet personalitzar el format de visualització de la divisa.
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Währungen und Wechselkursen.
  - Erlaubt die beliebige Formatierung von Währungsbeträgen.
+''',
+    'description_es_AR': '''Define las divisas y la tasa de cambio.
+ - Permite personalizar el formato de visualización de la divisa.
 ''',
     'description_es_CO': '''Define las monedas y la tasa de cambio.
 Permite personalizar el formato de visualización de la moneda.
@@ -45,6 +49,7 @@ Permet de formater les montants en fonction de la devise.
         'locale/cs_CZ.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
