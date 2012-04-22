@@ -28,5 +28,6 @@ Prend en compte les prévisions lors de la génération des demandes d'achat.
     'xml': [
     ],
     'translation': [
+        'locale/fr_FR.po',
     ],
 }
