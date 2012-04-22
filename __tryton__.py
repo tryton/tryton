@@ -5,6 +5,7 @@
     'name': 'Carrier Weight',
     'name_de_DE': 'Frachtkosten Gewicht',
     'name_fr_FR': 'Coût transporteur: Poid',
+    'name_es_AR': 'Transportistas: Pesaje',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -14,6 +15,7 @@
     - Fügt eine Kostenmethode basierend auf Gewicht hinzu.
     ''',
     'description_fr_FR': 'Ajoute une méthode de coût basée sur le poids.',
+    'description_es_AR': 'Añade método de costo basado en el peso',
     'depends': [
         'ir',
         'res',
@@ -33,5 +35,6 @@
     'translation': [
         'locale/de_DE.po',
         'locale/fr_FR.po',
+        'locale/es_AR.po',
         ],
     }
