@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Measurements',
+    'name_ca_ES': 'Mesures de productes',
     'name_de_DE': 'Artikel Abmessungen',
     'name_fr_FR': 'Mesure des produits',
     'name_es_AR': 'Mediciones de Productos',
@@ -12,12 +13,13 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add measurements to product',
+    'description_ca_ES': 'Afegeix mesures al producte (longitud, alt, ample, pes).',
     'description_de_DE': '''
     - Fügt Abmessungen für Artikel hinzu.
     ''',
     'description_fr_FR': 'Gestion des dimensions de produit',
     'description_es_AR': 'Añade mediciones al producto',
-    'description_es_ES': 'Añade medidas al producto',
+    'description_es_ES': 'Añade medidas al producto (longitud, alto, ancho, peso).',
     'depends': [
         'ir',
         'res',
