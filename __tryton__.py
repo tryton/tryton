@@ -5,6 +5,7 @@
     'name_bg_BG': 'Прогнозиране на наличност',
     'name_ca_ES': 'Previsió d''estocs',
     'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
+    'name_es_AR': 'Previsión de existencias',
     'name_es_CO': 'Previsión de existencias',
     'name_es_ES': 'Previsión de existencias',
     'name_fr_FR': 'Prévision de stock',
@@ -45,6 +46,16 @@ previsions.
       erzeugt und über den entsprechenden Zeitraum gleichmässig verteilt. Diese
       Lagerbewegungen ermöglichen die Berücksichtigung von Vorhersagen in
       den anderen Prozessen der Lagerverwaltung.
+''',
+    'description_es_AR': '''Provee el modelo de «Previsión» en la gestión de
+inventarios.
+El formulario de previsión permite definir los movimientos de existencias
+planificados hacia los clientes en cualquier período de tiempo en el futuro.
+Un asistente permite calcular las cantidades esperadas respecto a un período
+en el pasado. Una vez el formulario se confirma, los movimientos
+correspondientes se crean y se distribuyen homogéneamente a lo largo del
+período. Dichos movimientos permitirá a otros procesos tener en cuenta las
+previsiones.
 ''',
     'description_es_CO': '''Provee el modelo de «Previsión» en la gestión de
 inventarios.
@@ -87,6 +98,7 @@ prévisions.
         'locale/bg_BG.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
