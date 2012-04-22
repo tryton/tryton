@@ -35,9 +35,9 @@ With the possibilities:
         - Въз основа на поръчка
         - Въз основа на доставка
 ''',
-    'description_ca_ES': '''Defineix comandes de compra.
-- Afegeix informació de proveïdor i de compra d'un producte.
-- Es defineix el preu de compra amb el preu de proveïdor o cost.
+    'description_ca_ES': '''- Defineix comandes de compra.
+- Afegeix informació de proveïdor i de compra als productes.
+- Defineix el preu de compra com el preu de proveïdor o preu de cost.
 
 Amb la possibilitat de:
 
@@ -81,16 +81,16 @@ Ermöglicht:
         - Basado en Orden
         - Basado en Empaque
 ''',
-    'description_es_ES': '''Define ordenes de compra.
- - Añade información de proveedor y de compra de un producto.
- - Define el precio de compra como el precio del proveedor o el precio de coste.
+    'description_es_ES': '''- Define pedidos de compra.
+- Añade información de proveedor y de compra a los productos.
+- Define el precio de compra como el precio del proveedor o el precio de coste.
 
- - Con la posibilidad de:
-    - seguir el estado de facturación y envio desde la orden de compra.
-    - definir el método de facturación:
+Con la posibilidad de:
+    - Seguir el estado de facturación y envío desde el pedido de compra.
+    - Definir el método de facturación:
         - Manual
-        - Basado en orden
-        - Basado en envio
+        - Basado en el pedido
+        - Basado en el envío
 ''',
     'description_fr_FR': '''Defini l'ordre d'achat.
 Ajoute les fournisseurs et les informations d'achat sur le produit.
