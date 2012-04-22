@@ -5,6 +5,7 @@
     'name_bg_BG': 'Проект',
     'name_ca_ES': 'Projectes',
     'name_de_DE': 'Projekte',
+    'name_es_AR': 'Proyecto',
     'name_es_CO': 'Proyectos',
     'name_es_ES': 'Proyecto',
     'name_fr_FR': 'Projet',
@@ -21,6 +22,9 @@
     'description_ca_ES': '''Mòdul per la gestió de projectes.''',
     'description_de_DE': '''Projektmodul für:
     - Projektverwaltung
+''',
+    'description_es_AR': '''Módulo de proyecto con:
+    - Gestión de proyecto
 ''',
     'description_es_CO': '''Módulo de proyectos con:
     - Gestión de proyectos
@@ -46,6 +50,7 @@
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
