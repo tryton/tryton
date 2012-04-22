@@ -2,389 +2,521 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.opportunity:0"
+msgctxt "error:sale.opportunity:"
 msgid "Probability must be between 0 and 100!"
 msgstr "Вероятността трябва да бъде между 0 и 100!"
 
-msgctxt "field:sale.open_opportunity_employee.init,end_date:0"
+msgctxt "error:sale.opportunity:"
+msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
+msgstr ""
+
+msgctxt "field:sale.open_opportunity_employee.init,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
 
-msgctxt "field:sale.open_opportunity_employee.init,start_date:0"
+msgctxt "field:sale.open_opportunity_employee.init,start_date:"
 msgid "Start Date"
 msgstr "Начална дата"
 
-msgctxt "field:sale.opportunity,address:0"
+msgctxt "field:sale.opportunity,address:"
 msgid "Address"
 msgstr "Адрес"
 
-msgctxt "field:sale.opportunity,amount:0"
+msgctxt "field:sale.opportunity,amount:"
 msgid "Amount"
 msgstr "Сума"
 
-msgctxt "field:sale.opportunity,comment:0"
+msgctxt "field:sale.opportunity,comment:"
 msgid "Comment"
 msgstr "Коментар"
 
-msgctxt "field:sale.opportunity,company:0"
+msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:sale.opportunity,currency:0"
+msgctxt "field:sale.opportunity,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:sale.opportunity,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:sale.opportunity,currency_digits:0"
+msgctxt "field:sale.opportunity,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
 
-msgctxt "field:sale.opportunity,description:0"
+msgctxt "field:sale.opportunity,description:"
 msgid "Description"
 msgstr "Описание"
 
-msgctxt "field:sale.opportunity,employee:0"
+msgctxt "field:sale.opportunity,employee:"
 msgid "Employee"
 msgstr "Служител"
 
-msgctxt "field:sale.opportunity,end_date:0"
+msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
 
-msgctxt "field:sale.opportunity,history:0"
+msgctxt "field:sale.opportunity,history:"
 msgid "History"
 msgstr "Изтория"
 
-msgctxt "field:sale.opportunity,lines:0"
+msgctxt "field:sale.opportunity,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
 msgstr "Редове"
 
-msgctxt "field:sale.opportunity,lost_reason:0"
+msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Причина за загуба"
 
-msgctxt "field:sale.opportunity,party:0"
+msgctxt "field:sale.opportunity,party:"
 msgid "Party"
 msgstr "Партньор"
 
-msgctxt "field:sale.opportunity,payment_term:0"
+msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr "Условие за плащане"
 
-msgctxt "field:sale.opportunity,probability:0"
+msgctxt "field:sale.opportunity,probability:"
 msgid "Conversion Probability"
 msgstr "Вероятност за преобразуване"
 
-msgctxt "field:sale.opportunity,rec_name:0"
+msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:sale.opportunity,sale:0"
+msgctxt "field:sale.opportunity,sale:"
 msgid "Sale"
 msgstr "Продажба"
 
-msgctxt "field:sale.opportunity,start_date:0"
+msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
 msgstr "Начална дата"
 
-msgctxt "field:sale.opportunity,state:0"
+msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:sale.opportunity,warehouse:0"
+msgctxt "field:sale.opportunity,warehouse:"
 msgid "Warehouse"
 msgstr "Склад"
 
-msgctxt "field:sale.opportunity.history,address:0"
+msgctxt "field:sale.opportunity,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:sale.opportunity,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.opportunity.history,address:"
 msgid "Address"
 msgstr "Адрес"
 
-msgctxt "field:sale.opportunity.history,comment:0"
+msgctxt "field:sale.opportunity.history,comment:"
 msgid "Comment"
 msgstr "Коментар"
 
-msgctxt "field:sale.opportunity.history,company:0"
+msgctxt "field:sale.opportunity.history,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:sale.opportunity.history,date:0"
+msgctxt "field:sale.opportunity.history,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:sale.opportunity.history,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
 msgstr "Промяна на дата"
 
-msgctxt "field:sale.opportunity.history,description:0"
+msgctxt "field:sale.opportunity.history,description:"
 msgid "Description"
 msgstr "Описание"
 
-msgctxt "field:sale.opportunity.history,employee:0"
+msgctxt "field:sale.opportunity.history,employee:"
 msgid "Employee"
 msgstr "Служител"
 
-msgctxt "field:sale.opportunity.history,end_date:0"
+msgctxt "field:sale.opportunity.history,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
 
-msgctxt "field:sale.opportunity.history,lines:0"
+msgctxt "field:sale.opportunity.history,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity.history,lines:"
 msgid "Lines"
 msgstr "Редове"
 
-msgctxt "field:sale.opportunity.history,lost_reason:0"
+msgctxt "field:sale.opportunity.history,lost_reason:"
 msgid "Reason for loss"
 msgstr "Причина за загуба"
 
-msgctxt "field:sale.opportunity.history,opportunity:0"
+msgctxt "field:sale.opportunity.history,opportunity:"
 msgid "Sale Opportunity"
 msgstr "Възможност за продажба"
 
-msgctxt "field:sale.opportunity.history,party:0"
+msgctxt "field:sale.opportunity.history,party:"
 msgid "Party"
 msgstr "Партньор"
 
-msgctxt "field:sale.opportunity.history,probability:0"
+msgctxt "field:sale.opportunity.history,probability:"
 msgid "Conversion Probability"
 msgstr "Вероятност за преобразуване"
 
-msgctxt "field:sale.opportunity.history,rec_name:0"
+msgctxt "field:sale.opportunity.history,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:sale.opportunity.history,start_date:0"
+msgctxt "field:sale.opportunity.history,start_date:"
 msgid "Start Date"
 msgstr "Начална дата"
 
-msgctxt "field:sale.opportunity.history,state:0"
+msgctxt "field:sale.opportunity.history,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:sale.opportunity.history,user:0"
+msgctxt "field:sale.opportunity.history,user:"
 msgid "User"
 msgstr "Потребител"
 
-msgctxt "field:sale.opportunity.line,opportunity:0"
+msgctxt "field:sale.opportunity.history,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:sale.opportunity.history,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.opportunity.line,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:sale.opportunity.line,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.opportunity.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Възможност"
 
-msgctxt "field:sale.opportunity.line,product:0"
+msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "field:sale.opportunity.line,quantity:0"
+msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "field:sale.opportunity.line,rec_name:0"
+msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:sale.opportunity.line,sale_line:0"
+msgctxt "field:sale.opportunity.line,sale_line:"
 msgid "Sale Line"
 msgstr "Ред от продажба"
 
-msgctxt "field:sale.opportunity.line,sequence:0"
+msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
 msgstr "Последователност"
 
-msgctxt "field:sale.opportunity.line,unit:0"
+msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr "Единица"
 
-msgctxt "field:sale.opportunity.line,unit_digits:0"
+msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Десетични единици"
 
-msgctxt "field:sale.opportunity_employee,amount:0"
+msgctxt "field:sale.opportunity.line,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:sale.opportunity.line,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
 msgstr "Сума"
 
-msgctxt "field:sale.opportunity_employee,company:0"
+msgctxt "field:sale.opportunity_employee,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:sale.opportunity_employee,conversion_amount_rate:0"
+msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
 msgstr "Обменен курс"
 
-msgctxt "field:sale.opportunity_employee,conversion_rate:0"
+msgctxt "field:sale.opportunity_employee,conversion_rate:"
 msgid "Conversion Rate"
 msgstr "Обменен курс"
 
-msgctxt "field:sale.opportunity_employee,converted:0"
+msgctxt "field:sale.opportunity_employee,converted:"
 msgid "Converted"
 msgstr "Конвертиран"
 
-msgctxt "field:sale.opportunity_employee,converted_amount:0"
+msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
 msgstr "Конвертирана сума"
 
-msgctxt "field:sale.opportunity_employee,currency:0"
+msgctxt "field:sale.opportunity_employee,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:sale.opportunity_employee,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:sale.opportunity_employee,currency_digits:0"
+msgctxt "field:sale.opportunity_employee,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
 
-msgctxt "field:sale.opportunity_employee,employee:0"
+msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
 msgstr "Служител"
 
-msgctxt "field:sale.opportunity_employee,lost:0"
+msgctxt "field:sale.opportunity_employee,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
 msgstr "Изгубен"
 
-msgctxt "field:sale.opportunity_employee,number:0"
+msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
 msgstr "Номер"
 
-msgctxt "field:sale.opportunity_employee,rec_name:0"
+msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:sale.opportunity_employee_monthly,amount:0"
+msgctxt "field:sale.opportunity_employee,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:sale.opportunity_employee,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.opportunity_employee.open.start,end_date:"
+msgid "End Date"
+msgstr "Крайна дата"
+
+msgctxt "field:sale.opportunity_employee.open.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity_employee.open.start,start_date:"
+msgid "Start Date"
+msgstr "Начална дата"
+
+msgctxt "field:sale.opportunity_employee_monthly,amount:"
 msgid "Amount"
 msgstr "Сума"
 
-msgctxt "field:sale.opportunity_employee_monthly,company:0"
+msgctxt "field:sale.opportunity_employee_monthly,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:0"
+msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
 msgstr "Обменен курс"
 
-msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:0"
+msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
 msgid "Conversion Rate"
 msgstr "Обменен курс"
 
-msgctxt "field:sale.opportunity_employee_monthly,converted:0"
+msgctxt "field:sale.opportunity_employee_monthly,converted:"
 msgid "Converted"
 msgstr "Конвертиран"
 
-msgctxt "field:sale.opportunity_employee_monthly,converted_amount:0"
+msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr "Конвертирана сума"
 
-msgctxt "field:sale.opportunity_employee_monthly,currency:0"
+msgctxt "field:sale.opportunity_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:sale.opportunity_employee_monthly,currency_digits:0"
+msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
 
-msgctxt "field:sale.opportunity_employee_monthly,employee:0"
+msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Служител"
 
-msgctxt "field:sale.opportunity_employee_monthly,lost:0"
+msgctxt "field:sale.opportunity_employee_monthly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
 msgstr "Изгубен"
 
-msgctxt "field:sale.opportunity_employee_monthly,month:0"
+msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
 msgstr "Месец"
 
-msgctxt "field:sale.opportunity_employee_monthly,number:0"
+msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Номер"
 
-msgctxt "field:sale.opportunity_employee_monthly,rec_name:0"
+msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:sale.opportunity_employee_monthly,year:0"
+msgctxt "field:sale.opportunity_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
 msgstr "Година"
 
-msgctxt "field:sale.opportunity_monthly,amount:0"
+msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
 msgstr "Сума"
 
-msgctxt "field:sale.opportunity_monthly,company:0"
+msgctxt "field:sale.opportunity_monthly,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:0"
+msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
 msgstr "Обменен курс"
 
-msgctxt "field:sale.opportunity_monthly,conversion_rate:0"
+msgctxt "field:sale.opportunity_monthly,conversion_rate:"
 msgid "Conversion Rate"
 msgstr "Обменен курс"
 
-msgctxt "field:sale.opportunity_monthly,converted:0"
+msgctxt "field:sale.opportunity_monthly,converted:"
 msgid "Converted"
 msgstr "Конвертиран"
 
-msgctxt "field:sale.opportunity_monthly,converted_amount:0"
+msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr "Конвертирана сума"
 
-msgctxt "field:sale.opportunity_monthly,currency:0"
+msgctxt "field:sale.opportunity_monthly,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:sale.opportunity_monthly,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:sale.opportunity_monthly,currency_digits:0"
+msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
 
-msgctxt "field:sale.opportunity_monthly,lost:0"
+msgctxt "field:sale.opportunity_monthly,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
 msgstr "Изгубен"
 
-msgctxt "field:sale.opportunity_monthly,month:0"
+msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
 msgstr "Месец"
 
-msgctxt "field:sale.opportunity_monthly,number:0"
+msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Номер"
 
-msgctxt "field:sale.opportunity_monthly,rec_name:0"
+msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:sale.opportunity_monthly,year:0"
+msgctxt "field:sale.opportunity_monthly,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:sale.opportunity_monthly,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
 msgstr "Година"
 
-msgctxt "field:sale.opportunity_monthly,year_month:0"
+msgctxt "field:sale.opportunity_monthly,year_month:"
 msgid "Year-Month"
 msgstr "Година-Месец"
 
-msgctxt "help:sale.opportunity,amount:0"
+msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount"
 msgstr "Очаквани приходи"
 
-msgctxt "help:sale.opportunity,probability:0"
+msgctxt "help:sale.opportunity,probability:"
 msgid "Percentage between 0 and 100"
 msgstr "Процент между 0 и 100"
 
-msgctxt "help:sale.opportunity_employee,conversion_amount_rate:0"
+msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
 msgid "In %"
 msgstr "В %"
 
-msgctxt "help:sale.opportunity_employee,conversion_rate:0"
+msgctxt "help:sale.opportunity_employee,conversion_rate:"
 msgid "In %"
 msgstr "В %"
 
-msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:0"
+msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "In %"
 msgstr "В %"
 
-msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:0"
+msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
 msgid "In %"
 msgstr "В %"
 
-msgctxt "help:sale.opportunity_monthly,conversion_amount_rate:0"
+msgctxt "help:sale.opportunity_monthly,conversion_amount_rate:"
 msgid "In %"
 msgstr "В %"
 
-msgctxt "help:sale.opportunity_monthly,conversion_rate:0"
+msgctxt "help:sale.opportunity_monthly,conversion_rate:"
 msgid "In %"
 msgstr "В %"
-
-msgctxt "model:ir.action,name:act_open_sale_opportunity_employee"
-msgid "Opportunities per Employee"
-msgstr "Възможности по служител"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
@@ -393,6 +525,10 @@ msgstr "Възможности по служител"
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
 msgstr "Възможности по служител по месец"
+
+msgctxt "model:ir.action,name:act_opportunity_employee_open"
+msgid "Opportunities per Employee"
+msgstr "Възможности по служител"
 
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
@@ -426,13 +562,13 @@ msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr "Възможности по месец"
 
-msgctxt "model:ir.ui.menu,name:menu_open_sale_opportunity_employee"
-msgid "Opportunities per Employee"
-msgstr "Възможности по служител"
-
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
 msgstr "Възможности по служител по месец"
+
+msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
+msgid "Opportunities per Employee"
+msgstr "Възможности по служител"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
@@ -470,170 +606,162 @@ msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
 msgstr "Възможност за продажба"
 
-msgctxt "model:sale.open_opportunity_employee.init,name:0"
+msgctxt "model:sale.open_opportunity_employee.init,name:"
 msgid "Open Sale Opportunity per Employee Init"
 msgstr "Начално отваряне на възможмост за продажба по служител"
 
-msgctxt "model:sale.opportunity,name:0"
+msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr "Възможност за продажба"
 
-msgctxt "model:sale.opportunity.history,name:0"
+msgctxt "model:sale.opportunity.history,name:"
 msgid "Sale Opportunity History"
 msgstr "История на възможност за продажба"
 
-msgctxt "model:sale.opportunity.line,name:0"
+msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Ред от възможност за продажба"
 
-msgctxt "model:sale.opportunity_employee,name:0"
+msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
 msgstr "Възможност за продажба за служител"
 
-msgctxt "model:sale.opportunity_employee_monthly,name:0"
+msgctxt "model:sale.opportunity_employee.open.start,name:"
+msgid "Open Sale Opportunity per Employee"
+msgstr ""
+
+msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
 msgstr "Възможност за продажба за служител за месец"
 
-msgctxt "model:sale.opportunity_monthly,name:0"
+msgctxt "model:sale.opportunity_monthly,name:"
 msgid "Sale Opportunity per Month"
 msgstr "Възможност за продажа по месец"
 
-msgctxt "model:workflow,name:opportunity_workflow"
-msgid "Sales Opportunity Workflow"
-msgstr "Работен процес на възможност за продажба"
-
-msgctxt "model:workflow.activity,name:opportunity_activity_cancelled"
+msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"
 msgstr "Отказан"
 
-msgctxt "model:workflow.activity,name:opportunity_activity_converted"
+msgctxt "selection:sale.opportunity,state:"
 msgid "Converted"
 msgstr "Конвертиран"
 
-msgctxt "model:workflow.activity,name:opportunity_activity_lead"
-msgid "Lead"
-msgstr "Възможност"
-
-msgctxt "model:workflow.activity,name:opportunity_activity_lost"
-msgid "Lost"
-msgstr "Изгубен"
-
-msgctxt "model:workflow.activity,name:opportunity_activity_opportunity"
-msgid "Opportunity"
-msgstr "Възможност"
-
-msgctxt "selection:sale.opportunity,state:0"
-msgid "Cancelled"
-msgstr "Отказан"
-
-msgctxt "selection:sale.opportunity,state:0"
-msgid "Converted"
-msgstr "Конвертиран"
-
-msgctxt "selection:sale.opportunity,state:0"
+msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
 msgstr "Инициатива"
 
-msgctxt "selection:sale.opportunity,state:0"
+msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
 msgstr "Изгубен"
 
-msgctxt "selection:sale.opportunity,state:0"
+msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
 msgstr "Възможност"
 
-msgctxt "selection:sale.opportunity.history,state:0"
+msgctxt "selection:sale.opportunity.history,state:"
 msgid "Cancelled"
 msgstr "Отказан"
 
-msgctxt "selection:sale.opportunity.history,state:0"
+msgctxt "selection:sale.opportunity.history,state:"
 msgid "Converted"
 msgstr "Конвертиран"
 
-msgctxt "selection:sale.opportunity.history,state:0"
+msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lead"
 msgstr "Инициатива"
 
-msgctxt "selection:sale.opportunity.history,state:0"
+msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lost"
 msgstr "Изгубен"
 
-msgctxt "selection:sale.opportunity.history,state:0"
+msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
 msgstr "Възможност"
 
-msgctxt "view:sale.open_opportunity_employee.init:0"
+msgctxt "view:sale.open_opportunity_employee.init:"
 msgid "Sale Opportunities per Employee"
 msgstr "Възможности за продажба по служител"
 
-msgctxt "view:sale.opportunity.history:0"
+msgctxt "view:sale.opportunity.history:"
 msgid "History"
 msgstr "Изтория"
 
-msgctxt "view:sale.opportunity.history:0"
+msgctxt "view:sale.opportunity.history:"
 msgid "Lead/Opportunity"
 msgstr "Инициатива/Възможност"
 
-msgctxt "view:sale.opportunity.line:0"
+msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"
 msgstr "Ред на инициатива/възможност за продажба"
 
-msgctxt "view:sale.opportunity.line:0"
+msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
 msgstr "Редове от инициативи/възможности за продажба"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Convert to Opportunity"
 msgstr "Превръщане във възможност"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Convert to Sale"
 msgstr "Прехвърлено в продажба"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr "Инициатива/Възможност"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Mark as Lost"
 msgstr "Отбелязване като загубен"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Reset as Lead"
 msgstr "Прехвърляне в инициатива"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Sale Lead/Opportunity"
 msgstr "Инициатива/Възможност за продажба"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Sales Leads/Opportunities"
 msgstr "Инициативи/Възможности за продажба"
 
-msgctxt "view:sale.opportunity:0"
+msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
 msgstr "Прехвърляне в инициатива"
 
-msgctxt "view:sale.opportunity_employee:0"
+msgctxt "view:sale.opportunity_employee.open.start:"
+msgid "Sale Opportunities per Employee"
+msgstr "Възможности за продажба по служител"
+
+msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"
 msgstr "Възможности по служител"
 
-msgctxt "view:sale.opportunity_employee_monthly:0"
+msgctxt "view:sale.opportunity_employee_monthly:"
 msgid "Sale Opportunities per Month"
 msgstr "Възможности за продажба по месец"
 
-msgctxt "view:sale.opportunity_monthly:0"
+msgctxt "view:sale.opportunity_monthly:"
 msgid "Sale Opportunities per Month"
 msgstr "Възможности за продажба по месец"
 
-msgctxt "wizard_button:sale.open_opportunity_employee,init,end:0"
+msgctxt "wizard_button:sale.open_opportunity_employee,init,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:sale.open_opportunity_employee,init,open:0"
+msgctxt "wizard_button:sale.open_opportunity_employee,init,open:"
+msgid "Open"
+msgstr "Отваряне"
+
+msgctxt "wizard_button:sale.opportunity_employee.open,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:sale.opportunity_employee.open,start,open_:"
 msgid "Open"
 msgstr "Отваряне"
