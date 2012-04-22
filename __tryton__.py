@@ -15,13 +15,13 @@
     'website': 'http://www.tryton.org/',
     'description': 'Add link from addresses to Google Maps',
     'description_bg_BG': 'Добавя връзка към адрес от Google карти.',
-    'description_ca_ES': '''Afegeix un enllaç en les adreces per obrir-les amb
+    'description_ca_ES': '''Afegeix un enllaç a les adreces per obrir-les amb
 el Google Maps.
 ''',
     'description_de_DE': 'Fügt einen Link für den automatischen Aufruf von Google Maps zu Adressen hinzu.',
     'description_es_AR': 'Añade un enlace de la dirección a Google Maps',
     'description_es_CO': 'Añade un enlace a la dirección en Google Maps',
-    'description_es_ES': 'Añade un enlace de la dirección a Google Maps',
+    'description_es_ES': 'Añade un enlace en las direcciones para abrirlas con Google Maps.',
     'description_fr_FR': 'Ajoute un lien sur les adresses vers les cartes de Google',
     'depends': [
         'ir',
