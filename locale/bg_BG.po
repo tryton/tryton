@@ -2,29 +2,33 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.request.create_purchase:0"
+msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product: %s (id: %s)!"
 msgstr "Липсва покупната цена за продукт: %s (id: %s)!"
 
-msgctxt "error:purchase.request.create_purchase:0"
+msgctxt "error:purchase.request.create_purchase:"
 msgid "This price is necessary for creating purchase."
 msgstr "Цената е необходима при създаване на покупка"
 
-msgctxt "error:purchase.request:0"
+msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
 msgstr "Заявките за покупка се създават само от системата"
 
-msgctxt "error:stock.order_point:0"
+msgctxt "error:purchase.request:"
+msgid "The requested quantity must be greater than 0"
+msgstr ""
+
+msgctxt "error:stock.order_point:"
 msgid "Maximal quantity must be bigger than Minimal quantity"
 msgstr ""
 "Максималното количество трябва да е по-голямо от Минималното количество"
 
-msgctxt "error:stock.order_point:0"
+msgctxt "error:stock.order_point:"
 msgid "Only one order point is allowed for each product-location pair."
 msgstr ""
 "Разрешено е само едно пренареждане за всяка двойка продукт-местонахождение."
 
-msgctxt "error:stock.order_point:0"
+msgctxt "error:stock.order_point:"
 msgid ""
 "You can not define two order points on the same product with opposite "
 "locations."
@@ -32,145 +36,201 @@ msgstr ""
 "Не може да зададете две пренареждания на един и същи продукт с "
 "противоположни местонахождения"
 
-msgctxt "field:product.product,order_points:0"
+msgctxt "field:product.product,order_points:"
 msgid "Order Points"
 msgstr "Пренареждания"
 
-msgctxt "field:purchase.request,company:0"
+msgctxt "field:purchase.request,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:purchase.request,computed_quantity:0"
+msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
 msgstr "Изчислено количество"
 
-msgctxt "field:purchase.request,computed_uom:0"
+msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Изчислена мер. ед."
 
-msgctxt "field:purchase.request,origin:0"
+msgctxt "field:purchase.request,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:purchase.request,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:purchase.request,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request,origin:"
 msgid "Origin"
 msgstr "Източник"
 
-msgctxt "field:purchase.request,party:0"
+msgctxt "field:purchase.request,party:"
 msgid "Party"
 msgstr "Партньор"
 
-msgctxt "field:purchase.request,product:0"
+msgctxt "field:purchase.request,product:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "field:purchase.request,purchase:0"
+msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
 msgstr "Покупка"
 
-msgctxt "field:purchase.request,purchase_date:0"
+msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
 msgstr "Най-добра дата за покупка"
 
-msgctxt "field:purchase.request,purchase_line:0"
+msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr "Ред от покупка"
 
-msgctxt "field:purchase.request,quantity:0"
+msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "field:purchase.request,rec_name:0"
+msgctxt "field:purchase.request,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:purchase.request,state:0"
+msgctxt "field:purchase.request,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:purchase.request,stock_level:0"
+msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
 msgstr "Наличност към дата на доставка"
 
-msgctxt "field:purchase.request,supply_date:0"
+msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
 msgstr "Очаквана дата на доставка"
 
-msgctxt "field:purchase.request,uom:0"
+msgctxt "field:purchase.request,uom:"
 msgid "UOM"
 msgstr "Мер. ед."
 
-msgctxt "field:purchase.request,warehouse:0"
+msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
 msgstr "Склад"
 
-msgctxt "field:purchase.request.create_purchase.ask_party,company:0"
+msgctxt "field:purchase.request,warehouse_required:"
+msgid "Warehouse Required"
+msgstr ""
+
+msgctxt "field:purchase.request,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:purchase.request,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:purchase.request.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:purchase.request.create_purchase.ask_party,party:0"
+msgctxt "field:purchase.request.create_purchase.ask_party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
 msgstr "Доставчик"
 
-msgctxt "field:purchase.request.create_purchase.ask_party,product:0"
+msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,company:0"
+msgctxt "field:purchase.request.create_purchase.ask_term,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,party:0"
+msgctxt "field:purchase.request.create_purchase.ask_term,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.request.create_purchase.ask_term,party:"
 msgid "Supplier"
 msgstr "Доставчик"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:0"
+msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
 msgid "Payment Term"
 msgstr "Условие за плащане"
 
-msgctxt "field:stock.order_point,company:0"
+msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:stock.order_point,location:0"
+msgctxt "field:stock.order_point,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:stock.order_point,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:stock.order_point,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.order_point,location:"
 msgid "Location"
 msgstr "Местоположение"
 
-msgctxt "field:stock.order_point,max_quantity:0"
+msgctxt "field:stock.order_point,max_quantity:"
 msgid "Maximal Quantity"
 msgstr "Максимално количество"
 
-msgctxt "field:stock.order_point,min_quantity:0"
+msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
 msgstr "Минимално количество"
 
-msgctxt "field:stock.order_point,product:0"
+msgctxt "field:stock.order_point,product:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "field:stock.order_point,provisioning_location:0"
+msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Местонахождение на провизии"
 
-msgctxt "field:stock.order_point,rec_name:0"
+msgctxt "field:stock.order_point,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:stock.order_point,storage_location:0"
+msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr "Местонахождение на съхранение"
 
-msgctxt "field:stock.order_point,type:0"
+msgctxt "field:stock.order_point,type:"
 msgid "Type"
 msgstr "Вид"
 
-msgctxt "field:stock.order_point,unit:0"
+msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
 msgstr "Единица"
 
-msgctxt "field:stock.order_point,unit_digits:0"
+msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
 msgstr "Десетични единици"
 
-msgctxt "field:stock.order_point,warehouse_location:0"
+msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Местонахождение на склад"
+
+msgctxt "field:stock.order_point,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:stock.order_point,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
@@ -180,9 +240,9 @@ msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
 msgstr "Покупки"
 
-msgctxt "model:ir.action,name:act_purchase_request_create_purchase_request"
+msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr ""
+msgstr "Създаване на заявки за покупка"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
@@ -204,13 +264,13 @@ msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
 msgstr "Генериране на вътрешна пратка"
 
-msgctxt "model:ir.ui.menu,name:menu_create_purchase_request"
-msgid "Create Purchase Requests"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
 msgstr "Пренареждания"
+
+msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
+msgid "Create Purchase Requests"
+msgstr "Създаване на заявки за покупка"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
@@ -220,21 +280,25 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
 msgid "Draft Purchase Requests"
 msgstr "Проект на заявки за покупка"
 
-msgctxt "model:purchase.request,name:0"
+msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
 msgstr "Заявка за покупка"
 
-msgctxt "model:purchase.request.create_purchase.ask_party,name:0"
+msgctxt "model:purchase.request.create.start,name:"
+msgid "Create Purchase Request"
+msgstr "Създаване на заявка за покупка"
+
+msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
 msgstr "Създаване на покупка - питане на партньор"
 
-msgctxt "model:purchase.request.create_purchase.ask_term,name:0"
+msgctxt "model:purchase.request.create_purchase.ask_term,name:"
 msgid "Create Purchase Ask Term"
 msgstr "Запитване за създаване на условие за плащане"
 
-msgctxt "model:purchase.request.create_purchase_request.init,name:0"
+msgctxt "model:purchase.request.create_purchase_request.init,name:"
 msgid "Create Purchase Request Init"
-msgstr ""
+msgstr "Начало на Създаване на заявка за покупка"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -248,104 +312,134 @@ msgctxt "model:res.user,name:user_generate_shipment_internal"
 msgid "Cron Intenal Shipment"
 msgstr "Планиране на вътрешена пратка"
 
-msgctxt "model:stock.order_point,name:0"
+msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Пренареждане"
 
-msgctxt "selection:purchase.request,state:0"
+msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "selection:purchase.request,state:0"
+msgctxt "selection:purchase.request,state:"
 msgid "Done"
 msgstr "Приключен"
 
-msgctxt "selection:purchase.request,state:0"
+msgctxt "selection:purchase.request,state:"
 msgid "Draft"
 msgstr "Проект"
 
-msgctxt "selection:purchase.request,state:0"
+msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
 msgstr "Поръчан"
 
-msgctxt "selection:stock.order_point,type:0"
+msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr "Вътрешно"
 
-msgctxt "selection:stock.order_point,type:0"
+msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
 msgstr "Покупка"
 
-msgctxt "view:purchase.request.create_purchase.ask_party:0"
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Request"
+msgstr "Създаване на заявка за покупка"
+
+msgctxt "view:purchase.request.create.start:"
+msgid "Create Purchase Request?"
+msgstr "Създаване на заявка за покупка?"
+
+msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Създаване на покупка; липсва доставчик"
 
-msgctxt "view:purchase.request.create_purchase.ask_term:0"
+msgctxt "view:purchase.request.create_purchase.ask_term:"
 msgid "Create Purchase: Missing Payment Term"
 msgstr "Създаване на покупка: Липсва условие за плащане"
 
-msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgctxt "view:purchase.request.create_purchase_request.init:"
 msgid "Create Purchase Request"
-msgstr ""
+msgstr "Създаване на заявка за покупка"
 
-msgctxt "view:purchase.request.create_purchase_request.init:0"
+msgctxt "view:purchase.request.create_purchase_request.init:"
 msgid "Create Purchase Request?"
-msgstr ""
+msgstr "Създаване на заявка за покупка?"
 
-msgctxt "view:purchase.request:0"
+msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr "Информация за продукт"
 
-msgctxt "view:purchase.request:0"
+msgctxt "view:purchase.request:"
 msgid "Purchase Request"
 msgstr "Заявка за покупка"
 
-msgctxt "view:purchase.request:0"
+msgctxt "view:purchase.request:"
 msgid "Purchase Requests"
 msgstr "Заявки за покупка"
 
-msgctxt "view:purchase.request:0"
+msgctxt "view:purchase.request:"
 msgid "Supply Info"
 msgstr "Информация за доставчик"
 
-msgctxt "view:stock.order_point:0"
+msgctxt "view:stock.order_point:"
 msgid "Order Point"
 msgstr "Пренареждане"
 
-msgctxt "view:stock.order_point:0"
+msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
 msgstr "Вид пренареждане"
 
-msgctxt "view:stock.order_point:0"
+msgctxt "view:stock.order_point:"
 msgid "Order Points"
 msgstr "Пренареждания"
 
-msgctxt "view:stock.order_point:0"
+msgctxt "view:stock.order_point:"
 msgid "Product Info"
 msgstr "Информация за продукт"
 
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,end:0"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,init:0"
-msgid "Continue"
-msgstr "Продължаване"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,end:0"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,init:0"
-msgid "Continue"
-msgstr "Продължаване"
-
-#, fuzzy
-msgctxt "wizard_button:purchase.request.create_purchase_request,init,create:0"
+msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
 msgstr "Създаване"
 
-#, fuzzy
-msgctxt "wizard_button:purchase.request.create_purchase_request,init,end:0"
+msgctxt "wizard_button:purchase.request.create,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
+msgid "Continue"
+msgstr "Продължаване"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
+msgid "Continue"
+msgstr "Продължаване"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,init:"
+msgid "Continue"
+msgstr "Продължаване"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,init:"
+msgid "Continue"
+msgstr "Продължаване"
+
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,create:"
+msgid "Create"
+msgstr "Създаване"
+
+msgctxt "wizard_button:purchase.request.create_purchase_request,init,end:"
 msgid "Cancel"
 msgstr "Отказ"
