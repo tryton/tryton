@@ -4,6 +4,7 @@
 {
     'name': 'Product Measurements',
     'name_de_DE': 'Artikel Abmessungen',
+    'name_fr_FR': 'Mesure des produits',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,7 @@
     'description_de_DE': '''
     - Fügt Abmessungen für Artikel hinzu.
     ''',
+    'description_fr_FR': 'Gestion des dimensions de produit',
     'depends': [
         'ir',
         'res',
@@ -22,5 +24,6 @@
     ],
     'translation': [
         'locale/de_DE.po',
+        'locale/fr_FR.po',
     ]
 }
