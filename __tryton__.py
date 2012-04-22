@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Stock Supply Forecast',
-    'name_ca_ES': 'Previsió de subministre d''estoc',
+    'name_ca_ES': 'Previsió de proveïment d''estoc',
     'name_de_DE': 'Lagerverwaltung Bestellwesen Bedarfsermittlung',
     'name_es_AR': 'Previsión de abastecimiento de existencias',
     'name_es_ES': 'Previsión de abastecimiento de stock',
