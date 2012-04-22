@@ -4,7 +4,7 @@
 {
     'name': 'Company',
     'name_bg_BG': 'Фирма',
-    'name_ca_ES': 'Companyia',
+    'name_ca_ES': 'Empresa',
     'name_de_DE': 'Unternehmen',
     'name_es_AR': 'Empresa',
     'name_es_CO': 'Compañía',
@@ -29,12 +29,12 @@ Make the scheduler run on each companies.
  - Добавяне на шаблон на писмо за партньор
  - Възможност планировщика да работи на всяка фирма
 ''',
-    'description_ca_ES': '''- Defineix companyia i empleats.
-- Afegeix l'empresa principal i predeterminada en les preferències dels usuaris.
+    'description_ca_ES': '''- Defineix empresa i empleats.
+- Afegeix l'empresa principal i predeterminada a les preferències dels usuaris.
 - Afegeix l'empresa a les propietats.
-- Defineix un nou analitzador pels informes amb l'encapçalament de la companyia.
+- Defineix un nou analitzador pels informes amb l'encapçalament de l'empresa.
 - Afegeix una plantilla de carta a tercers.
-- Fa que el planificador de tasques s'executi per companyia.
+- Fa que el planificador de tasques s'executi per empresa.
 ''',
     'description_de_DE': ''' - Ermöglicht die Eingabe von Umternehmen und Mitarbeitern.
  - Fügt Haupt- und aktuelles Unternehmen zu den Benutzereinstellungen hinzu.
@@ -59,10 +59,10 @@ Make the scheduler run on each companies.
 ''',
     'description_es_ES': '''Define empresa y empleados.
  - Añade la empresa principal y predeterminada en las preferencias de los usuarios.
- - Añade empresa a las propiedades.
- - Define un nuevo analizador de informe para los informes con el encabezado de la empresa.
- - Añade una plantilla de carta en terceros.
- - Hace que el programador de tareas se ejecute por empresa.
+ - Añade la empresa a las propiedades.
+ - Define un nuevo analizador para los informes con el encabezado de la empresa.
+ - Añade una plantilla de carta a terceros.
+ - Hace que el planificador de tareas se ejecute por empresa.
 ''',
     'description_fr_FR': '''Défini société et employé.
 Ajoute les sociétés principale et courante dans les préférences de l'utilisateur.
