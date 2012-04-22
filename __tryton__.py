@@ -39,9 +39,9 @@ categories com:
     - contabilidad para gastos / ganancias
     - impuestos para cliente / proveedor
 ''',
-    'description_es_ES': '''Añade propiedades de contabilidad productos y categorías como:
-    - Cuenta para gastos / ingresos
-    - impuestos para cliente / proveedor
+    'description_es_ES': '''Añade propiedades de contabilidad a productos y categorías como:
+    - Cuentas para gastos e ingresos
+    - Impuestos para cliente y proveedor
 ''',
     'description_fr_FR': '''Ajoute des propriétés comptables sur les produits et leurs caétgories:
     - comptes de charge et revenu
