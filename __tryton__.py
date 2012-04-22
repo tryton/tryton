@@ -7,7 +7,7 @@
     'name_de_DE': 'Lagerverwaltung Bedarfsermittlung',
     'name_es_AR': 'Previsión de existencias',
     'name_es_CO': 'Previsión de existencias',
-    'name_es_ES': 'Previsión de existencias',
+    'name_es_ES': 'Previsión de stock',
     'name_fr_FR': 'Prévision de stock',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -28,7 +28,7 @@ process to take forecasts into account.
       движения биват създадени и разпределени равномерно за периода. Тези движения
       позволяват на други процеси да вземат предвид тези прогнози.
 ''',
-    'description_ca_ES': '''Proveeix el model de «Previsió» en la gestió d'inventaris.
+    'description_ca_ES': '''Proporciona el model de «Previsió» en la gestió d'inventaris.
 El formulari de previsió permet definir els moviments d'estoc previstos
 cap a clients en el futur. Un assistent permet calcular les quantitats previstes
 respecte a un període en el passat. Una vegada el formulari es confirma, els
@@ -66,13 +66,13 @@ anterior.  Cuando se confirma, los movimientos correspondientes se crean
 y se distribuyen homogeneamente en el período. Tales movimientos permitirá
 a otros procesos hacer previsiones.
 ''',
-    'description_es_ES': '''Provee el modelo de «Previsión» en la gestión de inventarios.
-El formulario de previsión permite definir los movimientos de existencias
-planificados hacia los clientes  en cualquier periodo de tiempo en el futuro.
-Un asistente permite calcular las cantidades esperadas respecto a un periodo
+    'description_es_ES': '''Proporciona el modelo de «Previsión» en la gestión de inventarios.
+El formulario de previsión permite definir los movimientos de stock
+previstos hacia los clientes en cualquier período de tiempo en el futuro.
+Un asistente permite calcular las cantidades previstas respecto a un período
 en el pasado. Una vez el formulario se confirma, los movimientos
 correspondientes se crean y se distribuyen homogeneamente a lo largo del
-periodo. Dichos movimientos permitirá a otros procesos tener en cuenta las previsiones.
+período. Dichos movimientos permitirá a otros procesos tener en cuenta las previsiones.
 ''',
     'description_fr_FR': '''Fournit le modèle "Prévision" dans la gestion des stocks.
 Le formulaire de prévision permet de définir les mouvements attendus
