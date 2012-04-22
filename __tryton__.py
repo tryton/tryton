@@ -5,6 +5,7 @@
     "name_bg_BG": "Местонахождение на наличност на продукт",
     'name_ca_ES': 'Ubicació d''estoc de producte',
     "name_de_DE": "Lagerverwaltung Artikel Lagerort",
+    "name_es_AR": "Ubicación de existencias de producto",
     "name_es_CO": "Ubicación de existencias de producto",
     "name_es_ES": "Ubicación de existencias de producto",
     "name_fr_FR": "Emplacement de produit",
@@ -28,6 +29,11 @@ per generar moviments d'inventari.
     - Ermöglicht die Definition von Standardlagerorten für Artikel in einem Warenlager
     - Diese Lagerorte werden von Lieferposten von Lieferanten für die
       Lagerbewegungen benutzt
+''',
+    "description_es_AR": '''Define la ubicación del almacén predeterminado por
+depósito y producto.
+Estas ubicaciones se utilizarán en el envio de proveedor para generar movimientos
+de inventario.
 ''',
     "description_es_CO": '''Define la ubicación de almacenamiento predeterminada
 por depósito y producto.
@@ -55,6 +61,7 @@ générer les mouvements internes.
         'locale/bg_BG.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
