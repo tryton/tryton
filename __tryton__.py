@@ -3,11 +3,11 @@
 {
     'name': 'Sale Pricelist',
     'name_bg_BG': 'Ценова листа',
-    'name_ca_ES': 'Llista de preus de venda',
+    'name_ca_ES': 'Tarifes de venda',
     'name_de_DE': 'Verkauf Preislisten',
     'name_es_AR': 'Lista de precios de venta',
     'name_es_CO': 'Lista de Precios de Venta',
-    'name_es_ES': 'Lista de precios de venta',
+    'name_es_ES': 'Tarifas de venta',
     'name_fr_FR': 'Listes de prix de vente',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -17,8 +17,7 @@
 ''',
     'description_bg_BG': '''Задаване на ценова листа за партньор и поръчка за продажба
 ''',
-    'description_ca_ES': '''Permet definir la llista de preus per tercer i
-comanda de venda.
+    'description_ca_ES': '''Permet definir la tarifa per tercer i comanda de venda.
 ''',
     'description_de_DE': '''Preislisten für Verkauf
     - Ermöglicht die Definition von Preislisten per Partei und Verkauf.
@@ -29,8 +28,7 @@ comanda de venda.
     'description_es_CO': '''Precios de Venta
     - Define lista de precio de venta para un tercero y una orden de venta.
 ''',
-    'description_es_ES': '''Lista de precios para ventas
-    - Permite la definición de la lista de precios por tercero y orden de venta.
+    'description_es_ES': '''Permite definir la tarifa por tercero y pedido de venta.
 ''',
     'description_fr_FR': '''Ajoute des listes de prix sur les tiers et sur les ventes.
 ''',
