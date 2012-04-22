@@ -7,7 +7,7 @@
     "name_de_DE": "Lagerverwaltung Artikel Lagerort",
     "name_es_AR": "Ubicación de existencias de producto",
     "name_es_CO": "Ubicación de existencias de producto",
-    "name_es_ES": "Ubicación de existencias de producto",
+    "name_es_ES": "Ubicación de stock de producto",
     "name_fr_FR": "Emplacement de produit",
     "version": "2.3.0",
     "author": "B2CK",
@@ -21,8 +21,8 @@ inventory moves.
     на продукт по склад. Тези местонахождения ще бъдат използвани при пратки
     от доставчик за генериране на движения за инвентаризация.
 ''',
-    'description_ca_ES': '''Defineix la ubicació del magatzem predeterminat pel
-dipòsit i producte. Aquestes ubicacions s'utilitzaran en l'enviament de proveïdor
+    'description_ca_ES': '''Defineix la ubicació interna predeterminada per
+magatzem i producte. Aquestes ubicacions s'utilitzaran en l'enviament de proveïdor
 per generar moviments d'inventari.
 ''',
     "description_de_DE": '''Standardlagerorte für Artikel
@@ -40,8 +40,8 @@ por depósito y producto.
 Esta ubicación la utilizará el envío del proveedor para generar movimientos
 de inventaio.
 ''',
-    "description_es_ES": '''Define la ubicación del almacén predeterminado por depósito y producto.
-Estas ubicaciones se utilizarán en el envio de proveedor para generar movimientos de inventario.
+    "description_es_ES": '''Define la ubicación interna predeterminada por almacén y producto.
+Estas ubicaciones se utilizarán en el envío de proveedor para generar movimientos de inventario.
 ''',
     "description_fr_FR": '''Defini un emplacement de rangement par défaut par produit.
 Ces emplacements seront utilisés par les colisages fournisseurs pour
