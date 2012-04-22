@@ -3,11 +3,11 @@
 {
     'name': 'Stock Supply Management',
     'name_bg_BG': 'Управление на доставка на наличност',
-    'name_ca_ES': 'Gestió de subministre d''estocs',
+    'name_ca_ES': 'Gestió del proveïment d''estocs',
     'name_de_DE': 'Lagerverwaltung Bestellwesen',
     'name_es_AR': 'Gestión de suministro de existencias',
     'name_es_CO': 'Gestión de pedidos de inventario',
-    'name_es_ES': 'Gestión de suministro de existencias',
+    'name_es_ES': 'Gestión del abastecimiento de stock',
     'name_fr_FR': 'Gestion des approvisionnements de stock',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -29,13 +29,13 @@ With schedulers:
     - за генериране на заявки за покупка въз основа на пренареждания
     - за генериране на вътрешни пратки въз основа на пренареждания
 ''',
-    'description_ca_ES': '''Mòdul per la gestió del subministre d'estocs amb:
-- Estocs mínims
-- Peticions de compra
+    'description_ca_ES': '''Mòdul per la gestió del proveïment d'estocs amb:
+    - Estocs mínims
+    - Peticions de compra
 
 I planificadors:
-- Per generar peticions de compra basades en estocs mínims
-- Per generar albarans interns basats en estocs mínims
+    - Per generar peticions de compra basades en estocs mínims
+    - Per generar albarans interns basats en estocs mínims
 ''',
     'description_de_DE': '''Modul für das Bestellwesen mit:
     - Bestellpunkten
@@ -61,13 +61,13 @@ Con agendadores para:
     - generar solicitudes de compra basados en puntos de orden
     - generar empaques internos basados en puntos de orden
 ''',
-    'description_es_ES': '''Módulo de gestión de suministros con:
-    - Punto de orden
-    - Solicitud de compra
+    'description_es_ES': '''Módulo para la gestión de abastecimientos con:
+    - Reglas de stock mínimo
+    - Solicitudes de compra
 
-Con tareas programadas para:
-    - generar solicitudes de compra basados en puntos de orden
-    - generar envios internos basados en puntos de orden
+Con planificadores para:
+    - Generar solicitudes de compra basadas en stocks mínimos
+    - Generar envíos internos basados en stocks mínimos
 ''',
     'description_fr_FR': '''Module de gestion des approvisionnements avec:
     - Règles d'approvisionnement
