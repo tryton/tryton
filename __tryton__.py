@@ -5,6 +5,7 @@
     'name_ca_ES': 'Gestió d''estocs continental',
     'name_de_DE': 'Buchhaltung Lagerbewertung Kontinentale Methode',
     'name_es_AR': 'Contabilidad de existencias continental',
+    'name_es_ES': 'Gestión de stock continental',
     'name_fr_FR': 'Gestion de stock continentale',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -13,12 +14,16 @@
     'description': '''Add continental stock accounting for real-time stock valuation.
 ''',
     'description_ca_ES': '''Afegeix comptabilitat d'estocs continental per
-la valoració d'estocs en temps real.''',
+la valoració d'estocs en temps real.
+''',
     'description_de_DE': '''
     - Fügt die kontinentale Methode der Lagerbewertung in Echt-Zeit hinzu.
 ''',
     'description_es_AR': '''Añade contabilidad de existencias continental para
 la valuación de existencias en tiempo real.
+''',
+    'description_es_ES': '''Añade contabilidad de stocks continental para
+la valoración de existencias en tiempo real.
 ''',
     'description_fr_FR': '''
     Ajoute la gestion de stock continentale pour l'évaluation en temps réel de la valeur du stock
