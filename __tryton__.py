@@ -3,21 +3,23 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Sale Shipment Cost',
+    'name_ca_ES': 'Vendes: Cost d''enviament',
     'name_de_DE': 'Verkauf Lieferposten Kosten',
     'name_es_AR': 'Costo del método de envio',
-    'name_es_ES': 'Costo del método de envio',
+    'name_es_ES': 'Ventas: Coste de envío',
     'name_fr_FR': "Coût d'expédition de vente",
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add sale shipment cost',
+    'description_ca_ES': 'Afegeix el cost d''enviament a les vendes.',
     'description_de_DE': '''
     - Fügt den Verkäufen die Verwaltung von Kosten für Lieferposten hinzu.
     ''',
     'description_es_AR': "Agrega un costo al método de envio.",
     'description_fr_FR': "Ajoute le coût d'expédition sur les ventes",
-    'description_es_ES': "Agrega un costo al método de envio.",
+    'description_es_ES': 'Añade el coste de envío a las ventas.',
      'depends': [
         'ir',
         'res',
