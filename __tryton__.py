@@ -5,6 +5,7 @@
     'name_bg_BG': 'Управление на наличности',
     'name_ca_ES': 'Estocs',
     'name_de_DE': 'Lagerverwaltung',
+    'name_es_AR': 'Gestión de existencias',
     'name_es_CO': 'Inventarios',
     'name_es_ES': 'Gestión de existencias',
     'name_fr_FR': 'Gestion des stocks',
@@ -59,6 +60,18 @@ Mit den Berichten:
     - Pick Liste
     - Einlagerungsliste (für Lieferposten von Lieferanten und Warenrücknahmen)
     - Artikel nach Lagerorten
+''',
+    'description_es_AR': '''Gestión de Existencias y control de inventarios con:
+    - Definición de ubicaciones
+    - Movimiento de existencias
+    - Envios de proveedores, clientes e internos. Envio de devoluciones de clientes y proveedores.
+    - Inventario de existencias
+
+Y con los informes:
+    - Notas de envio
+    - Lista de selección
+    - Lista de recálculo de existencias (con envios de proveedores y envios de devoluciones de clientes)
+    - Productos por ubicación
 ''',
     'description_es_CO': '''Administración de Inventarios y bodegas:
     - Definición de sitios
@@ -129,6 +142,7 @@ Et les rapports:
         'locale/bg_BG.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
