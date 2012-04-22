@@ -5,6 +5,7 @@
     'name_ca_ES': 'Gestió d''estoc anglo-saxó',
     'name_de_DE': 'Buchhaltung Lagerbewertung Angelsächsische Methode',
     'name_es_AR': 'Contabilidad de existencias Anglosajona',
+    'name_es_ES': 'Gestión de stock anglosajona',
     'name_fr_FR': 'Gestion de stock anglo-saxonne',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -20,6 +21,9 @@ la valoració d'estocs en temps real.
 ''',
     'description_es_AR': '''Añade contabilidad de existencias anglosajona para
 la valuación de existencias en tiempo real.
+''',
+    'description_es_ES': '''Añade contabilidad de stocks anglosajona para
+la valoración de existencias en tiempo real.
 ''',
     'description_fr_FR': '''
     Ajoute la gestion de stock anglo-saxonne pour une évaluation en temps réel de la valeur du stock
