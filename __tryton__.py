@@ -5,6 +5,7 @@
     'name_bg_BG': 'FIFO цена на продукт',
     'name_ca_ES': 'Cost FIFO de productes',
     'name_de_DE': 'Artikel Kostenpreisermittlung FIFO',
+    'name_es_AR': 'Costo FIFO de producto',
     'name_es_CO': 'Costo FIFO de producto',
     'name_es_ES': 'Coste FIFO de producto',
     'name_fr_FR': 'Prix de revient produit FIFO',
@@ -36,6 +37,11 @@ de càlcul del preu de cost és FIFO).
       den die Methode FIFO gewählt wurde) automatisch bei jeder Lagerbewegung
       von einem Lieferanten oder zu einem Kunden angepasst.
 ''',
+    'description_es_AR': '''Añade el método de coste FIFO en el formulario de producto.
+Una vez instalado, el precio de los movimientos de stock desde un proveedor o
+a un cliente actualizará automáticamente el precio de costo del producto
+relacionado (si el método de cálculo del precio de costo es FIFO)
+''',
     'description_es_CO': '''Añade el método de costo FIFO al formulario de producto.
 Cuando está instalado, el precio de los movimientos de stock desde un proveedor
 o a un cliente actualizarán automáticamente el precio de costo del producto
@@ -63,6 +69,7 @@ prix de revient du produit concerné (si la méthode de coût est FIFO).
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
