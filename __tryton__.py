@@ -8,7 +8,7 @@
     'name_de_DE': 'Artikel',
     'name_es_AR': 'Productos',
     'name_es_CO': 'Productos',
-    'name_es_ES': 'Producto',
+    'name_es_ES': 'Productos',
     'name_fr_FR': 'Produit',
     'name_nl_NL': 'Producten',
     'name_ru_RU': 'ТМЦ',
@@ -29,7 +29,7 @@ de mesura, categories d'unitats de mesura.''',
  - Categorías de unidades de medida
 ''',
     'description_es_CO': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
-    'description_es_ES': 'Define productos, categorías de producto, unidades de medida y categorías de unidades de medida',
+    'description_es_ES': 'Define productos, categorías de producto, unidades de medida y categorías de unidades de medida.',
     'description_fr_FR': '''Défini:
  - Produit
  - Catégorie de produit
