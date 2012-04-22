@@ -2,119 +2,163 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:0"
+msgctxt "error:currency.currency.rate:"
 msgid "A currency can only have one rate by date!"
 msgstr "За ден валутата може да има само един курс!"
 
-msgctxt "error:currency.currency:0"
+msgctxt "error:currency.currency.rate:"
+msgid "The currency rate must greater than or equal to 0"
+msgstr "Валутния курс трябва да е по-голям или равен на 0"
+
+msgctxt "error:currency.currency:"
 msgid "Invalid Grouping!"
 msgstr "Невалидно групиране!"
 
-msgctxt "error:currency.currency:0"
+msgctxt "error:currency.currency:"
 msgid "No rate found for the currency: %s at the date: %s"
 msgstr "Не е намерен курс за валута: %s за дата: %s"
 
-msgctxt "field:currency.currency,active:0"
+msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr "Активен"
 
-msgctxt "field:currency.currency,code:0"
+msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Код"
 
-msgctxt "field:currency.currency,digits:0"
+msgctxt "field:currency.currency,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:currency.currency,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
 msgstr "Цифри за показване"
 
-msgctxt "field:currency.currency,mon_decimal_point:0"
+msgctxt "field:currency.currency,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
 msgstr "Десетичен разделител"
 
-msgctxt "field:currency.currency,mon_grouping:0"
+msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
 msgstr "Групиране"
 
-msgctxt "field:currency.currency,mon_thousands_sep:0"
+msgctxt "field:currency.currency,mon_thousands_sep:"
 msgid "Thousands Separator"
 msgstr "Разделител за хиляди"
 
-msgctxt "field:currency.currency,n_cs_precedes:0"
+msgctxt "field:currency.currency,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
 msgstr "Предхожда отрицателен знак на валута"
 
-msgctxt "field:currency.currency,n_sep_by_space:0"
+msgctxt "field:currency.currency,n_sep_by_space:"
 msgid "Negative Separate by Space"
 msgstr "Знак минус: разделен от празно поле"
 
-msgctxt "field:currency.currency,n_sign_posn:0"
+msgctxt "field:currency.currency,n_sign_posn:"
 msgid "Negative Sign Position"
 msgstr "Позиция на знака минус"
 
-msgctxt "field:currency.currency,name:0"
+msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:currency.currency,negative_sign:0"
+msgctxt "field:currency.currency,negative_sign:"
 msgid "Negative Sign"
 msgstr "Отрицателен знак"
 
-msgctxt "field:currency.currency,numeric_code:0"
+msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
 msgstr "Цифров код"
 
-msgctxt "field:currency.currency,p_cs_precedes:0"
+msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
 msgstr "Предхожда положителен знак на валута"
 
-msgctxt "field:currency.currency,p_sep_by_space:0"
+msgctxt "field:currency.currency,p_sep_by_space:"
 msgid "Positive Separate by Space"
 msgstr "Знак плюс: разделен от празно поле"
 
-msgctxt "field:currency.currency,p_sign_posn:0"
+msgctxt "field:currency.currency,p_sign_posn:"
 msgid "Positive Sign Position"
 msgstr "Позиция на знака плюс"
 
-msgctxt "field:currency.currency,positive_sign:0"
+msgctxt "field:currency.currency,positive_sign:"
 msgid "Positive Sign"
 msgstr "Положителен знак"
 
-msgctxt "field:currency.currency,rate:0"
+msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
 msgstr "Текущ курс"
 
-msgctxt "field:currency.currency,rates:0"
+msgctxt "field:currency.currency,rates:"
 msgid "Rates"
 msgstr "Курсове"
 
-msgctxt "field:currency.currency,rec_name:0"
+msgctxt "field:currency.currency,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:currency.currency,rounding:0"
+msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
 msgstr "Коефициент на закръгление"
 
-msgctxt "field:currency.currency,symbol:0"
+msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
 msgstr "Символ"
 
-msgctxt "field:currency.currency.rate,currency:0"
+msgctxt "field:currency.currency,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:currency.currency,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:currency.currency.rate,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:currency.currency.rate,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "field:currency.currency.rate,date:0"
+msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
 msgstr "Дата"
 
-msgctxt "field:currency.currency.rate,rate:0"
+msgctxt "field:currency.currency.rate,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Отношение"
 
-msgctxt "field:currency.currency.rate,rec_name:0"
+msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "model:currency.currency,name:0"
+msgctxt "field:currency.currency.rate,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:currency.currency.rate,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Валута"
 
@@ -846,7 +890,7 @@ msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
 msgstr "Зимбабвииски долар"
 
-msgctxt "model:currency.currency.rate,name:0"
+msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Курс"
 
@@ -854,7 +898,6 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Валути"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
 msgstr "Управление на валути"
@@ -867,22 +910,30 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Управление на валута"
 
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency.rate:"
+msgid "Rate"
+msgstr "Курс"
+
+msgctxt "view:currency.currency.rate:"
+msgid "Rates"
+msgstr "Курсове"
+
+msgctxt "view:currency.currency:"
 msgid "Currencies"
 msgstr "Валути"
 
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency:"
 msgid "Currency"
 msgstr "Валута"
 
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Форматиране"
 
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency:"
 msgid "Rate"
 msgstr "Отношение"
 
-msgctxt "view:currency.currency:0"
+msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Курсове"
