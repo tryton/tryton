@@ -2,31 +2,51 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:dashboard.action,act_window:0"
+msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
 msgstr "Действие"
 
-msgctxt "field:dashboard.action,rec_name:0"
+msgctxt "field:dashboard.action,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:dashboard.action,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:dashboard.action,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:dashboard.action,sequence:0"
+msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
 msgstr "Последователност"
 
-msgctxt "field:dashboard.action,user:0"
+msgctxt "field:dashboard.action,user:"
 msgid "User"
 msgstr "Потребител"
 
-msgctxt "field:res.user,dashboard_actions:0"
+msgctxt "field:dashboard.action,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:dashboard.action,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
 msgstr "Действия на табло"
 
-msgctxt "field:res.user,dashboard_layout:0"
+msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Подреждане на табло"
 
-msgctxt "model:dashboard.action,name:0"
+msgctxt "model:dashboard.action,name:"
 msgid "dashboard.action"
 msgstr ""
 
@@ -38,46 +58,50 @@ msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
 msgstr "Табло"
 
-msgctxt "selection:res.user,dashboard_layout:0"
+msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
 msgstr "Каре"
 
-msgctxt "selection:res.user,dashboard_layout:0"
+msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
 msgstr "Подравнени отдолу"
 
-msgctxt "selection:res.user,dashboard_layout:0"
+msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
 msgstr "Подарнение отляво"
 
-msgctxt "selection:res.user,dashboard_layout:0"
+msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
 msgstr "Подравнение отдясно"
 
-msgctxt "selection:res.user,dashboard_layout:0"
+msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "Подравнени отгоре"
 
-msgctxt "view:dashboard.action:0"
+msgctxt "view::"
 msgid "Dashboard"
 msgstr "Табло"
 
-msgctxt "view:dashboard.action:0"
+msgctxt "view:dashboard.action:"
+msgid "Dashboard"
+msgstr "Табло"
+
+msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Действие на таблото"
 
-msgctxt "view:dashboard.action:0"
+msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
 msgstr "Действия на табло"
 
-msgctxt "view:res.user:0"
+msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Табло"
 
-msgctxt "view:res.user:0"
+msgctxt "view:res.user:"
 msgid "Dashboard Action"
 msgstr "Действие на таблото"
 
-msgctxt "view:res.user:0"
+msgctxt "view:res.user:"
 msgid "Dashboard Actions"
 msgstr "Действия на табло"
