@@ -4,6 +4,7 @@
 {
     'name': 'Purchase Shipment Cost',
     'name_de_DE': 'Einkauf Versandkosten',
+    'name_fr_FR': 'Coût des expéditions fournisseur',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,8 @@
     'description_de_DE': '''
     - Fügt Versandkosten für Einkäufe hinzu.
     ''',
+    'description_fr_FR': 'Ajoute la gestion des coûts des expéditions '\
+        'fournisseur.',
      'depends': [
         'ir',
         'res',
@@ -29,5 +32,6 @@
     ],
     'translation': [
         'locale/de_DE.po',
+        'locale/fr_FR.po',
     ],
 }
