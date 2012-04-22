@@ -5,6 +5,8 @@
     'name': 'Purchase Shipment Cost',
     'name_de_DE': 'Einkauf Versandkosten',
     'name_fr_FR': 'Coût des expéditions fournisseur',
+    'name_es_AR': 'Compras: Costo de envíos',
+    'name_es_ES': 'Coste de envío en las compras',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -15,6 +17,8 @@
     ''',
     'description_fr_FR': 'Ajoute la gestion des coûts des expéditions '\
         'fournisseur.',
+    'description_es_AR': 'Añade costo de envío a la compra',
+    'description_es_ES': 'Añade coste de envío en las compras',
      'depends': [
         'ir',
         'res',
@@ -33,5 +37,7 @@
     'translation': [
         'locale/de_DE.po',
         'locale/fr_FR.po',
+        'locale/es_AR.po',
+        'locale/es_ES.po',
     ],
 }
