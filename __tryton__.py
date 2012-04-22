@@ -5,6 +5,7 @@
     'name_bg_BG': 'Ценова листа на продукт',
     'name_ca_ES': 'Llista de preus de producte',
     'name_de_DE': 'Artikel Preisliste',
+    'name_es_AR': 'Lista de precios de producto',
     'name_es_CO': 'Lista de precios de producto',
     'name_es_ES': 'Lista de precios de producto',
     'name_fr_FR': 'Liste de prix produit',
@@ -18,6 +19,7 @@
     'description_de_DE': '''Preislisten für Artikel
     - Ermöglicht die Definition von Preislisten für Parteien.
 ''',
+    'description_es_AR': 'Define reglas de lista de precios por tercero.',
     'description_es_CO': 'Define reglas de lista de precios por tercero.',
     'description_es_ES': 'Define reglas de lista de precios por tercero.',
     'description_fr_FR': '''Défini des listes de prix par tiers''',
@@ -36,6 +38,7 @@
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
