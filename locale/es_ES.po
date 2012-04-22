@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
 msgid "You can not create recursive categories!"
 msgstr "No puede crear categorías recursivas."
