@@ -5,6 +5,7 @@
     'name': 'Product Cost History',
     'name_bg_BG': 'История за цена на продукт',
     'name_de_DE': 'Artikel Kostenpreis Historisierung',
+    'name_es_AR': 'Histórico del precio de costo de producto',
     'name_es_CO': 'Histórico del costo para productos',
     'name_es_ES': 'Histórico del precio de coste de producto',
     'name_fr_FR': 'Historique prix de revient produit',
@@ -24,6 +25,10 @@ all the past value of the cost price of the current product.
     'description_de_DE': '''Historisierung für Kostenpreise von Artikeln
     - Fügt einen Knopf auf dem Artikelformular hinzu, der eine Liste mit sämtlichen
       Werten aus der Vergangenheit für den Kostenpreis des Artikels öffnet.
+''',
+    'description_es_AR': '''Genera un histórico del precio de costo de producto.
+Este módulo añade un botón en el formulario de producto que abre la lista de
+todos los valores pasados del precio de costo del producto actual.
 ''',
     'description_es_CO': '''Genera el histórico de costo para el producto.
 Este módulo añade un botón en el formulario de producto que abre la lista
@@ -52,6 +57,7 @@ toutes les valeurs passées du prix de revient du produit.
         'locale/bg_BG.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
