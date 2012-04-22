@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Carrier Weight',
+    'name_ca_ES': 'Transportistes: Pesatge',
     'name_de_DE': 'Frachtkosten Gewicht',
     'name_fr_FR': 'Coût transporteur: Poid',
     'name_es_AR': 'Transportistas: Pesaje',
@@ -12,12 +13,13 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add cost method based on weight',
+    'description_ca_ES': 'Afegeix mètode de cost basat en el pes.',
     'description_de_DE': '''
     - Fügt eine Kostenmethode basierend auf Gewicht hinzu.
     ''',
     'description_fr_FR': 'Ajoute une méthode de coût basée sur le poids.',
     'description_es_AR': 'Añade método de costo basado en el peso',
-    'description_es_ES': 'Añade método de coste basado en el peso',
+    'description_es_ES': 'Añade método de coste basado en el peso.',
     'depends': [
         'ir',
         'res',
