@@ -3,7 +3,7 @@
 {
     "name": "Purchase Invoice Line Standalone",
     "name_bg_BG": "Ред от независима фактура към покупка",
-    'name_ca_ES': 'Línia de factura de compres independents',
+    'name_ca_ES': 'Línia de factura de compra independent',
     "name_de_DE": "Einkauf ungebundene Rechnungsposition",
     "name_es_AR": "Línea de factura de compra independiente",
     "name_es_CO": "Línea de Factura autónoma en Compras",
@@ -42,10 +42,9 @@ facturas con líneas originadas en diferentes compras.
 líneas autónomas en lugar de una factura completa. Permite componer facturas con
 líneas originadas en diferentes compras.
 ''',
-    "description_es_ES": '''
-Modifica el comportamiento de orden de compra permitiendo crear líneas
-independientes en lugar de una factura completa. Esto permite componer
-facturas con líneas originadas en diferentes compras.
+    "description_es_ES": '''Modifica el comportamiento de los pedidos de compra permitiendo crear
+líneas de factura independientes en lugar de una factura completa. Esto permite crear
+facturas con líneas que procedan de distintas compras.
 ''',
     "description_fr_FR": '''Modifie le comportement de l'ordre d'achat pour créer des lignes de
 facture autonomes au lieu de factures complètes. Cela permet de
