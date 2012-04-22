@@ -25,11 +25,11 @@ And with report:
 Прилежащи справки:
     - Баланс на аналитична сметка
 ''',
-    'description_ca_ES': '''Mòdul financer i de comptabilitat amb:
+    'description_ca_ES': '''Mòdul financer i comptable amb:
     - Comptabilitat analítica amb plans analítics il·limitats
 
 I amb informes:
-    - Balanc comptable analític
+    - Balanç comptable analític
 ''',
     'description_de_DE': '''Modul für Buchhhaltung mit:
     - Kostenstellen mit einer beliebigen Anzahl von Tabellen
@@ -49,8 +49,8 @@ Y con informes:
 Y con reportes:
     - Balance Contable Analítico
 ''',
-    'description_es_ES': '''Módulo financiero y de contabilidad con:
-    - Contabilidad analítica con cualquier cantidad de planes analíticos
+    'description_es_ES': '''Módulo financiero y contable con:
+    - Contabilidad analítica con planes analíticos ilimitados
 
 Y con informes:
     - Balance contable analítico
