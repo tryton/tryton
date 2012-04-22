@@ -7,7 +7,7 @@
     'name_de_DE': 'Lagerverwaltung Lagerortsequenz',
     'name_es_AR': 'Secuencia de ubicación de existencias',
     'name_es_CO': 'Secuencia de Sitio del Stock',
-    'name_es_ES': 'Secuencia de ubicación de existencias',
+    'name_es_ES': 'Secuencia para las ubicaciones de stock',
     'name_fr_FR': 'Séquence emplacement',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -24,7 +24,7 @@
 ''',
     'description_es_CO': '''Añade una secuencia e sitio a un objeto
 ''',
-    'description_es_ES': 'Añade una secuencia al objeto ubicación',
+    'description_es_ES': '''Añade una secuencia al objeto ubicación.''',
     'description_fr_FR': '''Ajoute une séquence sur le modèle emplacement
 ''',
     'depends': [
