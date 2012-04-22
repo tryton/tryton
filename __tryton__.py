@@ -5,6 +5,7 @@
     'name_bg_BG': 'График',
     'name_ca_ES': 'Fulls de treball',
     'name_de_DE': 'Zeiterfassung',
+    'name_es_AR': 'Partes de trabajo',
     'name_es_CO': 'Hoja de Asistencia',
     'name_es_ES': 'Partes de trabajo',
     'name_fr_FR': 'Feuille de présence',
@@ -48,6 +49,15 @@ Zugehörige Berichte:
     - Stunden pro Aufgabe
     - Stunden pro Mitarbeiter pro Woche
     - Stunden pro Mitarbeiter pro Monat
+''',
+    'description_es_AR': '''Módulo de partes de trabajo con:
+    - Trabajo
+    - Línea de parte parte de trabajo
+
+Y con informes:
+    - Horas por trabajo
+    - Horas por empleado y semana
+    - Horas por empleado y mes
 ''',
     'description_es_CO': '''Módulo de Hoja de Asistencia con:
     - Trabajo
@@ -101,6 +111,7 @@ Bijbehorende rapporten:
         'locale/bg_BG.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
