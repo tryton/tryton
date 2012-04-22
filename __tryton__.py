@@ -5,6 +5,7 @@
     'name_bg_BG': 'Покупки',
     'name_ca_ES': 'Compres',
     'name_de_DE': 'Einkauf',
+    'name_es_AR': 'Compras',
     'name_es_CO': 'Compras',
     'name_es_ES': 'Compras',
     'name_fr_FR': 'Achat',
@@ -57,6 +58,17 @@ Ermöglicht:
         - Manuell
         - Nach Auftrag
         - Nach Lieferung
+''',
+    'description_es_AR': '''Define órdenes de compra.
+ - Añade información de proveedor y de compra de un producto.
+ - Define el precio de compra como el precio del proveedor o el precio de coste.
+
+ - Con la posibilidad de:
+    - seguir el estado de facturación y envio desde la orden de compra.
+    - definir el método de facturación:
+        - Manual
+        - Basado en orden
+        - Basado en envio
 ''',
     'description_es_CO': ''' - Definición de orden de compras.
  - Se añade información de proveedor y de compra de un producto.
@@ -115,6 +127,7 @@ Avec la possibilité:
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
