@@ -22,7 +22,7 @@ type, company, currency and party.
 ''',
     "description_ca_ES": '''Permet crear línies de factura independents i
 afegir-les a una factura esborrany. La factura només acceptarà línies de factura amb
-el mateix tipus, empresa i tercer.
+el mateix tipus, empresa, divisa i tercer.
 ''',
     "description_de_DE": '''Fakturierung mit ungebundenen Rechnungspositionen
     - Ermöglicht die Erstellung ungebundener Rechnungspositionen, die später zu
@@ -39,7 +39,7 @@ posteriormente a una factura en borrador. La factuara aceptará únicamente lín
 mismo tipo, compañía, moneda y tercero.
 ''',
     "description_es_ES": '''Permite crear líneas de factura independientes y
-añadirlas a una factura borrador. La factura solo aceptará líneas de factura
+añadirlas a una factura borrador. La factura sólo aceptará líneas de factura
 con el mismo tipo, empresa, divisa y tercero.
 ''',
     "description_fr_FR": '''Permet de créer des lignes de facture autonomes et de les ajouter
