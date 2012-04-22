@@ -3,11 +3,11 @@
 {
     'name': 'Project Revenue',
     'name_bg_BG': 'Приходи на проект',
-    'name_ca_ES': 'Beneficis per projecte',
+    'name_ca_ES': 'Ingressos per projecte',
     'name_de_DE': 'Projekte Ertrag',
     'name_es_AR': 'Beneficio de proyecto',
     'name_es_CO': 'Ingresos por proyectos',
-    'name_es_ES': 'Beneficio de proyecto',
+    'name_es_ES': 'Ingresos por proyecto',
     'name_fr_FR': 'Revenu des projets',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -20,9 +20,9 @@ Define allowed services for each employees.
     - Позволява добавяне на продукт към редове от график.
     - Позволява задаване на позволените за всеки служител услуги.
 ''',
-    'description_ca_ES': '''
-- Afegeix productes a les línies de les ordres de treball.
-- Defineix serveis permesos per cada empleat.
+    'description_ca_ES': '''Ingressos per projecte:
+    - Afegeix productes a les línies de les ordres de treball.
+    - Defineix serveis permesos per cada empleat.
 ''',
     'description_de_DE': '''Projektmodul Ertrag:
     - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
@@ -35,7 +35,7 @@ Define allowed services for each employees.
     'description_es_CO': ''' - Se añade el producto a las tarjetas de registro de tiempos.
  - Se define por empleado los servicios que tiene autorizados.
 ''',
-    'description_es_ES': '''Beneficio de proyecto:
+    'description_es_ES': '''Ingresos por proyecto:
     - Añade productos a las líneas de los partes de trabajo.
     - Define servicios permitidos por cada empleado.
 ''',
