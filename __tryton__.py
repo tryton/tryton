@@ -5,6 +5,7 @@
     'name_bg_BG': 'Инициативи и възможности за продажба',
     'name_ca_ES': 'Iniciatives i oportunitats comercials',
     'name_de_DE': 'Verkauf Interessenten und Chancen',
+    'name_es_AR': 'Ventas: Iniciativas y Oportunidades',
     'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
     'version': '2.3.0',
     'author': 'Sharoon Thomas, Openlabs',
@@ -35,6 +36,13 @@
     - die Umwandlung von Chancen zu Verkäufen
     - die Verfolgung von Interessentenverlusten
 ''',
+    'description_es_AR': '''Provee:
+    - Iniciativas comerciales
+    - Conversión de iniciativas a oportunidades
+    - Gestión de conversiones
+    - Registro de iniciativas perdidas
+    - Oportunidades a órdenes de venta
+''',
     'description_fr_FR': '''Fourni :
 - Contacts commerciaux
 - Conversion des contacts commerciaux en opportunités
@@ -59,6 +67,7 @@
         'locale/bg_BG.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
