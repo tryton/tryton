@@ -5,6 +5,7 @@
     'name_bg_BG': 'Ценова листа',
     'name_ca_ES': 'Llista de preus de venda',
     'name_de_DE': 'Verkauf Preislisten',
+    'name_es_AR': 'Lista de precios de venta',
     'name_es_CO': 'Lista de Precios de Venta',
     'name_es_ES': 'Lista de precios de venta',
     'name_fr_FR': 'Listes de prix de vente',
@@ -21,6 +22,9 @@ comanda de venda.
 ''',
     'description_de_DE': '''Preislisten für Verkauf
     - Ermöglicht die Definition von Preislisten per Partei und Verkauf.
+''',
+    'description_es_AR': '''Lista de precios para ventas
+    - Permite la definición de la lista de precios por entidad y orden de venta.
 ''',
     'description_es_CO': '''Precios de Venta
     - Define lista de precio de venta para un tercero y una orden de venta.
@@ -45,6 +49,7 @@ comanda de venda.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
