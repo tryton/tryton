@@ -6,6 +6,7 @@
     'name_de_DE': 'Artikel Abmessungen',
     'name_fr_FR': 'Mesure des produits',
     'name_es_AR': 'Mediciones de Productos',
+    'name_es_ES': 'Medidas de productos',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,6 +17,7 @@
     ''',
     'description_fr_FR': 'Gestion des dimensions de produit',
     'description_es_AR': 'Añade mediciones al producto',
+    'description_es_ES': 'Añade medidas al producto',
     'depends': [
         'ir',
         'res',
@@ -28,5 +30,6 @@
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
+        'locale/es_ES.po',
     ]
 }
