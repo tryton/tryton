@@ -5,6 +5,7 @@
     "name_bg_BG": "Доставка на налиност с дни от седмицата",
     'name_ca_ES': 'Estoc per dies de la setmana',
     "name_de_DE": "Lagerverwaltung Bestellwesen nach Wochentagen",
+    "name_es_AR": "Suministro de existencias por días de la semana",
     "name_es_CO": "Existencias por días de la semana",
     "name_es_ES": "Suministro de existencias por días de la semana",
     "name_fr_FR": "Approvisionnement par jours de semaine",
@@ -25,6 +26,9 @@ proveïdors. Afecta el càlcul de dates de subministre.
     - Ermöglicht die Definition von Liefertagen pro Lieferant.
     - Wirkt sich auf die Berechnung von Lieferzeitpunkten aus.
  ''',
+    "description_es_AR": '''Define los días de la semana de entrega por proveedores.
+Afecta al cálculo de las fechas de suministro.
+''',
     "description_es_CO": '''Define los días de la semana para proveedores.
 Afecta los cálculos de fecha de los suministros.
 ''',
@@ -46,6 +50,7 @@ Impacte les calculs de dates de livraisons.
         'locale/bg_BG.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
