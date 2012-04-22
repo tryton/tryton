@@ -3,11 +3,11 @@
 {
     "name": "Stock Supply with Week Days",
     "name_bg_BG": "Доставка на налиност с дни от седмицата",
-    'name_ca_ES': 'Estoc per dies de la setmana',
+    'name_ca_ES': 'Proveïment d''estoc per dies de la setmana',
     "name_de_DE": "Lagerverwaltung Bestellwesen nach Wochentagen",
     "name_es_AR": "Suministro de existencias por días de la semana",
     "name_es_CO": "Existencias por días de la semana",
-    "name_es_ES": "Suministro de existencias por días de la semana",
+    "name_es_ES": "Suministro de stock por días de la semana",
     "name_fr_FR": "Approvisionnement par jours de semaine",
     "version": "2.3.0",
     "author": "B2CK",
@@ -20,7 +20,7 @@ Impact supply dates computations.
     - Оказва влияние върху изчисляването на датите
  ''',
     'description_ca_ES': '''Defineix els dies de la setmana d'entrega dels
-proveïdors. Afecta el càlcul de dates de subministre.
+proveïdors. Afecta al càlcul de dates de proveïment.
 ''',
     "description_de_DE": '''Bestellwesen nach Wochentagen
     - Ermöglicht die Definition von Liefertagen pro Lieferant.
@@ -33,7 +33,7 @@ Afecta al cálculo de las fechas de suministro.
 Afecta los cálculos de fecha de los suministros.
 ''',
     "description_es_ES": '''Define los días de la semana de entrega por proveedores.
-Afecta al cálculo de las fechas de suministro.
+Afecta al cálculo de las fechas de abastecimiento.
 ''',
     "description_fr_FR": '''Défini les jours de livraisons par fournisseurs.
 Impacte les calculs de dates de livraisons.
