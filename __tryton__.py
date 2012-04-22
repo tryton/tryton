@@ -6,6 +6,7 @@
     'name_de_DE': 'Deutscher Kontenrahmen SKR03',
     'name_es_AR': 'Plan de cuentas alemán SKR03',
     'name_es_ES': 'Plan contable alemán SKR03',
+    'name_fr_FR': 'Plan comptable allemand SKR03',
     'version': '2.3.0',
     'author': 'virtual things',
     'email': 'info@virtual-things.biz',
@@ -34,6 +35,9 @@
     - Proporciona impuestos, grupos de impuestos y reglas de impuestos
     - Proporciona los códigos de impuestos para el informe de impuestos alemán (UStVA)
 ''',
+    'description_fr_FR': '''Défini le plan comptable allemand SKR03.
+''',
+
     'depends': [
         'account',
     ],
