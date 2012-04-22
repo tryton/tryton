@@ -33,13 +33,13 @@ And with reports:
     - Часове по служител за месец
 ''',
     'description_ca_ES': '''Mòdul de fulls de treball amb:
-- Feines o tasques
-- Línies de fulls de treball
+    - Feines o tasques
+    - Línies de fulls de treball
 
 I els informes:
-- Hores per tasca
-- Hores per empleat per setmana
-- Hores per empleat per mes
+    - Hores per tasca
+    - Hores per empleat i setmana
+    - Hores per empleat i mes
 ''',
     'description_de_DE': '''Zeiterfassungsmodul mit:
     - Aufgaben
@@ -69,8 +69,8 @@ Y con reportes de:
     - Horas por empleado por mes
 ''',
     'description_es_ES': '''Módulo de partes de trabajo con:
-    - Trabajo
-    - Línea de parte parte de trabajo
+    - Trabajos o tareas
+    - Líneas de parte de trabajo
 
 Y con informes:
     - Horas por trabajo
