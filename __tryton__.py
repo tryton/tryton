@@ -5,6 +5,7 @@
     'name_bg_BG': 'Приходи на проект',
     'name_ca_ES': 'Beneficis per projecte',
     'name_de_DE': 'Projekte Ertrag',
+    'name_es_AR': 'Beneficio de proyecto',
     'name_es_CO': 'Ingresos por proyectos',
     'name_es_ES': 'Beneficio de proyecto',
     'name_fr_FR': 'Revenu des projets',
@@ -26,6 +27,10 @@ Define allowed services for each employees.
     'description_de_DE': '''Projektmodul Ertrag:
     - Ermöglicht das Hinzufügen von Artikeln zu Zeitpositionen.
     - Ermöglicht die Definition von Dienstleistungen, die für einen Mitarbeiter verwendet werden können.
+''',
+    'description_es_AR': '''Beneficio de proyecto:
+    - Añade productos a las líneas de los partes de trabajo.
+    - Define servicios permitidos por cada empleado.
 ''',
     'description_es_CO': ''' - Se añade el producto a las tarjetas de registro de tiempos.
  - Se define por empleado los servicios que tiene autorizados.
@@ -53,6 +58,7 @@ Défini par employé quels services sont autorisés.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
