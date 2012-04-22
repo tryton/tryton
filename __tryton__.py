@@ -5,6 +5,7 @@
     'name': 'Purchase Shipment Cost',
     'name_de_DE': 'Einkauf Versandkosten',
     'name_es_AR': 'Compras: Costo de envíos',
+    'name_es_ES': 'Coste de envío en las compras',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -14,6 +15,7 @@
     - Fügt Versandkosten für Einkäufe hinzu.
     ''',
     'description_es_AR': 'Añade costo de envío a la compra',
+    'description_es_ES': 'Añade coste de envío en las compras',
      'depends': [
         'ir',
         'res',
@@ -32,5 +34,6 @@
     'translation': [
         'locale/de_DE.po',
         'locale/es_AR.po',
+        'locale/es_ES.po',
     ],
 }
