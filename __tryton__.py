@@ -34,15 +34,15 @@ With the possibilities:
     - задаване на последователности на фактура за финансова година или период
     - кредитиране на всяка фактура
 ''',
-    'description_ca_ES': '''Mòdul financer i de comptabilitat amb:
+    'description_ca_ES': '''Mòdul financer i comptable amb:
     - Terminis de pagament
     - Factura / Abonament
-    - Factura de proveedor / Abonament de proveedor
+    - Factura de proveïdor / Abonament de proveïdor
 
 Amb les possibilitats de:
-    - fer el seguiment del pagament de factures.
-    - definir seqüències de factures per exercici fiscal o període.
-    - pagar qualsevol factura.
+    - Fer el seguiment del pagament de factures.
+    - Definir seqüències de factures per exercici fiscal o període.
+    - Abonar qualsevol factura.
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Fakturierung mit:
     - Definition von Zahlungsbedingungen
@@ -70,19 +70,19 @@ Con las posibilidades de:
     - Factura de Proveedores / Nota de Crédito de Proveedores
 
 Con las posibilidades de:
-    - hacer seguimiento al pago de facturas.
-    - definir secuencias de facturas en año o período fiscal.
-    - acreditar una factura.
+    - Hacer seguimiento al pago de facturas.
+    - Definir secuencias de facturas en año o período fiscal.
+    - Acreditar una factura.
 ''',
-    'description_es_ES': '''Módulo financiero y de contabilidad con:
-    - Plazos de Pago
+    'description_es_ES': '''Módulo financiero y contable con:
+    - Plazos de pago
     - Factura / Abono
     - Factura de proveedor / Abono de proveedor
 
 Con las posibilidades de:
-    - hacer seguimientos del pago de facturas.
-    - definir secuencias de facturas por ejercicio fiscal o período.
-    - pagar cualquier factura.
+    - Hacer el seguimiento del pago de facturas.
+    - Definir secuencias de facturas por ejercicio fiscal o período.
+    - Abonar cualquier factura.
 ''',
     'description_fr_FR': '''Module financier et comptable avec:
     - Condition de paiement
