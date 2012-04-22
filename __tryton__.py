@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Purchase Shipment Cost',
+    'name_bg_BG': 'Управление остойностяване на доставка на покупка',
     'name_de_DE': 'Einkauf Versandkosten',
     'name_fr_FR': 'Coût des expéditions fournisseur',
     'name_es_AR': 'Compras: Costo de envíos',
@@ -35,6 +36,7 @@
         'carrier.xml',
     ],
     'translation': [
+        'locale/bg_BG.po',
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
