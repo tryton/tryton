@@ -7,7 +7,7 @@
     'name_de_DE': 'Lagerverwaltung',
     'name_es_AR': 'Gestión de existencias',
     'name_es_CO': 'Inventarios',
-    'name_es_ES': 'Gestión de existencias',
+    'name_es_ES': 'Stocks',
     'name_fr_FR': 'Gestion des stocks',
     'name_ru_RU': 'Управление складами',
     'version': '2.3.0',
@@ -39,15 +39,16 @@ And with reports:
     - Продукти по местонахождение
 ''',
     'description_ca_ES': '''Gestió d'estocs i control d'inventaris amb:
-- Definició d'ubicacions
-- Moviments d'estoc
-- Albarans de proveïdors, clients i interns. Albarans de devolució a client i proveïdor.
+    - Definició d'ubicacions
+    - Moviments d'estoc
+    - Albarans de proveïdors, clients i interns. Albarans de devolució a client i proveïdor.
+    - Inventaris d'estoc
 
 Amb informes:
-- Nota d'entrega
-- Albarà intern o de picking
-- Llista de realcul d'estocs (en recepcions de proveïdors i de devolucions de clients)
-- Productes per ubiació
+    - Albarà de lliurament
+    - Albarà intern o de picking
+    - Llista de recàlcul d'estocs (en recepcions de proveïdors i de devolucions de clients)
+    - Productes per ubiació
 ''',
     'description_de_DE': '''Lagerverwaltung und Bestandskontrolle mit:
     - Definition von Lagerorten
@@ -83,16 +84,16 @@ Y con los reportes:
     - Empaques de Clientes
     - Productos por Lugar
 ''',
-    'description_es_ES': '''Gestión de Existencias y control de inventarios con:
+    'description_es_ES': '''Gestión de stocks y control de inventarios con:
     - Definición de ubicaciones
-    - Movimiento de existencias
-    - Envios de proveedores, clientes e internos. Envio de devoluciones de clientes y proveedores.
-    - Inventario de existencias
+    - Movimientos de stock
+    - Albaranes de proveedores, clientes e internos. Albaranes de devolución de clientes y proveedores.
+    - Inventario de stock
 
 Y con los informes:
-    - Notas de envio
-    - Lista de selección
-    - Lista de recálculo de existencias (con envios de proveedores y envios de devoluciones de clientes)
+    - Albarán de entrega
+    - Albarán interno o de picking
+    - Lista de recálculo de stocks (en recepciones de proveedores y devoluciones de clientes)
     - Productos por ubicación
 ''',
     'description_fr_FR': '''Gestion des stocks et contrôle de l'inventaire avec:
