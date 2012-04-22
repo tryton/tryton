@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.template,height:"
+msgid "Height"
+msgstr "Altura"
+
+msgctxt "field:product.template,height_digits:"
+msgid "Height Digits"
+msgstr "Decimales de altura"
+
+msgctxt "field:product.template,height_uom:"
+msgid "Height Uom"
+msgstr "Altura UdM"
+
+msgctxt "field:product.template,length:"
+msgid "Length"
+msgstr "Longitud"
+
+msgctxt "field:product.template,length_digits:"
+msgid "Length Digits"
+msgstr "Decimales de longitud"
+
+msgctxt "field:product.template,length_uom:"
+msgid "Length Uom"
+msgstr "Longitud UdM"
+
+msgctxt "field:product.template,weight:"
+msgid "Weight"
+msgstr "Peso"
+
+msgctxt "field:product.template,weight_digits:"
+msgid "Weight Digits"
+msgstr "Decimales del peso"
+
+msgctxt "field:product.template,weight_uom:"
+msgid "Weight Uom"
+msgstr "Peso UdM"
+
+msgctxt "field:product.template,width:"
+msgid "Width"
+msgstr "Ancho"
+
+msgctxt "field:product.template,width_digits:"
+msgid "Width Digits"
+msgstr "Decimales del ancho"
+
+msgctxt "field:product.template,width_uom:"
+msgid "Width Uom"
+msgstr "Ancho UdM"
+
+msgctxt "view:product.template:"
+msgid "Measurements"
+msgstr "Mediciones"
