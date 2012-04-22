@@ -5,6 +5,7 @@
     "name_bg_BG": "Ред от независима фактура към покупка",
     'name_ca_ES': 'Línia de factura de compres independents',
     "name_de_DE": "Einkauf ungebundene Rechnungsposition",
+    "name_es_AR": "Línea de factura de compra independiente",
     "name_es_CO": "Línea de Factura autónoma en Compras",
     "name_es_ES": "Línea de factura de compra independiente",
     "name_fr_FR": "Ligne de facture autonome - Achat",
@@ -32,6 +33,11 @@ factures amb línies provinents de diferents compres.
     - Ermöglicht die Zusammenstellung von Rechnungen aus Einkaufspositionen
       verschiedener Einkäufe.
 ''',
+    "description_es_AR": '''
+Modifica el comportamiento de la orden de compra permitiendo crear líneas
+independientes en lugar de una factura completa. Esto permite componer
+facturas con líneas originadas en diferentes compras.
+''',
     "description_es_CO": '''Modifica el comportamiento de orden de compra permitiendo crear
 líneas autónomas en lugar de una factura completa. Permite componer facturas con
 líneas originadas en diferentes compras.
@@ -58,6 +64,7 @@ composer des factures avec des lignes provenant de différents achats.
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
