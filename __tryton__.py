@@ -7,7 +7,7 @@
     'name_de_DE': 'Verkauf',
     'name_es_AR': 'Venta',
     'name_es_CO': 'Ventas',
-    'name_es_ES': 'Venta',
+    'name_es_ES': 'Ventas',
     'name_fr_FR': 'Vente',
     'name_nl_NL': 'Verkoop',
     'version': '2.3.0',
@@ -44,16 +44,16 @@ With the possibilities:
         - При потвърждаване на поръчката
         - При плащане на фактурата
 ''',
-   'description_ca_ES': '''
+   'description_ca_ES': '''- Defineix comandes de venda.
 - Afegeix informació de vendes als productes.
 - Defineix el preu de venda com el preu de la llista.
 
-- Amb la possibilitat de:
+Amb la possibilitat de:
     - Seguir els estats de facturació i enviament des de la comanda de venda.
     - Definir el mètode de facturació:
         - Manual
-    - A la confirmació de la comanda
-    - A l'enviar-la
+        - A la confirmació de la comanda
+        - A l'enviar-la
     - Definir el mètode d'enviament:
         - Manual
         - A la confirmació de la comanda
@@ -104,19 +104,19 @@ Ermöglicht:
         - Al Confirmar la Orden
         - Contra el Pago de la Factura
 ''',
-    'description_es_ES': '''Define orden de venta.
- - Añade a los productos información de ventas.
- - Define el precio de venta como el precio de lista.
+    'description_es_ES': '''- Define pedido de venta.
+- Añade información de venta a los productos.
+- Define el precio de venta como el precio de lista.
 
- - Con la posibilidad de:
-    - seguir los estados de facturación y envio desde la orden de venta.
-    - definir el método de facturación:
+Con la posibilidad de:
+    - Seguir los estados de facturación y envío desde el pedido de venta.
+    - Definir el método de facturación:
         - Manual
-        - A la confirmación de la orden
+        - A la confirmación del pedido
         - Al enviarlo
-    - definir el método de envio:
+    - Definir el método de envío:
         - Manual
-        - Al confirmar la orden
+        - Al confirmar el pedido
         - Al pagar la factura
 ''',
     'description_fr_FR': '''Défini l'ordre de vente.
