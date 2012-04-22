@@ -6,6 +6,7 @@
     'name_de_DE': 'Frachtkosten Prozentsatz',
     'name_fr_FR': 'Coût transporteur: pourcentage',
     'name_es_AR': 'Transportistas: Porcentaje',
+    'name_es_ES': 'Transportistas: Porcentaje',
     'version': '2.3.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -16,6 +17,7 @@
     ''',
     'description_fr_FR': 'Ajoute une méthode de coût basée sur le pourcentage.',
     'description_es_AR': 'Añade método de costo basado en porcentaje',
+    'description_es_ES': 'Añade método de coste basado en porcentaje',
     'depends': [
         'ir',
         'res',
@@ -33,5 +35,6 @@
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
+        'locale/es_ES.po',
         ],
     }
