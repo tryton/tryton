@@ -3,11 +3,11 @@
 {
     'name': 'Account Statement',
     'name_bg_BG': 'Отчет на сметка',
-    'name_ca_ES': 'Estat de comptes',
+    'name_ca_ES': 'Extractes comptables',
     'name_de_DE': 'Buchhaltung Bankauszüge',
     'name_es_AR': 'Estado de Cuentas',
     'name_es_CO': 'Estado de Cuentas',
-    'name_es_ES': 'Estado de cuentas',
+    'name_es_ES': 'Extractos contables',
     'name_fr_FR': 'Relevé comptable',
     'name_nl_NL': 'Bankafschriften',
     'version': '2.3.0',
@@ -23,8 +23,8 @@
     - Дневник на отчети
 ''',
     'description_ca_ES': '''Mòdul financer i comptable amb:
-    - Estat de comptes
-    - Diari de l'estat de comptes
+    - Extractes comptables
+    - Diari d'extracte
 ''',
     'description_de_DE': '''Modul für Buchhaltung und Bankauszüge mit
     - Abstimmung von Bankauszügen und Rechnungen
@@ -38,8 +38,8 @@
     - Diario de estado de cuentas
 ''',
     'description_es_ES': '''Módulo financiero y contable con:
-    - Estado de cuentas
-    - Diario de estado de cuentas
+    - Extractos contables
+    - Diario de extracto
 ''',
     'description_fr_FR': '''Module financier et comptable avec:
     - Relevé
