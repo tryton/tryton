@@ -5,6 +5,7 @@
     'name_bg_BG': 'Управление на доставка на наличност',
     'name_ca_ES': 'Gestió de subministre d''estocs',
     'name_de_DE': 'Lagerverwaltung Bestellwesen',
+    'name_es_AR': 'Gestión de suministro de existencias',
     'name_es_CO': 'Gestión de pedidos de inventario',
     'name_es_ES': 'Gestión de suministro de existencias',
     'name_fr_FR': 'Gestion des approvisionnements de stock',
@@ -43,6 +44,14 @@ I planificadors:
 Mit automatischer Auftragserstellung per Zeitplaner:
     - für Bestellungen auf der Basis von Bestellpunkten
     - für interne Lieferposten auf der Basis von Bestellpunkten
+''',
+    'description_es_AR': '''Módulo de gestión de suministros con:
+    - Punto de orden
+    - Solicitud de compra
+
+Con tareas programadas para:
+    - generar solicitudes de compra basados en puntos de orden
+    - generar envios internos basados en puntos de orden
 ''',
     'description_es_CO': '''Módulo de Administración de pedidos:
     - Punto de Orden
@@ -88,6 +97,7 @@ sur base des règles d'approvisionnement
         'locale/bg_BG.po',
         'locale/ca_ES.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
