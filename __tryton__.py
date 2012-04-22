@@ -6,6 +6,7 @@
     'name_bg_BG': 'Продукт',
     'name_ca_ES': 'Productes',
     'name_de_DE': 'Artikel',
+    'name_es_AR': 'Productos',
     'name_es_CO': 'Productos',
     'name_es_ES': 'Producto',
     'name_fr_FR': 'Produit',
@@ -21,6 +22,12 @@
     'description_ca_ES': '''Defineix productes, categories de producte, unitats
 de mesura, categories d'unitats de mesura.''',
     'description_de_DE': 'Dient der Erstellung von Artikeln, Artikelkategorien, Maßeinheiten und Kategorien für Maßeinheiten.',
+    'description_es_AR': '''Define:
+ - Productos
+ - Categorías de producto
+ - Unidades de medida
+ - Categorías de unidades de medida
+''',
     'description_es_CO': 'Definición de productos, categorías de producto unidades de medida y categorías de unidades de medida',
     'description_es_ES': 'Define productos, categorías de producto, unidades de medida y categorías de unidades de medida',
     'description_fr_FR': '''Défini:
@@ -45,6 +52,7 @@ de mesura, categories d'unitats de mesura.''',
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
