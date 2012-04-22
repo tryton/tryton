@@ -4,6 +4,7 @@
     'name': 'Stock Supply Forecast',
     'name_ca_ES': 'Previsió de subministre d''estoc',
     'name_de_DE': 'Lagerverwaltung Bestellwesen Bedarfsermittlung',
+    'name_es_AR': 'Previsión de abastecimiento de existencias',
     'name_fr_FR': 'Prévisions et approvisionnemenets de stock',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -16,6 +17,9 @@ peticions de compra.
 ''',
     'description_de_DE': '''Bestellwesen mit Bedarfsermittlung
     - Berücksichtigt die Vorhersagen der Bedarfsermittlung im Bestellwesen
+''',
+    'description_es_AR': '''Toma en cuenta la previsión a la hora de generar
+solicitudes de compra.
 ''',
     'description_fr_FR': '''
 Prend en compte les prévisions lors de la génération des demandes d'achat.
