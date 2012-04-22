@@ -18,15 +18,15 @@
     'description_bg_BG': '''Добавя аналитична сметка към редовете на покупка
 ''',
     'description_ca_ES': '''Afegeix comptabilitat analítica a les línies de les
-comandes de compra.
-''',
+comandes de compra.''',
     'description_de_DE': '''Fügt kostenstellen zu Einkaufspositionen hinzu
 ''',
     'description_es_AR': '''Añade contabilidad analítica a las líneas de compra.
 ''',
     'description_es_CO': '''Adiciona contabilidad analítica a las líneas de compra.
 ''',
-    'description_es_ES': 'Añade contabilidad analítica a las líneas de compra.',
+    'description_es_ES': '''Añade contabilidad analítica a las líneas de los
+pedidos de compra.''',
     'description_fr_FR': 'Ajoute la comptabilité analytique sur les lignes d\'achat.',
     'depends': [
         'purchase',
