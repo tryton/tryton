@@ -46,9 +46,9 @@ And with reports:
     - Хронологичен баланс
     - Общ дневник
 ''',
-    'description_ca_ES': '''El mòdul Financer i de Comptabilitat compte amb:
-    - Comptabilitat General
-    - Gestió d'anys fiscals
+    'description_ca_ES': '''Mòdul financer i comptable amb:
+    - Comptabilitat general
+    - Gestió d'exercicis fiscals
     - Administració d'impostos
     - Llibres diaris
     - Conciliació
@@ -57,7 +57,7 @@ I amb els informes:
     - Llibre major
     - Balanç de sumes i saldos
     - Balanç de situació
-    - Balanç Pèrdues i guanys
+    - Balanç pèrdues i guanys
     - Balanç de tercers
     - Saldo vençut
     - Diari
@@ -110,8 +110,8 @@ Y con los reportes:
     - Saldos Vencidos
     - Diario general
 ''',
-    'description_es_ES': '''Módulo financiero y de contabilidad con:
-    - Contabilidad General
+    'description_es_ES': '''Módulo financiero y contable con:
+    - Contabilidad general
     - Gestión de ejercicios fiscales
     - Gestión de impuestos
     - Libros diarios
@@ -120,10 +120,10 @@ Y con los reportes:
 Y con los informes:
     - Libro mayor
     - Balance de sumas y saldos
-    - Balance general
-    - Estado de pérdidas y ganancias
-    - Balance de un Tercero
-    - Saldo Vencido
+    - Balance de situación
+    - Balance pérdidas y ganancias
+    - Balance de terceros
+    - Saldo vencido
     - Libro diario
 ''',
     'description_fr_FR': '''Module financier et comptable avec:
