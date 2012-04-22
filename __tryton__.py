@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Carrier Percentage',
+    'name_ca_ES': 'Transportistes: Percentatge',
     'name_de_DE': 'Frachtkosten Prozentsatz',
     'name_fr_FR': 'Coût transporteur: pourcentage',
     'name_es_AR': 'Transportistas: Porcentaje',
@@ -12,12 +13,13 @@
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
     'description': 'Add cost method based on percentage',
+    'description_ca_ES': 'Afegeix mètode de cost basat en percentatge.',
     'description_de_DE': '''
     - Fügt eine Kostenmethode basierend auf Prozentsatz hinzu.
     ''',
     'description_fr_FR': 'Ajoute une méthode de coût basée sur le pourcentage.',
     'description_es_AR': 'Añade método de costo basado en porcentaje',
-    'description_es_ES': 'Añade método de coste basado en porcentaje',
+    'description_es_ES': 'Añade método de coste basado en porcentaje.',
     'depends': [
         'ir',
         'res',
