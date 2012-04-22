@@ -6,6 +6,7 @@
     'name_ca_ES': 'Iniciatives i oportunitats comercials',
     'name_de_DE': 'Verkauf Interessenten und Chancen',
     'name_es_AR': 'Ventas: Iniciativas y Oportunidades',
+    'name_es_ES': 'Iniciativas y oportunidades comerciales',
     'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
     'version': '2.3.0',
     'author': 'Sharoon Thomas, Openlabs',
@@ -26,7 +27,8 @@
 ''',
     'description_ca_ES': '''Aquest mòdul permet la gestió de:
     - Iniciatives comercials
-    - La conversió d'iniciatives a oportunitats
+    - Conversió d'iniciatives a oportunitats
+    - Gestió de les conversions
     - Registre d'iniciatives perdudes
     - Oportunitats a comandes de venda
 ''',
@@ -42,6 +44,13 @@
     - Gestión de conversiones
     - Registro de iniciativas perdidas
     - Oportunidades a órdenes de venta
+''',
+    'description_es_ES': '''Este módulo permite la gestión de:
+    - Iniciativas comerciales
+    - Conversión de iniciativas a oportunidades
+    - Gestión de las conversiones
+    - Registro de iniciativas perdidas
+    - Oportunidades a pedidos de venta
 ''',
     'description_fr_FR': '''Fourni :
 - Contacts commerciaux
