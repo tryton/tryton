@@ -7,7 +7,7 @@
     'name_de_DE': 'Lagerverwaltung Bestandskorrektur für mehrere Lagerorte',
     'name_es_AR': 'Inventario de existencias para muchas ubicaciones',
     'name_es_CO': 'Inventario de existencias para muchas ubicaciones',
-    'name_es_ES': 'Inventario de existencias para muchas ubicaciones',
+    'name_es_ES': 'Inventario de stock para muchas ubicaciones',
     'name_fr_FR': 'Inventaire de stock par liste de locations',
     'version': '2.3.0',
     'author': 'B2CK',
@@ -19,7 +19,7 @@ given list of locations.
     'description_bg_BG': '''Добавя помощник, който позволява създаване на автоматични
       инвентаризации за зададен списък от местонахождения
 ''',
-    'description_ca_ES': '''Afegeix un assitent per permetre crear inventaris
+    'description_ca_ES': '''Afegeix un assistent per permetre crear inventaris
 automàtics per a una llista d'ubicacions donada.''',
     'description_de_DE': '''Bestandskorrektur für mehrere Lagerorte
     - Fügt einen Wizard hinzu, der automatisch die Lagerbestände für eine Liste
