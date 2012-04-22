@@ -5,6 +5,7 @@
     'name_bg_BG': 'Продажби',
     'name_ca_ES': 'Vendes',
     'name_de_DE': 'Verkauf',
+    'name_es_AR': 'Venta',
     'name_es_CO': 'Ventas',
     'name_es_ES': 'Venta',
     'name_fr_FR': 'Vente',
@@ -72,6 +73,21 @@ Ermöglicht:
         - Manuell
         - Nach Auftragsbestätigung
         - Nach Bezahlung
+''',
+    'description_es_AR': '''Define orden de venta.
+ - Añade a los productos información de ventas.
+ - Define el precio de venta como el precio de lista.
+
+ - Con la posibilidad de:
+    - seguir los estados de facturación y envio desde la orden de venta.
+    - definir el método de facturación:
+        - Manual
+        - A la confirmación de la orden
+        - Al enviarlo
+    - definir el método de envio:
+        - Manual
+        - Al confirmar la orden
+        - Al pagar la factura
 ''',
     'description_es_CO': ''' - Define la orden de Ventas.
  - Se añade al producto la información de ventas.
@@ -156,6 +172,7 @@ Biedt mogelijkheden tot:
         'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
+        'locale/es_AR.po',
         'locale/es_CO.po',
         'locale/es_ES.po',
         'locale/fr_FR.po',
