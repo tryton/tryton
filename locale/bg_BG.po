@@ -2,55 +2,95 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:country.country:0"
+msgctxt "error:country.country:"
 msgid "The code of the country must be unique!"
 msgstr "Кода на държавата трябва да е уникален!"
 
-msgctxt "error:country.country:0"
+msgctxt "error:country.country:"
 msgid "The name of the country must be unique!"
 msgstr "Името на държавата трябва да е уникално!"
 
-msgctxt "field:country.country,code:0"
+msgctxt "field:country.country,code:"
 msgid "Code"
 msgstr "Код"
 
-msgctxt "field:country.country,name:0"
+msgctxt "field:country.country,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:country.country,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:country.country,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:country.country,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:country.country,rec_name:0"
+msgctxt "field:country.country,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:country.country,subdivisions:0"
+msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "Подразделения"
 
-msgctxt "field:country.subdivision,code:0"
+msgctxt "field:country.country,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:country.country,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr "Код"
 
-msgctxt "field:country.subdivision,country:0"
+msgctxt "field:country.subdivision,country:"
 msgid "Country"
 msgstr "Държава"
 
-msgctxt "field:country.subdivision,name:0"
+msgctxt "field:country.subdivision,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+msgctxt "field:country.subdivision,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+msgctxt "field:country.subdivision,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:country.subdivision,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:country.subdivision,parent:0"
+msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
 msgstr "Родител"
 
-msgctxt "field:country.subdivision,rec_name:0"
+msgctxt "field:country.subdivision,rec_name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:country.subdivision,type:0"
+msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "Вид"
 
-msgctxt "help:country.country,code:0"
+msgctxt "field:country.subdivision,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+msgctxt "field:country.subdivision,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
 "You can use this field for quick search."
@@ -58,11 +98,11 @@ msgstr ""
 "ISO кода на държавата в два символа.\n"
 "Може да използвате полета за бързо търсене."
 
-msgctxt "help:country.country,name:0"
+msgctxt "help:country.country,name:"
 msgid "The full name of the country."
 msgstr "Пълно име на държавата"
 
-msgctxt "model:country.country,name:0"
+msgctxt "model:country.country,name:"
 msgid "Country"
 msgstr "Държава"
 
@@ -1050,7 +1090,7 @@ msgctxt "model:country.country,name:zw"
 msgid "Zimbabwe"
 msgstr "Зимбабве"
 
-msgctxt "model:country.subdivision,name:0"
+msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "Подразделение"
 
@@ -19254,338 +19294,338 @@ msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
 msgstr "Държави"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
 msgstr "Администрация"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
 msgstr "Административен район"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
 msgstr "Административна територия"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
 msgstr "Административна област"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Area"
 msgstr "Област"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
 msgstr "Атол"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
 msgstr "Автономен град"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
 msgstr "Автономна комуна"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
 msgstr "Автономен окръг"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
 msgstr "Автономна провинция"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
 msgstr "Автономен район"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
 msgstr "Автономна общност"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
 msgstr "Автономен остров"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
 msgstr "Автоновма общност"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
 msgstr "Автономна република"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
 msgstr "Автономен сектор"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territory"
 msgstr "Автономна територия"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
 msgstr "Квартал"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
 msgstr "Кантон"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Capital Territory"
 msgstr "Столична територия"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
-msgstr ""
+msgstr "Главен град"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "City"
 msgstr "Град"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
 msgstr "Градска корпорация"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
 msgstr "Град с правомощия на държава"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
 msgstr "Комуна"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Country"
 msgstr "Държава"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "County"
 msgstr "Държава"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr "Отдел"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
 msgstr "Колония"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "District"
 msgstr "Окръг"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Division"
 msgstr "Отдел"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Economic Prefecture"
 msgstr "Икономическа префектутра"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Economic region"
 msgstr "Икономически район"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
 msgstr "Емиратство"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
 msgstr "Единица"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
 msgstr "Федерален окръг"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
 msgstr "Федерални територии"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"
 msgstr "Географски регион"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
 msgstr "Географска единица"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
 msgstr "Губернаторство"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
 msgstr "Включен за пълнота"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Island council"
 msgstr "Островен съвет"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
 msgstr "Островна група"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
 msgstr "Местен съвет"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
 msgstr "Квартал на Лондон"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan district"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan region"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Municipalities"
 msgstr "Общини"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Municipality"
 msgstr "Община"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Oblast"
 msgstr "Област"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
 msgstr "Външни територии"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region/department"
 msgstr "Презокеански регион/отдел"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
 msgstr "Енория"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Prefecture"
 msgstr "Префектура"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Principality"
 msgstr "Княжество"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Province"
 msgstr "Провинция"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
 msgstr "Район"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Region"
 msgstr "Област"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
 msgstr "Регионален съвет"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
 msgstr "Република"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
 msgstr "Специален окръг"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Special Municipality"
 msgstr "Специална община"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
 msgstr "Специален регион"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
 msgstr "Специален административен район"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
 msgstr "Специален град"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
 msgstr "Специална зона"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "State"
 msgstr "Щат"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
 msgstr "Териториална единица"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Territory"
 msgstr "Територия"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
 msgstr "Градски съвет"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Two-tier county"
 msgstr "Дустепенен окръг"
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Union territory"
 msgstr ""
 
-msgctxt "selection:country.subdivision,type:0"
+msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority"
 msgstr "Унитарни единици"
 
-msgctxt "view:country.country:0"
+msgctxt "view:country.country:"
 msgid "Countries"
 msgstr "Държави"
 
-msgctxt "view:country.country:0"
+msgctxt "view:country.country:"
 msgid "Country"
 msgstr "Държава"
 
-msgctxt "view:country.subdivision:0"
+msgctxt "view:country.subdivision:"
 msgid "Subdivision"
 msgstr "Подразделение"
 
-msgctxt "view:country.subdivision:0"
+msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Подразделения"
