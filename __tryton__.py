@@ -17,7 +17,7 @@
 ''',
     'description_bg_BG': '''Добавя хронология към полетата на фактура
 ''',
-    'description_ca_ES': '''Afegeix un històric pels camps de la factura
+    'description_ca_ES': '''Afegeix un històric pels camps de la factura.
 ''',
     'description_de_DE': '''Fügt Historisierung zu den Rechnungsfeldern hinzu
 ''',
@@ -25,7 +25,8 @@
 ''',
     'description_es_CO': '''Histórico de Facturación a nivel de campos
 ''',
-    'description_es_ES': 'Añade un histórico para los campos de factura',
+    'description_es_ES': '''Añade un histórico para los campos de la factura.
+''',
     'description_fr_FR': '''Ajoute l'historisation au champs de la facture.
 ''',
     'depends': [
