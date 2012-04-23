@@ -378,18 +378,6 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:sale.return_sale.ask,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.return_sale.ask,sale:"
-msgid "Sale"
-msgstr "Продажби"
-
-msgctxt "field:sale.return_sale.ask,sale_lines:"
-msgid "Return Lines"
-msgstr ""
-
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Коментар"
@@ -426,17 +414,9 @@ msgctxt "field:sale.sale,invoice_address:"
 msgid "Invoice Address"
 msgstr "Адрес за фактура"
 
-msgctxt "field:sale.sale,invoice_exception:"
-msgid "Invoices Exception"
-msgstr "Грешка при фактури"
-
 msgctxt "field:sale.sale,invoice_method:"
 msgid "Invoice Method"
 msgstr "Начин на фактуриране"
-
-msgctxt "field:sale.sale,invoice_paid:"
-msgid "Invoices Paid"
-msgstr "Платени фактури"
 
 msgctxt "field:sale.sale,invoice_state:"
 msgid "Invoice State"
@@ -489,14 +469,6 @@ msgstr "Дата на продажба"
 msgctxt "field:sale.sale,shipment_address:"
 msgid "Shipment Address"
 msgstr "Адрес за доставка"
-
-msgctxt "field:sale.sale,shipment_done:"
-msgid "Shipment Done"
-msgstr "Направена пратка"
-
-msgctxt "field:sale.sale,shipment_exception:"
-msgid "Shipments Exception"
-msgstr "Грешки при пратка"
 
 msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
@@ -724,6 +696,10 @@ msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
 msgstr "Обработка на грешка към фактура"
 
+msgctxt "model:ir.action,name:wizard_return_sale"
+msgid "Create Return Sale"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr "Обработка на грешки при изпращане"
@@ -784,10 +760,12 @@ msgctxt "model:sale.configuration,name:"
 msgid "Sale Configuration"
 msgstr "Конфигурация на продажба"
 
+#, fuzzy
 msgctxt "model:sale.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Обработване за грешка в фактура"
 
+#, fuzzy
 msgctxt "model:sale.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
 msgstr "Обработване на грешка при пратка"
@@ -811,10 +789,6 @@ msgstr "Ред от продажба - Игнорирано движение"
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Ред от продажба - Нановосъздадено движение"
-
-msgctxt "model:sale.return_sale.ask,name:"
-msgid "sale.return_sale.ask"
-msgstr ""
 
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
@@ -917,10 +891,6 @@ msgid "Manual"
 msgstr "Ръчно"
 
 msgctxt "selection:sale.configuration,sale_invoice_method:"
-msgid "On Order Confirmed"
-msgstr "При потвърждаване на поръчка"
-
-msgctxt "selection:sale.configuration,sale_invoice_method:"
 msgid "On Order Processed"
 msgstr "При обработена поръчка"
 
@@ -935,10 +905,6 @@ msgstr "Ръчно"
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Invoice Paid"
 msgstr "При плащане на фактура"
-
-msgctxt "selection:sale.configuration,sale_shipment_method:"
-msgid "On Order Confirmed"
-msgstr "При потвърждаване на поръчка"
 
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
@@ -963,10 +929,6 @@ msgstr "Заглавие"
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "Manual"
 msgstr "Ръчно"
-
-msgctxt "selection:sale.sale,invoice_method:"
-msgid "On Order Confirmed"
-msgstr "При потвърждаване на поръчка"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "On Order Processed"
@@ -999,10 +961,6 @@ msgstr "Ръчно"
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "On Invoice Paid"
 msgstr "При плащане на фактура"
-
-msgctxt "selection:sale.sale,shipment_method:"
-msgid "On Order Confirmed"
-msgstr "При потвърждаване на поръчка"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "On Order Processed"
@@ -1184,34 +1142,10 @@ msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
 msgid "Ok"
 msgstr "Добре"
 
-msgctxt "wizard_button:sale.handle.invoice.exception,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:sale.handle.invoice.exception,init,ok:"
-msgid "Ok"
-msgstr "Добре"
-
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:sale.handle.shipment.exception,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:sale.handle.shipment.exception,init,ok:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:sale.return_sale,ask,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:sale.return_sale,ask,make_return:"
 msgid "Ok"
 msgstr "Добре"

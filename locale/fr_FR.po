@@ -682,14 +682,6 @@ msgid ""
 msgstr ""
 "Les factures sélectionnées seront recréés. Les autres seront ignorées."
 
-msgctxt "model:account.invoice,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:account.invoice.line,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Factures"
@@ -794,14 +786,6 @@ msgctxt "model:ir.ui.menu,name:menu_sale_form_quotation"
 msgid "Quotation Sales"
 msgstr "Devis"
 
-msgctxt "model:product.product,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:product.template,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:res.group,name:group_sale"
 msgid "Sales"
 msgstr "Vente"
@@ -857,18 +841,6 @@ msgstr "Vente - Facture Ignorée"
 msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr "Vente - Facture recréée"
-
-msgctxt "model:stock.move,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.out,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.out.return,name:"
-msgid ""
-msgstr ""
 
 msgctxt "odt:sale.sale:"
 msgid "Amount"

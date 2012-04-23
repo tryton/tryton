@@ -24,7 +24,8 @@ msgstr "La ubicación de cliente es requerida."
 
 msgctxt "error:sale.sale:"
 msgid "Invoice and Shipment addresses must be defined for the quotation."
-msgstr "Debe indicar las direcciones de facturación y de envío en el presupuesto."
+msgstr ""
+"Debe indicar las direcciones de facturación y de envío en el presupuesto."
 
 msgctxt "error:sale.sale:"
 msgid "It misses an \"Account Receivable\" on the party \"%s\"!"
@@ -639,8 +640,10 @@ msgid "In number of days"
 msgstr "En número de días."
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
-msgid "The selected invoices will be recreated. The other ones will be ignored."
-msgstr "Las facturas seleccionadas serán recreadas. Las otras serán ignoradas."
+msgid ""
+"The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+"Las facturas seleccionadas serán recreadas. Las otras serán ignoradas."
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -758,10 +761,12 @@ msgctxt "model:sale.configuration,name:"
 msgid "Sale Configuration"
 msgstr "Configuración ventas"
 
+#, fuzzy
 msgctxt "model:sale.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Gestionar excepción de factura"
 
+#, fuzzy
 msgctxt "model:sale.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
 msgstr "Gestionar excepción de envío"
