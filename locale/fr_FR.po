@@ -42,14 +42,6 @@ msgctxt "help:ldap.connection,auth_uid:"
 msgid "UID Attribute for authentication"
 msgstr "Attribut UID de l'authentification"
 
-msgctxt "model:ldap.connection,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:res.user,name:"
-msgid ""
-msgstr ""
-
 msgctxt "selection:ldap.connection,auth_scope:"
 msgid "Base"
 msgstr "Base"

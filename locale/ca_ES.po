@@ -1,66 +1,55 @@
-#
-# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+# 
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
-"PO-Revision-Date: 2011-10-22 12:58+0200\n"
-"Project-Id-Version: \n"
-"Language-Team: Catalan <>\n"
-"Language: ca\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"MIME-Version: 1.0\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.user:0"
+msgctxt "error:res.user:"
 msgid "You can not set a password to a ldap user!"
 msgstr "No pot establir la contrasenya d'un usuari LDAP"
 
-msgctxt "field:ldap.connection,auth_base_dn:0"
+msgctxt "field:ldap.connection,auth_base_dn:"
 msgid "Base DN"
 msgstr "DN base"
 
-msgctxt "field:ldap.connection,auth_create_user:0"
+msgctxt "field:ldap.connection,auth_create_user:"
 msgid "Create User"
 msgstr "Crear usuari"
 
-msgctxt "field:ldap.connection,auth_require_filter:0"
+msgctxt "field:ldap.connection,auth_require_filter:"
 msgid "Require Filter"
 msgstr "Filtre requerit"
 
-msgctxt "field:ldap.connection,auth_scope:0"
+msgctxt "field:ldap.connection,auth_scope:"
 msgid "Scope"
 msgstr "Àmbit"
 
-msgctxt "field:ldap.connection,auth_uid:0"
+msgctxt "field:ldap.connection,auth_uid:"
 msgid "UID"
 msgstr "UID"
 
-msgctxt "help:ldap.connection,auth_base_dn:0"
+msgctxt "help:ldap.connection,auth_base_dn:"
 msgid "Base DN for authentication"
 msgstr "DN base per a l'autenticació"
 
-msgctxt "help:ldap.connection,auth_create_user:0"
+msgctxt "help:ldap.connection,auth_create_user:"
 msgid "Create user if not in database"
 msgstr "Crea l'usuari si no existeix a la base de dades"
 
-msgctxt "help:ldap.connection,auth_uid:0"
+msgctxt "help:ldap.connection,auth_uid:"
 msgid "UID Attribute for authentication"
 msgstr "Atribut UID per a l'autenticació"
 
-msgctxt "selection:ldap.connection,auth_scope:0"
+msgctxt "selection:ldap.connection,auth_scope:"
 msgid "Base"
 msgstr "Base"
 
-msgctxt "selection:ldap.connection,auth_scope:0"
+msgctxt "selection:ldap.connection,auth_scope:"
 msgid "OneLevel"
 msgstr "UnNivell"
 
-msgctxt "selection:ldap.connection,auth_scope:0"
+msgctxt "selection:ldap.connection,auth_scope:"
 msgid "Subtree"
 msgstr "Subarbre"
 
-msgctxt "view:ldap.connection:0"
+msgctxt "view:ldap.connection:"
 msgid "Authentication"
 msgstr "Autenticació"
