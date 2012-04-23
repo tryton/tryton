@@ -31,6 +31,7 @@
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/es_AR.po',
         'locale/es_ES.po',

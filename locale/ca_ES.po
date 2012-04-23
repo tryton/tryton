@@ -14,9 +14,10 @@ msgctxt "field:carrier,create_date:"
 msgid "Create Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Crear usuari"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
@@ -25,12 +26,12 @@ msgstr ""
 #, fuzzy
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Tercers"
 
 #, fuzzy
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nom del camp"
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
