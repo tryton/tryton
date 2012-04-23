@@ -29,7 +29,7 @@ msgstr ""
 #, fuzzy
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Ще се използва тази сметка вместо тази зададена за категорията"
+msgstr "Aquest compte s'usarà en lloc del definit en la categoria."
 
 msgctxt "model:account.account.template,name:account_template_cogs"
 msgid "COGS"
