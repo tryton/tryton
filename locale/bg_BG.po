@@ -23,14 +23,6 @@ msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund an invoice with payments!"
 msgstr "Не можете да кредитиратe с обезщетение фактура по която има плащане!"
 
-msgctxt "error:account.invoice.credit_invoice:"
-msgid "You can not credit with refund an invoice that is not opened!"
-msgstr "Не можете да кредитиратe с обезщетение фактура която не е отворена!"
-
-msgctxt "error:account.invoice.credit_invoice:"
-msgid "You can not credit with refund an invoice with payments!"
-msgstr "Не можете да кредитиратe обезщетение фактура по която има плащане!"
-
 msgctxt "error:account.invoice.line:"
 msgid "Line with \"line\" type must have an account!"
 msgstr "Ред от вид \"line\" трябва да има сметка!"
@@ -71,22 +63,6 @@ msgid ""
 msgstr ""
 "Не може да създавате частично плащане за сума по-голяма от сумата за "
 "плащане!"
-
-msgctxt "error:account.invoice.pay_invoice:"
-msgid ""
-"You can not create a partial payment with an amount greater then the amount "
-"to pay!"
-msgstr ""
-"Не може да създавате частично плащане за сума по-голяма от сумата за "
-"плащане!"
-
-msgctxt "error:account.invoice.payment_term.line.delay:"
-msgid "The code must be unique!"
-msgstr "Кода трябва да е уникален!"
-
-msgctxt "error:account.invoice.payment_term.line.type:"
-msgid "The code must be unique!"
-msgstr "Кода трябва да е уникален!"
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid "Day of month must be between 1 and 31."
@@ -409,10 +385,6 @@ msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr "С обещетение"
 
-msgctxt "field:account.invoice.credit_invoice.init,with_refund:"
-msgid "With Refund"
-msgstr "С обещетение"
-
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
 msgstr "Сметка"
@@ -641,102 +613,6 @@ msgctxt "field:account.invoice.pay.start,journal:"
 msgid "Journal"
 msgstr "Дневник"
 
-msgctxt "field:account.invoice.pay_invoice.ask,account:"
-msgid "Account"
-msgstr "Сметка"
-
-msgctxt "field:account.invoice.pay_invoice.ask,account_writeoff:"
-msgid "Write-Off Account"
-msgstr "Сметка на отписване"
-
-msgctxt "field:account.invoice.pay_invoice.ask,amount:"
-msgid "Payment Amount"
-msgstr "Платена сума"
-
-msgctxt "field:account.invoice.pay_invoice.ask,amount_writeoff:"
-msgid "Write-Off Amount"
-msgstr "Сума за отписване"
-
-msgctxt "field:account.invoice.pay_invoice.ask,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.invoice.pay_invoice.ask,currency:"
-msgid "Payment Currency"
-msgstr "Валута при плащане"
-
-msgctxt "field:account.invoice.pay_invoice.ask,currency_digits:"
-msgid "Payment Currency Digits"
-msgstr "Цифри на валута за плащане"
-
-msgctxt "field:account.invoice.pay_invoice.ask,currency_digits_writeoff:"
-msgid "Write-Off Currency Digits"
-msgstr "Цифри на валута за отписване"
-
-msgctxt "field:account.invoice.pay_invoice.ask,currency_writeoff:"
-msgid "Write-Off Currency"
-msgstr "Валута на отписване"
-
-msgctxt "field:account.invoice.pay_invoice.ask,date:"
-msgid "Date"
-msgstr "Дата"
-
-msgctxt "field:account.invoice.pay_invoice.ask,description:"
-msgid "Description"
-msgstr "Описание"
-
-msgctxt "field:account.invoice.pay_invoice.ask,invoice:"
-msgid "Invoice"
-msgstr "Фактура"
-
-msgctxt "field:account.invoice.pay_invoice.ask,journal:"
-msgid "Journal"
-msgstr "Дневник"
-
-msgctxt "field:account.invoice.pay_invoice.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr "Дневник на отписване"
-
-msgctxt "field:account.invoice.pay_invoice.ask,lines:"
-msgid "Lines"
-msgstr "Редове"
-
-msgctxt "field:account.invoice.pay_invoice.ask,lines_to_pay:"
-msgid "Lines to Pay"
-msgstr "Редове за плащане"
-
-msgctxt "field:account.invoice.pay_invoice.ask,payment_lines:"
-msgid "Payment Lines"
-msgstr "Редове от плащане"
-
-msgctxt "field:account.invoice.pay_invoice.ask,type:"
-msgid "Type"
-msgstr "Вид"
-
-msgctxt "field:account.invoice.pay_invoice.init,amount:"
-msgid "Amount"
-msgstr "Сума"
-
-msgctxt "field:account.invoice.pay_invoice.init,currency:"
-msgid "Currency"
-msgstr "Валута"
-
-msgctxt "field:account.invoice.pay_invoice.init,currency_digits:"
-msgid "Currency Digits"
-msgstr "Цифри за валута"
-
-msgctxt "field:account.invoice.pay_invoice.init,date:"
-msgid "Date"
-msgstr "Дата"
-
-msgctxt "field:account.invoice.pay_invoice.init,description:"
-msgid "Description"
-msgstr "Описание"
-
-msgctxt "field:account.invoice.pay_invoice.init,journal:"
-msgid "Journal"
-msgstr "Дневник"
-
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
 msgstr "Активен"
@@ -805,10 +681,6 @@ msgctxt "field:account.invoice.payment_term.line,days:"
 msgid "Number of Days"
 msgstr "Брой дни"
 
-msgctxt "field:account.invoice.payment_term.line,delay:"
-msgid "Condition"
-msgstr "Условие"
-
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr ""
@@ -861,23 +733,7 @@ msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:account.invoice.payment_term.line.delay,code:"
-msgid "Code"
-msgstr "Код"
-
-msgctxt "field:account.invoice.payment_term.line.delay,name:"
-msgid "Name"
-msgstr "Име"
-
 msgctxt "field:account.invoice.payment_term.line.delay,rec_name:"
-msgid "Name"
-msgstr "Име"
-
-msgctxt "field:account.invoice.payment_term.line.type,code:"
-msgid "Code"
-msgstr "Код"
-
-msgctxt "field:account.invoice.payment_term.line.type,name:"
 msgid "Name"
 msgstr "Име"
 
@@ -989,10 +845,6 @@ msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
 msgstr ""
 
-msgctxt "field:party.party,payment_term:"
-msgid "Invoice Payment Term"
-msgstr "Условие за плащане на фактура"
-
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Условие за плащане на доставчик"
@@ -1000,14 +852,6 @@ msgstr "Условие за плащане на доставчик"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Ако е истина текущата(те) сметка(и) ще бъдат платена(и)."
-
-msgctxt "help:account.invoice.credit_invoice.init,with_refund:"
-msgid "If true, the current invoice(s) will be paid."
-msgstr "Ако е истина текущара(те) сметка(и) ще бъдат платена(и)."
-
-msgctxt "help:account.invoice.payment_term.line,percentage:"
-msgid "In %"
-msgstr "В %"
 
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
@@ -1022,10 +866,6 @@ msgid "Invoice - Payment Line"
 msgstr "Фактура - Ред от плащане"
 
 msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice Init"
-msgstr "Начало на кредитна фактура"
-
-msgctxt "model:account.invoice.credit_invoice.init,name:"
 msgid "Credit Invoice Init"
 msgstr "Начало на кредитна фактура"
 
@@ -1045,14 +885,6 @@ msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
 msgstr "Плащане на фактура"
 
-msgctxt "model:account.invoice.pay_invoice.ask,name:"
-msgid "Pay Invoice Ask"
-msgstr "Запистване за плащане на фактура"
-
-msgctxt "model:account.invoice.pay_invoice.init,name:"
-msgid "Pay Invoice Init"
-msgstr "Начално плащане на фактура"
-
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
 msgstr "Условие за плащане"
@@ -1062,18 +894,14 @@ msgid "Payment Term Line"
 msgstr "Ред от условие за плащане"
 
 msgctxt "model:account.invoice.payment_term.line.delay,name:"
-msgid "account.invoice.payment_term.line.delay"
+msgid "Payment Term Line Delay"
 msgstr ""
 
 msgctxt "model:account.invoice.payment_term.line.type,name:"
-msgid "account.invoice.payment_term.line.type"
+msgid "Payment Term Line Type"
 msgstr ""
 
 msgctxt "model:account.invoice.print.warning,name:"
-msgid "Print Invoice Report Warning"
-msgstr "Предупреждение при отпечатване на справка за фактура"
-
-msgctxt "model:account.invoice.print_invoice_report.warning,name:"
 msgid "Print Invoice Report Warning"
 msgstr "Предупреждение при отпечатване на справка за фактура"
 
@@ -1453,14 +1281,6 @@ msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
 msgstr "Анулиран"
 
-msgctxt "selection:account.invoice.pay_invoice.ask,type:"
-msgid "Partial Payment"
-msgstr "Частично плащане"
-
-msgctxt "selection:account.invoice.pay_invoice.ask,type:"
-msgid "Write-Off"
-msgstr "Анулиран"
-
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid ""
 msgstr ""
@@ -1569,14 +1389,6 @@ msgctxt "view:account.invoice.credit.start:"
 msgid "Credit Invoice"
 msgstr "Кредитна фактура"
 
-msgctxt "view:account.invoice.credit_invoice.init:"
-msgid "Are you sure to credit those/this invoice(s)?"
-msgstr "Сигурни ли сте че искате да кредитирате тази/тези фактура/фактури?"
-
-msgctxt "view:account.invoice.credit_invoice.init:"
-msgid "Credit Invoice"
-msgstr "Кредитна фактура"
-
 msgctxt "view:account.invoice.line:"
 msgid "General"
 msgstr "Основен"
@@ -1602,34 +1414,6 @@ msgid "Pay Invoice"
 msgstr "Плащане на фактура"
 
 msgctxt "view:account.invoice.pay.start:"
-msgid "Pay Invoice"
-msgstr "Плащане на фактура"
-
-msgctxt "view:account.invoice.pay_invoice.ask:"
-msgid "Amount Second Currency"
-msgstr "Сума в допълнителна валута"
-
-msgctxt "view:account.invoice.pay_invoice.ask:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "view:account.invoice.pay_invoice.ask:"
-msgid "Debit"
-msgstr "Дебит"
-
-msgctxt "view:account.invoice.pay_invoice.ask:"
-msgid "Lines to Pay"
-msgstr "Редове за плащане"
-
-msgctxt "view:account.invoice.pay_invoice.ask:"
-msgid "Pay Invoice"
-msgstr "Плащане на фактура"
-
-msgctxt "view:account.invoice.pay_invoice.ask:"
-msgid "Payment Lines"
-msgstr "Редове от плащане"
-
-msgctxt "view:account.invoice.pay_invoice.init:"
 msgid "Pay Invoice"
 msgstr "Плащане на фактура"
 
@@ -1666,22 +1450,6 @@ msgid "The invoices will be sent <i>directly</i> to the printer."
 msgstr "Фактурите ще бъдет изпратени <i>директно</i> на принтера."
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "You have selected more than one invoice to print."
-msgstr "Избрали сте за печат повече от една фактура"
-
-msgctxt "view:account.invoice.print_invoice_report.warning:"
-msgid "<b>Warning!</b>"
-msgstr "<b>Внимание!</b>"
-
-msgctxt "view:account.invoice.print_invoice_report.warning:"
-msgid "Print Invoice"
-msgstr "Отпечатване на фактура"
-
-msgctxt "view:account.invoice.print_invoice_report.warning:"
-msgid "The invoices will be sent <i>directly</i> to the printer."
-msgstr "Фактурите ще бъдет изпратени <i>директно</i> на принтера."
-
-msgctxt "view:account.invoice.print_invoice_report.warning:"
 msgid "You have selected more than one invoice to print."
 msgstr "Избрали сте за печат повече от една фактура"
 
@@ -1797,14 +1565,6 @@ msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:account.invoice.credit_invoice,init,credit:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "wizard_button:account.invoice.credit_invoice,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
 msgstr "Отказ"
@@ -1821,34 +1581,10 @@ msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:account.invoice.pay_invoice,ask,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.invoice.pay_invoice,ask,pay:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:account.invoice.pay_invoice,init,choice:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:account.invoice.pay_invoice,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:account.invoice.print,warning,print_:"
-msgid "Print"
-msgstr "Печат"
-
-msgctxt "wizard_button:account.invoice.print_invoice_report,warning,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.invoice.print_invoice_report,warning,print:"
 msgid "Print"
 msgstr "Печат"
