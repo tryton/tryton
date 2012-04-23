@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Carrier Weight',
+    'name_bg_BG': 'Управление на превозвачи: Тегло',
     'name_ca_ES': 'Transportistes: Pesatge',
     'name_de_DE': 'Frachtkosten Gewicht',
     'name_fr_FR': 'Coût transporteur: Poid',
@@ -37,6 +38,7 @@
         'carrier.xml',
         ],
     'translation': [
+        'locale/bg_BG.po',
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
