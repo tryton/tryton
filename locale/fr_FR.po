@@ -799,14 +799,6 @@ msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Quantité minimale"
 
-msgctxt "model:account.invoice,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:account.invoice.line,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Factures"
@@ -899,14 +891,6 @@ msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Tiers associés à des achats"
 
-msgctxt "model:product.product,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:product.template,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Configuration des achats"
@@ -970,14 +954,6 @@ msgstr "Achat"
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "Administrateur des achats"
-
-msgctxt "model:stock.move,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.shipment.in,name:"
-msgid ""
-msgstr ""
 
 msgctxt "odt:purchase.purchase:"
 msgid "Amount"

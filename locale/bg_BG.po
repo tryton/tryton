@@ -501,17 +501,9 @@ msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
 msgstr "Адрес за фактура"
 
-msgctxt "field:purchase.purchase,invoice_exception:"
-msgid "Invoices Exception"
-msgstr "Грешка при фактури"
-
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "Начин на фактуриране"
-
-msgctxt "field:purchase.purchase,invoice_paid:"
-msgid "Invoices Paid"
-msgstr "Платени фактури"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -560,14 +552,6 @@ msgstr "Име"
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
 msgstr "Отпратка"
-
-msgctxt "field:purchase.purchase,shipment_done:"
-msgid "Shipment Done"
-msgstr "Направена пратка"
-
-msgctxt "field:purchase.purchase,shipment_exception:"
-msgid "Shipments Exception"
-msgstr "Грешка при пратка"
 
 msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
@@ -873,10 +857,12 @@ msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Конфигуриране на покупка"
 
+#, fuzzy
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Обработване на грешка в фактура"
 
+#, fuzzy
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
 msgstr "Обработване за грешка при пратка"
@@ -1265,26 +1251,10 @@ msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "Ok"
 msgstr "Добре"
 
-msgctxt "wizard_button:purchase.handle.invoice.exception,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.handle.invoice.exception,init,ok:"
-msgid "Ok"
-msgstr "Добре"
-
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:purchase.handle.shipment.exception,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.handle.shipment.exception,init,ok:"
 msgid "Ok"
 msgstr "Добре"
