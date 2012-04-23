@@ -11,7 +11,7 @@
     'name_es_ES': 'País',
     'name_fr_FR': 'Pays',
     'name_ru_RU': 'Страны',
-    'version': '2.4.0',
+    'version': '2.5.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
