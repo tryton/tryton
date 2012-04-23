@@ -225,10 +225,12 @@ msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
 msgstr "Прогноза за наличност"
 
+#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Изготвяне на прогноза"
 
+#, fuzzy
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
 msgstr "Изготвяне на прогноза"
@@ -317,26 +319,11 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr "Пълен"
 
+#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
-msgid "cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,init:"
-msgid "Choose Dates"
-msgstr "Избор на дати"
-
-msgctxt "wizard_button:stock.forecast.complete,init,choose:"
-msgid "Choose products"
-msgstr "Избор на продукти"
-
-msgctxt "wizard_button:stock.forecast.complete,init,complete:"
-msgid "Complete"
-msgstr "Пълен"
-
-msgctxt "wizard_button:stock.forecast.complete,init,end:"
 msgid "cancel"
 msgstr "Отказ"

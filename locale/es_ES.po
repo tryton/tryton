@@ -27,8 +27,10 @@ msgid "Forecast \"%s\" must be cancelled before deletion!"
 msgstr "La previsión \"%s\" debe ser cancelada antes de eliminarla."
 
 msgctxt "error:stock.forecast:"
-msgid "You can not create forecasts for the same locations with overlapping dates"
-msgstr "No puede crear previsiones para las mismas ubicaciones con fechas solapadas."
+msgid ""
+"You can not create forecasts for the same locations with overlapping dates"
+msgstr ""
+"No puede crear previsiones para las mismas ubicaciones con fechas solapadas."
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
@@ -222,10 +224,12 @@ msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
 msgstr "Previsión de stock"
 
+#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Previsión completa"
 
+#, fuzzy
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
 msgstr "Elegir previsión completa"
@@ -314,6 +318,7 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr "Completa"
 
+#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Cancelar"
