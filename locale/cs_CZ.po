@@ -2,19 +2,23 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:stock.inventory.create.init,company:0"
+msgctxt "field:stock.inventory.create.start,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:stock.inventory.create.init,date:0"
+msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
 msgstr ""
 
-msgctxt "field:stock.inventory.create.init,locations:0"
+msgctxt "field:stock.inventory.create.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
 msgstr ""
 
-msgctxt "field:stock.inventory.create.init,lost_found:0"
+msgctxt "field:stock.inventory.create.start,lost_found:"
 msgid "Lost and Found"
 msgstr ""
 
@@ -26,22 +30,18 @@ msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
 msgstr ""
 
-msgctxt "model:stock.inventory.create.init,name:0"
-msgid "Create Inventories Init"
-msgstr ""
-
-msgctxt "view:stock.inventory.create.init:0"
+msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
 msgstr ""
 
-msgctxt "view:stock.inventory.create.init:0"
-msgid "Locations"
+msgctxt "view:stock.inventory.create.start:"
+msgid "Create Inventories"
 msgstr ""
 
-msgctxt "wizard_button:stock.inventory.create,init,create:0"
+msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
 msgstr ""
 
-msgctxt "wizard_button:stock.inventory.create,init,end:0"
+msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
 msgstr ""
