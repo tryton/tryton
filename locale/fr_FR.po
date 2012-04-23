@@ -182,10 +182,6 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr "Prédécesseur - Successeur"
 
-msgctxt "model:project.work,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:res.request.link,name:request_link_work"
 msgid "Work"
 msgstr "Travail"
