@@ -1,70 +1,80 @@
-#
-# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+# 
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
-"PO-Revision-Date: 2011-10-22 13:41+0200\n"
-"Project-Id-Version: \n"
-"Language-Team: Catalan <>\n"
-"Language: ca\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"MIME-Version: 1.0\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:purchase.product_supplier,weekdays:0"
+msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
 msgstr "Dies de la setmana"
 
-msgctxt "field:purchase.product_supplier.day,product_supplier:0"
+msgctxt "field:purchase.product_supplier.day,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.day,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:purchase.product_supplier.day,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
 msgstr "Proveïdor"
 
-msgctxt "field:purchase.product_supplier.day,rec_name:0"
+msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:purchase.product_supplier.day,weekday:0"
+msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
 msgstr "Dia de la setmana"
 
-msgctxt "model:purchase.product_supplier.day,name:0"
+msgctxt "field:purchase.product_supplier.day,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier.day,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
 msgstr "Dia del proveïdor del producte"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
 msgstr "Divendres"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
 msgstr "Dilluns"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
 msgstr "Dissabte"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
 msgstr "Diumenge"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
 msgstr "Dijous"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
 msgstr "Dimarts"
 
-msgctxt "selection:purchase.product_supplier.day,weekday:0"
+msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
 msgstr "Dimecres"
 
-msgctxt "view:purchase.product_supplier.day:0"
+msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
 msgstr "Dia de la setmana"
 
-msgctxt "view:purchase.product_supplier:0"
+msgctxt "view:purchase.product_supplier:"
 msgid "Week Days"
 msgstr "Dies de la setmana"

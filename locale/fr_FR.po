@@ -38,10 +38,6 @@ msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "model:purchase.product_supplier,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
 msgstr "Journée du fournisseur de produit"
