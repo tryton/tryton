@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Product Measurements',
+    'name_bg_BG': 'Управление мерки на продукти',
     'name_ca_ES': 'Mesures de productes',
     'name_de_DE': 'Artikel Abmessungen',
     'name_fr_FR': 'Mesure des produits',
@@ -29,6 +30,7 @@
         'product.xml',
     ],
     'translation': [
+        'locale/bg_BG.po',
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
