@@ -10,7 +10,7 @@
     'name_es_ES': 'Extractos contables',
     'name_fr_FR': 'Relevé comptable',
     'name_nl_NL': 'Bankafschriften',
-    'version': '2.3.0',
+    'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
