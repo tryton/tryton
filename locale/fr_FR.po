@@ -1435,25 +1435,9 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
 msgstr "Configuration des stocks"
 
-msgctxt "model:party.address,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:party.party,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:product.by_location.start,name:"
 msgid "Product by Location"
 msgstr "Produits par emplacement"
-
-msgctxt "model:product.product,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:product.template,name:"
-msgid ""
-msgstr ""
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
