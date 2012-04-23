@@ -78,10 +78,6 @@ msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
 msgstr "Подравнени отгоре"
 
-msgctxt "view::"
-msgid "Dashboard"
-msgstr "Табло"
-
 msgctxt "view:dashboard.action:"
 msgid "Dashboard"
 msgstr "Табло"

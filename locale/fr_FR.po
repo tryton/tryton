@@ -58,14 +58,6 @@ msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-msgctxt "model:ir.ui.view,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:res.user,name:"
-msgid ""
-msgstr ""
-
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
 msgstr "Carré"
