@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 #, fuzzy
 msgctxt "error:stock.shipment.out:"
 msgid "It misses an \"Account Revenue\" on product \"%s\"!"
-msgstr "Grootboekrekening \"Opbrengst\" ontbreekt voor product \"%s\"!"
+msgstr "Falta un «Compte d'ingressos» en el producte «%s»"
 
 msgctxt "field:sale.configuration,sale_carrier:"
 msgid "Carrier"
@@ -31,9 +31,10 @@ msgctxt "field:stock.shipment.out,carrier:"
 msgid "Carrier"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Cost"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
