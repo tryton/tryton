@@ -8,7 +8,8 @@ msgstr "Una divisa sólo puede tener una tasa de cambio por fecha."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr "El rango de la tasa de cambio de la divisa debe ser mas grande o igual a 0."
+msgstr ""
+"El rango de la tasa de cambio de la divisa debe ser mas grande o igual a 0."
 
 msgctxt "error:currency.currency:"
 msgid "Invalid Grouping!"
@@ -16,7 +17,8 @@ msgstr "El agrupamiento no es correcto."
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for the currency: %s at the date: %s"
-msgstr "No se ha encontrado una tasa de cambio para la divisa «%s» con fecha: %s."
+msgstr ""
+"No se ha encontrado una tasa de cambio para la divisa «%s» con fecha: %s."
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
