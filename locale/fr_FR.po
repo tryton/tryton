@@ -54,30 +54,10 @@ msgctxt "field:account.invoice.payment_term.line.type,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "model:account.invoice,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:account.invoice.payment_term,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:account.invoice.payment_term.line,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:account.invoice.payment_term.line.delay,name:"
 msgid ""
 msgstr ""
 
 msgctxt "model:account.invoice.payment_term.line.type,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:party.address,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:party.party,name:"
 msgid ""
 msgstr ""
