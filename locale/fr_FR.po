@@ -3323,10 +3323,6 @@ msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
 msgstr "Configuration Comptable"
 
-msgctxt "model:party.party,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
 msgstr "Compte"

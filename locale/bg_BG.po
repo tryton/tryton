@@ -10,14 +10,6 @@ msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
 msgstr "Не може да променяте записи от Сметка с отложено плащане"
 
-msgctxt "error:account.account.open_aged_balance:"
-msgid "Warning"
-msgstr "Предупреждение"
-
-msgctxt "error:account.account.open_aged_balance:"
-msgid "You cannot define overlapping terms"
-msgstr "Не може да задавате припокриващи се срокове"
-
 msgctxt "error:account.account.template:"
 msgid "You can not create recursive accounts!"
 msgstr "Не може да създавате взаимно вложени сметки!"
@@ -171,10 +163,6 @@ msgstr "Не може да създавате движение с дата из�
 msgctxt "error:account.move:"
 msgid "You can not delete posted moves!"
 msgstr "Не може да изтривате публикувани движения!"
-
-msgctxt "error:account.move:"
-msgid "You can not modify a posted move in this journal!"
-msgstr "Не може да променяте публикувано движение в този дневник!"
 
 msgctxt "error:account.move:"
 msgid "You can not post an empty move!"
@@ -337,6 +325,7 @@ msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "Десен"
 
+#, fuzzy
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
 msgstr "Втора валута"
@@ -393,28 +382,6 @@ msgctxt "field:account.account-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:account.account.create_chart_account.account,account_template:"
-msgid "Account Template"
-msgstr "Шаблон на сметка"
-
-msgctxt "field:account.account.create_chart_account.account,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt ""
-"field:account.account.create_chart_account.properties,account_payable:"
-msgid "Default Payable Account"
-msgstr "Разходна сметка по подразбиране"
-
-msgctxt ""
-"field:account.account.create_chart_account.properties,account_receivable:"
-msgid "Default Receivable Account"
-msgstr "Приходна сметка по подразбиране"
-
-msgctxt "field:account.account.create_chart_account.properties,company:"
-msgid "Company"
-msgstr "Фирма"
-
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Сметка"
@@ -458,138 +425,6 @@ msgstr "Променено на"
 msgctxt "field:account.account.deferral,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
-
-msgctxt "field:account.account.open_aged_balance.init,balance_type:"
-msgid "Type"
-msgstr "Вид"
-
-msgctxt "field:account.account.open_aged_balance.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.account.open_aged_balance.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.account.open_aged_balance.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.open_aged_balance.init,term1:"
-msgid "First Term"
-msgstr "Пъври период"
-
-msgctxt "field:account.account.open_aged_balance.init,term2:"
-msgid "Second Term"
-msgstr "Втори период"
-
-msgctxt "field:account.account.open_aged_balance.init,term3:"
-msgid "Third Term"
-msgstr "Трети период"
-
-msgctxt "field:account.account.open_aged_balance.init,unit:"
-msgid "Unit"
-msgstr "Единица"
-
-msgctxt "field:account.account.open_balance_sheet.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.account.open_balance_sheet.init,date:"
-msgid "Date"
-msgstr "Дата"
-
-msgctxt "field:account.account.open_balance_sheet.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.open_chart_account.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.account.open_chart_account.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.open_income_statement.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.account.open_income_statement.init,end_period:"
-msgid "End Period"
-msgstr "Край на период"
-
-msgctxt "field:account.account.open_income_statement.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.account.open_income_statement.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.open_income_statement.init,start_period:"
-msgid "Start Period"
-msgstr "Начален период"
-
-msgctxt "field:account.account.open_third_party_balance.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.account.open_third_party_balance.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.account.open_third_party_balance.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.print_general_ledger.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.account.print_general_ledger.init,empty_account:"
-msgid "Empty Account"
-msgstr "Празна сметка"
-
-msgctxt "field:account.account.print_general_ledger.init,end_period:"
-msgid "End Period"
-msgstr "Край на период"
-
-msgctxt "field:account.account.print_general_ledger.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.account.print_general_ledger.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.print_general_ledger.init,start_period:"
-msgid "Start Period"
-msgstr "Начален период"
-
-msgctxt "field:account.account.print_trial_balance.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.account.print_trial_balance.init,empty_account:"
-msgid "Empty Account"
-msgstr "Празна сметка"
-
-msgctxt "field:account.account.print_trial_balance.init,end_period:"
-msgid "End Period"
-msgstr "Край на период"
-
-msgctxt "field:account.account.print_trial_balance.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.account.print_trial_balance.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.account.print_trial_balance.init,start_period:"
-msgid "Start Period"
-msgstr "Начален период"
 
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
@@ -803,10 +638,6 @@ msgctxt "field:account.account.type.template,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:account.account.update_chart_account.init,account:"
-msgid "Root Account"
-msgstr "Основна сметка"
-
 msgctxt "field:account.configuration,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
@@ -970,10 +801,6 @@ msgstr "Финансова година за затваряне"
 msgctxt "field:account.fiscalyear.close.start,id:"
 msgid "ID"
 msgstr "ID"
-
-msgctxt "field:account.fiscalyear.close_fiscalyear.init,close_fiscalyear:"
-msgid "Fiscal Year to close"
-msgstr "Финансова година за затваряне"
 
 msgctxt "field:account.journal,active:"
 msgid "Active"
@@ -1375,10 +1202,6 @@ msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
 msgstr "Период"
 
-msgctxt "field:account.move.open_reconcile_lines.init,account:"
-msgid "Account"
-msgstr "Сметка"
-
 msgctxt "field:account.move.open_reconcile_lines.start,account:"
 msgid "Account"
 msgstr "Сметка"
@@ -1386,22 +1209,6 @@ msgstr "Сметка"
 msgctxt "field:account.move.open_reconcile_lines.start,id:"
 msgid "ID"
 msgstr "ID"
-
-msgctxt "field:account.move.print_general_journal.init,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:account.move.print_general_journal.init,from_date:"
-msgid "From Date"
-msgstr "От дата"
-
-msgctxt "field:account.move.print_general_journal.init,posted:"
-msgid "Posted Move"
-msgstr "Публикувано движение"
-
-msgctxt "field:account.move.print_general_journal.init,to_date:"
-msgid "To Date"
-msgstr "До дата"
 
 msgctxt "field:account.move.print_general_journal.start,company:"
 msgid "Company"
@@ -2015,18 +1822,6 @@ msgctxt "field:account.tax.line,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:account.tax.open_chart_code.init,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансова година"
-
-msgctxt "field:account.tax.open_chart_code.init,method:"
-msgid "Method"
-msgstr "Метод"
-
-msgctxt "field:account.tax.open_chart_code.init,periods:"
-msgid "Periods"
-msgstr "Периоди"
-
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
 msgstr "Фирма"
@@ -2367,46 +2162,6 @@ msgstr ""
 "Данък по подразбиране за ръчно кодиране на редове за движение\n"
 "за видове дневници: \"разход\" и \"приход\""
 
-msgctxt "help:account.account.open_aged_balance.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
-msgctxt "help:account.account.open_balance_sheet.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
-msgctxt "help:account.account.open_chart_account.init,fiscalyear:"
-msgid "Leave empty for all open fiscal year"
-msgstr "Оставете празно за всички отворени финансови години"
-
-msgctxt "help:account.account.open_chart_account.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
-msgctxt "help:account.account.open_income_statement.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
-msgctxt "help:account.account.open_third_party_balance.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
-msgctxt "help:account.account.print_general_ledger.init,empty_account:"
-msgid "With account without move"
-msgstr "Със сметка без движение"
-
-msgctxt "help:account.account.print_general_ledger.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
-msgctxt "help:account.account.print_trial_balance.init,empty_account:"
-msgid "With account without move"
-msgstr "Със сметка без движение"
-
-msgctxt "help:account.account.print_trial_balance.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
-
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
 msgstr "За подреждане на вида на сметка"
@@ -2430,10 +2185,6 @@ msgstr ""
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
 msgstr "Втората валута"
-
-msgctxt "help:account.move.print_general_journal.init,posted:"
-msgid "Show only posted move"
-msgstr "Показване само на публикувани движения"
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
@@ -2519,14 +2270,6 @@ msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
 msgstr "Оствете празно за всички периоди за всички финансови години"
 
-msgctxt "help:account.tax.open_chart_code.init,fiscalyear:"
-msgid "Leave empty for all open fiscal year"
-msgstr "Оставете празно за всички отворени финансови години"
-
-msgctxt "help:account.tax.open_chart_code.init,periods:"
-msgid "Leave empty for all periods of all open fiscal year"
-msgstr "Оствете празно за всички периоди за всички финансови години"
-
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
@@ -2558,49 +2301,9 @@ msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
 msgstr "Сметка - Данък"
 
-msgctxt "model:account.account.create_chart_account.account,name:"
-msgid "Create Chart Account Account"
-msgstr "Създаване на сметка от сметкоплан"
-
-msgctxt "model:account.account.create_chart_account.init,name:"
-msgid "Create Chart Account Init"
-msgstr "Начално създаване на сметкоплан"
-
-msgctxt "model:account.account.create_chart_account.properties,name:"
-msgid "Create Chart Account Properties"
-msgstr "Създаване на свойства на сметкоплан"
-
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "Сметка с отложено плащане"
-
-msgctxt "model:account.account.open_aged_balance.init,name:"
-msgid "Open Aged Balance Init"
-msgstr "Начално отваряне на хронологичен баланс"
-
-msgctxt "model:account.account.open_balance_sheet.init,name:"
-msgid "Open Balance Sheet Init"
-msgstr "Начално отваряне на баланс"
-
-msgctxt "model:account.account.open_chart_account.init,name:"
-msgid "Open Chart Account Init"
-msgstr "Начално създаване на сметкоплан"
-
-msgctxt "model:account.account.open_income_statement.init,name:"
-msgid "Open Income Statement Init"
-msgstr "Начално отваряне на финансов отчет"
-
-msgctxt "model:account.account.open_third_party_balance.init,name:"
-msgid "Open Third Party Balance Init"
-msgstr "Начално баланс на външен партньор"
-
-msgctxt "model:account.account.print_general_ledger.init,name:"
-msgid "Print General Ledger"
-msgstr "Отпечатване на главна книга"
-
-msgctxt "model:account.account.print_trial_balance.init,name:"
-msgid "Print Trial Balance Init"
-msgstr "Начално отпечатване на оборотна ведомост"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
@@ -2725,14 +2428,6 @@ msgctxt ""
 msgid "Revenue"
 msgstr "Приход"
 
-msgctxt "model:account.account.update_chart_account.init,name:"
-msgid "Update Chart Account from Template Init"
-msgstr "Начално обновяване на сметкоплан от шаблон"
-
-msgctxt "model:account.account.update_chart_account.start,name:"
-msgid "Update Chart Account from Template Start"
-msgstr "Обновяване на сметкоплан от шаблон начало"
-
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
 msgstr "Настройване на сметка"
@@ -2760,10 +2455,6 @@ msgstr "Финансова година - Ред от движение"
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
 msgstr "Затваряне на финансова година"
-
-msgctxt "model:account.fiscalyear.close_fiscalyear.init,name:"
-msgid "Close Fiscal Year Init"
-msgstr "Начално затваряне на финансова година"
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
@@ -2833,17 +2524,9 @@ msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
 msgstr "Запитване за отваряне на дневник"
 
-msgctxt "model:account.move.open_reconcile_lines.init,name:"
-msgid "Open Reconcile Lines Init"
-msgstr "Начално отваряне на Съгласуване на редове"
-
 msgctxt "model:account.move.open_reconcile_lines.start,name:"
 msgid "Open Reconcile Lines"
 msgstr "Отваряне на Съгласуване на редове"
-
-msgctxt "model:account.move.print_general_journal.init,name:"
-msgid "Print General Journal Init"
-msgstr "Начално отпечатване на главен дневник"
 
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
@@ -2856,10 +2539,6 @@ msgstr "Съгласуване на редове на отписване"
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
 msgstr "Редове от съгласуване на движение по сметка"
-
-msgctxt "model:account.move.unreconcile_lines.init,name:"
-msgid "Unreconcile Lines Init"
-msgstr "Начално разсъгласуване на редове"
 
 msgctxt "model:account.move.unreconcile_lines.start,name:"
 msgid "Unreconcile Lines"
@@ -2920,10 +2599,6 @@ msgstr "Данъчна група"
 msgctxt "model:account.tax.line,name:"
 msgid "Tax Line"
 msgstr "Ред на данък"
-
-msgctxt "model:account.tax.open_chart_code.init,name:"
-msgid "Open Chart Code Init"
-msgstr "Начално отваряне на сметкоплан"
 
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
@@ -3418,218 +3093,6 @@ msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
 msgstr "Управление на счетоводство"
 
-msgctxt "odt:account.account.aged_balance:"
-msgid "/"
-msgstr "/"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Aged Balance for Customers"
-msgstr "Хронологичен баланс за клиенти"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Aged Balance for Suppliers"
-msgstr "Хронологичен баланс за доставчици"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Aged Balance for Suppliers and Customers"
-msgstr "Хронологични баланси за доставчици и клиенти"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Company:"
-msgstr "Фирма"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Day"
-msgstr "Ден"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Days"
-msgstr "Дни"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Month"
-msgstr "Месец"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Months"
-msgstr "Месеци"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Party"
-msgstr "Партньор"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Print Date:"
-msgstr "Дата на отпечатване:"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "Total"
-msgstr "Общо"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "User:"
-msgstr "Потребител:"
-
-msgctxt "odt:account.account.aged_balance:"
-msgid "at"
-msgstr "на"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "/"
-msgstr "/"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Balance"
-msgstr "Баланс"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Code"
-msgstr "Код"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Company:"
-msgstr "Фирма"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Date"
-msgstr "Дата"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Debit"
-msgstr "Дебит"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "From Period:"
-msgstr "От период:"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "General Ledger"
-msgstr "Основен дневник"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Name"
-msgstr "Име"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Print Date:"
-msgstr "Дата на отпечатване:"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "State"
-msgstr "Състояние"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "To Period:"
-msgstr "До период:"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "Total"
-msgstr "Общо"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "User:"
-msgstr "Потребител:"
-
-msgctxt "odt:account.account.general_ledger:"
-msgid "at"
-msgstr "на"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "/"
-msgstr "/"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Balance"
-msgstr "Баланс"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Company:"
-msgstr "Фирма"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Debit"
-msgstr "Дебит"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Party"
-msgstr "Партньор"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Print Date:"
-msgstr "Дата на отпечатване:"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Third Party Balance"
-msgstr "Баланс на външен партньор"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "Total"
-msgstr "Общо"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "User:"
-msgstr "Потребител:"
-
-msgctxt "odt:account.account.third_party_balance:"
-msgid "at"
-msgstr "на"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "/"
-msgstr "/"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Account"
-msgstr "Сметка"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Company:"
-msgstr "Фирма"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Debit"
-msgstr "Дебит"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "From Period:"
-msgstr "От период:"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Print Date:"
-msgstr "Дата на отпечатване:"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "To Period:"
-msgstr "До период:"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Total"
-msgstr "Общо"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "Trial Balance"
-msgstr "Временен баланс"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "User:"
-msgstr "Потребител:"
-
-msgctxt "odt:account.account.trial_balance:"
-msgid "at"
-msgstr "на"
-
 msgctxt "odt:account.aged_balance:"
 msgid "/"
 msgstr "/"
@@ -3938,26 +3401,6 @@ msgctxt "selection:account.account,kind:"
 msgid "View"
 msgstr "Изглед"
 
-msgctxt "selection:account.account.open_aged_balance.init,balance_type:"
-msgid "Both"
-msgstr "И двата"
-
-msgctxt "selection:account.account.open_aged_balance.init,balance_type:"
-msgid "Customer"
-msgstr "Клиент"
-
-msgctxt "selection:account.account.open_aged_balance.init,balance_type:"
-msgid "Supplier"
-msgstr "Доставчик"
-
-msgctxt "selection:account.account.open_aged_balance.init,unit:"
-msgid "Day"
-msgstr "Ден"
-
-msgctxt "selection:account.account.open_aged_balance.init,unit:"
-msgid "Month"
-msgstr "Месец"
-
 msgctxt "selection:account.account.template,kind:"
 msgid "Expense"
 msgstr "Разход"
@@ -4098,14 +3541,6 @@ msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
 msgstr "По периоди"
 
-msgctxt "selection:account.tax.open_chart_code.init,method:"
-msgid "By Fiscal Year"
-msgstr "По финансова година"
-
-msgctxt "selection:account.tax.open_chart_code.init,method:"
-msgid "By Periods"
-msgstr "По периоди"
-
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
 msgstr "Фиксиран"
@@ -4118,34 +3553,6 @@ msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
 msgstr "Процент"
 
-msgctxt "view:account.account.create_chart_account.account:"
-msgid "Create Chart of Account"
-msgstr "Създаване на сметкоплан"
-
-msgctxt "view:account.account.create_chart_account.init:"
-msgid "Create Chart of Account"
-msgstr "Създаване на сметкоплан"
-
-msgctxt "view:account.account.create_chart_account.init:"
-msgid "You can now create a chart of account for your company"
-msgstr "Не може да създадете сметкоплана за фирмата си"
-
-msgctxt "view:account.account.create_chart_account.init:"
-msgid ""
-"You can now create a chart of account for your company by selecting a chart "
-"of account template."
-msgstr ""
-"Може да създадете сметкоплан за фирмата си като изберете шаблон на "
-"сметкоплан."
-
-msgctxt "view:account.account.create_chart_account.init:"
-msgid "by selecting a chart of account template."
-msgstr "като изберете шаблон за сметкоплан."
-
-msgctxt "view:account.account.create_chart_account.properties:"
-msgid "Create Default Properties"
-msgstr "Създаване на свойства по подразбиране"
-
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferral"
 msgstr "Сметка с отложено плащане"
@@ -4153,38 +3560,6 @@ msgstr "Сметка с отложено плащане"
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferrals"
 msgstr "Сметки с отложено плащане"
-
-msgctxt "view:account.account.open_aged_balance.init:"
-msgid "Open Aged Balance"
-msgstr "Отваряне на хронологичен баланс"
-
-msgctxt "view:account.account.open_aged_balance.init:"
-msgid "Terms"
-msgstr "Условия"
-
-msgctxt "view:account.account.open_balance_sheet.init:"
-msgid "Open Balance Sheet"
-msgstr "Отваряне на баланс"
-
-msgctxt "view:account.account.open_chart_account.init:"
-msgid "Open Chart of Accounts"
-msgstr "Отваряне на сметкоплан"
-
-msgctxt "view:account.account.open_income_statement.init:"
-msgid "Open Income Statement"
-msgstr "Отваряне на отчет за приходи"
-
-msgctxt "view:account.account.open_third_party_balance.init:"
-msgid "Open Third Party Balance"
-msgstr "Баланс на външен партньор"
-
-msgctxt "view:account.account.print_general_ledger.init:"
-msgid "Print General Ledger"
-msgstr "Отпечатване на главна книга"
-
-msgctxt "view:account.account.print_trial_balance.init:"
-msgid "Print Trial Balance"
-msgstr "Отпечатване на пробен баланс"
 
 msgctxt "view:account.account.template:"
 msgid "Account Template"
@@ -4217,18 +3592,6 @@ msgstr "Дата на баланс"
 msgctxt "view:account.account.type:"
 msgid "Income Statement"
 msgstr "Отчет за приходи"
-
-msgctxt "view:account.account.update_chart_account.init:"
-msgid "Update Chart of Account"
-msgstr "Обновяване на сметкоплан"
-
-msgctxt "view:account.account.update_chart_account.start:"
-msgid "Update Chart of Account"
-msgstr "Обновяване на сметкоплан"
-
-msgctxt "view:account.account.update_chart_account.start:"
-msgid "Update Chart of Account Succeed!"
-msgstr "Обновяването на смекоплан успешно!"
 
 msgctxt "view:account.account:"
 msgid "Account"
@@ -4273,10 +3636,6 @@ msgid ""
 msgstr ""
 
 msgctxt "view:account.fiscalyear.close.start:"
-msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
-
-msgctxt "view:account.fiscalyear.close_fiscalyear.init:"
 msgid "Close Fiscal Year"
 msgstr "Затваряне на финансова година"
 
@@ -4396,17 +3755,9 @@ msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
 msgstr "Достъп до меню"
 
-msgctxt "view:account.move.open_reconcile_lines.init:"
-msgid "Open Reconcile Lines"
-msgstr "Отваряне на Съгласуване на редове"
-
 msgctxt "view:account.move.open_reconcile_lines.start:"
 msgid "Open Reconcile Lines"
 msgstr "Отваряне на Съгласуване на редове"
-
-msgctxt "view:account.move.print_general_journal.init:"
-msgid "Print General Journal"
-msgstr "Отпечатване на основен дневник"
 
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
@@ -4423,16 +3774,6 @@ msgstr "Съгласуване"
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliations"
 msgstr "Съгласувания"
-
-msgctxt "view:account.move.unreconcile_lines.init:"
-msgid ""
-"If you unreconcile lines, the workflows, on those lines, will not be "
-"canceled."
-msgstr "Ако разсъгласувате редове работните процеси върху тях ще бъдат спрени"
-
-msgctxt "view:account.move.unreconcile_lines.init:"
-msgid "Unreconcile"
-msgstr "Разсъгласуване"
 
 msgctxt "view:account.move:"
 msgid "Account Move"
@@ -4566,10 +3907,6 @@ msgctxt "view:account.tax.line:"
 msgid "Account Tax Lines"
 msgstr "Редове от данък на сметка"
 
-msgctxt "view:account.tax.open_chart_code.init:"
-msgid "Open Chart Of Tax Codes"
-msgstr "Отваряне на кодове за сметкопланове"
-
 msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Template"
 msgstr "Шаблон на ред от правило на данък"
@@ -4678,101 +4015,6 @@ msgctxt "view:party.party:"
 msgid "Taxes"
 msgstr "Данъци"
 
-msgctxt ""
-"wizard_button:account.account.create_chart_account,account,create_account:"
-msgid "Create"
-msgstr "Създаване"
-
-msgctxt "wizard_button:account.account.create_chart_account,account,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt ""
-"wizard_button:account.account.create_chart_account,create_account,create_properties:"
-msgid "Create"
-msgstr "Създаване"
-
-msgctxt ""
-"wizard_button:account.account.create_chart_account,create_account,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.create_chart_account,init,account:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:account.account.create_chart_account,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.open_aged_balance,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.open_aged_balance,init,print:"
-msgid "Print"
-msgstr "Печат"
-
-msgctxt "wizard_button:account.account.open_balance_sheet,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.open_balance_sheet,init,open:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:account.account.open_chart_account,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.open_chart_account,init,open:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:account.account.open_income_statement,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.open_income_statement,init,open:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:account.account.open_third_party_balance,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.open_third_party_balance,init,print:"
-msgid "Print"
-msgstr "Печат"
-
-msgctxt "wizard_button:account.account.print_general_ledger,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.print_general_ledger,init,print:"
-msgid "Print"
-msgstr "Печат"
-
-msgctxt "wizard_button:account.account.print_trial_balance,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.print_trial_balance,init,print:"
-msgid "Print"
-msgstr "Печат"
-
-msgctxt "wizard_button:account.account.update_chart_account,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.account.update_chart_account,init,start:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:account.account.update_chart_account,start,end:"
-msgid "Ok"
-msgstr "Добре"
-
 msgctxt "wizard_button:account.create_chart,account,create_account:"
 msgid "Create"
 msgstr "Създаване"
@@ -4805,31 +4047,11 @@ msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:account.fiscalyear.close_fiscalyear,init,close:"
-msgid "Close"
-msgstr "Затваряне"
-
-msgctxt "wizard_button:account.fiscalyear.close_fiscalyear,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
-msgctxt "wizard_button:account.move.open_journal,ask,open:"
-msgid "Open"
-msgstr "Отваряне"
-
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:account.move.open_reconcile_lines,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.move.open_reconcile_lines,init,open:"
 msgid "Open"
 msgstr "Отваряне"
 
@@ -4840,14 +4062,6 @@ msgstr "Отказ"
 msgctxt "wizard_button:account.move.open_reconcile_lines,start,open_:"
 msgid "Open"
 msgstr "Отваряне"
-
-msgctxt "wizard_button:account.move.print_general_journal,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.move.print_general_journal,init,print:"
-msgid "Print"
-msgstr "Печат"
 
 msgctxt "wizard_button:account.move.print_general_journal,start,end:"
 msgid "Cancel"
@@ -4864,14 +4078,6 @@ msgstr "Отказ"
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
 msgstr "Съгласуване"
-
-msgctxt "wizard_button:account.move.unreconcile_lines,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.move.unreconcile_lines,init,unreconcile:"
-msgid "Unreconcile"
-msgstr "Разсъгласуване"
 
 msgctxt "wizard_button:account.open_aged_balance,start,end:"
 msgid "Cancel"
@@ -4934,14 +4140,6 @@ msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:account.tax.open_chart_code,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:account.tax.open_chart_code,init,open:"
 msgid "Open"
 msgstr "Отваряне"
 
