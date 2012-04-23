@@ -164,7 +164,8 @@ class ShipmentIn(Model):
                 allocation_method = \
                     shipment.carrier.carrier_cost_allocation_method
             else:
-                allocation_method = carrier_obj.default_carrier_cost_method()
+                allocation_method = \
+                    carrier_obj.default_carrier_cost_allocation_method()
             getattr(self, 'allocate_cost_by_%s' % allocation_method)(shipment)
         super(ShipmentIn, self).receive(ids)
 
