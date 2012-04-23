@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Carrier Percentage',
+    'name_bg_BG': 'Управление на превозвачи: проценти',
     'name_ca_ES': 'Transportistes: Percentatge',
     'name_de_DE': 'Frachtkosten Prozentsatz',
     'name_fr_FR': 'Coût transporteur: pourcentage',
@@ -34,6 +35,7 @@
         'carrier.xml',
         ],
     'translation': [
+        'locale/bg_BG.po',
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
