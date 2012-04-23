@@ -644,20 +644,12 @@ msgid "Assets"
 msgstr ""
 
 msgctxt "selection:product.template,type:"
-msgid "Consumable"
-msgstr "Консуматив"
-
-msgctxt "selection:product.template,type:"
 msgid "Goods"
 msgstr ""
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
 msgstr "Услуга"
-
-msgctxt "selection:product.template,type:"
-msgid "Stockable"
-msgstr "Складируем"
 
 msgctxt "view:product.category:"
 msgid "Children"
