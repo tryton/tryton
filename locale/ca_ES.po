@@ -73,36 +73,32 @@ msgstr ""
 #, fuzzy
 msgctxt "field:stock.move,account_move:"
 msgid "Account Move"
-msgstr "Boeking"
+msgstr "Seient comptable"
 
 #, fuzzy
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "Aquest compte s'usarà en lloc del definit en la categoria."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "Aquest compte s'usarà en lloc del definit en la categoria."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "Aquest compte s'usarà en lloc del definit en la categoria."
 
 #, fuzzy
 msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-"Deze rekening zal gebruikt worden in de plaats van die van de categorie."
+msgstr "Aquest compte s'usarà en lloc del definit en la categoria."
 
 #, fuzzy
 msgctxt "model:account.account.template,name:account_template_stock"
 msgid "Stock"
-msgstr "Voorraad"
+msgstr "Existències"
 
 msgctxt "model:account.account.template,name:account_template_stock_customer"
 msgid "Stock Customer"
@@ -117,7 +113,8 @@ msgctxt "model:account.account.template,name:account_template_stock_supplier"
 msgid "Stock Supplier"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_current_inventories"
 msgid "Inventories"
-msgstr ""
+msgstr "Inventaris"
