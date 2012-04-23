@@ -26,14 +26,6 @@ msgctxt "field:stock.move,fifo_quantity:"
 msgid "FIFO Quantity"
 msgstr "Quantité FIFO"
 
-msgctxt "model:product.template,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:stock.move,name:"
-msgid ""
-msgstr ""
-
 msgctxt "selection:product.template,cost_price_method:"
 msgid "FIFO"
 msgstr "FIFO"
