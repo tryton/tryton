@@ -15,14 +15,6 @@ msgctxt "error:timesheet.work:"
 msgid "You can not create recursive works!"
 msgstr "Не може да създавате взаимно вложени задачи!"
 
-msgctxt "field:timesheet.enter_lines.init,date:"
-msgid "Date"
-msgstr "Дата"
-
-msgctxt "field:timesheet.enter_lines.init,employee:"
-msgid "Employee"
-msgstr "Служител"
-
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
@@ -203,14 +195,6 @@ msgctxt "field:timesheet.line.enter.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:timesheet.open_hours_employee.init,end_date:"
-msgid "End Date"
-msgstr "Крайна дата"
-
-msgctxt "field:timesheet.open_hours_employee.init,start_date:"
-msgid "Start Date"
-msgstr "Начална дата"
-
 msgctxt "field:timesheet.work,active:"
 msgid "Active"
 msgstr "Активен"
@@ -274,14 +258,6 @@ msgstr "Променено на"
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
-
-msgctxt "field:timesheet.work.open.init,from_date:"
-msgid "From Date"
-msgstr "От дата"
-
-msgctxt "field:timesheet.work.open.init,to_date:"
-msgid "To Date"
-msgstr "До дата"
 
 msgctxt "field:timesheet.work.open.start,from_date:"
 msgid "From Date"
@@ -407,10 +383,6 @@ msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "Управление на графици"
 
-msgctxt "model:timesheet.enter_lines.init,name:"
-msgid "Enter Lines Init"
-msgstr "Начално въвеждане на редове"
-
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
 msgstr "Часове на служител"
@@ -435,29 +407,13 @@ msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
 msgstr ""
 
-msgctxt "model:timesheet.open_hours_employee.init,name:"
-msgid "Open Hours Employee Init"
-msgstr "Начално отваряне на часове на служители"
-
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
 msgstr "Задача"
 
-msgctxt "model:timesheet.work.open.init,name:"
-msgid "Open Work Init"
-msgstr "Начално отваряне на задача"
-
 msgctxt "model:timesheet.work.open.start,name:"
 msgid "Open Work"
 msgstr ""
-
-msgctxt "view::"
-msgid "Hours per Work"
-msgstr "Часове за работа"
-
-msgctxt "view:timesheet.enter_lines.init:"
-msgid "Enter Timesheet"
-msgstr "Въвеждане на график"
 
 msgctxt "view:timesheet.hours_employee.open.start:"
 msgid "Hours per Employee"
@@ -495,14 +451,6 @@ msgctxt "view:timesheet.line:"
 msgid "Timesheet Lines"
 msgstr "Редове от график"
 
-msgctxt "view:timesheet.open_hours_employee.init:"
-msgid "Hours per Employee"
-msgstr "Часове на служител"
-
-msgctxt "view:timesheet.work.open.init:"
-msgid "Hours per Work"
-msgstr "Часове за работа"
-
 msgctxt "view:timesheet.work.open.start:"
 msgid "Hours per Work"
 msgstr "Часове за работа"
@@ -518,14 +466,6 @@ msgstr "Задача"
 msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Зачади"
-
-msgctxt "wizard_button:timesheet.enter_lines,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:timesheet.enter_lines,init,enter:"
-msgid "Enter"
-msgstr "Въвеждане"
 
 msgctxt "wizard_button:timesheet.hours_employee.open,start,end:"
 msgid "Cancel"
@@ -543,35 +483,11 @@ msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Въвеждане"
 
-msgctxt "wizard_button:timesheet.open_hours_employee,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:timesheet.open_hours_employee,init,open:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:timesheet.work.open,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:timesheet.work.open,init,open:"
-msgid "Open"
-msgstr "Отваряне"
-
 msgctxt "wizard_button:timesheet.work.open,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:timesheet.work.open,start,open_:"
-msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "wizard_button:timesheet.work.open2,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:timesheet.work.open2,init,open:"
 msgid "Open"
 msgstr "Отваряне"
 

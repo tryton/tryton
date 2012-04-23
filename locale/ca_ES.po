@@ -1,181 +1,293 @@
-#
-# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+# 
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
-"PO-Revision-Date: 2011-10-22 13:45+0200\n"
-"Project-Id-Version: \n"
-"Language-Team: Catalan <>\n"
-"Language: ca\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"MIME-Version: 1.0\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:timesheet.line:0"
+msgctxt "error:timesheet.line:"
 msgid "Hours field must be positive"
 msgstr "El camp d'hores ha de ser positiu"
 
-msgctxt "error:timesheet.work:0"
+msgctxt "error:timesheet.work:"
 msgid "Every work must be in the same company as it's parent work!"
 msgstr "Cada treball ha d'estar en la mateixa empresa que el seu treball pare"
 
-msgctxt "error:timesheet.work:0"
+msgctxt "error:timesheet.work:"
 msgid "You can not create recursive works!"
 msgstr "No pot crear treballs recursius"
 
-msgctxt "field:timesheet.enter_lines.init,date:0"
-msgid "Date"
-msgstr "Data"
+msgctxt "field:timesheet.hours_employee,create_date:"
+msgid "Create Date"
+msgstr ""
 
-msgctxt "field:timesheet.enter_lines.init,employee:0"
+#, fuzzy
+msgctxt "field:timesheet.hours_employee,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Empleat"
 
-msgctxt "field:timesheet.hours_employee,employee:0"
-msgid "Employee"
-msgstr "Empleat"
-
-msgctxt "field:timesheet.hours_employee,hours:0"
+msgctxt "field:timesheet.hours_employee,hours:"
 msgid "Hours"
 msgstr "Hores"
 
-msgctxt "field:timesheet.hours_employee,rec_name:0"
+msgctxt "field:timesheet.hours_employee,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:timesheet.hours_employee_monthly,employee:0"
-msgid "Employee"
-msgstr "Empleat"
+msgctxt "field:timesheet.hours_employee,write_date:"
+msgid "Write Date"
+msgstr ""
 
-msgctxt "field:timesheet.hours_employee_monthly,hours:0"
-msgid "Hours"
-msgstr "Hores"
+msgctxt "field:timesheet.hours_employee,write_uid:"
+msgid "Write User"
+msgstr ""
 
-msgctxt "field:timesheet.hours_employee_monthly,month:0"
-msgid "Month"
-msgstr "Mes"
-
-msgctxt "field:timesheet.hours_employee_monthly,rec_name:0"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:timesheet.hours_employee_monthly,year:0"
-msgid "Year"
-msgstr "Any"
-
-msgctxt "field:timesheet.hours_employee_weekly,employee:0"
-msgid "Employee"
-msgstr "Empleat"
-
-msgctxt "field:timesheet.hours_employee_weekly,hours:0"
-msgid "Hours"
-msgstr "Hores"
-
-msgctxt "field:timesheet.hours_employee_weekly,rec_name:0"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:timesheet.hours_employee_weekly,week:0"
-msgid "Week"
-msgstr "Setmana"
-
-msgctxt "field:timesheet.hours_employee_weekly,year:0"
-msgid "Year"
-msgstr "Any"
-
-msgctxt "field:timesheet.line,date:0"
-msgid "Date"
-msgstr "Data"
-
-msgctxt "field:timesheet.line,description:0"
-msgid "Description"
-msgstr "Descripció"
-
-msgctxt "field:timesheet.line,employee:0"
-msgid "Employee"
-msgstr "Empleat"
-
-msgctxt "field:timesheet.line,hours:0"
-msgid "Hours"
-msgstr "Hores"
-
-msgctxt "field:timesheet.line,rec_name:0"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:timesheet.line,work:0"
-msgid "Work"
-msgstr "Treball"
-
-msgctxt "field:timesheet.open_hours_employee.init,end_date:0"
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.open.start,end_date:"
 msgid "End Date"
 msgstr "Data final"
 
-msgctxt "field:timesheet.open_hours_employee.init,start_date:0"
-msgid "Start Date"
-msgstr "Data inicial"
+msgctxt "field:timesheet.hours_employee.open.start,id:"
+msgid "ID"
+msgstr ""
 
-msgctxt "field:timesheet.work,active:0"
+#, fuzzy
+msgctxt "field:timesheet.hours_employee.open.start,start_date:"
+msgid "Start Date"
+msgstr "Data inici"
+
+msgctxt "field:timesheet.hours_employee_monthly,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:timesheet.hours_employee_monthly,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.hours_employee_monthly,hours:"
+msgid "Hours"
+msgstr "Hores"
+
+msgctxt "field:timesheet.hours_employee_monthly,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_monthly,month:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:timesheet.hours_employee_monthly,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_monthly,year:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "field:timesheet.hours_employee_weekly,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:timesheet.hours_employee_weekly,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.hours_employee_weekly,hours:"
+msgid "Hours"
+msgstr "Hores"
+
+msgctxt "field:timesheet.hours_employee_weekly,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:timesheet.hours_employee_weekly,week:"
+msgid "Week"
+msgstr "Setmana"
+
+msgctxt "field:timesheet.hours_employee_weekly,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:timesheet.hours_employee_weekly,year:"
+msgid "Year"
+msgstr "Any"
+
+msgctxt "field:timesheet.line,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.line,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:timesheet.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:timesheet.line,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:timesheet.line,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.line,hours:"
+msgid "Hours"
+msgstr "Hores"
+
+msgctxt "field:timesheet.line,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:timesheet.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:timesheet.line,work:"
+msgid "Work"
+msgstr "Treball"
+
+msgctxt "field:timesheet.line,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:timesheet.line,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,date:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:timesheet.line.enter.start,employee:"
+msgid "Employee"
+msgstr "Empleat"
+
+msgctxt "field:timesheet.line.enter.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:timesheet.work,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:timesheet.work,children:0"
+msgctxt "field:timesheet.work,children:"
 msgid "Children"
 msgstr "Fills"
 
-msgctxt "field:timesheet.work,company:0"
+msgctxt "field:timesheet.work,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:timesheet.work,hours:0"
+msgctxt "field:timesheet.work,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:timesheet.work,hours:"
 msgid "Timesheet Hours"
 msgstr "Hores del full de treball"
 
-msgctxt "field:timesheet.work,left:0"
+msgctxt "field:timesheet.work,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:timesheet.work,left:"
 msgid "Left"
 msgstr "Esquerra"
 
-msgctxt "field:timesheet.work,name:0"
+msgctxt "field:timesheet.work,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:timesheet.work,parent:0"
+msgctxt "field:timesheet.work,parent:"
 msgid "Parent"
 msgstr "Pare"
 
-msgctxt "field:timesheet.work,rec_name:0"
+msgctxt "field:timesheet.work,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:timesheet.work,right:0"
+msgctxt "field:timesheet.work,right:"
 msgid "Right"
 msgstr "Dreta"
 
-msgctxt "field:timesheet.work,timesheet_available:0"
+msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Disponible en fulls de treball"
 
-msgctxt "field:timesheet.work.open.init,from_date:0"
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid ""
+msgstr ""
+
+msgctxt "field:timesheet.work,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:timesheet.work,write_uid:"
+msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:timesheet.work.open.start,from_date:"
 msgid "From Date"
 msgstr "Des de la data"
 
-msgctxt "field:timesheet.work.open.init,to_date:0"
-msgid "To Date"
-msgstr "A la data"
+msgctxt "field:timesheet.work.open.start,id:"
+msgid "ID"
+msgstr ""
 
-msgctxt "help:timesheet.work,hours:0"
+#, fuzzy
+msgctxt "field:timesheet.work.open.start,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "help:timesheet.work,hours:"
 msgid "Total time spent on this work"
 msgstr "Temps total empleat en aquest treball"
 
-msgctxt "help:timesheet.work,timesheet_available:0"
+msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
 msgstr "Permet completar fullsde treball amb aquest treball"
-
-msgctxt "model:ir.action,name:act_enter_lines"
-msgid "Enter Timesheet"
-msgstr "Introduir fulls de treball"
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -185,17 +297,22 @@ msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
 msgstr "Hores per empleat i mes"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_hours_employee_open"
+msgid "Hours per Employee"
+msgstr "Hores per empleat"
+
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
 msgstr "Hores per empleat i setmana"
 
+msgctxt "model:ir.action,name:act_line_enter"
+msgid "Enter Timesheet"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
 msgstr "Línies del full de treball"
-
-msgctxt "model:ir.action,name:act_open_hours_employee"
-msgid "Hours per Employee"
-msgstr "Hores per empleat"
 
 msgctxt "model:ir.action,name:act_open_work"
 msgid "Hours per Work"
@@ -213,6 +330,16 @@ msgctxt "model:ir.action,name:act_work_form3"
 msgid "Hours per Work"
 msgstr "Hores per treball"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_hours_board"
+msgid "Hours per Work"
+msgstr "Hores per treball"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_work_list"
+msgid "Works"
+msgstr "Treballs"
+
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works"
 msgstr "Treballs"
@@ -225,33 +352,42 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuració"
 
-msgctxt "model:ir.ui.menu,name:menu_enter_lines"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open"
+msgid "Hours per Employee"
+msgstr "Hores per empleat"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
+msgid "Hours per Employee per Month"
+msgstr "Hores per empleat i mes"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
+msgid "Hours per Employee per Week"
+msgstr "Hores per empleat i setmana"
+
+msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Introduir full de treball"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
 msgstr "Línies de full de treball"
 
-msgctxt "model:ir.ui.menu,name:menu_open_hours_employee"
-msgid "Hours per Employee"
-msgstr "Hores per empleat"
-
-msgctxt "model:ir.ui.menu,name:menu_open_hours_employee_monthly"
-msgid "Hours per Employee per Month"
-msgstr "Hores per empleat i mes"
-
-msgctxt "model:ir.ui.menu,name:menu_open_hours_employee_weekly"
-msgid "Hours per Employee per Week"
-msgstr "Hores per empleat i setmana"
-
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Informes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
-msgid "Timesheet Management"
+msgid "Timesheet"
 msgstr "Gestió de fulls de treball"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_work_list"
+msgid "Works"
+msgstr "Treballs"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works"
@@ -265,118 +401,127 @@ msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
 msgstr "Administració de fulls de treball"
 
-msgctxt "model:timesheet.enter_lines.init,name:0"
-msgid "Enter Lines Init"
-msgstr "Inicialitza la introducció de línies"
-
-msgctxt "model:timesheet.hours_employee,name:0"
+msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
 msgstr "Hores per empleat"
 
-msgctxt "model:timesheet.hours_employee_monthly,name:0"
+msgctxt "model:timesheet.hours_employee.open.start,name:"
+msgid "Open Hours per Employee"
+msgstr ""
+
+msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
 msgstr "Hores per empleat i mes"
 
-msgctxt "model:timesheet.hours_employee_weekly,name:0"
+msgctxt "model:timesheet.hours_employee_weekly,name:"
 msgid "Hours per Employee per Week"
 msgstr "Hores per empleat i setmana"
 
-msgctxt "model:timesheet.line,name:0"
+msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
 msgstr "Línia de full de treball"
 
-msgctxt "model:timesheet.open_hours_employee.init,name:0"
-msgid "Open Hours Employee Init"
-msgstr "Inicialitza l'obertura d'hores d'empleat"
+msgctxt "model:timesheet.line.enter.start,name:"
+msgid "Enter Lines"
+msgstr ""
 
-msgctxt "model:timesheet.work,name:0"
+msgctxt "model:timesheet.work,name:"
 msgid "Work"
 msgstr "Treball"
 
-msgctxt "model:timesheet.work.open.init,name:0"
-msgid "Open Work Init"
-msgstr "Inicialitza l'obertura d'un treball"
+msgctxt "model:timesheet.work.open.start,name:"
+msgid "Open Work"
+msgstr ""
 
-msgctxt "view:timesheet.enter_lines.init:0"
-msgid "Enter Timesheet"
-msgstr "Introduir full de treball"
-
-msgctxt "view:timesheet.hours_employee:0"
-msgid "Hours"
-msgstr "Hores"
-
-msgctxt "view:timesheet.hours_employee:0"
+#, fuzzy
+msgctxt "view:timesheet.hours_employee.open.start:"
 msgid "Hours per Employee"
 msgstr "Hores per empleat"
 
-msgctxt "view:timesheet.hours_employee_monthly:0"
-msgid "Hours per Employee per Month"
-msgstr "Hores per empleat i mes"
-
-msgctxt "view:timesheet.hours_employee_weekly:0"
-msgid "Hours per Employee per Week"
-msgstr "Hores per empleat i setmana"
-
-msgctxt "view:timesheet.line:0"
+msgctxt "view:timesheet.hours_employee:"
 msgid "Hours"
 msgstr "Hores"
 
-msgctxt "view:timesheet.line:0"
+msgctxt "view:timesheet.hours_employee:"
+msgid "Hours per Employee"
+msgstr "Hores per empleat"
+
+msgctxt "view:timesheet.hours_employee_monthly:"
+msgid "Hours per Employee per Month"
+msgstr "Hores per empleat i mes"
+
+msgctxt "view:timesheet.hours_employee_weekly:"
+msgid "Hours per Employee per Week"
+msgstr "Hores per empleat i setmana"
+
+msgctxt "view:timesheet.line.enter.start:"
+msgid "Enter Timesheet"
+msgstr ""
+
+msgctxt "view:timesheet.line:"
+msgid "Hours"
+msgstr "Hores"
+
+msgctxt "view:timesheet.line:"
 msgid "Timesheet Line"
 msgstr "Línia de full de treball"
 
-msgctxt "view:timesheet.line:0"
+msgctxt "view:timesheet.line:"
 msgid "Timesheet Lines"
 msgstr "Línies de full de treball"
 
-msgctxt "view:timesheet.open_hours_employee.init:0"
-msgid "Hours per Employee"
-msgstr "Hores per empleat"
-
-msgctxt "view:timesheet.work.open.init:0"
+#, fuzzy
+msgctxt "view:timesheet.work.open.start:"
 msgid "Hours per Work"
 msgstr "Hores per treball"
 
-msgctxt "view:timesheet.work:0"
+msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
 msgstr "Hores per treball"
 
-msgctxt "view:timesheet.work:0"
+msgctxt "view:timesheet.work:"
 msgid "Work"
 msgstr "Treball"
 
-msgctxt "view:timesheet.work:0"
+msgctxt "view:timesheet.work:"
 msgid "Works"
 msgstr "Treballs"
 
-msgctxt "wizard_button:timesheet.enter_lines,init,end:0"
+#, fuzzy
+msgctxt "wizard_button:timesheet.hours_employee.open,start,end:"
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-msgctxt "wizard_button:timesheet.enter_lines,init,enter:0"
+#, fuzzy
+msgctxt "wizard_button:timesheet.hours_employee.open,start,open_:"
+msgid "Open"
+msgstr "Obrir"
+
+#, fuzzy
+msgctxt "wizard_button:timesheet.line.enter,start,end:"
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr "Entrar"
+msgstr ""
 
-msgctxt "wizard_button:timesheet.open_hours_employee,init,end:0"
+#, fuzzy
+msgctxt "wizard_button:timesheet.work.open,start,end:"
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-msgctxt "wizard_button:timesheet.open_hours_employee,init,open:0"
+#, fuzzy
+msgctxt "wizard_button:timesheet.work.open,start,open_:"
 msgid "Open"
 msgstr "Obrir"
 
-msgctxt "wizard_button:timesheet.work.open,init,end:0"
+#, fuzzy
+msgctxt "wizard_button:timesheet.work.open2,start,end:"
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-msgctxt "wizard_button:timesheet.work.open,init,open:0"
-msgid "Open"
-msgstr "Obrir"
-
-msgctxt "wizard_button:timesheet.work.open2,init,end:0"
-msgid "Cancel"
-msgstr "Cancel·lar"
-
-msgctxt "wizard_button:timesheet.work.open2,init,open:0"
+#, fuzzy
+msgctxt "wizard_button:timesheet.work.open2,start,open_:"
 msgid "Open"
 msgstr "Obrir"

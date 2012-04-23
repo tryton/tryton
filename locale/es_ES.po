@@ -190,10 +190,6 @@ msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
 msgstr "Empleado"
 
-msgctxt "field:timesheet.line.enter.start,hours:"
-msgid "Hours"
-msgstr "Horas"
-
 msgctxt "field:timesheet.line.enter.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -251,8 +247,8 @@ msgid "Available on timesheets"
 msgstr "Disponible en partes de trabajo"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
-msgid "Timesheet Lines"
-msgstr "Líneas de parte de trabajo"
+msgid ""
+msgstr ""
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
