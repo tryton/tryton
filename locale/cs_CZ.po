@@ -2,10 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.purchase:0"
+msgctxt "error:purchase.purchase:"
 msgid "Analytic account is required on line \"%s\" (%d)!"
 msgstr ""
 
-msgctxt "field:purchase.line,analytic_accounts:0"
+msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr ""

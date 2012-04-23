@@ -13,15 +13,3 @@ msgstr "Compte analytique requis sur la ligne \"%s\" (%d)!"
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
-
-msgctxt "model:analytic_account.account,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:purchase.line,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:purchase.purchase,name:"
-msgid ""
-msgstr ""
