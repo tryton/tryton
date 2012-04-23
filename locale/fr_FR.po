@@ -310,10 +310,6 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
 msgid "Draft Purchase Requests"
 msgstr "Demandes d'achat en brouillon"
 
-msgctxt "model:product.product,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
 msgstr "Demande d'achat"
@@ -345,10 +341,6 @@ msgstr "Cron expédition interne"
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Règle d'approvisionnement"
-
-msgctxt "model:stock.shipment.internal,name:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:purchase.request,origin:"
 msgid "Order Point"

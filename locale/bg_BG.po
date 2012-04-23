@@ -296,10 +296,6 @@ msgctxt "model:purchase.request.create_purchase.ask_term,name:"
 msgid "Create Purchase Ask Term"
 msgstr "Запитване за създаване на условие за плащане"
 
-msgctxt "model:purchase.request.create_purchase_request.init,name:"
-msgid "Create Purchase Request Init"
-msgstr "Начало на Създаване на заявка за покупка"
-
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "Заявка за покупка"
@@ -356,14 +352,6 @@ msgctxt "view:purchase.request.create_purchase.ask_term:"
 msgid "Create Purchase: Missing Payment Term"
 msgstr "Създаване на покупка: Липсва условие за плащане"
 
-msgctxt "view:purchase.request.create_purchase_request.init:"
-msgid "Create Purchase Request"
-msgstr "Създаване на заявка за покупка"
-
-msgctxt "view:purchase.request.create_purchase_request.init:"
-msgid "Create Purchase Request?"
-msgstr "Създаване на заявка за покупка?"
-
 msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr "Информация за продукт"
@@ -419,27 +407,3 @@ msgstr "Отказ"
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr "Продължаване"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_party,init:"
-msgid "Continue"
-msgstr "Продължаване"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_user_term,init:"
-msgid "Continue"
-msgstr "Продължаване"
-
-msgctxt "wizard_button:purchase.request.create_purchase_request,init,create:"
-msgid "Create"
-msgstr "Създаване"
-
-msgctxt "wizard_button:purchase.request.create_purchase_request,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
