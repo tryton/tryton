@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Sale Shipment Cost',
+    'name_bg_BG': 'Управление остойностяване на доставка на продажба',
     'name_ca_ES': 'Vendes: Cost d''enviament',
     'name_de_DE': 'Verkauf Lieferposten Kosten',
     'name_es_AR': 'Costo del método de envio',
