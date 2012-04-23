@@ -6,10 +6,6 @@ msgctxt "error:company.company:"
 msgid "You can not create recursive companies!"
 msgstr "Не може да създавате взаимно вложени фирми!"
 
-msgctxt "error:res.user:"
-msgid "You can not set a company that is not a child of your main company!"
-msgstr "Не може да изберете фирма която не е подчинена на основната фирма!"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Деца"
@@ -206,10 +202,6 @@ msgctxt "model:company.company,name:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "model:company.company.config.init,name:"
-msgid "Company Config Init"
-msgstr "Начално инициализиране на фирма"
-
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr ""
@@ -286,14 +278,6 @@ msgctxt "odt:party.letter:"
 msgid "VAT Number:"
 msgstr "ДДС номер:"
 
-msgctxt "view:company.company.config.init:"
-msgid "Create Company"
-msgstr "Създаване на фирма"
-
-msgctxt "view:company.company.config.init:"
-msgid "You can now add your company into the system."
-msgstr "Сега може да добавите фирмата си към системата"
-
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
 msgstr "Създаване на фирма"
@@ -331,14 +315,6 @@ msgid "Add"
 msgstr "Добавяне"
 
 msgctxt "wizard_button:company.company.config,company,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:company.company.config,init,company:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:company.company.config,init,end:"
 msgid "Cancel"
 msgstr "Отказ"
 

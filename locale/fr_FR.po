@@ -234,24 +234,8 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Lettre"
 
-msgctxt "model:ir.cron,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:ir.cron-company.company,name:"
 msgid "ir.cron-company.company"
-msgstr ""
-
-msgctxt "model:ir.property,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:ir.sequence,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:ir.sequence.strict,name:"
-msgid ""
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
@@ -265,14 +249,6 @@ msgstr "Sociétés"
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
 msgstr "Employés"
-
-msgctxt "model:party.configuration,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:res.user,name:"
-msgid ""
-msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
