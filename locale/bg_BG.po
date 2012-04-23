@@ -10,14 +10,6 @@ msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
 msgstr ""
 
-msgctxt "field:sale.open_opportunity_employee.init,end_date:"
-msgid "End Date"
-msgstr "Крайна дата"
-
-msgctxt "field:sale.open_opportunity_employee.init,start_date:"
-msgid "Start Date"
-msgstr "Начална дата"
-
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
 msgstr "Адрес"
@@ -105,10 +97,6 @@ msgstr "Начална дата"
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Състояние"
-
-msgctxt "field:sale.opportunity,warehouse:"
-msgid "Warehouse"
-msgstr "Склад"
 
 msgctxt "field:sale.opportunity,write_date:"
 msgid "Write Date"
@@ -606,10 +594,6 @@ msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
 msgstr "Възможност за продажба"
 
-msgctxt "model:sale.open_opportunity_employee.init,name:"
-msgid "Open Sale Opportunity per Employee Init"
-msgstr "Начално отваряне на възможмост за продажба по служител"
-
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
 msgstr "Възможност за продажба"
@@ -678,10 +662,6 @@ msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
 msgstr "Възможност"
 
-msgctxt "view:sale.open_opportunity_employee.init:"
-msgid "Sale Opportunities per Employee"
-msgstr "Възможности за продажба по служител"
-
 msgctxt "view:sale.opportunity.history:"
 msgid "History"
 msgstr "Изтория"
@@ -749,14 +729,6 @@ msgstr "Възможности за продажба по месец"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "Sale Opportunities per Month"
 msgstr "Възможности за продажба по месец"
-
-msgctxt "wizard_button:sale.open_opportunity_employee,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:sale.open_opportunity_employee,init,open:"
-msgid "Open"
-msgstr "Отваряне"
 
 msgctxt "wizard_button:sale.opportunity_employee.open,start,end:"
 msgid "Cancel"
