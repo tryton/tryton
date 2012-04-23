@@ -84,14 +84,6 @@ msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "model:account.invoice.line,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:purchase.purchase,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:purchase.purchase-account.invoice.line,name:"
 msgid "Purchase - Invoice Line"
 msgstr "Achat - Ligne de facture"
