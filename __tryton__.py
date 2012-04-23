@@ -36,9 +36,14 @@
         ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
+        'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/fr_FR.po',
         'locale/es_AR.po',
         'locale/es_ES.po',
+        'locale/es_CO.po',
+        'locale/nl_NL.po',
+        'locale/ru_RU.po',
         ],
     }
