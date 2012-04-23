@@ -46,17 +46,9 @@ msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "model:product.product,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
 msgstr "Emplacement produit"
-
-msgctxt "model:stock.shipment.in,name:"
-msgid ""
-msgstr ""
 
 msgctxt "view:product.product:"
 msgid "Default Locations"
