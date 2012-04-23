@@ -9,7 +9,7 @@
     'name_fr_FR': 'Coût transporteur: pourcentage',
     'name_es_AR': 'Transportistas: Porcentaje',
     'name_es_ES': 'Transportistas: Porcentaje',
-    'version': '2.3.0',
+    'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
