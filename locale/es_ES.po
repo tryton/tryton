@@ -2,6 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.line,analytic_accounts:0"
+msgctxt "field:account.invoice.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Cuentas analíticas"
