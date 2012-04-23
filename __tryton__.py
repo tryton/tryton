@@ -7,7 +7,7 @@
     'name_es_AR': 'Plan de cuentas alemán SKR03',
     'name_es_ES': 'Plan contable alemán SKR03',
     'name_fr_FR': 'Plan comptable allemand SKR03',
-    'version': '2.4.0',
+    'version': '2.5.0',
     'author': 'virtual things',
     'email': 'info@virtual-things.biz',
     'website': 'http://www.virtual-things.biz/',
