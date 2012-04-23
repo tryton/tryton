@@ -9,19 +9,3 @@ msgstr "Liste de prix de vente"
 msgctxt "field:sale.sale,price_list:"
 msgid "Price List"
 msgstr "Liste de prix"
-
-msgctxt "model:party.party,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:product.product,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:sale.line,name:"
-msgid ""
-msgstr ""
-
-msgctxt "model:sale.sale,name:"
-msgid ""
-msgstr ""
