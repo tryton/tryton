@@ -55,6 +55,7 @@ toutes les valeurs passées du prix de revient du produit.
     ],
     'translation': [
         'locale/bg_BG.po',
+        'locale/ca_ES.po',
         'locale/cs_CZ.po',
         'locale/de_DE.po',
         'locale/es_AR.po',
