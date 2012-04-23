@@ -169,14 +169,6 @@ msgctxt ""
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:analytic_account.account.open_chart_account.init,end_date:"
-msgid "End Date"
-msgstr "Крайна дата"
-
-msgctxt "field:analytic_account.account.open_chart_account.init,start_date:"
-msgid "Start Date"
-msgstr "Начална дата"
-
 msgctxt "field:analytic_account.account.selection,accounts:"
 msgid "Accounts"
 msgstr "Сметки"
@@ -298,10 +290,6 @@ msgctxt ""
 msgid "Analytic Account - Analytic Account Selection"
 msgstr "Аналитична сметка - Избор на аналитична сметка "
 
-msgctxt "model:analytic_account.account.open_chart_account.init,name:"
-msgid "Open Chart Account Init"
-msgstr "Начално създаване на сметкоплан"
-
 msgctxt "model:analytic_account.account.selection,name:"
 msgid "Analytic Account Selection"
 msgstr "Избор на аналитична сметка"
@@ -398,10 +386,6 @@ msgctxt "view:account.move:"
 msgid "Analytic"
 msgstr "Задължителен"
 
-msgctxt "view:analytic_account.account.open_chart_account.init:"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Отваряне на аналитичен сметкоплан"
-
 msgctxt "view:analytic_account.account:"
 msgid "Analytic Account"
 msgstr "Аналитична сметка"
@@ -433,14 +417,6 @@ msgstr "Обща информация"
 msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Отваряне на аналитичен сметкоплан"
-
-msgctxt "wizard_button:analytic_account.account.open_chart_account,init,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:analytic_account.account.open_chart_account,init,open:"
-msgid "Open"
-msgstr "Отваряне"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"

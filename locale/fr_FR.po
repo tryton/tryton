@@ -301,10 +301,6 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
 
-msgctxt "model:account.move.line,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
 msgstr "Compte analytique"
