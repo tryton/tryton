@@ -248,10 +248,6 @@ msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"
 msgstr "Utiliser les taxes de la catégorie"
 
-msgctxt "model:product.category,name:"
-msgid ""
-msgstr ""
-
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
 msgstr "Catégorie - Taxe client"
@@ -259,10 +255,6 @@ msgstr "Catégorie - Taxe client"
 msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
 msgstr "Catégorie - Taxe fournisseur"
-
-msgctxt "model:product.template,name:"
-msgid ""
-msgstr ""
 
 msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"

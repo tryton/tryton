@@ -146,6 +146,7 @@ msgctxt "field:product.template,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Данъци на доставчик"
 
+#, fuzzy
 msgctxt "field:product.template,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
 msgstr "Използвани данъци на доставчик"
