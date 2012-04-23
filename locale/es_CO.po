@@ -2,22 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.address:0"
+msgctxt "error:party.address:"
 msgid "Invalid SIRET number!"
 msgstr "Número SIRET inválido!"
 
-msgctxt "error:party.party:0"
+msgctxt "error:party.party:"
 msgid "Invalid SIREN number!"
 msgstr "Número SIREN inválido!"
 
-msgctxt "field:party.address,siret:0"
+msgctxt "field:party.address,siret:"
 msgid "SIRET"
 msgstr ""
 
-msgctxt "field:party.address,siret_nic:0"
+msgctxt "field:party.address,siret_nic:"
 msgid "SIRET NIC"
 msgstr ""
 
-msgctxt "field:party.party,siren:0"
+msgctxt "field:party.party,siren:"
 msgid "SIREN"
 msgstr ""
