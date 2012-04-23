@@ -1,253 +1,420 @@
-#
-# Albert Cervera i Areny <albert@nan-tic.com>, 2011.
+# 
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Albert Cervera i Areny <albert@nan-tic.com>\n"
-"PO-Revision-Date: 2011-10-22 13:02+0200\n"
-"Project-Id-Version: \n"
-"Language-Team: Catalan <>\n"
-"Language: ca\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"MIME-Version: 1.0\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.address:0"
+msgctxt "error:party.address:"
 msgid "You can not modify the party of an address!"
 msgstr "No pot modificar el tercer d'una adreça"
 
-msgctxt "error:party.category:0"
+msgctxt "error:party.category:"
+msgid "The name of a party category must be unique by parent!"
+msgstr ""
+
+msgctxt "error:party.category:"
 msgid "You can not create recursive categories!"
 msgstr "No pot crear categories recursives"
 
-msgctxt "error:party.check_vies:0"
+msgctxt "error:party.category:"
+msgid "You can not use \" / \" in name field!"
+msgstr ""
+
+msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr "El servei VIES no està disponible, intenti-ho de nou més tard"
 
-msgctxt "error:party.contact_mechanism:0"
+msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of a contact mechanism!"
 msgstr "No pot modificar el tercer d'un contacte"
 
-msgctxt "error:party.party:0"
+msgctxt "error:party.party:"
 msgid "Invalid VAT number!"
 msgstr "El NIF no és vàlid"
 
-msgctxt "error:party.party:0"
+msgctxt "error:party.party:"
 msgid "The code of the party must be unique!"
 msgstr "El codi del tercer ha de ser únic"
 
-msgctxt "field:party.address,active:0"
+msgctxt "field:party.address,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:party.address,city:0"
+msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Ciutat"
 
-msgctxt "field:party.address,country:0"
+msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "País"
 
-msgctxt "field:party.address,name:0"
+msgctxt "field:party.address,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.address,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:party.address,full_address:"
+msgid "Full Address"
+msgstr ""
+
+msgctxt "field:party.address,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.address,name:"
 msgid "Name"
 msgstr "Contacte"
 
-msgctxt "field:party.address,party:0"
+msgctxt "field:party.address,party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "field:party.address,rec_name:0"
+msgctxt "field:party.address,rec_name:"
 msgid "Name"
 msgstr "Contacte"
 
-msgctxt "field:party.address,sequence:0"
+msgctxt "field:party.address,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
 
-msgctxt "field:party.address,street:0"
+msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Carrer"
 
-msgctxt "field:party.address,streetbis:0"
+msgctxt "field:party.address,streetbis:"
 msgid "Street (bis)"
 msgstr "Carrer (bis)"
 
-msgctxt "field:party.address,subdivision:0"
+msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "Subdivisió"
 
-msgctxt "field:party.address,zip:0"
+msgctxt "field:party.address,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.address,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "Codi postal"
 
-msgctxt "field:party.category,active:0"
+msgctxt "field:party.category,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:party.category,childs:0"
+msgctxt "field:party.category,childs:"
 msgid "Children"
 msgstr "Fills"
 
-msgctxt "field:party.category,name:0"
+msgctxt "field:party.category,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.category,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:party.category,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.category,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.category,parent:0"
+msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Pare"
 
-msgctxt "field:party.category,rec_name:0"
+msgctxt "field:party.category,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.check_vies.check,parties_failed:0"
+msgctxt "field:party.category,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.category,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:party.check_vies.no_result,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.check_vies.result,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Tercers rebutjats"
+msgstr ""
 
-msgctxt "field:party.check_vies.check,parties_succeed:0"
+msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "Tercers acceptats"
+msgstr ""
 
-msgctxt "field:party.contact_mechanism,active:0"
+msgctxt "field:party.configuration,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.configuration,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:party.configuration,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercer"
+
+msgctxt "field:party.configuration,party_sequence:"
+msgid "Party Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.configuration,rec_name:"
+msgid "Name"
+msgstr "Nom del camp"
+
+msgctxt "field:party.configuration,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.configuration,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:party.contact_mechanism,comment:0"
+msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
 msgstr "Comentari"
 
-msgctxt "field:party.contact_mechanism,email:0"
+msgctxt "field:party.contact_mechanism,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "Correu electrònic"
 
-msgctxt "field:party.contact_mechanism,other_value:0"
+msgctxt "field:party.contact_mechanism,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
 msgstr "Valor"
 
-msgctxt "field:party.contact_mechanism,party:0"
+msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "field:party.contact_mechanism,rec_name:0"
+msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.contact_mechanism,sequence:0"
+msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
 
-msgctxt "field:party.contact_mechanism,sip:0"
+msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
 msgstr "SIP"
 
-msgctxt "field:party.contact_mechanism,skype:0"
+msgctxt "field:party.contact_mechanism,skype:"
 msgid "Skype"
 msgstr "Skype"
 
-msgctxt "field:party.contact_mechanism,type:0"
+msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Tipus"
 
-msgctxt "field:party.contact_mechanism,value:0"
+msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
 msgstr "Valor"
 
-msgctxt "field:party.contact_mechanism,website:0"
+msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Lloc web"
 
-msgctxt "field:party.party,active:0"
+msgctxt "field:party.contact_mechanism,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.contact_mechanism,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:party.party,addresses:0"
+msgctxt "field:party.party,addresses:"
 msgid "Addresses"
 msgstr "Adreces"
 
-msgctxt "field:party.party,categories:0"
+msgctxt "field:party.party,categories:"
 msgid "Categories"
 msgstr "Categories"
 
-msgctxt "field:party.party,code:0"
+msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Codi"
 
-msgctxt "field:party.party,code_length:0"
+msgctxt "field:party.party,code_length:"
 msgid "Code Length"
 msgstr "Dígits del codi"
 
-msgctxt "field:party.party,contact_mechanisms:0"
+msgctxt "field:party.party,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
+msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
 msgstr "Mitjans de contacte"
 
-msgctxt "field:party.party,email:0"
+msgctxt "field:party.party,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:party.party,email:"
 msgid "E-Mail"
 msgstr "Correu electrònic"
 
-msgctxt "field:party.party,fax:0"
+msgctxt "field:party.party,fax:"
 msgid "Fax"
 msgstr "Fax"
 
-msgctxt "field:party.party,lang:0"
+msgctxt "field:party.party,full_name:"
+msgid "Full Name"
+msgstr ""
+
+msgctxt "field:party.party,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Idioma"
 
-msgctxt "field:party.party,mobile:0"
+msgctxt "field:party.party,mobile:"
 msgid "Mobile"
 msgstr "Mòbil"
 
-msgctxt "field:party.party,name:0"
+msgctxt "field:party.party,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.party,phone:0"
+msgctxt "field:party.party,phone:"
 msgid "Phone"
 msgstr "Telèfon"
 
-msgctxt "field:party.party,rec_name:0"
+msgctxt "field:party.party,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.party,vat_code:0"
+msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
 msgstr "NIF"
 
-msgctxt "field:party.party,vat_country:0"
+msgctxt "field:party.party,vat_country:"
 msgid "VAT Country"
 msgstr "País del NIF"
 
-msgctxt "field:party.party,vat_number:0"
+msgctxt "field:party.party,vat_number:"
 msgid "VAT Number"
 msgstr "NIF"
 
-msgctxt "field:party.party,website:0"
+msgctxt "field:party.party,website:"
 msgid "Website"
 msgstr "Lloc web"
 
-msgctxt "field:party.party-party.category,category:0"
+msgctxt "field:party.party,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:party.party,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:party.party-party.category,category:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "field:party.party-party.category,party:0"
+msgctxt "field:party.party-party.category,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party-party.category,create_uid:"
+msgid "Create User"
+msgstr "Crear usuari"
+
+msgctxt "field:party.party-party.category,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:party.party-party.category,party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "field:party.party-party.category,rec_name:0"
+msgctxt "field:party.party-party.category,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "help:party.party,vat_country:0"
-msgid "Setting VAT country will enable validation of the VAT number."
-msgstr "En especificar el país del NIF s'habilitarà la verificació del número."
+msgctxt "field:party.party-party.category,write_date:"
+msgid "Write Date"
+msgstr ""
 
-msgctxt "help:party.party,vat_number:0"
+msgctxt "field:party.party-party.category,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The value set on this field will preset the language on new parties"
+msgstr ""
+
+msgctxt "help:party.party,vat_country:"
+msgid "Setting VAT country will enable validation of the VAT number."
+msgstr ""
+"En especificar el país del NIF s'habilitarà la verificació del número."
+
+msgctxt "help:party.party,vat_number:"
 msgid "Value Added Tax number"
 msgstr "Número d'identificació fiscal"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Adreces"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_category_list"
+msgid "Categories"
+msgstr "Categories"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
@@ -256,6 +423,10 @@ msgstr "Categories"
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Tercers per categoria"
+
+msgctxt "model:ir.action,name:act_party_configuration_form"
+msgid "Party Configuration"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -281,6 +452,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Adreces"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_category_list"
+msgid "Categories"
+msgstr "Categories"
+
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categories"
@@ -289,39 +465,50 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuració"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
-msgid "Party Management"
+msgid "Party"
 msgstr "Gestió de tercers"
+
+msgctxt "model:ir.ui.menu,name:menu_party_configuration"
+msgid "Party Configuration"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
 msgstr "Tercers"
 
-msgctxt "model:party.address,name:0"
+msgctxt "model:party.address,name:"
 msgid "Address"
 msgstr "Adreça"
 
-msgctxt "model:party.category,name:0"
+msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "model:party.check_vies.check,name:0"
-msgid "Check VIES - Check"
-msgstr "Comprovació VIES - Comprovar"
+#, fuzzy
+msgctxt "model:party.check_vies.no_result,name:"
+msgid "Check VIES"
+msgstr "Comprovar VIES"
 
-msgctxt "model:party.check_vies.no_check,name:0"
-msgid "Check VIES - No Check"
-msgstr "Comprovació VIES - No comprovar"
+#, fuzzy
+msgctxt "model:party.check_vies.result,name:"
+msgid "Check VIES"
+msgstr "Comprovar VIES"
 
-msgctxt "model:party.contact_mechanism,name:0"
+msgctxt "model:party.configuration,name:"
+msgid "Party Configuration"
+msgstr ""
+
+msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Mitjà de contacte"
 
-msgctxt "model:party.party,name:0"
+msgctxt "model:party.party,name:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "model:party.party-party.category,name:0"
+msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
 msgstr "Tercer - Categoria"
 
@@ -329,258 +516,128 @@ msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Administració de tercers"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
 msgstr "Correu electrònic"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
 msgstr "Fax"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
 msgstr "IRC"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Jabber"
 msgstr "Jabber"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
 msgstr "Mòbil"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Other"
 msgstr "Un altre"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Phone"
 msgstr "Telèfon"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "SIP"
 msgstr "SIP"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Skype"
 msgstr "Skype"
 
-msgctxt "selection:party.contact_mechanism,type:0"
+msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Lloc Web"
 
-msgctxt "selection:party.party,vat_country:0"
-msgid "AL"
-msgstr "AL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "AT"
-msgstr "AT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "BE"
-msgstr "BE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "BG"
-msgstr "BG"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CY"
-msgstr "CY"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "CZ"
-msgstr "CZ"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "DE"
-msgstr "DE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "DK"
-msgstr "DK"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "EE"
-msgstr "EE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "EL"
-msgstr "EL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "ES"
-msgstr "ES"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "FI"
-msgstr "FI"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "FR"
-msgstr "FR"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "GB"
-msgstr "GB"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "GR"
-msgstr "GR"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "HU"
-msgstr "HU"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "IE"
-msgstr "IE"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "IT"
-msgstr "IT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LT"
-msgstr "LT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LU"
-msgstr "LU"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "LV"
-msgstr "LV"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "MT"
-msgstr "MT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "NL"
-msgstr "NL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "PL"
-msgstr "PL"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "PT"
-msgstr "PT"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "RO"
-msgstr "RO"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SE"
-msgstr "ES"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SI"
-msgstr "SI"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SK"
-msgstr "SK"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "SM"
-msgstr "SM"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "UA"
-msgstr "UA"
-
-msgctxt "selection:party.party,vat_country:0"
-msgid "UK"
-msgstr "UK"
-
-msgctxt "view:party.address:0"
+msgctxt "view:party.address:"
 msgid "Addresses"
 msgstr "Adreces"
 
-msgctxt "view:party.category:0"
+msgctxt "view:party.category:"
 msgid "Categories"
 msgstr "Categories"
 
-msgctxt "view:party.category:0"
+msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "view:party.check_vies.check:0"
-msgid "Parties Failed"
-msgstr "Tercers rebutjats"
-
-msgctxt "view:party.check_vies.check:0"
-msgid "Parties Succeed"
-msgstr "Tercers acceptats"
-
-msgctxt "view:party.check_vies.check:0"
-msgid "VAT Information Exchange System Results"
-msgstr "Resultat del sistema d'intercanvi d'informació d'IVA"
-
-msgctxt "view:party.check_vies.no_check:0"
+msgctxt "view:party.check_vies.no_result:"
 msgid "VAT Information Exchange System"
-msgstr "Sistema d'intercanvi d'informació d'IVA"
+msgstr ""
 
-msgctxt "view:party.check_vies.no_check:0"
+msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Necessita instal·lar una versió més actualitzada de «vatnumber»"
+msgstr ""
 
-msgctxt "view:party.contact_mechanism:0"
+msgctxt "view:party.check_vies.result:"
+msgid "VAT Information Exchange System Results"
+msgstr ""
+
+msgctxt "view:party.configuration:"
+msgid "Party Configuration"
+msgstr ""
+
+msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Mitjà de contacte"
 
-msgctxt "view:party.contact_mechanism:0"
+msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
 msgstr "Mitjà de contacte"
 
-msgctxt "view:party.party:0"
-msgid "Accounting"
-msgstr "Comptabilitat"
-
-msgctxt "view:party.party:0"
-msgid "Addresses"
-msgstr "Adreces"
-
-msgctxt "view:party.party:0"
-msgid "Categories"
-msgstr "Categories"
-
-msgctxt "view:party.party:0"
-msgid "Contact Mechanisms"
-msgstr "Mitjans de contacte"
-
-msgctxt "view:party.party:0"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:party.party:0"
-msgid "Parties"
-msgstr "Tercers"
-
-msgctxt "view:party.party:0"
-msgid "Party"
-msgstr "Tercer"
-
-msgctxt "view:party.party:0"
-msgid "VAT"
-msgstr "NIF"
-
-msgctxt "view:party.party:0"
+msgctxt "view:party.party:"
 msgid "Account"
 msgstr "Compte"
 
-msgctxt "view:party.party:0"
+msgctxt "view:party.party:"
+msgid "Accounting"
+msgstr "Comptabilitat"
+
+msgctxt "view:party.party:"
+msgid "Addresses"
+msgstr "Adreces"
+
+msgctxt "view:party.party:"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "view:party.party:"
+msgid "Contact Mechanisms"
+msgstr "Mitjans de contacte"
+
+msgctxt "view:party.party:"
+msgid "General"
+msgstr "General"
+
+msgctxt "view:party.party:"
+msgid "Parties"
+msgstr "Tercers"
+
+msgctxt "view:party.party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "view:party.party:"
+msgid "VAT"
+msgstr "NIF"
+
+msgctxt "view:party.party:"
 msgid "_General"
 msgstr "_General"
 
-msgctxt "wizard_button:party.check_vies,check,end:0"
+#, fuzzy
+msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
 msgstr "Acceptar"
 
-msgctxt "wizard_button:party.check_vies,no_check,end:0"
+#, fuzzy
+msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "Ok"
 msgstr "Acceptar"

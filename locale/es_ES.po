@@ -388,11 +388,14 @@ msgstr "Usuario modificación"
 
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
-msgstr "El valor de este campo será el valor por defecto del idioma de los terceros."
+msgstr ""
+"El valor de este campo será el valor por defecto del idioma de los terceros."
 
 msgctxt "help:party.party,vat_country:"
 msgid "Setting VAT country will enable validation of the VAT number."
-msgstr "Al especificar el país del NIF se habilitará la verificación de dicho número."
+msgstr ""
+"Al especificar el país del NIF se habilitará la verificación de dicho "
+"número."
 
 msgctxt "help:party.party,vat_number:"
 msgid "Value Added Tax number"

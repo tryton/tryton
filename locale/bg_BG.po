@@ -142,14 +142,6 @@ msgctxt "field:party.category,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:party.check_vies.check,parties_failed:"
-msgid "Parties Failed"
-msgstr "Партньора не е валиден"
-
-msgctxt "field:party.check_vies.check,parties_succeed:"
-msgid "Parties Succeed"
-msgstr "Валиден партньор"
-
 msgctxt "field:party.check_vies.no_result,id:"
 msgid "ID"
 msgstr "ID"
@@ -482,14 +474,6 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Категория"
 
-msgctxt "model:party.check_vies.check,name:"
-msgid "Check VIES - Check"
-msgstr "Проверка ДДС номер (VIES) - проверка"
-
-msgctxt "model:party.check_vies.no_check,name:"
-msgid "Check VIES - No Check"
-msgstr "Проверка ДДС номер (VIES) - без проверка"
-
 msgctxt "model:party.check_vies.no_result,name:"
 msgid "Check VIES"
 msgstr "Провека в VIES"
@@ -570,26 +554,6 @@ msgctxt "view:party.category:"
 msgid "Category"
 msgstr "Категория"
 
-msgctxt "view:party.check_vies.check:"
-msgid "Parties Failed"
-msgstr "Партньора не е валиден"
-
-msgctxt "view:party.check_vies.check:"
-msgid "Parties Succeed"
-msgstr "Валиден партньор"
-
-msgctxt "view:party.check_vies.check:"
-msgid "VAT Information Exchange System Results"
-msgstr "Резултати от Система за обмен на инфиормация за ДДС"
-
-msgctxt "view:party.check_vies.no_check:"
-msgid "VAT Information Exchange System"
-msgstr "Система за обмен на ДДС информация"
-
-msgctxt "view:party.check_vies.no_check:"
-msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Трябва да имате инсталирана последната версия на \"vatnumber\"!"
-
 msgctxt "view:party.check_vies.no_result:"
 msgid "VAT Information Exchange System"
 msgstr "Система за обмен на ДДС информация"
@@ -645,14 +609,6 @@ msgstr "Партньор"
 msgctxt "view:party.party:"
 msgid "VAT"
 msgstr "ДДС"
-
-msgctxt "wizard_button:party.check_vies,check,end:"
-msgid "Ok"
-msgstr "Добре"
-
-msgctxt "wizard_button:party.check_vies,no_check,end:"
-msgid "Ok"
-msgstr "Добре"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
