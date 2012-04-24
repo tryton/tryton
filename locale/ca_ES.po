@@ -8,7 +8,7 @@ msgstr "Dies de la setmana"
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_uid:"
@@ -17,7 +17,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
@@ -33,11 +33,11 @@ msgstr "Dia de la setmana"
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
