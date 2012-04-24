@@ -9,7 +9,7 @@
     'name_es_CO': 'Inventario de existencias para muchas ubicaciones',
     'name_es_ES': 'Inventario de stock para muchas ubicaciones',
     'name_fr_FR': 'Inventaire de stock par liste de locations',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
