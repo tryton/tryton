@@ -9,7 +9,7 @@
     "name_es_CO": "Línea de Factura autónoma en Compras",
     "name_es_ES": "Línea de factura de compra independiente",
     "name_fr_FR": "Ligne de facture autonome - Achat",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "author": "B2CK",
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
