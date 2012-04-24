@@ -16,7 +16,7 @@ msgstr "Comentari"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:project.work,create_uid:"
@@ -29,7 +29,7 @@ msgstr "Esforç"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -70,11 +70,11 @@ msgstr "Activitat"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
