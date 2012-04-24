@@ -18,6 +18,8 @@ msgstr ""
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values!"
 msgstr ""
+"No pot canviar la conversió, el factor o la categoria d'una unitat de "
+"mesura."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
@@ -35,7 +37,7 @@ msgstr "Fills"
 
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.category,create_uid:"
@@ -44,7 +46,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category,name:"
 msgid "Name"
@@ -60,11 +62,11 @@ msgstr "Nom"
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
@@ -72,7 +74,7 @@ msgstr "Codi"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.product,create_uid:"
@@ -85,7 +87,7 @@ msgstr "Descripció"
 
 msgctxt "field:product.product,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
@@ -97,11 +99,11 @@ msgstr "Plantilla de producte"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:product.template,active:"
 msgid "Active"
@@ -113,7 +115,7 @@ msgstr "Categoria"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Consumible"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
@@ -129,7 +131,7 @@ msgstr "Preu de cost"
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.template,create_uid:"
@@ -142,11 +144,11 @@ msgstr "UdM predeterminada"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
+msgstr "Categoria per defecte UdM"
 
 msgctxt "field:product.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -174,11 +176,11 @@ msgstr "Tipus"
 
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:product.uom,active:"
 msgid "Active"
@@ -190,7 +192,7 @@ msgstr "Categoria d'UdM"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.uom,create_uid:"
@@ -207,7 +209,7 @@ msgstr "Factor"
 
 msgctxt "field:product.uom,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.uom,name:"
 msgid "Name"
@@ -231,15 +233,15 @@ msgstr "Símbol"
 
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
@@ -248,7 +250,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
@@ -264,11 +266,11 @@ msgstr "Unitats de mesura"
 
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "help:product.uom,factor:"
 msgid ""
@@ -650,11 +652,11 @@ msgstr "Fix"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr ""
+msgstr "Servei"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Servei"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
