@@ -9,7 +9,7 @@
     'name_es_CO': 'Ingresos por proyectos',
     'name_es_ES': 'Ingresos por proyecto',
     'name_fr_FR': 'Revenu des projets',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
