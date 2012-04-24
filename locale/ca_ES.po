@@ -16,7 +16,7 @@ msgstr "Les sol·licituds de compra només les crea el sistema."
 
 msgctxt "error:purchase.request:"
 msgid "The requested quantity must be greater than 0"
-msgstr ""
+msgstr "La quantitat sol·licitada ha de ser més gran que 0."
 
 msgctxt "error:stock.order_point:"
 msgid "Maximal quantity must be bigger than Minimal quantity"
@@ -54,7 +54,7 @@ msgstr "UdM calculada"
 
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:purchase.request,create_uid:"
@@ -63,7 +63,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:purchase.request,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.request,origin:"
 msgid "Origin"
@@ -119,19 +119,19 @@ msgstr "Magatzem"
 
 msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
-msgstr ""
+msgstr "Magatzem requerit"
 
 msgctxt "field:purchase.request,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:purchase.request,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:purchase.request.create.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
@@ -139,7 +139,7 @@ msgstr "Empresa"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
@@ -155,7 +155,7 @@ msgstr "Empresa"
 
 msgctxt "field:purchase.request.create_purchase.ask_term,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.request.create_purchase.ask_term,party:"
 msgid "Supplier"
@@ -171,7 +171,7 @@ msgstr "Empresa"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:stock.order_point,create_uid:"
@@ -180,7 +180,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
@@ -228,11 +228,11 @@ msgstr "Ubicació del magatzem"
 
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
@@ -288,7 +288,7 @@ msgstr "Sol·licitud de compra"
 
 msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
-msgstr ""
+msgstr "Crear sol·licitud de compra"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
@@ -344,11 +344,11 @@ msgstr "Compra"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Request"
-msgstr ""
+msgstr "Crear sol·licituds de compra?"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Request?"
-msgstr ""
+msgstr "Crear sol·licituds de compra?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
@@ -397,7 +397,7 @@ msgstr "Informació del producte"
 
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #, fuzzy
 msgctxt "wizard_button:purchase.request.create,start,end:"
@@ -411,7 +411,7 @@ msgstr "Cancel·lar"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
@@ -420,4 +420,4 @@ msgstr "Cancel·lar"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
