@@ -24,7 +24,7 @@ msgstr "Preu de cost"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:company.employee_cost_price,create_uid:"
@@ -45,7 +45,7 @@ msgstr "Empleat"
 
 msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
@@ -53,11 +53,11 @@ msgstr "Nom"
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:company.employee_cost_price,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:project.work,cost:"
 msgid "Cost"
