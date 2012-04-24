@@ -8,7 +8,7 @@ msgstr "No pot modificar el tercer d'una adreça"
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent!"
-msgstr ""
+msgstr "No pot usar \"/\" en el camp nomeni."
 
 msgctxt "error:party.category:"
 msgid "You can not create recursive categories!"
@@ -16,7 +16,7 @@ msgstr "No pot crear categories recursives"
 
 msgctxt "error:party.category:"
 msgid "You can not use \" / \" in name field!"
-msgstr ""
+msgstr "No pot usar \"/\" en el camp nomeni."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
@@ -48,7 +48,7 @@ msgstr "País"
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:party.address,create_uid:"
@@ -57,11 +57,11 @@ msgstr "Crear usuari"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
-msgstr ""
+msgstr "Adreça completa"
 
 msgctxt "field:party.address,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.address,name:"
 msgid "Name"
@@ -93,11 +93,11 @@ msgstr "Subdivisió"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
@@ -113,7 +113,7 @@ msgstr "Fills"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:party.category,create_uid:"
@@ -122,7 +122,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
@@ -138,31 +138,31 @@ msgstr "Nom"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:party.check_vies.no_result,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr ""
+msgstr "Tercer erroni"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr ""
+msgstr "Tercer correcte"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:party.configuration,create_uid:"
@@ -171,7 +171,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:party.configuration,party_lang:"
@@ -180,7 +180,7 @@ msgstr "Idioma del tercer"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr ""
+msgstr "Seqüència tercer"
 
 #, fuzzy
 msgctxt "field:party.configuration,rec_name:"
@@ -189,11 +189,11 @@ msgstr "Nom del camp"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
@@ -205,7 +205,7 @@ msgstr "Comentari"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:party.contact_mechanism,create_uid:"
@@ -218,7 +218,7 @@ msgstr "Correu electrònic"
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
@@ -258,11 +258,11 @@ msgstr "Lloc web"
 
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
@@ -286,7 +286,7 @@ msgstr "Dígits del codi"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Codi només lectura"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
@@ -294,7 +294,7 @@ msgstr "Mitjans de contacte"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:party.party,create_uid:"
@@ -311,11 +311,11 @@ msgstr "Fax"
 
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
-msgstr ""
+msgstr "Nom complet"
 
 msgctxt "field:party.party,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
@@ -355,11 +355,11 @@ msgstr "Lloc web"
 
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
@@ -367,7 +367,7 @@ msgstr "Categoria"
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:party.party-party.category,create_uid:"
@@ -376,7 +376,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
@@ -388,15 +388,16 @@ msgstr "Nom"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
 msgstr ""
+"El valor d'aquest camp serà el valor per defecte de l'idioma dels tercers."
 
 msgctxt "help:party.party,vat_country:"
 msgid "Setting VAT country will enable validation of the VAT number."
@@ -498,7 +499,7 @@ msgstr "Comprovar VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuració de tercers"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
@@ -570,19 +571,19 @@ msgstr "Categoria"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "VAT Information Exchange System"
-msgstr ""
+msgstr "Ha de tenir instal·lada una versió recent de \"vatnumber\"."
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr ""
+msgstr "Ha de tenir instal·lada una versió recent de \"vatnumber\"."
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr ""
+msgstr "Resultat del sistema d'intercanvi d'informació VAT"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuració de tercers"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
