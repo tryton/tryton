@@ -4,27 +4,27 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Anglo-Saxon quantity can not be greater than quantity!"
-msgstr ""
+msgstr "La quantitat anglo-sajona no pot ser maig que la quantitat."
 
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr ""
+msgstr "Compte cost béns venuts"
 
 msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
-msgstr ""
+msgstr "Compte cost béns venuts usada"
 
 msgctxt "field:product.template,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr ""
+msgstr "Compte cost béns venuts"
 
 msgctxt "field:product.template,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
-msgstr ""
+msgstr "Compte cost béns venuts usada"
 
 msgctxt "field:stock.move,anglo_saxon_quantity:"
 msgid "Anglo-Saxon Quantity"
-msgstr ""
+msgstr "Quantitat anglo-sajona"
 
 #, fuzzy
 msgctxt "help:product.template,account_cogs:"
@@ -33,4 +33,4 @@ msgstr "Aquest compte s'usarà en lloc del definit en la categoria."
 
 msgctxt "model:account.account.template,name:account_template_cogs"
 msgid "COGS"
-msgstr ""
+msgstr "COGS"
