@@ -8,7 +8,7 @@ msgstr "L'import (%s) és superior que la quantitat a pagar de la factura"
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value!"
-msgstr ""
+msgstr "Indiqui els comptes deu i haver-hi en un diari d'extracte."
 
 msgctxt "error:account.statement.line:"
 msgid ""
@@ -30,7 +30,7 @@ msgstr "El balanç final ha de ser %s"
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr ""
+msgstr "Ha de cancel·lar l'extracte \"%s\" abans d'eliminar-ho."
 
 #, fuzzy
 msgctxt "field:account.statement,balance:"
@@ -44,7 +44,7 @@ msgstr "Empresa"
 
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:account.statement,create_uid:"
@@ -65,7 +65,7 @@ msgstr "Balanç final"
 
 msgctxt "field:account.statement,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -93,11 +93,11 @@ msgstr "Estat"
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
@@ -105,7 +105,7 @@ msgstr "Empresa"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:account.statement.journal,create_uid:"
@@ -118,7 +118,7 @@ msgstr "Divisa"
 
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -134,11 +134,11 @@ msgstr "Nom"
 
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -150,7 +150,7 @@ msgstr "Quantitat"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:account.statement.line,create_uid:"
@@ -167,7 +167,7 @@ msgstr "Descripció"
 
 msgctxt "field:account.statement.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
@@ -191,11 +191,11 @@ msgstr "Extracte de comptes"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
@@ -324,7 +324,7 @@ msgstr "Cancel·lar"
 
 msgctxt "view:account.statement:"
 msgid "Move Lines"
-msgstr "Línies de seients"
+msgstr "Apunts"
 
 #, fuzzy
 msgctxt "view:account.statement:"
