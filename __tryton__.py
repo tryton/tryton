@@ -9,7 +9,7 @@
     'name_es_CO': 'Lista de Precios de Venta',
     'name_es_ES': 'Tarifas de venta',
     'name_fr_FR': 'Listes de prix de vente',
-    'version': '2.3.0',
+    'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
