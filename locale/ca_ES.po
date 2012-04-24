@@ -9,7 +9,7 @@ msgstr "Preu de cost"
 
 msgctxt "field:product.product.cost_history,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.product.cost_history,create_uid:"
@@ -23,7 +23,7 @@ msgstr "Data"
 
 msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:product.product.cost_history,rec_name:"
@@ -37,11 +37,11 @@ msgstr "Productes"
 
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.product.cost_history,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
@@ -53,8 +53,8 @@ msgstr ""
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
-msgstr ""
+msgstr "Historial de costos de producte"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
-msgstr ""
+msgstr "Historial de costos de producte"
