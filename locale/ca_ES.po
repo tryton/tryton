@@ -9,6 +9,7 @@ msgstr "Una divisa sol pot tenir un valor per data"
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr ""
+"El rang de la taxa de canvi de la divisa ha de ser mes gran o igual a 0."
 
 msgctxt "error:currency.currency:"
 msgid "Invalid Grouping!"
@@ -28,7 +29,7 @@ msgstr "Codi"
 
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:currency.currency,create_uid:"
@@ -41,7 +42,7 @@ msgstr "Dígits a mostrar"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
@@ -77,7 +78,7 @@ msgstr "Signe negatiu"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Codi numèric"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
@@ -117,15 +118,15 @@ msgstr "Símbol"
 
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:currency.currency.rate,create_uid:"
@@ -142,7 +143,7 @@ msgstr "Data"
 
 msgctxt "field:currency.currency.rate,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
@@ -154,11 +155,11 @@ msgstr "Nom"
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -872,11 +873,11 @@ msgstr ""
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Code for testing purposes"
-msgstr ""
+msgstr "Dòlar zimbabuense"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr ""
+msgstr "Dòlar zimbabuense"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
@@ -888,7 +889,7 @@ msgstr "Rand"
 
 msgctxt "model:currency.currency,name:zmk"
 msgid "Zambian Kwacha"
-msgstr ""
+msgstr "Dòlar zimbabuense"
 
 msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
