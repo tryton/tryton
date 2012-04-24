@@ -16,7 +16,7 @@ msgstr "Codi"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:country.country,create_uid:"
@@ -25,7 +25,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
@@ -41,11 +41,11 @@ msgstr "Subdivisions"
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -57,7 +57,7 @@ msgstr "País"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:country.subdivision,create_uid:"
@@ -66,7 +66,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -86,11 +86,11 @@ msgstr "Tipus"
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "help:country.country,code:"
 msgid ""
@@ -19298,15 +19298,15 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:zw-ms"
 msgid "Matabeleland South"
-msgstr ""
+msgstr "Mashonaland West"
 
 msgctxt "model:country.subdivision,name:zw-mv"
 msgid "Masvingo"
-msgstr ""
+msgstr "Mashonaland West"
 
 msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
-msgstr ""
+msgstr "Mashonaland West"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
