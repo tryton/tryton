@@ -14,7 +14,7 @@ msgstr "Data"
 
 msgctxt "field:stock.inventory.create.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.inventory.create.start,locations:"
@@ -46,7 +46,7 @@ msgstr "Crear inventaris"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,end:"
