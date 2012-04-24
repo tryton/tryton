@@ -16,7 +16,7 @@ msgstr "No pot crear treballs recursius"
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee,create_uid:"
@@ -33,7 +33,7 @@ msgstr "Hores"
 
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
 msgid "Name"
@@ -41,11 +41,11 @@ msgstr "Nom"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee.open.start,end_date:"
@@ -54,7 +54,7 @@ msgstr "Data final"
 
 msgctxt "field:timesheet.hours_employee.open.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee.open.start,start_date:"
@@ -63,7 +63,7 @@ msgstr "Data inici"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
@@ -80,7 +80,7 @@ msgstr "Hores"
 
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
@@ -92,11 +92,11 @@ msgstr "Nom"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
@@ -104,7 +104,7 @@ msgstr "Any"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
@@ -121,7 +121,7 @@ msgstr "Hores"
 
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
 msgid "Name"
@@ -133,11 +133,11 @@ msgstr "Setmana"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
@@ -145,7 +145,7 @@ msgstr "Any"
 
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:timesheet.line,create_uid:"
@@ -170,7 +170,7 @@ msgstr "Hores"
 
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Name"
@@ -182,11 +182,11 @@ msgstr "Treball"
 
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:timesheet.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 #, fuzzy
 msgctxt "field:timesheet.line.enter.start,date:"
@@ -200,7 +200,7 @@ msgstr "Empleat"
 
 msgctxt "field:timesheet.line.enter.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:timesheet.work,active:"
 msgid "Active"
@@ -216,7 +216,7 @@ msgstr "Empresa"
 
 msgctxt "field:timesheet.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:timesheet.work,create_uid:"
@@ -229,7 +229,7 @@ msgstr "Hores del full de treball"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:timesheet.work,left:"
 msgid "Left"
@@ -257,15 +257,15 @@ msgstr "Disponible en fulls de treball"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid ""
-msgstr ""
+msgstr "Línies de part de treball"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 #, fuzzy
 msgctxt "field:timesheet.work.open.start,from_date:"
@@ -274,7 +274,7 @@ msgstr "Des de la data"
 
 msgctxt "field:timesheet.work.open.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:timesheet.work.open.start,to_date:"
@@ -407,7 +407,7 @@ msgstr "Hores per empleat"
 
 msgctxt "model:timesheet.hours_employee.open.start,name:"
 msgid "Open Hours per Employee"
-msgstr ""
+msgstr "Obrir hores per empleat"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -423,7 +423,7 @@ msgstr "Línia de full de treball"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
-msgstr ""
+msgstr "Afegir línies"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
@@ -431,7 +431,7 @@ msgstr "Treball"
 
 msgctxt "model:timesheet.work.open.start,name:"
 msgid "Open Work"
-msgstr ""
+msgstr "Obrir treball"
 
 #, fuzzy
 msgctxt "view:timesheet.hours_employee.open.start:"
@@ -456,7 +456,7 @@ msgstr "Hores per empleat i setmana"
 
 msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
-msgstr ""
+msgstr "Afegir part de treball"
 
 msgctxt "view:timesheet.line:"
 msgid "Hours"
@@ -504,7 +504,7 @@ msgstr "Cancel·lar"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr ""
+msgstr "Afegir"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.work.open,start,end:"
