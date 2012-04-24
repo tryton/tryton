@@ -5,6 +5,8 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
 msgstr ""
+"No existeix cap compte de despeses/ingressos definida en la categoria %s "
+"(%d)."
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
@@ -22,7 +24,7 @@ msgstr "Compte de despesa usada"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr ""
+msgstr "Usar expliques pare"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
@@ -53,7 +55,7 @@ msgstr "Impostos de client usats"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr ""
+msgstr "Usar imposats pare"
 
 #, fuzzy
 msgctxt "field:product.category-customer-account.tax,category:"
@@ -62,7 +64,7 @@ msgstr "Categoria"
 
 msgctxt "field:product.category-customer-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.category-customer-account.tax,create_uid:"
@@ -71,7 +73,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Name"
@@ -83,11 +85,11 @@ msgstr "Impost"
 
 msgctxt "field:product.category-customer-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.category-customer-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 #, fuzzy
 msgctxt "field:product.category-supplier-account.tax,category:"
@@ -96,7 +98,7 @@ msgstr "Categoria"
 
 msgctxt "field:product.category-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.category-supplier-account.tax,create_uid:"
@@ -105,7 +107,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Name"
@@ -117,11 +119,11 @@ msgstr "Impost"
 
 msgctxt "field:product.category-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:product.template,account_category:"
 msgid "Use Category's accounts"
@@ -166,7 +168,7 @@ msgstr "Usar els impostos de la categoria"
 
 msgctxt "field:product.template-customer-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.template-customer-account.tax,create_uid:"
@@ -175,7 +177,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:product.template-customer-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
@@ -191,15 +193,15 @@ msgstr "Impost"
 
 msgctxt "field:product.template-customer-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.template-customer-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:product.template-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:product.template-supplier-account.tax,create_uid:"
@@ -208,7 +210,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:product.template-supplier-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
@@ -224,19 +226,19 @@ msgstr "Impost"
 
 msgctxt "field:product.template-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:product.template-supplier-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category"
-msgstr ""
+msgstr "Usar els comptes definits en la categoria pare."
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category"
-msgstr ""
+msgstr "Usar els impostos definits en la categoria pare."
 
 msgctxt "help:product.template,account_category:"
 msgid "Use the accounts defined on the category"
