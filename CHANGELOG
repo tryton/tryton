@@ -1,3 +1,5 @@
+Version 2.4.0 - 2012-04-24
+* Bug fixes (see mercurial logs for details)
 * Change record rule for work to use the current company instead of main
 
 Version 2.2.0 - 2011-10-25
