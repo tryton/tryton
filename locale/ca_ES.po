@@ -9,7 +9,7 @@ msgstr "Gestió de divises"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr ""
+msgstr "Decimals divisa del pes"
 
 #, fuzzy
 msgctxt "field:carrier,weight_price_list:"
@@ -18,19 +18,19 @@ msgstr "Llista de preus"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
-msgstr ""
+msgstr "Pes UdM"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr ""
+msgstr "Dígits UdM pes"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Transportista"
 
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:carrier.weight_price_list,create_uid:"
@@ -39,11 +39,11 @@ msgstr "Crear usuari"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr ""
+msgstr "Cost"
 
 #, fuzzy
 msgctxt "field:carrier.weight_price_list,rec_name:"
@@ -57,15 +57,15 @@ msgstr "Pes"
 
 msgctxt "field:carrier.weight_price_list,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "carrier.weight_price_list"
-msgstr ""
+msgstr "Tarifa peso transportista"
 
 #, fuzzy
 msgctxt "selection:carrier,carrier_cost_method:"
@@ -74,8 +74,8 @@ msgstr "Pes"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price List"
-msgstr ""
+msgstr "Tarifes peso transportista"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price Lists"
-msgstr ""
+msgstr "Tarifes peso transportista"
