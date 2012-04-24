@@ -25,6 +25,7 @@ msgstr "«Fins a la data» ha de ser més recent que «Des de la data»"
 msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion!"
 msgstr ""
+"No pot crear previsions per a les mateixes ubicacions amb dates solapadas."
 
 msgctxt "error:stock.forecast:"
 msgid ""
@@ -38,7 +39,7 @@ msgstr "Empresa"
 
 msgctxt "field:stock.forecast,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:stock.forecast,create_uid:"
@@ -55,7 +56,7 @@ msgstr "Des de la data"
 
 msgctxt "field:stock.forecast,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
@@ -80,11 +81,11 @@ msgstr "Ubicació"
 
 msgctxt "field:stock.forecast,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:stock.forecast,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
@@ -92,7 +93,7 @@ msgstr "Des de la data"
 
 msgctxt "field:stock.forecast.complete.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
@@ -100,7 +101,7 @@ msgstr "Fins a la data"
 
 msgctxt "field:stock.forecast.complete.choose,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
@@ -108,7 +109,7 @@ msgstr "Productes"
 
 msgctxt "field:stock.forecast.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:stock.forecast.line,create_uid:"
@@ -121,7 +122,7 @@ msgstr "Previsió"
 
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast.line,minimal_quantity:"
 msgid "Minimal Qty"
@@ -137,7 +138,7 @@ msgstr "Producte"
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Categoria UdM del producte"
 
 msgctxt "field:stock.forecast.line,quantity:"
 msgid "Quantity"
@@ -145,7 +146,7 @@ msgstr "Quantitat"
 
 msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
-msgstr ""
+msgstr "Quantitats executades"
 
 msgctxt "field:stock.forecast.line,rec_name:"
 msgid "Name"
@@ -161,15 +162,15 @@ msgstr "UdM"
 
 msgctxt "field:stock.forecast.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:stock.forecast.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:stock.forecast.line-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,create_uid:"
@@ -178,7 +179,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:stock.forecast.line-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
@@ -194,11 +195,11 @@ msgstr "Nom"
 
 msgctxt "field:stock.forecast.line-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:stock.forecast.line-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
@@ -304,7 +305,7 @@ msgstr "Restablir a esborrany"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
-msgstr ""
+msgstr "Seleccioni productes"
 
 #, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
@@ -318,7 +319,7 @@ msgstr "Cancel·lar"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
-msgstr ""
+msgstr "Seleccioni dates"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
