@@ -16,7 +16,7 @@ msgstr "Línies de factura ignorades"
 
 msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
@@ -25,7 +25,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:purchase.purchase-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-account.invoice.line,line:"
 msgid "Invoice Line"
@@ -41,15 +41,15 @@ msgstr "Nom"
 
 msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:purchase.purchase-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
@@ -58,7 +58,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
 msgid "Invoice Line"
@@ -74,11 +74,11 @@ msgstr "Nom"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:purchase.purchase-account.invoice.line,name:"
 msgid "Purchase - Invoice Line"
