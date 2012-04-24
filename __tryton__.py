@@ -12,7 +12,7 @@
     'name_fr_FR': 'Produit',
     'name_nl_NL': 'Producten',
     'name_ru_RU': 'ТМЦ',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
