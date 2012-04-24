@@ -10,7 +10,7 @@
     'name_es_ES': 'Histórico del precio de coste de producto',
     'name_fr_FR': 'Historique prix de revient produit',
     'name_ru_RU': 'История цен ТМЦ',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
