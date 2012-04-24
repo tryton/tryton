@@ -9,27 +9,27 @@ msgstr "Falta un «Compte d'ingressos» en el producte «%s»"
 
 msgctxt "field:sale.configuration,sale_carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Transportista"
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr ""
+msgstr "Mètode de cost envio venda"
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
-msgstr ""
+msgstr "Cost d'enviament"
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Transportista"
 
 msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
-msgstr ""
+msgstr "Mètode de cost envio"
 
 msgctxt "field:stock.shipment.out,carrier:"
 msgid "Carrier"
-msgstr ""
+msgstr "Transportista"
 
 #, fuzzy
 msgctxt "field:stock.shipment.out,cost:"
@@ -38,28 +38,28 @@ msgstr "Cost"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
-msgstr ""
+msgstr "Albira cost"
 
 msgctxt "field:stock.shipment.out,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr ""
+msgstr "Decimals divisa del cost"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
-msgstr ""
+msgstr "Cost de la línia de factura"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Order"
-msgstr ""
+msgstr "En enviar"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Shipment"
-msgstr ""
+msgstr "En enviar"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
-msgstr ""
+msgstr "En enviar"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
-msgstr ""
+msgstr "En enviar"
