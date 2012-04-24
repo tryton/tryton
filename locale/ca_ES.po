@@ -8,7 +8,7 @@ msgstr "Ubicacions predeterminades"
 
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:stock.product.location,create_uid:"
@@ -17,7 +17,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
@@ -41,11 +41,11 @@ msgstr "Dipòsit"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
