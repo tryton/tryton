@@ -8,7 +8,7 @@ msgstr "No pot crear dependències recursives"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:project.allocation,create_uid:"
@@ -21,7 +21,7 @@ msgstr "Empleat"
 
 msgctxt "field:project.allocation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
@@ -37,15 +37,15 @@ msgstr "Activitat"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:project.predecessor_successor,create_uid:"
@@ -54,7 +54,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
@@ -70,11 +70,11 @@ msgstr "Successor"
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
@@ -138,7 +138,7 @@ msgstr "Temps d'inici prematur"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr ""
+msgstr "Finalització tardana"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
