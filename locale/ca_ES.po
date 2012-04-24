@@ -12,7 +12,7 @@ msgstr "Fills"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:company.company,create_uid:"
@@ -37,7 +37,7 @@ msgstr "Encapçalat"
 
 msgctxt "field:company.company,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
@@ -53,15 +53,15 @@ msgstr "Nom"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:company.company,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:company.company.config.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
@@ -69,7 +69,7 @@ msgstr "Empresa"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:company.employee,create_uid:"
@@ -78,7 +78,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
@@ -90,11 +90,11 @@ msgstr "Nom"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:company.employee,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -106,7 +106,7 @@ msgstr "Empresa"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:ir.cron-company.company,create_uid:"
@@ -119,7 +119,7 @@ msgstr "Programador de tasques"
 
 msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Name"
@@ -127,11 +127,11 @@ msgstr "Nom"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "field:ir.property,company:"
 msgid "Company"
@@ -168,7 +168,7 @@ msgstr "Empresa principal"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data creació"
 
 #, fuzzy
 msgctxt "field:res.user-company.employee,create_uid:"
@@ -182,7 +182,7 @@ msgstr "Empleat"
 
 msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:res.user-company.employee,rec_name:"
@@ -196,11 +196,11 @@ msgstr "Usuari"
 
 msgctxt "field:res.user-company.employee,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data modificació"
 
 msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Usuari modificació"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
@@ -212,7 +212,7 @@ msgstr "Empresa"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr ""
+msgstr "Configuració empresa"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
@@ -258,7 +258,7 @@ msgstr "Empleats"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr ""
+msgstr "Usuari - Emprat"
 
 msgctxt "odt:party.letter:"
 msgid "Best Regards,"
@@ -286,15 +286,15 @@ msgstr "Assumpte:"
 
 msgctxt "odt:party.letter:"
 msgid "VAT Number:"
-msgstr ""
+msgstr "Nombre CIF/NIF:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr ""
+msgstr "Ara pot afegir la seva empresa en el sistema."
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr ""
+msgstr "Ara pot afegir la seva empresa en el sistema."
 
 msgctxt "view:company.company:"
 msgid "Addresses"
