@@ -9,7 +9,7 @@
     'name_fr_FR': 'Mesure des produits',
     'name_es_AR': 'Mediciones de Productos',
     'name_es_ES': 'Medidas de productos',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
