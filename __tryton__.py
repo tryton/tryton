@@ -9,7 +9,7 @@
     'name_fr_FR': 'Coût transporteur: Poid',
     'name_es_AR': 'Transportistas: Pesaje',
     'name_es_ES': 'Transportistas: Pesaje',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
