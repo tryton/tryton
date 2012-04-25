@@ -2003,7 +2003,7 @@ class ModelSQL(ModelStorage):
             if field_name:
                 if '%(table)s' in field_name or '%(order)s' in field_name:
                     order_by.append(field_name % {
-                        'table': table_name,
+                        'table': '"%s"' % table_name,
                         'order': otype,
                         })
                 else:
