@@ -182,11 +182,11 @@ class SaleLine(ModelSQL, ModelView):
             return new_ids[0]
         return new_ids
 
-    def get_invoice_line(self, line):
+    def get_invoice_line(self, line, invoice_type):
         pool = Pool()
         account_selection_obj = pool.get('analytic_account.account.selection')
 
-        res = super(SaleLine, self).get_invoice_line(line)
+        res = super(SaleLine, self).get_invoice_line(line, invoice_type)
         if not res:
             return res
 
