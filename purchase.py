@@ -2107,6 +2107,7 @@ class HandleShipmentException(Wizard):
                 })
 
         purchase_obj.process([purchase.id])
+        return 'end'
 
 HandleShipmentException()
 
@@ -2179,5 +2180,6 @@ class HandleInvoiceException(Wizard):
             })
 
         purchase_obj.process([purchase.id])
+        return 'end'
 
 HandleInvoiceException()
