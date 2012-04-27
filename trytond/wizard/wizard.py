@@ -177,7 +177,7 @@ class _SessionRecord(object):
                     data = [instance(x) for x in data]
                 else:
                     data = instance(data)
-        elif target_obj:
+        elif target_obj and not isinstance(data, list):
             return BrowseRecordNull()
         self.__cache[name] = data
         return data
