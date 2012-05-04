@@ -78,9 +78,9 @@ class TranslateFactory:
                 ('type', '=', 'odt'),
                 ('name', '=', self.report_name),
                 ('value', '!=', ''),
-                ('value', '!=', False),
+                ('value', '!=', None),
                 ('fuzzy', '=', False),
-                ('res_id', '=', 0),
+                ('res_id', '=', None),
                 ])
             for translation in self.translation.browse(translation_ids):
                 self.cache[self.language][translation.src] = translation.value
