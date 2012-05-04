@@ -37,7 +37,8 @@ class Address(Model):
         '''
         for address in self.browse(ids):
             if address.siret:
-                if len(address.siret) != 14 or not luhn.validate(address.siret):
+                if (len(address.siret) != 14
+                        or not luhn.validate(address.siret)):
                     return False
         return True
 
