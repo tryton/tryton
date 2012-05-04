@@ -29,7 +29,6 @@ class Party(Model):
             if party.siren:
                 if len(party.siren) != 9 or not luhn.validate(party.siren):
                     return False
-            print party.addresses
         return True
 
 Party()
