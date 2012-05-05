@@ -30,6 +30,7 @@ class ViewForm(ParserView):
         for notebook in notebooks:
             def switch(notebook, page, page_num):
                 if page_num not in display_done.setdefault(notebook, []):
+                    notebook.grab_focus()
                     display_done[notebook].append(page_num)
                     self.display()
             notebook.connect('switch-page', switch)
