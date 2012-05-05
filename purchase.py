@@ -1251,17 +1251,12 @@ class PurchaseLine(ModelSQL, ModelView):
                     quantity += uom_obj.compute_qty(move.uom, move.quantity,
                             line.unit)
 
-        if line.purchase.invoices_ignored:
-            ignored_ids = set(
-                l.id for i in line.purchase.invoices_ignored for l in i.lines)
-        else:
-            ignored_ids = ()
+        skip_ids = set(l.id for i in line.purchase.invoices_recreated
+            for l in i.lines)
         for invoice_line in line.invoice_lines:
             if invoice_line.type != 'line':
                 continue
-            if ((invoice_line.invoice and
-                    invoice_line.invoice.state != 'cancel') or
-                invoice_line.id in ignored_ids):
+            if invoice_line.id not in skip_ids:
                 quantity -= uom_obj.compute_qty(invoice_line.unit,
                         invoice_line.quantity, line.unit)
         res['quantity'] = quantity
