@@ -1895,8 +1895,7 @@ class ModelSQL(ModelStorage):
                                     table_name + '.' + link_field)
                     for i in range(len(tables)):
                         if table_name in tables[i]:
-                            args = tables_args[tables[i]]
-                            del tables_args[tables[i]]
+                            args = tables_args.pop(tables[i], [])
                             tables[i] = tables[i].replace(table_name,
                                     table_name + '.' + link_field)
                             tables_args[tables[i]] = args
@@ -1931,8 +1930,7 @@ class ModelSQL(ModelStorage):
                                     table_name + '.' + link_field)
                     for i in range(len(tables)):
                         if table_name in tables[i]:
-                            args = tables_args[tables[i]]
-                            del tables_args[tables[i]]
+                            args = tables_args.pop(tables[i], [])
                             tables[i] = tables[i].replace(table_name,
                                     table_name + '.' + link_field)
                             tables_args[tables[i]] = args
@@ -1951,8 +1949,7 @@ class ModelSQL(ModelStorage):
                                     table_name2 + '.' + link_field2)
                     for i in range(1, len(tables)):
                         if table_name2 in tables[i]:
-                            args = tables_args[tables[i]]
-                            del tables_args[tables[i]]
+                            args = tables_args.pop(tables[i], [])
                             tables[i] = tables[i].replace(table_name2,
                                     table_name2 + '.' + link_field2)
                             tables_args[tables[i]] = args
