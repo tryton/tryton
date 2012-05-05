@@ -1554,7 +1554,7 @@ class ModelSQL(ModelStorage):
                             domain[i] = ('id', 'not in', ids2 + _rec_get(ids2,
                                 table, domain[i][0]))
                 else:
-                    if isinstance(domain[i][2], bool):
+                    if isinstance(domain[i][2], bool) or domain[i][2] is None:
                         relation_obj = pool.get(field.relation_name)
                         query1 = 'SELECT "' + field.origin + '" ' \
                                 'FROM "' + relation_obj._table + '" '\

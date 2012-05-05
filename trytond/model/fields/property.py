@@ -119,11 +119,13 @@ class Property(Function):
                 break
 
         if not default \
-                or (clause[2] is False and clause[1] in ['=', '!=']) \
+                or ((clause[2] is False or clause[2] is None)
+                    and clause[1] in ['=', '!=']) \
                 or (clause[1] in ['not like', 'not ilike', 'not in', '!=']):
             operator = 'in'  # default operator
-            if ((clause[2] is False and clause[1] == '=')
-                    or (clause[2] is not False
+            if (((clause[2] is False or clause[2] is None)
+                        and clause[1] == '=')
+                    or ((clause[2] is not False and clause[2] is not None)
                         and clause[1] in [
                             'not like', 'not ilike', 'not in', '!='])):
                 operator = 'not in'
@@ -161,7 +163,8 @@ class Property(Function):
             operator = operator % '%%s'
             return ("(CAST(SPLIT_PART(value,',',2) AS %s) IN ("
                 + ",".join((operator,) * len(clause[2])) + ")) ") % sql_type
-        elif clause[2] is False and clause[1] in ['=', '!=']:
+        elif ((clause[2] is False or clause[2] is None)
+                and clause[1] in ['=', '!=']):
             return "((cast(split_part(value,',',2) as %s) IS NULL " \
                 ") = %%s) " % sql_type
         elif clause[1] in ['not like', 'not ilike']:
@@ -179,6 +182,8 @@ class Property(Function):
         res = []
         if clause[1] in ('in', 'not in'):
             res.extend(clause[2])
+        elif clause[2] is None:
+            res.append(False)
         else:
             res.append(clause[2])
         return res
