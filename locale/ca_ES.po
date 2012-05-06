@@ -249,7 +249,7 @@ msgstr "Línea de previsió - Moviment"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
@@ -281,7 +281,7 @@ msgstr "Afegir línia de previsió sobre la base de dades anteriors."
 
 msgctxt "view:stock.forecast:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
@@ -289,7 +289,7 @@ msgstr "Previsió completa"
 
 msgctxt "view:stock.forecast:"
 msgid "Confirm"
-msgstr "Confirmar"
+msgstr "Confirma"
 
 msgctxt "view:stock.forecast:"
 msgid "Forecast"
@@ -315,7 +315,7 @@ msgstr "Complet"
 #, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
@@ -328,7 +328,7 @@ msgstr "Complet"
 #, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "cancel"
