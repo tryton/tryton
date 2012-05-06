@@ -281,7 +281,7 @@ msgstr "Decimals de la divisa"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
-msgstr "Dèbit"
+msgstr "Deure"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
@@ -408,7 +408,7 @@ msgstr "Decimals de la divisa"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
-msgstr "Dèbit"
+msgstr "Deure"
 
 msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
@@ -844,7 +844,7 @@ msgstr "Compte haver predeterminada"
 
 msgctxt "field:account.journal,debit_account:"
 msgid "Default Debit Account"
-msgstr "Compte Deu predeterminada"
+msgstr "Compte deure predeterminat"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
@@ -1130,7 +1130,7 @@ msgstr "Crear usuari"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1142,7 +1142,7 @@ msgstr "Data efectiva"
 
 msgctxt "field:account.move.line,debit:"
 msgid "Debit"
-msgstr "Deu"
+msgstr "Deure"
 
 msgctxt "field:account.move.line,id:"
 msgid "ID"
@@ -2594,7 +2594,7 @@ msgstr "Obrir línies de conciliació"
 #, fuzzy
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
-msgstr "Imprimir llibre diari"
+msgstr "Imprimeix el llibre diari"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -2621,17 +2621,15 @@ msgstr "Obrir balanç general"
 
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Obrir pla comptable"
+msgstr "Obre pla comptable"
 
-#, fuzzy
 msgctxt "model:account.open_income_statement.start,name:"
 msgid "Open Income Statement"
-msgstr "Obrir estat de pèrdues i ganacias"
+msgstr "Obre l'estat de pèrdues i guanys"
 
-#, fuzzy
 msgctxt "model:account.open_third_party_balance.start,name:"
 msgid "Open Third Party Balance"
-msgstr "Obrir balanç d'un tercer"
+msgstr "Obre el balanç de tercers"
 
 msgctxt "model:account.period,name:"
 msgid "Period"
@@ -2639,12 +2637,11 @@ msgstr "Període"
 
 msgctxt "model:account.print_general_ledger.start,name:"
 msgid "Print General Ledger"
-msgstr "Imprimir llibre major"
+msgstr "Imprimeix el llibre major"
 
-#, fuzzy
 msgctxt "model:account.print_trial_balance.start,name:"
 msgid "Print Trial Balance"
-msgstr "Imprimir balanç de summes i saldos"
+msgstr "Imprimeix el balanç de summes i saldos"
 
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
@@ -2926,19 +2923,19 @@ msgstr "Obrir balanç d'un tercer"
 
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
-msgstr "Imprimir Llibre diari"
+msgstr "Imprimeix el llibre diari"
 
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
 msgid "Print General Legder"
-msgstr "Imprimir llibre major"
+msgstr "Imprimeix el llibre major"
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
 msgid "Print Trial Balance"
-msgstr "Imprimir balanç de summes i saldos"
+msgstr "Imprimeix el balanç de summes i saldos"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr ""
+msgstr "Actualitza el pla de comptes des de les plantilles"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -3094,15 +3091,15 @@ msgstr "Tancar períodes"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
-msgstr "Imprimir llibre diari"
+msgstr "Imprimeix el llibre diari"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
 msgid "Print General Legder"
-msgstr "Imprimir llibre major"
+msgstr "Imprimveix el llibre major"
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
 msgid "Print Trial Balance"
-msgstr "Imprimir balanç de summes i saldos"
+msgstr "Imprimeix el balanç de summes i saldos"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
@@ -3112,7 +3109,6 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Informes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
 msgstr "Codis d'impost"
@@ -3251,73 +3247,61 @@ msgctxt "odt:account.general_ledger:"
 msgid "Balance"
 msgstr "Balanç"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Code"
 msgstr "Codi"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Company:"
-msgstr "Empresa:"
+msgstr "Companyia:"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Debit"
-msgstr "Dèbit"
+msgstr "Deure"
 
 msgctxt "odt:account.general_ledger:"
 msgid "From Period:"
-msgstr "a les"
+msgstr "Des del període:"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "General Ledger"
 msgstr "Llibre major"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Print Date:"
 msgstr "Data d'impressió:"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "State"
 msgstr "Estat"
 
 msgctxt "odt:account.general_ledger:"
 msgid "To Period:"
-msgstr "a les"
+msgstr "Al període:"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "Total"
 msgstr "Total"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "User:"
 msgstr "Usuari:"
 
-#, fuzzy
 msgctxt "odt:account.general_ledger:"
 msgid "at"
-msgstr "a les"
+msgstr "a"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "/"
@@ -3333,7 +3317,7 @@ msgstr "Empresa:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Date:"
@@ -3341,7 +3325,7 @@ msgstr "Data:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Debit"
-msgstr "Deu"
+msgstr "Deure"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Draft"
@@ -3405,12 +3389,12 @@ msgstr "Empresa:"
 #, fuzzy
 msgctxt "odt:account.third_party_balance:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
 #, fuzzy
 msgctxt "odt:account.third_party_balance:"
 msgid "Debit"
-msgstr "Dèbit"
+msgstr "Deure"
 
 #, fuzzy
 msgctxt "odt:account.third_party_balance:"
@@ -3460,12 +3444,12 @@ msgstr "Empresa:"
 #, fuzzy
 msgctxt "odt:account.trial_balance:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
 #, fuzzy
 msgctxt "odt:account.trial_balance:"
 msgid "Debit"
-msgstr "Dèbit"
+msgstr "Deure"
 
 msgctxt "odt:account.trial_balance:"
 msgid "From Period:"
@@ -3560,19 +3544,19 @@ msgstr "Vista"
 
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Credit - Debit"
-msgstr "Haver-hi - Ha de"
+msgstr "Haver - Deure"
 
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Debit - Credit"
-msgstr "Ha de - Haver-hi"
+msgstr "Deure - Haver"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Credit - Debit"
-msgstr "Haver-hi - Ha de"
+msgstr "Haver - Deure"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Debit - Credit"
-msgstr "Ha de - Haver-hi"
+msgstr "Deure - Haver"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
@@ -3580,7 +3564,7 @@ msgstr "Tancar"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
@@ -3588,7 +3572,7 @@ msgstr "Tancar"
 
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 msgctxt "selection:account.move,state:"
 msgid "Draft"
@@ -3811,7 +3795,7 @@ msgstr "Períodes"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Re-Open"
-msgstr "Reobrir"
+msgstr "Reobre"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Re-Open Fiscal Year"
@@ -3885,11 +3869,11 @@ msgstr "Apunts comptables"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Deu"
+msgstr "Deure"
 
 msgctxt "view:account.move.line:"
 msgid "General Information"
@@ -3903,15 +3887,13 @@ msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
 msgstr "Obrir diari"
 
-#, fuzzy
 msgctxt "view:account.move.open_reconcile_lines.start:"
 msgid "Open Reconcile Lines"
-msgstr "Obrir línies de conciliació"
+msgstr "Obre les línies de conciliació"
 
-#, fuzzy
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
-msgstr "Imprimir llibre diari"
+msgstr "Imprimeix el llibre diari"
 
 msgctxt "view:account.move.reconcile_lines.writeoff:"
 msgid "Write-Off"
@@ -3939,7 +3921,7 @@ msgstr "Esborrany"
 
 msgctxt "view:account.move:"
 msgid "Post"
-msgstr "Confirmar"
+msgstr "Confirma"
 
 #, fuzzy
 msgctxt "view:account.open_aged_balance.start:"
@@ -3957,17 +3939,15 @@ msgstr "Obrir balanç general"
 
 msgctxt "view:account.open_chart.start:"
 msgid "Open Chart of Accounts"
-msgstr "Obrir pla comptable"
+msgstr "Obre el pla comptable"
 
-#, fuzzy
 msgctxt "view:account.open_income_statement.start:"
 msgid "Open Income Statement"
-msgstr "Obrir estat de pèrdues i ganacias"
+msgstr "Obre l'estat de pèrdues i guanys"
 
-#, fuzzy
 msgctxt "view:account.open_third_party_balance.start:"
 msgid "Open Third Party Balance"
-msgstr "Obrir balanç d'un tercer"
+msgstr "Obre el balanç de tercers"
 
 msgctxt "view:account.period:"
 msgid "Period"
@@ -3979,23 +3959,20 @@ msgstr "Períodes"
 
 msgctxt "view:account.print_general_ledger.start:"
 msgid "Print General Ledger"
-msgstr "Imprimir llibre major"
+msgstr "Imprimeix el llibre major"
 
-#, fuzzy
 msgctxt "view:account.print_trial_balance.start:"
 msgid "Print Trial Balance"
-msgstr "Imprimir balanç de summes i saldos"
+msgstr "Imprimeix el balanç de summes i saldos"
 
 msgctxt "view:account.tax.code.open_chart.start:"
 msgid "Open Chart of Tax Codes"
-msgstr "Obrir pla codis d'impost"
+msgstr "Obre el pla codis d'impost"
 
-#, fuzzy
 msgctxt "view:account.tax.code.template:"
 msgid "Children"
 msgstr "Fills"
 
-#, fuzzy
 msgctxt "view:account.tax.code.template:"
 msgid "Description"
 msgstr "Descripció"
@@ -4169,7 +4146,7 @@ msgstr "Crear"
 #, fuzzy
 msgctxt "wizard_button:account.create_chart,account,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.create_chart,properties,create_properties:"
 msgid "Create"
@@ -4178,17 +4155,17 @@ msgstr "Crear"
 #, fuzzy
 msgctxt "wizard_button:account.create_chart,properties,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.create_chart,start,account:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:account.create_chart,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.fiscalyear.close,start,close:"
@@ -4198,39 +4175,39 @@ msgstr "Tancat"
 #, fuzzy
 msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.open_reconcile_lines,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.open_reconcile_lines,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.print_general_journal,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.print_general_journal,start,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Imprimeix"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
@@ -4239,89 +4216,80 @@ msgstr "Conciliar"
 #, fuzzy
 msgctxt "wizard_button:account.open_aged_balance,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.open_aged_balance,start,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Imprimeix"
 
 #, fuzzy
 msgctxt "wizard_button:account.open_balance_sheet,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.open_balance_sheet,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
-#, fuzzy
 msgctxt "wizard_button:account.open_income_statement,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.open_income_statement,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
-#, fuzzy
 msgctxt "wizard_button:account.open_third_party_balance,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.open_third_party_balance,start,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Imprimeix"
 
-#, fuzzy
 msgctxt "wizard_button:account.print_general_ledger,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.print_general_ledger,start,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Imprimeix"
 
-#, fuzzy
 msgctxt "wizard_button:account.print_trial_balance,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.print_trial_balance,start,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Imprimeix"
 
-#, fuzzy
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
-#, fuzzy
 msgctxt "wizard_button:account.update_chart,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.update_chart,start,update:"
 msgid "Update"
-msgstr "Actualitzar"
+msgstr "Actualitza"
 
-#, fuzzy
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
