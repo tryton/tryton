@@ -112,7 +112,7 @@ msgstr "No pot restablir a esborrany un moviment generat per una compra."
 
 msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion!"
-msgstr "Ha de cancel·lar l'albarán intern \"%s\" abans d'eliminar-ho."
+msgstr "Ha de cancel·lar l'albarà intern \"%s\" abans d'eliminar-ho."
 
 msgctxt "error:stock.shipment.out.return.create:"
 msgid "The shipment with code %s is not yet sent."
@@ -194,23 +194,23 @@ msgstr "Nom del camp"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Seqüència albarán devolució proveïdor"
+msgstr "Seqüència albarà devolució proveïdor"
 
 msgctxt "field:stock.configuration,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Seqüència albarán proveïdor"
+msgstr "Seqüència albarà proveïdor"
 
 msgctxt "field:stock.configuration,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Seqüència albarán intern"
+msgstr "Seqüència albarà intern"
 
 msgctxt "field:stock.configuration,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Seqüència albarán devolució client"
+msgstr "Seqüència albarà devolució client"
 
 msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Seqüència albarán client"
+msgstr "Seqüència albarà client"
 
 msgctxt "field:stock.configuration,write_date:"
 msgid "Write Date"
@@ -1936,7 +1936,7 @@ msgstr "Es cancel·laran tots els moviments generats"
 
 msgctxt "view:stock.inventory:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.inventory:"
 msgid "Complete Inventory"
@@ -1944,7 +1944,7 @@ msgstr "Inventari complet"
 
 msgctxt "view:stock.inventory:"
 msgid "Confirm"
-msgstr "Confirmar"
+msgstr "Confirma"
 
 msgctxt "view:stock.inventory:"
 msgid "Inventories"
@@ -1956,7 +1956,7 @@ msgstr "Inventari"
 
 msgctxt "view:stock.inventory:"
 msgid "Re-Open"
-msgstr "Reobrir"
+msgstr "Reobre"
 
 msgctxt "view:stock.location:"
 msgid "Location"
@@ -1976,7 +1976,7 @@ msgstr "Existències del producte"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.move:"
 msgid "Move"
@@ -2036,11 +2036,11 @@ msgstr "No es poden reservar aquests productes:"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Assign"
-msgstr "Assignar"
+msgstr "Assigna"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Done"
@@ -2072,7 +2072,7 @@ msgstr "En espera"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Done"
@@ -2124,11 +2124,11 @@ msgstr "No es poden reservar aquests productes:"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Assign"
-msgstr "Assignar"
+msgstr "Assigna"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Done"
@@ -2176,7 +2176,7 @@ msgstr "No es poden reservar aquests productes:"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Customer Return Shipment"
@@ -2217,11 +2217,11 @@ msgstr "Restablir a esborrany"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Assign"
-msgstr "Assignar"
+msgstr "Assigna"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Customer Shipment"
@@ -2278,27 +2278,27 @@ msgstr "En espera"
 #, fuzzy
 msgctxt "wizard_button:product.by_location,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:product.by_location,start,open:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:stock.products_by_locations,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:stock.products_by_locations,start,open:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
@@ -2308,7 +2308,7 @@ msgstr "Forçar l'assignació"
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
@@ -2318,7 +2318,7 @@ msgstr "Forçar l'assignació"
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
