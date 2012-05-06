@@ -636,9 +636,9 @@ msgstr "_General"
 #, fuzzy
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
