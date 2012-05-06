@@ -320,7 +320,7 @@ msgstr "Regla d'estoc mínim"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
@@ -402,12 +402,12 @@ msgstr "Crear"
 #, fuzzy
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
@@ -416,7 +416,7 @@ msgstr "Continuar"
 #, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
