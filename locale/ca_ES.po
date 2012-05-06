@@ -320,7 +320,7 @@ msgstr "Extractes bancaris"
 
 msgctxt "view:account.statement:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:account.statement:"
 msgid "Move Lines"
@@ -333,7 +333,7 @@ msgstr "Informació addicional"
 
 msgctxt "view:account.statement:"
 msgid "Post"
-msgstr "Confirmar"
+msgstr "Confirma"
 
 msgctxt "view:account.statement:"
 msgid "Reset to Draft"
