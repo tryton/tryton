@@ -1007,12 +1007,10 @@ msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
 msgstr "Terminis de pagament"
 
-#, fuzzy
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "model:ir.action,name:print"
 msgid "Invoice"
 msgstr "Factura"
@@ -1569,27 +1567,22 @@ msgctxt "view:account.invoice:"
 msgid "_Reset to Draft"
 msgstr "_Restablir a esborrany"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr "Quantitat en la divisa secundària"
+msgstr "Import en la divisa secundària"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Dèbit"
+msgstr "Deure"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Lines to Pay"
 msgstr "Línies a pagar"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Payment Lines"
 msgstr "Línies de pagament"
@@ -1598,41 +1591,36 @@ msgctxt "view:party.party:"
 msgid "Payment Terms"
 msgstr "Terminis de pagament"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "Haver-hi"
+msgstr "Haver"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.invoice.print,warning,print_:"
 msgid "Print"
-msgstr "Imprimir"
+msgstr "Imprimeix"
