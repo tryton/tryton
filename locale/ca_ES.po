@@ -490,38 +490,38 @@ msgstr "Treballs"
 #, fuzzy
 msgctxt "wizard_button:timesheet.hours_employee.open,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.hours_employee.open,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr "Afegir"
+msgstr "Afegeix"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.work.open,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.work.open,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.work.open2,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:timesheet.work.open2,start,open_:"
 msgid "Open"
-msgstr "Obrir"
+msgstr "Obre"
