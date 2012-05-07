@@ -1,3 +1,6 @@
+Version 2.0.1 - 2012-05-07
+* Bug fixes (see mercurial logs for details)
+
 Version 2.0.0 - 2011-04-27
 * Bug fixes (see mercurial logs for details)
 * Add field currency_date to set the date for the rate calculation
