@@ -10,7 +10,7 @@
     'name_fr_FR': 'Tableau de bord',
     'name_nl_NL': 'Prikbord',
     'name_ru_RU': 'Информационная панель',
-    'version': '2.2.1',
+    'version': '2.2.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
