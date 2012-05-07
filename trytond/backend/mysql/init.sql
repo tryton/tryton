@@ -45,7 +45,7 @@ CREATE TABLE ir_translation (
     src TEXT,
     src_md5 VARCHAR(32) NOT NULL,
     name VARCHAR(255) NOT NULL,
-    res_id BIGINT NOT NULL DEFAULT 0,
+    res_id BIGINT NOT NULL,
     value TEXT,
     type VARCHAR(255),
     module VARCHAR(255),

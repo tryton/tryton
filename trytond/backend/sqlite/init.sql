@@ -24,7 +24,7 @@ CREATE TABLE ir_ui_view (
     "type" VARCHAR,
     arch TEXT,
     field_childs VARCHAR,
-    priority INTEGER DEFAULT 0
+    priority INTEGER
 );
 
 CREATE TABLE ir_ui_menu (
@@ -40,7 +40,7 @@ CREATE TABLE ir_translation (
     src TEXT,
     src_md5 VARCHAR(32) NOT NULL,
     name VARCHAR,
-    res_id INTEGER DEFAULT 0,
+    res_id INTEGER,
     value TEXT,
     "type" VARCHAR,
     module VARCHAR,

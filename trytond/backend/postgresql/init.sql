@@ -32,7 +32,7 @@ CREATE TABLE ir_ui_view (
     "type" VARCHAR,
     arch TEXT NOT NULL,
     field_childs VARCHAR,
-    priority INTEGER NOT NULL DEFAULT 0,
+    priority INTEGER NOT NULL,
     PRIMARY KEY(id)
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE ir_translation (
     src TEXT,
     src_md5 VARCHAR(32) NOT NULL,
     name VARCHAR NOT NULL,
-    res_id INTEGER NOT NULL DEFAULT 0,
+    res_id INTEGER NOT NULL,
     value TEXT,
     "type" VARCHAR,
     module VARCHAR,
