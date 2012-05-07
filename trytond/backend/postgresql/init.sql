@@ -55,7 +55,7 @@ CREATE TABLE ir_translation (
     src TEXT,
     src_md5 VARCHAR(32) NOT NULL,
     name VARCHAR NOT NULL,
-    res_id INTEGER NOT NULL,
+    res_id INTEGER,
     value TEXT,
     "type" VARCHAR,
     module VARCHAR,
