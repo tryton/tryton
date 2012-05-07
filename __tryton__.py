@@ -6,7 +6,7 @@
     'name_es_CO': 'Ventas',
     'name_es_ES': 'Venta',
     'name_fr_FR': 'Vente',
-    'version': '1.8.4',
+    'version': '1.8.5',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
