@@ -76,12 +76,13 @@ class UIMenu(ModelSQL, ModelView):
         order_field='name'), 'get_rec_name', searcher='search_rec_name')
     icon = fields.Selection('list_icons', 'Icon', translate=False)
     action = fields.Function(fields.Reference('Action',
-        selection=[
-            ('ir.action.report', 'ir.action.report'),
-            ('ir.action.act_window', 'ir.action.act_window'),
-            ('ir.action.wizard', 'ir.action.wizard'),
-            ('ir.action.url', 'ir.action.url'),
-        ]), 'get_action', setter='set_action')
+            selection=[
+                ('', ''),
+                ('ir.action.report', 'ir.action.report'),
+                ('ir.action.act_window', 'ir.action.act_window'),
+                ('ir.action.wizard', 'ir.action.wizard'),
+                ('ir.action.url', 'ir.action.url'),
+                ]), 'get_action', setter='set_action')
     active = fields.Boolean('Active')
 
     def __init__(self):
