@@ -149,10 +149,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 ))
         self._buttons.update({
                 'cancel': {
-                    'invisible': ((Eval('state') == 'cancel')
-                        | (~Eval('state').in_(['draft', 'quotation'])
-                            & (Eval('invoice_state') != 'exception')
-                            & (Eval('shipment_state') != 'exception'))),
+                    'invisible': ~Eval('state').in_(['draft', 'quotation']),
                     },
                 'draft': {
                     'invisible': Eval('state') != 'quotation',
@@ -697,6 +694,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
         invoice_line_obj = pool.get('account.invoice.line')
         purchase_line_obj = pool.get('purchase.line')
 
+        if purchase.invoice_method == 'manual':
+            return
+
         if not purchase.party.account_payable:
             self.raise_user_error('missing_account_payable',
                     error_args=(purchase.party.rec_name,))
@@ -738,7 +738,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
             line_obj.create_move(line)
 
     def is_done(self, purchase):
-        return (purchase.invoice_state == 'paid'
+        return ((purchase.invoice_state == 'paid'
+                or purchase.invoice_method == 'manual')
             and purchase.shipment_state == 'received')
 
     def delete(self, ids):
