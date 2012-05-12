@@ -181,13 +181,16 @@ class Sale(Workflow, ModelSQL, ModelView):
                 ('draft', 'cancel'),
                 ('quotation', 'cancel'),
                 ('quotation', 'draft'),
+                ('cancel', 'draft'),
                 ))
         self._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'quotation']),
                     },
                 'draft': {
-                    'invisible': Eval('state') != 'quotation',
+                    'invisible': ~Eval('state').in_(['cancel', 'quotation']),
+                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
+                        'tryton-go-previous'),
                     },
                 'quote': {
                     'invisible': Eval('state') != 'draft',
