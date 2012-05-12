@@ -1107,11 +1107,11 @@ msgstr "Línies de venda"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 msgctxt "view:sale.sale:"
 msgid "Confirm"
-msgstr "Confirmar"
+msgstr "Confirma"
 
 msgctxt "view:sale.sale:"
 msgid "Draft"
@@ -1177,19 +1177,19 @@ msgstr "Moviments"
 #, fuzzy
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
 
 #, fuzzy
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancel·la"
 
 #, fuzzy
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "Ok"
-msgstr "Acceptar"
+msgstr "Accepta"
