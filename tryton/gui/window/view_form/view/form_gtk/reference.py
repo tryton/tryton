@@ -116,7 +116,10 @@ class Reference(Many2One):
     def set_value(self, record, field):
         if not self.get_model():
             value = self.wid_text.get_text()
-            return field.set_client(record, ('', value))
+            if not value:
+                field.set_client(record, None)
+            else:
+                return field.set_client(record, ('', value))
         return super(Reference, self).set_value(record, field)
 
     def set_text(self, value):
