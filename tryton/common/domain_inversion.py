@@ -3,6 +3,7 @@
 
 import operator
 import types
+import datetime
 
 def in_(a, b):
     if isinstance(a, (list, tuple)):
@@ -52,7 +53,18 @@ def eval_leaf(part, context, boolop=operator.and_):
         # We should consider that other domain inversion will set a correct
         # value to this field
         return True
-    return OPERATORS[operand](context[field], value)
+    context_field = context[field]
+    if isinstance(context_field, datetime.date) and not value:
+        if isinstance(context_field, datetime.datetime):
+            value = datetime.datetime.min
+        else:
+            value = datetime.date.min
+    if isinstance(value, datetime.date) and not context_field:
+        if isinstance(value, datetime.datetime):
+            context_field = datetime.datetime.min
+        else:
+            context_field = datetime.date.min
+    return OPERATORS[operand](context_field, value)
 
 def inverse_leaf(domain):
     if domain in ('AND', 'OR'):
@@ -395,6 +407,15 @@ def test_evaldomain():
     domain = [['x', '>', 5]]
     assert eval_domain(domain, {'x': 6})
     assert not eval_domain(domain, {'x': 4})
+
+    domain = [['x', '>', None]]
+    assert eval_domain(domain, {'x': datetime.date.today()})
+    assert eval_domain(domain, {'x': datetime.datetime.now()})
+
+    domain = [['x', '<', datetime.date.today()]]
+    assert eval_domain(domain, {'x': None})
+    domain = [['x', '<', datetime.datetime.now()]]
+    assert eval_domain(domain, {'x': None})
 
     domain = [['x', 'in', [3, 5]]]
     assert eval_domain(domain, {'x': 3})
