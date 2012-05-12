@@ -2035,8 +2035,8 @@ class ModelSQL(ModelStorage):
                         'order': otype,
                         })
                 else:
-                    order_by.append('"' + table_name + '".' + field_name + \
-                            ' ' + otype)
+                    order_by.append('"%s"."%s" %s'
+                        % (table_name, field_name, otype))
                 return order_by, tables, tables_args
 
         if field in self._inherit_fields.keys():
