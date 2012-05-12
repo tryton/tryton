@@ -184,10 +184,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                 ))
         self._buttons.update({
                 'cancel': {
-                    'invisible': ((Eval('state') == 'cancel')
-                        | (~Eval('state').in_(['draft', 'quotation'])
-                            & (Eval('invoice_state') != 'exception')
-                            & (Eval('shipment_state') != 'exception'))),
+                    'invisible': ~Eval('state').in_(['draft', 'quotation']),
                     },
                 'draft': {
                     'invisible': Eval('state') != 'quotation',
@@ -738,6 +735,9 @@ class Sale(Workflow, ModelSQL, ModelView):
         invoice_line_obj = pool.get('account.invoice.line')
         sale_line_obj = pool.get('sale.line')
 
+        if sale.invoice_method == 'manual':
+            return
+
         if not sale.party.account_receivable:
             self.raise_user_error('missing_account_receivable',
                     error_args=(sale.party.rec_name,))
@@ -812,6 +812,9 @@ class Sale(Workflow, ModelSQL, ModelView):
         move_obj = pool.get('stock.move')
         sale_line_obj = pool.get('sale.line')
 
+        if sale.shipment_method == 'manual':
+            return
+
         moves = self._get_move_sale_line(sale, shipment_type)
         if not moves:
             return
@@ -849,7 +852,10 @@ class Sale(Workflow, ModelSQL, ModelView):
         return shipments
 
     def is_done(self, sale):
-        return sale.invoice_state == 'paid' and sale.shipment_state == 'sent'
+        return ((sale.invoice_state == 'paid'
+                or sale.invoice_method == 'manual')
+            and (sale.shipment_state == 'sent'
+                or sale.shipment_method == 'manual'))
 
     def delete(self, ids):
         if isinstance(ids, (int, long)):
@@ -1429,8 +1435,17 @@ class SaleLine(ModelSQL, ModelView):
             return
         if (shipment_type == 'out') != (line.quantity >= 0):
             return
+
+        if line.sale.shipment_method == 'order':
+            quantity = abs(line.quantity)
+        else:
+            quantity = 0.0
+            for invoice_line in line.invoice_lines:
+                if invoice_line.invoice.state in ('open', 'paid'):
+                    quantity += uom_obj.compute_qty(invoice_line.unit,
+                        invoice_line.quantity, line.unit)
+
         skip_ids = set(x.id for x in line.moves_recreated)
-        quantity = abs(line.quantity)
         for move in line.moves:
             if move.id not in skip_ids:
                 quantity -= uom_obj.compute_qty(move.uom, move.quantity,
