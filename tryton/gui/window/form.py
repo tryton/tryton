@@ -395,19 +395,24 @@ class Form(SignalEvent, TabContent):
         return True
 
     def sig_action(self, widget):
-        self.buttons['action'].props.active = True
+        if self.buttons['action'].props.sensitive:
+            self.buttons['action'].props.active = True
 
     def sig_print(self, widget):
-        self.buttons['print'].props.active = True
+        if self.buttons['print'].props.sensitive:
+            self.buttons['print'].props.active = True
 
     def sig_print_open(self, widget):
-        self.buttons['open'].props.active = True
+        if self.buttons['open'].props.sensitive:
+            self.buttons['open'].props.active = True
 
     def sig_print_email(self, widget):
-        self.buttons['email'].props.active = True
+        if self.buttons['email'].props.sensitive:
+            self.buttons['email'].props.active = True
 
     def sig_relate(self, widget):
-        self.buttons['relate'].props.active = True
+        if self.buttons['relate'].props.sensitive:
+            self.buttons['relate'].props.active = True
 
     def sig_search(self, widget):
         search_container = self.screen.screen_container
