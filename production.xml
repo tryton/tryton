@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_production_admin">
+            <field name="name">Production Administration</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_production_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_production_admin"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_production_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_production_admin"/>
+        </record>
+
+        <record model="res.group" id="group_production">
+            <field name="name">Production</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_production">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_production"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_trigger_group_production">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <menuitem name="Production" id="menu_production" sequence="10"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_production_group_production">
+            <field name="menu" ref="menu_production"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <menuitem name="Configuration" parent="menu_production"
+            id="menu_configuration"
+            sequence="0" icon="tryton-preferences"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_configuration_group_production_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_production_admin"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_assign">
+            <field name="name">Assign Production</field>
+            <field name="wiz_name">production.assign</field>
+            <field name="model">production</field>
+        </record>
+
+        <record model="ir.ui.view" id="production_view_list">
+            <field name="model">production</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Productions">
+                    <field name="product"/>
+                    <field name="code"/>
+                    <field name="reference"/>
+                    <field name="planned_date"/>
+                    <field name="effective_date"/>
+                    <field name="state"/>
+                    <field name="create_date" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="production_view_form">
+            <field name="model">production</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Production">
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="planned_date"/>
+                    <field name="planned_date"/>
+                    <label name="effective_date"/>
+                    <field name="effective_date"/>
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="bom"/>
+                    <field name="bom"/>
+                    <label name="quantity"/>
+                    <field name="quantity"/>
+                    <label name="uom"/>
+                    <field name="uom"/>
+                    <notebook>
+                        <page string="Lines" id="lines">
+                            <field name="inputs" colspan="2"/>
+                            <field name="outputs" colspan="2"/>
+                        </page>
+                        <page string="Other Info" id="other">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <newline/>
+                            <label name="warehouse"/>
+                            <field name="warehouse"/>
+                            <label name="location"/>
+                            <field name="location"/>
+                            <label name="cost"/>
+                            <field name="cost"/>
+                        </page>
+                    </notebook>
+                    <group col="4" colspan="4" id="state_buttons">
+                        <label name="state"/>
+                        <field name="state"/>
+                        <group col="6" colspan="2" id="buttons">
+                            <button name="cancel" type="object" string="Cancel"
+                                icon="tryton-cancel"/>
+                            <button name="draft" type="object" string="Draft"/>
+                            <button name="wait" type="object" string="Wait"/>
+                            <button name="%(wizard_assign)d" type="action"
+                                string="Assign"
+                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(stock.group_stock)d, Eval('groups', [])))}"
+                                icon="tryton-go-next"/>
+                            <button name="run" type="object" string="Run"
+                                icon="tryton-go-next"/>
+                            <button name="done" type="object" string="Done"
+                                icon="tryton-go-next"/>
+                        </group>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_production_list">
+            <field name="name">Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_list"/>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <menuitem parent="menu_production" sequence="10"
+            action="act_production_list" id="menu_production_list"/>
+
+        <record model="ir.action.act_window" id="act_production_request">
+            <field name="name">Request Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'request')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_list"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+        <menuitem parent="menu_production_list" sequence="10"
+            action="act_production_request" id="menu_production_request"/>
+
+        <record model="ir.action.act_window" id="act_production_draft">
+            <field name="name">Draft Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_draft_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_list"/>
+            <field name="act_window" ref="act_production_draft"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_draft_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_draft"/>
+        </record>
+        <menuitem parent="menu_production_list" sequence="20"
+            action="act_production_draft" id="menu_production_draft"/>
+
+        <record model="ir.action.act_window" id="act_production_waiting">
+            <field name="name">Waiting Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'waiting')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_waiting_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_list"/>
+            <field name="act_window" ref="act_production_waiting"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_waiting_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_waiting"/>
+        </record>
+        <menuitem parent="menu_production_list" sequence="30"
+            action="act_production_waiting" id="menu_production_waiting"/>
+
+        <record model="ir.action.act_window" id="act_production_assigned">
+            <field name="name">Assigned Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'assigned')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_assigned_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_list"/>
+            <field name="act_window" ref="act_production_assigned"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_assigned_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_assigned"/>
+        </record>
+        <menuitem parent="menu_production_list" sequence="40"
+            action="act_production_assigned" id="menu_production_assigned"/>
+
+        <record model="ir.action.act_window" id="act_production_running">
+            <field name="name">Running Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'running')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_running_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_list"/>
+            <field name="act_window" ref="act_production_running"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_running_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_running"/>
+        </record>
+        <menuitem parent="menu_production_list" sequence="50"
+            action="act_production_running" id="menu_production_running"/>
+
+        <record model="ir.sequence.type" id="sequence_type_production">
+            <field name="name">Production</field>
+            <field name="code">production</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_production_group_admin">
+            <field name="sequence_type" ref="sequence_type_production"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_production_group_production_admin">
+            <field name="sequence_type" ref="sequence_type_production"/>
+            <field name="group" ref="group_production_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_production">
+            <field name="name">Production</field>
+            <field name="code">production</field>
+        </record>
+
+        <record model="ir.model.access" id="access_production">
+            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_production_group_production">
+            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="group" ref="group_production"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_production">
+            <field name="model" search="[('model', '=', 'production')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_production">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'production')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_cancel_button">
+            <field name="name">cancel</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_cancel_button_group_production">
+            <field name="button" ref="production_cancel_button"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_draft_button">
+            <field name="name">draft</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_draft_button_group_production">
+            <field name="button" ref="production_draft_button"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_wait_button">
+            <field name="name">wait</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_wait_button_group_production">
+            <field name="button" ref="production_wait_button"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_run_button">
+            <field name="name">run</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_run_button_group_production">
+            <field name="button" ref="production_run_button"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_done_button">
+            <field name="name">done</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_done_button_group_production">
+            <field name="button" ref="production_done_button"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_assign_try_button">
+            <field name="name">assign_try</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_assign_try_button_group_production">
+            <field name="button" ref="production_assign_try_button"/>
+            <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="ir.model.button" id="production_assign_force_button">
+            <field name="name">assign_force</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="production_assign_force_button_group_production">
+            <field name="button" ref="production_assign_force_button"/>
+            <field name="group" ref="stock.group_stock_force_assignment"/>
+        </record>
+
+        <record model="ir.ui.view" id="assign_failed_view_form">
+            <field name="model">production.assign.failed</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Unable to Assign" col="2">
+                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
+                    <separator string="Unable to assign those products:"
+                        id="unable"/>
+                    <field name="moves" colspan="2"
+                        view_ids="stock.move_view_tree_simple"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
