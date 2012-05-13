@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="lot_view_form">
+            <field name="model">stock.lot</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Lot">
+                    <label name="number"/>
+                    <field name="number"/>
+                    <label name="product"/>
+                    <field name="product"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="lot_view_tree">
+            <field name="model">stock.lot</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Lots">
+                    <field name="number"/>
+                    <field name="product"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_lot_form">
+            <field name="name">Lots</field>
+            <field name="res_model">stock.lot</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_lot_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="lot_view_tree"/>
+            <field name="act_window" ref="act_lot_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_lot_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="lot_view_form"/>
+            <field name="act_window" ref="act_lot_form"/>
+        </record>
+        <menuitem parent="stock.menu_stock" sequence="45"
+            action="act_lot_form" id="menu_lot_form"/>
+
+        <record model="ir.model.access" id="access_lot">
+            <field name="model" search="[('model', '=', 'stock.lot')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_lot_group_stock">
+            <field name="model" search="[('model', '=', 'stock.lot')]"/>
+            <field name="group" ref="stock.group_stock"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="stock.lot.type" id="type_supplier">
+            <field name="code">supplier</field>
+            <field name="name">Supplier</field>
+        </record>
+        <record model="stock.lot.type" id="type_customer">
+            <field name="code">customer</field>
+            <field name="name">Customer</field>
+        </record>
+        <record model="stock.lot.type" id="type_lost_found">
+            <field name="code">lost_found</field>
+            <field name="name">Lost and Found</field>
+        </record>
+        <record model="stock.lot.type" id="type_storage">
+            <field name="code">storage</field>
+            <field name="name">Storage</field>
+        </record>
+        <record model="stock.lot.type" id="type_production">
+            <field name="code">production</field>
+            <field name="name">Production</field>
+        </record>
+
+
+        <record model="ir.model.access" id="access_lot_type">
+            <field name="model" search="[('model', '=', 'stock.lot.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_form">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/form/field[@name='company']"
+                        position="after">
+                        <label name="lot"/>
+                        <field name="lot"/>
+                        <newline/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="move_view_tree">
+            <field name="model">stock.move</field>
+            <field name="inherit" ref="stock.move_view_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath expr="/tree/field[@name='product']"
+                        position="after">
+                        <field name="lot"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</tryton>
