@@ -23,7 +23,7 @@ Install stock_lot Module::
 
     >>> Module = Model.get('ir.module.module')
     >>> modules = Module.find([('name', '=', 'stock_lot')])
-    >>> Module.button_install([x.id for x in modules], config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -118,8 +118,7 @@ Add two shipment lines of same product::
 
 Set the shipment state to waiting::
 
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'waiting', config.context)
+    >>> ShipmentOut.wait([shipment_out.id], config.context)
     >>> shipment_out.reload()
     >>> len(shipment_out.outgoing_moves)
     2
@@ -131,8 +130,7 @@ Assign the shipment with 2 lines of 7 products::
     >>> for move in shipment_out.inventory_moves:
     ...     move.quantity = 7
     >>> shipment_out.save()
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'force_assign', config.context)
+    >>> ShipmentOut.assign_force([shipment_out.id], config.context)
     >>> shipment_out.reload()
     >>> shipment_out.state == 'assigned'
     True
@@ -148,8 +146,7 @@ Set 2 lots::
 
 Pack the shipment::
 
-    >>> ShipmentOut.workflow_trigger_validate(
-    ...     shipment_out.id, 'packed', config.context)
+    >>> ShipmentOut.pack([shipment_out.id], config.context)
     >>> shipment_out.reload()
     >>> shipment_out.state == 'packed'
     True

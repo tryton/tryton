@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import Model, ModelView, ModelSQL, fields
+from trytond.model import Model, ModelView, ModelSQL, Workflow, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool
 
@@ -87,55 +87,58 @@ ShipmentIn()
 class ShipmentOut(Model):
     _name = 'stock.shipment.out'
 
-    def wkf_packed(self, shipment):
+    @ModelView.button
+    @Workflow.transition('packed')
+    def pack(self, ids):
         pool = Pool()
         uom_obj = pool.get('product.uom')
         move_obj = pool.get('stock.move')
 
-        super(ShipmentOut, self).wkf_packed(shipment)
+        super(ShipmentOut, self).pack(ids)
 
-        # Reset function field cache
-        shipment = self.browse(shipment.id)
+        shipments = self.browse(ids)
 
         # Unassign move to allow update
-        move_obj.write([x.id for x in shipment.outgoing_moves
-            if x.state != 'cancel'], {
+        move_obj.write([m.id for s in shipments for m in s.outgoing_moves
+                if m.state not in ('done', 'cancel')], {
                 'state': 'draft',
                 })
 
-        outgoing_by_product = {}
-        for move in shipment.outgoing_moves:
-            outgoing_by_product.setdefault(move.product.id, []).append(move)
-        for move in shipment.inventory_moves:
-            if not move.lot:
-                continue
-            quantity = uom_obj.compute_qty(move.uom, move.quantity,
-                move.product.default_uom, round=False)
-            outgoing_moves = outgoing_by_product[move.product.id]
-            while outgoing_moves and quantity > 0:
-                out_move = outgoing_moves.pop()
-                out_quantity = uom_obj.compute_qty(out_move.uom,
-                    out_move.quantity, out_move.product.default_uom,
-                    round=False)
-                if quantity < out_quantity:
-                    outgoing_moves.append(move_obj.browse(
-                            move_obj.copy(out_move.id, default={
-                                    'quantity': out_quantity - quantity,
-                                    })))
+        for shipment in shipments:
+            outgoing_by_product = {}
+            for move in shipment.outgoing_moves:
+                outgoing_by_product.setdefault(move.product.id,
+                    []).append(move)
+            for move in shipment.inventory_moves:
+                if not move.lot:
+                    continue
+                quantity = uom_obj.compute_qty(move.uom, move.quantity,
+                    move.product.default_uom, round=False)
+                outgoing_moves = outgoing_by_product[move.product.id]
+                while outgoing_moves and quantity > 0:
+                    out_move = outgoing_moves.pop()
+                    out_quantity = uom_obj.compute_qty(out_move.uom,
+                        out_move.quantity, out_move.product.default_uom,
+                        round=False)
+                    if quantity < out_quantity:
+                        outgoing_moves.append(move_obj.browse(
+                                move_obj.copy(out_move.id, default={
+                                        'quantity': out_quantity - quantity,
+                                        })))
+                        move_obj.write(out_move.id, {
+                                'quantity': quantity,
+                                })
                     move_obj.write(out_move.id, {
-                            'quantity': quantity,
+                            'lot': move.lot.id,
                             })
-                move_obj.write(out_move.id, {
-                        'lot': move.lot.id,
-                        })
-                quantity -= out_quantity
-            assert quantity <= 0
+                    quantity -= out_quantity
+                assert quantity <= 0
 
         # Reset function field cache
-        shipment = self.browse(shipment.id)
+        shipments = self.browse(ids)
 
-        move_obj.write([x.id for x in shipment.outgoing_moves
-            if x.state != 'cancel'], {
+        move_obj.write([m.id for s in shipments for m in s.outgoing_moves
+                if m.state != 'cancel'], {
                 'state': 'assigned',
                 })
 
