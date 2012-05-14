@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Eval, Bool
+from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 
 class ProductLocation(ModelSQL, ModelView):
