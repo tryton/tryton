@@ -12,6 +12,7 @@ from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import CONFIG
+from trytond.backend import TableHandler
 
 
 class TypeTemplate(ModelSQL, ModelView):
@@ -23,7 +24,9 @@ class TypeTemplate(ModelSQL, ModelView):
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.type.template', 'parent',
         'Children')
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
@@ -40,6 +43,15 @@ class TypeTemplate(ModelSQL, ModelView):
             'recursive_types': 'You can not create recursive types!',
         })
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(TypeTemplate, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_balance_sheet(self):
         return False
@@ -162,8 +174,10 @@ class Type(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
         ], depends=['company'])
-    sequence = fields.Integer('Sequence', required=True,
-            help='Use to order the account type')
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s',
+        help='Use to order the account type')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Function(fields.Numeric('Amount',
@@ -188,6 +202,15 @@ class Type(ModelSQL, ModelView):
             'recursive_types': 'You can not create recursive types!',
         })
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(Type, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_balance_sheet(self):
         return False

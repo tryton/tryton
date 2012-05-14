@@ -363,7 +363,9 @@ class TaxTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True)
     group = fields.Many2One('account.tax.group', 'Group')
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     amount = fields.Numeric('Amount', digits=(16, 8))
     percentage = fields.Numeric('Percentage', digits=(16, 8))
     type = fields.Selection([
@@ -406,6 +408,9 @@ class TaxTemplate(ModelSQL, ModelView):
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
+
+        #Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_type(self):
         return 'percentage'
@@ -565,8 +570,10 @@ class Tax(ModelSQL, ModelView):
                 'invisible': Bool(Eval('parent')),
             }, depends=['parent'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer('Sequence', required=True,
-            help='Use to order the taxes')
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s',
+        help='Use to order the taxes')
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['company']), 'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
@@ -670,6 +677,9 @@ class Tax(ModelSQL, ModelView):
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_active(self):
         return True
@@ -1109,12 +1119,23 @@ class RuleLineTemplate(ModelSQL, ModelView):
             ('group', '=', Eval('group')),
             ],
         depends=['group'])
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
 
     def __init__(self):
         super(RuleLineTemplate, self).__init__()
         self._order.insert(0, ('rule', 'ASC'))
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(RuleLineTemplate, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def _get_tax_rule_line_value(self, template, rule_line=None):
         '''
@@ -1204,13 +1225,24 @@ class RuleLine(ModelSQL, ModelView):
             ('group', '=', Eval('group')),
             ],
         depends=['group'])
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
     def __init__(self):
         super(RuleLine, self).__init__()
         self._order.insert(0, ('rule', 'ASC'))
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(RuleLine, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def match(self, line, pattern):
         '''

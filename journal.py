@@ -57,13 +57,24 @@ class Column(ModelSQL, ModelView):
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain=[('model.model', '=', 'account.move.line')])
     view = fields.Many2One('account.journal.view', 'View', select=True)
-    sequence = fields.Integer('Sequence', select=True, required=True)
+    sequence = fields.Integer('Sequence', select=True,
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
     def __init__(self):
         super(Column, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(Column, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_required(self):
         return False
