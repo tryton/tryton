@@ -44,7 +44,9 @@ class Work(ModelSQL, ModelView):
             ('opened', 'Opened'),
             ('done', 'Done'),
             ], 'State', required=True, select=True)
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
 
     def default_type(self):
         return 'task'
@@ -78,6 +80,9 @@ class Work(ModelSQL, ModelView):
                         'SET sequence = %%s '
                         'WHERE work = %%s' % self._table)
                 cursor.execute(sql, (sequence, id_))
+
+        # Migration from 2.4: drop required on sequence
+        table_project_work.not_null_action('sequence', action='remove')
 
     def __init__(self):
         super(Work, self).__init__()
