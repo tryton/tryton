@@ -8,6 +8,7 @@ from trytond.tools import safe_eval
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.backend import TableHandler
 
 
 # code snippet taken from http://docs.python.org/library/tokenize.html
@@ -138,7 +139,9 @@ class PriceListLine(ModelSQL, ModelView):
     price_list = fields.Many2One('product.price_list', 'Price List',
             required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product')
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
@@ -157,6 +160,15 @@ class PriceListLine(ModelSQL, ModelView):
         self._error_messages.update({
             'invalid_formula': 'Invalid formula!',
         })
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(PriceListLine, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_formula(self):
         return 'unit_price'
