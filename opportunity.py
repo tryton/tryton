@@ -5,7 +5,7 @@ import datetime
 import time
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.backend import FIELDS
+from trytond.backend import FIELDS, TableHandler
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -329,7 +329,9 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     _history = True
 
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('salable', '=', True)], on_change=['product', 'unit'])
     quantity = fields.Float('Quantity', required=True,
@@ -346,6 +348,15 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     def __init__(self):
         super(SaleOpportunityLine, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(SaleOpportunityLine, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def on_change_with_unit_digits(self, vals):
         uom_obj = Pool().get('product.uom')
