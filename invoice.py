@@ -1361,7 +1361,9 @@ class InvoiceLine(ModelSQL, ModelView):
             ],
         depends=['invoice'], select=True)
 
-    sequence = fields.Integer('Sequence', required=True,
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s',
         states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
             })
@@ -1482,6 +1484,9 @@ class InvoiceLine(ModelSQL, ModelView):
 
         # Migration from 1.0 invoice is no more required
         table.not_null_action('invoice', action='remove')
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_invoice_type(self):
         return Transaction().context.get('invoice_type', 'out_invoice')
@@ -1952,7 +1957,9 @@ class InvoiceTax(ModelSQL, ModelView):
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=True)
     description = fields.Char('Description', size=None, required=True)
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -1991,6 +1998,15 @@ class InvoiceTax(ModelSQL, ModelView):
             'create': 'You can not add a line to an invoice ' \
                     'that is open, paid or canceled!',
             })
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(InvoiceTax, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_base(self):
         return Decimal('0.0')

@@ -77,8 +77,10 @@ class PaymentTermLine(ModelSQL, ModelView):
     'Payment Term Line'
     _name = 'account.invoice.payment_term.line'
     _description = __doc__
-    sequence = fields.Integer('Sequence', required=True,
-            help='Use to order lines in ascending order')
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s',
+        help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True, ondelete="CASCADE")
     type = fields.Selection([
@@ -178,6 +180,9 @@ class PaymentTermLine(ModelSQL, ModelView):
                             'divisor': self.round(Decimal('100.0') /
                                 line.percentage, self.divisor.digits[1]),
                             })
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_currency_digits(self):
         return 2
