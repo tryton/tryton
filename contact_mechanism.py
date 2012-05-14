@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 STATES = {
     'readonly': ~Eval('active'),
@@ -36,7 +38,9 @@ class ContactMechanism(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
     active = fields.Boolean('Active', select=True)
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
@@ -76,6 +80,15 @@ class ContactMechanism(ModelSQL, ModelView):
             'write_party': 'You can not modify the party of ' \
                     'a contact mechanism!',
             })
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(ContactMechanism, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_type(self):
         return 'phone'

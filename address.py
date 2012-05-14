@@ -4,6 +4,8 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.pool import Pool
+from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 STATES = {
     'readonly': ~Eval('active'),
@@ -31,7 +33,9 @@ class Address(ModelSQL, ModelView):
             'Subdivision', domain=[('country', '=', Eval('country'))],
             states=STATES, depends=['active', 'country'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer("Sequence", required=True)
+    sequence = fields.Integer("Sequence",
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
@@ -42,6 +46,15 @@ class Address(ModelSQL, ModelView):
         self._error_messages.update({
             'write_party': 'You can not modify the party of an address!',
             })
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(Address, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_active(self):
         return True
