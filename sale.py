@@ -962,7 +962,9 @@ class SaleLine(ModelSQL, ModelView):
 
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True)
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1077,6 +1079,9 @@ class SaleLine(ModelSQL, ModelView):
         if table.column_exist('comment'):
             cursor.execute('UPDATE "' + self._table + '" SET note = comment')
             table.drop_column('comment', exception=True)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_type(self):
         return 'line'
@@ -1355,7 +1360,6 @@ class SaleLine(ModelSQL, ModelView):
         property_obj = Pool().get('ir.property')
 
         res = {}
-        res['sequence'] = line.sequence
         res['type'] = line.type
         res['description'] = line.description
         res['note'] = line.note
