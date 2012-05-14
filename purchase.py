@@ -844,7 +844,9 @@ class PurchaseLine(ModelSQL, ModelView):
 
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -959,6 +961,9 @@ class PurchaseLine(ModelSQL, ModelView):
             cursor.execute('UPDATE "' + self._table + '" ' \
                     'SET note = comment')
             table.drop_column('comment', exception=True)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_type(self):
         return 'line'
@@ -1231,7 +1236,6 @@ class PurchaseLine(ModelSQL, ModelView):
         property_obj = Pool().get('ir.property')
 
         res = {}
-        res['sequence'] = line.sequence
         res['type'] = line.type
         res['description'] = line.description
         res['note'] = line.note
@@ -1573,7 +1577,9 @@ class ProductSupplier(ModelSQL, ModelView):
             ondelete='CASCADE', select=True, on_change=['party'])
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -1618,6 +1624,9 @@ class ProductSupplier(ModelSQL, ModelView):
                     cursor.execute('UPDATE "' + self._table + '" '
                         'SET currency = %s '
                         'WHERE id = %s', (currency_id, product_supplier_id))
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
     def default_company(self):
         return Transaction().context.get('company')
