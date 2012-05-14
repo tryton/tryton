@@ -22,11 +22,22 @@ class ProductLocation(ModelSQL, ModelView):
             ('parent', 'child_of', If(Bool(Eval('warehouse')),
                     [Eval('warehouse')], [])),
             ], depends=['warehouse'])
-    sequence = fields.Integer('Sequence', required=True)
+    sequence = fields.Integer('Sequence',
+        order_field='(%(table)s.sequence IS NULL) %(order)s, '
+        '%(table)s.sequence %(order)s')
 
     def __init__(self):
         super(ProductLocation, self).__init__()
         self._order.insert(0, ('sequence', 'ASC'))
+
+    def init(self, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, self, module_name)
+
+        super(ProductLocation, self).init(module_name)
+
+        # Migration from 2.4: drop required on sequence
+        table.not_null_action('sequence', action='remove')
 
 ProductLocation()
 
