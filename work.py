@@ -71,7 +71,7 @@ class Work(ModelSQL, ModelView):
                 ('parent', 'child_of', ids),
                 ])
         # force inactive ids to be in all_ids
-        all_ids = all_ids + ids
+        all_ids = list(set(all_ids + ids))
         clause = "SELECT work, sum(hours) FROM timesheet_line "\
                      "WHERE work IN (%s) "\
                      % ",".join(('%s',) * len(all_ids))
