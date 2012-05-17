@@ -42,6 +42,7 @@ class Database(DatabaseInterface):
     def cursor(self, autocommit=False, readonly=False):
         conv = MySQLdb.converters.conversions.copy()
         conv[float] = lambda value, _: repr(value)
+        conv[MySQLdb.constants.FIELD_TYPE.TIME] = MySQLdb.times.Time_or_None
         args = {
             'db': self.database_name,
             'sql_mode': 'traditional,postgresql',
