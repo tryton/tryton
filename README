@@ -31,8 +31,8 @@ Find the module, call the install button and run the install wizard.
 
     >>> Module = Model.get('ir.module.module')
     >>> (party,) = Module.find([('name', '=', 'party')])
-    >>> Module.button_install([party.id], config.context)
-    >>> Wizard('ir.module.module.install_upgrade').execute('start')
+    >>> Module.install([party.id], config.context)
+    >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Creating a party
 ~~~~~~~~~~~~~~~~
