@@ -206,6 +206,18 @@ class SimpleThreadedXMLRPCServer(SocketServer.ThreadingMixIn,
         for handler in self.handlers:
             self.shutdown_request(handler.request)
 
+    if sys.version_info[:2] <= (2, 6):
+
+        def shutdown_request(self, request):
+            """Called to shutdown and close an individual request."""
+            try:
+                #explicitly shutdown.  socket.close() merely releases
+                #the socket and waits for GC to perform the actual close.
+                request.shutdown(socket.SHUT_WR)
+            except socket.error:
+                pass  # some platforms may raise ENOTCONN here
+            self.close_request(request)
+
 
 class SimpleThreadedXMLRPCServer6(SimpleThreadedXMLRPCServer):
     address_family = socket.AF_INET6
