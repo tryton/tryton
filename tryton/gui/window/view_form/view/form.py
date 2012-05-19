@@ -166,8 +166,8 @@ class ViewForm(ParserView):
             focus_widget.grab_focus()
 
     def button_clicked(self, widget):
-        record = self.screen.current_record
         record_id = self.screen.save_current()
+        record = self.screen.current_record
         attrs = widget.attrs
         if record_id:
             if not attrs.get('confirm', False) or \
