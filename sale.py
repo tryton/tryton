@@ -207,6 +207,10 @@ class Sale(Workflow, ModelSQL, ModelView):
         self._states_cached = ['confirmed', 'processing', 'done', 'cancel']
 
     def init(self, module_name):
+        pool = Pool()
+        sale_line_obj = pool.get('sale.line')
+        sale_line_invoice_line_obj = pool.get('sale.line-account.invoice.line')
+        move_obj = pool.get('stock.move')
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "
@@ -236,14 +240,19 @@ class Sale(Workflow, ModelSQL, ModelView):
         table.not_null_action('sale_date', 'remove')
 
         # state confirmed splitted into confirmed and processing
-        confirmed2processing = []
-        for sale in self.browse(self.search([
-                        ('state', '=', 'confirmed'),
-                        ])):
-            if sale.invoices or sale.moves:
-                confirmed2processing.append(sale.id)
-        if confirmed2processing:
-            self.write(confirmed2processing, {'state': 'processing'})
+        if (TableHandler.table_exist(cursor, sale_line_obj._table)
+                and TableHandler.table_exist(cursor,
+                    sale_line_invoice_line_obj._table)
+                and TableHandler.table_exist(cursor, move_obj._table)):
+            cursor.execute('UPDATE "' + self._table + '" AS s '
+                "SET state = 'processing' "
+                'FROM "' + sale_line_obj._table + '" AS l, '
+                    '"' + sale_line_invoice_line_obj._table + '" AS li, '
+                    '"' + move_obj._table + '" AS m '
+                "WHERE s.state = 'confirmed' "
+                    "AND l.sale = s.id "
+                    "AND (li.sale_line = l.id "
+                        "OR m.sale_line = l.id)")
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
