@@ -1,10 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-try:
-    from weakref import WeakSet
-except ImportError:
-    from weakrefset import WeakSet
-from collections import defaultdict
 import tryton.rpc as rpc
 from tryton.signal_event import SignalEvent
 import tryton.common as common
@@ -12,8 +7,6 @@ from tryton.pyson import PYSONDecoder
 import field as fields
 from functools import reduce
 from tryton.common import RPCExecute, RPCException
-
-POOL = defaultdict(WeakSet)
 
 
 class Record(SignalEvent):
@@ -42,7 +35,7 @@ class Record(SignalEvent):
         self.autocompletion = {}
         self.exception = False
         self.destroyed = False
-        POOL[model_name].add(self)
+        self.pool.add(self)
 
     def __getitem__(self, name):
         if name not in self._loaded and self.id >= 0:
@@ -74,7 +67,7 @@ class Record(SignalEvent):
                     n += 1
             record_context = self.context_get()
             if loading == 'eager' and len(id2record) < 80:
-                for record in POOL[self.model_name]:
+                for record in self.pool:
                     if (name not in record._loaded
                             and record.id >= 0
                             and record.id not in id2record
@@ -130,6 +123,14 @@ class Record(SignalEvent):
     @property
     def modified(self):
         return bool(self.modified_fields)
+
+    @property
+    def pool(self):
+        group = self.group
+        while (group.parent is not None
+                and group.parent.model_name == self.model_name):
+            group = group.parent
+        return group.pool
 
     @property
     def parent(self):
@@ -576,6 +577,8 @@ class Record(SignalEvent):
         return self.attachment_count
 
     def destroy(self):
+        # Get reference to pool before unref group
+        pool = self.pool
         for v in self.value.itervalues():
             if hasattr(v, 'destroy'):
                 v.destroy()
@@ -584,4 +587,4 @@ class Record(SignalEvent):
         self.value = None
         self.next = None
         self.destroyed = True
-        POOL[self.model_name].remove(self)
+        pool.remove(self)

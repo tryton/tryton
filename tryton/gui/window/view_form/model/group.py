@@ -1,5 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+try:
+    from weakref import WeakSet
+except ImportError:
+    from weakrefset import WeakSet
+
 from record import Record
 from field import Field, O2MField
 from tryton.signal_event import SignalEvent
@@ -36,6 +41,7 @@ class Group(SignalEvent, list):
         self.__id2record = {}
         self.__field_childs = None
         self.exclude_field = None
+        self.pool = WeakSet()
 
     @property
     def domain(self):
