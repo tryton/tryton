@@ -664,7 +664,10 @@ class O2MField(CharField):
     def set_on_change(self, record, value):
         self._set_default_value(record)
         if isinstance(value, (list, tuple)):
-            return self.set(record, value, modified=False)
+            self.set(record, value, modified=False)
+            record.modified_fields.setdefault(self.name)
+            record.signal('record-modified')
+            return True
 
         if value and (value.get('add') or value.get('update')):
             context = self.context_get(record)
