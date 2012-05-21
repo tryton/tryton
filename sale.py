@@ -244,15 +244,19 @@ class Sale(Workflow, ModelSQL, ModelView):
                 and TableHandler.table_exist(cursor,
                     sale_line_invoice_line_obj._table)
                 and TableHandler.table_exist(cursor, move_obj._table)):
-            cursor.execute('UPDATE "' + self._table + '" AS s '
+            cursor.execute('UPDATE "%s" '
                 "SET state = 'processing' "
-                'FROM "' + sale_line_obj._table + '" AS l, '
-                    '"' + sale_line_invoice_line_obj._table + '" AS li, '
-                    '"' + move_obj._table + '" AS m '
-                "WHERE s.state = 'confirmed' "
-                    "AND l.sale = s.id "
-                    "AND (li.sale_line = l.id "
-                        "OR m.sale_line = l.id)")
+                'WHERE id IN ('
+                    'SELECT s.id '
+                    'FROM "%s" AS s '
+                    'INNER JOIN "%s" AS l ON l.sale = s.id '
+                    'LEFT JOIN "%s" AS li ON li.sale_line = l.id '
+                    'LEFT JOIN "%s" AS m ON m.sale_line = l.id '
+                    "WHERE s.state = 'confirmed' "
+                        'AND (li.id IS NOT NULL '
+                            'OR m.id IS NOT NULL))'
+                % (self._table, self._table, sale_line_obj._table,
+                    sale_line_invoice_line_obj._table, move_obj._table))
 
         # Add index on create_date
         table = TableHandler(cursor, self, module_name)
