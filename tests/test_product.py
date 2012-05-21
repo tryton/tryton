@@ -59,17 +59,17 @@ class ProductTestCase(unittest.TestCase):
             })
         cursor.commit()
 
-        self.failUnlessRaises(Exception, self.uom.write, cursor, USER, {
+        self.failUnlessRaises(Exception, self.uom.write, cursor, USER, uom_id, {
             'rate': 0.0,
             })
         cursor.rollback()
 
-        self.failUnlessRaises(Exception, self.uom.write, cursor, USER, {
+        self.failUnlessRaises(Exception, self.uom.write, cursor, USER, uom_id, {
             'factor': 0.0,
             })
         cursor.rollback()
 
-        self.failUnlessRaises(Exception, self.uom.write, cursor, USER, {
+        self.failUnlessRaises(Exception, self.uom.write, cursor, USER, uom_id, {
             'rate': 0.0,
             'factor': 0.0,
             })
