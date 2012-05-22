@@ -241,17 +241,22 @@ class Sale(Workflow, ModelSQL, ModelView):
                 and TableHandler.table_exist(cursor,
                     sale_line_invoice_line_obj._table)
                 and TableHandler.table_exist(cursor, move_obj._table)):
+            # Wrap subquery inside an other inner subquery because MySQL syntax
+            # doesn't allow update a table and select from the same table in a
+            # subquery.
             cursor.execute('UPDATE "%s" '
                 "SET state = 'processing' "
                 'WHERE id IN ('
-                    'SELECT s.id '
-                    'FROM "%s" AS s '
-                    'INNER JOIN "%s" AS l ON l.sale = s.id '
-                    'LEFT JOIN "%s" AS li ON li.sale_line = l.id '
-                    'LEFT JOIN "%s" AS m ON m.sale_line = l.id '
-                    "WHERE s.state = 'confirmed' "
-                        'AND (li.id IS NOT NULL '
-                            'OR m.id IS NOT NULL))'
+                    'SELECT id '
+                    'FROM ('
+                        'SELECT s.id '
+                        'FROM "%s" AS s '
+                        'INNER JOIN "%s" AS l ON l.sale = s.id '
+                        'LEFT JOIN "%s" AS li ON li.sale_line = l.id '
+                        'LEFT JOIN "%s" AS m ON m.sale_line = l.id '
+                        "WHERE s.state = 'confirmed' "
+                            'AND (li.id IS NOT NULL '
+                                'OR m.id IS NOT NULL)) AS foo)'
                 % (self._table, self._table, sale_line_obj._table,
                     sale_line_invoice_line_obj._table, move_obj._table))
 
