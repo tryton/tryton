@@ -191,8 +191,12 @@ class Location(ModelSQL, ModelView):
         with Transaction().set_context(context):
             product = product_obj.browse(product_id)
             for location in self.browse(ids):
-                cost_values[location.id] = (Decimal(str(location.quantity))
-                    * product.cost_price)
+                # The date could be before the product creation
+                if not isinstance(product.cost_price, Decimal):
+                    cost_values[location.id] = None
+                else:
+                    cost_values[location.id] = (Decimal(str(location.quantity))
+                        * product.cost_price)
         return cost_values
 
     def _set_warehouse_parent(self, locations):

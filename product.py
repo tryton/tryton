@@ -164,8 +164,12 @@ class Product(ModelSQL, ModelView):
             context['_datetime'] = trans_context['stock_date_end']
         with Transaction().set_context(context):
             for product in self.browse(ids):
-                cost_values[product.id] = (Decimal(str(product.quantity))
-                    * product.cost_price)
+                # The date could be before the product creation
+                if not isinstance(product.cost_price, Decimal):
+                    cost_values[product.id] = None
+                else:
+                    cost_values[product.id] = (Decimal(str(product.quantity))
+                        * product.cost_price)
         return cost_values
 
     def products_by_location(self, location_ids, product_ids=None,
