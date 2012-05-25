@@ -53,5 +53,22 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+        <record model="ir.ui.view" id="employee_view_form2">
+            <field name="model">company.employee</field>
+            <field name="inherit" ref="company.employee_view_form2"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <data>
+                    <xpath
+                        expr="/form/field[@name='company']"
+                        position="after">
+                        <label name="cost_price"/>
+                        <field name="cost_price"/>
+                        <field name="cost_prices" colspan="4"/>
+                    </xpath>
+                </data>
+                ]]>
+            </field>
+        </record>
     </data>
 </tryton>
