@@ -669,11 +669,11 @@ class CreatePurchase(Wizard):
             if request.party and request.party.supplier_tax_rule:
                 pattern = self._get_tax_rule_pattern(cursor, user, request,
                         context=context)
-                tax_id = tax_rule_obj.apply(cursor, user,
+                tax_ids = tax_rule_obj.apply(cursor, user,
                         request.party.supplier_tax_rule, tax, pattern,
                         context=context)
-                if tax_id:
-                    taxes.append(tax_id)
+                if tax_ids:
+                    taxes.extend(tax_ids)
                 continue
             taxes.append(tax.id)
         line['taxes'] = [('add', taxes)]
