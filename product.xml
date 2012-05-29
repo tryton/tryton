@@ -11,9 +11,10 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
                         position="after">
-                      <page string="Default Locations" id="default_locations">
-                          <field name="locations" colspan="4"/>
-                      </page>
+                        <page string="Default Locations" id="default_locations"
+                            states="{'invisible': ~Eval('type').in_(['goods', 'assets'])}">
+                            <field name="locations" colspan="4"/>
+                        </page>
                     </xpath>
                 </data>
                 ]]>
