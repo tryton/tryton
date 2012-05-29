@@ -712,7 +712,7 @@ class CreatePurchase(Wizard):
             product_price = product_price.quantize(
                 Decimal(1) / 10 ** line_obj.unit_price.digits[1])
 
-        if not product_price:
+        if product_price is None:
             self.raise_user_error('missing_price', (request.product.name,
                     request.product.id), 'please_update')
         line['unit_price'] = product_price
