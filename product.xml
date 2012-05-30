@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_location_quantity_tree">
-            <field name="name">Location Quantity &amp; Cost Value</field>
+            <field name="name">Locations</field>
             <field name="res_model">stock.location</field>
             <field name="domain">[('parent', '=', False)]</field>
             <field name="window_name" eval="True"/>
@@ -54,7 +54,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_location_quantity_tree"/>
         </record>
         <record model="ir.action.wizard" id="wizard_product_by_location">
-            <field name="name">Product by Location</field>
+            <field name="name">Product by Locations</field>
             <field name="wiz_name">product.by_location</field>
             <field name="model">product.product</field>
         </record>

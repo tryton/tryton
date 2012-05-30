@@ -105,10 +105,11 @@ this repository contains the full copyright notices and license terms. -->
             action="act_location_form" id="menu_location_form"/>
 
         <record model="ir.action.act_window" id="act_products_by_locations">
-            <field name="name">Products by Locations</field>
+            <field name="name">Products</field>
             <field name="res_model">product.product</field>
             <field name="window_name" eval="False"/>
             <field name="domain">['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]</field>
+            <field name="window_name" eval="True"/>
         </record>
         <record model="ir.action.act_window.view" id="act_product_form_view2">
             <field name="sequence" eval="10"/>

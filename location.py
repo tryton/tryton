@@ -360,11 +360,29 @@ class ProductsByLocations(Wizard):
     open = StateAction('stock.act_products_by_locations')
 
     def do_open(self, session, action):
+        pool = Pool()
+        location_obj = pool.get('stock.location')
+        lang_obj = pool.get('ir.lang')
+
         context = {}
         context['locations'] = Transaction().context.get('active_ids')
         date = session.start.forecast_date or datetime.date.max
         context['stock_date_end'] = Date(date.year, date.month, date.day)
         action['pyson_context'] = PYSONEncoder().encode(context)
+
+        locations = location_obj.browse(context['locations'])
+
+        for code in [Transaction().language, 'en_US']:
+            lang_ids = lang_obj.search([
+                    ('code', '=', code),
+                    ])
+            if lang_ids:
+                break
+        lang = lang_obj.browse(lang_ids[0])
+        date = lang_obj.strftime(date, lang.code, lang.date)
+
+        action['name'] += ' - (%s) @ %s' % (
+            ','.join(l.name for l in locations), date)
         return action, {}
 
 ProductsByLocations()
