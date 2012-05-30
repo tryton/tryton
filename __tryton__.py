@@ -3,6 +3,7 @@
 {
     'name': 'Account French',
     'name_fr_FR': 'Comptabilité française',
+    'name_es_ES': 'Contabilidad francesa',
     'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -12,6 +13,10 @@ Usefull to create a French account chart with the wizard in
 "Financial Management>Configuration>General Account>Create Chart of Account from Template".
 ''',
     'description_fr_FR': '''Défini le plan comptable pour la France.
+''',
+    'description_es_ES': '''Define una plantilla del plan contable francés.
+Permite crear un plan contable francés con el asistente del menú
+"Contabilidad>Configuración>Planes contables>Crear plan contable desde plantilla".
 ''',
     'depends': [
         'account',
