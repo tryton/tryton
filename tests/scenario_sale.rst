@@ -174,11 +174,15 @@ Sale 5 products::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
-    >>> sale.invoice_method = 'shipment'
+    >>> sale.invoice_method = 'order'
     >>> sale_line = SaleLine()
     >>> sale.lines.append(sale_line)
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
+    >>> sale_line = SaleLine()
+    >>> sale.lines.append(sale_line)
+    >>> sale_line.type = 'comment'
+    >>> sale_line.description = 'Comment'
     >>> sale_line = SaleLine()
     >>> sale.lines.append(sale_line)
     >>> sale_line.product = product
@@ -189,6 +193,39 @@ Sale 5 products::
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
+    >>> sale.reload()
+    >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
+    (1, 0, 1)
+
+Sale 5 products with an invoice method 'on shipment'::
+
+    >>> Sale = Model.get('sale.sale')
+    >>> SaleLine = Model.get('sale.line')
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale.invoice_method = 'shipment'
+    >>> sale_line = SaleLine()
+    >>> sale.lines.append(sale_line)
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 2.0
+    >>> sale_line = SaleLine()
+    >>> sale.lines.append(sale_line)
+    >>> sale_line.type = 'comment'
+    >>> sale_line.description = 'Comment'
+    >>> sale_line = SaleLine()
+    >>> sale.lines.append(sale_line)
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 3.0
+    >>> sale.save()
+    >>> Sale.quote([sale.id], config.context)
+    >>> Sale.confirm([sale.id], config.context)
+    >>> Sale.process([sale.id], config.context)
+    >>> sale.state
+    u'processing'
+    >>> sale.reload()
+    >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
+    (1, 0, 0)
 
 Validate Shipments::
 
@@ -207,6 +244,8 @@ Open customer invoice::
     >>> invoice, = sale.invoices
     >>> invoice.type
     u'out_invoice'
+    >>> len(invoice.lines)
+    2
     >>> Invoice.open([invoice.id], config.context)
     >>> invoice.reload()
     >>> invoice.state
@@ -230,20 +269,26 @@ Create a Return::
     >>> return_.lines.append(return_line)
     >>> return_line.product = product
     >>> return_line.quantity = -4.
+    >>> return_line = SaleLine()
+    >>> return_.lines.append(return_line)
+    >>> return_line.type = 'comment'
+    >>> return_line.description = 'Comment'
     >>> return_.save()
     >>> Sale.quote([return_.id], config.context)
     >>> Sale.confirm([return_.id], config.context)
     >>> Sale.process([return_.id], config.context)
     >>> return_.state
     u'processing'
+    >>> return_.reload()
+    >>> (len(return_.shipments), len(return_.shipment_returns),
+    ...     len(return_.invoices))
+    (0, 1, 0)
 
 Check Return Shipments::
 
     >>> return_.reload()
     >>> ShipmentReturn = Model.get('stock.shipment.out.return')
     >>> ship_return, = return_.shipment_returns
-    >>> len(return_.shipments)
-    0
     >>> ShipmentReturn.receive([ship_return.id], config.context)
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.name
@@ -257,6 +302,8 @@ Open customer credit note::
     >>> credit_note, = return_.invoices
     >>> credit_note.type
     u'out_credit_note'
+    >>> len(credit_note.lines)
+    1
     >>> Invoice.open([credit_note.id], config.context)
     >>> credit_note.reload()
     >>> credit_note.state
@@ -278,6 +325,10 @@ Mixing return and sale::
     >>> mix.lines.append(mixline)
     >>> mixline.product = product
     >>> mixline.quantity = 7.
+    >>> mixline_comment = SaleLine()
+    >>> mix.lines.append(mixline_comment)
+    >>> mixline_comment.type = 'comment'
+    >>> mixline_comment.description = 'Comment'
     >>> mixline2 = SaleLine()
     >>> mix.lines.append(mixline2)
     >>> mixline2.product = product
@@ -288,6 +339,9 @@ Mixing return and sale::
     >>> Sale.process([mix.id], config.context)
     >>> mix.state
     u'processing'
+    >>> mix.reload()
+    >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
+    (1, 1, 2)
 
 Checking Shipments::
 
@@ -317,6 +371,8 @@ Checking the invoice::
     ...     key=attrgetter('type'), reverse=True)
     >>> mix_invoice.type, mix_credit_note.type
     (u'out_invoice', u'out_credit_note')
+    >>> len(mix_invoice.lines), len(mix_credit_note.lines)
+    (1, 1)
     >>> Invoice.open([mix_invoice.id], config.context)
     >>> mix_invoice.reload()
     >>> mix_invoice.state
@@ -342,6 +398,10 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.lines.append(mixline)
     >>> mixline.product = product
     >>> mixline.quantity = 6.
+    >>> mixline_comment = SaleLine()
+    >>> mix.lines.append(mixline_comment)
+    >>> mixline_comment.type = 'comment'
+    >>> mixline_comment.description = 'Comment'
     >>> mixline2 = SaleLine()
     >>> mix.lines.append(mixline2)
     >>> mixline2.product = product
@@ -352,6 +412,9 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> Sale.process([mix.id], config.context)
     >>> mix.state
     u'processing'
+    >>> mix.reload()
+    >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
+    (1, 1, 0)
 
 Checking Shipments::
 
