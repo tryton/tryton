@@ -1,0 +1,15 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.action,name:act_lot_form"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "model:ir.ui.menu,name:menu_lot_form"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "view:product.product:"
+msgid "Lots"
+msgstr "Lotes"
