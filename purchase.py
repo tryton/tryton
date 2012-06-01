@@ -16,24 +16,24 @@ class Purchase(ModelSQL, ModelView):
                     'on line "%s" (%d)!',
             })
 
-    def check_for_quotation(self, purchase_id):
+    def check_for_quotation(self, ids):
         account_selection_obj = Pool().get(
                 'analytic_account.account.selection')
 
-        res = super(Purchase, self).check_for_quotation(purchase_id)
+        super(Purchase, self).check_for_quotation(ids)
 
-        purchase = self.browse(purchase_id)
-        if not account_selection_obj.check_root(
-                [x.analytic_accounts.id for x in purchase.lines
-                    if x.analytic_accounts.id]):
-            for line in purchase.lines:
-                if line.type != 'line':
-                    continue
-                if not account_selection_obj.check_root(
-                        [line.analytic_accounts.id]):
-                    self.raise_user_error('analytic_account_required',
-                            (line.rec_name, line.id))
-        return res
+        purchases = self.browse(ids)
+        for purchase in purchases:
+            if not account_selection_obj.check_root(
+                    [x.analytic_accounts.id for x in purchase.lines
+                        if x.analytic_accounts.id]):
+                for line in purchase.lines:
+                    if line.type != 'line':
+                        continue
+                    if not account_selection_obj.check_root(
+                            [line.analytic_accounts.id]):
+                        self.raise_user_error('analytic_account_required',
+                                (line.rec_name, line.id))
 
 Purchase()
 
