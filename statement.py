@@ -368,8 +368,9 @@ class Line(ModelSQL, ModelView):
         domain=[
             ('party', '=', Eval('party')),
             ('account', '=', Eval('account')),
-            ('state', '=', If(Eval('_parent_statement', {}).get('state')
-                    == 'draft', 'open', '')),
+            If(Eval('_parent_statement', {}).get('state') == 'draft',
+                ('state', '=', 'open'),
+                ('state', '!=', '')),
             ],
         states={
             'readonly': ~Eval('amount'),
