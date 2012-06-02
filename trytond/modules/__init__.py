@@ -107,9 +107,6 @@ class Node(Singleton):
 
     def __setattr__(self, name, value):
         super(Node, self).__setattr__(name, value)
-        if name in ('init', 'update'):
-            for child in self.childs:
-                setattr(child, name, value)
         if name == 'depth':
             for child in self.childs:
                 setattr(child, name, value + 1)
@@ -221,6 +218,9 @@ def load_module_graph(graph, pool, lang=None):
         package_state = module2state.get(module, 'uninstalled')
         if (is_module_to_install(module)
                 or package_state in ('to install', 'to upgrade')):
+            for kind in ('init', 'update'):
+                for child in package.childs:
+                    CONFIG[kind][child.name] = 1
             for type in objects.keys():
                 for obj in objects[type]:
                     logger.info('%s:init %s' % (module, obj._name))
