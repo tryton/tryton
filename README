@@ -2,7 +2,6 @@ trytond_country
 ===============
 
 The country module of the Tryton application platform.
-See __tryton__.py
 
 Installing
 ----------
