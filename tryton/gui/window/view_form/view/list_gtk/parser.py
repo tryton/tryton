@@ -627,20 +627,17 @@ class M2O(Char):
             mode=['form'])
 
         def open_callback(result):
-            if result and screen.save_current():
+            if result:
                 value = (screen.current_record.id,
                     screen.current_record.rec_name())
                 field.set_client(record, value, force_change=True)
-            elif result:
-                screen.display()
-                return WinForm(screen, open_callback)
             if callback:
                 callback()
         if obj_id:
             screen.load([obj_id])
-            WinForm(screen, open_callback)
+            WinForm(screen, open_callback, save_current=True)
         else:
-            WinForm(screen, open_callback, new=True)
+            WinForm(screen, open_callback, new=True, save_current=True)
 
     def search_remote(self, record, relation, ids=None, domain=None,
             context=None, callback=None):

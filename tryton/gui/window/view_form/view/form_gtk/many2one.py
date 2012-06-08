@@ -177,13 +177,13 @@ class Many2One(WidgetInterface):
         screen = self.get_screen()
 
         def callback(result):
-            if result and screen.save_current():
+            if result:
                 self.field.set_client(self.record,
                     self.value_from_id(screen.current_record.id,
                         screen.current_record.rec_name()))
                 self.display(self.record, self.field)
             self.focus_out = True
-        WinForm(screen, callback, new=True)
+        WinForm(screen, callback, new=True, save_current=True)
 
     def sig_edit(self, widget):
         if not self.focus_out or not self.field:
@@ -198,18 +198,15 @@ class Many2One(WidgetInterface):
             screen.load([self.id_from_value(self.field.get(self.record))])
 
             def callback(result):
-                if result and screen.save_current():
+                if result:
                     self.field.set_client(self.record,
                         self.value_from_id(screen.current_record.id,
                             screen.current_record.rec_name()),
                         force_change=True)
-                elif result:
-                    screen.display()
-                    return WinForm(screen, callback)
                 self.focus_out = True
                 self.display(self.record, self.field)
                 self.changed = True
-            WinForm(screen, callback)
+            WinForm(screen, callback, save_current=True)
             return
         elif model and not self._readonly:
             domain = self.field.domain_get(self.record)

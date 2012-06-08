@@ -16,12 +16,14 @@ class WinForm(NoModal):
     "Form window"
 
     def __init__(self, screen, callback, view_type='form',
-            new=False, many=False, domain=None, context=None):
+            new=False, many=False, domain=None, context=None,
+            save_current=False):
         NoModal.__init__(self)
         self.screen = screen
         self.callback = callback
         self.domain = domain
         self.context = context
+        self.save_current = save_current
         self.prev_view = self.screen.current_view
         self.screen.screen_container.alternate_view = True
         switch_new = False
@@ -366,6 +368,9 @@ class WinForm(NoModal):
                 and self.screen.current_record is not None):
             validate = self.screen.current_record.validate(
                 self.screen.current_view.get_fields())
+            if validate and self.save_current:
+                if not self.screen.save_current():
+                    validate = False
             if not validate:
                 self.screen.set_cursor()
                 self.screen.display()
