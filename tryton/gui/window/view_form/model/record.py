@@ -448,10 +448,10 @@ class Record(SignalEvent):
             self._check_load()
         ctx = rpc.CONTEXT.copy()
         ctx['context'] = ctx.copy()
+        ctx['context'].update(self.context_get())
         for name, field in self.group.fields.items():
             ctx[name] = field.get_eval(self, check_load=check_load)
 
-        ctx['context'].update(self.context_get())
         ctx['active_id'] = self.id
         ctx['id'] = self.id  # Force local id
         ctx['_user'] = rpc._USER
