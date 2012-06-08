@@ -218,9 +218,10 @@ def load_module_graph(graph, pool, lang=None):
         package_state = module2state.get(module, 'uninstalled')
         if (is_module_to_install(module)
                 or package_state in ('to install', 'to upgrade')):
-            for kind in ('init', 'update'):
-                for child in package.childs:
-                    CONFIG[kind][child.name] = 1
+            if package_state not in ('to install', 'to upgrade'):
+                package_state = 'to install'
+            for child in package.childs:
+                module2state[child.name] = package_state
             for type in objects.keys():
                 for obj in objects[type]:
                     logger.info('%s:init %s' % (module, obj._name))
