@@ -3,11 +3,7 @@
 from decimal import Decimal
 import datetime
 import time
-try:
-    import hashlib
-except ImportError:
-    hashlib = None
-    import md5
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
@@ -1209,10 +1205,10 @@ class Line(ModelSQL, ModelView):
         journal_period = journal_period_obj.browse(journal_period_ids[0])
         return value + ': ' + journal_period.rec_name
 
-    def fields_view_get(self, view_id=None, view_type='form', hexmd5=None):
+    def fields_view_get(self, view_id=None, view_type='form'):
         journal_obj = Pool().get('account.journal')
         result = super(Line, self).fields_view_get(view_id=view_id,
-            view_type=view_type, hexmd5=hexmd5)
+            view_type=view_type)
         if view_type == 'tree' and 'journal' in Transaction().context:
             title = self.view_header_get('', view_type=view_type)
             journal = journal_obj.browse(Transaction().context['journal'])
@@ -1245,13 +1241,6 @@ class Line(ModelSQL, ModelView):
             xml += '</tree>'
             result['arch'] = xml
             result['fields'] = self.fields_get(fields_names=list(fields))
-            del result['md5']
-            if hashlib:
-                result['md5'] = hashlib.md5(str(result)).hexdigest()
-            else:
-                result['md5'] = md5.new(str(result)).hexdigest()
-            if hexmd5 == result['md5']:
-                return True
         return result
 
     def reconcile(self, ids, journal_id=None, date=None, account_id=None):
