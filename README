@@ -2,7 +2,6 @@ trytond_product_cost_fifo
 =========================
 
 The product_cost_fifo module of the Tryton application platform.
-See __tryton__.py
 
 Installing
 ----------
