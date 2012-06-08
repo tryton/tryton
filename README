@@ -2,7 +2,6 @@ trytond_account_de_skr03
 ========================
 
 A german account chart module for the Tryton application platform.
-See __tryton__.py
 
 Installing
 ----------
