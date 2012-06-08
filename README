@@ -2,7 +2,6 @@ trytond_google_maps
 ===================
 
 The google_maps module of the Tryton application platform.
-See __tryton__.py
 
 Installing
 ----------
