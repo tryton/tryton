@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Account French',
+    'name_ca_ES': 'Comptabilitat francesa',
     'name_de_DE': 'Französischer Kontenrahmen',
     'name_fr_FR': 'Comptabilité française',
     'name_es_ES': 'Contabilidad francesa',
@@ -12,6 +13,10 @@
     'description': '''Define an account chart template for French.
 Usefull to create a French account chart with the wizard in
 "Financial Management>Configuration>General Account>Create Chart of Account from Template".
+''',
+    'description_ca_ES': '''Defineix una plantilla de pla comptable francès.
+Permet crear un pla comptable francès amb l'assistent
+"Comptabilitat>Configuració>Plans comptables>Crea pla comptable des de plantilla".
 ''',
     'description_de_DE': '''Kontenrahmenvorlage für Frankreich
     - Ermöglicht die Erstellung eines französischen Kontenrahmens mit dem
