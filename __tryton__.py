@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 {
     'name': 'Production Management',
+    'name_ca_ES': 'Producció',
+    'name_es_ES': 'Producción',
     'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -9,6 +11,14 @@
     'description': '''Production Management with:
     - Bill of Material
     - Production Order
+    ''',
+    'description_ca_ES': '''Gestió de la producció amb:
+    - Llistes de Material (LdM)
+    - Ordres de producció
+    ''',
+    'description_es_ES': '''Gestión de la producción con:
+    - Listas de Material (LdM)
+    - Órdenes de producción
     ''',
     'depends': [
         'ir',
