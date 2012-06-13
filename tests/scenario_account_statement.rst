@@ -166,6 +166,22 @@ Create 2 customer invoices::
     >>> customer_invoice2.state
     u'open'
 
+Create 1 customer credit note::
+
+    >>> customer_credit_note = Invoice(type='out_credit_note')
+    >>> customer_credit_note.party = customer
+    >>> customer_credit_note.payment_term = payment_term
+    >>> invoice_line = InvoiceLine()
+    >>> customer_credit_note.lines.append(invoice_line)
+    >>> invoice_line.quantity = 1
+    >>> invoice_line.unit_price = Decimal('50')
+    >>> invoice_line.account = revenue
+    >>> invoice_line.description = 'Test'
+    >>> customer_credit_note.save()
+    >>> Invoice.open([customer_credit_note.id], config.context)
+    >>> customer_credit_note.state
+    u'open'
+
 Create 1 supplier invoices::
 
     >>> supplier_invoice = Invoice(type='in_invoice')
@@ -208,7 +224,7 @@ Create statement::
 
     >>> statement = Statement(journal=statement_journal,
     ...     start_balance=Decimal('0'),
-    ...     end_balance=Decimal('130'),
+    ...     end_balance=Decimal('80'),
     ... )
 
 Received 180 from customer::
@@ -233,6 +249,16 @@ Received 180 from customer::
     >>> statement_line.invoice = customer_invoice2
     >>> statement_line.amount == Decimal('80')
     True
+
+Paid 50 to customer::
+
+    >>> statement_line = StatementLine()
+    >>> statement.lines.append(statement_line)
+    >>> statement_line.date = today
+    >>> statement_line.amount = Decimal('-50')
+    >>> statement_line.party = customer
+    >>> statement_line.account = receivable
+    >>> statement_line.invoice = customer_credit_note
 
 Paid 50 to supplier::
 
@@ -263,6 +289,9 @@ Test invoice state::
     u'open'
     >>> customer_invoice2.amount_to_pay == Decimal('70')
     True
+    >>> customer_credit_note.reload()
+    >>> customer_credit_note.state
+    u'paid'
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     u'paid'

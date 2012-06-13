@@ -1,3 +1,5 @@
+* Allow to use credit note on statement line
+
 Version 2.4.0 - 2012-04-23
 * Bug fixes (see mercurial logs for details)
 * Don't deactivate payment wizard on invoice

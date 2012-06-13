@@ -355,9 +355,7 @@ class Line(ModelSQL, ModelView):
         on_change=['account', 'invoice'], domain=[
             ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
             If(Bool(Eval('party')),
-                If(Eval('amount', 0) > 0,
-                    ('kind', '=', 'receivable'),
-                    ('kind', '=', 'payable')),
+                ('kind', 'in', ['receivable', 'payable']),
                 ('kind', 'in', ['payable', 'receivable', 'revenue', 'expense',
                         'other'])),
             ],
