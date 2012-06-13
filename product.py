@@ -49,7 +49,10 @@ class ProductBom(ModelSQL, ModelView):
     _description = __doc__
 
     product = fields.Many2One('product.product', 'Product',
-        ondelete='CASCADE', select=1, required=True)
+        ondelete='CASCADE', select=1, required=True,
+        domain=[
+            ('type', '!=', 'service'),
+            ])
     bom = fields.Many2One('production.bom', 'BOM', ondelete='CASCADE',
         select=1, required=True, domain=[
             ('output_products', '=', If(Bool(Eval('product')),
