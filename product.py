@@ -8,7 +8,11 @@ class Product(ModelSQL, ModelView):
     _name = 'product.product'
 
     boms = fields.One2Many('product.product-production.bom', 'product',
-        'BOMs', order=[('sequence', 'ASC'), ('id', 'ASC')])
+        'BOMs', order=[('sequence', 'ASC'), ('id', 'ASC')],
+        states={
+            'invisible': Eval('type', 'service') == 'service',
+            },
+        depends=['type'])
 
     def __init__(self):
         super(Product, self).__init__()
