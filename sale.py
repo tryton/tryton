@@ -671,7 +671,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                     location = line.from_location
                 else:
                     location = line.to_location
-                if (not location
+                if ((not location or not line.warehouse)
                         and line.product
                         and line.product.type in ('goods', 'assets')):
                     self.raise_user_error('warehouse_required')
@@ -1329,8 +1329,11 @@ class SaleLine(ModelSQL, ModelView):
     def get_from_location(self, ids, name):
         result = {}
         for line in self.browse(ids):
-            if line.quantity >= 0 and line.warehouse:
-                result[line.id] = line.warehouse.output_location.id
+            if line.quantity >= 0:
+                if line.warehouse:
+                    result[line.id] = line.warehouse.output_location.id
+                else:
+                    result[line.id] = None
             else:
                 result[line.id] = line.sale.party.customer_location.id
         return result
