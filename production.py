@@ -459,7 +459,7 @@ class Production(Workflow, ModelSQL, ModelView):
             quantity = input_obj.compute_quantity(input_, factor)
             product = input_.product
             values = self._move_values(storage_location, location, company,
-                product, product.default_uom, quantity)
+                product, input_.uom, quantity)
             if values:
                 values['production_input'] = production.id
                 move_obj.create(values)
@@ -469,7 +469,7 @@ class Production(Workflow, ModelSQL, ModelView):
             quantity = output_obj.compute_quantity(output, factor)
             product = output.product
             values = self._move_values(location, storage_location, company,
-                product, product.default_uom, quantity)
+                product, output.uom, quantity)
             if values:
                 values['production_output'] = production.id
                 if product == production.product:
