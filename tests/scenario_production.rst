@@ -85,9 +85,11 @@ Create Components::
     >>> component1.cost_price = Decimal(1)
     >>> component1.save()
 
+    >>> meter, = ProductUom.find([('name', '=', 'Meter')])
+    >>> centimeter, = ProductUom.find([('name', '=', 'centimeter')])
     >>> component2 = Product()
     >>> component2.name = 'component 2'
-    >>> component2.default_uom = unit
+    >>> component2.default_uom = meter
     >>> component2.type = 'goods'
     >>> component2.list_price = Decimal(7)
     >>> component2.cost_price = Decimal(5)
@@ -106,7 +108,8 @@ Create Bill of Material::
     >>> input2 = BOMInput()
     >>> bom.inputs.append(input2)
     >>> input2.product = component2
-    >>> input2.quantity = 1
+    >>> input2.quantity = 150
+    >>> input2.uom = centimeter
     >>> output = BOMOutput()
     >>> bom.outputs.append(output)
     >>> output.product = product
@@ -146,7 +149,7 @@ Make a production::
     >>> production.product = product
     >>> production.bom = bom
     >>> production.quantity = 2
-    >>> sorted([i.quantity for i in production.inputs]) == [2, 10]
+    >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
     True
     >>> output, = production.outputs
     >>> output.quantity == 2
