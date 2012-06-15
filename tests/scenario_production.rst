@@ -154,7 +154,7 @@ Make a production::
     >>> output, = production.outputs
     >>> output.quantity == 2
     True
-    >>> production.cost == Decimal('20')
+    >>> production.cost == Decimal('25')
     True
     >>> production.save()
     >>> Production.wait([production.id], config.context)
