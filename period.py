@@ -132,7 +132,7 @@ class Period(ModelSQL, ModelView):
         Return the period for the company_id
             at the date or the current date.
         If exception is set the function will raise an exception
-            if any period is found.
+            if no period is found.
 
         :param company_id: the company id
         :param date: the date searched
