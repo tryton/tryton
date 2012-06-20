@@ -132,7 +132,10 @@ class View(ModelSQL, ModelView):
                 ('module', '=', view.module),
                 ])
             for view2 in self.browse(cursor, 0, view_ids):
-                tree2 = etree.fromstring(view2.arch)
+                xml2 = view2.arch.strip()
+                if not xml2:
+                    continue
+                tree2 = etree.fromstring(xml2)
                 root2_element = tree2.getroottree().getroot()
                 strings += self._translate_view(root2_element)
             if not strings:
