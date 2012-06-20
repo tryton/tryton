@@ -145,8 +145,10 @@ class RichTextBox(TextBox):
             }
         self.tools['size'].child.set_active(self.sizes.index(
             self.current_font_prop['size']))
-        self.tools['font_family'].child.set_active(self.families.index(
-            self.current_font_prop['font_family']))
+        font_family = self.current_font_prop['font_family']
+        if font_family in self.families:
+            self.tools['font_family'].child.set_active(self.families.index(
+                    font_family))
         self.start_tags = {}
         self.end_tags = {}
         # Connect events
