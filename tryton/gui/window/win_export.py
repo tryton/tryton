@@ -246,7 +246,8 @@ class WinExport(object):
         child = self.model1.iter_children(iter)
         if self.model1.get_value(child, 0) is None:
             prefix_field = self.model1.get_value(iter, 1)
-            name, model = self.fields[prefix_field]
+            _, model = self.fields[prefix_field]
+            name = self.fields_data[prefix_field]['string']
             self.model_populate(self._get_fields(model), iter, prefix_field +
                     '/', name + '/')
             self.model1.remove(child)
