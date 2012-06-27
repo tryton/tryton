@@ -95,7 +95,7 @@ class SplitMove(Wizard):
     start = StateView('stock.move.split.start',
         'stock_split.split_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Spit', 'split', 'tryton-ok', default=True),
+            Button('Split', 'split', 'tryton-ok', default=True),
             ])
     split = StateTransition()
 

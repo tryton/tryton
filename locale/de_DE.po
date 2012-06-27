@@ -51,5 +51,5 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgctxt "wizard_button:stock.move.split,start,split:"
-msgid "Spit"
+msgid "Split"
 msgstr "Aufteilen"
