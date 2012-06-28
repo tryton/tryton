@@ -428,7 +428,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 res['untaxed_amount'] += line.get('amount') or 0
                 with Transaction().set_context(**context):
                     taxes = tax_obj.compute(line.get('taxes', []),
-                            line.get('unit_price', Decimal('0.0')),
+                            line.get('unit_price') or Decimal('0.0'),
                             line.get('quantity', 0.0))
                 for tax in taxes:
                     key, val = self._compute_tax(tax,
@@ -446,7 +446,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         tax_keys = []
         for tax in vals.get('taxes', []):
             if tax.get('manual', False):
-                res['tax_amount'] += tax.get('amount', Decimal('0.0'))
+                res['tax_amount'] += tax.get('amount') or Decimal('0.0')
                 continue
             key = (tax.get('base_code'), tax.get('base_sign'),
                     tax.get('tax_code'), tax.get('tax_sign'),
@@ -459,7 +459,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if currency:
                 if not currency_obj.is_zero(currency,
                         computed_taxes[key]['base'] - \
-                                tax.get('base', Decimal('0.0'))):
+                                (tax.get('base') or Decimal('0.0'))):
                     res['tax_amount'] += computed_taxes[key]['amount']
                     res['taxes'].setdefault('update', [])
                     res['taxes']['update'].append({
@@ -468,10 +468,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
                         'base': computed_taxes[key]['base'],
                         })
                 else:
-                    res['tax_amount'] += tax.get('amount', Decimal('0.0'))
+                    res['tax_amount'] += tax.get('amount') or Decimal('0.0')
             else:
                 if computed_taxes[key]['base'] - \
-                        tax.get('base', Decimal('0.0')) != Decimal('0.0'):
+                        (tax.get('base') or Decimal('0.0')) != Decimal('0.0'):
                     res['tax_amount'] += computed_taxes[key]['amount']
                     res['taxes'].setdefault('update', [])
                     res['taxes']['update'].append({
@@ -480,7 +480,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                         'base': computed_taxes[key]['base'],
                         })
                 else:
-                    res['tax_amount'] += tax.get('amount', Decimal('0.0'))
+                    res['tax_amount'] += tax.get('amount') or Decimal('0.0')
         for key in computed_taxes:
             if key not in tax_keys:
                 res['tax_amount'] += computed_taxes[key]['amount']
