@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.transaction import Transaction
 
 
 class InvoiceLine(ModelSQL, ModelView):
@@ -63,7 +64,9 @@ class InvoiceLine(ModelSQL, ModelView):
                     for move in purchase_line.moves
                     if move.state == 'done']
         elif line.invoice.type == 'out_invoice':
-            moves = [move for sale_line in line.sale_lines
+            with Transaction().set_user(0, set_context=True):
+                sale_lines = self.browse(line.id).sale_lines
+            moves = [move for sale_line in sale_lines
                     for move in sale_line.moves
                     if move.state == 'done']
         if line.invoice.type == 'in_invoice':
