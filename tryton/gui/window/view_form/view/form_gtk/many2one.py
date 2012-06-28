@@ -106,7 +106,7 @@ class Many2One(WidgetInterface):
     def id_from_value(value):
         return value
 
-    def sig_activate(self, widget, event=None, key_press=False):
+    def sig_activate(self, widget=None, event=None, key_press=False):
         if not self.focus_out or not self.field:
             return
         self.changed = False
@@ -115,7 +115,7 @@ class Many2One(WidgetInterface):
 
         self.focus_out = False
         if model and not self.has_target(value):
-            if not key_press and not event:
+            if not key_press and not event and widget:
                 widget.emit_stop_by_name('activate')
             if (not self._readonly
                     and (self.wid_text.get_text()
@@ -276,7 +276,8 @@ class Many2One(WidgetInterface):
         return False
 
     def set_value(self, record, field):
-        pass  # No update of the model, the model is updated in real time !
+        # Simulate a focus-out
+        self.sig_activate()
 
     def set_text(self, value):
         if not value:
