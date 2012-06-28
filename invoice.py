@@ -1970,7 +1970,9 @@ class InvoiceTax(ModelSQL, ModelView):
     base = fields.Numeric('Base', required=True,
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
     amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
+        digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
+        on_change_with=['tax', 'base', 'amount', 'manual'],
+        depends=['tax', 'base', 'manual'])
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
         domain=[
@@ -1982,7 +1984,13 @@ class InvoiceTax(ModelSQL, ModelView):
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ])
     tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True)
-    tax = fields.Many2One('account.tax', 'Tax')
+    tax = fields.Many2One('account.tax', 'Tax',
+        states={
+            'readonly': ~Eval('manual', False),
+            },
+        on_change=['tax', '_parent_invoice.party',
+            '_parent_invoice.type'],
+        depends=['manual'])
 
     def __init__(self):
         super(InvoiceTax, self).__init__()
@@ -2022,6 +2030,46 @@ class InvoiceTax(ModelSQL, ModelView):
 
     def default_tax_sign(self):
         return Decimal('1')
+
+    def on_change_tax(self, values):
+        pool = Pool()
+        tax_obj = pool.get('account.tax')
+        invoice_obj = pool.get('account.invoice')
+        changes = {}
+        if values.get('tax'):
+            invoice_values = dict(
+                (f[16:], v) for f, v in values.iteritems()
+                if f.startswith('_parent_invoice.'))
+            context = invoice_obj.get_tax_context(invoice_values)
+            with Transaction().set_context(**context):
+                tax = tax_obj.browse(values['tax'])
+            changes['description'] = tax.description
+            invoice_type = values.get('_parent_invoice.type', 'out_invoice')
+            if invoice_type in ('out_invoice', 'in_invoice'):
+                changes['base_code'] = tax.invoice_base_code.id
+                changes['base_sign'] = tax.invoice_base_sign
+                changes['tax_code'] = tax.invoice_tax_code.id
+                changes['tax_sign'] = tax.invoice_tax_sign
+                changes['account'] = tax.invoice_account.id
+            else:
+                changes['base_code'] = tax.credit_note_base_code.id
+                changes['base_sign'] = tax.credit_note_base_sign
+                changes['tax_code'] = tax.credit_note_tax_code.id
+                changes['tax_sign'] = tax.credit_note_tax_sign
+                changes['account'] = tax.credit_note_account.id
+        return changes
+
+    def on_change_with_amount(self, values):
+        pool = Pool()
+        tax_obj = pool.get('account.tax')
+        if values.get('tax') and values.get('manual', False):
+            tax_id = values['tax']
+            base = values.get('base') or Decimal(0)
+            for tax in tax_obj.compute([tax_id], base, 1):
+                if (tax['tax'].id == tax_id
+                        and tax['base'] == values.get('base')):
+                    return tax['amount']
+        return values.get('amount')
 
     def check_modify(self, ids):
         '''

@@ -655,6 +655,8 @@ this repository contains the full copyright notices and license terms. -->
                 <form string="Invoice Tax">
                     <label name="invoice"/>
                     <field name="invoice" colspan="3"/>
+                    <label name="tax"/>
+                    <field name="tax" colspan="3"/>
                     <label name="description"/>
                     <field name="description"/>
                     <label name="sequence"/>
@@ -677,7 +679,6 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="base_sign"/>
                         <field name="base_sign"/>
                     </group>
-                    <field name="tax" colspan="4" invisible="1"/>
                 </form>
                 ]]>
             </field>
@@ -690,12 +691,12 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Invoice Taxes">
                     <field name="invoice"/>
+                    <field name="tax"/>
                     <field name="description"/>
                     <field name="account"/>
                     <field name="manual"/>
                     <field name="base"/>
                     <field name="amount"/>
-                    <field name="tax" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -718,6 +719,7 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="tax_code" tree_invisible="1"/>
                     <field name="tax_sign" tree_invisible="1"/>
                     <field name="account" tree_invisible="1"/>
+                    <field name="tax" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
