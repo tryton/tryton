@@ -83,7 +83,7 @@ class Many2One(WidgetInterface):
     def _color_widget(self):
         return self.wid_text
 
-    def sig_activate(self, widget, event=None, key_press=False):
+    def sig_activate(self, widget=None, event=None, key_press=False):
         if not self.focus_out:
             return
         if not self.field:
@@ -93,7 +93,7 @@ class Many2One(WidgetInterface):
 
         self.focus_out = False
         if not value:
-            if not key_press and not event:
+            if not key_press and not event and widget:
                 widget.emit_stop_by_name('activate')
             if not self._readonly and (self.wid_text.get_text() or \
                     (self.field.get_state_attrs(
@@ -243,7 +243,8 @@ class Many2One(WidgetInterface):
         return False
 
     def set_value(self, record, field):
-        pass # No update of the model, the model is updated in real time !
+        # Simulate a focus-out
+        self.sig_activate()
 
     def display(self, record, field):
         self.changed = False
