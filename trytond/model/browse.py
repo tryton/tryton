@@ -201,9 +201,13 @@ class BrowseRecord(object):
         return "BrowseRecord(%s, %d)" % (self._model_name, self._id)
 
     def __eq__(self, other):
+        if not isinstance(other, BrowseRecord):
+            return False
         return (self._model_name, self._id) == (other._model_name, other._id)
 
     def __ne__(self, other):
+        if not isinstance(other, BrowseRecord):
+            return True
         return (self._model_name, self._id) != (other._model_name, other._id)
 
     # we need to define __unicode__ even though we've already defined __str__
