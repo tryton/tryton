@@ -33,7 +33,7 @@ setup(name='trytond_stock_supply_production',
         'trytond.modules.stock_supply_production.tests',
     ],
     package_data={
-        'trytond.modules.production': info.get('xml', []) \
+        'trytond.modules.stock_supply_production': info.get('xml', []) \
                 + info.get('translation', []),
     },
     classifiers=[
