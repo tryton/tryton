@@ -1834,6 +1834,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 ('draft', 'cancel'),
                 ('waiting', 'cancel'),
                 ('assigned', 'cancel'),
+                ('cancel', 'draft'),
                 ))
         self._buttons.update({
                 'cancel': {
