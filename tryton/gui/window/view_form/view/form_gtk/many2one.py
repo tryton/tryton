@@ -308,5 +308,7 @@ class Many2One(WidgetInterface):
     def _populate_popup(self, widget, menu):
         value = self.field.get(self.record)
         if self.has_target(value):
-            populate(menu, self.get_model(), self.id_from_value(value))
+            # Delay filling of popup as it can take time
+            gobject.idle_add(populate, menu, self.get_model(),
+                self.id_from_value(value))
         return True

@@ -549,38 +549,41 @@ class ViewList(ParserView):
                 return False
             group = model.group
             record = group[path[0][0]]
-
             menu = gtk.Menu()
-            copy_item = gtk.ImageMenuItem('gtk-copy')
-            copy_item.connect('activate', lambda x: self.on_copy())
-            menu.append(copy_item)
-            # Don't activate actions if parent is modified
-            parent = record.parent if record else None
-            while parent:
-                if parent.modified:
-                    record = None
-                    break
-                parent = parent.parent
-            populate(menu, group.model_name, record)
-            for col in self.widget_tree.get_columns():
-                if not col.get_visible() or not col.name:
-                    continue
-                field = group.fields[col.name]
-                model = None
-                if field.attrs['type'] == 'many2one':
-                    model = field.attrs['relation']
-                    record_id = field.get(record)
-                elif field.attrs['type'] == 'reference':
-                    value = field.get(record)
-                    if value:
-                        model, record_id = value.split(',')
-                        record_id = int(record_id)
-                if not model:
-                    continue
-                label = field.attrs['string']
-                populate(menu, model, record_id, title=label)
-            menu.show_all()
             menu.popup(None, None, None, event.button, event.time)
+
+            def pop(menu, group, record):
+                copy_item = gtk.ImageMenuItem('gtk-copy')
+                copy_item.connect('activate', lambda x: self.on_copy())
+                menu.append(copy_item)
+                # Don't activate actions if parent is modified
+                parent = record.parent if record else None
+                while parent:
+                    if parent.modified:
+                        record = None
+                        break
+                    parent = parent.parent
+                populate(menu, group.model_name, record)
+                for col in self.widget_tree.get_columns():
+                    if not col.get_visible() or not col.name:
+                        continue
+                    field = group.fields[col.name]
+                    model = None
+                    if field.attrs['type'] == 'many2one':
+                        model = field.attrs['relation']
+                        record_id = field.get(record)
+                    elif field.attrs['type'] == 'reference':
+                        value = field.get(record)
+                        if value:
+                            model, record_id = value.split(',')
+                            record_id = int(record_id)
+                    if not model:
+                        continue
+                    label = field.attrs['string']
+                    populate(menu, model, record_id, title=label)
+                menu.show_all()
+            # Delay filling of popup as it can take time
+            gobject.idle_add(pop, menu, group, record)
         elif event.button == 2:
             event.button = 1
             event.state |= gtk.gdk.MOD1_MASK
@@ -707,12 +710,21 @@ class ViewList(ParserView):
                 and self.widget_tree.editable \
                 and not self.screen.parent \
                 and previous_record != self.screen.current_record:
-            if previous_record and \
-                    not (previous_record.validate(self.get_fields())
-                            and previous_record.save()):
-                self.screen.current_record = previous_record
-                self.set_cursor()
-                return True
+            if previous_record:
+                def go_previous():
+                    self.screen.current_record = previous_record
+                    self.set_cursor()
+
+                def save():
+                    if not previous_record.destroyed:
+                        if not previous_record.save():
+                            go_previous()
+
+                if not previous_record.validate(self.get_fields()):
+                    go_previous()
+                    return True
+                # Delay the save to let GTK process the current event
+                gobject.idle_add(save)
         self.update_children()
 
     def set_value(self):
