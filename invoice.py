@@ -2470,9 +2470,9 @@ class PayInvoice(Wizard):
                         if not x.reconciliation]
                 if line_ids:
                     move_line_obj.reconcile(line_ids,
-                        journal_id=session.ask.journal_writeoff,
+                        journal_id=session.ask.journal_writeoff.id,
                         date=session.start.date,
-                        account_id=session.ask.account_writeoff)
+                        account_id=session.ask.account_writeoff.id)
         else:
             if line_id:
                 reconcile_lines += [line_id]
