@@ -2532,6 +2532,10 @@ class PayInvoice(Wizard):
                 line_ids = [x.id for x in session.ask.lines] + \
                     [x.id for x in invoice.payment_lines
                         if not x.reconciliation]
+                if line_id and line_id not in line_ids:
+                    # Add new payment line if payment_lines was cached before
+                    # its creation
+                    line_ids += [line_id]
                 if line_ids:
                     move_line_obj.reconcile(line_ids,
                         journal_id=session.ask.journal_writeoff.id,
