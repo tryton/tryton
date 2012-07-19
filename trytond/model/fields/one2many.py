@@ -88,7 +88,7 @@ class One2Many(Field):
         for i in chain(*ids2):
             if i in cache[self.model_name] \
                     and self.field in cache[self.model_name][i]:
-                res[cache[self.model_name][i][self.field].id].append(i)
+                res[cache[self.model_name][i][self.field]].append(i)
             else:
                 ids3.append(i)
 
