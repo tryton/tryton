@@ -189,7 +189,8 @@ class Many2OneDescriptor(FieldDescriptor):
             value = relation(value)
         elif not value:
             value = None
-        instance._values[self.name] = value
+        if self.name in instance._values:
+            instance._values[self.name] = value
         return value
 
     def __set__(self, instance, value):
@@ -600,7 +601,7 @@ class Model(object):
         'Save the record'
         context = self._config.context
         if self.id < 0:
-            values = self._get_values(fields=self._changed)
+            values = self._get_values()
             self.__id = self._proxy.create(values, context)
         else:
             if not self._changed:
