@@ -276,7 +276,7 @@ class Graph(gtk.DrawingArea):
         cr.restore()
 
     def drawLegend(self, cr, width, height):
-        if not self.attrs.get('legend', True):
+        if not int(self.attrs.get('legend', 1)):
             return
 
         padding = 4
