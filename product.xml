@@ -83,5 +83,86 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
+        <record model="ir.ui.view" id="product_quantities_warehouse_view_graph">
+            <field name="model">stock.product_quantities_warehouse</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <graph string="Product Quantities By Warehouse" type="line"
+                    legend="0">
+                    <x>
+                        <field name="date"/>
+                    </x>
+                    <y>
+                        <field name="quantity" empty="0" interpolation="constant-left" fill="1"/>
+                    </y>
+                </graph>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_quantities_warehouse_view_list">
+            <field name="model">stock.product_quantities_warehouse</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Product Quantities By Warehouse">
+                    <field name="date"/>
+                    <field name="quantity"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window"
+            id="act_product_quantities_warehouse">
+            <field name="name">Product Quantities By Warehouse</field>
+            <field name="res_model">stock.product_quantities_warehouse</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_quantities_warehouse_graph_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="product_quantities_warehouse_view_graph"/>
+            <field name="act_window" ref="act_product_quantities_warehouse"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_product_quantities_warehouse_list_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="product_quantities_warehouse_view_list"/>
+            <field name="act_window" ref="act_product_quantities_warehouse"/>
+        </record>
+
+        <record model="ir.ui.view" id="product_quantities_warehouse_start_view_form">
+            <field
+                name="model">stock.product_quantities_warehouse.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Product Quantities By Warehouse">
+                    <label name="warehouse"/>
+                    <field name="warehouse"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard"
+            id="wizard_product_quantities_warehouse">
+            <field name="name">Product Quantities By Warehouse</field>
+            <field name="wiz_name">stock.product_quantities_warehouse</field>
+            <field name="model">product.product</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_product_quantities_warehouse_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_product_quantities_warehouse"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="wizard_product_quantities_warehouse-group_stock">
+            <field name="action" ref="wizard_product_quantities_warehouse"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
     </data>
 </tryton>

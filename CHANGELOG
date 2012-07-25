@@ -1,3 +1,5 @@
+* Add Product Quantities By Warehouse
+
 Version 2.4.0 - 2012-04-24
 * Bug fixes (see mercurial logs for details)
 * Remove special to_location_warehouse search clause

@@ -615,3 +615,112 @@ class ProductByLocation(Wizard):
         return action, {}
 
 ProductByLocation()
+
+
+class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
+    'Product Quantities By Warehouse'
+    _name = 'stock.product_quantities_warehouse'
+    _description = __doc__
+
+    date = fields.Date('Date')
+    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
+
+    def __init__(self):
+        super(ProductQuantitiesByWarehouse, self).__init__()
+        self._order.insert(0, ('date', 'ASC'))
+
+    def table_query(self):
+        move_obj = Pool().get('stock.move')
+        location_obj = Pool().get('stock.location')
+
+        product_id = Transaction().context.get('product')
+        warehouse_id = Transaction().context.get('warehouse', -1)
+        warehouse_clause, warehouse_params = location_obj.search([
+                ('parent', 'child_of', [warehouse_id]),
+                ], query_string=True, order=[])
+        return ('SELECT MAX(id) AS id, '
+                '0 AS create_uid, '
+                'NOW() AS create_date, '
+                'NULL AS write_uid, '
+                'NULL AS write_date, '
+                'COALESCE(effective_date, planned_date) AS date '
+            'FROM "' + move_obj._table + '" '
+            'WHERE product = %s '
+                'AND (from_location IN (' + warehouse_clause + ') '
+                    'OR to_location IN (' + warehouse_clause + ')) '
+                'AND COALESCE(effective_date, planned_date) IS NOT NULL '
+            'GROUP BY date, product', [product_id] + 2 * warehouse_params)
+
+    def get_quantity(self, ids, name):
+        product_obj = Pool().get('product.product')
+
+        product_id = Transaction().context.get('product')
+        warehouse_id = Transaction().context.get('warehouse')
+
+        lines = self.browse(ids)
+        dates = sorted(l.date for l in lines)
+        quantities = {}
+        date_start = None
+        for date in dates:
+            context = {
+                'stock_date_start': date_start,
+                'stock_date_end': date,
+                }
+            with Transaction().set_context(**context):
+                quantities[date] = product_obj.products_by_location(
+                    [warehouse_id], [product_id], with_childs=True,
+                    skip_zero=False)[(warehouse_id, product_id)]
+            date_start = date + datetime.timedelta(1)
+        cumulate = 0
+        for date in dates:
+            cumulate += quantities[date]
+            quantities[date] = cumulate
+
+        return dict((l.id, quantities[l.date]) for l in lines)
+
+ProductQuantitiesByWarehouse()
+
+
+class ProductQuantitiesByWarehouseStart(ModelView):
+    'Product Quantities By Warehouse'
+    _name = 'stock.product_quantities_warehouse.start'
+    _description = __doc__
+
+    warehouse = fields.Many2One('stock.location', 'Warehouse', domain=[
+            ('type', '=', 'warehouse'),
+            ])
+
+    def default_warehouse(self):
+        location_obj = Pool().get('stock.location')
+        warehouse_ids = location_obj.search([
+                ('type', '=', 'warehouse'),
+                ])
+        if len(warehouse_ids) == 1:
+            return warehouse_ids[0]
+
+ProductQuantitiesByWarehouseStart()
+
+
+class OpenProductQuantitiesByWarehouse(Wizard):
+    'Product Quantities By Warehouse'
+    _name = 'stock.product_quantities_warehouse'
+
+    start = StateView('stock.product_quantities_warehouse.start',
+        'stock.product_quantities_warehouse_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Open', 'open_', 'tryton-ok', default=True),
+            ])
+    open_ = StateAction('stock.act_product_quantities_warehouse')
+
+    def do_open_(self, session, action):
+        date_obj = Pool().get('ir.date')
+        action['pyson_context'] = PYSONEncoder().encode({
+                'product': Transaction().context['active_id'],
+                'warehouse': session.start.warehouse.id,
+                })
+        action['pyson_search_value'] = PYSONEncoder().encode([
+                ('date', '>=', date_obj.today()),
+                ])
+        return action, {}
+
+OpenProductQuantitiesByWarehouse()
