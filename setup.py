@@ -73,7 +73,7 @@ setup(name='trytond_purchase_invoice_line_standalone',
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    purchase_invoice_line_standalone =
+    purchase_invoice_line_standalone = \
         trytond.modules.purchase_invoice_line_standalone
     """,
     test_suite='tests',
