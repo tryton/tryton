@@ -166,11 +166,12 @@ class PurchaseRequest(ModelSQL, ModelView):
                 ] = order_point
 
         # fetch goods
+        # ordered by ids to speedup reduce_ids in products_by_location
         product_ids = product_obj.search([
                 ('type', '=', 'goods'),
                 ('consumable', '=', False),
                 ('purchasable', '=', True),
-                ])
+                ], order=[('id', 'ASC')])
         #aggregate product by minimum supply date
         date2products = {}
         for product in product_obj.browse(product_ids):
