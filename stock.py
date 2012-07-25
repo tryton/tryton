@@ -3,6 +3,7 @@
 from decimal import Decimal
 from trytond.model import Model, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Move(Model):
@@ -137,12 +138,13 @@ class Move(Model):
         if move_line:
             account_move_lines.append(move_line)
 
-        account_move_id = account_move_obj.create(
-                self._get_account_stock_move(move, account_move_lines))
+        with Transaction().set_user(0, set_context=True):
+            account_move_id = account_move_obj.create(
+                    self._get_account_stock_move(move, account_move_lines))
+            account_move_obj.post(account_move_id)
         self.write(move.id, {
             'account_move': account_move_id,
             })
-        account_move_obj.post(account_move_id)
         return account_move_id
 
     def copy(self, ids, default=None):
