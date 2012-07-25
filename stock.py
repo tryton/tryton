@@ -3,6 +3,7 @@
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Move(ModelSQL, ModelView):
@@ -120,9 +121,9 @@ class Move(ModelSQL, ModelView):
             amount += line['debit'] - line['credit']
         account_move_lines.append(
                 self._get_account_stock_move_line(move, amount))
-
-        account_move_id = account_move_obj.create(
-                self._get_account_stock_move(move, account_move_lines, type_))
+        with Transaction().set_user(0, set_context=True):
+            account_move_id = account_move_obj.create(
+                    self._get_account_stock_move(move, account_move_lines, type_))
         self.write(move.id, {
             'account_move': account_move_id,
             })
