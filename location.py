@@ -138,7 +138,7 @@ class Location(ModelSQL, ModelView):
             ], order=[])
         if ids:
             return [('id', 'in', ids)]
-        return [(self._rec_name,) + clause[1:]]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def get_quantity(self, ids, name):
         product_obj = Pool().get('product.product')
