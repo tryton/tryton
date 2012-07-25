@@ -135,6 +135,11 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_purchase_request_form" sequence="10"
             action="act_purchase_request_create"
             id="menu_purchase_request_create"/>
+        <record model="ir.ui.menu-res.group"
+            id="menu_purchase_request_form_group_purchase_request">
+            <field name="menu" ref="menu_purchase_request_create"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
 
         <record model="ir.ui.view" id="purchase_request_create_purchase_ask_term_view_form">
             <field name="model">purchase.request.create_purchase.ask_term</field>
