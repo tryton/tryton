@@ -16,6 +16,13 @@ class Allocation(ModelSQL, ModelView):
             select=True)
     percentage = fields.Float('Percentage', digits=(16, 2), required=True)
 
+    def __init__(self):
+        super(Allocation, self).__init__()
+        self._sql_constraints += [
+            ('percentage_positive', 'CHECK(percentage > 0)',
+                'Percentage must be greater than zero')
+        ]
+
     def default_percentage(self):
         return 100
 
