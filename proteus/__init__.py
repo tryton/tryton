@@ -20,7 +20,6 @@ from decimal import Decimal
 from types import NoneType
 
 import proteus.config
-from proteus.pyson import PYSONDecoder
 
 _MODELS = threading.local()
 
@@ -760,6 +759,8 @@ class Model(object):
 
     def _on_change(self, name):
         'Call on_change for field'
+        # Import locally to not break installation
+        from proteus.pyson import PYSONDecoder
         definition = self._fields[name]
         if definition.get('on_change'):
             if isinstance(definition['on_change'], basestring):
