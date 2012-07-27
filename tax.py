@@ -1207,7 +1207,6 @@ class RuleLine(ModelSQL, ModelView):
     'Tax Rule Line'
     _name = 'account.tax.rule.line'
     _description = __doc__
-    _rec_name = 'tax'
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
             select=True, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group')
