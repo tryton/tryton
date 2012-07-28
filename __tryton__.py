@@ -40,6 +40,7 @@
         'stock.xml',
     ],
     'translation': [
+        'locale/es_ES.po',
         'locale/fr_FR.po',
     ]
 }
