@@ -4,6 +4,7 @@
     'name': 'Production Management',
     'name_ca_ES': 'Producció',
     'name_es_ES': 'Producción',
+    'name_fr_FR': 'Production',
     'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -20,6 +21,10 @@
     - Listas de Material (LdM)
     - Órdenes de producción
     ''',
+    'description_fr_FR': '''Gestion de la production, avec:
+    - Nomenclature
+    - Ordre de production
+    ''',
     'depends': [
         'ir',
         'res',
@@ -35,5 +40,6 @@
         'stock.xml',
     ],
     'translation': [
+        'locale/fr_FR.po',
     ]
 }
