@@ -6,7 +6,7 @@
     'name_de_DE': 'Französischer Kontenrahmen',
     'name_fr_FR': 'Comptabilité française',
     'name_es_ES': 'Contabilidad francesa',
-    'version': '2.4.0',
+    'version': '2.5.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
