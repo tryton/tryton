@@ -3,6 +3,7 @@
 {
     'name': 'Stock Supply Production',
     'name_ca_ES': 'Proveïment d''estoc en producció',
+    'name_de_DE': 'Lagerverwaltung Bestellwesen Produktion',
     'name_es_ES': 'Abastecimiento de stock en producción',
     'version': '2.4.0',
     'author': 'B2CK',
@@ -10,6 +11,9 @@
     'website': 'http://www.tryton.org/',
     'description': '''Supply Stock with Production''',
     'description_ca_ES': '''Proveïment d'estoc en producció.''',
+    'description_de_DE': '''Bestellwesen mit Produktion
+    - Berücksichtigt den Bedarf der Produktion im Bestellwesen
+    ''',
     'description_es_ES': '''Abastecimiento de stock en producción.''',
     'depends': [
         'ir',
@@ -22,5 +26,6 @@
         'production.xml',
         ],
     'translation': [
+        'locale/de_DE.po',
         ]
 }
