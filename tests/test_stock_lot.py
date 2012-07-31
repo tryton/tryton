@@ -2,7 +2,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-import sys, os
+import sys
+import os
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', '..', '..', '..', 'trytond')))
 if os.path.isdir(DIR):
@@ -52,7 +53,8 @@ def doctest_dropdb(test):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(StockLotTestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            StockLotTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_stock_lot_shipment_out.rst',
         setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
