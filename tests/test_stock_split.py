@@ -10,6 +10,7 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import unittest
+from decimal import Decimal
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
@@ -55,6 +56,8 @@ class StockSplitTestCase(unittest.TestCase):
                     'type': 'goods',
                     'cost_price_method': 'fixed',
                     'default_uom': unit_id,
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
                     })
             input_id, = self.location.search([('code', '=', 'IN')])
             storage_id, = self.location.search([('code', '=', 'STO')])
