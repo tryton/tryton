@@ -176,7 +176,7 @@ class Party(ModelSQL, ModelView):
                 'GROUP BY l.party '
                 'HAVING (SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                         + clause[1] + ' %s)',
-                    [code] + today_value + [company_id] + [Decimal(clause[2])])
+            [code] + today_value + [company_id] + [Decimal(clause[2] or 0)])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
 Party()
