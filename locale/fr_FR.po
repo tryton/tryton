@@ -100,7 +100,7 @@ msgstr "Créé par"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
-msgstr "date Effective"
+msgstr "Date effective"
 
 msgctxt "field:production,id:"
 msgid "ID"
