@@ -158,8 +158,8 @@ class Move(ModelSQL, ModelView):
 
     def search_rec_name(self, cursor, user, name, clause, context=None):
         ids = self.search(cursor, user, ['OR',
-            ('reference',) + clause[1:],
-            (self._rec_name,) + clause[1:],
+            ('reference',) + tuple(clause[1:]),
+            (self._rec_name,) + tuple(clause[1:]),
             ], context=context)
         return [('id', 'in', ids)]
 
