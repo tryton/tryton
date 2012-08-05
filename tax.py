@@ -239,10 +239,10 @@ class Code(ModelSQL, ModelView):
         return res
 
     def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], limit=1, order=[])
+        ids = self.search([('code',) + tuple(clause[1:])], limit=1, order=[])
         if ids:
-            return [('code',) + clause[1:]]
-        return [('name',) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [('name',) + tuple(clause[1:])]
 
     def delete(self, ids):
         if isinstance(ids, (int, long)):
