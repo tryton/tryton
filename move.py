@@ -878,7 +878,7 @@ class Line(ModelSQL, ModelView):
             else:
                 if 'account' not in res:
                     res['account'] = party.account_payable.id
-                    res['account.rec_name'] = party.account_payable.id
+                    res['account.rec_name'] = party.account_payable.rec_name
 
         if party and vals.get('credit'):
             if vals['credit'] > Decimal('0.0'):
