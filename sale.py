@@ -428,8 +428,8 @@ class Sale(Workflow, ModelSQL, ModelView):
                 tax_list = ()
                 with Transaction().set_context(self.get_tax_context(vals)):
                     tax_list = tax_obj.compute(line.get('taxes', []),
-                            line.get('unit_price', Decimal('0.0')),
-                            line.get('quantity', 0.0))
+                            line.get('unit_price') or Decimal('0.0'),
+                            line.get('quantity') or 0.0)
                 for tax in tax_list:
                     key, val = invoice_obj._compute_tax(tax, 'out_invoice')
                     if not key in taxes:
@@ -1211,7 +1211,7 @@ class SaleLine(ModelSQL, ModelView):
         with Transaction().set_context(
                 self._get_context_sale_price(product, vals)):
             res['unit_price'] = product_obj.get_sale_price([product.id],
-                    vals.get('quantity', 0))[product.id]
+                    vals.get('quantity') or 0)[product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
                     Decimal(1) / 10 ** self.unit_price.digits[1])
@@ -1276,7 +1276,7 @@ class SaleLine(ModelSQL, ModelView):
         with Transaction().set_context(
                 self._get_context_sale_price(product, vals)):
             res['unit_price'] = product_obj.get_sale_price([vals['product']],
-                    vals.get('quantity', 0))[vals['product']]
+                    vals.get('quantity') or 0)[vals['product']]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
                     Decimal(1) / 10 ** self.unit_price.digits[1])
