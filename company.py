@@ -97,7 +97,7 @@ class User(ModelSQL, ModelView):
         'Current Companies'), 'get_companies')
     employees = fields.Many2Many('res.user-company.employee', 'user',
         'employee', 'Employees')
-    employee = fields.Many2One('company.employee', 'Employee',
+    employee = fields.Many2One('company.employee', 'Current Employee',
         domain=[
             ('company', '=', Eval('company')),
             ('id', 'in', Eval('employees', [])),
