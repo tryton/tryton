@@ -699,7 +699,10 @@ class Model(object):
         values = self._get_eval()
         del values['id']
         for field, definition in self._fields.iteritems():
-            if definition['type'] in ('one2many', 'many2many'):
+            if definition['type'] == 'one2many':
+                values[field] = [x._get_on_change_value()
+                    for x in getattr(self, field)]
+            elif definition['type'] == 'many2many':
                 values[field] = [x._get_eval() for x in getattr(self, field)]
         return values
 
