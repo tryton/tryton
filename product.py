@@ -70,7 +70,8 @@ class Template(ModelSQL, ModelView):
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('account_category')
+                    | (Eval('type') != 'goods')),
                 'required': ((Eval('type') == 'goods')
                     & Eval('context', {}).get('company')
                     & ~Eval('account_category')),
@@ -85,7 +86,8 @@ class Template(ModelSQL, ModelView):
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('account_category')
+                    | (Eval('type') != 'goods')),
                 'required': ((Eval('type') == 'goods')
                     & Eval('context', {}).get('company')
                     & ~Eval('account_category')),
@@ -100,7 +102,8 @@ class Template(ModelSQL, ModelView):
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('account_category')
+                    | (Eval('type') != 'goods')),
                 'required': ((Eval('type') == 'goods')
                     & Eval('context', {}).get('company')
                     & ~Eval('account_category')),
@@ -115,7 +118,8 @@ class Template(ModelSQL, ModelView):
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('account_category')
+                    | (Eval('type') != 'goods')),
                 'required': ((Eval('type') == 'goods')
                     & Eval('context', {}).get('company')
                     & ~Eval('account_category')),
