@@ -158,7 +158,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule" id="rule_hours_employee1">
             <field name="field" search="[('name', '=', 'employee'), ('model.model', '=', 'timesheet.hours_employee')]"/>
             <field name="operator">=</field>
-            <field name="operand">User/Employee</field>
+            <field name="operand">User/Current Employee</field>
             <field name="rule_group" ref="rule_group_hours_employee"/>
         </record>
         <record model="ir.rule.group" id="rule_group_hours_employee_admin">
