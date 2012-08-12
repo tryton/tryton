@@ -67,7 +67,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.rule" id="rule_line1">
             <field name="field" search="[('name', '=', 'employee'), ('model.model', '=', 'timesheet.line')]"/>
             <field name="operator">=</field>
-            <field name="operand">User/Employee</field>
+            <field name="operand">User/Current Employee</field>
             <field name="rule_group" ref="rule_group_line"/>
         </record>
         <record model="ir.rule.group" id="rule_group_line_admin">
