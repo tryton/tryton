@@ -32,6 +32,11 @@ class Fault(xmlrpclib.Fault):
         super(Fault, self).__init__(faultCode, faultString, **extra)
         self.args = faultString
 
+    def __repr__(self):
+        return (
+            "<Fault %s: %s>" %
+            (repr(self.faultCode), repr(self.faultString))
+            )
 
 class ProtocolError(xmlrpclib.ProtocolError):
     pass
