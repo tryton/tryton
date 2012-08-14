@@ -697,7 +697,6 @@ class Model(object):
 
     def _get_on_change_value(self):
         values = self._get_eval()
-        del values['id']
         for field, definition in self._fields.iteritems():
             if definition['type'] == 'one2many':
                 values[field] = [x._get_on_change_value()
