@@ -5,6 +5,7 @@
     'name_ca_ES': 'Proveïment d''estoc en producció',
     'name_de_DE': 'Lagerverwaltung Bestellwesen Produktion',
     'name_es_ES': 'Abastecimiento de stock en producción',
+    'name_fr_FR': 'Gestion des approvisionnements de  production',
     'version': '2.4.0',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
@@ -15,6 +16,7 @@
     - Berücksichtigt den Bedarf der Produktion im Bestellwesen
     ''',
     'description_es_ES': '''Abastecimiento de stock en producción.''',
+    'description_fr_FR': '''Gestion des approvisionnements de la production.''',
     'depends': [
         'ir',
         'product',
@@ -28,5 +30,6 @@
     'translation': [
         'locale/de_DE.po',
         'locale/es_ES.po',
+        'locale/fr_FR.po',
         ]
 }
