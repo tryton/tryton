@@ -6,7 +6,7 @@
     'name_de_DE': 'Produktion',
     'name_es_ES': 'Producción',
     'name_fr_FR': 'Production',
-    'version': '2.4.0',
+    'version': '2.4.1',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
