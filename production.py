@@ -342,12 +342,15 @@ class Production(Workflow, ModelSQL, ModelView):
                 result['uom.rec_name'] = product.default_uom.rec_name
                 result['unit_digits'] = product.default_uom.digits
         else:
+            result['bom'] = None
             result['uom'] = None
             result['uom.rec_name'] = ''
             result['unit_digits'] = 2
 
         values = values.copy()
         values['uom'] = result['uom']
+        if 'bom' in result:
+            values['bom'] = result['bom']
         result.update(self.explode_bom(values))
         return result
 
