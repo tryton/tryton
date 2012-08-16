@@ -377,12 +377,15 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     def create_inventory_moves(self, shipments):
         for shipment in shipments:
+            inventory_moves = []
             for incoming_move in shipment.incoming_moves:
                 vals = self._get_inventory_moves(incoming_move)
                 if vals:
-                    self.write(shipment.id, {
-                        'inventory_moves': [('create', vals)],
-                        })
+                    inventory_moves.append(('create', vals))
+            if inventory_moves:
+                self.write(shipment.id, {
+                    'inventory_moves': inventory_moves,
+                    })
 
     def delete(self, ids):
         if isinstance(ids, (int, long)):
