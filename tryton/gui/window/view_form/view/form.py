@@ -166,10 +166,12 @@ class ViewForm(ParserView):
             focus_widget.grab_focus()
 
     def button_clicked(self, widget):
-        record_id = self.screen.save_current()
         record = self.screen.current_record
         attrs = widget.attrs
-        if record_id:
+        fields = self.get_fields()
+        if record.validate(fields):
+            # Don't reload as it will be done after the RPC call
+            record.save(force_reload=False)
             if not attrs.get('confirm', False) or \
                     common.sur(attrs['confirm']):
                 button_type = attrs.get('type', 'object')
@@ -177,7 +179,7 @@ class ViewForm(ParserView):
                 if button_type == 'object':
                     try:
                         RPCExecute('model', self.screen.model_name,
-                            attrs['name'], [record_id], context=context)
+                            attrs['name'], [record.id], context=context)
                     except RPCException:
                         pass
                 elif button_type == 'action':
@@ -191,8 +193,8 @@ class ViewForm(ParserView):
                     if action_id:
                         Action.execute(action_id, {
                             'model': self.screen.model_name,
-                            'id': record_id,
-                            'ids': [record_id],
+                            'id': record.id,
+                            'ids': [record.id],
                             }, context=context)
                 else:
                     raise Exception('Unallowed button type')
