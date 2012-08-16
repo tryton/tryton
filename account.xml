@@ -674,6 +674,44 @@ this repository contains the full copyright notices and license terms. -->
             action="act_account_list" id="menu_account_list"
             sequence="10"/>
 
+        <record model="ir.ui.view" id="account_view_list2">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Accounts" keyword_open="1">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                    <field name="currency"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_list2">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_list2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_list2"/>
+            <field name="act_window" ref="act_account_list2"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_type">
+            <field name="name">Open Type</field>
+            <field name="wiz_name">account.account.open_type</field>
+            <field name="model">account.account.type</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_type_keyword">
+            <field name="keyword">tree_open</field>
+            <field name="model">account.account.type,-1</field>
+            <field name="action" ref="act_open_type"/>
+        </record>
+
         <record model="ir.ui.view" id="account_view_tree2">
             <field name="model">account.account</field>
             <field name="type">tree</field>
@@ -849,7 +887,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <tree string="Balance Sheet">
+                <tree string="Balance Sheet" keyword_open="1">
                     <field name="name"/>
                     <field name="amount"/>
                 </tree>

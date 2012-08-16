@@ -335,6 +335,25 @@ class Type(ModelSQL, ModelView):
 Type()
 
 
+class OpenType(Wizard):
+    'Open Type'
+    _name = 'account.account.open_type'
+    start_state = 'open_'
+    open_ = StateAction('account.act_account_list2')
+
+    def do_open_(self, session, action):
+        action['pyson_domain'] = PYSONEncoder().encode([
+                ('type', '=', Transaction().context['active_id']),
+                ])
+        action['pyson_context'] = PYSONEncoder().encode({
+                'date': Transaction().context.get('date'),
+                'posted': Transaction().context.get('posted'),
+                })
+        return action, {}
+
+OpenType()
+
+
 class AccountTemplate(ModelSQL, ModelView):
     'Account Template'
     _name = 'account.account.template'

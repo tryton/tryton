@@ -1450,6 +1450,9 @@ class OpenAccount(Wizard):
             ]
         if Transaction().context.get('posted'):
             action['pyson_domain'].append(('move.state', '=', 'posted'))
+        if Transaction().context.get('date'):
+            action['pyson_domain'].append(('move.date', '<=',
+                    Transaction().context['date']))
         action['pyson_domain'] = PYSONEncoder().encode(action['pyson_domain'])
         action['pyson_context'] = PYSONEncoder().encode({
             'fiscalyear': Transaction().context.get('fiscalyear'),
