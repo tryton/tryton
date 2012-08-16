@@ -165,10 +165,10 @@ class PurchaseRequest(ModelSQL, ModelView):
                 (order_point.warehouse_location.id, order_point.product.id)
                 ] = order_point
 
-        # fetch goods
+        # fetch goods and assets
         # ordered by ids to speedup reduce_ids in products_by_location
         product_ids = product_obj.search([
-                ('type', '=', 'goods'),
+                ('type', 'in', ['goods', 'assets']),
                 ('consumable', '=', False),
                 ('purchasable', '=', True),
                 ], order=[('id', 'ASC')])

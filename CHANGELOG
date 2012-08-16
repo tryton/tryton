@@ -1,3 +1,5 @@
+* Generate also purchase requests for assets
+
 Version 2.4.0 - 2012-04-24
 * Bug fixes (see mercurial logs for details)
 * Warehouse is not always required
