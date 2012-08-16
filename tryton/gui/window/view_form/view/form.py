@@ -122,7 +122,7 @@ class ViewForm(ParserView):
             # Get first the lazy one to reduce number of requests
             fields = [(name, field.attrs.get('loading', 'eager'))
                     for name, field in record.group.fields.iteritems()]
-            fields.sort(key=operator.itemgetter(1))
+            fields.sort(key=operator.itemgetter(1), reverse=True)
             for field, _ in fields:
                 record[field].get(record, check_load=False)
         for name, widgets in self.widgets.iteritems():
