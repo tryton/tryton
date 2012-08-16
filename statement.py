@@ -223,7 +223,9 @@ class Statement(ModelWorkflow, ModelSQL, ModelView):
                         else:
                             res['lines']['update'].append({
                                 'id': line['id'],
-                                'amount': amount_to_pay,
+                                'amount': (amount_to_pay
+                                        if line['amount'] >= 0
+                                        else -amount_to_pay),
                                 })
                             res['lines'].setdefault('add', [])
                             vals = line.copy()
