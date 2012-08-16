@@ -31,10 +31,12 @@ class Invoice(Model):
         self._reset_columns()
 
     def set_number(self, invoice):
+        set_open_date = not invoice.number
         res = super(Invoice, self).set_number(invoice)
-        self.write(invoice.id, {
-            'open_date': datetime.datetime.now(),
-            })
+        if set_open_date:
+            self.write(invoice.id, {
+                'open_date': datetime.datetime.now(),
+                })
         return res
 
     def copy(self, ids, default=None):
