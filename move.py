@@ -394,7 +394,11 @@ class Move(ModelSQL, ModelView):
         qty = uom_obj.compute_qty(uom, quantity, product.default_uom)
 
         qty = Decimal(str(qty))
-        product_qty = Decimal(str(product.template.quantity))
+        if hasattr(product_obj, 'cost_price'):
+            product_qty = product.quantity
+        else:
+            product_qty = product.template.quantity
+        product_qty = Decimal(str(product_qty))
         # convert wrt currency
         with Transaction().set_context(date=date):
             unit_price = currency_obj.compute(currency.id, unit_price,
