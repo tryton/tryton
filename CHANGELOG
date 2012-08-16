@@ -1,3 +1,5 @@
+* Add start/end balance to Trial balance
+
 Version 2.4.0 - 2012-04-23
 * Bug fixes (see mercurial logs for details)
 * Add new account type stock

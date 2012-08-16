@@ -3,6 +3,7 @@
 from decimal import Decimal
 import datetime
 import operator
+from itertools import izip
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -1442,18 +1443,42 @@ class TrialBalance(Report):
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
+                periods=start_period_ids,
+                posted=data['posted']):
+            start_accounts = account_obj.browse(account_ids)
+
+        with Transaction().set_context(
+                fiscalyear=data['fiscalyear'],
                 periods=end_period_ids,
                 posted=data['posted']):
-            accounts = account_obj.browse(account_ids)
+            in_accounts = account_obj.browse(account_ids)
 
+        with Transaction().set_context(
+                fiscalyear=data['fiscalyear'],
+                periods=start_period_ids + end_period_ids,
+                posted=data['posted']):
+            end_accounts = account_obj.browse(account_ids)
+
+        to_remove = []
         if not data['empty_account']:
-            to_remove = []
-            for account in accounts:
+            for account in in_accounts:
                 if account.debit == Decimal('0.0') \
                         and account.credit == Decimal('0.0'):
-                    to_remove.append(account)
-            for account in to_remove:
-                accounts.remove(account)
+                    to_remove.append(account.id)
+
+        accounts = []
+        for start_account, in_account, end_account in izip(
+                start_accounts, in_accounts, end_accounts):
+            if in_account.id in to_remove:
+                continue
+            accounts.append({
+                    'code': start_account.code,
+                    'name': start_account.name,
+                    'start_balance': start_account.balance,
+                    'debit': in_account.debit,
+                    'credit': in_account.credit,
+                    'end_balance': end_account.balance,
+                    })
 
         periods = period_obj.browse(end_period_ids)
 
