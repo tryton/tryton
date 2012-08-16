@@ -239,11 +239,16 @@ Paid 50 to supplier::
     >>> statement_line = StatementLine()
     >>> statement.lines.append(statement_line)
     >>> statement_line.date = today
-    >>> statement_line.amount = Decimal('-50')
+    >>> statement_line.amount = Decimal('-60')
     >>> statement_line.party = supplier
     >>> statement_line.account == payable
     True
     >>> statement_line.invoice = supplier_invoice
+    >>> statement_line.amount == Decimal('-50')
+    True
+    >>> statement_line = statement.lines.pop()
+    >>> statement_line.amount == Decimal('-10')
+    True
 
     >>> statement.save()
 
