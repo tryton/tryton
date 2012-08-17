@@ -701,8 +701,6 @@ class Model(object):
             if definition['type'] == 'one2many':
                 values[field] = [x._get_on_change_value()
                     for x in getattr(self, field)]
-            elif definition['type'] == 'many2many':
-                values[field] = [x._get_eval() for x in getattr(self, field)]
         return values
 
     def _on_change_args(self, args):
