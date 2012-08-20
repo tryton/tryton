@@ -67,7 +67,7 @@ this repository contains the full copyright notices and license terms. -->
                                 view_ids="party.address_view_form,party.address_view_tree_sequence"/>
                             <group col="2" colspan="4" id="lang">
                                 <label name="lang"/>
-                                <field name="lang" widget="selection"/>
+                                <field name="lang" widget="selection" xexpand="0"/>
                             </group>
                             <field name="contact_mechanisms" colspan="2"
                                 view_ids="party.contact_mechanism_view_tree_sequence"/>
