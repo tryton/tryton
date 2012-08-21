@@ -2,30 +2,34 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
+import sys
 import pycountry
 
 for country in pycountry.countries:
-    print '''
+    record = u'''
         <record model="country.country" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
-        </record>''' % (country.alpha2.lower(), country.name.encode('utf-8'),
+        </record>\n''' % (country.alpha2.lower(), country.name,
                 country.alpha2)
+    sys.stdout.write(record.encode('utf-8'))
 
 for subdivision in pycountry.subdivisions:
     #XXX fix for second level of regional divisions
     subdivision.country_code = subdivision.country_code.split(' ', 1)[0]
-    print '''
+    record = u'''
         <record model="country.subdivision" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
-            <field name="type">%s</field>''' % (subdivision.code.lower(),
-                subdivision.name.encode('utf-8'), subdivision.code,
+            <field name="type">%s</field>\n''' % (subdivision.code.lower(),
+                subdivision.name, subdivision.code,
                 subdivision.type.lower())
     if subdivision.parent_code:
-        print '''\
-                <field name="parent" ref="%s"/>''' % \
+        record += u'''\
+                <field name="parent" ref="%s"/>\n''' % \
                 subdivision.parent.code.lower()
-    print '''\
+    record += u'''\
             <field name="country" ref="%s"/>
-        </record>''' % subdivision.country.alpha2.lower()
+        </record>\n''' % subdivision.country.alpha2.lower()
+
+    sys.stdout.write(record.encode('utf-8'))
