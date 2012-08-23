@@ -146,6 +146,23 @@ class FieldsTestCase(unittest.TestCase):
             boolean3_id = self.boolean.create({})
             self.assert_(boolean3_id)
 
+            # Test search with NULL value
+            boolean4_id = self.boolean.create({
+                    'boolean': None,
+                    })
+            self.assert_(boolean4_id)
+
+            boolean_ids = self.boolean.search([
+                    ('boolean', '=', False),
+                    ])
+            self.assertEqual(boolean_ids,
+                [boolean2_id, boolean3_id, boolean4_id])
+
+            boolean_ids = self.boolean.search([
+                    ('boolean', '!=', False),
+                    ])
+            self.assertEqual(boolean_ids, [boolean1_id])
+
             boolean3 = self.boolean.read(boolean3_id, ['boolean'])
             self.assert_(boolean3['boolean'] == False)
 
