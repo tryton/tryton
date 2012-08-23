@@ -1773,15 +1773,21 @@ class ModelSQL(ModelStorage):
             else:
                 if (arg[2] is False) and (arg[1] == '='):
                     if table._columns[arg[0]]._type == 'boolean':
-                        qu1.append('("%s"."%s" = %%s)' % \
-                                (table._table, arg[0]))
+                        qu1.append('(("%s"."%s" = %%s) OR ("%s"."%s" IS NULL))'
+                            % (table._table, arg[0], table._table, arg[0]))
                         qu2.append(False)
                     else:
                         qu1.append('("%s"."%s" IS NULL)' % \
                                 (table._table, arg[0]))
                 elif (arg[2] is False) and (arg[1] == '!='):
-                    qu1.append('("%s"."%s" IS NOT NULL)' % \
-                            (table._table, arg[0]))
+                    if table._columns[arg[0]]._type == 'boolean':
+                        qu1.append('(("%s"."%s" != %%s) '
+                            'AND ("%s"."%s" IS NOT NULL))'
+                            % (table._table, arg[0], table._table, arg[0]))
+                        qu2.append(False)
+                    else:
+                        qu1.append('("%s"."%s" IS NOT NULL)' % \
+                                 (table._table, arg[0]))
                 else:
                     if arg[0] == 'id':
                         qu1.append('("%s"."%s" %s %%s)' % \
