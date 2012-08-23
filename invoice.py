@@ -858,6 +858,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         currency_obj = pool.get('currency.currency')
         move_obj = pool.get('account.move')
         period_obj = pool.get('account.period')
+        date_obj = pool.get('ir.date')
 
         if invoice.move:
             return True
@@ -874,6 +875,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
         term_lines = payment_term_obj.compute(total, invoice.company.currency,
                 invoice.payment_term, invoice.invoice_date)
         remainder_total_currency = total_currency
+        if not term_lines:
+            term_lines = [(date_obj.today(), total)]
         for date, amount in term_lines:
             val = self._get_move_line(invoice, date, amount)
             remainder_total_currency -= val['amount_second_currency']
