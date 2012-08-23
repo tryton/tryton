@@ -390,6 +390,7 @@ A many-to-one relation field.
     ``SET NULL`` is the default setting.
 
     .. note::
+
         ``SET NULL`` will be override into ``RESTRICT`` if
         :attr:`~Field.required` is true.
     ..
@@ -480,6 +481,7 @@ A many-to-many relation field.
     The name of the field that has the :class:`Many2One` to the target record.
 
 .. note::
+
     A :class:`Many2Many` field can be used on a simple
     :class:`~trytond.model.ModelView`, like in a
     :class:`~trytond.wizard.Wizard`. For this, :attr:`~Many2Many.relation_name`

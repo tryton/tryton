@@ -35,7 +35,7 @@ Class attributes are:
 
 .. attribute:: Wizard._rpc
 
-    Same as :attribute:`trytond.model.Model._rpc`.
+    Same as :attr:`trytond.model.Model._rpc`.
 
 .. attribute:: Wizard.states
 
@@ -123,7 +123,7 @@ Instance methods are:
 .. method:: StateView.get_view
 
     Returns the view definition like
-    :method:`~trytond.model.ModelView.fields_view_get`.
+    :meth:`~trytond.model.ModelView.fields_view_get`.
 
 .. method:: StateView.get_defaults(wizard, session, state_name, fields)
 
