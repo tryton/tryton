@@ -77,6 +77,9 @@ class Template(ModelSQL, ModelView):
     def default_type(self):
         return 'goods'
 
+    def default_consumable(self):
+        return False
+
     def default_cost_price_method(self):
         return 'fixed'
 
