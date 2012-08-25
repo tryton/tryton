@@ -534,6 +534,8 @@ class Record(SignalEvent):
             for fieldname, value in result.items():
                 self.group.fields[fieldname].set_on_change(self, value)
         for fieldname in later:
+            on_change_with = self.group.fields[fieldname].attrs.get(
+                    'on_change_with')
             values = self._get_on_change_args(on_change_with)
             try:
                 result = RPCExecute('model', self.model_name,
