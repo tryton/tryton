@@ -1044,7 +1044,8 @@ class SaleLine(ModelSQL, ModelView):
             'required': Eval('type') == 'line',
             'readonly': ~Eval('_parent_sale', {}),
             }, on_change=['product', 'quantity', 'unit',
-            '_parent_sale.currency', '_parent_sale.party'],
+            '_parent_sale.currency', '_parent_sale.party',
+            '_parent_sale.sale_date'],
         depends=['type', 'unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit',
             states={
@@ -1070,7 +1071,8 @@ class SaleLine(ModelSQL, ModelView):
             'readonly': ~Eval('_parent_sale', {}),
             },
         on_change=['product', 'unit', 'quantity', 'description',
-            '_parent_sale.party', '_parent_sale.currency'],
+            '_parent_sale.party', '_parent_sale.currency',
+            '_parent_sale.sale_date'],
         context={
             'locations': If(Bool(Eval('_parent_sale', {}).get( 'warehouse')),
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
