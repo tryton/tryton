@@ -1,5 +1,5 @@
-Production Model
-################
+Production Module
+#################
 
 The production module defines basics for production management: Bill of
 material and production order.
