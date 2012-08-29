@@ -72,6 +72,6 @@ class ProductBom(ModelSQL, ModelView):
         return result
 
     def search_rec_name(self, name, clause):
-        return [('bom.rec_name',) + clause[1:]]
+        return [('bom.rec_name',) + tuple(clause[1:])]
 
 ProductBom()
