@@ -81,5 +81,5 @@ setup(name='trytond_sale',
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
-    test_require=tests_require,
+    tests_require=tests_require,
     )
