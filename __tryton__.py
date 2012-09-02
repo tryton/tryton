@@ -10,7 +10,7 @@
     'name_es_ES': 'Contabilidad',
     'name_fr_FR': 'Comptabilité',
     'name_nl_NL': 'Boekhouden',
-    'version': '2.4.2',
+    'version': '2.4.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
