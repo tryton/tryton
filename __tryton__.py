@@ -8,7 +8,7 @@
     'name_es_ES': 'Estado de cuentas',
     'name_fr_FR': 'Relevé comptable',
     'name_nl_NL': 'Bankafschriften',
-    'version': '2.0.1',
+    'version': '2.0.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
