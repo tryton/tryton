@@ -67,5 +67,5 @@ setup(name='trytond_sale',
     sale = trytond.modules.sale
     """,
     test_suite='tests',
-    test_loader='trytond.test_loader:Loader',
+    tests_loader='trytond.test_loader:Loader',
 )
