@@ -6,7 +6,7 @@
     'name_es_CO': 'Inventarios',
     'name_es_ES': 'Gestión de existencias',
     'name_fr_FR': 'Gestion des stocks',
-    'version': '1.6.6',
+    'version': '1.6.7',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
