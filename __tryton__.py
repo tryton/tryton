@@ -9,7 +9,7 @@
     'name_es_CO': 'Compras',
     'name_es_ES': 'Compras',
     'name_fr_FR': 'Achat',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
