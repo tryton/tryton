@@ -1615,7 +1615,7 @@ class Move(ModelSQL, ModelView):
         return res
 
     def search_purchase(self, name, clause):
-        return [('purchase_line.' + name,) + clause[1:]]
+        return [('purchase_line.' + name,) + tuple(clause[1:])]
 
     def get_purchase_fields(self, ids, names):
         res = {}
@@ -1673,7 +1673,7 @@ class Move(ModelSQL, ModelView):
         return res
 
     def search_supplier(self, name, clause):
-        return [('purchase_line.purchase.party',) + clause[1:]]
+        return [('purchase_line.purchase.party',) + tuple(clause[1:])]
 
     def write(self, ids, vals):
         purchase_obj = self.pool.get('purchase.purchase')
