@@ -888,7 +888,8 @@ class PurchaseLine(ModelSQL, ModelView):
             'required': Eval('type') == 'line',
             'readonly': ~Eval('_parent_purchase'),
             }, on_change=['product', 'quantity', 'unit',
-            '_parent_purchase.currency', '_parent_purchase.party'],
+            '_parent_purchase.currency', '_parent_purchase.party',
+            '_parent_purchase.purchase_date'],
         depends=['unit_digits', 'type'])
     unit = fields.Many2One('product.uom', 'Unit',
         states={
@@ -913,7 +914,8 @@ class PurchaseLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'readonly': ~Eval('_parent_purchase'),
             }, on_change=['product', 'unit', 'quantity', 'description',
-            '_parent_purchase.party', '_parent_purchase.currency'],
+            '_parent_purchase.party', '_parent_purchase.currency',
+            '_parent_purchase.purchase_date'],
         context={
             'locations': If(Bool(Eval('_parent_purchase', {}).get(
                         'warehouse')),
