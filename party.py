@@ -91,6 +91,8 @@ class Party(ModelSQL, ModelView):
         return Transaction().context.get('categories', [])
 
     def default_addresses(self):
+        if Transaction().user == 0:
+            return []
         address_obj = Pool().get('party.address')
         fields_names = list(x for x in set(address_obj._columns.keys()
                 + address_obj._inherit_fields.keys())
