@@ -2083,7 +2083,7 @@ class HandleInvoiceException(Wizard):
             if invoice.state == 'cancel' and invoice.id not in skip_ids:
                 invoices.append(invoice.id)
         return {
-            'to_recreate': invoices,
+            'recreate_invoices': invoices,
             'domain_invoices': invoices,
             }
 
