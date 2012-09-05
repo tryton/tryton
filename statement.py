@@ -373,7 +373,7 @@ class Line(ModelSQL, ModelView):
                 ('state', '!=', '')),
             ],
         states={
-            'readonly': ~Eval('amount'),
+            'readonly': (~Eval('amount') | ~Eval('party') | ~Eval('account')),
             },
         depends=['party', 'account', 'amount'])
 
