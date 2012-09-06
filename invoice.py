@@ -1420,7 +1420,8 @@ class InvoiceLine(ModelSQL, ModelView):
                 ('kind', '=', 'revenue'),
                 ('kind', '=', 'expense')),
             ],
-        on_change=['account', 'product'],
+        on_change=['account', 'product', '_parent_invoice.party',
+            '_parent_invoice.type'],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1781,16 +1782,38 @@ class InvoiceLine(ModelSQL, ModelView):
         return categories
 
     def on_change_account(self, values):
-        account_obj = Pool().get('account.account')
+        pool = Pool()
+        party_obj = pool.get('party.party')
+        account_obj = pool.get('account.account')
+        tax_rule_obj = pool.get('account.tax.rule')
+
         if values.get('product'):
             return {}
         taxes = []
         result = {
             'taxes': taxes,
         }
+        if (values.get('_parent_invoice.party')
+                and values.get('_parent_invoice.type')):
+            party = party_obj.browse(values['_parent_invoice.party'])
+            if values['_parent_invoice.type'] in ('in_invoice',
+                    'in_credit_note'):
+                tax_rule = party.supplier_tax_rule
+            else:
+                tax_rule = party.customer_tax_rule
+        else:
+            tax_rule = None
+
         if values.get('account'):
             account = account_obj.browse(values['account'])
-            taxes.extend(tax.id for tax in account.taxes)
+            pattern = self._get_tax_rule_pattern(party, values)
+            for tax in account.taxes:
+                if tax_rule:
+                    tax_ids = tax_rule_obj.apply(tax_rule, tax, pattern)
+                    if tax_ids:
+                        taxes.extend(tax_ids)
+                    continue
+                taxes.append(tax.id)
         return result
 
     def check_modify(self, ids):
