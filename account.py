@@ -2192,7 +2192,7 @@ class OpenAgedBalance(Wizard):
     _name = 'account.open_aged_balance'
 
     start = StateView('account.open_aged_balance.start',
-        'account.open_balance_sheet_start_view_form', [
+        'account.open_aged_balance_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
@@ -2213,7 +2213,7 @@ class OpenAgedBalance(Wizard):
             'company': session.start.company.id,
             'fiscalyear': session.start.fiscalyear.id,
             'term1': session.start.term1,
-            'term2': session.start.term3,
+            'term2': session.start.term2,
             'term3': session.start.term3,
             'unit': session.start.unit,
             'posted': session.start.posted,
