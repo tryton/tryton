@@ -180,7 +180,7 @@ class UpdateCostPriceShowMove(ModelView):
             ('company', 'in', [Get(Eval('context', {}), 'company'), False]),
             ('id', '!=', Eval('stock_account')),
             ],
-        depends=['company'], required=True)
+        depends=['company', 'stock_account'], required=True)
     description = fields.Char('Description', required=True)
 
 UpdateCostPriceShowMove()
