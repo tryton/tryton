@@ -10,7 +10,7 @@ from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
 from trytond.backend import TableHandler
-from trytond.pyson import If, Eval, Bool, PYSONEncoder
+from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import CONFIG
@@ -201,6 +201,18 @@ class Sale(Workflow, ModelSQL, ModelView):
                     },
                 'process': {
                     'invisible': Eval('state') != 'confirmed',
+                    },
+                'handle_invoice_exception': {
+                    'invisible': ((Eval('invoice_state') != 'exception')
+                        | (Eval('state') == 'cancel')),
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('sale', 'group_sale')),
+                    },
+                'handle_shipment_exception': {
+                    'invisible': ((Eval('shipment_state') != 'exception')
+                        | (Eval('state') == 'cancel')),
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('sale', 'group_sale')),
                     },
                 })
         # The states where amounts are cached
@@ -909,6 +921,14 @@ class Sale(Workflow, ModelSQL, ModelView):
     def confirm(self, ids):
         self.set_sale_date(ids)
         self.store_cache(ids)
+
+    @ModelView.button_action('sale.wizard_invoice_handle_exception')
+    def handle_invoice_exception(self, ids):
+        pass
+
+    @ModelView.button_action('sale.wizard_shipment_handle_exception')
+    def handle_shipment_exception(self, ids):
+        pass
 
     @ModelView.button
     @Workflow.transition('processing')
