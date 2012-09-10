@@ -170,14 +170,13 @@ class FiscalYear(ModelSQL, ModelView):
                     'type': 'standard',
                     })
                 period_start_date = period_end_date + relativedelta(days=1)
-        return True
 
     @ModelView.button
     def create_period_3(self, ids):
         '''
         Create periods for the fiscal years with 3 months interval
         '''
-        return self.create_period(ids, interval=3)
+        self.create_period(ids, interval=3)
 
     def find(self, company_id, date=None, exception=True):
         '''

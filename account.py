@@ -761,7 +761,7 @@ class Account(ModelSQL, ModelView):
                         res[account_id] += deferral.debit - deferral.credit
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=None):
+                        date=None, periods=None):
                     res2 = self.get_balance(ids, name)
                 for account_id in ids:
                     res[account_id] += res2[account_id]
@@ -861,7 +861,7 @@ class Account(ModelSQL, ModelView):
                             res[name][account_id] += deferral[name]
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=None):
+                        date=None, dates=None):
                     res2 = self.get_credit_debit(ids, names)
                 for account_id in ids:
                     for name in names:
@@ -1467,7 +1467,7 @@ class TrialBalance(Report):
             start_accounts = account_obj.browse(account_ids)
 
         with Transaction().set_context(
-                fiscalyear=data['fiscalyear'],
+                fiscalyear=None,
                 periods=end_period_ids,
                 posted=data['posted']):
             in_accounts = account_obj.browse(account_ids)
