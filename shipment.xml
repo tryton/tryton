@@ -40,13 +40,13 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    type="object" icon="tryton-cancel"/>
+                                    icon="tryton-cancel"/>
                                 <button string="Receive" name="receive"
-                                    type="object" icon="tryton-go-next"/>
-                                <button string="Done" name="done" type="object"
+                                    icon="tryton-go-next"/>
+                                <button string="Done" name="done"
                                     icon="tryton-ok"/>
                                 <button string="Reset to Draft" name="draft"
-                                    type="object" icon="tryton-clear"/>
+                                    icon="tryton-clear"/>
                             </group>
                         </group>
                     </form>
@@ -162,16 +162,13 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="state"/>
                         <group col="5" colspan="2" id="buttons">
                             <button string="Cancel" name="cancel"
-                                type="object" icon="tryton-cancel"/>
-                            <button string="Draft" name="draft" type="object"
+                                icon="tryton-cancel"/>
+                            <button string="Draft" name="draft"
                                 icon="tryton-go-previous"/>
-                            <button string="Wait" name="wait"
-                                type="object"/>
-                            <button string="Assign" name="%(wizard_shipment_in_return_assign)d"
-                                type="action"
-                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                            <button string="Wait" name="wait"/>
+                            <button string="Assign" name="assign_wizard"
                                 icon="tryton-go-next"/>
-                            <button string="Done" name="done" type="object"
+                            <button string="Done" name="done"
                                 icon="tryton-ok"/>
                         </group>
                     </form>
@@ -275,18 +272,14 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="6" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    type="object" icon="tryton-cancel"/>
-                                <button string="Draft" name="draft"
-                                    type="object"/>
-                                <button string="Waiting" name="wait"
-                                    type="object"/>
-                                <button string="Assign" name="%(wizard_shipment_out_assign)d"
-                                        type="action"
-                                        states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
-                                        icon="tryton-go-next"/>
+                                    icon="tryton-cancel"/>
+                                <button string="Draft" name="draft"/>
+                                <button string="Waiting" name="wait"/>
+                                <button string="Assign" name="assign_wizard"
+                                    icon="tryton-go-next"/>
                                 <button string="Make shipment" name="pack"
-                                    type="object" icon="tryton-go-next"/>
-                                <button string="Done" name="done" type="object"
+                                    icon="tryton-go-next"/>
+                                <button string="Done" name="done"
                                     icon="tryton-ok"/>
                             </group>
                         </group>
@@ -454,16 +447,13 @@ this repository contains the full copyright notices and license terms. -->
                         <label name="state"/>
                         <field name="state"/>
                         <group col="5" colspan="2" id="buttons">
-                            <button string="Cancel" name="cancel" type="object"
+                            <button string="Cancel" name="cancel"
                                 icon="tryton-cancel"/>
-                            <button string="Draft" name="draft" type="object"/>
-                            <button string="Waiting" name="wait"
-                                type="object"/>
-                            <button string="Assign" name="%(wizard_shipment_internal_assign)d"
-                                type="action"
-                                states="{'invisible': Not(Equal(Eval('state'), 'waiting')), 'readonly': Not(In(%(group_stock)d, Eval('groups', [])))}"
+                            <button string="Draft" name="draft"/>
+                            <button string="Waiting" name="wait"/>
+                            <button string="Assign" name="assign_wizard"
                                 icon="tryton-go-next"/>
-                            <button string="Done" name="done" type="object"
+                            <button string="Done" name="done"
                                 icon="tryton-ok"/>
                         </group>
                     </form>
@@ -624,13 +614,12 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group col="5" colspan="2" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    type="object" icon="tryton-cancel"/>
+                                    icon="tryton-cancel"/>
                                 <button string="Draft" name="draft"
-                                    type="object" icon="tryton-clear"/>
+                                    icon="tryton-clear"/>
                                 <button string="Received" name="receive"
-                                    type="object" icon="tryton-go-next"/>
+                                    icon="tryton-go-next"/>
                                 <button string="Done" name="done"
-                                    type="object"
                                     icon="tryton-ok"/>
                             </group>
                         </group>

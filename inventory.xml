@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="company"/>
                         <label colspan="2" id="empty"/>
                         <button string="Complete Inventory"
-                            name="complete_lines" type="object" colspan="2"
+                            name="complete_lines" colspan="2"
                             help="Add an inventory line for each missing products"/>
                         <field name="lines" colspan="4"/>
                         <group col="4" colspan="4" id="group_buttons">
@@ -28,9 +28,9 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group colspan="2" col="3" id="buttons">
                                 <button string="Cancel" name="cancel"
-                                    type="object" icon="tryton-cancel" />
+                                    icon="tryton-cancel" />
                                 <button string="Confirm" name="confirm"
-                                    type="object" icon="tryton-ok"/>
+                                    icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>

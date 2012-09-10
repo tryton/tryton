@@ -540,6 +540,11 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 'done': {
                     'invisible': Eval('state') != 'assigned',
                     },
+                'assign_wizard': {
+                    'invisible': Eval('state') != 'waiting',
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('stock', 'group_stock')),
+                    },
                 'assign_try': {},
                 'assign_force': {},
                 })
@@ -696,6 +701,10 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
+
+    @ModelView.button_action('stock.wizard_shipment_in_return_assign')
+    def assign_wizard(self, ids):
+        pass
 
     @ModelView.button
     def assign_try(self, ids):
@@ -877,6 +886,11 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     },
                 'done': {
                     'invisible': Eval('state') != 'packed',
+                    },
+                'assign_wizard': {
+                    'invisible': Eval('state') != 'waiting',
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('stock', 'group_stock')),
                     },
                 'assign_try': {},
                 'assign_force': {},
@@ -1267,6 +1281,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             res += uom_obj.compute_qty(uom_index[uom], qty,
                     uom_index[target_uom])
         return res
+
+    @ModelView.button_action('stock.wizard_shipment_out_assign')
+    def assign_wizard(self, ids):
+        pass
 
     @ModelView.button
     def assign_try(self, ids):
@@ -1861,6 +1879,11 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 'done': {
                     'invisible': Eval('state') != 'assigned',
                     },
+                'assign_wizard': {
+                    'invisible': Eval('state') != 'waiting',
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('stock', 'group_stock')),
+                    },
                 'assign_try': {},
                 'assign_force': {},
                 })
@@ -1990,6 +2013,10 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 if m.state not in ('cancel', 'done')], {
                 'state': 'cancel',
                 })
+
+    @ModelView.button_action('stock.wizard_shipment_internal_assign')
+    def assign_wizard(self, ids):
+        pass
 
     @ModelView.button
     def assign_try(self, ids):
