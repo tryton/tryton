@@ -247,10 +247,10 @@ hpaned, vpaned
     * ``position``: The pixel position of divider, a negative value means that
       the position is unset.
 
-child1, child2
-^^^^^^^^^^^^^^
+child
+^^^^^
 
-Contains the two childs of a hpaned or vpaned.
+Contains the childs of a hpaned or vpaned.
 
 .. _example_form_view:
 
