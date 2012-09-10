@@ -54,20 +54,16 @@
                                 <field name="state"/>
                             </group>
                             <group col="5" colspan="2" id="buttons">
-                                <button name="cancel" type="object"
-                                    string="Cancel"
+                                <button name="cancel" string="Cancel"
                                     icon="tryton-cancel"/>
-                                <button name="lost" type="object"
-                                    string="Mark as Lost"
+                                <button name="lost" string="Mark as Lost"
                                     icon="tryton-cancel"/>
-                                <button name="lead" type="object"
-                                    string="Set as Lead"
+                                <button name="lead" string="Set as Lead"
                                     icon="tryton-go-previous"/>
-                                <button name="opportunity" type="object"
+                                <button name="opportunity"
                                     string="Convert to Opportunity"
                                     icon="tryton-go-next"/>
-                                <button name="convert" type="object"
-                                    string="Convert to Sale"
+                                <button name="convert" string="Convert to Sale"
                                     icon="tryton-go-next"/>
                             </group>
                         </page>
