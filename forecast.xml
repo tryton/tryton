@@ -39,9 +39,7 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="to_date"/>
                         <label name="company"/>
                         <field name="company"/>
-                        <button string="Complete Forecast" type="action"
-                            name="%(wizard_forecast_complete)d"
-                            states="{'readonly': Not(Equal(Eval('state'), 'draft'))}"
+                        <button string="Complete Forecast" name="complete"
                             colspan="2"
                             help="Add forecast line based on past data."/>
                         <field name="lines" colspan="4"/>
@@ -50,11 +48,11 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="state"/>
                             <group colspan="2" col="3" id="buttons">
                                 <button string="Reset to Draft" name="draft"
-                                    type="object" icon="tryton-clear"/>
+                                    icon="tryton-clear"/>
                                 <button string="Cancel" name="cancel"
-                                    type="object" icon="tryton-cancel"/>
+                                    icon="tryton-cancel"/>
                                 <button string="Confirm" name="confirm"
-                                    type="object" icon="tryton-ok"/>
+                                    icon="tryton-ok"/>
                             </group>
                         </group>
                     </form>

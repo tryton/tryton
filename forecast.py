@@ -87,6 +87,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
                 'confirm': {
                     'invisible': Eval('state') != 'draft',
                     },
+                'complete': {
+                    'readonly': Eval('state') != 'draft',
+                    },
                 })
 
     def init(self, module_name):
@@ -194,6 +197,10 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('cancel')
     def cancel(self, ids):
+        pass
+
+    @ModelView.button_action('stock_forecast.wizard_forecast_complete')
+    def complete(self, ids):
         pass
 
     def create_moves(self, forecast_ids):
