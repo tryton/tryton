@@ -256,7 +256,7 @@ def request_server(server_widget):
 def get_toplevel_window():
     windows = [x for x in gtk.window_list_toplevels()
         if x.window and x.props.visible
-        and x.get_window_type() == gtk.WINDOW_TOPLEVEL]
+        and x.props.type == gtk.WINDOW_TOPLEVEL]
     trans2windows = dict((x.get_transient_for(), x) for x in windows)
     for window in set(windows) - set(trans2windows.iterkeys()):
         return window
