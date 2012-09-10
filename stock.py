@@ -10,6 +10,18 @@ from trytond.transaction import Transaction
 class Move(Model):
     _name = 'stock.move'
 
+    def __init__(self):
+        super(Move, self).__init__()
+        self._buttons.update({
+                'split_wizard': {
+                    'readonly': ~Eval('state').in_(['draft', 'assigned']),
+                    },
+                })
+
+    @ModelView.button_action('stock_split.wizard_split_move')
+    def split_wizard(self, ids):
+        pass
+
     def split(self, move, quantity, uom, count=None):
         """
         Split the move into moves of quantity.

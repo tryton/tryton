@@ -17,9 +17,8 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath expr="/form/field[@name='state']"
                         position="after">
-                        <button name="%(wizard_split_move)d" string="Split"
-                            type="action" colspan="2"
-                            states="{'readonly': ~Eval('state').in_(['draft', 'assigned'])}"/>
+                        <button name="split_wizard" string="Split"
+                            colspan="2"/>
                     </xpath>
                 </data>
                 ]]>
@@ -34,10 +33,7 @@ this repository contains the full copyright notices and license terms. -->
                 <data>
                     <xpath expr="/tree"
                         position="inside">
-                        <button name="%(wizard_split_move)d" string="Split"
-                            type="action"
-                            states="{'readonly': ~Eval('state').in_(['draft', 'assigned'])}"/>
-
+                        <button name="split_wizard" string="Split"/>
                     </xpath>
                 </data>
                 ]]>
