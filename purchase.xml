@@ -99,22 +99,18 @@ this repository contains the full copyright notices and license terms. -->
                                 <label name="total_amount" xalign="1.0" xexpand="1"/>
                                 <field name="total_amount" xalign="1.0" xexpand="0"/>
                                 <group col="6" colspan="2" id="buttons">
-                                    <button name="cancel" type="object" string="Cancel"
+                                    <button name="cancel" string="Cancel"
                                         icon="tryton-cancel"/>
-                                    <button name="draft" type="object" string="Draft"/>
-                                    <button name="quote" type="object" string="Quote"
+                                    <button name="draft" string="Draft"/>
+                                    <button name="quote" string="Quote"
                                         icon="tryton-go-next"/>
-                                    <button name="%(wizard_invoice_handle_exception)d"
+                                    <button name="handle_invoice_exception"
                                             string="Handle Invoice Exception"
-                                            type="action"
-                                            states="{'invisible': Or(Not(Equal(Eval('invoice_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
-                                    <button name="%(wizard_shipment_handle_exception)d"
+                                    <button name="handle_shipment_exception"
                                             string="Handle Shipment Exception"
-                                            type="action"
-                                            states="{'invisible': Or(Not(Equal(Eval('shipment_state'), 'exception')), Equal(Eval('state'), 'cancel')), 'readonly': Not(In(%(group_purchase)d, Eval('groups', [])))}"
                                             icon="tryton-go-next"/>
-                                    <button name="confirm" type="object" string="Confirm"
+                                    <button name="confirm" string="Confirm"
                                         icon="tryton-ok"/>
                                 </group>
                             </group>
