@@ -1,3 +1,5 @@
+* Fix search button clause in ModelButton.get_groups (CVE-2012-2238)
+
 Version 2.4.1 - 2012-04-24
 * Restore es_AR translation
 

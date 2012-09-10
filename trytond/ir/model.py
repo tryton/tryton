@@ -522,7 +522,7 @@ class ModelButton(ModelSQL, ModelView):
         Return a set of group ids for the named button on the model.
         '''
         button_ids = self.search([
-                ('model', '=', model),
+                ('model.model', '=', model),
                 ('name', '=', name),
                 ])
         if not button_ids:
