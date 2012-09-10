@@ -26,9 +26,8 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="state"/>
                     <field name="state"/>
                     <group col="2" colspan="2" id="buttons">
-                        <button string="Post" name="post" type="object"
-                            icon="tryton-ok"/>
-                        <button string="Draft" name="draft" type="object"
+                        <button string="Post" name="post" icon="tryton-ok"/>
+                        <button string="Draft" name="draft"
                             icon="tryton-clear"/>
                     </group>
                 </form>
