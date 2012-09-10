@@ -140,7 +140,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_form2">
             <field name="name">Hours per Work</field>
             <field name="res_model">timesheet.work</field>
-            <field name="domain" eval="'[(\'parent\', \'=\', Get(Eval(\'_active_%s\', {}), \'id\', False))]' % ref('act_work_tree2')"/>
+            <field name="domain">[('parent', '=', Get(Eval('timesheet.act_work_tree2', {}), 'id', False))]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_form2_view1">
@@ -157,10 +157,10 @@ this repository contains the full copyright notices and license terms. -->
                 <board string="Hours per Work">
                     <hpaned id="hours_per_work">
                         <child id="tree">
-                            <action name="%(act_work_tree2)s"/>
+                            <action name="timesheet.act_work_tree2"/>
                         </child>
                         <child id="graph">
-                            <action name="%(act_work_form2)s"/>
+                            <action name="timesheet.act_work_form2"/>
                         </child>
                     </hpaned>
                 </board>
