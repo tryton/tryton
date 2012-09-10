@@ -8,7 +8,7 @@ from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from trytond.backend import TableHandler, FIELDS
-from trytond.pyson import If, Eval, Bool
+from trytond.pyson import If, Eval, Bool, Id
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -203,6 +203,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     },
                 'open': {
                     'invisible': ~Eval('state').in_(['draft', 'proforma']),
+                    },
+                'pay': {
+                    'invisible': Eval('state') != 'open',
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('account', 'group_account')),
                     },
                 })
 
@@ -1284,6 +1289,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
             self.set_number(invoice)
             self.create_move(invoice)
             self.print_invoice(invoice)
+
+    @ModelView.button_action('account_invoice.wizard_pay')
+    def pay(self, ids):
+        pass
 
     def process(self, ids):
         paid = []

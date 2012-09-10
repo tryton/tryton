@@ -67,17 +67,12 @@ this repository contains the full copyright notices and license terms. -->
                                         <button name="cancel" string="_Cancel"
                                             icon="tryton-cancel"/>
                                         <button name="draft" string="_Draft"
-                                            type="object"
                                             icon="tryton-go-previous"/>
                                         <button name="proforma" string="Pro For_ma"
-                                            type="object"
                                             icon="tryton-go-next"/>
                                         <button name="open" string="_Open"
-                                            type="object"
                                             icon="tryton-ok"/>
-                                        <button name="%(wizard_pay)d" string="_Pay"
-                                            type="action"
-                                            states="{'invisible': Not(Equal(Eval('state'), 'open')), 'readonly': Not(In(%(account.group_account)d, Eval('groups', [])))}"
+                                        <button name="pay" string="_Pay"
                                             icon="tryton-go-next"/>
                                     </group>
                                 </group>
