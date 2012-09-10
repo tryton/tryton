@@ -358,10 +358,10 @@ hpaned, vpaned
     * ``colspan``: see in common-attributes-colspan_. The default
       for panes is 4 columns.
 
-child1, child2
-^^^^^^^^^^^^^^
+child
+^^^^^
 
-Contains the two childs of a hpaned or vpaned.
+Contains the childs of a hpaned or vpaned.
 
 .. _example_form_view:
 
