@@ -183,6 +183,11 @@ class Production(Workflow, ModelSQL, ModelView):
                 'done': {
                     'invisible': Eval('state') != 'running',
                     },
+                'assign_wizard': {
+                    'invisible': Eval('state') != 'waiting',
+                    'readonly': ~Eval('groups', []).contains(
+                        Id('stock', 'group_stock')),
+                    },
                 'assign_try': {},
                 'assign_force': {},
                 })
@@ -601,6 +606,10 @@ class Production(Workflow, ModelSQL, ModelView):
         self.write(ids, {
                 'effective_date': date_obj.today(),
                 })
+
+    @ModelView.button_action('production.wizard_assign')
+    def assign_wizard(self, ids):
+        pass
 
     @ModelView.button
     def assign_try(self, ids):
