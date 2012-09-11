@@ -467,6 +467,14 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = None
         return res
 
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('move', None)
+        default.setdefault('invoice', None)
+        return super(Line, self).copy(ids, default=default)
+
     def create_move(self, line):
         '''
         Create move for the statement line and return move id if created.
