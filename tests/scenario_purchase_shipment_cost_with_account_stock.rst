@@ -73,7 +73,6 @@ Create fiscal year::
     >>> fiscalyear.post_move_sequence = post_move_sequence
     >>> fiscalyear.save()
     >>> FiscalYear.create_period([fiscalyear.id], config.context)
-    True
 
 Create chart of accounts::
 
