@@ -21,7 +21,7 @@ class Line(ModelSQL, ModelView):
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
             required=True, select=True, domain=[
-                ('timesheet_available', '=', 'True'),
+                ('timesheet_available', '=', True),
             ])
     description = fields.Char('Description')
 
