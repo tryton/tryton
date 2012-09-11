@@ -80,7 +80,6 @@ Create fiscal year::
     >>> fiscalyear.in_credit_note_sequence = invoice_sequence
     >>> fiscalyear.save()
     >>> FiscalYear.create_period([fiscalyear.id], config.context)
-    True
 
 Create chart of accounts::
 
