@@ -4,24 +4,9 @@ import copy
 from decimal import Decimal
 
 from trytond.model import Model, ModelSQL, ModelView, fields
-from trytond.pyson import Eval, Bool, PYSON
+from trytond.pyson import Eval, Bool, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-
-
-class Id(PYSON):
-
-    def __init__(self, module, fs_id):
-        super(Id, self).__init__()
-        self._module = module
-        self._fs_id = fs_id
-
-    def pyson(self):
-        model_data_obj = Pool().get('ir.model.data')
-        return model_data_obj.get_id(self._module, self._fs_id)
-
-    def types(self):
-        return set([int])
 
 
 class Carrier(Model):
