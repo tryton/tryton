@@ -31,16 +31,16 @@ def formalize_text_markup(text):
             occurrence = 0
             i += 1
         if stack:
-            span_close = '<\\\span>' * stack[-1][2]
+            span_close = '</span>' * stack[-1][2]
             data = re.search('^' + span_close, text[i:])
             if data and stack[-1][2] > 1:
                 span = stack.pop()
-                text = re.sub(span_close, text[:i] + '<\\span>', text[i:], 1)
+                text = re.sub(span_close, text[:i] + '</span>', text[i:], 1)
                 text = text[:span[0]] + re.sub('><span', '',
                     text[span[0]:span[1]]) + text[span[1]:]
                 i += data.end()
     # Special character
-    text = re.sub('<\x08', '<\\\\b', text)
+    text = re.sub('<\x08', '</b', text)
     # Formalize <p> tag
     lines = text.split('\n')
     align = "left"
@@ -53,12 +53,12 @@ def formalize_text_markup(text):
             else:
                 break
         actual_align = "<p align='%s'>" % align
-        if re.search("(<\\\p>|<\\p>)", lines[i]):
+        if re.search("</p>", lines[i]):
             align = 'left'
-        lines[i] = re.sub('(<\\\p>|<\\p>)', '', lines[i])
+        lines[i] = re.sub('</p>', '', lines[i])
         # If not exists any line add paragraph
         if not re.search('^$', lines[i]):
-            lines[i] = actual_align + lines[i] + "<\\p>"
+            lines[i] = actual_align + lines[i] + "</p>"
     return '\n'.join(lines)
 
 
@@ -258,7 +258,7 @@ class RichTextBox(TextBox):
                     locks[tag] = True
                 imark = text_buffer.get_iter_at_mark(end_mark)
                 if imark.ends_tag(self.text_tags[tag]) and locks[tag]:
-                    text_buffer.insert(imark, "<\\%s>" % tag[0])
+                    text_buffer.insert(imark, "</%s>" % tag[0])
                     locks[tag] = False
             for tag in ('left', 'right', 'center', 'fill'):
                 imark = text_buffer.get_iter_at_mark(begin_mark)
@@ -267,7 +267,7 @@ class RichTextBox(TextBox):
                     locks[tag] = True
                 imark = text_buffer.get_iter_at_mark(end_mark)
                 if imark.ends_tag(self.text_tags[tag]) and locks[tag]:
-                    text_buffer.insert(imark, "<\\p>")
+                    text_buffer.insert(imark, "</p>")
                     locks[tag] = False
             for tag in ('font_family', 'size', 'foreground', 'background'):
                 for name, prop in self.font_props[tag].items():
@@ -280,7 +280,7 @@ class RichTextBox(TextBox):
                     imark = text_buffer.get_iter_at_mark(end_mark)
                     if imark.ends_tag(prop) and locks['%s %s' % (tag, name)]:
                         locks['%s %s' % (tag, name)] = False
-                        text_buffer.insert(imark, "<\\span>")
+                        text_buffer.insert(imark, "</span>")
             imark = text_buffer.get_iter_at_mark(end_mark)
             if not imark.forward_to_tag_toggle(None):
                 break
@@ -311,7 +311,7 @@ class RichTextBox(TextBox):
             text_buffer.delete(text_buffer.get_iter_at_offset(
                 data_open.start()), text_buffer.get_iter_at_offset(
                 data_open.end()))
-            close_re = '<\\\%s>' % tag
+            close_re = '</%s>' % tag
             data_close = re.search(close_re, text)
             if data_close:
                 text = re.sub(close_re, '', text, 1)
