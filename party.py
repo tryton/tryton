@@ -171,10 +171,10 @@ class Party(ModelSQL, ModelView):
         return new_ids
 
     def search_rec_name(self, cursor, user, name, clause, context=None):
-        ids = self.search(cursor, user, [('code',) + clause[1:]],
+        ids = self.search(cursor, user, [('code',) + tuple(clause[1:])],
                 order=[], context=context)
         if ids:
-            ids += self.search(cursor, user, [('name',) + clause[1:]],
+            ids += self.search(cursor, user, [('name',) + tuple(clause[1:])],
                     order=[], context=context)
             return [('id', 'in', ids)]
         return [('name',) + clause[1:]]
