@@ -186,12 +186,12 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search(['OR',
-            ('start_balance',) + clause[1:],
-            ('end_balance',) + clause[1:],
+            ('start_balance',) + tuple(clause[1:]),
+            ('end_balance',) + tuple(clause[1:]),
             ])
         if ids:
             return [('id', 'in', ids)]
-        return [('journal',) + clause[1:]]
+        return [('journal',) + tuple(clause[1:])]
 
     def get_move_lines(self, ids, name):
         '''
