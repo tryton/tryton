@@ -59,7 +59,7 @@ class Lang(ModelSQL, ModelView, Cacheable):
         if ids:
             ids += self.search([('name',) + clause[1:]], order=[])
             return [('id', 'in', ids)]
-        return [('name',) + clause[1:]]
+        return [('name',) + tuple(clause[1:])]
 
     def read(self, ids, fields_names=None):
         pool = Pool()
