@@ -489,7 +489,7 @@ class UserAction(ModelSQL):
 
     def write(self, ids, values):
         values = self._convert_values(values)
-        return super(UserAction, self).write(values)
+        return super(UserAction, self).write(ids, values)
 
 UserAction()
 
