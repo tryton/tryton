@@ -37,7 +37,7 @@ class StockSupplyTestCase(unittest.TestCase):
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock_supply')
         self.uom = POOL.get('product.uom')
-        self.uom.category = POOL.get('product.uom.category')
+        self.uom_category = POOL.get('product.uom.category')
         self.category = POOL.get('product.category')
         self.product = POOL.get('product.product')
         self.company = POOL.get('company.company')
@@ -93,7 +93,7 @@ class StockSupplyTestCase(unittest.TestCase):
         :param delivery_time: time in days needed to supply
         :return: the id of the Product Supplier
         '''
-        uom_category_id = self.uom.category.create({'name': 'Test'})
+        uom_category_id = self.uom_category.create({'name': 'Test'})
         uom_id = self.uom.create({
             'name': 'Test',
             'symbol': 'T',
