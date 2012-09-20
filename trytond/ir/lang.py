@@ -54,7 +54,7 @@ class Lang(ModelSQL, ModelView, Cacheable):
             ids += self.search(cursor, user, [('name',) + clause[1:]],
                     order=[], context=context)
             return [('id', 'in', ids)]
-        return [('name',) + clause[1:]]
+        return [('name',) + tuple(clause[1:])]
 
     def read(self, cursor, user, ids, fields_names=None, context=None):
         translation_obj = self.pool.get('ir.translation')
