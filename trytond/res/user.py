@@ -219,7 +219,7 @@ class User(ModelSQL, ModelView):
             ], order=[])
         if len(ids) == 1:
             return [('id', '=', ids[0])]
-        return [(self._rec_name,) + clause[1:]]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def copy(self, ids, default=None):
         if default is None:
