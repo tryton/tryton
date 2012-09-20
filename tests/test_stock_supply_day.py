@@ -26,7 +26,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock_supply_day')
         self.uom = POOL.get('product.uom')
-        self.uom.category = POOL.get('product.uom.category')
+        self.uom_category = POOL.get('product.uom.category')
         self.category = POOL.get('product.category')
         self.product = POOL.get('product.product')
         self.company = POOL.get('company.company')
@@ -113,7 +113,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
         :param weekday: supply day of the week (0 - 6)
         :return: the id of the Product Supplier Day
         '''
-        uom_category_id = self.uom.category.create({'name': 'Test'})
+        uom_category_id = self.uom_category.create({'name': 'Test'})
         uom_id = self.uom.create({
             'name': 'Test',
             'symbol': 'T',
