@@ -46,8 +46,11 @@ class Work(ModelSQL, ModelView):
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_revenue')
     cost = fields.Function(fields.Numeric('Cost',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
-        'get_cost')
+            states={
+                'invisible': ~Eval('timesheet_available'),
+                },
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits', 'timesheet_available']), 'get_cost')
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['company']), 'get_currency_digits')
 

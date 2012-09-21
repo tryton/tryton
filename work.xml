@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <data>
-                    <xpath expr="/form/notebook/page[@id='general']/label[@name='party']"
+                    <xpath expr="/form/notebook/page[@id='general']/label[@name='hours']"
                         position="before">
                         <label name="product"/>
                         <field name="product"/>
