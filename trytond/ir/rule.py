@@ -158,7 +158,7 @@ class Rule(ModelSQL, ModelView):
             if not Transaction().context.get('user'):
                 return '', []
             with Transaction().set_user(Transaction().context['user']):
-                return self.domain_get(model_name)
+                return self.domain_get(model_name, mode=mode)
 
         pool = Pool()
         rule_group_obj = pool.get('ir.rule.group')
