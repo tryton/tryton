@@ -1008,17 +1008,11 @@ class Line(ModelSQL, ModelView):
                                         '\')' \
                             ')', fiscalyear_ids)
 
-        if not Transaction().context.get('fiscalyear'):
-            fiscalyear_ids = fiscalyear_obj.search([
-                ('state', '=', 'open'),
-                ])
-            fiscalyear_clause = (','.join(map(str, fiscalyear_ids))) or '0'
-        else:
-            fiscalyear_ids = [int(Transaction().context.get('fiscalyear'))]
-            fiscalyear_clause = '%s' % int(
-                    Transaction().context.get('fiscalyear'))
-
         if Transaction().context.get('periods'):
+            if Transaction().context.get('fiscalyear'):
+                fiscalyear_ids = [int(Transaction().context['fiscalyear'])]
+            else:
+                fiscalyear_ids = []
             ids = ','.join(
                     str(int(x)) for x in Transaction().context['periods'])
             if Transaction().context.get('posted'):
@@ -1028,15 +1022,25 @@ class Line(ModelSQL, ModelView):
                         'SELECT id FROM account_move '
                         'WHERE period IN (' + ids + ') '
                             'AND state = \'posted\' '
-                        ')', [])
+                        ')', fiscalyear_ids)
             else:
                 return (obj + '.active '
                     'AND ' + obj + '.state != \'draft\' '
                     'AND ' + obj + '.move IN ('
                         'SELECT id FROM account_move '
                         'WHERE period IN (' + ids + ')'
-                        ')', [])
+                        ')', fiscalyear_ids)
         else:
+            if not Transaction().context.get('fiscalyear'):
+                fiscalyear_ids = fiscalyear_obj.search([
+                    ('state', '=', 'open'),
+                    ])
+                fiscalyear_clause = (','.join(map(str, fiscalyear_ids))) or '0'
+            else:
+                fiscalyear_ids = [int(Transaction().context.get('fiscalyear'))]
+                fiscalyear_clause = '%s' % int(
+                        Transaction().context.get('fiscalyear'))
+
             if Transaction().context.get('posted'):
                 return (obj + '.active '
                     'AND ' + obj + '.state != \'draft\' '
