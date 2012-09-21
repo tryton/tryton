@@ -20,7 +20,11 @@ class Work(ModelSQL, ModelView):
     right = fields.Integer('Right', required=True, select=True)
     children = fields.One2Many('timesheet.work', 'parent', 'Children')
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
-        help="Total time spent on this work"), 'get_hours')
+            states={
+                'invisible': ~Eval('timesheet_available'),
+                },
+            depends=['timesheet_available'],
+            help="Total time spent on this work"), 'get_hours')
     timesheet_available = fields.Boolean('Available on timesheets',
         states={
             'readonly': Bool(Eval('timesheet_lines', [0])),
