@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Cron(ModelSQL, ModelView):
@@ -20,7 +21,8 @@ class Cron(ModelSQL, ModelView):
                 'company': company.id,
                 'main_company': company.id,
             })
-            super(Cron, self)._callback(cron)
+            with Transaction().set_context(company=company.id):
+                super(Cron, self)._callback(cron)
         user_obj.write(cron.user.id, {
             'company': None,
             'main_company': None,
