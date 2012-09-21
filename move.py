@@ -77,6 +77,8 @@ class Move(ModelSQL, ModelView):
                     'of different companies in the same move!',
             'date_outside_period': 'You can not create move ' \
                     'with a date outside the period!',
+            'draft_closed_period': 'You can not set to draft a move ' \
+                    'from a closed period',
             })
         self._buttons.update({
                 'post': {
@@ -358,6 +360,8 @@ class Move(ModelSQL, ModelView):
         for move in self.browse(ids):
             if not move.journal.update_posted:
                 self.raise_user_error('draft_posted_move_journal')
+            if move.period.state == 'close':
+                self.raise_user_error('draft_closed_period')
         return self.write(ids, {
             'state': 'draft',
             })
