@@ -160,7 +160,7 @@ class Rule(ModelSQL, ModelView):
             ctx = context.copy()
             del ctx['user']
             return self.domain_get(cursor, context['user'], model_name,
-                    context=ctx)
+                mode=mode, context=ctx)
 
         rule_group_obj = self.pool.get('ir.rule.group')
         model_obj = self.pool.get('ir.model')
