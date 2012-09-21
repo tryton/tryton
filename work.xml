@@ -64,30 +64,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <![CDATA[
-                <form string="Works Efforts" col="8">
-                        <label name="name"/>
-                        <field name="name" colspan="3"/>
-                        <label name="parent"/>
-                        <field name="parent"/>
-                        <label name="active"/>
-                        <field name="active" xexpand="0"/>
-                        <label name="sequence"/>
-                        <field name="sequence"/>
-                        <label name="type"/>
-                        <field name="type"/>
-                        <label name="state"/>
-                        <field name="state"/>
-                        <label name="timesheet_available"/>
-                        <field name="timesheet_available" xexpand="0"/>
-                        <label name="company"/>
-                        <field name="company"/>
+                <form string="Works Efforts" col="6">
+                    <label name="name"/>
+                    <field name="name" colspan="3"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0"/>
+                    <label name="type"/>
+                    <field name="type"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="party"/>
+                    <field name="party"/>
+                    <label name="party_address"/>
+                    <field name="party_address"/>
                     <notebook colspan="8">
                         <page string="General" id="general" col="6">
-                            <label name="party"/>
-                            <field name="party"/>
-                            <label name="party_address"/>
-                            <field name="party_address"/>
-                            <newline/>
+                            <group col="2" colspan="6" id="timesheet_available">
+                                <label name="timesheet_available"/>
+                                <field name="timesheet_available"/>
+                            </group>
                             <label name="hours"/>
                             <field name="hours" widget="float_time" float_time="company_work_time"/>
                             <label name="total_effort"/>
@@ -106,6 +105,8 @@ this repository contains the full copyright notices and license terms. -->
                             <field name="timesheet_lines" colspan="4"/>
                         </page>
                     </notebook>
+                    <label name="state"/>
+                    <field name="state"/>
                 </form>
                 ]]>
             </field>
