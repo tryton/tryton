@@ -51,8 +51,8 @@ class ShipmentIn(Model):
 
     def on_change_with_cost_currency_digits(self, values):
         currency_obj = Pool().get('currency.currency')
-        if values.get('currency'):
-            currency = currency_obj.browse(values['currency'])
+        if values.get('cost_currency'):
+            currency = currency_obj.browse(values['cost_currency'])
             return currency.digits
         return 2
 
