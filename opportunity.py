@@ -30,7 +30,7 @@ class SaleOpportunity(ModelWorkflow, ModelSQL, ModelView):
     _rec_name = 'description'
 
     party = fields.Many2One('party.party', 'Party', required=True, select=1,
-            states=_STATES_STOP, depends=['state'])
+        on_change=['party'], states=_STATES_STOP, depends=['state'])
     address = fields.Many2One('party.address', 'Address',
             domain=[('party', '=', Eval('party'))],
             select=2, depends=['party', 'state'],
