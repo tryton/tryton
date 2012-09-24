@@ -1,30 +1,30 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import ldap
-from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['User']
+__metaclass__ = PoolMeta
 
 
-class User(ModelSQL, ModelView):
-    _name = 'res.user'
+class User:
+    __name__ = 'res.user'
 
-    def __init__(self):
-        super(User, self).__init__()
-        self._error_messages.update({
-            'set_passwd_ldap_user': \
+    @classmethod
+    def __setup__(cls):
+        super(User, cls).__setup__()
+        cls._error_messages.update({
+                'set_passwd_ldap_user': \
                     'You can not set a password to a ldap user!',
-            })
+                })
 
-    def ldap_search_user(self, login, con, connection, attrs=None):
+    @staticmethod
+    def ldap_search_user(login, con, connection, attrs=None):
         '''
-        Return the resule of a ldap search for the login
-
-        :param login: the login
-        :param con: the ldap connection
-        :param connection: a BrowseRecord of ldap.connection
-        :param attrs: a list of attribute to return
-        :return: the ldap search result
+        Return the result of a ldap search for the login using the ldap
+        connection con based on connection.
+        The attributes values defined in attrs will be return.
         '''
         scope = {
             'base': ldap.SCOPE_BASE,
@@ -43,11 +43,11 @@ class User(ModelSQL, ModelView):
             result = [x for x in result if x[0]]
         return result
 
-    def _check_passwd_ldap_user(self, logins):
-        connection_obj = Pool().get('ldap.connection')
-        connection_ids = connection_obj.search([], limit=1)
+    @classmethod
+    def _check_passwd_ldap_user(cls, logins):
+        Connection = Pool().get('ldap.connection')
         with Transaction().set_user(0):
-            connection = connection_obj.browse(connection_ids[0])
+            connection, = Connection.search([], limit=1)
         find = False
         try:
             con = ldap.initialize(connection.uri)
@@ -58,35 +58,33 @@ class User(ModelSQL, ModelView):
             if connection.bind_dn:
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
             for login in logins:
-                if self.ldap_search_user(login,
+                if cls.ldap_search_user(login,
                         con, connection, attrs=[]):
                     find = True
         except Exception:
             pass
         if find:
-            self.raise_user_error('set_passwd_ldap_user')
+            cls.raise_user_error('set_passwd_ldap_user')
 
-    def create(self, vals):
-        if vals.get('password') and 'login' in vals:
-            self._check_passwd_ldap_user([vals['login']])
-        return super(User, self).create(vals)
+    @classmethod
+    def create(cls, values):
+        if values.get('password') and 'login' in values:
+            cls._check_passwd_ldap_user([values['login']])
+        return super(User, cls).create(values)
 
-    def write(self, ids, vals):
-        if vals.get('password'):
-            if isinstance(ids, (int, long)):
-                ids2 = [ids]
-            else:
-                ids2 = ids
-            logins = [x.login for x in self.browse(ids2)]
-            self._check_passwd_ldap_user(logins)
-        return super(User, self).write(ids, vals)
+    @classmethod
+    def write(cls, users, values):
+        if values.get('password'):
+            logins = [x.login for x in users]
+            cls._check_passwd_ldap_user(logins)
+        super(User, cls).write(users, values)
 
-    def set_preferences(self, values, old_password=False):
-        connection_obj = Pool().get('ldap.connection')
+    @classmethod
+    def set_preferences(cls, values, old_password=False):
+        Connection = Pool().get('ldap.connection')
         if 'password' in values:
-            connection_ids = connection_obj.search([], limit=1)
             with Transaction().set_user(0):
-                connection = connection_obj.browse(connection_ids[0])
+                connection, = Connection.search([], limit=1)
             try:
                 con = ldap.initialize(connection.uri)
                 if connection.active_directory:
@@ -95,25 +93,24 @@ class User(ModelSQL, ModelView):
                     con.start_tls_s()
                 if connection.bind_dn:
                     con.simple_bind_s(connection.bind_dn, connection.bind_pass)
-                user = self.browse(Transaction().user)
-                [(dn, attrs)] = self.ldap_search_user(user.login, con,
-                        connection, attrs=[str(connection.auth_uid)])
+                user = cls(Transaction().user)
+                [(dn, attrs)] = cls.ldap_search_user(user.login, con,
+                    connection, attrs=[str(connection.auth_uid)])
                 if con.simple_bind_s(dn, old_password):
                     con.passwd_s(dn, old_password, values['password'])
                     values = values.copy()
                     del values['password']
                 else:
-                    self.raise_user_error('wrong_password')
+                    cls.raise_user_error('wrong_password')
             except Exception:
                 pass
-        return super(User, self).set_preferences(values,
-                old_password=old_password)
+        super(User, cls).set_preferences(values, old_password=old_password)
 
-    def get_login(self, login, password):
-        connection_obj = Pool().get('ldap.connection')
-        connection_ids = connection_obj.search([], limit=1)
+    @classmethod
+    def get_login(cls, login, password):
+        Connection = Pool().get('ldap.connection')
         with Transaction().set_user(0):
-            connection = connection_obj.browse(connection_ids[0])
+            connection, = Connection.search([], limit=1)
         try:
             con = ldap.initialize(connection.uri)
             if connection.active_directory:
@@ -122,21 +119,19 @@ class User(ModelSQL, ModelView):
                 con.start_tls_s()
             if connection.bind_dn:
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
-            [(dn, attrs)] = self.ldap_search_user(login, con, connection,
-                    attrs=[str(connection.auth_uid)])
+            [(dn, attrs)] = cls.ldap_search_user(login, con, connection,
+                attrs=[str(connection.auth_uid)])
             if password and con.simple_bind_s(dn, password):
-                user_id, _, _ = self._get_login(login)
+                user_id, _, _ = cls._get_login(login)
                 if user_id:
                     return user_id
                 elif connection.auth_create_user:
-                    user_id = self.create({
-                        'name': attrs.get(str(connection.auth_uid),
+                    user = cls.create({
+                            'name': attrs.get(str(connection.auth_uid),
                                 [login])[0],
-                        'login': login,
-                        })
-                    return user_id
+                            'login': login,
+                            })
+                    return user.id
         except Exception:
             pass
-        return super(User, self).get_login(login, password)
-
-User()
+        return super(User, cls).get_login(login, password)

@@ -1,10 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
+from trytond.model import fields
+from trytond.pool import PoolMeta
+
+__all__ = ['Connection']
+__metaclass__ = PoolMeta
 
 
-class Connection(ModelSingleton, ModelSQL, ModelView):
-    _name = 'ldap.connection'
+class Connection:
+    __name__ = 'ldap.connection'
 
     auth_uid = fields.Char('UID', help='UID Attribute for authentication',
             required=True)
@@ -19,13 +23,14 @@ class Connection(ModelSingleton, ModelSQL, ModelView):
     auth_create_user = fields.Boolean('Create User',
             help='Create user if not in database')
 
-    def default_auth_uid(self):
+    @staticmethod
+    def default_auth_uid():
         return 'uid'
 
-    def default_auth_scope(self):
+    @staticmethod
+    def default_auth_scope():
         return 'base'
 
-    def default_auth_create_user(self):
+    @staticmethod
+    def default_auth_create_user():
         return False
-
-Connection()
