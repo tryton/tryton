@@ -4,16 +4,18 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Eval, Bool
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
+from trytond.pool import PoolMeta
+
+__all__ = ['ProductLocation', 'ShipmentIn']
+__metaclass__ = PoolMeta
 
 
 class ProductLocation(ModelSQL, ModelView):
     '''
-    Product Location defines the default storage location
-    by warehouse for a product
+    Product Location
+    It defines the default storage location by warehouse for a product.
     '''
-    _name = 'stock.product.location'
-    _description = 'Product Location'
-
+    __name__ = 'stock.product.location'
     product = fields.Many2One('product.product', 'Product', required=True,
             select=True)
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
@@ -28,32 +30,31 @@ class ProductLocation(ModelSQL, ModelView):
         order_field='(%(table)s.sequence IS NULL) %(order)s, '
         '%(table)s.sequence %(order)s')
 
-    def __init__(self):
-        super(ProductLocation, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(ProductLocation, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(ProductLocation, self).init(module_name)
+        super(ProductLocation, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-ProductLocation()
 
+class ShipmentIn:
+    __name__ = 'stock.shipment.in'
 
-class ShipmentIn(ModelSQL, ModelView):
-    _name = 'stock.shipment.in'
-
-    def _get_inventory_moves(self, incoming_move):
-        res = super(ShipmentIn, self)._get_inventory_moves(incoming_move)
+    @classmethod
+    def _get_inventory_moves(cls, incoming_move):
+        res = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
         for product_location in incoming_move.product.locations:
             if product_location.warehouse.id != \
                     incoming_move.shipment_in.warehouse.id:
                 continue
             res['to_location'] = product_location.location.id
         return res
-
-ShipmentIn()
