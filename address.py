@@ -3,9 +3,10 @@
 'Address'
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
-from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
+
+__all__ = ['Address']
 
 STATES = {
     'readonly': ~Eval('active'),
@@ -15,10 +16,9 @@ DEPENDS = ['active']
 
 class Address(ModelSQL, ModelView):
     "Address"
-    _name = 'party.address'
-    _description = __doc__
+    __name__ = 'party.address'
     party = fields.Many2One('party.party', 'Party', required=True,
-        ondelete='CASCADE', select=True,  states={
+        ondelete='CASCADE', select=True, states={
             'readonly': If(~Eval('active'), True, Eval('id', 0) > 0),
             },
         depends=['active', 'id'])
@@ -39,98 +39,86 @@ class Address(ModelSQL, ModelView):
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
-    def __init__(self):
-        super(Address, self).__init__()
-        self._order.insert(0, ('party', 'ASC'))
-        self._order.insert(1, ('sequence', 'ASC'))
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Address, cls).__setup__()
+        cls._order.insert(0, ('party', 'ASC'))
+        cls._order.insert(1, ('sequence', 'ASC'))
+        cls._error_messages.update({
             'write_party': 'You can not modify the party of an address!',
             })
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(Address, self).init(module_name)
+        super(Address, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def get_full_address(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for address in self.browse(ids):
-            res[address.id] = ''
-            if address.name:
-                res[address.id] += address.name
-            if address.street:
-                if res[address.id]:
-                    res[address.id] += '\n'
-                res[address.id] += address.street
-            if address.streetbis:
-                if res[address.id]:
-                    res[address.id] += '\n'
-                res[address.id] += address.streetbis
-            if address.zip or address.city:
-                if res[address.id]:
-                    res[address.id] += '\n'
-                if address.zip:
-                    res[address.id] += address.zip
-                if address.city:
-                    if res[address.id][-1:] != '\n':
-                        res[address.id] += ' '
-                    res[address.id] += address.city
-            if address.country or address.subdivision:
-                if res[address.id]:
-                    res[address.id] += '\n'
-                if address.subdivision:
-                    res[address.id] += address.subdivision.name
-                if address.country:
-                    if res[address.id][-1:] != '\n':
-                        res[address.id] += ' '
-                    res[address.id] += address.country.name
-        return res
+    def get_full_address(self, name):
+        full_address = ''
+        if self.name:
+            full_address = self.name
+        if self.street:
+            if full_address:
+                full_address += '\n'
+            full_address += self.street
+        if self.streetbis:
+            if full_address:
+                full_address += '\n'
+            full_address += self.streetbis
+        if self.zip or self.city:
+            if full_address:
+                full_address += '\n'
+            if self.zip:
+                full_address += self.zip
+            if self.city:
+                if full_address[-1:] != '\n':
+                    full_address += ' '
+                full_address += self.city
+        if self.country or self.subdivision:
+            if full_address:
+                full_address += '\n'
+            if self.subdivision:
+                full_address += self.subdivision.name
+            if self.country:
+                if full_address[-1:] != '\n':
+                    full_address += ' '
+                full_address += self.country.name
+        return full_address
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for address in self.browse(ids):
-            res[address.id] = ", ".join(x for x in [address.name,
-                address.party.rec_name, address.zip, address.city] if x)
-        return res
+    def get_rec_name(self, name):
+        return ", ".join(x for x in [self.name,
+                self.party.rec_name, self.zip, self.city] if x)
 
-    def search_rec_name(self, name, clause):
-        ids = self.search(['OR',
-            ('zip',) + clause[1:],
-            ('city',) + clause[1:],
-            ('name',) + clause[1:],
-            ], order=[])
-        if ids:
-            return [('id', 'in', ids)]
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        addresses = cls.search(['OR',
+                ('zip',) + clause[1:],
+                ('city',) + clause[1:],
+                ('name',) + clause[1:],
+                ], order=[])
+        if addresses:
+            return [('id', 'in', [address.id for address in addresses])]
         return [('party',) + clause[1:]]
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, addresses, vals):
         if 'party' in vals:
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            for address in self.browse(ids):
+            for address in addresses:
                 if address.party.id != vals['party']:
-                    self.raise_user_error('write_party')
-        return super(Address, self).write(ids, vals)
+                    cls.raise_user_error('write_party')
+        super(Address, cls).write(addresses, vals)
 
-    def on_change_country(self, vals):
-        subdivision_obj = Pool().get('country.subdivision')
-        result = dict((k, vals.get(k))
-            for k in ('country', 'subdivision'))
-        if vals['subdivision']:
-            subdivision = subdivision_obj.browse(vals['subdivision'])
-            if subdivision.country.id != vals['country']:
-                result['subdivision'] = None
-        return result
-
-Address()
+    def on_change_country(self):
+        if (self.subdivision
+                and self.subdivision.country != self.country):
+            return {'subdivision': None}
+        return {}

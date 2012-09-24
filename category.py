@@ -3,6 +3,8 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 
+__all__ = ['Category']
+
 STATES = {
     'readonly': ~Eval('active'),
 }
@@ -13,8 +15,7 @@ SEPARATOR = ' / '
 
 class Category(ModelSQL, ModelView):
     "Category"
-    _name = "party.category"
-    _description = __doc__
+    __name__ = 'party.category'
     name = fields.Char('Name', required=True, states=STATES, translate=True,
         depends=DEPENDS)
     parent = fields.Many2One('party.category', 'Parent',
@@ -23,48 +24,39 @@ class Category(ModelSQL, ModelView):
        'Children', states=STATES, depends=DEPENDS)
     active = fields.Boolean('Active')
 
-    def __init__(self):
-        super(Category, self).__init__()
-        self._sql_constraints = [
+    @classmethod
+    def __setup__(cls):
+        super(Category, cls).__setup__()
+        cls._sql_constraints = [
             ('name_parent_uniq', 'UNIQUE(name, parent)',
                 'The name of a party category must be unique by parent!'),
         ]
-        self._constraints += [
+        cls._constraints += [
             ('check_recursion', 'recursive_categories'),
             ('check_name', 'wrong_name'),
         ]
-        self._error_messages.update({
+        cls._error_messages.update({
             'recursive_categories': 'You can not create recursive categories!',
             'wrong_name': 'You can not use "%s" in name field!' % SEPARATOR,
         })
-        self._order.insert(1, ('name', 'ASC'))
+        cls._order.insert(1, ('name', 'ASC'))
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def check_name(self, ids):
-        for category in self.browse(ids):
-            if SEPARATOR in category.name:
-                return False
+    def check_name(self):
+        if SEPARATOR in self.name:
+            return False
         return True
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
+    def get_rec_name(self, name):
+        if self.parent:
+            return self.parent.get_rec_name(name) + SEPARATOR + self.name
+        return self.name
 
-        def _name(category):
-            if category.id in res:
-                return res[category.id]
-            elif category.parent:
-                return _name(category.parent) + SEPARATOR + category.name
-            else:
-                return category.name
-        for category in self.browse(ids):
-            res[category.id] = _name(category)
-        return res
-
-    def search_rec_name(self, name, clause):
+    @classmethod
+    def search_rec_name(cls, name, clause):
         if isinstance(clause[2], basestring):
             values = clause[2].split(SEPARATOR)
             values.reverse()
@@ -73,9 +65,7 @@ class Category(ModelSQL, ModelView):
             for name in values:
                 domain.append((field, clause[1], name))
                 field = 'parent.' + field
-            ids = self.search(domain, order=[])
-            return [('id', 'in', ids)]
+            categories = cls.search(domain, order=[])
+            return [('id', 'in', [category.id for category in categories])]
         #TODO Handle list
         return [('name',) + tuple(clause[1:])]
-
-Category()

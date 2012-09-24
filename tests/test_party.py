@@ -44,10 +44,10 @@ class PartyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            category1_id = self.category.create({
+            category1 = self.category.create({
                 'name': 'Category 1',
                 })
-            self.assert_(category1_id)
+            self.assert_(category1.id)
             transaction.cursor.commit()
 
     def test0020category_recursion(self):
@@ -55,20 +55,20 @@ class PartyTestCase(unittest.TestCase):
         Test category recursion.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category1_id = self.category.search([
+            category1, = self.category.search([
                 ('name', '=', 'Category 1'),
-                ], limit=1)[0]
+                ], limit=1)
 
-            category2_id = self.category.create({
+            category2 = self.category.create({
                 'name': 'Category 2',
-                'parent': category1_id,
+                'parent': category1.id,
                 })
-            self.assert_(category2_id)
+            self.assert_(category2.id)
 
-            self.failUnlessRaises(Exception, self.category.write,
-                    category1_id, {
-                        'parent': category2_id,
-                    })
+            self.assertRaises(Exception, self.category.write,
+                [category1], {
+                    'parent': category2.id,
+                })
 
     def test0030party(self):
         '''
@@ -76,10 +76,10 @@ class PartyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            party1_id = self.party.create({
+            party1 = self.party.create({
                 'name': 'Party 1',
                 })
-            self.assert_(party1_id)
+            self.assert_(party1.id)
             transaction.cursor.commit()
 
     def test0040party_code(self):
@@ -87,32 +87,32 @@ class PartyTestCase(unittest.TestCase):
         Test party code constraint.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party1_id = self.party.search([], limit=1)[0]
+            party1, = self.party.search([], limit=1)
 
-            code = self.party.read(party1_id, ['code'])['code']
+            code = party1.code
 
-            party2_id = self.party.create({
+            party2 = self.party.create({
                 'name': 'Party 2',
                 })
 
-            self.failUnlessRaises(Exception, self.party.write,
-                    party2_id, {
-                        'code': code,
-                    })
+            self.assertRaises(Exception, self.party.write,
+                [party2], {
+                    'code': code,
+                })
 
     def test0050address(self):
         '''
         Create address.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party1_id = self.party.search([], limit=1)[0]
+            party1, = self.party.search([], limit=1)
 
-            self.address.create({
-                'party': party1_id,
+            address = self.address.create({
+                'party': party1.id,
                 'street': 'St sample, 15',
                 'city': 'City',
                 })
-            self.assert_(party1_id)
+            self.assert_(address.id)
 
 
 def suite():

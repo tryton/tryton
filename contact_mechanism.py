@@ -5,6 +5,8 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 
+__all__ = ['ContactMechanism']
+
 STATES = {
     'readonly': ~Eval('active'),
     }
@@ -26,8 +28,7 @@ _TYPES = [
 
 class ContactMechanism(ModelSQL, ModelView):
     "Contact Mechanism"
-    _name = "party.contact_mechanism"
-    _description = __doc__
+    __name__ = 'party.contact_mechanism'
     _rec_name = 'value'
 
     type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
@@ -72,41 +73,42 @@ class ContactMechanism(ModelSQL, ModelView):
         }, on_change=['other_value'], depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
 
-    def __init__(self):
-        super(ContactMechanism, self).__init__()
-        self._order.insert(0, ('party', 'ASC'))
-        self._order.insert(1, ('sequence', 'ASC'))
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(ContactMechanism, cls).__setup__()
+        cls._order.insert(0, ('party', 'ASC'))
+        cls._order.insert(1, ('sequence', 'ASC'))
+        cls._error_messages.update({
             'write_party': 'You can not modify the party of ' \
                     'a contact mechanism!',
             })
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(ContactMechanism, self).init(module_name)
+        super(ContactMechanism, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'phone'
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def get_value(self, ids, names):
-        res = {}
-        for name in names:
-            res[name] = {}
-        for mechanism in self.browse(ids):
-            for name in names:
-                res[name][mechanism.id] = mechanism.value
-        return res
+    @classmethod
+    def get_value(cls, mechanisms, names):
+        return dict((name, dict((m.id, m.value) for m in mechanisms))
+            for name in names)
 
-    def set_value(self, ids, name, value):
-        self.write(ids, {
+    @classmethod
+    def set_value(cls, mechanisms, name, value):
+        cls.write(mechanisms, {
             'value': value,
             })
 
@@ -118,33 +120,30 @@ class ContactMechanism(ModelSQL, ModelView):
             'skype': value,
             'sip': value,
             'other_value': value,
-        }
+            }
 
-    def on_change_value(self, vals):
-        return self._change_value(vals.get('value'))
+    def on_change_value(self):
+        return self._change_value(self.value)
 
-    def on_change_website(self, vals):
-        return self._change_value(vals.get('website'))
+    def on_change_website(self):
+        return self._change_value(self.website)
 
-    def on_change_email(self, vals):
-        return self._change_value(vals.get('email'))
+    def on_change_email(self):
+        return self._change_value(self.email)
 
-    def on_change_skype(self, vals):
-        return self._change_value(vals.get('skype'))
+    def on_change_skype(self):
+        return self._change_value(self.skype)
 
-    def on_change_sip(self, vals):
-        return self._change_value(vals.get('sip'))
+    def on_change_sip(self):
+        return self._change_value(self.sip)
 
-    def on_change_other_value(self, vals):
-        return self._change_value(vals.get('other_value'))
+    def on_change_other_value(self):
+        return self._change_value(self.other_value)
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, mechanisms, vals):
         if 'party' in vals:
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            for mechanism in self.browse(ids):
+            for mechanism in mechanisms:
                 if mechanism.party.id != vals['party']:
-                    self.raise_user_error('write_party')
-        return super(ContactMechanism, self).write(ids, vals)
-
-ContactMechanism()
+                    cls.raise_user_error('write_party')
+        super(ContactMechanism, cls).write(mechanisms, vals)
