@@ -1,12 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import Model, fields
+from trytond.model import fields
 from trytond.pyson import Eval, Bool, Get
+from trytond.pool import PoolMeta
+
+__all__ = ['Configuration']
+__metaclass__ = PoolMeta
 
 
-class Configuration(Model):
-    _name = 'account.configuration'
-
+class Configuration:
+    __name__ = 'account.configuration'
     stock_journal = fields.Property(fields.Many2One(
             'account.journal', 'Stock Journal',
             states={
@@ -16,5 +19,3 @@ class Configuration(Model):
             'account.account', 'Cost Price Counterpart Account', domain=[
                 ('company', 'in', [Get(Eval('context', {}), 'company'), None]),
                 ]))
-
-Configuration()

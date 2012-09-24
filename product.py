@@ -1,17 +1,19 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval, Get
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Category', 'Template', 'UpdateCostPriceAsk',
+    'UpdateCostPriceShowMove', 'UpdateCostPrice']
+__metaclass__ = PoolMeta
 
 
-class Category(ModelSQL, ModelView):
-    _name = 'product.category'
-
+class Category:
+    __name__ = 'product.category'
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock', domain=[
                 ('kind', '=', 'stock'),
@@ -61,12 +63,9 @@ class Category(ModelSQL, ModelView):
     account_stock_lost_found_used = fields.Function(fields.Many2One(
         'account.account', 'Account Stock Lost and Found'), 'get_account')
 
-Category()
 
-
-class Template(ModelSQL, ModelView):
-    _name = 'product.template'
-
+class Template:
+    __name__ = 'product.template'
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock',
             domain=[
@@ -140,33 +139,26 @@ class Template(ModelSQL, ModelView):
     account_stock_lost_found_used = fields.Function(fields.Many2One(
         'account.account', 'Account Stock Lost and Found'), 'get_account')
 
-    def __init__(self):
-        super(Template, self).__init__()
-        self.cost_price = copy.copy(self.cost_price)
-        self.cost_price.states = copy.copy(self.cost_price.states)
-        self.cost_price.states['readonly'] = (
-            self.cost_price.states.get('readonly', False)
+    @classmethod
+    def __setup__(cls):
+        super(Template, cls).__setup__()
+        cls.cost_price.states['readonly'] = (
+            cls.cost_price.states.get('readonly', False)
             | ((Eval('type', 'goods') == 'goods') & (Eval('id', -1) >= 0)))
-        self.cost_price.depends = copy.copy(self.cost_price.depends)
-        if 'type' not in self.cost_price.depends:
-            self.cost_price.depends.append('type')
-        self._reset_columns()
-
-Template()
+        if 'type' not in cls.cost_price.depends:
+            cls.cost_price.depends.append('type')
 
 
 class UpdateCostPriceAsk(ModelView):
     'Update Cost Price Ask'
-    _name = 'product.update_cost_price.ask'
+    __name__ = 'product.update_cost_price.ask'
     product = fields.Many2One('product.product', 'Product', readonly=True)
     cost_price = fields.Numeric('Cost Price', required=True, digits=(16, 4))
-
-UpdateCostPriceAsk()
 
 
 class UpdateCostPriceShowMove(ModelView):
     'Update Cost Price Show Move'
-    _name = 'product.update_cost_price.show_move'
+    __name__ = 'product.update_cost_price.show_move'
     price_difference = fields.Numeric('Price Difference', readonly=True,
         digits=(16, 4))
     amount = fields.Numeric('Amount', readonly=True,
@@ -183,12 +175,10 @@ class UpdateCostPriceShowMove(ModelView):
         depends=['company', 'stock_account'], required=True)
     description = fields.Char('Description', required=True)
 
-UpdateCostPriceShowMove()
-
 
 class UpdateCostPrice(Wizard):
     'Update Cost Price'
-    _name = 'product.update_cost_price'
+    __name__ = 'product.update_cost_price'
     start_state = 'ask_price'
     ask_price = StateView('product.update_cost_price.ask',
         'account_stock_continental.update_cost_price_ask_form', [
@@ -204,116 +194,117 @@ class UpdateCostPrice(Wizard):
     create_move = StateTransition()
     update_price = StateTransition()
 
-    def __init__(self):
-        super(UpdateCostPrice, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(UpdateCostPrice, cls).__setup__()
+        cls._error_messages.update({
                 'same_account': 'The stock account and the counterpart can '
                     'not be the same account',
                 })
 
-    def default_ask_price(self, session, fields):
+    def default_ask_price(self, fields):
         if 'product' in fields:
             return {
                 'product': Transaction().context['active_id'],
                 }
 
-    def get_quantity(self):
+    @staticmethod
+    def get_quantity():
         pool = Pool()
-        date_obj = pool.get('ir.date')
-        product_obj = pool.get('product.product')
-        stock_obj = pool.get('stock.location')
+        Date = pool.get('ir.date')
+        Product = pool.get('product.product')
+        Stock = pool.get('stock.location')
 
-        locations = stock_obj.search([('type', '=', 'storage')])
-        stock_date_end = date_obj.today()
-        with Transaction().set_context(locations=locations,
+        locations = Stock.search([('type', '=', 'storage')])
+        stock_date_end = Date.today()
+        with Transaction().set_context(locations=[l.id for l in locations],
                 stock_date_end=stock_date_end):
-            product = product_obj.browse(Transaction().context['active_id'])
-            if hasattr(product_obj, 'cost_price'):
+            product = Product(Transaction().context['active_id'])
+            if hasattr(Product, 'cost_price'):
                 return product.quantity
             else:
                 return product.template.quantity
 
-    def transition_should_show_move(self, session):
+    def transition_should_show_move(self):
         if self.get_quantity() != 0:
             return 'show_move'
         return 'update_price'
 
-    def default_show_move(self, session, fields):
+    def default_show_move(self, fields):
         pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        user_obj = pool.get('res.user')
-        accountconf_obj = pool.get('account.configuration')
-        product_obj = pool.get('product.product')
+        User = pool.get('res.user')
+        AccountConfiguration = pool.get('account.configuration')
+        Product = pool.get('product.product')
 
-        product = product_obj.browse(Transaction().context['active_id'])
-        price_diff = (session.ask_price.cost_price
+        product = Product(Transaction().context['active_id'])
+        price_diff = (self.ask_price.cost_price
                 - product.cost_price)
-        user = user_obj.browse(Transaction().user)
-        amount = currency_obj.round(user.company.currency,
+        user = User(Transaction().user)
+        amount = user.company.currency.round(
             Decimal(str(self.get_quantity())) * price_diff)
-        stock_account = product.account_stock_used.id
-        config = accountconf_obj.browse(1)
-        stock_journal = config.stock_journal.id
-        counterpart = (config.cost_price_counterpart_account.id if
+        stock_account_id = product.account_stock_used.id
+        config = AccountConfiguration(1)
+        stock_journal_id = config.stock_journal.id
+        counterpart_id = (config.cost_price_counterpart_account.id if
             config.cost_price_counterpart_account else None)
         return {
-            'journal': stock_journal,
+            'journal': stock_journal_id,
             'amount': amount,
             'price_difference': price_diff,
-            'stock_account': stock_account,
-            'counterpart': counterpart,
+            'stock_account': stock_account_id,
+            'counterpart': counterpart_id,
             'currency_digits': user.company.currency.digits,
             }
 
-    def get_move_lines(self, session):
-        amount = session.show_move.amount
-        return [{
-                'name': session.ask_price.product.name,
-                'debit': amount if amount > 0 else 0,
-                'credit': -amount if amount < 0 else 0,
-                'account': session.show_move.stock_account.id,
-                },
-            {
-                'name': session.ask_price.product.name,
-                'debit': -amount if amount < 0 else 0,
-                'credit': amount if amount > 0 else 0,
-                'account': session.show_move.counterpart.id,
-                },
+    def get_move_lines(self):
+        Line = Pool.get('account.move.line')
+        amount = self.show_move.amount
+        return [Line(
+                name=self.ask_price.product.name,
+                debit=amount if amount > 0 else 0,
+                credit=-amount if amount < 0 else 0,
+                account=self.show_move.stock_account,
+                ),
+            Line(
+                name=self.ask_price.product.name,
+                debit=-amount if amount < 0 else 0,
+                credit=amount if amount > 0 else 0,
+                account=self.show_move.counterpart,
+                ),
             ]
 
-    def get_move(self, session):
+    def get_move(self):
         pool = Pool()
-        date_obj = pool.get('ir.date')
-        period_obj = pool.get('account.period')
-        user_obj = pool.get('res.user')
+        Date = pool.get('ir.date')
+        Period = pool.get('account.period')
+        User = pool.get('res.user')
+        Move = pool.get('account.move')
 
-        user = user_obj.browse(Transaction().user)
-        period_id = period_obj.find(user.company.id)
-        return {
-            'name': session.show_move.description,
-            'period': period_id,
-            'journal': session.show_move.journal.id,
-            'date': date_obj.today(),
-            'lines': [('create', l)
-                for l in self.get_move_lines(session)],
-            }
-
-    def transition_create_move(self, session):
-        move_obj = Pool().get('account.move')
-
-        if session.show_move.counterpart == session.show_move.stock_account:
-            self.raise_user_error('same_account')
-        move_data = self.get_move(session)
+        user = User(Transaction().user)
+        period_id = Period.find(user.company.id)
         with Transaction().set_user(0, set_context=True):
-            move_id = move_obj.create(move_data)
-            move_obj.post([move_id])
+            return Move(
+                name=self.show_move.description,
+                period=period_id,
+                journal=self.show_move.journal,
+                date=Date.today(),
+                lines=self.get_move_lines(),
+                )
+
+    def transition_create_move(self):
+        Move = Pool().get('account.move')
+
+        if self.show_move.counterpart == self.show_move.stock_account:
+            self.raise_user_error('same_account')
+        move = self.get_move()
+        move.save()
+        with Transaction().set_user(0, set_context=True):
+            Move.post([move])
         return 'update_price'
 
-    def transition_update_price(self, session):
-        product_obj = Pool().get('product.product')
-        product_obj.write(session.ask_price.product.id, {
-                'cost_price': session.ask_price.cost_price,
+    def transition_update_price(self):
+        Product = Pool().get('product.product')
+        Product.write([self.ask_price.product], {
+                'cost_price': self.ask_price.cost_price,
                 })
         return 'end'
-
-UpdateCostPrice()

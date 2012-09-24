@@ -154,7 +154,7 @@ Create product::
     >>> product.account_stock_customer = stock_customer
     >>> product.account_stock_lost_found = stock_lost_found
     >>> product.save()
-    >>> product_average = Product(Product.copy(product.id, config.context))
+    >>> product_average = Product(Product.copy([product.id], config.context)[0])
     >>> product_average.cost_price_method = 'average'
     >>> product_average.save()
 
@@ -312,7 +312,7 @@ Create an Inventory::
     >>> inventory = Inventory()
     >>> inventory.location = storage
     >>> inventory.save()
-    >>> Inventory.complete_lines(inventory.id, config.context)
+    >>> Inventory.complete_lines([inventory.id], config.context)
     >>> inventory_line = inventory.lines[0]
     >>> inventory_line.quantity = 1.0
     >>> inventory_line = inventory.lines[1]

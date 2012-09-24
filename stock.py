@@ -1,94 +1,102 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import Model, fields
-from trytond.pool import Pool
+
+from trytond.model import fields
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
+__all__ = ['Move']
+__metaclass__ = PoolMeta
 
-class Move(Model):
-    _name = 'stock.move'
 
+class Move:
+    __name__ = 'stock.move'
     account_move = fields.Many2One('account.move', 'Account Move',
             readonly=True)
 
-    def _get_account_stock_move_lines(self, move, type_):
+    def _get_account_stock_move_lines(self, type_):
         '''
-        Return move line values for stock move
+        Return move lines for stock move
         '''
-        uom_obj = Pool().get('product.uom')
-        currency_obj = Pool().get('currency.currency')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        AccountMoveLine = pool.get('account.move.line')
         assert type_.startswith('in_') or type_.startswith('out_'), \
             'wrong type'
 
-        move_line = {
-            'name': move.rec_name,
-        }
+        with Transaction().set_user(0, set_context=True):
+            move_line = AccountMoveLine(name=self.rec_name)
         if (type_.endswith('supplier')
-                and move.product.cost_price_method != 'fixed'):
-            unit_price = move.unit_price
+                and self.product.cost_price_method != 'fixed'):
+            unit_price = self.unit_price
         else:
-            unit_price = uom_obj.compute_price(move.product.default_uom,
-                    move.cost_price, move.uom)
-        amount = currency_obj.round(move.company.currency,
-                Decimal(str(move.quantity)) * unit_price)
+            unit_price = Uom.compute_price(self.product.default_uom,
+                self.cost_price, self.uom)
+        amount = self.company.currency.round(
+                Decimal(str(self.quantity)) * unit_price)
 
         if type_.startswith('in_'):
-            move_line['debit'] = Decimal('0.0')
-            move_line['credit'] = amount
+            move_line.debit = Decimal('0.0')
+            move_line.credit = amount
             account_type = type_[3:]
         else:
-            move_line['debit'] = amount
-            move_line['credit'] = Decimal('0.0')
+            move_line.debit = amount
+            move_line.credit = Decimal('0.0')
             account_type = type_[4:]
 
-        move_line['account'] = getattr(move.product,
-                'account_stock_%s_used' % account_type).id
+        move_line.account = getattr(self.product,
+            'account_stock_%s_used' % account_type)
 
         return [move_line]
 
-    def _get_account_stock_move_line(self, move, amount):
+    def _get_account_stock_move_line(self, amount):
         '''
         Return counterpart move line value for stock move
         '''
-        move_line = {
-            'name': move.rec_name,
-            'account': move.product.account_stock_used.id,
-        }
+        pool = Pool()
+        AccountMoveLine = pool.get('account.move.line')
+        with Transaction().set_user(0, set_context=True):
+            move_line = AccountMoveLine(
+                name=self.rec_name,
+                account=self.product.account_stock_used,
+                )
         if not amount:
             return
         if amount >= Decimal('0.0'):
-            move_line['debit'] = Decimal('0.0')
-            move_line['credit'] = amount
+            move_line.debit = Decimal('0.0')
+            move_line.credit = amount
         else:
-            move_line['debit'] = - amount
-            move_line['credit'] = Decimal('0.0')
+            move_line.debit = - amount
+            move_line.credit = Decimal('0.0')
         return move_line
 
-    def _get_account_stock_move(self, move, move_lines):
+    def _get_account_stock_move(self, move_lines):
         '''
         Return account move value for stock move
         '''
-        date_obj = Pool().get('ir.date')
-        period_obj = Pool().get('account.period')
-        account_configuration_obj = Pool().get('account.configuration')
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Period = pool.get('account.period')
+        AccountConfiguration = pool.get('account.configuration')
+        AccountMove = pool.get('account.move')
 
-        date = move.effective_date or date_obj.today()
-        period_id = period_obj.find(move.company.id, date=date)
-        account_configuration = account_configuration_obj.browse(1)
-        journal_id = account_configuration.stock_journal.id
-        return {
-            'journal': journal_id,
-            'period': period_id,
-            'date': date,
-            'lines': [('create', line) for line in move_lines],
-        }
+        date = self.effective_date or Date.today()
+        period_id = Period.find(self.company.id, date=date)
+        account_configuration = AccountConfiguration(1)
+        with Transaction().set_user(0, set_context=True):
+            return AccountMove(
+                journal=account_configuration.stock_journal,
+                period=period_id,
+                date=date,
+                lines=move_lines,
+                )
 
-    def _get_account_stock_move_type(self, move):
+    def _get_account_stock_move_type(self):
         '''
         Get account move type
         '''
-        type_ = (move.from_location.type, move.to_location.type)
+        type_ = (self.from_location.type, self.to_location.type)
         if type_ == ('supplier', 'storage'):
             return 'in_supplier'
         elif type_ == ('storage', 'supplier'):
@@ -106,70 +114,64 @@ class Move(Model):
         elif type_ == ('customer', 'supplier'):
             return 'customer_supplier'
 
-    def _create_account_stock_move(self, move):
+    def _create_account_stock_move(self):
         '''
         Create account move for stock move
         '''
-        account_move_obj = Pool().get('account.move')
-        if move.product.type != 'goods':
+        AccountMove = Pool().get('account.move')
+        if self.product.type != 'goods':
             return
-        type_ = self._get_account_stock_move_type(move)
+        type_ = self._get_account_stock_move_type()
         if not type_:
             return
-        assert not move.account_move, 'account move field not empty'
+        assert not self.account_move, 'account move field not empty'
         if type_ == 'supplier_customer':
-            account_move_lines = self._get_account_stock_move_lines(move,
+            account_move_lines = self._get_account_stock_move_lines(
                 'in_supplier')
-            account_move_lines.extend(self._get_account_stock_move_lines(move,
+            account_move_lines.extend(self._get_account_stock_move_lines(
                     'out_customer'))
         elif type_ == 'customer_supplier':
-            account_move_lines = self._get_account_stock_move_lines(move,
+            account_move_lines = self._get_account_stock_move_lines(
                 'in_customer')
-            account_move_lines.extend(self._get_account_stock_move_lines(move,
+            account_move_lines.extend(self._get_account_stock_move_lines(
                     'out_supplier'))
         else:
-            account_move_lines = self._get_account_stock_move_lines(move,
-                type_)
+            account_move_lines = self._get_account_stock_move_lines(type_)
 
         amount = Decimal('0.0')
         for line in account_move_lines:
-            amount += line['debit'] - line['credit']
-        move_line = self._get_account_stock_move_line(move, amount)
+            amount += line.debit - line.credit
+        move_line = self._get_account_stock_move_line(amount)
         if move_line:
             account_move_lines.append(move_line)
 
+        account_move = self._get_account_stock_move(account_move_lines)
+        account_move.save()
         with Transaction().set_user(0, set_context=True):
-            account_move_id = account_move_obj.create(
-                    self._get_account_stock_move(move, account_move_lines))
-            account_move_obj.post(account_move_id)
-        self.write(move.id, {
-            'account_move': account_move_id,
-            })
-        return account_move_id
+            AccountMove.post([account_move])
+        self.write([self], {
+                'account_move': account_move.id,
+                })
+        return account_move
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, moves, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default.setdefault('account_move', None)
-        return super(Move, self).copy(ids, default=default)
+        return super(Move, cls).copy(moves, default=default)
 
-    def create(self, vals):
-        new_id = super(Move, self).create(vals)
+    @classmethod
+    def create(cls, vals):
+        move = super(Move, cls).create(vals)
         if vals.get('state') == 'done':
-            move = self.browse(new_id)
-            self._create_account_stock_move(move)
-        return new_id
+            move._create_account_stock_move()
+        return move
 
-    def write(self, ids, vals):
-        res = super(Move, self).write(ids, vals)
+    @classmethod
+    def write(cls, moves, vals):
+        super(Move, cls).write(moves, vals)
         if vals.get('state') == 'done':
-            if isinstance(ids, (int, long)):
-                move = self.browse(ids)
-                self._create_account_stock_move(move)
-            else:
-                for move in self.browse(ids):
-                    self._create_account_stock_move(move)
-        return res
-
-Move()
+            for move in moves:
+                move._create_account_stock_move()
