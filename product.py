@@ -1,14 +1,17 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import Model, fields
+from trytond.model import fields
 from trytond.pyson import Eval, Bool, Id
-from trytond.pool import Pool
+from trytond.pool import PoolMeta
+
+__all__ = ['Template']
+__metaclass__ = PoolMeta
 
 NON_MEASURABLE = ['service']
 
 
-class Template(Model):
-    _name = 'product.template'
+class Template:
+    __name__ = 'product.template'
 
     length = fields.Float('Length',
         digits=(16, Eval('length_digits', 2)),
@@ -24,7 +27,7 @@ class Template(Model):
             },
         depends=['type', 'length'])
     length_digits = fields.Function(fields.Integer('Length Digits',
-            on_change_with=['length_uom']), 'get_field_digits')
+            on_change_with=['length_uom']), 'on_change_with_length_digits')
     height = fields.Float('Height',
         digits=(16, Eval('height_digits', 2)),
         states={
@@ -39,7 +42,7 @@ class Template(Model):
             },
         depends=['type', 'height'])
     height_digits = fields.Function(fields.Integer('Height Digits',
-            on_change_with=['height_uom']), 'get_field_digits')
+            on_change_with=['height_uom']), 'on_change_with_height_digits')
     width = fields.Float('Width',
         digits=(16, Eval('width_digits', 2)),
         states={
@@ -54,7 +57,7 @@ class Template(Model):
             },
         depends=['type', 'width'])
     width_digits = fields.Function(fields.Integer('Width Digits',
-            on_change_with=['width_uom']), 'get_field_digits')
+            on_change_with=['width_uom']), 'on_change_with_width_digits')
     weight = fields.Float('Weight',
         digits=(16, Eval('weight_digits', 2)),
         states={
@@ -69,48 +72,36 @@ class Template(Model):
             },
         depends=['type', 'weight'])
     weight_digits = fields.Function(fields.Integer('Weight Digits',
-            on_change_with=['weight_uom']), 'get_field_digits')
+            on_change_with=['weight_uom']), 'on_change_with_weight_digits')
 
-    def _on_change_with_field_digits(self, uom_id):
-        uom_obj = Pool().get('product.uom')
-        if uom_id:
-            uom = uom_obj.browse(uom_id)
-            return uom.digits
+    def on_change_with_length_digits(self, name=None):
+        return (self.length_uom.digits if self.length_uom
+            else self.default_length_digits())
+
+    @staticmethod
+    def default_length_digits():
         return 2
 
-    def on_change_with_length_digits(self, values):
-        return self._on_change_with_field_digits(values.get('length_uom'))
+    def on_change_with_height_digits(self, name=None):
+        return (self.height_uom.digits if self.height_uom
+            else self.default_height_digits())
 
-    def default_length_digits(self):
+    @staticmethod
+    def default_height_digits():
         return 2
 
-    def on_change_with_height_digits(self, values):
-        return self._on_change_with_field_digits(values.get('height_uom'))
+    def on_change_with_width_digits(self, name=None):
+        return (self.width_uom.digits if self.width_uom
+            else self.default_width_digits())
 
-    def default_height_digits(self):
+    @staticmethod
+    def default_width_digits():
         return 2
 
-    def on_change_with_width_digits(self, values):
-        return self._on_change_with_field_digits(values.get('width_uom'))
+    def on_change_with_weight_digits(self, name=None):
+        return (self.weight_uom.digits if self.weight_uom
+            else self.default_weight_digits())
 
-    def default_width_digits(self):
+    @staticmethod
+    def default_weight_digits():
         return 2
-
-    def on_change_with_weight_digits(self, values):
-        return self._on_change_with_field_digits(values.get('weight_uom'))
-
-    def default_weight_digits(self):
-        return 2
-
-    def get_field_digits(self, ids, name):
-        digits = {}
-        field = '%s_uom' % name[:-7]
-        for template in self.browse(ids):
-            uom = getattr(template, field)
-            if uom:
-                digits[template.id] = uom.digits
-            else:
-                digits[template.id] = 2
-        return digits
-
-Template()
