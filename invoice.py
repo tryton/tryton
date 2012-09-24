@@ -1,49 +1,43 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
-import copy
-from trytond.model import Model, fields
+
+from trytond.model import fields
+from trytond.pool import PoolMeta
+
+__all__ = ['Invoice']
+__metaclass__ = PoolMeta
 
 
-class Invoice(Model):
-    _name = 'account.invoice'
+class Invoice:
+    __name__ = 'account.invoice'
     open_date = fields.DateTime('Open Date')
 
-    def __init__(self):
-        super(Invoice, self).__init__()
-        self.party = copy.copy(self.party)
-        self.party.datetime_field = 'open_date'
-        if 'open_date' not in self.party.depends:
-            self.party.depends = copy.copy(self.party.depends)
-            self.party.depends.append('open_date')
-        self.invoice_address = copy.copy(self.invoice_address)
-        self.invoice_address.datetime_field = 'open_date'
-        if 'open_date' not in self.invoice_address.depends:
-            self.invoice_address.depends = copy.copy(
-                    self.invoice_address.depends)
-            self.invoice_address.depends.append('open_date')
-        self.payment_term = copy.copy(self.payment_term)
-        self.payment_term.datetime_field = 'open_date'
-        if 'open_date' not in self.payment_term.depends:
-            self.payment_term.depends = copy.copy(
-                    self.payment_term.depends)
-            self.payment_term.depends.append('open_date')
-        self._reset_columns()
+    @classmethod
+    def __setup__(cls):
+        super(Invoice, cls).__setup__()
+        cls.party.datetime_field = 'open_date'
+        if 'open_date' not in cls.party.depends:
+            cls.party.depends.append('open_date')
+        cls.invoice_address.datetime_field = 'open_date'
+        if 'open_date' not in cls.invoice_address.depends:
+            cls.invoice_address.depends.append('open_date')
+        cls.payment_term.datetime_field = 'open_date'
+        if 'open_date' not in cls.payment_term.depends:
+            cls.payment_term.depends.append('open_date')
 
-    def set_number(self, invoice):
-        set_open_date = not invoice.number
-        res = super(Invoice, self).set_number(invoice)
+    def set_number(self):
+        set_open_date = not self.number
+        super(Invoice, self).set_number()
         if set_open_date:
-            self.write(invoice.id, {
-                'open_date': datetime.datetime.now(),
-                })
-        return res
+            self.write([self], {
+                    'open_date': datetime.datetime.now(),
+                    })
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, invoices, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['open_date'] = None
-        return super(Invoice, self).copy(ids, default=default)
-
-Invoice()
+        return super(Invoice, cls).copy(invoices, default=default)
