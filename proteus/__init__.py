@@ -240,13 +240,13 @@ class ReferenceValueDescriptor(ValueDescriptor):
         value = super(ReferenceValueDescriptor, self).__get__(instance, owner)
         if isinstance(value, Model):
             value = '%s,%s' % (value.__class__.__name__, value.id)
-        return value or False
+        return value or None
 
 
 class Many2OneValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
         value = super(Many2OneValueDescriptor, self).__get__(instance, owner)
-        return value and value.id or False
+        return value and value.id or None
 
 
 class One2OneValueDescriptor(Many2OneValueDescriptor):
@@ -260,7 +260,7 @@ class One2ManyValueDescriptor(ValueDescriptor):
         for record in value_list:
             if record.id > 0:
                 if record._changed:
-                    value.append(('write', record.id, record._get_values(
+                    value.append(('write', [record.id], record._get_values(
                         fields=record._changed)))
                 value[0][1].append(record.id)
             else:
@@ -291,7 +291,7 @@ class ReferenceEvalDescriptor(EvalDescriptor):
         value = super(ReferenceEvalDescriptor, self).__get__(instance, owner)
         if isinstance(value, Model):
             value = '%s,%s' % (value.__class__.__name__, value.id)
-        return value or False
+        return value or None
 
 
 class Many2OneEvalDescriptor(EvalDescriptor):
@@ -299,7 +299,7 @@ class Many2OneEvalDescriptor(EvalDescriptor):
         value = super(Many2OneEvalDescriptor, self).__get__(instance, owner)
         if value:
             return value.id
-        return False
+        return None
 
 
 class One2OneEvalDescriptor(Many2OneEvalDescriptor):
@@ -607,7 +607,7 @@ class Model(object):
                 return
             values = self._get_values(fields=self._changed)
             context['_timestamp'] = self._get_timestamp()
-            self._proxy.write(self.id, values, context)
+            self._proxy.write([self.id], values, context)
         self.reload()
 
     def delete(self):
@@ -615,7 +615,7 @@ class Model(object):
         if self.id > 0:
             context = self._config.context
             context['_timestamp'] = self._get_timestamp()
-            return self._proxy.delete(self.id, context)
+            return self._proxy.delete([self.id], context)
         self.reload()
         return True
 
@@ -654,8 +654,8 @@ class Model(object):
                     if y['loading'] == 'eager']
         if not self._fields:
             fields.append('_timestamp')
-        self._values.update(self._proxy.read(self.id, fields,
-            self._config.context))
+        self._values.update(self._proxy.read([self.id], fields,
+            self._config.context)[0])
         for field in fields:
             if (field in self._fields
                     and self._fields[field]['type'] == 'float'
@@ -795,8 +795,8 @@ class Model(object):
             values.update(self._on_change_args(definition['on_change_with']))
         if to_change:
             context = self._config.context
-            result = getattr(self._proxy, 'on_change_with')(list(to_change),
-                values, context)
+            result = getattr(self._proxy, 'on_change_with')(values,
+                list(to_change), context)
             for field, value in result.items():
                 self._on_change_set(field, value)
         for field in later:
@@ -847,7 +847,11 @@ class Wizard(object):
                 ctx['active_model'] = None
 
             if self.form:
-                data = {self.form_state: self.form._get_on_change_value()}
+                # Filter only modified values
+                data = {self.form_state:
+                    dict((k, v) for k, v in
+                        self.form._get_on_change_value().iteritems()
+                        if k in self.form._values)}
             else:
                 data = {}
 

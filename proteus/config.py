@@ -101,28 +101,35 @@ class _TrytondMethod(object):
     def __call__(self, *args):
         from trytond.cache import Cache
         from trytond.transaction import Transaction
+        from trytond.rpc import RPC
 
-        if self._name in self._object._rpc:
-            readonly = not self._object._rpc[self._name]
+        if self._name in self._object.__rpc__:
+            rpc = self._object.__rpc__[self._name]
         elif self._name in getattr(self._object, '_buttons', {}):
-            readonly = False
+            rpc = RPC(readonly=False, instantiate=0)
         else:
             raise TypeError('%s is not callable' % self._name)
 
         with Transaction().start(self._config.database_name,
-                self._config.user, readonly=readonly) as transaction:
+                self._config.user, readonly=rpc.readonly) as transaction:
             Cache.clean(self._config.database_name)
-            args = list(args)
-            context = args.pop()
-            if '_timestamp' in context:
-                transaction.timestamp = context['_timestamp']
-                del context['_timestamp']
-            transaction.context = context
-            res = getattr(self._object, self._name)(*args)
-            if not readonly:
+            args, kwargs, transaction.context, transaction.timestamp = \
+                rpc.convert(self._object, *args)
+            meth = getattr(self._object, self._name)
+            if not hasattr(meth, 'im_self') or meth.im_self:
+                result = rpc.result(meth(*args, **kwargs))
+            else:
+                assert rpc.instantiate == 0
+                inst = args.pop(0)
+                if hasattr(inst, self._name):
+                    result = rpc.result(meth(inst, *args, **kwargs))
+                else:
+                    result = [rpc.result(meth(i, *args, **kwargs))
+                        for i in inst]
+            if not rpc.readonly:
                 transaction.cursor.commit()
         Cache.resets(self._config.database_name)
-        return res
+        return result
 
 
 class TrytondProxy(object):
@@ -149,7 +156,6 @@ class TrytondConfig(Config):
         CONFIG.update_etc(config_file)
         if database_type is not None:
             CONFIG['db_type'] = database_type
-        from trytond.modules import register_classes
         from trytond.pool import Pool
         from trytond.backend import Database
         from trytond.protocols.dispatcher import create
@@ -165,7 +171,7 @@ class TrytondConfig(Config):
         self._user = user
         self.config_file = config_file
 
-        register_classes()
+        Pool.start()
 
         database = Database().connect()
         cursor = database.cursor()
@@ -187,7 +193,7 @@ class TrytondConfig(Config):
             transaction.context = self.context
             self.user = user_obj.search([
                 ('login', '=', user),
-                ], limit=1)[0]
+                ], limit=1)[0].id
             with transaction.set_user(self.user):
                 self._context = user_obj.get_preferences(context_only=True)
         Cache.resets(database_name)
@@ -219,7 +225,7 @@ class TrytondConfig(Config):
     def get_proxy_methods(self, name, type='model'):
         'Return list of methods'
         proxy = self.get_proxy(name, type=type)
-        methods = [x for x in proxy._object._rpc]
+        methods = [x for x in proxy._object.__rpc__]
         if hasattr(proxy._object, '_buttons'):
             methods += [x for x in proxy._object._buttons]
         return methods

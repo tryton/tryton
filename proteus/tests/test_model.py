@@ -276,7 +276,7 @@ class TestModel(TestCase):
         test.name = 'Test delete'
         test.login = 'test delete'
         test.save()
-        self.assert_(test.delete())
+        test.delete()
 
     def test_on_change(self):
         Trigger = Model.get('ir.trigger')
