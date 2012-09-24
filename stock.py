@@ -1,46 +1,51 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import Model, ModelView, fields
+from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
+__all__ = ['Move', 'SplitMoveStart', 'SplitMove']
+__metaclass__ = PoolMeta
 
-class Move(Model):
-    _name = 'stock.move'
 
-    def __init__(self):
-        super(Move, self).__init__()
-        self._buttons.update({
+class Move:
+    __name__ = 'stock.move'
+
+    @classmethod
+    def __setup__(cls):
+        super(Move, cls).__setup__()
+        cls._buttons.update({
                 'split_wizard': {
                     'readonly': ~Eval('state').in_(['draft', 'assigned']),
                     },
                 })
 
+    @classmethod
     @ModelView.button_action('stock_split.wizard_split_move')
-    def split_wizard(self, ids):
+    def split_wizard(cls, moves):
         pass
 
-    def split(self, move, quantity, uom, count=None):
+    def split(self, quantity, uom, count=None):
         """
         Split the move into moves of quantity.
         If count is not defined, the move will be split until the remainder is
         less than quantity.
-        Return the split move ids
+        Return the split moves
         """
         pool = Pool()
-        uom_obj = pool.get('product.uom')
+        Uom = pool.get('product.uom')
 
-        moves = [move.id]
-        remainder = uom_obj.compute_qty(move.uom, move.quantity, uom)
+        moves = [self]
+        remainder = Uom.compute_qty(self.uom, self.quantity, uom)
         if remainder <= quantity:
             return moves
-        state = move.state
-        self.write(move.id, {
+        state = self.state
+        self.write([self], {
                 'state': 'draft',
                 })
-        self.write(move.id, {
+        self.write([self], {
                 'quantity': quantity,
                 'uom': uom.id,
                 'state': state,
@@ -50,7 +55,7 @@ class Move(Model):
             count -= 1
         while (remainder > quantity
                 and (count or count is None)):
-            moves.append(self.copy(move.id, {
+            moves.extend(self.copy([self], {
                         'quantity': quantity,
                         'uom': uom.id,
                         'state': state,
@@ -60,21 +65,17 @@ class Move(Model):
                 count -= 1
         assert remainder >= 0
         if remainder:
-            moves.append(self.copy(move.id, {
+            moves.extend(self.copy([self], {
                         'quantity': remainder,
                         'uom': uom.id,
                         'state': state,
                         }))
         return moves
 
-Move()
-
 
 class SplitMoveStart(ModelView):
     'Split Move'
-    _name = 'stock.move.split.start'
-    _description = __doc__
-
+    __name__ = 'stock.move.split.start'
     count = fields.Integer('Counts', help='The limit number of moves')
     quantity = fields.Float('Quantity', required=True,
         digits=(16, Eval('unit_digits', 2)),
@@ -89,21 +90,15 @@ class SplitMoveStart(ModelView):
     uom_category = fields.Many2One('product.uom.category', 'Uom Category',
         readonly=True)
 
-    def on_change_with_unit_digits(self, values):
-        pool = Pool()
-        uom_obj = pool.get('product.uom')
-        if values.get('uom'):
-            uom = uom_obj.browse(values['uom'])
-            return uom.digits
+    def on_change_with_unit_digits(self):
+        if self.uom:
+            return self.uom.digits
         return 2
-
-SplitMoveStart()
 
 
 class SplitMove(Wizard):
     'Split Move'
-    _name = 'stock.move.split'
-
+    __name__ = 'stock.move.split'
     start = StateView('stock.move.split.start',
         'stock_split.split_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -111,22 +106,19 @@ class SplitMove(Wizard):
             ])
     split = StateTransition()
 
-    def default_start(self, session, fields):
+    def default_start(self, fields):
         pool = Pool()
-        move_obj = pool.get('stock.move')
+        Move = pool.get('stock.move')
         default = {}
-        move = move_obj.browse(Transaction().context['active_id'])
+        move = Move(Transaction().context['active_id'])
         default['uom'] = move.uom.id
         default['unit_digits'] = move.unit_digits
         default['uom_category'] = move.uom.category.id
         return default
 
-    def transition_split(self, session):
+    def transition_split(self):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        move = move_obj.browse(Transaction().context['active_id'])
-        move_obj.split(move, session.start.quantity, session.start.uom,
-            session.start.count)
+        Move = pool.get('stock.move')
+        move = Move(Transaction().context['active_id'])
+        move.split(self.start.quantity, self.start.uom, self.start.count)
         return 'end'
-
-SplitMove()

@@ -49,79 +49,72 @@ class StockSplitTestCase(unittest.TestCase):
         Test split.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            unit_id, = self.uom.search([('name', '=', 'Unit')])
-            unit = self.uom.browse(unit_id)
-            product_id = self.product.create({
+            unit, = self.uom.search([('name', '=', 'Unit')])
+            product = self.product.create({
                     'name': 'Test Split',
                     'type': 'goods',
                     'cost_price_method': 'fixed',
-                    'default_uom': unit_id,
+                    'default_uom': unit.id,
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
                     })
-            input_id, = self.location.search([('code', '=', 'IN')])
-            storage_id, = self.location.search([('code', '=', 'STO')])
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            self.user.write(USER, {
-                'main_company': company_id,
-                'company': company_id,
-                })
+            input_, = self.location.search([('code', '=', 'IN')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            company, = self.company.search([('name', '=', 'B2CK')])
+            self.user.write([self.user(USER)], {
+                    'main_company': company.id,
+                    'company': company.id,
+                    })
 
             def create_move(quantity):
-                move_id = self.move.create({
-                        'product': product_id,
-                        'uom': unit_id,
+                move = self.move.create({
+                        'product': product.id,
+                        'uom': unit.id,
                         'quantity': quantity,
-                        'from_location': input_id,
-                        'to_location': storage_id,
-                        'company': company_id,
+                        'from_location': input_.id,
+                        'to_location': storage.id,
+                        'company': company.id,
                         })
-                return self.move.browse(move_id)
+                return move
 
             move = create_move(10)
-            move_ids = self.move.split(move, 5, unit)
-            self.assertEqual(len(move_ids), 2)
-            self.assertEqual([m.quantity for m in self.move.browse(move_ids)],
-                [5, 5])
+            moves = move.split(5, unit)
+            self.assertEqual(len(moves), 2)
+            self.assertEqual([m.quantity for m in moves], [5, 5])
 
             move = create_move(13)
-            move_ids = self.move.split(move, 5, unit)
-            self.assertEqual(len(move_ids), 3)
-            self.assertEqual([m.quantity for m in self.move.browse(move_ids)],
-                [5, 5, 3])
+            moves = move.split(5, unit)
+            self.assertEqual(len(moves), 3)
+            self.assertEqual([m.quantity for m in moves], [5, 5, 3])
 
             move = create_move(7)
-            move_ids = self.move.split(move, 8, unit)
-            self.assertEqual(move_ids, [move.id])
+            moves = move.split(8, unit)
+            self.assertEqual(moves, [move])
             self.assertEqual(move.quantity, 7)
 
             move = create_move(20)
-            move_ids = self.move.split(move, 5, unit, count=2)
-            self.assertEqual(len(move_ids), 3)
-            self.assertEqual([m.quantity for m in self.move.browse(move_ids)],
-                [5, 5, 10])
+            moves = move.split(5, unit, count=2)
+            self.assertEqual(len(moves), 3)
+            self.assertEqual([m.quantity for m in moves], [5, 5, 10])
 
             move = create_move(20)
-            move_ids = self.move.split(move, 5, unit, count=4)
-            self.assertEqual(len(move_ids), 4)
-            self.assertEqual([m.quantity for m in self.move.browse(move_ids)],
-                [5, 5, 5, 5])
+            moves = move.split(5, unit, count=4)
+            self.assertEqual(len(moves), 4)
+            self.assertEqual([m.quantity for m in moves], [5, 5, 5, 5])
 
             move = create_move(10)
-            move_ids = self.move.split(move, 5, unit, count=3)
-            self.assertEqual(len(move_ids), 2)
-            self.assertEqual([m.quantity for m in self.move.browse(move_ids)],
-                [5, 5])
+            moves = move.split(5, unit, count=3)
+            self.assertEqual(len(moves), 2)
+            self.assertEqual([m.quantity for m in moves], [5, 5])
 
             move = create_move(10)
-            self.move.write(move.id, {
+            self.move.write([move], {
                     'state': 'assigned',
                     })
-            move_ids = self.move.split(move, 5, unit)
-            self.assertEqual(len(move_ids), 2)
-            self.assertEqual([m.quantity for m in self.move.browse(move_ids)],
-                [5, 5])
-            self.assertEqual([m.state for m in self.move.browse(move_ids)],
+            moves = move.split(5, unit)
+            self.assertEqual(len(moves), 2)
+            self.assertEqual([m.quantity for m in moves], [5, 5])
+            self.assertEqual([m.state for m in moves],
                 ['assigned', 'assigned'])
 
 
