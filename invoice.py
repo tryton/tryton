@@ -3,12 +3,14 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['InvoiceLine', 'Account']
+__metaclass__ = PoolMeta
 
 
-class InvoiceLine(ModelSQL, ModelView):
-    _name = 'account.invoice.line'
-
+class InvoiceLine:
+    __name__ = 'account.invoice.line'
     analytic_accounts = fields.Many2One('analytic_account.account.selection',
         'Analytic Accounts',
         states={
@@ -16,47 +18,45 @@ class InvoiceLine(ModelSQL, ModelView):
             },
         depends=['type'])
 
-    def _view_look_dom_arch(self, tree, type, field_children=None):
-        analytic_account_obj = Pool().get('analytic_account.account')
-        analytic_account_obj.convert_view(tree)
-        arch, fields = super(InvoiceLine, self)._view_look_dom_arch(tree, type,
+    @classmethod
+    def _view_look_dom_arch(cls, tree, type, field_children=None):
+        AnalyticAccount = Pool().get('analytic_account.account')
+        AnalyticAccount.convert_view(tree)
+        return super(InvoiceLine, cls)._view_look_dom_arch(tree, type,
             field_children=field_children)
-        return arch, fields
 
-    def fields_get(self, fields_names=None):
-        analytic_account_obj = Pool().get('analytic_account.account')
+    @classmethod
+    def fields_get(cls, fields_names=None):
+        AnalyticAccount = Pool().get('analytic_account.account')
 
-        res = super(InvoiceLine, self).fields_get(fields_names)
+        fields = super(InvoiceLine, cls).fields_get(fields_names)
 
-        analytic_accounts_field = super(InvoiceLine, self).fields_get(
+        analytic_accounts_field = super(InvoiceLine, cls).fields_get(
                 ['analytic_accounts'])['analytic_accounts']
 
-        res.update(analytic_account_obj.analytic_accounts_fields_get(
-            analytic_accounts_field, fields_names))
-        return res
+        fields.update(AnalyticAccount.analytic_accounts_fields_get(
+                analytic_accounts_field, fields_names))
+        return fields
 
-    def default_get(self, fields, with_rec_name=True):
+    @classmethod
+    def default_get(cls, fields, with_rec_name=True):
         fields = [x for x in fields if not x.startswith('analytic_account_')]
-        return super(InvoiceLine, self).default_get(fields,
+        return super(InvoiceLine, cls).default_get(fields,
             with_rec_name=with_rec_name)
 
-    def read(self, ids, fields_names=None):
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
-
+    @classmethod
+    def read(cls, ids, fields_names=None):
         if fields_names:
             fields_names2 = [x for x in fields_names
                     if not x.startswith('analytic_account_')]
         else:
             fields_names2 = fields_names
 
-        res = super(InvoiceLine, self).read(ids, fields_names=fields_names2)
+        res = super(InvoiceLine, cls).read(ids, fields_names=fields_names2)
 
         if not fields_names:
-            fields_names = list(set(self._columns.keys() \
-                    + self._inherit_fields.keys()))
+            fields_names = list(set(cls._fields.keys() \
+                    + cls._inherit_fields.keys()))
 
         root_ids = []
         for field in fields_names:
@@ -66,7 +66,7 @@ class InvoiceLine(ModelSQL, ModelView):
             id2record = {}
             for record in res:
                 id2record[record['id']] = record
-            lines = self.browse(ids)
+            lines = cls.browse(ids)
             for line in lines:
                 for root_id in root_ids:
                     id2record[line.id]['analytic_account_' \
@@ -84,12 +84,11 @@ class InvoiceLine(ModelSQL, ModelView):
                                     str(account.root.id) + '.'):
                                 ham, field2 = field.split('.', 1)
                                 id2record[line.id][field] = account[field2]
-        if int_id:
-            return res[0]
         return res
 
-    def create(self, vals):
-        selection_obj = Pool().get('analytic_account.account.selection')
+    @classmethod
+    def create(cls, vals):
+        Selection = Pool().get('analytic_account.account.selection')
         vals = vals.copy()
         selection_vals = {}
         for field in vals.keys():
@@ -99,17 +98,17 @@ class InvoiceLine(ModelSQL, ModelView):
                     selection_vals['accounts'].append(('add', vals[field]))
                 del vals[field]
         if vals.get('analytic_accounts'):
-            selection_obj.write(vals['analytic_accounts'], selection_vals)
+            Selection.write([Selection(vals['analytic_accounts'])],
+                selection_vals)
         elif vals.get('type', 'line') == 'line':
-            selection_id = selection_obj.create(selection_vals)
-            vals['analytic_accounts'] = selection_id
-        return super(InvoiceLine, self).create(vals)
+            selection = Selection.create(selection_vals)
+            vals['analytic_accounts'] = selection.id
+        return super(InvoiceLine, cls).create(vals)
 
-    def write(self, ids, vals):
-        selection_obj = Pool().get('analytic_account.account.selection')
+    @classmethod
+    def write(cls, lines, vals):
+        Selection = Pool().get('analytic_account.account.selection')
         vals = vals.copy()
-        if isinstance(ids, (int, long)):
-            ids = [ids]
         selection_vals = {}
         for field in vals.keys():
             if field.startswith('analytic_account_'):
@@ -117,7 +116,6 @@ class InvoiceLine(ModelSQL, ModelView):
                 selection_vals[root_id] = vals[field]
                 del vals[field]
         if selection_vals:
-            lines = self.browse(ids)
             for line in lines:
                 if line.type != 'line':
                     continue
@@ -125,11 +123,10 @@ class InvoiceLine(ModelSQL, ModelView):
                 if not line.analytic_accounts:
                     # Create missing selection
                     with Transaction().set_user(0):
-                            selection_id = selection_obj.create({})
-                    self.write(line.id, {
-                        'analytic_accounts': selection_id,
-                        })
-                    line = self.browse(line.id)
+                            selection = Selection.create({})
+                    cls.write([line], {
+                            'analytic_accounts': selection.id,
+                            })
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in selection_vals:
                         value = selection_vals[account.root.id]
@@ -141,103 +138,90 @@ class InvoiceLine(ModelSQL, ModelView):
                     if account_id \
                             and account_id not in accounts:
                         accounts.append(account_id)
-                selection_obj.write(line.analytic_accounts.id, {
-                    'accounts': [('set', accounts)],
-                    })
-        return super(InvoiceLine, self).write(ids, vals)
+                Selection.write([line.analytic_accounts], {
+                        'accounts': [('set', accounts)],
+                        })
+        super(InvoiceLine, cls).write(lines, vals)
 
-    def delete(self, ids):
-        selection_obj = Pool().get('analytic_account.account.selection')
+    @classmethod
+    def delete(cls, lines):
+        Selection = Pool().get('analytic_account.account.selection')
 
-        if isinstance(ids, (int, long)):
-            ids = [ids]
         selection_ids = []
-        lines = self.browse(ids)
         for line in lines:
             if line.analytic_accounts:
                 selection_ids.append(line.analytic_accounts.id)
 
-        res = super(InvoiceLine, self).delete(ids)
-        selection_obj.delete(selection_ids)
-        return res
+        super(InvoiceLine, cls).delete(lines)
+        Selection.delete(Selection.browse(selection_ids))
 
-    def copy(self, ids, default=None):
-        selection_obj = Pool().get('analytic_account.account.selection')
+    @classmethod
+    def copy(cls, lines, default=None):
+        Selection = Pool().get('analytic_account.account.selection')
 
-        new_ids = super(InvoiceLine, self).copy(ids, default=default)
+        new_lines = super(InvoiceLine, cls).copy(lines, default=default)
 
-        int_id = False
-        if isinstance(new_ids, (int, long)):
-            int_id = True
-            new_ids = [new_ids]
-
-        for line in self.browse(new_ids):
+        for line in new_lines:
             if line.analytic_accounts:
-                selection_id = selection_obj.copy(line.analytic_accounts.id)
-                self.write(line.id, {
-                    'analytic_accounts': selection_id,
-                    })
+                selection, = Selection.copy([line.analytic_accounts])
+                cls.write([line], {
+                        'analytic_accounts': selection.id,
+                        })
+        return new_lines
 
-        if int_id:
-            return new_ids[0]
-        return new_ids
+    def _credit(self):
+        Selection = Pool().get('analytic_account.account.selection')
 
-    def _credit(self, line):
-        selection_obj = Pool().get('analytic_account.account.selection')
+        result = super(InvoiceLine, self)._credit()
 
-        result = super(InvoiceLine, self)._credit(line)
-
-        if line.analytic_accounts:
-            selection_id = selection_obj.copy(line.analytic_accounts.id)
-            result['analytic_accounts'] = selection_id
+        if self.analytic_accounts:
+            selection, = Selection.copy([self.analytic_accounts])
+            result['analytic_accounts'] = selection.id
         return result
 
-    def get_move_line(self, line):
-        values = super(InvoiceLine, self).get_move_line(line)
-        if line.analytic_accounts and line.analytic_accounts.accounts:
+    def get_move_line(self):
+        values = super(InvoiceLine, self).get_move_line()
+        if self.analytic_accounts and self.analytic_accounts.accounts:
             for value in values:
                 value['analytic_lines'] = []
-                for account in line.analytic_accounts.accounts:
+                for account in self.analytic_accounts.accounts:
                     vals = {}
-                    vals['name'] = line.description
+                    vals['name'] = self.description
                     vals['debit'] = value['debit']
                     vals['credit'] = value['credit']
                     vals['account'] = account.id
-                    vals['journal'] = line.invoice.journal.id
-                    vals['date'] = line.invoice.invoice_date
-                    vals['reference'] = line.invoice.reference
-                    vals['party'] = line.invoice.party.id
+                    vals['journal'] = self.invoice.journal.id
+                    vals['date'] = self.invoice.invoice_date
+                    vals['reference'] = self.invoice.reference
+                    vals['party'] = self.invoice.party.id
                     value['analytic_lines'].append(('create', vals))
         return values
 
-InvoiceLine()
-
 
 class Account(ModelSQL, ModelView):
-    _name = 'analytic_account.account'
+    __name__ = 'analytic_account.account'
 
-    def delete(self, ids):
-        account_invoice_line_obj = Pool().get('account.invoice.line')
-        res = super(Account, self).delete(ids)
+    @classmethod
+    def delete(cls, accounts):
+        InvoiceLine = Pool().get('account.invoice.line')
+        super(Account, cls).delete(accounts)
         # Restart the cache on the fields_view_get method of
         # account.invoice.line
-        account_invoice_line_obj.fields_view_get.reset()
-        return res
+        InvoiceLine._fields_view_get_cache.clear()
 
-    def create(self, vals):
-        account_invoice_line_obj = Pool().get('account.invoice.line')
-        res = super(Account, self).create(vals)
+    @classmethod
+    def create(cls, vals):
+        InvoiceLine = Pool().get('account.invoice.line')
+        account = super(Account, cls).create(vals)
         # Restart the cache on the fields_view_get method of
         # account.invoice.line
-        account_invoice_line_obj.fields_view_get.reset()
-        return res
+        InvoiceLine._fields_view_get_cache.clear()
+        return account
 
-    def write(self, ids, vals):
-        account_invoice_line_obj = Pool().get('account.invoice.line')
-        res = super(Account, self).write(ids, vals)
+    @classmethod
+    def write(cls, accounts, vals):
+        InvoiceLine = Pool().get('account.invoice.line')
+        super(Account, cls).write(accounts, vals)
         # Restart the cache on the fields_view_get method of
         # account.invoice.line
-        account_invoice_line_obj.fields_view_get.reset()
-        return res
-
-Account()
+        InvoiceLine._fields_view_get_cache.clear()
