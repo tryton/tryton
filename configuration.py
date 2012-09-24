@@ -5,12 +5,12 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
 
+__all__ = ['Configuration']
+
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
     'Account Configuration'
-    _name = 'account.configuration'
-    _description = __doc__
-
+    __name__ = 'account.configuration'
     default_account_receivable = fields.Function(fields.Many2One(
         'account.account', 'Default Account Receivable',
         domain=[
@@ -26,46 +26,44 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                 ]),
         'get_account', setter='set_account')
 
-    def get_account(self, ids, name):
-        property_obj = Pool().get('ir.property')
-        model_field_obj = Pool().get('ir.model.field')
+    def get_account(self, name):
+        pool = Pool()
+        Property = pool.get('ir.property')
+        ModelField = pool.get('ir.model.field')
         company_id = Transaction().context.get('company')
-        account_field_id, = model_field_obj.search([
+        account_field, = ModelField.search([
             ('model.model', '=', 'party.party'),
             ('name', '=', name[8:]),
             ], limit=1)
-        property_ids = property_obj.search([
-            ('field', '=', account_field_id),
+        properties = Property.search([
+            ('field', '=', account_field.id),
             ('res', '=', None),
             ('company', '=', company_id),
             ], limit=1)
-        if property_ids:
-            prop = property_obj.browse(property_ids[0])
-            value = int(prop.value.split(',')[1])
-        else:
-            value = None
-        return dict((x, value) for x in ids)
+        if properties:
+            prop, = properties
+            return prop.value.id
 
-    def set_account(self, ids, name, value):
-        property_obj = Pool().get('ir.property')
-        model_field_obj = Pool().get('ir.model.field')
+    @classmethod
+    def set_account(cls, configurations, name, value):
+        pool = Pool()
+        Property = pool.get('ir.property')
+        ModelField = pool.get('ir.model.field')
         company_id = Transaction().context.get('company')
-        account_field_id, = model_field_obj.search([
+        account_field, = ModelField.search([
             ('model.model', '=', 'party.party'),
             ('name', '=', name[8:]),
             ], limit=1)
-        property_ids = property_obj.search([
-            ('field', '=', account_field_id),
+        properties = Property.search([
+            ('field', '=', account_field.id),
             ('res', '=', None),
             ('company', '=', company_id),
             ])
         with Transaction().set_user(0):
-            property_obj.delete(property_ids)
+            Property.delete(properties)
             if value:
-                property_obj.create({
-                    'field': account_field_id,
+                Property.create({
+                    'field': account_field.id,
                     'value': 'account.account,%s' % value,
                     'company': company_id,
                     })
-
-Configuration()

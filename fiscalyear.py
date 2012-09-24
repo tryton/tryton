@@ -8,6 +8,8 @@ from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['FiscalYear', 'CloseFiscalYearStart', 'CloseFiscalYear']
+
 STATES = {
     'readonly': Eval('state') == 'close',
 }
@@ -16,9 +18,7 @@ DEPENDS = ['state']
 
 class FiscalYear(ModelSQL, ModelView):
     'Fiscal Year'
-    _name = 'account.fiscalyear'
-    _description = __doc__
-
+    __name__ = 'account.fiscalyear'
     name = fields.Char('Name', size=None, required=True, depends=DEPENDS)
     code = fields.Char('Code', size=None)
     start_date = fields.Date('Starting Date', required=True, states=STATES,
@@ -48,14 +48,15 @@ class FiscalYear(ModelSQL, ModelView):
                 Eval('context', {}).get('company', 0)),
             ], select=True)
 
-    def __init__(self):
-        super(FiscalYear, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(FiscalYear, cls).__setup__()
+        cls._constraints += [
             ('check_dates', 'fiscalyear_overlaps'),
             ('check_post_move_sequence', 'different_post_move_sequence'),
         ]
-        self._order.insert(0, ('start_date', 'ASC'))
-        self._error_messages.update({
+        cls._order.insert(0, ('start_date', 'ASC'))
+        cls._error_messages.update({
             'change_post_move_sequence': 'You can not change ' \
                     'the post move sequence',
             'no_fiscalyear_date': 'No fiscal year defined for this date!',
@@ -70,7 +71,7 @@ class FiscalYear(ModelSQL, ModelView):
             'reopen_error': 'You can not reopen a fiscal year until ' \
                     'there is more recent fiscal year closed!',
             })
-        self._buttons.update({
+        cls._buttons.update({
                 'create_period': {
                     'invisible': ((Eval('state') != 'open')
                         | Eval('periods', [0])),
@@ -87,70 +88,69 @@ class FiscalYear(ModelSQL, ModelView):
                     },
                 })
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'open'
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def check_dates(self, ids):
+    def check_dates(self):
         cursor = Transaction().cursor
-        for fiscalyear in self.browse(ids):
-            cursor.execute('SELECT id ' \
-                    'FROM ' + self._table + ' ' \
-                    'WHERE ((start_date <= %s AND end_date >= %s) ' \
-                            'OR (start_date <= %s AND end_date >= %s) ' \
-                            'OR (start_date >= %s AND end_date <= %s)) ' \
-                        'AND company = %s ' \
-                        'AND id != %s',
-                    (fiscalyear.start_date, fiscalyear.start_date,
-                        fiscalyear.end_date, fiscalyear.end_date,
-                        fiscalyear.start_date, fiscalyear.end_date,
-                        fiscalyear.company.id, fiscalyear.id))
-            if cursor.fetchone():
-                return False
+        cursor.execute('SELECT id ' \
+                'FROM ' + self._table + ' ' \
+                'WHERE ((start_date <= %s AND end_date >= %s) ' \
+                        'OR (start_date <= %s AND end_date >= %s) ' \
+                        'OR (start_date >= %s AND end_date <= %s)) ' \
+                    'AND company = %s ' \
+                    'AND id != %s',
+                (self.start_date, self.start_date,
+                    self.end_date, self.end_date,
+                    self.start_date, self.end_date,
+                    self.company.id, self.id))
+        if cursor.fetchone():
+            return False
         return True
 
-    def check_post_move_sequence(self, ids):
-        for fiscalyear in self.browse(ids):
-            if self.search([
-                ('post_move_sequence', '=', fiscalyear.post_move_sequence.id),
-                ('id', '!=', fiscalyear.id),
-                ]):
-                return False
+    def check_post_move_sequence(self):
+        if self.search([
+                    ('post_move_sequence', '=', self.post_move_sequence.id),
+                    ('id', '!=', self.id),
+                    ]):
+            return False
         return True
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, fiscalyears, vals):
         if vals.get('post_move_sequence'):
-            for fiscalyear in self.browse(ids):
+            for fiscalyear in fiscalyears:
                 if fiscalyear.post_move_sequence and \
                         fiscalyear.post_move_sequence.id != \
                         vals['post_move_sequence']:
-                    self.raise_user_error('change_post_move_sequence')
+                    cls.raise_user_error('change_post_move_sequence')
         vals = vals.copy()
         if 'periods' in vals:
             operator = ['delete', 'unlink_all', 'unlink', 'create', 'write',
                     'add', 'set']
             vals['periods'].sort(
                 lambda x, y: cmp(operator.index(x[0]), operator.index(y[0])))
-        return super(FiscalYear, self).write(ids, vals)
+        super(FiscalYear, cls).write(fiscalyears, vals)
 
-    def delete(self, ids):
-        period_obj = Pool().get('account.period')
+    @classmethod
+    def delete(cls, fiscalyears):
+        Period = Pool().get('account.period')
+        Period.delete([p for f in fiscalyears for p in f.periods])
+        super(FiscalYear, cls).delete(fiscalyears)
 
-        period_ids = []
-        for fiscalyear in self.browse(ids):
-            period_ids.extend([x.id for x in fiscalyear.periods])
-        period_obj.delete(period_ids)
-        return super(FiscalYear, self).delete(ids)
-
+    @classmethod
     @ModelView.button
-    def create_period(self, ids, interval=1):
+    def create_period(cls, fiscalyears, interval=1):
         '''
         Create periods for the fiscal years with month interval
         '''
-        period_obj = Pool().get('account.period')
-        for fiscalyear in self.browse(ids):
+        Period = Pool().get('account.period')
+        for fiscalyear in fiscalyears:
             period_start_date = fiscalyear.start_date
             while period_start_date < fiscalyear.end_date:
                 period_end_date = period_start_date + \
@@ -161,7 +161,7 @@ class FiscalYear(ModelSQL, ModelView):
                 name = datetime_strftime(period_start_date, '%Y-%m')
                 if name != datetime_strftime(period_end_date, '%Y-%m'):
                     name += ' - ' + datetime_strftime(period_end_date, '%Y-%m')
-                period_obj.create({
+                Period.create({
                     'name': name,
                     'start_date': period_start_date,
                     'end_date': period_end_date,
@@ -171,138 +171,132 @@ class FiscalYear(ModelSQL, ModelView):
                     })
                 period_start_date = period_end_date + relativedelta(days=1)
 
+    @classmethod
     @ModelView.button
-    def create_period_3(self, ids):
+    def create_period_3(cls, fiscalyears):
         '''
         Create periods for the fiscal years with 3 months interval
         '''
-        self.create_period(ids, interval=3)
+        cls.create_period(fiscalyears, interval=3)
 
-    def find(self, company_id, date=None, exception=True):
+    @classmethod
+    def find(cls, company_id, date=None, exception=True):
         '''
         Return the fiscal year for the company_id
             at the date or the current date.
         If exception is set the function will raise an exception
             if any fiscal year is found.
         '''
-        date_obj = Pool().get('ir.date')
+        Date = Pool().get('ir.date')
 
         if not date:
-            date = date_obj.today()
-        ids = self.search([
+            date = Date.today()
+        fiscalyears = cls.search([
             ('start_date', '<=', date),
             ('end_date', '>=', date),
             ('company', '=', company_id),
             ], order=[('start_date', 'DESC')], limit=1)
-        if not ids:
+        if not fiscalyears:
             if exception:
-                self.raise_user_error('no_fiscalyear_date')
+                cls.raise_user_error('no_fiscalyear_date')
             else:
                 return None
-        return ids[0]
+        return fiscalyears[0].id
 
-    def _process_account(self, account, fiscalyear):
+    def _process_account(self, account):
         '''
         Process account for a fiscal year closed
-
-        :param account: a BrowseRecord of the account
-        :param fiscalyear: a BrowseRecord of the fiscal year closed
         '''
-        currency_obj = Pool().get('currency.currency')
-        deferral_obj = Pool().get('account.account.deferral')
+        Currency = Pool().get('currency.currency')
+        Deferral = Pool().get('account.account.deferral')
 
-        if account.kind == 'view':
+        if self.kind == 'view':
             return
-        if not account.deferral:
-            if not currency_obj.is_zero(fiscalyear.company.currency,
-                    account.balance):
+        if not self.deferral:
+            if not Currency.is_zero(self.company.currency, account.balance):
                 self.raise_user_error('account_balance_not_zero',
                         error_args=(account.rec_name,))
         else:
-            deferral_obj.create({
+            Deferral.create({
                 'account': account.id,
-                'fiscalyear': fiscalyear.id,
+                'fiscalyear': self.id,
                 'debit': account.debit,
                 'credit': account.credit,
                 })
 
+    @classmethod
     @ModelView.button
-    def close(self, ids):
+    def close(cls, fiscalyears):
         '''
         Close a fiscal year
         '''
-        period_obj = Pool().get('account.period')
-        account_obj = Pool().get('account.account')
+        pool = Pool()
+        Period = pool.get('account.period')
+        Account = pool.get('account.account')
 
-        for fiscalyear in self.browse(ids):
-            if self.search([
+        for fiscalyear in fiscalyears:
+            if cls.search([
                 ('end_date', '<=', fiscalyear.start_date),
                 ('state', '=', 'open'),
                 ('company', '=', fiscalyear.company.id),
                 ]):
-                self.raise_user_error('close_error')
+                cls.raise_user_error('close_error')
 
             #First close the fiscalyear to be sure
             #it will not have new period created between.
-            self.write(fiscalyear.id, {
+            cls.write([fiscalyear], {
                 'state': 'close',
                 })
-            period_ids = period_obj.search([
-                ('fiscalyear', '=', fiscalyear.id),
-                ])
-            period_obj.close(period_ids)
+            periods = Period.search([
+                    ('fiscalyear', '=', fiscalyear.id),
+                    ])
+            Period.close(periods)
 
             with Transaction().set_context(fiscalyear=fiscalyear.id,
                     date=None):
-                account_ids = account_obj.search([
-                    ('company', '=', fiscalyear.company.id),
-                    ])
-                accounts = account_obj.browse(account_ids)
+                accounts = Account.search([
+                        ('company', '=', fiscalyear.company.id),
+                        ])
             for account in accounts:
-                self._process_account(account, fiscalyear)
+                fiscalyear._process_account(account)
 
+    @classmethod
     @ModelView.button
-    def reopen(self, ids):
+    def reopen(cls, fiscalyears):
         '''
         Re-open a fiscal year
         '''
-        deferral_obj = Pool().get('account.account.deferral')
+        Deferral = Pool().get('account.account.deferral')
 
-        for fiscalyear in self.browse(ids):
-            if self.search([
+        for fiscalyear in fiscalyears:
+            if cls.search([
                 ('start_date', '>=', fiscalyear.end_date),
                 ('state', '=', 'close'),
                 ('company', '=', fiscalyear.company.id),
                 ]):
-                self.raise_user_error('reopen_error')
+                cls.raise_user_error('reopen_error')
 
-            deferral_ids = deferral_obj.search([
+            deferrals = Deferral.search([
                 ('fiscalyear', '=', fiscalyear.id),
                 ])
-            deferral_obj.delete(deferral_ids)
+            Deferral.delete(deferrals)
 
-            self.write(fiscalyear.id, {
+            cls.write([fiscalyear], {
                 'state': 'open',
                 })
-
-FiscalYear()
 
 
 class CloseFiscalYearStart(ModelView):
     'Close Fiscal Year'
-    _name = 'account.fiscalyear.close.start'
-    _description = __doc__
+    __name__ = 'account.fiscalyear.close.start'
     close_fiscalyear = fields.Many2One('account.fiscalyear',
             'Fiscal Year to close', required=True,
             domain=[('state', '!=', 'close')])
 
-CloseFiscalYearStart()
-
 
 class CloseFiscalYear(Wizard):
     'Close Fiscal Year'
-    _name = 'account.fiscalyear.close'
-
+    __name__ = 'account.fiscalyear.close'
     start = StateView('account.fiscalyear.close.start',
         'account.fiscalyear_close_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -310,9 +304,7 @@ class CloseFiscalYear(Wizard):
             ])
     close = StateTransition()
 
-    def transition_close(self, session):
-        fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_obj.close([session.start.close_fiscalyear.id])
+    def transition_close(self):
+        Fiscalyear = Pool().get('account.fiscalyear')
+        Fiscalyear.close([self.start.close_fiscalyear])
         return 'end'
-
-CloseFiscalYear()

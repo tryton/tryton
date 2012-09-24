@@ -15,7 +15,6 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
-from trytond.wizard import Session
 
 
 class AccountTestCase(unittest.TestCase):
@@ -50,38 +49,33 @@ class AccountTestCase(unittest.TestCase):
         'Test creation of minimal chart of accounts'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            account_template_id, = self.account_template.search([
-                ('parent', '=', False),
-                ])
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            self.user.write(USER, {
-                    'main_company': company_id,
-                    'company': company_id,
+            account_template, = self.account_template.search([
+                    ('parent', '=', None),
+                    ])
+            company, = self.company.search([('name', '=', 'B2CK')])
+            self.user.write([self.user(USER)], {
+                    'main_company': company.id,
+                    'company': company.id,
                     })
             CONTEXT.update(self.user.get_preferences(context_only=True))
 
             session_id, _, _ = self.account_create_chart.create()
-            session = Session(self.account_create_chart, session_id)
-            session.data['account'].update({
-                    'account_template': account_template_id,
-                    'company': company_id,
-                    })
-            self.account_create_chart.transition_create_account(session)
-            receivable_id, = self.account.search([
+            create_chart = self.account_create_chart(session_id)
+            create_chart.account.account_template = account_template
+            create_chart.account.company = company
+            create_chart.transition_create_account()
+            receivable, = self.account.search([
                     ('kind', '=', 'receivable'),
-                    ('company', '=', company_id),
+                    ('company', '=', company.id),
                     ])
-            payable_id, = self.account.search([
+            payable, = self.account.search([
                     ('kind', '=', 'payable'),
-                    ('company', '=', company_id),
+                    ('company', '=', company.id),
                     ])
-            session.data['properties'].update({
-                    'company': company_id,
-                    'account_receivable': receivable_id,
-                    'account_payable': payable_id,
-                    })
-            self.account_create_chart.transition_create_properties(
-                session)
+            create_chart.properties.company = company
+            create_chart.properties.account_receivable = receivable
+            create_chart.properties.account_payable = payable
+            create_chart.transition_create_properties()
             transaction.cursor.commit()
 
     def test0020fiscalyear(self):
@@ -91,21 +85,20 @@ class AccountTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             today = datetime.date.today()
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            sequence_id = self.sequence.create({
+            company, = self.company.search([('name', '=', 'B2CK')])
+            sequence = self.sequence.create({
                     'name': '%s' % today.year,
                     'code': 'account.move',
-                    'company': company_id,
+                    'company': company.id,
                     })
-            fiscalyear_id = self.fiscalyear.create({
+            fiscalyear = self.fiscalyear.create({
                     'name': '%s' % today.year,
                     'start_date': today.replace(month=1, day=1),
                     'end_date': today.replace(month=12, day=31),
-                    'company': company_id,
-                    'post_move_sequence': sequence_id,
+                    'company': company.id,
+                    'post_move_sequence': sequence.id,
                     })
-            self.fiscalyear.create_period([fiscalyear_id])
-            fiscalyear = self.fiscalyear.browse(fiscalyear_id)
+            self.fiscalyear.create_period([fiscalyear])
             self.assertEqual(len(fiscalyear.periods), 12)
             transaction.cursor.commit()
 

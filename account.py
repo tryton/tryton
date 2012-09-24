@@ -15,11 +15,21 @@ from trytond.pool import Pool
 from trytond.config import CONFIG
 from trytond.backend import TableHandler
 
+__all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
+    'AccountDeferral', 'OpenChartAccountStart', 'OpenChartAccount',
+    'PrintGeneralLegderStart', 'PrintGeneralLegder', 'GeneralLegder',
+    'PrintTrialBalanceStart', 'PrintTrialBalance', 'TrialBalance',
+    'OpenBalanceSheetStart', 'OpenBalanceSheet',
+    'OpenIncomeStatementStart', 'OpenIncomeStatement',
+    'CreateChartStart', 'CreateChartAccount', 'CreateChartProperties',
+    'CreateChart', 'UpdateChartStart', 'UpdateChartSucceed', 'UpdateChart',
+    'OpenThirdPartyBalanceStart', 'OpenThirdPartyBalance', 'ThirdPartyBalance',
+    'OpenAgedBalanceStart', 'OpenAgedBalance', 'AgedBalance']
+
 
 class TypeTemplate(ModelSQL, ModelView):
     'Account Type Template'
-    _name = 'account.account.type.template'
-    _description = __doc__
+    __name__ = 'account.account.type.template'
     name = fields.Char('Name', required=True, translate=True)
     parent = fields.Many2One('account.account.type.template', 'Parent',
             ondelete="RESTRICT")
@@ -35,137 +45,117 @@ class TypeTemplate(ModelSQL, ModelView):
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
 
-    def __init__(self):
-        super(TypeTemplate, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(TypeTemplate, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_types'),
         ]
-        self._error_messages.update({
+        cls._error_messages.update({
             'recursive_types': 'You can not create recursive types!',
         })
-        self._order.insert(0, ('sequence', 'ASC'))
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(TypeTemplate, self).init(module_name)
+        super(TypeTemplate, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_balance_sheet(self):
+    @staticmethod
+    def default_balance_sheet():
         return False
 
-    def default_income_statement(self):
+    @staticmethod
+    def default_income_statement():
         return False
 
-    def default_display_balance(self):
+    @staticmethod
+    def default_display_balance():
         return 'debit-credit'
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
+    def get_rec_name(self, name):
+        if self.parent:
+            return self.parent.get_rec_name(name) + '\\' + self.name
+        else:
+            return self.name
 
-        def _name(type):
-            if type.parent:
-                return _name(type.parent) + '\\' + type.name
-            else:
-                return type.name
-        for type in self.browse(ids):
-            res[type.id] = _name(type)
-        return res
-
-    def _get_type_value(self, template, type=None):
+    def _get_type_value(self, type=None):
         '''
         Set the values for account creation.
-
-        :param template: the BrowseRecord of the template
-        :param type: the BrowseRecord of the type to update
-        :return: a dictionary with account fields as key and values as value
         '''
         res = {}
-        if not type or type.name != template.name:
-            res['name'] = template.name
-        if not type or type.sequence != template.sequence:
-            res['sequence'] = template.sequence
-        if not type or type.balance_sheet != template.balance_sheet:
-            res['balance_sheet'] = template.balance_sheet
-        if not type or type.income_statement != template.income_statement:
-            res['income_statement'] = template.income_statement
-        if not type or type.display_balance != template.display_balance:
-            res['display_balance'] = template.display_balance
-        if not type or type.template.id != template.id:
-            res['template'] = template.id
+        if not type or type.name != self.name:
+            res['name'] = self.name
+        if not type or type.sequence != self.sequence:
+            res['sequence'] = self.sequence
+        if not type or type.balance_sheet != self.balance_sheet:
+            res['balance_sheet'] = self.balance_sheet
+        if not type or type.income_statement != self.income_statement:
+            res['income_statement'] = self.income_statement
+        if not type or type.display_balance != self.display_balance:
+            res['display_balance'] = self.display_balance
+        if not type or type.template.id != self.id:
+            res['template'] = self.id
         return res
 
-    def create_type(self, template, company_id, template2type=None,
-            parent_id=None):
+    def create_type(self, company_id, template2type=None, parent_id=None):
         '''
         Create recursively types based on template.
-
-        :param template: the template id or the BrowseRecord of the template
-                used for type creation
-        :param company_id: the id of the company for which types are created
-        :param template2type: a dictionary with template id as key
-                and type id as value, used to convert template id
-                into type. The dictionary is filled with new types
-        :param parent_id: the type id of the parent of the types that must
-                be created
-        :return: id of the type created
+        template2type is a dictionary with template id as key and type id as
+        value, used to convert template id into type. The dictionary is filled
+        with new types.
+        Return the id of the type created
         '''
-        type_obj = Pool().get('account.account.type')
-        lang_obj = Pool().get('ir.lang')
+        pool = Pool()
+        Type = pool.get('account.account.type')
+        Lang = pool.get('ir.lang')
 
         if template2type is None:
             template2type = {}
 
-        if isinstance(template, (int, long)):
-            template = self.browse(template)
-
-        if template.id not in template2type:
-            vals = self._get_type_value(template)
+        if self.id not in template2type:
+            vals = self._get_type_value()
             vals['company'] = company_id
             vals['parent'] = parent_id
 
-            new_id = type_obj.create(vals)
+            new_type = Type.create(vals)
 
-            prev_lang = template._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or CONFIG['language']
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in self._fields.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
-            for lang in lang_obj.get_translatable_languages():
+                    prev_data[field_name] = getattr(self, field_name)
+            for lang in Lang.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                template.setLang(lang)
-                data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
-                if data:
-                    with Transaction().set_context(language=lang):
-                        type_obj.write(new_id, data)
-            template.setLang(prev_lang)
-            template2type[template.id] = new_id
-        else:
-            new_id = template2type[template.id]
+                with Transaction().set_context(language=lang):
+                    template = self.__class__(self.id)
+                    data = {}
+                    for field_name, field in template._fields.iteritems():
+                        if (getattr(field, 'translate', False)
+                                and (getattr(template, field_name) !=
+                                    prev_data[field_name])):
+                            data[field_name] = getattr(template, field_name)
+                    if data:
+                        Type.write([new_type], data)
+            template2type[self.id] = new_type.id
+        new_id = template2type[self.id]
 
         new_childs = []
-        for child in template.childs:
-            new_childs.append(self.create_type(child, company_id,
+        for child in self.childs:
+            new_childs.append(child.create_type(company_id,
                 template2type=template2type, parent_id=new_id))
         return new_id
-
-TypeTemplate()
 
 
 class Type(ModelSQL, ModelView):
     'Account Type'
-    _name = 'account.account.type'
-    _description = __doc__
+    __name__ = 'account.account.type'
     name = fields.Char('Name', size=None, required=True, translate=True)
     parent = fields.Many2One('account.account.type', 'Parent',
         ondelete="RESTRICT", domain=[
@@ -194,154 +184,139 @@ class Type(ModelSQL, ModelView):
             ondelete="RESTRICT")
     template = fields.Many2One('account.account.type.template', 'Template')
 
-    def __init__(self):
-        super(Type, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Type, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_types'),
         ]
-        self._error_messages.update({
+        cls._error_messages.update({
             'recursive_types': 'You can not create recursive types!',
         })
-        self._order.insert(0, ('sequence', 'ASC'))
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(Type, self).init(module_name)
+        super(Type, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_balance_sheet(self):
+    @staticmethod
+    def default_balance_sheet():
         return False
 
-    def default_income_statement(self):
+    @staticmethod
+    def default_income_statement():
         return False
 
-    def default_display_balance(self):
+    @staticmethod
+    def default_display_balance():
         return 'debit-credit'
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for type in self.browse(ids):
-            res[type.id] = type.company.currency.digits
-        return res
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
 
-    def get_amount(self, ids, name):
-        account_obj = Pool().get('account.account')
-        currency_obj = Pool().get('currency.currency')
+    @classmethod
+    def get_amount(cls, types, name):
+        pool = Pool()
+        Account = pool.get('account.account')
 
         res = {}
-        for type_id in ids:
-            res[type_id] = Decimal('0.0')
+        for type_ in types:
+            res[type_.id] = Decimal('0.0')
 
-        child_ids = self.search([
-            ('parent', 'child_of', ids),
-            ])
-        type_sum = {}
-        for type_id in child_ids:
-            type_sum[type_id] = Decimal('0.0')
-
-        account_ids = account_obj.search([
-            ('type', 'in', child_ids),
-            ])
-        for account in account_obj.browse(account_ids):
-            type_sum[account.type.id] += currency_obj.round(
-                    account.company.currency, account.debit - account.credit)
-
-        types = self.browse(ids)
-        for type in types:
-            child_ids = self.search([
-                ('parent', 'child_of', [type.id]),
+        childs = cls.search([
+                ('parent', 'child_of', [t.id for t in types]),
                 ])
-            for child_id in child_ids:
-                res[type.id] += type_sum[child_id]
-            res[type.id] = currency_obj.round(type.company.currency,
-                    res[type.id])
-            if type.display_balance == 'credit-debit':
-                res[type.id] = - res[type.id]
+        type_sum = {}
+        for type_ in childs:
+            type_sum[type_.id] = Decimal('0.0')
+
+        accounts = Account.search([
+                ('type', 'in', [t.id for t in childs]),
+                ])
+        for account in accounts:
+            type_sum[account.type.id] += account.company.currency.round(
+                account.debit - account.credit)
+
+        for type_ in types:
+            childs = cls.search([
+                    ('parent', 'child_of', [type_.id]),
+                    ])
+            for child in childs:
+                res[type_.id] += type_sum[child.id]
+            res[type_.id] = type_.company.currency.round(res[type_.id])
+            if type_.display_balance == 'credit-debit':
+                res[type_.id] = - res[type_.id]
         return res
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
+    def get_rec_name(self, name):
+        if self.parent:
+            return self.parent.get_rec_name(name) + '\\' + self.name
+        else:
+            return self.name
 
-        def _name(type):
-            if type.parent:
-                return _name(type.parent) + '\\' + type.name
-            else:
-                return type.name
-        for type in self.browse(ids):
-            res[type.id] = _name(type)
-        return res
+    @classmethod
+    def delete(cls, types):
+        types = cls.search([
+                ('parent', 'child_of', [t.id for t in types]),
+                ])
+        super(Type, cls).delete(types)
 
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        type_ids = self.search([
-            ('parent', 'child_of', ids),
-            ])
-        return super(Type, self).delete(type_ids)
-
-    def update_type(self, type, template2type=None):
+    def update_type(self, template2type=None):
         '''
         Update recursively types based on template.
-
-        :param type: a type id or the BrowseRecord of the type
-        :param template2type: a dictionary with template id as key
-                and type id as value, used to convert template id
-                into type. The dictionary is filled with new types
+        template2type is a dictionary with template id as key and type id as
+        value, used to convert template id into type. The dictionary is filled
+        with new types
         '''
-        template_obj = Pool().get('account.account.type.template')
-        lang_obj = Pool().get('ir.lang')
+        Lang = Pool().get('ir.lang')
 
         if template2type is None:
             template2type = {}
 
-        if isinstance(type, (int, long)):
-            type = self.browse(type)
-
-        if type.template:
-            vals = template_obj._get_type_value(type.template, type=type)
+        if self.template:
+            vals = self.template._get_type_value(type=self)
             if vals:
-                self.write(type.id, vals)
+                self.write([self], vals)
 
-            prev_lang = type._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or CONFIG['language']
             prev_data = {}
-            for field_name, field in type.template._columns.iteritems():
+            for field_name, field in self.template._fields.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = type.template[field_name]
-            for lang in lang_obj.get_translatable_languages():
+                    prev_data[field_name] = getattr(self.template, field_name)
+            for lang in Lang.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                type.setLang(lang)
-                data = {}
-                for field_name, field in type.template._columns.iteritems():
-                    if (getattr(field, 'translate', False)
-                            and type.template[field_name] !=
-                            prev_data[field_name]):
-                        data[field_name] = type.template[field_name]
-                if data:
-                    with Transaction().set_context(language=lang):
-                        self.write(type.id, data)
-            type.setLang(prev_lang)
-            template2type[type.template.id] = type.id
+                with Transaction().set_context(language=lang):
+                    type_ = self.__class__(self.id)
+                    data = {}
+                    for field_name, field in (
+                            type_.template._fields.iteritems()):
+                        if (getattr(field, 'translate', False)
+                                and (getattr(type_.template, field_name) !=
+                                    prev_data[field_name])):
+                            data[field_name] = getattr(type_.template,
+                                field_name)
+                    if data:
+                        self.write([type_], data)
+            template2type[self.template.id] = self.id
 
-        for child in type.childs:
-            self.update_type(child, template2type=template2type)
-
-Type()
+        for child in self.childs:
+            child.update_type(template2type=template2type)
 
 
 class OpenType(Wizard):
     'Open Type'
-    _name = 'account.account.open_type'
+    __name__ = 'account.account.open_type'
     start_state = 'open_'
     open_ = StateAction('account.act_account_list2')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         action['pyson_domain'] = PYSONEncoder().encode([
                 ('type', '=', Transaction().context['active_id']),
                 ])
@@ -351,14 +326,10 @@ class OpenType(Wizard):
                 })
         return action, {}
 
-OpenType()
-
 
 class AccountTemplate(ModelSQL, ModelView):
     'Account Template'
-    _name = 'account.account.template'
-    _description = __doc__
-
+    __name__ = 'account.account.template'
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=True)
     code = fields.Char('Code', size=None, select=True)
@@ -388,89 +359,78 @@ class AccountTemplate(ModelSQL, ModelView):
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
 
-    def __init__(self):
-        super(AccountTemplate, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(AccountTemplate, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_accounts'),
         ]
-        self._error_messages.update({
+        cls._error_messages.update({
             'recursive_accounts': 'You can not create recursive accounts!',
         })
-        self._order.insert(0, ('code', 'ASC'))
-        self._order.insert(1, ('name', 'ASC'))
+        cls._order.insert(0, ('code', 'ASC'))
+        cls._order.insert(1, ('name', 'ASC'))
 
-    def default_kind(self):
+    @staticmethod
+    def default_kind():
         return 'view'
 
-    def default_reconcile(self):
+    @staticmethod
+    def default_reconcile():
         return False
 
-    def default_deferral(self):
+    @staticmethod
+    def default_deferral():
         return True
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for template in self.browse(ids):
-            if template.code:
-                res[template.id] = template.code + ' - ' + template.name
-            else:
-                res[template.id] = template.name
-        return res
+    def get_rec_name(self, name):
+        if self.code:
+            return self.code + ' - ' + self.name
+        else:
+            return self.name
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([
-            ('code',) + clause[1:],
-            ], limit=1)
-        if ids:
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        templates = cls.search([
+                ('code',) + clause[1:],
+                ], limit=1)
+        if templates:
             return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+        return [(cls._rec_name,) + clause[1:]]
 
-    def _get_account_value(self, template, account=None):
+    def _get_account_value(self, account=None):
         '''
         Set the values for account creation.
-
-        :param template: the BrowseRecord of the template
-        :param account: the BrowseRecord of the account to update
-        :return: a dictionary with account fields as key and values as value
         '''
         res = {}
-        if not account or account.name != template.name:
-            res['name'] = template.name
-        if not account or account.code != template.code:
-            res['code'] = template.code
-        if not account or account.kind != template.kind:
-            res['kind'] = template.kind
-        if not account or account.reconcile != template.reconcile:
-            res['reconcile'] = template.reconcile
-        if not account or account.deferral != template.deferral:
-            res['deferral'] = template.deferral
-        if not account or account.template.id != template.id:
-            res['template'] = template.id
+        if not account or account.name != self.name:
+            res['name'] = self.name
+        if not account or account.code != self.code:
+            res['code'] = self.code
+        if not account or account.kind != self.kind:
+            res['kind'] = self.kind
+        if not account or account.reconcile != self.reconcile:
+            res['reconcile'] = self.reconcile
+        if not account or account.deferral != self.deferral:
+            res['deferral'] = self.deferral
+        if not account or account.template.id != self.id:
+            res['template'] = self.id
         return res
 
-    def create_account(self, template, company_id, template2account=None,
+    def create_account(self, company_id, template2account=None,
             template2type=None, parent_id=None):
         '''
         Create recursively accounts based on template.
-
-        :param template: the template id or the BrowseRecord of template
-                used for account creation
-        :param company_id: the id of the company for which accounts
-                are created
-        :param template2account: a dictionary with template id as key
-                and account id as value, used to convert template id
-                into account. The dictionary is filled with new accounts
-        :param template2type: a dictionary with type template id as key
-                and type id as value, used to convert type template id
-                into type.
-        :param parent_id: the account id of the parent of the accounts
-                that must be created
-        :return: id of the account created
+        template2account is a dictionary with template id as key and account id
+        as value, used to convert template id into account. The dictionary is
+        filled with new accounts
+        template2type is a dictionary with type template id as key and type id
+        as value, used to convert type template id into type.
+        Return the id of the account created
         '''
-        account_obj = Pool().get('account.account')
-        lang_obj = Pool().get('ir.lang')
+        pool = Pool()
+        Account = pool.get('account.account')
+        Lang = pool.get('ir.lang')
 
         if template2account is None:
             template2account = {}
@@ -478,63 +438,54 @@ class AccountTemplate(ModelSQL, ModelView):
         if template2type is None:
             template2type = {}
 
-        if isinstance(template, (int, long)):
-            template = self.browse(template)
-
-        if template.id not in template2account:
-            vals = self._get_account_value(template)
+        if self.id not in template2account:
+            vals = self._get_account_value()
             vals['company'] = company_id
             vals['parent'] = parent_id
-            vals['type'] = template2type.get(template.type.id)
+            vals['type'] = template2type.get(self.type.id)
 
-            new_id = account_obj.create(vals)
+            new_account = Account.create(vals)
 
-            prev_lang = template._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or CONFIG['language']
             prev_data = {}
-            for field_name, field in template._columns.iteritems():
+            for field_name, field in self._fields.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = template[field_name]
-            for lang in lang_obj.get_translatable_languages():
+                    prev_data[field_name] = getattr(self, field_name)
+            for lang in Lang.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                template.setLang(lang)
-                data = {}
-                for field_name, field in template._columns.iteritems():
-                    if getattr(field, 'translate', False) \
-                            and template[field_name] != prev_data[field_name]:
-                        data[field_name] = template[field_name]
-                if data:
-                    with Transaction().set_context(language=lang):
-                        account_obj.write(new_id, data)
-            template.setLang(prev_lang)
-            template2account[template.id] = new_id
-        else:
-            new_id = template2account[template.id]
+                with Transaction().set_context(language=lang):
+                    template = self.__class__(self.id)
+                    data = {}
+                    for field_name, field in self._fields.iteritems():
+                        if (getattr(field, 'translate', False) \
+                                and (getattr(template, field_name) !=
+                                    prev_data[field_name])):
+                            data[field_name] = getattr(template, field_name)
+                    if data:
+                        Account.write([new_account], data)
+            template2account[self.id] = new_account.id
+        new_id = template2account[self.id]
 
         new_childs = []
-        for child in template.childs:
-            new_childs.append(self.create_account(child, company_id,
+        for child in self.childs:
+            new_childs.append(child.create_account(company_id,
                 template2account=template2account, template2type=template2type,
                 parent_id=new_id))
         return new_id
 
-    def update_account_taxes(self, template, template2account, template2tax,
+    def update_account_taxes(self, template2account, template2tax,
             template_done=None):
         '''
         Update recursively account taxes based on template.
-
-        :param template: the template id or the BrowseRecord of template
-            used for account creation
-        :param template2account: a dictionary with template id as key
-            and account id as value, used to convert template id into
-            account.
-        :param template2tax: a dictionary with tax template id as key
-            and tax id as value, used to convert tax template id into
-            tax.
-        :param template_done: a list of template id already updated.
-            The list is filled.
+        template2account is a dictionary with template id as key and account id
+        as value, used to convert template id into account.
+        template2tax is a dictionary with tax template id as key and tax id as
+        value, used to convert tax template id into tax.
+        template_done is a list of template id already updated. The list is
+        filled.
         '''
-        account_obj = Pool().get('account.account')
+        Account = Pool().get('account.account')
 
         if template2account is None:
             template2account = {}
@@ -543,29 +494,22 @@ class AccountTemplate(ModelSQL, ModelView):
         if template_done is None:
             template_done = []
 
-        if isinstance(template, (int, long)):
-            template = self.browse(template)
+        if self.id not in template_done:
+            if self.taxes:
+                Account.write([Account(template2account[self.id])], {
+                        'taxes': [
+                            ('add', template2tax[x.id]) for x in self.taxes],
+                        })
+            template_done.append(self.id)
 
-        if template.id not in template_done:
-            if template.taxes:
-                account_obj.write(template2account[template.id], {
-                    'taxes': [
-                        ('add', template2tax[x.id]) for x in template.taxes],
-                    })
-            template_done.append(template.id)
-
-        for child in template.childs:
-            self.update_account_taxes(child, template2account, template2tax,
-                    template_done=template_done)
-
-AccountTemplate()
+        for child in self.childs:
+            child.update_account_taxes(template2account, template2tax,
+                template_done=template_done)
 
 
 class Account(ModelSQL, ModelView):
     'Account'
-    _name = 'account.account'
-    _description = __doc__
-
+    __name__ = 'account.account'
     name = fields.Char('Name', size=None, required=True, translate=True,
             select=True)
     code = fields.Char('Code', size=None, select=True)
@@ -626,69 +570,72 @@ class Account(ModelSQL, ModelView):
             }, depends=['kind'])
     template = fields.Many2One('account.account.template', 'Template')
 
-    def __init__(self):
-        super(Account, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Account, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_accounts'),
         ]
-        self._error_messages.update({
+        cls._error_messages.update({
             'recursive_accounts': 'You can not create recursive accounts!',
             'delete_account_containing_move_lines': 'You can not delete ' \
                     'accounts containing move lines!',
         })
-        self._sql_error_messages.update({
+        cls._sql_error_messages.update({
             'parent_fkey': 'You can not delete accounts ' \
                     'that have children!',
         })
-        self._order.insert(0, ('code', 'ASC'))
-        self._order.insert(1, ('name', 'ASC'))
+        cls._order.insert(0, ('code', 'ASC'))
+        cls._order.insert(1, ('name', 'ASC'))
 
-    def default_left(self):
+    @staticmethod
+    def default_left():
         return 0
 
-    def default_right(self):
+    @staticmethod
+    def default_right():
         return 0
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company') or None
 
-    def default_reconcile(self):
+    @staticmethod
+    def default_reconcile():
         return False
 
-    def default_deferral(self):
+    @staticmethod
+    def default_deferral():
         return True
 
-    def default_kind(self):
+    @staticmethod
+    def default_kind():
         return 'view'
 
-    def get_currency(self, ids, name):
-        res = {}
-        for account in self.browse(ids):
-            res[account.id] = account.company.currency.id
-        return res
+    def get_currency(self, name):
+        return self.company.currency.id
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for account in self.browse(ids):
-            res[account.id] = account.company.currency.digits
-        return res
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
 
-    def get_balance(self, ids, name):
+    @classmethod
+    def get_balance(cls, accounts, name):
         res = {}
         pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        move_line_obj = pool.get('account.move.line')
-        fiscalyear_obj = pool.get('account.fiscalyear')
-        deferral_obj = pool.get('account.account.deferral')
+        Currency = pool.get('currency.currency')
+        MoveLine = pool.get('account.move.line')
+        FiscalYear = pool.get('account.fiscalyear')
+        Deferral = pool.get('account.account.deferral')
         cursor = Transaction().cursor
 
-        query_ids, args_ids = self.search([
-            ('parent', 'child_of', ids),
-            ], query_string=True)
-        line_query, fiscalyear_ids = move_line_obj.query_get()
+        query_ids, args_ids = cls.search([
+                ('parent', 'child_of', [a.id for a in accounts]),
+                ], query_string=True)
+        line_query, fiscalyear_ids = MoveLine.query_get()
         cursor.execute('SELECT a.id, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
                 'FROM account_account a ' \
@@ -709,84 +656,79 @@ class Account(ModelSQL, ModelView):
         account2company = {}
         id2company = {}
         id2account = {}
-        all_ids = self.search([('parent', 'child_of', ids)])
-        accounts = self.browse(all_ids)
-        for account in accounts:
+        all_accounts = cls.search([('parent', 'child_of',
+                    [a.id for a in accounts])])
+        for account in all_accounts:
             account2company[account.id] = account.company.id
             id2company[account.company.id] = account.company
             id2account[account.id] = account
 
-        for account_id in ids:
-            res.setdefault(account_id, Decimal('0.0'))
-            child_ids = self.search([
-                ('parent', 'child_of', [account_id]),
-                ])
-            company_id = account2company[account_id]
+        for account in accounts:
+            res.setdefault(account.id, Decimal('0.0'))
+            childs = cls.search([
+                    ('parent', 'child_of', [account.id]),
+                    ])
+            company_id = account2company[account.id]
             to_currency = id2company[company_id].currency
-            for child_id in child_ids:
-                child_company_id = account2company[child_id]
+            for child in childs:
+                child_company_id = account2company[child.id]
                 from_currency = id2company[child_company_id].currency
-                res[account_id] += currency_obj.compute(from_currency,
-                        account_sum.get(child_id, Decimal('0.0')), to_currency,
+                res[account.id] += Currency.compute(from_currency,
+                        account_sum.get(child.id, Decimal('0.0')), to_currency,
                         round=True)
 
         youngest_fiscalyear = None
-        for fiscalyear in fiscalyear_obj.browse(fiscalyear_ids):
+        for fiscalyear in FiscalYear.browse(fiscalyear_ids):
             if not youngest_fiscalyear \
                     or youngest_fiscalyear.start_date > fiscalyear.start_date:
                 youngest_fiscalyear = fiscalyear
 
         fiscalyear = None
         if youngest_fiscalyear:
-            fiscalyear_ids = fiscalyear_obj.search([
+            fiscalyears = FiscalYear.search([
                 ('end_date', '<=', youngest_fiscalyear.start_date),
                 ('company', '=', youngest_fiscalyear.company),
                 ], order=[('end_date', 'DESC')], limit=1)
-            if fiscalyear_ids:
-                fiscalyear = fiscalyear_obj.browse(fiscalyear_ids[0])
+            if fiscalyears:
+                fiscalyear = fiscalyears[0]
 
         if fiscalyear:
             if fiscalyear.state == 'close':
-                deferral_ids = deferral_obj.search([
+                deferrals = Deferral.search([
                     ('fiscalyear', '=', fiscalyear.id),
-                    ('account', 'in', ids),
+                    ('account', 'in', [a.id for a in accounts]),
                     ])
                 id2deferral = {}
-                for deferral in deferral_obj.browse(deferral_ids):
+                for deferral in deferrals:
                     id2deferral[deferral.account.id] = deferral
 
-                for account_id in ids:
-                    if account_id in id2deferral:
-                        deferral = id2deferral[account_id]
-                        res[account_id] += deferral.debit - deferral.credit
+                for account in accounts:
+                    if account.id in id2deferral:
+                        deferral = id2deferral[account.id]
+                        res[account.id] += deferral.debit - deferral.credit
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
                         date=None, periods=None):
-                    res2 = self.get_balance(ids, name)
-                for account_id in ids:
-                    res[account_id] += res2[account_id]
+                    res2 = cls.get_balance(accounts, name)
+                for account in accounts:
+                    res[account.id] += res2[account.id]
 
-        for account_id in ids:
-            company_id = account2company[account_id]
+        for account in accounts:
+            company_id = account2company[account.id]
             to_currency = id2company[company_id].currency
-            res[account_id] = currency_obj.round(to_currency, res[account_id])
+            res[account.id] = to_currency.round(res[account.id])
         return res
 
-    def get_credit_debit(self, ids, names):
+    @classmethod
+    def get_credit_debit(cls, accounts, names):
         '''
-        Function to compute debit, credit for account ids.
-
-        :param ids: the ids of the account
-        :param names: the list of field name to compute
-        :return: a dictionary with all field names as key and
-            a dictionary as value with id as key
+        Function to compute debit, credit for accounts.
         '''
         res = {}
         pool = Pool()
-        move_line_obj = pool.get('account.move.line')
-        currency_obj = pool.get('currency.currency')
-        fiscalyear_obj = pool.get('account.fiscalyear')
-        deferral_obj = pool.get('account.account.deferral')
+        MoveLine = pool.get('account.move.line')
+        FiscalYear = pool.get('account.fiscalyear')
+        Deferral = pool.get('account.account.deferral')
         cursor = Transaction().cursor
 
         for name in names:
@@ -794,7 +736,8 @@ class Account(ModelSQL, ModelView):
                 raise Exception('Bad argument')
             res[name] = {}
 
-        line_query, fiscalyear_ids = move_line_obj.query_get()
+        ids = [a.id for a in accounts]
+        line_query, fiscalyear_ids = MoveLine.query_get()
         for i in range(0, len(ids), cursor.IN_MAX):
             sub_ids = ids[i:i + cursor.IN_MAX]
             red_sql, red_ids = reduce_ids('a.id', sub_ids)
@@ -820,130 +763,120 @@ class Account(ModelSQL, ModelView):
 
         account2company = {}
         id2company = {}
-        accounts = self.browse(ids)
         for account in accounts:
             account2company[account.id] = account.company.id
             id2company[account.company.id] = account.company
 
-        for account_id in ids:
+        for account in accounts:
             for name in names:
-                res[name].setdefault(account_id, Decimal('0.0'))
+                res[name].setdefault(account.id, Decimal('0.0'))
 
         youngest_fiscalyear = None
-        for fiscalyear in fiscalyear_obj.browse(fiscalyear_ids):
+        for fiscalyear in FiscalYear.browse(fiscalyear_ids):
             if not youngest_fiscalyear \
                     or youngest_fiscalyear.start_date > fiscalyear.start_date:
                 youngest_fiscalyear = fiscalyear
 
         fiscalyear = None
         if youngest_fiscalyear:
-            fiscalyear_ids = fiscalyear_obj.search([
+            fiscalyears = FiscalYear.search([
                 ('end_date', '<=', youngest_fiscalyear.start_date),
                 ('company', '=', youngest_fiscalyear.company),
                 ], order=[('end_date', 'DESC')], limit=1)
-            if fiscalyear_ids:
-                fiscalyear = fiscalyear_obj.browse(fiscalyear_ids[0])
+            if fiscalyears:
+                fiscalyear, = fiscalyears
 
         if fiscalyear:
             if fiscalyear.state == 'close':
-                deferral_ids = deferral_obj.search([
+                deferrals = Deferral.search([
                     ('fiscalyear', '=', fiscalyear.id),
                     ('account', 'in', ids),
                     ])
                 id2deferral = {}
-                for deferral in deferral_obj.browse(deferral_ids):
+                for deferral in deferrals:
                     id2deferral[deferral.account.id] = deferral
 
-                for account_id in ids:
-                    if account_id in id2deferral:
-                        deferral = id2deferral[account_id]
+                for account in accounts:
+                    if account.id in id2deferral:
+                        deferral = id2deferral[account.id]
                         for name in names:
-                            res[name][account_id] += deferral[name]
+                            res[name][account.id] += deferral[name]
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
                         date=None, dates=None):
-                    res2 = self.get_credit_debit(ids, names)
-                for account_id in ids:
+                    res2 = cls.get_credit_debit(accounts, names)
+                for account in accounts:
                     for name in names:
-                        res[name][account_id] += res2[name][account_id]
+                        res[name][account.id] += res2[name][account.id]
 
-        for account_id in ids:
-            company_id = account2company[account_id]
+        for account in accounts:
+            company_id = account2company[account.id]
             currency = id2company[company_id].currency
             for name in names:
-                res[name][account_id] = currency_obj.round(currency,
-                        res[name][account_id])
+                res[name][account.id] = currency.round(res[name][account.id])
         return res
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for account in self.browse(ids):
-            if account.code:
-                res[account.id] = account.code + ' - ' + account.name
-            else:
-                res[account.id] = account.name
-        return res
+    def get_rec_name(self, name):
+        if self.code:
+            return self.code + ' - ' + self.name
+        else:
+            return self.name
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([
-            ('code',) + clause[1:],
-            ], limit=1)
-        if ids:
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        accounts = cls.search([
+                ('code',) + clause[1:],
+                ], limit=1)
+        if accounts:
             return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+        return [(cls._rec_name,) + clause[1:]]
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, accounts, default=None):
         if default is None:
             default = {}
         default['left'] = 0
         default['right'] = 0
-        res = super(Account, self).copy(ids, default=default)
-        self._rebuild_tree('parent', None, 0)
-        return res
+        new_accounts = super(Account, cls).copy(accounts, default=default)
+        cls._rebuild_tree('parent', None, 0)
+        return new_accounts
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, accounts, vals):
         if not vals.get('active', True):
-            move_line_obj = Pool().get('account.move.line')
-            account_ids = self.search([
-                ('parent', 'child_of', ids),
-                ])
-            if move_line_obj.search([
-                ('account', 'in', account_ids),
-                ]):
+            MoveLine = Pool().get('account.move.line')
+            childs = cls.search([
+                    ('parent', 'child_of', [a.id for a in accounts]),
+                    ])
+            if MoveLine.search([
+                        ('account', 'in', [a.id for a in childs]),
+                        ]):
                 vals = vals.copy()
                 del vals['active']
-        return super(Account, self).write(ids, vals)
+        super(Account, cls).write(accounts, vals)
 
-    def delete(self, ids):
-        move_line_obj = Pool().get('account.move.line')
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        account_ids = self.search([
-            ('parent', 'child_of', ids),
-            ])
-        if move_line_obj.search([
-            ('account', 'in', account_ids),
-            ]):
-            self.raise_user_error('delete_account_containing_move_lines')
-        return super(Account, self).delete(account_ids)
+    @classmethod
+    def delete(cls, accounts):
+        MoveLine = Pool().get('account.move.line')
+        childs = cls.search([
+                ('parent', 'child_of', [a.id for a in accounts]),
+                ])
+        if MoveLine.search([
+                    ('account', 'in', [a.id for a in childs]),
+                    ]):
+            cls.raise_user_error('delete_account_containing_move_lines')
+        super(Account, cls).delete(accounts)
 
-    def update_account(self, account, template2account=None,
-            template2type=None):
+    def update_account(self, template2account=None, template2type=None):
         '''
         Update recursively accounts based on template.
-
-        :param account: an account id or the BrowseRecord of the account
-        :param template2account: a dictionary with template id as key
-                and account id as value, used to convert template id
-                into account. The dictionary is filled with new accounts
-        :param template2type: a dictionary with type template id as key
-                and type id as value, used to convert type template id
-                into type.
+        template2account is a dictionary with template id as key and account id
+        as value, used to convert template id into account. The dictionary is
+        filled with new accounts.
+        template2type is a dictionary with type template id as key and type id
+        as value, used to convert type template id into type.
         '''
-        template_obj = Pool().get('account.account.template')
-        lang_obj = Pool().get('ir.lang')
+        Lang = Pool().get('ir.lang')
 
         if template2account is None:
             template2account = {}
@@ -951,53 +884,46 @@ class Account(ModelSQL, ModelView):
         if template2type is None:
             template2type = {}
 
-        if isinstance(account, (int, long)):
-            account = self.browse(account)
-
-        if account.template:
-            vals = template_obj._get_account_value(account.template,
-                    account=account)
-            if account.type.id != template2type.get(account.template.type.id):
-                vals['type'] = template2type.get(account.template.type.id)
+        if self.template:
+            vals = self.template._get_account_value(account=self)
+            if self.type.id != template2type.get(self.template.type.id):
+                vals['type'] = template2type.get(self.template.type.id)
             if vals:
-                self.write(account.id, vals)
+                self.write([self], vals)
 
-            prev_lang = account._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or CONFIG['language']
             prev_data = {}
-            for field_name, field in account.template._columns.iteritems():
+            for field_name, field in self.template._fields.iteritems():
                 if getattr(field, 'translate', False):
-                    prev_data[field_name] = account.template[field_name]
-            for lang in lang_obj.get_translatable_languages():
+                    prev_data[field_name] = getattr(self.template, field_name)
+            for lang in Lang.get_translatable_languages():
                 if lang == prev_lang:
                     continue
-                account.setLang(lang)
-                data = {}
-                for field_name, field in account.template._columns.iteritems():
-                    if (getattr(field, 'translate', False)
-                            and account.template[field_name] !=
-                            prev_data[field_name]):
-                        data[field_name] = account.template[field_name]
-                if data:
-                    with Transaction().set_context(language=lang):
-                        self.write(account.id, data)
-            account.setLang(prev_lang)
-            template2account[account.template.id] = account.id
+                with Transaction().set_context(language=lang):
+                    account = self.__class__(self.id)
+                    data = {}
+                    for field_name, field in (
+                            account.template._fields.iteritems()):
+                        if (getattr(field, 'translate', False)
+                                and (getattr(account.template, field_name) !=
+                                    prev_data[field_name])):
+                            data[field_name] = getattr(account.template,
+                                field_name)
+                    if data:
+                        self.write([account], data)
+            template2account[self.template.id] = self.id
 
-        for child in account.childs:
-            self.update_account(child, template2account=template2account,
-                    template2type=template2type)
+        for child in self.childs:
+            child.update_account(template2account=template2account,
+                template2type=template2type)
 
-    def update_account_taxes(self, account, template2account, template2tax):
+    def update_account_taxes(self, template2account, template2tax):
         '''
         Update recursively account taxes base on template.
-
-        :param account: the account id or the BrowseRecord of account
-        :param template2account: a dictionary with template id as key
-            and account id as value, used to convert template id into
-            account.
-        :param template2tax: a dictionary with tax template id as key
-            and tax id as value, used to convert tax template id into
-            tax.
+        template2account is a dictionary with template id as key and account id
+        as value, used to convert template id into account.
+        template2tax is a dictionary with tax template id as key and tax id as
+        value, used to convert tax template id into tax.
         '''
         if template2account is None:
             template2account = {}
@@ -1005,28 +931,23 @@ class Account(ModelSQL, ModelView):
         if template2tax is None:
             template2tax = {}
 
-        if isinstance(account, (int, long)):
-            account = self.browse(account)
-
-        if account.template:
-            if account.template.taxes:
-                tax_ids = [template2tax[x.id] for x in account.template.taxes
+        if self.template:
+            if self.template.taxes:
+                tax_ids = [template2tax[x.id] for x in self.template.taxes
                         if x.id in template2tax]
-                old_tax_ids = [x.id for x in account.taxes]
+                old_tax_ids = [x.id for x in self.taxes]
                 for tax_id in tax_ids:
                     if tax_id not in old_tax_ids:
-                        self.write(account.id, {
+                        self.write([self], {
                             'taxes': [
-                                ('add', template2tax[x.id]) \
-                                        for x in account.template.taxes \
-                                        if x.id in template2tax],
-                            })
+                                    ('add', template2tax[x.id])
+                                    for x in self.template.taxes
+                                    if x.id in template2tax],
+                                })
                         break
 
-        for child in account.childs:
-            self.update_account_taxes(child, template2account, template2tax)
-
-Account()
+        for child in self.childs:
+            child.update_account_taxes(template2account, template2tax)
 
 
 class AccountDeferral(ModelSQL, ModelView):
@@ -1035,9 +956,7 @@ class AccountDeferral(ModelSQL, ModelView):
 
     It is used to deferral the debit/credit of account by fiscal year.
     '''
-    _name = 'account.account.deferral'
-    _description = 'Account Deferral'
-
+    __name__ = 'account.account.deferral'
     account = fields.Many2One('account.account', 'Account', required=True,
             select=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
@@ -1049,62 +968,51 @@ class AccountDeferral(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
 
-    def __init__(self):
-        super(AccountDeferral, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(AccountDeferral, cls).__setup__()
+        cls._sql_constraints += [
             ('deferral_uniq', 'UNIQUE(account, fiscalyear)',
                 'Deferral must be unique by account and fiscal year'),
         ]
-        self._error_messages.update({
+        cls._error_messages.update({
             'write_deferral': 'You can not modify Account Deferral records',
             })
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for deferral in self.browse(ids):
-            res[deferral.id] = deferral.account.currency_digits
-        return res
+    def get_currency_digits(self, name):
+        return self.account.currency_digits
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for deferral in self.browse(ids):
-            res[deferral.id] = deferral.account.rec_name + ' - ' + \
-                    deferral.fiscalyear.rec_name
-        return res
+    def get_rec_name(self, name):
+        return '%s - %s' % (self.account.rec_name, self.fiscalyear.rec_name)
 
-    def search_rec_name(self, name, clause):
-        ids = self.search(['OR',
-            ('account.rec_name',) + clause[1:],
-            ('fiscalyear.rec_name',) + clause[1:],
-            ])
-        return [('id', 'in', ids)]
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        deferrals = cls.search(['OR',
+                ('account.rec_name',) + clause[1:],
+                ('fiscalyear.rec_name',) + clause[1:],
+                ])
+        return [('id', 'in', [d.id for d in deferrals])]
 
-    def write(self, ids, vals):
-        self.raise_user_error('write_deferral')
-
-AccountDeferral()
+    @classmethod
+    def write(cls, deferrals, vals):
+        cls.raise_user_error('write_deferral')
 
 
 class OpenChartAccountStart(ModelView):
     'Open Chart of Accounts'
-    _name = 'account.open_chart.start'
-    _description = __doc__
+    __name__ = 'account.open_chart.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Leave empty for all open fiscal year')
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
-
-OpenChartAccountStart()
 
 
 class OpenChartAccount(Wizard):
     'Open Chart of Accounts'
-    _name = 'account.open_chart'
-
+    __name__ = 'account.open_chart'
     start = StateView('account.open_chart.start',
         'account.open_chart_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1112,23 +1020,21 @@ class OpenChartAccount(Wizard):
             ])
     open_ = StateAction('account.act_account_tree2')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         action['pyson_context'] = PYSONEncoder().encode({
-            'fiscalyear': session.start.fiscalyear.id,
-            'posted': session.start.posted,
+            'fiscalyear': (self.start.fiscalyear.id
+                    if self.start.fiscalyear else None),
+            'posted': self.start.posted,
             })
         return action, {}
 
-    def transition_open_(self, session):
+    def transition_open_(self):
         return 'end'
-
-OpenChartAccount()
 
 
 class PrintGeneralLegderStart(ModelView):
     'Print General Ledger'
-    _name = 'account.print_general_ledger.start'
-    _description = __doc__
+    __name__ = 'account.print_general_ledger.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'])
     start_period = fields.Many2One('account.period', 'Start Period',
@@ -1147,35 +1053,34 @@ class PrintGeneralLegderStart(ModelView):
     empty_account = fields.Boolean('Empty Account',
             help='With account without move')
 
-    def default_fiscalyear(self):
-        fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company'), exception=False)
-        if fiscalyear_id:
-            return fiscalyear_id
+    @staticmethod
+    def default_fiscalyear():
+        FiscalYear = Pool().get('account.fiscalyear')
+        return FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
 
-    def default_empty_account(self):
+    @staticmethod
+    def default_empty_account():
         return False
 
-    def on_change_fiscalyear(self, vals):
+    def on_change_fiscalyear(self):
         return {
             'start_period': None,
             'end_period': None,
-        }
-
-PrintGeneralLegderStart()
+            }
 
 
 class PrintGeneralLegder(Wizard):
     'Print General Legder'
-    _name = 'account.print_general_ledger'
-
+    __name__ = 'account.print_general_ledger'
     start = StateView('account.print_general_ledger.start',
         'account.print_general_ledger_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1183,143 +1088,147 @@ class PrintGeneralLegder(Wizard):
             ])
     print_ = StateAction('account.report_general_ledger')
 
-    def do_print_(self, session, action):
-        if session.start.start_period:
-            start_period = session.start.start_period.id
+    def do_print_(self, action):
+        if self.start.start_period:
+            start_period = self.start.start_period.id
         else:
             start_period = None
-        if session.start.end_period:
-            end_period = session.start.end_period.id
+        if self.start.end_period:
+            end_period = self.start.end_period.id
         else:
             end_period = None
         data = {
-            'company': session.start.company.id,
-            'fiscalyear': session.start.fiscalyear.id,
+            'company': self.start.company.id,
+            'fiscalyear': self.start.fiscalyear.id,
             'start_period': start_period,
             'end_period': end_period,
-            'posted': session.start.posted,
-            'empty_account': session.start.empty_account,
+            'posted': self.start.posted,
+            'empty_account': self.start.empty_account,
             }
         return action, data
 
-    def transition_print_(self, session):
+    def transition_print_(self):
         return 'end'
-
-PrintGeneralLegder()
 
 
 class GeneralLegder(Report):
-    _name = 'account.general_ledger'
+    __name__ = 'account.general_ledger'
 
-    def parse(self, report, objects, data, localcontext):
+    @classmethod
+    def parse(cls, report, objects, data, localcontext):
         pool = Pool()
-        account_obj = pool.get('account.account')
-        period_obj = pool.get('account.period')
-        company_obj = pool.get('company.company')
+        Account = pool.get('account.account')
+        Period = pool.get('account.period')
+        Company = pool.get('company.company')
 
-        company = company_obj.browse(data['company'])
+        company = Company(data['company'])
 
-        account_ids = account_obj.search([
+        accounts = Account.search([
                 ('company', '=', data['company']),
                 ('kind', '!=', 'view'),
                 ], order=[('code', 'ASC'), ('id', 'ASC')])
 
         start_period_ids = [0]
+        start_periods = []
         if data['start_period']:
-            start_period = period_obj.browse(data['start_period'])
-            start_period_ids = period_obj.search([
+            start_period = Period(data['start_period'])
+            start_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ('end_date', '<=', start_period.start_date),
                     ])
+            start_period_ids = [p.id for p in start_periods]
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
                 periods=start_period_ids,
                 posted=data['posted']):
-            start_accounts = account_obj.browse(account_ids)
+            start_accounts = Account.browse(accounts)
         id2start_account = {}
         for account in start_accounts:
             id2start_account[account.id] = account
 
         end_period_ids = []
         if data['end_period']:
-            end_period = period_obj.browse(data['end_period'])
-            end_period_ids = period_obj.search([
+            end_period = Period(data['end_period'])
+            end_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ('end_date', '<=', end_period.start_date),
                     ])
-            if data['end_period'] not in end_period_ids:
-                end_period_ids.append(data['end_period'])
+            if end_period not in end_periods:
+                end_periods.append(end_period)
         else:
-            end_period_ids = period_obj.search([
+            end_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ])
+        end_period_ids = [p.id for p in end_periods]
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
                 periods=end_period_ids,
                 posted=data['posted']):
-            end_accounts = account_obj.browse(account_ids)
+            end_accounts = Account.browse(accounts)
         id2end_account = {}
         for account in end_accounts:
             id2end_account[account.id] = account
 
-        periods = period_obj.browse(end_period_ids)
+        periods = end_periods
         periods.sort(lambda x, y: cmp(x.start_date, y.start_date))
         localcontext['start_period'] = periods[0]
         periods.sort(lambda x, y: cmp(x.end_date, y.end_date))
         localcontext['end_period'] = periods[-1]
 
         if not data['empty_account']:
-            account_id2lines = self.get_lines(account_ids,
-                end_period_ids, data['posted'])
-            for account_id in (set(account_ids) - set(account_id2lines)):
-                account_ids.remove(account_id)
+            account2lines = cls.get_lines(accounts,
+                end_periods, data['posted'])
+            for account in (set(accounts) - set(account2lines)):
+                accounts.remove(account)
             account_id2lines = None
 
-        account_id2lines = self.lines(account_ids,
-            list(set(end_period_ids).difference(set(start_period_ids))),
+        account_id2lines = cls.lines(accounts,
+            list(set(end_periods).difference(set(start_periods))),
             data['posted'])
 
-        localcontext['accounts'] = account_obj.browse(account_ids)
+        localcontext['accounts'] = accounts
         localcontext['id2start_account'] = id2start_account
         localcontext['id2end_account'] = id2end_account
         localcontext['digits'] = company.currency.digits
         localcontext['lines'] = lambda account_id: account_id2lines[account_id]
         localcontext['company'] = company
 
-        return super(GeneralLegder, self).parse(report, objects, data,
+        return super(GeneralLegder, cls).parse(report, objects, data,
             localcontext)
 
-    def get_lines(self, account_ids, period_ids, posted):
-        move_line_obj = Pool().get('account.move.line')
+    @classmethod
+    def get_lines(cls, accounts, periods, posted):
+        MoveLine = Pool().get('account.move.line')
         clause = [
-            ('account', 'in', account_ids),
-            ('period', 'in', period_ids),
+            ('account', 'in', [a.id for a in accounts]),
+            ('period', 'in', [p.id for p in periods]),
             ('state', '!=', 'draft'),
             ]
         if posted:
             clause.append(('move.state', '=', 'posted'))
-        move_ids = move_line_obj.search(clause, order=[])
+        moves = MoveLine.search(clause, order=[])
         res = {}
-        for move in move_line_obj.browse(move_ids):
-            res.setdefault(move.account.id, []).append(move)
+        for move in moves:
+            res.setdefault(move.account, []).append(move)
         return res
 
-    def lines(self, account_ids, period_ids, posted):
-        move_obj = Pool().get('account.move')
-        res = dict((account_id, []) for account_id in account_ids)
-        account_id2lines = self.get_lines(account_ids, period_ids, posted)
+    @classmethod
+    def lines(cls, accounts, periods, posted):
+        Move = Pool().get('account.move')
+        res = dict((a.id, []) for a in accounts)
+        account2lines = cls.get_lines(accounts, periods, posted)
 
-        state_selections = dict(move_obj.fields_get(
-            fields_names=['state'])['state']['selection'])
+        state_selections = dict(Move.fields_get(
+                fields_names=['state'])['state']['selection'])
 
-        for account_id, lines in account_id2lines.iteritems():
+        for account, lines in account2lines.iteritems():
             lines.sort(lambda x, y: cmp(x.date, y.date))
             balance = Decimal('0.0')
             for line in lines:
                 balance += line.debit - line.credit
-                res[account_id].append({
+                res[account.id].append({
                         'date': line.date,
                         'debit': line.debit,
                         'credit': line.credit,
@@ -1330,13 +1239,10 @@ class GeneralLegder(Report):
                         })
         return res
 
-GeneralLegder()
-
 
 class PrintTrialBalanceStart(ModelView):
     'Print Trial Balance'
-    _name = 'account.print_trial_balance.start'
-    _description = __doc__
+    __name__ = 'account.print_trial_balance.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
@@ -1357,35 +1263,34 @@ class PrintTrialBalanceStart(ModelView):
     empty_account = fields.Boolean('Empty Account',
             help='With account without move')
 
-    def default_fiscalyear(self):
-        fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company'), exception=False)
-        if fiscalyear_id:
-            return fiscalyear_id
+    @staticmethod
+    def default_fiscalyear():
+        FiscalYear = Pool().get('account.fiscalyear')
+        return FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
 
-    def default_empty_account(self):
+    @staticmethod
+    def default_empty_account():
         return False
 
-    def on_change_fiscalyear(self, vals):
+    def on_change_fiscalyear(self):
         return {
             'start_period': None,
             'end_period': None,
-        }
-
-PrintTrialBalanceStart()
+            }
 
 
 class PrintTrialBalance(Wizard):
     'Print Trial Balance'
-    _name = 'account.print_trial_balance'
-
+    __name__ = 'account.print_trial_balance'
     start = StateView('account.print_trial_balance.start',
         'account.print_general_ledger_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1393,90 +1298,91 @@ class PrintTrialBalance(Wizard):
             ])
     print_ = StateAction('account.report_trial_balance')
 
-    def do_print_(self, session, action):
-        if session.start.start_period:
-            start_period = session.start.start_period.id
+    def do_print_(self, action):
+        if self.start.start_period:
+            start_period = self.start.start_period.id
         else:
             start_period = None
-        if session.start.end_period:
-            end_period = session.start.end_period.id
+        if self.start.end_period:
+            end_period = self.start.end_period.id
         else:
             end_period = None
         data = {
-            'company': session.start.company.id,
-            'fiscalyear': session.start.fiscalyear.id,
+            'company': self.start.company.id,
+            'fiscalyear': self.start.fiscalyear.id,
             'start_period': start_period,
             'end_period': end_period,
-            'posted': session.start.posted,
-            'empty_account': session.start.empty_account,
+            'posted': self.start.posted,
+            'empty_account': self.start.empty_account,
             }
         return action, data
 
-    def transition_print_(self, session):
+    def transition_print_(self):
         return 'end'
-
-PrintTrialBalance()
 
 
 class TrialBalance(Report):
-    _name = 'account.trial_balance'
+    __name__ = 'account.trial_balance'
 
-    def parse(self, report, objects, data, localcontext):
+    @classmethod
+    def parse(cls, report, objects, data, localcontext):
         pool = Pool()
-        account_obj = pool.get('account.account')
-        period_obj = pool.get('account.period')
-        company_obj = pool.get('company.company')
+        Account = pool.get('account.account')
+        Period = pool.get('account.period')
+        Company = pool.get('company.company')
 
-        company = company_obj.browse(data['company'])
+        company = Company(data['company'])
 
-        account_ids = account_obj.search([
-            ('company', '=', data['company']),
-            ('kind', '!=', 'view'),
-            ])
+        accounts = Account.search([
+                ('company', '=', data['company']),
+                ('kind', '!=', 'view'),
+                ])
 
-        start_period_ids = [0]
+        start_periods = []
         if data['start_period']:
-            start_period = period_obj.browse(data['start_period'])
-            start_period_ids = period_obj.search([
+            start_period = Period(data['start_period'])
+            start_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ('end_date', '<=', start_period.start_date),
                     ])
 
-        end_period_ids = []
         if data['end_period']:
-            end_period = period_obj.browse(data['end_period'])
-            end_period_ids = period_obj.search([
+            end_period = Period(data['end_period'])
+            end_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ('end_date', '<=', end_period.start_date),
                     ])
-            end_period_ids = list(set(end_period_ids).difference(
-                    set(start_period_ids)))
-            if data['end_period'] not in end_period_ids:
-                end_period_ids.append(data['end_period'])
+            end_periods = list(set(end_periods).difference(
+                    set(start_periods)))
+            if end_period not in end_periods:
+                end_periods.append(end_period)
         else:
-            end_period_ids = period_obj.search([
+            end_periods = Period.search([
                     ('fiscalyear', '=', data['fiscalyear']),
                     ])
-            end_period_ids = list(set(end_period_ids).difference(
-                    set(start_period_ids)))
+            end_periods = list(set(end_periods).difference(
+                    set(start_periods)))
+
+        start_period_ids = [p.id for p in start_periods] or [0]
+        end_period_ids = [p.id for p in end_periods]
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
                 periods=start_period_ids,
                 posted=data['posted']):
-            start_accounts = account_obj.browse(account_ids)
+            start_accounts = Account.browse(accounts)
 
         with Transaction().set_context(
                 fiscalyear=None,
                 periods=end_period_ids,
                 posted=data['posted']):
-            in_accounts = account_obj.browse(account_ids)
+            in_accounts = Account.browse(accounts)
 
         with Transaction().set_context(
                 fiscalyear=data['fiscalyear'],
                 periods=start_period_ids + end_period_ids,
                 posted=data['posted']):
-            end_accounts = account_obj.browse(account_ids)
+            end_accounts = Account.browse(accounts)
 
         to_remove = []
         if not data['empty_account']:
@@ -1499,7 +1405,7 @@ class TrialBalance(Report):
                     'end_balance': end_account.balance,
                     })
 
-        periods = period_obj.browse(end_period_ids)
+        periods = end_periods
 
         localcontext['accounts'] = accounts
         periods.sort(key=operator.attrgetter('start_date'))
@@ -1508,45 +1414,43 @@ class TrialBalance(Report):
         localcontext['end_period'] = periods[-1]
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
-        localcontext['sum'] = lambda accounts, field: self.sum(accounts, field)
+        localcontext['sum'] = lambda accounts, field: cls.sum(accounts, field)
 
-        return super(TrialBalance, self).parse(report, objects, data,
+        return super(TrialBalance, cls).parse(report, objects, data,
             localcontext)
 
-    def sum(self, accounts, field):
+    @classmethod
+    def sum(cls, accounts, field):
         amount = Decimal('0.0')
         for account in accounts:
             amount += account[field]
         return amount
 
-TrialBalance()
-
 
 class OpenBalanceSheetStart(ModelView):
     'Open Balance Sheet'
-    _name = 'account.open_balance_sheet.start'
-    _description = __doc__
+    __name__ = 'account.open_balance_sheet.start'
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-    def default_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
+    @staticmethod
+    def default_date():
+        Date_ = Pool().get('ir.date')
+        return Date_.today()
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
-
-OpenBalanceSheetStart()
 
 
 class OpenBalanceSheet(Wizard):
     'Open Balance Sheet'
-    _name = 'account.open_balance_sheet'
-
+    __name__ = 'account.open_balance_sheet'
     start = StateView('account.open_balance_sheet.start',
         'account.open_balance_sheet_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1554,38 +1458,34 @@ class OpenBalanceSheet(Wizard):
             ])
     open_ = StateAction('account.act_account_balance_sheet_tree')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         pool = Pool()
-        lang_obj = pool.get('ir.lang')
+        Lang = pool.get('ir.lang')
 
-        company = session.start.company
-        lang_id, = lang_obj.search([
+        company = self.start.company
+        lang, = Lang.search([
                 ('code', '=', Transaction().language),
                 ])
-        lang = lang_obj.browse(lang_id)
 
-        date = lang_obj.strftime(session.start.date, lang.code, lang.date)
+        date = Lang.strftime(self.start.date, lang.code, lang.date)
 
         action['pyson_context'] = PYSONEncoder().encode({
-                'date': Date(session.start.date.year,
-                    session.start.date.month,
-                    session.start.date.day),
-                'posted': session.start.posted,
+                'date': Date(self.start.date.year,
+                    self.start.date.month,
+                    self.start.date.day),
+                'posted': self.start.posted,
                 'company': company.id,
                 })
-        action['name'] += ' - ' + date + ' - ' + company.name
+        action['name'] += '%s - %s' % (date, company.name)
         return action, {}
 
-    def transition_open_(self, session):
+    def transition_open_(self):
         return 'end'
-
-OpenBalanceSheet()
 
 
 class OpenIncomeStatementStart(ModelView):
     'Open Income Statement'
-    _name = 'account.open_income_statement.start'
-    _description = __doc__
+    __name__ = 'account.open_income_statement.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True, on_change=['fiscalyear'],
             depends=['start_period', 'end_period'])
@@ -1604,32 +1504,30 @@ class OpenIncomeStatementStart(ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-    def default_fiscalyear(self):
-        fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company'), exception=False)
-        if fiscalyear_id:
-            return fiscalyear_id
+    @staticmethod
+    def default_fiscalyear():
+        FiscalYear = Pool().get('account.fiscalyear')
+        return FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
 
-    def on_change_fiscalyear(self, vals):
+    def on_change_fiscalyear(self):
         return {
             'start_period': None,
             'end_period': None,
         }
 
-OpenIncomeStatementStart()
-
 
 class OpenIncomeStatement(Wizard):
     'Open Income Statement'
-    _name = 'account.open_income_statement'
-
+    __name__ = 'account.open_income_statement'
     start = StateView('account.open_income_statement.start',
         'account.open_income_statement_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1637,70 +1535,62 @@ class OpenIncomeStatement(Wizard):
             ])
     open_ = StateAction('account.act_account_income_statement_tree')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         pool = Pool()
-        period_obj = pool.get('account.period')
+        Period = pool.get('account.period')
 
-        start_period_ids = [0]
-        if session.start.start_period:
-            start_period_ids = period_obj.search([
-                    ('fiscalyear', '=', session.start.fiscalyear.id),
-                    ('end_date', '<=', session.start.start_period.start_date),
+        start_periods = []
+        if self.start.start_period:
+            start_periods = Period.search([
+                    ('fiscalyear', '=', self.start.fiscalyear.id),
+                    ('end_date', '<=', self.start.start_period.start_date),
                     ])
 
-        end_period_ids = []
-        if session.start.end_period:
-            end_period_ids = period_obj.search([
-                    ('fiscalyear', '=', session.start.fiscalyear.id),
-                    ('end_date', '<=', session.start.end_period.start_date),
+        end_periods = []
+        if self.start.end_period:
+            end_periods = Period.search([
+                    ('fiscalyear', '=', self.start.fiscalyear.id),
+                    ('end_date', '<=', self.start.end_period.start_date),
                     ])
-            end_period_ids = list(set(end_period_ids).difference(
-                    set(start_period_ids)))
-            if session.start.end_period.id not in end_period_ids:
-                end_period_ids.append(session.start.end_period.id)
+            end_periods = list(set(end_periods).difference(
+                    set(start_periods)))
+            if self.start.end_period not in end_periods:
+                end_periods.append(self.start.end_period)
         else:
-            end_period_ids = period_obj.search([
-                    ('fiscalyear', '=', session.start.fiscalyear.id),
+            end_periods = Period.search([
+                    ('fiscalyear', '=', self.start.fiscalyear.id),
                     ])
-            end_period_ids = list(set(end_period_ids).difference(
-                    set(start_period_ids)))
+            end_periods = list(set(end_periods).difference(
+                    set(start_periods)))
 
         action['pyson_context'] = PYSONEncoder().encode({
-                'periods': end_period_ids,
-                'posted': session.start.posted,
-                'company': session.start.company.id,
+                'periods': [p.id for p in end_periods],
+                'posted': self.start.posted,
+                'company': self.start.company.id,
                 })
         return action, {}
-
-OpenIncomeStatement()
 
 
 class CreateChartStart(ModelView):
     'Create Chart'
-    _name = 'account.create_chart.start'
-    _description = __doc__
-
-CreateChartStart()
+    __name__ = 'account.create_chart.start'
 
 
 class CreateChartAccount(ModelView):
     'Create Chart'
-    _name = 'account.create_chart.account'
-    _description = __doc__
+    __name__ = 'account.create_chart.account'
     company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
             'Account Template', required=True, domain=[('parent', '=', None)])
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-CreateChartAccount()
 
-
-class CreateChartPropertites(ModelView):
+class CreateChartProperties(ModelView):
     'Create Chart'
-    _name = 'account.create_chart.properties'
-    _description = __doc__
+    __name__ = 'account.create_chart.properties'
     company = fields.Many2One('company.company', 'Company')
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
@@ -1717,13 +1607,10 @@ class CreateChartPropertites(ModelView):
             ],
             depends=['company'])
 
-CreateChartPropertites()
-
 
 class CreateChart(Wizard):
     'Create Chart'
-    _name = 'account.create_chart'
-
+    __name__ = 'account.create_chart'
     start = StateView('account.create_chart.start',
         'account.create_chart_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1742,158 +1629,138 @@ class CreateChart(Wizard):
             ])
     create_properties = StateTransition()
 
-    def transition_create_account(self, session):
+    def transition_create_account(self):
         pool = Pool()
-        account_type_template_obj = \
-                pool.get('account.account.type.template')
-        account_template_obj = pool.get('account.account.template')
-        tax_code_template_obj = pool.get('account.tax.code.template')
-        tax_template_obj = pool.get('account.tax.template')
-        tax_rule_template_obj = pool.get('account.tax.rule.template')
-        tax_rule_line_template_obj = \
+        TaxCodeTemplate = pool.get('account.tax.code.template')
+        TaxTemplate = pool.get('account.tax.template')
+        TaxRuleTemplate = pool.get('account.tax.rule.template')
+        TaxRuleLineTemplate = \
                 pool.get('account.tax.rule.line.template')
 
         with Transaction().set_context(language=CONFIG['language']):
-            account_template = session.account.account_template
+            account_template = self.account.account_template
 
             # Create account types
             template2type = {}
-            account_type_template_obj.create_type(account_template.type,
-                session.account.company.id, template2type=template2type)
+            account_template.type.create_type(self.account.company.id,
+                template2type=template2type)
 
             # Create accounts
             template2account = {}
-            account_template_obj.create_account(account_template,
-                session.account.company.id,
-                template2account=template2account,
-                template2type=template2type)
+            account_template.create_account(self.account.company.id,
+                template2account=template2account, template2type=template2type)
 
             # Create tax codes
             template2tax_code = {}
-            tax_code_template_ids = tax_code_template_obj.search([
+            tax_code_templates = TaxCodeTemplate.search([
                     ('account', '=', account_template.id),
                     ('parent', '=', None),
                     ])
-            for tax_code_template in tax_code_template_obj.browse(
-                    tax_code_template_ids):
-                tax_code_template_obj.create_tax_code(tax_code_template,
-                    session.account.company.id,
+            for tax_code_template in tax_code_templates:
+                tax_code_template.create_tax_code(self.account.company.id,
                     template2tax_code=template2tax_code)
 
             # Create taxes
             template2tax = {}
-            tax_template_ids = tax_template_obj.search([
+            tax_templates = TaxTemplate.search([
                     ('account', '=', account_template.id),
                     ('parent', '=', None),
                     ])
-            for tax_template in tax_template_obj.browse(tax_template_ids):
-                tax_template_obj.create_tax(tax_template,
-                    session.account.company.id,
+            for tax_template in tax_templates:
+                tax_template.create_tax(self.account.company.id,
                     template2tax_code=template2tax_code,
                     template2account=template2account,
                     template2tax=template2tax)
 
             # Update taxes on accounts
-            account_template_obj.update_account_taxes(account_template,
-                    template2account, template2tax)
+            account_template.update_account_taxes(template2account,
+                template2tax)
 
             # Create tax rules
             template2rule = {}
-            tax_rule_template_ids = tax_rule_template_obj.search([
+            tax_rule_templates = TaxRuleTemplate.search([
                     ('account', '=', account_template.id),
                     ])
-            for tax_rule_template in tax_rule_template_obj.browse(
-                    tax_rule_template_ids):
-                tax_rule_template_obj.create_rule(tax_rule_template,
-                    session.account.company.id, template2rule=template2rule)
+            for tax_rule_template in tax_rule_templates:
+                tax_rule_template.create_rule(self.account.company.id,
+                    template2rule=template2rule)
 
             # Create tax rule lines
             template2rule_line = {}
-            tax_rule_line_template_ids = tax_rule_line_template_obj.search([
+            tax_rule_line_templates = TaxRuleLineTemplate.search([
                     ('rule.account', '=', account_template.id),
                     ])
-            for tax_rule_line_template in tax_rule_line_template_obj.browse(
-                    tax_rule_line_template_ids):
-                tax_rule_line_template_obj.create_rule_line(
-                    tax_rule_line_template, template2tax, template2rule,
-                    template2rule_line=template2rule_line)
+            for tax_rule_line_template in tax_rule_line_templates:
+                tax_rule_line_template.create_rule_line(template2tax,
+                    template2rule, template2rule_line=template2rule_line)
         return 'properties'
 
-    def default_properties(self, session, fields):
+    def default_properties(self, fields):
         return {
-            'company': session.account.company.id,
+            'company': self.account.company.id,
             }
 
-    def transition_create_properties(self, session):
+    def transition_create_properties(self):
         pool = Pool()
-        property_obj = pool.get('ir.property')
-        model_field_obj = pool.get('ir.model.field')
+        Property = pool.get('ir.property')
+        ModelField = pool.get('ir.model.field')
 
-        with Transaction().set_context(company=session.properties.company.id):
-            account_receivable_field_id, = model_field_obj.search([
+        with Transaction().set_context(company=self.properties.company.id):
+            account_receivable_field, = ModelField.search([
                     ('model.model', '=', 'party.party'),
                     ('name', '=', 'account_receivable'),
                     ], limit=1)
-            property_ids = property_obj.search([
-                    ('field', '=', account_receivable_field_id),
+            properties = Property.search([
+                    ('field', '=', account_receivable_field.id),
                     ('res', '=', None),
-                    ('company', '=', session.properties.company.id),
+                    ('company', '=', self.properties.company.id),
                     ])
             with Transaction().set_user(0):
-                property_obj.delete(property_ids)
-                if session.properties.account_receivable:
-                    property_obj.create({
-                            'field': account_receivable_field_id,
+                Property.delete(properties)
+                if self.properties.account_receivable:
+                    Property.create({
+                            'field': account_receivable_field.id,
                             'value': 'account.account,' + \
-                                str(session.properties.account_receivable.id),
-                            'company': session.properties.company.id,
+                                str(self.properties.account_receivable.id),
+                            'company': self.properties.company.id,
                             })
 
-            account_payable_field_id, = model_field_obj.search([
+            account_payable_field, = ModelField.search([
                     ('model.model', '=', 'party.party'),
                     ('name', '=', 'account_payable'),
                     ], limit=1)
-            property_ids = property_obj.search([
-                    ('field', '=', account_payable_field_id),
+            properties = Property.search([
+                    ('field', '=', account_payable_field.id),
                     ('res', '=', None),
-                    ('company', '=', session.properties.company.id),
+                    ('company', '=', self.properties.company.id),
                     ])
             with Transaction().set_user(0):
-                property_obj.delete(property_ids)
-                if session.properties.account_payable:
-                    property_obj.create({
-                            'field': account_payable_field_id,
+                Property.delete(properties)
+                if self.properties.account_payable:
+                    Property.create({
+                            'field': account_payable_field.id,
                             'value': 'account.account,' + \
-                                str(session.properties.account_payable.id),
-                            'company': session.properties.company.id,
+                                str(self.properties.account_payable.id),
+                            'company': self.properties.company.id,
                             })
         return 'end'
-
-CreateChart()
 
 
 class UpdateChartStart(ModelView):
     'Update Chart'
-    _name = 'account.update_chart.start'
-    _description = __doc__
+    __name__ = 'account.update_chart.start'
     account = fields.Many2One('account.account', 'Root Account',
             required=True, domain=[('parent', '=', None)])
-
-UpdateChartStart()
 
 
 class UpdateChartSucceed(ModelView):
     'Update Chart'
-    _name = 'account.update_chart.succeed'
-    _description = __doc__
-
-UpdateChartSucceed()
+    __name__ = 'account.update_chart.succeed'
 
 
 class UpdateChart(Wizard):
     'Update Chart'
-    _name = 'account.update_chart'
-
+    __name__ = 'account.update_chart'
     start = StateView('account.update_chart.start',
         'account.update_chart_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -1905,159 +1772,141 @@ class UpdateChart(Wizard):
             Button('Ok', 'end', 'tryton-ok', default=True),
             ])
 
-    def transition_update(self, session):
+    def transition_update(self):
         pool = Pool()
-        account_type_obj = pool.get('account.account.type')
-        account_type_template_obj = \
-                pool.get('account.account.type.template')
-        account_obj = pool.get('account.account')
-        account_template_obj = pool.get('account.account.template')
-        tax_code_obj = pool.get('account.tax.code')
-        tax_code_template_obj = pool.get('account.tax.code.template')
-        tax_obj = pool.get('account.tax')
-        tax_template_obj = pool.get('account.tax.template')
-        tax_rule_obj = pool.get('account.tax.rule')
-        tax_rule_template_obj = pool.get('account.tax.rule.template')
-        tax_rule_line_obj = pool.get('account.tax.rule.line')
-        tax_rule_line_template_obj = \
+        TaxCode = pool.get('account.tax.code')
+        TaxCodeTemplate = pool.get('account.tax.code.template')
+        Tax = pool.get('account.tax')
+        TaxTemplate = pool.get('account.tax.template')
+        TaxRule = pool.get('account.tax.rule')
+        TaxRuleTemplate = pool.get('account.tax.rule.template')
+        TaxRuleLine = pool.get('account.tax.rule.line')
+        TaxRuleLineTemplate = \
                 pool.get('account.tax.rule.line.template')
 
-        account = session.start.account
+        account = self.start.account
 
         # Update account types
         template2type = {}
-        account_type_obj.update_type(account.type, template2type=template2type)
+        account.type.update_type(template2type=template2type)
         # Create missing account types
         if account.type.template:
-            account_type_template_obj.create_type(account.type.template,
-                    account.company.id, template2type=template2type)
+            account.type.template.create_type(account.company.id,
+                template2type=template2type)
 
         # Update accounts
         template2account = {}
-        account_obj.update_account(account, template2account=template2account,
-                template2type=template2type)
+        account.update_account(template2account=template2account,
+            template2type=template2type)
         # Create missing accounts
         if account.template:
-            account_template_obj.create_account(account.template,
-                    account.company.id, template2account=template2account,
-                    template2type=template2type)
+            account.template.create_account(account.company.id,
+                template2account=template2account, template2type=template2type)
 
         # Update tax codes
         template2tax_code = {}
-        tax_code_ids = tax_code_obj.search([
+        tax_codes = TaxCode.search([
             ('company', '=', account.company.id),
             ('parent', '=', None),
             ])
-        for tax_code in tax_code_obj.browse(tax_code_ids):
-            tax_code_obj.update_tax_code(tax_code,
-                    template2tax_code=template2tax_code)
+        for tax_code in tax_codes:
+            tax_code.update_tax_code(template2tax_code=template2tax_code)
         # Create missing tax codes
         if account.template:
-            tax_code_template_ids = tax_code_template_obj.search([
+            tax_code_templates = TaxCodeTemplate.search([
                 ('account', '=', account.template.id),
                 ('parent', '=', None),
                 ])
-            for tax_code_template in tax_code_template_obj.browse(
-                    tax_code_template_ids):
-                tax_code_template_obj.create_tax_code(tax_code_template,
-                        account.company.id,
-                        template2tax_code=template2tax_code)
+            for tax_code_template in tax_code_templates:
+                tax_code_template.create_tax_code(account.company.id,
+                    template2tax_code=template2tax_code)
 
         # Update taxes
         template2tax = {}
-        tax_ids = tax_obj.search([
+        taxes = Tax.search([
             ('company', '=', account.company.id),
             ('parent', '=', None),
             ])
-        for tax in tax_obj.browse(tax_ids):
-            tax_obj.update_tax(tax, template2tax_code=template2tax_code,
+        for tax in taxes:
+            tax.update_tax(template2tax_code=template2tax_code,
                     template2account=template2account,
                     template2tax=template2tax)
         # Create missing taxes
         if account.template:
-            tax_template_ids = tax_template_obj.search([
+            tax_templates = TaxTemplate.search([
                 ('account', '=', account.template.id),
                 ('parent', '=', None),
                 ])
-            for tax_template in tax_template_obj.browse(tax_template_ids):
-                tax_template_obj.create_tax(tax_template, account.company.id,
+            for tax_template in tax_templates:
+                tax_template.create_tax(account.company.id,
                         template2tax_code=template2tax_code,
                         template2account=template2account,
                         template2tax=template2tax)
 
         # Update taxes on accounts
-        account_obj.update_account_taxes(account, template2account,
-                template2tax)
+        account.update_account_taxes(template2account, template2tax)
 
         # Update tax rules
         template2rule = {}
-        tax_rule_ids = tax_rule_obj.search([
+        tax_rules = TaxRule.search([
             ('company', '=', account.company.id),
             ])
-        for tax_rule in tax_rule_obj.browse(tax_rule_ids):
-            tax_rule_obj.update_rule(tax_rule, template2rule=template2rule)
+        for tax_rule in tax_rules:
+            tax_rule.update_rule(template2rule=template2rule)
         # Create missing tax rules
         if account.template:
-            tax_rule_template_ids = tax_rule_template_obj.search([
+            tax_rule_templates = TaxRuleTemplate.search([
                 ('account', '=', account.template.id),
                 ])
-            for tax_rule_template in tax_rule_template_obj.browse(
-                    tax_rule_template_ids):
-                tax_rule_template_obj.create_rule(tax_rule_template,
-                        account.company.id, template2rule=template2rule)
+            for tax_rule_template in tax_rule_templates:
+                tax_rule_template.create_rule(account.company.id,
+                    template2rule=template2rule)
 
         # Update tax rule lines
         template2rule_line = {}
-        tax_rule_line_ids = tax_rule_line_obj.search([
+        tax_rule_lines = TaxRuleLine.search([
             ('rule.company', '=', account.company.id),
             ])
-        for tax_rule_line in tax_rule_line_obj.browse(tax_rule_line_ids):
-            tax_rule_line_obj.update_rule_line(tax_rule_line, template2tax,
-                    template2rule, template2rule_line=template2rule_line)
+        for tax_rule_line in tax_rule_lines:
+            tax_rule_line.update_rule_line(template2tax, template2rule,
+                template2rule_line=template2rule_line)
         # Create missing tax rule lines
         if account.template:
-            tax_rule_line_template_ids = tax_rule_line_template_obj.search([
+            tax_rule_line_templates = TaxRuleLineTemplate.search([
                 ('rule.account', '=', account.template.id),
                 ])
-            for tax_rule_line_template in tax_rule_line_template_obj.browse(
-                    tax_rule_line_template_ids):
-                tax_rule_line_template_obj.create_rule_line(
-                        tax_rule_line_template, template2tax, template2rule,
-                        template2rule_line=template2rule_line)
+            for tax_rule_line_template in tax_rule_line_templates:
+                tax_rule_line_template.create_rule_line(template2tax,
+                    template2rule, template2rule_line=template2rule_line)
         return 'succeed'
-
-UpdateChart()
 
 
 class OpenThirdPartyBalanceStart(ModelView):
     'Open Third Party Balance'
-    _name = 'account.open_third_party_balance.start'
-    _description = __doc__
+    __name__ = 'account.open_third_party_balance.start'
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-    def default_fiscalyear(self):
-        fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company'), exception=False)
-        if fiscalyear_id:
-            return fiscalyear_id
+    @staticmethod
+    def default_fiscalyear():
+        Fiscalyear = Pool().get('account.fiscalyear')
+        return Fiscalyear.find(
+            Transaction().context.get('company'), exception=False)
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
-
-OpenThirdPartyBalanceStart()
 
 
 class OpenThirdPartyBalance(Wizard):
     'Open Third Party Balance'
-    _name = 'account.open_third_party_balance'
-
+    __name__ = 'account.open_third_party_balance'
     start = StateView('account.open_third_party_balance.start',
         'account.open_balance_sheet_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -2065,37 +1914,36 @@ class OpenThirdPartyBalance(Wizard):
             ])
     print_ = StateAction('account.report_third_party_balance')
 
-    def do_print_(self, session, action):
+    def do_print_(self, action):
         data = {
-            'company': session.start.company.id,
-            'fiscalyear': session.start.fiscalyear.id,
-            'posted': session.start.posted,
+            'company': self.start.company.id,
+            'fiscalyear': self.start.fiscalyear.id,
+            'posted': self.start.posted,
             }
         return action, data
 
-    def transition_print_(self, session):
+    def transition_print_(self):
         return 'end'
-
-OpenThirdPartyBalance()
 
 
 class ThirdPartyBalance(Report):
-    _name = 'account.third_party_balance'
+    __name__ = 'account.third_party_balance'
 
-    def parse(self, report, objects, data, localcontext):
+    @classmethod
+    def parse(cls, report, objects, data, localcontext):
         pool = Pool()
-        party_obj = pool.get('party.party')
-        move_line_obj = pool.get('account.move.line')
-        company_obj = pool.get('company.company')
-        date_obj = pool.get('ir.date')
+        Party = pool.get('party.party')
+        MoveLine = pool.get('account.move.line')
+        Company = pool.get('company.company')
+        Date = pool.get('ir.date')
         cursor = Transaction().cursor
 
-        company = company_obj.browse(data['company'])
+        company = Company(data['company'])
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = data['fiscalyear']
         with Transaction().set_context(context=localcontext):
-            line_query, _ = move_line_obj.query_get()
+            line_query, _ = MoveLine.query_get()
         if data['posted']:
             posted_clause = "AND m.state = 'posted' "
         else:
@@ -2116,11 +1964,11 @@ class ThirdPartyBalance(Report):
                     + posted_clause + \
                 'GROUP BY l.party ' \
                 'HAVING (SUM(l.debit) != 0 OR SUM(l.credit) != 0)',
-                (data['company'], date_obj.today()))
+                (data['company'], Date.today()))
 
         res = cursor.fetchall()
         id2party = {}
-        for party in party_obj.browse([x[0] for x in res]):
+        for party in Party.browse([x[0] for x in res]):
             id2party[party.id] = party
         objects = [{
             'name': id2party[x[0]].rec_name,
@@ -2133,16 +1981,13 @@ class ThirdPartyBalance(Report):
         localcontext['total_credit'] = sum((x['credit'] for x in objects))
         localcontext['total_solde'] = sum((x['solde'] for x in objects))
 
-        return super(ThirdPartyBalance, self).parse(report, objects, data,
+        return super(ThirdPartyBalance, cls).parse(report, objects, data,
             localcontext)
-
-ThirdPartyBalance()
 
 
 class OpenAgedBalanceStart(ModelView):
     'Open Aged Balance'
-    _name = 'account.open_aged_balance.start'
-    _description = __doc__
+    __name__ = 'account.open_aged_balance.start'
     company = fields.Many2One('company.company', 'Company', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             required=True)
@@ -2156,41 +2001,44 @@ class OpenAgedBalanceStart(ModelView):
         [('day', 'Day'), ('month', 'Month')], "Unit", required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
-    def default_fiscalyear(self):
-        fiscalyear_obj = Pool().get('account.fiscalyear')
-        fiscalyear_id = fiscalyear_obj.find(
-                Transaction().context.get('company'), exception=False)
-        if fiscalyear_id:
-            return fiscalyear_id
+    @staticmethod
+    def default_fiscalyear():
+        FiscalYear = Pool().get('account.fiscalyear')
+        return FiscalYear.find(
+            Transaction().context.get('company'), exception=False)
 
-    def default_balance_type(self):
+    @staticmethod
+    def default_balance_type():
         return "customer"
 
-    def default_posted(self):
+    @staticmethod
+    def default_posted():
         return False
 
-    def default_term1(self):
+    @staticmethod
+    def default_term1():
         return 30
 
-    def default_term2(self):
+    @staticmethod
+    def default_term2():
         return 60
 
-    def default_term3(self):
+    @staticmethod
+    def default_term3():
         return 90
 
-    def default_unit(self):
+    @staticmethod
+    def default_unit():
         return 'day'
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
-
-OpenAgedBalanceStart()
 
 
 class OpenAgedBalance(Wizard):
     'Open Aged Party Balance'
-    _name = 'account.open_aged_balance'
-
+    __name__ = 'account.open_aged_balance'
     start = StateView('account.open_aged_balance.start',
         'account.open_aged_balance_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -2198,52 +2046,51 @@ class OpenAgedBalance(Wizard):
             ])
     print_ = StateAction('account.report_aged_balance')
 
-    def __init__(self):
-        super(OpenAgedBalance, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(OpenAgedBalance, cls).__setup__()
+        cls._error_messages.update({
                 'warning': 'Warning',
                 'term_overlap_desc': 'You cannot define overlapping terms'})
 
-    def do_print_(self, session, action):
-        if not (session.start.term1 < session.start.term2
-                < session.start.term3):
+    def do_print_(self, action):
+        if not (self.start.term1 < self.start.term2 < self.start.term3):
             self.raise_user_error(error="warning",
-                    error_description="term_overlap_desc")
+                error_description="term_overlap_desc")
         data = {
-            'company': session.start.company.id,
-            'fiscalyear': session.start.fiscalyear.id,
-            'term1': session.start.term1,
-            'term2': session.start.term2,
-            'term3': session.start.term3,
-            'unit': session.start.unit,
-            'posted': session.start.posted,
-            'balance_type': session.start.balance_type,
+            'company': self.start.company.id,
+            'fiscalyear': self.start.fiscalyear.id,
+            'term1': self.start.term1,
+            'term2': self.start.term2,
+            'term3': self.start.term3,
+            'unit': self.start.unit,
+            'posted': self.start.posted,
+            'balance_type': self.start.balance_type,
             }
         return action, data
 
-    def transition_print_(self, session):
+    def transition_print_(self):
         return 'end'
-
-OpenAgedBalance()
 
 
 class AgedBalance(Report):
-    _name = 'account.aged_balance'
+    __name__ = 'account.aged_balance'
 
-    def parse(self, report, objects, data, localcontext):
+    @classmethod
+    def parse(cls, report, objects, data, localcontext):
         pool = Pool()
-        party_obj = pool.get('party.party')
-        move_line_obj = pool.get('account.move.line')
-        company_obj = pool.get('company.company')
-        date_obj = pool.get('ir.date')
+        Party = pool.get('party.party')
+        MoveLine = pool.get('account.move.line')
+        Company = pool.get('company.company')
+        Date = pool.get('ir.date')
         cursor = Transaction().cursor
 
-        company = company_obj.browse(data['company'])
+        company = Company(data['company'])
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = data['fiscalyear']
         localcontext['posted'] = data['posted']
         with Transaction().set_context(context=localcontext):
-            line_query, _ = move_line_obj.query_get()
+            line_query, _ = MoveLine.query_get()
 
         terms = (data['term1'], data['term2'], data['term3'])
         if data['unit'] == 'month':
@@ -2262,14 +2109,14 @@ class AgedBalance(Report):
             if position == 0:
                 term_query = '(l.maturity_date <= %s '\
                     'OR l.maturity_date IS NULL) '
-                term_args = (date_obj.today() +
+                term_args = (Date.today() +
                         datetime.timedelta(days=term * coef),)
             else:
                 term_query = '(l.maturity_date <= %s '\
                     'AND l.maturity_date > %s) '
                 term_args = (
-                    date_obj.today() + datetime.timedelta(days=term * coef),
-                    date_obj.today()
+                    Date.today() + datetime.timedelta(days=term * coef),
+                    Date.today()
                     + datetime.timedelta(days=terms[position - 1] * coef),
                     )
 
@@ -2293,10 +2140,9 @@ class AgedBalance(Report):
                 else:
                     res[party] = [(i[0] == position) and solde \
                             or Decimal("0.0") for i in enumerate(terms)]
-        party_ids = party_obj.search([
+        parties = Party.search([
             ('id', 'in', [k for k in res.iterkeys()]),
             ])
-        parties = party_obj.browse(party_ids)
 
         localcontext['main_title'] = data['balance_type']
         localcontext['unit'] = data['unit']
@@ -2313,7 +2159,5 @@ class AgedBalance(Report):
                 'amount2': res[p.id][2],
                 } for p in parties]
 
-        return super(AgedBalance, self).parse(report, objects, data,
+        return super(AgedBalance, cls).parse(report, objects, data,
             localcontext)
-
-AgedBalance()

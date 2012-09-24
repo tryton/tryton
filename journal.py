@@ -7,6 +7,9 @@ from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['JournalType', 'JournalView', 'JournalViewColumn', 'Journal',
+    'JournalPeriod', 'CloseJournalPeriod', 'ReOpenJournalPeriod']
+
 STATES = {
     'readonly': Eval('state') == 'close',
 }
@@ -18,41 +21,36 @@ _ICONS = {
 }
 
 
-class Type(ModelSQL, ModelView):
+class JournalType(ModelSQL, ModelView):
     'Journal Type'
-    _name = 'account.journal.type'
-    _description = __doc__
+    __name__ = 'account.journal.type'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None, required=True)
 
-    def __init__(self):
-        super(Type, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(JournalType, cls).__setup__()
+        cls._sql_constraints += [
             ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
-        ]
-        self._order.insert(0, ('code', 'ASC'))
-
-Type()
+            ]
+        cls._order.insert(0, ('code', 'ASC'))
 
 
-class View(ModelSQL, ModelView):
+class JournalView(ModelSQL, ModelView):
     'Journal View'
-    _name = 'account.journal.view'
-    _description = __doc__
+    __name__ = 'account.journal.view'
     name = fields.Char('Name', size=None, required=True)
     columns = fields.One2Many('account.journal.view.column', 'view', 'Columns')
 
-    def __init__(self):
-        super(View, self).__init__()
-        self._order.insert(0, ('name', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(JournalView, cls).__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
 
-View()
 
-
-class Column(ModelSQL, ModelView):
+class JournalViewColumn(ModelSQL, ModelView):
     'Journal View Column'
-    _name = 'account.journal.view.column'
-    _description = __doc__
+    __name__ = 'account.journal.view.column'
     name = fields.Char('Name', size=None, required=True)
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain=[('model.model', '=', 'account.move.line')])
@@ -63,33 +61,33 @@ class Column(ModelSQL, ModelView):
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
-    def __init__(self):
-        super(Column, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(JournalViewColumn, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(Column, self).init(module_name)
+        super(JournalViewColumn, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_required(self):
+    @staticmethod
+    def default_required():
         return False
 
-    def default_readonly(self):
+    @staticmethod
+    def default_readonly():
         return False
-
-Column()
 
 
 class Journal(ModelSQL, ModelView):
     'Journal'
-    _name = 'account.journal'
-    _description = __doc__
-
+    __name__ = 'account.journal'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
     active = fields.Boolean('Active', select=True)
@@ -126,60 +124,63 @@ class Journal(ModelSQL, ModelView):
                 'invisible': ~Eval('context', {}).get('company', 0),
                 }, depends=['type', 'centralised']))
 
-    def __init__(self):
-        super(Journal, self).__init__()
-        self._order.insert(0, ('name', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(Journal, cls).__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
 
-    def init(self, module_name):
-        super(Journal, self).init(module_name)
+    @classmethod
+    def __register__(cls, module_name):
+        super(Journal, cls).__register__(module_name)
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 sequence Many2One change into Property
         if table.column_exist('sequence'):
-            property_obj = Pool().get('ir.property')
-            cursor.execute('SELECT id, sequence FROM "' + self._table + '"')
+            Property = Pool().get('ir.property')
+            cursor.execute('SELECT id, sequence FROM "' + cls._table + '"')
             with Transaction().set_user(0):
                 for journal_id, sequence_id in cursor.fetchall():
-                    property_obj.set('sequence', self._name,
+                    Property.set('sequence', cls._name,
                             journal_id, (sequence_id and
                                 'ir.sequence,' + str(sequence_id) or False))
             table.drop_column('sequence', exception=True)
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_centralised(self):
+    @staticmethod
+    def default_centralised():
         return False
 
-    def default_update_posted(self):
+    @staticmethod
+    def default_update_posted():
         return False
 
-    def default_sequence(self):
+    @staticmethod
+    def default_sequence():
         return None
 
-    def get_types(self):
-        type_obj = Pool().get('account.journal.type')
-        type_ids = type_obj.search([])
-        types = type_obj.browse(type_ids)
+    @staticmethod
+    def get_types():
+        Type = Pool().get('account.journal.type')
+        types = Type.search([])
         return [(x.code, x.name) for x in types]
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([
-            ('code',) + clause[1:],
-            ], limit=1, order=[])
-        if ids:
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        journals = cls.search([
+                ('code',) + clause[1:],
+                ], limit=1, order=[])
+        if journals:
             return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
-
-Journal()
+        return [(cls._rec_name,) + clause[1:]]
 
 
-class Period(ModelSQL, ModelView):
+class JournalPeriod(ModelSQL, ModelView):
     'Journal - Period'
-    _name = 'account.journal.period'
-    _description = __doc__
-
+    __name__ = 'account.journal.period'
     name = fields.Char('Name', size=None, required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             ondelete='CASCADE', states=STATES, depends=DEPENDS)
@@ -193,14 +194,15 @@ class Period(ModelSQL, ModelView):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
 
-    def __init__(self):
-        super(Period, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(JournalPeriod, cls).__setup__()
+        cls._sql_constraints += [
             ('journal_period_uniq', 'UNIQUE(journal, period)',
                 'You can only open one journal per period!'),
-        ]
-        self._order.insert(0, ('name', 'ASC'))
-        self._error_messages.update({
+            ]
+        cls._order.insert(0, ('name', 'ASC'))
+        cls._error_messages.update({
             'modify_del_journal_period': 'You can not modify/delete ' \
                     'a journal - period with moves!',
             'create_journal_period': 'You can not create ' \
@@ -209,93 +211,89 @@ class Period(ModelSQL, ModelView):
                     'a journal - period from a closed period!',
             })
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'open'
 
-    def get_icon(self, ids, name):
-        res = {}
-        for period in self.browse(ids):
-            res[period.id] = _ICONS.get(period.state, '')
-        return res
+    def get_icon(self, name):
+        return _ICONS.get(self.state, '')
 
-    def _check(self, ids):
-        move_obj = Pool().get('account.move')
-        for period in self.browse(ids):
-            move_ids = move_obj.search([
-                ('journal', '=', period.journal.id),
-                ('period', '=', period.period.id),
-                ], limit=1)
-            if move_ids:
-                self.raise_user_error('modify_del_journal_period')
-        return
+    @classmethod
+    def _check(cls, periods):
+        Move = Pool().get('account.move')
+        for period in periods:
+            moves = Move.search([
+                    ('journal', '=', period.journal.id),
+                    ('period', '=', period.period.id),
+                    ], limit=1)
+            if moves:
+                cls.raise_user_error('modify_del_journal_period')
 
-    def create(self, vals):
-        period_obj = Pool().get('account.period')
+    @classmethod
+    def create(cls, vals):
+        Period = Pool().get('account.period')
         if vals.get('period'):
-            period = period_obj.browse(vals['period'])
+            period = Period(vals['period'])
             if period.state == 'close':
-                self.raise_user_error('create_journal_period')
-        return super(Period, self).create(vals)
+                cls.raise_user_error('create_journal_period')
+        return super(JournalPeriod, cls).create(vals)
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, periods, vals):
         if vals != {'state': 'close'} \
                 and vals != {'state': 'open'}:
-            self._check(ids)
+            cls._check(periods)
         if vals.get('state') == 'open':
-            for journal_period in self.browse(ids):
+            for journal_period in periods:
                 if journal_period.period.state == 'close':
-                    self.raise_user_error('open_journal_period')
-        return super(Period, self).write(ids, vals)
+                    cls.raise_user_error('open_journal_period')
+        super(JournalPeriod, cls).write(periods, vals)
 
-    def delete(self, ids):
-        self._check(ids)
-        return super(Period, self).delete(ids)
+    @classmethod
+    def delete(cls, periods):
+        cls._check(periods)
+        super(JournalPeriod, cls).delete(periods)
 
-    def close(self, ids):
+    @classmethod
+    def close(cls, periods):
         '''
         Close journal - period
-
-        :param ids: the journal - period ids
         '''
-        self.write(ids, {
-            'state': 'close',
-            })
+        cls.write(periods, {
+                'state': 'close',
+                })
 
-    def open_(self, ids):
+    @classmethod
+    def open_(cls, periods):
         "Open journal - period"
-        self.write(ids, {
+        cls.write(periods, {
                 'state': 'open',
                 })
 
-Period()
 
-
-class ClosePeriod(Wizard):
+class CloseJournalPeriod(Wizard):
     'Close Journal - Period'
-    _name = 'account.journal.period.close'
+    __name__ = 'account.journal.period.close'
     start_state = 'close'
     close = StateTransition()
 
-    def transition_close(self, session):
-        journal_period_obj = Pool().get('account.journal.period')
-        journal_period_obj.close(Transaction().context['active_ids'])
+    def transition_close(self):
+        JournalPeriod = Pool().get('account.journal.period')
+        JournalPeriod.close(JournalPeriod(Transaction().context['active_ids']))
         return 'end'
 
-ClosePeriod()
 
-
-class ReOpenPeriod(Wizard):
+class ReOpenJournalPeriod(Wizard):
     'Re-Open Journal - Period'
-    _name = 'account.journal.period.reopen'
+    __name__ = 'account.journal.period.reopen'
     start_state = 'reopen'
     reopen = StateTransition()
 
-    def transition_reopen(self, session):
-        journal_period_obj = Pool().get('account.journal.period')
-        journal_period_obj.open_(Transaction().context['active_ids'])
+    def transition_reopen(self):
+        JournalPeriod = Pool().get('account.journal.period')
+        JournalPeriod.open_(JournalPeriod(Transaction().context['active_ids']))
         return 'end'
-
-ReOpenPeriod()

@@ -1,14 +1,17 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Party']
+__metaclass__ = PoolMeta
 
 
-class Party(ModelSQL, ModelView):
-    _name = 'party.party'
+class Party:
+    __name__ = 'party.party'
     account_payable = fields.Property(fields.Many2One('account.account',
             'Account Payable', domain=[
                 ('kind', '=', 'payable'),
@@ -48,40 +51,33 @@ class Party(ModelSQL, ModelView):
     payable_today = fields.Function(fields.Numeric('Payable Today'),
             'get_receivable_payable', searcher='search_receivable_payable')
 
-    def get_receivable_payable(self, ids, names):
+    @classmethod
+    def get_receivable_payable(cls, parties, names):
         '''
         Function to compute receivable, payable (today or not) for party ids.
-
-        :param ids: the ids of the party
-        :param names: the list of field name to compute
-        :return: a dictionary with all field names as key and
-            a dictionary as value with id as key
         '''
         res = {}
         pool = Pool()
-        move_line_obj = pool.get('account.move.line')
-        user_obj = pool.get('res.user')
-        date_obj = pool.get('ir.date')
+        MoveLine = pool.get('account.move.line')
+        User = pool.get('res.user')
+        Date = pool.get('ir.date')
         cursor = Transaction().cursor
 
         for name in names:
             if name not in ('receivable', 'payable',
                     'receivable_today', 'payable_today'):
                 raise Exception('Bad argument')
-            res[name] = dict((x, Decimal('0.0')) for x in ids)
-
-        if not ids:
-            return {}
+            res[name] = dict((p.id, Decimal('0.0')) for p in parties)
 
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
-        user = user_obj.browse(user_id)
+        user = User(user_id)
         company_id = user.company.id
         if not company_id:
             return res
 
-        line_query, _ = move_line_obj.query_get()
+        line_query, _ = MoveLine.query_get()
 
         for name in names:
             code = name
@@ -91,7 +87,7 @@ class Party(ModelSQL, ModelView):
                 code = name[:-6]
                 today_query = 'AND (l.maturity_date <= %s ' \
                         'OR l.maturity_date IS NULL) '
-                today_value = [date_obj.today()]
+                today_value = [Date.today()]
 
             cursor.execute('SELECT l.party, '
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
@@ -100,13 +96,13 @@ class Party(ModelSQL, ModelView):
                     'AND a.active '
                     'AND a.kind = %s '
                     'AND l.party IN '
-                        '(' + ','.join(('%s',) * len(ids)) + ') '
+                        '(' + ','.join(('%s',) * len(parties)) + ') '
                     'AND l.reconciliation IS NULL '
                     'AND ' + line_query + ' '
                     + today_query +
                     'AND a.company = %s '
                 'GROUP BY l.party',
-                [code] + ids + today_value + [company_id])
+                [code] + [p.id for p in parties] + today_value + [company_id])
             for party_id, sum in cursor.fetchall():
                 # SQLite uses float for SUM
                 if not isinstance(sum, Decimal):
@@ -114,12 +110,13 @@ class Party(ModelSQL, ModelView):
                 res[name][party_id] = sum
         return res
 
-    def search_receivable_payable(self, name, clause):
+    @classmethod
+    def search_receivable_payable(cls, name, clause):
         pool = Pool()
-        move_line_obj = pool.get('account.move.line')
-        company_obj = pool.get('company.company')
-        user_obj = pool.get('res.user')
-        date_obj = pool.get('ir.date')
+        MoveLine = pool.get('account.move.line')
+        Company = pool.get('company.company')
+        User = pool.get('res.user')
+        Date = pool.get('ir.date')
         cursor = Transaction().cursor
 
         if name not in ('receivable', 'payable',
@@ -130,12 +127,12 @@ class Party(ModelSQL, ModelView):
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
-        user = user_obj.browse(user_id)
+        user = User(user_id)
         if Transaction().context.get('company'):
-            child_company_ids = company_obj.search([
-                ('parent', 'child_of', [user.main_company.id]),
-                ])
-            if Transaction().context['company'] in child_company_ids:
+            child_companies = Company.search([
+                    ('parent', 'child_of', [user.main_company.id]),
+                    ])
+            if Transaction().context['company'] in child_companies:
                 company_id = Transaction().context['company']
 
         if not company_id:
@@ -151,9 +148,9 @@ class Party(ModelSQL, ModelView):
             code = name[:-6]
             today_query = 'AND (l.maturity_date <= %s ' \
                     'OR l.maturity_date IS NULL) '
-            today_value = [date_obj.today()]
+            today_value = [Date.today()]
 
-        line_query, _ = move_line_obj.query_get()
+        line_query, _ = MoveLine.query_get()
 
         cursor.execute('SELECT l.party '
             'FROM account_move_line AS l, account_account AS a '
@@ -170,5 +167,3 @@ class Party(ModelSQL, ModelView):
                 + clause[1] + ' %s)',
             [code] + today_value + [company_id] + [Decimal(clause[2] or 0)])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
-
-Party()
