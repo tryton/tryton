@@ -23,6 +23,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Update Cost Price - Move">
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
                     <label name="journal"/>
                     <field name="journal"/>
                     <newline/>
