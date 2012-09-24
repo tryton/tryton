@@ -1,60 +1,56 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['InvoiceLine']
+__metaclass__ = PoolMeta
 
 
-class InvoiceLine(ModelSQL, ModelView):
-    _name = 'account.invoice.line'
+class InvoiceLine:
+    __name__ = 'account.invoice.line'
 
-    def __init__(self):
-        super(InvoiceLine, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(InvoiceLine, cls).__setup__()
+        cls._error_messages.update({
             'delete_purchase_invoice_line': 'You can not delete ' \
                     'invoice lines that comes from a purchase!',
             })
 
-    def write(self, ids, vals):
-        purchase_obj = Pool().get('purchase.purchase')
+    @classmethod
+    def write(cls, lines, vals):
+        Purchase = Pool().get('purchase.purchase')
 
         if 'invoice' in vals:
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-
-            purchase_ids = purchase_obj.search([
-                ('invoice_lines', 'in', ids),
-                ])
+            purchases = Purchase.search([
+                    ('invoice_lines', 'in', [l.id for l in lines]),
+                    ])
             if vals['invoice']:
-                purchase_obj.write(purchase_ids, {
+                Purchase.write(purchases, {
                     'invoices': [('add', vals['invoice'])],
                     })
             else:
-                purchases = purchase_obj.browse(purchase_ids)
                 for purchase in purchases:
-                    invoice_ids = list(set([x.invoice.id for x \
-                            in purchase.invoice_lines \
-                            if x.invoice and x.id in ids]) - \
-                            set([x.invoice.id for x \
-                            in purchase.invoice_lines \
-                            if x.invoice and x.id not in ids]))
-                    purchase_obj.write(purchase.id, {
+                    invoice_ids = list(set([x.invoice.id for x
+                                in purchase.invoice_lines
+                                if x.invoice and x.id in lines])
+                        - set([x.invoice.id for x
+                                in purchase.invoice_lines
+                                if x.invoice and x.id not in lines]))
+                    Purchase.write([purchase], {
                         'invoices': [('unlink', invoice_ids)],
                         })
 
-        return super(InvoiceLine, self).write(ids, vals)
+        return super(InvoiceLine, cls).write(lines, vals)
 
-    def delete(self, ids):
+    @classmethod
+    def delete(cls, lines):
         cursor = Transaction().cursor
-        if not ids:
-            return True
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        cursor.execute('SELECT id FROM purchase_invoice_line_rel ' \
-                'WHERE line IN (' + ','.join(['%s' for x in ids]) + ')',
-                ids)
-        if cursor.rowcount:
-            self.raise_user_error('delete_purchase_invoice_line')
-        return super(InvoiceLine, self).delete(ids)
-
-InvoiceLine()
+        if lines:
+            cursor.execute('SELECT id FROM purchase_invoice_line_rel ' \
+                    'WHERE line IN (' + ','.join(['%s' for x in lines]) + ')',
+                    [l.id for l in lines])
+            if cursor.rowcount:
+                cls.raise_user_error('delete_purchase_invoice_line')
+        super(InvoiceLine, cls).delete(lines)
