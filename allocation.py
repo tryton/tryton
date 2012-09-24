@@ -3,64 +3,57 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 
+__all__ = ['Allocation']
+
 
 class Allocation(ModelSQL, ModelView):
     'Allocation'
-    _name = 'project.allocation'
-    _description = __doc__
+    __name__ = 'project.allocation'
     _rec_name = 'employee'
-
     employee = fields.Many2One('company.employee', 'Employee', required=True,
             select=True)
     work = fields.Many2One('project.work', 'Work', required=True,
             select=True)
     percentage = fields.Float('Percentage', digits=(16, 2), required=True)
 
-    def __init__(self):
-        super(Allocation, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Allocation, cls).__setup__()
+        cls._sql_constraints += [
             ('percentage_positive', 'CHECK(percentage > 0)',
                 'Percentage must be greater than zero')
-        ]
+            ]
 
-    def default_percentage(self):
+    @staticmethod
+    def default_percentage():
         return 100
 
-    def write(self, ids, values):
-        work_obj = Pool().get('project.work')
-        res = super(Allocation, self).write(ids, values)
+    @classmethod
+    def write(cls, allocations, values):
+        Work = Pool().get('project.work')
+        super(Allocation, cls).write(allocations, values)
 
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        work_ids = work_obj.search([
-                ('allocations', 'in', ids),
+        works = Work.search([
+                ('allocations', 'in', [a.id for a in allocations]),
                 ])
 
-        for work_id in work_ids:
-            work_obj.reset_leveling(work_id)
-        for work_id in work_ids:
-            work_obj.compute_dates(work_id)
+        for work in works:
+            work.reset_leveling()
+        for work in works:
+            work.compute_dates()
 
-        return res
+    @classmethod
+    def create(cls, values):
+        allocation = super(Allocation, cls).create(values)
+        allocation.work.reset_leveling()
+        allocation.work.compute_dates()
 
-    def create(self, values):
-        work_obj = Pool().get('project.work')
-        allocation_id = super(Allocation, self).create(values)
-        allocation = self.browse(allocation_id)
-        work_obj.reset_leveling(allocation.work.id)
-        work_obj.compute_dates(allocation.work.id)
+    @classmethod
+    def delete(cls, allocations):
+        works = [a.work for a in allocations]
+        super(Allocation, cls).delete(allocations)
 
-    def delete(self, ids):
-        work_obj = Pool().get('project.work')
-        allocations = self.browse(ids)
-        work_ids = [a.work.id for a in allocations]
-        res = super(Allocation, self).delete(ids)
-
-        for work_id in work_ids:
-            work_obj.reset_leveling(work_id)
-        for work_id in work_ids:
-            work_obj.compute_dates(work_id)
-
-        return res
-
-Allocation()
+        for work in works:
+            work.reset_leveling()
+        for work in works:
+            work.compute_dates()
