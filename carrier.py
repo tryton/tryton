@@ -1,17 +1,18 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
 from decimal import Decimal
 
-from trytond.model import Model, ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval, Bool, Id
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
+__all__ = ['Carrier', 'WeightPriceList']
+__metaclass__ = PoolMeta
 
-class Carrier(Model):
-    _name = 'carrier'
 
+class Carrier:
+    __name__ = 'carrier'
     weight_uom = fields.Many2One('product.uom', 'Weight Uom',
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],
         states={
@@ -21,7 +22,7 @@ class Carrier(Model):
             },
         depends=['carrier_cost_method', 'weight_price_list'])
     weight_uom_digits = fields.Function(fields.Integer('Weight Uom Digits',
-            on_change_with=['weight_uom']), 'get_weight_uom_digits')
+            on_change_with=['weight_uom']), 'on_change_with_weight_uom_digits')
     weight_currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
@@ -31,7 +32,7 @@ class Carrier(Model):
         depends=['carrier_cost_method', 'weight_price_list'])
     weight_currency_digits = fields.Function(fields.Integer(
             'Weight Currency Digits', on_change_with=['weight_currency']),
-        'get_weight_currency_digits')
+        'on_change_with_weight_currency_digits')
     weight_price_list = fields.One2Many('carrier.weight_price_list', 'carrier',
         'Price List',
         states={
@@ -40,98 +41,71 @@ class Carrier(Model):
             },
         depends=['carrier_cost_method', 'weight_uom', 'weight_currency'])
 
-    def __init__(self):
-        super(Carrier, self).__init__()
-        self.carrier_cost_method = copy.copy(self.carrier_cost_method)
-        self.carrier_cost_method.selection = \
-            self.carrier_cost_method.selection[:]
+    @classmethod
+    def __setup__(cls):
+        super(Carrier, cls).__setup__()
         selection = ('weight', 'Weight')
-        if selection not in self.carrier_cost_method.selection:
-            self.carrier_cost_method.selection.append(selection)
-        self._reset_columns()
+        if selection not in cls.carrier_cost_method.selection:
+            cls.carrier_cost_method.selection.append(selection)
 
-    def default_weight_uom_digits(self):
+    @staticmethod
+    def default_weight_uom_digits():
         return 2
 
-    def default_weight_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_weight_currency_digits():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            return company_obj.browse(company).currency.digits
+            return Company(company).currency.digits
         return 2
 
-    def on_change_with_weight_uom_digits(self, values):
-        uom_obj = Pool().get('product.uom')
-        if values.get('weight_uom'):
-            uom = uom_obj.browse(values['weight_uom'])
-            return uom.digits
+    def on_change_with_weight_uom_digits(self, name=None):
+        if self.weight_uom:
+            return self.weight_uom.digits
         return 2
 
-    def get_weight_uom_digits(self, ids, name):
-        digits = {}
-        for carrier in self.browse(ids):
-            if carrier.weight_uom:
-                digits[carrier.id] = carrier.weight_uom.digits
-            else:
-                digits[carrier.id] = 2
-        return digits
-
-    def on_change_with_weight_currency_digits(self, values):
-        currency_obj = Pool().get('currency.currency')
-        if values.get('weight_currency'):
-            currency = currency_obj.browse(values['weight_currency'])
-            return currency.digits
+    def on_change_with_weight_currency_digits(self, name=None):
+        if self.weight_currency:
+            return self.weight_currency.digits
         return 2
 
-    def get_weight_currency_digits(self, ids, name):
-        digits = {}
-        for carrier in self.browse(ids):
-            if carrier.weight_currency:
-                digits[carrier.id] = carrier.weight_currency.digits
-            else:
-                digits[carrier.id] = 2
-        return digits
-
-    def compute_weight_price(self, carrier, weight):
+    def compute_weight_price(self, weight):
         "Compute price based on weight"
-        for line in reversed(carrier.weight_price_list):
+        for line in reversed(self.weight_price_list):
             if line.weight < weight:
                 return line.price
         return Decimal(0)
 
-    def get_sale_price(self, carrier):
-        price, currency_id = super(Carrier, self).get_sale_price(carrier)
-        if carrier.carrier_cost_method == 'weight':
+    def get_sale_price(self):
+        price, currency_id = super(Carrier, self).get_sale_price()
+        if self.carrier_cost_method == 'weight':
             weight_price = Decimal(0)
             for weight in Transaction().context.get('weights', []):
-                weight_price += self.compute_weight_price(carrier, weight)
-            return weight_price, carrier.weight_currency.id
+                weight_price += self.compute_weight_price(weight)
+            return weight_price, self.weight_currency.id
         return price, currency_id
 
-    def get_purchase_price(self, carrier):
-        price, currency_id = super(Carrier, self).get_purchase_price(carrier)
-        if carrier.carrier_cost_method == 'weight':
+    def get_purchase_price(self):
+        price, currency_id = super(Carrier, self).get_purchase_price()
+        if self.carrier_cost_method == 'weight':
             weight_price = Decimal(0)
             for weight in Transaction().context.get('weights', []):
-                weight_price += self.compute_weight_price(carrier, weight)
-            return weight_price, carrier.weight_currency.id
+                weight_price += self.compute_weight_price(weight)
+            return weight_price, self.weight_currency.id
         return price, currency_id
-
-Carrier()
 
 
 class WeightPriceList(ModelSQL, ModelView):
     'Carrier Weight Price List'
-    _name = 'carrier.weight_price_list'
-
+    __name__ = 'carrier.weight_price_list'
     carrier = fields.Many2One('carrier', 'Carrier', required=True, select=True)
     weight = fields.Float('Weight',
         digits=(16, Eval('_parent_carrier.weight_uom_digits', 2)))
     price = fields.Numeric('Price',
         digits=(16, Eval('_parent_carrier.weight_currency_digits', 2)))
 
-    def __init__(self):
-        super(WeightPriceList, self).__init__()
-        self._order.insert(0, ('weight', 'ASC'))
-
-WeightPriceList()
+    @classmethod
+    def __setup__(cls):
+        super(WeightPriceList, cls).__setup__()
+        cls._order.insert(0, ('weight', 'ASC'))
