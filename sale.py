@@ -1,6 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
 from decimal import Decimal
 import datetime
 from itertools import groupby
@@ -12,16 +11,23 @@ from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
 from trytond.backend import TableHandler
 from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.config import CONFIG
+
+__all__ = ['Sale', 'SaleInvoice', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
+    'SaleLine', 'SaleLineTax', 'SaleLineInvoiceLine', 'SaleLineIgnoredMove',
+    'SaleLineRecreatedMove', 'SaleReport', 'Template', 'Product',
+    'ShipmentOut', 'ShipmentOutReturn', 'Move', 'OpenCustomer',
+    'HandleShipmentExceptionAsk', 'HandleShipmentException',
+    'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
+    'ReturnSale']
+__metaclass__ = PoolMeta
 
 
 class Sale(Workflow, ModelSQL, ModelView):
     'Sale'
-    _name = 'sale.sale'
+    __name__ = 'sale.sale'
     _rec_name = 'reference'
-    _description = __doc__
-
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -62,7 +68,7 @@ class Sale(Workflow, ModelSQL, ModelView):
             }, on_change=['party', 'payment_term'],
         depends=['state'])
     party_lang = fields.Function(fields.Char('Party Language',
-        on_change_with=['party']), 'get_function_fields')
+            on_change_with=['party']), 'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[('party', '=', Eval('party'))], states={
             'readonly': Eval('state') != 'draft',
@@ -84,7 +90,7 @@ class Sale(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'get_function_fields')
+            on_change_with=['currency']), 'on_change_with_currency_digits')
     lines = fields.One2Many('sale.line', 'sale', 'Lines', states={
             'readonly': Eval('state') != 'draft',
             }, on_change=['lines', 'currency', 'party'],
@@ -154,26 +160,28 @@ class Sale(Workflow, ModelSQL, ModelView):
         fields.One2Many('stock.shipment.out.return', None, 'Shipment Returns'),
         'get_shipment_returns')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
-            'get_function_fields')
+        'get_moves')
 
-    def __init__(self):
-        super(Sale, self).__init__()
-        self._order.insert(0, ('sale_date', 'DESC'))
-        self._order.insert(1, ('id', 'DESC'))
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Sale, cls).__setup__()
+        cls._order.insert(0, ('sale_date', 'DESC'))
+        cls._order.insert(1, ('id', 'DESC'))
+        cls._constraints += [
             ('check_method', 'wrong_method')
-        ]
-        self._error_messages.update({
-            'wrong_method': 'Wrong combination of method!',
-            'addresses_required': 'Invoice and Shipment addresses must be '
-            'defined for the quotation.',
-            'warehouse_required': 'Warehouse must be defined for the ' \
-                'quotation.',
-            'missing_account_receivable': 'It misses '
-                    'an "Account Receivable" on the party "%s"!',
-            'delete_cancel': 'Sale "%s" must be cancelled before deletion!',
-        })
-        self._transitions |= set((
+            ]
+        cls._error_messages.update({
+                'wrong_method': 'Wrong combination of method!',
+                'addresses_required': 'Invoice and Shipment addresses must be '
+                'defined for the quotation.',
+                'warehouse_required': 'Warehouse must be defined for the ' \
+                    'quotation.',
+                'missing_account_receivable': 'It misses '
+                'an "Account Receivable" on the party "%s"!',
+                'delete_cancel': 'Sale "%s" must be cancelled ' \
+                    'before deletion!',
+                })
+        cls._transitions |= set((
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
                 ('confirmed', 'processing'),
@@ -183,7 +191,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                 ('quotation', 'draft'),
                 ('cancel', 'draft'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'quotation']),
                     },
@@ -216,13 +224,14 @@ class Sale(Workflow, ModelSQL, ModelView):
                     },
                 })
         # The states where amounts are cached
-        self._states_cached = ['confirmed', 'processing', 'done', 'cancel']
+        cls._states_cached = ['confirmed', 'processing', 'done', 'cancel']
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         pool = Pool()
-        sale_line_obj = pool.get('sale.line')
-        sale_line_invoice_line_obj = pool.get('sale.line-account.invoice.line')
-        move_obj = pool.get('stock.move')
+        SaleLine = pool.get('sale.line')
+        SaleLine_InvoiceLine = pool.get('sale.line-account.invoice.line')
+        Move = pool.get('stock.move')
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "
@@ -235,27 +244,27 @@ class Sale(Workflow, ModelSQL, ModelView):
                 "WHERE (relation like '%%packing%%' "
                     "OR name like '%%packing%%') AND module = %s",
                 (module_name,))
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
         table.column_rename('packing_method', 'shipment_method')
         table.column_rename('packing_address', 'shipment_address')
 
-        super(Sale, self).init(module_name)
+        super(Sale, cls).__register__(module_name)
 
         # Migration from 1.2
-        cursor.execute("UPDATE " + self._table + " "
+        cursor.execute("UPDATE " + cls._table + " "
                 "SET invoice_method = 'shipment' "
                 "WHERE invoice_method = 'packing'")
 
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         # Migration from 2.2
         table.not_null_action('sale_date', 'remove')
 
         # state confirmed splitted into confirmed and processing
-        if (TableHandler.table_exist(cursor, sale_line_obj._table)
+        if (TableHandler.table_exist(cursor, SaleLine._table)
                 and TableHandler.table_exist(cursor,
-                    sale_line_invoice_line_obj._table)
-                and TableHandler.table_exist(cursor, move_obj._table)):
+                    SaleLine_InvoiceLine._table)
+                and TableHandler.table_exist(cursor, Move._table)):
             # Wrap subquery inside an other inner subquery because MySQL syntax
             # doesn't allow update a table and select from the same table in a
             # subquery.
@@ -272,290 +281,201 @@ class Sale(Workflow, ModelSQL, ModelView):
                         "WHERE s.state = 'confirmed' "
                             'AND (li.id IS NOT NULL '
                                 'OR m.id IS NOT NULL)) AS foo)'
-                % (self._table, self._table, sale_line_obj._table,
-                    sale_line_invoice_line_obj._table, move_obj._table))
+                % (cls._table, cls._table, SaleLine._table,
+                    SaleLine_InvoiceLine._table, Move._table))
 
         # Add index on create_date
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.index_action('create_date', action='add')
 
-    def default_payment_term(self):
-        payment_term_obj = Pool().get('account.invoice.payment_term')
-        payment_term_ids = payment_term_obj.search(self.payment_term.domain)
-        if len(payment_term_ids) == 1:
-            return payment_term_ids[0]
+    @classmethod
+    def default_payment_term(cls):
+        PaymentTerm = Pool().get('account.invoice.payment_term')
+        payment_terms = PaymentTerm.search(cls.payment_term.domain)
+        if len(payment_terms) == 1:
+            return payment_terms[0].id
 
-    def default_warehouse(self):
-        location_obj = Pool().get('stock.location')
-        location_ids = location_obj.search(self.warehouse.domain)
-        if len(location_ids) == 1:
-            return location_ids[0]
+    @classmethod
+    def default_warehouse(cls):
+        Location = Pool().get('stock.location')
+        locations = Location.search(cls.warehouse.domain)
+        if len(locations) == 1:
+            return locations[0].id
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            return company_obj.browse(company).currency.id
+            return Company(company).currency.id
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            return company_obj.browse(company).currency.digits
+            return Company(company).currency.digits
         return 2
 
-    def default_invoice_method(self):
-        config_obj = Pool().get('sale.configuration')
-        config = config_obj.browse(1)
+    @staticmethod
+    def default_invoice_method():
+        Config = Pool().get('sale.configuration')
+        config = Config(1)
         return config.sale_invoice_method
 
-    def default_invoice_state(self):
+    @staticmethod
+    def default_invoice_state():
         return 'none'
 
-    def default_shipment_method(self):
-        config_obj = Pool().get('sale.configuration')
-        config = config_obj.browse(1)
+    @staticmethod
+    def default_shipment_method():
+        Config = Pool().get('sale.configuration')
+        config = Config(1)
         return config.sale_shipment_method
 
-    def default_shipment_state(self):
+    @staticmethod
+    def default_shipment_state():
         return 'none'
 
-    def on_change_party(self, vals):
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        address_obj = pool.get('party.address')
-        payment_term_obj = pool.get('account.invoice.payment_term')
-        res = {
-            'invoice_address': None,
-            'shipment_address': None,
-            'payment_term': None,
-        }
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            res['invoice_address'] = party_obj.address_get(party.id,
-                    type='invoice')
-            res['shipment_address'] = party_obj.address_get(party.id,
-                    type='delivery')
-            if party.customer_payment_term:
-                res['payment_term'] = party.customer_payment_term.id
+    def on_change_party(self):
+        invoice_address = None
+        shipment_address = None
+        payment_term = None
+        if self.party:
+            invoice_address = self.party.address_get(type='invoice')
+            shipment_address = self.party.address_get(type='delivery')
+            if self.party.customer_payment_term:
+                payment_term = self.party.customer_payment_term
 
-        if res['invoice_address']:
-            res['invoice_address.rec_name'] = address_obj.browse(
-                    res['invoice_address']).rec_name
-        if res['shipment_address']:
-            res['shipment_address.rec_name'] = address_obj.browse(
-                    res['shipment_address']).rec_name
-        if not res['payment_term']:
-            res['payment_term'] = self.default_payment_term()
-        if res['payment_term']:
-            res['payment_term.rec_name'] = payment_term_obj.browse(
-                    res['payment_term']).rec_name
-        return res
+        changes = {}
+        if invoice_address:
+            changes['invoice_address'] = invoice_address.id
+            changes['invoice_address.rec_name'] = invoice_address.rec_name
+        else:
+            changes['invoice_address'] = None
+        if shipment_address:
+            changes['shipment_address'] = shipment_address.id
+            changes['shipment_address.rec_name'] = shipment_address.rec_name
+        else:
+            changes['shipment_address'] = None
+        if payment_term:
+            changes['payment_term'] = payment_term.id
+            changes['payment_term.rec_name'] = payment_term.rec_name
+        else:
+            changes['payment_term'] = self.default_payment_term()
+        return changes
 
-    def on_change_with_currency_digits(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-            return currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
-    def get_currency_digits(self, sales):
-        '''
-        Return the number of digits of the currency of each sales
-
-        :param sales: a BrowseRecordList of puchases
-        :return: a dictionary with sale id as key and
-            number of digits as value
-        '''
+    def get_tax_context(self):
         res = {}
-        for sale in sales:
-            res[sale.id] = sale.currency.digits
+        if self.party and self.party.lang:
+            res['language'] = self.party.lang.code
         return res
 
-    def get_tax_context(self, sale):
-        party_obj = Pool().get('party.party')
-        res = {}
-        if isinstance(sale, dict):
-            if sale.get('party'):
-                party = party_obj.browse(sale['party'])
-                if party.lang:
-                    res['language'] = party.lang.code
-        else:
-            if sale.party.lang:
-                res['language'] = sale.party.lang.code
-        return res
-
-    def on_change_with_party_lang(self, vals):
-        party_obj = Pool().get('party.party')
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            if party.lang:
-                return party.lang.code
+    def on_change_with_party_lang(self, name=None):
+        if self.party and self.party.lang:
+            return self.party.lang.code
         return CONFIG['language']
 
-    def get_party_lang(self, sales):
-        '''
-        Return the code lang of the party for each sales
-
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            code lang as value
-        '''
-        res = {}
-        for sale in sales:
-            if sale.party.lang:
-                res[sale.id] = sale.party.lang.code
-            else:
-                res[sale.id] = CONFIG['language']
-        return res
-
-    def on_change_lines(self, vals):
+    def on_change_lines(self):
         pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        tax_obj = pool.get('account.tax')
-        invoice_obj = pool.get('account.invoice')
+        Tax = pool.get('account.tax')
+        Invoice = pool.get('account.invoice')
 
         res = {
             'untaxed_amount': Decimal('0.0'),
             'tax_amount': Decimal('0.0'),
             'total_amount': Decimal('0.0'),
-        }
+            }
 
-        currency = None
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-
-        if vals.get('lines'):
+        if self.lines:
             taxes = {}
-            for line in vals['lines']:
-                if line.get('type', 'line') != 'line':
+            for line in self.lines:
+                if getattr(line, 'type', 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.get('amount') or Decimal(0)
+                res['untaxed_amount'] += line.amount or Decimal(0)
                 tax_list = ()
-                with Transaction().set_context(self.get_tax_context(vals)):
-                    tax_list = tax_obj.compute(line.get('taxes', []),
-                            line.get('unit_price') or Decimal('0.0'),
-                            line.get('quantity') or 0.0)
+                with Transaction().set_context(self.get_tax_context()):
+                    tax_list = Tax.compute(getattr(line, 'taxes', []),
+                        line.unit_price or Decimal('0.0'),
+                        line.quantity or 0.0)
                 for tax in tax_list:
-                    key, val = invoice_obj._compute_tax(tax, 'out_invoice')
+                    key, val = Invoice._compute_tax(tax, 'out_invoice')
                     if not key in taxes:
                         taxes[key] = val['amount']
                     else:
                         taxes[key] += val['amount']
-            if currency:
+            if self.currency:
                 for key in taxes:
-                    res['tax_amount'] += currency_obj.round(currency,
-                            taxes[key])
-        if currency:
-            res['untaxed_amount'] = currency_obj.round(currency,
-                    res['untaxed_amount'])
-            res['tax_amount'] = currency_obj.round(currency,
-                    res['tax_amount'])
+                    res['tax_amount'] += self.currency.round(taxes[key])
+        if self.currency:
+            res['untaxed_amount'] = self.currency.round(res['untaxed_amount'])
+            res['tax_amount'] = self.currency.round(res['tax_amount'])
         res['total_amount'] = res['untaxed_amount'] + res['tax_amount']
-        if currency:
-            res['total_amount'] = currency_obj.round(currency,
-                    res['total_amount'])
+        if self.currency:
+            res['total_amount'] = self.currency.round(res['total_amount'])
         return res
 
-    def get_function_fields(self, ids, names):
-        '''
-        Function to compute function fields for sale ids
+    def get_untaxed_amount(self, name):
+        if (self.state in self._states_cached
+                and self.untaxed_amount_cache is not None):
+            return self.untaxed_amount_cache
+        amount = sum((l.amount for l in self.lines if l.type == 'line'),
+            Decimal(0))
+        return self.currency.round(amount)
 
-        :param ids: the ids of the sales
-        :param names: the list of field name to compute
-        :return: a dictionary with all field names as key and
-            a dictionary as value with id as key
-        '''
-        res = {}
-        sales = self.browse(ids)
-        if 'currency_digits' in names:
-            res['currency_digits'] = self.get_currency_digits(sales)
-        if 'party_lang' in names:
-            res['party_lang'] = self.get_party_lang(sales)
-        if 'moves' in names:
-            res['moves'] = self.get_moves(sales)
-        return res
-
-    def get_untaxed_amount(self, ids, name):
-        '''
-        Compute the untaxed amount for each sales
-        '''
-        currency_obj = Pool().get('currency.currency')
-        amounts = {}
-        for sale in self.browse(ids):
-            if (sale.state in self._states_cached
-                    and sale.untaxed_amount_cache is not None):
-                amounts[sale.id] = sale.untaxed_amount_cache
-                continue
-            amount = sum((l.amount for l in sale.lines if l.type == 'line'),
-                Decimal(0))
-            amounts[sale.id] = currency_obj.round(sale.currency, amount)
-        return amounts
-
-    def get_tax_amount(self, ids, name):
-        '''
-        Compute tax amount for each sales
-        '''
+    def get_tax_amount(self, name):
         pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        tax_obj = pool.get('account.tax')
-        invoice_obj = pool.get('account.invoice')
+        Tax = pool.get('account.tax')
+        Invoice = pool.get('account.invoice')
 
-        amounts = {}
-        for sale in self.browse(ids):
-            if (sale.state in self._states_cached
-                    and sale.tax_amount_cache is not None):
-                amounts[sale.id] = sale.tax_amount_cache
+        if (self.state in self._states_cached
+                and self.tax_amount_cache is not None):
+            return self.tax_amount_cache
+        context = self.get_tax_context()
+        taxes = {}
+        for line in self.lines:
+            if line.type != 'line':
                 continue
-            context = self.get_tax_context(sale)
-            taxes = {}
-            for line in sale.lines:
-                if line.type != 'line':
-                    continue
-                with Transaction().set_context(context):
-                    tax_list = tax_obj.compute(
-                            [t.id for t in line.taxes], line.unit_price,
-                            line.quantity)
-                # Don't round on each line to handle rounding error
-                for tax in tax_list:
-                    key, val = invoice_obj._compute_tax(tax, 'out_invoice')
-                    if not key in taxes:
-                        taxes[key] = val['amount']
-                    else:
-                        taxes[key] += val['amount']
-            amount = sum((currency_obj.round(sale.currency, taxes[key])
-                    for key in taxes), Decimal(0))
-            amounts[sale.id] = currency_obj.round(sale.currency, amount)
-        return amounts
+            with Transaction().set_context(context):
+                tax_list = Tax.compute(line.taxes, line.unit_price,
+                    line.quantity)
+            # Don't round on each line to handle rounding error
+            for tax in tax_list:
+                key, val = Invoice._compute_tax(tax, 'out_invoice')
+                if not key in taxes:
+                    taxes[key] = val['amount']
+                else:
+                    taxes[key] += val['amount']
+        amount = sum((self.currency.round(taxes[key]) for key in taxes),
+            Decimal(0))
+        return self.currency.round(amount)
 
-    def get_total_amount(self, ids, name):
-        '''
-        Return the total amount of each sales
-        '''
-        currency_obj = Pool().get('currency.currency')
-        amounts = {}
-        for sale in self.browse(ids):
-            if (sale.state in self._states_cached
-                    and sale.total_amount_cache is not None):
-                amounts[sale.id] = sale.total_amount_cache
-                continue
-            amounts[sale.id] = currency_obj.round(sale.currency,
-                sale.untaxed_amount + sale.tax_amount)
-        return amounts
+    def get_total_amount(self, name):
+        if (self.state in self._states_cached
+                and self.total_amount_cache is not None):
+            return self.total_amount_cache
+        return self.currency.round(self.untaxed_amount + self.tax_amount)
 
-    def get_invoice_state(self, sale):
+    def get_invoice_state(self):
         '''
         Return the invoice state for the sale.
         '''
-        skip_ids = set(x.id for x in sale.invoices_ignored)
-        skip_ids.update(x.id for x in sale.invoices_recreated)
-        invoices = [i for i in sale.invoices if i.id not in skip_ids]
+        skip_ids = set(x.id for x in self.invoices_ignored)
+        skip_ids.update(x.id for x in self.invoices_recreated)
+        invoices = [i for i in self.invoices if i.id not in skip_ids]
         if invoices:
             if any(i.state == 'cancel' for i in invoices):
                 return 'exception'
@@ -565,102 +485,84 @@ class Sale(Workflow, ModelSQL, ModelView):
                 return 'waiting'
         return 'none'
 
-    def set_invoice_state(self, sale):
+    def set_invoice_state(self):
         '''
         Set the invoice state.
         '''
-        state = self.get_invoice_state(sale)
-        if sale.invoice_state != state:
-            self.write(sale.id, {
+        state = self.get_invoice_state()
+        if self.invoice_state != state:
+            self.write([self], {
                     'invoice_state': state,
                     })
 
     def get_shipments_returns(attribute):
         "Computes the returns or shipments"
-        def method(self, ids, name):
-            shipments = {}
-            for sale in self.browse(ids):
-                shipments[sale.id] = []
-                for line in sale.lines:
-                    for move in line.moves:
-                        ship_or_return = getattr(move, attribute)
-                        if bool(ship_or_return):
-                            if ship_or_return.id not in shipments[sale.id]:
-                                shipments[sale.id].append(ship_or_return.id)
+        def method(self, name):
+            shipments = []
+            for line in self.lines:
+                for move in line.moves:
+                    ship_or_return = getattr(move, attribute)
+                    if bool(ship_or_return):
+                        if ship_or_return.id not in shipments:
+                            shipments.append(ship_or_return.id)
             return shipments
         return method
 
     get_shipments = get_shipments_returns('shipment_out')
     get_shipment_returns = get_shipments_returns('shipment_out_return')
 
-    def get_moves(self, sales):
-        '''
-        Return move ids for each sales
+    def get_moves(self, name):
+        return [m.id for l in self.lines for m in l.moves]
 
-        :param sales: a BrowseRecordList of sales
-        :return: a dictionary with sale id as key and
-            a list of move ids as value
-        '''
-        res = {}
-        for sale in sales:
-            res[sale.id] = []
-            for line in sale.lines:
-                res[sale.id].extend([x.id for x in line.moves])
-        return res
-
-    def get_shipment_state(self, sale):
+    def get_shipment_state(self):
         '''
         Return the shipment state for the sale.
         '''
-        if sale.moves:
-            if any(l.move_exception for l in sale.lines):
+        if self.moves:
+            if any(l.move_exception for l in self.lines):
                 return 'exception'
-            elif all(l.move_done for l in sale.lines):
+            elif all(l.move_done for l in self.lines):
                 return 'sent'
             else:
                 return 'waiting'
         return 'none'
 
-    def set_shipment_state(self, sale):
+    def set_shipment_state(self):
         '''
         Set the shipment state.
         '''
-        state = self.get_shipment_state(sale)
-        if sale.shipment_state != state:
-            self.write(sale.id, {
+        state = self.get_shipment_state()
+        if self.shipment_state != state:
+            self.write([self], {
                     'shipment_state': state,
                     })
 
-    def check_method(self, ids):
+    def check_method(self):
         '''
         Check the methods.
         '''
-        for sale in self.browse(ids):
-            if sale.invoice_method == 'shipment' \
-                    and sale.shipment_method in ('invoice', 'manual'):
-                return False
-            if sale.shipment_method == 'invoice' \
-                    and sale.invoice_method in ('shipment', 'manual'):
-                return False
+        if (self.invoice_method == 'shipment'
+                and self.shipment_method in ('invoice', 'manual')):
+            return False
+        if (self.shipment_method == 'invoice'
+                and self.invoice_method in ('shipment', 'manual')):
+            return False
         return True
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return []
-        res = {}
-        for sale in self.browse(ids):
-            res[sale.id] = sale.reference or str(sale.id) \
-                    + ' - ' + sale.party.rec_name
-        return res
+    def get_rec_name(self, name):
+        return (self.reference or str(self.id)
+            + ' - ' + self.party.rec_name)
 
-    def search_rec_name(self, name, clause):
+    @classmethod
+    def search_rec_name(cls, name, clause):
         names = clause[2].split(' - ', 1)
         res = [('reference', clause[1], names[0])]
         if len(names) != 1 and names[1]:
             res.append(('party', clause[1], names[1]))
         return res
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, sales, default=None):
         if default is None:
             default = {}
         default = default.copy()
@@ -671,146 +573,143 @@ class Sale(Workflow, ModelSQL, ModelView):
         default['invoices_ignored'] = None
         default['shipment_state'] = 'none'
         default.setdefault('sale_date', None)
-        return super(Sale, self).copy(ids, default=default)
+        return super(Sale, cls).copy(sales, default=default)
 
-    def check_for_quotation(self, ids):
-        sales = self.browse(ids)
-        for sale in sales:
-            if not sale.invoice_address or not sale.shipment_address:
-                self.raise_user_error('addresses_required')
-            for line in sale.lines:
-                if line.quantity >= 0:
-                    location = line.from_location
-                else:
-                    location = line.to_location
-                if ((not location or not line.warehouse)
-                        and line.product
-                        and line.product.type in ('goods', 'assets')):
-                    self.raise_user_error('warehouse_required')
+    def check_for_quotation(self):
+        if not self.invoice_address or not self.shipment_address:
+            self.raise_user_error('addresses_required')
+        for line in self.lines:
+            if line.quantity >= 0:
+                location = line.from_location
+            else:
+                location = line.to_location
+            if ((not location or not line.warehouse)
+                    and line.product
+                    and line.product.type in ('goods', 'assets')):
+                self.raise_user_error('warehouse_required')
 
-    def set_reference(self, ids):
+    @classmethod
+    def set_reference(cls, sales):
         '''
         Fill the reference field with the sale sequence
         '''
-        sequence_obj = Pool().get('ir.sequence')
-        config_obj = Pool().get('sale.configuration')
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Config = pool.get('sale.configuration')
 
-        config = config_obj.browse(1)
-        sales = self.browse(ids)
+        config = Config(1)
         for sale in sales:
             if sale.reference:
                 continue
-            reference = sequence_obj.get_id(config.sale_sequence.id)
-            self.write(sale.id, {
-                'reference': reference,
-                })
+            reference = Sequence.get_id(config.sale_sequence.id)
+            cls.write([sale], {
+                    'reference': reference,
+                    })
 
-    def set_sale_date(self, ids):
-        date_obj = Pool().get('ir.date')
-        for sale in self.browse(ids):
+    @classmethod
+    def set_sale_date(cls, sales):
+        Date = Pool().get('ir.date')
+        for sale in sales:
             if not sale.sale_date:
-                self.write(sale.id, {
-                        'sale_date': date_obj.today(),
+                cls.write([sale], {
+                        'sale_date': Date.today(),
                         })
 
-    def store_cache(self, ids):
-        for sale in self.browse(ids):
-            self.write(sale.id, {
+    @classmethod
+    def store_cache(cls, sales):
+        for sale in sales:
+            cls.write([sale], {
                     'untaxed_amount_cache': sale.untaxed_amount,
                     'tax_amount_cache': sale.tax_amount,
                     'total_amount_cache': sale.total_amount,
                     })
 
-    def _get_invoice_line_sale_line(self, sale, invoice_type):
+    def _get_invoice_line_sale_line(self, invoice_type):
         '''
-        Return invoice line values for each sale lines according to
-        invoice_type
+        Return invoice line for each sale lines according to invoice_type
         '''
-        line_obj = Pool().get('sale.line')
         res = {}
-        for line in sale.lines:
-            val = line_obj.get_invoice_line(line, invoice_type)
+        for line in self.lines:
+            val = line.get_invoice_line(invoice_type)
             if val:
                 res[line.id] = val
         return res
 
-    def _get_invoice_sale(self, sale, invoice_type):
+    def _get_invoice_sale(self, invoice_type):
         '''
-        Return invoice values of type invoice_type for sale
-        '''
-        journal_obj = Pool().get('account.journal')
-
-        journal_id = journal_obj.search([
-            ('type', '=', 'revenue'),
-            ], limit=1)
-        if journal_id:
-            journal_id = journal_id[0]
-
-        res = {
-            'company': sale.company.id,
-            'type': invoice_type,
-            'reference': sale.reference,
-            'journal': journal_id,
-            'party': sale.party.id,
-            'invoice_address': sale.invoice_address.id,
-            'currency': sale.currency.id,
-            'account': sale.party.account_receivable.id,
-            'payment_term': sale.payment_term.id,
-            }
-        return res
-
-    def create_invoice(self, sale, invoice_type):
-        '''
-        Create an invoice of type invoice_type for the sale and return the id
+        Return invoice of type invoice_type
         '''
         pool = Pool()
-        invoice_obj = pool.get('account.invoice')
-        invoice_line_obj = pool.get('account.invoice.line')
-        sale_line_obj = pool.get('sale.line')
+        Invoice = pool.get('account.invoice')
+        Journal = pool.get('account.journal')
 
-        if sale.invoice_method == 'manual':
+        journals = Journal.search([
+                ('type', '=', 'revenue'),
+                ], limit=1)
+        if journals:
+            journal, = journals
+        else:
+            journal = None
+
+        with Transaction().set_user(0, set_context=True):
+            return Invoice(
+                company=self.company,
+                type=invoice_type,
+                reference=self.reference,
+                journal=journal,
+                party=self.party,
+                invoice_address=self.invoice_address,
+                currency=self.currency,
+                account=self.party.account_receivable,
+                payment_term=self.payment_term,
+                )
+
+    def create_invoice(self, invoice_type):
+        '''
+        Create and return an invoice of type invoice_type
+        '''
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        SaleLine = pool.get('sale.line')
+        if self.invoice_method == 'manual':
             return
 
-        if not sale.party.account_receivable:
+        if not self.party.account_receivable:
             self.raise_user_error('missing_account_receivable',
-                    error_args=(sale.party.rec_name,))
+                    error_args=(self.party.rec_name,))
 
-        invoice_lines = self._get_invoice_line_sale_line(sale, invoice_type)
+        invoice_lines = self._get_invoice_line_sale_line(invoice_type)
         if not invoice_lines:
             return
 
-        vals = self._get_invoice_sale(sale, invoice_type)
-        with Transaction().set_user(0, set_context=True):
-            invoice_id = invoice_obj.create(vals)
+        invoice = self._get_invoice_sale(invoice_type)
+        invoice.save()
 
-        for line in sale.lines:
+        for line in self.lines:
             if line.id not in invoice_lines:
                 continue
-            for vals in invoice_lines[line.id]:
-                vals['invoice'] = invoice_id
-                with Transaction().set_user(0, set_context=True):
-                    invoice_line_id = invoice_line_obj.create(vals)
-                sale_line_obj.write(line.id, {
-                    'invoice_lines': [('add', invoice_line_id)],
-                    })
+            for invoice_line in invoice_lines[line.id]:
+                invoice_line.invoice = invoice.id
+                invoice_line.save()
+                SaleLine.write([line], {
+                        'invoice_lines': [('add', [invoice_line.id])],
+                        })
 
         with Transaction().set_user(0, set_context=True):
-            invoice_obj.update_taxes([invoice_id])
+            Invoice.update_taxes([invoice])
 
-        self.write(sale.id, {
-            'invoices': [('add', invoice_id)],
-        })
-        return invoice_id
+        self.write([self], {
+                'invoices': [('add', [invoice.id])],
+                })
+        return invoice
 
-    def _get_move_sale_line(self, sale, shipment_type):
+    def _get_move_sale_line(self, shipment_type):
         '''
-        Return a dictionary of move values for each sale lines of the right
-        shipment_type
+        Return move for each sale lines of the right shipment_type
         '''
-        line_obj = Pool().get('sale.line')
         res = {}
-        for line in sale.lines:
-            val = line_obj.get_move(line, shipment_type)
+        for line in self.lines:
+            val = line.get_move(shipment_type)
             if val:
                 res[line.id] = val
         return res
@@ -819,16 +718,13 @@ class Sale(Workflow, ModelSQL, ModelView):
         '''
         The key to group moves by shipments
 
-        :param moves: a list of moves values
-        :param move: a tuple of line id and a dictionary of the move values
-
-        :return: a list of key-value as tuples of the shipment
+        move is a tuple of line id and a move
         '''
-        sale_line_obj = Pool().get('sale.line')
+        SaleLine = Pool().get('sale.line')
         line_id, move = move
-        line = sale_line_obj.browse(line_id)
+        line = SaleLine(line_id)
 
-        planned_date = max(m['planned_date'] for m in moves)
+        planned_date = max(m.planned_date for m in moves)
         return (
             ('planned_date', planned_date),
             ('warehouse', line.warehouse.id),
@@ -836,168 +732,161 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     _group_return_key = _group_shipment_key
 
-    def create_shipment(self, sale, shipment_type):
+    def create_shipment(self, shipment_type):
         '''
-        Create a shipment of type shipment_type for the sale
-        and return the list of created shipment ids
+        Create and return shipments of type shipment_type
         '''
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        sale_line_obj = pool.get('sale.line')
+        SaleLine = pool.get('sale.line')
 
-        if sale.shipment_method == 'manual':
+        if self.shipment_method == 'manual':
             return
 
-        moves = self._get_move_sale_line(sale, shipment_type)
+        moves = self._get_move_sale_line(shipment_type)
         if not moves:
             return
         if shipment_type == 'out':
             keyfunc = partial(self._group_shipment_key, moves.values())
             move_shipment_key = 'shipment_out'
-            shipment_obj = pool.get('stock.shipment.out')
+            Shipment = pool.get('stock.shipment.out')
         elif shipment_type == 'return':
             keyfunc = partial(self._group_return_key, moves.values())
             move_shipment_key = 'shipment_out_return'
-            shipment_obj = pool.get('stock.shipment.out.return')
+            Shipment = pool.get('stock.shipment.out.return')
         moves = moves.items()
         moves = sorted(moves, key=keyfunc)
 
         shipments = []
-        with Transaction().set_user(0, set_context=True):
-            for key, grouped_moves in groupby(moves, key=keyfunc):
-                values = {
-                    'customer': sale.party.id,
-                    'delivery_address': sale.shipment_address.id,
-                    'reference': sale.reference,
-                    'company': sale.company.id,
-                    }
-                values.update(dict(key))
-                shipment_id = shipment_obj.create(values)
-                shipments.append(shipment_id)
-                for line_id, values in grouped_moves:
-                    values[move_shipment_key] = shipment_id
-                    move_id = move_obj.create(values)
-                    sale_line_obj.write(line_id, {
-                        'moves': [('add', move_id)],
-                    })
-            if shipment_type == 'out':
-                shipment_obj.wait(shipments)
+        for key, grouped_moves in groupby(moves, key=keyfunc):
+            values = {
+                'customer': self.party.id,
+                'delivery_address': self.shipment_address.id,
+                'reference': self.reference,
+                'company': self.company.id,
+                }
+            values.update(dict(key))
+            with Transaction().set_user(0, set_context=True):
+                shipment = Shipment.create(values)
+                shipments.append(shipment)
+                for line_id, move in grouped_moves:
+                    setattr(move, move_shipment_key, shipment.id)
+                    move.save()
+                    SaleLine.write([SaleLine(line_id)], {
+                            'moves': [('add', [move.id])],
+                            })
+        if shipment_type == 'out':
+            with Transaction().set_user(0, set_context=True):
+                Shipment.wait(shipments)
         return shipments
 
-    def is_done(self, sale):
-        return ((sale.invoice_state == 'paid'
-                or sale.invoice_method == 'manual')
-            and (sale.shipment_state == 'sent'
-                or sale.shipment_method == 'manual'))
+    def is_done(self):
+        return ((self.invoice_state == 'paid'
+                or self.invoice_method == 'manual')
+            and (self.shipment_state == 'sent'
+                or self.shipment_method == 'manual'))
 
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(cls, sales):
         # Cancel before delete
-        self.cancel(ids)
-        for sale in self.browse(ids):
+        cls.cancel(sales)
+        for sale in sales:
             if sale.state != 'cancel':
-                self.raise_user_error('delete_cancel', sale.rec_name)
-        return super(Sale, self).delete(ids)
+                cls.raise_user_error('delete_cancel', sale.rec_name)
+        super(Sale, cls).delete(sales)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, ids):
-        self.store_cache(ids)
+    def cancel(cls, sales):
+        cls.store_cache(sales)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
+    def draft(cls, sales):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('quotation')
-    def quote(self, ids):
-        self.check_for_quotation(ids)
-        self.set_reference(ids)
+    def quote(cls, sales):
+        for sale in sales:
+            sale.check_for_quotation()
+        cls.set_reference(sales)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
-    def confirm(self, ids):
-        self.set_sale_date(ids)
-        self.store_cache(ids)
+    def confirm(cls, sales):
+        cls.set_sale_date(sales)
+        cls.store_cache(sales)
 
+    @classmethod
     @ModelView.button_action('sale.wizard_invoice_handle_exception')
-    def handle_invoice_exception(self, ids):
+    def handle_invoice_exception(cls, sales):
         pass
 
+    @classmethod
     @ModelView.button_action('sale.wizard_shipment_handle_exception')
-    def handle_shipment_exception(self, ids):
+    def handle_shipment_exception(cls, sales):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('processing')
-    def process(self, ids):
+    def process(cls, sales):
         done = []
-        for sale in self.browse(ids):
+        for sale in sales:
             if sale.state in ('done', 'cancel'):
                 continue
-            self.create_invoice(sale, 'out_invoice')
-            self.create_invoice(sale, 'out_credit_note')
-            self.set_invoice_state(sale)
-            self.create_shipment(sale, 'out')
-            self.create_shipment(sale, 'return')
-            self.set_shipment_state(sale)
-            if self.is_done(sale):
-                done.append(sale.id)
+            sale.create_invoice('out_invoice')
+            sale.create_invoice('out_credit_note')
+            sale.set_invoice_state()
+            sale.create_shipment('out')
+            sale.create_shipment('return')
+            sale.set_shipment_state()
+            if sale.is_done():
+                done.append(sale)
         if done:
-            self.write(done, {
+            cls.write(done, {
                     'state': 'done',
                     })
-
-Sale()
 
 
 class SaleInvoice(ModelSQL):
     'Sale - Invoice'
-    _name = 'sale.sale-account.invoice'
+    __name__ = 'sale.sale-account.invoice'
     _table = 'sale_invoices_rel'
-    _description = __doc__
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
-
-SaleInvoice()
 
 
 class SaleIgnoredInvoice(ModelSQL):
     'Sale - Ignored Invoice'
-    _name = 'sale.sale-ignored-account.invoice'
+    __name__ = 'sale.sale-ignored-account.invoice'
     _table = 'sale_invoice_ignored_rel'
-    _description = __doc__
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
-
-SaleIgnoredInvoice()
 
 
 class SaleRecreatedInvoice(ModelSQL):
     'Sale - Recreated Invoice'
-    _name = 'sale.sale-recreated-account.invoice'
+    __name__ = 'sale.sale-recreated-account.invoice'
     _table = 'sale_invoice_recreated_rel'
-    _description = __doc__
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
 
-SaleRecreatedInvoice()
-
 
 class SaleLine(ModelSQL, ModelView):
     'Sale Line'
-    _name = 'sale.line'
+    __name__ = 'sale.line'
     _rec_name = 'description'
-    _description = __doc__
-
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True)
     sequence = fields.Integer('Sequence',
@@ -1034,7 +923,7 @@ class SaleLine(ModelSQL, ModelView):
             '_parent_sale.party'],
         depends=['product', 'type', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'get_unit_digits')
+        on_change_with=['unit']), 'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         domain=[('salable', '=', True)],
         states={
@@ -1054,7 +943,7 @@ class SaleLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category',
             on_change_with=['product']),
-        'get_product_uom_category')
+        'on_change_with_product_uom_category')
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
             'invisible': Eval('type') != 'line',
@@ -1097,12 +986,13 @@ class SaleLine(ModelSQL, ModelView):
                 'invisible': Eval('type') != 'line',
                 },
             depends=['type']),
-        'get_delivery_date')
+        'on_change_with_delivery_date')
 
-    def __init__(self):
-        super(SaleLine, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(SaleLine, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._error_messages.update({
             'customer_location_required': 'The customer location is required!',
             'missing_account_revenue': 'It misses '
                     'an "Account Revenue" on product "%s"!',
@@ -1110,359 +1000,277 @@ class SaleLine(ModelSQL, ModelView):
                     'an "account Revenue" default property!',
             })
 
-    def init(self, module_name):
-        super(SaleLine, self).init(module_name)
+    @classmethod
+    def __register__(cls, module_name):
+        super(SaleLine, cls).__register__(module_name)
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
-            cursor.execute('UPDATE "' + self._table + '" SET note = comment')
+            cursor.execute('UPDATE "' + cls._table + '" SET note = comment')
             table.drop_column('comment', exception=True)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'line'
 
-    def default_unit_digits(self):
+    @staticmethod
+    def default_unit_digits():
         return 2
 
-    def on_change_with_unit_digits(self, vals):
-        uom_obj = Pool().get('product.uom')
-        if vals.get('unit'):
-            uom = uom_obj.browse(vals['unit'])
-            return uom.digits
+    def on_change_with_unit_digits(self, name=None):
+        if self.unit:
+            return self.unit.digits
         return 2
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            if line.unit:
-                res[line.id] = line.unit.digits
-            else:
-                res[line.id] = 2
-        return res
+    def get_move_done(self, name):
+        Uom = Pool().get('product.uom')
+        done = True
+        if not self.product:
+            return True
+        if self.product.type == 'service':
+            return True
+        skip_ids = set(x.id for x in self.moves_ignored)
+        skip_ids.update(x.id for x in self.moves_recreated)
+        quantity = self.quantity
+        for move in self.moves:
+            if move.state != 'done' \
+                    and move.id not in skip_ids:
+                done = False
+                break
+            quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
+        if done:
+            if quantity > 0.0:
+                done = False
+        return done
 
-    def get_move_done(self, ids, name):
-        uom_obj = Pool().get('product.uom')
-        res = {}
-        for line in self.browse(ids):
-            val = True
-            if not line.product:
-                res[line.id] = True
-                continue
-            if line.product.type == 'service':
-                res[line.id] = True
-                continue
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_recreated)
-            quantity = line.quantity
-            for move in line.moves:
-                if move.state != 'done' \
-                        and move.id not in skip_ids:
-                    val = False
-                    break
-                quantity -= uom_obj.compute_qty(move.uom, move.quantity,
-                        line.unit)
-            if val:
-                if quantity > 0.0:
-                    val = False
-            res[line.id] = val
-        return res
+    def get_move_exception(self, name):
+        skip_ids = set(x.id for x in self.moves_ignored)
+        skip_ids.update(x.id for x in self.moves_recreated)
+        for move in self.moves:
+            if move.state == 'cancel' \
+                    and move.id not in skip_ids:
+                return True
+        return False
 
-    def get_move_exception(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            val = False
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_recreated)
-            for move in line.moves:
-                if move.state == 'cancel' \
-                        and move.id not in skip_ids:
-                    val = True
-                    break
-            res[line.id] = val
-        return res
-
-    def _get_tax_rule_pattern(self, party, vals):
+    def _get_tax_rule_pattern(self):
         '''
         Get tax rule pattern
-
-        :param party: the BrowseRecord of the party
-        :param vals: a dictionary with value from on_change
-        :return: a dictionary to use as pattern for tax rule
         '''
-        res = {}
-        return res
+        return {}
 
-    def _get_context_sale_price(self, product, vals):
+    def _get_context_sale_price(self):
         context = {}
-        if vals.get('_parent_sale.currency'):
-            context['currency'] = vals['_parent_sale.currency']
-        if vals.get('_parent_sale.party'):
-            context['customer'] = vals['_parent_sale.party']
-        if vals.get('_parent_sale.sale_date'):
-            context['sale_date'] = vals['_parent_sale.sale_date']
-        if vals.get('unit'):
-            context['uom'] = vals['unit']
+        if self.sale:
+            if self.sale.currency:
+                context['currency'] = self.sale.currency.id
+            if self.sale.party:
+                context['customer'] = self.sale.party.id
+            if self.sale.sale_date:
+                context['sale_date'] = self.sale.sale_date
+        if self.unit:
+            context['uom'] = self.unit.id
         else:
-            context['uom'] = product.sale_uom.id
+            context['uom'] = self.product.sale_uom.id
         return context
 
-    def on_change_product(self, vals):
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        product_obj = pool.get('product.product')
-        tax_rule_obj = pool.get('account.tax.rule')
+    def on_change_product(self):
+        Product = Pool().get('product.product')
 
-        if not vals.get('product'):
+        if not self.product:
             return {}
         res = {}
 
         party = None
         party_context = {}
-        if vals.get('_parent_sale.party'):
-            party = party_obj.browse(vals['_parent_sale.party'])
+        if self.sale and self.sale.party:
+            party = self.sale.party
             if party.lang:
                 party_context['language'] = party.lang.code
 
-        product = product_obj.browse(vals['product'])
-
-        with Transaction().set_context(
-                self._get_context_sale_price(product, vals)):
-            res['unit_price'] = product_obj.get_sale_price([product.id],
-                    vals.get('quantity') or 0)[product.id]
+        with Transaction().set_context(self._get_context_sale_price()):
+            res['unit_price'] = Product.get_sale_price([self.product],
+                    self.quantity or 0)[self.product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
-                    Decimal(1) / 10 ** self.unit_price.digits[1])
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
         res['taxes'] = []
-        pattern = self._get_tax_rule_pattern(party, vals)
-        for tax in product.customer_taxes_used:
+        pattern = self._get_tax_rule_pattern()
+        for tax in self.product.customer_taxes_used:
             if party and party.customer_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, tax,
-                        pattern)
+                tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
                 continue
             res['taxes'].append(tax.id)
         if party and party.customer_tax_rule:
-            tax_ids = tax_rule_obj.apply(party.customer_tax_rule, None,
-                    pattern)
+            tax_ids = party.customer_tax_rule.apply(None, pattern)
             if tax_ids:
                 res['taxes'].extend(tax_ids)
 
-        if not vals.get('description'):
+        if not self.description:
             with Transaction().set_context(party_context):
-                res['description'] = product_obj.browse(product.id).rec_name
+                res['description'] = Product(self.product.id).rec_name
 
-        category = product.sale_uom.category
-        if not vals.get('unit') \
-                or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = product.sale_uom.id
-            res['unit.rec_name'] = product.sale_uom.rec_name
-            res['unit_digits'] = product.sale_uom.digits
+        category = self.product.sale_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            res['unit'] = self.product.sale_uom.id
+            res['unit.rec_name'] = self.product.sale_uom.rec_name
+            res['unit_digits'] = self.product.sale_uom.digits
 
-        vals = vals.copy()
-        vals['unit_price'] = res['unit_price']
-        vals['type'] = 'line'
-        res['amount'] = self.on_change_with_amount(vals)
+        self.unit_price = res['unit_price']
+        self.type = 'line'
+        res['amount'] = self.on_change_with_amount()
         return res
 
-    def on_change_with_product_uom_category(self, values):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return product.default_uom_category.id
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
-    def get_product_uom_category(self, ids, name):
-        categories = {}
-        for line in self.browse(ids):
-            if line.product:
-                categories[line.id] = line.product.default_uom_category.id
-            else:
-                categories[line.id] = None
-        return categories
+    def on_change_quantity(self):
+        Product = Pool().get('product.product')
 
-    def on_change_quantity(self, vals):
-        product_obj = Pool().get('product.product')
-
-        if not vals.get('product'):
+        if not self.product:
             return {}
         res = {}
 
-        product = product_obj.browse(vals['product'])
-
         with Transaction().set_context(
-                self._get_context_sale_price(product, vals)):
-            res['unit_price'] = product_obj.get_sale_price([vals['product']],
-                    vals.get('quantity') or 0)[vals['product']]
+                self._get_context_sale_price()):
+            res['unit_price'] = Product.get_sale_price([self.product],
+                self.quantity or 0)[self.product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
-                    Decimal(1) / 10 ** self.unit_price.digits[1])
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
         return res
 
-    def on_change_unit(self, vals):
-        return self.on_change_quantity(vals)
+    def on_change_unit(self):
+        return self.on_change_quantity()
 
-    def on_change_with_amount(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('type') == 'line':
-            currency = vals.get('_parent_sale.currency')
-            if currency and isinstance(currency, (int, long)):
-                currency = currency_obj.browse(vals['_parent_sale.currency'])
-            amount = Decimal(str(vals.get('quantity') or '0.0')) * \
-                    (vals.get('unit_price') or Decimal('0.0'))
+    def on_change_with_amount(self):
+        if self.type == 'line':
+            currency = self.sale.currency if self.sale else None
+            amount = Decimal(str(self.quantity or '0.0')) * \
+                (self.unit_price or Decimal('0.0'))
             if currency:
-                return currency_obj.round(currency, amount)
+                return currency.round(amount)
             return amount
         return Decimal('0.0')
 
-    def get_amount(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
-        res = {}
-        for line in self.browse(ids):
-            if line.type == 'line':
-                res[line.id] = currency_obj.round(line.sale.currency,
-                        Decimal(str(line.quantity)) * line.unit_price)
-            elif line.type == 'subtotal':
-                res[line.id] = Decimal('0.0')
-                for line2 in line.sale.lines:
-                    if line2.type == 'line':
-                        res[line.id] += currency_obj.round(line2.sale.currency,
-                                Decimal(str(line2.quantity)) *
-                                        line2.unit_price)
-                    elif line2.type == 'subtotal':
-                        if line.id == line2.id:
-                            break
-                        res[line.id] = Decimal('0.0')
-            else:
-                res[line.id] = Decimal('0.0')
-        return res
+    def get_amount(self, name):
+        if self.type == 'line':
+            return self.sale.currency.round(
+                Decimal(str(self.quantity)) * self.unit_price)
+        elif self.type == 'subtotal':
+            amount = Decimal('0.0')
+            for line2 in self.sale.lines:
+                if line2.type == 'line':
+                    amount += line2.sale.currency.round(
+                        Decimal(str(line2.quantity)) * line2.unit_price)
+                elif line2.type == 'subtotal':
+                    if self == line2:
+                        break
+                    amount = Decimal('0.0')
+            return amount
+        return Decimal('0.0')
 
-    def get_warehouse(self, ids, name):
-        result = {}
-        for line in self.browse(ids):
-            result[line.id] = line.sale.warehouse.id
-        return result
+    def get_warehouse(self, name):
+        return self.sale.warehouse.id
 
-    def get_from_location(self, ids, name):
-        result = {}
-        for line in self.browse(ids):
-            if line.quantity >= 0:
-                if line.warehouse:
-                    result[line.id] = line.warehouse.output_location.id
-                else:
-                    result[line.id] = None
-            else:
-                result[line.id] = line.sale.party.customer_location.id
-        return result
-
-    def get_to_location(self, ids, name):
-        result = {}
-        for line in self.browse(ids):
-            if line.quantity >= 0:
-                result[line.id] = line.sale.party.customer_location.id
-            else:
-                if line.warehouse:
-                    result[line.id] = line.warehouse.input_location.id
-                else:
-                    result[line.id] = None
-        return result
-
-    def _compute_delivery_date(self, product, date):
-        product_obj = Pool().get('product.product')
-        if product:
-            return product_obj.compute_delivery_date(product, date=date)
+    def get_from_location(self, name):
+        if self.quantity >= 0:
+            if self.warehouse:
+                return self.warehouse.output_location.id
         else:
-            return None
+            return self.sale.party.customer_location.id
 
-    def on_change_with_delivery_date(self, values):
-        product_obj = Pool().get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return self._compute_delivery_date(product,
-                values.get('_parent_sale.sale_date'))
-        return None
+    def get_to_location(self, name):
+        if self.quantity >= 0:
+            return self.sale.party.customer_location.id
+        else:
+            if self.warehouse:
+                return self.warehouse.input_location.id
 
-    def get_delivery_date(self, ids, name):
-        dates = {}
-        for line in self.browse(ids):
-            dates[line.id] = self._compute_delivery_date(line.product,
-                line.sale.sale_date)
-        return dates
+    def on_change_with_delivery_date(self, name=None):
+        if self.product:
+            date = self.sale.sale_date if self.sale else None
+            return self.product.compute_delivery_date(date=date)
 
-    def get_invoice_line(self, line, invoice_type):
+    def get_invoice_line(self, invoice_type):
         '''
-        Return a list of invoice line values for sale line according to
-        invoice_type
+        Return a list of invoice lines for sale line according to invoice_type
         '''
-        uom_obj = Pool().get('product.uom')
-        property_obj = Pool().get('ir.property')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Property = pool.get('ir.property')
+        InvoiceLine = pool.get('account.invoice.line')
 
-        res = {}
-        res['type'] = line.type
-        res['description'] = line.description
-        res['note'] = line.note
-        if line.type != 'line':
-            if (line.sale.invoice_method == 'order'
-                    and ((all(l.quantity >= 0 for l in line.sale.lines
+        with Transaction().set_user(0, set_context=True):
+            invoice_line = InvoiceLine()
+        invoice_line.type = self.type
+        invoice_line.description = self.description
+        invoice_line.note = self.note
+        if self.type != 'line':
+            if (self.sale.invoice_method == 'order'
+                    and ((all(l.quantity >= 0 for l in self.sale.lines
                                 if l.type == 'line')
                             and invoice_type == 'out_invoice')
-                        or (all(l.quantity <= 0 for l in line.sale.lines
+                        or (all(l.quantity <= 0 for l in self.sale.lines
                                 if l.type == 'line')
                             and invoice_type == 'out_credit_note'))):
-                return [res]
+                return [invoice_line]
             else:
                 return []
 
-        if (invoice_type == 'out_invoice') != (line.quantity >= 0):
+        if (invoice_type == 'out_invoice') != (self.quantity >= 0):
             return []
 
-        if (line.sale.invoice_method == 'order'
-                or not line.product
-                or line.product.type == 'service'):
-            quantity = abs(line.quantity)
+        if (self.sale.invoice_method == 'order'
+                or not self.product
+                or self.product.type == 'service'):
+            quantity = abs(self.quantity)
         else:
             quantity = 0.0
-            for move in line.moves:
+            for move in self.moves:
                 if move.state == 'done':
-                    quantity += uom_obj.compute_qty(move.uom, move.quantity,
-                            line.unit)
+                    quantity += Uom.compute_qty(move.uom, move.quantity,
+                        self.unit)
 
-        skip_ids = set(l.id for i in line.sale.invoices_recreated
+        skip_ids = set(l.id for i in self.sale.invoices_recreated
             for l in i.lines)
-        for invoice_line in line.invoice_lines:
+        for invoice_line in self.invoice_lines:
             if invoice_line.type != 'line':
                 continue
             if invoice_line.id not in skip_ids:
-                quantity -= uom_obj.compute_qty(invoice_line.unit,
-                        invoice_line.quantity, line.unit)
-        res['quantity'] = quantity
+                quantity -= Uom.compute_qty(invoice_line.unit,
+                    invoice_line.quantity, self.unit)
+        invoice_line.quantity = quantity
 
-        if res['quantity'] <= 0.0:
+        if invoice_line.quantity <= 0.0:
             return []
-        res['unit'] = line.unit.id
-        res['product'] = line.product.id
-        res['unit_price'] = line.unit_price
-        res['taxes'] = [('set', [x.id for x in line.taxes])]
-        if line.product:
-            res['account'] = line.product.account_revenue_used.id
-            if not res['account']:
+        invoice_line.unit = self.unit
+        invoice_line.product = self.product
+        invoice_line.unit_price = self.unit_price
+        invoice_line.taxes = self.taxes
+        if self.product:
+            invoice_line.account = self.product.account_revenue_used
+            if not invoice_line.account:
                 self.raise_user_error('missing_account_revenue',
-                        error_args=(line.product.rec_name,))
+                        error_args=(self.product.rec_name,))
         else:
             for model in ('product.template', 'product.category'):
-                res['account'] = property_obj.get('account_revenue', model)
-                if res['account']:
+                invoice_line.account = Property.get('account_revenue', model)
+                if invoice_line.account:
                     break
-            if not res['account']:
+            if not invoice_line.account:
                 self.raise_user_error('missing_account_revenue_property')
-        return [res]
+        return [invoice_line]
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, lines, default=None):
         if default is None:
             default = {}
         default = default.copy()
@@ -1470,118 +1278,104 @@ class SaleLine(ModelSQL, ModelView):
         default['moves_ignored'] = None
         default['moves_recreated'] = None
         default['invoice_lines'] = None
-        return super(SaleLine, self).copy(ids, default=default)
+        return super(SaleLine, cls).copy(lines, default=default)
 
-    def get_move(self, line, shipment_type):
+    def get_move(self, shipment_type):
         '''
-        Return move values for the sale line according ot shipment_type
+        Return moves for the sale line according ot shipment_type
         '''
-        uom_obj = Pool().get('product.uom')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Move = pool.get('stock.move')
 
-        res = {}
-        if line.type != 'line':
+        if self.type != 'line':
             return
-        if not line.product:
+        if not self.product:
             return
-        if line.product.type == 'service':
+        if self.product.type == 'service':
             return
-        if (shipment_type == 'out') != (line.quantity >= 0):
+        if (shipment_type == 'out') != (self.quantity >= 0):
             return
 
-        if line.sale.shipment_method == 'order':
-            quantity = abs(line.quantity)
+        if self.sale.shipment_method == 'order':
+            quantity = abs(self.quantity)
         else:
             quantity = 0.0
-            for invoice_line in line.invoice_lines:
+            for invoice_line in self.invoice_lines:
                 if invoice_line.invoice.state in ('open', 'paid'):
-                    quantity += uom_obj.compute_qty(invoice_line.unit,
-                        invoice_line.quantity, line.unit)
+                    quantity += Uom.compute_qty(invoice_line.unit,
+                        invoice_line.quantity, self.unit)
 
-        skip_ids = set(x.id for x in line.moves_recreated)
-        for move in line.moves:
+        skip_ids = set(x.id for x in self.moves_recreated)
+        for move in self.moves:
             if move.id not in skip_ids:
-                quantity -= uom_obj.compute_qty(move.uom, move.quantity,
-                        line.unit)
+                quantity -= Uom.compute_qty(move.uom, move.quantity,
+                    self.unit)
         if quantity <= 0.0:
             return
-        if not line.sale.party.customer_location:
+        if not self.sale.party.customer_location:
             self.raise_user_error('customer_location_required')
-        res['quantity'] = quantity
-        res['uom'] = line.unit.id
-        res['product'] = line.product.id
-        res['from_location'] = line.from_location.id
-        res['to_location'] = line.to_location.id
-        res['state'] = 'draft'
-        res['company'] = line.sale.company.id
-        res['unit_price'] = line.unit_price
-        res['currency'] = line.sale.currency.id
-        res['planned_date'] = line.delivery_date
-        return res
-
-SaleLine()
+        with Transaction().set_user(0, set_context=True):
+            move = Move()
+        move.quantity = quantity
+        move.uom = self.unit
+        move.product = self.product
+        move.from_location = self.from_location
+        move.to_location = self.to_location
+        move.state = 'draft'
+        move.company = self.sale.company
+        move.unit_price = self.unit_price
+        move.currency = self.sale.currency
+        move.planned_date = self.delivery_date
+        return move
 
 
 class SaleLineTax(ModelSQL):
     'Sale Line - Tax'
-    _name = 'sale.line-account.tax'
+    __name__ = 'sale.line-account.tax'
     _table = 'sale_line_account_tax'
-    _description = __doc__
     line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             select=True, required=True)
 
-SaleLineTax()
-
 
 class SaleLineInvoiceLine(ModelSQL):
     'Sale Line - Invoice Line'
-    _name = 'sale.line-account.invoice.line'
+    __name__ = 'sale.line-account.invoice.line'
     _table = 'sale_line_invoice_lines_rel'
-    _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=True, required=True)
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
             ondelete='RESTRICT', select=True, required=True)
 
-SaleLineInvoiceLine()
-
 
 class SaleLineIgnoredMove(ModelSQL):
     'Sale Line - Ignored Move'
-    _name = 'sale.line-ignored-stock.move'
+    __name__ = 'sale.line-ignored-stock.move'
     _table = 'sale_line_moves_ignored_rel'
-    _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
             select=True, required=True)
-
-SaleLineIgnoredMove()
 
 
 class SaleLineRecreatedMove(ModelSQL):
     'Sale Line - Recreated Move'
-    _name = 'sale.line-recreated-stock.move'
+    __name__ = 'sale.line-recreated-stock.move'
     _table = 'sale_line_moves_recreated_rel'
-    _description = __doc__
     sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
             select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
             select=True, required=True)
 
-SaleLineRecreatedMove()
-
 
 class SaleReport(CompanyReport):
-    _name = 'sale.sale'
-
-SaleReport()
+    __name__ = 'sale.sale'
 
 
-class Template(ModelSQL, ModelView):
-    _name = 'product.template'
-
+class Template:
+    __name__ = 'product.template'
     salable = fields.Boolean('Salable', states={
             'readonly': ~Eval('active', True),
             }, depends=['active'])
@@ -1603,214 +1397,194 @@ class Template(ModelSQL, ModelView):
         depends=['active', 'salable'],
         help='In number of days')
 
-    def __init__(self):
-        super(Template, self).__init__()
-        self.account_revenue = copy.copy(self.account_revenue)
-        self.account_revenue.states = copy.copy(self.account_revenue.states)
+    @classmethod
+    def __setup__(cls):
+        super(Template, cls).__setup__()
         required = ~Eval('account_category', False) & Eval('salable', False)
-        if not self.account_revenue.states.get('required'):
-            self.account_revenue.states['required'] = required
+        if not cls.account_revenue.states.get('required'):
+            cls.account_revenue.states['required'] = required
         else:
-            self.account_revenue.states['required'] = (
-                    self.account_revenue.states['required'] | required)
-        if 'account_category' not in self.account_revenue.depends:
-            self.account_revenue = copy.copy(self.account_revenue)
-            self.account_revenue.depends = \
-                    copy.copy(self.account_revenue.depends)
-            self.account_revenue.depends.append('account_category')
-        if 'salable' not in self.account_revenue.depends:
-            self.account_revenue = copy.copy(self.account_revenue)
-            self.account_revenue.depends = \
-                    copy.copy(self.account_revenue.depends)
-            self.account_revenue.depends.append('salable')
-        self._reset_columns()
+            cls.account_revenue.states['required'] = (
+                    cls.account_revenue.states['required'] | required)
+        if 'account_category' not in cls.account_revenue.depends:
+            cls.account_revenue.depends.append('account_category')
+        if 'salable' not in cls.account_revenue.depends:
+            cls.account_revenue.depends.append('salable')
 
-    def default_salable(self):
+    @staticmethod
+    def default_salable():
         return True if Transaction().context.get('salable') else False
 
-    def default_delivery_time(self):
+    @staticmethod
+    def default_delivery_time():
         return 0
 
-    def on_change_with_sale_uom(self, vals):
-        uom_obj = Pool().get('product.uom')
-        res = None
-
-        if vals.get('default_uom'):
-            default_uom = uom_obj.browse(vals['default_uom'])
-            if vals.get('sale_uom'):
-                sale_uom = uom_obj.browse(vals['sale_uom'])
-                if default_uom.category.id == sale_uom.category.id:
-                    res = sale_uom.id
+    def on_change_with_sale_uom(self):
+        if self.default_uom:
+            if self.sale_uom:
+                if self.default_uom.category == self.sale_uom.category:
+                    return self.sale_uom.id
                 else:
-                    res = default_uom.id
+                    return self.default_uom.id
             else:
-                res = default_uom.id
-        return res
-
-Template()
+                return self.default_uom.id
 
 
-class Product(ModelSQL, ModelView):
-    _name = 'product.product'
+class Product:
+    __name__ = 'product.product'
 
-    def get_sale_price(self, ids, quantity=0):
+    @staticmethod
+    def get_sale_price(products, quantity=0):
         '''
-        Return the sale price for product ids.
-
-        :param ids: the product ids
-        :param quantity: the quantity of the products
+        Return the sale price for products and quantity.
+        It uses if exists from the context:
             uom: the unit of measure
             currency: the currency id for the returned price
-        :return: a dictionary with for each product ids keys the computed price
         '''
         pool = Pool()
-        uom_obj = pool.get('product.uom')
-        user_obj = pool.get('res.user')
-        currency_obj = pool.get('currency.currency')
-        date_obj = pool.get('ir.date')
+        Uom = pool.get('product.uom')
+        User = pool.get('res.user')
+        Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
 
-        today = date_obj.today()
-        res = {}
+        today = Date.today()
+        prices = {}
 
         uom = None
         if Transaction().context.get('uom'):
-            uom = uom_obj.browse(Transaction().context.get('uom'))
+            uom = Uom(Transaction().context.get('uom'))
 
         currency = None
         if Transaction().context.get('currency'):
-            currency = currency_obj.browse(
-                    Transaction().context.get('currency'))
+            currency = Currency(Transaction().context.get('currency'))
 
-        user2 = user_obj.browse(Transaction().user)
+        user = User(Transaction().user)
 
-        for product in self.browse(ids):
-            res[product.id] = product.list_price
+        for product in products:
+            prices[product.id] = product.list_price
             if uom:
-                res[product.id] = uom_obj.compute_price(
-                        product.default_uom, res[product.id], uom)
-            if currency and user2.company:
-                if user2.company.currency.id != currency.id:
+                prices[product.id] = Uom.compute_price(
+                    product.default_uom, prices[product.id], uom)
+            if currency and user.company:
+                if user.company.currency != currency:
                     date = Transaction().context.get('sale_date') or today
                     with Transaction().set_context(date=date):
-                        res[product.id] = currency_obj.compute(
-                                user2.company.currency.id, res[product.id],
-                                currency.id, round=False)
-        return res
+                        prices[product.id] = Currency.compute(
+                            user.company.currency, prices[product.id],
+                            currency, round=False)
+        return prices
 
-    def compute_delivery_date(self, product, date=None):
+    def compute_delivery_date(self, date=None):
         '''
-        Compute the delivery date for the Product at a the given date
+        Compute the delivery date a the given date
         '''
-        date_obj = Pool().get('ir.date')
+        Date = Pool().get('ir.date')
 
         if not date:
-            date = date_obj.today()
-        return date + datetime.timedelta(product.delivery_time)
-
-Product()
+            date = Date.today()
+        return date + datetime.timedelta(self.delivery_time)
 
 
-class ShipmentOut(ModelSQL, ModelView):
-    _name = 'stock.shipment.out'
+class ShipmentOut:
+    __name__ = 'stock.shipment.out'
 
-    def __init__(self):
-        super(ShipmentOut, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(ShipmentOut, cls).__setup__()
+        cls._error_messages.update({
                 'reset_move': 'You cannot reset to draft a move generated '
                     'by a sale.',
             })
 
-    def write(self, ids, vals):
-        sale_obj = Pool().get('sale.sale')
-        sale_line_obj = Pool().get('sale.line')
+    @classmethod
+    def write(cls, shipments, vals):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
 
-        res = super(ShipmentOut, self).write(ids, vals)
+        super(ShipmentOut, cls).write(shipments, vals)
 
         if 'state' in vals and vals['state'] in ('done', 'cancel'):
-            sale_ids = []
+            sales = []
             move_ids = []
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            for shipment in self.browse(ids):
+            for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.outgoing_moves])
 
-            sale_line_ids = sale_line_obj.search([
-                ('moves', 'in', move_ids),
-                ])
-            if sale_line_ids:
-                for sale_line in sale_line_obj.browse(sale_line_ids):
-                    if sale_line.sale.id not in sale_ids:
-                        sale_ids.append(sale_line.sale.id)
+            sale_lines = SaleLine.search([
+                    ('moves', 'in', move_ids),
+                    ])
+            if sale_lines:
+                for sale_line in sale_lines:
+                    if sale_line.sale not in sales:
+                        sales.append(sale_line.sale)
 
             with Transaction().set_user(0, set_context=True):
-                sale_obj.process(sale_ids)
-        return res
+                sales = Sale.browse([s.id for s in sales])
+            Sale.process(sales)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
-        for shipment in self.browse(ids):
+    def draft(cls, shipments):
+        for shipment in shipments:
             for move in shipment.outgoing_moves:
                 if move.state == 'cancel' and move.sale_line:
-                    self.raise_user_error('reset_move')
+                    cls.raise_user_error('reset_move')
 
-        return super(ShipmentOut, self).draft(ids)
-
-ShipmentOut()
+        return super(ShipmentOut, cls).draft(shipments)
 
 
-class ShipmentOutReturn(ModelSQL, ModelView):
-    _name = 'stock.shipment.out.return'
+class ShipmentOutReturn:
+    __name__ = 'stock.shipment.out.return'
 
-    def __init__(self):
-        super(ShipmentOutReturn, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(ShipmentOutReturn, cls).__setup__()
+        cls._error_messages.update({
                 'reset_move': 'You cannot reset to draft a move generated '
                     'by a sale.',
             })
 
-    def write(self, ids, vals):
-        sale_obj = Pool().get('sale.sale')
-        sale_line_obj = Pool().get('sale.line')
+    @classmethod
+    def write(cls, shipments, vals):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
 
-        res = super(ShipmentOutReturn, self).write(ids, vals)
+        super(ShipmentOutReturn, cls).write(shipments, vals)
 
         if 'state' in vals and vals['state'] == 'received':
-            sale_ids = []
+            sales = []
             move_ids = []
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            for shipment in self.browse(ids):
+            for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.incoming_moves])
 
-            sale_line_ids = sale_line_obj.search([
-                ('moves', 'in', move_ids),
-                ])
-            if sale_line_ids:
-                for sale_line in sale_line_obj.browse(sale_line_ids):
-                    if sale_line.sale.id not in sale_ids:
-                        sale_ids.append(sale_line.sale.id)
+            sale_lines = SaleLine.search([
+                    ('moves', 'in', move_ids),
+                    ])
+            if sale_lines:
+                for sale_line in sale_lines:
+                    if sale_line.sale not in sales:
+                        sales.append(sale_line.sale)
 
             with Transaction().set_user(0, set_context=True):
-                sale_obj.process(sale_ids)
-        return res
+                sales = Sale.browse([s.id for s in sales])
+            Sale.process(sales)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
-        for shipment in self.browse(ids):
+    def draft(cls, shipments):
+        for shipment in shipments:
             for move in shipment.incoming_moves:
                 if move.state == 'cancel' and move.sale_line:
-                    self.raise_user_error('reset_move')
+                    cls.raise_user_error('reset_move')
 
-        return super(ShipmentOutReturn, self).draft(ids)
-
-ShipmentOutReturn()
+        return super(ShipmentOutReturn, cls).draft(shipments)
 
 
-class Move(ModelSQL, ModelView):
-    _name = 'stock.move'
-
+class Move:
+    __name__ = 'stock.move'
     sale_line = fields.Many2One('sale.line', 'Sale Line', select=True,
         states={
             'readonly': Eval('state') != 'draft',
@@ -1824,197 +1598,118 @@ class Move(ModelSQL, ModelView):
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_sale_exception_state')
 
-    def get_sale(self, ids, name):
-        res = {}
-        for move in self.browse(ids):
-            res[move.id] = None
-            if move.sale_line:
-                res[move.id] = move.sale_line.sale.id
-        return res
+    def get_sale(self, name):
+        if self.sale_line:
+            return self.sale_line.sale.id
 
-    def search_sale(self, name, clause):
+    @classmethod
+    def search_sale(cls, name, clause):
         return [('sale_line.' + name,) + clause[1:]]
 
-    def get_sale_exception_state(self, ids, name):
-        res = {}.fromkeys(ids, '')
-        for move in self.browse(ids):
-            if not move.sale_line:
-                continue
-            if move.id in (x.id for x in move.sale_line.moves_recreated):
-                res[move.id] = 'recreated'
-            if move.id in (x.id for x in move.sale_line.moves_ignored):
-                res[move.id] = 'ignored'
-        return res
+    def get_sale_exception_state(self, name):
+        if not self.sale_line:
+            return ''
+        if self in self.sale_line.moves_recreated:
+            return 'recreated'
+        if self in self.sale_line.moves_ignored:
+            return 'ignored'
+        return ''
 
-    def write(self, ids, vals):
-        sale_obj = Pool().get('sale.sale')
-        sale_line_obj = Pool().get('sale.line')
+    @classmethod
+    def write(cls, moves, vals):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
 
-        res = super(Move, self).write(ids, vals)
+        super(Move, cls).write(moves, vals)
         if 'state' in vals and vals['state'] in ('cancel',):
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            sale_ids = set()
-            sale_line_ids = sale_line_obj.search([
-                ('moves', 'in', ids),
+            sales = set()
+            sale_lines = SaleLine.search([
+                    ('moves', 'in', [m.id for m in moves]),
+                    ])
+            if sale_lines:
+                for sale_line in sale_lines:
+                    sales.add(sale_line.sale)
+            if sales:
+                with Transaction().set_user(0, set_context=True):
+                    sales = Sale.browse([s.id for s in sales])
+                Sale.process(sales)
+
+    @classmethod
+    def delete(cls, moves):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
+
+        sales = set()
+        sale_lines = SaleLine.search([
+                ('moves', 'in', [m.id for m in moves]),
                 ])
-            if sale_line_ids:
-                for sale_line in sale_line_obj.browse(sale_line_ids):
-                    sale_ids.add(sale_line.sale.id)
-            if sale_ids:
+
+        super(Move, cls).delete(moves)
+
+        if sale_lines:
+            for sale_line in sale_lines:
+                sales.add(sale_line.sale)
+            if sales:
                 with Transaction().set_user(0, set_context=True):
-                    sale_obj.process(list(sale_ids))
-        return res
-
-    def delete(self, ids):
-        sale_obj = Pool().get('sale.sale')
-        sale_line_obj = Pool().get('sale.line')
-
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-
-        sale_ids = set()
-        sale_line_ids = sale_line_obj.search([
-            ('moves', 'in', ids),
-            ])
-
-        res = super(Move, self).delete(ids)
-
-        if sale_line_ids:
-            for sale_line in sale_line_obj.browse(sale_line_ids):
-                sale_ids.add(sale_line.sale.id)
-            if sale_ids:
-                with Transaction().set_user(0, set_context=True):
-                    sale_obj.process(list(sale_ids))
-        return res
-
-Move()
-
-
-class Invoice(ModelSQL, ModelView):
-    _name = 'account.invoice'
-
-    sale_exception_state = fields.Function(fields.Selection([
-        ('', ''),
-        ('ignored', 'Ignored'),
-        ('recreated', 'Recreated'),
-        ], 'Exception State'), 'get_sale_exception_state')
-
-    def __init__(self):
-        super(Invoice, self).__init__()
-        self._error_messages.update({
-            'delete_sale_invoice': 'You can not delete invoices '
-                    'that come from a sale!',
-            'reset_invoice_sale': 'You cannot reset to draft '
-                    'an invoice generated by a sale.',
-            })
-
-    @Workflow.transition('draft')
-    def draft(self, ids):
-        sale_obj = Pool().get('sale.sale')
-        sale_ids = sale_obj.search([
-            ('invoices', 'in', ids),
-            ])
-
-        if sale_ids:
-            self.raise_user_error('reset_invoice_sale')
-
-        return super(Invoice, self).draft(ids)
-
-    def get_sale_exception_state(self, ids, name):
-        sale_obj = Pool().get('sale.sale')
-        sale_ids = sale_obj.search([
-            ('invoices', 'in', ids),
-            ])
-
-        sales = sale_obj.browse(sale_ids)
-
-        recreated_ids = tuple(i.id for p in sales
-            for i in p.invoices_recreated)
-        ignored_ids = tuple(i.id for p in sales for i in p.invoices_ignored)
-
-        res = {}.fromkeys(ids, '')
-        for invoice in self.browse(ids):
-            if invoice.id in recreated_ids:
-                res[invoice.id] = 'recreated'
-            elif invoice.id in ignored_ids:
-                res[invoice.id] = 'ignored'
-
-        return res
-
-    def delete(self, ids):
-        if not ids:
-            return True
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        Transaction().cursor.execute('SELECT id FROM sale_invoices_rel '
-                'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ')',
-                ids)
-        if Transaction().cursor.fetchone():
-            self.raise_user_error('delete_sale_invoice')
-        return super(Invoice, self).delete(ids)
-
-Invoice()
+                    sales = Sale.browse([s.id for s in sales])
+                Sale.process(list(sales))
 
 
 class OpenCustomer(Wizard):
     'Open Customers'
-    _name = 'sale.open_customer'
+    __name__ = 'sale.open_customer'
     start_state = 'open_'
     open_ = StateAction('party.act_party_form')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        wizard_obj = pool.get('ir.action.wizard')
-        Transaction().cursor.execute("SELECT DISTINCT(party) FROM sale_sale")
+        ModelData = pool.get('ir.model.data')
+        Wizard = pool.get('ir.action.wizard')
+        cursor = Transaction().cursor
+        cursor.execute("SELECT DISTINCT(party) FROM sale_sale")
         customer_ids = [line[0] for line in Transaction().cursor.fetchall()]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', customer_ids)])
 
-        model_data_ids = model_data_obj.search([
-            ('fs_id', '=', 'act_open_customer'),
-            ('module', '=', 'sale'),
-            ('inherit', '=', None),
-            ], limit=1)
-        model_data = model_data_obj.browse(model_data_ids[0])
-        wizard = wizard_obj.browse(model_data.db_id)
+        model_data, = ModelData.search([
+                ('fs_id', '=', 'act_open_customer'),
+                ('module', '=', 'sale'),
+                ('inherit', '=', None),
+                ], limit=1)
+        wizard = Wizard.browse(model_data.db_id)
 
         action['name'] = wizard.name
         return action, {}
 
-    def transition_open_(self, session):
+    def transition_open_(self):
         return 'end'
-
-OpenCustomer()
 
 
 class HandleShipmentExceptionAsk(ModelView):
     'Handle Shipment Exception'
-    _name = 'sale.handle.shipment.exception.ask'
-    _description = __doc__
-
+    __name__ = 'sale.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, 'Recreate Moves',
         domain=[('id', 'in', Eval('domain_moves'))], depends=['domain_moves'])
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model "
                 "SET model = REPLACE(model, 'packing', 'shipment') "
                 "WHERE model like '%%packing%%' AND module = %s",
                 (module_name,))
-        super(HandleShipmentExceptionAsk, self).init(module_name)
-
-HandleShipmentExceptionAsk()
+        super(HandleShipmentExceptionAsk, cls).__register__(module_name)
 
 
 class HandleShipmentException(Wizard):
     'Handle Shipment Exception'
-    _name = 'sale.handle.shipment.exception'
+    __name__ = 'sale.handle.shipment.exception'
     start_state = 'ask'
     ask = StateView('sale.handle.shipment.exception.ask',
         'sale.handle_shipment_exception_ask_view_form', [
@@ -2023,59 +1718,53 @@ class HandleShipmentException(Wizard):
             ])
     handle = StateTransition()
 
-    def default_ask(self, session, fields):
-        sale_obj = Pool().get('sale.sale')
-        sale = sale_obj.browse(Transaction().context.get('active_id'))
+    def default_ask(self, fields):
+        Sale = Pool().get('sale.sale')
+        sale = Sale(Transaction().context.get('active_id'))
 
         moves = []
         for line in sale.lines:
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_recreated)
+            skips = set(line.moves_ignored)
+            skips.update(line.moves_recreated)
             for move in line.moves:
-                if move.state == 'cancel' and move.id not in skip_ids:
+                if move.state == 'cancel' and move not in skips:
                     moves.append(move.id)
         return {
             'recreate_moves': moves,
             'domain_moves': moves,
             }
 
-    def transition_handle(self, session):
+    def transition_handle(self):
         pool = Pool()
-        sale_obj = pool.get('sale.sale')
-        sale_line_obj = pool.get('sale.line')
-        to_recreate = [x.id for x in session.ask.recreate_moves]
-        domain_moves = [x.id for x in session.ask.domain_moves]
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
 
-        sale = sale_obj.browse(Transaction().context['active_id'])
+        sale = Sale(Transaction().context['active_id'])
 
         for line in sale.lines:
             moves_ignored = []
             moves_recreated = []
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_recreated)
+            skips = set(line.moves_ignored)
+            skips.update(line.moves_recreated)
             for move in line.moves:
-                if move.id not in domain_moves or move.id in skip_ids:
+                if move not in self.ask.domain_moves or move in skips:
                     continue
-                if move.id in to_recreate:
+                if move in self.ask.recreate_moves:
                     moves_recreated.append(move.id)
                 else:
                     moves_ignored.append(move.id)
 
-            sale_line_obj.write(line.id, {
+            SaleLine.write([line], {
                     'moves_ignored': [('add', moves_ignored)],
                     'moves_recreated': [('add', moves_recreated)],
                     })
-        sale_obj.process([sale.id])
+        Sale.process([sale])
         return 'end'
-
-HandleShipmentException()
 
 
 class HandleInvoiceExceptionAsk(ModelView):
     'Handle Invoice Exception'
-    _name = 'sale.handle.invoice.exception.ask'
-    _description = __doc__
-
+    __name__ = 'sale.handle.invoice.exception.ask'
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Recreate Invoices',
         domain=[('id', 'in', Eval('domain_invoices'))],
@@ -2085,12 +1774,10 @@ class HandleInvoiceExceptionAsk(ModelView):
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
-HandleInvoiceExceptionAsk()
-
 
 class HandleInvoiceException(Wizard):
     'Handle Invoice Exception'
-    _name = 'sale.handle.invoice.exception'
+    __name__ = 'sale.handle.invoice.exception'
     start_state = 'ask'
     ask = StateView('sale.handle.invoice.exception.ask',
         'sale.handle_invoice_exception_ask_view_form', [
@@ -2099,65 +1786,57 @@ class HandleInvoiceException(Wizard):
             ])
     handle = StateTransition()
 
-    def default_ask(self, session, fields):
-        sale_obj = Pool().get('sale.sale')
+    def default_ask(self, fields):
+        Sale = Pool().get('sale.sale')
 
-        sale = sale_obj.browse(Transaction().context['active_id'])
-        skip_ids = set(x.id for x in sale.invoices_ignored)
-        skip_ids.update(x.id for x in sale.invoices_recreated)
+        sale = Sale(Transaction().context['active_id'])
+        skips = set(sale.invoices_ignored)
+        skips.update(sale.invoices_recreated)
         invoices = []
         for invoice in sale.invoices:
-            if invoice.state == 'cancel' and invoice.id not in skip_ids:
+            if invoice.state == 'cancel' and invoice not in skips:
                 invoices.append(invoice.id)
         return {
             'recreate_invoices': invoices,
             'domain_invoices': invoices,
             }
 
-    def transition_handle(self, session):
-        sale_obj = Pool().get('sale.sale')
-        to_recreate = [x.id for x in session.ask.recreate_invoices]
-        domain_invoices = [x.id for x in session.ask.domain_invoices]
+    def transition_handle(self):
+        Sale = Pool().get('sale.sale')
 
-        sale = sale_obj.browse(Transaction().context['active_id'])
+        sale = Sale(Transaction().context['active_id'])
 
-        skip_ids = set(x.id for x in sale.invoices_ignored)
-        skip_ids.update(x.id for x in sale.invoices_recreated)
+        skips = set(sale.invoices_ignored)
+        skips.update(sale.invoices_recreated)
         invoices_ignored = []
         invoices_recreated = []
         for invoice in sale.invoices:
-            if invoice.id not in domain_invoices or invoice.id in skip_ids:
+            if invoice not in self.ask.domain_invoices or invoice in skips:
                 continue
-            if invoice.id in to_recreate:
+            if invoice in self.ask.recreate_invoices:
                 invoices_recreated.append(invoice.id)
             else:
                 invoices_ignored.append(invoice.id)
 
-        sale_obj.write(sale.id, {
+        Sale.write([sale], {
                 'invoices_ignored': [('add', invoices_ignored)],
                 'invoices_recreated': [('add', invoices_recreated)],
                 })
-        sale_obj.process([sale.id])
+        Sale.process([sale])
         return 'end'
-
-HandleInvoiceException()
 
 
 class ReturnSale(Wizard):
-    _name = 'sale.return_sale'
+    __name__ = 'sale.return_sale'
     start_state = 'make_return'
     make_return = StateTransition()
 
-    def transition_make_return(self, session):
-        pool = Pool()
-        sale_obj = pool.get('sale.sale')
-        line_obj = pool.get('sale.line')
+    def transition_make_return(self):
+        Sale = Pool().get('sale.sale')
 
-        sale_id = Transaction().context['active_id']
-        new_sale_id = sale_obj.copy(sale_id)
-        new_line_ids = line_obj.search([('sale', '=', new_sale_id)])
-        for new_line in line_obj.browse(new_line_ids):
-            line_obj.write(new_line.id, {'quantity': -new_line.quantity})
+        sale = Sale(Transaction().context['active_id'])
+        new_sale, = Sale.copy([sale])
+        for new_line in new_sale.lines:
+            new_line.quantity *= -1
+            new_line.save()
         return 'end'
-
-ReturnSale()
