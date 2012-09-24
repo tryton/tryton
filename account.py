@@ -8,19 +8,20 @@ from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Account', 'OpenChartAccountStart', 'OpenChartAccount',
+    'AccountSelection', 'AccountAccountSelection']
+
 
 class Account(ModelSQL, ModelView):
     'Analytic Account'
-    _name = 'analytic_account.account'
-    _description = __doc__
-
+    __name__ = 'analytic_account.account'
     name = fields.Char('Name', required=True, translate=True, select=True)
     code = fields.Char('Code', select=True)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'get_currency_digits')
+        on_change_with=['currency']), 'on_change_with_currency_digits')
     type = fields.Selection([
         ('root', 'Root'),
         ('view', 'View'),
@@ -65,68 +66,70 @@ class Account(ModelSQL, ModelView):
             },
         depends=['type'])
 
-    def __init__(self):
-        super(Account, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Account, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_accounts'),
-        ]
-        self._error_messages.update({
-            'recursive_accounts': 'You can not create recursive accounts!',
-        })
-        self._order.insert(0, ('code', 'ASC'))
+            ]
+        cls._error_messages.update({
+                'recursive_accounts': 'You can not create recursive accounts!',
+                })
+        cls._order.insert(0, ('code', 'ASC'))
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.id
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'normal'
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_display_balance(self):
+    @staticmethod
+    def default_display_balance():
         return 'credit-debit'
 
-    def default_mandatory(self):
+    @staticmethod
+    def default_mandatory():
         return False
 
-    def on_change_with_currency_digits(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-            return currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
-    def get_currency_digits(self, ids, name):
+    @classmethod
+    def get_balance(cls, accounts, name):
         res = {}
-        for account in self.browse(ids):
-            res[account.id] = account.currency.digits
-        return res
-
-    def get_balance(self, ids, name):
-        res = {}
-        line_obj = Pool().get('analytic_account.line')
-        currency_obj = Pool().get('currency.currency')
+        Line = Pool().get('analytic_account.line')
+        Currency = Pool().get('currency.currency')
         cursor = Transaction().cursor
 
-        child_ids = self.search([('parent', 'child_of', ids)])
-        all_ids = {}.fromkeys(ids + child_ids).keys()
+        ids = [a.id for a in accounts]
+        childs = cls.search([('parent', 'child_of', ids)])
+        all_ids = {}.fromkeys(ids + [c.id for c in childs]).keys()
 
         id2account = {}
-        accounts = self.browse(all_ids)
-        for account in accounts:
+        all_accounts = cls.browse(all_ids)
+        for account in all_accounts:
             id2account[account.id] = account
 
-        line_query = line_obj.query_get()
+        line_query = Line.query_get()
         cursor.execute('SELECT a.id, ' \
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), ' \
                     'c.currency ' \
@@ -154,46 +157,48 @@ class Account(ModelSQL, ModelView):
                 if currency_id in id2currency:
                     currency = id2currency[currency_id]
                 else:
-                    currency = currency_obj.browse(currency_id)
+                    currency = Currency(currency_id)
                     id2currency[currency.id] = currency
-                account_sum[account_id] += currency_obj.compute(currency, sum,
+                account_sum[account_id] += Currency.compute(currency, sum,
                         id2account[account_id].currency, round=True)
             else:
-                account_sum[account_id] += currency_obj.round(
-                        id2account[account_id].currency, sum)
+                account_sum[account_id] += \
+                    id2account[account_id].currency.round(sum)
 
         for account_id in ids:
             res.setdefault(account_id, Decimal('0.0'))
-            child_ids = self.search([
-                ('parent', 'child_of', [account_id]),
-                ])
+            childs = cls.search([
+                    ('parent', 'child_of', [account_id]),
+                    ])
             to_currency = id2account[account_id].currency
-            for child_id in child_ids:
-                from_currency = id2account[child_id].currency
-                res[account_id] += currency_obj.compute(from_currency,
-                        account_sum.get(child_id, Decimal('0.0')), to_currency,
+            for child in childs:
+                from_currency = id2account[child.id].currency
+                res[account_id] += Currency.compute(from_currency,
+                        account_sum.get(child.id, Decimal('0.0')), to_currency,
                         round=True)
-            res[account_id] = currency_obj.round(to_currency, res[account_id])
+            res[account_id] = to_currency.round(res[account_id])
             if id2account[account_id].display_balance == 'credit-debit':
                 res[account_id] = - res[account_id]
         return res
 
-    def get_credit_debit(self, ids, name):
+    @classmethod
+    def get_credit_debit(cls, accounts, name):
         res = {}
-        line_obj = Pool().get('analytic_account.line')
-        currency_obj = Pool().get('currency.currency')
+        pool = Pool()
+        Line = pool.get('analytic_account.line')
+        Currency = pool.get('currency.currency')
         cursor = Transaction().cursor
 
         if name not in ('credit', 'debit'):
             raise Exception('Bad argument')
 
         id2account = {}
-        accounts = self.browse(ids)
+        ids = [a.id for a in accounts]
         for account in accounts:
             res[account.id] = Decimal('0.0')
             id2account[account.id] = account
 
-        line_query = line_obj.query_get()
+        line_query = Line.query_get()
         cursor.execute('SELECT a.id, ' \
                     'SUM(COALESCE(l.' + name + ', 0)), ' \
                     'c.currency ' \
@@ -220,94 +225,85 @@ class Account(ModelSQL, ModelView):
                 if currency_id in id2currency:
                     currency = id2currency[currency_id]
                 else:
-                    currency = currency_obj.browse(currency_id)
+                    currency = Currency(currency_id)
                     id2currency[currency.id] = currency
-                res[account_id] += currency_obj.compute(currency, sum,
+                res[account_id] += Currency.compute(currency, sum,
                         id2account[account_id].currency, round=True)
             else:
-                res[account_id] += currency_obj.round(
-                        id2account[account_id].currency, sum)
+                res[account_id] += id2account[account_id].currency.round(sum)
         return res
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for account in self.browse(ids):
-            if account.code:
-                res[account.id] = account.code + ' - ' + unicode(account.name)
-            else:
-                res[account.id] = unicode(account.name)
-        return res
+    def get_rec_name(self, name):
+        if self.code:
+            return self.code + ' - ' + unicode(self.name)
+        else:
+            return unicode(self.name)
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], limit=1)
-        if ids:
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        accounts = cls.search([('code',) + clause[1:]], limit=1)
+        if accounts:
             return [('code',) + clause[1:]]
         else:
-            return [(self._rec_name,) + clause[1:]]
+            return [(cls._rec_name,) + clause[1:]]
 
-    def convert_view(self, tree):
+    @classmethod
+    def convert_view(cls, tree):
         res = tree.xpath('//field[@name=\'analytic_accounts\']')
         if not res:
             return
         element_accounts = res[0]
 
-        root_account_ids = self.search([
-            ('parent', '=', None),
-            ])
-        if not root_account_ids:
+        root_accounts = cls.search([
+                ('parent', '=', None),
+                ])
+        if not root_accounts:
             element_accounts.getparent().getparent().remove(
                     element_accounts.getparent())
             return
-        for account_id in root_account_ids:
+        for account in root_accounts:
             newelement = copy.copy(element_accounts)
             newelement.tag = 'label'
-            newelement.set('name', 'analytic_account_' + str(account_id))
+            newelement.set('name', 'analytic_account_' + str(account.id))
             element_accounts.addprevious(newelement)
             newelement = copy.copy(element_accounts)
-            newelement.set('name', 'analytic_account_' + str(account_id))
+            newelement.set('name', 'analytic_account_' + str(account.id))
             element_accounts.addprevious(newelement)
         parent = element_accounts.getparent()
         parent.remove(element_accounts)
 
-    def analytic_accounts_fields_get(self, field, fields_names=None):
+    @classmethod
+    def analytic_accounts_fields_get(cls, field, fields_names=None):
         res = {}
         if fields_names is None:
             fields_names = []
 
-        root_account_ids = self.search([
-            ('parent', '=', None),
-            ])
-        for account in self.browse(root_account_ids):
+        root_accounts = cls.search([
+                ('parent', '=', None),
+                ])
+        for account in root_accounts:
             name = 'analytic_account_' + str(account.id)
             if name in fields_names or not fields_names:
                 res[name] = field.copy()
                 res[name]['required'] = account.mandatory
                 res[name]['string'] = account.name
-                res[name]['relation'] = self._name
+                res[name]['relation'] = cls.__name__
                 res[name]['domain'] = PYSONEncoder().encode([
                     ('root', '=', account.id),
                     ('type', '=', 'normal')])
         return res
 
-Account()
-
 
 class OpenChartAccountStart(ModelView):
     'Open Chart of Accounts'
-    _name = 'analytic_account.open_chart.start'
-    _description = __doc__
+    __name__ = 'analytic_account.open_chart.start'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-
-OpenChartAccountStart()
 
 
 class OpenChartAccount(Wizard):
     'Open Chart of Accounts'
-    _name = 'analytic_account.open_chart'
-
+    __name__ = 'analytic_account.open_chart'
     start = StateView('analytic_account.open_chart.start',
         'analytic_account.open_chart_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -315,49 +311,46 @@ class OpenChartAccount(Wizard):
             ])
     open_ = StateAction('analytic_account.act_account_tree2')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': session.start.start_date,
-                'end_date': session.start.end_date,
+                'start_date': self.start.start_date,
+                'end_date': self.start.end_date,
                 })
         return action, {}
 
-    def transition_open_(self, session):
+    def transition_open_(self):
         return 'end'
-
-OpenChartAccount()
 
 
 class AccountSelection(ModelSQL, ModelView):
     'Analytic Account Selection'
-    _name = 'analytic_account.account.selection'
-    _description = __doc__
+    __name__ = 'analytic_account.account.selection'
     _rec_name = 'id'
 
     accounts = fields.Many2Many(
             'analytic_account.account-analytic_account.account.selection',
             'selection', 'account', 'Accounts')
 
-    def __init__(self):
-        super(AccountSelection, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(AccountSelection, cls).__setup__()
+        cls._constraints += [
             ('check_root', 'root_account'),
-        ]
-        self._error_messages.update({
-            'root_account': 'Can not have many accounts with the same root ' \
-                    'or a missing mandatory root account!',
-        })
+            ]
+        cls._error_messages.update({
+                'root_account': 'Can not have many accounts with the same ' \
+                    'root or a missing mandatory root account!',
+                })
 
-    def check_root(self, ids):
+    @classmethod
+    def check_root(cls, selections):
         "Check Root"
-        account_obj = Pool().get('analytic_account.account')
+        Account = Pool().get('analytic_account.account')
 
-        root_account_ids = account_obj.search([
+        root_accounts = Account.search([
             ('parent', '=', None),
             ])
-        root_accounts = account_obj.browse(root_account_ids)
 
-        selections = self.browse(ids)
         for selection in selections:
             roots = []
             for account in selection.accounts:
@@ -371,17 +364,12 @@ class AccountSelection(ModelSQL, ModelView):
                             return False
         return True
 
-AccountSelection()
-
 
 class AccountAccountSelection(ModelSQL):
     'Analytic Account - Analytic Account Selection'
-    _name = 'analytic_account.account-analytic_account.account.selection'
-    _description = __doc__
+    __name__ = 'analytic_account.account-analytic_account.account.selection'
     _table = 'analytic_account_account_selection_rel'
     selection = fields.Many2One('analytic_account.account.selection',
             'Selection', ondelete='CASCADE', required=True, select=True)
     account = fields.Many2One('analytic_account.account', 'Account',
             ondelete='RESTRICT', required=True, select=True)
-
-AccountAccountSelection()
