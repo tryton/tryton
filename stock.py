@@ -1,15 +1,16 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
-from trytond.model import Model, fields
+from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['ShipmentOut']
+__metaclass__ = PoolMeta
 
 
-class ShipmentOut(Model):
-    _name = 'stock.shipment.out'
-
+class ShipmentOut:
+    __name__ = 'stock.shipment.out'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state') != 'draft',
             }, on_change=['carrier'],
@@ -23,7 +24,7 @@ class ShipmentOut(Model):
             }, depends=['carrier', 'state'])
     cost_currency_digits = fields.Function(fields.Integer(
         'Cost Currency Digits', on_change_with=['currency']),
-        'get_cost_currency_digits')
+        'on_change_with_cost_currency_digits')
     cost = fields.Numeric('Cost',
             digits=(16, Eval('cost_currency_digits', 2)), states={
             'invisible': ~Eval('carrier'),
@@ -33,129 +34,99 @@ class ShipmentOut(Model):
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)
 
-    def __init__(self):
-        super(ShipmentOut, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(ShipmentOut, cls).__setup__()
+        cls._error_messages.update({
             'missing_account_revenue': 'It misses '
                     'an "Account Revenue" on product "%s"!',
             })
-        self.inventory_moves = copy.copy(self.inventory_moves)
-        if not self.inventory_moves.on_change:
-            self.inventory_moves.on_change = []
-        else:
-            self.inventory_moves.on_change = copy.copy(
-                self.inventory_moves.on_change)
+        if not cls.inventory_moves.on_change:
+            cls.inventory_moves.on_change = []
         for fname in ('carrier', 'customer', 'inventory_moves'):
-            if fname not in self.inventory_moves.on_change:
-                self.inventory_moves.on_change.append(fname)
-        self._rpc.setdefault('on_change_inventory_moves', False)
-        self.carrier = copy.copy(self.carrier)
-        self.carrier.on_change = copy.copy(self.carrier.on_change)
-        for fname in self.inventory_moves.on_change:
-            if fname not in self.carrier.on_change:
-                self.carrier.on_change.append(fname)
-        self._reset_columns()
+            if fname not in cls.inventory_moves.on_change:
+                cls.inventory_moves.on_change.append(fname)
+        for fname in cls.inventory_moves.on_change:
+            if fname not in cls.carrier.on_change:
+                cls.carrier.on_change.append(fname)
 
-    def on_change_with_cost_currency_digits(self, values):
-        currency_obj = Pool().get('currency.currency')
-        if values.get('currency'):
-            currency = currency_obj.browse(values['currency'])
-            return currency.digits
+    def on_change_with_cost_currency_digits(self, name=None):
+        if self.cost_currency:
+            return self.cost_currency.digits
         return 2
 
-    def get_cost_currency_digits(self, ids, name):
-        '''
-        Return the number of digits of the cost currency
-        '''
-        result = {}
-        for shipment in self.browse(ids):
-            if shipment.cost_currency:
-                result[shipment.id] = shipment.cost_currency.digits
-            else:
-                result[shipment.id] = 2
-        return result
-
-    def _get_carrier_context(self, values):
+    def _get_carrier_context(self):
         return {}
 
-    def get_carrier_context(self, shipment, values=None):
-        if values is None:
-            values = {}
-        return self._get_carrier_context(values)
+    def get_carrier_context(self):
+        return self._get_carrier_context()
 
-    def on_change_carrier(self, values):
-        return self.on_change_inventory_moves(values)
+    def on_change_carrier(self):
+        return self.on_change_inventory_moves()
 
-    def on_change_inventory_moves(self, values):
-        pool = Pool()
-        carrier_obj = pool.get('carrier')
-        currency_obj = pool.get('currency.currency')
+    def on_change_inventory_moves(self):
+        Currency = Pool().get('currency.currency')
 
         try:
-            result = super(ShipmentOut, self).on_change_inventory_moves(values)
+            result = super(ShipmentOut, self).on_change_inventory_moves()
         except AttributeError:
             result = {}
-        if not values.get('carrier'):
+        if not self.carrier:
             return result
-        carrier = carrier_obj.browse(values['carrier'])
-        with Transaction().set_context(
-                self._get_carrier_context(values)):
-            cost, currency_id = carrier_obj.get_sale_price(carrier)
-        currency = currency_obj.browse(currency_id)
+        with Transaction().set_context(self._get_carrier_context()):
+            cost, currency_id = self.carrier.get_sale_price()
+        currency = Currency(currency_id)
         result['cost'] = cost
-        result['cost_currency'] = currency_id
+        result['cost_currency'] = currency.id
         result['cost_currency_digits'] = currency.digits if currency else 2
         return result
 
-    def _get_cost_tax_rule_pattern(self, shipment):
+    def _get_cost_tax_rule_pattern(self):
         'Get tax rule pattern for invoice line'
         return {}
 
-    def get_cost_invoice_line(self, shipment, invoice):
+    def get_cost_invoice_line(self, invoice):
         pool = Pool()
-        product_obj = pool.get('product.product')
-        tax_rule_obj = pool.get('account.tax.rule')
-        currency_obj = pool.get('currency.currency')
+        Product = pool.get('product.product')
+        Currency = pool.get('currency.currency')
+        InvoiceLine = pool.get('account.invoice.line')
 
-        if not shipment.cost:
+        if not self.cost:
             return {}
-        values = {}
-        product = shipment.carrier.carrier_product
-        values['type'] = 'line'
+        with Transaction().set_user(0, set_context=True):
+            invoice_line = InvoiceLine()
+        product = self.carrier.carrier_product
+        invoice_line.type = 'line'
 
         party = invoice.party
         party_context = {}
         if party.lang:
             party_context['language'] = party.lang.code
         with Transaction().set_context(party_context):
-            values['description'] = product_obj.browse(product.id).rec_name
+            invoice_line.description = Product(product.id).rec_name
 
-        values['quantity'] = 1  # XXX
-        values['unit'] = product.sale_uom.id
-        cost = shipment.cost
-        if invoice.currency != shipment.cost_currency:
+        invoice_line.quantity = 1  # XXX
+        invoice_line.unit = product.sale_uom.id
+        cost = self.cost
+        if invoice.currency != self.cost_currency:
             with Transaction().set_context(date=invoice.currency_date):
-                cost = currency_obj.compute(
-                    shipment.cost_currency.id,
-                    cost, invoice.currency.id)
-        values['unit_price'] = cost
+                cost = Currency.compute(self.cost_currency, cost,
+                    invoice.currency)
+        invoice_line.unit_price = cost
 
         taxes = []
-        pattern = self._get_cost_tax_rule_pattern(shipment)
+        pattern = self._get_cost_tax_rule_pattern()
         for tax in product.customer_taxes_used:
             if party.customer_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, None,
-                        pattern)
+                tax_ids = party.customer_tax_rule.apply(None, pattern)
                 if tax_ids:
                     taxes.extend(tax_ids)
                 continue
             taxes.append(tax.id)
-        values['taxes'] = [('set', taxes)]
+        invoice_line.taxes = taxes
 
-        values['account'] = product.account_revenue_used.id
-        if not values['account']:
+        invoice_line.account = product.account_revenue_used
+        if not invoice_line.account:
             self.raise_user_error('missing_account_revenue',
                     error_args=(product.rec_name,))
-        return values
-
-ShipmentOut()
+        return invoice_line
