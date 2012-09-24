@@ -6,13 +6,15 @@ from operator import itemgetter
 
 from trytond.model import Model, ModelView, Workflow, fields
 from trytond.pyson import Eval, Bool
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
+__all__ = ['ShipmentIn', 'Move']
+__metaclass__ = PoolMeta
 
-class ShipmentIn(Model):
-    _name = 'stock.shipment.in'
 
+class ShipmentIn:
+    __name__ = 'stock.shipment.in'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state') != 'draft',
             }, on_change=['carrier', 'incoming_moves'],
@@ -24,102 +26,78 @@ class ShipmentIn(Model):
             }, depends=['cost', 'state'])
     cost_currency_digits = fields.Function(fields.Integer(
             'Cost Currency Digits', on_change_with=['currency']),
-        'get_cost_currency_digits')
+        'on_change_with_cost_currency_digits')
     cost = fields.Numeric('Cost', digits=(16, Eval('cost_currency_digits', 2)),
         states={
             'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
             }, depends=['carrier', 'state', 'cost_currency_digits'])
 
-    def __init__(self):
-        super(ShipmentIn, self).__init__()
-        self.incoming_moves = copy.copy(self.incoming_moves)
-        if not self.incoming_moves.on_change:
-            self.incoming_moves.on_change = []
-        else:
-            self.incoming_moves.on_change = copy.copy(
-                self.incoming_moves.on_change)
+    @classmethod
+    def __setup__(cls):
+        super(ShipmentIn, cls).__setup__()
+        if not cls.incoming_moves.on_change:
+            cls.incoming_moves.on_change = []
         for fname in ('carrier', 'incoming_moves'):
-            if fname not in self.incoming_moves.on_change:
-                self.incoming_moves.on_change.append(fname)
-        self._rpc.setdefault('on_change_incoming_moves', False)
-        self.carrier = copy.copy(self.carrier)
-        self.carrier.on_change = copy.copy(self.carrier.on_change)
-        for fname in self.incoming_moves.on_change:
-            if fname not in self.carrier.on_change:
-                self.carrier.on_change.append(fname)
-        self._reset_columns()
+            if fname not in cls.incoming_moves.on_change:
+                cls.incoming_moves.on_change.append(fname)
+        for fname in cls.incoming_moves.on_change:
+            if fname not in cls.carrier.on_change:
+                cls.carrier.on_change.append(fname)
 
-    def on_change_with_cost_currency_digits(self, values):
-        currency_obj = Pool().get('currency.currency')
-        if values.get('cost_currency'):
-            currency = currency_obj.browse(values['cost_currency'])
-            return currency.digits
+    def on_change_with_cost_currency_digits(self, name=None):
+        if self.cost_currency:
+            return self.cost_currency.digits
         return 2
 
-    def get_cost_currency_digits(self, ids, name):
-        '''
-        Return the number of digits of the cost currency
-        '''
-        result = {}
-        for shipment in self.browse(ids):
-            if shipment.cost_currency:
-                result[shipment.id] = shipment.cost_currency.digits
-            else:
-                result[shipment.id] = 2
-        return result
-
-    def _get_carrier_context(self, values):
+    def _get_carrier_context(self):
         return {}
 
-    def on_change_carrier(self, values):
-        return self.on_change_incoming_moves(values)
+    def on_change_carrier(self):
+        return self.on_change_incoming_moves()
 
-    def on_change_incoming_moves(self, values):
-        pool = Pool()
-        carrier_obj = pool.get('carrier')
-        currency_obj = pool.get('currency.currency')
+    def on_change_incoming_moves(self):
+        Currency = Pool().get('currency.currency')
 
         try:
-            result = super(ShipmentIn, self).on_change_incoming_moves(values)
+            result = super(ShipmentIn, self).on_change_incoming_moves()
         except AttributeError:
             result = {}
-        if not values.get('carrier'):
+        if not self.carrier:
             return result
-        carrier = carrier_obj.browse(values['carrier'])
-        with Transaction().set_context(
-                self._get_carrier_context(values)):
-            cost, currency_id = carrier_obj.get_purchase_price(carrier)
+        with Transaction().set_context(self._get_carrier_context()):
+            cost, currency_id = self.carrier.get_purchase_price()
         result['cost'] = cost
         result['cost_currency'] = currency_id
         if currency_id:
-            currency = currency_obj.browse(currency_id)
+            currency = Currency(currency_id)
             result['cost_currency_digits'] = currency.digits
         else:
             result['cost_currency_digits'] = 2
         return result
 
-    def allocate_cost_by_value(self, shipment):
-        currency_obj = Pool().get('currency.currency')
-        move_obj = Pool().get('stock.move')
+    def allocate_cost_by_value(self):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        Move = pool.get('stock.move')
 
-        if not shipment.cost:
+        if not self.cost:
             return
 
-        cost = currency_obj.compute(shipment.cost_currency, shipment.cost,
-            shipment.company.currency, round=False)
-        moves = [m for m in shipment.incoming_moves
+        cost = Currency.compute(self.cost_currency, self.cost,
+            self.company.currency, round=False)
+        moves = [m for m in self.incoming_moves
             if m.state not in ('done', 'cancel')]
 
         sum_value = 0
         unit_prices = {}
         for move in moves:
-            unit_price = currency_obj.compute(move.currency, move.unit_price,
-                shipment.company.currency, round=False)
+            unit_price = Currency.compute(move.currency, move.unit_price,
+                self.company.currency, round=False)
             unit_prices[move.id] = unit_price
             sum_value += unit_price * Decimal(str(move.quantity))
 
         costs = []
-        digit = move_obj.unit_price.digits[1]
+        digit = Move.unit_price.digits[1]
         exp = Decimal(str(10.0 ** -digit))
         difference = cost
         for move in moves:
@@ -145,66 +123,62 @@ class ShipmentIn(Model):
 
         for cost in costs:
             move = cost['move']
-            unit_shipment_cost = currency_obj.compute(
-                shipment.company.currency, cost['unit_shipment_cost'],
+            unit_shipment_cost = Currency.compute(
+                self.company.currency, cost['unit_shipment_cost'],
                 move.currency, round=False)
             unit_shipment_cost = unit_shipment_cost.quantize(
                 exp, rounding=ROUND_HALF_EVEN)
-            move_obj.write(move.id, {
+            Move.write([move], {
                     'unit_price': move.unit_price + cost['unit_shipment_cost'],
                     'unit_shipment_cost': cost['unit_shipment_cost'],
                     })
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('received')
-    def receive(self, ids):
-        carrier_obj = Pool().get('carrier')
-        for shipment in self.browse(ids):
+    def receive(cls, shipments):
+        Carrier = Pool().get('carrier')
+        for shipment in shipments:
             if shipment.carrier:
                 allocation_method = \
                     shipment.carrier.carrier_cost_allocation_method
             else:
                 allocation_method = \
-                    carrier_obj.default_carrier_cost_allocation_method()
-            getattr(self, 'allocate_cost_by_%s' % allocation_method)(shipment)
-        super(ShipmentIn, self).receive(ids)
-
-ShipmentIn()
+                    Carrier.default_carrier_cost_allocation_method()
+            getattr(shipment, 'allocate_cost_by_%s' % allocation_method)()
+        super(ShipmentIn, cls).receive(shipments)
 
 
-class Move(Model):
-    _name = 'stock.move'
-
+class Move:
+    __name__ = 'stock.move'
     unit_shipment_cost = fields.Numeric('Unit Shipment Cost', digits=(16, 4),
         readonly=True)
 
     # Split the shipment cost if account_stock_continental is installed
-    def _get_account_stock_move_lines(self, move, type_):
-        currency_obj = Pool().get('currency.currency')
-        move_lines = super(Move, self)._get_account_stock_move_lines(move,
-            type_)
+    def _get_account_stock_move_lines(self, type_):
+        pool = Pool()
+        AccountMoveLine = pool.get('account.move.line')
+        move_lines = super(Move, self)._get_account_stock_move_lines(type_)
         if (type_.startswith('in_')
-                and move.unit_shipment_cost
-                and move.shipment_in
-                and move.shipment_in.carrier):
-            shipment_cost = currency_obj.round(move.company.currency,
-                Decimal(str(move.quantity)) * move.unit_shipment_cost)
+                and self.unit_shipment_cost
+                and self.shipment_in
+                and self.shipment_in.carrier):
+            shipment_cost = self.company.currency.round(
+                Decimal(str(self.quantity)) * self.unit_shipment_cost)
             shipment_cost_account = \
-                move.shipment_in.carrier.carrier_product.account_expense_used
-            account_id = move.product.account_stock_supplier_used.id
+                self.shipment_in.carrier.carrier_product.account_expense_used
+            account = self.product.account_stock_supplier_used
             for move_line in move_lines:
-                if move_line['account'] == account_id:
-                    move_line['credit'] -= shipment_cost
-                    shipment_cost_line = {
-                        'name': move.rec_name,
-                        'debit': Decimal('0'),
-                        'credit': shipment_cost,
-                        'account': shipment_cost_account,
-                        }
+                if move_line.account == account:
+                    move_line.credit -= shipment_cost
+                    shipment_cost_line = AccountMoveLine(
+                        name=self.rec_name,
+                        debit=Decimal('0'),
+                        credit=shipment_cost,
+                        account=shipment_cost_account,
+                        )
                     move_lines.append(shipment_cost_line)
                     break
             else:
                 raise AssertionError('missing account_stock_supplier')
         return move_lines
-
-Move()
