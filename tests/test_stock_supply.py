@@ -64,10 +64,7 @@ class StockSupplyTestCase(unittest.TestCase):
         '''
         for purchase_date, delivery_time, supply_date in DATES:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier_id = self.create_product_supplier(
-                    delivery_time)
-                product_supplier = self.product_supplier.browse(
-                    product_supplier_id)
+                product_supplier = self.create_product_supplier(delivery_time)
                 date = self.product_supplier.compute_supply_date(
                     product_supplier, purchase_date)
                 self.assertEqual(date, supply_date)
@@ -78,10 +75,7 @@ class StockSupplyTestCase(unittest.TestCase):
         '''
         for purchase_date, delivery_time, supply_date in DATES:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
-                product_supplier_id = self.create_product_supplier(
-                    delivery_time)
-                product_supplier = self.product_supplier.browse(
-                    product_supplier_id)
+                product_supplier = self.create_product_supplier(delivery_time)
                 date = self.product_supplier.compute_purchase_date(
                     product_supplier, supply_date)
                 self.assertEqual(date, purchase_date)
@@ -93,48 +87,48 @@ class StockSupplyTestCase(unittest.TestCase):
         :param delivery_time: time in days needed to supply
         :return: the id of the Product Supplier
         '''
-        uom_category_id = self.uom_category.create({'name': 'Test'})
-        uom_id = self.uom.create({
+        uom_category = self.uom_category.create({'name': 'Test'})
+        uom = self.uom.create({
             'name': 'Test',
             'symbol': 'T',
-            'category': uom_category_id,
+            'category': uom_category.id,
             'rate': 1.0,
             'factor': 1.0,
             })
-        category_id = self.category.create({'name': 'ProdCategoryTest'})
-        product_id = self.product.create({
+        category = self.category.create({'name': 'ProdCategoryTest'})
+        product = self.product.create({
                 'name': 'ProductTest',
-                'default_uom': uom_id,
-                'category': category_id,
+                'default_uom': uom.id,
+                'category': category.id,
                 'account_category': True,
                 'list_price': Decimal(0),
                 'cost_price': Decimal(0),
                 })
-        company_id, = self.company.search([('name', '=', 'B2CK')])
-        self.user.write(USER, {
-            'main_company': company_id,
-            'company': company_id,
+        company, = self.company.search([('name', '=', 'B2CK')])
+        self.user.write([self.user(USER)], {
+            'main_company': company.id,
+            'company': company.id,
             })
-        receivable_id, = self.account.search([
+        receivable, = self.account.search([
             ('kind', '=', 'receivable'),
-            ('company', '=', company_id),
+            ('company', '=', company.id),
             ])
-        payable_id, = self.account.search([
+        payable, = self.account.search([
             ('kind', '=', 'payable'),
-            ('company', '=', company_id),
+            ('company', '=', company.id),
             ])
-        supplier_id = self.party.create({
+        supplier = self.party.create({
             'name': 'supplier',
-            'account_receivable': receivable_id,
-            'account_payable': payable_id,
+            'account_receivable': receivable.id,
+            'account_payable': payable.id,
             })
-        product_supplier_id = self.product_supplier.create({
-            'product': product_id,
-            'company': company_id,
-            'party': supplier_id,
+        product_supplier = self.product_supplier.create({
+            'product': product.id,
+            'company': company.id,
+            'party': supplier.id,
             'delivery_time': delivery_time,
             })
-        return product_supplier_id
+        return product_supplier
 
 
 def suite():

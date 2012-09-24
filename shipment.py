@@ -2,13 +2,17 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['ShipmentInternal']
+__metaclass__ = PoolMeta
 
 
 class ShipmentInternal(ModelSQL, ModelView):
-    _name = 'stock.shipment.internal'
+    __name__ = 'stock.shipment.internal'
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "\
@@ -19,26 +23,27 @@ class ShipmentInternal(ModelSQL, ModelView):
                 "SET model = REPLACE(model, 'packing', 'shipment') "\
                 "WHERE model like '%%packing%%' AND module = %s",
                 (module_name,))
-        super(ShipmentInternal, self).init(module_name)
+        super(ShipmentInternal, cls).__register__(module_name)
 
-    def generate_internal_shipment(self):
+    @classmethod
+    def generate_internal_shipment(cls):
         """
         Generate internal shipments to meet order points defined on
         non-warehouse location.
         """
         pool = Pool()
-        order_point_obj = pool.get('stock.order_point')
-        uom_obj = pool.get('product.uom')
-        product_obj = pool.get('product.product')
-        date_obj = pool.get('ir.date')
-        user_obj = pool.get('res.user')
-        user_record = user_obj.browse(Transaction().user)
-        today = date_obj.today()
+        OrderPoint = pool.get('stock.order_point')
+        Uom = pool.get('product.uom')
+        Product = pool.get('product.product')
+        Date = pool.get('ir.date')
+        User = pool.get('res.user')
+        Move = pool.get('stock.move')
+        user_record = User(Transaction().user)
+        today = Date.today()
         # fetch quantities on order points
-        op_ids = order_point_obj.search([
+        order_points = OrderPoint.search([
             ('type', '=', 'internal'),
             ])
-        order_points = order_point_obj.browse(op_ids)
         id2product = {}
         location_ids = []
         for op in order_points:
@@ -46,7 +51,7 @@ class ShipmentInternal(ModelSQL, ModelView):
             location_ids.append(op.storage_location.id)
 
         with Transaction().set_context(stock_date_end=today):
-            pbl = product_obj.products_by_location(location_ids,
+            pbl = Product.products_by_location(location_ids,
                 list(id2product.iterkeys()), with_childs=True)
 
         # Create a list of move to create
@@ -60,21 +65,21 @@ class ShipmentInternal(ModelSQL, ModelView):
                 moves[key] = op.max_quantity - qty
 
         # Compare with existing draft shipments
-        shipment_ids = self.search([
+        shipments = cls.search([
                 ('state', '=', 'draft'),
                 ['OR',
                     ('planned_date', '<=', today),
                     ('planned_date', '=', None),
                     ],
                 ])
-        for shipment in self.browse(shipment_ids):
+        for shipment in shipments:
             for move in shipment.moves:
                 key = (shipment.to_location.id,
                        shipment.from_location.id,
                        move.product.id)
                 if key not in moves:
                     continue
-                quantity = uom_obj.compute_qty(move.uom, move.quantity,
+                quantity = Uom.compute_qty(move.uom, move.quantity,
                     id2product[move.product.id].default_uom)
                 moves[key] = max(0, moves[key] - quantity)
 
@@ -85,27 +90,22 @@ class ShipmentInternal(ModelSQL, ModelView):
             shipments.setdefault(
                 (from_location, to_location), []).append((product, qty))
         # Create shipments and moves
-        for shipment, moves in shipments.iteritems():
-            from_location, to_location = shipment
-            values = {
-                'from_location': from_location,
-                'to_location': to_location,
-                'planned_date': today,
-                'moves': [],
-                }
+        for locations, moves in shipments.iteritems():
+            from_location, to_location = locations
+            shipment = cls(
+                from_location=from_location,
+                to_location=to_location,
+                planned_date=today,
+                moves=[],
+                )
             for move in moves:
                 product, qty = move
-                values['moves'].append(
-                    ('create',
-                        {
-                            'from_location': from_location,
-                            'to_location': to_location,
-                            'product': product,
-                            'quantity': qty,
-                            'uom': id2product[product].default_uom.id,
-                            'company': user_record.company.id,
-                            }
+                shipment.moves.append(Move(
+                        from_location=from_location,
+                        to_location=to_location,
+                        product=product,
+                        quantity=qty,
+                        uom=id2product[product].default_uom,
+                        company=user_record.company,
                         ))
-            self.create(values)
-
-ShipmentInternal()
+            shipment.save()

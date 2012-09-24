@@ -3,19 +3,19 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Equal, Eval, Not, In, Get
 from trytond.transaction import Transaction
-from trytond.pool import Pool
 from trytond.backend import TableHandler
+
+__all__ = ['OrderPoint']
 
 
 class OrderPoint(ModelSQL, ModelView):
     """
-    Order Point: Provide a way to define a supply policy for each
+    Order Point
+    Provide a way to define a supply policy for each
     product on each locations. Order points on warehouse are
     considered by the supply scheduler to generate purchase requests.
     """
-    _name = 'stock.order_point'
-    _description = "Order Point"
-
+    __name__ = 'stock.order_point'
     product = fields.Many2One('product.product', 'Product', required=True,
         select=True,
         domain=[
@@ -69,18 +69,19 @@ class OrderPoint(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
 
-    def __init__(self):
-        super(OrderPoint, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(OrderPoint, cls).__setup__()
+        cls._constraints += [
             ('check_concurrent_internal', 'concurrent_internal_op'),
             ('check_uniqueness', 'unique_op'),
             ]
-        self._sql_constraints += [
+        cls._sql_constraints += [
             ('check_max_qty_greater_min_qty',
                 'CHECK(max_quantity >= min_quantity)',
                 'Maximal quantity must be bigger than Minimal quantity'),
             ]
-        self._error_messages.update({
+        cls._error_messages.update({
                 'unique_op': 'Only one order point is allowed '\
                     'for each product-location pair.',
                 'concurrent_internal_op': 'You can not define ' \
@@ -88,68 +89,63 @@ class OrderPoint(ModelSQL, ModelView):
                     'with opposite locations.',
                 })
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 2.2
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.drop_constraint('check_min_max_quantity')
 
-        super(OrderPoint, self).init(module_name)
+        super(OrderPoint, cls).__register__(module_name)
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return "purchase"
 
-    def on_change_product(self, vals):
-        product_obj = Pool().get('product.product')
+    def on_change_product(self):
         res = {
             'unit': None,
             'unit.rec_name': '',
             'unit_digits': 2,
-        }
-        if vals.get('product'):
-            product = product_obj.browse(vals['product'])
-            res['unit'] = product.default_uom.id
-            res['unit.rec_name'] = product.default_uom.rec_name
-            res['unit_digits'] = product.default_uom.digits
+            }
+        if self.product:
+            res['unit'] = self.product.default_uom.id
+            res['unit.rec_name'] = self.product.default_uom.rec_name
+            res['unit_digits'] = self.product.default_uom.digits
         return res
 
-    def get_unit(self, ids, name):
-        res = {}
-        for order in self.browse(ids):
-            res[order.id] = order.product.default_uom.id
-        return res
+    def get_unit(self, name):
+        return self.product.default_uom.id
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for order in self.browse(ids):
-            res[order.id] = order.product.default_uom.digits
-        return res
+    def get_unit_digits(self, name):
+        return self.product.default_uom.digits
 
-    def check_concurrent_internal(self, ids):
+    @classmethod
+    def check_concurrent_internal(cls, orders):
         """
         Ensure that there is no 'concurrent' internal order
         points. I.E. no two order point with opposite location for the
         same product and same company.
         """
-        internal_ids = self.search([
-            ('id', 'in', ids),
-            ('type', '=', 'internal'),
-            ])
-        if not internal_ids:
+        internals = cls.search([
+                ('id', 'in', [o.id for o in orders]),
+                ('type', '=', 'internal'),
+                ])
+        if not internals:
             return True
 
         query = ['OR']
-        for op in self.browse(internal_ids):
+        for op in internals:
             arg = ['AND',
                    ('provisioning_location', '=', op.storage_location.id),
                    ('storage_location', '=', op.provisioning_location.id),
                    ('company', '=', op.company.id),
                    ('type', '=', 'internal')]
             query.append(arg)
-        ids = self.search(query)
-        return not bool(ids)
+        return not bool(cls.search(query))
 
-    def _type2field(self, type=None):
+    @staticmethod
+    def _type2field(type=None):
         t2f = {
             'purchase': 'warehouse_location',
             'internal': 'storage_location',
@@ -159,36 +155,30 @@ class OrderPoint(ModelSQL, ModelView):
         else:
             return t2f[type]
 
-    def check_uniqueness(self, ids):
+    @classmethod
+    def check_uniqueness(cls, orders):
         """
         Ensure uniqueness of order points. I.E that there is no several
         order point for the same location, the same product and the
         same company.
         """
         query = ['OR']
-        for op in self.browse(ids):
-            field = self._type2field(op.type)
+        for op in orders:
+            field = cls._type2field(op.type)
             arg = ['AND',
                 ('product', '=', op.product.id),
-                (field, '=', op[field].id),
+                (field, '=', getattr(op, field).id),
                 ('id', '!=', op.id),
                 ('company', '=', op.company.id),
                 ]
             query.append(arg)
-        ids = self.search(query)
-        return not bool(ids)
+        return not bool(cls.search(query))
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        res = {}
-        for op in self.browse(ids):
-            res[op.id] = "%s@%s" % (op.product.name, op.location.name)
-        return res
+    def get_rec_name(self, name):
+        return "%s@%s" % (self.product.name, self.location.name)
 
-    def search_rec_name(self, name, clause):
+    @classmethod
+    def search_rec_name(cls, name, clause):
         res = []
         names = clause[2].split('@', 1)
         res.append(('product.template.name', clause[1], names[0]))
@@ -196,27 +186,22 @@ class OrderPoint(ModelSQL, ModelView):
             res.append(('location', clause[1], names[1]))
         return res
 
-    def get_location(self, ids, name):
-        res = {}
-        for op in self.browse(ids):
-            if op.type == 'purchase':
-                res[op.id] = op.warehouse_location.id
-            elif op.type == 'internal':
-                res[op.id] = op.storage_location.id
-            else:
-                res[op.id] = None
-        return res
+    def get_location(self, name):
+        if self.type == 'purchase':
+            return self.warehouse_location.id
+        elif self.type == 'internal':
+            return self.storage_location.id
 
-    def search_location(self, name, domain=None):
+    @classmethod
+    def search_location(cls, name, domain=None):
         ids = []
-        for type, field in self._type2field().iteritems():
+        for type, field in cls._type2field().iteritems():
             args = [('type', '=', type)]
             for _, operator, operand in domain:
                 args.append((field, operator, operand))
-            ids.extend(self.search(args))
+            ids.extend([o.id for o in cls.search(args)])
         return [('id', 'in', ids)]
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
-
-OrderPoint()
