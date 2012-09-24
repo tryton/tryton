@@ -1,16 +1,18 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or
 from trytond.backend import TableHandler
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import PoolMeta
+
+__all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
+    'Template', 'TemplateCustomerTax', 'TemplateSupplierTax']
+__metaclass__ = PoolMeta
 
 
-class Category(ModelSQL, ModelView):
-    _name = 'product.category'
-
+class Category:
+    __name__ = 'product.category'
     account_parent = fields.Boolean('Use Parent\'s accounts',
         help='Use the accounts defined on the parent category')
     account_expense = fields.Property(fields.Many2One('account.account',
@@ -58,117 +60,96 @@ class Category(ModelSQL, ModelView):
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
             'Supplier Taxes Used'), 'get_taxes')
 
-    def __init__(self):
-        super(Category, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Category, cls).__setup__()
+        cls._error_messages.update({
             'missing_account': ('There is no account '
                     'expense/revenue defined on the category '
                     '%s (%d)'),
             })
-        self.parent = copy.copy(self.parent)
-        self.parent.states = copy.copy(self.parent.states)
-        self.parent.states['required'] = Or(
-            self.parent.states.get('required', False),
+        cls.parent.states['required'] = Or(
+            cls.parent.states.get('required', False),
             Eval('account_parent', False) | Eval('taxes_parent', False))
-        self.parent.depends = copy.copy(self.parent.depends)
-        self.parent.depends.extend(['account_parent', 'taxes_parent'])
-        self._reset_columns()
+        cls.parent.depends.extend(['account_parent', 'taxes_parent'])
 
-    def get_account(self, ids, name):
-        accounts = {}
-        for category in self.browse(ids):
-            if category.account_parent:
-                accounts[category.id] = category.parent[name].id
-            elif category[name[:-5]]:
-                accounts[category.id] = category[name[:-5]].id
-            else:
-                self.raise_user_error('missing_account',
-                    (category.name, category.id))
-        return accounts
+    def get_account(self, name):
+        if self.account_parent:
+            return getattr(self.parent, name).id
+        elif getattr(self, name[:-5]):
+            return getattr(self, name[:-5]).id
+        else:
+            self.raise_user_error('missing_account', (self.name, self.id))
 
-    def get_taxes(self, ids, name):
-        taxes = {}
-        for category in self.browse(ids):
-            if category.taxes_parent:
-                taxes[category.id] = [x.id for x in category.parent[name]]
-            else:
-                taxes[category.id] = [x.id for x in category[name[:-5]]]
-        return taxes
+    def get_taxes(self, name):
+        if self.taxes_parent:
+            return [x.id for x in getattr(self.parent, name)]
+        else:
+            return [x.id for x in getattr(self, name[:-5])]
 
-    def on_change_account_expense(self, values):
-        account_obj = Pool().get('account.account')
+    def on_change_account_expense(self):
         supplier_taxes = []
         result = {
             'supplier_taxes': supplier_taxes,
-        }
-        if values.get('account_expense'):
-            account = account_obj.browse(values['account_expense'])
-            supplier_taxes.extend(tax.id for tax in account.taxes)
+            }
+        if self.account_expense:
+            supplier_taxes.extend(tax.id for tax in self.account_expense.taxes)
         return result
 
-    def on_change_account_revenue(self, values):
-        account_obj = Pool().get('account.account')
+    def on_change_account_revenue(self):
         customer_taxes = []
         result = {
             'customer_taxes': customer_taxes,
-        }
-        if values.get('account_revenue'):
-            account = account_obj.browse(values['account_revenue'])
-            customer_taxes.extend(tax.id for tax in account.taxes)
+            }
+        if self.account_revenue:
+            customer_taxes.extend(tax.id for tax in self.account_revenue.taxes)
         return result
-
-Category()
 
 
 class CategoryCustomerTax(ModelSQL):
     'Category - Customer Tax'
-    _name = 'product.category-customer-account.tax'
+    __name__ = 'product.category-customer-account.tax'
     _table = 'product_category_customer_taxes_rel'
-    _description = __doc__
     category = fields.Many2One('product.category', 'Category',
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.6 product renamed into category
-        table = TableHandler(cursor, self)
+        table = TableHandler(cursor, cls)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
             table.column_rename('product', 'category')
-        super(CategoryCustomerTax, self).init(module_name)
-
-CategoryCustomerTax()
+        super(CategoryCustomerTax, cls).__register__(module_name)
 
 
 class CategorySupplierTax(ModelSQL):
     'Category - Supplier Tax'
-    _name = 'product.category-supplier-account.tax'
+    __name__ = 'product.category-supplier-account.tax'
     _table = 'product_category_supplier_taxes_rel'
-    _description = __doc__
     category = fields.Many2One('product.category', 'Category',
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.6 product renamed into category
-        table = TableHandler(cursor, self)
+        table = TableHandler(cursor, cls)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
             table.column_rename('product', 'category')
-        super(CategorySupplierTax, self).init(module_name)
-
-CategorySupplierTax()
+        super(CategorySupplierTax, cls).__register__(module_name)
 
 
-class Template(ModelSQL, ModelView):
-    _name = 'product.template'
-
+class Template:
+    __name__ = 'product.template'
     account_category = fields.Boolean('Use Category\'s accounts',
             help='Use the accounts defined on the category')
     account_expense = fields.Property(fields.Many2One('account.account',
@@ -215,92 +196,71 @@ class Template(ModelSQL, ModelView):
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
         'Supplier Taxes Used'), 'get_taxes')
 
-    def __init__(self):
-        super(Template, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Template, cls).__setup__()
+        cls._error_messages.update({
             'missing_account': 'There is no account ' \
                     'expense/revenue defined on the product ' \
                     '%s (%d)',
             })
-        self.category = copy.copy(self.category)
-        self.category.states = copy.copy(self.category.states)
-        self.category.states['required'] = Or(
-            self.category.states.get('required', False),
+        cls.category.states['required'] = Or(
+            cls.category.states.get('required', False),
             Eval('account_category', False) | Eval('taxes_category', False))
-        self.category.depends = copy.copy(self.category.depends)
-        self.category.depends.extend(['account_category', 'taxes_category'])
-        self._reset_columns()
+        cls.category.depends.extend(['account_category', 'taxes_category'])
 
-    def default_taxes_category(self):
+    @staticmethod
+    def default_taxes_category():
         return None
 
-    def get_account(self, ids, name):
-        accounts = {}
-        for product in self.browse(ids):
-            if product.account_category:
-                accounts[product.id] = product.category[name].id
-            elif product[name[:-5]]:
-                accounts[product.id] = product[name[:-5]].id
-            else:
-                self.raise_user_error('missing_account',
-                    (product.name, product.id))
-        return accounts
+    def get_account(self, name):
+        if self.account_category:
+            return getattr(self.category, name).id
+        elif getattr(self, name[:-5]):
+            return getattr(self, name[:-5]).id
+        else:
+            self.raise_user_error('missing_account', (self.name, self.id))
 
-    def get_taxes(self, ids, name):
-        taxes = {}
-        for product in self.browse(ids):
-            if product.taxes_category:
-                taxes[product.id] = [x.id for x in product.category[name]]
-            else:
-                taxes[product.id] = [x.id for x in product[name[:-5]]]
-        return taxes
+    def get_taxes(self, name):
+        if self.taxes_category:
+            return [x.id for x in getattr(self.category, name)]
+        else:
+            return [x.id for x in getattr(self, name[:-5])]
 
-    def on_change_account_expense(self, values):
-        account_obj = Pool().get('account.account')
+    def on_change_account_expense(self):
         supplier_taxes = []
         result = {
             'supplier_taxes': supplier_taxes,
-        }
-        if values.get('account_expense'):
-            account = account_obj.browse(values['account_expense'])
-            supplier_taxes.extend(tax.id for tax in account.taxes)
+            }
+        if self.account_expense:
+            supplier_taxes.extend(tax.id for tax in self.account_expense.taxes)
         return result
 
-    def on_change_account_revenue(self, values):
-        account_obj = Pool().get('account.account')
+    def on_change_account_revenue(self):
         customer_taxes = []
         result = {
             'customer_taxes': customer_taxes,
-        }
-        if values.get('account_revenue'):
-            account = account_obj.browse(values['account_revenue'])
-            customer_taxes.extend(tax.id for tax in account.taxes)
+            }
+        if self.account_revenue:
+            customer_taxes.extend(tax.id for tax in self.account_revenue.taxes)
         return result
-
-Template()
 
 
 class TemplateCustomerTax(ModelSQL):
     'Product Template - Customer Tax'
-    _name = 'product.template-customer-account.tax'
+    __name__ = 'product.template-customer-account.tax'
     _table = 'product_customer_taxes_rel'
-    _description = __doc__
     product = fields.Many2One('product.template', 'Product Template',
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
-
-TemplateCustomerTax()
 
 
 class TemplateSupplierTax(ModelSQL):
     'Product Template - Supplier Tax'
-    _name = 'product.template-supplier-account.tax'
+    __name__ = 'product.template-supplier-account.tax'
     _table = 'product_supplier_taxes_rel'
-    _description = __doc__
     product = fields.Many2One('product.template', 'Product Template',
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
-
-TemplateSupplierTax()
