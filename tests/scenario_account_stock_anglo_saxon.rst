@@ -165,7 +165,7 @@ Create product::
     >>> product.account_journal_stock_customer = stock_journal
     >>> product.account_journal_stock_lost_found = stock_journal
     >>> product.save()
-    >>> product_average = Product(Product.copy(product.id, config.context))
+    >>> product_average = Product(Product.copy([product.id], config.context)[0])
     >>> product_average.cost_price_method = 'average'
     >>> product_average.save()
 
