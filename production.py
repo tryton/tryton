@@ -116,7 +116,7 @@ class Production(Model):
             'warehouse': warehouse.id,
             'location': warehouse.production_location.id,
             'product': product.id,
-            'bom': product.boms[0].id if product.boms else None,
+            'bom': product.boms[0].bom.id if product.boms else None,
             'uom': product.default_uom.id,
             'quantity': quantity,
             'state': 'request',
