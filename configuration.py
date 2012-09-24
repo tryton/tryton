@@ -3,12 +3,12 @@
 from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.pyson import Eval, Bool
 
+__all__ = ['Configuration']
+
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
     'Purchase Configuration'
-    _name = 'purchase.configuration'
-    _description = __doc__
-
+    __name__ = 'purchase.configuration'
     purchase_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Purchase Reference Sequence', domain=[
                 ('company', 'in',
@@ -22,5 +22,3 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                 ], 'Invoice Method', states={
                 'required': Bool(Eval('context', {}).get('company', 0)),
                 }))
-
-Configuration()

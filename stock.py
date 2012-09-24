@@ -7,23 +7,22 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 
+__all__ = ['OpenProductQuantitiesByWarehouse']
+
 
 class OpenProductQuantitiesByWarehouse(Wizard):
-    _name = 'stock.product_quantities_warehouse'
+    __name__ = 'stock.product_quantities_warehouse'
 
-    def do_open_(self, session, action):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        product_supplier_obj = pool.get('purchase.product_supplier')
+    def do_open_(self, action):
+        Product = Pool().get('product.product')
 
         action, data = super(OpenProductQuantitiesByWarehouse,
-            self).do_open_(session, action)
+            self).do_open_(action)
 
-        product = product_obj.browse(Transaction().context['active_id'])
+        product = Product(Transaction().context['active_id'])
         if product.product_suppliers:
             product_supplier = product.product_suppliers[0]
-            supply_date = \
-                product_supplier_obj.compute_supply_date(product_supplier)
+            supply_date = product_supplier.compute_supply_date()
             if supply_date != datetime.date.max:
                 search_value = \
                     PYSONDecoder().decode(action['pyson_search_value'])
@@ -35,5 +34,3 @@ class OpenProductQuantitiesByWarehouse(Wizard):
                 action['pyson_search_value'] = PYSONEncoder().encode(
                     search_value)
         return action, data
-
-OpenProductQuantitiesByWarehouse()

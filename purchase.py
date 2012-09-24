@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
-import copy
 from decimal import Decimal
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
@@ -10,8 +9,17 @@ from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
 from trytond.backend import TableHandler
 from trytond.pyson import Eval, Bool, If, PYSONEncoder, Id
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.config import CONFIG
+
+__all__ = ['Purchase', 'PurchaseInvoice', 'PurchaseIgnoredInvoice',
+    'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
+    'PurchaseLineInvoiceLine', 'PurchaseLineIgnoredMove',
+    'PurchaseLineRecreatedMove', 'PurchaseReport', 'Template', 'Product',
+    'ProductSupplier', 'ProductSupplierPrice', 'ShipmentIn', 'Move',
+    'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
+    'HandleInvoiceExceptionAsk', 'HandleInvoiceException']
+__metaclass__ = PoolMeta
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -21,10 +29,8 @@ _DEPENDS = ['state']
 
 class Purchase(Workflow, ModelSQL, ModelView):
     'Purchase'
-    _name = 'purchase.purchase'
+    __name__ = 'purchase.purchase'
     _rec_name = 'reference'
-    _description = __doc__
-
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -57,7 +63,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
             required=True, states=_STATES, on_change=['party', 'payment_term'],
             select=True, depends=_DEPENDS)
     party_lang = fields.Function(fields.Char('Party Language',
-        on_change_with=['party']), 'get_function_fields')
+            on_change_with=['party']), 'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[('party', '=', Eval('party'))], states=_STATES,
         depends=['state', 'party'])
@@ -71,7 +77,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'get_function_fields')
+            on_change_with=['currency']), 'on_change_with_currency_digits')
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
         states=_STATES, on_change=['lines', 'currency', 'party'],
         depends=_DEPENDS)
@@ -121,15 +127,16 @@ class Purchase(Workflow, ModelSQL, ModelView):
             ('exception', 'Exception'),
             ], 'Shipment State', readonly=True, required=True)
     shipments = fields.Function(fields.One2Many('stock.shipment.in', None,
-        'Shipments'), 'get_function_fields')
+            'Shipments'), 'get_shipments')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
-            'get_function_fields')
+        'get_moves')
 
-    def __init__(self):
-        super(Purchase, self).__init__()
-        self._order.insert(0, ('purchase_date', 'DESC'))
-        self._order.insert(1, ('id', 'DESC'))
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Purchase, cls).__setup__()
+        cls._order.insert(0, ('purchase_date', 'DESC'))
+        cls._order.insert(1, ('id', 'DESC'))
+        cls._error_messages.update({
                 'invoice_addresse_required': 'Invoice addresses must be '
                 'defined for the quotation.',
                 'warehouse_required': 'A warehouse must be defined for the ' \
@@ -138,8 +145,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
                         'an "Account Payable" on the party "%s"!',
                 'delete_cancel': 'Purchase "%s" must be cancelled before '\
                     'deletion!',
-            })
-        self._transitions |= set((
+                })
+        cls._transitions |= set((
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
                 ('confirmed', 'confirmed'),
@@ -148,7 +155,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 ('quotation', 'draft'),
                 ('cancel', 'draft'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'quotation']),
                     },
@@ -178,9 +185,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     },
                 })
         # The states where amounts are cached
-        self._states_cached = ['confirmed', 'done', 'cancel']
+        cls._states_cached = ['confirmed', 'done', 'cancel']
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model_data "\
@@ -193,18 +201,18 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 "WHERE (relation like '%%packing%%' "\
                     "OR name like '%%packing%%') AND module = %s",
                 (module_name,))
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
 
-        super(Purchase, self).init(module_name)
+        super(Purchase, cls).__register__(module_name)
 
         # Migration from 1.2: rename packing to shipment in
         # invoice_method values
-        cursor.execute("UPDATE " + self._table + " "\
+        cursor.execute("UPDATE " + cls._table + " "\
                 "SET invoice_method = 'shipment' "\
                 "WHERE invoice_method = 'packing'")
 
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         # Migration from 2.2: warehouse is no more required
         table.not_null_action('warehouse', 'remove')
 
@@ -212,72 +220,79 @@ class Purchase(Workflow, ModelSQL, ModelView):
         table.not_null_action('purchase_date', 'remove')
 
         # Add index on create_date
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.index_action('create_date', action='add')
 
-    def default_payment_term(self):
-        payment_term_obj = Pool().get('account.invoice.payment_term')
-        payment_term_ids = payment_term_obj.search(self.payment_term.domain)
-        if len(payment_term_ids) == 1:
-            return payment_term_ids[0]
+    @classmethod
+    def default_payment_term(cls):
+        PaymentTerm = Pool().get('account.invoice.payment_term')
+        payment_terms = PaymentTerm.search(cls.payment_term.domain)
+        if len(payment_terms) == 1:
+            return payment_terms[0].id
 
-    def default_warehouse(self):
-        location_obj = Pool().get('stock.location')
-        location_ids = location_obj.search(self.warehouse.domain)
-        if len(location_ids) == 1:
-            return location_ids[0]
+    @classmethod
+    def default_warehouse(cls):
+        Location = Pool().get('stock.location')
+        locations = Location.search(cls.warehouse.domain)
+        if len(locations) == 1:
+            return locations[0].id
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            company = company_obj.browse(company)
+            company = Company(company)
             return company.currency.id
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            company = company_obj.browse(company)
+            company = Company(company)
             return company.currency.digits
         return 2
 
-    def default_invoice_method(self):
-        configuration_obj = Pool().get('purchase.configuration')
-        configuration = configuration_obj.browse(1)
+    @staticmethod
+    def default_invoice_method():
+        Configuration = Pool().get('purchase.configuration')
+        configuration = Configuration(1)
         return configuration.purchase_invoice_method
 
-    def default_invoice_state(self):
+    @staticmethod
+    def default_invoice_state():
         return 'none'
 
-    def default_shipment_state(self):
+    @staticmethod
+    def default_shipment_state():
         return 'none'
 
-    def on_change_party(self, vals):
+    def on_change_party(self):
         pool = Pool()
-        party_obj = pool.get('party.party')
-        address_obj = pool.get('party.address')
-        payment_term_obj = pool.get('account.invoice.payment_term')
-        currency_obj = pool.get('currency.currency')
+        PaymentTerm = pool.get('account.invoice.payment_term')
+        Currency = pool.get('currency.currency')
         cursor = Transaction().cursor
-        res = {
+        changes = {
             'invoice_address': None,
             'payment_term': None,
             'currency': self.default_currency(),
             'currency_digits': self.default_currency_digits(),
-        }
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            res['invoice_address'] = party_obj.address_get(party.id,
-                    type='invoice')
-            if party.supplier_payment_term:
-                res['payment_term'] = party.supplier_payment_term.id
+            }
+        invoice_address = None
+        payment_term = None
+        if self.party:
+            invoice_address = self.party.address_get(type='invoice')
+            if self.party.supplier_payment_term:
+                payment_term = self.party.supplier_payment_term.id
 
             subquery = cursor.limit_clause('SELECT currency '
                 'FROM "' + self._table + '" '
@@ -285,223 +300,139 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 'ORDER BY id DESC', 10)
             cursor.execute('SELECT currency FROM (' + subquery + ') AS p '
                 'GROUP BY currency '
-                'ORDER BY COUNT(1) DESC', (party.id,))
+                'ORDER BY COUNT(1) DESC', (self.party.id,))
             row = cursor.fetchone()
             if row:
                 currency_id, = row
-                currency = currency_obj.browse(currency_id)
-                res['currency'] = currency.id
-                res['currency_digits'] = currency.digits
+                currency = Currency(currency_id)
+                changes['currency'] = currency.id
+                changes['currency_digits'] = currency.digits
 
-        if res['invoice_address']:
-            res['invoice_address.rec_name'] = address_obj.browse(
-                    res['invoice_address']).rec_name
-        if not res['payment_term']:
-            res['payment_term'] = self.default_payment_term()
-        if res['payment_term']:
-            res['payment_term.rec_name'] = payment_term_obj.browse(
-                    res['payment_term']).rec_name
-        return res
+        if invoice_address:
+            changes['invoice_address'] = invoice_address.id
+            changes['invoice_address.rec_name'] = invoice_address.rec_name
+        else:
+            changes['invoice_address'] = None
+        if payment_term:
+            changes['payment_term'] = payment_term.id
+            changes['payment_term.rec_name'] = payment_term.rec_name
+        else:
+            changes['payment_term'] = self.default_payment_term()
+            if changes['payment_term']:
+                changes['payment_term.rec_name'] = PaymentTerm(
+                    changes['payment_term']).rec_name
+        return changes
 
-    def on_change_with_currency_digits(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-            return currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
-    def get_currency_digits(self, purchases):
-        '''
-        Return the number of digits of the currency for each purchases
-
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            number of digits as value
-        '''
-        res = {}
-        for purchase in purchases:
-            res[purchase.id] = purchase.currency.digits
-        return res
-
-    def on_change_with_party_lang(self, vals):
-        party_obj = Pool().get('party.party')
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            if party.lang:
-                return party.lang.code
+    def on_change_with_party_lang(self, name=None):
+        if self.party:
+            if self.party.lang:
+                return self.party.lang.code
         return CONFIG['language']
 
-    def get_tax_context(self, purchase):
-        party_obj = Pool().get('party.party')
-        res = {}
-        if isinstance(purchase, dict):
-            if purchase.get('party'):
-                party = party_obj.browse(purchase['party'])
-                if party.lang:
-                    res['language'] = party.lang.code
-        else:
-            if purchase.party.lang:
-                res['language'] = purchase.party.lang.code
-        return res
+    def get_tax_context(self):
+        context = {}
+        if self.party and self.party.lang:
+            context['language'] = self.party.lang.code
+        return context
 
-    def on_change_lines(self, vals):
+    def on_change_lines(self):
         pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        tax_obj = pool.get('account.tax')
-        invoice_obj = pool.get('account.invoice')
+        Tax = pool.get('account.tax')
+        Invoice = pool.get('account.invoice')
 
-        res = {
+        changes = {
             'untaxed_amount': Decimal('0.0'),
             'tax_amount': Decimal('0.0'),
             'total_amount': Decimal('0.0'),
-        }
-        currency = None
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-        if vals.get('lines'):
-            context = self.get_tax_context(vals)
+            }
+        if self.lines:
+            context = self.get_tax_context()
             taxes = {}
-            for line in vals['lines']:
-                if line.get('type', 'line') != 'line':
+            for line in self.lines:
+                if getattr(line, 'type', 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.get('amount') or Decimal(0)
+                changes['untaxed_amount'] += line.amount or Decimal(0)
 
                 with Transaction().set_context(context):
-                    tax_list = tax_obj.compute(line.get('taxes', []),
-                            line.get('unit_price') or Decimal('0.0'),
-                            line.get('quantity') or 0.0)
+                    tax_list = Tax.compute(getattr(line, 'taxes', []),
+                        line.unit_price or Decimal('0.0'),
+                        line.quantity or 0.0)
                 for tax in tax_list:
-                    key, val = invoice_obj._compute_tax(tax, 'in_invoice')
+                    key, val = Invoice._compute_tax(tax, 'in_invoice')
                     if not key in taxes:
                         taxes[key] = val['amount']
                     else:
                         taxes[key] += val['amount']
-            if currency:
+            if self.currency:
                 for value in taxes.itervalues():
-                    res['tax_amount'] += currency_obj.round(currency, value)
-        if currency:
-            res['untaxed_amount'] = currency_obj.round(currency,
-                    res['untaxed_amount'])
-            res['tax_amount'] = currency_obj.round(currency, res['tax_amount'])
-        res['total_amount'] = res['untaxed_amount'] + res['tax_amount']
-        if currency:
-            res['total_amount'] = currency_obj.round(currency,
-                    res['total_amount'])
-        return res
+                    changes['tax_amount'] += self.currency.round(value)
+        if self.currency:
+            changes['untaxed_amount'] = self.currency.round(
+                changes['untaxed_amount'])
+            changes['tax_amount'] = self.currency.round(changes['tax_amount'])
+        changes['total_amount'] = (changes['untaxed_amount']
+            + changes['tax_amount'])
+        if self.currency:
+            changes['total_amount'] = self.currency.round(
+                changes['total_amount'])
+        return changes
 
-    def get_function_fields(self, ids, names):
-        '''
-        Function to compute function fields for purchase ids.
-
-        :param ids: the ids of the purchases
-        :param names: the list of field name to compute
-        :param args: optional argument
-        :return: a dictionary with all field names as key and
-            a dictionary as value with id as key
-        '''
-        res = {}
-        purchases = self.browse(ids)
-        if 'currency_digits' in names:
-            res['currency_digits'] = self.get_currency_digits(purchases)
-        if 'party_lang' in names:
-            res['party_lang'] = self.get_party_lang(purchases)
-        if 'shipments' in names:
-            res['shipments'] = self.get_shipments(purchases)
-        if 'moves' in names:
-            res['moves'] = self.get_moves(purchases)
-        return res
-
-    def get_party_lang(self, purchases):
-        '''
-        Return the language code of the party of each purchases
-
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            a language code as value
-        '''
-        res = {}
-        for purchase in purchases:
-            if purchase.party.lang:
-                res[purchase.id] = purchase.party.lang.code
-            else:
-                res[purchase.id] = CONFIG['language']
-        return res
-
-    def get_untaxed_amount(self, ids, name):
+    def get_untaxed_amount(self, name):
         '''
         Return the untaxed amount for each purchases
         '''
-        currency_obj = Pool().get('currency.currency')
-        amounts = {}
-        for purchase in self.browse(ids):
-            if (purchase.state in self._states_cached
-                    and purchase.untaxed_amount_cache is not None):
-                amounts[purchase.id] = purchase.untaxed_amount_cache
-                continue
-            amount = sum((l.amount for l in purchase.lines
-                    if l.type == 'line'), Decimal(0))
-            amounts[purchase.id] = currency_obj.round(purchase.currency,
-                    amount)
-        return amounts
+        if (self.state in self._states_cached
+                and self.untaxed_amount_cache is not None):
+            return self.untaxed_amount_cache
+        amount = sum((l.amount for l in self.lines
+                if l.type == 'line'), Decimal(0))
+        return self.currency.round(amount)
 
-    def get_tax_amount(self, ids, name):
-        '''
-        Return the tax amount for each purchases
-        '''
+    def get_tax_amount(self, name):
         pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        tax_obj = pool.get('account.tax')
-        invoice_obj = pool.get('account.invoice')
+        Tax = pool.get('account.tax')
+        Invoice = pool.get('account.invoice')
 
-        amounts = {}
-        for purchase in self.browse(ids):
-            if (purchase.state in self._states_cached
-                    and purchase.tax_amount_cache is not None):
-                amounts[purchase.id] = purchase.tax_amount_cache
+        if (self.state in self._states_cached
+                and self.tax_amount_cache is not None):
+            return self.tax_amount_cache
+        context = self.get_tax_context()
+        taxes = {}
+        for line in self.lines:
+            if line.type != 'line':
                 continue
-            context = self.get_tax_context(purchase)
-            taxes = {}
-            for line in purchase.lines:
-                if line.type != 'line':
-                    continue
-                with Transaction().set_context(context):
-                    tax_list = tax_obj.compute([t.id for t in line.taxes],
-                            line.unit_price, line.quantity)
-                # Don't round on each line to handle rounding error
-                for tax in tax_list:
-                    key, val = invoice_obj._compute_tax(tax, 'in_invoice')
-                    if not key in taxes:
-                        taxes[key] = val['amount']
-                    else:
-                        taxes[key] += val['amount']
-            amount = sum((currency_obj.round(purchase.currency, tax)
-                    for tax in taxes.itervalues()), Decimal(0))
-            amounts[purchase.id] = currency_obj.round(purchase.currency,
-                amount)
-        return amounts
+            with Transaction().set_context(context):
+                tax_list = Tax.compute(line.taxes, line.unit_price,
+                    line.quantity)
+            # Don't round on each line to handle rounding error
+            for tax in tax_list:
+                key, val = Invoice._compute_tax(tax, 'in_invoice')
+                if not key in taxes:
+                    taxes[key] = val['amount']
+                else:
+                    taxes[key] += val['amount']
+        amount = sum((self.currency.round(tax) for tax in taxes.itervalues()),
+            Decimal(0))
+        return self.currency.round(amount)
 
-    def get_total_amount(self, ids, name):
-        '''
-        Return the total amount of each purchases
-        '''
-        currency_obj = Pool().get('currency.currency')
-        amounts = {}
-        for purchase in self.browse(ids):
-            if (purchase.state in self._states_cached
-                    and purchase.total_amount_cache is not None):
-                amounts[purchase.id] = purchase.total_amount_cache
-                continue
-            amounts[purchase.id] = currency_obj.round(purchase.currency,
-                    purchase.untaxed_amount + purchase.tax_amount)
-        return amounts
+    def get_total_amount(self, name):
+        if (self.state in self._states_cached
+                and self.total_amount_cache is not None):
+            return self.total_amount_cache
+        return self.currency.round(self.untaxed_amount + self.tax_amount)
 
-    def get_invoice_state(self, purchase):
+    def get_invoice_state(self):
         '''
         Return the invoice state for the purchase.
         '''
-        skip_ids = set(x.id for x in purchase.invoices_ignored)
-        skip_ids.update(x.id for x in purchase.invoices_recreated)
-        invoices = [i for i in purchase.invoices if i.id not in skip_ids]
+        skip_ids = set(x.id for x in self.invoices_ignored)
+        skip_ids.update(x.id for x in self.invoices_recreated)
+        invoices = [i for i in self.invoices if i.id not in skip_ids]
         if invoices:
             if any(i.state == 'cancel' for i in invoices):
                 return 'exception'
@@ -511,93 +442,69 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 return 'waiting'
         return 'none'
 
-    def set_invoice_state(self, purchase):
+    def set_invoice_state(self):
         '''
         Set the invoice state.
         '''
-        state = self.get_invoice_state(purchase)
-        if purchase.invoice_state != state:
-            self.write(purchase.id, {
+        state = self.get_invoice_state()
+        if self.invoice_state != state:
+            self.write([self], {
                     'invoice_state': state,
                     })
 
-    def get_shipments(self, purchases):
-        '''
-        Return the shipments for the purchases.
+    def get_shipments(self, name):
+        shipments = []
+        for line in self.lines:
+            for move in line.moves:
+                if move.shipment_in:
+                    if move.shipment_in.id not in shipments:
+                        shipments.append(move.shipment_in.id)
+        return shipments
 
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            a list of shipment_in id as value
-        '''
-        res = {}
-        for purchase in purchases:
-            res[purchase.id] = []
-            for line in purchase.lines:
-                for move in line.moves:
-                    if move.shipment_in:
-                        if move.shipment_in.id not in res[purchase.id]:
-                            res[purchase.id].append(move.shipment_in.id)
-        return res
+    def get_moves(self, name):
+        return [m.id for l in self.lines for m in l.moves]
 
-    def get_moves(self, purchases):
-        '''
-        Return the moves for the purchases.
-
-        :param purchases: a BrowseRecordList of purchases
-        :return: a dictionary with purchase id as key and
-            a list of moves id as value
-        '''
-        res = {}
-        for purchase in purchases:
-            res[purchase.id] = []
-            for line in purchase.lines:
-                res[purchase.id].extend([x.id for x in line.moves])
-        return res
-
-    def get_shipment_state(self, purchase):
+    def get_shipment_state(self):
         '''
         Return the shipment state for the purchase.
         '''
-        if purchase.moves:
-            if any(l.move_exception for l in purchase.lines):
+        if self.moves:
+            if any(l.move_exception for l in self.lines):
                 return 'exception'
-            elif all(l.move_done for l in purchase.lines):
+            elif all(l.move_done for l in self.lines):
                 return 'received'
             else:
                 return 'waiting'
         return 'none'
 
-    def set_shipment_state(self, purchase):
+    def set_shipment_state(self):
         '''
         Set the shipment state.
         '''
-        state = self.get_shipment_state(purchase)
-        if purchase.shipment_state != state:
-            self.write(purchase.id, {
+        state = self.get_shipment_state()
+        if self.shipment_state != state:
+            self.write([self], {
                     'shipment_state': state,
                     })
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for purchase in self.browse(ids):
-            res[purchase.id] = purchase.reference or str(purchase.id) \
-                    + ' - ' + purchase.party.name
-        return res
+    def get_rec_name(self, name):
+        return (self.reference or str(self.id)
+            + ' - ' + self.party.name)
 
-    def search_rec_name(self, name, clause):
+    @classmethod
+    def search_rec_name(cls, name, clause):
         names = clause[2].split(' - ', 1)
-        ids = self.search(['OR',
-            ('reference', clause[1], names[0]),
-            ('supplier_reference', clause[1], names[0]),
-            ], order=[])
-        res = [('id', 'in', ids)]
+        purchases = cls.search(['OR',
+                ('reference', clause[1], names[0]),
+                ('supplier_reference', clause[1], names[0]),
+                ], order=[])
+        res = [('id', 'in', [p.id for p in purchases])]
         if len(names) != 1 and names[1]:
             res.append(('party', clause[1], names[1]))
         return res
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, purchases, default=None):
         if default is None:
             default = {}
         default = default.copy()
@@ -608,260 +515,244 @@ class Purchase(Workflow, ModelSQL, ModelView):
         default['invoices_ignored'] = None
         default['shipment_state'] = 'none'
         default.setdefault('purchase_date', None)
-        return super(Purchase, self).copy(ids, default=default)
+        return super(Purchase, cls).copy(purchases, default=default)
 
-    def check_for_quotation(self, ids):
-        purchases = self.browse(ids)
-        for purchase in purchases:
-            if not purchase.invoice_address:
-                self.raise_user_error('invoice_addresse_required')
-            for line in purchase.lines:
-                if (not line.to_location
-                        and line.product
-                        and line.product.type in ('goods', 'assets')):
-                    self.raise_user_error('warehouse_required')
+    def check_for_quotation(self):
+        if not self.invoice_address:
+            self.raise_user_error('invoice_addresse_required')
+        for line in self.lines:
+            if (not line.to_location
+                    and line.product
+                    and line.product.type in ('goods', 'assets')):
+                self.raise_user_error('warehouse_required')
 
-    def set_reference(self, ids):
+    @classmethod
+    def set_reference(cls, purchases):
         '''
         Fill the reference field with the purchase sequence
         '''
-        sequence_obj = Pool().get('ir.sequence')
-        config_obj = Pool().get('purchase.configuration')
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Config = pool.get('purchase.configuration')
 
-        config = config_obj.browse(1)
-        purchases = self.browse(ids)
+        config = Config(1)
         for purchase in purchases:
             if purchase.reference:
                 continue
-            reference = sequence_obj.get_id(config.purchase_sequence.id)
-            self.write(purchase.id, {
-                'reference': reference,
-                })
-
-    def set_purchase_date(self, ids):
-        date_obj = Pool().get('ir.date')
-        for purchase in self.browse(ids):
-            if not purchase.purchase_date:
-                self.write(purchase.id, {
-                    'purchase_date': date_obj.today(),
+            reference = Sequence.get_id(config.purchase_sequence.id)
+            cls.write([purchase], {
+                    'reference': reference,
                     })
 
-    def store_cache(self, ids):
-        for purchase in self.browse(ids):
-            self.write(purchase.id, {
+    @classmethod
+    def set_purchase_date(cls, purchases):
+        Date = Pool().get('ir.date')
+        for purchase in purchases:
+            if not purchase.purchase_date:
+                cls.write([purchase], {
+                        'purchase_date': Date.today(),
+                        })
+
+    @classmethod
+    def store_cache(cls, purchases):
+        for purchase in purchases:
+            cls.write([purchase], {
                     'untaxed_amount_cache': purchase.untaxed_amount,
                     'tax_amount_cache': purchase.tax_amount,
                     'total_amount_cache': purchase.total_amount,
                     })
 
-    def _get_invoice_line_purchase_line(self, purchase):
+    def _get_invoice_line_purchase_line(self):
         '''
-        Return invoice line values for each purchase lines
-
-        :param purchase: a BrowseRecord of the purchase
-        :return: a dictionary with invoiced purchase line id as key
-            and a list of invoice line values as value
+        Return invoice line for each purchase lines
         '''
-        line_obj = Pool().get('purchase.line')
         res = {}
-        for line in purchase.lines:
-            val = line_obj.get_invoice_line(line)
+        for line in self.lines:
+            val = line.get_invoice_line()
             if val:
                 res[line.id] = val
         return res
 
-    def _get_invoice_purchase(self, purchase):
+    def _get_invoice_purchase(self):
         '''
-        Return invoice values for purchase
-
-        :param purchase: the BrowseRecord of the purchase
-
-        :return: a dictionary with purchase fields as key and
-            purchase values as value
-        '''
-        journal_obj = Pool().get('account.journal')
-
-        journal_id = journal_obj.search([
-            ('type', '=', 'expense'),
-            ], limit=1)
-        if journal_id:
-            journal_id = journal_id[0]
-
-        res = {
-            'company': purchase.company.id,
-            'type': 'in_invoice',
-            'reference': purchase.reference,
-            'journal': journal_id,
-            'party': purchase.party.id,
-            'invoice_address': purchase.invoice_address.id,
-            'currency': purchase.currency.id,
-            'account': purchase.party.account_payable.id,
-            'payment_term': purchase.payment_term.id,
-        }
-        return res
-
-    def create_invoice(self, purchase):
-        '''
-        Create an invoice for the purchase and return the id
+        Return invoice
         '''
         pool = Pool()
-        invoice_obj = pool.get('account.invoice')
-        invoice_line_obj = pool.get('account.invoice.line')
-        purchase_line_obj = pool.get('purchase.line')
+        Journal = pool.get('account.journal')
+        Invoice = pool.get('account.invoice')
 
-        if purchase.invoice_method == 'manual':
+        journals = Journal.search([
+                ('type', '=', 'expense'),
+                ], limit=1)
+        if journals:
+            journal, = journals
+        else:
+            journal = None
+
+        with Transaction().set_user(0, set_context=True):
+            return Invoice(
+                company=self.company,
+                type='in_invoice',
+                reference=self.reference,
+                journal=journal,
+                party=self.party,
+                invoice_address=self.invoice_address,
+                currency=self.currency,
+                account=self.party.account_payable,
+                payment_term=self.payment_term,
+                )
+
+    def create_invoice(self):
+        '''
+        Create an invoice for the purchase and return it
+        '''
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        PurchaseLine = pool.get('purchase.line')
+
+        if self.invoice_method == 'manual':
             return
 
-        if not purchase.party.account_payable:
+        if not self.party.account_payable:
             self.raise_user_error('missing_account_payable',
-                    error_args=(purchase.party.rec_name,))
+                    error_args=(self.party.rec_name,))
 
-        invoice_lines = self._get_invoice_line_purchase_line(purchase)
+        invoice_lines = self._get_invoice_line_purchase_line()
         if not invoice_lines:
             return
 
-        vals = self._get_invoice_purchase(purchase)
-        with Transaction().set_user(0, set_context=True):
-            invoice_id = invoice_obj.create(vals)
+        invoice = self._get_invoice_purchase()
+        invoice.save()
 
-        for line in purchase.lines:
+        for line in self.lines:
             if line.id not in invoice_lines:
                 continue
-            for vals in invoice_lines[line.id]:
-                vals['invoice'] = invoice_id
-                with Transaction().set_user(0, set_context=True):
-                    invoice_line_id = invoice_line_obj.create(vals)
-                purchase_line_obj.write(line.id, {
-                    'invoice_lines': [('add', invoice_line_id)],
-                    })
+            for invoice_line in invoice_lines[line.id]:
+                invoice_line.invoice = invoice.id
+                invoice_line.save()
+                PurchaseLine.write([line], {
+                        'invoice_lines': [('add', [invoice_line.id])],
+                        })
 
         with Transaction().set_user(0, set_context=True):
-            invoice_obj.update_taxes([invoice_id])
+            Invoice.update_taxes([invoice])
 
-        self.write(purchase.id, {
-            'invoices': [('add', invoice_id)],
-        })
-        return invoice_id
+        self.write([self], {
+                'invoices': [('add', [invoice.id])],
+                })
+        return invoice
 
-    def create_move(self, purchase):
+    def create_move(self):
         '''
         Create move for each purchase lines
         '''
-        line_obj = Pool().get('purchase.line')
+        for line in self.lines:
+            line.create_move()
 
-        for line in purchase.lines:
-            line_obj.create_move(line)
+    def is_done(self):
+        return ((self.invoice_state == 'paid'
+                or self.invoice_method == 'manual')
+            and self.shipment_state == 'received')
 
-    def is_done(self, purchase):
-        return ((purchase.invoice_state == 'paid'
-                or purchase.invoice_method == 'manual')
-            and purchase.shipment_state == 'received')
-
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(cls, purchases):
         # Cancel before delete
-        self.cancel(ids)
-        for purchase in self.browse(ids):
+        cls.cancel(purchases)
+        for purchase in purchases:
             if purchase.state != 'cancel':
-                self.raise_user_error('delete_cancel', purchase.rec_name)
-        return super(Purchase, self).delete(ids)
+                cls.raise_user_error('delete_cancel', purchase.rec_name)
+        super(Purchase, cls).delete(purchases)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, ids):
-        self.store_cache(ids)
+    def cancel(cls, purchases):
+        cls.store_cache(purchases)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
+    def draft(cls, purchases):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('quotation')
-    def quote(self, ids):
-        self.check_for_quotation(ids)
-        self.set_reference(ids)
+    def quote(cls, purchases):
+        for purchase in purchases:
+            purchase.check_for_quotation()
+        cls.set_reference(purchases)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
-    def confirm(self, ids):
-        self.set_purchase_date(ids)
-        self.store_cache(ids)
-        self.process(ids)
+    def confirm(cls, purchases):
+        cls.set_purchase_date(purchases)
+        cls.store_cache(purchases)
+        cls.process(purchases)
 
+    @classmethod
     @ModelView.button_action('purchase.wizard_invoice_handle_exception')
-    def handle_invoice_exception(self, ids):
+    def handle_invoice_exception(cls, purchases):
         pass
 
+    @classmethod
     @ModelView.button_action('purchase.wizard_shipment_handle_exception')
-    def handle_shipment_exception(self, ids):
+    def handle_shipment_exception(cls, purchases):
         pass
 
-    def process(self, ids):
+    @classmethod
+    def process(cls, purchases):
         done = []
-        for purchase in self.browse(ids):
+        for purchase in purchases:
             if purchase.state in ('done', 'cancel'):
                 continue
-            self.create_invoice(purchase)
-            self.set_invoice_state(purchase)
-            self.create_move(purchase)
-            self.set_shipment_state(purchase)
-            if self.is_done(purchase):
-                done.append(purchase.id)
+            purchase.create_invoice()
+            purchase.set_invoice_state()
+            purchase.create_move()
+            purchase.set_shipment_state()
+            if purchase.is_done():
+                done.append(purchase)
         if done:
-            self.write(done, {
+            cls.write(done, {
                     'state': 'done',
                     })
-
-Purchase()
 
 
 class PurchaseInvoice(ModelSQL):
     'Purchase - Invoice'
-    _name = 'purchase.purchase-account.invoice'
+    __name__ = 'purchase.purchase-account.invoice'
     _table = 'purchase_invoices_rel'
-    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
 
-PurchaseInvoice()
 
-
-class PuchaseIgnoredInvoice(ModelSQL):
+class PurchaseIgnoredInvoice(ModelSQL):
     'Purchase - Ignored Invoice'
-    _name = 'purchase.purchase-ignored-account.invoice'
+    __name__ = 'purchase.purchase-ignored-account.invoice'
     _table = 'purchase_invoice_ignored_rel'
-    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
-
-PuchaseIgnoredInvoice()
 
 
 class PurchaseRecreadtedInvoice(ModelSQL):
     'Purchase - Recreated Invoice'
-    _name = 'purchase.purchase-recreated-account.invoice'
+    __name__ = 'purchase.purchase-recreated-account.invoice'
     _table = 'purchase_invoice_recreated_rel'
-    _description = __doc__
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
             ondelete='RESTRICT', select=True, required=True)
 
-PurchaseRecreadtedInvoice()
-
 
 class PurchaseLine(ModelSQL, ModelView):
     'Purchase Line'
-    _name = 'purchase.line'
+    __name__ = 'purchase.line'
     _rec_name = 'description'
-    _description = __doc__
-
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
     sequence = fields.Integer('Sequence',
@@ -898,7 +789,7 @@ class PurchaseLine(ModelSQL, ModelView):
             '_parent_purchase.party'],
         depends=['product', 'type', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'get_unit_digits')
+            on_change_with=['unit']), 'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         domain=[('purchasable', '=', True)],
         states={
@@ -920,7 +811,7 @@ class PurchaseLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category',
             on_change_with=['product']),
-        'get_product_uom_category')
+        'on_change_with_product_uom_category')
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
             'invisible': Eval('type') != 'line',
@@ -960,12 +851,13 @@ class PurchaseLine(ModelSQL, ModelView):
     delivery_date = fields.Function(fields.Date('Delivery Date',
             on_change_with=['product', '_parent_purchase.purchase_date',
                 '_parent_purchase.party']),
-        'get_delivery_date')
+        'on_change_with_delivery_date')
 
-    def __init__(self):
-        super(PurchaseLine, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(PurchaseLine, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._error_messages.update({
             'supplier_location_required': 'The supplier location is required!',
             'missing_account_expense': 'It misses ' \
                     'an "Account Expense" on product "%s"!',
@@ -973,345 +865,261 @@ class PurchaseLine(ModelSQL, ModelView):
                     'an "account expense" default property!',
             })
 
-    def init(self, module_name):
-        super(PurchaseLine, self).init(module_name)
+    @classmethod
+    def __register__(cls, module_name):
+        super(PurchaseLine, cls).__register__(module_name)
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
-            cursor.execute('UPDATE "' + self._table + '" ' \
+            cursor.execute('UPDATE "' + cls._table + '" ' \
                     'SET note = comment')
             table.drop_column('comment', exception=True)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'line'
 
-    def get_move_done(self, ids, name):
-        uom_obj = Pool().get('product.uom')
-        res = {}
-        for line in self.browse(ids):
-            val = True
-            if not line.product:
-                res[line.id] = True
-                continue
-            if line.product.type == 'service':
-                res[line.id] = True
-                continue
-            skip_ids = set(x.id for x in line.moves_recreated + \
-                                line.moves_ignored)
-            quantity = line.quantity
-            for move in line.moves:
-                if move.state != 'done' \
-                        and move.id not in skip_ids:
-                    val = False
-                    break
-                quantity -= uom_obj.compute_qty(move.uom, move.quantity,
-                        line.unit)
-            if val:
-                if quantity > 0.0:
-                    val = False
-            res[line.id] = val
-        return res
+    def get_move_done(self, name):
+        Uom = Pool().get('product.uom')
+        done = True
+        if not self.product:
+            return True
+        if self.product.type == 'service':
+            return True
+        skip_ids = set(x.id for x in self.moves_recreated
+            + self.moves_ignored)
+        quantity = self.quantity
+        for move in self.moves:
+            if move.state != 'done' \
+                    and move.id not in skip_ids:
+                done = False
+                break
+            quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
+        if done:
+            if quantity > 0.0:
+                done = False
+        return done
 
-    def get_move_exception(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            val = False
-            skip_ids = set(x.id for x in line.moves_ignored + \
-                               line.moves_recreated)
-            for move in line.moves:
-                if move.state == 'cancel' \
-                        and move.id not in skip_ids:
-                    val = True
-                    break
-            res[line.id] = val
-        return res
+    def get_move_exception(self, name):
+        skip_ids = set(x.id for x in self.moves_ignored
+            + self.moves_recreated)
+        for move in self.moves:
+            if move.state == 'cancel' \
+                    and move.id not in skip_ids:
+                return True
+        return False
 
-    def on_change_with_unit_digits(self, vals):
-        uom_obj = Pool().get('product.uom')
-        if vals.get('unit'):
-            uom = uom_obj.browse(vals['unit'])
-            return uom.digits
+    def on_change_with_unit_digits(self, name=None):
+        if self.unit:
+            return self.unit.digits
         return 2
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            if line.unit:
-                res[line.id] = line.unit.digits
-            else:
-                res[line.id] = 2
-        return res
-
-    def _get_tax_rule_pattern(self, party, vals):
+    def _get_tax_rule_pattern(self):
         '''
         Get tax rule pattern
-
-        :param party: the BrowseRecord of the party
-        :param vals: a dictionary with value from on_change
-        :return: a dictionary to use as pattern for tax rule
         '''
-        res = {}
-        return res
+        return {}
 
-    def on_change_product(self, vals):
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        product_obj = pool.get('product.product')
-        tax_rule_obj = pool.get('account.tax.rule')
+    def _get_context_purchase_price(self):
+        context = {}
+        if self.purchase:
+            if self.purchase.currency:
+                context['currency'] = self.purchase.currency.id
+            if self.purchase.party:
+                context['supplier'] = self.purchase.party.id
+            if self.purchase.purchase_date:
+                context['purchase_date'] = self.purchase.purchase_date
+        if self.unit:
+            context['uom'] = self.unit.id
+        else:
+            self.product.purchase_uom.id
+        return context
 
-        if not vals.get('product'):
+    def on_change_product(self):
+        Product = Pool().get('product.product')
+
+        if not self.product:
             return {}
         res = {}
 
         context = {}
         party = None
-        if vals.get('_parent_purchase.party'):
-            party = party_obj.browse(vals['_parent_purchase.party'])
+        if self.purchase and self.purchase.party:
+            party = self.purchase.party
             if party.lang:
                 context['language'] = party.lang.code
 
-        product = product_obj.browse(vals['product'])
-
-        context2 = {}
-        if vals.get('_parent_purchase.currency'):
-            context2['currency'] = vals['_parent_purchase.currency']
-        if vals.get('_parent_purchase.party'):
-            context2['supplier'] = vals['_parent_purchase.party']
-        if vals.get('unit'):
-            context2['uom'] = vals['unit']
-        else:
-            context2['uom'] = product.purchase_uom.id
-        if vals.get('_parent_purchase.purchase_date'):
-            context2['purchase_date'] = vals['_parent_purchase.purchase_date']
-        with Transaction().set_context(context2):
-            res['unit_price'] = product_obj.get_purchase_price([product.id],
-                    vals.get('quantity') or 0)[product.id]
+        with Transaction().set_context(self._get_context_purchase_price()):
+            res['unit_price'] = Product.get_purchase_price([self.product],
+                self.quantity or 0)[self.product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
-                    Decimal(1) / 10 ** self.unit_price.digits[1])
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
         res['taxes'] = []
-        pattern = self._get_tax_rule_pattern(party, vals)
-        for tax in product.supplier_taxes_used:
+        pattern = self._get_tax_rule_pattern()
+        for tax in self.product.supplier_taxes_used:
             if party and party.supplier_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, tax,
-                        pattern)
+                tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
                 continue
             res['taxes'].append(tax.id)
         if party and party.supplier_tax_rule:
-            tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, None,
-                    pattern)
+            tax_ids = party.supplier_tax_rule.apply(None, pattern)
             if tax_ids:
                 res['taxes'].extend(tax_ids)
 
-        if not vals.get('description'):
+        if not self.description:
             with Transaction().set_context(context):
-                res['description'] = product_obj.browse(product.id).rec_name
+                res['description'] = Product(self.product.id).rec_name
 
-        category = product.purchase_uom.category
-        if not vals.get('unit') \
-                or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = product.purchase_uom.id
-            res['unit.rec_name'] = product.purchase_uom.rec_name
-            res['unit_digits'] = product.purchase_uom.digits
+        category = self.product.purchase_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            res['unit'] = self.product.purchase_uom.id
+            res['unit.rec_name'] = self.product.purchase_uom.rec_name
+            res['unit_digits'] = self.product.purchase_uom.digits
 
-        vals = vals.copy()
-        vals['unit_price'] = res['unit_price']
-        vals['type'] = 'line'
-        res['amount'] = self.on_change_with_amount(vals)
+        self.unit_price = res['unit_price']
+        self.type = 'line'
+        res['amount'] = self.on_change_with_amount()
         return res
 
-    def on_change_with_product_uom_category(self, values):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return product.default_uom_category.id
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
-    def get_product_uom_category(self, ids, name):
-        categories = {}
-        for line in self.browse(ids):
-            if line.product:
-                categories[line.id] = line.product.default_uom_category.id
-            else:
-                categories[line.id] = None
-        return categories
+    def on_change_quantity(self):
+        Product = Pool().get('product.product')
 
-    def on_change_quantity(self, vals):
-        product_obj = Pool().get('product.product')
-
-        if not vals.get('product'):
+        if not self.product:
             return {}
         res = {}
 
-        context = {}
-        if vals.get('_parent_purchase.currency'):
-            context['currency'] = vals['_parent_purchase.currency']
-        if vals.get('_parent_purchase.party'):
-            context['supplier'] = vals['_parent_purchase.party']
-        if vals.get('_parent_purchase.purchase_date'):
-            context['purchase_date'] = vals['_parent_purchase.purchase_date']
-        if vals.get('unit'):
-            context['uom'] = vals['unit']
-        with Transaction().set_context(context):
-            res['unit_price'] = product_obj.get_purchase_price(
-                    [vals['product']], vals.get('quantity') or 0
-                    )[vals['product']]
+        with Transaction().set_context(self._get_context_purchase_price()):
+            res['unit_price'] = Product.get_purchase_price([self.product],
+                self.quantity or 0)[self.product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
-                    Decimal(1) / 10 ** self.unit_price.digits[1])
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
         return res
 
-    def on_change_unit(self, vals):
-        return self.on_change_quantity(vals)
+    def on_change_unit(self):
+        return self.on_change_quantity()
 
-    def on_change_with_amount(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('type') == 'line':
-            currency = vals.get('_parent_purchase.currency')
-            if currency and isinstance(currency, (int, long)):
-                currency = currency_obj.browse(
-                        vals['_parent_purchase.currency'])
-            amount = Decimal(str(vals.get('quantity') or '0.0')) * \
-                    (vals.get('unit_price') or Decimal('0.0'))
+    def on_change_with_amount(self):
+        if self.type == 'line':
+            currency = self.purchase.currency if self.purchase else None
+            amount = Decimal(str(self.quantity or '0.0')) * \
+                (self.unit_price or Decimal('0.0'))
             if currency:
-                return currency_obj.round(currency, amount)
+                return currency.round(amount)
             return amount
         return Decimal('0.0')
 
-    def get_amount(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
-        res = {}
-        for line in self.browse(ids):
-            if line.type == 'line':
-                res[line.id] = currency_obj.round(line.purchase.currency,
-                        Decimal(str(line.quantity)) * line.unit_price)
-            elif line.type == 'subtotal':
-                res[line.id] = Decimal('0.0')
-                for line2 in line.purchase.lines:
-                    if line2.type == 'line':
-                        res[line.id] += currency_obj.round(
-                            line2.purchase.currency,
-                            Decimal(str(line2.quantity)) * line2.unit_price)
-                    elif line2.type == 'subtotal':
-                        if line.id == line2.id:
-                            break
-                        res[line.id] = Decimal('0.0')
-            else:
-                res[line.id] = Decimal('0.0')
-        return res
+    def get_amount(self, name):
+        if self.type == 'line':
+            return self.purchase.currency.round(
+                Decimal(str(self.quantity)) * self.unit_price)
+        elif self.type == 'subtotal':
+            amount = Decimal('0.0')
+            for line2 in self.purchase.lines:
+                if line2.type == 'line':
+                    amount += line2.purchase.currency.round(
+                        Decimal(str(line2.quantity)) * line2.unit_price)
+                elif line2.type == 'subtotal':
+                    if self == line2:
+                        break
+                    amount = Decimal('0.0')
+            return amount
+        return Decimal('0.0')
 
-    def get_from_location(self, ids, name):
-        result = {}
-        for line in self.browse(ids):
-            result[line.id] = line.purchase.party.supplier_location.id
-        return result
+    def get_from_location(self, name):
+        return self.purchase.party.supplier_location.id
 
-    def get_to_location(self, ids, name):
-        result = {}
-        for line in self.browse(ids):
-            if line.purchase.warehouse:
-                result[line.id] = line.purchase.warehouse.input_location.id
-            else:
-                result[line.id] = None
-        return result
+    def get_to_location(self, name):
+        if self.purchase.warehouse:
+            return self.purchase.warehouse.input_location.id
 
-    def _compute_delivery_date(self, product, party, date):
-        product_supplier_obj = Pool().get('purchase.product_supplier')
-        if product and product.product_suppliers:
-            for product_supplier in product.product_suppliers:
-                if product_supplier.party.id == party.id:
-                    return product_supplier_obj.compute_supply_date(
-                        product_supplier, date=date)
+    def on_change_with_delivery_date(self, name=None):
+        if (self.product
+                and self.purchase and self.purchase.party
+                and self.product.product_suppliers):
+            date = self.purchase.purchase_date if self.purchase else None
+            for product_supplier in self.product.product_suppliers:
+                if product_supplier.party == self.purchase.party:
+                    return product_supplier.compute_supply_date(date=date)
 
-    def on_change_with_delivery_date(self, values):
+    def get_invoice_line(self):
+        '''
+        Return a list of invoice line for purchase line
+        '''
         pool = Pool()
-        product_obj = pool.get('product.product')
-        party_obj = pool.get('party.party')
-        if values.get('product') and values.get('_parent_purchase.party'):
-            product = product_obj.browse(values['product'])
-            party = party_obj.browse(values['_parent_purchase.party'])
-            return self._compute_delivery_date(product, party,
-                values.get('_parent_purchase.purchase_date'))
+        Uom = pool.get('product.uom')
+        Property = pool.get('ir.property')
+        InvoiceLine = pool.get('account.invoice.line')
 
-    def get_delivery_date(self, ids, name):
-        dates = {}
-        for line in self.browse(ids):
-            dates[line.id] = self._compute_delivery_date(line.product,
-                line.purchase.party, line.purchase.purchase_date)
-        return dates
-
-    def get_invoice_line(self, line):
-        '''
-        Return invoice line values for purchase line
-
-        :param line: a BrowseRecord of the purchase line
-        :return: a list of invoice line values
-        '''
-        uom_obj = Pool().get('product.uom')
-        property_obj = Pool().get('ir.property')
-
-        res = {}
-        res['type'] = line.type
-        res['description'] = line.description
-        res['note'] = line.note
-        if line.type != 'line':
-            if (line.purchase.invoice_method == 'order'
-                    and (all(l.quantity >= 0 for l in line.sale.lines
+        with Transaction().set_user(0, set_context=True):
+            invoice_line = InvoiceLine()
+        invoice_line.type = self.type
+        invoice_line.description = self.description
+        invoice_line.note = self.note
+        if self.type != 'line':
+            if (self.purchase.invoice_method == 'order'
+                    and (all(l.quantity >= 0 for l in self.sale.lines
                             if l.type == 'line')
-                        or all(l.quantity <= 0 for l in line.sale.lines
+                        or all(l.quantity <= 0 for l in self.sale.lines
                             if l.type == 'line'))):
-                return [res]
+                return [invoice_line]
             else:
                 return []
-        if (line.purchase.invoice_method == 'order'
-                or not line.product
-                or line.product.type == 'service'):
-            quantity = line.quantity
+        if (self.purchase.invoice_method == 'order'
+                or not self.product
+                or self.product.type == 'service'):
+            quantity = self.quantity
         else:
             quantity = 0.0
-            for move in line.moves:
+            for move in self.moves:
                 if move.state == 'done':
-                    quantity += uom_obj.compute_qty(move.uom, move.quantity,
-                            line.unit)
+                    quantity += Uom.compute_qty(move.uom, move.quantity,
+                        self.unit)
 
-        skip_ids = set(l.id for i in line.purchase.invoices_recreated
+        skip_ids = set(l.id for i in self.purchase.invoices_recreated
             for l in i.lines)
-        for invoice_line in line.invoice_lines:
+        for invoice_line in self.invoice_lines:
             if invoice_line.type != 'line':
                 continue
             if invoice_line.id not in skip_ids:
-                quantity -= uom_obj.compute_qty(invoice_line.unit,
-                        invoice_line.quantity, line.unit)
-        res['quantity'] = quantity
+                quantity -= Uom.compute_qty(invoice_line.unit,
+                        invoice_line.quantity, self.unit)
+        invoice_line.quantity = quantity
 
-        if res['quantity'] <= 0.0:
+        if invoice_line.quantity <= 0.0:
             return []
-        res['unit'] = line.unit.id
-        res['product'] = line.product.id
-        res['unit_price'] = line.unit_price
-        res['taxes'] = [('set', [x.id for x in line.taxes])]
-        if line.product:
-            res['account'] = line.product.account_expense_used.id
-            if not res['account']:
+        invoice_line.unit = self.unit
+        invoice_line.product = self.product
+        invoice_line.unit_price = self.unit_price
+        invoice_line.taxes = self.taxes
+        if self.product:
+            invoice_line.account = self.product.account_expense_used
+            if not invoice_line.account:
                 self.raise_user_error('missing_account_expense',
-                        error_args=(line.product.rec_name,))
+                        error_args=(self.product.rec_name,))
         else:
             for model in ('product.template', 'product.category'):
-                res['account'] = property_obj.get('account_expense', model)
-                if res['account']:
+                invoice_line.account = Property.get('account_expense', model)
+                if invoice_line.account:
                     break
-            if not res['account']:
+            if not invoice_line.account:
                 self.raise_user_error('missing_account_expense_property')
-        return [res]
+        return [invoice_line]
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, lines, default=None):
         if default is None:
             default = {}
         default = default.copy()
@@ -1319,127 +1127,108 @@ class PurchaseLine(ModelSQL, ModelView):
         default['moves_ignored'] = None
         default['moves_recreated'] = None
         default['invoice_lines'] = None
-        return super(PurchaseLine, self).copy(ids, default=default)
+        return super(PurchaseLine, cls).copy(lines, default=default)
 
-    def get_move(self, line):
+    def get_move(self):
         '''
         Return move values for purchase line
         '''
         pool = Pool()
-        uom_obj = pool.get('product.uom')
+        Uom = pool.get('product.uom')
+        Move = pool.get('stock.move')
 
-        vals = {}
-        if line.type != 'line':
+        if self.type != 'line':
             return
-        if not line.product:
+        if not self.product:
             return
-        if line.product.type == 'service':
+        if self.product.type == 'service':
             return
-        skip_ids = set(x.id for x in line.moves_recreated)
-        quantity = line.quantity
-        for move in line.moves:
-            if move.id not in skip_ids:
-                quantity -= uom_obj.compute_qty(move.uom, move.quantity,
-                        line.unit)
+        skip = set(self.moves_recreated)
+        quantity = self.quantity
+        for move in self.moves:
+            if move not in skip:
+                quantity -= Uom.compute_qty(move.uom, move.quantity,
+                    self.unit)
         if quantity <= 0.0:
             return
-        if not line.purchase.party.supplier_location:
+        if not self.purchase.party.supplier_location:
             self.raise_user_error('supplier_location_required')
-        vals['quantity'] = quantity
-        vals['uom'] = line.unit.id
-        vals['product'] = line.product.id
-        vals['from_location'] = line.from_location.id
-        vals['to_location'] = line.to_location.id
-        vals['state'] = 'draft'
-        vals['company'] = line.purchase.company.id
-        vals['unit_price'] = line.unit_price
-        vals['currency'] = line.purchase.currency.id
-        vals['planned_date'] = line.delivery_date
-        return vals
+        with Transaction().set_user(0, set_context=True):
+            move = Move()
+        move.quantity = quantity
+        move.uom = self.unit
+        move.product = self.product
+        move.from_location = self.from_location
+        move.to_location = self.to_location
+        move.state = 'draft'
+        move.company = self.purchase.company
+        move.unit_price = self.unit_price
+        move.currency = self.purchase.currency
+        move.planned_date = self.delivery_date
+        return move
 
-    def create_move(self, line):
+    def create_move(self):
         '''
         Create move line
         '''
-        pool = Pool()
-        move_obj = pool.get('stock.move')
-
-        vals = self.get_move(line)
-        if not vals:
+        move = self.get_move()
+        if not move:
             return
+        move.save()
         with Transaction().set_user(0, set_context=True):
-            move_id = move_obj.create(vals)
-
-            self.write(line.id, {
-                'moves': [('add', move_id)],
-            })
-        return move_id
-
-PurchaseLine()
+            self.write([self], {
+                    'moves': [('add', [move.id])],
+                    })
+        return move
 
 
 class PurchaseLineTax(ModelSQL):
     'Purchase Line - Tax'
-    _name = 'purchase.line-account.tax'
+    __name__ = 'purchase.line-account.tax'
     _table = 'purchase_line_account_tax'
-    _description = __doc__
     line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=True, required=True,
             domain=[('type', '=', 'line')])
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             select=True, required=True, domain=[('parent', '=', None)])
 
-PurchaseLineTax()
-
 
 class PurchaseLineInvoiceLine(ModelSQL):
     'Purchase Line - Invoice Line'
-    _name = 'purchase.line-account.invoice.line'
+    __name__ = 'purchase.line-account.invoice.line'
     _table = 'purchase_line_invoice_lines_rel'
-    _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=True, required=True)
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
             ondelete='RESTRICT', select=True, required=True)
 
-PurchaseLineInvoiceLine()
-
 
 class PurchaseLineIgnoredMove(ModelSQL):
     'Purchase Line - Ignored Move'
-    _name = 'purchase.line-ignored-stock.move'
+    __name__ = 'purchase.line-ignored-stock.move'
     _table = 'purchase_line_moves_ignored_rel'
-    _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
             select=True, required=True)
-
-PurchaseLineIgnoredMove()
 
 
 class PurchaseLineRecreatedMove(ModelSQL):
     'Purchase Line - Ignored Move'
-    _name = 'purchase.line-recreated-stock.move'
+    __name__ = 'purchase.line-recreated-stock.move'
     _table = 'purchase_line_moves_recreated_rel'
-    _description = __doc__
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
             ondelete='CASCADE', select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='RESTRICT',
             select=True, required=True)
 
-PurchaseLineRecreatedMove()
-
 
 class PurchaseReport(CompanyReport):
-    _name = 'purchase.purchase'
-
-PurchaseReport()
+    __name__ = 'purchase.purchase'
 
 
-class Template(ModelSQL, ModelView):
-    _name = "product.template"
-
+class Template:
+    __name__ = "product.template"
     purchasable = fields.Boolean('Purchasable', states={
             'readonly': ~Eval('active', True),
             }, depends=['active'])
@@ -1458,54 +1247,41 @@ class Template(ModelSQL, ModelView):
         on_change_with=['default_uom', 'purchase_uom', 'purchasable'],
         depends=['active', 'purchasable', 'default_uom_category'])
 
-    def __init__(self):
-        super(Template, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Template, cls).__setup__()
+        cls._error_messages.update({
                 'change_purchase_uom': 'Purchase prices are based ' \
                     'on the purchase uom, are you sure to change it?',
             })
-        self.account_expense = copy.copy(self.account_expense)
-        self.account_expense.states = copy.copy(self.account_expense.states)
         required = ~Eval('account_category') & Eval('purchasable', False)
-        if not self.account_expense.states.get('required'):
-            self.account_expense.states['required'] = required
+        if not cls.account_expense.states.get('required'):
+            cls.account_expense.states['required'] = required
         else:
-            self.account_expense.states['required'] = (
-                self.account_expense.states['required'] | required)
-        if 'account_category' not in self.account_expense.depends:
-            self.account_expense = copy.copy(self.account_expense)
-            self.account_expense.depends = \
-                    copy.copy(self.account_expense.depends)
-            self.account_expense.depends.append('account_category')
-        if 'purchasable' not in self.account_expense.depends:
-            self.account_expense = copy.copy(self.account_expense)
-            self.account_expense.depends = \
-                    copy.copy(self.account_expense.depends)
-            self.account_expense.depends.append('purchasable')
-        self._reset_columns()
+            cls.account_expense.states['required'] = (
+                cls.account_expense.states['required'] | required)
+        if 'account_category' not in cls.account_expense.depends:
+            cls.account_expense.depends.append('account_category')
+        if 'purchasable' not in cls.account_expense.depends:
+            cls.account_expense.depends.append('purchasable')
 
-    def default_purchasable(self):
+    @staticmethod
+    def default_purchasable():
         return Transaction().context.get('purchasable') or False
 
-    def on_change_with_purchase_uom(self, vals):
-        uom_obj = Pool().get('product.uom')
-        res = None
-
-        if vals.get('default_uom'):
-            default_uom = uom_obj.browse(vals['default_uom'])
-            if vals.get('purchase_uom'):
-                purchase_uom = uom_obj.browse(vals['purchase_uom'])
-                if default_uom.category.id == purchase_uom.category.id:
-                    res = purchase_uom.id
+    def on_change_with_purchase_uom(self):
+        if self.default_uom:
+            if self.purchase_uom:
+                if self.default_uom.category == self.purchase_uom.category:
+                    return self.purchase_uom.id
                 else:
-                    res = default_uom.id
+                    return self.default_uom.id
             else:
-                res = default_uom.id
-        return res
+                return self.default_uom.id
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, templates, vals):
         if vals.get("purchase_uom"):
-            templates = self.browse(ids)
             for template in templates:
                 if not template.purchase_uom:
                     continue
@@ -1514,53 +1290,47 @@ class Template(ModelSQL, ModelView):
                 for product in template.products:
                     if not product.product_suppliers:
                         continue
-                    self.raise_user_warning(
+                    cls.raise_user_warning(
                             '%s@product_template' % template.id,
                             'change_purchase_uom')
-
-        return super(Template, self).write(ids, vals)
-
-Template()
+        super(Template, cls).write(templates, vals)
 
 
-class Product(ModelSQL, ModelView):
-    _name = 'product.product'
+class Product:
+    __name__ = 'product.product'
 
-    def get_purchase_price(self, ids, quantity=0):
+    @classmethod
+    def get_purchase_price(cls, products, quantity=0):
         '''
         Return purchase price for product ids.
         The context that can have as keys:
             uom: the unit of measure
             supplier: the supplier party id
             currency: the currency id for the returned price
-
-        :param ids: the product ids
-        :param quantity: the quantity of products
-        :return: a dictionary with for each product ids keys the computed price
         '''
         pool = Pool()
-        uom_obj = pool.get('product.uom')
-        user_obj = pool.get('res.user')
-        currency_obj = pool.get('currency.currency')
-        date_obj = pool.get('ir.date')
+        Uom = pool.get('product.uom')
+        User = pool.get('res.user')
+        Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
 
-        today = date_obj.today()
+        today = Date.today()
         res = {}
 
         uom = None
         if Transaction().context.get('uom'):
-            uom = uom_obj.browse(Transaction().context['uom'])
+            uom = Uom(Transaction().context['uom'])
 
         currency = None
         if Transaction().context.get('currency'):
-            currency = currency_obj.browse(Transaction().context['currency'])
+            currency = Currency(Transaction().context['currency'])
 
-        user = user_obj.browse(Transaction().user)
+        user = User(Transaction().user)
 
-        for product in self.browse(ids):
+        for product in products:
             res[product.id] = product.cost_price
             default_uom = product.default_uom
-            default_currency = (user.company.currency.id if user.company
+            default_currency = (user.company.currency if user.company
                 else None)
             if not uom:
                 uom = default_uom
@@ -1570,29 +1340,25 @@ class Product(ModelSQL, ModelView):
                 for product_supplier in product.product_suppliers:
                     if product_supplier.party.id == supplier_id:
                         for price in product_supplier.prices:
-                            if uom_obj.compute_qty(product.purchase_uom,
+                            if Uom.compute_qty(product.purchase_uom,
                                     price.quantity, uom) <= quantity:
                                 res[product.id] = price.unit_price
                                 default_uom = product.purchase_uom
-                                default_currency = product_supplier.currency.id
+                                default_currency = product_supplier.currency
                         break
-            res[product.id] = uom_obj.compute_price(default_uom,
-                    res[product.id], uom)
+            res[product.id] = Uom.compute_price(default_uom, res[product.id],
+                uom)
             if currency and default_currency:
                 date = Transaction().context.get('purchase_date') or today
                 with Transaction().set_context(date=date):
-                    res[product.id] = currency_obj.compute(default_currency,
-                        res[product.id], currency.id, round=False)
+                    res[product.id] = Currency.compute(default_currency,
+                        res[product.id], currency, round=False)
         return res
-
-Product()
 
 
 class ProductSupplier(ModelSQL, ModelView):
     'Product Supplier'
-    _name = 'purchase.product_supplier'
-    _description = __doc__
-
+    __name__ = 'purchase.product_supplier'
     product = fields.Many2One('product.template', 'Product', required=True,
             ondelete='CASCADE', select=True)
     party = fields.Many2One('party.party', 'Supplier', required=True,
@@ -1615,188 +1381,173 @@ class ProductSupplier(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
 
-    def __init__(self):
-        super(ProductSupplier, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(ProductSupplier, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 2.2 new field currency
         created_currency = table.column_exist('currency')
 
-        super(ProductSupplier, self).init(module_name)
+        super(ProductSupplier, cls).__register__(module_name)
 
         # Migration from 2.2 fill currency
         if not created_currency:
-            company_obj = Pool().get('company.company')
+            Company = Pool().get('company.company')
             limit = cursor.IN_MAX
-            cursor.execute('SELECT count(id) FROM "' + self._table + '"')
+            cursor.execute('SELECT count(id) FROM "' + cls._table + '"')
             product_supplier_count, = cursor.fetchone()
             for offset in range(0, product_supplier_count, limit):
                 cursor.execute(cursor.limit_clause(
                         'SELECT p.id, c.currency '
-                        'FROM "' + self._table + '" AS p '
-                        'INNER JOIN "' + company_obj._table + '" AS c '
+                        'FROM "' + cls._table + '" AS p '
+                        'INNER JOIN "' + Company._table + '" AS c '
                             'ON p.company = c.id '
                         'ORDER BY p.id',
                         limit, offset))
                 for product_supplier_id, currency_id in cursor.fetchall():
-                    cursor.execute('UPDATE "' + self._table + '" '
+                    cursor.execute('UPDATE "' + cls._table + '" '
                         'SET currency = %s '
                         'WHERE id = %s', (currency_id, product_supplier_id))
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
-        company = None
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.id
 
-    def on_change_party(self, values):
+    def on_change_party(self):
         cursor = Transaction().cursor
         changes = {
             'currency': self.default_currency(),
             }
-        if values.get('party'):
+        if self.party:
             cursor.execute('SELECT currency FROM "' + self._table + '" '
                 'WHERE party = %s '
                 'GROUP BY currency '
-                'ORDER BY COUNT(1) DESC', (values['party'],))
+                'ORDER BY COUNT(1) DESC', (self.party.id,))
             row = cursor.fetchone()
             if row:
                 changes['currency'], = row
         return changes
 
-    def compute_supply_date(self, product_supplier, date=None):
+    def compute_supply_date(self, date=None):
         '''
         Compute the supply date for the Product Supplier at the given date
             and the next supply date
-
-        :param product_supplier: a BrowseRecord of the Product Supplier
-        :param date: the date of the purchase if None the current date
-        :return: the supply date
         '''
-        date_obj = Pool().get('ir.date')
+        Date = Pool().get('ir.date')
 
         if not date:
-            date = date_obj.today()
-        if not product_supplier.delivery_time:
+            date = Date.today()
+        if not self.delivery_time:
             return datetime.date.max
-        return date + datetime.timedelta(product_supplier.delivery_time)
+        return date + datetime.timedelta(self.delivery_time)
 
-    def compute_purchase_date(self, product_supplier, date):
+    def compute_purchase_date(self, date):
         '''
         Compute the purchase date for the Product Supplier at the given date
-
-        :param product_supplier: a BrowseRecord of the Product Supplier
-        :param date: the date of the supply
-        :return: the purchase date
         '''
-        date_obj = Pool().get('ir.date')
+        Date = Pool().get('ir.date')
 
-        if not product_supplier.delivery_time:
-            return date_obj.today()
-        return date - datetime.timedelta(product_supplier.delivery_time)
-
-ProductSupplier()
+        if not self.delivery_time:
+            return Date.today()
+        return date - datetime.timedelta(self.delivery_time)
 
 
 class ProductSupplierPrice(ModelSQL, ModelView):
     'Product Supplier Price'
-    _name = 'purchase.product_supplier.price'
-    _description = __doc__
-
+    __name__ = 'purchase.product_supplier.price'
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')
     quantity = fields.Float('Quantity', required=True, help='Minimal quantity')
     unit_price = fields.Numeric('Unit Price', required=True, digits=(16, 4))
 
-    def __init__(self):
-        super(ProductSupplierPrice, self).__init__()
-        self._order.insert(0, ('quantity', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(ProductSupplierPrice, cls).__setup__()
+        cls._order.insert(0, ('quantity', 'ASC'))
 
-    def default_quantity(self):
+    @staticmethod
+    def default_quantity():
         return 0.0
 
-ProductSupplierPrice()
 
+class ShipmentIn:
+    __name__ = 'stock.shipment.in'
 
-class ShipmentIn(ModelSQL, ModelView):
-    _name = 'stock.shipment.in'
-
-    def __init__(self):
-        super(ShipmentIn, self).__init__()
-        self.incoming_moves = copy.copy(self.incoming_moves)
+    @classmethod
+    def __setup__(cls):
+        super(ShipmentIn, cls).__setup__()
         add_remove = [
             ('supplier', '=', Eval('supplier')),
-        ]
-        if not self.incoming_moves.add_remove:
-            self.incoming_moves.add_remove = add_remove
-        else:
-            self.incoming_moves.add_remove = \
-                    copy.copy(self.incoming_moves.add_remove)
-            self.incoming_moves.add_remove = [
-                add_remove,
-                self.incoming_moves.add_remove,
             ]
-        self._reset_columns()
+        if not cls.incoming_moves.add_remove:
+            cls.incoming_moves.add_remove = add_remove
+        else:
+            cls.incoming_moves.add_remove = [
+                add_remove,
+                cls.incoming_moves.add_remove,
+                ]
 
-        self._error_messages.update({
+        cls._error_messages.update({
                 'reset_move': 'You cannot reset to draft a move generated '\
                     'by a purchase.',
             })
 
-    def write(self, ids, vals):
-        purchase_obj = Pool().get('purchase.purchase')
-        purchase_line_obj = Pool().get('purchase.line')
+    @classmethod
+    def write(cls, shipments, vals):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
 
-        res = super(ShipmentIn, self).write(ids, vals)
+        super(ShipmentIn, cls).write(shipments, vals)
 
         if 'state' in vals and vals['state'] in ('received', 'cancel'):
-            purchase_ids = []
+            purchases = []
             move_ids = []
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            for shipment in self.browse(ids):
+            for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.incoming_moves])
 
-            purchase_line_ids = purchase_line_obj.search([
-                ('moves', 'in', move_ids),
-                ])
-            if purchase_line_ids:
-                for purchase_line in purchase_line_obj.browse(
-                        purchase_line_ids):
-                    if purchase_line.purchase.id not in purchase_ids:
-                        purchase_ids.append(purchase_line.purchase.id)
+            purchase_lines = PurchaseLine.search([
+                    ('moves', 'in', move_ids),
+                    ])
+            if purchase_lines:
+                for purchase_line in purchase_lines:
+                    if purchase_line.purchase not in purchases:
+                        purchases.append(purchase_line.purchase)
 
             with Transaction().set_user(0, set_context=True):
-                purchase_obj.process(purchase_ids)
-        return res
+                purchases = Purchase.browse([p.id for p in purchases])
+            Purchase.process(purchases)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
-        for shipment in self.browse(ids):
+    def draft(cls, shipments):
+        for shipment in shipments:
             for move in shipment.incoming_moves:
                 if move.state == 'cancel' and move.purchase_line:
-                    self.raise_user_error('reset_move')
+                    cls.raise_user_error('reset_move')
 
-        return super(ShipmentIn, self).draft(ids)
-
-ShipmentIn()
+        return super(ShipmentIn, cls).draft(shipments)
 
 
 class Move(ModelSQL, ModelView):
-    _name = 'stock.move'
-
+    __name__ = 'stock.move'
     purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
         select=True, states={
             'readonly': Eval('state') != 'draft',
@@ -1829,7 +1580,7 @@ class Move(ModelSQL, ModelView):
                 'invisible': ~Eval('purchase_visible', False),
                 }, depends=['purchase_visible']), 'get_purchase_fields')
     purchase_visible = fields.Function(fields.Boolean('Purchase Visible',
-        on_change_with=['from_location']), 'get_purchase_visible')
+        on_change_with=['from_location']), 'on_change_with_purchase_visible')
     supplier = fields.Function(fields.Many2One('party.party', 'Supplier',
         select=True), 'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
@@ -1838,203 +1589,102 @@ class Move(ModelSQL, ModelView):
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_purchase_exception_state')
 
-    def get_purchase(self, ids, name):
-        res = {}
-        for move in self.browse(ids):
-            res[move.id] = None
-            if move.purchase_line:
-                res[move.id] = move.purchase_line.purchase.id
-        return res
+    def get_purchase(self, name):
+        if self.purchase_line:
+            return self.purchase_line.purchase.id
 
-    def get_purchase_exception_state(self, ids, name):
-        res = {}.fromkeys(ids, '')
-        for move in self.browse(ids):
-            if not move.purchase_line:
-                continue
-            if move.id in (x.id for x in move.purchase_line.moves_recreated):
-                res[move.id] = 'recreated'
-            if move.id in (x.id for x in move.purchase_line.moves_ignored):
-                res[move.id] = 'ignored'
-        return res
+    def get_purchase_exception_state(self, name):
+        if not self.purchase_line:
+            return ''
+        if self in self.purchase_line.moves_recreated:
+            return 'recreated'
+        if self in self.purchase_line.moves_ignored:
+            return 'ignored'
 
-    def search_purchase(self, name, clause):
+    @classmethod
+    def search_purchase(cls, name, clause):
         return [('purchase_line.' + name,) + tuple(clause[1:])]
 
-    def get_purchase_fields(self, ids, names):
-        res = {}
-        for name in names:
-            res[name] = {}
+    def get_purchase_fields(self, name):
+        if self.purchase_line:
+            if name[9:] == 'currency':
+                return self.purchase_line.purchase.currency.id
+            elif name[9:] in ('quantity', 'unit_digits', 'unit_price'):
+                return getattr(self.purchase_line, name[9:])
+            else:
+                return getattr(self.purchase_line, name[9:]).id
+        else:
+            if name[9:] == 'quantity':
+                return 0.0
+            elif name[9:] == 'unit_digits':
+                return 2
 
-        for move in self.browse(ids):
-            for name in res.keys():
-                if name[9:] == 'quantity':
-                    res[name][move.id] = 0.0
-                elif name[9:] == 'unit_digits':
-                    res[name][move.id] = 2
-                else:
-                    res[name][move.id] = None
-            if move.purchase_line:
-                for name in res.keys():
-                    if name[9:] == 'currency':
-                        res[name][move.id] = move.purchase_line.\
-                                purchase.currency.id
-                    elif name[9:] in ('quantity', 'unit_digits', 'unit_price'):
-                        res[name][move.id] = move.purchase_line[name[9:]]
-                    else:
-                        res[name][move.id] = move.purchase_line[name[9:]].id
-        return res
-
-    def on_change_with_purchase_visible(self, vals):
-        location_obj = Pool().get('stock.location')
-        if vals.get('from_location'):
-            from_location = location_obj.browse(vals['from_location'])
-            if from_location.type == 'supplier':
+    def on_change_with_purchase_visible(self, name=None):
+        if self.from_location:
+            if self.from_location.type == 'supplier':
                 return True
         return False
 
-    def get_purchase_visible(self, ids, name):
-        res = {}
-        for move in self.browse(ids):
-            res[move.id] = False
-            if move.from_location.type == 'supplier':
-                res[move.id] = True
-        return res
+    def get_supplier(self, name):
+        if self.purchase_line:
+            return self.purchase_line.purchase.party.id
 
-    def get_supplier(self, ids, name):
-        res = {}
-        for move in self.browse(ids):
-            res[move.id] = None
-            if move.purchase_line:
-                res[move.id] = move.purchase_line.purchase.party.id
-        return res
-
-    def search_supplier(self, name, clause):
+    @classmethod
+    def search_supplier(cls, name, clause):
         return [('purchase_line.purchase.party',) + tuple(clause[1:])]
 
-    def write(self, ids, vals):
-        purchase_obj = Pool().get('purchase.purchase')
-        purchase_line_obj = Pool().get('purchase.line')
+    @classmethod
+    def write(cls, moves, vals):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
 
-        res = super(Move, self).write(ids, vals)
+        super(Move, cls).write(moves, vals)
         if 'state' in vals and vals['state'] in ('cancel',):
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            purchase_ids = set()
-            purchase_line_ids = purchase_line_obj.search([
-                ('moves', 'in', ids),
+            purchases = set()
+            purchase_lines = PurchaseLine.search([
+                    ('moves', 'in', [m.id for m in moves]),
+                    ])
+            if purchase_lines:
+                for purchase_line in purchase_lines:
+                    purchases.add(purchase_line.purchase)
+            if purchases:
+                with Transaction().set_user(0, set_context=True):
+                    purchases = Purchase.browse([p.id for p in purchases])
+                Purchase.process(purchases)
+
+    @classmethod
+    def delete(cls, moves):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
+
+        purchases = set()
+        purchase_lines = PurchaseLine.search([
+                ('moves', 'in', [m.id for m in moves]),
                 ])
-            if purchase_line_ids:
-                for purchase_line in purchase_line_obj.browse(
-                        purchase_line_ids):
-                    purchase_ids.add(purchase_line.purchase.id)
-            if purchase_ids:
+
+        super(Move, cls).delete(moves)
+
+        if purchase_lines:
+            for purchase_line in purchase_lines:
+                purchases.add(purchase_line.purchase)
+            if purchases:
                 with Transaction().set_user(0, set_context=True):
-                    purchase_obj.process(list(purchase_ids))
-        return res
-
-    def delete(self, ids):
-        purchase_obj = Pool().get('purchase.purchase')
-        purchase_line_obj = Pool().get('purchase.line')
-
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-
-        purchase_ids = set()
-        purchase_line_ids = purchase_line_obj.search([
-            ('moves', 'in', ids),
-            ])
-
-        res = super(Move, self).delete(ids)
-
-        if purchase_line_ids:
-            for purchase_line in purchase_line_obj.browse(purchase_line_ids):
-                purchase_ids.add(purchase_line.purchase.id)
-            if purchase_ids:
-                with Transaction().set_user(0, set_context=True):
-                    purchase_obj.process(list(purchase_ids))
-        return res
-Move()
-
-
-class Invoice(ModelSQL, ModelView):
-    _name = 'account.invoice'
-
-    purchase_exception_state = fields.Function(fields.Selection([
-        ('', ''),
-        ('ignored', 'Ignored'),
-        ('recreated', 'Recreated'),
-        ], 'Exception State'), 'get_purchase_exception_state')
-
-    def __init__(self):
-        super(Invoice, self).__init__()
-        self._error_messages.update({
-                'delete_purchase_invoice': 'You can not delete invoices ' \
-                    'that come from a purchase!',
-                'reset_invoice_purchase': 'You cannot reset to draft ' \
-                        'an invoice generated by a purchase.',
-            })
-
-    @ModelView.button
-    @Workflow.transition('draft')
-    def draft(self, ids):
-        purchase_obj = Pool().get('purchase.purchase')
-        purchase_ids = purchase_obj.search([
-            ('invoices', 'in', ids),
-            ])
-
-        if purchase_ids:
-            self.raise_user_error('reset_invoice_purchase')
-
-        return super(Invoice, self).draft(ids)
-
-    def get_purchase_exception_state(self, ids, name):
-        purchase_obj = Pool().get('purchase.purchase')
-        purchase_ids = purchase_obj.search([
-            ('invoices', 'in', ids),
-            ])
-
-        purchases = purchase_obj.browse(purchase_ids)
-
-        recreated_ids = tuple(i.id for p in purchases
-            for i in p.invoices_recreated)
-        ignored_ids = tuple(i.id for p in purchases
-            for i in p.invoices_ignored)
-
-        res = {}.fromkeys(ids, '')
-        for invoice in self.browse(ids):
-            if invoice.id in recreated_ids:
-                res[invoice.id] = 'recreated'
-            elif invoice.id in ignored_ids:
-                res[invoice.id] = 'ignored'
-
-        return res
-
-    def delete(self, ids):
-        cursor = Transaction().cursor
-        if not ids:
-            return True
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        cursor.execute('SELECT id FROM purchase_invoices_rel ' \
-                'WHERE invoice IN (' + ','.join(('%s',) * len(ids)) + ')',
-                ids)
-        if cursor.fetchone():
-            self.raise_user_error('delete_purchase_invoice')
-        return super(Invoice, self).delete(ids)
-
-Invoice()
+                    purchases = Purchase.browse([p.id for p in purchases])
+                Purchase.process(purchases)
 
 
 class OpenSupplier(Wizard):
     'Open Suppliers'
-    _name = 'purchase.open_supplier'
+    __name__ = 'purchase.open_supplier'
     start_state = 'open_'
     open_ = StateAction('party.act_party_form')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         pool = Pool()
-        model_data_obj = pool.get('ir.model.data')
-        wizard_obj = pool.get('ir.action.wizard')
+        ModelData = pool.get('ir.model.data')
+        Wizard = pool.get('ir.action.wizard')
         cursor = Transaction().cursor
 
         cursor.execute("SELECT DISTINCT(party) FROM purchase_purchase")
@@ -2042,25 +1692,20 @@ class OpenSupplier(Wizard):
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', supplier_ids)])
 
-        model_data_ids = model_data_obj.search([
-            ('fs_id', '=', 'act_open_supplier'),
-            ('module', '=', 'purchase'),
-            ('inherit', '=', None),
-            ], limit=1)
-        model_data = model_data_obj.browse(model_data_ids[0])
-        wizard = wizard_obj.browse(model_data.db_id)
+        model_data, = ModelData.search([
+                ('fs_id', '=', 'act_open_supplier'),
+                ('module', '=', 'purchase'),
+                ('inherit', '=', None),
+                ], limit=1)
+        wizard = Wizard.browse(model_data.db_id)
 
         action['name'] = wizard.name
         return action, {}
 
-OpenSupplier()
-
 
 class HandleShipmentExceptionAsk(ModelView):
     'Handle Shipment Exception'
-    _name = 'purchase.handle.shipment.exception.ask'
-    _description = __doc__
-
+    __name__ = 'purchase.handle.shipment.exception.ask'
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, 'Recreate Moves',
         domain=[('id', 'in', Eval('domain_moves'))], depends=['domain_moves'],
@@ -2069,21 +1714,20 @@ class HandleShipmentExceptionAsk(ModelView):
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
         cursor.execute("UPDATE ir_model "\
                 "SET model = REPLACE(model, 'packing', 'shipment') "\
                 "WHERE model like '%%packing%%' AND module = %s",
                 (module_name,))
-        super(HandleShipmentExceptionAsk, self).init(module_name)
-
-HandleShipmentExceptionAsk()
+        super(HandleShipmentExceptionAsk, cls).__register__(module_name)
 
 
 class HandleShipmentException(Wizard):
     'Handle Shipment Exception'
-    _name = 'purchase.handle.shipment.exception'
+    __name__ = 'purchase.handle.shipment.exception'
     start_state = 'ask'
     ask = StateView('purchase.handle.shipment.exception.ask',
         'purchase.handle_shipment_exception_ask_view_form', [
@@ -2092,61 +1736,56 @@ class HandleShipmentException(Wizard):
             ])
     handle = StateTransition()
 
-    def default_ask(self, session, fields):
-        purchase_obj = Pool().get('purchase.purchase')
+    def default_ask(self, fields):
+        Purchase = Pool().get('purchase.purchase')
 
-        purchase = purchase_obj.browse(Transaction().context['active_id'])
+        purchase = Purchase(Transaction().context['active_id'])
 
         moves = []
         for line in purchase.lines:
-            skip_ids = set(x.id for x in line.moves_ignored + \
-                               line.moves_recreated)
+            skip = set(line.moves_ignored + line.moves_recreated)
             for move in line.moves:
-                if move.state == 'cancel' and move.id not in skip_ids:
+                if move.state == 'cancel' and move not in skip:
                     moves.append(move.id)
         return {
             'to_recreate': moves,
             'domain_moves': moves,
             }
 
-    def transition_handle(self, session):
+    def transition_handle(self):
         pool = Pool()
-        purchase_obj = pool.get('purchase.purchase')
-        purchase_line_obj = pool.get('purchase.line')
-        to_recreate = [x.id for x in session.ask.recreate_moves]
-        domain_moves = [x.id for x in session.ask.domain_moves]
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
+        to_recreate = self.ask.recreate_moves
+        domain_moves = self.ask.domain_moves
 
-        purchase = purchase_obj.browse(Transaction().context['active_id'])
+        purchase = Purchase(Transaction().context['active_id'])
 
         for line in purchase.lines:
             moves_ignored = []
             moves_recreated = []
-            skip_ids = set(x.id for x in line.moves_ignored)
-            skip_ids.update(x.id for x in line.moves_recreated)
+            skip = set(line.moves_ignored)
+            skip.update(line.moves_recreated)
             for move in line.moves:
-                if move.id not in domain_moves or move.id in skip_ids:
+                if move not in domain_moves or move in skip:
                     continue
-                if move.id in to_recreate:
+                if move in to_recreate:
                     moves_recreated.append(move.id)
                 else:
                     moves_ignored.append(move.id)
 
-            purchase_line_obj.write(line.id, {
+            PurchaseLine.write([line], {
                 'moves_ignored': [('add', moves_ignored)],
                 'moves_recreated': [('add', moves_recreated)],
                 })
 
-        purchase_obj.process([purchase.id])
+        Purchase.process([purchase])
         return 'end'
-
-HandleShipmentException()
 
 
 class HandleInvoiceExceptionAsk(ModelView):
     'Handle Invoice Exception'
-    _name = 'purchase.handle.invoice.exception.ask'
-    _description = __doc__
-
+    __name__ = 'purchase.handle.invoice.exception.ask'
     recreate_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Recreate Invoices',
         domain=[('id', 'in', Eval('domain_invoices'))],
@@ -2156,12 +1795,10 @@ class HandleInvoiceExceptionAsk(ModelView):
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
-HandleInvoiceExceptionAsk()
-
 
 class HandleInvoiceException(Wizard):
     'Handle Invoice Exception'
-    _name = 'purchase.handle.invoice.exception'
+    __name__ = 'purchase.handle.invoice.exception'
     start_state = 'ask'
     ask = StateView('purchase.handle.invoice.exception.ask',
         'purchase.handle_invoice_exception_ask_view_form', [
@@ -2170,46 +1807,44 @@ class HandleInvoiceException(Wizard):
             ])
     handle = StateTransition()
 
-    def default_ask(self, session, fields):
-        purchase_obj = Pool().get('purchase.purchase')
+    def default_ask(self, fields):
+        Purchase = Pool().get('purchase.purchase')
 
-        purchase = purchase_obj.browse(Transaction().context['active_id'])
-        skip_ids = set(x.id for x in purchase.invoices_ignored)
-        skip_ids.update(x.id for x in purchase.invoices_recreated)
+        purchase = Purchase(Transaction().context['active_id'])
+        skip = set(purchase.invoices_ignored)
+        skip.update(purchase.invoices_recreated)
         invoices = []
         for invoice in purchase.invoices:
-            if invoice.state == 'cancel' and invoice.id not in skip_ids:
+            if invoice.state == 'cancel' and invoice not in skip:
                 invoices.append(invoice.id)
         return {
             'to_recreate': invoices,
             'domain_invoices': invoices,
             }
 
-    def transition_handle(self, session):
-        purchase_obj = Pool().get('purchase.purchase')
-        to_recreate = [x.id for x in session.ask.recreate_invoices]
-        domain_invoices = [x.id for x in session.ask.domain_invoices]
+    def transition_handle(self):
+        Purchase = Pool().get('purchase.purchase')
+        to_recreate = self.ask.recreate_invoices
+        domain_invoices = self.ask.domain_invoices
 
-        purchase = purchase_obj.browse(Transaction().context['active_id'])
+        purchase = Purchase(Transaction().context['active_id'])
 
-        skip_ids = set(x.id for x in purchase.invoices_ignored)
-        skip_ids.update(x.id for x in purchase.invoices_recreated)
+        skip = set(purchase.invoices_ignored)
+        skip.update(purchase.invoices_recreated)
         invoices_ignored = []
         invoices_recreated = []
         for invoice in purchase.invoices:
-            if invoice.id not in domain_invoices or invoice.id in skip_ids:
+            if invoice not in domain_invoices or invoice in skip:
                 continue
             if invoice.id in to_recreate:
                 invoices_recreated.append(invoice.id)
             else:
                 invoices_ignored.append(invoice.id)
 
-        purchase_obj.write(purchase.id, {
+        Purchase.write([purchase], {
             'invoices_ignored': [('add', invoices_ignored)],
             'invoices_recreated': [('add', invoices_recreated)],
             })
 
-        purchase_obj.process([purchase.id])
+        Purchase.process([purchase])
         return 'end'
-
-HandleInvoiceException()
