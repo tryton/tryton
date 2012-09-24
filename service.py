@@ -2,56 +2,54 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.model.cacheable import Cacheable
 from trytond.pyson import Eval
+from trytond.cache import Cache
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Employee', 'EmployeeCostPrice']
+__metaclass__ = PoolMeta
 
 
-class Employee(ModelSQL, ModelView, Cacheable):
-    _name = 'company.employee'
-
+class Employee:
+    __name__ = 'company.employee'
     cost_price = fields.Function(fields.Numeric('Cost Price',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'],
         help="Hourly cost price for this Employee"), 'get_cost_price')
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
             'Cost Prices', help="List of hourly cost price over time")
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['company']), 'get_currency_digits')
+            on_change_with=['company']), 'on_change_with_currency_digits')
+    _cost_prices_cache = Cache('company_employee.cost_prices')
 
-    def get_cost_price(self, ids, name):
+    def get_cost_price(self, name):
         '''
         Return the cost price at the date given in the context or the
         current date
         '''
-
-        res = {}
         ctx_date = Transaction().context.get('date', None)
+        return self.compute_cost_price(ctx_date)
 
-        for employee_id in ids:
-            res[employee_id] = self.compute_cost_price(employee_id, ctx_date)
-        return res
-
-    def compute_cost_price(self, employee_id, date=None):
-        date_obj = Pool().get('ir.date')
-        cost_price_obj = Pool().get('company.employee_cost_price')
+    def compute_cost_price(self, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        CostPrice = pool.get('company.employee_cost_price')
 
         # Get from cache employee costs or fetch them from the db
-        employee_costs = self.get(employee_id)
+        employee_costs = self._cost_prices_cache.get(self.id)
         if employee_costs is None:
-            cost_price_ids = cost_price_obj.search([
-                    ('employee', '=', employee_id),
+            cost_prices = CostPrice.search([
+                    ('employee', '=', self.id),
                     ], order=[('date', 'ASC')])
-            cost_prices = cost_price_obj.browse(cost_price_ids)
 
             employee_costs = []
             for cost_price in cost_prices:
                 employee_costs.append(
                     (cost_price.date, cost_price.cost_price))
-            self.add(employee_id, employee_costs)
+            self._cost_prices_cache.set(self.id, employee_costs)
 
         if date is None:
-            date = date_obj.today()
+            date = Date.today()
         # compute the cost price for the given date
         cost = 0
         if employee_costs and date >= employee_costs[0][0]:
@@ -61,34 +59,24 @@ class Employee(ModelSQL, ModelView, Cacheable):
                     break
         return cost
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for employee in self.browse(ids):
-            res[employee.id] = employee.company.currency.digits
-        return res
-
-    def on_change_with_currency_digits(self, vals):
-        company_obj = Pool().get('company.company')
-        if vals.get('company'):
-            company = company_obj.browse(vals['company'])
-            return company.currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.company:
+            return self.company.currency.digits
         return 2
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            company = company_obj.browse(company)
+            company = Company(company)
             return company.currency.digits
         return 2
-
-Employee()
 
 
 class EmployeeCostPrice(ModelSQL, ModelView):
     'Employee Cost Price'
-    _name = 'company.employee_cost_price'
-    _description = __doc__
+    __name__ = 'company.employee_cost_price'
     _rec_name = 'date'
     date = fields.Date('Date', required=True, select=True)
     cost_price = fields.Numeric('Cost Price',
@@ -97,54 +85,55 @@ class EmployeeCostPrice(ModelSQL, ModelView):
             help="Hourly cost price")
     employee = fields.Many2One('company.employee', 'Employee')
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['employee']), 'get_currency_digits')
+            on_change_with=['employee']), 'on_change_with_currency_digits')
 
-    def __init__(self):
-        super(EmployeeCostPrice, self).__init__()
-        self._sql_constraints = [
+    @classmethod
+    def __setup__(cls):
+        super(EmployeeCostPrice, cls).__setup__()
+        cls._sql_constraints = [
             ('date_cost_price_uniq', 'UNIQUE(date, cost_price)',
                 'A employee can only have one cost price by date!'),
-        ]
-        self._order.insert(0, ('date', 'DESC'))
+            ]
+        cls._order.insert(0, ('date', 'DESC'))
 
-    def default_cost_price(self):
+    @staticmethod
+    def default_cost_price():
         return Decimal(0)
 
-    def default_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
+    @staticmethod
+    def default_date():
+        Date = Pool().get('ir.date')
+        return Date.today()
 
-    def delete(self, ids):
-        Pool().get('company.employee').clear()
-        return super(EmployeeCostPrice, self).delete(ids)
+    @classmethod
+    def delete(cls, prices):
+        Employee = Pool().get('company.employee')
+        super(EmployeeCostPrice, cls).delete(prices)
+        Employee._cost_prices_cache.clear()
 
-    def create(self, vals):
-        Pool().get('company.employee').clear()
-        return super(EmployeeCostPrice, self).create(vals)
+    @classmethod
+    def create(cls, vals):
+        Employee = Pool().get('company.employee')
+        price = super(EmployeeCostPrice, cls).create(vals)
+        Employee._cost_prices_cache.clear()
+        return price
 
-    def write(self, ids, vals):
-        Pool().get('company.employee').clear()
-        return super(EmployeeCostPrice, self).write(ids, vals)
+    @classmethod
+    def write(cls, prices, vals):
+        Employee = Pool().get('company.employee')
+        super(EmployeeCostPrice, cls).write(prices, vals)
+        Employee._cost_prices_cache.clear()
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for costprice in self.browse(ids):
-            res[costprice.id] = costprice.employee.company.currency.digits
-        return res
-
-    def on_change_with_currency_digits(self, vals):
-        employee_obj = Pool().get('company.employee')
-        if vals.get('employee'):
-            employee = employee_obj.browse(vals['employee'])
-            return employee.company.currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.employee:
+            return self.employee.company.currency.digits
         return 2
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            company = company_obj.browse(company)
+            company = Company(company)
             return company.currency.digits
         return 2
-
-EmployeeCostPrice()
