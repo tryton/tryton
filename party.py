@@ -1,21 +1,20 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
-
-from trytond.model import Model
 from trytond.pyson import Eval
+from trytond.pool import PoolMeta
+
+__all__ = ['PartyConfiguration']
+__metaclass__ = PoolMeta
 
 
-class Configuration(Model):
-    _name = 'party.configuration'
+class PartyConfiguration:
+    __name__ = 'party.configuration'
 
-    def __init__(self):
-        super(Configuration, self).__init__()
+    @classmethod
+    def __setup__(cls):
+        super(PartyConfiguration, cls).__setup__()
 
-        self.party_sequence = copy.copy(self.party_sequence)
-        self.party_sequence.domain = copy.copy(self.party_sequence.domain)
-        self.party_sequence.domain = [
-            self.party_sequence.domain,
-            ('company', 'in', [Eval('context', {}).get('company'), None])]
-
-Configuration()
+        cls.party_sequence.domain = [
+            cls.party_sequence.domain,
+            ('company', 'in', [Eval('context', {}).get('company'), None]),
+            ]

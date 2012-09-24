@@ -45,15 +45,15 @@ class CompanyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            currency1_id = self.currency.search([
-                ('code', '=', 'cu1'),
-                ], 0, 1, None)[0]
+            currency1, = self.currency.search([
+                    ('code', '=', 'cu1'),
+                    ], 0, 1, None)
 
-            company1_id = self.company.create({
-                'name': 'B2CK',
-                'currency': currency1_id,
-                })
-            self.assert_(company1_id)
+            company1 = self.company.create({
+                    'name': 'B2CK',
+                    'currency': currency1.id,
+                    })
+            self.assert_(company1)
             transaction.cursor.commit()
 
     def test0020company_recursion(self):
@@ -61,24 +61,24 @@ class CompanyTestCase(unittest.TestCase):
         Test company recursion.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            currency1_id = self.currency.search([
+            currency1, = self.currency.search([
                 ('code', '=', 'cu1'),
-                ], 0, 1, None)[0]
+                ], 0, 1, None)
 
-            company1_id = self.company.search([
-                ('name', '=', 'B2CK'),
-                ], 0, 1, None)[0]
+            company1, = self.company.search([
+                    ('name', '=', 'B2CK'),
+                    ], 0, 1, None)
 
-            company2_id = self.company.create({
-                'name': 'B2CK Branch',
-                'parent': company1_id,
-                'currency': currency1_id,
-                })
-            self.assert_(company2_id)
+            company2 = self.company.create({
+                    'name': 'B2CK Branch',
+                    'parent': company1.id,
+                    'currency': currency1.id,
+                    })
+            self.assert_(company2)
 
-            self.failUnlessRaises(Exception, self.company.write,
-                    company1_id, {
-                        'parent': company2_id,
+            self.assertRaises(Exception, self.company.write,
+                [company1], {
+                    'parent': company2.id,
                     })
 
     def test0030employe(self):
@@ -87,14 +87,14 @@ class CompanyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            company1_id = self.company.search([
-                ('name', '=', 'B2CK'),
-                ], 0, 1, None)[0]
+            company1, = self.company.search([
+                    ('name', '=', 'B2CK'),
+                    ], 0, 1, None)
 
             self.employee.create({
-                'name': 'Employee1',
-                'company': company1_id,
-                })
+                    'name': 'Employee1',
+                    'company': company1.id,
+                    })
             transaction.cursor.commit()
 
     def test0040user(self):
@@ -103,58 +103,47 @@ class CompanyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            currency1_id = self.currency.search([
-                ('code', '=', 'cu1'),
-                ], 0, 1, None)[0]
+            currency1, = self.currency.search([
+                    ('code', '=', 'cu1'),
+                    ], 0, 1, None)
 
-            company1_id = self.company.search([
-                ('name', '=', 'B2CK'),
-                ], 0, 1, None)[0]
+            company1, = self.company.search([
+                    ('name', '=', 'B2CK'),
+                    ], 0, 1, None)
 
-            company2_id = self.company.create({
-                'name': 'B2CK Branch',
-                'parent': company1_id,
-                'currency': currency1_id,
-                })
-            user1_id = self.user.create({
-                'name': 'Test 1',
-                'login': 'test1',
-                'main_company': company1_id,
-                'company': company1_id,
-            })
-            user2_id = self.user.create({
-                'name': 'Test 2',
-                'login': 'test2',
-                'main_company': company2_id,
-                'company': company2_id,
-            })
-            self.assert_(user1_id)
+            company2 = self.company.create({
+                    'name': 'B2CK Branch',
+                    'parent': company1.id,
+                    'currency': currency1.id,
+                    })
+            user1 = self.user.create({
+                    'name': 'Test 1',
+                    'login': 'test1',
+                    'main_company': company1.id,
+                    'company': company1.id,
+                    })
+            user2 = self.user.create({
+                    'name': 'Test 2',
+                    'login': 'test2',
+                    'main_company': company2.id,
+                    'company': company2.id,
+                    })
+            self.assert_(user1)
 
-            with transaction.set_user(user1_id):
-                company_id = self.user.read(user1_id, ['company'])['company']
-                self.assertEqual(company_id, company1_id)
+            with transaction.set_user(user1.id):
+                user1, user2 = self.user.browse([user1.id, user2.id])
+                self.assertEqual(user1.company, company1)
+                self.assertEqual(user2.company, company2)
 
-                user1, user2 = self.user.browse([user1_id, user2_id])
-                self.assertEqual(user1.company.id, company1_id)
-                self.assertEqual(user2.company.id, company2_id)
+                with transaction.set_context({'company': company2.id}):
+                    user1, user2 = self.user.browse([user1.id, user2.id])
+                    self.assertEqual(user1.company, company2)
+                    self.assertEqual(user2.company, company2)
 
-                with transaction.set_context({'company': company2_id}):
-                    company_id = self.user.read(user1_id,
-                        ['company'])['company']
-                    self.assertEqual(company_id, company2_id)
-
-                    user1, user2 = self.user.browse([user1_id, user2_id])
-                    self.assertEqual(user1.company.id, company2_id)
-                    self.assertEqual(user2.company.id, company2_id)
-
-                with transaction.set_context({'company': False}):
-                    company_id = self.user.read(user1_id,
-                        ['company'])['company']
-                    self.assertEqual(company_id, False)
-
-                    user1, user2 = self.user.browse([user1_id, user2_id])
-                    self.assertEqual(user1.company.id, None)
-                    self.assertEqual(user2.company.id, company2_id)
+                with transaction.set_context({'company': None}):
+                    user1, user2 = self.user.browse([user1.id, user2.id])
+                    self.assertEqual(user1.company, None)
+                    self.assertEqual(user2.company, company2)
 
 
 def suite():

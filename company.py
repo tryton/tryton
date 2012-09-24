@@ -6,15 +6,18 @@ from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.report import Report
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Company', 'Employee', 'UserEmployee', 'User', 'Property',
+    'Sequence', 'SequenceStrict', 'CompanyConfigStart', 'CompanyConfig',
+    'CompanyReport', 'LetterReport']
+__metaclass__ = PoolMeta
 
 
 class Company(ModelSQL, ModelView):
     'Company'
-    _name = 'company.company'
-    _description = __doc__
+    __name__ = 'company.company'
     _inherits = {'party.party': 'party'}
-
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     parent = fields.Many2One('company.company', 'Parent')
@@ -24,70 +27,57 @@ class Company(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     employees = fields.One2Many('company.employee', 'company', 'Employees')
 
-    def __init__(self):
-        super(Company, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Company, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_companies'),
-        ]
-        self._error_messages.update({
-            'recursive_companies': 'You can not create recursive companies!',
-        })
+            ]
+        cls._error_messages.update({
+                'recursive_companies': \
+                    'You can not create recursive companies!',
+                })
 
-    def copy(self, ids, default=None):
-        party_obj = Pool().get('party.party')
+    @classmethod
+    def copy(cls, companies, default=None):
+        Party = Pool().get('party.party')
 
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
         if default is None:
             default = {}
         default = default.copy()
-        new_ids = []
-        for company in self.browse(ids):
-            default['party'] = party_obj.copy(company.party.id)
-            new_id = super(Company, self).copy(company.id, default=default)
-            new_ids.append(new_id)
+        new_companies = []
+        for company in companies:
+            default['party'], = Party.copy([company.party])
+            new_company, = super(Company, cls).copy([company], default=default)
+            new_companies.append(new_company)
+        return new_companies
 
-        if int_id:
-            return new_ids[0]
-        return new_ids
-
-    def write(self, ids, vals):
-        res = super(Company, self).write(ids, vals)
+    @classmethod
+    def write(cls, companies, vals):
+        super(Company, cls).write(companies, vals)
         # Restart the cache on the domain_get method
-        Pool().get('ir.rule').domain_get.reset()
-        return res
-
-Company()
+        Pool().get('ir.rule')._domain_get_cache.clear()
 
 
 class Employee(ModelSQL, ModelView):
     'Employee'
-    _name = 'company.employee'
-    _description = __doc__
+    __name__ = 'company.employee'
     _inherits = {'party.party': 'party'}
-
     party = fields.Many2One('party.party', 'Party', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-
-Employee()
 
 
 class UserEmployee(ModelSQL):
     'User - Employee'
-    _name = 'res.user-company.employee'
-    _description = __doc__
+    __name__ = 'res.user-company.employee'
     user = fields.Many2One('res.user', 'User', ondelete='CASCADE', select=True,
         required=True)
     employee = fields.Many2One('company.employee', 'Employee',
         ondelete='CASCADE', select=True, required=True)
 
-UserEmployee()
 
-
-class User(ModelSQL, ModelView):
-    _name = 'res.user'
+class User:
+    __name__ = 'res.user'
     main_company = fields.Many2One('company.company', 'Main Company',
         on_change=['main_company'])
     company = fields.Many2One('company.company', 'Current Company',
@@ -104,87 +94,94 @@ class User(ModelSQL, ModelView):
             ],
         depends=['company', 'employees'])
 
-    def __init__(self):
-        super(User, self).__init__()
-        self._context_fields.insert(0, 'company')
-        self._context_fields.insert(0, 'employee')
+    @classmethod
+    def __setup__(cls):
+        super(User, cls).__setup__()
+        cls._context_fields.insert(0, 'company')
+        cls._context_fields.insert(0, 'employee')
 
-    def default_main_company(self):
+    @staticmethod
+    def default_main_company():
         return Transaction().context.get('company')
 
-    def default_company(self):
-        return self.default_main_company()
+    @classmethod
+    def default_company(cls):
+        return cls.default_main_company()
 
-    def get_companies(self, ids, name):
-        company_obj = Pool().get('company.company')
-        res = {}
+    @classmethod
+    def get_companies(cls, users, name):
+        Company = Pool().get('company.company')
+        companies = {}
         company_childs = {}
-        for user in self.browse(ids):
-            res[user.id] = []
-            company_id = None
+        for user in users:
+            companies[user.id] = []
+            company = None
             if user.company:
-                company_id = user.company.id
+                company = user.company
             elif user.main_company:
-                company_id = user.main_company.id
-            if company_id:
-                if company_id in company_childs:
-                    company_ids = company_childs[company_id]
+                company = user.main_company
+            if company:
+                if company in company_childs:
+                    company_ids = company_childs[company]
                 else:
-                    company_ids = company_obj.search([
-                        ('parent', 'child_of', [company_id]),
-                        ])
-                    company_childs[company_id] = company_ids
+                    company_ids = map(int, Company.search([
+                                ('parent', 'child_of', [company.id]),
+                                ]))
+                    company_childs[company] = company_ids
                 if company_ids:
-                    res[user.id].extend(company_ids)
-        return res
+                    companies[user.id].extend(company_ids)
+        return companies
 
-    def get_status_bar(self, ids, name):
-        res = super(User, self).get_status_bar(ids, name)
-        for user in self.browse(ids):
-            if user.company:
-                res[user.id] += ' - %s [%s]' % (user.company.name,
-                    user.company.currency.name)
-        return res
+    def get_status_bar(self, name):
+        status = super(User, self).get_status_bar(name)
+        if self.company:
+            status += ' - %s [%s]' % (self.company.name,
+                self.company.currency.name)
+        return status
 
-    def on_change_main_company(self, vals):
+    def on_change_main_company(self):
         return {
-            'company': vals.get('main_company'),
+            'company': self.main_company.id if self.main_company else None,
             'employee': None,
             }
 
-    def on_change_company(self, values):
-        employee_obj = Pool().get('company.employee')
+    def on_change_company(self):
+        Employee = Pool().get('company.employee')
         result = {
             'employee': None,
             }
-        if values.get('company') and values.get('employees'):
-            employee_ids = employee_obj.search([
-                    ('id', 'in', [e['id'] for e in values['employees']]),
-                    ('company', '=', values['company']),
+        if self.company and self.employees:
+            employees = Employee.search([
+                    ('id', 'in', [e.id for e in self.employees]),
+                    ('company', '=', self.company.id),
                     ])
-            if employee_ids:
-                result['employee'] = employee_ids[0]
+            if employees:
+                result['employee'] = employees[0].id
         return result
 
-    def _get_preferences(self, user, context_only=False):
-        res = super(User, self)._get_preferences(user,
-                context_only=context_only)
+    @classmethod
+    def _get_preferences(cls, user, context_only=False):
+        res = super(User, cls)._get_preferences(user,
+            context_only=context_only)
         if not context_only:
-            res['main_company'] = user.main_company.id
-            if user.main_company.id:
+            res['main_company'] = None
+            if user.main_company:
+                res['main_company'] = user.main_company.id
                 res['main_company.rec_name'] = user.main_company.rec_name
             res['employees'] = [e.id for e in user.employees]
         if user.employee:
-            res['employee'] = user.employee.id
-            if user.employee.id:
+            res['employee'] = None
+            if user.employee:
+                res['employee'] = user.employee.id
                 res['employee.rec_name'] = user.employee.rec_name
         return res
 
-    def get_preferences_fields_view(self):
+    @classmethod
+    def get_preferences_fields_view(cls):
         pool = Pool()
-        company_obj = pool.get('company.company')
+        Company = pool.get('company.company')
 
-        res = super(User, self).get_preferences_fields_view()
+        res = super(User, cls).get_preferences_fields_view()
         res = copy.deepcopy(res)
 
         def convert2selection(definition, name):
@@ -196,114 +193,105 @@ class User(ModelSQL, ModelView):
 
         if 'company' in res['fields']:
             selection = convert2selection(res['fields'], 'company')
-            user = self.browse(Transaction().user)
-            company_ids = company_obj.search([
-                    ('parent', 'child_of', [user.main_company.id], 'parent'),
-                    ])
-            for company in company_obj.browse(company_ids):
-                selection.append((company.id, company.rec_name))
+            user = cls(Transaction().user)
+            if user.main_company:
+                companies = Company.search([
+                        ('parent', 'child_of', [user.main_company.id],
+                            'parent'),
+                        ])
+                for company in companies:
+                    selection.append((company.id, company.rec_name))
         return res
 
-    def read(self, ids, fields_names=None):
-        company_obj = Pool().get('company.company')
+    @classmethod
+    def read(cls, ids, fields_names=None):
+        Company = Pool().get('company.company')
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
-        result = super(User, self).read(ids, fields_names=fields_names)
+        result = super(User, cls).read(ids, fields_names=fields_names)
         if (fields_names
                 and 'company' in fields_names
                 and 'company' in Transaction().context):
             values = None
-            if isinstance(ids, (int, long)):
-                if int(user_id) == ids:
-                    values = result
-            else:
-                if int(user_id) in ids:
-                    for vals in result:
-                        if vals['id'] == int(user_id):
-                            values = vals
-                            break
+            if int(user_id) in ids:
+                for vals in result:
+                    if vals['id'] == int(user_id):
+                        values = vals
+                        break
             if values:
                 main_company_id = values.get('main_company')
                 if not main_company_id:
-                    main_company_id = self.read(user_id,
-                        ['main_company'])['main_company']
-                companies = company_obj.search([
-                    ('parent', 'child_of', [main_company_id]),
-                ])
+                    main_company_id = cls.read([user_id],
+                        ['main_company'])[0]['main_company']
+                companies = Company.search([
+                        ('parent', 'child_of', [main_company_id]),
+                        ])
                 company_id = Transaction().context['company']
-                if ((company_id and company_id in companies)
+                if ((company_id and company_id in map(int, companies))
                         or not company_id):
                     values['company'] = company_id
         return result
 
-User()
 
-
-class Property(ModelSQL, ModelView):
-    _name = 'ir.property'
+class Property:
+    __name__ = 'ir.property'
     company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ])
 
-    def _set_values(self, model, res_id, val, field_id):
-        user_obj = Pool().get('res.user')
+    @classmethod
+    def _set_values(cls, model, res_id, val, field_id):
+        User = Pool().get('res.user')
         user_id = Transaction().user
         if user_id == 0:
             user_id = Transaction().context.get('user', user_id)
-        user = user_obj.browse(user_id)
-        res = super(Property, self)._set_values(model, res_id, val, field_id)
-        if user:
+        user = User(user_id)
+        res = super(Property, cls)._set_values(model, res_id, val, field_id)
+        if user and user.company:
             res['company'] = user.company.id
         return res
 
-    def search(self, domain, offset=0, limit=None, order=None, count=False):
+    @classmethod
+    def search(cls, domain, offset=0, limit=None, order=None, count=False):
         if Transaction().user == 0 and not 'user' in Transaction().context:
             domain = ['AND', domain[:], ('company', '=', None)]
-        return super(Property, self).search(domain, offset=offset,
+        return super(Property, cls).search(domain, offset=offset,
                 limit=limit, order=order, count=count)
 
-Property()
 
-
-class Sequence(ModelSQL, ModelView):
-    _name = 'ir.sequence'
+class Sequence:
+    __name__ = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ])
 
-    def __init__(self):
-        super(Sequence, self).__init__()
-        self._order.insert(0, ('company', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(Sequence, cls).__setup__()
+        cls._order.insert(0, ('company', 'ASC'))
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
-
-Sequence()
 
 
 class SequenceStrict(Sequence):
-    _name = 'ir.sequence.strict'
-
-SequenceStrict()
+    __name__ = 'ir.sequence.strict'
 
 
 class CompanyConfigStart(ModelView):
     'Company Config'
-    _name = 'company.company.config.start'
-    _description = __doc__
-
-CompanyConfigStart()
+    __name__ = 'company.company.config.start'
 
 
 class CompanyConfig(Wizard):
     'Configure Company'
-    _name = 'company.company.config'
-
+    __name__ = 'company.company.config'
     start = StateView('company.company.config.start',
         'company.company_config_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -316,48 +304,29 @@ class CompanyConfig(Wizard):
             ])
     add = StateTransition()
 
-    def transition_add(self, session):
-        company_obj = Pool().get('company.company')
-        user_obj = Pool().get('res.user')
+    def transition_add(self):
+        User = Pool().get('res.user')
 
-        values = session.data['company'].copy()
-        for fname in values.keys():
-            if fname in ('id', 'party'):
-                del values[fname]
-                continue
-            if fname in company_obj._columns:
-                field = company_obj._columns[fname]
-            else:
-                field = company_obj._inherit_fields[fname][2]
-            if field._type == 'one2many':
-                values[fname] = [('create', v) for v in values[fname]]
-            elif field._type == 'many2many':
-                values[fname] = [('set', [v['id'] for v in values[fname]])]
-        company_id = company_obj.create(values)
-        user_ids = user_obj.search([
-            ('main_company', '=', None),
-            ])
-        user_obj.write(user_ids, {
-            'main_company': company_id,
-            'company': company_id,
-            })
+        self.company.save()
+        users = User.search([
+                ('main_company', '=', None),
+                ])
+        User.write(users, {
+                'main_company': self.company.id,
+                'company': self.company.id,
+                })
         return 'end'
-
-CompanyConfig()
 
 
 class CompanyReport(Report):
 
-    def parse(self, report, objects, datas, localcontext=None):
-        user = Pool().get('res.user').browse(Transaction().user)
-        if localcontext is None:
-            localcontext = {}
+    @classmethod
+    def parse(cls, report, records, data, localcontext):
+        user = Pool().get('res.user')(Transaction().user)
         localcontext['company'] = user.company
-        return super(CompanyReport, self).parse(report, objects, datas,
-                localcontext=localcontext)
+        return super(CompanyReport, cls).parse(report, records, data,
+            localcontext)
 
 
 class LetterReport(CompanyReport):
-    _name = 'party.letter'
-
-LetterReport()
+    __name__ = 'party.letter'
