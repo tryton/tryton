@@ -6,12 +6,12 @@ from trytond.pyson import PYSONEncoder, Not, Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Work', 'OpenWorkStart', 'OpenWork', 'OpenWork2', 'OpenWorkGraph']
+
 
 class Work(ModelSQL, ModelView):
     'Work'
-    _name = 'timesheet.work'
-    _description = __doc__
-
+    __name__ = 'timesheet.work'
     name = fields.Char('Name', required=True)
     active = fields.Boolean('Active')
     parent = fields.Many2One('timesheet.work', 'Parent', left="left",
@@ -40,48 +40,52 @@ class Work(ModelSQL, ModelView):
             'readonly': Not(Bool(Eval('active'))),
             })
 
-    def __init__(self):
-        super(Work, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Work, cls).__setup__()
+        cls._constraints += [
             ('check_recursion', 'recursive_works'),
             ('check_parent_company', 'parent_company'),
-        ]
-        self._error_messages.update({
-            'recursive_works': 'You can not create recursive works!',
-            'parent_company': 'Every work must be in the same company '\
-                'as it\'s parent work!',
-        })
+            ]
+        cls._error_messages.update({
+                'recursive_works': 'You can not create recursive works!',
+                'parent_company': 'Every work must be in the same company '\
+                    'as it\'s parent work!',
+                })
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_left(self):
+    @staticmethod
+    def default_left():
         return 0
 
-    def default_right(self):
+    @staticmethod
+    def default_right():
         return 0
 
-    def default_timesheet_available(self):
+    @staticmethod
+    def default_timesheet_available():
         return True
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def check_parent_company(self, ids):
-        for work in self.browse(ids):
-            if not work.parent:
-                continue
-            if work.parent.company.id != work.company.id:
-                return False
-        return True
+    def check_parent_company(self):
+        if not self.parent:
+            return True
+        return self.parent.company == self.company
 
-    def _tree_qty(self, hours_by_wt, children, ids, to_compute):
+    @classmethod
+    def _tree_qty(cls, hours_by_wt, children, ids, to_compute):
         res = 0
         for h in ids:
             if (not children.get(h)) or (not to_compute[h]):
                 res += hours_by_wt.setdefault(h, 0)
             else:
-                sub_qty = self._tree_qty(
+                sub_qty = cls._tree_qty(
                     hours_by_wt, children, children[h], to_compute)
                 hours_by_wt.setdefault(h, 0)
                 hours_by_wt[h] += sub_qty
@@ -89,10 +93,13 @@ class Work(ModelSQL, ModelView):
                 to_compute[h] = False
         return res
 
-    def get_hours(self, ids, name):
-        all_ids = self.search([
+    @classmethod
+    def get_hours(cls, works, name):
+        ids = [w.id for w in works]
+        all_works = cls.search([
                 ('parent', 'child_of', ids),
                 ])
+        all_ids = [w.id for w in all_works]
         # force inactive ids to be in all_ids
         all_ids = list(set(all_ids + ids))
         clause = "SELECT work, sum(hours) FROM timesheet_line "\
@@ -113,66 +120,53 @@ class Work(ModelSQL, ModelView):
         hours_by_wt = dict((i[0], i[1]) for i in
             Transaction().cursor.fetchall())
         to_compute = dict.fromkeys(all_ids, True)
-        works = self.browse(all_ids)
+        works = cls.browse(all_ids)
         children = {}
         for work in works:
             if work.parent:
                 children.setdefault(work.parent.id, []).append(work.id)
-        self._tree_qty(hours_by_wt, children, ids, to_compute)
+        cls._tree_qty(hours_by_wt, children, ids, to_compute)
         return hours_by_wt
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
+    def get_rec_name(self, name):
+        if self.parent:
+            return self.parent.get_rec_name(name) + '\\' + self.name
+        else:
+            return self.name
 
-        def _name(work):
-            if work.parent:
-                return _name(work.parent) + '\\' + work.name
-            else:
-                return work.name
-        for work in self.browse(ids):
-            res[work.id] = _name(work)
-        return res
-
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, works, default=None):
         if default is None:
             default = {}
         default = default.copy()
         if 'timesheet_lines' not in default:
             default['timesheet_lines'] = None
-        return super(Work, self).copy(ids, default=default)
+        return super(Work, cls).copy(works, default=default)
 
-    def write(self, ids, vals):
-        child_ids = None
+    @classmethod
+    def write(cls, works, vals):
+        childs = None
         if not vals.get('active', True):
-            child_ids = self.search([
-                ('parent', 'child_of', ids),
-                ])
-        res = super(Work, self).write(ids, vals)
-        if child_ids:
-            self.write(child_ids, {
-                'active': False,
-                })
-        return res
-
-Work()
+            childs = cls.search([
+                    ('parent', 'child_of', [w.id for w in works]),
+                    ])
+        super(Work, cls).write(works, vals)
+        if childs:
+            cls.write(childs, {
+                    'active': False,
+                    })
 
 
 class OpenWorkStart(ModelView):
     'Open Work'
-    _name = 'timesheet.work.open.start'
-    _description = __doc__
+    __name__ = 'timesheet.work.open.start'
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
-
-OpenWorkStart()
 
 
 class OpenWork(Wizard):
     'Open Work'
-    _name = 'timesheet.work.open'
-
+    __name__ = 'timesheet.work.open'
     start = StateView('timesheet.work.open.start',
         'timesheet.work_open_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -180,39 +174,31 @@ class OpenWork(Wizard):
             ])
     open_ = StateAction('timesheet.act_work_hours_board')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         action['pyson_context'] = PYSONEncoder().encode({
-                'from_date': session.start.from_date,
-                'to_date': session.start.to_date,
+                'from_date': self.start.from_date,
+                'to_date': self.start.to_date,
                 })
         return action, {}
 
-    def transition_open_(self, session):
+    def transition_open_(self):
         return 'end'
-
-OpenWork()
 
 
 class OpenWork2(OpenWork):
-    _name = 'timesheet.work.open2'
-
+    __name__ = 'timesheet.work.open2'
     open_ = StateAction('timesheet.act_work_form2')
-
-OpenWork2()
 
 
 class OpenWorkGraph(Wizard):
-    _name = 'timesheet.work.open_graph'
+    __name__ = 'timesheet.work.open_graph'
     start_state = 'open_'
     open_ = StateAction('timesheet.act_work_form3')
 
-    def do_open_(self, session, action):
-        pool = Pool()
-        work_obj = pool.get('timesheet.work')
+    def do_open_(self, action):
+        Work = Pool().get('timesheet.work')
 
         if 'active_id' in Transaction().context:
-            work = work_obj.browse(Transaction().context['active_id'])
+            work = Work(Transaction().context['active_id'])
             action['name'] = action['name'] + ' - ' + work.rec_name
         return action, {}
-
-OpenWorkGraph()

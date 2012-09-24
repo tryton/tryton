@@ -7,12 +7,15 @@ from trytond.pyson import Eval, PYSONEncoder, Date, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Line', 'EnterLinesStart', 'EnterLines',
+    'HoursEmployee',
+    'OpenHoursEmployeeStart', 'OpenHoursEmployee',
+    'HoursEmployeeWeekly', 'HoursEmployeeMonthly']
+
 
 class Line(ModelSQL, ModelView):
     'Timesheet Line'
-    _name = 'timesheet.line'
-    _description = __doc__
-
+    __name__ = 'timesheet.line'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
         select=True, domain=[
             ('company', '=', Get(Eval('context', {}), 'company')),
@@ -25,63 +28,62 @@ class Line(ModelSQL, ModelView):
             ])
     description = fields.Char('Description')
 
-    def __init__(self):
-        super(Line, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Line, cls).__setup__()
+        cls._sql_constraints += [
             ('check_move_hours_pos',
              'CHECK(hours >= 0.0)', 'Hours field must be positive'),
             ]
 
-    def default_employee(self):
-        user_obj = Pool().get('res.user')
+    @staticmethod
+    def default_employee():
+        User = Pool().get('res.user')
         employee_id = None
         if Transaction().context.get('employee'):
             employee_id = Transaction().context['employee']
         else:
-            user = user_obj.browse(Transaction().user)
+            user = User(Transaction().user)
             if user.employee:
                 employee_id = user.employee.id
         if employee_id:
             return employee_id
 
-    def default_date(self):
-        date_obj = Pool().get('ir.date')
+    @staticmethod
+    def default_date():
+        Date_ = Pool().get('ir.date')
+        return Transaction().context.get('date') or Date_.today()
 
-        return Transaction().context.get('date') or date_obj.today()
-
-    def view_header_get(self, value, view_type='form'):
+    @classmethod
+    def view_header_get(cls, value, view_type='form'):
         if not Transaction().context.get('employee'):
             return value
-        employee_obj = Pool().get('company.employee')
-        employee = employee_obj.browse(Transaction().context['employee'])
+        Employee = Pool().get('company.employee')
+        employee = Employee(Transaction().context['employee'])
         return value + " (" + employee.name + ")"
-
-Line()
 
 
 class EnterLinesStart(ModelView):
     'Enter Lines'
-    _name = 'timesheet.line.enter.start'
-    _description = __doc__
+    __name__ = 'timesheet.line.enter.start'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
             domain=[('company', '=', Get(Eval('context', {}), 'company'))])
     date = fields.Date('Date', required=True)
 
-    def default_employee(self):
-        line_obj = Pool().get('timesheet.line')
-        return line_obj.default_employee()
+    @staticmethod
+    def default_employee():
+        Line = Pool().get('timesheet.line')
+        return Line.default_employee()
 
-    def default_date(self):
-        line_obj = Pool().get('timesheet.line')
-        return line_obj.default_date()
-
-EnterLinesStart()
+    @staticmethod
+    def default_date():
+        Line = Pool().get('timesheet.line')
+        return Line.default_date()
 
 
 class EnterLines(Wizard):
     'Enter Lines'
-    _name = 'timesheet.line.enter'
-
+    __name__ = 'timesheet.line.enter'
     start = StateView('timesheet.line.enter.start',
         'timesheet.line_enter_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -89,35 +91,32 @@ class EnterLines(Wizard):
             ])
     enter = StateAction('timesheet.act_line_form')
 
-    def do_enter(self, session, action):
-        date = session.start.date
+    def do_enter(self, action):
+        date = self.start.date
         date = Date(date.year, date.month, date.day)
         action['pyson_domain'] = PYSONEncoder().encode([
-                ('employee', '=', session.start.employee.id),
+                ('employee', '=', self.start.employee.id),
                 ('date', '=', date),
                 ])
         action['pyson_context'] = PYSONEncoder().encode({
-                'employee': session.start.employee.id,
+                'employee': self.start.employee.id,
                 'date': date,
                 })
-        action['name'] += " - " + session.start.employee.rec_name
+        action['name'] += " - " + self.start.employee.rec_name
         return action, {}
 
-    def transition_enter(self, session):
+    def transition_enter(self):
         return 'end'
-
-EnterLines()
 
 
 class HoursEmployee(ModelSQL, ModelView):
     'Hours per Employee'
-    _name = 'timesheet.hours_employee'
-    _description = __doc__
-
+    __name__ = 'timesheet.hours_employee'
     employee = fields.Many2One('company.employee', 'Employee', select=True)
     hours = fields.Float('Hours', digits=(16, 2))
 
-    def table_query(self):
+    @staticmethod
+    def table_query():
         clause = ' '
         args = [True]
         if Transaction().context.get('start_date'):
@@ -138,23 +137,17 @@ class HoursEmployee(ModelSQL, ModelView):
                 + clause + \
                 'GROUP BY employee', args)
 
-HoursEmployee()
-
 
 class OpenHoursEmployeeStart(ModelView):
     'Open Hours per Employee'
-    _name = 'timesheet.hours_employee.open.start'
-    _description = __doc__
+    __name__ = 'timesheet.hours_employee.open.start'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-
-OpenHoursEmployeeStart()
 
 
 class OpenHoursEmployee(Wizard):
     'Open Hours per Employee'
-    _name = 'timesheet.hours_employee.open'
-
+    __name__ = 'timesheet.hours_employee.open'
     start = StateView('timesheet.hours_employee.open.start',
         'timesheet.hours_employee_open_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -162,37 +155,35 @@ class OpenHoursEmployee(Wizard):
             ])
     open_ = StateAction('timesheet.act_hours_employee_form')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': session.start.start_date,
-                'end_date': session.start.end_date,
+                'start_date': self.start.start_date,
+                'end_date': self.start.end_date,
                 })
         return action, {}
 
-    def transition_open_(self, session):
+    def transition_open_(self):
         return 'end'
-
-OpenHoursEmployee()
 
 
 class HoursEmployeeWeekly(ModelSQL, ModelView):
     'Hours per Employee per Week'
-    _name = 'timesheet.hours_employee_weekly'
-    _description = __doc__
-
+    __name__ = 'timesheet.hours_employee_weekly'
     year = fields.Char('Year', select=True)
     week = fields.Integer('Week', select=True)
     employee = fields.Many2One('company.employee', 'Employee', select=True)
     hours = fields.Float('Hours', digits=(16, 2), select=True)
 
-    def __init__(self):
-        super(HoursEmployeeWeekly, self).__init__()
-        self._order.insert(0, ('year', 'DESC'))
-        self._order.insert(1, ('week', 'DESC'))
-        self._order.insert(2, ('employee', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(HoursEmployeeWeekly, cls).__setup__()
+        cls._order.insert(0, ('year', 'DESC'))
+        cls._order.insert(1, ('week', 'DESC'))
+        cls._order.insert(2, ('employee', 'ASC'))
 
-    def table_query(self):
-        type_name = FIELDS[self.year._type].sql_type(self.year)[0]
+    @classmethod
+    def table_query(cls):
+        type_name = FIELDS[cls.year._type].sql_type(cls.year)[0]
         return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
                     'CAST(year AS ' + type_name + ') AS year, week, ' \
                     'employee, hours ' \
@@ -208,29 +199,27 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
                         'EXTRACT(WEEK FROM date) AS week, employee, ' \
                         'SUM(COALESCE(hours, 0)) AS hours ' \
                     'FROM timesheet_line ' \
-                    'GROUP BY year, week, employee) AS ' + self._table, [])
-
-HoursEmployeeWeekly()
+                    'GROUP BY year, week, employee) AS ' + cls._table, [])
 
 
 class HoursEmployeeMonthly(ModelSQL, ModelView):
     'Hours per Employee per Month'
-    _name = 'timesheet.hours_employee_monthly'
-    _description = __doc__
-
+    __name__ = 'timesheet.hours_employee_monthly'
     year = fields.Char('Year', select=True)
     month = fields.Integer('Month', select=True)
     employee = fields.Many2One('company.employee', 'Employee', select=True)
     hours = fields.Float('Hours', digits=(16, 2), select=True)
 
-    def __init__(self):
-        super(HoursEmployeeMonthly, self).__init__()
-        self._order.insert(0, ('year', 'DESC'))
-        self._order.insert(1, ('month', 'DESC'))
-        self._order.insert(2, ('employee', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(HoursEmployeeMonthly, cls).__setup__()
+        cls._order.insert(0, ('year', 'DESC'))
+        cls._order.insert(1, ('month', 'DESC'))
+        cls._order.insert(2, ('employee', 'ASC'))
 
-    def table_query(self):
-        type_name = FIELDS[self.year._type].sql_type(self.year)[0]
+    @classmethod
+    def table_query(cls):
+        type_name = FIELDS[cls.year._type].sql_type(cls.year)[0]
         return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
                     'CAST(year AS ' + type_name + ') AS year, month, ' \
                     'employee, hours ' \
@@ -246,6 +235,4 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
                         'EXTRACT(MONTH FROM date) AS month, employee, ' \
                         'SUM(COALESCE(hours, 0)) AS hours ' \
                     'FROM timesheet_line ' \
-                    'GROUP BY year, month, employee) AS ' + self._table, [])
-
-HoursEmployeeMonthly()
+                    'GROUP BY year, month, employee) AS ' + cls._table, [])
