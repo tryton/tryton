@@ -11,6 +11,9 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids
 
+__all__ = ['Forecast', 'ForecastLine', 'ForecastLineMove',
+    'ForecastCompleteAsk', 'ForecastCompleteChoose', 'ForecastComplete']
+
 STATES = {
     'readonly': Not(Equal(Eval('state'), 'draft')),
 }
@@ -19,10 +22,8 @@ DEPENDS = ['state']
 
 class Forecast(Workflow, ModelSQL, ModelView):
     "Stock Forecast"
-    _name = "stock.forecast"
-    _description = __doc__
+    __name__ = "stock.forecast"
     _rec_name = 'warehouse'
-
     warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
@@ -53,31 +54,32 @@ class Forecast(Workflow, ModelSQL, ModelView):
         ('cancel', 'Cancel'),
         ], 'State', readonly=True, select=True)
 
-    def __init__(self):
-        super(Forecast, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Forecast, cls).__setup__()
+        cls._sql_constraints += [
             ('check_from_to_date',
              'CHECK(to_date >= from_date)',
              '"To Date" must be greater than "From Date"!'),
             ]
-        self._constraints += [
+        cls._constraints += [
             ('check_date_overlap', 'date_overlap'),
             ]
-        self._error_messages.update({
+        cls._error_messages.update({
                 'date_overlap': 'You can not create forecasts for the same ' \
                     'locations with overlapping dates',
                 'delete_cancel': 'Forecast "%s" must be cancelled before '\
                     'deletion!',
                 })
-        self._order.insert(0, ('from_date', 'DESC'))
-        self._order.insert(1, ('warehouse', 'ASC'))
-        self._transitions |= set((
+        cls._order.insert(0, ('from_date', 'DESC'))
+        cls._order.insert(1, ('warehouse', 'ASC'))
+        cls._transitions |= set((
                 ('draft', 'done'),
                 ('draft', 'cancel'),
                 ('done', 'draft'),
                 ('cancel', 'draft'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state') != 'draft',
                     },
@@ -92,18 +94,19 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     },
                 })
 
-    def init(self, module_name):
-        location_obj = Pool().get('stock.location')
+    @classmethod
+    def __register__(cls, module_name):
+        Location = Pool().get('stock.location')
         cursor = Transaction().cursor
 
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         migrate_warehouse = (not table.column_exist('warehouse')
             and table.column_exist('location'))
 
-        super(Forecast, self).init(module_name)
+        super(Forecast, cls).__register__(module_name)
 
         # Add index on create_date
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.index_action('create_date', action='add')
 
         if migrate_warehouse:
@@ -114,149 +117,138 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     return location.id
                 elif location.parent:
                     return find_warehouse(location.parent)
-            cursor.execute('SELECT id, location FROM "%s"' % self._table)
+            cursor.execute('SELECT id, location FROM "%s"' % cls._table)
             for forecast_id, location_id in cursor.fetchall():
                 warehouse_id = location_id  # default fallback
                 if location_id in location2warehouse:
                     warehouse_id = location2warehouse[location_id]
                 else:
-                    location = location_obj.browse(location_id)
+                    location = Location(location_id)
                     warehouse_id = find_warehouse(location) or location_id
                     location2warehouse[location_id] = warehouse_id
                 cursor.execute('UPDATE "%s" SET warehouse = %%s '
-                    'WHERE id = %%s' % self._table,
+                    'WHERE id = %%s' % cls._table,
                     (warehouse_id, forecast_id))
             table.not_null_action('warehouse',
-                action=self.warehouse.required and 'add' or 'remove')
+                action=cls.warehouse.required and 'add' or 'remove')
             table.drop_column('location', True)
 
         # Migration from 2.0 delete stock moves
-        forecast_ids = self.search([])
-        self.delete_moves(forecast_ids)
+        forecasts = cls.search([])
+        cls.delete_moves(forecasts)
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_destination(self):
-        location_obj = Pool().get('stock.location')
-        location_ids = location_obj.search(
-                self.destination.domain)
-        if len(location_ids) == 1:
-            return location_ids[0]
+    @classmethod
+    def default_destination(cls):
+        Location = Pool().get('stock.location')
+        locations = Location.search(cls.destination.domain)
+        if len(locations) == 1:
+            return locations[0].id
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def check_date_overlap(self, ids):
+    def check_date_overlap(self):
         cursor = Transaction().cursor
-        for forecast in self.browse(ids):
-            if forecast.state != 'done':
-                continue
-            cursor.execute('SELECT id ' \
-                    'FROM stock_forecast ' \
-                    'WHERE ((from_date <= %s AND to_date >= %s) ' \
-                            'OR (from_date <= %s AND to_date >= %s) ' \
-                            'OR (from_date >= %s AND to_date <= %s)) ' \
-                        'AND warehouse = %s ' \
-                        'AND destination = %s ' \
-                        'AND state = \'done\' ' \
-                        'AND company = %s '
-                        'AND id != %s',
-                    (forecast.from_date, forecast.from_date,
-                     forecast.to_date, forecast.to_date,
-                     forecast.from_date, forecast.to_date,
-                     forecast.warehouse.id, forecast.destination.id,
-                     forecast.company.id, forecast.id))
-            rowcount = cursor.rowcount
-            if rowcount == -1 or rowcount is None:
-                rowcount = len(cursor.fetchall())
-            if rowcount:
-                return False
+        if self.state != 'done':
+            return True
+        cursor.execute('SELECT id ' \
+                'FROM stock_forecast ' \
+                'WHERE ((from_date <= %s AND to_date >= %s) ' \
+                        'OR (from_date <= %s AND to_date >= %s) ' \
+                        'OR (from_date >= %s AND to_date <= %s)) ' \
+                    'AND warehouse = %s ' \
+                    'AND destination = %s ' \
+                    'AND state = \'done\' ' \
+                    'AND company = %s '
+                    'AND id != %s',
+                (self.from_date, self.from_date,
+                 self.to_date, self.to_date,
+                 self.from_date, self.to_date,
+                 self.warehouse.id, self.destination.id,
+                 self.company.id, self.id))
+        rowcount = cursor.rowcount
+        if rowcount == -1 or rowcount is None:
+            rowcount = len(cursor.fetchall())
+        if rowcount:
+            return False
         return True
 
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(self, forecasts):
         # Cancel before delete
-        self.cancel(ids)
-        for forecast in self.browse(ids):
+        self.cancel(forecasts)
+        for forecast in forecasts:
             if forecast.state != 'cancel':
                 self.raise_user_error('delete_cancel', forecast.rec_name)
-        return super(Forecast, self).delete(ids)
+        super(Forecast, self).delete(forecasts)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
+    def draft(cls, forecasts):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def confirm(self, ids):
+    def confirm(cls, forecasts):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, ids):
+    def cancel(cls, forecasts):
         pass
 
+    @classmethod
     @ModelView.button_action('stock_forecast.wizard_forecast_complete')
-    def complete(self, ids):
+    def complete(cls, forecasts):
         pass
 
-    def create_moves(self, forecast_ids):
+    @staticmethod
+    def create_moves(forecasts):
         'Create stock moves for the forecast ids'
-        line_obj = Pool().get('stock.forecast.line')
-
-        forecasts = self.browse(forecast_ids)
         for forecast in forecasts:
             if forecast.state == 'done':
                 for line in forecast.lines:
-                    line_obj.create_moves(line)
+                    line.create_moves()
 
-    def delete_moves(self, forecast_ids):
+    @staticmethod
+    def delete_moves(forecasts):
         'Delete stock moves for the forecast ids'
-        line_obj = Pool().get('stock.forecast.line')
+        Line = Pool().get('stock.forecast.line')
+        Line.delete_moves([l for f in forecasts for l in f.lines])
 
-        forecasts = self.browse(forecast_ids)
-        for forecast in forecasts:
-            for line in forecast.lines:
-                line_obj.delete_moves(line)
-
-    def copy(self, ids, default=None):
-        line_obj = Pool().get('stock.forecast.line')
-
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
+    @classmethod
+    def copy(cls, forecasts, default=None):
+        Line = Pool().get('stock.forecast.line')
 
         if default is None:
             default = {}
         default = default.copy()
         default['lines'] = None
 
-        new_ids = []
-        for forecast in self.browse(ids):
-            new_id = super(Forecast, self).copy(forecast.id, default=default)
-            line_obj.copy([x.id for x in forecast.lines],
-                    default={
-                        'forecast': new_id,
+        new_forecasts = []
+        for forecast in forecasts:
+            new_forecast, = super(Forecast, cls).copy([forecast],
+                default=default)
+            Line.copy([x for x in forecast.lines],
+                default={
+                    'forecast': new_forecast.id,
                     })
-            new_ids.append(new_id)
-
-        if int_id:
-            return new_ids[0]
-        return new_ids
-
-Forecast()
+            new_forecasts.append(new_forecast)
+        return new_forecasts
 
 
 class ForecastLine(ModelSQL, ModelView):
     'Stock Forecast Line'
-    _name = 'stock.forecast.line'
-    _description = __doc__
+    __name__ = 'stock.forecast.line'
     _rec_name = 'product'
-
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'goods'),
@@ -266,7 +258,7 @@ class ForecastLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category',
             on_change_with=['product']),
-        'get_product_uom_category')
+        'on_change_with_product_uom_category')
     uom = fields.Many2One('product.uom', 'UOM', required=True,
         domain=[
             If(Bool(Eval('product_uom_category')),
@@ -288,9 +280,10 @@ class ForecastLine(ModelSQL, ModelView):
             digits=(16, Eval('unit_digits', 2)), depends=['unit_digits']),
         'get_quantity_executed')
 
-    def __init__(self):
-        super(ForecastLine, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(ForecastLine, cls).__setup__()
+        cls._sql_constraints += [
             ('check_line_qty_pos',
              'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
             ('check_line_minimal_qty',
@@ -298,70 +291,54 @@ class ForecastLine(ModelSQL, ModelView):
              'Line quantity must be greater than the minimal quantity!'),
             ('forecast_product_uniq', 'UNIQUE(forecast, product)',
              'Product must be unique by forcast!'),
-        ]
+            ]
 
-    def default_unit_digits(self):
+    @staticmethod
+    def default_unit_digits():
         return 2
 
-    def default_minimal_quantity(self):
+    @staticmethod
+    def default_minimal_quantity():
         return 1.0
 
-    def on_change_product(self, vals):
-        product_obj = Pool().get('product.product')
+    def on_change_product(self):
         res = {}
         res['unit_digits'] = 2
-        if vals.get('product'):
-            product = product_obj.browse(vals['product'])
-            res['uom'] = product.default_uom.id
-            res['uom.rec_name'] = product.default_uom.rec_name
-            res['unit_digits'] = product.default_uom.digits
+        if self.product:
+            res['uom'] = self.product.default_uom.id
+            res['uom.rec_name'] = self.product.default_uom.rec_name
+            res['unit_digits'] = self.product.default_uom.digits
         return res
 
-    def on_change_with_product_uom_category(self, values):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return product.default_uom_category.id
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
-    def get_product_uom_category(self, ids, name):
-        categories = {}
-        for line in self.browse(ids):
-            if line.product:
-                categories[line.id] = line.product.default_uom_category.id
-            else:
-                categories[line.id] = None
-        return categories
-
-    def on_change_uom(self, vals):
-        uom_obj = Pool().get('product.uom')
+    def on_change_uom(self):
         res = {}
         res['unit_digits'] = 2
-        if vals.get('uom'):
-            uom = uom_obj.browse(vals['uom'])
-            res['unit_digits'] = uom.digits
+        if self.uom:
+            res['unit_digits'] = self.uom.digits
         return res
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            res[line.id] = line.product.default_uom.digits
-        return res
+    def get_unit_digits(self, name):
+        return self.product.default_uom.digits
 
-    def get_quantity_executed(self, ids, name):
+    @classmethod
+    def get_quantity_executed(cls, lines, name):
         cursor = Transaction().cursor
-        move_obj = Pool().get('stock.move')
-        location_obj = Pool().get('stock.location')
-        uom_obj = Pool().get('product.uom')
-        forecast_obj = Pool().get('stock.forecast')
-        line_move_obj = Pool().get('stock.forecast.line-stock.move')
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Location = pool.get('stock.location')
+        Uom = pool.get('product.uom')
+        Forecast = pool.get('stock.forecast')
+        LineMove = pool.get('stock.forecast.line-stock.move')
 
-        result = dict((x, 0) for x in ids)
-        lines = self.browse(ids)
+        result = dict((x.id, 0) for x in lines)
         key = lambda line: line.forecast.id
         lines.sort(key=key)
         for forecast_id, lines in itertools.groupby(lines, key):
-            forecast = forecast_obj.browse(forecast_id)
+            forecast = Forecast(forecast_id)
             product2line = dict((line.product.id, line) for line in lines)
             product_ids = product2line.keys()
             for i in range(0, len(product_ids), cursor.IN_MAX):
@@ -369,12 +346,12 @@ class ForecastLine(ModelSQL, ModelView):
                 red_sql, red_ids = reduce_ids('product', sub_ids)
                 cursor.execute('SELECT m.product, '
                         'SUM(m.internal_quantity) AS quantity '
-                    'FROM "' + move_obj._table + '" AS m '
-                        'JOIN "' + location_obj._table + '" AS fl '
+                    'FROM "' + Move._table + '" AS m '
+                        'JOIN "' + Location._table + '" AS fl '
                             'ON m.from_location = fl.id '
-                        'JOIN "' + location_obj._table + '" AS tl '
+                        'JOIN "' + Location._table + '" AS tl '
                             'ON m.to_location = tl.id '
-                        'LEFT JOIN "' + line_move_obj._table + '" AS lm '
+                        'LEFT JOIN "' + LineMove._table + '" AS lm '
                             'ON m.id = lm.move '
                     'WHERE ' + red_sql + ' '
                         'AND fl.left >= %s AND fl.right <= %s '
@@ -390,69 +367,74 @@ class ForecastLine(ModelSQL, ModelView):
                         forecast.from_date, forecast.to_date])
                 for product_id, quantity in cursor.fetchall():
                     line = product2line[product_id]
-                    result[line.id] = uom_obj.compute_qty(
-                        line.product.default_uom, quantity, line.uom)
+                    result[line.id] = Uom.compute_qty(line.product.default_uom,
+                        quantity, line.uom)
         return result
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, lines, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['moves'] = None
-        return super(ForecastLine, self).copy(ids, default=default)
+        return super(ForecastLine, cls).copy(lines, default=default)
 
-    def create_moves(self, line):
+    def create_moves(self):
         'Create stock moves for the forecast line'
-        move_obj = Pool().get('stock.move')
-        uom_obj = Pool().get('product.uom')
-        date_obj = Pool().get('ir.date')
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+        Date = pool.get('ir.date')
 
-        assert not line.moves
+        assert not self.moves
 
-        today = date_obj.today()
-        from_date = line.forecast.from_date
+        today = Date.today()
+        from_date = self.forecast.from_date
         if from_date < today:
             from_date = today
-        to_date = line.forecast.to_date
+        to_date = self.forecast.to_date
         if to_date < today:
             return
 
         delta = to_date - from_date
         delta = delta.days + 1
-        nb_packet = int((line.quantity - line.quantity_executed)
-            / line.minimal_quantity)
+        nb_packet = int((self.quantity - self.quantity_executed)
+            / self.minimal_quantity)
         distribution = self.distribute(delta, nb_packet)
         unit_price = None
-        if line.forecast.destination.type == 'customer':
-            unit_price = line.product.list_price
-            unit_price = uom_obj.compute_price(line.product.default_uom,
-                    unit_price, line.uom)
+        if self.forecast.destination.type == 'customer':
+            unit_price = self.product.list_price
+            unit_price = Uom.compute_price(self.product.default_uom,
+                unit_price, self.uom)
 
         moves = []
         for day, qty in distribution.iteritems():
             if qty == 0.0:
                 continue
-            mid = move_obj.create({
-                'from_location': line.forecast.warehouse.storage_location.id,
-                'to_location': line.forecast.destination.id,
-                'product': line.product.id,
-                'uom': line.uom.id,
-                'quantity': qty * line.minimal_quantity,
-                'planned_date': (line.forecast.from_date
+            move = Move.create({
+                    'from_location': \
+                        self.forecast.warehouse.storage_location.id,
+                    'to_location': self.forecast.destination.id,
+                    'product': self.product.id,
+                    'uom': self.uom.id,
+                    'quantity': qty * self.minimal_quantity,
+                    'planned_date': (self.forecast.from_date
                         + datetime.timedelta(day)),
-                'company': line.forecast.company.id,
-                'currency': line.forecast.company.currency.id,
-                'unit_price': unit_price,
-                })
-            moves.append(mid)
-        self.write(line.id, {'moves': [('set', moves)]})
+                    'company': self.forecast.company.id,
+                    'currency': self.forecast.company.currency.id,
+                    'unit_price': unit_price,
+                    })
+            moves.append(move)
+        self.write([self], {'moves': [('set', [m.id for m in moves])]})
 
-    def delete_moves(self, line):
+    @classmethod
+    def delete_moves(cls, lines):
         'Delete stock moves of the forecast line'
-        move_obj = Pool().get('stock.move')
-        move_obj.delete([m.id for m in line.moves])
+        Move = Pool().get('stock.move')
+        Move.delete([m for l in lines for m in l.moves])
 
-    def distribute(self, delta, qty):
+    @staticmethod
+    def distribute(delta, qty):
         'Distribute qty over delta'
         range_delta = range(delta)
         a = {}.fromkeys(range_delta, 0)
@@ -479,44 +461,33 @@ class ForecastLine(ModelSQL, ModelView):
                 qty = 0
         return a
 
-ForecastLine()
-
 
 class ForecastLineMove(ModelSQL):
     'ForecastLine - Move'
-    _name = 'stock.forecast.line-stock.move'
+    __name__ = 'stock.forecast.line-stock.move'
     _table = 'forecast_line_stock_move_rel'
-    _description = __doc__
     line = fields.Many2One('stock.forecast.line', 'Forecast Line',
             ondelete='CASCADE', select=True, required=True)
     move = fields.Many2One('stock.move', 'Move', ondelete='CASCADE',
             select=True, required=True)
 
-ForecastLineMove()
-
 
 class ForecastCompleteAsk(ModelView):
     'Complete Forecast'
-    _name = 'stock.forecast.complete.ask'
-    _description = __doc__
+    __name__ = 'stock.forecast.complete.ask'
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
-
-ForecastCompleteAsk()
 
 
 class ForecastCompleteChoose(ModelView):
     'Complete Forecast'
-    _name = 'stock.forecast.complete.choose'
-    _description = __doc__
+    __name__ = 'stock.forecast.complete.choose'
     products = fields.Many2Many('product.product', None, None, 'Products')
-
-ForecastCompleteChoose()
 
 
 class ForecastComplete(Wizard):
     'Complete Forecast'
-    _name = 'stock.forecast.complete'
+    __name__ = 'stock.forecast.complete'
     start_state = 'ask'
     ask = StateView('stock.forecast.complete.ask',
         'stock_forecast.forecast_comlete_ask_view_form', [
@@ -532,72 +503,74 @@ class ForecastComplete(Wizard):
             ])
     complete = StateTransition()
 
-    def __init__(self):
-        super(ForecastComplete, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(ForecastComplete, cls).__setup__()
+        cls._error_messages.update({
             'from_to_date': '"From Date" should be smaller than "To Date"!',
             })
 
-    def default_ask(self, session, fields):
+    def default_ask(self, fields):
         """
         Forecast dates shifted by one year.
         """
-        forecast_obj = Pool().get('stock.forecast')
-        forecast = forecast_obj.browse(Transaction().context['active_id'])
+        Forecast = Pool().get('stock.forecast')
+        forecast = Forecast(Transaction().context['active_id'])
 
         res = {}
         for field in ("to_date", "from_date"):
             res[field] = forecast[field] - relativedelta(years=1)
         return res
 
-    def _get_product_quantity(self, session):
-        forecast_obj = Pool().get('stock.forecast')
-        product_obj = Pool().get('product.product')
-        forecast = forecast_obj.browse(Transaction().context['active_id'])
-        if session.ask.from_date > session.ask.to_date:
+    def _get_product_quantity(self):
+        pool = Pool()
+        Forecast = pool.get('stock.forecast')
+        Product = pool.get('product.product')
+        forecast = Forecast(Transaction().context['active_id'])
+        if self.ask.from_date > self.ask.to_date:
             self.raise_user_error('from_to_date')
 
         with Transaction().set_context(
                 stock_destination=[forecast.destination.id],
-                stock_date_start=session.ask.from_date,
-                stock_date_end=session.ask.to_date):
-            return product_obj.products_by_location([forecast.warehouse.id],
+                stock_date_start=self.ask.from_date,
+                stock_date_end=self.ask.to_date):
+            return Product.products_by_location([forecast.warehouse.id],
                     with_childs=True, skip_zero=False)
 
-    def default_choose(self, session, fields):
+    def default_choose(self, fields):
         """
         Collect products for which there is an outgoing stream between
         the given location and the destination.
         """
-        if session.choose.products:
-            return {'products': [x.id for x in session.choose.products]}
-        pbl = self._get_product_quantity(session)
+        if self.choose.products:
+            return {'products': [x.id for x in self.choose.products]}
+        pbl = self._get_product_quantity()
         products = []
         for (_, product), qty in pbl.iteritems():
             if qty < 0:
                 products.append(product)
         return {'products': products}
 
-    def transition_complete(self, session):
+    def transition_complete(self):
         pool = Pool()
-        forecast_line_obj = pool.get('stock.forecast.line')
-        product_obj = pool.get('product.product')
+        ForecastLine = pool.get('stock.forecast.line')
+        Product = pool.get('product.product')
 
         prod2line = {}
-        forecast_line_ids = forecast_line_obj.search([
+        forecast_lines = ForecastLine.search([
                 ('forecast', '=', Transaction().context['active_id']),
                 ])
-        for forecast_line in forecast_line_obj.browse(forecast_line_ids):
-            prod2line[forecast_line.product.id] = forecast_line.id
+        for forecast_line in forecast_lines:
+            prod2line[forecast_line.product.id] = forecast_line
 
-        pbl = self._get_product_quantity(session)
+        pbl = self._get_product_quantity()
         product_ids = [x[1] for x in pbl]
         prod2uom = {}
-        for product in product_obj.browse(product_ids):
+        for product in Product.browse(product_ids):
             prod2uom[product.id] = product.default_uom.id
 
-        if session.choose.products:
-            products = [x.id for x in session.choose.products]
+        if self.choose.products:
+            products = [x.id for x in self.choose.products]
         else:
             products = None
 
@@ -608,7 +581,7 @@ class ForecastComplete(Wizard):
             if -qty <= 0:
                 continue
             if product in prod2line:
-                forecast_line_obj.write(prod2line[product], {
+                ForecastLine.write([prod2line[product]], {
                         'product': product,
                         'quantity': -qty,
                         'uom': prod2uom[product],
@@ -616,7 +589,7 @@ class ForecastComplete(Wizard):
                         'minimal_quantity': min(1, -qty),
                         })
             else:
-                forecast_line_obj.create({
+                ForecastLine.create({
                         'product': product,
                         'quantity': -qty,
                         'uom': prod2uom[product],
@@ -624,5 +597,3 @@ class ForecastComplete(Wizard):
                         'minimal_quantity': min(1, -qty),
                         })
         return 'end'
-
-ForecastComplete()

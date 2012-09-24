@@ -66,78 +66,73 @@ class StockForecastTestCase(unittest.TestCase):
         Test create_moves.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category_id = self.category.create({
+            category = self.category.create({
                     'name': 'Test create_moves',
                     })
-            unit_id, = self.uom.search([('name', '=', 'Unit')])
-            product_id = self.product.create({
+            unit, = self.uom.search([('name', '=', 'Unit')])
+            product = self.product.create({
                     'name': 'Test create_moves',
                     'type': 'goods',
-                    'category': category_id,
+                    'category': category.id,
                     'cost_price_method': 'fixed',
-                    'default_uom': unit_id,
+                    'default_uom': unit.id,
                     'list_price': Decimal('1'),
                     'cost_price': Decimal(0),
                     })
-            customer_id, = self.location.search([('code', '=', 'CUS')])
-            warehouse_id, = self.location.search([('code', '=', 'WH')])
-            storage_id, = self.location.search([('code', '=', 'STO')])
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            self.user.write(USER, {
-                    'main_company': company_id,
-                    'company': company_id,
+            customer, = self.location.search([('code', '=', 'CUS')])
+            warehouse, = self.location.search([('code', '=', 'WH')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            company, = self.company.search([('name', '=', 'B2CK')])
+            self.user.write([self.user(USER)], {
+                    'main_company': company.id,
+                    'company': company.id,
                     })
 
             today = datetime.date.today()
 
-            forecast_id = self.forecast.create({
-                    'warehouse': warehouse_id,
-                    'destination': customer_id,
+            forecast = self.forecast.create({
+                    'warehouse': warehouse.id,
+                    'destination': customer.id,
                     'from_date': today + relativedelta(months=1, day=1),
                     'to_date': today + relativedelta(months=1, day=20),
-                    'company': company_id,
+                    'company': company.id,
                     'lines': [
                         ('create', {
-                                'product': product_id,
+                                'product': product.id,
                                 'quantity': 10,
-                                'uom': unit_id,
+                                'uom': unit.id,
                                 'minimal_quantity': 2,
                                 },
                             ),
                         ],
                     })
-            self.forecast.confirm([forecast_id])
+            self.forecast.confirm([forecast])
 
-            self.forecast.create_moves([forecast_id])
-            forecast = self.forecast.browse(forecast_id)
+            self.forecast.create_moves([forecast])
             line, = forecast.lines
             self.assertEqual(line.quantity_executed, 0)
             self.assertEqual(len(line.moves), 5)
             self.assertEqual(sum(move.quantity for move in line.moves), 10)
 
-            self.forecast.delete_moves([forecast_id])
-            forecast = self.forecast.browse(forecast_id)
+            self.forecast.delete_moves([forecast])
             line, = forecast.lines
             self.assertEqual(len(line.moves), 0)
 
-            company = self.company.browse(company_id)
             self.move.create({
-                    'from_location': storage_id,
-                    'to_location': customer_id,
-                    'product': product_id,
-                    'uom': unit_id,
+                    'from_location': storage.id,
+                    'to_location': customer.id,
+                    'product': product.id,
+                    'uom': unit.id,
                     'quantity': 2,
                     'planned_date': today + relativedelta(months=1, day=5),
-                    'company': company_id,
+                    'company': company.id,
                     'currency': company.currency.id,
                     'unit_price': Decimal('1'),
                     })
-            forecast = self.forecast.browse(forecast_id)
             line, = forecast.lines
             self.assertEqual(line.quantity_executed, 2)
 
-            self.forecast.create_moves([forecast_id])
-            forecast = self.forecast.browse(forecast_id)
+            self.forecast.create_moves([forecast])
             line, = forecast.lines
             self.assertEqual(line.quantity_executed, 2)
             self.assertEqual(len(line.moves), 4)
