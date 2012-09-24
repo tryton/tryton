@@ -2,11 +2,12 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 
+__all__ = ['Country', 'Subdivision']
+
 
 class Country(ModelSQL, ModelView):
     'Country'
-    _name = 'country.country'
-    _description = __doc__
+    __name__ = 'country.country'
     name = fields.Char('Name', required=True, translate=True,
            help='The full name of the country.', select=True)
     code = fields.Char('Code', size=2, select=True,
@@ -15,41 +16,41 @@ class Country(ModelSQL, ModelView):
     subdivisions = fields.One2Many('country.subdivision',
             'country', 'Subdivisions')
 
-    def __init__(self):
-        super(Country, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Country, cls).__setup__()
+        cls._sql_constraints += [
             ('name_uniq', 'UNIQUE(name)',
-             'The name of the country must be unique!'),
+                'The name of the country must be unique!'),
             ('code_uniq', 'UNIQUE(code)',
-             'The code of the country must be unique!'),
-        ]
-        self._order.insert(0, ('name', 'ASC'))
+                'The code of the country must be unique!'),
+            ]
+        cls._order.insert(0, ('name', 'ASC'))
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], limit=1)
-        if ids:
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if cls.search([('code',) + clause[1:]], limit=1):
             return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+        return [(cls._rec_name,) + clause[1:]]
 
-    def create(self, vals):
+    @classmethod
+    def create(cls, vals):
         if 'code' in vals and vals['code']:
             vals = vals.copy()
             vals['code'] = vals['code'].upper()
-        return super(Country, self).create(vals)
+        return super(Country, cls).create(vals)
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, countries, vals):
         if 'code' in vals and vals['code']:
             vals = vals.copy()
             vals['code'] = vals['code'].upper()
-        return super(Country, self).write(ids, vals)
-
-Country()
+        super(Country, cls).write(countries, vals)
 
 
 class Subdivision(ModelSQL, ModelView):
     "Subdivision"
-    _name = 'country.subdivision'
-    _description = __doc__
+    __name__ = 'country.subdivision'
     country = fields.Many2One('country.country', 'Country',
             required=True, select=True)
     name = fields.Char('Name', required=True, select=True, translate=True)
@@ -139,24 +140,25 @@ class Subdivision(ModelSQL, ModelView):
         ], 'Type', required=True)
     parent = fields.Many2One('country.subdivision', 'Parent')
 
-    def __init__(self):
-        super(Subdivision, self).__init__()
-        self._order.insert(0, ('code', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(Subdivision, cls).__setup__()
+        cls._order.insert(0, ('code', 'ASC'))
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], limit=1)
-        if ids:
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if cls.search([('code',) + clause[1:]], limit=1):
             return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+        return [(cls._rec_name,) + clause[1:]]
 
-    def create(self, vals):
+    @classmethod
+    def create(cls, vals):
         if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
-        return super(Subdivision, self).create(vals)
+        return super(Subdivision, cls).create(vals)
 
-    def write(self, ids, vals):
+    @classmethod
+    def write(cls, subdivisions, vals):
         if 'code' in vals and vals['code']:
             vals['code'] = vals['code'].upper()
-        return super(Subdivision, self).write(ids, vals)
-
-Subdivision()
+        super(Subdivision, cls).write(subdivisions, vals)
