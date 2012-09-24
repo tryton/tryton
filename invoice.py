@@ -1,17 +1,19 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
-from trytond.model import ModelView, ModelSQL
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond.pool import PoolMeta
+
+__all__ = ['Invoice', 'InvoiceLine']
+__metaclass__ = PoolMeta
 
 
-class Invoice(ModelSQL, ModelView):
-    _name = 'account.invoice'
+class Invoice:
+    __name__ = 'account.invoice'
 
-    def __init__(self):
-        super(Invoice, self).__init__()
-        self.lines = copy.copy(self.lines)
+    @classmethod
+    def __setup__(cls):
+        super(Invoice, cls).__setup__()
         add_remove = [
             ('invoice_type', '=', Eval('type')),
             ('party', '=', Eval('party')),
@@ -20,28 +22,23 @@ class Invoice(ModelSQL, ModelView):
             ('invoice', '=', None),
         ]
 
-        if not self.lines.add_remove:
-            self.lines.add_remove = add_remove
+        if not cls.lines.add_remove:
+            cls.lines.add_remove = add_remove
         else:
-            self.lines.add_remove = copy.copy(self.lines.add_remove)
-            self.lines.add_remove = [
+            cls.lines.add_remove = [
                 add_remove,
-                self.lines.add_remove,
-            ]
-        self._reset_columns()
-
-Invoice()
+                cls.lines.add_remove,
+                ]
 
 
-class InvoiceLine(ModelSQL, ModelView):
-    _name = 'account.invoice.line'
+class InvoiceLine:
+    __name__ = 'account.invoice.line'
 
-    def _view_look_dom_arch(self, tree, type, field_children=None):
+    @classmethod
+    def _view_look_dom_arch(cls, tree, type, field_children=None):
         if type == 'form' and Transaction().context.get('standalone'):
             tree_root = tree.getroottree().getroot()
             if tree_root.get('cursor') == 'product':
                 tree_root.set('cursor', 'party')
-        return super(InvoiceLine, self)._view_look_dom_arch(tree, type,
+        return super(InvoiceLine, cls)._view_look_dom_arch(tree, type,
             field_children=field_children)
-
-InvoiceLine()
