@@ -45,14 +45,13 @@ class AccountInvoiceTestCase(unittest.TestCase):
         Test payment_term.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            cu1_id = self.currency.create({
+            cu1 = self.currency.create({
                     'name': 'cu1',
                     'symbol': 'cu1',
                     'code': 'cu1'
                     })
-            cu1 = self.currency.browse(cu1_id)
 
-            term_id = self.payment_term.create({
+            term = self.payment_term.create({
                     'name': '30 days, 1 month, 1 month + 15 days',
                     'lines': [
                         ('create', {
@@ -75,7 +74,7 @@ class AccountInvoiceTestCase(unittest.TestCase):
                                 'months': 1,
                                 'days': 30,
                                 'amount': Decimal('396.84'),
-                                'currency': cu1_id,
+                                'currency': cu1.id,
                                 }),
                         ('create', {
                                 'sequence': 3,
@@ -85,9 +84,8 @@ class AccountInvoiceTestCase(unittest.TestCase):
                                 'day': 15,
                                 })]
                     })
-            term = self.payment_term.browse(term_id)
-            terms = term.compute(Decimal('1587.35'), cu1, term,
-                    date=datetime.date(2011, 10, 1))
+            terms = term.compute(Decimal('1587.35'), cu1,
+                date=datetime.date(2011, 10, 1))
             self.assertEqual(terms, [
                     (datetime.date(2011, 10, 31), Decimal('396.84')),
                     (datetime.date(2011, 11, 01), Decimal('396.84')),

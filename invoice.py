@@ -13,6 +13,13 @@ from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import CONFIG
+from trytond.rpc import RPC
+
+__all__ = ['Invoice', 'InvoicePaymentLine', 'InvoiceLine',
+    'InvoiceLineTax', 'InvoiceTax',
+    'PrintInvoiceWarning', 'PrintInvoice', 'InvoiceReport',
+    'PayInvoiceStart', 'PayInvoiceAsk', 'PayInvoice',
+    'CreditInvoiceStart', 'CreditInvoice']
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -38,8 +45,7 @@ _ZERO = Decimal('0.0')
 
 class Invoice(Workflow, ModelSQL, ModelView):
     'Invoice'
-    _name = 'account.invoice'
-    _description = __doc__
+    __name__ = 'account.invoice'
     _order_name = 'number'
     company = fields.Many2One('company.company', 'Company', required=True,
         states=_STATES, select=True, domain=[
@@ -79,7 +85,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         required=True, states=_STATES, depends=_DEPENDS,
         on_change=['party', 'payment_term', 'type', 'company'])
     party_lang = fields.Function(fields.Char('Party Language',
-        on_change_with=['party']), 'get_party_language')
+        on_change_with=['party']), 'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         required=True, states=_STATES, depends=['state', 'party'],
         domain=[('party', '=', Eval('party'))])
@@ -89,9 +95,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 | (Eval('lines') & Eval('currency'))),
             }, depends=['state', 'lines'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'get_currency_digits')
+        on_change_with=['currency']), 'on_change_with_currency_digits')
     currency_date = fields.Function(fields.Date('Currency Date',
-        on_change_with=['invoice_date']), 'get_currency_date',)
+        on_change_with=['invoice_date']), 'on_change_with_currency_date',)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, depends=_DEPENDS, domain=[('centralised', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
@@ -138,17 +144,18 @@ class Invoice(Workflow, ModelSQL, ModelView):
     invoice_report_cache = fields.Binary('Invoice Report', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
 
-    def __init__(self):
-        super(Invoice, self).__init__()
-        self._check_modify_exclude = ['state', 'payment_lines',
+    @classmethod
+    def __setup__(cls):
+        super(Invoice, cls).__setup__()
+        cls._check_modify_exclude = ['state', 'payment_lines',
                 'invoice_report_cache', 'invoice_report_format']
-        self._constraints += [
+        cls._constraints += [
             ('check_account', 'account_different_company'),
             ('check_account2', 'same_account_on_line'),
         ]
-        self._order.insert(0, ('number', 'DESC'))
-        self._order.insert(1, ('id', 'DESC'))
-        self._error_messages.update({
+        cls._order.insert(0, ('number', 'DESC'))
+        cls._order.insert(1, ('id', 'DESC'))
+        cls._error_messages.update({
             'reset_draft': 'You can not reset to draft ' \
                     'an invoice that has move!',
             'missing_tax_line': 'Taxes defined ' \
@@ -178,7 +185,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'as on invoice line!',
             'delete_cancel': 'Invoice "%s" must be cancelled before deletion!',
             })
-        self._transitions |= set((
+        cls._transitions |= set((
                 ('draft', 'proforma'),
                 ('proforma', 'open'),
                 ('draft', 'open'),
@@ -189,7 +196,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 ('proforma', 'cancel'),
                 ('cancel', 'draft'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'proforma']),
                     },
@@ -211,10 +218,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     },
                 })
 
-    def init(self, module_name):
-        super(Invoice, self).init(module_name)
+    @classmethod
+    def __register__(cls, module_name):
+        super(Invoice, cls).__register__(module_name)
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.2 invoice_date is no more required
         table.not_null_action('invoice_date', action='remove')
@@ -226,18 +234,18 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 and table.column_exist('invoice_report_cache')):
             limit = cursor.IN_MAX
             cursor.execute('SELECT COUNT(id) '
-                'FROM "' + self._table + '"')
+                'FROM "' + cls._table + '"')
             invoice_count, = cursor.fetchone()
             for offset in range(0, invoice_count, limit):
                 cursor.execute(cursor.limit_clause(
                     'SELECT id, invoice_report '
-                    'FROM "' + self._table + '"'
+                    'FROM "' + cls._table + '"'
                     'ORDER BY id',
                     limit, offset))
                 for invoice_id, report in cursor.fetchall():
                     if report:
                         report = buffer(base64.decodestring(str(report)))
-                        cursor.execute('UPDATE "' + self._table + '" '
+                        cursor.execute('UPDATE "' + cls._table + '" '
                             'SET invoice_report_cache = %s '
                             'WHERE id = %s', (report, invoice_id))
             table.drop_column('invoice_report')
@@ -245,283 +253,231 @@ class Invoice(Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table.index_action('create_date', action='add')
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return Transaction().context.get('type', 'out_invoice')
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.id
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.digits
         return 2
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_payment_term(self):
-        payment_term_obj = Pool().get('account.invoice.payment_term')
-        payment_term_ids = payment_term_obj.search(self.payment_term.domain)
-        if len(payment_term_ids) == 1:
-            return payment_term_ids[0]
+    @classmethod
+    def default_payment_term(cls):
+        PaymentTerm = Pool().get('account.invoice.payment_term')
+        payment_terms = PaymentTerm.search(cls.payment_term.domain)
+        if len(payment_terms) == 1:
+            return payment_terms[0].id
 
-    def __get_account_payment_term(self, type_, party_id, company_id):
+    def __get_account_payment_term(self):
         '''
         Return default account and payment term
         '''
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        company_obj = pool.get('company.company')
-        account_obj = pool.get('account.account')
-        payment_term_obj = pool.get('account.invoice.payment_term')
-
+        account = None
+        payment_term = None
         result = {
             'account': None,
             }
-        if party_id:
-            party = party_obj.browse(party_id)
-            if type_ in ('out_invoice', 'out_credit_note'):
-                result['account'] = party.account_receivable.id
-                if type_ == 'out_invoice' and party.customer_payment_term:
-                    result['payment_term'] = party.customer_payment_term.id
-            elif type_ in ('in_invoice', 'in_credit_note'):
-                result['account'] = party.account_payable.id
-                if type_ == 'in_invoice' and party.supplier_payment_term:
-                    result['payment_term'] = party.supplier_payment_term.id
-        if company_id and type_ in ('out_credit_note', 'in_credit_note'):
-            company = company_obj.browse(company_id)
-            if type_ == 'out_credit_note':
-                result['payment_term'] = company.customer_payment_term.id
+        if self.party:
+            if self.type in ('out_invoice', 'out_credit_note'):
+                account = self.party.account_receivable
+                if (self.type == 'out_invoice'
+                        and self.party.customer_payment_term):
+                    payment_term = self.party.customer_payment_term
+            elif self.type in ('in_invoice', 'in_credit_note'):
+                account = self.party.account_payable
+                if (self.type == 'in_invoice'
+                        and self.party.supplier_payment_term):
+                    payment_term = self.party.supplier_payment_term
+        if self.company and self.type in ('out_credit_note', 'in_credit_note'):
+            if self.type == 'out_credit_note':
+                payment_term = self.company.customer_payment_term
             else:
-                result['payment_term'] = company.supplier_payment_term.id
-        if result['account']:
-            result['account.rec_name'] = account_obj.browse(
-                    result['account']).rec_name
-        if result.get('payment_term'):
-            result['payment_term.rec_name'] = payment_term_obj.browse(
-                    result['payment_term']).rec_name
+                payment_term = self.company.supplier_payment_term
+        if account:
+            result['account'] = account.id
+            result['account.rec_name'] = account.rec_name
+        if payment_term:
+            result['payment_term'] = payment_term.id
+            result['payment_term.rec_name'] = payment_term.rec_name
         return result
 
-    def on_change_type(self, vals):
-        journal_obj = Pool().get('account.journal')
+    def on_change_type(self):
+        Journal = Pool().get('account.journal')
         res = {}
-        journal_ids = journal_obj.search([
-            ('type', '=', _TYPE2JOURNAL.get(vals.get('type', 'out_invoice'),
-                'revenue')),
-            ], limit=1)
-        if journal_ids:
-            journal = journal_obj.browse(journal_ids[0])
+        journals = Journal.search([
+                ('type', '=', _TYPE2JOURNAL.get(self.type or 'out_invoice',
+                        'revenue')),
+                ], limit=1)
+        if journals:
+            journal, = journals
             res['journal'] = journal.id
             res['journal.rec_name'] = journal.rec_name
-        res.update(self.__get_account_payment_term(vals.get('type'),
-                vals.get('party'), vals.get('company')))
+        res.update(self.__get_account_payment_term())
         return res
 
-    def on_change_party(self, vals):
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        address_obj = pool.get('party.address')
+    def on_change_party(self):
         res = {
             'invoice_address': None,
-        }
-        res.update(self.__get_account_payment_term(vals.get('type'),
-                vals.get('party'), vals.get('company')))
+            }
+        res.update(self.__get_account_payment_term())
 
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            res['invoice_address'] = party_obj.address_get(party.id,
-                    type='invoice')
-        if res['invoice_address']:
-            res['invoice_address.rec_name'] = address_obj.browse(
-                    res['invoice_address']).rec_name
+        if self.party:
+            invoice_address = self.party.address_get(type='invoice')
+            res['invoice_address'] = invoice_address.id
+            res['invoice_address.rec_name'] = invoice_address.rec_name
         return res
 
-    def on_change_with_currency_digits(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-            return currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for invoice in self.browse(ids):
-            res[invoice.id] = invoice.currency.digits
-        return res
+    def on_change_with_currency_date(self, name=None):
+        Date = Pool().get('ir.date')
+        return self.invoice_date or Date.today()
 
-    def on_change_with_currency_date(self, vals):
-        date_obj = Pool().get('ir.date')
-        today = date_obj.today()
-        date = vals.get('invoice_date') or today
-        return date
-
-    def get_currency_date(self, ids, name):
-        date_obj = Pool().get('ir.date')
-        res = {}
-        today = date_obj.today()
-        for invoice in self.browse(ids):
-            res[invoice.id] = invoice.invoice_date or today
-        return res
-
-    def on_change_with_party_lang(self, vals):
-        party_obj = Pool().get('party.party')
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            if party.lang:
-                return party.lang.code
+    def on_change_with_party_lang(self, name=None):
+        if self.party:
+            if self.party.lang:
+                return self.party.lang.code
         return CONFIG['language']
 
-    def get_party_language(self, ids, name):
-        '''
-        Return the language code of the party of each invoice
-
-        :param ids: the ids of the invoices
-        :param name: the field name
-        :return: a dictionary with invoice id as key and
-            language code as value
-        '''
-        res = {}
-        for invoice in self.browse(ids):
-            if invoice.party.lang:
-                res[invoice.id] = invoice.party.lang.code
-            else:
-                res[invoice.id] = CONFIG['language']
-        return res
-
-    def get_type_name(self, ids, name):
-        res = {}
+    @classmethod
+    def get_type_name(self, invoices, name):
+        type_names = {}
         type2name = {}
         for type, name in self.fields_get(fields_names=['type']
                 )['type']['selection']:
             type2name[type] = name
-        for invoice in self.browse(ids):
-            res[invoice.id] = type2name[invoice.type]
-        return res
+        for invoice in invoices:
+            type_names[invoice.id] = type2name[invoice.type]
+        return type_names
 
-    def on_change_lines(self, vals):
-        return self._on_change_lines_taxes(vals)
+    def on_change_lines(self):
+        return self._on_change_lines_taxes()
 
-    def on_change_taxes(self, vals):
-        return self._on_change_lines_taxes(vals)
+    def on_change_taxes(self):
+        return self._on_change_lines_taxes()
 
-    def _on_change_lines_taxes(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        tax_obj = Pool().get('account.tax')
+    def _on_change_lines_taxes(self):
+        pool = Pool()
+        Tax = pool.get('account.tax')
         res = {
             'untaxed_amount': Decimal('0.0'),
             'tax_amount': Decimal('0.0'),
             'total_amount': Decimal('0.0'),
             'taxes': {},
-        }
-        currency = None
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
+            }
         computed_taxes = {}
-        if vals.get('lines'):
-            context = self.get_tax_context(vals)
-            for line in vals['lines']:
-                if line.get('type', 'line') != 'line':
+        if self.lines:
+            context = self.get_tax_context()
+            for line in self.lines:
+                if (line.type or 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.get('amount') or 0
+                res['untaxed_amount'] += line.amount or 0
                 with Transaction().set_context(**context):
-                    taxes = tax_obj.compute(line.get('taxes', []),
-                            line.get('unit_price') or Decimal('0.0'),
-                            line.get('quantity', 0.0))
+                    taxes = Tax.compute(line.taxes,
+                        line.unit_price or Decimal('0.0'),
+                        line.quantity or 0.0)
                 for tax in taxes:
                     key, val = self._compute_tax(tax,
-                            vals.get('type', 'out_invoice'))
+                        self.type or 'out_invoice')
                     if not key in computed_taxes:
                         computed_taxes[key] = val
                     else:
                         computed_taxes[key]['base'] += val['base']
                         computed_taxes[key]['amount'] += val['amount']
-        if currency:
+        if self.currency:
             for key in computed_taxes:
                 for field in ('base', 'amount'):
-                    computed_taxes[key][field] = currency_obj.round(currency,
-                            computed_taxes[key][field])
+                    computed_taxes[key][field] = self.currency.round(
+                        computed_taxes[key][field])
         tax_keys = []
-        for tax in vals.get('taxes', []):
-            if tax.get('manual', False):
-                res['tax_amount'] += tax.get('amount') or Decimal('0.0')
+        for tax in (self.taxes or []):
+            if tax.manual:
+                res['tax_amount'] += tax.amount or Decimal('0.0')
                 continue
-            key = (tax.get('base_code'), tax.get('base_sign'),
-                    tax.get('tax_code'), tax.get('tax_sign'),
-                    tax.get('account'), tax.get('tax'))
+            key = (tax.base_code, tax.base_sign,
+                tax.tax_code, tax.tax_sign,
+                tax.account, tax.tax)
             if (key not in computed_taxes) or (key in tax_keys):
                 res['taxes'].setdefault('remove', [])
-                res['taxes']['remove'].append(tax.get('id'))
+                res['taxes']['remove'].append(tax.id)
                 continue
             tax_keys.append(key)
-            if currency:
-                if not currency_obj.is_zero(currency,
+            if self.currency:
+                if not self.currency.is_zero(
                         computed_taxes[key]['base'] - \
-                                (tax.get('base') or Decimal('0.0'))):
+                            (tax.base or Decimal('0.0'))):
                     res['tax_amount'] += computed_taxes[key]['amount']
                     res['taxes'].setdefault('update', [])
                     res['taxes']['update'].append({
-                        'id': tax.get('id'),
-                        'amount': computed_taxes[key]['amount'],
-                        'base': computed_taxes[key]['base'],
-                        })
+                            'id': tax.id,
+                            'amount': computed_taxes[key]['amount'],
+                            'base': computed_taxes[key]['base'],
+                            })
                 else:
-                    res['tax_amount'] += tax.get('amount') or Decimal('0.0')
+                    res['tax_amount'] += tax.amount or Decimal('0.0')
             else:
-                if computed_taxes[key]['base'] - \
-                        (tax.get('base') or Decimal('0.0')) != Decimal('0.0'):
+                if (computed_taxes[key]['base'] - (tax.base or Decimal('0.0'))
+                        != Decimal('0.0')):
                     res['tax_amount'] += computed_taxes[key]['amount']
                     res['taxes'].setdefault('update', [])
                     res['taxes']['update'].append({
-                        'id': tax.get('id'),
+                        'id': tax.id,
                         'amount': computed_taxes[key]['amount'],
                         'base': computed_taxes[key]['base'],
                         })
                 else:
-                    res['tax_amount'] += tax.get('amount') or Decimal('0.0')
+                    res['tax_amount'] += tax.amount or Decimal('0.0')
         for key in computed_taxes:
             if key not in tax_keys:
                 res['tax_amount'] += computed_taxes[key]['amount']
                 res['taxes'].setdefault('add', [])
-                value = tax_obj.default_get(tax_obj._columns.keys())
+                value = Tax.default_get(Tax._fields.keys())
                 value.update(computed_taxes[key])
                 res['taxes']['add'].append(value)
-        if currency:
-            res['untaxed_amount'] = currency_obj.round(currency,
-                    res['untaxed_amount'])
-            res['tax_amount'] = currency_obj.round(currency, res['tax_amount'])
+        if self.currency:
+            res['untaxed_amount'] = self.currency.round(res['untaxed_amount'])
+            res['tax_amount'] = self.currency.round(res['tax_amount'])
         res['total_amount'] = res['untaxed_amount'] + res['tax_amount']
-        if currency:
-            res['total_amount'] = currency_obj.round(currency,
-                    res['total_amount'])
+        if self.currency:
+            res['total_amount'] = self.currency.round(res['total_amount'])
         return res
 
-    def get_untaxed_amount(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
-        res = {}
-        for invoice in self.browse(ids):
-            res.setdefault(invoice.id, _ZERO)
-            for line in invoice.lines:
-                if line.type != 'line':
-                    continue
-                res[invoice.id] += line.amount
-            res[invoice.id] = currency_obj.round(invoice.currency,
-                    res[invoice.id])
-        return res
+    def get_untaxed_amount(self, name):
+        amount = _ZERO
+        for line in self.lines:
+            if line.type != 'line':
+                continue
+            amount += line.amount
+        return self.currency.round(amount)
 
-    def get_tax_amount(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
+    @classmethod
+    def get_tax_amount(cls, invoices, name):
         cursor = Transaction().cursor
         res = {}
-        type_name = FIELDS[self.tax_amount._type].sql_type(self.tax_amount)[0]
-        red_sql, red_ids = reduce_ids('invoice', ids)
+        type_name = FIELDS[cls.tax_amount._type].sql_type(cls.tax_amount)[0]
+        red_sql, red_ids = reduce_ids('invoice', [i.id for i in invoices])
         cursor.execute('SELECT invoice, ' \
                     'CAST(COALESCE(SUM(amount), 0) AS ' + type_name + ') ' \
                 'FROM account_invoice_tax ' \
@@ -533,66 +489,56 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 sum = Decimal(str(sum))
             res[invoice_id] = sum
 
-        for invoice in self.browse(ids):
+        for invoice in invoices:
             res.setdefault(invoice.id, Decimal('0.0'))
-            res[invoice.id] = currency_obj.round(invoice.currency,
-                    res[invoice.id])
+            res[invoice.id] = invoice.currency.round(res[invoice.id])
         return res
 
-    def get_total_amount(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
-        res = {}
-        for invoice in self.browse(ids):
-            res[invoice.id] = currency_obj.round(invoice.currency,
-                    invoice.untaxed_amount + invoice.tax_amount)
-        return res
+    def get_total_amount(self, name):
+        return self.currency.round(self.untaxed_amount + self.tax_amount)
 
-    def get_reconciled(self, ids, name):
-        res = {}
-        for invoice in self.browse(ids):
-            res[invoice.id] = True
-            if not invoice.lines_to_pay:
-                res[invoice.id] = False
-                continue
-            for line in invoice.lines_to_pay:
-                if not line.reconciliation:
-                    res[invoice.id] = False
-                    break
-        return res
+    def get_reconciled(self, name):
+        if not self.lines_to_pay:
+            return False
+        for line in self.lines_to_pay:
+            if not line.reconciliation:
+                return False
+        return True
 
-    def get_lines_to_pay(self, ids, name):
-        res = {}
-        for invoice in self.browse(ids):
-            lines = []
-            if invoice.move:
-                for line in invoice.move.lines:
-                    if line.account.id == invoice.account.id \
-                            and line.maturity_date:
-                        lines.append(line)
-            lines.sort(key=operator.attrgetter('maturity_date'))
-            res[invoice.id] = [x.id for x in lines]
-        return res
+    def get_lines_to_pay(self, name):
+        lines = []
+        if self.move:
+            for line in self.move.lines:
+                if (line.account.id == self.account.id
+                        and line.maturity_date):
+                    lines.append(line)
+        lines.sort(key=operator.attrgetter('maturity_date'))
+        return [x.id for x in lines]
 
-    def get_amount_to_pay(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
-        date_obj = Pool().get('ir.date')
+    @classmethod
+    def get_amount_to_pay(cls, invoices, name):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
 
-        compute_ids = self.search([
-            ('id', 'in', ids),
-            ('state', '=', 'open'),
-            ])
+        computes = cls.search([
+                ('id', 'in', [i.id for i in invoices]),
+                ('state', '=', 'open'),
+                ])
 
-        res = dict((x, _ZERO) for x in ids)
-        for invoice in self.browse(compute_ids):
+        today = Date.today()
+        res = dict((x.id, _ZERO) for x in invoices)
+        for invoice in computes:
             amount = _ZERO
             amount_currency = _ZERO
             for line in invoice.lines_to_pay:
                 if line.reconciliation:
                     continue
-                if name == 'amount_to_pay_today' \
-                        and line.maturity_date > date_obj.today():
+                if (name == 'amount_to_pay_today'
+                        and line.maturity_date > today):
                     continue
-                if line.second_currency.id == invoice.currency.id:
+                if (line.second_currency
+                        and line.second_currency == invoice.currency):
                     if line.debit - line.credit > _ZERO:
                         amount_currency += abs(line.amount_second_currency)
                     else:
@@ -602,7 +548,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             for line in invoice.payment_lines:
                 if line.reconciliation:
                     continue
-                if line.second_currency.id == invoice.currency.id:
+                if (line.second_currency
+                        and line.second_currency == invoice.currency):
                     if line.debit - line.credit > _ZERO:
                         amount_currency += abs(line.amount_second_currency)
                     else:
@@ -614,40 +561,41 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 amount_currency = - amount_currency
             if amount != _ZERO:
                 with Transaction().set_context(date=invoice.currency_date):
-                    amount_currency += currency_obj.compute(
-                    invoice.company.currency.id, amount, invoice.currency.id)
+                    amount_currency += Currency.compute(
+                        invoice.company.currency, amount, invoice.currency)
             if amount_currency < _ZERO:
                 amount_currency = _ZERO
             res[invoice.id] = amount_currency
         return res
 
-    def search_total_amount(self, name, clause):
+    @classmethod
+    def search_total_amount(cls, name, clause):
         pool = Pool()
-        rule_obj = pool.get('ir.rule')
-        line_obj = pool.get('account.invoice.line')
-        tax_obj = pool.get('account.invoice.tax')
-        type_name = FIELDS[self.total_amount._type].sql_type(
-                self.total_amount)[0]
+        Rule = pool.get('ir.rule')
+        Line = pool.get('account.invoice.line')
+        Tax = pool.get('account.invoice.tax')
+        type_name = FIELDS[cls.total_amount._type].sql_type(
+            cls.total_amount)[0]
         cursor = Transaction().cursor
 
-        invoice_query, invoice_val = rule_obj.domain_get('account.invoice')
+        invoice_query, invoice_val = Rule.domain_get('account.invoice')
 
         cursor.execute('SELECT invoice FROM ('
                     'SELECT invoice, '
                         'COALESCE(SUM(quantity * unit_price), 0) '
                             'AS total_amount '
-                    'FROM "' + line_obj._table + '" '
-                    'JOIN "' + self._table + '" ON '
-                        '("' + self._table + '".id = '
-                            '"' + line_obj._table + '".invoice) '
+                    'FROM "' + Line._table + '" '
+                    'JOIN "' + cls._table + '" ON '
+                        '("' + cls._table + '".id = '
+                            '"' + Line._table + '".invoice) '
                     'WHERE ' + invoice_query + ' '
                     'GROUP BY invoice '
                 'UNION '
                     'SELECT invoice, COALESCE(SUM(amount), 0) AS total_amount '
-                    'FROM "' + tax_obj._table + '" '
-                    'JOIN "' + self._table + '" ON '
-                        '("' + self._table + '".id = '
-                            '"' + tax_obj._table + '".invoice) '
+                    'FROM "' + Tax._table + '" '
+                    'JOIN "' + cls._table + '" ON '
+                        '("' + cls._table + '".id = '
+                            '"' + Tax._table + '".invoice) '
                     'WHERE ' + invoice_query + ' '
                     'GROUP BY invoice  '
                 ') AS u '
@@ -657,20 +605,21 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 invoice_val + invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
-    def search_untaxed_amount(self, name, clause):
+    @classmethod
+    def search_untaxed_amount(cls, name, clause):
         pool = Pool()
-        rule_obj = pool.get('ir.rule')
-        line_obj = pool.get('account.invoice.line')
-        type_name = FIELDS[self.untaxed_amount._type].sql_type(
-                self.untaxed_amount)[0]
+        Rule = pool.get('ir.rule')
+        Line = pool.get('account.invoice.line')
+        type_name = FIELDS[cls.untaxed_amount._type].sql_type(
+                cls.untaxed_amount)[0]
         cursor = Transaction().cursor
 
-        invoice_query, invoice_val = rule_obj.domain_get('account.invoice')
+        invoice_query, invoice_val = Rule.domain_get('account.invoice')
 
-        cursor.execute('SELECT invoice FROM "' + line_obj._table + '" '
-                'JOIN "' + self._table + '" ON '
-                    '("' + self._table + '".id = '
-                        '"' + line_obj._table + '".invoice) '
+        cursor.execute('SELECT invoice FROM "' + Line._table + '" '
+                'JOIN "' + cls._table + '" ON '
+                    '("' + cls._table + '".id = '
+                        '"' + Line._table + '".invoice) '
                 'WHERE ' + invoice_query + ' '
                 'GROUP BY invoice '
                 'HAVING (CAST(COALESCE(SUM(quantity * unit_price), 0) '
@@ -678,20 +627,21 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
-    def search_tax_amount(self, name, clause):
+    @classmethod
+    def search_tax_amount(cls, name, clause):
         pool = Pool()
-        rule_obj = pool.get('ir.rule')
-        tax_obj = pool.get('account.invoice.tax')
-        type_name = FIELDS[self.tax_amount._type].sql_type(
-                self.tax_amount)[0]
+        Rule = pool.get('ir.rule')
+        Tax = pool.get('account.invoice.tax')
+        type_name = FIELDS[cls.tax_amount._type].sql_type(
+                cls.tax_amount)[0]
         cursor = Transaction().cursor
 
-        invoice_query, invoice_val = rule_obj.domain_get('account.invoice')
+        invoice_query, invoice_val = Rule.domain_get('account.invoice')
 
-        cursor.execute('SELECT invoice FROM "' + tax_obj._table + '" '
-                'JOIN "' + self._table + '" ON '
-                    '("' + self._table + '".id = '
-                        '"' + tax_obj._table + '".invoice) '
+        cursor.execute('SELECT invoice FROM "' + Tax._table + '" '
+                'JOIN "' + cls._table + '" ON '
+                    '("' + cls._table + '".id = '
+                        '"' + Tax._table + '".invoice) '
                 'WHERE ' + invoice_query + ' '
                 'GROUP BY invoice '
                 'HAVING (CAST(COALESCE(SUM(amount), 0) '
@@ -699,62 +649,61 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 invoice_val + [str(clause[2])])
         return [('id', 'in', [x[0] for x in cursor.fetchall()])]
 
-    def get_tax_context(self, invoice):
-        party_obj = Pool().get('party.party')
-        res = {}
-        if isinstance(invoice, dict):
-            if invoice.get('party'):
-                party = party_obj.browse(invoice['party'])
-                if party.lang:
-                    res['language'] = party.lang.code
-        else:
-            if invoice.party.lang:
-                res['language'] = invoice.party.lang.code
-        return res
+    def get_tax_context(self):
+        context = {}
+        if self.party and self.party.lang:
+            context['language'] = self.party.lang.code
+        return context
 
-    def _compute_tax(self, tax, invoice_type):
+    @staticmethod
+    def _compute_tax(invoice_tax, invoice_type):
         val = {}
+        tax = invoice_tax['tax']
         val['manual'] = False
-        val['description'] = tax['tax'].description
-        val['base'] = tax['base']
-        val['amount'] = tax['amount']
-        val['tax'] = tax['tax'].id
+        val['description'] = tax.description
+        val['base'] = invoice_tax['base']
+        val['amount'] = invoice_tax['amount']
+        val['tax'] = tax.id if tax else None
 
         if invoice_type in ('out_invoice', 'in_invoice'):
-            val['base_code'] = tax['tax'].invoice_base_code.id
-            val['base_sign'] = tax['tax'].invoice_base_sign
-            val['tax_code'] = tax['tax'].invoice_tax_code.id
-            val['tax_sign'] = tax['tax'].invoice_tax_sign
-            val['account'] = tax['tax'].invoice_account.id
+            val['base_code'] = (tax.invoice_base_code.id
+                if tax.invoice_base_code else None)
+            val['base_sign'] = tax.invoice_base_sign
+            val['tax_code'] = (tax.invoice_tax_code.id
+                if tax.invoice_tax_code else None)
+            val['tax_sign'] = tax.invoice_tax_sign
+            val['account'] = (tax.invoice_account.id
+                if tax.invoice_account else None)
         else:
-            val['base_code'] = tax['tax'].credit_note_base_code.id
-            val['base_sign'] = tax['tax'].credit_note_base_sign
-            val['tax_code'] = tax['tax'].credit_note_tax_code.id
-            val['tax_sign'] = tax['tax'].credit_note_tax_sign
-            val['account'] = tax['tax'].credit_note_account.id
+            val['base_code'] = (tax.credit_note_base_code.id
+                if tax.credit_note_base_code else None)
+            val['base_sign'] = tax.credit_note_base_sign
+            val['tax_code'] = (tax.credit_note_tax_code.id
+                if tax.credit_note_tax_code else None)
+            val['tax_sign'] = tax.credit_note_tax_sign
+            val['account'] = (tax.credit_note_account.id
+                if tax.credit_note_account else None)
         key = (val['base_code'], val['base_sign'],
                 val['tax_code'], val['tax_sign'],
                 val['account'], val['tax'])
         return key, val
 
-    def _compute_taxes(self, invoice):
-        tax_obj = Pool().get('account.tax')
-        currency_obj = Pool().get('currency.currency')
+    def _compute_taxes(self):
+        Tax = Pool().get('account.tax')
 
-        context = self.get_tax_context(invoice)
+        context = self.get_tax_context()
 
         res = {}
-        for line in invoice.lines:
+        for line in self.lines:
             # Don't round on each line to handle rounding error
             if line.type != 'line':
                 continue
-            tax_ids = [x.id for x in line.taxes]
             with Transaction().set_context(**context):
-                taxes = tax_obj.compute(tax_ids, line.unit_price,
+                taxes = Tax.compute(line.taxes, line.unit_price,
                         line.quantity)
             for tax in taxes:
-                key, val = self._compute_tax(tax, invoice.type)
-                val['invoice'] = invoice.id
+                key, val = self._compute_tax(tax, self.type)
+                val['invoice'] = self.id
                 if not key in res:
                     res[key] = val
                 else:
@@ -762,82 +711,81 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     res[key]['amount'] += val['amount']
         for key in res:
             for field in ('base', 'amount'):
-                res[key][field] = currency_obj.round(invoice.currency,
-                        res[key][field])
+                res[key][field] = self.currency.round(res[key][field])
         return res
 
-    def update_taxes(self, ids, exception=False):
-        tax_obj = Pool().get('account.invoice.tax')
-        currency_obj = Pool().get('currency.currency')
-        for invoice in self.browse(ids):
+    @classmethod
+    def update_taxes(cls, invoices, exception=False):
+        Tax = Pool().get('account.invoice.tax')
+        for invoice in invoices:
             if invoice.state in ('open', 'paid', 'cancel'):
                 continue
-            computed_taxes = self._compute_taxes(invoice)
+            computed_taxes = invoice._compute_taxes()
             if not invoice.taxes:
                 for tax in computed_taxes.values():
-                    tax_obj.create(tax)
+                    Tax.create(tax)
             else:
                 tax_keys = []
                 for tax in invoice.taxes:
                     if tax.manual:
                         continue
-                    key = (tax.base_code.id, tax.base_sign,
-                            tax.tax_code.id, tax.tax_sign,
-                            tax.account.id, tax.tax.id)
+                    base_code_id = tax.base_code.id if tax.base_code else None
+                    tax_code_id = tax.tax_code.id if tax.tax_code else None
+                    tax_id = tax.tax.id if tax.tax else None
+                    key = (base_code_id, tax.base_sign,
+                            tax_code_id, tax.tax_sign,
+                            tax.account.id, tax_id)
                     if (not key in computed_taxes) or (key in tax_keys):
                         if exception:
-                            self.raise_user_error('missing_tax_line')
-                        tax_obj.delete(tax.id)
+                            cls.raise_user_error('missing_tax_line')
+                        Tax.delete([tax])
                         continue
                     tax_keys.append(key)
-                    if not currency_obj.is_zero(invoice.currency,
+                    if not invoice.currency.is_zero(
                             computed_taxes[key]['base'] - tax.base):
                         if exception:
-                            self.raise_user_error('diff_tax_line')
-                        tax_obj.write(tax.id, computed_taxes[key])
+                            cls.raise_user_error('diff_tax_line')
+                        Tax.write([tax], computed_taxes[key])
                 for key in computed_taxes:
                     if not key in tax_keys:
                         if exception:
-                            self.raise_user_error('missing_tax_line')
-                        tax_obj.create(computed_taxes[key])
-        return True
+                            cls.raise_user_error('missing_tax_line')
+                        Tax.create(computed_taxes[key])
 
-    def _get_move_line_invoice_line(self, invoice):
+    def _get_move_line_invoice_line(self):
         '''
         Return list of move line values for each invoice lines
         '''
-        line_obj = Pool().get('account.invoice.line')
         res = []
-        for line in invoice.lines:
-            val = line_obj.get_move_line(line)
+        for line in self.lines:
+            val = line.get_move_line()
             if val:
                 res.extend(val)
         return res
 
-    def _get_move_line_invoice_tax(self, invoice):
+    def _get_move_line_invoice_tax(self):
         '''
         Return list of move line values for each invoice taxes
         '''
-        tax_obj = Pool().get('account.invoice.tax')
         res = []
-        for tax in invoice.taxes:
-            val = tax_obj.get_move_line(tax)
+        for tax in self.taxes:
+            val = tax.get_move_line()
             if val:
                 res.extend(val)
         return res
 
-    def _get_move_line(self, invoice, date, amount):
+    def _get_move_line(self, date, amount):
         '''
         Return move line
         '''
-        currency_obj = Pool().get('currency.currency')
+        Currency = Pool().get('currency.currency')
         res = {}
-        if invoice.currency.id != invoice.company.currency.id:
-            with Transaction().set_context(date=invoice.currency_date):
-                res['amount_second_currency'] = currency_obj.compute(
-                    invoice.company.currency.id, amount, invoice.currency.id)
+        if self.currency.id != self.company.currency.id:
+            with Transaction().set_context(date=self.currency_date):
+                res['amount_second_currency'] = Currency.compute(
+                    self.company.currency.id, amount, self.currency.id)
             res['amount_second_currency'] = abs(res['amount_second_currency'])
-            res['second_currency'] = invoice.currency.id
+            res['second_currency'] = self.currency.id
         else:
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = None
@@ -847,29 +795,27 @@ class Invoice(Workflow, ModelSQL, ModelView):
         else:
             res['debit'] = - amount
             res['credit'] = Decimal('0.0')
-        res['account'] = invoice.account.id
+        res['account'] = self.account.id
         res['maturity_date'] = date
-        res['reference'] = invoice.reference
-        res['name'] = invoice.number
-        res['party'] = invoice.party.id
+        res['reference'] = self.reference
+        res['name'] = self.number
+        res['party'] = self.party.id
         return res
 
-    def create_move(self, invoice):
+    def create_move(self):
         '''
-        Create account move for the invoice and return the created move id
+        Create account move for the invoice and return the created move
         '''
         pool = Pool()
-        payment_term_obj = pool.get('account.invoice.payment_term')
-        currency_obj = pool.get('currency.currency')
-        move_obj = pool.get('account.move')
-        period_obj = pool.get('account.period')
-        date_obj = pool.get('ir.date')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+        Date = pool.get('ir.date')
 
-        if invoice.move:
+        if self.move:
             return True
-        self.update_taxes([invoice.id], exception=True)
-        move_lines = self._get_move_line_invoice_line(invoice)
-        move_lines += self._get_move_line_invoice_tax(invoice)
+        self.update_taxes([self], exception=True)
+        move_lines = self._get_move_line_invoice_line()
+        move_lines += self._get_move_line_invoice_tax()
 
         total = Decimal('0.0')
         total_currency = Decimal('0.0')
@@ -877,130 +823,116 @@ class Invoice(Workflow, ModelSQL, ModelView):
             total += line['debit'] - line['credit']
             total_currency += line['amount_second_currency']
 
-        term_lines = payment_term_obj.compute(total, invoice.company.currency,
-                invoice.payment_term, invoice.invoice_date)
+        term_lines = self.payment_term.compute(total, self.company.currency,
+            self.invoice_date)
         remainder_total_currency = total_currency
         if not term_lines:
-            term_lines = [(date_obj.today(), total)]
+            term_lines = [(Date.today(), total)]
         for date, amount in term_lines:
-            val = self._get_move_line(invoice, date, amount)
+            val = self._get_move_line(date, amount)
             remainder_total_currency -= val['amount_second_currency']
             move_lines.append(val)
-        if not currency_obj.is_zero(invoice.currency,
-                remainder_total_currency):
+        if not self.currency.is_zero(remainder_total_currency):
             move_lines[-1]['amount_second_currency'] += \
                 remainder_total_currency
 
-        accounting_date = invoice.accounting_date or invoice.invoice_date
-        period_id = period_obj.find(invoice.company.id, date=accounting_date)
+        accounting_date = self.accounting_date or self.invoice_date
+        period_id = Period.find(self.company.id, date=accounting_date)
 
-        move_id = move_obj.create({
-            'journal': invoice.journal.id,
+        move = Move.create({
+            'journal': self.journal.id,
             'period': period_id,
             'date': accounting_date,
             'lines': [('create', x) for x in move_lines],
             })
-        self.write(invoice.id, {
-            'move': move_id,
-            })
-        move_obj.post(move_id)
-        return move_id
+        self.write([self], {
+                'move': move.id,
+                })
+        Move.post([move])
+        return move
 
-    def set_number(self, invoice):
+    def set_number(self):
         '''
         Set number to the invoice
         '''
         pool = Pool()
-        period_obj = pool.get('account.period')
-        sequence_obj = pool.get('ir.sequence.strict')
-        date_obj = pool.get('ir.date')
+        Period = pool.get('account.period')
+        Sequence = pool.get('ir.sequence.strict')
+        Date = pool.get('ir.date')
 
-        if invoice.number:
+        if self.number:
             return
 
         test_state = True
-        if invoice.type in ('in_invoice', 'in_credit_note'):
+        if self.type in ('in_invoice', 'in_credit_note'):
             test_state = False
 
-        period_id = period_obj.find(invoice.company.id,
-                date=invoice.invoice_date, test_state=test_state)
-        period = period_obj.browse(period_id)
-        sequence_id = period[invoice.type + '_sequence'].id
+        period_id = Period.find(self.company.id,
+            date=self.invoice_date, test_state=test_state)
+        period = Period(period_id)
+        sequence_id = getattr(period, self.type + '_sequence').id
         if not sequence_id:
             self.raise_user_error('no_invoice_sequence')
         with Transaction().set_context(
-                date=invoice.invoice_date or date_obj.today()):
-            number = sequence_obj.get_id(sequence_id)
+                date=self.invoice_date or Date.today()):
+            number = Sequence.get_id(sequence_id)
             vals = {'number': number}
-            if not invoice.invoice_date:
+            if not self.invoice_date:
                 vals['invoice_date'] = Transaction().context['date']
-        self.write(invoice.id, vals)
+        self.write([self], vals)
 
-    def check_modify(self, ids):
+    @classmethod
+    def check_modify(cls, invoices):
         '''
         Check if the invoices can be modified
         '''
-        for invoice in self.browse(ids):
+        for invoice in invoices:
             if invoice.state in ('open', 'paid'):
-                self.raise_user_error('modify_invoice')
-        return
+                cls.raise_user_error('modify_invoice')
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for invoice in self.browse(ids):
-            res[invoice.id] = invoice.number or unicode(invoice.id) + \
-                    (invoice.reference and (' ' + invoice.reference) or '') + \
-                    ' ' + invoice.party.rec_name
-        return res
+    def get_rec_name(self, name):
+        return (self.number or unicode(self.id)
+            + (self.reference and (' ' + self.reference) or '')
+            + ' ' + self.party.rec_name)
 
-    def search_rec_name(self, name, clause):
-        ids = self.search(['OR',
-            ('number',) + clause[1:],
-            ('reference',) + clause[1:],
-            ], order=[])
-        if ids:
-            return [('id', 'in', ids)]
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        invoices = cls.search(['OR',
+                ('number',) + clause[1:],
+                ('reference',) + clause[1:],
+                ], order=[])
+        if invoices:
+            return [('id', 'in', [i.id for i in invoices])]
         return [('party',) + clause[1:]]
 
-    def delete(self, ids):
-        if not ids:
-            return True
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        self.check_modify(ids)
+    @classmethod
+    def delete(cls, invoices):
+        cls.check_modify(invoices)
         # Cancel before delete
-        self.cancel(ids)
-        for invoice in self.browse(ids):
+        cls.cancel(invoices)
+        for invoice in invoices:
             if invoice.state != 'cancel':
-                self.raise_user_error('delete_cancel', invoice.rec_name)
-        return super(Invoice, self).delete(ids)
+                cls.raise_user_error('delete_cancel', invoice.rec_name)
+        super(Invoice, cls).delete(invoices)
 
-    def write(self, ids, vals):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def write(cls, invoices, vals):
         keys = vals.keys()
-        for key in self._check_modify_exclude:
+        for key in cls._check_modify_exclude:
             if key in keys:
                 keys.remove(key)
         if len(keys):
-            self.check_modify(ids)
-        update_tax_ids = [x.id for x in self.browse(ids) if x.state == 'draft']
-        res = super(Invoice, self).write(ids, vals)
-        if update_tax_ids:
-            self.update_taxes(update_tax_ids)
-        return res
+            cls.check_modify(invoices)
+        update_tax = [i for i in invoices if i.state == 'draft']
+        super(Invoice, cls).write(invoices, vals)
+        if update_tax:
+            cls.update_taxes(update_tax)
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, invoices, default=None):
         pool = Pool()
-        line_obj = pool.get('account.invoice.line')
-        tax_obj = pool.get('account.invoice.tax')
-
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
+        Line = pool.get('account.invoice.line')
+        Tax = pool.get('account.invoice.tax')
 
         if default is None:
             default = {}
@@ -1017,326 +949,295 @@ class Invoice(Workflow, ModelSQL, ModelView):
         default.setdefault('accounting_date', None)
         default['lines_to_pay'] = None
 
-        new_ids = []
-        for invoice in self.browse(ids):
-            new_id = super(Invoice, self).copy(invoice.id, default=default)
-            line_obj.copy([x.id for x in invoice.lines], default={
-                'invoice': new_id,
-                })
-            tax_obj.copy([x.id for x in invoice.taxes], default={
-                'invoice': new_id,
-                })
-            new_ids.append(new_id)
+        new_invoices = []
+        for invoice in invoices:
+            new_invoice, = super(Invoice, cls).copy([invoice], default=default)
+            Line.copy(invoice.lines, default={
+                    'invoice': new_invoice.id,
+                    })
+            Tax.copy(invoice.taxes, default={
+                    'invoice': new_invoice.id,
+                    })
+            new_invoices.append(new_invoice)
+        return new_invoices
 
-        if int_id:
-            return new_ids[0]
-        return new_ids
+    def check_account(self):
+        return self.account.company == self.company
 
-    def check_account(self, ids):
-        for invoice in self.browse(ids):
-            if invoice.account.company.id != invoice.company.id:
+    def check_account2(self):
+        for line in self.lines:
+            if (line.type == 'line'
+                    and line.account == self.account):
                 return False
         return True
 
-    def check_account2(self, ids):
-        for invoice in self.browse(ids):
-            for line in invoice.lines:
-                if line.type == 'line' \
-                        and line.account.id == invoice.account.id:
-                    return False
-        return True
-
-    def get_reconcile_lines_for_amount(self, invoice, amount,
-            exclude_ids=None):
+    def get_reconcile_lines_for_amount(self, amount, exclude_lines=None):
         '''
-        Return list of line ids and the remainder to make reconciliation.
+        Return list of lines and the remainder to make reconciliation.
         '''
-        currency_obj = Pool().get('currency.currency')
-
-        if exclude_ids is None:
-            exclude_ids = []
+        if exclude_lines is None:
+            exclude_lines = []
         payment_amount = Decimal('0.0')
-        remainder = invoice.total_amount
+        remainder = self.total_amount
         lines = []
         payment_lines = []
 
-        for line in invoice.payment_lines:
+        for line in self.payment_lines:
             if line.reconciliation:
                 continue
             payment_amount += line.debit - line.credit
-            payment_lines.append(line.id)
+            payment_lines.append(line)
 
-        if invoice.type in ('out_invoice', 'in_credit_note'):
+        if self.type in ('out_invoice', 'in_credit_note'):
             amount = - abs(amount)
         else:
             amount = abs(amount)
 
-        for line in invoice.lines_to_pay:
+        for line in self.lines_to_pay:
 
             if line.reconciliation:
                 continue
-            if line.id in exclude_ids:
+            if line in exclude_lines:
                 continue
 
             test_amount = amount + (line.debit - line.credit)
-            if currency_obj.is_zero(invoice.currency, test_amount):
-                return ([line.id], Decimal('0.0'))
+            if self.currency.is_zero(test_amount):
+                return ([line], Decimal('0.0'))
             if abs(test_amount) < abs(remainder):
-                lines = [line.id]
+                lines = [line]
                 remainder = test_amount
 
             test_amount = (amount + payment_amount)
             test_amount += (line.debit - line.credit)
-            if currency_obj.is_zero(invoice.currency, test_amount):
-                return ([line.id] + payment_lines, Decimal('0.0'))
+            if self.currency.is_zero(test_amount):
+                return ([line] + payment_lines, Decimal('0.0'))
             if abs(test_amount) < abs(remainder):
-                lines = [line.id] + payment_lines
+                lines = [line] + payment_lines
                 remainder = test_amount
 
-            exclude_ids2 = exclude_ids[:]
-            exclude_ids2.append(line.id)
-            res = self.get_reconcile_lines_for_amount(invoice,
-                    (amount + (line.debit - line.credit)),
-                    exclude_ids=exclude_ids2)
-            if res[1] == Decimal('0.0'):
-                res[0].append(line.id)
-                return res
-            if abs(res[1]) < abs(remainder):
-                res[0].append(line.id)
-                lines = res[0]
-                remainder = res[1]
+            exclude_lines2 = exclude_lines[:]
+            exclude_lines2.append(line)
+            lines2, remainder2 = self.get_reconcile_lines_for_amount(
+                (amount + (line.debit - line.credit)),
+                exclude_lines=exclude_lines2)
+            if remainder2 == Decimal('0.0'):
+                lines2.append(line)
+                return lines2, remainder2
+            if abs(remainder2) < abs(remainder):
+                lines2.append(line)
+                lines, remainder = lines2, remainder2
 
         return (lines, remainder)
 
-    def pay_invoice(self, invoice_id, amount, journal_id, date, description,
+    def pay_invoice(self, amount, journal, date, description,
             amount_second_currency=None, second_currency=None):
         '''
-        Add a payment to an invoice
-
-        :param invoice_id: the invoice id
-        :param amount: the amount to pay
-        :param journal_id: the journal id for the move
-        :param date: the date of the move
-        :param description: the description of the move
-        :param amount_second_currency: the amount in the second currenry if one
-        :param second_currency: the id of the second currency
-        :return: the id of the payment line
+        Adds a payment of amount to an invoice using the journal, date and
+        description.
+        Returns the payment line.
         '''
         pool = Pool()
-        journal_obj = pool.get('account.journal')
-        move_obj = pool.get('account.move')
-        period_obj = pool.get('account.period')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
 
         lines = []
-        invoice = self.browse(invoice_id)
-        journal = journal_obj.browse(journal_id)
 
-        if invoice.type in ('out_invoice', 'in_credit_note'):
+        if self.type in ('out_invoice', 'in_credit_note'):
             lines.append({
-                'name': description,
-                'account': invoice.account.id,
-                'party': invoice.party.id,
-                'debit': Decimal('0.0'),
-                'credit': amount,
-                'amount_second_currency': amount_second_currency,
-                'second_currency': second_currency,
-            })
+                    'name': description,
+                    'account': self.account.id,
+                    'party': self.party.id,
+                    'debit': Decimal('0.0'),
+                    'credit': amount,
+                    'amount_second_currency': amount_second_currency,
+                    'second_currency': second_currency,
+                    })
             lines.append({
-                'name': description,
-                'account': journal.debit_account.id,
-                'party': invoice.party.id,
-                'debit': amount,
-                'credit': Decimal('0.0'),
-                'amount_second_currency': amount_second_currency,
-                'second_currency': second_currency,
-            })
-            if invoice.account.id == journal.debit_account.id:
+                    'name': description,
+                    'account': journal.debit_account.id,
+                    'party': self.party.id,
+                    'debit': amount,
+                    'credit': Decimal('0.0'),
+                    'amount_second_currency': amount_second_currency,
+                    'second_currency': second_currency,
+                    })
+            if self.account == journal.debit_account:
                 self.raise_user_error('same_debit_account')
             if not journal.debit_account:
                 self.raise_user_error('missing_debit_account')
         else:
             lines.append({
-                'name': description,
-                'account': invoice.account.id,
-                'party': invoice.party.id,
-                'debit': amount,
-                'credit': Decimal('0.0'),
-                'amount_second_currency': amount_second_currency,
-                'second_currency': second_currency,
-            })
+                    'name': description,
+                    'account': self.account.id,
+                    'party': self.party.id,
+                    'debit': amount,
+                    'credit': Decimal('0.0'),
+                    'amount_second_currency': amount_second_currency,
+                    'second_currency': second_currency,
+                    })
             lines.append({
-                'name': description,
-                'account': journal.credit_account.id,
-                'party': invoice.party.id,
-                'debit': Decimal('0.0'),
-                'credit': amount,
-                'amount_second_currency': amount_second_currency,
-                'second_currency': second_currency,
-            })
-            if invoice.account.id == journal.credit_account.id:
+                    'name': description,
+                    'account': journal.credit_account.id,
+                    'party': self.party.id,
+                    'debit': Decimal('0.0'),
+                    'credit': amount,
+                    'amount_second_currency': amount_second_currency,
+                    'second_currency': second_currency,
+                    })
+            if self.account == journal.credit_account:
                 self.raise_user_error('same_credit_account')
             if not journal.credit_account:
                 self.raise_user_error('missing_credit_account')
 
-        period_id = period_obj.find(invoice.company.id, date=date)
+        period_id = Period.find(self.company.id, date=date)
 
-        move_id = move_obj.create({
-            'journal': journal.id,
-            'period': period_id,
-            'date': date,
-            'lines': [('create', x) for x in lines],
-            })
-        move_obj.post(move_id)
-
-        move = move_obj.browse(move_id)
+        move = Move.create({
+                'journal': journal.id,
+                'period': period_id,
+                'date': date,
+                'lines': [('create', x) for x in lines],
+                })
+        Move.post([move])
 
         for line in move.lines:
-            if line.account.id == invoice.account.id:
-                self.write(invoice.id, {
-                    'payment_lines': [('add', line.id)],
-                    })
-                return line.id
+            if line.account == self.account:
+                self.write([self], {
+                        'payment_lines': [('add', [line.id])],
+                        })
+                return line
         raise Exception('Missing account')
 
-    def print_invoice(self, invoice):
+    def print_invoice(self):
         '''
         Generate invoice report and store it in invoice_report field.
         '''
-        if invoice.invoice_report_cache:
+        if self.invoice_report_cache:
             return
-        invoice_report = Pool().get('account.invoice', type='report')
-        invoice_report.execute([invoice.id], {})
+        InvoiceReport = Pool().get('account.invoice', type='report')
+        InvoiceReport.execute([self.id], {})
 
-    def _credit(self, invoice):
+    def _credit(self):
         '''
         Return values to credit invoice.
         '''
-        invoice_line_obj = Pool().get('account.invoice.line')
-        invoice_tax_obj = Pool().get('account.invoice.tax')
-
         res = {}
-        if invoice.type == 'out_invoice':
+        if self.type == 'out_invoice':
             res['type'] = 'out_credit_note'
-        elif invoice.type == 'in_invoice':
+        elif self.type == 'in_invoice':
             res['type'] = 'in_credit_note'
-        elif invoice.type == 'out_credit_note':
+        elif self.type == 'out_credit_note':
             res['type'] = 'out_invoice'
-        elif invoice.type == 'in_credit_note':
+        elif self.type == 'in_credit_note':
             res['type'] = 'in_invoice'
 
         for field in ('description', 'comment'):
-            res[field] = invoice[field]
+            res[field] = getattr(self, field)
 
-        res['reference'] = invoice.number or invoice.reference
+        res['reference'] = self.number or self.reference
 
         for field in ('company', 'party', 'invoice_address', 'currency',
                 'journal', 'account', 'payment_term'):
-            res[field] = invoice[field].id
+            res[field] = getattr(self, field).id
 
         res['lines'] = []
-        for line in invoice.lines:
-            value = invoice_line_obj._credit(line)
+        for line in self.lines:
+            value = line._credit()
             res['lines'].append(('create', value))
 
         res['taxes'] = []
-        for tax in invoice.taxes:
+        for tax in self.taxes:
             if not tax.manual:
                 continue
-            value = invoice_tax_obj._credit(tax)
+            value = tax._credit()
             res['taxes'].append(('create', value))
         return res
 
-    def credit(self, ids, refund=False):
+    @classmethod
+    def credit(cls, invoices, refund=False):
         '''
         Credit invoices and return ids of new invoices.
-
-        :param ids: a list of invoice id
-        :param refund: a boolean to specify the refund
-        :return: the list of new invoice id
+        Return the list of new invoice
         '''
-        move_line_obj = Pool().get('account.move.line')
+        MoveLine = Pool().get('account.move.line')
 
-        new_ids = []
-        for invoice in self.browse(ids):
-            vals = self._credit(invoice)
-            new_id = self.create(vals)
-            new_ids.append(new_id)
+        new_invoices = []
+        for invoice in invoices:
+            new_invoice = cls.create(invoice._credit())
+            new_invoices.append(new_invoice)
             if refund:
-                self.open([new_id])
-                new_invoice = self.browse(new_id)
+                cls.open([new_invoice])
                 if new_invoice.state == 'open':
-                    line_ids = [x.id for x in invoice.lines_to_pay
-                            if not x.reconciliation] + \
-                                    [x.id for x in new_invoice.lines_to_pay
-                                            if not x.reconciliation]
-                    move_line_obj.reconcile(line_ids)
-        return new_ids
+                    MoveLine.reconcile([l for l in invoice.lines_to_pay
+                            if not l.reconciliation] +
+                        [l for l in new_invoice.lines_to_pay
+                            if not l.reconciliation])
+        return new_invoices
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
+    def draft(cls, invoices):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('proforma')
-    def proforma(self, ids):
+    def proforma(cls, invoices):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('open')
-    def open(self, ids):
-        for invoice in self.browse(ids):
-            self.set_number(invoice)
-            self.create_move(invoice)
-            self.print_invoice(invoice)
+    def open(cls, invoices):
+        for invoice in invoices:
+            invoice.set_number()
+            invoice.create_move()
+            invoice.print_invoice()
 
+    @classmethod
     @ModelView.button_action('account_invoice.wizard_pay')
-    def pay(self, ids):
+    def pay(cls, invoices):
         pass
 
-    def process(self, ids):
+    @classmethod
+    def process(cls, invoices):
         paid = []
         open_ = []
-        for invoice in self.browse(ids):
+        for invoice in invoices:
             if invoice.state not in ('open', 'paid'):
                 continue
             if invoice.reconciled:
-                paid.append(invoice.id)
+                paid.append(invoice)
             else:
-                open_.append(invoice.id)
-        self.paid(paid)
-        self.open(open_)
+                open_.append(invoice)
+        cls.paid(paid)
+        cls.open(open_)
 
+    @classmethod
     @Workflow.transition('paid')
-    def paid(self, ids):
+    def paid(cls, invoices):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, ids):
+    def cancel(cls, invoices):
         pass
-
-Invoice()
 
 
 class InvoicePaymentLine(ModelSQL):
     'Invoice - Payment Line'
-    _name = 'account.invoice-account.move.line'
-    _description = __doc__
+    __name__ = 'account.invoice-account.move.line'
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=True, required=True)
     line = fields.Many2One('account.move.line', 'Payment Line',
             ondelete='CASCADE', select=True, required=True)
 
-InvoicePaymentLine()
-
 
 class InvoiceLine(ModelSQL, ModelView):
     'Invoice Line'
-    _name = 'account.invoice.line'
+    __name__ = 'account.invoice.line'
     _rec_name = 'description'
-    _description = __doc__
-
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
         select=True, states={
             'required': (~Eval('invoice_type') & Eval('party')
@@ -1356,14 +1257,14 @@ class InvoiceLine(ModelSQL, ModelView):
             },
         depends=['invoice'])
     party_lang = fields.Function(fields.Char('Party Language',
-        on_change_with=['party']), 'get_party_language')
+        on_change_with=['party']), 'on_change_with_party_lang')
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': ~Eval('invoice'),
             },
         depends=['invoice'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'get_currency_digits')
+        on_change_with=['currency']), 'on_change_with_currency_digits')
     company = fields.Many2One('company.company', 'Company',
         states={
             'required': ~Eval('invoice'),
@@ -1406,7 +1307,7 @@ class InvoiceLine(ModelSQL, ModelView):
             ],
         depends=['product', 'type', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'get_unit_digits')
+        on_change_with=['unit']), 'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         states={
             'invisible': Eval('type') != 'line',
@@ -1419,7 +1320,7 @@ class InvoiceLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category',
             on_change_with=['product']),
-        'get_product_uom_category')
+        'on_change_with_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company',
@@ -1462,9 +1363,10 @@ class InvoiceLine(ModelSQL, ModelView):
     invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
         None, 'Invoice Taxes'), 'get_invoice_taxes')
 
-    def __init__(self):
-        super(InvoiceLine, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(InvoiceLine, cls).__setup__()
+        cls._sql_constraints += [
             ('type_account',
                 'CHECK((type = \'line\' AND account IS NOT NULL) ' \
                         'OR (type != \'line\'))',
@@ -1473,13 +1375,13 @@ class InvoiceLine(ModelSQL, ModelView):
                 'CHECK((type != \'line\' AND invoice IS NOT NULL) ' \
                         'OR (type = \'line\'))',
                 'Line without "line" type must have an invoice!'),
-        ]
-        self._constraints += [
+            ]
+        cls._constraints += [
             ('check_account', 'account_different_company'),
             ('check_account2', 'same_account_on_invoice'),
-        ]
-        self._order.insert(0, ('sequence', 'ASC'))
-        self._error_messages.update({
+            ]
+        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._error_messages.update({
             'modify': 'You can not modify line from an invoice ' \
                     'that is opened, paid!',
             'create': 'You can not add a line to an invoice ' \
@@ -1490,10 +1392,11 @@ class InvoiceLine(ModelSQL, ModelView):
                     'as on the invoice!',
             })
 
-    def init(self, module_name):
-        super(InvoiceLine, self).init(module_name)
+    @classmethod
+    def __register__(cls, module_name):
+        super(InvoiceLine, cls).__register__(module_name)
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 invoice is no more required
         table.not_null_action('invoice', action='remove')
@@ -1501,431 +1404,351 @@ class InvoiceLine(ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_invoice_type(self):
+    @staticmethod
+    def default_invoice_type():
         return Transaction().context.get('invoice_type', 'out_invoice')
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.id
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.digits
         return 2
 
-    def default_unit_digits(self):
+    @staticmethod
+    def default_unit_digits():
         return 2
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'line'
 
-    def on_change_with_party_lang(self, vals):
-        party_obj = Pool().get('party.party')
-        if vals.get('party'):
-            party = party_obj.browse(vals['party'])
-            if party.lang:
-                return party.lang.code
+    def on_change_with_party_lang(self, name=None):
+        if self.party and self.party.lang:
+            return self.party.lang.code
         return CONFIG['language']
 
-    def get_party_language(self, ids, name):
-        '''
-        Return the language code of the party of each line
+    def on_change_with_unit_digits(self, name=None):
+        if self.unit:
+            return self.unit.digits
+        return 2
 
-        :param ids: the ids of the account.invoice.line
-        :param name: the field name
-        :return: a dictionary with account.invoice.line id as key and
-            language code as value
-        '''
-        res = {}
-        for line in self.browse(ids):
-            if line.party and line.party.lang:
-                res[line.id] = line.party.lang.code
-            else:
-                res[line.id] = CONFIG['language']
-        return res
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
+        return 2
 
-    def on_change_with_amount(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('type') == 'line':
-            currency = (vals.get('_parent_invoice.currency')
-                or vals.get('currency'))
-            if isinstance(currency, (int, long)) and currency:
-                currency = currency_obj.browse(currency)
-            amount = Decimal(str(vals.get('quantity') or '0.0')) * \
-                    (vals.get('unit_price') or Decimal('0.0'))
+    def on_change_with_amount(self):
+        if self.type == 'line':
+            currency = (self.invoice.currency if self.invoice
+                else self.currency)
+            amount = (Decimal(str(self.quantity or '0.0'))
+                * (self.unit_price or Decimal('0.0')))
             if currency:
-                return currency_obj.round(currency, amount)
+                return currency.round(amount)
             return amount
         return Decimal('0.0')
 
-    def on_change_with_unit_digits(self, vals):
-        uom_obj = Pool().get('product.uom')
-        if vals.get('unit'):
-            uom = uom_obj.browse(vals['unit'])
-            return uom.digits
-        return 2
+    def get_amount(self, name):
+        if self.type == 'line':
+            return self.on_change_with_amount()
+        elif self.type == 'subtotal':
+            subtotal = _ZERO
+            for line2 in self.invoice.lines:
+                if line2.type == 'line':
+                    subtotal += line2.invoice.currency.round(
+                        Decimal(str(line2.quantity)) * line2.unit_price)
+                elif line2.type == 'subtotal':
+                    if self == line2:
+                        break
+                    subtotal = _ZERO
+            return subtotal
+        else:
+            return _ZERO
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            if line.unit:
-                res[line.id] = line.unit.digits
-            else:
-                res[line.id] = 2
-        return res
+    def get_invoice_taxes(self, name):
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        Invoice = pool.get('account.invoice')
 
-    def on_change_with_currency_digits(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-            return currency.digits
-        return 2
-
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            res[line.id] = line.currency and line.currency.digits or 2
-        return res
-
-    def get_amount(self, ids, name):
-        currency_obj = Pool().get('currency.currency')
-        res = {}
-        for line in self.browse(ids):
-            if line.type == 'line':
-                currency = line.invoice and line.invoice.currency \
-                        or line.currency
-                res[line.id] = currency_obj.round(currency,
-                        Decimal(str(line.quantity)) * line.unit_price)
-            elif line.type == 'subtotal':
-                res[line.id] = _ZERO
-                for line2 in line.invoice.lines:
-                    if line2.type == 'line':
-                        res[line.id] += currency_obj.round(
-                            line2.invoice.currency,
-                            Decimal(str(line2.quantity)) * line2.unit_price)
-                    elif line2.type == 'subtotal':
-                        if line.id == line2.id:
-                            break
-                        res[line.id] = _ZERO
-            else:
-                res[line.id] = _ZERO
-        return res
-
-    def get_invoice_taxes(self, ids, name):
-        tax_obj = Pool().get('account.tax')
-        invoice_obj = Pool().get('account.invoice')
-
-        res = {}
-        for line in self.browse(ids):
-            if not line.invoice:
-                res[line.id] = None
+        if not self.invoice:
+            return
+        context = self.invoice.get_tax_context()
+        taxes_keys = []
+        with Transaction().set_context(**context):
+            taxes = Tax.compute(self.taxes, self.unit_price, self.quantity)
+        for tax in taxes:
+            key, _ = Invoice._compute_tax(tax, self.invoice.type)
+            taxes_keys.append(key)
+        taxes = []
+        for tax in self.invoice.taxes:
+            if tax.manual:
                 continue
-            context = invoice_obj.get_tax_context(line.invoice)
-            tax_ids = [x.id for x in line.taxes]
-            taxes_keys = []
-            with Transaction().set_context(**context):
-                taxes = tax_obj.compute(tax_ids, line.unit_price,
-                        line.quantity)
-            for tax in taxes:
-                key, _ = invoice_obj._compute_tax(tax, line.invoice.type)
-                taxes_keys.append(key)
-            res[line.id] = []
-            for tax in line.invoice.taxes:
-                if tax.manual:
-                    continue
-                key = (tax.base_code.id, tax.base_sign,
-                        tax.tax_code.id, tax.tax_sign,
-                        tax.account.id, tax.tax.id)
-                if key in taxes_keys:
-                    res[line.id].append(tax.id)
-        return res
+            base_code_id = tax.base_code.id if tax.base_code else None
+            tax_code_id = tax.tax_code.id if tax.tax_code else None
+            tax_id = tax.tax.id if tax.tax else None
+            key = (base_code_id, tax.base_sign,
+                    tax_code_id, tax.tax_sign,
+                    tax.account.id, tax_id)
+            if key in taxes_keys:
+                taxes.append(tax.id)
+        return taxes
 
-    def _get_tax_rule_pattern(self, party, vals):
+    def _get_tax_rule_pattern(self):
         '''
         Get tax rule pattern
-
-        :param party: the BrowseRecord of the party
-        :param vals: a dictionary with value from on_change
-        :return: a dictionary to use as pattern for tax rule
         '''
-        res = {}
-        return res
+        return {}
 
-    def on_change_product(self, vals):
+    def on_change_product(self):
         pool = Pool()
-        product_obj = pool.get('product.product')
-        party_obj = pool.get('party.party')
-        company_obj = pool.get('company.company')
-        currency_obj = pool.get('currency.currency')
-        tax_rule_obj = pool.get('account.tax.rule')
-        invoice_obj = pool.get('account.invoice')
-        date_obj = pool.get('ir.date')
+        Product = pool.get('product.product')
+        Company = pool.get('company.company')
+        Currency = pool.get('currency.currency')
+        Date = pool.get('ir.date')
 
-        if not vals.get('product'):
+        if not self.product:
             return {}
         res = {}
 
         context = {}
         party = None
-        if vals.get('_parent_invoice.party') or vals.get('party'):
-            party = party_obj.browse(vals.get('_parent_invoice.party')
-                    or vals.get('party'))
-            if party.lang:
-                context['language'] = party.lang.code
-
-        product = product_obj.browse(vals['product'])
+        if self.invoice and self.invoice.party:
+            party = self.invoice.party
+        elif self.party:
+            party = self.party
+        if party and party.lang:
+            context['language'] = party.lang.code
 
         company = None
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
         currency = None
-        currency_date = date_obj.today()
-        if '_parent_invoice.currency_date' in vals:
-            if vals['_parent_invoice.currency_date']:
-                currency_date = vals['_parent_invoice.currency_date']
-        elif vals.get('invoice'):
-            invoice = invoice_obj.browse(vals['invoice'])
-            currency_date = invoice.currency_date
-        if vals.get('_parent_invoice.currency') or vals.get('currency'):
-            #TODO check if today date is correct
-            currency = currency_obj.browse(
-                    vals.get('_parent_invoice.currency') or
-                    vals.get('currency'))
+        currency_date = Date.today()
+        if self.invoice and self.invoice.currency_date:
+            currency_date = self.invoice.currency_date
+        #TODO check if today date is correct
+        if self.invoice and self.invoice.currency:
+            currency = self.invoice.currency
+        elif self.currency:
+            currency = self.currency
 
-        if (vals.get('_parent_invoice.type') or vals.get('invoice_type')) \
-                in ('in_invoice', 'in_credit_note'):
+        if self.invoice and self.invoice.type:
+            type_ = self.invoice.type
+        elif self.invoice_type:
+            type_ = self.invoice_type
+        if type_ in ('in_invoice', 'in_credit_note'):
             if company and currency:
                 with Transaction().set_context(date=currency_date):
-                    res['unit_price'] = currency_obj.compute(
-                            company.currency.id, product.cost_price,
-                            currency.id, round=False)
+                    res['unit_price'] = Currency.compute(
+                        company.currency, self.product.cost_price,
+                        currency, round=False)
             else:
-                res['unit_price'] = product.cost_price
+                res['unit_price'] = self.product.cost_price
             try:
-                res['account'] = product.account_expense_used.id
-                res['account.rec_name'] = product.account_expense_used.rec_name
+                account_expense = self.product.account_expense_used
+                res['account'] = account_expense.id
+                res['account.rec_name'] = account_expense.rec_name
             except Exception:
                 pass
             res['taxes'] = []
-            pattern = self._get_tax_rule_pattern(party, vals)
-            for tax in product.supplier_taxes_used:
+            pattern = self._get_tax_rule_pattern()
+            for tax in self.product.supplier_taxes_used:
                 if party and party.supplier_tax_rule:
-                    tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, tax,
-                            pattern)
+                    tax_ids = party.supplier_tax_rule.apply(tax, pattern)
                     if tax_ids:
                         res['taxes'].extend(tax_ids)
                     continue
                 res['taxes'].append(tax.id)
             if party and party.supplier_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.supplier_tax_rule, None,
-                        pattern)
+                tax_ids = party.supplier_tax_rule.apply(None, pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
         else:
             if company and currency:
                 with Transaction().set_context(date=currency_date):
-                    res['unit_price'] = currency_obj.compute(
-                            company.currency.id, product.list_price,
-                            currency.id, round=False)
+                    res['unit_price'] = Currency.compute(
+                        company.currency, self.product.list_price,
+                        currency, round=False)
             else:
-                res['unit_price'] = product.list_price
+                res['unit_price'] = self.product.list_price
             try:
-                res['account'] = product.account_revenue_used.id
-                res['account.rec_name'] = product.account_revenue_used.rec_name
+                account_revenue = self.product.account_revenue_used
+                res['account'] = account_revenue.id
+                res['account.rec_name'] = account_revenue.rec_name
             except Exception:
                 pass
             res['taxes'] = []
-            pattern = self._get_tax_rule_pattern(party, vals)
-            for tax in product.customer_taxes_used:
+            pattern = self._get_tax_rule_pattern()
+            for tax in self.product.customer_taxes_used:
                 if party and party.customer_tax_rule:
-                    tax_ids = tax_rule_obj.apply(party.customer_tax_rule, tax,
-                            pattern)
+                    tax_ids = party.customer_tax_rule.apply(tax, pattern)
                     if tax_ids:
                         res['taxes'].extend(tax_ids)
                     continue
                 res['taxes'].append(tax.id)
             if party and party.customer_tax_rule:
-                tax_ids = tax_rule_obj.apply(party.customer_tax_rule, None,
-                        pattern)
+                tax_ids = party.customer_tax_rule.apply(None, pattern)
                 if tax_ids:
                     res['taxes'].extend(tax_ids)
 
-        if not vals.get('description'):
+        if not self.description:
             with Transaction().set_context(**context):
-                res['description'] = product_obj.browse(product.id).rec_name
+                res['description'] = Product(self.product.id).rec_name
 
-        category = product.default_uom.category
-        if not vals.get('unit') \
-                or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = product.default_uom.id
-            res['unit.rec_name'] = product.default_uom.rec_name
-            res['unit_digits'] = product.default_uom.digits
+        category = self.product.default_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            res['unit'] = self.product.default_uom.id
+            res['unit.rec_name'] = self.product.default_uom.rec_name
+            res['unit_digits'] = self.product.default_uom.digits
 
-        vals = vals.copy()
-        vals['unit_price'] = res['unit_price']
-        vals['type'] = 'line'
-        res['amount'] = self.on_change_with_amount(vals)
+        self.unit_price = res['unit_price']
+        self.type = 'line'
+        res['amount'] = self.on_change_with_amount()
         return res
 
-    def on_change_with_product_uom_category(self, values):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return product.default_uom_category.id
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
-    def get_product_uom_category(self, ids, name):
-        categories = {}
-        for line in self.browse(ids):
-            if line.product:
-                categories[line.id] = line.product.default_uom_category.id
-            else:
-                categories[line.id] = None
-        return categories
-
-    def on_change_account(self, values):
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        account_obj = pool.get('account.account')
-        tax_rule_obj = pool.get('account.tax.rule')
-
-        if values.get('product'):
+    def on_change_account(self):
+        if self.product:
             return {}
         taxes = []
         result = {
             'taxes': taxes,
-        }
-        if (values.get('_parent_invoice.party')
-                and values.get('_parent_invoice.type')):
-            party = party_obj.browse(values['_parent_invoice.party'])
-            if values['_parent_invoice.type'] in ('in_invoice',
-                    'in_credit_note'):
+            }
+        if (self.invoice and self.invoice.party
+                and self.invoice.type):
+            party = self.invoice.party
+            if self.invoice.type in ('in_invoice', 'in_credit_note'):
                 tax_rule = party.supplier_tax_rule
             else:
                 tax_rule = party.customer_tax_rule
         else:
             tax_rule = None
 
-        if values.get('account'):
-            account = account_obj.browse(values['account'])
-            pattern = self._get_tax_rule_pattern(party, values)
-            for tax in account.taxes:
+        if self.account:
+            pattern = self._get_tax_rule_pattern()
+            for tax in self.account.taxes:
                 if tax_rule:
-                    tax_ids = tax_rule_obj.apply(tax_rule, tax, pattern)
+                    tax_ids = tax_rule.apply(tax, pattern)
                     if tax_ids:
                         taxes.extend(tax_ids)
                     continue
                 taxes.append(tax.id)
         return result
 
-    def check_modify(self, ids):
+    @classmethod
+    def check_modify(cls, lines):
         '''
         Check if the lines can be modified
         '''
-        for line in self.browse(ids):
-            if line.invoice and \
-                    line.invoice.state in ('open', 'paid'):
-                self.raise_user_error('modify')
-        return
+        for line in lines:
+            if (line.invoice
+                    and line.invoice.state in ('open', 'paid')):
+                cls.raise_user_error('modify')
 
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        self.check_modify(ids)
-        return super(InvoiceLine, self).delete(ids)
+    @classmethod
+    def delete(cls, lines):
+        cls.check_modify(lines)
+        super(InvoiceLine, cls).delete(lines)
 
-    def write(self, ids, vals):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        self.check_modify(ids)
-        return super(InvoiceLine, self).write(ids, vals)
+    @classmethod
+    def write(cls, lines, vals):
+        cls.check_modify(lines)
+        super(InvoiceLine, cls).write(lines, vals)
 
-    def create(self, vals):
-        invoice_obj = Pool().get('account.invoice')
+    @classmethod
+    def create(cls, vals):
+        Invoice = Pool().get('account.invoice')
         if vals.get('invoice'):
-            invoice = invoice_obj.browse(vals['invoice'])
+            invoice = Invoice(vals['invoice'])
             if invoice.state in ('open', 'paid', 'cancel'):
-                self.raise_user_error('create')
-        return super(InvoiceLine, self).create(vals)
+                cls.raise_user_error('create')
+        return super(InvoiceLine, cls).create(vals)
 
-    def check_account(self, ids):
-        for line in self.browse(ids):
-            if line.type == 'line':
-                if line.invoice:
-                    if line.account.company.id != line.invoice.company.id:
-                        return False
-                elif line.company:
-                    if line.account.company.id != line.company.id:
-                        return False
-        return True
-
-    def check_account2(self, ids):
-        for line in self.browse(ids):
-            if line.type == 'line':
-                if line.invoice \
-                        and line.account.id == line.invoice.account.id:
+    def check_account(self):
+        if self.type == 'line':
+            if self.invoice:
+                if self.account.company != self.invoice.company:
+                    return False
+            elif self.company:
+                if self.account.company != self.company:
                     return False
         return True
 
-    def _compute_taxes(self, line):
-        pool = Pool()
-        tax_obj = pool.get('account.tax')
-        currency_obj = pool.get('currency.currency')
-        invoice_obj = pool.get('account.invoice')
+    def check_account2(self):
+        if self.type == 'line':
+            if (self.invoice
+                    and self.account == self.invoice.account):
+                return False
+        return True
 
-        context = invoice_obj.get_tax_context(line.invoice)
+    def _compute_taxes(self):
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        Currency = pool.get('currency.currency')
+
+        context = self.invoice.get_tax_context()
         res = []
-        if line.type != 'line':
+        if self.type != 'line':
             return res
-        tax_ids = [x.id for x in line.taxes]
         with Transaction().set_context(**context):
-            taxes = tax_obj.compute(tax_ids, line.unit_price, line.quantity)
+            taxes = Tax.compute(self.taxes, self.unit_price, self.quantity)
         for tax in taxes:
-            if line.invoice.type in ('out_invoice', 'in_invoice'):
-                base_code_id = tax['tax'].invoice_base_code.id
+            if self.invoice.type in ('out_invoice', 'in_invoice'):
+                base_code_id = (tax['tax'].invoice_base_code.id
+                    if tax['tax'].invoice_base_code else None)
                 amount = tax['base'] * tax['tax'].invoice_base_sign
             else:
-                base_code_id = tax['tax'].credit_note_base_code.id
+                base_code_id = (tax['tax'].credit_note_base_code.id
+                    if tax['tax'].credit_note_base_code else None)
                 amount = tax['base'] * tax['tax'].credit_note_base_sign
             if base_code_id:
                 with Transaction().set_context(
-                        date=line.invoice.currency_date):
-                    amount = currency_obj.compute(line.invoice.currency.id,
-                            amount, line.invoice.company.currency.id)
+                        date=self.invoice.currency_date):
+                    amount = Currency.compute(self.invoice.currency,
+                        amount, self.invoice.company.currency)
                 res.append({
-                    'code': base_code_id,
-                    'amount': amount,
-                    'tax': tax['tax'].id
-                })
+                        'code': base_code_id,
+                        'amount': amount,
+                        'tax': tax['tax'].id if tax['tax'] else None,
+                        })
         return res
 
-    def get_move_line(self, line):
+    def get_move_line(self):
         '''
         Return a list of move lines values for invoice line
         '''
-        currency_obj = Pool().get('currency.currency')
+        Currency = Pool().get('currency.currency')
         res = {}
-        if line.type != 'line':
+        if self.type != 'line':
             return []
-        res['name'] = line.description
-        if line.invoice.currency.id != line.invoice.company.currency.id:
-            with Transaction().set_context(date=line.invoice.currency_date):
-                amount = currency_obj.compute(line.invoice.currency.id,
-                        line.amount, line.invoice.company.currency.id)
-            res['amount_second_currency'] = line.amount
-            res['second_currency'] = line.invoice.currency.id
+        res['name'] = self.description
+        if self.invoice.currency != self.invoice.company.currency:
+            with Transaction().set_context(date=self.invoice.currency_date):
+                amount = Currency.compute(self.invoice.currency,
+                    self.amount, self.invoice.company.currency)
+            res['amount_second_currency'] = self.amount
+            res['second_currency'] = self.invoice.currency.id
         else:
-            amount = line.amount
+            amount = self.amount
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = None
-        if line.invoice.type in ('in_invoice', 'out_credit_note'):
+        if self.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
                 res['credit'] = Decimal('0.0')
@@ -1941,15 +1764,15 @@ class InvoiceLine(ModelSQL, ModelView):
             else:
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
-        res['account'] = line.account.id
-        res['party'] = line.invoice.party.id
-        computed_taxes = self._compute_taxes(line)
+        res['account'] = self.account.id
+        res['party'] = self.invoice.party.id
+        computed_taxes = self._compute_taxes()
         for tax in computed_taxes:
             res.setdefault('tax_lines', [])
             res['tax_lines'].append(('create', tax))
         return [res]
 
-    def _credit(self, line):
+    def _credit(self):
         '''
         Return values to credit line.
         '''
@@ -1957,38 +1780,31 @@ class InvoiceLine(ModelSQL, ModelView):
 
         for field in ('sequence', 'type', 'quantity', 'unit_price',
                 'description'):
-            res[field] = line[field]
+            res[field] = getattr(self, field)
 
         for field in ('unit', 'product', 'account'):
-            res[field] = line[field].id
+            res[field] = getattr(self, field).id
 
         res['taxes'] = []
-        for tax in line.taxes:
+        for tax in self.taxes:
             res['taxes'].append(('add', tax.id))
         return res
-
-InvoiceLine()
 
 
 class InvoiceLineTax(ModelSQL):
     'Invoice Line - Tax'
-    _name = 'account.invoice.line-account.tax'
+    __name__ = 'account.invoice.line-account.tax'
     _table = 'account_invoice_line_account_tax'
-    _description = __doc__
     line = fields.Many2One('account.invoice.line', 'Invoice Line',
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
-InvoiceLineTax()
-
 
 class InvoiceTax(ModelSQL, ModelView):
     'Invoice Tax'
-    _name = 'account.invoice.tax'
+    __name__ = 'account.invoice.tax'
     _rec_name = 'description'
-    _description = __doc__
-
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=True)
     description = fields.Char('Description', size=None, required=True)
@@ -2027,59 +1843,67 @@ class InvoiceTax(ModelSQL, ModelView):
             '_parent_invoice.type'],
         depends=['manual'])
 
-    def __init__(self):
-        super(InvoiceTax, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(InvoiceTax, cls).__setup__()
+        cls._constraints += [
             ('check_company', 'You can not create invoice tax \n' \
                     'with account or code from a different invoice company!',
                     ['account', 'base_code', 'tax_code']),
-        ]
-        self._order.insert(0, ('sequence', 'ASC'))
-        self._error_messages.update({
+            ]
+        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._error_messages.update({
             'modify': 'You can not modify tax from an invoice ' \
                     'that is opened, paid!',
             'create': 'You can not add a line to an invoice ' \
                     'that is open, paid or canceled!',
             })
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(InvoiceTax, self).init(module_name)
+        super(InvoiceTax, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def default_base(self):
+    @staticmethod
+    def default_base():
         return Decimal('0.0')
 
-    def default_amount(self):
+    @staticmethod
+    def default_amount():
         return Decimal('0.0')
 
-    def default_manual(self):
+    @staticmethod
+    def default_manual():
         return True
 
-    def default_base_sign(self):
+    @staticmethod
+    def default_base_sign():
         return Decimal('1')
 
-    def default_tax_sign(self):
+    @staticmethod
+    def default_tax_sign():
         return Decimal('1')
 
-    def on_change_tax(self, values):
-        pool = Pool()
-        tax_obj = pool.get('account.tax')
-        invoice_obj = pool.get('account.invoice')
+    def on_change_tax(self):
+        Tax = Pool().get('account.tax')
         changes = {}
-        if values.get('tax'):
-            invoice_values = dict(
-                (f[16:], v) for f, v in values.iteritems()
-                if f.startswith('_parent_invoice.'))
-            context = invoice_obj.get_tax_context(invoice_values)
+        if self.tax:
+            if self.invoice:
+                context = self.invoice.get_tax_context()
+            else:
+                context = {}
             with Transaction().set_context(**context):
-                tax = tax_obj.browse(values['tax'])
+                tax = Tax(self.tax.id)
             changes['description'] = tax.description
-            invoice_type = values.get('_parent_invoice.type', 'out_invoice')
+            if self.invoice and self.invoice.type:
+                invoice_type = self.invoice.type
+            else:
+                invoice_type = 'out_invoice'
             if invoice_type in ('out_invoice', 'in_invoice'):
                 changes['base_code'] = tax.invoice_base_code.id
                 changes['base_sign'] = tax.invoice_base_sign
@@ -2094,92 +1918,85 @@ class InvoiceTax(ModelSQL, ModelView):
                 changes['account'] = tax.credit_note_account.id
         return changes
 
-    def on_change_with_amount(self, values):
-        pool = Pool()
-        tax_obj = pool.get('account.tax')
-        if values.get('tax') and values.get('manual', False):
-            tax_id = values['tax']
-            base = values.get('base') or Decimal(0)
-            for tax in tax_obj.compute([tax_id], base, 1):
-                if (tax['tax'].id == tax_id
-                        and tax['base'] == values.get('base')):
+    def on_change_with_amount(self):
+        Tax = Pool().get('account.tax')
+        if self.tax and self.manual:
+            tax = self.tax
+            base = self.base or Decimal(0)
+            for tax in Tax.compute([tax], base, 1):
+                if (tax['tax'] == tax
+                        and tax['base'] == self.base):
                     return tax['amount']
-        return values.get('amount')
+        return self.amount
 
-    def check_modify(self, ids):
+    @classmethod
+    def check_modify(cls, taxes):
         '''
         Check if the taxes can be modified
         '''
-        for tax in self.browse(ids):
+        for tax in taxes:
             if tax.invoice.state in ('open', 'paid'):
-                self.raise_user_error('modify')
-        return
+                cls.raise_user_error('modify')
 
-    def get_sequence_number(self, ids, name):
-        res = {}
-        for tax in self.browse(ids):
-            res[tax.id] = 0
-            i = 1
-            for tax2 in tax.invoice.taxes:
-                if tax2.id == tax.id:
-                    res[tax.id] = i
-                    break
-                i += 1
-        return res
+    def get_sequence_number(self, name):
+        i = 1
+        for tax in self.invoice.taxes:
+            if tax == self:
+                return i
+            i += 1
+        return 0
 
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        self.check_modify(ids)
-        return super(InvoiceTax, self).delete(ids)
+    @classmethod
+    def delete(cls, taxes):
+        cls.check_modify(taxes)
+        super(InvoiceTax, cls).delete(taxes)
 
-    def write(self, ids, vals):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        self.check_modify(ids)
-        return super(InvoiceTax, self).write(ids, vals)
+    @classmethod
+    def write(cls, taxes, vals):
+        cls.check_modify(taxes)
+        super(InvoiceTax, cls).write(taxes, vals)
 
-    def create(self, vals):
-        invoice_obj = Pool().get('account.invoice')
+    @classmethod
+    def create(cls, vals):
+        Invoice = Pool().get('account.invoice')
         if vals.get('invoice'):
-            invoice = invoice_obj.browse(vals['invoice'])
+            invoice = Invoice(vals['invoice'])
             if invoice.state in ('open', 'paid', 'cancel'):
-                self.raise_user_error('create')
-        return super(InvoiceTax, self).create(vals)
+                cls.raise_user_error('create')
+        return super(InvoiceTax, cls).create(vals)
 
-    def check_company(self, ids):
-        for tax in self.browse(ids):
-            company = tax.invoice.company
-            if tax.account.company.id != company.id:
+    def check_company(self):
+        company = self.invoice.company
+        if self.account.company != company:
+            return False
+        if self.base_code:
+            if self.base_code.company != company:
                 return False
-            if tax.base_code:
-                if tax.base_code.company.id != company.id:
-                    return False
-            if tax.tax_code:
-                if tax.tax_code.company.id != company.id:
-                    return False
+        if self.tax_code:
+            if self.tax_code.company != company:
+                return False
         return True
 
-    def get_move_line(self, tax):
+    def get_move_line(self):
         '''
         Return a list of move lines values for invoice tax
         '''
-        currency_obj = Pool().get('currency.currency')
+        Currency = Pool().get('currency.currency')
         res = {}
-        if not tax.amount:
+        if not self.amount:
             return []
-        res['name'] = tax.description
-        if tax.invoice.currency.id != tax.invoice.company.currency.id:
-            with Transaction().set_context(date=tax.invoice.currency_date):
-                amount = currency_obj.compute(tax.invoice.currency.id,
-                        tax.amount, tax.invoice.company.currency.id)
-            res['amount_second_currency'] = tax.amount
-            res['second_currency'] = tax.invoice.currency.id
+        res['name'] = self.description
+        if self.invoice.currency != self.invoice.company.currency:
+            with Transaction().set_context(date=self.invoice.currency_date):
+                amount = Currency.compute(self.invoice.currency, self.amount,
+                    self.invoice.company.currency)
+            res['amount_second_currency'] = self.amount
+            res['second_currency'] = self.invoice.currency.id
         else:
-            amount = tax.amount
+            amount = self.amount
             res['amount_second_currency'] = Decimal('0.0')
             res['second_currency'] = None
-        if tax.invoice.type in ('in_invoice', 'out_credit_note'):
+        if self.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
                 res['debit'] = amount
                 res['credit'] = Decimal('0.0')
@@ -2195,17 +2012,17 @@ class InvoiceTax(ModelSQL, ModelView):
             else:
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
-        res['account'] = tax.account.id
-        res['party'] = tax.invoice.party.id
-        if tax.tax_code:
+        res['account'] = self.account.id
+        res['party'] = self.invoice.party.id
+        if self.tax_code:
             res['tax_lines'] = [('create', {
-                'code': tax.tax_code.id,
-                'amount': amount * tax.tax_sign,
-                'tax': tax.tax and tax.tax.id or None
+                'code': self.tax_code.id,
+                'amount': amount * self.tax_sign,
+                'tax': self.tax and self.tax.id or None
             })]
         return [res]
 
-    def _credit(self, tax):
+    def _credit(self):
         '''
         Return values to credit tax.
         '''
@@ -2213,27 +2030,21 @@ class InvoiceTax(ModelSQL, ModelView):
 
         for field in ('description', 'sequence', 'base', 'amount',
                 'manual', 'base_sign', 'tax_sign'):
-            res[field] = tax[field]
+            res[field] = getattr(self, field)
 
         for field in ('account', 'base_code', 'tax_code', 'tax'):
-            res[field] = tax[field].id
+            res[field] = getattr(self, field).id
         return res
-
-InvoiceTax()
 
 
 class PrintInvoiceWarning(ModelView):
     'Print Invoice Report Warning'
-    _name = 'account.invoice.print.warning'
-    _description = __doc__
-
-PrintInvoiceWarning()
+    __name__ = 'account.invoice.print.warning'
 
 
 class PrintInvoice(Wizard):
     'Print Invoice Report'
-    _name = 'account.invoice.print'
-
+    __name__ = 'account.invoice.print'
     start = StateTransition()
     warning = StateView('account.invoice.print.warning',
         'account_invoice.print_warning_view_form', [
@@ -2242,81 +2053,79 @@ class PrintInvoice(Wizard):
             ])
     print_ = StateAction('account_invoice.report_invoice')
 
-    def transition_start(self, session):
+    def transition_start(self):
         if len(Transaction().context['active_ids']) > 1:
             return 'warning'
         return 'print_'
 
-    def do_print_(self, session, action):
+    def do_print_(self, action):
         data = {}
         data['id'] = Transaction().context['active_ids'].pop()
         data['ids'] = [data['id']]
         return action, data
 
-    def transition_print_(self, session):
+    def transition_print_(self):
         if Transaction().context['active_ids']:
             return 'print_'
         return 'end'
 
-PrintInvoice()
-
 
 class InvoiceReport(Report):
-    _name = 'account.invoice'
+    __name__ = 'account.invoice'
 
-    def __init__(self):
-        super(InvoiceReport, self).__init__()
-        self._rpc['execute'] = True
+    @classmethod
+    def __setup__(cls):
+        super(InvoiceReport, cls).__setup__()
+        cls.__rpc__['execute'] = RPC(False)
 
-    def execute(self, ids, data):
-        invoice_obj = Pool().get('account.invoice')
+    @classmethod
+    def execute(cls, ids, data):
+        Invoice = Pool().get('account.invoice')
 
-        res = super(InvoiceReport, self).execute(ids, data)
+        res = super(InvoiceReport, cls).execute(ids, data)
         if len(ids) > 1:
             res = (res[0], res[1], True, res[3])
         else:
-            invoice = invoice_obj.browse(ids[0])
+            invoice = Invoice(ids[0])
             if invoice.number:
                 res = (res[0], res[1], res[2], res[3] + ' - ' + invoice.number)
         return res
 
-    def _get_objects(self, ids, model, data):
-        invoice_obj = Pool().get('account.invoice')
-
+    @classmethod
+    def _get_records(cls, ids, model, data):
         with Transaction().set_context(language=False):
-            return invoice_obj.browse([ids[0]])
+            return super(InvoiceReport, cls)._get_records(ids[:1], model, data)
 
-    def parse(self, report, objects, data, localcontext):
-        user_obj = Pool().get('res.user')
-        invoice_obj = Pool().get('account.invoice')
+    @classmethod
+    def parse(cls, report, records, data, localcontext):
+        pool = Pool()
+        User = pool.get('res.user')
+        Invoice = pool.get('account.invoice')
 
-        invoice = objects[0]
+        invoice = records[0]
 
         if invoice.invoice_report_cache:
             return (invoice.invoice_report_format,
                 invoice.invoice_report_cache)
 
-        user = user_obj.browse(Transaction().user)
+        user = User(Transaction().user)
         localcontext['company'] = user.company
-        res = super(InvoiceReport, self).parse(report, objects, data,
+        res = super(InvoiceReport, cls).parse(report, records, data,
                 localcontext)
         # If the invoice is open or paid and the report not saved in
         # invoice_report_cache there was an error somewhere. So we save it now
         # in invoice_report_cache
         if invoice.state in ('open', 'paid'):
-            invoice_obj.write(invoice.id, {
+            Invoice.write([invoice], {
                 'invoice_report_format': res[0],
                 'invoice_report_cache': res[1],
                 })
         return res
 
-InvoiceReport()
-
 
 class PayInvoiceStart(ModelView):
     'Pay Invoice'
-    _name = 'account.invoice.pay.start'
-    _description = __doc__
+    __name__ = 'account.invoice.pay.start'
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'], required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
@@ -2327,27 +2136,24 @@ class PayInvoiceStart(ModelView):
             domain=[('type', '=', 'cash')])
     date = fields.Date('Date', required=True)
 
-    def default_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
+    @staticmethod
+    def default_date():
+        Date = Pool().get('ir.date')
+        return Date.today()
 
-    def default_currency_digits(self):
+    @staticmethod
+    def default_currency_digits():
         return 2
 
-    def on_change_with_currency_digits(self, vals):
-        currency_obj = Pool().get('currency.currency')
-        if vals.get('currency'):
-            currency = currency_obj.browse(vals['currency'])
-            return currency.digits
+    def on_change_with_currency_digits(self):
+        if self.currency:
+            return self.currency.digits
         return 2
-
-PayInvoiceStart()
 
 
 class PayInvoiceAsk(ModelView):
     'Pay Invoice'
-    _name = 'account.invoice.pay.ask'
-    _description = __doc__
+    __name__ = 'account.invoice.pay.ask'
     type = fields.Selection([
         ('writeoff', 'Write-Off'),
         ('partial', 'Partial Payment'),
@@ -2403,37 +2209,31 @@ class PayInvoiceAsk(ModelView):
     company = fields.Many2One('company.company', 'Company', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice', readonly=True)
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'partial'
 
-    def on_change_lines(self, vals):
-        pool = Pool()
-        currency_obj = pool.get('currency.currency')
-        line_obj = pool.get('account.move.line')
-        invoice_obj = pool.get('account.invoice')
+    def on_change_lines(self):
+        Currency = Pool().get('currency.currency')
 
         res = {}
-        invoice = invoice_obj.browse(vals['invoice'])
-        with Transaction().set_context(date=invoice.currency_date):
-            amount = currency_obj.compute(vals['currency'], vals['amount'],
-                    vals['currency_writeoff'])
+        with Transaction().set_context(date=self.invoice.currency_date):
+            amount = Currency.compute(self.currency, self.amount,
+                self.currency_writeoff)
 
         res['amount_writeoff'] = Decimal('0.0')
-        for line in line_obj.browse(vals['lines']):
+        for line in self.lines:
             res['amount_writeoff'] += line.debit - line.credit
-        if invoice.type in ('in_invoice', 'out_credit_note'):
+        if self.invoice.type in ('in_invoice', 'out_credit_note'):
             res['amount_writeoff'] = - res['amount_writeoff'] - amount
         else:
             res['amount_writeoff'] = res['amount_writeoff'] - amount
         return res
 
-PayInvoiceAsk()
-
 
 class PayInvoice(Wizard):
     'Pay Invoice'
-    _name = 'account.invoice.pay'
-
+    __name__ = 'account.invoice.pay'
     start = StateView('account.invoice.pay.start',
         'account_invoice.pay_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -2447,17 +2247,18 @@ class PayInvoice(Wizard):
             ])
     pay = StateTransition()
 
-    def __init__(self):
-        super(PayInvoice, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(PayInvoice, cls).__setup__()
+        cls._error_messages.update({
             'amount_greater_amount_to_pay': 'You can not create a partial ' \
                     'payment with an amount greater then the amount to pay!',
             })
 
-    def default_start(self, session, fields):
-        invoice_obj = Pool().get('account.invoice')
+    def default_start(self, fields):
+        Invoice = Pool().get('account.invoice')
         default = {}
-        invoice = invoice_obj.browse(Transaction().context['active_id'])
+        invoice = Invoice(Transaction().context['active_id'])
         default['currency'] = invoice.currency.id
         default['currency_digits'] = invoice.currency.digits
         default['amount'] = (invoice.amount_to_pay_today
@@ -2465,52 +2266,52 @@ class PayInvoice(Wizard):
         default['description'] = invoice.number
         return default
 
-    def transition_choice(self, session):
-        invoice_obj = Pool().get('account.invoice')
-        currency_obj = Pool().get('currency.currency')
+    def transition_choice(self):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        Currency = pool.get('currency.currency')
 
-        invoice = invoice_obj.browse(Transaction().context['active_id'])
+        invoice = Invoice(Transaction().context['active_id'])
 
-        with Transaction().set_context(date=session.start.date):
-            amount = currency_obj.compute(session.start.currency.id,
-                session.start.amount, invoice.company.currency.id)
-        _, remainder = invoice_obj.get_reconcile_lines_for_amount(invoice,
-            amount)
+        with Transaction().set_context(date=self.start.date):
+            amount = Currency.compute(self.start.currency,
+                self.start.amount, invoice.company.currency)
+        _, remainder = invoice.get_reconcile_lines_for_amount(amount)
         if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
 
-    def default_ask(self, session, fields):
+    def default_ask(self, fields):
         pool = Pool()
-        invoice_obj = pool.get('account.invoice')
-        currency_obj = pool.get('currency.currency')
-        line_obj = pool.get('account.move.line')
+        Invoice = pool.get('account.invoice')
+        Currency = pool.get('currency.currency')
+        Line = pool.get('account.move.line')
 
         default = {}
-        invoice = invoice_obj.browse(Transaction().context['active_id'])
+        invoice = Invoice(Transaction().context['active_id'])
         default['lines_to_pay'] = [x.id for x in invoice.lines_to_pay
                 if not x.reconciliation]
 
-        default['amount'] = session.start.amount
-        default['currency'] = session.start.currency.id
-        default['currency_digits'] = session.start.currency_digits
+        default['amount'] = self.start.amount
+        default['currency'] = self.start.currency.id
+        default['currency_digits'] = self.start.currency_digits
         default['company'] = invoice.company.id
 
-        with Transaction().set_context(date=session.start.date):
-            amount = currency_obj.compute(session.start.currency.id,
-                session.start.amount, invoice.company.currency.id)
+        with Transaction().set_context(date=self.start.date):
+            amount = Currency.compute(self.start.currency.id,
+                self.start.amount, invoice.company.currency.id)
 
-        if currency_obj.is_zero(invoice.company.currency, amount):
+        if invoice.company.currency.is_zero(amount):
             default['lines'] = [x.id for x in invoice.lines_to_pay]
         else:
             default['lines'], _ = \
-                invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
+                invoice.get_reconcile_lines_for_amount(amount)
         for line_id in default['lines'][:]:
             if line_id not in default['lines_to_pay']:
                 default['lines'].remove(line_id)
 
         default['amount_writeoff'] = Decimal('0.0')
-        for line in line_obj.browse(default['lines']):
+        for line in Line.browse(default['lines']):
             default['amount_writeoff'] += line.debit - line.credit
         for line in invoice.payment_lines:
             default['amount_writeoff'] += line.debit - line.credit
@@ -2525,81 +2326,75 @@ class PayInvoice(Wizard):
         default['payment_lines'] = [x.id for x in invoice.payment_lines
                 if not x.reconciliation]
 
-        if amount > invoice.amount_to_pay \
-                or currency_obj.is_zero(invoice.company.currency, amount):
+        if (amount > invoice.amount_to_pay
+                or invoice.company.currency.is_zero(amount)):
             default['type'] = 'writeoff'
         return default
 
-    def transition_pay(self, session):
+    def transition_pay(self):
         pool = Pool()
-        invoice_obj = pool.get('account.invoice')
-        currency_obj = pool.get('currency.currency')
-        move_line_obj = pool.get('account.move.line')
+        Invoice = pool.get('account.invoice')
+        Currency = pool.get('currency.currency')
+        MoveLine = pool.get('account.move.line')
 
-        invoice = invoice_obj.browse(Transaction().context['active_id'])
+        invoice = Invoice(Transaction().context['active_id'])
 
-        with Transaction().set_context(date=session.start.date):
-            amount = currency_obj.compute(session.start.currency.id,
-                session.start.amount, invoice.company.currency.id)
+        with Transaction().set_context(date=self.start.date):
+            amount = Currency.compute(self.start.currency,
+                self.start.amount, invoice.company.currency)
 
         reconcile_lines, remainder = \
-            invoice_obj.get_reconcile_lines_for_amount(invoice, amount)
+            invoice.get_reconcile_lines_for_amount(amount)
 
         amount_second_currency = None
         second_currency = None
-        if session.start.currency.id != invoice.company.currency.id:
-            amount_second_currency = session.start.amount
-            second_currency = session.start.currency
+        if self.start.currency != invoice.company.currency:
+            amount_second_currency = self.start.amount
+            second_currency = self.start.currency
 
         if amount > invoice.amount_to_pay and \
-                session.ask.type != 'writeoff':
+                self.ask.type != 'writeoff':
             self.raise_user_error('amount_greater_amount_to_pay')
 
-        line_id = None
-        if not currency_obj.is_zero(invoice.company.currency, amount):
-            line_id = invoice_obj.pay_invoice(invoice.id, amount,
-                session.start.journal.id, session.start.date,
-                session.start.description, amount_second_currency,
+        line = None
+        if not invoice.company.currency.is_zero(amount):
+            line = invoice.pay_invoice(amount,
+                self.start.journal, self.start.date,
+                self.start.description, amount_second_currency,
                 second_currency)
 
         if remainder != Decimal('0.0'):
-            if session.ask.type == 'writeoff':
-                line_ids = [x.id for x in session.ask.lines] + \
-                    [x.id for x in invoice.payment_lines
-                        if not x.reconciliation]
-                if line_id and line_id not in line_ids:
+            if self.ask.type == 'writeoff':
+                lines = [l for l in self.ask.lines] + \
+                    [l for l in invoice.payment_lines
+                        if not l.reconciliation]
+                if line and line not in lines:
                     # Add new payment line if payment_lines was cached before
                     # its creation
-                    line_ids += [line_id]
-                if line_ids:
-                    move_line_obj.reconcile(line_ids,
-                        journal_id=session.ask.journal_writeoff.id,
-                        date=session.start.date,
-                        account_id=session.ask.account_writeoff.id)
+                    lines += [line]
+                if lines:
+                    MoveLine.reconcile(lines,
+                        journal=self.ask.journal_writeoff,
+                        date=self.start.date,
+                        account=self.ask.account_writeoff)
         else:
-            if line_id:
-                reconcile_lines += [line_id]
+            if line:
+                reconcile_lines += [line]
             if reconcile_lines:
-                move_line_obj.reconcile(reconcile_lines)
+                MoveLine.reconcile(reconcile_lines)
         return 'end'
-
-PayInvoice()
 
 
 class CreditInvoiceStart(ModelView):
     'Credit Invoice Init'
-    _name = 'account.invoice.credit.start'
-    _description = __doc__
+    __name__ = 'account.invoice.credit.start'
     with_refund = fields.Boolean('With Refund', help='If true, ' \
             'the current invoice(s) will be paid.')
-
-CreditInvoiceStart()
 
 
 class CreditInvoice(Wizard):
     'Credit Invoice'
-    _name = 'account.invoice.credit'
-
+    __name__ = 'account.invoice.credit'
     start = StateView('account.invoice.credit.start',
         'account_invoice.credit_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -2607,45 +2402,44 @@ class CreditInvoice(Wizard):
             ])
     credit = StateAction('account_invoice.act_invoice_form')
 
-    def __init__(self):
-        super(CreditInvoice, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(CreditInvoice, cls).__setup__()
+        cls._error_messages.update({
             'refund_non_open': 'You can not credit with refund ' \
                     'an invoice that is not opened!',
             'refund_with_payement': 'You can not credit with refund ' \
                     'an invoice with payments!',
             })
 
-    def default_start(self, session, fields):
-        invoice_obj = Pool().get('account.invoice')
+    def default_start(self, fields):
+        Invoice = Pool().get('account.invoice')
         default = {
             'with_refund': True,
-        }
-        for invoice in invoice_obj.browse(Transaction().context['active_ids']):
+            }
+        for invoice in Invoice.browse(Transaction().context['active_ids']):
             if invoice.state != 'open' or invoice.payment_lines:
                 default['with_refund'] = False
                 break
         return default
 
-    def do_credit(self, session, action):
+    def do_credit(self, action):
         pool = Pool()
-        invoice_obj = pool.get('account.invoice')
+        Invoice = pool.get('account.invoice')
 
-        refund = session.start.with_refund
-        invoice_ids = Transaction().context['active_ids']
+        refund = self.start.with_refund
+        invoices = Invoice.browse(Transaction().context['active_ids'])
 
         if refund:
-            for invoice in invoice_obj.browse(invoice_ids):
+            for invoice in invoices:
                 if invoice.state != 'open':
                     self.raise_user_error('refund_non_open')
                 if invoice.payment_lines:
                     self.raise_user_error('refund_with_payement')
 
-        invoice_ids = invoice_obj.credit(invoice_ids, refund=refund)
+        invoice_ids = Invoice.credit(invoices, refund=refund)
 
         data = {'res_id': invoice_ids}
         if len(invoice_ids) == 1:
             action['views'].reverse()
         return action, data
-
-CreditInvoice()
