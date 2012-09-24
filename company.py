@@ -1,27 +1,33 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-"Company"
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import fields
+from trytond.pool import PoolMeta
 
 
-class Company(ModelSQL, ModelView):
-    _name = 'company.company'
+__all__ = ['Company']
+__metaclass__ = PoolMeta
+
+
+class Company:
+    __name__ = 'company.company'
 
     hours_per_work_day = fields.Float("Hours per Work Day", required=True)
     hours_per_work_week = fields.Float("Hours per Work Week", required=True)
     hours_per_work_month = fields.Float("Hours per Work Month", required=True)
     hours_per_work_year = fields.Float("Hours per Work Year", required=True)
 
-    def default_hours_per_work_day(self):
+    @staticmethod
+    def default_hours_per_work_day():
         return 8
 
-    def default_hours_per_work_week(self):
+    @staticmethod
+    def default_hours_per_work_week():
         return 40
 
-    def default_hours_per_work_month(self):
+    @staticmethod
+    def default_hours_per_work_month():
         return 160
 
-    def default_hours_per_work_year(self):
+    @staticmethod
+    def default_hours_per_work_year():
         return 1920
-
-Company()
