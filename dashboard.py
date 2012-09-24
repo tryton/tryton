@@ -4,11 +4,12 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 
+__all__ = ['DashboardAction']
+
 
 class DashboardAction(ModelSQL, ModelView):
     "Dashboard Action"
-    _name = "dashboard.action"
-
+    __name__ = "dashboard.action"
     user = fields.Many2One('res.user', 'User', required=True,
             select=True)
     sequence = fields.Integer('Sequence',
@@ -20,17 +21,17 @@ class DashboardAction(ModelSQL, ModelView):
                 ('res_model', '!=', ''),
             ])
 
-    def __init__(self):
-        super(DashboardAction, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(DashboardAction, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(DashboardAction, self).init(module_name)
+        super(DashboardAction, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-DashboardAction()
