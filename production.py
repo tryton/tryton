@@ -8,14 +8,15 @@ from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
+__all__ = ['Production', 'AssignFailed', 'Assign']
+
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
     'company', 'inputs', 'outputs']
 
 
 class Production(Workflow, ModelSQL, ModelView):
     "Production"
-    _name = 'production'
-    _description = __doc__
+    __name__ = 'production'
     _rec_name = 'code'
 
     code = fields.Char('Code', select=True, readonly=True)
@@ -75,7 +76,7 @@ class Production(Workflow, ModelSQL, ModelView):
         depends=['product'])
     uom_category = fields.Function(fields.Many2One(
             'product.uom.category', 'Uom Category',
-            on_change_with=['product']), 'get_uom_category')
+            on_change_with=['product']), 'on_change_with_uom_category')
     uom = fields.Many2One('product.uom', 'Uom',
         domain=[
             ('category', '=', Eval('uom_category')),
@@ -88,7 +89,7 @@ class Production(Workflow, ModelSQL, ModelView):
         on_change=BOM_CHANGES,
         depends=['uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
-            on_change_with=['uom']), 'get_unit_digits')
+            on_change_with=['uom']), 'on_change_with_unit_digits')
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
@@ -130,15 +131,16 @@ class Production(Workflow, ModelSQL, ModelView):
             ('cancel', 'Canceled'),
             ], 'State', readonly=True)
 
-    def __init__(self):
-        super(Production, self).__init__()
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Production, cls).__setup__()
+        cls._constraints += [
             ('check_cost', 'missing_cost'),
             ]
-        self._error_messages.update({
+        cls._error_messages.update({
                 'missing_cost': 'It misses some cost on the outputs!',
                 })
-        self._transitions |= set((
+        cls._transitions |= set((
                 ('request', 'draft'),
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -154,7 +156,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 ('assigned', 'cancel'),
                 ('cancel', 'draft'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['request', 'draft',
                             'assigned']),
@@ -192,88 +194,79 @@ class Production(Workflow, ModelSQL, ModelView):
                 'assign_force': {},
                 })
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_warehouse(self):
-        location_obj = Pool().get('stock.location')
-        location_ids = location_obj.search(self.warehouse.domain)
-        if len(location_ids) == 1:
-            return location_ids[0]
+    @classmethod
+    def default_warehouse(cls):
+        Location = Pool().get('stock.location')
+        locations = Location.search(cls.warehouse.domain)
+        if len(locations) == 1:
+            return locations[0].id
 
-    def default_location(self):
-        location_obj = Pool().get('stock.location')
-        warehouse_id = self.default_warehouse()
+    @classmethod
+    def default_location(cls):
+        Location = Pool().get('stock.location')
+        warehouse_id = cls.default_warehouse()
         if warehouse_id:
-            warehouse = location_obj.browse(warehouse_id)
+            warehouse = Location(warehouse_id)
             return warehouse.production_location.id
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def _move_values(self, from_location, to_location, company, product, uom,
+    def _move(self, from_location, to_location, company, product, uom,
             quantity):
-        values = {
-            'product': product.id,
-            'uom': uom.id,
-            'quantity': quantity,
-            'from_location': None,
-            'to_location': None,
-            'company': None,
-            'state': 'draft',
-            }
-        values['currency'] = company.currency.id if company else None
-        if from_location:
-            values['from_location'] = from_location.id
-        if to_location:
-            values['to_location'] = to_location.id
-        if company:
-            values['company'] = company.id
-        return values
+        Move = Pool().get('stock.move')
+        move = Move(
+            product=product,
+            uom=uom,
+            quantity=quantity,
+            from_location=from_location,
+            to_location=to_location,
+            company=company,
+            currency=company.currency if company else None,
+            state='draft',
+            )
+        return move
 
     def _explode_move_values(self, from_location, to_location, company,
             bom_io, quantity):
         pool = Pool()
-        move_obj = pool.get('stock.move')
+        Move = pool.get('stock.move')
 
-        values = self._move_values(from_location, to_location, company,
+        move = self._move(from_location, to_location, company,
             bom_io.product, bom_io.uom, quantity)
-        values['product.rec_name'] = bom_io.product.rec_name
-        values['uom.rec_name'] = bom_io.uom.rec_name
-        values['unit_price_required'] = \
-            move_obj.on_change_with_unit_price_required({
-                    'from_location': (from_location.id if from_location else
-                        None),
-                    'to_location': to_location.id if to_location else None,
-                    })
-        if from_location:
-            values['from_location.rec_name'] = from_location.rec_name
-        if to_location:
-            values['to_location.rec_name'] = to_location.rec_name
-        if company:
-            values['company.rec_name'] = company.rec_name
+        move.from_location = from_location.id if from_location else None
+        move.to_location = to_location.id if to_location else None
+        move.unit_price_required = move.on_change_with_unit_price_required()
+        values = {}
+        for field_name, field in Move._fields.iteritems():
+            try:
+                value = getattr(move, field_name)
+            except AttributeError:
+                continue
+            if value and field._type in ('many2one', 'one2one'):
+                values[field_name] = value.id
+                values[field_name + '.rec_name'] = value.rec_name
+            else:
+                values[field_name] = value
         return values
 
-    def explode_bom(self, values):
+    def explode_bom(self):
         pool = Pool()
-        bom_obj = pool.get('production.bom')
-        product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
-        input_obj = pool.get('production.bom.input')
-        output_obj = pool.get('production.bom.output')
-        location_obj = pool.get('stock.location')
-        company_obj = pool.get('company.company')
+        Uom = pool.get('product.uom')
 
-        if not (values.get('bom')
-                and values.get('product')
-                and values.get('uom')):
+        if not (self.bom and self.product and self.uom):
             return {}
         inputs = {
-            'remove': [r['id'] for r in values.get('inputs') or []],
+            'remove': [r.id for r in self.inputs or []],
             'add': [],
             }
         outputs = {
-            'remove': [r['id'] for r in values.get('outputs') or []],
+            'remove': [r.id for r in self.outputs or []],
             'add': [],
             }
         changes = {
@@ -282,40 +275,28 @@ class Production(Workflow, ModelSQL, ModelView):
             'cost': Decimal(0),
             }
 
-        bom = bom_obj.browse(values['bom'])
-        product = product_obj.browse(values['product'])
-        quantity = values.get('quantity') or 0
-        uom = uom_obj.browse(values['uom'])
-        if values.get('warehouse'):
-            warehouse = location_obj.browse(values['warehouse'])
-            storage_location = warehouse.storage_location
+        if self.warehouse:
+            storage_location = self.warehouse.storage_location
         else:
             storage_location = None
-        if values.get('location'):
-            location = location_obj.browse(values['location'])
-        else:
-            location = None
-        if values.get('company'):
-            company = company_obj.browse(values['company'])
-        else:
-            company = None
 
-        factor = bom_obj.compute_factor(bom, product, quantity, uom)
-        for input_ in bom.inputs:
-            quantity = input_obj.compute_quantity(input_, factor)
-            values = self._explode_move_values(storage_location, location,
-                company, input_, quantity)
+        factor = self.bom.compute_factor(self.product, self.quantity or 0,
+            self.uom)
+        for input_ in self.bom.inputs:
+            quantity = input_.compute_quantity(factor)
+            values = self._explode_move_values(storage_location, self.location,
+                self.company, input_, quantity)
             if values:
                 inputs['add'].append(values)
-                quantity = uom_obj.compute_qty(input_.uom, quantity,
+                quantity = Uom.compute_qty(input_.uom, quantity,
                     input_.product.default_uom)
                 changes['cost'] += (Decimal(str(quantity)) *
                     input_.product.cost_price)
 
-        for output in bom.outputs:
-            quantity = output_obj.compute_quantity(output, factor)
-            values = self._explode_move_values(location, storage_location,
-                company, output, quantity)
+        for output in self.bom.outputs:
+            quantity = output.compute_quantity(factor)
+            values = self._explode_move_values(self.location, storage_location,
+                self.company, output, quantity)
             if values:
                 values['unit_price'] = Decimal(0)
                 if output.product.id == values.get('product') and quantity:
@@ -324,341 +305,284 @@ class Production(Workflow, ModelSQL, ModelView):
                 outputs['add'].append(values)
         return changes
 
-    def on_change_warehouse(self, values):
-        location_obj = Pool().get('stock.location')
+    def on_change_warehouse(self):
         changes = {
             'location': None,
             }
-        if values.get('warehouse'):
-            warehouse = location_obj.browse(values['warehouse'])
-            changes['location'] = warehouse.production_location.id
+        if self.warehouse:
+            changes['location'] = self.warehouse.production_location.id
         return changes
 
-    def on_change_product(self, values):
-        product_obj = Pool().get('product.product')
-
+    def on_change_product(self):
         result = {}
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            uom_ids = [x.id for x in product.default_uom.category.uoms]
-            if (not values.get('uom')
-                    or values.get('uom') not in uom_ids):
-                result['uom'] = product.default_uom.id
-                result['uom.rec_name'] = product.default_uom.rec_name
-                result['unit_digits'] = product.default_uom.digits
+        if self.product:
+            uoms = self.product.default_uom.category.uoms
+            if (not self.uom or self.uom not in uoms):
+                result['uom'] = self.product.default_uom.id
+                result['uom.rec_name'] = self.product.default_uom.rec_name
+                result['unit_digits'] = self.product.default_uom.digits
         else:
             result['bom'] = None
             result['uom'] = None
             result['uom.rec_name'] = ''
             result['unit_digits'] = 2
 
-        values = values.copy()
-        values['uom'] = result['uom']
+        self.uom = result['uom']
         if 'bom' in result:
-            values['bom'] = result['bom']
-        result.update(self.explode_bom(values))
+            self.bom = result['bom']
+        result.update(self.explode_bom())
         return result
 
-    def on_change_with_uom_category(self, values):
-        product_obj = Pool().get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return product.default_uom.category.id
+    def on_change_with_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom.category.id
 
-    def get_uom_category(self, ids, name):
-        res = {}
-        for production in self.browse(ids):
-            if production.product:
-                res[production.id] = production.product.default_uom.category.id
-            else:
-                res[production.id] = None
-        return res
-
-    def on_change_with_unit_digits(self, values):
-        uom_obj = Pool().get('product.uom')
-        if values.get('uom'):
-            uom = uom_obj.browse(values['uom'])
-            return uom.digits
+    def on_change_with_unit_digits(self, name=None):
+        if self.uom:
+            return self.uom.digits
         return 2
 
-    def get_unit_digits(self, ids, name):
-        digits = {}
-        for production in self.browse(ids):
-            if production.uom:
-                digits[production.id] = production.uom.digits
+    def on_change_bom(self):
+        return self.explode_bom()
+
+    def on_change_uom(self):
+        return self.explode_bom()
+
+    def on_change_quantity(self):
+        return self.explode_bom()
+
+    def get_cost(self, name):
+        cost = Decimal(0)
+        for input_ in self.inputs:
+            if input_.cost_price is not None:
+                cost_price = input_.cost_price
             else:
-                digits[production.id] = 2
-        return digits
+                cost_price = input_.product.cost_price
+            cost += (Decimal(str(input_.internal_quantity)) * cost_price)
+        return cost
 
-    def on_change_bom(self, values):
-        return self.explode_bom(values)
-
-    def on_change_uom(self, values):
-        return self.explode_bom(values)
-
-    def on_change_quantity(self, values):
-        return self.explode_bom(values)
-
-    def get_cost(self, ids, name):
-        costs = {}
-        for production in self.browse(ids):
-            costs[production.id] = Decimal(0)
-            for input_ in production.inputs:
-                if input_.cost_price is not None:
-                    cost_price = input_.cost_price
-                else:
-                    cost_price = input_.product.cost_price
-                costs[production.id] += (Decimal(str(input_.internal_quantity))
-                        * cost_price)
-        return costs
-
-    def on_change_with_cost(self, values):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
+    def on_change_with_cost(self):
+        Uom = Pool().get('product.uom')
 
         cost = Decimal(0)
-        if not values.get('inputs'):
+        if not self.inputs:
             return cost
 
-        product_ids = list(set(r['product'] for r in values['inputs'] if
-                r['product'] is not None))
-        id2product = dict((p.id, p) for p in product_obj.browse(product_ids))
-
-        uom_ids = list(set(r['uom'] for r in values['inputs']))
-        id2uom = dict((u.id, u) for u in uom_obj.browse(uom_ids))
-
-        for input_ in values['inputs']:
-            if (input_['product'] is None
-                    or input_['uom'] is None
-                    or input_['quantity'] is None):
+        for input_ in self.inputs:
+            if (input_.product is None
+                    or input_.uom is None
+                    or input_.quantity is None):
                 continue
-            product = id2product[input_['product']]
-            quantity = uom_obj.compute_qty(id2uom[input_['uom']],
-                input_['quantity'], product.default_uom)
+            product = input_.product
+            quantity = Uom.compute_qty(input_.uom, input_.quantity,
+                product.default_uom)
             cost += Decimal(str(quantity)) * product.cost_price
         return cost
 
-    def set_moves(self, production):
-        pool = Pool()
-        bom_obj = pool.get('production.bom')
-        move_obj = pool.get('stock.move')
-        input_obj = pool.get('production.bom.input')
-        output_obj = pool.get('production.bom.output')
+    def set_moves(self):
+        storage_location = self.warehouse.storage_location
+        location = self.location
+        company = self.company
 
-        storage_location = production.warehouse.storage_location
-        location = production.location
-        company = production.company
-
-        if not production.bom:
-            if production.product:
-                product = production.product
-                values = self._move_values(location, storage_location, company,
-                    product, product.default_uom)
-                if values:
-                    values['production_output'] = production.id
-                    move_obj.create(values)
+        if not self.bom:
+            if self.product:
+                move = self._move(location, storage_location, company,
+                    self.product, self.product.default_uom)
+                if move:
+                    move.production_output = self
+                    move.save()
             return
 
-        factor = bom_obj.compute_factor(production.bom, production.product,
-            production.quantity, production.uom)
+        factor = self.bom.compute_factor(self.product, self.quantity, self.uom)
         cost = Decimal(0)
-        for input_ in production.bom.inputs:
-            quantity = input_obj.compute_quantity(input_, factor)
+        for input_ in self.bom.inputs:
+            quantity = input_.compute_quantity(factor)
             product = input_.product
-            values = self._move_values(storage_location, location, company,
+            move = self._move(storage_location, location, company,
                 product, input_.uom, quantity)
-            if values:
-                values['production_input'] = production.id
-                move_obj.create(values)
+            if move:
+                move.production_input = self
+                move.save()
                 cost += Decimal(str(quantity)) * product.cost_price
 
-        for output in production.bom.outputs:
-            quantity = output_obj.compute_quantity(output, factor)
+        for output in self.bom.outputs:
+            quantity = output.compute_quantity(factor)
             product = output.product
-            values = self._move_values(location, storage_location, company,
+            move = self._move(location, storage_location, company,
                 product, output.uom, quantity)
-            if values:
-                values['production_output'] = production.id
-                if product == production.product:
-                    values['unit_price'] = cost / Decimal(str(quantity))
-                move_obj.create(values)
-        self._set_move_planned_date([production.id])
+            if move:
+                move.production_output = self
+                if product == self.product:
+                    move.unit_price = cost / Decimal(str(quantity))
+                move.save()
+        self._set_move_planned_date()
 
-    def check_cost(self, ids):
-        pool = Pool()
-        currency_obj = pool.get('currency.currency')
-
-        for production in self.browse(ids):
-            if production.state != 'done':
-                continue
-            cost_price = Decimal(0)
-            for output in production.outputs:
-                cost_price += (Decimal(str(output.quantity))
-                    * output.unit_price)
-            if not currency_obj.is_zero(production.company.currency,
-                    production.cost - cost_price):
-                return False
+    def check_cost(self):
+        if self.state != 'done':
+            return True
+        cost_price = Decimal(0)
+        for output in self.outputs:
+            cost_price += (Decimal(str(output.quantity))
+                * output.unit_price)
+        if not self.company.currency.is_zero(self.cost - cost_price):
+            return False
         return True
 
-    def create(self, values):
-        sequence_obj = Pool().get('ir.sequence')
-        config_obj = Pool().get('production.configuration')
+    @classmethod
+    def create(cls, values):
+        Sequence = Pool().get('ir.sequence')
+        Config = Pool().get('production.configuration')
 
         values = values.copy()
-        config = config_obj.browse(1)
-        values['code'] = sequence_obj.get_id(config.production_sequence.id)
-        production_id = super(Production, self).create(values)
-        self._set_move_planned_date(production_id)
-        return production_id
+        config = Config(1)
+        values['code'] = Sequence.get_id(config.production_sequence.id)
+        production = super(Production, cls).create(values)
+        production._set_move_planned_date()
+        return production
 
-    def write(self, ids, values):
-        result = super(Production, self).write(ids, values)
-        self._set_move_planned_date(ids)
-        return result
+    @classmethod
+    def write(cls, productions, values):
+        super(Production, cls).write(productions, values)
+        for production in productions:
+            production._set_move_planned_date()
 
-    def _get_move_planned_date(self, production):
+    def _get_move_planned_date(self):
         "Return the planned dates for input and output moves"
-        return production.planned_date, production.planned_date
+        return self.planned_date, self.planned_date
 
-    def _set_move_planned_date(self, ids):
+    def _set_move_planned_date(self):
         "Set planned date of moves for the shipments"
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        for production in self.browse(ids):
-            dates = self._get_move_planned_date(production)
-            input_date, output_date = dates
-            move_obj.write([m.id for m in production.inputs
-                    if m.state not in ('assigned', 'done', 'cancel')], {
-                    'planned_date': input_date,
-                    })
-            move_obj.write([m.id for m in production.outputs
-                    if m.state not in ('assigned', 'done', 'cancel')], {
-                    'planned_date': output_date,
-                    })
+        Move = pool.get('stock.move')
+        dates = self._get_move_planned_date()
+        input_date, output_date = dates
+        Move.write([m for m in self.inputs
+                if m.state not in ('assigned', 'done', 'cancel')], {
+                'planned_date': input_date,
+                })
+        Move.write([m for m in self.outputs
+                if m.state not in ('assigned', 'done', 'cancel')], {
+                'planned_date': output_date,
+                })
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, ids):
+    def cancel(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        productions = self.browse(ids)
-        move_obj.write([m.id for p in productions
+        Move = pool.get('stock.move')
+        Move.write([m for p in productions
                 for m in p.inputs + p.outputs
                 if m.state != 'cancel'], {
                 'state': 'cancel',
                 })
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
+    def draft(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        productions = self.browse(ids)
-        move_obj.write([m.id for p in productions
+        Move = pool.get('stock.move')
+        Move.write([m for p in productions
                 for m in p.inputs + p.outputs
                 if m.state != 'draft'], {
                 'state': 'draft',
                 })
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('waiting')
-    def wait(self, ids):
+    def wait(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        productions = self.browse(ids)
-        move_obj.write([m.id for p in productions
+        Move = pool.get('stock.move')
+        Move.write([m for p in productions
                 for m in p.inputs + p.outputs
                 if m.state not in ('draft', 'done')], {
                 'state': 'draft',
                 })
 
+    @classmethod
     @Workflow.transition('assigned')
-    def assign(self, ids):
+    def assign(cls, productions):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('running')
-    def run(self, ids):
+    def run(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        productions = self.browse(ids)
-        move_obj.write([m.id for p in productions
+        Move = pool.get('stock.move')
+        Move.write([m for p in productions
                 for m in p.inputs
                 if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('done')
-    def done(self, ids):
+    def done(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        date_obj = pool.get('ir.date')
-        productions = self.browse(ids)
-        move_obj.write([m.id for p in productions
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+        Move.write([m for p in productions
                 for m in p.outputs
                 if m.state not in ('done', 'cancel')], {
                 'state': 'done',
                 })
-        self.write(ids, {
-                'effective_date': date_obj.today(),
+        cls.write(productions, {
+                'effective_date': Date.today(),
                 })
 
+    @classmethod
     @ModelView.button_action('production.wizard_assign')
-    def assign_wizard(self, ids):
+    def assign_wizard(self, productions):
         pass
 
+    @classmethod
     @ModelView.button
-    def assign_try(self, ids):
+    def assign_try(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        productions = self.browse(ids)
-        if move_obj.assign_try([m for p in productions
+        Move = pool.get('stock.move')
+        if Move.assign_try([m for p in productions
                     for m in p.inputs]):
-            self.assign(ids)
+            cls.assign(productions)
             return True
         else:
             return False
 
+    @classmethod
     @ModelView.button
-    def assign_force(self, ids):
+    def assign_force(cls, productions):
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        productions = self.browse(ids)
-        move_obj.write([m.id for p in productions for m in p.inputs
+        Move = pool.get('stock.move')
+        Move.write([m for p in productions for m in p.inputs
                 if m.state != 'done'], {
                 'state': 'assigned',
                 })
-        self.assign(ids)
-
-Production()
+        cls.assign(productions)
 
 
 class AssignFailed(ModelView):
     'Assign Production'
-    _name = 'production.assign.failed'
-    _description = __doc__
+    __name__ = 'production.assign.failed'
 
     moves = fields.Many2Many('stock.move', None, None, 'Moves', readonly=True)
 
-    def default_moves(self):
+    @staticmethod
+    def default_moves():
         pool = Pool()
-        production_obj = pool.get('production')
+        Production = pool.get('production')
         production_id = Transaction().context.get('active_id')
         if not production_id:
             return []
-        production = production_obj.browse(production_id)
+        production = Production(production_id)
         return [m.id for m in production.inputs if m.state == 'draft']
-
-AssignFailed()
 
 
 class Assign(Wizard):
     'Assign Production'
-    _name = 'production.assign'
+    __name__ = 'production.assign'
 
     start = StateTransition()
     failed = StateView('production.assign.failed',
@@ -673,20 +597,20 @@ class Assign(Wizard):
             ])
     force = StateTransition()
 
-    def transition_start(self, session):
+    def transition_start(self):
         pool = Pool()
-        production_obj = pool.get('production')
+        Production = pool.get('production')
 
-        if production_obj.assign_try([Transaction().context['active_id']]):
+        if Production.assign_try(
+                [Production(Transaction().context['active_id'])]):
             return 'end'
         else:
             return 'failed'
 
-    def transition_force(self, session):
+    def transition_force(self):
         pool = Pool()
-        production_obj = pool.get('production')
+        Production = pool.get('production')
 
-        production_obj.assign_force([Transaction().context['active_id']])
+        Production.assign_force(
+            [Production(Transaction().context['active_id'])])
         return 'end'
-
-Assign()
