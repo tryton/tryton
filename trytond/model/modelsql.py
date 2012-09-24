@@ -691,7 +691,7 @@ class ModelSQL(ModelStorage):
                     obj = pool.get(model_name)
                     record2 = obj.read(record_id, fields_related[field])
                     del record2['id']
-                    fields_related2values[field][record_id] = record2
+                    fields_related2values[field][record[field]] = record2
 
         if to_del or fields_related.keys() or datetime_fields:
             for record in res:
@@ -717,7 +717,7 @@ class ModelSQL(ModelStorage):
                                     continue
                                 record[field + '.' + related] = \
                                         fields_related2values[field][
-                                                record_id][related]
+                                            record[field]][related]
                 for field in to_del:
                     del record[field]
 
