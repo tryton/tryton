@@ -1,66 +1,61 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
 import datetime
-from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Template']
+__metaclass__ = PoolMeta
 
 
-class Template(ModelSQL, ModelView):
-    _name = "product.template"
+class Template:
+    __name__ = 'product.template'
 
-    def __init__(self):
-        super(Template, self).__init__()
+    @classmethod
+    def __setup__(cls):
+        super(Template, cls).__setup__()
         new_sel = ('fifo', 'FIFO')
-        if new_sel not in self.cost_price_method.selection:
-            self.cost_price_method = copy.copy(self.cost_price_method)
-            self.cost_price_method.selection.append(new_sel)
-            self._reset_columns()
+        if new_sel not in cls.cost_price_method.selection:
+            cls.cost_price_method.selection.append(new_sel)
 
-    def get_fifo_move(self, template_id, quantity=0.0):
+    def get_fifo_move(self, quantity=0.0):
         '''
         Return a list of (move, qty) where move is the move to be
         consumed and qty is the quantity (in the product default uom)
         to be consumed on this move. The list contains the "first in"
         moves for the given quantity.
-
-        :param template_id: the product template id
-        :param quantity: the quantity to be removed from the stock
-        :return: list of (move, qty) where move is a browse record,
-        qty is a float
         '''
         pool = Pool()
-        move_obj = pool.get('stock.move')
-        uom_obj = pool.get('product.uom')
-        location_obj = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
 
-        locations = location_obj.search([
+        locations = Location.search([
             ('type', '=', 'storage'),
             ])
         stock_date_end = datetime.date.today()
-
-        with Transaction().set_context(locations=locations,
+        location_ids = [l.id for l in locations]
+        with Transaction().set_context(locations=location_ids,
                 stock_date_end=stock_date_end):
-            template = self.browse(template_id)
+            template = Template(self.id)
         offset = 0
         limit = Transaction().cursor.IN_MAX
         avail_qty = template.quantity
         fifo_moves = []
 
         while avail_qty > 0.0:
-            move_ids = move_obj.search([
+            moves = Move.search([
                 ('product.template.id', '=', template.id),
                 ('state', '=', 'done'),
                 ('from_location.type', '=', 'supplier'),
                 ], offset=offset, limit=limit,
                 order=[('effective_date', 'DESC'), ('id', 'DESC')])
-            if not move_ids:
+            if not moves:
                 break
             offset += limit
 
-            for move in move_obj.browse(move_ids):
-                qty = uom_obj.compute_qty(move.uom,
+            for move in moves:
+                qty = Uom.compute_qty(move.uom,
                         move.quantity - move.fifo_quantity,
                         template.default_uom, round=False)
                 avail_qty -= qty
@@ -76,5 +71,3 @@ class Template(ModelSQL, ModelView):
 
         fifo_moves.reverse()
         return fifo_moves
-
-Template()
