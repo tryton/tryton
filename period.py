@@ -6,11 +6,12 @@ from trytond.pyson import Equal, Eval, If, In, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Period', 'Cache']
+
 
 class Period(ModelSQL, ModelView):
     'Stock Period'
-    _name = 'stock.period'
-    _description = __doc__
+    __name__ = 'stock.period'
     _rec_name = 'date'
     date = fields.Date('Date', required=True, states={
         'readonly': Equal(Eval('state'), 'closed'),
@@ -26,15 +27,16 @@ class Period(ModelSQL, ModelView):
         ('closed', 'Closed'),
         ], 'State', select=True, readonly=True)
 
-    def __init__(self):
-        super(Period, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Period, cls).__setup__()
+        cls._error_messages.update({
             'close_period_future_today': ('You can not close a period '
                 'in the future or today!'),
             'close_period_assigned_move': ('You can not close a period when '
                 'there is still assigned moves!'),
         })
-        self._buttons.update({
+        cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') == 'draft',
                     },
@@ -43,68 +45,68 @@ class Period(ModelSQL, ModelView):
                     },
                 })
 
+    @classmethod
     @ModelView.button
-    def draft(self, ids):
-        cache_obj = Pool().get('stock.period.cache')
-        cache_ids = []
-        for i in xrange(0, len(ids), Transaction().cursor.IN_MAX):
-            cache_ids.append(cache_obj.search([
-                ('period', 'in', ids[i:i + Transaction().cursor.IN_MAX]),
-            ], order=[]))
-        cache_obj.delete(list(chain(*cache_ids)))
-        self.write(ids, {
-            'state': 'draft',
-        })
+    def draft(cls, periods):
+        Cache = Pool().get('stock.period.cache')
+        caches = []
+        for i in xrange(0, len(periods), Transaction().cursor.IN_MAX):
+            caches.append(Cache.search([
+                ('period', 'in', [p.id for p in
+                                periods[i:i + Transaction().cursor.IN_MAX]]),
+                        ], order=[]))
+        Cache.delete(list(chain(*caches)))
+        cls.write(periods, {
+                'state': 'draft',
+                })
 
+    @classmethod
     @ModelView.button
-    def close(self, ids):
+    def close(cls, periods):
         pool = Pool()
-        product_obj = pool.get('product.product')
-        location_obj = pool.get('stock.location')
-        cache_obj = pool.get('stock.period.cache')
-        move_obj = pool.get('stock.move')
-        date_obj = pool.get('ir.date')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Cache = pool.get('stock.period.cache')
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
 
-        location_ids = location_obj.search([
-            ('type', 'not in', ['warehouse', 'view']),
-        ], order=[])
-        today = date_obj.today()
-        periods = self.browse(ids)
+        locations = Location.search([
+                ('type', 'not in', ['warehouse', 'view']),
+                ], order=[])
+        today = Date.today()
 
         recent_date = max(period.date for period in periods)
         if recent_date >= today:
-            self.raise_user_error('close_period_future_today')
-        if move_obj.search([
-                ('state', '=', 'assigned'),
-                ['OR', [
-                    ('effective_date', '=', None),
-                    ('planned_date', '<=', recent_date),
-                ],
-                    ('effective_date', '<=', recent_date),
-                ]]):
-            self.raise_user_error('close_period_assigned_move')
+            cls.raise_user_error('close_period_future_today')
+        if Move.search([
+                    ('state', '=', 'assigned'),
+                    ['OR', [
+                            ('effective_date', '=', None),
+                            ('planned_date', '<=', recent_date),
+                            ],
+                        ('effective_date', '<=', recent_date),
+                        ]]):
+            cls.raise_user_error('close_period_assigned_move')
 
         for period in periods:
             with Transaction().set_context(
-                stock_date_end=period.date,
-                stock_date_start=None,
-                stock_assign=False,
-                forecast=False,
-                stock_destinations=None,
-            ):
-                pbl = product_obj.products_by_location(location_ids)
+                    stock_date_end=period.date,
+                    stock_date_start=None,
+                    stock_assign=False,
+                    forecast=False,
+                    stock_destinations=None,
+                    ):
+                pbl = Product.products_by_location([l.id for l in locations])
             for (location_id, product_id), quantity in pbl.iteritems():
-                cache_obj.create({
-                    'period': period.id,
-                    'location': location_id,
-                    'product': product_id,
-                    'internal_quantity': quantity,
+                Cache.create({
+                        'period': period.id,
+                        'location': location_id,
+                        'product': product_id,
+                        'internal_quantity': quantity,
+                        })
+        cls.write(periods, {
+                'state': 'closed',
                 })
-        self.write(ids, {
-            'state': 'closed',
-        })
-
-Period()
 
 
 class Cache(ModelSQL, ModelView):
@@ -113,9 +115,7 @@ class Cache(ModelSQL, ModelView):
 
     It is used to store cached computation of stock quantities.
     '''
-    _name = 'stock.period.cache'
-    _description = __doc__.splitlines()[0]
-
+    __name__ = 'stock.period.cache'
     period = fields.Many2One('stock.period', 'Period', required=True,
         readonly=True, select=True, ondelete='CASCADE')
     location = fields.Many2One('stock.location', 'Location', required=True,
@@ -123,5 +123,3 @@ class Cache(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product', required=True,
         readonly=True, select=True, ondelete='CASCADE')
     internal_quantity = fields.Float('Internal Quantity', readonly=True)
-
-Cache()

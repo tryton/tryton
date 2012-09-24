@@ -56,58 +56,53 @@ class StockTestCase(unittest.TestCase):
         Test Move.internal_quantity.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category_id = self.category.create({
-                'name': 'Test Move.internal_quantity',
-                })
-            kg_id, = self.uom.search([('name', '=', 'Kilogram')])
-            g_id, = self.uom.search([('name', '=', 'Gram')])
-            product_id = self.product.create({
+            category = self.category.create({
+                    'name': 'Test Move.internal_quantity',
+                    })
+            kg, = self.uom.search([('name', '=', 'Kilogram')])
+            g, = self.uom.search([('name', '=', 'Gram')])
+            product = self.product.create({
                 'name': 'Test Move.internal_quantity',
                 'type': 'goods',
-                'list_price': Decimal(0),
+                'list_price': Decimal(1),
                 'cost_price': Decimal(0),
-                'category': category_id,
+                'category': category.id,
                 'cost_price_method': 'fixed',
-                'default_uom': kg_id,
+                'default_uom': kg.id,
                 })
-            supplier_id, = self.location.search([('code', '=', 'SUP')])
-            storage_id, = self.location.search([('code', '=', 'STO')])
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            currency_id = self.company.read(company_id,
-                    ['currency'])['currency']
-            self.user.write(USER, {
-                'main_company': company_id,
-                'company': company_id,
+            supplier, = self.location.search([('code', '=', 'SUP')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            company, = self.company.search([('name', '=', 'B2CK')])
+            currency = company.currency
+            self.user.write([self.user(USER)], {
+                'main_company': company.id,
+                'company': company.id,
                 })
 
             tests = [
-                (kg_id, 10, 10),
-                (g_id, 100, 0.1),
-                (g_id, 1, 0),  # rounded
+                (kg, 10, 10),
+                (g, 100, 0.1),
+                (g, 1, 0),  # rounded
             ]
-            for uom_id, quantity, internal_quantity in tests:
-                move_id = self.move.create({
-                    'product': product_id,
-                    'uom': uom_id,
+            for uom, quantity, internal_quantity in tests:
+                move = self.move.create({
+                    'product': product.id,
+                    'uom': uom.id,
                     'quantity': quantity,
-                    'from_location': supplier_id,
-                    'to_location': storage_id,
-                    'company': company_id,
+                    'from_location': supplier.id,
+                    'to_location': storage.id,
+                    'company': company.id,
                     'unit_price': Decimal('1'),
-                    'currency': currency_id,
+                    'currency': currency.id,
                     })
-                self.assertEqual(self.move.read(move_id,
-                    ['internal_quantity'])['internal_quantity'],
-                    internal_quantity)
+                self.assertEqual(move.internal_quantity, internal_quantity)
 
-                for uom_id, quantity, internal_quantity in tests:
-                    self.move.write(move_id, {
-                        'uom': uom_id,
+                for uom, quantity, internal_quantity in tests:
+                    self.move.write([move], {
+                        'uom': uom.id,
                         'quantity': quantity,
                         })
-                    self.assertEqual(self.move.read(move_id,
-                        ['internal_quantity'])['internal_quantity'],
-                        internal_quantity)
+                    self.assertEqual(move.internal_quantity, internal_quantity)
 
     def test0020products_by_location(self):
         '''
@@ -115,113 +110,112 @@ class StockTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            category_id = self.category.create({
-                'name': 'Test products_by_location',
-                })
-            kg_id, = self.uom.search([('name', '=', 'Kilogram')])
-            g_id, = self.uom.search([('name', '=', 'Gram')])
-            product_id = self.product.create({
+            category = self.category.create({
+                    'name': 'Test products_by_location',
+                    })
+            kg, = self.uom.search([('name', '=', 'Kilogram')])
+            g, = self.uom.search([('name', '=', 'Gram')])
+            product = self.product.create({
                 'name': 'Test products_by_location',
                 'type': 'goods',
                 'list_price': Decimal(0),
                 'cost_price': Decimal(0),
-                'category': category_id,
+                'category': category.id,
                 'cost_price_method': 'fixed',
-                'default_uom': kg_id,
+                'default_uom': kg.id,
                 })
-            supplier_id, = self.location.search([('code', '=', 'SUP')])
-            customer_id, = self.location.search([('code', '=', 'CUS')])
-            storage_id, = self.location.search([('code', '=', 'STO')])
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            currency_id = self.company.read(company_id,
-                    ['currency'])['currency']
-            self.user.write(USER, {
-                'main_company': company_id,
-                'company': company_id,
+            supplier, = self.location.search([('code', '=', 'SUP')])
+            customer, = self.location.search([('code', '=', 'CUS')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            company, = self.company.search([('name', '=', 'B2CK')])
+            currency = company.currency
+            self.user.write([self.user(USER)], {
+                'main_company': company.id,
+                'company': company.id,
                 })
 
             today = datetime.date.today()
 
             self.move.create({
-                'product': product_id,
-                'uom': kg_id,
+                'product': product.id,
+                'uom': kg.id,
                 'quantity': 5,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=-5),
                 'effective_date': today + relativedelta(days=-5),
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': kg_id,
+                'product': product.id,
+                'uom': kg.id,
                 'quantity': 1,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=-4),
                 'state': 'draft',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': kg_id,
+                'product': product.id,
+                'uom': kg.id,
                 'quantity': 1,
-                'from_location': storage_id,
-                'to_location': customer_id,
+                'from_location': storage.id,
+                'to_location': customer.id,
                 'planned_date': today,
                 'effective_date': today,
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': kg_id,
+                'product': product.id,
+                'uom': kg.id,
                 'quantity': 1,
-                'from_location': storage_id,
-                'to_location': customer_id,
+                'from_location': storage.id,
+                'to_location': customer.id,
                 'planned_date': today,
                 'state': 'draft',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': kg_id,
+                'product': product.id,
+                'uom': kg.id,
                 'quantity': 2,
-                'from_location': storage_id,
-                'to_location': customer_id,
+                'from_location': storage.id,
+                'to_location': customer.id,
                 'planned_date': today + relativedelta(days=5),
                 'state': 'draft',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': kg_id,
+                'product': product.id,
+                'uom': kg.id,
                 'quantity': 5,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=7),
                 'state': 'draft',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
 
             products_by_location = partial(self.product.products_by_location,
-                    [storage_id], [product_id])
+                    [storage.id], [product.id])
             products_by_location_zero = partial(
                     self.product.products_by_location,
-                    [storage_id], [product_id], skip_zero=False)
+                    [storage.id], [product.id], skip_zero=False)
 
             tests = [
                 ({'stock_date_end': today + relativedelta(days=-6),
@@ -284,10 +278,10 @@ class StockTestCase(unittest.TestCase):
                         if not quantity:
                             self.assertEqual(products_by_location(), {})
                             self.assertEqual(products_by_location_zero(),
-                                    {(storage_id, product_id): quantity})
+                                    {(storage.id, product.id): quantity})
                         else:
                             self.assertEqual(products_by_location(),
-                                    {(storage_id, product_id): quantity})
+                                    {(storage.id, product.id): quantity})
 
             test_products_by_location()
 
@@ -300,27 +294,27 @@ class StockTestCase(unittest.TestCase):
             ]
 
             self.move.create({
-                'product': product_id,
-                'uom': g_id,
+                'product': product.id,
+                'uom': g.id,
                 'quantity': 1,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=-5),
                 'effective_date': today + relativedelta(days=-5),
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             # Nothing should change when adding a small quantity
             test_products_by_location()
 
             for period_date in periods:
-                period_id = self.period.create({
+                period = self.period.create({
                     'date': period_date,
-                    'company': company_id,
-                })
-                self.period.close([period_id])
+                    'company': company.id,
+                        })
+                self.period.close([period])
                 test_products_by_location()
 
     def test0030period(self):
@@ -328,144 +322,139 @@ class StockTestCase(unittest.TestCase):
         Test period.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            category_id = self.category.create({
-                'name': 'Test period',
-                })
-            unit_id, = self.uom.search([('name', '=', 'Unit')])
-            product_id = self.product.create({
+            category = self.category.create({
+                    'name': 'Test period',
+                    })
+            unit, = self.uom.search([('name', '=', 'Unit')])
+            product = self.product.create({
                 'name': 'Test period',
                 'type': 'goods',
-                'category': category_id,
+                'category': category.id,
                 'cost_price_method': 'fixed',
-                'default_uom': unit_id,
+                'default_uom': unit.id,
                 'list_price': Decimal(0),
                 'cost_price': Decimal(0),
                 })
-            supplier_id, = self.location.search([('code', '=', 'SUP')])
-            customer_id, = self.location.search([('code', '=', 'CUS')])
-            storage_id, = self.location.search([('code', '=', 'STO')])
-            company_id, = self.company.search([('name', '=', 'B2CK')])
-            currency_id = self.company.read(company_id,
-                    ['currency'])['currency']
-            self.user.write(USER, {
-                'main_company': company_id,
-                'company': company_id,
+            supplier, = self.location.search([('code', '=', 'SUP')])
+            customer, = self.location.search([('code', '=', 'CUS')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            company, = self.company.search([('name', '=', 'B2CK')])
+            currency = company.currency
+            self.user.write([self.user(USER)], {
+                'main_company': company.id,
+                'company': company.id,
                 })
 
             today = datetime.date.today()
 
             self.move.create({
-                'product': product_id,
-                'uom': unit_id,
+                'product': product.id,
+                'uom': unit.id,
                 'quantity': 10,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=-5),
                 'effective_date': today + relativedelta(days=-5),
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': unit_id,
+                'product': product.id,
+                'uom': unit.id,
                 'quantity': 15,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=-4),
                 'effective_date': today + relativedelta(days=-4),
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
             self.move.create({
-                'product': product_id,
-                'uom': unit_id,
+                'product': product.id,
+                'uom': unit.id,
                 'quantity': 5,
-                'from_location': storage_id,
-                'to_location': customer_id,
+                'from_location': storage.id,
+                'to_location': customer.id,
                 'planned_date': today + relativedelta(days=-3),
                 'effective_date': today + relativedelta(days=-3),
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
 
             tests = [
                 (-5, {
-                    supplier_id: -10,
-                    storage_id: 10,
+                    supplier.id: -10,
+                    storage.id: 10,
                 }),
                 (-3, {
-                    supplier_id: -25,
-                    storage_id: 20,
-                    customer_id: 5,
+                    supplier.id: -25,
+                    storage.id: 20,
+                    customer.id: 5,
                 })
             ]
 
             for days, quantities in tests:
-                period_id = self.period.create({
+                period = self.period.create({
                     'date': today + relativedelta(days=days),
-                    'company': company_id,
+                    'company': company.id,
                 })
-                self.period.close([period_id])
+                self.period.close([period])
 
-                period = self.period.read(period_id, ['state', 'caches'])
-                self.assertEqual(period['state'], 'closed')
+                self.assertEqual(period.state, 'closed')
 
-                cache_ids = period['caches']
-                caches = self.cache.read(cache_ids,
-                    ['location', 'product', 'internal_quantity'])
+                caches = period.caches
                 for cache in caches:
-                    location_id = cache['location']
-                    self.assertEqual(cache['product'], product_id)
-                    self.assertEqual(cache['internal_quantity'],
-                        quantities[location_id])
+                    self.assertEqual(cache.product, product)
+                    self.assertEqual(cache.internal_quantity,
+                        quantities[cache.location.id])
 
             # Test check_period_closed
             self.move.create({
-                'product': product_id,
-                'uom': unit_id,
+                'product': product.id,
+                'uom': unit.id,
                 'quantity': 10,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today,
                 'effective_date': today,
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
 
             self.assertRaises(Exception, self.move.create, {
-                'product': product_id,
-                'uom': unit_id,
+                'product': product.id,
+                'uom': unit.id,
                 'quantity': 10,
-                'from_location': supplier_id,
-                'to_location': storage_id,
+                'from_location': supplier.id,
+                'to_location': storage.id,
                 'planned_date': today + relativedelta(days=-5),
                 'effective_date': today + relativedelta(days=-5),
                 'state': 'done',
-                'company': company_id,
+                'company': company.id,
                 'unit_price': Decimal('1'),
-                'currency': currency_id,
+                'currency': currency.id,
                 })
 
             # Test close period check
-            period_id = self.period.create({
+            period = self.period.create({
                 'date': today,
-                'company': company_id,
+                'company': company.id,
             })
-            self.assertRaises(Exception, self.period.close, [period_id])
+            self.assertRaises(Exception, self.period.close, [period])
 
-            period_id = self.period.create({
+            period = self.period.create({
                 'date': today + relativedelta(days=1),
-                'company': company_id,
+                'company': company.id,
             })
-            self.assertRaises(Exception, self.period.close, [period_id])
+            self.assertRaises(Exception, self.period.close, [period])
 
 
 def doctest_dropdb(test):

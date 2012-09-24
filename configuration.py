@@ -3,12 +3,12 @@
 from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.pyson import Eval, Get
 
+__all__ = ['Configuration']
+
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
     'Stock Configuration'
-    _name = 'stock.configuration'
-    _description = __doc__
-
+    __name__ = 'stock.configuration'
     shipment_in_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Supplier Shipment Sequence', domain=[
                 ('company', 'in',
@@ -39,5 +39,3 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                     [Get(Eval('context', {}), 'company'), None]),
                 ('code', '=', 'stock.shipment.internal'),
                 ], required=True))
-
-Configuration()

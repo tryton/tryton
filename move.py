@@ -8,6 +8,8 @@ from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Move']
+
 STATES = {
     'readonly': In(Eval('state'), ['cancel', 'assigned', 'done']),
 }
@@ -16,8 +18,7 @@ DEPENDS = ['state']
 
 class Move(ModelSQL, ModelView):
     "Stock Move"
-    _name = 'stock.move'
-    _description = __doc__
+    __name__ = 'stock.move'
     _order_name = 'product'
     product = fields.Many2One("product.product", "Product", required=True,
         select=True, states=STATES,
@@ -28,7 +29,7 @@ class Move(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category',
             on_change_with=['product']),
-        'get_product_uom_category')
+        'on_change_with_product_uom_category')
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
         domain=[
             ('category', '=', Eval('product_uom_category')),
@@ -37,7 +38,7 @@ class Move(ModelSQL, ModelView):
             'from_location', 'to_location'],
         depends=['state', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['uom']), 'get_unit_digits')
+        on_change_with=['uom']), 'on_change_with_unit_digits')
     quantity = fields.Float("Quantity", required=True,
         digits=(16, Eval('unit_digits', 2)), states=STATES,
         depends=['state', 'unit_digits'])
@@ -107,11 +108,12 @@ class Move(ModelSQL, ModelView):
         depends=['unit_price_required', 'state'])
     unit_price_required = fields.Function(fields.Boolean('Unit Price Required',
         on_change_with=['from_location', 'to_location']),
-        'get_unit_price_required')
+        'on_change_with_unit_price_required')
 
-    def __init__(self):
-        super(Move, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Move, cls).__setup__()
+        cls._sql_constraints += [
             ('check_move_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
             ('check_move_internal_qty_pos',
@@ -133,11 +135,11 @@ class Move(ModelSQL, ModelView):
                         '<= 1)',
                 'Move can be on only one Shipment'),
         ]
-        self._constraints += [
+        cls._constraints += [
             ('check_period_closed', 'period_closed'),
         ]
-        self._order[0] = ('id', 'DESC')
-        self._error_messages.update({
+        cls._order[0] = ('id', 'DESC')
+        cls._error_messages.update({
             'set_state_draft': 'You can not set state to draft!',
             'set_state_assigned': 'You can not set state to assigned!',
             'set_state_done': 'You can not set state to done!',
@@ -148,10 +150,11 @@ class Move(ModelSQL, ModelView):
                 'in the state: "Assigned", "Done" or "Cancel"'),
             })
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.drop_constraint('check_packing')
         for suffix in ('in', 'out', 'in_return', 'out_return', 'internal'):
             old_column = 'packing_%s' % suffix
@@ -164,248 +167,190 @@ class Move(ModelSQL, ModelView):
         # Migration from 1.8: new field internal_quantity
         internal_quantity_exist = table.column_exist('internal_quantity')
 
-        super(Move, self).init(module_name)
+        super(Move, cls).__register__(module_name)
 
         # Migration from 1.8: fill new field internal_quantity
         if not internal_quantity_exist:
             offset = 0
             limit = cursor.IN_MAX
-            move_ids = True
-            while move_ids:
-                move_ids = self.search([], offset=offset, limit=limit)
+            moves = True
+            while moves:
+                moves = cls.search([], offset=offset, limit=limit)
                 offset += limit
-                for move in self.browse(move_ids):
-                    internal_quantity = self._get_internal_quantity(
+                for move in moves:
+                    internal_quantity = cls._get_internal_quantity(
                             move.quantity, move.uom, move.product)
-                    self.write(move.id, {
+                    cls.write([move], {
                         'internal_quantity': internal_quantity,
                         })
-            table = TableHandler(cursor, self, module_name)
+            table = TableHandler(cursor, cls, module_name)
             table.not_null_action('internal_quantity', action='add')
 
         # Migration from 1.0 check_packing_in_out has been removed
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.drop_constraint('check_packing_in_out')
 
         # Add index on create_date
         table.index_action('create_date', action='add')
 
-    def default_planned_date(self):
+    @staticmethod
+    def default_planned_date():
         return Transaction().context.get('planned_date')
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_currency(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency():
+        Company = Pool().get('company.company')
         company = Transaction().context.get('company')
         if company:
-            company = company_obj.browse(company)
+            company = Company(company)
             return company.currency.id
 
-    def default_unit_digits(self):
+    @staticmethod
+    def default_unit_digits():
         return 2
 
-    def on_change_with_unit_digits(self, vals):
-        uom_obj = Pool().get('product.uom')
-        if vals.get('uom'):
-            uom = uom_obj.browse(vals['uom'])
-            return uom.digits
+    def on_change_with_unit_digits(self, name=None):
+        if self.uom:
+            return self.uom.digits
         return 2
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for move in self.browse(ids):
-            res[move.id] = move.uom.digits
-        return res
-
-    def on_change_product(self, vals):
+    def on_change_product(self):
         pool = Pool()
-        product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
-        currency_obj = pool.get('currency.currency')
-        company_obj = pool.get('company.company')
-        location_obj = pool.get('stock.location')
+        Uom = pool.get('product.uom')
+        Currency = pool.get('currency.currency')
 
         res = {
             'unit_price': Decimal('0.0'),
-        }
-        if vals.get('product'):
-            product = product_obj.browse(vals['product'])
-            res['uom'] = product.default_uom.id
-            res['uom.rec_name'] = product.default_uom.rec_name
-            res['unit_digits'] = product.default_uom.digits
-            from_location, to_location = None, None
-            if vals.get('from_location'):
-                from_location = location_obj.browse(vals['from_location'])
-            if vals.get('to_location'):
-                to_location = location_obj.browse(vals['to_location'])
+            }
+        if self.product:
+            res['uom'] = self.product.default_uom.id
+            res['uom.rec_name'] = self.product.default_uom.rec_name
+            res['unit_digits'] = self.product.default_uom.digits
             unit_price = None
-            if from_location and from_location.type in ('supplier',
+            if self.from_location and self.from_location.type in ('supplier',
                     'production'):
-                unit_price = product.cost_price
-            elif to_location and to_location.type == 'customer':
-                unit_price = product.list_price
+                unit_price = self.product.cost_price
+            elif self.to_location and self.to_location.type == 'customer':
+                unit_price = self.product.list_price
             if unit_price:
-                if vals.get('uom') and vals['uom'] != product.default_uom.id:
-                    uom = uom_obj.browse(vals['uom'])
-                    unit_price = uom_obj.compute_price(product.default_uom,
-                            unit_price, uom)
-                if vals.get('currency') and vals.get('company'):
-                    currency = currency_obj.browse(vals['currency'])
-                    company = company_obj.browse(vals['company'])
-                    unit_price = currency_obj.compute(company.currency,
-                            unit_price, currency, round=False)
+                if self.uom != self.product.default_uom:
+                    unit_price = Uom.compute_price(self.product.default_uom,
+                        unit_price, self.uom)
+                if self.currency and self.company:
+                    unit_price = Currency.compute(self.company.currency,
+                        unit_price, self.currency, round=False)
                 res['unit_price'] = unit_price
         return res
 
-    def on_change_with_product_uom_category(self, values):
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        if values.get('product'):
-            product = product_obj.browse(values['product'])
-            return product.default_uom_category.id
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
-    def get_product_uom_category(self, ids, name):
-        categories = {}
-        for move in self.browse(ids):
-            categories[move.id] = move.product.default_uom_category.id
-        return categories
-
-    def on_change_uom(self, vals):
+    def on_change_uom(self):
         pool = Pool()
-        product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
-        currency_obj = pool.get('currency.currency')
-        company_obj = pool.get('company.company')
-        location_obj = pool.get('stock.location')
+        Uom = pool.get('product.uom')
+        Currency = pool.get('currency.currency')
 
         res = {
             'unit_price': Decimal('0.0'),
-        }
-        if vals.get('product'):
-            product = product_obj.browse(vals['product'])
-            to_location = None
-            if vals.get('to_location'):
-                to_location = location_obj.browse(vals['to_location'])
-            if to_location and to_location.type == 'storage':
-                unit_price = product.cost_price
-                if vals.get('uom') and vals['uom'] != product.default_uom.id:
-                    uom = uom_obj.browse(vals['uom'])
-                    unit_price = uom_obj.compute_price(product.default_uom,
-                            unit_price, uom)
-                if vals.get('currency') and vals.get('company'):
-                    currency = currency_obj.browse(vals['currency'])
-                    company = company_obj.browse(vals['company'])
-                    unit_price = currency_obj.compute(company.currency,
-                            unit_price, currency, round=False)
+            }
+        if self.product:
+            if self.to_location and self.to_location.type == 'storage':
+                unit_price = self.product.cost_price
+                if self.uom and self.uom != self.product.default_uom:
+                    unit_price = Uom.compute_price(self.product.default_uom,
+                        unit_price, self.uom)
+                if self.currency and self.company:
+                    unit_price = Currency.compute(self.company.currency,
+                        unit_price, self.currency, round=False)
                 res['unit_price'] = unit_price
         return res
 
-    def on_change_with_unit_price_required(self, vals):
-        location_obj = Pool().get('stock.location')
-        if vals.get('from_location'):
-            from_location = location_obj.browse(vals['from_location'])
-            if from_location.type in ('supplier', 'production'):
-                return True
-        if vals.get('to_location'):
-            to_location = location_obj.browse(vals['to_location'])
-            if to_location.type in ('customer', 'production'):
-                return True
+    def on_change_with_unit_price_required(self, name=None):
+        if (self.from_location
+                and self.from_location.type in ('supplier', 'production')):
+            return True
+        if (self.to_location
+                and self.to_location.type == 'customer'):
+            return True
         return False
 
-    def get_unit_price_required(self, ids, name):
-        res = {}
-        for move in self.browse(ids):
-            res[move.id] = False
-            if move.from_location.type in ('supplier', 'production'):
-                res[move.id] = True
-            if move.to_location.type == 'customer':
-                res[move.id] = True
-        return res
-
-    def check_period_closed(self, ids):
-        period_obj = Pool().get('stock.period')
-        period_ids = period_obj.search([
-            ('state', '=', 'closed'),
-        ], order=[('date', 'DESC')], limit=1)
-        if period_ids:
-            period, = period_obj.browse(period_ids)
-            for move in self.browse(ids):
+    @classmethod
+    def check_period_closed(cls, moves):
+        Period = Pool().get('stock.period')
+        periods = Period.search([
+                ('state', '=', 'closed'),
+                ], order=[('date', 'DESC')], limit=1)
+        if periods:
+            period, = periods
+            for move in moves:
                 date = (move.effective_date if move.effective_date
                     else move.planned_date)
                 if date and date < period.date:
                     return False
         return True
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        moves = self.browse(ids)
-        for m in moves:
-            res[m.id] = ("%s%s %s"
-                % (m.quantity, m.uom.symbol, m.product.rec_name))
-        return res
+    def get_rec_name(self, name):
+        return ("%s%s %s"
+            % (self.quantity, self.uom.symbol, self.product.rec_name))
 
-    def search_rec_name(self, name, clause):
+    @classmethod
+    def search_rec_name(cls, name, clause):
         return [('product',) + clause[1:]]
 
-    def _update_product_cost_price(self, product_id, quantity, uom, unit_price,
+    @classmethod
+    def _update_product_cost_price(cls, product_id, quantity, uom, unit_price,
             currency, company, date):
         """
-        Update the cost price on the given product
-
-        :param product_id: the id of the product
-        :param quantity: the quantity of the product, positive if incoming and
-                negative if outgoing
-        :param uom: the uom id or a BrowseRecord of the uom
-        :param unit_price: the unit price of the product
-        :param currency: the currency of the unit price
-        :param company: the company id ot a BrowseRecord of the company
-        :param date: the date for the currency rate calculation
+        Update the cost price on the given product.
+        The quantity must be positive if incoming and negative if outgoing.
+        The date is for the currency rate calculation.
         """
         pool = Pool()
-        uom_obj = pool.get('product.uom')
-        product_obj = pool.get('product.product')
-        product_template_obj = pool.get('product.template')
-        location_obj = pool.get('stock.location')
-        currency_obj = pool.get('currency.currency')
-        company_obj = pool.get('company.company')
-        date_obj = pool.get('ir.date')
+        Uom = pool.get('product.uom')
+        Product = pool.get('product.product')
+        ProductTemplate = pool.get('product.template')
+        Location = pool.get('stock.location')
+        Currency = pool.get('currency.currency')
+        Company = pool.get('company.company')
+        Date = pool.get('ir.date')
 
         if isinstance(uom, (int, long)):
-            uom = uom_obj.browse(uom)
+            uom = Uom(uom)
         if isinstance(currency, (int, long)):
-            currency = currency_obj.browse(currency)
+            currency = Currency(currency)
         if isinstance(company, (int, long)):
-            company = company_obj.browse(company)
+            company = Company(company)
 
         context = {}
-        context['locations'] = location_obj.search([
-            ('type', '=', 'storage'),
-            ])
-        context['stock_date_end'] = date_obj.today()
+        context['locations'] = Location.search([
+                ('type', '=', 'storage'),
+                ])
+        context['stock_date_end'] = Date.today()
         with Transaction().set_context(context):
-            product = product_obj.browse(product_id)
-        qty = uom_obj.compute_qty(uom, quantity, product.default_uom)
+            product = Product(product_id)
+        qty = Uom.compute_qty(uom, quantity, product.default_uom)
 
         qty = Decimal(str(qty))
-        if hasattr(product_obj, 'cost_price'):
+        if hasattr(Product, 'cost_price'):
             product_qty = product.quantity
         else:
             product_qty = product.template.quantity
         product_qty = Decimal(str(product_qty))
         # convert wrt currency
         with Transaction().set_context(date=date):
-            unit_price = currency_obj.compute(currency.id, unit_price,
-                    company.currency.id, round=False)
+            unit_price = Currency.compute(currency, unit_price,
+                company.currency, round=False)
         # convert wrt to the uom
-        unit_price = uom_obj.compute_price(uom, unit_price,
-                product.default_uom)
+        unit_price = Uom.compute_price(uom, unit_price, product.default_uom)
         if product_qty + qty != Decimal('0.0'):
             new_cost_price = (
                 (product.cost_price * product_qty) + (unit_price * qty)
@@ -413,77 +358,77 @@ class Move(ModelSQL, ModelView):
         else:
             new_cost_price = product.cost_price
 
-        if hasattr(product_obj, 'cost_price'):
-            digits = product_obj.cost_price.digits
+        if hasattr(Product, 'cost_price'):
+            digits = Product.cost_price.digits
         else:
-            digits = product_template_obj.cost_price.digits
+            digits = ProductTemplate.cost_price.digits
         new_cost_price = new_cost_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
 
         with Transaction().set_user(0, set_context=True):
-            product_obj.write(product.id, {
-                'cost_price': new_cost_price,
-                })
+            Product.write([product], {
+                    'cost_price': new_cost_price,
+                    })
 
-    def _get_internal_quantity(self, quantity, uom, product):
-        uom_obj = Pool().get('product.uom')
-        internal_quantity = uom_obj.compute_qty(uom, quantity,
-                product.default_uom, round=True)
+    @staticmethod
+    def _get_internal_quantity(quantity, uom, product):
+        Uom = Pool().get('product.uom')
+        internal_quantity = Uom.compute_qty(uom, quantity,
+            product.default_uom, round=True)
         return internal_quantity
 
-    def create(self, vals):
+    @classmethod
+    def create(cls, vals):
         pool = Pool()
-        location_obj = pool.get('stock.location')
-        product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
-        date_obj = pool.get('ir.date')
+        Location = pool.get('stock.location')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Date = pool.get('ir.date')
 
-        today = date_obj.today()
+        today = Date.today()
         vals = vals.copy()
         effective_date = vals.get('effective_date') or today
 
-        product = product_obj.browse(vals['product'])
+        product = Product(vals['product'])
         if vals.get('state') == 'done':
             vals['effective_date'] = effective_date
-            currency_id = vals.get('currency', self.default_currency())
-            company_id = vals.get('company', self.default_company())
-            from_location = location_obj.browse(vals['from_location'])
-            to_location = location_obj.browse(vals['to_location'])
+            currency_id = vals.get('currency', cls.default_currency())
+            company_id = vals.get('company', cls.default_company())
+            from_location = Location(vals['from_location'])
+            to_location = Location(vals['to_location'])
             if (from_location.type in ('supplier', 'production')
                     and to_location.type == 'storage'
                     and product.cost_price_method == 'average'):
-                self._update_product_cost_price(vals['product'],
+                cls._update_product_cost_price(vals['product'],
                         vals['quantity'], vals['uom'], vals['unit_price'],
                         currency_id, company_id, effective_date)
             if (to_location.type == 'supplier'
                     and from_location.type == 'storage'
                     and product.cost_price_method == 'average'):
-                self._update_product_cost_price(vals['product'],
+                cls._update_product_cost_price(vals['product'],
                         -vals['quantity'], vals['uom'], vals['unit_price'],
                         currency_id, company_id, effective_date)
             if not vals.get('cost_price'):
                 # Re-read product to get the updated cost_price
-                product = product_obj.browse(vals['product'])
+                product = Product(vals['product'])
                 vals['cost_price'] = product.cost_price
 
         elif vals.get('state') == 'assigned':
             vals['effective_date'] = effective_date
 
-        uom = uom_obj.browse(vals['uom'])
-        internal_quantity = self._get_internal_quantity(vals['quantity'],
-                uom, product)
+        uom = Uom(vals['uom'])
+        internal_quantity = cls._get_internal_quantity(vals['quantity'],
+            uom, product)
         vals['internal_quantity'] = internal_quantity
-        return super(Move, self).create(vals)
+        return super(Move, cls).create(vals)
 
-    def write(self, ids, vals):
-        date_obj = Pool().get('ir.date')
+    @classmethod
+    def write(cls, moves, vals):
+        Date = Pool().get('ir.date')
 
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        today = date_obj.today()
+        today = Date.today()
         effective_date = vals.get('effective_date') or today
 
-        moves = self.browse(ids)
         if 'state' in vals:
             for move in moves:
                 if vals['state'] == 'cancel':
@@ -492,41 +437,41 @@ class Move(ModelSQL, ModelView):
                             and move.to_location.type == 'storage'
                             and move.state != 'cancel'
                             and move.product.cost_price_method == 'average'):
-                        self._update_product_cost_price(move.product.id,
+                        cls._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, today)
                     if (move.to_location.type == 'supplier'
                             and move.from_location.type == 'storage'
                             and move.state != 'cancel'
                             and move.product.cost_price_method == 'average'):
-                        self._update_product_cost_price(move.product.id,
+                        cls._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, today)
 
                 elif vals['state'] == 'draft':
                     if move.state == 'done':
-                        self.raise_user_error('set_state_draft')
+                        cls.raise_user_error('set_state_draft')
                 elif vals['state'] == 'assigned':
                     if move.state in ('cancel', 'done'):
-                        self.raise_user_error('set_state_assigned')
+                        cls.raise_user_error('set_state_assigned')
                     vals['effective_date'] = effective_date
                 elif vals['state'] == 'done':
                     if move.state in ('cancel'):
-                        self.raise_user_error('set_state_done')
+                        cls.raise_user_error('set_state_done')
                     vals['effective_date'] = effective_date
 
                     if (move.from_location.type in ('supplier', 'production')
                             and move.to_location.type == 'storage'
                             and move.state != 'done'
                             and move.product.cost_price_method == 'average'):
-                        self._update_product_cost_price(move.product.id,
+                        cls._update_product_cost_price(move.product.id,
                                 move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
                     if (move.to_location.type == 'supplier'
                             and move.from_location.type == 'storage'
                             and move.state != 'done'
                             and move.product.cost_price_method == 'average'):
-                        self._update_product_cost_price(move.product.id,
+                        cls._update_product_cost_price(move.product.id,
                                 -move.quantity, move.uom, move.unit_price,
                                 move.currency, move.company, effective_date)
 
@@ -535,54 +480,49 @@ class Move(ModelSQL, ModelView):
                 'currency'), False):
             for move in moves:
                 if move.state in ('assigned', 'done', 'cancel'):
-                    self.raise_user_error('modify_assigned_done_cancel')
+                    cls.raise_user_error('modify_assigned_done_cancel')
         if reduce(lambda x, y: x or y in vals,
                 ('planned_date', 'effective_date'), False):
             for move in moves:
                 if move.state in ('done', 'cancel'):
-                    self.raise_user_error('modify_assigned_done_cancel')
+                    cls.raise_user_error('modify_assigned_done_cancel')
 
-        res = super(Move, self).write(ids, vals)
+        super(Move, cls).write(moves, vals)
 
         if vals.get('state', '') == 'done':
-            #Re-read the move because cost_price has been updated
-            for move in self.browse(ids):
+            for move in moves:
                 if not move.cost_price:
-                    self.write(move.id, {
-                        'cost_price': move.product.cost_price,
-                        })
+                    cls.write([move], {
+                            'cost_price': move.product.cost_price,
+                            })
 
-        for move in self.browse(ids):
-            internal_quantity = self._get_internal_quantity(move.quantity,
+        for move in moves:
+            internal_quantity = cls._get_internal_quantity(move.quantity,
                     move.uom, move.product)
             if internal_quantity != move.internal_quantity:
                 # Use super to avoid infinite loop
-                super(Move, self).write(move.id, {
-                    'internal_quantity': internal_quantity,
-                    })
-        return res
+                super(Move, cls).write([move], {
+                        'internal_quantity': internal_quantity,
+                        })
 
-    def delete(self, ids):
-        for move in self.browse(ids):
+    @classmethod
+    def delete(cls, moves):
+        for move in moves:
             if move.state not in  ('draft', 'cancel'):
-                self.raise_user_error('del_draft_cancel')
-        return super(Move, self).delete(ids)
+                cls.raise_user_error('del_draft_cancel')
+        super(Move, cls).delete(moves)
 
-    def pick_product(self, move, location_quantities):
+    def pick_product(self, location_quantities):
         """
         Pick the product across the location. Naive (fast) implementation.
-
-        :param move: a BrowseRecord of stock.move
-        :param location_quantities: a list of tuple (location, available_qty)
-            where location is a BrowseRecord of stock.location.
-        :return: a list of tuple (location, quantity) for quantities
-            that can be picked
+        Return a list of tuple (location, quantity) for quantities that can be
+        picked.
         """
         to_pick = []
-        needed_qty = move.quantity
+        needed_qty = self.quantity
         for location, available_qty in location_quantities.iteritems():
             # Ignore available_qty when too small
-            if available_qty < move.uom.rounding:
+            if available_qty < self.uom.rounding:
                 continue
             if needed_qty <= available_qty:
                 to_pick.append((location, needed_qty))
@@ -591,35 +531,35 @@ class Move(ModelSQL, ModelView):
                 to_pick.append((location, available_qty))
                 needed_qty -= available_qty
         # Force assignation for consumables:
-        if move.product.consumable:
-            to_pick.append((move.from_location, needed_qty))
+        if self.product.consumable:
+            to_pick.append((self.from_location, needed_qty))
             return to_pick
         return to_pick
 
-    def assign_try(self, moves):
+    @classmethod
+    def assign_try(cls, moves):
         '''
         Try to assign moves.
         It will split the moves to assign as much possible.
-
-        :param moves: a BrowseRecordList of stock.move to assign
-        :return: True if succeed or False if not
+        Return True if succeed or False if not.
         '''
         pool = Pool()
-        product_obj = pool.get('product.product')
-        uom_obj = pool.get('product.uom')
-        date_obj = pool.get('ir.date')
-        location_obj = pool.get('stock.location')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Date = pool.get('ir.date')
+        Location = pool.get('stock.location')
 
-        Transaction().cursor.lock(self._table)
+        Transaction().cursor.lock(cls._table)
 
-        location_ids = location_obj.search([
-            ('parent', 'child_of', [x.from_location.id for x in moves]),
-            ])
+        locations = Location.search([
+                ('parent', 'child_of', [x.from_location.id for x in moves]),
+                ])
         with Transaction().set_context(
-                stock_date_end=date_obj.today(),
+                stock_date_end=Date.today(),
                 stock_assign=True):
-            pbl = product_obj.products_by_location(location_ids=location_ids,
-                    product_ids=[m.product.id for m in moves])
+            pbl = Product.products_by_location(
+                location_ids=[l.id for l in locations],
+                product_ids=[m.product.id for m in moves])
 
         success = True
         for move in moves:
@@ -627,17 +567,17 @@ class Move(ModelSQL, ModelView):
                 continue
             to_location = move.to_location
             location_qties = {}
-            child_ids = location_obj.search([
-                ('parent', 'child_of', [move.from_location.id]),
-                ])
-            for location in location_obj.browse(child_ids):
+            childs = Location.search([
+                    ('parent', 'child_of', [move.from_location.id]),
+                    ])
+            for location in childs:
                 if (location.id, move.product.id) in pbl:
-                    location_qties[location] = uom_obj.compute_qty(
+                    location_qties[location] = Uom.compute_qty(
                             move.product.default_uom,
                             pbl[(location.id, move.product.id)], move.uom,
                             round=False)
 
-            to_pick = self.pick_product(move, location_qties)
+            to_pick = move.pick_product(location_qties)
 
             picked_qties = 0.0
             for _, qty in to_pick:
@@ -646,7 +586,7 @@ class Move(ModelSQL, ModelView):
             if picked_qties < move.quantity:
                 success = False
                 first = False
-                self.write(move.id, {
+                cls.write([move], {
                     'quantity': move.quantity - picked_qties,
                     })
             else:
@@ -658,12 +598,12 @@ class Move(ModelSQL, ModelView):
                     'state': 'assigned',
                     }
                 if first:
-                    self.write(move.id, values)
+                    cls.write([move], values)
                     first = False
                 else:
-                    self.copy(move.id, default=values)
+                    cls.copy([move], default=values)
 
-                qty_default_uom = uom_obj.compute_qty(move.uom, qty,
+                qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
 
                 pbl[(from_location.id, move.product.id)] = (
@@ -673,5 +613,3 @@ class Move(ModelSQL, ModelView):
                     pbl.get((to_location.id, move.product.id), 0.0)
                     + qty_default_uom)
         return success
-
-Move()

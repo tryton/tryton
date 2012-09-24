@@ -7,7 +7,11 @@ from trytond.wizard import Wizard, StateView, Button, StateAction
 from trytond.backend import TableHandler
 from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Location', 'Party', 'ProductsByLocationsStart',
+    'ProductsByLocations']
+__metaclass__ = PoolMeta
 
 STATES = {
     'readonly': Not(Bool(Eval('active'))),
@@ -17,8 +21,7 @@ DEPENDS = ['active']
 
 class Location(ModelSQL, ModelView):
     "Stock Location"
-    _name = 'stock.location'
-    _description = __doc__
+    __name__ = 'stock.location'
     name = fields.Char("Name", size=None, required=True, states=STATES,
         depends=DEPENDS, translate=True)
     code = fields.Char("Code", size=None, states=STATES, depends=DEPENDS,
@@ -88,109 +91,121 @@ class Location(ModelSQL, ModelView):
     cost_value = fields.Function(fields.Numeric('Cost Value'),
         'get_cost_value')
 
-    def __init__(self):
-        super(Location, self).__init__()
-        self._order.insert(0, ('name', 'ASC'))
-        self._constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Location, cls).__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+        cls._constraints += [
             ('check_recursion', 'recursive_locations'),
             ('check_type_for_moves', 'invalid_type_for_moves'),
-        ]
-        self._error_messages.update({
-            'recursive_locations': 'You can not create recursive locations!',
-            'invalid_type_for_moves': 'A location with existing moves ' \
-                'cannot be changed to a type that does not support moves.',
-            'child_of_warehouse': 'Location "%s" must be a child of ' \
-                'warehouse "%s"!',
-        })
+            ]
+        cls._error_messages.update({
+                'recursive_locations': \
+                    'You can not create recursive locations!',
+                'invalid_type_for_moves': 'A location with existing moves ' \
+                    'cannot be changed to a type that does not support moves.',
+                'child_of_warehouse': 'Location "%s" must be a child of ' \
+                    'warehouse "%s"!',
+                })
 
-    def init(self, module_name):
-        super(Location, self).init(module_name)
+    @classmethod
+    def __register__(cls, module_name):
+        super(Location, cls).__register__(module_name)
         cursor = Transaction().cursor
 
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         table.index_action(['left', 'right'], 'add')
 
-    def check_type_for_moves(self, ids):
+    def check_type_for_moves(self):
         """ Check locations with moves have types compatible with moves. """
         invalid_move_types = ['warehouse', 'view']
-        move_obj = Pool().get('stock.move')
-        for location in self.browse(ids):
-            if location.type in invalid_move_types and \
-                move_obj.search(['OR',
-                    ('to_location', '=', location.id),
-                    ('from_location', '=', location.id),
-                    ]):
-                return False
+        Move = Pool().get('stock.move')
+        if (self.type in invalid_move_types
+                and Move.search(['OR',
+                        ('to_location', '=', self.id),
+                        ('from_location', '=', self.id),
+                        ])):
+            return False
         return True
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_left(self):
+    @staticmethod
+    def default_left():
         return 0
 
-    def default_right(self):
+    @staticmethod
+    def default_right():
         return 0
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'storage'
 
-    def check_xml_record(self, ids, values):
+    @classmethod
+    def check_xml_record(self, records, values):
         return True
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([
-            ('code', '=', clause[2]),
-            ], order=[])
-        if ids:
-            return [('id', 'in', ids)]
-        return [(self._rec_name,) + tuple(clause[1:])]
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        locations = cls.search([
+                ('code', '=', clause[2]),
+                ], order=[])
+        if locations:
+            return [('id', 'in', [l.id for l in locations])]
+        return [(cls._rec_name,) + tuple(clause[1:])]
 
-    def get_quantity(self, ids, name):
-        product_obj = Pool().get('product.product')
-        date_obj = Pool().get('ir.date')
+    @classmethod
+    def get_quantity(cls, locations, name):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Date_ = pool.get('ir.date')
 
         if (not Transaction().context.get('product')) \
                 or not (isinstance(Transaction().context['product'],
                     (int, long))):
-            return dict([(i, 0) for i in ids])
+            return dict([(l.id, 0) for l in locations])
 
         with Transaction().set_context(active_test=False):
-            if not product_obj.search([
-                ('id', '=', Transaction().context['product']),
-                ]):
-                return dict([(i, 0) for i in ids])
+            if not Product.search([
+                        ('id', '=', Transaction().context['product']),
+                        ]):
+                return dict([(l.id, 0) for l in locations])
 
         context = {}
         if (name == 'quantity'
                 and Transaction().context.get('stock_date_end') >
-                date_obj.today()):
-            context['stock_date_end'] = date_obj.today()
+                Date_.today()):
+            context['stock_date_end'] = Date_.today()
 
         if name == 'forecast_quantity':
             context['forecast'] = True
             if not Transaction().context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
 
+        location_ids = [l.id for l in locations]
         with Transaction().set_context(context):
-            pbl = product_obj.products_by_location(location_ids=ids,
-                    product_ids=[Transaction().context['product']],
-                    with_childs=True, skip_zero=False).iteritems()
+            pbl = Product.products_by_location(location_ids=location_ids,
+                product_ids=[Transaction().context['product']],
+                with_childs=True, skip_zero=False).iteritems()
 
         return dict([(loc, qty) for (loc, prod), qty in pbl])
 
-    def get_cost_value(self, ids, name):
-        product_obj = Pool().get('product.product')
+    @classmethod
+    def get_cost_value(cls, locations, name):
+        Product = Pool().get('product.product')
         trans_context = Transaction().context
         product_id = trans_context.get('product')
         if not product_id:
-            return dict((id, None) for id in ids)
+            return dict((l.id, None) for l in locations)
         cost_values, context = {}, {}
         if 'stock_date_end' in trans_context:
             context['_datetime'] = trans_context['stock_date_end']
         with Transaction().set_context(context):
-            product = product_obj.browse(product_id)
-            for location in self.browse(ids):
+            product = Product(product_id)
+            for location in locations:
                 # The date could be before the product creation
                 if not isinstance(product.cost_price, Decimal):
                     cost_values[location.id] = None
@@ -199,79 +214,68 @@ class Location(ModelSQL, ModelView):
                         * product.cost_price)
         return cost_values
 
-    def _set_warehouse_parent(self, locations):
+    @classmethod
+    def _set_warehouse_parent(cls, locations):
         '''
         Set the parent of child location of warehouse if not set
-
-        :param locations: a BrowseRecordList of locations
-        :return: a list with updated location ids
         '''
-        location_ids = set()
+        to_update = set()
         for location in locations:
             if location.type == 'warehouse':
                 if not location.input_location.parent:
-                    location_ids.add(location.input_location.id)
+                    to_update.add(location.input_location)
                 if not location.output_location.parent:
-                    location_ids.add(location.output_location.id)
+                    to_update.add(location.output_location)
                 if not location.storage_location.parent:
-                    location_ids.add(location.storage_location.id)
-        location_ids = list(location_ids)
-        if location_ids:
-            self.write(location_ids, {
+                    to_update.add(location.storage_location)
+        if to_update:
+            cls.write(list(to_update), {
                 'parent': location.id,
                 })
 
-    def create(self, vals):
-        res = super(Location, self).create(vals)
-        locations = self.browse([res])
-        self._set_warehouse_parent(locations)
-        return res
+    @classmethod
+    def create(cls, vals):
+        location = super(Location, cls).create(vals)
+        cls._set_warehouse_parent([location])
+        return location
 
-    def write(self, ids, vals):
-        res = super(Location, self).write(ids, vals)
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        locations = self.browse(ids)
-        self._set_warehouse_parent(locations)
+    @classmethod
+    def write(cls, locations, vals):
+        super(Location, cls).write(locations, vals)
+        cls._set_warehouse_parent(locations)
 
-        check_wh = self.search([
-            ('type', '=', 'warehouse'),
-            ['OR',
-                ('storage_location', 'in', ids),
-                ('input_location', 'in', ids),
-                ('output_location', 'in', ids),
-            ]])
+        ids = [l.id for l in locations]
+        warehouses = cls.search([
+                ('type', '=', 'warehouse'),
+                ['OR',
+                    ('storage_location', 'in', ids),
+                    ('input_location', 'in', ids),
+                    ('output_location', 'in', ids),
+                    ]])
 
-        warehouses = self.browse(check_wh)
         fields = ('storage_location', 'input_location', 'output_location')
         wh2childs = {}
         for warehouse in warehouses:
-            in_out_sto = (warehouse[f].id for f in fields)
+            in_out_sto = (getattr(warehouse, f).id for f in fields)
             for location in locations:
                 if location.id not in in_out_sto:
                     continue
-                childs = wh2childs.setdefault(warehouse.id, self.search([
-                    ('parent', 'child_of', warehouse.id),
-                    ]))
-                if location.id not in childs:
-                    self.raise_user_error('child_of_warehouse',
+                childs = wh2childs.setdefault(warehouse.id, cls.search([
+                            ('parent', 'child_of', warehouse.id),
+                            ]))
+                if location not in childs:
+                    cls.raise_user_error('child_of_warehouse',
                         (location.name, warehouse.name))
 
-        return res
-
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, locations, default=None):
         if default is None:
             default = {}
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
 
         default['left'] = 0
         default['right'] = 0
 
         res = []
-        locations = self.browse(ids)
         for location in locations:
             if location.type == 'warehouse':
 
@@ -282,8 +286,8 @@ class Location(ModelSQL, ModelView):
                 wh_default['storage_location'] = None
                 wh_default['childs'] = None
 
-                new_id = super(Location, self).copy(location.id,
-                        default=wh_default)
+                new_location, = super(Location, cls).copy([location],
+                    default=wh_default)
 
                 with Transaction().set_context(
                         cp_warehouse_locations={
@@ -291,34 +295,31 @@ class Location(ModelSQL, ModelView):
                             'output_location': location.output_location.id,
                             'storage_location': location.storage_location.id,
                             },
-                        cp_warehouse_id=new_id):
-                    self.copy([c.id for c in location.childs],
-                            default={'parent': new_id})
-                self.write(new_id, {
-                    'type': 'warehouse',
-                    })
+                        cp_warehouse_id=new_location.id):
+                    cls.copy(location.childs,
+                        default={'parent': new_location.id})
+                cls.write([new_location], {
+                        'type': 'warehouse',
+                        })
             else:
-                new_id = super(Location, self).copy(location.id,
-                        default=default)
+                new_location, = super(Location, cls).copy([location],
+                    default=default)
                 warehouse_locations = Transaction().context.get(
-                        'cp_warehouse_locations') or {}
+                    'cp_warehouse_locations') or {}
+                cp_warehouse = cls(Transaction().context['cp_warehouse_id'])
                 if location.id in warehouse_locations.values():
                     for field, loc_id in warehouse_locations.iteritems():
                         if loc_id == location.id:
-                            self.write(
-                                Transaction().context['cp_warehouse_id'], {
-                                    field: new_id,
+                            cls.write([cp_warehouse], {
+                                    field: new_location.id,
                                     })
 
-            res.append(new_id)
-
-        return int_id and res[0] or res
-
-Location()
+            res.append(new_location)
+        return res
 
 
-class Party(ModelSQL, ModelView):
-    _name = 'party.party'
+class Party:
+    __name__ = 'party.party'
     supplier_location = fields.Property(fields.Many2One('stock.location',
         'Supplier Location', domain=[('type', '=', 'supplier')],
         help='The default source location when receiving products from the '
@@ -328,30 +329,25 @@ class Party(ModelSQL, ModelView):
         help='The default destination location when sending products to the '
         'party.'))
 
-Party()
-
 
 class ProductsByLocationsStart(ModelView):
     'Products by Locations'
-    _name = 'stock.products_by_locations.start'
-    _description = __doc__
+    __name__ = 'stock.products_by_locations.start'
     forecast_date = fields.Date(
         'At Date', help='Allow to compute expected '\
             'stock quantities for this date.\n'\
             '* An empty value is an infinite date in the future.\n'\
             '* A date in the past will provide historical values.')
 
-    def default_forecast_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
-
-ProductsByLocationsStart()
+    @staticmethod
+    def default_forecast_date():
+        Date_ = Pool().get('ir.date')
+        return Date_.today()
 
 
 class ProductsByLocations(Wizard):
     'Products by Locations'
-    _name = 'stock.products_by_locations'
-
+    __name__ = 'stock.products_by_locations'
     start = StateView('stock.products_by_locations.start',
         'stock.products_by_locations_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -359,30 +355,28 @@ class ProductsByLocations(Wizard):
             ])
     open = StateAction('stock.act_products_by_locations')
 
-    def do_open(self, session, action):
+    def do_open(self, action):
         pool = Pool()
-        location_obj = pool.get('stock.location')
-        lang_obj = pool.get('ir.lang')
+        Location = pool.get('stock.location')
+        Lang = pool.get('ir.lang')
 
         context = {}
         context['locations'] = Transaction().context.get('active_ids')
-        date = session.start.forecast_date or datetime.date.max
+        date = self.start.forecast_date or datetime.date.max
         context['stock_date_end'] = Date(date.year, date.month, date.day)
         action['pyson_context'] = PYSONEncoder().encode(context)
 
-        locations = location_obj.browse(context['locations'])
+        locations = Location.browse(context['locations'])
 
         for code in [Transaction().language, 'en_US']:
-            lang_ids = lang_obj.search([
+            langs = Lang.search([
                     ('code', '=', code),
                     ])
-            if lang_ids:
+            if langs:
                 break
-        lang = lang_obj.browse(lang_ids[0])
-        date = lang_obj.strftime(date, lang.code, lang.date)
+        lang = langs[0]
+        date = Lang.strftime(date, lang.code, lang.date)
 
         action['name'] += ' - (%s) @ %s' % (
             ','.join(l.name for l in locations), date)
         return action, {}
-
-ProductsByLocations()
