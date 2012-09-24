@@ -6,13 +6,13 @@ from trytond.backend import TableHandler
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Work']
+
 
 class Work(ModelSQL, ModelView):
     'Work Effort'
-    _name = 'project.work'
-    _description = __doc__
+    __name__ = 'project.work'
     _inherits = {'timesheet.work': 'work'}
-
     work = fields.Many2One('timesheet.work', 'Work', required=True,
             ondelete='CASCADE')
     type = fields.Selection([
@@ -48,25 +48,28 @@ class Work(ModelSQL, ModelView):
         order_field='(%(table)s.sequence IS NULL) %(order)s, '
         '%(table)s.sequence %(order)s')
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'task'
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'opened'
 
-    def default_effort(self):
+    @staticmethod
+    def default_effort():
         return 0.0
 
-    def init(self, module_name):
-        timesheet_work_obj = Pool().get('timesheet.work')
+    @classmethod
+    def __register__(cls, module_name):
+        TimesheetWork = Pool().get('timesheet.work')
         cursor = Transaction().cursor
-        table_project_work = TableHandler(cursor, self, module_name)
-        table_timesheet_work = TableHandler(cursor, timesheet_work_obj,
-            module_name)
+        table_project_work = TableHandler(cursor, cls, module_name)
+        table_timesheet_work = TableHandler(cursor, TimesheetWork, module_name)
         migrate_sequence = (not table_project_work.column_exist('sequence')
             and table_timesheet_work.column_exist('sequence'))
 
-        super(Work, self).init(module_name)
+        super(Work, cls).__register__(module_name)
 
         # Migration from 2.0: copy sequence from timesheet to project
         if migrate_sequence:
@@ -74,79 +77,81 @@ class Work(ModelSQL, ModelView):
                 'SELECT t.sequence, t.id '
                 'FROM "%s" AS t '
                 'JOIN "%s" AS p ON (p.work = t.id)' % (
-                    timesheet_work_obj._table, self._table))
+                    TimesheetWork._table, cls._table))
             for sequence, id_ in cursor.fetchall():
                 sql = ('UPDATE "%s" '
                         'SET sequence = %%s '
-                        'WHERE work = %%s' % self._table)
+                        'WHERE work = %%s' % cls._table)
                 cursor.execute(sql, (sequence, id_))
 
         # Migration from 2.4: drop required on sequence
         table_project_work.not_null_action('sequence', action='remove')
 
-    def __init__(self):
-        super(Work, self).__init__()
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(Work, cls).__setup__()
+        cls._sql_constraints += [
             ('work_uniq', 'UNIQUE(work)', 'There should be only one '\
                  'timesheet work by task/project!'),
-        ]
-        self._order.insert(0, ('sequence', 'ASC'))
-        self._constraints += [
+            ]
+        cls._order.insert(0, ('sequence', 'ASC'))
+        cls._constraints += [
             ('check_state',
                 'A work can not be closed if its children are still opened'),
             ]
 
-    def check_state(self, ids):
-        for work in self.browse(ids):
-            if ((work.state == 'opened'
-                        and (work.parent and work.parent.state == 'done'))
-                    or (work.state == 'done'
-                        and any(c.state == 'opened' for c in work.children))):
-                return False
+    def check_state(self):
+        if ((self.state == 'opened'
+                    and (self.parent and self.parent.state == 'done'))
+                or (self.state == 'done'
+                    and any(c.state == 'opened' for c in self.children))):
+            return False
         return True
 
-    def get_parent(self, ids, name):
-        res = dict.fromkeys(ids, None)
-        project_works = self.browse(ids)
+    @classmethod
+    def get_parent(cls, project_works, name):
+        parents = dict.fromkeys([w.id for w in project_works], None)
 
         # ptw2pw is "parent timesheet work to project works":
         ptw2pw = {}
         for project_work in project_works:
+            if not project_work.work.parent:
+                continue
             if project_work.work.parent.id in ptw2pw:
                 ptw2pw[project_work.work.parent.id].append(project_work.id)
             else:
                 ptw2pw[project_work.work.parent.id] = [project_work.id]
 
         with Transaction().set_context(active_test=False):
-            parent_project_ids = self.search([
+            parent_projects = cls.search([
                     ('work', 'in', ptw2pw.keys()),
                     ])
-        parent_projects = self.browse(parent_project_ids)
         for parent_project in parent_projects:
             if parent_project.work.id in ptw2pw:
                 child_projects = ptw2pw[parent_project.work.id]
                 for child_project in child_projects:
-                    res[child_project] = parent_project.id
+                    parents[child_project] = parent_project.id
 
-        return res
+        return parents
 
-    def set_parent(self, ids, name, value):
-        timesheet_work_obj = Pool().get('timesheet.work')
+    @classmethod
+    def set_parent(cls, project_works, name, value):
+        TimesheetWork = Pool().get('timesheet.work')
         if value:
-            project_works = self.browse(ids + [value])
-            child_timesheet_work_ids = [x.work.id for x in project_works[:-1]]
+            project_works.append(cls(value))
+            child_timesheet_works = [x.work for x in project_works[:-1]]
             parent_timesheet_work_id = project_works[-1].work.id
         else:
-            child_project_works = self.browse(ids)
-            child_timesheet_work_ids = [x.work.id for x in child_project_works]
+            child_timesheet_works = [x.work for x in project_works]
             parent_timesheet_work_id = None
 
-        timesheet_work_obj.write(child_timesheet_work_ids, {
+        TimesheetWork.write(child_timesheet_works, {
                 'parent': parent_timesheet_work_id
                 })
 
-    def search_parent(self, name, domain=None):
-        timesheet_work_obj = Pool().get('timesheet.work')
+    @classmethod
+    def search_parent(cls, name, domain):
+        TimesheetWork = Pool().get('timesheet.work')
 
         project_work_domain = []
         timesheet_work_domain = []
@@ -172,11 +177,11 @@ class Work(ModelSQL, ModelView):
         if operands:
             operands = list(operands)
             # filter out non-existing ids:
-            operands = self.search([
+            operands = cls.search([
                     ('id', 'in', operands)
                     ])
             # create project_work > timesheet_work mapping
-            for pw in self.browse(operands):
+            for pw in operands:
                 pw2tw[pw.id] = pw.work.id
 
             for i, d in enumerate(timesheet_work_domain):
@@ -190,24 +195,22 @@ class Work(ModelSQL, ModelView):
                 timesheet_work_domain[i] = (d[0], d[1], new_d2)
 
         if project_work_domain:
-            pw_ids = self.search(project_work_domain)
-            project_works = self.browse(pw_ids)
+            project_works = cls.search(project_work_domain)
             timesheet_work_domain.append(
                 ('id', 'in', [pw.work.id for pw in project_works]))
 
-        tw_ids = timesheet_work_obj.search(timesheet_work_domain)
+        tw_ids = [tw.id for tw in TimesheetWork.search(timesheet_work_domain)]
 
         return [('work', 'in', tw_ids)]
 
-    def get_total_effort(self, ids, name):
+    @classmethod
+    def get_total_effort(cls, works, name):
 
-        all_ids = self.search([
-                ('parent', 'child_of', ids),
+        works += cls.search([
+                ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True),
-                ]) + ids
-        all_ids = list(set(all_ids))
-
-        works = self.browse(all_ids)
+                ])
+        works = list(set(works))
 
         res = {}
         id2work = {}
@@ -231,46 +234,34 @@ class Work(ModelSQL, ModelView):
 
         return res
 
-    def copy(self, ids, default=None):
-        timesheet_work_obj = Pool().get('timesheet.work')
-
-        int_id = isinstance(ids, (int, long))
-        if int_id:
-            ids = [ids]
+    @classmethod
+    def copy(cls, project_works, default=None):
+        TimesheetWork = Pool().get('timesheet.work')
 
         if default is None:
             default = {}
 
         timesheet_default = default.copy()
         for key in timesheet_default.keys():
-            if key in self._columns:
+            if key in cls._fields:
                 del timesheet_default[key]
-        new_ids = []
-        for project_work in self.browse(ids):
-            timesheet_work_id = timesheet_work_obj.copy(project_work.work.id,
+        new_project_works = []
+        for project_work in project_works:
+            timesheet_work, = TimesheetWork.copy([project_work.work],
                 default=timesheet_default)
             pwdefault = default.copy()
-            pwdefault['work'] = timesheet_work_id
-            new_ids.append(super(Work, self).copy(project_work.id,
-                default=pwdefault))
-        if int_id:
-            return new_ids[0]
-        return new_ids
+            pwdefault['work'] = timesheet_work.id
+            new_project_works.extend(super(Work, cls).copy([project_work],
+                    default=pwdefault))
+        return new_project_works
 
-    def delete(self, ids):
-        timesheet_work_obj = Pool().get('timesheet.work')
-
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(cls, project_works):
+        TimesheetWork = Pool().get('timesheet.work')
 
         # Get the timesheet works linked to the project works
-        project_works = self.browse(ids)
-        timesheet_work_ids = [pw.work.id for pw in project_works]
+        timesheet_works = [pw.work for pw in project_works]
 
-        res = super(Work, self).delete(ids)
+        super(Work, cls).delete(project_works)
 
-        timesheet_work_obj.delete(timesheet_work_ids)
-        return res
-
-
-Work()
+        TimesheetWork.delete(timesheet_works)
