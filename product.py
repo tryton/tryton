@@ -1,25 +1,33 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level
 #of this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Product']
+__metaclass__ = PoolMeta
 
 
-class Product(ModelSQL, ModelView):
-    _name = 'product.product'
+class Product:
+    __name__ = 'product.product'
 
-    def get_sale_price(self, ids, quantity=0):
-        price_list_obj = Pool().get('product.price_list')
+    @classmethod
+    def get_sale_price(cls, products, quantity=0):
+        pool = Pool()
+        PriceList = pool.get('product.price_list')
+        Party = pool.get('party.party')
+        Uom = pool.get('product.uom')
 
-        res = super(Product, self).get_sale_price(ids, quantity=quantity)
+        prices = super(Product, cls).get_sale_price(products,
+            quantity=quantity)
         if (Transaction().context.get('price_list')
                 and Transaction().context.get('customer')):
-            for product in self.browse(ids):
-                res[product.id] = price_list_obj.compute(
-                        Transaction().context['price_list'],
-                        Transaction().context['customer'],
-                        product, res[product.id], quantity,
-                        Transaction().context.get('uom', product.default_uom))
-        return res
-
-Product()
+            price_list = PriceList(Transaction().context['price_list'])
+            customer = Party(Transaction().context['customer'])
+            context_uom = None
+            if Transaction().context.get('uom'):
+                context_uom = Uom(Transaction().context['uom'])
+            for product in products:
+                uom = context_uom or product.default_uom
+                prices[product.id] = price_list.compute(customer, product,
+                    product, quantity, uom)
+        return prices

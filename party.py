@@ -1,19 +1,20 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Eval, Bool, Not, Get
+from trytond.model import fields
+from trytond.pyson import Eval
+from trytond.pool import PoolMeta
+
+__all__ = ['Party']
+__metaclass__ = PoolMeta
 
 
-class Party(ModelSQL, ModelView):
-    _name = 'party.party'
-
+class Party:
+    __name__ = 'party.party'
     sale_price_list = fields.Property(fields.Many2One('product.price_list',
             'Sale Price List',
             domain=[
-                ('company', '=', Get(Eval('context', {}), 'company')),
+                ('company', '=', Eval('context', {}).get('company')),
                 ],
             states={
-                'invisible': Not(Bool(Get(Eval('context', {}), 'company'))),
+                'invisible': ~Eval('context', {}).get('company'),
                 }))
-
-Party()
