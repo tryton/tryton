@@ -1,36 +1,31 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from trytond.model import Model, ModelView, ModelSQL, Workflow, fields
+from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.pyson import Eval
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
+    'ShipmentOutReturn']
+__metaclass__ = PoolMeta
 
 
 class Lot(ModelSQL, ModelView):
     "Stock Lot"
-    _name = 'stock.lot'
-    _description = __doc__
+    __name__ = 'stock.lot'
     _rec_name = 'number'
-
     number = fields.Char('Number', required=True, select=True)
     product = fields.Many2One('product.product', 'Product', required=True)
-
-Lot()
 
 
 class LotType(ModelSQL, ModelView):
     "Stock Lot Type"
-    _name = 'stock.lot.type'
-    _description = __doc__
-
+    __name__ = 'stock.lot.type'
     name = fields.Char('Name', required=True, translate=True)
     code = fields.Char('Code', required=True)
 
-LotType()
 
-
-class Move(Model):
-    _name = 'stock.move'
-
+class Move:
+    __name__ = 'stock.move'
     lot = fields.Many2One('stock.lot', 'Lot',
         domain=[
             ('product', '=', Eval('product')),
@@ -40,66 +35,61 @@ class Move(Model):
             },
         depends=['state', 'product'])
 
-    def __init__(self):
-        super(Move, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Move, cls).__setup__()
+        cls._error_messages.update({
                 'lot_required': 'Lot is required for move of product "%s"!',
                 })
 
-    def check_lot(self, ids):
+    @classmethod
+    def check_lot(cls, moves):
         "Check if lot is required"
-        pool = Pool()
-        product_obj = pool.get('product.product')
-        for move in self.browse(ids):
+        for move in moves:
             if (move.state == 'done'
                     and not move.lot
-                    and product_obj.lot_is_required(move.product,
+                    and move.product.lot_is_required(
                         move.from_location, move.to_location)):
-                self.raise_user_error('lot_required', (move.product.rec_name,))
+                cls.raise_user_error('lot_required', (move.product.rec_name,))
 
-    def create(self, values):
-        new_id = super(Move, self).create(values)
-        self.check_lot([new_id])
-        return new_id
+    @classmethod
+    def create(cls, values):
+        move = super(Move, cls).create(values)
+        cls.check_lot([move])
+        return move
 
-    def write(self, ids, values):
-        result = super(Move, self).write(ids, values)
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        self.check_lot(ids)
-        return result
-
-Move()
+    @classmethod
+    def write(cls, moves, values):
+        super(Move, cls).write(moves, values)
+        cls.check_lot(moves)
 
 
-class ShipmentIn(Model):
-    _name = 'stock.shipment.in'
+class ShipmentIn:
+    __name__ = 'stock.shipment.in'
 
-    def _get_inventory_moves(self, incoming_move):
-        result = super(ShipmentIn, self)._get_inventory_moves(incoming_move)
-        if result:
+    @classmethod
+    def _get_inventory_moves(cls, incoming_move):
+        result = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
+        if result and incoming_move.lot:
             result['lot'] = incoming_move.lot.id
         return result
 
-ShipmentIn()
 
+class ShipmentOut:
+    __name__ = 'stock.shipment.out'
 
-class ShipmentOut(Model):
-    _name = 'stock.shipment.out'
-
+    @classmethod
     @ModelView.button
     @Workflow.transition('packed')
-    def pack(self, ids):
+    def pack(cls, shipments):
         pool = Pool()
-        uom_obj = pool.get('product.uom')
-        move_obj = pool.get('stock.move')
+        Uom = pool.get('product.uom')
+        Move = pool.get('stock.move')
 
-        super(ShipmentOut, self).pack(ids)
-
-        shipments = self.browse(ids)
+        super(ShipmentOut, cls).pack(shipments)
 
         # Unassign move to allow update
-        move_obj.write([m.id for s in shipments for m in s.outgoing_moves
+        Move.write([m for s in shipments for m in s.outgoing_moves
                 if m.state not in ('done', 'cancel')], {
                 'state': 'draft',
                 })
@@ -112,47 +102,40 @@ class ShipmentOut(Model):
             for move in shipment.inventory_moves:
                 if not move.lot:
                     continue
-                quantity = uom_obj.compute_qty(move.uom, move.quantity,
+                quantity = Uom.compute_qty(move.uom, move.quantity,
                     move.product.default_uom, round=False)
                 outgoing_moves = outgoing_by_product[move.product.id]
                 while outgoing_moves and quantity > 0:
                     out_move = outgoing_moves.pop()
-                    out_quantity = uom_obj.compute_qty(out_move.uom,
+                    out_quantity = Uom.compute_qty(out_move.uom,
                         out_move.quantity, out_move.product.default_uom,
                         round=False)
                     if quantity < out_quantity:
-                        outgoing_moves.append(move_obj.browse(
-                                move_obj.copy(out_move.id, default={
-                                        'quantity': out_quantity - quantity,
-                                        })))
-                        move_obj.write(out_move.id, {
+                        outgoing_moves.extend(Move.copy([out_move], default={
+                                    'quantity': out_quantity - quantity,
+                                    }))
+                        Move.write([out_move], {
                                 'quantity': quantity,
                                 })
-                    move_obj.write(out_move.id, {
+                    Move.write([out_move], {
                             'lot': move.lot.id,
                             })
                     quantity -= out_quantity
                 assert quantity <= 0
 
-        # Reset function field cache
-        shipments = self.browse(ids)
-
-        move_obj.write([m.id for s in shipments for m in s.outgoing_moves
+        Move.write([m for s in shipments for m in s.outgoing_moves
                 if m.state != 'cancel'], {
                 'state': 'assigned',
                 })
 
-ShipmentOut()
 
+class ShipmentOutReturn:
+    __name__ = 'stock.shipment.out.return'
 
-class ShipmentOutReturn(Model):
-    _name = 'stock.shipment.out.return'
-
-    def _get_inventory_moves(self, incoming_move):
+    @classmethod
+    def _get_inventory_moves(cls, incoming_move):
         result = super(ShipmentOutReturn,
-            self)._get_inventory_moves(incoming_move)
-        if result:
+            cls)._get_inventory_moves(incoming_move)
+        if result and incoming_move.lot:
             result['lot'] = incoming_move.lot.id
         return result
-
-ShipmentOutReturn()
