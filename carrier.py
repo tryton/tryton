@@ -4,12 +4,13 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Carrier']
+
 
 class Carrier(ModelSQL, ModelView):
     'Carrier'
-    _name = 'carrier'
+    __name__ = 'carrier'
     _inherits = {'party.party': 'party'}
-
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     carrier_product = fields.Many2One('product.product', 'Carrier Product',
@@ -21,52 +22,41 @@ class Carrier(ModelSQL, ModelView):
         ], 'Carrier Cost Method', required=True,
         help='Method to compute carrier cost')
 
-    def default_carrier_cost_method(self):
+    @staticmethod
+    def default_carrier_cost_method():
         return 'product'
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        names = {}
-        for carrier in self.browse(ids):
-            names[carrier.id] = '%s - %s' % (carrier.party.rec_name,
-                carrier.carrier_product.rec_name)
-        return names
+    def get_rec_name(self, name):
+        return '%s - %s' % (self.party.rec_name, self.carrier_product.rec_name)
 
-    def copy(self, ids, default=None):
-        party_obj = Pool().get('party.party')
+    @classmethod
+    def copy(self, carriers, default=None):
+        Party = Pool().get('party.party')
 
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
         if default is None:
             default = {}
         default = default.copy()
-        new_ids = []
-        for carrier in self.browse(ids):
-            default['party'] = party_obj.copy(carrier.party.id)
-            new_id = super(Carrier, self).copy(carrier.id, default=default)
-            new_ids.append(new_id)
-        if int_id:
-            return new_ids[0]
-        return new_ids
+        new_carriers = []
+        for carrier in carriers:
+            party, = Party.copy([carrier.party])
+            default['party'] = party.id
+            new_carriers.extend(super(Carrier, self).copy([carrier],
+                    default=default))
+        return new_carriers
 
-    def get_sale_price(self, carrier):
+    def get_sale_price(self):
         'Compute carrier sale price with currency'
-        user_obj = Pool().get('res.user')
-        if carrier.carrier_cost_method == 'product':
-            user = user_obj.browse(Transaction().user
+        User = Pool().get('res.user')
+        if self.carrier_cost_method == 'product':
+            user = User(Transaction().user
                 or Transaction().context.get('user'))
-            return carrier.carrier_product.list_price, user.company.currency.id
+            return self.carrier_product.list_price, user.company.currency.id
         return 0, None
 
-    def get_purchase_price(self, carrier):
+    def get_purchase_price(self):
         'Compute carrier purchase price with currency'
-        user_obj = Pool().get('res.user')
-        if carrier.carrier_cost_method == 'product':
-            user = user_obj.browse(Transaction().user)
-            return carrier.carrier_product.cost_price, user.company.currency.id
+        User = Pool().get('res.user')
+        if self.carrier_cost_method == 'product':
+            user = User(Transaction().user)
+            return self.carrier_product.cost_price, user.company.currency.id
         return 0, None
-
-Carrier()
