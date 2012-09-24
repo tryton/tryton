@@ -45,41 +45,41 @@ class ProductTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            category_id = self.uom_category.create({'name': 'Test'})
+            category = self.uom_category.create({'name': 'Test'})
             transaction.cursor.commit()
 
-            self.failUnlessRaises(Exception, self.uom.create, {
-                'name': 'Test',
-                'symbol': 'T',
-                'category': category_id,
-                'rate': 0,
-                'factor': 0,
-                })
+            self.assertRaises(Exception, self.uom.create, {
+                    'name': 'Test',
+                    'symbol': 'T',
+                    'category': category.id,
+                    'rate': 0,
+                    'factor': 0,
+                    })
             transaction.cursor.rollback()
 
-            uom_id = self.uom.create({
-                'name': 'Test',
-                'symbol': 'T',
-                'category': category_id,
-                'rate': 1.0,
-                'factor': 1.0,
-                })
+            uom = self.uom.create({
+                    'name': 'Test',
+                    'symbol': 'T',
+                    'category': category.id,
+                    'rate': 1.0,
+                    'factor': 1.0,
+                    })
             transaction.cursor.commit()
 
-            self.failUnlessRaises(Exception, self.uom.write, uom_id, {
-                'rate': 0.0,
-                })
+            self.assertRaises(Exception, self.uom.write, [uom], {
+                    'rate': 0.0,
+                    })
             transaction.cursor.rollback()
 
-            self.failUnlessRaises(Exception, self.uom.write, uom_id, {
-                'factor': 0.0,
-                })
+            self.assertRaises(Exception, self.uom.write, [uom], {
+                    'factor': 0.0,
+                    })
             transaction.cursor.rollback()
 
-            self.failUnlessRaises(Exception, self.uom.write, uom_id, {
-                'rate': 0.0,
-                'factor': 0.0,
-                })
+            self.assertRaises(Exception, self.uom.write, [uom], {
+                    'rate': 0.0,
+                    'factor': 0.0,
+                    })
             transaction.cursor.rollback()
 
     def test0020uom_check_factor_and_rate(self):
@@ -88,33 +88,33 @@ class ProductTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            category_id = self.uom_category.search([
-                ('name', '=', 'Test'),
-                ], limit=1)[0]
+            category, = self.uom_category.search([
+                    ('name', '=', 'Test'),
+                    ], limit=1)
 
-            self.failUnlessRaises(Exception, self.uom.create, {
-                'name': 'Test',
-                'symbol': 'T',
-                'category': category_id,
-                'rate': 2,
-                'factor': 2,
-                })
+            self.assertRaises(Exception, self.uom.create, {
+                    'name': 'Test',
+                    'symbol': 'T',
+                    'category': category.id,
+                    'rate': 2,
+                    'factor': 2,
+                    })
             transaction.cursor.rollback()
 
-            uom_id = self.uom.search([
-                ('name', '=', 'Test'),
-                ], limit=1)[0]
+            uom, = self.uom.search([
+                    ('name', '=', 'Test'),
+                    ], limit=1)
 
-            self.failUnlessRaises(Exception, self.uom.write, uom_id,
-                    {
-                        'rate': 2.0,
-                        })
+            self.assertRaises(Exception, self.uom.write, [uom],
+                {
+                    'rate': 2.0,
+                    })
             transaction.cursor.rollback()
 
-            self.failUnlessRaises(Exception, self.uom.write, uom_id,
-                    {
-                        'factor': 2.0,
-                        })
+            self.assertRaises(Exception, self.uom.write, [uom],
+                {
+                    'factor': 2.0,
+                    })
             transaction.cursor.rollback()
 
     def test0030uom_select_accurate_field(self):
@@ -126,14 +126,13 @@ class ProductTestCase(unittest.TestCase):
             ('Kilometer', 'factor'),
             ('centimeter', 'rate'),
             ('Foot', 'factor'),
-        ]
+            ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for name, result in tests:
-                uom_id = self.uom.search([
-                    ('name', '=', name),
-                    ], limit=1)[0]
-                uom = self.uom.browse(uom_id)
-                self.assert_(result == self.uom.select_accurate_field(uom))
+                uom, = self.uom.search([
+                        ('name', '=', name),
+                        ], limit=1)
+                self.assertEqual(result, uom.accurate_field)
 
     def test0040uom_compute_qty(self):
         '''
@@ -145,28 +144,28 @@ class ProductTestCase(unittest.TestCase):
             ('Second', 5, 'Minute', 0.083333333333333343, 0.08),
             ('Second', 25, 'Hour', 0.0069444444444444441, 0.01),
             ('Millimeter', 3, 'Inch', 0.11811023622047245, 0.12),
-        ]
+            ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for from_name, qty, to_name, result, rounded_result in tests:
-                from_uom = self.uom.browse(self.uom.search(
-                    [
-                     ('name', '=', from_name),
-                    ], limit=1)[0])
-                to_uom = self.uom.browse(self.uom.search(
-                    [
+                from_uom, = self.uom.search([
+                        ('name', '=', from_name),
+                        ], limit=1)
+                to_uom, = self.uom.search([
                         ('name', '=', to_name),
-                    ], limit=1)[0])
-                self.assert_(result == self.uom.compute_qty(from_uom,
-                    qty, to_uom, False))
-                self.assert_(rounded_result == self.uom.compute_qty(
-                    from_uom, qty, to_uom, True))
+                        ], limit=1)
+                self.assertEqual(result, self.uom.compute_qty(from_uom,
+                        qty, to_uom, False))
+                self.assertEqual(rounded_result, self.uom.compute_qty(
+                        from_uom, qty, to_uom, True))
 
-            self.assert_(10 == self.uom.compute_qty(None, 10, to_uom))
-            self.assert_(10 == self.uom.compute_qty(None, 10, to_uom, True))
-            self.assert_(0 == self.uom.compute_qty(from_uom, 0, to_uom))
-            self.assert_(0 == self.uom.compute_qty(from_uom, 0, to_uom, True))
-            self.assert_(10 == self.uom.compute_qty(from_uom, 10, None))
-            self.assert_(10 == self.uom.compute_qty(from_uom, 10, None, True))
+            self.assertEqual(10, self.uom.compute_qty(None, 10, to_uom))
+            self.assertEqual(10, self.uom.compute_qty(None, 10, to_uom, True))
+            self.assertEqual(0, self.uom.compute_qty(from_uom, 0, to_uom))
+            self.assertEqual(0,
+                self.uom.compute_qty(from_uom, 0, to_uom, True))
+            self.assertEqual(10, self.uom.compute_qty(from_uom, 10, None))
+            self.assertEqual(10,
+                self.uom.compute_qty(from_uom, 10, None, True))
 
     def test0050uom_compute_price(self):
         '''
@@ -178,19 +177,17 @@ class ProductTestCase(unittest.TestCase):
             ('Second', Decimal('5'), 'Minute', Decimal('300')),
             ('Second', Decimal('25'), 'Hour', Decimal('90000')),
             ('Millimeter', Decimal('3'), 'Inch', Decimal('76.2')),
-        ]
+            ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             for from_name, price, to_name, result in tests:
-                from_uom = self.uom.browse(self.uom.search(
-                    [
+                from_uom, = self.uom.search([
                         ('name', '=', from_name),
-                    ], limit=1)[0])
-                to_uom = self.uom.browse(self.uom.search(
-                    [
+                        ], limit=1)
+                to_uom, = self.uom.search([
                         ('name', '=', to_name),
-                    ], limit=1)[0])
-                self.assert_(result == self.uom.compute_price(from_uom,
-                    price, to_uom))
+                        ], limit=1)
+                self.assertEqual(result, self.uom.compute_price(from_uom,
+                        price, to_uom))
 
 
 def suite():

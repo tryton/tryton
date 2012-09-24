@@ -6,6 +6,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.backend import TableHandler
 
+__all__ = ['Template', 'Product']
+
 STATES = {
     'readonly': ~Eval('active', True),
     }
@@ -14,9 +16,7 @@ DEPENDS = ['active']
 
 class Template(ModelSQL, ModelView):
     "Product Template"
-    _name = "product.template"
-    _description = __doc__
-
+    __name__ = "product.template"
     name = fields.Char('Name', size=None, required=True, translate=True,
         select=True, states=STATES, depends=DEPENDS)
     type = fields.Selection([
@@ -50,146 +50,122 @@ class Template(ModelSQL, ModelView):
     default_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Default UOM Category',
             on_change_with=['default_uom']),
-        'get_default_uom_category')
+        'on_change_with_default_uom_category')
     active = fields.Boolean('Active', select=True)
     products = fields.One2Many('product.product', 'template', 'Products',
         states=STATES, depends=DEPENDS)
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
 
-        super(Template, self).init(module_name)
+        super(Template, cls).__register__(module_name)
 
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         # Migration from 2.2: category is no more required
         table.not_null_action('category', 'remove')
 
         # Migration from 2.2: new types
-        cursor.execute('UPDATE "' + self._table + '" '
+        cursor.execute('UPDATE "' + cls._table + '" '
             'SET consumable = %s WHERE type = %s', (True, 'consumable'))
-        cursor.execute('UPDATE "' + self._table + '" '
+        cursor.execute('UPDATE "' + cls._table + '" '
             'SET type = %s WHERE type IN (%s, %s)',
             ('goods', 'stockable', 'consumable'))
 
-    def default_active(self):
+    @staticmethod
+    def default_active():
         return True
 
-    def default_type(self):
+    @staticmethod
+    def default_type():
         return 'goods'
 
-    def default_consumable(self):
+    @staticmethod
+    def default_consumable():
         return False
 
-    def default_cost_price_method(self):
+    @staticmethod
+    def default_cost_price_method():
         return 'fixed'
 
-    def on_change_with_default_uom_category(self, values):
-        pool = Pool()
-        uom_obj = pool.get('product.uom')
-        if values.get('default_uom'):
-            uom = uom_obj.browse(values['default_uom'])
-            return uom.category.id
+    def on_change_with_default_uom_category(self, name=None):
+        if self.default_uom:
+            return self.default_uom.category.id
 
-    def get_default_uom_category(self, ids, name):
-        categories = {}
-        for template in self.browse(ids):
-            categories[template.id] = template.default_uom.category.id
-        return categories
-
-    def get_price_uom(self, ids, name):
-        product_uom_obj = Pool().get('product.uom')
+    @staticmethod
+    def get_price_uom(products, name):
+        Uom = Pool().get('product.uom')
         res = {}
         field = name[:-4]
         if Transaction().context.get('uom'):
-            to_uom = product_uom_obj.browse(
-                Transaction().context['uom'])
-            for product in self.browse(ids):
-                res[product.id] = product_uom_obj.compute_price(
-                        product.default_uom, product[field], to_uom)
+            to_uom = Uom(Transaction().context['uom'])
+            for product in products:
+                res[product.id] = Uom.compute_price(
+                    product.default_uom, getattr(product, field), to_uom)
         else:
-            for product in self.browse(ids):
-                res[product.id] = product[field]
+            for product in products:
+                res[product.id] = getattr(product, field)
         return res
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, templates, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default['products'] = None
-        return super(Template, self).copy(ids, default=default)
-
-Template()
+        return super(Template, cls).copy(templates, default=default)
 
 
 class Product(ModelSQL, ModelView):
     "Product"
-    _name = "product.product"
-    _description = __doc__
+    __name__ = "product.product"
     _inherits = {'product.template': 'template'}
-
     template = fields.Many2One('product.template', 'Product Template',
             required=True, ondelete='CASCADE', select=True)
     code = fields.Char("Code", size=None, select=True)
     description = fields.Text("Description", translate=True)
 
-    def get_rec_name(self, ids, name):
-        if not ids:
-            return {}
-        res = {}
-        for product in self.browse(ids):
-            name = product.name
-            if product.code:
-                name = '[' + product.code + '] ' + product.name
-            res[product.id] = name
-        return res
+    def get_rec_name(self, name):
+        if self.code:
+            return '[' + self.code + '] ' + self.name
+        else:
+            return self.name
 
-    def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], order=[])
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        ids = map(int, cls.search([('code',) + clause[1:]], order=[]))
         if ids:
-            ids += self.search([('name',) + clause[1:]], order=[])
+            ids += map(int, cls.search([('name',) + clause[1:]], order=[]))
             return [('id', 'in', ids)]
         return [('name',) + clause[1:]]
 
-    def delete(self, ids):
-        template_obj = Pool().get('product.template')
-
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(cls, products):
+        Template = Pool().get('product.template')
 
         # Get the templates before we delete the products.
-        products = self.browse(ids)
-        template_ids = [product.template.id for product in products]
+        templates = [product.template for product in products]
 
-        res = super(Product, self).delete(ids)
+        super(Product, cls).delete(products)
 
         # Get templates that are still linked after delete.
-        templates = template_obj.browse(template_ids)
-        unlinked_template_ids = [template.id for template in templates \
-                                 if not template.products]
-        if unlinked_template_ids:
-            template_obj.delete(unlinked_template_ids)
+        unlinked_templates = [template for template in templates
+            if not template.products]
+        if unlinked_templates:
+            Template.delete(unlinked_templates)
 
-        return res
+    @classmethod
+    def copy(cls, products, default=None):
+        Template = Pool().get('product.template')
 
-    def copy(self, ids, default=None):
-        template_obj = Pool().get('product.template')
-
-        int_id = False
-        if isinstance(ids, (int, long)):
-            int_id = True
-            ids = [ids]
         if default is None:
             default = {}
         default = default.copy()
         default['products'] = None
-        new_ids = []
-        for product in self.browse(ids):
-            default['template'] = template_obj.copy(product.template.id)
-            new_id = super(Product, self).copy(product.id, default=default)
-            new_ids.append(new_id)
-
-        if int_id:
-            return new_ids[0]
-        return new_ids
-
-Product()
+        new_products = []
+        for product in products:
+            template, = Template.copy([product.template])
+            default['template'] = template.id
+            new_products.extend(super(Product, cls).copy([product],
+                    default=default))
+        return new_products
