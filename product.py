@@ -1,17 +1,17 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 
-from trytond.model import Model
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
+
+__all__ = ['Product']
+__metaclass__ = PoolMeta
 
 
-class Product(Model):
-    _name = 'product.product'
+class Product:
+    __name__ = 'product.product'
 
-    def get_supply_period(self, product):
+    def get_supply_period(self):
         'Return the supply period for the product'
         pool = Pool()
-        configuration_obj = pool.get('production.configuration')
-        return int(configuration_obj.browse(1).supply_period or 0)
-
-Product()
+        Configuration = pool.get('production.configuration')
+        return int(Configuration(1).supply_period or 0)
