@@ -10,6 +10,11 @@ from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['SaleOpportunity', 'SaleOpportunityLine',
+    'SaleOpportunityHistory', 'SaleOpportunityEmployee',
+    'OpenSaleOpportunityEmployeeStart', 'OpenSaleOpportunityEmployee',
+    'SaleOpportunityMonthly', 'SaleOpportunityEmployeeMonthly']
+
 STATES = [
     ('lead', 'Lead'),
     ('opportunity', 'Opportunity'),
@@ -29,11 +34,9 @@ _DEPENDS_STOP = ['state']
 
 class SaleOpportunity(Workflow, ModelSQL, ModelView):
     'Sale Opportunity'
-    _name = "sale.opportunity"
-    _description = __doc__
+    __name__ = "sale.opportunity"
     _history = True
     _rec_name = 'description'
-
     party = fields.Many2One('party.party', 'Party', required=True, select=True,
         on_change=['party'], states=_STATES_STOP, depends=_DEPENDS_STOP)
     address = fields.Many2One('party.address', 'Address',
@@ -88,19 +91,20 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'invisible': Eval('state') != 'converted',
             }, depends=['state'])
 
-    def __init__(self):
-        super(SaleOpportunity, self).__init__()
-        self._order.insert(0, ('start_date', 'DESC'))
-        self._sql_constraints += [
+    @classmethod
+    def __setup__(cls):
+        super(SaleOpportunity, cls).__setup__()
+        cls._order.insert(0, ('start_date', 'DESC'))
+        cls._sql_constraints += [
             ('check_percentage',
                 'CHECK(probability >= 0 AND probability <= 100)',
                 'Probability must be between 0 and 100!')
-        ]
-        self._error_messages.update({
+            ]
+        cls._error_messages.update({
                 'delete_cancel': 'Sale Opportunity "%s" must be cancelled '\
                     'before deletion!',
                 })
-        self._transitions |= set((
+        cls._transitions |= set((
                 ('lead', 'opportunity'),
                 ('lead', 'lost'),
                 ('lead', 'cancelled'),
@@ -111,7 +115,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 ('lost', 'lead'),
                 ('cancelled', 'lead'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'lead': {
                     'invisible': ~Eval('state').in_(
                         ['cancelled', 'lost', 'opportunity']),
@@ -132,202 +136,185 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                     },
                 })
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'lead'
 
-    def default_start_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
+    @staticmethod
+    def default_start_date():
+        Date = Pool().get('ir.date')
+        return Date.today()
 
-    def default_probability(self):
+    @staticmethod
+    def default_probability():
         return 50
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_employee(self):
-        user_obj = Pool().get('res.user')
+    @staticmethod
+    def default_employee():
+        User = Pool().get('res.user')
 
         if Transaction().context.get('employee'):
             return Transaction().context['employee']
         else:
-            user = user_obj.browse(Transaction().user)
+            user = User(Transaction().user)
             if user.employee:
                 return user.employee.id
 
-    def default_payment_term(self):
-        payment_term_obj = Pool().get('account.invoice.payment_term')
-        payment_term_ids = payment_term_obj.search(self.payment_term.domain)
-        if len(payment_term_ids) == 1:
-            return payment_term_ids[0]
+    @classmethod
+    def default_payment_term(cls):
+        PaymentTerm = Pool().get('account.invoice.payment_term')
+        payment_terms = PaymentTerm.search(cls.payment_term.domain)
+        if len(payment_terms) == 1:
+            return payment_terms[0].id
 
-    def get_currency(self, ids, name):
+    def get_currency(self, name):
+        return self.company.currency.id
+
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
+
+    def on_change_company(self):
         res = {}
-        for opportunity in self.browse(ids):
-            res[opportunity.id] = opportunity.company.currency.id
+        if self.company:
+            res['currency'] = self.company.currency.id
+            res['currency.rec_name'] = self.company.currency.rec_name
+            res['currency_digits'] = self.company.currency.digits
         return res
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for opportunity in self.browse(ids):
-            res[opportunity.id] = opportunity.company.currency.digits
-        return res
-
-    def on_change_company(self, values):
-        company_obj = Pool().get('company.company')
-
-        res = {}
-        if values.get('company'):
-            company = company_obj.browse(values['company'])
-            res['currency'] = company.currency.id
-            res['currency.rec_name'] = company.currency.rec_name
-            res['currency_digits'] = company.currency.digits
-        return res
-
-    def on_change_party(self, values):
-        party_obj = Pool().get('party.party')
-        payment_term_obj = Pool().get('account.invoice.payment_term')
+    def on_change_party(self):
+        PaymentTerm = Pool().get('account.invoice.payment_term')
 
         res = {
             'payment_term': None,
-        }
-        if values.get('party'):
-            party = party_obj.browse(values['party'])
-            if party.customer_payment_term:
-                res['payment_term'] = party.customer_payment_term.id
+            }
+        if self.party:
+            if self.party.customer_payment_term:
+                res['payment_term'] = self.party.customer_payment_term.id
+                res['payment_term.rec_name'] = \
+                    self.party.customer_payment_term.rec_name
         if not res['payment_term']:
             res['payment_term'] = self.default_payment_term()
-        if res['payment_term']:
-            res['payment_term.rec_name'] = payment_term_obj.browse(
-                    res['payment_term']).rec_name
+            res['payment_term.rec_name'] = PaymentTerm(
+                res['payment_term']).rec_name
+        print res
         return res
 
-    def _get_sale_line_opportunity_line(self, opportunity):
+    def _get_sale_line_opportunity_line(self, sale):
         '''
-        Return sale line values for each opportunity line
-
-        :param opportunity: the BrowseRecord of opportunity
-
-        :return: a dictionary with opportunity line id as key
-            and a dictionary of sale line values as value
+        Return sale lines for each opportunity line
         '''
-        line_obj = Pool().get('sale.opportunity.line')
         res = {}
-        for line in opportunity.lines:
+        for line in self.lines:
             if line.sale_line:
                 continue
-            val = line_obj.get_sale_line(line)
-            if val:
-                res[line.id] = val
+            sale_line = line.get_sale_line(sale)
+            if sale_line:
+                res[line.id] = sale_line
         return res
 
-    def _get_sale_opportunity(self, opportunity):
+    def _get_sale_opportunity(self):
         '''
-        Return sale values for an opportunity
-
-        :param opportunity: the BrowseRecord of the opportunity
-
-        :return: a dictionary with sale fields as key and sale values as value
+        Return sale for an opportunity
         '''
-        res = {
-            'description': opportunity.description,
-            'party': opportunity.party.id,
-            'payment_term': opportunity.payment_term.id,
-            'company': opportunity.company.id,
-            'invoice_address': opportunity.address and opportunity.address.id,
-            'shipment_address': opportunity.address and opportunity.address.id,
-            'currency': opportunity.company.currency.id,
-            'comment': opportunity.comment,
-        }
-        return res
+        Sale = Pool().get('sale.sale')
+        with Transaction().set_user(0, set_context=True):
+            return Sale(
+                description=self.description,
+                party=self.party,
+                payment_term=self.payment_term,
+                company=self.company,
+                invoice_address=self.address,
+                shipment_address=self.address,
+                currency=self.company.currency,
+                comment=self.comment,
+                sale_date=None,
+                )
 
-    def create_sale(self, opportunity):
+    def create_sale(self):
         '''
-        Create a sale for the opportunity and return the sale id
+        Create a sale for the opportunity and return the sale
         '''
-        pool = Pool()
-        sale_obj = pool.get('sale.sale')
-        sale_line_obj = pool.get('sale.line')
-        line_obj = pool.get('sale.opportunity.line')
+        Line = Pool().get('sale.opportunity.line')
 
-        if opportunity.sale:
+        if self.sale:
             return
 
-        values = self._get_sale_opportunity(opportunity)
-        sale_line_values = self._get_sale_line_opportunity_line(opportunity)
+        sale = self._get_sale_opportunity()
+        sale_lines = self._get_sale_line_opportunity_line(sale)
+        sale.save()
 
-        with Transaction().set_user(0, set_context=True):
-            sale_id = sale_obj.create(values)
+        for line_id, sale_line in sale_lines.iteritems():
+            sale_line.sale = sale
+            sale_line.save()
+            Line.write([Line(line_id)], {
+                    'sale_line': sale_line.id,
+                    })
 
-        for line_id, values in sale_line_values.iteritems():
-            values['sale'] = sale_id
-            with Transaction().set_user(0, set_context=True):
-                sale_line_id = sale_line_obj.create(values)
-            line_obj.write(line_id, {
-                'sale_line': sale_line_id,
+        self.write([self], {
+                'sale': sale.id,
                 })
+        return sale
 
-        self.write(opportunity.id, {
-            'sale': sale_id,
-            })
-        return sale_id
-
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(cls, opportunities):
         # Cancel before delete
-        self.cancel(ids)
-        for opportunity in self.browse(ids):
+        cls.cancel(opportunities)
+        for opportunity in opportunities:
             if opportunity.state != 'cancel':
-                self.raise_user_error('delete_cancel', opportunity.rec_name)
-        return super(SaleOpportunity, self).delete(ids)
+                cls.raise_user_error('delete_cancel', opportunity.rec_name)
+        super(SaleOpportunity, cls).delete(opportunities)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('lead')
-    def lead(self, ids):
+    def lead(cls, opportunities):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('opportunity')
-    def opportunity(self, ids):
+    def opportunity(cls, opportunities):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('converted')
-    def convert(self, ids):
-        date_obj = Pool().get('ir.date')
-        self.write(ids, {
-                'end_date': date_obj.today(),
+    def convert(cls, opportunities):
+        Date = Pool().get('ir.date')
+        cls.write(opportunities, {
+                'end_date': Date.today(),
                 })
-        for opportunity in self.browse(ids):
-            self.create_sale(opportunity)
+        for opportunity in opportunities:
+            opportunity.create_sale()
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('lost')
-    def lost(self, ids):
-        date_obj = Pool().get('ir.date')
-        self.write(ids, {
-                'end_date': date_obj.today(),
+    def lost(cls, opportunities):
+        Date = Pool().get('ir.date')
+        cls.write(opportunities, {
+                'end_date': Date.today(),
                 })
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
-    def cancel(self, ids):
-        date_obj = Pool().get('ir.date')
-        self.write(ids, {
-                'end_date': date_obj.today(),
+    def cancel(cls, opportunities):
+        Date = Pool().get('ir.date')
+        cls.write(opportunities, {
+                'end_date': Date.today(),
                 })
-
-SaleOpportunity()
 
 
 class SaleOpportunityLine(ModelSQL, ModelView):
     'Sale Opportunity Line'
-    _name = "sale.opportunity.line"
-    _description = __doc__
+    __name__ = "sale.opportunity.line"
     _rec_name = "product"
     _history = True
-
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
     sequence = fields.Integer('Sequence',
         order_field='(%(table)s.sequence IS NULL) %(order)s, '
@@ -338,97 +325,68 @@ class SaleOpportunityLine(ModelSQL, ModelView):
             digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit', required=True)
     unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'get_unit_digits')
+        on_change_with=['unit']), 'on_change_with_unit_digits')
     sale_line = fields.Many2One('sale.line', 'Sale Line', readonly=True,
         states={
             'invisible': (Eval('_parent_opportunity', {}).get('state')
                 != 'converted'),
             })
 
-    def __init__(self):
-        super(SaleOpportunityLine, self).__init__()
-        self._order.insert(0, ('sequence', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(SaleOpportunityLine, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
 
-        super(SaleOpportunityLine, self).init(module_name)
+        super(SaleOpportunityLine, cls).__register__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    def on_change_with_unit_digits(self, vals):
-        uom_obj = Pool().get('product.uom')
-        if vals.get('unit'):
-            uom = uom_obj.browse(vals['unit'])
-            return uom.digits
+    def on_change_with_unit_digits(self, name=None):
+        if self.unit:
+            return self.unit.digits
         return 2
 
-    def get_unit_digits(self, ids, name):
-        res = {}
-        for line in self.browse(ids):
-            if line.unit:
-                res[line.id] = line.unit.digits
-            else:
-                res[line.id] = 2
-        return res
-
-    def on_change_product(self, vals):
-        product_obj = Pool().get('product.product')
-
-        if not vals.get('product'):
+    def on_change_product(self):
+        if not self.product:
             return {}
         res = {}
 
-        product = product_obj.browse(vals['product'])
-        category = product.sale_uom.category
-        if not vals.get('unit') \
-                or vals.get('unit') not in [x.id for x in category.uoms]:
-            res['unit'] = product.sale_uom.id
-            res['unit.rec_name'] = product.sale_uom.rec_name
-            res['unit_digits'] = product.sale_uom.digits
+        category = self.product.sale_uom.category
+        if (not self.unit
+                or self.unit not in category.uoms):
+            res['unit'] = self.product.sale_uom.id
+            res['unit.rec_name'] = self.product.sale_uom.rec_name
+            res['unit_digits'] = self.product.sale_uom.digits
         return res
 
-    def get_sale_line(self, line):
+    def get_sale_line(self, sale):
         '''
-        Return sale line values for opportunity line
-
-        :param line: the BrowseRecord of the line
-
-        :return: a dictionary with sale line fields as key
-            and sale line values as value
+        Return sale line for opportunity line
         '''
-        sale_line_obj = Pool().get('sale.line')
-        res = {
-            'type': 'line',
-            'quantity': line.quantity,
-            'unit': line.unit.id,
-            'product': line.product.id,
-        }
-        res.update(sale_line_obj.on_change_product({
-            'product': line.product.id,
-            'unit': line.unit.id,
-            'quantity': line.quantity,
-            '_parent_sale.party': line.opportunity.party.id,
-            '_parent_sale.currency': line.opportunity.company.currency.id,
-            }))
-        for field_name, field in sale_line_obj._columns.iteritems():
-            if field._type not in ('one2many', 'many2many'):
-                continue
-            if field_name not in res:
-                continue
-            res[field_name] = [('add', res[field_name])]
-        return res
-
-SaleOpportunityLine()
+        SaleLine = Pool().get('sale.line')
+        with Transaction().set_user(0, set_context=True):
+            sale_line = SaleLine(
+                type='line',
+                quantity=self.quantity,
+                unit=self.unit,
+                product=self.product,
+                sale=sale,
+                description=None,
+                )
+        for k, v in sale_line.on_change_product().iteritems():
+            setattr(sale_line, k, v)
+        return sale_line
 
 
 class SaleOpportunityHistory(ModelSQL, ModelView):
     'Sale Opportunity History'
-    _name = 'sale.opportunity.history'
-    _description = __doc__
-
+    __name__ = 'sale.opportunity.history'
     date = fields.DateTime('Change Date')
     opportunity = fields.Many2One('sale.opportunity', 'Sale Opportunity')
     user = fields.Many2One('res.user', 'User')
@@ -454,13 +412,15 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         'invisible': Not(Equal(Eval('state'), 'lost')),
     }, depends=['state'])
 
-    def __init__(self):
-        super(SaleOpportunityHistory, self).__init__()
-        self._order.insert(0, ('date', 'DESC'))
+    @classmethod
+    def __setup__(cls):
+        super(SaleOpportunityHistory, cls).__setup__()
+        cls._order.insert(0, ('date', 'DESC'))
 
-    def _table_query_fields(self):
-        opportunity_obj = Pool().get('sale.opportunity')
-        table = '%s__history' % opportunity_obj._table
+    @classmethod
+    def _table_query_fields(cls):
+        Opportunity = Pool().get('sale.opportunity')
+        table = '%s__history' % Opportunity._table
         return [
             'MIN("%s".__id) AS id' % table,
             '"%s".id AS opportunity' % table,
@@ -469,44 +429,42 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
             ('COALESCE("%s".write_uid, "%s".create_uid) AS user'
                 % (table, table)),
             ] + ['"%s"."%s"' % (table, name)
-                for name, field in self._columns.iteritems()
+                for name, field in cls._fields.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
-    def _table_query_group(self):
-        opportunity_obj = Pool().get('sale.opportunity')
-        table = '%s__history' % opportunity_obj._table
+    @classmethod
+    def _table_query_group(cls):
+        Opportunity = Pool().get('sale.opportunity')
+        table = '%s__history' % Opportunity._table
         return [
             '"%s".id' % table,
             'COALESCE("%s".write_uid, "%s".create_uid)' % (table, table),
         ] + ['"%s"."%s"' % (table, name)
-                for name, field in self._columns.iteritems()
+                for name, field in cls._fields.iteritems()
                 if name not in ('id', 'opportunity', 'date', 'user')
                 and not hasattr(field, 'set')]
 
-    def table_query(self):
-        opportunity_obj = Pool().get('sale.opportunity')
-        return (('SELECT ' + \
-                (', '.join(self._table_query_fields())) + \
-                ' FROM "%s__history" '
-                'GROUP BY ' + \
-                (', '.join(self._table_query_group()))) % \
-                opportunity_obj._table, [])
+    @classmethod
+    def table_query(cls):
+        Opportunity = Pool().get('sale.opportunity')
+        return (('SELECT ' + (', '.join(cls._table_query_fields()))
+                + ' FROM "%s__history" GROUP BY '
+                + (', '.join(cls._table_query_group())))
+            % Opportunity._table, [])
 
-    def get_lines(self, ids, name):
-        line_obj = Pool().get('sale.opportunity.line')
-        histories = self.browse(ids)
-        result = {}
+    def get_lines(self, name):
+        Line = Pool().get('sale.opportunity.line')
         # We will always have only one id per call due to datetime_field
-        for history in histories:
-            result[history.id] = line_obj.search([
-                ('opportunity', '=', history.opportunity.id),
-            ])
-        return result
+        lines = Line.search([
+                ('opportunity', '=', self.opportunity.id),
+                ])
+        return [l.id for l in lines]
 
-    def read(self, ids, fields_names=None):
-        res = super(SaleOpportunityHistory, self).read(ids,
-                fields_names=fields_names)
+    @classmethod
+    def read(cls, ids, fields_names=None):
+        res = super(SaleOpportunityHistory, cls).read(ids,
+            fields_names=fields_names)
 
         # Remove microsecond from timestamp
         for values in res:
@@ -518,14 +476,10 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
                 values['date'] = values['date'].replace(microsecond=0)
         return res
 
-SaleOpportunityHistory()
-
 
 class SaleOpportunityEmployee(ModelSQL, ModelView):
     'Sale Opportunity per Employee'
-    _name = 'sale.opportunity_employee'
-    _description = __doc__
-
+    __name__ = 'sale.opportunity_employee'
     employee = fields.Many2One('company.employee', 'Employee')
     number = fields.Integer('Number')
     converted = fields.Integer('Converted')
@@ -545,14 +499,17 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
     conversion_amount_rate = fields.Function(fields.Float(
         'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
 
-    def _converted_state(self):
+    @staticmethod
+    def _converted_state():
         return ['converted']
 
-    def _lost_state(self):
+    @staticmethod
+    def _lost_state():
         return ['lost']
 
-    def table_query(self):
-        opportunity_obj = Pool().get('sale.opportunity')
+    @classmethod
+    def table_query(cls):
+        Opportunity = Pool().get('sale.opportunity')
         clause = ' '
         args = [True]
         if Transaction().context.get('start_date'):
@@ -570,69 +527,48 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
                     'company, '
                     'COUNT(1) AS number, '
                     'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._converted_state()) + ') '
+                        for x in cls._converted_state()) + ') '
                         'THEN 1 ELSE 0 END) AS converted, '
                     'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._lost_state()) + ') '
+                        for x in cls._lost_state()) + ') '
                         'THEN 1 ELSE 0 END) AS lost, '
                     'SUM(amount) AS amount, '
                     'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._converted_state()) + ') '
+                        for x in cls._converted_state()) + ') '
                         'THEN amount ELSE 0 END) AS converted_amount '
-                'FROM "' + opportunity_obj._table + '" '
-                'WHERE %s ' \
-                + clause + \
-                'GROUP BY employee, company', args)
+            'FROM "' + Opportunity._table + '" '
+            'WHERE %s ' + clause +
+            'GROUP BY employee, company', args)
 
-    def get_conversion_rate(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            if record.number:
-                res[record.id] = (float(record.converted)
-                    / record.number * 100.0)
-            else:
-                res[record.id] = 0.0
-        return res
+    def get_conversion_rate(self, name):
+        if self.number:
+            return float(self.converted) / self.number * 100.0
+        else:
+            return 0.0
 
-    def get_currency(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = record.company.currency.id
-        return res
+    def get_currency(self, name):
+        return self.company.currency.id
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = record.company.currency.digits
-        return res
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
 
-    def get_conversion_amount_rate(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            if record.amount:
-                res[record.id] = (float(record.converted_amount) /
-                        float(record.amount) * 100.0)
-            else:
-                res[record.id] = 0.0
-        return res
-
-SaleOpportunityEmployee()
+    def get_conversion_amount_rate(self, name):
+        if self.amount:
+            return float(self.converted_amount) / float(self.amount) * 100.0
+        else:
+            return 0.0
 
 
 class OpenSaleOpportunityEmployeeStart(ModelView):
     'Open Sale Opportunity per Employee'
-    _name = 'sale.opportunity_employee.open.start'
-    _description = __doc__
+    __name__ = 'sale.opportunity_employee.open.start'
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
-
-OpenSaleOpportunityEmployeeStart()
 
 
 class OpenSaleOpportunityEmployee(Wizard):
     'Open Sale Opportunity per Employee'
-    _name = 'sale.opportunity_employee.open'
-
+    __name__ = 'sale.opportunity_employee.open'
     start = StateView('sale.opportunity_employee.open.start',
         'sale_opportunity.opportunity_employee_open_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -640,21 +576,17 @@ class OpenSaleOpportunityEmployee(Wizard):
             ])
     open_ = StateAction('sale_opportunity.act_opportunity_employee_form')
 
-    def do_open_(self, session, action):
+    def do_open_(self, action):
         action['pyson_context'] = PYSONEncoder().encode({
-                'start_date': session.start.start_date,
-                'end_date': session.start.end_date,
+                'start_date': self.start.start_date,
+                'end_date': self.start.end_date,
                 })
         return action, {}
-
-OpenSaleOpportunityEmployee()
 
 
 class SaleOpportunityMonthly(ModelSQL, ModelView):
     'Sale Opportunity per Month'
-    _name = 'sale.opportunity_monthly'
-    _description = __doc__
-
+    __name__ = 'sale.opportunity_monthly'
     year = fields.Char('Year')
     month = fields.Integer('Month')
     year_month = fields.Function(fields.Char('Year-Month'),
@@ -677,21 +609,25 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
     conversion_amount_rate = fields.Function(fields.Float(
         'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
 
-    def __init__(self):
-        super(SaleOpportunityMonthly, self).__init__()
-        self._order.insert(0, ('year', 'DESC'))
-        self._order.insert(1, ('month', 'DESC'))
+    @classmethod
+    def __setup__(cls):
+        super(SaleOpportunityMonthly, cls).__setup__()
+        cls._order.insert(0, ('year', 'DESC'))
+        cls._order.insert(1, ('month', 'DESC'))
 
-    def _converted_state(self):
+    @staticmethod
+    def _converted_state():
         return ['converted']
 
-    def _lost_state(self):
+    @staticmethod
+    def _lost_state():
         return ['lost']
 
-    def table_query(self):
-        opportunity_obj = Pool().get('sale.opportunity')
-        type_id = FIELDS[self.id._type].sql_type(self.id)[0]
-        type_year = FIELDS[self.year._type].sql_type(self.year)[0]
+    @classmethod
+    def table_query(cls):
+        Opportunity = Pool().get('sale.opportunity')
+        type_id = FIELDS[cls.id._type].sql_type(cls.id)[0]
+        type_year = FIELDS[cls.year._type].sql_type(cls.year)[0]
         return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
                     'create_date, write_uid, write_date, '
                     'CAST(year AS ' + type_year + ') AS year, month, company, '
@@ -708,65 +644,44 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
                         'company, '
                         'COUNT(1) AS number, '
                         'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._converted_state()) + ') '
+                        for x in cls._converted_state()) + ') '
                         'THEN 1 ELSE 0 END) AS converted, '
                         'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._lost_state()) + ') '
+                        for x in cls._lost_state()) + ') '
                         'THEN 1 ELSE 0 END) AS lost, '
                         'SUM(amount) AS amount, '
                         'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._converted_state()) + ') '
+                        for x in cls._converted_state()) + ') '
                         'THEN amount ELSE 0 END) AS converted_amount '
-                    'FROM "' + opportunity_obj._table + '" '
-                    'GROUP BY year, month, company) AS "' + self._table + '"',
+                    'FROM "' + Opportunity._table + '" '
+                    'GROUP BY year, month, company) AS "' + cls._table + '"',
                 [])
 
-    def get_conversion_rate(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            if record.number:
-                res[record.id] = (float(record.converted)
-                    / record.number * 100.0)
-            else:
-                res[record.id] = 0.0
-        return res
+    def get_conversion_rate(self, name):
+        if self.number:
+            return float(self.converted) / self.number * 100.0
+        else:
+            return 0.0
 
-    def get_year_month(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = '%s-%s' % (record.year, int(record.month))
-        return res
+    def get_year_month(self, name):
+        return '%s-%s' % (self.year, int(self.month))
 
-    def get_currency(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = record.company.currency.id
-        return res
+    def get_currency(self, name):
+        return self.company.currency.id
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = record.company.currency.digits
-        return res
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
 
-    def get_conversion_amount_rate(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            if record.amount:
-                res[record.id] = (float(record.converted_amount) /
-                        float(record.amount) * 100.0)
-            else:
-                res[record.id] = 0.0
-        return res
-
-SaleOpportunityMonthly()
+    def get_conversion_amount_rate(self, name):
+        if self.amount:
+            return float(self.converted_amount) / float(self.amount) * 100.0
+        else:
+            return 0.0
 
 
 class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
     'Sale Opportunity per Employee per Month'
-    _name = 'sale.opportunity_employee_monthly'
-    _description = __doc__
-
+    __name__ = 'sale.opportunity_employee_monthly'
     year = fields.Char('Year')
     month = fields.Integer('Month')
     employee = fields.Many2One('company.employee', 'Employee')
@@ -788,22 +703,26 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
     conversion_amount_rate = fields.Function(fields.Float(
         'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
 
-    def __init__(self):
-        super(SaleOpportunityEmployeeMonthly, self).__init__()
-        self._order.insert(0, ('year', 'DESC'))
-        self._order.insert(1, ('month', 'DESC'))
-        self._order.insert(2, ('employee', 'ASC'))
+    @classmethod
+    def __setup__(cls):
+        super(SaleOpportunityEmployeeMonthly, cls).__setup__()
+        cls._order.insert(0, ('year', 'DESC'))
+        cls._order.insert(1, ('month', 'DESC'))
+        cls._order.insert(2, ('employee', 'ASC'))
 
-    def _converted_state(self):
+    @staticmethod
+    def _converted_state():
         return ['converted']
 
-    def _lost_state(self):
+    @staticmethod
+    def _lost_state():
         return ['lost']
 
-    def table_query(self):
-        opportunity_obj = Pool().get('sale.opportunity')
-        type_id = FIELDS[self.id._type].sql_type(self.id)[0]
-        type_year = FIELDS[self.year._type].sql_type(self.year)[0]
+    @classmethod
+    def table_query(cls):
+        Opportunity = Pool().get('sale.opportunity')
+        type_id = FIELDS[cls.id._type].sql_type(cls.id)[0]
+        type_year = FIELDS[cls.year._type].sql_type(cls.year)[0]
         return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
                     'create_date, write_uid, write_date, '
                     'CAST(year AS ' + type_year + ') AS year, month, '
@@ -823,49 +742,33 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
                         'company, '
                         'COUNT(1) AS number, '
                         'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._converted_state()) + ') '
+                        for x in cls._converted_state()) + ') '
                         'THEN 1 ELSE 0 END) AS converted, '
                         'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._lost_state()) + ') '
+                        for x in cls._lost_state()) + ') '
                         'THEN 1 ELSE 0 END) AS lost, '
                         'SUM(amount) AS amount, '
                         'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in self._converted_state()) + ') '
+                        for x in cls._converted_state()) + ') '
                         'THEN amount ELSE 0 END) AS converted_amount '
-                    'FROM "' + opportunity_obj._table + '" '
+                    'FROM "' + Opportunity._table + '" '
                     'GROUP BY year, month, employee, company) '
-                'AS "' + self._table + '"', [])
+                'AS "' + cls._table + '"', [])
 
-    def get_conversion_rate(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            if record.number:
-                res[record.id] = (float(record.converted)
-                    / record.number * 100.0)
-            else:
-                res[record.id] = 0.0
-        return res
+    def get_conversion_rate(self, name):
+        if self.number:
+            return float(self.converted) / self.number * 100.0
+        else:
+            return 0.0
 
-    def get_currency(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = record.company.currency.id
-        return res
+    def get_currency(self, name):
+        return self.company.currency.id
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            res[record.id] = record.company.currency.digits
-        return res
+    def get_currency_digits(self, name):
+        return self.company.currency.digits
 
-    def get_conversion_amount_rate(self, ids, name):
-        res = {}
-        for record in self.browse(ids):
-            if record.amount:
-                res[record.id] = (float(record.converted_amount) /
-                        float(record.amount) * 100.0)
-            else:
-                res[record.id] = 0.0
-        return res
-
-SaleOpportunityEmployeeMonthly()
+    def get_conversion_amount_rate(self, name):
+        if self.amount:
+            return float(self.converted_amount) / float(self.amount) * 100.0
+        else:
+            return 0.0
