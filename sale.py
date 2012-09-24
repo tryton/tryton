@@ -2,33 +2,28 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond.model import Model
-from trytond.pool import Pool
+from trytond.pool import PoolMeta
+
+__all__ = ['Sale']
+__metaclass__ = PoolMeta
 
 
-class Sale(Model):
-    _name = 'sale.sale'
+class Sale:
+    __name__ = 'sale.sale'
 
-    def _get_carrier_context(self, values):
-        pool = Pool()
-        carrier_obj = pool.get('carrier')
+    def _get_carrier_context(self):
+        context = super(Sale, self)._get_carrier_context()
 
-        context = super(Sale, self)._get_carrier_context(values)
-
-        carrier = carrier_obj.browse(values['carrier'])
-        if carrier.carrier_cost_method != 'percentage':
+        if self.carrier.carrier_cost_method != 'percentage':
             return context
-        if not values.get('currency'):
+        if not self.currency:
             return context
         context = context.copy()
         amount = 0
-        for line in values.get('lines') or []:
-            if (line.get('unit_price') and line.get('quantity')
-                    and not line.get('shipment_cost')):
-                amount += (line['unit_price']
-                    * Decimal(str(line['quantity'] or 0)))
+        for line in self.lines or []:
+            if line.unit_price and line.quantity and not line.shipment_cost:
+                amount += (line.unit_price
+                    * Decimal(str(line.quantity or 0)))
         context['amount'] = amount
-        context['currency'] = values['currency']
+        context['currency'] = self.currency.id
         return context
-
-Sale()

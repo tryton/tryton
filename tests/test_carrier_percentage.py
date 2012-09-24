@@ -49,42 +49,40 @@ class CarrierWeightTestCase(unittest.TestCase):
         Test compute_percentage.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party_id = self.party.create({
+            party = self.party.create({
                     'name': 'Carrier',
                     })
-            uom_id, = self.uom.search([
+            uom, = self.uom.search([
                     ('name', '=', 'Unit'),
                     ])
-            category_id = self.category.create({
+            category = self.category.create({
                     'name': 'Category',
                     })
-            product_id = self.product.create({
+            product = self.product.create({
                     'name': 'Carrier',
-                    'default_uom': uom_id,
-                    'category': category_id,
+                    'default_uom': uom.id,
+                    'category': category.id,
                     'type': 'service',
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
                     })
-            currency_id, = self.currency.search([
+            currency, = self.currency.search([
                     ('code', '=', 'cu1'),
                     ])
-            carrier_id = self.carrier.create({
-                    'party': party_id,
-                    'carrier_product': product_id,
+            carrier = self.carrier.create({
+                    'party': party.id,
+                    'carrier_product': product.id,
                     'carrier_cost_method': 'percentage',
                     'percentage': Decimal(15),
                     })
-            carrier = self.carrier.browse(carrier_id)
             for amount, price in [
                     (Decimal(0), Decimal(0)),
                     (Decimal(100), Decimal('15.00')),
                     (Decimal(150), Decimal('22.50')),
                     ]:
                 self.assertEqual(
-                    self.carrier.compute_percentage(carrier, amount,
-                        currency_id),
-                    (price, currency_id))
+                    carrier.compute_percentage(amount, currency.id),
+                    (price, currency.id))
 
 
 def doctest_dropdb(test):
