@@ -7,15 +7,15 @@ from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 from trytond.pool import Pool
 
+__all__ = ['Statement', 'Line']
+
 _STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
 
 
 class Statement(Workflow, ModelSQL, ModelView):
     'Account Statement'
-    _name = 'account.statement'
-    _description = __doc__
-
+    __name__ = 'account.statement'
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, states=_STATES, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
@@ -33,7 +33,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         on_change=['journal', 'state', 'lines'], select=True,
         depends=['state', 'lines'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['journal']), 'get_currency_digits')
+            on_change_with=['journal']), 'on_change_with_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
         select=True)
     start_balance = fields.Numeric('Start Balance', required=True,
@@ -47,7 +47,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             digits=(16, Eval('currency_digits', 2)),
             on_change_with=['start_balance', 'end_balance'],
             depends=['currency_digits']),
-        'get_balance')
+        'on_change_with_balance')
     lines = fields.One2Many('account.statement.line', 'statement',
         'Transactions', states={
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
@@ -62,21 +62,22 @@ class Statement(Workflow, ModelSQL, ModelView):
     move_lines = fields.Function(fields.One2Many('account.move.line',
         None, 'Move Lines'), 'get_move_lines')
 
-    def __init__(self):
-        super(Statement, self).__init__()
-        self._order[0] = ('id', 'DESC')
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Statement, cls).__setup__()
+        cls._order[0] = ('id', 'DESC')
+        cls._error_messages.update({
                 'wrong_end_balance': 'End Balance must be %s!',
                 'delete_cancel': 'Statement "%s" must be cancelled before ' \
                     'deletion!',
                 })
-        self._transitions |= set((
+        cls._transitions |= set((
                 ('draft', 'validated'),
                 ('validated', 'posted'),
                 ('validated', 'cancel'),
                 ('cancel', 'draft'),
                 ))
-        self._buttons.update({
+        cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
                     },
@@ -91,259 +92,245 @@ class Statement(Workflow, ModelSQL, ModelView):
                     },
                 })
 
-    def init(self, module_name):
+    @classmethod
+    def __register__(cls, module_name):
         cursor = Transaction().cursor
 
         # Migration from 1.8: new field company
-        table = TableHandler(cursor, self, module_name)
+        table = TableHandler(cursor, cls, module_name)
         company_exist = table.column_exist('company')
 
-        super(Statement, self).init(module_name)
+        super(Statement, cls).__register__(module_name)
 
         # Migration from 1.8: fill new field company
         if not company_exist:
             offset = 0
             limit = cursor.IN_MAX
-            statement_ids = True
-            while statement_ids:
-                statement_ids = self.search([], offset=offset, limit=limit)
+            statements = True
+            while statements:
+                statements = cls.search([], offset=offset, limit=limit)
                 offset += limit
-                for statement in self.browse(statement_ids):
-                    self.write(statement.id, {
-                        'company': statement.journal.company.id,
-                    })
-            table = TableHandler(cursor, self, module_name)
+                for statement in statements:
+                    cls.write([statement], {
+                            'company': statement.journal.company.id,
+                            })
+            table = TableHandler(cursor, cls, module_name)
             table.not_null_action('company', action='add')
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
 
-    def default_state(self):
+    @staticmethod
+    def default_state():
         return 'draft'
 
-    def default_date(self):
-        date_obj = Pool().get('ir.date')
-        return date_obj.today()
+    @staticmethod
+    def default_date():
+        Date = Pool().get('ir.date')
+        return Date.today()
 
-    def default_currency_digits(self):
-        company_obj = Pool().get('company.company')
+    @staticmethod
+    def default_currency_digits():
+        Company = Pool().get('company.company')
         if Transaction().context.get('company'):
-            company = company_obj.browse(Transaction().context['company'])
+            company = Company(Transaction().context['company'])
             return company.currency.digits
         return 2
 
-    def on_change_journal(self, value):
+    def on_change_journal(self):
         res = {}
-        if not value.get('journal'):
+        if not self.journal:
             return res
 
-        statement_ids = self.search([
-            ('journal', '=', value['journal']),
-            ], order=[
+        statements = self.search([
+                ('journal', '=', self.journal.id),
+                ], order=[
                 ('date', 'DESC'),
-            ], limit=1)
-        if not statement_ids:
+                ], limit=1)
+        if not statements:
             return res
 
-        statement = self.browse(statement_ids[0])
+        statement, = statements
         res['start_balance'] = statement.end_balance
         return res
 
-    def on_change_with_currency_digits(self, vals):
-        journal_obj = Pool().get('account.statement.journal')
-        if vals.get('journal'):
-            journal = journal_obj.browse(vals['journal'])
-            return journal.currency.digits
+    def on_change_with_currency_digits(self, name=None):
+        if self.journal:
+            return self.journal.currency.digits
         return 2
 
-    def get_currency_digits(self, ids, name):
-        res = {}
-        for statement in self.browse(ids):
-            res[statement.id] = statement.journal.currency.digits
-        return res
+    @classmethod
+    def get_rec_name(cls, statements, name):
+        Lang = Pool().get('ir.lang')
 
-    def get_rec_name(self, ids, name):
-        lang_obj = Pool().get('ir.lang')
-
-        if not ids:
-            return {}
-
-        lang_id, = lang_obj.search([
+        lang, = Lang.search([
                 ('code', '=', Transaction().language),
                 ])
-        lang = lang_obj.browse(lang_id)
 
-        res = {}
-        for statement in self.browse(ids):
-            res[statement.id] = statement.journal.name + ' ' + \
-                    lang.currency(lang, statement.start_balance,
-                        statement.journal.currency, symbol=False,
-                        grouping=True) + \
-                    lang.currency(lang, statement.end_balance,
-                        statement.journal.currency, symbol=False,
-                        grouping=True)
-        return res
-
-    def search_rec_name(self, name, clause):
-        ids = self.search(['OR',
-            ('start_balance',) + tuple(clause[1:]),
-            ('end_balance',) + tuple(clause[1:]),
-            ])
-        if ids:
-            return [('id', 'in', ids)]
-        return [('journal',) + tuple(clause[1:])]
-
-    def get_move_lines(self, ids, name):
-        '''
-        Return the move lines that have been generated by the statements.
-        '''
-        res = {}
-        for statement in self.browse(ids):
-            res[statement.id] = []
-            for line in statement.lines:
-                if not line.move:
-                    continue
-                for move_line in line.move.lines:
-                    res[statement.id].append(move_line.id)
-        return res
-
-    def get_end_balance(self, ids, name):
-        statements = self.browse(ids)
         res = {}
         for statement in statements:
-            res[statement.id] = statement.start_balance
-            for line in statement.lines:
-                res[statement.id] += line.amount
+            res[statement.id] = (statement.journal.name + ' '
+                + Lang.currency(lang, statement.start_balance,
+                    statement.journal.currency, symbol=False, grouping=True)
+                + Lang.currency(lang, statement.end_balance,
+                    statement.journal.currency, symbol=False, grouping=True))
         return res
 
-    def get_balance(self, ids, name):
-        return dict((s.id, s.end_balance - s.start_balance)
-            for s in self.browse(ids))
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        statements = cls.search(['OR',
+                ('start_balance',) + tuple(clause[1:]),
+                ('end_balance',) + tuple(clause[1:]),
+                ])
+        if statements:
+            return [('id', 'in', [s.id for s in statements])]
+        return [('journal',) + tuple(clause[1:])]
 
-    def on_change_with_balance(self, values):
-        if not set(('end_balance', 'start_balance')) <= set(values):
-            return Decimal(0)
-        else:
-            return Decimal(values.get('end_balance') or 0
-                - values.get('start_balance') or 0)
+    def get_move_lines(self, name):
+        '''
+        Return the move lines that have been generated by the statement.
+        '''
+        move_lines = []
+        for line in self.lines:
+            if not line.move:
+                continue
+            for move_line in line.move.lines:
+                move_lines.append(move_line.id)
+        return move_lines
 
-    def on_change_lines(self, values):
+    def get_end_balance(self, name):
+        end_balance = self.start_balance
+        for line in self.lines:
+            end_balance += line.amount
+        return end_balance
+
+    def on_change_with_balance(self, name=None):
+        return ((getattr(self, 'end_balance', 0) or 0)
+            - (getattr(self, 'start_balance', 0) or 0))
+
+    def on_change_lines(self):
         pool = Pool()
-        invoice_obj = pool.get('account.invoice')
-        journal_obj = pool.get('account.statement.journal')
-        currency_obj = pool.get('currency.currency')
+        Currency = pool.get('currency.currency')
+        Line = pool.get('account.statement.line')
         res = {
             'lines': {},
-        }
-        if values.get('journal') and values.get('lines'):
-            journal = journal_obj.browse(values['journal'])
-            invoice_ids = set()
-            for line in values['lines']:
-                if line['invoice']:
-                    invoice_ids.add(line['invoice'])
+            }
+        if self.journal and self.lines:
+            invoices = set()
+            for line in self.lines:
+                if line.invoice:
+                    invoices.add(line.invoice)
             invoice_id2amount_to_pay = {}
-            for invoice in invoice_obj.browse(list(invoice_ids)):
+            for invoice in invoices:
                 with Transaction().set_context(date=invoice.currency_date):
                     invoice_id2amount_to_pay[invoice.id] = (
-                        currency_obj.compute(invoice.currency.id,
-                            invoice.amount_to_pay, journal.currency.id))
+                        Currency.compute(invoice.currency,
+                            invoice.amount_to_pay, self.journal.currency))
 
-            for line in values['lines']:
-                if line['invoice'] and line['id']:
-                    amount_to_pay = invoice_id2amount_to_pay[line['invoice']]
-                    if abs(line['amount']) > amount_to_pay:
+            for line in self.lines or []:
+                if line.invoice and line.id:
+                    amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
+                    if abs(line.amount) > amount_to_pay:
                         res['lines'].setdefault('update', [])
-                        if currency_obj.is_zero(journal.currency,
-                                amount_to_pay):
+                        if self.journal.currency.is_zero(amount_to_pay):
                             res['lines']['update'].append({
-                                'id': line['id'],
+                                'id': line.id,
                                 'invoice': None,
                                 })
                         else:
                             res['lines']['update'].append({
-                                'id': line['id'],
+                                'id': line.id,
                                 'amount': (amount_to_pay
-                                        if line['amount'] >= 0
+                                        if line.amount >= 0
                                         else -amount_to_pay),
                                 })
                             res['lines'].setdefault('add', [])
-                            vals = line.copy()
+                            vals = {}
+                            for field_name, field in Line._fields.iteritems():
+                                try:
+                                    value = getattr(line, field_name)
+                                except AttributeError:
+                                    continue
+                                if (value and field._type in ('many2one',
+                                            'one2one')):
+                                    vals[field_name] = value.id
+                                    vals[field_name + '.rec_name'] = \
+                                        value.rec_name
+                                else:
+                                    vals[field_name] = value
                             del vals['id']
-                            vals['amount'] = (abs(line['amount'])
+                            vals['amount'] = (abs(line.amount)
                                 - amount_to_pay)
-                            if line['amount'] < 0:
+                            if line.amount < 0:
                                 vals['amount'] = - vals['amount']
                             vals['invoice'] = None
+                            del vals['invoice.rec_name']
                             res['lines']['add'].append(vals)
-                    invoice_id2amount_to_pay[line['invoice']] = \
-                            amount_to_pay - abs(line['amount'])
+                    invoice_id2amount_to_pay[line.invoice.id] = \
+                            amount_to_pay - abs(line.amount)
         return res
 
-    def delete(self, ids):
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+    @classmethod
+    def delete(cls, statements):
         # Cancel before delete
-        self.cancel(ids)
-        for statement in self.browse(ids):
+        cls.cancel(statements)
+        for statement in statements:
             if statement.state != 'cancel':
-                self.raise_user_error('delete_cancel', statement.rec_name)
-        return super(Statement, self).delete(ids)
+                cls.raise_user_error('delete_cancel', statement.rec_name)
+        super(Statement, cls).delete(statements)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    def draft(self, ids):
+    def draft(cls, statements):
         pass
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('validated')
-    def validate(self, ids):
-        statement_line_obj = Pool().get('account.statement.line')
-        lang_obj = Pool().get('ir.lang')
+    def validate(cls, statements):
+        Lang = Pool().get('ir.lang')
 
-        for statement in self.browse(ids):
+        for statement in statements:
             computed_end_balance = statement.start_balance
             for line in statement.lines:
                 computed_end_balance += line.amount
             if computed_end_balance != statement.end_balance:
-                lang_id, = lang_obj.search([
+                lang, = Lang.search([
                         ('code', '=', Transaction().language),
                         ])
-                lang = lang_obj.browse(lang_id)
 
-                amount = lang_obj.format(lang,
+                amount = Lang.format(lang,
                         '%.' + str(statement.journal.currency.digits) + 'f',
                         computed_end_balance, True)
-                self.raise_user_error('wrong_end_balance',
+                cls.raise_user_error('wrong_end_balance',
                     error_args=(amount,))
             for line in statement.lines:
-                statement_line_obj.create_move(line)
+                line.create_move()
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('posted')
-    def post(self, ids):
-        statement_line_obj = Pool().get('account.statement.line')
+    def post(cls, statements):
+        StatementLine = Pool().get('account.statement.line')
 
-        statements = self.browse(ids)
         lines = [l for s in statements for l in s.lines]
-        statement_line_obj.post_move(lines)
+        StatementLine.post_move(lines)
 
+    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    def cancel(self, ids):
-        statement_line_obj = Pool().get('account.statement.line')
+    def cancel(cls, statements):
+        StatementLine = Pool().get('account.statement.line')
 
-        statements = self.browse(ids)
         lines = [l for s in statements for l in s.lines]
-        statement_line_obj.delete_move(lines)
-
-Statement()
+        StatementLine.delete_move(lines)
 
 
 class Line(ModelSQL, ModelView):
     'Account Statement Line'
-    _name = 'account.statement.line'
-    _description = __doc__
-
+    __name__ = 'account.statement.line'
     statement = fields.Many2One('account.statement', 'Statement',
             required=True, ondelete='CASCADE')
     date = fields.Date('Date', required=True)
@@ -377,9 +364,10 @@ class Line(ModelSQL, ModelView):
             },
         depends=['party', 'account', 'amount'])
 
-    def __init__(self):
-        super(Line, self).__init__()
-        self._error_messages.update({
+    @classmethod
+    def __setup__(cls):
+        super(Line, cls).__setup__()
+        cls._error_messages.update({
             'debit_credit_account_statement_journal': 'Please provide debit '
                 'and credit account on statement journal.',
             'same_debit_credit_account': 'Credit or debit account on '
@@ -387,222 +375,203 @@ class Line(ModelSQL, ModelView):
             'amount_greater_invoice_amount_to_pay': 'Amount (%s) greater than '
                 'the amount to pay of invoice!',
             })
-        self._sql_constraints += [
+        cls._sql_constraints += [
             ('check_statement_line_amount', 'CHECK(amount != 0)',
                 'Amount should be a positive or negative value!'),
             ]
 
-    def default_amount(self):
+    @staticmethod
+    def default_amount():
         return Decimal(0)
 
-    def on_change_party(self, value):
-        party_obj = Pool().get('party.party')
-        invoice_obj = Pool().get('account.invoice')
+    def on_change_party(self):
         res = {}
 
-        if value.get('party'):
-            party = party_obj.browse(value['party'])
-            if value.get('amount'):
-                if value['amount'] > Decimal("0.0"):
-                    account = party.account_receivable
+        if self.party:
+            if self.amount:
+                if self.amount > Decimal("0.0"):
+                    account = self.party.account_receivable
                 else:
-                    account = party.account_payable
+                    account = self.party.account_payable
                 res['account'] = account.id
                 res['account.rec_name'] = account.rec_name
 
-        if value.get('invoice'):
-            if value.get('party'):
-                invoice = invoice_obj.browse(value['invoice'])
-                if invoice.party != value['party']:
+        if self.invoice:
+            if self.party:
+                if self.invoice.party != self.party:
                     res['invoice'] = None
             else:
                 res['invoice'] = None
         return res
 
-    def on_change_amount(self, value):
-        pool = Pool()
-        party_obj = pool.get('party.party')
-        invoice_obj = pool.get('account.invoice')
-        journal_obj = pool.get('account.statement.journal')
-        currency_obj = pool.get('currency.currency')
+    def on_change_amount(self):
+        Currency = Pool().get('currency.currency')
         res = {}
 
-        if value.get('party'):
-            party = party_obj.browse(value['party'])
-            if value.get('account') and value['account'] not in (
-                party.account_receivable.id, party.account_payable.id):
+        if self.party:
+            if self.account and self.account not in (
+                    self.party.account_receivable, self.party.account_payable):
                 # The user has entered a non-default value, we keep it.
                 pass
-            elif value.get('amount'):
-                if value['amount'] > Decimal("0.0"):
-                    account = party.account_receivable
+            elif self.amount:
+                if self.amount > Decimal("0.0"):
+                    account = self.party.account_receivable
                 else:
-                    account = party.account_payable
+                    account = self.party.account_payable
                 res['account'] = account.id
                 res['account.rec_name'] = account.rec_name
-        if value.get('invoice'):
-            if value.get('amount') and value.get('_parent_statement.journal'):
-                invoice = invoice_obj.browse(value['invoice'])
-                journal = journal_obj.browse(
-                    value['_parent_statement.journal'])
+        if self.invoice:
+            if self.amount and self.statement and self.statement.journal:
+                invoice = self.invoice
+                journal = self.statement.journal
                 with Transaction().set_context(date=invoice.currency_date):
-                    amount_to_pay = currency_obj.compute(invoice.currency.id,
-                        invoice.amount_to_pay, journal.currency.id)
-                if abs(value['amount']) > amount_to_pay:
+                    amount_to_pay = Currency.compute(invoice.currency,
+                        invoice.amount_to_pay, journal.currency)
+                if abs(self.amount) > amount_to_pay:
                     res['invoice'] = None
             else:
                 res['invoice'] = None
         return res
 
-    def on_change_account(self, value):
-        invoice_obj = Pool().get('account.invoice')
+    def on_change_account(self):
         res = {}
 
-        if value.get('invoice'):
-            if value.get('account'):
-                invoice = invoice_obj.browse(value['invoice'])
-                if invoice.account.id != value['account']:
+        if self.invoice:
+            if self.account:
+                if self.invoice.account != self.account:
                     res['invoice'] = None
             else:
                 res['invoice'] = None
         return res
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, lines, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default.setdefault('move', None)
         default.setdefault('invoice', None)
-        return super(Line, self).copy(ids, default=default)
+        return super(Line, cls).copy(lines, default=default)
 
-    def create_move(self, line):
+    def create_move(self):
         '''
-        Create move for the statement line and return move id if created.
+        Create move for the statement line and return move if created.
         '''
         pool = Pool()
-        move_obj = pool.get('account.move')
-        period_obj = pool.get('account.period')
-        invoice_obj = pool.get('account.invoice')
-        currency_obj = pool.get('currency.currency')
-        move_line_obj = pool.get('account.move.line')
-        lang_obj = pool.get('ir.lang')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+        Invoice = pool.get('account.invoice')
+        Currency = pool.get('currency.currency')
+        MoveLine = pool.get('account.move.line')
+        Lang = pool.get('ir.lang')
 
-        if line.move:
+        if self.move:
             return
 
-        period_id = period_obj.find(line.statement.company.id,
-                date=line.date)
+        period_id = Period.find(self.statement.company.id, date=self.date)
 
-        move_lines = self._get_move_lines(line)
-        move_id = move_obj.create({
-                'name': unicode(line.date),
-                'period': period_id,
-                'journal': line.statement.journal.journal.id,
-                'date': line.date,
-                'lines': [('create', x) for x in move_lines],
-             })
+        move_lines = self._get_move_lines()
+        move = Move(
+            name=unicode(self.date),
+            period=period_id,
+            journal=self.statement.journal.journal,
+            date=self.date,
+            lines=move_lines,
+            )
+        move.save()
 
-        self.write(line.id, {
-            'move': move_id,
-            })
+        self.write([self], {
+                'move': move.id,
+                })
 
-        if line.invoice:
-            with Transaction().set_context(date=line.invoice.currency_date):
-                amount_to_pay = currency_obj.compute(line.invoice.currency.id,
-                        line.invoice.amount_to_pay,
-                        line.statement.journal.currency.id)
-            if amount_to_pay < abs(line.amount):
-                lang_id, = lang_obj.search([
+        if self.invoice:
+            with Transaction().set_context(date=self.invoice.currency_date):
+                amount_to_pay = Currency.compute(self.invoice.currency,
+                    self.invoice.amount_to_pay,
+                    self.statement.journal.currency)
+            if amount_to_pay < abs(self.amount):
+                lang, = Lang.search([
                         ('code', '=', Transaction().language),
                         ])
-                lang = lang_obj.browse(lang_id)
 
-                amount = lang_obj.format(lang,
-                    '%.' + str(line.statement.journal.currency.digits) + 'f',
-                    line.amount, True)
+                amount = Lang.format(lang,
+                    '%.' + str(self.statement.journal.currency.digits) + 'f',
+                    self.amount, True)
                 self.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
-            with Transaction().set_context(date=line.invoice.currency_date):
-                amount = currency_obj.compute(
-                        line.statement.journal.currency.id, line.amount,
-                        line.statement.company.currency.id)
+            with Transaction().set_context(date=self.invoice.currency_date):
+                amount = Currency.compute(self.statement.journal.currency,
+                    self.amount, self.statement.company.currency)
 
-            reconcile_lines = invoice_obj.get_reconcile_lines_for_amount(
-                    line.invoice, abs(amount))
+            reconcile_lines = self.invoice.get_reconcile_lines_for_amount(
+                abs(amount))
 
-            move = move_obj.browse(move_id)
-            line_id = None
             for move_line in move.lines:
-                if move_line.account.id == line.invoice.account.id:
-                    line_id = move_line.id
-                    invoice_obj.write(line.invoice.id, {
-                        'payment_lines': [('add', line_id)],
-                        })
+                if move_line.account == self.invoice.account:
+                    Invoice.write([self.invoice], {
+                            'payment_lines': [('add', [move_line.id])],
+                            })
                     break
             if reconcile_lines[1] == Decimal('0.0'):
-                line_ids = reconcile_lines[0] + [line_id]
-                move_line_obj.reconcile(line_ids)
-        return move_id
+                lines = reconcile_lines[0] + [move_line]
+                MoveLine.reconcile(lines)
+        return move
 
-    def post_move(self, lines):
-        move_obj = Pool().get('account.move')
-        move_obj.post([l.move.id for l in lines if l.move])
+    @classmethod
+    def post_move(cls, lines):
+        Move = Pool().get('account.move')
+        Move.post([l.move for l in lines if l.move])
 
-    def delete_move(self, lines):
-        move_obj = Pool().get('account.move')
-        move_obj.delete([l.move.id for l in lines if l.move])
+    @classmethod
+    def delete_move(cls, lines):
+        Move = Pool().get('account.move')
+        Move.delete([l.move for l in lines if l.move])
 
-    def _get_move_lines(self, statement_line):
+    def _get_move_lines(self):
         '''
-        Return the values of the move lines for the statement line
-
-        :param statement_line: a BrowseRecord of the statement line
-        :return: a list of dictionary of move line values
+        Return the move lines for the statement line
         '''
-        currency_obj = Pool().get('currency.currency')
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        Currency = Pool().get('currency.currency')
         zero = Decimal("0.0")
-        amount = currency_obj.compute(
-            statement_line.statement.journal.currency, statement_line.amount,
-            statement_line.statement.company.currency)
-        if statement_line.statement.journal.currency.id != \
-                statement_line.statement.company.currency.id:
-            second_currency = statement_line.statement.journal.currency.id
-            amount_second_currency = abs(statement_line.amount)
+        amount = Currency.compute(self.statement.journal.currency, self.amount,
+            self.statement.company.currency)
+        if self.statement.journal.currency != self.statement.company.currency:
+            second_currency = self.statement.journal.currency.id
+            amount_second_currency = abs(self.amount)
         else:
             amount_second_currency = None
             second_currency = None
 
-        party_id = statement_line.party.id if statement_line.party else None
-        vals = []
-        vals.append({
-            'name': unicode(statement_line.date),
-            'debit': amount < zero and -amount or zero,
-            'credit': amount >= zero and amount or zero,
-            'account': statement_line.account.id,
-            'party': party_id,
-            'second_currency': second_currency,
-            'amount_second_currency': amount_second_currency,
-            })
+        move_lines = []
+        move_lines.append(MoveLine(
+                name=unicode(self.date),
+                debit=amount < zero and -amount or zero,
+                credit=amount >= zero and amount or zero,
+                account=self.account,
+                party=self.party,
+                second_currency=second_currency,
+                amount_second_currency=amount_second_currency,
+                ))
 
-        journal = statement_line.statement.journal.journal
-        if statement_line.amount >= zero:
+        journal = self.statement.journal.journal
+        if self.amount >= zero:
             account = journal.credit_account
         else:
             account = journal.debit_account
         if not account:
             self.raise_user_error('debit_credit_account_statement_journal')
-        if statement_line.account.id == account.id:
+        if self.account == account:
             self.raise_user_error('same_debit_credit_account')
-        vals.append({
-            'name': unicode(statement_line.date),
-            'debit': amount >= zero and amount or zero,
-            'credit': amount < zero and -amount or zero,
-            'account': account.id,
-            'party': party_id,
-            'second_currency': second_currency,
-            'amount_second_currency': amount_second_currency,
-            })
-        return vals
-
-Line()
+        move_lines.append(MoveLine(
+                name=unicode(self.date),
+                debit=amount >= zero and amount or zero,
+                credit=amount < zero and -amount or zero,
+                account=account,
+                party=self.party,
+                second_currency=second_currency,
+                amount_second_currency=amount_second_currency,
+                ))
+        return move_lines

@@ -4,12 +4,12 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['Journal']
+
 
 class Journal(ModelSQL, ModelView):
     'Statement Journal'
-    _name = 'account.statement.journal'
-    _description = __doc__
-
+    __name__ = 'account.statement.journal'
     name = fields.Char('Name', required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         domain=[('type', '=', 'statement')])
@@ -17,13 +17,13 @@ class Journal(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             select=True)
 
-    def default_currency(self):
+    @staticmethod
+    def default_currency():
         if Transaction().context.get('company'):
-            company_obj = Pool().get('company.company')
-            company = company_obj.browse(Transaction().context['company'])
+            Company = Pool().get('company.company')
+            company = Company(Transaction().context['company'])
             return company.currency.id
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
-
-Journal()
