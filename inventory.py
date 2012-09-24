@@ -5,12 +5,12 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+__all__ = ['CreateInventoriesStart', 'CreateInventories']
+
 
 class CreateInventoriesStart(ModelView):
     'Create Inventories'
-    _name = 'stock.inventory.create.start'
-    _description = __doc__
-
+    __name__ = 'stock.inventory.create.start'
     date = fields.Date('Date', required=True)
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
@@ -20,22 +20,21 @@ class CreateInventoriesStart(ModelView):
     locations = fields.Many2Many('stock.location', None, None,
             'Locations', required=True, domain=[('type', '=', 'storage')])
 
-    def default_lost_found(self):
-        location_obj = Pool().get('stock.location')
-        location_ids = location_obj.search(self.lost_found.domain)
-        if len(location_ids) == 1:
-            return location_ids[0]
+    @classmethod
+    def default_lost_found(cls):
+        Location = Pool().get('stock.location')
+        locations = Location.search(cls.lost_found.domain)
+        if len(locations) == 1:
+            return locations[0].id
 
-    def default_company(self):
+    @staticmethod
+    def default_company():
         return Transaction().context.get('company')
-
-CreateInventoriesStart()
 
 
 class CreateInventories(Wizard):
     'Create Inventories'
-    _name = 'stock.inventory.create'
-
+    __name__ = 'stock.inventory.create'
     start = StateView('stock.inventory.create.start',
         'stock_inventory_location.inventory_create_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
@@ -43,24 +42,19 @@ class CreateInventories(Wizard):
             ])
     create_ = StateAction('stock.act_inventory_form')
 
-    def do_create_(self, session, action):
-        pool = Pool()
-        inventory_obj = pool.get('stock.inventory')
+    def do_create_(self, action):
+        Inventory = Pool().get('stock.inventory')
 
-        inventory_ids = []
-        location_ids = [x.id for x in session.start.locations]
-
-        for location_id in location_ids:
-            inventory_ids.append(inventory_obj.create({
-                        'location': location_id,
-                        'date': session.start.date,
-                        'lost_found': session.start.lost_found.id,
-                        'company': session.start.company.id,
+        inventories = []
+        for location in self.start.locations:
+            inventories.append(Inventory.create({
+                        'location': location.id,
+                        'date': self.start.date,
+                        'lost_found': self.start.lost_found.id,
+                        'company': self.start.company.id,
                         }))
 
-        inventory_obj.complete_lines(inventory_ids)
+        Inventory.complete_lines(inventories)
 
-        data = {'res_id': inventory_ids}
+        data = {'res_id': [i.id for i in inventories]}
         return action, data
-
-CreateInventories()
