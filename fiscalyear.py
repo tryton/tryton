@@ -210,9 +210,9 @@ class FiscalYear(ModelSQL, ModelView):
         Currency = Pool().get('currency.currency')
         Deferral = Pool().get('account.account.deferral')
 
-        if self.kind == 'view':
+        if account.kind == 'view':
             return
-        if not self.deferral:
+        if not account.deferral:
             if not Currency.is_zero(self.company.currency, account.balance):
                 self.raise_user_error('account_balance_not_zero',
                         error_args=(account.rec_name,))
