@@ -800,7 +800,7 @@ class Account(ModelSQL, ModelView):
                     if account.id in id2deferral:
                         deferral = id2deferral[account.id]
                         for name in names:
-                            res[name][account.id] += deferral[name]
+                            res[name][account.id] += getattr(deferral, name)
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
                         date=None, dates=None):
