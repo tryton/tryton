@@ -62,6 +62,8 @@ class StockSupplyDayTestCase(unittest.TestCase):
             (datetime.date(2011, 11, 21), 5, 5, datetime.date(2011, 11, 26)),
             (datetime.date(2011, 11, 21), 4, 6, datetime.date(2011, 11, 27)),
             (datetime.date(2011, 12, 22), 12, 6, datetime.date(2012, 1, 8)),
+            (datetime.date(2011, 11, 21), 10, None,
+                datetime.date(2011, 12, 1)),
             ]
             # Purchase date is Monday, 2011-11-21, the regular days to deliver
             # is 10 days, which would be Wednesday 2011-12-01. But with the
@@ -148,10 +150,11 @@ class StockSupplyDayTestCase(unittest.TestCase):
             'party': supplier.id,
             'delivery_time': delivery_time,
             })
-        self.product_supplier_day.create({
-            'product_supplier': product_supplier.id,
-            'weekday': str(weekday),
-            })
+        if weekday is not None:
+            self.product_supplier_day.create({
+                'product_supplier': product_supplier.id,
+                'weekday': str(weekday),
+                })
         return product_supplier
 
 
