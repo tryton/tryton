@@ -23,7 +23,7 @@ class ProductSupplier(ModelSQL, ModelView):
             if earlier_date and earlier_date <= new_date:
                 continue
             earlier_date = new_date
-        return earlier_date
+        return earlier_date or date
 
     def compute_purchase_date(self, product_supplier, date):
         later_date = None
