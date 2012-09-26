@@ -723,6 +723,8 @@ class Account(ModelSQL, ModelView):
     def get_credit_debit(cls, accounts, names):
         '''
         Function to compute debit, credit for accounts.
+        If cumulate is set in the context, it is the cumulate amount over all
+        previous fiscal year.
         '''
         res = {}
         pool = Pool()
@@ -771,43 +773,46 @@ class Account(ModelSQL, ModelView):
             for name in names:
                 res[name].setdefault(account.id, Decimal('0.0'))
 
-        youngest_fiscalyear = None
-        for fiscalyear in FiscalYear.browse(fiscalyear_ids):
-            if not youngest_fiscalyear \
-                    or youngest_fiscalyear.start_date > fiscalyear.start_date:
-                youngest_fiscalyear = fiscalyear
+        if Transaction().context.get('cumulate'):
+            youngest_fiscalyear = None
+            for fiscalyear in FiscalYear.browse(fiscalyear_ids):
+                if (not youngest_fiscalyear
+                        or (youngest_fiscalyear.start_date
+                            > fiscalyear.start_date)):
+                    youngest_fiscalyear = fiscalyear
 
-        fiscalyear = None
-        if youngest_fiscalyear:
-            fiscalyears = FiscalYear.search([
-                ('end_date', '<=', youngest_fiscalyear.start_date),
-                ('company', '=', youngest_fiscalyear.company),
-                ], order=[('end_date', 'DESC')], limit=1)
-            if fiscalyears:
-                fiscalyear, = fiscalyears
+            fiscalyear = None
+            if youngest_fiscalyear:
+                fiscalyears = FiscalYear.search([
+                        ('end_date', '<=', youngest_fiscalyear.start_date),
+                        ('company', '=', youngest_fiscalyear.company),
+                        ], order=[('end_date', 'DESC')], limit=1)
+                if fiscalyears:
+                    fiscalyear, = fiscalyears
 
-        if fiscalyear:
-            if fiscalyear.state == 'close':
-                deferrals = Deferral.search([
-                    ('fiscalyear', '=', fiscalyear.id),
-                    ('account', 'in', ids),
-                    ])
-                id2deferral = {}
-                for deferral in deferrals:
-                    id2deferral[deferral.account.id] = deferral
+            if fiscalyear:
+                if fiscalyear.state == 'close':
+                    deferrals = Deferral.search([
+                        ('fiscalyear', '=', fiscalyear.id),
+                        ('account', 'in', ids),
+                        ])
+                    id2deferral = {}
+                    for deferral in deferrals:
+                        id2deferral[deferral.account.id] = deferral
 
-                for account in accounts:
-                    if account.id in id2deferral:
-                        deferral = id2deferral[account.id]
+                    for account in accounts:
+                        if account.id in id2deferral:
+                            deferral = id2deferral[account.id]
+                            for name in names:
+                                res[name][account.id] += getattr(deferral,
+                                    name)
+                else:
+                    with Transaction().set_context(fiscalyear=fiscalyear.id,
+                            date=None, dates=None):
+                        res2 = cls.get_credit_debit(accounts, names)
+                    for account in accounts:
                         for name in names:
-                            res[name][account.id] += getattr(deferral, name)
-            else:
-                with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=None, dates=None):
-                    res2 = cls.get_credit_debit(accounts, names)
-                for account in accounts:
-                    for name in names:
-                        res[name][account.id] += res2[name][account.id]
+                            res[name][account.id] += res2[name][account.id]
 
         for account in accounts:
             company_id = account2company[account.id]

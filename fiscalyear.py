@@ -253,7 +253,7 @@ class FiscalYear(ModelSQL, ModelView):
             Period.close(periods)
 
             with Transaction().set_context(fiscalyear=fiscalyear.id,
-                    date=None):
+                    date=None, cumulate=True):
                 accounts = Account.search([
                         ('company', '=', fiscalyear.company.id),
                         ])
