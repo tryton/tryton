@@ -311,10 +311,15 @@ class OpenChartTaxCode(Wizard):
             action['pyson_context'] = PYSONEncoder().encode({
                     'fiscalyear': self.start.fiscalyear.id,
                     })
+            if self.start.fiscalyear:
+                action['name'] += ' - %s' % self.start.fiscalyear.rec_name
         else:
             action['pyson_context'] = PYSONEncoder().encode({
                     'periods': [x.id for x in self.start.periods],
                     })
+            period_str = ', '.join(p.rec_name for p in self.start.periods)
+            if period_str:
+                action['name'] += ' (%s)' % period_str
         return action, {}
 
     def transition_open_(self):

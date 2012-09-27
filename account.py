@@ -1031,6 +1031,10 @@ class OpenChartAccount(Wizard):
                     if self.start.fiscalyear else None),
             'posted': self.start.posted,
             })
+        if self.start.fiscalyear:
+            action['name'] += ' - %s' % self.start.fiscalyear.rec_name
+        if self.start.posted:
+            action['name'] += '*'
         return action, {}
 
     def transition_open_(self):
