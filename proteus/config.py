@@ -72,6 +72,20 @@ _CONFIG = threading.local()
 _CONFIG.current = None
 
 
+class ContextManager(object):
+    'Context Manager for the tryton context'
+
+    def __init__(self, config):
+        self.config = config
+        self.context = config.context
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.config._context = self.context
+
+
 class Config(object):
     'Config interface'
 
@@ -82,6 +96,16 @@ class Config(object):
     @property
     def context(self):
         return self._context.copy()
+
+    def set_context(self, context=None, **kwargs):
+        ctx_manager = ContextManager(self)
+
+        if context is None:
+            context = None
+        self._context = self.context
+        self._context.update(context)
+        self._context.update(kwargs)
+        return ctx_manager
 
     def get_proxy(self, name):
         raise NotImplementedError

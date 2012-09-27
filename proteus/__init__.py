@@ -211,9 +211,8 @@ class One2ManyDescriptor(FieldDescriptor):
         relation = Model.get(self.definition['relation'], instance._config)
         value = super(One2ManyDescriptor, self).__get__(instance, owner)
         if not isinstance(value, ModelList):
-            value = ModelList((relation(id)
-                for id in value or []), instance, self.name,
-                self.definition.get('relation_field'))
+            value = ModelList(self.definition, (relation(id)
+                    for id in value or []), instance, self.name)
             instance._values[self.name] = value
         return value
 
@@ -398,22 +397,26 @@ class MetaModelFactory(object):
 class ModelList(list):
     'List for Model'
 
-    def __init__(self, sequence=None, parent=None, parent_field_name='',
-            parent_name=''):
+    def __init__(self, definition, sequence=None, parent=None,
+            parent_field_name=''):
+        self.model_name = definition['relation']
         if sequence is None:
             sequence = []
         self.parent = parent
         if parent:
             assert parent_field_name
         self.parent_field_name = parent_field_name
-        self.parent_name = parent_name
+        self.parent_name = definition.get('relation_field', '')
+        self.domain = definition.get('domain', [])
+        self.context = definition.get('context')
+        self.add_remove = definition.get('add_remove')
         self.record_removed = set()
         self.record_deleted = set()
         result = super(ModelList, self).__init__(sequence)
         for record in self:
             record._parent = parent
             record._parent_field_name = parent_field_name
-            record._parent_name = parent_name
+            record._parent_name = self.parent_name
         return result
     __init__.__doc__ = list.__init__.__doc__
 
@@ -422,6 +425,13 @@ class ModelList(list):
         if self.parent:
             self.parent._changed.add(self.parent_field_name)
             self.parent._on_change(self.parent_field_name)
+
+    def _get_context(self):
+        from .pyson import PYSONDecoder
+        decoder = PYSONDecoder(_EvalEnvironment(self.parent))
+        ctx = self.parent._context.copy() if self.parent._context else {}
+        ctx.update(decoder.decode(self.context) if self.context else {})
+        return ctx
 
     def append(self, record):
         assert isinstance(record, Model)
@@ -497,6 +507,27 @@ class ModelList(list):
         raise NotImplementedError
     sort.__doc__ = list.sort.__doc__
 
+    def new(self):
+        'Adds a new record to the ModelList and returns it'
+        Relation = Model.get(self.model_name, self.parent._config)
+        with Relation._config.set_context(self._get_context()):
+            new_record = Relation()
+        self.append(new_record)
+        return new_record
+
+    def find(self, condition=None, offset=0, limit=None, order=None):
+        'Returns records matching condition taking into account list domain'
+        from .pyson import PYSONDecoder
+        decoder = PYSONDecoder(_EvalEnvironment(self.parent))
+        Relation = Model.get(self.model_name, self.parent._config)
+        if condition is None:
+            condition = []
+        add_remove_domain = (decoder.decode(self.add_remove)
+            if self.add_remove else [])
+        new_domain = [self.domain, add_remove_domain, condition]
+        with Relation._config.set_context(self._get_context()):
+            return Relation.find(new_domain, offset, limit, order)
+
 
 class Model(object):
     'Model class for Tryton records'
@@ -518,6 +549,7 @@ class Model(object):
         self._parent = None  # store the parent record
         self._parent_field_name = ''  # store the field name in parent record
         self._parent_name = ''  # store the field name to parent record
+        self._context = self._config.context  # store the context
         if self.id < 0 and _default:
             self._default_get()
 
@@ -684,8 +716,8 @@ class Model(object):
                     record = relation()
                     record._default_set(vals)
                     records.append(record)
-                self._values[field] = ModelList(records, self, field,
-                        definition.get('relation_field', ''))
+                self._values[field] = ModelList(definition, records, self,
+                    field)
             else:
                 self._values[field] = value
 
