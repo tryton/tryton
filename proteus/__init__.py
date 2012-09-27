@@ -208,11 +208,17 @@ class One2ManyDescriptor(FieldDescriptor):
     default = []
 
     def __get__(self, instance, owner):
+        from .pyson import PYSONDecoder
         relation = Model.get(self.definition['relation'], instance._config)
         value = super(One2ManyDescriptor, self).__get__(instance, owner)
         if not isinstance(value, ModelList):
-            value = ModelList(self.definition, (relation(id)
-                    for id in value or []), instance, self.name)
+            ctx = instance._context.copy() if instance._context else {}
+            if self.definition.get('context'):
+                decoder = PYSONDecoder(_EvalEnvironment(instance))
+                ctx.update(decoder.decode(self.definition.get('context')))
+            with instance._config.set_context(ctx):
+                value = ModelList(self.definition, (relation(id)
+                        for id in value or []), instance, self.name)
             instance._values[self.name] = value
         return value
 
