@@ -1004,9 +1004,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Open Aged Balance" col="4">
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <newline/>
                     <label name="balance_type"/>
                     <field name="balance_type"/>
                     <newline/>

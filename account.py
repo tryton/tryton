@@ -1998,8 +1998,6 @@ class OpenAgedBalanceStart(ModelView):
     'Open Aged Balance'
     __name__ = 'account.open_aged_balance.start'
     company = fields.Many2One('company.company', 'Company', required=True)
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True)
     balance_type = fields.Selection(
         [('customer', 'Customer'), ('supplier', 'Supplier'), ('both', 'Both')],
         "Type", required=True)
@@ -2009,12 +2007,6 @@ class OpenAgedBalanceStart(ModelView):
     unit = fields.Selection(
         [('day', 'Day'), ('month', 'Month')], "Unit", required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
-
-    @staticmethod
-    def default_fiscalyear():
-        FiscalYear = Pool().get('account.fiscalyear')
-        return FiscalYear.find(
-            Transaction().context.get('company'), exception=False)
 
     @staticmethod
     def default_balance_type():
@@ -2068,7 +2060,6 @@ class OpenAgedBalance(Wizard):
                 error_description="term_overlap_desc")
         data = {
             'company': self.start.company.id,
-            'fiscalyear': self.start.fiscalyear.id,
             'term1': self.start.term1,
             'term2': self.start.term2,
             'term3': self.start.term3,
@@ -2096,16 +2087,15 @@ class AgedBalance(Report):
 
         company = Company(data['company'])
         localcontext['digits'] = company.currency.digits
-        localcontext['fiscalyear'] = data['fiscalyear']
         localcontext['posted'] = data['posted']
         with Transaction().set_context(context=localcontext):
             line_query, _ = MoveLine.query_get()
 
         terms = (data['term1'], data['term2'], data['term3'])
         if data['unit'] == 'month':
-            coef = 30
+            coef = datetime.timedelta(days=30)
         else:
-            coef = 1
+            coef = datetime.timedelta(days=1)
 
         kind = {
             'both': ('payable', 'receivable'),
@@ -2115,19 +2105,15 @@ class AgedBalance(Report):
 
         res = {}
         for position, term in enumerate(terms):
-            if position == 0:
-                term_query = '(l.maturity_date <= %s '\
-                    'OR l.maturity_date IS NULL) '
-                term_args = (Date.today() +
-                        datetime.timedelta(days=term * coef),)
+            if position == 2:
+                term_query = 'l.maturity_date <= %s'
+                term_args = (Date.today() - term * coef,)
             else:
                 term_query = '(l.maturity_date <= %s '\
                     'AND l.maturity_date > %s) '
                 term_args = (
-                    Date.today() + datetime.timedelta(days=term * coef),
-                    Date.today()
-                    + datetime.timedelta(days=terms[position - 1] * coef),
-                    )
+                    Date.today() - term * coef,
+                    Date.today() - terms[position + 1] * coef)
 
             cursor.execute('SELECT l.party, SUM(l.debit) - SUM(l.credit) '
                 'FROM account_move_line l '
