@@ -135,36 +135,30 @@ class AccountTestCase(unittest.TestCase):
             # Create some moves
             values = [
                 {
-                    'name': 'Test 1',
                     'period': period.id,
                     'journal': journal_revenue.id,
                     'date': period.start_date,
                     'lines': [
                         ('create', {
-                                'name': 'Test 1',
                                 'account': revenue.id,
                                 'credit': Decimal(100),
                                 }),
                         ('create', {
-                                'name': 'Test 1',
                                 'account': receivable.id,
                                 'debit': Decimal(100),
                                 }),
                         ],
                     },
                 {
-                    'name': 'Test 2',
                     'period': period.id,
                     'journal': journal_expense.id,
                     'date': period.start_date,
                     'lines': [
                         ('create', {
-                                'name': 'Test 2',
                                 'account': expense.id,
                                 'debit': Decimal(30),
                                 }),
                         ('create', {
-                                'name': 'Test 2',
                                 'account': payable.id,
                                 'credit': Decimal(30),
                                 }),
@@ -230,23 +224,19 @@ class AccountTestCase(unittest.TestCase):
                     'kind': 'other',
                     })
             self.move.create({
-                    'name': 'Closing',
                     'period': fiscalyear.periods[-1].id,
                     'journal': journal_closing.id,
                     'date': fiscalyear.periods[-1].end_date,
                     'lines': [
                         ('create', {
-                                'name': 'Closing',
                                 'account': revenue.id,
                                 'debit': Decimal(100),
                                 }),
                         ('create', {
-                                'name': 'Closing',
                                 'account': expense.id,
                                 'credit': Decimal(30),
                                 }),
                         ('create', {
-                                'name': 'Closing',
                                 'account': account_pl.id,
                                 'credit': Decimal('70'),
                                 }),

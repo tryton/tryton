@@ -327,10 +327,10 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="active"/>
                     <field name="active"/>
-                    <label name="period"/>
-                    <field name="period"/>
                     <label name="journal"/>
                     <field name="journal"/>
+                    <label name="period"/>
+                    <field name="period"/>
                     <label name="state"/>
                     <field name="state" colspan="3"/>
                 </form>
@@ -344,8 +344,8 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Journals - Periods" keyword_open="1">
                     <field name="name" icon="icon"/>
-                    <field name="period"/>
                     <field name="journal"/>
+                    <field name="period"/>
                     <field name="state"/>
                 </tree>
                 ]]>

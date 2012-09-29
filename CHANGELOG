@@ -1,3 +1,9 @@
+* Rename:
+    - Move.name into number
+    - Move.reference into post_number
+    - MoveLine.reference into description
+* Remove name and active on move line
+* Add origin field on Move
 * Compute the aged balance over all fiscalyears and reverse dates order
 * Add cumulate option for Debit/Credit on Account
 * Allow to open accounts from balance sheet

@@ -9,18 +9,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Account Move">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="reference"/>
-                    <field name="reference"/>
-                    <label name="period"/>
-                    <field name="period"/>
+                    <label name="number"/>
+                    <field name="number"/>
+                    <label name="post_number"/>
+                    <field name="post_number"/>
                     <label name="journal"/>
                     <field name="journal"/>
+                    <label name="period"/>
+                    <field name="period"/>
                     <label name="date"/>
                     <field name="date"/>
                     <label name="post_date"/>
                     <field name="post_date"/>
+                    <label name="origin"/>
+                    <field name="origin" colspan="3"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
                     <field name="lines" colspan="4"
                         view_ids="account.move_line_view_tree_move,account.move_line_view_form_move"/>
                     <label name="state"/>
@@ -40,12 +44,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Moves">
-                    <field name="name"/>
-                    <field name="reference"/>
-                    <field name="period"/>
+                    <field name="number"/>
+                    <field name="post_number"/>
                     <field name="journal"/>
+                    <field name="period"/>
                     <field name="date"/>
                     <field name="post_date"/>
+                    <field name="origin"/>
                     <field name="state"/>
                     <field name="create_date" tree_invisible="1"/>
                 </tree>
@@ -183,48 +188,45 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Account Move Line">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <label name="move"/>
+                    <field name="move"/>
+                    <label name="journal"/>
+                    <field name="journal"/>
+                    <label name="period"/>
+                    <field name="period"/>
+                    <label name="debit"/>
+                    <field name="debit"/>
+                    <label name="credit"/>
+                    <field name="credit"/>
+                    <label name="origin"/>
+                    <field name="origin" colspan="3"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
                     <notebook colspan="4">
-                        <page string="General Information" id="general">
-                            <label name="account"/>
-                            <field name="account"/>
+                        <page string="Other Info" id="info">
                             <label name="date"/>
                             <field name="date"/>
-                            <label name="reference"/>
-                            <field name="reference"/>
+                            <label name="maturity_date"/>
+                            <field name="maturity_date"/>
                             <label name="party"/>
                             <field name="party"/>
-                            <label name="journal"/>
-                            <field name="journal"/>
-                            <label name="period"/>
-                            <field name="period"/>
-                            <label name="debit"/>
-                            <field name="debit"/>
-                            <label name="credit"/>
-                            <field name="credit"/>
-                            <separator string="Optional Information" colspan="4"
-                                id="optional_information"/>
-                            <field name="tax_lines" colspan="4"/>
+                            <label name="reconciliation"/>
+                            <field name="reconciliation"/>
                             <label name="amount_second_currency"/>
                             <field name="amount_second_currency"/>
                             <label name="second_currency"/>
                             <field name="second_currency"/>
-                            <label name="reconciliation"/>
-                            <field name="reconciliation"/>
-                            <label name="maturity_date"/>
-                            <field name="maturity_date"/>
-                            <label name="move"/>
-                            <field name="move"/>
-                            <label name="move_state"/>
-                            <field name="move_state"/>
-                            <label id="empty" colspan="2"/>
-                            <label name="state"/>
-                            <field name="state"/>
+                        </page>
+                        <page name="tax_lines">
+                            <field name="tax_lines" colspan="4"/>
                         </page>
                     </notebook>
+                    <label name="move_state"/>
+                    <field name="move_state"/>
+                    <label name="state"/>
+                    <field name="state"/>
                 </form>
                 ]]>
             </field>
@@ -237,43 +239,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="arch" type="xml">
                 <![CDATA[
                 <form string="Account Move Line">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
+                    <label name="account"/>
+                    <field name="account"/>
+                    <newline/>
+                    <label name="debit"/>
+                    <field name="debit"/>
+                    <label name="credit"/>
+                    <field name="credit"/>
+                    <label name="description"/>
+                    <field name="description" colspan="3"/>
                     <notebook colspan="4">
-                        <page string="General Information" id="general">
-                            <label name="account"/>
-                            <field name="account"/>
-                            <newline/>
-                            <label name="reference"/>
-                            <field name="reference"/>
+                        <page string="Other Info" id="info">
+                            <label id="empty" colspan="2"/>
+                            <label name="maturity_date"/>
+                            <field name="maturity_date"/>
                             <label name="party"/>
                             <field name="party"/>
-                            <label name="journal"/>
-                            <field name="journal"/>
-                            <label name="period"/>
-                            <field name="period"/>
-                            <label name="debit"/>
-                            <field name="debit"/>
-                            <label name="credit"/>
-                            <field name="credit"/>
-                            <separator string="Optional Information" colspan="4"
-                                id="optional_information"/>
-                            <field name="tax_lines" colspan="4"/>
+                            <label name="reconciliation"/>
+                            <field name="reconciliation"/>
                             <label name="amount_second_currency"/>
                             <field name="amount_second_currency"/>
                             <label name="second_currency"/>
                             <field name="second_currency"/>
-                            <label name="reconciliation"/>
-                            <field name="reconciliation"/>
-                            <label name="maturity_date"/>
-                            <field name="maturity_date"/>
-                            <label id="empty" colspan="2"/>
-                            <label name="state"/>
-                            <field name="state"/>
+                        </page>
+                        <page name="tax_lines">
+                            <field name="tax_lines" colspan="4"/>
                         </page>
                     </notebook>
+                    <label id="empty" colspan="2"/>
+                    <label name="state"/>
+                    <field name="state"/>
                 </form>
                 ]]>
             </field>
@@ -289,8 +284,8 @@ this repository contains the full copyright notices and license terms. -->
                     on_write="on_write"
                     colors="If(Equal(Eval('state'), 'draft'), 'red', 'black')">
                     <field name="move"/>
-                    <field name="name"/>
-                    <field name="reference"/>
+                    <field name="origin"/>
+                    <field name="description"/>
                     <field name="date"/>
                     <field name="party"/>
                     <field name="account"/>
@@ -313,8 +308,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Account Move Lines" editable="top">
                     <field name="move"/>
-                    <field name="name"/>
-                    <field name="reference"/>
+                    <field name="description"/>
                     <field name="party"/>
                     <field name="account"/>
                     <field name="debit" sum="Debit"/>

@@ -12,7 +12,6 @@ from trytond.backend import TableHandler, FIELDS
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond.config import CONFIG
 from trytond.rpc import RPC
 
 __all__ = ['Move', 'Reconciliation', 'Line', 'Move2', 'OpenJournalAsk',
@@ -35,10 +34,10 @@ _LINE_DEPENDS = ['state']
 class Move(ModelSQL, ModelView):
     'Account Move'
     __name__ = 'account.move'
-    name = fields.Char('Name', size=None, required=True, states=_MOVE_STATES,
-            depends=_MOVE_DEPENDS)
-    reference = fields.Char('Reference', size=None, readonly=True,
-            help='Also known as Folio Number')
+    _rec_name = 'number'
+    number = fields.Char('Number', required=True, readonly=True)
+    post_number = fields.Char('Post Number', readonly=True,
+        help='Also known as Folio Number')
     period = fields.Many2One('account.period', 'Period', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS, select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -46,6 +45,10 @@ class Move(ModelSQL, ModelView):
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
         depends=_MOVE_DEPENDS, on_change_with=['period', 'journal', 'date'])
     post_date = fields.Date('Post Date', readonly=True)
+    description = fields.Char('Description', states=_MOVE_STATES,
+        depends=_MOVE_DEPENDS)
+    origin = fields.Reference('Origin', selection='get_origin',
+        states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),
@@ -68,7 +71,7 @@ class Move(ModelSQL, ModelView):
             ('check_date', 'date_outside_period'),
         ]
         cls._order.insert(0, ('date', 'DESC'))
-        cls._order.insert(1, ('reference', 'DESC'))
+        cls._order.insert(1, ('number', 'DESC'))
         cls._error_messages.update({
             'del_posted_move': 'You can not delete posted moves!',
             'post_empty_move': 'You can not post an empty move!',
@@ -98,9 +101,19 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.4:
+        #   - name renamed into number
+        #   - reference renamed into post_number
+        if table.column_exist('name'):
+            table.column_rename('name', 'number')
+        if table.column_exist('reference'):
+            table.column_rename('reference', 'post_number')
+
         super(Move, cls).__register__(module_name)
 
-        cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
         table.index_action(['journal', 'period'], 'add')
 
@@ -141,6 +154,20 @@ class Move(ModelSQL, ModelView):
             date = self.period.start_date
         return date
 
+    @classmethod
+    def _get_origin(cls):
+        'Return list of Model names for origin Reference'
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [('', '')] + [(m.model, m.name) for m in models]
+
     def check_centralisation(self):
         if self.journal.centralised:
             moves = self.search([
@@ -175,7 +202,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         moves = cls.search(['OR',
-                ('reference',) + tuple(clause[1:]),
+                ('post_number',) + tuple(clause[1:]),
                 (cls._rec_name,) + tuple(clause[1:]),
                 ])
         return [('id', 'in', [m.id for m in moves])]
@@ -198,20 +225,19 @@ class Move(ModelSQL, ModelView):
         Sequence = pool.get('ir.sequence')
         Journal = pool.get('account.journal')
 
-        if not vals.get('name'):
+        if not vals.get('number'):
             journal_id = (vals.get('journal')
                     or Transaction().context.get('journal'))
             if journal_id:
                 vals = vals.copy()
                 journal = Journal(journal_id)
-                vals['name'] = Sequence.get_id(journal.sequence.id)
+                vals['number'] = Sequence.get_id(journal.sequence.id)
 
         move = super(Move, cls).create(vals)
         if move.journal.centralised:
             line = MoveLine.create({
                     'account': move.journal.credit_account.id,
                     'move': move.id,
-                    'name': 'Centralised Counterpart',
                     })
             cls.write([move], {
                     'centralised_line': line.id,
@@ -234,7 +260,8 @@ class Move(ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['reference'] = None
+        default['number'] = None
+        default['post_number'] = None
         default['state'] = cls.default_state()
         default['post_date'] = None
         default['lines'] = None
@@ -294,7 +321,6 @@ class Move(ModelSQL, ModelView):
                             'credit': credit,
                             'account': account_id,
                             'move': move.id,
-                            'name': 'Centralised Counterpart',
                             })
                         cls.write([move], {
                             'centralised_line': centralised_line.id,
@@ -331,9 +357,9 @@ class Move(ModelSQL, ModelView):
             if not company.currency.is_zero(amount):
                 cls.raise_user_error('post_unbalanced_move')
         for move in moves:
-            reference = Sequence.get_id(move.period.post_move_sequence.id)
+            post_number = Sequence.get_id(move.period.post_move_sequence.id)
             cls.write([move], {
-                'reference': reference,
+                'post_number': post_number,
                 'state': 'posted',
                 'post_date': Date.today(),
                 })
@@ -414,7 +440,7 @@ class Reconciliation(ModelSQL, ModelView):
 class Line(ModelSQL, ModelView):
     'Account Move Line'
     __name__ = 'account.move.line'
-    name = fields.Char('Name', size=None, required=True)
+    _rec_name = 'id'
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
         required=True,
         on_change=['account', 'debit', 'credit', 'tax_lines', 'journal',
@@ -445,7 +471,10 @@ class Line(ModelSQL, ModelView):
     date = fields.Function(fields.Date('Effective Date', required=True),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')
-    reference = fields.Char('Reference', size=None)
+    origin = fields.Function(fields.Reference('Origin',
+            selection='get_origin'),
+        'get_move_field', searcher='search_move_field')
+    description = fields.Char('Description')
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, Eval('second_currency_digits', 2)),
             help='The amount expressed in a second currency',
@@ -463,7 +492,6 @@ class Line(ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('valid', 'Valid'),
         ], 'State', readonly=True, required=True, select=True)
-    active = fields.Boolean('Active', select=True)
     reconciliation = fields.Many2One('account.move.reconciliation',
             'Reconciliation', readonly=True, ondelete='SET NULL', select=True)
     tax_lines = fields.One2Many('account.tax.line', 'move_line', 'Tax Lines')
@@ -489,6 +517,7 @@ class Line(ModelSQL, ModelView):
             ]
         cls.__rpc__.update({
                 'on_write': RPC(instantiate=0),
+                'get_origin': RPC(),
                 })
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
@@ -504,15 +533,24 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.4: reference renamed into description
+        if table.column_exist('reference'):
+            table.column_rename('reference', 'description')
+
         super(Line, cls).__register__(module_name)
 
-        cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
         # Index for General Ledger
         table.index_action(['move', 'account'], 'add')
 
         # Migration from 1.2
         table.not_null_action('blocked', action='remove')
+
+        # Migration from 2.4: remove name
+        table.not_null_action('name', action='remove')
 
     @classmethod
     def default_date(cls):
@@ -542,10 +580,6 @@ class Line(ModelSQL, ModelView):
     @staticmethod
     def default_state():
         return 'draft'
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_currency_digits():
@@ -599,10 +633,6 @@ class Line(ModelSQL, ModelView):
             total += line.debit - line.credit
             if line.party and 'party' in fields:
                 values.setdefault('party', line.party.id)
-            if 'reference' in fields:
-                values.setdefault('reference', line.reference)
-            if 'name' in fields:
-                values.setdefault('name', line.name)
             if move.journal.type in ('expense', 'revenue'):
                 line_code_taxes = [x.code.id for x in line.tax_lines]
                 for tax in line.account.taxes:
@@ -722,6 +752,11 @@ class Line(ModelSQL, ModelView):
                     if second_currency:
                         digits[name][line.id] = second_currency.digits
         return digits
+
+    @classmethod
+    def get_origin(cls):
+        Move = Pool().get('account.move')
+        return Move.get_origin()
 
     def on_change_debit(self):
         changes = {}
@@ -917,9 +952,7 @@ class Line(ModelSQL, ModelView):
     def get_move_field(self, name):
         if name == 'move_state':
             name = 'state'
-        if name not in ('period', 'journal', 'date', 'state'):
-            raise Exception('Invalid name')
-        if name in ('date', 'state'):
+        if name in ('date', 'state', 'origin'):
             return getattr(self.move, name)
         else:
             return getattr(self.move, name).id
@@ -928,8 +961,6 @@ class Line(ModelSQL, ModelView):
     def set_move_field(cls, lines, name, value):
         if name == 'move_state':
             name = 'state'
-        if name not in ('period', 'journal', 'date', 'state'):
-            raise Exception('Invalid name')
         if not value:
             return
         Move = Pool().get('account.move')
@@ -962,8 +993,7 @@ class Line(ModelSQL, ModelView):
             fiscalyear_id = fiscalyears and fiscalyears[0].id or 0
 
             if Transaction().context.get('posted'):
-                return (obj + '.active ' \
-                        'AND ' + obj + '.state != \'draft\' ' \
+                return (obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT m.id FROM account_move AS m, ' \
                                 'account_period AS p ' \
@@ -976,8 +1006,7 @@ class Line(ModelSQL, ModelView):
                                     'AND m.state = \'posted\' ' \
                             ')', [f.id for f in fiscalyears])
             else:
-                return (obj + '.active ' \
-                        'AND ' + obj + '.state != \'draft\' ' \
+                return (obj + '.state != \'draft\' ' \
                         'AND ' + obj + '.move IN (' \
                             'SELECT m.id FROM account_move AS m, ' \
                                 'account_period AS p ' \
@@ -997,16 +1026,14 @@ class Line(ModelSQL, ModelView):
             ids = ','.join(
                     str(int(x)) for x in Transaction().context['periods'])
             if Transaction().context.get('posted'):
-                return (obj + '.active '
-                    'AND ' + obj + '.state != \'draft\' '
+                return (obj + '.state != \'draft\' '
                     'AND ' + obj + '.move IN ('
                         'SELECT id FROM account_move '
                         'WHERE period IN (' + ids + ') '
                             'AND state = \'posted\' '
                         ')', fiscalyear_ids)
             else:
-                return (obj + '.active '
-                    'AND ' + obj + '.state != \'draft\' '
+                return (obj + '.state != \'draft\' '
                     'AND ' + obj + '.move IN ('
                         'SELECT id FROM account_move '
                         'WHERE period IN (' + ids + ')'
@@ -1025,8 +1052,7 @@ class Line(ModelSQL, ModelView):
                         Transaction().context.get('fiscalyear'))
 
             if Transaction().context.get('posted'):
-                return (obj + '.active '
-                    'AND ' + obj + '.state != \'draft\' '
+                return (obj + '.state != \'draft\' '
                     'AND ' + obj + '.move IN ('
                         'SELECT id FROM account_move '
                         'WHERE period IN ('
@@ -1036,8 +1062,7 @@ class Line(ModelSQL, ModelView):
                             'AND state = \'posted\' '
                         ')', fiscalyear_ids)
             else:
-                return (obj + '.active '
-                    'AND ' + obj + '.state != \'draft\' '
+                return (obj + '.state != \'draft\' '
                     'AND ' + obj + '.move IN ('
                         'SELECT id FROM account_move '
                         'WHERE period IN ('
@@ -1224,7 +1249,6 @@ class Line(ModelSQL, ModelView):
         Reconciliation = pool.get('account.move.reconciliation')
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
-        Translation = pool.get('ir.translation')
 
         for line in lines:
             if line.reconciliation:
@@ -1243,19 +1267,12 @@ class Line(ModelSQL, ModelView):
                     account = line.account
             amount = account.currency.round(amount)
             period_id = Period.find(account.company.id, date=date)
-            lang_code = CONFIG['language']
-            if account.company.lang:
-                lang_code = account.company.lang.code
-            writeoff = Translation.get_source(
-                    'account.move.reconcile_lines.writeoff', 'view', lang_code,
-                    'Write-Off') or 'Write-Off'
             move = Move.create({
                 'journal': journal.id,
                 'period': period_id,
                 'date': date,
                 'lines': [
                     ('create', {
-                        'name': writeoff,
                         'account': account.id,
                         'debit': amount < Decimal('0.0') and - amount \
                                 or Decimal('0.0'),
@@ -1263,7 +1280,6 @@ class Line(ModelSQL, ModelView):
                                 or Decimal('0.0'),
                     }),
                     ('create', {
-                        'name': writeoff,
                         'account': account.id,
                         'debit': amount > Decimal('0.0') and amount \
                                 or Decimal('0.0'),
@@ -1595,7 +1611,7 @@ class GeneralJournal(Report):
         if data['posted']:
             clause.append(('state', '=', 'posted'))
         return Move.search(clause,
-                order=[('date', 'ASC'), ('reference', 'ASC'), ('id', 'ASC')])
+                order=[('date', 'ASC'), ('id', 'ASC')])
 
     @classmethod
     def parse(cls, report, moves, data, localcontext):
