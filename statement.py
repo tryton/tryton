@@ -173,6 +173,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             res[statement.id] = (statement.journal.name + ' '
                 + Lang.currency(lang, statement.start_balance,
                     statement.journal.currency, symbol=False, grouping=True)
+                + ' - '
                 + Lang.currency(lang, statement.end_balance,
                     statement.journal.currency, symbol=False, grouping=True))
         return res
@@ -444,6 +445,9 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = None
         return res
 
+    def get_rec_name(self, name):
+        return self.statement.rec_name
+
     @classmethod
     def copy(cls, lines, default=None):
         if default is None:
@@ -472,10 +476,10 @@ class Line(ModelSQL, ModelView):
 
         move_lines = self._get_move_lines()
         move = Move(
-            name=unicode(self.date),
             period=period_id,
             journal=self.statement.journal.journal,
             date=self.date,
+            origin=self,
             lines=move_lines,
             )
         move.save()
@@ -547,7 +551,7 @@ class Line(ModelSQL, ModelView):
 
         move_lines = []
         move_lines.append(MoveLine(
-                name=unicode(self.date),
+                description=self.description,
                 debit=amount < zero and -amount or zero,
                 credit=amount >= zero and amount or zero,
                 account=self.account,
@@ -566,7 +570,7 @@ class Line(ModelSQL, ModelView):
         if self.account == account:
             self.raise_user_error('same_debit_credit_account')
         move_lines.append(MoveLine(
-                name=unicode(self.date),
+                description=self.description,
                 debit=amount >= zero and amount or zero,
                 credit=amount < zero and -amount or zero,
                 account=account,

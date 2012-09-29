@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from .journal import *
 from .statement import *
+from .account import *
 
 
 def register():
@@ -11,4 +12,5 @@ def register():
         Journal,
         Statement,
         Line,
+        Move,
         module='account_statement', type_='model')
