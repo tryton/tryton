@@ -4,7 +4,7 @@ from trytond.model import fields
 from trytond.pyson import Eval, Bool, Get
 from trytond.pool import PoolMeta
 
-__all__ = ['Configuration']
+__all__ = ['Configuration', 'AccountMove']
 __metaclass__ = PoolMeta
 
 
@@ -19,3 +19,12 @@ class Configuration:
             'account.account', 'Cost Price Counterpart Account', domain=[
                 ('company', 'in', [Get(Eval('context', {}), 'company'), None]),
                 ]))
+
+
+class AccountMove:
+    __name__ = 'account.move'
+
+    @classmethod
+    def _get_origin(cls):
+        return super(AccountMove, cls)._get_origin() + ['stock.move',
+            'product.product']

@@ -73,5 +73,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">stock</field>
         </record>
 
+        <!-- Read access for origin field on account.move -->
+        <record model="ir.model.access" id="access_move_group_account">
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
     </data>
 </tryton>

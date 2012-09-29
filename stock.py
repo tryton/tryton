@@ -26,7 +26,7 @@ class Move:
             'wrong type'
 
         with Transaction().set_user(0, set_context=True):
-            move_line = AccountMoveLine(name=self.rec_name)
+            move_line = AccountMoveLine()
         if (type_.endswith('supplier')
                 and self.product.cost_price_method != 'fixed'):
             unit_price = self.unit_price
@@ -58,7 +58,6 @@ class Move:
         AccountMoveLine = pool.get('account.move.line')
         with Transaction().set_user(0, set_context=True):
             move_line = AccountMoveLine(
-                name=self.rec_name,
                 account=self.product.account_stock_used,
                 )
         if not amount:
@@ -89,6 +88,7 @@ class Move:
                 journal=account_configuration.stock_journal,
                 period=period_id,
                 date=date,
+                origin=self,
                 lines=move_lines,
                 )
 

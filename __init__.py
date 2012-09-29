@@ -13,6 +13,7 @@ def register():
         Category,
         Template,
         Configuration,
+        AccountMove,
         UpdateCostPriceAsk,
         UpdateCostPriceShowMove,
         module='account_stock_continental', type_='model')

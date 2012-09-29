@@ -173,7 +173,7 @@ class UpdateCostPriceShowMove(ModelView):
             ('id', '!=', Eval('stock_account')),
             ],
         depends=['company', 'stock_account'], required=True)
-    description = fields.Char('Description', required=True)
+    description = fields.Char('Description')
 
 
 class UpdateCostPrice(Wizard):
@@ -260,13 +260,11 @@ class UpdateCostPrice(Wizard):
         Line = Pool.get('account.move.line')
         amount = self.show_move.amount
         return [Line(
-                name=self.ask_price.product.name,
                 debit=amount if amount > 0 else 0,
                 credit=-amount if amount < 0 else 0,
                 account=self.show_move.stock_account,
                 ),
             Line(
-                name=self.ask_price.product.name,
                 debit=-amount if amount < 0 else 0,
                 credit=amount if amount > 0 else 0,
                 account=self.show_move.counterpart,
@@ -284,10 +282,11 @@ class UpdateCostPrice(Wizard):
         period_id = Period.find(user.company.id)
         with Transaction().set_user(0, set_context=True):
             return Move(
-                name=self.show_move.description,
+                description=self.show_move.description,
                 period=period_id,
                 journal=self.show_move.journal,
                 date=Date.today(),
+                origin=self.ask_price.product,
                 lines=self.get_move_lines(),
                 )
 
