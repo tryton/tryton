@@ -21,7 +21,7 @@ class InvoiceLine:
 
         result = []
         move_line = {}
-        move_line['name'] = self.description
+        move_line['description'] = self.description
         move_line['amount_second_currency'] = Decimal('0.0')
         move_line['second_currency'] = None
 

@@ -57,7 +57,6 @@ class Move:
             if amount < Decimal(0):
                 debit, credit = -credit, -debit
             move_line = AccountMoveLine(
-                name=self.rec_name,
                 debit=debit,
                 credit=credit,
                 account=self.product.account_expense_used,
