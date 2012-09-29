@@ -797,8 +797,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res['credit'] = Decimal('0.0')
         res['account'] = self.account.id
         res['maturity_date'] = date
-        res['reference'] = self.reference
-        res['name'] = self.number
+        res['description'] = self.description
         res['party'] = self.party.id
         return res
 
@@ -843,6 +842,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             'journal': self.journal.id,
             'period': period_id,
             'date': accounting_date,
+            'origin': str(self),
             'lines': [('create', x) for x in move_lines],
             })
         self.write([self], {
@@ -1044,7 +1044,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         if self.type in ('out_invoice', 'in_credit_note'):
             lines.append({
-                    'name': description,
+                    'description': description,
                     'account': self.account.id,
                     'party': self.party.id,
                     'debit': Decimal('0.0'),
@@ -1053,7 +1053,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'second_currency': second_currency,
                     })
             lines.append({
-                    'name': description,
+                    'description': description,
                     'account': journal.debit_account.id,
                     'party': self.party.id,
                     'debit': amount,
@@ -1067,7 +1067,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 self.raise_user_error('missing_debit_account')
         else:
             lines.append({
-                    'name': description,
+                    'description': description,
                     'account': self.account.id,
                     'party': self.party.id,
                     'debit': amount,
@@ -1076,7 +1076,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'second_currency': second_currency,
                     })
             lines.append({
-                    'name': description,
+                    'description': description,
                     'account': journal.credit_account.id,
                     'party': self.party.id,
                     'debit': Decimal('0.0'),
@@ -1737,7 +1737,7 @@ class InvoiceLine(ModelSQL, ModelView):
         res = {}
         if self.type != 'line':
             return []
-        res['name'] = self.description
+        res['description'] = self.description
         if self.invoice.currency != self.invoice.company.currency:
             with Transaction().set_context(date=self.invoice.currency_date):
                 amount = Currency.compute(self.invoice.currency,
@@ -1985,7 +1985,7 @@ class InvoiceTax(ModelSQL, ModelView):
         res = {}
         if not self.amount:
             return []
-        res['name'] = self.description
+        res['description'] = self.description
         if self.invoice.currency != self.invoice.company.currency:
             with Transaction().set_context(date=self.invoice.currency_date):
                 amount = Currency.compute(self.invoice.currency, self.amount,
@@ -2131,7 +2131,7 @@ class PayInvoiceStart(ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Integer('Currency Digits', readonly=True,
             on_change_with=['currency'])
-    description = fields.Char('Description', size=None, required=True)
+    description = fields.Char('Description', size=None)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             domain=[('type', '=', 'cash')])
     date = fields.Date('Date', required=True)

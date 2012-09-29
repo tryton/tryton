@@ -25,6 +25,7 @@ def register():
         Party,
         FiscalYear,
         Period,
+        Move,
         Reconciliation,
         module='account_invoice', type_='model')
     Pool.register(

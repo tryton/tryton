@@ -4,7 +4,7 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['FiscalYear', 'Period', 'Reconciliation']
+__all__ = ['FiscalYear', 'Period', 'Move', 'Reconciliation']
 __metaclass__ = PoolMeta
 
 
@@ -213,13 +213,20 @@ class Period:
         super(Period, cls).write(periods, vals)
 
 
+class Move:
+    __name__ = 'account.move'
+
+    @classmethod
+    def _get_origin(cls):
+        return super(Move, cls)._get_origin() + ['account.invoice']
+
+
 class Reconciliation:
     __name__ = 'account.move.reconciliation'
 
     @classmethod
     def create(cls, values):
         Invoice = Pool().get('account.invoice')
-
         reconciliation = super(Reconciliation, cls).create(values)
         move_ids = set(l.move.id for l in reconciliation.lines)
         invoices = Invoice.search([
