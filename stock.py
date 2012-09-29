@@ -172,7 +172,6 @@ class Move:
                 if move_line.account == account:
                     move_line.credit -= shipment_cost
                     shipment_cost_line = AccountMoveLine(
-                        name=self.rec_name,
                         debit=Decimal('0'),
                         credit=shipment_cost,
                         account=shipment_cost_account,
