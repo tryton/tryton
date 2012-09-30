@@ -24,6 +24,7 @@ def register():
         ProductSupplier,
         ProductSupplierPrice,
         ShipmentIn,
+        ShipmentInReturn,
         Move,
         HandleShipmentExceptionAsk,
         HandleInvoiceExceptionAsk,

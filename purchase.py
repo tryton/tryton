@@ -16,9 +16,10 @@ __all__ = ['Purchase', 'PurchaseInvoice', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
     'PurchaseLineInvoiceLine', 'PurchaseLineIgnoredMove',
     'PurchaseLineRecreatedMove', 'PurchaseReport', 'Template', 'Product',
-    'ProductSupplier', 'ProductSupplierPrice', 'ShipmentIn', 'Move',
-    'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
-    'HandleInvoiceExceptionAsk', 'HandleInvoiceException']
+    'ProductSupplier', 'ProductSupplierPrice', 'ShipmentIn',
+    'ShipmentInReturn', 'Move', 'OpenSupplier', 'HandleShipmentExceptionAsk',
+    'HandleShipmentException', 'HandleInvoiceExceptionAsk',
+    'HandleInvoiceException']
 __metaclass__ = PoolMeta
 
 _STATES = {
@@ -128,6 +129,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
             ], 'Shipment State', readonly=True, required=True)
     shipments = fields.Function(fields.One2Many('stock.shipment.in', None,
             'Shipments'), 'get_shipments')
+    shipment_returns = fields.Function(
+        fields.One2Many('stock.shipment.in.return', None, 'Shipment Returns'),
+        'get_shipment_returns')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
         'get_moves')
 
@@ -452,14 +456,21 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     'invoice_state': state,
                     })
 
-    def get_shipments(self, name):
-        shipments = []
-        for line in self.lines:
-            for move in line.moves:
-                if move.shipment_in:
-                    if move.shipment_in.id not in shipments:
-                        shipments.append(move.shipment_in.id)
-        return shipments
+    def get_shipments_returns(attribute):
+        "Computes the returns or shipments"
+        def method(self, name):
+            shipments = []
+            for line in self.lines:
+                for move in line.moves:
+                    ship_or_return = getattr(move, attribute)
+                    if bool(ship_or_return):
+                        if ship_or_return.id not in shipments:
+                            shipments.append(ship_or_return.id)
+            return shipments
+        return method
+
+    get_shipments = get_shipments_returns('shipment_in')
+    get_shipment_returns = get_shipments_returns('shipment_in_return')
 
     def get_moves(self, name):
         return [m.id for l in self.lines for m in l.moves]
@@ -562,20 +573,20 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     'total_amount_cache': purchase.total_amount,
                     })
 
-    def _get_invoice_line_purchase_line(self):
+    def _get_invoice_line_purchase_line(self, invoice_type):
         '''
         Return invoice line for each purchase lines
         '''
         res = {}
         for line in self.lines:
-            val = line.get_invoice_line()
+            val = line.get_invoice_line(invoice_type)
             if val:
                 res[line.id] = val
         return res
 
-    def _get_invoice_purchase(self):
+    def _get_invoice_purchase(self, invoice_type):
         '''
-        Return invoice
+        Return invoice of type invoice_type
         '''
         pool = Pool()
         Journal = pool.get('account.journal')
@@ -592,7 +603,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         with Transaction().set_user(0, set_context=True):
             return Invoice(
                 company=self.company,
-                type='in_invoice',
+                type=invoice_type,
                 reference=self.reference,
                 journal=journal,
                 party=self.party,
@@ -602,7 +613,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 payment_term=self.payment_term,
                 )
 
-    def create_invoice(self):
+    def create_invoice(self, invoice_type):
         '''
         Create an invoice for the purchase and return it
         '''
@@ -617,11 +628,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
             self.raise_user_error('missing_account_payable',
                     error_args=(self.party.rec_name,))
 
-        invoice_lines = self._get_invoice_line_purchase_line()
+        invoice_lines = self._get_invoice_line_purchase_line(invoice_type)
         if not invoice_lines:
             return
 
-        invoice = self._get_invoice_purchase()
+        invoice = self._get_invoice_purchase(invoice_type)
         invoice.save()
 
         for line in self.lines:
@@ -642,12 +653,40 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 })
         return invoice
 
-    def create_move(self):
+    def create_move(self, move_type):
         '''
         Create move for each purchase lines
         '''
+        new_moves = []
         for line in self.lines:
-            line.create_move()
+            if (line.quantity >= 0) != (move_type == 'in'):
+                continue
+            move = line.create_move()
+            if move:
+                new_moves.append(move)
+        return new_moves
+
+    def _get_return_shipment(self):
+        ShipmentInReturn = Pool().get('stock.shipment.in.return')
+        with Transaction().set_user(0, set_context=True):
+            return ShipmentInReturn(
+                company=self.company,
+                reference=self.reference,
+                from_location=self.warehouse.storage_location,
+                to_location=self.party.supplier_location,
+                )
+
+    def create_return_shipment(self, return_moves):
+        '''
+        Create return shipment and return the shipment id
+        '''
+        ShipmentInReturn = Pool().get('stock.shipment.in.return')
+        return_shipment = self._get_return_shipment()
+        return_shipment.moves = return_moves
+        return_shipment.save()
+        with Transaction().set_user(0, set_context=True):
+            ShipmentInReturn.wait([return_shipment])
+        return return_shipment
 
     def is_done(self):
         return ((self.invoice_state == 'paid'
@@ -707,9 +746,13 @@ class Purchase(Workflow, ModelSQL, ModelView):
         for purchase in purchases:
             if purchase.state in ('done', 'cancel'):
                 continue
-            purchase.create_invoice()
+            purchase.create_invoice('in_invoice')
+            purchase.create_invoice('in_credit_note')
             purchase.set_invoice_state()
-            purchase.create_move()
+            purchase.create_move('in')
+            return_moves = purchase.create_move('return')
+            if return_moves:
+                purchase.create_return_shipment(return_moves)
             purchase.set_shipment_state()
             if purchase.is_done():
                 done.append(purchase)
@@ -1039,11 +1082,17 @@ class PurchaseLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def get_from_location(self, name):
-        return self.purchase.party.supplier_location.id
+        if self.quantity >= 0:
+            return self.purchase.party.supplier_location.id
+        elif self.purchase.warehouse:
+            return self.purchase.warehouse.storage_location.id
 
     def get_to_location(self, name):
-        if self.purchase.warehouse:
-            return self.purchase.warehouse.input_location.id
+        if self.quantity >= 0:
+            if self.purchase.warehouse:
+                return self.purchase.warehouse.input_location.id
+        else:
+            return self.purchase.party.supplier_location.id
 
     def on_change_with_delivery_date(self, name=None):
         if (self.product
@@ -1054,7 +1103,7 @@ class PurchaseLine(ModelSQL, ModelView):
                 if product_supplier.party == self.purchase.party:
                     return product_supplier.compute_supply_date(date=date)
 
-    def get_invoice_line(self):
+    def get_invoice_line(self, invoice_type):
         '''
         Return a list of invoice line for purchase line
         '''
@@ -1070,17 +1119,22 @@ class PurchaseLine(ModelSQL, ModelView):
         invoice_line.note = self.note
         if self.type != 'line':
             if (self.purchase.invoice_method == 'order'
-                    and (all(l.quantity >= 0 for l in self.sale.lines
-                            if l.type == 'line')
-                        or all(l.quantity <= 0 for l in self.sale.lines
-                            if l.type == 'line'))):
+                    and ((all(l.quantity >= 0 for l in self.purchase.lines
+                                if l.type == 'line')
+                            and invoice_type == 'in_invoice')
+                        or (all(l.quantity <= 0 for l in self.purchase.lines
+                                if l.type == 'line')
+                            and invoice_type == 'in_credit_note'))):
                 return [invoice_line]
             else:
                 return []
+        if (invoice_type == 'in_invoice') != (self.quantity >= 0):
+            return []
+
         if (self.purchase.invoice_method == 'order'
                 or not self.product
                 or self.product.type == 'service'):
-            quantity = self.quantity
+            quantity = abs(self.quantity)
         else:
             quantity = 0.0
             for move in self.moves:
@@ -1144,7 +1198,7 @@ class PurchaseLine(ModelSQL, ModelView):
         if self.product.type == 'service':
             return
         skip = set(self.moves_recreated)
-        quantity = self.quantity
+        quantity = abs(self.quantity)
         for move in self.moves:
             if move not in skip:
                 quantity -= Uom.compute_qty(move.uom, move.quantity,
@@ -1544,6 +1598,54 @@ class ShipmentIn:
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentIn, cls).draft(shipments)
+
+
+class ShipmentInReturn:
+    __name__ = 'stock.shipment.in.return'
+
+    @classmethod
+    def __setup__(cls):
+        super(ShipmentInReturn, cls).__setup__()
+        cls._error_messages.update({
+                'reset_move': 'You cannot reset to draft a move generated '\
+                    'by a purchase.',
+                })
+
+    @classmethod
+    def write(cls, shipments, vals):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
+
+        super(ShipmentInReturn, cls).write(shipments, vals)
+
+        if 'state' in vals and vals['state'] == 'done':
+            move_ids = []
+            for shipment in shipments:
+                move_ids.extend([x.id for x in shipment.moves])
+
+            purchase_lines = PurchaseLine.search([
+                    ('moves', 'in', move_ids),
+                    ])
+            purchases = set()
+            if purchase_lines:
+                for purchase_line in purchase_lines:
+                    purchases.add(purchase_line.purchase)
+
+            with Transaction().set_user(0, set_context=True):
+                purchases = Purchase.browse([p.id for p in purchases])
+            Purchase.process(purchases)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, shipments):
+        for shipment in shipments:
+            for move in shipment.moves:
+                if move.state == 'cancel' and move.purchase_line:
+                    cls.raise_user_error('reset_move')
+
+        return super(ShipmentInReturn, cls).draft(shipments)
 
 
 class Move(ModelSQL, ModelView):
