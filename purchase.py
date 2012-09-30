@@ -27,12 +27,12 @@ class Purchase:
 
         super(Purchase, cls).__register__(module_name)
 
-    def create_invoice(self):
+    def create_invoice(self, invoice_type):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
 
-        invoice = super(Purchase, self).create_invoice()
+        invoice = super(Purchase, self).create_invoice(invoice_type)
 
         if invoice:
             invoice_line_ids = [l.id for l in invoice.lines]
