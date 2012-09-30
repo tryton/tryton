@@ -196,10 +196,11 @@ class PurchaseLine:
                     })
         return new_lines
 
-    def get_invoice_line(self):
+    def get_invoice_line(self, invoice_type):
         AccountSelection = Pool().get('analytic_account.account.selection')
 
-        invoice_lines = super(PurchaseLine, self).get_invoice_line()
+        invoice_lines = super(PurchaseLine, self).get_invoice_line(
+            invoice_type)
         if not invoice_lines:
             return invoice_lines
 
