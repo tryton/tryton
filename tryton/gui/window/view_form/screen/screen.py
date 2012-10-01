@@ -627,8 +627,7 @@ class Screen(SignalEvent):
                 idx = len(self.group) - 1
             self.current_record = self.group[idx]
         else:
-            self.current_record = len(self.group) \
-                    and self.group[0]
+            self.current_record = self.group[0] if len(self.group) else None
         self.current_view.set_cursor(reset_view=False)
         if self.current_record:
             self.current_record.validate_set()
@@ -656,8 +655,7 @@ class Screen(SignalEvent):
                 idx = 0
             self.current_record = self.group[idx]
         else:
-            self.current_record = len(self.group) \
-                    and self.group[-1]
+            self.current_record = self.group[-1] if len(self.group) else None
         self.current_view.set_cursor(reset_view=False)
         if self.current_record:
             self.current_record.validate_set()
