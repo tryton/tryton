@@ -28,7 +28,7 @@ class InvoiceLine:
                     ])
             if vals['invoice']:
                 Purchase.write(purchases, {
-                    'invoices': [('add', vals['invoice'])],
+                    'invoices': [('add', [vals['invoice']])],
                     })
             else:
                 for purchase in purchases:
