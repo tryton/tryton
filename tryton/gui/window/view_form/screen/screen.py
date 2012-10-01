@@ -707,7 +707,7 @@ class Screen(SignalEvent):
                 break
             self.current_record = record
         else:
-            self.current_record = len(self.group) and self.group[0]
+            self.current_record = self.group[0] if len(self.group) else None
         self.set_cursor(reset_view=False)
         view.display()
 
@@ -739,7 +739,7 @@ class Screen(SignalEvent):
                     record = parent
             self.current_record = record
         else:
-            self.current_record = len(self.group) and self.group[-1]
+            self.current_record = self.group[-1] if len(self.group) else None
         self.set_cursor(reset_view=False)
         view.display()
 
