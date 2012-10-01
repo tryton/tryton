@@ -87,7 +87,8 @@ class Purchase:
         if invoice_lines:
             self.write([self], {
                     'invoice_lines_ignored': [
-                        ('add', x.id) for x in invoice_lines],
+                        ('add', [x.id for x in invoice_lines]),
+                        ],
                     })
 
 
