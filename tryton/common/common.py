@@ -952,6 +952,8 @@ PLOCK = Lock()
 
 def process_exception(exception, *args, **kwargs):
 
+    rpc_execute = kwargs.get('rpc_execute', rpc.execute)
+
     if isinstance(exception, TrytonError):
         if exception.faultCode == 'BadFingerprint':
             warning(
@@ -977,14 +979,15 @@ def process_exception(exception, *args, **kwargs):
                         'always': (res == 'always'),
                         }, rpc.CONTEXT)
                 try:
-                    rpc.execute(*args2)
+                    rpc_execute(*args2)
                 except TrytonServerError, exception:
                     process_exception(exception, *args2)
                 if args:
                     try:
-                        return rpc.execute(*args)
+                        return rpc_execute(*args)
                     except TrytonServerError, exception:
-                        return process_exception(exception, *args)
+                        return process_exception(exception, *args,
+                            rpc_execute=rpc_execute)
                 return True
             return False
         elif exception.faultCode == 'UserError':
@@ -997,9 +1000,10 @@ def process_exception(exception, *args, **kwargs):
                     if '_timestamp' in args[5]:
                         del args[5]['_timestamp']
                     try:
-                        return rpc.execute(*args)
+                        return rpc_execute(*args)
                     except TrytonServerError, exception:
-                        return process_exception(exception, *args)
+                        return process_exception(exception, *args,
+                            rpc_execute=rpc_execute)
                 return False
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
@@ -1027,9 +1031,10 @@ def process_exception(exception, *args, **kwargs):
                         continue
                     if args:
                         try:
-                            return rpc.execute(*args)
+                            return rpc_execute(*args)
                         except TrytonServerError, exception:
-                            return process_exception(exception, *args)
+                            return process_exception(exception, *args,
+                                rpc_execute=rpc_execute)
                     return True
             finally:
                 PLOCK.release()
@@ -1256,12 +1261,14 @@ class RPCProgress(object):
                     gtk.main_iteration()
         if self.exception:
             if process_exception_p:
-                if process_exception(self.exception):
-                    self.res = None
-                    self.error = False
-                    self.exception = None
-                    return self.run(process_exception_p)
-                raise RPCException(self.exception)
+                def rpc_execute(*args):
+                    return RPCProgress('execute',
+                        args).run(process_exception_p, main_iteration_p)
+                result = process_exception(self.exception, *self.args,
+                    rpc_execute=rpc_execute)
+                if result is False:
+                    raise RPCException(self.exception)
+                return result
             else:
                 raise self.exception
         return self.res
