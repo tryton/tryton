@@ -331,10 +331,10 @@ class ScreenContainer(object):
         from tryton.gui.main import Main
         page = Main.get_main().get_page()
         if button.get_active():
-            if self.search_window not in page.dialogs:
+            if page and self.search_window not in page.dialogs:
                 page.dialogs.append(self.search_window)
             self.search_window.show()
         else:
             self.search_window.hide()
-            if self.search_window in page.dialogs:
+            if page and self.search_window in page.dialogs:
                 page.dialogs.remove(self.search_window)
