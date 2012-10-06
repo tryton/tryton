@@ -198,7 +198,7 @@ class Party(ModelSQL, ModelView):
             parties += cls.search([('name',) + tuple(clause[1:])], order=[])
 
             return [('id', 'in', [party.id for party in parties])]
-        return [('name',) + clause[1:]]
+        return [('name',) + tuple(clause[1:])]
 
     def address_get(self, type=None):
         """
