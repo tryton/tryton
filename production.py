@@ -258,7 +258,7 @@ class Production(Workflow, ModelSQL, ModelView):
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-
+        Template = pool.get('product.template')
         if not (self.bom and self.product and self.uom):
             return {}
         inputs = {
@@ -300,8 +300,10 @@ class Production(Workflow, ModelSQL, ModelView):
             if values:
                 values['unit_price'] = Decimal(0)
                 if output.product.id == values.get('product') and quantity:
-                    values['unit_price'] = (changes['cost'] /
-                        Decimal(str(quantity)))
+                    digits = Template.cost_price.digits[1]
+                    values['unit_price'] = Decimal(
+                        changes['cost'] / Decimal(str(quantity))
+                        ).quantize(Decimal(str(10 ** -digits)))
                 outputs['add'].append(values)
         return changes
 
