@@ -258,6 +258,7 @@ class Production(Workflow, ModelSQL, ModelView):
         output_obj = pool.get('production.bom.output')
         location_obj = pool.get('stock.location')
         company_obj = pool.get('company.company')
+        template_obj = pool.get('product.template')
 
         if not (values.get('bom')
                 and values.get('product')
@@ -314,8 +315,10 @@ class Production(Workflow, ModelSQL, ModelView):
             if values:
                 values['unit_price'] = Decimal(0)
                 if output.product.id == values.get('product') and quantity:
-                    values['unit_price'] = (changes['cost'] /
-                        Decimal(str(quantity)))
+                    digits = template_obj.cost_price.digits[1]
+                    values['unit_price'] = Decimal(
+                        changes['cost'] / Decimal(str(quantity))
+                        ).quantize(Decimal(str(10 ** -digits)))
                 outputs['add'].append(values)
         return changes
 
