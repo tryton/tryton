@@ -74,14 +74,6 @@ class AdaptModelGroup(gtk.GenericTreeModel):
                     or record.group.child_name == self.children_field)):
             path = self.on_get_path(record)
             self.row_deleted(path)
-            if (record.parent and
-                    record.group != self.group and
-                    len(record.children_group(self.children_field)) <= 1):
-                path = self.on_get_path(record.parent)
-                iter_ = self.get_iter(path)
-                self.__removed = record  # XXX check for thread
-                self.row_has_child_toggled(path, iter_)
-                self.__removed = None
 
     def append(self, model):
         self.group.add(model)
