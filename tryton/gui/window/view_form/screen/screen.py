@@ -548,6 +548,8 @@ class Screen(SignalEvent):
         if not records:
             return
         if delete:
+            # Must delete children records before parent
+            records.sort(key=lambda r: r.depth, reverse=True)
             if not self.group.delete(records):
                 return False
 

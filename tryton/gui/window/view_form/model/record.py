@@ -115,6 +115,15 @@ class Record(SignalEvent):
     def parent_name(self):
         return self.group.parent_name
 
+    @property
+    def depth(self):
+        parent = self.parent
+        i = 0
+        while parent:
+            i += 1
+            parent = parent.parent
+        return i
+
     def set_modified(self, value):
         if value:
             self.signal('record-modified')
