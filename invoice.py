@@ -1325,10 +1325,14 @@ class InvoiceLine(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company',
                     Eval('context', {}).get('company', 0))),
-            If(Eval('_parent_invoice', {}).get('type').in_(['out_invoice',
-                        'out_credit_note']),
-                ('kind', '=', 'revenue'),
-                ('kind', '=', 'expense')),
+            If(Bool(Eval('_parent_invoice')),
+                If(Eval('_parent_invoice', {}).get('type').in_(['out_invoice',
+                    'out_credit_note']),
+                    ('kind', '=', 'revenue'),
+                    ('kind', '=', 'expense')),
+                If(Eval('invoice_type').in_(['out_invoice', 'out_credit_note']),
+                    ('kind', '=', 'revenue'),
+                    ('kind', '=', 'expense'))) 
             ],
         on_change=['account', 'product', '_parent_invoice.party',
             '_parent_invoice.type'],
