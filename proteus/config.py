@@ -213,13 +213,13 @@ class TrytondConfig(Config):
 
         with Transaction().start(self.database_name, 0) as transaction:
             Cache.clean(database_name)
-            user_obj = self.pool.get('res.user')
+            User = self.pool.get('res.user')
             transaction.context = self.context
-            self.user = user_obj.search([
+            self.user = User.search([
                 ('login', '=', user),
                 ], limit=1)[0].id
             with transaction.set_user(self.user):
-                self._context = user_obj.get_preferences(context_only=True)
+                self._context = User.get_preferences(context_only=True)
         Cache.resets(database_name)
     __init__.__doc__ = object.__init__.__doc__
 
