@@ -935,8 +935,8 @@ class TaxRule(ModelSQL, ModelView):
         Return a list of the tax id to use or None
         '''
         pattern = pattern.copy()
-        pattern['group'] = tax and tax.group.id or None
-        pattern['origin_tax'] = tax and tax.id or None
+        pattern['group'] = tax.group.id if tax and tax.group else None
+        pattern['origin_tax'] = tax.id if tax else None
 
         for line in self.lines:
             if line.match(pattern):
