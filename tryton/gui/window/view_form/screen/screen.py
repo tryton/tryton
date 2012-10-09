@@ -681,7 +681,9 @@ class Screen(SignalEvent):
             store = view.store
             iter_ = store.get_iter(end)
             self.current_record = store.get_value(iter_, 0)
-        elif view.view_type == 'form' and self.current_record.group:
+        elif (view.view_type == 'form'
+                and self.current_record
+                and self.current_record.group):
             group = self.current_record.group
             record = self.current_record
             while group:
@@ -723,7 +725,9 @@ class Screen(SignalEvent):
             store = view.store
             iter_ = store.get_iter(start)
             self.current_record = store.get_value(iter_, 0)
-        elif view.view_type == 'form' and self.current_record.group:
+        elif (view.view_type == 'form'
+                and self.current_record
+                and self.current_record.group):
             group = self.current_record.group
             record = self.current_record
             idx = group.index(record) - 1
