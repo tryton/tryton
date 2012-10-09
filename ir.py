@@ -125,7 +125,7 @@ class View:
         dashboard_id = cls.dashboard_id()
         if not dashboard_id:
             # Restart the cache
-            cls._dashboard_cache.reset()
+            cls._dashboard_cache.clear()
         if fields_names is None \
                 or 'arch' in fields_names:
             if dashboard_id in ids:
