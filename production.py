@@ -420,7 +420,8 @@ class Production(Workflow, ModelSQL, ModelView):
                 r['product'] is not None))
         id2product = dict((p.id, p) for p in product_obj.browse(product_ids))
 
-        uom_ids = list(set(r['uom'] for r in values['inputs']))
+        uom_ids = list(set(r['uom'] for r in values['inputs']
+                if r['uom'] is not None))
         id2uom = dict((u.id, u) for u in uom_obj.browse(uom_ids))
 
         for input_ in values['inputs']:
