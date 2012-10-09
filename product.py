@@ -29,5 +29,5 @@ class Product:
             for product in products:
                 uom = context_uom or product.default_uom
                 prices[product.id] = price_list.compute(customer, product,
-                    product, quantity, uom)
+                    prices[product.id], quantity, uom)
         return prices
