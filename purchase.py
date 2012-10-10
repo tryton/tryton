@@ -296,7 +296,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         if self.party:
             invoice_address = self.party.address_get(type='invoice')
             if self.party.supplier_payment_term:
-                payment_term = self.party.supplier_payment_term.id
+                payment_term = self.party.supplier_payment_term
 
             subquery = cursor.limit_clause('SELECT currency '
                 'FROM "' + self._table + '" '
