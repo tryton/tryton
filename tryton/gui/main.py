@@ -1201,6 +1201,8 @@ class Main(object):
     def _sig_remove_book(self, widget, page_widget):
         for page in self.pages:
             if page.widget == page_widget:
+                if not page.widget.props.sensitive:
+                    return
                 page_num = self.notebook.page_num(page.widget)
                 self.notebook.set_current_page(page_num)
                 res = page.sig_close()
