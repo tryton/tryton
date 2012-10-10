@@ -1043,6 +1043,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
         lines = []
 
         if self.type in ('out_invoice', 'in_credit_note'):
+            if self.account == journal.debit_account:
+                self.raise_user_error('same_debit_account')
+            if not journal.debit_account:
+                self.raise_user_error('missing_debit_account')
+
             lines.append({
                     'description': description,
                     'account': self.account.id,
@@ -1061,11 +1066,12 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'amount_second_currency': amount_second_currency,
                     'second_currency': second_currency,
                     })
-            if self.account == journal.debit_account:
-                self.raise_user_error('same_debit_account')
-            if not journal.debit_account:
-                self.raise_user_error('missing_debit_account')
         else:
+            if self.account == journal.credit_account:
+                self.raise_user_error('same_credit_account')
+            if not journal.credit_account:
+                self.raise_user_error('missing_credit_account')
+
             lines.append({
                     'description': description,
                     'account': self.account.id,
@@ -1084,10 +1090,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'amount_second_currency': amount_second_currency,
                     'second_currency': second_currency,
                     })
-            if self.account == journal.credit_account:
-                self.raise_user_error('same_credit_account')
-            if not journal.credit_account:
-                self.raise_user_error('missing_credit_account')
 
         period_id = Period.find(self.company.id, date=date)
 
