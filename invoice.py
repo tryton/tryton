@@ -1330,9 +1330,10 @@ class InvoiceLine(ModelSQL, ModelView):
                     'out_credit_note']),
                     ('kind', '=', 'revenue'),
                     ('kind', '=', 'expense')),
-                If(Eval('invoice_type').in_(['out_invoice', 'out_credit_note']),
+                If(Eval('invoice_type').in_(['out_invoice',
+                            'out_credit_note']),
                     ('kind', '=', 'revenue'),
-                    ('kind', '=', 'expense'))) 
+                    ('kind', '=', 'expense')))
             ],
         on_change=['account', 'product', '_parent_invoice.party',
             '_parent_invoice.type'],
@@ -1340,7 +1341,7 @@ class InvoiceLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             },
-        depends=['type'])
+        depends=['type', 'invoice_type'])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
             'invisible': Eval('type') != 'line',
