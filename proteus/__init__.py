@@ -100,6 +100,12 @@ class CharDescriptor(FieldDescriptor):
         assert isinstance(value, basestring) or value in (None, False)
         super(CharDescriptor, self).__set__(instance, value or '')
 
+    def __get__(self, instance, owner):
+        value = super(CharDescriptor, self).__get__(instance, owner)
+        if value is False:
+            value = None
+        return value
+
 
 class BinaryDescriptor(FieldDescriptor):
     default = None
