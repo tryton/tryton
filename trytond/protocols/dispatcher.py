@@ -108,6 +108,9 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
                 for object_name, obj in pool.iterobject(type=type):
                     for method in obj._rpc:
                         res.append(type + '.' + object_name + '.' + method)
+                    if hasattr(obj, '_buttons'):
+                        for button in obj._buttons:
+                            res.append(type + '.' + object_name + '.' + button)
             return res
         elif method == 'methodSignature':
             return 'signatures not supported'
