@@ -118,7 +118,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
         new_id = template2tax_code[self.id]
 
         new_childs = []
-        for child in template.childs:
+        for child in self.childs:
             new_childs.append(child.create_tax_code(company_id,
                     template2tax_code=template2tax_code, parent_id=new_id))
         return new_id
@@ -269,7 +269,7 @@ class TaxCode(ModelSQL, ModelView):
                         self.write([code], data)
             template2tax_code[self.template.id] = self.id
 
-        for child in code.childs:
+        for child in self.childs:
             child.update_tax_code(template2tax_code=template2tax_code)
 
 
@@ -823,7 +823,7 @@ class Tax(ModelSQL, ModelView):
                         self.write([tax], data)
             template2tax[tax.template.id] = tax.id
 
-        for child in tax.childs:
+        for child in self.childs:
             child.update_tax(template2tax_code, template2account,
                 template2tax=template2tax)
 
