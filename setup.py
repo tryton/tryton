@@ -45,7 +45,7 @@ setup(name='trytond_carrier_percentage',
         ],
     package_data={
         'trytond.modules.carrier_percentage': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po'],
+            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst'],
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
