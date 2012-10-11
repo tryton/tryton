@@ -106,7 +106,7 @@ class PriceList(ModelSQL, ModelView):
                 with Transaction().set_context(
                         self._get_context_price_list_line(party, product,
                             unit_price, quantity, uom)):
-                    return line.get_unit_price(line)
+                    return line.get_unit_price()
         return unit_price
 
 
