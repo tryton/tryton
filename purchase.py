@@ -57,7 +57,7 @@ class Purchase:
     def get_invoice_state(self):
         state = super(Purchase, self).get_invoice_state()
         skips = set(x.id for x in self.invoice_lines_ignored)
-        invoice_lines = [l for l in self.invoice_lines if l not in skips]
+        invoice_lines = [l for l in self.invoice_lines if l.id not in skips]
         if invoice_lines:
             if any(l.invoice and l.invoice.state == 'cancel'
                     for l in invoice_lines):
