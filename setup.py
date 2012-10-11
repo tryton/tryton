@@ -48,7 +48,7 @@ setup(name='trytond_sale',
         ],
     package_data={
         'trytond.modules.sale': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po', 'sale.odt'],
+            + ['tryton.cfg', 'locale/*.po', 'sale.odt', 'tests/*.rst'],
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
