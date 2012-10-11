@@ -45,7 +45,7 @@ setup(name='trytond_production',
         ],
     package_data={
         'trytond.modules.production': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po'],
+            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst'],
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
