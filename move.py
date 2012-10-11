@@ -952,8 +952,10 @@ class Line(ModelSQL, ModelView):
     def get_move_field(self, name):
         if name == 'move_state':
             name = 'state'
-        if name in ('date', 'state', 'origin'):
+        if name in ('date', 'state'):
             return getattr(self.move, name)
+        elif name == 'origin':
+            return str(getattr(self.move, name))
         else:
             return getattr(self.move, name).id
 
