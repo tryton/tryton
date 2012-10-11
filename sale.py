@@ -1241,12 +1241,12 @@ class SaleLine(ModelSQL, ModelView):
 
         skip_ids = set(l.id for i in self.sale.invoices_recreated
             for l in i.lines)
-        for invoice_line in self.invoice_lines:
-            if invoice_line.type != 'line':
+        for old_invoice_line in self.invoice_lines:
+            if old_invoice_line.type != 'line':
                 continue
-            if invoice_line.id not in skip_ids:
-                quantity -= Uom.compute_qty(invoice_line.unit,
-                    invoice_line.quantity, self.unit)
+            if old_invoice_line.id not in skip_ids:
+                quantity -= Uom.compute_qty(old_invoice_line.unit,
+                    old_invoice_line.quantity, self.unit)
         invoice_line.quantity = quantity
 
         if invoice_line.quantity <= 0.0:
