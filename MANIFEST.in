@@ -10,3 +10,4 @@ include *.odt
 include locale/*.po
 include doc/*
 include icons/*
+include tests/*.rst
