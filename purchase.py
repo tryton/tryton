@@ -1938,7 +1938,7 @@ class HandleInvoiceException(Wizard):
         for invoice in purchase.invoices:
             if invoice not in domain_invoices or invoice in skip:
                 continue
-            if invoice.id in to_recreate:
+            if invoice in to_recreate:
                 invoices_recreated.append(invoice.id)
             else:
                 invoices_ignored.append(invoice.id)
