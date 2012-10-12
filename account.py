@@ -1344,7 +1344,7 @@ class PrintTrialBalance(Wizard):
     _name = 'account.print_trial_balance'
 
     start = StateView('account.print_trial_balance.start',
-        'account.print_general_ledger_start_view_form', [
+        'account.print_trial_balance_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Print', 'print_', 'tryton-print', default=True),
             ])
