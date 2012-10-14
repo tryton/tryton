@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:country.country:"
 msgid "The code of the country must be unique!"
-msgstr "El código del país debe ser único!"
+msgstr "¡El código del país debe ser único!"
 
 msgctxt "error:country.country:"
 msgid "The name of the country must be unique!"
-msgstr "Eln nombre de los países debe ser único!"
+msgstr "¡El nombre del país debe ser único!"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
@@ -16,16 +16,15 @@ msgstr "Código"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
@@ -41,11 +40,11 @@ msgstr "Subdivisiones"
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -57,16 +56,15 @@ msgstr "País"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -86,18 +84,18 @@ msgstr "Tipo"
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
 "You can use this field for quick search."
 msgstr ""
-"El código ISO del país en dos caracteres,\n"
+"El código ISO del país en dos caracteres.\n"
 "Puede usar este campo para búsqueda rápida."
 
 msgctxt "help:country.country,name:"
@@ -1094,7 +1092,7 @@ msgstr "Zimbabue"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr "Subdivisión"
+msgstr "Provincia"
 
 msgctxt "model:country.subdivision,name:ad-02"
 msgid "Canillo"
@@ -19290,7 +19288,7 @@ msgstr "Mashonaland West"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr "Paises"
+msgstr "Países"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -19330,7 +19328,7 @@ msgstr "Comuna autónoma"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr "Distrito Autónomo"
+msgstr "Distrito autónomo"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
@@ -19346,7 +19344,7 @@ msgstr "Comunidades autónomas"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
-msgstr "Isla Autónoma"
+msgstr "Isla autónoma"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
@@ -19370,7 +19368,7 @@ msgstr "Territorio autónomo"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
-msgstr "Municipio autónomo"
+msgstr "Municipio"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
@@ -19378,11 +19376,11 @@ msgstr "Cantón"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
-msgstr "Distito capital"
+msgstr "Distrito capital"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
-msgstr "Ciudad Capital Metropolitana"
+msgstr "Ciudad capital metropolitana"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Territory"
@@ -19398,7 +19396,7 @@ msgstr "Ciudad"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
-msgstr "Corporación ciudad"
+msgstr "Ciudad corporativa"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -19450,7 +19448,7 @@ msgstr "Entidad"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr "Dependencia Federal"
+msgstr "Dependencia federal"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
@@ -19458,35 +19456,35 @@ msgstr "Distrito Federal"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
-msgstr "Territorios Federales"
+msgstr "Territorios federales"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical region"
-msgstr "Región Geográfica"
+msgstr "Región geográfica"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
-msgstr "Unidad Geográfica"
+msgstr "Unidad geográfica"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
-msgstr "Comisionado"
+msgstr "Gobernación"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
-msgstr "Incluir por completitud"
+msgstr "Incluido para completar"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island council"
-msgstr "Consejo de Isla"
+msgstr "Consejo de la isla"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
-msgstr "Consejo de Islas"
+msgstr "Grupo de islas"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
-msgstr "Consejo Local"
+msgstr "Consejo local"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
@@ -19518,7 +19516,7 @@ msgstr "Municipalidad"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Oblast"
-msgstr "Óblast"
+msgstr "Oblast"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
@@ -19558,7 +19556,7 @@ msgstr "Región"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
-msgstr "Consejo Regional"
+msgstr "Consejo regional"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
@@ -19566,15 +19564,15 @@ msgstr "República"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
-msgstr "Distrito Especial"
+msgstr "Distrito especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Municipality"
-msgstr "Municipalidad Especial"
+msgstr "Municipalidad especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
-msgstr "Región Especial"
+msgstr "Región especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
@@ -19582,11 +19580,11 @@ msgstr "Región administrativa especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
-msgstr "Ciudad Especial"
+msgstr "Ciudad especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
-msgstr "Zona Especial"
+msgstr "Zona especial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
@@ -19602,7 +19600,7 @@ msgstr "Territorio"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
-msgstr "Consejo del Pueblo"
+msgstr "Consejo del pueblo"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Two-tier county"
@@ -19614,7 +19612,7 @@ msgstr "Unión territorial"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority"
-msgstr "Autoridad Unitaria"
+msgstr "Autoridad unitaria"
 
 msgctxt "view:country.country:"
 msgid "Countries"
