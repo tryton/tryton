@@ -2,26 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
 msgid "You can not create recursive categories!"
-msgstr "No puede crear categorías recursivas!"
-
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the default uom for a product which is associated to stock"
-" moves."
-msgstr ""
-"No puede cambiar la UdM predeterminada para un producto asociado con "
-"movimientos de inventario."
+msgstr "¡No puede crear categorías recursivas!"
 
 msgctxt "error:product.uom:"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"Si no se ha usado la UdM, puede eliminar, de otra forma puede desactivarla y"
-" crear una nueva."
+"Si no se ha usado la UdM, puede borrarla, en caso contrario, puede "
+"desactivarla y crear una nueva."
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values!"
@@ -29,29 +20,29 @@ msgstr "¡Factor y valores de tasa de cambio inválidas!"
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
-msgstr "Tasa de cambio y factor no pueden ser cero simultáneamente."
+msgstr "Conversión y factor no pueden ser cero simultáneamente."
 
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
 msgstr ""
-"No puede cambiar la Rata, el Factor o la Categoría de una Unidad de Medida."
+"No puede cambiar la conversión, el factor o la categoría de una unidad de "
+"medida."
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr "Hij@s"
+msgstr "Hijos"
 
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category,name:"
 msgid "Name"
@@ -67,11 +58,11 @@ msgstr "Nombre"
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
@@ -79,12 +70,11 @@ msgstr "Código"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -92,7 +82,7 @@ msgstr "Descripción"
 
 msgctxt "field:product.product,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
@@ -104,11 +94,11 @@ msgstr "Plantilla de Producto"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.template,active:"
 msgid "Active"
@@ -120,40 +110,39 @@ msgstr "Categoría"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Consumible"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr "Método de Precio"
+msgstr "Precio de Costo"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
-msgstr "Método de Coste"
+msgstr "Método de Costo"
 
 msgctxt "field:product.template,cost_price_uom:"
 msgid "Cost Price"
-msgstr "Método de Precio"
+msgstr "Precio de Costo"
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr "UdM Predeterminado"
+msgstr "UdM Predeterminada"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
+msgstr "Categoría de UdM predeterminada"
 
 msgctxt "field:product.template,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
@@ -181,11 +170,11 @@ msgstr "Tipo"
 
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.uom,active:"
 msgid "Active"
@@ -193,20 +182,19 @@ msgstr "Activo"
 
 msgctxt "field:product.uom,category:"
 msgid "UOM Category"
-msgstr "Categoría UDM"
+msgstr "Categoría de UdM"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
-msgstr "Mostrar Dígitos"
+msgstr "Decimales a Mostrar"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
@@ -214,7 +202,7 @@ msgstr "Factor"
 
 msgctxt "field:product.uom,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.uom,name:"
 msgid "Name"
@@ -222,7 +210,7 @@ msgstr "Nombre"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
-msgstr "Tasa de Cambio"
+msgstr "Conversión"
 
 msgctxt "field:product.uom,rec_name:"
 msgid "Name"
@@ -238,24 +226,23 @@ msgstr "Símbolo"
 
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
@@ -267,29 +254,32 @@ msgstr "Nombre"
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
-msgstr "Unidad de Medidas"
+msgstr "Unidades de Medida"
 
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
 "coef (base unit) = 1 (this unit)"
-msgstr "El coeficiente para la fórmula:"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"coeficiente (unidad base) = 1 (esta unidad)"
 
 msgctxt "help:product.uom,rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "1 (base unit) = coef (this unit)"
-msgstr "El coeficiente para la fórmula:"
+msgstr ""
+"El coeficiente de la fórmula:\n"
+"1 (unidad base) = coeficiente (esta unidad)"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorías"
@@ -314,7 +304,6 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Unidades de Medida"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categorías"
@@ -353,15 +342,15 @@ msgstr "Plantilla de Producto"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
-msgstr "Unidad de medida"
+msgstr "Unidad de Medida"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "Son"
+msgstr "Área"
 
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Carat"
+msgstr "Quilate"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
@@ -369,19 +358,19 @@ msgstr "centímetro"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Centímetro Cúbico"
+msgstr "Centímetro cúbico"
 
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Pie Cúbico"
+msgstr "Pie cúbico"
 
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Pulgada Cúbica"
+msgstr "Pulgada cúbica"
 
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Metro Cúbico"
+msgstr "Metro cúbico"
 
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
@@ -397,7 +386,7 @@ msgstr "Galón"
 
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Gram"
+msgstr "Gramo"
 
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
@@ -453,23 +442,23 @@ msgstr "Segundo"
 
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Centímetro Cuadrado"
+msgstr "Centímetro cuadrado"
 
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Pie Cuadrado"
+msgstr "Pie cuadrado"
 
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Pulgada Cuadrada"
+msgstr "Pulgada cuadrada"
 
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Metro Cuadrado"
+msgstr "Metro cuadrado"
 
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Yarda Cuadrada"
+msgstr "Yarda cuadrada"
 
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
@@ -477,7 +466,7 @@ msgstr "Unidad"
 
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Día de Trabajo"
+msgstr "Día de trabajo"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
@@ -537,7 +526,7 @@ msgstr "h"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr "en"
+msgstr "pul"
 
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
@@ -613,7 +602,7 @@ msgstr "yd"
 
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
-msgstr "Categoría de udm de Producto"
+msgstr "Categoría de UdM de Producto"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
@@ -641,15 +630,11 @@ msgstr "Peso"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Productos"
+msgstr "Administración de Productos"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
 msgstr "Promedio"
-
-msgctxt "selection:product.template,cost_price_method:"
-msgid "FIFO"
-msgstr "FIFO"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
@@ -657,19 +642,19 @@ msgstr "Fijo"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr ""
+msgstr "Activos"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Bienes"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
-msgstr "Servicios"
+msgstr "Servicio"
 
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr "Hij@s"
+msgstr "Hijos"
 
 msgctxt "view:product.category:"
 msgid "Product Categories"
@@ -709,11 +694,11 @@ msgstr "Plantillas de Producto"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
-msgstr "Categorías de Unidad de Medida"
+msgstr "Categorías de Unidades de Medida"
 
 msgctxt "view:product.uom.category:"
 msgid "Category of Unit of Measure"
-msgstr "Categoría de unidad de Medida"
+msgstr "Categoría de Unidad de Medida"
 
 msgctxt "view:product.uom:"
 msgid "Unit of Measure"
