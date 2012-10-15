@@ -68,7 +68,6 @@ class Production(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            'required': Bool(Eval('product')),
             'invisible': ~Eval('product'),
             },
         on_change=BOM_CHANGES,
@@ -83,7 +82,7 @@ class Production(Workflow, ModelSQL, ModelView):
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('bom')),
-            'invisible': ~Eval('bom'),
+            'invisible': ~Eval('product'),
             },
         on_change=BOM_CHANGES,
         depends=['uom_category'])
@@ -94,7 +93,7 @@ class Production(Workflow, ModelSQL, ModelView):
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('bom')),
-            'invisible': ~Eval('bom'),
+            'invisible': ~Eval('product'),
             },
         on_change=BOM_CHANGES,
         depends=['unit_digits'])
@@ -453,9 +452,10 @@ class Production(Workflow, ModelSQL, ModelView):
             if production.product:
                 product = production.product
                 values = self._move_values(location, storage_location, company,
-                    product, product.default_uom)
+                    product, production.uom, production.quantity)
                 if values:
                     values['production_output'] = production.id
+                    values['unit_price'] = Decimal(0)
                     move_obj.create(values)
             return
 
