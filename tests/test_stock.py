@@ -317,6 +317,61 @@ class StockTestCase(unittest.TestCase):
                 self.period.close([period])
                 test_products_by_location()
 
+        # Test with_childs
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            company, = self.company.search([('name', '=', 'B2CK')])
+            self.user.write([self.user(USER)], {
+                'main_company': company.id,
+                'company': company.id,
+                })
+
+            unit, = self.uom.search([('name', '=', 'Unit')])
+            product = self.product.create({
+                'name': 'Test products_by_location',
+                'type': 'goods',
+                'list_price': Decimal(0),
+                'cost_price': Decimal(0),
+                'cost_price_method': 'fixed',
+                'default_uom': unit.id,
+                })
+
+            lost_found, = self.location.search([('type', '=', 'lost_found')])
+            warehouse, = self.location.search([('type', '=', 'warehouse')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            storage1 = self.location.create({
+                    'name': 'Storage 1',
+                    'type': 'view',
+                    'parent': storage.id,
+                    })
+            self.location.create({
+                    'name': 'Storage 1.1',
+                    'type': 'storage',
+                    'parent': storage1.id,
+                    })
+            self.location.create({
+                    'name': 'Storage 2',
+                    'type': 'view',
+                    'parent': storage.id,
+                    })
+
+            self.move.create({
+                'product': product.id,
+                'uom': unit.id,
+                'quantity': 1,
+                'from_location': lost_found.id,
+                'to_location': storage.id,
+                'planned_date': today,
+                'effective_date': today,
+                'state': 'done',
+                'company': company.id,
+                })
+
+            products_by_location = self.product.products_by_location(
+                [warehouse.id], [product.id], with_childs=True)
+            self.assertEqual(products_by_location[(warehouse.id, product.id)],
+                1)
+
     def test0030period(self):
         '''
         Test period.
