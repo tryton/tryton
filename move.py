@@ -357,12 +357,14 @@ class Move(ModelSQL, ModelView):
             if not company.currency.is_zero(amount):
                 cls.raise_user_error('post_unbalanced_move')
         for move in moves:
-            post_number = Sequence.get_id(move.period.post_move_sequence.id)
-            cls.write([move], {
-                'post_number': post_number,
+            values = {
                 'state': 'posted',
-                'post_date': Date.today(),
-                })
+                }
+            if not move.post_number:
+                values['post_date'] = Date.today()
+                values['post_number'] = Sequence.get_id(
+                    move.period.post_move_sequence.id)
+            cls.write([move], values)
 
     @classmethod
     @ModelView.button
