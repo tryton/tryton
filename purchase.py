@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.wizard import Wizard
 
 
 class Purchase(ModelSQL, ModelView):
@@ -74,20 +75,6 @@ class Purchase(ModelSQL, ModelView):
         default['invoice_lines_ignored'] = None
         return super(Purchase, self).copy(ids, default=default)
 
-    def ignore_invoice_exception(self, purchase_id):
-        super(Purchase, self).ignore_invoice_exception(purchase_id)
-        purchase = self.browse(purchase_id)
-        invoice_line_ids = []
-        for invoice_line in purchase.invoice_lines:
-            if invoice_line.invoice \
-                    and invoice_line.invoice.state == 'cancel':
-                invoice_line_ids.append(invoice_line.id)
-        if invoice_line_ids:
-            self.write(purchase_id, {
-                    'invoice_lines_ignored': [
-                        ('add', x) for x in invoice_line_ids],
-                    })
-
 Purchase()
 
 
@@ -115,3 +102,28 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 PurchaseIgnoredInvoiceLine()
+
+
+class HandleInvoiceException(Wizard):
+    _name = 'purchase.handle.invoice.exception'
+
+    def transition_handle(self, session):
+        purchase_obj = Pool().get('purchase.purchase')
+
+        state = super(HandleInvoiceException, self).transition_handle(session)
+
+        purchase = purchase_obj.browse(Transaction().context['active_id'])
+        invoice_lines = []
+        for invoice_line in purchase.invoice_lines:
+            if (invoice_line.invoice
+                    and invoice_line.invoice.state == 'cancel'):
+                invoice_lines.append(invoice_line.id)
+        if invoice_lines:
+            purchase_obj.write(purchase.id, {
+                    'invoice_lines_ignored': [
+                        ('add', x) for x in invoice_lines],
+                    })
+        purchase_obj.process([purchase.id])
+        return state
+
+HandleInvoiceException()
