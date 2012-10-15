@@ -44,6 +44,17 @@ class Category:
                     | Eval('account_parent')),
                 },
             depends=['account_parent']))
+    account_stock_production = fields.Property(
+        fields.Many2One('account.account',
+            'Account Stock Production', domain=[
+                ('kind', '=', 'stock'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ],
+            states={
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_parent')),
+                },
+            depends=['account_parent']))
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found', domain=[
                 ('kind', '=', 'stock'),
@@ -60,6 +71,8 @@ class Category:
         'account.account', 'Account Stock Supplier Used'), 'get_account')
     account_stock_customer_used = fields.Function(fields.Many2One(
         'account.account', 'Account Stock Customer Used'), 'get_account')
+    account_stock_production_used = fields.Function(fields.Many2One(
+        'account.account', 'Account Stock Production Used'), 'get_account')
     account_stock_lost_found_used = fields.Function(fields.Many2One(
         'account.account', 'Account Stock Lost and Found'), 'get_account')
 
@@ -114,6 +127,23 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
+    account_stock_production = fields.Property(
+        fields.Many2One('account.account',
+            'Account Stock Production',
+            domain=[
+                ('kind', '=', 'stock'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ],
+            states={
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_category')
+                    | (Eval('type') != 'goods')),
+                'required': ((Eval('type') == 'goods')
+                    & Eval('context', {}).get('company')
+                    & ~Eval('account_category')),
+                }, help='This account will be used instead of the one defined '
+            'on the category.',
+            depends=['account_category', 'type']))
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found',
             domain=[
@@ -136,6 +166,8 @@ class Template:
         'account.account', 'Account Stock Supplier Used'), 'get_account')
     account_stock_customer_used = fields.Function(fields.Many2One(
         'account.account', 'Account Stock Customer Used'), 'get_account')
+    account_stock_production_used = fields.Function(fields.Many2One(
+        'account.account', 'Account Stock Production Used'), 'get_account')
     account_stock_lost_found_used = fields.Function(fields.Many2One(
         'account.account', 'Account Stock Lost and Found'), 'get_account')
 

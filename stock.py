@@ -27,7 +27,8 @@ class Move:
 
         with Transaction().set_user(0, set_context=True):
             move_line = AccountMoveLine()
-        if (type_.endswith('supplier')
+        if ((type_.endswith('supplier')
+                    or type_ == 'in_production')
                 and self.product.cost_price_method != 'fixed'):
             unit_price = self.unit_price
         else:
@@ -113,6 +114,10 @@ class Move:
             return 'supplier_customer'
         elif type_ == ('customer', 'supplier'):
             return 'customer_supplier'
+        elif type_ == ('storage', 'production'):
+            return 'out_production'
+        elif type_ == ('production', 'storage'):
+            return 'in_production'
 
     def _create_account_stock_move(self):
         '''
