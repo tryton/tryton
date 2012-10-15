@@ -473,16 +473,21 @@ class Product(ModelSQL, ModelView):
                 if location.parent.id in leafs:
                     leafs.remove(location.parent.id)
                 parent[location.id] = location.parent.id
-
+            locations = set((l.id for l in locations))
             while leafs:
-                next_leafs = set()
                 for l in leafs:
+                    locations.remove(l)
                     if l not in parent:
                         continue
-                    next_leafs.add(parent[l])
                     for product in res_product_ids:
                         res.setdefault((parent[l], product), 0)
                         res[(parent[l], product)] += res.get((l,product), 0)
+                next_leafs = set(locations)
+                for l in locations:
+                    if l not in parent:
+                        continue
+                    if parent[l] in next_leafs and parent[l] in locations:
+                        next_leafs.remove(parent[l])
                 leafs = next_leafs
 
             # clean result
