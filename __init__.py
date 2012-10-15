@@ -13,3 +13,6 @@ def register():
         PurchaseIgnoredInvoiceLine,
         InvoiceLine,
         module='purchase_invoice_line_standalone', type_='model')
+    Pool.register(
+        HandleInvoiceException,
+        module='purchase_invoice_line_standalone', type_='wizard')

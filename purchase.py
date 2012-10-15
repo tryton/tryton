@@ -4,7 +4,8 @@ from trytond.model import ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Purchase', 'PurchaseInvoiceLine', 'PurchaseIgnoredInvoiceLine']
+__all__ = ['Purchase', 'PurchaseInvoiceLine', 'PurchaseIgnoredInvoiceLine',
+    'HandleInvoiceException']
 __metaclass__ = PoolMeta
 
 
@@ -77,20 +78,6 @@ class Purchase:
         default['invoice_lines_ignored'] = None
         return super(Purchase, cls).copy(purchases, default=default)
 
-    def ignore_invoice_exception(self):
-        super(Purchase, self).ignore_invoice_exception()
-        invoice_lines = []
-        for invoice_line in self.invoice_lines:
-            if invoice_line.invoice \
-                    and invoice_line.invoice.state == 'cancel':
-                invoice_lines.append(invoice_line)
-        if invoice_lines:
-            self.write([self], {
-                    'invoice_lines_ignored': [
-                        ('add', [x.id for x in invoice_lines]),
-                        ],
-                    })
-
 
 class PurchaseInvoiceLine(ModelSQL):
     'Purchase - Invoice Line'
@@ -110,3 +97,25 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
     invoice = fields.Many2One('account.invoice.line', 'Invoice Line',
             ondelete='RESTRICT', select=True, required=True)
+
+
+class HandleInvoiceException:
+    __name__ = 'purchase.handle.invoice.exception'
+
+    def transition_handle(self):
+        Purchase = Pool().get('purchase.purchase')
+
+        state = super(HandleInvoiceException, self).transition_handle()
+
+        purchase = Purchase(Transaction().context['active_id'])
+        invoice_lines = []
+        for invoice_line in purchase.invoice_lines:
+            if (invoice_line.invoice
+                    and invoice_line.invoice.state == 'cancel'):
+                invoice_lines.append(invoice_line.id)
+        if invoice_lines:
+            Purchase.write([purchase], {
+                    'invoice_lines_ignored': [('add', invoice_lines)],
+                    })
+        Purchase.process([purchase])
+        return state
