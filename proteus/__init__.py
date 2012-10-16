@@ -534,9 +534,10 @@ class ModelList(list):
         Relation = Model.get(self.model_name, self.parent._config)
         if condition is None:
             condition = []
+        field_domain = decoder.decode(self.domain)
         add_remove_domain = (decoder.decode(self.add_remove)
             if self.add_remove else [])
-        new_domain = [self.domain, add_remove_domain, condition]
+        new_domain = [field_domain, add_remove_domain, condition]
         with Relation._config.set_context(self._get_context()):
             return Relation.find(new_domain, offset, limit, order)
 
