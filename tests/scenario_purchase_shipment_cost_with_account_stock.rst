@@ -101,7 +101,8 @@ Create chart of accounts::
     ...         ('kind', '=', 'expense'),
     ...         ('company', '=', company.id),
     ...         ])
-    >>> stock, stock_supplier, stock_lost_found, stock_customer = Account.find([
+    >>> (stock, stock_customer, stock_lost_found, stock_production,
+    ...     stock_supplier) = Account.find([
     ...         ('kind', '=', 'stock'),
     ...         ('company', '=', company.id),
     ...         ('name', 'like', 'Stock%'),
@@ -140,6 +141,7 @@ Create products::
     >>> product.account_stock = stock
     >>> product.account_stock_supplier = stock_supplier
     >>> product.account_stock_customer = stock_customer
+    >>> product.account_stock_production = stock_production
     >>> product.account_stock_lost_found = stock_lost_found
     >>> product.account_journal_stock_supplier = stock_journal
     >>> product.account_journal_stock_customer = stock_journal
