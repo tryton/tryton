@@ -957,7 +957,10 @@ class Line(ModelSQL, ModelView):
         if name in ('date', 'state'):
             return getattr(self.move, name)
         elif name == 'origin':
-            return str(getattr(self.move, name))
+            origin = getattr(self.move, name)
+            if origin:
+                return str(origin)
+            return None
         else:
             return getattr(self.move, name).id
 
