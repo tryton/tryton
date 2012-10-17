@@ -1611,7 +1611,7 @@ class Main(object):
         common.message(_("Database dropped successfully!"), \
                 parent=self.window)
 
-    def sig_db_restore(self, widget):
+    def sig_db_restore(self, widget=None):
         if not self.sig_logout(widget):
             return False
         filename = common.file_selection(_('Open Backup File to Restore...'), \
@@ -1656,7 +1656,7 @@ class Main(object):
                 common.message(_('Database restore failed!'), \
                         parent=self.window)
 
-    def sig_db_dump(self, widget):
+    def sig_db_dump(self, widget=None):
         if not self.sig_logout(widget):
             return False
         dialog = DBBackupDrop(self.window, function='backup')
