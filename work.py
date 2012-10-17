@@ -59,10 +59,11 @@ class Work(ModelSQL, ModelView):
                 ('parent', 'child_of', ids),
                 ('active', '=', True)], context=context) + ids
         all_ids = list(set(all_ids))
+        works = set(self.browse(cursor, user, all_ids, context=context))
         res = {}
         id2work = {}
         leafs = set()
-        for work in self.browse(cursor, user, all_ids, context=context):
+        for work in works:
             id2work[work.id] = work
             if not work.children:
                 leafs.add(work.id)
@@ -73,20 +74,20 @@ class Work(ModelSQL, ModelView):
                         ts_line, context=context)
 
         while leafs:
-            parents = set()
             for work_id in leafs:
                 work = id2work[work_id]
+                works.remove(work)
                 if not work.active:
                     continue
                 if work.parent and work.parent.id in res:
                     res[work.parent.id] += res[work_id]
-                    parents.add(work.parent.id)
-            leafs = parents
-
-        for id in all_ids:
-            if id not in ids:
-                del res[id]
-
+            next_leafs = set(w.id for w in works)
+            for work in works:
+                if not work.parent:
+                    continue
+                if work.parent.id in next_leafs and work.parent in works:
+                    next_leafs.remove(work.parent.id)
+            leafs = next_leafs
         return res
 
     def get_revenue(self, cursor, user, ids, name, context=None):
@@ -94,10 +95,11 @@ class Work(ModelSQL, ModelView):
                 ('parent', 'child_of', ids),
                 ('active', '=', True)], context=context) + ids
         all_ids = list(set(all_ids))
+        works = set(self.browse(cursor, user, all_ids, context=context))
         res = {}
         id2work = {}
         leafs = set()
-        for work in self.browse(cursor, user, all_ids, context=context):
+        for work in works:
             id2work[work.id] = work
             if not work.children:
                 leafs.add(work.id)
@@ -108,20 +110,20 @@ class Work(ModelSQL, ModelView):
                 res[work.id] = Decimal('0')
 
         while leafs:
-            parents = set()
             for work_id in leafs:
                 work = id2work[work_id]
+                works.remove(work)
                 if not work.active:
                     continue
                 if work.parent and work.parent.id in res:
                     res[work.parent.id] += res[work_id]
-                    parents.add(work.parent.id)
-            leafs = parents
-
-        for id in all_ids:
-            if id not in ids:
-                del res[id]
-
+            next_leafs = set(w.id for w in works)
+            for work in works:
+                if not work.parent:
+                    continue
+                if work.parent.id in next_leafs and work.parent in works:
+                    next_leafs.remove(work.parent.id)
+            leafs = next_leafs
         return res
 
     def get_currency_digits(self, cursor, user, ids, name, context=None):
