@@ -2926,7 +2926,7 @@ msgid "Print General Journal"
 msgstr "Imprimeix el llibre diari"
 
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Legder"
+msgid "Print General Ledger"
 msgstr "Imprimeix el llibre major"
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
@@ -3094,7 +3094,7 @@ msgid "Print General Journal"
 msgstr "Imprimeix el llibre diari"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Legder"
+msgid "Print General Ledger"
 msgstr "Imprimveix el llibre major"
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"

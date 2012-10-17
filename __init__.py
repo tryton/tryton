@@ -22,7 +22,7 @@ def register():
         Account,
         AccountDeferral,
         OpenChartAccountStart,
-        PrintGeneralLegderStart,
+        PrintGeneralLedgerStart,
         PrintTrialBalanceStart,
         OpenBalanceSheetStart,
         OpenIncomeStatementStart,
@@ -72,7 +72,7 @@ def register():
         OpenType,
         CloseFiscalYear,
         OpenChartAccount,
-        PrintGeneralLegder,
+        PrintGeneralLedger,
         PrintTrialBalance,
         OpenBalanceSheet,
         OpenIncomeStatement,
@@ -94,7 +94,7 @@ def register():
         OpenTaxCode,
         module='account', type_='wizard')
     Pool.register(
-        GeneralLegder,
+        GeneralLedger,
         TrialBalance,
         ThirdPartyBalance,
         AgedBalance,

@@ -17,7 +17,7 @@ from trytond.backend import TableHandler
 
 __all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
     'AccountDeferral', 'OpenChartAccountStart', 'OpenChartAccount',
-    'PrintGeneralLegderStart', 'PrintGeneralLegder', 'GeneralLegder',
+    'PrintGeneralLedgerStart', 'PrintGeneralLedger', 'GeneralLedger',
     'PrintTrialBalanceStart', 'PrintTrialBalance', 'TrialBalance',
     'OpenBalanceSheetStart', 'OpenBalanceSheet',
     'OpenIncomeStatementStart', 'OpenIncomeStatement',
@@ -1045,7 +1045,7 @@ class OpenChartAccount(Wizard):
         return 'end'
 
 
-class PrintGeneralLegderStart(ModelView):
+class PrintGeneralLedgerStart(ModelView):
     'Print General Ledger'
     __name__ = 'account.print_general_ledger.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
@@ -1091,8 +1091,8 @@ class PrintGeneralLegderStart(ModelView):
             }
 
 
-class PrintGeneralLegder(Wizard):
-    'Print General Legder'
+class PrintGeneralLedger(Wizard):
+    'Print General Ledger'
     __name__ = 'account.print_general_ledger'
     start = StateView('account.print_general_ledger.start',
         'account.print_general_ledger_start_view_form', [
@@ -1124,7 +1124,7 @@ class PrintGeneralLegder(Wizard):
         return 'end'
 
 
-class GeneralLegder(Report):
+class GeneralLedger(Report):
     __name__ = 'account.general_ledger'
 
     @classmethod
@@ -1208,7 +1208,7 @@ class GeneralLegder(Report):
         localcontext['lines'] = lambda account_id: account_id2lines[account_id]
         localcontext['company'] = company
 
-        return super(GeneralLegder, cls).parse(report, objects, data,
+        return super(GeneralLedger, cls).parse(report, objects, data,
             localcontext)
 
     @classmethod

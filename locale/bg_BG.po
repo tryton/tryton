@@ -2853,7 +2853,7 @@ msgid "Print General Journal"
 msgstr "Отпечатване на основен дневник"
 
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Legder"
+msgid "Print General Ledger"
 msgstr "Отпечатване на основен дневник"
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
@@ -3018,7 +3018,7 @@ msgid "Print General Journal"
 msgstr "Отпечатване на основен дневник"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Legder"
+msgid "Print General Ledger"
 msgstr "Отпечатване на основен дневник"
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
