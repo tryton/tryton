@@ -1320,7 +1320,7 @@ class Main(object):
         self.refresh_ssl()
         common.message(_("Database dropped successfully!"))
 
-    def sig_db_restore(self, widget):
+    def sig_db_restore(self, widget=None):
         if not self.sig_logout(widget):
             return False
         filename = common.file_selection(_('Open Backup File to Restore...'),
@@ -1362,7 +1362,7 @@ class Main(object):
             else:
                 common.message(_('Database restore failed!'))
 
-    def sig_db_dump(self, widget):
+    def sig_db_dump(self, widget=None):
         if not self.sig_logout(widget):
             return False
         dialog = DBBackupDrop(function='backup')
