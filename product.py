@@ -156,7 +156,7 @@ class Template:
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
-                ], on_change=['account_expense'],
+                ], on_change=['account_category','account_expense'],
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')),
@@ -166,7 +166,7 @@ class Template:
                 'Account Revenue', domain=[
                     ('kind', '=', 'revenue'),
                     ('company', '=', Eval('context', {}).get('company', 0)),
-                    ], on_change=['account_revenue'],
+                    ], on_change=['account_category','account_revenue'],
                 states={
                     'invisible': (~Eval('context', {}).get('company')
                         | Eval('account_category')),
@@ -228,21 +228,27 @@ class Template:
             return [x.id for x in getattr(self, name[:-5])]
 
     def on_change_account_expense(self):
-        supplier_taxes = []
-        result = {
-            'supplier_taxes': supplier_taxes,
+        result = {}
+        if not self.account_category:
+            supplier_taxes = []
+            result = {
+                'supplier_taxes': supplier_taxes,
             }
-        if self.account_expense:
-            supplier_taxes.extend(tax.id for tax in self.account_expense.taxes)
+            if self.account_expense:
+                supplier_taxes.extend(
+                    tax.id for tax in self.account_expense.taxes)
         return result
 
     def on_change_account_revenue(self):
-        customer_taxes = []
-        result = {
-            'customer_taxes': customer_taxes,
+        result = {}
+        if not self.account_category:
+            customer_taxes = []
+            result = {
+                'customer_taxes': customer_taxes,
             }
-        if self.account_revenue:
-            customer_taxes.extend(tax.id for tax in self.account_revenue.taxes)
+            if self.account_revenue:
+                customer_taxes.extend(
+                    tax.id for tax in self.account_revenue.taxes)
         return result
 
 
