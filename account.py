@@ -442,7 +442,8 @@ class AccountTemplate(ModelSQL, ModelView):
             vals = self._get_account_value()
             vals['company'] = company_id
             vals['parent'] = parent_id
-            vals['type'] = template2type.get(self.type.id)
+            vals['type'] = (template2type.get(self.type.id) if self.type
+                else None)
 
             new_account = Account.create(vals)
 
@@ -891,8 +892,11 @@ class Account(ModelSQL, ModelView):
 
         if self.template:
             vals = self.template._get_account_value(account=self)
-            if self.type.id != template2type.get(self.template.type.id):
-                vals['type'] = template2type.get(self.template.type.id)
+            current_type = self.type.id if self.type else None
+            template_type = (template2type.get(self.template.type.id)
+                if self.template.type else None)
+            if current_type != template2type:
+                vals['type'] = template_type
             if vals:
                 self.write([self], vals)
 
