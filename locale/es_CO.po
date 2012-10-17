@@ -4,24 +4,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,locations:"
 msgid "Default Locations"
-msgstr "Sitios Predeterminados"
+msgstr "Locaciones por Defecto"
 
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
-msgstr "Lugar de Almacenamiento"
+msgstr "Locación de Almacenamiento"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
@@ -41,32 +40,32 @@ msgstr "Depósito"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "model:stock.product.location,name:"
-msgid "Product Location"
-msgstr "Sitio del Producto"
+msgid ""
+msgstr "Locación de Producto"
 
 msgctxt "view:product.product:"
 msgid "Default Locations"
-msgstr "Sitios Predeterminados"
+msgstr "Locaciones por Defecto"
 
 msgctxt "view:product.product:"
 msgid "Product Location"
-msgstr "Sitio del Producto"
+msgstr "Locación del Producto"
 
 msgctxt "view:product.product:"
 msgid "Product Locations"
-msgstr "Sitios del Producto"
+msgstr "Locaciones del Producto"
 
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
-msgstr "Sitio del Producto"
+msgstr "Locación del Producto"
 
 msgctxt "view:stock.product.location:"
 msgid "Product Locations"
-msgstr "Sitios del Producto"
+msgstr "Locaciones del Producto"
