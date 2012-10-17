@@ -23,24 +23,25 @@ class InvoiceLine:
         Purchase = Pool().get('purchase.purchase')
 
         if 'invoice' in vals:
-            purchases = Purchase.search([
-                    ('invoice_lines', 'in', [l.id for l in lines]),
-                    ])
-            if vals['invoice']:
-                Purchase.write(purchases, {
-                    'invoices': [('add', [vals['invoice']])],
-                    })
-            else:
-                for purchase in purchases:
-                    invoice_ids = list(set([x.invoice.id for x
-                                in purchase.invoice_lines
-                                if x.invoice and x.id in lines])
-                        - set([x.invoice.id for x
-                                in purchase.invoice_lines
-                                if x.invoice and x.id not in lines]))
-                    Purchase.write([purchase], {
-                        'invoices': [('unlink', invoice_ids)],
+            with Transaction().set_user(0, set_context=True):
+                purchases = Purchase.search([
+                        ('invoice_lines', 'in', [l.id for l in lines]),
+                        ])
+                if vals['invoice']:
+                    Purchase.write(purchases, {
+                        'invoices': [('add', [vals['invoice']])],
                         })
+                else:
+                    for purchase in purchases:
+                        invoice_ids = list(set([x.invoice.id for x
+                                    in purchase.invoice_lines
+                                    if x.invoice and x.id in lines])
+                            - set([x.invoice.id for x
+                                    in purchase.invoice_lines
+                                    if x.invoice and x.id not in lines]))
+                        Purchase.write([purchase], {
+                            'invoices': [('unlink', invoice_ids)],
+                            })
 
         return super(InvoiceLine, cls).write(lines, vals)
 
