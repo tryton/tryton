@@ -70,7 +70,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
         if not code or code.description != self.description:
             res['description'] = self.description
         if not code or code.template.id != self.id:
-            res['self'] = self.id
+            res['template'] = self.id
         return res
 
     def create_tax_code(self, company_id, template2tax_code=None,
