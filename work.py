@@ -118,6 +118,7 @@ class Work(ModelSQL, ModelView):
             all_ids = list(set(all_ids))
 
             works = self.browse(all_ids)
+            all_works = set(works)
 
             durations = {}
             id2work = {}
@@ -136,15 +137,20 @@ class Work(ModelSQL, ModelView):
                 durations[work.id] = work.effort / (total_allocation / 100.0)
 
             while leafs:
-                parents = set()
                 for work_id in leafs:
                     work = id2work[work_id]
+                    all_works.remove(work)
                     if not work.active:
                         continue
                     if work.parent and work.parent.id in durations:
                         durations[work.parent.id] += durations[work_id]
-                        parents.add(work.parent.id)
-                leafs = parents
+                next_leafs = set(w.id for w in all_works)
+                for work in all_works:
+                    if not work.parent:
+                        continue
+                    if work.parent.id in next_leafs and work.parent in works:
+                        next_leafs.remove(work.parent.id)
+                leafs = next_leafs
             res['duration'] = durations
 
 
