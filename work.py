@@ -53,14 +53,15 @@ class Work:
 
     @classmethod
     def get_cost(cls, works, name):
-        all_works = cls.search([
+        works += cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True)]) + works
-        all_works = list(set(all_works))
+        works = set(works)
+
         costs = {}
         id2work = {}
         leafs = set()
-        for work in all_works:
+        for work in works:
             id2work[work.id] = work
             if not work.children:
                 leafs.add(work.id)
@@ -70,32 +71,33 @@ class Work:
                 costs[work.id] += ts_line.compute_cost()
 
         while leafs:
-            parents = set()
             for work_id in leafs:
                 work = id2work[work_id]
+                works.remove(work)
                 if not work.active:
                     continue
                 if work.parent and work.parent.id in costs:
                     costs[work.parent.id] += costs[work_id]
-                    parents.add(work.parent.id)
-            leafs = parents
-
-        for work in all_works:
-            if work not in works:
-                del costs[work.id]
-
+            next_leafs = set(w.id for w in works)
+            for work in works:
+                if not work.parent:
+                    continue
+                if work.parent.id in next_leafs and work.parent in works:
+                    next_leafs.remove(work.parent.id)
+            leafs = next_leafs
         return costs
 
     @classmethod
     def get_revenue(cls, works, name):
-        all_works = cls.search([
+        works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True)]) + works
-        all_works = list(set(all_works))
+        works = set(works)
+
         revenues = {}
         id2work = {}
         leafs = set()
-        for work in all_works:
+        for work in works:
             id2work[work.id] = work
             if not work.children:
                 leafs.add(work.id)
@@ -107,20 +109,20 @@ class Work:
                 revenues[work.id] = Decimal('0')
 
         while leafs:
-            parents = set()
             for work_id in leafs:
                 work = id2work[work_id]
+                works.remove(work)
                 if not work.active:
                     continue
                 if work.parent and work.parent.id in revenues:
                     revenues[work.parent.id] += revenues[work_id]
-                    parents.add(work.parent.id)
-            leafs = parents
-
-        for work in all_works:
-            if work not in works:
-                del revenues[work.id]
-
+            next_leafs = set(w.id for w in works)
+            for work in works:
+                if not work.parent:
+                    continue
+                if work.parent.id in next_leafs and work.parent in works:
+                    next_leafs.remove(work.parent.id)
+            leafs = next_leafs
         return revenues
 
     def on_change_with_currency_digits(self, name=None):
