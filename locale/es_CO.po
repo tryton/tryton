@@ -1,0 +1,55 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.move.split.start,count:"
+msgid "Counts"
+msgstr "Contador"
+
+msgctxt "field:stock.move.split.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.move.split.start,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.move.split.start,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimales de Unidad"
+
+msgctxt "field:stock.move.split.start,uom:"
+msgid "Uom"
+msgstr "UdM"
+
+msgctxt "field:stock.move.split.start,uom_category:"
+msgid "Uom Category"
+msgstr "Categoría UdM"
+
+msgctxt "help:stock.move.split.start,count:"
+msgid "The limit number of moves"
+msgstr "El número límite de movimientos."
+
+msgctxt "model:ir.action,name:wizard_split_move"
+msgid "Split Move"
+msgstr "Partir Movimiento"
+
+msgctxt "model:stock.move.split.start,name:"
+msgid "Split Move"
+msgstr "Partir Movimiento"
+
+msgctxt "view:stock.move.split.start:"
+msgid "Split Move"
+msgstr "Partir Movimiento"
+
+msgctxt "view:stock.move:"
+msgid "Split"
+msgstr "Partir"
+
+msgctxt "wizard_button:stock.move.split,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.move.split,start,split:"
+msgid "Split"
+msgstr "Partir"
