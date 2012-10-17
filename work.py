@@ -206,11 +206,11 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def get_total_effort(cls, works, name):
 
-        works += cls.search([
+        works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True),
-                ])
-        works = list(set(works))
+                ]) + works
+        works = set(works)
 
         res = {}
         id2work = {}
@@ -222,15 +222,20 @@ class Work(ModelSQL, ModelView):
                 leafs.add(work.id)
 
         while leafs:
-            parents = set()
             for work_id in leafs:
                 work = id2work[work_id]
+                works.remove(work)
                 if not work.active:
                     continue
                 if work.parent and work.parent.id in res:
                     res[work.parent.id] += res[work_id]
-                    parents.add(work.parent.id)
-            leafs = parents
+            next_leafs = set((w.id for w in works))
+            for work in works:
+                if not work.parent:
+                    continue
+                if work.parent.id in next_leafs and work.parent in works:
+                    next_leafs.remove(work.parent.id)
+            leafs = next_leafs
 
         return res
 
