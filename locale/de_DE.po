@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:project.allocation:"
+msgid "Percentage must be greater than zero"
+msgstr "Prozentsatz muss größer als 0 sein."
+
 msgctxt "error:project.work:"
 msgid "You can not create recursive dependencies!"
 msgstr "Abhängigkeiten können nicht rekursiv angelegt werden!"
