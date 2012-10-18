@@ -1178,7 +1178,7 @@ class SaleLine(ModelSQL, ModelView):
         return Decimal('0.0')
 
     def get_warehouse(self, name):
-        return self.sale.warehouse.id
+        return self.sale.warehouse.id if self.sale.warehouse else None
 
     def get_from_location(self, name):
         if self.quantity >= 0:
