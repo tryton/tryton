@@ -123,8 +123,8 @@ msgid "Lots"
 msgstr "Chargen"
 
 msgctxt "model:product.template-stock.lot.type,name:"
-msgid "product.template-stock.lot.type"
-msgstr ""
+msgid "Template - Stock Lot Type"
+msgstr "Vorlage - Lager Charge Typ"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
