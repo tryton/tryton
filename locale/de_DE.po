@@ -87,3 +87,15 @@ msgstr "Einkauf - Rechnungsposition"
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Einkauf - Ignorierte Rechnungsposition"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Rechnungspositionen"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "OK"
