@@ -8,12 +8,11 @@ msgstr "¡No puede crear dependencias recursivas!"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
@@ -21,7 +20,7 @@ msgstr "Empleado"
 
 msgctxt "field:project.allocation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
@@ -37,24 +36,23 @@ msgstr "Trabajo"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
@@ -70,11 +68,11 @@ msgstr "Sucesor"
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
