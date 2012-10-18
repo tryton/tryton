@@ -16,16 +16,15 @@ msgstr "Líneas de Factura ignoradas"
 
 msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:purchase.purchase-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-account.invoice.line,line:"
 msgid "Invoice Line"
@@ -41,24 +40,23 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.purchase-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:purchase.purchase-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Fecha de Creación"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
 msgid "Invoice Line"
@@ -74,11 +72,11 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Fecha de Modificación"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por Usuario"
 
 msgctxt "model:purchase.purchase-account.invoice.line,name:"
 msgid "Purchase - Invoice Line"
@@ -87,3 +85,15 @@ msgstr "Compras - Línea de Factura"
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Compras - Línea de Factura ignorada"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Líneas de Factura"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "Aceptar"
