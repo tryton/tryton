@@ -609,6 +609,46 @@ msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:stock.product_quantities_warehouse,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:stock.product_quantities_warehouse,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:stock.product_quantities_warehouse,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:stock.product_quantities_warehouse,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:stock.product_quantities_warehouse,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:stock.product_quantities_warehouse,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:stock.product_quantities_warehouse.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+msgid "Warehouse"
+msgstr "Warenlager"
+
 msgctxt "field:stock.products_by_locations.start,forecast_date:"
 msgid "At Date"
 msgstr "Zum"
@@ -1054,8 +1094,8 @@ msgid "Locations"
 msgstr "Lagerorte"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Location Quantity & Cost Value"
-msgstr "Lagerbestand & Kostenbewertung"
+msgid "Locations"
+msgstr "Lagerorte"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1081,9 +1121,13 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Lagerperioden"
 
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "Artikelanzahl nach Warenlager"
+
 msgctxt "model:ir.action,name:act_products_by_locations"
-msgid "Products by Locations"
-msgstr "Artikel nach Lagerorten"
+msgid "Products"
+msgstr "Artikel"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
 msgid "Draft Supplier Shipment"
@@ -1174,8 +1218,12 @@ msgid "Restocking List"
 msgstr "Einlagerungsliste"
 
 msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Location"
+msgid "Product by Locations"
 msgstr "Artikel nach Lagerort"
+
+msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "Artikelanzahl nach Warenlager"
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
@@ -1406,10 +1454,16 @@ msgid "Stock Period"
 msgstr "Lager Periode"
 
 msgctxt "model:stock.period.cache,name:"
-msgid "stock.period.cache"
-msgstr ""
-"Perioden Cache-Speicher\n"
-"Dient der Pufferspeicherung von berechneten Lagerbeständen."
+msgid "Stock Period Cache"
+msgstr "Lager Perioden Cache"
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "Artikelanzahl nach Warenlager"
+
+msgctxt "model:stock.product_quantities_warehouse.start,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "Artikelanzahl nach Warenlager"
 
 msgctxt "model:stock.products_by_locations.start,name:"
 msgid "Products by Locations"
@@ -1973,11 +2027,11 @@ msgstr "Auf Entwurf setzen"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
-msgstr "Perioden Cache-Speicher"
+msgstr "Perioden Cache"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Caches"
-msgstr "Perioden Cache-Speicher"
+msgstr "Perioden Cache"
 
 msgctxt "view:stock.period:"
 msgid "Close"
@@ -1994,6 +2048,14 @@ msgstr "Periode"
 msgctxt "view:stock.period:"
 msgid "Periods"
 msgstr "Lagerperioden"
+
+msgctxt "view:stock.product_quantities_warehouse.start:"
+msgid "Product Quantities By Warehouse"
+msgstr "Artikelanzahl nach Warenlager"
+
+msgctxt "view:stock.product_quantities_warehouse:"
+msgid "Product Quantities By Warehouse"
+msgstr "Artikelanzahl nach Warenlager"
 
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
@@ -2256,6 +2318,14 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 msgctxt "wizard_button:product.by_location,start,open:"
+msgid "Open"
+msgstr "Öffnen"
+
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
 msgid "Open"
 msgstr "Öffnen"
 
