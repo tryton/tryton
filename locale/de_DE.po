@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.update_cost_price:"
+msgid "The stock account and the counterpart can not be the same account"
+msgstr "Lagerkonto und Gegenkonto können nicht das selbe Konto sein"
+
+msgctxt "field:account.configuration,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Kostenpreis Gegenkonto"
+
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr "Journal Lager"
@@ -25,6 +33,14 @@ msgstr "Konto Lager Inventurdifferenz"
 msgctxt "field:product.category,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Konto Lager Inventurdifferenz"
+
+msgctxt "field:product.category,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Konto Lager Produktion"
+
+msgctxt "field:product.category,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Verwendetes Konto Lager Produktion"
 
 msgctxt "field:product.category,account_stock_supplier:"
 msgid "Account Stock Supplier"
@@ -58,6 +74,14 @@ msgctxt "field:product.template,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Konto Lager Inventurdifferenz"
 
+msgctxt "field:product.template,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Konto Lager Produktion"
+
+msgctxt "field:product.template,account_stock_production_used:"
+msgid "Account Stock Production Used"
+msgstr "Verwendetes Konto Lager Produktion"
+
 msgctxt "field:product.template,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Konto Lager Lieferant"
@@ -69,6 +93,50 @@ msgstr "Verwendetes Konto Lager Lieferant"
 msgctxt "field:product.template,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Verwendetes Konto Lager"
+
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Kostenpreis"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "Gegenkonto"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Währung (signifikante Stellen)"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "Preisdifferenz"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "Lagerkonto"
 
 msgctxt "field:stock.move,account_move:"
 msgid "Account Move"
@@ -92,6 +160,12 @@ msgstr ""
 "Dieses Konto überschreibt das Konto welches in der Kategorie eingestellt "
 "ist."
 
+msgctxt "help:product.template,account_stock_production:"
+msgid "This account will be used instead of the one defined on the category."
+msgstr ""
+"Dieses Konto wird benutzt an Stelle des Kontos welches in der Kategorie "
+"eingestellt ist."
+
 msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
@@ -111,6 +185,11 @@ msgctxt ""
 msgid "Stock Lost and Found"
 msgstr "Lager Inventurdifferenz"
 
+msgctxt ""
+"model:account.account.template,name:account_template_stock_production"
+msgid "Stock Production"
+msgstr "Lager Produktion"
+
 msgctxt "model:account.account.template,name:account_template_stock_supplier"
 msgid "Stock Supplier"
 msgstr "Lager Lieferant"
@@ -123,3 +202,39 @@ msgstr "Bestandskorrekturen"
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
 msgstr "Einstellungen Buchhaltung"
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "Kostenpreis aktualisieren"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "Kostenpreis Aktualisierung Nachfrage"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "Kostenpreis Aktualisierung Anzeige Buchungssatz"
+
+msgctxt "view:product.update_cost_price.ask:"
+msgid "Update Cost Price"
+msgstr "Kostenpreis aktualisieren"
+
+msgctxt "view:product.update_cost_price.show_move:"
+msgid "Update Cost Price - Move"
+msgstr "Aktualisierung Kostenpreis - Lagerbewegung"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "Ok"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "Ok"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
