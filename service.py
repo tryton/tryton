@@ -58,6 +58,7 @@ class Employee(ModelSQL, ModelView, Cacheable):
             for edate, ecost in employee_costs:
                 if date >= edate:
                     cost = ecost
+                else:
                     break
         return cost
 
