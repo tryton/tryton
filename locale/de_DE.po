@@ -47,7 +47,7 @@ msgid "Dashboard Layout"
 msgstr "Dashboard Anordnung"
 
 msgctxt "model:dashboard.action,name:"
-msgid "dashboard.action"
+msgid "Dashboard Action"
 msgstr "Dashboard Aktion"
 
 msgctxt "model:ir.action,name:act_dashboard"
