@@ -1065,12 +1065,12 @@ class SaleLine(ModelSQL, ModelView):
 
     def _get_context_sale_price(self):
         context = {}
-        if self.sale:
-            if self.sale.currency:
+        if getattr(self, 'sale', None):
+            if getattr(self.sale, 'currency', None):
                 context['currency'] = self.sale.currency.id
-            if self.sale.party:
+            if getattr(self.sale, 'party', None):
                 context['customer'] = self.sale.party.id
-            if self.sale.sale_date:
+            if getattr(self.sale, 'sale_date', None):
                 context['sale_date'] = self.sale.sale_date
         if self.unit:
             context['uom'] = self.unit.id
