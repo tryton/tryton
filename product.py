@@ -156,7 +156,7 @@ class Template:
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
-                ], on_change=['account_category','account_expense'],
+                ], on_change=['account_category', 'account_expense'],
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')),
@@ -166,7 +166,7 @@ class Template:
                 'Account Revenue', domain=[
                     ('kind', '=', 'revenue'),
                     ('company', '=', Eval('context', {}).get('company', 0)),
-                    ], on_change=['account_category','account_revenue'],
+                    ], on_change=['account_category', 'account_revenue'],
                 states={
                     'invisible': (~Eval('context', {}).get('company')
                         | Eval('account_category')),
