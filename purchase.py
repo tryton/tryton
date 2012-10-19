@@ -970,12 +970,12 @@ class PurchaseLine(ModelSQL, ModelView):
 
     def _get_context_purchase_price(self):
         context = {}
-        if self.purchase:
-            if self.purchase.currency:
+        if getattr(self, 'purchase', None):
+            if getattr(self.purchase, 'currency', None):
                 context['currency'] = self.purchase.currency.id
-            if self.purchase.party:
+            if getattr(self.purchase, 'party', None):
                 context['supplier'] = self.purchase.party.id
-            if self.purchase.purchase_date:
+            if getattr(self.purchase, 'purchase_date', None):
                 context['purchase_date'] = self.purchase.purchase_date
         if self.unit:
             context['uom'] = self.unit.id
