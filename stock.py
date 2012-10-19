@@ -1,10 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
 from decimal import Decimal, ROUND_DOWN, ROUND_HALF_EVEN
 from operator import itemgetter
 
-from trytond.model import Model, ModelView, Workflow, fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
