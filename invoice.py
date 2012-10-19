@@ -31,9 +31,10 @@ class Invoice:
     @classmethod
     def get_purchase_exception_state(cls, invoices, name):
         Purchase = Pool().get('purchase.purchase')
-        purchases = Purchase.search([
-                ('invoices', 'in', [i.id for i in invoices]),
-                ])
+        with Transaction().set_user(0, set_context=True):
+            purchases = Purchase.search([
+                    ('invoices', 'in', [i.id for i in invoices]),
+                    ])
 
         recreated = tuple(i for p in purchases for i in p.invoices_recreated)
         ignored = tuple(i for p in purchases for i in p.invoices_ignored)
@@ -72,10 +73,10 @@ class Invoice:
     @Workflow.transition('draft')
     def draft(cls, invoices):
         Purchase = Pool().get('purchase.purchase')
-        purchases = Purchase.search([
-                ('invoices', 'in', [i.id for i in invoices]),
-                ])
-
+        with Transaction().set_user(0, set_context=True):
+            purchases = Purchase.search([
+                    ('invoices', 'in', [i.id for i in invoices]),
+                    ])
         if purchases:
             cls.raise_user_error('reset_invoice_purchase')
 
@@ -86,14 +87,18 @@ class Invoice:
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
         super(Invoice, cls).paid(invoices)
-        Purchase.process([p for i in invoices for p in i.purchases])
+        with Transaction().set_user(0, set_context=True):
+            Purchase.process([p for i in cls.browse(invoices)
+                    for p in i.purchases])
 
     @classmethod
     def cancel(cls, invoices):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
         super(Invoice, cls).cancel(invoices)
-        Purchase.process([p for i in invoices for p in i.purchases])
+        with Transaction().set_user(0, set_context=True):
+            Purchase.process([p for i in cls.browse(invoices)
+                    for p in i.purchases])
 
 
 class InvoiceLine:
