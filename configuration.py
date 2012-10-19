@@ -16,4 +16,3 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
                     [Eval('context', {}).get('company'), False]),
                 ('code', '=', 'production'),
                 ], required=True))
-
