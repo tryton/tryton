@@ -12,12 +12,12 @@ msgstr "Número SIREN inválido!"
 
 msgctxt "field:party.address,siret:"
 msgid "SIRET"
-msgstr ""
+msgstr "SIRET"
 
 msgctxt "field:party.address,siret_nic:"
 msgid "SIRET NIC"
-msgstr ""
+msgstr "SIRET NIC"
 
 msgctxt "field:party.party,siren:"
 msgid "SIREN"
-msgstr ""
+msgstr "SIREN"
