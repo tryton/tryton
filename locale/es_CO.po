@@ -12,7 +12,7 @@ msgstr "Falta una propiedad por defecto \"Account Expense\"!"
 
 msgctxt "error:purchase.line:"
 msgid "The supplier location is required!"
-msgstr "Se requiere la localización del proveedor!"
+msgstr "Se requiere la locación del proveedor!"
 
 msgctxt "error:purchase.purchase:"
 msgid "Analytic account is required on line \"%s\" (%d)!"
@@ -24,7 +24,7 @@ msgstr "Factura direccionada debe ser definida por el presupuesto."
 
 msgctxt "error:purchase.purchase:"
 msgid "It misses an \"Account Payable\" on the party \"%s\"!"
-msgstr "Falta una \"Cuenta Pagadera\" en el tercero \"%s\"!"
+msgstr "Falta una \"Cuenta por Pagar\" en el tercero \"%s\"!"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -36,7 +36,7 @@ msgstr "Balance"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr "Descendientes"
+msgstr "Hijos"
 
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
@@ -172,7 +172,7 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de Unidad"
+msgstr "Decimales de Unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
@@ -240,7 +240,7 @@ msgstr "Idioma del Tercero"
 
 msgctxt "field:purchase.purchase,payment_term:"
 msgid "Payment Term"
-msgstr "Término de Pago"
+msgstr "Forma de Pago"
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
