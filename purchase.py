@@ -1799,7 +1799,7 @@ class OpenSupplier(Wizard):
                 ('module', '=', 'purchase'),
                 ('inherit', '=', None),
                 ], limit=1)
-        wizard = Wizard.browse(model_data.db_id)
+        wizard = Wizard(model_data.db_id)
 
         action['name'] = wizard.name
         return action, {}
