@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
-msgstr ""
+msgstr "Няма сметка за приход/разход зададена за тази категория %s (%d)"
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
@@ -20,7 +20,7 @@ msgstr "Използвани разходи по сметка"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr ""
+msgstr "Използване на родителски сметки"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
@@ -48,7 +48,7 @@ msgstr "Използвани данъци на доставчик"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr ""
+msgstr "Използване на данъците на родителя"
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
@@ -146,7 +146,6 @@ msgctxt "field:product.template,supplier_taxes:"
 msgid "Supplier Taxes"
 msgstr "Данъци на доставчик"
 
-#, fuzzy
 msgctxt "field:product.template,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
 msgstr "Използвани данъци на доставчик"
@@ -221,11 +220,11 @@ msgstr "Променено от"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category"
-msgstr ""
+msgstr "Използване на сметките зададени в родителската категория"
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category"
-msgstr ""
+msgstr "Използване на данъци от родителската категория"
 
 msgctxt "help:product.template,account_category:"
 msgid "Use the accounts defined on the category"
