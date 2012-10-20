@@ -43,7 +43,7 @@ msgid "Method to compute carrier cost"
 msgstr "Methode für die Berechnung der Frachtkosten"
 
 msgctxt "model:carrier,name:"
-msgid "carrier"
+msgid "Carrier"
 msgstr "Frachtführer"
 
 msgctxt "model:ir.action,name:act_carrier_form"
