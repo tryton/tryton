@@ -362,6 +362,11 @@ msgctxt "error:account.move:"
 msgid "You can not set a posted move to draft in this journal!"
 msgstr "Vous ne pouvez mettre en brouillon un mouvement posté de ce jounal"
 
+msgctxt "error:account.move:"
+msgid "You can not set to draft a move from a closed period"
+msgstr ""
+"Vous ne pouvez mettre en brouillon un mouvement d'une période clôturée"
+
 msgctxt "error:account.open_aged_balance:"
 msgid "Warning"
 msgstr "Avertissement"
@@ -1282,6 +1287,10 @@ msgctxt "field:account.move,date:"
 msgid "Effective Date"
 msgstr "Date effective"
 
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "Description"
+
 msgctxt "field:account.move,id:"
 msgid "ID"
 msgstr "ID"
@@ -1298,6 +1307,14 @@ msgctxt "field:account.move,name:"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "Origine"
+
 msgctxt "field:account.move,period:"
 msgid "Period"
 msgstr "Période"
@@ -1305,6 +1322,10 @@ msgstr "Période"
 msgctxt "field:account.move,post_date:"
 msgid "Post Date"
 msgstr "Date de postage"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr "Numéro de postage"
 
 msgctxt "field:account.move,rec_name:"
 msgid "Name"
@@ -1362,6 +1383,10 @@ msgctxt "field:account.move.line,debit:"
 msgid "Debit"
 msgstr "Débit"
 
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "Description"
+
 msgctxt "field:account.move.line,id:"
 msgid "ID"
 msgstr "ID"
@@ -1385,6 +1410,10 @@ msgstr "État du mouvement"
 msgctxt "field:account.move.line,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "Origine"
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
@@ -2360,19 +2389,19 @@ msgstr "Règle de taxe client"
 
 msgctxt "field:party.party,payable:"
 msgid "Payable"
-msgstr "A Payer"
+msgstr "À Payer"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
-msgstr "A Payer aujourd'hui"
+msgstr "À Payer aujourd'hui"
 
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
-msgstr "A recevoir"
+msgstr "À recevoir"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
-msgstr "A recevoir aujourd'hui"
+msgstr "À recevoir aujourd'hui"
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
@@ -2403,6 +2432,10 @@ msgstr ""
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
 msgstr "Utilisé pour trier les types de compte"
+
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number"
+msgstr "Aussi connu comme numéro de folio"
 
 msgctxt "help:account.move,reference:"
 msgid "Also known as Folio Number"
@@ -2604,7 +2637,7 @@ msgstr "Cash"
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_current_receivable"
 msgid "Receivable"
-msgstr "A recevoir"
+msgstr "À recevoir"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_long_term"
@@ -2639,7 +2672,7 @@ msgstr "Courant"
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_liability_current_payable"
 msgid "Payable"
-msgstr "A payer"
+msgstr "À Payer"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_liability_current_tax"
@@ -2668,7 +2701,7 @@ msgstr "Produit"
 
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
-msgstr "Configuration Comptable"
+msgstr "Configuration comptable"
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
@@ -2878,6 +2911,10 @@ msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
 msgstr "Comptes"
 
+msgctxt "model:ir.action,name:act_account_list2"
+msgid "Accounts"
+msgstr "Comptes"
+
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
 msgstr "Modèles de compte"
@@ -2896,7 +2933,7 @@ msgstr "Types de compte"
 
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Modèles de types de comptes"
+msgstr "Modèles de type de compte"
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
@@ -2912,7 +2949,7 @@ msgstr "Ouvrir le plan de taxes"
 
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
-msgstr "Configuration Comptable"
+msgstr "Configuration comptable"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
@@ -2958,6 +2995,14 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Lignes de mouvement comptable"
 
+msgctxt "model:ir.action,name:act_move_line_payable"
+msgid "Payable Lines"
+msgstr "Lignes à payer"
+
+msgctxt "model:ir.action,name:act_move_line_receivable"
+msgid "Receivable Lines"
+msgstr "Lignes à recevoir"
+
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "Ouvrir le compte"
@@ -2977,6 +3022,10 @@ msgstr "Ouvrir les lignes réconciliées"
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Ouvrir le code de taxe"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr "Ouvrir les types"
 
 msgctxt "model:ir.action,name:act_period_close"
 msgid "Close Periods"
@@ -3068,7 +3117,7 @@ msgstr "Balance"
 
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Créer le plan comptable depuis le modèle"
+msgstr "Créer un plan comptable depuis un modèle"
 
 msgctxt "model:ir.action,name:wizard_open_aged_balance"
 msgid "Open Aged Balance"
@@ -3100,7 +3149,7 @@ msgstr "Imprimer la balance"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Mise à jour du plan comptable depuis le modèle"
+msgstr "Mise à jour du plan comptable depuis un modèle"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -3149,7 +3198,7 @@ msgstr "Types de compte"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Modèles de types de comptes"
+msgstr "Modèles de type de compte"
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
@@ -3173,7 +3222,7 @@ msgstr "Ouvrir le plan de taxes"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Créer le plan comptable depuis le modèle"
+msgstr "Créer un plan comptable depuis un modèle"
 
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
@@ -3317,11 +3366,11 @@ msgstr "Balance tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Mise à jour du plan comptable depuis le modèle"
+msgstr "Mise à jour du plan comptable depuis un modèle"
 
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
-msgstr "Configuration Comptable"
+msgstr "Configuration comptable"
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
@@ -3652,12 +3701,20 @@ msgid "Debit"
 msgstr "Débit"
 
 msgctxt "odt:account.trial_balance:"
+msgid "End Balance"
+msgstr "Balance finale"
+
+msgctxt "odt:account.trial_balance:"
 msgid "From Period:"
 msgstr "Période de début :"
 
 msgctxt "odt:account.trial_balance:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
+
+msgctxt "odt:account.trial_balance:"
+msgid "Start Balance"
+msgstr "Balace de départ"
 
 msgctxt "odt:account.trial_balance:"
 msgid "To Period:"
@@ -3697,19 +3754,19 @@ msgstr "Autre"
 
 msgctxt "selection:account.account,kind:"
 msgid "Payable"
-msgstr "A payer"
+msgstr "À Payer"
 
 msgctxt "selection:account.account,kind:"
 msgid "Payable"
-msgstr "A payer"
+msgstr "À Payer"
 
 msgctxt "selection:account.account,kind:"
 msgid "Receivable"
-msgstr "A recevoir"
+msgstr "À recevoir"
 
 msgctxt "selection:account.account,kind:"
 msgid "Receivable"
-msgstr "A recevoir"
+msgstr "À recevoir"
 
 msgctxt "selection:account.account,kind:"
 msgid "Revenue"
@@ -3749,19 +3806,19 @@ msgstr "Autre"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Payable"
-msgstr "A Payer"
+msgstr "À Payer"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Payable"
-msgstr "A Payer"
+msgstr "À Payer"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Receivable"
-msgstr "A recevoir"
+msgstr "À recevoir"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Receivable"
-msgstr "A recevoir"
+msgstr "À recevoir"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
@@ -4125,7 +4182,7 @@ msgstr "Notes"
 
 msgctxt "view:account.configuration:"
 msgid "Account Configuration"
-msgstr "Configuration Comptable"
+msgstr "Configuration comptable"
 
 msgctxt "view:account.create_chart.account:"
 msgid "Create Chart of Accounts"
@@ -4367,6 +4424,10 @@ msgctxt "view:account.move.line:"
 msgid "Optional Information"
 msgstr "Information optionnelle"
 
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "Autre information"
+
 msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
 msgstr "Ouvrir journal"
@@ -4541,11 +4602,11 @@ msgstr "Modèle de code de taxe"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Tax Codes Templates"
-msgstr "Modèles de codes de taxe"
+msgstr "Modèles de code de taxe"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Tax Codes Templates"
-msgstr "Modèles de codes de taxe"
+msgstr "Modèles de code de taxe"
 
 msgctxt "view:account.tax.code:"
 msgid "Children"
