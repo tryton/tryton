@@ -8,7 +8,7 @@ msgstr "Сумата (%s) е по-голяма от сумата за плаща
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value!"
-msgstr ""
+msgstr "Сумата трябва да бъде положителна или отрицателна стойност!"
 
 msgctxt "error:account.statement.line:"
 msgid ""
@@ -28,7 +28,7 @@ msgstr "Крайния баланс трябва да е %s!"
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr ""
+msgstr "Преди да бъде изтрит отчет \"%s\" трябва да бъде прекратен!"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
