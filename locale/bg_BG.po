@@ -201,7 +201,7 @@ msgstr "Активен"
 
 msgctxt "field:timesheet.work,children:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
@@ -389,7 +389,7 @@ msgstr "Часове на служител"
 
 msgctxt "model:timesheet.hours_employee.open.start,name:"
 msgid "Open Hours per Employee"
-msgstr ""
+msgstr "Работно време на служител"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -413,7 +413,7 @@ msgstr "Задача"
 
 msgctxt "model:timesheet.work.open.start,name:"
 msgid "Open Work"
-msgstr ""
+msgstr "Отваряне на задача"
 
 msgctxt "view:timesheet.hours_employee.open.start:"
 msgid "Hours per Employee"
