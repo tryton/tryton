@@ -9,6 +9,7 @@ msgstr "Вероятността трябва да бъде между 0 и 100!
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
 msgstr ""
+"Преди да бъде изтрита възможност за продажба \"%s\" трябва да бъде отказана!"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -612,7 +613,7 @@ msgstr "Възможност за продажба за служител"
 
 msgctxt "model:sale.opportunity_employee.open.start,name:"
 msgid "Open Sale Opportunity per Employee"
-msgstr ""
+msgstr "Отворени възможности за продажба по потребител"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
