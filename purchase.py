@@ -997,6 +997,13 @@ class PurchaseLine(ModelSQL, ModelView):
             if party.lang:
                 context['language'] = party.lang.code
 
+        category = self.product.purchase_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            res['unit'] = self.product.purchase_uom.id
+            self.unit = self.product.purchase_uom
+            res['unit.rec_name'] = self.product.purchase_uom.rec_name
+            res['unit_digits'] = self.product.purchase_uom.digits
+
         with Transaction().set_context(self._get_context_purchase_price()):
             res['unit_price'] = Product.get_purchase_price([self.product],
                 self.quantity or 0)[self.product.id]
@@ -1020,12 +1027,6 @@ class PurchaseLine(ModelSQL, ModelView):
         if not self.description:
             with Transaction().set_context(context):
                 res['description'] = Product(self.product.id).rec_name
-
-        category = self.product.purchase_uom.category
-        if not self.unit or self.unit not in category.uoms:
-            res['unit'] = self.product.purchase_uom.id
-            res['unit.rec_name'] = self.product.purchase_uom.rec_name
-            res['unit_digits'] = self.product.purchase_uom.digits
 
         self.unit_price = res['unit_price']
         self.type = 'line'
