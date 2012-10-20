@@ -16,7 +16,7 @@ msgstr "Заявките за покупка се създават само от
 
 msgctxt "error:purchase.request:"
 msgid "The requested quantity must be greater than 0"
-msgstr ""
+msgstr "Поръчаното количество трябва да е по-голямо от 0"
 
 msgctxt "error:stock.order_point:"
 msgid "Maximal quantity must be bigger than Minimal quantity"
@@ -118,7 +118,7 @@ msgstr "Склад"
 
 msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
-msgstr ""
+msgstr "Склада е необходим"
 
 msgctxt "field:purchase.request,write_date:"
 msgid "Write Date"
