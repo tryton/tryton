@@ -861,7 +861,7 @@ msgstr "Mois"
 
 msgctxt "field:account.invoice.payment_term.line,months:"
 msgid "Number of Months"
-msgstr "Bombre de mois"
+msgstr "Nombre de mois"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
@@ -1089,7 +1089,7 @@ msgstr "Notes de crédit fournisseur"
 
 msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
 msgid "Draft Supplier Credit Notes"
-msgstr "Notes de crédit fournisseurs en brouillon"
+msgstr "Notes de crédit fournisseurs brouillon"
 
 msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
 msgid "Pro Forma Supplier Credit Notes"
@@ -1101,19 +1101,19 @@ msgstr "Notes de crédit fournisseurs ouvertes"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
 msgid "Supplier Invoices"
-msgstr "Factures fournisseurs"
+msgstr "Factures fournisseur"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
 msgid "Draft Supplier Invoices"
-msgstr "Factures fournisseurs ouvertes"
+msgstr "Factures fournisseur ouvertes"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
 msgid "Pro Forma Supplier Invoices"
-msgstr "Factures fournisseurs pro forma"
+msgstr "Factures fournisseur pro forma"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
 msgid "Opened Supplier Invoices"
-msgstr "Factures fournisseurs ouvertes"
+msgstr "Factures fournisseur ouvertes"
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
 msgid "Credit Notes"
@@ -1181,7 +1181,7 @@ msgstr "Notes de crédit fournisseur"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
 msgid "Draft Supplier Credit Notes"
-msgstr "Notes de crédit fournisseur en brouillon"
+msgstr "Notes de crédit fournisseur brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
 msgid "Pro Forma Supplier Credit Notes"
@@ -1193,19 +1193,19 @@ msgstr "Notes de crédit fournisseur ouvertes"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
 msgid "Supplier Invoices"
-msgstr "Factures fournisseurs"
+msgstr "Factures fournisseur"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
 msgid "Draft Supplier Invoices"
-msgstr "Factures fournisseurs en brouillon"
+msgstr "Factures fournisseur brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
 msgid "Pro Forma Supplier Invoices"
-msgstr "Factures fournisseurs pro forma"
+msgstr "Factures fournisseur pro forma"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
 msgid "Opened Supplier Invoices"
-msgstr "Factures fournisseurs ouvertes"
+msgstr "Factures fournisseur ouvertes"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
 msgid "Credit Notes"
@@ -1213,7 +1213,7 @@ msgstr "Notes de crédit"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
 msgid "Draft Credit Notes"
-msgstr "Notes de crédit en brouillon"
+msgstr "Notes de crédit brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
 msgid "Pro Forma Credit Notes"
