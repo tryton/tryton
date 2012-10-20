@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:res.user:"
 msgid "You can not set a password to a ldap user!"
-msgstr "¡No puede establecer la contraseña de un usuario LDAP"
+msgstr "No puede establecer la contraseña de un usuario LDAP!"
 
 msgctxt "field:ldap.connection,auth_base_dn:"
 msgid "Base DN"
