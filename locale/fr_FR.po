@@ -102,7 +102,7 @@ msgstr "Nom"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
-msgstr "Solde de départ"
+msgstr "Solde initial"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
