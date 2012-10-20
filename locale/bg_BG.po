@@ -8,7 +8,7 @@ msgstr "Задача/проект може да имат само един гр�
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
@@ -164,7 +164,7 @@ msgstr "Задача"
 
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "view:project.work:"
 msgid "General"
