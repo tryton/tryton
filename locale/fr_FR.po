@@ -263,7 +263,7 @@ msgstr "Emplacement fournisseur"
 
 msgctxt "field:product.by_location.start,forecast_date:"
 msgid "At Date"
-msgstr "A la date"
+msgstr "À la date"
 
 msgctxt "field:product.by_location.start,id:"
 msgid "ID"
@@ -709,9 +709,49 @@ msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:stock.product_quantities_warehouse,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:stock.product_quantities_warehouse,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "field:stock.product_quantities_warehouse,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "Quantité"
+
+msgctxt "field:stock.product_quantities_warehouse,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:stock.product_quantities_warehouse,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:stock.product_quantities_warehouse,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:stock.product_quantities_warehouse.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+msgid "Warehouse"
+msgstr "Entrepôt"
+
 msgctxt "field:stock.products_by_locations.start,forecast_date:"
 msgid "At Date"
-msgstr "A la date"
+msgstr "À la date"
 
 msgctxt "field:stock.products_by_locations.start,id:"
 msgid "ID"
@@ -1152,7 +1192,7 @@ msgid "Locations"
 msgstr "Éditer les emplacements"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Location Quantity & Cost Value"
+msgid "Locations"
 msgstr "Quantités en stock"
 
 msgctxt "model:ir.action,name:act_location_tree"
@@ -1179,13 +1219,17 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Périodes"
 
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "Quantités de produit par entrepôt"
+
 msgctxt "model:ir.action,name:act_products_by_locations"
-msgid "Products by Locations"
+msgid "Products"
 msgstr "Produits par emplacements"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
 msgid "Draft Supplier Shipment"
-msgstr "Expédition fournisseur en brouillon"
+msgstr "Expédition fournisseur brouillon"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1197,7 +1241,7 @@ msgstr "Expéditions fournisseur reçues"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Retour d'expéditions fournisseur"
+msgstr "Retours d'expédition fournisseur"
 
 msgctxt "model:ir.action,name:act_shipment_internal_assigned_form"
 msgid "Assigned Internal Shipments"
@@ -1241,7 +1285,7 @@ msgstr "Expéditions client en attente d'assignation"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Retour d'expéditions client"
+msgstr "Retours d'expédition client"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
@@ -1272,8 +1316,12 @@ msgid "Restocking List"
 msgstr "Liste de restockage"
 
 msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Location"
+msgid "Product by Locations"
 msgstr "Produits par emplacement"
+
+msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "Quantités de produit par entrepôt"
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
@@ -1309,7 +1357,7 @@ msgstr "Expédition client"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Retour d'expédition client"
+msgstr "Retours d'expédition client"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
@@ -1377,7 +1425,7 @@ msgstr "Rapports"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_draft"
 msgid "Draft Supplier Shipment"
-msgstr "Expédition fournisseur en brouillon"
+msgstr "Expédition fournisseur brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1389,7 +1437,7 @@ msgstr "Expéditions fournisseur reçues"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Retour d'expédition fournisseur"
+msgstr "Retours d'expédition fournisseur"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_assigned_form"
 msgid "Assigned Internal Shipments"
@@ -1421,7 +1469,7 @@ msgstr "Expéditions client prêtes pour la livraison"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Retour d'expédition client"
+msgstr "Retours d'expédition client"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_waiting"
 msgid "Customer Shipments Waiting Assignation"
@@ -1504,12 +1552,20 @@ msgid "Stock Period"
 msgstr "Période de stock"
 
 msgctxt "model:stock.period.cache,name:"
-msgid "stock.period.cache"
+msgid "Stock Period Cache"
 msgstr ""
 "\n"
 "Cache de période de stock\n"
 "\n"
 "C'est utilisé pour stocker en cache les calculs de quantités de stock."
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "Quantités de produit par entrepôt"
+
+msgctxt "model:stock.product_quantities_warehouse.start,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "Quantités de produit par entrepôt"
 
 msgctxt "model:stock.products_by_locations.start,name:"
 msgid "Products by Locations"
@@ -2595,6 +2651,14 @@ msgctxt "view:stock.period:"
 msgid "Periods"
 msgstr "Périodes"
 
+msgctxt "view:stock.product_quantities_warehouse.start:"
+msgid "Product Quantities By Warehouse"
+msgstr "Quantités de produit par entrepôt"
+
+msgctxt "view:stock.product_quantities_warehouse:"
+msgid "Product Quantities By Warehouse"
+msgstr "Quantités de produit par entrepôt"
+
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
 msgstr "Produits par emplacements"
@@ -2988,6 +3052,14 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:product.by_location,start,open:"
+msgid "Open"
+msgstr "Ouvrir"
+
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
 msgid "Open"
 msgstr "Ouvrir"
 
