@@ -19448,7 +19448,7 @@ msgstr "Единица"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr ""
+msgstr "Федерални владения"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
