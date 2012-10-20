@@ -1092,6 +1092,13 @@ class SaleLine(ModelSQL, ModelView):
             if party.lang:
                 party_context['language'] = party.lang.code
 
+        category = self.product.sale_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            res['unit'] = self.product.sale_uom.id
+            self.unit = self.product.sale_uom
+            res['unit.rec_name'] = self.product.sale_uom.rec_name
+            res['unit_digits'] = self.product.sale_uom.digits
+
         with Transaction().set_context(self._get_context_sale_price()):
             res['unit_price'] = Product.get_sale_price([self.product],
                     self.quantity or 0)[self.product.id]
@@ -1115,12 +1122,6 @@ class SaleLine(ModelSQL, ModelView):
         if not self.description:
             with Transaction().set_context(party_context):
                 res['description'] = Product(self.product.id).rec_name
-
-        category = self.product.sale_uom.category
-        if not self.unit or self.unit not in category.uoms:
-            res['unit'] = self.product.sale_uom.id
-            res['unit.rec_name'] = self.product.sale_uom.rec_name
-            res['unit_digits'] = self.product.sale_uom.digits
 
         self.unit_price = res['unit_price']
         self.type = 'line'
