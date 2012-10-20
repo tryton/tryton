@@ -57,9 +57,8 @@ class WinForm(object):
         self.win.set_title(self.screen.current_view.title)
 
         title = gtk.Label()
-        title.set_use_markup(True)
-        title.modify_font(pango.FontDescription("12"))
-        title.set_label('<b>' + self.screen.current_view.title + '</b>')
+        title.modify_font(pango.FontDescription("bold 12"))
+        title.set_label(self.screen.current_view.title)
         title.set_padding(20, 3)
         title.set_alignment(0.0, 0.5)
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
