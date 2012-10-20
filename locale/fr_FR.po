@@ -535,12 +535,12 @@ msgid "BOM Tree"
 msgstr "Arbre de nomenclatures"
 
 msgctxt "model:production.bom.tree.open.start,name:"
-msgid "production.bom.tree.open.start"
-msgstr "production.bom.tree.open.start"
+msgid "Open BOM Tree"
+msgstr "Ouvrir l'arbre de nomenclatures"
 
 msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "production.bom.tree.open.tree"
-msgstr "production.bom.tree.open.tree"
+msgid "Open BOM Tree"
+msgstr "Ouvrir l'arbre de nomenclatures"
 
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
