@@ -66,11 +66,11 @@ msgstr ""
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid "Day of month must be between 1 and 31."
-msgstr ""
+msgstr "Деня от месеца трябва да бъде между 1 и 31."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid "Percentage and Divisor values are not consistent."
-msgstr ""
+msgstr "Процент и Делител не съотвестват"
 
 msgctxt "error:account.invoice.payment_term:"
 msgid "Invalid payment term line!"
@@ -99,7 +99,7 @@ msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid "Invoice \"%s\" must be cancelled before deletion!"
-msgstr ""
+msgstr "Преди да бъде изтрита фактура \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -451,7 +451,7 @@ msgstr "Продукт"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Категория мер. ед. на продукт"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
@@ -675,7 +675,7 @@ msgstr "Цифри за валута"
 
 msgctxt "field:account.invoice.payment_term.line,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "Ден от месеца"
 
 msgctxt "field:account.invoice.payment_term.line,days:"
 msgid "Number of Days"
@@ -683,7 +683,7 @@ msgstr "Брой дни"
 
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
-msgstr ""
+msgstr "Делител"
 
 msgctxt "field:account.invoice.payment_term.line,id:"
 msgid "ID"
@@ -695,7 +695,7 @@ msgstr "Месец"
 
 msgctxt "field:account.invoice.payment_term.line,months:"
 msgid "Number of Months"
-msgstr ""
+msgstr "Брой месеци"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
@@ -719,11 +719,11 @@ msgstr "Вид"
 
 msgctxt "field:account.invoice.payment_term.line,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Ден от седмицата"
 
 msgctxt "field:account.invoice.payment_term.line,weeks:"
 msgid "Number of Weeks"
-msgstr ""
+msgstr "Брой седмици"
 
 msgctxt "field:account.invoice.payment_term.line,write_date:"
 msgid "Write Date"
@@ -732,14 +732,6 @@ msgstr "Променено на"
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
-
-msgctxt "field:account.invoice.payment_term.line.delay,rec_name:"
-msgid "Name"
-msgstr "Име"
-
-msgctxt "field:account.invoice.payment_term.line.type,rec_name:"
-msgid "Name"
-msgstr "Име"
 
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
@@ -843,7 +835,7 @@ msgstr "Фактура"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr ""
+msgstr "Условие за плащане на клиент"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
@@ -892,14 +884,6 @@ msgstr "Условие за плащане"
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr "Ред от условие за плащане"
-
-msgctxt "model:account.invoice.payment_term.line.delay,name:"
-msgid "Payment Term Line Delay"
-msgstr ""
-
-msgctxt "model:account.invoice.payment_term.line.type,name:"
-msgid "Payment Term Line Type"
-msgstr ""
 
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
@@ -1291,7 +1275,7 @@ msgstr "Април"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "August"
-msgstr ""
+msgstr "Август"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "December"
@@ -1311,7 +1295,7 @@ msgstr "Юли"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "June"
-msgstr ""
+msgstr "Юни"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "March"
@@ -1319,15 +1303,15 @@ msgstr "Март"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "May"
-msgstr ""
+msgstr "Май"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "November"
-msgstr ""
+msgstr "Ноември"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "October"
-msgstr ""
+msgstr "Октомври"
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "September"
@@ -1339,15 +1323,15 @@ msgstr "Фиксирана"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
-msgstr ""
+msgstr "Процент от остъчна стойност"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Total"
-msgstr ""
+msgstr "Процент от общата сума"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
-msgstr ""
+msgstr "Напомняне"
 
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid ""
