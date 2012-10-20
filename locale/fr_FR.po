@@ -572,7 +572,7 @@ msgstr "Opportunités converties"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lead"
 msgid "Opened Leads"
-msgstr "Contatcs commerciaux ouverts"
+msgstr "Contacts commerciaux ouverts"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
 msgid "Lost Leads and Opportunities"
