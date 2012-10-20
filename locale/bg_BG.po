@@ -24,7 +24,7 @@ msgstr "Стойността на \"До дата\" трябва да е по-г
 
 msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion!"
-msgstr "Прогноза \"%s\" трябва да бъде отказана преди изтриване!"
+msgstr "Преди да бъде изтрита прогноза \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:stock.forecast:"
 msgid ""
@@ -135,7 +135,7 @@ msgstr "Продукт"
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Категория мер. ед. на продукт"
 
 msgctxt "field:stock.forecast.line,quantity:"
 msgid "Quantity"
@@ -225,12 +225,10 @@ msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
 msgstr "Прогноза за наличност"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Изготвяне на прогноза"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
 msgstr "Изготвяне на прогноза"
@@ -301,7 +299,7 @@ msgstr "Изпращане в проект"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
-msgstr ""
+msgstr "Избот на продукти"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
@@ -319,11 +317,6 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr "Пълен"
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,end:"
-msgid "cancel"
 msgstr "Отказ"
