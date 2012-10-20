@@ -280,7 +280,7 @@ msgstr "Demandes d'achat"
 
 msgctxt "model:ir.action,name:act_purchase_request_form_draft"
 msgid "Draft Purchase Requests"
-msgstr "Demandes d'achat en brouillon"
+msgstr "Demandes d'achat brouillon"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -308,7 +308,7 @@ msgstr "Demandes d'achat"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
 msgid "Draft Purchase Requests"
-msgstr "Demandes d'achat en brouillon"
+msgstr "Demandes d'achat brouillon"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
