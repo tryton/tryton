@@ -29,7 +29,7 @@ msgstr ""
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
@@ -137,7 +137,7 @@ msgstr "Мер. ед. по подрабиране"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
+msgstr "Категория мер. ед. по подразбиране"
 
 msgctxt "field:product.template,id:"
 msgid "ID"
@@ -641,11 +641,11 @@ msgstr "Фиксирана"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr ""
+msgstr "Активи"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Стока"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
@@ -653,7 +653,7 @@ msgstr "Услуга"
 
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "view:product.category:"
 msgid "Product Categories"
