@@ -32,11 +32,11 @@ msgstr "Липсва \"Приходна сметка\" за партньор \"%
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion!"
-msgstr ""
+msgstr "Преди да бъде изтрита продажбата \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:sale.sale:"
 msgid "Warehouse must be defined for the quotation."
-msgstr ""
+msgstr "При запитване е необходимо да се укаже склад"
 
 msgctxt "error:sale.sale:"
 msgid "Wrong combination of method!"
@@ -148,7 +148,7 @@ msgstr "Създадено от"
 
 msgctxt "field:sale.line,delivery_date:"
 msgid "Delivery Date"
-msgstr ""
+msgstr "Дата на доставка"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -196,7 +196,7 @@ msgstr "Продукт"
 
 msgctxt "field:sale.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Категория мер. ед. на продукт"
 
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
@@ -476,7 +476,7 @@ msgstr "Начин на изпращане"
 
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
-msgstr ""
+msgstr "Върнати доставки"
 
 msgctxt "field:sale.sale,shipment_state:"
 msgid "Shipment State"
@@ -504,7 +504,7 @@ msgstr "Общо"
 
 msgctxt "field:sale.sale,total_amount_cache:"
 msgid "Total Tax"
-msgstr ""
+msgstr "Общо данъци"
 
 msgctxt "field:sale.sale,untaxed_amount:"
 msgid "Untaxed"
@@ -654,7 +654,7 @@ msgstr "Партньори свързани с продажби"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr ""
+msgstr "Връщане"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
@@ -678,7 +678,7 @@ msgstr "Проект на продажби"
 
 msgctxt "model:ir.action,name:act_sale_form_processing"
 msgid "Processing Sales"
-msgstr ""
+msgstr "Обработване на продажби"
 
 msgctxt "model:ir.action,name:act_sale_form_quotation"
 msgid "Quotation Sales"
@@ -698,7 +698,7 @@ msgstr "Обработка на грешка към фактура"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Create Return Sale"
-msgstr ""
+msgstr "Създаване на меню Продажби"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -742,7 +742,7 @@ msgstr "Проект на продажби"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form_processing"
 msgid "Processing Sales"
-msgstr ""
+msgstr "Обработване на прожадби"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form_quotation"
 msgid "Quotation Sales"
@@ -760,12 +760,10 @@ msgctxt "model:sale.configuration,name:"
 msgid "Sale Configuration"
 msgstr "Конфигурация на продажба"
 
-#, fuzzy
 msgctxt "model:sale.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Обработване за грешка в фактура"
 
-#, fuzzy
 msgctxt "model:sale.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
 msgstr "Обработване на грешка при пратка"
@@ -1108,7 +1106,7 @@ msgstr "Друга информация"
 
 msgctxt "view:sale.sale:"
 msgid "Process"
-msgstr ""
+msgstr "Обработване"
 
 msgctxt "view:sale.sale:"
 msgid "Quotation"
@@ -1116,7 +1114,7 @@ msgstr "Запитване"
 
 msgctxt "view:sale.sale:"
 msgid "Quote"
-msgstr ""
+msgstr "Запитване"
 
 msgctxt "view:sale.sale:"
 msgid "Sale"
