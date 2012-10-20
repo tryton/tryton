@@ -44,7 +44,7 @@ msgstr "Méthode de calcul de coût de transport"
 
 msgctxt "model:carrier,name:"
 msgid "Carrier"
-msgstr "transporteur"
+msgstr "Transporteur"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
