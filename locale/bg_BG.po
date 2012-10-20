@@ -108,7 +108,7 @@ msgstr "Активен"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
@@ -280,7 +280,7 @@ msgstr "Дължина на кода"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr ""
+msgstr "Код (само за четене)"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
