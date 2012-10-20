@@ -514,7 +514,7 @@ msgstr "Méthode de livraison"
 
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
-msgstr "Retour d'expédition"
+msgstr "Retours d'expédition"
 
 msgctxt "field:sale.sale,shipment_state:"
 msgid "Shipment State"
@@ -530,7 +530,7 @@ msgstr "État"
 
 msgctxt "field:sale.sale,tax_amount:"
 msgid "Tax"
-msgstr "Taxe"
+msgstr "Taxes"
 
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
