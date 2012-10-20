@@ -44,7 +44,7 @@ msgstr "Баланс"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
