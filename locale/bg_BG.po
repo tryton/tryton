@@ -20,7 +20,7 @@ msgstr "Продукта трябва да е уникален по инвент
 
 msgctxt "error:stock.inventory:"
 msgid "Inventory \"%s\" must be cancelled before deletion!"
-msgstr ""
+msgstr "Преди да бъде изтрита инвентаризация \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:stock.location:"
 msgid ""
@@ -91,8 +91,8 @@ msgstr "Не може да затваряте период когато съдъ
 msgctxt "error:stock.shipment.in.return:"
 msgid "Supplier Return Shipment \"%s\" must be cancelled before deletion!"
 msgstr ""
-"Пратка върната от доставчик \"%s\" трябва да бъде отказана преди да бъде "
-"изтрита!"
+"Преди да бъде изтрита пратка върната от доставчик \"%s\" трябва да бъде "
+"прекратена!"
 
 msgctxt "error:stock.shipment.in:"
 msgid ""
@@ -111,11 +111,12 @@ msgstr ""
 
 msgctxt "error:stock.shipment.in:"
 msgid "Supplier Shipment \"%s\" must be cancelled before deletion!"
-msgstr "Пратка на доставчик \"%s\" трябва да бъде отказана преди да бъде изтрита!"
+msgstr ""
+"Преди да бъде изтрита пратка на доставчик \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion!"
-msgstr ""
+msgstr "Преди да бъде изтрита вътрешна доставка \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:stock.shipment.out.return.create:"
 msgid "The shipment with code %s is not yet sent."
@@ -128,10 +129,13 @@ msgstr "Не може да създадете връщане на пратка"
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion!"
 msgstr ""
+"Преди да бъде изтрита пратка върната от клиент \"%s\" трябва да бъде "
+"прекратена!"
 
 msgctxt "error:stock.shipment.out:"
 msgid "Customer Shipment \"%s\" must be cancelled before deletion!"
 msgstr ""
+"Преди да бъде изтрита доставка за клиент \"%s\" трябва да бъде прекратена!"
 
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
@@ -155,7 +159,7 @@ msgstr "ID"
 
 msgctxt "field:product.product,cost_value:"
 msgid "Cost Value"
-msgstr ""
+msgstr "Себестойност"
 
 msgctxt "field:product.product,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -167,7 +171,7 @@ msgstr "Количество"
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
-msgstr ""
+msgstr "Себестойност"
 
 msgctxt "field:product.template,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -331,7 +335,7 @@ msgstr "Адрес"
 
 msgctxt "field:stock.location,childs:"
 msgid "Children"
-msgstr "Деца"
+msgstr "Наследници"
 
 msgctxt "field:stock.location,code:"
 msgid "Code"
@@ -339,7 +343,7 @@ msgstr "Код"
 
 msgctxt "field:stock.location,cost_value:"
 msgid "Cost Value"
-msgstr ""
+msgstr "Себестойност"
 
 msgctxt "field:stock.location,create_date:"
 msgid "Create Date"
@@ -451,7 +455,7 @@ msgstr "Продукт"
 
 msgctxt "field:stock.move,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Категория мер. ед. на продукт"
 
 msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
@@ -671,11 +675,11 @@ msgstr "Склад"
 
 msgctxt "field:stock.shipment.in,warehouse_input:"
 msgid "Warehouse Input"
-msgstr ""
+msgstr "Вход в склад"
 
 msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr ""
+msgstr "Съхраняване в склад"
 
 msgctxt "field:stock.shipment.in,write_date:"
 msgid "Write Date"
@@ -891,11 +895,11 @@ msgstr "Склад"
 
 msgctxt "field:stock.shipment.out,warehouse_output:"
 msgid "Warehouse Output"
-msgstr ""
+msgstr "Изход от склад"
 
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr ""
+msgstr "Съхраняване в склад"
 
 msgctxt "field:stock.shipment.out,write_date:"
 msgid "Write Date"
@@ -983,11 +987,11 @@ msgstr "Склад"
 
 msgctxt "field:stock.shipment.out.return,warehouse_input:"
 msgid "Warehouse Input"
-msgstr ""
+msgstr "Вход в склад"
 
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr ""
+msgstr "Изход от склад"
 
 msgctxt "field:stock.shipment.out.return,write_date:"
 msgid "Write Date"
@@ -1041,10 +1045,9 @@ msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "Местонахождения"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Location Quantity & Cost Value"
-msgstr "Количество в местонахождение & стойност на разход"
+msgstr "Количество в местонахождение & себестойност"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1072,7 +1075,7 @@ msgstr "Периоди"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Продукти по местонахождения"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
 msgid "Draft Supplier Shipment"
@@ -1168,7 +1171,7 @@ msgstr "Продукт по местонахождение"
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Продулти по местонахождения"
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
@@ -1400,7 +1403,7 @@ msgstr ""
 
 msgctxt "model:stock.products_by_locations.start,name:"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Продукти по местонахождения"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
@@ -1916,7 +1919,7 @@ msgstr "Местоположение"
 
 msgctxt "view:stock.location:"
 msgid "Location Quantity"
-msgstr ""
+msgstr "Количество в местонахождение"
 
 msgctxt "view:stock.location:"
 msgid "Locations"
@@ -1960,7 +1963,7 @@ msgstr "Периоди"
 
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
-msgstr ""
+msgstr "Продукти по местонахождения"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to Assign"
@@ -2000,7 +2003,7 @@ msgstr "Пратка върната на доставчик"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
-msgstr ""
+msgstr "Очакване"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Waiting"
@@ -2028,7 +2031,7 @@ msgstr "Движения"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Receive"
-msgstr ""
+msgstr "Получаване"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Received"
