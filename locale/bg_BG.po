@@ -8,7 +8,7 @@ msgstr "Валута"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr ""
+msgstr "Цифри на валута за тегло"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
@@ -16,11 +16,11 @@ msgstr "Ценова листа"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
-msgstr ""
+msgstr "Мер. ед. за тегло"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr ""
+msgstr "Цифри на мер. ед, за тегло"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
