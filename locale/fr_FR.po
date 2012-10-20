@@ -14,7 +14,6 @@ msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Compte \"coût des marchandises vendues\" utilisé"
 
-#, fuzzy
 msgctxt "field:product.template,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Compte \"coût des marchandises vendues\""
