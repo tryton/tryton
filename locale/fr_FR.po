@@ -148,15 +148,15 @@ msgstr "Société"
 
 msgctxt "field:res.user,companies:"
 msgid "Current Companies"
-msgstr "Sociétés courantes"
+msgstr "Sociétés actuelles"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Société courante"
+msgstr "Société actuelle"
 
 msgctxt "field:res.user,employee:"
-msgid "Employee"
-msgstr "Employé"
+msgid "Current Employee"
+msgstr "Employé actuel"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
@@ -235,7 +235,7 @@ msgid "Letter"
 msgstr "Lettre"
 
 msgctxt "model:ir.cron-company.company,name:"
-msgid "ir.cron-company.company"
+msgid "Cron - Company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
