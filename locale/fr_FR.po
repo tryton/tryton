@@ -91,3 +91,7 @@ msgstr "Achat - Ligne de facture"
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Achat - Ligne de facture ignorée"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Lignes de factures"
