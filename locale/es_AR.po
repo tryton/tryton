@@ -16,7 +16,7 @@ msgstr "Método de costo de la venta"
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
-msgstr "Costo de envió"
+msgstr "Costo de envío"
 
 msgctxt "field:sale.sale,carrier:"
 msgid "Carrier"
@@ -24,7 +24,7 @@ msgstr "Transportista"
 
 msgctxt "field:sale.sale,shipment_cost_method:"
 msgid "Shipment Cost Method"
-msgstr "Método de costo de envió"
+msgstr "Método de costo de envío"
 
 msgctxt "field:stock.shipment.out,carrier:"
 msgid "Carrier"
@@ -44,7 +44,7 @@ msgstr "Dígitos del costo"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
-msgstr "Costo de la linea de factura"
+msgstr "Costo de la línea de factura"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Order"
