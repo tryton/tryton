@@ -99,7 +99,7 @@ class TypeTemplate(ModelSQL, ModelView):
             res['income_statement'] = self.income_statement
         if not type or type.display_balance != self.display_balance:
             res['display_balance'] = self.display_balance
-        if not type or type.template.id != self.id:
+        if not type or type.template != self:
             res['template'] = self.id
         return res
 
@@ -413,7 +413,7 @@ class AccountTemplate(ModelSQL, ModelView):
             res['reconcile'] = self.reconcile
         if not account or account.deferral != self.deferral:
             res['deferral'] = self.deferral
-        if not account or account.template.id != self.id:
+        if not account or account.template != self:
             res['template'] = self.id
         return res
 

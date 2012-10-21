@@ -418,9 +418,13 @@ class TaxTemplate(ModelSQL, ModelView):
             if not tax or tax[field] != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
-            if not tax or tax[field].id != getattr(self, field).id:
-                res[field] = getattr(self, field).id
-        if not tax or tax.template.id != self.id:
+            if not tax or tax[field] != getattr(self, field):
+                value = getattr(self, field)
+                if value:
+                    res[field] = getattr(self, field).id
+                else:
+                    res[field] = None
+        if not tax or tax.template != self:
             res['template'] = self.id
         return res
 
@@ -821,7 +825,7 @@ class Tax(ModelSQL, ModelView):
                                 field_name)
                     if data:
                         self.write([tax], data)
-            template2tax[tax.template.id] = tax.id
+            template2tax[self.template.id] = self.id
 
         for child in self.childs:
             child.update_tax(template2tax_code, template2account,
@@ -979,7 +983,7 @@ class TaxRule(ModelSQL, ModelView):
                                 field_name)
                     if data:
                         self.write([rule], data)
-            template2rule[rule.template.id] = rule.id
+            template2rule[self.template.id] = self.id
 
 
 class TaxRuleLineTemplate(ModelSQL, ModelView):
@@ -1027,13 +1031,13 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         Set values for tax rule line creation.
         '''
         res = {}
-        if not rule_line or rule_line.group.id != self.group.id:
-            res['group'] = self.group.id
-        if not rule_line or rule_line.origin_tax.id != self.origin_tax.id:
-            res['origin_tax'] = self.origin_tax.id
+        if not rule_line or rule_line.group != self.group:
+            res['group'] = self.group.id if self.group else None
+        if not rule_line or rule_line.origin_tax != self.origin_tax:
+            res['origin_tax'] = self.origin_tax.id if self.origin_tax else None
         if not rule_line or rule_line.sequence != self.sequence:
             res['sequence'] = self.sequence
-        if not rule_line or rule_line.template.id != self.id:
+        if not rule_line or rule_line.template != self:
             res['template'] = self.id
         return res
 
