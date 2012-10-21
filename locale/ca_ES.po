@@ -8,46 +8,43 @@ msgstr "Alt"
 
 msgctxt "field:product.template,height_digits:"
 msgid "Height Digits"
-msgstr "Nombre de dígits alt"
+msgstr "Decimals alt"
 
 msgctxt "field:product.template,height_uom:"
 msgid "Height Uom"
 msgstr "UdM alt"
 
-#, fuzzy
 msgctxt "field:product.template,length:"
 msgid "Length"
 msgstr "Longitud"
 
 msgctxt "field:product.template,length_digits:"
 msgid "Length Digits"
-msgstr "Nombre de dígits"
+msgstr "Decimals longitud"
 
 msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
 msgstr "UdM longitud"
 
-#, fuzzy
 msgctxt "field:product.template,weight:"
 msgid "Weight"
 msgstr "Pes"
 
 msgctxt "field:product.template,weight_digits:"
 msgid "Weight Digits"
-msgstr "Nombre dígits peso"
+msgstr "Decimals pes"
 
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight Uom"
 msgstr "UdM pes"
 
-#, fuzzy
 msgctxt "field:product.template,width:"
 msgid "Width"
 msgstr "Ample"
 
 msgctxt "field:product.template,width_digits:"
 msgid "Width Digits"
-msgstr "Nombre dígits ample"
+msgstr "Decimals ample"
 
 msgctxt "field:product.template,width_uom:"
 msgid "Width Uom"
@@ -55,4 +52,4 @@ msgstr "UdM ample"
 
 msgctxt "view:product.template:"
 msgid "Measurements"
-msgstr "Proveïdors"
+msgstr "Mesures"
