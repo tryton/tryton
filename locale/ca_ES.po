@@ -18,10 +18,9 @@ msgctxt "field:country.country,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
@@ -59,10 +58,9 @@ msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
@@ -2460,7 +2458,6 @@ msgctxt "model:country.subdivision,name:be-wlg"
 msgid "Liege"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:be-wlx"
 msgid "Luxembourg"
 msgstr "Luxemburg"
@@ -3281,7 +3278,6 @@ msgctxt "model:country.subdivision,name:by-vi"
 msgid "Vicebskaja voblasc'"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:bz-bz"
 msgid "Belize"
 msgstr "Belize"
@@ -4742,7 +4738,6 @@ msgctxt "model:country.subdivision,name:dj-di"
 msgid "Dikhil"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:dj-dj"
 msgid "Djibouti"
 msgstr "Djibouti"
@@ -5449,27 +5444,27 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:es an"
 msgid "Andalucía"
-msgstr ""
+msgstr "Andalucia"
 
 msgctxt "model:country.subdivision,name:es ar"
 msgid "Aragón"
-msgstr ""
+msgstr "Aragó"
 
 msgctxt "model:country.subdivision,name:es cl"
 msgid "Castilla y León"
-msgstr ""
+msgstr "Castella i Lleó"
 
 msgctxt "model:country.subdivision,name:es cm"
 msgid "Castilla-La Mancha"
-msgstr ""
+msgstr "Castella-La Manxa"
 
 msgctxt "model:country.subdivision,name:es cn"
 msgid "Canarias"
-msgstr ""
+msgstr "Canaries"
 
 msgctxt "model:country.subdivision,name:es ct"
 msgid "Cataluña"
-msgstr ""
+msgstr "Catalunya"
 
 msgctxt "model:country.subdivision,name:es ex"
 msgid "Extremadura"
@@ -5489,23 +5484,23 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:es m"
 msgid "Madrid, Comunidad de"
-msgstr ""
+msgstr "Madrid, Comunitat de"
 
 msgctxt "model:country.subdivision,name:es mu"
 msgid "Murcia, Región de"
-msgstr ""
+msgstr "Murcia, Regió de"
 
 msgctxt "model:country.subdivision,name:es na"
 msgid "Navarra, Comunidad Foral de"
-msgstr ""
+msgstr "Navarra, Comunitat Floral de"
 
 msgctxt "model:country.subdivision,name:es o"
 msgid "Asturias, Principado de"
-msgstr ""
+msgstr "Asturies, Principat de"
 
 msgctxt "model:country.subdivision,name:es pv"
 msgid "País Vasco"
-msgstr ""
+msgstr "Pais Basc"
 
 msgctxt "model:country.subdivision,name:es s"
 msgid "Cantabria"
@@ -5513,7 +5508,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:es vc"
 msgid "Valenciana, Comunidad"
-msgstr ""
+msgstr "Valenciana, Comunitat"
 
 msgctxt "model:country.subdivision,name:es-a"
 msgid "Alicante"
@@ -5859,7 +5854,6 @@ msgctxt "model:country.subdivision,name:fr gf"
 msgid "Guyane"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr gp"
 msgid "Guadeloupe"
 msgstr "Guadalupe"
@@ -5888,7 +5882,6 @@ msgctxt "model:country.subdivision,name:fr m"
 msgid "Lorraine"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr mq"
 msgid "Martinique"
 msgstr "Martinica"
@@ -6349,7 +6342,6 @@ msgctxt "model:country.subdivision,name:fr-wf"
 msgid "Wallis et Futuna"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr-yt"
 msgid "Mayotte"
 msgstr "Mayotte"
@@ -6374,7 +6366,6 @@ msgctxt "model:country.subdivision,name:gb sct"
 msgid "Scotland"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gb ukm"
 msgid "United Kingdom"
 msgstr "Regne Unit"
@@ -7575,7 +7566,6 @@ msgctxt "model:country.subdivision,name:gn-md"
 msgid "Mandiana"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gn-ml"
 msgid "Mali"
 msgstr "Mali"
@@ -7936,7 +7926,6 @@ msgctxt "model:country.subdivision,name:gt-es"
 msgid "Escuintla"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gt-gu"
 msgid "Guatemala"
 msgstr "Guatemala"
@@ -8125,7 +8114,6 @@ msgctxt "model:country.subdivision,name:hn-in"
 msgid "Intibucá"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:hn-le"
 msgid "Lempira"
 msgstr "Lempira hondureny"
@@ -10742,7 +10730,6 @@ msgctxt "model:country.subdivision,name:lu-g"
 msgid "Grevenmacher"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:lu-l"
 msgid "Luxembourg"
 msgstr "Luxemburg"
@@ -13071,7 +13058,6 @@ msgctxt "model:country.subdivision,name:ng-na"
 msgid "Nassarawa"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:ng-ni"
 msgid "Niger"
 msgstr "Niger"
@@ -15464,7 +15450,6 @@ msgctxt "model:country.subdivision,name:sh-ac"
 msgid "Ascension"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:sh-sh"
 msgid "Saint Helena"
 msgstr "Santa Elena, Ascensió i Tristán d'Encunya"
@@ -16317,7 +16302,6 @@ msgctxt "model:country.subdivision,name:sm-06"
 msgid "Borgo Maggiore"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:sm-07"
 msgid "San Marino"
 msgstr "Sant Marino"
@@ -18318,7 +18302,6 @@ msgctxt "model:country.subdivision,name:us-ar"
 msgid "Arkansas"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-as"
 msgid "American Samoa"
 msgstr "Samoa Americana"
@@ -18351,12 +18334,10 @@ msgctxt "model:country.subdivision,name:us-fl"
 msgid "Florida"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-ga"
 msgid "Georgia"
 msgstr "Geòrgia"
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-gu"
 msgid "Guam"
 msgstr "Guam"
@@ -18417,7 +18398,6 @@ msgctxt "model:country.subdivision,name:us-mo"
 msgid "Missouri"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-mp"
 msgid "Northern Mariana Islands"
 msgstr "Illes Marianes del Nord"
@@ -18478,7 +18458,6 @@ msgctxt "model:country.subdivision,name:us-pa"
 msgid "Pennsylvania"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-pr"
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
@@ -18503,7 +18482,6 @@ msgctxt "model:country.subdivision,name:us-tx"
 msgid "Texas"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-um"
 msgid "United States Minor Outlying Islands"
 msgstr "Illes menors exteriors d'Estats Units"
