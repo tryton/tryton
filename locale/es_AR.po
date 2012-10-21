@@ -29,7 +29,7 @@ msgstr "¡El balance final debe ser %s!"
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr "¡Debe cancelar el extracto \"%s\" antes de eliminarlo!"
+msgstr "¡Debe cancelar el extracto «%s» antes de eliminarlo!"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
