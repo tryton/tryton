@@ -76,7 +76,7 @@ msgstr "Usuario modificación"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "Lineas de parte de trabajo"
+msgstr "Líneas de parte de trabajo"
 
 msgctxt "help:project.work,effort:"
 msgid "Estimated Effort for this work"
@@ -116,7 +116,7 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Gestión de proyecto"
+msgstr "Gestión de proyectos"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
