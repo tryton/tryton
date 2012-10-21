@@ -14,14 +14,13 @@ msgctxt "field:company.company,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:company.company,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
@@ -71,10 +70,9 @@ msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -108,14 +106,13 @@ msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:ir.cron-company.company,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Programador de tasques"
+msgstr "Planificador de tasques"
 
 msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
@@ -154,10 +151,9 @@ msgid "Current Company"
 msgstr "Empresa actual"
 
 msgctxt "field:res.user,employee:"
-msgid "Employee"
+msgid "Current Employee"
 msgstr "Empleat"
 
-#, fuzzy
 msgctxt "field:res.user,employees:"
 msgid "Employees"
 msgstr "Empleats"
@@ -170,12 +166,10 @@ msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
 msgstr "Empleat"
@@ -184,12 +178,10 @@ msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "Usuari"
@@ -204,7 +196,7 @@ msgstr "Usuari modificació"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr "Empreses registrades en aquest programador de tasques"
+msgstr "Empreses registrades en aquest planificador"
 
 msgctxt "model:company.company,name:"
 msgid "Company"
@@ -220,9 +212,8 @@ msgstr "Empleat"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr ""
+msgstr "Configura la seva empresa"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
 msgstr "Empreses"
@@ -240,10 +231,9 @@ msgid "Letter"
 msgstr "Carta"
 
 msgctxt "model:ir.cron-company.company,name:"
-msgid "ir.cron-company.company"
-msgstr "ir.cron-company.company"
+msgid "Cron - Company"
+msgstr "Cron - Empresa"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr "Empreses"
@@ -344,12 +334,10 @@ msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "Ok"
 msgstr "Accepta"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
