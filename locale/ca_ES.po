@@ -8,24 +8,23 @@ msgstr "Mètode assignació cost transportista"
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
-msgstr "Cost unitat envio"
+msgstr "Cost unitat enviament"
 
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
 msgstr "Transportista"
 
-#, fuzzy
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"
 msgstr "Cost"
 
 msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
-msgstr "Albira cost"
+msgstr "Moneda cost"
 
 msgctxt "field:stock.shipment.in,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Decimals divisa del cost"
+msgstr "Decimals moneda del cost"
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
