@@ -10,10 +10,9 @@ msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
