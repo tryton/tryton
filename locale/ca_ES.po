@@ -10,10 +10,9 @@ msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
@@ -37,7 +36,7 @@ msgstr "Seqüència"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
-msgstr "Dipòsit"
+msgstr "Magatzem"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
