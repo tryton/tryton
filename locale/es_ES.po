@@ -36,11 +36,11 @@ msgstr "Coste"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
-msgstr "Divisa coste"
+msgstr "Moneda coste"
 
 msgctxt "field:stock.shipment.out,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Decimales divisa del coste"
+msgstr "Decimales de la moneda de coste"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
