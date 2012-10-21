@@ -20,7 +20,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
@@ -112,7 +112,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Planificador"
+msgstr "Planificador de tareas"
 
 msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
@@ -151,8 +151,8 @@ msgid "Current Company"
 msgstr "Empresa actual"
 
 msgctxt "field:res.user,employee:"
-msgid "Employee"
-msgstr "Empleado"
+msgid "Current Employee"
+msgstr "Empleado actual"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
@@ -212,7 +212,7 @@ msgstr "Empleado"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configuración empresa"
+msgstr "Configura su empresa"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
@@ -231,8 +231,8 @@ msgid "Letter"
 msgstr "Carta"
 
 msgctxt "model:ir.cron-company.company,name:"
-msgid "ir.cron-company.company"
-msgstr "ir.cron-company.company"
+msgid "Cron - Company"
+msgstr "Cron - Empresa"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
