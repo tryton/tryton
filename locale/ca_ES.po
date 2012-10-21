@@ -14,10 +14,9 @@ msgctxt "field:product.price_list,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.price_list,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.price_list,id:"
 msgid "ID"
@@ -47,10 +46,9 @@ msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.price_list.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
@@ -62,7 +60,7 @@ msgstr "ID"
 
 msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
-msgstr "Llista de preus"
+msgstr "Tarifa"
 
 msgctxt "field:product.price_list.line,product:"
 msgid "Product"
@@ -102,40 +100,40 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr "Llistes de preus"
+msgstr "Tarifes"
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Llistes de preus"
+msgstr "Tarifes"
 
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
-msgstr "Llista de preus"
+msgstr "Tarifa"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
-msgstr "Línia de llista de preus"
+msgstr "Línia de tarifa"
 
 msgctxt "view:party.party:"
 msgid "Price List"
-msgstr "Llista de preus"
+msgstr "Tarifa"
 
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"
-msgstr "Línia de llista de preus"
+msgstr "Línia de tarifa"
 
 msgctxt "view:product.price_list.line:"
 msgid "Price List Lines"
-msgstr "Línies de llista de preus"
+msgstr "Línies de tarifa"
 
 msgctxt "view:product.price_list:"
 msgid "Price List"
-msgstr "Llista de preus"
+msgstr "Tarifa"
 
 msgctxt "view:product.price_list:"
 msgid "Price List Lines"
-msgstr "Línies de llista de preus"
+msgstr "Línies de tarifa"
 
 msgctxt "view:product.price_list:"
 msgid "Price Lists"
-msgstr "Llistes de preus"
+msgstr "Tarifes"
