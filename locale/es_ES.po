@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr "Decimales divisa del peso"
+msgstr "Decimales moneda del peso"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
@@ -20,7 +20,7 @@ msgstr "Peso UdM"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr "Dígitos UdM peso"
+msgstr "Decimales UdM peso"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
@@ -40,7 +40,7 @@ msgstr "ID"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr "Coste"
+msgstr "Precio"
 
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
@@ -59,7 +59,7 @@ msgid "Write User"
 msgstr "Usuario modificación"
 
 msgctxt "model:carrier.weight_price_list,name:"
-msgid "carrier.weight_price_list"
+msgid "Carrier Weight Price List"
 msgstr "Tarifa peso transportista"
 
 msgctxt "selection:carrier,carrier_cost_method:"
