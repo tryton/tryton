@@ -43,7 +43,7 @@ msgid "Method to compute carrier cost"
 msgstr "Método para procesar el costo del transportista"
 
 msgctxt "model:carrier,name:"
-msgid "carrier"
+msgid "Carrier"
 msgstr "Transportista"
 
 msgctxt "model:ir.action,name:act_carrier_form"
