@@ -42,8 +42,9 @@ msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Método para procesar el coste del transportista."
 
+#, fuzzy
 msgctxt "model:carrier,name:"
-msgid "carrier"
+msgid "Carrier"
 msgstr "Transportista"
 
 msgctxt "model:ir.action,name:act_carrier_form"
@@ -52,7 +53,7 @@ msgstr "Transportistas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier Management"
-msgstr "Transportista"
+msgstr "Transportistas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
