@@ -116,7 +116,7 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Proyectos"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
