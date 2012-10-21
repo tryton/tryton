@@ -47,8 +47,8 @@ msgid "Dashboard Layout"
 msgstr "Organización del tablero"
 
 msgctxt "model:dashboard.action,name:"
-msgid "dashboard.action"
-msgstr "dashboard.action"
+msgid "Dashboard Action"
+msgstr "Acción del tablero"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
