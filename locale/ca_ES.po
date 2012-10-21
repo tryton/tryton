@@ -2,10 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
 msgid "You can not create recursive categories!"
-msgstr "No pot crear categories recursives"
+msgstr "No pot crear categories recursives."
 
 msgctxt "error:product.uom:"
 msgid ""
@@ -39,10 +38,9 @@ msgctxt "field:product.category,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
@@ -76,10 +74,9 @@ msgctxt "field:product.product,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
@@ -133,14 +130,13 @@ msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr "UdM predeterminada"
+msgstr "UdM per defecte"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
@@ -152,11 +148,11 @@ msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr "Preu de llista"
+msgstr "Preu de venda"
 
 msgctxt "field:product.template,list_price_uom:"
 msgid "List Price"
-msgstr "Preu de llista"
+msgstr "Preu de venda"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -194,10 +190,9 @@ msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
@@ -243,10 +238,9 @@ msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
@@ -288,7 +282,6 @@ msgstr ""
 "El coeficient de la fórmula:\n"
 "1 (unitat base) = coeficient (aquesta unitat)"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categories"
@@ -313,7 +306,6 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Unitats de mesura"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categories"
@@ -324,7 +316,7 @@ msgstr "Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Producte"
+msgstr "Productes"
 
 msgctxt "model:ir.ui.menu,name:menu_product_product"
 msgid "Products"
