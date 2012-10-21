@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
 msgid "Probability must be between 0 and 100!"
-msgstr "La probabilidad debe ser entre 0 a 100."
+msgstr "La probabilidad debe ser entre 0 y 100."
 
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
@@ -36,11 +36,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:sale.opportunity,description:"
 msgid "Description"
@@ -232,7 +232,7 @@ msgstr "Unidad"
 
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de la unidad"
+msgstr "Decimales de la unidad"
 
 msgctxt "field:sale.opportunity.line,write_date:"
 msgid "Write Date"
@@ -276,11 +276,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
@@ -356,11 +356,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
@@ -432,11 +432,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:sale.opportunity_monthly,id:"
 msgid "ID"
@@ -476,7 +476,7 @@ msgstr "Año-Mes"
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount"
-msgstr "Importe estimados de ingresos."
+msgstr "Importe estimado de ingresos."
 
 msgctxt "help:sale.opportunity,probability:"
 msgid "Percentage between 0 and 100"
@@ -564,7 +564,7 @@ msgstr "Iniciativas y oportunidades"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_cancelled"
 msgid "Cancelled Leads and Opportunities"
-msgstr "Iniciativas y oportunidades canceladas"
+msgstr "Iniciativas/Oportunidades canceladas"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_converted"
 msgid "Converted Opportunities"
@@ -576,7 +576,7 @@ msgstr "Iniciativas abiertas"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
 msgid "Lost Leads and Opportunities"
-msgstr "Iniciativas y oportunidades perdidas"
+msgstr "Iniciativas/Oportunidades perdidas"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_opportunity"
 msgid "Opportunities"
