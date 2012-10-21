@@ -56,10 +56,9 @@ msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:purchase.request,id:"
 msgid "ID"
@@ -173,10 +172,9 @@ msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
@@ -244,7 +242,7 @@ msgstr "Compres"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr ""
+msgstr "Crear Ordres de producció"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
@@ -252,7 +250,7 @@ msgstr "Sol·licituds de compra"
 
 msgctxt "model:ir.action,name:act_purchase_request_form_draft"
 msgid "Draft Purchase Requests"
-msgstr ""
+msgstr "Ordres de producció en esborrany"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -272,7 +270,7 @@ msgstr "Regles d'estoc mínim"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr ""
+msgstr "Crear Ordres de producció"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
@@ -280,7 +278,7 @@ msgstr "Sol·licituds de compra"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
 msgid "Draft Purchase Requests"
-msgstr ""
+msgstr "Ordres de producció en esborrany"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
@@ -386,7 +384,6 @@ msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
 msgstr "Tipus d'ordre de pagament"
 
-#, fuzzy
 msgctxt "view:stock.order_point:"
 msgid "Order Points"
 msgstr "Regles d'estoc mínim"
@@ -399,12 +396,10 @@ msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
 msgstr "Crear"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -413,7 +408,6 @@ msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
 msgstr "Continuar"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
