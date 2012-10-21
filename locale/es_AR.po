@@ -151,8 +151,8 @@ msgid "Current Company"
 msgstr "Empresa actual"
 
 msgctxt "field:res.user,employee:"
-msgid "Employee"
-msgstr "Empleado"
+msgid "Current Employee"
+msgstr "Empleado actual"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
@@ -231,8 +231,8 @@ msgid "Letter"
 msgstr "Carta"
 
 msgctxt "model:ir.cron-company.company,name:"
-msgid "ir.cron-company.company"
-msgstr "ir.cron-company.company"
+msgid "Cron - Company"
+msgstr "Programador de tareas - Empresa"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
