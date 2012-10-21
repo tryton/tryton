@@ -256,11 +256,11 @@ msgstr "Crear compra"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
-msgstr "Generar peticiones de compra"
+msgstr "Generar Peticiones de compra"
 
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
-msgstr "Generar envios internos"
+msgstr "Generar Envíos internos"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
@@ -300,11 +300,11 @@ msgstr "Solicitud de compra"
 
 msgctxt "model:res.user,name:user_generate_request"
 msgid "Cron Purchase Request"
-msgstr "Programador de tareas de solicitudes de compra"
+msgstr "Programador de Solicitudes de compra"
 
 msgctxt "model:res.user,name:user_generate_shipment_internal"
 msgid "Cron Intenal Shipment"
-msgstr "Programador de tareas de envio interno"
+msgstr "Programador de Envío interno"
 
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
