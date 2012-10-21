@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Anglo-Saxon quantity can not be greater than quantity!"
-msgstr "La cantidad anglo-sajona no puede ser mayo que la cantidad."
+msgstr "La cantidad anglo-sajona no puede ser mayor que la cantidad."
 
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
@@ -14,7 +14,6 @@ msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Cuenta coste bienes vendidos usada"
 
-#, fuzzy
 msgctxt "field:product.template,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Cuenta coste bienes vendidos"
