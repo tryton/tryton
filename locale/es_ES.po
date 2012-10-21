@@ -8,7 +8,7 @@ msgstr "Alto"
 
 msgctxt "field:product.template,height_digits:"
 msgid "Height Digits"
-msgstr "Número de dígitos alto"
+msgstr "Decimales alto"
 
 msgctxt "field:product.template,height_uom:"
 msgid "Height Uom"
@@ -20,7 +20,7 @@ msgstr "Longitud"
 
 msgctxt "field:product.template,length_digits:"
 msgid "Length Digits"
-msgstr "Número de dígitos"
+msgstr "Decimales longitud"
 
 msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
@@ -32,7 +32,7 @@ msgstr "Peso"
 
 msgctxt "field:product.template,weight_digits:"
 msgid "Weight Digits"
-msgstr "Número dígitos peso"
+msgstr "Decimales peso"
 
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight Uom"
@@ -44,7 +44,7 @@ msgstr "Ancho"
 
 msgctxt "field:product.template,width_digits:"
 msgid "Width Digits"
-msgstr "Número dígitos ancho"
+msgstr "Decimales ancho"
 
 msgctxt "field:product.template,width_uom:"
 msgid "Width Uom"
