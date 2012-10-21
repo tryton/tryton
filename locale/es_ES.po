@@ -24,8 +24,7 @@ msgstr "La ubicación de cliente es requerida."
 
 msgctxt "error:sale.sale:"
 msgid "Invoice and Shipment addresses must be defined for the quotation."
-msgstr ""
-"Debe indicar las direcciones de facturación y de envío en el presupuesto."
+msgstr "Debe indicar las direcciones de facturación y de envío en el presupuesto."
 
 msgctxt "error:sale.sale:"
 msgid "It misses an \"Account Receivable\" on the party \"%s\"!"
@@ -97,7 +96,7 @@ msgstr "Método de facturación"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Reference Sequence"
-msgstr "Secuencia pedidos de venta"
+msgstr "Secuencia numeración venta"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
@@ -233,7 +232,7 @@ msgstr "Unidad"
 
 msgctxt "field:sale.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de la unidad"
+msgstr "Decimales de la unidad"
 
 msgctxt "field:sale.line,unit_price:"
 msgid "Unit Price"
@@ -397,11 +396,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:sale.sale,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:sale.sale,description:"
 msgid "Description"
@@ -640,10 +639,8 @@ msgid "In number of days"
 msgstr "En número de días."
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
-msgid ""
-"The selected invoices will be recreated. The other ones will be ignored."
-msgstr ""
-"Las facturas seleccionadas serán recreadas. Las otras serán ignoradas."
+msgid "The selected invoices will be recreated. The other ones will be ignored."
+msgstr "Las facturas seleccionadas serán recreadas. Las otras serán ignoradas."
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -735,19 +732,19 @@ msgstr "Ventas"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form_confirmed"
 msgid "Confirmed Sales"
-msgstr "Ventas confirmadas"
+msgstr "Confirmadas"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form_draft"
 msgid "Draft Sales"
-msgstr "Ventas borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form_processing"
 msgid "Processing Sales"
-msgstr "Ventas en proceso"
+msgstr "Proceso"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form_quotation"
 msgid "Quotation Sales"
-msgstr "Ventas presupuestadas"
+msgstr "Presupuesto"
 
 msgctxt "model:res.group,name:group_sale"
 msgid "Sales"
@@ -761,12 +758,10 @@ msgctxt "model:sale.configuration,name:"
 msgid "Sale Configuration"
 msgstr "Configuración ventas"
 
-#, fuzzy
 msgctxt "model:sale.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Gestionar excepción de factura"
 
-#, fuzzy
 msgctxt "model:sale.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
 msgstr "Gestionar excepción de envío"
@@ -825,7 +820,7 @@ msgstr "Descripción:"
 
 msgctxt "odt:sale.sale:"
 msgid "Draft Sale Order"
-msgstr "Pedido de venta borrador"
+msgstr "Ventas borrador"
 
 msgctxt "odt:sale.sale:"
 msgid "E-Mail:"
@@ -845,7 +840,7 @@ msgstr "Presupuesto Nº:"
 
 msgctxt "odt:sale.sale:"
 msgid "Sale Order N°:"
-msgstr "Pedido de venta Nº:"
+msgstr "Venta Nº:"
 
 msgctxt "odt:sale.sale:"
 msgid "Taxes"
@@ -873,7 +868,7 @@ msgstr "Número CIF/NIF:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
-msgstr "NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
@@ -993,7 +988,7 @@ msgstr "Confirmada"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Realizado"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Draft"
