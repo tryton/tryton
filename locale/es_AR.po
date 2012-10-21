@@ -1632,7 +1632,7 @@ msgstr "Buenos Aires"
 
 msgctxt "model:country.subdivision,name:ar-c"
 msgid "Capital federal"
-msgstr "Capital federal"
+msgstr "Capital Federal"
 
 msgctxt "model:country.subdivision,name:ar-d"
 msgid "San Luis"
@@ -1640,7 +1640,7 @@ msgstr "San Luis"
 
 msgctxt "model:country.subdivision,name:ar-e"
 msgid "Entre Rios"
-msgstr "Entre Rios"
+msgstr "Entre Ríos"
 
 msgctxt "model:country.subdivision,name:ar-g"
 msgid "Santiago del Estero"
@@ -1676,11 +1676,11 @@ msgstr "Formosa"
 
 msgctxt "model:country.subdivision,name:ar-q"
 msgid "Neuquen"
-msgstr "Neuquen"
+msgstr "Neuquén"
 
 msgctxt "model:country.subdivision,name:ar-r"
 msgid "Rio Negro"
-msgstr "Rio Negro"
+msgstr "Río Negro"
 
 msgctxt "model:country.subdivision,name:ar-s"
 msgid "Santa Fe"
@@ -1688,7 +1688,7 @@ msgstr "Santa Fe"
 
 msgctxt "model:country.subdivision,name:ar-t"
 msgid "Tucuman"
-msgstr "Tucuman"
+msgstr "Tucumán"
 
 msgctxt "model:country.subdivision,name:ar-u"
 msgid "Chubut"
@@ -1704,7 +1704,7 @@ msgstr "Corrientes"
 
 msgctxt "model:country.subdivision,name:ar-x"
 msgid "Cordoba"
-msgstr "Cordoba"
+msgstr "Córdoba"
 
 msgctxt "model:country.subdivision,name:ar-y"
 msgid "Jujuy"
