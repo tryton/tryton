@@ -18,10 +18,9 @@ msgctxt "field:project.work,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:project.work,effort:"
 msgid "Effort"
@@ -47,7 +46,6 @@ msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
@@ -97,7 +95,6 @@ msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
 msgstr "Projectes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
 msgstr "Projectes"
@@ -106,12 +103,10 @@ msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
 msgstr "Tasques"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
 msgstr "Activitats"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr "Activitats"
@@ -120,10 +115,9 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuració"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Gestió de projecte"
+msgstr "Projectes"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -137,12 +131,10 @@ msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
 msgstr "Tasques"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
 msgstr "Activitats"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
 msgstr "Activitats"
