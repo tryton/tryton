@@ -3,23 +3,16 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not change the invoice sequence if there is already an invoice "
-"opened in the fiscalyear"
-msgstr ""
-"No puede cambiar la secuencia de una factura si ya hay una abierta en el "
-"ejercicio fiscal."
+msgid "You can not change the invoice sequence if there is already an invoice opened in the fiscalyear"
+msgstr "No puede cambiar la secuencia de una factura si ya hay una factura abierta en el ejercicio fiscal."
 
 msgctxt "error:account.fiscalyear:"
 msgid "You must have different invoice sequences per fiscal year!"
-msgstr ""
-"Debe tener una secuencia distinta de facturación por ejercicio fiscal."
+msgstr "Debe tener distintas secuencias de factura por ejercicio fiscal."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund an invoice that is not opened!"
-msgstr ""
-"No puede hacer un abono con devolución desde una factura que no esté "
-"abierta."
+msgstr "No puede hacer un abono con devolución desde una factura que no esté abierta."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund an invoice with payments!"
@@ -31,13 +24,11 @@ msgstr "Una línea de tipo \"línea\" debe tener una cuenta."
 
 msgctxt "error:account.invoice.line:"
 msgid "Line without \"line\" type must have an invoice!"
-msgstr "Una línea sin tipo \"línea\" debe tener una factura."
+msgstr "Una línea sin el tipo \"línea\" debe tener una factura."
 
 msgctxt "error:account.invoice.line:"
 msgid "You can not add a line to an invoice that is open, paid or canceled!"
-msgstr ""
-"No puede añadir una línea a una factura que está abierta, pagada o "
-"cancelada."
+msgstr "No puede añadir una línea a una factura que está abierta, pagada o cancelada."
 
 msgctxt "error:account.invoice.line:"
 msgid ""
@@ -49,8 +40,7 @@ msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid "You can not modify line from an invoice that is opened, paid!"
-msgstr ""
-"No puede modificar una línea de una factura que está abierta o pagada."
+msgstr "No puede modificar las líneas de una factura que está abierta o pagada."
 
 msgctxt "error:account.invoice.line:"
 msgid ""
@@ -61,15 +51,12 @@ msgstr ""
 "que en la factura."
 
 msgctxt "error:account.invoice.pay:"
-msgid ""
-"You can not create a partial payment with an amount greater then the amount "
-"to pay!"
-msgstr ""
-"No puede crear un pago parcial con un importe mayor que el importe a pagar."
+msgid "You can not create a partial payment with an amount greater then the amount to pay!"
+msgstr "No puede crear un pago parcial con un importe mayor que el importe a pagar."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid "Day of month must be between 1 and 31."
-msgstr "El día del mes debe ser entre 1 y 31."
+msgstr "El día del mes debe estar entre 1 y 31."
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid "Percentage and Divisor values are not consistent."
@@ -85,14 +72,11 @@ msgstr "Al plazo de pago le falta una línea con el remanente."
 
 msgctxt "error:account.invoice.tax:"
 msgid "You can not add a line to an invoice that is open, paid or canceled!"
-msgstr ""
-"No puede añadir una línea a una factura que está abierta, pagada o "
-"cancelada."
+msgstr "No puede añadir una línea a una factura que está abierta, pagada o cancelada."
 
 msgctxt "error:account.invoice.tax:"
 msgid "You can not modify tax from an invoice that is opened, paid!"
-msgstr ""
-"No puede modificar los impuestos de una factura que está abierta o pagada."
+msgstr "No puede modificar los impuestos de una factura que está abierta o pagada."
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -111,7 +95,7 @@ msgid ""
 "Taxes defined but not on invoice lines!\n"
 "Re-compute the invoice."
 msgstr ""
-"Tiene impuestos definidos pero ninguno en las líneas de la factura.\n"
+"Los impuestos están definidos en la factura pero ninguno en las líneas de la factura.\n"
 "Recalcule la factura."
 
 msgctxt "error:account.invoice:"
@@ -167,20 +151,12 @@ msgstr ""
 "que en la línea de la factura."
 
 msgctxt "error:account.period:"
-msgid ""
-"You can not change the invoice sequence if there is already an invoice "
-"opened in the period"
-msgstr ""
-"No puede cambiar la secuencia de una factura si hay una factura abierta en "
-"el período."
+msgid "You can not change the invoice sequence if there is already an invoice opened in the period"
+msgstr "No puede cambiar la secuencia de una factura si hay una factura abierta en el período."
 
 msgctxt "error:account.period:"
-msgid ""
-"You must have different invoice sequences per fiscal year and in the same "
-"company!"
-msgstr ""
-"Debe usar secuencias distintas de factura por ejercicio fiscal en la misma "
-"empresa."
+msgid "You must have different invoice sequences per fiscal year and in the same company!"
+msgstr "Debe tener distintas secuencias de factura por ejercicio fiscal en la misma empresa."
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -232,15 +208,15 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr "Fecha divisa"
+msgstr "Fecha moneda"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -412,11 +388,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -488,7 +464,7 @@ msgstr "Decimales de la unidad"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr "Precio unitario"
+msgstr "Precio unidad"
 
 msgctxt "field:account.invoice.line,write_date:"
 msgid "Write Date"
@@ -532,15 +508,15 @@ msgstr "Usuario modificación"
 
 msgctxt "field:account.invoice.pay.ask,account_writeoff:"
 msgid "Write-Off Account"
-msgstr "Cuenta de desajuste"
+msgstr "Cuenta del desajuste"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
-msgstr "Importe de pago"
+msgstr "Importe del pago"
 
 msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
 msgid "Write-Off Amount"
-msgstr "Importe de desajuste"
+msgstr "Importe del desajuste"
 
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
@@ -548,19 +524,19 @@ msgstr "Empresa"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
-msgstr "Divisa de pago"
+msgstr "Moneda de pago"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr "Decimales divisa de pago"
+msgstr "Decimales moneda de pago"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr "Decimales divisa de desajuste"
+msgstr "Decimales moneda del desajuste"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
-msgstr "Divisa de desajuste"
+msgstr "Moneda del desajuste"
 
 msgctxt "field:account.invoice.pay.ask,id:"
 msgid "ID"
@@ -572,7 +548,7 @@ msgstr "Factura"
 
 msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
 msgid "Write-Off Journal"
-msgstr "Diario de desajuste"
+msgstr "Diario del desajuste"
 
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
@@ -596,11 +572,11 @@ msgstr "Importe"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -672,11 +648,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.invoice.payment_term.line,day:"
 msgid "Day of Month"
@@ -737,14 +713,6 @@ msgstr "Fecha modificación"
 msgctxt "field:account.invoice.payment_term.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
-
-msgctxt "field:account.invoice.payment_term.line.delay,rec_name:"
-msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:account.invoice.payment_term.line.type,rec_name:"
-msgid "Name"
-msgstr "Nombre"
 
 msgctxt "field:account.invoice.print.warning,id:"
 msgid "ID"
@@ -856,11 +824,11 @@ msgstr "Plazo de pago del proveedor"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
-msgstr "Si está marcada, la factura(s) actual será pagada."
+msgstr "Si está marcada, las facturas actuales se pagarán."
 
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
-msgstr "Sirve para ordenar las líneas ascendentemente."
+msgstr "Sirve para ordenar las líneas de forma ascendente."
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
@@ -898,14 +866,6 @@ msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
 msgstr "Línea del plazo de pago"
 
-msgctxt "model:account.invoice.payment_term.line.delay,name:"
-msgid "account.invoice.payment_term.line.delay"
-msgstr "Línea de retraso del plazo de pago"
-
-msgctxt "model:account.invoice.payment_term.line.type,name:"
-msgid "account.invoice.payment_term.line.type"
-msgstr "Tipo de línea del plazo de pago"
-
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
 msgstr "Imprimir aviso informe de factura"
@@ -932,7 +892,7 @@ msgstr "Abonos de proveedor borrador"
 
 msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
 msgid "Pro Forma Supplier Credit Notes"
-msgstr "Abonos de proveedor pro forma"
+msgstr "Abonos de proveedor Pro Forma"
 
 msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
 msgid "Opened Supplier Credit Notes"
@@ -940,7 +900,7 @@ msgstr "Abonos de proveedor abiertos"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
 msgid "Supplier Invoices"
-msgstr "Facturas de proveedor"
+msgstr "Facturas proveedor"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
 msgid "Draft Supplier Invoices"
@@ -948,11 +908,11 @@ msgstr "Facturas de proveedor borrador"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
 msgid "Pro Forma Supplier Invoices"
-msgstr "Facturas de proveedor pro forma"
+msgstr "Facturas proveedor Pro Forma"
 
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
 msgid "Opened Supplier Invoices"
-msgstr "Facturas de proveedor abiertas"
+msgstr "Facturas proveedor abiertas"
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
 msgid "Credit Notes"
@@ -964,7 +924,7 @@ msgstr "Abonos borrador"
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
 msgid "Pro Forma Credit Notes"
-msgstr "Abonos pro forma"
+msgstr "Abonos Pro Forma"
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
 msgid "Opened Credit Notes"
@@ -980,7 +940,7 @@ msgstr "Facturas borrador"
 
 msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
 msgid "Pro Forma Invoices"
-msgstr "Facturas pro forma"
+msgstr "Facturas Pro Forma"
 
 msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
 msgid "Opened Invoices"
@@ -1020,31 +980,31 @@ msgstr "Abonos de proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
 msgid "Draft Supplier Credit Notes"
-msgstr "Abonos de proveedor borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
 msgid "Pro Forma Supplier Credit Notes"
-msgstr "Abonos de proveedor pro forma"
+msgstr "Pro Forma"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
 msgid "Opened Supplier Credit Notes"
-msgstr "Abonos de proveedor abiertos"
+msgstr "Abiertos"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
 msgid "Supplier Invoices"
-msgstr "Facturas de proveedor"
+msgstr "Facturas proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
 msgid "Draft Supplier Invoices"
-msgstr "Facturas de proveedor borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
 msgid "Pro Forma Supplier Invoices"
-msgstr "Facturas de proveedor pro forma"
+msgstr "Pro Forma"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
 msgid "Opened Supplier Invoices"
-msgstr "Facturas de proveedor abiertas"
+msgstr "Abiertas"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
 msgid "Credit Notes"
@@ -1052,15 +1012,15 @@ msgstr "Abonos"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
 msgid "Draft Credit Notes"
-msgstr "Abono borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
 msgid "Pro Forma Credit Notes"
-msgstr "Abonos pro forma"
+msgstr "Pro Forma"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
 msgid "Opened Credit Notes"
-msgstr "Abonos abiertos"
+msgstr "Abiertos"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
 msgid "Invoices"
@@ -1068,15 +1028,15 @@ msgstr "Facturas"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
 msgid "Draft Invoices"
-msgstr "Facturas borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
 msgid "Pro Forma Invoices"
-msgstr "Facturas pro forma"
+msgstr "Pro Forma"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
 msgid "Opened Invoices"
-msgstr "Facturas abiertas"
+msgstr "Abiertas"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1152,19 +1112,19 @@ msgstr "Teléfono:"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Credit Note"
-msgstr "Abono pro forma"
+msgstr "Abono Pro Forma"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Invoice"
-msgstr "Factura pro forma"
+msgstr "Factura Pro Forma"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Supplier Credit Note"
-msgstr "Abono de proveedor pro forma"
+msgstr "Abono de proveedor Pro Forma"
 
 msgctxt "odt:account.invoice:"
 msgid "Pro forma Supplier Invoice"
-msgstr "Factura de proveedor pro forma"
+msgstr "Factura de proveedor Pro Forma"
 
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
@@ -1204,11 +1164,11 @@ msgstr "Precio unidad"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT Number:"
-msgstr "NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
-msgstr "NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
@@ -1228,7 +1188,7 @@ msgstr "Pagada"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Pro forma"
-msgstr "Pro forma"
+msgstr "Pro Forma"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Credit Note"
@@ -1388,7 +1348,7 @@ msgstr "Miércoles"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
-msgstr "¿Está seguro de abonar esta/s factura/s?"
+msgstr "¿Está seguro de abonar estas facturas?"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Credit Invoice"
@@ -1452,7 +1412,7 @@ msgstr "Imprimir factura"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "The invoices will be sent <i>directly</i> to the printer."
-msgstr "Las facturas serán enviadas <i>directamente</i> a la impresora."
+msgstr "Las facturas se enviarán <i>directamente</i> a la impresora."
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "You have selected more than one invoice to print."
@@ -1476,7 +1436,7 @@ msgstr "Impuestos"
 
 msgctxt "view:account.invoice:"
 msgid "Amount Second Currency"
-msgstr "Importe divisa secundaria"
+msgstr "Importe moneda secundaria"
 
 msgctxt "view:account.invoice:"
 msgid "Credit"
@@ -1512,7 +1472,7 @@ msgstr "Líneas de pago"
 
 msgctxt "view:account.invoice:"
 msgid "Pro For_ma"
-msgstr "Pro for_ma"
+msgstr "Pro For_ma"
 
 msgctxt "view:account.invoice:"
 msgid "Taxes"
@@ -1540,7 +1500,7 @@ msgstr "_Restablecer a borrador"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr "Importe divisa secundaria"
+msgstr "Importe moneda secundaria"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
