@@ -2,19 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr "Gestió de divises"
+msgstr "Moneda"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr "Decimals divisa del pes"
+msgstr "Decimals moneda del pes"
 
-#, fuzzy
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
-msgstr "Llista de preus"
+msgstr "Tarifa"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
@@ -22,7 +20,7 @@ msgstr "Pes UdM"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr "Dígits UdM pes"
+msgstr "Decimals UdM pes"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
@@ -32,10 +30,9 @@ msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
@@ -43,14 +40,12 @@ msgstr "ID"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr "Cost"
+msgstr "Preu"
 
-#, fuzzy
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Pes"
@@ -64,18 +59,17 @@ msgid "Write User"
 msgstr "Usuari modificació"
 
 msgctxt "model:carrier.weight_price_list,name:"
-msgid "carrier.weight_price_list"
-msgstr "Tarifa peso transportista"
+msgid "Carrier Weight Price List"
+msgstr "Tarifa pes transportista"
 
-#, fuzzy
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
 msgstr "Pes"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price List"
-msgstr "Tarifes peso transportista"
+msgstr "Tarifa pes transportista"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price Lists"
-msgstr "Tarifes peso transportista"
+msgstr "Tarifes pes transportista"
