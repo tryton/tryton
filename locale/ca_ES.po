@@ -4,28 +4,24 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
 msgid "Probability must be between 0 and 100!"
-msgstr "L'oportunitat \"%s\" ha de ser cancel·lada abans d'eliminar-la."
+msgstr "L'oportunitat ha de ser entre 0 i 100."
 
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
 msgstr "L'oportunitat \"%s\" ha de ser cancel·lada abans d'eliminar-la."
 
-#, fuzzy
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
 msgstr "Adreça"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,amount:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,comment:"
 msgid "Comment"
 msgstr "Comentari"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -34,46 +30,38 @@ msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
-msgstr "Gestió de divises"
+msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígits de la divisa"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,description:"
 msgid "Description"
 msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,employee:"
 msgid "Employee"
 msgstr "Empleat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Data final"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,history:"
 msgid "History"
-msgstr "Històric"
+msgstr "Historial"
 
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
 msgstr "Línies"
@@ -82,12 +70,10 @@ msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Motius de la pèrdua"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
-msgstr "Tercers"
+msgstr "Tercer"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr "Termini de pagament"
@@ -96,22 +82,18 @@ msgctxt "field:sale.opportunity,probability:"
 msgid "Conversion Probability"
 msgstr "Probabilitat de conversió"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,sale:"
 msgid "Sale"
-msgstr "Vendes"
+msgstr "Venda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
 msgstr "Data inici"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Estat"
@@ -124,17 +106,14 @@ msgctxt "field:sale.opportunity,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,address:"
 msgid "Address"
 msgstr "Adreça"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,comment:"
 msgid "Comment"
 msgstr "Comentari"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -143,26 +122,22 @@ msgctxt "field:sale.opportunity.history,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
 msgstr "Data modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,description:"
 msgid "Description"
 msgstr "Descripció"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,employee:"
 msgid "Employee"
 msgstr "Empleat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,end_date:"
 msgid "End Date"
 msgstr "Data final"
@@ -171,7 +146,6 @@ msgctxt "field:sale.opportunity.history,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,lines:"
 msgid "Lines"
 msgstr "Línies"
@@ -184,31 +158,26 @@ msgctxt "field:sale.opportunity.history,opportunity:"
 msgid "Sale Opportunity"
 msgstr "Oportunitat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,party:"
 msgid "Party"
-msgstr "Tercers"
+msgstr "Tercer"
 
 msgctxt "field:sale.opportunity.history,probability:"
 msgid "Conversion Probability"
 msgstr "Probabilitat de conversió"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,start_date:"
 msgid "Start Date"
 msgstr "Data inici"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,state:"
 msgid "State"
 msgstr "Estat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.history,user:"
 msgid "User"
 msgstr "Usuari"
@@ -225,10 +194,9 @@ msgctxt "field:sale.opportunity.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:sale.opportunity.line,id:"
 msgid "ID"
@@ -238,40 +206,33 @@ msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Oportunitat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,sale_line:"
 msgid "Sale Line"
 msgstr "Línia de venda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
 msgstr "Seqüència"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr "Unitat"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígits unitaris"
+msgstr "Decimals de la unitat"
 
 msgctxt "field:sale.opportunity.line,write_date:"
 msgid "Write Date"
@@ -281,12 +242,10 @@ msgctxt "field:sale.opportunity.line,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -301,7 +260,7 @@ msgstr "Taxa de conversió"
 
 msgctxt "field:sale.opportunity_employee,converted:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Convertit"
 
 msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
@@ -311,22 +270,18 @@ msgctxt "field:sale.opportunity_employee,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
-msgstr "Gestió de divises"
+msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígits de la divisa"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
 msgstr "Empleat"
@@ -337,17 +292,15 @@ msgstr "ID"
 
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
-msgstr "Perduda"
+msgstr "Perdut"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
 msgstr "Número"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
@@ -357,7 +310,6 @@ msgctxt "field:sale.opportunity_employee,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.open.start,end_date:"
 msgid "End Date"
 msgstr "Data final"
@@ -366,17 +318,14 @@ msgctxt "field:sale.opportunity_employee.open.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.open.start,start_date:"
 msgid "Start Date"
 msgstr "Data inici"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,amount:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -391,7 +340,7 @@ msgstr "Taxa de conversió"
 
 msgctxt "field:sale.opportunity_employee_monthly,converted:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Convertit"
 
 msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
@@ -401,22 +350,18 @@ msgctxt "field:sale.opportunity_employee_monthly,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
-msgstr "Gestió de divises"
+msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígits de la divisa"
+msgstr "Decimals de la moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Empleat"
@@ -427,22 +372,19 @@ msgstr "ID"
 
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
-msgstr "Perduda"
+msgstr "Perdut"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
 msgstr "Mes"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Número"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:sale.opportunity_employee_monthly,write_date:"
 msgid "Write Date"
@@ -452,17 +394,14 @@ msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
 msgstr "Any"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,amount:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -477,7 +416,7 @@ msgstr "Taxa de conversió"
 
 msgctxt "field:sale.opportunity_monthly,converted:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Convertit"
 
 msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
@@ -487,20 +426,17 @@ msgctxt "field:sale.opportunity_monthly,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
-msgstr "Gestió de divises"
+msgstr "Moneda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígits de la divisa"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:sale.opportunity_monthly,id:"
 msgid "ID"
@@ -508,22 +444,19 @@ msgstr "ID"
 
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
-msgstr "Perduda"
+msgstr "Perdut"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
 msgstr "Mes"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Número"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:sale.opportunity_monthly,write_date:"
 msgid "Write Date"
@@ -533,7 +466,6 @@ msgctxt "field:sale.opportunity_monthly,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
 msgstr "Any"
@@ -550,75 +482,69 @@ msgctxt "help:sale.opportunity,probability:"
 msgid "Percentage between 0 and 100"
 msgstr "Percentatge entre 0 i 100."
 
-#, fuzzy
 msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
 msgid "In %"
-msgstr "en %"
+msgstr "En %."
 
-#, fuzzy
 msgctxt "help:sale.opportunity_employee,conversion_rate:"
 msgid "In %"
-msgstr "en %"
+msgstr "En %."
 
-#, fuzzy
 msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "In %"
-msgstr "en %"
+msgstr "En %."
 
-#, fuzzy
 msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
 msgid "In %"
-msgstr "en %"
+msgstr "En %."
 
-#, fuzzy
 msgctxt "help:sale.opportunity_monthly,conversion_amount_rate:"
 msgid "In %"
-msgstr "en %"
+msgstr "En %."
 
-#, fuzzy
 msgctxt "help:sale.opportunity_monthly,conversion_rate:"
 msgid "In %"
-msgstr "en %"
+msgstr "En %."
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
-msgstr ""
+msgstr "Oportunitats per empleat"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr ""
+msgstr "Oportunitats per treballador per mes"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_open"
 msgid "Opportunities per Employee"
-msgstr ""
+msgstr "Oportunitats per empleat"
 
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
+msgstr "Iniciatives i oportunitats"
 
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr ""
+msgstr "Iniciatives/Oportunitats"
 
 msgctxt "model:ir.action,name:act_opportunity_form_cancelled"
 msgid "Cancelled Leads and Opportunities"
-msgstr ""
+msgstr "Iniciatives i oportunitats cancel·lades"
 
 msgctxt "model:ir.action,name:act_opportunity_form_converted"
 msgid "Converted Opportunities"
-msgstr ""
+msgstr "Oportunitats convertides"
 
 msgctxt "model:ir.action,name:act_opportunity_form_lead"
 msgid "Opened Leads"
-msgstr ""
+msgstr "Iniciatives obertes"
 
 msgctxt "model:ir.action,name:act_opportunity_form_lost"
 msgid "Lost Leads and Opportunities"
-msgstr "Oportunitats per mes"
+msgstr "Iniciatives i oportunitats perdudes"
 
 msgctxt "model:ir.action,name:act_opportunity_form_opportunity"
 msgid "Opportunities"
-msgstr "Oportunitats per mes"
+msgstr "Oportunitats"
 
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
@@ -630,37 +556,36 @@ msgstr "Oportunitats per treballador per mes"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
 msgid "Opportunities per Employee"
-msgstr ""
+msgstr "Oportunitats per empleat"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
+msgstr "Iniciatives i oportunitats"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_cancelled"
 msgid "Cancelled Leads and Opportunities"
-msgstr ""
+msgstr "Iniciatives i oportunitats cancelades"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_converted"
 msgid "Converted Opportunities"
-msgstr ""
+msgstr "Oportunitats convertides"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lead"
 msgid "Opened Leads"
-msgstr ""
+msgstr "Iniciatives obertes"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
 msgid "Lost Leads and Opportunities"
-msgstr "Informes"
+msgstr "Iniciatives i oportunitats  perdudes"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form_opportunity"
 msgid "Opportunities"
-msgstr "Informes"
+msgstr "Oportunitats"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr "Informes"
+msgstr "Oportunitats per mes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Informes"
@@ -687,7 +612,7 @@ msgstr "Oportunitats per empleat"
 
 msgctxt "model:sale.opportunity_employee.open.start,name:"
 msgid "Open Sale Opportunity per Employee"
-msgstr "Obrir oportunitats per empleat"
+msgstr "Obre oportunitats per empleat"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
@@ -697,14 +622,13 @@ msgctxt "model:sale.opportunity_monthly,name:"
 msgid "Sale Opportunity per Month"
 msgstr "Oportunitats per mes"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"
 msgstr "Cancel·lat"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Converted"
-msgstr ""
+msgstr "Convertit"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
@@ -712,20 +636,19 @@ msgstr "Oportunitat"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
-msgstr "Oportunitat"
+msgstr "Perdut"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
 msgstr "Oportunitat"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Cancelled"
 msgstr "Cancel·lat"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Converted"
-msgstr ""
+msgstr "Convertit"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lead"
@@ -733,16 +656,15 @@ msgstr "Oportunitat"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lost"
-msgstr "Oportunitat"
+msgstr "Perdut"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
 msgstr "Oportunitat"
 
-#, fuzzy
 msgctxt "view:sale.opportunity.history:"
 msgid "History"
-msgstr "Històric"
+msgstr "Historial"
 
 msgctxt "view:sale.opportunity.history:"
 msgid "Lead/Opportunity"
@@ -756,34 +678,33 @@ msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
 msgstr "Línias Iniciatives/Oportunitats"
 
-#, fuzzy
 msgctxt "view:sale.opportunity:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "view:sale.opportunity:"
 msgid "Convert to Opportunity"
-msgstr ""
+msgstr "Converteix a oportunitat"
 
 msgctxt "view:sale.opportunity:"
 msgid "Convert to Sale"
-msgstr ""
+msgstr "Converteix a comanda"
 
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
-msgstr ""
+msgstr "Iniciativa/Oportunitat"
 
 msgctxt "view:sale.opportunity:"
 msgid "Mark as Lost"
-msgstr ""
+msgstr "Marca com a perdut"
 
 msgctxt "view:sale.opportunity:"
 msgid "Sale Lead/Opportunity"
-msgstr "Convertir a iniciativa"
+msgstr "Iniciativa/Oportunitat"
 
 msgctxt "view:sale.opportunity:"
 msgid "Sales Leads/Opportunities"
-msgstr "Convertir a iniciativa"
+msgstr "Iniciatives/Oportunitats"
 
 msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
@@ -805,12 +726,10 @@ msgctxt "view:sale.opportunity_monthly:"
 msgid "Sale Opportunities per Month"
 msgstr "Oportunitats per mes"
 
-#, fuzzy
 msgctxt "wizard_button:sale.opportunity_employee.open,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#, fuzzy
 msgctxt "wizard_button:sale.opportunity_employee.open,start,open_:"
 msgid "Open"
 msgstr "Obre"
