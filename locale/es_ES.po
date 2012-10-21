@@ -28,7 +28,7 @@ msgstr "No puede modificar el tercero de un medio de contacto."
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number!"
-msgstr "El NIF no es correcto."
+msgstr "El CIF/NIF no es correcto."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique!"
@@ -332,15 +332,15 @@ msgstr "Nombre"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "NIF"
+msgstr "CIF/NIF"
 
 msgctxt "field:party.party,vat_country:"
 msgid "VAT Country"
-msgstr "País del NIF"
+msgstr "País del CIF/NIF"
 
 msgctxt "field:party.party,vat_number:"
 msgid "VAT Number"
-msgstr "NIF"
+msgstr "CIF/NIF"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -459,7 +459,7 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Tercero"
+msgstr "Terceros"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
@@ -559,7 +559,7 @@ msgstr "Categoría"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "VAT Information Exchange System"
-msgstr "Sistema de intercambio de información VAT"
+msgstr "Sistema de intercambio de información CIF/NIF"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
@@ -567,7 +567,7 @@ msgstr "Debe tener instalada una versión reciente de \"vatnumber\"."
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr "Resultado del sistema de intercambio de información VAT"
+msgstr "Resultado del sistema de intercambio de información CIF/NIF"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
@@ -615,7 +615,7 @@ msgstr "Tercero"
 
 msgctxt "view:party.party:"
 msgid "VAT"
-msgstr "NIF"
+msgstr "CIF/NIF"
 
 msgctxt "view:party.party:"
 msgid "_General"
