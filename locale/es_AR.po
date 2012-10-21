@@ -100,7 +100,7 @@ msgstr "Usuario modificación"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "Código postal"
+msgstr "Código Postal"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -284,7 +284,7 @@ msgstr "Código de sólo lectura"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Médios de contacto"
+msgstr "Medios de contacto"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
@@ -394,12 +394,12 @@ msgstr ""
 msgctxt "help:party.party,vat_country:"
 msgid "Setting VAT country will enable validation of the VAT number."
 msgstr ""
-"Al especificar el país del NIF se habilitará la verificación de dicho "
+"Al especificar el país del CUIT se habilitará la verificación de dicho "
 "número."
 
 msgctxt "help:party.party,vat_number:"
 msgid "Value Added Tax number"
-msgstr "Número de identificación fiscal"
+msgstr "Número de Identificación Fiscal"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -491,7 +491,7 @@ msgstr "Configuración de Entidades"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "Médio de contacto"
+msgstr "Medio de contacto"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
@@ -563,7 +563,7 @@ msgstr "CUIT Sistema de Intercambio de Información"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "¡Debe tener una versión reciente de \"vatnumber\" instalada!"
+msgstr "¡Debe tener una versión reciente de «vatnumber» instalada!"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
@@ -575,11 +575,11 @@ msgstr "Configuración de Entidades"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Médio de contacto"
+msgstr "Medio de contacto"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr "Médios de contacto"
+msgstr "Medios de contacto"
 
 msgctxt "view:party.party:"
 msgid "Account"
@@ -599,7 +599,7 @@ msgstr "Categorías"
 
 msgctxt "view:party.party:"
 msgid "Contact Mechanisms"
-msgstr "Médios de contacto"
+msgstr "Medios de contacto"
 
 msgctxt "view:party.party:"
 msgid "General"
