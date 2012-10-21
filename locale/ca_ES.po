@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of an address!"
-msgstr "No pot modificar el tercer d'una adreça"
+msgstr "No pot modificar el tercer d'una adreça."
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent!"
@@ -12,7 +12,7 @@ msgstr "No pot usar \"/\" en el camp nomeni."
 
 msgctxt "error:party.category:"
 msgid "You can not create recursive categories!"
-msgstr "No pot crear categories recursives"
+msgstr "No pot crear categories recursives."
 
 msgctxt "error:party.category:"
 msgid "You can not use \" / \" in name field!"
@@ -24,11 +24,11 @@ msgstr "El servei VIES no està disponible, intenti-ho de nou més tard"
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of a contact mechanism!"
-msgstr "No pot modificar el tercer d'un contacte"
+msgstr "No pot modificar el tercer d'un contacte."
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number!"
-msgstr "El NIF no és vàlid"
+msgstr "El CIF/NIF no és vàlid"
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique!"
@@ -50,10 +50,9 @@ msgctxt "field:party.address,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
@@ -115,10 +114,9 @@ msgctxt "field:party.category,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
@@ -164,16 +162,14 @@ msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
 msgstr "Idioma del tercer"
@@ -182,10 +178,9 @@ msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Seqüència tercer"
 
-#, fuzzy
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -207,10 +202,9 @@ msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
@@ -296,10 +290,9 @@ msgctxt "field:party.party,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
@@ -339,7 +332,7 @@ msgstr "Nom"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "NIF"
+msgstr "CIF/NIF"
 
 msgctxt "field:party.party,vat_country:"
 msgid "VAT Country"
@@ -347,7 +340,7 @@ msgstr "País del NIF"
 
 msgctxt "field:party.party,vat_number:"
 msgid "VAT Number"
-msgstr "NIF"
+msgstr "CIF/NIF"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -369,10 +362,9 @@ msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
@@ -412,7 +404,6 @@ msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Adreces"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categories"
@@ -427,7 +418,7 @@ msgstr "Tercers per categoria"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuració de tercers"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -453,7 +444,6 @@ msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Adreces"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categories"
@@ -466,14 +456,13 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuració"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Gestió de tercers"
+msgstr "Tercers"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Tercers"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -487,15 +476,13 @@ msgctxt "model:party.category,name:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "model:party.check_vies.no_result,name:"
 msgid "Check VIES"
-msgstr "Comprovar VIES"
+msgstr "Comprova VIES"
 
-#, fuzzy
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
-msgstr "Comprovar VIES"
+msgstr "Comprova VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
@@ -571,7 +558,7 @@ msgstr "Categoria"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "VAT Information Exchange System"
-msgstr "Ha de tenir instal·lada una versió recent de \"vatnumber\"."
+msgstr "Sistema d'intercanvi d'informació CIF/NIF"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
@@ -579,7 +566,7 @@ msgstr "Ha de tenir instal·lada una versió recent de \"vatnumber\"."
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
-msgstr "Resultat del sistema d'intercanvi d'informació VAT"
+msgstr "Resultat del sistema d'intercanvi d'informació CIF/NIF"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
@@ -627,18 +614,16 @@ msgstr "Tercer"
 
 msgctxt "view:party.party:"
 msgid "VAT"
-msgstr "NIF"
+msgstr "CIF/NIF"
 
 msgctxt "view:party.party:"
 msgid "_General"
 msgstr "_General"
 
-#, fuzzy
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
 msgstr "Accepta"
 
-#, fuzzy
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "Ok"
 msgstr "Accepta"
