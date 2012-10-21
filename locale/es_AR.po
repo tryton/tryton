@@ -84,7 +84,7 @@ msgstr "Precio de costo por hora para este empleado"
 
 msgctxt "help:company.employee,cost_prices:"
 msgid "List of hourly cost price over time"
-msgstr "Lista de precio de costo por hora a través del tiempo"
+msgstr "Lista de precio de costo por hora a lo largo del tiempo"
 
 msgctxt "help:company.employee_cost_price,cost_price:"
 msgid "Hourly cost price"
