@@ -364,7 +364,7 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Parte de trabajo"
+msgstr "Partes de trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
