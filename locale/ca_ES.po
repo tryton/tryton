@@ -10,10 +10,9 @@ msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
@@ -55,7 +54,6 @@ msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
 msgstr "Escriptori"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
 msgstr "Escriptori"
