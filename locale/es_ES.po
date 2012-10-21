@@ -422,7 +422,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
@@ -591,6 +591,46 @@ msgstr "Fecha modificación"
 msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
+
+msgctxt "field:stock.product_quantities_warehouse,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:stock.product_quantities_warehouse,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:stock.product_quantities_warehouse,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.product_quantities_warehouse,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:stock.product_quantities_warehouse,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:stock.product_quantities_warehouse,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:stock.product_quantities_warehouse.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
 
 msgctxt "field:stock.products_by_locations.start,forecast_date:"
 msgid "At Date"
@@ -1032,16 +1072,15 @@ msgstr "Inventarios"
 
 msgctxt "model:ir.action,name:act_inventory_form_draft"
 msgid "Draft Inventories"
-msgstr "Inventario borrador"
+msgstr "Inventarios borrador"
 
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "Editar ubicaciones"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Location Quantity & Cost Value"
-msgstr "Cantidad y valor coste por ubicación"
+msgid "Locations"
+msgstr "Ubicaciones"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1067,13 +1106,17 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Períodos"
 
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "Unidades de producto por almazén"
+
 msgctxt "model:ir.action,name:act_products_by_locations"
-msgid "Products by Locations"
-msgstr "Productos por ubicación"
+msgid "Products"
+msgstr "Productos"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
 msgid "Draft Supplier Shipment"
-msgstr "Albarán proveedor borrador"
+msgstr "Albaranes proveedor borrador"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1081,11 +1124,11 @@ msgstr "Albaranes proveedor"
 
 msgctxt "model:ir.action,name:act_shipment_in_form_received"
 msgid "Received Supplier shipments"
-msgstr "Albaranes de proveedor recibidos"
+msgstr "Albaranes proveedor recibidos"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Albaranes devolución a proveedor"
+msgstr "Albaranes proveedor devolución"
 
 msgctxt "model:ir.action,name:act_shipment_internal_assigned_form"
 msgid "Assigned Internal Shipments"
@@ -1113,23 +1156,23 @@ msgstr "Albaranes cliente"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Albaranes de proveedor"
+msgstr "Albaranes proveedor"
 
 msgctxt "model:ir.action,name:act_shipment_out_form_assigned"
 msgid "Assigned Customer Shipments"
-msgstr "Albaranes a clientes reservados"
+msgstr "Albaranes clientes reservados"
 
 msgctxt "model:ir.action,name:act_shipment_out_form_ready"
 msgid "Customer Shipments Ready for Shipping"
-msgstr "Albaranes a cliente listos para ser enviados"
+msgstr "Albaranes cliente listos para envío"
 
 msgctxt "model:ir.action,name:act_shipment_out_form_waiting"
 msgid "Customer Shipments Waiting Assignation"
-msgstr "Albaranes a cliente esperando reserva"
+msgstr "Albaranes cliente esperando reserva"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Albaranes de devolución de cliente"
+msgstr "Albaranes cliente devolución"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
@@ -1145,7 +1188,7 @@ msgstr "Lista reabastecimiento"
 
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Albarán interno"
+msgstr "Albaranes internos"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
@@ -1160,8 +1203,12 @@ msgid "Restocking List"
 msgstr "Lista reabastecimiento"
 
 msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Location"
+msgid "Product by Locations"
 msgstr "Producto por ubicación"
+
+msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr "Unidades de producto por almazén"
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
@@ -1229,7 +1276,7 @@ msgstr "Inventarios"
 
 msgctxt "model:ir.ui.menu,name:menu_inventory_form_draft"
 msgid "Draft Inventories"
-msgstr "Inventarios borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
@@ -1245,15 +1292,15 @@ msgstr "Movimientos"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form_cust"
 msgid "Moves to Customers"
-msgstr "Movimientos clientes"
+msgstr "Clientes"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form_supp"
 msgid "Moves from Suppliers"
-msgstr "Movimientos proveedores"
+msgstr "Proveedores"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form_supp_proceed"
 msgid "Moves from Suppliers Waiting Arrival"
-msgstr "Proveedor esperando llegada"
+msgstr "Esperando llegada"
 
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
@@ -1265,7 +1312,7 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_draft"
 msgid "Draft Supplier Shipment"
-msgstr "Proveedor borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1273,19 +1320,19 @@ msgstr "Albaranes proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_received"
 msgid "Received Supplier shipments"
-msgstr "Proveedor recibidos"
+msgstr "Recibidos"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Proveedor devolución"
+msgstr "Devolución"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_assigned_form"
 msgid "Assigned Internal Shipments"
-msgstr "Internos reservados"
+msgstr "Reservados"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_draft_form"
 msgid "Draft Internal Shipments"
-msgstr "Internos borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1293,11 +1340,11 @@ msgstr "Albaranes internos"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_waiting_form"
 msgid "Internal Shipments Waiting Assignation"
-msgstr "Internos esperando reserva"
+msgstr "Esperando reserva"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_assigned"
 msgid "Assigned Customer Shipments"
-msgstr "Cliente reservados"
+msgstr "Reservados"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
@@ -1305,15 +1352,15 @@ msgstr "Albaranes cliente"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_ready"
 msgid "Customer Shipments Ready for Shipping"
-msgstr "Cliente listos para envío"
+msgstr "Listos para envío"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Cliente devolución"
+msgstr "Devolución"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_waiting"
 msgid "Customer Shipments Waiting Assignation"
-msgstr "Cliente esperando reserva"
+msgstr "Esperando reserva"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -1329,15 +1376,15 @@ msgstr "Producto por ubicación"
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Logística"
 
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
-msgstr "Administración de stock"
+msgstr "Administración de logística"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr "Reserva forzada de stock"
+msgstr "Forzar reserva en la logística"
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
@@ -1391,10 +1438,17 @@ msgctxt "model:stock.period,name:"
 msgid "Stock Period"
 msgstr "Período de stock"
 
-#, fuzzy
 msgctxt "model:stock.period.cache,name:"
-msgid "stock.period.cache"
-msgstr "stock.period.cache"
+msgid "Stock Period Cache"
+msgstr "Período stock precalculado"
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "Unidades de producto por almazén"
+
+msgctxt "model:stock.product_quantities_warehouse.start,name:"
+msgid "Product Quantities By Warehouse"
+msgstr "Unidades de producto por almazén"
 
 msgctxt "model:stock.products_by_locations.start,name:"
 msgid "Products by Locations"
@@ -1558,7 +1612,7 @@ msgstr "Fecha:"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
-msgstr "Notas de envío"
+msgstr "Nota de envío"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "E-Mail:"
@@ -1980,6 +2034,14 @@ msgctxt "view:stock.period:"
 msgid "Periods"
 msgstr "Períodos"
 
+msgctxt "view:stock.product_quantities_warehouse.start:"
+msgid "Product Quantities By Warehouse"
+msgstr "Unidades de producto por almazén"
+
+msgctxt "view:stock.product_quantities_warehouse:"
+msgid "Product Quantities By Warehouse"
+msgstr "Unidades de producto por almazén"
+
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
 msgstr "Productos por ubicación"
@@ -2018,7 +2080,7 @@ msgstr "Albarán devolución proveedor"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Supplier Return Shipments"
-msgstr "Albaranes devolución proveedor"
+msgstr "Albaranes proveedor devolución"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
@@ -2118,7 +2180,7 @@ msgstr "Marcar como realizado"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Set Waiting"
-msgstr "Colocar en espera"
+msgstr "Marcar como espera"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Waiting"
@@ -2142,7 +2204,7 @@ msgstr "Albarán devolución cliente"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Customer Return Shipments"
-msgstr "Albaranes devolución cliente"
+msgstr "Albaranes cliente devolución"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
@@ -2222,7 +2284,7 @@ msgstr "Marcar como realizado"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Set Waiting"
-msgstr "Colocar en espera"
+msgstr "Marcar como espera"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Unpack"
@@ -2237,6 +2299,14 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:product.by_location,start,open:"
+msgid "Open"
+msgstr "Abrir"
+
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
 msgid "Open"
 msgstr "Abrir"
 
