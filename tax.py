@@ -415,10 +415,10 @@ class TaxTemplate(ModelSQL, ModelView):
         for field in ('name', 'description', 'sequence', 'amount',
                 'percentage', 'type', 'invoice_base_sign', 'invoice_tax_sign',
                 'credit_note_base_sign', 'credit_note_tax_sign'):
-            if not tax or tax[field] != getattr(self, field):
+            if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
-            if not tax or tax[field] != getattr(self, field):
+            if not tax or getattr(tax, field) != getattr(self, field):
                 value = getattr(self, field)
                 if value:
                     res[field] = getattr(self, field).id
