@@ -24,7 +24,7 @@ msgstr "¡«Hasta la fecha» debe ser más reciente que «Desde la fecha»!"
 
 msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion!"
-msgstr "¡Previsión \"%s\" debe ser cancelada antes de la eliminación!"
+msgstr "¡Previsión «%s» debe ser cancelada antes de la eliminación!"
 
 msgctxt "error:stock.forecast:"
 msgid ""
@@ -319,7 +319,3 @@ msgstr "Completo"
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Cancelar"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,end:"
-msgid "cancel"
-msgstr "cancelar"
