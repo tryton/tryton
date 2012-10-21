@@ -42,7 +42,6 @@ msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Método para procesar el coste del transportista."
 
-#, fuzzy
 msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "Transportista"
