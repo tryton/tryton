@@ -41,10 +41,9 @@ msgctxt "field:stock.forecast,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:stock.forecast,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
@@ -74,7 +73,6 @@ msgctxt "field:stock.forecast,to_date:"
 msgid "To Date"
 msgstr "Fins a la data"
 
-#, fuzzy
 msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
 msgstr "Ubicació"
@@ -111,10 +109,9 @@ msgctxt "field:stock.forecast.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
@@ -172,10 +169,9 @@ msgctxt "field:stock.forecast.line-stock.move,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:stock.forecast.line-stock.move,id:"
 msgid "ID"
@@ -207,7 +203,7 @@ msgstr "Previsió"
 
 msgctxt "model:ir.action,name:act_forecast_form_draft"
 msgid "Draft Forecasts"
-msgstr ""
+msgstr "Previsions en esborrany"
 
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
@@ -219,7 +215,7 @@ msgstr "Previsions"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form_draft"
 msgid "Draft Forecasts"
-msgstr ""
+msgstr "Previsions en esborrany"
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
@@ -229,12 +225,10 @@ msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
 msgstr "Previsió d'existències"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Demanar previsió completa"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
 msgstr "Triar previsió completa"
@@ -307,12 +301,10 @@ msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
 msgstr "Seleccioni productes"
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
-msgstr "Complet"
+msgstr "Completa"
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -325,7 +317,6 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr "Complet"
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
