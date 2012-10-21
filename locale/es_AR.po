@@ -8,7 +8,7 @@ msgstr "¡La Probabilidad debe ser entre 0 y 100!"
 
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
-msgstr "¡Oportunidad de Venta \"%s\" debe ser cancelada antes de eliminar!"
+msgstr "¡Oportunidad de Venta «%s» debe ser cancelada antes de eliminar!"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -84,7 +84,7 @@ msgstr "Probabilidad de Conversión"
 
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity,sale:"
 msgid "Sale"
@@ -168,7 +168,7 @@ msgstr "Probabilidad de Conversión"
 
 msgctxt "field:sale.opportunity.history,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity.history,start_date:"
 msgid "Start Date"
@@ -216,7 +216,7 @@ msgstr "Cantidad"
 
 msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity.line,sale_line:"
 msgid "Sale Line"
@@ -300,7 +300,7 @@ msgstr "Número"
 
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
@@ -384,7 +384,7 @@ msgstr "Número"
 
 msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_employee_monthly,write_date:"
 msgid "Write Date"
@@ -456,7 +456,7 @@ msgstr "Número"
 
 msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_monthly,write_date:"
 msgid "Write Date"
@@ -476,7 +476,7 @@ msgstr "Año-Mes"
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount"
-msgstr "Importe de los ingresos estimados"
+msgstr "Importe estimado de ingreso"
 
 msgctxt "help:sale.opportunity,probability:"
 msgid "Percentage between 0 and 100"
