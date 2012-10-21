@@ -44,7 +44,7 @@ msgstr "Precio"
 
 msgctxt "field:carrier.weight_price_list,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
@@ -59,8 +59,8 @@ msgid "Write User"
 msgstr "Usuario modificación"
 
 msgctxt "model:carrier.weight_price_list,name:"
-msgid "carrier.weight_price_list"
-msgstr "carrier.weight_price_list"
+msgid "Carrier Weight Price List"
+msgstr "Lista de precios del Peso Transportista"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
