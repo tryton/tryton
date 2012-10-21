@@ -8,30 +8,27 @@ msgstr "Mètode del cost de transportista"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Productes del transportista"
+msgstr "Producte del transportista"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Tercers"
+msgstr "Tercer"
 
-#, fuzzy
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
@@ -46,28 +43,28 @@ msgid "Method to compute carrier cost"
 msgstr "Mètode per processar el cost del transportista."
 
 msgctxt "model:carrier,name:"
-msgid "carrier"
+msgid "Carrier"
 msgstr "Transportista"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
-msgstr ""
+msgstr "Transportistes"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier Management"
-msgstr ""
+msgstr "Transportistes"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr ""
+msgstr "Transportistes"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Oportunitats"
+msgstr "Administració transportistes"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
-msgstr "Percentatge"
+msgstr "Preu producte"
 
 msgctxt "view:carrier:"
 msgid "Carrier"
