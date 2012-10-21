@@ -320,7 +320,7 @@ msgstr "Abrir cuenta"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir plan de cuentas análiticas"
+msgstr "Abrir plan de cuentas analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
@@ -336,7 +336,7 @@ msgstr "Cuenta analítica"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir plan de cuentas análiticas"
+msgstr "Abrir plan de cuentas analíticas"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
@@ -412,7 +412,7 @@ msgstr "Información general"
 
 msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir plan de cuentas análiticas"
+msgstr "Abrir plan de cuentas analíticas"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
