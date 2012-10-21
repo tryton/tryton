@@ -314,7 +314,7 @@ msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Producto"
+msgstr "Productos"
 
 msgctxt "model:ir.ui.menu,name:menu_product_product"
 msgid "Products"
