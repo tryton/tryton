@@ -4,14 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
-msgstr ""
-"No existe ninguna cuenta de gastos/ingresos definida en la categoría %s "
-"(%d)."
+msgstr "La categoría %s (%d) no tiene ninguna cuenta de gastos/ingresos definida."
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr ""
-"No existe ninguna cuenta de gastos/ingresos definida en el producto %s (%d)."
+msgstr "El producto %s (%d) no tiene ninguna cuenta de gastos/ingresos definida."
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -47,7 +44,7 @@ msgstr "Impuestos de proveedor"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Impuestos de cliente usados"
+msgstr "Impuestos de proveedor usados"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
