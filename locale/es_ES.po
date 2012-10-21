@@ -16,7 +16,7 @@ msgstr "Precios de coste"
 
 msgctxt "field:company.employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
@@ -32,7 +32,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:company.employee_cost_price,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
@@ -64,7 +64,7 @@ msgstr "Coste"
 
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
@@ -84,7 +84,7 @@ msgstr "Precio de coste por hora para este empleado."
 
 msgctxt "help:company.employee,cost_prices:"
 msgid "List of hourly cost price over time"
-msgstr "Lista de precio de coste por hora a través del tiempo."
+msgstr "Lista de precio de coste por hora a lo largo del tiempo."
 
 msgctxt "help:company.employee_cost_price,cost_price:"
 msgid "Hourly cost price"
