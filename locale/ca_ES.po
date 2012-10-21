@@ -18,10 +18,9 @@ msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:purchase.purchase-account.invoice.line,id:"
 msgid "ID"
@@ -51,10 +50,9 @@ msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
 msgid "ID"
@@ -87,3 +85,15 @@ msgstr "Compra - Línia de factura"
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Compra - Línia de factura ignorada"
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Línies de factura"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "Dacord"
