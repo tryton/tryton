@@ -4,40 +4,32 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
 msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "L'import (%s) és superior que la quantitat a pagar de la factura"
+msgstr "L'import (%s) és més gran que l'import a pagar de la factura."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value!"
-msgstr "Indiqui els comptes deu i haver-hi en un diari d'extracte."
+msgstr "L'import ha de ser un valor positiu o negatiu."
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
-msgstr ""
-"Els compte deure o haver del diari és el mateix que el compte de la línia "
-"d'extracte."
+msgid "Credit or debit account on journal is the same than the statement line account!"
+msgstr "El compte deure o haver del diari és el mateix que el de la línia d'extracte."
 
 msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal."
-msgstr ""
-"Si us plau, indiqui els comptes deure i haver en el llibre d'estat de "
-"comptes."
+msgstr "Heu d'indicar els comptes deure i haver en un diari d'extracte."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be %s!"
-msgstr "El balanç final ha de ser %s"
+msgstr "El saldo final ha de ser %s."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr "Ha de cancel·lar l'extracte \"%s\" abans d'eliminar-ho."
+msgstr "Heu de cancel·lar l'extracte \"%s\" abans d'eliminar-lo."
 
-#, fuzzy
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
-msgstr "Balanç"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -46,14 +38,13 @@ msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimals de la divisa"
+msgstr "Dígits de la moneda"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -61,7 +52,7 @@ msgstr "Data"
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr "Balanç final"
+msgstr "Saldo final"
 
 msgctxt "field:account.statement,id:"
 msgid "ID"
@@ -77,7 +68,7 @@ msgstr "Transaccions"
 
 msgctxt "field:account.statement,move_lines:"
 msgid "Move Lines"
-msgstr "Línies d'assentament"
+msgstr "Apunts"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -85,7 +76,7 @@ msgstr "Nom"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
-msgstr "Balanç inicial"
+msgstr "Saldo inicial"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
@@ -107,14 +98,13 @@ msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
@@ -146,16 +136,15 @@ msgstr "Compte"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
-msgstr "Quantitat"
+msgstr "Import"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -187,7 +176,7 @@ msgstr "Nom"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr "Extracte de comptes"
+msgstr "Extracte"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -199,71 +188,71 @@ msgstr "Usuari modificació"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr "Extracte de comptes"
+msgstr "Extracte"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
-msgstr "Extracte de comptes"
+msgstr "Extracte bancari"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
-msgstr "Diari d'estats de compte"
+msgstr "Diari d'extracte"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
-msgstr "Línia d'estat de compte"
+msgstr "Línia d'extracte bancari"
 
 msgctxt "model:ir.action,name:act_draft_statement_form"
 msgid "Draft Statements"
-msgstr "Estats de compte en esborrany"
+msgstr "Extractes esborrany"
 
 msgctxt "model:ir.action,name:act_posted_statement_form"
 msgid "Posted Statements"
-msgstr "Estats de compte confirmats"
+msgstr "Extractes confirmats"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "All Statement"
-msgstr "Tots els estats de compte"
+msgstr "Tots els extractes"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Llibres d'estats de compte"
+msgstr "Diaris d'extracte"
 
 msgctxt "model:ir.action,name:act_validated_statement_form"
 msgid "Validated Statement"
-msgstr "Estats de compte validats"
+msgstr "Extractes validats"
 
 msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
 msgid "Draft Statements"
-msgstr "Estats de compte en esborrany"
+msgstr "Extractes esborrany"
 
 msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
 msgid "Posted Statements"
-msgstr "Estats de compte confirmats"
+msgstr "Extractes confirmats"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Estats de compte"
+msgstr "Extractes"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "All Statement"
-msgstr "Tots els estats de compte"
+msgstr "Tots els extractes"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Diaris d'estats de compte"
+msgstr "Diaris d'extracte"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Estats de compte"
+msgstr "Extractes"
 
 msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
 msgid "Validated Statement"
-msgstr "Estats de compte validats"
+msgstr "Extractes validats"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Estat de compte"
+msgstr "Extracte"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
@@ -283,50 +272,28 @@ msgstr "Validat"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
-msgstr "Llibre d'estats de compte"
+msgstr "Diari d'extracte"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
-msgstr "Llibres d'estats de compte"
+msgstr "Diaris d'extracte"
 
-#, fuzzy
 msgctxt "view:account.statement.line:"
 msgid "Amount"
-msgstr "Quantitat"
-
-msgctxt "view:account.statement.line:"
-msgid "Bank Statement Line"
-msgstr "Línia d'extracte bancari"
+msgstr "Import"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
-msgstr "Linea d'estat de compte"
+msgstr "Línia extracte"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
-msgstr "Línies d'estat de compte"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement"
-msgstr "Extracte bancari"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement Lines"
-msgstr "Línies d'extracte bancari"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statements"
-msgstr "Extractes bancaris"
+msgstr "Línies extracte"
 
 msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-msgctxt "view:account.statement:"
-msgid "Move Lines"
-msgstr "Apunts"
-
-#, fuzzy
 msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Informació addicional"
@@ -337,20 +304,20 @@ msgstr "Confirma"
 
 msgctxt "view:account.statement:"
 msgid "Reset to Draft"
-msgstr "Restablir a esborrany"
+msgstr "Restableix a esborrany"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
-msgstr "Estat de compte"
+msgstr "Extracte"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Línies d'estat de compte"
+msgstr "Línies extracte"
 
 msgctxt "view:account.statement:"
 msgid "Statements"
-msgstr "Estats de compte"
+msgstr "Extractes"
 
 msgctxt "view:account.statement:"
 msgid "Validate"
-msgstr "Validar"
+msgstr "Valida"
