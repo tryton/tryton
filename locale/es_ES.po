@@ -5476,7 +5476,7 @@ msgstr "Galicia"
 
 msgctxt "model:country.subdivision,name:es ib"
 msgid "Illes Balears"
-msgstr "Illes Balears"
+msgstr "Islas Baleares"
 
 msgctxt "model:country.subdivision,name:es lo"
 msgid "La Rioja"
