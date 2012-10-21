@@ -224,12 +224,10 @@ msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
 msgstr "Previsión de stock"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
 msgstr "Previsión completa"
 
-#, fuzzy
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
 msgstr "Elegir previsión completa"
@@ -318,7 +316,6 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr "Completa"
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Cancelar"
