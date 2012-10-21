@@ -480,7 +480,7 @@ msgstr "Producción"
 
 msgctxt "model:ir.ui.menu,name:menu_production_assigned"
 msgid "Assigned Productions"
-msgstr "Producciones reservadas"
+msgstr "Reservadas"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
@@ -488,7 +488,7 @@ msgstr "Configuración producción"
 
 msgctxt "model:ir.ui.menu,name:menu_production_draft"
 msgid "Draft Productions"
-msgstr "Producciones borrador"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
@@ -496,15 +496,15 @@ msgstr "Producciones"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request"
 msgid "Request Productions"
-msgstr "Producciones solicitadas"
+msgstr "Solicitadas"
 
 msgctxt "model:ir.ui.menu,name:menu_production_running"
 msgid "Running Productions"
-msgstr "Producciones en ejecución"
+msgstr "En ejecución"
 
 msgctxt "model:ir.ui.menu,name:menu_production_waiting"
 msgid "Waiting Productions"
-msgstr "Producciones en espera"
+msgstr "En espera"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
@@ -535,12 +535,12 @@ msgid "BOM Tree"
 msgstr "Árbol LdM"
 
 msgctxt "model:production.bom.tree.open.start,name:"
-msgid "production.bom.tree.open.start"
-msgstr "producción.ldm.árbol.abrir.inicio"
+msgid "Open BOM Tree"
+msgstr "Abrir arbol BOM"
 
 msgctxt "model:production.bom.tree.open.tree,name:"
-msgid "production.bom.tree.open.tree"
-msgstr "producción.ldm.árbol.abrir.árbol"
+msgid "Open BOM Tree"
+msgstr "Abrir arbol BOM"
 
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
