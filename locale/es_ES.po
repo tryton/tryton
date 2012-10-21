@@ -11,20 +11,16 @@ msgid "Amount should be a positive or negative value!"
 msgstr "El importe debe ser un valor positivo o negativo."
 
 msgctxt "error:account.statement.line:"
-msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
-msgstr ""
-"La cuenta debe o haber en el diario es la misma que la de la línea de "
-"extracto."
+msgid "Credit or debit account on journal is the same than the statement line account!"
+msgstr "La cuenta debe o haber en el diario es la misma que la de la línea de extracto."
 
 msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal."
-msgstr "Indique las cuentas debe y haber en un diario de extracto."
+msgstr "Debe indicar las cuentas debe y haber en un diario de extracto."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be %s!"
-msgstr "El balance final debe ser %s."
+msgstr "El saldo final debe ser %s."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion!"
@@ -32,7 +28,7 @@ msgstr "Debe cancelar el extracto \"%s\" antes de eliminarlo."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
-msgstr "Balance"
+msgstr "Saldo"
 
 msgctxt "field:account.statement,company:"
 msgid "Company"
@@ -48,7 +44,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -56,7 +52,7 @@ msgstr "Fecha"
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr "Balance final"
+msgstr "Saldo final"
 
 msgctxt "field:account.statement,id:"
 msgid "ID"
@@ -80,7 +76,7 @@ msgstr "Nombre"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
-msgstr "Balance inicial"
+msgstr "Saldo inicial"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
@@ -108,7 +104,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
