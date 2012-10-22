@@ -318,7 +318,3 @@ msgstr ""
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr ""
-
-msgctxt "wizard_button:stock.forecast.complete,choose,end:"
-msgid "cancel"
-msgstr ""

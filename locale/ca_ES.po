@@ -320,7 +320,3 @@ msgstr "Complet"
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
-
-msgctxt "wizard_button:stock.forecast.complete,choose,end:"
-msgid "cancel"
-msgstr "cancel·lar"
