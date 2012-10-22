@@ -607,6 +607,10 @@ msgid "BOM Inputs"
 msgstr "Entradas LdM"
 
 msgctxt "view:production.bom.output:"
+msgid "BOM Outputs"
+msgstr ""
+
+msgctxt "view:production.bom.output:"
 msgid "Inputs"
 msgstr "Salidas LdM"
 

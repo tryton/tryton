@@ -74,9 +74,10 @@ msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
 msgstr "Записано от"
 
+#, fuzzy
 msgctxt "field:production,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "Спецификация"
 
 msgctxt "field:production,code:"
 msgid "Code"
@@ -338,9 +339,10 @@ msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
 msgstr "Мерни единици"
 
+#, fuzzy
 msgctxt "field:production.bom.tree.open.start,bom:"
 msgid "BOM"
-msgstr ""
+msgstr "Спецификация"
 
 msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
