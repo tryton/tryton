@@ -248,9 +248,10 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Disponibilidad en los registros de tiempos"
 
+#, fuzzy
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid ""
-msgstr ""
+msgstr "Punto de Orden"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
