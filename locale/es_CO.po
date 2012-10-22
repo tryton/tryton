@@ -307,8 +307,9 @@ msgctxt "model:res.user,name:user_generate_shipment_internal"
 msgid "Cron Intenal Shipment"
 msgstr "Cron Envío Interno"
 
+#, fuzzy
 msgctxt "model:stock.order_point,name:"
-msgid ""
+msgid "Order Point"
 msgstr "Punto de Orden"
 
 msgctxt "selection:purchase.request,origin:"
