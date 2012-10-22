@@ -621,6 +621,50 @@ msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:stock.product_quantities_warehouse,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:stock.product_quantities_warehouse,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "Vervaldatum"
+
+msgctxt "field:stock.product_quantities_warehouse,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+msgctxt "field:stock.product_quantities_warehouse,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:stock.product_quantities_warehouse,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:stock.product_quantities_warehouse.start,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
 msgctxt "field:stock.products_by_locations.start,forecast_date:"
 msgid "At Date"
 msgstr ""
@@ -1103,7 +1147,7 @@ msgid "Locations"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Location Quantity & Cost Value"
+msgid "Locations"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_location_tree"
@@ -1132,9 +1176,14 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Perioden"
 
-msgctxt "model:ir.action,name:act_products_by_locations"
-msgid "Products by Locations"
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_products_by_locations"
+msgid "Products"
+msgstr "Producten"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
 msgid "Draft Supplier Shipment"
@@ -1225,7 +1274,11 @@ msgid "Restocking List"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Location"
+msgid "Product by Locations"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
@@ -1465,7 +1518,15 @@ msgid "Stock Period"
 msgstr ""
 
 msgctxt "model:stock.period.cache,name:"
-msgid "stock.period.cache"
+msgid "Stock Period Cache"
+msgstr ""
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+msgctxt "model:stock.product_quantities_warehouse.start,name:"
+msgid "Product Quantities By Warehouse"
 msgstr ""
 
 msgctxt "model:stock.products_by_locations.start,name:"
@@ -2098,6 +2159,14 @@ msgctxt "view:stock.period:"
 msgid "Periods"
 msgstr "Perioden"
 
+msgctxt "view:stock.product_quantities_warehouse.start:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+msgctxt "view:stock.product_quantities_warehouse:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
 msgstr ""
@@ -2349,6 +2418,16 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "wizard_button:product.by_location,start,open:"
+msgid "Open"
+msgstr "Open"
+
+#, fuzzy
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
 msgid "Open"
 msgstr "Open"
 

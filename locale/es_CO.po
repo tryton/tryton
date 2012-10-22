@@ -1442,8 +1442,9 @@ msgctxt "model:stock.period,name:"
 msgid "Stock Period"
 msgstr "Período de Stock"
 
+#, fuzzy
 msgctxt "model:stock.period.cache,name:"
-msgid ""
+msgid "Stock Period Cache"
 msgstr "Caché de período de stock"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"

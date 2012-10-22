@@ -594,6 +594,56 @@ msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,create_date:"
+msgid "Create Date"
+msgstr "Fecha de Creación"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "Fecha"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,rec_name:"
+msgid "Name"
+msgstr "Nombre del campo"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+msgid "Warehouse"
+msgstr "Depósito"
+
 msgctxt "field:stock.products_by_locations.start,forecast_date:"
 msgid "At Date"
 msgstr "En la fecha"
@@ -1041,8 +1091,9 @@ msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "Editar ubicaciones"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Location Quantity & Cost Value"
+msgid "Locations"
 msgstr "Existencias de producto"
 
 msgctxt "model:ir.action,name:act_location_tree"
@@ -1069,8 +1120,13 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Períodos"
 
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_products_by_locations"
-msgid "Products by Locations"
+msgid "Products"
 msgstr "Productos por Ubicaciones"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
@@ -1161,9 +1217,14 @@ msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
 msgstr "Lista de renovación de inventario"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Location"
+msgid "Product by Locations"
 msgstr "Producto por Ubicación"
+
+msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
@@ -1393,9 +1454,18 @@ msgctxt "model:stock.period,name:"
 msgid "Stock Period"
 msgstr "Período de stock"
 
+#, fuzzy
 msgctxt "model:stock.period.cache,name:"
-msgid "stock.period.cache"
+msgid "Stock Period Cache"
 msgstr "Caché de período de stock"
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+msgctxt "model:stock.product_quantities_warehouse.start,name:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
 
 msgctxt "model:stock.products_by_locations.start,name:"
 msgid "Products by Locations"
@@ -1981,6 +2051,14 @@ msgctxt "view:stock.period:"
 msgid "Periods"
 msgstr "Períodos"
 
+msgctxt "view:stock.product_quantities_warehouse.start:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+msgctxt "view:stock.product_quantities_warehouse:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
 msgstr "Productos por Ubicaciones"
@@ -2238,6 +2316,16 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:product.by_location,start,open:"
+msgid "Open"
+msgstr "Abrir"
+
+#, fuzzy
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
 msgid "Open"
 msgstr "Abrir"
 

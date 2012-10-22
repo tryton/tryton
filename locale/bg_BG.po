@@ -597,6 +597,56 @@ msgctxt "field:stock.period.cache,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,rec_name:"
+msgid "Name"
+msgstr "Име на прикачен файл"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.start,warehouse:"
+msgid "Warehouse"
+msgstr "Склад"
+
 msgctxt "field:stock.products_by_locations.start,forecast_date:"
 msgid "At Date"
 msgstr "На дата"
@@ -1045,8 +1095,9 @@ msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "Местонахождения"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Location Quantity & Cost Value"
+msgid "Locations"
 msgstr "Количество в местонахождение & себестойност"
 
 msgctxt "model:ir.action,name:act_location_tree"
@@ -1073,8 +1124,13 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Периоди"
 
+msgctxt "model:ir.action,name:act_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_products_by_locations"
-msgid "Products by Locations"
+msgid "Products"
 msgstr "Продукти по местонахождения"
 
 msgctxt "model:ir.action,name:act_shipment_in_draft"
@@ -1165,9 +1221,14 @@ msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
 msgstr "Списък за увеличаване наличност на продукт"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_product_by_location"
-msgid "Product by Location"
+msgid "Product by Locations"
 msgstr "Продукт по местонахождение"
+
+msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
+msgid "Product Quantities By Warehouse"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
@@ -1398,7 +1459,15 @@ msgid "Stock Period"
 msgstr "Период на наличност"
 
 msgctxt "model:stock.period.cache,name:"
-msgid "stock.period.cache"
+msgid "Stock Period Cache"
+msgstr ""
+
+msgctxt "model:stock.product_quantities_warehouse,name:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+msgctxt "model:stock.product_quantities_warehouse.start,name:"
+msgid "Product Quantities By Warehouse"
 msgstr ""
 
 msgctxt "model:stock.products_by_locations.start,name:"
@@ -1961,6 +2030,14 @@ msgctxt "view:stock.period:"
 msgid "Periods"
 msgstr "Периоди"
 
+msgctxt "view:stock.product_quantities_warehouse.start:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
+msgctxt "view:stock.product_quantities_warehouse:"
+msgid "Product Quantities By Warehouse"
+msgstr ""
+
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
 msgstr "Продукти по местонахождения"
@@ -2186,6 +2263,16 @@ msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:product.by_location,start,open:"
+msgid "Open"
+msgstr "Отваряне"
+
+#, fuzzy
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+#, fuzzy
+msgctxt "wizard_button:stock.product_quantities_warehouse,start,open_:"
 msgid "Open"
 msgstr "Отваряне"
 
