@@ -85,3 +85,18 @@ msgstr "Compra - Línea de factura"
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Compra - Línea de factura ignorada"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "Aceptar"

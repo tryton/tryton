@@ -90,3 +90,18 @@ msgstr ""
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Factuurregels"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "Oké"

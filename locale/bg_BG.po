@@ -85,3 +85,18 @@ msgstr "Покупка - Ред от фактура"
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Покупка - Игнорирани редове от фактура"
+
+#, fuzzy
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr "Редове от фактура"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr "Отказване"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr "Добре"

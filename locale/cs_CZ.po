@@ -85,3 +85,15 @@ msgstr ""
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr ""
+
+msgctxt "view:account.invoice.line:"
+msgid "Invoice Lines"
+msgstr ""
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
+msgid "Ok"
+msgstr ""
