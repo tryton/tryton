@@ -42,9 +42,10 @@ msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Метод за излисляване на разходи за превоз"
 
+#, fuzzy
 msgctxt "model:carrier,name:"
-msgid "carrier"
-msgstr ""
+msgid "Carrier"
+msgstr "Превозвач"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"

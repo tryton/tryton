@@ -45,7 +45,7 @@ msgid "Method to compute carrier cost"
 msgstr ""
 
 msgctxt "model:carrier,name:"
-msgid "carrier"
+msgid "Carrier"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_carrier_form"
