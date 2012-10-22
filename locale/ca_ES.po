@@ -46,8 +46,9 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Organització de l'escriptori"
 
+#, fuzzy
 msgctxt "model:dashboard.action,name:"
-msgid "dashboard.action"
+msgid "Dashboard Action"
 msgstr "dashboard.action"
 
 msgctxt "model:ir.action,name:act_dashboard"
