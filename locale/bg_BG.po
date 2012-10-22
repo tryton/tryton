@@ -58,9 +58,10 @@ msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+#, fuzzy
 msgctxt "model:carrier.weight_price_list,name:"
-msgid "carrier.weight_price_list"
-msgstr ""
+msgid "Carrier Weight Price List"
+msgstr "Ценови лист на карго тегло"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"

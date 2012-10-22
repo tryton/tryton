@@ -59,7 +59,7 @@ msgid "Write User"
 msgstr ""
 
 msgctxt "model:carrier.weight_price_list,name:"
-msgid "carrier.weight_price_list"
+msgid "Carrier Weight Price List"
 msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
