@@ -993,9 +993,10 @@ msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
 msgstr "IVA:"
 
+#, fuzzy
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
-msgstr ""
+msgstr "Servidor"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
@@ -1097,9 +1098,10 @@ msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Pressupost"
 
+#, fuzzy
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid ""
-msgstr ""
+msgstr "Servidor"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
