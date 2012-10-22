@@ -12,9 +12,10 @@ msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
 msgstr "Fecha"
 
+#, fuzzy
 msgctxt "field:stock.inventory.create.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.inventory.create.start,locations:"
@@ -44,9 +45,10 @@ msgctxt "view:stock.inventory.create.start:"
 msgid "Create Inventories"
 msgstr "Crear Inventarios"
 
+#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,end:"
