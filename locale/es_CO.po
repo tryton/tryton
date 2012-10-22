@@ -150,8 +150,9 @@ msgctxt "field:res.user,company:"
 msgid "Current Company"
 msgstr "Compañia actual"
 
+#, fuzzy
 msgctxt "field:res.user,employee:"
-msgid "Employee"
+msgid "Current Employee"
 msgstr "Empleado"
 
 msgctxt "field:res.user,employees:"
@@ -230,8 +231,9 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Carta"
 
+#, fuzzy
 msgctxt "model:ir.cron-company.company,name:"
-msgid "ir.cron-company.company"
+msgid "Cron - Company"
 msgstr "ir.cron-company.company"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"

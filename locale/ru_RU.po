@@ -150,8 +150,9 @@ msgctxt "field:res.user,company:"
 msgid "Current Company"
 msgstr "Текущая организация"
 
+#, fuzzy
 msgctxt "field:res.user,employee:"
-msgid "Employee"
+msgid "Current Employee"
 msgstr "Сотрудник"
 
 #, fuzzy
@@ -235,8 +236,9 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Письмо"
 
+#, fuzzy
 msgctxt "model:ir.cron-company.company,name:"
-msgid "ir.cron-company.company"
+msgid "Cron - Company"
 msgstr "Планировщик"
 
 #, fuzzy
