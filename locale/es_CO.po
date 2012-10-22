@@ -46,8 +46,9 @@ msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+#, fuzzy
 msgctxt "model:stock.product.location,name:"
-msgid ""
+msgid "Product Location"
 msgstr "Locación de Producto"
 
 msgctxt "view:product.product:"
