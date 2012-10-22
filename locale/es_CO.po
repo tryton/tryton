@@ -2310,8 +2310,9 @@ msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
 msgstr "Cuenta - Impuesto"
 
+#, fuzzy
 msgctxt "model:account.account.deferral,name:"
-msgid ""
+msgid "Account Deferral"
 msgstr "Cuenta de Diferido"
 
 msgctxt "model:account.account.template,name:"
@@ -2585,8 +2586,9 @@ msgctxt "model:account.print_trial_balance.start,name:"
 msgid "Print Trial Balance"
 msgstr "Imprimir balance de sumas y saldos"
 
+#, fuzzy
 msgctxt "model:account.tax,name:"
-msgid ""
+msgid "Account Tax"
 msgstr "Cuenta de impuesto"
 
 msgctxt "model:account.tax.code,name:"
@@ -2877,8 +2879,9 @@ msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
 msgstr "Imprimir libro diario"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr "Imprimir libro mayor"
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
@@ -3042,8 +3045,9 @@ msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
 msgstr "Imprimir libro diario"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr "Imprimir libro mayor"
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
@@ -3370,6 +3374,11 @@ msgctxt "odt:account.trial_balance:"
 msgid "Debit"
 msgstr "Debe"
 
+#, fuzzy
+msgctxt "odt:account.trial_balance:"
+msgid "End Balance"
+msgstr "Balance Final"
+
 msgctxt "odt:account.trial_balance:"
 msgid "From Period:"
 msgstr "Desde período:"
@@ -3377,6 +3386,11 @@ msgstr "Desde período:"
 msgctxt "odt:account.trial_balance:"
 msgid "Print Date:"
 msgstr "Fecha de impresión:"
+
+#, fuzzy
+msgctxt "odt:account.trial_balance:"
+msgid "Start Balance"
+msgstr "Balance Inicial"
 
 msgctxt "odt:account.trial_balance:"
 msgid "To Period:"

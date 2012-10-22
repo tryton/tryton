@@ -178,6 +178,10 @@ msgctxt "error:account.move:"
 msgid "You can not set a posted move to draft in this journal!"
 msgstr "Не може да прехвърлите публикувано движение в проект за този дневник!"
 
+msgctxt "error:account.move:"
+msgid "You can not set to draft a move from a closed period"
+msgstr ""
+
 msgctxt "error:account.open_aged_balance:"
 msgid "Warning"
 msgstr "Предупреждение"
@@ -1043,6 +1047,11 @@ msgctxt "field:account.move,date:"
 msgid "Effective Date"
 msgstr "Ефективна дата"
 
+#, fuzzy
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "Описание"
+
 msgctxt "field:account.move,id:"
 msgid "ID"
 msgstr "ID"
@@ -1055,6 +1064,16 @@ msgctxt "field:account.move,lines:"
 msgid "Lines"
 msgstr "Редове"
 
+#, fuzzy
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr "Номер"
+
+#, fuzzy
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr "Източник"
+
 msgctxt "field:account.move,period:"
 msgid "Period"
 msgstr "Период"
@@ -1062,6 +1081,10 @@ msgstr "Период"
 msgctxt "field:account.move,post_date:"
 msgid "Post Date"
 msgstr "Дата на публикуване"
+
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr ""
 
 msgctxt "field:account.move,rec_name:"
 msgid "Name"
@@ -1111,6 +1134,11 @@ msgctxt "field:account.move.line,debit:"
 msgid "Debit"
 msgstr "Дебит"
 
+#, fuzzy
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "Описание"
+
 msgctxt "field:account.move.line,id:"
 msgid "ID"
 msgstr "ID"
@@ -1130,6 +1158,11 @@ msgstr "Движение"
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "Състояние на движение"
+
+#, fuzzy
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr "Източник"
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
@@ -2143,6 +2176,10 @@ msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
 msgstr "За подреждане на вида на сметка"
 
+msgctxt "help:account.move,post_number:"
+msgid "Also known as Folio Number"
+msgstr ""
+
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
 msgstr "Сумата изразена във втора валута"
@@ -2613,6 +2650,11 @@ msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
 msgstr "Сметки"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_account_list2"
+msgid "Accounts"
+msgstr "Сметки"
+
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
 msgstr "Шаблони на сметка"
@@ -2693,6 +2735,14 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Редове от движение на сметка"
 
+msgctxt "model:ir.action,name:act_move_line_payable"
+msgid "Payable Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_line_receivable"
+msgid "Receivable Lines"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr "Отваряне на сметка на движение"
@@ -2712,6 +2762,10 @@ msgstr "Отваряне на Съгласуване на редове"
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Отваряне код на данък"
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_period_close"
 msgid "Close Periods"
@@ -2825,8 +2879,9 @@ msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
 msgstr "Отпечатване на основен дневник"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr "Отпечатване на основен дневник"
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
@@ -2990,8 +3045,9 @@ msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
 msgstr "Отпечатване на основен дневник"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr "Отпечатване на основен дневник"
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
@@ -3318,6 +3374,11 @@ msgctxt "odt:account.trial_balance:"
 msgid "Debit"
 msgstr "Дебит"
 
+#, fuzzy
+msgctxt "odt:account.trial_balance:"
+msgid "End Balance"
+msgstr "Краен баланс"
+
 msgctxt "odt:account.trial_balance:"
 msgid "From Period:"
 msgstr "От период:"
@@ -3325,6 +3386,11 @@ msgstr "От период:"
 msgctxt "odt:account.trial_balance:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
+
+#, fuzzy
+msgctxt "odt:account.trial_balance:"
+msgid "Start Balance"
+msgstr "Начален баланс"
 
 msgctxt "odt:account.trial_balance:"
 msgid "To Period:"
@@ -3725,6 +3791,11 @@ msgstr "Обща информация"
 msgctxt "view:account.move.line:"
 msgid "Optional Information"
 msgstr "Незадължителна информация"
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Other Info"
+msgstr "Друга информация"
 
 msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"

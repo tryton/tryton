@@ -1303,10 +1303,6 @@ msgctxt "field:account.move,lines:"
 msgid "Lines"
 msgstr "Lignes"
 
-msgctxt "field:account.move,name:"
-msgid "Name"
-msgstr "Nom"
-
 msgctxt "field:account.move,number:"
 msgid "Number"
 msgstr "Numéro"
@@ -1331,10 +1327,6 @@ msgctxt "field:account.move,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:account.move,reference:"
-msgid "Reference"
-msgstr "Référence"
-
 msgctxt "field:account.move,state:"
 msgid "State"
 msgstr "État"
@@ -1350,10 +1342,6 @@ msgstr "Mis à jour par"
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr "Compte"
-
-msgctxt "field:account.move.line,active:"
-msgid "Active"
-msgstr "Actif"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
@@ -1407,10 +1395,6 @@ msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "État du mouvement"
 
-msgctxt "field:account.move.line,name:"
-msgid "Name"
-msgstr "Nom"
-
 msgctxt "field:account.move.line,origin:"
 msgid "Origin"
 msgstr "Origine"
@@ -1430,10 +1414,6 @@ msgstr "Nom"
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "Réconciliation"
-
-msgctxt "field:account.move.line,reference:"
-msgid "Reference"
-msgstr "Référence"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
@@ -1558,10 +1538,6 @@ msgstr "Type"
 msgctxt "field:account.open_aged_balance.start,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:account.open_aged_balance.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Année fiscale"
 
 msgctxt "field:account.open_aged_balance.start,id:"
 msgid "ID"
@@ -2437,10 +2413,6 @@ msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number"
 msgstr "Aussi connu comme numéro de folio"
 
-msgctxt "help:account.move,reference:"
-msgid "Also known as Folio Number"
-msgstr "Aussi connu comme numéro de folio"
-
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
 msgstr "Le montant exprimé dans la devise secondaire"
@@ -3139,8 +3111,9 @@ msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
 msgstr "Imprimer le journal général"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr "Imprimer Imprimer le grand livre"
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
@@ -3304,8 +3277,9 @@ msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
 msgstr "Imprimer le journal général"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr "Imprimer le grand livre"
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"

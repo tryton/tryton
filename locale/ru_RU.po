@@ -164,6 +164,10 @@ msgctxt "error:account.move:"
 msgid "You can not set a posted move to draft in this journal!"
 msgstr ""
 
+msgctxt "error:account.move:"
+msgid "You can not set to draft a move from a closed period"
+msgstr ""
+
 #, fuzzy
 msgctxt "error:account.open_aged_balance:"
 msgid "Warning"
@@ -1088,6 +1092,11 @@ msgctxt "field:account.move,date:"
 msgid "Effective Date"
 msgstr "Учетная дата"
 
+#, fuzzy
+msgctxt "field:account.move,description:"
+msgid "Description"
+msgstr "Описание"
+
 msgctxt "field:account.move,id:"
 msgid "ID"
 msgstr ""
@@ -1101,10 +1110,13 @@ msgctxt "field:account.move,lines:"
 msgid "Lines"
 msgstr "Строки"
 
-#, fuzzy
-msgctxt "field:account.move,name:"
-msgid "Name"
-msgstr "Наименование"
+msgctxt "field:account.move,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:account.move,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:account.move,period:"
 msgid "Period"
@@ -1114,15 +1126,14 @@ msgctxt "field:account.move,post_date:"
 msgid "Post Date"
 msgstr ""
 
+msgctxt "field:account.move,post_number:"
+msgid "Post Number"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.move,rec_name:"
 msgid "Name"
 msgstr "Наименование"
-
-#, fuzzy
-msgctxt "field:account.move,reference:"
-msgid "Reference"
-msgstr "Ссылка"
 
 #, fuzzy
 msgctxt "field:account.move,state:"
@@ -1140,11 +1151,6 @@ msgstr ""
 msgctxt "field:account.move.line,account:"
 msgid "Account"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.move.line,active:"
-msgid "Active"
-msgstr "Действительный"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
@@ -1175,6 +1181,11 @@ msgctxt "field:account.move.line,debit:"
 msgid "Debit"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.move.line,description:"
+msgid "Description"
+msgstr "Описание"
+
 msgctxt "field:account.move.line,id:"
 msgid "ID"
 msgstr ""
@@ -1196,10 +1207,9 @@ msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.move.line,name:"
-msgid "Name"
-msgstr "Наименование"
+msgctxt "field:account.move.line,origin:"
+msgid "Origin"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.move.line,party:"
@@ -1218,11 +1228,6 @@ msgstr "Наименование"
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.move.line,reference:"
-msgid "Reference"
-msgstr "Ссылка"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
@@ -1355,10 +1360,6 @@ msgstr "Тип"
 msgctxt "field:account.open_aged_balance.start,company:"
 msgid "Company"
 msgstr "Учет.орг."
-
-msgctxt "field:account.open_aged_balance.start,fiscalyear:"
-msgid "Fiscal Year"
-msgstr ""
 
 msgctxt "field:account.open_aged_balance.start,id:"
 msgid "ID"
@@ -2289,7 +2290,7 @@ msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
 msgstr ""
 
-msgctxt "help:account.move,reference:"
+msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number"
 msgstr ""
 
@@ -2759,6 +2760,10 @@ msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_account_list2"
+msgid "Accounts"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
 msgstr ""
@@ -2839,6 +2844,14 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_move_line_payable"
+msgid "Payable Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_line_receivable"
+msgid "Receivable Lines"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
 msgstr ""
@@ -2857,6 +2870,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_period_close"
@@ -2972,7 +2989,7 @@ msgid "Print General Journal"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_print_trial_balance"
@@ -3138,7 +3155,7 @@ msgid "Print General Journal"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
-msgid "Print General Ledger"
+msgid "Print General Legder"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_print_trial_balance"
@@ -3479,11 +3496,19 @@ msgid "Debit"
 msgstr ""
 
 msgctxt "odt:account.trial_balance:"
+msgid "End Balance"
+msgstr ""
+
+msgctxt "odt:account.trial_balance:"
 msgid "From Period:"
 msgstr ""
 
 msgctxt "odt:account.trial_balance:"
 msgid "Print Date:"
+msgstr ""
+
+msgctxt "odt:account.trial_balance:"
+msgid "Start Balance"
 msgstr ""
 
 msgctxt "odt:account.trial_balance:"
@@ -3906,6 +3931,10 @@ msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Optional Information"
+msgstr ""
+
+msgctxt "view:account.move.line:"
+msgid "Other Info"
 msgstr ""
 
 msgctxt "view:account.move.open_journal.ask:"
