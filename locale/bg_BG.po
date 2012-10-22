@@ -4,52 +4,57 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
-msgstr "Période d'approvisionnement"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:production.create_request.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "help:production.configuration,supply_period:"
 msgid "In number of days"
-msgstr "En nombre de jours"
+msgstr "В брой дни"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
-msgstr "Créer des demandes de production"
+msgstr ""
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
-msgstr "Générer les demandes de production"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
-msgstr "Créer des demandes de production"
+msgstr ""
 
 msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
-msgstr "Créer des demandes de production"
+msgstr ""
 
 msgctxt "model:res.user,name:user_generate_request"
 msgid "Cron Production Request"
-msgstr "Cron demandes de productions"
+msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
-msgstr "Production"
+msgstr "Управление на производство"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Request"
-msgstr "Créer des demandes de production"
+msgstr ""
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Request?"
-msgstr "Créer des demandes de production ?"
+msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
-msgstr "Créer"
+msgstr "Създаване"
 
+#, fuzzy
 msgctxt "wizard_button:production.create_request,start,end:"
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Отказване"
