@@ -36,9 +36,10 @@ msgctxt "field:product.template,weight_digits:"
 msgid "Weight Digits"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight Uom"
-msgstr ""
+msgstr "UdM de Peso"
 
 #, fuzzy
 msgctxt "field:product.template,width:"
