@@ -170,11 +170,13 @@ msgctxt "model:account.account.template,name:account_template_stock_customer"
 msgid "Stock Customer"
 msgstr "Estoc client"
 
-msgctxt "model:account.account.template,name:account_template_stock_lost_found"
+msgctxt ""
+"model:account.account.template,name:account_template_stock_lost_found"
 msgid "Stock Lost and Found"
 msgstr "Estoc perdut/trobat"
 
-msgctxt "model:account.account.template,name:account_template_stock_production"
+msgctxt ""
+"model:account.account.template,name:account_template_stock_production"
 msgid "Stock Production"
 msgstr "Estoc producció"
 
@@ -182,7 +184,8 @@ msgctxt "model:account.account.template,name:account_template_stock_supplier"
 msgid "Stock Supplier"
 msgstr "Estoc proveïdor"
 
-msgctxt "model:account.account.type.template,name:account_type_template_asset_current_inventories"
+msgctxt ""
+"model:account.account.type.template,name:account_type_template_asset_current_inventories"
 msgid "Inventories"
 msgstr "Inventaris"
 
