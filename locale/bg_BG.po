@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:project.allocation:"
+msgid "Percentage must be greater than zero"
+msgstr ""
+
 msgctxt "error:project.work:"
 msgid "You can not create recursive dependencies!"
 msgstr "Не може да създавате взаимно вложени зависимости!"
