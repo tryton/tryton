@@ -4,7 +4,7 @@ include TODO
 include COPYRIGHT
 include CHANGELOG
 include LICENSE
-include trytond.cfg
+include tryton.cfg
 include *.xml
 include *.odt
 include locale/*.po
