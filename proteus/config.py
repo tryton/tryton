@@ -101,7 +101,7 @@ class Config(object):
         ctx_manager = ContextManager(self)
 
         if context is None:
-            context = None
+            context = {}
         self._context = self.context
         self._context.update(context)
         self._context.update(kwargs)
