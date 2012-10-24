@@ -2123,7 +2123,7 @@ class InvoiceReport(Report):
         # invoice_report_cache there was an error somewhere. So we save it now
         # in invoice_report_cache
         if invoice.state in ('open', 'paid'):
-            Invoice.write([invoice], {
+            Invoice.write([Invoice(invoice.id)], {
                 'invoice_report_format': res[0],
                 'invoice_report_cache': res[1],
                 })
