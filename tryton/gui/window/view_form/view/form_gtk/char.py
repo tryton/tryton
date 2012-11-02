@@ -56,7 +56,7 @@ class Char(WidgetInterface, TranslateMixin):
 
     @staticmethod
     def translate_widget_set(widget, value):
-        widget.set_text(value)
+        widget.set_text(value or '')
 
     @staticmethod
     def translate_widget_get(widget):
