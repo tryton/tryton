@@ -5,7 +5,7 @@
     'name_bg_BG': 'Инициативи и възможности за продажба',
     'name_de_DE': 'Verkauf Interessenten und Chancen',
     'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
-    'version': '2.0.3',
+    'version': '2.0.4',
     'author': 'Sharoon Thomas, Openlabs',
     'email': 'info@openlabs.co.in',
     'website': 'http://www.openlabs.co.in/',
