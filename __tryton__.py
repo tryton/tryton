@@ -10,7 +10,7 @@
     'name_es_ES': 'Partes de trabajo',
     'name_fr_FR': 'Feuille de présence',
     'name_nl_NL': 'Tijdregistratie',
-    'version': '2.4.2',
+    'version': '2.4.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
