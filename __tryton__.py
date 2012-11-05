@@ -6,7 +6,7 @@
     'name_es_CO': 'Hoja de Asistencia',
     'name_es_ES': 'Partes de trabajo',
     'name_fr_FR': 'Feuille de présence',
-    'version': '1.6.3',
+    'version': '1.6.4',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
