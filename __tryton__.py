@@ -8,7 +8,7 @@
     'name_es_ES': 'Venta',
     'name_fr_FR': 'Vente',
     'name_nl_NL': 'Verkoop',
-    'version': '2.2.3',
+    'version': '2.2.4',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
