@@ -8,7 +8,7 @@
     'name_es_AR': 'Ventas: Iniciativas y Oportunidades',
     'name_es_ES': 'Iniciativas y oportunidades comerciales',
     'name_fr_FR': 'Contacts commerciaux et opportunités de ventes',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'Sharoon Thomas, Openlabs',
     'email': 'info@openlabs.co.in',
     'website': 'http://www.openlabs.co.in/',
