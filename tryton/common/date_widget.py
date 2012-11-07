@@ -266,6 +266,8 @@ class DateEntry(gtk.Entry):
         return False
 
     def cal_open(self, *args):
+        if not self.get_editable():
+            return False
         parent = self.get_toplevel()
         dialog = gtk.Dialog(_('Date Selection'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
