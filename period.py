@@ -177,9 +177,9 @@ class Period(ModelSQL, ModelView):
                     if not args[i][2][0]:
                         args[i] = ('id', '!=', '0')
                     else:
-                        period = cls.browse(args[i][2][0])
+                        period = cls(args[i][2][0])
                         args[i] = (args[i][0], args[i][1],
-                            period[args[i][2][1]])
+                            getattr(period, args[i][2][1]))
                 elif isinstance(args[i], list):
                     process_args(args[i])
                 i += 1
