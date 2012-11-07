@@ -1246,7 +1246,7 @@ class GeneralLedger(Report):
                         'debit': line.debit,
                         'credit': line.credit,
                         'balance': balance,
-                        'name': line.name,
+                        'name': line.description,
                         'state': state_selections.get(line.move.state,
                             line.move.state),
                         })
