@@ -809,7 +809,7 @@ class Account(ModelSQL, ModelView):
                                     name)
                 else:
                     with Transaction().set_context(fiscalyear=fiscalyear.id,
-                            date=None, dates=None):
+                            date=None, periods=None):
                         res2 = cls.get_credit_debit(accounts, names)
                     for account in accounts:
                         for name in names:
