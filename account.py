@@ -818,7 +818,7 @@ class Account(ModelSQL, ModelView):
                             res[name][account_id] += deferral[name]
             else:
                 with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=None, dates=None):
+                        date=None, periods=None):
                     res2 = self.get_credit_debit(ids, names)
                 for account_id in ids:
                     for name in names:
