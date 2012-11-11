@@ -457,6 +457,7 @@ class Production(Workflow, ModelSQL, ModelView):
                     values['production_output'] = production.id
                     values['unit_price'] = Decimal(0)
                     move_obj.create(values)
+            self._set_move_planned_date([production.id])
             return
 
         factor = bom_obj.compute_factor(production.bom, production.product,
