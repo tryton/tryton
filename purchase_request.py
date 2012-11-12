@@ -16,15 +16,23 @@ __all__ = ['PurchaseRequest',
     'CreatePurchaseRequestStart', 'CreatePurchaseRequest',
     'CreatePurchaseAskTerm', 'CreatePurchaseAskParty', 'CreatePurchase']
 
+STATES = {
+    'readonly': Eval('state') != 'draft',
+    }
+DEPENDS = ['state']
+
 
 class PurchaseRequest(ModelSQL, ModelView):
     'Purchase Request'
     __name__ = 'purchase.request'
     product = fields.Many2One('product.product', 'Product', required=True,
         select=True, readonly=True, domain=[('purchasable', '=', True)])
-    party = fields.Many2One('party.party', 'Party',  select=True)
-    quantity = fields.Float('Quantity', required=True)
-    uom = fields.Many2One('product.uom', 'UOM', required=True, select=True)
+    party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
+        depends=DEPENDS)
+    quantity = fields.Float('Quantity', required=True, states=STATES,
+        depends=DEPENDS)
+    uom = fields.Many2One('product.uom', 'UOM', required=True, select=True,
+        states=STATES, depends=DEPENDS)
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
     computed_uom = fields.Many2One('product.uom', 'Computed UOM',
         readonly=True)
