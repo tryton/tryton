@@ -1464,14 +1464,14 @@ class ModelSQL(ModelStorage):
                     table_query, table_args = field_obj.table_query()
                     table_query = '(' + table_query + ') AS '
 
-                if ids2 == True or ids2 == False:
+                if isinstance(ids2, bool) or ids2 is None:
                     query1 = 'SELECT "' + field.field + '" ' \
                             'FROM ' + table_query + \
                                 '"' + field_obj._table + '" ' \
                             'WHERE "' + field.field + '" IS NOT NULL'
                     query2 = table_args
                     clause = 'inselect'
-                    if ids2 == False:
+                    if not ids2:
                         clause = 'notinselect'
                     domain[i] = ('id', clause, (query1, query2))
                 elif not ids2:
@@ -1561,7 +1561,7 @@ class ModelSQL(ModelStorage):
                                 'WHERE "' + field.origin + '" IS NOT NULL'
                         query2 = []
                         clause = 'inselect'
-                        if domain[i][2] == False:
+                        if not domain[i][2]:
                             clause = 'notinselect'
                         domain[i] = ('id', clause, (query1, query2))
                     else:
