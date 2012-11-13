@@ -211,9 +211,11 @@ def create(database_name, password, lang, admin_password):
                         'WHERE code = %s', 1) + ')' \
                     'WHERE login <> \'root\'', (lang,))
             if hashlib:
-                admin_password = hashlib.sha1(admin_password).hexdigest()
+                admin_password = hashlib.sha1(admin_password.encode('utf-8'))\
+                    .hexdigest()
             else:
-                admin_password = sha.new(admin_password).hexdigest()
+                admin_password = sha.new(admin_password.encode('utf-8'))\
+                    .hexdigest()
             cursor.execute('UPDATE res_user ' \
                     'SET password = %s ' \
                     'WHERE login = \'admin\'', (admin_password,))
