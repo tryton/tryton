@@ -134,7 +134,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_production_list">
             <field name="name">Productions</field>
             <field name="res_model">production</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_production_list_view1">
@@ -148,108 +148,50 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="production_view_form"/>
             <field name="act_window" ref="act_production_list"/>
         </record>
+        <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_requests">
+            <field name="name">Requests</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'request')]</field>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_running">
+            <field name="name">Running</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'running')]</field>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_production_list_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_production_list"/>
+        </record>
         <menuitem parent="menu_production" sequence="10"
             action="act_production_list" id="menu_production_list"/>
-
-        <record model="ir.action.act_window" id="act_production_request">
-            <field name="name">Request Productions</field>
-            <field name="res_model">production</field>
-            <field name="search_value">[('state', '=', 'request')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_request_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="production_view_list"/>
-            <field name="act_window" ref="act_production_request"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_request_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="production_view_form"/>
-            <field name="act_window" ref="act_production_request"/>
-        </record>
-        <menuitem parent="menu_production_list" sequence="10"
-            action="act_production_request" id="menu_production_request"/>
-
-        <record model="ir.action.act_window" id="act_production_draft">
-            <field name="name">Draft Productions</field>
-            <field name="res_model">production</field>
-            <field name="search_value">[('state', '=', 'draft')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_draft_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="production_view_list"/>
-            <field name="act_window" ref="act_production_draft"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_draft_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="production_view_form"/>
-            <field name="act_window" ref="act_production_draft"/>
-        </record>
-        <menuitem parent="menu_production_list" sequence="20"
-            action="act_production_draft" id="menu_production_draft"/>
-
-        <record model="ir.action.act_window" id="act_production_waiting">
-            <field name="name">Waiting Productions</field>
-            <field name="res_model">production</field>
-            <field name="search_value">[('state', '=', 'waiting')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_waiting_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="production_view_list"/>
-            <field name="act_window" ref="act_production_waiting"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_waiting_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="production_view_form"/>
-            <field name="act_window" ref="act_production_waiting"/>
-        </record>
-        <menuitem parent="menu_production_list" sequence="30"
-            action="act_production_waiting" id="menu_production_waiting"/>
-
-        <record model="ir.action.act_window" id="act_production_assigned">
-            <field name="name">Assigned Productions</field>
-            <field name="res_model">production</field>
-            <field name="search_value">[('state', '=', 'assigned')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_assigned_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="production_view_list"/>
-            <field name="act_window" ref="act_production_assigned"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_assigned_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="production_view_form"/>
-            <field name="act_window" ref="act_production_assigned"/>
-        </record>
-        <menuitem parent="menu_production_list" sequence="40"
-            action="act_production_assigned" id="menu_production_assigned"/>
-
-        <record model="ir.action.act_window" id="act_production_running">
-            <field name="name">Running Productions</field>
-            <field name="res_model">production</field>
-            <field name="search_value">[('state', '=', 'running')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_running_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="production_view_list"/>
-            <field name="act_window" ref="act_production_running"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_production_running_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="production_view_form"/>
-            <field name="act_window" ref="act_production_running"/>
-        </record>
-        <menuitem parent="menu_production_list" sequence="50"
-            action="act_production_running" id="menu_production_running"/>
 
         <record model="ir.sequence.type" id="sequence_type_production">
             <field name="name">Production</field>
