@@ -53,11 +53,11 @@ def eval_leaf(part, context, boolop=operator.and_):
         # In the case where the leaf concerns a m2o then having a value in the
         # evaluation context is deemed suffisant
         return bool(context.get(field.split('.')[0]))
-    if operand == '=' and not context[field] and boolop == operator.and_:
+    if operand == '=' and not context.get(field) and boolop == operator.and_:
         # We should consider that other domain inversion will set a correct
         # value to this field
         return True
-    context_field = context[field]
+    context_field = context.get(field)
     if isinstance(context_field, datetime.date) and not value:
         if isinstance(context_field, datetime.datetime):
             value = datetime.datetime.min

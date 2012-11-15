@@ -249,6 +249,8 @@ class Record(SignalEvent):
             self._check_load()
         value = {}
         for name, field in self.group.fields.iteritems():
+            if name not in self._loaded and self.id >= 0:
+                continue
             value[name] = field.get_eval(self, check_load=check_load)
         value['id'] = self.id
         return value
@@ -460,7 +462,7 @@ class Record(SignalEvent):
         else:
             for field in fields:
                 self[field]
-        self.validate([])
+        self.validate(fields or [])
 
     def expr_eval(self, expr, check_load=False):
         if not isinstance(expr, basestring):
