@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this
+     repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <menuitem name="Assets" parent="account.menu_account"
+            id="menu_asset" sequence="48"/>
+
+        <record model="account.journal.type" id="journal_type_asset">
+            <field name="name">Asset</field>
+            <field name="code">asset</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_update">
+            <field name="name">Update Asset</field>
+            <field name="wiz_name">account.asset.update</field>
+        </record>
+
+        <record model="ir.ui.view" id="asset_view_form">
+            <field name="model">account.asset</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Asset" col="6">
+                    <label name="product"/>
+                    <field name="product"/>
+                    <label name="account_journal"/>
+                    <field name="account_journal"/>
+                    <label name="reference"/>
+                    <field name="reference"/>
+                    <label name="supplier_invoice_line"/>
+                    <field name="supplier_invoice_line"/>
+                    <label name="value"/>
+                    <field name="value"/>
+                    <label name="residual_value"/>
+                    <field name="residual_value"/>
+                    <label name="purchase_date"/>
+                    <field name="purchase_date"/>
+                    <label name="start_date"/>
+                    <field name="start_date"/>
+                    <label name="end_date"/>
+                    <field name="end_date"/>
+                    <notebook colspan="6">
+                        <page string="Lines" id="lines">
+                            <field name="lines" colspan="4"/>
+                            <group col="4" colspan="4" id="state_buttons">
+                                <label name="state"/>
+                                <field name="state"/>
+                                <group col="5" colspan="2" id="buttons">
+                                    <button name="clear_lines"
+                                        string="Clear Lines"
+                                        icon="tryton-clear"/>
+                                    <button name="create_lines"
+                                        string="Create Lines"
+                                        icon="tryton-executable"/>
+                                    <button name="update"
+                                        string="Update Asset"
+                                        icon="tryton-text-markup"/>
+                                    <button name="run"
+                                        string="Run" icon="tryton-go-next"/>
+                                    <button name="close"
+                                        string="Close" icon="tryton-close"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Info" id="info">
+                            <label name="company"/>
+                            <field name="company"/>
+                            <newline/>
+                            <label name="depreciation_method"/>
+                            <field name="depreciation_method"/>
+                            <label name="frequency"/>
+                            <field name="frequency"/>
+                            <label name="quantity"/>
+                            <field name="quantity"/>
+                            <label name="unit"/>
+                            <field name="unit"/>
+                            <label name="move"/>
+                            <field name="move"/>
+                            <label name="customer_invoice_line"/>
+                            <field name="customer_invoice_line"/>
+                            <field name="update_moves" colspan="4"/>
+                            <separator name="comment" colspan="4"/>
+                            <field name="comment" colspan="4"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="asset_view_tree">
+            <field name="model">account.asset</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Assets">
+                    <field name="reference"/>
+                    <field name="product"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="value"/>
+                    <field name="residual_value"/>
+                    <field name="state"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_asset_form">
+            <field name="name">Assets</field>
+            <field name="res_model">account.asset</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_asset_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="asset_view_tree"/>
+            <field name="act_window" ref="act_asset_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_asset_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="asset_view_form"/>
+            <field name="act_window" ref="act_asset_form"/>
+        </record>
+        <menuitem parent="menu_asset" sequence="10"
+            action="act_asset_form" id="menu_asset_form"/>
+
+        <record model="ir.action.act_window" id="act_draft_asset_form">
+            <field name="name">Draft Assets</field>
+            <field name="res_model">account.asset</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_draft_asset_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="asset_view_tree"/>
+            <field name="act_window" ref="act_draft_asset_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_draft_asset_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="asset_view_form"/>
+            <field name="act_window" ref="act_draft_asset_form"/>
+        </record>
+        <menuitem parent="menu_asset_form" sequence="10"
+            action="act_draft_asset_form" id="menu_draft_asset_form"/>
+
+        <record model="ir.action.act_window" id="act_running_asset_form">
+            <field name="name">Running Assets</field>
+            <field name="res_model">account.asset</field>
+            <field name="domain">[('state', '=', 'running')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_running_asset_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="asset_view_tree"/>
+            <field name="act_window" ref="act_running_asset_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_running_asset_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="asset_view_form"/>
+            <field name="act_window" ref="act_running_asset_form"/>
+        </record>
+        <menuitem parent="menu_asset_form" sequence="20"
+            action="act_running_asset_form" id="menu_running_asset_form"/>
+
+        <record model="ir.action.act_window" id="act_closed_asset_form">
+            <field name="name">Closed Assets</field>
+            <field name="res_model">account.asset</field>
+            <field name="domain">[('state', '=', 'closed')]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_closed_asset_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="asset_view_tree"/>
+            <field name="act_window" ref="act_closed_asset_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_closed_asset_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="asset_view_form"/>
+            <field name="act_window" ref="act_closed_asset_form"/>
+        </record>
+        <menuitem parent="menu_asset_form" sequence="20"
+            action="act_closed_asset_form" id="menu_closed_asset_form"/>
+
+        <record model="ir.sequence.type" id="sequence_type_asset">
+            <field name="name">Asset</field>
+            <field name="code">account.asset</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_asset_group_admin">
+            <field name="sequence_type" ref="sequence_type_asset"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_asset_group_account_admin">
+            <field name="sequence_type" ref="sequence_type_asset"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_asset">
+            <field name="name">Asset</field>
+            <field name="code">account.asset</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_asset">
+            <field name="model" search="[('model', '=', 'account.asset')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_asset1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.asset')]"/>
+            <field name="operator">=</field>
+            <field name="operand">User/Current Company</field>
+            <field name="rule_group" ref="rule_group_asset"/>
+        </record>
+
+        <record model="ir.model.access" id="access_asset_account_admin">
+            <field name="model" search="[('model', '=', 'account.asset')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_asset_account">
+            <field name="model" search="[('model', '=', 'account.asset')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="asset_line_view_form">
+            <field name="model">account.asset.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Asset Line" col="6">
+                    <label name="asset"/>
+                    <field name="asset" colspan="5"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <newline/>
+                    <label name="acquired_value"/>
+                    <field name="acquired_value"/>
+                    <label name="depreciable_basis"/>
+                    <field name="depreciable_basis"/>
+                    <newline/>
+                    <label name="actual_value"/>
+                    <field name="actual_value"/>
+                    <label name="depreciation"/>
+                    <field name="depreciation"/>
+                    <label name="accumulated_depreciation"/>
+                    <field name="accumulated_depreciation"/>
+                    <label name="move"/>
+                    <field name="move"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="asset_line_view_tree">
+            <field name="model">account.asset.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Asset Lines">
+                    <field name="asset"/>
+                    <field name="date"/>
+                    <field name="actual_value" expand="1"/>
+                    <field name="depreciation" expand="1"/>
+                    <field name="accumulated_depreciation" expand="1"/>
+                    <field name="move"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.model.access" id="access_asset_line_account_admin">
+            <field name="model" search="[('model', '=', 'account.asset.line')]"/>
+            <field name="group" ref="account.group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.access" id="access_asset_line_account">
+            <field name="model" search="[('model', '=', 'account.asset.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="asset_create_moves_start_view_form">
+            <field name="model">account.asset.create_moves.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Create Assets Moves" col="2">
+                    <image name="tryton-dialog-information" xexpand="0"
+                        xfill="0"/>
+                    <group col="3" id="label_date">
+                        <label string="Create Assets Moves up to" id="create"
+                            yalign="0.0" xalign="0.0"/>
+                        <label name="date"/>
+                        <field name="date"/>
+                    </group>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="asset_update_start_view_form">
+            <field name="model">account.asset.update.start</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Update Asset">
+                    <label name="value"/>
+                    <field name="value"/>
+                    <label name="residual_value"/>
+                    <field name="residual_value"/>
+                    <label name="end_date"/>
+                    <field name="end_date"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="asset_update_show_depreciation_view_form">
+            <field name="model">account.asset.update.show_depreciation</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Asset Depreciation Move">
+                    <label name="amount"/>
+                    <field name="amount"/>
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="depreciation_account"/>
+                    <field name="depreciation_account"/>
+                    <label name="counterpart_account"/>
+                    <field name="counterpart_account"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_create_moves">
+            <field name="name">Create Assets Moves</field>
+            <field name="wiz_name">account.asset.create_moves</field>
+        </record>
+        <menuitem name="Create Assets Moves" parent="menu_asset" sequence="20"
+            action="wizard_create_moves" id="menu_create_moves"/>
+    </data>
+    <data noupdate="1">
+        <record model="account.journal" id="journal_asset">
+            <field name="name">Asset</field>
+            <field name="code">ASS</field>
+            <field name="type">asset</field>
+            <field name="sequence" ref="account.sequence_account_journal"/>
+        </record>
+    </data>
+</tryton>
