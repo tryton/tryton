@@ -112,98 +112,50 @@
             <field name="view" ref="opportunity_view_form"/>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_leads">
+            <field name="name">Leads</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[("state", "=", "lead")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_opportunities">
+            <field name="name">Opportunities</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[("state", "=", "opportunity")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_converted">
+            <field name="name">Converted</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[("state", "=", "converted")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_cancelled">
+            <field name="name">Cancelled</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[("state", "=", "cancelled")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_lost">
+            <field name="name">Lost</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain">[("state", "=", "lost")]</field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_opportunity_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_opportunity_form"/>
+        </record>
         <menuitem parent="sale.menu_sale" action="act_opportunity_form"
             id="menu_opportunity_form" sequence="5"/>
-
-        <record model="ir.action.act_window" id="act_opportunity_form_lead">
-            <field name="name">Opened Leads</field>
-            <field name="res_model">sale.opportunity</field>
-            <field name="domain">[("state", "=", "lead")]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_lead_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="opportunity_view_tree"/>
-            <field name="act_window" ref="act_opportunity_form_lead"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_lead_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="opportunity_view_form"/>
-            <field name="act_window" ref="act_opportunity_form_lead"/>
-        </record>
-        <menuitem parent="menu_opportunity_form" action="act_opportunity_form_lead"
-            id="menu_opportunity_form_lead" sequence="20"/>
-
-        <record model="ir.action.act_window" id="act_opportunity_form_opportunity">
-            <field name="name">Opportunities</field>
-            <field name="res_model">sale.opportunity</field>
-            <field name="domain">[("state", "=", "opportunity")]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_opportunity_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="opportunity_view_tree"/>
-            <field name="act_window" ref="act_opportunity_form_opportunity"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_opportunity_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="opportunity_view_form"/>
-            <field name="act_window" ref="act_opportunity_form_opportunity"/>
-        </record>
-        <menuitem parent="menu_opportunity_form" action="act_opportunity_form_opportunity"
-            id="menu_opportunity_form_opportunity" sequence="30"/>
-
-        <record model="ir.action.act_window" id="act_opportunity_form_converted">
-            <field name="name">Converted Opportunities</field>
-            <field name="res_model">sale.opportunity</field>
-            <field name="domain">[("state", "=", "converted")]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_converted_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="opportunity_view_tree"/>
-            <field name="act_window" ref="act_opportunity_form_converted"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_converted_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="opportunity_view_form"/>
-            <field name="act_window" ref="act_opportunity_form_converted"/>
-        </record>
-        <menuitem parent="menu_opportunity_form" action="act_opportunity_form_converted"
-            id="menu_opportunity_form_converted" sequence="40"/>
-
-        <record model="ir.action.act_window" id="act_opportunity_form_cancelled">
-            <field name="name">Cancelled Leads and Opportunities</field>
-            <field name="res_model">sale.opportunity</field>
-            <field name="domain">[("state", "=", "cancelled")]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_cancelled_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="opportunity_view_tree"/>
-            <field name="act_window" ref="act_opportunity_form_cancelled"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_cancelled_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="opportunity_view_form"/>
-            <field name="act_window" ref="act_opportunity_form_cancelled"/>
-        </record>
-        <menuitem parent="menu_opportunity_form" action="act_opportunity_form_cancelled"
-            id="menu_opportunity_form_cancelled" sequence="50"/>
-
-        <record model="ir.action.act_window" id="act_opportunity_form_lost">
-            <field name="name">Lost Leads and Opportunities</field>
-            <field name="res_model">sale.opportunity</field>
-            <field name="domain">[("state", "=", "lost")]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_lost_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="opportunity_view_tree"/>
-            <field name="act_window" ref="act_opportunity_form_lost"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_opportunity_form_lost_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="opportunity_view_form"/>
-            <field name="act_window" ref="act_opportunity_form_lost"/>
-        </record>
-        <menuitem parent="menu_opportunity_form" action="act_opportunity_form_lost"
-            id="menu_opportunity_form_lost" sequence="60"/>
 
         <record model="ir.model.access" id="access_opportunity">
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
