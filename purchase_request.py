@@ -468,7 +468,7 @@ class CreatePurchaseRequest(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Create', 'create_', 'tryton-ok', default=True),
             ])
-    create_ = StateAction('stock_supply.act_purchase_request_form_draft')
+    create_ = StateAction('stock_supply.act_purchase_request_form')
 
     def do_create_(self, action):
         PurchaseRequest = Pool().get('purchase.request')

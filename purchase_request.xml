@@ -84,6 +84,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="purchase_request_view_form"/>
             <field name="act_window" ref="act_purchase_request_form"/>
         </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('purchase_line', '=', None)]</field>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_purchase_request_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_purchase_request_form"/>
+        </record>
 
         <record model="ir.ui.menu-res.group" id="menu_purchase_group_purchase_request">
             <field name="menu" ref="purchase.menu_purchase"/>
@@ -92,25 +106,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem parent="purchase.menu_purchase" sequence="20"
             action="act_purchase_request_form" id="menu_purchase_request_form"/>
-
-        <record model="ir.action.act_window" id="act_purchase_request_form_draft">
-            <field name="name">Draft Purchase Requests</field>
-            <field name="res_model">purchase.request</field>
-            <field name="domain">[('purchase_line', '=', False)]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_purchase_request_form_draft_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="purchase_request_view_tree"/>
-            <field name="act_window" ref="act_purchase_request_form_draft"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_purchase_request_form_draft_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="purchase_request_view_form"/>
-            <field name="act_window" ref="act_purchase_request_form_draft"/>
-        </record>
-
-        <menuitem parent="menu_purchase_request_form" sequence="20"
-            action="act_purchase_request_form_draft" id="menu_purchase_request_form_draft"/>
 
         <record model="ir.action.wizard" id="act_purchase_request_create">
             <field name="name">Create Purchase Requests</field>
