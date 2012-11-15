@@ -220,8 +220,8 @@ def convert_value(field, value):
                         date_format() + ' ' + time_format(field))[:6]))
         except ValueError:
             try:
-                return untimezoned_date(datetime.datetime(*time.strptime(value,
-                            date_format())[:6]))
+                return datetime.datetime(*time.strptime(value,
+                        date_format())[:6])
             except ValueError:
                 return
         except TypeError:
