@@ -78,62 +78,8 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <record model="ir.action.act_window" id="act_draft_statement_form">
-            <field name="name">Draft Statements</field>
-            <field name="res_model">account.statement</field>
-            <field name="domain">[('state', '=', 'draft')]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_draft_statement_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="statement_view_tree"/>
-            <field name="act_window" ref="act_draft_statement_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_draft_statement_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="statement_view_form"/>
-            <field name="act_window" ref="act_draft_statement_form"/>
-        </record>
-        <menuitem parent="menu_statements" sequence="2"
-            action="act_draft_statement_form" id="menu_draft_statement_form"/>
-
-        <record model="ir.action.act_window" id="act_validated_statement_form">
-            <field name="name">Validated Statement</field>
-            <field name="res_model">account.statement</field>
-            <field name="domain">[('state', '=', 'validated')]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_validated_statement_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="statement_view_tree"/>
-            <field name="act_window" ref="act_validated_statement_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_validated_statement_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="statement_view_form"/>
-            <field name="act_window" ref="act_validated_statement_form"/>
-        </record>
-        <menuitem parent="menu_statements" sequence="3"
-            action="act_validated_statement_form" id="menu_validated_statement_form"/>
-
-        <record model="ir.action.act_window" id="act_posted_statement_form">
-            <field name="name">Posted Statements</field>
-            <field name="res_model">account.statement</field>
-            <field name="domain">[('state', '=', 'posted')]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_posted_statement_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="statement_view_tree"/>
-            <field name="act_window" ref="act_posted_statement_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_posted_statement_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="statement_view_form"/>
-            <field name="act_window" ref="act_posted_statement_form"/>
-        </record>
-        <menuitem parent="menu_statements" sequence="4"
-            action="act_posted_statement_form" id="menu_posted_statement_form"/>
-
         <record model="ir.action.act_window" id="act_statement_form">
-            <field name="name">All Statement</field>
+            <field name="name">Statements</field>
             <field name="res_model">account.statement</field>
         </record>
         <record model="ir.action.act_window.view" id="act_statement_form_view1">
@@ -146,7 +92,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="statement_view_form"/>
             <field name="act_window" ref="act_statement_form"/>
         </record>
-        <menuitem parent="menu_statements" sequence="5"
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_validated">
+            <field name="name">Validated</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'validated')]</field>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_posted">
+            <field name="name">Posted</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'posted')]</field>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_statement_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_statement_form"/>
+        </record>
+        <menuitem parent="menu_statements" sequence="10"
             action="act_statement_form" id="menu_statement_form"/>
 
         <record model="ir.rule.group" id="rule_group_statement">
