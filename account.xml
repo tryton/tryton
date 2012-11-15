@@ -87,9 +87,22 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+        <record model="ir.ui.view" id="account_type_template_view_list">
+            <field name="model">account.account.type.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Types Templates">
+                    <field name="name"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
         <record model="ir.ui.view" id="account_type_template_view_tree">
             <field name="model">account.account.type.template</field>
             <field name="type">tree</field>
+            <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -252,6 +265,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_type_view_tree">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
+            <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -266,6 +280,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_type_view_list">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Account Types">
@@ -353,9 +368,23 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+        <record model="ir.ui.view" id="account_template_view_list">
+            <field name="model">account.account.template</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Account Templates">
+                    <field name="rec_name"/>
+                    <field name="type"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
         <record model="ir.ui.view" id="account_template_view_tree">
             <field name="model">account.account.template</field>
             <field name="type">tree</field>
+            <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -611,6 +640,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_view_tree">
             <field name="model">account.account</field>
             <field name="type">tree</field>
+            <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
             <field name="arch" type="xml">
                 <![CDATA[
@@ -627,6 +657,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_view_list">
             <field name="model">account.account</field>
             <field name="type">tree</field>
+            <field name="priority" eval="10"/>
             <field name="arch" type="xml">
                 <![CDATA[
                 <tree string="Accounts">
