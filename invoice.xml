@@ -130,30 +130,13 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
-        <record model="ir.action.act_window" id="act_invoice_form">
-            <field name="name">All Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_form_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_form"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_form_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_form"/>
-        </record>
-        <menuitem parent="menu_invoices" action="act_invoice_form"
-            id="menu_invoice_form" sequence="5"/>
 
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'out_invoice')]</field>
             <field name="context">{'type': 'out_invoice'}</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -165,72 +148,39 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_out_invoice_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_proforma">
+            <field name="name">Pro Forma</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_invoice_out_invoice_form"/>
+        </record>
         <menuitem parent="menu_invoices" action="act_invoice_out_invoice_form"
             id="menu_invoice_out_invoice_form" sequence="1"/>
-
-        <record model="ir.action.act_window" id="act_invoice_out_invoice_form3">
-            <field name="name">Draft Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'draft')]</field>
-            <field name="context">{'type': 'out_invoice'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form3_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form3"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form3_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form3"/>
-        </record>
-        <menuitem parent="menu_invoice_out_invoice_form" action="act_invoice_out_invoice_form3"
-            id="menu_invoice_out_invoice_form3" sequence="2"/>
-
-        <record model="ir.action.act_window" id="act_invoice_out_invoice_form4">
-            <field name="name">Pro Forma Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'proforma')]</field>
-            <field name="context">{'type': 'out_invoice'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form4_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form4"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form4_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form4"/>
-        </record>
-        <menuitem parent="menu_invoice_out_invoice_form" action="act_invoice_out_invoice_form4"
-            id="menu_invoice_out_invoice_form4" sequence="3"/>
-
-        <record model="ir.action.act_window" id="act_invoice_out_invoice_form5">
-            <field name="name">Opened Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'out_invoice'), ('state', '=', 'open')]</field>
-            <field name="context">{'type': 'out_invoice'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form5_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form5"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_invoice_form5_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_invoice_form5"/>
-        </record>
-        <menuitem parent="menu_invoice_out_invoice_form" action="act_invoice_out_invoice_form5"
-            id="menu_invoice_out_invoice_form5" sequence="4"/>
 
         <record model="ir.action.act_window" id="act_invoice_out_credit_note_form">
             <field name="name">Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'out_credit_note')]</field>
             <field name="context">{'type': 'out_credit_note'}</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form_view1">
             <field name="sequence" eval="10"/>
@@ -242,72 +192,39 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_proforma">
+            <field name="name">Pro Forma</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_invoice_out_credit_note_form"/>
+        </record>
         <menuitem parent="menu_invoices" action="act_invoice_out_credit_note_form"
             id="menu_invoice_out_credit_note_form" sequence="2"/>
-
-        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form3">
-            <field name="name">Draft Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'draft')]</field>
-            <field name="context">{'type': 'out_credit_note'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form3_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form3"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form3_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form3"/>
-        </record>
-        <menuitem parent="menu_invoice_out_credit_note_form" action="act_invoice_out_credit_note_form3"
-            id="menu_invoice_out_credit_note_form3" sequence="2"/>
-
-        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form4">
-            <field name="name">Pro Forma Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'proforma')]</field>
-            <field name="context">{'type': 'out_credit_note'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form4_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form4"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form4_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form4"/>
-        </record>
-        <menuitem parent="menu_invoice_out_credit_note_form" action="act_invoice_out_credit_note_form4"
-            id="menu_invoice_out_credit_note_form4" sequence="3"/>
-
-        <record model="ir.action.act_window" id="act_invoice_out_credit_note_form5">
-            <field name="name">Opened Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'out_credit_note'), ('state', '=', 'open')]</field>
-            <field name="context">{'type': 'out_credit_note'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form5_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form5"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_out_credit_note_form5_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_out_credit_note_form5"/>
-        </record>
-        <menuitem parent="menu_invoice_out_credit_note_form" action="act_invoice_out_credit_note_form5"
-            id="menu_invoice_out_credit_note_form5" sequence="4"/>
 
         <record model="ir.action.act_window" id="act_invoice_in_invoice_form">
             <field name="name">Supplier Invoices</field>
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'in_invoice')]</field>
             <field name="context">{'type': 'in_invoice'}</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form_view1">
             <field name="sequence" eval="10"/>
@@ -319,72 +236,39 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_in_invoice_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_proforma">
+            <field name="name">Pro Forma</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_invoice_in_invoice_form"/>
+        </record>
         <menuitem parent="menu_invoices" action="act_invoice_in_invoice_form"
             id="menu_invoice_in_invoice_form" sequence="3"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_invoice_form3">
-            <field name="name">Draft Supplier Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'draft')]</field>
-            <field name="context">{'type': 'in_invoice'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form3_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form3"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form3_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form3"/>
-        </record>
-        <menuitem parent="menu_invoice_in_invoice_form" action="act_invoice_in_invoice_form3"
-            id="menu_invoice_in_invoice_form3" sequence="2"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_invoice_form4">
-            <field name="name">Pro Forma Supplier Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'proforma')]</field>
-            <field name="context">{'type': 'in_invoice'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form4_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form4"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form4_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form4"/>
-        </record>
-        <menuitem parent="menu_invoice_in_invoice_form" action="act_invoice_in_invoice_form4"
-            id="menu_invoice_in_invoice_form4" sequence="3"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_invoice_form5">
-            <field name="name">Opened Supplier Invoices</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'in_invoice'), ('state', '=', 'open')]</field>
-            <field name="context">{'type': 'in_invoice'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form5_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form5"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_invoice_form5_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_invoice_form5"/>
-        </record>
-        <menuitem parent="menu_invoice_in_invoice_form" action="act_invoice_in_invoice_form5"
-            id="menu_invoice_in_invoice_form5" sequence="4"/>
 
         <record model="ir.action.act_window" id="act_invoice_in_credit_note_form">
             <field name="name">Supplier Credit Notes</field>
             <field name="res_model">account.invoice</field>
             <field name="domain">[('type', '=', 'in_credit_note')]</field>
             <field name="context">{'type': 'in_credit_note'}</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form_view1">
             <field name="sequence" eval="10"/>
@@ -396,65 +280,32 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="invoice_view_form"/>
             <field name="act_window" ref="act_invoice_in_credit_note_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_proforma">
+            <field name="name">Pro Forma</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_opened">
+            <field name="name">Opened</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_invoice_in_credit_note_form"/>
+        </record>
         <menuitem parent="menu_invoices" action="act_invoice_in_credit_note_form"
             id="menu_invoice_in_credit_note_form" sequence="4"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form3">
-            <field name="name">Draft Supplier Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'draft')]</field>
-            <field name="context">{'type': 'in_credit_note'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form3_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form3"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form3_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form3"/>
-        </record>
-        <menuitem parent="menu_invoice_in_credit_note_form" action="act_invoice_in_credit_note_form3"
-            id="menu_invoice_in_credit_note_form3" sequence="2"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form4">
-            <field name="name">Pro Forma Supplier Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'proforma')]</field>
-            <field name="context">{'type': 'in_credit_note'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form4_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form4"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form4_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form4"/>
-        </record>
-        <menuitem parent="menu_invoice_in_credit_note_form" action="act_invoice_in_credit_note_form4"
-            id="menu_invoice_in_credit_note_form4" sequence="3"/>
-
-        <record model="ir.action.act_window" id="act_invoice_in_credit_note_form5">
-            <field name="name">Opened Supplier Credit Notes</field>
-            <field name="res_model">account.invoice</field>
-            <field name="domain">[('type', '=', 'in_credit_note'), ('state', '=', 'open')]</field>
-            <field name="context">{'type': 'in_credit_note'}</field>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form5_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="invoice_view_tree"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form5"/>
-        </record>
-        <record model="ir.action.act_window.view" id="act_invoice_in_credit_note_form5_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="invoice_view_form"/>
-            <field name="act_window" ref="act_invoice_in_credit_note_form5"/>
-        </record>
-        <menuitem parent="menu_invoice_in_credit_note_form" action="act_invoice_in_credit_note_form5"
-            id="menu_invoice_in_credit_note_form5" sequence="4"/>
 
         <record model="ir.model.access" id="access_invoice">
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
