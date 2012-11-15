@@ -82,7 +82,9 @@ class ViewForm(ParserView):
                     field = record.group.fields[name]
                     for widget in widgets:
                         if (not focused_widget
-                                or widget.widget.get_focus_child()):
+                                or widget.widget.is_focus()
+                                or (isinstance(widget.widget, gtk.Container)
+                                    and widget.widget.get_focus_child())):
                             widget.set_value(record, field)
 
     def sel_ids_get(self):
