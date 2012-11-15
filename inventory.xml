@@ -69,29 +69,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="inventory_view_form"/>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_inventory_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_inventory_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_inventory_form"/>
+        </record>
         <menuitem parent="menu_stock" sequence="50"
             action="act_inventory_form" id="menu_inventory_form"/>
-
-        <record model="ir.action.act_window" id="act_inventory_form_draft">
-            <field name="name">Draft Inventories</field>
-            <field name="res_model">stock.inventory</field>
-            <field name="domain">[('state', '=', 'draft')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_inventory_form_draft_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="inventory_view_tree"/>
-            <field name="act_window" ref="act_inventory_form_draft"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_inventory_form_draft_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="inventory_view_form"/>
-            <field name="act_window" ref="act_inventory_form_draft"/>
-        </record>
-        <menuitem parent="menu_inventory_form"
-            action="act_inventory_form_draft" id="menu_inventory_form_draft"
-            sequence="20"/>
 
         <record model="ir.ui.view" id="inventory_line_view_form">
             <field name="model">stock.inventory.line</field>

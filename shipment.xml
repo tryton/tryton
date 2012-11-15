@@ -74,7 +74,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_form">
             <field name="name">Supplier Shipments</field>
             <field name="res_model">stock.shipment.in</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_form_view1">
@@ -88,49 +88,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="shipment_in_view_form"/>
             <field name="act_window" ref="act_shipment_in_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_in_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_in_form_domain_received">
+            <field name="name">Received</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'received')]</field>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_in_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_in_form"/>
+        </record>
         <menuitem parent="menu_stock" sequence="20"
             action="act_shipment_in_form" id="menu_shipment_in_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_in_draft">
-            <field name="name">Draft Supplier Shipment</field>
-            <field name="res_model">stock.shipment.in</field>
-            <field name="domain">[('state', '=', 'draft')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_in_draft_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="shipment_in_view_tree"/>
-            <field name="act_window" ref="act_shipment_in_draft"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_in_draft_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="shipment_in_view_form"/>
-            <field name="act_window" ref="act_shipment_in_draft"/>
-        </record>
-        <menuitem parent="menu_shipment_in_form" sequence="10"
-            action="act_shipment_in_draft" id="menu_shipment_in_draft"/>
-
-        <record model="ir.action.act_window" id="act_shipment_in_form_received">
-            <field name="name">Received Supplier shipments</field>
-            <field name="res_model">stock.shipment.in</field>
-            <field name="domain">[('state', '=', 'received')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_in_received_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_in_view_tree"/>
-            <field name="act_window" ref="act_shipment_in_form_received"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_in_received_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_in_view_form"/>
-            <field name="act_window" ref="act_shipment_in_form_received"/>
-        </record>
-        <menuitem parent="menu_shipment_in_form" sequence="20"
-            action="act_shipment_in_form_received"
-            id="menu_shipment_in_received"/>
 
         <!-- Shipment In Return view-->
         <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
@@ -196,7 +173,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_in_return_form">
             <field name="name">Supplier Return Shipments</field>
             <field name="res_model">stock.shipment.in.return</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_in_return_form_view1">
@@ -210,9 +187,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="shipment_in_return_view_form"/>
             <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
-        <menuitem parent="menu_shipment_in_form" sequence="40"
-                  action="act_shipment_in_return_form"
-                  id="menu_shipment_in_return_form"/>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_in_return_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_in_return_form"/>
+        </record>
+        <menuitem parent="menu_shipment_in_form" sequence="10"
+            action="act_shipment_in_return_form"
+            id="menu_shipment_in_return_form"/>
 
         <record model="ir.ui.view" id="shipment_in_return_assign_failed_view_form">
             <field name="model">stock.shipment.in.return.assign.failed</field>
@@ -320,7 +325,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_form">
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_form_view1">
@@ -334,71 +339,38 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="shipment_out_view_form"/>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_packed">
+            <field name="name">Packed</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[('state', '=', 'packed')]</field>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
         <menuitem parent="menu_stock" sequence="30"
             action="act_shipment_out_form" id="menu_shipment_out_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_out_form_waiting">
-            <field name="name">Customer Shipments Waiting Assignation</field>
-            <field name="res_model">stock.shipment.out</field>
-            <field name="domain">[('state', '=', 'waiting')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_out_waiting_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_out_view_tree"/>
-            <field name="act_window" ref="act_shipment_out_form_waiting"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_out_waiting_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_out_view_form"/>
-            <field name="act_window" ref="act_shipment_out_form_waiting"/>
-        </record>
-        <menuitem parent="menu_shipment_out_form" sequence="10"
-                  action="act_shipment_out_form_waiting"
-                  id="menu_shipment_out_waiting"/>
-
-        <record model="ir.action.act_window"
-                  id="act_shipment_out_form_assigned">
-            <field name="name">Assigned Customer Shipments</field>
-            <field name="res_model">stock.shipment.out</field>
-            <field name="domain">[('state', '=', 'assigned')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_out_assigned_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_out_view_tree"/>
-            <field name="act_window" ref="act_shipment_out_form_assigned"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_out_assigned_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_out_view_form"/>
-            <field name="act_window" ref="act_shipment_out_form_assigned"/>
-        </record>
-        <menuitem parent="menu_shipment_out_form" sequence="20"
-            action="act_shipment_out_form_assigned"
-            id="menu_shipment_out_assigned"/>
-
-        <record model="ir.action.act_window" id="act_shipment_out_form_ready">
-            <field name="name">Customer Shipments Ready for Shipping</field>
-            <field name="res_model">stock.shipment.out</field>
-            <field name="domain">[('state', '=', 'packed')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_out_ready_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_out_view_tree"/>
-            <field name="act_window" ref="act_shipment_out_form_ready"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_out_ready_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_out_view_form"/>
-            <field name="act_window" ref="act_shipment_out_form_ready"/>
-        </record>
-        <menuitem parent="menu_shipment_out_form" sequence="30"
-            action="act_shipment_out_form_ready" id="menu_shipment_out_ready"/>
 
         <record model="ir.ui.view" id="shipment_out_assign_failed_view_form">
             <field name="model">stock.shipment.out.assign.failed</field>
@@ -481,7 +453,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_internal_form">
             <field name="name">Internal Shipments</field>
             <field name="res_model">stock.shipment.internal</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_internal_form_view1">
@@ -495,72 +467,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="shipment_internal_view_form"/>
             <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_assigned">
+            <field name="name">Assigned</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'assigned')]</field>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_internal_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_internal_form"/>
+        </record>
         <menuitem parent="menu_stock" sequence="35"
                   action="act_shipment_internal_form"
                   id="menu_shipment_internal_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_internal_draft_form">
-            <field name="name">Draft Internal Shipments</field>
-            <field name="res_model">stock.shipment.internal</field>
-            <field name="domain">[('state', '=', 'draft')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_draft_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_internal_view_tree"/>
-            <field name="act_window" ref="act_shipment_internal_draft_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_draft_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_internal_view_form"/>
-            <field name="act_window" ref="act_shipment_internal_draft_form"/>
-        </record>
-        <menuitem parent="menu_shipment_internal_form" sequence="20"
-                  action="act_shipment_internal_draft_form"
-                  id="menu_shipment_internal_draft_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_internal_waiting_form">
-            <field name="name">Internal Shipments Waiting Assignation</field>
-            <field name="res_model">stock.shipment.internal</field>
-            <field name="domain">[('state', '=', 'waiting')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_waiting_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_internal_view_tree"/>
-            <field name="act_window" ref="act_shipment_internal_waiting_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_waiting_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_internal_view_form"/>
-            <field name="act_window" ref="act_shipment_internal_waiting_form"/>
-        </record>
-        <menuitem parent="menu_shipment_internal_form" sequence="30"
-                  action="act_shipment_internal_waiting_form"
-                  id="menu_shipment_internal_waiting_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_internal_assigned_form">
-            <field name="name">Assigned Internal Shipments</field>
-            <field name="res_model">stock.shipment.internal</field>
-            <field name="domain">[('state', '=', 'assigned')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_assigned_form_view1">
-            <field name="sequence" eval="1"/>
-            <field name="view" ref="shipment_internal_view_tree"/>
-            <field name="act_window" ref="act_shipment_internal_assigned_form"/>
-        </record>
-        <record model="ir.action.act_window.view"
-                id="act_shipment_internal_assigned_form_view2">
-            <field name="sequence" eval="2"/>
-            <field name="view" ref="shipment_internal_view_form"/>
-            <field name="act_window" ref="act_shipment_internal_assigned_form"/>
-        </record>
-        <menuitem parent="menu_shipment_internal_form" sequence="40"
-                  action="act_shipment_internal_assigned_form"
-                  id="menu_shipment_internal_assigned_form"/>
 
         <record model="ir.ui.view" id="shipment_internal_assign_failed_view_form">
             <field name="model">stock.shipment.internal.assign.failed</field>
@@ -649,7 +586,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_out_return_form">
             <field name="name">Customer Return Shipments</field>
             <field name="res_model">stock.shipment.out.return</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_out_return_form_view1">
@@ -663,9 +600,30 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="shipment_out_return_view_form"/>
             <field name="act_window" ref="act_shipment_out_return_form"/>
         </record>
-        <menuitem parent="menu_shipment_out_form" sequence="40"
-                  action="act_shipment_out_return_form"
-                  id="menu_shipment_out_return_form"/>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_out_return_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_out_return_form_domain_received">
+            <field name="name">Received</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'received')]</field>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_shipment_out_return_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_out_return_form"/>
+        </record>
+        <menuitem parent="menu_shipment_out_form" sequence="10"
+            action="act_shipment_out_return_form"
+            id="menu_shipment_out_return_form"/>
 
         <record model="ir.action.report" id="report_shipment_out_delivery_note">
             <field name="name">Delivery Note</field>
