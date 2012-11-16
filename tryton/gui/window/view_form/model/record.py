@@ -536,6 +536,11 @@ class Record(SignalEvent):
                 continue
             fieldnames.add(fieldname)
             values.update(self._get_on_change_args(on_change_with))
+            if isinstance(self.group.fields[fieldname], (fields.M2OField,
+                        fields.ReferenceField)):
+                field_rec_name = fieldname + '.rec_name'
+                if field_rec_name in self.value:
+                    del self.value[field_rec_name]
         if fieldnames:
             try:
                 result = RPCExecute('model', self.model_name, 'on_change_with',
