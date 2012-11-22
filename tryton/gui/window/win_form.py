@@ -392,6 +392,8 @@ class WinForm(NoModal):
 
     def close(self, widget):
         widget.emit_stop_by_name('close')
+        if self.but_cancel:
+            self.response(self.win, gtk.RESPONSE_CANCEL)
         return True
 
     def response(self, win, response_id):
