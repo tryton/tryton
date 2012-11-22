@@ -936,8 +936,11 @@ class Line(ModelSQL, ModelView):
                     res['account.rec_name'] = \
                         self.party.account_receivable.rec_name
 
-        journal = (self.journal
-                or Journal(Transaction().context.get('journal')))
+        journal = None
+        if self.journal:
+            journal = self.journal
+        elif Transaction().context.get('journal'):
+            journal = Journal(Transaction().context.get('journal'))
         if journal and self.party:
             if journal.type == 'revenue':
                 if 'account' not in res:
