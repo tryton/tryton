@@ -1646,7 +1646,6 @@ class ProductSupplier(ModelSQL, ModelView):
     def compute_supply_date(self, product_supplier, date=None):
         '''
         Compute the supply date for the Product Supplier at the given date
-            and the next supply date
 
         :param product_supplier: a BrowseRecord of the Product Supplier
         :param date: the date of the purchase if None the current date
