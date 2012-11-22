@@ -1502,7 +1502,6 @@ class ProductSupplier(ModelSQL, ModelView):
     def compute_supply_date(self, date=None):
         '''
         Compute the supply date for the Product Supplier at the given date
-            and the next supply date
         '''
         Date = Pool().get('ir.date')
 
