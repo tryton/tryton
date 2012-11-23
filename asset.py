@@ -495,7 +495,7 @@ class Asset(Workflow, ModelSQL, ModelView):
                 account=self.product.account_depreciation_used,
                 )
         lines = [asset_line, depreciation_line]
-        square_amount = asset_line['credit'] - depreciation_line['debit']
+        square_amount = asset_line.credit - depreciation_line.debit
         if square_amount:
             if not account:
                 account = self.product.account_revenue_used
