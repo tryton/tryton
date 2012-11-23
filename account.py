@@ -12,7 +12,6 @@ from trytond.tools import reduce_ids
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.config import CONFIG
 from trytond.backend import TableHandler
 
 __all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
@@ -114,6 +113,7 @@ class TypeTemplate(ModelSQL, ModelView):
         pool = Pool()
         Type = pool.get('account.account.type')
         Lang = pool.get('ir.lang')
+        Config = pool.get('ir.configuration')
 
         if template2type is None:
             template2type = {}
@@ -125,7 +125,7 @@ class TypeTemplate(ModelSQL, ModelView):
 
             new_type = Type.create(vals)
 
-            prev_lang = self._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
             for field_name, field in self._fields.iteritems():
                 if getattr(field, 'translate', False):
@@ -274,7 +274,9 @@ class Type(ModelSQL, ModelView):
         value, used to convert template id into type. The dictionary is filled
         with new types
         '''
-        Lang = Pool().get('ir.lang')
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Config = pool.get('ir.configuration')
 
         if template2type is None:
             template2type = {}
@@ -284,7 +286,7 @@ class Type(ModelSQL, ModelView):
             if vals:
                 self.write([self], vals)
 
-            prev_lang = self._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
             for field_name, field in self.template._fields.iteritems():
                 if getattr(field, 'translate', False):
@@ -431,6 +433,7 @@ class AccountTemplate(ModelSQL, ModelView):
         pool = Pool()
         Account = pool.get('account.account')
         Lang = pool.get('ir.lang')
+        Config = pool.get('ir.configuration')
 
         if template2account is None:
             template2account = {}
@@ -447,7 +450,7 @@ class AccountTemplate(ModelSQL, ModelView):
 
             new_account = Account.create(vals)
 
-            prev_lang = self._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
             for field_name, field in self._fields.iteritems():
                 if getattr(field, 'translate', False):
@@ -883,7 +886,9 @@ class Account(ModelSQL, ModelView):
         template2type is a dictionary with type template id as key and type id
         as value, used to convert type template id into type.
         '''
-        Lang = Pool().get('ir.lang')
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Config = pool.get('ir.configuration')
 
         if template2account is None:
             template2account = {}
@@ -901,7 +906,7 @@ class Account(ModelSQL, ModelView):
             if vals:
                 self.write([self], vals)
 
-            prev_lang = self._context.get('language') or CONFIG['language']
+            prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
             for field_name, field in self.template._fields.iteritems():
                 if getattr(field, 'translate', False):
@@ -1650,8 +1655,9 @@ class CreateChart(Wizard):
         TaxRuleTemplate = pool.get('account.tax.rule.template')
         TaxRuleLineTemplate = \
                 pool.get('account.tax.rule.line.template')
+        Config = pool.get('ir.configuration')
 
-        with Transaction().set_context(language=CONFIG['language']):
+        with Transaction().set_context(language=Config.get_language()):
             account_template = self.account.account_template
 
             # Create account types
