@@ -12,7 +12,6 @@ from trytond.pyson import If, Eval, Bool, Id
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.config import CONFIG
 from trytond.rpc import RPC
 
 __all__ = ['Invoice', 'InvoicePaymentLine', 'InvoiceLine',
@@ -356,10 +355,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
         return self.invoice_date or Date.today()
 
     def on_change_with_party_lang(self, name=None):
+        Config = Pool().get('ir.configuration')
         if self.party:
             if self.party.lang:
                 return self.party.lang.code
-        return CONFIG['language']
+        return Config.get_language()
 
     @classmethod
     def get_type_name(self, invoices, name):
@@ -1443,9 +1443,10 @@ class InvoiceLine(ModelSQL, ModelView):
         return 'line'
 
     def on_change_with_party_lang(self, name=None):
+        Config = Pool().get('ir.configuration')
         if self.party and self.party.lang:
             return self.party.lang.code
-        return CONFIG['language']
+        return Config.get_language()
 
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
