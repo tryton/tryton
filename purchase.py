@@ -10,7 +10,6 @@ from trytond.backend import TableHandler
 from trytond.pyson import Eval, Bool, If, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond.config import CONFIG
 
 __all__ = ['Purchase', 'PurchaseInvoice', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
@@ -333,10 +332,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
         return 2
 
     def on_change_with_party_lang(self, name=None):
+        Config = Pool().get('ir.configuration')
         if self.party:
             if self.party.lang:
                 return self.party.lang.code
-        return CONFIG['language']
+        return Config.get_language()
 
     def get_tax_context(self):
         context = {}
