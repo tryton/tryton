@@ -190,11 +190,12 @@ class Property(ModelSQL, ModelView):
             res['company'] = user.company.id
         return res
 
-    def search(self, domain, offset=0, limit=None, order=None, count=False):
+    def search(self, domain, offset=0, limit=None, order=None, count=False,
+            query_string=False):
         if Transaction().user == 0 and not 'user' in Transaction().context:
             domain = ['AND', domain[:], ('company', '=', False)]
-        return super(Property, self).search(domain, offset=offset,
-                limit=limit, order=order, count=count)
+        return super(Property, self).search(domain, offset=offset, limit=limit,
+            order=order, count=count, query_string=query_string)
 
 Property()
 
