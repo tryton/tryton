@@ -12,7 +12,6 @@ from trytond.backend import TableHandler
 from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond.config import CONFIG
 
 __all__ = ['Sale', 'SaleInvoice', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLine', 'SaleLineTax', 'SaleLineInvoiceLine', 'SaleLineIgnoredMove',
@@ -385,9 +384,10 @@ class Sale(Workflow, ModelSQL, ModelView):
         return res
 
     def on_change_with_party_lang(self, name=None):
+        Config = Pool().get('ir.configuration')
         if self.party and self.party.lang:
             return self.party.lang.code
-        return CONFIG['language']
+        return Config.get_language()
 
     def on_change_lines(self):
         pool = Pool()
