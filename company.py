@@ -255,11 +255,12 @@ class Property:
         return res
 
     @classmethod
-    def search(cls, domain, offset=0, limit=None, order=None, count=False):
+    def search(cls, domain, offset=0, limit=None, order=None, count=False,
+            query_string=False):
         if Transaction().user == 0 and not 'user' in Transaction().context:
             domain = ['AND', domain[:], ('company', '=', None)]
-        return super(Property, cls).search(domain, offset=offset,
-                limit=limit, order=order, count=count)
+        return super(Property, cls).search(domain, offset=offset, limit=limit,
+            order=order, count=count, query_string=query_string)
 
 
 class Sequence:
