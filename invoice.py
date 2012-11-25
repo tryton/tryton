@@ -48,6 +48,8 @@ class InvoiceLine(ModelSQL, ModelView):
         move_obj = self.pool.get('stock.move')
         currency_obj = self.pool.get('currency.currency')
 
+        with Transaction().set_user(0, set_context=True):
+            line = self.browse(line.id)
         result = super(InvoiceLine, self).get_move_line(line)
 
         if line.type != 'line':
