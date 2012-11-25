@@ -809,7 +809,8 @@ class Screen(SignalEvent):
         if button.get('confirm', False) and not sur(button['confirm']):
             return
         record = self.current_record
-        record.save(force_reload=False)
+        if not record.save(force_reload=False):
+            return
         context = record.context_get()
         try:
             action_id = RPCExecute('model', self.model_name, button['name'],
