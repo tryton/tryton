@@ -331,21 +331,13 @@ class PurchaseRequest(ModelSQL, ModelView):
         Date = Pool().get('ir.date')
 
         supplier = None
-        timedelta = datetime.timedelta.max
         today = Date.today()
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier.compute_supply_date(date=today)
-            sup_timedelta = date - supply_date
-            if not supplier:
+            timedelta = date - supply_date
+            if not supplier and timedelta >= datetime.timedelta(0):
                 supplier = product_supplier.party
-                timedelta = sup_timedelta
-                continue
-
-            if timedelta < datetime.timedelta(0) \
-                    and (sup_timedelta >= datetime.timedelta(0) \
-                    or sup_timedelta > timedelta):
-                supplier = product_supplier.party
-                timedelta = sup_timedelta
+                break
 
         if supplier:
             purchase_date = product_supplier.compute_purchase_date(date)
