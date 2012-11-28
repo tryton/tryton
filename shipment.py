@@ -308,11 +308,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             dates = shipment._move_planned_date
             incoming_date, inventory_date = dates
             Move.write([m for m in shipment.incoming_moves
-                    if m.state not in ('assigned', 'done', 'cancel')], {
+                    if (m.state not in ('assigned', 'done', 'cancel')
+                        and m.planned_date != incoming_date)], {
                     'planned_date': incoming_date,
                     })
             Move.write([m for m in shipment.inventory_moves
-                    if m.state not in ('assigned', 'done', 'cancel')], {
+                    if (m.state not in ('assigned', 'done', 'cancel')
+                        and m.planned_date != inventory_date)], {
                     'planned_date': inventory_date,
                     })
 
@@ -601,7 +603,8 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         for shipment in shipments:
             Move.write([m for m in shipment.moves
-                    if m.state not in ('assigned', 'done', 'cancel')], {
+                    if (m.state not in ('assigned', 'done', 'cancel')
+                        and m.planned_date != shipment._move_planned_date)], {
                     'planned_date': shipment._move_planned_date,
                     })
 
@@ -1181,11 +1184,13 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             outgoing_date, inventory_date = shipment._move_planned_date
             Move.write([x for x in shipment.outgoing_moves
-                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    if (x.state not in ('assigned', 'done', 'cancel')
+                        and x.planned_date != outgoing_date)], {
                     'planned_date': outgoing_date,
                     })
             Move.write([x for x in shipment.inventory_moves
-                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    if (x.state not in ('assigned', 'done', 'cancel')
+                        and x.planned_date != inventory_date)], {
                     'planned_date': inventory_date,
                     })
 
@@ -1523,11 +1528,13 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             dates = shipment._get_move_planned_date()
             incoming_date, inventory_date = dates
             Move.write([x for x in shipment.incoming_moves
-                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    if (x.state not in ('assigned', 'done', 'cancel')
+                        and x.planned_date != incoming_date)], {
                     'planned_date': incoming_date,
                     })
             Move.write([x for x in shipment.inventory_moves
-                    if x.state not in ('assigned', 'done', 'cancel')], {
+                    if (x.state not in ('assigned', 'done', 'cancel')
+                        and x.planned_date != inventory_date)], {
                     'planned_date': inventory_date,
                     })
 
@@ -1638,12 +1645,14 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     def create_inventory_moves(cls, shipments):
         for shipment in shipments:
+            inventory_moves = []
             for incoming_move in shipment.incoming_moves:
                 vals = cls._get_inventory_moves(incoming_move)
                 if vals:
-                    cls.write([shipment], {
-                        'inventory_moves': [('create', vals)],
-                        })
+                    incoming_move.append(('create', vals))
+            cls.write([shipment], {
+                'inventory_moves': inventory_moves,
+                })
 
 
 class AssignShipmentOutAssignFailed(ModelView):
