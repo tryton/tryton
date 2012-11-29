@@ -29,14 +29,15 @@ Sao.Model = Class(Object, {
              },
     find: function(condition, offset, limit, order, context) {
               if (!offset) offset = 0;
+              var self = this;
               var prm = this.execute('search',
                       [condition, offset, limit, order], context);
               var instanciate = function(ids) {
-                  return Sao.Group(this, ids.map(function(id) {
-                      return new Sao.Record(this, id);
+                  return Sao.Group(self, ids.map(function(id) {
+                      return new Sao.Record(self, id);
                   }));
               };
-              return prm.pipe(instanciate.bind(this));
+              return prm.pipe(instanciate);
           },
     delete: function(records) {
                 var context = {}; // TODO
@@ -48,6 +49,9 @@ Sao.Model = Class(Object, {
 
 Sao.Group = function(model, array) {
     array.model = model;
+    array.forEach(function(e, i, a) {
+        e.group = a;
+    });
     return array;
 };
 
@@ -55,11 +59,13 @@ Sao.Record = Class(Object, {
     id_counter: -1,
     init: function(model, id) {
               this.model = model;
+              this.group = Sao.Group(model, []);
               this.id = id || Sao.Record.prototype.id_counter--;
               this._values = {};
               this._changed = {};
               this._loaded = {};
               this.fields = {};
+              this._timestamp;
           },
     has_changed: function() {
                      return !jQuery.isEmptyObject(this._changed);
@@ -94,7 +100,7 @@ Sao.Record = Class(Object, {
                   values = this._get_values(Object.keys(this._changed));
                   prm = this.model.execute('write', [this.id, values], context);
               }
-              prm.done(this.reload);
+              prm.done(this.reload.bind(this));
               return prm;
           },
     reload: function() {
@@ -103,7 +109,8 @@ Sao.Record = Class(Object, {
                 this._changed = {};
             },
     load: function(name) {
-              if ((this.id < 0) || !(name in this._loaded)) {
+              var self = this;
+              if ((this.id < 0) || (name in this._loaded)) {
                   return jQuery.when();
               }
               var id2record = {};
@@ -127,7 +134,28 @@ Sao.Record = Class(Object, {
                   loading = (this.model.fields[name].description.loading ||
                           'eager');
               }
-              // TODO group
+              if ((this.group.indexOf(this) >= 0) && (loading == 'eager')) {
+                  var idx = this.group.indexOf(this);
+                  var length = this.group.length;
+                  var n = 1;
+                  while (Object.keys(id2record).length &&
+                          ((idx - n >= 0) || (idx + n < length)) &&
+                          n < 100) {
+                      if (idx - n >= 0) {
+                          var record = this.group[idx - n];
+                          if (!(name in record._loaded) && (record.id >= 0)) {
+                              id2record[record.id] = record;
+                          }
+                      }
+                      if (idx + n < length) {
+                          var record = this.group[idx + n];
+                          if (!(name in record._loaded) && (record.id >= 0)) {
+                              id2record[record.id] = record;
+                          }
+                      }
+                      n++;
+                  }
+              }
               var context = {}; // TODO
               var fnames = [];
               if (loading == 'eager') {
@@ -135,7 +163,7 @@ Sao.Record = Class(Object, {
                       if (!this.model.fields.hasOwnProperty(fname)) {
                           continue;
                       }
-                      if ((this.mode.fields[fname].description.loading ||
+                      if ((this.model.fields[fname].description.loading ||
                                   'eager') == 'eager') {
                           fnames.push(fname);
                       }
@@ -144,7 +172,7 @@ Sao.Record = Class(Object, {
                   fnames = Object.keys(this.model.fields);
               }
               fnames = fnames.filter(function(e, i, a) {
-                  return !(e in this._loaded);
+                  return !(e in self._loaded);
               });
               // TODO add rec_name
               if (!('rec_name' in fnames)) {
@@ -152,7 +180,7 @@ Sao.Record = Class(Object, {
               }
               fnames.push('_timestamp');
               // TODO size of binary
-              prm = this.model.execute('read', [Object.keys(id2record),
+              var prm = this.model.execute('read', [Object.keys(id2record),
                       fnames], context);
               var succeed = function(values) {
                   var id2value = {};
@@ -165,7 +193,7 @@ Sao.Record = Class(Object, {
                       }
                       record = id2record[id];
                       // TODO exception
-                      value = id2value[id];
+                      var value = id2value[id];
                       if (record && value) {
                           record.set(value);
                       }
@@ -174,21 +202,44 @@ Sao.Record = Class(Object, {
               var failed = function() {
                   // TODO  call succeed
               };
-              return prm;
+              return prm.then(succeed, failed);
           },
-    get: function(name) {
+    set: function(values) {
+             for (var name in values) {
+                 if (!values.hasOwnProperty(name)) {
+                     continue;
+                 }
+                 var value = values[name];
+                 if (name == '_timestamp') {
+                     this._timestamp = value;
+                     continue;
+                 }
+                 if (!(name in this.model.fields)) {
+                     if (name == 'rec_name') {
+                         this.value[name] = value;
+                     }
+                     continue;
+                 }
+                 // TODO delay O2M
+                 // TODO Manage rec_name on M2O and Reference
+                 this.model.fields[name].set(this, value);
+                 this._loaded[name] = true;
+             }
+         },
+    field_get: function(name) {
              return this.model.fields[name].get(this);
          },
-    set: function(name, value) {
+    field_set: function(name, value) {
              this.model.fields[name].set(this, value);
          },
-    get_client: function(name) {
+    field_get_client: function(name) {
                     return this.model.fields[name].get_client(this);
                 },
-    set_client: function(name) {
+    field_set_client: function(name) {
                     this.model.fields[name].set_client(this, value);
                 }
 });
+
 
 Sao.field = {};
 

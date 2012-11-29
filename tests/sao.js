@@ -28,10 +28,13 @@ QUnit.test('CRUD', function() {
         });
         prm = prm.pipe(function() {
             QUnit.ok(user.id >= 0, 'Saved');
+            QUnit.ok(jQuery.isEmptyObject(user._values), 'No values');
+            QUnit.ok(jQuery.isEmptyObject(user._loaded), 'No field loaded');
             return user.load('name');
         });
         prm = prm.pipe(function() {
-            QUnit.ok(user.get_client('name') == 'Test', 'Check get_client');
+            QUnit.ok(user.field_get_client('name') == 'Test',
+                'Check field_get_client');
         });
         prm = prm.pipe(function() {
             return User.find([['id', '=', user.id]], 0, null, null, {});
@@ -48,6 +51,21 @@ QUnit.test('CRUD', function() {
                 QUnit.ok(users.length == 1, 'Deleted record not found');
             });
             return prm;
+        });
+        prm = prm.pipe(function() {
+            return User.find([], 0, null, null, {});
+        });
+        prm = prm.pipe(function(users) {
+            QUnit.ok(users.length >= 1, 'Found more then 1');
+            return users[0].load('login').pipe(function() {
+                return users;
+            });
+        });
+        prm = prm.pipe(function(users) {
+            QUnit.ok(users[0].field_get_client('login'),
+                'Check first field_get_client');
+            QUnit.ok(users[1].field_get_client('login'),
+                'Check second field_get_client');
         });
         prm.always(QUnit.start);
     };
