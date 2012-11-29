@@ -4,66 +4,66 @@
 
 Sao.Session = Class(Object, {
     init: function(database, login) {
-              this.database = database;
-              this.login = login;
-              this.user_id = null;
-              this.session = null;
-              if (!Sao.Session.current_session) {
-                  Sao.Session.current_session = this;
-              }
-          },
+        this.database = database;
+        this.login = login;
+        this.user_id = null;
+        this.session = null;
+        if (!Sao.Session.current_session) {
+            Sao.Session.current_session = this;
+        }
+    },
     do_login: function(login, password) {
-                  var dfd = jQuery.Deferred();
-                  var args = {
-                      'method': 'common.db.login',
-                      'params': [login, password]
-                  };
-                  var ajax_prm = jQuery.ajax({
-                      'contentType': 'application/json',
-                      'data': JSON.stringify(args),
-                      'dataType': 'json',
-                      'url': '/' + this.database,
-                      'type': 'post'
-                  });
+        var dfd = jQuery.Deferred();
+        var args = {
+            'method': 'common.db.login',
+            'params': [login, password]
+        };
+        var ajax_prm = jQuery.ajax({
+            'contentType': 'application/json',
+            'data': JSON.stringify(args),
+            'dataType': 'json',
+            'url': '/' + this.database,
+            'type': 'post'
+        });
 
-                  var ajax_success = function(data) {
-                      if (data === null) {
-                          Sao.warning('Unable to reach the server');
-                          dfd.reject();
-                      } else if (data.error) {
-                          console.log('ERROR');
-                          Sao.error(data.error[0], data.error[1]);
-                          dfd.reject();
-                      } else {
-                          if (!data.result) {
-                              this.user_id = null;
-                              this.session = null;
-                          } else {
-                              this.user_id = data.result[0];
-                              this.session = data.result[1];
-                          }
-                          dfd.resolve();
-                      }
-                  };
-                  ajax_prm.success(ajax_success.bind(this));
-                  ajax_prm.error(dfd.reject);
-                  return dfd.promise();
-              },
+        var ajax_success = function(data) {
+            if (data === null) {
+                Sao.warning('Unable to reach the server');
+                dfd.reject();
+            } else if (data.error) {
+                console.log('ERROR');
+                Sao.error(data.error[0], data.error[1]);
+                dfd.reject();
+            } else {
+                if (!data.result) {
+                    this.user_id = null;
+                    this.session = null;
+                } else {
+                    this.user_id = data.result[0];
+                    this.session = data.result[1];
+                }
+                dfd.resolve();
+            }
+        };
+        ajax_prm.success(ajax_success.bind(this));
+        ajax_prm.error(dfd.reject);
+        return dfd.promise();
+    },
     do_logout: function() {
-                   if (!(this.user_id && this.session)) {
-                       return;
-                   }
-                   var args = {
-                       'method': 'common.db.logout',
-                       'params': []
-                   };
-                   var prm = Sao.rpc(this, args);
-                   this.database = null;
-                   this.login = null;
-                   this.user_id = null;
-                   this.session = null;
-                   return prm;
-               }
+        if (!(this.user_id && this.session)) {
+            return;
+        }
+        var args = {
+            'method': 'common.db.logout',
+            'params': []
+        };
+        var prm = Sao.rpc(this, args);
+        this.database = null;
+        this.login = null;
+        this.user_id = null;
+        this.session = null;
+        return prm;
+    }
 });
 
 Sao.Session.get_credentials = function(parent_dfd) {

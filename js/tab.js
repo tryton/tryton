@@ -9,8 +9,8 @@ Sao.Tab = Class(Object, {
 
 Sao.Tab.Form = Class(Sao.Tab, {
     init: function(model_name, attributes) {
-              Sao.Tab.Form._super.init.call(this);
-              this.screen = new Sao.Screen(model_name, attributes);
-              this.attributes = jQuery.extend({}, attributes);
-          }
+        Sao.Tab.Form._super.init.call(this);
+        this.screen = new Sao.Screen(model_name, attributes);
+        this.attributes = jQuery.extend({}, attributes);
+    }
 });

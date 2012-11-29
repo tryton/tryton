@@ -4,9 +4,9 @@
 
 Sao.View = Class(Object, {
     init: function(screen, xml) {
-              this.view_type = null;
-              this.el = null;
-          }
+        this.view_type = null;
+        this.el = null;
+    }
 });
 
 Sao.View.parse = function(screen, xml) {
@@ -18,10 +18,10 @@ Sao.View.parse = function(screen, xml) {
 
 Sao.View.Tree = Class(Sao.View, {
     init: function(screen, xml) {
-              Sao.View.Tree._super.init.call(this, screen, xml);
-              this.view_type = 'tree';
-              this.el = $('<div/>', {
-                  'class': 'treeview'
-              });
-          }
+        Sao.View.Tree._super.init.call(this, screen, xml);
+        this.view_type = 'tree';
+        this.el = $('<div/>', {
+            'class': 'treeview'
+        });
+    }
 });

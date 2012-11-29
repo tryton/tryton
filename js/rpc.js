@@ -8,7 +8,6 @@ Sao.rpc = function(args, session) {
         session = new Sao.Session();
     }
 
-
     var ajax_prm = jQuery.ajax({
         'contentType': 'application/json',
         'data': JSON.stringify({
