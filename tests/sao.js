@@ -10,6 +10,25 @@ var SaoTest = {
     'dbname': 'test_' + new Date().getTime()
 };
 
+QUnit.test('JSON', function() {
+    var tests = {
+        'array': [1, 2, 3],
+        'object': {
+            'foo': true,
+            'bar': false
+        },
+        'datetime': new Date(2012, 11, 29, 19, 59, 10),
+        'date': new Date(2012, 11, 29),
+        'decimal': new Number(1.1)
+    };
+    for (var name in tests) {
+        var test = tests[name];
+        var result = Sao.rpc.convertJSONObject(jQuery.parseJSON(
+                JSON.stringify(Sao.rpc.prepareObject(test))));
+        QUnit.ok(test.toString() == result.toString(), 'JSON ' + name);
+    }
+});
+
 QUnit.test('CRUD', function() {
     var run_tests = function() {
         var User = new Sao.Model('res.user');

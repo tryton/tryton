@@ -10,10 +10,10 @@ Sao.rpc = function(args, session) {
 
     var ajax_prm = jQuery.ajax({
         'contentType': 'application/json',
-        'data': JSON.stringify({
+        'data': JSON.stringify(Sao.rpc.prepareObject({
             'method': args.method,
             'params': [session.user_id, session.session].concat(args.params)
-        }),
+        })),
         'dataType': 'json',
         'url': '/' + (session.database || ''),
         'type': 'post'
@@ -56,3 +56,95 @@ Sao.rpc = function(args, session) {
 
     return dfd.promise();
 };
+
+Sao.rpc.convertJSONObject = function(value, index, parent) {
+   if (value instanceof Array) {
+       for (var i = 0, length = value.length; i < length; i++) {
+           Sao.rpc.convertJSONObject(value[i], i, value);
+       }
+   } else if ((typeof(value) != 'string') &&
+       (typeof(value) != 'number')) {
+       if (value && value.__class__) {
+           switch (value.__class__) {
+               case 'datetime':
+                   value = new Date(Date.UTC(value.year,
+                           value.month, value.day, value.hour,
+                           value.minute, value.second));
+                   break;
+               case 'date':
+                   value = new Date(value.year,
+                       value.month, value.day);
+                   break;
+               case 'time':
+                   throw Error('Time support not implemented');
+               case 'buffer':
+                   throw Error('Buffer support not implemented');
+               case 'Decimal':
+                   value = new Number(value.decimal);
+                   break;
+           }
+           if (parent) {
+               parent[index] = value;
+           }
+       } else {
+           for (var p in value) {
+               Sao.rpc.convertJSONObject(value[p], p, value);
+           }
+       }
+   }
+   return parent || value;
+};
+
+Sao.rpc.prepareObject = function(value, index, parent) {
+    if (value instanceof Array) {
+        for (var i = 0, length = value.length; i < length; i++) {
+            Sao.rpc.prepareObject(value[i], i, value);
+        }
+    } else if ((typeof(value) != 'string') && (typeof(value) != 'number')) {
+        if (value instanceof Date) {
+            if (value.getHours() || value.getMinutes() || value.getSeconds)
+            {
+                value = {
+                    '__class__': 'datetime',
+                    'year': value.getUTCFullYear(),
+                    'month': value.getUTCMonth(),
+                    'day': value.getUTCDate(),
+                    'hour': value.getUTCHours(),
+                    'minute': value.getUTCMinutes(),
+                    'second': value.getUTCSeconds()
+                };
+            } else {
+                value = {
+                    '__class__': 'date',
+                    'year': value.getFullYear(),
+                    'month': value.getMonth(),
+                    'day': value.getDate()
+                };
+            }
+            if (parent) {
+                parent[index] = value;
+            }
+        } else if (value instanceof Number) {
+            value = {
+                '__class__': 'Decimal',
+                'decimal': value.valueOf()
+            };
+            if (parent) {
+                parent[index] = value;
+            }
+        } else {
+            for (var p in value) {
+                Sao.rpc.prepareObject(value[p], p, value);
+            }
+        }
+    }
+    return parent || value;
+};
+
+jQuery.ajaxSetup({
+    converters: {
+       'text json': function(json) {
+           return Sao.rpc.convertJSONObject(jQuery.parseJSON(json));
+       }
+    }
+});
