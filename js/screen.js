@@ -74,5 +74,31 @@ Sao.Screen = Class(Object, {
         this.el.append(this.current_view.el);
         // TODO display and cursor
         return jQuery.when();
+    },
+    search_filter: function() {
+        var domain = [];
+        // TODO domain parser
+
+        if (domain.length && this.attributes.domain) {
+            domain.unshift('AND');
+            domain.push(this.attributes.domain);
+        } else
+            domain = this.attributes.domain || [];
+        var grp_prm = this.model.find(domain, this.attributes.offset,
+                this.attributes.limit, this.attributes.order,
+                this.context);
+        var group_setter = function(group) {
+            this.group = group;
+        };
+        grp_prm.done(group_setter.bind(this));
+        return grp_prm;
+    },
+    display: function() {
+        if (this.views) {
+            for (var i = 0; i < this.views.length; i++)
+                if (this.views[i])
+                    this.views[i].display();
+        }
     }
 });
+

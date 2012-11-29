@@ -41,7 +41,11 @@ this repository contains the full copyright notices and license terms. -->
                             return form.screen.switch_view();
                             }).done(function() {
                                 $('#menu').html(form.screen.el);
-                                });
+                                }).done(function() {
+                                    form.screen.search_filter().done(function() {
+                                        form.screen.display()
+                                        });
+                                    });
                         });
                     });
         </SCRIPT>
