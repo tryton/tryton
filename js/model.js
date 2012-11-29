@@ -4,6 +4,7 @@
 
 Sao.Model = Class(Object, {
     init: function(name, attributes) {
+              attributes = attributes || {};
               this.name = name;
               this.session = Sao.Session.current_session;
               this.fields = {};
