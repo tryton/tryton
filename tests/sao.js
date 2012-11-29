@@ -45,7 +45,7 @@ QUnit.test('CRUD', function() {
             return users;
         });
         prm = prm.pipe(function(users) {
-            User.delete(users);
+            User.delete(users, {});
             prm = User.find([['login', '=', 'test']], 0, null, null, {});
             prm.done(function(users) {
                 QUnit.ok(users.length == 1, 'Deleted record not found');

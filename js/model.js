@@ -8,7 +8,6 @@ Sao.Model = Class(Object, {
         this.name = name;
         this.session = Sao.Session.current_session;
         this.fields = {};
-        this.context = attributes.context || {};
     },
     add_fields: function(descriptions) {
         for (var name in descriptions) {
@@ -33,22 +32,22 @@ Sao.Model = Class(Object, {
         var prm = this.execute('search',
                 [condition, offset, limit, order], context);
         var instanciate = function(ids) {
-            return Sao.Group(self, ids.map(function(id) {
+            return Sao.Group(self, context, ids.map(function(id) {
                 return new Sao.Record(self, id);
             }));
         };
         return prm.pipe(instanciate);
     },
-    delete: function(records) {
-        var context = {}; // TODO
+    delete: function(records, context) {
         return this.execute('delete', [records.map(function(record) {
             return record.id;
         })], context);
     }
 });
 
-Sao.Group = function(model, array) {
+Sao.Group = function(model, context, array) {
     array.model = model;
+    array.context = context;
     array.forEach(function(e, i, a) {
         e.group = a;
     });
@@ -59,7 +58,7 @@ Sao.Record = Class(Object, {
     id_counter: -1,
     init: function(model, id) {
         this.model = model;
-        this.group = Sao.Group(model, []);
+        this.group = Sao.Group(model, {}, []);
         this.id = id || Sao.Record.prototype.id_counter--;
         this._values = {};
         this._changed = {};
@@ -83,8 +82,7 @@ Sao.Record = Class(Object, {
         return values;
     },
     save: function() {
-        // TODO context
-        var context = {};
+        var context = this.get_context();
         var prm, values;
         if (this.id < 0) {
             values = this._get_values();
@@ -156,7 +154,7 @@ Sao.Record = Class(Object, {
                         n++;
                     }
         }
-        var context = {}; // TODO
+        var context = this.get_context();
         var fnames = [];
         if (loading == 'eager') {
             for (var fname in this.model.fields) {
@@ -225,6 +223,9 @@ Sao.Record = Class(Object, {
             this.model.fields[name].set(this, value);
             this._loaded[name] = true;
         }
+    },
+    get_context: function() {
+        return this.group.context;
     },
     field_get: function(name) {
         return this.model.fields[name].get(this);
