@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<HTML>
+    <HEAD>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <TITLE>Tryton</TITLE>
+        <SCRIPT type="text/javascript" src="external/jquery.js"></SCRIPT>
+        <SCRIPT type="text/javascript">
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape('%3CSCRIPT type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"%3E%3C/SCRIPT%3E'));
+            }
+        </SCRIPT>
+        <SCRIPT type="text/javascript" src="external/jquery-ui.js"></SCRIPT>
+        <LINK rel="stylesheet" type="text/css" href="external/jquery-ui.css"
+        media="screen"/>
+        <SCRIPT type="text/javascript">
+            if (typeof jQuery.ui == 'undefined') {
+                document.write(unescape('%3CSCRIPT type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"%3E%3C/SCRIPT%3E'));
+                document.write(unescape('%3CLINK rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" media="screen"/%3E'));
+            }
+        </SCRIPT>
+        <SCRIPT type="text/javascript" src="js/class.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/sao.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/rpc.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/session.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/model.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/tab.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/screen.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="js/view.js"></SCRIPT>
+    </HEAD>
+    <BODY>
+        <SCRIPT type="text/javascript">
+            $(function() {
+                    dfd = jQuery.Deferred();
+                    Sao.Session.get_credentials(dfd);
+                    dfd.done(function(session) {
+                        Sao.Session.current_session = session;
+                        var form = new Sao.Tab.Form('ir.ui.menu', {});
+                        form.screen.load_next_view().pipe(function() {
+                            return form.screen.switch_view();
+                            }).done(function() {
+                                $('#menu').html(form.screen.el);
+                                });
+                        });
+                    });
+        </SCRIPT>
+        <DIV id="menu"/>
+    </BODY>
+</HTML>
