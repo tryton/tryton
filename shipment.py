@@ -1649,7 +1649,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             for incoming_move in shipment.incoming_moves:
                 vals = cls._get_inventory_moves(incoming_move)
                 if vals:
-                    incoming_move.append(('create', vals))
+                    inventory_moves.append(('create', vals))
             cls.write([shipment], {
                 'inventory_moves': inventory_moves,
                 })
