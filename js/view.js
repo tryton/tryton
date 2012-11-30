@@ -100,7 +100,8 @@ Sao.View.Tree = Class(Sao.View, {
                     'pre_validate': child.getAttribute('pre_validate') == 1,
                     'completion': child.getAttribute('completion') == 1
                 };
-                var ColumnFactory = Sao.View.tree_column_get(attributes['widget']);
+                var ColumnFactory = Sao.View.tree_column_get(
+                    attributes['widget']);
                 var column = new ColumnFactory(model, attributes);
             } else if (child.tagName == 'button') {
                 var attributes = {
@@ -142,9 +143,11 @@ Sao.View.Tree.CharColumn = Class(Object, {
         this.attributes = attributes;
     },
     render: function(record) {
-        var cell = $('<span/>', {
-            text: this.field.get_client(record)
-        });
+        var cell = $('<span/>');
+        var update_text = function() {
+            cell.text(this.field.get_client(record));
+        };
+        record.load(this.attributes.name).done(update_text.bind(this));
         return cell;
     }
 });
