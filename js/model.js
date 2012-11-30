@@ -214,7 +214,7 @@ Sao.Record = Class(Object, {
             }
             if (!(name in this.model.fields)) {
                 if (name == 'rec_name') {
-                    this.value[name] = value;
+                    this._values[name] = value;
                 }
                 continue;
             }
