@@ -36,7 +36,11 @@ this repository contains the full copyright notices and license terms. -->
                     Sao.Session.get_credentials(dfd);
                     dfd.done(function(session) {
                         Sao.Session.current_session = session;
-                        var form = new Sao.Tab.Form('ir.ui.menu', {});
+                        var form = new Sao.Tab.Form('ir.ui.menu', {
+                            'mode': ['tree'],
+                            'view_ids': [3],
+                            'domain': [['parent', '=', null]]
+                            });
                         form.screen.load_next_view().pipe(function() {
                             return form.screen.switch_view();
                             }).done(function() {

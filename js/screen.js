@@ -41,7 +41,7 @@ Sao.Screen = Class(Object, {
         var xml_view = jQuery(jQuery.parseXML(arch));
         // TODO loading lazy/eager
         this.model.add_fields(fields);
-        var view = Sao.View.parse(this, xml_view);
+        var view = Sao.View.parse(this, xml_view, view.field_childs);
         this.views.push(view);
         return view;
     },

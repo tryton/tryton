@@ -10,10 +10,10 @@ Sao.View = Class(Object, {
     }
 });
 
-Sao.View.parse = function(screen, xml) {
+Sao.View.parse = function(screen, xml, children_field) {
     switch (xml.children().prop('tagName')) {
         case 'tree':
-            return new Sao.View.Tree(screen, xml);
+            return new Sao.View.Tree(screen, xml, children_field);
     }
 };
 
@@ -25,12 +25,14 @@ Sao.View.tree_column_get = function(type) {
 };
 
 Sao.View.Tree = Class(Sao.View, {
-    init: function(screen, xml) {
+    init: function(screen, xml, children_field) {
         Sao.View.Tree._super.init.call(this, screen, xml);
         this.view_type = 'tree';
         this.el = $('<div/>', {
             'class': 'treeview'
         });
+        this.expanded = {};
+        this.children_field = children_field;
 
         // Columns
         this.columns = [];
@@ -118,23 +120,91 @@ Sao.View.Tree = Class(Sao.View, {
     display: function() {
         this.tbody.empty();
         var add_row = function(record, pos, group) {
-            var tr = $('<tr/>');
-            for (var i = 0; i < this.columns.length; i++) {
-                var td = $('<td/>');
-                var column = this.columns[i];
-                if (column.type == 'field') {
-                    td.append(column.render(record));
-                } else {
-                    td.append(column.render());
-                }
-                tr.append(td);
-            }
-            this.tbody.append(tr);
+            var tree_row = new Sao.View.Tree.Row(this, pos);
+            tree_row.display(record);
         };
         this.screen.group.forEach(add_row.bind(this));
     }
 });
 
+Sao.View.Tree.Row = Class(Object, {
+    init: function(tree, pos, parent) {
+        this.tree = tree;
+        this.children_field = tree.children_field;
+        this.expander = null;
+        this.expander_icon = null;
+        if (parent) {
+            var path = jQuery.extend([], parent.path.split('.'));
+        } else
+            var path = [];
+        path.push(pos);
+        this.path = path.join('.');
+        this.el = $('<tr/>');
+    },
+    is_expanded: function() {
+        return (this.path in this.tree.expanded);
+    },
+    display: function(record) {
+        console.log(this.path);
+        var depth = this.path.split('.').length;
+        for (var i = 0; i < this.tree.columns.length; i++) {
+            var td = $('<td/>');
+            if ((i == 0) && this.children_field) {
+                if (this.is_expanded()) {
+                    var expanded = 'ui-icon-minus';
+                } else
+                    var expanded = 'ui-icon-plus';
+                this.expander = $('<span/>', {
+                    'class': 'expander'
+                });
+                this.expander.html('&nbsp;');
+                // 16 == minimum width of icon
+                this.expander.css('width', ((depth * 10) + 16) + 'px');
+                this.expander.css('float', 'left');
+                this.expander.click(this.toggle_row.bind(this));
+                this.expander_icon = $('<i/>', {
+                    'class': 'ui-icon ' + expanded
+                });
+                this.expander.append(this.expander_icon);
+                this.expander_icon.css('float', 'right');
+                td.append(this.expander);
+            }
+            var column = this.tree.columns[i];
+            td.append(column.render(record));
+            this.el.append(td);
+        }
+        this.tree.tbody.append(this.el);
+        if (this.is_expanded()) {
+            var add_row = function(record, pos, group) {
+                var tree_row = new Sao.View.Tree.Row(this.tree, pos, this);
+                tree_row.display(record);
+            };
+            add_row = add_row.bind(this);
+            var children_field = this.children_field;
+            console.log('Load children of ' + this.path);
+            record.load(this.children_field).done(function() {
+                var children = record.field_get(children_field);
+                var subgroup = Sao.Group(record.model, record.group.context,
+                    children.map(function(id) {
+                        return new Sao.Record(record.model, id);
+                    }));
+                subgroup.forEach(add_row);
+            });
+        }
+    },
+    toggle_row: function() {
+        if (this.is_expanded()) {
+            this.expander_icon.removeClass('ui-icon-minus');
+            this.expander_icon.addClass('ui-icon-plus');
+            delete this.tree.expanded[this.path];
+        } else {
+            this.expander_icon.removeClass('ui-icon-plus');
+            this.expander_icon.addClass('ui-icon-minus');
+            this.tree.expanded[this.path] = this;
+        }
+        this.tree.display();
+    }
+});
 
 Sao.View.Tree.CharColumn = Class(Object, {
     init: function(model, attributes) {
@@ -158,6 +228,10 @@ Sao.View.Tree.ButtonColumn = Class(Object, {
         this.attributes = attributes;
     },
     render: function() {
-        return $('<button/>');
+        var button = $('<button/>', {
+            'class': 'button',
+            'label': this.attributes.string
+        });
+        return button;
     }
 });
