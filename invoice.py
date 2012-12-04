@@ -48,12 +48,13 @@ class Invoice:
                 states[invoice.id] = 'ignored'
         return states
 
-    def copy(self, ids, default=None):
+    @classmethod
+    def copy(cls, invoices, default=None):
         if default is None:
             default = {}
         default = default.copy()
         default.setdefault('sales', None)
-        return super(Invoice, self).copy(ids, default=default)
+        return super(Invoice, cls).copy(invoices, default=default)
 
     @classmethod
     def delete(cls, invoices):
