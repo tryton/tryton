@@ -70,10 +70,6 @@ class Production:
                 ('consumable', '=', False),
                 ('purchasable', '=', False),
                 ])
-        # order product by supply period
-        products_period = sorted([(p.get_supply_period(), p)
-                for p in products])
-
         # compute requests
         cursor = Transaction().cursor
         today = Date.today()
@@ -84,6 +80,11 @@ class Production:
                     stock_date_end=today):
                 pbl = Product.products_by_location(warehouse_ids,
                     product_ids, with_childs=True, skip_zero=False)
+
+            # order product by supply period
+            products_period = sorted([(p.get_supply_period(), p)
+                    for p in products[i:i + cursor.IN_MAX]])
+
             for warehouse in warehouses:
                 quantities = dict((x, pbl.pop((warehouse.id, x)))
                     for x in product_ids)
