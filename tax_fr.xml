@@ -551,11 +551,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.group" id="group_tva_vente">
             <field name="name">T.V.A. Vente</field>
             <field name="code">T.V.A. Vente</field>
+            <field name="kind">sale</field>
         </record>
 
         <record model="account.tax.group" id="group_tva_achat">
             <field name="name">T.V.A. Achat</field>
             <field name="code">T.V.A. Achat</field>
+            <field name="kind">purchase</field>
         </record>
 
         <record model="account.tax.template" id="tva_vente_19_6">
@@ -903,6 +905,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.rule.template"
             id="tax_rule_ventes_intracommunautaires_exonere">
             <field name="name">Ventes intracommunautaires exonéré</field>
+            <field name="kind">sale</field>
             <field name="account" ref="root"/>
         </record>
         <record model="account.tax.rule.line.template"
@@ -915,6 +918,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.rule.template"
             id="tax_rule_ventes_intracommunautaires">
             <field name="name">Ventes intracommunautaires</field>
+            <field name="kind">sale</field>
             <field name="account" ref="root"/>
         </record>
         <record model="account.tax.rule.line.template"
@@ -956,6 +960,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.rule.template"
             id="tax_rule_ventes_hors_communaute">
             <field name="name">Ventes hors communauté</field>
+            <field name="kind">sale</field>
             <field name="account" ref="root"/>
         </record>
         <record model="account.tax.rule.line.template"
