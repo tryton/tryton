@@ -79,9 +79,9 @@ class Party:
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
         user = User(user_id)
-        company_id = user.company.id
-        if not company_id:
+        if not user.company:
             return res
+        company_id = user.company.id
 
         line_query, _ = MoveLine.query_get()
 
@@ -142,7 +142,10 @@ class Party:
                 company_id = Transaction().context['company']
 
         if not company_id:
-            company_id = user.company.id or user.main_company.id
+            if user.company:
+                company_id = user.company.id
+            elif user.main_company:
+                company_id = user.main_company.id
 
         if not company_id:
             return []
