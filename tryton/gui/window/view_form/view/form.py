@@ -22,6 +22,7 @@ class ViewForm(ParserView):
             if isinstance(widget, gtk.Button):
                 widget.connect('clicked', self.button_clicked)
                 widget.set_focus_on_click(False)
+                widget.connect('enter-notify-event', self.leave)
 
         # Force to display the first time it switches on a page
         # This avoids glitch in position of widgets
