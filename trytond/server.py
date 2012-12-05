@@ -31,6 +31,7 @@ class TrytonServer(object):
 
         CONFIG.update_etc(options['configfile'])
         CONFIG.update_cmdline(options)
+        CONFIG.set_timezone()
 
         if CONFIG['logfile']:
             logf = CONFIG['logfile']
