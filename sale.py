@@ -960,7 +960,11 @@ class SaleLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
-        domain=[('parent', '=', None)], states={
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in', ['sale', 'both'])],
+            ],
+        states={
             'invisible': Eval('type') != 'line',
             }, depends=['type'])
     invoice_lines = fields.Many2Many('sale.line-account.invoice.line',
