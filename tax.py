@@ -16,12 +16,19 @@ __all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
     'AccountTemplateTaxTemplate', 'AccountTemplate2', 'AccountTax', 'Account2']
 __metaclass__ = PoolMeta
 
+KINDS = [
+    ('sale', 'Sale'),
+    ('purchase', 'Purchase'),
+    ('both', 'Both'),
+    ]
+
 
 class TaxGroup(ModelSQL, ModelView):
     'Tax Group'
     __name__ = 'account.tax.group'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None, required=True)
+    kind = fields.Selection(KINDS, 'Kind', required=True)
 
     @classmethod
     def __register__(cls, module_name):
@@ -31,6 +38,10 @@ class TaxGroup(ModelSQL, ModelView):
 
         # Migration from 1.4 drop code_uniq constraint
         table.drop_constraint('code_uniq')
+
+    @staticmethod
+    def default_kind():
+        return 'both'
 
 
 class TaxCodeTemplate(ModelSQL, ModelView):
@@ -867,9 +878,14 @@ class TaxRuleTemplate(ModelSQL, ModelView):
     'Tax Rule Template'
     __name__ = 'account.tax.rule.template'
     name = fields.Char('Name', required=True, translate=True)
+    kind = fields.Selection(KINDS, 'Kind', required=True)
     lines = fields.One2Many('account.tax.rule.line.template', 'rule', 'Lines')
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
+
+    @staticmethod
+    def default_kind():
+        return 'both'
 
     def _get_tax_rule_value(self, rule=None):
         '''
@@ -878,6 +894,8 @@ class TaxRuleTemplate(ModelSQL, ModelView):
         res = {}
         if not rule or rule.name != self.name:
             res['name'] = self.name
+        if not rule or rule.kind != self.kind:
+            res['kind'] = self.kind
         if not rule or rule.template.id != self.id:
             res['template'] = self.id
         return res
@@ -929,6 +947,7 @@ class TaxRule(ModelSQL, ModelView):
     'Tax Rule'
     __name__ = 'account.tax.rule'
     name = fields.Char('Name', required=True, translate=True)
+    kind = fields.Selection(KINDS, 'Kind', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
@@ -1003,7 +1022,16 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
         domain=[
             ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
-            ('group', '=', Eval('group'))
+            ('group', '=', Eval('group')),
+            ['OR',
+                ('group', '=', None),
+                If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
+                    ('group.kind', 'in', ['sale', 'both']),
+                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
+                        'purchase',
+                        ('group.kind', 'in', ['purchase', 'both']),
+                        ('group.kind', 'in', ['sale', 'purchase', 'both']))),
+                ],
             ],
         help='If the original tax template is filled, the rule will be ' \
             'applied only for this tax template.',
@@ -1012,6 +1040,15 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         domain=[
             ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
             ('group', '=', Eval('group')),
+            ['OR',
+                ('group', '=', None),
+                If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
+                    ('group.kind', 'in', ['sale', 'both']),
+                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
+                        'purchase',
+                        ('group.kind', 'in', ['purchase', 'both']),
+                        ('group.kind', 'in', ['sale', 'purchase', 'both']))),
+                ],
             ],
         depends=['group'])
     sequence = fields.Integer('Sequence',
@@ -1094,6 +1131,15 @@ class TaxRuleLine(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('_parent_rule', {}).get('company')),
             ('group', '=', Eval('group')),
+            ['OR',
+                ('group', '=', None),
+                If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
+                    ('group.kind', 'in', ['sale', 'both']),
+                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
+                        'purchase',
+                        ('group.kind', 'in', ['purchase', 'both']),
+                        ('group.kind', 'in', ['sale', 'purchase', 'both']))),
+                ],
             ],
         help='If the original tax is filled, the rule will be applied ' \
             'only for this tax.',
@@ -1102,6 +1148,15 @@ class TaxRuleLine(ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('_parent_rule', {}).get('company')),
             ('group', '=', Eval('group')),
+            ['OR',
+                ('group', '=', None),
+                If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
+                    ('group.kind', 'in', ['sale', 'both']),
+                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
+                        'purchase',
+                        ('group.kind', 'in', ['purchase', 'both']),
+                        ('group.kind', 'in', ['sale', 'purchase', 'both']))),
+                ],
             ],
         depends=['group'])
     sequence = fields.Integer('Sequence',

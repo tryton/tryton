@@ -32,13 +32,19 @@ class Party:
                 }))
     customer_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
             'Customer Tax Rule',
-            domain=[('company', '=', Eval('context', {}).get('company', 0))],
+            domain=[
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('kind', 'in', ['sale', 'both']),
+                ],
             states={
                 'invisible': ~Eval('context', {}).get('company'),
                 }, help='Apply this rule on taxes when party is customer.'))
     supplier_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
             'Supplier Tax Rule',
-            domain=[('company', '=', Eval('context', {}).get('company', 0))],
+            domain=[
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('kind', 'in', ['purchase', 'both']),
+                ],
             states={
                 'invisible': ~Eval('context', {}).get('company'),
                 }, help='Apply this rule on taxes when party is supplier.'))

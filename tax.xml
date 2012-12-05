@@ -16,6 +16,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="code"/>
                     <field name="code"/>
+                    <label name="kind"/>
+                    <field name="kind"/>
                 </form>
                 ]]>
             </field>
@@ -28,6 +30,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Tax Groups">
                     <field name="name"/>
                     <field name="code"/>
+                    <field name="kind"/>
                 </tree>
                 ]]>
             </field>
@@ -646,6 +649,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="account"/>
                     <field name="account"/>
+                    <label name="kind"/>
+                    <field name="kind"/>
                     <field name="lines" colspan="4"/>
                 </form>
                 ]]>
@@ -660,6 +665,7 @@ this repository contains the full copyright notices and license terms. -->
                 <tree string="Tax Rules">
                     <field name="account"/>
                     <field name="name"/>
+                    <field name="kind"/>
                 </tree>
                 ]]>
             </field>
@@ -700,6 +706,8 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="name"/>
                     <label name="company"/>
                     <field name="company"/>
+                    <label name="kind"/>
+                    <field name="kind"/>
                     <field name="lines" colspan="4"
                         view_ids="account.tax_rule_line_view_tree_sequence"/>
                 </form>
@@ -714,6 +722,7 @@ this repository contains the full copyright notices and license terms. -->
                 <![CDATA[
                 <tree string="Tax Rules">
                     <field name="name"/>
+                    <field name="kind"/>
                 </tree>
                 ]]>
             </field>
