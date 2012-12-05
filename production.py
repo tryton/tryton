@@ -68,9 +68,6 @@ class Production(Model):
                 ('purchasable', '=', False),
                 ])
         products = product_obj.browse(product_ids)
-        # order product by supply period
-        products_period = sorted([(product_obj.get_supply_period(p), p)
-            for p in products])
 
         # compute requests
         cursor = Transaction().cursor
@@ -82,6 +79,11 @@ class Production(Model):
                     stock_date_end=today):
                 pbl = product_obj.products_by_location(warehouse_ids,
                     product_ids, with_childs=True, skip_zero=False)
+
+            # order product by supply period
+            products_period = sorted([(product_obj.get_supply_period(p), p)
+                    for p in products[i:i + cursor.IN_MAX]])
+
             for warehouse in warehouses:
                 quantities = dict((x, pbl.pop((warehouse.id, x)))
                     for x in product_ids)
