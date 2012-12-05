@@ -1362,7 +1362,21 @@ class InvoiceLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
-        'line', 'tax', 'Taxes', domain=[('parent', '=', None)],
+        'line', 'tax', 'Taxes',
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in',
+                    If(Bool(Eval('_parent_invoice')),
+                        If(Eval('_parent_invoice', {}).get('type').in_(
+                                ['out_invoice', 'out_credit_note']),
+                            ['sale', 'both'],
+                            ['purchase', 'both']),
+                        If(Eval('invoice_type').in_(
+                                ['out_invoice', 'out_credit_note']),
+                            ['sale', 'both'],
+                            ['purchase', 'both']))
+                    )],
+            ],
         states={
             'invisible': Eval('type') != 'line',
             },
