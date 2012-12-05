@@ -42,14 +42,22 @@ class Category:
     taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
         help='Use the taxes defined on the parent category')
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
-        'category', 'tax', 'Customer Taxes', domain=[('parent', '=', None)],
+        'category', 'tax', 'Customer Taxes',
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in', ['sale', 'both'])],
+            ],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_parent')),
             },
         depends=['taxes_parent'])
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
-        'category', 'tax', 'Supplier Taxes', domain=[('parent', '=', None)],
+        'category', 'tax', 'Supplier Taxes',
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in', ['purchase', 'both'])],
+            ],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_parent')),
@@ -180,13 +188,21 @@ class Template:
     taxes_category = fields.Boolean('Use Category\'s Taxes',
             help='Use the taxes defined on the category')
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
-        'product', 'tax', 'Customer Taxes', domain=[('parent', '=', None)],
+        'product', 'tax', 'Customer Taxes',
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in', ['sale', 'both'])],
+            ],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_category')),
             }, depends=['taxes_category'])
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
-        'product', 'tax', 'Supplier Taxes', domain=[('parent', '=', None)],
+        'product', 'tax', 'Supplier Taxes',
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in', ['purchase', 'both'])],
+            ],
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_category')),
