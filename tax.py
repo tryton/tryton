@@ -1129,7 +1129,8 @@ class TaxRuleLine(ModelSQL, ModelView):
             if not getattr(self, field) and field != 'group':
                 continue
             if self._fields[field]._type == 'many2one':
-                if getattr(self, field).id != pattern[field]:
+                if ((getattr(self, field).id if getattr(self, field) else None)
+                        != pattern[field]):
                     return False
             else:
                 if getattr(self, field) != pattern[field]:
