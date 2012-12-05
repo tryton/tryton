@@ -45,6 +45,10 @@ class Period(ModelSQL, ModelView):
                     },
                 })
 
+    @staticmethod
+    def default_state():
+        return 'draft'
+
     @classmethod
     @ModelView.button
     def draft(cls, periods):
