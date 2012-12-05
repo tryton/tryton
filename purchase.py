@@ -872,7 +872,11 @@ class PurchaseLine(ModelSQL, ModelView):
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
-        'line', 'tax', 'Taxes', domain=[('parent', '=', None)],
+        'line', 'tax', 'Taxes',
+        domain=[('parent', '=', None), ['OR',
+                ('group', '=', None),
+                ('group.kind', 'in', ['purchase', 'both'])],
+            ],
         states={
             'invisible': Eval('type') != 'line',
             }, depends=['type'])
