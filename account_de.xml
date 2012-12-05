@@ -10226,14 +10226,17 @@
         <record model="account.tax.group" id="tax_group_vst_reduced">
             <field name="name">Vorsteuer ermäßigt</field>
             <field name="code">vst_reduced</field>
+            <field name="kind">both</field>
         </record>
         <record model="account.tax.group" id="tax_group_ust">
             <field name="name">Umsatzsteuer</field>
             <field name="code">ust</field>
+            <field name="kind">both</field>
         </record>
         <record model="account.tax.group" id="tax_group_vst">
             <field name="name">Vorsteuer</field>
             <field name="code">vst</field>
+            <field name="kind">both</field>
         </record>
         <record model="account.tax.template" id="tax_eu_19_purchase">
             <field name="name">Innergem. Erwerb 19%USt/19%VSt</field>
@@ -10475,26 +10478,32 @@
         <record model="account.tax.rule.template" id="tax_rule_eu_no_id_purchase">
             <field name="name">Lieferant EU (ohne Ust-ID)</field>
             <field name="account" ref="root_de"/>
+            <field name="kind">purchase</field>
         </record>
         <record model="account.tax.rule.template" id="tax_rule_non_eu_purchase">
             <field name="name">Lieferant Ausland</field>
             <field name="account" ref="root_de"/>
+            <field name="kind">purchase</field>
         </record>
         <record model="account.tax.rule.template" id="tax_rule_eu_vat_id_sale">
             <field name="name">Kunde EU Unternehmen (mit USt-ID)</field>
             <field name="account" ref="root_de"/>
+            <field name="kind">sale</field>
         </record>
         <record model="account.tax.rule.template" id="tax_rule_non_eu_sale">
             <field name="name">Kunde Ausland</field>
             <field name="account" ref="root_de"/>
+            <field name="kind">sale</field>
         </record>
         <record model="account.tax.rule.template" id="tax_rule_eu_vat_id_purchase">
             <field name="name">Lieferant EU Unternehmen (mit USt-ID)</field>
             <field name="account" ref="root_de"/>
+            <field name="kind">purchase</field>
         </record>
         <record model="account.tax.rule.template" id="tax_rule_eu_no_id_sale">
             <field name="name">Kunde EU (ohne USt-ID)</field>
             <field name="account" ref="root_de"/>
+            <field name="kind">sale</field>
         </record>
         <record model="account.tax.rule.line.template" id="tax_rule_line_11">
             <field name="rule" ref="tax_rule_non_eu_purchase"/>
