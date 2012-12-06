@@ -1927,15 +1927,19 @@ class InvoiceTax(ModelSQL, ModelView):
             else:
                 invoice_type = 'out_invoice'
             if invoice_type in ('out_invoice', 'in_invoice'):
-                changes['base_code'] = tax.invoice_base_code.id
+                changes['base_code'] = (tax.invoice_base_code.id
+                    if tax.invoice_base_code else None)
                 changes['base_sign'] = tax.invoice_base_sign
-                changes['tax_code'] = tax.invoice_tax_code.id
+                changes['tax_code'] = (tax.invoice_tax_code.id
+                    if tax.invoice_tax_code else None)
                 changes['tax_sign'] = tax.invoice_tax_sign
                 changes['account'] = tax.invoice_account.id
             else:
-                changes['base_code'] = tax.credit_note_base_code.id
+                changes['base_code'] = (tax.credit_note_base_code.id
+                    if tax.credit_note_base_code else None)
                 changes['base_sign'] = tax.credit_note_base_sign
-                changes['tax_code'] = tax.credit_note_tax_code.id
+                changes['tax_code'] = (tax.credit_note_tax_code.id
+                    if tax.credit_note_tax_code else None)
                 changes['tax_sign'] = tax.credit_note_tax_sign
                 changes['account'] = tax.credit_note_account.id
         return changes
