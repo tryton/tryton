@@ -306,7 +306,10 @@ class Production(Workflow, ModelSQL, ModelView):
                     input_.product.default_uom)
                 changes['cost'] += (Decimal(str(quantity)) *
                     input_.product.cost_price)
-
+        if hasattr(product_obj, 'cost_price'):
+            digits = product_obj.cost_price.digits
+        else:
+            digits = template_obj.cost_price.digits
         for output in bom.outputs:
             quantity = output_obj.compute_quantity(output, factor)
             values = self._explode_move_values(location, storage_location,
@@ -314,10 +317,9 @@ class Production(Workflow, ModelSQL, ModelView):
             if values:
                 values['unit_price'] = Decimal(0)
                 if output.product.id == values.get('product') and quantity:
-                    digits = template_obj.cost_price.digits[1]
                     values['unit_price'] = Decimal(
                         changes['cost'] / Decimal(str(quantity))
-                        ).quantize(Decimal(str(10 ** -digits)))
+                        ).quantize(Decimal(str(10 ** -digits[1])))
                 outputs['add'].append(values)
         return changes
 
