@@ -1380,7 +1380,7 @@ class InvoiceLine(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             },
-        depends=['type'])
+        depends=['type', 'invoice_type'])
     invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
         None, 'Invoice Taxes'), 'get_invoice_taxes')
 
