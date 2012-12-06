@@ -258,6 +258,7 @@ class Production(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
+        Product = pool.get('product.product')
         if not (self.bom and self.product and self.uom):
             return {}
         inputs = {
@@ -292,6 +293,10 @@ class Production(Workflow, ModelSQL, ModelView):
                 changes['cost'] += (Decimal(str(quantity)) *
                     input_.product.cost_price)
 
+        if hasattr(Product, 'cost_price'):
+            digits = Product.cost_price.digits
+        else:
+            digits = Template.cost_price.digits
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
             values = self._explode_move_values(self.location, storage_location,
@@ -299,10 +304,9 @@ class Production(Workflow, ModelSQL, ModelView):
             if values:
                 values['unit_price'] = Decimal(0)
                 if output.product.id == values.get('product') and quantity:
-                    digits = Template.cost_price.digits[1]
                     values['unit_price'] = Decimal(
                         changes['cost'] / Decimal(str(quantity))
-                        ).quantize(Decimal(str(10 ** -digits)))
+                        ).quantize(Decimal(str(10 ** -digits[1])))
                 outputs['add'].append(values)
         return changes
 
