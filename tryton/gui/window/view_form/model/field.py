@@ -507,7 +507,7 @@ class O2MField(CharField):
         for record2 in to_remove:
             record.value[self.name].remove(record2, signal=False)
 
-        if value and value.get('add') or value.get('update', []):
+        if value and (value.get('add') or value.get('update', [])):
             record.value[self.name].add_fields(fields, signal=False)
             for vals in value.get('add', []):
                 new_record = record.value[self.name].new(default=False,
