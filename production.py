@@ -445,6 +445,8 @@ class Production(Workflow, ModelSQL, ModelView):
         move_obj = pool.get('stock.move')
         input_obj = pool.get('production.bom.input')
         output_obj = pool.get('production.bom.output')
+        template_obj = pool.get('product.template')
+        product_obj = pool.get('product.product')
 
         storage_location = production.warehouse.storage_location
         location = production.location
@@ -475,6 +477,11 @@ class Production(Workflow, ModelSQL, ModelView):
                 move_obj.create(values)
                 cost += Decimal(str(quantity)) * product.cost_price
 
+        if hasatttr(product_obj, 'cost_price'):
+            digits = product_obj.cost_price.digits
+        else:
+            digits = template_obj.cost_price.digits
+
         for output in production.bom.outputs:
             quantity = output_obj.compute_quantity(output, factor)
             product = output.product
@@ -483,7 +490,9 @@ class Production(Workflow, ModelSQL, ModelView):
             if values:
                 values['production_output'] = production.id
                 if product == production.product:
-                    values['unit_price'] = cost / Decimal(str(quantity))
+                    values['unit_price'] = Decimal(
+                        cost / Decimal(str(quantity))
+                        ).quantize(Decimal(str(10 ** -digits[1])))
                 move_obj.create(values)
         self._set_move_planned_date([production.id])
 
