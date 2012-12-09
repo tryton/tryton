@@ -96,7 +96,7 @@ class SaleLine:
             if field.startswith('analytic_account_'):
                 if vals[field]:
                     selection_vals.setdefault('accounts', [])
-                    selection_vals['accounts'].append(('add', vals[field]))
+                    selection_vals['accounts'].append(('add', [vals[field]]))
                 del vals[field]
         if vals.get('analytic_accounts'):
             Selection.write([Selection(vals['analytic_accounts'])],
