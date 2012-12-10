@@ -1934,10 +1934,10 @@ class InvoiceTax(ModelSQL, ModelView):
         if self.tax and self.manual:
             tax = self.tax
             base = self.base or Decimal(0)
-            for tax in Tax.compute([tax], base, 1):
-                if (tax['tax'] == tax
-                        and tax['base'] == self.base):
-                    return tax['amount']
+            for values in Tax.compute([tax], base, 1):
+                if (values['tax'] == tax
+                        and values['base'] == base):
+                    return values['amount']
         return self.amount
 
     @classmethod
