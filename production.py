@@ -352,7 +352,8 @@ class Production(Workflow, ModelSQL, ModelView):
             result['unit_digits'] = 2
 
         values = values.copy()
-        values['uom'] = result['uom']
+        if 'uom' in result:
+            values['uom'] = result['uom']
         if 'bom' in result:
             values['bom'] = result['bom']
         result.update(self.explode_bom(values))
