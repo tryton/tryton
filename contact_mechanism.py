@@ -74,7 +74,7 @@ class ContactMechanism(ModelSQL, ModelView):
             depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     url = fields.Function(fields.Char('URL', states={
-                'invisible': (~Eval('type').in_(['email', 'website', 'skip',
+                'invisible': (~Eval('type').in_(['email', 'website', 'skype',
                             'sip'])
                     | ~Eval('url')),
                 }, depends=['type']),
