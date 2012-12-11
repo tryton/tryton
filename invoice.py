@@ -416,9 +416,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if tax.manual:
                 res['tax_amount'] += tax.amount or Decimal('0.0')
                 continue
-            key = (tax.base_code, tax.base_sign,
-                tax.tax_code, tax.tax_sign,
-                tax.account, tax.tax)
+            key = (tax.base_code.id if tax.base_code else None, tax.base_sign,
+                tax.tax_code.id if tax.tax_code else None, tax.tax_sign,
+                tax.account.id if tax.account else None,
+                tax.tax.id if tax.tax else None)
             if (key not in computed_taxes) or (key in tax_keys):
                 res['taxes'].setdefault('remove', [])
                 res['taxes']['remove'].append(tax.id)
