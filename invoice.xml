@@ -100,7 +100,6 @@ this repository contains the full copyright notices and license terms. -->
                                 view_ids="account_invoice.move_line_view_list_payment"/>
                         </page>
                     </notebook>
-                    <field name="currency_digits" invisible="1" colspan="6"/>
                     <field name="party_lang" invisible="1" colspan="6"/>
                 </form>
                 ]]>
@@ -124,8 +123,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="state"/>
                     <field name="amount_to_pay_today"/>
                     <field name="description"/>
-                    <field name="currency_digits" tree_invisible="1"/>
-                    <field name="create_date" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -423,8 +420,6 @@ this repository contains the full copyright notices and license terms. -->
                                 spell="If(Bool(Eval('_parent_invoice')), Get(Eval('_parent_invoice', {}), 'party_lang'), Eval('party_lang'))"/>
                         </page>
                     </notebook>
-                    <field name="unit_digits" invisible="1" colspan="4"/>
-                    <field name="currency_digits" invisible="1" colspan="4"/>
                     <field name="party_lang" invisible="1" colspan="4"/>
                 </form>
                 ]]>
@@ -447,8 +442,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="unit_price"/>
                     <field name="taxes"/>
                     <field name="amount"/>
-                    <field name="unit_digits" tree_invisible="1"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
@@ -470,8 +463,6 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="unit_price"/>
                     <field name="taxes"/>
                     <field name="amount" expand="1"/>
-                    <field name="unit_digits" tree_invisible="1"/>
-                    <field name="currency_digits" tree_invisible="1"/>
                 </tree>
                 ]]>
             </field>
