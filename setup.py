@@ -250,6 +250,11 @@ if os.name == 'nt':
             if os.path.isdir(os.path.join(gtk_dir, 'share', 'locale', lang)):
                 shutil.copytree(os.path.join(gtk_dir, 'share', 'locale', lang),
                     os.path.join(dist_dir, 'share', 'locale', lang))
+            if os.path.isdir(os.path.join(os.path.dirname(__file__),
+                        'share', 'locale', lang)):
+                shutil.copytree(os.path.join(os.path.dirname(__file__),
+                        'share', 'locale', lang),
+                    os.path.join(dist_dir, 'share', 'locale', lang))
 
         if os.path.isdir(os.path.join(dist_dir, 'share', 'themes',
                     'MS-Windows')):
@@ -364,6 +369,11 @@ elif sys.platform == 'darwin':
                         lang))
             if os.path.isdir(os.path.join(gtk_dir, 'share', 'locale', lang)):
                 shutil.copytree(os.path.join(gtk_dir, 'share', 'locale', lang),
+                    os.path.join(resources_dir, 'share', 'locale', lang))
+            if os.path.isdir(os.path.join(os.path.dirname(__file__),
+                        'share', 'locale', lang)):
+                shutil.copytree(os.path.join(os.path.dirname(__file__),
+                        'share', 'locale', lang),
                     os.path.join(resources_dir, 'share', 'locale', lang))
 
         # fix pathes within shared libraries
