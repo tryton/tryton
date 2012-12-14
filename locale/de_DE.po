@@ -528,29 +528,39 @@ msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
 msgstr "Interessenten/Verkaufschancen"
 
-msgctxt "model:ir.action,name:act_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr "Annullierte Interessenten und Verkaufschancen"
-
-msgctxt "model:ir.action,name:act_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr "Umgewandelte Verkaufschancen"
-
-msgctxt "model:ir.action,name:act_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr "Offene Interessenten"
-
-msgctxt "model:ir.action,name:act_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr "Verluste Interessenten und Verkaufschancen"
-
-msgctxt "model:ir.action,name:act_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr "Verkaufschancen"
-
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr "Verkaufschancen pro Monat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Annulliert"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Umgewandelt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Interessenten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Verlust"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Verkaufschancen"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
@@ -563,26 +573,6 @@ msgstr "Verkaufschancen pro Mitarbeiter"
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr "Interessenten und Verkaufschancen"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr "Annullierte Interessenten und Verkaufschancen"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr "Umgewandelte Verkaufschancen"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr "Offene Interessenten"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr "Verluste Interessenten und Verkaufschancen"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr "Verkaufschancen"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
