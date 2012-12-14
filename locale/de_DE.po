@@ -676,22 +676,6 @@ msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
 msgstr "Verkäufe"
 
-msgctxt "model:ir.action,name:act_sale_form_confirmed"
-msgid "Confirmed Sales"
-msgstr "Aufträge Verkäufe"
-
-msgctxt "model:ir.action,name:act_sale_form_draft"
-msgid "Draft Sales"
-msgstr "Entwürfe Verkäufe"
-
-msgctxt "model:ir.action,name:act_sale_form_processing"
-msgid "Processing Sales"
-msgstr "Verkäufe durchführen"
-
-msgctxt "model:ir.action,name:act_sale_form_quotation"
-msgid "Quotation Sales"
-msgstr "Angebote Verkäufe"
-
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
 msgstr "Lieferposten"
@@ -711,6 +695,29 @@ msgstr "Rücknahme erstellen"
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Bestätigt"
+
+msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
+msgid "Processing"
+msgstr "In Ausführung"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
+msgid "Quotation"
+msgstr "Angebot"
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"
@@ -739,22 +746,6 @@ msgstr "Einstellungen Verkauf"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Verkäufe"
-
-msgctxt "model:ir.ui.menu,name:menu_sale_form_confirmed"
-msgid "Confirmed Sales"
-msgstr "Aufträge (Verkäufe)"
-
-msgctxt "model:ir.ui.menu,name:menu_sale_form_draft"
-msgid "Draft Sales"
-msgstr "Entwürfe (Verkäufe)"
-
-msgctxt "model:ir.ui.menu,name:menu_sale_form_processing"
-msgid "Processing Sales"
-msgstr "Verkäufe durchführen"
-
-msgctxt "model:ir.ui.menu,name:menu_sale_form_quotation"
-msgid "Quotation Sales"
-msgstr "Angebote (Verkäufe)"
 
 msgctxt "model:res.group,name:group_sale"
 msgid "Sales"
@@ -898,7 +889,7 @@ msgstr "Manuell"
 
 msgctxt "selection:sale.configuration,sale_invoice_method:"
 msgid "On Order Processed"
-msgstr "Nach Durchführung Auftrag"
+msgstr "Nach Ausführung Auftrag"
 
 msgctxt "selection:sale.configuration,sale_invoice_method:"
 msgid "On Shipment Sent"
@@ -914,7 +905,7 @@ msgstr "Bei Bezahlung"
 
 msgctxt "selection:sale.configuration,sale_shipment_method:"
 msgid "On Order Processed"
-msgstr "Nach Durchführung Auftrag"
+msgstr "Nach Ausführung Auftrag"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
@@ -938,7 +929,7 @@ msgstr "Manuell"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "On Order Processed"
-msgstr "Nach Durchführung Auftrag"
+msgstr "Nach Ausführung Auftrag"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "On Shipment Sent"
@@ -970,7 +961,7 @@ msgstr "Bei Bezahlung"
 
 msgctxt "selection:sale.sale,shipment_method:"
 msgid "On Order Processed"
-msgstr "Nach Durchführung Auftrag"
+msgstr "Nach Ausführung Auftrag"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Exception"
@@ -1006,7 +997,7 @@ msgstr "Entwurf"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Processing"
-msgstr "Abschlussarbeiten"
+msgstr "In Ausführung"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
@@ -1134,7 +1125,7 @@ msgstr "Sonstiges"
 
 msgctxt "view:sale.sale:"
 msgid "Process"
-msgstr "Durchführen"
+msgstr "Ausführen"
 
 msgctxt "view:sale.sale:"
 msgid "Quotation"
