@@ -203,21 +203,22 @@ msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
 msgstr "Bedarfsermittlung"
 
-msgctxt "model:ir.action,name:act_forecast_form_draft"
-msgid "Draft Forecasts"
-msgstr "Entwürfe Bedarfsermittlung"
-
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
 msgstr "Bedarfsermittlung durchführen"
 
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
 msgstr "Bedarfsermittlung"
-
-msgctxt "model:ir.ui.menu,name:menu_forecast_form_draft"
-msgid "Draft Forecasts"
-msgstr "Entwürfe Bedarfsermittlung"
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
