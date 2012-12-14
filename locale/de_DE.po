@@ -246,13 +246,19 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Bestellvorschläge"
 
-msgctxt "model:ir.action,name:act_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Entwürfe Bestellvorschläge"
-
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
 msgstr "Auftrag erstellen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -273,10 +279,6 @@ msgstr "Bestellvorschläge erstellen"
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Bestellvorschläge"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Entwürfe (Bestellvorschläge)"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
