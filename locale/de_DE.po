@@ -1788,6 +1788,10 @@ msgctxt "field:account.tax.group,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "Art"
+
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
 msgstr "Name"
@@ -1863,6 +1867,10 @@ msgstr "Erstellt durch"
 msgctxt "field:account.tax.rule,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "Art"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
@@ -1995,6 +2003,10 @@ msgstr "Erstellt durch"
 msgctxt "field:account.tax.rule.template,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "Art"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
@@ -3277,6 +3289,10 @@ msgid "Debit"
 msgstr "Soll"
 
 msgctxt "odt:account.move.general_journal:"
+msgid "Description"
+msgstr "Bezeichnung"
+
+msgctxt "odt:account.move.general_journal:"
 msgid "Draft"
 msgstr "Entwurf"
 
@@ -3295,6 +3311,10 @@ msgstr "Journal Eintrag:"
 msgctxt "odt:account.move.general_journal:"
 msgid "Name"
 msgstr "Name"
+
+msgctxt "odt:account.move.general_journal:"
+msgid "Origin:"
+msgstr "Ursprung:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Posted"
@@ -3587,6 +3607,42 @@ msgstr "Per Geschäftsjahr"
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
 msgstr "Per Buchungszeitraum"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "Beide"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "Einkauf"
+
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "Beide"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "Einkauf"
+
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "Verkauf"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "Beide"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "Einkauf"
+
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "Verkauf"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
