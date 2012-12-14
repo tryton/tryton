@@ -16,7 +16,7 @@ msgstr "Konto Aufwand"
 
 msgctxt "field:product.category,account_expense_used:"
 msgid "Account Expense Used"
-msgstr "Konto Aufwand Benutzt"
+msgstr "Verwendetes Aufwandskonto"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
@@ -124,7 +124,7 @@ msgstr "Konto Aufwand"
 
 msgctxt "field:product.template,account_expense_used:"
 msgid "Account Expense Used"
-msgstr "Konto Aufwand Benutzt"
+msgstr "Verwendetes Aufwandskonto"
 
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
