@@ -904,10 +904,6 @@ msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Rechnung Steuer"
 
-msgctxt "model:ir.action,name:act_invoice_form"
-msgid "All Invoices"
-msgstr "Alle Rechnungen/Gutschriften"
-
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
 msgstr "Rechnungen"
@@ -916,65 +912,17 @@ msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
 msgid "Supplier Credit Notes"
 msgstr "Gutschriften von Lieferanten"
 
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
-msgid "Draft Supplier Credit Notes"
-msgstr "Entwürfe Lieferantengutschriften"
-
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
-msgid "Pro Forma Supplier Credit Notes"
-msgstr "Pro Forma Lieferantengutschriften"
-
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
-msgid "Opened Supplier Credit Notes"
-msgstr "Fakturierte Lieferantengutschriften"
-
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
 msgid "Supplier Invoices"
 msgstr "Rechnungseingang"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
-msgid "Draft Supplier Invoices"
-msgstr "Entwürfe Lieferantenrechnungen"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
-msgid "Pro Forma Supplier Invoices"
-msgstr "Pro Forma Lieferantenrechnungen"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
-msgid "Opened Supplier Invoices"
-msgstr "Fakturierte Lieferantenrechnungen"
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
 msgid "Credit Notes"
 msgstr "Gutschriften an Kunden"
 
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form3"
-msgid "Draft Credit Notes"
-msgstr "Entwürfe Kundengutschriften"
-
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
-msgid "Pro Forma Credit Notes"
-msgstr "Pro Forma Kundengutschriften"
-
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
-msgid "Opened Credit Notes"
-msgstr "Fakturierte Kundengutschriften"
-
 msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
 msgid "Invoices"
 msgstr "Rechnungsausgang"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form3"
-msgid "Draft Invoices"
-msgstr "Entwürfe Kundenrechnungen"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
-msgid "Pro Forma Invoices"
-msgstr "Pro Forma Kundenrechnungen"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
-msgid "Opened Invoices"
-msgstr "Fakturierte Kundenrechnungen"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -996,77 +944,105 @@ msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr "Rechnung bezahlen"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_opened"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_proforma"
+msgid "Pro Forma"
+msgstr "Pro Forma"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_opened"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_proforma"
+msgid "Pro Forma"
+msgstr "Pro Forma"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_opened"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_proforma"
+msgid "Pro Forma"
+msgstr "Pro Forma"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_opened"
+msgid "Opened"
+msgstr "Offen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_proforma"
+msgid "Pro Forma"
+msgstr "Pro Forma"
+
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Rechnung"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_form"
-msgid "All Invoices"
-msgstr "Alle Rechnungen/Gutschriften"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
 msgid "Supplier Credit Notes"
 msgstr "Gutschriften von Lieferanten"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
-msgid "Draft Supplier Credit Notes"
-msgstr "Entwürfe Lieferantengutschriften"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
-msgid "Pro Forma Supplier Credit Notes"
-msgstr "Pro Forma Lieferantengutschriften"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
-msgid "Opened Supplier Credit Notes"
-msgstr "Fakturierte Lieferantengutschriften"
-
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
 msgid "Supplier Invoices"
 msgstr "Rechnungseingang"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
-msgid "Draft Supplier Invoices"
-msgstr "Entwürfe Lieferantenrechnungen"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
-msgid "Pro Forma Supplier Invoices"
-msgstr "Pro Forma Lieferantenrechnungen"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
-msgid "Opened Supplier Invoices"
-msgstr "Fakturierte Lieferantenrechnungen"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
 msgid "Credit Notes"
 msgstr "Gutschriften an Kunden"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
-msgid "Draft Credit Notes"
-msgstr "Entwürfe Kundengutschriften"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
-msgid "Pro Forma Credit Notes"
-msgstr "Pro Forma Kundengutschriften"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
-msgid "Opened Credit Notes"
-msgstr "Fakturierte Kundengutschriften"
-
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
 msgid "Invoices"
 msgstr "Rechnungsausgang"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
-msgid "Draft Invoices"
-msgstr "Entwürfe Kundenrechnungen"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
-msgid "Pro Forma Invoices"
-msgstr "Pro Forma Kundenrechnungen"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
-msgid "Opened Invoices"
-msgstr "Fakturierte Kundenrechnungen"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
