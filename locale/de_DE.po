@@ -797,18 +797,6 @@ msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
 msgstr "Einkäufe"
 
-msgctxt "model:ir.action,name:act_purchase_form_confirmed"
-msgid "Confirmed Purchases"
-msgstr "Aufträge Einkäufe"
-
-msgctxt "model:ir.action,name:act_purchase_form_draft"
-msgid "Draft Purchases"
-msgstr "Entwürfe Einkäufe"
-
-msgctxt "model:ir.action,name:act_purchase_form_quotation"
-msgid "Purchases in Quotation"
-msgstr "Angebote Einkäufe"
-
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Rückgaben"
@@ -828,6 +816,25 @@ msgstr "Rechnungsvorbehalt bearbeiten"
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
 msgstr "Liefervorbehalt bearbeiten"
+
+msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
+msgid "Confirmed"
+msgstr "Bestätigt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
+msgid "Quotation"
+msgstr "Angebot"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
@@ -852,18 +859,6 @@ msgstr "Einstellungen Einkauf"
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
 msgstr "Einkäufe"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_form_confirmed"
-msgid "Confirmed Purchases"
-msgstr "Aufträge (Einkäufe)"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_form_draft"
-msgid "Draft Purchases"
-msgstr "Entwürfe (Einkäufe)"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_form_quotation"
-msgid "Purchases in Quotation"
-msgstr "Angebote (Einkäufe)"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
