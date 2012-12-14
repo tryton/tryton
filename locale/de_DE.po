@@ -1085,10 +1085,6 @@ msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Bestandskorrekturen"
 
-msgctxt "model:ir.action,name:act_inventory_form_draft"
-msgid "Draft Inventories"
-msgstr "Entwürfe Bestandskorrekturen"
-
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "Lagerorte"
@@ -1105,18 +1101,6 @@ msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
 msgstr "Lagerbewegungen"
 
-msgctxt "model:ir.action,name:act_move_form_cust"
-msgid "Moves to Customers"
-msgstr "Bewegungen zu Kunden"
-
-msgctxt "model:ir.action,name:act_move_form_supp"
-msgid "Moves from Suppliers"
-msgstr "Bewegungen von Lieferanten"
-
-msgctxt "model:ir.action,name:act_move_form_supp_proceed"
-msgid "Moves from Suppliers Waiting Arrival"
-msgstr "Erwartete Bewegungen von Lieferanten"
-
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Lagerperioden"
@@ -1129,37 +1113,17 @@ msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
 msgstr "Artikel"
 
-msgctxt "model:ir.action,name:act_shipment_in_draft"
-msgid "Draft Supplier Shipment"
-msgstr "Entwürfe Lieferposten von Lieferanten"
-
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Lieferposten von Lieferanten"
-
-msgctxt "model:ir.action,name:act_shipment_in_form_received"
-msgid "Received Supplier shipments"
-msgstr "Erhaltene Lieferposten von Lieferanten"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
 msgstr "Warenrückgaben (an Lieferanten)"
 
-msgctxt "model:ir.action,name:act_shipment_internal_assigned_form"
-msgid "Assigned Internal Shipments"
-msgstr "Zugewiesene Interne Lieferposten"
-
-msgctxt "model:ir.action,name:act_shipment_internal_draft_form"
-msgid "Draft Internal Shipments"
-msgstr "Entwürfe Interne Lieferposten"
-
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
 msgstr "Interne Lieferposten"
-
-msgctxt "model:ir.action,name:act_shipment_internal_waiting_form"
-msgid "Internal Shipments Waiting Assignation"
-msgstr "Wartende Interne Lieferposten"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
@@ -1172,18 +1136,6 @@ msgstr "Lieferposten als Kunde"
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
 msgstr "Lieferposten als Lieferant"
-
-msgctxt "model:ir.action,name:act_shipment_out_form_assigned"
-msgid "Assigned Customer Shipments"
-msgstr "Zugewiesene Lieferposten an Kunden"
-
-msgctxt "model:ir.action,name:act_shipment_out_form_ready"
-msgid "Customer Shipments Ready for Shipping"
-msgstr "Versandbereite Lieferposten an Kunden"
-
-msgctxt "model:ir.action,name:act_shipment_out_form_waiting"
-msgid "Customer Shipments Waiting Assignation"
-msgstr "Wartende Lieferposten an Kunden"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
@@ -1241,6 +1193,129 @@ msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Shipment Out"
 msgstr "Zuweisung Lieferposten ausgehend"
 
+msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_inventory_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
+msgid "From Suppliers"
+msgstr "Von Lieferanten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
+msgid "From Suppliers Waiting"
+msgstr "Von Lieferanten wartend"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
+msgid "To Customers"
+msgstr "Zu Kunden"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_form_domain_received"
+msgid "Received"
+msgstr "Erhalten"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
+msgid "Assigned"
+msgstr "Zugewiesen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_waiting"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_assigned"
+msgid "Assigned"
+msgstr "Zugewiesen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_waiting"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
+msgid "Assigned"
+msgstr "Zugewiesen"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_packed"
+msgid "Packed"
+msgstr "Gepackt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
+msgid "Waiting"
+msgstr "Wartend"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_draft"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_received"
+msgid "Received"
+msgstr "Erhalten"
+
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
 msgstr "Lieferposten Lieferant"
@@ -1289,10 +1364,6 @@ msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
 msgstr "Bestandskorrektur"
 
-msgctxt "model:ir.ui.menu,name:menu_inventory_form_draft"
-msgid "Draft Inventories"
-msgstr "Entwürfe Bestandskorrekturen"
-
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
 msgstr "Lagerorte"
@@ -1305,18 +1376,6 @@ msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
 msgstr "Bewegungen"
 
-msgctxt "model:ir.ui.menu,name:menu_move_form_cust"
-msgid "Moves to Customers"
-msgstr "Bewegungen zu Kunden"
-
-msgctxt "model:ir.ui.menu,name:menu_move_form_supp"
-msgid "Moves from Suppliers"
-msgstr "Bewegungen von Lieferanten"
-
-msgctxt "model:ir.ui.menu,name:menu_move_form_supp_proceed"
-msgid "Moves from Suppliers Waiting Arrival"
-msgstr "Erwartete Bewegungen von Lieferanten"
-
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
 msgstr "Lagerperioden"
@@ -1325,57 +1384,25 @@ msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Auswertungen"
 
-msgctxt "model:ir.ui.menu,name:menu_shipment_in_draft"
-msgid "Draft Supplier Shipment"
-msgstr "Entwürfe Lieferposten von Lieferanten"
-
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "Lieferposten von Lieferanten"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_in_received"
-msgid "Received Supplier shipments"
-msgstr "Erhaltene Lieferposten von Lieferanten"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
 msgstr "Warenrückgaben (an Lieferanten)"
 
-msgctxt "model:ir.ui.menu,name:menu_shipment_internal_assigned_form"
-msgid "Assigned Internal Shipments"
-msgstr "Zugewiesene Interne Lieferposten"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_internal_draft_form"
-msgid "Draft Internal Shipments"
-msgstr "Entwürfe Interne Lieferposten"
-
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
 msgstr "Interne Lieferposten"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_internal_waiting_form"
-msgid "Internal Shipments Waiting Assignation"
-msgstr "Wartende Interne Lieferposten"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_out_assigned"
-msgid "Assigned Customer Shipments"
-msgstr "Zugewiesene Lieferposten an Kunden"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
 msgstr "Lieferposten an Kunden"
 
-msgctxt "model:ir.ui.menu,name:menu_shipment_out_ready"
-msgid "Customer Shipments Ready for Shipping"
-msgstr "Versandbereite Lieferposten an Kunden"
-
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
 msgstr "Warenrücknahmen (von Kunden)"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_out_waiting"
-msgid "Customer Shipments Waiting Assignation"
-msgstr "Wartende Lieferposten an Kunden"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
