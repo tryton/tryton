@@ -245,6 +245,10 @@ msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
 msgstr "Wert"
