@@ -622,7 +622,9 @@ class Line(ModelSQL, ModelView):
                 ], order=[('id', 'DESC')], limit=1)
             if not lines:
                 return values
-            values['move'] = lines[0].move.id
+            move = lines[0].move
+            values['move'] = move.id
+            values['move.rec_name'] = move.rec_name
 
         if 'move' not in values:
             return values
@@ -633,8 +635,9 @@ class Line(ModelSQL, ModelView):
         no_code_taxes = []
         for line in move.lines:
             total += line.debit - line.credit
-            if line.party and 'party' in fields:
-                values.setdefault('party', line.party.id)
+            if line.party and 'party' in fields and 'party' not in values:
+                values['party'] = line.party.id
+                values['party.rec_name'] = line.party.rec_name
             if move.journal.type in ('expense', 'revenue'):
                 line_code_taxes = [x.code.id for x in line.tax_lines]
                 for tax in line.account.taxes:
@@ -672,12 +675,18 @@ class Line(ModelSQL, ModelView):
                     taxes[(account_id, code_id, tax_id)] = True
 
         if 'account' in fields:
+            account = None
             if total >= Decimal('0.0'):
-                values['account'] = (move.journal.credit_account \
-                        and move.journal.credit_account.id or None)
+                if move.journal.credit_account:
+                    account = move.journal.credit_account
             else:
-                values['account'] = (move.journal.debit_account \
-                        and move.journal.debit_account.id or None)
+                if move.journal.debit_account:
+                    account = move.journal.debit_account
+            if account:
+                    values['account'] = account.id
+                    values['account.rec_name'] = account.rec_name
+            else:
+                values['account'] = None
 
         if ('debit' in fields) or ('credit' in fields):
             values['debit'] = total < 0 and - total or Decimal(0)
