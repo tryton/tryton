@@ -381,6 +381,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def _on_change_lines_taxes(self):
         pool = Pool()
         Tax = pool.get('account.tax')
+        Account = pool.get('account.account')
+        TaxCode = pool.get('account.tax.code')
         res = {
             'untaxed_amount': Decimal('0.0'),
             'tax_amount': Decimal('0.0'),
@@ -456,6 +458,15 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 res['taxes'].setdefault('add', [])
                 value = Tax.default_get(Tax._fields.keys())
                 value.update(computed_taxes[key])
+                for field, Target in (
+                        ('account', Account),
+                        ('base_code', TaxCode),
+                        ('tax_code', TaxCode),
+                        ('tax', Tax),
+                        ):
+                    if value.get(field):
+                        value[field + '.rec_name'] = \
+                            Target(value[field]).rec_name
                 res['taxes']['add'].append(value)
         if self.currency:
             res['untaxed_amount'] = self.currency.round(res['untaxed_amount'])
