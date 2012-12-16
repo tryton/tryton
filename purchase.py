@@ -1560,6 +1560,8 @@ class ShipmentIn:
                 add_remove,
                 cls.incoming_moves.add_remove,
                 ]
+        if 'supplier' not in cls.incoming_moves.depends:
+            cls.incoming_moves.depends.append('supplier')
 
         cls._error_messages.update({
                 'reset_move': 'You cannot reset to draft a move generated '\
