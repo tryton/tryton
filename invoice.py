@@ -21,6 +21,7 @@ class Invoice:
             ('company', '=', Eval('company')),
             ('invoice', '=', None),
         ]
+        add_remove_depends = set(['type', 'party', 'currency', 'company'])
 
         if not cls.lines.add_remove:
             cls.lines.add_remove = add_remove
@@ -29,6 +30,7 @@ class Invoice:
                 add_remove,
                 cls.lines.add_remove,
                 ]
+        cls.lines.depends = list(set(cls.lines.depends) | add_remove_depends)
 
 
 class InvoiceLine:
