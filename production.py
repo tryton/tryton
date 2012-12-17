@@ -417,7 +417,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 move.save()
                 cost += Decimal(str(quantity)) * product.cost_price
 
-        if hasatttr(Product, 'cost_price'):
+        if hasattr(Product, 'cost_price'):
             digits = Product.cost_price.digits
         else:
             digits = Template.cost_price.digits
