@@ -6,7 +6,7 @@
     'name_de_DE': 'Lagerverwaltung Bestellwesen Produktion',
     'name_es_ES': 'Abastecimiento de stock en producción',
     'name_fr_FR': 'Gestion des approvisionnements de  production',
-    'version': '2.4.2',
+    'version': '2.4.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
