@@ -166,9 +166,9 @@ Buy an asset::
     True
     >>> supplier_invoice.invoice_date = today + relativedelta(day=1, month=1)
     >>> supplier_invoice.save()
-    >>> Invoice.open([supplier_invoice.id], config.context)
+    >>> Invoice.post([supplier_invoice.id], config.context)
     >>> supplier_invoice.state
-    u'open'
+    u'posted'
     >>> invoice_line, = supplier_invoice.lines
     >>> (asset_account.debit, asset_account.credit) == \
     ...     (Decimal('1000'), Decimal('0'))
@@ -280,9 +280,9 @@ Sale the asset::
     >>> invoice_line.account == revenue
     True
     >>> customer_invoice.save()
-    >>> Invoice.open([customer_invoice.id], config.context)
+    >>> Invoice.post([customer_invoice.id], config.context)
     >>> customer_invoice.state
-    u'open'
+    u'posted'
     >>> asset.reload()
     >>> asset.customer_invoice_line == customer_invoice.lines[0]
     True
