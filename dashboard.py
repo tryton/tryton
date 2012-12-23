@@ -19,6 +19,7 @@ class DashboardAction(ModelSQL, ModelView):
             required=True, ondelete='CASCADE', domain=[
                 ('res_model', '!=', None),
                 ('res_model', '!=', ''),
+                ('usage', '=', 'dashboard'),
             ])
 
     @classmethod
