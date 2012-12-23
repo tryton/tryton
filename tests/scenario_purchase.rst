@@ -240,10 +240,12 @@ Open supplier invoice::
     u'in_invoice'
     >>> len(invoice.lines)
     2
-    >>> Invoice.open([invoice.id], config.context)
+    >>> invoice.invoice_date = today
+    >>> invoice.save()
+    >>> Invoice.post([invoice.id], config.context)
     >>> invoice.reload()
     >>> invoice.state
-    u'open'
+    u'posted'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == \
     ... (Decimal('0.00'), Decimal('25.00'))
@@ -304,10 +306,12 @@ Open supplier credit note::
     u'in_credit_note'
     >>> len(credit_note.lines)
     1
-    >>> Invoice.open([credit_note.id], config.context)
+    >>> credit_note.invoice_date = today
+    >>> credit_note.save()
+    >>> Invoice.post([credit_note.id], config.context)
     >>> credit_note.reload()
     >>> credit_note.state
-    u'open'
+    u'posted'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == (Decimal(20), Decimal(25))
     True
@@ -379,14 +383,18 @@ Checking the invoice::
     (u'in_invoice', u'in_credit_note')
     >>> len(mix_invoice.lines), len(mix_credit_note.lines)
     (1, 1)
-    >>> Invoice.open([mix_invoice.id], config.context)
+    >>> mix_invoice.invoice_date = today
+    >>> mix_invoice.save()
+    >>> Invoice.post([mix_invoice.id], config.context)
     >>> mix_invoice.reload()
     >>> mix_invoice.state
-    u'open'
-    >>> Invoice.open([mix_credit_note.id], config.context)
+    u'posted'
+    >>> mix_credit_note.invoice_date = today
+    >>> mix_credit_note.save()
+    >>> Invoice.post([mix_credit_note.id], config.context)
     >>> mix_credit_note.reload()
     >>> mix_credit_note.state
-    u'open'
+    u'posted'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == (Decimal(30), Decimal(60))
     True

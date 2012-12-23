@@ -77,7 +77,7 @@ class Invoice:
             purchases = Purchase.search([
                     ('invoices', 'in', [i.id for i in invoices]),
                     ])
-        if purchases:
+        if purchases and any(i.state == 'cancel' for i in invoices):
             cls.raise_user_error('reset_invoice_purchase')
 
         return super(Invoice, cls).draft(invoices)
