@@ -357,7 +357,7 @@ class Line(ModelSQL, ModelView):
             ('party', '=', Eval('party')),
             ('account', '=', Eval('account')),
             If(Eval('_parent_statement', {}).get('state') == 'draft',
-                ('state', '=', 'open'),
+                ('state', '=', 'posted'),
                 ('state', '!=', '')),
             ],
         states={

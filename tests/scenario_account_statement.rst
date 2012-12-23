@@ -147,9 +147,9 @@ Create 2 customer invoices::
     >>> invoice_line.account = revenue
     >>> invoice_line.description = 'Test'
     >>> customer_invoice1.save()
-    >>> Invoice.open([customer_invoice1.id], config.context)
+    >>> Invoice.post([customer_invoice1.id], config.context)
     >>> customer_invoice1.state
-    u'open'
+    u'posted'
 
     >>> customer_invoice2 = Invoice(type='out_invoice')
     >>> customer_invoice2.party = customer
@@ -161,9 +161,9 @@ Create 2 customer invoices::
     >>> invoice_line.account = revenue
     >>> invoice_line.description = 'Test'
     >>> customer_invoice2.save()
-    >>> Invoice.open([customer_invoice2.id], config.context)
+    >>> Invoice.post([customer_invoice2.id], config.context)
     >>> customer_invoice2.state
-    u'open'
+    u'posted'
 
 Create 1 customer credit note::
 
@@ -177,9 +177,9 @@ Create 1 customer credit note::
     >>> invoice_line.account = revenue
     >>> invoice_line.description = 'Test'
     >>> customer_credit_note.save()
-    >>> Invoice.open([customer_credit_note.id], config.context)
+    >>> Invoice.post([customer_credit_note.id], config.context)
     >>> customer_credit_note.state
-    u'open'
+    u'posted'
 
 Create 1 supplier invoices::
 
@@ -192,10 +192,11 @@ Create 1 supplier invoices::
     >>> invoice_line.unit_price = Decimal('50')
     >>> invoice_line.account = expense
     >>> invoice_line.description = 'Test'
+    >>> supplier_invoice.invoice_date = today
     >>> supplier_invoice.save()
-    >>> Invoice.open([supplier_invoice.id], config.context)
+    >>> Invoice.post([supplier_invoice.id], config.context)
     >>> supplier_invoice.state
-    u'open'
+    u'posted'
 
 Create statement::
 
@@ -290,7 +291,7 @@ Test invoice state::
     u'paid'
     >>> customer_invoice2.reload()
     >>> customer_invoice2.state
-    u'open'
+    u'posted'
     >>> customer_invoice2.amount_to_pay == Decimal('70')
     True
     >>> customer_credit_note.reload()
