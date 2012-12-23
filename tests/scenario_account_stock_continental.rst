@@ -227,10 +227,11 @@ Open supplier invoice::
     >>> invoice_line.unit_price = Decimal('6')
     >>> invoice_line = invoice.lines[1]
     >>> invoice_line.unit_price = Decimal('4')
+    >>> invoice.invoice_date = today
     >>> invoice.save()
-    >>> Invoice.open([invoice.id], config.context)
+    >>> Invoice.post([invoice.id], config.context)
     >>> invoice.state
-    u'open'
+    u'posted'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == \
     ... (Decimal('0.00'), Decimal('44.00'))
@@ -292,9 +293,9 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> Invoice.open([invoice.id], config.context)
+    >>> Invoice.post([invoice.id], config.context)
     >>> invoice.state
-    u'open'
+    u'posted'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == \
     ... (Decimal('50.00'), Decimal('0.00'))
