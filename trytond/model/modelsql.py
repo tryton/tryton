@@ -658,7 +658,7 @@ class ModelSQL(ModelStorage):
                 if hasattr(self._columns[field], 'datetime_field') \
                         and self._columns[field].datetime_field:
                     for record in res:
-                        if not record[field]:
+                        if record[field] is None:
                             continue
                         with Transaction().set_context(_datetime=record[
                                     self._columns[field].datetime_field]):
