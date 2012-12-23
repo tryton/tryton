@@ -9,7 +9,7 @@
     'name_es_ES': 'Empresa',
     'name_fr_FR': 'Société',
     'name_nl_NL': 'Bedrijf',
-    'version': '2.0.2',
+    'version': '2.0.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
