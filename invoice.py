@@ -90,7 +90,7 @@ class Invoice:
             sales = Sale.search([
                     ('invoices', 'in', [i.id for i in invoices]),
                     ])
-        if sales:
+        if sales and any(i.state == 'cancel' for i in invoices):
             cls.raise_user_error('reset_invoice_sale')
 
         return super(Invoice, cls).draft(invoices)

@@ -245,10 +245,10 @@ Open customer invoice::
     u'out_invoice'
     >>> len(invoice.lines)
     2
-    >>> Invoice.open([invoice.id], config.context)
+    >>> Invoice.post([invoice.id], config.context)
     >>> invoice.reload()
     >>> invoice.state
-    u'open'
+    u'posted'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == \
     ... (Decimal('50.00'), Decimal('0.00'))
@@ -303,10 +303,10 @@ Open customer credit note::
     u'out_credit_note'
     >>> len(credit_note.lines)
     1
-    >>> Invoice.open([credit_note.id], config.context)
+    >>> Invoice.post([credit_note.id], config.context)
     >>> credit_note.reload()
     >>> credit_note.state
-    u'open'
+    u'posted'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == (Decimal(50), Decimal(40))
     True
@@ -372,14 +372,14 @@ Checking the invoice::
     (u'out_invoice', u'out_credit_note')
     >>> len(mix_invoice.lines), len(mix_credit_note.lines)
     (1, 1)
-    >>> Invoice.open([mix_invoice.id], config.context)
+    >>> Invoice.post([mix_invoice.id], config.context)
     >>> mix_invoice.reload()
     >>> mix_invoice.state
-    u'open'
-    >>> Invoice.open([mix_credit_note.id], config.context)
+    u'posted'
+    >>> Invoice.post([mix_credit_note.id], config.context)
     >>> mix_credit_note.reload()
     >>> mix_credit_note.state
-    u'open'
+    u'posted'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == (Decimal(120), Decimal(60))
     True
