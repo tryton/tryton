@@ -6,7 +6,7 @@
     'name_es_CO': 'Compañía',
     'name_es_ES': 'Empresa',
     'name_fr_FR': 'Société',
-    'version': '1.8.2',
+    'version': '1.8.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
