@@ -65,12 +65,15 @@ this repository contains the full copyright notices and license terms. -->
                                     </group>
                                     <group col="5" colspan="4" id="buttons">
                                         <button name="cancel" string="_Cancel"
-                                            icon="tryton-cancel"/>
+                                            icon="tryton-cancel"
+                                            confirm="Are you sure to cancel the invoice?"/>
                                         <button name="draft" string="_Draft"
                                             icon="tryton-go-previous"/>
-                                        <button name="proforma" string="Pro For_ma"
+                                        <button name="validate"
+                                            string="Validate"
+                                            help="Also known as Pro Forma"
                                             icon="tryton-go-next"/>
-                                        <button name="open" string="_Open"
+                                        <button name="post" string="_Post"
                                             icon="tryton-ok"/>
                                         <button name="pay" string="_Pay"
                                             icon="tryton-go-next"/>
@@ -81,12 +84,15 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Other Info" id="info">
                             <label name="company"/>
                             <field name="company"/>
+                            <newline/>
                             <label name="account"/>
                             <field name="account"/>
                             <label name="accounting_date"/>
                             <field name="accounting_date"/>
                             <label name="move"/>
                             <field name="move"/>
+                            <label name="cancel_move"/>
+                            <field name="cancel_move"/>
                             <separator name="comment" colspan="4"/>
                             <field name="comment" colspan="4"
                                 spell="Eval('party_lang')"/>
@@ -151,16 +157,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain">[('state', '=', 'draft')]</field>
             <field name="act_window" ref="act_invoice_out_invoice_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_proforma">
-            <field name="name">Pro Forma</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_validated">
+            <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="domain">[('state', '=', 'validated')]</field>
             <field name="act_window" ref="act_invoice_out_invoice_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_opened">
-            <field name="name">Opened</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_posted">
+            <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="domain">[('state', '=', 'posted')]</field>
             <field name="act_window" ref="act_invoice_out_invoice_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_all">
@@ -195,16 +201,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain">[('state', '=', 'draft')]</field>
             <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_proforma">
-            <field name="name">Pro Forma</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_validated">
+            <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="domain">[('state', '=', 'validated')]</field>
             <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_opened">
-            <field name="name">Opened</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_posted">
+            <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="domain">[('state', '=', 'post')]</field>
             <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_all">
@@ -239,16 +245,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain">[('state', '=', 'draft')]</field>
             <field name="act_window" ref="act_invoice_in_invoice_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_proforma">
-            <field name="name">Pro Forma</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_validated">
+            <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="domain">[('state', '=', 'validated')]</field>
             <field name="act_window" ref="act_invoice_in_invoice_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_opened">
-            <field name="name">Opened</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_posted">
+            <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="domain">[('state', '=', 'posted')]</field>
             <field name="act_window" ref="act_invoice_in_invoice_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_invoice_in_invoice_domain_all">
@@ -283,16 +289,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain">[('state', '=', 'draft')]</field>
             <field name="act_window" ref="act_invoice_in_credit_note_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_proforma">
-            <field name="name">Pro Forma</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_validated">
+            <field name="name">Validated</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'proforma')]</field>
+            <field name="domain">[('state', '=', 'validated')]</field>
             <field name="act_window" ref="act_invoice_in_credit_note_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_opened">
-            <field name="name">Opened</field>
+        <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_posted">
+            <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'open')]</field>
+            <field name="domain">[('state', '=', 'posted')]</field>
             <field name="act_window" ref="act_invoice_in_credit_note_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_invoice_in_credit_note_domain_all">
@@ -340,23 +346,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="account.group_account"/>
         </record>
 
-        <record model="ir.model.button" id="invoice_proforma_button">
-            <field name="name">proforma</field>
+        <record model="ir.model.button" id="invoice_validate_button">
+            <field name="name">validate</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="invoice_proforma_button_group_account">
-            <field name="button" ref="invoice_proforma_button"/>
+            id="invoice_validate_button_group_account">
+            <field name="button" ref="invoice_validate_button"/>
             <field name="group" ref="account.group_account"/>
         </record>
 
-        <record model="ir.model.button" id="invoice_open_button">
-            <field name="name">open</field>
+        <record model="ir.model.button" id="invoice_post_button">
+            <field name="name">post</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group"
-            id="invoice_open_button_group_account">
-            <field name="button" ref="invoice_open_button"/>
+            id="invoice_post_button_group_account">
+            <field name="button" ref="invoice_post_button"/>
             <field name="group" ref="account.group_account"/>
         </record>
 

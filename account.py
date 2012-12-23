@@ -74,7 +74,7 @@ class FiscalYear:
         cls._error_messages.update({
             'change_invoice_sequence': 'You can not change ' \
                     'the invoice sequence if there is already ' \
-                    'an invoice opened in the fiscalyear',
+                    'a posted invoice in the fiscalyear',
             'different_invoice_sequence': 'You must have different ' \
                     'invoice sequences per fiscal year!',
             })
@@ -160,7 +160,7 @@ class Period:
         cls._error_messages.update({
             'change_invoice_sequence': 'You can not change ' \
                     'the invoice sequence if there is already ' \
-                    'an invoice opened in the period',
+                    'a posted invoice in the period',
             'check_invoice_sequences': 'You must have different ' \
                     'invoice sequences per fiscal year and ' \
                     'in the same company!',

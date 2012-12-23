@@ -67,15 +67,18 @@ class Invoice(Workflow, ModelSQL, ModelView):
         depends=_DEPENDS)
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('proforma', 'Pro forma'),
-        ('open', 'Opened'),
+        ('validated', 'Validated'),
+        ('posted', 'Posted'),
         ('paid', 'Paid'),
         ('cancel', 'Canceled'),
         ], 'State', readonly=True)
     invoice_date = fields.Date('Invoice Date',
         states={
-            'readonly': Eval('state').in_(['open', 'paid', 'cancel']),
-            'required': Eval('state').in_(['open', 'paid']),
+            'readonly': Eval('state').in_(['posted', 'paid', 'cancel']),
+            'required': Eval('state').in_(
+                If(Eval('type').in_(['in_invoice', 'in_credit_note']),
+                    ['validated', 'posted', 'paid'],
+                    ['posted', 'paid'])),
             },
         depends=['state'])
     accounting_date = fields.Date('Accounting Date', states=_STATES,
@@ -100,6 +103,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, depends=_DEPENDS, domain=[('centralised', '=', False)])
     move = fields.Many2One('account.move', 'Move', readonly=True)
+    cancel_move = fields.Many2One('account.move', 'Cancel Move', readonly=True,
+        states={
+            'invisible': Eval('type').in_(['out_invoice', 'out_credit_note']),
+            })
     account = fields.Many2One('account.account', 'Account', required=True,
         states=_STATES, depends=_DEPENDS + ['type'],
         domain=[
@@ -146,11 +153,12 @@ class Invoice(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Invoice, cls).__setup__()
-        cls._check_modify_exclude = ['state', 'payment_lines',
+        cls._check_modify_exclude = ['state', 'payment_lines', 'cancel_move',
                 'invoice_report_cache', 'invoice_report_format']
         cls._constraints += [
             ('check_account', 'account_different_company'),
             ('check_account2', 'same_account_on_line'),
+            ('check_cancel_move', 'customer_cancel_move'),
         ]
         cls._order.insert(0, ('number', 'DESC'))
         cls._order.insert(1, ('id', 'DESC'))
@@ -169,7 +177,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             'no_invoice_sequence': 'There is no invoice sequence ' \
                     'on the period/fiscal year!',
             'modify_invoice': 'You can not modify an invoice that is ' \
-                    'opened, paid!',
+                    'posted, paid or canceled with move!',
             'same_debit_account': 'The debit account on journal is ' \
                     'the same than the invoice account!',
             'missing_debit_account': 'The debit account on journal is ' \
@@ -183,35 +191,45 @@ class Invoice(Workflow, ModelSQL, ModelView):
             'same_account_on_line': 'You can not use the same account\n' \
                     'as on invoice line!',
             'delete_cancel': 'Invoice "%s" must be cancelled before deletion!',
+            'delete_numbered': 'The numbered invoice "%s" can not be deleted.',
+            'customer_cancel_move': 'Customer invoice can not be cancelled '
+                'once posted.',
+            'period_cancel_move': 'The period of Invoice "%s" is closed.\n' \
+                'Use the today for cancel move?',
             })
         cls._transitions |= set((
-                ('draft', 'proforma'),
-                ('proforma', 'open'),
-                ('draft', 'open'),
-                ('open', 'paid'),
-                ('proforma', 'draft'),
-                ('paid', 'open'),
+                ('draft', 'validated'),
+                ('validated', 'posted'),
+                ('draft', 'posted'),
+                ('posted', 'paid'),
+                ('validated', 'draft'),
+                ('paid', 'posted'),
                 ('draft', 'cancel'),
-                ('proforma', 'cancel'),
+                ('validated', 'cancel'),
+                ('posted', 'cancel'),
                 ('cancel', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': ~Eval('state').in_(['draft', 'proforma']),
+                    'invisible': (~Eval('state').in_(['draft', 'validated'])
+                        & ~((Eval('state') == 'posted')
+                            & Eval('type').in_(
+                                ['in_invoice', 'in_credit_note']))),
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['cancel', 'proforma']),
+                    'invisible': (~Eval('state').in_(['cancel', 'validated'])
+                        | ((Eval('state') == 'cancel') & Eval('cancel_move'))),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
                     },
-                'proforma': {
+                'validate': {
                     'invisible': Eval('state') != 'draft',
                     },
-                'open': {
-                    'invisible': ~Eval('state').in_(['draft', 'proforma']),
+                'post': {
+                    'invisible': ~Eval('state').in_(['draft', 'validated']),
                     },
                 'pay': {
-                    'invisible': Eval('state') != 'open',
+                    'invisible': Eval('state') != 'posted',
                     'readonly': ~Eval('groups', []).contains(
                         Id('account', 'group_account')),
                     },
@@ -248,6 +266,14 @@ class Invoice(Workflow, ModelSQL, ModelView):
                             'SET invoice_report_cache = %s '
                             'WHERE id = %s', (report, invoice_id))
             table.drop_column('invoice_report')
+
+        # Migration from 2.6:
+        # - proforma renamed into validated
+        # - open renamed into posted
+        cursor.execute('UPDATE "' + cls._table + '" '
+            'SET state = %s WHERE state = %s', ('validated', 'proforma'))
+        cursor.execute('UPDATE "' + cls._table + '" '
+            'SET state = %s WHERE state = %s', ('posted', 'open'))
 
         # Add index on create_date
         table.index_action('create_date', action='add')
@@ -535,7 +561,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         computes = cls.search([
                 ('id', 'in', [i.id for i in invoices]),
-                ('state', '=', 'open'),
+                ('state', '=', 'posted'),
                 ])
 
         today = Date.today()
@@ -730,7 +756,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def update_taxes(cls, invoices, exception=False):
         Tax = Pool().get('account.invoice.tax')
         for invoice in invoices:
-            if invoice.state in ('open', 'paid', 'cancel'):
+            if invoice.state in ('posted', 'paid', 'cancel'):
                 continue
             computed_taxes = invoice._compute_taxes()
             if not invoice.taxes:
@@ -823,7 +849,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
 
         if self.move:
-            return True
+            return self.move
         self.update_taxes([self], exception=True)
         move_lines = self._get_move_line_invoice_line()
         move_lines += self._get_move_line_invoice_tax()
@@ -860,7 +886,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
         self.write([self], {
                 'move': move.id,
                 })
-        Move.post([move])
         return move
 
     def set_number(self):
@@ -889,7 +914,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 date=self.invoice_date or Date.today()):
             number = Sequence.get_id(sequence_id)
             vals = {'number': number}
-            if not self.invoice_date:
+            if (not self.invoice_date
+                    and self.type in ('out_invoice', 'out_credit_note')):
                 vals['invoice_date'] = Transaction().context['date']
         self.write([self], vals)
 
@@ -899,7 +925,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
         Check if the invoices can be modified
         '''
         for invoice in invoices:
-            if invoice.state in ('open', 'paid'):
+            if (invoice.state in ('posted', 'paid')
+                    or (invoice.state == 'cancel'
+                        and invoice.cancel_move)):
                 cls.raise_user_error('modify_invoice')
 
     def get_rec_name(self, name):
@@ -925,6 +953,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
         for invoice in invoices:
             if invoice.state != 'cancel':
                 cls.raise_user_error('delete_cancel', invoice.rec_name)
+            if invoice.number:
+                cls.raise_user_error('delete_numbered', invoice.rec_name)
         super(Invoice, cls).delete(invoices)
 
     @classmethod
@@ -952,6 +982,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         default['state'] = 'draft'
         default['number'] = None
         default['move'] = None
+        default['cancel_move'] = None
         default['invoice_report_cache'] = None
         default['invoice_report_format'] = None
         default['payment_lines'] = None
@@ -981,6 +1012,12 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if (line.type == 'line'
                     and line.account == self.account):
                 return False
+        return True
+
+    def check_cancel_move(self):
+        if (self.type in ('out_invoice', 'out_credit_note')
+                and self.cancel_move):
+            return False
         return True
 
     def get_reconcile_lines_for_amount(self, amount, exclude_lines=None):
@@ -1179,8 +1216,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             new_invoice = cls.create(invoice._credit())
             new_invoices.append(new_invoice)
             if refund:
-                cls.open([new_invoice])
-                if new_invoice.state == 'open':
+                cls.post([new_invoice])
+                if new_invoice.state == 'posted':
                     MoveLine.reconcile([l for l in invoice.lines_to_pay
                             if not l.reconciliation] +
                         [l for l in new_invoice.lines_to_pay
@@ -1191,22 +1228,38 @@ class Invoice(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, invoices):
-        pass
+        Move = Pool().get('account.move')
+
+        moves = []
+        for invoice in invoices:
+            if invoice.move:
+                moves.append(invoice.move)
+        if moves:
+            with Transaction().set_user(0, set_context=True):
+                Move.delete(moves)
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('proforma')
-    def proforma(cls, invoices):
-        pass
+    @Workflow.transition('validated')
+    def validate(cls, invoices):
+        for invoice in invoices:
+            if invoice.type in ('in_invoice', 'in_credit_note'):
+                invoice.set_number()
+                invoice.create_move()
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('open')
-    def open(cls, invoices):
+    @Workflow.transition('posted')
+    def post(cls, invoices):
+        Move = Pool().get('account.move')
+
+        moves = []
         for invoice in invoices:
             invoice.set_number()
-            invoice.create_move()
-            invoice.print_invoice()
+            moves.append(invoice.create_move())
+            if invoice.type in ('out_invoice', 'out_credit_note'):
+                invoice.print_invoice()
+        Move.post(moves)
 
     @classmethod
     @ModelView.button_action('account_invoice.wizard_pay')
@@ -1216,27 +1269,71 @@ class Invoice(Workflow, ModelSQL, ModelView):
     @classmethod
     def process(cls, invoices):
         paid = []
-        open_ = []
+        posted = []
         for invoice in invoices:
-            if invoice.state not in ('open', 'paid'):
+            if invoice.state not in ('posted', 'paid'):
                 continue
             if invoice.reconciled:
                 paid.append(invoice)
             else:
-                open_.append(invoice)
+                posted.append(invoice)
         cls.paid(paid)
-        cls.open(open_)
+        cls.post(posted)
 
     @classmethod
     @Workflow.transition('paid')
     def paid(cls, invoices):
         pass
 
+    def get_cancel_move(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+
+        move = self.move
+        default = {}
+        if move.period.state == 'close':
+            self.raise_user_warning('%s.get_cancel_move' % self,
+                'period_cancel_move', self.rec_name)
+            date = Date.today()
+            period_id = Period.find(self.company.id, date=date)
+            default.update({
+                    'date': date,
+                    'period': period_id,
+                    })
+
+        cancel_move, = Move.copy([move], default=default)
+        for line in cancel_move.lines:
+            line.debit *= -1
+            line.credit *= -1
+            line.save()
+            for tax_line in line.tax_lines:
+                tax_line.amount *= -1
+                tax_line.save()
+        return cancel_move
+
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
     def cancel(cls, invoices):
-        pass
+        Move = Pool().get('account.move')
+
+        cancel_moves = []
+        delete_moves = []
+        for invoice in invoices:
+            if invoice.move:
+                if invoice.move.state == 'draft':
+                    delete_moves.append(invoice.move)
+                elif not invoice.cancel_move:
+                    invoice.cancel_move = invoice.get_cancel_move()
+                    invoice.save()
+                    cancel_moves.append(invoice.cancel_move)
+        if delete_moves:
+            with Transaction().set_user(0, set_context=True):
+                Move.delete(delete_moves)
+        if cancel_moves:
+            Move.post(cancel_moves)
 
 
 class InvoicePaymentLine(ModelSQL):
@@ -1416,9 +1513,9 @@ class InvoiceLine(ModelSQL, ModelView):
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
             'modify': 'You can not modify line from an invoice ' \
-                    'that is opened, paid!',
+                    'that is posted, paid!',
             'create': 'You can not add a line to an invoice ' \
-                    'that is open, paid or canceled!',
+                    'that is posted, paid or canceled!',
             'account_different_company': 'You can not create invoice line\n' \
                     'with account with a different invoice company!',
             'same_account_on_invoice': 'You can not use the same account\n' \
@@ -1692,7 +1789,7 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         for line in lines:
             if (line.invoice
-                    and line.invoice.state in ('open', 'paid')):
+                    and line.invoice.state in ('posted', 'paid')):
                 cls.raise_user_error('modify')
 
     @classmethod
@@ -1710,7 +1807,7 @@ class InvoiceLine(ModelSQL, ModelView):
         Invoice = Pool().get('account.invoice')
         if vals.get('invoice'):
             invoice = Invoice(vals['invoice'])
-            if invoice.state in ('open', 'paid', 'cancel'):
+            if invoice.state in ('posted', 'paid', 'cancel'):
                 cls.raise_user_error('create')
         return super(InvoiceLine, cls).create(vals)
 
@@ -1888,9 +1985,9 @@ class InvoiceTax(ModelSQL, ModelView):
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
             'modify': 'You can not modify tax from an invoice ' \
-                    'that is opened, paid!',
+                    'that is posted, paid!',
             'create': 'You can not add a line to an invoice ' \
-                    'that is open, paid or canceled!',
+                    'that is posted, paid or canceled!',
             })
 
     @classmethod
@@ -1973,7 +2070,7 @@ class InvoiceTax(ModelSQL, ModelView):
         Check if the taxes can be modified
         '''
         for tax in taxes:
-            if tax.invoice.state in ('open', 'paid'):
+            if tax.invoice.state in ('posted', 'paid'):
                 cls.raise_user_error('modify')
 
     def get_sequence_number(self, name):
@@ -1999,7 +2096,7 @@ class InvoiceTax(ModelSQL, ModelView):
         Invoice = Pool().get('account.invoice')
         if vals.get('invoice'):
             invoice = Invoice(vals['invoice'])
-            if invoice.state in ('open', 'paid', 'cancel'):
+            if invoice.state in ('posted', 'paid', 'cancel'):
                 cls.raise_user_error('create')
         return super(InvoiceTax, cls).create(vals)
 
@@ -2150,10 +2247,11 @@ class InvoiceReport(Report):
         localcontext['company'] = user.company
         res = super(InvoiceReport, cls).parse(report, records, data,
                 localcontext)
-        # If the invoice is open or paid and the report not saved in
+        # If the invoice is posted or paid and the report not saved in
         # invoice_report_cache there was an error somewhere. So we save it now
         # in invoice_report_cache
-        if invoice.state in ('open', 'paid'):
+        if (invoice.state in ('posted', 'paid')
+                and invoice.type in ('out_invoice', 'out_credit_note')):
             Invoice.write([Invoice(invoice.id)], {
                 'invoice_report_format': res[0],
                 'invoice_report_cache': res[1],
@@ -2444,8 +2542,8 @@ class CreditInvoice(Wizard):
     def __setup__(cls):
         super(CreditInvoice, cls).__setup__()
         cls._error_messages.update({
-            'refund_non_open': 'You can not credit with refund ' \
-                    'an invoice that is not opened!',
+            'refund_non_posted': 'You can not credit with refund ' \
+                    'an invoice that is not posted!',
             'refund_with_payement': 'You can not credit with refund ' \
                     'an invoice with payments!',
             })
@@ -2456,7 +2554,7 @@ class CreditInvoice(Wizard):
             'with_refund': True,
             }
         for invoice in Invoice.browse(Transaction().context['active_ids']):
-            if invoice.state != 'open' or invoice.payment_lines:
+            if invoice.state != 'posted' or invoice.payment_lines:
                 default['with_refund'] = False
                 break
         return default
@@ -2470,8 +2568,8 @@ class CreditInvoice(Wizard):
 
         if refund:
             for invoice in invoices:
-                if invoice.state != 'open':
-                    self.raise_user_error('refund_non_open')
+                if invoice.state != 'posted':
+                    self.raise_user_error('refund_non_posted')
                 if invoice.payment_lines:
                     self.raise_user_error('refund_with_payement')
 

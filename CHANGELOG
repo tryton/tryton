@@ -1,3 +1,8 @@
+* Cancel state delete or cancel existing move on Invoice
+* Create draft move for Supplier Invoice when validated
+* Rename Invoice Proforma state into Validated
+* Rename Invoice Opened state into Posted
+
 Version 2.6.0 - 2012-10-22
 * Bug fixes (see mercurial logs for details)
 
