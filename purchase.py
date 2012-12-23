@@ -1435,8 +1435,7 @@ class ProductSupplier(ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', 0)),
             ])
-    delivery_time = fields.Integer('Delivery Time', required=True,
-            help="In number of days")
+    delivery_time = fields.Integer('Delivery Time', help="In number of days")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
 
@@ -1477,6 +1476,9 @@ class ProductSupplier(ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 2.6: drop required on delivery_time
+        table.not_null_action('delivery_time', action='remove')
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -1511,7 +1513,7 @@ class ProductSupplier(ModelSQL, ModelView):
 
         if not date:
             date = Date.today()
-        if not self.delivery_time:
+        if self.delivery_time is None:
             return datetime.date.max
         return date + datetime.timedelta(self.delivery_time)
 
@@ -1521,7 +1523,7 @@ class ProductSupplier(ModelSQL, ModelView):
         '''
         Date = Pool().get('ir.date')
 
-        if not self.delivery_time:
+        if self.delivery_time is None:
             return Date.today()
         return date - datetime.timedelta(self.delivery_time)
 
