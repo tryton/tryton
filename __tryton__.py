@@ -11,7 +11,7 @@
     'name_es_ES': 'Empresa',
     'name_fr_FR': 'Société',
     'name_nl_NL': 'Bedrijf',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
