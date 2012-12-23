@@ -256,10 +256,11 @@ Open supplier invoice::
     >>> invoice_line.unit_price = Decimal('6')
     >>> invoice_line = invoice.lines[1]
     >>> invoice_line.unit_price = Decimal('4')
+    >>> invoice.invoice_date = today
     >>> invoice.save()
-    >>> Invoice.open([invoice.id], current_config.context)
+    >>> Invoice.post([invoice.id], current_config.context)
     >>> invoice.state
-    u'open'
+    u'posted'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == \
     ... (Decimal('0.00'), Decimal('44.00'))
@@ -325,9 +326,9 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> Invoice.open([invoice.id], current_config.context)
+    >>> Invoice.post([invoice.id], current_config.context)
     >>> invoice.state
-    u'open'
+    u'posted'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == \
     ... (Decimal('50.00'), Decimal('0.00'))
@@ -364,5 +365,7 @@ Now create a supplier invoice with an accountant::
 
     >>> new_config = config.set_trytond(user='accountant',
     ...     password='accountant', database_name=current_config.database_name)
-    >>> Invoice = Model.get('account.invoice')
-    >>> Invoice.open([i.id for i in purchase.invoices], new_config.context)
+    >>> for invoice in purchase.invoices:
+    ...     invoice.invoice_date = today
+    ...     invoice.save()
+    >>> Invoice.validate([i.id for i in purchase.invoices], new_config.context)
