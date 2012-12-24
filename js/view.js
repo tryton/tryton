@@ -183,12 +183,8 @@ Sao.View.Tree.Row = Class(Object, {
             var children_field = this.children_field;
             console.log('Load children of ' + this.path);
             record.load(this.children_field).done(function() {
-                var children = record.field_get(children_field);
-                var subgroup = Sao.Group(record.model, record.group.context,
-                    children.map(function(id) {
-                        return new Sao.Record(record.model, id);
-                    }));
-                subgroup.forEach(add_row);
+                var children = record.field_get_client(children_field);
+                children.forEach(add_row);
             });
         }
     },

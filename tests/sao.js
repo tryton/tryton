@@ -43,6 +43,9 @@ QUnit.test('CRUD', function() {
             user.model.fields['login'].set_client(user, 'test');
         });
         prm = prm.pipe(function() {
+            return user.default_get();
+        });
+        prm = prm.pipe(function() {
             return user.save();
         });
         prm = prm.pipe(function() {
@@ -90,7 +93,7 @@ QUnit.test('CRUD', function() {
     };
 
     QUnit.stop();
-    QUnit.expect(6);
+    QUnit.expect(11);
     var prm = Sao.rpc({
         'method': 'common.db.create',
         'params': [SaoTest.dbname, SaoTest.password,

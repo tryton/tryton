@@ -40,6 +40,18 @@ Sao.Screen = Class(Object, {
         var fields = view.fields;
         var xml_view = jQuery(jQuery.parseXML(arch));
         // TODO loading lazy/eager
+        var loading = 'eager';
+        if (xml_view.children().prop('tagName') == 'form') {
+            loading = 'lazy';
+        }
+        for (var field in fields) {
+            if (!(field in this.model.fields) || loading == 'eager') {
+                fields[field]['loading'] = loading;
+            } else {
+                fields[field]['loading'] = this.model.fields[field]
+                    .description.loading;
+            }
+        }
         this.model.add_fields(fields);
         var view = Sao.View.parse(this, xml_view, view.field_childs);
         this.views.push(view);
