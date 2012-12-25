@@ -149,8 +149,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
             new_inventories.append(new_inventory)
         return new_inventories
 
-    @classmethod
-    def complete_lines(self, inventories):
+    @staticmethod
+    def complete_lines(inventories):
         '''
         Complete or update the inventories
         '''
