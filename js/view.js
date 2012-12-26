@@ -179,6 +179,15 @@ Sao.View.Tree.Row = Class(Object, {
                 this.expander.append(this.expander_icon);
                 this.expander_icon.css('float', 'right');
                 td.append(this.expander);
+                var update_expander = function() {
+                    if (jQuery.isEmptyObject(
+                                record.field_get(this.children_field))) {
+
+                        this.expander_icon.remove();
+                    }
+                };
+                record.load(this.children_field).done(
+                        update_expander.bind(this));
             }
             var column = this.tree.columns[i];
             td.append(column.render(record));
