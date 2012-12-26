@@ -46,6 +46,7 @@ Sao.Model = Class(Object, {
 });
 
 Sao.Group = function(model, context, array) {
+    array.prm = jQuery.when();
     array.model = model;
     array.context = context;
     array.parent = undefined;
@@ -175,6 +176,12 @@ Sao.Record = Class(Object, {
         if ((this.id < 0) || (name in this._loaded)) {
             return jQuery.when();
         }
+        if (this.group.prm.state() == 'pending') {
+            var load = function() {
+                return this.load(name);
+            };
+            return this.group.prm.always(load.bind(this));
+        }
         var id2record = {};
         id2record[this.id] = this;
         var loading;
@@ -264,7 +271,8 @@ Sao.Record = Class(Object, {
         var failed = function() {
             // TODO  call succeed
         };
-        return prm.then(succeed, failed);
+        this.group.prm = prm.then(succeed, failed);
+        return this.group.prm;
     },
     set: function(values) {
         for (var name in values) {
