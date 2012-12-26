@@ -49,7 +49,7 @@ Sao.View.Tree = Class(Sao.View, {
         thead.append(tr);
         this.columns.forEach(function(column) {
             var th = $('<th/>', {
-                'text': column.attributes['name']
+                'text': column.attributes['string']
             });
             tr.append(th);
         });
@@ -88,6 +88,7 @@ Sao.View.Tree = Class(Sao.View, {
         var self = this;
         xml.find('tree').children().each(function(pos, child) {
             if (child.tagName == 'field') {
+                var name = child.getAttribute('name');
                 var attributes = {
                     'name': child.getAttribute('name'),
                     'readonly': child.getAttribute('readonly') == 1,
@@ -102,6 +103,16 @@ Sao.View.Tree = Class(Sao.View, {
                     'pre_validate': child.getAttribute('pre_validate') == 1,
                     'completion': child.getAttribute('completion') == 1
                 };
+                var attribute_names = ['relation', 'domain', 'selection',
+                    'relation_field', 'string', 'views', 'invisible',
+                    'add_remove', 'sort', 'context', 'filename'];
+                for (var i in attribute_names) {
+                    var attr = attribute_names[i];
+                    if ((attr in model.fields[name].description) &&
+                        (child.getAttribute(attr) == null)) {
+                        attributes[attr] = model.fields[name].description[attr];
+                    }
+                }
                 var ColumnFactory = Sao.View.tree_column_get(
                     attributes['widget']);
                 var column = new ColumnFactory(model, attributes);
