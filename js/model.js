@@ -180,7 +180,7 @@ Sao.Record = Class(Object, {
             var load = function() {
                 return this.load(name);
             };
-            return this.group.prm.always(load.bind(this));
+            return this.group.prm.pipe(load.bind(this));
         }
         var id2record = {};
         id2record[this.id] = this;
