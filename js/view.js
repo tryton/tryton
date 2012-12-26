@@ -183,7 +183,7 @@ Sao.View.Tree.Row = Class(Object, {
                     if (jQuery.isEmptyObject(
                                 record.field_get(this.children_field))) {
 
-                        this.expander_icon.remove();
+                        this.expander_icon.hide();
                     }
                 };
                 record.load(this.children_field).done(
