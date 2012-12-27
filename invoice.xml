@@ -704,9 +704,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_invoice1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.invoice')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_invoice"/>
         </record>
 
@@ -715,9 +713,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_invoice_line1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.invoice.line')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_invoice_line"/>
         </record>
     </data>
