@@ -213,9 +213,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_purchase_request">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.request')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_purchase_request"/>
         </record>
 
