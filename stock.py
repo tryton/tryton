@@ -89,10 +89,7 @@ class ShipmentOut:
         super(ShipmentOut, cls).pack(shipments)
 
         # Unassign move to allow update
-        Move.write([m for s in shipments for m in s.outgoing_moves
-                if m.state not in ('done', 'cancel')], {
-                'state': 'draft',
-                })
+        Move.draft([m for s in shipments for m in s.outgoing_moves])
 
         for shipment in shipments:
             outgoing_by_product = {}
@@ -123,10 +120,7 @@ class ShipmentOut:
                     quantity -= out_quantity
                 assert quantity <= 0
 
-        Move.write([m for s in shipments for m in s.outgoing_moves
-                if m.state != 'cancel'], {
-                'state': 'assigned',
-                })
+        Move.assign([m for s in shipments for m in s.outgoing_moves])
 
 
 class ShipmentOutReturn:
