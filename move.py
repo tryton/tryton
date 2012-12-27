@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import fields
+from trytond.model import Workflow, ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 
@@ -78,91 +78,54 @@ class Move:
             return product.cost_price
 
     @classmethod
-    def create(cls, vals):
+    @ModelView.button
+    @Workflow.transition('done')
+    def do(cls, moves):
         pool = Pool()
-        Location = pool.get('stock.location')
-        Product = pool.get('product.product')
         Date = pool.get('ir.date')
 
         today = Date.today()
-        effective_date = vals.get('effective_date') or today
+        for move in moves:
+            if not move.effective_date:
+                move.effective_date = today
+            if (move.from_location.type in ('supplier', 'production')
+                    and move.to_location.type == 'storage'
+                    and move.product.cost_price_method == 'fifo'):
+                move._update_product_cost_price('in')
+            elif (move.to_location.type == 'supplier'
+                    and move.from_location.type == 'storage'
+                    and move.product.cost_price_method == 'fifo'):
+                move._update_product_cost_price('out')
+            elif (move.to_location.type != 'storage'  # XXX from_location?
+                    and move.to_location.type != 'supplier'
+                    and move.product.cost_price_method == 'fifo'):
+                move._update_fifo_out_product_cost_price()
+            move.save()
 
-        if vals.get('state') == 'done':
-            from_location = Location(vals['from_location'])
-            to_location = Location(vals['to_location'])
-            product = Product(vals['product'])
-            if (from_location.type in ('supplier', 'production')
-                    and to_location.type == 'storage'
-                    and product.cost_price_method == 'fifo'):
-                cls._update_product_cost_price(vals['product'],
-                        vals['quantity'], vals['uom'], vals['unit_price'],
-                        vals['currency'], effective_date)
-            if (to_location.type == 'supplier'
-                    and from_location.type == 'storage'
-                    and product.cost_price_method == 'fifo'):
-                cls._update_product_cost_price(vals['product'],
-                        -vals['quantity'], vals['uom'], vals['unit_price'],
-                        vals['currency'], effective_date)
-            if to_location.type != 'storage' \
-                    and to_location.type != 'supplier' \
-                    and product.cost_price_method == 'fifo':
-
-                cost_price = cls._update_fifo_out_product_cost_price(product,
-                        vals['quantity'], vals['uom'], effective_date)
-                if not vals.get('cost_price'):
-                    vals['cost_price'] = cost_price
-
-        return super(Move, cls).create(vals)
+        super(Move, cls).do(moves)
 
     @classmethod
-    def write(cls, moves, vals):
-        Date = Pool().get('ir.date')
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, moves):
+        pool = Pool()
+        Date = pool.get('ir.date')
 
         today = Date.today()
-        effective_date = vals.get('effective_date') or today
+        for move in moves:
+            move.effective_date = today
+            if (move.from_location.type in ('supplier', 'production')
+                    and move.to_location.type == 'storage'
+                    and move.product.cost_price_method == 'fifo'):
+                move._update_product_cost_price('out')
+            elif (move.to_location.type == 'supplier'
+                    and move.from_location.type == 'storage'
+                    and move.product.cost_price_method == 'fifo'):
+                move._update_product_cost_price('in')
+            move.effective_date = None
+            move.save()
 
-        if 'state' in vals and vals['state'] == 'done':
-            for move in moves:
-                if vals['state'] == 'cancel':
-                    if (move.from_location.type in ('supplier', 'production')
-                            and move.to_location.type == 'storage'
-                            and move.state != 'cancel'
-                            and move.product.cost_price_method == 'fifo'):
-                        cls._update_product_cost_price(move.product.id,
-                                -move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, effective_date)
-                    if (move.to_location.type == 'supplier'
-                            and move.from_location.type == 'storage'
-                            and move.state != 'cancel'
-                            and move.product.cost_price_method == 'fifo'):
-                        cls._update_product_cost_price(move.product.id,
-                                move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, effective_date)
-
-                elif vals['state'] == 'done':
-                    if (move.from_location.type in ('supplier', 'production')
-                            and move.to_location.type == 'storage'
-                            and move.state != 'done'
-                            and move.product.cost_price_method == 'fifo'):
-                        cls._update_product_cost_price(move.product.id,
-                                move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, effective_date)
-                    if (move.to_location.type == 'supplier'
-                            and move.from_location.type == 'storage'
-                            and move.state != 'done'
-                            and move.product.cost_price_method == 'fifo'):
-                        cls._update_product_cost_price(move.product.id,
-                                -move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, effective_date)
-                    if move.to_location.type != 'storage' \
-                            and move.to_location.type != 'supplier' \
-                            and move.product.cost_price_method == 'fifo':
-                        cost_price = cls._update_fifo_out_product_cost_price(
-                                move.product, move.quantity, move.uom,
-                                effective_date)
-                        if not vals.get('cost_price'):
-                            vals['cost_price'] = cost_price
-        super(Move, cls).write(moves, vals)
+        super(Move, cls).cancel(moves)
 
     @classmethod
     def delete(cls, moves):
