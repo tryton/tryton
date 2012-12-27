@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond.model import fields
+from trytond.model import Workflow, ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -168,15 +168,9 @@ class Move:
         return super(Move, cls).copy(moves, default=default)
 
     @classmethod
-    def create(cls, vals):
-        move = super(Move, cls).create(vals)
-        if vals.get('state') == 'done':
+    @ModelView.button
+    @Workflow.transition('done')
+    def do(cls, moves):
+        super(Move, cls).do(moves)
+        for move in moves:
             move._create_account_stock_move()
-        return move
-
-    @classmethod
-    def write(cls, moves, vals):
-        super(Move, cls).write(moves, vals)
-        if vals.get('state') == 'done':
-            for move in moves:
-                move._create_account_stock_move()

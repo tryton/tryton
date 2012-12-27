@@ -345,8 +345,8 @@ Create Move from Supplier to Customer::
     >>> move.unit_price = Decimal(6)
     >>> move.cost_price = move.unit_price
     >>> move.currency = currency
-    >>> move.state = 'done'
     >>> move.save()
+    >>> Move.do([move.id], config.context)
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
     ... (Decimal(0), Decimal(68))
@@ -363,8 +363,8 @@ Create Move from Supplier to Customer::
     >>> move.unit_price = Decimal(5)
     >>> move.cost_price = move.unit_price
     >>> move.currency = currency
-    >>> move.state = 'done'
     >>> move.save()
+    >>> Move.do([move.id], config.context)
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
     ... (Decimal(0), Decimal(88))
