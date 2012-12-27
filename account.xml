@@ -180,9 +180,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_account1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'analytic_account.account')]"/>
-            <field name="operator">in</field>
-            <field name="operand">User/Current Companies</field>
+            <field name="domain">[('company', 'in', [c.id for c in user.companies])]</field>
             <field name="rule_group" ref="rule_group_account"/>
         </record>
 
