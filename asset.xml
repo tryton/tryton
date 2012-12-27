@@ -177,9 +177,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_asset1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.asset')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_asset"/>
         </record>
 
