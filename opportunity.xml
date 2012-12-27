@@ -236,9 +236,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.opportunity')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_opportunity"/>
         </record>
 
@@ -399,9 +397,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_history1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.opportunity.history')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_opportunity_history"/>
         </record>
 
@@ -490,9 +486,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_employee1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.opportunity_employee')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_opportunity_employee"/>
         </record>
 
@@ -607,9 +601,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_monthly1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.opportunity_monthly')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_opportunity_monthly"/>
         </record>
 
@@ -655,9 +647,7 @@
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_group_opportunity_employee_monthly1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'sale.opportunity_employee_monthly')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_opportunity_employee_monthly"/>
         </record>
 
