@@ -548,9 +548,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_product_supplier">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.product_supplier')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_product_supplier"/>
         </record>
 
@@ -677,9 +675,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_purchase1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'purchase.purchase')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_purchase"/>
         </record>
 
