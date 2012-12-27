@@ -490,11 +490,8 @@ class Production(Workflow, ModelSQL, ModelView):
     def cancel(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.write([m for p in productions
-                for m in p.inputs + p.outputs
-                if m.state != 'cancel'], {
-                'state': 'cancel',
-                })
+        Move.cancel([m for p in productions
+                for m in p.inputs + p.outputs])
 
     @classmethod
     @ModelView.button
@@ -502,11 +499,8 @@ class Production(Workflow, ModelSQL, ModelView):
     def draft(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.write([m for p in productions
-                for m in p.inputs + p.outputs
-                if m.state != 'draft'], {
-                'state': 'draft',
-                })
+        Move.draft([m for p in productions
+                for m in p.inputs + p.outputs])
 
     @classmethod
     @ModelView.button
@@ -514,11 +508,8 @@ class Production(Workflow, ModelSQL, ModelView):
     def wait(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.write([m for p in productions
-                for m in p.inputs + p.outputs
-                if m.state not in ('draft', 'done')], {
-                'state': 'draft',
-                })
+        Move.draft([m for p in productions
+                for m in p.inputs + p.outputs])
 
     @classmethod
     @Workflow.transition('assigned')
@@ -531,11 +522,7 @@ class Production(Workflow, ModelSQL, ModelView):
     def run(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.write([m for p in productions
-                for m in p.inputs
-                if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-                })
+        Move.do([m for p in productions for m in p.inputs])
 
     @classmethod
     @ModelView.button
@@ -544,11 +531,7 @@ class Production(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
-        Move.write([m for p in productions
-                for m in p.outputs
-                if m.state not in ('done', 'cancel')], {
-                'state': 'done',
-                })
+        Move.do([m for p in productions for m in p.outputs])
         cls.write(productions, {
                 'effective_date': Date.today(),
                 })
@@ -575,10 +558,7 @@ class Production(Workflow, ModelSQL, ModelView):
     def assign_force(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.write([m for p in productions for m in p.inputs
-                if m.state != 'done'], {
-                'state': 'assigned',
-                })
+        Move.assign([m for p in productions for m in p.inputs])
         cls.assign(productions)
 
 
