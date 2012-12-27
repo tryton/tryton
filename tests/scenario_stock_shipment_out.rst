@@ -132,11 +132,11 @@ Make 1 unit of the product available::
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
-    >>> incoming_move.state = 'done'
     >>> incoming_move.company = company
     >>> incoming_move.unit_price = Decimal('1')
     >>> incoming_move.currency = currency
     >>> incoming_move.save()
+    >>> StockMove.do([incoming_move.id], config.context)
 
 Assign the shipment now::
 

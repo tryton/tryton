@@ -263,9 +263,7 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def cancel_move(cls, lines):
         Move = Pool().get('stock.move')
-        Move.write([l.move for l in lines if l.move], {
-            'state': 'cancel',
-            })
+        Move.cancel([l.move for l in lines if l.move])
         Move.delete([l.move for l in lines if l.move])
         cls.write([l for l in lines if l.move], {
             'move': None,
@@ -297,9 +295,9 @@ class InventoryLine(ModelSQL, ModelView):
             'product': self.product.id,
             'uom': self.uom.id,
             'company': self.inventory.company.id,
-            'state': 'done',
             'effective_date': self.inventory.date,
             })
+        Move.do([move])
         self.move = move
         self.save()
         return move.id

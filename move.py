@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from functools import reduce
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
@@ -16,7 +16,7 @@ STATES = {
 DEPENDS = ['state']
 
 
-class Move(ModelSQL, ModelView):
+class Move(Workflow, ModelSQL, ModelView):
     "Stock Move"
     __name__ = 'stock.move'
     _order_name = 'product'
@@ -149,6 +149,28 @@ class Move(ModelSQL, ModelView):
             'modify_assigned_done_cancel': ('You can not modify a move '
                 'in the state: "Assigned", "Done" or "Cancel"'),
             })
+        cls._transitions |= set((
+                ('draft', 'assigned'),
+                ('draft', 'done'),
+                ('draft', 'cancel'),
+                ('assigned', 'draft'),
+                ('assigned', 'done'),
+                ('assigned', 'cancel'),
+                ))
+        cls._buttons.update({
+                'cancel': {
+                    'invisible': ~Eval('state').in_(['draft', 'assigned']),
+                    },
+                'draft': {
+                    'invisible': ~Eval('state').in_(['assigned']),
+                    },
+                'assign': {
+                    'invisible': ~Eval('state').in_(['assigned']),
+                    },
+                'do': {
+                    'invisible': ~Eval('state').in_(['draft', 'assigned']),
+                    },
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -306,13 +328,10 @@ class Move(ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('product',) + clause[1:]]
 
-    @classmethod
-    def _update_product_cost_price(cls, product_id, quantity, uom, unit_price,
-            currency, company, date):
+    def _update_product_cost_price(self, direction):
         """
         Update the cost price on the given product.
-        The quantity must be positive if incoming and negative if outgoing.
-        The date is for the currency rate calculation.
+        The direction must be "in" if incoming and "out" if outgoing.
         """
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -320,24 +339,20 @@ class Move(ModelSQL, ModelView):
         ProductTemplate = pool.get('product.template')
         Location = pool.get('stock.location')
         Currency = pool.get('currency.currency')
-        Company = pool.get('company.company')
         Date = pool.get('ir.date')
 
-        if isinstance(uom, (int, long)):
-            uom = Uom(uom)
-        if isinstance(currency, (int, long)):
-            currency = Currency(currency)
-        if isinstance(company, (int, long)):
-            company = Company(company)
-
+        if direction == 'in':
+            quantity = self.quantity
+        elif direction == 'out':
+            quantity = -self.quantity
         context = {}
         context['locations'] = Location.search([
                 ('type', '=', 'storage'),
                 ])
         context['stock_date_end'] = Date.today()
         with Transaction().set_context(context):
-            product = Product(product_id)
-        qty = Uom.compute_qty(uom, quantity, product.default_uom)
+            product = Product(self.product.id)
+        qty = Uom.compute_qty(self.uom, quantity, product.default_uom)
 
         qty = Decimal(str(qty))
         if hasattr(Product, 'cost_price'):
@@ -346,11 +361,12 @@ class Move(ModelSQL, ModelView):
             product_qty = product.template.quantity
         product_qty = Decimal(str(product_qty))
         # convert wrt currency
-        with Transaction().set_context(date=date):
-            unit_price = Currency.compute(currency, unit_price,
-                company.currency, round=False)
+        with Transaction().set_context(date=self.effective_date):
+            unit_price = Currency.compute(self.currency, self.unit_price,
+                self.company.currency, round=False)
         # convert wrt to the uom
-        unit_price = Uom.compute_price(uom, unit_price, product.default_uom)
+        unit_price = Uom.compute_price(self.uom, unit_price,
+            product.default_uom)
         if product_qty + qty != Decimal('0.0'):
             new_cost_price = (
                 (product.cost_price * product_qty) + (unit_price * qty)
@@ -378,44 +394,78 @@ class Move(ModelSQL, ModelView):
         return internal_quantity
 
     @classmethod
-    def create(cls, vals):
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, moves):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('assigned')
+    def assign(cls, moves):
         pool = Pool()
-        Location = pool.get('stock.location')
-        Product = pool.get('product.product')
-        Uom = pool.get('product.uom')
         Date = pool.get('ir.date')
 
         today = Date.today()
+        for move in moves:
+            if not move.effective_date:
+                move.effective_date = today
+            move.save()
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    def do(cls, moves):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        for move in moves:
+            if not move.effective_date:
+                move.effective_date = today
+            if (move.from_location.type in ('supplier', 'production')
+                    and move.to_location.type == 'storage'
+                    and move.product.cost_price_method == 'average'):
+                move._update_product_cost_price('in')
+            elif (move.to_location.type == 'supplier'
+                    and move.from_location.type == 'storage'
+                    and move.product.cost_price_method == 'average'):
+                move._update_product_cost_price('out')
+            if not move.cost_price:
+                move.cost_price = move.product.cost_price
+            move.save()
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, moves):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        for move in moves:
+            move.effective_date = today
+            if (move.from_location.type in ('supplier', 'production')
+                    and move.to_location.type == 'storage'
+                    and move.product.cost_price_method == 'average'):
+                move._update_product_cost_price('out')
+            elif (move.to_location.type == 'supplier'
+                    and move.from_location.type == 'storage'
+                    and move.product.cost_price_method == 'average'):
+                move._update_product_cost_price('in')
+            move.effective_date = None
+            move.save()
+
+    @classmethod
+    def create(cls, vals):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        assert vals.get('state', 'draft') == 'draft'
         vals = vals.copy()
-        effective_date = vals.get('effective_date') or today
 
         product = Product(vals['product'])
-        if vals.get('state') == 'done':
-            vals['effective_date'] = effective_date
-            currency_id = vals.get('currency', cls.default_currency())
-            company_id = vals.get('company', cls.default_company())
-            from_location = Location(vals['from_location'])
-            to_location = Location(vals['to_location'])
-            if (from_location.type in ('supplier', 'production')
-                    and to_location.type == 'storage'
-                    and product.cost_price_method == 'average'):
-                cls._update_product_cost_price(vals['product'],
-                        vals['quantity'], vals['uom'], vals['unit_price'],
-                        currency_id, company_id, effective_date)
-            if (to_location.type == 'supplier'
-                    and from_location.type == 'storage'
-                    and product.cost_price_method == 'average'):
-                cls._update_product_cost_price(vals['product'],
-                        -vals['quantity'], vals['uom'], vals['unit_price'],
-                        currency_id, company_id, effective_date)
-            if not vals.get('cost_price'):
-                # Re-read product to get the updated cost_price
-                product = Product(vals['product'])
-                vals['cost_price'] = product.cost_price
-
-        elif vals.get('state') == 'assigned':
-            vals['effective_date'] = effective_date
-
         uom = Uom(vals['uom'])
         internal_quantity = cls._get_internal_quantity(vals['quantity'],
             uom, product)
@@ -424,57 +474,6 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def write(cls, moves, vals):
-        Date = Pool().get('ir.date')
-
-        today = Date.today()
-        effective_date = vals.get('effective_date') or today
-
-        if 'state' in vals:
-            for move in moves:
-                if vals['state'] == 'cancel':
-                    vals['effective_date'] = None
-                    if (move.from_location.type in ('supplier', 'production')
-                            and move.to_location.type == 'storage'
-                            and move.state != 'cancel'
-                            and move.product.cost_price_method == 'average'):
-                        cls._update_product_cost_price(move.product.id,
-                                -move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, today)
-                    if (move.to_location.type == 'supplier'
-                            and move.from_location.type == 'storage'
-                            and move.state != 'cancel'
-                            and move.product.cost_price_method == 'average'):
-                        cls._update_product_cost_price(move.product.id,
-                                move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, today)
-
-                elif vals['state'] == 'draft':
-                    if move.state == 'done':
-                        cls.raise_user_error('set_state_draft')
-                elif vals['state'] == 'assigned':
-                    if move.state in ('cancel', 'done'):
-                        cls.raise_user_error('set_state_assigned')
-                    vals['effective_date'] = effective_date
-                elif vals['state'] == 'done':
-                    if move.state in ('cancel'):
-                        cls.raise_user_error('set_state_done')
-                    vals['effective_date'] = effective_date
-
-                    if (move.from_location.type in ('supplier', 'production')
-                            and move.to_location.type == 'storage'
-                            and move.state != 'done'
-                            and move.product.cost_price_method == 'average'):
-                        cls._update_product_cost_price(move.product.id,
-                                move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, effective_date)
-                    if (move.to_location.type == 'supplier'
-                            and move.from_location.type == 'storage'
-                            and move.state != 'done'
-                            and move.product.cost_price_method == 'average'):
-                        cls._update_product_cost_price(move.product.id,
-                                -move.quantity, move.uom, move.unit_price,
-                                move.currency, move.company, effective_date)
-
         if reduce(lambda x, y: x or y in vals, ('product', 'uom', 'quantity',
                 'from_location', 'to_location', 'company', 'unit_price',
                 'currency'), False):
@@ -482,26 +481,18 @@ class Move(ModelSQL, ModelView):
                 if move.state in ('assigned', 'done', 'cancel'):
                     cls.raise_user_error('modify_assigned_done_cancel')
         if reduce(lambda x, y: x or y in vals,
-                ('planned_date', 'effective_date'), False):
+                ('planned_date', 'effective_date', 'state'), False):
             for move in moves:
                 if move.state in ('done', 'cancel'):
                     cls.raise_user_error('modify_assigned_done_cancel')
 
         super(Move, cls).write(moves, vals)
 
-        if vals.get('state', '') == 'done':
-            for move in moves:
-                if not move.cost_price:
-                    cls.write([move], {
-                            'cost_price': move.product.cost_price,
-                            })
-
         for move in moves:
             internal_quantity = cls._get_internal_quantity(move.quantity,
                     move.uom, move.product)
             if internal_quantity != move.internal_quantity:
-                # Use super to avoid infinite loop
-                super(Move, cls).write([move], {
+                cls.write([move], {
                         'internal_quantity': internal_quantity,
                         })
 
@@ -595,13 +586,13 @@ class Move(ModelSQL, ModelView):
                 values = {
                     'from_location': from_location.id,
                     'quantity': qty,
-                    'state': 'assigned',
                     }
                 if first:
                     cls.write([move], values)
+                    cls.assign([move])
                     first = False
                 else:
-                    cls.copy([move], default=values)
+                    cls.assign(cls.copy([move], default=values))
 
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
