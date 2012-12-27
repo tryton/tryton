@@ -203,15 +203,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_property1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.property')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_property"/>
         </record>
         <record model="ir.rule" id="rule_property2">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.property')]"/>
-            <field name="operator">=</field>
-            <field name="operand">False</field>
+            <field name="domain">[('company', '=', None)]</field>
             <field name="rule_group" ref="rule_group_property"/>
         </record>
 
@@ -252,15 +248,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sequence1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.sequence')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_sequence"/>
         </record>
         <record model="ir.rule" id="rule_sequence2">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.sequence')]"/>
-            <field name="operator">=</field>
-            <field name="operand">False</field>
+            <field name="domain">[('company', '=', None)]</field>
             <field name="rule_group" ref="rule_group_sequence"/>
         </record>
 
@@ -269,15 +261,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_sequence_strict1">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.sequence.strict')]"/>
-            <field name="operator">=</field>
-            <field name="operand">User/Current Company</field>
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
         <record model="ir.rule" id="rule_sequence_strict2">
-            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'ir.sequence.strict')]"/>
-            <field name="operator">=</field>
-            <field name="operand">False</field>
+            <field name="domain">[('company', '=', None)]</field>
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
