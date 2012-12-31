@@ -7,10 +7,44 @@ Sao.Tab = Class(Object, {
           }
 });
 
+Sao.Tab.counter = 0;
+
+Sao.Tab.create = function(attributes) {
+    if (attributes.context == undefined) {
+        attributes.context = {};
+    }
+    var tab;
+    if (attributes.model) {
+        tab = new Sao.Tab.Form(attributes.model, attributes);
+    } else {
+        tab = new Sao.Tab.Board(attributes);
+    }
+    jQuery('#tabs').tabs();
+    tab.id = '#tab-' + Sao.Tab.counter++;
+    jQuery('#tabs').tabs('add', tab.id, tab.name);
+    jQuery(tab.id).html(tab.el);
+    jQuery('#tabs').tabs('select', tab.id);
+};
+
 Sao.Tab.Form = Class(Sao.Tab, {
     init: function(model_name, attributes) {
         Sao.Tab.Form._super.init.call(this);
-        this.screen = new Sao.Screen(model_name, attributes);
-        this.attributes = jQuery.extend({}, attributes); 
+        var screen = new Sao.Screen(model_name, attributes);
+        this.screen = screen;
+        this.attributes = jQuery.extend({}, attributes);
+        this.name = attributes.name; // XXX use screen current view title
+        var el = $('<div/>', {
+            'class': 'form'
+        });
+        this.el = el;
+        this.screen.load_next_view().pipe(function() {
+            return screen.switch_view();
+        }).done(function() {
+            el.html(screen.el);
+        }).done(function() {
+            screen.search_filter().done(function() {
+                screen.display();
+            });
+        });
     }
 });

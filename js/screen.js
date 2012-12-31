@@ -12,7 +12,13 @@ Sao.Screen = Class(Object, {
             attributes.mode || ['tree', 'form']);
         this.views = [];
         this.current_view = null;
+        this.current_record = null;
         this.context = attributes.context || {};
+        if (!attributes.row_activate) {
+            this.row_activate = this.default_row_activate;
+        } else {
+            this.row_activate = attributes.row_activate;
+        }
         this.el = $('<div/>', {
             'class': 'screen'
         });
@@ -110,6 +116,23 @@ Sao.Screen = Class(Object, {
             for (var i = 0; i < this.views.length; i++)
                 if (this.views[i])
                     this.views[i].display();
+        }
+    },
+    default_row_activate: function() {
+        if ((this.current_view.view_type == 'tree') &&
+                this.current_view.keyword_open) {
+            Sao.Action.exec_keyword('tree_open', {
+                'model': this.model_name,
+                'id': this.get_id(),
+                'ids': [this.get_id()]
+                }, jQuery.extend({}, this.context));
+        } else {
+            this.switch_view('form');
+        }
+    },
+    get_id: function() {
+        if (this.current_record) {
+            return this.current_record.id;
         }
     }
 });

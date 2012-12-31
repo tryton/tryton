@@ -33,6 +33,7 @@ Sao.View.Tree = Class(Sao.View, {
         });
         this.expanded = {};
         this.children_field = children_field;
+        this.keyword_open = xml.children()[0].getAttribute('keyword_open');
 
         // Columns
         this.columns = [];
@@ -131,16 +132,25 @@ Sao.View.Tree = Class(Sao.View, {
     display: function() {
         this.tbody.empty();
         var add_row = function(record, pos, group) {
-            var tree_row = new Sao.View.Tree.Row(this, pos);
-            tree_row.display(record);
+            var tree_row = new Sao.View.Tree.Row(this, record, pos);
+            tree_row.display();
         };
         this.screen.group.forEach(add_row.bind(this));
+    },
+    switch_: function(path) {
+        this.screen.row_activate();
+    },
+    select_changed: function(record) {
+        this.screen.current_record = record;
+        // TODO validate if editable
+        // TODO update_children
     }
 });
 
 Sao.View.Tree.Row = Class(Object, {
-    init: function(tree, pos, parent) {
+    init: function(tree, record, pos, parent) {
         this.tree = tree;
+        this.record = record;
         this.children_field = tree.children_field;
         this.expander = null;
         this.expander_icon = null;
@@ -151,11 +161,18 @@ Sao.View.Tree.Row = Class(Object, {
         path.push(pos);
         this.path = path.join('.');
         this.el = $('<tr/>');
+        this.el.click(this.select_row.bind(this));
+        var switch_ = function() {
+            this.el.addClass('ui-state-highlight');
+            this.tree.select_changed(this.record);
+            this.tree.switch_(path);
+        };
+        this.el.dblclick(switch_.bind(this));
     },
     is_expanded: function() {
         return (this.path in this.tree.expanded);
     },
-    display: function(record) {
+    display: function() {
         console.log(this.path);
         var depth = this.path.split('.').length;
         for (var i = 0; i < this.tree.columns.length; i++) {
@@ -181,31 +198,32 @@ Sao.View.Tree.Row = Class(Object, {
                 td.append(this.expander);
                 var update_expander = function() {
                     if (jQuery.isEmptyObject(
-                                record.field_get(this.children_field))) {
+                                this.record.field_get(this.children_field))) {
 
                         this.expander_icon.hide();
                     }
                 };
-                record.load(this.children_field).done(
+                this.record.load(this.children_field).done(
                         update_expander.bind(this));
             }
             var column = this.tree.columns[i];
-            td.append(column.render(record));
+            td.append(column.render(this.record));
             this.el.append(td);
         }
         this.tree.tbody.append(this.el);
         if (this.is_expanded()) {
-            var add_row = function(record, pos, group) {
-                var tree_row = new Sao.View.Tree.Row(this.tree, pos, this);
-                tree_row.display(record);
+            var add_children = function() {
+                var add_row = function(record, pos, group) {
+                    var tree_row = new Sao.View.Tree.Row(this.tree, record,
+                            pos, this);
+                    tree_row.display();
+                };
+                var children = this.record.field_get_client(children_field);
+                children.forEach(add_row.bind(this));
             };
-            add_row = add_row.bind(this);
             var children_field = this.children_field;
             console.log('Load children of ' + this.path);
-            record.load(this.children_field).done(function() {
-                var children = record.field_get_client(children_field);
-                children.forEach(add_row);
-            });
+            this.record.load(this.children_field).done(add_children.bind(this));
         }
     },
     toggle_row: function() {
@@ -219,6 +237,14 @@ Sao.View.Tree.Row = Class(Object, {
             this.tree.expanded[this.path] = this;
         }
         this.tree.display();
+    },
+    select_row: function() {
+        this.el.toggleClass('ui-state-highlight');
+        if (this.el.hasClass('ui-state-highlight')) {
+            this.tree.select_changed(this.record);
+        } else {
+            this.tree.select_changed(null);
+        }
     }
 });
 
