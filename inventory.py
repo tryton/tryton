@@ -113,9 +113,15 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def confirm(self, inventories):
+        Move = Pool().get('stock.move')
+        move_ids = []
         for inventory in inventories:
             for line in inventory.lines:
-                line.create_move()
+                move_id = line.create_move()
+                if move_id:
+                    move_ids.append(move_id)
+        if move_ids:
+            Move.do(Move.browse(move_ids))
 
     @classmethod
     @ModelView.button
@@ -297,7 +303,6 @@ class InventoryLine(ModelSQL, ModelView):
             'company': self.inventory.company.id,
             'effective_date': self.inventory.date,
             })
-        Move.do([move])
         self.move = move
         self.save()
         return move.id
