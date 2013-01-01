@@ -205,7 +205,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             # Create lines if needed
             for product_id in product_qty:
                 if (product2type[product_id] != 'goods'
-                        and not product2consumable[product_id]):
+                        or product2consumable[product_id]):
                     continue
                 quantity, uom_id = product_qty[product_id]
                 values = line_obj.create_values4complete(product_id, inventory,
