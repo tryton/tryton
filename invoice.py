@@ -904,8 +904,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
         if self.type in ('in_invoice', 'in_credit_note'):
             test_state = False
 
+        accounting_date = self.accounting_date or self.invoice_date
         period_id = Period.find(self.company.id,
-            date=self.invoice_date, test_state=test_state)
+            date=accounting_date, test_state=test_state)
         period = Period(period_id)
         sequence_id = getattr(period, self.type + '_sequence').id
         if not sequence_id:
