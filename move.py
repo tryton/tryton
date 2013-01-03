@@ -1192,6 +1192,9 @@ class Line(ModelSQL, ModelView):
                         'journal': journal_id,
                         'date': vals.get('date'),
                         }).id
+        else:
+            # prevent computation of default date
+            vals.setdefault('date', None)
         line = super(Line, cls).create(vals)
         cls.check_journal_period_modify(line.period, line.journal)
         Move.validate([line.move])
