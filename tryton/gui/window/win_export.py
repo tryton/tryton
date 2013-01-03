@@ -337,7 +337,7 @@ class WinExport(NoModal):
             return None
         export_id = model.get_value(i, 0)
         try:
-            RPCExecute('model', 'ir.export', 'delete', export_id)
+            RPCExecute('model', 'ir.export', 'delete', [export_id])
         except RPCException:
             return
         for i in range(len(self.predef_model)):
