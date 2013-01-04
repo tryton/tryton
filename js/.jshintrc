@@ -1,0 +1,8 @@
+{
+    "browser": true,
+    "devel": true,
+    "jquery": true,
+    "predef": [
+        "Sao"
+    ]
+}

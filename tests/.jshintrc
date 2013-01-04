@@ -1,0 +1,8 @@
+{
+    "browser": true,
+    "jquery": true,
+    "predef": [
+        "QUnit",
+        "Sao"
+    ]
+}
