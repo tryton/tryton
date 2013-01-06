@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
-from itertools import groupby
+from itertools import groupby, chain
 from functools import partial
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
@@ -683,17 +683,8 @@ class Sale(Workflow, ModelSQL, ModelView):
             return
 
         invoice = self._get_invoice_sale(invoice_type)
+        invoice.lines = list(chain.from_iterable(invoice_lines.itervalues()))
         invoice.save()
-
-        for line in self.lines:
-            if line.id not in invoice_lines:
-                continue
-            for invoice_line in invoice_lines[line.id]:
-                invoice_line.invoice = invoice.id
-                invoice_line.save()
-                SaleLine.write([line], {
-                        'invoice_lines': [('add', [invoice_line.id])],
-                        })
 
         with Transaction().set_user(0, set_context=True):
             Invoice.update_taxes([invoice])
@@ -766,14 +757,10 @@ class Sale(Workflow, ModelSQL, ModelView):
                 }
             values.update(dict(key))
             with Transaction().set_user(0, set_context=True):
-                shipment = Shipment.create(values)
+                shipment = Shipment(**values)
+                shipment.moves = [x[1] for x in grouped_moves]
+                shipment.save()
                 shipments.append(shipment)
-                for line_id, move in grouped_moves:
-                    setattr(move, move_shipment_key, shipment.id)
-                    move.save()
-                    SaleLine.write([SaleLine(line_id)], {
-                            'moves': [('add', [move.id])],
-                            })
         if shipment_type == 'out':
             with Transaction().set_user(0, set_context=True):
                 Shipment.wait(shipments)
@@ -1272,6 +1259,7 @@ class SaleLine(ModelSQL, ModelView):
                     break
             if not invoice_line.account:
                 self.raise_user_error('missing_account_revenue_property')
+        invoice_line.sale_lines = [self]
         return [invoice_line]
 
     @classmethod
@@ -1332,6 +1320,7 @@ class SaleLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
         move.planned_date = self.delivery_date
+        move.sale_line = self
         return move
 
 
