@@ -44,9 +44,9 @@ class PartyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            category1 = self.category.create({
-                'name': 'Category 1',
-                })
+            category1, = self.category.create([{
+                        'name': 'Category 1',
+                        }])
             self.assert_(category1.id)
             transaction.cursor.commit()
 
@@ -59,10 +59,10 @@ class PartyTestCase(unittest.TestCase):
                 ('name', '=', 'Category 1'),
                 ], limit=1)
 
-            category2 = self.category.create({
-                'name': 'Category 2',
-                'parent': category1.id,
-                })
+            category2, = self.category.create([{
+                        'name': 'Category 2',
+                        'parent': category1.id,
+                        }])
             self.assert_(category2.id)
 
             self.assertRaises(Exception, self.category.write,
@@ -76,9 +76,9 @@ class PartyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            party1 = self.party.create({
-                'name': 'Party 1',
-                })
+            party1, = self.party.create([{
+                        'name': 'Party 1',
+                        }])
             self.assert_(party1.id)
             transaction.cursor.commit()
 
@@ -91,9 +91,9 @@ class PartyTestCase(unittest.TestCase):
 
             code = party1.code
 
-            party2 = self.party.create({
-                'name': 'Party 2',
-                })
+            party2, = self.party.create([{
+                        'name': 'Party 2',
+                        }])
 
             self.assertRaises(Exception, self.party.write,
                 [party2], {
@@ -107,11 +107,11 @@ class PartyTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             party1, = self.party.search([], limit=1)
 
-            address = self.address.create({
-                'party': party1.id,
-                'street': 'St sample, 15',
-                'city': 'City',
-                })
+            address, = self.address.create([{
+                        'party': party1.id,
+                        'street': 'St sample, 15',
+                        'city': 'City',
+                        }])
             self.assert_(address.id)
 
 

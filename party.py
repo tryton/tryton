@@ -152,17 +152,17 @@ class Party(ModelSQL, ModelView):
         return ''
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         Sequence = Pool().get('ir.sequence')
         Configuration = Pool().get('party.configuration')
 
-        values = values.copy()
-        if not values.get('code'):
-            config = Configuration(1)
-            values['code'] = Sequence.get_id(config.party_sequence.id)
-
-        values['code_length'] = len(values['code'])
-        return super(Party, cls).create(values)
+        vlist = [x.copy() for x in vlist]
+        for values in vlist:
+            if not values.get('code'):
+                config = Configuration(1)
+                values['code'] = Sequence.get_id(config.party_sequence.id)
+            values['code_length'] = len(values['code'])
+        return super(Party, cls).create(vlist)
 
     @classmethod
     def write(cls, parties, vals):
