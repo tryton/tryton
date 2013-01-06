@@ -105,7 +105,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
             vals['company'] = company_id
             vals['parent'] = parent_id
 
-            new_tax_code = TaxCode.create(vals)
+            new_tax_code, = TaxCode.create([vals])
 
             prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
@@ -499,7 +499,7 @@ class TaxTemplate(ModelSQL, ModelView):
             else:
                 vals['credit_note_tax_code'] = None
 
-            new_tax = Tax.create(vals)
+            new_tax, = Tax.create([vals])
 
             prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
@@ -919,7 +919,7 @@ class TaxRuleTemplate(ModelSQL, ModelView):
         if self.id not in template2rule:
             vals = self._get_tax_rule_value()
             vals['company'] = company_id
-            new_rule = Rule.create(vals)
+            new_rule, = Rule.create([vals])
 
             prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
@@ -1115,7 +1115,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
                 vals['tax'] = template2tax[self.tax.id]
             else:
                 vals['tax'] = None
-            new_rule_line = RuleLine.create(vals)
+            new_rule_line, = RuleLine.create([vals])
             template2rule_line[self.id] = new_rule_line.id
         return template2rule_line[self.id]
 

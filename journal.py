@@ -234,13 +234,14 @@ class JournalPeriod(ModelSQL, ModelView):
                 cls.raise_user_error('modify_del_journal_period')
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         Period = Pool().get('account.period')
-        if vals.get('period'):
-            period = Period(vals['period'])
-            if period.state == 'close':
-                cls.raise_user_error('create_journal_period')
-        return super(JournalPeriod, cls).create(vals)
+        for vals in vlist:
+            if vals.get('period'):
+                period = Period(vals['period'])
+                if period.state == 'close':
+                    cls.raise_user_error('create_journal_period')
+        return super(JournalPeriod, cls).create(vlist)
 
     @classmethod
     def write(cls, periods, vals):

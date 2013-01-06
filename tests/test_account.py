@@ -90,18 +90,18 @@ class AccountTestCase(unittest.TestCase):
                 context=CONTEXT) as transaction:
             today = datetime.date.today()
             company, = self.company.search([('name', '=', 'B2CK')])
-            sequence = self.sequence.create({
-                    'name': '%s' % today.year,
-                    'code': 'account.move',
-                    'company': company.id,
-                    })
-            fiscalyear = self.fiscalyear.create({
-                    'name': '%s' % today.year,
-                    'start_date': today.replace(month=1, day=1),
-                    'end_date': today.replace(month=12, day=31),
-                    'company': company.id,
-                    'post_move_sequence': sequence.id,
-                    })
+            sequence, = self.sequence.create([{
+                        'name': '%s' % today.year,
+                        'code': 'account.move',
+                        'company': company.id,
+                        }])
+            fiscalyear, = self.fiscalyear.create([{
+                        'name': '%s' % today.year,
+                        'start_date': today.replace(month=1, day=1),
+                        'end_date': today.replace(month=12, day=31),
+                        'company': company.id,
+                        'post_move_sequence': sequence.id,
+                        }])
             self.fiscalyear.create_period([fiscalyear])
             self.assertEqual(len(fiscalyear.periods), 12)
             transaction.cursor.commit()
@@ -133,20 +133,19 @@ class AccountTestCase(unittest.TestCase):
                     ('kind', '=', 'payable'),
                     ])
             # Create some moves
-            values = [
+            vlist = [
                 {
                     'period': period.id,
                     'journal': journal_revenue.id,
                     'date': period.start_date,
                     'lines': [
-                        ('create', {
-                                'account': revenue.id,
-                                'credit': Decimal(100),
-                                }),
-                        ('create', {
-                                'account': receivable.id,
-                                'debit': Decimal(100),
-                                }),
+                        ('create', [{
+                                    'account': revenue.id,
+                                    'credit': Decimal(100),
+                                    }, {
+                                    'account': receivable.id,
+                                    'debit': Decimal(100),
+                                    }]),
                         ],
                     },
                 {
@@ -154,19 +153,17 @@ class AccountTestCase(unittest.TestCase):
                     'journal': journal_expense.id,
                     'date': period.start_date,
                     'lines': [
-                        ('create', {
-                                'account': expense.id,
-                                'debit': Decimal(30),
-                                }),
-                        ('create', {
-                                'account': payable.id,
-                                'credit': Decimal(30),
-                                }),
+                        ('create', [{
+                                    'account': expense.id,
+                                    'debit': Decimal(30),
+                                    }, {
+                                    'account': payable.id,
+                                    'credit': Decimal(30),
+                                    }]),
                         ],
                     },
                 ]
-            for value in values:
-                self.move.create(value)
+            self.move.create(vlist)
 
             # Test debit/credit
             self.assertEqual((revenue.debit, revenue.credit),
@@ -174,11 +171,11 @@ class AccountTestCase(unittest.TestCase):
             self.assertEqual(revenue.balance, Decimal(-100))
 
             # Use next fiscalyear
-            next_sequence = self.sequence.create({
-                    'name': 'Next Year',
-                    'code': 'account.move',
-                    'company': fiscalyear.company.id,
-                    })
+            next_sequence, = self.sequence.create([{
+                        'name': 'Next Year',
+                        'code': 'account.move',
+                        'company': fiscalyear.company.id,
+                        }])
             next_fiscalyear, = self.fiscalyear.copy([fiscalyear],
                 default={
                     'start_date': fiscalyear.end_date + datetime.timedelta(1),
@@ -207,41 +204,39 @@ class AccountTestCase(unittest.TestCase):
             journal_sequence, = self.sequence.search([
                     ('code', '=', 'account.journal'),
                     ])
-            journal_closing = self.journal.create({
-                    'name': 'Closing',
-                    'code': 'CLO',
-                    'type': 'situation',
-                    'sequence': journal_sequence.id,
-                    })
+            journal_closing, = self.journal.create([{
+                        'name': 'Closing',
+                        'code': 'CLO',
+                        'type': 'situation',
+                        'sequence': journal_sequence.id,
+                        }])
             type_equity, = self.account_type.search([
                     ('name', '=', 'Equity'),
                     ])
-            account_pl = self.account.create({
-                    'name': 'P&L',
-                    'type': type_equity.id,
-                    'deferral': True,
-                    'parent': revenue.parent.id,
-                    'kind': 'other',
-                    })
-            self.move.create({
-                    'period': fiscalyear.periods[-1].id,
-                    'journal': journal_closing.id,
-                    'date': fiscalyear.periods[-1].end_date,
-                    'lines': [
-                        ('create', {
-                                'account': revenue.id,
-                                'debit': Decimal(100),
-                                }),
-                        ('create', {
-                                'account': expense.id,
-                                'credit': Decimal(30),
-                                }),
-                        ('create', {
-                                'account': account_pl.id,
-                                'credit': Decimal('70'),
-                                }),
-                        ],
-                    })
+            account_pl, = self.account.create([{
+                        'name': 'P&L',
+                        'type': type_equity.id,
+                        'deferral': True,
+                        'parent': revenue.parent.id,
+                        'kind': 'other',
+                        }])
+            self.move.create([{
+                        'period': fiscalyear.periods[-1].id,
+                        'journal': journal_closing.id,
+                        'date': fiscalyear.periods[-1].end_date,
+                        'lines': [
+                            ('create', [{
+                                        'account': revenue.id,
+                                        'debit': Decimal(100),
+                                        }, {
+                                        'account': expense.id,
+                                        'credit': Decimal(30),
+                                        }, {
+                                        'account': account_pl.id,
+                                        'credit': Decimal('70'),
+                                        }]),
+                            ],
+                        }])
             moves = self.move.search([
                     ('state', '=', 'draft'),
                     ('period.fiscalyear', '=', fiscalyear.id),

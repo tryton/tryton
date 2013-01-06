@@ -150,6 +150,7 @@ class FiscalYear(ModelSQL, ModelView):
         Create periods for the fiscal years with month interval
         '''
         Period = Pool().get('account.period')
+        to_create = []
         for fiscalyear in fiscalyears:
             period_start_date = fiscalyear.start_date
             while period_start_date < fiscalyear.end_date:
@@ -161,7 +162,7 @@ class FiscalYear(ModelSQL, ModelView):
                 name = datetime_strftime(period_start_date, '%Y-%m')
                 if name != datetime_strftime(period_end_date, '%Y-%m'):
                     name += ' - ' + datetime_strftime(period_end_date, '%Y-%m')
-                Period.create({
+                to_create.append({
                     'name': name,
                     'start_date': period_start_date,
                     'end_date': period_end_date,
@@ -170,6 +171,8 @@ class FiscalYear(ModelSQL, ModelView):
                     'type': 'standard',
                     })
                 period_start_date = period_end_date + relativedelta(days=1)
+        if to_create:
+            Period.create(to_create)
 
     @classmethod
     @ModelView.button
@@ -217,12 +220,12 @@ class FiscalYear(ModelSQL, ModelView):
                 self.raise_user_error('account_balance_not_zero',
                         error_args=(account.rec_name,))
         else:
-            Deferral.create({
-                'account': account.id,
-                'fiscalyear': self.id,
-                'debit': account.debit,
-                'credit': account.credit,
-                })
+            Deferral.create([{
+                        'account': account.id,
+                        'fiscalyear': self.id,
+                        'debit': account.debit,
+                        'credit': account.credit,
+                        }])
 
     @classmethod
     @ModelView.button

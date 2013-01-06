@@ -62,8 +62,8 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
         with Transaction().set_user(0):
             Property.delete(properties)
             if value:
-                Property.create({
-                    'field': account_field.id,
-                    'value': 'account.account,%s' % value,
-                    'company': company_id,
-                    })
+                Property.create([{
+                            'field': account_field.id,
+                            'value': 'account.account,%s' % value,
+                            'company': company_id,
+                            }])

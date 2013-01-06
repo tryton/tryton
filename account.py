@@ -123,7 +123,7 @@ class TypeTemplate(ModelSQL, ModelView):
             vals['company'] = company_id
             vals['parent'] = parent_id
 
-            new_type = Type.create(vals)
+            new_type, = Type.create([vals])
 
             prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
@@ -448,7 +448,7 @@ class AccountTemplate(ModelSQL, ModelView):
             vals['type'] = (template2type.get(self.type.id) if self.type
                 else None)
 
-            new_account = Account.create(vals)
+            new_account, = Account.create([vals])
 
             prev_lang = self._context.get('language') or Config.get_language()
             prev_data = {}
@@ -1738,12 +1738,12 @@ class CreateChart(Wizard):
             with Transaction().set_user(0):
                 Property.delete(properties)
                 if self.properties.account_receivable:
-                    Property.create({
-                            'field': account_receivable_field.id,
-                            'value': 'account.account,' + \
-                                str(self.properties.account_receivable.id),
-                            'company': self.properties.company.id,
-                            })
+                    Property.create([{
+                                'field': account_receivable_field.id,
+                                'value': 'account.account,' + \
+                                    str(self.properties.account_receivable.id),
+                                'company': self.properties.company.id,
+                                }])
 
             account_payable_field, = ModelField.search([
                     ('model.model', '=', 'party.party'),
@@ -1757,12 +1757,12 @@ class CreateChart(Wizard):
             with Transaction().set_user(0):
                 Property.delete(properties)
                 if self.properties.account_payable:
-                    Property.create({
-                            'field': account_payable_field.id,
-                            'value': 'account.account,' + \
-                                str(self.properties.account_payable.id),
-                            'company': self.properties.company.id,
-                            })
+                    Property.create([{
+                                'field': account_payable_field.id,
+                                'value': 'account.account,' + \
+                                    str(self.properties.account_payable.id),
+                                'company': self.properties.company.id,
+                                }])
         return 'end'
 
 

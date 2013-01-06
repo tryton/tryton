@@ -219,32 +219,33 @@ class Move(ModelSQL, ModelView):
         cls.validate(moves)
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Sequence = pool.get('ir.sequence')
         Journal = pool.get('account.journal')
 
-        if not vals.get('number'):
-            journal_id = (vals.get('journal')
-                    or Transaction().context.get('journal'))
-            if journal_id:
-                vals = vals.copy()
-                journal = Journal(journal_id)
-                vals['number'] = Sequence.get_id(journal.sequence.id)
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            if not vals.get('number'):
+                journal_id = (vals.get('journal')
+                        or Transaction().context.get('journal'))
+                if journal_id:
+                    journal = Journal(journal_id)
+                    vals['number'] = Sequence.get_id(journal.sequence.id)
 
-        move = super(Move, cls).create(vals)
-        if move.journal.centralised:
-            line = MoveLine.create({
-                    'account': move.journal.credit_account.id,
-                    'move': move.id,
-                    })
-            cls.write([move], {
-                    'centralised_line': line.id,
-                    })
-        if 'lines' in vals:
-            cls.validate([move])
-        return move
+        moves = super(Move, cls).create(vlist)
+        for move in moves:
+            if move.journal.centralised:
+                line, = MoveLine.create([{
+                            'account': move.journal.credit_account.id,
+                            'move': move.id,
+                            }])
+                cls.write([move], {
+                        'centralised_line': line.id,
+                        })
+        cls.validate(moves)
+        return moves
 
     @classmethod
     def delete(cls, moves):
@@ -316,12 +317,12 @@ class Move(ModelSQL, ModelView):
                         credit = - centralised_amount
                         account_id = move.journal.credit_account.id
                     if not move.centralised_line:
-                        centralised_line = MoveLine.create({
-                            'debit': debit,
-                            'credit': credit,
-                            'account': account_id,
-                            'move': move.id,
-                            })
+                        centralised_line, = MoveLine.create([{
+                                    'debit': debit,
+                                    'credit': credit,
+                                    'account': account_id,
+                                    'move': move.id,
+                                    }])
                         cls.write([move], {
                             'centralised_line': centralised_line.id,
                             })
@@ -401,14 +402,15 @@ class Reconciliation(ModelSQL, ModelView):
             })
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         Sequence = Pool().get('ir.sequence')
 
-        if 'name' not in vals:
-            vals = vals.copy()
-            vals['name'] = Sequence.get('account.move.reconciliation')
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            if 'name' not in vals:
+                vals['name'] = Sequence.get('account.move.reconciliation')
 
-        return super(Reconciliation, cls).create(vals)
+        return super(Reconciliation, cls).create(vlist)
 
     @classmethod
     def write(cls, moves, vals):
@@ -1117,11 +1119,11 @@ class Line(ModelSQL, ModelView):
             if journal_period.state == 'close':
                 cls.raise_user_error('add_modify_closed_journal_period')
         else:
-            JournalPeriod.create({
-                    'name': journal.name + ' - ' + period.name,
-                    'journal': journal.id,
-                    'period': period.id,
-                    })
+            JournalPeriod.create([{
+                        'name': journal.name + ' - ' + period.name,
+                        'journal': journal.id,
+                        'period': period.id,
+                        }])
 
     @classmethod
     def check_modify(cls, lines):
@@ -1165,40 +1167,44 @@ class Line(ModelSQL, ModelView):
         Move.validate(moves)
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         pool = Pool()
         Journal = pool.get('account.journal')
         Move = pool.get('account.move')
-        vals = vals.copy()
-        if not vals.get('move'):
-            journal_id = (vals.get('journal')
-                    or Transaction().context.get('journal'))
-            if not journal_id:
-                cls.raise_user_error('no_journal')
-            journal = Journal(journal_id)
-            if journal.centralised:
-                moves = Move.search([
-                        ('period', '=', vals.get('period')
-                            or Transaction().context.get('period')),
-                        ('journal', '=', journal_id),
-                        ('state', '!=', 'posted'),
-                        ], limit=1)
-                if moves:
-                    vals['move'] = moves[0].id
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
             if not vals.get('move'):
-                vals['move'] = Move.create({
-                        'period': (vals.get('period')
-                            or Transaction().context.get('period')),
-                        'journal': journal_id,
-                        'date': vals.get('date'),
-                        }).id
-        else:
-            # prevent computation of default date
-            vals.setdefault('date', None)
-        line = super(Line, cls).create(vals)
-        cls.check_journal_period_modify(line.period, line.journal)
-        Move.validate([line.move])
-        return line
+                journal_id = (vals.get('journal')
+                        or Transaction().context.get('journal'))
+                if not journal_id:
+                    cls.raise_user_error('no_journal')
+                journal = Journal(journal_id)
+                if journal.centralised:
+                    moves = Move.search([
+                            ('period', '=', vals.get('period')
+                                or Transaction().context.get('period')),
+                            ('journal', '=', journal_id),
+                            ('state', '!=', 'posted'),
+                            ], limit=1)
+                    if moves:
+                        vals['move'] = moves[0].id
+                if not vals.get('move'):
+                    vals['move'] = Move.create([{
+                                'period': (vals.get('period')
+                                    or Transaction().context.get('period')),
+                                'journal': journal_id,
+                                'date': vals.get('date'),
+                                }])[0].id
+            else:
+                # prevent computation of default date
+                vals.setdefault('date', None)
+        lines = super(Line, cls).create(vlist)
+        period_and_journals = set((line.period, line.journal) 
+            for line in lines)
+        for period, journal in period_and_journals:
+            cls.check_journal_period_modify(period, journal)
+        Move.validate(list(set(line.move for line in lines)))
+        return lines
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -1289,27 +1295,26 @@ class Line(ModelSQL, ModelView):
                     account = line.account
             amount = account.currency.round(amount)
             period_id = Period.find(account.company.id, date=date)
-            move = Move.create({
-                'journal': journal.id,
-                'period': period_id,
-                'date': date,
-                'lines': [
-                    ('create', {
-                        'account': account.id,
-                        'debit': amount < Decimal('0.0') and - amount \
-                                or Decimal('0.0'),
-                        'credit': amount > Decimal('0.0') and amount \
-                                or Decimal('0.0'),
-                    }),
-                    ('create', {
-                        'account': account.id,
-                        'debit': amount > Decimal('0.0') and amount \
-                                or Decimal('0.0'),
-                        'credit': amount < Decimal('0.0') and - amount \
-                                or Decimal('0.0'),
-                    }),
-                ],
-                })
+            move, = Move.create([{
+                        'journal': journal.id,
+                        'period': period_id,
+                        'date': date,
+                        'lines': [
+                            ('create', [{
+                                        'account': account.id,
+                                        'debit': (amount < Decimal('0.0') 
+                                            and - amount or Decimal('0.0')),
+                                        'credit': (amount > Decimal('0.0') 
+                                            and amount or Decimal('0.0')),
+                                        }, {
+                                        'account': account.id,
+                                        'debit': (amount > Decimal('0.0') 
+                                            and amount or Decimal('0.0')),
+                                        'credit': (amount < Decimal('0.0') 
+                                            and - amount or Decimal('0.0')),
+                                        }]),
+                            ],
+                        }])
             lines += cls.search([
                 ('move', '=', move.id),
                 ('account', '=', account.id),
@@ -1318,9 +1323,9 @@ class Line(ModelSQL, ModelView):
                 ('credit', '=', amount > Decimal('0.0') and amount \
                         or Decimal('0.0')),
                 ], limit=1)
-        return Reconciliation.create({
-                'lines': [('add', [x.id for x in lines])],
-                })
+        return Reconciliation.create([{
+                    'lines': [('add', [x.id for x in lines])],
+                    }])[0]
 
 
 class Move2:
@@ -1394,11 +1399,11 @@ class OpenJournal(Wizard):
                 ('period', '=', period.id),
                 ], limit=1)
         if not journal_periods:
-            journal_period = JournalPeriod.create({
-                    'name': journal.name + ' - ' + period.name,
-                    'journal': journal.id,
-                    'period': period.id,
-                    })
+            journal_period, = JournalPeriod.create([{
+                        'name': journal.name + ' - ' + period.name,
+                        'journal': journal.id,
+                        'period': period.id,
+                        }])
         else:
             journal_period, = journal_periods
 

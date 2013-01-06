@@ -188,16 +188,18 @@ class Period(ModelSQL, ModelView):
             order=order, count=count, query_string=query_string)
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         FiscalYear = Pool().get('account.fiscalyear')
-        vals = vals.copy()
-        if vals.get('fiscalyear'):
-            fiscalyear = FiscalYear(vals['fiscalyear'])
-            if fiscalyear.state == 'close':
-                cls.raise_user_error('create_period_closed_fiscalyear')
-            if not vals.get('post_move_sequence'):
-                vals['post_move_sequence'] = fiscalyear.post_move_sequence.id
-        return super(Period, cls).create(vals)
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            if vals.get('fiscalyear'):
+                fiscalyear = FiscalYear(vals['fiscalyear'])
+                if fiscalyear.state == 'close':
+                    cls.raise_user_error('create_period_closed_fiscalyear')
+                if not vals.get('post_move_sequence'):
+                    vals['post_move_sequence'] = (
+                        fiscalyear.post_move_sequence.id)
+        return super(Period, cls).create(vlist)
 
     @classmethod
     def write(cls, periods, vals):
