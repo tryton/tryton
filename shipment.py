@@ -319,17 +319,18 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
-        values = values.copy()
+        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        values['code'] = Sequence.get_id(config.shipment_in_sequence)
-        shipment = super(ShipmentIn, cls).create(values)
-        cls._set_move_planned_date([shipment])
-        return shipment
+        for values in vlist:
+            values['code'] = Sequence.get_id(config.shipment_in_sequence)
+        shipments = super(ShipmentIn, cls).create(vlist)
+        cls._set_move_planned_date(shipments)
+        return shipments
 
     @classmethod
     def write(cls, shipments, values):
@@ -367,10 +368,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def create_inventory_moves(cls, shipments):
         for shipment in shipments:
             inventory_moves = []
+            to_create = []
             for incoming_move in shipment.incoming_moves:
                 vals = cls._get_inventory_moves(incoming_move)
                 if vals:
-                    inventory_moves.append(('create', vals))
+                    to_create.append(vals)
+            if to_create:
+                inventory_moves.append(('create', to_create))
             if inventory_moves:
                 cls.write([shipment], {
                     'inventory_moves': inventory_moves,
@@ -597,18 +601,19 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
-        values = values.copy()
+        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        values['code'] = Sequence.get_id(
-            config.shipment_in_return_sequence.id)
-        shipment = super(ShipmentInReturn, cls).create(values)
-        cls._set_move_planned_date([shipment])
-        return shipment
+        for values in vlist:
+            values['code'] = Sequence.get_id(
+                config.shipment_in_return_sequence.id)
+        shipments = super(ShipmentInReturn, cls).create(vlist)
+        cls._set_move_planned_date(shipments)
+        return shipments
 
     @classmethod
     def write(cls, shipments, values):
@@ -1004,11 +1009,12 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         Move.delete([m for s in shipments for m in s.inventory_moves
                 if m.state in ('draft', 'cancel')])
 
+        to_create = []
         for shipment in shipments:
             for move in shipment.outgoing_moves:
                 if move.state in ('cancel', 'done'):
                     continue
-                Move.create({
+                to_create.append({
                         'from_location': \
                             move.shipment_out.warehouse.storage_location.id,
                         'to_location': move.from_location.id,
@@ -1022,6 +1028,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                         'currency': move.currency.id,
                         'unit_price': move.unit_price,
                         })
+        if to_create:
+            Move.create(to_create)
 
     @classmethod
     @Workflow.transition('assigned')
@@ -1048,6 +1056,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 outgoing_qty.setdefault(move.product.id, 0.0)
                 outgoing_qty[move.product.id] += quantity
 
+            to_create = []
             for move in shipment.inventory_moves:
                 if move.state == 'cancel':
                     continue
@@ -1071,7 +1080,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
                 unit_price = Uom.compute_price(move.product.default_uom,
                         move.product.list_price, move.uom)
-                Move.create({
+                to_create.append({
                         'from_location': move.to_location.id,
                         'to_location': shipment.customer.customer_location.id,
                         'product': move.product.id,
@@ -1084,6 +1093,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                         'currency': move.company.currency.id,
                         'unit_price': unit_price,
                         })
+            if to_create:
+                Move.create(to_create)
 
             #Re-read the shipment and remove exceeding quantities
             for move in shipment.outgoing_moves:
@@ -1150,17 +1161,18 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
-        values = values.copy()
+        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        values['code'] = Sequence.get_id(config.shipment_out_sequence.id)
-        shipment = super(ShipmentOut, cls).create(values)
-        cls._set_move_planned_date([shipment])
-        return shipment
+        for values in vlist:
+            values['code'] = Sequence.get_id(config.shipment_out_sequence.id)
+        shipments = super(ShipmentOut, cls).create(vlist)
+        cls._set_move_planned_date(shipments)
+        return shipments
 
     @classmethod
     def write(cls, shipments, values):
@@ -1491,18 +1503,19 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
-        values = values.copy()
+        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        values['code'] = Sequence.get_id(
-                config.shipment_out_return_sequence.id)
-        shipment = super(ShipmentOutReturn, cls).create(values)
-        cls._set_move_planned_date([shipment])
-        return shipment
+        for values in vlist:
+            values['code'] = Sequence.get_id(
+                    config.shipment_out_return_sequence.id)
+        shipments = super(ShipmentOutReturn, cls).create(vlist)
+        cls._set_move_planned_date(shipments)
+        return shipments
 
     @classmethod
     def write(cls, shipments, values):
@@ -1586,10 +1599,13 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     def create_inventory_moves(cls, shipments):
         for shipment in shipments:
             inventory_moves = []
+            to_create = []
             for incoming_move in shipment.incoming_moves:
                 vals = cls._get_inventory_moves(incoming_move)
                 if vals:
-                    inventory_moves.append(('create', vals))
+                    to_create.append(vals)
+            if to_create:
+                inventory_moves.append(('create', to_create))
             cls.write([shipment], {
                 'inventory_moves': inventory_moves,
                 })
@@ -1808,16 +1824,17 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
-        values = values.copy()
+        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        values['code'] = Sequence.get_id(
-                config.shipment_internal_sequence.id)
-        return super(ShipmentInternal, cls).create(values)
+        for values in vlist:
+            values['code'] = Sequence.get_id(
+                    config.shipment_internal_sequence.id)
+        return super(ShipmentInternal, cls).create(vlist)
 
     @classmethod
     def delete(cls, shipments):
@@ -2020,7 +2037,7 @@ class CreateShipmentOutReturn(Wizard):
         shipment_ids = Transaction().context['active_ids']
         shipment_outs = ShipmentOut.browse(shipment_ids)
 
-        shipment_out_return_ids = []
+        to_create = []
         for shipment_out in shipment_outs:
             if shipment_out.state != 'done':
                 self.raise_user_error('shipment_done_title',
@@ -2028,27 +2045,28 @@ class CreateShipmentOutReturn(Wizard):
                         error_description_args=shipment_out.code)
 
             incoming_moves = []
+            moves_to_create = []
             for move in shipment_out.outgoing_moves:
-                incoming_moves.append(('create', {
-                            'product': move.product.id,
-                            'quantity': move.quantity,
-                            'uom': move.uom.id,
-                            'from_location': move.to_location.id,
-                            'to_location': \
-                                shipment_out.warehouse.input_location.id,
-                            'company': move.company.id,
-                            }))
-            shipment_out_return_ids.append(
-                ShipmentOutReturn.create({
+                moves_to_create.append({
+                        'product': move.product.id,
+                        'quantity': move.quantity,
+                        'uom': move.uom.id,
+                        'from_location': move.to_location.id,
+                        'to_location': shipment_out.warehouse.input_location.id,
+                        'company': move.company.id,
+                        })
+            if moves_to_create:
+                incoming_moves.append(('create', moves_to_create))
+            to_create.append({
                     'customer': shipment_out.customer.id,
                     'delivery_address': shipment_out.delivery_address.id,
                     'warehouse': shipment_out.warehouse.id,
                     'incoming_moves': incoming_moves,
-                    }).id
-                )
+                    })
+        shipment_out_returns = ShipmentOutReturn.create(to_create)
 
-        data = {'res_id': shipment_out_return_ids}
-        if len(shipment_out_return_ids) == 1:
+        data = {'res_id': [x.id for x in shipment_out_returns]}
+        if len(shipment_out_returns) == 1:
             action['views'].reverse()
         return action, data
 

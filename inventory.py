@@ -200,6 +200,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     Line.write([line], values)
 
             # Create lines if needed
+            to_create = []
             for product_id in product_qty:
                 if (product2type[product_id] != 'goods'
                         or product2consumable[product_id]):
@@ -207,7 +208,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 quantity, uom_id = product_qty[product_id]
                 values = Line.create_values4complete(product_id, inventory,
                     quantity, uom_id)
-                Line.create(values)
+                to_create.append(values)
+            if to_create:
+                Line.create(to_create)
 
 
 class InventoryLine(ModelSQL, ModelView):
@@ -294,15 +297,15 @@ class InventoryLine(ModelSQL, ModelView):
             (from_location, to_location, delta_qty) = \
                 (to_location, from_location, -delta_qty)
 
-        move = Move.create({
-            'from_location': from_location,
-            'to_location': to_location,
-            'quantity': delta_qty,
-            'product': self.product.id,
-            'uom': self.uom.id,
-            'company': self.inventory.company.id,
-            'effective_date': self.inventory.date,
-            })
+        move, = Move.create([{
+                    'from_location': from_location,
+                    'to_location': to_location,
+                    'quantity': delta_qty,
+                    'product': self.product.id,
+                    'uom': self.uom.id,
+                    'company': self.inventory.company.id,
+                    'effective_date': self.inventory.date,
+                    }])
         self.move = move
         self.save()
         return move.id

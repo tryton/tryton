@@ -234,10 +234,10 @@ class Location(ModelSQL, ModelView):
                 })
 
     @classmethod
-    def create(cls, vals):
-        location = super(Location, cls).create(vals)
-        cls._set_warehouse_parent([location])
-        return location
+    def create(cls, vlist):
+        locations = super(Location, cls).create(vlist)
+        cls._set_warehouse_parent(locations)
+        return locations
 
     @classmethod
     def write(cls, locations, vals):

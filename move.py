@@ -457,20 +457,21 @@ class Move(Workflow, ModelSQL, ModelView):
             move.save()
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         pool = Pool()
         Product = pool.get('product.product')
         Uom = pool.get('product.uom')
 
-        assert vals.get('state', 'draft') == 'draft'
-        vals = vals.copy()
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            assert vals.get('state', 'draft') == 'draft'
 
-        product = Product(vals['product'])
-        uom = Uom(vals['uom'])
-        internal_quantity = cls._get_internal_quantity(vals['quantity'],
-            uom, product)
-        vals['internal_quantity'] = internal_quantity
-        return super(Move, cls).create(vals)
+            product = Product(vals['product'])
+            uom = Uom(vals['uom'])
+            internal_quantity = cls._get_internal_quantity(vals['quantity'],
+                uom, product)
+            vals['internal_quantity'] = internal_quantity
+        return super(Move, cls).create(vlist)
 
     @classmethod
     def write(cls, moves, vals):

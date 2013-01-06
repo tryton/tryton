@@ -92,6 +92,7 @@ class Period(ModelSQL, ModelView):
                         ]]):
             cls.raise_user_error('close_period_assigned_move')
 
+        to_create = []
         for period in periods:
             with Transaction().set_context(
                     stock_date_end=period.date,
@@ -102,12 +103,14 @@ class Period(ModelSQL, ModelView):
                     ):
                 pbl = Product.products_by_location([l.id for l in locations])
             for (location_id, product_id), quantity in pbl.iteritems():
-                Cache.create({
+                to_create.append({
                         'period': period.id,
                         'location': location_id,
                         'product': product_id,
                         'internal_quantity': quantity,
                         })
+        if to_create:
+            Cache.create(to_create)
         cls.write(periods, {
                 'state': 'closed',
                 })
