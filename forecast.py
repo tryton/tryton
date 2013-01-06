@@ -407,13 +407,13 @@ class ForecastLine(ModelSQL, ModelView):
             unit_price = Uom.compute_price(self.product.default_uom,
                 unit_price, self.uom)
 
-        moves = []
+        to_create = []
         for day, qty in distribution.iteritems():
             if qty == 0.0:
                 continue
-            move = Move.create({
-                    'from_location': \
-                        self.forecast.warehouse.storage_location.id,
+            to_create.append({
+                    'from_location': (
+                        self.forecast.warehouse.storage_location.id),
                     'to_location': self.forecast.destination.id,
                     'product': self.product.id,
                     'uom': self.uom.id,
@@ -424,7 +424,9 @@ class ForecastLine(ModelSQL, ModelView):
                     'currency': self.forecast.company.currency.id,
                     'unit_price': unit_price,
                     })
-            moves.append(move)
+        moves = []
+        if to_create:
+            moves = Move.create(to_create)
         self.write([self], {'moves': [('set', [m.id for m in moves])]})
 
     @classmethod
@@ -574,6 +576,7 @@ class ForecastComplete(Wizard):
         else:
             products = None
 
+        to_create = []
         for key, qty in pbl.iteritems():
             _, product = key
             if products and product not in products:
@@ -589,11 +592,13 @@ class ForecastComplete(Wizard):
                         'minimal_quantity': min(1, -qty),
                         })
             else:
-                ForecastLine.create({
+                to_create.append({
                         'product': product,
                         'quantity': -qty,
                         'uom': prod2uom[product],
                         'forecast': Transaction().context['active_id'],
                         'minimal_quantity': min(1, -qty),
                         })
+        if to_create:
+            ForecastLine.create(to_create)
         return 'end'
