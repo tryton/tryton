@@ -114,23 +114,25 @@ class PurchaseLine:
         return res
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         Selection = Pool().get('analytic_account.account.selection')
-        vals = vals.copy()
-        selection_vals = {}
-        for field in vals.keys():
-            if field.startswith('analytic_account_'):
-                if vals[field]:
-                    selection_vals.setdefault('accounts', [])
-                    selection_vals['accounts'].append(('add', [vals[field]]))
-                del vals[field]
-        if vals.get('analytic_accounts'):
-            Selection.write([Selection(vals['analytic_accounts'])],
-                selection_vals)
-        elif vals.get('type', 'line') == 'line':
-            selection = Selection.create(selection_vals)
-            vals['analytic_accounts'] = selection.id
-        return super(PurchaseLine, cls).create(vals)
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            selection_vals = {}
+            for field in vals.keys():
+                if field.startswith('analytic_account_'):
+                    if vals[field]:
+                        selection_vals.setdefault('accounts', [])
+                        selection_vals['accounts'].append(('add',
+                                [vals[field]]))
+                    del vals[field]
+            if vals.get('analytic_accounts'):
+                Selection.write([Selection(vals['analytic_accounts'])],
+                    selection_vals)
+            elif vals.get('type', 'line') == 'line':
+                selection, = Selection.create([selection_vals])
+                vals['analytic_accounts'] = selection.id
+        return super(PurchaseLine, cls).create(vlist)
 
     @classmethod
     def write(cls, lines, vals):
@@ -150,7 +152,7 @@ class PurchaseLine:
                 if not line.analytic_accounts:
                     # Create missing selection
                     with Transaction().set_user(0):
-                        selection = Selection.create({})
+                        selection, = Selection.create([{}])
                     cls.write([line], {
                         'analytic_accounts': selection.id,
                         })
@@ -223,12 +225,12 @@ class Account:
         PurchaseLine._fields_view_get_cache.clear()
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         PurchaseLine = Pool().get('purchase.line')
-        account = super(Account, cls).create(vals)
+        accounts = super(Account, cls).create(vlist)
         # Restart the cache on the fields_view_get method of purchase.line
         PurchaseLine._fields_view_get_cache.clear()
-        return account
+        return accounts
 
     @classmethod
     def write(cls, accounts, vals):
