@@ -45,25 +45,25 @@ class ProductTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            category = self.uom_category.create({'name': 'Test'})
+            category, = self.uom_category.create([{'name': 'Test'}])
             transaction.cursor.commit()
 
-            self.assertRaises(Exception, self.uom.create, {
+            self.assertRaises(Exception, self.uom.create, [{
                     'name': 'Test',
                     'symbol': 'T',
                     'category': category.id,
                     'rate': 0,
                     'factor': 0,
-                    })
+                    }])
             transaction.cursor.rollback()
 
-            uom = self.uom.create({
-                    'name': 'Test',
-                    'symbol': 'T',
-                    'category': category.id,
-                    'rate': 1.0,
-                    'factor': 1.0,
-                    })
+            uom, = self.uom.create([{
+                        'name': 'Test',
+                        'symbol': 'T',
+                        'category': category.id,
+                        'rate': 1.0,
+                        'factor': 1.0,
+                        }])
             transaction.cursor.commit()
 
             self.assertRaises(Exception, self.uom.write, [uom], {
@@ -92,13 +92,13 @@ class ProductTestCase(unittest.TestCase):
                     ('name', '=', 'Test'),
                     ], limit=1)
 
-            self.assertRaises(Exception, self.uom.create, {
+            self.assertRaises(Exception, self.uom.create, [{
                     'name': 'Test',
                     'symbol': 'T',
                     'category': category.id,
                     'rate': 2,
                     'factor': 2,
-                    })
+                    }])
             transaction.cursor.rollback()
 
             uom, = self.uom.search([
