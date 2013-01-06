@@ -45,14 +45,16 @@ class CreateInventories(Wizard):
     def do_create_(self, action):
         Inventory = Pool().get('stock.inventory')
 
-        inventories = []
+        to_create = []
         for location in self.start.locations:
-            inventories.append(Inventory.create({
+            to_create.append({
                         'location': location.id,
                         'date': self.start.date,
                         'lost_found': self.start.lost_found.id,
                         'company': self.start.company.id,
-                        }))
+                        })
+        if to_create:
+            inventories = Inventory.create(to_create)
 
         Inventory.complete_lines(inventories)
 
