@@ -67,10 +67,14 @@ class User:
             cls.raise_user_error('set_passwd_ldap_user')
 
     @classmethod
-    def create(cls, values):
-        if values.get('password') and 'login' in values:
-            cls._check_passwd_ldap_user([values['login']])
-        return super(User, cls).create(values)
+    def create(cls, vlist):
+        tocheck = []
+        for values in vlist:
+            if values.get('password') and 'login' in values:
+                tocheck.append(values['login'])
+        if tocheck:
+            cls._check_passwd_ldap_user(tocheck)
+        return super(User, cls).create(vlist)
 
     @classmethod
     def write(cls, users, values):
@@ -126,11 +130,11 @@ class User:
                 if user_id:
                     return user_id
                 elif connection.auth_create_user:
-                    user = cls.create({
-                            'name': attrs.get(str(connection.auth_uid),
-                                [login])[0],
-                            'login': login,
-                            })
+                    user, = cls.create([{
+                                'name': attrs.get(str(connection.auth_uid),
+                                    [login])[0],
+                                'login': login,
+                                }])
                     return user.id
         except Exception:
             pass
