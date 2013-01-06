@@ -268,6 +268,7 @@ class One2ManyValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
         value = [('add', [])]
         value_list = getattr(instance, self.name)
+        to_create = []
         for record in value_list:
             if record.id > 0:
                 if record._changed:
@@ -275,7 +276,9 @@ class One2ManyValueDescriptor(ValueDescriptor):
                         fields=record._changed)))
                 value[0][1].append(record.id)
             else:
-                value.append(('create', record._get_values()))
+                to_create.append(record._get_values())
+        if to_create:
+            value.append(('create', to_create))
         if value_list.record_removed:
             value.append(('unlink', [x.id for x in value_list.record_removed]))
         if value_list.record_deleted:
@@ -646,7 +649,7 @@ class Model(object):
         context = self._config.context
         if self.id < 0:
             values = self._get_values()
-            self.__id = self._proxy.create(values, context)
+            self.__id, = self._proxy.create([values], context)
         else:
             if not self._changed:
                 return
