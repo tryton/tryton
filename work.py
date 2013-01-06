@@ -191,7 +191,8 @@ class Work:
 
                 target_ids = len(v) > 1 and v[1] or []
                 if operator == 'create':
-                    to_link.append(Request.create(v[1]).id)
+                    request, = Request.create(v[1])
+                    to_link.append(request.id)
                 elif operator == 'write':
                     Request.write([Request(v[1])], v[2])
                 elif operator == 'delete':
@@ -227,12 +228,15 @@ class Work:
                             req_refs.append(ref)
                 RequestReference.delete(req_refs)
 
+                to_create = []
                 for i in to_link:
                     for work in works:
-                        RequestReference.create({
+                        to_create.append({
                                 'request': i,
                                 'reference': str(work),
                                 })
+                if to_create:
+                    RequestReference.create(to_create)
             return
 
         fun_fields = ('actual_start_date', 'actual_finish_date',
@@ -632,11 +636,12 @@ class Work:
                 work.compute_dates()
 
     @classmethod
-    def create(cls, values):
-        work = super(Work, cls).create(values)
-        work.reset_leveling()
-        work.compute_dates()
-        return work
+    def create(cls, vlist):
+        works = super(Work, cls).create(vlist)
+        for work in works:
+            work.reset_leveling()
+            work.compute_dates()
+        return works
 
     @classmethod
     def delete(cls, works):
@@ -692,15 +697,16 @@ class PredecessorSuccessor(ModelSQL):
             parent.compute_dates()
 
     @classmethod
-    def create(cls, values):
-        pred_succ = super(PredecessorSuccessor, cls).create(values)
+    def create(cls, vlist):
+        pred_succs = super(PredecessorSuccessor, cls).create(vlist)
 
-        pred_succ.predecessor.reset_leveling()
-        pred_succ.successor.reset_leveling()
+        for pred_succ in pred_succs:
+            pred_succ.predecessor.reset_leveling()
+            pred_succ.successor.reset_leveling()
 
-        if pred_succ.predecessor.parent:
-            pred_succ.predecessor.parent.compute_dates()
-        return pred_succ
+            if pred_succ.predecessor.parent:
+                pred_succ.predecessor.parent.compute_dates()
+        return pred_succs
 
 
 class Leveling(Wizard):

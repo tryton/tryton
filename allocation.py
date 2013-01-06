@@ -43,10 +43,12 @@ class Allocation(ModelSQL, ModelView):
             work.compute_dates()
 
     @classmethod
-    def create(cls, values):
-        allocation = super(Allocation, cls).create(values)
-        allocation.work.reset_leveling()
-        allocation.work.compute_dates()
+    def create(cls, vlist):
+        allocations = super(Allocation, cls).create(vlist)
+        for allocation in allocations:
+            allocation.work.reset_leveling()
+            allocation.work.compute_dates()
+        return allocations
 
     @classmethod
     def delete(cls, allocations):
