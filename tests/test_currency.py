@@ -51,18 +51,16 @@ class CurrencyTestCase(unittest.TestCase):
 
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            cu1 = self.currency.create({
-                    'name': 'cu1',
-                    'symbol': 'cu1',
-                    'code': 'cu1'
-                    })
+            cu1, cu2 = self.currency.create([{
+                        'name': 'cu1',
+                        'symbol': 'cu1',
+                        'code': 'cu1'
+                        }, {
+                        'name': 'cu2',
+                        'symbol': 'cu2',
+                        'code': 'cu2'
+                        }])
             self.assert_(cu1)
-
-            cu2 = self.currency.create({
-                    'name': 'cu2',
-                    'symbol': 'cu2',
-                    'code': 'cu2'
-                    })
             self.assert_(cu2)
 
             transaction.cursor.commit()
@@ -95,16 +93,14 @@ class CurrencyTestCase(unittest.TestCase):
             cu1 = self.get_currency('cu1')
             cu2 = self.get_currency('cu2')
 
-            rate1 = self.rate.create({
-                    'rate': Decimal("1.3"),
-                    'currency': cu1.id,
-                    })
+            rate1, rate2 = self.rate.create([{
+                        'rate': Decimal("1.3"),
+                        'currency': cu1.id,
+                        }, {
+                        'rate': Decimal("1"),
+                        'currency': cu2.id,
+                        }])
             self.assert_(rate1)
-
-            rate2 = self.rate.create({
-                    'rate': Decimal("1"),
-                    'currency': cu2.id,
-                    })
             self.assert_(rate2)
 
             self.assertEqual(cu1.rate, Decimal("1.3"))
@@ -119,17 +115,17 @@ class CurrencyTestCase(unittest.TestCase):
                 context=CONTEXT) as transaction:
             today = self.date.today()
 
-            cu = self.currency.create({
-                    'name': 'cu',
-                    'symbol': 'cu',
-                    'code': 'cu'
-                    })
+            cu, = self.currency.create([{
+                        'name': 'cu',
+                        'symbol': 'cu',
+                        'code': 'cu'
+                        }])
 
-            self.rate.create({
-                    'rate': Decimal("1.3"),
-                    'currency': cu.id,
-                    'date': today,
-                    })
+            self.rate.create([{
+                        'rate': Decimal("1.3"),
+                        'currency': cu.id,
+                        'date': today,
+                        }])
 
             self.assertRaises(Exception, self.rate.create, {
                     'rate': Decimal("1.3"),
@@ -239,11 +235,11 @@ class CurrencyTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             cu1 = self.get_currency('cu1')
-            cu3 = self.currency.create({
-                    'name': 'cu3',
-                    'symbol': 'cu3',
-                    'code': 'cu3'
-                    })
+            cu3, = self.currency.create([{
+                        'name': 'cu3',
+                        'symbol': 'cu3',
+                        'code': 'cu3'
+                        }])
 
             amount = Decimal("10")
             self.assertRaises(Exception, self.currency.compute,
@@ -259,16 +255,15 @@ class CurrencyTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            cu3 = self.currency.create({
-                    'name': 'cu3',
-                    'symbol': 'cu3',
-                    'code': 'cu3'
-                    })
-            cu4 = self.currency.create({
-                    'name': 'cu4',
-                    'symbol': 'cu4',
-                    'code': 'cu4'
-                    })
+            cu3, cu4 = self.currency.create([{
+                        'name': 'cu3',
+                        'symbol': 'cu3',
+                        'code': 'cu3'
+                        }, {
+                        'name': 'cu4',
+                        'symbol': 'cu4',
+                        'code': 'cu4'
+                        }])
 
             amount = Decimal("10")
             self.assertRaises(Exception, self.currency.compute,
