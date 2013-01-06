@@ -34,11 +34,12 @@ class Country(ModelSQL, ModelView):
         return [(cls._rec_name,) + clause[1:]]
 
     @classmethod
-    def create(cls, vals):
-        if 'code' in vals and vals['code']:
-            vals = vals.copy()
-            vals['code'] = vals['code'].upper()
-        return super(Country, cls).create(vals)
+    def create(cls, vlist):
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            if 'code' in vals and vals['code']:
+                vals['code'] = vals['code'].upper()
+        return super(Country, cls).create(vlist)
 
     @classmethod
     def write(cls, countries, vals):
@@ -152,10 +153,12 @@ class Subdivision(ModelSQL, ModelView):
         return [(cls._rec_name,) + clause[1:]]
 
     @classmethod
-    def create(cls, vals):
-        if 'code' in vals and vals['code']:
-            vals['code'] = vals['code'].upper()
-        return super(Subdivision, cls).create(vals)
+    def create(cls, vlist):
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            if 'code' in vals and vals['code']:
+                vals['code'] = vals['code'].upper()
+        return super(Subdivision, cls).create(vlist)
 
     @classmethod
     def write(cls, subdivisions, vals):
