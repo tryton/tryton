@@ -181,16 +181,17 @@ class Period:
         return True
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         FiscalYear = Pool().get('account.fiscalyear')
-        vals = vals.copy()
-        if vals.get('fiscalyear'):
-            fiscalyear = FiscalYear(vals['fiscalyear'])
-            for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                    'out_credit_note_sequence', 'in_credit_note_sequence'):
-                if not vals.get(sequence):
-                    vals[sequence] = getattr(fiscalyear, sequence).id
-        return super(Period, cls).create(vals)
+        vlist = [v.copy() for v in vlist]
+        for vals in vlist:
+            if vals.get('fiscalyear'):
+                fiscalyear = FiscalYear(vals['fiscalyear'])
+                for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
+                        'out_credit_note_sequence', 'in_credit_note_sequence'):
+                    if not vals.get(sequence):
+                        vals[sequence] = getattr(fiscalyear, sequence).id
+        return super(Period, cls).create(vlist)
 
     @classmethod
     def write(cls, periods, vals):
@@ -225,15 +226,17 @@ class Reconciliation:
     __name__ = 'account.move.reconciliation'
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
-        reconciliation = super(Reconciliation, cls).create(values)
-        move_ids = set(l.move.id for l in reconciliation.lines)
+        reconciliations = super(Reconciliation, cls).create(vlist)
+        move_ids = set()
+        for reconciliation in reconciliations:
+            move_ids |= set(l.move.id for l in reconciliation.lines)
         invoices = Invoice.search([
                 ('move', 'in', list(move_ids)),
                 ])
         Invoice.process(invoices)
-        return reconciliation
+        return reconciliations
 
     @classmethod
     def delete(cls, reconciliations):

@@ -760,8 +760,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 continue
             computed_taxes = invoice._compute_taxes()
             if not invoice.taxes:
-                for tax in computed_taxes.values():
-                    Tax.create(tax)
+                Tax.create([tax for tax in computed_taxes.values()])
             else:
                 tax_keys = []
                 for tax in invoice.taxes:
@@ -788,7 +787,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     if not key in tax_keys:
                         if exception:
                             cls.raise_user_error('missing_tax_line')
-                        Tax.create(computed_taxes[key])
+                        Tax.create([computed_taxes[key]])
 
     def _get_move_line_invoice_line(self):
         '''
@@ -876,13 +875,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
         accounting_date = self.accounting_date or self.invoice_date
         period_id = Period.find(self.company.id, date=accounting_date)
 
-        move = Move.create({
-            'journal': self.journal.id,
-            'period': period_id,
-            'date': accounting_date,
-            'origin': str(self),
-            'lines': [('create', x) for x in move_lines],
-            })
+        move, = Move.create([{
+                    'journal': self.journal.id,
+                    'period': period_id,
+                    'date': accounting_date,
+                    'origin': str(self),
+                    'lines': [('create', move_lines)],
+                    }])
         self.write([self], {
                 'move': move.id,
                 })
@@ -1143,12 +1142,12 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         period_id = Period.find(self.company.id, date=date)
 
-        move = Move.create({
-                'journal': journal.id,
-                'period': period_id,
-                'date': date,
-                'lines': [('create', x) for x in lines],
-                })
+        move, = Move.create([{
+                    'journal': journal.id,
+                    'period': period_id,
+                    'date': date,
+                    'lines': [('create', lines)],
+                    }])
         Move.post([move])
 
         for line in move.lines:
@@ -1192,16 +1191,14 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res[field] = getattr(self, field).id
 
         res['lines'] = []
-        for line in self.lines:
-            value = line._credit()
-            res['lines'].append(('create', value))
+        if self.lines:
+            res['lines'].append(('create', [line._credit() for line in 
+                        self.lines]))
 
         res['taxes'] = []
-        for tax in self.taxes:
-            if not tax.manual:
-                continue
-            value = tax._credit()
-            res['taxes'].append(('create', value))
+        to_create = [tax._credit() for tax in self.taxes if tax.manual]
+        if to_create:
+            res['taxes'].append(('create', to_create))
         return res
 
     @classmethod
@@ -1214,7 +1211,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         new_invoices = []
         for invoice in invoices:
-            new_invoice = cls.create(invoice._credit())
+            new_invoice, = cls.create([invoice._credit()])
             new_invoices.append(new_invoice)
             if refund:
                 cls.post([new_invoice])
@@ -1804,13 +1801,16 @@ class InvoiceLine(ModelSQL, ModelView):
         super(InvoiceLine, cls).write(lines, vals)
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
-        if vals.get('invoice'):
-            invoice = Invoice(vals['invoice'])
+        invoice_ids = []
+        for vals in vlist:
+            if vals.get('invoice'):
+                invoice_ids.append(vals.get('invoice'))
+        for invoice in Invoice.browse(invoice_ids):
             if invoice.state in ('posted', 'paid', 'cancel'):
                 cls.raise_user_error('create')
-        return super(InvoiceLine, cls).create(vals)
+        return super(InvoiceLine, cls).create(vlist)
 
     def check_account(self):
         if self.type == 'line':
@@ -1899,9 +1899,8 @@ class InvoiceLine(ModelSQL, ModelView):
         res['account'] = self.account.id
         res['party'] = self.invoice.party.id
         computed_taxes = self._compute_taxes()
-        for tax in computed_taxes:
-            res.setdefault('tax_lines', [])
-            res['tax_lines'].append(('create', tax))
+        if computed_taxes:
+            res['tax_lines'] = [('create', [tax for tax in computed_taxes])]
         return [res]
 
     def _credit(self):
@@ -2093,13 +2092,16 @@ class InvoiceTax(ModelSQL, ModelView):
         super(InvoiceTax, cls).write(taxes, vals)
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
-        if vals.get('invoice'):
-            invoice = Invoice(vals['invoice'])
+        invoice_ids = []
+        for vals in vlist:
+            if vals.get('invoice'):
+                invoice_ids.append(vals['invoice'])
+        for invoice in Invoice.browse(invoice_ids):
             if invoice.state in ('posted', 'paid', 'cancel'):
                 cls.raise_user_error('create')
-        return super(InvoiceTax, cls).create(vals)
+        return super(InvoiceTax, cls).create(vlist)
 
     def check_company(self):
         company = self.invoice.company
@@ -2151,11 +2153,11 @@ class InvoiceTax(ModelSQL, ModelView):
         res['account'] = self.account.id
         res['party'] = self.invoice.party.id
         if self.tax_code:
-            res['tax_lines'] = [('create', {
-                'code': self.tax_code.id,
-                'amount': amount * self.tax_sign,
-                'tax': self.tax and self.tax.id or None
-            })]
+            res['tax_lines'] = [('create', [{
+                            'code': self.tax_code.id,
+                            'amount': amount * self.tax_sign,
+                            'tax': self.tax and self.tax.id or None
+                            }])]
         return [res]
 
     def _credit(self):
