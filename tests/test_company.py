@@ -49,10 +49,10 @@ class CompanyTestCase(unittest.TestCase):
                     ('code', '=', 'cu1'),
                     ], 0, 1, None)
 
-            company1 = self.company.create({
-                    'name': 'B2CK',
-                    'currency': currency1.id,
-                    })
+            company1, = self.company.create([{
+                        'name': 'B2CK',
+                        'currency': currency1.id,
+                        }])
             self.assert_(company1)
             transaction.cursor.commit()
 
@@ -69,11 +69,11 @@ class CompanyTestCase(unittest.TestCase):
                     ('name', '=', 'B2CK'),
                     ], 0, 1, None)
 
-            company2 = self.company.create({
-                    'name': 'B2CK Branch',
-                    'parent': company1.id,
-                    'currency': currency1.id,
-                    })
+            company2, = self.company.create([{
+                        'name': 'B2CK Branch',
+                        'parent': company1.id,
+                        'currency': currency1.id,
+                        }])
             self.assert_(company2)
 
             self.assertRaises(Exception, self.company.write,
@@ -91,10 +91,10 @@ class CompanyTestCase(unittest.TestCase):
                     ('name', '=', 'B2CK'),
                     ], 0, 1, None)
 
-            self.employee.create({
-                    'name': 'Employee1',
-                    'company': company1.id,
-                    })
+            self.employee.create([{
+                        'name': 'Employee1',
+                        'company': company1.id,
+                        }])
             transaction.cursor.commit()
 
     def test0040user(self):
@@ -111,23 +111,22 @@ class CompanyTestCase(unittest.TestCase):
                     ('name', '=', 'B2CK'),
                     ], 0, 1, None)
 
-            company2 = self.company.create({
-                    'name': 'B2CK Branch',
-                    'parent': company1.id,
-                    'currency': currency1.id,
-                    })
-            user1 = self.user.create({
-                    'name': 'Test 1',
-                    'login': 'test1',
-                    'main_company': company1.id,
-                    'company': company1.id,
-                    })
-            user2 = self.user.create({
-                    'name': 'Test 2',
-                    'login': 'test2',
-                    'main_company': company2.id,
-                    'company': company2.id,
-                    })
+            company2, = self.company.create([{
+                        'name': 'B2CK Branch',
+                        'parent': company1.id,
+                        'currency': currency1.id,
+                        }])
+            user1, user2 = self.user.create([{
+                        'name': 'Test 1',
+                        'login': 'test1',
+                        'main_company': company1.id,
+                        'company': company1.id,
+                        }, {
+                        'name': 'Test 2',
+                        'login': 'test2',
+                        'main_company': company2.id,
+                        'company': company2.id,
+                        }])
             self.assert_(user1)
 
             with transaction.set_user(user1.id):
