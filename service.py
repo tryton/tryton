@@ -113,11 +113,11 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         Employee._cost_prices_cache.clear()
 
     @classmethod
-    def create(cls, vals):
+    def create(cls, vlist):
         Employee = Pool().get('company.employee')
-        price = super(EmployeeCostPrice, cls).create(vals)
+        prices = super(EmployeeCostPrice, cls).create(vlist)
         Employee._cost_prices_cache.clear()
-        return price
+        return prices
 
     @classmethod
     def write(cls, prices, vals):
