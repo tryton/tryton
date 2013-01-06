@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import datetime
+from itertools import chain
 from decimal import Decimal
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
@@ -633,17 +634,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
             return
 
         invoice = self._get_invoice_purchase(invoice_type)
+        invoice.lines = list(chain.from_iterable(invoice_lines.itervalues()))
         invoice.save()
-
-        for line in self.lines:
-            if line.id not in invoice_lines:
-                continue
-            for invoice_line in invoice_lines[line.id]:
-                invoice_line.invoice = invoice.id
-                invoice_line.save()
-                PurchaseLine.write([line], {
-                        'invoice_lines': [('add', [invoice_line.id])],
-                        })
 
         with Transaction().set_user(0, set_context=True):
             Invoice.update_taxes([invoice])
@@ -1175,6 +1167,7 @@ class PurchaseLine(ModelSQL, ModelView):
                     break
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense_property')
+        invoice_line.purchase_lines = [self]
         return [invoice_line]
 
     @classmethod
