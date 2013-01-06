@@ -87,23 +87,23 @@ class StockSupplyTestCase(unittest.TestCase):
         :param delivery_time: time in days needed to supply
         :return: the id of the Product Supplier
         '''
-        uom_category = self.uom_category.create({'name': 'Test'})
-        uom = self.uom.create({
-            'name': 'Test',
-            'symbol': 'T',
-            'category': uom_category.id,
-            'rate': 1.0,
-            'factor': 1.0,
-            })
-        category = self.category.create({'name': 'ProdCategoryTest'})
-        product = self.product.create({
-                'name': 'ProductTest',
-                'default_uom': uom.id,
-                'category': category.id,
-                'account_category': True,
-                'list_price': Decimal(0),
-                'cost_price': Decimal(0),
-                })
+        uom_category, = self.uom_category.create([{'name': 'Test'}])
+        uom, = self.uom.create([{
+                    'name': 'Test',
+                    'symbol': 'T',
+                    'category': uom_category.id,
+                    'rate': 1.0,
+                    'factor': 1.0,
+                    }])
+        category, = self.category.create([{'name': 'ProdCategoryTest'}])
+        product, = self.product.create([{
+                    'name': 'ProductTest',
+                    'default_uom': uom.id,
+                    'category': category.id,
+                    'account_category': True,
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    }])
         company, = self.company.search([('name', '=', 'B2CK')])
         self.user.write([self.user(USER)], {
             'main_company': company.id,
@@ -117,17 +117,17 @@ class StockSupplyTestCase(unittest.TestCase):
             ('kind', '=', 'payable'),
             ('company', '=', company.id),
             ])
-        supplier = self.party.create({
-            'name': 'supplier',
-            'account_receivable': receivable.id,
-            'account_payable': payable.id,
-            })
-        product_supplier = self.product_supplier.create({
-            'product': product.id,
-            'company': company.id,
-            'party': supplier.id,
-            'delivery_time': delivery_time,
-            })
+        supplier, = self.party.create([{
+                    'name': 'supplier',
+                    'account_receivable': receivable.id,
+                    'account_payable': payable.id,
+                    }])
+        product_supplier, = self.product_supplier.create([{
+                    'product': product.id,
+                    'company': company.id,
+                    'party': supplier.id,
+                    'delivery_time': delivery_time,
+                    }])
         return product_supplier
 
 

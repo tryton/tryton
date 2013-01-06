@@ -440,11 +440,12 @@ class PurchaseRequest(ModelSQL, ModelView):
             for x in product_ids)
 
     @classmethod
-    def create(cls, vals):
-        for field_name in ('product', 'quantity', 'uom', 'company'):
-            if not vals.get(field_name):
-                cls.raise_user_error('create_request')
-        return super(PurchaseRequest, cls).create(vals)
+    def create(cls, vlist):
+        for vals in vlist:
+            for field_name in ('product', 'quantity', 'uom', 'company'):
+                if not vals.get(field_name):
+                    cls.raise_user_error('create_request')
+        return super(PurchaseRequest, cls).create(vlist)
 
 
 class CreatePurchaseRequestStart(ModelView):
