@@ -448,16 +448,18 @@ class Production(Workflow, ModelSQL, ModelView):
         return True
 
     @classmethod
-    def create(cls, values):
+    def create(cls, vlist):
         Sequence = Pool().get('ir.sequence')
         Config = Pool().get('production.configuration')
 
-        values = values.copy()
+        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        values['code'] = Sequence.get_id(config.production_sequence.id)
-        production = super(Production, cls).create(values)
-        production._set_move_planned_date()
-        return production
+        for values in vlist:
+            values['code'] = Sequence.get_id(config.production_sequence.id)
+        productions = super(Production, cls).create(vlist)
+        for production in productions:
+            production._set_move_planned_date()
+        return productions
 
     @classmethod
     def write(cls, productions, values):
