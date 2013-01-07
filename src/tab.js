@@ -38,9 +38,7 @@
                 'class': 'form'
             });
             this.el = el;
-            this.screen.load_next_view().pipe(function() {
-                return screen.switch_view();
-            }).done(function() {
+            this.screen.load_next_view().done(function() {
                 el.html(screen.el);
             }).done(function() {
                 screen.search_filter().done(function() {
