@@ -64,8 +64,10 @@
             var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
             this.views.push(view_widget);
 
+            if (this.current_view) {
+                this.current_view.el.detach();
+            }
             this.current_view = view_widget;
-            this.el.remove();
             this.el.append(view_widget.el);
             return view_widget;
         },
