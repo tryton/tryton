@@ -8,6 +8,7 @@
             this.model_name = model_name;
             this.model = new Sao.Model(model_name, attributes);
             this.attributes = jQuery.extend({}, attributes);
+            this.attributes.limit = this.attributes.limit || Sao.config.limit;
             this.view_ids = jQuery.extend([], attributes.view_ids);
             this.view_to_load = jQuery.extend([],
                 attributes.mode || ['tree', 'form']);

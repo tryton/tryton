@@ -34,4 +34,7 @@ var Sao = {};
     };
 
     Sao.Decimal = Number;
+
+    Sao.config = {};
+    Sao.config.limit = 1000;
 }());

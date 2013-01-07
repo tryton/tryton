@@ -29,13 +29,54 @@
                 } else if (!jQuery.isEmptyObject(action.view_id)) {
                     params.view_ids = [action.view_id[0]];
                 }
-                // TODO context, domain, search, tab_domain
+
+                if (action.pyson_domain === undefined) {
+                    action.pyson_domain = '[]';
+                }
+                var ctx = {
+                    active_model: data.res_model,
+                    active_id: data.id || false,
+                    active_ids: data.ids
+                };
+                var session = Sao.Session.current_session;
+                ctx = jQuery.extend(ctx, session.context);
+                var eval_ctx = jQuery.extend({}, ctx);
+                eval_ctx._user = session.user_id;
+                params.action_ctx = new Sao.PYSON.Decoder(eval_ctx).decode(
+                        action.pyson_context || '{}');
+                ctx = jQuery.extend(ctx, params.action_ctx);
+                ctx = jQuery.extend(ctx, context);
+
+                var domain_context = jQuery.extend({}, ctx);
+                domain_context.context = ctx;
+                domain_context._user = session.user_id;
+                params.domain = new Sao.PYSON.Decoder(domain_context).decode(
+                        action.pyson_domain);
+
+                var search_context = jQuery.extend({}, ctx);
+                search_context.context = ctx;
+                search_context._user = session.user_id;
+                params.search_value = new Sao.PYSON.Decoder(search_context)
+                    .decode(action.pyson_search_value || '[]');
+
+                var tab_domain_context = jQuery.extend({}, ctx);
+                tab_domain_context.context = ctx;
+                tab_domain_context._user = session.user_id;
+                var decoder = new Sao.PYSON.Decoder(tab_domain_context);
+                params.tab_domain = [];
+                action.domains.forEach(function(element, index) {
+                    params.tab_domain.push(
+                        [element[0], decoder.decode(element[1])]);
+                });
                 params.name = false;
                 if (action.window_name) {
                     params.name = action.name;
                 }
                 params.model = action.res_model || data.res_model;
                 params.res_id = action.res_id || data.res_id;
+                params.limit = action.limit;
+                params.auto_refresh = action.auto_refresh;
+                params.icon = action['icon.rec_name'] || '';
                 Sao.Tab.create(params);
                 return;
             case 'ir.action.wizard':

@@ -9,6 +9,7 @@
             this.login = login;
             this.user_id = null;
             this.session = null;
+            this.context = {}; // TODO fill
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
             }
