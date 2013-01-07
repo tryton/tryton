@@ -6,16 +6,16 @@ module.exports = function(grunt) {
     concat: {
         dist: {
             src: [
-                'js/sao.js',
-                'js/rpc.js',
-                'js/pyson.js',
-                'js/session.js',
-                'js/model.js',
-                'js/tab.js',
-                'js/screen.js',
-                'js/view.js',
-                'js/action.js',
-                'js/common.js'
+                'src/sao.js',
+                'src/rpc.js',
+                'src/pyson.js',
+                'src/session.js',
+                'src/model.js',
+                'src/tab.js',
+                'src/screen.js',
+                'src/view.js',
+                'src/action.js',
+                'src/common.js'
             ],
             dest: 'dist/<%= pkg.name %>.js'
         }
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     jshint: {
         dist: {
             options: {
-                jshintrc: 'js/.jshintrc'
+                jshintrc: 'src/.jshintrc'
             },
             src: ['dist/<%= pkg.name %>.js']
         },
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-        files: ['js/*.js'],
+        files: ['src/*.js'],
         tasks: 'dev'
     }
   });
