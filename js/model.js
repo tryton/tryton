@@ -486,7 +486,7 @@
     Sao.field.Float = Sao.class_(Sao.field.Number, {
         set_client: function(record, value) {
             if (typeof value == 'string') {
-                value = Number(value); // without new for type conversion
+                value = Number(value);
                 if (isNaN(value)) {
                     value = this._default;
                 }
@@ -507,7 +507,7 @@
     Sao.field.Numeric = Sao.class_(Sao.field.Number, {
         set_client: function(record, value) {
             if (typeof value == 'string') {
-                value = new Number(value); // with new to get an instance
+                value = new Sao.Decimal(value);
                 if (isNaN(value.valueOf())) {
                     value = this._default;
                 }

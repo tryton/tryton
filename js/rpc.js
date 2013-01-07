@@ -81,7 +81,7 @@
                    case 'buffer':
                        throw new Error('Buffer support not implemented');
                    case 'Decimal':
-                       value = new Number(value.decimal);
+                       value = new Sao.Decimal(value.decimal);
                        break;
                }
                if (parent) {
@@ -125,7 +125,7 @@
                 if (parent) {
                     parent[index] = value;
                 }
-            } else if (value instanceof Number) {
+            } else if (value instanceof Sao.Decimal) {
                 value = {
                     '__class__': 'Decimal',
                     'decimal': value.valueOf()

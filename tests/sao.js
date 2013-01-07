@@ -25,7 +25,7 @@
             },
             'datetime': new Date(2012, 11, 29, 19, 59, 10),
             'date': new Date(2012, 11, 29),
-            'decimal': new Number(1.1)
+            'decimal': new Sao.Decimal(1.1)
         };
         for (var name in tests) {
             var test = tests[name];

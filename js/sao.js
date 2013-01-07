@@ -32,4 +32,6 @@ var Sao = {};
         }
         return ClassConstructor;
     };
+
+    Sao.Decimal = Number;
 }());
