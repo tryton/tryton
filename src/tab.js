@@ -23,6 +23,20 @@
         jQuery('#tabs').tabs();
         tab.id = '#tab-' + Sao.Tab.counter++;
         jQuery('#tabs').tabs('add', tab.id, tab.name);
+        jQuery('#tabs ul li').last().append(jQuery('<a href="#">' +
+                    '<span class="ui-icon ui-icon-circle-close"></span>' +
+                    '</a>')
+                .hover(
+                    function() {
+                        jQuery(this).css('cursor', 'pointer');
+                    },
+                    function() {
+                        jQuery(this).css('cursor', 'default');
+                    })
+                .click(function() {
+                    // TODO check modified
+                    jQuery('#tabs').tabs('remove', tab.id);
+                }));
         jQuery(tab.id).html(tab.el);
         jQuery('#tabs').tabs('select', tab.id);
     };
