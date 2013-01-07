@@ -18,13 +18,13 @@ this repository contains the full copyright notices and license terms. -->
                 document.write(unescape('%3CLINK rel="stylesheet" type="text/css" href="http://code.jquery.com/qunit/qunit-1.10.0.css" media="screen"/%3E'));
             }
         </SCRIPT>
-        <SCRIPT type="text/javascript" src="../js/class.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="../js/sao.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="../js/rpc.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="../js/pyson.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="../js/session.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="../js/model.js"></SCRIPT>
-        <SCRIPT type="text/javascript" src="sao.js"></SCRIPT>
+        <SCRIPT type="text/javascript" src="../dist/sao.min.js"></SCRIPT>
+        <SCRIPT type="text/javascript">
+            if (typeof Sao == 'undefined') {
+                document.write(unescape('%3CSCRIPT type="text/javascript" src="../dist/sao.js"%3E%3C/SCRIPT%3E'));
+            }
+        </SCRIPT>
+        <SCRIPT type="text/javascript" src="./sao.js"></SCRIPT>
     </HEAD>
     <BODY>
         <DIV id="qunit"></DIV>
