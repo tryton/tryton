@@ -23,7 +23,7 @@
         jQuery('#tabs').tabs();
         tab.id = '#tab-' + Sao.Tab.counter++;
         jQuery('#tabs').tabs('add', tab.id, tab.name);
-        jQuery('#tabs ul li').last().append(jQuery('<a href="#">' +
+        jQuery('#tabs > ul li').last().append(jQuery('<a href="#">' +
                     '<span class="ui-icon ui-icon-circle-close"></span>' +
                     '</a>')
                 .hover(
