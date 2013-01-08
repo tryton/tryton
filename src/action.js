@@ -127,4 +127,20 @@
         };
         return prm.pipe(exec_action);
     };
+
+    Sao.Action.evaluate = function(action, atype, record) {
+        action = jQuery.extend({}, action);
+        switch (atype) {
+            case 'print':
+            case 'action':
+                // TODO
+                break;
+            case 'relate':
+                // TODO
+                break;
+            default:
+                throw new Error('Action type ' + atype + ' is not supported');
+        }
+        return action;
+    };
 }());

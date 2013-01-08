@@ -43,7 +43,9 @@ this repository contains the full copyright notices and license terms. -->
                             'view_ids': [3],
                             'domain': [['parent', '=', null]]
                             });
-                        $('#menu').html(form.el);
+                        form.view_prm.done(function() {
+                            jQuery('#menu').append(form.screen.el.detach());
+                            });
                         });
                     });
         </SCRIPT>
