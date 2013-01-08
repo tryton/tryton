@@ -93,7 +93,7 @@
             ['new', 'ui-icon-document', 'New', 'Create a new record', 'new_'],
             ['save', 'ui-icon-disk', 'Save', 'Save this record', 'save'],
             ['switch', 'ui-icon-arrow-4-diag', 'Switch', 'Switch view',
-            'switch'],
+            'switch_'],
             ['reload', 'ui-icon-refresh', 'Reload', 'Reload', 'reload'],
             ['previous', 'ui-icon-arrowthick-1-w', 'Previous',
             'Previous Record', 'previous'],
@@ -163,6 +163,10 @@
                 });
             });
             return toolbar;
+        },
+        switch_: function() {
+            // TODO modified
+            this.screen.switch_view();
         }
     });
 }());
