@@ -50,42 +50,42 @@ class CarrierWeightTestCase(unittest.TestCase):
         Test compute_weight_price.
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            party = self.party.create({
-                    'name': 'Carrier',
-                    })
+            party, = self.party.create([{
+                        'name': 'Carrier',
+                        }])
             uom, = self.uom.search([
                     ('name', '=', 'Unit'),
                     ])
-            category = self.category.create({
-                    'name': 'Category',
-                    })
-            product = self.product.create({
-                    'name': 'Carrier',
-                    'default_uom': uom.id,
-                    'category': category.id,
-                    'type': 'service',
-                    'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
-                    })
+            category, = self.category.create([{
+                        'name': 'Category',
+                        }])
+            product, = self.product.create([{
+                        'name': 'Carrier',
+                        'default_uom': uom.id,
+                        'category': category.id,
+                        'type': 'service',
+                        'list_price': Decimal(0),
+                        'cost_price': Decimal(0),
+                        }])
             weight_uom, = self.uom.search([
                     ('name', '=', 'Kilogram'),
                     ])
             currency, = self.currency.search([
                     ('code', '=', 'cu1'),
                     ])
-            carrier = self.carrier.create({
-                    'party': party.id,
-                    'carrier_product': product.id,
-                    'carrier_cost_method': 'weight',
-                    'weight_uom': weight_uom.id,
-                    'weight_currency': currency.id,
-                    })
+            carrier, = self.carrier.create([{
+                        'party': party.id,
+                        'carrier_product': product.id,
+                        'carrier_cost_method': 'weight',
+                        'weight_uom': weight_uom.id,
+                        'weight_currency': currency.id,
+                        }])
             for i, weight in enumerate(xrange(0, 100, 20)):
-                self.weight_price_list.create({
-                        'carrier': carrier.id,
-                        'weight': weight,
-                        'price': Decimal(i),
-                        })
+                self.weight_price_list.create([{
+                            'carrier': carrier.id,
+                            'weight': weight,
+                            'price': Decimal(i),
+                            }])
             self.assertEqual(
                 carrier.compute_weight_price(0), Decimal(0))
             for weight, price in [
