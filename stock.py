@@ -53,10 +53,10 @@ class Move:
                 cls.raise_user_error('lot_required', (move.product.rec_name,))
 
     @classmethod
-    def create(cls, values):
-        move = super(Move, cls).create(values)
-        cls.check_lot([move])
-        return move
+    def create(cls, vlist):
+        moves = super(Move, cls).create(vlist)
+        cls.check_lot(moves)
+        return moves
 
     @classmethod
     def write(cls, moves, values):
