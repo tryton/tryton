@@ -256,6 +256,8 @@ class DateField(CharField):
 
 class TimeField(CharField):
 
+    _default = None
+
     def set_client(self, record, value, force_change=False):
         if not isinstance(value, datetime.time):
             try:
