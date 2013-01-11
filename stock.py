@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from itertools import izip
 
 from trytond.model import Workflow, ModelView, fields
 from trytond.pool import Pool, PoolMeta
