@@ -13,5 +13,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">other</field>
         </record>
 
+        <!-- Read access to compute anglo saxon account.move lines -->
+        <record model="ir.model.access" id="access_purchase_line_account">
+            <field name="model" search="[('model', '=', 'purchase.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_sale_line_account">
+            <field name="model" search="[('model', '=', 'sale.line')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
     </data>
 </tryton>

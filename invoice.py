@@ -62,15 +62,11 @@ class InvoiceLine:
         moves = []
         # other types will get current cost price
         if self.invoice.type == 'in_invoice':
-            with Transaction().set_user(0, set_context=True):
-                purchase_lines = self.__class__(self.id).purchase_lines
-            moves = [move for purchase_line in purchase_lines
+            moves = [move for purchase_line in self.purchase_lines
                     for move in purchase_line.moves
                     if move.state == 'done']
         elif self.invoice.type == 'out_invoice':
-            with Transaction().set_user(0, set_context=True):
-                sale_lines = self.__class__(self.id).sale_lines
-            moves = [move for sale_line in sale_lines
+            moves = [move for sale_line in self.sale_lines
                     for move in sale_line.moves
                     if move.state == 'done']
         if self.invoice.type == 'in_invoice':
