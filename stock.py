@@ -4,6 +4,7 @@ from decimal import Decimal
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['Move']
 __metaclass__ = PoolMeta
@@ -115,10 +116,11 @@ class Move:
                 move_cost_price = move.cost_price
             cost += move_cost_price * Decimal(str(move_qty))
 
-            cls.write([move], {
-                'anglo_saxon_quantity': ((move.anglo_saxon_quantity or 0.0)
-                    + move_qty),
-                })
+            with Transaction().set_user(0, set_context=True):
+                cls.write([move], {
+                    'anglo_saxon_quantity': ((move.anglo_saxon_quantity or 0.0)
+                        + move_qty),
+                    })
 
         if consumed_qty < total_qty:
             qty = total_qty - consumed_qty
