@@ -41,7 +41,7 @@ setup(name='trytond_account_asset',
     url='http://www.tryton.org/',
     download_url=("http://downloads.tryton.org/" +
         info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
-    package_dir={'trytond.modules.sale': '.'},
+    package_dir={'trytond.modules.account_asset': '.'},
     packages=[
         'trytond.modules.account_asset',
         'trytond.modules.account_asset.tests',
