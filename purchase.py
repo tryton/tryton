@@ -37,7 +37,7 @@ class Purchase(ModelSQL, ModelView):
                 invoice_line_obj.write(line_ids, {
                     'invoice': None,
                     'invoice_type': invoice.type,
-                    'party': invoice.party,
+                    'party': invoice.party.id,
                     'currency': invoice.currency.id,
                     'company': invoice.company.id,
                     })
