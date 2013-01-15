@@ -41,7 +41,7 @@ class Purchase:
                 InvoiceLine.write(invoice.lines, {
                     'invoice': None,
                     'invoice_type': invoice.type,
-                    'party': invoice.party,
+                    'party': invoice.party.id,
                     'currency': invoice.currency.id,
                     'company': invoice.company.id,
                     })
