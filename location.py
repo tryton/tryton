@@ -215,11 +215,11 @@ class Location(ModelSQL, ModelView):
                     location_ids.add(location.output_location.id)
                 if not location.storage_location.parent:
                     location_ids.add(location.storage_location.id)
-        location_ids = list(location_ids)
-        if location_ids:
-            self.write(location_ids, {
-                'parent': location.id,
-                })
+                if location_ids:
+                    self.write(list(location_ids), {
+                        'parent': location.id,
+                        })
+                    location_ids.clear()
 
     def create(self, vals):
         res = super(Location, self).create(vals)
