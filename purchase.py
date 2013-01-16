@@ -1217,6 +1217,7 @@ class PurchaseLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.purchase.currency
         move.planned_date = self.delivery_date
+        move.purchase_line = self
         return move
 
     def create_move(self):
@@ -1227,10 +1228,6 @@ class PurchaseLine(ModelSQL, ModelView):
         if not move:
             return
         move.save()
-        with Transaction().set_user(0, set_context=True):
-            self.write([self], {
-                    'moves': [('add', [move.id])],
-                    })
         return move
 
 
