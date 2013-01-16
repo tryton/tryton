@@ -228,10 +228,11 @@ class Location(ModelSQL, ModelView):
                     to_update.add(location.output_location)
                 if not location.storage_location.parent:
                     to_update.add(location.storage_location)
-        if to_update:
-            cls.write(list(to_update), {
-                'parent': location.id,
-                })
+                if to_update:
+                    cls.write(list(to_update), {
+                        'parent': location.id,
+                        })
+                    to_update.clear()
 
     @classmethod
     def create(cls, vals):
