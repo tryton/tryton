@@ -251,14 +251,21 @@
             fnames = fnames.filter(function(e, i, a) {
                 return !(e in self._loaded);
             });
-            // TODO add rec_name
-            if (!('rec_name' in fnames)) {
-                fnames.push('rec_name');
+            var fnames_to_fetch = fnames.slice();
+            var rec_named_fields = ['many2one', 'one2one', 'reference'];
+            for (var i in fnames) {
+                fname = fnames[i];
+                var fdescription = this.model.fields[fname].description;
+                if (rec_named_fields.indexOf(fdescription.type) >= 0)
+                    fnames_to_fetch.push(fname + '.rec_name');
             }
-            fnames.push('_timestamp');
+            if (fnames.indexOf('rec_name') < 0) {
+                fnames_to_fetch.push('rec_name');
+            }
+            fnames_to_fetch.push('_timestamp');
             // TODO size of binary
             var prm = this.model.execute('read', [Object.keys(id2record),
-                    fnames], context);
+                    fnames_to_fetch], context);
             var succeed = function(values) {
                 var id2value = {};
                 values.forEach(function(e, i, a) {
@@ -283,6 +290,7 @@
             return this.group.prm;
         },
         set: function(values) {
+            var rec_named_fields = ['many2one', 'one2one', 'reference'];
             for (var name in values) {
                 if (!values.hasOwnProperty(name)) {
                     continue;
@@ -299,7 +307,16 @@
                     continue;
                 }
                 // TODO delay O2M
-                // TODO Manage rec_name on M2O and Reference
+                var fdescription = this.model.fields[name].description;
+                if (rec_named_fields.indexOf(fdescription.type) >= 0) {
+                    var field_rec_name = name + '.rec_name';
+                    if (values.hasOwnProperty(field_rec_name)) {
+                        this._values[field_rec_name] = values[field_rec_name];
+                    }
+                    else if (this._values.hasOwnProperty(field_rec_name)) {
+                        delete this._values[field_rec_name];
+                    }
+                }
                 this.model.fields[name].set(this, value);
                 this._loaded[name] = true;
             }
@@ -581,13 +598,18 @@
             var rec_name = record._values[this.name + '.rec_name'] || '';
             // TODO force parent
             var store_rec_name = function(rec_name) {
+                record._values[this.name + '.rec_name'] = rec_name[0].rec_name;
             };
             if (!rec_name && (value >= 0) && (value !== null)) {
-                var prm = record.model.execute('read', [[value], ['rec_name']],
-                    record.get_context());
+                var model_name = record.model.fields[this.name].description
+                    .relation;
+                var prm = Sao.rpc({
+                    'method': 'model.' + model_name + '.' + 'read',
+                    'params': [[value], ['rec_name'], record.get_context()]
+                }, record.model.session);
                 prm.done(store_rec_name.bind(this));
             } else {
-                store_rec_name(rec_name);
+                store_rec_name.call(this, [{'rec_name': rec_name}]);
             }
             record._values[this.name] = value;
             // TODO force parent
