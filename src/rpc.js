@@ -69,12 +69,12 @@
                switch (value.__class__) {
                    case 'datetime':
                        value = new Date(Date.UTC(value.year,
-                               value.month, value.day, value.hour,
+                               value.month - 1, value.day, value.hour,
                                value.minute, value.second));
                        break;
                    case 'date':
                        value = new Date(value.year,
-                           value.month, value.day);
+                           value.month - 1, value.day);
                        break;
                    case 'time':
                        throw new Error('Time support not implemented');
