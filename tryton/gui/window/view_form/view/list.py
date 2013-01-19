@@ -609,10 +609,10 @@ class ViewList(ParserView):
                 parent = record.parent if record else None
                 while parent:
                     if parent.modified:
-                        record = None
                         break
                     parent = parent.parent
-                populate(menu, group.model_name, record)
+                else:
+                    populate(menu, group.model_name, record)
                 for col in self.widget_tree.get_columns():
                     if not col.get_visible() or not col.name:
                         continue
