@@ -820,7 +820,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         if self.currency.id != self.company.currency.id:
             with Transaction().set_context(date=self.currency_date):
                 res['amount_second_currency'] = Currency.compute(
-                    self.company.currency.id, amount, self.currency.id)
+                    self.company.currency, amount, self.currency)
             res['amount_second_currency'] = abs(res['amount_second_currency'])
             res['second_currency'] = self.currency.id
         else:
@@ -2437,8 +2437,8 @@ class PayInvoice(Wizard):
         default['company'] = invoice.company.id
 
         with Transaction().set_context(date=self.start.date):
-            amount = Currency.compute(self.start.currency.id,
-                self.start.amount, invoice.company.currency.id)
+            amount = Currency.compute(self.start.currency,
+                self.start.amount, invoice.company.currency)
 
         if invoice.company.currency.is_zero(amount):
             default['lines'] = [x.id for x in invoice.lines_to_pay]
