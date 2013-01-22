@@ -200,7 +200,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             res['payment_term'] = self.default_payment_term()
             res['payment_term.rec_name'] = PaymentTerm(
                 res['payment_term']).rec_name
-        print res
         return res
 
     def _get_sale_line_opportunity_line(self, sale):
