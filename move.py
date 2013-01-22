@@ -364,7 +364,7 @@ class Move(ModelSQL, ModelView):
             if not move.post_number:
                 values['post_date'] = Date.today()
                 values['post_number'] = Sequence.get_id(
-                    move.period.post_move_sequence.id)
+                    move.period.post_move_sequence_used.id)
             cls.write([move], values)
 
     @classmethod

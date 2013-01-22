@@ -167,7 +167,6 @@ class FiscalYear(ModelSQL, ModelView):
                     'start_date': period_start_date,
                     'end_date': period_end_date,
                     'fiscalyear': fiscalyear.id,
-                    'post_move_sequence': fiscalyear.post_move_sequence.id,
                     'type': 'standard',
                     })
                 period_start_date = period_end_date + relativedelta(days=1)

@@ -6,6 +6,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.const import OPERATORS
+from trytond.backend import TableHandler
 
 __all__ = ['Period', 'ClosePeriod', 'ReOpenPeriod']
 
@@ -31,10 +32,8 @@ class Period(ModelSQL, ModelView):
         ('close', 'Close'),
         ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
-        required=True, domain=[('code', '=', 'account.move')],
-        context={'code': 'account.move'}, states={
-            'required': False,
-            })
+        domain=[('code', '=', 'account.move')],
+        context={'code': 'account.move'})
     type = fields.Selection([
             ('standard', 'Standard'),
             ('adjustment', 'Adjustment'),
@@ -42,6 +41,16 @@ class Period(ModelSQL, ModelView):
         states=_STATES, depends=_DEPENDS, select=True)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'get_company', searcher='search_company')
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
+
+        super(Period, cls).__register__(module_name)
+
+        table = TableHandler(cursor, cls, module_name)
+        # Migration from 2.6: post_move_sequence is no longer required
+        table.not_null_action('post_move_sequence', 'remove')
 
     @classmethod
     def __setup__(cls):
@@ -111,6 +120,8 @@ class Period(ModelSQL, ModelView):
             or self.end_date > self.fiscalyear.end_date)
 
     def check_post_move_sequence(self):
+        if not self.post_move_sequence:
+            return True
         if self.search([
                     ('post_move_sequence', '=', self.post_move_sequence.id),
                     ('fiscalyear', '!=', self.fiscalyear.id),
@@ -256,6 +267,10 @@ class Period(ModelSQL, ModelView):
         cls.write(periods, {
                 'state': 'open',
                 })
+
+    @property
+    def post_move_sequence_used(self):
+        return self.post_move_sequence or self.fiscalyear.post_move_sequence
 
 
 class ClosePeriod(Wizard):
