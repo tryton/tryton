@@ -1917,8 +1917,8 @@ class InvoiceLine(ModelSQL, ModelView):
             res[field] = getattr(self, field).id
 
         res['taxes'] = []
-        for tax in self.taxes:
-            res['taxes'].append(('add', tax.id))
+        if self.taxes:
+            res['taxes'].append(('add', [tax.id for tax in self.taxes]))
         return res
 
 
