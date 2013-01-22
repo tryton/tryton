@@ -119,7 +119,6 @@ class Period:
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Eval('type') == 'standard',
             'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
@@ -128,7 +127,6 @@ class Period:
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Eval('type') == 'standard',
             'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
@@ -137,7 +135,6 @@ class Period:
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Eval('type') == 'standard',
             'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
@@ -146,7 +143,6 @@ class Period:
         domain=[('code', '=', 'account.invoice')],
         context={'code': 'account.invoice'},
         states={
-            'required': Eval('type') == 'standard',
             'invisible': Eval('type') != 'standard',
             },
         depends=['type'])
@@ -170,6 +166,8 @@ class Period:
         for sequence_name in ('out_invoice_sequence', 'in_invoice_sequence',
                 'out_credit_note_sequence', 'in_credit_note_sequence'):
             sequence = getattr(self, sequence_name)
+            if not sequence:
+                continue
             if self.search([
                         (sequence_name, '=', sequence.id),
                         ('fiscalyear', '!=', self.fiscalyear.id),
@@ -212,6 +210,12 @@ class Period:
                                     ]):
                             cls.raise_user_error('change_invoice_sequence')
         super(Period, cls).write(periods, vals)
+
+    def get_invoice_sequence(self, invoice_type):
+        sequence = getattr(self, invoice_type + '_sequence')
+        if sequence:
+            return sequence
+        return getattr(self.fiscalyear, invoice_type + '_sequence')
 
 
 class Move:

@@ -1,3 +1,4 @@
+* Make period's invoice sequences optional and use fiscal year's ones if empty
 * Cancel state delete or cancel existing move on Invoice
 * Create draft move for Supplier Invoice when validated
 * Rename Invoice Proforma state into Validated

@@ -907,7 +907,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         period_id = Period.find(self.company.id,
             date=accounting_date, test_state=test_state)
         period = Period(period_id)
-        sequence_id = getattr(period, self.type + '_sequence').id
+        sequence_id = period.get_invoice_sequence(self.type).id
         if not sequence_id:
             self.raise_user_error('no_invoice_sequence')
         with Transaction().set_context(
