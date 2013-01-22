@@ -17,4 +17,15 @@
         }
         // TODO
     };
+
+    Sao.common.date_format = function() {
+        // TODO
+        // http://stackoverflow.com/questions/2678230/how-to-getting-browser-current-locale-preference-using-javascript
+        return '%m/%d/%Y';
+    };
+
+    Sao.common.text_to_float_time = function(text, conversion, digit) {
+        // TODO
+        return text;
+    };
 }());

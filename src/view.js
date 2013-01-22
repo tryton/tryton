@@ -21,7 +21,32 @@
     };
 
     Sao.View.tree_column_get = function(type) {
-        return Sao.View.Tree.CharColumn;
+        switch (type) {
+            case 'char':
+                return Sao.View.Tree.CharColumn;
+            case 'many2one':
+                return Sao.View.Tree.Many2OneColumn;
+            case 'date':
+                return Sao.View.Tree.DateColumn;
+            case 'one2many':
+                return Sao.View.Tree.One2ManyColumn;
+            case 'many2many':
+                return Sao.View.Tree.Many2ManyColumn;
+            case 'selection':
+                return Sao.View.Tree.SelectionColumn;
+            case 'float':
+                return Sao.View.Tree.FloatColumn;
+            case 'numeric':
+                return Sao.View.Tree.FloatColumn;
+            case 'float_time':
+                return Sao.View.Tree.FloatTimeColumn;
+            case 'integer':
+                return Sao.View.Tree.IntegerColumn;
+            case 'biginteger':
+                return Sao.View.Tree.IntegerColumn;
+            default:
+                return Sao.View.Tree.CharColumn;
+        }
     };
 
     Sao.View.Tree = Sao.class_(Sao.View, {
@@ -106,6 +131,9 @@
                         'pre_validate': child.getAttribute('pre_validate') == 1,
                         'completion': child.getAttribute('completion') == 1
                     };
+                    if (attributes.widget === null) {
+                        attributes.widget = model.fields[name].description.type;
+                    }
                     var attribute_names = ['relation', 'domain', 'selection',
                         'relation_field', 'string', 'views', 'invisible',
                         'add_remove', 'sort', 'context', 'filename'];
@@ -176,7 +204,6 @@
             return (this.path in this.tree.expanded);
         },
         display: function() {
-            console.log(this.path);
             var depth = this.path.split('.').length;
             var update_expander = function() {
                 if (jQuery.isEmptyObject(
@@ -226,7 +253,6 @@
                     children.forEach(add_row.bind(this));
                 };
                 var children_field = this.children_field;
-                console.log('Load children of ' + this.path);
                 this.record.load(this.children_field).done(
                         add_children.bind(this));
             }
@@ -259,13 +285,131 @@
             this.field = model.fields[attributes.name];
             this.attributes = attributes;
         },
-        render: function(record) {
-            var cell = jQuery('<span/>');
-            var update_text = function() {
-                cell.text(this.field.get_client(record));
-            };
-            record.load(this.attributes.name).done(update_text.bind(this));
+        get_cell: function() {
+            var cell = jQuery('<div/>');
+            cell.css('text-overflow', 'ellipsis');
+            cell.css('overflow', 'hidden');
+            cell.css('white-space', 'nowrap');
+            cell.addClass('column-char');
             return cell;
+        },
+        update_text: function(cell, record) {
+            cell.text(this.field.get_client(record));
+        },
+        render: function(record) {
+            var cell = this.get_cell();
+            record.load(this.attributes.name).done(function () {
+                this.update_text(cell, record);
+            }.bind(this));
+            return cell;
+        }
+    });
+
+    Sao.View.Tree.IntegerColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        get_cell: function() {
+            var cell = Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
+            cell.css('text-align', 'right');
+            cell.removeClass('column-char');
+            cell.addClass('column-integer');
+            return cell;
+        }
+    });
+
+    Sao.View.Tree.FloatColumn = Sao.class_(Sao.View.Tree.IntegerColumn, {
+        init: function(model, attributes) {
+            Sao.View.Tree.FloatColumn._super.init.call(this, model, attributes);
+        },
+        get_cell: function() {
+            var cell = Sao.View.Tree.FloatColumn._super.get_cell.call(this);
+            cell.removeClass('column-integer');
+            cell.addClass('column-float');
+            return cell;
+        }
+    });
+
+    Sao.View.Tree.Many2OneColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        get_cell: function() {
+            var cell = Sao.View.Tree.Many2OneColumn._super.get_cell.call(this);
+            cell.removeClass('column-char');
+            cell.addClass('column-many2one');
+            return cell;
+        }
+    });
+
+    Sao.View.Tree.SelectionColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        init: function(model, attributes) {
+            Sao.View.Tree.SelectionColumn._super.init.call(this, model, attributes);
+            var selection = attributes.selection || [];
+            var store_selection = function(selection) {
+                this.selection = {};
+                for (var idx in selection) {
+                    var choice = selection[idx];
+                    this.selection[choice[0]] = choice[1];
+                }
+            };
+            if (typeof(selection) == 'string') {
+                var prm = Sao.rpc({
+                    'method': 'model.' + model.name + '.' + selection,
+                    'params': []
+                }, model.session);
+                prm.done(store_selection.bind(this));
+            } else {
+                store_selection.call(this, selection);
+            }
+        },
+        get_cell: function() {
+            var cell = Sao.View.Tree.Many2OneColumn._super.get_cell.call(this);
+            cell.removeClass('column-char');
+            cell.addClass('column-selection');
+            return cell;
+        },
+        update_text: function(cell, record) {
+            var value = this.field.get_client(record);
+            cell.text(this.selection[value]);
+        }
+    });
+
+    Sao.View.Tree.DateColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        init: function(model, attributes) {
+            Sao.View.Tree.DateColumn._super.init.call(this, model, attributes);
+            this.date_format = Sao.common.date_format();
+        },
+        update_text: function(cell, record) {
+            var text;
+            var value = this.field.get_client(record);
+            var pad = function (txt) {
+                return (txt.toString().length < 2) ? '0' + txt : txt;
+            };
+            if (value) {
+                text = this.date_format.replace('%d', pad(value.getDate()));
+                text = text.replace('%m', pad(value.getMonth() + 1));
+                text = text.replace('%Y', value.getFullYear());
+                text = text.replace('%y', value.getFullYear().toString()
+                    .substring(2, 4));
+            } else {
+                text = '';
+            }
+            cell.text(text);
+        }
+    });
+
+    Sao.View.Tree.One2ManyColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        update_text: function(cell, record) {
+            cell.text('( ' + this.field.get_client(record).length + ' )');
+        }
+    });
+
+    Sao.View.Tree.Many2ManyColumn = Sao.class_(Sao.View.Tree.One2ManyColumn, {
+    });
+
+    Sao.View.Tree.FloatTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        init: function(model, attributes) {
+            Sao.View.Tree.FloatTimeColumn._super_.init.call(this, model, attributes);
+            this.conv = null;
+        },
+        update_text: function(cell, record) {
+            cell.text(Sao.common.text_to_float_time(this.field.get_client(record),
+                    this.conv));
         }
     });
 
