@@ -532,9 +532,18 @@
             }
         },
         digits: function(record) {
+            var digits = [];
             var default_ = [16, 2];
-            // TODO
-            return default_;
+            var record_digits = record.expr_eval(
+                this.description.digits || default_);
+            for (var idx in record_digits) {
+                if (record_digits[idx] !== null) {
+                    digits.push(record_digits[idx]);
+                } else {
+                    digits.push(default_[idx]);
+                }
+            }
+            return digits;
         }
     });
 
