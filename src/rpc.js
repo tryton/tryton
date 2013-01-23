@@ -108,7 +108,7 @@
                     value = {
                         '__class__': 'datetime',
                         'year': value.getUTCFullYear(),
-                        'month': value.getUTCMonth(),
+                        'month': value.getUTCMonth() + 1,
                         'day': value.getUTCDate(),
                         'hour': value.getUTCHours(),
                         'minute': value.getUTCMinutes(),
@@ -118,7 +118,7 @@
                     value = {
                         '__class__': 'date',
                         'year': value.getFullYear(),
-                        'month': value.getMonth(),
+                        'month': value.getMonth() + 1,
                         'day': value.getDate()
                     };
                 }
