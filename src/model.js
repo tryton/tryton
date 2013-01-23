@@ -383,6 +383,38 @@
                 this._loaded[fname] = true;
             }
             // TODO validate
+        },
+        get_eval: function() {
+            var value = {};
+            for (var key in this.model.fields) {
+                if (!this.model.fields.hasOwnProperty(key) && this.id >= 0)
+                    continue;
+                value[key] = this.model.fields[key].get_eval(this);
+            }
+            return value;
+        },
+        get_on_change_value: function() {
+            var value = {};
+            for (var key in this.model.fields) {
+                if (!this.model.fields.hasOwnProperty(key) && this.id >= 0)
+                    continue;
+                value[key] = this.model.fields[key].get_on_change_value(this);
+            }
+            return value;
+        },
+        expr_eval: function(expr) {
+            if (typeof(expr) != "string") return expr;
+            var ctx = jQuery.extend({}, this.get_context());
+            ctx.context = jQuery.extend({}, ctx);
+            jQuery.extend(ctx, this.get_eval());
+            ctx.active_model = this.model.name;
+            ctx.active_id = this.id;
+            ctx._user = this.model.session.user_id;
+            if (this.group.parent && this.group.parent_name) {
+                var parent_env = Sao.common.EvalEnvironment(this.group.parent);
+                ctx['_parent_' + this.group.parent_name] = parent_env;
+            }
+            return new Sao.PYSON.Decoder(ctx).decode(expr);
         }
     });
 
@@ -459,6 +491,12 @@
             }
             // TODO eval context attribute
             return context;
+        },
+        get_eval: function(record) {
+            return this.get(record);
+        },
+        get_on_change_value: function(record) {
+            return this.get_eval(record);
         }
     });
 
@@ -806,6 +844,35 @@
                 group.fields = record.model.fields;
             }
             record._values[this.name] = group;
+        },
+        get_eval: function(record) {
+            var result = [];
+            var group = record._values[this.name];
+            if (group === undefined) return result;
+
+            var record_removed = group.record_removed;
+            var record_deleted = group.record_deleted;
+            for (var i = 0, len = record._values[this.name].length; i < len;
+                    i++) {
+                var record2 = group[i];
+                if ((record_removed.indexOf(record2) >= 0) ||
+                        (record_deleted.indexOf(record2) >= 0))
+                    continue;
+                result.push(record2.id);
+            }
+            return result;
+        },
+        get_on_change_value: function(record) {
+            var result = [];
+            var group = record._values[this.name];
+            if (group === undefined) return result;
+            for (var i = 0, len = record._values[this.name].length; i < len;
+                    i++) {
+                var record2 = group[i];
+                if (!record2.deleted || !record2.removed)
+                    result.push(record2.get_on_change_value());
+            }
+            return result;
         }
     });
 
@@ -834,6 +901,9 @@
             }
             record._values[this.name] = group;
             group.load(value);
+        },
+        get_on_change_value: function(record) {
+            return this.get_eval(record);
         }
     });
 }());

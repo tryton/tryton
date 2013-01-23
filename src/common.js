@@ -28,4 +28,34 @@
         // TODO
         return text;
     };
+
+    Sao.common.EvalEnvironment = function(parent_, eval_type) {
+        if (eval_type === undefined)
+            eval_type = 'eval';
+        var environment;
+        if (eval_type == 'eval') {
+            environment = parent_.get_eval();
+        } else {
+            environment = {};
+            for (var key in parent_.fields) {
+                var field = parent_.fields[field];
+                environment[key] = field.get_on_change_value(parent_);
+            }
+        }
+        environment.id = parent_.id;
+        if (parent_.parent)
+            Object.defineProperty(environment, '_parent_' + parent_.parent_name, {
+                'enumerable': true,
+                'get': function () {
+                    return Sao.common.EvalEnvironment(parent_.parent, eval_type);
+                }
+            });
+        environment.get = function(item, default_) {
+            if (this.hasOwnProperty(item))
+                return this[item];
+            return default_;
+        };
+
+        return environment;
+    };
 }());
