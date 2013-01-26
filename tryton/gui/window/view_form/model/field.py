@@ -725,9 +725,9 @@ class O2MField(CharField):
             return True
         res = True
         for record2 in record.value.get(self.name, []):
-            if not record2.loaded:
+            if not record2.loaded and record2.id >= 0:
                 continue
-            if not record2.validate():
+            if not record2.validate(softvalidation=softvalidation):
                 if not record2.modified:
                     record.value[self.name].remove(record2)
                 else:
