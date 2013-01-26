@@ -102,6 +102,10 @@ this repository contains the full copyright notices and license terms. -->
                         </page>
                         <page string="Timesheet" id="timesheet_lines"
                               states="{'invisible': Not(Bool(Eval('timesheet_available')))}">
+                            <label name="timesheet_start_date"/>
+                            <field name="timesheet_start_date"/>
+                            <label name="timesheet_end_date"/>
+                            <field name="timesheet_end_date"/>
                             <field name="timesheet_lines" colspan="4"/>
                         </page>
                     </notebook>
