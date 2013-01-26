@@ -17,6 +17,10 @@ this repository contains the full copyright notices and license terms. -->
                     <field name="parent"/>
                     <label name="timesheet_available"/>
                     <field name="timesheet_available"/>
+                    <label name="timesheet_start_date"/>
+                    <field name="timesheet_start_date"/>
+                    <label name="timesheet_end_date"/>
+                    <field name="timesheet_end_date"/>
                     <label name="company"/>
                     <field name="company"/>
                 </form>

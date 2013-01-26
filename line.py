@@ -23,9 +23,18 @@ class Line(ModelSQL, ModelView):
     date = fields.Date('Date', required=True, select=True)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
     work = fields.Many2One('timesheet.work', 'Work',
-            required=True, select=True, domain=[
-                ('timesheet_available', '=', True),
-            ])
+        required=True, select=True, domain=[
+            ('timesheet_available', '=', True),
+            ['OR',
+                ('timesheet_start_date', '=', None),
+                ('timesheet_start_date', '<=', Eval('date')),
+                ],
+            ['OR',
+                ('timesheet_end_date', '=', None),
+                ('timesheet_end_date', '>=', Eval('date')),
+                ],
+            ],
+        depends=['date'])
     description = fields.Char('Description')
 
     @classmethod

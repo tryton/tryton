@@ -30,6 +30,16 @@ class Work(ModelSQL, ModelView):
             'readonly': Bool(Eval('timesheet_lines', [0])),
             },
         help="Allow to fill in timesheets with this work")
+    timesheet_start_date = fields.Date('Timesheet Start',
+        states={
+            'invisible': ~Eval('timesheet_available'),
+            },
+        depends=['timesheet_available'])
+    timesheet_end_date = fields.Date('Timesheet End',
+        states={
+            'invisible': ~Eval('timesheet_available'),
+            },
+        depends=['timesheet_available'])
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
