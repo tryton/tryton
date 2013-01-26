@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Attribute">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="string"/>
+    <field name="string"/>
+    <label name="type_"/>
+    <field name="type_"/>
+    <label name="digits"/>
+    <field name="digits"/>
+    <separator name="selection" colspan="4"/>
+    <field name="selection" colspan="4"/>
+</form>
