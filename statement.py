@@ -344,12 +344,8 @@ class Line(ModelSQL, ModelView):
     account = fields.Many2One('account.account', 'Account', required=True,
         on_change=['account', 'invoice'], domain=[
             ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
-            If(Bool(Eval('party')),
-                ('kind', 'in', ['receivable', 'payable']),
-                ('kind', 'in', ['payable', 'receivable', 'revenue', 'expense',
-                        'other'])),
-            ],
-        depends=['party', 'amount'])
+            ('kind', '!=', 'view'),
+            ])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
