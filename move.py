@@ -1281,7 +1281,7 @@ class Line(ModelSQL, ModelView):
         for line in lines:
             if line.reconciliation:
                 cls.raise_user_error('already_reconciled',
-                        error_args=(line.name, line.id,))
+                        error_args=(line.move.number, line.id,))
 
         lines = lines[:]
         if journal and account:
