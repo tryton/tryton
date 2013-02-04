@@ -1792,7 +1792,7 @@ class InvoiceLine(ModelSQL, ModelView):
             res[field] = getattr(self, field)
 
         for field in ('unit', 'product', 'account'):
-            res[field] = getattr(self, field).id
+            res[field] = getattr(getattr(self, field), 'id', None)
 
         res['taxes'] = []
         for tax in self.taxes:
