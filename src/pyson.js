@@ -550,7 +550,7 @@
         date.setSeconds(0);
         date.setMilliseconds(0);
         if (value.y) date.setFullYear(value.y);
-        if (value.M) date.setMonth(value.M);
+        if (value.M) date.setMonth(value.M - 1);
         if (value.d) date.setDate(value.d);
         var year = date.getFullYear();
         var month = date.getMonth();
@@ -612,7 +612,7 @@
     Sao.PYSON.DateTime.eval_ = function(value, context) {
         var date = new Date();
         if (value.y) date.setFullYear(value.y);
-        if (value.M) date.setMonth(value.M);
+        if (value.M) date.setMonth(value.M - 1);
         if (value.d) date.setDate(value.d);
         if (value.h !== undefined) date.setHours(value.h);
         if (value.m !== undefined) date.setMinutes(value.m);
