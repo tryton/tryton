@@ -16,7 +16,7 @@
             case 'tree':
                 return new Sao.View.Tree(screen, xml, children_field);
             case 'form':
-                return new Sao.View.Form(screen, xml, children_field);
+                return new Sao.View.Form(screen, xml);
         }
     };
 
@@ -427,5 +427,260 @@
         }
     });
 
-    Sao.View.Form = Sao.class_(Sao.View, {});
+    Sao.View.Form = Sao.class_(Sao.View, {
+        init: function(screen, xml) {
+            Sao.View.Form._super.init.call(this, screen, xml);
+            this.view_type = 'form';
+            this.el = jQuery('<div/>', {
+                'class': 'form'
+            });
+            this.widgets = {};
+            this.widget_id = 0;
+            this.state_widgets = [];
+            var container = this.parse(screen.model, xml);
+            this.el.append(container.el);
+        },
+        parse: function(model, xml, container) {
+            var root = xml.children()[0];
+            container = new Sao.View.Form.Container(root.getAttribute('col'));
+            var _parse = function(index, child) {
+                var name = child.getAttribute('name');
+                var widget;
+                switch (child.tagName) {
+                    case 'image':
+                        // TODO
+                        break;
+                    case 'separator':
+                        // TODO
+                        break;
+                    case 'label':
+                        var text = child.getAttribute('string');
+                        if (name in model.fields) {
+                            // TODO exclude field
+                            ['states', 'invisible'].forEach(
+                                function(attr_name) {
+                                    if ((child.getAttribute(attr_name) ===
+                                            undefined) && (attr_name in
+                                                model.fields[name].description))
+                                    {
+                                        child.setAttribute(attr_name,
+                                            model.fields[name]
+                                            .description[attr_name]);
+                                    }
+                                });
+                            if (!text) {
+                                // TODO RTL and translation
+                                text = model.fields[name]
+                                    .description.string + ':';
+                            }
+                            if (child.getAttribute('xalign') === undefined) {
+                                child.setAttribute('xalign', 1.0);
+                            }
+                        } else if (!text) {
+                            // TODO get content
+                        }
+                        if (text) {
+                            widget = new Sao.View.Form.Label(text);
+                            this.state_widgets.push(widget);
+                        }
+                        container.add(
+                                Number(child.getAttribute('colspan') || 1),
+                                widget);
+                        // TODO help
+                        break;
+                    case 'newline':
+                        container.add_row();
+                        break;
+                    case 'button':
+                        // TODO
+                        break;
+                    case 'notebook':
+                        // TODO
+                        break;
+                    case 'page':
+                        // TODO
+                        break;
+                    case 'field':
+                        // TODO exclude field
+                        if (!(name in model.fields)) {
+                            container.add(
+                                    Number(child.getAttribute('colspan') || 1));
+                            break;
+                        }
+                        var attributes = {
+                            'name': child.getAttribute('name'),
+                            'readonly': child.getAttribute('readonly') == 1,
+                            'widget': child.getAttribute('widget')
+                        };
+                        if (attributes.widget === null) {
+                            attributes.widget = model.fields[name]
+                                .description.type;
+                        }
+                        var attribute_names = ['relation', 'domain',
+                            'selection', 'relation_field', 'string', 'views',
+                            'invisible', 'add_remove', 'sort', 'context',
+                            'size', 'filename', 'autocomplete', 'translate',
+                            'create', 'delete'];
+                        for (var i in attribute_names) {
+                            var attr = attribute_names[i];
+                            if ((attr in model.fields[name].description) &&
+                                    (child.getAttribute(attr) === null)) {
+                                attributes[attr] = model.fields[name]
+                                    .description[attr];
+                            }
+                        }
+                        var WidgetFactory = Sao.View.form_widget_get(
+                                attributes.widget);
+                        if (!WidgetFactory) {
+                            container.add(
+                                Number(child.getAttribute('colspan') || 1));
+                            break;
+                        }
+                        widget = new WidgetFactory(name, model, attributes);
+                        widget.position = this.widget_id += 1;
+                        // TODO expand, fill, help, height, width
+                        container.add(
+                                Number(child.getAttribute('colspan') || 1),
+                                widget);
+                        if (this.widgets[name] === undefined) {
+                            this.widgets[name] = [];
+                        }
+                        this.widgets[name].push(widget);
+                        break;
+                    case 'group':
+                        // TODO
+                        break;
+                    case 'hpaned':
+                        // TODO
+                        break;
+                    case 'vpaned':
+                        // TODO
+                        break;
+                    case 'child':
+                        // TODO
+                        break;
+                }
+            };
+            jQuery(root.children).each(_parse.bind(this));
+            return container;
+        },
+        display: function() {
+            var record = this.screen.current_record;
+            for (var name in this.widgets) {
+                var widgets = this.widgets[name];
+                var field;
+                if (record) {
+                    field = record.model.fields[name];
+                }
+                // TODO set state
+                for (var i = 0, len = widgets.length; i < len; i++) {
+                    var widget = widgets[i];
+                    widget.display(record, field);
+                }
+            }
+            for (var j in this.state_widgets) {
+                var state_widget = this.state_widgets[j];
+                state_widget.state_set(record);
+            }
+        }
+    });
+
+    Sao.View.Form.Container = Sao.class_(Object, {
+        init: function(col) {
+            if (col === undefined) col = 4;
+            this.col = col;
+            this.el = jQuery('<table/>');
+            this.add_row();
+        },
+        add_row: function() {
+            this.row = jQuery('<tr/>');
+            this.el.append(this.row);
+        },
+        add: function(colspan, widget) {
+            if (colspan === undefined) colspan = 1;
+            if (this.row.children().length > this.col + colspan) {
+                this.add_row();
+            }
+            var el;
+            if (widget) {
+                el = widget.el;
+            }
+            var cell = this.row.append(jQuery('<td/>', {
+                colspan: colspan
+            }).append(el));
+        }
+    });
+
+    var StateWidget = Sao.class_(Object, {
+        init: function(attributes) {
+            this.attributes = attributes;
+        },
+        state_set: function(record) {
+            // TODO
+        }
+    });
+
+    Sao.View.Form.Label = Sao.class_(StateWidget, {
+        init: function(text, attributes) {
+            Sao.View.Form.Label._super.init.call(this, attributes);
+            this.el = jQuery('<label/>', {
+                text: text,
+                'class': 'form-label'
+            });
+        }
+    });
+
+    Sao.View.form_widget_get = function(type) {
+        switch (type) {
+            case 'char':
+                return Sao.View.Form.Char;
+            case 'sha':
+                return Sao.View.Form.Sha;
+        }
+    };
+
+
+    Sao.View.Form.Widget = Sao.class_(Object, {
+        init: function(field_name, model, attributes) {
+            this.field_name = field_name;
+            this.model = model;
+            this.view = null;  // Filled later
+            this.attributes = attributes;
+            this.el = null;
+            this.position = 0;
+        },
+        display: function(record, field) {
+            // TODO set state
+        }
+    });
+
+    Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Char._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<input/>', {
+                'type': 'input',
+                'class': 'form-char'
+            });
+        },
+        display: function(record, field) {
+            Sao.View.Form.Char._super.display.call(this, record, field);
+            var set_text = function() {
+                var value = record.field_get(this.field_name);
+                this.el.val(value || '');
+            };
+            record.load(this.field_name).done(set_text.bind(this));
+        }
+    });
+
+    Sao.View.Form.Sha = Sao.class_(Sao.View.Form.Char, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Sha._super.init.call(this, field_name, model,
+                attributes);
+            this.el.removeClass('form-char');
+            this.el.addClass('form-sha');
+            this.el.prop('type', 'password');
+        }
+    });
+
 }());

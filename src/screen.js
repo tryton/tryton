@@ -99,7 +99,8 @@
             }
             this.el.children().detach();
             this.el.append(this.current_view.el);
-            // TODO display and cursor
+            this.display();
+            // TODO cursor
             return jQuery.when();
         },
         search_filter: function() {

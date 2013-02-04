@@ -74,7 +74,7 @@
             this.attributes = jQuery.extend({}, attributes);
             this.name = attributes.name; // XXX use screen current view title
             var el = jQuery('<div/>', {
-                'class': 'form'
+                'class': 'tab-form'
             });
             // TODO title
             var toolbar = this.create_toolbar();
