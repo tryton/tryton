@@ -559,7 +559,7 @@
         },
         get_client: function(record) {
             var value = record._values[this.name];
-            if (value !== undefined) {
+            if (value) {
                 var digits = this.digits(record);
                 return value.toFixed(digits[1]);
             } else {
@@ -580,7 +580,7 @@
         },
         get_client: function(record) {
             var value = record._values[this.name];
-            if (value !== undefined) {
+            if (value) {
                 var digits = this.digits(record);
                 return value.toFixed(digits[1]);
             } else {
@@ -601,7 +601,7 @@
         },
         get_client: function(record) {
             var value = record._values[this.name];
-            if (value !== undefined) {
+            if (value) {
                 return '' + value;
             } else {
                 return '';
