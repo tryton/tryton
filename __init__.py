@@ -5,6 +5,7 @@ from .asset import *
 from .product import *
 from .invoice import *
 from .account import *
+from .purchase import *
 
 
 def register():
@@ -20,6 +21,7 @@ def register():
         InvoiceLine,
         Configuration,
         Move,
+        PurchaseLine,
         module='account_asset', type_='model')
     Pool.register(
         CreateMoves,
