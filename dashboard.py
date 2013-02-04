@@ -3,6 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
+from trytond.pyson import Eval
 
 __all__ = ['DashboardAction']
 
@@ -20,6 +21,11 @@ class DashboardAction(ModelSQL, ModelView):
                 ('res_model', '!=', None),
                 ('res_model', '!=', ''),
                 ('usage', '=', 'dashboard'),
+                # XXX copy ir.action rule to prevent access rule error
+                ['OR',
+                    ('groups', 'in', Eval('context', {}).get('groups', [])),
+                    ('groups', '=', None),
+                ],
             ])
 
     @classmethod
