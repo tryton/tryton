@@ -190,9 +190,11 @@ class BrowseRecord(object):
                                 _datetime = data[j.datetime_field]
                             with Transaction().set_context(
                                     _datetime=_datetime):
-                                ids = model2ids.setdefault(model, [])
+                                ids = model2ids.setdefault((model, _datetime),
+                                    [])
                                 ids.append(data[i])
-                                local_cache = model2cache.setdefault(model,
+                                local_cache = model2cache.setdefault(
+                                    (model, _datetime),
                                     LRUDict(RECORD_CACHE_SIZE))
                                 data[i] = BrowseRecord(data[i], model,
                                     ids, local_cache)
@@ -204,9 +206,10 @@ class BrowseRecord(object):
                             _datetime = data[j.datetime_field]
                         with Transaction().set_context(
                                 _datetime=_datetime):
-                            ids = model2ids.setdefault(model, [])
+                            ids = model2ids.setdefault((model, _datetime), [])
                             ids.extend(data[i])
-                            local_cache = model2cache.setdefault(model,
+                            local_cache = model2cache.setdefault(
+                                (model, _datetime),
                                 LRUDict(RECORD_CACHE_SIZE))
                             data[i] = BrowseRecordList(
                                 BrowseRecord(x, model, ids, local_cache)
