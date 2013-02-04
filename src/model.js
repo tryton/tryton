@@ -403,7 +403,7 @@
             return value;
         },
         expr_eval: function(expr) {
-            if (typeof(expr) != "string") return expr;
+            if (typeof(expr) != 'string') return expr;
             var ctx = jQuery.extend({}, this.get_context());
             ctx.context = jQuery.extend({}, ctx);
             jQuery.extend(ctx, this.get_eval());

@@ -298,7 +298,7 @@
         },
         render: function(record) {
             var cell = this.get_cell();
-            record.load(this.attributes.name).done(function () {
+            record.load(this.attributes.name).done(function() {
                 this.update_text(cell, record);
             }.bind(this));
             return cell;
@@ -338,7 +338,8 @@
 
     Sao.View.Tree.SelectionColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         init: function(model, attributes) {
-            Sao.View.Tree.SelectionColumn._super.init.call(this, model, attributes);
+            Sao.View.Tree.SelectionColumn._super.init.call(this, model,
+                attributes);
             var selection = attributes.selection || [];
             var store_selection = function(selection) {
                 this.selection = {};
@@ -377,7 +378,7 @@
         update_text: function(cell, record) {
             var text;
             var value = this.field.get_client(record);
-            var pad = function (txt) {
+            var pad = function(txt) {
                 return (txt.toString().length < 2) ? '0' + txt : txt;
             };
             if (value) {
@@ -404,12 +405,13 @@
 
     Sao.View.Tree.FloatTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         init: function(model, attributes) {
-            Sao.View.Tree.FloatTimeColumn._super_.init.call(this, model, attributes);
+            Sao.View.Tree.FloatTimeColumn._super_.init.call(this, model,
+                attributes);
             this.conv = null;
         },
         update_text: function(cell, record) {
-            cell.text(Sao.common.text_to_float_time(this.field.get_client(record),
-                    this.conv));
+            cell.text(Sao.common.text_to_float_time(
+                    this.field.get_client(record), this.conv));
         }
     });
 
