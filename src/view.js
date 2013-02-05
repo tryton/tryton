@@ -446,7 +446,7 @@
         parse: function(model, node, container) {
             if (container === undefined) {
                 container = new Sao.View.Form.Container(
-                    Number(node.getAttribute('col')));
+                    Number(node.getAttribute('col') || 4));
             }
             var _parse = function(index, child) {
                 var attributes = {
