@@ -638,8 +638,11 @@
         },
         add: function(colspan, widget) {
             if (colspan === undefined) colspan = 1;
+            var len = 0;
             var row = this.row();
-            var len = row.children().length;
+            row.children().map(function(i, e) {
+                len += Number(jQuery(e).attr('colspan') || 1);
+            });
             if (len + colspan > this.col) {
                 this.add_row();
                 row = this.row();
@@ -649,7 +652,7 @@
                 el = widget.el;
             }
             var cell = row.append(jQuery('<td/>', {
-                colspan: colspan
+                'colspan': colspan
             }).append(el));
         }
     });
