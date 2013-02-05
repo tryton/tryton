@@ -483,7 +483,7 @@
                         this._parse_field(model, child, container, attributes);
                         break;
                     case 'group':
-                        // TODO
+                        this._parse_group(model, child, container, attributes);
                         break;
                     case 'hpaned':
                         // TODO
@@ -627,6 +627,14 @@
             }
             this.widgets[name].push(widget);
         },
+        _parse_group: function(model, node, container, attributes) {
+            var group = new Sao.View.Form.Group(attributes);
+            group.add(this.parse(model, node));
+            this.state_widgets.push(group);
+            container.add(
+                    Number(node.getAttribute('colspan') || 1),
+                    group);
+        },
         display: function() {
             var record = this.screen.current_record;
             for (var name in this.widgets) {
@@ -735,6 +743,18 @@
                 this.el.tabs('select', tab_id);
                 this.selected = true;
             }
+        }
+    });
+
+    Sao.View.Form.Group = Sao.class_(StateWidget, {
+        init: function(attributes) {
+            Sao.View.Form.Group._super.init.call(this, attributes);
+            this.el = jQuery('<div/>', {
+                'class': 'form-group'
+            });
+        },
+        add: function(widget) {
+            this.el.append(widget.el);
         }
     });
 
