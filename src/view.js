@@ -460,7 +460,8 @@
                         // TODO
                         break;
                     case 'separator':
-                        // TODO
+                        this._parse_separator(
+                                model, child, container, attributes);
                         break;
                     case 'label':
                         this._parse_label(model, child, container, attributes);
@@ -497,6 +498,30 @@
             };
             jQuery(node.children).each(_parse.bind(this));
             return container;
+        },
+        _parse_separator: function(model, node, container, attributes) {
+            var name = attributes.name;
+            var text = attributes.string;
+            if (name in model.fields) {
+                ['states', 'invisible'].forEach(
+                        function(attr_name) {
+                            if ((node.getAttribute(attr_name) ===
+                                    undefined) && (attr_name in
+                                        model.fields[name].description))
+                            {
+                                node.setAttribute(attr_name,
+                                    model.fields[name]
+                                    .description[attr_name]);
+                            }
+                        });
+                if (!text) {
+                    text = model.fields[name].description.string;
+                }
+            }
+            var separator = new Sao.View.Form.Separator(text, attributes);
+            container.add(
+                    Number(node.getAttribute('colspan') || 1),
+                    separator);
         },
         _parse_label: function(model, node, container, attributes) {
             var name = attributes.name;
@@ -663,6 +688,21 @@
         },
         state_set: function(record) {
             // TODO
+        }
+    });
+
+    Sao.View.Form.Separator = Sao.class_(StateWidget, {
+        init: function(text, attributes) {
+            Sao.View.Form.Separator._super.init.call(this, attributes);
+            this.el = jQuery('<div/>', {
+                'class': 'form-separator'
+            });
+            if (text) {
+                this.el.append(jQuery('<p/>', {
+                    'text': text
+                }));
+            }
+            this.el.append(jQuery('<hr/>'));
         }
     });
 
