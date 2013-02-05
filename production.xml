@@ -42,6 +42,24 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
+        <record model="ir.action.act_window" id="act_production_request">
+            <field name="name">Request Productions</field>
+            <field name="res_model">production</field>
+            <field name="search_value">[('state', '=', 'request')]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production.production_view_list"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_request_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production.production_view_form"/>
+            <field name="act_window" ref="act_production_request"/>
+        </record>
+
         <menuitem parent="production.menu_production_list" sequence="5"
             action="act_production_request_create"
             id="menu_production_request_create"/>

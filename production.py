@@ -204,7 +204,7 @@ class CreateProductionRequest(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Create', 'create_', 'tryton-ok', default=True),
             ])
-    create_ = StateAction('production.act_production_request')
+    create_ = StateAction('stock_supply_production.act_production_request')
 
     def do_create_(self, action):
         pool = Pool()
