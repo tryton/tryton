@@ -449,14 +449,12 @@
                     Number(node.getAttribute('col')));
             }
             var _parse = function(index, child) {
-                var name = child.getAttribute('name');
-                var widget;
                 var attributes = {
                     'name': child.getAttribute('name'),
                     'readonly': child.getAttribute('readonly') == 1,
-                    'widget': child.getAttribute('widget')
+                    'widget': child.getAttribute('widget'),
+                    'string': child.getAttribute('string')
                 };
-                var text = child.getAttribute('string');
                 switch (child.tagName) {
                     case 'image':
                         // TODO
@@ -465,38 +463,7 @@
                         // TODO
                         break;
                     case 'label':
-                        if (name in model.fields) {
-                            // TODO exclude field
-                            ['states', 'invisible'].forEach(
-                                function(attr_name) {
-                                    if ((child.getAttribute(attr_name) ===
-                                            undefined) && (attr_name in
-                                                model.fields[name].description))
-                                    {
-                                        child.setAttribute(attr_name,
-                                            model.fields[name]
-                                            .description[attr_name]);
-                                    }
-                                });
-                            if (!text) {
-                                // TODO RTL and translation
-                                text = model.fields[name]
-                                    .description.string + ':';
-                            }
-                            if (child.getAttribute('xalign') === undefined) {
-                                child.setAttribute('xalign', 1.0);
-                            }
-                        } else if (!text) {
-                            // TODO get content
-                        }
-                        if (text) {
-                            widget = new Sao.View.Form.Label(text, attributes);
-                            this.state_widgets.push(widget);
-                        }
-                        container.add(
-                                Number(child.getAttribute('colspan') || 1),
-                                widget);
-                        // TODO help
+                        this._parse_label(model, child, container, attributes);
                         break;
                     case 'newline':
                         container.add_row();
@@ -505,69 +472,14 @@
                         // TODO
                         break;
                     case 'notebook':
-                        widget = new Sao.View.Form.Notebook(attributes);
-                        this.state_widgets.push(widget);
-                        container.add(
-                                Number(child.getAttribute('colspan') || 1),
-                                widget);
-                        this.parse(model, child, widget);
+                        this._parse_notebook(
+                                model, child, container, attributes);
                         break;
                     case 'page':
-                        if (attributes.name in model.fields) {
-                            // TODO check exclude
-                            // sync attributes
-                            if (!text) {
-                                text = model.fields[attributes.name]
-                                    .description.string;
-                            }
-                        }
-                        if (!text) {
-                            text = 'No String Attr.'; // TODO translate
-                        }
-                        widget = this.parse(model, child);
-                        container.add(widget.el, text);
+                        this._parse_page(model, child, container, attributes);
                         break;
                     case 'field':
-                        // TODO exclude field
-                        if (!(name in model.fields)) {
-                            container.add(
-                                    Number(child.getAttribute('colspan') || 1));
-                            break;
-                        }
-                        if (attributes.widget === null) {
-                            attributes.widget = model.fields[name]
-                                .description.type;
-                        }
-                        var attribute_names = ['relation', 'domain',
-                            'selection', 'relation_field', 'string', 'views',
-                            'invisible', 'add_remove', 'sort', 'context',
-                            'size', 'filename', 'autocomplete', 'translate',
-                            'create', 'delete'];
-                        for (var i in attribute_names) {
-                            var attr = attribute_names[i];
-                            if ((attr in model.fields[name].description) &&
-                                    (child.getAttribute(attr) === null)) {
-                                attributes[attr] = model.fields[name]
-                                    .description[attr];
-                            }
-                        }
-                        var WidgetFactory = Sao.View.form_widget_get(
-                                attributes.widget);
-                        if (!WidgetFactory) {
-                            container.add(
-                                Number(child.getAttribute('colspan') || 1));
-                            break;
-                        }
-                        widget = new WidgetFactory(name, model, attributes);
-                        widget.position = this.widget_id += 1;
-                        // TODO expand, fill, help, height, width
-                        container.add(
-                                Number(child.getAttribute('colspan') || 1),
-                                widget);
-                        if (this.widgets[name] === undefined) {
-                            this.widgets[name] = [];
-                        }
-                        this.widgets[name].push(widget);
+                        this._parse_field(model, child, container, attributes);
                         break;
                     case 'group':
                         // TODO
@@ -585,6 +497,110 @@
             };
             jQuery(node.children).each(_parse.bind(this));
             return container;
+        },
+        _parse_label: function(model, node, container, attributes) {
+            var name = attributes.name;
+            var text = attributes.string;
+            if (name in model.fields) {
+                // TODO exclude field
+                ['states', 'invisible'].forEach(
+                        function(attr_name) {
+                            if ((node.getAttribute(attr_name) ===
+                                    undefined) && (attr_name in
+                                        model.fields[name].description))
+                            {
+                                node.setAttribute(attr_name,
+                                    model.fields[name]
+                                    .description[attr_name]);
+                            }
+                        });
+                if (!text) {
+                    // TODO RTL and translation
+                    text = model.fields[name]
+                        .description.string + ':';
+                }
+                if (node.getAttribute('xalign') === undefined) {
+                    node.setAttribute('xalign', 1.0);
+                }
+            } else if (!text) {
+                // TODO get content
+            }
+            var label;
+            if (text) {
+                label = new Sao.View.Form.Label(text, attributes);
+                this.state_widgets.push(label);
+            }
+            container.add(
+                    Number(node.getAttribute('colspan') || 1),
+                    label);
+            // TODO help
+        },
+        _parse_notebook: function(model, node, container, attributes) {
+            var notebook = new Sao.View.Form.Notebook(attributes);
+            this.state_widgets.push(notebook);
+            container.add(
+                    Number(node.getAttribute('colspan') || 1),
+                    notebook);
+            this.parse(model, node, notebook);
+        },
+        _parse_page: function(model, node, container, attributes) {
+            var text = attributes.string;
+            if (attributes.name in model.fields) {
+                // TODO check exclude
+                // sync attributes
+                if (!text) {
+                    text = model.fields[attributes.name]
+                        .description.string;
+                }
+            }
+            if (!text) {
+                text = 'No String Attr.'; // TODO translate
+            }
+            var page = this.parse(model, node);
+            container.add(page.el, text);
+        },
+        _parse_field: function(model, node, container, attributes) {
+            var name = attributes.name;
+            // TODO exclude field
+            if (!(name in model.fields)) {
+                container.add(
+                        Number(node.getAttribute('colspan') || 1));
+                return;
+            }
+            if (attributes.widget === null) {
+                attributes.widget = model.fields[name]
+                    .description.type;
+            }
+            var attribute_names = ['relation', 'domain',
+                'selection', 'relation_field', 'string', 'views',
+                'invisible', 'add_remove', 'sort', 'context',
+                'size', 'filename', 'autocomplete', 'translate',
+                'create', 'delete'];
+            for (var i in attribute_names) {
+                var attr = attribute_names[i];
+                if ((attr in model.fields[name].description) &&
+                        (node.getAttribute(attr) === null)) {
+                    attributes[attr] = model.fields[name]
+                        .description[attr];
+                }
+            }
+            var WidgetFactory = Sao.View.form_widget_get(
+                    attributes.widget);
+            if (!WidgetFactory) {
+                container.add(
+                    Number(node.getAttribute('colspan') || 1));
+                return;
+            }
+            var widget = new WidgetFactory(name, model, attributes);
+            widget.position = this.widget_id += 1;
+            // TODO expand, fill, help, height, width
+            container.add(
+                    Number(node.getAttribute('colspan') || 1),
+                    widget);
+            if (this.widgets[name] === undefined) {
+                this.widgets[name] = [];
+            }
+            this.widgets[name].push(widget);
         },
         display: function() {
             var record = this.screen.current_record;
