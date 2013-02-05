@@ -439,15 +439,24 @@
             this.widgets = {};
             this.widget_id = 0;
             this.state_widgets = [];
-            var container = this.parse(screen.model, xml);
+            var root = xml.children()[0];
+            var container = this.parse(screen.model, root);
             this.el.append(container.el);
         },
-        parse: function(model, xml, container) {
-            var root = xml.children()[0];
-            container = new Sao.View.Form.Container(root.getAttribute('col'));
+        parse: function(model, node, container) {
+            if (container === undefined) {
+                container = new Sao.View.Form.Container(
+                    Number(node.getAttribute('col')));
+            }
             var _parse = function(index, child) {
                 var name = child.getAttribute('name');
                 var widget;
+                var attributes = {
+                    'name': child.getAttribute('name'),
+                    'readonly': child.getAttribute('readonly') == 1,
+                    'widget': child.getAttribute('widget')
+                };
+                var text = child.getAttribute('string');
                 switch (child.tagName) {
                     case 'image':
                         // TODO
@@ -456,7 +465,6 @@
                         // TODO
                         break;
                     case 'label':
-                        var text = child.getAttribute('string');
                         if (name in model.fields) {
                             // TODO exclude field
                             ['states', 'invisible'].forEach(
@@ -482,7 +490,7 @@
                             // TODO get content
                         }
                         if (text) {
-                            widget = new Sao.View.Form.Label(text);
+                            widget = new Sao.View.Form.Label(text, attributes);
                             this.state_widgets.push(widget);
                         }
                         container.add(
@@ -497,10 +505,27 @@
                         // TODO
                         break;
                     case 'notebook':
-                        // TODO
+                        widget = new Sao.View.Form.Notebook(attributes);
+                        this.state_widgets.push(widget);
+                        container.add(
+                                Number(child.getAttribute('colspan') || 1),
+                                widget);
+                        this.parse(model, child, widget);
                         break;
                     case 'page':
-                        // TODO
+                        if (attributes.name in model.fields) {
+                            // TODO check exclude
+                            // sync attributes
+                            if (!text) {
+                                text = model.fields[attributes.name]
+                                    .description.string;
+                            }
+                        }
+                        if (!text) {
+                            text = 'No String Attr.'; // TODO translate
+                        }
+                        widget = this.parse(model, child);
+                        container.add(widget.el, text);
                         break;
                     case 'field':
                         // TODO exclude field
@@ -509,11 +534,6 @@
                                     Number(child.getAttribute('colspan') || 1));
                             break;
                         }
-                        var attributes = {
-                            'name': child.getAttribute('name'),
-                            'readonly': child.getAttribute('readonly') == 1,
-                            'widget': child.getAttribute('widget')
-                        };
                         if (attributes.widget === null) {
                             attributes.widget = model.fields[name]
                                 .description.type;
@@ -563,7 +583,7 @@
                         break;
                 }
             };
-            jQuery(root.children).each(_parse.bind(this));
+            jQuery(node.children).each(_parse.bind(this));
             return container;
         },
         display: function() {
@@ -595,19 +615,24 @@
             this.add_row();
         },
         add_row: function() {
-            this.row = jQuery('<tr/>');
-            this.el.append(this.row);
+            this.el.append(jQuery('<tr/>'));
+        },
+        row: function() {
+            return this.el.children().children('tr').last();
         },
         add: function(colspan, widget) {
             if (colspan === undefined) colspan = 1;
-            if (this.row.children().length > this.col + colspan) {
+            var row = this.row();
+            var len = row.children().length;
+            if (len + colspan > this.col) {
                 this.add_row();
+                row = this.row();
             }
             var el;
             if (widget) {
                 el = widget.el;
             }
-            var cell = this.row.append(jQuery('<td/>', {
+            var cell = row.append(jQuery('<td/>', {
                 colspan: colspan
             }).append(el));
         }
@@ -629,6 +654,28 @@
                 text: text,
                 'class': 'form-label'
             });
+        }
+    });
+
+    Sao.View.Form.Notebook = Sao.class_(StateWidget, {
+        init: function(attributes) {
+            Sao.View.Form.Notebook._super.init.call(this, attributes);
+            this.el = jQuery('<div/>', {
+                'class': 'form-notebook'
+            });
+            this.el.append(jQuery('<ul/>'));
+            this.el.tabs();
+            this.selected = false;
+            this.counter = 0;
+        },
+        add: function(tab, text) {
+            var tab_id = '#tab-form-' + this.counter++;
+            this.el.tabs('add', tab_id, text);
+            this.el.children(tab_id).html(tab);
+            if (!this.selected) {
+                this.el.tabs('select', tab_id);
+                this.selected = true;
+            }
         }
     });
 
