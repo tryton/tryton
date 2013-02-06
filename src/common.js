@@ -5,6 +5,11 @@
 
     Sao.common = {};
 
+    Sao.common.compare = function(arr1, arr2) {
+        return (jQuery(arr1).not(arr2).length === 0 &&
+                jQuery(arr2).not(arr1).length === 0);
+    };
+
     Sao.common.selection = function(title, values, alwaysask) {
         if (alwaysask === undefined) {
             alwaysask = false;

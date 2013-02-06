@@ -11,11 +11,6 @@
         'dbname': 'test_' + new Date().getTime()
     };
 
-    SaoTest.compare = function(arr1, arr2) {
-        return (jQuery(arr1).not(arr2).length === 0 &&
-                jQuery(arr2).not(arr1).length === 0);
-    };
-
     QUnit.test('JSON', function() {
         var tests = {
             'array': [1, 2, 3],
@@ -47,9 +42,9 @@
         QUnit.strictEqual(value.v, 'test', "Eval('test', 'foo').pyson()");
         QUnit.strictEqual(value.d, 'foo', "Eval('test', 'foo').pyson()");
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Eval('test', 'foo').types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Eval('test', 'foo').types(),
                 [typeof 'foo']), "Eval('test', 'foo').types()");
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Eval('test', 1).types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Eval('test', 1).types(),
                 [typeof 1]), "Eval('test', 1).types()");
 
         var eval_;
@@ -69,8 +64,8 @@
             new Sao.PYSON.Not('foo');
         }, 'value must be boolean', "Not('foo')");
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Not(true).types(), ['boolean']),
-            'Not(true).types()');
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Not(true).types(),
+                ['boolean']), 'Not(true).types()');
 
         var eval_;
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Not(true));
@@ -86,7 +81,7 @@
         QUnit.strictEqual(value.__class__, 'Bool', "Bool('test').pyson()");
         QUnit.strictEqual(value.v, 'test', "Bool('test').pyson()");
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Bool('test').types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Bool('test').types(),
                 ['boolean']), "Bool('test').types()");
 
         var eval_;
@@ -135,7 +130,7 @@
     QUnit.test('PYSON And', function() {
         var value = new Sao.PYSON.And([true, false]).pyson();
         QUnit.strictEqual(value.__class__, 'And', 'And([true, false]).pyson()');
-        QUnit.ok(SaoTest.compare(value.s, [true, false]),
+        QUnit.ok(Sao.common.compare(value.s, [true, false]),
             'And([true, false]).pyson()');
 
         QUnit.throws(function() {
@@ -157,7 +152,7 @@
             new Sao.PYSON.And();
         }, 'must have at least 2 statements', 'And([])');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.And([true, false]).types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.And([true, false]).types(),
                     ['boolean']), 'And([true, false]).types()');
 
         var eval_;
@@ -210,7 +205,7 @@
     QUnit.test('PYSON Or', function() {
         var value = new Sao.PYSON.Or([true, false]).pyson();
         QUnit.strictEqual(value.__class__, 'Or', 'Or([true, false]).pyson()');
-        QUnit.ok(SaoTest.compare(value.s, [true, false]),
+        QUnit.ok(Sao.common.compare(value.s, [true, false]),
             'Or([true, false]).pyson()');
 
         QUnit.throws(function() {
@@ -232,7 +227,7 @@
             new Sao.PYSON.Or();
         }, 'must have at least 2 statements', 'Or([])');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Or([true, false]).types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Or([true, false]).types(),
                     ['boolean']), 'Or([true, false]).types()');
 
         var eval_;
@@ -293,7 +288,7 @@
             new Sao.PYSON.Equal('test', true);
         }, 'statements must have the same type');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Equal('test', 'test').types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Equal('test', 'test').types(),
                 ['boolean']), "Equal('test', 'test').types()");
 
         var eval_;
@@ -325,7 +320,7 @@
             new Sao.PYSON.Greater(1, 0, 'test');
         }, 'equal must be boolean');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Greater(1, 0).types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Greater(1, 0).types(),
                 ['boolean']), 'Greater(1, 0).types()');
 
         var eval_;
@@ -374,8 +369,8 @@
             new Sao.PYSON.Less(1, 0, 'test');
         }, 'equal must be boolean');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Less(1, 0).types(), ['boolean']),
-            'Less(1, 0).types()');
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Less(1, 0).types(),
+                ['boolean']), 'Less(1, 0).types()');
 
         var eval_;
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(1, 0));
@@ -420,9 +415,11 @@
             new Sao.PYSON.If(true, 'foo', false);
         }, 'then and else statements must be the same type');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.If(true, 'foo', 'bar').types(),
+        QUnit.ok(Sao.common.compare(
+                new Sao.PYSON.If(true, 'foo', 'bar').types(),
                 [typeof 'foo']), "If(true, 'foo', 'bar').types()");
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.If(true, false, true).types(),
+        QUnit.ok(Sao.common.compare(
+                new Sao.PYSON.If(true, false, true).types(),
                 [typeof true]), 'If(true, false, true).types()');
 
         var eval_;
@@ -455,10 +452,10 @@
             new Sao.PYSON.Get({}, 1, 'default');
         }, 'key must be a string');
 
-        QUnit.ok(SaoTest.compare(
+        QUnit.ok(Sao.common.compare(
                 new Sao.PYSON.Get({}, 'foo', 'default').types(),
                 [typeof '']), "Get({}, 'foo', 'default').types()");
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.Get({}, 'foo', true).types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Get({}, 'foo', true).types(),
                 [typeof true]), "Get({}, 'foo', true).types()");
 
         var eval_;
@@ -494,7 +491,7 @@
             new Sao.PYSON.In('test', 'foo');
         }, 'obj must be a dict or a list');
 
-        QUnit.ok(SaoTest.compare(new Sao.PYSON.In('foo', {}).types(),
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.In('foo', {}).types(),
                 ['boolean']), "In('foo', {}).types()");
 
         var eval_;
@@ -575,7 +572,7 @@
             new Sao.PYSON.Date(2010, 1, 12, -1, 12, 'test');
         }, 'delta_days must be an integer or None');
 
-        QUnit.ok(SaoTest.compare(
+        QUnit.ok(Sao.common.compare(
                     new Sao.PYSON.Date(2010, 1, 12, -1, 12, -7).types(),
                     ['object']), 'Date(2010, 1, 12, -1, 12, -7).types()');
 
@@ -712,7 +709,7 @@
                 -1, 12, -7, 2, 15, 30, 'test');
         }, 'delta_microseconds must be an integer or None');
 
-        QUnit.ok(SaoTest.compare(
+        QUnit.ok(Sao.common.compare(
                     new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0,
                         -1, 12, -7, 2, 15, 30, 1).types(),
                     ['object']), 'DateTime(2010, 1, 12, 10, 30, 20, 0, ' +
