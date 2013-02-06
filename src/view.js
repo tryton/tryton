@@ -35,15 +35,15 @@
             case 'selection':
                 return Sao.View.Tree.SelectionColumn;
             case 'float':
-                return Sao.View.Tree.FloatColumn;
             case 'numeric':
                 return Sao.View.Tree.FloatColumn;
             case 'float_time':
                 return Sao.View.Tree.FloatTimeColumn;
             case 'integer':
-                return Sao.View.Tree.IntegerColumn;
             case 'biginteger':
                 return Sao.View.Tree.IntegerColumn;
+            case 'boolean':
+                return Sao.View.Tree.BooleanColumn;
             default:
                 return Sao.View.Tree.CharColumn;
         }
@@ -325,6 +325,19 @@
             cell.removeClass('column-integer');
             cell.addClass('column-float');
             return cell;
+        }
+    });
+
+    Sao.View.Tree.BooleanColumn = Sao.class_(Sao.View.Tree.IntegerColumn, {
+        get_cell: function() {
+            return jQuery('<input/>', {
+                'type': 'checkbox',
+                'disabled': true,
+                'class': 'column-boolean'
+            });
+        },
+        update_text: function(cell, record) {
+            cell.prop('checked', this.field.get(record));
         }
     });
 
