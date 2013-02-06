@@ -40,8 +40,7 @@
             // TODO preload
             var prm = this.model.execute('fields_view_get',
                     [view_id, view_type], this.context);
-            prm.done(this.add_view.bind(this));
-            return prm;
+            return prm.pipe(this.add_view.bind(this));
         },
         add_view: function(view) {
             var arch = view.arch;
@@ -85,7 +84,7 @@
                 };
                 for (var i = 0; i < this.number_of_views(); i++) {
                     if (this.view_to_load.length) {
-                        return this.load_next_view().done(switch_current_view);
+                        return this.load_next_view().pipe(switch_current_view);
                     }
                     this.current_view = this.views[
                         (this.views.indexOf(this.current_view) + 1) %
