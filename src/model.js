@@ -402,6 +402,20 @@
             }
             return value;
         },
+        _get_on_change_args: function(args) {
+            var result = {};
+            var values = Sao.common.EvalEnvironment(this, 'on_change');
+            args.forEach(function(arg) {
+                var scope = values;
+                arg.split('.').forEach(function(e) {
+                    if (scope !== undefined) {
+                        scope = scope[e];
+                    }
+                });
+                result[arg] = scope;
+            });
+            return result;
+        },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
             var ctx = jQuery.extend({}, this.get_context());
@@ -491,6 +505,16 @@
             }
             // TODO eval context attribute
             return context;
+        },
+        get_domains: function(record) {
+            // TODO domain inversion
+            var attr_domain = record.expr_eval(this.description.domain || []);
+            return [[], attr_domain];
+        },
+        get_domain: function(record) {
+            var domains = this.get_domains(record);
+            // TODO localize domain[0]
+            return domains;
         },
         get_eval: function(record) {
             return this.get(record);

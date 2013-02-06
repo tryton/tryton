@@ -65,4 +65,102 @@
 
         return environment;
     };
+
+    Sao.common.selection_mixin = {};
+    Sao.common.selection_mixin.init = function() {
+        this.selection = null;
+        this._last_domain = null;
+        this._values2selection = {};
+        this._domain_cache = {};
+    };
+    Sao.common.selection_mixin.init_selection = function(key, callback) {
+        if (!key) {
+            key = [];
+            (this.attributes.selection_change_with || []).forEach(function(e) {
+                key.push([e, null]);
+            });
+            key.sort();
+        }
+        var selection = jQuery.extend([], this.attributes.selection || []);
+        var prepare_selection = function(selection) {
+            if (this.attributes.sort === undefined || this.attributes.sort) {
+                selection.sort(function(a, b) {
+                    return a[1].localeCompare(b[1]);
+                });
+            }
+            this.selection = jQuery.extend([], selection);
+            if (callback) callback(this.selection);
+        };
+        if (!(selection instanceof Object) &&
+                !(key in this._values2selection)) {
+            var prm;
+            if (key) {
+                var params = {};
+                key.forEach(function(e) {
+                    params[e[0]] = e[1];
+                });
+                prm = this.model.execute(selection, [params], {});
+            } else {
+                prm = this.model.execute(selection, [], {});
+            }
+            prm.pipe(prepare_selection.bind(this));
+            prm.pipe(this.set_selection.bind(this));
+        } else {
+            if (key in this._values2selection) {
+                selection = this._values2selection.selection;
+            }
+            prepare_selection.call(this, selection);
+        }
+    };
+    Sao.common.selection_mixin.update_selection = function(record, field,
+            callback) {
+        if (!field) {
+            return;
+        }
+        if (!('relation' in this.attributes)) {
+            var change_with = this.attributes.selection_change_with || [];
+            var key = [];
+            var args = record._get_on_change_args(change_with);
+            for (var k in args) {
+                key.push([k, args[k]]);
+            }
+            key.sort();
+            Sao.common.selection_mixin.init_selection.call(this, key,
+                    callback);
+        } else {
+            var domain = field.get_domain(record);
+            var jdomain = JSON.stringify(domain);
+            if (jdomain in this._domain_cache) {
+                this.selection = this._domain_cache[jdomain];
+                this._last_domain = domain;
+            }
+            if (Sao.common.compare(domain, this._last_domain)) {
+                return;
+            }
+            var prm = Sao.rpc({
+                'method': 'model.' + this.attributes.relation + '.search_read',
+                'params': [domain, 0, null, null, ['rec_name'], {}]
+            }, record.model.session);
+            prm.done(function(result) {
+                var selection = [];
+                result.forEach(function(x) {
+                    selection.push([x.id, x.rec_name]);
+                });
+                selection.push([null, '']);
+                this._last_domain = domain;
+                this._domain_cache[jdomain] = selection;
+                this.selection = jQuery.extend([], selection);
+                if (callback) {
+                    callback(this.selection);
+                }
+            }.bind(this));
+            prm.fail(function() {
+                this._last_domain = null;
+                this.selection = [];
+                if (callback) {
+                    callback(this.selection);
+                }
+            }.bind(this));
+        }
+    };
 }());

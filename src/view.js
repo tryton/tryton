@@ -282,6 +282,7 @@
     Sao.View.Tree.CharColumn = Sao.class_(Object, {
         init: function(model, attributes) {
             this.type = 'field';
+            this.model = model;
             this.field = model.fields[attributes.name];
             this.attributes = attributes;
         },
@@ -340,23 +341,15 @@
         init: function(model, attributes) {
             Sao.View.Tree.SelectionColumn._super.init.call(this, model,
                 attributes);
-            var selection = attributes.selection || [];
-            var store_selection = function(selection) {
-                this.selection = {};
-                for (var idx in selection) {
-                    var choice = selection[idx];
-                    this.selection[choice[0]] = choice[1];
-                }
-            };
-            if (typeof(selection) == 'string') {
-                var prm = Sao.rpc({
-                    'method': 'model.' + model.name + '.' + selection,
-                    'params': []
-                }, model.session);
-                prm.done(store_selection.bind(this));
-            } else {
-                store_selection.call(this, selection);
-            }
+            Sao.common.selection_mixin.init.call(this);
+            this.init_selection();
+        },
+        init_selection: function(key) {
+            Sao.common.selection_mixin.init_selection.call(this, key);
+        },
+        update_selection: function(record, callback) {
+            Sao.common.selection_mixin.update_selection.call(this, record,
+                this.field, callback);
         },
         get_cell: function() {
             var cell = Sao.View.Tree.Many2OneColumn._super.get_cell.call(this);
@@ -365,8 +358,10 @@
             return cell;
         },
         update_text: function(cell, record) {
-            var value = this.field.get_client(record);
-            cell.text(this.selection[value]);
+            this.update_selection(record, function() {
+                var value = this.field.get(record);
+                cell.text(this.selection[value]);
+            }.bind(this));
         }
     });
 
@@ -405,9 +400,9 @@
 
     Sao.View.Tree.FloatTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         init: function(model, attributes) {
-            Sao.View.Tree.FloatTimeColumn._super_.init.call(this, model,
+            Sao.View.Tree.FloatTimeColumn._super.init.call(this, model,
                 attributes);
-            this.conv = null;
+            this.conv = null; // TODO
         },
         update_text: function(cell, record) {
             cell.text(Sao.common.text_to_float_time(
@@ -637,17 +632,44 @@
         },
         display: function() {
             var record = this.screen.current_record;
-            for (var name in this.widgets) {
+            var field;
+            var name;
+            var promesses = {};
+            if (record) {
+                // Force to set fields in record
+                // Get first the lazy one to reduce number of requests
+                var fields = [];
+                for (name in record.model.fields) {
+                    field = record.model.fields[name];
+                    fields.push([name, field.description.loading || 'eager']);
+                }
+                fields.sort(function(a, b) {
+                    return a[1].localeCompare(b[1]);
+                });
+                fields.forEach(function(e) {
+                    var name = e[0];
+                    promesses[name] = record.load(name);
+                });
+            }
+            var display = function(record, field, name) {
+                return function(widget) {
+                    var prm = jQuery.when();
+                    if (name in promesses) {
+                        prm = promesses[name];
+                    }
+                    prm.done(function() {
+                        widget.display(record, field);
+                    });
+                };
+            };
+            for (name in this.widgets) {
                 var widgets = this.widgets[name];
-                var field;
+                field = null;
                 if (record) {
                     field = record.model.fields[name];
                 }
                 // TODO set state
-                for (var i = 0, len = widgets.length; i < len; i++) {
-                    var widget = widgets[i];
-                    widget.display(record, field);
-                }
+                widgets.forEach(display(record, field, name));
             }
             for (var j in this.state_widgets) {
                 var state_widget = this.state_widgets[j];
@@ -764,6 +786,22 @@
                 return Sao.View.Form.Char;
             case 'sha':
                 return Sao.View.Form.Sha;
+            case 'date':
+                return Sao.View.Form.Date;
+            case 'integer':
+            case 'biginteger':
+                return Sao.View.Form.Integer;
+            case 'float':
+            case 'numeric':
+                return Sao.View.Form.Float;
+            case 'selection':
+                return Sao.View.Form.Selection;
+            case 'float_time':
+                return Sao.View.Form.FloatTime;
+            case 'boolean':
+                return Sao.View.Form.Boolean;
+            case 'text':
+                return Sao.View.Form.Text;
         }
     };
 
@@ -783,31 +821,155 @@
     });
 
     Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-char',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Char._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<input/>', {
                 'type': 'input',
-                'class': 'form-char'
+                'class': this.class_
             });
         },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
-            var set_text = function() {
-                var value = record.field_get(this.field_name);
-                this.el.val(value || '');
-            };
-            record.load(this.field_name).done(set_text.bind(this));
+            var value = record.field_get_client(this.field_name);
+            this.el.val(value || '');
         }
     });
 
     Sao.View.Form.Sha = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-sha',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Sha._super.init.call(this, field_name, model,
                 attributes);
-            this.el.removeClass('form-char');
-            this.el.addClass('form-sha');
             this.el.prop('type', 'password');
+        }
+    });
+
+    Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Date._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<input/>', {
+                'type': 'input',
+                'class': 'form-date'
+            });
+            this.el.datepicker();
+        },
+        display: function(record, field) {
+            Sao.View.Form.Date._super.display.call(this, record, field);
+            var value = record.field_get_client(this.field_name);
+            this.el.datepicker('setDate', value);
+        }
+    });
+
+    // TODO DateTime, Time
+
+    Sao.View.Form.Integer = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-integer',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Integer._super.init.call(this, field_name, model,
+                attributes);
+            this.el.css('text-align', 'right');
+        }
+    });
+
+    Sao.View.Form.Float = Sao.class_(Sao.View.Form.Integer, {
+        class_: 'form-float'
+    });
+
+    Sao.View.Form.Selection = Sao.class_(Sao.View.Form.Widget, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Selection._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<select/>', {
+                'class': 'form-selection'
+            });
+            Sao.common.selection_mixin.init.call(this);
+            this.init_selection();
+        },
+        init_selection: function(key) {
+            Sao.common.selection_mixin.init_selection.call(this, key,
+                this.set_selection.bind(this));
+        },
+        update_selection: function(record, field, callbak) {
+            Sao.common.selection_mixin.update_selection.call(this, record,
+                field, function(selection) {
+                    this.set_selection(selection);
+                    if (callbak) {
+                        callbak();
+                    }
+                }.bind(this));
+        },
+        set_selection: function(selection) {
+            var select = this.el;
+            select.empty();
+            selection.forEach(function(e) {
+                select.append(jQuery('<option/>', {
+                    'value': e[0],
+                    'text': e[1]
+                }));
+            });
+        },
+        display: function(record, field) {
+            this.update_selection(record, field, function() {
+                if (!field) {
+                    this.el.val('');
+                    return;
+                }
+                Sao.View.Form.Selection._super.display.call(this, record,
+                    field);
+                var value = field.get(record);
+                if (value === null) {
+                    value = '';
+                }
+                this.el.val('' + value);
+            }.bind(this));
+        }
+    });
+
+    Sao.View.Form.FloatTime = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-float-time',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.FloatTime._super.init.call(this, field_name, model,
+                attributes);
+            this.el.css('text-align', 'right');
+            this.conv = null; // TODO
+        },
+        display: function(record, field) {
+            Sao.View.Form.FloatTime._super.display.call(this, record, field);
+            var value = record.field_get_client(this.field_name);
+            this.el.val(Sao.common.text_to_float_time(value, this.conv));
+        }
+    });
+
+    Sao.View.Form.Boolean = Sao.class_(Sao.View.Form.Widget, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Boolean._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<input/>', {
+                'type': 'checkbox',
+                'class': 'form-boolean'
+            });
+        },
+        display: function(record, field) {
+            Sao.View.Form.Boolean._super.display.call(this, record, field);
+            this.el.prop('checked', record.field_get(this.field_name));
+        }
+    });
+
+    Sao.View.Form.Text = Sao.class_(Sao.View.Form.Widget, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Text._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<textarea/>', {
+                'class': 'form-text'
+            });
+        },
+        display: function(record, field) {
+            Sao.View.Form.Text._super.display.call(this, record, field);
+            var value = record.field_get_client(this.field_name);
+            this.el.val(value);
         }
     });
 
