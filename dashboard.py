@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Get
 
 
 class DashboardAction(ModelSQL, ModelView):
@@ -17,7 +17,7 @@ class DashboardAction(ModelSQL, ModelView):
                 ('res_model', '!=', ''),
                 # XXX copy ir.action rule to prevent access rule error
                 ['OR',
-                    ('groups', 'in', Eval('context', {}).get('groups', [])),
+                    ('groups', 'in', Get(Eval('context', {}), 'groups', [])),
                     ('groups', '=', None),
                 ],
             ])
