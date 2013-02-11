@@ -5,7 +5,7 @@ from __future__ import with_statement
 import os
 import sys
 import gettext
-from urlparse import urlparse
+from urlparse import urlparse, parse_qsl
 import urllib
 import gobject
 import gtk
@@ -1710,14 +1710,14 @@ class Main(object):
             Main.get_main().refresh_ssl()
 
     def _open_url(self, url):
-        url = urllib.unquote(url)
         urlp = urlparse(url)
         if not urlp.scheme == 'tryton':
             return
         urlp = urlparse('http' + url[6:])
-        hostname, port = (urlp.netloc.split(':', 1)
-                + [CONFIG.defaults['login.port']])[:2]
-        database, path = (urlp.path[1:].split('/', 1) + [None])[:2]
+        hostname, port = map(urllib.unquote,
+            (urlp.netloc.split(':', 1) + [CONFIG.defaults['login.port']])[:2])
+        database, path = map(urllib.unquote,
+            (urlp.path[1:].split('/', 1) + [None])[:2])
         if (not path or
                 hostname != rpc._SOCK.hostname or
                 int(port) != rpc._SOCK.port or
@@ -1727,8 +1727,8 @@ class Main(object):
         params = {}
         if urlp.params:
             try:
-                params = dict(param.split('=', 1)
-                        for param in urlp.params.split('&'))
+                params.update(dict(parse_qsl(urlp.params,
+                            strict_parsing=True)))
             except Exception:
                 return
 
