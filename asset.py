@@ -240,7 +240,8 @@ class Asset(Workflow, ModelSQL, ModelView):
         new_values['start_date'] = invoice.invoice_date
         if invoice_line.product.depreciation_duration:
             duration = relativedelta.relativedelta(
-                months=invoice_line.product.depreciation_duration, days=-1)
+                months=int(invoice_line.product.depreciation_duration),
+                days=-1)
             new_values['end_date'] = new_values['start_date'] + duration
 
         if not self.unit:
@@ -266,7 +267,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         if all(getattr(self, k, None) for k in ('product', 'start_date')):
             if self.product.depreciation_duration:
                 duration = relativedelta.relativedelta(
-                    months=self.product.depreciation_duration, days=-1)
+                    months=int(self.product.depreciation_duration), days=-1)
                 return self.start_date + duration
         return self.end_date
 
