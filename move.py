@@ -202,9 +202,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 for move in moves:
                     internal_quantity = cls._get_internal_quantity(
                             move.quantity, move.uom, move.product)
-                    cls.write([move], {
-                        'internal_quantity': internal_quantity,
-                        })
+                    cursor.execute(
+                        'UPDATE "' + cls._table + '" '
+                        'SET internal_quantity = %s '
+                        'WHERE id = %s', (internal_quantity, move.id))
             table = TableHandler(cursor, cls, module_name)
             table.not_null_action('internal_quantity', action='add')
 
