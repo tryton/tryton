@@ -162,8 +162,8 @@ class PaymentTermLine(ModelSQL, ModelView):
 
         # Migration from 1.0 percent change into percentage
         if table.column_exist('percent'):
-            cursor.execute('UPDATE "' + cls._table + '" ' \
-                    'SET percentage = percent * 100')
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET percentage = percent * 100')
             table.drop_column('percent', exception=True)
 
         # Migration from 2.2

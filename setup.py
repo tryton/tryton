@@ -36,16 +36,16 @@ setup(name='trytond_account_invoice',
     long_description=open('README').read(),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.account_invoice': '.'},
     packages=[
         'trytond.modules.account_invoice',
         'trytond.modules.account_invoice.tests',
         ],
     package_data={
-        'trytond.modules.account_invoice': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po', 'invoice.odt'],
+        'trytond.modules.account_invoice': (info.get('xml', [])
+            + ['tryton.cfg', 'locale/*.po', 'invoice.odt']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

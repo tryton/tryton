@@ -72,12 +72,12 @@ class FiscalYear:
             ('check_invoice_sequences', 'different_invoice_sequence'),
             ]
         cls._error_messages.update({
-            'change_invoice_sequence': 'You can not change ' \
-                    'the invoice sequence if there is already ' \
-                    'a posted invoice in the fiscalyear',
-            'different_invoice_sequence': 'You must have different ' \
-                    'invoice sequences per fiscal year!',
-            })
+                'change_invoice_sequence': ('You can not change '
+                    'the invoice sequence if there is already '
+                    'a posted invoice in the fiscalyear'),
+                'different_invoice_sequence': ('You must have different '
+                    'invoice sequences per fiscal year!'),
+                })
 
     def check_invoice_sequences(self):
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
@@ -154,13 +154,13 @@ class Period:
             ('check_invoice_sequences', 'check_invoice_sequences'),
             ]
         cls._error_messages.update({
-            'change_invoice_sequence': 'You can not change ' \
-                    'the invoice sequence if there is already ' \
-                    'a posted invoice in the period',
-            'check_invoice_sequences': 'You must have different ' \
-                    'invoice sequences per fiscal year and ' \
-                    'in the same company!',
-            })
+                'change_invoice_sequence': ('You can not change '
+                    'the invoice sequence if there is already '
+                    'a posted invoice in the period'),
+                'check_invoice_sequences': ('You must have different '
+                    'invoice sequences per fiscal year and '
+                    'in the same company!'),
+                })
 
     def check_invoice_sequences(self):
         for sequence_name in ('out_invoice_sequence', 'in_invoice_sequence',
