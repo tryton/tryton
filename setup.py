@@ -36,15 +36,15 @@ setup(name='trytond_account_fr',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.account_fr': '.'},
     packages=[
         'trytond.modules.account_fr',
         ],
     package_data={
-        'trytond.modules.account_fr': info.get('xml', []) \
-            + ['tryton.cfg'],
+        'trytond.modules.account_fr': (info.get('xml', [])
+            + ['tryton.cfg']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
