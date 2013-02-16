@@ -168,19 +168,20 @@ class Template:
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')),
-                }, help='This account will be used instead of the one defined'\
-                    ' on the category.', depends=['account_category']))
+                },
+            help='This account will be used instead of the one defined'
+            ' on the category.', depends=['account_category']))
     account_revenue = fields.Property(fields.Many2One('account.account',
-                'Account Revenue', domain=[
-                    ('kind', '=', 'revenue'),
-                    ('company', '=', Eval('context', {}).get('company', 0)),
-                    ], on_change=['account_category', 'account_revenue'],
-                states={
-                    'invisible': (~Eval('context', {}).get('company')
-                        | Eval('account_category')),
-                    },
-                help='This account will be used instead of the one defined'\
-                    ' on the category.', depends=['account_category']))
+            'Account Revenue', domain=[
+                ('kind', '=', 'revenue'),
+                ('company', '=', Eval('context', {}).get('company', 0)),
+                ], on_change=['account_category', 'account_revenue'],
+            states={
+                'invisible': (~Eval('context', {}).get('company')
+                    | Eval('account_category')),
+                },
+            help='This account will be used instead of the one defined'
+            ' on the category.', depends=['account_category']))
     account_expense_used = fields.Function(fields.Many2One('account.account',
         'Account Expense Used'), 'get_account')
     account_revenue_used = fields.Function(fields.Many2One('account.account',
@@ -216,10 +217,9 @@ class Template:
     def __setup__(cls):
         super(Template, cls).__setup__()
         cls._error_messages.update({
-            'missing_account': 'There is no account ' \
-                    'expense/revenue defined on the product ' \
-                    '%s (%d)',
-            })
+                'missing_account': ('There is no account '
+                    'expense/revenue defined on the product %s (%d)'),
+                })
         cls.category.states['required'] = Or(
             cls.category.states.get('required', False),
             Eval('account_category', False) | Eval('taxes_category', False))
