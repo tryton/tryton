@@ -36,16 +36,16 @@ setup(name='trytond_account_invoice_line_standalone',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.account_invoice_line_standalone': '.'},
     packages=[
         'trytond.modules.account_invoice_line_standalone',
         'trytond.modules.account_invoice_line_standalone.tests',
         ],
     package_data={
-        'trytond.modules.account_invoice_line_standalone': \
-            info.get('xml', []) + ['tryton.cfg', 'locale/*.po'],
+        'trytond.modules.account_invoice_line_standalone': (
+            info.get('xml', []) + ['tryton.cfg', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -73,7 +73,8 @@ setup(name='trytond_account_invoice_line_standalone',
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    account_invoice_line_standalone = trytond.modules.account_invoice_line_standalone
+    account_invoice_line_standalone = \
+        trytond.modules.account_invoice_line_standalone
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
