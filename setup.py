@@ -36,15 +36,15 @@ setup(name='trytond_account_invoice_history',
     long_description=open('README').read(),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.account_invoice_history': '.'},
     packages=[
         'trytond.modules.account_invoice_history',
         ],
     package_data={
-        'trytond.modules.account_invoice_history': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po'],
+        'trytond.modules.account_invoice_history': (info.get('xml', [])
+            + ['tryton.cfg', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
