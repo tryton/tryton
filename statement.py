@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import Workflow, ModelView, ModelSQL, fields
-from trytond.pyson import Eval, If, Bool
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 from trytond.pool import Pool
@@ -68,8 +68,8 @@ class Statement(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'wrong_end_balance': 'End Balance must be %s!',
-                'delete_cancel': 'Statement "%s" must be cancelled before ' \
-                    'deletion!',
+                'delete_cancel': ('Statement "%s" must be cancelled before '
+                    'deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -269,7 +269,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                             del vals['invoice.rec_name']
                             res['lines']['add'].append(vals)
                     invoice_id2amount_to_pay[line.invoice.id] = \
-                            amount_to_pay - abs(line.amount)
+                        amount_to_pay - abs(line.amount)
         return res
 
     @classmethod
