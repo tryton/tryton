@@ -39,16 +39,16 @@ setup(name='trytond_account_stock_anglo_saxon',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.account_stock_anglo_saxon': '.'},
     packages=[
         'trytond.modules.account_stock_anglo_saxon',
         'trytond.modules.account_stock_anglo_saxon.tests',
         ],
     package_data={
-        'trytond.modules.account_stock_anglo_saxon': info.get('xml', []) \
-                + ['tryton.cfg', 'locale/*.po', 'tests/*.rst'],
+        'trytond.modules.account_stock_anglo_saxon': (info.get('xml', [])
+            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

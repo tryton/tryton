@@ -3,7 +3,6 @@
 from decimal import Decimal
 import operator
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 
 __all__ = ['InvoiceLine']
 __metaclass__ = PoolMeta
@@ -39,7 +38,7 @@ class InvoiceLine:
         result.append(move_line)
         move_line = move_line.copy()
         move_line['debit'], move_line['credit'] = \
-                move_line['credit'], move_line['debit']
+            move_line['credit'], move_line['debit']
         if type_.endswith('supplier'):
             move_line['account'] = self.account.id
         else:
