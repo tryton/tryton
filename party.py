@@ -92,7 +92,7 @@ class Party:
             if name in ('receivable_today', 'payable_today'):
                 code = name[:-6]
                 today_query = 'AND (l.maturity_date <= %s ' \
-                        'OR l.maturity_date IS NULL) '
+                    'OR l.maturity_date IS NULL) '
                 today_value = [Date.today()]
 
             cursor.execute('SELECT l.party, '
@@ -156,7 +156,7 @@ class Party:
         if name in ('receivable_today', 'payable_today'):
             code = name[:-6]
             today_query = 'AND (l.maturity_date <= %s ' \
-                    'OR l.maturity_date IS NULL) '
+                'OR l.maturity_date IS NULL) '
             today_value = [Date.today()]
 
         line_query, _ = MoveLine.query_get()

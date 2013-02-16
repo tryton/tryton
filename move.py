@@ -76,19 +76,19 @@ class Move(ModelSQL, ModelView):
             'del_posted_move': 'You can not delete posted moves!',
             'post_empty_move': 'You can not post an empty move!',
             'post_unbalanced_move': 'You can not post an unbalanced move!',
-            'draft_posted_move_journal': 'You can not set a posted move ' \
-                    'to draft in this journal!',
+            'draft_posted_move_journal': ('You can not set a posted move '
+                    'to draft in this journal!'),
             'modify_posted_move': 'Move "%s" is already posted!\n'
                     'You can not modify a posted move.',
-            'period_centralized_journal': 'You can not create more than ' \
-                    'one move per period\n' \
-                    'in a centralized journal!',
-            'company_in_move': 'You can not create lines on accounts\n' \
-                    'of different companies in the same move!',
-            'date_outside_period': 'You can not create move ' \
-                    'with a date outside the period!',
-            'draft_closed_period': 'You can not set to draft a move ' \
-                    'from a closed period',
+            'period_centralized_journal': ('You can not create more than '
+                    'one move per period\n'
+                    'in a centralized journal!'),
+            'company_in_move': ('You can not create lines on accounts\n'
+                    'of different companies in the same move!'),
+            'date_outside_period': ('You can not create move '
+                    'with a date outside the period!'),
+            'draft_closed_period': ('You can not set to draft a move '
+                    'from a closed period'),
             })
         cls._buttons.update({
                 'post': {
@@ -306,8 +306,8 @@ class Move(ModelSQL, ModelView):
                         centralised_amount = - amount
                     else:
                         centralised_amount = move.centralised_line.debit \
-                                    - move.centralised_line.credit \
-                                    - amount
+                            - move.centralised_line.credit \
+                            - amount
                     if centralised_amount >= Decimal('0.0'):
                         debit = centralised_amount
                         credit = Decimal('0.0')
@@ -395,10 +395,10 @@ class Reconciliation(ModelSQL, ModelView):
             ]
         cls._error_messages.update({
             'modify': 'You can not modify a reconciliation!',
-            'invalid_reconciliation': 'You can not create reconciliation ' \
-                    'where lines are not balanced, nor valid, ' \
-                    'nor in the same account, nor in account to reconcile, ' \
-                    'nor from the same party!',
+            'invalid_reconciliation': ('You can not create reconciliation '
+                    'where lines are not balanced, nor valid, '
+                    'nor in the same account, nor in account to reconcile, '
+                    'nor from the same party!'),
             })
 
     @classmethod
@@ -490,8 +490,8 @@ class Line(ModelSQL, ModelView):
                 'journal'], select=True, depends=['debit', 'credit', 'account',
                     'journal'])
     maturity_date = fields.Date('Maturity Date',
-            help='This field is used for payable and receivable lines. \n' \
-                    'You can put the limit date for the payment.')
+        help='This field is used for payable and receivable lines. \n'
+        'You can put the limit date for the payment.')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('valid', 'Valid'),
@@ -525,13 +525,13 @@ class Line(ModelSQL, ModelView):
                 })
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-            'add_modify_closed_journal_period': 'You can not ' \
-                    'add/modify lines in a closed journal period!',
+            'add_modify_closed_journal_period': ('You can not '
+                    'add/modify lines in a closed journal period!'),
             'modify_posted_move': 'You can not modify lines of a posted move!',
             'modify_reconciled': 'You can not modify reconciled lines!',
             'no_journal': 'No journal defined!',
-            'move_view_inactive_account': 'You can not create move lines\n' \
-                    'on view/inactive accounts!',
+            'move_view_inactive_account': ('You can not create move lines\n'
+                    'on view/inactive accounts!'),
             'already_reconciled': 'Line "%s" (%d) already reconciled!',
             })
 
@@ -664,8 +664,9 @@ class Line(ModelSQL, ModelView):
                     if base_id in line_code_taxes or not base_id:
                         taxes.setdefault((account_id, code_id, tax.id), None)
                 for tax_line in line.tax_lines:
-                    taxes[(line.account.id, tax_line.code.id,
-                            tax_line.tax.id)] = True
+                    taxes[
+                        (line.account.id, tax_line.code.id, tax_line.tax.id)
+                        ] = True
                 if not line.tax_lines:
                     no_code_taxes.append(line.account.id)
         for no_code_account_id in no_code_taxes:
@@ -713,27 +714,27 @@ class Line(ModelSQL, ModelView):
                     tax_amount = Decimal('0.0')
                     for tax_line in Tax.compute(line.account.taxes,
                             line.debit or line.credit, 1):
-                        if (tax_line['tax'][key + '_account'].id \
-                                or line.account.id) == account_id \
-                                and tax_line['tax'][key + '_tax_code'].id \
-                                    == code_id \
-                                and tax_line['tax'].id == tax_id:
+                        if ((tax_line['tax'][key + '_account'].id
+                                or line.account.id) == account_id
+                                and (tax_line['tax'][key + '_tax_code'].id
+                                    == code_id)
+                                and tax_line['tax'].id == tax_id):
                             if line.debit:
                                 line_amount += tax_line['amount']
                             else:
                                 line_amount -= tax_line['amount']
                             tax_amount += tax_line['amount'] * \
-                                    tax_line['tax'][key + '_tax_sign']
+                                tax_line['tax'][key + '_tax_sign']
                     line_amount = line.account.company.currency.round(
                         line_amount)
                     tax_amount = line.account.company.currency.round(
                         tax_amount)
                     if ('debit' in fields):
                         values['debit'] = line_amount > Decimal('0.0') \
-                                and line_amount or Decimal('0.0')
+                            and line_amount or Decimal('0.0')
                     if ('credit' in fields):
                         values['credit'] = line_amount < Decimal('0.0') \
-                                and - line_amount or Decimal('0.0')
+                            and - line_amount or Decimal('0.0')
                     if 'account' in fields:
                         values['account'] = account_id
                         values['account.rec_name'] = Account(
@@ -829,7 +830,7 @@ class Line(ModelSQL, ModelView):
             res['remove'] = [x['id'] for x in self.tax_lines]
         if self.account:
             debit = self.debit or Decimal('0.0')
-            credit = self.credit or  Decimal('0.0')
+            credit = self.credit or Decimal('0.0')
             for tax in self.account.taxes:
                 if journal_type == 'revenue':
                     if debit:
@@ -850,7 +851,7 @@ class Line(ModelSQL, ModelView):
                     tax_id = tax_line['tax'].id
                     base_amounts.setdefault((code_id, tax_id), Decimal('0.0'))
                     base_amounts[code_id, tax_id] += tax_line['base'] * \
-                            tax_line['tax'][key + '_tax_sign']
+                        tax_line['tax'][key + '_tax_sign']
                 for code_id, tax_id in base_amounts:
                     if not base_amounts[code_id, tax_id]:
                         continue
@@ -880,14 +881,14 @@ class Line(ModelSQL, ModelView):
         if self.party and (not self.debit) and (not self.credit):
             type_name = FIELDS[self.__class__.debit._type].sql_type(
                 self.__class__.debit)[0]
-            query = 'SELECT ' \
-                        'CAST(COALESCE(SUM(' \
-                            '(COALESCE(debit, 0) - COALESCE(credit, 0))' \
-                        '), 0) AS ' + type_name + ') ' \
-                    'FROM account_move_line ' \
-                    'WHERE reconciliation IS NULL ' \
-                        'AND party = %s ' \
-                        'AND account = %s'
+            query = ('SELECT '
+                'CAST(COALESCE(SUM('
+                        '(COALESCE(debit, 0) - COALESCE(credit, 0))'
+                    '), 0) AS ' + type_name + ') '
+                'FROM account_move_line '
+                'WHERE reconciliation IS NULL '
+                    'AND party = %s '
+                    'AND account = %s')
             cursor.execute(query,
                 (self.party.id, self.party.account_receivable.id))
             amount = cursor.fetchone()[0]
@@ -1014,29 +1015,29 @@ class Line(ModelSQL, ModelView):
             fiscalyear_id = fiscalyears and fiscalyears[0].id or 0
 
             if Transaction().context.get('posted'):
-                return (obj + '.state != \'draft\' ' \
-                        'AND ' + obj + '.move IN (' \
-                            'SELECT m.id FROM account_move AS m, ' \
-                                'account_period AS p ' \
-                                'WHERE m.period = p.id ' \
-                                    'AND p.fiscalyear = ' + \
-                                        str(fiscalyear_id) + ' ' \
-                                    'AND m.date <= date(\'' + \
-                                        str(Transaction().context['date']) + \
-                                        '\') ' \
-                                    'AND m.state = \'posted\' ' \
+                return (obj + '.state != \'draft\' '
+                        'AND ' + obj + '.move IN ('
+                            'SELECT m.id FROM account_move AS m, '
+                                'account_period AS p '
+                                'WHERE m.period = p.id '
+                                    'AND p.fiscalyear = ' +
+                                        str(fiscalyear_id) + ' '
+                                    'AND m.date <= date(\'' +
+                                        str(Transaction().context['date']) +
+                                        '\') '
+                                    'AND m.state = \'posted\' '
                             ')', [f.id for f in fiscalyears])
             else:
-                return (obj + '.state != \'draft\' ' \
-                        'AND ' + obj + '.move IN (' \
-                            'SELECT m.id FROM account_move AS m, ' \
-                                'account_period AS p ' \
-                                'WHERE m.period = p.id ' \
-                                    'AND p.fiscalyear = ' + \
-                                        str(fiscalyear_id) + ' ' \
-                                    'AND m.date <= date(\'' + \
-                                        str(Transaction().context['date']) + \
-                                        '\')' \
+                return (obj + '.state != \'draft\' '
+                        'AND ' + obj + '.move IN ('
+                            'SELECT m.id FROM account_move AS m, '
+                                'account_period AS p '
+                                'WHERE m.period = p.id '
+                                    'AND p.fiscalyear = ' +
+                                        str(fiscalyear_id) + ' '
+                                    'AND m.date <= date(\'' +
+                                        str(Transaction().context['date']) +
+                                        '\')'
                             ')', [f.id for f in fiscalyears])
 
         if Transaction().context.get('periods'):
@@ -1199,7 +1200,7 @@ class Line(ModelSQL, ModelView):
                 # prevent computation of default date
                 vals.setdefault('date', None)
         lines = super(Line, cls).create(vlist)
-        period_and_journals = set((line.period, line.journal) 
+        period_and_journals = set((line.period, line.journal)
             for line in lines)
         for period, journal in period_and_journals:
             cls.check_journal_period_modify(period, journal)
@@ -1244,8 +1245,8 @@ class Line(ModelSQL, ModelView):
                 return result
 
             xml = '<?xml version="1.0"?>\n' \
-                    '<tree string="%s" editable="top" on_write="on_write" ' \
-                    'colors="red:state==\'draft\'">\n' % title
+                '<tree string="%s" editable="top" on_write="on_write" ' \
+                'colors="red:state==\'draft\'">\n' % title
             fields = set()
             for column in journal.view.columns:
                 fields.add(column.field.name)
@@ -1302,27 +1303,27 @@ class Line(ModelSQL, ModelView):
                         'lines': [
                             ('create', [{
                                         'account': reconcile_account.id,
-                                        'debit': (amount < Decimal('0.0') 
+                                        'debit': (amount < Decimal('0.0')
                                             and - amount or Decimal('0.0')),
-                                        'credit': (amount > Decimal('0.0') 
+                                        'credit': (amount > Decimal('0.0')
                                             and amount or Decimal('0.0')),
                                         }, {
                                         'account': account.id,
-                                        'debit': (amount > Decimal('0.0') 
+                                        'debit': (amount > Decimal('0.0')
                                             and amount or Decimal('0.0')),
-                                        'credit': (amount < Decimal('0.0') 
+                                        'credit': (amount < Decimal('0.0')
                                             and - amount or Decimal('0.0')),
                                         }]),
                             ],
                         }])
             lines += cls.search([
-                ('move', '=', move.id),
-                ('account', '=', reconcile_account.id),
-                ('debit', '=', amount < Decimal('0.0') and - amount \
+                    ('move', '=', move.id),
+                    ('account', '=', reconcile_account.id),
+                    ('debit', '=', amount < Decimal('0.0') and - amount
                         or Decimal('0.0')),
-                ('credit', '=', amount > Decimal('0.0') and amount \
+                    ('credit', '=', amount > Decimal('0.0') and amount
                         or Decimal('0.0')),
-                ], limit=1)
+                    ], limit=1)
         return Reconciliation.create([{
                     'lines': [('add', [x.id for x in lines])],
                     }])[0]

@@ -203,12 +203,12 @@ class JournalPeriod(ModelSQL, ModelView):
             ]
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
-            'modify_del_journal_period': 'You can not modify/delete ' \
-                    'a journal - period with moves!',
-            'create_journal_period': 'You can not create ' \
-                    'a journal - period on a closed period!',
-            'open_journal_period': 'You can not open ' \
-                    'a journal - period from a closed period!',
+            'modify_del_journal_period': ('You can not modify/delete '
+                    'a journal - period with moves!'),
+            'create_journal_period': ('You can not create '
+                    'a journal - period on a closed period!'),
+            'open_journal_period': ('You can not open '
+                    'a journal - period from a closed period!'),
             })
 
     @staticmethod

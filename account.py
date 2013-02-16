@@ -462,7 +462,7 @@ class AccountTemplate(ModelSQL, ModelView):
                     template = self.__class__(self.id)
                     data = {}
                     for field_name, field in self._fields.iteritems():
-                        if (getattr(field, 'translate', False) \
+                        if (getattr(field, 'translate', False)
                                 and (getattr(template, field_name) !=
                                     prev_data[field_name])):
                             data[field_name] = getattr(template, field_name)
@@ -525,8 +525,8 @@ class Account(ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     second_currency = fields.Many2One('currency.currency',
-        'Secondary Currency', help='Force all moves for this account \n' \
-            'to have this secondary currency.', ondelete="RESTRICT")
+        'Secondary Currency', help='Force all moves for this account \n'
+        'to have this secondary currency.', ondelete="RESTRICT")
     type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
         states={
             'invisible': Eval('kind') == 'view',
@@ -550,8 +550,7 @@ class Account(ModelSQL, ModelView):
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_credit_debit')
     reconcile = fields.Boolean('Reconcile',
-        help='Allow move lines of this account \n' \
-            'to be reconciled.',
+        help='Allow move lines of this account \nto be reconciled.',
         states={
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
@@ -582,12 +581,12 @@ class Account(ModelSQL, ModelView):
         ]
         cls._error_messages.update({
             'recursive_accounts': 'You can not create recursive accounts!',
-            'delete_account_containing_move_lines': 'You can not delete ' \
-                    'accounts containing move lines!',
+            'delete_account_containing_move_lines': ('You can not delete '
+                    'accounts containing move lines!'),
         })
         cls._sql_error_messages.update({
-            'parent_fkey': 'You can not delete accounts ' \
-                    'that have children!',
+            'parent_fkey': ('You can not delete accounts '
+                    'that have children!'),
         })
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
@@ -640,15 +639,15 @@ class Account(ModelSQL, ModelView):
                 ('parent', 'child_of', [a.id for a in accounts]),
                 ], query_string=True)
         line_query, fiscalyear_ids = MoveLine.query_get()
-        cursor.execute('SELECT a.id, ' \
-                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) ' \
-                'FROM account_account a ' \
-                    'LEFT JOIN account_move_line l ' \
-                    'ON (a.id = l.account) ' \
-                'WHERE a.kind != \'view\' ' \
-                    'AND a.id IN (' + query_ids + ') ' \
-                    'AND ' + line_query + ' ' \
-                    'AND a.active ' \
+        cursor.execute('SELECT a.id, '
+                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
+                'FROM account_account a '
+                    'LEFT JOIN account_move_line l '
+                    'ON (a.id = l.account) '
+                'WHERE a.kind != \'view\' '
+                    'AND a.id IN (' + query_ids + ') '
+                    'AND ' + line_query + ' '
+                    'AND a.active '
                 'GROUP BY a.id', args_ids)
         account_sum = {}
         for account_id, sum in cursor.fetchall():
@@ -747,16 +746,16 @@ class Account(ModelSQL, ModelView):
         for i in range(0, len(ids), cursor.IN_MAX):
             sub_ids = ids[i:i + cursor.IN_MAX]
             red_sql, red_ids = reduce_ids('a.id', sub_ids)
-            cursor.execute('SELECT a.id, ' + \
+            cursor.execute('SELECT a.id, ' +
                         ','.join('SUM(COALESCE(l.' + name + ', 0))'
-                            for name in names) + ' ' \
-                    'FROM account_account a ' \
-                        'LEFT JOIN account_move_line l ' \
-                        'ON (a.id = l.account) ' \
-                    'WHERE a.kind != \'view\' ' \
-                        'AND ' + red_sql + ' ' \
-                        'AND ' + line_query + ' ' \
-                        'AND a.active ' \
+                            for name in names) + ' '
+                    'FROM account_account a '
+                        'LEFT JOIN account_move_line l '
+                        'ON (a.id = l.account) '
+                    'WHERE a.kind != \'view\' '
+                        'AND ' + red_sql + ' '
+                        'AND ' + line_query + ' '
+                        'AND a.active '
                     'GROUP BY a.id', red_ids)
             for row in cursor.fetchall():
                 account_id = row[0]
@@ -1654,7 +1653,7 @@ class CreateChart(Wizard):
         TaxTemplate = pool.get('account.tax.template')
         TaxRuleTemplate = pool.get('account.tax.rule.template')
         TaxRuleLineTemplate = \
-                pool.get('account.tax.rule.line.template')
+            pool.get('account.tax.rule.line.template')
         Config = pool.get('ir.configuration')
 
         with Transaction().set_context(language=Config.get_language()):
@@ -1740,8 +1739,8 @@ class CreateChart(Wizard):
                 if self.properties.account_receivable:
                     Property.create([{
                                 'field': account_receivable_field.id,
-                                'value': 'account.account,' + \
-                                    str(self.properties.account_receivable.id),
+                                'value': str(
+                                    self.properties.account_receivable),
                                 'company': self.properties.company.id,
                                 }])
 
@@ -1759,8 +1758,7 @@ class CreateChart(Wizard):
                 if self.properties.account_payable:
                     Property.create([{
                                 'field': account_payable_field.id,
-                                'value': 'account.account,' + \
-                                    str(self.properties.account_payable.id),
+                                'value': str(self.properties.account_payable),
                                 'company': self.properties.company.id,
                                 }])
         return 'end'
@@ -1802,7 +1800,7 @@ class UpdateChart(Wizard):
         TaxRuleTemplate = pool.get('account.tax.rule.template')
         TaxRuleLine = pool.get('account.tax.rule.line')
         TaxRuleLineTemplate = \
-                pool.get('account.tax.rule.line.template')
+            pool.get('account.tax.rule.line.template')
 
         account = self.start.account
 
@@ -1969,20 +1967,20 @@ class ThirdPartyBalance(Report):
         else:
             posted_clause = ""
 
-        cursor.execute('SELECT l.party, SUM(l.debit), SUM(l.credit) ' \
-                'FROM account_move_line l ' \
+        cursor.execute('SELECT l.party, SUM(l.debit), SUM(l.credit) '
+                'FROM account_move_line l '
                     'JOIN account_move m ON (l.move = m.id) '
                     'JOIN account_account a ON (l.account = a.id) '
-                'WHERE l.party IS NOT NULL '\
-                    'AND a.active ' \
-                    'AND a.kind IN (\'payable\',\'receivable\') ' \
-                    'AND l.reconciliation IS NULL ' \
-                    'AND a.company = %s ' \
-                    'AND (l.maturity_date <= %s ' \
-                        'OR l.maturity_date IS NULL) '\
-                    'AND ' + line_query + ' ' \
-                    + posted_clause + \
-                'GROUP BY l.party ' \
+                'WHERE l.party IS NOT NULL '
+                    'AND a.active '
+                    'AND a.kind IN (\'payable\',\'receivable\') '
+                    'AND l.reconciliation IS NULL '
+                    'AND a.company = %s '
+                    'AND (l.maturity_date <= %s '
+                        'OR l.maturity_date IS NULL) '
+                    'AND ' + line_query + ' '
+                    + posted_clause +
+                'GROUP BY l.party '
                 'HAVING (SUM(l.debit) != 0 OR SUM(l.credit) != 0)',
                 (data['company'], Date.today()))
 
@@ -2144,8 +2142,8 @@ class AgedBalance(Report):
                 if party in res:
                     res[party][position] = solde
                 else:
-                    res[party] = [(i[0] == position) and solde \
-                            or Decimal("0.0") for i in enumerate(terms)]
+                    res[party] = [(i[0] == position) and solde
+                        or Decimal("0.0") for i in enumerate(terms)]
         parties = Party.search([
             ('id', 'in', [k for k in res.iterkeys()]),
             ])

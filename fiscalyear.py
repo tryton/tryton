@@ -57,8 +57,8 @@ class FiscalYear(ModelSQL, ModelView):
         ]
         cls._order.insert(0, ('start_date', 'ASC'))
         cls._error_messages.update({
-            'change_post_move_sequence': 'You can not change ' \
-                    'the post move sequence',
+            'change_post_move_sequence': ('You can not change '
+                    'the post move sequence'),
             'no_fiscalyear_date': 'No fiscal year defined for this date!',
             'fiscalyear_overlaps':
                 'You can not have 2 fiscal years that overlaps!',
@@ -66,10 +66,10 @@ class FiscalYear(ModelSQL, ModelView):
                 'You must have different post move sequence per fiscal year!',
             'account_balance_not_zero':
                 'The balance of the account "%s" must be zero!',
-            'close_error': 'You can not close a fiscal year until ' \
-                    'there is older fiscal year opened!',
-            'reopen_error': 'You can not reopen a fiscal year until ' \
-                    'there is more recent fiscal year closed!',
+            'close_error': ('You can not close a fiscal year until '
+                    'there is older fiscal year opened!'),
+            'reopen_error': ('You can not reopen a fiscal year until '
+                    'there is more recent fiscal year closed!'),
             })
         cls._buttons.update({
                 'create_period': {
@@ -98,12 +98,12 @@ class FiscalYear(ModelSQL, ModelView):
 
     def check_dates(self):
         cursor = Transaction().cursor
-        cursor.execute('SELECT id ' \
-                'FROM ' + self._table + ' ' \
-                'WHERE ((start_date <= %s AND end_date >= %s) ' \
-                        'OR (start_date <= %s AND end_date >= %s) ' \
-                        'OR (start_date >= %s AND end_date <= %s)) ' \
-                    'AND company = %s ' \
+        cursor.execute('SELECT id '
+                'FROM ' + self._table + ' '
+                'WHERE ((start_date <= %s AND end_date >= %s) '
+                        'OR (start_date <= %s AND end_date >= %s) '
+                        'OR (start_date >= %s AND end_date <= %s)) '
+                    'AND company = %s '
                     'AND id != %s',
                 (self.start_date, self.start_date,
                     self.end_date, self.end_date,
@@ -155,8 +155,8 @@ class FiscalYear(ModelSQL, ModelView):
             period_start_date = fiscalyear.start_date
             while period_start_date < fiscalyear.end_date:
                 period_end_date = period_start_date + \
-                        relativedelta(months=interval - 1) + \
-                        relativedelta(day=31)
+                    relativedelta(months=interval - 1) + \
+                    relativedelta(day=31)
                 if period_end_date > fiscalyear.end_date:
                     period_end_date = fiscalyear.end_date
                 name = datetime_strftime(period_start_date, '%Y-%m')
@@ -238,10 +238,10 @@ class FiscalYear(ModelSQL, ModelView):
 
         for fiscalyear in fiscalyears:
             if cls.search([
-                ('end_date', '<=', fiscalyear.start_date),
-                ('state', '=', 'open'),
-                ('company', '=', fiscalyear.company.id),
-                ]):
+                        ('end_date', '<=', fiscalyear.start_date),
+                        ('state', '=', 'open'),
+                        ('company', '=', fiscalyear.company.id),
+                        ]):
                 cls.raise_user_error('close_error')
 
             #First close the fiscalyear to be sure
@@ -272,10 +272,10 @@ class FiscalYear(ModelSQL, ModelView):
 
         for fiscalyear in fiscalyears:
             if cls.search([
-                ('start_date', '>=', fiscalyear.end_date),
-                ('state', '=', 'close'),
-                ('company', '=', fiscalyear.company.id),
-                ]):
+                        ('start_date', '>=', fiscalyear.end_date),
+                        ('state', '=', 'close'),
+                        ('company', '=', fiscalyear.company.id),
+                        ]):
                 cls.raise_user_error('reopen_error')
 
             deferrals = Deferral.search([

@@ -62,8 +62,8 @@ class TaxCodeTemplate(ModelSQL, ModelView):
             ('check_recursion', 'recursive_tax_code'),
             ]
         cls._error_messages.update({
-                'recursive_tax_code': \
-                    'You can not create recursive tax codes!',
+                'recursive_tax_code': (
+                    'You can not create recursive tax codes!'),
                 })
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(0, ('account', 'ASC'))
@@ -163,8 +163,8 @@ class TaxCode(ModelSQL, ModelView):
             ('check_recursion', 'recursive_tax_code'),
             ]
         cls._error_messages.update({
-                'recursive_tax_code': \
-                    'You can not create recursive tax codes!',
+                'recursive_tax_code': (
+                    'You can not create recursive tax codes!'),
                 })
         cls._order.insert(0, ('code', 'ASC'))
 
@@ -470,32 +470,32 @@ class TaxTemplate(ModelSQL, ModelView):
             vals['parent'] = parent_id
             if self.invoice_account:
                 vals['invoice_account'] = \
-                        template2account[self.invoice_account.id]
+                    template2account[self.invoice_account.id]
             else:
                 vals['invoice_account'] = None
             if self.credit_note_account:
                 vals['credit_note_account'] = \
-                        template2account[self.credit_note_account.id]
+                    template2account[self.credit_note_account.id]
             else:
                 vals['credit_note_account'] = None
             if self.invoice_base_code:
                 vals['invoice_base_code'] = \
-                        template2tax_code[self.invoice_base_code.id]
+                    template2tax_code[self.invoice_base_code.id]
             else:
                 vals['invoice_base_code'] = None
             if self.invoice_tax_code:
                 vals['invoice_tax_code'] = \
-                        template2tax_code[self.invoice_tax_code.id]
+                    template2tax_code[self.invoice_tax_code.id]
             else:
                 vals['invoice_tax_code'] = None
             if self.credit_note_base_code:
                 vals['credit_note_base_code'] = \
-                        template2tax_code[self.credit_note_base_code.id]
+                    template2tax_code[self.credit_note_base_code.id]
             else:
                 vals['credit_note_base_code'] = None
             if self.credit_note_tax_code:
                 vals['credit_note_tax_code'] = \
-                        template2tax_code[self.credit_note_tax_code.id]
+                    template2tax_code[self.credit_note_tax_code.id]
             else:
                 vals['credit_note_tax_code'] = None
 
@@ -1033,8 +1033,8 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        help='If the original tax template is filled, the rule will be ' \
-            'applied only for this tax template.',
+        help=('If the original tax template is filled, the rule will be '
+            'applied only for this tax template.'),
         depends=['group'])
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
         domain=[
@@ -1141,8 +1141,8 @@ class TaxRuleLine(ModelSQL, ModelView):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        help='If the original tax is filled, the rule will be applied ' \
-            'only for this tax.',
+        help=('If the original tax is filled, the rule will be applied '
+            'only for this tax.'),
         depends=['group'])
     tax = fields.Many2One('account.tax', 'Substitution Tax',
         domain=[
@@ -1318,6 +1318,6 @@ class Account2:
                 ('company', '=', Eval('company')),
                 ('parent', '=', None),
             ],
-            help='Default tax for manual encoding of move lines \n' \
-                    'for journal types: "expense" and "revenue"',
+            help=('Default tax for manual encoding of move lines \n'
+                'for journal types: "expense" and "revenue"'),
             depends=['company'])

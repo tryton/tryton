@@ -63,23 +63,23 @@ class Period(ModelSQL, ModelView):
         cls._order.insert(0, ('start_date', 'ASC'))
         cls._error_messages.update({
             'no_period_date': 'No period defined for this date!',
-            'modify_del_period_moves': 'You can not modify/delete ' \
-                    'a period with moves!',
-            'create_period_closed_fiscalyear': 'You can not create ' \
-                    'a period on a closed fiscal year!',
-            'open_period_closed_fiscalyear': 'You can not open ' \
-                    'a period from a closed fiscal year!',
-            'change_post_move_sequence': 'You can not change ' \
-                    'the post move sequence ' \
-                    'if there is already posted moves in the period',
-            'close_period_non_posted_move': 'You can not close ' \
-                    'a period with non posted moves!',
+            'modify_del_period_moves': ('You can not modify/delete '
+                    'a period with moves!'),
+            'create_period_closed_fiscalyear': ('You can not create '
+                    'a period on a closed fiscal year!'),
+            'open_period_closed_fiscalyear': ('You can not open '
+                    'a period from a closed fiscal year!'),
+            'change_post_move_sequence': ('You can not change '
+                    'the post move sequence '
+                    'if there is already posted moves in the period'),
+            'close_period_non_posted_move': ('You can not close '
+                    'a period with non posted moves!'),
             'periods_overlaps': 'You can not have two overlapping periods!',
-            'check_move_sequence': 'You must have different ' \
-                    'post move sequences per fiscal year ' \
-                    'and in the same company!',
-            'fiscalyear_dates': 'The period dates must be in ' \
-                    'the fiscal year dates',
+            'check_move_sequence': ('You must have different '
+                    'post move sequences per fiscal year '
+                    'and in the same company!'),
+            'fiscalyear_dates': ('The period dates must be in '
+                    'the fiscal year dates'),
             })
 
     @staticmethod
@@ -101,13 +101,13 @@ class Period(ModelSQL, ModelView):
         cursor = Transaction().cursor
         if self.type != 'standard':
             return True
-        cursor.execute('SELECT id ' \
-                'FROM "' + self._table + '" ' \
-                'WHERE ((start_date <= %s AND end_date >= %s) ' \
-                        'OR (start_date <= %s AND end_date >= %s) ' \
-                        'OR (start_date >= %s AND end_date <= %s)) ' \
-                    'AND fiscalyear = %s ' \
-                    'AND type = \'standard\' ' \
+        cursor.execute('SELECT id '
+                'FROM "' + self._table + '" '
+                'WHERE ((start_date <= %s AND end_date >= %s) '
+                        'OR (start_date <= %s AND end_date >= %s) '
+                        'OR (start_date >= %s AND end_date <= %s)) '
+                    'AND fiscalyear = %s '
+                    'AND type = \'standard\' '
                     'AND id != %s',
                 (self.start_date, self.start_date,
                     self.end_date, self.end_date,
@@ -180,11 +180,11 @@ class Period(ModelSQL, ModelView):
             i = 0
             while i < len(args):
                 # add test for xmlrpc and pyson that doesn't handle tuple
-                if (isinstance(args[i], tuple) \
-                        or (isinstance(args[i], list) and len(args[i]) > 2 \
-                        and args[i][1] in OPERATORS)) \
-                        and args[i][0] in ('start_date', 'end_date') \
-                        and isinstance(args[i][2], (list, tuple)):
+                if ((isinstance(args[i], tuple)
+                            or (isinstance(args[i], list) and len(args[i]) > 2
+                                and args[i][1] in OPERATORS))
+                        and args[i][0] in ('start_date', 'end_date')
+                        and isinstance(args[i][2], (list, tuple))):
                     if not args[i][2][0]:
                         args[i] = ('id', '!=', '0')
                     else:
