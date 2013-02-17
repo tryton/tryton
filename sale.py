@@ -70,19 +70,19 @@ class SaleLine:
             lines = cls.browse(ids)
             for line in lines:
                 for root_id in root_ids:
-                    id2record[line.id]['analytic_account_' \
-                            + str(root_id)] = None
+                    id2record[line.id]['analytic_account_'
+                        + str(root_id)] = None
                 if line.type != 'line':
                     continue
                 if not line.analytic_accounts:
                     continue
                 for account in line.analytic_accounts.accounts:
                     if account.root.id in root_ids:
-                        id2record[line.id]['analytic_account_' \
-                                + str(account.root.id)] = account.id
+                        id2record[line.id]['analytic_account_'
+                            + str(account.root.id)] = account.id
                         for field in fields_names:
-                            if field.startswith('analytic_account_' + \
-                                    str(account.root.id) + '.'):
+                            if field.startswith('analytic_account_'
+                                    + str(account.root.id) + '.'):
                                 ham, field2 = field.split('.', 1)
                                 id2record[line.id][field] = account[field2]
         return res
