@@ -47,9 +47,10 @@ class Line(ModelSQL, ModelView):
             ('check_account', 'line_on_view_inactive_account'),
             ]
         cls._error_messages.update({
-            'line_on_view_inactive_account': 'You can not create move line\n' \
-                    'on view/inactive account!',
-            })
+                'line_on_view_inactive_account': (
+                    'You can not create move line\n'
+                    'on view/inactive account!'),
+                })
         cls._order.insert(0, ('date', 'ASC'))
 
     @classmethod
@@ -97,13 +98,13 @@ class Line(ModelSQL, ModelView):
         if Transaction().context.get('start_date'):
             # Check start_date
             time.strptime(str(Transaction().context['start_date']), '%Y-%m-%d')
-            res += ' AND ' + obj + '.date >= date(\'' + \
-                    str(Transaction().context['start_date']) + '\')'
+            res += (' AND ' + obj + '.date >= date(\''
+                + str(Transaction().context['start_date']) + '\')')
         if Transaction().context.get('end_date'):
             # Check end_date
             time.strptime(str(Transaction().context['end_date']), '%Y-%m-%d')
-            res += ' AND ' + obj + '.date <= date(\'' + \
-                    str(Transaction().context['end_date']) + '\')'
+            res += (' AND ' + obj + '.date <= date(\''
+                + str(Transaction().context['end_date']) + '\')')
         return res
 
     def check_account(self):

@@ -130,24 +130,24 @@ class Account(ModelSQL, ModelView):
             id2account[account.id] = account
 
         line_query = Line.query_get()
-        cursor.execute('SELECT a.id, ' \
-                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), ' \
-                    'c.currency ' \
-                'FROM analytic_account_account a ' \
-                    'LEFT JOIN analytic_account_line l ' \
-                    'ON (a.id = l.account) ' \
-                    'LEFT JOIN account_move_line ml ' \
-                    'ON (ml.id = l.move_line) ' \
-                    'LEFT JOIN account_account aa ' \
-                    'ON (aa.id = ml.account) ' \
-                    'LEFT JOIN company_company c ' \
-                    'ON (c.id = aa.company) ' \
-                'WHERE a.type != \'view\' ' \
-                    'AND a.id IN (' + \
-                        ','.join(('%s',) * len(all_ids)) + ') ' \
-                    'AND ' + line_query + ' ' \
-                    'AND a.active ' \
-                'GROUP BY a.id, c.currency', all_ids)
+        cursor.execute('SELECT a.id, '
+                'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), '
+                    'c.currency '
+            'FROM analytic_account_account a '
+                'LEFT JOIN analytic_account_line l '
+                'ON (a.id = l.account) '
+                'LEFT JOIN account_move_line ml '
+                'ON (ml.id = l.move_line) '
+                'LEFT JOIN account_account aa '
+                'ON (aa.id = ml.account) '
+                'LEFT JOIN company_company c '
+                'ON (c.id = aa.company) '
+            'WHERE a.type != \'view\' '
+                'AND a.id IN (' +
+                    ','.join(('%s',) * len(all_ids)) + ') '
+                'AND ' + line_query + ' '
+                'AND a.active '
+            'GROUP BY a.id, c.currency', all_ids)
         account_sum = {}
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
@@ -199,24 +199,24 @@ class Account(ModelSQL, ModelView):
             id2account[account.id] = account
 
         line_query = Line.query_get()
-        cursor.execute('SELECT a.id, ' \
-                    'SUM(COALESCE(l.' + name + ', 0)), ' \
-                    'c.currency ' \
-                'FROM analytic_account_account a ' \
-                    'LEFT JOIN analytic_account_line l ' \
-                    'ON (a.id = l.account) ' \
-                    'LEFT JOIN account_move_line ml ' \
-                    'ON (ml.id = l.move_line) ' \
-                    'LEFT JOIN account_account aa ' \
-                    'ON (aa.id = ml.account) ' \
-                    'LEFT JOIN company_company c ' \
-                    'ON (c.id = aa.company) ' \
-                'WHERE a.type != \'view\' ' \
-                    'AND a.id IN (' + \
-                        ','.join(('%s',) * len(ids)) + ') ' \
-                    'AND ' + line_query + ' ' \
-                    'AND a.active ' \
-                'GROUP BY a.id, c.currency', ids)
+        cursor.execute('SELECT a.id, '
+                'SUM(COALESCE(l.' + name + ', 0)), '
+                'c.currency '
+            'FROM analytic_account_account a '
+                'LEFT JOIN analytic_account_line l '
+                'ON (a.id = l.account) '
+                'LEFT JOIN account_move_line ml '
+                'ON (ml.id = l.move_line) '
+                'LEFT JOIN account_account aa '
+                'ON (aa.id = ml.account) '
+                'LEFT JOIN company_company c '
+                'ON (c.id = aa.company) '
+            'WHERE a.type != \'view\' '
+                'AND a.id IN (' +
+                    ','.join(('%s',) * len(ids)) + ') '
+                'AND ' + line_query + ' '
+                'AND a.active '
+            'GROUP BY a.id, c.currency', ids)
 
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
@@ -338,8 +338,8 @@ class AccountSelection(ModelSQL, ModelView):
             ('check_root', 'root_account'),
             ]
         cls._error_messages.update({
-                'root_account': 'Can not have many accounts with the same ' \
-                    'root or a missing mandatory root account!',
+                'root_account': ('Can not have many accounts with the same '
+                    'root or a missing mandatory root account!'),
                 })
 
     @classmethod

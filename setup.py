@@ -36,16 +36,16 @@ setup(name='trytond_analytic_account',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.analytic_account': '.'},
     packages=[
         'trytond.modules.analytic_account',
         'trytond.modules.analytic_account.tests',
         ],
     package_data={
-        'trytond.modules.analytic_account': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po'],
+        'trytond.modules.analytic_account': (info.get('xml', [])
+            + ['tryton.cfg', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
