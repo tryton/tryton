@@ -29,6 +29,7 @@ class Template:
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
         Location = pool.get('stock.location')
+        Template = pool.get('product.template')
 
         locations = Location.search([
             ('type', '=', 'storage'),
