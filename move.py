@@ -99,7 +99,8 @@ class Move:
             elif (move.to_location.type != 'storage'  # XXX from_location?
                     and move.to_location.type != 'supplier'
                     and move.product.cost_price_method == 'fifo'):
-                move._update_fifo_out_product_cost_price()
+                move._update_fifo_out_product_cost_price(
+                    move.product, move.quantity, move.uom, move.effective_date)
             move.save()
 
         super(Move, cls).do(moves)
