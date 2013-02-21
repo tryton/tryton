@@ -115,6 +115,11 @@
                     this.attributes.limit, this.attributes.order,
                     this.context);
             var group_setter = function(group) {
+                if (this.group) {
+                    this.group.screens.splice(
+                        this.group.screens.indexOf(this), 1);
+                }
+                group.screens.push(this);
                 this.group = group;
             };
             grp_prm.done(group_setter.bind(this));

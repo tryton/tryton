@@ -51,6 +51,7 @@
         array.model = model;
         array.context = context;
         array.parent = undefined;
+        array.screens = [];
         array.parent_name = '';
         array.child_name = '';
         array.parent_datetime_field = undefined;
@@ -59,7 +60,7 @@
         array.forEach(function(e, i, a) {
             e.group = a;
         });
-        array.load = function(ids) {
+        array.load = function(ids, modified) {
             var new_records = [];
             var i, len;
             for (i = 0, len = ids.length; i < len; i++) {
@@ -90,6 +91,9 @@
                 }
             }
             this.record_deleted = record_deleted;
+            if (new_records.length && modified) {
+                this.changed();
+            }
         };
         array.get = function(id) {
             // TODO optimize
@@ -130,7 +134,26 @@
                 }
             }
             record.changed.id = true;
+            this.changed();
             return record;
+        };
+        array.changed = function() {
+            if (!this.parent) {
+                return;
+            }
+            this.parent._changed[this.child_name] = true;
+            this.parent.model.fields[this.child_name].changed(this.parent);
+            // TODO validate parent
+            this.parent.group.changed();
+        };
+        array.root_group = function() {
+            var root = this;
+            var parent = this.parent;
+            while (parent) {
+                root = parent.group;
+                parent = parent.parent;
+            }
+            return root;
         };
         return array;
     };
@@ -486,6 +509,11 @@
             if (previous_value != this.get(record)) {
                 record._changed[this.name] = true;
                 this.changed(record);
+                // TODO validate + parent
+                record.group.changed();
+                record.group.root_group().screens.forEach(function(screen) {
+                    screen.display();
+                });
             }
         },
         get_client: function(record) {
