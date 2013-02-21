@@ -626,6 +626,7 @@
             }
             var widget = new WidgetFactory(name, model, attributes);
             widget.position = this.widget_id += 1;
+            widget.view = this;
             // TODO expand, fill, help, height, width
             container.add(
                     Number(node.getAttribute('colspan') || 1),
@@ -830,6 +831,26 @@
         },
         display: function(record, field) {
             // TODO set state
+        },
+        record: function() {
+            if (this.view && this.view.screen) {
+                return this.view.screen.current_record;
+            }
+        },
+        field: function() {
+            var record = this.record();
+            if (record) {
+                return record.model.fields[this.field_name];
+            }
+        },
+        focus_out: function() {
+            if (!this.field()) {
+                return;
+            }
+            // TODO visible
+            this.set_value(this.record(), this.field());
+        },
+        set_value: function(record, field) {
         }
     });
 
@@ -842,11 +863,16 @@
                 'type': 'input',
                 'class': this.class_
             });
+            this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
             var value = record.field_get_client(this.field_name);
             this.el.val(value || '');
+        },
+        set_value: function(record, field) {
+            var value = this.el.val() || '';
+            field.set_client(record, value);
         }
     });
 
@@ -868,11 +894,16 @@
                 'class': 'form-date'
             });
             this.el.datepicker();
+            this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Date._super.display.call(this, record, field);
             var value = record.field_get_client(this.field_name);
             this.el.datepicker('setDate', value);
+        },
+        set_value: function(record, field) {
+            var value = this.el.datepicker('getDate');
+            field.set_client(record, value);
         }
     });
 
@@ -884,6 +915,10 @@
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
             this.el.css('text-align', 'right');
+        },
+        set_value: function(record, field) {
+            var value = Number(this.el.val());
+            field.set_client(record, value);
         }
     });
 
@@ -898,6 +933,7 @@
             this.el = jQuery('<select/>', {
                 'class': 'form-selection'
             });
+            this.el.change(this.focus_out.bind(this));
             Sao.common.selection_mixin.init.call(this);
             this.init_selection();
         },
@@ -938,6 +974,17 @@
                 }
                 this.el.val('' + value);
             }.bind(this));
+        },
+        value_get: function() {
+            var val = this.el.val();
+            if ('relation' in this.attributes) {
+                return parseInt(val, 10);
+            }
+            return val;
+        },
+        set_value: function(record, field) {
+            var value = this.value_get();
+            field.set_client(record, value);
         }
     });
 
@@ -964,10 +1011,15 @@
                 'type': 'checkbox',
                 'class': 'form-boolean'
             });
+            this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Boolean._super.display.call(this, record, field);
             this.el.prop('checked', record.field_get(this.field_name));
+        },
+        set_value: function(record, field) {
+            var value = this.el.prop('checked');
+            field.set_client(record, value);
         }
     });
 
@@ -978,11 +1030,16 @@
             this.el = jQuery('<textarea/>', {
                 'class': 'form-text'
             });
+            this.el.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Text._super.display.call(this, record, field);
             var value = record.field_get_client(this.field_name);
             this.el.val(value);
+        },
+        set_value: function(record, field) {
+            var value = this.el.val() || '';
+            field.set_client(record, value);
         }
     });
 
