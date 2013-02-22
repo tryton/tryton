@@ -504,7 +504,7 @@
                         break;
                 }
             };
-            jQuery(node.children).each(_parse.bind(this));
+            jQuery(node).children().each(_parse.bind(this));
             return container;
         },
         _parse_separator: function(model, node, container, attributes) {
