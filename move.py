@@ -57,9 +57,7 @@ class Move:
                     move.product.default_uom)
             cost_price += move_unit_price * Decimal(str(move_qty))
 
-            cls._update_product_cost_price(product.id, -move_qty,
-                    product.default_uom, move_unit_price, move.currency,
-                    move.company, date)
+            move._update_product_cost_price('out')
 
             move_qty = Uom.compute_qty(product.default_uom, move_qty,
                     move.uom, round=False)
