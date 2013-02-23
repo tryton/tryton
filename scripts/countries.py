@@ -23,11 +23,11 @@ for subdivision in pycountry.subdivisions:
             <field name="code">%s</field>
             <field name="type">%s</field>\n''' % (subdivision.code.lower(),
                 subdivision.name, subdivision.code,
-                subdivision.type.lower())
+                subdivision.type)
     if subdivision.parent_code:
         record += u'''\
-                <field name="parent" ref="%s"/>\n''' % \
-                subdivision.parent.code.lower()
+            <field name="parent" ref="%s"/>\n''' % \
+            subdivision.parent.code.lower()
     record += u'''\
             <field name="country" ref="%s"/>
         </record>\n''' % subdivision.country.alpha2.lower()
