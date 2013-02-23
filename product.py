@@ -40,8 +40,7 @@ class Template:
 
 class Product:
     __name__ = 'product.product'
-    attributes = fields.Dict('Attributes',
-        schema_model='product.attribute',
+    attributes = fields.Dict('product.attribute', 'Attributes',
         domain=[
             ('sets', '=', Eval('attribute_set', -1)),
             ],
