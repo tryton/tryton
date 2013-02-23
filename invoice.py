@@ -2558,6 +2558,8 @@ class CreditInvoice(Wizard):
                     'an invoice that is not posted!'),
                 'refund_with_payement': ('You can not credit with refund '
                     'an invoice with payments!'),
+                'refund_supplier': ('You can not credit with refund '
+                    'a supplier invoice/credit note.'),
                 })
 
     def default_start(self, fields):
@@ -2566,7 +2568,9 @@ class CreditInvoice(Wizard):
             'with_refund': True,
             }
         for invoice in Invoice.browse(Transaction().context['active_ids']):
-            if invoice.state != 'posted' or invoice.payment_lines:
+            if (invoice.state != 'posted'
+                    or invoice.payment_lines
+                    or invoice.type in ('in_invoice', 'in_credit_note')):
                 default['with_refund'] = False
                 break
         return default
@@ -2584,6 +2588,8 @@ class CreditInvoice(Wizard):
                     self.raise_user_error('refund_non_posted')
                 if invoice.payment_lines:
                     self.raise_user_error('refund_with_payement')
+                if invoice.type in ('in_invoice', 'in_credit_note'):
+                    self.raise_user_error('refund_supplier')
 
         invoice_ids = Invoice.credit(invoices, refund=refund)
 
