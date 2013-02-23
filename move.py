@@ -3,6 +3,8 @@
 from decimal import Decimal
 import datetime
 import time
+from itertools import groupby
+from operator import itemgetter
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
@@ -13,6 +15,7 @@ from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
+from trytond.tools import reduce_ids
 
 __all__ = ['Move', 'Reconciliation', 'Line', 'Move2', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount', 'ReconcileLinesWriteOff', 'ReconcileLines',
@@ -283,24 +286,47 @@ class Move(ModelSQL, ModelView):
         '''
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        User = pool.get('res.user')
+
+        cursor = Transaction().cursor
+
+        if (Transaction().user == 0
+                and Transaction().context.get('user')):
+            user = Transaction().context.get('user')
+        else:
+            user = Transaction().user
+        company = User(user).company
+        amounts = {}
+        move2draft_lines = {}
+        for i in range(0, len(moves), cursor.IN_MAX):
+            sub_moves = moves[i:i + cursor.IN_MAX]
+            sub_move_ids = [m.id for m in sub_moves]
+            red_sql, red_ids = reduce_ids('move', sub_move_ids)
+
+            cursor.execute('SELECT move, SUM(debit - credit) '
+                'FROM "' + MoveLine._table + '" '
+                'WHERE ' + red_sql + ' '
+                'GROUP BY move', red_ids)
+            amounts.update(dict(cursor.fetchall()))
+
+            cursor.execute('SELECT move, id '
+                'FROM "' + MoveLine._table + '" '
+                'WHERE ' + red_sql + ' AND state = %s '
+                'ORDER BY move', red_ids + ['draft'])
+            move2draft_lines.update(dict((k, (j[1] for j in g))
+                    for k, g in groupby(cursor.fetchall(), itemgetter(0))))
+
+        valid_moves = []
+        draft_moves = []
         for move in moves:
-            if not move.lines:
+            if move.id not in amounts:
                 continue
-            amount = Decimal('0.0')
-            company = None
-            draft_lines = []
-            for line in move.lines:
-                amount += line.debit - line.credit
-                if not company:
-                    company = line.account.company
-                if line.state == 'draft':
-                    draft_lines.append(line)
+            amount = amounts[move.id]
+            draft_lines = MoveLine.browse(
+                list(move2draft_lines.get(move.id, [])))
             if not company.currency.is_zero(amount):
                 if not move.journal.centralised:
-                    MoveLine.write(
-                            [x for x in move.lines if x.state != 'draft'], {
-                                'state': 'draft',
-                                })
+                    draft_moves.append(move.id)
                 else:
                     if not move.centralised_line:
                         centralised_amount = - amount
@@ -335,9 +361,19 @@ class Move(ModelSQL, ModelView):
                 continue
             if not draft_lines:
                 continue
-            MoveLine.write(draft_lines, {
-                    'state': 'valid',
-                    })
+            valid_moves.append(move.id)
+        for move_ids, state in (
+                (valid_moves, 'valid'),
+                (draft_moves, 'draft'),
+                ):
+            if move_ids:
+                for i in range(0, len(move_ids), cursor.IN_MAX):
+                    sub_ids = move_ids[i:i + cursor.IN_MAX]
+                    red_sql, red_ids = reduce_ids('move', sub_ids)
+                    # Use SQL to prevent double validate loop
+                    cursor.execute('UPDATE "' + MoveLine._table + '" '
+                        'SET state = %s '
+                        'WHERE ' + red_sql, [state] + red_ids)
 
     @classmethod
     @ModelView.button
@@ -1162,10 +1198,7 @@ class Line(ModelSQL, ModelView):
 
         Transaction().timestamp = {}
 
-        for line in lines:
-            if line.move not in moves:
-                moves.append(line.move)
-        Move.validate(moves)
+        Move.validate(list(set(l.move for l in lines) | set(moves)))
 
     @classmethod
     def create(cls, vlist):
