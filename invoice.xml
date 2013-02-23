@@ -134,6 +134,21 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
+        <record model="ir.action.act_window" id="act_invoice_form">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="invoice_view_tree"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_invoice_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="invoice_view_form"/>
+            <field name="act_window" ref="act_invoice_form"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_invoice_out_invoice_form">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
