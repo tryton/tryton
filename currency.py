@@ -46,8 +46,8 @@ class Currency(ModelSQL, ModelView):
             ('check_mon_grouping', 'invalid_mon_grouping'),
             ]
         cls._error_messages.update({
-                'no_rate': 'No rate found for the currency: ' \
-                    '%s at the date: %s',
+                'no_rate': ('No rate found for the currency: '
+                    '%s at the date: %s'),
                 'invalid_grouping': 'Invalid Grouping!',
                 })
         cls.__rpc__.update({
