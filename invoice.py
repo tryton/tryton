@@ -1224,6 +1224,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                             if not l.reconciliation] +
                         [l for l in new_invoice.lines_to_pay
                             if not l.reconciliation])
+        cls.update_taxes(new_invoices)
         return new_invoices
 
     @classmethod
