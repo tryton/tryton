@@ -164,7 +164,7 @@ msgstr ""
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"
-msgstr "Spojené Arabské Emiráty - dirham"
+msgstr "Arabskoemirátský Dirham"
 
 msgctxt "model:currency.currency,name:afn"
 msgid "Afghani"
@@ -216,7 +216,7 @@ msgstr "Taka"
 
 msgctxt "model:currency.currency,name:bgn"
 msgid "Bulgarian Lev"
-msgstr "Bulharská leva"
+msgstr "Bulharský lev"
 
 msgctxt "model:currency.currency,name:bhd"
 msgid "Bahraini Dinar"
@@ -580,7 +580,7 @@ msgstr "Mexické peso"
 
 msgctxt "model:currency.currency,name:mxv"
 msgid "Mexican Unidad de Inversion (UDI)"
-msgstr "Mexican Unidad de Inversion (UDI)"
+msgstr "Mexický Unidad de Inversion (UDI)"
 
 msgctxt "model:currency.currency,name:myr"
 msgid "Malaysian Ringgit"
@@ -672,7 +672,7 @@ msgstr "Saudskoarabský rial"
 
 msgctxt "model:currency.currency,name:sbd"
 msgid "Solomon Islands Dollar"
-msgstr "Šalamounovy ostrovy - dolar"
+msgstr "Dolar šalamounských ostrovů"
 
 msgctxt "model:currency.currency,name:scr"
 msgid "Seychelles Rupee"
@@ -748,11 +748,11 @@ msgstr "Turecká nová lira"
 
 msgctxt "model:currency.currency,name:ttd"
 msgid "Trinidad and Tobago Dollar"
-msgstr "Trinidad a Tobago - dolar"
+msgstr "Trinidadský a Tobažský dolar"
 
 msgctxt "model:currency.currency,name:twd"
 msgid "New Taiwan Dollar"
-msgstr "Taiwanský dolar"
+msgstr "Taiwanský nový dolar"
 
 msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
@@ -780,7 +780,7 @@ msgstr "Americký dolar (stejný den)"
 
 msgctxt "model:currency.currency,name:uyi"
 msgid "Uruguay Peso en Unidades Indexadas"
-msgstr "Uruguay Peso en Unidades Indexadas"
+msgstr "Uruguayské Peso en Unidades Indexadas"
 
 msgctxt "model:currency.currency,name:uyu"
 msgid "Peso Uruguayo"
@@ -884,7 +884,7 @@ msgstr "Rand"
 
 msgctxt "model:currency.currency,name:zmk"
 msgid "Zambian Kwacha"
-msgstr "Zabmijská kwacha"
+msgstr "Zambijská kwacha"
 
 msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"

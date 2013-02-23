@@ -272,7 +272,7 @@ msgstr "Dólar canadiense"
 
 msgctxt "model:currency.currency,name:cdf"
 msgid "Congolese Franc"
-msgstr "Congolese Franc"
+msgstr "Franco congoleño"
 
 msgctxt "model:currency.currency,name:che"
 msgid "WIR Euro"
@@ -840,7 +840,7 @@ msgstr "Dólar del Caribe oriental"
 
 msgctxt "model:currency.currency,name:xdr"
 msgid "Special Drawing Rights"
-msgstr "Special Drawing Rights"
+msgstr "Derechos especiales de giro"
 
 msgctxt "model:currency.currency,name:xfo"
 msgid "Gold-Franc"
@@ -872,7 +872,7 @@ msgstr "Código reservado para pruebas"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr "Sin moneda"
+msgstr "Sin divisa"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
@@ -884,7 +884,7 @@ msgstr "Rand"
 
 msgctxt "model:currency.currency,name:zmk"
 msgid "Zambian Kwacha"
-msgstr "Zambian Kwacha"
+msgstr "Kwacha zambiano"
 
 msgctxt "model:currency.currency,name:zwd"
 msgid "Zimbabwe Dollar"
