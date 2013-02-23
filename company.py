@@ -34,8 +34,8 @@ class Company(ModelSQL, ModelView):
             ('check_recursion', 'recursive_companies'),
             ]
         cls._error_messages.update({
-                'recursive_companies': \
-                    'You can not create recursive companies!',
+                'recursive_companies': (
+                    'You can not create recursive companies!'),
                 })
 
     @classmethod
