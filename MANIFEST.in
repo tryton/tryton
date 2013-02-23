@@ -8,3 +8,4 @@ include tryton.cfg
 include *.xml
 include *.odt
 include locale/*.po
+include tests/*.rst
