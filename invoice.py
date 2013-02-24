@@ -14,9 +14,9 @@ class InvoiceLine:
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
         cls._error_messages.update({
-            'delete_purchase_invoice_line': 'You can not delete ' \
-                    'invoice lines that comes from a purchase!',
-            })
+                'delete_purchase_invoice_line': ('You can not delete '
+                    'invoice lines that comes from a purchase!'),
+                })
 
     @classmethod
     def write(cls, lines, vals):
@@ -49,9 +49,9 @@ class InvoiceLine:
     def delete(cls, lines):
         cursor = Transaction().cursor
         if lines:
-            cursor.execute('SELECT id FROM purchase_invoice_line_rel ' \
-                    'WHERE line IN (' + ','.join(['%s' for x in lines]) + ')',
-                    [l.id for l in lines])
+            cursor.execute('SELECT id FROM purchase_invoice_line_rel '
+                'WHERE line IN (' + ','.join(['%s' for x in lines]) + ')',
+                [l.id for l in lines])
             if cursor.rowcount:
                 cls.raise_user_error('delete_purchase_invoice_line')
         super(InvoiceLine, cls).delete(lines)
