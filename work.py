@@ -246,10 +246,10 @@ class Work:
         for fun_field, db_field in zip(fun_fields, db_fields):
             if fun_field == name:
                 cls.write(works, {
-                        db_field: value \
-                                and datetime.datetime.combine(value,
-                                    datetime.time()) \
-                                or None,
+                        db_field: (value
+                            and datetime.datetime.combine(value,
+                                datetime.time())
+                            or None),
                         })
                 break
 
@@ -348,7 +348,7 @@ class Work:
         mindate = lambda x, y: x and y and min(x, y) or x or y
 
         # propagate constraint_start_time
-        constraint_start = reduce(maxdate, (pred.early_finish_time \
+        constraint_start = reduce(maxdate, (pred.early_finish_time
                 for pred in self.predecessors), None)
 
         if constraint_start is None and self.parent:
@@ -429,7 +429,7 @@ class Work:
                 parent = work
 
         # propagate constraint_finish_time
-        constraint_finish = reduce(mindate, (succ.late_start_time \
+        constraint_finish = reduce(mindate, (succ.late_start_time
                 for succ in self.successors), None)
 
         if constraint_finish is None and self.parent:
