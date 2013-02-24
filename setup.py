@@ -36,6 +36,8 @@ setup(name='trytond_stock_supply_forecast',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.stock_supply_forecast': '.'},
     packages=[
         'trytond.modules.stock_supply_forecast',
