@@ -101,8 +101,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 'Probability must be between 0 and 100!')
             ]
         cls._error_messages.update({
-                'delete_cancel': 'Sale Opportunity "%s" must be cancelled '\
-                    'before deletion!',
+                'delete_cancel': ('Sale Opportunity "%s" must be cancelled '
+                    'before deletion!'),
                 })
         cls._transitions |= set((
                 ('lead', 'opportunity'),
@@ -440,9 +440,9 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
             '"%s".id' % table,
             'COALESCE("%s".write_uid, "%s".create_uid)' % (table, table),
         ] + ['"%s"."%s"' % (table, name)
-                for name, field in cls._fields.iteritems()
-                if name not in ('id', 'opportunity', 'date', 'user')
-                and not hasattr(field, 'set')]
+            for name, field in cls._fields.iteritems()
+            if (name not in ('id', 'opportunity', 'date', 'user')
+                and not hasattr(field, 'set'))]
 
     @classmethod
     def table_query(cls):
@@ -518,23 +518,23 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
             clause += 'AND start_date <= %s '
             args.append(Transaction().context['end_date'])
         return ('SELECT DISTINCT(employee) AS id, '
-                    'MAX(create_uid) AS create_uid, '
-                    'MAX(create_date) AS create_date, '
-                    'MAX(write_uid) AS write_uid, '
-                    'MAX(write_date) AS write_date, '
-                    'employee, '
-                    'company, '
-                    'COUNT(1) AS number, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._converted_state()) + ') '
-                        'THEN 1 ELSE 0 END) AS converted, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._lost_state()) + ') '
-                        'THEN 1 ELSE 0 END) AS lost, '
-                    'SUM(amount) AS amount, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._converted_state()) + ') '
-                        'THEN amount ELSE 0 END) AS converted_amount '
+                'MAX(create_uid) AS create_uid, '
+                'MAX(create_date) AS create_date, '
+                'MAX(write_uid) AS write_uid, '
+                'MAX(write_date) AS write_date, '
+                'employee, '
+                'company, '
+                'COUNT(1) AS number, '
+                'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._converted_state()) + ') '
+                    'THEN 1 ELSE 0 END) AS converted, '
+                'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._lost_state()) + ') '
+                    'THEN 1 ELSE 0 END) AS lost, '
+                'SUM(amount) AS amount, '
+                'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._converted_state()) + ') '
+                    'THEN amount ELSE 0 END) AS converted_amount '
             'FROM "' + Opportunity._table + '" '
             'WHERE %s ' + clause +
             'GROUP BY employee, company', args)
@@ -628,33 +628,33 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
         type_id = FIELDS[cls.id._type].sql_type(cls.id)[0]
         type_year = FIELDS[cls.year._type].sql_type(cls.year)[0]
         return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
-                    'create_date, write_uid, write_date, '
-                    'CAST(year AS ' + type_year + ') AS year, month, company, '
-                    'number, converted, lost, amount, converted_amount '
-                'FROM ('
-                    'SELECT EXTRACT(MONTH FROM start_date) + '
-                            'EXTRACT(YEAR FROM start_date) * 100 AS id, '
-                        'MAX(create_uid) AS create_uid, '
-                        'MAX(create_date) AS create_date, '
-                        'MAX(write_uid) AS write_uid, '
-                        'MAX(write_date) AS write_date, '
-                        'EXTRACT(YEAR FROM start_date) AS year, '
-                        'EXTRACT(MONTH FROM start_date) AS month, '
-                        'company, '
-                        'COUNT(1) AS number, '
-                        'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._converted_state()) + ') '
-                        'THEN 1 ELSE 0 END) AS converted, '
-                        'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._lost_state()) + ') '
-                        'THEN 1 ELSE 0 END) AS lost, '
-                        'SUM(amount) AS amount, '
-                        'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._converted_state()) + ') '
-                        'THEN amount ELSE 0 END) AS converted_amount '
-                    'FROM "' + Opportunity._table + '" '
-                    'GROUP BY year, month, company) AS "' + cls._table + '"',
-                [])
+                'create_date, write_uid, write_date, '
+                'CAST(year AS ' + type_year + ') AS year, month, company, '
+                'number, converted, lost, amount, converted_amount '
+            'FROM ('
+                'SELECT EXTRACT(MONTH FROM start_date) + '
+                        'EXTRACT(YEAR FROM start_date) * 100 AS id, '
+                    'MAX(create_uid) AS create_uid, '
+                    'MAX(create_date) AS create_date, '
+                    'MAX(write_uid) AS write_uid, '
+                    'MAX(write_date) AS write_date, '
+                    'EXTRACT(YEAR FROM start_date) AS year, '
+                    'EXTRACT(MONTH FROM start_date) AS month, '
+                    'company, '
+                    'COUNT(1) AS number, '
+                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._converted_state()) + ') '
+                    'THEN 1 ELSE 0 END) AS converted, '
+                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._lost_state()) + ') '
+                    'THEN 1 ELSE 0 END) AS lost, '
+                    'SUM(amount) AS amount, '
+                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._converted_state()) + ') '
+                    'THEN amount ELSE 0 END) AS converted_amount '
+                'FROM "' + Opportunity._table + '" '
+                'GROUP BY year, month, company) AS "' + cls._table + '"',
+            [])
 
     def get_conversion_rate(self, name):
         if self.number:
@@ -723,36 +723,36 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
         type_id = FIELDS[cls.id._type].sql_type(cls.id)[0]
         type_year = FIELDS[cls.year._type].sql_type(cls.year)[0]
         return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
-                    'create_date, write_uid, write_date, '
-                    'CAST(year AS ' + type_year + ') AS year, month, '
-                    'employee, company, number, converted, lost, amount, '
-                    'converted_amount '
-                'FROM ('
-                    'SELECT EXTRACT(MONTH FROM start_date) + '
-                            'EXTRACT(YEAR FROM start_date) * 100 + '
-                            'employee * 1000000 AS id, '
-                        'MAX(create_uid) AS create_uid, '
-                        'MAX(create_date) AS create_date, '
-                        'MAX(write_uid) AS write_uid, '
-                        'MAX(write_date) AS write_date, '
-                        'EXTRACT(YEAR FROM start_date) AS year, '
-                        'EXTRACT(MONTH FROM start_date) AS month, '
-                        'employee, '
-                        'company, '
-                        'COUNT(1) AS number, '
-                        'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._converted_state()) + ') '
-                        'THEN 1 ELSE 0 END) AS converted, '
-                        'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._lost_state()) + ') '
-                        'THEN 1 ELSE 0 END) AS lost, '
-                        'SUM(amount) AS amount, '
-                        'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                        for x in cls._converted_state()) + ') '
-                        'THEN amount ELSE 0 END) AS converted_amount '
-                    'FROM "' + Opportunity._table + '" '
-                    'GROUP BY year, month, employee, company) '
-                'AS "' + cls._table + '"', [])
+                'create_date, write_uid, write_date, '
+                'CAST(year AS ' + type_year + ') AS year, month, '
+                'employee, company, number, converted, lost, amount, '
+                'converted_amount '
+            'FROM ('
+                'SELECT EXTRACT(MONTH FROM start_date) + '
+                        'EXTRACT(YEAR FROM start_date) * 100 + '
+                        'employee * 1000000 AS id, '
+                    'MAX(create_uid) AS create_uid, '
+                    'MAX(create_date) AS create_date, '
+                    'MAX(write_uid) AS write_uid, '
+                    'MAX(write_date) AS write_date, '
+                    'EXTRACT(YEAR FROM start_date) AS year, '
+                    'EXTRACT(MONTH FROM start_date) AS month, '
+                    'employee, '
+                    'company, '
+                    'COUNT(1) AS number, '
+                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._converted_state()) + ') '
+                    'THEN 1 ELSE 0 END) AS converted, '
+                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._lost_state()) + ') '
+                    'THEN 1 ELSE 0 END) AS lost, '
+                    'SUM(amount) AS amount, '
+                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
+                    for x in cls._converted_state()) + ') '
+                    'THEN amount ELSE 0 END) AS converted_amount '
+                'FROM "' + Opportunity._table + '" '
+                'GROUP BY year, month, employee, company) '
+            'AS "' + cls._table + '"', [])
 
     def get_conversion_rate(self, name):
         if self.number:
