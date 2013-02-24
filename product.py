@@ -28,22 +28,22 @@ class ProductCostHistory(ModelSQL, ModelView):
         Property = pool.get('ir.property')
         Field = pool.get('ir.model.field')
         return ('SELECT '
-                    'MAX(h.__id) AS id, '
-                    'MAX(h.create_uid) AS create_uid, '
-                    'MAX(h.create_date) AS create_date, '
-                    'MAX(h.write_uid) AS write_uid, '
-                    'MAX(h.write_date) AS write_date, '
-                    'COALESCE(h.write_date, h.create_date) AS date, '
-                    'CAST(TRIM(\',\' FROM SUBSTRING(h.res FROM \',.*\')) AS '
-                        'INTEGER) AS template, '
-                    'CAST(TRIM(\',\' FROM h.value) AS NUMERIC) AS cost_price '
-                'FROM "' + Property._table + '__history" h '
-                    'JOIN "' + Field._table + '" f ON (f.id = h.field) '
-                'WHERE f.name = \'cost_price\' '
-                    'AND h.res LIKE \'product.template,%%\' '
-                'GROUP BY h.id, COALESCE(h.write_date, h.create_date), h.res, '
-                    'h.value',
-                [])
+                'MAX(h.__id) AS id, '
+                'MAX(h.create_uid) AS create_uid, '
+                'MAX(h.create_date) AS create_date, '
+                'MAX(h.write_uid) AS write_uid, '
+                'MAX(h.write_date) AS write_date, '
+                'COALESCE(h.write_date, h.create_date) AS date, '
+                'CAST(TRIM(\',\' FROM SUBSTRING(h.res FROM \',.*\')) AS '
+                    'INTEGER) AS template, '
+                'CAST(TRIM(\',\' FROM h.value) AS NUMERIC) AS cost_price '
+            'FROM "' + Property._table + '__history" h '
+                'JOIN "' + Field._table + '" f ON (f.id = h.field) '
+            'WHERE f.name = \'cost_price\' '
+                'AND h.res LIKE \'product.template,%%\' '
+            'GROUP BY h.id, COALESCE(h.write_date, h.create_date), h.res, '
+                'h.value',
+            [])
 
 
 class OpenProductCostHistory(Wizard):
