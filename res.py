@@ -15,8 +15,8 @@ class User:
     def __setup__(cls):
         super(User, cls).__setup__()
         cls._error_messages.update({
-                'set_passwd_ldap_user': \
-                    'You can not set a password to a ldap user!',
+                'set_passwd_ldap_user': (
+                    'You can not set a password to a ldap user!'),
                 })
 
     @staticmethod
