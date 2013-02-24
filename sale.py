@@ -173,12 +173,12 @@ class Sale(Workflow, ModelSQL, ModelView):
                 'wrong_method': 'Wrong combination of method!',
                 'addresses_required': 'Invoice and Shipment addresses must be '
                 'defined for the quotation.',
-                'warehouse_required': 'Warehouse must be defined for the ' \
-                    'quotation.',
+                'warehouse_required': ('Warehouse must be defined for the '
+                    'quotation.'),
                 'missing_account_receivable': 'It misses '
                 'an "Account Receivable" on the party "%s"!',
-                'delete_cancel': 'Sale "%s" must be cancelled ' \
-                    'before deletion!',
+                'delete_cancel': ('Sale "%s" must be cancelled '
+                    'before deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'quotation'),
@@ -670,7 +670,6 @@ class Sale(Workflow, ModelSQL, ModelView):
         '''
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        SaleLine = pool.get('sale.line')
         if self.invoice_method == 'manual':
             return
 
@@ -728,7 +727,6 @@ class Sale(Workflow, ModelSQL, ModelView):
         Create and return shipments of type shipment_type
         '''
         pool = Pool()
-        SaleLine = pool.get('sale.line')
 
         if self.shipment_method == 'manual':
             return
@@ -738,11 +736,9 @@ class Sale(Workflow, ModelSQL, ModelView):
             return
         if shipment_type == 'out':
             keyfunc = partial(self._group_shipment_key, moves.values())
-            move_shipment_key = 'shipment_out'
             Shipment = pool.get('stock.shipment.out')
         elif shipment_type == 'return':
             keyfunc = partial(self._group_return_key, moves.values())
-            move_shipment_key = 'shipment_out_return'
             Shipment = pool.get('stock.shipment.out.return')
         moves = moves.items()
         moves = sorted(moves, key=keyfunc)

@@ -25,10 +25,10 @@ requires = []
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res|webdav)(\W|$)', dep):
         requires.append('trytond_%s >= %s.%s, < %s.%s' %
-                (dep, major_version, minor_version, major_version,
-                    minor_version + 1))
+            (dep, major_version, minor_version, major_version,
+                minor_version + 1))
 requires.append('trytond >= %s.%s, < %s.%s' %
-        (major_version, minor_version, major_version, minor_version + 1))
+    (major_version, minor_version, major_version, minor_version + 1))
 
 tests_require = ['proteus >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1)]
@@ -39,16 +39,16 @@ setup(name='trytond_sale',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.sale': '.'},
     packages=[
         'trytond.modules.sale',
         'trytond.modules.sale.tests',
         ],
     package_data={
-        'trytond.modules.sale': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po', 'sale.odt', 'tests/*.rst'],
+        'trytond.modules.sale': (info.get('xml', [])
+            + ['tryton.cfg', 'locale/*.po', 'sale.odt', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
