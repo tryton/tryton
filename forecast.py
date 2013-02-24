@@ -66,10 +66,10 @@ class Forecast(Workflow, ModelSQL, ModelView):
             ('check_date_overlap', 'date_overlap'),
             ]
         cls._error_messages.update({
-                'date_overlap': 'You can not create forecasts for the same ' \
-                    'locations with overlapping dates',
-                'delete_cancel': 'Forecast "%s" must be cancelled before '\
-                    'deletion!',
+                'date_overlap': ('You can not create forecasts for the same '
+                    'locations with overlapping dates'),
+                'delete_cancel': ('Forecast "%s" must be cancelled before '
+                    'deletion!'),
                 })
         cls._order.insert(0, ('from_date', 'DESC'))
         cls._order.insert(1, ('warehouse', 'ASC'))
@@ -156,21 +156,21 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cursor = Transaction().cursor
         if self.state != 'done':
             return True
-        cursor.execute('SELECT id ' \
-                'FROM stock_forecast ' \
-                'WHERE ((from_date <= %s AND to_date >= %s) ' \
-                        'OR (from_date <= %s AND to_date >= %s) ' \
-                        'OR (from_date >= %s AND to_date <= %s)) ' \
-                    'AND warehouse = %s ' \
-                    'AND destination = %s ' \
-                    'AND state = \'done\' ' \
-                    'AND company = %s '
-                    'AND id != %s',
-                (self.from_date, self.from_date,
-                 self.to_date, self.to_date,
-                 self.from_date, self.to_date,
-                 self.warehouse.id, self.destination.id,
-                 self.company.id, self.id))
+        cursor.execute('SELECT id '
+            'FROM stock_forecast '
+            'WHERE ((from_date <= %s AND to_date >= %s) '
+                    'OR (from_date <= %s AND to_date >= %s) '
+                    'OR (from_date >= %s AND to_date <= %s)) '
+                'AND warehouse = %s '
+                'AND destination = %s '
+                'AND state = \'done\' '
+                'AND company = %s '
+                'AND id != %s',
+            (self.from_date, self.from_date,
+             self.to_date, self.to_date,
+             self.from_date, self.to_date,
+             self.warehouse.id, self.destination.id,
+             self.company.id, self.id))
         rowcount = cursor.rowcount
         if rowcount == -1 or rowcount is None:
             rowcount = len(cursor.fetchall())
