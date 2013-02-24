@@ -24,8 +24,8 @@ class Move:
                     'FIFO quantity can not be greater than quantity!'),
                 ]
         cls._error_messages.update({
-                'del_move_fifo': 'You can not delete move that is used '\
-                    'for FIFO cost price!',
+                'del_move_fifo': ('You can not delete move that is used '
+                    'for FIFO cost price!'),
                 })
 
     @staticmethod
