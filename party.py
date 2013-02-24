@@ -34,8 +34,8 @@ class Party(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, select=True,
         states=STATES, depends=DEPENDS)
     code = fields.Char('Code', required=True, select=True,
-        order_field="%(table)s.code_length %(order)s, " \
-            "%(table)s.code %(order)s",
+        order_field=("%(table)s.code_length %(order)s, "
+            "%(table)s.code %(order)s"),
         states={
             'readonly': Eval('code_readonly', True),
             },
@@ -231,7 +231,7 @@ class Party(ModelSQL, ModelView):
         if not self.vat_country:
             return True
 
-        if not getattr(vatnumber, 'check_vat_' + \
+        if not getattr(vatnumber, 'check_vat_' +
                 self.vat_country.lower())(vat_number):
 
             #Check if user doesn't have put country code in number
@@ -292,9 +292,9 @@ class CheckVIES(Wizard):
     def __setup__(cls):
         super(CheckVIES, cls).__setup__()
         cls._error_messages.update({
-            'vies_unavailable': 'The VIES service is unavailable, ' \
-                    'try again later.',
-            })
+                'vies_unavailable': ('The VIES service is unavailable, '
+                    'try again later.'),
+                })
 
     def transition_check(self):
         Party = Pool().get('party.party')
