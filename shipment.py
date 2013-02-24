@@ -127,12 +127,12 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         super(ShipmentIn, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'incoming_move_input_dest': 'Incoming Moves must have ' \
-                    'the warehouse input location as destination location!',
-                'inventory_move_input_source': 'Inventory Moves must ' \
-                    'have the warehouse input location as source location!',
-                'delete_cancel': 'Supplier Shipment "%s" must be cancelled '\
-                    'before deletion!',
+                'incoming_move_input_dest': ('Incoming Moves must have '
+                    'the warehouse input location as destination location!'),
+                'inventory_move_input_source': ('Inventory Moves must '
+                    'have the warehouse input location as source location!'),
+                'delete_cancel': ('Supplier Shipment "%s" must be cancelled '
+                    'before deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'received'),
@@ -160,20 +160,20 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model_data "\
-                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
-                "WHERE fs_id like '%%packing%%' AND module = %s",
-                (module_name,))
-        cursor.execute("UPDATE ir_model "\
-                "SET model = REPLACE(model, 'packing', 'shipment') "\
-                "WHERE model like '%%packing%%' AND module = %s",
-                (module_name,))
-        cursor.execute("UPDATE ir_model_field "\
-                "SET relation = REPLACE(relation, 'packing', 'shipment'), "\
-                    "name = REPLACE(name, 'packing', 'shipment') "
-                "WHERE (relation like '%%packing%%' "\
-                    "OR name like '%%packing%%') AND module = %s",
-                (module_name,))
+        cursor.execute("UPDATE ir_model_data "
+            "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "
+            "WHERE fs_id like '%%packing%%' AND module = %s",
+            (module_name,))
+        cursor.execute("UPDATE ir_model "
+            "SET model = REPLACE(model, 'packing', 'shipment') "
+            "WHERE model like '%%packing%%' AND module = %s",
+            (module_name,))
+        cursor.execute("UPDATE ir_model_field "
+            "SET relation = REPLACE(relation, 'packing', 'shipment'), "
+                "name = REPLACE(name, 'packing', 'shipment') "
+            "WHERE (relation like '%%packing%%' "
+                "OR name like '%%packing%%') AND module = %s",
+            (module_name,))
 
         old_table = 'stock_packing_in'
         if TableHandler.table_exist(cursor, old_table):
@@ -356,7 +356,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         res['quantity'] = incoming_move.quantity
         res['from_location'] = incoming_move.to_location.id
         res['to_location'] = incoming_move.shipment_in.warehouse.\
-                storage_location.id
+            storage_location.id
         res['state'] = 'draft'
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -487,8 +487,8 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         super(ShipmentInReturn, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'delete_cancel': 'Supplier Return Shipment "%s" must be '\
-                    'cancelled before deletion!',
+                'delete_cancel': ('Supplier Return Shipment "%s" must be '
+                    'cancelled before deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -814,8 +814,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         super(ShipmentOut, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'delete_cancel': 'Customer Shipment "%s" must be cancelled '\
-                    'before deletion!',
+                'delete_cancel': ('Customer Shipment "%s" must be cancelled '
+                    'before deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -1015,8 +1015,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 if move.state in ('cancel', 'done'):
                     continue
                 to_create.append({
-                        'from_location': \
-                            move.shipment_out.warehouse.storage_location.id,
+                        'from_location': (
+                            move.shipment_out.warehouse.storage_location.id),
                         'to_location': move.from_location.id,
                         'product': move.product.id,
                         'uom': move.uom.id,
@@ -1327,8 +1327,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         super(ShipmentOutReturn, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'delete_cancel': 'Customer Return Shipment "%s" must be '\
-                    'cancelled before deletion!',
+                'delete_cancel': ('Customer Return Shipment "%s" must be '
+                    'cancelled before deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'received'),
@@ -1587,7 +1587,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         res['quantity'] = incoming_move.quantity
         res['from_location'] = incoming_move.to_location.id
         res['to_location'] = incoming_move.shipment_out_return.warehouse.\
-                storage_location.id
+            storage_location.id
         res['state'] = 'draft'
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -1724,8 +1724,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         super(ShipmentInternal, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'delete_cancel': 'Internal Shipment "%s" must be cancelled '\
-                    'before deletion!',
+                'delete_cancel': ('Internal Shipment "%s" must be cancelled '
+                    'before deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -1862,10 +1862,10 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             Move.write([m for m in shipment.moves
                     if m.state != 'done'], {
-                'from_location': shipment.from_location.id,
-                'to_location': shipment.to_location.id,
-                'planned_date': shipment.planned_date,
-                })
+                    'from_location': shipment.from_location.id,
+                    'to_location': shipment.to_location.id,
+                    'planned_date': shipment.planned_date,
+                    })
 
     @classmethod
     @Workflow.transition('assigned')
@@ -2052,7 +2052,8 @@ class CreateShipmentOutReturn(Wizard):
                         'quantity': move.quantity,
                         'uom': move.uom.id,
                         'from_location': move.to_location.id,
-                        'to_location': shipment_out.warehouse.input_location.id,
+                        'to_location': (
+                            shipment_out.warehouse.input_location.id),
                         'company': move.company.id,
                         })
             if moves_to_create:
@@ -2081,7 +2082,7 @@ class DeliveryNote(CompanyReport):
     @classmethod
     def parse(cls, report, objects, data, localcontext):
         localcontext['product_name'] = lambda product_id, language: \
-                cls.product_name(product_id, language)
+            cls.product_name(product_id, language)
         return super(DeliveryNote, cls).parse(report, objects, data,
                 localcontext)
 

@@ -52,8 +52,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
         super(Inventory, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
         cls._error_messages.update({
-                'delete_cancel': 'Inventory "%s" must be cancelled before ' \
-                    'deletion!',
+                'delete_cancel': ('Inventory "%s" must be cancelled before '
+                    'deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'done'),

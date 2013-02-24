@@ -123,28 +123,28 @@ class Move(Workflow, ModelSQL, ModelView):
                 'CHECK(from_location != to_location)',
                 'Source and destination location must be different'),
             ('check_shipment',
-                'CHECK((COALESCE(shipment_in, 0) / COALESCE(shipment_in, 1) ' \
-                        '+ COALESCE(shipment_out, 0) / ' \
-                            'COALESCE(shipment_out, 1) ' \
-                        '+ COALESCE(shipment_internal, 0) / ' \
-                            'COALESCE(shipment_internal, 1) ' \
-                        '+ COALESCE(shipment_in_return, 0) / ' \
-                            'COALESCE(shipment_in_return, 1) ' \
-                        '+ COALESCE(shipment_out_return, 0) / ' \
-                            'COALESCE(shipment_out_return, 1)) ' \
-                        '<= 1)',
+                ('CHECK((COALESCE(shipment_in, 0) / COALESCE(shipment_in, 1) '
+                    '+ COALESCE(shipment_out, 0) / '
+                        'COALESCE(shipment_out, 1) '
+                    '+ COALESCE(shipment_internal, 0) / '
+                        'COALESCE(shipment_internal, 1) '
+                    '+ COALESCE(shipment_in_return, 0) / '
+                        'COALESCE(shipment_in_return, 1) '
+                    '+ COALESCE(shipment_out_return, 0) / '
+                        'COALESCE(shipment_out_return, 1)) '
+                    '<= 1)'),
                 'Move can be on only one Shipment'),
-        ]
+            ]
         cls._constraints += [
             ('check_period_closed', 'period_closed'),
-        ]
+            ]
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
             'set_state_draft': 'You can not set state to draft!',
             'set_state_assigned': 'You can not set state to assigned!',
             'set_state_done': 'You can not set state to done!',
-            'del_draft_cancel': 'You can only delete draft ' \
-                'or cancelled moves!',
+            'del_draft_cancel': ('You can only delete draft '
+                'or cancelled moves!'),
             'period_closed': 'You can not modify move in closed period!',
             'modify_assigned_done_cancel': ('You can not modify a move '
                 'in the state: "Assigned", "Done" or "Cancel"'),
@@ -501,7 +501,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def delete(cls, moves):
         for move in moves:
-            if move.state not in  ('draft', 'cancel'):
+            if move.state not in ('draft', 'cancel'):
                 cls.raise_user_error('del_draft_cancel')
         super(Move, cls).delete(moves)
 

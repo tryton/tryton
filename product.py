@@ -36,9 +36,9 @@ class Template:
     def __setup__(cls):
         super(Template, cls).__setup__()
         cls._error_messages.update({
-                'change_default_uom': 'You cannot change the default uom for '\
-                    'a product which is associated to stock moves.',
-            })
+                'change_default_uom': ('You cannot change the default uom for '
+                    'a product which is associated to stock moves.'),
+                })
         cls.cost_price.states['required'] = Or(
             cls.cost_price.states.get('required', True),
             Eval('type').in_(['goods', 'assets']))
@@ -100,7 +100,7 @@ class Product:
         with Transaction().set_context(context):
             pbl = cls.products_by_location(
                 location_ids=Transaction().context['locations'],
-                product_ids=[p.id for p in products], with_childs=True)
+                product_ids=quantities.keys(), with_childs=True)
 
         for location in Transaction().context['locations']:
             for product in products:
@@ -111,7 +111,7 @@ class Product:
     def _search_quantity_eval_domain(line, domain):
         field, operator, operand = domain
         value = line.get(field)
-        if value == None:
+        if value is None:
             return False
         if operator not in ("=", ">=", "<=", ">", "<", "!="):
             return False
@@ -238,20 +238,20 @@ class Product:
         if (context['stock_date_end'] < today
                 or (context['stock_date_end'] == today
                     and not context.get('forecast'))):
-            state_date_clause = \
-                '('\
-                    '(state in (%s, %s)) '\
-                'AND '\
-                    '('\
-                        '('\
-                            '(effective_date IS NULL) '\
-                        'AND ' \
-                            '(planned_date <= %s) '\
-                        ') '\
-                    'OR '\
-                        '(effective_date <= %s)'\
-                    ')'\
-                ')'
+            state_date_clause = (
+                '('
+                    '(state in (%s, %s)) '
+                'AND '
+                    '('
+                        '('
+                            '(effective_date IS NULL) '
+                        'AND '
+                            '(planned_date <= %s) '
+                        ') '
+                    'OR '
+                        '(effective_date <= %s)'
+                    ')'
+                ')')
             state_date_vals = ["done",
                     context.get('stock_assign') and 'assigned' or 'done',
                     context['stock_date_end'],
@@ -261,42 +261,42 @@ class Product:
         # before today, or on all state and date between today and
         # date_end.
         else:
-            state_date_clause = \
-                '(' \
-                    '('\
-                        '(state in (%s, %s)) '\
-                    'AND '\
-                        '('\
-                            '('\
-                                '(effective_date IS NULL) '\
-                            'AND ' \
-                                '(planned_date <= %s) '\
-                            ') '\
-                        'OR '\
-                            '(effective_date <= %s)' \
-                        ')'\
-                    ')'\
-                'OR '\
-                    '('\
-                        '(state in (%s, %s, %s)) '\
-                    'AND '\
-                        '('\
-                            '(' \
-                                '(effective_date IS NULL) '\
-                            'AND '\
-                                '(planned_date <= %s) '\
-                            'AND '\
-                                '(planned_date >= %s)'\
-                            ')'\
-                        'OR '\
-                            '(' \
-                                '(effective_date <= %s) '\
-                            'AND '\
-                                '(effective_date >= %s)'\
-                            ')'\
-                        ')'\
-                    ')'\
-                ')'
+            state_date_clause = (
+                '('
+                    '('
+                        '(state in (%s, %s)) '
+                    'AND '
+                        '('
+                            '('
+                                '(effective_date IS NULL) '
+                            'AND '
+                                '(planned_date <= %s) '
+                            ') '
+                        'OR '
+                            '(effective_date <= %s)'
+                        ')'
+                    ')'
+                'OR '
+                    '('
+                        '(state in (%s, %s, %s)) '
+                    'AND '
+                        '('
+                            '('
+                                '(effective_date IS NULL) '
+                            'AND '
+                                '(planned_date <= %s) '
+                            'AND '
+                                '(planned_date >= %s)'
+                            ')'
+                        'OR '
+                            '('
+                                '(effective_date <= %s) '
+                            'AND '
+                                '(effective_date >= %s)'
+                            ')'
+                        ')'
+                    ')'
+                ')')
 
             state_date_vals = [
                 'done', context.get('stock_assign') and 'assigned' or 'done',
@@ -307,74 +307,74 @@ class Product:
                 ]
 
         if context.get('stock_date_start'):
-            if  context['stock_date_start'] > today:
-                state_date_clause += 'AND '\
-                        '('\
-                            '(state in (%s, %s, %s)) '\
-                        'AND '\
-                            '('\
-                                '('\
-                                    '(effective_date IS NULL) '\
-                                'AND '\
-                                    '('\
-                                        '(planned_date >= %s) '\
-                                    'OR '\
-                                        '(planned_date IS NULL)'\
-                                    ')'\
-                                ') '\
-                            'OR '\
-                                '(effective_date >= %s)'\
-                            ')'\
+            if context['stock_date_start'] > today:
+                state_date_clause += ('AND '
+                    '('
+                        '(state in (%s, %s, %s)) '
+                    'AND '
+                        '('
+                            '('
+                                '(effective_date IS NULL) '
+                            'AND '
+                                '('
+                                    '(planned_date >= %s) '
+                                'OR '
+                                    '(planned_date IS NULL)'
+                                ')'
+                            ') '
+                        'OR '
+                            '(effective_date >= %s)'
                         ')'
+                    ')')
                 state_date_vals.extend(['done', 'assigned', 'draft',
                      context['stock_date_start'], context['stock_date_start']])
             else:
-                state_date_clause += 'AND '\
-                        '('\
-                            '('\
-                                '(state in (%s, %s, %s)) '\
-                            'AND '\
-                                '('\
-                                    '('\
-                                        '(effective_date IS NULL) '\
-                                    'AND '\
-                                        '('\
-                                            '(planned_date >= %s) '\
-                                        'OR '\
-                                            '(planned_date IS NULL)'\
-                                        ') '\
-                                    ')'\
-                                'OR '\
-                                    '(effective_date >= %s)'\
-                                ')'\
-                            ') '\
-                        'OR '\
-                            '('\
-                                '(state in (%s, %s)) '\
-                            'AND '\
-                                '('\
-                                    '('\
-                                        '(effective_date IS NULL) '\
-                                    'AND '\
-                                        '('\
-                                            '('\
-                                                '(planned_date >= %s) '\
-                                            'AND '\
-                                                '(planned_date < %s)'\
-                                            ') '\
-                                        'OR '\
-                                            '(planned_date IS NULL)'\
-                                        ')'\
-                                    ') '\
-                                'OR '\
-                                    '('\
-                                        '(effective_date >= %s) '\
-                                    'AND '\
-                                        '(effective_date < %s)'\
-                                    ')'\
-                                ')'\
-                            ')'\
+                state_date_clause += ('AND '
+                    '('
+                        '('
+                            '(state in (%s, %s, %s)) '
+                        'AND '
+                            '('
+                                '('
+                                    '(effective_date IS NULL) '
+                                'AND '
+                                    '('
+                                        '(planned_date >= %s) '
+                                    'OR '
+                                        '(planned_date IS NULL)'
+                                    ') '
+                                ')'
+                            'OR '
+                                '(effective_date >= %s)'
+                            ')'
+                        ') '
+                    'OR '
+                        '('
+                            '(state in (%s, %s)) '
+                        'AND '
+                            '('
+                                '('
+                                    '(effective_date IS NULL) '
+                                'AND '
+                                    '('
+                                        '('
+                                            '(planned_date >= %s) '
+                                        'AND '
+                                            '(planned_date < %s)'
+                                        ') '
+                                    'OR '
+                                        '(planned_date IS NULL)'
+                                    ')'
+                                ') '
+                            'OR '
+                                '('
+                                    '(effective_date >= %s) '
+                                'AND '
+                                    '(effective_date < %s)'
+                                ')'
+                            ')'
                         ')'
+                    ')')
 
                 state_date_vals.extend(['done', 'assigned', 'draft',
                     today, today,
@@ -417,12 +417,12 @@ class Product:
         else:
             where_clause += "AND product_template.active = %s"
             where_vals.append(True)
-            product_template_join = \
-                    "JOIN product_product "\
-                        "ON (stock_move.product = product_product.id) "\
-                    "JOIN product_template "\
-                        "ON (product_product.template = "\
-                            "product_template.id) "
+            product_template_join = (
+                "JOIN product_product "
+                    "ON (stock_move.product = product_product.id) "
+                "JOIN product_template "
+                    "ON (product_product.template = "
+                        "product_template.id) ")
             product_template_join_period = (
                 "JOIN product_product "
                     "ON (stock_period_cache.product = product_product.id) "
@@ -480,8 +480,8 @@ class Product:
             state_date_clause,
             where_clause + move_rule_query + dest_clause_to,
             period_clause, where_clause + dest_clause_period),
-            state_date_vals + where_vals + move_rule_val + dest_vals + \
-            state_date_vals + where_vals + move_rule_val + dest_vals + \
+            state_date_vals + where_vals + move_rule_val + dest_vals +
+            state_date_vals + where_vals + move_rule_val + dest_vals +
             period_vals + where_vals + dest_vals)
         raw_lines = cursor.fetchall()
 
@@ -562,10 +562,10 @@ class ProductByLocationStart(ModelView):
     'Product by Location'
     __name__ = 'product.by_location.start'
     forecast_date = fields.Date(
-        'At Date', help='Allow to compute expected '\
-            'stock quantities for this date.\n'\
-            '* An empty value is an infinite date in the future.\n'\
-            '* A date in the past will provide historical values.')
+        'At Date', help=('Allow to compute expected '
+            'stock quantities for this date.\n'
+            '* An empty value is an infinite date in the future.\n'
+            '* A date in the past will provide historical values.'))
 
     @staticmethod
     def default_forecast_date():

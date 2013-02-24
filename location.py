@@ -100,12 +100,13 @@ class Location(ModelSQL, ModelView):
             ('check_type_for_moves', 'invalid_type_for_moves'),
             ]
         cls._error_messages.update({
-                'recursive_locations': \
-                    'You can not create recursive locations!',
-                'invalid_type_for_moves': 'A location with existing moves ' \
-                    'cannot be changed to a type that does not support moves.',
-                'child_of_warehouse': 'Location "%s" must be a child of ' \
-                    'warehouse "%s"!',
+                'recursive_locations': (
+                    'You can not create recursive locations!'),
+                'invalid_type_for_moves': ('A location with existing moves '
+                    'cannot be changed to a type '
+                    'that does not support moves.'),
+                'child_of_warehouse': ('Location "%s" must be a child of '
+                    'warehouse "%s"!'),
                 })
 
     @classmethod
@@ -335,10 +336,10 @@ class ProductsByLocationsStart(ModelView):
     'Products by Locations'
     __name__ = 'stock.products_by_locations.start'
     forecast_date = fields.Date(
-        'At Date', help='Allow to compute expected '\
-            'stock quantities for this date.\n'\
-            '* An empty value is an infinite date in the future.\n'\
-            '* A date in the past will provide historical values.')
+        'At Date', help=('Allow to compute expected '
+            'stock quantities for this date.\n'
+            '* An empty value is an infinite date in the future.\n'
+            '* A date in the past will provide historical values.'))
 
     @staticmethod
     def default_forecast_date():

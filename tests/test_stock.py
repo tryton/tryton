@@ -290,7 +290,7 @@ class StockTestCase(unittest.TestCase):
                         'from_location': supplier.id,
                         'to_location': storage.id,
                         'planned_date': today + relativedelta(days=-5),
-                        'effective_date': (today 
+                        'effective_date': (today
                             + relativedelta(days=-5)),
                         'company': company.id,
                         'unit_price': Decimal('1'),
@@ -392,7 +392,7 @@ class StockTestCase(unittest.TestCase):
                 })
 
             today = datetime.date.today()
-            
+
             moves = self.move.create([{
                         'product': product.id,
                         'uom': unit.id,

@@ -19,8 +19,8 @@ class Period(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
-        ])
+                Get(Eval('context', {}), 'company', 0)),
+            ])
     caches = fields.One2Many('stock.period.cache', 'period', 'Caches')
     state = fields.Selection([
         ('draft', 'Draft'),
