@@ -28,7 +28,7 @@ class OrderPoint:
         if type == 'production':
             return 'warehouse_location'
         result = super(OrderPoint, cls)._type2field(type=type)
-        if type == None:
+        if type is None:
             result['production'] = 'warehouse_location'
         return result
 
