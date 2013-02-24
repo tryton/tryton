@@ -30,7 +30,7 @@ def decistmt(s):
     result = []
     # tokenize the string
     g = tokenize.generate_tokens(StringIO(s).readline)
-    for toknum, tokval, _, _, _  in g:
+    for toknum, tokval, _, _, _ in g:
         # replace NUMBER tokens
         if toknum == tokenize.NUMBER and '.' in tokval:
             result.extend([
@@ -125,8 +125,8 @@ class PriceListLine(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits',
         on_change_with=['product']), 'on_change_with_unit_digits')
     formula = fields.Char('Formula', required=True,
-            help='Python expression that will be evaluated with:\n' \
-                    '- unit_price: the original unit_price')
+        help=('Python expression that will be evaluated with:\n'
+            '- unit_price: the original unit_price'))
 
     @classmethod
     def __setup__(cls):
