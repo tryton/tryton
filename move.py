@@ -322,6 +322,9 @@ class Move(ModelSQL, ModelView):
             if move.id not in amounts:
                 continue
             amount = amounts[move.id]
+            # SQLite uses float for SUM
+            if not isinstance(amount, Decimal):
+                amount = Decimal(amount)
             draft_lines = MoveLine.browse(
                 list(move2draft_lines.get(move.id, [])))
             if not company.currency.is_zero(amount):
