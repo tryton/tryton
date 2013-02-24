@@ -22,8 +22,8 @@ class Category(ModelSQL, ModelView):
             ('check_recursion', 'recursive_categories'),
             ]
         cls._error_messages.update({
-                'recursive_categories': \
-                    'You can not create recursive categories!',
+                'recursive_categories': (
+                    'You can not create recursive categories!'),
                 })
 
     def get_rec_name(self, name):

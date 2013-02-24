@@ -36,12 +36,12 @@ class Uom(ModelSQL, ModelView):
         required=True, ondelete='RESTRICT', states=STATES, depends=DEPENDS)
     rate = fields.Float('Rate', digits=(12, 12), required=True,
         on_change=['rate'], states=STATES, depends=DEPENDS,
-        help='The coefficient for the formula:\n' \
-            '1 (base unit) = coef (this unit)')
+        help=('The coefficient for the formula:\n'
+            '1 (base unit) = coef (this unit)'))
     factor = fields.Float('Factor', digits=(12, 12), states=STATES,
         on_change=['factor'], required=True, depends=DEPENDS,
-        help='The coefficient for the formula:\n' \
-            'coef (base unit) = 1 (this unit)')
+        help=('The coefficient for the formula:\n'
+            'coef (base unit) = 1 (this unit)'))
     rounding = fields.Float('Rounding Precision', digits=(12, 12),
         required=True, states=STATES, depends=DEPENDS)
     digits = fields.Integer('Display Digits', required=True)
@@ -51,9 +51,9 @@ class Uom(ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.6: corrected misspelling of ounce (was once)
-        cursor.execute("UPDATE ir_model_data "\
-                "SET fs_id = REPLACE(fs_id, 'uom_once', 'uom_ounce') "\
-                "WHERE fs_id = 'uom_once' AND module = 'product'")
+        cursor.execute("UPDATE ir_model_data "
+            "SET fs_id = REPLACE(fs_id, 'uom_once', 'uom_ounce') "
+            "WHERE fs_id = 'uom_once' AND module = 'product'")
         super(Uom, cls).__register__(module_name)
 
     @classmethod
@@ -68,11 +68,11 @@ class Uom(ModelSQL, ModelView):
             ]
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
-                'change_uom_rate_title': 'You cannot change Rate, Factor or ' \
-                    'Category on a Unit of Measure. ',
-                'change_uom_rate': 'If the UOM is still not used, you can ' \
-                    'delete it otherwise you can deactivate it ' \
-                    'and create a new one.',
+                'change_uom_rate_title': ('You cannot change Rate, Factor or '
+                    'Category on a Unit of Measure. '),
+                'change_uom_rate': ('If the UOM is still not used, you can '
+                    'delete it otherwise you can deactivate it '
+                    'and create a new one.'),
                 'invalid_factor_and_rate': 'Invalid Factor and Rate values!',
                 })
 
@@ -152,8 +152,8 @@ class Uom(ModelSQL, ModelView):
             super(Uom, cls).write(uoms, values)
             return
 
-        old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id)) \
-                           for uom in uoms)
+        old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id))
+            for uom in uoms)
 
         super(Uom, cls).write(uoms, values)
 
