@@ -143,12 +143,12 @@ class Purchase(Workflow, ModelSQL, ModelView):
         cls._error_messages.update({
                 'invoice_addresse_required': 'Invoice addresses must be '
                 'defined for the quotation.',
-                'warehouse_required': 'A warehouse must be defined for the ' \
-                    'quotation.',
-                'missing_account_payable': 'It misses ' \
-                        'an "Account Payable" on the party "%s"!',
-                'delete_cancel': 'Purchase "%s" must be cancelled before '\
-                    'deletion!',
+                'warehouse_required': ('A warehouse must be defined for the '
+                    'quotation.'),
+                'missing_account_payable': ('It misses '
+                    'an "Account Payable" on the party "%s"!'),
+                'delete_cancel': ('Purchase "%s" must be cancelled before '
+                    'deletion!'),
                 })
         cls._transitions |= set((
                 ('draft', 'quotation'),
@@ -195,16 +195,16 @@ class Purchase(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model_data "\
-                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
-                "WHERE fs_id like '%%packing%%' AND module = %s",
-                (module_name,))
-        cursor.execute("UPDATE ir_model_field "\
-                "SET relation = REPLACE(relation, 'packing', 'shipment'), "\
-                    "name = REPLACE(name, 'packing', 'shipment') "
-                "WHERE (relation like '%%packing%%' "\
-                    "OR name like '%%packing%%') AND module = %s",
-                (module_name,))
+        cursor.execute("UPDATE ir_model_data "
+            "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "
+            "WHERE fs_id like '%%packing%%' AND module = %s",
+            (module_name,))
+        cursor.execute("UPDATE ir_model_field "
+            "SET relation = REPLACE(relation, 'packing', 'shipment'), "
+                "name = REPLACE(name, 'packing', 'shipment') "
+            "WHERE (relation like '%%packing%%' "
+                "OR name like '%%packing%%') AND module = %s",
+            (module_name,))
         table = TableHandler(cursor, cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
 
@@ -212,9 +212,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
         # Migration from 1.2: rename packing to shipment in
         # invoice_method values
-        cursor.execute("UPDATE " + cls._table + " "\
-                "SET invoice_method = 'shipment' "\
-                "WHERE invoice_method = 'packing'")
+        cursor.execute("UPDATE " + cls._table + " "
+            "SET invoice_method = 'shipment' "
+            "WHERE invoice_method = 'packing'")
 
         table = TableHandler(cursor, cls, module_name)
         # Migration from 2.2: warehouse is no more required
@@ -620,7 +620,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
         '''
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        PurchaseLine = pool.get('purchase.line')
 
         if self.invoice_method == 'manual':
             return
@@ -897,12 +896,13 @@ class PurchaseLine(ModelSQL, ModelView):
         super(PurchaseLine, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-            'supplier_location_required': 'The supplier location is required!',
-            'missing_account_expense': 'It misses ' \
-                    'an "Account Expense" on product "%s"!',
-            'missing_account_expense_property': 'It misses ' \
-                    'an "account expense" default property!',
-            })
+                'supplier_location_required': (
+                    'The supplier location is required!'),
+                'missing_account_expense': ('It misses '
+                    'an "Account Expense" on product "%s"!'),
+                'missing_account_expense_property': ('It misses '
+                    'an "account expense" default property!'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -912,8 +912,8 @@ class PurchaseLine(ModelSQL, ModelView):
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
-            cursor.execute('UPDATE "' + cls._table + '" ' \
-                    'SET note = comment')
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET note = comment')
             table.drop_column('comment', exception=True)
 
         # Migration from 2.4: drop required on sequence
@@ -1300,9 +1300,9 @@ class Template:
     def __setup__(cls):
         super(Template, cls).__setup__()
         cls._error_messages.update({
-                'change_purchase_uom': 'Purchase prices are based ' \
-                    'on the purchase uom, are you sure to change it?',
-            })
+                'change_purchase_uom': ('Purchase prices are based '
+                    'on the purchase uom, are you sure to change it?'),
+                })
         required = ~Eval('account_category') & Eval('purchasable', False)
         if not cls.account_expense.states.get('required'):
             cls.account_expense.states['required'] = required
@@ -1556,9 +1556,9 @@ class ShipmentIn:
             cls.incoming_moves.depends.append('supplier')
 
         cls._error_messages.update({
-                'reset_move': 'You cannot reset to draft a move generated '\
-                    'by a purchase.',
-            })
+                'reset_move': ('You cannot reset to draft a move generated '
+                    'by a purchase.'),
+                })
 
     @classmethod
     def write(cls, shipments, vals):
@@ -1605,8 +1605,8 @@ class ShipmentInReturn:
     def __setup__(cls):
         super(ShipmentInReturn, cls).__setup__()
         cls._error_messages.update({
-                'reset_move': 'You cannot reset to draft a move generated '\
-                    'by a purchase.',
+                'reset_move': ('You cannot reset to draft a move generated '
+                    'by a purchase.'),
                 })
 
     @classmethod
@@ -1809,8 +1809,8 @@ class HandleShipmentExceptionAsk(ModelView):
     recreate_moves = fields.Many2Many(
         'stock.move', None, None, 'Recreate Moves',
         domain=[('id', 'in', Eval('domain_moves'))], depends=['domain_moves'],
-        help='The selected moves will be recreated. '\
-            'The other ones will be ignored.')
+        help=('The selected moves will be recreated. '
+            'The other ones will be ignored.'))
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
 
@@ -1818,10 +1818,10 @@ class HandleShipmentExceptionAsk(ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model "\
-                "SET model = REPLACE(model, 'packing', 'shipment') "\
-                "WHERE model like '%%packing%%' AND module = %s",
-                (module_name,))
+        cursor.execute("UPDATE ir_model "
+            "SET model = REPLACE(model, 'packing', 'shipment') "
+            "WHERE model like '%%packing%%' AND module = %s",
+            (module_name,))
         super(HandleShipmentExceptionAsk, cls).__register__(module_name)
 
 
@@ -1890,8 +1890,8 @@ class HandleInvoiceExceptionAsk(ModelView):
         'account.invoice', None, None, 'Recreate Invoices',
         domain=[('id', 'in', Eval('domain_invoices'))],
         depends=['domain_invoices'],
-        help='The selected invoices will be recreated. '\
-            'The other ones will be ignored.')
+        help=('The selected invoices will be recreated. '
+            'The other ones will be ignored.'))
     domain_invoices = fields.Many2Many(
         'account.invoice', None, None, 'Domain Invoices')
 
