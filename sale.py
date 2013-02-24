@@ -1,9 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import copy
-from trytond.model import Model, fields
+from trytond.model import fields
 from trytond.pyson import Eval, Not, Equal, Or, Bool
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 
 __all__ = ['Sale', 'SaleLine']
 __metaclass__ = PoolMeta
