@@ -134,17 +134,17 @@ class HoursEmployee(ModelSQL, ModelView):
         if Transaction().context.get('end_date'):
             clause += 'AND date <= %s '
             args.append(Transaction().context['end_date'])
-        return ('SELECT DISTINCT(employee) AS id, ' \
-                    'MAX(create_uid) AS create_uid, ' \
-                    'MAX(create_date) AS create_date, ' \
-                    'MAX(write_uid) AS write_uid, ' \
-                    'MAX(write_date) AS write_date, ' \
-                    'employee, ' \
-                    'SUM(COALESCE(hours, 0)) AS hours ' \
-                'FROM timesheet_line ' \
-                'WHERE %s ' \
-                + clause + \
-                'GROUP BY employee', args)
+        return ('SELECT DISTINCT(employee) AS id, '
+                'MAX(create_uid) AS create_uid, '
+                'MAX(create_date) AS create_date, '
+                'MAX(write_uid) AS write_uid, '
+                'MAX(write_date) AS write_date, '
+                'employee, '
+                'SUM(COALESCE(hours, 0)) AS hours '
+            'FROM timesheet_line '
+            'WHERE %s '
+            + clause +
+            'GROUP BY employee', args)
 
 
 class OpenHoursEmployeeStart(ModelView):
@@ -193,22 +193,22 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         type_name = FIELDS[cls.year._type].sql_type(cls.year)[0]
-        return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
-                    'CAST(year AS ' + type_name + ') AS year, week, ' \
-                    'employee, hours ' \
-                    'FROM ('
-                        'SELECT EXTRACT(WEEK FROM date) + ' \
-                            'EXTRACT(YEAR FROM date) * 100 + ' \
-                            'employee * 1000000 AS id, ' \
-                        'MAX(create_uid) AS create_uid, ' \
-                        'MAX(create_date) AS create_date, ' \
-                        'MAX(write_uid) AS write_uid, ' \
-                        'MAX(write_date) AS write_date, ' \
-                        'EXTRACT(YEAR FROM date) AS year, ' \
-                        'EXTRACT(WEEK FROM date) AS week, employee, ' \
-                        'SUM(COALESCE(hours, 0)) AS hours ' \
-                    'FROM timesheet_line ' \
-                    'GROUP BY year, week, employee) AS ' + cls._table, [])
+        return ('SELECT id, create_uid, create_date, write_uid, write_date, '
+                'CAST(year AS ' + type_name + ') AS year, week, '
+                'employee, hours '
+            'FROM ('
+                'SELECT EXTRACT(WEEK FROM date) + '
+                    'EXTRACT(YEAR FROM date) * 100 + '
+                    'employee * 1000000 AS id, '
+                'MAX(create_uid) AS create_uid, '
+                'MAX(create_date) AS create_date, '
+                'MAX(write_uid) AS write_uid, '
+                'MAX(write_date) AS write_date, '
+                'EXTRACT(YEAR FROM date) AS year, '
+                'EXTRACT(WEEK FROM date) AS week, employee, '
+                'SUM(COALESCE(hours, 0)) AS hours '
+            'FROM timesheet_line '
+            'GROUP BY year, week, employee) AS ' + cls._table, [])
 
 
 class HoursEmployeeMonthly(ModelSQL, ModelView):
@@ -229,19 +229,19 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         type_name = FIELDS[cls.year._type].sql_type(cls.year)[0]
-        return ('SELECT id, create_uid, create_date, write_uid, write_date, ' \
-                    'CAST(year AS ' + type_name + ') AS year, month, ' \
-                    'employee, hours ' \
-                    'FROM ('
-                        'SELECT EXTRACT(MONTH FROM date) + ' \
-                            'EXTRACT(YEAR FROM date) * 100 + ' \
-                            'employee * 1000000 AS id, ' \
-                        'MAX(create_uid) AS create_uid, ' \
-                        'MAX(create_date) AS create_date, ' \
-                        'MAX(write_uid) AS write_uid, ' \
-                        'MAX(write_date) AS write_date, ' \
-                        'EXTRACT(YEAR FROM date) AS year, ' \
-                        'EXTRACT(MONTH FROM date) AS month, employee, ' \
-                        'SUM(COALESCE(hours, 0)) AS hours ' \
-                    'FROM timesheet_line ' \
-                    'GROUP BY year, month, employee) AS ' + cls._table, [])
+        return ('SELECT id, create_uid, create_date, write_uid, write_date, '
+                'CAST(year AS ' + type_name + ') AS year, month, '
+                'employee, hours '
+            'FROM ('
+                'SELECT EXTRACT(MONTH FROM date) + '
+                    'EXTRACT(YEAR FROM date) * 100 + '
+                    'employee * 1000000 AS id, '
+                'MAX(create_uid) AS create_uid, '
+                'MAX(create_date) AS create_date, '
+                'MAX(write_uid) AS write_uid, '
+                'MAX(write_date) AS write_date, '
+                'EXTRACT(YEAR FROM date) AS year, '
+                'EXTRACT(MONTH FROM date) AS month, employee, '
+                'SUM(COALESCE(hours, 0)) AS hours '
+            'FROM timesheet_line '
+            'GROUP BY year, month, employee) AS ' + cls._table, [])

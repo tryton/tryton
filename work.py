@@ -59,8 +59,8 @@ class Work(ModelSQL, ModelView):
             ]
         cls._error_messages.update({
                 'recursive_works': 'You can not create recursive works!',
-                'parent_company': 'Every work must be in the same company '\
-                    'as it\'s parent work!',
+                'parent_company': ('Every work must be in the same company '
+                    'as it\'s parent work!'),
                 })
 
     @staticmethod
@@ -112,9 +112,9 @@ class Work(ModelSQL, ModelView):
         all_ids = [w.id for w in all_works]
         # force inactive ids to be in all_ids
         all_ids = list(set(all_ids + ids))
-        clause = "SELECT work, sum(hours) FROM timesheet_line "\
-                     "WHERE work IN (%s) "\
-                     % ",".join(('%s',) * len(all_ids))
+        clause = ("SELECT work, sum(hours) FROM timesheet_line "
+            "WHERE work IN (%s) "
+            % ",".join(('%s',) * len(all_ids)))
         date_cond = ""
         args = []
         if Transaction().context.get('from_date'):
