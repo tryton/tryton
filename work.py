@@ -80,8 +80,8 @@ class Work(ModelSQL, ModelView):
                     TimesheetWork._table, cls._table))
             for sequence, id_ in cursor.fetchall():
                 sql = ('UPDATE "%s" '
-                        'SET sequence = %%s '
-                        'WHERE work = %%s' % cls._table)
+                    'SET sequence = %%s '
+                    'WHERE work = %%s' % cls._table)
                 cursor.execute(sql, (sequence, id_))
 
         # Migration from 2.4: drop required on sequence
@@ -91,8 +91,8 @@ class Work(ModelSQL, ModelView):
     def __setup__(cls):
         super(Work, cls).__setup__()
         cls._sql_constraints += [
-            ('work_uniq', 'UNIQUE(work)', 'There should be only one '\
-                 'timesheet work by task/project!'),
+            ('work_uniq', 'UNIQUE(work)', 'There should be only one '
+                'timesheet work by task/project!'),
             ]
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._constraints += [
