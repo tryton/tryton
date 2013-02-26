@@ -33,20 +33,19 @@ class Move:
         return 0.0
 
     @classmethod
-    def _update_fifo_out_product_cost_price(cls, product, quantity, uom,
-            date):
+    def _update_fifo_out_product_cost_price(self):
         '''
-        Update the product cost price of the given product. Update
+        Update the product cost price of the given product on the move. Update
         fifo_quantity on the concerned incomming moves. Return the
         cost price for outputing the given product and quantity.
         '''
 
         Uom = Pool().get('product.uom')
 
-        total_qty = Uom.compute_qty(uom, quantity, product.default_uom,
-                round=False)
+        total_qty = Uom.compute_qty(self.uom, self.quantity,
+            self.product.default_uom, round=False)
 
-        fifo_moves = product.template.get_fifo_move(total_qty)
+        fifo_moves = self.product.template.get_fifo_move(total_qty)
 
         cost_price = Decimal("0.0")
         consumed_qty = 0.0
@@ -59,21 +58,20 @@ class Move:
 
             move._update_product_cost_price('out')
 
-            move_qty = Uom.compute_qty(product.default_uom, move_qty,
+            move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
                     move.uom, round=False)
-            cls.write([move], {
-                'fifo_quantity': (move.fifo_quantity or 0.0) + move_qty,
-                })
+            move.fifo_quantity = (move.fifo_quantity or 0.0) + move_qty
+            move.save()
 
         if Decimal(str(consumed_qty)) != Decimal("0"):
             cost_price = cost_price / Decimal(str(consumed_qty))
 
         if cost_price != Decimal("0"):
-            digits = cls.cost_price.digits
+            digits = self.__class__.cost_price.digits
             return cost_price.quantize(
                 Decimal(str(10.0 ** -digits[1])))
         else:
-            return product.cost_price
+            return self.product.cost_price
 
     @classmethod
     @ModelView.button
@@ -97,8 +95,7 @@ class Move:
             elif (move.to_location.type != 'storage'  # XXX from_location?
                     and move.to_location.type != 'supplier'
                     and move.product.cost_price_method == 'fifo'):
-                move._update_fifo_out_product_cost_price(
-                    move.product, move.quantity, move.uom, move.effective_date)
+                move._update_fifo_out_product_cost_price()
             move.save()
 
         super(Move, cls).do(moves)
