@@ -280,9 +280,6 @@ Display a button.
 
     * ``string``: The string that will be displayed inside the button.
 
-    * ``type``: It can be ``object`` or ``action``. The default is ``object``.
-      It defines which type of action must be run when clicking on it.
-
     * ``name``: The name of the action:
 
         * ``object``: the name of the function that will called.  The function
