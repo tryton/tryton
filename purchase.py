@@ -30,7 +30,7 @@ class PurchaseRequest:
 
         sales = [r.origin for r in requests if isinstance(r, Sale)]
 
-        super(PurchaseRequest, cls).delete(cls, requests)
+        super(PurchaseRequest, cls).delete(requests)
 
         if sales:
             Sale.process(sales)
