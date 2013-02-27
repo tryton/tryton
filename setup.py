@@ -20,8 +20,8 @@ setup(name='proteus',
     author='B2CK',
     author_email='info@b2ck.com',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-            proteus.__version__.rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        proteus.__version__.rsplit('.', 1)[0] + '/'),
     packages=find_packages(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -30,12 +30,13 @@ setup(name='proteus',
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)',
+        'License :: OSI Approved :: '
+        'GNU Library or Lesser General Public License (LGPL)',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Topic :: Office/Business',
-    ],
+        ],
     license='LGPL-3',
     install_requires=[
         "python-dateutil",
@@ -45,8 +46,8 @@ setup(name='proteus',
             (major_version, minor_version, major_version, minor_version + 1)],
         'simplejson': ['simplejson'],
         'cdecimal': ['cdecimal'],
-    },
+        },
     test_suite='proteus.tests',
     tests_require=('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
-)
+    )

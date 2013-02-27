@@ -763,7 +763,7 @@ class Model(object):
         values = self._get_on_change_value()
         if self._parent:
             values['_parent_%s' % self._parent_name] = \
-                    _EvalEnvironment(self._parent)
+                _EvalEnvironment(self._parent)
         for arg in args:
             scope = values
             for i in arg.split('.'):

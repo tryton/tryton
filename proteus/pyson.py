@@ -187,10 +187,10 @@ class And(PYSON):
         for statement in statements:
             if isinstance(statement, PYSON):
                 assert statement.types() == set([bool]), \
-                        'statement must be boolean'
+                    'statement must be boolean'
             else:
                 assert isinstance(statement, bool), \
-                        'statement must be boolean'
+                    'statement must be boolean'
         assert len(statements) >= 2, 'must have at least 2 statements'
         self._statements = list(statements)
 
@@ -258,10 +258,10 @@ class Greater(PYSON):
         for i in (statement1, statement2):
             if isinstance(i, PYSON):
                 assert i.types().issubset(set([int, long, float])), \
-                        'statement must be an integer or a float'
+                    'statement must be an integer or a float'
             else:
                 assert isinstance(i, (int, long, float)), \
-                        'statement must be an integer or a float'
+                    'statement must be an integer or a float'
         if isinstance(equal, PYSON):
             assert equal.types() == set([bool])
         else:
@@ -319,10 +319,10 @@ class If(PYSON):
             then_types = set([type(then_statement)])
         if isinstance(else_statement, PYSON):
             assert then_types == else_statement.types(), \
-                    'then and else statements must be the same type'
+                'then and else statements must be the same type'
         else:
             assert then_types == set([type(else_statement)]), \
-                    'then and else statements must be the same type'
+                'then and else statements must be the same type'
         self._condition = condition
         self._then_statement = then_statement
         self._else_statement = else_statement
@@ -390,13 +390,13 @@ class In(PYSON):
         super(In, self).__init__()
         if isinstance(key, PYSON):
             assert key.types().issubset(set([str, int, long])), \
-                    'key must be a string or an integer or a long'
+                'key must be a string or an integer or a long'
         else:
             assert type(key) in [str, int, long], \
-                    'key must be a string or an integer or a long'
+                'key must be a string or an integer or a long'
         if isinstance(obj, PYSON):
             assert obj.types().issubset(set([dict, list])), \
-                    'obj must be a dict or a list'
+                'obj must be a dict or a list'
             if obj.types() == set([dict]):
                 assert type(key) == str, 'key must be a string'
         else:
@@ -429,10 +429,10 @@ class Date(PYSON):
         for i in (year, month, day, delta_years, delta_months, delta_days):
             if isinstance(i, PYSON):
                 assert i.types().issubset(set([int, long, type(None)])), \
-                        '%s must be an integer or None' % (i,)
+                    '%s must be an integer or None' % (i,)
             else:
                 assert isinstance(i, (int, long, type(None))), \
-                        '%s must be an integer or None' % (i,)
+                    '%s must be an integer or None' % (i,)
         self._year = year
         self._month = month
         self._day = day
@@ -480,10 +480,10 @@ class DateTime(Date):
                 delta_hours, delta_minutes, delta_seconds, delta_microseconds):
             if isinstance(i, PYSON):
                 assert i.types() == set([int, long, type(None)]), \
-                        '%s must be an integer or None' % (i,)
+                    '%s must be an integer or None' % (i,)
             else:
                 assert isinstance(i, (int, long, type(None))), \
-                        '%s must be an integer or None' % (i,)
+                    '%s must be an integer or None' % (i,)
         self._hour = hour
         self._minute = minute
         self._second = second
