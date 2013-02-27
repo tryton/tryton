@@ -840,7 +840,7 @@ class Wizard(object):
         assert state in self.states
 
         self.state = state
-        while self.state != 'end':
+        while self.state != self.end_state:
             ctx = self._context.copy()
             ctx.update(self._config.context)
             if self.models:
