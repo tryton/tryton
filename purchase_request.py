@@ -71,8 +71,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         super(PurchaseRequest, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'create_request': 'Purchase requests are only created ' \
-                    'by the system.',
+                'create_request': ('Purchase requests are only created '
+                    'by the system.'),
                 })
         cls._sql_constraints += [
             ('check_purchase_request_quantity', 'CHECK(quantity > 0)',
@@ -200,7 +200,7 @@ class PurchaseRequest(ModelSQL, ModelView):
 
                     for product in products[i:i + cursor.IN_MAX]:
                         shortage_date, product_quantity = shortages[product.id]
-                        if shortage_date == None or product_quantity == None:
+                        if shortage_date is None or product_quantity is None:
                             continue
                         order_point = product2ops.get(
                             (warehouse_id, product.id))
@@ -264,8 +264,8 @@ class PurchaseRequest(ModelSQL, ModelView):
             existing_req.setdefault(
                 (request.product.id, request.warehouse.id),
                 []).append({
-                        'supply_date': \
-                            request.supply_date or datetime.date.max,
+                        'supply_date': (
+                            request.supply_date or datetime.date.max),
                         'quantity': quantity,
                         'uom': uom,
                         })
@@ -508,10 +508,11 @@ class CreatePurchase(Wizard):
     def __setup__(cls):
         super(CreatePurchase, cls).__setup__()
         cls._error_messages.update({
-            'missing_price': 'Purchase price is missing for product: %s ' \
-                '(id: %s)!',
-            'please_update': 'This price is necessary for creating purchase.'
-            })
+                'missing_price': ('Purchase price is missing for product: %s '
+                    '(id: %s)!'),
+                'please_update': (
+                    'This price is necessary for creating purchase.'),
+                })
 
     def default_ask_party(self, fields):
         Request = Pool().get('purchase.request')
@@ -590,8 +591,8 @@ class CreatePurchase(Wizard):
             with Transaction().set_context(
                     company=self.ask_term.company.id):
                 Party.write([self.ask_term.party], {
-                        'supplier_payment_term': \
-                            self.ask_term.payment_term.id,
+                        'supplier_payment_term': (
+                            self.ask_term.payment_term.id),
                         })
             self.ask_term.payment_term = None
             self.ask_term.party = None

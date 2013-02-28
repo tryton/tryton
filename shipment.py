@@ -15,14 +15,14 @@ class ShipmentInternal(ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model_data "\
-                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "\
-                "WHERE fs_id like '%%packing%%' AND module = %s",
-                (module_name,))
-        cursor.execute("UPDATE ir_model "\
-                "SET model = REPLACE(model, 'packing', 'shipment') "\
-                "WHERE model like '%%packing%%' AND module = %s",
-                (module_name,))
+        cursor.execute("UPDATE ir_model_data "
+            "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "
+            "WHERE fs_id like '%%packing%%' AND module = %s",
+            (module_name,))
+        cursor.execute("UPDATE ir_model "
+            "SET model = REPLACE(model, 'packing', 'shipment') "
+            "WHERE model like '%%packing%%' AND module = %s",
+            (module_name,))
         super(ShipmentInternal, cls).__register__(module_name)
 
     @classmethod

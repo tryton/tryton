@@ -82,11 +82,11 @@ class OrderPoint(ModelSQL, ModelView):
                 'Maximal quantity must be bigger than Minimal quantity'),
             ]
         cls._error_messages.update({
-                'unique_op': 'Only one order point is allowed '\
-                    'for each product-location pair.',
-                'concurrent_internal_op': 'You can not define ' \
-                    'two order points on the same product ' \
-                    'with opposite locations.',
+                'unique_op': ('Only one order point is allowed '
+                    'for each product-location pair.'),
+                'concurrent_internal_op': ('You can not define '
+                    'two order points on the same product '
+                    'with opposite locations.'),
                 })
 
     @classmethod
@@ -150,7 +150,7 @@ class OrderPoint(ModelSQL, ModelView):
             'purchase': 'warehouse_location',
             'internal': 'storage_location',
             }
-        if type == None:
+        if type is None:
             return t2f
         else:
             return t2f[type]
