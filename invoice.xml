@@ -7,47 +7,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.invoice.line</field>
             <field name="inherit" ref="account_invoice.invoice_line_view_form"/>
             <field name="domain">context.get('standalone', False)</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/field[@name=&quot;invoice&quot;]"
-                        position="after">
-                        <label name="invoice_type"/>
-                        <field name="invoice_type"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <label name="party"/>
-                        <field name="party"/>
-                        <label name="currency"/>
-                        <field name="currency"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">invoice_line_form</field>
         </record>
         <record model="ir.ui.view" id="invoice_line_view_tree">
             <field name="model">account.invoice.line</field>
             <field name="inherit" ref="account_invoice.invoice_line_view_tree"/>
             <field name="domain">context.get('standalone', False)</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/tree/field[@name=&quot;invoice&quot;]"
-                        position="before">
-                        <field name="party"/>
-                        <field name="invoice_type"/>
-                    </xpath>
-                    <xpath
-                        expr="/tree/field[@name=&quot;amount&quot;]"
-                        position="after">
-                        <field name="currency"/>
-                        <field name="company"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">invoice_line_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_invoice_line_out_invoice_form">
