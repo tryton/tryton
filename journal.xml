@@ -8,28 +8,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="journal_type_form">
             <field name="model">account.journal.type</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Journal Type">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">journal_type_form</field>
         </record>
         <record model="ir.ui.view" id="journal_type_tree">
             <field name="model">account.journal.type</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Journal Types">
-                    <field name="name"/>
-                    <field name="code"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">journal_type_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_journal_type_form">
             <field name="name">Journal Types</field>
@@ -87,28 +71,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="journal_view_view_form">
             <field name="model">account.journal.view</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Journal View" col="2">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <field name="columns" colspan="2"
-                        view_ids="account.journal_view_column_view_list_sequence">
-                    </field>
-                </form>
-                ]]>
-            </field>
+            <field name="name">journal_view_form</field>
         </record>
         <record model="ir.ui.view" id="journal_view_view_tree">
             <field name="model">account.journal.view</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Journal Views">
-                    <field name="name"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">journal_view_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_journal_view_form">
             <field name="name">Journal Views</field>
@@ -147,56 +115,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.journal.view.column</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="View Columns">
-                    <field name="view"/>
-                    <field name="name"/>
-                    <field name="field"/>
-                    <field name="required"/>
-                    <field name="readonly"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">journal_view_column_list</field>
         </record>
 
         <record model="ir.ui.view" id="journal_view_column_view_list_sequence">
             <field name="model">account.journal.view.column</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="View Columns" sequence="sequence" editable="bottom">
-                    <field name="name"/>
-                    <field name="field"/>
-                    <field name="required"/>
-                    <field name="readonly"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">journal_view_column_list_sequence</field>
         </record>
 
         <record model="ir.ui.view" id="journal_view_column_view_form">
             <field name="model">account.journal.view.column</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="View Column">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
-                    <label name="field"/>
-                    <field name="field"/>
-                    <label name="view"/>
-                    <field name="view"/>
-                    <label name="required"/>
-                    <field name="required"/>
-                    <label name="readonly"/>
-                    <field name="readonly"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">journal_view_column_form</field>
         </record>
 
         <record model="ir.model.access" id="access_journal_view_column">
@@ -218,52 +150,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="journal_view_form">
             <field name="model">account.journal</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Journal" col="6">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
-                    <notebook colspan="6">
-                        <page string="General Information" id="general">
-                            <label name="type"/>
-                            <field name="type"/>
-                            <label name="sequence"/>
-                            <field name="sequence"/>
-                            <label name="view"/>
-                            <field name="view"/>
-                            <newline/>
-                            <label name="debit_account"/>
-                            <field name="debit_account"/>
-                            <label name="credit_account"/>
-                            <field name="credit_account"/>
-                            <label name="centralised"/>
-                            <field name="centralised"/>
-                            <newline/>
-                            <label name="update_posted"/>
-                            <field name="update_posted"/>
-                            <newline/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">journal_form</field>
         </record>
         <record model="ir.ui.view" id="journal_view_tree">
             <field name="model">account.journal</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Journals">
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="type"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">journal_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_journal_form">
             <field name="name">Journals</field>
@@ -320,36 +212,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="journal_period_view_form">
             <field name="model">account.journal.period</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Journal - Period">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active"/>
-                    <label name="journal"/>
-                    <field name="journal"/>
-                    <label name="period"/>
-                    <field name="period"/>
-                    <label name="state"/>
-                    <field name="state" colspan="3"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">journal_period_form</field>
         </record>
         <record model="ir.ui.view" id="journal_period_view_tree">
             <field name="model">account.journal.period</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Journals - Periods" keyword_open="1">
-                    <field name="name" icon="icon"/>
-                    <field name="journal"/>
-                    <field name="period"/>
-                    <field name="state"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">journal_period_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_journal_period_tree">
             <field name="name">Journals - Periods</field>

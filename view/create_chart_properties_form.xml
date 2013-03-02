@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Create Default Properties" col="2">
+    <label name="account_receivable"/>
+    <field name="account_receivable"/>
+    <label name="account_payable"/>
+    <field name="account_payable"/>
+</form>

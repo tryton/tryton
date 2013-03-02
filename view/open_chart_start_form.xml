@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Open Chart of Accounts" col="2">
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <label name="posted"/>
+    <field name="posted"/>
+</form>

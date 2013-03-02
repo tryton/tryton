@@ -6,45 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="period_view_form">
             <field name="model">account.period</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Period">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <newline/>
-                    <label name="start_date"/>
-                    <field name="start_date"/>
-                    <label name="end_date"/>
-                    <field name="end_date"/>
-                    <label name="type"/>
-                    <field name="type"/>
-                    <newline/>
-                    <label name="post_move_sequence"/>
-                    <field name="post_move_sequence"/>
-                    <newline/>
-                    <label name="state"/>
-                    <field name="state" colspan="3"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">period_form</field>
         </record>
         <record model="ir.ui.view" id="period_view_tree">
             <field name="model">account.period</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Periods">
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="type"/>
-                    <field name="state"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">period_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_period_form">
             <field name="name">Periods</field>

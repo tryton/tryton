@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Account Move Lines" editable="top"
+    on_write="on_write"
+    colors="If(Equal(Eval('state'), 'draft'), 'red', 'black')">
+    <field name="move"/>
+    <field name="origin"/>
+    <field name="description"/>
+    <field name="date"/>
+    <field name="party"/>
+    <field name="account"/>
+    <field name="debit" sum="Debit"/>
+    <field name="credit" sum="Credit"/>
+    <field name="tax_lines"/>
+    <field name="reconciliation"/>
+    <field name="state"/>
+    <field name="move_state"/>
+</tree>

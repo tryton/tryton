@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Account Type">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="display_balance"/>
+    <field name="display_balance"/>
+    <newline/>
+    <label name="balance_sheet"/>
+    <field name="balance_sheet"/>
+    <newline/>
+    <label name="income_statement"/>
+    <field name="income_statement"/>
+</form>

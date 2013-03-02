@@ -65,52 +65,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_type_template_view_form">
             <field name="model">account.account.type.template</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Account Type Template">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <newline/>
-                    <label name="display_balance"/>
-                    <field name="display_balance"/>
-                    <newline/>
-                    <label name="balance_sheet"/>
-                    <field name="balance_sheet"/>
-                    <newline/>
-                    <label name="income_statement"/>
-                    <field name="income_statement"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">account_type_template_form</field>
         </record>
         <record model="ir.ui.view" id="account_type_template_view_list">
             <field name="model">account.account.type.template</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Types Templates">
-                    <field name="name"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_type_template_list</field>
         </record>
         <record model="ir.ui.view" id="account_type_template_view_tree">
             <field name="model">account.account.type.template</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Types Templates">
-                    <field name="name"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_type_template_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_account_type_template_tree">
             <field name="name">Account Type Templates</field>
@@ -239,55 +207,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_type_view_form">
             <field name="model">account.account.type</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Account Type">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <label name="display_balance"/>
-                    <field name="display_balance"/>
-                    <newline/>
-                    <label name="balance_sheet"/>
-                    <field name="balance_sheet"/>
-                    <newline/>
-                    <label name="income_statement"/>
-                    <field name="income_statement"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">account_type_form</field>
         </record>
         <record model="ir.ui.view" id="account_type_view_tree">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Types">
-                    <field name="name"/>
-                    <field name="parent" tree_invisible="1"/>
-                    <field name="childs" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_type_tree</field>
         </record>
         <record model="ir.ui.view" id="account_type_view_list">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Types">
-                    <field name="name"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_type_list</field>
         </record>
 
         <record model="ir.action.act_window" id="act_account_type_tree">
@@ -345,55 +278,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_template_view_form">
             <field name="model">account.account.template</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Account Template" col="6">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <label name="kind"/>
-                    <field name="kind"/>
-                    <label name="type"/>
-                    <field name="type"/>
-                    <newline/>
-                    <label name="deferral"/>
-                    <field name="deferral"/>
-                    <label name="reconcile"/>
-                    <field name="reconcile"/>
-                    <field name="taxes" colspan="6"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">account_template_form</field>
         </record>
         <record model="ir.ui.view" id="account_template_view_list">
             <field name="model">account.account.template</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Templates">
-                    <field name="rec_name"/>
-                    <field name="type"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_template_list</field>
         </record>
         <record model="ir.ui.view" id="account_template_view_tree">
             <field name="model">account.account.template</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Templates">
-                    <field name="rec_name"/>
-                    <field name="type"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_template_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_account_template_tree">
             <field name="name">Account Templates</field>
@@ -471,82 +369,30 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_deferral_view_form">
             <field name="model">account.account.deferral</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Account Deferral">
-                    <label name="account"/>
-                    <field name="account"/>
-                    <newline/>
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <newline/>
-                    <label name="debit"/>
-                    <field name="debit"/>
-                    <label name="credit"/>
-                    <field name="credit"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">account_deferral_form</field>
         </record>
         <record model="ir.ui.view" id="account_deferral_view_tree">
             <field name="model">account.account.deferral</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Account Deferrals">
-                    <field name="account"/>
-                    <field name="fiscalyear"/>
-                    <field name="debit"/>
-                    <field name="credit"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_deferral_tree</field>
         </record>
 
         <record model="ir.ui.view" id="create_chart_start_view_form">
             <field name="model">account.create_chart.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Create Chart of Accounts" col="2">
-                    <image name="tryton-dialog-information" xexpand="0"
-                        xfill="0"/>
-                    <label string="You can now create a chart of account for your company by selecting a chart of account template."
-                        id="create"
-                        yalign="0.0" xalign="0.0" xexpand="1"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">create_chart_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="create_chart_account_view_form">
             <field name="model">account.create_chart.account</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Create Chart of Accounts" col="2">
-                    <label name="company"/>
-                    <field name="company" widget="selection"/>
-                    <label name="account_template"/>
-                    <field name="account_template" widget="selection"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">create_chart_account_form</field>
         </record>
 
         <record model="ir.ui.view" id="create_chart_properties_view_form">
             <field name="model">account.create_chart.properties</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Create Default Properties" col="2">
-                    <label name="account_receivable"/>
-                    <field name="account_receivable"/>
-                    <label name="account_payable"/>
-                    <field name="account_payable"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">create_chart_properties_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_create_chart">
@@ -563,28 +409,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="update_chart_start_view_form">
             <field name="model">account.update_chart.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Update Chart of Accounts" col="2">
-                    <label name="account"/>
-                    <field name="account"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">update_chart_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="update_chart_succeed_view_form">
             <field name="model">account.update_chart.succeed</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Update Chart of Accounts">
-                    <image name="tryton-dialog-information" xexpand="0" xfill="0"/>
-                    <label string="Update Chart of Accounts Succeed!" id="succeed"
-                        yalign="0.0" xalign="0.0" xexpand="1"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">update_chart_succeed_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_update_chart">
@@ -597,76 +428,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="account_view_form">
             <field name="model">account.account</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Account" col="6">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
-                    <notebook colspan="6">
-                        <page string="General Information" id="general">
-                            <label name="company"/>
-                            <field name="company"/>
-                            <label name="parent"/>
-                            <field name="parent"/>
-                            <label name="kind"/>
-                            <field name="kind"/>
-                            <label name="type"/>
-                            <field name="type"/>
-                            <label name="deferral"/>
-                            <field name="deferral"/>
-                            <label name="reconcile"/>
-                            <field name="reconcile"/>
-                            <label name="currency"/>
-                            <field name="currency"/>
-                            <label name="second_currency"/>
-                            <field name="second_currency"/>
-                            <field name="taxes" colspan="4"/>
-                        </page>
-                        <page string="Deferrals" id="deferrals">
-                            <field name="deferrals"/>
-                        </page>
-                        <page string="Notes" id="notes">
-                            <field name="note"/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">account_form</field>
         </record>
         <record model="ir.ui.view" id="account_view_tree">
             <field name="model">account.account</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Accounts">
-                    <field name="rec_name"/>
-                    <field name="company"/>
-                    <field name="type"/>
-                    <field name="parent" tree_invisible="1"/>
-                    <field name="childs" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_tree</field>
         </record>
         <record model="ir.ui.view" id="account_view_list">
             <field name="model">account.account</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Accounts">
-                    <field name="rec_name"/>
-                    <field name="company"/>
-                    <field name="type"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_list</field>
         </record>
 
         <record model="ir.action.act_window" id="act_account_tree">
@@ -709,18 +484,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.account</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Accounts" keyword_open="1">
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="debit"/>
-                    <field name="credit"/>
-                    <field name="balance"/>
-                    <field name="currency"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_list2</field>
         </record>
         <record model="ir.action.act_window" id="act_account_list2">
             <field name="name">Accounts</field>
@@ -748,18 +512,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Accounts" keyword_open="1">
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="debit"/>
-                    <field name="credit"/>
-                    <field name="balance"/>
-                    <field name="currency"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_tree2</field>
         </record>
         <record model="ir.action.act_window" id="act_account_tree2">
             <field name="name">Accounts</field>
@@ -807,39 +560,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="open_chart_start_view_form">
             <field name="model">account.open_chart.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Open Chart of Accounts" col="2">
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">open_chart_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="print_general_ledger_start_view_form">
             <field name="model">account.print_general_ledger.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Print General Ledger">
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <label name="empty_account"/>
-                    <field name="empty_account"/>
-                    <label name="start_period"/>
-                    <field name="start_period"/>
-                    <label name="end_period"/>
-                    <field name="end_period"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">print_general_legder_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_print_general_ledger">
@@ -859,24 +586,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="print_trial_balance_start_view_form">
             <field name="model">account.print_trial_balance.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Print Trial Balance">
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <label name="empty_account"/>
-                    <field name="empty_account"/>
-                    <label name="start_period"/>
-                    <field name="start_period"/>
-                    <label name="end_period"/>
-                    <field name="end_period"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">print_trial_balance_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_print_trial_balance">
@@ -896,32 +606,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="open_balance_sheet_start_view_form">
             <field name="model">account.open_balance_sheet.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Open Balance Sheet" col="2">
-                    <label name="date"/>
-                    <field name="date"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">open_balance_sheet_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="account_balance_sheet_view_tree">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Balance Sheet" keyword_open="1">
-                    <field name="name"/>
-                    <field name="amount"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_balance_sheet_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
@@ -945,37 +637,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="open_income_statement_start_view_form">
             <field name="model">account.open_income_statement.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Open Income Statement">
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <newline/>
-                    <label name="start_period"/>
-                    <field name="start_period"/>
-                    <label name="end_period"/>
-                    <field name="end_period"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">open_income_statement_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="account_income_statement_view_tree">
             <field name="model">account.account.type</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Income Statement">
-                    <field name="name"/>
-                    <field name="amount"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">account_income_statement_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_account_income_statement_tree">
             <field name="name">Income Statement</field>
@@ -999,19 +668,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="open_third_party_balance_start_view_form">
             <field name="model">account.open_third_party_balance.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Open Third Party Balance" col="4">
-                    <label name="fiscalyear"/>
-                    <field name="fiscalyear"/>
-                    <newline/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">open_third_party_balance_start_form</field>
         </record>
         <record model="ir.action.report" id="report_third_party_balance">
             <field name="name">Third Party Balance</field>
@@ -1030,30 +687,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="open_aged_balance_start_view_form">
             <field name="model">account.open_aged_balance.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Open Aged Balance" col="4">
-                    <label name="balance_type"/>
-                    <field name="balance_type"/>
-                    <newline/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="posted"/>
-                    <field name="posted"/>
-                    <separator string="Terms" colspan="4" id="terms"/>
-                    <label name="term1"/>
-                    <field name="term1"/>
-                    <label name="unit"/>
-                    <field name="unit"/>
-                    <newline/>
-                    <label name="term2"/>
-                    <field name="term2"/>
-                    <newline/>
-                    <label name="term3"/>
-                    <field name="term3"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">open_aged_balance_start_form</field>
         </record>
         <record model="ir.action.report" id="report_aged_balance">
             <field name="name">Aged Balance</field>
