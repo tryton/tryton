@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this
+     repository contains the full copyright notices and license terms. -->
+<form string="Asset Depreciation Move">
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="depreciation_account"/>
+    <field name="depreciation_account"/>
+    <label name="counterpart_account"/>
+    <field name="counterpart_account"/>
+</form>

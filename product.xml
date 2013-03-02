@@ -6,47 +6,12 @@
         <record model="ir.ui.view" id="category_view_form">
             <field name="model">product.category</field>
             <field name="inherit" ref="product.category_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']"
-                        position="after">
-                        <label name="account_depreciation"/>
-                        <field name="account_depreciation"/>
-                        <label name="account_asset"/>
-                        <field name="account_asset"/>
-                        <newline/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">category_form</field>
         </record>
         <record model="ir.ui.view" id="template_view_form">
             <field name="model">product.template</field>
             <field name="inherit" ref="product.template_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/notebook/page[@id='accounting']/separator[@id='accounts']"
-                        position="before">
-                        <separator string="Depreciation" name="depreciable"
-                            colspan="4"/>
-                        <label name="depreciable"/>
-                        <field name="depreciable"/>
-                        <label name="depreciation_duration"/>
-                        <field name="depreciation_duration"/>
-                    </xpath>
-                    <xpath expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']"
-                        position="after">
-                        <label name="account_depreciation"/>
-                        <field name="account_depreciation"/>
-                        <label name="account_asset"/>
-                        <field name="account_asset"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">template_form</field>
         </record>
     </data>
 </tryton>

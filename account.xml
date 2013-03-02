@@ -6,17 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="configuration_view_form">
             <field name="model">account.configuration</field>
             <field name="inherit" ref="account.configuration_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form" position="inside">
-                        <label name="asset_sequence"/>
-                        <field name="asset_sequence"/>
-                        <newline/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
 
         <record model="ir.property" id="property_asset_sequence">

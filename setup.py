@@ -48,7 +48,7 @@ setup(name='trytond_account_asset',
         ],
     package_data={
         'trytond.modules.account_asset': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

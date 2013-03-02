@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of this
+     repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/separator[@id='accounts']"
+        position="before">
+        <separator string="Depreciation" name="depreciable"
+            colspan="4"/>
+        <label name="depreciable"/>
+        <field name="depreciable"/>
+        <label name="depreciation_duration"/>
+        <field name="depreciation_duration"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='accounting']/field[@name='account_expense']"
+        position="after">
+        <label name="account_depreciation"/>
+        <field name="account_depreciation"/>
+        <label name="account_asset"/>
+        <field name="account_asset"/>
+    </xpath>
+</data>
