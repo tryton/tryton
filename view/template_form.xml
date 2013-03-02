@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='general']"
+        position="after">
+        <page string="Accounting" col="4" id="accounting">
+            <separator string="Accounts" id="accounts" colspan="4"/>
+            <label name="account_category"/>
+            <field name="account_category"/>
+            <newline/>
+            <label name="account_revenue"/>
+            <field name="account_revenue"/>
+            <label name="account_expense"/>
+            <field name="account_expense"/>
+            <separator string="Taxes" id="taxes" colspan="4"/>
+            <label name="taxes_category"/>
+            <field name="taxes_category"/>
+            <newline/>
+            <field name="customer_taxes" colspan="2"/>
+            <field name="supplier_taxes" colspan="2"/>
+        </page>
+    </xpath>
+</data>
