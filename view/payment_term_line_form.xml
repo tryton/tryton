@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Payment Term Lines">
+    <label name="type"/>
+    <field name="type"/>
+    <newline/>
+    <label name="amount"/>
+    <field name="amount"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <newline/>
+    <label name="percentage"/>
+    <field name="percentage"/>
+    <label name="divisor"/>
+    <field name="divisor"/>
+    <label name="months"/>
+    <field name="months"/>
+    <label name="month"/>
+    <field name="month"/>
+    <label name="weeks"/>
+    <field name="weeks"/>
+    <label name="weekday"/>
+    <field name="weekday"/>
+    <label name="days"/>
+    <field name="days"/>
+    <label name="day"/>
+    <field name="day"/>
+</form>

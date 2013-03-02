@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Payment Term">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+    <notebook colspan="4">
+        <page name="lines">
+            <field name="lines" colspan="4"
+                view_ids="account_invoice.payment_term_line_view_list_sequence"/>
+        </page>
+        <page name="description">
+            <field name="description" colspan="4"/>
+        </page>
+    </notebook>
+</form>
