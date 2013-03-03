@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page/field[@name='amount']"
+        position="after">
+        <group col="4" colspan="4" name="analytic_accounts">
+            <field name="analytic_accounts"/>
+        </group>
+    </xpath>
+</data>
