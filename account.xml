@@ -6,22 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="configuration_view_form">
             <field name="model">account.configuration</field>
             <field name="inherit" ref="account.configuration_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form"
-                        position="inside">
-                        <newline/>
-                        <label name="stock_journal"/>
-                        <field name="stock_journal"/>
-                        <label name="cost_price_counterpart_account"/>
-                        <field name="cost_price_counterpart_account"/>
-                        <newline/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
 
         <record model="ir.property" id="property_stock_journal">

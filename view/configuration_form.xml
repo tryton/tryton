@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form" position="inside">
+        <newline/>
+        <label name="stock_journal"/>
+        <field name="stock_journal"/>
+        <label name="cost_price_counterpart_account"/>
+        <field name="cost_price_counterpart_account"/>
+        <newline/>
+    </xpath>
+</data>

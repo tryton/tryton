@@ -52,7 +52,7 @@ setup(name='trytond_account_stock_continental',
         ],
     package_data={
         'trytond.modules.account_stock_continental': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
