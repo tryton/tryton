@@ -45,7 +45,7 @@ setup(name='trytond_analytic_account',
         ],
     package_data={
         'trytond.modules.analytic_account': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

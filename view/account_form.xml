@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Analytic Account" col="6">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="code"/>
+    <field name="code"/>
+    <label name="active"/>
+    <field name="active" xexpand="0" width="100"/>
+    <notebook colspan="6">
+        <page string="General Information" id="general">
+            <label name="type"/>
+            <field name="type"/>
+            <label name="display_balance"/>
+            <field name="display_balance"/>
+            <label name="root"/>
+            <field name="root"/>
+            <label name="parent"/>
+            <field name="parent"/>
+            <label name="company"/>
+            <field name="company"/>
+            <label name="currency"/>
+            <field name="currency"/>
+            <label name="mandatory"/>
+            <field name="mandatory"/>
+        </page>
+        <page string="Notes" id="notes">
+            <field name="note"/>
+        </page>
+    </notebook>
+    <group colspan="6" col="2" id="state">
+        <label name="state"/>
+        <field name="state"/>
+    </group>
+</form>

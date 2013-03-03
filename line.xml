@@ -6,58 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="line_view_form">
             <field name="model">analytic_account.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Analytic Line">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
-                    <notebook colspan="4">
-                        <page string="General Information" id="general">
-                            <label name="account"/>
-                            <field name="account"/>
-                            <label name="date"/>
-                            <field name="date"/>
-                            <label name="reference"/>
-                            <field name="reference"/>
-                            <label name="party"/>
-                            <field name="party"/>
-                            <label name="journal"/>
-                            <field name="journal"/>
-                            <label name="move_line"/>
-                            <field name="move_line"/>
-                            <label name="debit"/>
-                            <field name="debit"/>
-                            <label name="credit"/>
-                            <field name="credit"/>
-                            <label name="currency"/>
-                            <field name="currency"/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">line_form</field>
         </record>
         <record model="ir.ui.view" id="line_view_tree">
             <field name="model">analytic_account.line</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Analytic Lines" editable="top">
-                    <field name="move_line"/>
-                    <field name="journal"/>
-                    <field name="name"/>
-                    <field name="reference"/>
-                    <field name="date"/>
-                    <field name="party"/>
-                    <field name="account"/>
-                    <field name="debit"/>
-                    <field name="credit"/>
-                    <field name="currency"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">line_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_line_form">
             <field name="name">Analytic Lines</field>
@@ -104,18 +58,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="move_line_view_form">
             <field name="model">account.move.line</field>
             <field name="inherit" ref="account.move_line_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/notebook/page[@name='tax_lines']"
-                        position="after">
-                        <page string="Analytic" col="1" id="analytic">
-                            <field name="analytic_lines"/>
-                        </page>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">move_line_form</field>
         </record>
 
     </data>
