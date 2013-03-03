@@ -48,7 +48,7 @@ setup(name='trytond_account_stock_anglo_saxon',
         ],
     package_data={
         'trytond.modules.account_stock_anglo_saxon': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
     },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
