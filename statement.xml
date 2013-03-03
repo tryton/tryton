@@ -22,60 +22,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="statement_view_form">
             <field name="model">account.statement</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Statement">
-                    <label name="journal"/>
-                    <field name="journal"/>
-                    <label name="date"/>
-                    <field name="date"/>
-                    <label name="start_balance"/>
-                    <field name="start_balance"/>
-                    <label name="end_balance"/>
-                    <field name="end_balance"/>
-                    <notebook colspan="4">
-                        <page string="Statement Lines" col="4" id="statement_lines">
-                            <field name="lines" colspan="4"
-                                view_ids="account_statement.statement_line_view_tree_editable"/>
-                            <group col="6" colspan="4" id="state_buttons">
-                                <label name="balance"/>
-                                <field name="balance"/>
-                                <label name="state"/>
-                                <field name="state"/>
-                                <group col="4" colspan="2" id="buttons">
-                                    <button string="Validate" name="validate"/>
-                                    <button string="Cancel" name="cancel"/>
-                                    <button string="Post" name="post"/>
-                                    <button string="Reset to Draft"
-                                        name="draft"/>
-                                </group>
-                            </group>
-                        </page>
-                        <page string="Other Info" id="info">
-                            <label name="company"/>
-                            <field name="company"/>
-                            <field name="move_lines" colspan="4"/>
-                        </page>
-                    </notebook>
-                    <field name="currency_digits" colspan="4" invisible="1"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">statement_form</field>
         </record>
         <record model="ir.ui.view" id="statement_view_tree">
             <field name="model">account.statement</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Statements">
-                    <field name="journal"/>
-                    <field name="date"/>
-                    <field name="start_balance"/>
-                    <field name="end_balance"/>
-                    <field name="state"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">statement_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_statement_form">
@@ -135,65 +87,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="statement_line_view_form">
             <field name="model">account.statement.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Statement Line">
-                    <label name="statement"/>
-                    <field name="statement" colspan="3"/>
-                    <label name="date"/>
-                    <field name="date"/>
-                    <label name="amount"/>
-                    <field name="amount"/>
-                    <label name="party"/>
-                    <field name="party"/>
-                    <label name="account"/>
-                    <field name="account"/>
-                    <label name="invoice"/>
-                    <field name="invoice"/>
-                    <newline/>
-                    <label name="description"/>
-                    <field name="description" colspan="3"/>
-                    <label name="move"/>
-                    <field name="move"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">statement_line_form</field>
         </record>
         <record model="ir.ui.view" id="statement_line_view_tree">
             <field name="model">account.statement.line</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Statement Lines">
-                    <field name="statement"/>
-                    <field name="date"/>
-                    <field name="amount"/>
-                    <field name="party"/>
-                    <field name="account"/>
-                    <field name="invoice"/>
-                    <field name="description"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">statement_line_tree</field>
         </record>
 
         <record model="ir.ui.view" id="statement_line_view_tree_editable">
             <field name="model">account.statement.line</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Statement Lines" editable="bottom">
-                    <field name="date"/>
-                    <field name="amount" sum="Amount"/>
-                    <field name="party"/>
-                    <field name="account"/>
-                    <field name="invoice"/>
-                    <field name="description"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">statement_line_tree_editable</field>
         </record>
 
         <record model="ir.model.access" id="access_statement_account_admin">

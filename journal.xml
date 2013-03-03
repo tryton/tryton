@@ -6,34 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="statement_journal_view_form">
             <field name="model">account.statement.journal</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Statement Journal">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="journal"/>
-                    <field name="journal"/>
-                    <label name="currency"/>
-                    <field name="currency"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">statement_journal_form</field>
         </record>
         <record model="ir.ui.view" id="statement_journal_view_tree">
             <field name="model">account.statement.journal</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Statement Journals">
-                    <field name="name"/>
-                    <field name="journal"/>
-                    <field name="currency"/>
-                    <field name="company"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">statement_journal_tree</field>
         </record>
         <record model="account.journal.type" id="journal_type_statement">
             <field name="name">Statement</field>
