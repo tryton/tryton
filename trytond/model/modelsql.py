@@ -388,7 +388,7 @@ class ModelSQL(ModelStorage):
                 for name, _, error in self._sql_constraints:
                     if name in exception[0]:
                         self.raise_user_error(error)
-                for name, error in self._sql_error_messages:
+                for name, error in self._sql_error_messages.iteritems():
                     if name in exception[0]:
                         self.raise_user_error(error)
             raise
@@ -909,7 +909,7 @@ class ModelSQL(ModelStorage):
                     for name, _, error in self._sql_constraints:
                         if name in exception[0]:
                             self.raise_user_error(error)
-                    for name, error in self._sql_error_messages:
+                    for name, error in self._sql_error_messages.iteritems():
                         if name in exception[0]:
                             self.raise_user_error(error)
                 raise
