@@ -28,7 +28,7 @@ class PurchaseRequest:
         pool = Pool()
         Sale = pool.get('sale.sale')
 
-        sales = [r.origin for r in requests if isinstance(r, Sale)]
+        sales = [r.origin for r in requests if isinstance(r.origin, Sale)]
 
         super(PurchaseRequest, cls).delete(requests)
 
