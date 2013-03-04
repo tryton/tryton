@@ -281,6 +281,7 @@ class Record(SignalEvent):
                 value = self.get(get_readonly=True)
                 try:
                     res = RPCExecute('model', self.model_name, 'create', value,
+                        main_iteration=False,
                         context=self.context_get())
                 except RPCException:
                     return False
@@ -297,7 +298,8 @@ class Record(SignalEvent):
                     context['_timestamp'] = self.get_timestamp()
                     try:
                         if not RPCExecute('model', self.model_name, 'write',
-                                [self.id], value, context=context):
+                                [self.id], value, main_iteration=False,
+                                context=context):
                             return False
                     except RPCException:
                         return False
@@ -332,7 +334,7 @@ class Record(SignalEvent):
         reload_ids = list(reload_ids)
         try:
             RPCExecute('model', record.model_name, 'delete', list(record_ids),
-                context=ctx)
+                main_iteration=False, context=ctx)
         except RPCException:
             return False
         if reload_ids:
@@ -343,7 +345,8 @@ class Record(SignalEvent):
         if len(self.group.fields):
             try:
                 vals = RPCExecute('model', self.model_name, 'default_get',
-                    self.group.fields.keys(), context=context)
+                    self.group.fields.keys(), main_iteration=False,
+                    context=context)
             except RPCException:
                 return
             if (self.parent
@@ -360,7 +363,8 @@ class Record(SignalEvent):
     def rec_name(self):
         try:
             return RPCExecute('model', self.model_name, 'read', self.id,
-                ['rec_name'], context=self.context_get())['rec_name']
+                ['rec_name'], main_iteration=False,
+                context=self.context_get())['rec_name']
         except RPCException:
             return ''
 
@@ -490,8 +494,9 @@ class Record(SignalEvent):
             attr = PYSONDecoder().decode(attr)
         args = self._get_on_change_args(attr)
         try:
-            res = RPCExecute('model', self.model_name,
-                'on_change_' + fieldname, args, context=self.context_get())
+            res = RPCExecute('model', self.model_name, 'on_change_' +
+                fieldname, args, main_iteration=False,
+                context=self.context_get())
         except RPCException:
             return
         later = {}
@@ -544,7 +549,8 @@ class Record(SignalEvent):
         if fieldnames:
             try:
                 result = RPCExecute('model', self.model_name, 'on_change_with',
-                    list(fieldnames), values, context=self.context_get())
+                    list(fieldnames), values, main_iteration=False,
+                    context=self.context_get())
             except RPCException:
                 return
             for fieldname, value in result.items():
@@ -556,7 +562,7 @@ class Record(SignalEvent):
             try:
                 result = RPCExecute('model', self.model_name,
                     'on_change_with_' + fieldname, values,
-                    context=self.context_get())
+                    main_iteration=False, context=self.context_get())
             except RPCException:
                 return
             self.group.fields[fieldname].set_on_change(self, result)
@@ -574,7 +580,8 @@ class Record(SignalEvent):
         args = self._get_on_change_args(autocomplete)
         try:
             res = RPCExecute('model', self.model_name, 'autocomplete_' +
-                fieldname, args, context=self.context_get())
+                fieldname, args, main_iteration=False,
+                context=self.context_get())
         except RPCException:
             # ensure res is a list
             res = []
@@ -589,7 +596,7 @@ class Record(SignalEvent):
                     'search_count', [
                         ('resource', '=',
                             '%s,%s' % (self.model_name, self.id)),
-                        ])
+                        ], main_iteration=False)
             except RPCException:
                 return 0
         return self.attachment_count
