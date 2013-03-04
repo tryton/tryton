@@ -164,6 +164,33 @@
             });
             return toolbar;
         },
+        modified_save: function() {
+            this.screen.current_view.set_value();
+            if (this.screen.modified()) {
+                // TODO popup
+                return false;
+            }
+            return true;
+        },
+        new_: function() {
+            // TODO test modelaccess
+            if (!this.modified_save()) {
+                return;
+            }
+            this.screen.new_();
+            // TODO message
+            // TODO activate_save
+        },
+        save: function() {
+            // TODO test modelaccess
+            if (this.screen.save_current()) {
+                // TODO message
+                return true;
+            } else {
+                // TODO message
+                return false;
+            }
+        },
         switch_: function() {
             // TODO modified
             this.screen.switch_view();

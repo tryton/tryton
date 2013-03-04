@@ -39,10 +39,24 @@
             };
             return prm.pipe(instanciate);
         },
-        delete_: function(records, context) {
-            return this.execute('delete', [records.map(function(record) {
+        delete_: function(records) {
+            if (jQuery.isEmptyObject(records)) {
+                return;
+            }
+            var record = records[0];
+            var root_group = record.group.root_group;
+            // TODO test same model
+            // TODO test same root group
+            records = records.filter(function(record) {
+                return record.id >= 0;
+            });
+            var context = {};
+            // TODO timestamp
+            var record_ids = records.map(function(record) {
                 return record.id;
-            })], context);
+            });
+            // TODO reload ids
+            return this.execute('delete', [record_ids], context);
         }
     });
 
@@ -105,7 +119,7 @@
             }
         };
         array.new_ = function(default_, id) {
-            var record = Sao.Record(this.name, id);
+            var record = new Sao.Record(this.name, id);
             record.model = this.model;
             record.group = this;
             if (default_) {
@@ -133,7 +147,7 @@
                             this.record_deleted.indexOf(record_del), 1);
                 }
             }
-            record.changed.id = true;
+            record._changed.id = true;
             this.changed();
             return record;
         };
@@ -155,6 +169,16 @@
             }
             return root;
         };
+        array.save = function() {
+            var deferreds = [];
+            this.forEach(function(record) {
+                deferreds.push(record.save());
+            });
+            if (!jQuery.isEmptyObject(this.record_deleted)) {
+                deferreds.push(this.model.delete_(this.record_deleted));
+            }
+            return jQuery.when(deferreds);
+        };
         return array;
     };
 
@@ -175,22 +199,24 @@
         },
         save: function() {
             var context = this.get_context();
-            var prm, values;
+            var prm = jQuery.when();
+            var values = this.get();
             if (this.id < 0) {
-                values = this.get();
-                prm = this.model.execute('create', [values], context);
-                var created = function(id) {
-                    this.id = id;
+                prm = this.model.execute('create', [[values]], context);
+                var created = function(ids) {
+                    this.id = ids[0];
                 };
                 prm.done(created.bind(this));
             } else {
-                values = this.get(true);
                 if (!jQuery.isEmptyObject(values)) {
-                    prm = this.model.execute('write', [this.id, values],
+                    // TODO timestamp
+                    prm = this.model.execute('write', [[this.id], values],
                             context);
                 }
             }
             prm.done(this.reload.bind(this));
+            // TODO group written
+            // TODO parent
             return prm;
         },
         reload: function() {
@@ -452,6 +478,11 @@
                 ctx['_parent_' + this.group.parent_name] = parent_env;
             }
             return new Sao.PYSON.Decoder(ctx).decode(expr);
+        },
+        validate: function(fields, softvalidation) {
+            var result = true;
+            // TODO
+            return result;
         }
     });
 
@@ -835,7 +866,7 @@
                 return fields;
             });
             if (!jQuery.isEmptyObject(value)) {
-                var context = this.get_context();
+                var context = this.get_context(record);
                 var field_names = {};
                 for (var val in value) {
                     if (!value.hasOwnProperty(val)) {

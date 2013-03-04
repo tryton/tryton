@@ -8,6 +8,12 @@
             this.screen = screen;
             this.view_type = null;
             this.el = null;
+            this.fields = {};
+        },
+        set_value: function() {
+        },
+        get_fields: function() {
+            return Object.keys(this.fields);
         }
     });
 
@@ -111,7 +117,6 @@
             this.el.append(footer);
         },
         create_columns: function(model, xml) {
-            var self = this;
             xml.find('tree').children().each(function(pos, child) {
                 var attributes, column;
                 if (child.tagName == 'field') {
@@ -148,6 +153,7 @@
                     var ColumnFactory = Sao.View.tree_column_get(
                         attributes.widget);
                     column = new ColumnFactory(model, attributes);
+                    this.fields[name] = true;
                 } else if (child.tagName == 'button') {
                     attributes = {
                         'help': child.getAttribute('help'),
@@ -157,8 +163,8 @@
                     };
                     column = new Sao.View.Tree.ButtonColumn(attributes);
                 }
-                self.columns.push(column);
-            });
+                this.columns.push(column);
+            }.bind(this));
         },
         display: function() {
             this.tbody.empty();
@@ -635,6 +641,7 @@
                 this.widgets[name] = [];
             }
             this.widgets[name].push(widget);
+            this.fields[name] = true;
         },
         _parse_group: function(model, node, container, attributes) {
             var group = new Sao.View.Form.Group(attributes);
@@ -688,6 +695,21 @@
             for (var j in this.state_widgets) {
                 var state_widget = this.state_widgets[j];
                 state_widget.state_set(record);
+            }
+        },
+        set_value: function() {
+            var record = this.screen.current_record;
+            if (record) {
+                var set_value = function(widget) {
+                    widget.set_value(record, this);
+                };
+                for (var name in this.widgets) {
+                    if (name in record.model.fields) {
+                        var widgets = this.widgets[name];
+                        var field = record.model.fields[name];
+                        widgets.forEach(set_value, field);
+                    }
+                }
             }
         }
     });
@@ -867,8 +889,12 @@
         },
         display: function(record, field) {
             Sao.View.Form.Char._super.display.call(this, record, field);
-            var value = record.field_get_client(this.field_name);
-            this.el.val(value || '');
+            if (record) {
+                var value = record.field_get_client(this.field_name);
+                this.el.val(value || '');
+            } else {
+                this.el.val('');
+            }
         },
         set_value: function(record, field) {
             var value = this.el.val() || '';
@@ -898,8 +924,12 @@
         },
         display: function(record, field) {
             Sao.View.Form.Date._super.display.call(this, record, field);
-            var value = record.field_get_client(this.field_name);
-            this.el.datepicker('setDate', value);
+            if (record) {
+                var value = record.field_get_client(this.field_name);
+                this.el.datepicker('setDate', value);
+            } else {
+                this.el.datepicker('setDate', null);
+            }
         },
         set_value: function(record, field) {
             var value = this.el.datepicker('getDate');
@@ -998,8 +1028,12 @@
         },
         display: function(record, field) {
             Sao.View.Form.FloatTime._super.display.call(this, record, field);
-            var value = record.field_get_client(this.field_name);
-            this.el.val(Sao.common.text_to_float_time(value, this.conv));
+            if (record) {
+                var value = record.field_get_client(this.field_name);
+                this.el.val(Sao.common.text_to_float_time(value, this.conv));
+            } else {
+                this.el.val('');
+            }
         }
     });
 
@@ -1015,7 +1049,11 @@
         },
         display: function(record, field) {
             Sao.View.Form.Boolean._super.display.call(this, record, field);
-            this.el.prop('checked', record.field_get(this.field_name));
+            if (record) {
+                this.el.prop('checked', record.field_get(this.field_name));
+            } else {
+                this.el.prop('checked', false);
+            }
         },
         set_value: function(record, field) {
             var value = this.el.prop('checked');
@@ -1034,8 +1072,12 @@
         },
         display: function(record, field) {
             Sao.View.Form.Text._super.display.call(this, record, field);
-            var value = record.field_get_client(this.field_name);
-            this.el.val(value);
+            if (record) {
+                var value = record.field_get_client(this.field_name);
+                this.el.val(value);
+            } else {
+                this.el.val('');
+            }
         },
         set_value: function(record, field) {
             var value = this.el.val() || '';

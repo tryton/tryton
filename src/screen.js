@@ -148,6 +148,83 @@
             if (this.current_record) {
                 return this.current_record.id;
             }
+        },
+        new_: function(default_) {
+            if (default_ === undefined) {
+                default_ = true;
+            }
+            var prm = jQuery.when();
+            if (this.current_view &&
+                    ((this.current_view.view_type == 'tree' &&
+                      !this.current_view.editable) ||
+                     this.current_view.view_type == 'graph')) {
+                prm = this.switch_view('form');
+            }
+            prm.done(function() {
+                var group;
+                if (this.current_record) {
+                    group = this.current_record.group;
+                } else {
+                    group = this.group;
+                }
+                var record = group.new_(default_);
+                group.add(record, this.new_model_position());
+                this.current_record = record;
+                this.display();
+                // TODO set_cursor
+            }.bind(this));
+        },
+        new_model_position: function() {
+            var position = -1;
+            // TODO editable
+            return position;
+        },
+        save_current: function() {
+            if (!this.current_record) {
+                if ((this.current_view.view_type == 'tree') &&
+                        (!jQuery.isEmptyObject(this.group))) {
+                    this.current_record = this.group[0];
+                } else {
+                    return true;
+                }
+            }
+            this.current_view.set_value();
+            var fields = this.current_view.get_fields();
+            // TODO path
+            var prm;
+            if (this.current_view.view_type == 'tree') {
+                prm = this.group.save();
+            } else if (this.current_record.validate(fields)) {
+                prm = this.current_record.save();
+            } else {
+                // TODO set_cursor
+                this.current_view.display();
+                prm = jQuery.when();
+                prm.reject();
+                return prm;
+            }
+            prm.always(function() {
+                this.display();
+            }.bind(this));
+            return prm;
+        },
+        modified: function() {
+            var test = function(record) {
+                return (record.has_changed() || record.id < 0);
+            };
+            if (this.current_view.view_type != 'tree') {
+                if (this.current_record) {
+                    if (test(this.current_record)) {
+                        return true;
+                    }
+                }
+            } else {
+                if (this.group.some(test)) {
+                    return true;
+                }
+            }
+            // TODO test view modified
+            return false;
         }
     });
 }());
