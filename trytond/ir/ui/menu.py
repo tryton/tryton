@@ -209,7 +209,10 @@ class UIMenu(ModelSQL, ModelView):
         if action_keywords:
             with Transaction().set_context(_timestamp=False):
                 ActionKeyword.delete(action_keywords)
-        action_type, action_id = value.split(',')
+        if isinstance(value, basestring):
+            action_type, action_id = value.split(',')
+        else:
+            action_type, action_id = value
         if not int(action_id):
             return
         Action = pool.get(action_type)
