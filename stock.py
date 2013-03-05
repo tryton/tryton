@@ -51,6 +51,7 @@ class Move(ModelSQL, ModelView):
         Update anglo_saxon_quantity on the concerned moves.
         '''
         uom_obj = Pool().get('product.uom')
+        currency_obj = Pool().get('currency.currency')
 
         for move in moves:
             assert move.product == product, 'wrong product'
@@ -65,8 +66,11 @@ class Move(ModelSQL, ModelView):
             consumed_qty += move_qty
 
             if type_.startswith('in_'):
+                with Transaction().set_context(date=move.effective_date):
+                    unit_price = currency_obj.compute(move.currency.id,
+                        move.unit_price, move.company.currency.id, round=False)
                 move_cost_price = uom_obj.compute_price(move.uom,
-                        move.unit_price, move.product.default_uom)
+                        unit_price, move.product.default_uom)
             else:
                 move_cost_price = move.cost_price
             cost += move_cost_price * Decimal(str(move_qty))
