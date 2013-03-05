@@ -628,833 +628,714 @@
             <field name="parent" ref="root_de"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1380">
             <field name="name">Vorläufiges Ergebnis</field>
             <field name="parent" ref="root_de"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1355">
             <field name="name">Steuern Eink.u.Ertr</field>
             <field name="parent" ref="view_income_1380"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1345">
             <field name="name">Ergebnis vor Steuern</field>
             <field name="parent" ref="view_income_1380"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1340">
             <field name="name">Kontenkl. unbesetzt</field>
             <field name="parent" ref="view_income_1345"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1330">
             <field name="name">Neutraler Ertrag</field>
             <field name="parent" ref="view_income_1345"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1324">
             <field name="name">Verr. kalk. Kosten</field>
             <field name="parent" ref="view_income_1330"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1323">
             <field name="name">Sonst. neutr. Ertr</field>
             <field name="parent" ref="view_income_1330"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1322">
             <field name="name">Zinserträge</field>
             <field name="parent" ref="view_income_1330"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1320">
             <field name="name">Neutraler Aufwand</field>
             <field name="parent" ref="view_income_1345"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1312">
             <field name="name">Sonst. neutr. Aufw</field>
             <field name="parent" ref="view_income_1320"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1310">
             <field name="name">Zinsaufwand</field>
             <field name="parent" ref="view_income_1320"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1300">
             <field name="name">Betriebsergebnis</field>
             <field name="parent" ref="view_income_1345"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1280">
             <field name="name">Gesamtkosten</field>
             <field name="parent" ref="view_income_1300"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1260">
             <field name="name">Sonstige Kosten</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1250">
             <field name="name">Reparatur/Instandh.</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1240">
             <field name="name">Abschreibungen</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1220">
             <field name="name">Kosten Warenabgabe</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1200">
             <field name="name">Werbe-/Reisekosten</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1180">
             <field name="name">Kfz-Kosten (o. St.)</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1160">
             <field name="name">Besondere Kosten</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1150">
             <field name="name">Versich./Beiträge</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1140">
             <field name="name">Betriebl. Steuern</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1120">
             <field name="name">Raumkosten</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1100">
             <field name="name">Personalkosten</field>
             <field name="parent" ref="view_income_1280"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1092">
             <field name="name">Betriebl. Rohertrag</field>
             <field name="parent" ref="view_income_1300"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1090">
             <field name="name">So. betr. Erlöse</field>
             <field name="parent" ref="view_income_1092"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1080">
             <field name="name">Rohertrag</field>
             <field name="parent" ref="view_income_1092"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1060">
             <field name="name">Mat./Wareneinkauf</field>
             <field name="parent" ref="view_income_1080"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1051">
             <field name="name">Gesamtleistung</field>
             <field name="parent" ref="view_income_1080"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1045">
             <field name="name">Akt.Eigenleistungen</field>
             <field name="parent" ref="view_income_1051"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1040">
             <field name="name">Best.Verdg. FE/UE</field>
             <field name="parent" ref="view_income_1051"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_income_1020">
             <field name="name">Umsatzerlöse</field>
             <field name="parent" ref="view_income_1051"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_960">
             <field name="name">Aktiva</field>
             <field name="parent" ref="balance_root_de"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1020">
             <field name="name">Ausstehende Einlagen</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1025">
             <field name="name">davon eingefordert</field>
             <field name="parent" ref="view_balance_1020"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1050">
             <field name="name">Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1060">
             <field name="name">Aufwendungen für die Währungsumstellung auf den Euro</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1080">
             <field name="name">Anlagevermögen</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1100">
             <field name="name">Immaterielle Vermögensgegenstände</field>
             <field name="parent" ref="view_balance_1080"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1120">
             <field name="name">Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten</field>
             <field name="parent" ref="view_balance_1100"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1130">
             <field name="name">Geschäfts- oder Firmenwert</field>
             <field name="parent" ref="view_balance_1100"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1150">
             <field name="name">geleistete Anzahlungen</field>
             <field name="parent" ref="view_balance_1100"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1180">
             <field name="name">Sachanlagen</field>
             <field name="parent" ref="view_balance_1080"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1200">
             <field name="name">Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken</field>
             <field name="parent" ref="view_balance_1180"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1210">
             <field name="name">technische Anlagen und Maschinen</field>
             <field name="parent" ref="view_balance_1180"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1220">
             <field name="name">andere Anlagen, Betriebs- und Geschäftsausstattung</field>
             <field name="parent" ref="view_balance_1180"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1230">
             <field name="name">geleistete Anzahlungen und Anlagen im Bau</field>
             <field name="parent" ref="view_balance_1180"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1260">
             <field name="name">Finanzanlagen</field>
             <field name="parent" ref="view_balance_1080"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1280">
             <field name="name">Anteile an verbundenen Unternehmen</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1290">
             <field name="name">Ausleihungen an verbundene Unternehmen</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1300">
             <field name="name">Beteiligungen</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1310">
             <field name="name">Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1320">
             <field name="name">Wertpapiere des Anlagevermögens</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1325">
             <field name="name">sonstige Ausleihungen</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1328">
             <field name="name">Genossenschaftsanteile</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1330">
             <field name="name">Rückdeckungsansprüche aus Lebensversicherungen</field>
             <field name="parent" ref="view_balance_1260"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1410">
             <field name="name">Umlaufvermögen</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1430">
             <field name="name">Vorräte</field>
             <field name="parent" ref="view_balance_1410"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1450">
             <field name="name">Roh-, Hilfs- und Betriebsstoffe</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1460">
             <field name="name">unfertige Erzeugnisse, unfertige Leistungen</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1465">
             <field name="name">in Ausführung befindliche Bauaufträge</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1467">
             <field name="name">in Arbeit befindliche Aufträge</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1470">
             <field name="name">fertige Erzeugnisse und Waren</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1480">
             <field name="name">geleistete Anzahlungen</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1490">
             <field name="name">erhaltene Anzahlungen auf Bestellungen</field>
             <field name="parent" ref="view_balance_1430"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1510">
             <field name="name">Forderungen und sonstige Vermögensgegenstände</field>
             <field name="parent" ref="view_balance_1410"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1530">
             <field name="name">Forderungen aus Lieferungen und Leistungen</field>
             <field name="parent" ref="view_balance_1510"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1535">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="view_balance_1530"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1540">
             <field name="name">Forderungen gegen verbundene Unternehmen</field>
             <field name="parent" ref="view_balance_1510"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1545">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="view_balance_1540"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1550">
             <field name="name">Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="view_balance_1510"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1555">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="view_balance_1550"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1580">
             <field name="name">sonstige Vermögensgegenstände</field>
             <field name="parent" ref="view_balance_1510"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1585">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="view_balance_1580"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1600">
             <field name="name">Wertpapiere</field>
             <field name="parent" ref="view_balance_1410"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1620">
             <field name="name">Anteile an verbundenen Unternehmen</field>
             <field name="parent" ref="view_balance_1600"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1630">
             <field name="name">eigene Anteile</field>
             <field name="parent" ref="view_balance_1600"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1640">
             <field name="name">sonstige Wertpapiere</field>
             <field name="parent" ref="view_balance_1600"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1660">
             <field name="name">Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks</field>
             <field name="parent" ref="view_balance_1410"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1680">
             <field name="name">Rechnungsabgrenzungsposten</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1700">
             <field name="name">Abgrenzung latenter Steuern</field>
             <field name="parent" ref="view_balance_960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_1960">
             <field name="name">Passiva</field>
             <field name="parent" ref="balance_root_de"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2020">
             <field name="name">Kapital</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2030">
             <field name="name">Anfangskapital</field>
             <field name="parent" ref="view_balance_2020"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2050">
             <field name="name">Einlagen</field>
             <field name="parent" ref="view_balance_2020"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2060">
             <field name="name">Entnahmen</field>
             <field name="parent" ref="view_balance_2020"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2070">
             <field name="name">Jahresüberschuss Jahresfehlbetrag</field>
             <field name="parent" ref="view_balance_2020"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2310">
             <field name="name">Einlagen stiller Gesellschafter</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2330">
             <field name="name">Sonderposten mit Rücklageanteil</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2335">
             <field name="name">Sonderposten für Zuschüsse und Zulagen</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2340">
             <field name="name">Sonderposten aus der Währungsumstellung auf den Euro</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2360">
             <field name="name">Rückstellungen</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2380">
             <field name="name">Rückstellungen für Pensionen und ähnliche Verpflichtungen</field>
             <field name="parent" ref="view_balance_2360"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2390">
             <field name="name">Steuerrückstellungen</field>
             <field name="parent" ref="view_balance_2360"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2410">
             <field name="name">sonstige Rückstellungen</field>
             <field name="parent" ref="view_balance_2360"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2440">
             <field name="name">Verbindlichkeiten</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2460">
             <field name="name">Anleihen</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2465">
             <field name="name">davon konvertibel</field>
             <field name="parent" ref="view_balance_2460"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2467">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2460"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2470">
             <field name="name">Verbindlichkeiten gegenüber Kreditinstituten</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2475">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2470"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2480">
             <field name="name">erhaltene Anzahlungen auf Bestellungen</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2485">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2480"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2490">
             <field name="name">Verbindlichkeiten aus Lieferungen und Leistungen</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2495">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2490"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2500">
             <field name="name">Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung eigener Wechsel</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2505">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2500"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2510">
             <field name="name">Verbindlichkeiten gegenüber verbundenen Unternehmen</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2515">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2510"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2520">
             <field name="name">Verbindlichkeiten gegenüber Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2525">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2520"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2530">
             <field name="name">sonstige Verbindlichkeiten</field>
             <field name="parent" ref="view_balance_2440"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2535">
             <field name="name">davon aus Steuern</field>
             <field name="parent" ref="view_balance_2530"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2537">
             <field name="name">davon im Rahmen der sozialen Sicherheit</field>
             <field name="parent" ref="view_balance_2530"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2539">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="view_balance_2530"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2560">
             <field name="name">Rechnungsabgrenzungsposten</field>
             <field name="parent" ref="view_balance_1960"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2890">
             <field name="name">Bilanzneutrale Konten</field>
             <field name="parent" ref="balance_root_de"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="view_balance_2980">
             <field name="name">Verbindlichkeiten aus der Begebung und Übertragung von Wechseln, aus Bürgschaften, Wechsel- und Scheckbürgschaften und aus Gewährleistungsverträgen sowie Haftung aus Bestellung von Sicherheiten für fremde Verbindlichkeiten</field>
             <field name="parent" ref="view_balance_2560"/>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
-            <field name="type" eval="False"/>
         </record>
         <record model="account.account.template" id="account_8339">
             <field name="name">Nicht steuerbare Umsätze EG-Land</field>
