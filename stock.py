@@ -31,8 +31,11 @@ class Move(ModelSQL, ModelView):
                 and move.product.cost_price_method == 'fixed'):
             cost_price = uom_obj.compute_price(move.product.default_uom,
                 move.cost_price, move.uom)
+            with Transaction().set_context(date=move.effective_date):
+                unit_price = currency_obj.compute(move.currency.id,
+                    move.unit_price, move.company.currency.id, round=False)
             amount = currency_obj.round(move.company.currency,
-                Decimal(str(move.quantity)) * (move.unit_price - cost_price))
+                Decimal(str(move.quantity)) * (unit_price - cost_price))
             if currency_obj.is_zero(move.company.currency, amount):
                 return lines
             account_id = move.product.account_stock_supplier_used.id
