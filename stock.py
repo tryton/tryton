@@ -24,7 +24,9 @@ class Move(ModelSQL, ModelView):
             'name': move.rec_name,
         }
         if type_.endswith('supplier'):
-            unit_price = move.unit_price
+            with Transaction().set_context(date=move.effective_date):
+                unit_price = currency_obj.compute(move.currency.id,
+                    move.unit_price, move.company.currency.id, round=False)
         else:
             unit_price = uom_obj.compute_price(move.product.default_uom,
                     move.cost_price, move.uom)
