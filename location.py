@@ -6,7 +6,7 @@ from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 from trytond.pool import PoolMeta
 
-__all__ = ['ProductLocation', 'ShipmentIn']
+__all__ = ['ProductLocation', 'ShipmentIn', 'ShipmentOutReturn']
 __metaclass__ = PoolMeta
 
 
@@ -57,4 +57,17 @@ class ShipmentIn:
                     incoming_move.shipment_in.warehouse.id:
                 continue
             res['to_location'] = product_location.location.id
+        return res
+
+
+class ShipmentOutReturn:
+    __name__ = 'stock.shipment.out.return'
+
+    @classmethod
+    def _get_inventory_moves(cls, incoming_move):
+        res = super(ShipmentOutReturn, cls)._get_inventory_moves(incoming_move)
+        for product_location in incoming_move.product.locations:
+            if (product_location.warehouse
+                    == incoming_move.shipment_out_return.warehouse):
+                res['to_location'] = product_location.location.id
         return res

@@ -11,4 +11,5 @@ def register():
         Product,
         ProductLocation,
         ShipmentIn,
+        ShipmentOutReturn,
         module='stock_product_location', type_='model')
