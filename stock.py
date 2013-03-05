@@ -32,13 +32,17 @@ class Move:
         pool = Pool()
         Uom = pool.get('product.uom')
         AccountMoveLine = pool.get('account.move.line')
+        Currency = pool.get('currency.currency')
         lines = super(Move, self)._get_account_stock_move_lines(type_)
         if (type_.endswith('supplier')
                 and self.product.cost_price_method == 'fixed'):
             cost_price = Uom.compute_price(self.product.default_uom,
                 self.cost_price, self.uom)
+            with Transaction().set_context(date=self.effective_date):
+                unit_price = Currency.compute(self.currency, self.unit_price,
+                    self.company.currency, round=False)
             amount = self.company.currency.round(
-                Decimal(str(self.quantity)) * (self.unit_price - cost_price))
+                Decimal(str(self.quantity)) * (unit_price - cost_price))
             if self.company.currency.is_zero(amount):
                 return lines
             account = self.product.account_stock_supplier_used
