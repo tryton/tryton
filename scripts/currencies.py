@@ -161,7 +161,7 @@ currencies = {
         'n_cs_precedes': 'True',
         'p_sep_by_space': 'False',
         'n_sep_by_space': 'False',
-        'mon_grouping': '[]',
+        'mon_grouping': '[3, 3, 0]',
         'mon_decimal_point': '.',
         'mon_thousands_sep': ',',
         'p_sign_posn': '1',
