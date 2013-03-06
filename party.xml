@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
                         <page string="Accounting" id="accounting">
                             <separator string="VAT" colspan="4" id="vat"/>
                             <label name="vat_country"/>
-                            <field name="vat_country"/>
+                            <field name="vat_country" xexpand="0"/>
                             <label name="vat_number"/>
                             <field name="vat_number"/>
                         </page>
