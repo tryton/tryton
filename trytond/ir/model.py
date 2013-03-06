@@ -367,7 +367,6 @@ class ModelFieldAccess(ModelSQL, ModelView):
 
         ir_model_obj = self.pool.get('ir.model')
         ir_model_field_obj = self.pool.get('ir.model.field')
-        user_group_obj = self.pool.get('res.user-res.group')
 
         cursor = Transaction().cursor
 
@@ -378,12 +377,12 @@ class ModelFieldAccess(ModelSQL, ModelView):
                     'ON (a.field = f.id) '
                 'JOIN "%s" AS m '
                     'ON (f.model = m.id) '
-                'LEFT JOIN "%s" AS gu '
+                'LEFT JOIN "res_user-res_group" AS gu '
                     'ON (gu.gid = a."group") '
                 'WHERE m.model = %%s AND (gu.uid = %%s OR a."group" IS NULL) '
                 'GROUP BY f.name'
                 % (mode, self._table, ir_model_field_obj._table,
-                    ir_model_obj._table, user_group_obj._table),
+                    ir_model_obj._table),
                 (model_name, Transaction().user))
         accesses = dict(cursor.fetchall())
         if access:
