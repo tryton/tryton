@@ -1511,17 +1511,13 @@ class ShipmentOut:
             for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.outgoing_moves])
 
-            sale_lines = SaleLine.search([
-                    ('moves', 'in', move_ids),
-                    ])
-            if sale_lines:
-                for sale_line in sale_lines:
-                    if sale_line.sale not in sales:
-                        sales.append(sale_line.sale)
-
             with Transaction().set_user(0, set_context=True):
-                sales = Sale.browse([s.id for s in sales])
-            Sale.process(sales)
+                sale_lines = SaleLine.search([
+                        ('moves', 'in', move_ids),
+                        ])
+                if sale_lines:
+                    sales = list(set(l.sale for l in sale_lines))
+                    Sale.process(sales)
 
     @classmethod
     @ModelView.button
@@ -1560,17 +1556,17 @@ class ShipmentOutReturn:
             for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.incoming_moves])
 
-            sale_lines = SaleLine.search([
-                    ('moves', 'in', move_ids),
-                    ])
-            if sale_lines:
-                for sale_line in sale_lines:
-                    if sale_line.sale not in sales:
-                        sales.append(sale_line.sale)
-
             with Transaction().set_user(0, set_context=True):
-                sales = Sale.browse([s.id for s in sales])
-            Sale.process(sales)
+                sale_lines = SaleLine.search([
+                        ('moves', 'in', move_ids),
+                        ])
+                if sale_lines:
+                    for sale_line in sale_lines:
+                        if sale_line.sale not in sales:
+                            sales.append(sale_line.sale)
+
+                    sales = Sale.browse([s.id for s in sales])
+                    Sale.process(sales)
 
     @classmethod
     @ModelView.button
@@ -1624,17 +1620,13 @@ class Move:
 
         super(Move, cls).write(moves, vals)
         if 'state' in vals and vals['state'] in ('cancel',):
-            sales = set()
-            sale_lines = SaleLine.search([
-                    ('moves', 'in', [m.id for m in moves]),
-                    ])
-            if sale_lines:
-                for sale_line in sale_lines:
-                    sales.add(sale_line.sale)
-            if sales:
-                with Transaction().set_user(0, set_context=True):
-                    sales = Sale.browse([s.id for s in sales])
-                Sale.process(sales)
+            with Transaction().set_user(0, set_context=True):
+                sale_lines = SaleLine.search([
+                        ('moves', 'in', [m.id for m in moves]),
+                        ])
+                if sale_lines:
+                    sales = list(set(l.sale for l in sale_lines))
+                    Sale.process(sales)
 
     @classmethod
     def delete(cls, moves):
@@ -1642,20 +1634,17 @@ class Move:
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        sales = set()
-        sale_lines = SaleLine.search([
-                ('moves', 'in', [m.id for m in moves]),
-                ])
+        with Transaction().set_user(0, set_context=True):
+            sale_lines = SaleLine.search([
+                    ('moves', 'in', [m.id for m in moves]),
+                    ])
 
         super(Move, cls).delete(moves)
 
         if sale_lines:
-            for sale_line in sale_lines:
-                sales.add(sale_line.sale)
-            if sales:
-                with Transaction().set_user(0, set_context=True):
-                    sales = Sale.browse([s.id for s in sales])
-                Sale.process(list(sales))
+            sales = list(set(l.sale for l in sale_lines))
+            with Transaction().set_user(0, set_context=True):
+                Sale.process(sales)
 
 
 class OpenCustomer(Wizard):
