@@ -22,45 +22,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="inherit" ref="party.party_view_form"/>
             <field name="priority">10</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form"
-                        position="replace_attributes">
-                        <form string="Carrier"/>
-                    </xpath>
-                    <xpath expr="/form/notebook"
-                        position="inside">
-                        <page string="Carrier" id="carrier">
-                            <label name="carrier_product"/>
-                            <field name="carrier_product"/>
-                            <newline/>
-                            <label name="carrier_cost_method"/>
-                            <field name="carrier_cost_method"/>
-                        </page>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">carrier_form</field>
         </record>
 
         <record model="ir.ui.view" id="carrier_view_form2">
             <field name="model">carrier</field>
             <field name="type">form</field>
             <field name="priority">20</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Carrier">
-                    <label name="party"/>
-                    <field name="party"/>
-                    <newline/>
-                    <label name="carrier_product"/>
-                    <field name="carrier_product"/>
-                    <label name="carrier_cost_method"/>
-                    <field name="carrier_cost_method"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">carrier_form2</field>
         </record>
 
         <record model="ir.ui.view" id="carrier_view_tree">
@@ -68,36 +37,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="inherit" ref="party.party_view_tree"/>
             <field name="priority">10</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/tree"
-                        position="replace_attributes">
-                        <tree string="Carriers"/>
-                    </xpath>
-                    <xpath expr="/tree/field[@name='name']"
-                        position="after">
-                        <field name="carrier_product"/>
-                        <field name="carrier_cost_method"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">carrier_tree</field>
         </record>
 
         <record model="ir.ui.view" id="carrier_view_tree2">
             <field name="model">carrier</field>
             <field name="type">tree</field>
             <field name="priority">20</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Carriers">
-                    <field name="party"/>
-                    <field name="carrier_product"/>
-                    <field name="carrier_cost_method"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">carrier_tree2</field>
         </record>
 
         <record model="ir.action.act_window" id="act_carrier_form">
