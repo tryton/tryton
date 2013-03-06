@@ -1584,7 +1584,7 @@ class ShipmentIn:
 
             with Transaction().set_user(0, set_context=True):
                 purchases = Purchase.browse([p.id for p in purchases])
-            Purchase.process(purchases)
+                Purchase.process(purchases)
 
     @classmethod
     @ModelView.button
@@ -1632,7 +1632,7 @@ class ShipmentInReturn:
 
             with Transaction().set_user(0, set_context=True):
                 purchases = Purchase.browse([p.id for p in purchases])
-            Purchase.process(purchases)
+                Purchase.process(purchases)
 
     @classmethod
     @ModelView.button
@@ -1751,7 +1751,7 @@ class Move(ModelSQL, ModelView):
             if purchases:
                 with Transaction().set_user(0, set_context=True):
                     purchases = Purchase.browse([p.id for p in purchases])
-                Purchase.process(purchases)
+                    Purchase.process(purchases)
 
     @classmethod
     def delete(cls, moves):
@@ -1772,7 +1772,7 @@ class Move(ModelSQL, ModelView):
             if purchases:
                 with Transaction().set_user(0, set_context=True):
                     purchases = Purchase.browse([p.id for p in purchases])
-                Purchase.process(purchases)
+                    Purchase.process(purchases)
 
 
 class OpenSupplier(Wizard):
