@@ -249,13 +249,12 @@ class ModelAccess(ModelSQL, ModelView):
         if Transaction().user == 0:
             return True
         ir_model_obj = self.pool.get('ir.model')
-        user_group_obj = self.pool.get('res.user-res.group')
         cursor = Transaction().cursor
         cursor.execute('SELECT MAX(CASE WHEN a.perm_'+mode+' THEN 1 else 0 END) '
             'FROM ir_model_access a '
                 'JOIN "' + ir_model_obj._table + '" m '
                     'ON (a.model = m.id) '
-                'JOIN "' + user_group_obj._table + '" gu '
+                'JOIN "res_user-res_group" gu '
                     'ON (gu.gid = a."group") '
             'WHERE m.model = %s AND gu.uid = %s',
             (model_name, Transaction().user,))
