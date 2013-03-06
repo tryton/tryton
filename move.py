@@ -347,9 +347,10 @@ class Move(Workflow, ModelSQL, ModelView):
         elif direction == 'out':
             quantity = -self.quantity
         context = {}
-        context['locations'] = Location.search([
+        locations = Location.search([
                 ('type', '=', 'storage'),
                 ])
+        context['locations'] = [l.id for l in locations]
         context['stock_date_end'] = Date.today()
         with Transaction().set_context(context):
             product = Product(self.product.id)
