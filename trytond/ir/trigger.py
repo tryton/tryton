@@ -161,7 +161,8 @@ class Trigger(ModelSQL, ModelView):
         """
         pool = Pool()
         TriggerLog = pool.get('ir.trigger.log')
-        Model = pool.get(trigger.action_model.model)
+        Model = pool.get(trigger.model.model)
+        ActionModel = pool.get(trigger.action_model.model)
         cursor = Transaction().cursor
         ids = map(int, records)
 
@@ -221,7 +222,7 @@ class Trigger(ModelSQL, ModelView):
 
         records = Model.browse(ids)
         if records:
-            getattr(Model, trigger.action_function)(records, trigger)
+            getattr(ActionModel, trigger.action_function)(records, trigger)
         if trigger.limit_number or trigger.minimum_delay:
             for record in records:
                 TriggerLog.create({
