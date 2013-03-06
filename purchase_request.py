@@ -137,7 +137,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         return res
 
     @classmethod
-    def generate_requests(cls):
+    def generate_requests(cls, products=None):
         """
         For each product compute the purchase request that must be
         create today to meet product outputs.
@@ -165,13 +165,14 @@ class PurchaseRequest(ModelSQL, ModelView):
                 (order_point.warehouse_location.id, order_point.product.id)
                 ] = order_point
 
-        # fetch goods and assets
-        # ordered by ids to speedup reduce_ids in products_by_location
-        products = Product.search([
-                ('type', 'in', ['goods', 'assets']),
-                ('consumable', '=', False),
-                ('purchasable', '=', True),
-                ], order=[('id', 'ASC')])
+        if products is None:
+            # fetch goods and assets
+            # ordered by ids to speedup reduce_ids in products_by_location
+            products = Product.search([
+                    ('type', 'in', ['goods', 'assets']),
+                    ('consumable', '=', False),
+                    ('purchasable', '=', True),
+                    ], order=[('id', 'ASC')])
         product_ids = [p.id for p in products]
         #aggregate product by minimum supply date
         date2products = {}
@@ -210,6 +211,14 @@ class PurchaseRequest(ModelSQL, ModelView):
                             company, order_point)
                         new_requests.append(request)
 
+        # delete purchase requests without a purchase line
+        products = set(products)
+        reqs = cls.search([
+                ('purchase_line', '=', None),
+                ('origin', 'like', 'stock.order_point,%'),
+                ])
+        reqs = [r for r in reqs if r.product in products]
+        cls.delete(reqs)
         new_requests = cls.compare_requests(new_requests)
 
         cls.create_requests(new_requests)
@@ -228,15 +237,9 @@ class PurchaseRequest(ModelSQL, ModelView):
         Compare new_requests with already existing request to avoid
         to re-create existing requests.
         """
-        # delete purchase request without a purchase line
         pool = Pool()
         Uom = pool.get('product.uom')
         Request = pool.get('purchase.request')
-        reqs = Request.search([
-            ('purchase_line', '=', None),
-            ('origin', 'like', 'stock.order_point,%'),
-            ])
-        Request.delete(reqs)
 
         requests = Request.search([
                 ('purchase_line.moves', '=', None),
