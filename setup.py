@@ -36,16 +36,16 @@ setup(name='trytond_carrier_percentage',
     long_description=read('README'),
     author='Tryton',
     url='http://www.tryton.org/',
-    download_url="http://downloads.tryton.org/" + \
-        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/',
+    download_url=("http://downloads.tryton.org/" +
+        info.get('version', '0.0.1').rsplit('.', 1)[0] + '/'),
     package_dir={'trytond.modules.carrier_percentage': '.'},
     packages=[
         'trytond.modules.carrier_percentage',
         'trytond.modules.carrier_percentage.tests',
         ],
     package_data={
-        'trytond.modules.carrier_percentage': info.get('xml', []) \
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst'],
+        'trytond.modules.carrier_percentage': (info.get('xml', [])
+            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
