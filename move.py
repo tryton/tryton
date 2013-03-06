@@ -331,9 +331,10 @@ class Move(ModelSQL, ModelView):
             company = Company(company)
 
         context = {}
-        context['locations'] = Location.search([
+        locations = Location.search([
                 ('type', '=', 'storage'),
                 ])
+        context['locations'] = [l.id for l in locations]
         context['stock_date_end'] = Date.today()
         with Transaction().set_context(context):
             product = Product(product_id)
