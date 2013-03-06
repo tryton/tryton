@@ -311,7 +311,6 @@ class ModelAccess(ModelSQL, ModelView):
         'Return access for models'
         pool = Pool()
         Model = pool.get('ir.model')
-        UserGroup = pool.get('res.user-res.group')
         cursor = Transaction().cursor
         user = Transaction().user
 
@@ -335,12 +334,12 @@ class ModelAccess(ModelSQL, ModelView):
                 'FROM "%s" AS a '
                 'JOIN "%s" AS m '
                     'ON (a.model = m.id) '
-                'LEFT JOIN "%s" AS gu '
+                'LEFT JOIN "res_user-res_group" AS gu '
                     'ON (gu."group" = a."group") '
                 'WHERE m.model IN (' + ','.join(('%%s',) * len(models)) + ') '
                     'AND (gu."user" = %%s OR a."group" IS NULL) '
                 'GROUP BY m.model')
-            % (cls._table, Model._table, UserGroup._table),
+            % (cls._table, Model._table),
             list(models) + [Transaction().user])
         access.update(dict(
                 (m, {'read': r, 'write': w, 'create': c, 'delete': d})
