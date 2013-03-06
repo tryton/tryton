@@ -49,7 +49,38 @@ Create company::
 Reload the context::
 
     >>> User = Model.get('res.user')
+    >>> Group = Model.get('res.group')
     >>> config._context = User.get_preferences(True, config.context)
+
+Create sale user::
+
+    >>> sale_user = User()
+    >>> sale_user.name = 'Sale'
+    >>> sale_user.login = 'sale'
+    >>> sale_user.main_company = company
+    >>> sale_group, = Group.find([('name', '=', 'Sales')])
+    >>> sale_user.groups.append(sale_group)
+    >>> sale_user.save()
+
+Create stock user::
+
+    >>> stock_user = User()
+    >>> stock_user.name = 'Stock'
+    >>> stock_user.login = 'stock'
+    >>> stock_user.main_company = company
+    >>> stock_group, = Group.find([('name', '=', 'Stock')])
+    >>> stock_user.groups.append(stock_group)
+    >>> stock_user.save()
+
+Create account user::
+
+    >>> account_user = User()
+    >>> account_user.name = 'Account'
+    >>> account_user.login = 'account'
+    >>> account_user.main_company = company
+    >>> account_group, = Group.find([('name', '=', 'Account')])
+    >>> account_user.groups.append(account_group)
+    >>> account_user.save()
 
 Create fiscal year::
 
@@ -148,6 +179,7 @@ Create payment term::
 
 Create an Inventory::
 
+    >>> config.user = stock_user.id
     >>> Inventory = Model.get('stock.inventory')
     >>> InventoryLine = Model.get('stock.inventory.line')
     >>> Location = Model.get('stock.location')
@@ -168,6 +200,7 @@ Create an Inventory::
 
 Sale 5 products::
 
+    >>> config.user = sale_user.id
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -198,6 +231,7 @@ Sale 5 products::
 
 Sale 5 products with an invoice method 'on shipment'::
 
+    >>> config.user = sale_user.id
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -228,9 +262,9 @@ Sale 5 products with an invoice method 'on shipment'::
 
 Validate Shipments::
 
-    >>> sale.reload()
-    >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
+    >>> config.user = stock_user.id
+    >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> ShipmentOut.assign_try([shipment.id], config.context)
     True
     >>> ShipmentOut.pack([shipment.id], config.context)
@@ -238,9 +272,11 @@ Validate Shipments::
 
 Open customer invoice::
 
+    >>> config.user = sale_user.id
     >>> sale.reload()
     >>> Invoice = Model.get('account.invoice')
     >>> invoice, = sale.invoices
+    >>> config.user = account_user.id
     >>> invoice.type
     u'out_invoice'
     >>> len(invoice.lines)
@@ -260,6 +296,7 @@ Open customer invoice::
 
 Create a Return::
 
+    >>> config.user = sale_user.id
     >>> return_ = Sale()
     >>> return_.party = customer
     >>> return_.payment_term = payment_term
@@ -285,9 +322,10 @@ Create a Return::
 
 Check Return Shipments::
 
-    >>> return_.reload()
-    >>> ShipmentReturn = Model.get('stock.shipment.out.return')
+    >>> config.user = sale_user.id
     >>> ship_return, = return_.shipment_returns
+    >>> config.user = stock_user.id
+    >>> ShipmentReturn = Model.get('stock.shipment.out.return')
     >>> ShipmentReturn.receive([ship_return.id], config.context)
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.name
@@ -297,8 +335,10 @@ Check Return Shipments::
 
 Open customer credit note::
 
+    >>> config.user = sale_user.id
     >>> return_.reload()
     >>> credit_note, = return_.invoices
+    >>> config.user = account_user.id
     >>> credit_note.type
     u'out_credit_note'
     >>> len(credit_note.lines)
@@ -316,6 +356,7 @@ Open customer credit note::
 
 Mixing return and sale::
 
+    >>> config.user = sale_user.id
     >>> mix = Sale()
     >>> mix.party = customer
     >>> mix.payment_term = payment_term
@@ -344,9 +385,10 @@ Mixing return and sale::
 
 Checking Shipments::
 
-    >>> mix.reload()
+    >>> config.user = sale_user.id
     >>> mix_returns, = mix.shipment_returns
     >>> mix_shipments, = mix.shipments
+    >>> config.user = stock_user.id
     >>> ShipmentReturn.receive([mix_returns.id], config.context)
     >>> move_return, = mix_returns.incoming_moves
     >>> move_return.product.name
@@ -365,9 +407,11 @@ Checking Shipments::
 
 Checking the invoice::
 
+    >>> config.user = sale_user.id
     >>> mix.reload()
     >>> mix_invoice, mix_credit_note = sorted(mix.invoices,
     ...     key=attrgetter('type'), reverse=True)
+    >>> config.user = account_user.id
     >>> mix_invoice.type, mix_credit_note.type
     (u'out_invoice', u'out_credit_note')
     >>> len(mix_invoice.lines), len(mix_credit_note.lines)
@@ -389,6 +433,7 @@ Checking the invoice::
 
 Mixing stuff with an invoice method 'on shipment'::
 
+    >>> config.user = sale_user.id
     >>> mix = Sale()
     >>> mix.party = customer
     >>> mix.payment_term = payment_term
@@ -417,9 +462,10 @@ Mixing stuff with an invoice method 'on shipment'::
 
 Checking Shipments::
 
-    >>> mix.reload()
+    >>> config.user = sale_user.id
     >>> mix_returns, = mix.shipment_returns
     >>> mix_shipments, = mix.shipments
+    >>> config.user = stock_user.id
     >>> ShipmentReturn.receive([mix_returns.id], config.context)
     >>> move_return, = mix_returns.incoming_moves
     >>> move_return.product.name
