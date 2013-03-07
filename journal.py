@@ -283,7 +283,8 @@ class CloseJournalPeriod(Wizard):
 
     def transition_close(self):
         JournalPeriod = Pool().get('account.journal.period')
-        JournalPeriod.close(JournalPeriod(Transaction().context['active_ids']))
+        JournalPeriod.close(
+            JournalPeriod.browse(Transaction().context['active_ids']))
         return 'end'
 
 
@@ -295,5 +296,6 @@ class ReOpenJournalPeriod(Wizard):
 
     def transition_reopen(self):
         JournalPeriod = Pool().get('account.journal.period')
-        JournalPeriod.open_(JournalPeriod(Transaction().context['active_ids']))
+        JournalPeriod.open_(
+            JournalPeriod.browse(Transaction().context['active_ids']))
         return 'end'
