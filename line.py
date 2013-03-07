@@ -41,15 +41,13 @@ class Line(ModelSQL, ModelView):
         cls._sql_constraints += [
             ('credit_debit',
                 'CHECK((credit * debit = 0.0) AND (credit + debit >= 0.0))',
-                'Wrong credit/debit values!'),
-            ]
-        cls._constraints += [
-            ('check_account', 'line_on_view_inactive_account'),
+                'Wrong credit/debit values.'),
             ]
         cls._error_messages.update({
-                'line_on_view_inactive_account': (
-                    'You can not create move line\n'
-                    'on view/inactive account!'),
+                'line_on_view_account': ('You can not create a move line using '
+                    'view account "%s".'),
+                'line_on_inactive_account': ('You can not create a move line '
+                    'using inactive account "%s".'),
                 })
         cls._order.insert(0, ('date', 'ASC'))
 
@@ -107,12 +105,19 @@ class Line(ModelSQL, ModelView):
                 + str(Transaction().context['end_date']) + '\')')
         return res
 
+    @classmethod
+    def validate(cls, lines):
+        super(Line, cls).validate(lines)
+        for line in lines:
+            line.check_account()
+
     def check_account(self):
         if self.account.type == 'view':
-            return False
+            self.raise_user_error('line_on_view_account',
+                (line.account.rec_name,))
         if not self.account.active:
-            return False
-        return True
+            self.raise_user_error('line_on_inactive_account',
+                (line.account.rec_name,))
 
 
 class MoveLine(ModelSQL, ModelView):

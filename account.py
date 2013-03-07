@@ -69,12 +69,6 @@ class Account(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Account, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_accounts'),
-            ]
-        cls._error_messages.update({
-                'recursive_accounts': 'You can not create recursive accounts!',
-                })
         cls._order.insert(0, ('code', 'ASC'))
 
     @staticmethod
@@ -107,6 +101,11 @@ class Account(ModelSQL, ModelView):
     @staticmethod
     def default_mandatory():
         return False
+
+    @classmethod
+    def validate(cls, accounts):
+        super(Account, cls).validate(accounts)
+        cls.check_recursion(accounts)
 
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
@@ -334,13 +333,15 @@ class AccountSelection(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(AccountSelection, cls).__setup__()
-        cls._constraints += [
-            ('check_root', 'root_account'),
-            ]
         cls._error_messages.update({
                 'root_account': ('Can not have many accounts with the same '
-                    'root or a missing mandatory root account!'),
+                    'root or a missing mandatory root account on "%s".'),
                 })
+
+    @classmethod
+    def validate(cls, selections):
+        super(AccountSelection, cls).validate(selections)
+        cls.check_root(selections)
 
     @classmethod
     def check_root(cls, selections):
@@ -355,14 +356,14 @@ class AccountSelection(ModelSQL, ModelView):
             roots = []
             for account in selection.accounts:
                 if account.root.id in roots:
-                    return False
+                    cls.raise_user_error('root_account', (account.rec_name,))
                 roots.append(account.root.id)
             if Transaction().user:  # Root can by pass
                 for account in root_accounts:
                     if account.mandatory:
                         if not account.id in roots:
-                            return False
-        return True
+                            cls.raise_user_error('root_account',
+                                (account.rec_name,))
 
 
 class AccountAccountSelection(ModelSQL):
