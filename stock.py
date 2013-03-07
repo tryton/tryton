@@ -21,7 +21,7 @@ class Move:
         cls._sql_constraints += [
             ('check_anglo_saxon_quantity',
                 'CHECK(quantity >= anglo_saxon_quantity)',
-                'Anglo-Saxon quantity can not be greater than quantity!'),
+                'Anglo-Saxon quantity can not be greater than quantity.'),
             ]
 
     @staticmethod
