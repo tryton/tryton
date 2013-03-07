@@ -118,15 +118,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">open_chart_start_form</field>
         </record>
-
-        <record model="ir.translation" id="analytic_account_recursion_error">
-            <field name="name">analytic_account.account</field>
-            <field name="lang">en_US</field>
-            <field name="type">error</field>
-            <field name="src">recursion_error</field>
-            <field name="value">Recursion error: Analytic Account "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
-            <field name="module">analytic_account</field>
-            <field name="fuzzy" eval="False"/>
-        </record>
     </data>
 </tryton>
