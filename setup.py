@@ -45,7 +45,7 @@ setup(name='trytond_company_work_time',
         ],
     package_data={
         'trytond.modules.company_work_time': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
