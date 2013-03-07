@@ -53,14 +53,10 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_works'),
-            ('check_parent_company', 'parent_company'),
-            ]
         cls._error_messages.update({
-                'recursive_works': 'You can not create recursive works!',
-                'parent_company': ('Every work must be in the same company '
-                    'as it\'s parent work!'),
+                'invalid_parent_company': ('Every work must be in the same '
+                    'company as it\'s parent work but "%(child)s" and '
+                    '"%(parent)s" are in different companies.'),
                 })
 
     @staticmethod
@@ -83,10 +79,21 @@ class Work(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def validate(cls, works):
+        super(Work, cls).validate(works)
+        cls.check_recursion(works, rec_name='name')
+        for work in works:
+            work.check_parent_company()
+
     def check_parent_company(self):
         if not self.parent:
-            return True
-        return self.parent.company == self.company
+            return
+        if self.parent.company != self.company:
+            self.raise_user_error('invalid_parent_company', {
+                    'child': self.rec_name,
+                    'parent': self.parent.rec_name,
+                    })
 
     @classmethod
     def _tree_qty(cls, hours_by_wt, children, ids, to_compute):
