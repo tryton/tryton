@@ -78,12 +78,9 @@ class BOMInput(ModelSQL, ModelView):
             ('product_bom_uniq', 'UNIQUE(product, bom)',
                 'product_bom_uniq'),
             ]
-        cls._constraints += [
-            ('check_bom_recursion', 'recursive_bom'),
-            ]
         cls._error_messages.update({
-                'product_bom_uniq': 'Product must be unique per BOM!',
-                'recursive_bom': 'You can not create recursive BOMs!',
+                'product_bom_uniq': 'Product must be unique per BOM.',
+                'recursive_bom': 'You can not create recursive BOMs.',
                 })
 
     def on_change_product(self):
@@ -109,11 +106,17 @@ class BOMInput(ModelSQL, ModelView):
             return self.uom.digits
         return 2
 
+    @classmethod
+    def validate(cls, boms):
+        super(BOMInput, cls).validate(boms)
+        for bom in boms:
+            bom.check_bom_recursion()
+
     def check_bom_recursion(self):
         '''
         Check BOM recursion
         '''
-        return self.product.check_bom_recursion()
+        self.product.check_bom_recursion()
 
     def compute_quantity(self, factor):
         Uom = Pool().get('product.uom')

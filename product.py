@@ -21,12 +21,16 @@ class Product:
     @classmethod
     def __setup__(cls):
         super(Product, cls).__setup__()
-        cls._constraints += [
-            ('check_bom_recursion', 'recursive_bom'),
-            ]
         cls._error_messages.update({
-                'recursive_bom': 'You can not create recursive BOMs!',
+                'recursive_bom': ('You are trying to create a recursive BOM '
+                    'with product "%s" which is not allowed.'),
                 })
+
+    @classmethod
+    def validate(cls, products):
+        super(Product, cls).validate(products)
+        for product in products:
+            product.check_bom_recursion()
 
     def check_bom_recursion(self, product=None):
         '''
@@ -36,11 +40,9 @@ class Product:
             product = self
         for product_bom in self.boms:
             for input_ in product_bom.bom.inputs:
-                if input_.product == product:
-                    return False
-                if not input_.product.check_bom_recursion(product=product):
-                    return False
-        return True
+                if (input_.product == product
+                        or input_.product.check_bom_recursion(product=product)):
+                    self.raise_user_error('recursive_bom', (product.rec_name,))
 
 
 class ProductBom(ModelSQL, ModelView):

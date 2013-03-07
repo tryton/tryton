@@ -133,11 +133,9 @@ class Production(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Production, cls).__setup__()
-        cls._constraints += [
-            ('check_cost', 'missing_cost'),
-            ]
         cls._error_messages.update({
-                'missing_cost': 'It misses some cost on the outputs!',
+                'missing_cost': ('Production "%s" misses costs on '
+                    'some of its outputs.'),
                 })
         cls._transitions |= set((
                 ('request', 'draft'),
@@ -436,16 +434,21 @@ class Production(Workflow, ModelSQL, ModelView):
                 move.save()
         self._set_move_planned_date()
 
+    @classmethod
+    def validate(cls, productions):
+        super(Production, cls).validate(productions)
+        for production in productions:
+            production.check_cost()
+
     def check_cost(self):
         if self.state != 'done':
-            return True
+            return
         cost_price = Decimal(0)
         for output in self.outputs:
             cost_price += (Decimal(str(output.quantity))
                 * output.unit_price)
         if not self.company.currency.is_zero(self.cost - cost_price):
-            return False
-        return True
+            self.raise_user_error('missing_cost', (self.rec_name,))
 
     @classmethod
     def create(cls, vlist):
