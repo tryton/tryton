@@ -45,7 +45,7 @@ setup(name='trytond_currency',
         ],
     package_data={
         'trytond.modules.currency': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'icons/*.svg']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

@@ -28,79 +28,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="currency_view_form">
             <field name="model">currency.currency</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Currency" col="6">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="symbol"/>
-                    <field name="symbol"/>
-                    <label name="active"/>
-                    <field name="active" xexpand="0" width="100"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="numeric_code"/>
-                    <field name="numeric_code"/>
-                    <label name="rounding"/>
-                    <field name="rounding"/>
-                    <notebook colspan="6">
-                        <page string="Rates" id="rates">
-                            <label name="rate"/>
-                            <field name="rate"/>
-                            <field name="rates" colspan="4" mode="tree,form,graph"/>
-                        </page>
-                        <page string="Formatting" col="6" id="formatting">
-                            <label name="digits"/>
-                            <field name="digits"/>
-                            <newline/>
-                            <label name="mon_grouping"/>
-                            <field name="mon_grouping"/>
-                            <label name="mon_thousands_sep"/>
-                            <field name="mon_thousands_sep"/>
-                            <label name="mon_decimal_point"/>
-                            <field name="mon_decimal_point"/>
-                            <newline/>
-                            <label name="positive_sign"/>
-                            <field name="positive_sign"/>
-                            <label name="negative_sign"/>
-                            <field name="negative_sign"/>
-                            <newline/>
-                            <label name="p_sign_posn"/>
-                            <field name="p_sign_posn"/>
-                            <label name="n_sign_posn"/>
-                            <field name="n_sign_posn"/>
-                            <newline/>
-                            <label name="p_cs_precedes"/>
-                            <field name="p_cs_precedes"/>
-                            <label name="n_cs_precedes"/>
-                            <field name="n_cs_precedes"/>
-                            <newline/>
-                            <label name="p_sep_by_space"/>
-                            <field name="p_sep_by_space"/>
-                            <label name="n_sep_by_space"/>
-                            <field name="n_sep_by_space"/>
-                            <newline/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">currency_form</field>
         </record>
         <record model="ir.ui.view" id="currency_view_tree">
             <field name="model">currency.currency</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Currencies">
-                    <field name="name"/>
-                    <field name="symbol"/>
-                    <field name="code"/>
-                    <field name="numeric_code"/>
-                    <field name="rate"/>
-                    <field name="active" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">currency_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_currency_form">
             <field name="name">Currencies</field>
@@ -137,50 +70,19 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="currency_rate_view_list">
             <field name="model">currency.currency.rate</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Rates">
-                    <field name="currency"/>
-                    <field name="date"/>
-                    <field name="rate"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">currency_rate_list</field>
         </record>
 
         <record model="ir.ui.view" id="currency_rate_view_form">
             <field name="model">currency.currency.rate</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Rate">
-                    <label name="currency"/>
-                    <field name="currency"/>
-                    <newline/>
-                    <label name="date"/>
-                    <field name="date"/>
-                    <label name="rate"/>
-                    <field name="rate"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">currency_rate_form</field>
         </record>
 
         <record model="ir.ui.view" id="currency_rate_view_graph">
             <field name="model">currency.currency.rate</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Rates" type="line">
-                    <x>
-                        <field name="date"/>
-                    </x>
-                    <y>
-                        <field name="rate" fill="1" empty="0"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">currency_rate_graph</field>
         </record>
 
         <record model="ir.model.access" id="access_currency_rate">
