@@ -21,11 +21,11 @@ class Move:
         cls._sql_constraints += [
                 ('check_fifo_quantity_out',
                     'CHECK(quantity >= fifo_quantity)',
-                    'FIFO quantity can not be greater than quantity!'),
+                    'FIFO quantity can not be greater than quantity.'),
                 ]
         cls._error_messages.update({
-                'del_move_fifo': ('You can not delete move that is used '
-                    'for FIFO cost price!'),
+                'del_move_fifo': ('You can not delete move "%s" that is used '
+                    'for FIFO cost price.'),
                 })
 
     @staticmethod
@@ -124,9 +124,10 @@ class Move:
 
     @classmethod
     def delete(cls, moves):
-        if cls.search([
+        moves = cls.search([
                 ('id', 'in', [m.id for m in moves]),
                 ('fifo_quantity', '!=', 0.0),
-                ]):
-            cls.raise_user_error('del_move_fifo')
+                ])
+        if moves:
+            cls.raise_user_error('del_move_fifo', (moves[0].rec_name))
         super(Move, cls).delete(moves)
