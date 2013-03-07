@@ -511,10 +511,9 @@ class CreatePurchase(Wizard):
     def __setup__(cls):
         super(CreatePurchase, cls).__setup__()
         cls._error_messages.update({
-                'missing_price': ('Purchase price is missing for product: %s '
-                    '(id: %s)!'),
-                'please_update': (
-                    'This price is necessary for creating purchase.'),
+                'missing_price': 'Purchase price is missing for product "%s".',
+                'please_update': ('This price is necessary for creating '
+                    'purchases.'),
                 })
 
     def default_ask_party(self, fields):
@@ -673,8 +672,8 @@ class CreatePurchase(Wizard):
                 Decimal(1) / 10 ** Line.unit_price.digits[1])
 
         if product_price is None:
-            cls.raise_user_error('missing_price', (request.product.name,
-                    request.product.id), 'please_update')
+            cls.raise_user_error('missing_price', (request.product.rec_name,),
+                'please_update')
         line.unit_price = product_price
 
         taxes = []

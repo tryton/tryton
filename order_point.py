@@ -72,10 +72,6 @@ class OrderPoint(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(OrderPoint, cls).__setup__()
-        cls._constraints += [
-            ('check_concurrent_internal', 'concurrent_internal_op'),
-            ('check_uniqueness', 'unique_op'),
-            ]
         cls._sql_constraints += [
             ('check_max_qty_greater_min_qty',
                 'CHECK(max_quantity >= min_quantity)',
@@ -121,6 +117,12 @@ class OrderPoint(ModelSQL, ModelView):
         return self.product.default_uom.digits
 
     @classmethod
+    def validate(cls, orderpoints):
+        super(OrderPoint, cls).validate(orderpoints)
+        cls.check_concurrent_internal(orderpoints)
+        cls.check_uniqueness(orderpoints)
+
+    @classmethod
     def check_concurrent_internal(cls, orders):
         """
         Ensure that there is no 'concurrent' internal order
@@ -132,7 +134,7 @@ class OrderPoint(ModelSQL, ModelView):
                 ('type', '=', 'internal'),
                 ])
         if not internals:
-            return True
+            return
 
         query = ['OR']
         for op in internals:
@@ -142,7 +144,8 @@ class OrderPoint(ModelSQL, ModelView):
                    ('company', '=', op.company.id),
                    ('type', '=', 'internal')]
             query.append(arg)
-        return not bool(cls.search(query))
+        if cls.search(query):
+            cls.raise_user_error('concurrent_internal_op')
 
     @staticmethod
     def _type2field(type=None):
@@ -172,7 +175,8 @@ class OrderPoint(ModelSQL, ModelView):
                 ('company', '=', op.company.id),
                 ]
             query.append(arg)
-        return not bool(cls.search(query))
+        if cls.search(query):
+            self.raise_user_error('unique_op')
 
     def get_rec_name(self, name):
         return "%s@%s" % (self.product.name, self.location.name)
