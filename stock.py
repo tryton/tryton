@@ -38,9 +38,9 @@ class ShipmentOut:
     def __setup__(cls):
         super(ShipmentOut, cls).__setup__()
         cls._error_messages.update({
-            'missing_account_revenue': 'It misses '
-                    'an "Account Revenue" on product "%s"!',
-            })
+                'missing_account_revenue': ('Missing "Account Revenue" on '
+                    'product "%s".'),
+                })
         if not cls.inventory_moves.on_change:
             cls.inventory_moves.on_change = []
         for fname in ('carrier', 'customer', 'inventory_moves'):
