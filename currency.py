@@ -42,13 +42,11 @@ class Currency(ModelSQL, ModelView):
     def __setup__(cls):
         super(Currency, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
-        cls._constraints += [
-            ('check_mon_grouping', 'invalid_mon_grouping'),
-            ]
         cls._error_messages.update({
-                'no_rate': ('No rate found for the currency: '
-                    '%s at the date: %s'),
-                'invalid_grouping': 'Invalid Grouping!',
+                'no_rate': ('No rate found for currency "%(currency)s" on '
+                    '"%(date)s"'),
+                'invalid_mon_grouping': ('Invalid grouping "%(grouping)s" on '
+                    ' currency "%(currency)s".'),
                 })
         cls.__rpc__.update({
                 'compute': RPC(),
@@ -110,6 +108,12 @@ class Currency(ModelSQL, ModelView):
     def default_n_sep_by_space():
         return False
 
+    @classmethod
+    def validate(cls, currencies):
+        super(Currency, cls).validate(currencies)
+        for currency in currencies:
+            currency.check_mon_grouping()
+
     def check_mon_grouping(self):
         '''
         Check if mon_grouping is list of numbers
@@ -118,10 +122,12 @@ class Currency(ModelSQL, ModelView):
             grouping = safe_eval(self.mon_grouping)
             for i in grouping:
                 if not isinstance(i, int):
-                    return False
+                    raise ValueError
         except Exception:
-            return False
-        return True
+            self.raise_user_error('invalid_mon_grouping', {
+                    'grouping': currency.mon_grouping,
+                    'currency': currency.rec_name,
+                    })
 
     @classmethod
     def check_xml_record(cls, records, values):
@@ -222,12 +228,13 @@ class Currency(ModelSQL, ModelView):
             else:
                 name = to_currency.name
 
-            lang, = Lang.search([
+            languages = Lang.search([
                     ('code', '=', Transaction().language),
                     ])
-
-            cls.raise_user_error('no_rate', (name,
-                    datetime_strftime(date, str(lang.date))))
+            cls.raise_user_error('no_rate', {
+                    'currency': name,
+                    'date': datetime_strftime(date, str(languages[0].date))
+                    })
         if round:
             return to_currency.round(
                 amount * to_currency.rate / from_currency.rate)
@@ -249,7 +256,7 @@ class Rate(ModelSQL, ModelView):
         super(Rate, cls).__setup__()
         cls._sql_constraints = [
             ('date_currency_uniq', 'UNIQUE(date, currency)',
-                'A currency can only have one rate by date!'),
+                'A currency can only have one rate by date.'),
             ('check_currency_rate', 'CHECK(rate >= 0)',
                 'The currency rate must greater than or equal to 0'),
             ]
