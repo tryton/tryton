@@ -93,7 +93,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         super(EmployeeCostPrice, cls).__setup__()
         cls._sql_constraints = [
             ('date_cost_price_uniq', 'UNIQUE(date, cost_price)',
-                'A employee can only have one cost price by date!'),
+                'A employee can only have one cost price by date.'),
             ]
         cls._order.insert(0, ('date', 'DESC'))
 
