@@ -60,16 +60,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cls._sql_constraints += [
             ('check_from_to_date',
              'CHECK(to_date >= from_date)',
-             '"To Date" must be greater than "From Date"!'),
-            ]
-        cls._constraints += [
-            ('check_date_overlap', 'date_overlap'),
+             '"To Date" must be greater than "From Date"'),
             ]
         cls._error_messages.update({
-                'date_overlap': ('You can not create forecasts for the same '
-                    'locations with overlapping dates'),
+                'date_overlap': ('Forecast "%(first)s" overlaps with dates '
+                    'of forecast "%(second)s" in the same location.'),
                 'delete_cancel': ('Forecast "%s" must be cancelled before '
-                    'deletion!'),
+                    'deletion.'),
                 })
         cls._order.insert(0, ('from_date', 'DESC'))
         cls._order.insert(1, ('warehouse', 'ASC'))
@@ -152,6 +149,12 @@ class Forecast(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def validate(cls, forecasts):
+        super(Forecast, cls).validate(forecasts)
+        for forecast in forecasts:
+            forecast.check_date_overlap()
+
     def check_date_overlap(self):
         cursor = Transaction().cursor
         if self.state != 'done':
@@ -171,12 +174,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
              self.from_date, self.to_date,
              self.warehouse.id, self.destination.id,
              self.company.id, self.id))
-        rowcount = cursor.rowcount
-        if rowcount == -1 or rowcount is None:
-            rowcount = len(cursor.fetchall())
-        if rowcount:
-            return False
-        return True
+        forecast_id = cursor.fetchone()
+        if forecast_id:
+            second = self.__class__(forecast_id[0])
+            self.raise_user_error('date_overlap', {
+                    'first': self.rec_name,
+                    'second': second.rec_name,
+                    })
 
     @classmethod
     def delete(self, forecasts):
@@ -285,12 +289,12 @@ class ForecastLine(ModelSQL, ModelView):
         super(ForecastLine, cls).__setup__()
         cls._sql_constraints += [
             ('check_line_qty_pos',
-             'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
+             'CHECK(quantity >= 0.0)', 'Line quantity must be positive'),
             ('check_line_minimal_qty',
              'CHECK(quantity >= minimal_quantity)',
-             'Line quantity must be greater than the minimal quantity!'),
+             'Line quantity must be greater than the minimal quantity'),
             ('forecast_product_uniq', 'UNIQUE(forecast, product)',
-             'Product must be unique by forcast!'),
+             'Product must be unique by forecast'),
             ]
 
     @staticmethod
@@ -509,8 +513,8 @@ class ForecastComplete(Wizard):
     def __setup__(cls):
         super(ForecastComplete, cls).__setup__()
         cls._error_messages.update({
-            'from_to_date': '"From Date" should be smaller than "To Date"!',
-            })
+                'from_to_date': '"From Date" should be smaller than "To Date".',
+                })
 
     def default_ask(self, fields):
         """
