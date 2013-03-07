@@ -45,7 +45,7 @@ setup(name='trytond_google_maps',
         ],
     package_data={
         'trytond.modules.google_maps': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
