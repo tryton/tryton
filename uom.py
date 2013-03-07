@@ -63,9 +63,6 @@ class Uom(ModelSQL, ModelView):
             ('non_zero_rate_factor', 'CHECK((rate != 0.0) or (factor != 0.0))',
                 'Rate and factor can not be both equal to zero.')
             ]
-        cls._constraints += [
-            ('check_factor_and_rate', 'invalid_factor_and_rate'),
-            ]
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
                 'change_uom_rate_title': ('You cannot change Rate, Factor or '
@@ -73,7 +70,8 @@ class Uom(ModelSQL, ModelView):
                 'change_uom_rate': ('If the UOM is still not used, you can '
                     'delete it otherwise you can deactivate it '
                     'and create a new one.'),
-                'invalid_factor_and_rate': 'Invalid Factor and Rate values!',
+                'invalid_factor_and_rate': ('Invalid Factor and Rate values in '
+                    'UOM "%s".'),
                 })
 
     @classmethod
@@ -132,6 +130,12 @@ class Uom(ModelSQL, ModelView):
     def round(number, precision=1.0):
         return round(number / precision) * precision
 
+    @classmethod
+    def validate(cls, uoms):
+        super(Uom, cls).validate(uoms)
+        for uom in uoms:
+            uom.check_factor_and_rate()
+
     def check_factor_and_rate(self):
         "Check coherence between factor and rate"
         if self.rate == self.factor == 0.0:
@@ -140,8 +144,8 @@ class Uom(ModelSQL, ModelView):
                     1.0 / self.factor, self.__class__.rate.digits[1])
                 and self.factor != round(
                     1.0 / self.rate, self.__class__.factor.digits[1])):
-            return False
-        return True
+            self.raise_user_error('invalid_factor_and_rate', (
+                        self.rec_name,))
 
     @classmethod
     def write(cls, uoms, values):
