@@ -21,9 +21,9 @@ class Country(ModelSQL, ModelView):
         super(Country, cls).__setup__()
         cls._sql_constraints += [
             ('name_uniq', 'UNIQUE(name)',
-                'The name of the country must be unique!'),
+                'The name of the country must be unique.'),
             ('code_uniq', 'UNIQUE(code)',
-                'The code of the country must be unique!'),
+                'The code of the country must be unique.'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
 
