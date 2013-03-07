@@ -98,11 +98,11 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         cls._sql_constraints += [
             ('check_percentage',
                 'CHECK(probability >= 0 AND probability <= 100)',
-                'Probability must be between 0 and 100!')
+                'Probability must be between 0 and 100.')
             ]
         cls._error_messages.update({
                 'delete_cancel': ('Sale Opportunity "%s" must be cancelled '
-                    'before deletion!'),
+                    'before deletion.'),
                 })
         cls._transitions |= set((
                 ('lead', 'opportunity'),
