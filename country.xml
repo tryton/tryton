@@ -6,29 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="country_view_form">
             <field name="model">country.country</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Country">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <field name="subdivisions" colspan="4"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">country_form</field>
         </record>
         <record model="ir.ui.view" id="country_view_tree">
             <field name="model">country.country</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Countries">
-                    <field name="name"/>
-                    <field name="code"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">country_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_country_form">
             <field name="name">Countries</field>
@@ -55,36 +38,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="subdivision_view_form">
             <field name="model">country.subdivision</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Subdivision">
-                    <label name="country"/>
-                    <field name="country"/>
-                    <newline/>
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="type"/>
-                    <field name="type"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">subdivision_form</field>
         </record>
         <record model="ir.ui.view" id="subdivision_view_tree">
             <field name="model">country.subdivision</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Subdivisions">
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="type"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">subdivision_tree</field>
         </record>
 
     </data>
