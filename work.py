@@ -92,21 +92,37 @@ class Work(ModelSQL, ModelView):
         super(Work, cls).__setup__()
         cls._sql_constraints += [
             ('work_uniq', 'UNIQUE(work)', 'There should be only one '
-                'timesheet work by task/project!'),
+                'timesheet work by task/project.'),
             ]
         cls._order.insert(0, ('sequence', 'ASC'))
-        cls._constraints += [
-            ('check_state',
-                'A work can not be closed if its children are still opened'),
-            ]
+        cls._error_messages.update({
+                'invalid_parent_state': ('Work "%(child)s" can not be opened '
+                    'because its parent work "%(parent)s" is already done."'),
+                'invalid_children_state': ('Work "%(parent)s" can not be '
+                    'done because its child work "%(child)s" is still '
+                    'opened."'),
+                })
+
+    @classmethod
+    def validate(cls, works):
+        super(Work, cls).validate(works)
+        for work in works:
+            work.check_state()
 
     def check_state(self):
-        if ((self.state == 'opened'
-                    and (self.parent and self.parent.state == 'done'))
-                or (self.state == 'done'
-                    and any(c.state == 'opened' for c in self.children))):
-            return False
-        return True
+        if (self.state == 'opened'
+                and (self.parent and self.parent.state == 'done')):
+            self.raise_user_error('invalid_parent_state', {
+                    'child': self.rec_name,
+                    'parent': self.parent.rec_name,
+                    })
+        if self.state == 'done':
+            for child in self.children:
+                if child.state == 'opened':
+                    self.raise_user_error('invalid_children_state', {
+                            'parent': self.rec_name,
+                            'child': child.rec_name,
+                            })
 
     @classmethod
     def get_parent(cls, project_works, name):
