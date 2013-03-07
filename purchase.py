@@ -17,7 +17,7 @@ class Purchase:
         super(Purchase, cls).__setup__()
         cls._error_messages.update({
                 'analytic_account_required': ('Analytic account is required '
-                    'on line "%s" (%d)!'),
+                    'on line "%s".'),
                 })
 
     def check_for_quotation(self):
@@ -33,7 +33,7 @@ class Purchase:
                     continue
                 if not AccountSelection.check_root([line.analytic_accounts]):
                     self.raise_user_error('analytic_account_required',
-                            (line.rec_name, line.id))
+                            (line.rec_name,))
 
 
 class PurchaseLine:
