@@ -128,11 +128,11 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'incoming_move_input_dest': ('Incoming Moves must have '
-                    'the warehouse input location as destination location!'),
+                    'the warehouse input location as destination location.'),
                 'inventory_move_input_source': ('Inventory Moves must '
-                    'have the warehouse input location as source location!'),
+                    'have the warehouse input location as source location.'),
                 'delete_cancel': ('Supplier Shipment "%s" must be cancelled '
-                    'before deletion!'),
+                    'before deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'received'),
@@ -488,7 +488,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Supplier Return Shipment "%s" must be '
-                    'cancelled before deletion!'),
+                    'cancelled before deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -815,7 +815,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Customer Shipment "%s" must be cancelled '
-                    'before deletion!'),
+                    'before deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -1328,7 +1328,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Customer Return Shipment "%s" must be '
-                    'cancelled before deletion!'),
+                    'cancelled before deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'received'),
@@ -1725,7 +1725,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
                 'delete_cancel': ('Internal Shipment "%s" must be cancelled '
-                    'before deletion!'),
+                    'before deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'waiting'),
@@ -2025,9 +2025,10 @@ class CreateShipmentOutReturn(Wizard):
     def __setup__(cls):
         super(CreateShipmentOutReturn, cls).__setup__()
         cls._error_messages.update({
-            'shipment_done_title': 'You can not create return shipment',
-            'shipment_done_msg': 'The shipment with code %s is not yet sent.',
-            })
+                'shipment_done_title': 'You can not create return shipment',
+                'shipment_done_msg': ('The shipment with code "%s" is not yet '
+                    'sent.'),
+                })
 
     def do_start(self, action):
         pool = Pool()

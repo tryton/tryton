@@ -31,11 +31,11 @@ class Period(ModelSQL, ModelView):
     def __setup__(cls):
         super(Period, cls).__setup__()
         cls._error_messages.update({
-            'close_period_future_today': ('You can not close a period '
-                'in the future or today!'),
-            'close_period_assigned_move': ('You can not close a period when '
-                'there is still assigned moves!'),
-        })
+                'close_period_future_today': ('You can not close a period '
+                    'in the future or today.'),
+                'close_period_assigned_move': ('You can not close a period when '
+                    'there still are assigned moves.'),
+                })
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') == 'draft',

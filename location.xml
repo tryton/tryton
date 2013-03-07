@@ -237,5 +237,15 @@ this repository contains the full copyright notices and license terms. -->
                            ('name', '=', 'customer_location')]"/>
             <field name="value" eval="'stock.location,' + str(ref('location_customer'))"/>
         </record>
+
+        <record model="ir.translation" id="location_recursion_error">
+            <field name="name">stock.location</field>
+            <field name="lang">en_US</field>
+            <field name="type">error</field>
+            <field name="src">recursion_error</field>
+            <field name="value">Recursion error: Location "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
+            <field name="module">stock</field>
+            <field name="fuzzy" eval="False"/>
+        </record>
     </data>
 </tryton>

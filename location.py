@@ -95,18 +95,11 @@ class Location(ModelSQL, ModelView):
     def __setup__(cls):
         super(Location, cls).__setup__()
         cls._order.insert(0, ('name', 'ASC'))
-        cls._constraints += [
-            ('check_recursion', 'recursive_locations'),
-            ('check_type_for_moves', 'invalid_type_for_moves'),
-            ]
         cls._error_messages.update({
-                'recursive_locations': (
-                    'You can not create recursive locations!'),
-                'invalid_type_for_moves': ('A location with existing moves '
-                    'cannot be changed to a type '
-                    'that does not support moves.'),
-                'child_of_warehouse': ('Location "%s" must be a child of '
-                    'warehouse "%s"!'),
+                'invalid_type_for_moves': ('Location "%s" with existing moves '
+                    'cannot be changed to a type that does not support moves.'),
+                'child_of_warehouse': ('Location "%(location)s" must be a '
+                    'child of warehouse "%(warehouse)s".'),
                 })
 
     @classmethod
@@ -117,6 +110,13 @@ class Location(ModelSQL, ModelView):
         table = TableHandler(cursor, cls, module_name)
         table.index_action(['left', 'right'], 'add')
 
+    @classmethod
+    def validate(cls, locations):
+        super(Location, cls).validate(locations)
+        cls.check_recursion(locations)
+        for location in locations:
+            location.check_type_for_moves()
+
     def check_type_for_moves(self):
         """ Check locations with moves have types compatible with moves. """
         invalid_move_types = ['warehouse', 'view']
@@ -126,8 +126,8 @@ class Location(ModelSQL, ModelView):
                         ('to_location', '=', self.id),
                         ('from_location', '=', self.id),
                         ])):
-            return False
-        return True
+            self.raise_user_error('invalid_type_for_moves', (
+                    location.rec_name,))
 
     @staticmethod
     def default_active():
@@ -266,8 +266,10 @@ class Location(ModelSQL, ModelView):
                             ('parent', 'child_of', warehouse.id),
                             ]))
                 if location not in childs:
-                    cls.raise_user_error('child_of_warehouse',
-                        (location.name, warehouse.name))
+                    cls.raise_user_error('child_of_warehouse', {
+                            'location': location.rec_name,
+                            'warehouse': warehouse.rec_name,
+                            })
 
     @classmethod
     def copy(cls, locations, default=None):

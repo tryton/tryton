@@ -53,7 +53,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cls._order.insert(0, ('date', 'DESC'))
         cls._error_messages.update({
                 'delete_cancel': ('Inventory "%s" must be cancelled before '
-                    'deletion!'),
+                    'deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'done'),
@@ -240,9 +240,9 @@ class InventoryLine(ModelSQL, ModelView):
         super(InventoryLine, cls).__setup__()
         cls._sql_constraints += [
             ('check_line_qty_pos',
-                'CHECK(quantity >= 0.0)', 'Line quantity must be positive!'),
+                'CHECK(quantity >= 0.0)', 'Line quantity must be positive.'),
             ('inventory_product_uniq', 'UNIQUE(inventory, product)',
-                'Product must be unique by inventory!'),
+                'Product must be unique by inventory.'),
             ]
         cls._order.insert(0, ('product', 'ASC'))
 

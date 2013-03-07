@@ -135,19 +135,19 @@ class Move(Workflow, ModelSQL, ModelView):
                     '<= 1)'),
                 'Move can be on only one Shipment'),
             ]
-        cls._constraints += [
-            ('check_period_closed', 'period_closed'),
-            ]
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-            'set_state_draft': 'You can not set state to draft!',
-            'set_state_assigned': 'You can not set state to assigned!',
-            'set_state_done': 'You can not set state to done!',
-            'del_draft_cancel': ('You can only delete draft '
-                'or cancelled moves!'),
-            'period_closed': 'You can not modify move in closed period!',
-            'modify_assigned_done_cancel': ('You can not modify a move '
-                'in the state: "Assigned", "Done" or "Cancel"'),
+            'set_state_draft': ('You can not set stock move "%s" to draft '
+                'state.'),
+            'set_state_assigned': ('You can not set stock move "%s" to '
+                'assigned state.'),
+            'set_state_done': 'You can not set stock move "%s" to done state.',
+            'del_draft_cancel': ('You can not delete stock move "%s" because '
+                'it is not in draft or cancelled state.'),
+            'period_closed': ('You can not modify move "%(move)s" because '
+                'period "%(period)s" is closed.'),
+            'modify_assigned_done_cancel': ('You can not modify stock move "%s"'
+                'because it is in "Assigned", "Done" or "Cancel" state.'),
             })
         cls._transitions |= set((
                 ('draft', 'assigned'),
@@ -307,6 +307,11 @@ class Move(Workflow, ModelSQL, ModelView):
         return False
 
     @classmethod
+    def validate(cls, moves):
+        super(Move, cls).validate(moves)
+        cls.check_period_closed(moves)
+
+    @classmethod
     def check_period_closed(cls, moves):
         Period = Pool().get('stock.period')
         periods = Period.search([
@@ -318,8 +323,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 date = (move.effective_date if move.effective_date
                     else move.planned_date)
                 if date and date < period.date:
-                    return False
-        return True
+                    cls.raise_user_error('period_closed', {
+                            'move': move.rec_name,
+                            'period': period.rec_name,
+                            })
 
     def get_rec_name(self, name):
         return ("%s%s %s"
@@ -482,12 +489,14 @@ class Move(Workflow, ModelSQL, ModelView):
                 'currency'), False):
             for move in moves:
                 if move.state in ('assigned', 'done', 'cancel'):
-                    cls.raise_user_error('modify_assigned_done_cancel')
+                    cls.raise_user_error('modify_assigned_done_cancel',
+                        (move.rec_name,))
         if reduce(lambda x, y: x or y in vals,
                 ('planned_date', 'effective_date', 'state'), False):
             for move in moves:
                 if move.state in ('done', 'cancel'):
-                    cls.raise_user_error('modify_assigned_done_cancel')
+                    cls.raise_user_error('modify_assigned_done_cancel',
+                        (move.rec_name,))
 
         super(Move, cls).write(moves, vals)
 
@@ -503,7 +512,7 @@ class Move(Workflow, ModelSQL, ModelView):
     def delete(cls, moves):
         for move in moves:
             if move.state not in ('draft', 'cancel'):
-                cls.raise_user_error('del_draft_cancel')
+                cls.raise_user_error('del_draft_cancel', (move.rec_name,))
         super(Move, cls).delete(moves)
 
     def pick_product(self, location_quantities):
