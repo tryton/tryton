@@ -15,8 +15,8 @@ class User:
     def __setup__(cls):
         super(User, cls).__setup__()
         cls._error_messages.update({
-                'set_passwd_ldap_user': (
-                    'You can not set a password to a ldap user!'),
+                'set_passwd_ldap_user': ('You can not set the password of ldap '
+                    'user "%s".'),
                 })
 
     @staticmethod
@@ -61,10 +61,11 @@ class User:
                 if cls.ldap_search_user(login,
                         con, connection, attrs=[]):
                     find = True
+                    break
         except Exception:
             pass
         if find:
-            cls.raise_user_error('set_passwd_ldap_user')
+            cls.raise_user_error('set_passwd_ldap_user', (login.rec_name,))
 
     @classmethod
     def create(cls, vlist):
