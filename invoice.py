@@ -15,7 +15,7 @@ class InvoiceLine:
         super(InvoiceLine, cls).__setup__()
         cls._error_messages.update({
                 'delete_purchase_invoice_line': ('You can not delete '
-                    'invoice lines that comes from a purchase!'),
+                    'invoice lines that comes from a purchase.'),
                 })
 
     @classmethod
