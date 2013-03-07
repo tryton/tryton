@@ -166,19 +166,17 @@ class Sale(Workflow, ModelSQL, ModelView):
         super(Sale, cls).__setup__()
         cls._order.insert(0, ('sale_date', 'DESC'))
         cls._order.insert(1, ('id', 'DESC'))
-        cls._constraints += [
-            ('check_method', 'wrong_method')
-            ]
         cls._error_messages.update({
-                'wrong_method': 'Wrong combination of method!',
-                'addresses_required': 'Invoice and Shipment addresses must be '
-                'defined for the quotation.',
+                'invalid_method': ('Invalid combination of shipment and '
+                    'invoicing methods on sale "%s".'),
+                'addresses_required': ('Invoice and Shipment addresses must be '
+                    'defined for the quotation of sale "%s".'),
                 'warehouse_required': ('Warehouse must be defined for the '
-                    'quotation.'),
-                'missing_account_receivable': 'It misses '
-                'an "Account Receivable" on the party "%s"!',
-                'delete_cancel': ('Sale "%s" must be cancelled '
-                    'before deletion!'),
+                    'quotation of sale "%s".'),
+                'missing_account_receivable': ('It misses '
+                        'an "Account Receivable" on the party "%s".'),
+                'delete_cancel': ('Sale "%s" must be cancelled before '
+                    'deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'quotation'),
@@ -537,17 +535,22 @@ class Sale(Workflow, ModelSQL, ModelView):
                     'shipment_state': state,
                     })
 
+    @classmethod
+    def validate(cls, sales):
+        super(Sale, cls).validate(sales)
+        for sale in sales:
+            sale.check_method()
+
     def check_method(self):
         '''
         Check the methods.
         '''
         if (self.invoice_method == 'shipment'
                 and self.shipment_method in ('invoice', 'manual')):
-            return False
+            self.raise_user_error('invalid_method', (sale.rec_name,))
         if (self.shipment_method == 'invoice'
                 and self.invoice_method in ('shipment', 'manual')):
-            return False
-        return True
+            self.raise_user_error('invalid_method', (sale.rec_name,))
 
     def get_rec_name(self, name):
         return (self.reference or str(self.id)
@@ -577,7 +580,7 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     def check_for_quotation(self):
         if not self.invoice_address or not self.shipment_address:
-            self.raise_user_error('addresses_required')
+            self.raise_user_error('addresses_required', (sale.rec_name,))
         for line in self.lines:
             if line.quantity >= 0:
                 location = line.from_location
@@ -586,7 +589,8 @@ class Sale(Workflow, ModelSQL, ModelView):
             if ((not location or not line.warehouse)
                     and line.product
                     and line.product.type in ('goods', 'assets')):
-                self.raise_user_error('warehouse_required')
+                self.raise_user_error('warehouse_required',
+                    (sale.rec_name,))
 
     @classmethod
     def set_reference(cls, sales):
@@ -980,12 +984,13 @@ class SaleLine(ModelSQL, ModelView):
         super(SaleLine, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-            'customer_location_required': 'The customer location is required!',
-            'missing_account_revenue': 'It misses '
-                    'an "Account Revenue" on product "%s"!',
-            'missing_account_revenue_property': 'It misses '
-                    'an "account Revenue" default property!',
-            })
+                'customer_location_required': ('Sale "%(sale)s" is missing the '
+                    'customer location in line "%(line)s".'),
+                'missing_account_revenue': ('Product "%(product)s" of sale '
+                    '%(sale)s misses a revenue account.'),
+                'missing_account_revenue_property': ('Sale "%(sale)s" '
+                    'misses an "account revenue" default property.'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -1246,15 +1251,18 @@ class SaleLine(ModelSQL, ModelView):
         if self.product:
             invoice_line.account = self.product.account_revenue_used
             if not invoice_line.account:
-                self.raise_user_error('missing_account_revenue',
-                        error_args=(self.product.rec_name,))
+                self.raise_user_error('missing_account_revenue', {
+                        'sale': self.sale.rec_name,
+                        'product': self.product.rec_name,
+                        })
         else:
             for model in ('product.template', 'product.category'):
                 invoice_line.account = Property.get('account_revenue', model)
                 if invoice_line.account:
                     break
             if not invoice_line.account:
-                self.raise_user_error('missing_account_revenue_property')
+                self.raise_user_error('missing_account_revenue_property',
+                    (self.sale.rec_name,))
         invoice_line.sale_lines = [self]
         return [invoice_line]
 
@@ -1303,7 +1311,10 @@ class SaleLine(ModelSQL, ModelView):
         if quantity <= 0.0:
             return
         if not self.sale.party.customer_location:
-            self.raise_user_error('customer_location_required')
+            self.raise_user_error('customer_location_required', {
+                    'sale': self.sale.rec_name,
+                    'line': self.rec_name,
+                    })
         with Transaction().set_user(0, set_context=True):
             move = Move()
         move.quantity = quantity
