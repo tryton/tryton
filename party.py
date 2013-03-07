@@ -77,14 +77,12 @@ class Party(ModelSQL, ModelView):
         super(Party, cls).__setup__()
         cls._sql_constraints = [
             ('code_uniq', 'UNIQUE(code)',
-             'The code of the party must be unique!')
-        ]
-        cls._constraints += [
-            ('check_vat', 'invalid_vat'),
+             'The code of the party must be unique.')
         ]
         cls._error_messages.update({
-            'invalid_vat': 'Invalid VAT number!',
-        })
+                'invalid_vat': ('Invalid VAT number "%(vat)s" on party '
+                    '"%(party)s".'),
+                })
         cls._order.insert(0, ('name', 'ASC'))
 
     @staticmethod
@@ -219,6 +217,12 @@ class Party(ModelSQL, ModelView):
                 return address
         return default_address
 
+    @classmethod
+    def validate(cls, parties):
+        super(Party, cls).validate(parties)
+        for party in parties:
+            party.check_vat()
+
     def check_vat(self):
         '''
         Check the VAT number depending of the country.
@@ -241,8 +245,10 @@ class Party(ModelSQL, ModelView):
                     'vat_number': vat_number,
                     })
             else:
-                return False
-        return True
+                self.raise_user_error('invalid_vat', {
+                        'vat': vat_number,
+                        'party': party.rec_name,
+                        })
 
 
 class PartyCategory(ModelSQL):

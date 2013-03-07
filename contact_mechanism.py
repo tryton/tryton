@@ -86,8 +86,8 @@ class ContactMechanism(ModelSQL, ModelView):
         cls._order.insert(0, ('party', 'ASC'))
         cls._order.insert(1, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'write_party': ('You can not modify the party of '
-                    'a contact mechanism!'),
+                'write_party': ('You can not modify the party of contact '
+                    'mechanism "%s".'),
                 })
 
     @classmethod
@@ -171,5 +171,5 @@ class ContactMechanism(ModelSQL, ModelView):
         if 'party' in vals:
             for mechanism in mechanisms:
                 if mechanism.party.id != vals['party']:
-                    cls.raise_user_error('write_party')
+                    cls.raise_user_error('write_party', (mechanism.rec_name,))
         super(ContactMechanism, cls).write(mechanisms, vals)

@@ -45,8 +45,8 @@ class Address(ModelSQL, ModelView):
         cls._order.insert(0, ('party', 'ASC'))
         cls._order.insert(1, ('sequence', 'ASC'))
         cls._error_messages.update({
-            'write_party': 'You can not modify the party of an address!',
-            })
+                'write_party': 'You can not modify the party of address "%s".',
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -114,7 +114,7 @@ class Address(ModelSQL, ModelView):
         if 'party' in vals:
             for address in addresses:
                 if address.party.id != vals['party']:
-                    cls.raise_user_error('write_party')
+                    cls.raise_user_error('write_party', (address.rec_name,))
         super(Address, cls).write(addresses, vals)
 
     def on_change_country(self):

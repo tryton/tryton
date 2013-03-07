@@ -29,26 +29,28 @@ class Category(ModelSQL, ModelView):
         super(Category, cls).__setup__()
         cls._sql_constraints = [
             ('name_parent_uniq', 'UNIQUE(name, parent)',
-                'The name of a party category must be unique by parent!'),
-        ]
-        cls._constraints += [
-            ('check_recursion', 'recursive_categories'),
-            ('check_name', 'wrong_name'),
-        ]
+                'The name of a party category must be unique by parent.'),
+            ]
         cls._error_messages.update({
-            'recursive_categories': 'You can not create recursive categories!',
-            'wrong_name': 'You can not use "%s" in name field!' % SEPARATOR,
-        })
+                'wrong_name': ('Invalid category name "%%s": You can not use '
+                    '"%s" in name field.' % SEPARATOR),
+                })
         cls._order.insert(1, ('name', 'ASC'))
 
     @staticmethod
     def default_active():
         return True
 
+    @classmethod
+    def validate(cls, categories):
+        super(Category, cls).validate(categories)
+        cls.check_recursion(categories, rec_name='name')
+        for category in categories:
+            category.check_name()
+
     def check_name(self):
         if SEPARATOR in self.name:
-            return False
-        return True
+            self.raise_user_error('wrong_name', (category.name,))
 
     def get_rec_name(self, name):
         if self.parent:
