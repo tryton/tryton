@@ -30,13 +30,11 @@ class Company(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Company, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_companies'),
-            ]
-        cls._error_messages.update({
-                'recursive_companies': (
-                    'You can not create recursive companies!'),
-                })
+
+    @classmethod
+    def validate(cls, companies):
+        super(Company, cls).validate(companies)
+        cls.check_recursion(companies)
 
     @classmethod
     def copy(cls, companies, default=None):
