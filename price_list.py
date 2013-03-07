@@ -133,11 +133,9 @@ class PriceListLine(ModelSQL, ModelView):
         super(PriceListLine, cls).__setup__()
         cls._order.insert(0, ('price_list', 'ASC'))
         cls._order.insert(0, ('sequence', 'ASC'))
-        cls._constraints += [
-                ('check_formula', 'invalid_formula'),
-                ]
         cls._error_messages.update({
-                'invalid_formula': 'Invalid formula!',
+                'invalid_formula': ('Invalid formula "%(formula)s" in price '
+                    'list line "%(line)s".'),
                 })
 
     @classmethod
@@ -159,6 +157,12 @@ class PriceListLine(ModelSQL, ModelView):
             return self.product.default_uom.digits
         return 2
 
+    @classmethod
+    def validate(cls, lines):
+        super(PriceListLine, cls).validate(lines)
+        for line in lines:
+            line.check_formula()
+
     def check_formula(self):
         '''
         Check formula
@@ -171,10 +175,15 @@ class PriceListLine(ModelSQL, ModelView):
         with Transaction().set_context(**context):
             try:
                 if not isinstance(self.get_unit_price(), Decimal):
-                    return False
+                    self.raise_user_error('invalid_formula', {
+                            'formula': self.formula,
+                            'line': self.rec_name,
+                            })
             except Exception:
-                return False
-        return True
+                self.raise_user_error('invalid_formula', {
+                        'formula': self.formula,
+                        'line': self.rec_name,
+                        })
 
     def match(self, pattern):
         '''
