@@ -7,70 +7,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">company.company</field>
             <field name="type">form</field>
             <field name="inherit" ref="party.party_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form"
-                        position="replace_attributes">
-                        <form string="Company"/>
-                    </xpath>
-                    <xpath
-                        expr="/form/group[@id=&quot;checkboxes&quot;]"
-                        position="after">
-                        <label name="currency"/>
-                        <field name="currency"/>
-                        <label name="vat_country"/>
-                        <field name="vat_country"/>
-                        <label name="vat_number"/>
-                        <field name="vat_number"/>
-                    </xpath>
-                    <xpath
-                        expr="/form/notebook/page[@id=&quot;general&quot;]"
-                        position="after">
-                        <page string="Company" col="2" id="company">
-                            <label name="parent"/>
-                            <field name="parent"/>
-                            <field name="employees" colspan="2"/>
-                        </page>
-                        <page string="Reports" col="1" id="reports">
-                            <separator name="header"/>
-                            <field name="header"/>
-                            <separator name="footer"/>
-                            <field name="footer"/>
-                        </page>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">company_form</field>
         </record>
         <record model="ir.ui.view" id="company_view_tree">
             <field name="model">company.company</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Companies">
-                    <field name="name"/>
-                    <field name="currency"/>
-                    <field name="vat_code"/>
-                    <field name="parent" tree_invisible="1"/>
-                    <field name="childs" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">company_tree</field>
         </record>
         <record model="ir.ui.view" id="company_view_list">
             <field name="model">company.company</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Companies">
-                    <field name="name"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">company_list</field>
         </record>
         <record model="ir.action.act_window" id="act_company_tree">
             <field name="name">Companies</field>
@@ -130,72 +79,22 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="user_view_form">
             <field name="model">res.user</field>
             <field name="inherit" ref="res.user_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <data>
-                        <xpath
-                            expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
-                            position="before">
-                            <label name="main_company"/>
-                            <field name="main_company" widget="selection"/>
-                            <label name="company"/>
-                            <field name="company" widget="selection"/>
-                            <label name="employee"/>
-                            <field name="employee"/>
-                            <field name="employees" colspan="4"/>
-                        </xpath>
-                    </data>
-                ]]>
-            </field>
+            <field name="name">user_form</field>
         </record>
         <record model="ir.ui.view" id="user_view_form_preferences">
             <field name="model">res.user</field>
             <field name="inherit" ref="res.user_view_form_preferences"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <data>
-                        <xpath
-                            expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
-                            position="before">
-                            <label name="company"/>
-                            <field name="company" widget="selection"/>
-                            <label name="employee"/>
-                            <field name="employee" widget="selection"/>
-                        </xpath>
-                    </data>
-                ]]>
-            </field>
+            <field name="name">user_form_preferences</field>
         </record>
         <record model="ir.ui.view" id="property_view_form">
             <field name="model">ir.property</field>
             <field name="inherit" ref="ir.property_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <data>
-                        <xpath
-                            expr="/form/field[@name='field']"
-                            position="after">
-                            <label name="company"/>
-                            <field name="company" colspan="3"/>
-                        </xpath>
-                    </data>
-                ]]>
-            </field>
+            <field name="name">property_form</field>
         </record>
         <record model="ir.ui.view" id="property_view_tree">
             <field name="model">ir.property</field>
             <field name="inherit" ref="ir.property_view_tree"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <data>
-                        <xpath
-                            expr="/tree/field[@name='field']"
-                            position="after">
-                            <field name="company"/>
-                        </xpath>
-                    </data>
-                ]]>
-            </field>
+            <field name="name">property_tree</field>
         </record>
 
         <record model="ir.rule.group" id="rule_group_property">
@@ -214,33 +113,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="sequence_view_form">
             <field name="model">ir.sequence</field>
             <field name="inherit" ref="ir.sequence_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/field[@name=&quot;active&quot;]"
-                        position="after">
-                        <label name="company"/>
-                        <field name="company" colspan="3"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">sequence_form</field>
         </record>
         <record model="ir.ui.view" id="sequence_view_tree">
             <field name="model">ir.sequence</field>
             <field name="inherit" ref="ir.sequence_view_tree"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/tree/field[@name=&quot;code&quot;]"
-                        position="after">
-                        <field name="company"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">sequence_tree</field>
         </record>
 
         <record model="ir.rule.group" id="rule_group_sequence">
@@ -272,16 +150,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="company_config_start_view_form">
             <field name="model">company.company.config.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Create Company" col="2">
-                    <image name="tryton-dialog-information" xexpand="0"
-                        xfill="0"/>
-                    <label string="You can now add your company into the system." id="add"
-                        yalign="0.0" xalign="0.0" xexpand="1"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">company_config_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="act_company_config">
@@ -299,51 +168,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="inherit" ref="party.party_view_form"/>
             <field name="priority">10</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form"
-                        position="replace_attributes">
-                        <form string="Employee"/>
-                    </xpath>
-                    <xpath expr="/form/group/label[@name='active']"
-                        position="before">
-                        <label name="company"/>
-                        <field name="company"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">employee_form</field>
         </record>
 
         <record model="ir.ui.view" id="employee_view_form2">
             <field name="model">company.employee</field>
             <field name="type">form</field>
             <field name="priority">20</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Employee">
-                    <label name="party"/>
-                    <field name="party"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">employee_form2</field>
         </record>
 
         <record model="ir.ui.view" id="employee_view_tree">
             <field name="model">company.employee</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Employees">
-                    <field name="name"/>
-                    <field name="company"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">employee_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_employee_form">

@@ -3,21 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-
         <record model="ir.ui.view" id="cron_view_form">
             <field name="model">ir.cron</field>
             <field name="inherit" ref="ir.cron_view_form"/>
-            <field name="arch" type="xml">
-              <![CDATA[
-                <data>
-                    <xpath
-                       expr="/form/field[@name=&quot;args&quot;]"
-                       position="after">
-                      <field name="companies" colspan="4"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">cron_form</field>
         </record>
     </data>
 </tryton>
