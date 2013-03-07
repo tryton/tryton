@@ -68,26 +68,33 @@ class FiscalYear:
     @classmethod
     def __setup__(cls):
         super(FiscalYear, cls).__setup__()
-        cls._constraints += [
-            ('check_invoice_sequences', 'different_invoice_sequence'),
-            ]
         cls._error_messages.update({
-                'change_invoice_sequence': ('You can not change '
-                    'the invoice sequence if there is already '
-                    'a posted invoice in the fiscalyear'),
-                'different_invoice_sequence': ('You must have different '
-                    'invoice sequences per fiscal year!'),
+                'change_invoice_sequence': 'You can not change '
+                    'invoice sequence in fiscal year "%s" because there are '
+                    'already posted invoices in this fiscal year.',
+                'different_invoice_sequence': 'Fiscal year "%(first)s" and '
+                    '"%(second)s" have the same invoice sequence.',
                 })
+
+    @classmethod
+    def validate(cls, years):
+        super(FiscalYear, cls).validate(years)
+        for year in years:
+            year.check_invoice_sequences()
 
     def check_invoice_sequences(self):
         for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
                 'out_credit_note_sequence', 'in_credit_note_sequence'):
-            if self.search([
-                        (sequence, '=', getattr(self, sequence).id),
-                        ('id', '!=', self.id),
-                        ]):
-                return False
-        return True
+            fiscalyears = self.search([
+                    (sequence, '=', getattr(self, sequence).id),
+                    ('id', '!=', self.id),
+                    ])
+            if fiscalyears:
+                self.raise_user_error('different_invoice_sequences', {
+                        'first': self.rec_name,
+                        'second': fiscalyears[0].rec_name,
+                        })
+
 
     @classmethod
     def write(cls, fiscalyears, vals):
@@ -108,7 +115,8 @@ class FiscalYear:
                                     ('number', '!=', None),
                                     ('type', '=', sequence[:-9]),
                                     ]):
-                            cls.raise_user_error('change_invoice_sequence')
+                            cls.raise_user_error('change_invoice_sequence',
+                                (fiscalyear.rec_name,))
         super(FiscalYear, cls).write(fiscalyears, vals)
 
 
@@ -150,17 +158,22 @@ class Period:
     @classmethod
     def __setup__(cls):
         super(Period, cls).__setup__()
-        cls._constraints += [
-            ('check_invoice_sequences', 'check_invoice_sequences'),
-            ]
         cls._error_messages.update({
-                'change_invoice_sequence': ('You can not change '
-                    'the invoice sequence if there is already '
-                    'a posted invoice in the period'),
-                'check_invoice_sequences': ('You must have different '
-                    'invoice sequences per fiscal year and '
-                    'in the same company!'),
+                'change_invoice_sequence': 'You can not change the invoice '
+                    'sequence in period "%s" because there is already an '
+                    'invoice posted in this period',
+                'different_invoice_sequence': 'Period "%(first)s" and '
+                    '"%(second)s" have the same invoice sequence.',
+                'different_period_fiscalyear_company': 'Period "%(period)s" '
+                    'must have the same company as its fiscal year '
+                    '(%(fiscalyear)s).'
                 })
+
+    @classmethod
+    def validate(cls, periods):
+        super(Period, cls).validate(periods)
+        for period in periods:
+            period.check_invoice_sequences()
 
     def check_invoice_sequences(self):
         for sequence_name in ('out_invoice_sequence', 'in_invoice_sequence',
@@ -168,15 +181,21 @@ class Period:
             sequence = getattr(self, sequence_name)
             if not sequence:
                 continue
-            if self.search([
-                        (sequence_name, '=', sequence.id),
-                        ('fiscalyear', '!=', self.fiscalyear.id),
-                        ]):
-                return False
+            periods = self.search([
+                    (sequence_name, '=', sequence.id),
+                    ('fiscalyear', '!=', self.fiscalyear.id),
+                    ])
+            if periods:
+                self.raise_user_error('different_invoice_sequence', {
+                        'first': self.rec_name,
+                        'second': periods[0].rec_name,
+                        })
             if (sequence.company
                     and sequence.company != self.fiscalyear.company):
-                return False
-        return True
+                self.raise_user_error('different_period_fiscalyear_company', {
+                        'period': self.rec_name,
+                        'fiscalyear': self.fiscalyear.rec_name,
+                        })
 
     @classmethod
     def create(cls, vlist):
@@ -208,7 +227,8 @@ class Period:
                                     ('number', '!=', None),
                                     ('type', '=', sequence_name[:-9]),
                                     ]):
-                            cls.raise_user_error('change_invoice_sequence')
+                            cls.raise_user_error('change_invoice_sequence',
+                                (period.rec_name,))
         super(Period, cls).write(periods, vals)
 
     def get_invoice_sequence(self, invoice_type):

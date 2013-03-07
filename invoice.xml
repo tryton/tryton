@@ -251,7 +251,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="invoice_validate_button">
-            <field name="name">validate</field>
+            <field name="name">validate_invoice</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group"

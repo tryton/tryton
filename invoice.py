@@ -155,49 +155,42 @@ class Invoice(Workflow, ModelSQL, ModelView):
         super(Invoice, cls).__setup__()
         cls._check_modify_exclude = ['state', 'payment_lines', 'cancel_move',
                 'invoice_report_cache', 'invoice_report_format']
-        cls._constraints += [
-            ('check_account', 'account_different_company'),
-            ('check_account2', 'same_account_on_line'),
-            ('check_cancel_move', 'customer_cancel_move'),
-        ]
         cls._order.insert(0, ('number', 'DESC'))
         cls._order.insert(1, ('id', 'DESC'))
         cls._error_messages.update({
-                'reset_draft': ('You can not reset to draft '
-                    'an invoice that has move!'),
-                'missing_tax_line': ('Taxes defined '
-                    'but not on invoice lines!\n'
-                    'Re-compute the invoice.'),
-                'diff_tax_line': ('Base taxes '
-                    'different from invoice lines!\n'
-                    'Re-compute the invoice.'),
-                'missing_tax_line2': ('Taxes defined '
-                    'on invoice lines but not on invoice!\n'
-                    'Re-compute the invoice.'),
-                'no_invoice_sequence': ('There is no invoice sequence '
-                    'on the period/fiscal year!'),
-                'modify_invoice': ('You can not modify an invoice that is '
-                    'posted, paid or canceled with move!'),
-                'same_debit_account': ('The debit account on journal is '
-                    'the same than the invoice account!'),
-                'missing_debit_account': ('The debit account on journal is '
-                    'missing!'),
-                'same_credit_account': ('The credit account on journal is '
-                    'the same than the invoice account!'),
-                'missing_credit_account': ('The credit account on journal is '
-                    'missing!'),
-                'account_different_company': ('You can not create an invoice\n'
-                    'with account from a different invoice company!'),
-                'same_account_on_line': ('You can not use the same account\n'
-                    'as on invoice line!'),
-                'delete_cancel': ('Invoice "%s" must be cancelled '
-                    'before deletion!'),
-                'delete_numbered': ('The numbered invoice "%s" '
-                    'can not be deleted.'),
-                'customer_cancel_move': ('Customer invoice '
-                    'can not be cancelled once posted.'),
-                'period_cancel_move': (
-                    'The period of Invoice "%s" is closed.\n'
+                'missing_tax_line': ('Invoice "%s" has taxes defined but not '
+                    'on invoice lines.\nRe-compute the invoice.'),
+                'diff_tax_line': ('Invoice "%s" tax bases are different from '
+                    'invoice lines.\nRe-compute the invoice.'),
+                'missing_tax_line2': ('Invoice "%s" has taxes on invoice lines '
+                    'that are not in the invoice.\nRe-compute the invoice.'),
+                'no_invoice_sequence': ('There is no invoice sequence for '
+                    'invoice "%(invoice)s" on the period/fiscal year '
+                    '"%(period)s".'),
+                'modify_invoice': ('You can not modify invoice "%s" because '
+                    'it is posted, paid or cancelled.'),
+                'same_debit_account': ('The debit account on journal '
+                    '"%(journal)s" is the same as invoice "%(invoice)s"\'s '
+                    'account.'),
+                'missing_debit_account': ('The debit account on journal "%s" '
+                    'is missing.'),
+                'same_credit_account': ('The credit account on journal '
+                    '"%(journal)s" is the same as invoice "%(invoice)s"\'s '
+                    'account.'),
+                'missing_credit_account': ('The credit account on journal %s" '
+                    'is missing.'),
+                'account_different_company': ('You can not create invoice '
+                    '"%(invoice)s" on company "%(invoice_company)s because '
+                    'account "%(account)s has a different company '
+                    '(%(account_company)s.)'),
+                'same_account_on_line': ('Invoice "%(invoice)s" uses the same '
+                    'account "%(account)s" for the invoice and in line '
+                    '"%(line)s".'),
+                'delete_cancel': ('Invoice "%s" must be cancelled before '
+                    'deletion.'),
+                'delete_numbered': ('The numbered invoice "%s" can not be '
+                    'deleted.'),
+                'period_cancel_move': ('The period of Invoice "%s" is closed.\n'
                     'Use the today for cancel move?'),
                 })
         cls._transitions |= set((
@@ -778,19 +771,22 @@ class Invoice(Workflow, ModelSQL, ModelView):
                         tax.account.id, tax_id)
                     if (not key in computed_taxes) or (key in tax_keys):
                         if exception:
-                            cls.raise_user_error('missing_tax_line')
+                            cls.raise_user_error('missing_tax_line',
+                                (invoice.rec_name,))
                         Tax.delete([tax])
                         continue
                     tax_keys.append(key)
                     if not invoice.currency.is_zero(
                             computed_taxes[key]['base'] - tax.base):
                         if exception:
-                            cls.raise_user_error('diff_tax_line')
+                            cls.raise_user_error('diff_tax_line',
+                                (invoice.rec_name,))
                         Tax.write([tax], computed_taxes[key])
                 for key in computed_taxes:
                     if not key in tax_keys:
                         if exception:
-                            cls.raise_user_error('missing_tax_line')
+                            cls.raise_user_error('missing_tax_line2',
+                                (invoice.rec_name,))
                         Tax.create([computed_taxes[key]])
 
     def _get_move_line_invoice_line(self):
@@ -913,7 +909,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
         period = Period(period_id)
         sequence_id = period.get_invoice_sequence(self.type).id
         if not sequence_id:
-            self.raise_user_error('no_invoice_sequence')
+            self.raise_user_error('no_invoice_sequence', {
+                    'invoice': invoice.rec_name,
+                    'period': period.rec_name,
+                    })
         with Transaction().set_context(
                 date=self.invoice_date or Date.today()):
             number = Sequence.get_id(sequence_id)
@@ -932,7 +931,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if (invoice.state in ('posted', 'paid')
                     or (invoice.state == 'cancel'
                         and invoice.cancel_move)):
-                cls.raise_user_error('modify_invoice')
+                cls.raise_user_error('modify_invoice', (invoice.rec_name,))
 
     def get_rec_name(self, name):
         return (self.number or unicode(self.id)
@@ -956,9 +955,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
         cls.cancel(invoices)
         for invoice in invoices:
             if invoice.state != 'cancel':
-                cls.raise_user_error('delete_cancel', invoice.rec_name)
+                cls.raise_user_error('delete_cancel', (invoice.rec_name,))
             if invoice.number:
-                cls.raise_user_error('delete_numbered', invoice.rec_name)
+                cls.raise_user_error('delete_numbered', (invoice.rec_name,))
         super(Invoice, cls).delete(invoices)
 
     @classmethod
@@ -1008,15 +1007,32 @@ class Invoice(Workflow, ModelSQL, ModelView):
             new_invoices.append(new_invoice)
         return new_invoices
 
-    def check_account(self):
-        return self.account.company == self.company
+    @classmethod
+    def validate(cls, invoices):
+        super(Invoice, cls).validate(invoices)
+        for invoice in invoices:
+            invoice.check_account()
+            invoice.check_same_account()
+            invoice.check_cancel_move()
 
-    def check_account2(self):
+    def check_account(self):
+        if self.account.company != self.company:
+            self.raise_user_error('check_account', {
+                    'invoice': invoice.rec_name,
+                    'invoice_company': invoice.company.rec_name,
+                    'account': invoice.account.rec_name,
+                    'account_company': invoice.account.company.rec_name,
+                    })
+
+    def check_same_account(self):
         for line in self.lines:
             if (line.type == 'line'
                     and line.account == self.account):
-                return False
-        return True
+                self.raise_user_error('same_account_on_line', {
+                        'invoice': invoice.rec_name,
+                        'account': invoice.account.rec_name,
+                        'line': line.rec_name,
+                        })
 
     def check_cancel_move(self):
         if (self.type in ('out_invoice', 'out_credit_note')
@@ -1121,9 +1137,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     })
         else:
             if self.account == journal.credit_account:
-                self.raise_user_error('same_credit_account')
+                self.raise_user_error('same_credit_account', {
+                        'journal': journal.rec_name,
+                        'invoice': invoice.rec_name,
+                        })
             if not journal.credit_account:
-                self.raise_user_error('missing_credit_account')
+                self.raise_user_error('missing_credit_account',
+                    (journal.rec_name,))
 
             lines.append({
                     'description': description,
@@ -1244,7 +1264,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('validated')
-    def validate(cls, invoices):
+    def validate_invoice(cls, invoices):
         for invoice in invoices:
             if invoice.type in ('in_invoice', 'in_credit_note'):
                 invoice.set_number()
@@ -1504,28 +1524,25 @@ class InvoiceLine(ModelSQL, ModelView):
             ('type_account',
                 'CHECK((type = \'line\' AND account IS NOT NULL) '
                 'OR (type != \'line\'))',
-                'Line with "line" type must have an account!'),
+                'Line with "line" type must have an account.'),
             ('type_invoice',
                 'CHECK((type != \'line\' AND invoice IS NOT NULL) '
                 'OR (type = \'line\'))',
-                'Line without "line" type must have an invoice!'),
-            ]
-        cls._constraints += [
-            ('check_account', 'account_different_company'),
-            ('check_account2', 'same_account_on_invoice'),
+                'Line without "line" type must have an invoice.'),
             ]
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'modify': ('You can not modify line from an invoice '
-                    'that is posted, paid!'),
-                'create': ('You can not add a line to an invoice '
-                    'that is posted, paid or canceled!'),
-                'account_different_company': (
-                    'You can not create invoice line\n'
-                    'with account with a different invoice company!'),
-                'same_account_on_invoice': (
-                    'You can not use the same account\n'
-                    'as on the invoice!'),
+                'modify': ('You can not modify line "%(line)s" from invoice '
+                    '"%(invoice)s" that is posted or paid.'),
+                'create': ('You can not add a line to invoice "%(invoice)s" '
+                    'that is posted, paid or cancelled.'),
+                'account_different_company': ('You can not create invoice line '
+                    '"%(line)s" on invoice "%(invoice)s of company '
+                    '"%(invoice_line_company)s because account "%(account)s '
+                    'has company "%(account_company)s".'),
+                'same_account_on_invoice': ('You can not create invoice line '
+                    '"%(line)s" on invoice "%(invoice)s" because the invoice '
+                    'uses the same account (%(account)s).'),
                 })
 
     @classmethod
@@ -1796,7 +1813,10 @@ class InvoiceLine(ModelSQL, ModelView):
         for line in lines:
             if (line.invoice
                     and line.invoice.state in ('posted', 'paid')):
-                cls.raise_user_error('modify')
+                cls.raise_user_error('modify', {
+                        'line': line.rec_name,
+                        'invoice': line.invoice.rec_name
+                        })
 
     @classmethod
     def delete(cls, lines):
@@ -1817,25 +1837,47 @@ class InvoiceLine(ModelSQL, ModelView):
                 invoice_ids.append(vals.get('invoice'))
         for invoice in Invoice.browse(invoice_ids):
             if invoice.state in ('posted', 'paid', 'cancel'):
-                cls.raise_user_error('create')
+                cls.raise_user_error('create', (invoice.rec_name,))
         return super(InvoiceLine, cls).create(vlist)
 
-    def check_account(self):
+    @classmethod
+    def validate(cls, lines):
+        super(InvoiceLine, cls).validate(lines)
+        for line in lines:
+            line.check_account_company()
+            line.check_same_account()
+
+    def check_account_company(self):
         if self.type == 'line':
             if self.invoice:
                 if self.account.company != self.invoice.company:
-                    return False
+                    self.raise_user_error('account_different_company', {
+                            'line': self.rec_name,
+                            'invoice': self.invoice.rec_name,
+                            'invoice_line_company':
+                                self.invoice.company.rec_name,
+                            'account': self.account.rec_name,
+                            'account_company': self.account.company.rec_name,
+                            })
             elif self.company:
                 if self.account.company != self.company:
-                    return False
-        return True
+                    self.raise_user_error('account_different_company', {
+                            'line': self.rec_name,
+                            'invoice': '/',
+                            'invoice_line_company': self.company.rec_name,
+                            'account': self.account.rec_name,
+                            'account_company': self.account.company.rec_name,
+                            })
 
-    def check_account2(self):
+    def check_same_account(self):
         if self.type == 'line':
             if (self.invoice
                     and self.account == self.invoice.account):
-                return False
-        return True
+                self.raise_user_error('same_account_on_invoice', {
+                        'line': self.rec_name,
+                        'invoice': self.invoice.rec_name,
+                        'account': self.account.rec_name,
+                        })
 
     def _compute_taxes(self):
         pool = Pool()
@@ -1985,17 +2027,23 @@ class InvoiceTax(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(InvoiceTax, cls).__setup__()
-        cls._constraints += [
-            ('check_company', ('You can not create invoice tax \n'
-                    'with account or code from a different invoice company!'),
-                    ['account', 'base_code', 'tax_code']),
-            ]
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'modify': ('You can not modify tax from an invoice '
-                    'that is posted, paid!'),
-                'create': ('You can not add a line to an invoice '
-                    'that is posted, paid or canceled!'),
+                'modify': ('You can not modify tax "%(tax)s" from invoice '
+                    '"%(invoice)s" because it is posted or paid.'),
+                'create': ('You can not add line "%(line)s" to invoice '
+                    '"%(invoice)s" because it is posted, paid or canceled.'),
+                'invalid_account_company': ('You can not create invoice '
+                    '"%(invoice)s" on company "%(invoice_company)s" using '
+                    'account "%(account)s" from company '
+                    '"%(account_company)s".'),
+                'invalid_base_code_company': ('You can not create invoice '
+                    '"%(invoice)s" on company "%(invoice_company)s" using base '
+                    'tax code "%(base_code)s" from company '
+                    '"%(base_code_company)s".'),
+                'invalid_tax_code_company': ('You can not create invoice '
+                    '"%(invoice)s" on company "%(invoice_company)s" using tax '
+                    'code "%(tax_code)s" from company "%(tax_code_company)s".'),
                 })
 
     @classmethod
@@ -2111,17 +2159,37 @@ class InvoiceTax(ModelSQL, ModelView):
                 cls.raise_user_error('create')
         return super(InvoiceTax, cls).create(vlist)
 
+    @classmethod
+    def validate(cls, taxes):
+        super(InvoiceTax, cls).validate(taxes)
+        for tax in taxes:
+            tax.check_company()
+
     def check_company(self):
         company = self.invoice.company
         if self.account.company != company:
-            return False
+            self.raise_user_error('invalid_account_company', {
+                    'invoice': self.invoice.rec_name,
+                    'invoice_company': self.invoice.company.rec_name,
+                    'account': self.account.rec_name,
+                    'account_company': self.account.company.rec_name,
+                    })
         if self.base_code:
             if self.base_code.company != company:
-                return False
+                self.raise_user_error('invalid_base_code_company', {
+                        'invoice': tax.invoice.rec_name,
+                        'invoice_company': tax.invoice.company.rec_name,
+                        'base_code': tax.base_code.rec_name,
+                        'base_code_company': tax.base_code.company.rec_name,
+                        })
         if self.tax_code:
             if self.tax_code.company != company:
-                return False
-        return True
+                self.raise_user_error('invalid_tax_code_company', {
+                        'invoice': tax.invoice.rec_name,
+                        'invoice_company': tax.invoice.company.rec_name,
+                        'tax_code': tax.tax_code.rec_name,
+                        'tax_code_company': tax.tax_code.company.rec_name,
+                        })
 
     def get_move_line(self):
         '''
@@ -2398,9 +2466,9 @@ class PayInvoice(Wizard):
     def __setup__(cls):
         super(PayInvoice, cls).__setup__()
         cls._error_messages.update({
-                'amount_greater_amount_to_pay': (
-                    'You can not create a partial '
-                    'payment with an amount greater then the amount to pay!'),
+                'amount_greater_amount_to_pay': ('On invoice "%s" you can not '
+                    'create a partial payment with an amount greater than the '
+                    'amount to pay.'),
                 })
 
     def default_start(self, fields):
@@ -2502,7 +2570,8 @@ class PayInvoice(Wizard):
 
         if amount > invoice.amount_to_pay and \
                 self.ask.type != 'writeoff':
-            self.raise_user_error('amount_greater_amount_to_pay')
+            self.raise_user_error('amount_greater_amount_to_pay',
+                (invoice.rec_name,))
 
         line = None
         if not invoice.company.currency.is_zero(amount):
@@ -2555,9 +2624,9 @@ class CreditInvoice(Wizard):
         super(CreditInvoice, cls).__setup__()
         cls._error_messages.update({
                 'refund_non_posted': ('You can not credit with refund '
-                    'an invoice that is not posted!'),
+                    'invoice "%s" because it is not posted.'),
                 'refund_with_payement': ('You can not credit with refund '
-                    'an invoice with payments!'),
+                    'invoice "%s" because it has payments.'),
                 'refund_supplier': ('You can not credit with refund '
                     'a supplier invoice/credit note.'),
                 })
@@ -2585,10 +2654,11 @@ class CreditInvoice(Wizard):
         if refund:
             for invoice in invoices:
                 if invoice.state != 'posted':
-                    self.raise_user_error('refund_non_posted')
+                    self.raise_user_error('refund_non_posted',
+                        (invoice.rec_name,))
                 if invoice.payment_lines:
-                    self.raise_user_error('refund_with_payement')
-                if invoice.type in ('in_invoice', 'in_credit_note'):
+                    self.raise_user_error('refund_with_payement',
+                        (invoice.rec_name,))
                     self.raise_user_error('refund_supplier')
 
         invoice_ids = Invoice.credit(invoices, refund=refund)

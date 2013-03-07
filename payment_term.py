@@ -26,9 +26,11 @@ class PaymentTerm(ModelSQL, ModelView):
         super(PaymentTerm, cls).__setup__()
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
-            'invalid_line': 'Invalid payment term line!',
-            'missing_remainder': 'Payment term missing a remainder line!',
-            })
+                'invalid_line': ('Invalid line "%(line)s" in payment term '
+                    '"%(term)s".'),
+                'missing_remainder': ('Missing remainder line in payment term '
+                    '"%s".'),
+                })
 
     @staticmethod
     def default_active():
@@ -56,7 +58,10 @@ class PaymentTerm(ModelSQL, ModelView):
             value_date = line.get_date(date)
             if not value or not value_date:
                 if (not remainder) and line.amount:
-                    self.raise_user_error('invalid_line')
+                    self.raise_user_error('invalid_line', {
+                            'line': line.rec_name,
+                            'term': payment_term.rec_name,
+                            })
                 else:
                     continue
             if ((remainder - value) * sign) < Decimal('0.0'):
@@ -66,7 +71,7 @@ class PaymentTerm(ModelSQL, ModelView):
             remainder -= value
 
         if not currency.is_zero(remainder):
-            self.raise_user_error('missing_remainder')
+            self.raise_user_error('missing_remainder', (payment_term.rec_name))
         return res
 
 
@@ -146,12 +151,10 @@ class PaymentTermLine(ModelSQL, ModelView):
             ('day', 'CHECK(day BETWEEN 1 AND 31)',
                 'Day of month must be between 1 and 31.'),
             ]
-        cls._constraints += [
-            ('check_percentage_and_divisor', 'invalid_percentage_and_divisor'),
-            ]
         cls._error_messages.update({
-                'invalid_percentage_and_divisor': 'Percentage and '
-                        'Divisor values are not consistent.',
+                'invalid_percentage_and_divisor': ('Percentage and '
+                    'Divisor values are not consistent in line "%(line)s" '
+                    'of payment term "%(term)s".'),
                 })
 
     @classmethod
@@ -266,6 +269,11 @@ class PaymentTermLine(ModelSQL, ModelView):
         return Decimal(number).quantize(quantize)
 
     @classmethod
+    def validate(cls, lines):
+        super(PaymentTermLine, cls).validate(lines)
+        cls.check_percentage_and_divisor(lines)
+
+    @classmethod
     def check_percentage_and_divisor(cls, lines):
         "Check consistency between percentage and divisor"
         percentage_digits = cls.percentage.digits[1]
@@ -274,7 +282,10 @@ class PaymentTermLine(ModelSQL, ModelView):
             if line.type not in ('percent', 'percent_on_total'):
                 continue
             if line.percentage is None or line.divisor is None:
-                return False
+                cls.raise_user_error('invalid_percentage_and_divisor', {
+                        'line': line.rec_name,
+                        'term': line.payment.rec_name,
+                        })
             if line.percentage == line.divisor == Decimal('0.0'):
                 continue
             percentage = line.percentage
@@ -286,5 +297,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             if (percentage == Decimal('0.0') or divisor == Decimal('0.0')
                     or percentage != calc_percentage
                     and divisor != calc_divisor):
-                return False
-        return True
+                cls.raise_user_error('invalid_percentage_and_divisor', {
+                        'line': line.rec_name,
+                        'term': line.payment.rec_name,
+                        })
