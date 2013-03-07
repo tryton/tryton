@@ -45,7 +45,7 @@ setup(name='trytond_dashboard',
         ],
     package_data={
         'trytond.modules.dashboard': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
