@@ -39,7 +39,7 @@ class Move:
     def __setup__(cls):
         super(Move, cls).__setup__()
         cls._error_messages.update({
-                'lot_required': 'Lot is required for move of product "%s"!',
+                'lot_required': 'Lot is required for move of product "%s".',
                 })
 
     @classmethod
