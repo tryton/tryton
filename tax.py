@@ -58,15 +58,13 @@ class TaxCodeTemplate(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxCodeTemplate, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_tax_code'),
-            ]
-        cls._error_messages.update({
-                'recursive_tax_code': (
-                    'You can not create recursive tax codes!'),
-                })
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(0, ('account', 'ASC'))
+
+    @classmethod
+    def validate(cls, templates):
+        super(CodeTemplate, cls).validate(templates)
+        cls.check_recursion(templates)
 
     def _get_tax_code_value(self, code=None):
         '''
@@ -159,14 +157,12 @@ class TaxCode(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxCode, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_tax_code'),
-            ]
-        cls._error_messages.update({
-                'recursive_tax_code': (
-                    'You can not create recursive tax codes!'),
-                })
         cls._order.insert(0, ('code', 'ASC'))
+
+    @classmethod
+    def validate(cls, codes):
+        super(TaxCode, cls).validate(codes)
+        cls.check_recursion(codes)
 
     @staticmethod
     def default_active():

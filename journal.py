@@ -31,7 +31,7 @@ class JournalType(ModelSQL, ModelView):
     def __setup__(cls):
         super(JournalType, cls).__setup__()
         cls._sql_constraints += [
-            ('code_uniq', 'UNIQUE(code)', 'The code must be unique!'),
+            ('code_uniq', 'UNIQUE(code)', 'The code must be unique.'),
             ]
         cls._order.insert(0, ('code', 'ASC'))
 
@@ -199,17 +199,18 @@ class JournalPeriod(ModelSQL, ModelView):
         super(JournalPeriod, cls).__setup__()
         cls._sql_constraints += [
             ('journal_period_uniq', 'UNIQUE(journal, period)',
-                'You can only open one journal per period!'),
+                'You can only open one journal per period.'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
-            'modify_del_journal_period': ('You can not modify/delete '
-                    'a journal - period with moves!'),
-            'create_journal_period': ('You can not create '
-                    'a journal - period on a closed period!'),
-            'open_journal_period': ('You can not open '
-                    'a journal - period from a closed period!'),
-            })
+                'modify_del_journal_period': ('You can not modify/delete '
+                        'journal - period "%s" because it has moves.'),
+                'create_journal_period': ('You can not create a '
+                        'journal - period on closed period "%s".'),
+                'open_journal_period': ('You can not open '
+                    'journal - period "%(journal_period)s" because period '
+                    '"%(period)s" is closed.'),
+                })
 
     @staticmethod
     def default_active():
@@ -231,7 +232,8 @@ class JournalPeriod(ModelSQL, ModelView):
                     ('period', '=', period.period.id),
                     ], limit=1)
             if moves:
-                cls.raise_user_error('modify_del_journal_period')
+                cls.raise_user_error('modify_del_journal_period', (
+                        period.rec_name,))
 
     @classmethod
     def create(cls, vlist):
@@ -240,7 +242,8 @@ class JournalPeriod(ModelSQL, ModelView):
             if vals.get('period'):
                 period = Period(vals['period'])
                 if period.state == 'close':
-                    cls.raise_user_error('create_journal_period')
+                    cls.raise_user_error('create_journal_period', (
+                            period.rec_name,))
         return super(JournalPeriod, cls).create(vlist)
 
     @classmethod
@@ -251,7 +254,10 @@ class JournalPeriod(ModelSQL, ModelView):
         if vals.get('state') == 'open':
             for journal_period in periods:
                 if journal_period.period.state == 'close':
-                    cls.raise_user_error('open_journal_period')
+                    cls.raise_user_error('open_journal_period', {
+                            'journal_period': journal_period.rec_name,
+                            'period': journal_period.period.rec_name,
+                            })
         super(JournalPeriod, cls).write(periods, vals)
 
     @classmethod

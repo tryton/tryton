@@ -47,12 +47,6 @@ class TypeTemplate(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TypeTemplate, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_types'),
-        ]
-        cls._error_messages.update({
-            'recursive_types': 'You can not create recursive types!',
-        })
         cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
@@ -64,6 +58,11 @@ class TypeTemplate(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @classmethod
+    def validate(cls, records):
+        super(TypeTemplate, cls).validate(records)
+        cls.check_recursion(records, rec_name='name')
 
     @staticmethod
     def default_balance_sheet():
@@ -187,12 +186,6 @@ class Type(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Type, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_types'),
-        ]
-        cls._error_messages.update({
-            'recursive_types': 'You can not create recursive types!',
-        })
         cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
@@ -204,6 +197,11 @@ class Type(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @classmethod
+    def validate(cls, types):
+        super(Type, cls).validate(types)
+        cls.check_recursion(types, rec_name='name')
 
     @staticmethod
     def default_balance_sheet():
@@ -364,14 +362,13 @@ class AccountTemplate(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(AccountTemplate, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_accounts'),
-        ]
-        cls._error_messages.update({
-            'recursive_accounts': 'You can not create recursive accounts!',
-        })
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
+
+    @classmethod
+    def validate(cls, templates):
+        super(AccountTemplate, cls).validate(templates)
+        cls.check_recursion(templates)
 
     @staticmethod
     def default_kind():
@@ -576,20 +573,21 @@ class Account(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Account, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_accounts'),
-        ]
         cls._error_messages.update({
-            'recursive_accounts': 'You can not create recursive accounts!',
-            'delete_account_containing_move_lines': ('You can not delete '
-                    'accounts containing move lines!'),
-        })
+                'delete_account_containing_move_lines': ('You can not delete '
+                    'account "%s" because it has move lines.'),
+                })
         cls._sql_error_messages.update({
-            'parent_fkey': ('You can not delete accounts '
-                    'that have children!'),
-        })
+                'parent_fkey': ('You can not delete accounts that have '
+                    'children.'),
+                })
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
+
+    @classmethod
+    def validate(cls, accounts):
+        super(Account, cls).validate(accounts)
+        cls.check_recursion(accounts)
 
     @staticmethod
     def default_left():
@@ -870,10 +868,12 @@ class Account(ModelSQL, ModelView):
         childs = cls.search([
                 ('parent', 'child_of', [a.id for a in accounts]),
                 ])
-        if MoveLine.search([
-                    ('account', 'in', [a.id for a in childs]),
-                    ]):
-            cls.raise_user_error('delete_account_containing_move_lines')
+        lines = MoveLine.search([
+                ('account', 'in', [a.id for a in childs]),
+                ])
+        if lines:
+            cls.raise_user_error('delete_account_containing_move_lines', (
+                    lines[0].account.rec_name,))
         super(Account, cls).delete(accounts)
 
     def update_account(self, template2account=None, template2type=None):
@@ -2061,7 +2061,8 @@ class OpenAgedBalance(Wizard):
         super(OpenAgedBalance, cls).__setup__()
         cls._error_messages.update({
                 'warning': 'Warning',
-                'term_overlap_desc': 'You cannot define overlapping terms'})
+                'term_overlap_desc': 'You cannot define overlapping terms',
+                })
 
     def do_print_(self, action):
         if not (self.start.term1 < self.start.term2 < self.start.term3):

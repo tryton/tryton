@@ -51,26 +51,22 @@ class FiscalYear(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(FiscalYear, cls).__setup__()
-        cls._constraints += [
-            ('check_dates', 'fiscalyear_overlaps'),
-            ('check_post_move_sequence', 'different_post_move_sequence'),
-        ]
         cls._order.insert(0, ('start_date', 'ASC'))
         cls._error_messages.update({
-            'change_post_move_sequence': ('You can not change '
-                    'the post move sequence'),
-            'no_fiscalyear_date': 'No fiscal year defined for this date!',
-            'fiscalyear_overlaps':
-                'You can not have 2 fiscal years that overlaps!',
-            'different_post_move_sequence':
-                'You must have different post move sequence per fiscal year!',
-            'account_balance_not_zero':
-                'The balance of the account "%s" must be zero!',
-            'close_error': ('You can not close a fiscal year until '
-                    'there is older fiscal year opened!'),
-            'reopen_error': ('You can not reopen a fiscal year until '
-                    'there is more recent fiscal year closed!'),
-            })
+                'change_post_move_sequence': ('You can not change the post '
+                    'move sequence in fiscal year "%s".'),
+                'no_fiscalyear_date': 'No fiscal year defined for "%s".',
+                'fiscalyear_overlaps': ('Fiscal year "%(first)s" and '
+                    '"%(second)s" overlap.'),
+                'different_post_move_sequence': ('Fiscal year "%(first)s" and '
+                    '"%(second)s" have the same post move sequence.'),
+                'account_balance_not_zero': ('The balance of the account "%s" '
+                    'must be zero.'),
+                'close_error': ('You can not close fiscal year "%s" until you '
+                    'close all previous fiscal years.'),
+                'reopen_error': ('You can not reopen fiscal year "%s" until '
+                    'you reopen all later fiscal years.'),
+                })
         cls._buttons.update({
                 'create_period': {
                     'invisible': ((Eval('state') != 'open')
@@ -96,6 +92,13 @@ class FiscalYear(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def validate(cls, years):
+        super(FiscalYear, cls).validate(years)
+        for year in years:
+            year.check_dates()
+            year.check_post_move_sequence()
+
     def check_dates(self):
         cursor = Transaction().cursor
         cursor.execute('SELECT id '
@@ -109,17 +112,24 @@ class FiscalYear(ModelSQL, ModelView):
                     self.end_date, self.end_date,
                     self.start_date, self.end_date,
                     self.company.id, self.id))
-        if cursor.fetchone():
-            return False
-        return True
+        second_id = cursor.fetchone()
+        if second_id:
+            second = self.__class__(second_id[0])
+            self.raise_user_error('fiscalyear_overlaps', {
+                    'first': self.rec_name,
+                    'second': second.rec_name,
+                    })
 
     def check_post_move_sequence(self):
-        if self.search([
-                    ('post_move_sequence', '=', self.post_move_sequence.id),
-                    ('id', '!=', self.id),
-                    ]):
-            return False
-        return True
+        years = self.search([
+                ('post_move_sequence', '=', self.post_move_sequence.id),
+                ('id', '!=', self.id),
+                ])
+        if years:
+            self.raise_user_error('different_post_move_sequence', {
+                    'first': self.rec_name,
+                    'second': years[0].rec_name,
+                    })
 
     @classmethod
     def write(cls, fiscalyears, vals):
@@ -128,7 +138,8 @@ class FiscalYear(ModelSQL, ModelView):
                 if fiscalyear.post_move_sequence and \
                         fiscalyear.post_move_sequence.id != \
                         vals['post_move_sequence']:
-                    cls.raise_user_error('change_post_move_sequence')
+                    cls.raise_user_error('change_post_move_sequence', (
+                            fiscalyear.rec_name,))
         vals = vals.copy()
         if 'periods' in vals:
             operator = ['delete', 'unlink_all', 'unlink', 'create', 'write',
@@ -189,7 +200,9 @@ class FiscalYear(ModelSQL, ModelView):
         If exception is set the function will raise an exception
             if any fiscal year is found.
         '''
-        Date = Pool().get('ir.date')
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Date = pool.get('ir.date')
 
         if not date:
             date = Date.today()
@@ -200,7 +213,13 @@ class FiscalYear(ModelSQL, ModelView):
             ], order=[('start_date', 'DESC')], limit=1)
         if not fiscalyears:
             if exception:
-                cls.raise_user_error('no_fiscalyear_date')
+                language = Transaction().language
+                languages = Lang.search([('code', '=', language)])
+                if not languages:
+                    languages = Lang.search([('code', '=', 'en_US')])
+                language, = languages
+                formatted = Lang.strftime(date, language.code, language.date)
+                cls.raise_user_error('no_fiscalyear_date', (formatted,))
             else:
                 return None
         return fiscalyears[0].id
@@ -242,7 +261,7 @@ class FiscalYear(ModelSQL, ModelView):
                         ('state', '=', 'open'),
                         ('company', '=', fiscalyear.company.id),
                         ]):
-                cls.raise_user_error('close_error')
+                cls.raise_user_error('close_error', (fiscalyear.rec_name,))
 
             #First close the fiscalyear to be sure
             #it will not have new period created between.
