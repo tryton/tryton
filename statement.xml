@@ -165,7 +165,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="statement_validate_button">
-            <field name="name">validate</field>
+            <field name="name">validate_statement</field>
             <field name="model"
                 search="[('model', '=', 'account.statement')]"/>
         </record>

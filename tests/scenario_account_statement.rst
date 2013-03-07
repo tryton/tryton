@@ -280,7 +280,7 @@ Paid 50 to supplier::
 
 Validate statement::
 
-    >>> Statement.validate([statement.id], config.context)
+    >>> Statement.validate_statement([statement.id], config.context)
     >>> statement.state
     u'validated'
 

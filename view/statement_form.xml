@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
                 <label name="state"/>
                 <field name="state"/>
                 <group col="4" colspan="2" id="buttons">
-                    <button string="Validate" name="validate"/>
+                    <button string="Validate" name="validate_statement"/>
                     <button string="Cancel" name="cancel"/>
                     <button string="Post" name="post"/>
                     <button string="Reset to Draft"

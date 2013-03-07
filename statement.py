@@ -67,9 +67,9 @@ class Statement(Workflow, ModelSQL, ModelView):
         super(Statement, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
-                'wrong_end_balance': 'End Balance must be %s!',
+                'wrong_end_balance': 'End Balance must be "%s".',
                 'delete_cancel': ('Statement "%s" must be cancelled before '
-                    'deletion!'),
+                    'deletion.'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -81,7 +81,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
                     },
-                'validate': {
+                'validate_statement': {
                     'invisible': Eval('state') != 'draft',
                     },
                 'post': {
@@ -278,7 +278,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         cls.cancel(statements)
         for statement in statements:
             if statement.state != 'cancel':
-                cls.raise_user_error('delete_cancel', statement.rec_name)
+                cls.raise_user_error('delete_cancel', (statement.rec_name,))
         super(Statement, cls).delete(statements)
 
     @classmethod
@@ -290,7 +290,7 @@ class Statement(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('validated')
-    def validate(cls, statements):
+    def validate_statement(cls, statements):
         Lang = Pool().get('ir.lang')
 
         for statement in statements:
@@ -365,16 +365,17 @@ class Line(ModelSQL, ModelView):
     def __setup__(cls):
         super(Line, cls).__setup__()
         cls._error_messages.update({
-            'debit_credit_account_statement_journal': 'Please provide debit '
-                'and credit account on statement journal.',
-            'same_debit_credit_account': 'Credit or debit account on '
-                'journal is the same than the statement line account!',
-            'amount_greater_invoice_amount_to_pay': 'Amount (%s) greater than '
-                'the amount to pay of invoice!',
-            })
+                'debit_credit_account_statement_journal': ('Please provide '
+                    'debit and credit account on statement journal "%s".'),
+                'same_debit_credit_account': ('Account "%(account)s" in '
+                    'statement line "%(line)s" is the same as the one '
+                    'configured as credit or debit on journal "%(journal)s".'),
+                'amount_greater_invoice_amount_to_pay': ('Amount "%s" is '
+                    'greater than the amount to pay of invoice.'),
+                })
         cls._sql_constraints += [
             ('check_statement_line_amount', 'CHECK(amount != 0)',
-                'Amount should be a positive or negative value!'),
+                'Amount should be a positive or negative value.'),
             ]
 
     @staticmethod
@@ -562,9 +563,14 @@ class Line(ModelSQL, ModelView):
         else:
             account = journal.debit_account
         if not account:
-            self.raise_user_error('debit_credit_account_statement_journal')
+            self.raise_user_error('debit_credit_account_statement_journal',
+                (journal.rec_name,))
         if self.account == account:
-            self.raise_user_error('same_debit_credit_account')
+            self.raise_user_error('same_debit_credit_account', {
+                    'account': self.account.rec_name,
+                    'line': self.account,
+                    'journal': self.journal,
+                    })
         move_lines.append(MoveLine(
                 description=self.description,
                 debit=amount >= zero and amount or zero,
