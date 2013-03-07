@@ -20,16 +20,20 @@ class Address:
     @classmethod
     def __setup__(cls):
         super(Address, cls).__setup__()
-        cls._constraints += [
-            ('check_siret', 'invalid_siret'),
-            ]
         cls._error_messages.update({
-                'invalid_siret': 'Invalid SIRET number!',
+                'invalid_siret': ('Invalid SIRET number "%(siret)s" on address '
+                    '"%(address)s"'),
                 })
 
     def get_siret(self, name):
         if self.party.siren and self.siret_nic:
             return self.party.siren + self.siret_nic
+
+    @classmethod
+    def validate(cls, addresses):
+        super(Address, cls).validate(addresses)
+        for address in addresses:
+            address.check_siret()
 
     def check_siret(self):
         '''
@@ -38,5 +42,7 @@ class Address:
         if self.siret:
             if (len(self.siret) != 14
                     or not luhn.validate(self.siret)):
-                return False
-        return True
+                self.raise_user_error('invalid_siret', {
+                        'siret': self.siret,
+                        'address': self.rec_name,
+                        })

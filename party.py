@@ -19,12 +19,16 @@ class Party:
     @classmethod
     def __setup__(cls):
         super(Party, cls).__setup__()
-        cls._constraints += [
-            ('check_siren', 'invalid_siren'),
-            ]
         cls._error_messages.update({
-                'invalid_siren': 'Invalid SIREN number!',
+                'invalid_siren': ('Invalid SIREN number "%(siren)s" on party '
+                    '"%(party)s".'),
                 })
+
+    @classmethod
+    def validate(cls, parties):
+        super(Party, cls).validate(parties)
+        for party in parties:
+            party.check_siren()
 
     def check_siren(self):
         '''
@@ -32,5 +36,7 @@ class Party:
         '''
         if self.siren:
             if len(self.siren) != 9 or not luhn.validate(self.siren):
-                return False
-        return True
+                self.raise_user_error('invalid_siren', {
+                        'siren': self.siren,
+                        'party': self.rec_name,
+                        })
