@@ -73,13 +73,11 @@ class Work:
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
-        cls._constraints += [
-            ('check_recursion', 'recursive_dependency'),
-            ]
-        cls._error_messages.update({
-                'recursive_dependency': 'You can not create recursive '
-                        'dependencies!',
-                })
+
+    @classmethod
+    def validate(cls, works):
+        super(Work, cls).validate(works)
+        cls.check_recursion(works)
 
     @classmethod
     def check_recursion(cls, records, parent='successors'):
