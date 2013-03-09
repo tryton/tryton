@@ -7,50 +7,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.category</field>
             <field name="type">tree</field>
             <field name="priority">10</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Categories">
-                    <field name="name"/>
-                    <field name="rec_name"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">category_list</field>
         </record>
         <record model="ir.ui.view" id="category_view_tree">
             <field name="model">product.category</field>
             <field name="type">tree</field>
             <field name="priority">20</field>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Categories" keyword_open="1">
-                    <field name="name"/>
-                    <field name="parent" tree_invisible="1"/>
-                    <field name="childs" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">category_tree</field>
         </record>
         <record model="ir.ui.view" id="category_view_form">
             <field name="model">product.category</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Product Category">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <label name="rec_name"/>
-                    <field name="rec_name" colspan="3"/>
-                    <notebook colspan="4">
-                        <page string="Children" col="1" id="childs">
-                            <field name="childs"/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">category_form</field>
         </record>
 
         <record model="ir.action.act_window" id="act_category_tree">

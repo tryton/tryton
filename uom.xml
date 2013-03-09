@@ -6,45 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="uom_view_tree">
             <field name="model">product.uom</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Units of Measure">
-                    <field name="name"/>
-                    <field name="symbol"/>
-                    <field name="category"/>
-                    <field name="factor"/>
-                    <field name="rate"/>
-                    <field name="rounding"/>
-                    <field name="active" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">uom_tree</field>
         </record>
         <record model="ir.ui.view" id="uom_view_form">
             <field name="model">product.uom</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Unit of Measure" col="4">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="category"/>
-                    <field name="category"/>
-                    <label name="symbol"/>
-                    <field name="symbol"/>
-                    <label name="active"/>
-                    <field name="active"/>
-                    <label name="factor"/>
-                    <field name="factor"/>
-                    <label name="rate"/>
-                    <field name="rate"/>
-                    <label name="rounding"/>
-                    <field name="rounding"/>
-                    <label name="digits"/>
-                    <field name="digits"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">uom_form</field>
         </record>
         <record model="ir.action.act_window" id="act_uom_form">
             <field name="name">Units of Measure</field>
@@ -66,26 +33,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="uom_category_view_tree">
             <field name="model">product.uom.category</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-              <![CDATA[
-              <tree string="Categories of Unit of Measure">
-                    <field name="name"/>
-              </tree>
-              ]]>
-            </field>
+            <field name="name">uom_category_tree</field>
         </record>
 
         <record model="ir.ui.view" id="uom_category_view_form">
             <field name="model">product.uom.category</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Category of Unit of Measure" col="6">
-                    <label name="name"/>
-                    <field name="name"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">uom_category_form</field>
         </record>
 
         <record model="ir.action.act_window" id="act_uom_category_form">
