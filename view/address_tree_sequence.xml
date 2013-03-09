@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Addresses" sequence="sequence">
+    <field name="name"/>
+    <field name="street"/>
+    <field name="streetbis"/>
+    <field name="zip"/>
+    <field name="city"/>
+    <field name="country"/>
+    <field name="subdivision" expand="1"/>
+</tree>

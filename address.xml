@@ -7,76 +7,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">party.address</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Addresses">
-                    <field name="party"/>
-                    <field name="name"/>
-                    <field name="street"/>
-                    <field name="streetbis"/>
-                    <field name="zip"/>
-                    <field name="city"/>
-                    <field name="country"/>
-                    <field name="subdivision"/>
-                    <field name="active"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">address_tree</field>
         </record>
 
         <record model="ir.ui.view" id="address_view_tree_sequence">
             <field name="model">party.address</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Addresses" sequence="sequence">
-                    <field name="name"/>
-                    <field name="street"/>
-                    <field name="streetbis"/>
-                    <field name="zip"/>
-                    <field name="city"/>
-                    <field name="country"/>
-                    <field name="subdivision" expand="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">address_tree_sequence</field>
         </record>
 
         <record model="ir.ui.view" id="address_view_form">
             <field name="model">party.address</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Addresses" col="6">
-                    <label name="party"/>
-                    <field name="party" colspan="5"/>
-                    <label name="name"/>
-                    <field name="name"/>
-                    <group colspan="2" col="20" id="checkboxes">
-                        <label name="active"/>
-                        <field name="active"
-                            xexpand="0" width="25"/>
-                        <!-- Add here some checkboxes ! -->
-                    </group>
-                    <newline/>
-                    <label name="street"/>
-                    <field name="street"/>
-                    <label name="streetbis"/>
-                    <field name="streetbis"/>
-                    <newline/>
-                    <label name="zip"/>
-                    <field name="zip"/>
-                    <label name="city"/>
-                    <field name="city"/>
-                    <newline/>
-                    <label name="country"/>
-                    <field name="country" widget="selection"/>
-                    <label name="subdivision"/>
-                    <field name="subdivision" widget="selection"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">address_form</field>
         </record>
         <record model="ir.action.act_window" id="act_address_form">
             <field name="name">Addresses</field>

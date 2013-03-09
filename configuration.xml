@@ -6,16 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="party_configuration_view_form">
             <field name="model">party.configuration</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Party Configuration">
-                    <label name="party_sequence"/>
-                    <field name="party_sequence"/>
-                    <label name="party_lang" />
-                    <field name="party_lang" widget="selection" />
-                </form>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
         <record model="ir.action.act_window" id="act_party_configuration_form">
             <field name="name">Party Configuration</field>
