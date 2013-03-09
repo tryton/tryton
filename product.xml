@@ -7,32 +7,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="product_cost_history_view_tree">
             <field name="model">product.product.cost_history</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Cost History">
-                    <field name="template"/>
-                    <field name="date"/>
-                    <field name="cost_price"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">product_cost_history_tree</field>
         </record>
 
         <record model="ir.ui.view" id="product_cost_history_view_graph">
             <field name="model">product.product.cost_history</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Product Cost History" type="line">
-                    <x>
-                        <field name="date"/>
-                    </x>
-                    <y>
-                        <field name="cost_price" fill="1" empty="0"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">product_cost_history_graph</field>
         </record>
 
         <record model="ir.action.act_window" id="act_product_cost_history_form">

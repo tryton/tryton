@@ -45,7 +45,7 @@ setup(name='trytond_product_cost_history',
         ],
     package_data={
         'trytond.modules.product_cost_history': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
