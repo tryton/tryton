@@ -45,7 +45,7 @@ setup(name='trytond_party_siret',
         ],
     package_data={
         'trytond.modules.party_siret': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

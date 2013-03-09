@@ -6,34 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="party_view_tree">
             <field name="model">party.party</field>
             <field name="inherit" ref="party.party_view_tree"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/tree/field[@name=&quot;vat_code&quot;]"
-                        position="after">
-                        <field name="siren"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">party_tree</field>
         </record>
         <record model="ir.ui.view" id="party_view_form">
             <field name="model">party.party</field>
             <field name="inherit" ref="party.party_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/group[@id=&quot;checkboxes&quot;]"
-                        position="after">
-                        <label name="siren"/>
-                        <field name="siren"/>
-                        <newline/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">party_form</field>
         </record>
     </data>
 </tryton>
