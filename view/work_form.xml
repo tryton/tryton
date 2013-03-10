@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Works Efforts" col="6">
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+    <label name="active"/>
+    <field name="active" xexpand="0"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="party"/>
+    <field name="party"/>
+    <label name="party_address"/>
+    <field name="party_address"/>
+    <notebook colspan="8">
+        <page string="General" id="general" col="6">
+            <group col="2" colspan="6" id="timesheet_available">
+                <label name="timesheet_available"/>
+                <field name="timesheet_available"/>
+            </group>
+            <label name="hours"/>
+            <field name="hours" widget="float_time" float_time="company_work_time"/>
+            <label name="total_effort"/>
+            <field name="total_effort" widget="float_time" float_time="company_work_time"/>
+            <label name="effort"/>
+            <field name="effort" widget="float_time" float_time="company_work_time"/>
+            <separator name="comment" colspan="6"/>
+            <field name="comment" colspan="6"/>
+        </page>
+        <page string="Children" id="children"
+              states="{'invisible': Not(Equal(Eval('type'), 'project'))}">
+              <field name="children" colspan="4"/>
+        </page>
+        <page string="Timesheet" id="timesheet_lines"
+              states="{'invisible': Not(Bool(Eval('timesheet_available')))}">
+            <label name="timesheet_start_date"/>
+            <field name="timesheet_start_date"/>
+            <label name="timesheet_end_date"/>
+            <field name="timesheet_end_date"/>
+            <field name="timesheet_lines" colspan="4"/>
+        </page>
+    </notebook>
+    <label name="state"/>
+    <field name="state"/>
+</form>

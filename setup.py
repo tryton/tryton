@@ -45,7 +45,7 @@ setup(name='trytond_project',
         ],
     package_data={
         'trytond.modules.project': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'icons/*.svg']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
