@@ -56,79 +56,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="production_view_list">
             <field name="model">production</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Productions">
-                    <field name="product"/>
-                    <field name="code"/>
-                    <field name="reference"/>
-                    <field name="planned_date"/>
-                    <field name="effective_date"/>
-                    <field name="state"/>
-                    <field name="create_date" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">production_list</field>
         </record>
 
         <record model="ir.ui.view" id="production_view_form">
             <field name="model">production</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Production">
-                    <label name="reference"/>
-                    <field name="reference"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="planned_date"/>
-                    <field name="planned_date"/>
-                    <label name="effective_date"/>
-                    <field name="effective_date"/>
-                    <label name="product"/>
-                    <field name="product"/>
-                    <label name="bom"/>
-                    <field name="bom"/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="uom"/>
-                    <field name="uom"/>
-                    <notebook>
-                        <page string="Lines" id="lines">
-                            <field name="inputs" colspan="2"/>
-                            <field name="outputs" colspan="2"/>
-                        </page>
-                        <page string="Other Info" id="other">
-                            <label name="company"/>
-                            <field name="company"/>
-                            <newline/>
-                            <label name="warehouse"/>
-                            <field name="warehouse"/>
-                            <label name="location"/>
-                            <field name="location"/>
-                            <label name="cost"/>
-                            <field name="cost"/>
-                        </page>
-                    </notebook>
-                    <group col="4" colspan="4" id="state_buttons">
-                        <label name="state"/>
-                        <field name="state"/>
-                        <group col="6" colspan="2" id="buttons">
-                            <button name="cancel" string="Cancel"
-                                icon="tryton-cancel"/>
-                            <button name="draft" string="Draft"/>
-                            <button name="wait" string="Wait"/>
-                            <button name="assign_wizard" string="Assign"
-                                icon="tryton-go-next"/>
-                            <button name="run" string="Run"
-                                icon="tryton-go-next"/>
-                            <button name="done" string="Done"
-                                icon="tryton-go-next"/>
-                        </group>
-                    </group>
-                </form>
-                ]]>
-            </field>
+            <field name="name">production_form</field>
         </record>
 
         <record model="ir.action.act_window" id="act_production_list">
@@ -318,17 +252,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="assign_failed_view_form">
             <field name="model">production.assign.failed</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
-                    <separator string="Unable to assign those products:"
-                        id="unable"/>
-                    <field name="moves" colspan="2"
-                        view_ids="stock.move_view_tree_simple"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">assign_failed_form</field>
         </record>
 
     </data>

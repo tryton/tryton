@@ -7,14 +7,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="production_configuration_view_form">
             <field name="model">production.configuration</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Production Configuration">
-                    <label name="production_sequence"/>
-                    <field name="production_sequence"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
 
         <record model="ir.action.act_window"

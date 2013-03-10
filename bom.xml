@@ -6,35 +6,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="bom_view_list">
             <field name="model">production.bom</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="BOMs">
-                    <field name="name"/>
-                    <field name="active"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">bom_list</field>
         </record>
 
         <record model="ir.ui.view" id="bom_view_form">
             <field name="model">production.bom</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="BOM">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active"/>
-                    <notebook>
-                        <page string="Lines" id="lines" col="2">
-                            <field name="inputs"/>
-                            <field name="outputs"/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">bom_form</field>
         </record>
 
         <record model="ir.action.act_window" id="act_bom_list">
@@ -78,36 +56,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="bom_input_view_list">
             <field name="model">production.bom.input</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="BOM Inputs">
-                    <field name="bom"/>
-                    <field name="product"/>
-                    <field name="quantity"/>
-                    <field name="uom"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">bom_input_list</field>
         </record>
         <record model="ir.ui.view" id="bom_input_view_form">
             <field name="model">production.bom.input</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="BOM Inputs">
-                    <label name="bom"/>
-                    <field name="bom"/>
-                    <newline/>
-                    <label name="product"/>
-                    <field name="product"/>
-                    <newline/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="uom"/>
-                    <field name="uom"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">bom_input_form</field>
         </record>
 
         <record model="ir.model.access" id="access_bom_input">
@@ -129,36 +83,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="bom_output_view_list">
             <field name="model">production.bom.output</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="BOM Outputs">
-                    <field name="bom"/>
-                    <field name="product"/>
-                    <field name="quantity"/>
-                    <field name="uom"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">bom_output_list</field>
         </record>
         <record model="ir.ui.view" id="bom_output_view_form">
             <field name="model">production.bom.output</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="BOM Outputs">
-                    <label name="bom"/>
-                    <field name="bom"/>
-                    <newline/>
-                    <label name="product"/>
-                    <field name="product"/>
-                    <newline/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="uom"/>
-                    <field name="uom"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">bom_output_form</field>
         </record>
 
         <record model="ir.model.access" id="access_bom_output">
@@ -181,46 +111,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">production.bom.tree</field>
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="BOM Tree">
-                    <field name="product"/>
-                    <field name="quantity"/>
-                    <field name="uom"/>
-                    <field name="childs" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">bom_tree_tree</field>
         </record>
 
         <record model="ir.ui.view" id="bom_tree_open_start_view_form">
             <field name="model">production.bom.tree.open.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="BOM Tree">
-                    <label name="bom"/>
-                    <field name="bom"/>
-                    <newline/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="uom"/>
-                    <field name="uom"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">bom_tree_open_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="bom_tree_open_tree_view_form">
             <field name="model">production.bom.tree.open.tree</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="BOM Tree">
-                    <field name="bom_tree"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">bom_tree_open_tree_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_bom_tree_open">
