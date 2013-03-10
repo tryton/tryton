@@ -28,6 +28,8 @@ class AccountTestCase(unittest.TestCase):
     def setUp(self):
         trytond.tests.test_tryton.install_module('account')
         self.account_template = POOL.get('account.account.template')
+        self.tax_code_template = POOL.get('account.tax.code.template')
+        self.tax_template = POOL.get('account.tax.code.template')
         self.account = POOL.get('account.account')
         self.account_create_chart = POOL.get(
             'account.create_chart', type='wizard')
@@ -58,6 +60,35 @@ class AccountTestCase(unittest.TestCase):
             account_template, = self.account_template.search([
                     ('parent', '=', None),
                     ])
+            tax_account, = self.account_template.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+            with Transaction().set_user(0):
+                tax_code = self.tax_code_template()
+                tax_code.name = 'Tax Code'
+                tax_code.account = account_template
+                tax_code.save()
+                base_code = self.tax_code_template()
+                base_code.name = 'Base Code'
+                base_code.account = account_template
+                base_code.save()
+                tax = self.tax_template()
+                tax.name = tax.description = '20% VAT'
+                tax.type = 'percentage'
+                tax.percentage = Decimal(20)
+                tax.account = account_template
+                tax.invoice_account = tax_account
+                tax.credit_note_account = tax_account
+                tax.invoice_base_code = base_code
+                tax.invoice_base_sign = Decimal(1)
+                tax.invoice_tax_code = tax_code
+                tax.invoice_tax_sign = Decimal(1)
+                tax.credit_note_base_code = base_code
+                tax.credit_note_base_sign = Decimal(-1)
+                tax.credit_note_tax_code = tax_code
+                tax.credit_note_tax_sign = Decimal(-1)
+                tax.save()
+
             company, = self.company.search([('name', '=', 'B2CK')])
             self.user.write([self.user(USER)], {
                     'main_company': company.id,

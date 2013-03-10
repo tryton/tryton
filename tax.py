@@ -63,7 +63,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
 
     @classmethod
     def validate(cls, templates):
-        super(CodeTemplate, cls).validate(templates)
+        super(TaxCodeTemplate, cls).validate(templates)
         cls.check_recursion(templates)
 
     def _get_tax_code_value(self, code=None):
