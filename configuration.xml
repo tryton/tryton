@@ -6,16 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="purchase_configuration_view_form">
             <field name="model">purchase.configuration</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Purchase Configuration">
-                    <label name="purchase_sequence"/>
-                    <field name="purchase_sequence"/>
-                    <label name="purchase_invoice_method" />
-                    <field name="purchase_invoice_method" />
-                </form>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
         <record model="ir.action.act_window" id="act_purchase_configuration_form">
             <field name="name">Purchase Configuration</field>

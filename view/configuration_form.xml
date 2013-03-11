@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Purchase Configuration">
+    <label name="purchase_sequence"/>
+    <field name="purchase_sequence"/>
+    <label name="purchase_invoice_method" />
+    <field name="purchase_invoice_method" />
+</form>

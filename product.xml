@@ -7,20 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.product</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Products">
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="list_price_uom"/>
-                    <field name="cost_price_uom"/>
-                    <field name="quantity"/>
-                    <field name="forecast_quantity"/>
-                    <field name="default_uom"/>
-                    <field name="active"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">product_list_purchase_line</field>
         </record>
     </data>
 </tryton>

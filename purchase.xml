@@ -58,110 +58,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="purchase_view_form">
             <field name="model">purchase.purchase</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Purchase" col="6">
-                    <label name="party"/>
-                    <field name="party"/>
-                    <label name="invoice_address"/>
-                    <field name="invoice_address"/>
-                    <label name="supplier_reference"/>
-                    <field name="supplier_reference"/>
-                    <label name="description"/>
-                    <field name="description" colspan="3"/>
-                    <label name="reference"/>
-                    <field name="reference"/>
-                    <notebook colspan="6">
-                        <page string="Purchase" id="purchase">
-                            <label name="purchase_date"/>
-                            <field name="purchase_date"/>
-                            <label name="payment_term"/>
-                            <field name="payment_term"/>
-                            <label name="warehouse"/>
-                            <field name="warehouse"/>
-                            <label name="currency"/>
-                            <field name="currency"/>
-                            <field name="lines" colspan="4"
-                                view_ids="purchase.purchase_line_view_tree_sequence"/>
-                            <group col="2" colspan="2" id="states">
-                                <label name="invoice_state"/>
-                                <field name="invoice_state"/>
-                                <label name="shipment_state"/>
-                                <field name="shipment_state"/>
-                                <label name="state"/>
-                                <field name="state"/>
-                            </group>
-                            <group col="2" colspan="2" id="amount_buttons">
-                                <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
-                                <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
-                                <label name="tax_amount" xalign="1.0" xexpand="1"/>
-                                <field name="tax_amount" xalign="1.0" xexpand="0"/>
-                                <label name="total_amount" xalign="1.0" xexpand="1"/>
-                                <field name="total_amount" xalign="1.0" xexpand="0"/>
-                                <group col="6" colspan="2" id="buttons">
-                                    <button name="cancel" string="Cancel"
-                                        icon="tryton-cancel"/>
-                                    <button name="draft" string="Draft"/>
-                                    <button name="quote" string="Quote"
-                                        icon="tryton-go-next"/>
-                                    <button name="handle_invoice_exception"
-                                            string="Handle Invoice Exception"
-                                            icon="tryton-go-next"/>
-                                    <button name="handle_shipment_exception"
-                                            string="Handle Shipment Exception"
-                                            icon="tryton-go-next"/>
-                                    <button name="confirm" string="Confirm"
-                                        icon="tryton-ok"/>
-                                </group>
-                            </group>
-                        </page>
-                        <page string="Other Info" id="info">
-                            <label name="company"/>
-                            <field name="company"/>
-                            <label name="invoice_method"/>
-                            <field name="invoice_method"/>
-                            <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4" spell="Eval('party_lang')"/>
-                        </page>
-                        <page string="Invoices" id="invoices">
-                            <field name="invoices" colspan="4"/>
-                        </page>
-                        <page string="Shipments" id="shipments">
-                            <field name="moves" colspan="4"
-                                view_ids="purchase.move_view_list_shipment"/>
-                            <field name="shipments" colspan="4"/>
-                            <field name="shipment_returns" colspan="4"/>
-                        </page>
-                    </notebook>
-                    <field name="currency_digits" invisible="1" colspan="6"/>
-                    <field name="party_lang" invisible="1" colspan="6"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">purchase_form</field>
         </record>
         <record model="ir.ui.view" id="purchase_view_tree">
             <field name="model">purchase.purchase</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Purchases">
-                    <field name="reference"/>
-                    <field name="supplier_reference"/>
-                    <field name="purchase_date"/>
-                    <field name="party"/>
-                    <field name="warehouse"/>
-                    <field name="currency"/>
-                    <field name="untaxed_amount"/>
-                    <field name="total_amount"/>
-                    <field name="state"/>
-                    <field name="invoice_state"/>
-                    <field name="shipment_state"/>
-                    <field name="description"/>
-                    <field name="currency_digits" tree_invisible="1"/>
-                    <field name="create_date" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">purchase_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_shipment_form">
@@ -202,36 +104,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="handle_shipment_exception_ask_view_form">
             <field name="model">purchase.handle.shipment.exception.ask</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Handle shipment Exception" col="2">
-                    <image name="tryton-dialog-information" xexpand="0"
-                        xfill="0"/>
-                    <label string="Choose move to recreate"
-                        id="choose"
-                        yalign="0.0" xalign="0.0" xexpand="1"/>
-                    <field name="recreate_moves" colspan="2"
-                        view_ids="stock.move_view_tree"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">handle_shipment_exception_ask_form</field>
         </record>
 
         <record model="ir.ui.view" id="handle_invoice_exception_ask_view_form">
             <field name="model">purchase.handle.invoice.exception.ask</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Handle Invoice Exception" col="2">
-                    <image name="tryton-dialog-information" xexpand="0"
-                        xfill="0"/>
-                    <label string="Choose invoices to recreate"
-                        id="choose"
-                        yalign="0.0" xalign="0.0" xexpand="1"/>
-                    <field name="recreate_invoices" colspan="2"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">handle_invoice_exception_ask_form</field>
         </record>
 
         <record model="ir.action.act_window" id="act_purchase_form">
@@ -383,90 +262,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="purchase_line_view_form">
             <field name="model">purchase.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Purchase Line" cursor="product">
-                    <label name="purchase"/>
-                    <field name="purchase" colspan="3"/>
-                    <notebook colspan="4">
-                        <page string="General" id="general">
-                            <label name="type"/>
-                            <field name="type"/>
-                            <label name="sequence"/>
-                            <field name="sequence"/>
-                            <label name="product"/>
-                            <field name="product"
-                                view_ids="purchase.product_view_list_purchase_line"/>
-                            <newline/>
-                            <label name="description"/>
-                            <field name="description" colspan="3"
-                                spell="Get(Eval('_parent_purchase', {}), 'party_lang')"/>
-                            <label name="quantity"/>
-                            <field name="quantity"/>
-                            <label name="unit"/>
-                            <field name="unit"/>
-                            <label name="unit_price"/>
-                            <field name="unit_price"/>
-                            <label name="amount"/>
-                            <field name="amount"/>
-                            <label name="delivery_date"/>
-                            <field name="delivery_date"/>
-                            <field name="taxes" colspan="4"/>
-                        </page>
-                        <page string="Notes" id="notes">
-                            <separator name="note" colspan="4"/>
-                            <field name="note" colspan="4"
-                                spell="Get(Eval('_parent_purchase', {}), 'party_lang')"/>
-                        </page>
-                    </notebook>
-                    <field name="unit_digits" invisible="1" colspan="4"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">purchase_line_form</field>
         </record>
 
         <record model="ir.ui.view" id="purchase_line_view_tree">
             <field name="model">purchase.line</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Purchase Lines">
-                    <field name="purchase"/>
-                    <field name="type"/>
-                    <field name="product"/>
-                    <field name="description"/>
-                    <field name="quantity"/>
-                    <field name="unit"/>
-                    <field name="unit_price"/>
-                    <field name="taxes"/>
-                    <field name="amount"/>
-                    <field name="unit_digits" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">purchase_line_tree</field>
         </record>
 
         <record model="ir.ui.view" id="purchase_line_view_tree_sequence">
             <field name="model">purchase.line</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Lines" sequence="sequence">
-                    <field name="type"/>
-                    <field name="product"/>
-                    <field name="description"/>
-                    <field name="quantity"/>
-                    <field name="unit"/>
-                    <field name="unit_price"/>
-                    <field name="taxes"/>
-                    <field name="amount" expand="1"/>
-                    <field name="sequence" tree_invisible="1"/>
-                    <field name="unit_digits" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">purchase_line_tree_sequence</field>
         </record>
 
         <record model="ir.model.access" id="access_purchase_line">
@@ -488,59 +298,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="product_supplier_view_form">
             <field name="model">purchase.product_supplier</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Product Supplier">
-                    <label name="product"/>
-                    <field name="product" colspan="3"/>
-                    <label name="party"/>
-                    <field name="party"/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="code"/>
-                    <field name="code"/>
-                    <label name="delivery_time"/>
-                    <field name="delivery_time"/>
-                    <newline/>
-                    <label name="currency"/>
-                    <field name="currency"/>
-                    <field name="prices" colspan="4"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">product_supplier_form</field>
         </record>
         <record model="ir.ui.view" id="product_supplier_view_tree">
             <field name="model">purchase.product_supplier</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Suppliers">
-                    <field name="product"/>
-                    <field name="party"/>
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="sequence"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">product_supplier_tree</field>
         </record>
 
         <record model="ir.ui.view" id="product_supplier_view_tree_sequence">
             <field name="model">purchase.product_supplier</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Suppliers" sequence="sequence">
-                    <field name="party"/>
-                    <field name="name"/>
-                    <field name="code"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">product_supplier_tree_sequence</field>
         </record>
 
         <record model="ir.rule.group" id="rule_group_product_supplier">
@@ -555,109 +326,29 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="product_supplier_price_view_form">
             <field name="model">purchase.product_supplier.price</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Product Supplier Price" col="6">
-                    <label name="product_supplier"/>
-                    <field name="product_supplier" colspan="5"/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="unit_price"/>
-                    <field name="unit_price"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">product_supplier_price_form</field>
         </record>
         <record model="ir.ui.view" id="product_supplier_price_view_tree">
             <field name="model">purchase.product_supplier.price</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Supplier Prices">
-                    <field name="product_supplier"/>
-                    <field name="quantity"/>
-                    <field name="unit_price"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">product_supplier_price_tree</field>
         </record>
 
         <record model="ir.ui.view" id="template_view_form">
             <field name="model">product.template</field>
             <field name="inherit" ref="product.template_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]/field[@name=&quot;cost_price_method&quot;]"
-                        position="after">
-                        <label name="purchasable"/>
-                        <field name="purchasable"/>
-                    </xpath>
-                    <xpath expr="/form/notebook/page[@id=&quot;general&quot;]"
-                        position="after">
-                        <page string="Suppliers"
-                            states="{'invisible': Not(Bool(Eval('purchasable')))}"
-                            id="suppliers">
-                            <label name="purchasable"/>
-                            <field name="purchasable"/>
-                            <label name="purchase_uom"/>
-                            <field name="purchase_uom"/>
-                            <field name="product_suppliers" colspan="4"
-                                view_ids="purchase.product_supplier_view_tree_sequence"/>
-                        </page>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">template_form</field>
         </record>
         <record model="ir.ui.view" id="template_view_tree">
             <field name="model">product.template</field>
             <field name="inherit" ref="product.template_view_tree"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/tree/field[@name=&quot;default_uom&quot;]"
-                        position="after">
-                        <field name="purchasable"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">template_tree</field>
         </record>
 
         <record model="ir.ui.view" id="move_view_form">
             <field name="model">stock.move</field>
             <field name="inherit" ref="stock.move_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/field[@name=&quot;uom&quot;]"
-                        position="after">
-                        <label name="purchase_quantity"/>
-                        <field name="purchase_quantity"/>
-                        <label name="purchase_unit"/>
-                        <field name="purchase_unit"/>
-                    </xpath>
-                    <xpath expr="/form/field[@name=&quot;currency&quot;]"
-                        position="after">
-                        <label name="purchase_unit_price"/>
-                        <field name="purchase_unit_price"/>
-                        <label name="purchase_currency"/>
-                        <field name="purchase_currency"/>
-                    </xpath>
-                    <xpath expr="/form/field[@name=&quot;effective_date&quot;]"
-                        position="after">
-                        <label name="purchase"/>
-                        <field name="purchase"/>
-                        <newline/>
-                    </xpath>
-                    <xpath expr="/form/field[@name=&quot;unit_digits&quot;]"
-                        position="after">
-                        <field name="purchase_unit_digits" invisible="1" colspan="4"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">move_form</field>
         </record>
 
         <record model="ir.action.wizard" id="act_open_supplier">
