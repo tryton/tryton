@@ -14,19 +14,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="sale_configuration_view_form">
             <field name="model">sale.configuration</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Sale Configuration">
-                    <label name="sale_sequence"/>
-                    <field name="sale_sequence"/>
-                    <newline />
-                    <label name="sale_invoice_method" />
-                    <field name="sale_invoice_method" />
-                    <label name="sale_shipment_method" />
-                    <field name="sale_shipment_method" />
-                </form>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
         <record model="ir.action.act_window" id="act_sale_configuration_form">
             <field name="name">Sales Configuration</field>

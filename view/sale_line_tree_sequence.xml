@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Sale Lines" sequence="sequence">
+    <field name="type"/>
+    <field name="product"/>
+    <field name="description"/>
+    <field name="quantity"/>
+    <field name="unit"/>
+    <field name="unit_price"/>
+    <field name="taxes"/>
+    <field name="amount" expand="1"/>
+    <field name="unit_digits" tree_invisible="1"/>
+</tree>
