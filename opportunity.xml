@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <menuitem name="Reporting" parent="sale.menu_sale"
@@ -15,87 +17,13 @@
         <record model="ir.ui.view" id="opportunity_view_form">
             <field name="model">sale.opportunity</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Sale Lead/Opportunity">
-                    <label name="party"/>
-                    <field name="party"/>
-                    <label name="address"/>
-                    <field name="address"/>
-                    <label name="amount"/>
-                    <group col="2" id="amount_currency">
-                        <field name="amount"/>
-                        <field name="currency"/>
-                    </group>
-                    <label name="probability"/>
-                    <field name="probability"/>
-                    <label name="description"/>
-                    <field name="description" colspan="3"/>
-                    <notebook colspan="4">
-                        <page string="Lead/Opportunity" id="opportunity">
-                            <label name="company"/>
-                            <field name="company"/>
-                            <label name="employee"/>
-                            <field name="employee"/>
-                            <label name="start_date"/>
-                            <field name="start_date"/>
-                            <label name="end_date"/>
-                            <field name="end_date"/>
-                            <label name="payment_term"/>
-                            <field name="payment_term"/>
-                            <label name="sale"/>
-                            <field name="sale"/>
-                            <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4"/>
-                            <separator name="lost_reason" colspan="4"/>
-                            <field name="lost_reason" colspan="4"/>
-                            <group col="2" colspan="2" id="state">
-                                <label name="state"/>
-                                <field name="state"/>
-                            </group>
-                            <group col="5" colspan="2" id="buttons">
-                                <button name="cancel" string="Cancel"
-                                    icon="tryton-cancel"/>
-                                <button name="lost" string="Mark as Lost"
-                                    icon="tryton-cancel"/>
-                                <button name="lead" string="Set as Lead"
-                                    icon="tryton-go-previous"/>
-                                <button name="opportunity"
-                                    string="Convert to Opportunity"
-                                    icon="tryton-go-next"/>
-                                <button name="convert" string="Convert to Sale"
-                                    icon="tryton-go-next"/>
-                            </group>
-                        </page>
-                        <page name="lines">
-                            <field name="lines"/>
-                        </page>
-                        <page name="history">
-                            <field name="history"/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">opportunity_form</field>
         </record>
 
         <record model="ir.ui.view" id="opportunity_view_tree">
             <field name="model">sale.opportunity</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Sales Leads/Opportunities">
-                    <field name="start_date"/>
-                    <field name="end_date"/>
-                    <field name="description"/>
-                    <field name="party"/>
-                    <field name="amount"/>
-                    <field name="currency"/>
-                    <field name="state"/>
-                    <field name="probability"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">opportunity_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_opportunity_form">
@@ -243,39 +171,12 @@
         <record model="ir.ui.view" id="opportunity_line_view_form">
             <field name="model">sale.opportunity.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Sale Lead/Opportunity Line">
-                    <label name="opportunity"/>
-                    <field name="opportunity" colspan="3"/>
-                    <label name="product"/>
-                    <field name="product"/>
-                    <label name="sequence"/>
-                    <field name="sequence"/>
-                    <label name="quantity"/>
-                    <field name="quantity"/>
-                    <label name="unit"/>
-                    <field name="unit"/>
-                    <label name="sale_line"/>
-                    <field name="sale_line"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">opportunity_line_form</field>
         </record>
         <record model="ir.ui.view" id="opportunity_line_view_tree">
             <field name="model">sale.opportunity.line</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Sales Leads/Opportunities Lines" sequence="sequence">
-                    <field name="opportunity"/>
-                    <field name="product"/>
-                    <field name="quantity"/>
-                    <field name="unit" expand="1"/>
-                    <field name="sequence" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">opportunity_line_tree</field>
         </record>
 
         <record model="ir.model.access" id="access_opportunity_line">
@@ -305,67 +206,12 @@
         <record model="ir.ui.view" id="opportunity_history_view_form">
             <field name="model">sale.opportunity.history</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="History">
-                    <label name="opportunity"/>
-                    <field name="opportunity" colspan="3"/>
-                    <label name="user"/>
-                    <field name="user"/>
-                    <label name="date"/>
-                    <field name="date"/>
-                    <label name="party"/>
-                    <field name="party"/>
-                    <label name="address"/>
-                    <field name="address"/>
-                    <label name="description"/>
-                    <field name="description"/>
-                    <label name="probability"/>
-                    <field name="probability"/>
-                    <notebook colspan="4">
-                        <page string="Lead/Opportunity" id="opportunity">
-                            <label name="company"/>
-                            <field name="company"/>
-                            <label name="employee"/>
-                            <field name="employee"/>
-                            <label name="start_date"/>
-                            <field name="start_date"/>
-                            <label name="end_date"/>
-                            <field name="end_date"/>
-                            <separator name="comment" colspan="4"/>
-                            <field name="comment" colspan="4"/>
-                            <separator name="lost_reason" colspan="4"/>
-                            <field name="lost_reason" colspan="4"/>
-                            <group col="2" colspan="2" id="state">
-                                <label name="state"/>
-                                <field name="state"/>
-                            </group>
-                        </page>
-                        <page name="lines">
-                            <field name="lines"/>
-                        </page>
-                    </notebook>
-                </form>
-                ]]>
-            </field>
+            <field name="name">opportunity_history_form</field>
         </record>
         <record model="ir.ui.view" id="opportunity_history_view_tree">
             <field name="model">sale.opportunity.history</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="History">
-                    <field name="date"/>
-                    <field name="user"/>
-                    <field name="start_date"/>
-                    <field name="end_date"/>
-                    <field name="description"/>
-                    <field name="party"/>
-                    <field name="state"/>
-                    <field name="probability"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">opportunity_history_tree</field>
         </record>
 
         <record model="ir.model.access" id="access_opportunity_history">
@@ -404,58 +250,19 @@
         <record model="ir.ui.view" id="opportunity_employee_view_tree">
             <field name="model">sale.opportunity_employee</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Opportunities per Employee">
-                    <field name="employee"/>
-                    <field name="number"/>
-                    <field name="converted"/>
-                    <field name="lost"/>
-                    <field name="conversion_rate"/>
-                    <field name="amount"/>
-                    <field name="converted_amount"/>
-                    <field name="currency"/>
-                    <field name="conversion_amount_rate"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">opportunity_employee_tree</field>
         </record>
 
         <record model="ir.ui.view" id="opportunity_employee_view_graph1">
             <field name="model">sale.opportunity_employee</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Opportunities per Employee">
-                    <x>
-                        <field name="employee"/>
-                    </x>
-                    <y>
-                        <field name="number"/>
-                        <field name="converted"/>
-                        <field name="lost"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">opportunity_employee_graph1</field>
         </record>
 
         <record model="ir.ui.view" id="opportunity_employee_view_graph2">
             <field name="model">sale.opportunity_employee</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Opportunities per Employee">
-                    <x>
-                        <field name="employee"/>
-                    </x>
-                    <y>
-                        <field name="amount"/>
-                        <field name="converted_amount"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">opportunity_employee_graph2</field>
         </record>
 
         <record model="ir.action.act_window" id="act_opportunity_employee_form">
@@ -493,16 +300,7 @@
         <record model="ir.ui.view" id="opportunity_employee_open_start_view_form">
             <field name="model">sale.opportunity_employee.open.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Sale Opportunities per Employee">
-                    <label name="start_date"/>
-                    <field name="start_date"/>
-                    <label name="end_date"/>
-                    <field name="end_date"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">opportunity_employee_open_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="act_opportunity_employee_open">
@@ -515,59 +313,19 @@
         <record model="ir.ui.view" id="opportunity_monthly_view_tree">
             <field name="model">sale.opportunity_monthly</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Sale Opportunities per Month">
-                    <field name="year"/>
-                    <field name="month"/>
-                    <field name="number"/>
-                    <field name="converted"/>
-                    <field name="lost"/>
-                    <field name="conversion_rate"/>
-                    <field name="amount"/>
-                    <field name="converted_amount"/>
-                    <field name="currency"/>
-                    <field name="conversion_amount_rate"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">opportunity_monthly_tree</field>
         </record>
 
         <record model="ir.ui.view" id="opportunity_monthly_view_graph1">
             <field name="model">sale.opportunity_monthly</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Sale Opportunities per Month">
-                    <x>
-                        <field name="year_month"/>
-                    </x>
-                    <y>
-                        <field name="number"/>
-                        <field name="converted"/>
-                        <field name="lost"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">opportunity_monthly_graph1</field>
         </record>
 
         <record model="ir.ui.view" id="opportunity_monthly_view_graph2">
             <field name="model">sale.opportunity_monthly</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Sale Opportunities per Month">
-                    <x>
-                        <field name="year_month"/>
-                    </x>
-                    <y>
-                        <field name="amount"/>
-                        <field name="converted_amount"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">opportunity_monthly_graph2</field>
         </record>
 
         <record model="ir.action.act_window" id="act_opportunity_monthly_form">
@@ -608,23 +366,7 @@
         <record model="ir.ui.view" id="opportunity_employee_monthly_view_tree">
             <field name="model">sale.opportunity_employee_monthly</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Sale Opportunities per Month">
-                    <field name="year"/>
-                    <field name="month"/>
-                    <field name="employee"/>
-                    <field name="number"/>
-                    <field name="converted"/>
-                    <field name="lost"/>
-                    <field name="conversion_rate"/>
-                    <field name="amount"/>
-                    <field name="converted_amount"/>
-                    <field name="currency"/>
-                    <field name="conversion_amount_rate"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">opportunity_employee_monthly_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_opportunity_employee_monthly_form">

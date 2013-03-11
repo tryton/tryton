@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Sale Lead/Opportunity">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="address"/>
+    <field name="address"/>
+    <label name="amount"/>
+    <group col="2" id="amount_currency">
+        <field name="amount"/>
+        <field name="currency"/>
+    </group>
+    <label name="probability"/>
+    <field name="probability"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+    <notebook colspan="4">
+        <page string="Lead/Opportunity" id="opportunity">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="employee"/>
+            <field name="employee"/>
+            <label name="start_date"/>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+            <label name="payment_term"/>
+            <field name="payment_term"/>
+            <label name="sale"/>
+            <field name="sale"/>
+            <separator name="comment" colspan="4"/>
+            <field name="comment" colspan="4"/>
+            <separator name="lost_reason" colspan="4"/>
+            <field name="lost_reason" colspan="4"/>
+            <group col="2" colspan="2" id="state">
+                <label name="state"/>
+                <field name="state"/>
+            </group>
+            <group col="5" colspan="2" id="buttons">
+                <button name="cancel" string="Cancel"
+                    icon="tryton-cancel"/>
+                <button name="lost" string="Mark as Lost"
+                    icon="tryton-cancel"/>
+                <button name="lead" string="Set as Lead"
+                    icon="tryton-go-previous"/>
+                <button name="opportunity"
+                    string="Convert to Opportunity"
+                    icon="tryton-go-next"/>
+                <button name="convert" string="Convert to Sale"
+                    icon="tryton-go-next"/>
+            </group>
+        </page>
+        <page name="lines">
+            <field name="lines"/>
+        </page>
+        <page name="history">
+            <field name="history"/>
+        </page>
+    </notebook>
+</form>
