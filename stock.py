@@ -69,10 +69,10 @@ class ShipmentIn:
 
     @classmethod
     def _get_inventory_moves(cls, incoming_move):
-        result = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
-        if result and incoming_move.lot:
-            result['lot'] = incoming_move.lot.id
-        return result
+        move = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
+        if move and incoming_move.lot:
+            move.lot = incoming_move.lot
+        return move
 
 
 class ShipmentOut:
@@ -128,8 +128,8 @@ class ShipmentOutReturn:
 
     @classmethod
     def _get_inventory_moves(cls, incoming_move):
-        result = super(ShipmentOutReturn,
+        move = super(ShipmentOutReturn,
             cls)._get_inventory_moves(incoming_move)
-        if result and incoming_move.lot:
-            result['lot'] = incoming_move.lot.id
-        return result
+        if move and incoming_move.lot:
+            move.lot = incoming_move.lot
+        return move
