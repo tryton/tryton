@@ -369,7 +369,7 @@ class ModelSQL(ModelStorage):
                 for name, _, error in cls._sql_constraints:
                     if name in exception[0]:
                         cls.raise_user_error(error)
-                for name, error in cls._sql_error_messages:
+                for name, error in cls._sql_error_messages.iteritems():
                     if name in exception[0]:
                         cls.raise_user_error(error)
             raise
