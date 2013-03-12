@@ -54,7 +54,41 @@ Create company::
 Reload the context::
 
     >>> User = Model.get('res.user')
+    >>> Group = Model.get('res.group')
     >>> config._context = User.get_preferences(True, config.context)
+
+Create sale user::
+
+    >>> sale_user = User()
+    >>> sale_user.name = 'Sale'
+    >>> sale_user.login = 'sale'
+    >>> sale_user.main_company = company
+    >>> sale_group, = Group.find([('name', '=', 'Sales')])
+    >>> sale_user.groups.append(sale_group)
+    >>> sale_user.save()
+
+Create purchase user::
+
+    >>> purchase_user = User()
+    >>> purchase_user.name = 'Purchase'
+    >>> purchase_user.login = 'purchase'
+    >>> purchase_user.main_company = company
+    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
+    >>> purchase_user.groups.append(purchase_group)
+    >>> purchase_request_group, = Group.find(
+    ...     [('name', '=', 'Purchase Request')])
+    >>> purchase_user.groups.append(purchase_request_group)
+    >>> purchase_user.save()
+
+Create stock user::
+
+    >>> stock_user = User()
+    >>> stock_user.name = 'Stock'
+    >>> stock_user.login = 'stock'
+    >>> stock_user.main_company = company
+    >>> stock_group, = Group.find([('name', '=', 'Stock')])
+    >>> stock_user.groups.append(stock_group)
+    >>> stock_user.save()
 
 Create fiscal year::
 
@@ -157,6 +191,7 @@ Create payment term::
 
 Sale 250 products::
 
+    >>> config.user = sale_user.id
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -175,10 +210,22 @@ Sale 250 products::
     >>> sale.shipments
     []
 
+Delete Purchase Request::
+
+    >>> config.user = purchase_user.id
+    >>> PurchaseRequest = Model.get('purchase.request')
+    >>> purchase_request, = PurchaseRequest.find()
+    >>> purchase_request.quantity
+    250.0
+    >>> purchase_request.delete()
+    >>> purchase_request, = PurchaseRequest.find()
+    >>> purchase_request.quantity
+    250.0
+
 Create Purchase from Request::
 
+    >>> config.user = purchase_user.id
     >>> Purchase = Model.get('purchase.purchase')
-    >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
     >>> purchase_request.quantity
     250.0
@@ -193,14 +240,17 @@ Create Purchase from Request::
     >>> Purchase.confirm([purchase.id], config.context)
     >>> purchase.state
     u'confirmed'
+    >>> config.user = sale_user.id
     >>> sale.reload()
     >>> shipment, = sale.shipments
 
 Receive 100 products::
+
+    >>> config.user = stock_user.id
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> Move = Model.get('stock.move')
     >>> shipment = ShipmentIn(supplier=supplier)
-    >>> move = Move(purchase.moves[0].id)
+    >>> move, = shipment.incoming_moves.find()
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 100
     >>> shipment.save()
@@ -208,6 +258,7 @@ Receive 100 products::
     >>> ShipmentIn.done([shipment.id], config.context)
     >>> shipment.state
     u'done'
+    >>> config.user = sale_user.id
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> move, = [x for x in shipment.inventory_moves

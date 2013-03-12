@@ -27,13 +27,31 @@ class PurchaseRequest:
     def delete(cls, requests):
         pool = Pool()
         Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
+        cursor = Transaction().cursor
 
-        sales = [r.origin for r in requests if isinstance(r.origin, Sale)]
+        sale_ids = [r.origin.id for r in requests
+            if isinstance(r.origin, Sale)]
+
+        with Transaction().set_user(0, set_context=True):
+            sale_lines = []
+            for i in range(0, len(requests), cursor.IN_MAX):
+                sub_requests = requests[i:i + cursor.IN_MAX]
+                sale_lines.append(SaleLine.search([
+                            ('purchase_request', 'in',
+                                [r.id for r in sub_requests]),
+                            ]))
+            sale_lines = list(chain(*sale_lines))
+            if sale_lines:
+                SaleLine.write(sale_lines, {
+                        'purchase_request': None,
+                        })
 
         super(PurchaseRequest, cls).delete(requests)
 
-        if sales:
-            Sale.process(sales)
+        if sale_ids:
+            with Transaction().set_user(0, set_context=True):
+                Sale.process(Sale.browse(sale_ids))
 
 
 class Purchase:
@@ -56,7 +74,9 @@ class Purchase:
         requests = list(chain(*requests))
 
         if requests:
-            Sale.process([req.origin for req in requests])
+            sale_ids = [req.origin.id for req in requests]
+            with Transaction().set_user(0, set_context=True):
+                Sale.process(Sale.browse(sale_ids))
 
     @classmethod
     @ModelView.button
