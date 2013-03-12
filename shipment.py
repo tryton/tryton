@@ -348,37 +348,36 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def _get_inventory_moves(cls, incoming_move):
-        res = {}
+        pool = Pool()
+        Move = pool.get('stock.move')
         if incoming_move.quantity <= 0.0:
             return None
-        res['product'] = incoming_move.product.id
-        res['uom'] = incoming_move.uom.id
-        res['quantity'] = incoming_move.quantity
-        res['from_location'] = incoming_move.to_location.id
-        res['to_location'] = incoming_move.shipment_in.warehouse.\
-            storage_location.id
-        res['state'] = 'draft'
+        move = Move()
+        move.product = incoming_move.product
+        move.uom = incoming_move.uom
+        move.quantity = incoming_move.quantity
+        move.from_location = incoming_move.to_location
+        move.to_location = incoming_move.shipment_in.warehouse.storage_location
+        move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
-        res['planned_date'] = None
-        res['company'] = incoming_move.company.id
-        return res
+        move.planned_date = None
+        move.company = incoming_move.company
+        return move
 
     @classmethod
     def create_inventory_moves(cls, shipments):
         for shipment in shipments:
-            inventory_moves = []
-            to_create = []
+            # Use moves instead of inventory_moves because save reset before
+            # adding new records and as set_inventory_moves is just a proxy to
+            # moves, it will reset also the incoming_moves
+            moves = list(shipment.moves)
             for incoming_move in shipment.incoming_moves:
-                vals = cls._get_inventory_moves(incoming_move)
-                if vals:
-                    to_create.append(vals)
-            if to_create:
-                inventory_moves.append(('create', to_create))
-            if inventory_moves:
-                cls.write([shipment], {
-                    'inventory_moves': inventory_moves,
-                    })
+                move = cls._get_inventory_moves(incoming_move)
+                if move:
+                    moves.append(move)
+            shipment.moves = moves
+            shipment.save()
 
     @classmethod
     def delete(cls, shipments):
@@ -1579,36 +1578,37 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def _get_inventory_moves(incoming_move):
-        res = {}
+        pool = Pool()
+        Move = pool.get('stock.move')
         if incoming_move.quantity <= 0.0:
-            return None
-        res['product'] = incoming_move.product.id
-        res['uom'] = incoming_move.uom.id
-        res['quantity'] = incoming_move.quantity
-        res['from_location'] = incoming_move.to_location.id
-        res['to_location'] = incoming_move.shipment_out_return.warehouse.\
-            storage_location.id
-        res['state'] = 'draft'
+            return
+        move = Move()
+        move.product = incoming_move.product
+        move.uom = incoming_move.uom
+        move.quantity = incoming_move.quantity
+        move.from_location = incoming_move.to_location
+        move.to_location = incoming_move.shipment_out_return.warehouse.\
+            storage_location
+        move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
-        res['planned_date'] = None
-        res['company'] = incoming_move.company.id
-        return res
+        move.planned_date = None
+        move.company = incoming_move.company
+        return move
 
     @classmethod
     def create_inventory_moves(cls, shipments):
         for shipment in shipments:
-            inventory_moves = []
-            to_create = []
+            # Use moves instead of inventory_moves because save reset before
+            # adding new records and as set_inventory_moves is just a proxy to
+            # moves, it will reset also the incoming_moves
+            moves = list(shipment.moves)
             for incoming_move in shipment.incoming_moves:
-                vals = cls._get_inventory_moves(incoming_move)
-                if vals:
-                    to_create.append(vals)
-            if to_create:
-                inventory_moves.append(('create', to_create))
-            cls.write([shipment], {
-                'inventory_moves': inventory_moves,
-                })
+                move = cls._get_inventory_moves(incoming_move)
+                if move:
+                    moves.append(move)
+            shipment.moves = moves
+            shipment.save()
 
 
 class AssignShipmentOutAssignFailed(ModelView):
