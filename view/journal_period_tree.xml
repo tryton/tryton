@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="journal"/>
     <field name="period"/>
     <field name="state"/>
+    <field name="active" tree_invisible="1"/>
 </tree>
