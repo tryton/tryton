@@ -4,6 +4,7 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.exceptions import UserError
 
 __all__ = ['Purchase', 'PurchaseLine', 'Account']
 __metaclass__ = PoolMeta
@@ -25,15 +26,20 @@ class Purchase:
 
         super(Purchase, self).check_for_quotation()
 
-        if not AccountSelection.check_root(
+        try:
+            AccountSelection.check_root(
                 [x.analytic_accounts for x in self.lines
-                    if x.analytic_accounts]):
+                    if x.analytic_accounts])
+        except UserError:
             for line in self.lines:
                 if line.type != 'line':
                     continue
-                if not AccountSelection.check_root([line.analytic_accounts]):
+                try:
+                    AccountSelection.check_root([line.analytic_accounts])
+                except UserError:
                     self.raise_user_error('analytic_account_required',
                             (line.rec_name,))
+            raise
 
 
 class PurchaseLine:
