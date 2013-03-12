@@ -110,8 +110,8 @@ class Work:
                          ),
                         ])
                 for req_ref in req_refs:
-                    _, work_id = req_ref.reference.split(',')
-                    requests[int(work_id)].append(req_ref.request.id)
+                    work_id = req_ref.reference.id
+                    requests[work_id].append(req_ref.request.id)
 
             res['requests'] = requests
 
