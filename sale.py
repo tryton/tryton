@@ -89,9 +89,12 @@ class SaleLine:
         result = super(SaleLine, self).get_move(shipment_type)
         if (shipment_type == 'out'
                 and self.supply_on_sale):
-            if (self.purchase_request and self.purchase_request.customer
-                    and self.purchase_request_state != 'cancel'):
-                return {}
+            with Transaction().set_user(0, set_context=True):
+                # TODO make it works in bunch
+                line = self.__class__(self.id)
+                if (line.purchase_request and line.purchase_request.customer
+                        and self.purchase_request_state != 'cancel'):
+                    return {}
         return result
 
     def get_purchase_request(self):
@@ -134,15 +137,13 @@ class SaleLine:
 
     def get_drop_moves(self):
         if (self.type != 'line'
-                or not self.product
-                or not self.purchase_request
-                or not self.purchase_request.customer):
+                or not self.product):
             return []
         moves = []
         with Transaction().set_user(0, set_context=True):
             # TODO make it work in bunch
             line = self.__class__(self.id)
-            if line.purchase_request:
+            if line.purchase_request and line.purchase_request.customer:
                 if line.purchase_request.purchase_line:
                     moves = [m
                         for m in line.purchase_request.purchase_line.moves
