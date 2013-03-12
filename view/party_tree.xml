@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <field name="lang"/>
     <field name="vat_code"/>
+    <field name="active" tree_invisible="1"/>
 </tree>
