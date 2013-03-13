@@ -6,17 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="sale_view_form">
             <field name="model">sale.sale</field>
             <field name="inherit" ref="sale.sale_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/notebook/page[@id='shipments']/field[@name='shipments']"
-                        position="after">
-                        <field name="drop_shipments" colspan="4"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">sale_form</field>
         </record>
 
         <record model="ir.action.act_window" id="act_sale_drop_shipment_form">
