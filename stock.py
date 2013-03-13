@@ -48,7 +48,6 @@ class Move:
         self.write([self], {
                 'quantity': quantity,
                 'uom': uom.id,
-                'state': state,
                 })
         remainder -= quantity
         if count:
@@ -58,7 +57,6 @@ class Move:
             moves.extend(self.copy([self], {
                         'quantity': quantity,
                         'uom': uom.id,
-                        'state': state,
                         }))
             remainder -= quantity
             if count:
@@ -68,8 +66,10 @@ class Move:
             moves.extend(self.copy([self], {
                         'quantity': remainder,
                         'uom': uom.id,
-                        'state': state,
                         }))
+        self.write(moves, {
+                'state': state,
+                })
         return moves
 
 
