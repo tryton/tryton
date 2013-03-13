@@ -24,20 +24,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="inventory_create_start_view_form">
             <field name="model">stock.inventory.create.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Create Inventories">
-                    <label name="lost_found"/>
-                    <field name="lost_found"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                    <label name="date"/>
-                    <field name="date"/>
-                    <field name="locations" colspan="4"
-                        view_ids="stock.location_view_list"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">inventory_create_start_form</field>
         </record>
     </data>
 </tryton>
