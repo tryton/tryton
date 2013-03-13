@@ -204,17 +204,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="shipment_out_assign_failed_view_form">
             <field name="model">stock.shipment.out.assign.failed</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
-                    <separator string="Unable to assign those products:"
-                        id="unable"/>
-                    <field name="inventory_moves" colspan="2"
-                        view_ids="stock.move_view_tree_simple"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">shipment_out_assign_failed_form</field>
         </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
@@ -285,17 +275,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="shipment_internal_assign_failed_view_form">
             <field name="model">stock.shipment.internal.assign.failed</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
-                    <separator string="Unable to assign those products:"
-                        id="unable"/>
-                    <field name="moves" colspan="2"
-                        view_ids="stock.move_view_tree_simple"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">shipment_internal_assign_failed_form</field>
         </record>
 
         <record model="ir.ui.view" id="shipment_out_return_view_form">
