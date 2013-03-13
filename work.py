@@ -35,7 +35,7 @@ class Work:
             ],
         depends=['parent', 'id'])
     leveling_delay = fields.Float("Leveling Delay")
-    back_leveling_delay = fields.Float("Leveling Delay")
+    back_leveling_delay = fields.Float("Back Leveling Delay")
     allocations = fields.One2Many('project.allocation', 'work', 'Allocations',
         states={
             'invisible': Eval('type') != 'task',
