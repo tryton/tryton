@@ -45,7 +45,7 @@ setup(name='trytond_stock_location_sequence',
         ],
     package_data={
         'trytond.modules.stock_location_sequence': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

@@ -7,18 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">stock.location</field>
             <field name="type">form</field>
             <field name="inherit" ref="stock.location_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/field[@name=&quot;type&quot;]"
-                        position="after">
-                        <label name="sequence"/>
-                        <field name="sequence"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">location_form</field>
         </record>
     </data>
 </tryton>
