@@ -45,7 +45,7 @@ setup(name='trytond_stock_product_location',
         ],
     package_data={
         'trytond.modules.stock_product_location': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'label.odt']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'label.odt']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
