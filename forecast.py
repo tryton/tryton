@@ -496,13 +496,13 @@ class ForecastComplete(Wizard):
     __name__ = 'stock.forecast.complete'
     start_state = 'ask'
     ask = StateView('stock.forecast.complete.ask',
-        'stock_forecast.forecast_comlete_ask_view_form', [
+        'stock_forecast.forecast_complete_ask_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Choose Products', 'choose', 'tryton-go-next'),
             Button('Complete', 'complete', 'tryton-ok', default=True),
             ])
     choose = StateView('stock.forecast.complete.choose',
-        'stock_forecast.forecast_comlete_choose_view_form', [
+        'stock_forecast.forecast_complete_choose_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Choose Dates', 'ask', 'tryton-go-previous'),
             Button('Complete', 'complete', 'tryton-ok', default=True),

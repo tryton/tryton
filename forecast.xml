@@ -76,12 +76,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">forecast_line_tree</field>
         </record>
 
-        <record model="ir.ui.view" id="forecast_comlete_ask_view_form">
+        <record model="ir.ui.view" id="forecast_complete_ask_view_form">
             <field name="model">stock.forecast.complete.ask</field>
             <field name="type">form</field>
             <field name="name">forecast_complete_ask_form</field>
         </record>
-        <record model="ir.ui.view" id="forecast_comlete_choose_view_form">
+        <record model="ir.ui.view" id="forecast_complete_choose_view_form">
             <field name="model">stock.forecast.complete.choose</field>
             <field name="type">form</field>
             <field name="name">forecast_complete_choose_form</field>
