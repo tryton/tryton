@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/group/field[@name='active']" position="after">
+        <label name="delivery"/>
+        <field name="delivery" xexpand="0" width="25"/>
+    </xpath>
+</data>
+

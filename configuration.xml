@@ -6,22 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="stock_configuration_view_form">
             <field name="model">stock.configuration</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Stock Configuration">
-                    <label name="shipment_in_sequence"/>
-                    <field name="shipment_in_sequence"/>
-                    <label name="shipment_in_return_sequence"/>
-                    <field name="shipment_in_return_sequence"/>
-                    <label name="shipment_out_sequence"/>
-                    <field name="shipment_out_sequence"/>
-                    <label name="shipment_out_return_sequence"/>
-                    <field name="shipment_out_return_sequence"/>
-                    <label name="shipment_internal_sequence"/>
-                    <field name="shipment_internal_sequence"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
         <record model="ir.action.act_window" id="act_stock_configuration_form">
             <field name="name">Stock Configuration</field>

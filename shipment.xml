@@ -4,72 +4,15 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
 
-        <!--Shipment in view-->
         <record model="ir.ui.view" id="shipment_in_view_form">
             <field name="model">stock.shipment.in</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Supplier Shipment" col="4" cursor="supplier">
-                        <label name="reference"/>
-                        <field name="reference"/>
-                        <label name="code"/>
-                        <field name="code"/>
-                        <label name="supplier"/>
-                        <field name="supplier"/>
-                        <label name="contact_address"/>
-                        <field name="contact_address"/>
-                        <label name="planned_date"/>
-                        <field name="planned_date"/>
-                        <label name="effective_date"/>
-                        <field name="effective_date"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <label name="warehouse"/>
-                        <field name="warehouse"/>
-                        <notebook colspan="6">
-                            <page string="Incoming Moves" id="incoming_moves">
-                                <field name="incoming_moves" colspan="4"/>
-                            </page>
-                            <page string="Inventory Moves" id="inventory_moves">
-                                <field name="inventory_moves" colspan="4"/>
-                            </page>
-                        </notebook>
-                        <group col="4" colspan="6" id="state_buttons">
-                            <label name="state"/>
-                            <field name="state"/>
-                            <group col="5" colspan="2" id="buttons">
-                                <button string="Cancel" name="cancel"
-                                    icon="tryton-cancel"/>
-                                <button string="Receive" name="receive"
-                                    icon="tryton-go-next"/>
-                                <button string="Done" name="done"
-                                    icon="tryton-ok"/>
-                                <button string="Reset to Draft" name="draft"
-                                    icon="tryton-clear"/>
-                            </group>
-                        </group>
-                    </form>
-                    ]]>
-            </field>
+            <field name="name">shipment_in_form</field>
         </record>
         <record model="ir.ui.view" id="shipment_in_view_tree">
             <field name="model">stock.shipment.in</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Supplier Shipments">
-                        <field name="code"/>
-                        <field name="reference"/>
-                        <field name="planned_date"/>
-                        <field name="effective_date"/>
-                        <field name="supplier"/>
-                        <field name="contact_address"/>
-                        <field name="state"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">shipment_in_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_shipment_in_form">
             <field name="name">Supplier Shipments</field>
@@ -109,7 +52,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_stock" sequence="20"
             action="act_shipment_in_form" id="menu_shipment_in_form"/>
 
-        <!-- Shipment In Return view-->
         <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
             <field name="name">Assign Purchase Return Shipment</field>
             <field name="wiz_name">stock.shipment.in.return.assign</field>
@@ -119,56 +61,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="shipment_in_return_view_form">
             <field name="model">stock.shipment.in.return</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Supplier Return Shipment" col="4" cursor="from_location">
-                        <label name="reference"/>
-                        <field name="reference"/>
-                        <label name="code"/>
-                        <field name="code"/>
-                        <label name="from_location"/>
-                        <field name="from_location"/>
-                        <label name="to_location"/>
-                        <field name="to_location"/>
-                        <label name="planned_date"/>
-                        <field name="planned_date"/>
-                        <label name="effective_date"/>
-                        <field name="effective_date"/>
-                        <field name="moves"  colspan="4"/>
-                        <label name="state"/>
-                        <field name="state"/>
-                        <group col="5" colspan="2" id="buttons">
-                            <button string="Cancel" name="cancel"
-                                icon="tryton-cancel"/>
-                            <button string="Draft" name="draft"
-                                icon="tryton-go-previous"/>
-                            <button string="Wait" name="wait"/>
-                            <button string="Assign" name="assign_wizard"
-                                icon="tryton-go-next"/>
-                            <button string="Done" name="done"
-                                icon="tryton-ok"/>
-                        </group>
-                    </form>
-                    ]]>
-            </field>
+            <field name="name">shipment_in_return_form</field>
         </record>
         <record model="ir.ui.view" id="shipment_in_return_view_tree">
             <field name="model">stock.shipment.in.return</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Supplier Return Shipments">
-                        <field name="code"/>
-                        <field name="reference"/>
-                        <field name="planned_date"/>
-                        <field name="effective_date"/>
-                        <field name="from_location"/>
-                        <field name="to_location"/>
-                        <field name="state"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">shipment_in_return_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_shipment_in_return_form">
             <field name="name">Supplier Return Shipments</field>
@@ -222,20 +120,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="shipment_in_return_assign_failed_view_form">
             <field name="model">stock.shipment.in.return.assign.failed</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Unable to Assign" col="2">
-                    <image name="tryton-dialog-warning" xexpand="0" xfill="0"/>
-                    <separator string="Unable to assign those products:"
-                        id="unable"/>
-                    <field name="moves" colspan="2"
-                        view_ids="stock.move_view_tree_simple"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">shipment_in_return_assign_failed_form</field>
         </record>
 
-        <!--Shipment out view-->
         <record model="ir.action.wizard" id="wizard_shipment_out_assign">
             <field name="name">Assign Shipment Out</field>
             <field name="wiz_name">stock.shipment.out.assign</field>
@@ -245,70 +132,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="shipment_out_view_form">
             <field name="model">stock.shipment.out</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Customer Shipment" col="4" cursor="customer">
-                        <label name="reference"/>
-                        <field name="reference"/>
-                        <label name="code"/>
-                        <field name="code"/>
-                        <label name="customer"/>
-                        <field name="customer"/>
-                        <label name="delivery_address"/>
-                        <field name="delivery_address"/>
-                        <label name="planned_date"/>
-                        <field name="planned_date"/>
-                        <label name="effective_date"/>
-                        <field name="effective_date"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <label name="warehouse"/>
-                        <field name="warehouse"/>
-                        <notebook colspan="4">
-                            <page string="Inventory Moves" id="inventory_moves">
-                                <field name="inventory_moves" colspan="4"/>
-                            </page>
-                            <page string="Outgoing Moves" id="outgoing_moves">
-                                <field name="outgoing_moves" colspan="4"/>
-                            </page>
-                        </notebook>
-                        <group col="4" colspan="4" id="state_buttons">
-                            <label name="state"/>
-                            <field name="state"/>
-                            <group col="6" colspan="2" id="buttons">
-                                <button string="Cancel" name="cancel"
-                                    icon="tryton-cancel"/>
-                                <button string="Draft" name="draft"/>
-                                <button string="Waiting" name="wait"/>
-                                <button string="Assign" name="assign_wizard"
-                                    icon="tryton-go-next"/>
-                                <button string="Make shipment" name="pack"
-                                    icon="tryton-go-next"/>
-                                <button string="Done" name="done"
-                                    icon="tryton-ok"/>
-                            </group>
-                        </group>
-                    </form>
-                    ]]>
-            </field>
+            <field name="name">shipment_out_form</field>
         </record>
         <record model="ir.ui.view" id="shipment_out_view_tree">
             <field name="model">stock.shipment.out</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Customer Shipments">
-                        <field name="code"/>
-                        <field name="reference"/>
-                        <field name="planned_date"/>
-                        <field name="effective_date"/>
-                        <field name="customer"/>
-                        <field name="delivery_address"/>
-                        <field name="state"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">shipment_out_tree</field>
         </record>
 
         <record model="ir.action.wizard" id="create_shipment_out_return">
@@ -388,7 +217,6 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!--Internal Shipment view-->
         <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
             <field name="name">Assign Shipment Internal</field>
             <field name="wiz_name">stock.shipment.internal.assign</field>
@@ -398,57 +226,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="shipment_internal_view_form">
             <field name="model">stock.shipment.internal</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Internal Shipment" col="4" cursor="from_location">
-                        <label name="reference"/>
-                        <field name="reference"/>
-                        <label name="code"/>
-                        <field name="code"/>
-                        <label name="from_location"/>
-                        <field name="from_location"/>
-                        <label name="to_location"/>
-                        <field name="to_location"/>
-                        <label name="planned_date"/>
-                        <field name="planned_date"/>
-                        <label name="effective_date"/>
-                        <field name="effective_date"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <field name="moves"  colspan="4"/>
-                        <label name="state"/>
-                        <field name="state"/>
-                        <group col="5" colspan="2" id="buttons">
-                            <button string="Cancel" name="cancel"
-                                icon="tryton-cancel"/>
-                            <button string="Draft" name="draft"/>
-                            <button string="Waiting" name="wait"/>
-                            <button string="Assign" name="assign_wizard"
-                                icon="tryton-go-next"/>
-                            <button string="Done" name="done"
-                                icon="tryton-ok"/>
-                        </group>
-                    </form>
-                    ]]>
-            </field>
+            <field name="name">shipment_internal_form</field>
         </record>
         <record model="ir.ui.view" id="shipment_internal_view_tree">
             <field name="model">stock.shipment.internal</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Internal Shipments">
-                        <field name="code"/>
-                        <field name="reference"/>
-                        <field name="planned_date"/>
-                        <field name="effective_date"/>
-                        <field name="from_location"/>
-                        <field name="to_location"/>
-                        <field name="state"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">shipment_internal_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_shipment_internal_form">
             <field name="name">Internal Shipments</field>
@@ -515,72 +298,15 @@ this repository contains the full copyright notices and license terms. -->
             </field>
         </record>
 
-        <!--Return Shipment Out view-->
         <record model="ir.ui.view" id="shipment_out_return_view_form">
             <field name="model">stock.shipment.out.return</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Customer Return Shipment" col="4" cursor="customer">
-                        <label name="reference"/>
-                        <field name="reference"/>
-                        <label name="code"/>
-                        <field name="code"/>
-                        <label name="customer"/>
-                        <field name="customer"/>
-                        <label name="delivery_address"/>
-                        <field name="delivery_address"/>
-                        <label name="planned_date"/>
-                        <field name="planned_date"/>
-                        <label name="effective_date"/>
-                        <field name="effective_date"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <label name="warehouse"/>
-                        <field name="warehouse"/>
-                        <notebook colspan="6">
-                            <page string="Incoming Moves" id="incoming_moves">
-                                <field name="incoming_moves" colspan="4"/>
-                            </page>
-                            <page string="Inventory Moves" id="inventory_moves">
-                                <field name="inventory_moves" colspan="4"/>
-                            </page>
-                        </notebook>
-                        <group col="4" colspan="6" id="state_buttons">
-                            <label name="state"/>
-                            <field name="state"/>
-                            <group col="5" colspan="2" id="buttons">
-                                <button string="Cancel" name="cancel"
-                                    icon="tryton-cancel"/>
-                                <button string="Draft" name="draft"
-                                    icon="tryton-clear"/>
-                                <button string="Received" name="receive"
-                                    icon="tryton-go-next"/>
-                                <button string="Done" name="done"
-                                    icon="tryton-ok"/>
-                            </group>
-                        </group>
-                    </form>
-                    ]]>
-            </field>
+            <field name="name">shipment_out_return_form</field>
         </record>
         <record model="ir.ui.view" id="shipment_out_return_view_tree">
             <field name="model">stock.shipment.out.return</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Customer Return Shipments">
-                        <field name="code"/>
-                        <field name="reference"/>
-                        <field name="state"/>
-                        <field name="planned_date"/>
-                        <field name="effective_date"/>
-                        <field name="customer"/>
-                        <field name="delivery_address"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">shipment_out_return_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_shipment_out_return_form">
@@ -716,7 +442,6 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.shipment.out</field>
         </record>
 
-        <!-- Sequence shipment in -->
         <record model="ir.sequence.type" id="sequence_type_shipment_in">
             <field name="name">Supplier Shipment</field>
             <field name="code">stock.shipment.in</field>
@@ -737,7 +462,6 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.shipment.in</field>
         </record>
 
-        <!-- Sequence shipment internal -->
         <record model="ir.sequence.type" id="sequence_type_shipment_internal">
             <field name="name">Internal Shipment</field>
             <field name="code">stock.shipment.internal</field>
@@ -758,7 +482,6 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.shipment.internal</field>
         </record>
 
-        <!-- Sequence shipment out return-->
         <record model="ir.sequence.type" id="sequence_type_shipment_out_return">
             <field name="name">Customer Return Shipment</field>
             <field name="code">stock.shipment.out.return</field>
@@ -800,38 +523,17 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.shipment.in.return</field>
         </record>
 
-        <!-- Add delivery field on address -->
         <record model="ir.ui.view" id="address_view_tree">
             <field name="model">party.address</field>
             <field name="inherit" ref="party.address_view_tree"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/tree/field[@name=&quot;active&quot;]" position="after">
-                        <field name="delivery"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">party_address_tree</field>
         </record>
         <record model="ir.ui.view" id="address_view_form">
             <field name="model">party.address</field>
             <field name="inherit" ref="party.address_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath
-                        expr="/form/group/field[@name=&quot;active&quot;]"
-                        position="after">
-                        <label name="delivery"/>
-                        <field name="delivery" xexpand="0" width="25"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">party_address_form</field>
         </record>
-        <!-- Model Access -->
+
         <record model="ir.model.access" id="access_shipment_in">
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="perm_read" eval="False"/>
@@ -1249,7 +951,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_stock_force_assignment"/>
         </record>
 
-        <!-- Rule definition -->
+
         <record model="ir.rule.group" id="rule_group_shipment_in">
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="global_p" eval="True"/>

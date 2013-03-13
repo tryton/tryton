@@ -7,20 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.product</field>
             <field name="type">tree</field>
             <field name="priority">20</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Products">
-                        <field name="name"/>
-                        <field name="code"/>
-                        <field name="quantity"/>
-                        <field name="cost_value"/>
-                        <field name="forecast_quantity"/>
-                        <field name="default_uom"/>
-                        <field name="type"/>
-                        <field name="active"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">product_tree_qty</field>
         </record>
 
         <record model="ir.ui.view" id="location_quantity_view_tree">
@@ -28,18 +15,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="field_childs">childs</field>
             <field name="priority" eval="20"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Location Quantity">
-                        <field name="name"/>
-                        <field name="quantity"/>
-                        <field name="forecast_quantity"/>
-                        <field name="cost_value"/>
-                        <field name="parent" tree_invisible="1"/>
-                        <field name="childs" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">location_quantity_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_location_quantity_tree">
@@ -73,45 +49,19 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="product_by_location_start_view_form">
             <field name="model">product.by_location.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Product by Location">
-                    <label name="forecast_date"/>
-                    <field name="forecast_date"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">product_by_location_start_form</field>
         </record>
 
         <record model="ir.ui.view" id="product_quantities_warehouse_view_graph">
             <field name="model">stock.product_quantities_warehouse</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Product Quantities By Warehouse" type="line"
-                    legend="0">
-                    <x>
-                        <field name="date"/>
-                    </x>
-                    <y>
-                        <field name="quantity" empty="0" interpolation="constant-left" fill="1"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">product_quantities_warehouse_graph</field>
         </record>
 
         <record model="ir.ui.view" id="product_quantities_warehouse_view_list">
             <field name="model">stock.product_quantities_warehouse</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Product Quantities By Warehouse">
-                    <field name="date"/>
-                    <field name="quantity"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">product_quantities_warehouse_list</field>
         </record>
 
         <record model="ir.action.act_window"
@@ -136,14 +86,7 @@ this repository contains the full copyright notices and license terms. -->
             <field
                 name="model">stock.product_quantities_warehouse.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Product Quantities By Warehouse">
-                    <label name="warehouse"/>
-                    <field name="warehouse"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">product_quantities_warehouse_start_form</field>
         </record>
 
         <record model="ir.action.wizard"

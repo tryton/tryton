@@ -7,50 +7,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="inventory_view_form">
             <field name="model">stock.inventory</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Inventory" col="4">
-                        <label name="location"/>
-                        <field name="location"/>
-                        <label name="lost_found"/>
-                        <field name="lost_found"/>
-                        <label name="date"/>
-                        <field name="date"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <label colspan="2" id="empty"/>
-                        <button string="Complete Inventory"
-                            name="complete_lines" colspan="2"
-                            help="Add an inventory line for each missing products"/>
-                        <field name="lines" colspan="4"/>
-                        <group col="4" colspan="4" id="group_buttons">
-                            <label name="state"/>
-                            <field name="state"/>
-                            <group colspan="2" col="3" id="buttons">
-                                <button string="Cancel" name="cancel"
-                                    icon="tryton-cancel" />
-                                <button string="Confirm" name="confirm"
-                                    icon="tryton-ok"/>
-                            </group>
-                        </group>
-                    </form>
-                ]]>
-            </field>
+            <field name="name">inventory_form</field>
         </record>
         <record model="ir.ui.view" id="inventory_view_tree">
             <field name="model">stock.inventory</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Inventories">
-                        <field name="location"/>
-                        <field name="date"/>
-                        <field name="state"/>
-                        <field name="company"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">inventory_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_inventory_form">
             <field name="name">Inventories</field>
@@ -87,40 +49,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="inventory_line_view_form">
             <field name="model">stock.inventory.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Inventory Line" col="4">
-                        <label name="product"/>
-                        <field name="product"/>
-                        <label name="uom"/>
-                        <field name="uom"/>
-                        <label name="expected_quantity"/>
-                        <field name="expected_quantity"/>
-                        <label name="quantity"/>
-                        <field name="quantity"/>
-                        <label name="move"/>
-                        <field name="move"/>
-                        <label name="inventory"/>
-                        <field name="inventory"/>
-                        <field name="unit_digits" invisible="1" colspan="4"/>
-                    </form>
-                ]]>
-            </field>
+            <field name="name">inventory_line_form</field>
         </record>
         <record model="ir.ui.view" id="inventory_line_view_tree">
             <field name="model">stock.inventory.line</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Inventory Lines" editable="bottom">
-                        <field name="product"/>
-                        <field name="expected_quantity"/>
-                        <field name="quantity"/>
-                        <field name="uom"/>
-                        <field name="unit_digits" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">inventory_line_tree</field>
         </record>
 
         <record model="ir.model.access" id="access_inventory">
