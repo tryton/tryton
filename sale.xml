@@ -7,19 +7,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.configuration</field>
             <field name="type">form</field>
             <field name="inherit" ref="sale.sale_configuration_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/field[@name='sale_shipment_method']"
-                        position="after">
-                        <label name="sale_carrier"/>
-                        <field name="sale_carrier"/>
-                        <label name="sale_shipment_cost_method"/>
-                        <field name="sale_shipment_cost_method"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">configuration_form</field>
         </record>
 
         <record model="ir.property" id="property_sale_shipment_cost_method">
@@ -32,38 +20,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.sale</field>
             <field name="type">form</field>
             <field name="inherit" ref="sale.sale_view_form"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/form/notebook/page[@id='sale']/field[@name='currency']"
-                        position="after">
-                        <label name="carrier"/>
-                        <field name="carrier"/>
-                    </xpath>
-                    <xpath
-                        expr="/form/notebook/page[@id='other']/field[@name='shipment_method']"
-                        position="after">
-                        <label name="shipment_cost_method"/>
-                        <field name="shipment_cost_method"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">sale_form</field>
         </record>
 
         <record model="ir.ui.view" id="sale_line_view_tree_sequence">
             <field name="model">sale.line</field>
             <field name="type">tree</field>
             <field name="inherit" ref="sale.sale_line_view_tree_sequence"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <data>
-                    <xpath expr="/tree" position="inside">
-                        <field name="shipment_cost" tree_invisible="1"/>
-                    </xpath>
-                </data>
-                ]]>
-            </field>
+            <field name="name">sale_line_tree_sequence</field>
         </record>
 
     </data>

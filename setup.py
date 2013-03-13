@@ -52,7 +52,7 @@ setup(name='trytond_sale_shipment_cost',
         ],
     package_data={
         'trytond.modules.sale_shipment_cost': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
