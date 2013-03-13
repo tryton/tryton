@@ -45,7 +45,7 @@ setup(name='trytond_stock_supply_production',
         ],
     package_data={
         'trytond.modules.stock_supply_production': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
