@@ -60,14 +60,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="fiscalyear_close_start_view_form">
             <field name="model">account.fiscalyear.close.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Close Fiscal Year">
-                    <label name="close_fiscalyear"/>
-                    <field name="close_fiscalyear"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">fiscalyear_close_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="act_close_fiscalyear">
