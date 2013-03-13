@@ -50,14 +50,14 @@ class StockSplitTestCase(unittest.TestCase):
         '''
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             unit, = self.uom.search([('name', '=', 'Unit')])
-            product = self.product.create({
-                    'name': 'Test Split',
-                    'type': 'goods',
-                    'cost_price_method': 'fixed',
-                    'default_uom': unit.id,
-                    'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
-                    })
+            product, = self.product.create([{
+                        'name': 'Test Split',
+                        'type': 'goods',
+                        'cost_price_method': 'fixed',
+                        'default_uom': unit.id,
+                        'list_price': Decimal(0),
+                        'cost_price': Decimal(0),
+                        }])
             input_, = self.location.search([('code', '=', 'IN')])
             storage, = self.location.search([('code', '=', 'STO')])
             company, = self.company.search([('name', '=', 'B2CK')])
@@ -67,14 +67,14 @@ class StockSplitTestCase(unittest.TestCase):
                     })
 
             def create_move(quantity):
-                move = self.move.create({
-                        'product': product.id,
-                        'uom': unit.id,
-                        'quantity': quantity,
-                        'from_location': input_.id,
-                        'to_location': storage.id,
-                        'company': company.id,
-                        })
+                move, = self.move.create([{
+                            'product': product.id,
+                            'uom': unit.id,
+                            'quantity': quantity,
+                            'from_location': input_.id,
+                            'to_location': storage.id,
+                            'company': company.id,
+                            }])
                 return move
 
             move = create_move(10)
