@@ -45,7 +45,7 @@ setup(name='trytond_sale_price_list',
         ],
     package_data={
         'trytond.modules.sale_price_list': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
