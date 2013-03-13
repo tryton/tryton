@@ -10,6 +10,7 @@ if os.path.isdir(DIR):
     sys.path.insert(0, os.path.dirname(DIR))
 
 import unittest
+import doctest
 import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
@@ -166,7 +167,7 @@ def suite():
             suite.addTest(test)
     from trytond.modules.account.tests import test_account
     for test in test_account.suite():
-        if test not in suite:
+        if test not in suite and not isinstance(test, doctest.DocTestCase):
             suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         StockSupplyDayTestCase))
