@@ -26,54 +26,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="forecast_view_form">
             <field name="model">stock.forecast</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Forecast" col="4">
-                        <label name="warehouse"/>
-                        <field name="warehouse"/>
-                        <label name="destination"/>
-                        <field name="destination"/>
-                        <label name="from_date"/>
-                        <field name="from_date"/>
-                        <label name="to_date"/>
-                        <field name="to_date"/>
-                        <label name="company"/>
-                        <field name="company"/>
-                        <button string="Complete Forecast" name="complete"
-                            colspan="2"
-                            help="Add forecast line based on past data."/>
-                        <field name="lines" colspan="4"/>
-                        <group col="4" colspan="4" id="state_buttons">
-                            <label name="state"/>
-                            <field name="state"/>
-                            <group colspan="2" col="3" id="buttons">
-                                <button string="Reset to Draft" name="draft"
-                                    icon="tryton-clear"/>
-                                <button string="Cancel" name="cancel"
-                                    icon="tryton-cancel"/>
-                                <button string="Confirm" name="confirm"
-                                    icon="tryton-ok"/>
-                            </group>
-                        </group>
-                    </form>
-                ]]>
-            </field>
+            <field name="name">forecast_form</field>
         </record>
         <record model="ir.ui.view" id="forecast_view_tree">
             <field name="model">stock.forecast</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Forecasts">
-                        <field name="warehouse"/>
-                        <field name="state"/>
-                        <field name="from_date"/>
-                        <field name="to_date"/>
-                        <field name="company"/>
-                        <field name="create_date" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">forecast_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_forecast_form">
             <field name="name">Forecasts</field>
@@ -110,72 +68,24 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="forecast_line_view_form">
             <field name="model">stock.forecast.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <form string="Forecast Line" col="4">
-                        <label name="forecast"/>
-                        <field name="forecast"/>
-                        <newline/>
-                        <label name="product"/>
-                        <field name="product"/>
-                        <label name="quantity"/>
-                        <field name="quantity"/>
-                        <label name="minimal_quantity"/>
-                        <field name="minimal_quantity"/>
-                        <label name="uom"/>
-                        <field name="uom"/>
-                        <label name="quantity_executed"/>
-                        <field name="quantity_executed"/>
-                        <field name="moves" colspan="4"/>
-                        <field name="unit_digits" invisible="1" colspan="4"/>
-                    </form>
-                ]]>
-            </field>
+            <field name="name">forecast_line_form</field>
         </record>
         <record model="ir.ui.view" id="forecast_line_view_tree">
             <field name="model">stock.forecast.line</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                    <tree string="Forecast Lines" editable="bottom">
-                        <field name="product"/>
-                        <field name="quantity"/>
-                        <field name="minimal_quantity"/>
-                        <field name="uom"/>
-                        <field name="quantity_executed"/>
-                        <field name="forecast"/>
-                        <field name="unit_digits" tree_invisible="1"/>
-                    </tree>
-                ]]>
-            </field>
+            <field name="name">forecast_line_tree</field>
         </record>
 
         <record model="ir.ui.view" id="forecast_comlete_ask_view_form">
             <field name="model">stock.forecast.complete.ask</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Choose dates">
-                    <label name="from_date"/>
-                    <field name="from_date"/>
-                    <label name="to_date"/>
-                    <field name="to_date"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">forecast_complete_ask_form</field>
         </record>
         <record model="ir.ui.view" id="forecast_comlete_choose_view_form">
             <field name="model">stock.forecast.complete.choose</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Choose products" col="1" >
-                    <field name="products"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">forecast_complete_choose_form</field>
         </record>
-
 
         <record model="ir.model.access" id="access_forecast">
             <field name="model" search="[('model', '=', 'stock.forecast')]"/>
