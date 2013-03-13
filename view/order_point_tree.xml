@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Order Points">
+    <field name="product"/>
+    <field name="location"/>
+    <field name="type"/>
+    <field name="company"/>
+    <field name="min_quantity"/>
+    <field name="max_quantity"/>
+    <field name="unit"/>
+</tree>
