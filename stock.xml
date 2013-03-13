@@ -51,7 +51,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_drop_form">
             <field name="name">Drop Shipments</field>
             <field name="res_model">stock.shipment.drop</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="search_value"></field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_shipment_drop_form_view1">
@@ -65,48 +65,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="shipment_drop_view_form"/>
             <field name="act_window" ref="act_shipment_drop_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_waiting">
+            <field name="name">Waiting</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'waiting')]</field>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_drop_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_shipment_drop_form"/>
+        </record>
         <menuitem parent="stock.menu_stock" sequence="35"
             action="act_shipment_drop_form" id="menu_shipment_drop_form"/>
-
-        <record model="ir.action.act_window" id="act_shipment_drop_draft">
-            <field name="name">Draft Drop Shipments</field>
-            <field name="res_model">stock.shipment.drop</field>
-            <field name="domain">[('state', '=', 'draft')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_drop_draft_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="shipment_drop_view_tree"/>
-            <field name="act_window" ref="act_shipment_drop_draft"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_drop_draft_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="shipment_drop_view_form"/>
-            <field name="act_window" ref="act_shipment_drop_draft"/>
-        </record>
-        <menuitem parent="menu_shipment_drop_form" sequence="10"
-            action="act_shipment_drop_draft" id="menu_shipment_drop_draft"/>
-
-        <record model="ir.action.act_window" id="act_shipment_drop_waiting">
-            <field name="name">Waiting Drop Shipments</field>
-            <field name="res_model">stock.shipment.drop</field>
-            <field name="domain">[('state', '=', 'waiting')]</field>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_drop_waiting_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="shipment_drop_view_tree"/>
-            <field name="act_window" ref="act_shipment_drop_waiting"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_shipment_drop_waiting_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="shipment_drop_view_form"/>
-            <field name="act_window" ref="act_shipment_drop_waiting"/>
-        </record>
-        <menuitem parent="menu_shipment_drop_form" sequence="20"
-            action="act_shipment_drop_waiting" id="menu_shipment_drop_waiting"/>
 
         <record model="ir.model.access" id="access_shipment_drop">
             <field name="model" search="[('model', '=', 'stock.shipment.drop')]"/>
