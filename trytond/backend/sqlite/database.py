@@ -39,6 +39,8 @@ def extract(lookup_type, date):
             hours, minutes, seconds = map(int, timepart_full[0].split(":"))
             if len(timepart_full) == 2:
                 microseconds = int(timepart_full[1])
+            else:
+                microseconds = 0
             date = datetime.datetime(year, month, day, hours, minutes, seconds,
                     microseconds)
     except Exception:
