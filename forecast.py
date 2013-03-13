@@ -542,7 +542,7 @@ class ForecastComplete(Wizard):
         Collect products for which there is an outgoing stream between
         the given location and the destination.
         """
-        if self.choose.products:
+        if getattr(self.choose, 'products', None):
             return {'products': [x.id for x in self.choose.products]}
         pbl = self._get_product_quantity()
         products = []
@@ -569,7 +569,7 @@ class ForecastComplete(Wizard):
         for product in Product.browse(product_ids):
             prod2uom[product.id] = product.default_uom.id
 
-        if self.choose.products:
+        if getattr(self.choose, 'products', None):
             products = [x.id for x in self.choose.products]
         else:
             products = None
