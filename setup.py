@@ -47,8 +47,7 @@ setup(name='trytond_stock_lot',
         ],
     package_data={
         'trytond.modules.stock_lot': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', '*.odt', 'icons/*.svg',
-                'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
