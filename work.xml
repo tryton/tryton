@@ -6,56 +6,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="work_view_form">
             <field name="model">timesheet.work</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Work">
-                    <label name="name"/>
-                    <field name="name"/>
-                    <label name="active"/>
-                    <field name="active"/>
-                    <label name="parent"/>
-                    <field name="parent"/>
-                    <label name="timesheet_available"/>
-                    <field name="timesheet_available"/>
-                    <label name="timesheet_start_date"/>
-                    <field name="timesheet_start_date"/>
-                    <label name="timesheet_end_date"/>
-                    <field name="timesheet_end_date"/>
-                    <label name="company"/>
-                    <field name="company"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">work_form</field>
         </record>
         <record model="ir.ui.view" id="work_view_list">
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="8"/>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Works">
-                    <field name="rec_name"/>
-                    <field name="name" tree_invisible="1"/>
-                    <field name="active" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">work_list</field>
         </record>
         <record model="ir.ui.view" id="work_view_tree">
             <field name="model">timesheet.work</field>
             <field name="type">tree</field>
             <field name="priority" eval="16"/>
             <field name="field_childs">children</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Works">
-                    <field name="name"/>
-                    <field name="timesheet_available"/>
-                    <field name="parent" tree_invisible="1"/>
-                    <field name="children" tree_invisible="1"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">work_tree</field>
         </record>
 
         <record model="ir.action.act_window" id="act_work_tree">
@@ -102,15 +66,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="priority" eval="16"/>
             <field name="field_childs">children</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Works">
-                    <field name="name"/>
-                    <field name="hours" widget="float_time"
-                        float_time="company_work_time"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">work_tree2</field>
         </record>
         <record model="ir.action.act_window" id="act_work_tree2">
             <field name="name">Works</field>
@@ -127,19 +83,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="work_view_graph">
             <field name="model">timesheet.work</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Hours per Work" type="pie">
-                    <x>
-                        <field name="name"/>
-                    </x>
-                    <y>
-                        <field name="hours" widget="float_time"
-                            float_time="company_work_time"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">work_graph</field>
         </record>
         <record model="ir.action.act_window" id="act_work_form2">
             <field name="name">Hours per Work</field>
@@ -156,20 +100,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="work_hours_board">
             <field name="type">board</field>
             <field name="model"></field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <board string="Hours per Work">
-                    <hpaned id="hours_per_work">
-                        <child id="tree">
-                            <action name="timesheet.act_work_tree2"/>
-                        </child>
-                        <child id="graph">
-                            <action name="timesheet.act_work_form2"/>
-                        </child>
-                    </hpaned>
-                </board>
-                ]]>
-            </field>
+            <field name="name">work_hours_board</field>
         </record>
         <record model="ir.action.act_window" id="act_work_hours_board">
             <field name="name">Hours per Work</field>
@@ -184,16 +115,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="work_open_start_view_form">
             <field name="model">timesheet.work.open.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Hours per Work">
-                    <label name="from_date"/>
-                    <field name="from_date"/>
-                    <label name="to_date"/>
-                    <field name="to_date"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">work_open_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="act_open_work">

@@ -6,39 +6,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="line_view_form">
             <field name="model">timesheet.line</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Timesheet Line">
-                    <label name="employee"/>
-                    <field name="employee" colspan="3"/>
-                    <label name="date"/>
-                    <field name="date"/>
-                    <label name="hours"/>
-                    <field name="hours" widget="float_time"
-                        float_time="company_work_time"/>
-                    <label name="work"/>
-                    <field name="work"/>
-                    <label name="description"/>
-                    <field name="description"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">line_form</field>
         </record>
         <record model="ir.ui.view" id="line_view_tree">
             <field name="model">timesheet.line</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Timesheet Lines" editable="bottom">
-                    <field name="employee"/>
-                    <field name="date"/>
-                    <field name="hours" widget="float_time"
-                        float_time="company_work_time" sum="Hours"/>
-                    <field name="work" width="300"/>
-                    <field name="description"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">line_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_line_form">
             <field name="name">Timesheet Lines</field>
@@ -82,16 +55,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="line_enter_start_view_form">
             <field name="model">timesheet.line.enter.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Enter Timesheet">
-                    <label name="employee"/>
-                    <field name="employee"/>
-                    <label name="date"/>
-                    <field name="date"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">line_enter_start_form</field>
         </record>
 
         <record model="ir.action.wizard" id="act_line_enter">
@@ -104,32 +68,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="hours_employee_view_tree">
             <field name="model">timesheet.hours_employee</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Hours per Employee">
-                    <field name="employee"/>
-                    <field name="hours" widget="float_time"
-                        float_time="company_work_time" sum="Hours"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">hours_employee_tree</field>
         </record>
         <record model="ir.ui.view" id="hours_employee_view_graph">
             <field name="model">timesheet.hours_employee</field>
             <field name="type">graph</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <graph string="Hours per Employee">
-                    <x>
-                        <field name="employee"/>
-                    </x>
-                    <y>
-                        <field name="hours" widget="float_time"
-                            float_time="company_work_time"/>
-                    </y>
-                </graph>
-                ]]>
-            </field>
+            <field name="name">hours_employee_graph</field>
         </record>
         <record model="ir.action.act_window" id="act_hours_employee_form">
             <field name="name">Hours per Employee</field>
@@ -171,16 +115,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="hours_employee_open_start_view_form">
             <field name="model">timesheet.hours_employee.open.start</field>
             <field name="type">form</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <form string="Hours per Employee">
-                    <label name="start_date"/>
-                    <field name="start_date"/>
-                    <label name="end_date"/>
-                    <field name="end_date"/>
-                </form>
-                ]]>
-            </field>
+            <field name="name">hours_employee_open_start_form</field>
         </record>
         <record model="ir.action.wizard" id="act_hours_employee_open">
             <field name="name">Hours per Employee</field>
@@ -192,17 +127,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="hours_employee_weekly_view_tree">
             <field name="model">timesheet.hours_employee_weekly</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Hours per Employee per Week">
-                    <field name="year"/>
-                    <field name="week"/>
-                    <field name="employee"/>
-                    <field name="hours" widget="float_time"
-                        float_time="company_work_time"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">hours_employee_weekly_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_hours_employee_weekly_form">
             <field name="name">Hours per Employee per Week</field>
@@ -220,17 +145,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="hours_employee_monthly_view_tree">
             <field name="model">timesheet.hours_employee_monthly</field>
             <field name="type">tree</field>
-            <field name="arch" type="xml">
-                <![CDATA[
-                <tree string="Hours per Employee per Month">
-                    <field name="year"/>
-                    <field name="month"/>
-                    <field name="employee"/>
-                    <field name="hours" widget="float_time"
-                        float_time="company_work_time"/>
-                </tree>
-                ]]>
-            </field>
+            <field name="name">hours_employee_monthly_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_hours_employee_monthly_form">
             <field name="name">Hours per Employee per Month</field>

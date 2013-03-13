@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Hours per Employee per Week">
+    <field name="year"/>
+    <field name="week"/>
+    <field name="employee"/>
+    <field name="hours" widget="float_time" float_time="company_work_time"/>
+</tree>

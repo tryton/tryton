@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<board string="Hours per Work">
+    <hpaned id="hours_per_work">
+        <child id="tree">
+            <action name="timesheet.act_work_tree2"/>
+        </child>
+        <child id="graph">
+            <action name="timesheet.act_work_form2"/>
+        </child>
+    </hpaned>
+</board>

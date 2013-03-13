@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Work">
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="timesheet_available"/>
+    <field name="timesheet_available"/>
+    <label name="timesheet_start_date"/>
+    <field name="timesheet_start_date"/>
+    <label name="timesheet_end_date"/>
+    <field name="timesheet_end_date"/>
+    <label name="company"/>
+    <field name="company"/>
+</form>
