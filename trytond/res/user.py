@@ -549,7 +549,7 @@ class Warning_(ModelSQL, ModelView):
             ])
         if not warnings:
             return True
-        cls.delete([x.id for x in warnings if not x.always])
+        cls.delete([x for x in warnings if not x.always])
         return False
 
 
