@@ -2661,9 +2661,9 @@ class CreditInvoice(Wizard):
                         (invoice.rec_name,))
                     self.raise_user_error('refund_supplier')
 
-        invoice_ids = Invoice.credit(invoices, refund=refund)
+        credit_invoices = Invoice.credit(invoices, refund=refund)
 
-        data = {'res_id': invoice_ids}
-        if len(invoice_ids) == 1:
+        data = {'res_id': [i.id for i in credit_invoices]}
+        if len(credit_invoices) == 1:
             action['views'].reverse()
         return action, data
