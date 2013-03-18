@@ -47,6 +47,7 @@ class Move:
         "Check if lot is required"
         for move in moves:
             if (move.state == 'done'
+                    and move.internal_quantity
                     and not move.lot
                     and move.product.lot_is_required(
                         move.from_location, move.to_location)):
