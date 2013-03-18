@@ -52,6 +52,7 @@ class Move(Model):
         product_obj = pool.get('product.product')
         for move in self.browse(ids):
             if (move.state == 'done'
+                    and move.internal_quantity
                     and not move.lot
                     and product_obj.lot_is_required(move.product,
                         move.from_location, move.to_location)):
