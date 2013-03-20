@@ -33,10 +33,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'Dunder Mifflin'
+    >>> party = Party(name='Dunder Mifflin')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'USD')])
     >>> if not currencies:
     ...     currency = Currency(name='US Dollar', symbol='$', code='USD',
@@ -165,19 +168,23 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> product = Product()
-    >>> product.name = 'product'
-    >>> product.category = category
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.purchasable = True
-    >>> product.salable = True
-    >>> product.list_price = Decimal('10')
-    >>> product.cost_price = Decimal('5')
-    >>> product.account_expense = expense
-    >>> product.account_revenue = revenue
-    >>> product.supply_on_sale = True
+    >>> template = ProductTemplate()
+    >>> template.name = 'product'
+    >>> template.category = category
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.purchasable = True
+    >>> template.salable = True
+    >>> template.list_price = Decimal('10')
+    >>> template.cost_price = Decimal('5')
+    >>> template.account_expense = expense
+    >>> template.account_revenue = revenue
+    >>> template.supply_on_sale = True
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
 
 Create payment term::
