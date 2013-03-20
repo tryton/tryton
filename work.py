@@ -12,14 +12,18 @@ __all__ = ['Work']
 class Work(ModelSQL, ModelView):
     'Work Effort'
     __name__ = 'project.work'
-    _inherits = {'timesheet.work': 'work'}
+    _rec_name = 'work'
     work = fields.Many2One('timesheet.work', 'Work', required=True,
             ondelete='CASCADE')
+    active = fields.Function(fields.Boolean('Active'),
+        'get_active', setter='set_active', searcher='search_active')
     type = fields.Selection([
             ('project', 'Project'),
             ('task', 'Task')
             ],
         'Type', required=True, select=True)
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'get_company', searcher='search_comany')
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
@@ -29,6 +33,14 @@ class Work(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'project',
             }, depends=['party', 'type'])
+    timesheet_available = fields.Function(
+        fields.Boolean('Available on timesheets'), 'get_timesheet_available')
+    hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
+            states={
+                'invisible': ~Eval('timesheet_available'),
+                },
+            depends=['timesheet_available'],
+            help="Total time spent on this work"), 'get_hours')
     effort = fields.Float("Effort",
         states={
             'invisible': Eval('type') != 'task',
@@ -123,6 +135,42 @@ class Work(ModelSQL, ModelView):
                             'parent': self.rec_name,
                             'child': child.rec_name,
                             })
+
+    def get_rec_name(self, name):
+        return self.work.name
+
+    @staticmethod
+    def default_active():
+        return True
+
+    def get_active(self, name):
+        return self.work.active
+
+    @classmethod
+    def set_active(self, works, name, value):
+        pool = Pool()
+        Work = pool.get('timesheet.work')
+
+        Work.write([p.work for p in works], {
+                'active': value,
+                })
+
+    @classmethod
+    def search_active(cls, name, clause):
+        return [('work.active',) + tuple(clause[1:])]
+
+    def get_company(self, name):
+        return self.work.company.id
+
+    @classmethod
+    def search_comany(cls, name, clause):
+        return [('work.company',) + tuple(clause[1:])]
+
+    def get_timesheet_available(self, name):
+        return self.work.timesheet_available
+
+    def get_hours(self, name):
+        return self.work.hours
 
     @classmethod
     def get_parent(cls, project_works, name):

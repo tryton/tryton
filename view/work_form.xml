@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form string="Works Efforts" col="6">
-    <label name="name"/>
-    <field name="name" colspan="3"/>
+    <label name="work"/>
+    <field name="work" colspan="3"/>
     <label name="active"/>
     <field name="active" xexpand="0"/>
     <label name="type"/>
@@ -36,14 +36,6 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Children" id="children"
               states="{'invisible': Not(Equal(Eval('type'), 'project'))}">
               <field name="children" colspan="4"/>
-        </page>
-        <page string="Timesheet" id="timesheet_lines"
-              states="{'invisible': Not(Bool(Eval('timesheet_available')))}">
-            <label name="timesheet_start_date"/>
-            <field name="timesheet_start_date"/>
-            <label name="timesheet_end_date"/>
-            <field name="timesheet_end_date"/>
-            <field name="timesheet_lines" colspan="4"/>
         </page>
     </notebook>
     <label name="state"/>
