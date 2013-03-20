@@ -38,10 +38,13 @@ Create company::
     ... else:
     ...     currency, = currencies
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'Dunder Mifflin'
+    >>> party = Party(name='Dunder Mifflin')
+    >>> party.save()
+    >>> company.party = party
     >>> company.currency = currency
     >>> company_config.execute('add')
     >>> company, = Company.find([])
@@ -144,16 +147,20 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> product = Product()
-    >>> product.name = 'product'
-    >>> product.default_uom = unit
-    >>> product.type = 'service'
-    >>> product.list_price = Decimal('40')
-    >>> product.cost_price = Decimal('20')
-    >>> product.account_expense = expense
-    >>> product.account_revenue = revenue
-    >>> product.supplier_taxes.append(tax)
+    >>> template = ProductTemplate()
+    >>> template.name = 'product'
+    >>> template.default_uom = unit
+    >>> template.type = 'service'
+    >>> template.list_price = Decimal('40')
+    >>> template.cost_price = Decimal('20')
+    >>> template.account_expense = expense
+    >>> template.account_revenue = revenue
+    >>> template.supplier_taxes.append(tax)
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
 
 Create payment term::

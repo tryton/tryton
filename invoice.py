@@ -330,9 +330,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     payment_term = self.party.supplier_payment_term
         if self.company and self.type in ('out_credit_note', 'in_credit_note'):
             if self.type == 'out_credit_note':
-                payment_term = self.company.customer_payment_term
+                payment_term = self.company.party.customer_payment_term
             else:
-                payment_term = self.company.supplier_payment_term
+                payment_term = self.company.party.supplier_payment_term
         if account:
             result['account'] = account.id
             result['account.rec_name'] = account.rec_name
