@@ -27,6 +27,7 @@ class CarrierWeightTestCase(unittest.TestCase):
         trytond.tests.test_tryton.install_module('carrier_percentage')
         self.party = POOL.get('party.party')
         self.uom = POOL.get('product.uom')
+        self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
         self.category = POOL.get('product.category')
         self.currency = POOL.get('currency.currency')
@@ -58,13 +59,16 @@ class CarrierWeightTestCase(unittest.TestCase):
             category, = self.category.create([{
                         'name': 'Category',
                         }])
-            product, = self.product.create([{
+            template, = self.template.create([{
                         'name': 'Carrier',
                         'default_uom': uom.id,
                         'category': category.id,
                         'type': 'service',
                         'list_price': Decimal(0),
                         'cost_price': Decimal(0),
+                        }])
+            product, = self.product.create([{
+                        'template': template.id,
                         }])
             currency, = self.currency.search([
                     ('code', '=', 'cu1'),
