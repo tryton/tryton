@@ -33,10 +33,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'Dunder Mifflin'
+    >>> party = Party(name='Dunder Mifflin')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'USD')])
     >>> if not currencies:
     ...     currency = Currency(name='US Dollar', symbol=u'$', code='USD',
@@ -120,19 +123,23 @@ Create an asset::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> asset_product = Product()
-    >>> asset_product.name = 'Asset'
-    >>> asset_product.type = 'assets'
-    >>> asset_product.default_uom = unit
-    >>> asset_product.list_price = Decimal('1000')
-    >>> asset_product.cost_price = Decimal('1000')
-    >>> asset_product.depreciable = True
-    >>> asset_product.account_expense = expense
-    >>> asset_product.account_revenue = revenue
-    >>> asset_product.account_asset = asset_account
-    >>> asset_product.account_depreciation = depreciation_account
-    >>> asset_product.depreciation_duration = Decimal(24)
+    >>> asset_template = ProductTemplate()
+    >>> asset_template.name = 'Asset'
+    >>> asset_template.type = 'assets'
+    >>> asset_template.default_uom = unit
+    >>> asset_template.list_price = Decimal('1000')
+    >>> asset_template.cost_price = Decimal('1000')
+    >>> asset_template.depreciable = True
+    >>> asset_template.account_expense = expense
+    >>> asset_template.account_revenue = revenue
+    >>> asset_template.account_asset = asset_account
+    >>> asset_template.account_depreciation = depreciation_account
+    >>> asset_template.depreciation_duration = Decimal(24)
+    >>> asset_template.save()
+    >>> asset_product.template = asset_template
     >>> asset_product.save()
 
 Create supplier::
