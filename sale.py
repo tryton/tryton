@@ -56,8 +56,7 @@ class SaleLine:
         res = super(SaleLine, cls).read(ids, fields_names=fields_names2)
 
         if not fields_names:
-            fields_names = list(set(cls._fields.keys()
-                    + cls._inherit_fields.keys()))
+            fields_names = cls._fields.keys()
 
         root_ids = []
         for field in fields_names:
