@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
-        expr="/form/notebook/page[@id='attributes']/field[@name='attribute_set']"
-        position="after">
-        <field name="attributes" colspan="4"/>
+        expr="/form/separator[@name='description']"
+        position="before">
+        <field name="attributes" colspan="6"/>
     </xpath>
 </data>

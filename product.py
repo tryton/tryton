@@ -42,6 +42,9 @@ class Product:
     __name__ = 'product.product'
     attributes = fields.Dict('product.attribute', 'Attributes',
         domain=[
-            ('sets', '=', Eval('attribute_set', -1)),
+            ('sets', '=',
+                Eval('_parent_template', {}).get('attribute_set', -1)),
             ],
-        depends=['attribute_set'])
+        states={
+            'readonly': ~Eval('_parent_template', {}),
+            })
