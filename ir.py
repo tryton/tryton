@@ -23,7 +23,6 @@ class View:
         models_data = ModelData.search([
                 ('fs_id', '=', 'view_dashboard'),
                 ('module', '=', 'dashboard'),
-                ('inherit', '=', None),
                 ], limit=1)
         if not models_data:
             return 0
