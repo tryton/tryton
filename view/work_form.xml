@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/notebook/page[@id='timesheet_lines']" position="after">
+    <xpath expr="/form/notebook/page[@id='children']" position="after">
         <page string="Plan" id="plan">
             <label name="constraint_start_date"/>
             <field name="constraint_start_date"/>
