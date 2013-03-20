@@ -10,7 +10,6 @@ __all__ = ['Carrier']
 class Carrier(ModelSQL, ModelView):
     'Carrier'
     __name__ = 'carrier'
-    _inherits = {'party.party': 'party'}
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     carrier_product = fields.Many2One('product.product', 'Carrier Product',
@@ -28,21 +27,6 @@ class Carrier(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return '%s - %s' % (self.party.rec_name, self.carrier_product.rec_name)
-
-    @classmethod
-    def copy(self, carriers, default=None):
-        Party = Pool().get('party.party')
-
-        if default is None:
-            default = {}
-        default = default.copy()
-        new_carriers = []
-        for carrier in carriers:
-            party, = Party.copy([carrier.party])
-            default['party'] = party.id
-            new_carriers.extend(super(Carrier, self).copy([carrier],
-                    default=default))
-        return new_carriers
 
     def get_sale_price(self):
         'Compute carrier sale price with currency'
