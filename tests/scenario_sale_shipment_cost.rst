@@ -34,10 +34,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'B2CK'
+    >>> party = Party(name='B2CK')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'EUR')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
@@ -128,36 +131,45 @@ Create category::
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> product = Product()
-    >>> product.name = 'Product'
-    >>> product.category = category
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.salable = True
-    >>> product.delivery_time = 0
-    >>> product.list_price = Decimal('20')
-    >>> product.cost_price = Decimal('8')
-    >>> product.account_revenue = revenue
+    >>> template = ProductTemplate()
+    >>> template.name = 'Product'
+    >>> template.category = category
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.salable = True
+    >>> template.delivery_time = 0
+    >>> template.list_price = Decimal('20')
+    >>> template.cost_price = Decimal('8')
+    >>> template.account_revenue = revenue
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
     >>> carrier_product = Product()
-    >>> carrier_product.name = 'Carrier Product'
-    >>> carrier_product.category = category
-    >>> carrier_product.default_uom = unit
-    >>> carrier_product.type = 'service'
-    >>> carrier_product.salable = True
-    >>> carrier_product.delivery_time = 0
-    >>> carrier_product.list_price = Decimal('3')
-    >>> carrier_product.cost_price = Decimal(0)
-    >>> carrier_product.account_revenue = revenue
+    >>> carrier_template = ProductTemplate()
+    >>> carrier_template.name = 'Carrier Product'
+    >>> carrier_template.category = category
+    >>> carrier_template.default_uom = unit
+    >>> carrier_template.type = 'service'
+    >>> carrier_template.salable = True
+    >>> carrier_template.delivery_time = 0
+    >>> carrier_template.list_price = Decimal('3')
+    >>> carrier_template.cost_price = Decimal(0)
+    >>> carrier_template.account_revenue = revenue
+    >>> carrier_template.save()
+    >>> carrier_product.template = carrier_template
     >>> carrier_product.save()
 
 Create carrier::
 
     >>> Carrier = Model.get('carrier')
     >>> carrier = Carrier()
-    >>> carrier.name = 'Carrier'
+    >>> party = Party(name='Carrier')
+    >>> party.save()
+    >>> carrier.party = party
     >>> carrier.carrier_product = carrier_product
     >>> carrier.save()
 
