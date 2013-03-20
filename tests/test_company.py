@@ -22,6 +22,7 @@ class CompanyTestCase(unittest.TestCase):
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('company')
+        self.party = POOL.get('party.party')
         self.company = POOL.get('company.company')
         self.employee = POOL.get('company.employee')
         self.currency = POOL.get('currency.currency')
@@ -49,8 +50,11 @@ class CompanyTestCase(unittest.TestCase):
                     ('code', '=', 'cu1'),
                     ], 0, 1, None)
 
-            company1, = self.company.create([{
+            party1, = self.party.create([{
                         'name': 'B2CK',
+                        }])
+            company1, = self.company.create([{
+                        'party': party1.id,
                         'currency': currency1.id,
                         }])
             self.assert_(company1)
@@ -66,11 +70,14 @@ class CompanyTestCase(unittest.TestCase):
                 ], 0, 1, None)
 
             company1, = self.company.search([
-                    ('name', '=', 'B2CK'),
+                    ('rec_name', '=', 'B2CK'),
                     ], 0, 1, None)
 
-            company2, = self.company.create([{
+            party2, = self.party.create([{
                         'name': 'B2CK Branch',
+                        }])
+            company2, = self.company.create([{
+                        'party': party2.id,
                         'parent': company1.id,
                         'currency': currency1.id,
                         }])
@@ -88,11 +95,14 @@ class CompanyTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             company1, = self.company.search([
-                    ('name', '=', 'B2CK'),
+                    ('rec_name', '=', 'B2CK'),
                     ], 0, 1, None)
 
-            self.employee.create([{
+            party, = self.party.create([{
                         'name': 'Employee1',
+                        }])
+            self.employee.create([{
+                        'party': party.id,
                         'company': company1.id,
                         }])
             transaction.cursor.commit()
@@ -108,11 +118,14 @@ class CompanyTestCase(unittest.TestCase):
                     ], 0, 1, None)
 
             company1, = self.company.search([
-                    ('name', '=', 'B2CK'),
+                    ('rec_name', '=', 'B2CK'),
                     ], 0, 1, None)
 
-            company2, = self.company.create([{
+            party2, = self.party.create([{
                         'name': 'B2CK Branch',
+                        }])
+            company2, = self.company.create([{
+                        'party': party2.id,
                         'parent': company1.id,
                         'currency': currency1.id,
                         }])

@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="company_view_form">
             <field name="model">company.company</field>
             <field name="type">form</field>
-            <field name="inherit" ref="party.party_view_form"/>
+            <field name="inherit" eval="None"/>
             <field name="name">company_form</field>
         </record>
         <record model="ir.ui.view" id="company_view_tree">
@@ -166,16 +166,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="employee_view_form">
             <field name="model">company.employee</field>
             <field name="type">form</field>
-            <field name="inherit" ref="party.party_view_form"/>
+            <field name="inherit" eval="None"/>
             <field name="priority">10</field>
             <field name="name">employee_form</field>
-        </record>
-
-        <record model="ir.ui.view" id="employee_view_form2">
-            <field name="model">company.employee</field>
-            <field name="type">form</field>
-            <field name="priority">20</field>
-            <field name="name">employee_form2</field>
         </record>
 
         <record model="ir.ui.view" id="employee_view_tree">
@@ -195,7 +188,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.view" id="act_employee_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="employee_view_form2"/>
+            <field name="view" ref="employee_view_form"/>
             <field name="act_window" ref="act_employee_form"/>
         </record>
         <menuitem parent="party.menu_configuration" action="act_employee_form"

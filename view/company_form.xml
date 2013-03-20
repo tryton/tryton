@@ -1,19 +1,12 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<data>
-    <xpath expr="/form" position="replace_attributes">
-        <form string="Company"/>
-    </xpath>
-    <xpath expr="/form/group[@id='checkboxes']" position="after">
-        <label name="currency"/>
-        <field name="currency"/>
-        <label name="vat_country"/>
-        <field name="vat_country"/>
-        <label name="vat_number"/>
-        <field name="vat_number"/>
-    </xpath>
-    <xpath expr="/form/notebook/page[@id='general']" position="after">
+<form string="Company">
+    <label name="party"/>
+    <field name="party"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <notebook colspan="4">
         <page string="Company" col="2" id="company">
             <label name="parent"/>
             <field name="parent"/>
@@ -25,5 +18,5 @@ this repository contains the full copyright notices and license terms. -->
             <separator name="footer"/>
             <field name="footer"/>
         </page>
-    </xpath>
-</data>
+    </notebook>
+</form>

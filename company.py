@@ -17,7 +17,7 @@ __metaclass__ = PoolMeta
 class Company(ModelSQL, ModelView):
     'Company'
     __name__ = 'company.company'
-    _inherits = {'party.party': 'party'}
+    _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     parent = fields.Many2One('company.company', 'Parent')
@@ -36,19 +36,8 @@ class Company(ModelSQL, ModelView):
         super(Company, cls).validate(companies)
         cls.check_recursion(companies)
 
-    @classmethod
-    def copy(cls, companies, default=None):
-        Party = Pool().get('party.party')
-
-        if default is None:
-            default = {}
-        default = default.copy()
-        new_companies = []
-        for company in companies:
-            default['party'], = Party.copy([company.party])
-            new_company, = super(Company, cls).copy([company], default=default)
-            new_companies.append(new_company)
-        return new_companies
+    def get_rec_name(self, name):
+        return self.party.rec_name
 
     @classmethod
     def write(cls, companies, vals):
@@ -60,9 +49,12 @@ class Company(ModelSQL, ModelView):
 class Employee(ModelSQL, ModelView):
     'Employee'
     __name__ = 'company.employee'
-    _inherits = {'party.party': 'party'}
+    _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
+
+    def get_rec_name(self, name):
+        return self.party.rec_name
 
 
 class UserEmployee(ModelSQL):
@@ -133,7 +125,7 @@ class User:
     def get_status_bar(self, name):
         status = super(User, self).get_status_bar(name)
         if self.company:
-            status += ' - %s [%s]' % (self.company.name,
+            status += ' - %s [%s]' % (self.company.rec_name,
                 self.company.currency.name)
         return status
 
