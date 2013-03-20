@@ -1803,7 +1803,6 @@ class OpenSupplier(Wizard):
         model_data, = ModelData.search([
                 ('fs_id', '=', 'act_open_supplier'),
                 ('module', '=', 'purchase'),
-                ('inherit', '=', None),
                 ], limit=1)
         wizard = Wizard(model_data.db_id)
 
