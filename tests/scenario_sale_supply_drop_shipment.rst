@@ -33,10 +33,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'B2CK'
+    >>> party = Party(name='B2CK')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'EUR')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
@@ -166,22 +169,26 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> product = Product()
-    >>> product.name = 'product'
-    >>> product.category = category
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.purchasable = True
-    >>> product.salable = True
-    >>> product.list_price = Decimal('10')
-    >>> product.cost_price = Decimal('5')
-    >>> product.account_expense = expense
-    >>> product.account_revenue = revenue
-    >>> product.supply_on_sale = True
+    >>> template = ProductTemplate()
+    >>> template.name = 'product'
+    >>> template.category = category
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.purchasable = True
+    >>> template.salable = True
+    >>> template.list_price = Decimal('10')
+    >>> template.cost_price = Decimal('5')
+    >>> template.account_expense = expense
+    >>> template.account_revenue = revenue
+    >>> template.supply_on_sale = True
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
     >>> product_supplier = ProductSupplier()
-    >>> product_supplier.product = product
+    >>> product_supplier.product = template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.delivery_time = 0
