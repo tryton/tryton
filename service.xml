@@ -21,10 +21,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="company.employee_view_form"/>
             <field name="name">employee_form</field>
         </record>
-        <record model="ir.ui.view" id="employee_view_form2">
-            <field name="model">company.employee</field>
-            <field name="inherit" ref="company.employee_view_form2"/>
-            <field name="name">employee_form2</field>
-        </record>
     </data>
 </tryton>

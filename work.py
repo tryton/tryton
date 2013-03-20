@@ -67,7 +67,7 @@ class Work:
                 leafs.add(work.id)
 
             costs[work.id] = Decimal('0')
-            for ts_line in work.timesheet_lines:
+            for ts_line in work.work.timesheet_lines:
                 costs[work.id] += ts_line.compute_cost()
 
         while leafs:

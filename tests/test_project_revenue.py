@@ -26,6 +26,7 @@ class ProjectRevenueTestCase(unittest.TestCase):
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('project_revenue')
+        self.party = POOL.get('party.party')
         self.employee = POOL.get('company.employee')
         self.employee_cost_price = POOL.get('company.employee_cost_price')
         self.company = POOL.get('company.company')
@@ -61,8 +62,10 @@ class ProjectRevenueTestCase(unittest.TestCase):
             (datetime.date(2013, 6, 1), Decimal(20)),
             ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            company, = self.company.search([('name', '=', 'B2CK')])
-            employee = self.employee(name='Pam Beesly',
+            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            party = self.party(name='Pam Beesly')
+            party.save()
+            employee = self.employee(party=party.id,
                 company=company)
             employee.save()
             for date, cost_price in cost_prices:
