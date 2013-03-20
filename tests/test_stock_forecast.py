@@ -28,6 +28,7 @@ class StockForecastTestCase(unittest.TestCase):
         trytond.tests.test_tryton.install_module('stock_forecast')
         self.category = POOL.get('product.category')
         self.uom = POOL.get('product.uom')
+        self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
         self.location = POOL.get('stock.location')
         self.company = POOL.get('company.company')
@@ -70,7 +71,7 @@ class StockForecastTestCase(unittest.TestCase):
                         'name': 'Test create_moves',
                         }])
             unit, = self.uom.search([('name', '=', 'Unit')])
-            product, = self.product.create([{
+            template, = self.template.create([{
                         'name': 'Test create_moves',
                         'type': 'goods',
                         'category': category.id,
@@ -79,10 +80,13 @@ class StockForecastTestCase(unittest.TestCase):
                         'list_price': Decimal('1'),
                         'cost_price': Decimal(0),
                         }])
+            product, = self.product.create([{
+                        'template': template.id,
+                        }])
             customer, = self.location.search([('code', '=', 'CUS')])
             warehouse, = self.location.search([('code', '=', 'WH')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('name', '=', 'B2CK')])
+            company, = self.company.search([('rec_name', '=', 'B2CK')])
             self.user.write([self.user(USER)], {
                     'main_company': company.id,
                     'company': company.id,
