@@ -2,10 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/notebook/page[@id='general']" position="after">
-        <page name="boms">
-            <field name="boms" colspan="4"
-                view_ids="production.product-bom_view_list_sequence"/>
-        </page>
+    <xpath expr="/form/field[@name='description']" position="after">
+        <field name="boms" colspan="6"
+            view_ids="production.product-bom_view_list_sequence"/>
     </xpath>
 </data>

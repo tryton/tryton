@@ -31,10 +31,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'Dunder Mifflin'
+    >>> party = Party(name='Dunder Mifflin')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'USD')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'$', code='USD',
@@ -66,33 +69,43 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> product = Product()
-    >>> product.name = 'product'
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.list_price = Decimal(30)
-    >>> product.cost_price = Decimal(20)
+    >>> template = ProductTemplate()
+    >>> template.name = 'product'
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.list_price = Decimal(30)
+    >>> template.cost_price = Decimal(20)
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
 
 Create Components::
 
     >>> component1 = Product()
-    >>> component1.name = 'component 1'
-    >>> component1.default_uom = unit
-    >>> component1.type = 'goods'
-    >>> component1.list_price = Decimal(5)
-    >>> component1.cost_price = Decimal(1)
+    >>> template1 = ProductTemplate()
+    >>> template1.name = 'component 1'
+    >>> template1.default_uom = unit
+    >>> template1.type = 'goods'
+    >>> template1.list_price = Decimal(5)
+    >>> template1.cost_price = Decimal(1)
+    >>> template1.save()
+    >>> component1.template = template1
     >>> component1.save()
 
     >>> meter, = ProductUom.find([('name', '=', 'Meter')])
     >>> centimeter, = ProductUom.find([('name', '=', 'centimeter')])
     >>> component2 = Product()
-    >>> component2.name = 'component 2'
-    >>> component2.default_uom = meter
-    >>> component2.type = 'goods'
-    >>> component2.list_price = Decimal(7)
-    >>> component2.cost_price = Decimal(5)
+    >>> template2 = ProductTemplate()
+    >>> template2.name = 'component 2'
+    >>> template2.default_uom = meter
+    >>> template2.type = 'goods'
+    >>> template2.list_price = Decimal(7)
+    >>> template2.cost_price = Decimal(5)
+    >>> template2.save()
+    >>> component2.template = template2
     >>> component2.save()
 
 Create Bill of Material::
