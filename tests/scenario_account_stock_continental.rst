@@ -34,10 +34,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'B2CK'
+    >>> party = Party(name='B2CK')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'EUR')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
@@ -136,29 +139,36 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> product = Product()
-    >>> product.name = 'product'
-    >>> product.category = category
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.purchasable = True
-    >>> product.salable = True
-    >>> product.list_price = Decimal('10')
-    >>> product.cost_price = Decimal('5')
-    >>> product.cost_price_method = 'fixed'
-    >>> product.delivery_time = 0
-    >>> product.account_expense = expense
-    >>> product.account_revenue = revenue
-    >>> product.account_stock = stock
-    >>> product.account_stock_supplier = stock_supplier
-    >>> product.account_stock_customer = stock_customer
-    >>> product.account_stock_production = stock_production
-    >>> product.account_stock_lost_found = stock_lost_found
+    >>> template = ProductTemplate()
+    >>> template.name = 'product'
+    >>> template.category = category
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.purchasable = True
+    >>> template.salable = True
+    >>> template.list_price = Decimal('10')
+    >>> template.cost_price = Decimal('5')
+    >>> template.cost_price_method = 'fixed'
+    >>> template.delivery_time = 0
+    >>> template.account_expense = expense
+    >>> template.account_revenue = revenue
+    >>> template.account_stock = stock
+    >>> template.account_stock_supplier = stock_supplier
+    >>> template.account_stock_customer = stock_customer
+    >>> template.account_stock_production = stock_production
+    >>> template.account_stock_lost_found = stock_lost_found
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
-    >>> product_average = Product(Product.copy([product.id], config.context)[0])
-    >>> product_average.cost_price_method = 'average'
-    >>> product_average.save()
+    >>> template_average = ProductTemplate(ProductTemplate.copy([template.id], {
+    ...         'cost_price_method': 'average',
+    ...         }, config.context)[0])
+    >>> product_average = Product(Product.copy([product.id], {
+    ...         'template': template_average.id,
+    ...         }, config.context)[0])
 
 Create payment term::
 
