@@ -33,10 +33,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'B2CK'
+    >>> party = Party(name='B2CK')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'EUR')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
