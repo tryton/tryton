@@ -29,6 +29,7 @@ class StockTestCase(unittest.TestCase):
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock')
+        self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
         self.category = POOL.get('product.category')
         self.uom = POOL.get('product.uom')
@@ -61,7 +62,7 @@ class StockTestCase(unittest.TestCase):
                         }])
             kg, = self.uom.search([('name', '=', 'Kilogram')])
             g, = self.uom.search([('name', '=', 'Gram')])
-            product, = self.product.create([{
+            template, = self.template.create([{
                         'name': 'Test Move.internal_quantity',
                         'type': 'goods',
                         'list_price': Decimal(1),
@@ -70,9 +71,12 @@ class StockTestCase(unittest.TestCase):
                         'cost_price_method': 'fixed',
                         'default_uom': kg.id,
                         }])
+            product, = self.product.create([{
+                        'template': template.id,
+                        }])
             supplier, = self.location.search([('code', '=', 'SUP')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('name', '=', 'B2CK')])
+            company, = self.company.search([('rec_name', '=', 'B2CK')])
             currency = company.currency
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
@@ -115,7 +119,7 @@ class StockTestCase(unittest.TestCase):
                         }])
             kg, = self.uom.search([('name', '=', 'Kilogram')])
             g, = self.uom.search([('name', '=', 'Gram')])
-            product, = self.product.create([{
+            template, = self.template.create([{
                         'name': 'Test products_by_location',
                         'type': 'goods',
                         'list_price': Decimal(0),
@@ -124,10 +128,13 @@ class StockTestCase(unittest.TestCase):
                         'cost_price_method': 'fixed',
                         'default_uom': kg.id,
                         }])
+            product, = self.product.create([{
+                        'template': template.id,
+                        }])
             supplier, = self.location.search([('code', '=', 'SUP')])
             customer, = self.location.search([('code', '=', 'CUS')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('name', '=', 'B2CK')])
+            company, = self.company.search([('rec_name', '=', 'B2CK')])
             currency = company.currency
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
@@ -311,20 +318,23 @@ class StockTestCase(unittest.TestCase):
         # Test with_childs
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            company, = self.company.search([('name', '=', 'B2CK')])
+            company, = self.company.search([('rec_name', '=', 'B2CK')])
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
                 'company': company.id,
                 })
 
             unit, = self.uom.search([('name', '=', 'Unit')])
-            product, = self.product.create([{
+            template, = self.template.create([{
                         'name': 'Test products_by_location',
                         'type': 'goods',
                         'list_price': Decimal(0),
                         'cost_price': Decimal(0),
                         'cost_price_method': 'fixed',
                         'default_uom': unit.id,
+                        }])
+            product, = self.product.create([{
+                        'template': template.id,
                         }])
 
             lost_found, = self.location.search([('type', '=', 'lost_found')])
@@ -372,7 +382,7 @@ class StockTestCase(unittest.TestCase):
                         'name': 'Test period',
                         }])
             unit, = self.uom.search([('name', '=', 'Unit')])
-            product, = self.product.create([{
+            template, = self.template.create([{
                         'name': 'Test period',
                         'type': 'goods',
                         'category': category.id,
@@ -381,10 +391,13 @@ class StockTestCase(unittest.TestCase):
                         'list_price': Decimal(0),
                         'cost_price': Decimal(0),
                         }])
+            product, = self.product.create([{
+                        'template': template.id,
+                        }])
             supplier, = self.location.search([('code', '=', 'SUP')])
             customer, = self.location.search([('code', '=', 'CUS')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('name', '=', 'B2CK')])
+            company, = self.company.search([('rec_name', '=', 'B2CK')])
             currency = company.currency
             self.user.write([self.user(USER)], {
                 'main_company': company.id,

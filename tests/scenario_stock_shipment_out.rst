@@ -31,10 +31,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'OPENLABS'
+    >>> party = Party(name='OPENLABS')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'EUR')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
@@ -69,15 +72,19 @@ Create category::
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> product = Product()
-    >>> product.name = 'Product'
-    >>> product.category = category
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.list_price = Decimal('20')
-    >>> product.cost_price = Decimal('8')
+    >>> template = ProductTemplate()
+    >>> template.name = 'Product'
+    >>> template.category = category
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.list_price = Decimal('20')
+    >>> template.cost_price = Decimal('8')
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
 
 Get stock locations::

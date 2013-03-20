@@ -31,10 +31,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'Dunder Mifflin'
+    >>> party = Party(name='Dunder Mifflin')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'USD')])
     >>> if not currencies:
     ...     currency = Currency(name='US Dollar', symbol='$', code='USD',
@@ -57,15 +60,19 @@ Reload the context::
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> product = Product()
-    >>> product.name = 'Product'
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.list_price = Decimal('300')
-    >>> product.cost_price = Decimal('80')
-    >>> product.cost_price_method = 'average'
+    >>> template = ProductTemplate()
+    >>> template.name = 'Product'
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.list_price = Decimal('300')
+    >>> template.cost_price = Decimal('80')
+    >>> template.cost_price_method = 'average'
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
 
 Get stock locations::
@@ -94,7 +101,7 @@ Make 1 unit of the product available @ 100 ::
 Check Cost Price is 100::
 
     >>> product.reload()
-    >>> product.cost_price == Decimal('100')
+    >>> product.template.cost_price == Decimal('100')
     True
 
 Add 1 more unit @ 200::
@@ -116,5 +123,5 @@ Add 1 more unit @ 200::
 Check Cost Price Average is 150::
 
     >>> product.reload()
-    >>> product.cost_price == Decimal('150')
+    >>> product.template.cost_price == Decimal('150')
     True

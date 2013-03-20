@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from functools import reduce
+from functools import reduce, partial
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
@@ -385,13 +385,15 @@ class Move(Workflow, ModelSQL, ModelView):
 
         if hasattr(Product, 'cost_price'):
             digits = Product.cost_price.digits
+            write = partial(Product.write, [product])
         else:
             digits = ProductTemplate.cost_price.digits
+            write = partial(ProductTemplate.write, [product.template])
         new_cost_price = new_cost_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
 
         with Transaction().set_user(0, set_context=True):
-            Product.write([product], {
+            write({
                     'cost_price': new_cost_price,
                     })
 
