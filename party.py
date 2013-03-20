@@ -98,10 +98,9 @@ class Party(ModelSQL, ModelView):
         if Transaction().user == 0:
             return []
         Address = Pool().get('party.address')
-        fields_names = list(x for x in set(Address._fields.keys()
-                + Address._inherit_fields.keys())
-                if x not in ['id', 'create_uid', 'create_date',
-                    'write_uid', 'write_date'])
+        fields_names = list(x for x in Address._fields.keys()
+            if x not in ('id', 'create_uid', 'create_date',
+                'write_uid', 'write_date'))
         return [Address.default_get(fields_names)]
 
     @staticmethod
