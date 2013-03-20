@@ -34,10 +34,13 @@ Create company::
     >>> Currency = Model.get('currency.currency')
     >>> CurrencyRate = Model.get('currency.currency.rate')
     >>> Company = Model.get('company.company')
+    >>> Party = Model.get('party.party')
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> company.name = 'B2CK'
+    >>> party = Party(name='B2CK')
+    >>> party.save()
+    >>> company.party = party
     >>> currencies = Currency.find([('code', '=', 'EUR')])
     >>> if not currencies:
     ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
@@ -127,46 +130,59 @@ Create category::
 Create products::
 
     >>> ProductUom = Model.get('product.uom')
+    >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> product = Product()
-    >>> product.name = 'Product'
-    >>> product.category = category
-    >>> product.default_uom = unit
-    >>> product.type = 'goods'
-    >>> product.list_price = Decimal('20')
-    >>> product.cost_price = Decimal('8')
-    >>> product.account_expense = expense
-    >>> product.account_revenue = revenue
-    >>> product.account_stock = stock
-    >>> product.account_stock_supplier = stock_supplier
-    >>> product.account_stock_customer = stock_customer
-    >>> product.account_stock_production = stock_production
-    >>> product.account_stock_lost_found = stock_lost_found
-    >>> product.account_journal_stock_supplier = stock_journal
-    >>> product.account_journal_stock_customer = stock_journal
-    >>> product.account_journal_stock_lost_found = stock_journal
+    >>> template = ProductTemplate()
+    >>> template.name = 'Product'
+    >>> template.category = category
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.list_price = Decimal('20')
+    >>> template.cost_price = Decimal('8')
+    >>> template.account_expense = expense
+    >>> template.account_revenue = revenue
+    >>> template.account_stock = stock
+    >>> template.account_stock_supplier = stock_supplier
+    >>> template.account_stock_customer = stock_customer
+    >>> template.account_stock_production = stock_production
+    >>> template.account_stock_lost_found = stock_lost_found
+    >>> template.account_journal_stock_supplier = stock_journal
+    >>> template.account_journal_stock_customer = stock_journal
+    >>> template.account_journal_stock_lost_found = stock_journal
+    >>> template.save()
+    >>> product.template = template
     >>> product.save()
-    >>> product_average = Product(Product.copy([product.id], config.context)[0])
-    >>> product_average.cost_price_method = 'average'
-    >>> product_average.save()
+    >>> template_average = ProductTemplate(ProductTemplate.copy([template.id],
+    ...         config.context)[0])
+    >>> template_average.cost_price_method = 'average'
+    >>> template_average.save()
+    >>> product_average = Product(Product.copy([product.id], {
+    ...         'template': template_average.id,
+    ...         }, config.context)[0])
 
     >>> carrier_product = Product()
-    >>> carrier_product.name = 'Carrier Product'
-    >>> carrier_product.category = category
-    >>> carrier_product.default_uom = unit
-    >>> carrier_product.type = 'service'
-    >>> carrier_product.list_price = Decimal('5')
-    >>> carrier_product.cost_price = Decimal('3')
-    >>> carrier_product.account_expense = expense
-    >>> carrier_product.account_revenue = revenue
+    >>> carrier_template = ProductTemplate()
+    >>> carrier_template.name = 'Carrier Product'
+    >>> carrier_template.category = category
+    >>> carrier_template.default_uom = unit
+    >>> carrier_template.type = 'service'
+    >>> carrier_template.list_price = Decimal('5')
+    >>> carrier_template.cost_price = Decimal('3')
+    >>> carrier_template.account_expense = expense
+    >>> carrier_template.account_revenue = revenue
+    >>> carrier_template.save()
+    >>> carrier_product.template = carrier_template
     >>> carrier_product.save()
 
 Create carrier::
 
     >>> Carrier = Model.get('carrier')
     >>> carrier = Carrier()
-    >>> carrier.name = 'Carrier'
+    >>> party = Party(name='Carrier')
+    >>> party.save()
+    >>> carrier.party = party
     >>> carrier.carrier_product = carrier_product
     >>> carrier.save()
 
