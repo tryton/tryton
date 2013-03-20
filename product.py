@@ -5,6 +5,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.backend import TableHandler
+from trytond.const import OPERATORS
 
 __all__ = ['Template', 'Product']
 
@@ -34,12 +35,8 @@ class Template(ModelSQL, ModelView):
         states=STATES, depends=DEPENDS)
     list_price = fields.Property(fields.Numeric('List Price', states=STATES,
             digits=(16, 4), depends=DEPENDS, required=True))
-    list_price_uom = fields.Function(fields.Numeric('List Price',
-        digits=(16, 4)), 'get_price_uom')
     cost_price = fields.Property(fields.Numeric('Cost Price',
             states=STATES, digits=(16, 4), depends=DEPENDS, required=True))
-    cost_price_uom = fields.Function(fields.Numeric('Cost Price',
-        digits=(16, 4)), 'get_price_uom')
     cost_price_method = fields.Property(fields.Selection([
                 ("fixed", "Fixed"),
                 ("average", "Average")
@@ -52,7 +49,7 @@ class Template(ModelSQL, ModelView):
             on_change_with=['default_uom']),
         'on_change_with_default_uom_category')
     active = fields.Boolean('Active', select=True)
-    products = fields.One2Many('product.product', 'template', 'Products',
+    products = fields.One2Many('product.product', 'template', 'Variants',
         states=STATES, depends=DEPENDS)
 
     @classmethod
@@ -88,9 +85,81 @@ class Template(ModelSQL, ModelView):
     def default_cost_price_method():
         return 'fixed'
 
+    @staticmethod
+    def default_products():
+        pool = Pool()
+        Product = pool.get('product.product')
+        if Transaction().user == 0:
+            return []
+        fields_names = list(f for f in Product._fields.keys()
+            if f not in ('id', 'create_uid', 'create_date',
+                'write_uid', 'write_date'))
+        return [Product.default_get(fields_names)]
+
     def on_change_with_default_uom_category(self, name=None):
         if self.default_uom:
             return self.default_uom.category.id
+
+    @classmethod
+    def copy(cls, templates, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['products'] = None
+        return super(Template, cls).copy(templates, default=default)
+
+
+class Product(ModelSQL, ModelView):
+    "Product Variant"
+    __name__ = "product.product"
+    _order_name = 'code'
+    template = fields.Many2One('product.template', 'Product Template',
+        required=True, ondelete='CASCADE', select=True, states=STATES,
+        depends=DEPENDS)
+    code = fields.Char("Code", size=None, select=True, states=STATES,
+        depends=DEPENDS)
+    description = fields.Text("Description", translate=True, states=STATES,
+        depends=DEPENDS)
+    active = fields.Boolean('Active', select=True)
+    default_uom = fields.Function(fields.Many2One('product.uom',
+            'Default UOM'), 'get_default_uom', searcher='search_default_uom')
+    list_price_uom = fields.Function(fields.Numeric('List Price',
+        digits=(16, 4)), 'get_price_uom')
+    cost_price_uom = fields.Function(fields.Numeric('Cost Price',
+        digits=(16, 4)), 'get_price_uom')
+
+    @staticmethod
+    def default_active():
+        return True
+
+    def __getattr__(self, name):
+        try:
+            return super(Product, self).__getattr__(name)
+        except AttributeError:
+            pass
+        return getattr(self.template, name)
+
+    def get_rec_name(self, name):
+        if self.code:
+            return '[' + self.code + '] ' + self.name
+        else:
+            return self.name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        ids = map(int, cls.search([('code',) + clause[1:]], order=[]))
+        if ids:
+            ids += map(int, cls.search([('template.name',) + clause[1:]],
+                    order=[]))
+            return [('id', 'in', ids)]
+        return [('template.name',) + clause[1:]]
+
+    def get_default_uom(self, name):
+        return self.template.default_uom.id
+
+    @classmethod
+    def search_default_uom(cls, name, clause):
+        return [('template.default_uom',) + tuple(clause[1:0])]
 
     @staticmethod
     def get_price_uom(products, name):
@@ -108,64 +177,31 @@ class Template(ModelSQL, ModelView):
         return res
 
     @classmethod
-    def copy(cls, templates, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        default['products'] = None
-        return super(Template, cls).copy(templates, default=default)
-
-
-class Product(ModelSQL, ModelView):
-    "Product"
-    __name__ = "product.product"
-    _inherits = {'product.template': 'template'}
-    template = fields.Many2One('product.template', 'Product Template',
-            required=True, ondelete='CASCADE', select=True)
-    code = fields.Char("Code", size=None, select=True)
-    description = fields.Text("Description", translate=True)
-
-    def get_rec_name(self, name):
-        if self.code:
-            return '[' + self.code + '] ' + self.name
-        else:
-            return self.name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        ids = map(int, cls.search([('code',) + clause[1:]], order=[]))
-        if ids:
-            ids += map(int, cls.search([('name',) + clause[1:]], order=[]))
-            return [('id', 'in', ids)]
-        return [('name',) + clause[1:]]
-
-    @classmethod
-    def delete(cls, products):
-        Template = Pool().get('product.template')
-
-        # Get the templates before we delete the products.
-        templates = [product.template for product in products]
-
-        super(Product, cls).delete(products)
-
-        # Get templates that are still linked after delete.
-        unlinked_templates = [template for template in templates
-            if not template.products]
-        if unlinked_templates:
-            Template.delete(unlinked_templates)
-
-    @classmethod
-    def copy(cls, products, default=None):
-        Template = Pool().get('product.template')
-
-        if default is None:
-            default = {}
-        default = default.copy()
-        default['products'] = None
-        new_products = []
-        for product in products:
-            template, = Template.copy([product.template])
-            default['template'] = template.id
-            new_products.extend(super(Product, cls).copy([product],
-                    default=default))
-        return new_products
+    def search_domain(cls, domain, active_test=True):
+        def convert_domain(domain):
+            'Replace missing product field by the template one'
+            if not domain:
+                return []
+            operator = 'AND'
+            if isinstance(domain[0], basestring):
+                operator = domain[0]
+                domain = domain[1:]
+            result = [operator]
+            for arg in domain:
+                if (isinstance(arg, (list, tuple))
+                        and len(arg) > 2
+                        and isinstance(arg[1], basestring)
+                        and arg[1] in OPERATORS):
+                    # clause
+                    field = arg[0]
+                    if not getattr(cls, field, None):
+                        field = 'template.' + field
+                    result.append((field,) + tuple(arg[1:]))
+                elif isinstance(arg, list):
+                    # sub-domain
+                    result.append(convert_domain(arg))
+                else:
+                    result.append(arg)
+            return result
+        return super(Product, cls).search_domain(convert_domain(domain),
+            active_test=active_test)
