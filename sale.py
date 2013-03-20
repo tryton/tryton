@@ -1666,7 +1666,6 @@ class OpenCustomer(Wizard):
         model_data, = ModelData.search([
                 ('fs_id', '=', 'act_open_customer'),
                 ('module', '=', 'sale'),
-                ('inherit', '=', None),
                 ], limit=1)
         wizard = Wizard(model_data.db_id)
 
