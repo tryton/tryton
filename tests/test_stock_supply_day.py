@@ -29,6 +29,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
         self.uom = POOL.get('product.uom')
         self.uom_category = POOL.get('product.uom.category')
         self.category = POOL.get('product.category')
+        self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
         self.company = POOL.get('company.company')
         self.party = POOL.get('party.party')
@@ -119,7 +120,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
                     'factor': 1.0,
                     }])
         category, = self.category.create([{'name': 'ProdCategoryTest'}])
-        product, = self.product.create([{
+        template, = self.template.create([{
                     'name': 'ProductTest',
                     'default_uom': uom.id,
                     'category': category.id,
@@ -127,7 +128,10 @@ class StockSupplyDayTestCase(unittest.TestCase):
                     'list_price': Decimal(0),
                     'cost_price': Decimal(0),
                     }])
-        company, = self.company.search([('name', '=', 'B2CK')])
+        product, = self.product.create([{
+                    'template': template.id,
+                    }])
+        company, = self.company.search([('rec_name', '=', 'B2CK')])
         self.user.write([self.user(USER)], {
             'main_company': company.id,
             'company': company.id,
