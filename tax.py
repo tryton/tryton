@@ -952,6 +952,10 @@ class TaxRule(ModelSQL, ModelView):
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
 
+    @staticmethod
+    def default_kind():
+        return 'both'
+
     def apply(self, tax, pattern):
         '''
         Apply rule on tax
