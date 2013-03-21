@@ -1200,7 +1200,6 @@ class GeneralLedger(Report):
                 end_periods, data['posted'])
             for account in (set(accounts) - set(account2lines)):
                 accounts.remove(account)
-            account_id2lines = None
 
         account_id2lines = cls.lines(accounts,
             list(set(end_periods).difference(set(start_periods))),
@@ -1248,10 +1247,15 @@ class GeneralLedger(Report):
                 balance += line.debit - line.credit
                 res[account.id].append({
                         'date': line.date,
+                        'move': line.move.rec_name,
                         'debit': line.debit,
                         'credit': line.credit,
                         'balance': balance,
-                        'name': line.description,
+                        'description': '\n'.join(
+                            (line.move.description or '',
+                                line.description or '')).strip(),
+                        'origin': (line.move.origin.rec_name
+                            if line.move.origin else ''),
                         'state': state_selections.get(line.move.state,
                             line.move.state),
                         })
