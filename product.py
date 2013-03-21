@@ -662,6 +662,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             context = {
                 'stock_date_start': date_start,
                 'stock_date_end': date,
+                'forecast': True,
                 }
             with Transaction().set_context(**context):
                 quantities[date] = Product.products_by_location(
