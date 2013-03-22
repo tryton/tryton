@@ -267,6 +267,30 @@ class Work(ModelSQL, ModelView):
 
         return [('work', 'in', tw_ids)]
 
+    @staticmethod
+    def sum_tree(works, getter):
+        leafs = set()
+        result = {}
+        for work in works:
+            if not work.children:
+                leafs.add(work)
+            result[work.id] = getter(work)
+
+        works = set(works)
+        while leafs:
+            for work in leafs:
+                works.remove(work)
+                if work.parent and work.parent.id in result:
+                    result[work.parent.id] += result[work.id]
+            next_leafs = set(w for w in works)
+            for work in works:
+                if not work.parent:
+                    continue
+                if work.parent.id in next_leafs and work.parent in works:
+                    next_leafs.remove(work.parent)
+            leafs = next_leafs
+        return result
+
     @classmethod
     def get_total_effort(cls, works, name):
 
@@ -274,34 +298,7 @@ class Work(ModelSQL, ModelView):
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True),
                 ]) + works
-        works = set(works)
-
-        res = {}
-        id2work = {}
-        leafs = set()
-        for work in works:
-            res[work.id] = work.effort or 0
-            id2work[work.id] = work
-            if not work.children:
-                leafs.add(work.id)
-
-        while leafs:
-            for work_id in leafs:
-                work = id2work[work_id]
-                works.remove(work)
-                if not work.active:
-                    continue
-                if work.parent and work.parent.id in res:
-                    res[work.parent.id] += res[work_id]
-            next_leafs = set((w.id for w in works))
-            for work in works:
-                if not work.parent:
-                    continue
-                if work.parent.id in next_leafs and work.parent in works:
-                    next_leafs.remove(work.parent.id)
-            leafs = next_leafs
-
-        return res
+        return cls.sum_tree(works, lambda w: w.effort or 0)
 
     @classmethod
     def copy(cls, project_works, default=None):
