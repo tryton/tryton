@@ -1727,6 +1727,7 @@ class GeneralJournal(Report):
         clause = [
             ('date', '>=', data['from_date']),
             ('date', '<=', data['to_date']),
+            ('period.fiscalyear.company', '=', data['company']),
             ]
         if data['posted']:
             clause.append(('state', '=', 'posted'))
