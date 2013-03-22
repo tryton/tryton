@@ -30,6 +30,6 @@ class TimesheetLine:
 
     @classmethod
     def delete(cls, records):
-        if any(r.timesheet_line for r in records):
+        if any(r.invoice_line for r in records):
             cls.raise_user_error('delete_invoiced_line')
         super(TimesheetLine, cls).delete(records)
