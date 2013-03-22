@@ -17,7 +17,7 @@ class TimesheetLine:
     def __setup__(cls):
         super(TimesheetLine, cls).__setup__()
         cls._error_messages.update({
-                'delete_invoiced_line': 'You can not delete invoiced line',
+                'delete_invoiced_line': 'You can not delete invoiced line.',
                 })
 
     @classmethod

@@ -68,9 +68,9 @@ class Work:
                     },
                 })
         cls._error_messages.update({
-                'missing_product': 'There is no product on work "%s"',
-                'missing_list_price': 'There is no list price on work "%s"',
-                'missing_party': 'There is no party on work "%s"',
+                'missing_product': 'There is no product on work "%s".',
+                'missing_list_price': 'There is no list price on work "%s".',
+                'missing_party': 'There is no party on work "%s".',
                 })
 
     @staticmethod
