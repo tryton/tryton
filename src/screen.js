@@ -179,6 +179,16 @@
             // TODO editable
             return position;
         },
+        cancel_current: function() {
+            var prms = [];
+            if (this.current_record) {
+                this.current_record.cancel();
+                if (this.current_record.id < 0) {
+                    prms.push(this.remove());
+                }
+            }
+            return jQuery.when(prms);
+        },
         save_current: function() {
             if (!this.current_record) {
                 if ((this.current_view.view_type == 'tree') &&
@@ -225,6 +235,54 @@
             }
             // TODO test view modified
             return false;
+        },
+        remove: function(delete_, remove, force_remove) {
+            var result = jQuery.Deferred();
+            var records = null;
+            if ((this.current_view.view_type == 'form') &&
+                    this.current_record) {
+                records = [this.current_record];
+            } else if (this.current_view.view_type == 'tree') {
+                records = this.current_view.selected_records();
+            }
+            if (jQuery.isEmptyObject(records)) {
+                return;
+            }
+            var prm = jQuery.when();
+            if (delete_) {
+                // TODO delete children before parent
+                prm = this.model.delete_(records);
+            }
+            prm.done(function() {
+                records.forEach(function(record) {
+                    record.group.remove(record, remove, true, force_remove);
+                });
+                var prms = [];
+                if (delete_) {
+                    records.forEach(function(record) {
+                        if (record.parent) {
+                            prms.push(record.parent.save());
+                        }
+                        if (record in record.group.record_deleted) {
+                            record.group.record_deleted.splice(
+                                record.group.record_deleted.indexOf(record), 1);
+                        }
+                        if (record in record.group.record_removed) {
+                            record.group.record_removed.splice(
+                                record.group.record_removed.indexOf(record), 1);
+                        }
+                        // TODO destroy
+                    });
+                }
+                // TODO set current_record
+                this.current_record = null;
+                // TODO set_cursor
+                jQuery.when(prms).done(function() {
+                    this.display();
+                    result.resolve();
+                }.bind(this));
+            }.bind(this));
+            return result;
         }
     });
 }());

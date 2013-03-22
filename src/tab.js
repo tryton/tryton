@@ -194,6 +194,20 @@
         switch_: function() {
             // TODO modified
             this.screen.switch_view();
+        },
+        reload: function(test_modified) {
+            if (test_modified && this.screen.modified()) {
+                // TODO popup
+            }
+            this.screen.cancel_current().done(function() {
+                if (this.screen.current_view.view_type != 'form') {
+                    this.screen.search_filter();  // TODO set search text
+                    // TODO set current_record
+                }
+                this.screen.display();
+                // TODO message
+                // TODO activate_save
+            }.bind(this));
         }
     });
 }());

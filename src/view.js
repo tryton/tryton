@@ -181,6 +181,15 @@
             this.screen.current_record = record;
             // TODO validate if editable
             // TODO update_children
+        },
+        selected_records: function() {
+            var records = [];
+            this.columns.forEach(function(column) {
+                if (column.is_selected()) {
+                    records.push(column.record);
+                }
+            });
+            return records;
         }
     });
 
@@ -277,11 +286,14 @@
         },
         select_row: function() {
             this.el.toggleClass('ui-state-highlight');
-            if (this.el.hasClass('ui-state-highlight')) {
+            if (this.is_selected()) {
                 this.tree.select_changed(this.record);
             } else {
                 this.tree.select_changed(null);
             }
+        },
+        is_selected: function() {
+            return this.el.hasClass('ui-state-highlight');
         }
     });
 

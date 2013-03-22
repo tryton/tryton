@@ -41,7 +41,7 @@
         },
         delete_: function(records) {
             if (jQuery.isEmptyObject(records)) {
-                return;
+                return jQuery.when();
             }
             var record = records[0];
             var root_group = record.group.root_group;
@@ -150,6 +150,44 @@
             record._changed.id = true;
             this.changed();
             return record;
+        };
+        array.remove = function(record, remove, modified, force_remove) {
+            if (modified === undefined) {
+                modified = true;
+            }
+            var idx = this.indexOf(record);
+            if (record.id >= 0) {
+                if (remove) {
+                    if (record in this.record_deleted) {
+                        this.record_deleted.splice(
+                                this.record_deleted.indexOf(record), 1);
+                    }
+                    this.record_removed.push(record);
+                } else {
+                    if (record in this.record_removed) {
+                        this.record_removed.splice(
+                                this.record_removed.indexOf(record), 1);
+                    }
+                    this.record_deleted.push(record);
+                }
+            }
+            if (record.parent) {
+                record.parent._changed.id = true;
+            }
+            if (modified) {
+                record._changed.id = true;
+            }
+            if (!(record.parent) || (record.id < 0) || force_remove) {
+                this._remove(record);
+            }
+            record.group.changed();
+            record.group.root_group().screens.forEach(function(screen) {
+                screen.display();
+            });
+        };
+        array._remove = function(record) {
+            var idx = this.indexOf(record);
+            this.splice(idx, 1);
         };
         array.changed = function() {
             if (!this.parent) {
@@ -483,6 +521,10 @@
             var result = true;
             // TODO
             return result;
+        },
+        cancel: function() {
+            this._loaded = {};
+            this._changed = {};
         }
     });
 
