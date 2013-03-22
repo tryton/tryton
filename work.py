@@ -56,74 +56,23 @@ class Work:
         works += cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True)]) + works
-        works = set(works)
 
-        costs = {}
-        id2work = {}
-        leafs = set()
-        for work in works:
-            id2work[work.id] = work
-            if not work.children:
-                leafs.add(work.id)
-
-            costs[work.id] = Decimal('0')
-            for ts_line in work.work.timesheet_lines:
-                costs[work.id] += ts_line.compute_cost()
-
-        while leafs:
-            for work_id in leafs:
-                work = id2work[work_id]
-                works.remove(work)
-                if not work.active:
-                    continue
-                if work.parent and work.parent.id in costs:
-                    costs[work.parent.id] += costs[work_id]
-            next_leafs = set(w.id for w in works)
-            for work in works:
-                if not work.parent:
-                    continue
-                if work.parent.id in next_leafs and work.parent in works:
-                    next_leafs.remove(work.parent.id)
-            leafs = next_leafs
-        return costs
+        return cls.sum_tree(works, lambda w: (sum(t.compute_cost()
+                    for t in w.work.timesheet_lines) or Decimal(0)))
 
     @classmethod
     def get_revenue(cls, works, name):
         works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True)]) + works
-        works = set(works)
 
-        revenues = {}
-        id2work = {}
-        leafs = set()
-        for work in works:
-            id2work[work.id] = work
-            if not work.children:
-                leafs.add(work.id)
-
-            if work.type == 'task' and work.list_price:
-                revenues[work.id] = (work.list_price
-                    * Decimal(str(work.total_effort)))
+        def getter(work):
+            if work.list_price:
+                return work.list_price * Decimal(str(work.total_effort))
             else:
-                revenues[work.id] = Decimal('0')
+                return Decimal(0)
 
-        while leafs:
-            for work_id in leafs:
-                work = id2work[work_id]
-                works.remove(work)
-                if not work.active:
-                    continue
-                if work.parent and work.parent.id in revenues:
-                    revenues[work.parent.id] += revenues[work_id]
-            next_leafs = set(w.id for w in works)
-            for work in works:
-                if not work.parent:
-                    continue
-                if work.parent.id in next_leafs and work.parent in works:
-                    next_leafs.remove(work.parent.id)
-            leafs = next_leafs
-        return revenues
+        return cls.sum_tree(works, getter)
 
     def on_change_with_currency_digits(self, name=None):
         if self.company:
