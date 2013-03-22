@@ -80,11 +80,12 @@
             var toolbar = this.create_toolbar();
             el.append(toolbar);
             this.el = el;
-            this.view_prm = this.screen.load_next_view().done(function() {
-                el.append(screen.el);
-            }).done(function() {
-                screen.search_filter().done(function() {
-                    screen.display();
+            this.view_prm = this.screen.load_next_view().then(function() {
+                screen.switch_view().done(function() {
+                    el.append(screen.el);
+                    screen.search_filter().done(function() {
+                        screen.display();
+                    });
                 });
             });
         },

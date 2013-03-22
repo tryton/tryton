@@ -13,9 +13,10 @@
             this.view_to_load = jQuery.extend([],
                 attributes.mode || ['tree', 'form']);
             this.views = [];
+            this.context = attributes.context || {};
+            this.new_group();
             this.current_view = null;
             this.current_record = null;
-            this.context = attributes.context || {};
             if (!attributes.row_activate) {
                 this.row_activate = this.default_row_activate;
             } else {
@@ -66,8 +67,6 @@
             if (this.current_view) {
                 this.current_view.el.detach();
             }
-            this.current_view = view_widget;
-            this.el.append(view_widget.el);
             return view_widget;
         },
         number_of_views: function() {
@@ -75,13 +74,12 @@
         },
         switch_view: function(view_type) {
             // TODO check validity
-            var self = this;
             if ((!view_type) || (!this.current_view) ||
                     (this.current_view.view_type != view_type)) {
-                var switch_current_view = function() {
-                    self.current_view = self.views.slice(-1);
-                    return self.switch_view(view_type);
-                };
+                var switch_current_view = (function() {
+                    this.current_view = this.views.slice(-1);
+                    return this.switch_view(view_type);
+                }.bind(this));
                 for (var i = 0; i < this.number_of_views(); i++) {
                     if (this.view_to_load.length) {
                         return this.load_next_view().pipe(switch_current_view);
@@ -114,16 +112,19 @@
             var grp_prm = this.model.find(domain, this.attributes.offset,
                     this.attributes.limit, this.attributes.order,
                     this.context);
-            var group_setter = function(group) {
-                if (this.group) {
-                    this.group.screens.splice(
-                        this.group.screens.indexOf(this), 1);
-                }
-                group.screens.push(this);
-                this.group = group;
-            };
-            grp_prm.done(group_setter.bind(this));
+            grp_prm.done(this.set_group.bind(this));
             return grp_prm;
+        },
+        set_group: function(group) {
+            if (this.group) {
+                this.group.screens.splice(
+                        this.group.screens.indexOf(this), 1);
+            }
+            group.screens.push(this);
+            this.group = group;
+        },
+        new_group: function() {
+            this.set_group(new Sao.Group(this.model, this.context, []));
         },
         display: function() {
             if (this.views) {
