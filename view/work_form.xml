@@ -20,24 +20,31 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party_address"/>
     <notebook colspan="8">
         <page string="General" id="general" col="6">
-            <group col="2" colspan="6" id="timesheet_available">
-                <label name="timesheet_available"/>
-                <field name="timesheet_available"/>
-            </group>
+            <label name="timesheet_available"/>
+            <field name="timesheet_available"/>
+            <newline/>
+            <label name="effort"/>
+            <field name="effort" widget="float_time" float_time="company_work_time"/>
+            <newline/>
             <label name="hours"/>
             <field name="hours" widget="float_time" float_time="company_work_time"/>
             <label name="total_effort"/>
             <field name="total_effort" widget="float_time" float_time="company_work_time"/>
-            <label name="effort"/>
-            <field name="effort" widget="float_time" float_time="company_work_time"/>
+            <newline/>
             <separator name="comment" colspan="6"/>
             <field name="comment" colspan="6"/>
+            <group col="4" colspan="6" id="state_buttons">
+                <group col="2" colspan="2" id="state">
+                    <label name="state"/>
+                    <field name="state"/>
+                </group>
+                <group col="20" colspan="2" id="buttons">
+                </group>
+            </group>
         </page>
         <page string="Children" id="children"
               states="{'invisible': Not(Equal(Eval('type'), 'project'))}">
               <field name="children" colspan="4"/>
         </page>
     </notebook>
-    <label name="state"/>
-    <field name="state"/>
 </form>
