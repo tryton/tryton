@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='general']/field[@name='timesheet_available']"
+        position="after">
+        <label name="project_invoice_method"/>
+        <field name="project_invoice_method"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']/separator[@name='comment']"
+        position="before">
+        <newline/>
+        <label name="invoiced_hours"/>
+        <field name="invoiced_hours" widget="float_time"
+            float_time="company_work_time"/>
+        <label name="invoiced_amount"/>
+        <field name="invoiced_amount"/>
+        <label name="hours_to_invoice"/>
+        <field name="hours_to_invoice" widget="float_time"
+            float_time="company_work_time"/>
+    </xpath>
+    <xpath expr="/form/notebook/page[@id='general']/group/group[@id='buttons']"
+        position="inside">
+        <button string="Invoice" name="invoice"/>
+    </xpath>
+</data>
