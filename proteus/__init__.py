@@ -596,6 +596,9 @@ class Model(object):
     @classmethod
     def get(cls, name, config=None):
         'Get a class for the named Model'
+        if isinstance(name, unicode):
+            name = name.encode('utf-8')
+
         class Spam(Model):
             __metaclass__ = MetaModelFactory(name, config=config)()
         return Spam
