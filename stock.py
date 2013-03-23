@@ -67,9 +67,9 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             },
         domain=[('party', '=', Eval('customer'))],
         depends=['state', 'customer'])
-    moves = fields.One2Many('stock.move', 'shipment_drop', 'Moves',
+    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         add_remove=[
-            ('shipment_drop', '=', False),
+            ('shipment', '=', None),
             ('state', '=', 'draft'),
             ('supplier', '=', Eval('supplier')),
             ('customer_drop', '=', Eval('customer')),
@@ -229,12 +229,14 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
-        Move = Pool().get('stock.move')
+        pool = Pool()
+        Move = pool.get('stock.move')
+        PurchaseLine = pool.get('purchase.line')
+        SaleLine = pool.get('sale.line')
         for shipment in shipments:
             for move in shipment.moves:
                 if (move.state == 'cancel'
-                        and (move.purchase_line
-                            or move.sale_line)):
+                        and isinstance(move.origin, (PurchaseLine, SaleLine))):
                     cls.raise_user_error('reset_move', (move.rec_name,))
         Move.draft([m for s in shipments for m in s.moves])
 
@@ -260,17 +262,23 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 class Move:
     __name__ = 'stock.move'
 
-    shipment_drop = fields.Many2One('stock.shipment.drop', 'Drop Shipment',
-        readonly=True, select=1, ondelete='CASCADE',
-        domain=[('company', '=', Eval('company'))], depends=['company'])
     customer_drop = fields.Function(fields.Many2One('party.party',
             'Drop Customer'), 'get_customer_drop',
         searcher='search_customer_drop')
 
+    @classmethod
+    def _get_shipment(cls):
+        models = super(Move, cls)._get_shipment()
+        models.append('stock.shipment.drop')
+        return models
+
     def get_customer_drop(self, name):
-        if self.purchase_line and self.purchase_line.purchase.customer:
-            return self.purchase_line.purchase.customer.id
+        PurchaseLine = Pool().get('purchase.line')
+        if (isinstance(self.origin, PurchaseLine)
+                and self.origin.purchase.customer):
+            return self.origin.purchase.customer.id
 
     @classmethod
     def search_customer_drop(cls, name, clause):
-        return [('purchase_line.purchase.customer',) + tuple(clause[1:])]
+        return [('origin.purchase.customer',) + tuple(clause[1:])
+            + ('purchase.line',)]

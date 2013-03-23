@@ -22,8 +22,9 @@ class Sale:
         'get_drop_shipments')
 
     def get_drop_shipments(self, name):
-        return list(set(m.shipment_drop.id for l in self.lines for m in l.moves
-                if m.shipment_drop))
+        DropShipment = Pool().get('stock.shipment.drop')
+        return list(set(m.shipment.id for l in self.lines for m in l.moves
+                if isinstance(m.shipment, DropShipment)))
 
     def create_shipment(self, shipment_type):
         shipments = super(Sale, self).create_shipment(shipment_type)
@@ -147,7 +148,38 @@ class SaleLine:
                 if line.purchase_request.purchase_line:
                     moves = [m
                         for m in line.purchase_request.purchase_line.moves
-                        if m.state == 'draft' and not m.shipment_drop]
-        for move in moves:
-            move.sale_line = self
+                        if m.state == 'draft' and not m.shipment]
         return moves
+
+    @classmethod
+    def read(cls, ids, fields_names=None):
+        # Add moves from purchase_request as they can have only one origin
+        PurchaseRequest = Pool().get('purchase.request')
+        added = False
+        if 'moves' in fields_names or []:
+            if 'purchase_request' not in fields_names:
+                fields_names = fields_names[:]
+                fields_names.append('purchase_request')
+                added = True
+        values = super(SaleLine, cls).read(ids, fields_names=fields_names)
+        if 'moves' in fields_names or []:
+            with Transaction().set_user(0, set_context=True):
+                purchase_requests = PurchaseRequest.browse(
+                    list(set(v['purchase_request']
+                            for v in values if v['purchase_request'])))
+                id2purchase_requests = dict((p.id, p)
+                    for p in purchase_requests)
+            for value in values:
+                if value['purchase_request']:
+                    purchase_request = id2purchase_requests[
+                        value['purchase_request']]
+                    if purchase_request.purchase_line:
+                        move_ids = tuple(m.id
+                            for m in purchase_request.purchase_line.moves)
+                        if value['moves'] is None:
+                            value['moves'] = move_ids
+                        else:
+                            value['moves'] += move_ids
+                if added:
+                    del value['purchase_request']
+        return values
