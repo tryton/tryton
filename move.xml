@@ -52,7 +52,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_move_form_domain_from_supplier_waiting">
             <field name="name">From Suppliers Waiting</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment_in', '=', None)]</field>
+            <field name="domain">[('from_location.type', '=', 'supplier'), ('state', '=', 'draft'), ('shipment', '=', None)]</field>
             <field name="act_window" ref="act_move_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_move_form_domain_to_customer">

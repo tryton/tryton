@@ -50,30 +50,17 @@ class Move(Workflow, ModelSQL, ModelView):
     to_location = fields.Many2One("stock.location", "To Location", select=True,
         required=True, states=STATES, depends=DEPENDS,
         domain=[('type', 'not in', ('warehouse', 'view'))])
-    shipment_in = fields.Many2One('stock.shipment.in', 'Supplier Shipment',
-        domain=[('company', '=', Eval('company'))], depends=['company'],
-        readonly=True, select=True, ondelete='CASCADE')
-    shipment_out = fields.Many2One('stock.shipment.out', 'Customer Shipment',
-        domain=[('company', '=', Eval('company'))], depends=['company'],
-        readonly=True, select=True, ondelete='CASCADE')
-    shipment_out_return = fields.Many2One('stock.shipment.out.return',
-        'Customer Return Shipment', readonly=True, select=True,
-        domain=[('company', '=', Eval('company'))], depends=['company'],
-        ondelete='CASCADE')
-    shipment_in_return = fields.Many2One('stock.shipment.in.return',
-        'Supplier Return Shipment', readonly=True, select=True,
-        domain=[('company', '=', Eval('company'))], depends=['company'],
-        ondelete='CASCADE')
-    shipment_internal = fields.Many2One('stock.shipment.internal',
-        'Internal Shipment', readonly=True, select=True, ondelete='CASCADE',
-        domain=[('company', '=', Eval('company'))], depends=['company'])
+    shipment = fields.Reference('Shipment', selection='get_shipment',
+        readonly=True, select=True)
+    origin = fields.Reference('Origin', selection='get_origin', select=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
     planned_date = fields.Date("Planned Date", states={
             'readonly': (In(Eval('state'), ['cancel', 'assigned', 'done'])
-                | Eval('shipment_in') | Eval('shipment_out')
-                | Eval('shipment_in_return') | Eval('shipment_out_return')
-                | Eval('shipment_internal'))
-            }, depends=['state', 'shipment_in', 'shipment_out',
-            'shipment_in_return', 'shipment_out_return', 'shipment_internal'],
+                | Eval('shipment'))
+            }, depends=['state', 'shipment'],
         select=True)
     effective_date = fields.Date("Effective Date", readonly=True, select=True)
     state = fields.Selection([
@@ -122,18 +109,6 @@ class Move(Workflow, ModelSQL, ModelView):
             ('check_from_to_locations',
                 'CHECK(from_location != to_location)',
                 'Source and destination location must be different'),
-            ('check_shipment',
-                ('CHECK((COALESCE(shipment_in, 0) / COALESCE(shipment_in, 1) '
-                    '+ COALESCE(shipment_out, 0) / '
-                        'COALESCE(shipment_out, 1) '
-                    '+ COALESCE(shipment_internal, 0) / '
-                        'COALESCE(shipment_internal, 1) '
-                    '+ COALESCE(shipment_in_return, 0) / '
-                        'COALESCE(shipment_in_return, 1) '
-                    '+ COALESCE(shipment_out_return, 0) / '
-                        'COALESCE(shipment_out_return, 1)) '
-                    '<= 1)'),
-                'Move can be on only one Shipment'),
             ]
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
@@ -212,6 +187,22 @@ class Move(Workflow, ModelSQL, ModelView):
         # Migration from 1.0 check_packing_in_out has been removed
         table = TableHandler(cursor, cls, module_name)
         table.drop_constraint('check_packing_in_out')
+
+        # Migration from 2.6: merge all shipments
+        table.drop_constraint('check_shipment')
+        shipments = {
+            'shipment_in': 'stock.shipment.in',
+            'shipment_out': 'stock.shipment.out',
+            'shipment_out_return': 'stock.shipment.out.return',
+            'shipment_in_return': 'stock.shipment.in.return',
+            'shipment_internal': 'stock.shipment.internal',
+            }
+        for column, model in shipments.iteritems():
+            if table.column_exist(column):
+                cursor.execute('UPDATE "' + cls._table + '" '
+                    'SET shipment = \'' + model + ',\' || "' + column + '" '
+                    'WHERE "' + column + '" IS NOT NULL')
+                table.drop_column(column)
 
         # Add index on create_date
         table.index_action('create_date', action='add')
@@ -305,6 +296,40 @@ class Move(Workflow, ModelSQL, ModelView):
                 and self.to_location.type == 'customer'):
             return True
         return False
+
+    @staticmethod
+    def _get_shipment():
+        'Return list of Model names for shipment Reference'
+        return [
+            'stock.shipment.in',
+            'stock.shipment.out',
+            'stock.shipment.out.return',
+            'stock.shipment.in.return',
+            'stock.shipment.internal',
+            ]
+
+    @classmethod
+    def get_shipment(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_shipment()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
+
+    @staticmethod
+    def _get_origin():
+        'Return list of Model names for origin Reference'
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
     def validate(cls, moves):

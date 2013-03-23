@@ -80,7 +80,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     incoming_moves = fields.Function(fields.One2Many('stock.move', None,
             'Incoming Moves',
             add_remove=[
-                ('shipment_in', '=', None),
+                ('shipment', '=', None),
                 ('from_location', '=', Eval('supplier_location')),
                 ('state', '=', 'draft'),
                 ('to_location', '=', Eval('warehouse_input')),
@@ -111,7 +111,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             depends=['state', 'warehouse', 'warehouse_input',
                 'warehouse_storage', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
-    moves = fields.One2Many('stock.move', 'shipment_in', 'Moves',
+    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True,
         depends=['company'])
     code = fields.Char("Code", size=None, select=True, readonly=True)
@@ -196,10 +196,11 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 and TableHandler.table_exist(cursor, Move._table)):
             cursor.execute('SELECT shipment.id, MAX(move.company) '
                 'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move ON shipment.id = move.shipment_in '
+                'INNER JOIN "%s" AS move '
+                'ON \'%s,\' || shipment.id = move.shipment '
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table))
+                % (cls._table, Move._table, cls.__name__))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
@@ -357,7 +358,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         move.uom = incoming_move.uom
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
-        move.to_location = incoming_move.shipment_in.warehouse.storage_location
+        move.to_location = incoming_move.shipment.warehouse.storage_location
         move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -381,11 +382,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, shipments):
+        Move = Pool().get('stock.move')
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
                 cls.raise_user_error('delete_cancel', shipment.rec_name)
+        Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentIn, cls).delete(shipments)
 
     @classmethod
@@ -461,7 +464,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 Bool(Eval('moves'))),
             }, domain=[('type', '=', 'supplier')],
         depends=['state', 'moves'])
-    moves = fields.One2Many('stock.move', 'shipment_in_return', 'Moves',
+    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
                     Not(Bool(Eval('from_location')))),
@@ -552,10 +555,10 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             cursor.execute('SELECT shipment.id, MAX(move.company) '
                 'FROM "%s" AS shipment '
                 'INNER JOIN "%s" AS move '
-                'ON shipment.id = move.shipment_in_return '
+                'ON \'%s,\' || shipment.id = move.shipment '
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table))
+                % (cls._table, Move._table, cls.__name__))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
@@ -621,11 +624,13 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, shipments):
+        Move = Pool().get('stock.move')
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
                 cls.raise_user_error('delete_cancel', shipment.rec_name)
+        Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentInReturn, cls).delete(shipments)
 
     @classmethod
@@ -795,7 +800,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             depends=['state', 'warehouse', 'warehouse_storage',
                 'warehouse_output', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
-    moves = fields.One2Many('stock.move', 'shipment_out', 'Moves',
+    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
     code = fields.Char("Code", size=None, select=True, readonly=True)
@@ -889,10 +894,11 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 and TableHandler.table_exist(cursor, Move._table)):
             cursor.execute('SELECT shipment.id, MAX(move.company) '
                 'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move ON shipment.id = move.shipment_out '
+                'INNER JOIN "%s" AS move '
+                'ON \'%s,\' || shipment.id = move.shipment '
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table))
+                % (cls._table, Move._table, cls.__name__))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
@@ -1015,12 +1021,12 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     continue
                 to_create.append({
                         'from_location': (
-                            move.shipment_out.warehouse.storage_location.id),
+                            move.shipment.warehouse.storage_location.id),
                         'to_location': move.from_location.id,
                         'product': move.product.id,
                         'uom': move.uom.id,
                         'quantity': move.quantity,
-                        'shipment_out': shipment.id,
+                        'shipment': str(shipment),
                         'planned_date': move.planned_date,
                         'state': 'draft',
                         'company': move.company.id,
@@ -1085,7 +1091,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                         'product': move.product.id,
                         'uom': move.uom.id,
                         'quantity': out_quantity,
-                        'shipment_out': shipment.id,
+                        'shipment': str(shipment),
                         'state': 'draft',
                         'planned_date': shipment.planned_date,
                         'company': move.company.id,
@@ -1189,11 +1195,13 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, shipments):
+        Move = Pool().get('stock.move')
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
                 cls.raise_user_error('delete_cancel', shipment.rec_name)
+        Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentOut, cls).delete(shipments)
 
     @staticmethod
@@ -1310,7 +1318,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             depends=['state', 'warehouse', 'warehouse_input',
                 'warehouse_storage', 'company']),
         'get_inventory_moves', setter='set_inventory_moves')
-    moves = fields.One2Many('stock.move', 'shipment_out_return', 'Moves',
+    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
     code = fields.Char("Code", size=None, select=True, readonly=True)
@@ -1379,10 +1387,10 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             cursor.execute('SELECT shipment.id, MAX(move.company) '
                 'FROM "%s" AS shipment '
                 'INNER JOIN "%s" AS move '
-                'ON shipment.id = move.shipment_out_return '
+                'ON \'%s,\' || shipment.id = move.shipment '
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table))
+                % (cls._table, Move._table, cls.__name__))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
@@ -1532,11 +1540,13 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, shipments):
+        Move = Pool().get('stock.move')
         # Cance before delete
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
                 cls.raise_user_error('delete_cancel', shipment.rec_name)
+        Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentOutReturn, cls).delete(shipments)
 
     @classmethod
@@ -1587,8 +1597,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         move.uom = incoming_move.uom
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
-        move.to_location = incoming_move.shipment_out_return.warehouse.\
-            storage_location
+        move.to_location = incoming_move.shipment.warehouse.storage_location
         move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -1699,7 +1708,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             ('type', 'not in',
                 ['supplier', 'customer', 'warehouse', 'view']),
             ], depends=['state', 'moves'])
-    moves = fields.One2Many('stock.move', 'shipment_internal', 'Moves',
+    moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': ((Eval('state') != 'draft')
                 | ~Eval('from_location') | ~Eval('to_location')),
@@ -1796,10 +1805,10 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             cursor.execute('SELECT shipment.id, MAX(move.company) '
                 'FROM "%s" AS shipment '
                 'INNER JOIN "%s" AS move '
-                'ON shipment.id = move.shipment_internal '
+                'ON \'%s,\' || shipment.id = move.shipment '
                 'GROUP BY shipment.id '
                 'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table))
+                % (cls._table, Move._table, cls.__name__))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
@@ -1838,11 +1847,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, shipments):
+        Move = Pool().get('stock.move')
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
                 cls.raise_user_error('delete_cancel', shipment.rec_name)
+        Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentInternal, cls).delete(shipments)
 
     @classmethod
