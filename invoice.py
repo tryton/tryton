@@ -47,7 +47,10 @@ class InvoiceLine:
         return result
 
     def get_move_line(self):
-        Move = Pool().get('stock.move')
+        pool = Pool()
+        Move = pool.get('stock.move')
+        PurchaseLine = pool.get('purchase.line')
+        SaleLine = pool.get('sale.line')
 
         result = super(InvoiceLine, self).get_move_line()
 
@@ -60,14 +63,9 @@ class InvoiceLine:
 
         moves = []
         # other types will get current cost price
-        if self.invoice.type == 'in_invoice':
-            moves = [move for purchase_line in self.purchase_lines
-                    for move in purchase_line.moves
-                    if move.state == 'done']
-        elif self.invoice.type == 'out_invoice':
-            moves = [move for sale_line in self.sale_lines
-                    for move in sale_line.moves
-                    if move.state == 'done']
+        if isinstance(self.origin, (PurchaseLine, SaleLine)):
+            moves = [move for move in self.origin.moves
+                if move.state == 'done']
         if self.invoice.type == 'in_invoice':
             type_ = 'in_supplier'
         elif self.invoice.type == 'out_invoice':
