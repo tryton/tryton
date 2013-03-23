@@ -10,13 +10,13 @@ from .stock import *
 
 def register():
     Pool.register(
+        Move,
         Purchase,
         PurchaseInvoice,
         PurchaseIgnoredInvoice,
         PurchaseRecreadtedInvoice,
         PurchaseLine,
         PurchaseLineTax,
-        PurchaseLineInvoiceLine,
         PurchaseLineIgnoredMove,
         PurchaseLineRecreatedMove,
         Template,
@@ -25,7 +25,6 @@ def register():
         ProductSupplierPrice,
         ShipmentIn,
         ShipmentInReturn,
-        Move,
         HandleShipmentExceptionAsk,
         HandleInvoiceExceptionAsk,
         Configuration,

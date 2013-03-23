@@ -3,6 +3,7 @@
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 __all__ = ['Invoice', 'InvoiceLine']
 __metaclass__ = PoolMeta
@@ -103,13 +104,28 @@ class Invoice:
 
 class InvoiceLine:
     __name__ = 'account.invoice.line'
-    purchase_lines = fields.Many2Many('purchase.line-account.invoice.line',
-            'invoice_line', 'purchase_line', 'Purchase Lines', readonly=True)
 
     @classmethod
-    def copy(cls, lines, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        default.setdefault('purchase_lines', None)
-        return super(InvoiceLine, cls).copy(lines, default=default)
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
+
+        super(InvoiceLine, cls).__register__(module_name)
+
+        # Migration from 2.6: remove purchase_lines
+        rel_table = 'purchase_line_invoice_lines_rel'
+        if TableHandler.table_exist(cursor, rel_table):
+            cursor.execute('SELECT purchase_line, invoice_line '
+                'FROM "' + rel_table + '"')
+            for purchase_line, invoice_line in cursor.fetchall():
+                cursor.execute('UPDATE "' + cls._table + '" '
+                    'SET origin = %s '
+                    'WHERE id = %s',
+                    ('purchase.line,%s' % purchase_line, invoice_line))
+            TableHandler.drop_table(cursor,
+                'purchase.line-account.invoice.line', rel_table)
+
+    @classmethod
+    def _get_origin(cls):
+        models = super(InvoiceLine, cls)._get_origin()
+        models.append('purchase.line')
+        return models

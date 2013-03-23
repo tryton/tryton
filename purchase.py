@@ -14,7 +14,7 @@ from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Purchase', 'PurchaseInvoice', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
-    'PurchaseLineInvoiceLine', 'PurchaseLineIgnoredMove',
+    'PurchaseLineIgnoredMove',
     'PurchaseLineRecreatedMove', 'PurchaseReport', 'Template', 'Product',
     'ProductSupplier', 'ProductSupplierPrice', 'ShipmentIn',
     'ShipmentInReturn', 'Move', 'OpenSupplier', 'HandleShipmentExceptionAsk',
@@ -457,21 +457,20 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     'invoice_state': state,
                     })
 
-    def get_shipments_returns(attribute):
+    def get_shipments_returns(model_name):
         "Computes the returns or shipments"
         def method(self, name):
-            shipments = []
+            Model = Pool().get(model_name)
+            shipments = set()
             for line in self.lines:
                 for move in line.moves:
-                    ship_or_return = getattr(move, attribute)
-                    if bool(ship_or_return):
-                        if ship_or_return.id not in shipments:
-                            shipments.append(ship_or_return.id)
-            return shipments
+                    if isinstance(move.shipment, Model):
+                        shipments.add(move.shipment.id)
+            return list(shipments)
         return method
 
-    get_shipments = get_shipments_returns('shipment_in')
-    get_shipment_returns = get_shipments_returns('shipment_in_return')
+    get_shipments = get_shipments_returns('stock.shipment.in')
+    get_shipment_returns = get_shipments_returns('stock.shipment.in.return')
 
     def get_moves(self, name):
         return [m.id for l in self.lines for m in l.moves]
@@ -873,10 +872,9 @@ class PurchaseLine(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             }, depends=['type'])
-    invoice_lines = fields.Many2Many('purchase.line-account.invoice.line',
-            'purchase_line', 'invoice_line', 'Invoice Lines', readonly=True)
-    moves = fields.One2Many('stock.move', 'purchase_line', 'Moves',
-            readonly=True)
+    invoice_lines = fields.One2Many('account.invoice.line', 'origin',
+        'Invoice Lines', readonly=True)
+    moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     moves_ignored = fields.Many2Many('purchase.line-ignored-stock.move',
             'purchase_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('purchase.line-recreated-stock.move',
@@ -1172,7 +1170,7 @@ class PurchaseLine(ModelSQL, ModelView):
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense_property',
                     (line.purchase.rec_name,))
-        invoice_line.purchase_lines = [self]
+        invoice_line.origin = self
         return [invoice_line]
 
     @classmethod
@@ -1225,7 +1223,7 @@ class PurchaseLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.purchase.currency
         move.planned_date = self.delivery_date
-        move.purchase_line = self
+        move.origin = self
         return move
 
     def create_move(self):
@@ -1248,16 +1246,6 @@ class PurchaseLineTax(ModelSQL):
             domain=[('type', '=', 'line')])
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             select=True, required=True, domain=[('parent', '=', None)])
-
-
-class PurchaseLineInvoiceLine(ModelSQL):
-    'Purchase Line - Invoice Line'
-    __name__ = 'purchase.line-account.invoice.line'
-    _table = 'purchase_line_invoice_lines_rel'
-    purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-            ondelete='CASCADE', select=True, required=True)
-    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=True, required=True)
 
 
 class PurchaseLineIgnoredMove(ModelSQL):
@@ -1598,9 +1586,11 @@ class ShipmentIn:
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
+        PurchaseLine = Pool().get('purchase.line')
         for shipment in shipments:
             for move in shipment.incoming_moves:
-                if move.state == 'cancel' and move.purchase_line:
+                if (move.state == 'cancel'
+                        and isinstance(move.origin, PurchaseLine)):
                     cls.raise_user_error('reset_move', (move.rec_name,))
 
         return super(ShipmentIn, cls).draft(shipments)
@@ -1646,9 +1636,11 @@ class ShipmentInReturn:
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
+        PurchaseLine = Pool().get('purchase.line')
         for shipment in shipments:
             for move in shipment.moves:
-                if move.state == 'cancel' and move.purchase_line:
+                if (move.state == 'cancel'
+                        and isinstance(move.origin, PurchaseLine)):
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentInReturn, cls).draft(shipments)
@@ -1656,15 +1648,11 @@ class ShipmentInReturn:
 
 class Move(ModelSQL, ModelView):
     __name__ = 'stock.move'
-    purchase_line = fields.Many2One('purchase.line', 'Purchase Line',
-        select=True, states={
-            'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
     purchase = fields.Function(fields.Many2One('purchase.purchase', 'Purchase',
-            select=True, states={
+            states={
                 'invisible': ~Eval('purchase_visible', False),
-                }, depends=['purchase_visible']), 'get_purchase',
+                },
+            depends=['purchase_visible']), 'get_purchase',
         searcher='search_purchase')
     purchase_quantity = fields.Function(fields.Float('Purchase Quantity',
             digits=(16, Eval('unit_digits', 2)),
@@ -1689,38 +1677,62 @@ class Move(ModelSQL, ModelView):
                 }, depends=['purchase_visible']), 'get_purchase_fields')
     purchase_visible = fields.Function(fields.Boolean('Purchase Visible',
         on_change_with=['from_location']), 'on_change_with_purchase_visible')
-    supplier = fields.Function(fields.Many2One('party.party', 'Supplier',
-        select=True), 'get_supplier', searcher='search_supplier')
+    supplier = fields.Function(fields.Many2One('party.party', 'Supplier'),
+        'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),
         ('ignored', 'Ignored'),
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_purchase_exception_state')
 
-    def get_purchase(self, name):
-        if self.purchase_line:
-            return self.purchase_line.purchase.id
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
 
-    def get_purchase_exception_state(self, name):
-        if not self.purchase_line:
-            return ''
-        if self in self.purchase_line.moves_recreated:
-            return 'recreated'
-        if self in self.purchase_line.moves_ignored:
-            return 'ignored'
+        super(Move, cls).__register__(module_name)
+
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.6: remove purchase_line
+        if table.column_exist('purchase_line'):
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET origin = \'purchase.line,\' || purchase_line '
+                'WHERE purchase_line IS NOT NULL')
+            table.drop_column('purchase_line')
+
+    @classmethod
+    def _get_origin(cls):
+        models = super(Move, cls)._get_origin()
+        models.append('purchase.line')
+        return models
+
+    def get_purchase(self, name):
+        PurchaseLine = Pool().get('purchase.line')
+        if isinstance(self.origin, PurchaseLine):
+            return self.origin.purchase.id
 
     @classmethod
     def search_purchase(cls, name, clause):
-        return [('purchase_line.' + name,) + tuple(clause[1:])]
+        return [('origin.' + name,) + tuple(clause[1:]) + ('purchase.line',)]
+
+    def get_purchase_exception_state(self, name):
+        PurchaseLine = Pool().get('purchase.line')
+        if not isinstance(self.origin, PurchaseLine):
+            return ''
+        if self in self.origin.moves_recreated:
+            return 'recreated'
+        if self in self.origin.moves_ignored:
+            return 'ignored'
 
     def get_purchase_fields(self, name):
-        if self.purchase_line:
+        PurchaseLine = Pool().get('purchase.line')
+        if isinstance(self.origin, PurchaseLine):
             if name[9:] == 'currency':
-                return self.purchase_line.purchase.currency.id
+                return self.origin.purchase.currency.id
             elif name[9:] in ('quantity', 'unit_digits', 'unit_price'):
-                return getattr(self.purchase_line, name[9:])
+                return getattr(self.origin, name[9:])
             else:
-                return getattr(self.purchase_line, name[9:]).id
+                return getattr(self.origin, name[9:]).id
         else:
             if name[9:] == 'quantity':
                 return 0.0
@@ -1734,12 +1746,14 @@ class Move(ModelSQL, ModelView):
         return False
 
     def get_supplier(self, name):
-        if self.purchase_line:
-            return self.purchase_line.purchase.party.id
+        PurchaseLine = Pool().get('purchase.line')
+        if isinstance(self.origin, PurchaseLine):
+            return self.origin.purchase.party.id
 
     @classmethod
     def search_supplier(cls, name, clause):
-        return [('purchase_line.purchase.party',) + tuple(clause[1:])]
+        return [('origin.purchase.party',) + tuple(clause[1:]) +
+            ('purchase.line',)]
 
     @classmethod
     def write(cls, moves, vals):
