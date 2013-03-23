@@ -131,7 +131,7 @@ class SaleLine:
             return
         moves = set()
         for move in self.moves:
-            for inv_move in move.shipment_out.inventory_moves:
+            for inv_move in move.shipment.inventory_moves:
                 if inv_move.product.id == self.product.id:
                     moves.add(inv_move)
         for move in moves:
