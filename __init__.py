@@ -9,20 +9,19 @@ from .invoice import *
 
 def register():
     Pool.register(
+        Move,
         Sale,
         SaleInvoice,
         SaleIgnoredInvoice,
         SaleRecreatedInvoice,
         SaleLine,
         SaleLineTax,
-        SaleLineInvoiceLine,
         SaleLineIgnoredMove,
         SaleLineRecreatedMove,
         Template,
         Product,
         ShipmentOut,
         ShipmentOutReturn,
-        Move,
         HandleShipmentExceptionAsk,
         HandleInvoiceExceptionAsk,
         Configuration,

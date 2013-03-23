@@ -14,7 +14,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Sale', 'SaleInvoice', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
-    'SaleLine', 'SaleLineTax', 'SaleLineInvoiceLine', 'SaleLineIgnoredMove',
+    'SaleLine', 'SaleLineTax', 'SaleLineIgnoredMove',
     'SaleLineRecreatedMove', 'SaleReport', 'Template', 'Product',
     'ShipmentOut', 'ShipmentOutReturn', 'Move', 'OpenCustomer',
     'HandleShipmentExceptionAsk', 'HandleShipmentException',
@@ -227,7 +227,7 @@ class Sale(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        SaleLine_InvoiceLine = pool.get('sale.line-account.invoice.line')
+        sale_line_invoice_line_table = 'sale_line_invoice_lines_rel'
         Move = pool.get('stock.move')
         cursor = Transaction().cursor
         # Migration from 1.2: packing renamed into shipment
@@ -260,7 +260,7 @@ class Sale(Workflow, ModelSQL, ModelView):
         # state confirmed splitted into confirmed and processing
         if (TableHandler.table_exist(cursor, SaleLine._table)
                 and TableHandler.table_exist(cursor,
-                    SaleLine_InvoiceLine._table)
+                    sale_line_invoice_line_table)
                 and TableHandler.table_exist(cursor, Move._table)):
             # Wrap subquery inside an other inner subquery because MySQL syntax
             # doesn't allow update a table and select from the same table in a
@@ -274,12 +274,13 @@ class Sale(Workflow, ModelSQL, ModelView):
                         'FROM "%s" AS s '
                         'INNER JOIN "%s" AS l ON l.sale = s.id '
                         'LEFT JOIN "%s" AS li ON li.sale_line = l.id '
-                        'LEFT JOIN "%s" AS m ON m.sale_line = l.id '
+                        'LEFT JOIN "%s" AS m ON m.origin = \'%s,\' || l.id '
                         "WHERE s.state = 'confirmed' "
                             'AND (li.id IS NOT NULL '
                                 'OR m.id IS NOT NULL)) AS foo)'
                 % (cls._table, cls._table, SaleLine._table,
-                    SaleLine_InvoiceLine._table, Move._table))
+                    sale_line_invoice_line_table, Move._table,
+                    SaleLine.__name__))
 
         # Add index on create_date
         table = TableHandler(cursor, cls, module_name)
@@ -493,21 +494,20 @@ class Sale(Workflow, ModelSQL, ModelView):
                     'invoice_state': state,
                     })
 
-    def get_shipments_returns(attribute):
+    def get_shipments_returns(model_name):
         "Computes the returns or shipments"
         def method(self, name):
-            shipments = []
+            Model = Pool().get(model_name)
+            shipments = set()
             for line in self.lines:
                 for move in line.moves:
-                    ship_or_return = getattr(move, attribute)
-                    if bool(ship_or_return):
-                        if ship_or_return.id not in shipments:
-                            shipments.append(ship_or_return.id)
-            return shipments
+                    if isinstance(move.shipment, Model):
+                        shipments.add(move.shipment.id)
+            return list(shipments)
         return method
 
-    get_shipments = get_shipments_returns('shipment_out')
-    get_shipment_returns = get_shipments_returns('shipment_out_return')
+    get_shipments = get_shipments_returns('stock.shipment.out')
+    get_shipment_returns = get_shipments_returns('stock.shipment.out.return')
 
     def get_moves(self, name):
         return [m.id for l in self.lines for m in l.moves]
@@ -954,10 +954,9 @@ class SaleLine(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             }, depends=['type'])
-    invoice_lines = fields.Many2Many('sale.line-account.invoice.line',
-            'sale_line', 'invoice_line', 'Invoice Lines', readonly=True)
-    moves = fields.One2Many('stock.move', 'sale_line', 'Moves',
-            readonly=True)
+    invoice_lines = fields.One2Many('account.invoice.line', 'origin',
+        'Invoice Lines', readonly=True)
+    moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     moves_ignored = fields.Many2Many('sale.line-ignored-stock.move',
             'sale_line', 'move', 'Ignored Moves', readonly=True)
     moves_recreated = fields.Many2Many('sale.line-recreated-stock.move',
@@ -1263,7 +1262,7 @@ class SaleLine(ModelSQL, ModelView):
             if not invoice_line.account:
                 self.raise_user_error('missing_account_revenue_property',
                     (self.sale.rec_name,))
-        invoice_line.sale_lines = [self]
+        invoice_line.origin = self
         return [invoice_line]
 
     @classmethod
@@ -1327,7 +1326,7 @@ class SaleLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
         move.planned_date = self.delivery_date
-        move.sale_line = self
+        move.origin = self
         return move
 
 
@@ -1339,16 +1338,6 @@ class SaleLineTax(ModelSQL):
             select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             select=True, required=True)
-
-
-class SaleLineInvoiceLine(ModelSQL):
-    'Sale Line - Invoice Line'
-    __name__ = 'sale.line-account.invoice.line'
-    _table = 'sale_line_invoice_lines_rel'
-    sale_line = fields.Many2One('sale.line', 'Sale Line', ondelete='CASCADE',
-            select=True, required=True)
-    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-            ondelete='RESTRICT', select=True, required=True)
 
 
 class SaleLineIgnoredMove(ModelSQL):
@@ -1523,9 +1512,11 @@ class ShipmentOut:
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
+        SaleLine = Pool().get('sale.line')
         for shipment in shipments:
             for move in shipment.outgoing_moves:
-                if move.state == 'cancel' and move.sale_line:
+                if (move.state == 'cancel'
+                        and isinstance(move.origin, SaleLine)):
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentOut, cls).draft(shipments)
@@ -1572,9 +1563,11 @@ class ShipmentOutReturn:
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
+        SaleLine = Pool().get('sale.line')
         for shipment in shipments:
             for move in shipment.incoming_moves:
-                if move.state == 'cancel' and move.sale_line:
+                if (move.state == 'cancel'
+                        and isinstance(move.origin, SaleLine)):
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentOutReturn, cls).draft(shipments)
@@ -1582,33 +1575,51 @@ class ShipmentOutReturn:
 
 class Move:
     __name__ = 'stock.move'
-    sale_line = fields.Many2One('sale.line', 'Sale Line', select=True,
-        states={
-            'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
     sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=True),
-            'get_sale', searcher='search_sale')
+        'get_sale', searcher='search_sale')
     sale_exception_state = fields.Function(fields.Selection([
         ('', ''),
         ('ignored', 'Ignored'),
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_sale_exception_state')
 
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
+
+        super(Move, cls).__register__(module_name)
+
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.6: remove sale_line
+        if table.column_exist('sale_line'):
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET origin = \'sale.line,\' || sale_line '
+                'WHERE sale_line IS NOT NULL')
+            table.drop_column('sale_line')
+
+    @classmethod
+    def _get_origin(cls):
+        models = super(Move, cls)._get_origin()
+        models.append('sale.line')
+        return models
+
     def get_sale(self, name):
-        if self.sale_line:
-            return self.sale_line.sale.id
+        SaleLine = Pool().get('sale.line')
+        if isinstance(self.origin, SaleLine):
+            return self.origin.sale.id
 
     @classmethod
     def search_sale(cls, name, clause):
-        return [('sale_line.' + name,) + clause[1:]]
+        return [('origin.' + name,) + tuple(clause[1:]) + ('sale.line',)]
 
     def get_sale_exception_state(self, name):
-        if not self.sale_line:
+        SaleLine = Pool().get('sale.line')
+        if not isinstance(self.origin, SaleLine):
             return ''
-        if self in self.sale_line.moves_recreated:
+        if self in self.origin.moves_recreated:
             return 'recreated'
-        if self in self.sale_line.moves_ignored:
+        if self in self.origin.moves_ignored:
             return 'ignored'
         return ''
 
