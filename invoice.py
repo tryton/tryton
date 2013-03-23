@@ -994,6 +994,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
         default['lines_to_pay'] = None
+        default.setdefault('origin', None)
 
         new_invoices = []
         for invoice in invoices:
@@ -1516,6 +1517,11 @@ class InvoiceLine(ModelSQL, ModelView):
         depends=['type', 'invoice_type'])
     invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
         None, 'Invoice Taxes'), 'get_invoice_taxes')
+    origin = fields.Reference('Origin', selection='get_origin', select=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
 
     @classmethod
     def __setup__(cls):
@@ -1804,6 +1810,20 @@ class InvoiceLine(ModelSQL, ModelView):
                     continue
                 taxes.append(tax.id)
         return result
+
+    @staticmethod
+    def _get_origin():
+        'Return list of Model names for origin Reference'
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
     def check_modify(cls, lines):
