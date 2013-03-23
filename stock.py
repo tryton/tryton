@@ -160,12 +160,12 @@ class Move:
         move_lines = super(Move, self)._get_account_stock_move_lines(type_)
         if (type_.startswith('in_')
                 and self.unit_shipment_cost
-                and self.shipment_in
-                and self.shipment_in.carrier):
+                and self.shipment
+                and self.shipment.carrier):
             shipment_cost = self.company.currency.round(
                 Decimal(str(self.quantity)) * self.unit_shipment_cost)
             shipment_cost_account = \
-                self.shipment_in.carrier.carrier_product.account_expense_used
+                self.shipment.carrier.carrier_product.account_expense_used
             account = self.product.account_stock_supplier_used
             for move_line in move_lines:
                 if move_line.account == account:
