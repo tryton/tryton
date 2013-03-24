@@ -47,11 +47,8 @@ class InvoiceLine:
 
     @classmethod
     def delete(cls, lines):
-        cursor = Transaction().cursor
-        if lines:
-            cursor.execute('SELECT id FROM purchase_invoice_line_rel '
-                'WHERE line IN (' + ','.join(['%s' for x in lines]) + ')',
-                [l.id for l in lines])
-            if cursor.rowcount:
-                cls.raise_user_error('delete_purchase_invoice_line')
+        PurchaseLine = Pool().get('purchase.line')
+        if any(l for l in lines
+                if isinstance(l.origin, PurchaseLine)):
+            cls.raise_user_error('delete_purchase_invoice_line')
         super(InvoiceLine, cls).delete(lines)
