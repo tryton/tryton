@@ -179,6 +179,10 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 4.0
+    >>> purchase_line = PurchaseLine()
+    >>> purchase.lines.append(purchase_line)
+    >>> purchase_line.type = 'subtotal'
+    >>> purchase_line.description = 'Subtotal'
     >>> purchase.save()
     >>> Purchase.quote([purchase.id], current_config.context)
     >>> Purchase.confirm([purchase.id], current_config.context)

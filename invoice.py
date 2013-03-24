@@ -49,6 +49,6 @@ class InvoiceLine:
     def delete(cls, lines):
         PurchaseLine = Pool().get('purchase.line')
         if any(l for l in lines
-                if isinstance(l.origin, PurchaseLine)):
+                if isinstance(l.origin, PurchaseLine) and l.type == 'line'):
             cls.raise_user_error('delete_purchase_invoice_line')
         super(InvoiceLine, cls).delete(lines)

@@ -36,15 +36,18 @@ class Purchase:
         invoice = super(Purchase, self).create_invoice(invoice_type)
 
         if invoice:
-            invoice_line_ids = [l.id for l in invoice.lines]
+            lines_to_delete = [l for l in invoice.lines if l.type != 'line']
+            lines = [l for l in invoice.lines if l.type == 'line']
+            invoice_line_ids = [l.id for l in lines]
             with Transaction().set_user(0, set_context=True):
-                InvoiceLine.write(invoice.lines, {
+                InvoiceLine.write(lines, {
                     'invoice': None,
                     'invoice_type': invoice.type,
                     'party': invoice.party.id,
                     'currency': invoice.currency.id,
                     'company': invoice.company.id,
                     })
+                InvoiceLine.delete(lines_to_delete)
             self.write([self], {
                 'invoices': [('unlink', [invoice.id])],
                 'invoice_lines': [('add', invoice_line_ids)],
