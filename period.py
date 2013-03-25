@@ -280,12 +280,13 @@ class Period(ModelSQL, ModelView):
         JournalPeriod = pool.get('account.journal.period')
         Move = pool.get('account.move')
 
-        if Move.search([
-                    ('period', 'in', [p.id for p in periods]),
-                    ('state', '!=', 'posted'),
-                    ]):
+        unposted_periods = Move.search([
+                ('period', 'in', [p.id for p in periods]),
+                ('state', '!=', 'posted'),
+                ], limit=1)
+        if unposted_periods:
             cls.raise_user_error('close_period_non_posted_move',
-                (period.rec_name,))
+                (unposted_periods[0].rec_name,))
         #First close the period to be sure
         #it will not have new journal.period created between.
         cls.write(periods, {
