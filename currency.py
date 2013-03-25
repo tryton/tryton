@@ -125,8 +125,8 @@ class Currency(ModelSQL, ModelView):
                     raise ValueError
         except Exception:
             self.raise_user_error('invalid_mon_grouping', {
-                    'grouping': currency.mon_grouping,
-                    'currency': currency.rec_name,
+                    'grouping': self.mon_grouping,
+                    'currency': self.rec_name,
                     })
 
     @classmethod
