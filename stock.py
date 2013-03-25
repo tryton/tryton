@@ -98,7 +98,9 @@ class Move:
         Return the cost for quantity based on lines.
         Update anglo_saxon_quantity on the concerned moves.
         '''
-        Uom = Pool().get('product.uom')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Currency = pool.get('currency.currency')
 
         for move in moves:
             assert move.product == product, 'wrong product'
@@ -114,8 +116,11 @@ class Move:
             consumed_qty += move_qty
 
             if type_.startswith('in_'):
+                with Transaction().set_context(date=move.effective_date):
+                    unit_price = Currency.compute(move.currency,
+                        move.unit_price, move.company.currency, round=False)
                 move_cost_price = Uom.compute_price(move.uom,
-                        move.unit_price, move.product.default_uom)
+                        unit_price, move.product.default_uom)
             else:
                 move_cost_price = move.cost_price
             cost += move_cost_price * Decimal(str(move_qty))
