@@ -114,10 +114,10 @@ class Line(ModelSQL, ModelView):
     def check_account(self):
         if self.account.type == 'view':
             self.raise_user_error('line_on_view_account',
-                (line.account.rec_name,))
+                (self.account.rec_name,))
         if not self.account.active:
             self.raise_user_error('line_on_inactive_account',
-                (line.account.rec_name,))
+                (self.account.rec_name,))
 
 
 class MoveLine(ModelSQL, ModelView):
