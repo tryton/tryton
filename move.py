@@ -482,6 +482,7 @@ class Reconciliation(ModelSQL, ModelView):
 
     @classmethod
     def check_lines(cls, reconciliations):
+        Lang = Pool().get('ir.lang')
         for reconciliation in reconciliations:
             amount = Decimal('0.0')
             debit = Decimal('0.0')
@@ -522,8 +523,10 @@ class Reconciliation(ModelSQL, ModelView):
                 if not languages:
                     languages = Lang.search([('code', '=', 'en_US')])
                 language = languages[0]
-                debit = Lang.currency(lang, debit, account.company.currency)
-                credit = Lang.currency(lang, credit, account.company.currency)
+                debit = Lang.currency(
+                    language, debit, account.company.currency)
+                credit = Lang.currency(
+                    language, credit, account.company.currency)
                 cls.raise_user_error('reconciliation_unbalanced', {
                         'debit': debit,
                         'credit': credit,
