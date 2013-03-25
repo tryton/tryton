@@ -131,5 +131,5 @@ class Move:
                 ('fifo_quantity', '!=', 0.0),
                 ])
         if moves:
-            cls.raise_user_error('del_move_fifo', (moves[0].rec_name))
+            cls.raise_user_error('del_move_fifo', (moves[0].rec_name,))
         super(Move, cls).delete(moves)
