@@ -246,7 +246,7 @@ class Party(ModelSQL, ModelView):
             else:
                 self.raise_user_error('invalid_vat', {
                         'vat': vat_number,
-                        'party': party.rec_name,
+                        'party': self.rec_name,
                         })
 
 
