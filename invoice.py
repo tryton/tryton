@@ -1019,10 +1019,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def check_account(self):
         if self.account.company != self.company:
             self.raise_user_error('check_account', {
-                    'invoice': invoice.rec_name,
-                    'invoice_company': invoice.company.rec_name,
-                    'account': invoice.account.rec_name,
-                    'account_company': invoice.account.company.rec_name,
+                    'invoice': self.rec_name,
+                    'invoice_company': self.company.rec_name,
+                    'account': self.account.rec_name,
+                    'account_company': self.account.company.rec_name,
                     })
 
     def check_same_account(self):
@@ -1030,8 +1030,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if (line.type == 'line'
                     and line.account == self.account):
                 self.raise_user_error('same_account_on_line', {
-                        'invoice': invoice.rec_name,
-                        'account': invoice.account.rec_name,
+                        'invoice': self.rec_name,
+                        'account': self.account.rec_name,
                         'line': line.rec_name,
                         })
 
@@ -1116,7 +1116,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if self.account == journal.debit_account:
                 self.raise_user_error('same_debit_account', {
                         'journal': journal.rec_name,
-                        'invoice': invoice.rec_name,
+                        'invoice': self.rec_name,
                         })
             if not journal.debit_account:
                 self.raise_user_error('missing_debit_account',
@@ -1144,7 +1144,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if self.account == journal.credit_account:
                 self.raise_user_error('same_credit_account', {
                         'journal': journal.rec_name,
-                        'invoice': invoice.rec_name,
+                        'invoice': self.rec_name,
                         })
             if not journal.credit_account:
                 self.raise_user_error('missing_credit_account',
@@ -2201,18 +2201,18 @@ class InvoiceTax(ModelSQL, ModelView):
         if self.base_code:
             if self.base_code.company != company:
                 self.raise_user_error('invalid_base_code_company', {
-                        'invoice': tax.invoice.rec_name,
-                        'invoice_company': tax.invoice.company.rec_name,
-                        'base_code': tax.base_code.rec_name,
-                        'base_code_company': tax.base_code.company.rec_name,
+                        'invoice': self.invoice.rec_name,
+                        'invoice_company': self.invoice.company.rec_name,
+                        'base_code': self.base_code.rec_name,
+                        'base_code_company': self.base_code.company.rec_name,
                         })
         if self.tax_code:
             if self.tax_code.company != company:
                 self.raise_user_error('invalid_tax_code_company', {
-                        'invoice': tax.invoice.rec_name,
-                        'invoice_company': tax.invoice.company.rec_name,
-                        'tax_code': tax.tax_code.rec_name,
-                        'tax_code_company': tax.tax_code.company.rec_name,
+                        'invoice': self.invoice.rec_name,
+                        'invoice_company': self.invoice.company.rec_name,
+                        'tax_code': self.tax_code.rec_name,
+                        'tax_code_company': self.tax_code.company.rec_name,
                         })
 
     def get_move_line(self):
