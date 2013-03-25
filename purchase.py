@@ -530,14 +530,12 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
     def check_for_quotation(self):
         if not self.invoice_address:
-            self.raise_user_error('invoice_address_required',
-                (purchase.rec_name,))
+            self.raise_user_error('invoice_address_required', (self.rec_name,))
         for line in self.lines:
             if (not line.to_location
                     and line.product
                     and line.product.type in ('goods', 'assets')):
-                self.raise_user_error('warehouse_required',
-                    (purchase.rec_name,))
+                self.raise_user_error('warehouse_required', (self.rec_name,))
 
     @classmethod
     def set_reference(cls, purchases):
@@ -1159,8 +1157,8 @@ class PurchaseLine(ModelSQL, ModelView):
             invoice_line.account = self.product.account_expense_used
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense', {
-                        'product': line.product.rec_name,
-                        'purchase': line.purchase.rec_name,
+                        'product': invoice_line.product.rec_name,
+                        'purchase': invoice_line.purchase.rec_name,
                         })
         else:
             for model in ('product.template', 'product.category'):
@@ -1169,7 +1167,7 @@ class PurchaseLine(ModelSQL, ModelView):
                     break
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense_property',
-                    (line.purchase.rec_name,))
+                    (invoice_line.purchase.rec_name,))
         invoice_line.origin = self
         return [invoice_line]
 
