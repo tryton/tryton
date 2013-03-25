@@ -176,7 +176,7 @@ class OrderPoint(ModelSQL, ModelView):
                 ]
             query.append(arg)
         if cls.search(query):
-            self.raise_user_error('unique_op')
+            cls.raise_user_error('unique_op')
 
     def get_rec_name(self, name):
         return "%s@%s" % (self.product.name, self.location.name)
