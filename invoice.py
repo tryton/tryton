@@ -203,7 +203,8 @@ class InvoiceLine(ModelSQL, ModelView):
                 vals['credit'] = res['credit']
                 vals['account'] = account.id
                 vals['journal'] = line.invoice.journal.id
-                vals['date'] = line.invoice.invoice_date
+                vals['date'] = (line.invoice.accounting_date
+                    or line.invoice.invoice_date)
                 vals['reference'] = line.invoice.reference
                 vals['party'] = line.invoice.party.id
                 res['analytic_lines'].append(('create', vals))
