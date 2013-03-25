@@ -1114,9 +1114,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         if self.type in ('out_invoice', 'in_credit_note'):
             if self.account == journal.debit_account:
-                self.raise_user_error('same_debit_account')
+                self.raise_user_error('same_debit_account', {
+                        'journal': journal.rec_name,
+                        'invoice': invoice.rec_name,
+                        })
             if not journal.debit_account:
-                self.raise_user_error('missing_debit_account')
+                self.raise_user_error('missing_debit_account',
+                    (journal.rec_name,))
 
             lines.append({
                     'description': description,
