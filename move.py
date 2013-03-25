@@ -601,6 +601,7 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        cls._check_modify_exclude = ['reconciliation']
         cls._sql_constraints += [
             ('credit_debit',
                 'CHECK(credit * debit = 0.0)',
@@ -1273,7 +1274,7 @@ class Line(ModelSQL, ModelView):
     def write(cls, lines, vals):
         Move = Pool().get('account.move')
 
-        if len(vals) > 1 or 'reconciliation' not in vals:
+        if any(k not in cls._check_modify_exclude for k in vals):
             cls.check_modify(lines)
         moves = [x.move for x in lines]
         super(Line, cls).write(lines, vals)
