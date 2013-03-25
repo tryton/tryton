@@ -484,7 +484,6 @@ class Reconciliation(ModelSQL, ModelView):
     def check_lines(cls, reconciliations):
         Lang = Pool().get('ir.lang')
         for reconciliation in reconciliations:
-            amount = Decimal('0.0')
             debit = Decimal('0.0')
             credit = Decimal('0.0')
             account = None
