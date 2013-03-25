@@ -60,7 +60,7 @@ class PaymentTerm(ModelSQL, ModelView):
                 if (not remainder) and line.amount:
                     self.raise_user_error('invalid_line', {
                             'line': line.rec_name,
-                            'term': payment_term.rec_name,
+                            'term': self.rec_name,
                             })
                 else:
                     continue
@@ -71,7 +71,7 @@ class PaymentTerm(ModelSQL, ModelView):
             remainder -= value
 
         if not currency.is_zero(remainder):
-            self.raise_user_error('missing_remainder', (payment_term.rec_name))
+            self.raise_user_error('missing_remainder', (self.rec_name))
         return res
 
 
