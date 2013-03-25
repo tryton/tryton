@@ -126,8 +126,7 @@ class Location(ModelSQL, ModelView):
                         ('to_location', '=', self.id),
                         ('from_location', '=', self.id),
                         ])):
-            self.raise_user_error('invalid_type_for_moves', (
-                    location.rec_name,))
+            self.raise_user_error('invalid_type_for_moves', (self.rec_name,))
 
     @staticmethod
     def default_active():
