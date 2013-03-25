@@ -547,10 +547,10 @@ class Sale(Workflow, ModelSQL, ModelView):
         '''
         if (self.invoice_method == 'shipment'
                 and self.shipment_method in ('invoice', 'manual')):
-            self.raise_user_error('invalid_method', (sale.rec_name,))
+            self.raise_user_error('invalid_method', (self.rec_name,))
         if (self.shipment_method == 'invoice'
                 and self.invoice_method in ('shipment', 'manual')):
-            self.raise_user_error('invalid_method', (sale.rec_name,))
+            self.raise_user_error('invalid_method', (self.rec_name,))
 
     def get_rec_name(self, name):
         return (self.reference or str(self.id)
@@ -580,7 +580,7 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     def check_for_quotation(self):
         if not self.invoice_address or not self.shipment_address:
-            self.raise_user_error('addresses_required', (sale.rec_name,))
+            self.raise_user_error('addresses_required', (self.rec_name,))
         for line in self.lines:
             if line.quantity >= 0:
                 location = line.from_location
@@ -590,7 +590,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                     and line.product
                     and line.product.type in ('goods', 'assets')):
                 self.raise_user_error('warehouse_required',
-                    (sale.rec_name,))
+                    (self.rec_name,))
 
     @classmethod
     def set_reference(cls, sales):
@@ -679,7 +679,7 @@ class Sale(Workflow, ModelSQL, ModelView):
 
         if not self.party.account_receivable:
             self.raise_user_error('missing_account_receivable',
-                    error_args=(self.party.rec_name,))
+                (self.party.rec_name,))
 
         invoice_lines = self._get_invoice_line_sale_line(invoice_type)
         if not invoice_lines:
@@ -778,7 +778,7 @@ class Sale(Workflow, ModelSQL, ModelView):
         cls.cancel(sales)
         for sale in sales:
             if sale.state != 'cancel':
-                cls.raise_user_error('delete_cancel', sale.rec_name)
+                cls.raise_user_error('delete_cancel', (sale.rec_name,))
         super(Sale, cls).delete(sales)
 
     @classmethod
