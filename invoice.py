@@ -193,7 +193,8 @@ class InvoiceLine:
                     vals['credit'] = value['credit']
                     vals['account'] = account.id
                     vals['journal'] = self.invoice.journal.id
-                    vals['date'] = self.invoice.invoice_date
+                    vals['date'] = (self.invoice.accounting_date 
+                        or self.invoice.invoice_date)
                     vals['reference'] = self.invoice.reference
                     vals['party'] = self.invoice.party.id
                     to_create.append(vals)
