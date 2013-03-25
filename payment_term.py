@@ -71,7 +71,7 @@ class PaymentTerm(ModelSQL, ModelView):
             remainder -= value
 
         if not currency.is_zero(remainder):
-            self.raise_user_error('missing_remainder', (self.rec_name))
+            self.raise_user_error('missing_remainder', (self.rec_name,))
         return res
 
 
