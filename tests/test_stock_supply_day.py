@@ -145,7 +145,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
             'account_payable': payable.id,
             })
         product_supplier = self.product_supplier.create({
-            'product': product.id,
+            'product': product.template.id,
             'company': company.id,
             'party': supplier.id,
             'delivery_time': delivery_time,
