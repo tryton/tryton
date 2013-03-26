@@ -128,8 +128,9 @@ class StockSupplyTestCase(unittest.TestCase):
             'account_receivable': receivable_id,
             'account_payable': payable_id,
             })
+        product = self.product.browse(product_id)
         product_supplier_id = self.product_supplier.create({
-            'product': product_id,
+            'product': product.template.id,
             'company': company_id,
             'party': supplier_id,
             'delivery_time': delivery_time,
