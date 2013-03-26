@@ -50,7 +50,7 @@ class Category(ModelSQL, ModelView):
 
     def check_name(self):
         if SEPARATOR in self.name:
-            self.raise_user_error('wrong_name', (category.name,))
+            self.raise_user_error('wrong_name', (self.name,))
 
     def get_rec_name(self, name):
         if self.parent:
