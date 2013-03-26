@@ -20,6 +20,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="carrier_view_form">
             <field name="model">carrier</field>
             <field name="type">form</field>
+            <field name="inherit" eval="None"/>
             <field name="priority">10</field>
             <field name="name">carrier_form</field>
         </record>
@@ -27,6 +28,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="carrier_view_tree">
             <field name="model">carrier</field>
             <field name="type">tree</field>
+            <field name="inherit" eval="None"/>
             <field name="priority">10</field>
             <field name="name">carrier_tree</field>
         </record>
