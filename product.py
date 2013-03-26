@@ -13,6 +13,11 @@ STATES = {
     'readonly': ~Eval('active', True),
     }
 DEPENDS = ['active']
+TYPES = [
+    ('goods', 'Goods'),
+    ('assets', 'Assets'),
+    ('service', 'Service'),
+    ]
 
 
 class Template(ModelSQL, ModelView):
@@ -20,11 +25,8 @@ class Template(ModelSQL, ModelView):
     __name__ = "product.template"
     name = fields.Char('Name', size=None, required=True, translate=True,
         select=True, states=STATES, depends=DEPENDS)
-    type = fields.Selection([
-            ('goods', 'Goods'),
-            ('assets', 'Assets'),
-            ('service', 'Service')
-            ], 'Type', required=True, states=STATES, depends=DEPENDS)
+    type = fields.Selection(TYPES, 'Type', required=True, states=STATES,
+        depends=DEPENDS)
     consumable = fields.Boolean('Consumable',
         states={
             'readonly': ~Eval('active', True),
@@ -123,6 +125,9 @@ class Product(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     default_uom = fields.Function(fields.Many2One('product.uom',
             'Default UOM'), 'get_default_uom', searcher='search_default_uom')
+    type = fields.Function(fields.Selection(TYPES, 'Type',
+            on_change_with=['template']),
+        'on_change_with_type', searcher='search_type')
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=(16, 4)), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
@@ -160,6 +165,14 @@ class Product(ModelSQL, ModelView):
     @classmethod
     def search_default_uom(cls, name, clause):
         return [('template.default_uom',) + tuple(clause[1:])]
+
+    def on_change_with_type(self, name=None):
+        if self.template:
+            return self.template.type
+
+    @classmethod
+    def search_type(cls, name, clause):
+        return [('template.type',) + tuple(clause[1:])]
 
     @staticmethod
     def get_price_uom(products, name):
