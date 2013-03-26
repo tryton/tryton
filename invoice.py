@@ -910,7 +910,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         sequence_id = period.get_invoice_sequence(self.type).id
         if not sequence_id:
             self.raise_user_error('no_invoice_sequence', {
-                    'invoice': invoice.rec_name,
+                    'invoice': self.rec_name,
                     'period': period.rec_name,
                     })
         with Transaction().set_context(
