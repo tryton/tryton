@@ -1498,7 +1498,7 @@ class OpenBalanceSheet(Wizard):
                 'posted': self.start.posted,
                 'company': company.id,
                 })
-        action['name'] += '%s - %s' % (date, company.name)
+        action['name'] += ' %s - %s' % (date, company.rec_name)
         return action, {}
 
     def transition_open_(self):
