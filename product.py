@@ -159,7 +159,7 @@ class Product(ModelSQL, ModelView):
 
     @classmethod
     def search_default_uom(cls, name, clause):
-        return [('template.default_uom',) + tuple(clause[1:0])]
+        return [('template.default_uom',) + tuple(clause[1:])]
 
     @staticmethod
     def get_price_uom(products, name):
