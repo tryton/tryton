@@ -46,6 +46,11 @@ class Record(SignalEvent):
                         (field.attrs.get('loading', 'eager')
                             for field in self.group.fields.itervalues()),
                         'eager')
+                # Set a valid name for next loaded check
+                for fname, field in self.group.fields.iteritems():
+                    if field.attrs.get('loading', 'eager') == loading:
+                        name = fname
+                        break
             else:
                 loading = self.group.fields[name].attrs.get('loading', 'eager')
             if self in self.group and loading == 'eager':
