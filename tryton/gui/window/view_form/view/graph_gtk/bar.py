@@ -12,6 +12,10 @@ import tryton.rpc as rpc
 
 class Bar(Graph):
 
+    def __init__(self, *args, **kwargs):
+        super(Bar, self).__init__(*args, **kwargs)
+        self.bars = []
+
     def drawGraph(self, cr, width, height):
 
         def drawBar(bar):
