@@ -18,7 +18,7 @@ class Category:
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')),
-                }, depends=['type']))
+                }))
     account_depreciation_used = fields.Function(
         fields.Many2One('account.account', 'Account Depreciation Used'),
         'get_account')
@@ -31,7 +31,7 @@ class Category:
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')),
-                }, depends=['type']))
+                }))
     account_asset_used = fields.Function(
         fields.Many2One('account.account', 'Account Asset Used'),
         'get_account')
