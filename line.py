@@ -69,7 +69,7 @@ class Line(ModelSQL, ModelView):
             return value
         Employee = Pool().get('company.employee')
         employee = Employee(Transaction().context['employee'])
-        return value + " (" + employee.name + ")"
+        return value + " (" + employee.rec_name + ")"
 
 
 class EnterLinesStart(ModelView):
