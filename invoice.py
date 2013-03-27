@@ -1523,9 +1523,9 @@ class InvoiceLine(ModelSQL, ModelView):
         None, 'Invoice Taxes'), 'get_invoice_taxes')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         states={
-            'readonly': Eval('state') != 'draft',
-            },
-        depends=['state'])
+            'readonly': Eval('_parent_invoice', {}
+                ).get('state') != 'draft',
+            })
 
     @classmethod
     def __setup__(cls):
