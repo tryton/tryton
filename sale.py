@@ -20,8 +20,7 @@ class Configuration:
                 ], 'Sale Shipment Cost Method',
             states={
                 'required': Bool(Eval('context', {}).get('company', 0)),
-                },
-            depends=['company']))
+                }))
 
     @staticmethod
     def default_sale_shipment_cost_method():
