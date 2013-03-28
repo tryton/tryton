@@ -82,10 +82,8 @@
             this.el = el;
             this.view_prm = this.screen.load_next_view().then(function() {
                 screen.switch_view().done(function() {
-                    el.append(screen.el);
-                    screen.search_filter().done(function() {
-                        screen.display();
-                    });
+                    el.append(screen.screen_container.el);
+                    screen.search_filter();
                 });
             });
         },

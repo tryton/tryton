@@ -3,6 +3,74 @@
 (function() {
     'use strict';
 
+    Sao.ScreenContainer = Sao.class_(Object, {
+        init: function(tab_domain) {
+            this.tab_domain = tab_domain || [];
+            this.el = jQuery('<div/>', {
+                'class': 'screen-container'
+            });
+            this.filter_box = jQuery('<div/>', {
+                'class': 'filter-box'
+            });
+            this.el.append(this.filter_box);
+            this.filter_button = jQuery('<button/>').button({
+                'disabled': true,
+                'label': 'Filters' // TODO translation
+            });
+            this.filter_box.append(this.filter_button);
+            this.search_entry = jQuery('<input/>');
+            this.search_entry.keypress(function (e) {
+                if (e.which == 13) {
+                    this.screen.search_filter(this.search_entry.val());
+                    return false;
+                }
+            }.bind(this));
+            this.filter_box.append(this.search_entry);
+            this.but_bookmark = jQuery('<button/>').button({
+                'disabled': true,
+                'label': 'Bookmark' // TODO translation
+            });
+            this.filter_box.append(this.but_bookmark);
+            this.but_prev = jQuery('<button/>').button({
+                'label': 'Previous'
+            });
+            this.but_prev.click(this.search_prev.bind(this));
+            this.filter_box.append(this.but_prev);
+            this.but_next = jQuery('<button/>').button({
+                'label': 'Next'
+            });
+            this.but_next.click(this.search_next.bind(this));
+            this.filter_box.append(this.but_next);
+            this.content_box = jQuery('<div/>', {
+                'class': 'content-box'
+            });
+            this.el.append(this.content_box);
+        },
+        search_prev: function() {
+            this.screen.search_prev(this.search_entry.val());
+        },
+        search_next: function() {
+            this.screen.search_next(this.search_entry.val());
+        },
+        set_screen: function(screen) {
+            this.screen = screen;
+        },
+        show_filter: function() {
+            this.filter_box.css('display', 'block');
+        },
+        hide_filter: function() {
+            this.filter_box.css('display', 'none');
+        },
+        set: function(widget) {
+            this.content_box.children().detach();
+            this.content_box.append(widget);
+        }
+    });
+}());
+
+(function() {
+    'use strict';
+
     Sao.Screen = Sao.class_(Object, {
         init: function(model_name, attributes) {
             this.model_name = model_name;
@@ -17,14 +85,16 @@
             this.new_group();
             this.current_view = null;
             this.current_record = null;
+            this.limit = attributes.limit || 80;
+            this.offset = 0;
+            this.search_count = 0;
+            this.screen_container = new Sao.ScreenContainer(attributes.tab_domain);
+            this.parent = null;
             if (!attributes.row_activate) {
                 this.row_activate = this.default_row_activate;
             } else {
                 this.row_activate = attributes.row_activate;
             }
-            this.el = jQuery('<div/>', {
-                'class': 'screen'
-            });
         },
         load_next_view: function() {
             if (this.view_to_load) {
@@ -64,9 +134,6 @@
             var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
             this.views.push(view_widget);
 
-            if (this.current_view) {
-                this.current_view.el.detach();
-            }
             return view_widget;
         },
         number_of_views: function() {
@@ -94,13 +161,12 @@
                     }
                 }
             }
-            this.el.children().detach();
-            this.el.append(this.current_view.el);
+            this.screen_container.set(this.current_view.el);
             this.display();
             // TODO cursor
             return jQuery.when();
         },
-        search_filter: function() {
+        search_filter: function(search_string) {
             var domain = [];
             // TODO domain parser
 
@@ -109,10 +175,22 @@
                 domain.push(this.attributes.domain);
             } else
                 domain = this.attributes.domain || [];
-            var grp_prm = this.model.find(domain, this.attributes.offset,
-                    this.attributes.limit, this.attributes.order,
+            var grp_prm = this.model.find(domain, this.offset, this.limit,
+                    this.attributes.order, this.context);
+            var count_prm = this.model.execute('search_count', [domain],
                     this.context);
+            count_prm.done(function (count) {
+                this.search_count = count;
+            }.bind(this));
             grp_prm.done(this.set_group.bind(this));
+            grp_prm.done(this.display.bind(this));
+            jQuery.when(grp_prm, count_prm).done(function (group, count) {
+                this.screen_container.but_next.button('option', 'disabled', 
+                    !(group.length == this.limit &&
+                        count > this.limit + this.offset));
+            }.bind(this));
+            this.screen_container.but_prev.button('option', 'disabled',
+                    this.offset <= 0);
             return grp_prm;
         },
         set_group: function(group) {
@@ -128,6 +206,8 @@
         },
         display: function() {
             if (this.views) {
+                this.search_active(["tree", "graph", "calendar"].indexOf(
+                            this.current_view.view_type) > -1);
                 for (var i = 0; i < this.views.length; i++)
                     if (this.views[i])
                         this.views[i].display();
@@ -284,6 +364,22 @@
                 }.bind(this));
             }.bind(this));
             return result;
+        },
+        search_active: function(active) {
+            if (active && !this.parent) {
+                this.screen_container.set_screen(this);
+                this.screen_container.show_filter();
+            } else {
+                this.screen_container.hide_filter();
+            }
+        },
+        search_prev: function(search_string) {
+            this.offset -= this.limit;
+            this.search_filter(search_string);
+        },
+        search_next: function(search_string) {
+            this.offset += this.limit;
+            this.search_filter(search_string);
         }
     });
 }());
