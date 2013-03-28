@@ -42,6 +42,14 @@ class Product:
                     return False
         return True
 
+    @classmethod
+    def copy(cls, products, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('boms', None)
+        return super(Product, cls).copy(products, default=default)
+
 
 class ProductBom(ModelSQL, ModelView):
     'Product - BOM'
