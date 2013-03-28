@@ -44,6 +44,14 @@ class Product:
                         or input_.product.check_bom_recursion(product=product)):
                     self.raise_user_error('recursive_bom', (product.rec_name,))
 
+    @classmethod
+    def copy(cls, products, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('boms', None)
+        return super(Product, cls).copy(products, default=default)
+
 
 class ProductBom(ModelSQL, ModelView):
     'Product - BOM'
