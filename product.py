@@ -102,14 +102,6 @@ class Template(ModelSQL, ModelView):
         if self.default_uom:
             return self.default_uom.category.id
 
-    @classmethod
-    def copy(cls, templates, default=None):
-        if default is None:
-            default = {}
-        default = default.copy()
-        default['products'] = None
-        return super(Template, cls).copy(templates, default=default)
-
 
 class Product(ModelSQL, ModelView):
     "Product Variant"
