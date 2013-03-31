@@ -535,7 +535,6 @@ class Reconciliation(ModelSQL, ModelView):
 class Line(ModelSQL, ModelView):
     'Account Move Line'
     __name__ = 'account.move.line'
-    _rec_name = 'id'
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
         required=True,
         on_change=['account', 'debit', 'credit', 'tax_lines', 'journal',
