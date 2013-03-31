@@ -324,7 +324,6 @@ class OpenChartAccount(Wizard):
 class AccountSelection(ModelSQL, ModelView):
     'Analytic Account Selection'
     __name__ = 'analytic_account.account.selection'
-    _rec_name = 'id'
 
     accounts = fields.Many2Many(
             'analytic_account.account-analytic_account.account.selection',
