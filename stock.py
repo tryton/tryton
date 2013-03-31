@@ -128,8 +128,8 @@ class ShipmentIn:
             unit_shipment_cost = unit_shipment_cost.quantize(
                 exp, rounding=ROUND_HALF_EVEN)
             Move.write([move], {
-                    'unit_price': move.unit_price + cost['unit_shipment_cost'],
-                    'unit_shipment_cost': cost['unit_shipment_cost'],
+                    'unit_price': move.unit_price + unit_shipment_cost,
+                    'unit_shipment_cost': unit_shipment_cost,
                     })
 
     @classmethod
