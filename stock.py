@@ -138,7 +138,7 @@ class ShipmentIn(Model):
             move = cost['move']
             quantity = Decimal(str(move.quantity))
             if exp * quantity < difference:
-                cost['unit_shipment_cost'] = unit_shipment_cost + exp
+                cost['unit_shipment_cost'] += exp
                 difference -= exp * quantity
             if difference < exp:
                 break
