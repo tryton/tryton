@@ -187,8 +187,9 @@ class Move(Model):
                 and move.unit_shipment_cost
                 and move.shipment_in
                 and move.shipment_in.carrier):
-            shipment_cost = currency_obj.round(move.company.currency,
-                Decimal(str(move.quantity)) * move.unit_shipment_cost)
+            shipment_cost = currency_obj.compute(move.currency,
+                Decimal(str(move.quantity)) * move.unit_shipment_cost,
+                move.company.currency)
             shipment_cost_account = \
                 move.shipment_in.carrier.carrier_product.account_expense_used
             account_id = move.product.account_stock_supplier_used.id
