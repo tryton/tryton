@@ -151,8 +151,8 @@ class ShipmentIn(Model):
             unit_shipment_cost = unit_shipment_cost.quantize(
                 exp, rounding=ROUND_HALF_EVEN)
             move_obj.write(move.id, {
-                    'unit_price': move.unit_price + cost['unit_shipment_cost'],
-                    'unit_shipment_cost': cost['unit_shipment_cost'],
+                    'unit_price': move.unit_price + unit_shipment_cost,
+                    'unit_shipment_cost': unit_shipment_cost,
                     })
 
     @ModelView.button
