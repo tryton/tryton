@@ -182,3 +182,17 @@ class Move:
             else:
                 raise AssertionError('missing account_stock_supplier')
         return move_lines
+
+    # Remove shipment cost if account_stock_anglo_saxon is installed
+    @classmethod
+    def _get_anglo_saxon_move(cls, moves, quantity, type_):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        for move, qty, cost_price in super(Move, cls)._get_anglo_saxon_move(
+                moves, quantity, type_):
+            if (type_.startswith('in_')
+                    and move.unit_shipment_cost):
+                shipment_cost = Currency.compute(move.currency,
+                    move.unit_shipment_cost, move.company.currency)
+                cost_price -= shipment_cost
+            yield move, qty, cost_price
