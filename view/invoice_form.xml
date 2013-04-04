@@ -53,7 +53,7 @@ this repository contains the full copyright notices and license terms. -->
                             confirm="Are you sure to cancel the invoice?"/>
                         <button name="draft" string="_Draft"
                             icon="tryton-go-previous"/>
-                        <button name="validate"
+                        <button name="validate_invoice"
                             string="Validate"
                             help="Also known as Pro Forma"
                             icon="tryton-go-next"/>

@@ -218,7 +218,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
                     },
-                'validate': {
+                'validate_invoice': {
                     'invisible': Eval('state') != 'draft',
                     },
                 'post': {
