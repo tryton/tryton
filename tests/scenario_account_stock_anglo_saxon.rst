@@ -378,4 +378,4 @@ Now create a supplier invoice with an accountant::
     >>> for invoice in purchase.invoices:
     ...     invoice.invoice_date = today
     ...     invoice.save()
-    >>> Invoice.validate([i.id for i in purchase.invoices], new_config.context)
+    >>> Invoice.validate_invoice([i.id for i in purchase.invoices], new_config.context)
