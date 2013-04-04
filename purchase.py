@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Eval
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 
 
 __all__ = ['PurchaseRequest', 'Purchase', 'PurchaseLine', 'ProductSupplier',
@@ -62,8 +62,9 @@ class Purchase:
         return result
 
     def get_drop_shipments(self, name):
-        return list(set(m.shipment_drop.id for l in self.lines for m in l.moves
-                if m.shipment_drop))
+        DropShipment = Pool().get('stock.shipment.drop')
+        return list(set(m.shipment.id for l in self.lines for m in l.moves
+                if isinstance(m.shipment, DropShipment)))
 
 
 class PurchaseLine:
