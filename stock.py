@@ -70,13 +70,15 @@ class Move:
         return lines
 
     @classmethod
-    def _get_anglo_saxon_move(cls, moves, quantity):
+    def _get_anglo_saxon_move(cls, moves, quantity, type_):
         '''
-        Generator of (move, qty) where move is the move to be consumed and qty
-        is the quantity (in the product default uom) to be consumed on this
-        move.
+        Generator of (move, qty, cost_price) where move is the move to be
+        consumed, qty is the quantity (in the product default uom) to be
+        consumed on this move and cost_price is in the company currency.
         '''
-        Uom = Pool().get('product.uom')
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Currency = pool.get('currency.currency')
 
         consumed_qty = 0.0
         for move in moves:
@@ -89,7 +91,17 @@ class Move:
                 qty = quantity - consumed_qty
             if consumed_qty >= quantity:
                 break
-            yield (move, qty)
+
+            if type_.startswith('in_'):
+                with Transaction().set_context(date=move.effective_date):
+                    unit_price = Currency.compute(move.currency,
+                        move.unit_price, move.company.currency, round=False)
+                cost_price = Uom.compute_price(move.uom,
+                        unit_price, move.product.default_uom)
+            else:
+                cost_price = move.cost_price
+
+            yield (move, qty, cost_price)
 
     @classmethod
     def update_anglo_saxon_quantity_product_cost(cls, product, moves,
@@ -100,7 +112,6 @@ class Move:
         '''
         pool = Pool()
         Uom = pool.get('product.uom')
-        Currency = pool.get('currency.currency')
 
         for move in moves:
             assert move.product == product, 'wrong product'
@@ -112,17 +123,10 @@ class Move:
 
         cost = Decimal('0.0')
         consumed_qty = 0.0
-        for move, move_qty in cls._get_anglo_saxon_move(moves, total_qty):
+        for move, move_qty, move_cost_price in cls._get_anglo_saxon_move(
+                moves, total_qty, type_):
             consumed_qty += move_qty
 
-            if type_.startswith('in_'):
-                with Transaction().set_context(date=move.effective_date):
-                    unit_price = Currency.compute(move.currency,
-                        move.unit_price, move.company.currency, round=False)
-                move_cost_price = Uom.compute_price(move.uom,
-                        unit_price, move.product.default_uom)
-            else:
-                move_cost_price = move.cost_price
             cost += move_cost_price * Decimal(str(move_qty))
 
             with Transaction().set_user(0, set_context=True):
