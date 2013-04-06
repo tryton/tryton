@@ -40,6 +40,13 @@ class Product(ModelSQL, ModelView):
                 return False
         return True
 
+    def copy(self, ids, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('boms', None)
+        return super(Product, self).copy(ids, default=default)
+
 Product()
 
 
