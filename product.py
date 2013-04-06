@@ -106,7 +106,7 @@ class Template(ModelSQL, ModelView):
 class Product(ModelSQL, ModelView):
     "Product Variant"
     __name__ = "product.product"
-    _order_name = 'code'
+    _order_name = 'rec_name'
     template = fields.Many2One('product.template', 'Product Template',
         required=True, ondelete='CASCADE', select=True, states=STATES,
         depends=DEPENDS)
@@ -124,6 +124,14 @@ class Product(ModelSQL, ModelView):
         digits=(16, 4)), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
         digits=(16, 4)), 'get_price_uom')
+
+    @classmethod
+    def __setup__(cls):
+        super(Product, cls).__setup__()
+        # XXX order by id until order by joined name is possible
+        # but at least products are grouped
+        cls.rec_name.order_field = ("%(table)s.code %(order)s, "
+            "%(table)s.id %(order)s")
 
     @staticmethod
     def default_active():
