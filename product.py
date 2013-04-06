@@ -668,7 +668,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 quantities[date] = Product.products_by_location(
                     [warehouse_id], [product_id], with_childs=True,
                     skip_zero=False)[(warehouse_id, product_id)]
-            date_start = date + datetime.timedelta(1)
+            try:
+                date_start = date + datetime.timedelta(1)
+            except OverflowError:
+                pass
         cumulate = 0
         for date in dates:
             cumulate += quantities[date]
