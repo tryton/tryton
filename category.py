@@ -28,3 +28,18 @@ class Category(ModelSQL, ModelView):
             return self.parent.get_rec_name(name) + ' / ' + self.name
         else:
             return self.name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if isinstance(clause[2], basestring):
+            values = clause[2].split('/')
+            values.reverse()
+            domain = []
+            field = 'name'
+            for name in values:
+                domain.append((field, clause[1], name.strip()))
+                field = 'parent.' + field
+        else:
+            domain = [('name',) + tuple(clause[1:])]
+        ids = [w.id for w in cls.search(domain, order=[])]
+        return [('parent', 'child_of', ids)]
