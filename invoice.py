@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.model import fields
+from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta
 
 __all__ = ['Invoice']
@@ -33,6 +33,15 @@ class Invoice:
             self.write([self], {
                     'open_date': datetime.datetime.now(),
                     })
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, invoices):
+        super(Invoice, cls).draft(invoices)
+        cls.write(invoices, {
+                'open_date': None,
+                })
 
     @classmethod
     def copy(cls, invoices, default=None):
