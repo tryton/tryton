@@ -425,7 +425,7 @@ class Move(ModelSQL, ModelView):
             if move.period.state == 'close':
                 cls.raise_user_error('draft_closed_period', {
                         'move': move.rec_name,
-                        'journal': move.period.rec_name,
+                        'period': move.period.rec_name,
                         })
         cls.write(moves, {
             'state': 'draft',
