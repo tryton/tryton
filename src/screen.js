@@ -268,7 +268,7 @@
                     prms.push(this.remove());
                 }
             }
-            return jQuery.when(prms);
+            return jQuery.when.apply(jQuery, prms);
         },
         save_current: function() {
             if (!this.current_record) {
@@ -358,7 +358,7 @@
                 // TODO set current_record
                 this.current_record = null;
                 // TODO set_cursor
-                jQuery.when(prms).done(function() {
+                jQuery.when.apply(jQuery, prms).done(function() {
                     this.display();
                     result.resolve();
                 }.bind(this));

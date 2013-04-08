@@ -215,7 +215,7 @@
             if (!jQuery.isEmptyObject(this.record_deleted)) {
                 deferreds.push(this.model.delete_(this.record_deleted));
             }
-            return jQuery.when(deferreds);
+            return jQuery.when.apply(jQuery, deferreds);
         };
         return array;
     };
