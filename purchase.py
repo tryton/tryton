@@ -1096,7 +1096,11 @@ class PurchaseLine(ModelSQL, ModelView):
             date = self.purchase.purchase_date if self.purchase else None
             for product_supplier in self.product.product_suppliers:
                 if product_supplier.party == self.purchase.party:
-                    return product_supplier.compute_supply_date(date=date)
+                    delivery_date = product_supplier.compute_supply_date(
+                        date=date)
+                    if delivery_date == datetime.date.max:
+                        return None
+                    return delivery_date
 
     def get_invoice_line(self, invoice_type):
         '''
