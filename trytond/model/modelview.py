@@ -190,7 +190,7 @@ class ModelView(Model):
         else:
             if view_type == 'form':
                 res = self.fields_get()
-                xml = '''<?xml version="1.0" encoding="utf-8"?>''' \
+                xml = '''<?xml version="1.0"?>''' \
                 '''<form string="%s">''' % (self._description,)
                 for i in res:
                     if i in ('create_uid', 'create_date',
@@ -206,7 +206,7 @@ class ModelView(Model):
                 field = 'id'
                 if self._rec_name in self._columns:
                     field = self._rec_name
-                xml = '''<?xml version="1.0" encoding="utf-8"?>''' \
+                xml = '''<?xml version="1.0"?>''' \
                 '''<tree string="%s"><field name="%s"/></tree>''' \
                 % (self._description, field)
             else:
