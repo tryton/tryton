@@ -512,6 +512,66 @@
                    [args], this.get_context());
             return prm.then(this.set_on_change.bind(this));
         },
+        on_change_with: function(field_name) {
+            var fieldnames = {};
+            var values = {};
+            var later = {};
+            var fieldname, on_change_with;
+            for (fieldname in this.model.fields) {
+                if (!this.model.fields.hasOwnProperty(fieldname)) {
+                    continue;
+                }
+                on_change_with = this.model.fields[fieldname]
+                    .description.on_change_with;
+                if (jQuery.isEmptyObject(on_change_with)) {
+                    continue;
+                }
+                if (on_change_with.indexOf(field_name) < 0) {
+                    continue;
+                }
+                if (field_name == fieldname) {
+                    continue;
+                }
+                if (!jQuery.isEmptyObject(Sao.common.intersect(
+                                Object.keys(fieldnames).sort(),
+                                on_change_with.sort()))) {
+                    later[fieldname] = true;
+                    continue;
+                }
+                fieldnames[fieldname] = true;
+                values = jQuery.extend(values,
+                        this._get_on_change_args(on_change_with));
+                if (this.model.fields[fieldname] instanceof
+                        Sao.field.Many2One) {
+                    // TODO reference
+                    delete this._values[fieldname + '.rec_name'];
+                }
+            }
+            var prms = [];
+            var prm;
+            if (!jQuery.isEmptyObject(fieldnames)) {
+                prm = this.model.execute('on_change_with',
+                        [values, Object.keys(fieldnames)], this.get_context());
+                prms.push(prm.then(this.set_on_change.bind(this)));
+            }
+            var set_on_change = function(fieldname) {
+                return function(result) {
+                    this.model.fields[fieldname].set_on_change(this, result);
+                };
+            };
+            for (fieldname in later) {
+                if (!later.hasOwnProperty(fieldname)) {
+                    continue;
+                }
+                on_change_with = this.model.fields[fieldname]
+                    .description.on_change_with;
+                values = this._get_on_change_args(on_change_with);
+                prm = this.model.execute('on_change_with_' + fieldname,
+                    [values], this.get_context());
+                prms.push(prm.then(set_on_change(fieldname).bind(this)));
+            }
+            return jQuery.when.apply(jQuery, prms);
+        },
         set_on_change: function(values) {
             var later = {};
             var fieldname, value;
@@ -623,11 +683,12 @@
             this.set(record, value);
             if (previous_value != this.get(record)) {
                 record._changed[this.name] = true;
-                this.changed(record);
-                // TODO validate + parent
-                record.group.changed();
-                record.group.root_group().screens.forEach(function(screen) {
-                    screen.display();
+                this.changed(record).done(function() {
+                    // TODO validate + parent
+                    record.group.changed();
+                    record.group.root_group().screens.forEach(function(screen) {
+                        screen.display();
+                    });
                 });
             }
         },
@@ -643,10 +704,15 @@
             record._changed[this.name] = true;
         },
         changed: function(record) {
+            var prms = [];
             // TODO check readonly
             if (this.description.on_change) {
-                record.on_change(this.name, this.description.on_change);
+                prms.push(record.on_change(this.name,
+                            this.description.on_change));
             }
+            prms.push(record.on_change_with(this.name));
+            // TODO autocomplete_with
+            return jQuery.when.apply(jQuery, prms);
         },
         get_context: function(record) {
             var context = jQuery.extend({}, record.get_context());

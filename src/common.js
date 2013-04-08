@@ -10,6 +10,25 @@
                 jQuery(arr2).not(arr1).length === 0);
     };
 
+    // Find the intersection of two arrays.
+    // The arrays must be sorted.
+    Sao.common.intersect = function(a, b) {
+        var ai = 0, bi = 0;
+        var result = [];
+        while (ai < a.length && bi < b.length) {
+            if (a[ai] < b[bi]) {
+                ai++;
+            } else if (a[ai] > b[bi]) {
+                bi++;
+            } else {
+                result.push(a[ai]);
+                ai++;
+                bi++;
+            }
+        }
+        return result;
+    };
+
     Sao.common.selection = function(title, values, alwaysask) {
         if (alwaysask === undefined) {
             alwaysask = false;
