@@ -202,7 +202,7 @@ class ModelView(Model):
         else:
             if view_type == 'form':
                 res = cls.fields_get()
-                xml = '''<?xml version="1.0" encoding="utf-8"?>''' \
+                xml = '''<?xml version="1.0"?>''' \
                 '''<form string="%s" col="4">''' % (cls.__doc__,)
                 for i in res:
                     if i in ('create_uid', 'create_date',
@@ -220,7 +220,7 @@ class ModelView(Model):
                 field = 'id'
                 if cls._rec_name in cls._fields:
                     field = cls._rec_name
-                xml = '''<?xml version="1.0" encoding="utf-8"?>''' \
+                xml = '''<?xml version="1.0"?>''' \
                 '''<tree string="%s"><field name="%s"/></tree>''' \
                 % (cls.__doc__, field)
             else:
