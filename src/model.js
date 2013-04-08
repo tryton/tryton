@@ -394,8 +394,8 @@
                     continue;
                 }
                 // TODO delay O2M
-                var fdescription = this.model.fields[name].description;
-                if (rec_named_fields.indexOf(fdescription.type) >= 0) {
+                if (this.model.fields[name] instanceof Sao.field.Many2One) {
+                    // TODO reference
                     var field_rec_name = name + '.rec_name';
                     if (values.hasOwnProperty(field_rec_name)) {
                         this._values[field_rec_name] = values[field_rec_name];
@@ -503,6 +503,48 @@
             });
             return result;
         },
+        on_change: function(fieldname, attr) {
+            if (typeof(attr) == 'string') {
+                attr = new Sao.PYSON.Decoder().decode(attr);
+            }
+            var args = this._get_on_change_args(attr);
+            var prm = this.model.execute('on_change_' + fieldname,
+                   [args], this.get_context());
+            return prm.then(this.set_on_change.bind(this));
+        },
+        set_on_change: function(values) {
+            var later = {};
+            var fieldname, value;
+            for (fieldname in values) {
+                if (!values.hasOwnProperty(fieldname)) {
+                    continue;
+                }
+                value = values[fieldname];
+                if (!(fieldname in this.model.fields)) {
+                    continue;
+                }
+                if (this.model.fields[fieldname] instanceof
+                        Sao.field.One2Many) {
+                    later[fieldname] = value;
+                    continue;
+                }
+                // TODO rec_name
+                this.model.fields[fieldname].set_on_change(this, value);
+            }
+            for (fieldname in later) {
+                if (!later.hasOwnProperty(fieldname)) {
+                    continue;
+                }
+                value = later[fieldname];
+                var field_x2many = this.model.fields[fieldname];
+                try {
+                    field_x2many.in_on_change = true;
+                    field_x2many.set_on_change(this, value);
+                } finally {
+                    field_x2many.in_on_change = false;
+                }
+            }
+        },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
             var ctx = jQuery.extend({}, this.get_context());
@@ -596,8 +638,15 @@
             record._values[this.name] = value;
             record._changed[this.name] = true;
         },
+        set_on_change: function(record, value) {
+            record._values[this.name] = value;
+            record._changed[this.name] = true;
+        },
         changed: function(record) {
-            // TODO
+            // TODO check readonly
+            if (this.description.on_change) {
+                record.on_change(this.name, this.description.on_change);
+            }
         },
         get_context: function(record) {
             var context = jQuery.extend({}, record.get_context());
@@ -809,26 +858,96 @@
     Sao.field.One2Many = Sao.class_(Sao.field.Field, {
         init: function(description) {
             Sao.field.One2Many._super.init.call(this, description);
+            this.in_on_change = false;
             this.context = {};
         },
         _default: null,
-        set: function(record, value) {
+        _set_value: function(record, value, default_) {
+            var mode;
+            if ((value instanceof Array) && !isNaN(parseInt(value[0], 10))) {
+                mode = 'list ids';
+            } else {
+                mode = 'list values';
+            }
             var group = record._values[this.name];
-            var fields = {};
+            var model;
             if (group !== undefined) {
-                fields = jQuery.extend({}, group.model.fields);
+                model = group.model;
                 // TODO destroy and unconnect
             } else if (record.model.name == this.description.relation) {
-                fields = record.model.fields;
+                model = record.model;
+            } else {
+                model = new Sao.Model(this.description.relation);
             }
-            group = Sao.Group(new Sao.Model(this.description.relation),
-                this.context, []);
-            group.parent = record;
-            group.parent_name = this.description.relation_field;
-            group.child_name = this.name;
-            group.model.fields = fields;
-            record._values[this.name] = group;
-            group.load(value);
+            var prm = jQuery.when();
+            if ((mode == 'list values') && !jQuery.isEmptyObject(value)) {
+                var context = this.get_context(record);
+                var field_names = {};
+                for (var val in value) {
+                    if (!value.hasOwnProperty(val)) {
+                        continue;
+                    }
+                    for (var fieldname in val) {
+                        if (!val.hasOwnProperty(fieldname)) {
+                            continue;
+                        }
+                        field_names[fieldname] = true;
+                    }
+                }
+                if (!jQuery.isEmptyObject(field_names)) {
+                    var args = {
+                        'method': 'model.' + this.description.relation +
+                            '.fields_get',
+                        'params': [Object.keys(field_names), context]
+                    };
+                    prm = Sao.rpc(args, record.model.session);
+                }
+            }
+            var set_value = function(fields) {
+                var group = Sao.Group(model, this.context, []);
+                group.parent = record;
+                group.parent_name = this.description.relation_field;
+                group.child_name = this.name;
+                if (!jQuery.isEmptyObject(fields)) {
+                    group.model.add_fields(fields);
+                }
+                if (record._values[this.name] !== undefined) {
+                    for (var i = 0, len = record._values[this.name].length;
+                            i < len; i++) {
+                        var r = record._values[this.name][i];
+                        if (r.id >= 0) {
+                            group.record_deleted.push(r);
+                        }
+                    }
+                    jQuery.extend(group.record_deleted,
+                            record._values[this.name].record_deleted);
+                    jQuery.extend(group.record_removed,
+                            record._values[this.name].record_removed);
+                }
+                record._values[this.name] = group;
+                if (mode == 'list ids') {
+                    group.load(value);
+                } else {
+                    for (var vals in value) {
+                        if (!value.hasOwnProperty(vals)) {
+                            continue;
+                        }
+                        var new_record = group.new_(false);
+                        if (default_) {
+                            new_record.set_default(vals);
+                            group.add(new_record);
+                        } else {
+                            new_record.id *= 1;
+                            new_record.set(vals);
+                            group.push(new_record);
+                        }
+                    }
+                }
+            };
+            return prm.pipe(set_value.bind(this));
+        },
+        set: function(record, value) {
+            this._set_value(record, value, false);
         },
         get: function(record) {
             var group = record._values[this.name];
@@ -882,45 +1001,47 @@
             return record._values[this.name];
         },
         set_default: function(record, value) {
-            // value is a list of id
-            if ((value instanceof Array) && !isNaN(parseInt(value[0], 10))) {
-                this.set(record, value);
+            var previous_group = record._values[this.name];
+            var prm = this._set_value(record, value, true);
+            prm.done(function() {
+                var group = record._values[this.name];
+                previous_group.forEach(function(r) {
+                    if (r.id >= 0) {
+                        group.record_deleted.push(r);
+                    }
+                });
+                group.record_deleted = group.record_deleted.concat(
+                    previous_group.record_deleted);
+                group.record_removed = group.record_removed.concat(
+                    previous_group.record_removed);
+            }.bind(this));
+            record._changed[this.name] = true;
+        },
+        set_on_change: function(record, value) {
+            this._set_default_value(record);
+            if (value instanceof Array) {
+                this._set_value(record, value);
                 record._changed[this.name] = true;
+                record.group.changed();
                 return;
             }
-            var group = record._values[this.name];
-            var fields = {};
-            if (group !== undefined) {
-                fields = jQuery.extend({}, group.mode.fields);
-                // TODO destroy and unconnect
-            } else if (record.model.name == this.description.relation) {
-                fields = record.model.fields;
-            }
-            if (!jQuery.isEmptyObject(fields)) {
-                for (var name in fields) {
-                    if (fields.hasOwnProperty(name)) {
-                        fields[name] = fields[name].description;
-                    }
-                }
-            }
             var prm = jQuery.when();
-            prm.pipe(function() {
-                return fields;
-            });
-            if (!jQuery.isEmptyObject(value)) {
+            if (value.add || value.update) {
                 var context = this.get_context(record);
+                var fields = record._values[this.name].model.fields;
                 var field_names = {};
-                for (var val in value) {
-                    if (!value.hasOwnProperty(val)) {
-                        continue;
+                [value.add, value.update].forEach(function(l) {
+                    if (!jQuery.isEmptyObject(l)) {
+                        l.forEach(function(v) {
+                            Object.keys(v).forEach(function(f) {
+                                if (!(f in fields) &&
+                                    (f != 'id')) {
+                                        field_names[f] = true;
+                                    }
+                            });
+                        });
                     }
-                    for (var fieldname in val) {
-                        if (!val.hasOwnProperty(fieldname)) {
-                            continue;
-                        }
-                        field_names[fieldname] = true;
-                    }
-                }
+                });
                 if (!jQuery.isEmptyObject(field_names)) {
                     var args = {
                         'method': 'model.' + this.description.relation +
@@ -928,42 +1049,53 @@
                         'params': [Object.keys(field_names), context]
                     };
                     prm = Sao.rpc(args, record.model.session);
-                    prm.pipe(function(new_fields) {
-                        return jQuery.extend(fields, new_fields);
-                    });
+                } else {
+                    prm.resolve({});
                 }
             }
-            var set_value = function(fields) {
-                var group = Sao.Group(new Sao.Model(this.description.relation),
-                        this.context, []);
-                group.parent = record;
-                group.parent_name = this.description.relation_field;
-                group.child_name = this.name;
-                group.model.add_fields(fields);
-                if (record._values[this.name] !== undefined) {
-                    for (var i = 0, len = record._values[this.name].length;
-                            i < len; i++) {
-                        var r = record._values[this.name][i];
-                        if (r.id >= 0) {
-                            group.record_deleted.push(r);
-                        }
-                    }
-                    jQuery.extend(group.record_deleted,
-                            record._values[this.name].record_deleted);
-                    jQuery.extend(group.record_removed,
-                            record._values[this.name].record_removed);
+
+            var to_remove = [];
+            var group = record._values[this.name];
+            group.forEach(function(record2) {
+                if (!record2.id) {
+                    to_remove.push(record2);
                 }
-                record._values[this.name] = group;
-                for (var val in value) {
-                    if (!value.hasOwnProperty(val)) {
-                        continue;
+            });
+            if (value.remove) {
+                value.remove.forEach(function(record_id) {
+                    var record2 = group.get(record_id);
+                    if (record2) {
+                        to_remove.push(record2);
                     }
-                    var new_record = group.new_(false);
-                    new_record.set_default(val);
-                    group.add(new_record);
-                }
-            };
-            prm.done(set_value.bind(this));
+                }.bind(this));
+            }
+            to_remove.forEach(function(record2) {
+                group.remove(record2, false, true, false);
+            }.bind(this));
+
+            if (value.add || value.update) {
+                prm.then(function(fields) {
+                    group.model.add_fields(fields);
+                    if (value.add) {
+                        value.add.forEach(function(vals) {
+                            var new_record = group.new_(false);
+                            group.add(new_record);
+                            new_record.set_on_change(vals);
+                        });
+                    }
+                    if (value.update) {
+                        value.update.forEach(function(vals) {
+                            if (!vals.id) {
+                                return;
+                            }
+                            var record2 = group.get(vals.id);
+                            if (record2) {
+                                record2.set_on_change(vals);
+                            }
+                        });
+                    }
+                }.bind(this));
+            }
         },
         _set_default_value: function(record) {
             if (record._values[this.name] !== undefined) {
@@ -1007,25 +1139,30 @@
                     result.push(record2.get_on_change_value());
             }
             return result;
+        },
+        changed: function(record) {
+            if (!this.in_on_change) {
+                return Sao.field.One2Many._super.changed.call(this, record);
+            }
         }
     });
 
     Sao.field.Many2Many = Sao.class_(Sao.field.One2Many, {
         set: function(record, value) {
             var group = record._values[this.name];
-            var fields = {};
+            var model;
             if (group !== undefined) {
-                fields = jQuery.extend({}, group.model.fields);
+                model = group.model;
                 // TODO destroy and unconnect
             } else if (record.model.name == this.description.relation) {
-                fields = record.model.fields;
+                model = record.model;
+            } else {
+                model = new Sao.Model(this.description.relation);
             }
-            group = Sao.Group(new Sao.Model(this.description.relation),
-                this.context, []);
+            group = Sao.Group(model, this.context, []);
             group.parent = record;
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
-            group.model.fields = fields;
             if (record._values[this.name] !== undefined) {
                 jQuery.extend(group.record_removed, record._values[this.name]);
                 jQuery.extend(group.record_deleted,

@@ -42,8 +42,8 @@
             environment = parent_.get_eval();
         } else {
             environment = {};
-            for (var key in parent_.fields) {
-                var field = parent_.fields[field];
+            for (var key in parent_.model.fields) {
+                var field = parent_.model.fields[key];
                 environment[key] = field.get_on_change_value(parent_);
             }
         }
