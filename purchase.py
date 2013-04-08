@@ -30,8 +30,8 @@ class PurchaseRequest:
         SaleLine = pool.get('sale.line')
         cursor = Transaction().cursor
 
-        sale_ids = [r.origin.id for r in requests
-            if isinstance(r.origin, Sale)]
+        sale_ids = list(set(r.origin.id for r in requests
+                if isinstance(r.origin, Sale)))
 
         with Transaction().set_user(0, set_context=True):
             sale_lines = []
@@ -74,7 +74,7 @@ class Purchase:
         requests = list(chain(*requests))
 
         if requests:
-            sale_ids = [req.origin.id for req in requests]
+            sale_ids = list(set(req.origin.id for req in requests))
             with Transaction().set_user(0, set_context=True):
                 Sale.process(Sale.browse(sale_ids))
 
