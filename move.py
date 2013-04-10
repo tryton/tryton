@@ -197,7 +197,7 @@ class Move(ModelSQL, ModelView):
         for move in moves:
             if move.state == 'posted':
                 cls.raise_user_error('modify_posted_move',
-                    error_args=(move.name,))
+                    error_args=(move.rec_name,))
 
     @classmethod
     def search_rec_name(cls, name, clause):
