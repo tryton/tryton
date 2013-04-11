@@ -6,6 +6,7 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.const import OPERATORS
 
 __all__ = ['Sale', 'SaleLine']
 __metaclass__ = PoolMeta
@@ -173,7 +174,8 @@ class SaleLine:
                 if value['purchase_request']:
                     purchase_request = id2purchase_requests[
                         value['purchase_request']]
-                    if purchase_request.purchase_line:
+                    if (purchase_request.customer
+                            and purchase_request.purchase_line):
                         move_ids = tuple(m.id
                             for m in purchase_request.purchase_line.moves)
                         if value['moves'] is None:
@@ -183,3 +185,29 @@ class SaleLine:
                 if added:
                     del value['purchase_request']
         return values
+
+    @classmethod
+    def search(cls, domain, *args, **kwargs):
+        def process(domain):
+            domain = domain[:]
+            i = 0
+            while i < len(domain):
+                arg = domain[i]
+                if (isinstance(arg, tuple)
+                        or (isinstance(arg, list)
+                            and len(arg) > 2
+                            and arg[1] in OPERATORS)):
+                    if arg[0] == 'moves':
+                        domain[i] = ['OR',
+                            arg,
+                            [
+                                ('purchase_request.purchase_line.moves',) +
+                                tuple(arg[1:]),
+                                ('purchase_request.customer', '!=', None),
+                                ]
+                            ]
+                elif isinstance(arg, list):
+                    domain[i] = process(domain)
+                i += 1
+            return domain
+        return super(SaleLine, cls).search(process(domain), *args, **kwargs)
