@@ -96,7 +96,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "compañias"
+msgstr "Compañias"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
@@ -144,16 +144,15 @@ msgstr "Compañia"
 
 msgctxt "field:res.user,companies:"
 msgid "Current Companies"
-msgstr "Compañias actuales"
+msgstr "Compañias Actuales"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Compañia actual"
+msgstr "Compañia Actual"
 
-#, fuzzy
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Empleado"
+msgstr "Empleado Actual"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
@@ -231,10 +230,9 @@ msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "Carta"
 
-#, fuzzy
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "ir.cron-company.company"
+msgstr "Cron - Compañia"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
@@ -262,7 +260,7 @@ msgstr "Fecha:"
 
 msgctxt "odt:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Estimados señores y señoras,"
+msgstr "Estimados Señores y Señoras,"
 
 msgctxt "odt:party.letter:"
 msgid "E-Mail:"
@@ -282,7 +280,7 @@ msgstr "NIT:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr "Crear una Compañia"
+msgstr "Crear Compañia"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
