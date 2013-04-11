@@ -1198,6 +1198,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
         for invoice in invoices:
             invoice.set_number()
             invoice.create_move()
+        cls.write(invoices, {
+                'state': 'posted',
+                })
+        for invoice in invoices:
             invoice.print_invoice()
 
     @classmethod
