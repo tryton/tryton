@@ -206,9 +206,9 @@ class Product(ModelSQL, ModelView):
                         and isinstance(arg[1], basestring)
                         and arg[1] in OPERATORS):
                     # clause
-                    field = arg[0]
+                    field = arg[0].split('.', 1)[0]
                     if not getattr(cls, field, None):
-                        field = 'template.' + field
+                        field = 'template.' + arg[0]
                     result.append((field,) + tuple(arg[1:]))
                 elif isinstance(arg, list):
                     # sub-domain
