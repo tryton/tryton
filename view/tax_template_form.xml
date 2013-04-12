@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account"/>
             <newline/>
             <field name="childs" colspan="4"
-                view_ids="account.tax_view_list"/>
+                view_ids="account.tax_template_view_tree"/>
         </page>
         <page string="Code" id="code">
             <separator string="Invoice" colspan="4" id="invoice"/>
