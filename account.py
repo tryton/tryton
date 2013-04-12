@@ -238,8 +238,7 @@ class Type(ModelSQL, ModelView):
                 ('type', 'in', [t.id for t in childs]),
                 ])
         for account in accounts:
-            type_sum[account.type.id] += account.company.currency.round(
-                account.debit - account.credit)
+            type_sum[account.type.id] += account.balance
 
         for type_ in types:
             childs = cls.search([
