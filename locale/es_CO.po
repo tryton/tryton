@@ -15,6 +15,10 @@ msgstr ""
 "desactivarla y crear una nueva."
 
 msgctxt "error:product.uom:"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "Valores inválidos en factor y tasa de conversión en UdM \"%s\"."
+
+msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values!"
 msgstr "¡Factor y valores de tasa de cambio inválidas!"
 
@@ -64,9 +68,17 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Activo"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Código"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Precio de Costo"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -76,6 +88,10 @@ msgctxt "field:product.product,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "UdM por Defecto"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Descripción"
@@ -84,6 +100,10 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Precio de Lista"
+
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
 msgstr "Nombre"
@@ -91,6 +111,10 @@ msgstr "Nombre"
 msgctxt "field:product.product,template:"
 msgid "Product Template"
 msgstr "Plantilla de Producto"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Tipo"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
@@ -134,11 +158,11 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr "UdM Predeterminada"
+msgstr "UdM por Defecto"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "Categoría de UdM predeterminada"
+msgstr "Categoría de UdM por Defecto"
 
 msgctxt "field:product.template,id:"
 msgid "ID"
@@ -157,7 +181,7 @@ msgid "Name"
 msgstr "Nombre"
 
 msgctxt "field:product.template,products:"
-msgid "Products"
+msgid "Variants"
 msgstr "Productos"
 
 msgctxt "field:product.template,rec_name:"
@@ -288,11 +312,15 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorías"
 
-msgctxt "model:ir.action,name:act_product_by_category"
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Variedad"
+
+msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Producto por Categoría"
 
-msgctxt "model:ir.action,name:act_product_form"
+msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Productos"
 
@@ -316,7 +344,11 @@ msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Variedad"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
 msgstr "Productos"
 
@@ -333,8 +365,8 @@ msgid "Product Category"
 msgstr "Categoría de Producto"
 
 msgctxt "model:product.product,name:"
-msgid "Product"
-msgstr "Producto"
+msgid "Product Variant"
+msgstr "Variedad de Producto"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
@@ -466,7 +498,7 @@ msgstr "Unidad"
 
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Día de trabajo"
+msgstr "Día Laboral"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
@@ -590,7 +622,7 @@ msgstr "yd²"
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "u"
+msgstr "und"
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
@@ -632,6 +664,18 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Administración de Productos"
 
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Activos"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Artículos"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Servicio"
+
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
 msgstr "Promedio"
@@ -646,7 +690,7 @@ msgstr "Activos"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr "Bienes"
+msgstr "Artículos"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
@@ -674,7 +718,7 @@ msgstr "Producto"
 
 msgctxt "view:product.product:"
 msgid "Product Suppliers"
-msgstr "Proveedores de Productos"
+msgstr "Proveedores del Producto"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -694,7 +738,7 @@ msgstr "Plantillas de Producto"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
-msgstr "Categorías de Unidades de Medida"
+msgstr "Categorías de Unidad de Medida"
 
 msgctxt "view:product.uom.category:"
 msgid "Category of Unit of Measure"
