@@ -388,10 +388,6 @@ Class attributes are:
 
 Class methods:
 
-.. classmethod:: ModelSQL.default_sequence()
-
-    Return default value for sequence field if the model has one.
-
 .. classmethod:: ModelSQL.table_query()
 
     Could be overrided to use a custom SQL query instead of a table of the
