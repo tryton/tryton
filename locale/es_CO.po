@@ -3,11 +3,25 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
+msgid "You can not modify the party of address \"%s\"."
+msgstr "Usted no puede modificar la dirección del  tercero \"%s\" "
+
+msgctxt "error:party.address:"
 msgid "You can not modify the party of an address!"
 msgstr "¡No puede modificar el tercero de una dirección!"
 
 msgctxt "error:party.category:"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr ""
+"Inválida categoría de nombre \"%s\":  Usted no puede usar \"/\" en el nombre"
+" del campo."
+
+msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent!"
+msgstr "¡El nombre de una categoría de tercero debe ser único por cada padre!"
+
+msgctxt "error:party.category:"
+msgid "The name of a party category must be unique by parent."
 msgstr "¡El nombre de una categoría de tercero debe ser único por cada padre!"
 
 msgctxt "error:party.category:"
@@ -26,6 +40,14 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of a contact mechanism!"
 msgstr "¡No puede modificar el tercero de un medio de contacto!"
 
+msgctxt "error:party.contact_mechanism:"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "Usted no puede modificar los medios de contacto del  tercero \"%s\" "
+
+msgctxt "error:party.party:"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr "Inválido número NIT \"%(vat)s\" en tercero \"%(party)s\"."
+
 msgctxt "error:party.party:"
 msgid "Invalid VAT number!"
 msgstr "¡El NIT no es válido!"
@@ -33,6 +55,10 @@ msgstr "¡El NIT no es válido!"
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique!"
 msgstr "¡El código del tercero debe ser único!"
+
+msgctxt "error:party.party:"
+msgid "The code of the party must be unique."
+msgstr "El código del tercero debe ser único."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -241,6 +267,10 @@ msgstr "Skype"
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Tipo"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
