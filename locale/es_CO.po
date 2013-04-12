@@ -7,12 +7,24 @@ msgid "A currency can only have one rate by date!"
 msgstr "¡Una moneda solo puede tener un valor por fecha!"
 
 msgctxt "error:currency.currency.rate:"
+msgid "A currency can only have one rate by date."
+msgstr "Una moneda solo puede tener una tasa de cambio por fecha."
+
+msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "La tasa de moneda debe ser mayor o igual a 0"
 
 msgctxt "error:currency.currency:"
 msgid "Invalid Grouping!"
 msgstr "¡Agrupamiento no válido!"
+
+msgctxt "error:currency.currency:"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Agrupación inválida \"%(grouping)s\" en moneda \"%(currency)s\""
+
+msgctxt "error:currency.currency:"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
+msgstr "Tasa de cambio no emcontrada para la moneda \"%(currency)s\" el \"%(date)s\""
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for the currency: %s at the date: %s"
@@ -36,7 +48,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
-msgstr "Dígitos a mostrar"
+msgstr "Dígitos a Mostrar"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
@@ -44,7 +56,7 @@ msgstr "ID"
 
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
-msgstr "Separador decimal"
+msgstr "Separador Decimal"
 
 msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
