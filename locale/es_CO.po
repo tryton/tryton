@@ -4,11 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
 msgid "Probability must be between 0 and 100!"
-msgstr "¡La Probabilidad debe ser entre 0 y 100!"
+msgstr "La Probabilidad debe ser entre 0 y 100!"
+
+msgctxt "error:sale.opportunity:"
+msgid "Probability must be between 0 and 100."
+msgstr "La Probabilidad debe ser entre 0 y 100!"
 
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
-msgstr "¡La oportunidad de Venta \"%s\" debe ser cancelada antes de eliminar!"
+msgstr "La Oportunidad de Venta \"%s\" debe ser cancelada antes de ser eliminada!"
+
+msgctxt "error:sale.opportunity:"
+msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
+msgstr "La Oportunidad de Venta \"%s\" debe ser cancelada antes de ser eliminada."
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -36,7 +44,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
-msgstr "Gestión de Monedas"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity,currency_digits:"
 msgid "Currency Digits"
@@ -52,7 +60,7 @@ msgstr "Empleado"
 
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha Final"
 
 msgctxt "field:sale.opportunity,history:"
 msgid "History"
@@ -76,7 +84,7 @@ msgstr "Terceros"
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
-msgstr "Término de pago"
+msgstr "Forma de Pago"
 
 msgctxt "field:sale.opportunity,probability:"
 msgid "Conversion Probability"
@@ -92,7 +100,7 @@ msgstr "Venta"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicio"
+msgstr "Fecha Inicio"
 
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
@@ -128,7 +136,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
-msgstr "Modificar fecha"
+msgstr "Modificar Fecha"
 
 msgctxt "field:sale.opportunity.history,description:"
 msgid "Description"
@@ -140,7 +148,7 @@ msgstr "Empleado"
 
 msgctxt "field:sale.opportunity.history,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha Final"
 
 msgctxt "field:sale.opportunity.history,id:"
 msgid "ID"
@@ -172,7 +180,7 @@ msgstr "Nombre"
 
 msgctxt "field:sale.opportunity.history,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicio"
+msgstr "Fecha Inicio"
 
 msgctxt "field:sale.opportunity.history,state:"
 msgid "State"
@@ -220,7 +228,7 @@ msgstr "Nombre"
 
 msgctxt "field:sale.opportunity.line,sale_line:"
 msgid "Sale Line"
-msgstr "Línea de venta"
+msgstr "Línea de Venta"
 
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
@@ -276,7 +284,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
-msgstr "Gestión de Monedas"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_employee,currency_digits:"
 msgid "Currency Digits"
@@ -300,7 +308,7 @@ msgstr "Número"
 
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_employee,write_date:"
 msgid "Write Date"
@@ -312,7 +320,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:sale.opportunity_employee.open.start,end_date:"
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha Final"
 
 msgctxt "field:sale.opportunity_employee.open.start,id:"
 msgid "ID"
@@ -320,7 +328,7 @@ msgstr "ID"
 
 msgctxt "field:sale.opportunity_employee.open.start,start_date:"
 msgid "Start Date"
-msgstr "Fecha inicio"
+msgstr "Fecha Inicio"
 
 msgctxt "field:sale.opportunity_employee_monthly,amount:"
 msgid "Amount"
@@ -356,7 +364,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
-msgstr "Gestión de Monedas"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
 msgid "Currency Digits"
@@ -432,7 +440,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
-msgstr "Gestión de Monedas"
+msgstr "Moneda"
 
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
@@ -476,7 +484,7 @@ msgstr "Año-Mes"
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount"
-msgstr "Cantidad de los ingresos estimados"
+msgstr "Cantidad estimada de ingresos"
 
 msgctxt "help:sale.opportunity,probability:"
 msgid "Percentage between 0 and 100"
@@ -526,29 +534,39 @@ msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
 msgstr "Iniciativas/Oportunidades de Ventas"
 
-msgctxt "model:ir.action,name:act_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr "Iniciativas y Oportunidades Canceladas"
-
-msgctxt "model:ir.action,name:act_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr "Oportunidades Convertidas"
-
-msgctxt "model:ir.action,name:act_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr "Iniciativas Abiertas"
-
-msgctxt "model:ir.action,name:act_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr "Iniciativas y Oportunidades Perdidas"
-
-msgctxt "model:ir.action,name:act_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr "Oportunidades"
-
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr "Oportunidades por Mes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Convertido"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Iniciativas"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Perdido"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Oportunidades"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
@@ -561,26 +579,6 @@ msgstr "Oportunidades por Empleado"
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr "Iniciativas y Oportunidades"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr "Iniciativas y Oportunidades Canceladas"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr "Oportunidades Convertidas"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr "Iniciativas Abiertas"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr "Iniciativas y Oportunidades Perdidas"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr "Oportunidades"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
