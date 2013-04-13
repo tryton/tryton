@@ -55,12 +55,16 @@ class Move:
                     move.product.default_uom)
             cost_price += move_unit_price * Decimal(str(move_qty))
 
+            move.quantity = move_qty
             move._update_product_cost_price('out')
 
             move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
                     move.uom, round=False)
-            move.fifo_quantity = (move.fifo_quantity or 0.0) + move_qty
-            move.save()
+            # Use write as move instance quantity was modified to call
+            # _update_product_cost_price
+            self.write([self.__class__(move.id)], {
+                    'fifo_quantity': (move.fifo_quantity or 0.0) + move_qty,
+                    })
 
         if Decimal(str(consumed_qty)) != Decimal("0"):
             cost_price = cost_price / Decimal(str(consumed_qty))
