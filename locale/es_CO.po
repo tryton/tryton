@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
-msgstr ""
+msgstr "El porcentaje debe ser mayor que cero."
 
 msgctxt "error:project.work:"
 msgid "You can not create recursive dependencies!"
@@ -99,7 +99,7 @@ msgid "Allocations"
 msgstr "Cuotas"
 
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
+msgid "Back Leveling Delay"
 msgstr "Retardo de Escalamiento"
 
 msgctxt "field:project.work,constraint_finish_date:"
@@ -176,7 +176,7 @@ msgstr "Escalamiento de Tareas"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
-msgstr "Cuotas"
+msgstr "Cuota"
 
 msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
