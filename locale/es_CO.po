@@ -4,13 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
 msgid "Hours field must be positive"
-msgstr "El campo Horas debe ser positivo"
+msgstr "El campo horas debe ser positivo"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"Every work must be in the same company as it's parent work but \"%(child)s\""
+" and \"%(parent)s\" are in different companies."
+msgstr ""
+"Cada trabajo debe estar en la misma compañía que su trabajo padre pero "
+"\"%(child)s\" y \"%(parent)s\" están en diferentes compañias."
 
 msgctxt "error:timesheet.work:"
 msgid "Every work must be in the same company as it's parent work!"
-msgstr ""
-"¡Cada trabajo debe estar en la misma compañía lo mismo que el trabajo que lo"
-" originó!"
+msgstr "Cada trabajo debe estar en la misma compañía que su trabajo padre!"
 
 msgctxt "error:timesheet.work:"
 msgid "You can not create recursive works!"
@@ -22,7 +28,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
@@ -42,11 +48,11 @@ msgstr "Nombre"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee.open.start,end_date:"
 msgid "End Date"
@@ -58,7 +64,7 @@ msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee.open.start,start_date:"
 msgid "Start Date"
-msgstr "Fecha Inicio"
+msgstr "Fecha de Inicio"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
@@ -66,7 +72,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
@@ -90,11 +96,11 @@ msgstr "Nombre"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
@@ -106,7 +112,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
@@ -130,11 +136,11 @@ msgstr "Semana"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
@@ -146,7 +152,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:timesheet.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -178,11 +184,11 @@ msgstr "Trabajo"
 
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.line,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -202,7 +208,7 @@ msgstr "Activo"
 
 msgctxt "field:timesheet.work,children:"
 msgid "Children"
-msgstr "Descendientes"
+msgstr "Hijos"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
@@ -214,7 +220,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:timesheet.work,hours:"
 msgid "Timesheet Hours"
@@ -246,20 +252,27 @@ msgstr "Derecha"
 
 msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Disponibilidad en los registros de tiempos"
+msgstr "Disponible en los registros de tiempo"
 
-#, fuzzy
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fin de Registro de Tiempo"
+
 msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr "Punto de Orden"
+msgid "Timesheet Lines"
+msgstr "Lineas de Registro de Tiempo"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Inicio de Registro de Tiempo"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:timesheet.work.open.start,from_date:"
 msgid "From Date"
@@ -279,7 +292,7 @@ msgstr "Tiempo total utilizado en este trabajo"
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
-msgstr "Permitir llenar en registro de tiempos con este trabajo"
+msgstr "Permite llenar los registros de tiempo con este trabajo"
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -287,7 +300,7 @@ msgstr "Horas por Empleado"
 
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Horas por Empleado en el mes"
+msgstr "Horas por Empleado por Mes"
 
 msgctxt "model:ir.action,name:act_hours_employee_open"
 msgid "Hours per Employee"
@@ -295,13 +308,17 @@ msgstr "Horas por Empleado"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Horas por Empleado en la semana"
+msgstr "Horas por Empleado por Semana"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
 msgstr "Ingresar Registro de Tiempo"
 
 msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Lineas de Registro de Tiempo"
+
+msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Lineas de Registro de Tiempo"
 
@@ -347,11 +364,11 @@ msgstr "Horas por Empleado"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr "Horas por Empleado en el mes"
+msgstr "Horas por Empleado por Mes"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr "Horas por Empleado en la semana"
+msgstr "Horas por Empleado por Semana"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
@@ -363,7 +380,7 @@ msgstr "Lineas de Registro de Tiempo"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reportes"
+msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
@@ -395,11 +412,11 @@ msgstr "Abrir Horas por Empleado"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
-msgstr "Horas por Empleado en el mes"
+msgstr "Horas por Empleado por Mes"
 
 msgctxt "model:timesheet.hours_employee_weekly,name:"
 msgid "Hours per Employee per Week"
-msgstr "Horas por Empleado en la semana"
+msgstr "Horas por Empleado por Semana"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
@@ -431,11 +448,11 @@ msgstr "Horas por Empleado"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
-msgstr "Horas por Empleado en el mes"
+msgstr "Horas por Empleado por Mes"
 
 msgctxt "view:timesheet.hours_employee_weekly:"
 msgid "Hours per Employee per Week"
-msgstr "Horas por Empleado en la semana"
+msgstr "Horas por Empleado por Semana"
 
 msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
