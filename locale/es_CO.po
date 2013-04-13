@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr "Contador"
+msgstr "Contar"
 
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
