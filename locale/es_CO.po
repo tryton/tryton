@@ -3,6 +3,10 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.price_list.line:"
+msgid "Invalid formula \"%(formula)s\" in price list line \"%(line)s\"."
+msgstr "Fómula inválida \"%(formula)s\" en línea de lista de precios \"%(line)s\"."
+
+msgctxt "error:product.price_list.line:"
 msgid "Invalid formula!"
 msgstr "Invalida formula!"
 
