@@ -95,8 +95,8 @@ class Move:
                     and move.from_location.type == 'storage'
                     and move.product.cost_price_method == 'fifo'):
                 move._update_product_cost_price('out')
-            elif (move.to_location.type != 'storage'  # XXX from_location?
-                    and move.to_location.type != 'supplier'
+            elif (move.from_location.type == 'storage'
+                    and move.to_location.type != 'storage'
                     and move.product.cost_price_method == 'fifo'):
                 cost_price = move._update_fifo_out_product_cost_price()
                 if not move.cost_price:
