@@ -1,0 +1,191 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,create_date:"
+msgid "Create Date"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.attribute,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.attribute,digits:"
+msgid "Digits"
+msgstr "Decimales"
+
+msgctxt "field:product.attribute,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.attribute,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.attribute,selection:"
+msgid "Selection"
+msgstr "Selección"
+
+msgctxt "field:product.attribute,selection_json:"
+msgid "Selection JSON"
+msgstr "Selección JSON"
+
+msgctxt "field:product.attribute,sets:"
+msgid "Sets"
+msgstr "Kits"
+
+msgctxt "field:product.attribute,string:"
+msgid "String"
+msgstr "Cadena"
+
+msgctxt "field:product.attribute,type_:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:product.attribute,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.attribute,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute:"
+msgid "Attribute"
+msgstr "Atributo"
+
+msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
+msgid "Set"
+msgstr "Kit"
+
+msgctxt "field:product.attribute-product.attribute-set,create_date:"
+msgid "Create Date"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.attribute-product.attribute-set,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.attribute-product.attribute-set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute-product.attribute-set,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.attribute-product.attribute-set,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.attribute-product.attribute-set,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.attribute.set,attributes:"
+msgid "Attributes"
+msgstr "Atributos"
+
+msgctxt "field:product.attribute.set,create_date:"
+msgid "Create Date"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.attribute.set,create_uid:"
+msgid "Create User"
+msgstr "Creado por Usuario"
+
+msgctxt "field:product.attribute.set,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.attribute.set,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.attribute.set,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.attribute.set,write_date:"
+msgid "Write Date"
+msgstr "Fecha de Modificación"
+
+msgctxt "field:product.attribute.set,write_uid:"
+msgid "Write User"
+msgstr "Modificado por Usuario"
+
+msgctxt "field:product.product,attributes:"
+msgid "Attributes"
+msgstr "Atributos"
+
+msgctxt "field:product.template,attribute_set:"
+msgid "Set"
+msgstr "Kit"
+
+msgctxt "help:product.attribute,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "Un par de claves y rótulos separados por \":\" por línea."
+
+msgctxt "model:ir.action,name:act_attribute_form"
+msgid "Attributes"
+msgstr "Atributos"
+
+msgctxt "model:ir.action,name:act_attribute_set_form"
+msgid "Attribute Sets"
+msgstr "Kits Atributo"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute"
+msgid "Attribute Sets"
+msgstr "Kits Atributo"
+
+msgctxt "model:ir.ui.menu,name:menu_attribute_set"
+msgid "Attribute Sets"
+msgstr "Kits Atributo"
+
+msgctxt "model:product.attribute,name:"
+msgid "Product Attribute"
+msgstr "Atributo de Producto"
+
+msgctxt "model:product.attribute-product.attribute-set,name:"
+msgid "Product Attribute - Set"
+msgstr "Atributo de Producto - Kit"
+
+msgctxt "model:product.attribute.set,name:"
+msgid "Product Attribute Set"
+msgstr "Atributo de Producto - Kit"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Boolean"
+msgstr "Boleano"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Char"
+msgstr "Caracter"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "DateTime"
+msgstr "Fecha-Hora"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Float"
+msgstr "Flotante"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Integer"
+msgstr "Entero"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Numeric"
+msgstr "Numerico"
+
+msgctxt "selection:product.attribute,type_:"
+msgid "Selection"
+msgstr "Selección"
