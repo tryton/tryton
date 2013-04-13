@@ -557,7 +557,7 @@ class ModelStorage(Model):
                     warn('too_many_relations_found', value, relation)
                     res = None
                 else:
-                    res = res[0]
+                    res = res[0].id
                 return res
 
             def get_many2many(relation, value):
@@ -577,7 +577,7 @@ class ModelStorage(Model):
                     else:
                         res.extend(res2)
                 if len(res):
-                    res = [('set', res)]
+                    res = [('set', [x.id for x in res])]
                 return res
 
             def get_one2one(relation, value):
