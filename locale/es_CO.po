@@ -4,34 +4,65 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.forecast.complete:"
 msgid "\"From Date\" should be smaller than \"To Date\"!"
-msgstr "¡\"Desde la Fecha\" debería ser menor que \"A la Fecha\"!"
+msgstr "\"Desde la Fecha\" debería ser menor que \"A la Fecha\"!"
+
+msgctxt "error:stock.forecast.complete:"
+msgid "\"From Date\" should be smaller than \"To Date\"."
+msgstr "\"Desde la Fecha\" debería ser menor que \"A la Fecha\"!"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be greater than the minimal quantity"
+msgstr "La cantidad por línea debe ser mayor que la mínima cantidad!"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be greater than the minimal quantity!"
-msgstr "¡La cantidad por línea debe ser mayor que la mínima cantidad!"
+msgstr "La cantidad por línea debe ser mayor que la mínima cantidad!"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Line quantity must be positive"
+msgstr "La cantidad en la línea debe ser positiva."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be positive!"
-msgstr "La línea de cantidad debe ser positiva!"
+msgstr "La cantidad en la línea debe ser positiva!"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forcast!"
 msgstr "¡El producto debe ser único por proyección!"
+
+msgctxt "error:stock.forecast.line:"
+msgid "Product must be unique by forecast"
+msgstr "¡El producto debe ser único por proyección!"
+
+msgctxt "error:stock.forecast:"
+msgid "\"To Date\" must be greater than \"From Date\""
+msgstr "\"Hasta la Fecha\" debe ser mayor que \"Desde la Fecha\""
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\"!"
 msgstr "\"Hasta la Fecha\" debe ser mayor que \"Desde la Fecha\""
 
 msgctxt "error:stock.forecast:"
+msgid ""
+"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
+" same location."
+msgstr ""
+"La proyección \"%s(first)s\" se solapa con las fechas de la proyección "
+"\"%(second)s\" en la misma bodega."
+
+msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion!"
-msgstr "¡La proyección \"%s\" debe ser cancelada antes de su eliminación!"
+msgstr "La proyección \"%s\" debe ser cancelada antes de su eliminación!"
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion."
+msgstr "La proyección \"%s\" debe ser cancelada antes de su eliminación."
 
 msgctxt "error:stock.forecast:"
 msgid ""
 "You can not create forecasts for the same locations with overlapping dates"
 msgstr ""
-"No puede crear proyecciones para la misma localización con fechas "
-"sobrepuestas"
+"No puede crear proyecciones para la misma fechas con fechas sobrepuestas"
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
@@ -75,7 +106,7 @@ msgstr "A la Fecha"
 
 msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
-msgstr "Locación"
+msgstr "Bodega"
 
 msgctxt "field:stock.forecast,write_date:"
 msgid "Write Date"
@@ -201,41 +232,42 @@ msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
 msgstr "Proyecciones"
 
-msgctxt "model:ir.action,name:act_forecast_form_draft"
-msgid "Draft Forecasts"
-msgstr "Proyecciones en Borrador"
-
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
 msgstr "Proyección Completa"
+
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
 msgstr "Proyecciones"
 
-msgctxt "model:ir.ui.menu,name:menu_forecast_form_draft"
-msgid "Draft Forecasts"
-msgstr "Proyecciones en Borrador"
-
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
-msgstr "Proyección de Almacén"
+msgstr "Proyección de Inventario"
 
 msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
-msgstr "Proyección de Almacén"
+msgstr "Proyección de Inventario"
 
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
-msgstr "Pregunta Proyección Completa"
+msgstr "Proyección Completa"
 
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
-msgstr "Escojer Proyección Completa"
+msgstr "Proyección Completa"
 
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
-msgstr "Línea de Proyección de Almacén"
+msgstr "Línea de Proyección de Inventario"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
