@@ -669,11 +669,11 @@ class ModelStorage(Model):
                         else:
                             res = bool(int(value))
                     elif field_type == 'integer':
-                        res = value and int(value) or None
+                        res = int(value) if value else None
                     elif field_type == 'float':
-                        res = value and float(value) or None
+                        res = float(value) if value else None
                     elif field_type == 'numeric':
-                        res = value and Decimal(value) or None
+                        res = Decimal(value) if value else None
                     elif field_type == 'date':
                         res = value and datetime.date(*time.strptime(value,
                             '%Y-%m-%d')[:3])
