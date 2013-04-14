@@ -51,16 +51,16 @@ msgid "Carriers"
 msgstr "Transportadores"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
-msgstr "Gestión de Empresa de Transporte"
+msgid "Carrier"
+msgstr "Transportadora"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "Empresa de Transporte"
+msgstr "Transportadoras"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administración Empresa de Transportes"
+msgstr "Administración Transportadora"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
@@ -72,4 +72,4 @@ msgstr "Transportadora"
 
 msgctxt "view:carrier:"
 msgid "Carriers"
-msgstr "Transportadores"
+msgstr "Transportadoras"
