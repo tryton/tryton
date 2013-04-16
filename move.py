@@ -281,6 +281,10 @@ class Move(ModelSQL, ModelView):
         if (self.to_location
                 and self.to_location.type == 'customer'):
             return True
+        if (self.from_location and self.to_location
+                and self.from_location.type == 'storage'
+                and self.to_location.type == 'supplier'):
+            return True
         return False
 
     @classmethod
