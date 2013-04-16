@@ -255,9 +255,9 @@ class Product(ModelSQL, ModelView):
                             '(' \
                                 '(effective_date IS NULL) '\
                             'AND '\
-                                '(planned_date <= %s) '\
+                                '(COALESCE(planned_date, %s) <= %s) '\
                             'AND '\
-                                '(planned_date >= %s)'\
+                                '(COALESCE(planned_date, %s) >= %s)'\
                             ')'\
                         'OR '\
                             '(' \
@@ -273,7 +273,8 @@ class Product(ModelSQL, ModelView):
                 'done', context.get('stock_assign') and 'assigned' or 'done',
                 today, today,
                 'done', 'assigned', 'draft',
-                context['stock_date_end'], today,
+                datetime.date.max, context['stock_date_end'],
+                datetime.date.max, today,
                 context['stock_date_end'], today,
                 ]
 
