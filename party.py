@@ -179,17 +179,7 @@ class Party(ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default['code'] = None
-        default['addresses'] = None
-        new_parties = []
-        for party in parties:
-            new_party = super(Party, cls).copy(party, default=default)
-            Address.copy([x.id for x in new_party.addresses],
-                    default={
-                        'party': new_party.id,
-                        })
-            new_parties.append(new_party)
-
-        return new_parties
+        return super(Party, cls).copy(parties, default=default)
 
     @classmethod
     def search_rec_name(cls, name, clause):
