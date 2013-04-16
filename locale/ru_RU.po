@@ -8,15 +8,15 @@ msgstr "Действие"
 
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
@@ -24,7 +24,7 @@ msgstr "Наименование"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
-msgstr "Последовательность"
+msgstr "Нумерация"
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
@@ -32,11 +32,11 @@ msgstr "Пользователь"
 
 msgctxt "field:dashboard.action,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:dashboard.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
@@ -46,10 +46,9 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Расположение на панели"
 
-#, fuzzy
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "Панель действий"
+msgstr "Панель действия"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
@@ -65,23 +64,19 @@ msgstr "Квадрат"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "Стек Нижний"
+msgstr "Выровнять вниз"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "Стек слева"
+msgstr "Выровнять влево"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr "Стек справа"
+msgstr "Выровнять вправо"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr "Стек сверху"
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard"
-msgstr "Информационная панель"
+msgstr "Выровнять вверх"
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
@@ -94,11 +89,3 @@ msgstr "Панель действий"
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Информационная панель"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Action"
-msgstr "Действия панели"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Actions"
-msgstr "Действия панели"
