@@ -911,7 +911,8 @@ class Sale(Workflow, ModelSQL, ModelView):
     @Workflow.transition('processing')
     def process(self, ids):
         done = []
-        for sale in self.browse(ids):
+        for sale_id in ids:
+            sale = self.browse(sale_id)
             if sale.state in ('done', 'cancel'):
                 continue
             self.create_invoice(sale, 'out_invoice')
