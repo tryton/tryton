@@ -971,11 +971,13 @@ class SaleLine(ModelSQL, ModelView):
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
-            on_change_with=['product', '_parent_sale.sale_date'],
+            on_change_with=['product', 'quantity', '_parent_sale.sale_date'],
             states={
-                'invisible': Eval('type') != 'line',
+                'invisible': ((Eval('type') != 'line')
+                    | (If(Bool(Eval('quantity')), Eval('quantity', 0), 0)
+                        <= 0)),
                 },
-            depends=['type']),
+            depends=['type', 'quantity']),
         'on_change_with_delivery_date')
 
     @classmethod
@@ -1187,7 +1189,7 @@ class SaleLine(ModelSQL, ModelView):
                 return self.warehouse.input_location.id
 
     def on_change_with_delivery_date(self, name=None):
-        if self.product:
+        if self.product and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             return self.product.compute_delivery_date(date=date)
 
