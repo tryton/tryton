@@ -885,8 +885,14 @@ class PurchaseLine(ModelSQL, ModelView):
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
-            on_change_with=['product', '_parent_purchase.purchase_date',
-                '_parent_purchase.party']),
+            on_change_with=['product', 'quantity',
+                '_parent_purchase.purchase_date', '_parent_purchase.party'],
+            states={
+                'invisible': ((Eval('type') != 'line')
+                    | (If(Bool(Eval('quantity')), Eval('quantity', 0), 0)
+                        <= 0)),
+                },
+            depends=['type', 'quantity']),
         'on_change_with_delivery_date')
 
     @classmethod
@@ -1091,6 +1097,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
     def on_change_with_delivery_date(self, name=None):
         if (self.product
+                and self.quantity > 0
                 and self.purchase and self.purchase.party
                 and self.product.product_suppliers):
             date = self.purchase.purchase_date if self.purchase else None
