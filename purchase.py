@@ -777,7 +777,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
     def process(self, ids):
         done = []
-        for purchase in self.browse(ids):
+        for purchase_id in ids:
+            purchase = self.browse(purchase_id)
             if purchase.state in ('done', 'cancel'):
                 continue
             self.create_invoice(purchase)
