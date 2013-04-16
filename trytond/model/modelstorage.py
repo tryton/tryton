@@ -140,7 +140,7 @@ class ModelStorage(Model):
 
         # Clean cursor cache
         for cache in Transaction().cursor.cache.values():
-            for cache in (cache, cache.get('_language_cache', {}).values()):
+            for cache in [cache] + cache.get('_language_cache', {}).values():
                 if self._name in cache:
                     if isinstance(ids, (int, long)):
                         ids = [ids]
@@ -210,7 +210,7 @@ class ModelStorage(Model):
 
         # Clean cursor cache
         for cache in Transaction().cursor.cache.values():
-            for cache in (cache, cache.get('_language_cache', {}).values()):
+            for cache in [cache] + cache.get('_language_cache', {}).values():
                 if self._name in cache:
                     if isinstance(ids, (int, long)):
                         ids = [ids]
