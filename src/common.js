@@ -33,13 +33,14 @@
         if (alwaysask === undefined) {
             alwaysask = false;
         }
+        var prm = jQuery.Deferred();
         if ((Object.keys(values).length == 1) && (!alwaysask)) {
-            var prm = jQuery.Deferred();
             var key = Object.keys(values)[0];
             prm.resolve(values[key]);
             return prm;
         }
         // TODO
+        return prm.fail();
     };
 
     Sao.common.date_format = function() {

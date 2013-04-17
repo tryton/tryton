@@ -114,16 +114,14 @@
             // TODO translation
             var prm = Sao.common.selection('Select your action', keyact,
                     alwaysask);
-            prm.done(function(action) {
+            return prm.then(function(action) {
                 Sao.Action.exec_action(action, data, context);
-            });
-            prm.fail(function() {
+            }, function() {
                 if (jQuery.isEmptyObject(keyact) && warning) {
                     // TODO translation
                     alert('No action defined!');
                 }
             });
-            return prm;
         };
         return prm.pipe(exec_action);
     };
