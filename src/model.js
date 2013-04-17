@@ -1071,15 +1071,17 @@
             var prm = this._set_value(record, value, true);
             prm.done(function() {
                 var group = record._values[this.name];
-                previous_group.forEach(function(r) {
-                    if (r.id >= 0) {
-                        group.record_deleted.push(r);
-                    }
-                });
-                group.record_deleted = group.record_deleted.concat(
-                    previous_group.record_deleted);
-                group.record_removed = group.record_removed.concat(
-                    previous_group.record_removed);
+                if (previous_group) {
+                    previous_group.forEach(function(r) {
+                        if (r.id >= 0) {
+                            group.record_deleted.push(r);
+                        }
+                    });
+                    group.record_deleted = group.record_deleted.concat(
+                        previous_group.record_deleted);
+                    group.record_removed = group.record_removed.concat(
+                        previous_group.record_removed);
+                }
             }.bind(this));
             record._changed[this.name] = true;
         },
