@@ -5,9 +5,17 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:analytic_account.account.selection:"
 msgid ""
 "Can not have many accounts with the same root or a missing mandatory root "
+"account on \"%s\"."
+msgstr ""
+"No puede tener varias cuentas con la misma cuenta padre o que les falte la "
+"cuenta padre!"
+
+msgctxt "error:analytic_account.account.selection:"
+msgid ""
+"Can not have many accounts with the same root or a missing mandatory root "
 "account!"
 msgstr ""
-"¡No se puede tener varias cuentas con la misma cuenta padre o tantas sin "
+"No puede tener varias cuentas con la misma cuenta padre o que les falte la "
 "cuenta padre!"
 
 msgctxt "error:analytic_account.account:"
@@ -16,13 +24,25 @@ msgstr "¡No se puede crear cuentas recursivas!"
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values!"
-msgstr "Valores erróneos de crédito/debito!"
+msgstr "Valores de haber/debe incorrectos!"
+
+msgctxt "error:analytic_account.line:"
+msgid "Wrong credit/debit values."
+msgstr "Valores de haber/debe incorrectos!"
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using inactive account \"%s\"."
+msgstr "No puede crear una línea de asiento usando la cuenta inactiva \"%s\"."
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using view account \"%s\"."
+msgstr "No puede crear una línea de asiento usando la cuenta de vista \"%s\"."
 
 msgctxt "error:analytic_account.line:"
 msgid ""
 "You can not create move line\n"
 "on view/inactive account!"
-msgstr "No puede crearse línea de movimiento"
+msgstr "No puede crear línea de asiento en una cuenta vista o inactiva!"
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
@@ -66,7 +86,7 @@ msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de Moneda"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -217,7 +237,7 @@ msgstr "Moneda"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de Moneda"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
@@ -233,11 +253,11 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.line,journal:"
 msgid "Journal"
-msgstr "Diario"
+msgstr "Libro Diario"
 
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
-msgstr "Linea de Movimiento de Cuenta"
+msgstr "Línea de Asiento"
 
 msgctxt "field:analytic_account.line,name:"
 msgid "Name"
@@ -294,7 +314,7 @@ msgstr "Línea Analítica"
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Abrir Plan Contable"
+msgstr "Abrir Plan de Cuentas"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
@@ -318,7 +338,7 @@ msgstr "Abrir Cuenta"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir Plan de Cuentas Analiticas"
+msgstr "Abrir Plan de Cuentas Analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
@@ -334,7 +354,7 @@ msgstr "Cuenta Analítica"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir Plan de Cuentas Analiticas"
+msgstr "Abrir Plan de Cuentas Analíticas"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
@@ -410,7 +430,7 @@ msgstr "Información General"
 
 msgctxt "view:analytic_account.open_chart.start:"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir Plan de Cuentas Analiticas"
+msgstr "Abrir Plan de Cuentas Analíticas"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
