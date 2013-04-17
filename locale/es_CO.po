@@ -3,11 +3,27 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
+msgid ""
+"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
+"one configured as credit or debit on journal \"%(journal)s\"."
+msgstr ""
+"Cuenta \"%(account)s\" en linea de declaración \"%(line)s\" es la misma que "
+"la configurada como crédito o débito en diario \"%(journal)s\"."
+
+msgctxt "error:account.statement.line:"
+msgid "Amount \"%s\" is greater than the amount to pay of invoice."
+msgstr "Cantidad \"%s\" es mayor que la cantidad a pagar en la factura."
+
+msgctxt "error:account.statement.line:"
 msgid "Amount (%s) greater than the amount to pay of invoice!"
 msgstr "¡El valor (%s) es mayor que lo que se debe pagar en la factura!"
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value!"
+msgstr "La cantidad debe ser un valor positivo o negativo!"
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value."
 msgstr "La cantidad debe ser un valor positivo o negativo!"
 
 msgctxt "error:account.statement.line:"
@@ -19,10 +35,20 @@ msgstr ""
 "estado de cuenta!"
 
 msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr ""
+"Por favor indique las cuentas débito y crédito en el libro de estado de "
+"cuentas \"%s\"."
+
+msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal."
 msgstr ""
 "Por favor indique las cuentas débito y crédito en el libro de estado de "
 "cuentas."
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be \"%s\"."
+msgstr "El Balance debe ser %s!"
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be %s!"
@@ -31,6 +57,10 @@ msgstr "El Balance debe ser %s!"
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion!"
 msgstr "El estado de cuenta \"%s\" debe ser cancelado antes de ser eliminado!"
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion."
+msgstr "El estado de cuenta \"%s\" debe ser cancelado antes de ser eliminado."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -46,7 +76,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
@@ -66,7 +96,7 @@ msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
-msgstr "Diario"
+msgstr "Libro Diario"
 
 msgctxt "field:account.statement,lines:"
 msgid "Transactions"
@@ -74,7 +104,7 @@ msgstr "Transacciones"
 
 msgctxt "field:account.statement,move_lines:"
 msgid "Move Lines"
-msgstr "Líneas de Movimiento"
+msgstr "Líneas de Asiento"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -90,11 +120,11 @@ msgstr "Estado"
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
@@ -106,7 +136,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
@@ -118,7 +148,7 @@ msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
-msgstr "Diario"
+msgstr "Libro Diario"
 
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
@@ -130,11 +160,11 @@ msgstr "Nombre"
 
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -150,7 +180,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -170,7 +200,7 @@ msgstr "Factura"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
-msgstr "Movimiento de Cuenta"
+msgstr "Asiento Contable"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
@@ -186,11 +216,11 @@ msgstr "Estado de Cuenta"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
@@ -208,41 +238,40 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línea de Estado de Cuenta"
 
-msgctxt "model:ir.action,name:act_draft_statement_form"
-msgid "Draft Statements"
-msgstr "Borrador de Estados de Cuenta"
-
-msgctxt "model:ir.action,name:act_posted_statement_form"
-msgid "Posted Statements"
-msgstr "Estados de Cuenta Autorizados"
-
 msgctxt "model:ir.action,name:act_statement_form"
-msgid "All Statement"
-msgstr "Todos los Estados de Cuenta"
+msgid "Statements"
+msgstr "Estados de Cuenta"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Libros de Estados de Cuenta"
 
-msgctxt "model:ir.action,name:act_validated_statement_form"
-msgid "Validated Statement"
-msgstr "Estados de Cuenta Validados"
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "Todo"
 
-msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
-msgid "Draft Statements"
-msgstr "Estados de Cuenta en Borrador"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
 
-msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
-msgid "Posted Statements"
-msgstr "Estados de Cuenta Autorizados"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Confirmado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Validado"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
 msgstr "Estados de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
-msgid "All Statement"
-msgstr "Todos los estados de cuenta"
+msgid "Statements"
+msgstr "Estados de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -251,10 +280,6 @@ msgstr "Diarios de Estados de Cuenta"
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
 msgstr "Estados de Cuenta"
-
-msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
-msgid "Validated Statement"
-msgstr "Estados de Cuenta Válidos"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
@@ -290,7 +315,7 @@ msgstr "Cantidad"
 
 msgctxt "view:account.statement.line:"
 msgid "Bank Statement Line"
-msgstr "Línea de extracto bancario"
+msgstr "Línea de Extracto Bancario"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
@@ -310,7 +335,7 @@ msgstr "Extractos Bancarios"
 
 msgctxt "view:account.statement:"
 msgid "Bank Statement Lines"
-msgstr "Líneas de extracto bancario"
+msgstr "Línea de Extracto Bancario"
 
 msgctxt "view:account.statement:"
 msgid "Bank Statements"
@@ -322,7 +347,7 @@ msgstr "Cancelar"
 
 msgctxt "view:account.statement:"
 msgid "Move Lines"
-msgstr "Líneas de Movimiento"
+msgstr "Líneas de Asiento"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
