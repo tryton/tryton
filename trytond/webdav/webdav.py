@@ -592,7 +592,7 @@ class Collection(ModelSQL, ModelView):
                 or not object_id:
             raise DAV_Forbidden
         try:
-            cls.delete(object_id)
+            cls.delete([cls(object_id)])
         except Exception:
             raise DAV_Forbidden
         return 200
@@ -609,7 +609,7 @@ class Collection(ModelSQL, ModelView):
         pool = Pool()
         Model = pool.get(object_name)
         try:
-            Model.delete(object_id)
+            Model.delete([Model(object_id)])
         except Exception:
             raise DAV_Forbidden
         return 200
