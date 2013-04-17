@@ -1660,7 +1660,7 @@ class ModelSQL(ModelStorage):
                         table_join = 'LEFT JOIN "ir_translation" ' \
                                 'ON (ir_translation.name = ' \
                                         'ir_model.model||\',%s\' ' \
-                                    'AND ir_translation.res_id = 0 ' \
+                                    'AND ir_translation.res_id IS NULL ' \
                                     'AND ir_translation.lang = %%s ' \
                                     'AND ir_translation.type = \'model\' ' \
                                     'AND ir_translation.fuzzy = %%s)' % \
@@ -1675,7 +1675,7 @@ class ModelSQL(ModelStorage):
                                 'LEFT JOIN "ir_translation" ' \
                                 'ON (ir_translation.name = ' \
                                         'ir_model.model||\',\'||%s.name ' \
-                                    'AND ir_translation.res_id = 0 ' \
+                                    'AND ir_translation.res_id IS NULL ' \
                                     'AND ir_translation.lang = %%s ' \
                                     'AND ir_translation.type = \'%s\' ' \
                                     'AND ir_translation.fuzzy = %%s)' % \
@@ -1972,7 +1972,7 @@ class ModelSQL(ModelStorage):
                     table_join = 'LEFT JOIN "ir_translation" ' \
                             'AS "%s" ON ' \
                             '("%s".name = "ir_model".model||\',%s\' ' \
-                                'AND "%s".res_id = 0 ' \
+                                'AND "%s".res_id IS NULL ' \
                                 'AND "%s".lang = %%s ' \
                                 'AND "%s".type = \'model\' ' \
                                 'AND "%s".fuzzy = %%s)' % \
@@ -1991,7 +1991,7 @@ class ModelSQL(ModelStorage):
                     table_join = 'LEFT JOIN "ir_translation" ' \
                             'AS "%s" ON ' \
                             '("%s".name = "ir_model".model||\',\'||%s.name ' \
-                                'AND "%s".res_id = 0 ' \
+                                'AND "%s".res_id IS NULL ' \
                                 'AND "%s".lang = %%s ' \
                                 'AND "%s".type = \'%s\' ' \
                                 'AND "%s".fuzzy = %%s)' % \
