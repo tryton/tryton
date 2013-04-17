@@ -927,24 +927,35 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
-            this.el = jQuery('<input/>', {
-                'type': 'input',
+            this.el = jQuery('<div/>', {
                 'class': 'form-date'
             });
-            this.el.datepicker();
-            this.el.change(this.focus_out.bind(this));
+            this.date = jQuery('<input/>', {
+                'type': 'input'
+            });
+            this.el.append(this.date);
+            this.date.datepicker({
+                showOn: 'button'
+            });
+            this.date.next('button').text('').button({
+                icons: {
+                    primary: 'ui-icon-calendar'
+                },
+                text: false
+            });
+            this.date.change(this.focus_out.bind(this));
         },
         display: function(record, field) {
             Sao.View.Form.Date._super.display.call(this, record, field);
             if (record) {
                 var value = record.field_get_client(this.field_name);
-                this.el.datepicker('setDate', value);
+                this.date.datepicker('setDate', value);
             } else {
-                this.el.datepicker('setDate', null);
+                this.date.datepicker('setDate', null);
             }
         },
         set_value: function(record, field) {
-            var value = this.el.datepicker('getDate');
+            var value = this.date.datepicker('getDate');
             field.set_client(record, value);
         }
     });
