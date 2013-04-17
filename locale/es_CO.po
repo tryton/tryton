@@ -60,7 +60,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:product.category-customer-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
@@ -76,11 +76,11 @@ msgstr "Impuesto"
 
 msgctxt "field:product.category-customer-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.category-customer-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
@@ -92,7 +92,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:product.category-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
@@ -108,11 +108,11 @@ msgstr "Impuesto"
 
 msgctxt "field:product.category-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.template,account_category:"
 msgid "Use Category's accounts"
@@ -160,7 +160,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:product.template-customer-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.template-customer-account.tax,id:"
 msgid "ID"
@@ -180,11 +180,11 @@ msgstr "Impuesto"
 
 msgctxt "field:product.template-customer-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.template-customer-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "field:product.template-supplier-account.tax,create_date:"
 msgid "Create Date"
@@ -192,7 +192,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:product.template-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:product.template-supplier-account.tax,id:"
 msgid "ID"
@@ -212,11 +212,11 @@ msgstr "Impuesto"
 
 msgctxt "field:product.template-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr "Fecha modificación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:product.template-supplier-account.tax,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Modificado por Usuario"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category"
