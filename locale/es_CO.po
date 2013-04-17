@@ -19,6 +19,10 @@ msgid "Analytic account is required on line \"%s\" (%d)!"
 msgstr "Se requiere una cuenta analítica en la línea \"%s\" (%d)!"
 
 msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required on line \"%s\"."
+msgstr ""
+
+msgctxt "error:purchase.purchase:"
 msgid "Invoice addresses must be defined for the quotation."
 msgstr "Factura direccionada debe ser definida por el presupuesto."
 
