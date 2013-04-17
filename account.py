@@ -1659,7 +1659,8 @@ class CreateChart(Wizard):
             pool.get('account.tax.rule.line.template')
         Config = pool.get('ir.configuration')
 
-        with Transaction().set_context(language=Config.get_language()):
+        with Transaction().set_context(language=Config.get_language(),
+                company=self.account.company.id):
             account_template = self.account.account_template
 
             # Create account types
