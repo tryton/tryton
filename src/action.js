@@ -42,9 +42,9 @@
                 ctx = jQuery.extend(ctx, session.context);
                 var eval_ctx = jQuery.extend({}, ctx);
                 eval_ctx._user = session.user_id;
-                params.action_ctx = new Sao.PYSON.Decoder(eval_ctx).decode(
+                params.context = new Sao.PYSON.Decoder(eval_ctx).decode(
                         action.pyson_context || '{}');
-                ctx = jQuery.extend(ctx, params.action_ctx);
+                ctx = jQuery.extend(ctx, params.context);
                 ctx = jQuery.extend(ctx, context);
 
                 var domain_context = jQuery.extend({}, ctx);
