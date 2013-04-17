@@ -508,7 +508,7 @@ class Collection(ModelSQL, ModelView):
                     data = DAV_NotFound
                     try:
                         if attachment.data is not None:
-                            data = attachment.data
+                            data = str(attachment.data)
                     except Exception:
                         pass
                     if attachment.id == object_id:
