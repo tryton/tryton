@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 import operator
 import itertools
+import datetime
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
@@ -308,14 +310,18 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             dates = shipment._move_planned_date
             incoming_date, inventory_date = dates
+            # Update planned_date only for later to not be too optimistic if
+            # the shipment is not directly received.
             Move.write([m for m in shipment.incoming_moves
                     if (m.state not in ('assigned', 'done', 'cancel')
-                        and m.planned_date != incoming_date)], {
+                        and ((m.planned_date or datetime.date.max)
+                            < (incoming_date or datetime.date.max)))], {
                     'planned_date': incoming_date,
                     })
             Move.write([m for m in shipment.inventory_moves
                     if (m.state not in ('assigned', 'done', 'cancel')
-                        and m.planned_date != inventory_date)], {
+                        and ((m.planned_date or datetime.date.max)
+                            < (inventory_date or datetime.date.max)))], {
                     'planned_date': inventory_date,
                     })
 
