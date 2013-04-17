@@ -103,7 +103,8 @@
             }
         } else if ((typeof(value) != 'string') && (typeof(value) != 'number')) {
             if (value instanceof Date) {
-                if (value.getHours() || value.getMinutes() || value.getSeconds)
+                if (value.getHours() || value.getMinutes() ||
+                        value.getSeconds())
                 {
                     value = {
                         '__class__': 'datetime',
