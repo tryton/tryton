@@ -586,7 +586,7 @@ class Collection(ModelSQL, ModelView):
 
     @classmethod
     def rmcol(cls, uri, cache=None):
-        from pywebdav.errors import DAV_Forbidden
+        from pywebdav.lib.errors import DAV_Forbidden
         object_name, object_id = cls._uri2object(uri, cache=cache)
         if object_name != 'webdav.collection' \
                 or not object_id:
@@ -599,7 +599,7 @@ class Collection(ModelSQL, ModelView):
 
     @classmethod
     def rm(cls, uri, cache=None):
-        from pywebdav.errors import DAV_Forbidden
+        from pywebdav.lib.errors import DAV_Forbidden
         object_name, object_id = cls._uri2object(uri, cache=cache)
         if not object_name:
             raise DAV_Forbidden
