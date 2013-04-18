@@ -3,194 +3,209 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project!"
-msgstr ""
+msgid "There should be only one timesheet work by task/project."
+msgstr "Должен быть только один рабочий табель у задачи/проекта."
 
-#, fuzzy
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done.\""
+msgstr ""
+"Работа \"%(child)s\" не может быть открыта так как её предок \"%(parent)s\" "
+"уже выполнен."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened.\""
+msgstr ""
+"Работа \"%(parent)s\" не может быть завершена так как её подчиненная работа "
+"\"%(child)s\" всё ещё открыты."
+
+msgctxt "field:project.work,active:"
+msgid "Active"
+msgstr "Действующий"
+
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Подчиненый"
 
-#, fuzzy
 msgctxt "field:project.work,comment:"
 msgid "Comment"
 msgstr "Комментарии"
 
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Организация"
+
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:project.work,effort:"
 msgid "Effort"
-msgstr ""
+msgstr "Затраты"
+
+msgctxt "field:project.work,hours:"
+msgid "Timesheet Hours"
+msgstr "Часы табеля"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Основной"
+msgstr "Предок"
 
-#, fuzzy
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Организации"
+msgstr "Контрагент"
 
-#, fuzzy
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
 msgstr "Контактный адрес"
 
-#, fuzzy
 msgctxt "field:project.work,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
-#, fuzzy
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Последовательность"
+msgstr "Нумерация"
 
-#, fuzzy
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr "Статус"
+msgstr "Состояние"
+
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Доступно в табелях"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr ""
+msgstr "Общие затраты"
 
-#, fuzzy
 msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Тип"
 
 msgctxt "field:project.work,work:"
 msgid "Work"
-msgstr ""
+msgstr "Работа"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "help:project.work,effort:"
 msgid "Estimated Effort for this work"
-msgstr ""
+msgstr "Предположительные затраты для этой работы"
+
+msgctxt "help:project.work,hours:"
+msgid "Total time spent on this work"
+msgstr "Общее время потраченное на эту работу"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr ""
+msgstr "Предположительные общие затраты для этой работы и подчиненных работ"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Рабочие затраты"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Рабочие затраты"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Конфигурация"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr ""
+msgstr "Проектирование"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Рабочие затраты"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Рабочие затраты"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr ""
+msgstr "Рабочие затраты"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr ""
+msgstr "Администрирование проектирования"
 
-#, fuzzy
 msgctxt "selection:project.work,state:"
 msgid "Done"
 msgstr "Выполнено"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr ""
+msgstr "Открыт"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr ""
+msgstr "Проект"
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr ""
+msgstr "Задача"
 
-#, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
 msgstr "Подчиненый"
 
-#, fuzzy
 msgctxt "view:project.work:"
 msgid "General"
 msgstr "Основной"
 
 msgctxt "view:project.work:"
-msgid "Projects"
-msgstr ""
-
-msgctxt "view:project.work:"
 msgid "Tasks"
-msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Timesheet"
-msgstr ""
+msgstr "Задачи"
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"
-msgstr ""
+msgstr "Рабочие затраты"
