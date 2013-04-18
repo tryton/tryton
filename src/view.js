@@ -1351,7 +1351,7 @@
                             }
                             this.changed = true;
                         }.bind(this);
-                        win = new Sao.Window.Search(this.model, callback, {
+                        var win = new Sao.Window.Search(this.model, callback, {
                             sel_multi: false,
                             ids: ids,
                             context: context,

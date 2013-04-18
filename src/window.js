@@ -3,6 +3,8 @@
 (function() {
     'use strict';
 
+    Sao.Window = {};
+
     Sao.Window.Form = Sao.class_(Object, {
         init: function(screen, callback, kwargs) {
             this.screen = screen;
@@ -86,7 +88,7 @@
                     for (var name in this.widgets) {
                         var widget = this.widgets[name];
                         if (widget.screen && widget.screen.pre_validate) {
-                            record = widget.screen.current_record;
+                            var record = widget.screen.current_record;
                             if (record) {
                                 validate = record.pre_validate();
                             }
@@ -102,7 +104,7 @@
                     // TODO set_cursor
                     this.screen.display();
                 }.bind(this));
-                
+
                 // TODO Add support for many
             }
 
@@ -143,28 +145,28 @@
             var buttons = [];
             buttons.push({
                 text: 'Cancel',
-                click: function() { 
-                    this.response('RESPONSE_CANCEL'); 
+                click: function() {
+                    this.response('RESPONSE_CANCEL');
                 }.bind(this)
             });
             buttons.push({
                 text: 'Find',
                 click: function() {
-                    this.response('RESPONSE_APPLY'); 
+                    this.response('RESPONSE_APPLY');
                 }.bind(this)
             });
             if (kwargs.new_) { // TODO Add Model Acces
                 buttons.push({
                     text: 'New',
-                    click: function() { 
-                        this.response('RESPONSE_ACCEPT'); 
+                    click: function() {
+                        this.response('RESPONSE_ACCEPT');
                     }.bind(this)
                 });
             }
             buttons.push({
                 text: 'OK',
-                click: function() { 
-                    this.response('RESPONSE_OK'); 
+                click: function() {
+                    this.response('RESPONSE_OK');
                 }.bind(this)
             });
 
