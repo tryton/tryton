@@ -64,7 +64,7 @@
                Sao.rpc.convertJSONObject(value[i], i, value);
            }
        } else if ((typeof(value) != 'string') &&
-           (typeof(value) != 'number')) {
+           (typeof(value) != 'number') && (value !== null)) {
            if (value && value.__class__) {
                switch (value.__class__) {
                    case 'datetime':
@@ -101,7 +101,8 @@
             for (var i = 0, length = value.length; i < length; i++) {
                 Sao.rpc.prepareObject(value[i], i, value);
             }
-        } else if ((typeof(value) != 'string') && (typeof(value) != 'number')) {
+        } else if ((typeof(value) != 'string') &&
+                (typeof(value) != 'number') && (value !== null)) {
             if (value instanceof Date) {
                 if (value.getHours() || value.getMinutes() ||
                         value.getSeconds())

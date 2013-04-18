@@ -20,14 +20,26 @@
             },
             'datetime': new Date(2012, 11, 29, 19, 59, 10),
             'date': new Date(2012, 11, 29),
-            'decimal': new Sao.Decimal(1.1)
+            'decimal': new Sao.Decimal(1.1),
+            'null': null
         };
         for (var name in tests) {
             var test = tests[name];
             var result = Sao.rpc.convertJSONObject(jQuery.parseJSON(
                     JSON.stringify(Sao.rpc.prepareObject(test))));
-            QUnit.ok(test.toString() == result.toString(), 'JSON ' + name);
+            var ok_;
+            if (name == 'null') {
+                ok_ = test == result;
+            } else {
+                ok_ = test.toString() == result.toString();
+            }
+            QUnit.ok(ok_, 'JSON ' + name);
         }
+    });
+
+    QUnit.test('PYSON Decoder', function() {
+        var decoder = new Sao.PYSON.Decoder();
+        QUnit.strictEqual(decoder.decode('null'), null, "decode('null')");
     });
 
     QUnit.test('PYSON.Eval', function() {

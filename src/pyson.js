@@ -54,7 +54,7 @@
         },
         decode: function(str) {
             var reviver = function(k, v) {
-                if (typeof v == 'object') {
+                if (typeof v == 'object' && v !== null) {
                     var cls = Sao.PYSON[v.__class__];
                     if (cls) {
                         return cls.eval_(v, this.__context);
