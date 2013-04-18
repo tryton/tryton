@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:country.country:"
-msgid "The code of the country must be unique!"
-msgstr "Код страны должен быть уникальный!"
+msgid "The code of the country must be unique."
+msgstr "Код страны должен быть уникальный."
 
 msgctxt "error:country.country:"
-msgid "The name of the country must be unique!"
-msgstr "Наименование страны должно быть уникальным!"
+msgid "The name of the country must be unique."
+msgstr "Наименование страны должно быть уникальным."
 
 msgctxt "field:country.country,code:"
 msgid "Code"
@@ -16,15 +16,15 @@ msgstr "Код страны"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
@@ -40,11 +40,11 @@ msgstr "Области"
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -56,15 +56,15 @@ msgstr "Страны мира"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
@@ -72,7 +72,7 @@ msgstr "Наименование"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "Основной"
+msgstr "Предок"
 
 msgctxt "field:country.subdivision,rec_name:"
 msgid "Name"
@@ -84,11 +84,11 @@ msgstr "Тип"
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "help:country.country,code:"
 msgid ""
@@ -2534,7 +2534,6 @@ msgctxt "model:country.subdivision,name:be-wlg"
 msgid "Liège"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:be-wlx"
 msgid "Luxembourg"
 msgstr "Люксембург"
@@ -3463,7 +3462,6 @@ msgctxt "model:country.subdivision,name:by-vi"
 msgid "Vicebskaja voblasc'"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:bz-bz"
 msgid "Belize"
 msgstr "Белиз"
@@ -4948,7 +4946,6 @@ msgctxt "model:country.subdivision,name:dj-di"
 msgid "Dikhil"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:dj-dj"
 msgid "Djibouti"
 msgstr "Джибути"
@@ -6481,7 +6478,6 @@ msgctxt "model:country.subdivision,name:fr-gf"
 msgid "Guyane"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr-gp"
 msgid "Guadeloupe"
 msgstr "Гваделупа"
@@ -6514,7 +6510,6 @@ msgctxt "model:country.subdivision,name:fr-mf"
 msgid "Saint-Martin"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr-mq"
 msgid "Martinique"
 msgstr "Мартиника"
@@ -6551,7 +6546,6 @@ msgctxt "model:country.subdivision,name:fr-r"
 msgid "Pays de la Loire"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr-re"
 msgid "Réunion"
 msgstr "Реюньон"
@@ -6580,7 +6574,6 @@ msgctxt "model:country.subdivision,name:fr-wf"
 msgid "Wallis-et-Futuna"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:fr-yt"
 msgid "Mayotte"
 msgstr "Майот"
@@ -7477,7 +7470,6 @@ msgctxt "model:country.subdivision,name:gb-twh"
 msgid "Tower Hamlets"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gb-ukm"
 msgid "United Kingdom"
 msgstr "Соединённое Королевство"
@@ -7854,7 +7846,6 @@ msgctxt "model:country.subdivision,name:gn-md"
 msgid "Mandiana"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gn-ml"
 msgid "Mali"
 msgstr "Мали"
@@ -8207,7 +8198,6 @@ msgctxt "model:country.subdivision,name:gt-es"
 msgid "Escuintla"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:gt-gu"
 msgid "Guatemala"
 msgstr "Гватемала"
@@ -8408,7 +8398,6 @@ msgctxt "model:country.subdivision,name:hn-in"
 msgid "Intibucá"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:hn-le"
 msgid "Lempira"
 msgstr "Лемпира"
@@ -11077,7 +11066,6 @@ msgctxt "model:country.subdivision,name:lu-g"
 msgid "Grevenmacher"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:lu-l"
 msgid "Luxembourg"
 msgstr "Люксембург"
@@ -13962,7 +13950,6 @@ msgctxt "model:country.subdivision,name:ng-na"
 msgid "Nassarawa"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:ng-ni"
 msgid "Niger"
 msgstr "Нигер"
@@ -14075,7 +14062,6 @@ msgctxt "model:country.subdivision,name:ni-sj"
 msgid "Río San Juan"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:nl-aw"
 msgid "Aruba"
 msgstr "Аруба"
@@ -14094,7 +14080,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:nl-cw"
 msgid "Curaçao"
-msgstr ""
+msgstr "Кюрасао"
 
 msgctxt "model:country.subdivision,name:nl-dr"
 msgid "Drenthe"
@@ -15798,335 +15784,335 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ru-ad"
 msgid "Adygeya, Respublika"
-msgstr ""
+msgstr "Адыгея, республика"
 
 msgctxt "model:country.subdivision,name:ru-al"
 msgid "Altay, Respublika"
-msgstr ""
+msgstr "Алтай, республика"
 
 msgctxt "model:country.subdivision,name:ru-alt"
 msgid "Altayskiy kray"
-msgstr ""
+msgstr "Алтайский край"
 
 msgctxt "model:country.subdivision,name:ru-amu"
 msgid "Amurskaya oblast'"
-msgstr ""
+msgstr "Амурская область"
 
 msgctxt "model:country.subdivision,name:ru-ark"
 msgid "Arkhangel'skaya oblast'"
-msgstr ""
+msgstr "Архангельская область"
 
 msgctxt "model:country.subdivision,name:ru-ast"
 msgid "Astrakhanskaya oblast'"
-msgstr ""
+msgstr "Астраханская область"
 
 msgctxt "model:country.subdivision,name:ru-ba"
 msgid "Bashkortostan, Respublika"
-msgstr ""
+msgstr "Башкортостан, республика"
 
 msgctxt "model:country.subdivision,name:ru-bel"
 msgid "Belgorodskaya oblast'"
-msgstr ""
+msgstr "Белгородская область"
 
 msgctxt "model:country.subdivision,name:ru-bry"
 msgid "Bryanskaya oblast'"
-msgstr ""
+msgstr "Брянская область"
 
 msgctxt "model:country.subdivision,name:ru-bu"
 msgid "Buryatiya, Respublika"
-msgstr ""
+msgstr "Бурятия, республика"
 
 msgctxt "model:country.subdivision,name:ru-ce"
 msgid "Chechenskaya Respublika"
-msgstr ""
+msgstr "Чеченская республика"
 
 msgctxt "model:country.subdivision,name:ru-che"
 msgid "Chelyabinskaya oblast'"
-msgstr ""
+msgstr "Челябинская область"
 
 msgctxt "model:country.subdivision,name:ru-chu"
 msgid "Chukotskiy avtonomnyy okrug"
-msgstr ""
+msgstr "Чукотский автономный округ"
 
 msgctxt "model:country.subdivision,name:ru-cu"
 msgid "Chuvashskaya Respublika"
-msgstr ""
+msgstr "Чувашская республика"
 
 msgctxt "model:country.subdivision,name:ru-da"
 msgid "Dagestan, Respublika"
-msgstr ""
+msgstr "Дагестан, республика"
 
 msgctxt "model:country.subdivision,name:ru-in"
 msgid "Respublika Ingushetiya"
-msgstr ""
+msgstr "Ингушетия, республика"
 
 msgctxt "model:country.subdivision,name:ru-irk"
 msgid "Irkutiskaya oblast'"
-msgstr ""
+msgstr "Иркутская область"
 
 msgctxt "model:country.subdivision,name:ru-iva"
 msgid "Ivanovskaya oblast'"
-msgstr ""
+msgstr "Ивановская область"
 
 msgctxt "model:country.subdivision,name:ru-kam"
 msgid "Kamchatskiy kray"
-msgstr ""
+msgstr "Камчатский край"
 
 msgctxt "model:country.subdivision,name:ru-kb"
 msgid "Kabardino-Balkarskaya Respublika"
-msgstr ""
+msgstr "Кабадино-Балкарская республика"
 
 msgctxt "model:country.subdivision,name:ru-kc"
 msgid "Karachayevo-Cherkesskaya Respublika"
-msgstr ""
+msgstr "Карачаево-Черкесская республика"
 
 msgctxt "model:country.subdivision,name:ru-kda"
 msgid "Krasnodarskiy kray"
-msgstr ""
+msgstr "Краснодарский край"
 
 msgctxt "model:country.subdivision,name:ru-kem"
 msgid "Kemerovskaya oblast'"
-msgstr ""
+msgstr "Кемеровская область"
 
 msgctxt "model:country.subdivision,name:ru-kgd"
 msgid "Kaliningradskaya oblast'"
-msgstr ""
+msgstr "Калининградская область"
 
 msgctxt "model:country.subdivision,name:ru-kgn"
 msgid "Kurganskaya oblast'"
-msgstr ""
+msgstr "Курганская область"
 
 msgctxt "model:country.subdivision,name:ru-kha"
 msgid "Khabarovskiy kray"
-msgstr ""
+msgstr "Хабаровский край"
 
 msgctxt "model:country.subdivision,name:ru-khm"
 msgid "Khanty-Mansiysky avtonomnyy okrug-Yugra"
-msgstr ""
+msgstr "Ханты-Мансийский автономный округ"
 
 msgctxt "model:country.subdivision,name:ru-kir"
 msgid "Kirovskaya oblast'"
-msgstr ""
+msgstr "Кировская область"
 
 msgctxt "model:country.subdivision,name:ru-kk"
 msgid "Khakasiya, Respublika"
-msgstr ""
+msgstr "Хакасия, республика"
 
 msgctxt "model:country.subdivision,name:ru-kl"
 msgid "Kalmykiya, Respublika"
-msgstr ""
+msgstr "Калмыкий, республика"
 
 msgctxt "model:country.subdivision,name:ru-klu"
 msgid "Kaluzhskaya oblast'"
-msgstr ""
+msgstr "Калужская область"
 
 msgctxt "model:country.subdivision,name:ru-ko"
 msgid "Komi, Respublika"
-msgstr ""
+msgstr "Коми, республика"
 
 msgctxt "model:country.subdivision,name:ru-kos"
 msgid "Kostromskaya oblast'"
-msgstr ""
+msgstr "Костромская область"
 
 msgctxt "model:country.subdivision,name:ru-kr"
 msgid "Kareliya, Respublika"
-msgstr ""
+msgstr "Карелия, республика"
 
 msgctxt "model:country.subdivision,name:ru-krs"
 msgid "Kurskaya oblast'"
-msgstr ""
+msgstr "Курская область"
 
 msgctxt "model:country.subdivision,name:ru-kya"
 msgid "Krasnoyarskiy kray"
-msgstr ""
+msgstr "Красноярский край"
 
 msgctxt "model:country.subdivision,name:ru-len"
 msgid "Leningradskaya oblast'"
-msgstr ""
+msgstr "Ленинградская область"
 
 msgctxt "model:country.subdivision,name:ru-lip"
 msgid "Lipetskaya oblast'"
-msgstr ""
+msgstr "Липецкая область"
 
 msgctxt "model:country.subdivision,name:ru-mag"
 msgid "Magadanskaya oblast'"
-msgstr ""
+msgstr "Магаданская область"
 
 msgctxt "model:country.subdivision,name:ru-me"
 msgid "Mariy El, Respublika"
-msgstr ""
+msgstr "Марий Эл, республика"
 
 msgctxt "model:country.subdivision,name:ru-mo"
 msgid "Mordoviya, Respublika"
-msgstr ""
+msgstr "Мордовия, республика"
 
 msgctxt "model:country.subdivision,name:ru-mos"
 msgid "Moskovskaya oblast'"
-msgstr ""
+msgstr "Московская область"
 
 msgctxt "model:country.subdivision,name:ru-mow"
 msgid "Moskva"
-msgstr ""
+msgstr "Москва"
 
 msgctxt "model:country.subdivision,name:ru-mur"
 msgid "Murmanskaya oblast'"
-msgstr ""
+msgstr "Мурманская область"
 
 msgctxt "model:country.subdivision,name:ru-nen"
 msgid "Nenetskiy avtonomnyy okrug"
-msgstr ""
+msgstr "Ненетский автономный округ"
 
 msgctxt "model:country.subdivision,name:ru-ngr"
 msgid "Novgorodskaya oblast'"
-msgstr ""
+msgstr "Новогородская область"
 
 msgctxt "model:country.subdivision,name:ru-niz"
 msgid "Nizhegorodskaya oblast'"
-msgstr ""
+msgstr "Нижегородская область"
 
 msgctxt "model:country.subdivision,name:ru-nvs"
 msgid "Novosibirskaya oblast'"
-msgstr ""
+msgstr "Новосибирская область"
 
 msgctxt "model:country.subdivision,name:ru-oms"
 msgid "Omskaya oblast'"
-msgstr ""
+msgstr "Омская область"
 
 msgctxt "model:country.subdivision,name:ru-ore"
 msgid "Orenburgskaya oblast'"
-msgstr ""
+msgstr "Оренбургская область"
 
 msgctxt "model:country.subdivision,name:ru-orl"
 msgid "Orlovskaya oblast'"
-msgstr ""
+msgstr "Орловская область"
 
 msgctxt "model:country.subdivision,name:ru-per"
 msgid "Permskiy kray"
-msgstr ""
+msgstr "Пермский край"
 
 msgctxt "model:country.subdivision,name:ru-pnz"
 msgid "Penzenskaya oblast'"
-msgstr ""
+msgstr "Пензенская область"
 
 msgctxt "model:country.subdivision,name:ru-pri"
 msgid "Primorskiy kray"
-msgstr ""
+msgstr "Приморский край"
 
 msgctxt "model:country.subdivision,name:ru-psk"
 msgid "Pskovskaya oblast'"
-msgstr ""
+msgstr "Псковская область"
 
 msgctxt "model:country.subdivision,name:ru-ros"
 msgid "Rostovskaya oblast'"
-msgstr ""
+msgstr "Ростовская область"
 
 msgctxt "model:country.subdivision,name:ru-rya"
 msgid "Ryazanskaya oblast'"
-msgstr ""
+msgstr "Рязанская область"
 
 msgctxt "model:country.subdivision,name:ru-sa"
 msgid "Sakha, Respublika [Yakutiya]"
-msgstr ""
+msgstr "Саха, республика (Якутия)"
 
 msgctxt "model:country.subdivision,name:ru-sak"
 msgid "Sakhalinskaya oblast'"
-msgstr ""
+msgstr "Сахалинская область"
 
 msgctxt "model:country.subdivision,name:ru-sam"
 msgid "Samaraskaya oblast'"
-msgstr ""
+msgstr "Самарская область"
 
 msgctxt "model:country.subdivision,name:ru-sar"
 msgid "Saratovskaya oblast'"
-msgstr ""
+msgstr "Саратовская область"
 
 msgctxt "model:country.subdivision,name:ru-se"
 msgid "Severnaya Osetiya-Alaniya, Respublika"
-msgstr ""
+msgstr "Северная Осетия-Алания, республика"
 
 msgctxt "model:country.subdivision,name:ru-smo"
 msgid "Smolenskaya oblast'"
-msgstr ""
+msgstr "Смоленская область"
 
 msgctxt "model:country.subdivision,name:ru-spe"
 msgid "Sankt-Peterburg"
-msgstr ""
+msgstr "Санкт-Петербург"
 
 msgctxt "model:country.subdivision,name:ru-sta"
 msgid "Stavropol'skiy kray"
-msgstr ""
+msgstr "Ставропольский край"
 
 msgctxt "model:country.subdivision,name:ru-sve"
 msgid "Sverdlovskaya oblast'"
-msgstr ""
+msgstr "Свердловская область"
 
 msgctxt "model:country.subdivision,name:ru-ta"
 msgid "Tatarstan, Respublika"
-msgstr ""
+msgstr "Татарстан, республика"
 
 msgctxt "model:country.subdivision,name:ru-tam"
 msgid "Tambovskaya oblast'"
-msgstr ""
+msgstr "Тамбовская область"
 
 msgctxt "model:country.subdivision,name:ru-tom"
 msgid "Tomskaya oblast'"
-msgstr ""
+msgstr "Томская область"
 
 msgctxt "model:country.subdivision,name:ru-tul"
 msgid "Tul'skaya oblast'"
-msgstr ""
+msgstr "Тульская область"
 
 msgctxt "model:country.subdivision,name:ru-tve"
 msgid "Tverskaya oblast'"
-msgstr ""
+msgstr "Тверская область"
 
 msgctxt "model:country.subdivision,name:ru-ty"
 msgid "Tyva, Respublika [Tuva]"
-msgstr ""
+msgstr "Тыва, республика"
 
 msgctxt "model:country.subdivision,name:ru-tyu"
 msgid "Tyumenskaya oblast'"
-msgstr ""
+msgstr "Тюменская область"
 
 msgctxt "model:country.subdivision,name:ru-ud"
 msgid "Udmurtskaya Respublika"
-msgstr ""
+msgstr "Удмуртская республика"
 
 msgctxt "model:country.subdivision,name:ru-uly"
 msgid "Ul'yanovskaya oblast'"
-msgstr ""
+msgstr "Ульяновская область"
 
 msgctxt "model:country.subdivision,name:ru-vgg"
 msgid "Volgogradskaya oblast'"
-msgstr ""
+msgstr "Волгоградская область"
 
 msgctxt "model:country.subdivision,name:ru-vla"
 msgid "Vladimirskaya oblast'"
-msgstr ""
+msgstr "Владимирская область"
 
 msgctxt "model:country.subdivision,name:ru-vlg"
 msgid "Vologodskaya oblast'"
-msgstr ""
+msgstr "Вологодская область"
 
 msgctxt "model:country.subdivision,name:ru-vor"
 msgid "Voronezhskaya oblast'"
-msgstr ""
+msgstr "Воронежская область"
 
 msgctxt "model:country.subdivision,name:ru-yan"
 msgid "Yamalo-Nenetskiy avtonomnyy okrug"
-msgstr ""
+msgstr "Ямало-Ненетский автономный округ"
 
 msgctxt "model:country.subdivision,name:ru-yar"
 msgid "Yaroslavskaya oblast'"
-msgstr ""
+msgstr "Ярославская область"
 
 msgctxt "model:country.subdivision,name:ru-yev"
 msgid "Yevreyskaya avtonomnaya oblast'"
-msgstr ""
+msgstr "Еврейская автономная область"
 
 msgctxt "model:country.subdivision,name:ru-zab"
 msgid "Zabajkal'skij kraj"
-msgstr ""
+msgstr "Забайкальский край"
 
 msgctxt "model:country.subdivision,name:rw-01"
 msgid "Ville de Kigali"
@@ -17476,7 +17462,6 @@ msgctxt "model:country.subdivision,name:sm-06"
 msgid "Borgo Maggiore"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:sm-07"
 msgid "San Marino"
 msgstr "Сан-Марино"
@@ -19031,39 +19016,39 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ua-05"
 msgid "Vinnyts'ka Oblast'"
-msgstr ""
+msgstr "Винницкая область"
 
 msgctxt "model:country.subdivision,name:ua-07"
 msgid "Volyns'ka Oblast'"
-msgstr ""
+msgstr "Волынская область"
 
 msgctxt "model:country.subdivision,name:ua-09"
 msgid "Luhans'ka Oblast'"
-msgstr ""
+msgstr "Луганская область"
 
 msgctxt "model:country.subdivision,name:ua-12"
 msgid "Dnipropetrovs'ka Oblast'"
-msgstr ""
+msgstr "Днепропетровская область"
 
 msgctxt "model:country.subdivision,name:ua-14"
 msgid "Donets'ka Oblast'"
-msgstr ""
+msgstr "Донецкая область"
 
 msgctxt "model:country.subdivision,name:ua-18"
 msgid "Zhytomyrs'ka Oblast'"
-msgstr ""
+msgstr "Житомирская область"
 
 msgctxt "model:country.subdivision,name:ua-21"
 msgid "Zakarpats'ka Oblast'"
-msgstr ""
+msgstr "Закарпатская область"
 
 msgctxt "model:country.subdivision,name:ua-23"
 msgid "Zaporiz'ka Oblast'"
-msgstr ""
+msgstr "Запорожская область"
 
 msgctxt "model:country.subdivision,name:ua-26"
 msgid "Ivano-Frankivs'ka Oblast'"
-msgstr ""
+msgstr "Ивано-Франковская область"
 
 msgctxt "model:country.subdivision,name:ua-30"
 msgid "Kyïvs'ka mis'ka rada"
@@ -19071,11 +19056,11 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ua-32"
 msgid "Kyïvs'ka Oblast'"
-msgstr ""
+msgstr "Киевская область"
 
 msgctxt "model:country.subdivision,name:ua-35"
 msgid "Kirovohrads'ka Oblast'"
-msgstr ""
+msgstr "Кировградская область"
 
 msgctxt "model:country.subdivision,name:ua-40"
 msgid "Sevastopol"
@@ -19083,11 +19068,11 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ua-43"
 msgid "Respublika Krym"
-msgstr ""
+msgstr "Крым, республика"
 
 msgctxt "model:country.subdivision,name:ua-46"
 msgid "L'vivs'ka Oblast'"
-msgstr ""
+msgstr "Львовская область"
 
 msgctxt "model:country.subdivision,name:ua-48"
 msgid "Mykolaïvs'ka Oblast'"
@@ -19095,11 +19080,11 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ua-51"
 msgid "Odes'ka Oblast'"
-msgstr ""
+msgstr "Одесская область"
 
 msgctxt "model:country.subdivision,name:ua-53"
 msgid "Poltavs'ka Oblast'"
-msgstr ""
+msgstr "Полтавская область"
 
 msgctxt "model:country.subdivision,name:ua-56"
 msgid "Rivnens'ka Oblast'"
@@ -19115,11 +19100,11 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ua-63"
 msgid "Kharkivs'ka Oblast'"
-msgstr ""
+msgstr "Харьковская область"
 
 msgctxt "model:country.subdivision,name:ua-65"
 msgid "Khersons'ka Oblast'"
-msgstr ""
+msgstr "Херсонская область"
 
 msgctxt "model:country.subdivision,name:ua-68"
 msgid "Khmel'nyts'ka Oblast'"
@@ -19131,7 +19116,7 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:ua-74"
 msgid "Chernihivs'ka Oblast'"
-msgstr ""
+msgstr "Черниговская область"
 
 msgctxt "model:country.subdivision,name:ua-77"
 msgid "Chernivets'ka Oblast'"
@@ -19521,7 +19506,6 @@ msgctxt "model:country.subdivision,name:us-ar"
 msgid "Arkansas"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-as"
 msgid "American Samoa"
 msgstr "Американские Самоа"
@@ -19554,12 +19538,10 @@ msgctxt "model:country.subdivision,name:us-fl"
 msgid "Florida"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-ga"
 msgid "Georgia"
 msgstr "Грузия"
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-gu"
 msgid "Guam"
 msgstr "Гуам"
@@ -19620,7 +19602,6 @@ msgctxt "model:country.subdivision,name:us-mo"
 msgid "Missouri"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-mp"
 msgid "Northern Mariana Islands"
 msgstr "Острова северной Марианы"
@@ -19681,7 +19662,6 @@ msgctxt "model:country.subdivision,name:us-pa"
 msgid "Pennsylvania"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-pr"
 msgid "Puerto Rico"
 msgstr "Пуэрто-Рико"
@@ -19706,7 +19686,6 @@ msgctxt "model:country.subdivision,name:us-tx"
 msgid "Texas"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.subdivision,name:us-um"
 msgid "United States Minor Outlying Islands"
 msgstr "Соединенные штаты Малых  Удаленных островов"
@@ -20557,19 +20536,19 @@ msgstr "Атол"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
-msgstr "Автономные города"
+msgstr "Автономный город"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
-msgstr ""
+msgstr "Автономная коммуна"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr ""
+msgstr "Автономный округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
-msgstr ""
+msgstr "Автономная область"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
@@ -20577,7 +20556,7 @@ msgstr "Автономный регион"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
-msgstr ""
+msgstr "Автономное сообщество"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
@@ -20585,23 +20564,23 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
-msgstr ""
+msgstr "Автономный остров"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
-msgstr ""
+msgstr "Автономное монашеское государство"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
-msgstr ""
+msgstr "Автономный муниципалитет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
-msgstr ""
+msgstr "Автономная республика"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
-msgstr ""
+msgstr "Автономный сектор"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territorial unit"
@@ -20609,11 +20588,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous territory"
-msgstr ""
+msgstr "Автономная территория"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
-msgstr ""
+msgstr "Район"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
@@ -20621,19 +20600,19 @@ msgstr "Гуанчжоу"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital District"
-msgstr ""
+msgstr "Столичный округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Metropolitan City"
-msgstr ""
+msgstr "Столичный метрополий"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital Territory"
-msgstr ""
+msgstr "Столичная территория"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Capital city"
-msgstr ""
+msgstr "Столица"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Chains (of islands)"
@@ -20645,7 +20624,7 @@ msgstr "Город"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
-msgstr ""
+msgstr "Городское объединение"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
@@ -20653,7 +20632,7 @@ msgstr "Город-Государство"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
-msgstr ""
+msgstr "Коммуна"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
@@ -20685,7 +20664,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District"
-msgstr ""
+msgstr "Район"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District council area"
@@ -20705,23 +20684,23 @@ msgstr "Экономический регион"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
-msgstr ""
+msgstr "Эмират"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
-msgstr ""
+msgstr "Субъект"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Dependency"
-msgstr ""
+msgstr "Федеральное подчинение"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal District"
-msgstr ""
+msgstr "Федеральный округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Federal Territories"
-msgstr ""
+msgstr "Федеральные территории"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical entity"
@@ -20733,15 +20712,15 @@ msgstr "Географический регион"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Geographical unit"
-msgstr ""
+msgstr "Географическая единица"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Governorate"
-msgstr ""
+msgstr "Провинция"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Included for completeness"
-msgstr ""
+msgstr "Включено для полноты"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Indigenous region"
@@ -20753,43 +20732,43 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island council"
-msgstr ""
+msgstr "Объединенные острова"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Island group"
-msgstr ""
+msgstr "Группа островов"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Local council"
-msgstr ""
+msgstr "Местное объединение"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "London borough"
-msgstr ""
+msgstr "Район Лондона"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan cities"
-msgstr ""
+msgstr "Города метрополии"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan department"
-msgstr ""
+msgstr "Отделения метрополии"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan district"
-msgstr ""
+msgstr "Районы метрополии"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Metropolitan region"
-msgstr ""
+msgstr "Регионы метрополии"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipalities"
-msgstr ""
+msgstr "Муниципалитеты"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Municipality"
-msgstr ""
+msgstr "Муниципалитет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Oblast"
@@ -20797,19 +20776,19 @@ msgstr "Область"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Outlying area"
-msgstr ""
+msgstr "Окрестности"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas region/department"
-msgstr ""
+msgstr "Заграничные регионы/отделения"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
-msgstr ""
+msgstr "Заграничные территориальные образования"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr ""
+msgstr "Округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -20821,7 +20800,7 @@ msgstr "Префектура"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Principality"
-msgstr ""
+msgstr "Княжество"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Province"
@@ -20841,7 +20820,7 @@ msgstr "Регион"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Regional council"
-msgstr ""
+msgstr "Региональное объединение"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Republic"
@@ -20857,11 +20836,11 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special District"
-msgstr ""
+msgstr "Специальный округ"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Municipality"
-msgstr ""
+msgstr "Специальный муниципалитет"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special Region"
@@ -20869,7 +20848,7 @@ msgstr "Специальный регион"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special administrative region"
-msgstr ""
+msgstr "Специальный административный регион"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Special city"
@@ -20885,7 +20864,7 @@ msgstr "Специальная зона"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr "Статус"
+msgstr "Штат"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
@@ -20897,11 +20876,11 @@ msgstr "Территория"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Town council"
-msgstr ""
+msgstr "Городского объединение"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Two-tier county"
-msgstr ""
+msgstr "Двухуровневая страна"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Union territory"
@@ -20909,7 +20888,7 @@ msgstr "Объединеные территории"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority"
-msgstr ""
+msgstr "Унитарная власть"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Unitary authority (england)"
