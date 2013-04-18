@@ -3,24 +3,24 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "Валюта может иметь только одну курсовую разницу в день!"
+msgid "A currency can only have one rate by date."
+msgstr "Валюта может иметь только один курс в день."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr ""
+msgstr "Курс валюты должен быть больше или равен 0"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Неверное Группировка!"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Некорректная группировка \"%(grouping)s\" по валюте \"%(currency)s\"."
 
 msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "Не найден курс валюты: %s на день: %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
+msgstr "Не найдено курса для валюты \"%(currency)s\" на дату \"%(date)s\""
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
-msgstr "Активный"
+msgstr "Действующий"
 
 msgctxt "field:currency.currency,code:"
 msgid "Code"
@@ -28,11 +28,11 @@ msgstr "Код"
 
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
@@ -40,7 +40,7 @@ msgstr "Кол-во знаков после запятой"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
@@ -116,21 +116,20 @@ msgstr "Символ"
 
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
 msgstr "Валюты"
@@ -141,7 +140,7 @@ msgstr "Дата"
 
 msgctxt "field:currency.currency.rate,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
@@ -153,13 +152,12 @@ msgstr "Наименование"
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
-#, fuzzy
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Валюты"
@@ -900,7 +898,6 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Валюты"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
 msgstr "Валюты"
@@ -913,12 +910,10 @@ msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
 msgstr "Администрирование валют"
 
-#, fuzzy
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
 msgstr "Курс"
 
-#, fuzzy
 msgctxt "view:currency.currency.rate:"
 msgid "Rates"
 msgstr "Курсы"
@@ -934,10 +929,6 @@ msgstr "Валюта"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Форматирование"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Курс"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
