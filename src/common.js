@@ -5,6 +5,13 @@
 
     Sao.common = {};
 
+    Sao.common.BACKSPACE_KEYCODE = 8;
+    Sao.common.TAB_KEYCODE = 9;
+    Sao.common.RETURN_KEYCODE = 13;
+    Sao.common.DELETE_KEYCODE = 46;
+    Sao.common.F2_KEYCODE = 113;
+    Sao.common.F3_KEYCODE = 114;
+
     Sao.common.compare = function(arr1, arr2) {
         return (jQuery(arr1).not(arr2).length === 0 &&
                 jQuery(arr2).not(arr1).length === 0);

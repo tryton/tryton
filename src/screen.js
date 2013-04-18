@@ -66,10 +66,6 @@
             this.content_box.append(widget);
         }
     });
-}());
-
-(function() {
-    'use strict';
 
     Sao.Screen = Sao.class_(Object, {
         init: function(model_name, attributes) {
@@ -200,9 +196,18 @@
             }
             group.screens.push(this);
             this.group = group;
+            if (jQuery.isEmptyObject(group)) {
+                this.current_record = null;
+            } else {
+                this.current_record = group[0];
+            }
         },
-        new_group: function() {
-            this.set_group(new Sao.Group(this.model, this.context, []));
+        new_group: function(ids) {
+            var group = new Sao.Group(this.model, this.context, []);
+            if (ids) {
+                group.load(ids);
+            }
+            this.set_group(group);
         },
         display: function() {
             if (this.views) {

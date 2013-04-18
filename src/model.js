@@ -437,8 +437,8 @@
         field_get_client: function(name) {
             return this.model.fields[name].get_client(this);
         },
-        field_set_client: function(name, value) {
-            this.model.fields[name].set_client(this, value);
+        field_set_client: function(name, value, force_change) {
+            this.model.fields[name].set_client(this, value, force_change);
         },
         default_get: function() {
             var prm;
@@ -619,6 +619,13 @@
             }
             return new Sao.PYSON.Decoder(ctx).decode(expr);
         },
+        rec_name: function () {
+            var prm = this.model.execute('read', [[this.id], ['rec_name']],
+                    this.get_context());
+            return prm.then(function (values) {
+                return values[0].rec_name;
+            });
+        },
         validate: function(fields, softvalidation) {
             var result = true;
             // TODO
@@ -674,11 +681,12 @@
         },
         set: function(record, value) {
             record._values[this.name] = value;
+            return jQuery.when(undefined);
         },
         get: function(record) {
             return record._values[this.name] || this._default;
         },
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
             var previous_value = this.get(record);
             this.set(record, value);
             if (previous_value != this.get(record)) {
@@ -686,6 +694,14 @@
                 this.changed(record).done(function() {
                     // TODO validate + parent
                     record.group.changed();
+                    record.group.root_group().screens.forEach(function(screen) {
+                        screen.display();
+                    });
+                });
+            } else if (force_change) {
+                record._changed[this.name] = true;
+                this.changed(record).done(function () {
+                    record.validate(true);
                     record.group.root_group().screens.forEach(function(screen) {
                         screen.display();
                     });
@@ -788,14 +804,15 @@
     });
 
     Sao.field.Float = Sao.class_(Sao.field.Number, {
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
             if (typeof value == 'string') {
                 value = Number(value);
                 if (isNaN(value)) {
                     value = this._default;
                 }
             }
-            Sao.field.Float._super.set_client.call(this, record, value);
+            Sao.field.Float._super.set_client.call(this, record, value,
+                force_change);
         },
         get_client: function(record) {
             var value = record._values[this.name];
@@ -809,14 +826,15 @@
     });
 
     Sao.field.Numeric = Sao.class_(Sao.field.Number, {
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
             if (typeof value == 'string') {
                 value = new Sao.Decimal(value);
                 if (isNaN(value.valueOf())) {
                     value = this._default;
                 }
             }
-            Sao.field.Float._super.set_client.call(this, record, value);
+            Sao.field.Float._super.set_client.call(this, record, value,
+                force_change);
         },
         get_client: function(record) {
             var value = record._values[this.name];
@@ -830,14 +848,15 @@
     });
 
     Sao.field.Integer = Sao.class_(Sao.field.Number, {
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
             if (typeof value == 'string') {
                 value = parseInt(value, 10);
                 if (isNaN(value)) {
                     value = this._default;
                 }
             }
-            Sao.field.Integer._super.set_client.call(this, record, value);
+            Sao.field.Integer._super.set_client.call(this, record, value,
+                force_change);
         },
         get_client: function(record) {
             var value = record._values[this.name];
@@ -854,9 +873,10 @@
 
     Sao.field.Boolean = Sao.class_(Sao.field.Field, {
         _default: false,
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
             value = Boolean(value);
-            Sao.field.Boolean._super.set_client.call(this, record, value);
+            Sao.field.Boolean._super.set_client.call(this, record, value,
+                force_change);
         },
         get: function(record) {
             return Boolean(record._values[this.name]);
@@ -886,22 +906,26 @@
             // TODO force parent
             var store_rec_name = function(rec_name) {
                 record._values[this.name + '.rec_name'] = rec_name[0].rec_name;
+                return rec_name[0].rec_name;
             };
+            var prm;
             if (!rec_name && (value >= 0) && (value !== null)) {
                 var model_name = record.model.fields[this.name].description
                     .relation;
-                var prm = Sao.rpc({
+                prm = Sao.rpc({
                     'method': 'model.' + model_name + '.' + 'read',
                     'params': [[value], ['rec_name'], record.get_context()]
                 }, record.model.session);
                 prm.done(store_rec_name.bind(this));
             } else {
                 store_rec_name.call(this, [{'rec_name': rec_name}]);
+                prm = jQuery.when(rec_name);
             }
             record._values[this.name] = value;
             // TODO force parent
+            return prm;
         },
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
             var rec_name;
             if (value instanceof Array) {
                 rec_name = value[1];
@@ -914,7 +938,8 @@
                 }
             }
             record._values[this.name + '.rec_name'] = rec_name;
-            Sao.field.Many2One._super.set_client.call(this, record, value);
+            Sao.field.Many2One._super.set_client.call(this, record, value,
+                    force_change);
         }
     });
 
@@ -1013,7 +1038,7 @@
             return prm.pipe(set_value.bind(this));
         },
         set: function(record, value) {
-            this._set_value(record, value, false);
+            return this._set_value(record, value, false);
         },
         get: function(record) {
             var group = record._values[this.name];
@@ -1060,7 +1085,7 @@
             }
             return result;
         },
-        set_client: function(record, value) {
+        set_client: function(record, value, force_change) {
         },
         get_client: function(record) {
             this._set_default_value(record);
@@ -1240,6 +1265,7 @@
             }
             record._values[this.name] = group;
             group.load(value);
+            return jQuery.when(undefined);
         },
         get_on_change_value: function(record) {
             return this.get_eval(record);

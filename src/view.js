@@ -71,6 +71,7 @@
             this.create_columns(screen.model, xml);
 
             // Table of records
+            this.rows = [];
             this.table = jQuery('<table/>', {
                 'class': 'tree'
             });
@@ -167,9 +168,11 @@
             }.bind(this));
         },
         display: function() {
+            this.rows = [];
             this.tbody.empty();
             var add_row = function(record, pos, group) {
                 var tree_row = new Sao.View.Tree.Row(this, record, pos);
+                this.rows.push(tree_row);
                 tree_row.display();
             };
             this.screen.group.forEach(add_row.bind(this));
@@ -184,9 +187,9 @@
         },
         selected_records: function() {
             var records = [];
-            this.columns.forEach(function(column) {
-                if (column.is_selected()) {
-                    records.push(column.record);
+            this.rows.forEach(function(row) {
+                if (row.is_selected()) {
+                    records.push(row.record);
                 }
             });
             return records;
@@ -850,6 +853,8 @@
                 return Sao.View.Form.Boolean;
             case 'text':
                 return Sao.View.Form.Text;
+            case 'many2one':
+                return Sao.View.Form.Many2One;
         }
     };
 
@@ -1105,6 +1110,260 @@
         set_value: function(record, field) {
             var value = this.el.val() || '';
             field.set_client(record, value);
+        }
+    });
+
+    Sao.View.Form.Many2One = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-many2one',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Many2One._super.init.call(this, field_name, model,
+                attributes);
+            this.el = jQuery('<div/>', {
+                'class': this.class_
+            });
+            this.entry = jQuery('<input/>', {
+                'type': 'input'
+            });
+            this.entry.on('keydown', this.key_press.bind(this));
+            this.el.append(this.entry);
+            this.but_open = jQuery('<button/>').button({
+                'icons': {
+                    'primary': "ui-icon-search"
+                },
+                'text': false
+            });
+            this.but_open.click(this.edit.bind(this));
+            this.el.append(this.but_open);
+            this.but_new = jQuery('<button/>').button({
+                'icons': {
+                    'primary': "ui-icon-document"
+                },
+                'text': false
+            });
+            this.but_new.click(this.new_.bind(this));
+            this.el.append(this.but_new);
+            this.model = attributes.relation;
+            this.changed = true;
+            // TODO autocompletion
+        },
+        get_screen: function() {
+            var domain = this.field().get_domain(this.record());
+            var context = this.field().get_context(this.record());
+            return new Sao.Screen(this.get_model(), {
+                'context': context,
+                'domain': domain,
+                'mode': ['form'],
+                'view_ids': (this.attributes.view_ids || "").split(','),
+                'views_preload': this.attributes.views
+            });
+        },
+        display: function(record, field) {
+            // TODO set_button_sensitive
+            var text_value, value;
+            this.changed = false;
+            Sao.View.Form.Many2One._super.display.call(this, record, field);
+            if (record) {
+                text_value = record.field_get_client(this.field_name);
+                value = record.field_get(this.field_name);
+            } else {
+                this.entry.val('');
+                this.changed = true;
+                return;
+            }
+            this.entry.val(text_value || '');
+            if (this.has_target(value)) {
+                this.but_open.button({
+                    'icons': {
+                        'primary': "ui-icon-folder-open"
+                    }});
+            } else {
+                this.but_open.button({
+                    'icons': {
+                        'primary': "ui-icon-search"
+                    }});
+            }
+            this.changed = true;
+        },
+        id_from_value: function (value) {
+            return value;
+        },
+        value_from_id: function (id, str) {
+            if (str === undefined) {
+                str = '';
+            }
+            return [id, str];
+        },
+        get_model: function (value) {
+            return this.attributes.relation;
+        },
+        has_target: function (value) {
+            return value !== undefined && value !== null;
+        },
+        edit: function(evt) {
+            // TODO Model Access
+            var win;
+            var record = this.record();
+            var value = record.field_get(this.field_name);
+            this.changed = false;
+            if (this.get_model() && this.has_target(value)) {
+                var screen = this.get_screen();
+                var m2o_id =
+                    this.id_from_value(record.field_get(this.field_name));
+                screen.new_group([m2o_id]);
+                var callback = function (result) {
+                    if (result) {
+                        var rec_name_prm = screen.current_record.rec_name();
+                        rec_name_prm.done(function (name) {
+                            var value = this.value_from_id(
+                                screen.current_record.id, name);
+                            this.record().field_set_client(this.field_name,
+                                value, true);
+                        }.bind(this));
+                    }
+                    this.changed = true;
+                }.bind(this);
+                win = new Sao.Window.Form(screen, callback, {
+                    save_current: true
+                });
+            } else if (this.get_model()) {
+                var dom;
+                var domain = this.field().get_domain(record);
+                var context = this.field().get_context(record);
+                var text = this.entry.val();
+                if (text) {
+                    dom = [["rec_name", "ilike", "%" + text + "%"]];
+                } else {
+                    dom = domain;
+                }
+                var model = new Sao.Model(this.get_model());
+                var ids_prm = model.execute('search',
+                        [dom, 0, Sao.config.limit, null], context);
+                ids_prm.fail(function () {
+                    this.changed = true;
+                });
+                ids_prm.done(function (ids) {
+                    if (ids.length == 1) {
+                        this.record().field_set_client(this.field_name,
+                            this.id_from_value(ids[0]), true);
+                        return;
+                    }
+                    var callback = function (result) {
+                        if (result) {
+                            var value = this.value_from_id(result[0][0],
+                                result[0][1]);
+                            this.record().field_set_client(this.field_name,
+                                value, true);
+                        }
+                        this.changed = true;
+                    }.bind(this);
+                    win = new Sao.Window.Search(this.model, callback, {
+                        sel_multi: false,
+                        ids: ids,
+                        context: context,
+                        domain: domain,
+                        view_ids: (this.attributes.view_ids || "").split(','),
+                        views_preload: (this.attributes.views || {}),
+                        new_: false // TODO compute from but_new status
+                    });
+                }.bind(this));
+            }
+        },
+        new_: function(evt) {
+            // TODO Model Access
+            var screen = this.get_screen();
+            var callback = function (result) {
+                if (result) {
+                    var rec_name_prm = screen.current_record.rec_name();
+                    rec_name_prm.done(function (name) {
+                        var value = this.value_from_id(
+                            screen.current_record.id, name);
+                        this.record().field_set_client(this.field_name, value);
+                    }.bind(this));
+                }
+            }.bind(this);
+            var win = new Sao.Window.Form(screen, callback, {
+                new_: true,
+                save_current: true
+            });
+        },
+        key_press: function(event_) {
+            var editable = true; // TODO compute editable
+            var activate_keys = [Sao.common.TAB_KEYCODE];
+            var delete_keys = [Sao.common.BACKSPACE_KEYCODE,
+                Sao.common.DELETE_KEYCODE];
+            if (!this.wid_completion) {
+                activate_keys.push(Sao.common.RETURN_KEYCODE);
+            }
+
+            if (event_.which == Sao.common.F3_KEYCODE && editable) {
+                this.new_();
+                event_.preventDefault();
+            } else if (event_.which == Sao.common.F2_KEYCODE) {
+                this.edit();
+                event_.preventDefault();
+            } else if (jQuery.inArray(event_.which, activate_keys) > -1) {
+                this.activate();
+            } else if (this.has_target(this.record().field_get(
+                            this.field_name)) && editable &&
+                    jQuery.inArray(event_.which, delete_keys) > -1) {
+                this.entry.val('');
+            }
+        },
+        activate: function() {
+            // TODO Model Access
+            this.changed = false;
+            var record = this.record();
+            var value = record.field_get(this.field_name);
+            var model = this.get_model();
+            var sao_model = new Sao.Model(model);
+
+            if (model && !this.has_target(value)) {
+                var text = this.entry.val();
+                if (!this._readonly && text) { // Check required
+                    var dom;
+                    var domain = this.field().get_domain(record);
+                    var context = this.field().get_context(record);
+
+                    if (text) {
+                        dom = [["rec_name", "ilike", "%" + text + "%"]];
+                    } else {
+                        dom = domain;
+                    }
+                    var ids_prm = sao_model.execute('search',
+                            [dom, 0, Sao.config.limit, null], context);
+                    ids_prm.fail(function () {
+                        this.changed = true;
+                    });
+                    ids_prm.done(function (ids) {
+                        if (ids.length == 1) {
+                            this.record().field_set_client(this.field_name,
+                                this.id_from_value(ids[0]), true);
+                            return;
+                        }
+                        var callback = function (result) {
+                            if (result) {
+                                var value = this.value_from_id(result[0][0],
+                                    result[0][1]);
+                                this.record().field_set_client(this.field_name,
+                                    value, true);
+                            } else {
+                                this.entry.val('');
+                            }
+                            this.changed = true;
+                        }.bind(this);
+                        win = new Sao.Window.Search(this.model, callback, {
+                            sel_multi: false,
+                            ids: ids,
+                            context: context,
+                            domain: domain,
+                            view_ids: (this.attributes.view_ids ||
+                                "").split(','),
+                            views_preload: (this.attributes.views || {}),
+                            new_: false // TODO compute from but_new status
+                        });
+                    }.bind(this));
+                }
+            }
         }
     });
 
