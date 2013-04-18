@@ -1248,7 +1248,7 @@
                         return;
                     }
                     var callback = function (result) {
-                        if (result) {
+                        if (!jQuery.isEmptyObject(result)) {
                             var value = this.value_from_id(result[0][0],
                                 result[0][1]);
                             this.record().field_set_client(this.field_name,
@@ -1341,7 +1341,7 @@
                             return;
                         }
                         var callback = function (result) {
-                            if (result) {
+                            if (!jQuery.isEmptyObject(result)) {
                                 var value = this.value_from_id(result[0][0],
                                     result[0][1]);
                                 this.record().field_set_client(this.field_name,
