@@ -470,6 +470,9 @@
                 this._loaded[fname] = true;
             }
             // TODO validate
+            this.group.root_group().screens.forEach(function(screen) {
+                screen.display();
+            });
         },
         get_eval: function() {
             var value = {};
