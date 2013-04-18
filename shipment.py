@@ -1703,16 +1703,14 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 Bool(Eval('moves'))),
             },
         domain=[
-            ('type', 'not in',
-                ['supplier', 'customer', 'warehouse', 'view']),
+            ('type', 'in', ['storage']),
             ], depends=['state', 'moves'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('moves'))),
             }, domain=[
-            ('type', 'not in',
-                ['supplier', 'customer', 'warehouse', 'view']),
+            ('type', 'in', ['storage']),
             ], depends=['state', 'moves'])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
