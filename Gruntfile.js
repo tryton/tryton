@@ -16,7 +16,8 @@ module.exports = function(grunt) {
                 'src/view.js',
                 'src/action.js',
                 'src/common.js',
-                'src/window.js'
+                'src/window.js',
+                'src/wizard.js'
             ],
             dest: 'dist/<%= pkg.name %>.js'
         }

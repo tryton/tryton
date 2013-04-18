@@ -14,9 +14,9 @@
         } else {
             data = jQuery.extend({}, data);
         }
+        var params = {};
         switch (action.type) {
             case 'ir.action.act_window':
-                var params = {};
                 params.view_ids = false;
                 params.view_mode = null;
                 if (!jQuery.isEmptyObject(action.views)) {
@@ -80,6 +80,12 @@
                 Sao.Tab.create(params);
                 return;
             case 'ir.action.wizard':
+                params.action = action.wiz_name;
+                params.data = data;
+                params.name = action.name;
+                params.context = context;
+                params.window = action.window;
+                Sao.Wizard.create(params);
                 return;
             case 'ir.action.report':
                 return;

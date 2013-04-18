@@ -190,4 +190,16 @@
             }.bind(this));
         }
     };
+
+    Sao.common.Button = function(attributes) {
+        var button = jQuery('<button/>').button({
+            text: true,
+            label: attributes.string || ''
+        });
+        // TODO icon
+        button.state_set = function(record) {
+            // TODO
+        };
+        return button;
+    };
 }());
