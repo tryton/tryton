@@ -3,21 +3,22 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "Una moneda sol pot tenir un valor per data"
+msgid "A currency can only have one rate by date."
+msgstr "Una moneda només pot tenir una taxa de canvi per data."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
+msgstr "La taxa de canvi de la moneda ha de ser més gran o igual a 0."
+
+msgctxt "error:currency.currency:"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Agrupació \"%(grouping)s\" de la moneda \"%(currency)s\" no és correcta."
+
+msgctxt "error:currency.currency:"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
-"El rang de la taxa de canvi de la moneda ha de ser mes gran o igual a 0."
-
-msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Agrupament no vàlid"
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "No s'ha trobat una conversió per la moneda \"%s\" a la data: %s"
+"No s'ha trobat cap taxa de canvi per a la moneda \"%(currency)s\" a la data "
+"\"%(date)s\""
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -901,7 +902,7 @@ msgstr "Monedes"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Monedes"
+msgstr "Moneda"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
@@ -930,10 +931,6 @@ msgstr "Moneda"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Format"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Taxa de canvi"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
