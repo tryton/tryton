@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
-msgid "Probability must be between 0 and 100!"
-msgstr "L'oportunitat ha de ser entre 0 i 100."
+msgid "Probability must be between 0 and 100."
+msgstr "La provabilitat ha de ser entre 0 i 100."
 
 msgctxt "error:sale.opportunity:"
-msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
-msgstr "L'oportunitat \"%s\" ha de ser cancel·lada abans d'eliminar-la."
+msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
+msgstr "Heu de cancel·lar l 'oportunitat \"%s\" abans de ser eliminat."
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -512,7 +512,7 @@ msgstr "Oportunitats per empleat"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Oportunitats per treballador per mes"
+msgstr "Oportunitats per treballador i mes"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_open"
 msgid "Opportunities per Employee"
@@ -526,33 +526,43 @@ msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
 msgstr "Iniciatives/Oportunitats"
 
-msgctxt "model:ir.action,name:act_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr "Iniciatives i oportunitats cancel·lades"
-
-msgctxt "model:ir.action,name:act_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr "Oportunitats convertides"
-
-msgctxt "model:ir.action,name:act_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr "Iniciatives obertes"
-
-msgctxt "model:ir.action,name:act_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr "Iniciatives i oportunitats perdudes"
-
-msgctxt "model:ir.action,name:act_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr "Oportunitats"
-
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr "Oportunitats per mes"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr "Convertit"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr "Iniciatives"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr "Perdut"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
+msgstr "Oportunitats"
+
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Oportunitats per treballador per mes"
+msgstr "Oportunitats per treballador i mes"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
 msgid "Opportunities per Employee"
@@ -561,26 +571,6 @@ msgstr "Oportunitats per empleat"
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
 msgstr "Iniciatives i oportunitats"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr "Iniciatives i oportunitats cancelades"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr "Oportunitats convertides"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr "Iniciatives obertes"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr "Iniciatives i oportunitats  perdudes"
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr "Oportunitats"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
@@ -592,7 +582,7 @@ msgstr "Informes"
 
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunitats"
+msgstr "Oportunitat"
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
