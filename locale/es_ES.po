@@ -3,32 +3,33 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "El importe (%s) es mayor que el importe a pagar de la factura."
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value!"
-msgstr "El importe debe ser un valor positivo o negativo."
-
-msgctxt "error:account.statement.line:"
 msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
+"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
+"one configured as credit or debit on journal \"%(journal)s\"."
 msgstr ""
-"La cuenta debe o haber en el diario es la misma que la de la línea de "
-"extracto."
+"La cuenta \"%(account)s\" en la línea de estracto \"%(line)s\" es la misma "
+"que la configurada como haber o debe en el diario \"%(journal)s\"."
 
 msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal."
-msgstr "Debe indicar las cuentas debe y haber en un diario de extracto."
+msgid "Amount \"%s\" is greater than the amount to pay of invoice."
+msgstr "El importe \"%s\" es mayor que el importe a pagar de la factura."
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value."
+msgstr "El importe debería ser un valor positivo o negativo."
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr ""
+"Proporcione una cuenta de haber y de debe en el diario de extracto \"%s\"."
 
 msgctxt "error:account.statement:"
-msgid "End Balance must be %s!"
-msgstr "El saldo final debe ser %s."
+msgid "End Balance must be \"%s\"."
+msgstr "El saldo final debe ser \"%s\"."
 
 msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr "Debe cancelar el extracto \"%s\" antes de eliminarlo."
+msgid "Statement \"%s\" must be cancelled before deletion."
+msgstr "Debe cancelar el extracto \"%s\" antes de borrar."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -206,40 +207,39 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línea de extracto bancario"
 
-msgctxt "model:ir.action,name:act_draft_statement_form"
-msgid "Draft Statements"
-msgstr "Extractos borrador"
-
-msgctxt "model:ir.action,name:act_posted_statement_form"
-msgid "Posted Statements"
-msgstr "Extractos confirmados"
-
 msgctxt "model:ir.action,name:act_statement_form"
-msgid "All Statement"
+msgid "Statements"
 msgstr "Todos los extractos"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Diarios de extracto"
 
-msgctxt "model:ir.action,name:act_validated_statement_form"
-msgid "Validated Statement"
-msgstr "Extractos validados"
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr "Todo"
 
-msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
-msgid "Draft Statements"
-msgstr "Extractos borrador"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
 
-msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
-msgid "Posted Statements"
-msgstr "Extractos confirmados"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Confirmado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Validado"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
 msgstr "Extractos"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
-msgid "All Statement"
+msgid "Statements"
 msgstr "Todos los extractos"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
@@ -249,10 +249,6 @@ msgstr "Diarios de extracto"
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
 msgstr "Extractos"
-
-msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
-msgid "Validated Statement"
-msgstr "Extractos validados"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
@@ -287,10 +283,6 @@ msgid "Amount"
 msgstr "Importe"
 
 msgctxt "view:account.statement.line:"
-msgid "Bank Statement Line"
-msgstr "Línea de extracto bancario"
-
-msgctxt "view:account.statement.line:"
 msgid "Statement Line"
 msgstr "Línea de extracto bancario"
 
@@ -299,28 +291,8 @@ msgid "Statement Lines"
 msgstr "Líneas de extracto bancario"
 
 msgctxt "view:account.statement:"
-msgid "Amount"
-msgstr "Importe"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement"
-msgstr "Extracto bancario"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement Lines"
-msgstr "Líneas de extracto bancario"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statements"
-msgstr "Extractos bancarios"
-
-msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Cancelar"
-
-msgctxt "view:account.statement:"
-msgid "Move Lines"
-msgstr "Apuntes"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
@@ -332,7 +304,7 @@ msgstr "Confirmar"
 
 msgctxt "view:account.statement:"
 msgid "Reset to Draft"
-msgstr "Restablecer a borrador"
+msgstr "Restaurar a borrador"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
