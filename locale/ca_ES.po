@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Mètode del cost de transportista"
+msgstr "Mètode cost del transportista"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
@@ -51,7 +51,7 @@ msgid "Carriers"
 msgstr "Transportistes"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
+msgid "Transportistas"
 msgstr "Transportistes"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
