@@ -4,20 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "No pot crear dependències recursives"
+msgstr "El percentatge ha de ser més gran que zero."
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
@@ -37,7 +32,7 @@ msgstr "Nom"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Activitat"
+msgstr "Treball"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
@@ -51,10 +46,9 @@ msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
@@ -101,7 +95,7 @@ msgid "Allocations"
 msgstr "Assignacions"
 
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
+msgid "Back Leveling Delay"
 msgstr "Retard de l'anivellació"
 
 msgctxt "field:project.work,constraint_finish_date:"
@@ -126,15 +120,15 @@ msgstr "Durada"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Finalització prematura"
+msgstr "Finalització avançada"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Hora de finalització prematura"
+msgstr "Hora de finalització avançada"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Inici prematur"
+msgstr "Inici avançat"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
@@ -142,19 +136,19 @@ msgstr "Temps d'inici prematur"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr "Finalització tardana"
+msgstr "Finalització amb retard"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Hora de finalització tardana"
+msgstr "Hora de finalització amb retard"
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
-msgstr "Inici tardà"
+msgstr "Inici amb retard"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Hora d'inici tardana"
+msgstr "Hora d'inici amb retard"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
@@ -186,7 +180,7 @@ msgstr "Predecessor - Successor"
 
 msgctxt "model:res.request.link,name:request_link_work"
 msgid "Work"
-msgstr "Activitat"
+msgstr "Treball"
 
 msgctxt "view:project.allocation:"
 msgid "Allocation"
@@ -202,7 +196,7 @@ msgstr "Assignacions"
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "Pla"
+msgstr "Planificació"
 
 msgctxt "view:project.work:"
 msgid "Requests"
