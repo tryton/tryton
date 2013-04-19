@@ -1,0 +1,520 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.asset:"
+msgid "Asset \"%s\" must be in draft to be deleted!"
+msgstr "Heu de canviar a esborrany l'actiu \"%s\" per poder eliminar-lo."
+
+msgctxt "error:account.asset:"
+msgid "Supplier Invoice Line can be used only once on asset!"
+msgstr ""
+"La línia de factura de proveïdor només es pot utilitzar un cop a l'actiu."
+
+msgctxt "error:account.invoice.line:"
+msgid "Asset can be used only once on invoice line!"
+msgstr "L'actiu només es pot utilitzar un cop a la línia de factura."
+
+msgctxt "error:purchase.line:"
+msgid "It misses an \"Account Asset\" on product \"%s\"!"
+msgstr "Falta el \"Compte d'actius\" del producte \"%s\"."
+
+msgctxt "field:account.asset,account_journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.asset,comment:"
+msgid "Comment"
+msgstr "Comentari"
+
+msgctxt "field:account.asset,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.asset,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.asset,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.asset,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
+msgctxt "field:account.asset,customer_invoice_line:"
+msgid "Customer Invoice Line"
+msgstr "Línia de factura de client"
+
+msgctxt "field:account.asset,depreciation_method:"
+msgid "Depreciation Method"
+msgstr "Mètode d'amortització"
+
+msgctxt "field:account.asset,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:account.asset,frequency:"
+msgid "Frequency"
+msgstr "Freqüència"
+
+msgctxt "field:account.asset,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:account.asset,move:"
+msgid "Account Move"
+msgstr "Assentament comptable"
+
+msgctxt "field:account.asset,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:account.asset,purchase_date:"
+msgid "Purchase Date"
+msgstr "Data de compra"
+
+msgctxt "field:account.asset,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:account.asset,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.asset,reference:"
+msgid "Reference"
+msgstr "Referència"
+
+msgctxt "field:account.asset,residual_value:"
+msgid "Residual Value"
+msgstr "Valor residual"
+
+msgctxt "field:account.asset,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
+
+msgctxt "field:account.asset,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:account.asset,supplier_invoice_line:"
+msgid "Supplier Invoice Line"
+msgstr "Línia de factura de proveïdor"
+
+msgctxt "field:account.asset,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:account.asset,unit_digits:"
+msgid "Unit Digits"
+msgstr "Decimals unitaris"
+
+msgctxt "field:account.asset,update_moves:"
+msgid "Update Moves"
+msgstr "Actualitza assentaments"
+
+msgctxt "field:account.asset,value:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "field:account.asset,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.asset,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.asset-update-account.move,asset:"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "field:account.asset-update-account.move,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.asset-update-account.move,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.asset-update-account.move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset-update-account.move,move:"
+msgid "Move"
+msgstr "Moviment"
+
+msgctxt "field:account.asset-update-account.move,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.asset-update-account.move,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.asset-update-account.move,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.asset.create_moves.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.asset.create_moves.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.line,accumulated_depreciation:"
+msgid "Accumulated Depreciation"
+msgstr "Amortització acumulada"
+
+msgctxt "field:account.asset.line,acquired_value:"
+msgid "Acquired Value"
+msgstr "Valor adquirit"
+
+msgctxt "field:account.asset.line,actual_value:"
+msgid "Actual Value"
+msgstr "Valor real"
+
+msgctxt "field:account.asset.line,asset:"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "field:account.asset.line,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.asset.line,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.asset.line,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.asset.line,depreciable_basis:"
+msgid "Depreciable Basis"
+msgstr "Base depreciable"
+
+msgctxt "field:account.asset.line,depreciation:"
+msgid "Depreciation"
+msgstr "Amortització"
+
+msgctxt "field:account.asset.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.line,move:"
+msgid "Account Move"
+msgstr "Assentament comptable"
+
+msgctxt "field:account.asset.line,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.asset.line,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.asset.line,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:account.asset.update.show_depreciation,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
+msgid "Counterpart Account"
+msgstr "Cuenta de contrapartida"
+
+msgctxt "field:account.asset.update.show_depreciation,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
+msgid "Depreciation Account"
+msgstr "Compte d'amortització"
+
+msgctxt "field:account.asset.update.show_depreciation,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.update.start,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:account.asset.update.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.asset.update.start,residual_value:"
+msgid "Residual Value"
+msgstr "Valor residual"
+
+msgctxt "field:account.asset.update.start,value:"
+msgid "Asset Value"
+msgstr "Valor d'actiu"
+
+msgctxt "field:account.configuration,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr "Seqüència de referència d'actiu"
+
+msgctxt "field:account.invoice.line,asset:"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "field:account.invoice.line,is_assets_depreciable:"
+msgid "Is Assets depreciable"
+msgstr "És actiu despreciable"
+
+msgctxt "field:product.category,account_asset:"
+msgid "Account Asset"
+msgstr "Comtpe de actiu"
+
+msgctxt "field:product.category,account_asset_used:"
+msgid "Account Asset Used"
+msgstr "Compte d'actiu utilitzat"
+
+msgctxt "field:product.category,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Compte d'amortització"
+
+msgctxt "field:product.category,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr "Compte d'amortització utilitzada"
+
+msgctxt "field:product.template,account_asset:"
+msgid "Account Asset"
+msgstr "Comtpe de actiu"
+
+msgctxt "field:product.template,account_asset_used:"
+msgid "Account Asset Used"
+msgstr "Compte d'actiu utilitzat"
+
+msgctxt "field:product.template,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Compte d'amortització"
+
+msgctxt "field:product.template,account_depreciation_used:"
+msgid "Account Depreciation Used"
+msgstr "Compte d'amortització utilitzada"
+
+msgctxt "field:product.template,depreciable:"
+msgid "Depreciable"
+msgstr "Depreciable"
+
+msgctxt "field:product.template,depreciation_duration:"
+msgid "Depreciation Duration"
+msgstr "Duración de la amortització"
+
+msgctxt "help:product.template,depreciation_duration:"
+msgid "In months"
+msgstr "En mesos"
+
+msgctxt "model:account.account.template,name:account_template_assets"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "model:account.account.template,name:account_template_depretiation"
+msgid "Depreciation"
+msgstr "Amortització"
+
+msgctxt "model:account.asset,name:"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "model:account.asset-update-account.move,name:"
+msgid "Asset - Update - Move"
+msgstr "Actiu - Actualitza - Moviment"
+
+msgctxt "model:account.asset.create_moves.start,name:"
+msgid "Create Moves Start"
+msgstr "Crea inici d'assentaments"
+
+msgctxt "model:account.asset.line,name:"
+msgid "Asset Line"
+msgstr "Línia d'actiu"
+
+msgctxt "model:account.asset.update.show_depreciation,name:"
+msgid "Update Asset Show Depreciation"
+msgstr "Actualitza vista depreciació actiu"
+
+msgctxt "model:account.asset.update.start,name:"
+msgid "Update Asset Start"
+msgstr "Inici actualiza actius"
+
+msgctxt "model:account.journal,name:journal_asset"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "model:account.journal.type,name:journal_type_asset"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "model:ir.action,name:act_asset_form"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "model:ir.action,name:wizard_create_moves"
+msgid "Create Assets Moves"
+msgstr "Crea assentament d'actiu"
+
+msgctxt "model:ir.action,name:wizard_update"
+msgid "Update Asset"
+msgstr "Actualizar actius"
+
+msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
+msgid "Running"
+msgstr "En curs"
+
+msgctxt "model:ir.sequence,name:sequence_asset"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_asset"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "model:ir.ui.menu,name:menu_asset"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "model:ir.ui.menu,name:menu_asset_form"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "model:ir.ui.menu,name:menu_create_moves"
+msgid "Create Assets Moves"
+msgstr "Crea assentament d'actiu"
+
+msgctxt "selection:account.asset,depreciation_method:"
+msgid "Linear"
+msgstr "Lineal"
+
+msgctxt "selection:account.asset,frequency:"
+msgid "Monthly"
+msgstr "Mensualment"
+
+msgctxt "selection:account.asset,frequency:"
+msgid "Yearly"
+msgstr "Anualment"
+
+msgctxt "selection:account.asset,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:account.asset,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:account.asset,state:"
+msgid "Running"
+msgstr "En curs"
+
+msgctxt "view:account.asset.create_moves.start:"
+msgid "Create Assets Moves"
+msgstr "Crea assentament d'actiu"
+
+msgctxt "view:account.asset.create_moves.start:"
+msgid "Create Assets Moves up to"
+msgstr "Crea moviments d'actiu fins"
+
+msgctxt "view:account.asset.line:"
+msgid "Asset Line"
+msgstr "Línia d'actiu"
+
+msgctxt "view:account.asset.line:"
+msgid "Asset Lines"
+msgstr "Línies d'actiu"
+
+msgctxt "view:account.asset.update.show_depreciation:"
+msgid "Asset Depreciation Move"
+msgstr "Assentament d'amortització d'actiu"
+
+msgctxt "view:account.asset.update.start:"
+msgid "Update Asset"
+msgstr "Actualiza actius"
+
+msgctxt "view:account.asset:"
+msgid "Asset"
+msgstr "Actiu"
+
+msgctxt "view:account.asset:"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "view:account.asset:"
+msgid "Clear Lines"
+msgstr "Esborra apunts"
+
+msgctxt "view:account.asset:"
+msgid "Close"
+msgstr "Tancat"
+
+msgctxt "view:account.asset:"
+msgid "Create Lines"
+msgstr "Crea apunts"
+
+msgctxt "view:account.asset:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "view:account.asset:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:account.asset:"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt "view:account.asset:"
+msgid "Update Asset"
+msgstr "Actualiza actius"
+
+msgctxt "view:product.template:"
+msgid "Depreciation"
+msgstr "Amortització"
+
+msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:account.asset.create_moves,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.asset.update,show_move,create_move:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:account.asset.update,show_move,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.asset.update,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.asset.update,start,update_asset:"
+msgid "OK"
+msgstr "D'acord"
