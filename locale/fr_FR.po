@@ -3,32 +3,20 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "Une devise ne peut avoir qu'un seul taux par date"
-
-msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "Une devise ne peut avoir qu'un seul taux par date"
+msgid "A currency can only have one rate by date."
+msgstr "Une devise ne peut avoir qu'un seul taux par date."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "Le taux de la devise doit être plus grand ou égal à zéro"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Groupement invalide"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Le groupement \"%(grouping)s\" de la devise \"%(currency)s\" est invalide."
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Groupement invalide"
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "Pas de taux trouvé pour la devise: %s à la date: %s"
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "Pas de taux trouvé pour la devise: %s à la date: %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
+msgstr "Aucun taux trouvé pour la devise \"%s\" à la date \"%s\"."
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -953,10 +941,6 @@ msgstr "Formatage"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formatage"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Taux"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
