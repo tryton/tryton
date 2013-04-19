@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
 msgid "There is no account expense/revenue defined on the category %s (%d)"
-msgstr "Il n'y a pas de compte de dépenses/revenus définé sur la catégorie"
+msgstr "Il n'y a pas de compte de charge/produit définé sur la catégorie"
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
