@@ -46,10 +46,9 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Organització de l'escriptori"
 
-#, fuzzy
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "dashboard.action"
+msgstr "Acció de l'escriptori"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
@@ -80,10 +79,6 @@ msgid "Stack Top"
 msgstr "De baix a dalt"
 
 msgctxt "view:dashboard.action:"
-msgid "Dashboard"
-msgstr "Escriptori"
-
-msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Acció de l'escriptori"
 
@@ -94,11 +89,3 @@ msgstr "Accions de l'escriptori"
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Escriptori"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Action"
-msgstr "Acció de l'escriptori"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Actions"
-msgstr "Accions de l'escriptori"
