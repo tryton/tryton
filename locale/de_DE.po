@@ -6,10 +6,6 @@ msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
 msgstr "Prozentsatz muss größer als 0 sein."
 
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "Abhängigkeiten können nicht rekursiv angelegt werden!"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -99,7 +95,7 @@ msgid "Allocations"
 msgstr "Zuordnungen"
 
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
+msgid "Back Leveling Delay"
 msgstr "Verzögerung Abgleich"
 
 msgctxt "field:project.work,constraint_finish_date:"
@@ -172,7 +168,7 @@ msgstr "Nachfolger"
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Aufgaben abgleichen"
+msgstr "Aufgabenabgleich"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
