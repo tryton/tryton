@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "You can not create recursive categories!"
-msgstr "Kategorien können nicht rekursiv angelegt werden!"
-
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the default uom for a product which is associated to stock"
@@ -23,8 +19,8 @@ msgstr ""
 "Andernfalls kann sie nur deaktiviert und eine andere neue erstellt werden."
 
 msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values!"
-msgstr "Ungültige Werte für Faktor und Kehrwert!"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "Ungültige Werte für Faktor und Kurs in Maßeinheit \"%s\"."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
@@ -72,9 +68,17 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Aktiv"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Artikelnummer"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Kostenpreis"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -84,6 +88,10 @@ msgctxt "field:product.product,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "Standardeinheit"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Beschreibung"
@@ -92,6 +100,10 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Listenpreis"
+
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
 msgstr "Name"
@@ -99,6 +111,10 @@ msgstr "Name"
 msgctxt "field:product.product,template:"
 msgid "Product Template"
 msgstr "Artikelvorlage"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Typ"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
@@ -128,10 +144,6 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Kostenmethode"
 
-msgctxt "field:product.template,cost_price_uom:"
-msgid "Cost Price"
-msgstr "Einkaufspreis"
-
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -156,17 +168,13 @@ msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr "Listenpreis"
 
-msgctxt "field:product.template,list_price_uom:"
-msgid "List Price"
-msgstr "Listenpreis"
-
 msgctxt "field:product.template,name:"
 msgid "Name"
 msgstr "Name"
 
 msgctxt "field:product.template,products:"
-msgid "Products"
-msgstr "Artikel"
+msgid "Variants"
+msgstr "Varianten"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Name"
@@ -292,17 +300,21 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Kategorien"
+msgstr "Parteikategorien"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Artikelkategorien"
+msgstr "Parteikategorien"
 
-msgctxt "model:ir.action,name:act_product_by_category"
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Varianten"
+
+msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Artikel nach Kategorie"
 
-msgctxt "model:ir.action,name:act_product_form"
+msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Artikel"
 
@@ -326,7 +338,11 @@ msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Artikel"
 
-msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Varianten"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
 msgstr "Artikel"
 
@@ -343,8 +359,8 @@ msgid "Product Category"
 msgstr "Artikel Kategorie"
 
 msgctxt "model:product.product,name:"
-msgid "Product"
-msgstr "Artikel"
+msgid "Product Variant"
+msgstr "Artikel Variante"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
@@ -642,6 +658,18 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Artikel Administration"
 
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Inventar"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Ware"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Dienstleistung"
+
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
 msgstr "Durchschnitt"
@@ -675,16 +703,8 @@ msgid "Product Category"
 msgstr "Artikelkategorie"
 
 msgctxt "view:product.product:"
-msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:product.product:"
 msgid "Product"
 msgstr "Artikel"
-
-msgctxt "view:product.product:"
-msgid "Product Suppliers"
-msgstr "Lieferanten"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -697,14 +717,6 @@ msgstr "Allgemein"
 msgctxt "view:product.template:"
 msgid "Product"
 msgstr "Artikel"
-
-msgctxt "view:product.template:"
-msgid "Product Template"
-msgstr "Artikelvorlage"
-
-msgctxt "view:product.template:"
-msgid "Product Templates"
-msgstr "Artikelvorlagen"
 
 msgctxt "view:product.template:"
 msgid "Products"
