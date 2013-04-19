@@ -3,14 +3,9 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice.line:"
-msgid "You can not delete invoice lines that comes from a purchase!"
+msgid "You can not delete invoice lines that comes from a purchase."
 msgstr ""
-"Vous ne pouvez pas supprimer des lignes de facture qui viennent d'un achat !"
-
-msgctxt "error:account.invoice.line:"
-msgid "You can not delete invoice lines that comes from a purchase!"
-msgstr ""
-"Vous ne pouvez pas supprimer des lignes de facture qui viennent d'un achat !"
+"Vous ne pouvez supprimer des lignes de facture qui proviennent d'un achat."
 
 msgctxt "field:purchase.purchase,invoice_lines:"
 msgid "Invoice Lines"
@@ -96,12 +91,10 @@ msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
 msgstr "Lignes de factures"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr "Annulé"
+msgstr "Annuler"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "Ok"
 msgstr "Ok"
