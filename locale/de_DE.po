@@ -3,33 +3,34 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "Der eingegebene Betrag (%s) ist größer als der Rechnungsbetrag!"
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value!"
-msgstr "Betrag sollte ein positiver oder negativer Wert sein!"
-
-msgctxt "error:account.statement.line:"
 msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
+"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
+"one configured as credit or debit on journal \"%(journal)s\"."
 msgstr ""
-"Haben- oder Sollkonto im Journal ist das selbe Konto wie das des "
-"Zahlungspostens!"
+"Konto \"%(account)s\" in Kontoauszugszeile \"%(line)s\" ist dasselbe wie das"
+" als Soll oder Haben eingetragene in Journal \"%(journal)s\"."
 
 msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal."
-msgstr "Bitte Soll- und Habenkonto im Journal Zahlungsverkehr angeben."
+msgid "Amount \"%s\" is greater than the amount to pay of invoice."
+msgstr "Betrag \"%s\" ist größer als der für die Rechnung zu zahlende Betrag."
 
-msgctxt "error:account.statement:"
-msgid "End Balance must be %s!"
-msgstr "Endsaldo muss %s sein!"
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value."
+msgstr "Der Betrag sollte einen positiven oder negativen Wert aufweisen."
 
-msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion!"
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
-"Kontoauszug \"%s\" muss annulliert werden, bevor sie gelöscht werden kann."
+"Bitte tragen Sie Soll- und Habenkonto für das Kontoauszugsjournal \"%s\" "
+"ein."
+
+msgctxt "error:account.statement:"
+msgid "End Balance must be \"%s\"."
+msgstr "Endsaldo muss \"%s\" sein."
+
+msgctxt "error:account.statement:"
+msgid "Statement \"%s\" must be cancelled before deletion."
+msgstr "Kontoauszug \"%s\" muss annulliert werden, bevor er gelöscht werden kann."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -209,11 +210,11 @@ msgstr "Zahlungsverkehr Position"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Alle Kontoauszüge"
+msgstr "Zahlungsverkehr"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Journale Kontoauszüge"
+msgstr "Journale Zahlungsverkehr"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -283,10 +284,6 @@ msgid "Amount"
 msgstr "Betrag"
 
 msgctxt "view:account.statement.line:"
-msgid "Bank Statement Line"
-msgstr "Posten Kontoauszug"
-
-msgctxt "view:account.statement.line:"
 msgid "Statement Line"
 msgstr "Kontoauszug Position"
 
@@ -295,28 +292,8 @@ msgid "Statement Lines"
 msgstr "Kontoauszug Positionen"
 
 msgctxt "view:account.statement:"
-msgid "Amount"
-msgstr "Betrag"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement"
-msgstr "Kontoauszug"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement Lines"
-msgstr "Posten Kontoauszug"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statements"
-msgstr "Kontoauszüge"
-
-msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Annullieren"
-
-msgctxt "view:account.statement:"
-msgid "Move Lines"
-msgstr "Buchungszeilen"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
