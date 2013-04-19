@@ -73,7 +73,3 @@ msgstr "Frachtgewicht Preisliste"
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price Lists"
 msgstr "Frachtgewicht Preislisten"
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Höhe Stellen"
-msgstr "Frachtgewicht Preislisten"
