@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice.line:"
-msgid "You can not delete invoice lines that comes from a purchase!"
-msgstr "No puede eliminar líneas que vienen de una compra."
+msgid "You can not delete invoice lines that comes from a purchase."
+msgstr "No puede borrar líneas de facturas generadas por una compra."
 
 msgctxt "field:purchase.purchase,invoice_lines:"
 msgid "Invoice Lines"
@@ -86,17 +86,14 @@ msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "Compra - Línea de factura ignorada"
 
-#, fuzzy
 msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "Ok"
 msgstr "Aceptar"
