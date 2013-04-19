@@ -7,13 +7,12 @@ msgid "Hours field must be positive"
 msgstr "El camp d'hores ha de ser positiu"
 
 msgctxt "error:timesheet.work:"
-msgid "Every work must be in the same company as it's parent work!"
+msgid ""
+"Every work must be in the same company as it's parent work but \"%(child)s\""
+" and \"%(parent)s\" are in different companies."
 msgstr ""
-"Cada treball ha d'estar en la mateixa empresa que el seu treball pare."
-
-msgctxt "error:timesheet.work:"
-msgid "You can not create recursive works!"
-msgstr "No pot crear treballs recursius."
+"Tot treball ha d'estar a la mateixa empresa que el seu pare, però "
+"\"%(child)s\" i \"%(parent)s\" estan a empreses diferents."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -247,10 +246,13 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Disponible en fulls de treball"
 
-#, fuzzy
-msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr "Servidor"
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Final de full de treball"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Començament de full de treball"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -278,7 +280,7 @@ msgstr "Temps total empleat en aquest treball"
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
-msgstr "Permet completar fullsde treball amb aquest treball."
+msgstr "Permet completar fulls de treball amb aquest treball."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -301,6 +303,10 @@ msgid "Enter Timesheet"
 msgstr "Afegeix full de treball"
 
 msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
+
+msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Línies del full de treball"
 
@@ -358,7 +364,7 @@ msgstr "Afegeix full de treball"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Línies de full de treball"
+msgstr "Línies del full de treball"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -366,7 +372,7 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Fulls de treball"
+msgstr "Full de treball"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
@@ -438,7 +444,7 @@ msgstr "Hores per empleat i setmana"
 
 msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
-msgstr "Afegir part de treball"
+msgstr "Afegeix full de treball"
 
 msgctxt "view:timesheet.line:"
 msgid "Hours"
@@ -450,7 +456,7 @@ msgstr "Línia de full de treball"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Lines"
-msgstr "Línies de full de treball"
+msgstr "Línies del full de treball"
 
 msgctxt "view:timesheet.work.open.start:"
 msgid "Hours per Work"
