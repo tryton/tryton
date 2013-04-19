@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:company.employee_cost_price:"
-msgid "A employee can only have one cost price by date!"
-msgstr "Un empleat només pot tenir un preu de cost per data"
+msgid "A employee can only have one cost price by date."
+msgstr "Un empleat només pot tenir un preu de cost per data."
 
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
@@ -26,10 +26,9 @@ msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
 
-#, fuzzy
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr "Crear usuari"
+msgstr "Usuari creació"
 
 msgctxt "field:company.employee_cost_price,currency_digits:"
 msgid "Currency Digits"
@@ -98,10 +97,6 @@ msgstr "Preu de cost de l'empleat"
 msgctxt "view:company.employee:"
 msgid "Cost"
 msgstr "Cost"
-
-msgctxt "view:company.employee:"
-msgid "Services"
-msgstr "Serveis"
 
 msgctxt "view:company.employee_cost_price:"
 msgid "Cost Prices"
