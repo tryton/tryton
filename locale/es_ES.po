@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_allocation_method:"
 msgid "Carrier Cost Allocation Method"
-msgstr "Método asignación coste transportista"
+msgstr "Método asignación coste del transportista"
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
