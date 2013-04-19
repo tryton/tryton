@@ -3,22 +3,22 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
+msgid "A currency can only have one rate by date."
 msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr ""
-"El rango de la tasa de cambio de la moneda debe ser mas grande o igual a 0."
+msgstr "La tasa de cambio de la moneda debe ser mayor o igual a 0."
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "El agrupamiento no es correcto."
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Agrupación \"%(grouping)s\" en la moneda \"%(currency)s\" no es correcta."
 
 msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
-"No se ha encontrado una tasa de cambio para la moneda «%s» con fecha: %s."
+"No se ha encontrado ninguna tasa de cambio para la moneda \"%(currency)s\" "
+"en la fecha \"%(date)s\""
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -874,7 +874,7 @@ msgstr "Código reservado para pruebas"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr "Sin divisa"
+msgstr "Sin moneda"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
@@ -902,7 +902,7 @@ msgstr "Monedas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Monedas"
+msgstr "Moneda"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
@@ -931,10 +931,6 @@ msgstr "Moneda"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formato"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Tasa de cambio"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
