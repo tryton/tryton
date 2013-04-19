@@ -4,57 +4,52 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr ""
+msgstr "Número"
 
-#, fuzzy
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-#, fuzzy
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimals unitaris"
 
-#, fuzzy
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "UdM"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Categoria de la UdM"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr ""
+msgstr "El número màxim de moviments"
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr ""
+msgstr "Divisió de moviments"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr ""
+msgstr "Divisió de moviments"
 
 msgctxt "view:stock.move.split.start:"
 msgid "Split Move"
-msgstr ""
+msgstr "Divisió de moviments"
 
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr ""
+msgstr "Divideix"
 
-#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
-msgstr ""
+msgstr "Divideix"
