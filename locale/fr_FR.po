@@ -58,10 +58,9 @@ msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-#, fuzzy
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr "carrier.weight_price_list"
+msgstr "Liste de prix par poids"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
