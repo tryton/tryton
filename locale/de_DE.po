@@ -3,22 +3,18 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
-msgstr "Die Partei einer Adresse kann nicht geändert werden!"
+msgid "You can not modify the party of address \"%s\"."
+msgstr "Änderung der Partei von Adresse \"%s\" nicht möglich."
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr "Ungültiger Kategoriename \"%s\": \" / \" ist in Feld Name nicht erlaubt."
+
+msgctxt "error:party.category:"
+msgid "The name of a party category must be unique by parent."
 msgstr ""
-"Der Name einer Parteikategorie kann pro übergeordneter Kategorie nur einmal "
-"vergeben werden!"
-
-msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr "Kategorien können nicht rekursiv angelegt werden!"
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
-msgstr "In dem Namensfeld kann \" / \" nicht verwendet werden!"
+"Der Name einer Parteienkategorie kann pro übergeordneter Kategorie nur "
+"einmal vergeben werden."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
@@ -26,16 +22,16 @@ msgstr ""
 "VIES Dienst nicht erreichbar, bitte versuchen Sie es später noch einmal!"
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
-msgstr "Die Partei einer Kontaktmöglichkeit kann nicht geändert werden!"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "Änderung der Partei von Kontaktmechanismus \"%s\" nicht möglich."
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
-msgstr "Ungültige USt-ID-Nummer!"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr "Ungültige USt-ID-Nummer \"%(vat)s\" in Partei \"%(party)s\"."
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
-msgstr "Der Name einer Partei kann nur einmal vergeben werden!"
+msgid "The code of the party must be unique."
+msgstr "Der Code für eine Partei kann nur einmal vergeben werden."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -413,19 +409,19 @@ msgstr "Adressen"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Kategorien"
+msgstr "Parteikategorien"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Kategorien"
+msgstr "Parteikategorien"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Parteien nach Kategorie"
+msgstr "Parteien nach Kategorien"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Einstellungen Partei"
+msgstr "Partei"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -469,7 +465,7 @@ msgstr "Parteien"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Einstellungen Partei"
+msgstr "Partei"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -590,28 +586,8 @@ msgid "Contact Mechanisms"
 msgstr "Kontaktmöglichkeiten"
 
 msgctxt "view:party.party:"
-msgid "Account"
-msgstr "Konten"
-
-msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr "Buchhaltung"
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr "Adressen"
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr "Kategorien"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanism"
-msgstr "Kontaktmöglichkeit"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
-msgstr "Kontaktmöglichkeiten"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -628,14 +604,6 @@ msgstr "Partei"
 msgctxt "view:party.party:"
 msgid "VAT"
 msgstr "USt"
-
-msgctxt "view:party.party:"
-msgid "_Accounting"
-msgstr "_Buchhaltung"
-
-msgctxt "view:party.party:"
-msgid "_General"
-msgstr "_Allgemein"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
