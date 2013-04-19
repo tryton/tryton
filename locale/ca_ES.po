@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "You can not create recursive categories!"
-msgstr "No pot crear categories recursives."
-
 msgctxt "error:product.uom:"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
@@ -15,10 +11,8 @@ msgstr ""
 "i crear-ne una de nova."
 
 msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values!"
-msgstr ""
-"No pot canviar la conversió, el factor o la categoria d'una unitat de "
-"mesura."
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr "Valors de factor i ratio a UdM \"%s\" incorrectes."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
@@ -27,7 +21,7 @@ msgstr "Conversió i factor no poden ser zero simultàniament."
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
 msgstr ""
-"No pot canviar la conversió, el factor o la categoria d'una unitat de "
+"No podeu canviar la conversió, el factor o la categoria d'una unitat de "
 "mesura."
 
 msgctxt "field:product.category,childs:"
@@ -66,9 +60,17 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Actiu"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Codi"
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Preu de cost"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -78,6 +80,10 @@ msgctxt "field:product.product,create_uid:"
 msgid "Create User"
 msgstr "Usuari creació"
 
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "UdM per defecte"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Descripció"
@@ -86,6 +92,10 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Preu de venda"
+
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
 msgstr "Nom"
@@ -93,6 +103,10 @@ msgstr "Nom"
 msgctxt "field:product.product,template:"
 msgid "Product Template"
 msgstr "Plantilla de producte"
+
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Tipus"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
@@ -122,10 +136,6 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Mètode de cost"
 
-msgctxt "field:product.template,cost_price_uom:"
-msgid "Cost Price"
-msgstr "Preu de cost"
-
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Data creació"
@@ -150,17 +160,13 @@ msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr "Preu de venda"
 
-msgctxt "field:product.template,list_price_uom:"
-msgid "List Price"
-msgstr "Preu de venda"
-
 msgctxt "field:product.template,name:"
 msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:product.template,products:"
-msgid "Products"
-msgstr "Productes"
+msgid "Variants"
+msgstr "Variants"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Name"
@@ -290,11 +296,15 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categories"
 
-msgctxt "model:ir.action,name:act_product_by_category"
-msgid "Product by Category"
-msgstr "Producte per categoria"
-
 msgctxt "model:ir.action,name:act_product_form"
+msgid "Productos"
+msgstr "Productes"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr "Productes per categoria"
+
+msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Productes"
 
@@ -316,9 +326,13 @@ msgstr "Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
-msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Products"
+msgstr "Variants"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
 msgstr "Productes"
 
@@ -335,8 +349,8 @@ msgid "Product Category"
 msgstr "Categoria de producte"
 
 msgctxt "model:product.product,name:"
-msgid "Product"
-msgstr "Producte"
+msgid "Product Variant"
+msgstr "Variant de producte"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
@@ -592,7 +606,7 @@ msgstr "yd²"
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "o"
+msgstr "u"
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
@@ -634,6 +648,18 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Administració de productes"
 
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr "Actius"
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr "Béns"
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Serveis"
+
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
 msgstr "Mitjana"
@@ -644,15 +670,15 @@ msgstr "Fix"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Servei"
+msgstr "Actius"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr "Servei"
+msgstr "Béns"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
-msgstr "Servei"
+msgstr "Serveis"
 
 msgctxt "view:product.category:"
 msgid "Children"
@@ -667,16 +693,8 @@ msgid "Product Category"
 msgstr "Categoria de producte"
 
 msgctxt "view:product.product:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:product.product:"
 msgid "Product"
 msgstr "Producte"
-
-msgctxt "view:product.product:"
-msgid "Product Suppliers"
-msgstr "Proveïdors de productes"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -687,12 +705,12 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:product.template:"
-msgid "Product Template"
-msgstr "Plantilla de producte"
+msgid "Product"
+msgstr "Producte"
 
 msgctxt "view:product.template:"
-msgid "Product Templates"
-msgstr "Plantilles de producte"
+msgid "Products"
+msgstr "Productes"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
