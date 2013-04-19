@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
-msgid "Probability must be between 0 and 100!"
-msgstr "Wahrscheinlichkeit muss zwischen 0 und 100 liegen!"
+msgid "Probability must be between 0 and 100."
+msgstr "Wahrscheinlichkeit muss zwischen 0 und 100 liegen."
 
 msgctxt "error:sale.opportunity:"
-msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
+msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr ""
 "Verkaufschance \"%s\" muss annulliert werden, bevor sie gelöscht werden "
 "kann."
@@ -58,7 +58,7 @@ msgstr "Enddatum"
 
 msgctxt "field:sale.opportunity,history:"
 msgid "History"
-msgstr "Verlauf"
+msgstr "Historie"
 
 msgctxt "field:sale.opportunity,id:"
 msgid "ID"
@@ -592,7 +592,7 @@ msgstr "Verkaufschance"
 
 msgctxt "model:sale.opportunity.history,name:"
 msgid "Sale Opportunity History"
-msgstr "Verkaufschancen Verlauf"
+msgstr "Verkaufschancen Historie"
 
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
@@ -656,7 +656,7 @@ msgstr "Chance"
 
 msgctxt "view:sale.opportunity.history:"
 msgid "History"
-msgstr "Verlauf"
+msgstr "Historie"
 
 msgctxt "view:sale.opportunity.history:"
 msgid "Lead/Opportunity"
@@ -689,10 +689,6 @@ msgstr "Interessent/Chance"
 msgctxt "view:sale.opportunity:"
 msgid "Mark as Lost"
 msgstr "Als Verlust markieren"
-
-msgctxt "view:sale.opportunity:"
-msgid "Reset as Lead"
-msgstr "Auf Interessent zurücksetzen"
 
 msgctxt "view:sale.opportunity:"
 msgid "Sale Lead/Opportunity"
