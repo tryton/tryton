@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product: %s (id: %s)!"
-msgstr "Falta el precio de compra para el producto: %s (id: %s)."
+msgid "Purchase price is missing for product \"%s\"."
+msgstr "Falta el precio de compra del producto \"%s\"."
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchase."
-msgstr "Este precio es necesario para crear la compra."
+msgid "This price is necessary for creating purchases."
+msgstr "Este precio es necesario para crear compras."
 
 msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
@@ -248,13 +248,19 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Solicitudes de compra"
 
-msgctxt "model:ir.action,name:act_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Solicitudes de compra borrador"
-
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
 msgstr "Crear compra"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -275,10 +281,6 @@ msgstr "Crear solicitudes de compra"
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Solicitudes de compra"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Solicitudes compra borrador"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
@@ -371,10 +373,6 @@ msgstr "Solicitudes de compra"
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
 msgstr "Información del suministro"
-
-msgctxt "view:stock.order_point:"
-msgid "Locations"
-msgstr "Ubicaciones"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point"
