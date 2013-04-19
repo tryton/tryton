@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:company.employee_cost_price:"
-msgid "A employee can only have one cost price by date!"
-msgstr "Un empleado sólo puede tener un precio de coste por fecha."
+msgid "A employee can only have one cost price by date."
+msgstr "Un empleado sólo puede disponer de un precio de coste por fecha."
 
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
@@ -97,10 +97,6 @@ msgstr "Precio de coste del empleado"
 msgctxt "view:company.employee:"
 msgid "Cost"
 msgstr "Coste"
-
-msgctxt "view:company.employee:"
-msgid "Services"
-msgstr "Servicios"
 
 msgctxt "view:company.employee_cost_price:"
 msgid "Cost Prices"
