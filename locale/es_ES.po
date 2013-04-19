@@ -2,29 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account:"
-msgid "You can not create recursive accounts!"
-msgstr "No puede crear cuentas recursivas."
-
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Expense\" on product \"%s\"!"
-msgstr "Al producto \"%s\" le falta una \"Cuenta de gastos\"."
-
-msgctxt "error:purchase.line:"
-msgid "The supplier location is required!"
-msgstr "La ubicación de proveedor es requerida."
-
 msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required on line \"%s\" (%d)!"
-msgstr "Es necesaria una cuenta analítica en la línea «%s» (%d)."
-
-msgctxt "error:purchase.purchase:"
-msgid "Invoice addresses must be defined for the quotation."
-msgstr "Se necesita la dirección de facturación para el presupuesto."
-
-msgctxt "error:purchase.purchase:"
-msgid "It misses an \"Account Payable\" on the party \"%s\"!"
-msgstr "Al tercero \"%s\" le falta una \"Cuenta a pagar\"."
+msgid "Analytic account is required on line \"%s\"."
+msgstr "Se requiere la cuenta analítica en la línea \"%s\"."
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -52,11 +32,11 @@ msgstr "Haber"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -188,11 +168,11 @@ msgstr "Empresa"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Decimales de la moneda"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
