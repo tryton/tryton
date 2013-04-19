@@ -24,23 +24,23 @@ msgstr "Perdut i trobat"
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Crear inventaris"
+msgstr "Crea inventaris"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Crear inventaris"
+msgstr "Crea inventaris"
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr "Crear inventaris"
+msgstr "Crea inventaris"
 
 msgctxt "view:stock.inventory.create.start:"
 msgid "Create Inventories"
-msgstr "Crear inventaris"
+msgstr "Crea inventaris"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr "Crear"
+msgstr "Crea"
 
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
