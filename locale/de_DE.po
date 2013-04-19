@@ -7,14 +7,13 @@ msgid "Hours field must be positive"
 msgstr "Feld Stunden muss einen positiven Wert haben"
 
 msgctxt "error:timesheet.work:"
-msgid "Every work must be in the same company as it's parent work!"
+msgid ""
+"Every work must be in the same company as it's parent work but \"%(child)s\""
+" and \"%(parent)s\" are in different companies."
 msgstr ""
-"Eine Aufgabe muss immer zum selben Unternehmen wie die übergeordnete Aufgabe"
-" gehören!"
-
-msgctxt "error:timesheet.work:"
-msgid "You can not create recursive works!"
-msgstr "Aufgaben können nicht rekursiv angelegt werden!"
+"Das Unternehmen einer Aufgabe muss dasselbe wie das der übergeordneten "
+"Aufgabe sein, aber \"%(child)s\" und \"%(parent)s\" sind unterschiedlichen "
+"Unternehmen zugeordnet."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -248,9 +247,17 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Verfügbar für Zeiterfassung"
 
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Zeiterfassung Ende"
+
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid ""
 msgstr ""
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Zeiterfassung Beginn"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -286,7 +293,7 @@ msgstr "Stunden pro Mitarbeiter"
 
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Stunden pro Mitarbeiter pro Monat"
+msgstr "Stunden pro Mitarbeiter und Monat"
 
 msgctxt "model:ir.action,name:act_hours_employee_open"
 msgid "Hours per Employee"
@@ -294,13 +301,17 @@ msgstr "Stunden pro Mitarbeiter"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Stunden pro Mitarbeiter pro Monat"
+msgstr "Stunden pro Mitarbeiter und Woche"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
 msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Zeitpositionen"
+
+msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Zeitpositionen"
 
@@ -326,15 +337,15 @@ msgstr "Stunden pro Aufgabe"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Aufgaben"
+msgstr "Arbeiten"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works"
-msgstr "Aufgaben"
+msgstr "Arbeiten"
 
 msgctxt "model:ir.action,name:act_work_tree2"
 msgid "Works"
-msgstr "Aufgaben"
+msgstr "Arbeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -370,11 +381,11 @@ msgstr "Zeiterfassung"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Aufgaben"
+msgstr "Arbeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works"
-msgstr "Aufgaben"
+msgstr "Arbeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree2"
 msgid "Hours per Work"
@@ -466,7 +477,7 @@ msgstr "Aufgabe"
 
 msgctxt "view:timesheet.work:"
 msgid "Works"
-msgstr "Aufgaben"
+msgstr "Arbeiten"
 
 msgctxt "wizard_button:timesheet.hours_employee.open,start,end:"
 msgid "Cancel"
