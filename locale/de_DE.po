@@ -3,9 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Anglo-Saxon quantity can not be greater than quantity!"
-msgstr ""
-"Anzahl nach angelsächsicher Bewertung kann nicht größer als Anzahl sein!"
+msgid "Anglo-Saxon quantity can not be greater than quantity."
+msgstr "Anzahl (Angelsächsische Bewertung) kann nicht größer als Anzahl sein."
 
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
