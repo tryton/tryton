@@ -2,47 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.statement.line:"
-msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "Der eingegebene Betrag (%s) ist größer als der Rechnungsbetrag!"
-
-msgctxt "error:account.statement.line:"
-msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
-msgstr ""
-"Haben- oder Sollkonto im Journal ist das selbe Konto wie das des "
-"Zahlungspostens!"
-
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal."
-msgstr "Bitte Soll- und Habenkonto im Journal Zahlungsverkehr angeben."
-
-msgctxt "error:account.statement:"
-msgid "End Balance must be %s!"
-msgstr "Endsaldo muss %s sein!"
-
 msgctxt "error:analytic_account.account.selection:"
 msgid ""
 "Can not have many accounts with the same root or a missing mandatory root "
-"account!"
+"account on \"%s\"."
 msgstr ""
-"Mehrere Konten zum selben Wurzelkonto nicht möglich oder erforderliches "
-"Wurzelkonto fehlt!"
-
-msgctxt "error:analytic_account.account:"
-msgid "You can not create recursive accounts!"
-msgstr "Konten können nicht rekursiv angelegt werden!"
+"Es kann nicht mehrere Konten mit demselben Wurzelkonto geben oder es fehlt "
+"ein erforderliches Wurzelkonto für \"%s\"."
 
 msgctxt "error:analytic_account.line:"
-msgid "Wrong credit/debit values!"
-msgstr "Falsche Haben/Soll-Werte!"
+msgid "Wrong credit/debit values."
+msgstr "Falsche Haben/Soll-Werte."
 
 msgctxt "error:analytic_account.line:"
-msgid ""
-"You can not create move line\n"
-"on view/inactive account!"
-msgstr "Keine Berechtigung für die Erstellung von Buchungszeilen!"
+msgid "You can not create a move line using inactive account \"%s\"."
+msgstr "Buchungszeile kann nicht angelegt werden mit inaktivem Konto \"%s\"."
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using view account \"%s\"."
+msgstr "Buchungszeile kann nicht angelegt werden mit Kontosicht \"%s\"."
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
@@ -438,7 +416,7 @@ msgstr "Kostenstelle Zeilen"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr "Konto öffnen"
+msgstr "Konto"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
