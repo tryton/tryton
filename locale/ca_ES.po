@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product: %s (id: %s)!"
-msgstr "Falta el preu de compra per al producte: %s (id: %s)"
+msgid "Purchase price is missing for product \"%s\"."
+msgstr "No es troba el preu de compra del producte \"%s\"."
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchase."
-msgstr "Es necessita aquest preu per crear la compra."
+msgid "This price is necessary for creating purchases."
+msgstr "Aquest preu és necessari per crear compres."
 
 msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
@@ -33,7 +33,7 @@ msgid ""
 "You can not define two order points on the same product with opposite "
 "locations."
 msgstr ""
-"No pot definir dues regles d'estoc mínim en el mateix producte amb "
+"No podeu definir dues regles d'estoc mínim en el mateix producte amb "
 "ubicacions oposades."
 
 msgctxt "field:product.product,order_points:"
@@ -206,7 +206,7 @@ msgstr "Nom"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
-msgstr "Ubicació del magatzem"
+msgstr "Ubicació interna"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
@@ -242,19 +242,25 @@ msgstr "Compres"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr "Crear Ordres de producció"
+msgstr "Crea sol·licituds de compra"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Sol·licituds de compra"
 
-msgctxt "model:ir.action,name:act_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Ordres de producció en esborrany"
-
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
 msgstr "Crear una compra"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "Tots"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -270,15 +276,11 @@ msgstr "Regles d'estoc mínim"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr "Crear Ordres de producció"
+msgstr "Crea sol·licituds de compra"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Sol·licituds de compra"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Ordres de producció en esborrany"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
@@ -373,10 +375,6 @@ msgid "Supply Info"
 msgstr "Informació del subministrament"
 
 msgctxt "view:stock.order_point:"
-msgid "Locations"
-msgstr "Ubicacions"
-
-msgctxt "view:stock.order_point:"
 msgid "Order Point"
 msgstr "Regla d'estoc mínim"
 
@@ -394,7 +392,7 @@ msgstr "Informació del producte"
 
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
-msgstr "Crear"
+msgstr "Crea"
 
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
