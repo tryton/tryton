@@ -3,35 +3,33 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
-msgstr "No puede modificar el tercero de una dirección."
+msgid "You can not modify the party of address \"%s\"."
+msgstr "No puede modificar el tercero de la dirección \"%s\"."
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
-msgstr "El nombre de la categoría de terceros debe ser único por padre."
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr ""
+"Nombre de categoría \"%s\" no es correcto: No puede utilizar \" / \" en el "
+"campo nombre."
 
 msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr "No puede crear categorías recursivas."
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
-msgstr "No puede usar \"/\" en el campo nombre."
+msgid "The name of a party category must be unique by parent."
+msgstr "El nombre de la categoría del tercero debe ser único según el padre."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde."
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
-msgstr "No puede modificar el tercero de un medio de contacto."
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "No puede modificar el tercer del contacto \"%s\"."
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
-msgstr "El CIF/NIF no es correcto."
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr "CIF/NIF \"%(vat)s\" del tercero \"%(party)s\", no es correcto."
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
+msgid "The code of the party must be unique."
 msgstr "El código del tercero debe ser único."
 
 msgctxt "field:party.address,active:"
@@ -172,11 +170,11 @@ msgstr "ID"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
-msgstr "Idioma tercero"
+msgstr "Idioma del tercero"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Secuencia tercero"
+msgstr "Secuencia del tercero"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
@@ -241,6 +239,10 @@ msgstr "Skype"
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Tipo"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
@@ -582,24 +584,8 @@ msgid "Contact Mechanisms"
 msgstr "Medios de contacto"
 
 msgctxt "view:party.party:"
-msgid "Account"
-msgstr "Cuenta"
-
-msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr "Contabilidad"
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr "Direcciones"
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr "Categorías"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
-msgstr "Medios de contacto"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -616,10 +602,6 @@ msgstr "Tercero"
 msgctxt "view:party.party:"
 msgid "VAT"
 msgstr "CIF/NIF"
-
-msgctxt "view:party.party:"
-msgid "_General"
-msgstr "_General"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
