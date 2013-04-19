@@ -3,8 +3,28 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project!"
-msgstr "Sólo debe haber un parte de trabajo por tarea/proyecto."
+msgid "There should be only one timesheet work by task/project."
+msgstr "Debe haber sólo un parte de horas de trabajo por tarea/proyecto."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done.\""
+msgstr ""
+"El trabajo \"%(child)s\" no se puede abrir porque el trabajo padre "
+"\"%(parent)s\" ya está marcado como terminado."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened.\""
+msgstr ""
+"El trabajo \"%(parent)s\" no se puede marcar como acabado porque el trabajo "
+"hijo \"%(child)s\" continua estando abierto."
+
+msgctxt "field:project.work,active:"
+msgid "Active"
+msgstr "Activo"
 
 msgctxt "field:project.work,children:"
 msgid "Children"
@@ -13,6 +33,10 @@ msgstr "Tareas"
 msgctxt "field:project.work,comment:"
 msgid "Comment"
 msgstr "Comentario"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
@@ -25,6 +49,10 @@ msgstr "Usuario creación"
 msgctxt "field:project.work,effort:"
 msgid "Effort"
 msgstr "Esfuerzo"
+
+msgctxt "field:project.work,hours:"
+msgid "Timesheet Hours"
+msgstr "Horas parte de trabajo"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -54,9 +82,13 @@ msgctxt "field:project.work,state:"
 msgid "State"
 msgstr "Estado"
 
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible en partes de trabajo"
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Esfuerzo total"
+msgstr "Total esfuerzo"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -64,7 +96,7 @@ msgstr "Tipo"
 
 msgctxt "field:project.work,work:"
 msgid "Work"
-msgstr "Actividad"
+msgstr "Trabajo"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
@@ -81,6 +113,10 @@ msgstr "Líneas de parte de trabajo"
 msgctxt "help:project.work,effort:"
 msgid "Estimated Effort for this work"
 msgstr "El esfuerzo estimado para esta actividad."
+
+msgctxt "help:project.work,hours:"
+msgid "Total time spent on this work"
+msgstr "Tiempo total empleado en este trabajo."
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
@@ -104,11 +140,11 @@ msgstr "Tareas"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Actividades"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Actividades"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -132,15 +168,15 @@ msgstr "Tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Actividades"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Actividades"
+msgstr "Proyectos y tareas"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Actividades"
+msgstr "Proyecto y tarea"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
@@ -148,7 +184,7 @@ msgstr "Administración de proyecto"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Realizado"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
@@ -171,33 +207,9 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:project.work:"
-msgid "Other Info"
-msgstr "Información adicional"
-
-msgctxt "view:project.work:"
-msgid "Projects"
-msgstr "Proyectos"
-
-msgctxt "view:project.work:"
 msgid "Tasks"
 msgstr "Tareas"
 
 msgctxt "view:project.work:"
-msgid "Timesheet"
-msgstr "Parte de trabajo"
-
-msgctxt "view:project.work:"
-msgid "Work"
-msgstr "Actividad"
-
-msgctxt "view:project.work:"
-msgid "Work Efforts"
-msgstr "Actividades"
-
-msgctxt "view:project.work:"
-msgid "Works"
-msgstr "Actividades"
-
-msgctxt "view:project.work:"
 msgid "Works Efforts"
-msgstr "Actividades"
+msgstr "Proyectos y tareas"
