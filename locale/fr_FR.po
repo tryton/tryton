@@ -14,6 +14,10 @@ msgctxt "help:production.configuration,supply_period:"
 msgid "In number of days"
 msgstr "En nombre de jours"
 
+msgctxt "model:ir.action,name:act_production_request"
+msgid "Request Productions"
+msgstr "Demandes de production"
+
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
 msgstr "Créer des demandes de production"
