@@ -46,7 +46,6 @@ msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Organización del escritorio"
 
-#, fuzzy
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
 msgstr "Acción del escritorio"
@@ -80,10 +79,6 @@ msgid "Stack Top"
 msgstr "De abajo a arriba"
 
 msgctxt "view:dashboard.action:"
-msgid "Dashboard"
-msgstr "Escritorio"
-
-msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Acción del escritorio"
 
@@ -94,11 +89,3 @@ msgstr "Acciones del escritorio"
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Escritorio"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Action"
-msgstr "Acción del escritorio"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Actions"
-msgstr "Acciones del escritorio"
