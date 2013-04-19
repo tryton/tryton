@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "Invalid SIRET number!"
-msgstr "Ungültige SIRET-Nummer!"
+msgid "Invalid SIRET number \"%(siret)s\" on address \"%(address)s\""
+msgstr "Ungültige SIRET Nummer \"%(siret)s\" in Adresse \"%(address)s\""
 
 msgctxt "error:party.party:"
-msgid "Invalid SIREN number!"
-msgstr "Ungültige SIREN-Nummer!"
+msgid "Invalid SIREN number \"%(siren)s\" on party \"%(party)s\"."
+msgstr "Ungültige SIREN Nummer \"%(siren)s\" in Partei \"%(party)s\"."
 
 msgctxt "field:party.address,siret:"
 msgid "SIRET"
