@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required on line \"%s\" (%d)!"
-msgstr "És necessari un compte analític en la línia «%s» (%d)."
+msgid "Analytic account is required on line \"%s\"."
+msgstr "El compte analític a la línia \"%s\" és obligatori."
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
