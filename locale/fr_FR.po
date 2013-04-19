@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "Vous ne pouvez pas créer des sociétés récursives !"
-
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "Vous ne pouvez pas créer des sociétés récursives !"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Enfants"
@@ -236,7 +228,7 @@ msgstr "Lettre"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr ""
+msgstr "Cron - Société"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
@@ -319,10 +311,6 @@ msgid "You can now add your company into the system."
 msgstr "Vous pouvez maintenant ajouter votre société au système"
 
 msgctxt "view:company.company:"
-msgid "Addresses"
-msgstr "Adresses"
-
-msgctxt "view:company.company:"
 msgid "Companies"
 msgstr "Sociétés"
 
@@ -339,24 +327,12 @@ msgid "Company"
 msgstr "Société"
 
 msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Employés"
-
-msgctxt "view:company.company:"
-msgid "General"
-msgstr "Général"
-
-msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Rapports"
 
 msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Rapports"
-
-msgctxt "view:company.employee:"
-msgid "Addresses"
-msgstr "Adresses"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
@@ -373,10 +349,6 @@ msgstr "Employés"
 msgctxt "view:company.employee:"
 msgid "Employees"
 msgstr "Employés"
-
-msgctxt "view:company.employee:"
-msgid "General"
-msgstr "Général"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
