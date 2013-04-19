@@ -44,7 +44,7 @@ msgstr "Kostenpreis Artikel Historie"
 
 msgctxt "model:ir.action,name:wizard_product_cost_history_open"
 msgid "Cost History"
-msgstr "Kostenpreis Historie"
+msgstr "Kostenhistorie"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
