@@ -2,9 +2,41 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "No puede crear empresas recursivas."
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr "Prefijo \"%(prefix)s\" de la secuencia \"%(sequence)s\" no es correcto."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr "Sufijo \"%(sufix)s\" de la secuencia \"%(sequence)s\" no es correcto."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr "La última fecha-hora no puede ser del futuro en la secuencia \"%s\"."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Missing sequence."
+msgstr "Falta la secuencia."
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr "Prefijo \"%(prefix)s\" de la secuencia \"%(sequence)s\" no es correcto."
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr "Sufijo \"%(sufix)s\" de la secuencia \"%(sequence)s\" no es correcto."
+
+msgctxt "error:ir.sequence:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr "La última fecha-hora no puede ser del futuro en la secuencia \"%s\"."
+
+msgctxt "error:ir.sequence:"
+msgid "Missing sequence."
+msgstr "Falta la secuencia."
+
+msgctxt "error:res.user:"
+msgid "You can not set the password of ldap user \"%s\"."
+msgstr "No puede establecer la contraseña del usuario \"%s\" de ldap."
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
@@ -287,10 +319,6 @@ msgid "You can now add your company into the system."
 msgstr "Ahora puede añadir su empresa en el sistema."
 
 msgctxt "view:company.company:"
-msgid "Addresses"
-msgstr "Direcciones"
-
-msgctxt "view:company.company:"
 msgid "Companies"
 msgstr "Empresas"
 
@@ -299,20 +327,8 @@ msgid "Company"
 msgstr "Empresa"
 
 msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Empleados"
-
-msgctxt "view:company.company:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Informes"
-
-msgctxt "view:company.employee:"
-msgid "Addresses"
-msgstr "Direcciones"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
@@ -321,10 +337,6 @@ msgstr "Empleado"
 msgctxt "view:company.employee:"
 msgid "Employees"
 msgstr "Empleados"
-
-msgctxt "view:company.employee:"
-msgid "General"
-msgstr "General"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
