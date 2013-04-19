@@ -7,12 +7,12 @@ msgid "Hours field must be positive"
 msgstr "El campo \"Horas\" debe ser positivo."
 
 msgctxt "error:timesheet.work:"
-msgid "Every work must be in the same company as it's parent work!"
-msgstr "Cada trabajo debe estar en la misma empresa que su trabajo padre."
-
-msgctxt "error:timesheet.work:"
-msgid "You can not create recursive works!"
-msgstr "No puede crear trabajos recursivos."
+msgid ""
+"Every work must be in the same company as it's parent work but \"%(child)s\""
+" and \"%(parent)s\" are in different companies."
+msgstr ""
+"Todo trabajo debe estar en la misma empresa que su padre, pero \"%(child)s\""
+" y \"%(parent)s\" están en empresas diferentes."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -246,9 +246,13 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Disponible en partes de trabajo"
 
-msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr ""
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fin de parte de trabajo"
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Inicio de parte de trabajo"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -299,6 +303,10 @@ msgid "Enter Timesheet"
 msgstr "Añadir parte de trabajo"
 
 msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Líneas del parte de trabajo"
+
+msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Líneas del parte de trabajo"
 
@@ -356,7 +364,7 @@ msgstr "Añadir parte de trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Líneas de parte de trabajo"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -448,7 +456,7 @@ msgstr "Línea de parte de trabajo"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Lines"
-msgstr "Líneas de parte de trabajo"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "view:timesheet.work.open.start:"
 msgid "Hours per Work"
