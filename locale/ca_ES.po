@@ -20,7 +20,7 @@ msgstr "ID"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
-msgstr "Ubicació del magatzem"
+msgstr "Ubicació interna"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
