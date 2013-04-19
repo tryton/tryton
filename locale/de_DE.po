@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "Unternehmen können nicht rekursiv angelegt werden!"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Untergeordnet (Unternehmen)"
@@ -212,7 +208,7 @@ msgstr "Mitarbeiter"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Konfiguration Unternehmen"
+msgstr "Unternehmen konfigurieren"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
@@ -287,10 +283,6 @@ msgid "You can now add your company into the system."
 msgstr "Sie können nun Ihr Unternehmen dem System hinzufügen."
 
 msgctxt "view:company.company:"
-msgid "Addresses"
-msgstr "Adressen"
-
-msgctxt "view:company.company:"
 msgid "Companies"
 msgstr "Unternehmen"
 
@@ -299,32 +291,8 @@ msgid "Company"
 msgstr "Unternehmen"
 
 msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Mitarbeiter"
-
-msgctxt "view:company.company:"
-msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Berichte"
-
-msgctxt "view:company.company:"
-msgid "_Employees"
-msgstr "_Mitarbeiter"
-
-msgctxt "view:company.company:"
-msgid "_General"
-msgstr "_Allgemein"
-
-msgctxt "view:company.company:"
-msgid "_Reports"
-msgstr "_Berichte"
-
-msgctxt "view:company.employee:"
-msgid "Addresses"
-msgstr "Adressen"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
@@ -333,14 +301,6 @@ msgstr "Mitarbeiter"
 msgctxt "view:company.employee:"
 msgid "Employees"
 msgstr "Mitarbeiter"
-
-msgctxt "view:company.employee:"
-msgid "General"
-msgstr "Allgemein"
-
-msgctxt "view:company.employee:"
-msgid "_General"
-msgstr "_Allgemein"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
