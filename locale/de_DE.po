@@ -3,20 +3,20 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "Einer Währung kann nur ein Kurs pro Datum zugewiesen werden!"
+msgid "A currency can only have one rate by date."
+msgstr "Es kann nur einen Kurs pro Datum für eine Währung geben."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "Der Kurs muss größer oder gleich 0 sein"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Ungültige Gruppierung"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Ungültige Gruppierung \"%(grouping)s\" in Währung \"%(currency)s\"."
 
 msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "Kein Kurs gefunden für Währung %s am %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
+msgstr "Fehlender Kurs für Währung \"%(currency)s\" am \"%(date)s\"."
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -929,10 +929,6 @@ msgstr "Währung"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Format"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Kurs"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
