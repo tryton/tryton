@@ -6,14 +6,6 @@ msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
 msgstr "Le pourcentage doit être supérieur à zéro"
 
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "Vous ne pouvez pas créer des dépendances récursives !"
-
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "Vous ne pouvez pas créer des dépendances récursives !"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -103,8 +95,8 @@ msgid "Allocations"
 msgstr "Répartitions"
 
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
-msgstr "Délais de décalage"
+msgid "Back Leveling Delay"
+msgstr "Délais rétro-décalage"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
