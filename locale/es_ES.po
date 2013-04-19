@@ -16,83 +16,83 @@ msgstr "Diario de stock"
 
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta stock"
+msgstr "Cuenta de stock"
 
 msgctxt "field:product.category,account_stock_customer:"
 msgid "Account Stock Customer"
-msgstr "Cuenta stock cliente"
+msgstr "Cuenta de stock cliente"
 
 msgctxt "field:product.category,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
-msgstr "Cuenta stock cliente usada"
+msgstr "Cuenta de stock cliente usada"
 
 msgctxt "field:product.category,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta stock perdido/encontrado"
+msgstr "Cuenta de stock perdido/encontrado"
 
 msgctxt "field:product.category,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta stock perdido/encontrado"
+msgstr "Cuenta de stock perdido/encontrado"
 
 msgctxt "field:product.category,account_stock_production:"
 msgid "Account Stock Production"
-msgstr "Cuenta stock producción"
+msgstr "Cuenta de stock producción"
 
 msgctxt "field:product.category,account_stock_production_used:"
 msgid "Account Stock Production Used"
-msgstr "Cuenta stock producción usada"
+msgstr "Cuenta de stock producción usada"
 
 msgctxt "field:product.category,account_stock_supplier:"
 msgid "Account Stock Supplier"
-msgstr "Cuenta stock proveedor"
+msgstr "Cuenta de stock proveedor"
 
 msgctxt "field:product.category,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
-msgstr "Cuenta stock proveedor usada"
+msgstr "Cuenta de stock proveedor usada"
 
 msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
-msgstr "Cuenta stock usada"
+msgstr "Cuenta de stock usada"
 
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
-msgstr "Cuenta stock"
+msgstr "Cuenta de stock"
 
 msgctxt "field:product.template,account_stock_customer:"
 msgid "Account Stock Customer"
-msgstr "Cuenta stock cliente"
+msgstr "Cuenta de stock cliente"
 
 msgctxt "field:product.template,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
-msgstr "Cuenta stock cliente usada"
+msgstr "Cuenta de stock cliente usada"
 
 msgctxt "field:product.template,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta stock perdido/encontrado"
+msgstr "Cuenta de stock perdido/encontrado"
 
 msgctxt "field:product.template,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
-msgstr "Cuenta stock perdido/encontrado"
+msgstr "Cuenta de stock perdido/encontrado"
 
 msgctxt "field:product.template,account_stock_production:"
 msgid "Account Stock Production"
-msgstr "Cuenta stock producción"
+msgstr "Cuenta de stock producción"
 
 msgctxt "field:product.template,account_stock_production_used:"
 msgid "Account Stock Production Used"
-msgstr "Cuenta stock producción usada"
+msgstr "Cuenta de stock producción usada"
 
 msgctxt "field:product.template,account_stock_supplier:"
 msgid "Account Stock Supplier"
-msgstr "Cuenta stock proveedor"
+msgstr "Cuenta de stock proveedor"
 
 msgctxt "field:product.template,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
-msgstr "Cuenta stock proveedor usada"
+msgstr "Cuenta de stock proveedor usada"
 
 msgctxt "field:product.template,account_stock_used:"
 msgid "Account Stock Used"
-msgstr "Cuenta stock usada"
+msgstr "Cuenta de stock usada"
 
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
