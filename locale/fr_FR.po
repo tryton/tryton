@@ -3,20 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product: %s (id: %s)!"
-msgstr "Le prix d'achat est absent pour le produit : %s (id: %s) !"
+msgid "Purchase price is missing for product \"%s\"."
+msgstr "Le prix d'achat du produit \"%s\" est manquant."
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product: %s (id: %s)!"
-msgstr "Le prix d'achat est absent pour le produit : %s (id: %s) !"
-
-msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchase."
-msgstr "Ce prix est nécessaire pour créer les achats."
-
-msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchase."
-msgstr "Ce prix est nécessaire pour créer les achats."
+msgid "This price is necessary for creating purchases."
+msgstr "Le prix est nécessaire pour créer des achats."
 
 msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
@@ -278,13 +270,19 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Demandes d'achat"
 
-msgctxt "model:ir.action,name:act_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Demandes d'achat brouillon"
-
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
 msgstr "Créer achat"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -305,10 +303,6 @@ msgstr "Créer les demandes d'achat"
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Demandes d'achat"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Demandes d'achat brouillon"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
@@ -449,10 +443,6 @@ msgstr "Information d'approvisionnement"
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
 msgstr "Information d'approvisionnement"
-
-msgctxt "view:stock.order_point:"
-msgid "Locations"
-msgstr "Emplacements"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point"
