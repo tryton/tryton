@@ -51,8 +51,8 @@ msgid "Carriers"
 msgstr "Transporteurs"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
-msgstr "Gestion des transporteurs"
+msgid "Carrier"
+msgstr "Transporteurs"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
