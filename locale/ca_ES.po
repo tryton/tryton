@@ -3,8 +3,28 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project!"
-msgstr "Només ha d'haver-hi un full de treball per tasca/projecte"
+msgid "There should be only one timesheet work by task/project."
+msgstr "Hi ha d'haver només un part d'hores de treball per tasca/projecte."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
+"is already done.\""
+msgstr ""
+"El treball \"%(child)s\" no es pot obrir perque el treball pare "
+"\"%(parent)s\" ja està marcat com acabat."
+
+msgctxt "error:project.work:"
+msgid ""
+"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
+"still opened.\""
+msgstr ""
+"El treball \"%(parent)s\" no es pot marcar com acabat perque el treball fill"
+" \"%(child)s\" continua estant obert."
+
+msgctxt "field:project.work,active:"
+msgid "Active"
+msgstr "Actiu"
 
 msgctxt "field:project.work,children:"
 msgid "Children"
@@ -13,6 +33,10 @@ msgstr "Fills"
 msgctxt "field:project.work,comment:"
 msgid "Comment"
 msgstr "Comentari"
+
+msgctxt "field:project.work,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
@@ -25,6 +49,10 @@ msgstr "Usuari creació"
 msgctxt "field:project.work,effort:"
 msgid "Effort"
 msgstr "Esforç"
+
+msgctxt "field:project.work,hours:"
+msgid "Timesheet Hours"
+msgstr "Hores del full de treball"
 
 msgctxt "field:project.work,id:"
 msgid "ID"
@@ -54,9 +82,13 @@ msgctxt "field:project.work,state:"
 msgid "State"
 msgstr "Estat"
 
+msgctxt "field:project.work,timesheet_available:"
+msgid "Available on timesheets"
+msgstr "Disponible en fulls de treball"
+
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Esforç total"
+msgstr "Total esforç"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -64,7 +96,7 @@ msgstr "Tipus"
 
 msgctxt "field:project.work,work:"
 msgid "Work"
-msgstr "Activitat"
+msgstr "Treball"
 
 msgctxt "field:project.work,write_date:"
 msgid "Write Date"
@@ -80,12 +112,15 @@ msgstr "Línies de full de treball"
 
 msgctxt "help:project.work,effort:"
 msgid "Estimated Effort for this work"
-msgstr "L'esforç estimat per a aquesta activitat"
+msgstr "L'esforç estimat per a aquest treball"
+
+msgctxt "help:project.work,hours:"
+msgid "Total time spent on this work"
+msgstr "Temps total empleat en aquest treball"
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr ""
-"Esforç total estimat per a aquesta activitat i les seves subactivitats"
+msgstr "Esforç total estimat per a aquest treball i les seves subactivitats"
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -105,11 +140,11 @@ msgstr "Tasques"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Activitats"
+msgstr "Projectes i tasques"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Activitats"
+msgstr "Projectes i tasques"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -133,15 +168,15 @@ msgstr "Tasques"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Activitats"
+msgstr "Projectes i tasques"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Activitats"
+msgstr "Projectes i tasques"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Activitats"
+msgstr "Projecte i tasca"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
@@ -149,7 +184,7 @@ msgstr "Administració de projecte"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Acabada"
+msgstr "Acabat"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
@@ -172,33 +207,9 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:project.work:"
-msgid "Other Info"
-msgstr "Informació addicional"
-
-msgctxt "view:project.work:"
-msgid "Projects"
-msgstr "Projectes"
-
-msgctxt "view:project.work:"
 msgid "Tasks"
 msgstr "Tasques"
 
 msgctxt "view:project.work:"
-msgid "Timesheet"
-msgstr "Full de treball"
-
-msgctxt "view:project.work:"
-msgid "Work"
-msgstr "Activitat"
-
-msgctxt "view:project.work:"
-msgid "Work Efforts"
-msgstr "Activitats"
-
-msgctxt "view:project.work:"
-msgid "Works"
-msgstr "Activitats"
-
-msgctxt "view:project.work:"
 msgid "Works Efforts"
-msgstr "Activitats"
+msgstr "Projectes i tasques"
