@@ -18,6 +18,10 @@ msgid "Asset can be used only once on invoice line!"
 msgstr ""
 "Eine Anlage kann nur mit einer einzigen Rechnungsposition verknüpft sein!"
 
+msgctxt "error:purchase.line:"
+msgid "It misses an \"Account Asset\" on product \"%s\"!"
+msgstr "Fehlendes \"Anlagekonto\" für Artikel \"%s\"."
+
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
 msgstr "Journal"
@@ -360,7 +364,7 @@ msgstr "Anlage"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Anlagen"
+msgstr "Inventar"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
