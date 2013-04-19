@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.user:"
-msgid "You can not set a password to a ldap user!"
-msgstr "No puede establecer la contraseña de un usuario LDAP."
-
 msgctxt "field:ldap.connection,auth_base_dn:"
 msgid "Base DN"
 msgstr "DN base"
@@ -32,7 +28,7 @@ msgstr "DN base para la autenticación."
 
 msgctxt "help:ldap.connection,auth_create_user:"
 msgid "Create user if not in database"
-msgstr "Crea el usuario si no existe en la base de datos."
+msgstr "Crea un usuario si no existe en la base de datos."
 
 msgctxt "help:ldap.connection,auth_uid:"
 msgid "UID Attribute for authentication"
