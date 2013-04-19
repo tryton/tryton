@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"!"
-msgstr "Chargen-Nummer ist erforderlich für Lagerbewegung von Artikel \"%s\"!"
+msgid "Lot is required for move of product \"%s\"."
+msgstr "Chargen-Nummer erforderlich für Lagerbewegung von Artikel \"%s\"."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
@@ -112,7 +112,7 @@ msgstr "Charge"
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "Typ Lagerort, für den eine Chargen-Nummer erforderlich ist"
+msgstr "Typ des Lagerorts, für den eine Chargen-Nummer erforderlich ist"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -155,6 +155,10 @@ msgid "Supplier"
 msgstr "Lieferant"
 
 msgctxt "view:product.product:"
+msgid "Lots"
+msgstr "Chargen"
+
+msgctxt "view:product.template:"
 msgid "Lots"
 msgstr "Chargen"
 
