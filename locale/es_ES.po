@@ -4,11 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "No puede crear dependencias recursivas."
+msgstr "El porcentaje debe ser mayor que cero."
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
@@ -36,7 +32,7 @@ msgstr "Nombre"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Actividad"
+msgstr "Trabajo"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
@@ -99,7 +95,7 @@ msgid "Allocations"
 msgstr "Asignaciones"
 
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
+msgid "Back Leveling Delay"
 msgstr "Retraso de la nivelación"
 
 msgctxt "field:project.work,constraint_finish_date:"
@@ -124,35 +120,35 @@ msgstr "Duración"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Finalización prematura"
+msgstr "Finalización anticipada"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Hora de finalización prematura"
+msgstr "Hora de finalización anticipada"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Inicio prematuro"
+msgstr "Inicio anticipado"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Hora de inicio prematura"
+msgstr "Hora de inicio anticipado"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr "Finalización tardía"
+msgstr "Finalización con retraso"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Hora de finalización tardía"
+msgstr "Hora de finalización con retraso"
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
-msgstr "Inicio tardío"
+msgstr "Inicio con retraso"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Hora de inicio tardía"
+msgstr "Hora de inicio con retraso"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
@@ -184,7 +180,7 @@ msgstr "Predecesor - Sucesor"
 
 msgctxt "model:res.request.link,name:request_link_work"
 msgid "Work"
-msgstr "Actividad"
+msgstr "Trabajo"
 
 msgctxt "view:project.allocation:"
 msgid "Allocation"
@@ -200,7 +196,7 @@ msgstr "Asignaciones"
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "Plan"
+msgstr "Planificación"
 
 msgctxt "view:project.work:"
 msgid "Requests"
