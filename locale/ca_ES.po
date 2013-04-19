@@ -232,11 +232,11 @@ msgstr "Utilitza els comptes definits en la categoria."
 
 msgctxt "help:product.template,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Aquest compte s'utilitzarà en lloc del definit a la categoria."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
 msgctxt "help:product.template,account_revenue:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr "Aquest compte s'utilitzarà en lloc del definit a la categoria."
+msgstr "S'utilitzarà aquest compte en lloc del definit a la categoria."
 
 msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"
