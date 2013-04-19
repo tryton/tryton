@@ -3,36 +3,34 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
-msgstr "No pot modificar el tercer d'una adreça."
+msgid "You can not modify the party of address \"%s\"."
+msgstr "No podeu modificar el tercer de l'adreça \"%s\"."
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
-msgstr "No pot usar \"/\" en el camp nomeni."
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr ""
+"Nom de categoria \"%s\" no és correcte: No podeu utilitzar \" / \" en el "
+"camp nom."
 
 msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr "No pot crear categories recursives."
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
-msgstr "No pot usar \"/\" en el camp nomeni."
+msgid "The name of a party category must be unique by parent."
+msgstr "El nom de la categoría del tercer ha de ser únic segons el pare."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
-msgstr "El servei VIES no està disponible, intenti-ho de nou més tard"
+msgstr "El servei VIES no està disponible, intenti-ho de nou més tard."
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
-msgstr "No pot modificar el tercer d'un contacte."
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "No podeu modificar el tercer del contacte \"%s\"."
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
-msgstr "El CIF/NIF no és vàlid"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr "CIF/NIF \"%(vat)s\" del tercer \"%(party)s\", no és correcte."
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
-msgstr "El codi del tercer ha de ser únic"
+msgid "The code of the party must be unique."
+msgstr "El codi del tercer ha de ser únic."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -176,7 +174,7 @@ msgstr "Idioma del tercer"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Seqüència tercer"
+msgstr "Seqüència del tercer"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
@@ -241,6 +239,10 @@ msgstr "Skype"
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Tipus"
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
@@ -562,7 +564,7 @@ msgstr "Sistema d'intercanvi d'informació CIF/NIF"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Ha de tenir instal·lada una versió recent de \"vatnumber\"."
+msgstr "Heu de tenir instal·lada una versió recent de \"vatnumber\"."
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
@@ -581,24 +583,8 @@ msgid "Contact Mechanisms"
 msgstr "Mitjà de contacte"
 
 msgctxt "view:party.party:"
-msgid "Account"
-msgstr "Compte"
-
-msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr "Comptabilitat"
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr "Adreces"
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr "Categories"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
-msgstr "Mitjans de contacte"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -615,10 +601,6 @@ msgstr "Tercer"
 msgctxt "view:party.party:"
 msgid "VAT"
 msgstr "CIF/NIF"
-
-msgctxt "view:party.party:"
-msgid "_General"
-msgstr "_General"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
