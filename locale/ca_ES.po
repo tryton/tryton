@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice.line:"
-msgid "You can not delete invoice lines that comes from a purchase!"
-msgstr "No pot esborrar línies que vénen d'una compra"
+msgid "You can not delete invoice lines that comes from a purchase."
+msgstr "No podeu esborrar línies de factures generades des d'una compra."
 
 msgctxt "field:purchase.purchase,invoice_lines:"
 msgid "Invoice Lines"
