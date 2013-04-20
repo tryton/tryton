@@ -3,20 +3,22 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "¡Una divisa solo puede tener un valor por fecha!"
+msgid "A currency can only have one rate by date."
+msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr "La tasa de divisa debe ser mayor o igual a 0"
+msgstr "La tasa de cambio de la divisa debe ser mayor o igual a 0"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "¡Agrupamiento no válido!"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr "Agrupación «%(grouping)s» en la moneda «%(currency)s» no es correcta."
 
 msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "No se ha encontrado una conversión para la divisa «%s» con fecha: %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
+msgstr ""
+"No se ha encontrado ninguna tasa de cambio para la moneda «%(currency)s» en "
+"la fecha «%(date)s»"
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -36,7 +38,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
-msgstr "Dígitos a mostrar"
+msgstr "Decimales a mostrar"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
@@ -76,7 +78,7 @@ msgstr "Signo negativo"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr "Código Numérico"
+msgstr "Código numérico"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
@@ -900,7 +902,7 @@ msgstr "Divisas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Gestión de divisas"
+msgstr "Divisas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
@@ -929,10 +931,6 @@ msgstr "Divisa"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formato"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Tasa de cambio"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
