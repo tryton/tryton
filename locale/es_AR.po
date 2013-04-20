@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Método del costo de transportista"
+msgstr "Método costo de transportista"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Productos del transportista"
+msgstr "Producto del transportista"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
@@ -51,8 +51,8 @@ msgid "Carriers"
 msgstr "Transportistas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
-msgstr "Manejo de Transporte"
+msgid "Carrier"
+msgstr "Transportistas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
@@ -60,7 +60,7 @@ msgstr "Transportistas"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administración de Transportista"
+msgstr "Administración de transportista"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
