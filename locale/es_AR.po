@@ -3,36 +3,35 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
-msgstr "¡No puede modificar la entidad de una dirección!"
+msgid "You can not modify the party of address \"%s\"."
+msgstr "No puede modificar la entidad de la dirección «%s»."
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
-msgstr "¡El nombre de una categoría de entidad debe ser único por cada padre!"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr ""
+"Nombre de categoría «%s» no es correcto: No puede utilizar « / » en el campo"
+" nombre."
 
 msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr "¡No puede crear categorías recursivas!"
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
-msgstr "¡No puede usar \" /\" en el campo nombre!"
+msgid "The name of a party category must be unique by parent."
+msgstr ""
+"El nombre de la categoría de la entidad debe ser único según el padre."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde"
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
-msgstr "¡No puede modificar la entidad de un médio de contacto!"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr "No puede modificar la entidad del contacto «%s»."
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
-msgstr "¡El CUIT no es válido!"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr "CUIT «%(vat)s» de la entidad «%(party)s», no es correcto."
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
-msgstr "¡El código de la entidad debe ser único!"
+msgid "The code of the party must be unique."
+msgstr "El código de la entidad debe ser único."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -152,7 +151,7 @@ msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Entidades fallaron"
+msgstr "Entidades erróneas"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
@@ -176,11 +175,11 @@ msgstr "Idioma de la entidad"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Secuencia de Entidades"
+msgstr "Secuencia de entidades"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre campo"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -242,6 +241,10 @@ msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Tipo"
 
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
+
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
 msgstr "Valor"
@@ -280,7 +283,7 @@ msgstr "Dígitos del código"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr "Código de sólo lectura"
+msgstr "Código sólo lectura"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
@@ -389,7 +392,8 @@ msgstr "Usuario modificación"
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
 msgstr ""
-"El valor de este campo predeterminada el idioma de las nuevas entidades"
+"El valor de este campo será el valor por defecto del idioma de las nuevas "
+"entidades"
 
 msgctxt "help:party.party,vat_country:"
 msgid "Setting VAT country will enable validation of the VAT number."
@@ -419,7 +423,7 @@ msgstr "Entidades por categoría"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Configuración de Entidades"
+msgstr "Configuración de entidades"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -459,11 +463,11 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Gestión de entidades"
+msgstr "Entidades"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Configuración de Entidades"
+msgstr "Entidades"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -487,7 +491,7 @@ msgstr "Comprobar VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Configuración de Entidades"
+msgstr "Configuración de entidades"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
@@ -499,7 +503,7 @@ msgstr "Entidad"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Entidad - Categoría"
+msgstr "Entidades - Categoría"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
@@ -571,7 +575,7 @@ msgstr "CUIT Resultados del Sistema de Intercambio de Información"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr "Configuración de Entidades"
+msgstr "Configuración de entidades"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
@@ -582,24 +586,8 @@ msgid "Contact Mechanisms"
 msgstr "Medios de contacto"
 
 msgctxt "view:party.party:"
-msgid "Account"
-msgstr "Cuenta"
-
-msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr "Contabilidad"
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr "Direcciones"
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr "Categorías"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
-msgstr "Medios de contacto"
 
 msgctxt "view:party.party:"
 msgid "General"
@@ -616,10 +604,6 @@ msgstr "Entidad"
 msgctxt "view:party.party:"
 msgid "VAT"
 msgstr "CUIT"
-
-msgctxt "view:party.party:"
-msgid "_General"
-msgstr "_General"
 
 msgctxt "wizard_button:party.check_vies,no_result,end:"
 msgid "Ok"
