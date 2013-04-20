@@ -3,36 +3,40 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.product:"
-msgid "You can not create recursive BOMs!"
-msgstr "¡No puede crear LdMs recursivas!"
+msgid ""
+"You are trying to create a recursive BOM with product \"%s\" which is not "
+"allowed."
+msgstr ""
+"Está intentando crear una lista de materiales recursiva con el producto «%s»"
+" que no está permitido."
 
 msgctxt "error:production.bom.input:"
-msgid "Product must be unique per BOM!"
-msgstr "¡El producto debe ser único en la LdM!"
+msgid "Product must be unique per BOM."
+msgstr "El producto debe ser único por LdM."
 
 msgctxt "error:production.bom.input:"
-msgid "You can not create recursive BOMs!"
-msgstr "¡No puede crear LdMs recursivas!"
+msgid "You can not create recursive BOMs."
+msgstr "No puede crear una lista de materiales recursiva."
 
 msgctxt "error:production.bom.input:"
 msgid "product_bom_uniq"
 msgstr "El producto debe ser único en la LdM."
 
 msgctxt "error:production.bom.output:"
-msgid "Product must be unique per BOM!"
-msgstr "¡El producto debe ser único en la LdM!"
+msgid "Product must be unique per BOM."
+msgstr "El producto debe ser único por LdM."
 
 msgctxt "error:production.bom.output:"
-msgid "You can not create recursive BOMs!"
-msgstr "¡No puede crear LdMs recursivas!"
+msgid "You can not create recursive BOMs."
+msgstr "No puede crear una lista de materiales recursiva."
 
 msgctxt "error:production.bom.output:"
 msgid "product_bom_uniq"
 msgstr "El producto debe ser único en la LdM."
 
 msgctxt "error:production:"
-msgid "It misses some cost on the outputs!"
-msgstr "¡Faltan algunos costos en las salidas!"
+msgid "Production \"%s\" misses costs on some of its outputs."
+msgstr "La producción «%s» pierde costos en alguna de sus salidas."
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
@@ -144,7 +148,7 @@ msgstr "Estado"
 
 msgctxt "field:production,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos unitarios"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:production,uom:"
 msgid "Uom"
@@ -200,7 +204,7 @@ msgstr "Nombre"
 
 msgctxt "field:production.bom,output_products:"
 msgid "Output Products"
-msgstr "Salida de Productos"
+msgstr "Salida de productos"
 
 msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
@@ -248,7 +252,7 @@ msgstr "Nombre"
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos unitarios"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
@@ -296,7 +300,7 @@ msgstr "Nombre"
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos unitarios"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:production.bom.output,uom:"
 msgid "Uom"
@@ -332,7 +336,7 @@ msgstr "Cantidad"
 
 msgctxt "field:production.bom.tree,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos unitarios"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
@@ -360,7 +364,7 @@ msgstr "Cantidad"
 
 msgctxt "field:production.bom.tree.open.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos unitarios"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:production.bom.tree.open.start,uom:"
 msgid "Unit"
@@ -388,7 +392,7 @@ msgstr "ID"
 
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
-msgstr "Secuencia de Producción"
+msgstr "Secuencia de producción"
 
 msgctxt "field:production.configuration,rec_name:"
 msgid "Name"
@@ -408,11 +412,11 @@ msgstr "Producción"
 
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
-msgstr "Entrada a Producción"
+msgstr "Entrada a producción"
 
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
-msgstr "Salida de Producción"
+msgstr "Salida de producción"
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
@@ -422,41 +426,51 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "LdMs"
 
-msgctxt "model:ir.action,name:act_production_assigned"
-msgid "Assigned Productions"
-msgstr "Producciones Asignadas"
-
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
-msgstr "Configuración de Producción"
-
-msgctxt "model:ir.action,name:act_production_draft"
-msgid "Draft Productions"
-msgstr "Producciones en Borrador"
+msgstr "Configuración de producción"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
 msgstr "Producciones"
 
-msgctxt "model:ir.action,name:act_production_request"
-msgid "Request Productions"
-msgstr "Producciones Solicitadas"
-
-msgctxt "model:ir.action,name:act_production_running"
-msgid "Running Productions"
-msgstr "Producciones en Ejecución"
-
-msgctxt "model:ir.action,name:act_production_waiting"
-msgid "Waiting Productions"
-msgstr "Producciones en Espera"
-
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
-msgstr "Asignar Producción"
+msgstr "Asignar producción"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Árbol LdM"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
+msgid "Assigned"
+msgstr "Asignado"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_requests"
+msgid "Requests"
+msgstr "Solicitudes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_running"
+msgid "Running"
+msgstr "En ejecución"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
+msgid "Waiting"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -478,33 +492,13 @@ msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr "Producción"
 
-msgctxt "model:ir.ui.menu,name:menu_production_assigned"
-msgid "Assigned Productions"
-msgstr "Producciones Asignadas"
-
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
-msgstr "Configuración de Producción"
-
-msgctxt "model:ir.ui.menu,name:menu_production_draft"
-msgid "Draft Productions"
-msgstr "Producciones en Borrador"
+msgstr "Producción"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
 msgstr "Producciones"
-
-msgctxt "model:ir.ui.menu,name:menu_production_request"
-msgid "Request Productions"
-msgstr "Producciones Solicitadas"
-
-msgctxt "model:ir.ui.menu,name:menu_production_running"
-msgid "Running Productions"
-msgstr "Producciones en Ejecución"
-
-msgctxt "model:ir.ui.menu,name:menu_production_waiting"
-msgid "Waiting Productions"
-msgstr "Producciones en Espera"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
@@ -516,7 +510,7 @@ msgstr "Producción"
 
 msgctxt "model:production.assign.failed,name:"
 msgid "Assign Production"
-msgstr "Asignar Producción"
+msgstr "Asignar producción"
 
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
@@ -536,15 +530,15 @@ msgstr "Árbol LdM"
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"
-msgstr "Abrir Árbol de LdM"
+msgstr "Abrir árbol de LdM"
 
 msgctxt "model:production.bom.tree.open.tree,name:"
 msgid "Open BOM Tree"
-msgstr "Abrir Árbol de LdM"
+msgstr "Abrir árbol de LdM"
 
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
-msgstr "Configuración de Producción"
+msgstr "Configuración de producción"
 
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
@@ -552,7 +546,7 @@ msgstr "Producción"
 
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr "Administración de Producción"
+msgstr "Administración de producción"
 
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
@@ -568,7 +562,7 @@ msgstr "Cancelado"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Terminado"
+msgstr "Realizado"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -608,10 +602,6 @@ msgstr "Entradas LdM"
 
 msgctxt "view:production.bom.output:"
 msgid "BOM Outputs"
-msgstr ""
-
-msgctxt "view:production.bom.output:"
-msgid "Inputs"
 msgstr "Salidas LdM"
 
 msgctxt "view:production.bom.tree.open.start:"
@@ -640,7 +630,7 @@ msgstr "Líneas"
 
 msgctxt "view:production.configuration:"
 msgid "Production Configuration"
-msgstr "Configuración de Producción"
+msgstr "Configuración de producción"
 
 msgctxt "view:production:"
 msgid "Assign"
@@ -652,7 +642,7 @@ msgstr "Cancelar"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Terminado"
+msgstr "Realizado"
 
 msgctxt "view:production:"
 msgid "Draft"
