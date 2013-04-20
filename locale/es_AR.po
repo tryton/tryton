@@ -47,7 +47,7 @@ msgstr "Impuestos de proveedor"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Impuestos de cliente usados"
+msgstr "Impuestos de proveedor usados"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
