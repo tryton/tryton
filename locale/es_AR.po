@@ -40,11 +40,11 @@ msgstr "Usuario modificación"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr "Histórico de costo de producto"
+msgstr "Costo histórico de producto"
 
 msgctxt "model:ir.action,name:wizard_product_cost_history_open"
 msgid "Cost History"
-msgstr "Histórico de costo"
+msgstr "Costo histórico"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
@@ -52,4 +52,4 @@ msgstr "Histórico de costo de producto"
 
 msgctxt "view:product.product.cost_history:"
 msgid "Product Cost History"
-msgstr "Histórico de costo de producto"
+msgstr "Costo histórico de producto"
