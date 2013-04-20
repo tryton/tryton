@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr "Gestión de divisas"
+msgstr "Divisa"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr "Dígitos Moneda del Peso"
+msgstr "Dígitos moneda del peso"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
@@ -60,7 +60,7 @@ msgstr "Usuario modificación"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr "Lista de precios del Peso Transportista"
+msgstr "Lista de precios del peso transportista"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
@@ -68,8 +68,8 @@ msgstr "Peso"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price List"
-msgstr "Lista de precios del Peso Transportista"
+msgstr "Lista de precios del peso transportista"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price Lists"
-msgstr "Listas de precios del Peso Transportista"
+msgstr "Listas de precios del peso transportista"
