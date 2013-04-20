@@ -6,10 +6,6 @@ msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
 msgstr "El porcentaje debe ser mayor que cero"
 
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "¡No puede crear dependencias recursivas!"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Fecha creación"
@@ -99,7 +95,7 @@ msgid "Allocations"
 msgstr "Asignaciones"
 
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
+msgid "Back Leveling Delay"
 msgstr "Retraso de la nivelación"
 
 msgctxt "field:project.work,constraint_finish_date:"
@@ -108,7 +104,7 @@ msgstr "Restricción de finalización"
 
 msgctxt "field:project.work,constraint_finish_time:"
 msgid "Constraint  Finish Time"
-msgstr "Restricción de hora de finalización"
+msgstr "Restricción hora de finalización"
 
 msgctxt "field:project.work,constraint_start_date:"
 msgid "Constraint Start"
@@ -116,7 +112,7 @@ msgstr "Restricción de inicio"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Restricción de tiempo de inicio"
+msgstr "Restricción hora de inicio"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
@@ -124,35 +120,35 @@ msgstr "Duración"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Finalización prematura"
+msgstr "Finalización anticipada"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Hora de finalización prematura"
+msgstr "Hora de finalización anticipada"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Inicio prematuro"
+msgstr "Inicio anticipado"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Tiempo de inicio prematuro"
+msgstr "Hora de inicio anticipado"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr "Finalización tardía"
+msgstr "Finalización con retraso"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Hora de finalización tardía"
+msgstr "Hora de finalización con retraso"
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
-msgstr "Inicio tardío"
+msgstr "Inicio con retraso"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Hora de inicio tardía"
+msgstr "Hora de inicio con retraso"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
@@ -200,7 +196,7 @@ msgstr "Asignaciones"
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "Plan"
+msgstr "Planificación"
 
 msgctxt "view:project.work:"
 msgid "Requests"
