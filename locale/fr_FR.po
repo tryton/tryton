@@ -3189,15 +3189,15 @@ msgstr "/"
 
 msgctxt "odt:account.aged_balance:"
 msgid "Aged Balance for Customers"
-msgstr "Balance agée des clients"
+msgstr "Balance âgée des clients"
 
 msgctxt "odt:account.aged_balance:"
 msgid "Aged Balance for Suppliers"
-msgstr "Balance agée des fournisseurs"
+msgstr "Balance âgée des fournisseurs"
 
 msgctxt "odt:account.aged_balance:"
 msgid "Aged Balance for Suppliers and Customers"
-msgstr "Balance agée des fournisseurs et clients"
+msgstr "Balance âgée des fournisseurs et clients"
 
 msgctxt "odt:account.aged_balance:"
 msgid "Company:"
