@@ -2,29 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account:"
-msgid "You can not create recursive accounts!"
-msgstr "¡No puede crear cuentas recursivas!"
-
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Expense\" on product \"%s\"!"
-msgstr "¡Falta la propiedad «Cuenta de gastos» en el producto «%s»!"
-
-msgctxt "error:purchase.line:"
-msgid "The supplier location is required!"
-msgstr "¡Se necesita la ubicación del proveedor!"
-
 msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required on line \"%s\" (%d)!"
-msgstr "¡Se necesita una cuenta analítica en la línea «%s» (%d)!"
-
-msgctxt "error:purchase.purchase:"
-msgid "Invoice addresses must be defined for the quotation."
-msgstr "Se necesita la dirección de facturación para el presupuesto."
-
-msgctxt "error:purchase.purchase:"
-msgid "It misses an \"Account Payable\" on the party \"%s\"!"
-msgstr "¡Falta una «Cuenta por pagar» en la entidad «%s»!"
+msgid "Analytic account is required on line \"%s\"."
+msgstr "Se requiere la cuenta analítica en la línea «%s»."
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -56,7 +36,7 @@ msgstr "Divisa"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Dígitos de divisa"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -100,7 +80,7 @@ msgstr "Tipo"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Importe"
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
@@ -116,7 +96,7 @@ msgstr "Líneas de factura"
 
 msgctxt "field:purchase.line,move_done:"
 msgid "Moves Done"
-msgstr "Movimientos terminados"
+msgstr "Movimientos realizados"
 
 msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
@@ -172,7 +152,7 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
@@ -192,7 +172,7 @@ msgstr "Divisa"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimales de la divisa"
+msgstr "Dígitos de divisa"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -240,7 +220,7 @@ msgstr "Idioma de la entidad"
 
 msgctxt "field:purchase.purchase,payment_term:"
 msgid "Payment Term"
-msgstr "Plazo de pago"
+msgstr "Término de pago"
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
@@ -272,7 +252,7 @@ msgstr "Total"
 
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
-msgstr "Sin Impuestos"
+msgstr "Base imponible"
 
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
@@ -376,7 +356,7 @@ msgstr "Confirmada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
-msgstr "Terminada"
+msgstr "Realizada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
