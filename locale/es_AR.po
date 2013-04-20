@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"!"
-msgstr "¡El lote es requerido para mover el producto «%s»! "
+msgid "Lot is required for move of product \"%s\"."
+msgstr "El lote es requerido para el movimiento del producto «%s»."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
@@ -112,7 +112,7 @@ msgstr "Lote"
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "El tipo de locación para la cual el lote es requerido"
+msgstr "El tipo de ubicación para la cual el lote es requerido"
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -124,15 +124,15 @@ msgstr "Lotes"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr "Plantilla - Tipo de Lote de Inventario"
+msgstr "Plantilla - Tipo de lote de inventario"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr "Lote de Inventario"
+msgstr "Lote de inventario"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr "Tipo de Lote de Inventario"
+msgstr "Tipo de lote de inventario"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
@@ -148,13 +148,17 @@ msgstr "Producción"
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Almacén"
+msgstr "Depósito"
 
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
 msgstr "Proveedor"
 
 msgctxt "view:product.product:"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "view:product.template:"
 msgid "Lots"
 msgstr "Lotes"
 
