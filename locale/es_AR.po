@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
-msgid "It misses an \"Account Revenue\" on product \"%s\"!"
-msgstr "¡Falta una «cuenta de ingresos» en el producto «%s»!"
+msgid "Missing \"Account Revenue\" on product \"%s\"."
+msgstr "Falta la «Cuenta de ingresos» en el producto «%s»."
 
 msgctxt "field:sale.configuration,sale_carrier:"
 msgid "Carrier"
@@ -36,11 +36,11 @@ msgstr "Costo"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
-msgstr "Moneda del costo"
+msgstr "Divisa del costo"
 
 msgctxt "field:stock.shipment.out,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Dígitos del costo"
+msgstr "Dígitos de divisa del costo"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
