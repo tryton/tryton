@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
 msgid "Hours field must be positive"
-msgstr "El campo de horas debe ser positivo"
+msgstr "El campo «Horas» debe ser positivo."
 
 msgctxt "error:timesheet.work:"
-msgid "Every work must be in the same company as it's parent work!"
-msgstr "¡Cada trabajo debe estar en la misma empresa que su trabajo padre!"
-
-msgctxt "error:timesheet.work:"
-msgid "You can not create recursive works!"
-msgstr "¡No puede crear trabajos recursivos!"
+msgid ""
+"Every work must be in the same company as it's parent work but \"%(child)s\""
+" and \"%(parent)s\" are in different companies."
+msgstr ""
+"Todo trabajo debe estar en la misma empresa que su padre, pero «%(child)s» y"
+" «%(parent)s» están en empresas diferentes."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -246,9 +246,17 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr "Disponible en partes de trabajo"
 
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr "Fin de parte de trabajo"
+
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid ""
 msgstr ""
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
+msgstr "Inicio de parte de trabajo"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -260,7 +268,7 @@ msgstr "Usuario modificación"
 
 msgctxt "field:timesheet.work.open.start,from_date:"
 msgid "From Date"
-msgstr "Fecha inicial"
+msgstr "Desde la fecha"
 
 msgctxt "field:timesheet.work.open.start,id:"
 msgid "ID"
@@ -272,7 +280,7 @@ msgstr "Hasta la fecha"
 
 msgctxt "help:timesheet.work,hours:"
 msgid "Total time spent on this work"
-msgstr "Tiempo total empleado en este trabajo"
+msgstr "Tiempo total empleado en este trabajo."
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
@@ -299,6 +307,10 @@ msgid "Enter Timesheet"
 msgstr "Ingresar parte de trabajo"
 
 msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr "Líneas del parte de trabajo"
+
+msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr "Líneas del parte de trabajo"
 
@@ -356,7 +368,7 @@ msgstr "Ingrese parte de trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Lineas de parte de trabajo"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -364,7 +376,7 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Gestión de parte de trabajo"
+msgstr "Partes de trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
@@ -380,7 +392,7 @@ msgstr "Horas por trabajo"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Administración de parte de trabajo"
+msgstr "Administración de partes de trabajo"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
@@ -400,7 +412,7 @@ msgstr "Horas por empleado y semana"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr "Linea de parte de trabajo"
+msgstr "Línea de parte de trabajo"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
@@ -444,11 +456,11 @@ msgstr "Horas"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Line"
-msgstr "Linea de parte de trabajo"
+msgstr "Línea de parte de trabajo"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Lines"
-msgstr "Lineas de parte de trabajo"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "view:timesheet.work.open.start:"
 msgid "Hours per Work"
