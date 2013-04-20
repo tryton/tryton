@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "¡No puede crear empresas recursivas!"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Hijos"
@@ -180,7 +176,7 @@ msgstr "ID"
 
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre campo"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
@@ -204,7 +200,7 @@ msgstr "Empresa"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Configuración de Empresa"
+msgstr "Configuración de empresa"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
@@ -212,7 +208,7 @@ msgstr "Empleado"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configurar Empresa"
+msgstr "Configure su empresa"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
@@ -280,15 +276,11 @@ msgstr "CUIT:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr "Crear una Empresa"
+msgstr "Crear empresa"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
 msgstr "Ahora puede añadir su empresa al sistema."
-
-msgctxt "view:company.company:"
-msgid "Addresses"
-msgstr "Direcciones"
 
 msgctxt "view:company.company:"
 msgid "Companies"
@@ -299,20 +291,8 @@ msgid "Company"
 msgstr "Empresa"
 
 msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Empleados"
-
-msgctxt "view:company.company:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Informes"
-
-msgctxt "view:company.employee:"
-msgid "Addresses"
-msgstr "Direcciones"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
@@ -321,10 +301,6 @@ msgstr "Empleado"
 msgctxt "view:company.employee:"
 msgid "Employees"
 msgstr "Empleados"
-
-msgctxt "view:company.employee:"
-msgid "General"
-msgstr "General"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
