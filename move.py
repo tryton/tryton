@@ -737,22 +737,34 @@ class Line(ModelSQL, ModelView):
                 for tax in line.account.taxes:
                     if move.journal.type == 'revenue':
                         if line.debit:
-                            base_id = tax.credit_note_base_code.id
-                            code_id = tax.credit_note_tax_code.id
-                            account_id = tax.credit_note_account.id
+                            base_id = (tax.credit_note_base_code.id
+                                if tax.credit_note_base_code else None)
+                            code_id = (tax.credit_note_tax_code.id
+                                if tax.credit_note_tax_code else None)
+                            account_id = (tax.credit_note_account.id
+                                if tax.credit_note_account else None)
                         else:
-                            base_id = tax.invoice_base_code.id
-                            code_id = tax.invoice_tax_code.id
-                            account_id = tax.invoice_account.id
+                            base_id = (tax.invoice_base_code.id
+                                if tax.invoice_base_code else None)
+                            code_id = (tax.invoice_tax_code.id
+                                if tax.invoice_tax_code else None)
+                            account_id = (tax.invoice_account.id
+                                if tax.invoice_account else None)
                     else:
                         if line.debit:
-                            base_id = tax.invoice_base_code.id
-                            code_id = tax.invoice_tax_code.id
-                            account_id = tax.invoice_account.id
+                            base_id = (tax.invoice_base_code.id
+                                if tax.invoice_base_code else None)
+                            code_id = (tax.invoice_tax_code.id
+                                if tax.invoice_tax_code else None)
+                            account_id = (tax.invoice_account.id
+                                if tax.invoice_account else None)
                         else:
-                            base_id = tax.credit_note_base_code.id
-                            code_id = tax.credit_note_tax_code.id
-                            account_id = tax.credit_note_account.id
+                            base_id = (tax.credit_note_base_code.id
+                                if tax.credit_note_base_code else None)
+                            code_id = (tax.credit_note_tax_code.id
+                                if tax.credit_note_tax_code else None)
+                            account_id = (tax.credit_note_account.id
+                                if tax.credit_note_account else None)
                     if base_id in line_code_taxes or not base_id:
                         taxes.setdefault((account_id, code_id, tax.id), None)
                 for tax_line in line.tax_lines:
@@ -806,9 +818,12 @@ class Line(ModelSQL, ModelView):
                     tax_amount = Decimal('0.0')
                     for tax_line in Tax.compute(line.account.taxes,
                             line.debit or line.credit, 1):
-                        if ((tax_line['tax'][key + '_account'].id
-                                or line.account.id) == account_id
-                                and (tax_line['tax'][key + '_tax_code'].id
+                        tax_account = getattr(tax_line['tax'],
+                            key + '_account')
+                        tax_code = getattr(tax_line['tax'], key + '_tax_code')
+                        if ((tax_account.id if tax_account
+                                    else line.account.id) == account_id
+                                and (tax_code.id if tax_code else None
                                     == code_id)
                                 and tax_line['tax'].id == tax_id):
                             if line.debit:
@@ -827,7 +842,7 @@ class Line(ModelSQL, ModelView):
                     if ('credit' in fields):
                         values['credit'] = line_amount < Decimal('0.0') \
                             and - line_amount or Decimal('0.0')
-                    if 'account' in fields:
+                    if 'account' in fields and account_id:
                         values['account'] = account_id
                         values['account.rec_name'] = Account(
                             account_id).rec_name
@@ -937,13 +952,14 @@ class Line(ModelSQL, ModelView):
                 base_amounts = {}
                 for tax_line in Tax.compute(self.account.taxes,
                         debit or credit, 1):
-                    code_id = tax_line['tax'][key + '_base_code'].id
+                    code = getattr(tax_line['tax'], key + '_base_code')
+                    code_id = code.id if code else None
                     if not code_id:
                         continue
                     tax_id = tax_line['tax'].id
                     base_amounts.setdefault((code_id, tax_id), Decimal('0.0'))
                     base_amounts[code_id, tax_id] += tax_line['base'] * \
-                        tax_line['tax'][key + '_tax_sign']
+                        getattr(tax_line['tax'], key + '_tax_sign')
                 for code_id, tax_id in base_amounts:
                     if not base_amounts[code_id, tax_id]:
                         continue
