@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,locations:"
 msgid "Default Locations"
-msgstr "Ubicaciones predeterminadas"
+msgstr "Ubicaciones por defecto"
 
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
@@ -20,7 +20,7 @@ msgstr "ID"
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
-msgstr "Ubicación del almacén"
+msgstr "Ubicación del depósito"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
@@ -36,7 +36,7 @@ msgstr "Secuencia"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
-msgstr "Depósito"
+msgstr "Almacén"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
@@ -52,7 +52,7 @@ msgstr "Ubicación de producto"
 
 msgctxt "view:product.product:"
 msgid "Default Locations"
-msgstr "Ubicaciones predeterminadas"
+msgstr "Ubicaciones por defecto"
 
 msgctxt "view:product.product:"
 msgid "Product Location"
