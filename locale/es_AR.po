@@ -3,8 +3,9 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.price_list.line:"
-msgid "Invalid formula!"
-msgstr "¡Formula inválida!"
+msgid "Invalid formula \"%(formula)s\" in price list line \"%(line)s\"."
+msgstr ""
+"Fórmula «%(formula)s» en línea de precio de lista «%(line)s» no es correcta."
 
 msgctxt "field:product.price_list,company:"
 msgid "Company"
@@ -80,7 +81,7 @@ msgstr "Secuencia"
 
 msgctxt "field:product.price_list.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de unidad"
 
 msgctxt "field:product.price_list.line,write_date:"
 msgid "Write Date"
@@ -129,10 +130,6 @@ msgstr "Líneas de lista de precios"
 msgctxt "view:product.price_list:"
 msgid "Price List"
 msgstr "Lista de precios"
-
-msgctxt "view:product.price_list:"
-msgid "Price List Lines"
-msgstr "Líneas de lista de precios"
 
 msgctxt "view:product.price_list:"
 msgid "Price Lists"
