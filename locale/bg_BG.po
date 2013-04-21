@@ -80,10 +80,6 @@ msgid "Stack Top"
 msgstr "Подравнени отгоре"
 
 msgctxt "view:dashboard.action:"
-msgid "Dashboard"
-msgstr "Табло"
-
-msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Действие на таблото"
 
@@ -94,11 +90,3 @@ msgstr "Действия на табло"
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Табло"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Action"
-msgstr "Действие на таблото"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Actions"
-msgstr "Действия на табло"

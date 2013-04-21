@@ -89,11 +89,3 @@ msgstr ""
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr ""
-
-msgctxt "view:res.user:"
-msgid "Dashboard Action"
-msgstr ""
-
-msgctxt "view:res.user:"
-msgid "Dashboard Actions"
-msgstr ""

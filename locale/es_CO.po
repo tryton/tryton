@@ -80,10 +80,6 @@ msgid "Stack Top"
 msgstr "A la Cima"
 
 msgctxt "view:dashboard.action:"
-msgid "Dashboard"
-msgstr "Escritorio"
-
-msgctxt "view:dashboard.action:"
 msgid "Dashboard Action"
 msgstr "Acción del Escritorio"
 
@@ -94,11 +90,3 @@ msgstr "Acción del Escritorio"
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Escritorio"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Action"
-msgstr "Acción del Escritorio"
-
-msgctxt "view:res.user:"
-msgid "Dashboard Actions"
-msgstr "Acción del Escritorio"
