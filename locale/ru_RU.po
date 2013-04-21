@@ -3,62 +3,72 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"!"
+msgid "Lot is required for move of product \"%s\"."
 msgstr ""
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:product.template-stock.lot.type,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
-msgstr ""
+msgstr "Шаблон"
 
 #, fuzzy
 msgctxt "field:product.template-stock.lot.type,type:"
 msgid "Type"
 msgstr "Тип"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:stock.lot,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:stock.lot,number:"
 msgid "Number"
-msgstr ""
+msgstr "Номер"
 
 #, fuzzy
 msgctxt "field:stock.lot,product:"
@@ -70,30 +80,35 @@ msgctxt "field:stock.lot,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
 msgstr "Код страны"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.lot.type,name:"
@@ -105,13 +120,15 @@ msgctxt "field:stock.lot.type,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -167,6 +184,10 @@ msgid "Supplier"
 msgstr "Поставщик"
 
 msgctxt "view:product.product:"
+msgid "Lots"
+msgstr ""
+
+msgctxt "view:product.template:"
 msgid "Lots"
 msgstr ""
 

@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"!"
+msgid "Lot is required for move of product \"%s\"."
 msgstr ""
 
 msgctxt "field:product.template,lot_required:"
@@ -156,6 +156,10 @@ msgid "Supplier"
 msgstr ""
 
 msgctxt "view:product.product:"
+msgid "Lots"
+msgstr ""
+
+msgctxt "view:product.template:"
 msgid "Lots"
 msgstr ""
 
