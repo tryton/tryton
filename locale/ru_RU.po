@@ -99,39 +99,44 @@ msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
 msgstr "Цена за единицу"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.ask,product:"
 msgid "Product"
 msgstr "Товарно материальные ценности (ТМЦ)"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Сумма"
 
 msgctxt "field:product.update_cost_price.show_move,counterpart:"
 msgid "Counterpart"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Кол-во цифр валюты"
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
 msgstr "Описание"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Журнал"
 
 msgctxt "field:product.update_cost_price.show_move,price_difference:"
 msgid "Price Difference"
@@ -141,29 +146,35 @@ msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move,account_move:"
 msgid "Account Move"
-msgstr ""
+msgstr "Проводка"
 
+#, fuzzy
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
+msgstr "Этот счет будет использован вместо указанного в категории."
 
+#, fuzzy
 msgctxt "help:product.template,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
+msgstr "Этот счет будет использован вместо указанного в категории."
 
+#, fuzzy
 msgctxt "help:product.template,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
+msgstr "Этот счет будет использован вместо указанного в категории."
 
+#, fuzzy
 msgctxt "help:product.template,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
+msgstr "Этот счет будет использован вместо указанного в категории."
 
+#, fuzzy
 msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
+msgstr "Этот счет будет использован вместо указанного в категории."
 
 #, fuzzy
 msgctxt "model:account.account.template,name:account_template_stock"
