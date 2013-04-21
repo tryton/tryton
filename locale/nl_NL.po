@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:country.country:"
-msgid "The code of the country must be unique!"
+msgid "The code of the country must be unique."
 msgstr ""
 
 msgctxt "error:country.country:"
-msgid "The name of the country must be unique!"
+msgid "The name of the country must be unique."
 msgstr ""
 
 #, fuzzy

@@ -3,16 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:country.country:"
-msgid "The code of the country must be unique!"
-msgstr "¡El código del país debe ser único!"
-
-msgctxt "error:country.country:"
 msgid "The code of the country must be unique."
 msgstr ""
-
-msgctxt "error:country.country:"
-msgid "The name of the country must be unique!"
-msgstr "¡El nombre del país debe ser único!"
 
 msgctxt "error:country.country:"
 msgid "The name of the country must be unique."
@@ -20917,22 +20909,6 @@ msgstr "Países"
 msgctxt "view:country.country:"
 msgid "Country"
 msgstr "País"
-
-msgctxt "view:country.country:"
-msgid "State"
-msgstr "Estado"
-
-msgctxt "view:country.country:"
-msgid "States"
-msgstr "Estados"
-
-msgctxt "view:country.country:"
-msgid "Subdivision"
-msgstr "Subdivisión"
-
-msgctxt "view:country.country:"
-msgid "Subdivisions"
-msgstr "Subdivisiones"
 
 msgctxt "view:country.subdivision:"
 msgid "Subdivision"

@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:country.country:"
-msgid "The code of the country must be unique!"
-msgstr "Кода на държавата трябва да е уникален!"
+msgid "The code of the country must be unique."
+msgstr ""
 
 msgctxt "error:country.country:"
-msgid "The name of the country must be unique!"
-msgstr "Името на държавата трябва да е уникално!"
+msgid "The name of the country must be unique."
+msgstr ""
 
 msgctxt "field:country.country,code:"
 msgid "Code"
