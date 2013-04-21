@@ -3,15 +3,17 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.product:"
-msgid "You can not create recursive BOMs!"
+msgid ""
+"You are trying to create a recursive BOM with product \"%s\" which is not "
+"allowed."
 msgstr ""
 
 msgctxt "error:production.bom.input:"
-msgid "Product must be unique per BOM!"
+msgid "Product must be unique per BOM."
 msgstr ""
 
 msgctxt "error:production.bom.input:"
-msgid "You can not create recursive BOMs!"
+msgid "You can not create recursive BOMs."
 msgstr ""
 
 msgctxt "error:production.bom.input:"
@@ -19,11 +21,11 @@ msgid "product_bom_uniq"
 msgstr ""
 
 msgctxt "error:production.bom.output:"
-msgid "Product must be unique per BOM!"
+msgid "Product must be unique per BOM."
 msgstr ""
 
 msgctxt "error:production.bom.output:"
-msgid "You can not create recursive BOMs!"
+msgid "You can not create recursive BOMs."
 msgstr ""
 
 msgctxt "error:production.bom.output:"
@@ -31,7 +33,7 @@ msgid "product_bom_uniq"
 msgstr ""
 
 msgctxt "error:production:"
-msgid "It misses some cost on the outputs!"
+msgid "Production \"%s\" misses costs on some of its outputs."
 msgstr ""
 
 msgctxt "field:product.product,boms:"
@@ -456,32 +458,12 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_production_assigned"
-msgid "Assigned Productions"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_production_draft"
-msgid "Draft Productions"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_production_request"
-msgid "Request Productions"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_production_running"
-msgid "Running Productions"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_production_waiting"
-msgid "Waiting Productions"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_assign"
@@ -491,6 +473,38 @@ msgstr ""
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
+msgid "Assigned"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_requests"
+msgid "Requests"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_running"
+msgid "Running"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
+msgid "Waiting"
+msgstr "In afwachting"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -513,32 +527,12 @@ msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_production_assigned"
-msgid "Assigned Productions"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_production_draft"
-msgid "Draft Productions"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_production_request"
-msgid "Request Productions"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_production_running"
-msgid "Running Productions"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_production_waiting"
-msgid "Waiting Productions"
 msgstr ""
 
 msgctxt "model:product.product-production.bom,name:"
