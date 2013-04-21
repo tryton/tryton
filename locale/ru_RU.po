@@ -3,16 +3,17 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:res.user:"
-msgid "You can not set a password to a ldap user!"
+msgid "You can not set the password of ldap user \"%s\"."
 msgstr ""
 
 msgctxt "field:ldap.connection,auth_base_dn:"
 msgid "Base DN"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ldap.connection,auth_create_user:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
 msgctxt "field:ldap.connection,auth_require_filter:"
 msgid "Require Filter"
@@ -38,9 +39,10 @@ msgctxt "help:ldap.connection,auth_uid:"
 msgid "UID Attribute for authentication"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:ldap.connection,auth_scope:"
 msgid "Base"
-msgstr ""
+msgstr "База"
 
 msgctxt "selection:ldap.connection,auth_scope:"
 msgid "OneLevel"
