@@ -189,3 +189,22 @@ msgstr "Numerico"
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Selección"
+
+msgctxt "view:product.attribute.set:"
+msgid "Attribute Set"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:product.attribute.set:"
+msgid "Attribute Sets"
+msgstr "Kits Atributo"
+
+#, fuzzy
+msgctxt "view:product.attribute:"
+msgid "Attribute"
+msgstr "Atributo"
+
+#, fuzzy
+msgctxt "view:product.attribute:"
+msgid "Attributes"
+msgstr "Atributos"
