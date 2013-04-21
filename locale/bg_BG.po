@@ -10,176 +10,171 @@ msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
 msgstr "Не може да променяте записи от Сметка с отложено плащане"
 
-msgctxt "error:account.account.template:"
-msgid "You can not create recursive accounts!"
-msgstr "Не може да създавате взаимно вложени сметки!"
-
-msgctxt "error:account.account.type.template:"
-msgid "You can not create recursive types!"
-msgstr "Не може да създавате взаимно вложени видове!"
-
-msgctxt "error:account.account.type:"
-msgid "You can not create recursive types!"
-msgstr "Не може да създавате взаимно вложени видове!"
+msgctxt "error:account.account:"
+msgid "You can not delete account \"%s\" because it has move lines."
+msgstr ""
 
 msgctxt "error:account.account:"
-msgid "You can not create recursive accounts!"
-msgstr "Не може да създавате взаимно вложени сметки!"
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts containing move lines!"
-msgstr "Не може да изтривате сметки които съдържат редове от движение!"
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts that have children!"
-msgstr "Не може да изтриете сметки които имат наследници!"
+msgid "You can not delete accounts that have children."
+msgstr ""
 
 msgctxt "error:account.fiscalyear:"
-msgid "No fiscal year defined for this date!"
-msgstr "За тази дата не е зададена финансова година!"
+msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
+msgstr ""
 
 msgctxt "error:account.fiscalyear:"
-msgid "The balance of the account \"%s\" must be zero!"
-msgstr "Баланса на сметка \"%s\" трябва да е нула!"
+msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
+msgstr ""
 
 msgctxt "error:account.fiscalyear:"
-msgid "You can not change the post move sequence"
-msgstr "Не може да променяте последователността след движение"
+msgid "No fiscal year defined for \"%s\"."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "The balance of the account \"%s\" must be zero."
+msgstr ""
+
+msgctxt "error:account.fiscalyear:"
+msgid "You can not change the post move sequence in fiscal year \"%s\"."
+msgstr ""
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
-"You can not close a fiscal year until there is older fiscal year opened!"
-msgstr "Не може да затворите финансова година докато има отворена по-стара!"
-
-msgctxt "error:account.fiscalyear:"
-msgid "You can not have 2 fiscal years that overlaps!"
-msgstr "Не може да имате 2 припокриващи се финансови години!"
+"You can not close fiscal year \"%s\" until you close all previous fiscal "
+"years."
+msgstr ""
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
-"You can not reopen a fiscal year until there is more recent fiscal year "
-"closed!"
+"You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
+"years."
 msgstr ""
-"Не може наново да отваряте финансова година докато има по-скорошна затворена"
-" финансова година!"
 
-msgctxt "error:account.fiscalyear:"
-msgid "You must have different post move sequence per fiscal year!"
+msgctxt "error:account.journal.period:"
+msgid "You can not create a journal - period on closed period \"%s\"."
 msgstr ""
-"За финансова година трябва да имате различни последователности за движение!"
 
 msgctxt "error:account.journal.period:"
-msgid "You can not create a journal - period on a closed period!"
-msgstr "Не може да създадете дневник - период за затворен период!"
+msgid "You can not modify/delete journal - period \"%s\" because it has moves."
+msgstr ""
 
 msgctxt "error:account.journal.period:"
-msgid "You can not modify/delete a journal - period with moves!"
-msgstr "Не може да променяте/изтривате дневник-период който има движения! "
+msgid ""
+"You can not open journal - period \"%(journal_period)s\" because period "
+"\"%(period)s\" is closed."
+msgstr ""
 
 msgctxt "error:account.journal.period:"
-msgid "You can not open a journal - period from a closed period!"
-msgstr "Не може да отваряте дневник-период от затворен период!"
-
-msgctxt "error:account.journal.period:"
-msgid "You can only open one journal per period!"
-msgstr "Може да отваряте един дневник за период!"
+msgid "You can only open one journal per period."
+msgstr ""
 
 msgctxt "error:account.journal.type:"
-msgid "The code must be unique!"
-msgstr "Кода трябва да е уникален!"
+msgid "The code must be unique."
+msgstr ""
 
 msgctxt "error:account.move.line:"
-msgid "Line \"%s\" (%d) already reconciled!"
-msgstr "Ред \"%s\" (%d) е вече съгласуван!"
+msgid "Line \"%s\" (%d) already reconciled."
+msgstr ""
 
 msgctxt "error:account.move.line:"
-msgid "No journal defined!"
-msgstr "Не е зададен дневник!"
+msgid "Move line cannot be created because there is no journal defined."
+msgstr ""
 
 msgctxt "error:account.move.line:"
-msgid "Wrong credit/debit values!"
-msgstr "Грешни стойности за кредит/дебит!"
+msgid "Wrong credit/debit values."
+msgstr ""
 
 msgctxt "error:account.move.line:"
-msgid "You can not add/modify lines in a closed journal period!"
-msgstr "Не мое да добавяте/променяте редове в затворен период от дневник!"
+msgid "You can not add/modify lines in closed journal period \"%s\"."
+msgstr ""
 
 msgctxt "error:account.move.line:"
 msgid ""
-"You can not create move lines\n"
-"on view/inactive accounts!"
+"You can not create a move line with account \"%s\" because it is a view "
+"account."
 msgstr ""
-"Не може да създадете редове от движение\n"
-"за изглед/неактивни сметки!"
 
 msgctxt "error:account.move.line:"
-msgid "You can not modify lines of a posted move!"
-msgstr "Не може да променяте редове от публикувано движение!"
+msgid "You can not create a move line with account \"%s\" because it is inactive."
+msgstr ""
 
 msgctxt "error:account.move.line:"
-msgid "You can not modify reconciled lines!"
-msgstr "Не може да променяте съгласувани редове!"
+msgid "You can not modify line \"%s\" because it is reconciled."
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "You can not modify lines of move \"%s\" because it is already posted."
+msgstr ""
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
-"You can not create reconciliation where lines are not balanced, nor valid, "
-"nor in the same account, nor in account to reconcile, nor from the same "
-"party!"
+"You can not create a reconciliation where debit \"%(debit)s\" and credit "
+"\"%(credit)s\" differ."
 msgstr ""
-"Не може да създавате съгласуване където редовете не са балансирани, "
-"невалидни,нито в същата сметка, нито в сметка за съгласуване, нито от същия "
-"партньор!"
 
 msgctxt "error:account.move.reconciliation:"
-msgid "You can not modify a reconciliation!"
-msgstr "Не може да променяте съгласуване!"
+msgid "You can not modify a reconciliation."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not reconcile line \"%(line)s\" because it's account \"%(account)s\""
+" is configured as not reconcilable."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not reconcile line \"%(line)s\" because it's account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid ""
+"You can not reconcile line \"%(line)s\" because it's party \"%(party1)s\" is"
+" different from %(party2)s\"."
+msgstr ""
+
+msgctxt "error:account.move.reconciliation:"
+msgid "You can not reconcile line \"%s\" because it is not in valid state."
+msgstr ""
 
 msgctxt "error:account.move:"
 msgid ""
-"Move \"%s\" is already posted!\n"
-"You can not modify a posted move."
+"Move \"%(move)s\" cannot be created because there is already a move in "
+"journal \"%(journal)s\" and you cannot create more than one move per period "
+"in a centralized journal."
 msgstr ""
-"Движение \"%s\" вече е публикувано!\n"
-"Не може да променяте публикувано движение."
+
+msgctxt "error:account.move:"
+msgid "You can not create lines on accountsof different companies in move \"%s\"."
+msgstr ""
 
 msgctxt "error:account.move:"
 msgid ""
-"You can not create lines on accounts\n"
-"of different companies in the same move!"
+"You can not create move \"%(move)s\" because it's date is outside its "
+"period."
 msgstr ""
-"В едно движение не може да създавате \n"
-"редове от сметки на различни фирми!\n"
+
+msgctxt "error:account.move:"
+msgid "You can not modify move \"%s\" because it is already posted."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not post move \"%s\" because it is an unbalanced."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not post move \"%s\" because it is empty."
+msgstr ""
+
+msgctxt "error:account.move:"
+msgid "You can not set posted move \"%(move)s\" to draft in journal \"%(journal)s\"."
+msgstr ""
 
 msgctxt "error:account.move:"
 msgid ""
-"You can not create more than one move per period\n"
-"in a centralized journal!"
-msgstr ""
-"Не може да създавате повече от едно движение \n"
-"за период в централизиран дневник!"
-
-msgctxt "error:account.move:"
-msgid "You can not create move with a date outside the period!"
-msgstr "Не може да създавате движение с дата извън периода!"
-
-msgctxt "error:account.move:"
-msgid "You can not delete posted moves!"
-msgstr "Не може да изтривате публикувани движения!"
-
-msgctxt "error:account.move:"
-msgid "You can not post an empty move!"
-msgstr "Не може да публикувате празно движение!"
-
-msgctxt "error:account.move:"
-msgid "You can not post an unbalanced move!"
-msgstr "Не може да публикувате небалансирано движение!"
-
-msgctxt "error:account.move:"
-msgid "You can not set a posted move to draft in this journal!"
-msgstr "Не може да прехвърлите публикувано движение в проект за този дневник!"
-
-msgctxt "error:account.move:"
-msgid "You can not set to draft a move from a closed period"
+"You can not set to draft move \"%(move)s\" because period \"%(period)s\" is "
+"closed."
 msgstr ""
 
 msgctxt "error:account.open_aged_balance:"
@@ -191,57 +186,52 @@ msgid "You cannot define overlapping terms"
 msgstr "Не може да задавате припокриващи се срокове"
 
 msgctxt "error:account.period:"
-msgid "No period defined for this date!"
-msgstr "За тази дата не е зададен период!"
-
-msgctxt "error:account.period:"
-msgid "The period dates must be in the fiscal year dates"
+msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
 msgstr ""
-"Датите от периода трябва да са в рамките на датите на финансовата година"
 
 msgctxt "error:account.period:"
 msgid ""
-"You can not change the post move sequence if there is already posted moves "
-"in the period"
+"Company of sequence \"%(sequence)s\" does not match the company of period "
+"\"%(period)s\" to which it is assigned to."
 msgstr ""
-"Ако вече има публикувани движения за период не може да променяте "
-"последователността за след движение"
 
 msgctxt "error:account.period:"
-msgid "You can not close a period with non posted moves!"
-msgstr "Не може да затваряте период който няма публикувано движения!"
+msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
+msgstr ""
 
 msgctxt "error:account.period:"
-msgid "You can not create a period on a closed fiscal year!"
-msgstr "Не може да създадете период за затворена финансова година!"
+msgid "No period defined for date \"%s\"."
+msgstr ""
 
 msgctxt "error:account.period:"
-msgid "You can not have two overlapping periods!"
-msgstr "Не може да имате два припокриващи се периода!"
-
-msgctxt "error:account.period:"
-msgid "You can not modify/delete a period with moves!"
-msgstr "Не може да промените/изтриете период който има движения!"
-
-msgctxt "error:account.period:"
-msgid "You can not open a period from a closed fiscal year!"
-msgstr "Не може да отваряте наново период от затворена финансова година!"
+msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
+msgstr ""
 
 msgctxt "error:account.period:"
 msgid ""
-"You must have different post move sequences per fiscal year and in the same "
-"company!"
+"You can not change the post move sequence of period \"%s\" because there are"
+" already posted moves in the period."
 msgstr ""
-"За финансова година и една и съща фирма трябва да имате различни "
-"последователности за движение "
 
-msgctxt "error:account.tax.code.template:"
-msgid "You can not create recursive tax codes!"
-msgstr "Не може да създавате взаимно вложение кодове на данъци!"
+msgctxt "error:account.period:"
+msgid ""
+"You can not close period \"%s\" because there are non posted moves in this "
+"period."
+msgstr ""
 
-msgctxt "error:account.tax.code:"
-msgid "You can not create recursive tax codes!"
-msgstr "Не може да създавате взаимно вложение кодове на данъци!"
+msgctxt "error:account.period:"
+msgid "You can not create a period on fiscal year \"%s\" because it is closed."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "You can not modify/delete period \"%s\" because it has moves."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid ""
+"You can not open period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
 
 msgctxt "field:account.account,active:"
 msgid "Active"
@@ -1772,6 +1762,11 @@ msgctxt "field:account.tax.group,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "field:account.tax.group,kind:"
+msgid "Kind"
+msgstr "Вид"
+
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
 msgstr "Име"
@@ -1847,6 +1842,11 @@ msgstr "Създадено от"
 msgctxt "field:account.tax.rule,id:"
 msgid "ID"
 msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.rule,kind:"
+msgid "Kind"
+msgstr "Вид"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
@@ -1979,6 +1979,11 @@ msgstr "Създадено от"
 msgctxt "field:account.tax.rule.template,id:"
 msgid "ID"
 msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.template,kind:"
+msgid "Kind"
+msgstr "Вид"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
@@ -3207,6 +3212,10 @@ msgid "Debit"
 msgstr "Дебит"
 
 msgctxt "odt:account.general_ledger:"
+msgid "Descr."
+msgstr ""
+
+msgctxt "odt:account.general_ledger:"
 msgid "From Period:"
 msgstr "От период:"
 
@@ -3214,9 +3223,19 @@ msgctxt "odt:account.general_ledger:"
 msgid "General Ledger"
 msgstr "Основен дневник"
 
+#, fuzzy
+msgctxt "odt:account.general_ledger:"
+msgid "Move"
+msgstr "Движение"
+
 msgctxt "odt:account.general_ledger:"
 msgid "Name"
 msgstr "Име"
+
+#, fuzzy
+msgctxt "odt:account.general_ledger:"
+msgid "Origin"
+msgstr "Източник"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Print Date:"
@@ -3266,6 +3285,11 @@ msgctxt "odt:account.move.general_journal:"
 msgid "Debit"
 msgstr "Дебит"
 
+#, fuzzy
+msgctxt "odt:account.move.general_journal:"
+msgid "Description"
+msgstr "Описание"
+
 msgctxt "odt:account.move.general_journal:"
 msgid "Draft"
 msgstr "Проект"
@@ -3283,8 +3307,8 @@ msgid "Journal Entry:"
 msgstr "Запис от дневник"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Name"
-msgstr "Име"
+msgid "Origin:"
+msgstr ""
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Posted"
@@ -3293,10 +3317,6 @@ msgstr "Публикуван"
 msgctxt "odt:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Дата на отпечатване:"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Reference:"
-msgstr "Отпратка:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "To Date:"
@@ -3580,6 +3600,51 @@ msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
 msgstr "По периоди"
 
+#, fuzzy
+msgctxt "selection:account.tax.group,kind:"
+msgid "Both"
+msgstr "И двата"
+
+#, fuzzy
+msgctxt "selection:account.tax.group,kind:"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "selection:account.tax.group,kind:"
+msgid "Sale"
+msgstr "Продажба"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Both"
+msgstr "И двата"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule,kind:"
+msgid "Sale"
+msgstr "Продажба"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Both"
+msgstr "И двата"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+#, fuzzy
+msgctxt "selection:account.tax.rule.template,kind:"
+msgid "Sale"
+msgstr "Продажба"
+
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
 msgstr "Фиксиран"
@@ -3748,14 +3813,6 @@ msgctxt "view:account.journal.view:"
 msgid "Journal Views"
 msgstr "Изгледи на дневник"
 
-msgctxt "view:account.journal.view:"
-msgid "View Column"
-msgstr "Изглед на колона"
-
-msgctxt "view:account.journal.view:"
-msgid "View Columns"
-msgstr "Показване на колони"
-
 msgctxt "view:account.journal:"
 msgid "General Information"
 msgstr "Обща информация"
@@ -3783,14 +3840,6 @@ msgstr "Кредит"
 msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr "Дебит"
-
-msgctxt "view:account.move.line:"
-msgid "General Information"
-msgstr "Обща информация"
-
-msgctxt "view:account.move.line:"
-msgid "Optional Information"
-msgstr "Незадължителна информация"
 
 #, fuzzy
 msgctxt "view:account.move.line:"
@@ -3826,36 +3875,12 @@ msgid "Account Move"
 msgstr "Движение по сметка"
 
 msgctxt "view:account.move:"
-msgid "Account Move Line"
-msgstr "Ред от движение по сметка"
-
-msgctxt "view:account.move:"
-msgid "Account Move Lines"
-msgstr "Редове от движение на сметка"
-
-msgctxt "view:account.move:"
 msgid "Account Moves"
 msgstr "Движения по сметка"
 
 msgctxt "view:account.move:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "view:account.move:"
-msgid "Debit"
-msgstr "Дебит"
-
-msgctxt "view:account.move:"
 msgid "Draft"
 msgstr "Проект"
-
-msgctxt "view:account.move:"
-msgid "General Information"
-msgstr "Обща информация"
-
-msgctxt "view:account.move:"
-msgid "Optional Information"
-msgstr "Незадължителна информация"
 
 msgctxt "view:account.move:"
 msgid "Post"
@@ -3982,10 +4007,6 @@ msgid "Tax Rule"
 msgstr "Правило за данък"
 
 msgctxt "view:account.tax.rule:"
-msgid "Tax Rule Line Templates"
-msgstr "Шаблони за редове от правило на данък"
-
-msgctxt "view:account.tax.rule:"
 msgid "Tax Rules"
 msgstr "Правила за данък"
 
@@ -4008,10 +4029,6 @@ msgstr "Фактура"
 msgctxt "view:account.tax.template:"
 msgid "Tax Template"
 msgstr "Шаблон за данък"
-
-msgctxt "view:account.tax.template:"
-msgid "Taxes"
-msgstr "Данъци"
 
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"

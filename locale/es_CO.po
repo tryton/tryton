@@ -10,33 +10,9 @@ msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
 msgstr "No puede modificar los registros de cuentas diferidas."
 
-msgctxt "error:account.account.template:"
-msgid "You can not create recursive accounts!"
-msgstr "¡No puede crear cuentas recursivas!"
-
-msgctxt "error:account.account.type.template:"
-msgid "You can not create recursive types!"
-msgstr "¡No puede crear tipos recursivos!"
-
-msgctxt "error:account.account.type:"
-msgid "You can not create recursive types!"
-msgstr "¡No puede crear tipos recursivos!"
-
-msgctxt "error:account.account:"
-msgid "You can not create recursive accounts!"
-msgstr "¡No puede crear cuentas recursivas!"
-
 msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
 msgstr "No puede eliminar una cuenta \"%s\" porque tiene líneas de asiento."
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts containing move lines!"
-msgstr "¡No puede eliminar cuentas que contienen líneas de asientos!"
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts that have children!"
-msgstr "No puede eliminar cuentas que tienen hijos!"
 
 msgctxt "error:account.account:"
 msgid "You can not delete accounts that have children."
@@ -57,32 +33,13 @@ msgid "No fiscal year defined for \"%s\"."
 msgstr "No hay año fiscal definido para \"%s\"."
 
 msgctxt "error:account.fiscalyear:"
-msgid "No fiscal year defined for this date!"
-msgstr "¡No existe ningún año fiscal para esta fecha!"
-
-msgctxt "error:account.fiscalyear:"
-msgid "The balance of the account \"%s\" must be zero!"
-msgstr "El balance de la cuenta \"%s\" debe ser cero!"
-
-msgctxt "error:account.fiscalyear:"
 msgid "The balance of the account \"%s\" must be zero."
 msgstr "El balance de la cuenta \"%s\" debe ser cero!"
-
-msgctxt "error:account.fiscalyear:"
-msgid "You can not change the post move sequence"
-msgstr "No puede cambiar la secuencia de asientos confirmados."
 
 msgctxt "error:account.fiscalyear:"
 msgid "You can not change the post move sequence in fiscal year \"%s\"."
 msgstr ""
 "No puede cambiar la secuencia de asiento confirmado en el año fiscal \"%s\"."
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not close a fiscal year until there is older fiscal year opened!"
-msgstr ""
-"¡No puede cerrar un año fiscal mientras exista un año fiscal anterior "
-"abierto!"
 
 msgctxt "error:account.fiscalyear:"
 msgid ""
@@ -93,18 +50,6 @@ msgstr ""
 "fiscales anteriores."
 
 msgctxt "error:account.fiscalyear:"
-msgid "You can not have 2 fiscal years that overlaps!"
-msgstr "¡No puede tener dos años fiscales que se solapen!"
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not reopen a fiscal year until there is more recent fiscal year "
-"closed!"
-msgstr ""
-"No puede abrir de nuevo un año fiscal mientras exista un año fiscal "
-"posterior cerrado!"
-
-msgctxt "error:account.fiscalyear:"
 msgid ""
 "You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
 "years."
@@ -112,33 +57,15 @@ msgstr ""
 "No puede reabir el año fiscal \"%s\" hasta que reabra todos los años "
 "fiscales posteriores."
 
-msgctxt "error:account.fiscalyear:"
-msgid "You must have different post move sequence per fiscal year!"
-msgstr ""
-"¡Cada año fiscal debe tener una secuencia distinta para los asientos "
-"confirmados!"
-
-msgctxt "error:account.journal.period:"
-msgid "You can not create a journal - period on a closed period!"
-msgstr "No puede crear un libro diario - período en un período cerrado!"
-
 msgctxt "error:account.journal.period:"
 msgid "You can not create a journal - period on closed period \"%s\"."
 msgstr "No puede crear un libro diario - período en el período cerrado \"%s\"."
-
-msgctxt "error:account.journal.period:"
-msgid "You can not modify/delete a journal - period with moves!"
-msgstr "¡No puede modificar/eliminar un libro diario-período con asientos!"
 
 msgctxt "error:account.journal.period:"
 msgid "You can not modify/delete journal - period \"%s\" because it has moves."
 msgstr ""
 "No puede modificar/eliminar un libro diario - período \"%s\" porque tiene "
 "asientos."
-
-msgctxt "error:account.journal.period:"
-msgid "You can not open a journal - period from a closed period!"
-msgstr "¡No puede abrir un diario-período en un período cerrado!"
 
 msgctxt "error:account.journal.period:"
 msgid ""
@@ -149,24 +76,12 @@ msgstr ""
 "período \"%(period)s\" esta cerrado."
 
 msgctxt "error:account.journal.period:"
-msgid "You can only open one journal per period!"
-msgstr "¡Sólo puede abrir un libro diario por período!"
-
-msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
 msgstr "Solo puede abrir un libro diario por período."
 
 msgctxt "error:account.journal.type:"
-msgid "The code must be unique!"
-msgstr "El código debe ser único!"
-
-msgctxt "error:account.journal.type:"
 msgid "The code must be unique."
 msgstr "El código debe ser único!"
-
-msgctxt "error:account.move.line:"
-msgid "Line \"%s\" (%d) already reconciled!"
-msgstr "¡La línea \"%s\" (%d) ya está conciliada!"
 
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
@@ -179,21 +94,8 @@ msgstr ""
 "definido."
 
 msgctxt "error:account.move.line:"
-msgid "No journal defined!"
-msgstr "¡No se ha definido ningún libro diario!"
-
-msgctxt "error:account.move.line:"
-msgid "Wrong credit/debit values!"
-msgstr "Valores de haber/debe incorrectos!"
-
-msgctxt "error:account.move.line:"
 msgid "Wrong credit/debit values."
 msgstr "Valores de haber/debe incorrectos!"
-
-msgctxt "error:account.move.line:"
-msgid "You can not add/modify lines in a closed journal period!"
-msgstr ""
-"No puede añadir/modificar líneas en un libro diario con período cerrado!"
 
 msgctxt "error:account.move.line:"
 msgid "You can not add/modify lines in closed journal period \"%s\"."
@@ -215,28 +117,12 @@ msgstr ""
 "inactiva."
 
 msgctxt "error:account.move.line:"
-msgid ""
-"You can not create move lines\n"
-"on view/inactive accounts!"
-msgstr ""
-"¡No puede crear líneas de asientos\n"
-"en cuentas vista/inactivas!"
-
-msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
 msgstr "No puede modificar una línea \"%s\" porque esta conciliada."
 
 msgctxt "error:account.move.line:"
-msgid "You can not modify lines of a posted move!"
-msgstr "No puede modificar líneas de un asiento confirmado!"
-
-msgctxt "error:account.move.line:"
 msgid "You can not modify lines of move \"%s\" because it is already posted."
 msgstr "No puede modificar líneas del asiento \"%s\" porque esta confirmado!"
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify reconciled lines!"
-msgstr "No puede modificar líneas de asientos conciliados!"
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
@@ -245,20 +131,6 @@ msgid ""
 msgstr ""
 "No puede crear una conciliación donde los débitos \"%(debit)s\" y los "
 "créditos \"%(credit)s\" difieren."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not create reconciliation where lines are not balanced, nor valid, "
-"nor in the same account, nor in account to reconcile, nor from the same "
-"party!"
-msgstr ""
-"¡No puede conciliar si las líneas de asientos no están balanceados, no son "
-"válidos, no son de la misma cuenta, no son de una cuenta para conciliar o no"
-" son del mismo tercero!"
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not modify a reconciliation!"
-msgstr "No puede modificar una conciliación!"
 
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not modify a reconciliation."
@@ -303,34 +175,10 @@ msgstr ""
 "asiento por periodo en un libro diario centralizado."
 
 msgctxt "error:account.move:"
-msgid ""
-"Move \"%s\" is already posted!\n"
-"You can not modify a posted move."
-msgstr ""
-"El asiento \"%s\" ya está confirmado!\n"
-"No puede modificar un asiento confirmado."
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not create lines on accounts\n"
-"of different companies in the same move!"
-msgstr ""
-"¡No puede crear apuntes en cuentas\n"
-"de distintas compañias en el mismo asiento!"
-
-msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
 "No puede crear lineas en facturas de diferentes compañias en el asiento "
 "\"%s\"."
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not create more than one move per period\n"
-"in a centralized journal!"
-msgstr ""
-"¡No puede crear más de un asiento por período\n"
-"en un diario centralizado!"
 
 msgctxt "error:account.move:"
 msgid ""
@@ -341,24 +189,8 @@ msgstr ""
 "período."
 
 msgctxt "error:account.move:"
-msgid "You can not create move with a date outside the period!"
-msgstr "¡No puede crear un asiento con la fecha fuera del período!"
-
-msgctxt "error:account.move:"
-msgid "You can not delete posted moves!"
-msgstr "¡No puede eliminar asientos confirmados!"
-
-msgctxt "error:account.move:"
 msgid "You can not modify move \"%s\" because it is already posted."
 msgstr "No puede modificar el asiento \"%s\" porque esta actualmente confirmado!"
-
-msgctxt "error:account.move:"
-msgid "You can not post an empty move!"
-msgstr "¡No puede confirmar un asiento vacío!"
-
-msgctxt "error:account.move:"
-msgid "You can not post an unbalanced move!"
-msgstr "¡No puede confirmar un asiento descuadrado!"
 
 msgctxt "error:account.move:"
 msgid "You can not post move \"%s\" because it is an unbalanced."
@@ -369,19 +201,10 @@ msgid "You can not post move \"%s\" because it is empty."
 msgstr "No puede confirmar el asiento \"%s\" porque esta vacío."
 
 msgctxt "error:account.move:"
-msgid "You can not set a posted move to draft in this journal!"
-msgstr ""
-"¡No puede restablecer un asiento confirmado a borrador en este libro diario!"
-
-msgctxt "error:account.move:"
 msgid "You can not set posted move \"%(move)s\" to draft in journal \"%(journal)s\"."
 msgstr ""
 "No puede convertir le asiento confirmado \"%(move)s\" a borrador en el libro"
 " diario \"%(journal)s\"."
-
-msgctxt "error:account.move:"
-msgid "You can not set to draft a move from a closed period"
-msgstr "No puede convertir a borrador un asiento de un periodo cerrado"
 
 msgctxt "error:account.move:"
 msgid ""
@@ -420,24 +243,8 @@ msgid "No period defined for date \"%s\"."
 msgstr "No se ha definido un período para la fecha \"%s\"."
 
 msgctxt "error:account.period:"
-msgid "No period defined for this date!"
-msgstr "No se ha definido un período para esta fecha!"
-
-msgctxt "error:account.period:"
 msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
 msgstr "Período \"%(first)s\" y \"%(second)s\" tienen la misma secuencia de factura."
-
-msgctxt "error:account.period:"
-msgid "The period dates must be in the fiscal year dates"
-msgstr "Las fechas del período deben estar dentro del año fiscal."
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not change the post move sequence if there is already posted moves "
-"in the period"
-msgstr ""
-"No puede cambiar la secuencia de asientos confirmados si ya hay asientos "
-"confirmados en dicho período."
 
 msgctxt "error:account.period:"
 msgid ""
@@ -448,10 +255,6 @@ msgstr ""
 " hay asientos confirmados en el período."
 
 msgctxt "error:account.period:"
-msgid "You can not close a period with non posted moves!"
-msgstr "¡No puede cerrar un período con asientos sin confirmar!"
-
-msgctxt "error:account.period:"
 msgid ""
 "You can not close period \"%s\" because there are non posted moves in this "
 "period."
@@ -460,28 +263,12 @@ msgstr ""
 " período."
 
 msgctxt "error:account.period:"
-msgid "You can not create a period on a closed fiscal year!"
-msgstr "¡No puede crear un período en un año fiscal cerrado!"
-
-msgctxt "error:account.period:"
 msgid "You can not create a period on fiscal year \"%s\" because it is closed."
 msgstr "No puede crear un período en el año fiscal \"%s\" porque esta cerrado."
 
 msgctxt "error:account.period:"
-msgid "You can not have two overlapping periods!"
-msgstr "No puede tener dos períodos que se solapen!"
-
-msgctxt "error:account.period:"
-msgid "You can not modify/delete a period with moves!"
-msgstr "No puede modificar/eliminar un período con asientos!"
-
-msgctxt "error:account.period:"
 msgid "You can not modify/delete period \"%s\" because it has moves."
 msgstr "No puede modificar/eliminar el período \"%s\" porque tiene asientos."
-
-msgctxt "error:account.period:"
-msgid "You can not open a period from a closed fiscal year!"
-msgstr "¡No puede abrir un período en un año fiscal cerrado!"
 
 msgctxt "error:account.period:"
 msgid ""
@@ -490,22 +277,6 @@ msgid ""
 msgstr ""
 "No puede abrir el período \"%(period)s\" porque su año fiscal "
 "\"%(fiscalyear)s\" esta cerrado."
-
-msgctxt "error:account.period:"
-msgid ""
-"You must have different post move sequences per fiscal year and in the same "
-"company!"
-msgstr ""
-"¡Debe tener secuencias distintas de asientos confirmados por año fiscal en "
-"la misma compañia!"
-
-msgctxt "error:account.tax.code.template:"
-msgid "You can not create recursive tax codes!"
-msgstr "¡No puede crear códigos de impuesto recursivos!"
-
-msgctxt "error:account.tax.code:"
-msgid "You can not create recursive tax codes!"
-msgstr "¡No puede crear códigos de impuesto recursivos!"
 
 msgctxt "field:account.account,active:"
 msgid "Active"
@@ -3475,6 +3246,10 @@ msgid "Debit"
 msgstr "Debe"
 
 msgctxt "odt:account.general_ledger:"
+msgid "Descr."
+msgstr ""
+
+msgctxt "odt:account.general_ledger:"
 msgid "From Period:"
 msgstr "Desde Período:"
 
@@ -3482,9 +3257,19 @@ msgctxt "odt:account.general_ledger:"
 msgid "General Ledger"
 msgstr "Libro Mayor"
 
+#, fuzzy
+msgctxt "odt:account.general_ledger:"
+msgid "Move"
+msgstr "Movimiento"
+
 msgctxt "odt:account.general_ledger:"
 msgid "Name"
 msgstr "Nombre"
+
+#, fuzzy
+msgctxt "odt:account.general_ledger:"
+msgid "Origin"
+msgstr "Origen"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Print Date:"
@@ -3534,6 +3319,11 @@ msgctxt "odt:account.move.general_journal:"
 msgid "Debit"
 msgstr "Debe"
 
+#, fuzzy
+msgctxt "odt:account.move.general_journal:"
+msgid "Description"
+msgstr "Descripción"
+
 msgctxt "odt:account.move.general_journal:"
 msgid "Draft"
 msgstr "Borrador"
@@ -3551,8 +3341,8 @@ msgid "Journal Entry:"
 msgstr "Asiento de Libro Diario:"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Origin:"
+msgstr ""
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Posted"
@@ -3561,10 +3351,6 @@ msgstr "Confirmado"
 msgctxt "odt:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Fecha impresión:"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Reference:"
-msgstr "Referencia:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "To Date:"
@@ -3987,10 +3773,6 @@ msgid "Are you sure to close fiscal year?"
 msgstr "¿Está seguro que quiere cerrar el año fiscal?"
 
 msgctxt "view:account.fiscalyear:"
-msgid "Close"
-msgstr "Cerrar"
-
-msgctxt "view:account.fiscalyear:"
 msgid "Close Fiscal Year"
 msgstr "Cerrar Año Fiscal"
 
@@ -4013,10 +3795,6 @@ msgstr "Años Fiscales"
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
 msgstr "Períodos"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Re-Open"
-msgstr "Reabrir"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Re-Open Fiscal Year"
@@ -4058,14 +3836,6 @@ msgctxt "view:account.journal.view:"
 msgid "Journal Views"
 msgstr "Vistas de Libros Diarios"
 
-msgctxt "view:account.journal.view:"
-msgid "View Column"
-msgstr "Ver Columna"
-
-msgctxt "view:account.journal.view:"
-msgid "View Columns"
-msgstr "Ver Columnas"
-
 msgctxt "view:account.journal:"
 msgid "General Information"
 msgstr "Información general"
@@ -4093,14 +3863,6 @@ msgstr "Haber"
 msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr "Debe"
-
-msgctxt "view:account.move.line:"
-msgid "General Information"
-msgstr "Información General"
-
-msgctxt "view:account.move.line:"
-msgid "Optional Information"
-msgstr "Información Opcional"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -4135,36 +3897,12 @@ msgid "Account Move"
 msgstr "Asiento Contable"
 
 msgctxt "view:account.move:"
-msgid "Account Move Line"
-msgstr "Línea de Asiento"
-
-msgctxt "view:account.move:"
-msgid "Account Move Lines"
-msgstr "Líneas de Asiento"
-
-msgctxt "view:account.move:"
 msgid "Account Moves"
 msgstr "Asientos Contables"
 
 msgctxt "view:account.move:"
-msgid "Credit"
-msgstr "Haber"
-
-msgctxt "view:account.move:"
-msgid "Debit"
-msgstr "Debe"
-
-msgctxt "view:account.move:"
 msgid "Draft"
 msgstr "Borrador"
-
-msgctxt "view:account.move:"
-msgid "General Information"
-msgstr "Información General"
-
-msgctxt "view:account.move:"
-msgid "Optional Information"
-msgstr "Información Opcional"
 
 msgctxt "view:account.move:"
 msgid "Post"
@@ -4291,10 +4029,6 @@ msgid "Tax Rule"
 msgstr "Regla de Impuesto"
 
 msgctxt "view:account.tax.rule:"
-msgid "Tax Rule Line Templates"
-msgstr "Plantillas de Línea de Regla de Impuesto"
-
-msgctxt "view:account.tax.rule:"
 msgid "Tax Rules"
 msgstr "Reglas de Impuesto"
 
@@ -4315,16 +4049,8 @@ msgid "Invoice"
 msgstr "Factura"
 
 msgctxt "view:account.tax.template:"
-msgid "Refund"
-msgstr "Reembolso"
-
-msgctxt "view:account.tax.template:"
 msgid "Tax Template"
 msgstr "Plantilla de Impuesto"
-
-msgctxt "view:account.tax.template:"
-msgid "Taxes"
-msgstr "Impuestos"
 
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
@@ -4345,10 +4071,6 @@ msgstr "Información General"
 msgctxt "view:account.tax:"
 msgid "Invoice"
 msgstr "Factura"
-
-msgctxt "view:account.tax:"
-msgid "Refund"
-msgstr "Reembolso"
 
 msgctxt "view:account.tax:"
 msgid "Tax"
@@ -4377,10 +4099,6 @@ msgstr "Cuenta"
 msgctxt "view:party.party:"
 msgid "Taxes"
 msgstr "Impuestos"
-
-msgctxt "view:party.party:"
-msgid "_Accounting"
-msgstr "_Contabilidad"
 
 msgctxt "wizard_button:account.create_chart,account,create_account:"
 msgid "Create"
