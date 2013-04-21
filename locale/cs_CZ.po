@@ -5,21 +5,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:analytic_account.account.selection:"
 msgid ""
 "Can not have many accounts with the same root or a missing mandatory root "
-"account!"
-msgstr ""
-
-msgctxt "error:analytic_account.account:"
-msgid "You can not create recursive accounts!"
+"account on \"%s\"."
 msgstr ""
 
 msgctxt "error:analytic_account.line:"
-msgid "Wrong credit/debit values!"
+msgid "Wrong credit/debit values."
 msgstr ""
 
 msgctxt "error:analytic_account.line:"
-msgid ""
-"You can not create move line\n"
-"on view/inactive account!"
+msgid "You can not create a move line using inactive account \"%s\"."
+msgstr ""
+
+msgctxt "error:analytic_account.line:"
+msgid "You can not create a move line using view account \"%s\"."
 msgstr ""
 
 msgctxt "field:account.move.line,analytic_lines:"
