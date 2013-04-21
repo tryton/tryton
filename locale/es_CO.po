@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "¡Una moneda solo puede tener un valor por fecha!"
-
-msgctxt "error:currency.currency.rate:"
 msgid "A currency can only have one rate by date."
 msgstr "Una moneda solo puede tener una tasa de cambio por fecha."
 
@@ -15,20 +11,12 @@ msgid "The currency rate must greater than or equal to 0"
 msgstr "La tasa de moneda debe ser mayor o igual a 0"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "¡Agrupamiento no válido!"
-
-msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
 msgstr "Agrupación inválida \"%(grouping)s\" en moneda \"%(currency)s\""
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr "Tasa de cambio no emcontrada para la moneda \"%(currency)s\" el \"%(date)s\""
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "No se ha encontrado una conversión para la moneda «%s» con fecha: %s"
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -941,10 +929,6 @@ msgstr "Moneda"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formato"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Tasa de Cambio"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

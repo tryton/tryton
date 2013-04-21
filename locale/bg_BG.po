@@ -3,20 +3,20 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
-msgstr "За ден валутата може да има само един курс!"
+msgid "A currency can only have one rate by date."
+msgstr ""
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "Валутния курс трябва да е по-голям или равен на 0"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Невалидно групиране!"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr ""
 
 msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
-msgstr "Не е намерен курс за валута: %s за дата: %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
+msgstr ""
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
@@ -929,10 +929,6 @@ msgstr "Валута"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Форматиране"
-
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Отношение"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

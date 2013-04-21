@@ -3,20 +3,19 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date!"
+msgid "A currency can only have one rate by date."
 msgstr ""
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr ""
 
-#, fuzzy
 msgctxt "error:currency.currency:"
-msgid "Invalid Grouping!"
-msgstr "Ongeldigegroep"
+msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
+msgstr ""
 
 msgctxt "error:currency.currency:"
-msgid "No rate found for the currency: %s at the date: %s"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
 
 #, fuzzy
@@ -948,11 +947,6 @@ msgstr "Valuta"
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:currency.currency:"
-msgid "Rate"
-msgstr "Verhouding"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
