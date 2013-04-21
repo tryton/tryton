@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice.line:"
-msgid "You can not delete invoice lines that comes from a purchase!"
+msgid "You can not delete invoice lines that comes from a purchase."
 msgstr ""
 
 msgctxt "field:purchase.purchase,invoice_lines:"

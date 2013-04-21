@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.invoice.line:"
-msgid "You can not delete invoice lines that comes from a purchase!"
-msgstr "No puede eliminar líneas de factura generadas por  una compra!"
-
-msgctxt "error:account.invoice.line:"
 msgid "You can not delete invoice lines that comes from a purchase."
 msgstr "No puede eliminar líneas de factura generadas por  una compra."
 
