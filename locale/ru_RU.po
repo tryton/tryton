@@ -6,9 +6,10 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
@@ -25,9 +26,10 @@ msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
 msgstr "Ед.изм."
 
+#, fuzzy
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Категория ед. измерения"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
