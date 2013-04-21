@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product: %s (id: %s)!"
-msgstr "Липсва покупната цена за продукт: %s (id: %s)!"
+msgid "Purchase price is missing for product \"%s\"."
+msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchase."
-msgstr "Цената е необходима при създаване на покупка"
+msgid "This price is necessary for creating purchases."
+msgstr ""
 
 msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
@@ -248,13 +248,20 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Заявки за покупка"
 
-msgctxt "model:ir.action,name:act_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Проект на заявка за покупка"
-
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
 msgstr "Създаване на покупка"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
+msgstr "Проект"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -275,10 +282,6 @@ msgstr "Създаване на заявки за покупка"
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Заявки за покупки"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr "Проект на заявки за покупка"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"

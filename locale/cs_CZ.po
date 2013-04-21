@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product: %s (id: %s)!"
+msgid "Purchase price is missing for product \"%s\"."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchase."
+msgid "This price is necessary for creating purchases."
 msgstr ""
 
 msgctxt "error:purchase.request:"
@@ -244,12 +244,18 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
-msgstr ""
-
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
+msgid "Draft"
 msgstr ""
 
 msgctxt "model:ir.cron,name:cron_generate_request"
@@ -270,10 +276,6 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_form_draft"
-msgid "Draft Purchase Requests"
 msgstr ""
 
 msgctxt "model:purchase.request,name:"
