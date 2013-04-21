@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr ""
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr ""
@@ -292,10 +288,6 @@ msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "view:company.company:"
-msgid "Employees"
 msgstr ""
 
 msgctxt "view:company.company:"

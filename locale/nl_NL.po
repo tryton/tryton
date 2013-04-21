@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "U kunt geen bedrijven aanmaken die naar zichzelf verwijzen!"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
@@ -300,10 +296,6 @@ msgstr "Bedrijven"
 msgctxt "view:company.company:"
 msgid "Company"
 msgstr "Bedrijf"
-
-msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Werknemers"
 
 msgctxt "view:company.company:"
 msgid "Reports"

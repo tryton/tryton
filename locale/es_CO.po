@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "¡No puede crear compañias recursivas!"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Hijos"
@@ -287,10 +283,6 @@ msgid "You can now add your company into the system."
 msgstr "Ahora puede añadir su compañia al sistema."
 
 msgctxt "view:company.company:"
-msgid "Addresses"
-msgstr "Direcciones"
-
-msgctxt "view:company.company:"
 msgid "Companies"
 msgstr "Compañias"
 
@@ -299,20 +291,8 @@ msgid "Company"
 msgstr "Compañia"
 
 msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Empleados"
-
-msgctxt "view:company.company:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "Informes"
-
-msgctxt "view:company.employee:"
-msgid "Addresses"
-msgstr "Direcciones"
 
 msgctxt "view:company.employee:"
 msgid "Employee"
@@ -321,10 +301,6 @@ msgstr "Empleado"
 msgctxt "view:company.employee:"
 msgid "Employees"
 msgstr "Empleados"
-
-msgctxt "view:company.employee:"
-msgid "General"
-msgstr "General"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"

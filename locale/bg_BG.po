@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.company:"
-msgid "You can not create recursive companies!"
-msgstr "Не може да създавате взаимно вложени фирми!"
-
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Наследници"
@@ -294,10 +290,6 @@ msgstr "Фирми"
 msgctxt "view:company.company:"
 msgid "Company"
 msgstr "Фирма"
-
-msgctxt "view:company.company:"
-msgid "Employees"
-msgstr "Служители"
 
 msgctxt "view:company.company:"
 msgid "Reports"
