@@ -15,24 +15,8 @@ msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr "Cantidad \"%s\" es mayor que la cantidad a pagar en la factura."
 
 msgctxt "error:account.statement.line:"
-msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "¡El valor (%s) es mayor que lo que se debe pagar en la factura!"
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value!"
-msgstr "La cantidad debe ser un valor positivo o negativo!"
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "La cantidad debe ser un valor positivo o negativo!"
-
-msgctxt "error:account.statement.line:"
-msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
-msgstr ""
-"¡Las cuentas crédito o débito en un diario son las mismas que las líneas de "
-"estado de cuenta!"
 
 msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
@@ -40,23 +24,9 @@ msgstr ""
 "Por favor indique las cuentas débito y crédito en el libro de estado de "
 "cuentas \"%s\"."
 
-msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal."
-msgstr ""
-"Por favor indique las cuentas débito y crédito en el libro de estado de "
-"cuentas."
-
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
 msgstr "El Balance debe ser %s!"
-
-msgctxt "error:account.statement:"
-msgid "End Balance must be %s!"
-msgstr "El Balance debe ser %s!"
-
-msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr "El estado de cuenta \"%s\" debe ser cancelado antes de ser eliminado!"
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -314,10 +284,6 @@ msgid "Amount"
 msgstr "Cantidad"
 
 msgctxt "view:account.statement.line:"
-msgid "Bank Statement Line"
-msgstr "Línea de Extracto Bancario"
-
-msgctxt "view:account.statement.line:"
 msgid "Statement Line"
 msgstr "Libros de Estados de Cuenta"
 
@@ -326,28 +292,8 @@ msgid "Statement Lines"
 msgstr "Líneas de Estado de Cuenta"
 
 msgctxt "view:account.statement:"
-msgid "Amount"
-msgstr "Cantidad"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement"
-msgstr "Extractos Bancarios"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statement Lines"
-msgstr "Línea de Extracto Bancario"
-
-msgctxt "view:account.statement:"
-msgid "Bank Statements"
-msgstr "Extractos Bancarios"
-
-msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Cancelar"
-
-msgctxt "view:account.statement:"
-msgid "Move Lines"
-msgstr "Líneas de Asiento"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

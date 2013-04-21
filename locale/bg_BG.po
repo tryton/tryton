@@ -3,32 +3,30 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr "Сумата (%s) е по-голяма от сумата за плащане по фактурата!"
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value!"
-msgstr "Сумата трябва да бъде положителна или отрицателна стойност!"
-
-msgctxt "error:account.statement.line:"
 msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
+"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
+"one configured as credit or debit on journal \"%(journal)s\"."
 msgstr ""
-"Кредитната/дебитната сметка на дневника е същата сметката като на ред от "
-"отчета!"
 
 msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal."
-msgstr "Моля укажете дебитна и кредитна сметка за дневника за отчети."
+msgid "Amount \"%s\" is greater than the amount to pay of invoice."
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value."
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
+msgstr ""
 
 msgctxt "error:account.statement:"
-msgid "End Balance must be %s!"
-msgstr "Крайния баланс трябва да е %s!"
+msgid "End Balance must be \"%s\"."
+msgstr ""
 
 msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion!"
-msgstr "Преди да бъде изтрит отчет \"%s\" трябва да бъде прекратен!"
+msgid "Statement \"%s\" must be cancelled before deletion."
+msgstr ""
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -206,40 +204,44 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Ред от отчет за сметка"
 
-msgctxt "model:ir.action,name:act_draft_statement_form"
-msgid "Draft Statements"
-msgstr "Проект на отчет"
-
-msgctxt "model:ir.action,name:act_posted_statement_form"
-msgid "Posted Statements"
-msgstr "Публикувани отчети"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_form"
-msgid "All Statement"
+msgid "Statements"
 msgstr "Всички отчети"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Дневник за отчети"
 
-msgctxt "model:ir.action,name:act_validated_statement_form"
-msgid "Validated Statement"
-msgstr "Проверен отчет"
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
+msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
-msgid "Draft Statements"
-msgstr "Проект на отчет"
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
+msgstr "Проект"
 
-msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
-msgid "Posted Statements"
-msgstr "Публикувани отчети"
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr "Публикуван"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
+msgstr "Проверен"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
 msgstr "Отчети"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
-msgid "All Statement"
+msgid "Statements"
 msgstr "Всички отчети"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
@@ -249,10 +251,6 @@ msgstr "Дневник за отчети"
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
 msgstr "Отчети"
-
-msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
-msgid "Validated Statement"
-msgstr "Проверен отчет"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
@@ -295,16 +293,8 @@ msgid "Statement Lines"
 msgstr "Редове от отчет"
 
 msgctxt "view:account.statement:"
-msgid "Amount"
-msgstr "Сума"
-
-msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "Отказ"
-
-msgctxt "view:account.statement:"
-msgid "Move Lines"
-msgstr "Редове от движение"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"

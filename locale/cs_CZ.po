@@ -3,29 +3,29 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.line:"
-msgid "Amount (%s) greater than the amount to pay of invoice!"
-msgstr ""
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value!"
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid ""
-"Credit or debit account on journal is the same than the statement line "
-"account!"
+"Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
+"one configured as credit or debit on journal \"%(journal)s\"."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
-msgid "Please provide debit and credit account on statement journal."
+msgid "Amount \"%s\" is greater than the amount to pay of invoice."
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid "Amount should be a positive or negative value."
+msgstr ""
+
+msgctxt "error:account.statement.line:"
+msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
-msgid "End Balance must be %s!"
+msgid "End Balance must be \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion!"
+msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "field:account.statement,balance:"
@@ -204,32 +204,31 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_draft_statement_form"
-msgid "Draft Statements"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_posted_statement_form"
-msgid "Posted Statements"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_statement_form"
-msgid "All Statement"
+msgid "Statements"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_validated_statement_form"
-msgid "Validated Statement"
+msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
+msgid "All"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_draft_statement_form"
-msgid "Draft Statements"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
+msgid "Draft"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_posted_statement_form"
-msgid "Posted Statements"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
+msgid "Validated"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
@@ -237,7 +236,7 @@ msgid "Statements"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
-msgid "All Statement"
+msgid "Statements"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
@@ -246,10 +245,6 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_validated_statement_form"
-msgid "Validated Statement"
 msgstr ""
 
 msgctxt "model:res.group,name:group_statement"
@@ -290,10 +285,6 @@ msgstr ""
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
-msgstr ""
-
-msgctxt "view:account.statement:"
-msgid "Amount"
 msgstr ""
 
 msgctxt "view:account.statement:"
