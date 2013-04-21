@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:company.employee_cost_price:"
-msgid "A employee can only have one cost price by date!"
+msgid "A employee can only have one cost price by date."
 msgstr ""
 
 msgctxt "field:company.employee,cost_price:"
