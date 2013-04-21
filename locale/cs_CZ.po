@@ -7,11 +7,9 @@ msgid "Hours field must be positive"
 msgstr ""
 
 msgctxt "error:timesheet.work:"
-msgid "Every work must be in the same company as it's parent work!"
-msgstr ""
-
-msgctxt "error:timesheet.work:"
-msgid "You can not create recursive works!"
+msgid ""
+"Every work must be in the same company as it's parent work but \"%(child)s\""
+" and \"%(parent)s\" are in different companies."
 msgstr ""
 
 msgctxt "field:timesheet.hours_employee,create_date:"
@@ -246,8 +244,16 @@ msgctxt "field:timesheet.work,timesheet_available:"
 msgid "Available on timesheets"
 msgstr ""
 
+msgctxt "field:timesheet.work,timesheet_end_date:"
+msgid "Timesheet End"
+msgstr ""
+
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
+msgstr ""
+
+msgctxt "field:timesheet.work,timesheet_start_date:"
+msgid "Timesheet Start"
 msgstr ""
 
 msgctxt "field:timesheet.work,write_date:"
@@ -299,6 +305,10 @@ msgid "Enter Timesheet"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_line_form"
+msgid "Timesheet Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
 msgstr ""
 

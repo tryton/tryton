@@ -250,6 +250,10 @@ msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Final de full de treball"
 
+msgctxt "field:timesheet.work,timesheet_lines:"
+msgid ""
+msgstr ""
+
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Començament de full de treball"

@@ -14,14 +14,6 @@ msgstr ""
 "Cada trabajo debe estar en la misma compañía que su trabajo padre pero "
 "\"%(child)s\" y \"%(parent)s\" están en diferentes compañias."
 
-msgctxt "error:timesheet.work:"
-msgid "Every work must be in the same company as it's parent work!"
-msgstr "Cada trabajo debe estar en la misma compañía que su trabajo padre!"
-
-msgctxt "error:timesheet.work:"
-msgid "You can not create recursive works!"
-msgstr "No puede crear trabajos recursivos!"
-
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
