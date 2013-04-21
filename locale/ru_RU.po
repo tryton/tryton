@@ -14,9 +14,10 @@ msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Стоимость"
 
 msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
