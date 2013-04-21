@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Anglo-Saxon quantity can not be greater than quantity!"
+msgid "Anglo-Saxon quantity can not be greater than quantity."
 msgstr "La cantidad anglo-sajona no puede ser mayor que la cantidad."
 
 msgctxt "field:product.category,account_cogs:"

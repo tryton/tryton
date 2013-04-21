@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "Anglo-Saxon quantity can not be greater than quantity!"
+msgid "Anglo-Saxon quantity can not be greater than quantity."
 msgstr ""
 
 msgctxt "field:product.category,account_cogs:"
@@ -26,9 +26,10 @@ msgctxt "field:stock.move,anglo_saxon_quantity:"
 msgid "Anglo-Saxon Quantity"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
-msgstr ""
+msgstr "Этот счет будет использован вместо указанного в категории."
 
 msgctxt "model:account.account.template,name:account_template_cogs"
 msgid "COGS"
