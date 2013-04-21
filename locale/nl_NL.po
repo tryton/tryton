@@ -3,32 +3,33 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.forecast.complete:"
-msgid "\"From Date\" should be smaller than \"To Date\"!"
+msgid "\"From Date\" should be smaller than \"To Date\"."
 msgstr ""
 
 msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be greater than the minimal quantity!"
+msgid "Line quantity must be greater than the minimal quantity"
 msgstr ""
 
 msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be positive!"
+msgid "Line quantity must be positive"
 msgstr ""
 
 msgctxt "error:stock.forecast.line:"
-msgid "Product must be unique by forcast!"
+msgid "Product must be unique by forecast"
 msgstr ""
 
 msgctxt "error:stock.forecast:"
-msgid "\"To Date\" must be greater than \"From Date\"!"
-msgstr ""
-
-msgctxt "error:stock.forecast:"
-msgid "Forecast \"%s\" must be cancelled before deletion!"
+msgid "\"To Date\" must be greater than \"From Date\""
 msgstr ""
 
 msgctxt "error:stock.forecast:"
 msgid ""
-"You can not create forecasts for the same locations with overlapping dates"
+"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
+" same location."
+msgstr ""
+
+msgctxt "error:stock.forecast:"
+msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr ""
 
 #, fuzzy
@@ -215,20 +216,22 @@ msgctxt "model:ir.action,name:act_forecast_form"
 msgid "Forecasts"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_forecast_form_draft"
-msgid "Draft Forecasts"
-msgstr ""
-
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_forecast_form"
-msgid "Forecasts"
+msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
+msgid "All"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_forecast_form_draft"
-msgid "Draft Forecasts"
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.ui.menu,name:menu_forecast_form"
+msgid "Forecasts"
 msgstr ""
 
 msgctxt "model:res.group,name:group_stock_forecast"

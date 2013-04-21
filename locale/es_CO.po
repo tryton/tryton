@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.forecast.complete:"
-msgid "\"From Date\" should be smaller than \"To Date\"!"
-msgstr "\"Desde la Fecha\" debería ser menor que \"A la Fecha\"!"
-
-msgctxt "error:stock.forecast.complete:"
 msgid "\"From Date\" should be smaller than \"To Date\"."
 msgstr "\"Desde la Fecha\" debería ser menor que \"A la Fecha\"!"
 
@@ -15,20 +11,8 @@ msgid "Line quantity must be greater than the minimal quantity"
 msgstr "La cantidad por línea debe ser mayor que la mínima cantidad!"
 
 msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be greater than the minimal quantity!"
-msgstr "La cantidad por línea debe ser mayor que la mínima cantidad!"
-
-msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be positive"
 msgstr "La cantidad en la línea debe ser positiva."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be positive!"
-msgstr "La cantidad en la línea debe ser positiva!"
-
-msgctxt "error:stock.forecast.line:"
-msgid "Product must be unique by forcast!"
-msgstr "¡El producto debe ser único por proyección!"
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forecast"
@@ -36,10 +20,6 @@ msgstr "¡El producto debe ser único por proyección!"
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "\"Hasta la Fecha\" debe ser mayor que \"Desde la Fecha\""
-
-msgctxt "error:stock.forecast:"
-msgid "\"To Date\" must be greater than \"From Date\"!"
 msgstr "\"Hasta la Fecha\" debe ser mayor que \"Desde la Fecha\""
 
 msgctxt "error:stock.forecast:"
@@ -51,18 +31,8 @@ msgstr ""
 "\"%(second)s\" en la misma bodega."
 
 msgctxt "error:stock.forecast:"
-msgid "Forecast \"%s\" must be cancelled before deletion!"
-msgstr "La proyección \"%s\" debe ser cancelada antes de su eliminación!"
-
-msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
 msgstr "La proyección \"%s\" debe ser cancelada antes de su eliminación."
-
-msgctxt "error:stock.forecast:"
-msgid ""
-"You can not create forecasts for the same locations with overlapping dates"
-msgstr ""
-"No puede crear proyecciones para la misma fechas con fechas sobrepuestas"
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
