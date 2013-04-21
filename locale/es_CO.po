@@ -6,10 +6,6 @@ msgctxt "error:product.price_list.line:"
 msgid "Invalid formula \"%(formula)s\" in price list line \"%(line)s\"."
 msgstr "Fómula inválida \"%(formula)s\" en línea de lista de precios \"%(line)s\"."
 
-msgctxt "error:product.price_list.line:"
-msgid "Invalid formula!"
-msgstr "Invalida formula!"
-
 msgctxt "field:product.price_list,company:"
 msgid "Company"
 msgstr "Compañía"
@@ -131,10 +127,6 @@ msgstr "Lineas de Lista de Precios"
 msgctxt "view:product.price_list:"
 msgid "Price List"
 msgstr "Lista de Precios"
-
-msgctxt "view:product.price_list:"
-msgid "Price List Lines"
-msgstr "Lineas de Lista de Precios"
 
 msgctxt "view:product.price_list:"
 msgid "Price Lists"
