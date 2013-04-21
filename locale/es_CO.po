@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
-msgid "There should be only one timesheet work by task/project!"
-msgstr "¡Solo debe haber un hoja de registro de tiempo por tarea/proyecto!"
-
-msgctxt "error:project.work:"
 msgid "There should be only one timesheet work by task/project."
 msgstr "Solo debería haber una hoja de registro de tiempo por tarea/proyecto."
 
@@ -211,32 +207,8 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:project.work:"
-msgid "Other Info"
-msgstr "Info Adicional"
-
-msgctxt "view:project.work:"
-msgid "Projects"
-msgstr "Proyectos"
-
-msgctxt "view:project.work:"
 msgid "Tasks"
 msgstr "Tareas"
-
-msgctxt "view:project.work:"
-msgid "Timesheet"
-msgstr "Registro de Tiempo"
-
-msgctxt "view:project.work:"
-msgid "Work"
-msgstr "Actividad"
-
-msgctxt "view:project.work:"
-msgid "Work Efforts"
-msgstr "Actividades"
-
-msgctxt "view:project.work:"
-msgid "Works"
-msgstr "Actividades"
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"
