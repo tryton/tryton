@@ -6,10 +6,6 @@ msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
 msgstr ""
 
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "Не може да създавате взаимно вложени зависимости!"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
@@ -98,8 +94,9 @@ msgctxt "field:project.work,allocations:"
 msgid "Allocations"
 msgstr "Разпределения"
 
+#, fuzzy
 msgctxt "field:project.work,back_leveling_delay:"
-msgid "Leveling Delay"
+msgid "Back Leveling Delay"
 msgstr "Изравняване на закъснение"
 
 msgctxt "field:project.work,constraint_finish_date:"

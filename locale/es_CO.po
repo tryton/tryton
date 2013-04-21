@@ -6,10 +6,6 @@ msgctxt "error:project.allocation:"
 msgid "Percentage must be greater than zero"
 msgstr "El porcentaje debe ser mayor que cero."
 
-msgctxt "error:project.work:"
-msgid "You can not create recursive dependencies!"
-msgstr "¡No puede crear dependencias recursivas!"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
