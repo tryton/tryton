@@ -3,179 +3,206 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not change the invoice sequence if there is already an invoice "
-"opened in the fiscalyear"
+msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
 msgstr ""
-"Не може а променяте последователност на фактура ако има вече отворена "
-"фактура за финансовата година"
 
 msgctxt "error:account.fiscalyear:"
-msgid "You must have different invoice sequences per fiscal year!"
+msgid ""
+"You can not change invoice sequence in fiscal year \"%s\" because there are "
+"already posted invoices in this fiscal year."
 msgstr ""
-"За финансова година трябва да имате различни последователности за фактура  "
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund an invoice that is not opened!"
-msgstr "Не можете да кредитиратe с обезщетение фактура която не е отворена!"
+msgid "You can not credit with refund a supplier invoice/credit note."
+msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund an invoice with payments!"
-msgstr "Не можете да кредитиратe с обезщетение фактура по която има плащане!"
-
-msgctxt "error:account.invoice.line:"
-msgid "Line with \"line\" type must have an account!"
-msgstr "Ред от вид \"line\" трябва да има сметка!"
-
-msgctxt "error:account.invoice.line:"
-msgid "Line without \"line\" type must have an invoice!"
-msgstr "Ред без \"ред\" трябва да има фактура!"
-
-msgctxt "error:account.invoice.line:"
-msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
-"Не може да добавяте ред към фактура която е отворена/платена/отказана!"
+
+msgctxt "error:account.invoice.credit:"
+msgid "You can not credit with refund invoice \"%s\" because it is not posted."
+msgstr ""
+
+msgctxt "error:account.invoice.line:"
+msgid "Line with \"line\" type must have an account."
+msgstr ""
+
+msgctxt "error:account.invoice.line:"
+msgid "Line without \"line\" type must have an invoice."
+msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid ""
-"You can not create invoice line\n"
-"with account with a different invoice company!"
+"You can not add a line to invoice \"%(invoice)s\" that is posted, paid or "
+"cancelled."
 msgstr ""
-"Не може да създавате ред от фактура\n"
-"със сметка от различна фактурираща фирма!"
-
-msgctxt "error:account.invoice.line:"
-msgid "You can not modify line from an invoice that is opened, paid!"
-msgstr "Не може да променяте ред от фактура която е отворена и/или платена!"
 
 msgctxt "error:account.invoice.line:"
 msgid ""
-"You can not use the same account\n"
-"as on the invoice!"
+"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s of "
+"company \"%(invoice_line_company)s because account \"%(account)s has company"
+" \"%(account_company)s\"."
 msgstr ""
-"Не може да използвате същата сметка\n"
-"като тази на фактурата!"
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
+"because the invoice uses the same account (%(account)s)."
+msgstr ""
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not modify line \"%(line)s\" from invoice \"%(invoice)s\" that is "
+"posted or paid."
+msgstr ""
 
 msgctxt "error:account.invoice.pay:"
 msgid ""
-"You can not create a partial payment with an amount greater then the amount "
-"to pay!"
+"On invoice \"%s\" you can not create a partial payment with an amount "
+"greater than the amount to pay."
 msgstr ""
-"Не може да създавате частично плащане за сума по-голяма от сумата за "
-"плащане!"
 
 msgctxt "error:account.invoice.payment_term.line:"
 msgid "Day of month must be between 1 and 31."
 msgstr "Деня от месеца трябва да бъде между 1 и 31."
 
 msgctxt "error:account.invoice.payment_term.line:"
-msgid "Percentage and Divisor values are not consistent."
-msgstr "Процент и Делител не съотвестват"
+msgid ""
+"Percentage and Divisor values are not consistent in line \"%(line)s\" of "
+"payment term \"%(term)s\"."
+msgstr ""
 
 msgctxt "error:account.invoice.payment_term:"
-msgid "Invalid payment term line!"
-msgstr "Невалиден ред от условие за плащане!"
+msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
+msgstr ""
 
 msgctxt "error:account.invoice.payment_term:"
-msgid "Payment term missing a remainder line!"
-msgstr "В условието за плащане липсва ред от напомняне!"
+msgid "Missing remainder line in payment term \"%s\"."
+msgstr ""
 
 msgctxt "error:account.invoice.tax:"
-msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgid ""
+"You can not add line \"%(line)s\" to invoice \"%(invoice)s\" because it is "
+"posted, paid or canceled."
 msgstr ""
-"Не може да добавяте ред към фактура която е отворена/платена/отказана!"
 
 msgctxt "error:account.invoice.tax:"
-msgid "You can not modify tax from an invoice that is opened, paid!"
-msgstr "Не може да променяте данък от фактура която е отворена и/или платена!"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using account \"%(account)s\" from company "
+"\"%(account_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
+"\"%(base_code_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
+"\"%(tax_code_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
+"is posted or paid."
+msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"Base taxes different from invoice lines!\n"
+"Invoice \"%(invoice)s\" uses the same account \"%(account)s\" for the "
+"invoice and in line \"%(line)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Invoice \"%s\" has taxes defined but not on invoice lines.\n"
 "Re-compute the invoice."
 msgstr ""
-"Данъчната основа е различна от тази на редовете на фактурата!\n"
-"Наново изчислете фактурата."
-
-msgctxt "error:account.invoice:"
-msgid "Invoice \"%s\" must be cancelled before deletion!"
-msgstr "Преди да бъде изтрита фактура \"%s\" трябва да бъде прекратена!"
 
 msgctxt "error:account.invoice:"
 msgid ""
-"Taxes defined but not on invoice lines!\n"
+"Invoice \"%s\" has taxes on invoice lines that are not in the invoice.\n"
 "Re-compute the invoice."
 msgstr ""
-"Зададени са данъци но не за редове на фактура!\n"
-"Преизчислете фактурата."
+
+msgctxt "error:account.invoice:"
+msgid "Invoice \"%s\" must be cancelled before deletion."
+msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"Taxes defined on invoice lines but not on invoice!\n"
+"Invoice \"%s\" tax bases are different from invoice lines.\n"
 "Re-compute the invoice."
 msgstr ""
-"Данъци са зададени върху редовете на фактурата но не на фактурата!\n"
-"Преизчислете фактурата"
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal is missing!"
-msgstr "Лиспва кредитна сметка за дневника!"
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal is the same than the invoice account!"
-msgstr "Кредитната сметка на дневника е същата като сметката на фактурата!"
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal is missing!"
-msgstr "Липсва дебитна сметка за дневник!"
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal is the same than the invoice account!"
-msgstr "Дебитната сметка на дневника е същата като сметката на фактурата!"
-
-msgctxt "error:account.invoice:"
-msgid "There is no invoice sequence on the period/fiscal year!"
-msgstr "Няма последователност за фактура върху период/финансова година!"
 
 msgctxt "error:account.invoice:"
 msgid ""
-"You can not create an invoice\n"
-"with account from a different invoice company!"
+"The credit account on journal \"%(journal)s\" is the same as invoice "
+"\"%(invoice)s\"'s account."
 msgstr ""
-"Не може да създадете фактура\n"
-"със сметка на друга фактурираща фирма!"
 
 msgctxt "error:account.invoice:"
-msgid "You can not modify an invoice that is opened, paid!"
-msgstr "Не може да променяте фактура която е отворена или платена!"
-
-msgctxt "error:account.invoice:"
-msgid "You can not reset to draft an invoice that has move!"
-msgstr "Не може да прехвърлите в проект фактура която има движение!"
+msgid "The credit account on journal %s\" is missing."
+msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"You can not use the same account\n"
-"as on invoice line!"
+"The debit account on journal \"%(journal)s\" is the same as invoice "
+"\"%(invoice)s\"'s account."
 msgstr ""
-"Не може да ползвате съшата сметка\n"
-"като тази на реда от фактурата!"
+
+msgctxt "error:account.invoice:"
+msgid "The debit account on journal \"%s\" is missing."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid "The numbered invoice \"%s\" can not be deleted."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"The period of Invoice \"%s\" is closed.\n"
+"Use the today for cancel move?"
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"There is no invoice sequence for invoice \"%(invoice)s\" on the "
+"period/fiscal year \"%(period)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company \"%(invoice_company)s "
+"because account \"%(account)s has a different company (%(account_company)s.)"
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "Period \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
+msgstr ""
 
 msgctxt "error:account.period:"
 msgid ""
-"You can not change the invoice sequence if there is already an invoice "
-"opened in the period"
+"Period \"%(period)s\" must have the same company as its fiscal year "
+"(%(fiscalyear)s)."
 msgstr ""
-"Не може а променяте последователност на фактура ако има вече отворена "
-"фактура за финансовата година"
 
 msgctxt "error:account.period:"
 msgid ""
-"You must have different invoice sequences per fiscal year and in the same "
-"company!"
+"You can not change the invoice sequence in period \"%s\" because there is "
+"already an invoice posted in this period"
 msgstr ""
-"За финансова година и една и съща фирма трябва да имате различни "
-"последователности за фактура !"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -208,6 +235,10 @@ msgstr "Сума за плащане"
 msgctxt "field:account.invoice,amount_to_pay_today:"
 msgid "Amount to Pay Today"
 msgstr "Сума за плащане днес"
+
+msgctxt "field:account.invoice,cancel_move:"
+msgid "Cancel Move"
+msgstr ""
 
 msgctxt "field:account.invoice,comment:"
 msgid "Comment"
@@ -436,6 +467,11 @@ msgstr "Вид фактура"
 msgctxt "field:account.invoice.line,note:"
 msgid "Note"
 msgstr "Бележка"
+
+#, fuzzy
+msgctxt "field:account.invoice.line,origin:"
+msgid "Origin"
+msgstr "Източник"
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
@@ -893,8 +929,9 @@ msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Данък към фактура"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
-msgid "All Invoices"
+msgid "Invoices"
 msgstr "Всичко фактури"
 
 msgctxt "model:ir.action,name:act_invoice_form2"
@@ -905,65 +942,17 @@ msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
 msgid "Supplier Credit Notes"
 msgstr "Кредитно известие на доставчик"
 
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
-msgid "Draft Supplier Credit Notes"
-msgstr "Проект на кредитно известие на доставчик"
-
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
-msgid "Pro Forma Supplier Credit Notes"
-msgstr "ПРО-ФОРМА на кредитни известия на доставчик"
-
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
-msgid "Opened Supplier Credit Notes"
-msgstr "Отворени кредитни известия на доставчик"
-
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
 msgid "Supplier Invoices"
 msgstr "Фактури на доставчик"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
-msgid "Draft Supplier Invoices"
-msgstr "Шаблон на фактури за доставчик"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
-msgid "Pro Forma Supplier Invoices"
-msgstr "ПРО-ФОРМА фактури за доставчик"
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
-msgid "Opened Supplier Invoices"
-msgstr "Отворени фактури за доставчик"
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
 msgid "Credit Notes"
 msgstr "Кредитни известия"
 
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form3"
-msgid "Draft Credit Notes"
-msgstr "Проект на кредитно известие"
-
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
-msgid "Pro Forma Credit Notes"
-msgstr "ПРО-ФОРМА на кредитни известия"
-
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
-msgid "Opened Credit Notes"
-msgstr "Отворени кредитни известия"
-
 msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
 msgid "Invoices"
 msgstr "Фактури"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form3"
-msgid "Draft Invoices"
-msgstr "Проект на фактури"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
-msgid "Pro Forma Invoices"
-msgstr "ПРО-ФОРМА фактури"
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
-msgid "Opened Invoices"
-msgstr "Отворени фактури"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -985,77 +974,117 @@ msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr "Плащане на фактура"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_posted"
+msgid "Posted"
+msgstr "Публикуван"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_validated"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_posted"
+msgid "Posted"
+msgstr "Публикуван"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_validated"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_posted"
+msgid "Posted"
+msgstr "Публикуван"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_validated"
+msgid "Validated"
+msgstr "Проверен"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_draft"
+msgid "Draft"
+msgstr "Проект"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_posted"
+msgid "Posted"
+msgstr "Публикуван"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_validated"
+msgid "Validated"
+msgstr "Проверен"
+
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Фактура"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_form"
-msgid "All Invoices"
-msgstr "Всичко фактури"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
 msgid "Supplier Credit Notes"
 msgstr "Кредитно известие на доставчик"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
-msgid "Draft Supplier Credit Notes"
-msgstr "Проект на кредитно известие на доставчик"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
-msgid "Pro Forma Supplier Credit Notes"
-msgstr "ПРО-ФОРМА на кредитни известия на доставчик"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
-msgid "Opened Supplier Credit Notes"
-msgstr "Отворени кредитни известия на доставчик"
-
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
 msgid "Supplier Invoices"
 msgstr "Фактури на доставчик"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
-msgid "Draft Supplier Invoices"
-msgstr "Проект на фактури за доставчик"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
-msgid "Pro Forma Supplier Invoices"
-msgstr "ПРО-ФОРМА фактури за доставчик"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
-msgid "Opened Supplier Invoices"
-msgstr "Отворени фактури за доставчик"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
 msgid "Credit Notes"
 msgstr "Кредитни известия"
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
-msgid "Draft Credit Notes"
-msgstr "Проект на кредитно известие"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
-msgid "Pro Forma Credit Notes"
-msgstr "ПРО-ФОРМА на кредитни известия"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
-msgid "Opened Credit Notes"
-msgstr "Отворени кредитни известия"
-
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
 msgid "Invoices"
 msgstr "Фактури"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
-msgid "Draft Invoices"
-msgstr "Проект на фактури"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
-msgid "Pro Forma Invoices"
-msgstr "ПРО-ФОРМА фактури"
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
-msgid "Opened Invoices"
-msgstr "Отворени фактури"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
@@ -1138,14 +1167,6 @@ msgid "Pro forma Invoice"
 msgstr "ПРО-ФОРМА фактура"
 
 msgctxt "odt:account.invoice:"
-msgid "Pro forma Supplier Credit Note"
-msgstr "ПРО-ФОРМА на кредитно известие на доставчик"
-
-msgctxt "odt:account.invoice:"
-msgid "Pro forma Supplier Invoice"
-msgstr "ПРО-ФОРМА фактура за доставчик"
-
-msgctxt "odt:account.invoice:"
 msgid "Quantity"
 msgstr "Количество"
 
@@ -1189,6 +1210,14 @@ msgctxt "odt:account.invoice:"
 msgid "VAT:"
 msgstr "ДДС:"
 
+msgctxt "odt:account.invoice:"
+msgid "Validated Supplier Credit Note"
+msgstr ""
+
+msgctxt "odt:account.invoice:"
+msgid "Validated Supplier Invoice"
+msgstr ""
+
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Отказан"
@@ -1198,16 +1227,18 @@ msgid "Draft"
 msgstr "Проект"
 
 msgctxt "selection:account.invoice,state:"
-msgid "Opened"
-msgstr "Отворен"
-
-msgctxt "selection:account.invoice,state:"
 msgid "Paid"
 msgstr "Платен"
 
+#, fuzzy
 msgctxt "selection:account.invoice,state:"
-msgid "Pro forma"
-msgstr "ПРО-ФОРМА"
+msgid "Posted"
+msgstr "Публикуван"
+
+#, fuzzy
+msgctxt "selection:account.invoice,state:"
+msgid "Validated"
+msgstr "Проверен"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Credit Note"
@@ -1389,10 +1420,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Бележки"
 
-msgctxt "view:account.invoice.line:"
-msgid "Products"
-msgstr "Продукти"
-
 msgctxt "view:account.invoice.pay.ask:"
 msgid "Pay Invoice"
 msgstr "Плащане на фактура"
@@ -1412,14 +1439,6 @@ msgstr "Ред от условие за плащане"
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
 msgstr "Условие за плащане"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term Line"
-msgstr "Ред от условие за плащане"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term Lines"
-msgstr "Ред от условие за плащане"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Terms"
@@ -1454,16 +1473,12 @@ msgid "Taxes"
 msgstr "Данъци"
 
 msgctxt "view:account.invoice:"
-msgid "Amount Second Currency"
-msgstr "Сума в допълнителна валута"
+msgid "Also known as Pro Forma"
+msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "Credit"
-msgstr "Кредит"
-
-msgctxt "view:account.invoice:"
-msgid "Debit"
-msgstr "Дебит"
+msgid "Are you sure to cancel the invoice?"
+msgstr ""
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
@@ -1474,10 +1489,6 @@ msgid "Invoices"
 msgstr "Фактури"
 
 msgctxt "view:account.invoice:"
-msgid "Lines"
-msgstr "Редове"
-
-msgctxt "view:account.invoice:"
 msgid "Other Info"
 msgstr "Друга информация"
 
@@ -1485,17 +1496,10 @@ msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Плащане"
 
+#, fuzzy
 msgctxt "view:account.invoice:"
-msgid "Payment Lines"
-msgstr "Редове от плащане"
-
-msgctxt "view:account.invoice:"
-msgid "Pro For_ma"
-msgstr "ПРО ФОРМА"
-
-msgctxt "view:account.invoice:"
-msgid "Taxes"
-msgstr "Данъци"
+msgid "Validate"
+msgstr "Проверка"
 
 msgctxt "view:account.invoice:"
 msgid "_Cancel"
@@ -1506,16 +1510,12 @@ msgid "_Draft"
 msgstr "Проект"
 
 msgctxt "view:account.invoice:"
-msgid "_Open"
-msgstr "Отваряне"
-
-msgctxt "view:account.invoice:"
 msgid "_Pay"
 msgstr "Плащане"
 
 msgctxt "view:account.invoice:"
-msgid "_Reset to Draft"
-msgstr "Изпращане в проект"
+msgid "_Post"
+msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

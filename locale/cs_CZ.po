@@ -3,55 +3,64 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not change the invoice sequence if there is already an invoice "
-"opened in the fiscalyear"
+msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
 msgstr ""
 
 msgctxt "error:account.fiscalyear:"
-msgid "You must have different invoice sequences per fiscal year!"
+msgid ""
+"You can not change invoice sequence in fiscal year \"%s\" because there are "
+"already posted invoices in this fiscal year."
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund an invoice that is not opened!"
+msgid "You can not credit with refund a supplier invoice/credit note."
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund an invoice with payments!"
+msgid "You can not credit with refund invoice \"%s\" because it has payments."
+msgstr ""
+
+msgctxt "error:account.invoice.credit:"
+msgid "You can not credit with refund invoice \"%s\" because it is not posted."
 msgstr ""
 
 msgctxt "error:account.invoice.line:"
-msgid "Line with \"line\" type must have an account!"
+msgid "Line with \"line\" type must have an account."
 msgstr ""
 
 msgctxt "error:account.invoice.line:"
-msgid "Line without \"line\" type must have an invoice!"
-msgstr ""
-
-msgctxt "error:account.invoice.line:"
-msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgid "Line without \"line\" type must have an invoice."
 msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid ""
-"You can not create invoice line\n"
-"with account with a different invoice company!"
-msgstr ""
-
-msgctxt "error:account.invoice.line:"
-msgid "You can not modify line from an invoice that is opened, paid!"
+"You can not add a line to invoice \"%(invoice)s\" that is posted, paid or "
+"cancelled."
 msgstr ""
 
 msgctxt "error:account.invoice.line:"
 msgid ""
-"You can not use the same account\n"
-"as on the invoice!"
+"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s of "
+"company \"%(invoice_line_company)s because account \"%(account)s has company"
+" \"%(account_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
+"because the invoice uses the same account (%(account)s)."
+msgstr ""
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"You can not modify line \"%(line)s\" from invoice \"%(invoice)s\" that is "
+"posted or paid."
 msgstr ""
 
 msgctxt "error:account.invoice.pay:"
 msgid ""
-"You can not create a partial payment with an amount greater then the amount "
-"to pay!"
+"On invoice \"%s\" you can not create a partial payment with an amount "
+"greater than the amount to pay."
 msgstr ""
 
 msgctxt "error:account.invoice.payment_term.line:"
@@ -59,97 +68,140 @@ msgid "Day of month must be between 1 and 31."
 msgstr ""
 
 msgctxt "error:account.invoice.payment_term.line:"
-msgid "Percentage and Divisor values are not consistent."
+msgid ""
+"Percentage and Divisor values are not consistent in line \"%(line)s\" of "
+"payment term \"%(term)s\"."
 msgstr ""
 
 msgctxt "error:account.invoice.payment_term:"
-msgid "Invalid payment term line!"
+msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
 msgstr ""
 
 msgctxt "error:account.invoice.payment_term:"
-msgid "Payment term missing a remainder line!"
+msgid "Missing remainder line in payment term \"%s\"."
 msgstr ""
 
 msgctxt "error:account.invoice.tax:"
-msgid "You can not add a line to an invoice that is open, paid or canceled!"
+msgid ""
+"You can not add line \"%(line)s\" to invoice \"%(invoice)s\" because it is "
+"posted, paid or canceled."
 msgstr ""
 
 msgctxt "error:account.invoice.tax:"
-msgid "You can not modify tax from an invoice that is opened, paid!"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using account \"%(account)s\" from company "
+"\"%(account_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
+"\"%(base_code_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
+"\"%(tax_code_company)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
+"is posted or paid."
 msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"Base taxes different from invoice lines!\n"
+"Invoice \"%(invoice)s\" uses the same account \"%(account)s\" for the "
+"invoice and in line \"%(line)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"Invoice \"%s\" has taxes defined but not on invoice lines.\n"
 "Re-compute the invoice."
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid "Invoice \"%s\" must be cancelled before deletion!"
+msgid ""
+"Invoice \"%s\" has taxes on invoice lines that are not in the invoice.\n"
+"Re-compute the invoice."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid "Invoice \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"Taxes defined but not on invoice lines!\n"
+"Invoice \"%s\" tax bases are different from invoice lines.\n"
 "Re-compute the invoice."
 msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"Taxes defined on invoice lines but not on invoice!\n"
-"Re-compute the invoice."
+"The credit account on journal \"%(journal)s\" is the same as invoice "
+"\"%(invoice)s\"'s account."
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid "The credit account on journal is missing!"
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal is the same than the invoice account!"
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal is missing!"
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal is the same than the invoice account!"
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "There is no invoice sequence on the period/fiscal year!"
+msgid "The credit account on journal %s\" is missing."
 msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"You can not create an invoice\n"
-"with account from a different invoice company!"
+"The debit account on journal \"%(journal)s\" is the same as invoice "
+"\"%(invoice)s\"'s account."
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid "You can not modify an invoice that is opened, paid!"
+msgid "The debit account on journal \"%s\" is missing."
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid "You can not reset to draft an invoice that has move!"
+msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"You can not use the same account\n"
-"as on invoice line!"
+"The period of Invoice \"%s\" is closed.\n"
+"Use the today for cancel move?"
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"There is no invoice sequence for invoice \"%(invoice)s\" on the "
+"period/fiscal year \"%(period)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company \"%(invoice_company)s "
+"because account \"%(account)s has a different company (%(account_company)s.)"
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
+msgstr ""
+
+msgctxt "error:account.period:"
+msgid "Period \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
 msgstr ""
 
 msgctxt "error:account.period:"
 msgid ""
-"You can not change the invoice sequence if there is already an invoice "
-"opened in the period"
+"Period \"%(period)s\" must have the same company as its fiscal year "
+"(%(fiscalyear)s)."
 msgstr ""
 
 msgctxt "error:account.period:"
 msgid ""
-"You must have different invoice sequences per fiscal year and in the same "
-"company!"
+"You can not change the invoice sequence in period \"%s\" because there is "
+"already an invoice posted in this period"
 msgstr ""
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
@@ -182,6 +234,10 @@ msgstr ""
 
 msgctxt "field:account.invoice,amount_to_pay_today:"
 msgid "Amount to Pay Today"
+msgstr ""
+
+msgctxt "field:account.invoice,cancel_move:"
+msgid "Cancel Move"
 msgstr ""
 
 msgctxt "field:account.invoice,comment:"
@@ -410,6 +466,10 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,note:"
 msgid "Note"
+msgstr ""
+
+msgctxt "field:account.invoice.line,origin:"
+msgid "Origin"
 msgstr ""
 
 msgctxt "field:account.invoice.line,party:"
@@ -869,7 +929,7 @@ msgid "Invoice Tax"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
-msgid "All Invoices"
+msgid "Invoices"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form2"
@@ -880,64 +940,16 @@ msgctxt "model:ir.action,name:act_invoice_in_credit_note_form"
 msgid "Supplier Credit Notes"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form3"
-msgid "Draft Supplier Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form4"
-msgid "Pro Forma Supplier Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_in_credit_note_form5"
-msgid "Opened Supplier Credit Notes"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_invoice_in_invoice_form"
 msgid "Supplier Invoices"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form3"
-msgid "Draft Supplier Invoices"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form4"
-msgid "Pro Forma Supplier Invoices"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_in_invoice_form5"
-msgid "Opened Supplier Invoices"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_out_credit_note_form"
 msgid "Credit Notes"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form3"
-msgid "Draft Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form4"
-msgid "Pro Forma Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_out_credit_note_form5"
-msgid "Opened Credit Notes"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_invoice_out_invoice_form"
 msgid "Invoices"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form3"
-msgid "Draft Invoices"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form4"
-msgid "Pro Forma Invoices"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_invoice_out_invoice_form5"
-msgid "Opened Invoices"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_term_form"
@@ -960,76 +972,104 @@ msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr ""
 
-msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
-msgid "Invoice"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
+msgid "All"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_form"
-msgid "All Invoices"
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_in_invoice_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_credit_note_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_posted"
+msgid "Posted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_invoice_out_invoice_domain_validated"
+msgid "Validated"
+msgstr ""
+
+msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
+msgid "Invoice"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form"
 msgid "Supplier Credit Notes"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form3"
-msgid "Draft Supplier Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form4"
-msgid "Pro Forma Supplier Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_credit_note_form5"
-msgid "Opened Supplier Credit Notes"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form"
 msgid "Supplier Invoices"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form3"
-msgid "Draft Supplier Invoices"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form4"
-msgid "Pro Forma Supplier Invoices"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_in_invoice_form5"
-msgid "Opened Supplier Invoices"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form"
 msgid "Credit Notes"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form3"
-msgid "Draft Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form4"
-msgid "Pro Forma Credit Notes"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_credit_note_form5"
-msgid "Opened Credit Notes"
-msgstr ""
-
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form"
 msgid "Invoices"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form3"
-msgid "Draft Invoices"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form4"
-msgid "Pro Forma Invoices"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_invoice_out_invoice_form5"
-msgid "Opened Invoices"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
@@ -1113,14 +1153,6 @@ msgid "Pro forma Invoice"
 msgstr ""
 
 msgctxt "odt:account.invoice:"
-msgid "Pro forma Supplier Credit Note"
-msgstr ""
-
-msgctxt "odt:account.invoice:"
-msgid "Pro forma Supplier Invoice"
-msgstr ""
-
-msgctxt "odt:account.invoice:"
 msgid "Quantity"
 msgstr ""
 
@@ -1164,6 +1196,14 @@ msgctxt "odt:account.invoice:"
 msgid "VAT:"
 msgstr ""
 
+msgctxt "odt:account.invoice:"
+msgid "Validated Supplier Credit Note"
+msgstr ""
+
+msgctxt "odt:account.invoice:"
+msgid "Validated Supplier Invoice"
+msgstr ""
+
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr ""
@@ -1173,15 +1213,15 @@ msgid "Draft"
 msgstr ""
 
 msgctxt "selection:account.invoice,state:"
-msgid "Opened"
-msgstr ""
-
-msgctxt "selection:account.invoice,state:"
 msgid "Paid"
 msgstr ""
 
 msgctxt "selection:account.invoice,state:"
-msgid "Pro forma"
+msgid "Posted"
+msgstr ""
+
+msgctxt "selection:account.invoice,state:"
+msgid "Validated"
 msgstr ""
 
 msgctxt "selection:account.invoice,type:"
@@ -1364,10 +1404,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr ""
 
-msgctxt "view:account.invoice.line:"
-msgid "Products"
-msgstr ""
-
 msgctxt "view:account.invoice.pay.ask:"
 msgid "Pay Invoice"
 msgstr ""
@@ -1386,14 +1422,6 @@ msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term Line"
-msgstr ""
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term Lines"
 msgstr ""
 
 msgctxt "view:account.invoice.payment_term:"
@@ -1429,15 +1457,11 @@ msgid "Taxes"
 msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "Amount Second Currency"
+msgid "Also known as Pro Forma"
 msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "Credit"
-msgstr ""
-
-msgctxt "view:account.invoice:"
-msgid "Debit"
+msgid "Are you sure to cancel the invoice?"
 msgstr ""
 
 msgctxt "view:account.invoice:"
@@ -1449,10 +1473,6 @@ msgid "Invoices"
 msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "Lines"
-msgstr ""
-
-msgctxt "view:account.invoice:"
 msgid "Other Info"
 msgstr ""
 
@@ -1461,15 +1481,7 @@ msgid "Payment"
 msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "Payment Lines"
-msgstr ""
-
-msgctxt "view:account.invoice:"
-msgid "Pro For_ma"
-msgstr ""
-
-msgctxt "view:account.invoice:"
-msgid "Taxes"
+msgid "Validate"
 msgstr ""
 
 msgctxt "view:account.invoice:"
@@ -1481,15 +1493,11 @@ msgid "_Draft"
 msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "_Open"
-msgstr ""
-
-msgctxt "view:account.invoice:"
 msgid "_Pay"
 msgstr ""
 
 msgctxt "view:account.invoice:"
-msgid "_Reset to Draft"
+msgid "_Post"
 msgstr ""
 
 msgctxt "view:account.move.line:"
