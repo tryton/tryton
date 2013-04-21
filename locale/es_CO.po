@@ -2,33 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic_account.account:"
-msgid "You can not create recursive accounts!"
-msgstr "¡No puede crear cuentas recursivas!"
-
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Expense\" on product \"%s\"!"
-msgstr "Falta una propiedad por defecto \"Account Expense\"!"
-
-msgctxt "error:purchase.line:"
-msgid "The supplier location is required!"
-msgstr "Se requiere la locación del proveedor!"
-
-msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required on line \"%s\" (%d)!"
-msgstr "Se requiere una cuenta analítica en la línea \"%s\" (%d)!"
-
 msgctxt "error:purchase.purchase:"
 msgid "Analytic account is required on line \"%s\"."
 msgstr ""
-
-msgctxt "error:purchase.purchase:"
-msgid "Invoice addresses must be defined for the quotation."
-msgstr "Factura direccionada debe ser definida por el presupuesto."
-
-msgctxt "error:purchase.purchase:"
-msgid "It misses an \"Account Payable\" on the party \"%s\"!"
-msgstr "Falta una \"Cuenta por Pagar\" en el tercero \"%s\"!"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
