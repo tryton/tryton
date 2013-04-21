@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
-msgid "FIFO quantity can not be greater than quantity!"
+msgid "FIFO quantity can not be greater than quantity."
 msgstr ""
 
 msgctxt "error:stock.move:"
-msgid "You can not delete move that is used for FIFO cost price!"
+msgid "You can not delete move \"%s\" that is used for FIFO cost price."
 msgstr ""
 
 msgctxt "field:stock.move,fifo_quantity:"
