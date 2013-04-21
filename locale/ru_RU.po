@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
-msgid "It misses an \"Account Revenue\" on product \"%s\"!"
+msgid "Missing \"Account Revenue\" on product \"%s\"."
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_carrier:"
@@ -30,9 +30,10 @@ msgctxt "field:stock.shipment.out,carrier:"
 msgid "Carrier"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Стоимость"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"

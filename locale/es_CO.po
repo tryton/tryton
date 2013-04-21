@@ -3,8 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
-msgid "It misses an \"Account Revenue\" on product \"%s\"!"
-msgstr "Falta una \"Cuenta de Ingresos\" para el producto \"%s\"!"
+msgid "Missing \"Account Revenue\" on product \"%s\"."
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_carrier:"
 msgid "Carrier"
