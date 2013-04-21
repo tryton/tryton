@@ -296,8 +296,9 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
-msgid "Productos"
+msgid "Variants"
 msgstr "Productes"
 
 msgctxt "model:ir.action,name:act_template_by_category"
@@ -328,8 +329,9 @@ msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Producte"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
-msgid "Products"
+msgid "Variants"
 msgstr "Variants"
 
 msgctxt "model:ir.ui.menu,name:menu_template"

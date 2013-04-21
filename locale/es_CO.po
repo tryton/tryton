@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "You can not create recursive categories!"
-msgstr "¡No puede crear categorías recursivas!"
-
 msgctxt "error:product.uom:"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
@@ -17,10 +13,6 @@ msgstr ""
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
 msgstr "Valores inválidos en factor y tasa de conversión en UdM \"%s\"."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values!"
-msgstr "¡Factor y valores de tasa de cambio inválidas!"
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
@@ -144,10 +136,6 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Método de Costo"
 
-msgctxt "field:product.template,cost_price_uom:"
-msgid "Cost Price"
-msgstr "Precio de Costo"
-
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
@@ -169,10 +157,6 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
-msgid "List Price"
-msgstr "Precio de Lista"
-
-msgctxt "field:product.template,list_price_uom:"
 msgid "List Price"
 msgstr "Precio de Lista"
 
@@ -709,16 +693,8 @@ msgid "Product Category"
 msgstr "Categoría de Producto"
 
 msgctxt "view:product.product:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:product.product:"
 msgid "Product"
 msgstr "Producto"
-
-msgctxt "view:product.product:"
-msgid "Product Suppliers"
-msgstr "Proveedores del Producto"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -728,13 +704,15 @@ msgctxt "view:product.template:"
 msgid "General"
 msgstr "General"
 
+#, fuzzy
 msgctxt "view:product.template:"
-msgid "Product Template"
-msgstr "Plantilla de Producto"
+msgid "Product"
+msgstr "Productos"
 
+#, fuzzy
 msgctxt "view:product.template:"
-msgid "Product Templates"
-msgstr "Plantillas de Producto"
+msgid "Products"
+msgstr "Productos"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"

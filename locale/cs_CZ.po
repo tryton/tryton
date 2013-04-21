@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "You can not create recursive categories!"
-msgstr ""
-
 msgctxt "error:product.uom:"
 msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
@@ -13,7 +9,7 @@ msgid ""
 msgstr ""
 
 msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values!"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
 msgstr ""
 
 msgctxt "error:product.uom:"
@@ -60,8 +56,16 @@ msgctxt "field:product.category,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr ""
+
 msgctxt "field:product.product,code:"
 msgid "Code"
+msgstr ""
+
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
 msgstr ""
 
 msgctxt "field:product.product,create_date:"
@@ -72,6 +76,10 @@ msgctxt "field:product.product,create_uid:"
 msgid "Create User"
 msgstr ""
 
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr ""
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr ""
@@ -80,12 +88,20 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr ""
 
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr ""
+
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
 msgstr ""
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
+msgstr ""
+
+msgctxt "field:product.product,type:"
+msgid "Type"
 msgstr ""
 
 msgctxt "field:product.product,write_date:"
@@ -116,10 +132,6 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr ""
 
-msgctxt "field:product.template,cost_price_uom:"
-msgid "Cost Price"
-msgstr ""
-
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -144,16 +156,12 @@ msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr ""
 
-msgctxt "field:product.template,list_price_uom:"
-msgid "List Price"
-msgstr ""
-
 msgctxt "field:product.template,name:"
 msgid "Name"
 msgstr ""
 
 msgctxt "field:product.template,products:"
-msgid "Products"
+msgid "Variants"
 msgstr ""
 
 msgctxt "field:product.template,rec_name:"
@@ -280,11 +288,15 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_product_by_category"
+msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_product_form"
+msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr ""
 
@@ -308,7 +320,11 @@ msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_product_product"
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
 msgstr ""
 
@@ -325,7 +341,7 @@ msgid "Product Category"
 msgstr ""
 
 msgctxt "model:product.product,name:"
-msgid "Product"
+msgid "Product Variant"
 msgstr ""
 
 msgctxt "model:product.template,name:"
@@ -624,6 +640,18 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr ""
 
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr ""
+
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr ""
+
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
 msgstr ""
@@ -657,6 +685,10 @@ msgid "Product Category"
 msgstr ""
 
 msgctxt "view:product.product:"
+msgid "Product"
+msgstr ""
+
+msgctxt "view:product.product:"
 msgid "Products"
 msgstr ""
 
@@ -665,11 +697,11 @@ msgid "General"
 msgstr ""
 
 msgctxt "view:product.template:"
-msgid "Product Template"
+msgid "Product"
 msgstr ""
 
 msgctxt "view:product.template:"
-msgid "Product Templates"
+msgid "Products"
 msgstr ""
 
 msgctxt "view:product.uom.category:"

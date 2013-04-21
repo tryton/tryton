@@ -2,11 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgctxt "error:product.category:"
-msgid "You can not create recursive categories!"
-msgstr "U kunt geen recursieve categorieën aanmaken!"
-
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
@@ -21,8 +16,8 @@ msgstr ""
 "je hem deactiveren en een nieuwe aanmaken."
 
 msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values!"
-msgstr "Ongeldige factor en verhouding waarden"
+msgid "Invalid Factor and Rate values in UOM \"%s\"."
+msgstr ""
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
@@ -109,9 +104,19 @@ msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Belasting"
 
+#, fuzzy
+msgctxt "field:product.product,active:"
+msgid "Active"
+msgstr "Actief"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Code"
+
+#, fuzzy
+msgctxt "field:product.product,cost_price_uom:"
+msgid "Cost Price"
+msgstr "Kostprijs"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -121,6 +126,11 @@ msgctxt "field:product.product,create_uid:"
 msgid "Create User"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.product,default_uom:"
+msgid "Default UOM"
+msgstr "Standaard ME"
+
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -129,6 +139,11 @@ msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.product,list_price_uom:"
+msgid "List Price"
+msgstr "Catalogusprijs"
+
 msgctxt "field:product.product,rec_name:"
 msgid "Name"
 msgstr "Naam"
@@ -136,6 +151,11 @@ msgstr "Naam"
 msgctxt "field:product.product,template:"
 msgid "Product Template"
 msgstr "Productsjabloon"
+
+#, fuzzy
+msgctxt "field:product.product,type:"
+msgid "Type"
+msgstr "Type"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
@@ -185,10 +205,6 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Kostprijsmethode"
 
-msgctxt "field:product.template,cost_price_uom:"
-msgid "Cost Price"
-msgstr "Kostprijs"
-
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -221,16 +237,13 @@ msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr "Catalogusprijs"
 
-msgctxt "field:product.template,list_price_uom:"
-msgid "List Price"
-msgstr "Catalogusprijs"
-
 msgctxt "field:product.template,name:"
 msgid "Name"
 msgstr "Naam"
 
+#, fuzzy
 msgctxt "field:product.template,products:"
-msgid "Products"
+msgid "Variants"
 msgstr "Producten"
 
 msgctxt "field:product.template,rec_name:"
@@ -417,11 +430,17 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorieën"
 
-msgctxt "model:ir.action,name:act_product_by_category"
-msgid "Product by Category"
-msgstr "Product per categorie"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
+msgid "Variants"
+msgstr "Producten"
+
+msgctxt "model:ir.action,name:act_template_by_category"
+msgid "Product by Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Producten"
 
@@ -446,7 +465,13 @@ msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Productbeheer"
 
-msgctxt "model:ir.ui.menu,name:menu_product_product"
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Variants"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
 msgstr "Producten"
 
@@ -470,8 +495,9 @@ msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
 msgstr "Categorie - belasting leverancier"
 
+#, fuzzy
 msgctxt "model:product.product,name:"
-msgid "Product"
+msgid "Product Variant"
 msgstr "Product"
 
 msgctxt "model:product.template,name:"
@@ -778,6 +804,19 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "Productregistratie"
 
+msgctxt "selection:product.product,type:"
+msgid "Assets"
+msgstr ""
+
+msgctxt "selection:product.product,type:"
+msgid "Goods"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.product,type:"
+msgid "Service"
+msgstr "Service"
+
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
 msgstr "Gemiddeld"
@@ -810,33 +849,28 @@ msgctxt "view:product.category:"
 msgid "Product Category"
 msgstr "Product categorie"
 
+#, fuzzy
+msgctxt "view:product.product:"
+msgid "Product"
+msgstr "Producten"
+
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Producten"
 
 msgctxt "view:product.template:"
-msgid "Accounting"
-msgstr "Boekhouden"
-
-msgctxt "view:product.template:"
-msgid "Accounts"
-msgstr "Rekeningen"
-
-msgctxt "view:product.template:"
 msgid "General"
 msgstr "Algemeen"
 
+#, fuzzy
 msgctxt "view:product.template:"
-msgid "Product Template"
-msgstr "Productsjabloon"
+msgid "Product"
+msgstr "Producten"
 
+#, fuzzy
 msgctxt "view:product.template:"
-msgid "Product Templates"
-msgstr "Productsjabloon"
-
-msgctxt "view:product.template:"
-msgid "Taxes"
-msgstr "Belastingen"
+msgid "Products"
+msgstr "Producten"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
