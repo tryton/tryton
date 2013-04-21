@@ -3,11 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
-msgid "Probability must be between 0 and 100!"
+msgid "Probability must be between 0 and 100."
 msgstr ""
 
 msgctxt "error:sale.opportunity:"
-msgid "Sale Opportunity \"%s\" must be cancelled before deletion!"
+msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr ""
 
 #, fuzzy
@@ -593,28 +593,38 @@ msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_opportunity_form_opportunity"
-msgid "Opportunities"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
+msgid "Cancelled"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
+msgid "Converted"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
+msgid "Leads"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
+msgid "Lost"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
+msgid "Opportunities"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
@@ -627,26 +637,6 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_cancelled"
-msgid "Cancelled Leads and Opportunities"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_converted"
-msgid "Converted Opportunities"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lead"
-msgid "Opened Leads"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_lost"
-msgid "Lost Leads and Opportunities"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_opportunity_form_opportunity"
-msgid "Opportunities"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
@@ -765,10 +755,6 @@ msgstr ""
 
 msgctxt "view:sale.opportunity:"
 msgid "Mark as Lost"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Reset as Lead"
 msgstr ""
 
 msgctxt "view:sale.opportunity:"
