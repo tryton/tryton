@@ -27,17 +27,20 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
@@ -53,13 +56,15 @@ msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Ширина"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
