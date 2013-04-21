@@ -10,17 +10,20 @@ msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Дата создания"
 
+#, fuzzy
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Создано пользователем"
 
+#, fuzzy
 msgctxt "field:carrier,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:carrier,party:"
@@ -32,13 +35,15 @@ msgctxt "field:carrier,rec_name:"
 msgid "Name"
 msgstr "Наименование"
 
+#, fuzzy
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Дата изменения"
 
+#, fuzzy
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Изменено пользователем"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
@@ -53,7 +58,7 @@ msgid "Carriers"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
+msgid "Carrier"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"

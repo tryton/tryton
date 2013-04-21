@@ -53,7 +53,7 @@ msgid "Carriers"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
+msgid "Carrier"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"

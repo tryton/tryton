@@ -51,8 +51,9 @@ msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
 msgstr "Превозвачи"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier"
-msgid "Carrier Management"
+msgid "Carrier"
 msgstr "Управление на превозвачи"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
