@@ -3,36 +3,32 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
-msgstr "U kunt niet de relatie van een adres veranderen!"
+msgid "You can not modify the party of address \"%s\"."
+msgstr ""
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
-msgstr "De naam van een relatie-categorie moet per niveau uniek zijn!"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr ""
 
 msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr "U kunt geen recursieve categorieën aanmaken!"
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
-msgstr "Het \"/\" teken mag niet gebruikt worden in een naam veld!"
+msgid "The name of a party category must be unique by parent."
+msgstr ""
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr "De VIES is niet beschikbaar, probeer het later nog eens!"
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
-msgstr "U kunt niet de relatie van een contactmogelijkheid veranderen!"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr ""
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
-msgstr "Ongeldig BTW nummer!"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr ""
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
-msgstr "De relatie-code moet uniek zijn!"
+msgid "The code of the party must be unique."
+msgstr ""
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -242,6 +238,11 @@ msgstr "Skype"
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Type"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
@@ -587,18 +588,6 @@ msgstr "Contactmogelijkheden"
 msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr "Financieel"
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr "Adressen"
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr "Categorieën"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
-msgstr "Contactmogelijkheden"
 
 msgctxt "view:party.party:"
 msgid "General"

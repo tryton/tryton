@@ -3,36 +3,32 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
-msgstr "Не може да променяте партньора за адрес!"
+msgid "You can not modify the party of address \"%s\"."
+msgstr ""
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
-msgstr "Името на категорията на партньора трябва да бъде уникална по родител!"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
+msgstr ""
 
 msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr "Не може да създавате взаимно вложени категории!"
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
-msgstr "В името на полето не може да има \" / \"!"
+msgid "The name of a party category must be unique by parent."
+msgstr ""
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr "VIES услугата е недостъпна, опитайте отново по-късно."
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
-msgstr "Не може да променяте партньора за начин на контакт!"
+msgid "You can not modify the party of contact mechanism \"%s\"."
+msgstr ""
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
-msgstr "Невалиден ДДС номер!"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
+msgstr ""
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
-msgstr "Кода на партньора трябва да е уникален!"
+msgid "The code of the party must be unique."
+msgstr ""
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -241,6 +237,11 @@ msgstr "Skype"
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
 msgstr "Вид"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
+msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
@@ -581,18 +582,6 @@ msgstr "Начини на контакт"
 msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr "Счетоводство"
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr "Адреси"
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr "Категории"
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
-msgstr "Начини на контакт"
 
 msgctxt "view:party.party:"
 msgid "General"

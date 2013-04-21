@@ -3,19 +3,15 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
-msgid "You can not modify the party of an address!"
+msgid "You can not modify the party of address \"%s\"."
 msgstr ""
 
 msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent!"
+msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
 msgstr ""
 
 msgctxt "error:party.category:"
-msgid "You can not create recursive categories!"
-msgstr ""
-
-msgctxt "error:party.category:"
-msgid "You can not use \" / \" in name field!"
+msgid "The name of a party category must be unique by parent."
 msgstr ""
 
 msgctxt "error:party.check_vies:"
@@ -23,15 +19,15 @@ msgid "The VIES service is unavailable, try again later."
 msgstr ""
 
 msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of a contact mechanism!"
+msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr ""
 
 msgctxt "error:party.party:"
-msgid "Invalid VAT number!"
+msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
 msgstr ""
 
 msgctxt "error:party.party:"
-msgid "The code of the party must be unique!"
+msgid "The code of the party must be unique."
 msgstr ""
 
 msgctxt "field:party.address,active:"
@@ -240,6 +236,10 @@ msgstr ""
 
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
+msgstr ""
+
+msgctxt "field:party.contact_mechanism,url:"
+msgid "URL"
 msgstr ""
 
 msgctxt "field:party.contact_mechanism,value:"
@@ -580,18 +580,6 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Accounting"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Addresses"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Categories"
-msgstr ""
-
-msgctxt "view:party.party:"
-msgid "Contact Mechanisms"
 msgstr ""
 
 msgctxt "view:party.party:"
