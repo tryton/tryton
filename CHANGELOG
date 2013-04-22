@@ -1,3 +1,5 @@
+Version 2.8.0 - 2013-04-22
+* Bug fixes (see mercurial logs for details)
 * Add origin Reference on Invoice Line
 * Prevent refund of supplier invoice/credit note
 * Make period's invoice sequences optional and use fiscal year's ones if empty
