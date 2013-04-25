@@ -1199,7 +1199,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             invoice.set_number()
             invoice.create_move()
         cls.write(invoices, {
-                'state': 'posted',
+                'state': 'open',
                 })
         for invoice in invoices:
             invoice.print_invoice()
