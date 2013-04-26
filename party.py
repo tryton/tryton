@@ -170,8 +170,6 @@ class Party(ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, parties, default=None):
-        Address = Pool().get('party.address')
-
         if default is None:
             default = {}
         default = default.copy()
