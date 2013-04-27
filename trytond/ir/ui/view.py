@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import os
+import sys
 import logging
 from lxml import etree
 from trytond.model import ModelView, ModelSQL, fields
@@ -100,7 +101,9 @@ class View(ModelSQL, ModelView):
         key = (cls.__name__, type_)
         rng = cls._get_rng_cache.get(key)
         if rng is None:
-            rng_name = os.path.join(os.path.dirname(__file__), type_ + '.rng')
+            rng_name = os.path.join(os.path.dirname(
+                    unicode(__file__, sys.getfilesystemencoding())),
+                type_ + '.rng')
             rng = etree.fromstring(open(rng_name).read())
             cls._get_rng_cache.set(key, rng)
         return rng

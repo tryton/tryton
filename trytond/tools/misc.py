@@ -78,7 +78,8 @@ def exec_command_pipe(name, *args):
 def file_open(name, mode="r", subdir='modules'):
     """Open a file from the root dir, using a subdir folder."""
     from trytond.modules import EGG_MODULES
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    root_path = os.path.dirname(os.path.dirname(os.path.abspath(
+                unicode(__file__, sys.getfilesystemencoding()))))
 
     egg_name = False
     if subdir == 'modules':
