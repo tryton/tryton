@@ -50,7 +50,7 @@ class ShipmentInternal(ModelSQL, ModelView):
             id2product[op.product.id] = op.product
             location_ids.append(op.storage_location.id)
 
-        with Transaction().set_context(stock_date_end=today):
+        with Transaction().set_context(forecast=True, stock_date_end=today):
             pbl = Product.products_by_location(location_ids,
                 list(id2product.iterkeys()), with_childs=True)
 
