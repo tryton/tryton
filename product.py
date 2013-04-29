@@ -289,7 +289,7 @@ class UpdateCostPrice(Wizard):
             }
 
     def get_move_lines(self):
-        Line = Pool.get('account.move.line')
+        Line = Pool().get('account.move.line')
         amount = self.show_move.amount
         return [Line(
                 debit=amount if amount > 0 else 0,
