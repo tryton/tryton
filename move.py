@@ -121,8 +121,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 'it is not in draft or cancelled state.'),
             'period_closed': ('You can not modify move "%(move)s" because '
                 'period "%(period)s" is closed.'),
-            'modify_assigned_done_cancel': ('You can not modify stock move "%s"'
-                'because it is in "Assigned", "Done" or "Cancel" state.'),
+            'modify_assigned_done_cancel': ('You can not modify stock move '
+                '"%s" because it is in "Assigned", "Done" or "Cancel" state.'),
             })
         cls._transitions |= set((
                 ('draft', 'assigned'),
