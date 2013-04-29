@@ -308,7 +308,7 @@ class Work:
         pattern = invoice_line._get_tax_rule_pattern()
         party = invoice.party
         for tax in product.customer_taxes_used:
-            if party.customer_taxes_used:
+            if party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
                     taxes.extend(tax_ids)
