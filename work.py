@@ -109,10 +109,10 @@ class Work(ModelSQL, ModelView):
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_parent_state': ('Work "%(child)s" can not be opened '
-                    'because its parent work "%(parent)s" is already done."'),
+                    'because its parent work "%(parent)s" is already done.'),
                 'invalid_children_state': ('Work "%(parent)s" can not be '
                     'done because its child work "%(child)s" is still '
-                    'opened."'),
+                    'opened.'),
                 })
 
     @classmethod
