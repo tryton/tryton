@@ -26,6 +26,8 @@ class ProductTestCase(unittest.TestCase):
         trytond.tests.test_tryton.install_module('product')
         self.uom = POOL.get('product.uom')
         self.uom_category = POOL.get('product.uom.category')
+        self.template = POOL.get('product.template')
+        self.product = POOL.get('product.product')
 
     def test0005views(self):
         '''
@@ -188,6 +190,45 @@ class ProductTestCase(unittest.TestCase):
                         ], limit=1)
                 self.assertEqual(result, self.uom.compute_price(from_uom,
                         price, to_uom))
+
+    def test0060product_search_domain(self):
+        '''
+        Test product.product search_domain function.
+        '''
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            kilogram, = self.uom.search([
+                    ('name', '=', 'Kilogram'),
+                    ], limit=1)
+            millimeter, = self.uom.search([
+                    ('name', '=', 'Millimeter'),
+                    ])
+            pt1, pt2 = self.template.create([{
+                        'name': 'P1',
+                        'type': 'goods',
+                        'list_price': Decimal(20),
+                        'cost_price': Decimal(10),
+                        'default_uom': kilogram.id,
+                        'products': [('create', [{
+                                        'code': '1',
+                                        }])]
+                        }, {
+                        'name': 'P2',
+                        'type': 'goods',
+                        'list_price': Decimal(20),
+                        'cost_price': Decimal(10),
+                        'default_uom': millimeter.id,
+                        'products': [('create', [{
+                                        'code': '2',
+                                        }])]
+                        }])
+            p, = self.product.search([
+                    ('default_uom.name', '=', 'Kilogram'),
+                    ])
+            self.assertEqual(p, pt1.products[0])
+            p, = self.product.search([
+                    ('default_uom.name', '=', 'Millimeter'),
+                    ])
+            self.assertEqual(p, pt2.products[0])
 
 
 def suite():
