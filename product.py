@@ -334,8 +334,6 @@ class UpdateCostPrice(Wizard):
         return 'update_price'
 
     def transition_update_price(self):
-        Product = Pool().get('product.product')
-        Product.write([self.ask_price.product], {
-                'cost_price': self.ask_price.cost_price,
-                })
+        self.ask_price.product.cost_price = self.ask_price.cost_price
+        self.ask_price.product.save()
         return 'end'
