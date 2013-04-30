@@ -34,8 +34,8 @@ class Work:
             ('id', '!=', Eval('id')),
             ],
         depends=['parent', 'id'])
-    leveling_delay = fields.Float("Leveling Delay")
-    back_leveling_delay = fields.Float("Back Leveling Delay")
+    leveling_delay = fields.Float("Leveling Delay", required=True)
+    back_leveling_delay = fields.Float("Back Leveling Delay", required=True)
     allocations = fields.One2Many('project.allocation', 'work', 'Allocations',
         states={
             'invisible': Eval('type') != 'task',
@@ -82,6 +82,14 @@ class Work:
     @classmethod
     def check_recursion(cls, records, parent='successors'):
         return super(Work, cls).check_recursion(records, parent=parent)
+
+    @staticmethod
+    def default_leveling_delay():
+        return 0.0
+
+    @staticmethod
+    def default_back_leveling_delay():
+        return 0.0
 
     @classmethod
     def get_function_fields(cls, works, names):
