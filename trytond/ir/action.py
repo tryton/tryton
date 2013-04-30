@@ -307,8 +307,11 @@ class ActionMixin(ModelSQL):
             cursor = Transaction().cursor
             if cursor.nextid(cls._table):
                 cursor.setnextid(cls._table, cursor.currid(Action._table))
-            action, = Action.create([action_values])
-            values['action'] = action.id
+            if 'action' not in values:
+                action, = Action.create([action_values])
+                values['action'] = action.id
+            else:
+                action = Action(values['action'])
             record, = super(ActionMixin, cls).create([values])
             cursor.execute('UPDATE "' + cls._table + '" SET id = %s '
                 'WHERE id = %s', (action.id, record.id))
