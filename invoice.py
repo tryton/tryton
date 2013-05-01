@@ -1038,8 +1038,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def check_cancel_move(self):
         if (self.type in ('out_invoice', 'out_credit_note')
                 and self.cancel_move):
-            return False
-        return True
+            raise Exception('Customer invoice/credit note can not be cancelled '
+                'once posted.')
 
     def get_reconcile_lines_for_amount(self, amount, exclude_lines=None):
         '''
