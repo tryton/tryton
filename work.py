@@ -487,7 +487,7 @@ class Work(ModelSQL, ModelView):
 
             if constraint_finish:
                 late_finish = self.add_hours(work.company, constraint_finish,
-                        -work.back_leveling_delay)
+                        -(work.back_leveling_delay or 0.0))
             else:
                 late_finish = None
 
