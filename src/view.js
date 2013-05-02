@@ -395,7 +395,11 @@
         update_text: function(cell, record) {
             this.update_selection(record, function() {
                 var value = this.field.get(record);
-                cell.text(this.selection[value]);
+                this.selection.forEach(function(e) {
+                    if (e[0] == value) {
+                        cell.text(e[1]);
+                    }
+                });
             }.bind(this));
         }
     });
