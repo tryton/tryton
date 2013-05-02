@@ -9,7 +9,7 @@
     'name_es_CO': 'Previsión de existencias',
     'name_es_ES': 'Previsión de stock',
     'name_fr_FR': 'Prévision de stock',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
