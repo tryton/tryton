@@ -162,7 +162,8 @@
                         'confirm': child.getAttribute('confirm'),
                         'name': child.getAttribute('name')
                     };
-                    column = new Sao.View.Tree.ButtonColumn(attributes);
+                    column = new Sao.View.Tree.ButtonColumn(this.screen,
+                            attributes);
                 }
                 this.columns.push(column);
             }.bind(this));
@@ -445,16 +446,20 @@
     });
 
     Sao.View.Tree.ButtonColumn = Sao.class_(Object, {
-        init: function(attributes) {
+        init: function(screen, attributes) {
+            this.screen = screen;
             this.type = 'button';
             this.attributes = attributes;
         },
-        render: function() {
-            var button = jQuery('<button/>', {
-                'class': 'button',
-                'label': this.attributes.string
-            });
-            return button;
+        render: function(record) {
+            var button = new Sao.common.Button(this.attributes);
+            button.el.click(record, this.button_clicked.bind(this));
+            return button.el;
+        },
+        button_clicked: function(event) {
+            var record = event.data;
+            // TODO check state
+            this.screen.button(this.attributes);
         }
     });
 
@@ -499,7 +504,7 @@
                         container.add_row();
                         break;
                     case 'button':
-                        // TODO
+                        this._parse_button(child, container, attributes);
                         break;
                     case 'notebook':
                         this._parse_notebook(
@@ -587,6 +592,15 @@
             container.add(
                     Number(node.getAttribute('colspan') || 1),
                     label);
+            // TODO help
+        },
+        _parse_button: function(node, container, attributes) {
+            var button = new Sao.common.Button(attributes);
+            this.state_widgets.push(button);
+            container.add(
+                    Number(node.getAttribute('colspan') || 1),
+                    button);
+            button.el.click(button, this.button_clicked.bind(this));
             // TODO help
         },
         _parse_notebook: function(model, node, container, attributes) {
@@ -725,6 +739,17 @@
                         widgets.forEach(set_value, field);
                     }
                 }
+            }
+        },
+        button_clicked: function(event) {
+            var button = event.data;
+            var record = this.screen.current_record;
+            var fields = Object.keys(this.fields);
+            if (!record.validate(fields)) {
+                this.screen.display();
+                return;
+            } else {
+                this.screen.button(button.attributes);
             }
         }
     });

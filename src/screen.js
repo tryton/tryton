@@ -392,6 +392,38 @@
             }
             this.current_view.set_value();
             return this.current_record.get_on_change_value();
+        },
+        reload: function(ids, written) {
+            this.group.reload(ids);
+            if (written) {
+                this.group.written(ids);
+            }
+            if (this.parent) {
+                this.parent.reload();
+            }
+            this.display();
+        },
+        button: function(attributes) {
+            // TODO confirm
+            var record = this.current_record;
+            record.save().done(function() {
+                var context = record.get_context();
+                record.model.execute(attributes.name,
+                    [[record.id]], context).then(
+                        function(action_id) {
+                            if (action_id) {
+                                Sao.Action.execute(action_id, {
+                                    model: this.model_name,
+                                    id: record.id,
+                                    ids: [record.id]
+                                }, null, context);
+                            }
+                            this.reload([record.id], true);
+                        }.bind(this),
+                        function() {
+                            this.reload([record.id], true);
+                        }.bind(this));
+            }.bind(this));
         }
     });
 }());

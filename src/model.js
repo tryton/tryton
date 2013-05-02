@@ -67,6 +67,7 @@
         array.parent = undefined;
         array.screens = [];
         array.parent_name = '';
+        array.children = [];
         array.child_name = '';
         array.parent_datetime_field = undefined;
         array.record_removed = [];
@@ -216,6 +217,35 @@
                 deferreds.push(this.model.delete_(this.record_deleted));
             }
             return jQuery.when.apply(jQuery, deferreds);
+        };
+        array.written = function(ids) {
+            // TODO
+        };
+        array.reload = function(ids) {
+            this.children.forEach(function(child) {
+                child.reload(ids);
+            });
+            ids.forEach(function(id) {
+                var record = this.get(id);
+                if (record && jQuery.isEmptyObject(record._changed)) {
+                    record._loaded = {};
+                }
+            }.bind(this));
+        };
+        array.set_parent = function(parent) {
+            this.parent = parent;
+            if (parent && parent.model_name == this.model.name) {
+                this.parent.group.chilren.push(this);
+            }
+        };
+        array.destroy = function() {
+            if (this.parent) {
+                var i = this.parent.group.chilren.indexOf(this);
+                if (i >= 0) {
+                    this.parent.group.chilren.splice(i, 1);
+                }
+            }
+            this.parent = null;
         };
         return array;
     };
@@ -967,7 +997,8 @@
             var model;
             if (group !== undefined) {
                 model = group.model;
-                // TODO destroy and unconnect
+                group.destroy();
+                // TODO unconnect
             } else if (record.model.name == this.description.relation) {
                 model = record.model;
             } else {
@@ -999,7 +1030,7 @@
             }
             var set_value = function(fields) {
                 var group = Sao.Group(model, this.context, []);
-                group.parent = record;
+                group.set_parent(record);
                 group.parent_name = this.description.relation_field;
                 group.child_name = this.name;
                 if (!jQuery.isEmptyObject(fields)) {
@@ -1199,7 +1230,7 @@
             }
             var group = Sao.Group(new Sao.Model(this.description.relation),
                     this.context, []);
-            group.parent = record;
+            group.set_parent(record);
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
             if (record.model.name == this.description.relation) {
@@ -1249,14 +1280,15 @@
             var model;
             if (group !== undefined) {
                 model = group.model;
-                // TODO destroy and unconnect
+                group.destroy();
+                // TODO unconnect
             } else if (record.model.name == this.description.relation) {
                 model = record.model;
             } else {
                 model = new Sao.Model(this.description.relation);
             }
             group = Sao.Group(model, this.context, []);
-            group.parent = record;
+            group.set_parent(record);
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
             if (record._values[this.name] !== undefined) {

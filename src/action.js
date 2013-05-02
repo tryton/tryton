@@ -132,6 +132,24 @@
         return prm.pipe(exec_action);
     };
 
+    Sao.Action.execute = function(id, data, type, context) {
+        if (!type) {
+            Sao.rpc({
+                'method': 'model.ir.action.read',
+                'params': [[id], ['type'], context]
+            }, Sao.Session.current_session).done(function(result) {
+                Sao.Action.execute(id, data, result[0].type, context);
+            });
+        } else {
+            Sao.rpc({
+                'method': 'model.' + type + '.search_read',
+                'params': [[['action', '=', id]], 0, 1, null, null, context]
+            }, Sao.Session.current_session).done(function(result) {
+                Sao.Action.exec_action(result[0], data);
+            });
+        }
+    };
+
     Sao.Action.evaluate = function(action, atype, record) {
         action = jQuery.extend({}, action);
         switch (atype) {

@@ -125,7 +125,7 @@
             this.process();
         },
         _get_button: function(definition) {
-            var button = Sao.common.Button(definition);
+            var button = new Sao.common.Button(definition);
             this.states[definition.state] = button;
             return button;
         },
@@ -187,8 +187,8 @@
         _get_button: function(definition) {
             var button = Sao.Wizard.Dialog._super._get_button.call(this,
                     definition);
-            this.buttonset.append(button);
-            button.click(function() {
+            this.buttonset.append(button.el);
+            button.el.click(function() {
                 this.response(definition.state);
             }.bind(this));
             // TODO default

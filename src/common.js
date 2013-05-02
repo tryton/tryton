@@ -191,15 +191,17 @@
         }
     };
 
-    Sao.common.Button = function(attributes) {
-        var button = jQuery('<button/>').button({
-            text: true,
-            label: attributes.string || ''
-        });
-        // TODO icon
-        button.state_set = function(record) {
+    Sao.common.Button = Sao.class_(Object, {
+        init: function(attributes) {
+            this.attributes = attributes;
+            this.el = jQuery('<button/>').button({
+                text: true,
+                label: attributes.string || ''
+            });
+            // TODO icon
+        },
+        state_set: function(record) {
             // TODO
-        };
-        return button;
-    };
+        }
+    });
 }());
