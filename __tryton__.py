@@ -9,7 +9,7 @@
     'name_es_AR': 'Costo del método de envio',
     'name_es_ES': 'Ventas: Coste de envío',
     'name_fr_FR': "Coût d'expédition de vente",
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
