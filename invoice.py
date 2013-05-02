@@ -190,6 +190,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'deletion.'),
                 'delete_numbered': ('The numbered invoice "%s" can not be '
                     'deleted.'),
+                'customer_invoice_cancel_move': ('Customer invoice/credit note '
+                    '"%s" can not be cancelled once posted.'),
                 'period_cancel_move': ('The period of Invoice "%s" is closed.\n'
                     'Use the today for cancel move?'),
                 })
@@ -1038,8 +1040,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def check_cancel_move(self):
         if (self.type in ('out_invoice', 'out_credit_note')
                 and self.cancel_move):
-            return False
-        return True
+            self.raise_user_error('customer_invoice_cancel_move',
+                self.rec_name)
 
     def get_reconcile_lines_for_amount(self, amount, exclude_lines=None):
         '''
