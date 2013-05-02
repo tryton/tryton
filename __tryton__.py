@@ -6,7 +6,7 @@
     'name_es_CO': 'Previsión de existencias',
     'name_es_ES': 'Previsión de existencias',
     'name_fr_FR': 'Prévision de stock',
-    'version': '1.8.2',
+    'version': '1.8.3',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
