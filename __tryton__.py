@@ -5,7 +5,7 @@
     'name_de_DE': 'Lager Chargenverwaltung',
     'name_es_ES': 'Gestión de lotes de stock',
     'name_fr_FR': 'Gestion des lots de stock',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
