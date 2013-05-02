@@ -4,7 +4,7 @@
     'name': 'Account Stock Anglo-Saxon',
     'name_de_DE': 'Buchhaltung Lagerbewertung Angelsächsische Methode',
     'name_fr_FR': 'Gestion de stock anglo-saxonne',
-    'version': '2.2.5',
+    'version': '2.2.6',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
