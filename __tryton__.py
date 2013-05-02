@@ -8,7 +8,7 @@
     'name_es_AR': 'Previsión de abastecimiento de existencias',
     'name_es_ES': 'Previsión de abastecimiento de stock',
     'name_fr_FR': 'Prévisions et approvisionnemenets de stock',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
