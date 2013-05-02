@@ -4,7 +4,7 @@
     'name': 'Account Stock Continental',
     'name_de_DE': 'Buchhaltung Lagerbewertung Kontinentale Methode',
     'name_fr_FR': 'Gestion de stock continentale',
-    'version': '2.0.4',
+    'version': '2.0.5',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
