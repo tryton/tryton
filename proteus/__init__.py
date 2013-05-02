@@ -3,7 +3,7 @@
 '''
 A library to access Tryton's models like a client.
 '''
-__version__ = "1.8.5"
+__version__ = "1.8.6"
 __all__ = ['Model', 'Wizard']
 from types import NoneType
 import threading
