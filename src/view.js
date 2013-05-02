@@ -462,6 +462,9 @@
         },
         button_clicked: function(event) {
             var record = event.data;
+            if (record != this.screen.current_record) {
+                return;
+            }
             // TODO check state
             this.screen.button(this.attributes);
         }
