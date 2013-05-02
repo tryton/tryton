@@ -5,7 +5,7 @@
     'name_de_DE': 'Lager Aufteilung Lagerbewegung',
     'name_es_ES': 'Partición stock',
     'name_fr_FR': 'Division des mouvements de stock',
-    'version': '2.4.1',
+    'version': '2.4.2',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
