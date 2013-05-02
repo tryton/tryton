@@ -7,7 +7,7 @@
     'name_es_AR': 'Contabilidad de existencias continental',
     'name_es_ES': 'Gestión de stock continental',
     'name_fr_FR': 'Gestion de stock continentale',
-    'version': '2.4.3',
+    'version': '2.4.4',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
