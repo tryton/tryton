@@ -235,14 +235,14 @@
         array.set_parent = function(parent) {
             this.parent = parent;
             if (parent && parent.model_name == this.model.name) {
-                this.parent.group.chilren.push(this);
+                this.parent.group.children.push(this);
             }
         };
         array.destroy = function() {
             if (this.parent) {
-                var i = this.parent.group.chilren.indexOf(this);
+                var i = this.parent.group.children.indexOf(this);
                 if (i >= 0) {
-                    this.parent.group.chilren.splice(i, 1);
+                    this.parent.group.children.splice(i, 1);
                 }
             }
             this.parent = null;
