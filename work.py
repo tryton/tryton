@@ -88,8 +88,10 @@ class Work:
     def get_invoice_method(self, name):
         if self.type == 'project':
             return self.project_invoice_method
-        else:
+        elif self.parent:
             return self.parent.invoice_method
+        else:
+            return 'manual'
 
     @staticmethod
     def default_invoiced_hours():
