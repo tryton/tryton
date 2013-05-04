@@ -1506,7 +1506,7 @@ class ModelSQL(ModelStorage):
                         ids2 = [x[0] for x in target_obj.search([
                             ('rec_name', 'ilike', domain[i][2]),
                             ], order=[])]
-                    elif isinstance(domain[i][2], (int, long)):
+                    elif not isinstance(domain[i][2], list):
                         ids2 = [domain[i][2]]
                     else:
                         ids2 = domain[i][2]
@@ -1582,7 +1582,7 @@ class ModelSQL(ModelStorage):
                         ids2 = [x[0] for x in field_obj.search([
                             ('rec_name', 'like', domain[i][2]),
                             ], order=[])]
-                    elif isinstance(domain[i][2], (int, long)):
+                    elif not isinstance(domain[i][2], list):
                         ids2 = [domain[i][2]]
                     else:
                         ids2 = domain[i][2]
