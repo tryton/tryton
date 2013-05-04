@@ -341,7 +341,8 @@ class OpenChartTaxCode(Wizard):
     def do_open_(self, session, action):
         if session.start.method == 'fiscalyear':
             action['pyson_context'] = PYSONEncoder().encode({
-                    'fiscalyear': session.start.fiscalyear.id,
+                    'fiscalyear': (session.start.fiscalyear.id
+                        if session.start.fiscalyear else None),
                     })
         else:
             action['pyson_context'] = PYSONEncoder().encode({
