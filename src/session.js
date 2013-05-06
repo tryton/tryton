@@ -59,7 +59,7 @@
                 'method': 'common.db.logout',
                 'params': []
             };
-            var prm = Sao.rpc(this, args);
+            var prm = Sao.rpc(args, this);
             this.database = null;
             this.login = null;
             this.user_id = null;
