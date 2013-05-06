@@ -200,8 +200,30 @@
             });
             // TODO icon
         },
-        state_set: function(record) {
-            // TODO
+        set_state: function(record) {
+            var states;
+            if (record) {
+                states = record.expr_eval(this.attributes.states || {});
+            } else {
+                states = {};
+            }
+            if (states.invisible) {
+                this.el.hide();
+            } else {
+                this.el.show();
+            }
+            this.el.prop('disabled', states.readonly);
+            // TODO icon
+            if (record) {
+                var parent = record.group.parent;
+                while (parent) {
+                    if (parent.has_changed()) {
+                        this.el.prop('disabled', false);
+                        break;
+                    }
+                    parent = parent.group.parent;
+                }
+            }
         }
     });
 }());

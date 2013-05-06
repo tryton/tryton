@@ -160,7 +160,8 @@
                         'help': child.getAttribute('help'),
                         'string': child.getAttribute('string'),
                         'confirm': child.getAttribute('confirm'),
-                        'name': child.getAttribute('name')
+                        'name': child.getAttribute('name'),
+                        'states': child.getAttribute('states')
                     };
                     column = new Sao.View.Tree.ButtonColumn(this.screen,
                             attributes);
@@ -458,6 +459,19 @@
         render: function(record) {
             var button = new Sao.common.Button(this.attributes);
             button.el.click(record, this.button_clicked.bind(this));
+            var fields = jQuery.map(this.screen.model.fields,
+                function(field, name) {
+                    if ((field.description.loading || 'eager') ==
+                        'eager') {
+                        return name;
+                    } else {
+                        return undefined;
+                    }
+                });
+            // Wait at least one eager field is loaded before evaluating states
+            record.load(fields[0]).done(function() {
+                button.set_state(record);
+            });
             return button.el;
         },
         button_clicked: function(event) {
@@ -492,10 +506,15 @@
             var _parse = function(index, child) {
                 var attributes = {
                     'name': child.getAttribute('name'),
-                    'readonly': child.getAttribute('readonly') == 1,
                     'widget': child.getAttribute('widget'),
-                    'string': child.getAttribute('string')
+                    'string': child.getAttribute('string'),
+                    'states': child.getAttribute('states')
                 };
+                ['readonly', 'invisible'].forEach(function(name) {
+                    if (child.getAttribute(name)) {
+                        attributes[name] = child.getAttribute(name) == 1;
+                    }
+                });
                 switch (child.tagName) {
                     case 'image':
                         // TODO
@@ -544,22 +563,15 @@
             var name = attributes.name;
             var text = attributes.string;
             if (name in model.fields) {
-                ['states', 'invisible'].forEach(
-                        function(attr_name) {
-                            if ((node.getAttribute(attr_name) ===
-                                    undefined) && (attr_name in
-                                        model.fields[name].description))
-                            {
-                                node.setAttribute(attr_name,
-                                    model.fields[name]
-                                    .description[attr_name]);
-                            }
-                        });
+                if (!attributes.states && (name in model.fields)) {
+                    attributes.states = model.fields[name].description.states;
+                }
                 if (!text) {
                     text = model.fields[name].description.string;
                 }
             }
             var separator = new Sao.View.Form.Separator(text, attributes);
+            this.state_widgets.push(separator);
             container.add(
                     Number(node.getAttribute('colspan') || 1),
                     separator);
@@ -569,17 +581,9 @@
             var text = attributes.string;
             if (name in model.fields) {
                 // TODO exclude field
-                ['states', 'invisible'].forEach(
-                        function(attr_name) {
-                            if ((node.getAttribute(attr_name) ===
-                                    undefined) && (attr_name in
-                                        model.fields[name].description))
-                            {
-                                node.setAttribute(attr_name,
-                                    model.fields[name]
-                                    .description[attr_name]);
-                            }
-                        });
+                if (!attributes.states && (name in model.fields)) {
+                    attributes.states = model.fields[name].description.states;
+                }
                 if (!text) {
                     // TODO RTL and translation
                     text = model.fields[name]
@@ -632,7 +636,9 @@
                 text = 'No String Attr.'; // TODO translate
             }
             var page = this.parse(model, node);
-            container.add(page.el, text);
+            page = new Sao.View.Form.Page(container.add(page.el, text),
+                    attributes);
+            this.state_widgets.push(page);
         },
         _parse_field: function(model, node, container, attributes) {
             var name = attributes.name;
@@ -646,10 +652,9 @@
                 attributes.widget = model.fields[name]
                     .description.type;
             }
-            var attribute_names = ['relation', 'domain',
-                'selection', 'relation_field', 'string', 'views',
-                'invisible', 'add_remove', 'sort', 'context',
-                'size', 'filename', 'autocomplete', 'translate',
+            var attribute_names = ['relation', 'domain', 'selection',
+                'relation_field', 'string', 'views', 'add_remove', 'sort',
+                'context', 'size', 'filename', 'autocomplete', 'translate',
                 'create', 'delete'];
             for (var i in attribute_names) {
                 var attr = attribute_names[i];
@@ -708,6 +713,15 @@
                     promesses[name] = record.load(name);
                 });
             }
+            var set_state = function(record, field, name) {
+                var prm = jQuery.when();
+                if (name in promesses) {
+                    prm = promesses[name];
+                }
+                prm.done(function() {
+                    field.set_state(record);
+                });
+            };
             var display = function(record, field, name) {
                 return function(widget) {
                     var prm = jQuery.when();
@@ -725,13 +739,21 @@
                 if (record) {
                     field = record.model.fields[name];
                 }
-                // TODO set state
+                if (field) {
+                    set_state(record, field, name);
+                }
                 widgets.forEach(display(record, field, name));
             }
-            for (var j in this.state_widgets) {
-                var state_widget = this.state_widgets[j];
-                state_widget.state_set(record);
-            }
+            jQuery.when.apply(jQuery,
+                    jQuery.map(promesses, function(p) {
+                        return p;
+                    })
+                ).done(function() {
+                    for (var j in this.state_widgets) {
+                        var state_widget = this.state_widgets[j];
+                        state_widget.set_state(record);
+                    }
+                }.bind(this));
         },
         set_value: function() {
             var record = this.screen.current_record;
@@ -799,8 +821,28 @@
         init: function(attributes) {
             this.attributes = attributes;
         },
-        state_set: function(record) {
-            // TODO
+        set_state: function(record) {
+            var state_changes;
+            if (record) {
+                state_changes = record.expr_eval(this.attributes.states || {});
+            } else {
+                state_changes = {};
+            }
+            var invisible = state_changes.invisible;
+            if (invisible === undefined) {
+                invisible = this.attributes.invisible;
+            }
+            if (invisible) {
+                this.hide();
+            } else {
+                this.show();
+            }
+        },
+        show: function() {
+            this.el.show();
+        },
+        hide: function() {
+            this.el.hide();
         }
     });
 
@@ -826,6 +868,17 @@
                 text: text,
                 'class': 'form-label'
             });
+        },
+        set_state: function(record) {
+            Sao.View.Form.Label._super.set_state.call(this, record);
+            if ((this.attributes.string === undefined) &&
+                    this.attributes.name) {
+                var text = '';
+                if (record) {
+                    text = record.field_get_client(this.attributes.name) || '';
+                }
+                this.el.val(text);
+            }
         }
     });
 
@@ -848,6 +901,14 @@
                 this.el.tabs('select', tab_id);
                 this.selected = true;
             }
+            return jQuery('> ul li', this.el).last();
+        }
+    });
+
+    Sao.View.Form.Page = Sao.class_(StateWidget, {
+        init: function(el, attributes) {
+            Sao.View.Form.Page._super.init.call(this, attributes);
+            this.el = el;
         }
     });
 
@@ -899,9 +960,37 @@
             this.attributes = attributes;
             this.el = null;
             this.position = 0;
+            this.visible = true;
         },
         display: function(record, field) {
-            // TODO set state
+            var readonly = this.attributes.readonly;
+            var invisible = this.attributes.invisible;
+            if (!field) {
+                if (readonly === undefined) {
+                    readonly = true;
+                }
+                if (invisible === undefined) {
+                    invisible = false;
+                }
+                this.set_readonly(readonly);
+                this.set_invisible(invisible);
+                return;
+            }
+            if (readonly === undefined) {
+                readonly = field.get_state_attrs(record).readonly;
+                if (readonly === undefined) {
+                    readonly = false;
+                }
+            }
+            this.set_readonly(readonly);
+            // TODO color
+            if (invisible === undefined) {
+                invisible = field.get_state_attrs(record).invisible;
+                if (invisible === undefined) {
+                    invisible = false;
+                }
+            }
+            this.set_invisible(invisible);
         },
         record: function() {
             if (this.view && this.view.screen) {
@@ -918,10 +1007,23 @@
             if (!this.field()) {
                 return;
             }
-            // TODO visible
+            if (!this.visible) {
+                return;
+            }
             this.set_value(this.record(), this.field());
         },
         set_value: function(record, field) {
+        },
+        set_readonly: function(readonly) {
+            this.el.prop('disabled', readonly);
+        },
+        set_invisible: function(invisible) {
+            this.visible = !invisible;
+            if (invisible) {
+                this.el.hide();
+            } else {
+                this.el.show();
+            }
         }
     });
 
@@ -1051,13 +1153,12 @@
             });
         },
         display: function(record, field) {
+            Sao.View.Form.Selection._super.display.call(this, record, field);
             this.update_selection(record, field, function() {
                 if (!field) {
                     this.el.val('');
                     return;
                 }
-                Sao.View.Form.Selection._super.display.call(this, record,
-                    field);
                 var value = field.get(record);
                 if (value === null) {
                     value = '';
@@ -1190,10 +1291,12 @@
             });
         },
         display: function(record, field) {
-            // TODO set_button_sensitive
             var text_value, value;
             this.changed = false;
             Sao.View.Form.Many2One._super.display.call(this, record, field);
+
+            this._set_button_sensitive();
+
             if (record) {
                 text_value = record.field_get_client(this.field_name);
                 value = record.field_get(this.field_name);
@@ -1215,6 +1318,20 @@
                     }});
             }
             this.changed = true;
+        },
+        set_readonly: function(readonly) {
+            this.entry.prop('disabled', readonly);
+            this._set_button_sensitive();
+        },
+        _set_button_sensitive: function() {
+            // TODO model access
+            var readonly = this.entry.prop('disabled');
+            var create = this.attributes.create;
+            if (create === undefined) {
+                create = true;
+            }
+            this.but_new.prop('disabled', readonly && create); // TODO access
+            // TODO but_open
         },
         id_from_value: function (value) {
             return value;

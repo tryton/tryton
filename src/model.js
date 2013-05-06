@@ -261,6 +261,7 @@
             this._loaded = {};
             this.fields = {};
             this._timestamp = null;
+            this.state_attrs = {};
         },
         has_changed: function() {
             return !jQuery.isEmptyObject(this._changed);
@@ -786,6 +787,34 @@
         },
         get_on_change_value: function(record) {
             return this.get_eval(record);
+        },
+        set_state: function(record, states) {
+            if (states === undefined) {
+                states = ['readonly', 'required', 'invisible'];
+            }
+            var state_changes = record.expr_eval(
+                    this.description.states || {});
+            states.forEach(function(state) {
+                if ((state == 'readonly') && this.description.readonly) {
+                    return;
+                }
+                if (state_changes[state] !== undefined) {
+                    this.get_state_attrs(record)[state] = state_changes[state];
+                } else if (this.description[state] !== undefined) {
+                    this.get_state_attrs(record)[state] =
+                        this.description[state];
+                }
+            }.bind(this));
+            // TODO group readonly
+            // TODO domain readonly
+        },
+        get_state_attrs: function(record) {
+            if (!(this.name in record.state_attrs)) {
+                record.state_attrs[this.name] = jQuery.extend(
+                        {}, this.description);
+            }
+            // TODO group readonly
+            return record.state_attrs[this.name];
         }
     });
 
