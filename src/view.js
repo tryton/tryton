@@ -1257,7 +1257,7 @@
             this.entry = jQuery('<input/>', {
                 'type': 'input'
             });
-            this.entry.on('keydown', this.key_press.bind(this));
+            this.entry.on('keyup', this.key_press.bind(this));
             this.el.append(this.entry);
             this.but_open = jQuery('<button/>').button({
                 'icons': {
@@ -1276,7 +1276,6 @@
             this.but_new.click(this.new_.bind(this));
             this.el.append(this.but_new);
             this.model = attributes.relation;
-            this.changed = true;
             // TODO autocompletion
         },
         get_screen: function() {
@@ -1292,7 +1291,6 @@
         },
         display: function(record, field) {
             var text_value, value;
-            this.changed = false;
             Sao.View.Form.Many2One._super.display.call(this, record, field);
 
             this._set_button_sensitive();
@@ -1302,7 +1300,6 @@
                 value = record.field_get(this.field_name);
             } else {
                 this.entry.val('');
-                this.changed = true;
                 return;
             }
             this.entry.val(text_value || '');
@@ -1317,7 +1314,6 @@
                         'primary': "ui-icon-search"
                     }});
             }
-            this.changed = true;
         },
         set_readonly: function(readonly) {
             this.entry.prop('disabled', readonly);
@@ -1353,7 +1349,6 @@
             var win;
             var record = this.record();
             var value = record.field_get(this.field_name);
-            this.changed = false;
             if (this.get_model() && this.has_target(value)) {
                 var screen = this.get_screen();
                 var m2o_id =
@@ -1369,7 +1364,6 @@
                                 value, true);
                         }.bind(this));
                     }
-                    this.changed = true;
                 }.bind(this);
                 win = new Sao.Window.Form(screen, callback, {
                     save_current: true
@@ -1387,9 +1381,6 @@
                 var model = new Sao.Model(this.get_model());
                 var ids_prm = model.execute('search',
                         [dom, 0, Sao.config.limit, null], context);
-                ids_prm.fail(function () {
-                    this.changed = true;
-                });
                 ids_prm.done(function (ids) {
                     if (ids.length == 1) {
                         this.record().field_set_client(this.field_name,
@@ -1403,7 +1394,6 @@
                             this.record().field_set_client(this.field_name,
                                 value, true);
                         }
-                        this.changed = true;
                     }.bind(this);
                     win = new Sao.Window.Search(this.model, callback, {
                         sel_multi: false,
@@ -1453,14 +1443,18 @@
             } else if (jQuery.inArray(event_.which, activate_keys) > -1) {
                 this.activate();
             } else if (this.has_target(this.record().field_get(
-                            this.field_name)) && editable &&
-                    jQuery.inArray(event_.which, delete_keys) > -1) {
-                this.entry.val('');
+                            this.field_name)) && editable) {
+                var value = this.record().field_get_client(this.field_name);
+                if ((value != this.entry.val()) ||
+                        (jQuery.inArray(event_.which, delete_keys) > -1)) {
+                    this.entry.val('');
+                    this.record().field_set_client(this.field_name,
+                        this.value_from_id(null, ''));
+                }
             }
         },
         activate: function() {
             // TODO Model Access
-            this.changed = false;
             var record = this.record();
             var value = record.field_get(this.field_name);
             var model = this.get_model();
@@ -1480,13 +1474,18 @@
                     }
                     var ids_prm = sao_model.execute('search',
                             [dom, 0, Sao.config.limit, null], context);
-                    ids_prm.fail(function () {
-                        this.changed = true;
-                    });
                     ids_prm.done(function (ids) {
                         if (ids.length == 1) {
-                            this.record().field_set_client(this.field_name,
-                                this.id_from_value(ids[0]), true);
+                            Sao.rpc({
+                                'method': 'model.' + model + '.read',
+                                'params': [[this.id_from_value(ids[0])], ['rec_name'],
+                                    context]
+                            }, this.record().model.session
+                            ).then(function(values) {
+                                this.record().field_set_client(this.field_name,
+                                    this.value_from_id(ids[0],
+                                        values[0].rec_name), true);
+                            }.bind(this));
                             return;
                         }
                         var callback = function (result) {
@@ -1498,9 +1497,8 @@
                             } else {
                                 this.entry.val('');
                             }
-                            this.changed = true;
                         }.bind(this);
-                        var win = new Sao.Window.Search(this.model, callback, {
+                        var win = new Sao.Window.Search(model, callback, {
                             sel_multi: false,
                             ids: ids,
                             context: context,
