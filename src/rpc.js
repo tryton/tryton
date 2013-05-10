@@ -8,12 +8,14 @@
         if (!session) {
             session = new Sao.Session();
         }
+        var params = jQuery.extend([], args.params);
+        params.push(jQuery.extend({}, session.context, params.pop()));
 
         var ajax_prm = jQuery.ajax({
             'contentType': 'application/json',
             'data': JSON.stringify(Sao.rpc.prepareObject({
                 'method': args.method,
-                'params': [session.user_id, session.session].concat(args.params)
+                'params': [session.user_id, session.session].concat(params)
             })),
             'dataType': 'json',
             'url': '/' + (session.database || ''),

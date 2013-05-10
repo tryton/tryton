@@ -9,7 +9,7 @@
             this.login = login;
             this.user_id = null;
             this.session = null;
-            this.context = {}; // TODO fill
+            this.context = {};
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
             }
@@ -65,6 +65,16 @@
             this.user_id = null;
             this.session = null;
             return prm;
+        },
+        reload_context: function() {
+            var args = {
+                'method': 'model.res.user.get_preferences',
+                'params': [true, {}]
+            };
+            var prm = Sao.rpc(args, this);
+            return prm.then(function(context) {
+                this.context = context;
+            }.bind(this));
         }
     });
 
