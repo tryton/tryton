@@ -40,13 +40,16 @@ this repository contains the full copyright notices and license terms. -->
                     Sao.Session.get_credentials(dfd);
                     dfd.done(function(session) {
                         Sao.Session.current_session = session;
-                        var form = new Sao.Tab.Form('ir.ui.menu', {
-                            'mode': ['tree'],
-                            'view_ids': [3],
-                            'domain': [['parent', '=', null]]
-                            });
-                        form.view_prm.done(function() {
-                            jQuery('#menu').append(form.screen.screen_container.content_box.detach());
+                        session.reload_context().done(function() {
+                            var form = new Sao.Tab.Form('ir.ui.menu', {
+                                'mode': ['tree'],
+                                'view_ids': [3],
+                                'domain': [['parent', '=', null]]
+                                });
+                            form.view_prm.done(function() {
+                                jQuery('#menu').append(
+                                    form.screen.screen_container.content_box.detach());
+                                });
                             });
                         });
                     });
