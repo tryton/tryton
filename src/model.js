@@ -715,7 +715,6 @@
         },
         set: function(record, value) {
             record._values[this.name] = value;
-            return jQuery.when(undefined);
         },
         get: function(record) {
             return record._values[this.name] || this._default;
@@ -968,24 +967,19 @@
             // TODO force parent
             var store_rec_name = function(rec_name) {
                 record._values[this.name + '.rec_name'] = rec_name[0].rec_name;
-                return rec_name[0].rec_name;
             };
-            var prm;
             if (!rec_name && (value >= 0) && (value !== null)) {
                 var model_name = record.model.fields[this.name].description
                     .relation;
-                prm = Sao.rpc({
+                Sao.rpc({
                     'method': 'model.' + model_name + '.' + 'read',
                     'params': [[value], ['rec_name'], record.get_context()]
-                }, record.model.session);
-                prm.done(store_rec_name.bind(this));
+                }, record.model.session).done(store_rec_name.bind(this));
             } else {
                 store_rec_name.call(this, [{'rec_name': rec_name}]);
-                prm = jQuery.when(rec_name);
             }
             record._values[this.name] = value;
             // TODO force parent
-            return prm;
         },
         set_client: function(record, value, force_change) {
             var rec_name;
@@ -1329,7 +1323,6 @@
             }
             record._values[this.name] = group;
             group.load(value);
-            return jQuery.when(undefined);
         },
         get_on_change_value: function(record) {
             return this.get_eval(record);
