@@ -45,10 +45,14 @@
         } else {
             tab = new Sao.Tab.Board(attributes);
         }
-        jQuery('#tabs').tabs();
+        if (!jQuery('#tabs').children().length) {
+            jQuery('#tabs').append(jQuery('<div/>').append(jQuery('<ul/>')));
+        }
+        var tabs = jQuery('#tabs > div');
+        tabs.tabs();
         tab.id = '#tab-' + Sao.Tab.counter++;
-        jQuery('#tabs').tabs('add', tab.id, tab.name);
-        jQuery('#tabs > ul li').last().append(jQuery('<a href="#">' +
+        tabs.tabs('add', tab.id, tab.name);
+        tabs.find('> ul li').last().append(jQuery('<a href="#">' +
                     '<span class="ui-icon ui-icon-circle-close"></span>' +
                     '</a>')
                 .hover(
@@ -60,10 +64,13 @@
                     })
                 .click(function() {
                     // TODO check modified
-                    jQuery('#tabs').tabs('remove', tab.id);
+                    tabs.tabs('remove', tab.id);
+                    if (!tabs.find('> ul').children().length) {
+                        tabs.remove();
+                    }
                 }));
         jQuery(tab.id).html(tab.el);
-        jQuery('#tabs').tabs('select', tab.id);
+        tabs.tabs('select', tab.id);
     };
 
     Sao.Tab.Form = Sao.class_(Sao.Tab, {

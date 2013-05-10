@@ -37,4 +37,107 @@ var Sao = {};
 
     Sao.config = {};
     Sao.config.limit = 1000;
+
+    Sao.login = function() {
+        var dfd = jQuery.Deferred();
+        Sao.Session.get_credentials(dfd);
+        dfd.then(function(session) {
+            Sao.Session.current_session = session;
+            session.reload_context();
+            return session;
+        }).then(function(session) {
+            Sao.rpc({
+                'method': 'model.res.user.get_preferences',
+                'params': [false, {}]
+            }, session).then(function(preferences) {
+                // TODO icons, modelaccess, view_search
+                Sao.menu(preferences);
+                Sao.user_menu(preferences);
+            });
+        });
+    };
+
+    Sao.logout = function() {
+        var session = Sao.Session.current_session;
+        // TODO check modified
+        jQuery('#tabs').children().remove();
+        jQuery('#user-menu').children().remove();
+        jQuery('#menu').children().remove();
+        session.do_logout();
+        Sao.login();
+    };
+
+    Sao.user_menu = function(preferences) {
+        var user_menu = jQuery('#user-menu');
+        user_menu.append(jQuery('<ul/>')
+            .append(jQuery('<li/>')
+                .append(jQuery('<a/>', {
+                    'href': '#'
+                }).append(preferences.status_bar)).append(
+                jQuery('<ul/>').append(
+                    jQuery('<li/>').append(
+                        // TODO add preferences
+                        jQuery('<a/>', {
+                            'href': '#'
+                        }).click(Sao.logout).append('Logout')
+                        )))));
+        user_menu.find('li')
+            .css('float', 'left')
+            .css('list-style', 'none');
+        user_menu.find('li > a')
+            .css('display', 'block')
+            .css('white-space', 'nowrap');
+        user_menu.find('li > ul')
+            .css('position', 'absolute')
+            .css('visibility', 'hidden');
+        user_menu.find('li > ul > li')
+            .css('float', 'none')
+            .css('display', 'inline');
+        var menu_timer = null;
+        var menu_timeout = 500;
+        var menu_item = null;
+        var menu_open = function() {
+            if (menu_timer) {
+                window.clearTimeout(menu_timer);
+                menu_timer = null;
+            }
+            menu_close();
+            menu_item = jQuery(this).find('ul')
+                .css('visibility', 'visible');
+        };
+        var menu_close = function() {
+            if (menu_item) {
+                menu_item.css('visibility', 'hidden');
+            }
+        };
+        user_menu.find('li').bind('mouseover', menu_open);
+        user_menu.find('li').bind('mouseout', function() {
+            menu_timer = window.setTimeout(menu_close, menu_timeout);
+        });
+        document.onclick = menu_close;
+    };
+
+    Sao.menu = function(preferences) {
+        var decoder = new Sao.PYSON.Decoder();
+        var action = decoder.decode(preferences.pyson_menu);
+        var view_ids = false;
+        if (!jQuery.isEmptyObject(action.views)) {
+            view_ids = action.views.map(function(view) {
+                return view[0];
+            });
+        } else if (action.view_id) {
+            view_ids = [action.view_id[0]];
+        }
+        decoder = new Sao.PYSON.Decoder(Sao.Session.current_session.context);
+        var domain = decoder.decode(action.pyson_domain);
+        var form = new Sao.Tab.Form(action.res_model, {
+            'mode': ['tree'],
+            'view_ids': view_ids,
+            'domain': domain
+        });
+        form.view_prm.done(function() {
+            jQuery('#menu').append(
+                form.screen.screen_container.content_box.detach());
+        });
+    };
 }());
