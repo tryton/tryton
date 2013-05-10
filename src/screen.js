@@ -19,7 +19,7 @@
             });
             this.filter_box.append(this.filter_button);
             this.search_entry = jQuery('<input/>');
-            this.search_entry.keypress(function (e) {
+            this.search_entry.keypress(function(e) {
                 if (e.which == 13) {
                     this.screen.search_filter(this.search_entry.val());
                     return false;
@@ -84,7 +84,8 @@
             this.limit = attributes.limit || 80;
             this.offset = 0;
             this.search_count = 0;
-            this.screen_container = new Sao.ScreenContainer(attributes.tab_domain);
+            this.screen_container = new Sao.ScreenContainer(
+                attributes.tab_domain);
             this.parent = null;
             if (!attributes.row_activate) {
                 this.row_activate = this.default_row_activate;
@@ -175,13 +176,13 @@
                     this.attributes.order, this.context);
             var count_prm = this.model.execute('search_count', [domain],
                     this.context);
-            count_prm.done(function (count) {
+            count_prm.done(function(count) {
                 this.search_count = count;
             }.bind(this));
             grp_prm.done(this.set_group.bind(this));
             grp_prm.done(this.display.bind(this));
-            jQuery.when(grp_prm, count_prm).done(function (group, count) {
-                this.screen_container.but_next.button('option', 'disabled', 
+            jQuery.when(grp_prm, count_prm).done(function(group, count) {
+                this.screen_container.but_next.button('option', 'disabled',
                     !(group.length == this.limit &&
                         count > this.limit + this.offset));
             }.bind(this));
@@ -211,7 +212,7 @@
         },
         display: function() {
             if (this.views) {
-                this.search_active(["tree", "graph", "calendar"].indexOf(
+                this.search_active(['tree', 'graph', 'calendar'].indexOf(
                             this.current_view.view_type) > -1);
                 for (var i = 0; i < this.views.length; i++)
                     if (this.views[i])

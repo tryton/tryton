@@ -1261,7 +1261,7 @@
             this.el.append(this.entry);
             this.but_open = jQuery('<button/>').button({
                 'icons': {
-                    'primary': "ui-icon-search"
+                    'primary': 'ui-icon-search'
                 },
                 'text': false
             });
@@ -1269,7 +1269,7 @@
             this.el.append(this.but_open);
             this.but_new = jQuery('<button/>').button({
                 'icons': {
-                    'primary': "ui-icon-document"
+                    'primary': 'ui-icon-document'
                 },
                 'text': false
             });
@@ -1285,7 +1285,7 @@
                 'context': context,
                 'domain': domain,
                 'mode': ['form'],
-                'view_ids': (this.attributes.view_ids || "").split(','),
+                'view_ids': (this.attributes.view_ids || '').split(','),
                 'views_preload': this.attributes.views
             });
         },
@@ -1306,12 +1306,12 @@
             if (this.has_target(value)) {
                 this.but_open.button({
                     'icons': {
-                        'primary': "ui-icon-folder-open"
+                        'primary': 'ui-icon-folder-open'
                     }});
             } else {
                 this.but_open.button({
                     'icons': {
-                        'primary': "ui-icon-search"
+                        'primary': 'ui-icon-search'
                     }});
             }
         },
@@ -1329,19 +1329,19 @@
             this.but_new.prop('disabled', readonly && create); // TODO access
             // TODO but_open
         },
-        id_from_value: function (value) {
+        id_from_value: function(value) {
             return value;
         },
-        value_from_id: function (id, str) {
+        value_from_id: function(id, str) {
             if (str === undefined) {
                 str = '';
             }
             return [id, str];
         },
-        get_model: function (value) {
+        get_model: function(value) {
             return this.attributes.relation;
         },
-        has_target: function (value) {
+        has_target: function(value) {
             return value !== undefined && value !== null;
         },
         edit: function(evt) {
@@ -1354,18 +1354,18 @@
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
                 screen.new_group([m2o_id]);
-                var callback = function (result) {
+                var callback = function(result) {
                     if (result) {
                         var rec_name_prm = screen.current_record.rec_name();
-                        rec_name_prm.done(function (name) {
+                        rec_name_prm.done(function(name) {
                             var value = this.value_from_id(
                                 screen.current_record.id, name);
                             this.record().field_set_client(this.field_name,
                                 value, true);
                         }.bind(this));
                     }
-                }.bind(this);
-                win = new Sao.Window.Form(screen, callback, {
+                };
+                win = new Sao.Window.Form(screen, callback.bind(this), {
                     save_current: true
                 });
             } else if (this.get_model()) {
@@ -1374,35 +1374,37 @@
                 var context = this.field().get_context(record);
                 var text = this.entry.val();
                 if (text) {
-                    dom = [["rec_name", "ilike", "%" + text + "%"]];
+                    dom = [['rec_name', 'ilike', '%' + text + '%']];
                 } else {
                     dom = domain;
                 }
                 var model = new Sao.Model(this.get_model());
                 var ids_prm = model.execute('search',
                         [dom, 0, Sao.config.limit, null], context);
-                ids_prm.done(function (ids) {
+                ids_prm.done(function(ids) {
                     if (ids.length == 1) {
                         this.record().field_set_client(this.field_name,
                             this.id_from_value(ids[0]), true);
                         return;
                     }
-                    var callback = function (result) {
+                    var callback = function(result) {
                         if (!jQuery.isEmptyObject(result)) {
                             var value = this.value_from_id(result[0][0],
                                 result[0][1]);
                             this.record().field_set_client(this.field_name,
                                 value, true);
                         }
-                    }.bind(this);
-                    win = new Sao.Window.Search(this.model, callback, {
-                        sel_multi: false,
-                        ids: ids,
-                        context: context,
-                        domain: domain,
-                        view_ids: (this.attributes.view_ids || "").split(','),
-                        views_preload: (this.attributes.views || {}),
-                        new_: false // TODO compute from but_new status
+                    };
+                    win = new Sao.Window.Search(this.model,
+                        callback.bind(this), {
+                            sel_multi: false,
+                            ids: ids,
+                            context: context,
+                            domain: domain,
+                            view_ids: (this.attributes.view_ids ||
+                                '').split(','),
+                            views_preload: (this.attributes.views || {}),
+                            new_: false // TODO compute from but_new status
                     });
                 }.bind(this));
             }
@@ -1410,17 +1412,17 @@
         new_: function(evt) {
             // TODO Model Access
             var screen = this.get_screen();
-            var callback = function (result) {
+            var callback = function(result) {
                 if (result) {
                     var rec_name_prm = screen.current_record.rec_name();
-                    rec_name_prm.done(function (name) {
+                    rec_name_prm.done(function(name) {
                         var value = this.value_from_id(
                             screen.current_record.id, name);
                         this.record().field_set_client(this.field_name, value);
                     }.bind(this));
                 }
-            }.bind(this);
-            var win = new Sao.Window.Form(screen, callback, {
+            };
+            var win = new Sao.Window.Form(screen, callback.bind(this), {
                 new_: true,
                 save_current: true
             });
@@ -1468,18 +1470,18 @@
                     var context = this.field().get_context(record);
 
                     if (text) {
-                        dom = [["rec_name", "ilike", "%" + text + "%"]];
+                        dom = [['rec_name', 'ilike', '%' + text + '%']];
                     } else {
                         dom = domain;
                     }
                     var ids_prm = sao_model.execute('search',
                             [dom, 0, Sao.config.limit, null], context);
-                    ids_prm.done(function (ids) {
+                    ids_prm.done(function(ids) {
                         if (ids.length == 1) {
                             Sao.rpc({
                                 'method': 'model.' + model + '.read',
-                                'params': [[this.id_from_value(ids[0])], ['rec_name'],
-                                    context]
+                                'params': [[this.id_from_value(ids[0])],
+                                ['rec_name'], context]
                             }, this.record().model.session
                             ).then(function(values) {
                                 this.record().field_set_client(this.field_name,
@@ -1488,7 +1490,7 @@
                             }.bind(this));
                             return;
                         }
-                        var callback = function (result) {
+                        var callback = function(result) {
                             if (!jQuery.isEmptyObject(result)) {
                                 var value = this.value_from_id(result[0][0],
                                     result[0][1]);
@@ -1497,17 +1499,20 @@
                             } else {
                                 this.entry.val('');
                             }
-                        }.bind(this);
-                        var win = new Sao.Window.Search(model, callback, {
-                            sel_multi: false,
-                            ids: ids,
-                            context: context,
-                            domain: domain,
-                            view_ids: (this.attributes.view_ids ||
-                                "").split(','),
-                            views_preload: (this.attributes.views || {}),
-                            new_: false // TODO compute from but_new status
-                        });
+                        };
+                        var win = new Sao.Window.Search(model,
+                                callback.bind(this), {
+                                    sel_multi: false,
+                                    ids: ids,
+                                    context: context,
+                                    domain: domain,
+                                    view_ids: (this.attributes.view_ids ||
+                                        '').split(','),
+                                    views_preload: (this.attributes.views ||
+                                        {}),
+                                    new_: false
+                                    // TODO compute from but_new status
+                                });
                     }.bind(this));
                 }
             }

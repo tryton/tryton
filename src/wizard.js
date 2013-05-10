@@ -96,8 +96,8 @@
                     // TODO end for server error.
                     this.__processing = false;
                 }.bind(this));
-            }.bind(this);
-            process();
+            };
+            process.call(this);
         },
         destroy: function() {
             // TODO

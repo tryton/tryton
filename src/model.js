@@ -670,10 +670,10 @@
             }
             return new Sao.PYSON.Decoder(ctx).decode(expr);
         },
-        rec_name: function () {
+        rec_name: function() {
             var prm = this.model.execute('read', [[this.id], ['rec_name']],
                     this.get_context());
-            return prm.then(function (values) {
+            return prm.then(function(values) {
                 return values[0].rec_name;
             });
         },
@@ -750,7 +750,7 @@
                 });
             } else if (force_change) {
                 record._changed[this.name] = true;
-                this.changed(record).done(function () {
+                this.changed(record).done(function() {
                     record.validate(true);
                     record.group.root_group().screens.forEach(function(screen) {
                         screen.display();

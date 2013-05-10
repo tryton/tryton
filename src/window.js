@@ -18,7 +18,7 @@
                 this.screen.add_view_id(null, view_type);
             }
             var switch_prm = this.screen.switch_view(view_type);
-            switch_prm.done(function () {
+            switch_prm.done(function() {
                 if (kwargs.new_) {
                     this.screen.new_();
                 }
@@ -31,7 +31,7 @@
             this.callback = callback;
             this.el = jQuery('<div/>');
 
-            if (view_type == "tree") {
+            if (view_type == 'tree') {
                 // TODO
             }
 
@@ -59,7 +59,7 @@
                 });
             }
 
-            switch_prm.done(function () {
+            switch_prm.done(function() {
                 this.el.dialog({
                     autoOpen: false,
                     buttons: buttons,
@@ -71,7 +71,7 @@
             }.bind(this));
 
         },
-        response: function (response_id) {
+        response: function(response_id) {
             var result;
             var closing_prm;
             this.screen.current_view.set_value();
@@ -100,7 +100,7 @@
                     closing_prm.reject();
                 }
 
-                closing_prm.fail(function () {
+                closing_prm.fail(function() {
                     // TODO set_cursor
                     this.screen.display();
                 }.bind(this));
@@ -184,14 +184,14 @@
                 this.screen.new_group(kwargs.ids);
             }
             this.screen.load_next_view().done(function() {
-                this.screen.switch_view().done(function () {
+                this.screen.switch_view().done(function() {
                     this.el.append(this.screen.screen_container.el);
                     this.el.dialog('open');
                     this.screen.display();
                 }.bind(this));
             }.bind(this));
         },
-        response: function (response_id) {
+        response: function(response_id) {
             var records;
             var value = [];
             if (response_id == 'RESPONSE_OK') {
