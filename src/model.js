@@ -496,7 +496,15 @@
                 if (!(fname in this.model.fields)) {
                     continue;
                 }
-                // TODO rec_name
+                if (this.model.fields[fname] instanceof Sao.field.Many2One) {
+                    // TODO reference
+                    var field_rec_name = fname + '.rec_name';
+                    if (values.hasOwnProperty(field_rec_name)) {
+                        this._values[field_rec_name] = values[field_rec_name];
+                    } else if (this._values.hasOwnProperty(field_rec_name)) {
+                        delete this._values[field_rec_name];
+                    }
+                }
                 this.model.fields[fname].set_default(this, value);
                 this._loaded[fname] = true;
             }
@@ -622,7 +630,16 @@
                     later[fieldname] = value;
                     continue;
                 }
-                // TODO rec_name
+                if (this.model.fields[fieldname] instanceof
+                        Sao.field.Many2One) {
+                    // TODO reference
+                    var field_rec_name = fieldname + '.rec_name';
+                    if (values.hasOwnProperty(field_rec_name)) {
+                        this._values[field_rec_name] = values[field_rec_name];
+                    } else if (this._values.hasOwnProperty(field_rec_name)) {
+                        delete this._values[field_rec_name];
+                    }
+                }
                 this.model.fields[fieldname].set_on_change(this, value);
             }
             for (fieldname in later) {
