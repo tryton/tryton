@@ -73,7 +73,7 @@
         },
         response: function(response_id) {
             var result;
-            var closing_prm;
+            var closing_prm = jQuery.when();
             this.screen.current_view.set_value();
 
             if (response_id == 'RESPONSE_OK' &&
@@ -96,7 +96,6 @@
                     }
                 }
                 if (!validate) {
-                    closing_prm = jQuery.when();
                     closing_prm.reject();
                 }
 
@@ -171,6 +170,7 @@
             });
 
             this.el.dialog({
+                title: 'Search',  // TODO translate
                 autoOpen: false,
                 buttons: buttons
             });
@@ -197,9 +197,33 @@
             if (response_id == 'RESPONSE_OK') {
                 records = this.screen.current_view.selected_records();
             } else if (response_id == 'RESPONSE_APPLY') {
-                // TODO
+                this.screen.search_filter();
+                return;
             } else if (response_id == 'RESPONSE_ACCEPT') {
-                // TODO
+                var screen = new Sao.Screen(this.model_name, {
+                    domain: this.domain,
+                    context: this.context,
+                    mode: ['form']
+                });
+
+                var callback = function(result) {
+                    if (result) {
+                        screen.save_current().then(function() {
+                            var record = screen.current_record;
+                            this.callback([[record.id,
+                                record._values.rec_name || '']]);
+                        }.bind(this), function() {
+                            this.callback(null);
+                        }.bind(this));
+                    } else {
+                        this.callback(null);
+                    }
+                };
+                this.el.dialog('destroy');
+                new Sao.Window.Form(screen, callback.bind(this), {
+                    new_: true
+                });
+                return;
             }
             if (records) {
                 var index, record;

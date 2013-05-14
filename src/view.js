@@ -1404,7 +1404,7 @@
                             view_ids: (this.attributes.view_ids ||
                                 '').split(','),
                             views_preload: (this.attributes.views || {}),
-                            new_: false // TODO compute from but_new status
+                            new_: !this.but_new.prop('disabled')
                     });
                 }.bind(this));
             }
