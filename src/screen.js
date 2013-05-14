@@ -21,7 +21,7 @@
             this.search_entry = jQuery('<input/>');
             this.search_entry.keypress(function(e) {
                 if (e.which == 13) {
-                    this.screen.search_filter(this.search_entry.val());
+                    this.do_search();
                     return false;
                 }
             }.bind(this));
@@ -41,10 +41,30 @@
             });
             this.but_next.click(this.search_next.bind(this));
             this.filter_box.append(this.but_next);
+
             this.content_box = jQuery('<div/>', {
                 'class': 'content-box'
             });
-            this.el.append(this.content_box);
+
+            if (!jQuery.isEmptyObject(this.tab_domain)) {
+                this.tab = jQuery('<div/>', {
+                    'class': 'tab-domain'
+                }).append(jQuery('<div/>').append(jQuery('<ul/>')));
+                this.tab.tabs();
+                this.tab_domain.forEach(function(tab_domain, i) {
+                    var name = tab_domain[0];
+                    this.tab.tabs('add', '#' + i, name);
+                }.bind(this));
+                this.tab.find('#0').append(this.content_box);
+                this.tab.tabs('select', '#0');
+                this.tab.tabs({
+                    'activate': this.switch_page.bind(this)
+                });
+                this.el.append(this.tab);
+            } else {
+                this.tab = null;
+                this.el.append(this.content_box);
+            }
         },
         search_prev: function() {
             this.screen.search_prev(this.search_entry.val());
@@ -52,14 +72,38 @@
         search_next: function() {
             this.screen.search_next(this.search_entry.val());
         },
+        switch_page: function(event, ui) {
+            ui.newPanel.append(ui.oldPanel.children().detach());
+            this.do_search();
+        },
+        get_tab_domain: function() {
+            if (!this.tab) {
+                return [];
+            }
+            return this.tab_domain[this.tab.tabs('option', 'active')][1];
+        },
+        do_search: function() {
+            this.screen.search_filter(this.search_entry.val());
+        },
         set_screen: function(screen) {
             this.screen = screen;
         },
         show_filter: function() {
-            this.filter_box.css('display', 'block');
+            this.filter_box.show();
+            if (this.tab) {
+                this.tab.show();
+                this.content_box.detach();
+                this.tab.find('#' + this.tab.tabs('option', 'active'))
+                    .append(this.content_box);
+            }
         },
         hide_filter: function() {
-            this.filter_box.css('display', 'none');
+            this.filter_box.hide();
+            if (this.tab) {
+                this.tab.hide();
+                this.content_box.detach();
+                this.el.append(this.content_box);
+            }
         },
         set: function(widget) {
             this.content_box.children().detach();
@@ -172,6 +216,12 @@
                 domain.push(this.attributes.domain);
             } else
                 domain = this.attributes.domain || [];
+
+            var tab_domain = this.screen_container.get_tab_domain();
+            if (!jQuery.isEmptyObject(tab_domain)) {
+                domain = ['AND', domain, tab_domain];
+            }
+
             var grp_prm = this.model.find(domain, this.offset, this.limit,
                     this.attributes.order, this.context);
             var count_prm = this.model.execute('search_count', [domain],
