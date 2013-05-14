@@ -387,6 +387,13 @@
             this.offset += this.limit;
             this.search_filter(search_string);
         },
+        get: function() {
+            if (!this.current_record) {
+                return null;
+            }
+            this.current_view.set_value();
+            return this.current_record.get();
+        },
         get_on_change_value: function() {
             if (!this.current_record) {
                 return null;

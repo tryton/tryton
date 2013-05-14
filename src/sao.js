@@ -67,6 +67,24 @@ var Sao = {};
         Sao.login();
     };
 
+    Sao.preferences = function() {
+        // TODO check modified
+        jQuery('#tabs').children().remove();
+        jQuery('#user-menu').children().remove();
+        jQuery('#menu').children().remove();
+        new Sao.Window.Preferences(function() {
+            var session = Sao.Session.current_session;
+            session.reload_context().done(
+                Sao.rpc({
+                    'method': 'model.res.user.get_preferences',
+                    'params': [false, {}]
+                }, session).then(function(preferences) {
+                    Sao.menu(preferences);
+                    Sao.user_menu(preferences);
+                }));
+        });
+    };
+
     Sao.user_menu = function(preferences) {
         var user_menu = jQuery('#user-menu');
         user_menu.append(jQuery('<ul/>')
@@ -76,7 +94,11 @@ var Sao = {};
                 }).append(preferences.status_bar)).append(
                 jQuery('<ul/>').append(
                     jQuery('<li/>').append(
-                        // TODO add preferences
+                        jQuery('<a/>', {
+                            'href': '#'
+                        }).click(Sao.preferences).append('Preferences')
+                        ),
+                    jQuery('<li/>').append(
                         jQuery('<a/>', {
                             'href': '#'
                         }).click(Sao.logout).append('Logout')

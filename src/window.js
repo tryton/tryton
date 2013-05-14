@@ -213,4 +213,83 @@
         }
     });
 
+    Sao.Window.Preferences = Sao.class_(Object, {
+        init: function(callback) {
+            this.callback = callback;
+            this.el = jQuery('<div/>');
+
+            var buttons = [];
+            buttons.push({
+                text: 'Cancel',  // TODO translate
+                click: function() {
+                    this.response('RESPONSE_CANCEL');
+                }.bind(this)
+            });
+            buttons.push({
+                text: 'Ok',  // TODO translate
+                click: function() {
+                    this.response('RESPONSE_OK');
+                }.bind(this)
+            });
+
+            this.el.dialog({
+                title: 'Preferences',  // TODO translate
+                autoOpen: false,
+                buttons: buttons
+            });
+
+            this.screen = new Sao.Screen('res.user', {
+                mode: []
+            });
+            // TODO fix readonly from modelaccess
+
+            var set_view = function(view) {
+                this.screen.add_view(view);
+                this.screen.switch_view().done(function() {
+                    this.screen.new_(false);
+                    this.screen.model.execute('get_preferences', [false], {})
+                    .then(set_preferences.bind(this), this.destroy);
+                }.bind(this));
+            };
+            var set_preferences = function(preferences) {
+                this.screen.current_record.set(preferences);
+                this.screen.current_record.id =
+                    this.screen.model.session.user_id;
+                this.screen.current_record.validate(null, true);
+                this.screen.display();
+                this.el.append(this.screen.screen_container.el);
+                this.el.dialog('open');
+            };
+
+            this.screen.model.execute('get_preferences_fields_view', [], {})
+                .then(set_view.bind(this), this.destroy);
+        },
+        response: function(response_id) {
+            if (response_id == 'RESPONSE_OK') {
+                if (this.screen.current_record.validate()) {
+                    var values = jQuery.extend({}, this.screen.get());
+                    var password = false;
+                    if ('password' in values) {
+                        // TODO translate
+                        password = window.prompt('Current Password:');
+                        if (!password) {
+                            return;
+                        }
+                    }
+                    this.screen.model.execute('set_preferences',
+                            [values, password], {}).done(function() {
+                                this.destroy();
+                                this.callback();
+                            }.bind(this));
+                    return;
+                }
+            }
+            this.destroy();
+            this.callback();
+        },
+        destroy: function() {
+            this.el.dialog('destroy');
+        }
+    });
+
 }());
