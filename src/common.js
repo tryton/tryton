@@ -13,8 +13,19 @@
     Sao.common.F3_KEYCODE = 114;
 
     Sao.common.compare = function(arr1, arr2) {
-        return (jQuery(arr1).not(arr2).length === 0 &&
-                jQuery(arr2).not(arr1).length === 0);
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (var i = 0; i < arr1.length; i++) {
+            if (arr1[i] instanceof Array && arr2[i] instanceof Array) {
+                if (!Sao.common.compare(arr1[i], arr2[i])) {
+                    return false;
+                }
+            } else if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
     };
 
     // Find the intersection of two arrays.
