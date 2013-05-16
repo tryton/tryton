@@ -66,6 +66,9 @@
                 this.el.append(this.content_box);
             }
         },
+        set_text: function(value) {
+            this.search_entry.val(value);
+        },
         search_prev: function() {
             this.screen.search_prev(this.search_entry.val());
         },
@@ -136,6 +139,8 @@
             } else {
                 this.row_activate = attributes.row_activate;
             }
+            this.fields_view_tree = null;
+            this.domain_parser = null;
         },
         load_next_view: function() {
             if (this.view_to_load) {
@@ -158,7 +163,11 @@
             var arch = view.arch;
             var fields = view.fields;
             var xml_view = jQuery(jQuery.parseXML(arch));
-            // TODO loading lazy/eager
+
+            if (xml_view.children().prop('tagName') == 'tree') {
+                this.fields_view_tree = view;
+            }
+
             var loading = 'eager';
             if (xml_view.children().prop('tagName') == 'form') {
                 loading = 'lazy';
@@ -209,11 +218,23 @@
         },
         search_filter: function(search_string) {
             var domain = [];
-            // TODO domain parser
 
-            if (domain.length && this.attributes.domain) {
-                domain.unshift('AND');
-                domain.push(this.attributes.domain);
+            if (this.domain_parser && !this.parent) {
+                if (search_string || search_string === '') {
+                    domain = this.domain_parser.parse(search_string);
+                } else {
+                    domain = this.attributes.search_value;
+                }
+                this.screen_container.set_text(
+                        this.domain_parser.string(domain));
+            } else {
+                domain = [['id', 'in', this.group.map(function(r) {
+                    return r.id;
+                })]];
+            }
+
+            if (!jQuery.isEmptyObject(domain) && this.attributes.domain) {
+                domain = ['AND', domain, this.attributes.domain];
             } else
                 domain = this.attributes.domain || [];
 
@@ -423,11 +444,86 @@
         },
         search_active: function(active) {
             if (active && !this.parent) {
+                if (!this.fields_view_tree) {
+                    this.model.execute('fields_view_get',
+                            [false, 'tree'], this.context)
+                        .then(function(view) {
+                            this.fields_view_tree = view;
+                            this.search_active(active);
+                        }.bind(this));
+                    return;
+                }
+                if (!this.domain_parser) {
+                    var fields = jQuery.extend({},
+                            this.fields_view_tree.fields);
+
+                    var set_selection = function(props) {
+                        return function(selection) {
+                            props.selection = selection;
+                        };
+                    };
+                    for (var name in fields) {
+                        if (!fields.hasOwnProperty(name)) {
+                            continue;
+                        }
+                        var props = fields[name];
+                        if ((props.type != 'selection') &&
+                                (props.type != 'reference')) {
+                            continue;
+                        }
+                        if (props.selection instanceof Array) {
+                            continue;
+                        }
+                        this.get_selection(props).then(set_selection);
+                    }
+
+                    // Filter only fields in XML view
+                    var xml_view = jQuery(jQuery.parseXML(
+                                this.fields_view_tree.arch));
+                    var xml_fields = xml_view.find('tree').children()
+                        .filter(function(node) {
+                            return node.tagName == 'field';
+                        }).map(function(node) {
+                            return node.getAttribute('name');
+                        });
+                    var dom_fields = {};
+                    xml_fields.each(function(name) {
+                        dom_fields[name] = fields[name];
+                    });
+                    if (!('id' in fields)) {
+                        fields.id = {
+                            'string': 'ID',  // TODO translate
+                            'name': 'id',
+                            'type': 'integer'
+                        };
+                    }
+                    this.domain_parser = new Sao.common.DomainParser(fields);
+                }
                 this.screen_container.set_screen(this);
                 this.screen_container.show_filter();
             } else {
                 this.screen_container.hide_filter();
             }
+        },
+        get_selection: function(props) {
+            var prm;
+            var change_with = props.selection_change_with;
+            if (change_with) {
+                var values = {};
+                change_with.forEach(function(p) {
+                    values[p] = null;
+                });
+                prm = this.model.execute(props.selection,
+                        [values]);
+            } else {
+                prm = this.model.execute(props.selection,
+                        []);
+            }
+            return prm.then(function(selection) {
+                return selection.sort(function(a, b) {
+                    return a[1].localeCompare(b[1]);
+                });
+            });
         },
         search_prev: function(search_string) {
             this.offset -= this.limit;

@@ -778,6 +778,432 @@
                 new Date(2010, 1, 22, 10, 30, 20, 2).valueOf());
     });
 
+    QUnit.test('DomainParser.group_operator', function() {
+        var parser = new Sao.common.DomainParser();
+        QUnit.ok(Sao.common.compare(parser.group_operator(['a', '>', '=']),
+                ['a', '>=']), "group_operator(['a', '>', '='])");
+        QUnit.ok(Sao.common.compare(parser.group_operator(['>', '=', 'b']),
+                ['>=', 'b']), "group_operator(['>', '=', 'b'])");
+        QUnit.ok(Sao.common.compare(parser.group_operator(['a', '=', 'b']),
+                ['a', '=', 'b']), "group_operator(['a', '=', 'b'])");
+        QUnit.ok(Sao.common.compare(parser.group_operator(['a', '>', '=', 'b']),
+                ['a', '>=', 'b']), "group_operator(['a', '>', '=', 'b'])");
+        QUnit.ok(Sao.common.compare(parser.group_operator(['a', '>', '=', '=']),
+                ['a', '>=', '=']), "group_operator(['a', '>', '=', '='])");
+    });
+
+    QUnit.test('DomainParser.parenthesize', function() {
+        var parser = new Sao.common.DomainParser();
+        [
+        [['a'], ['a']],
+        [['a', 'b'], ['a', 'b']],
+        [['(', 'a', ')'], [['a']]],
+        [['a', 'b', '(', 'c', '(', 'd', 'e', ')', 'f', ')', 'g'],
+            ['a', 'b', ['c', ['d', 'e'], 'f'], 'g']],
+        [['a', 'b', '(', 'c'], ['a', 'b', ['c']]],
+        [['a', 'b', '(', 'c', '(', 'd', 'e', ')', 'f'],
+            ['a', 'b', ['c', ['d', 'e'], 'f']]],
+        [['a', 'b', ')'], ['a', 'b']],
+        [['a', 'b', ')', 'c', ')', 'd)'], ['a', 'b']]
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(parser.parenthesize(value), result),
+                'parenthesize(' + JSON.stringify(value) + ')');
+        });
+    });
+
+    QUnit.test('DomainParser.group', function() {
+        var parser = new Sao.common.DomainParser({
+            'name': {
+                'string': 'Name'
+            },
+            'firstname': {
+                'string': 'First Name'
+            },
+            'surname': {
+                'string': '(Sur)Name'
+            }
+        });
+        var udlex = function(input) {
+            var lex = new Sao.common.udlex(input);
+            var tokens = [];
+            while (true) {
+                var token = lex.next();
+                if (token === null) {
+                    break;
+                }
+                tokens.push(token);
+            }
+            return tokens;
+        };
+        [
+        ['Name: Doe', [['Name', null, 'Doe']]],
+        ['"(Sur)Name": Doe', [['(Sur)Name', null, 'Doe']]],
+        ['Name: Doe Name: John', [
+            ['Name', null, 'Doe'],
+            ['Name', null, 'John']
+            ]],
+        ['Name: Name: John', [
+            ['Name', null, null],
+            ['Name', null, 'John']
+            ]],
+        ['First Name: John', [['First Name', null, 'John']]],
+        ['Name: Doe First Name: John', [
+            ['Name', null, 'Doe'],
+            ['First Name', null, 'John']
+            ]],
+        ['First Name: John Name: Doe', [
+            ['First Name', null, 'John'],
+            ['Name', null, 'Doe']
+            ]],
+        ['First Name: John First Name: Jane', [
+            ['First Name', null, 'John'],
+            ['First Name', null, 'Jane']
+            ]],
+        ['Name: John Doe', [
+            ['Name', null, 'John'],
+            ['Doe']
+            ]],
+        ['Name: "John Doe"', [['Name', null, 'John Doe']]],
+        ['Name: =Doe', [['Name', '=', 'Doe']]],
+        ['Name: =Doe Name: >John', [
+            ['Name', '=', 'Doe'],
+            ['Name', '>', 'John']
+            ]],
+        ['First Name: =John First Name: =Jane', [
+            ['First Name', '=', 'John'],
+            ['First Name', '=', 'Jane']
+            ]],
+        ['Name: John;Jane', [['Name', null, ['John', 'Jane']]]],
+        ['Name: John;', [['Name', null, ['John']]]],
+        ['Name: John;Jane Name: Doe', [
+            ['Name', null, ['John', 'Jane']],
+            ['Name', null, 'Doe']
+            ]],
+        ['Name: John; Name: Doe', [
+            ['Name', null, ['John']],
+            ['Name', null, 'Doe']
+            ]],
+        ['Name:', [['Name', null, null]]],
+        ['Name: =', [['Name', '=', null]]],
+        ['Name: =""', [['Name', '=', '']]],
+        ['Name: = ""', [['Name', '=', '']]],
+        ['Name: = Name: Doe', [
+            ['Name', '=', null],
+            ['Name', null, 'Doe']
+            ]]
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(parser.group(udlex(value)), result),
+                'group(udlex(' + JSON.stringify(value) + ')');
+        });
+    });
+
+    QUnit.test('DomainParser.operatorize', function() {
+        var parser = new Sao.common.DomainParser();
+        var a = ['a', 'a', 'a'];
+        var b = ['b', 'b', 'b'];
+        var c = ['c', 'c', 'c'];
+        [
+        [['a'], ['a']],
+        [['a', 'or', 'b'], [['OR', 'a', 'b']]],
+        [['a', 'or', 'b', 'or', 'c'], [['OR', ['OR', 'a', 'b'], 'c']]],
+        [['a', 'b', 'or', 'c'], ['a', ['OR', 'b', 'c']]],
+        [['a', 'or', 'b', 'c'], [['OR', 'a', 'b'], 'c']],
+        [['a', ['b', 'c']], ['a', ['b', 'c']]],
+        [['a', ['b', 'c'], 'd'], ['a', ['b', 'c'], 'd']],
+        [['a', 'or', ['b', 'c']], [['OR', 'a', ['b', 'c']]]],
+        [['a', 'or', ['b', 'c'], 'd'],
+            [['OR', 'a', ['b', 'c']], 'd']],
+        [['a', ['b', 'c'], 'or', 'd'],
+            ['a', ['OR', ['b', 'c'], 'd']]],
+        [['a', 'or', ['b', 'or', 'c']],
+            [['OR', 'a', [['OR', 'b', 'c']]]]],
+        [['or'], []],
+        [['or', 'a'], ['a']],
+        [['a', ['or', 'b']], ['a', ['b']]],
+        [['a', 'or', 'or', 'b'], [['OR', 'a', 'b']]],
+        [['or', 'or', 'a'], ['a']],
+        [['or', 'or', 'a', 'b'], ['a', 'b']],
+        [['or', 'or', 'a', 'or', 'b'], [['OR', 'a', 'b']]],
+        [['a', ['b', 'or', 'c']], ['a', [['OR', 'b', 'c']]]],
+        [[a, [b, ['or'], c]], [a, [['OR', b, c]]]],
+        [['a', ['b', 'or']], ['a', [['OR', 'b']]]]
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(parser.operatorize(value), result),
+                'operatorize(' + JSON.stringify(value) + ')');
+        });
+    });
+
+    QUnit.test('DomainParser.convert_value', function() {
+        var parser = new Sao.common.DomainParser();
+
+        var test_func = function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.strictEqual(parser.convert_value(this, value), result,
+                'convert_value(' + JSON.stringify(this) + ', ' +
+                    JSON.stringify(value) + ')');
+        };
+
+        var field = {
+            'type': 'boolean'
+        };
+        [
+        ['Y', true],
+        ['yes', true],
+        ['t', true],
+        ['1', true],
+        ['N', false],
+        ['False', false],
+        ['no', false],
+        ['0', false],
+        [null, false]
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'float'
+        };
+        [
+        ['1', 1.0],
+        ['1.5', 1.5],
+        ['', null],
+        ['test', null],
+        [null, null]
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'integer'
+        };
+        [
+        ['1', 1],
+        ['1.5', 1],
+        ['', null],
+        ['test', null],
+        [null, null]
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'numeric'
+        };
+        [
+        ['1', new Sao.Decimal(1)],
+        ['1.5', new Sao.Decimal('1.5')],
+        ['', null],
+        ['test', null],
+        [null, null]
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            value = parser.convert_value(field, value);
+            if (value !== null) {
+                value = value.toString();
+            }
+            if (result !== null) {
+                result = result.toString();
+            }
+            QUnit.strictEqual(value, result,
+                'convert_value(' + JSON.stringify(field) + ', ' +
+                    JSON.stringify(test[0]) + ')');
+        });
+
+        field = {
+            'type': 'selection',
+            'selection': [
+                ['male', 'Male'],
+                ['female', 'Female']
+            ]
+        };
+        [
+        ['Male', 'male'],
+        ['male', 'male'],
+        ['test', 'test']
+        ].forEach(test_func, field);
+    });
+
+    QUnit.test('DomainParser.parse_clause', function() {
+        var parser = new Sao.common.DomainParser({
+            'name': {
+                'string': 'Name',
+                'name': 'name',
+                'type': 'char'
+            },
+            'integer': {
+                'string': 'Integer',
+                'name': 'integer',
+                'type': 'integer'
+            },
+            'selection': {
+                'string': 'Selection',
+                'name': 'selection',
+                'type': 'selection',
+                'selection': [
+                    ['male', 'Male'],
+                    ['female', 'Female']
+                ]
+            }
+        });
+        [
+        [[['John']], [['rec_name', 'ilike', '%John%']]],
+        [[['Name', null, null]], [['name', 'ilike', '%']]],
+        [[['Name', '=', null]], [['name', '=', null]]],
+        [[['Name', '=', '']], [['name', '=', '']]],
+        [[['Name', null, 'Doe']], [['name', 'ilike', '%Doe%']]],
+        [[['Name', '!', 'Doe']], [['name', 'not ilike', '%Doe%']]],
+        [[['Name', null, ['John', 'Jane']]],
+            [['name', 'in', ['John', 'Jane']]]],
+        [[['Name', '!', ['John', 'Jane']]],
+            [['name', 'not in', ['John', 'Jane']]]],
+        [[['Selection', null, ['Male', 'Female']]],
+            [['selection', 'in', ['male', 'female']]]],
+        [[['Integer', null, null]], [['integer', '=', null]]],
+        [[['Integer', null, '3..5']], [[
+            ['integer', '>=', 3],
+            ['integer', '<', 5]
+            ]]]
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(parser.parse_clause(value), result),
+                'parse_clause(' + JSON.stringify(value) + ')');
+        });
+    });
+
+    QUnit.test('DomainParser.format_value', function() {
+        var parser = new Sao.common.DomainParser();
+
+        var test_func = function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.strictEqual(parser.format_value(this, value), result,
+                'format_value(' + JSON.stringify(this) + ', ' +
+                    JSON.stringify(value) + ')');
+        };
+
+        var field = {
+            'type': 'boolean'
+        };
+        [
+        [true, 'True'],
+        [false, 'False'],
+        [null, 'False']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'integer'
+        };
+        [
+        [1, '1'],
+        [1.5, '1'],
+        [0, '0'],
+        [0.0, '0'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'float',
+            'digits': [16, 2]
+        };
+        [
+        [1, '1.00'],
+        [1.5, '1.50'],
+        [0, '0.00'],
+        [0.0, '0.00'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'numeric',
+            'digits': [16, 2]
+        };
+        [
+        [new Sao.Decimal(1), '1.00'],
+        [new Sao.Decimal('1.5'), '1.50'],
+        [new Sao.Decimal(0), '0.00'],
+        [new Sao.Decimal('0.0'), '0.00'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'selection',
+            'selection': [
+                ['male', 'Male'],
+                ['female', 'Female']
+                ]
+        };
+        [
+        ['male', 'Male'],
+        ['test', 'test'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+    });
+
+    QUnit.test('DomainParser.string', function() {
+        var parser = new Sao.common.DomainParser({
+            'name': {
+                'string': 'Name',
+                'type': 'char'
+            },
+            'surname': {
+                'string': '(Sur)Name',
+                'type': 'char'
+            },
+            'date': {
+                'string': 'Date',
+                'type': 'date'
+            }
+        });
+
+        [
+        [[['name', '=', 'Doe']], 'Name: =Doe'],
+        [[['name', '=', null]], 'Name: ='],
+        [[['name', '=', '']], 'Name: =""'],
+        [[['name', 'ilike', '%']], 'Name: '],
+        [[['name', 'ilike', '%Doe%']], 'Name: Doe'],
+        [[['name', 'ilike', 'Doe']], 'Name: =Doe'],
+        [[['name', 'ilike', 'Doe%']], 'Name: Doe%'],
+        [[['name', 'ilike', 'Doe%%']], 'Name: =Doe%'],
+        [[['name', 'not ilike', '%Doe%']], 'Name: !Doe'],
+        [[['name', 'in', ['John', 'Jane']]], 'Name: John;Jane'],
+        [[['name', 'not in', ['John', 'Jane']]], 'Name: !John;Jane'],
+        [[
+            ['name', 'ilike', '%Doe%'],
+            ['name', 'ilike', '%Jane%']
+            ], 'Name: Doe Name: Jane'],
+        [['AND',
+            ['name', 'ilike', '%Doe%'],
+            ['name', 'ilike', '%Jane%']
+            ], 'Name: Doe Name: Jane'],
+        [['OR',
+            ['name', 'ilike', '%Doe%'],
+            ['name', 'ilike', '%Jane%']
+            ], 'Name: Doe or Name: Jane'],
+        [[
+            ['name', 'ilike', '%Doe%'],
+            ['OR',
+                ['name', 'ilike', '%John%'],
+                ['name', 'ilike', '%Jane%']
+                ]
+            ], 'Name: Doe (Name: John or Name: Jane)'],
+        [[], ''],
+        [[['surname', 'ilike', '%Doe%']], '"(Sur)Name": Doe']
+        //[[['date', '>=', new Date(2012, 10, 24)]], 'Date: >=10/24/2012']
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.strictEqual(parser.string(value), result,
+                'string(' + JSON.stringify(value) + ')');
+        });
+    });
+
     QUnit.test('CRUD', function() {
         var run_tests = function() {
             var User = new Sao.Model('res.user');
