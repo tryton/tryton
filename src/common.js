@@ -172,7 +172,8 @@
                 this.selection = this._domain_cache[jdomain];
                 this._last_domain = domain;
             }
-            if (Sao.common.compare(domain, this._last_domain)) {
+            if ((this._last_domain !== null) &&
+                    Sao.common.compare(domain, this._last_domain)) {
                 return;
             }
             var prm = Sao.rpc({
