@@ -1017,7 +1017,7 @@ class ModelStorage(Model):
                             domain = PYSONDecoder(env).decode(pyson_domain)
                             relation_ids = []
                             if record[field_name]:
-                                if field._type in ('many2one',):
+                                if field._type in ('many2one', 'one2one'):
                                     relation_ids.append(record[field_name].id)
                                 else:
                                     relation_ids.extend(
@@ -1035,7 +1035,7 @@ class ModelStorage(Model):
                         relation_ids = []
                         for record in records:
                             if record[field_name]:
-                                if field._type in ('many2one',):
+                                if field._type in ('many2one', 'one2one'):
                                     relation_ids.append(record[field_name].id)
                                 else:
                                     relation_ids.extend(
