@@ -93,7 +93,6 @@ class Journal(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     type = fields.Selection('get_types', 'Type', required=True)
     view = fields.Many2One('account.journal.view', 'View')
-    centralised = fields.Boolean('Centralised counterpart')
     update_posted = fields.Boolean('Allow cancelling moves')
     sequence = fields.Property(fields.Many2One('ir.sequence', 'Sequence',
             domain=[('code', '=', 'account.journal')],
@@ -107,22 +106,20 @@ class Journal(ModelSQL, ModelView):
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'required': ((Eval('centralised', False)
-                        | (Eval('type') == 'cash'))
+                'required': ((Eval('type') == 'cash')
                     & Bool(Eval('context', {}).get('company', 0))),
                 'invisible': ~Eval('context', {}).get('company', 0),
-                }, depends=['type', 'centralised']))
+                }, depends=['type']))
     debit_account = fields.Property(fields.Many2One('account.account',
             'Default Debit Account', domain=[
                 ('kind', '!=', 'view'),
                 ('company', '=', Eval('context', {}).get('company', 0)),
                 ],
             states={
-                'required': ((Eval('centralised', False)
-                        | (Eval('type') == 'cash'))
+                'required': ((Eval('type') == 'cash')
                     & Bool(Eval('context', {}).get('company', 0))),
                 'invisible': ~Eval('context', {}).get('company', 0),
-                }, depends=['type', 'centralised']))
+                }, depends=['type']))
 
     @classmethod
     def __setup__(cls):
@@ -149,10 +146,6 @@ class Journal(ModelSQL, ModelView):
     @staticmethod
     def default_active():
         return True
-
-    @staticmethod
-    def default_centralised():
-        return False
 
     @staticmethod
     def default_update_posted():

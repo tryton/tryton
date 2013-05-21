@@ -43,7 +43,6 @@ def register():
         Move,
         Reconciliation,
         Line,
-        Move2,
         OpenJournalAsk,
         ReconcileLinesWriteOff,
         UnreconcileLinesStart,

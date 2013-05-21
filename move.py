@@ -17,7 +17,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
 from trytond.tools import reduce_ids
 
-__all__ = ['Move', 'Reconciliation', 'Line', 'Move2', 'OpenJournalAsk',
+__all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount', 'ReconcileLinesWriteOff', 'ReconcileLines',
     'UnreconcileLinesStart', 'UnreconcileLines', 'OpenReconcileLinesStart',
     'OpenReconcileLines', 'FiscalYearLine', 'FiscalYear2',
@@ -79,10 +79,6 @@ class Move(ModelSQL, ModelView):
                     '"%(move)s" to draft in journal "%(journal)s".'),
                 'modify_posted_move': ('You can not modify move "%s" because '
                     'it is already posted.'),
-                'period_centralized_journal': ('Move "%(move)s" cannot be '
-                    'created because there is already a move in journal '
-                    '"%(journal)s" and you cannot create more than one move '
-                    'per period in a centralized journal.'),
                 'company_in_move': ('You can not create lines on accounts'
                     'of different companies in move "%s".'),
                 'date_outside_period': ('You can not create move "%(move)s" '
@@ -172,22 +168,8 @@ class Move(ModelSQL, ModelView):
     def validate(cls, moves):
         super(Move, cls).validate(moves)
         for move in moves:
-            move.check_centralisation()
             move.check_company()
             move.check_date()
-
-    def check_centralisation(self):
-        if self.journal.centralised:
-            moves = self.search([
-                    ('period', '=', self.period.id),
-                    ('journal', '=', self.journal.id),
-                    ('state', '!=', 'posted'),
-                    ], limit=2)
-            if len(moves) > 1:
-                self.raise_user_error('period_centralized_journal', {
-                        'move': self.rec_name,
-                        'journal': self.journal.rec_name,
-                        })
 
     def check_company(self):
         company_id = -1
@@ -245,15 +227,6 @@ class Move(ModelSQL, ModelView):
                     vals['number'] = Sequence.get_id(journal.sequence.id)
 
         moves = super(Move, cls).create(vlist)
-        for move in moves:
-            if move.journal.centralised:
-                line, = MoveLine.create([{
-                            'account': move.journal.credit_account.id,
-                            'move': move.id,
-                            }])
-                cls.write([move], {
-                        'centralised_line': line.id,
-                        })
         cls.validate_move(moves)
         return moves
 
@@ -289,7 +262,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def validate_move(cls, moves):
         '''
-        Validate balanced move and centralise it if in centralised journal
+        Validate balanced move
         '''
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -335,39 +308,7 @@ class Move(ModelSQL, ModelView):
             draft_lines = MoveLine.browse(
                 list(move2draft_lines.get(move.id, [])))
             if not company.currency.is_zero(amount):
-                if not move.journal.centralised:
-                    draft_moves.append(move.id)
-                else:
-                    if not move.centralised_line:
-                        centralised_amount = - amount
-                    else:
-                        centralised_amount = move.centralised_line.debit \
-                            - move.centralised_line.credit \
-                            - amount
-                    if centralised_amount >= Decimal('0.0'):
-                        debit = centralised_amount
-                        credit = Decimal('0.0')
-                        account_id = move.journal.debit_account.id
-                    else:
-                        debit = Decimal('0.0')
-                        credit = - centralised_amount
-                        account_id = move.journal.credit_account.id
-                    if not move.centralised_line:
-                        centralised_line, = MoveLine.create([{
-                                    'debit': debit,
-                                    'credit': credit,
-                                    'account': account_id,
-                                    'move': move.id,
-                                    }])
-                        cls.write([move], {
-                            'centralised_line': centralised_line.id,
-                            })
-                    else:
-                        MoveLine.write([move.centralised_line], {
-                                'debit': debit,
-                                'credit': credit,
-                                'account': account_id,
-                                })
+                draft_moves.append(move.id)
                 continue
             if not draft_lines:
                 continue
@@ -1296,15 +1237,6 @@ class Line(ModelSQL, ModelView):
                 if not journal_id:
                     cls.raise_user_error('no_journal')
                 journal = Journal(journal_id)
-                if journal.centralised:
-                    moves = Move.search([
-                            ('period', '=', vals.get('period')
-                                or Transaction().context.get('period')),
-                            ('journal', '=', journal_id),
-                            ('state', '!=', 'posted'),
-                            ], limit=1)
-                    if moves:
-                        vals['move'] = moves[0].id
                 if not vals.get('move'):
                     vals['move'] = Move.create([{
                                 'period': (vals.get('period')
@@ -1443,12 +1375,6 @@ class Line(ModelSQL, ModelView):
         return Reconciliation.create([{
                     'lines': [('add', [x.id for x in lines])],
                     }])[0]
-
-
-class Move2:
-    __name__ = 'account.move'
-    centralised_line = fields.Many2One('account.move.line', 'Centralised Line',
-            readonly=True)
 
 
 class OpenJournalAsk(ModelView):

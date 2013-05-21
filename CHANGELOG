@@ -1,3 +1,5 @@
+* Remove centralised counterpart option and functionality
+
 Version 2.8.0 - 2013-04-22
 * Bug fixes (see mercurial logs for details)
 * Make period's post_move_sequence optional and use fiscal year's one if empty

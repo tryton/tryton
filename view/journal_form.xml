@@ -21,8 +21,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="debit_account"/>
             <label name="credit_account"/>
             <field name="credit_account"/>
-            <label name="centralised"/>
-            <field name="centralised"/>
             <newline/>
             <label name="update_posted"/>
             <field name="update_posted"/>
