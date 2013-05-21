@@ -101,7 +101,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
     currency_date = fields.Function(fields.Date('Currency Date',
         on_change_with=['invoice_date']), 'on_change_with_currency_date',)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states=_STATES, depends=_DEPENDS, domain=[('centralised', '=', False)])
+        states=_STATES, depends=_DEPENDS)
     move = fields.Many2One('account.move', 'Move', readonly=True)
     cancel_move = fields.Many2One('account.move', 'Cancel Move', readonly=True,
         states={
