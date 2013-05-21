@@ -21,9 +21,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="wizard_leveling"/>
         </record>
 
-        <record model="res.request.link" id="request_link_work">
-            <field name="name">Work</field>
-            <field name="model">project.work</field>
-        </record>
     </data>
 </tryton>

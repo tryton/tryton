@@ -30,8 +30,5 @@ this repository contains the full copyright notices and license terms. -->
             states="{'invisible': Not(Equal(Eval('type'), 'task'))}" >
             <field name="allocations" colspan="4"/>
         </page>
-        <page string="Requests" id="requests">
-            <field name="requests"/>
-        </page>
     </xpath>
 </data>

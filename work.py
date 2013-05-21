@@ -67,8 +67,6 @@ class Work:
     constraint_finish_date = fields.Function(fields.Date('Constraint Finish',
         depends=['type']), 'get_function_fields',
         setter='set_function_fields')
-    requests = fields.Function(fields.One2Many('res.request', None,
-        'Requests'), 'get_function_fields', setter='set_function_fields')
 
     @classmethod
     def __setup__(cls):
@@ -96,31 +94,11 @@ class Work:
         '''
         Function to compute function fields
         '''
-        RequestReference = Pool().get('res.request.reference')
-
         cursor = Transaction().cursor
 
         res = {}
 
         ids = [w.id for w in works]
-        if 'requests' in names:
-            requests = dict((i, []) for i in ids)
-
-            for i in range(0, len(ids), cursor.IN_MAX):
-                sub_ids = ids[i:i + cursor.IN_MAX]
-
-                req_refs = RequestReference.search([
-                        ('reference', 'in', [
-                                'project.work,%s' % i for i in sub_ids
-                                ]
-                         ),
-                        ])
-                for req_ref in req_refs:
-                    work_id = req_ref.reference.id
-                    requests[work_id].append(req_ref.request.id)
-
-            res['requests'] = requests
-
         if 'duration' in names:
             all_works = cls.search([
                     ('parent', 'child_of', ids),
@@ -182,68 +160,6 @@ class Work:
     @classmethod
     def set_function_fields(cls, works, name, value):
         pool = Pool()
-        Request = pool.get('res.request')
-        RequestReference = pool.get('res.request.reference')
-
-        if name == 'requests':
-            currents = dict((req.id, req) for work in works for req in
-                    work.requests)
-            if not value:
-                return
-            for v in value:
-                to_unlink = []
-                to_link = []
-                operator = v[0]
-
-                target_ids = len(v) > 1 and v[1] or []
-                if operator == 'create':
-                    request, = Request.create(v[1])
-                    to_link.append(request.id)
-                elif operator == 'write':
-                    Request.write([Request(v[1])], v[2])
-                elif operator == 'delete':
-                    Request.delete([Request(v[1])])
-                elif operator == 'delete_all':
-                    target_ids = []
-                    for work in works:
-                        refs = RequestReference.search([
-                                ('reference', '=', str(work)),
-                                ])
-                        target_ids.extend(ref.request.id for ref in refs)
-                    Request.delete(Request.browse(target_ids))
-                elif operator == 'unlink':
-                    to_unlink.extend((i for i in target_ids if i in currents))
-                elif operator == 'add':
-                    to_link.extend((i for i in target_ids if i not in
-                        currents))
-                elif operator == 'unlink_all':
-                    to_unlink.extend(currents)
-                elif operator == 'set':
-                    to_link.extend((i for i in target_ids
-                        if i not in currents))
-                    to_unlink.extend((i for i in currents
-                        if i not in target_ids))
-                else:
-                    raise Exception('Operation not supported')
-
-                req_refs = []
-                for i in to_unlink:
-                    request = currents[i]
-                    for ref in request.references:
-                        if ref.reference in works:
-                            req_refs.append(ref)
-                RequestReference.delete(req_refs)
-
-                to_create = []
-                for i in to_link:
-                    for work in works:
-                        to_create.append({
-                                'request': i,
-                                'reference': str(work),
-                                })
-                if to_create:
-                    RequestReference.create(to_create)
-            return
 
         fun_fields = ('actual_start_date', 'actual_finish_date',
                       'constraint_start_date', 'constraint_finish_date')
