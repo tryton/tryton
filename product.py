@@ -385,9 +385,11 @@ class Product:
                     context['stock_date_start'], today,
                     ])
         else:
-            periods = Period.search([
-                    ('date', '<', context['stock_date_end']),
-                    ], order=[('date', 'DESC')], limit=1)
+            with Transaction().set_user(0, set_context=True):
+                periods = Period.search([
+                        ('date', '<', context['stock_date_end']),
+                        ('state', '=', 'closed'),
+                        ], order=[('date', 'DESC')], limit=1)
             if periods:
                 period, = periods
                 state_date_clause += (' AND '
