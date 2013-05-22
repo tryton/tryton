@@ -82,7 +82,8 @@ class SaleLine:
     def get_move(self, shipment_type):
         move = super(SaleLine, self).get_move(shipment_type)
         if (shipment_type == 'out'
-                and self.supply_on_sale):
+                and (self.supply_on_sale
+                    or self.purchase_request)):
             if self.purchase_request_state in ('', 'requested'):
                 return
         return move
