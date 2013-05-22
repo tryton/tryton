@@ -720,8 +720,8 @@ class Line(ModelSQL, ModelView):
                         if ((tax_account.id if tax_account
                                     else line.account.id) == account_id
                                 and (tax_code.id if tax_code else None
-                                    == code_id \
-                                and tax_line['tax'].id == tax_id:
+                                    == code_id)
+                                and tax_line['tax'].id == tax_id):
                             if line.debit:
                                 line_amount += tax_line['amount']
                             else:
