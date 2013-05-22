@@ -355,16 +355,18 @@ class Product(ModelSQL, ModelView):
                     context['stock_date_start'], today,
                     ])
         else:
-            period_ids = period_obj.search([
-                ('date', '<', context['stock_date_end']),
-            ], order=[('date', 'DESC')], limit=1)
-            if period_ids:
-                period_id, = period_ids
-                period = period_obj.browse(period_id)
-                state_date_clause += (' AND '
-                    '(COALESCE(effective_date, planned_date) > %s)')
-                state_date_vals.append(period.date)
-                period_vals[0] = period.id
+            with Transaction().set_user(0, set_context=True):
+                period_ids = period_obj.search([
+                    ('date', '<', context['stock_date_end']),
+                    ('state', '=', 'closed'),
+                ], order=[('date', 'DESC')], limit=1)
+                if period_ids:
+                    period_id, = period_ids
+                    period = period_obj.browse(period_id)
+                    state_date_clause += (' AND '
+                        '(COALESCE(effective_date, planned_date) > %s)')
+                    state_date_vals.append(period.date)
+                    period_vals[0] = period.id
 
         if with_childs:
             query, args = location_obj.search([
