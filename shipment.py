@@ -33,7 +33,6 @@ class ShipmentInternal(ModelSQL, ModelView):
         """
         pool = Pool()
         OrderPoint = pool.get('stock.order_point')
-        Uom = pool.get('product.uom')
         Product = pool.get('product.product')
         Date = pool.get('ir.date')
         User = pool.get('res.user')
@@ -50,7 +49,8 @@ class ShipmentInternal(ModelSQL, ModelView):
             id2product[op.product.id] = op.product
             location_ids.append(op.storage_location.id)
 
-        with Transaction().set_context(stock_date_end=today):
+        # TODO Allow to compute for other future date
+        with Transaction().set_context(forecast=True, stock_date_end=today):
             pbl = Product.products_by_location(location_ids,
                 list(id2product.iterkeys()), with_childs=True)
 
@@ -64,33 +64,15 @@ class ShipmentInternal(ModelSQL, ModelView):
                        op.product.id)
                 moves[key] = op.max_quantity - qty
 
-        # Compare with existing draft shipments
-        shipments = cls.search([
-                ('state', '=', 'draft'),
-                ['OR',
-                    ('planned_date', '<=', today),
-                    ('planned_date', '=', None),
-                    ],
-                ])
-        for shipment in shipments:
-            for move in shipment.moves:
-                key = (shipment.from_location.id,
-                       shipment.to_location.id,
-                       move.product.id)
-                if key not in moves:
-                    continue
-                quantity = Uom.compute_qty(move.uom, move.quantity,
-                    id2product[move.product.id].default_uom)
-                moves[key] = max(0, moves[key] - quantity)
-
         # Group moves by {from,to}_location
-        shipments = {}
+        to_create = {}
         for key, qty in moves.iteritems():
             from_location, to_location, product = key
-            shipments.setdefault(
+            to_create.setdefault(
                 (from_location, to_location), []).append((product, qty))
         # Create shipments and moves
-        for locations, moves in shipments.iteritems():
+        shipments = []
+        for locations, moves in to_create.iteritems():
             from_location, to_location = locations
             shipment = cls(
                 from_location=from_location,
@@ -109,3 +91,6 @@ class ShipmentInternal(ModelSQL, ModelView):
                         company=user_record.company,
                         ))
             shipment.save()
+            shipments.append(shipment)
+        cls.wait(shipments)
+        return shipments
