@@ -5,6 +5,10 @@
 
     Sao.ScreenContainer = Sao.class_(Object, {
         init: function(tab_domain) {
+            this.alternate_viewport = jQuery('<div/>', {
+                'class': 'screen-container'
+            });
+            this.alternate_view = false;
             this.tab_domain = tab_domain || [];
             this.el = jQuery('<div/>', {
                 'class': 'screen-container'
@@ -109,8 +113,14 @@
             }
         },
         set: function(widget) {
-            this.content_box.children().detach();
-            this.content_box.append(widget);
+            if (this.alternate_view) {
+                this.alternate_viewport.children().detach();
+                // TODO test if widget is content_box widget
+                this.alternate_viewport.append(widget);
+            } else {
+                this.content_box.children().detach();
+                this.content_box.append(widget);
+            }
         }
     });
 
@@ -124,6 +134,7 @@
             this.view_to_load = jQuery.extend([],
                 attributes.mode || ['tree', 'form']);
             this.views = [];
+            this.exclude_field = attributes.exclude_field;
             this.context = attributes.context || {};
             this.new_group();
             this.current_view = null;
@@ -143,9 +154,9 @@
             this.domain_parser = null;
         },
         load_next_view: function() {
-            if (this.view_to_load) {
+            if (!jQuery.isEmptyObject(this.view_to_load)) {
                 var view_id;
-                if (this.view_ids) {
+                if (!jQuery.isEmptyObject(this.view_ids)) {
                     view_id = this.view_ids.shift();
                 }
                 var view_type = this.view_to_load.shift();
@@ -263,11 +274,13 @@
         },
         set_group: function(group) {
             if (this.group) {
+                jQuery.extend(group.model.fields, this.group.model.fields);
                 this.group.screens.splice(
                         this.group.screens.indexOf(this), 1);
             }
             group.screens.push(this);
             this.group = group;
+            this.model = group.model;
             if (jQuery.isEmptyObject(group)) {
                 this.current_record = null;
             } else {
@@ -285,10 +298,18 @@
             if (this.views) {
                 this.search_active(['tree', 'graph', 'calendar'].indexOf(
                             this.current_view.view_type) > -1);
-                for (var i = 0; i < this.views.length; i++)
-                    if (this.views[i])
+                for (var i = 0; i < this.views.length; i++) {
+                    if (this.views[i]) {
                         this.views[i].display();
+                    }
+                }
             }
+        },
+        display_next: function() {
+            // TODO
+        },
+        display_previous: function() {
+            // TODO
         },
         default_row_activate: function() {
             if ((this.current_view.view_type == 'tree') &&
@@ -394,6 +415,12 @@
             // TODO test view modified
             return false;
         },
+        unremove: function() {
+            var records = this.current_view.selected_records();
+            records.forEach(function(record) {
+                record.group.unremove(record);
+            });
+        },
         remove: function(delete_, remove, force_remove) {
             var result = jQuery.Deferred();
             var records = null;
@@ -418,14 +445,14 @@
                 var prms = [];
                 if (delete_) {
                     records.forEach(function(record) {
-                        if (record.parent) {
-                            prms.push(record.parent.save());
+                        if (record.group.parent) {
+                            prms.push(record.group.parent.save());
                         }
-                        if (record in record.group.record_deleted) {
+                        if (record.group.record_deleted.indexOf(record) != -1) {
                             record.group.record_deleted.splice(
                                 record.group.record_deleted.indexOf(record), 1);
                         }
-                        if (record in record.group.record_removed) {
+                        if (record.group.record_removed.indexOf(record) != -1) {
                             record.group.record_removed.splice(
                                 record.group.record_removed.indexOf(record), 1);
                         }
@@ -443,7 +470,7 @@
             return result;
         },
         search_active: function(active) {
-            if (active && !this.parent) {
+            if (active && !this.group.parent) {
                 if (!this.fields_view_tree) {
                     this.model.execute('fields_view_get',
                             [false, 'tree'], this.context)

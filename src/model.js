@@ -120,8 +120,7 @@
             }
         };
         array.new_ = function(default_, id) {
-            var record = new Sao.Record(this.name, id);
-            record.model = this.model;
+            var record = new Sao.Record(this.model, id);
             record.group = this;
             if (default_) {
                 record.default_get();
@@ -159,26 +158,26 @@
             var idx = this.indexOf(record);
             if (record.id >= 0) {
                 if (remove) {
-                    if (record in this.record_deleted) {
+                    if (this.record_deleted.indexOf(record) != -1) {
                         this.record_deleted.splice(
                                 this.record_deleted.indexOf(record), 1);
                     }
                     this.record_removed.push(record);
                 } else {
-                    if (record in this.record_removed) {
+                    if (this.record_removed.indexOf(record) != -1) {
                         this.record_removed.splice(
                                 this.record_removed.indexOf(record), 1);
                     }
                     this.record_deleted.push(record);
                 }
             }
-            if (record.parent) {
-                record.parent._changed.id = true;
+            if (record.group.parent) {
+                record.group.parent._changed.id = true;
             }
             if (modified) {
                 record._changed.id = true;
             }
-            if (!(record.parent) || (record.id < 0) || force_remove) {
+            if (!(record.group.parent) || (record.id < 0) || force_remove) {
                 this._remove(record);
             }
             record.group.changed();
@@ -189,6 +188,14 @@
         array._remove = function(record) {
             var idx = this.indexOf(record);
             this.splice(idx, 1);
+        };
+        array.unremove = function(record) {
+            this.record_removed.splice(this.record_removed.indexOf(record), 1);
+            this.record_deleted.splice(this.record_deleted.indexOf(record), 1);
+            record.group.changed();
+            record.group.root_group().screens.forEach(function(screen) {
+                screen.display();
+            });
         };
         array.changed = function() {
             if (!this.parent) {
@@ -685,6 +692,12 @@
         cancel: function() {
             this._loaded = {};
             this._changed = {};
+        },
+        deleted: function() {
+            return this.group.record_deleted.indexOf(this) != -1;
+        },
+        removed: function() {
+            return this.group.record_removed.indexOf(this) != -1;
         }
     });
 
@@ -782,8 +795,8 @@
         },
         get_context: function(record) {
             var context = jQuery.extend({}, record.get_context());
-            if (record.parent) {
-                jQuery.extend(context, record.parent.get_context());
+            if (record.group.parent) {
+                jQuery.extend(context, record.group.parent.get_context());
             }
             // TODO eval context attribute
             return context;
@@ -1302,7 +1315,7 @@
             for (var i = 0, len = record._values[this.name].length; i < len;
                     i++) {
                 var record2 = group[i];
-                if (!record2.deleted || !record2.removed)
+                if (!record2.deleted() || !record2.removed())
                     result.push(record2.get_on_change_value());
             }
             return result;

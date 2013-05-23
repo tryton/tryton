@@ -7,21 +7,27 @@
 
     Sao.Window.Form = Sao.class_(Object, {
         init: function(screen, callback, kwargs) {
+            kwargs = kwargs || {};
             this.screen = screen;
+            this.screen.screen_container.alternate_view = true;
             var view_type = kwargs.view_type || 'form';
+
+            var form_prm = jQuery.when();
             var screen_views = [];
-            for (var i = 0, len = this.screen.views; i < len; i++) {
+            for (var i = 0, len = this.screen.views.length; i < len; i++) {
                 screen_views.push(this.screen.views[i].view_type);
             }
             if (screen_views.indexOf(view_type) == -1 &&
                 this.screen.view_to_load.indexOf(view_type) == -1) {
-                this.screen.add_view_id(null, view_type);
+                form_prm = this.screen.add_view_id(null, view_type);
             }
-            var switch_prm = this.screen.switch_view(view_type);
-            switch_prm.done(function() {
-                if (kwargs.new_) {
-                    this.screen.new_();
-                }
+
+            var switch_prm = form_prm.then(function() {
+                return this.screen.switch_view(view_type).done(function() {
+                    if (kwargs.new_) {
+                        this.screen.new_();
+                    }
+                }.bind(this));
             }.bind(this));
             this.many = kwargs.many || 0;
             this.domain = kwargs.domain || null;
@@ -65,7 +71,7 @@
                     buttons: buttons,
                     title: '' // this.screen.current_view
                 });
-                this.el.append(this.screen.screen_container.content_box);
+                this.el.append(this.screen.screen_container.alternate_viewport);
                 this.el.dialog('open');
                 this.screen.display();
             }.bind(this));
@@ -126,13 +132,20 @@
 
             closing_prm.done(function() {
                 this.callback(result);
-                this.el.dialog('destroy');
+                this.destroy();
             }.bind(this));
+        },
+        destroy: function() {
+            this.screen.screen_container.alternate_view = false;
+            this.screen.screen_container.alternate_viewport.children()
+                .detach();
+            this.el.dialog('destroy');
         }
     });
 
     Sao.Window.Search = Sao.class_(Object, {
         init: function(model, callback, kwargs) {
+            kwargs = kwargs || {};
             var views_preload = kwargs.views_preload || {};
             this.model_name = model;
             this.domain = kwargs.domain || [];
