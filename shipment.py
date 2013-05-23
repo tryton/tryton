@@ -53,8 +53,8 @@ class ShipmentInternal(ModelSQL, ModelView):
         for op in order_points:
             qty = pbl.get((op.storage_location.id, op.product.id), 0)
             if qty < op.min_quantity:
-                key = (op.storage_location.id,
-                       op.provisioning_location.id,
+                key = (op.provisioning_location.id,
+                       op.storage_location.id,
                        op.product.id)
                 moves[key] = op.max_quantity - qty
 
@@ -67,8 +67,8 @@ class ShipmentInternal(ModelSQL, ModelView):
             ])
         for shipment in self.browse(shipment_ids):
             for move in shipment.moves:
-                key = (shipment.to_location.id,
-                       shipment.from_location.id,
+                key = (shipment.from_location.id,
+                       shipment.to_location.id,
                        move.product.id)
                 if key not in moves:
                     continue
