@@ -466,8 +466,28 @@ class CreatePurchaseRequest(Wizard):
             ])
     create_ = StateAction('stock_supply.act_purchase_request_form')
 
+    @classmethod
+    def __setup__(cls):
+        super(CreatePurchaseRequest, cls).__setup__()
+        cls._error_messages.update({
+                'late_supplier_moves': ('There are some late supplier moves, '
+                    'are you sure to ignore them?'),
+                })
+
     def do_create_(self, action):
-        PurchaseRequest = Pool().get('purchase.request')
+        pool = Pool()
+        PurchaseRequest = pool.get('purchase.request')
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+        today = Date.today()
+        if Move.search([
+                    ('from_location.type', '=', 'supplier'),
+                    ('to_location.type', '=', 'storage'),
+                    ('state', '=', 'draft'),
+                    ('planned_date', '<', today),
+                    ], order=[]):
+            self.raise_user_warning('%s@%s' % (self.__name__, today),
+                'late_supplier_moves')
         PurchaseRequest.generate_requests()
         return action, {}
 
