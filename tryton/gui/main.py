@@ -18,6 +18,7 @@ import tryton.rpc as rpc
 from tryton.config import CONFIG, TRYTON_ICON, PIXMAPS_DIR, DATA_DIR, \
         get_config_dir
 import tryton.common as common
+from tryton.jsonrpc import object_hook
 from tryton.action import Action
 from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.gui.window import Window
@@ -1445,9 +1446,12 @@ class Main(object):
                 limit = json.loads(params.get('limit', 'null'))
                 auto_refresh = json.loads(params.get('auto_refresh', 'false'))
                 name = json.loads(params.get('window_name', 'false'))
-                search_value = json.loads(params.get('search_value', '{}'))
-                domain = json.loads(params.get('domain', '[]'))
-                context = json.loads(params.get('context', '{}'))
+                search_value = json.loads(params.get('search_value', '{}'),
+                    object_hook=object_hook)
+                domain = json.loads(params.get('domain', '[]'),
+                    object_hook=object_hook)
+                context = json.loads(params.get('context', '{}'),
+                    object_hook=object_hook)
             except ValueError:
                 return
             if path:
@@ -1468,13 +1472,15 @@ class Main(object):
             if not wizard:
                 return
             try:
-                data = json.loads(params.get('data', '{}'))
+                data = json.loads(params.get('data', '{}'),
+                    object_hook=object_hook)
                 direct_print = json.loads(params.get('direct_print', 'false'))
                 email_print = json.loads(params.get('email_print', 'false'))
                 email = json.loads(params.get('email', 'null'))
                 name = json.loads(params.get('name', 'false'))
                 window = json.loads(params.get('window', 'false'))
-                context = json.loads(params.get('context', '{}'))
+                context = json.loads(params.get('context', '{}'),
+                    object_hook=object_hook)
             except ValueError:
                 return
             try:
@@ -1489,12 +1495,13 @@ class Main(object):
             if not report:
                 return
             try:
-                data = json.loads(params.get('data'))
+                data = json.loads(params.get('data'), object_hook=object_hook)
                 direct_print = json.loads(params.get('direct_print', 'false'))
                 email_print = json.loads(params.get('email_print', 'false'))
                 email = json.loads(params.get('email', 'null'))
                 name = json.loads(params.get('name', 'false'))
-                context = json.loads(params.get('context', '{}'))
+                context = json.loads(params.get('context', '{}'),
+                    object_hook=object_hook)
             except ValueError:
                 return
             try:
