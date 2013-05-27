@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
@@ -32,6 +32,10 @@ class TimesheetLine:
 class Work:
     __name__ = 'project.work'
     product = fields.Many2One('product.product', 'Product',
+        domain=[
+            ('type', '=', 'service'),
+            ('default_uom_category', '=', Id('product', 'uom_cat_time')),
+            ],
         states={
             'invisible': ~Eval('timesheet_available'),
             },
