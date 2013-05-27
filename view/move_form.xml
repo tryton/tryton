@@ -2,6 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form string="Move" col="4">
+    <label name="shipment"/>
+    <field name="shipment" colspan="3"/>
     <label name="from_location"/>
     <field name="from_location"/>
     <label name="to_location"/>
