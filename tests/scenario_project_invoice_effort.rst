@@ -57,7 +57,31 @@ Create company::
 Reload the context::
 
     >>> User = Model.get('res.user')
+    >>> Group = Model.get('res.group')
     >>> config._context = User.get_preferences(True, config.context)
+
+Create project user::
+
+    >>> project_user = User()
+    >>> project_user.name = 'Project'
+    >>> project_user.login = 'project'
+    >>> project_user.main_company = company
+    >>> project_group, = Group.find([('name', '=', 'Project Administration')])
+    >>> timesheet_group, = Group.find([('name', '=', 'Timesheet Administration')])
+    >>> project_user.groups.extend([project_group, timesheet_group])
+    >>> project_user.save()
+
+Create project invoice user::
+
+    >>> project_invoice_user = User()
+    >>> project_invoice_user.name = 'Project Invoice'
+    >>> project_invoice_user.login = 'project_invoice'
+    >>> project_invoice_user.main_company = company
+    >>> project_invoice_group, = Group.find([('name', '=', 'Project Invoice')])
+    >>> project_group, = Group.find([('name', '=', 'Project Administration')])
+    >>> project_invoice_user.groups.extend(
+    ...     [project_invoice_group, project_group])
+    >>> project_invoice_user.save()
 
 Create chart of accounts::
 
@@ -131,6 +155,7 @@ Create product::
 
 Create a Project::
 
+    >>> config.user = project_user.id
     >>> ProjectWork = Model.get('project.work')
     >>> TimesheetWork = Model.get('timesheet.work')
     >>> project = ProjectWork()
@@ -182,6 +207,7 @@ Check project hours::
 
 Invoice project::
 
+    >>> config.user = project_invoice_user.id
     >>> ProjectWork.invoice([project.id], config.context)
     >>> project.reload()
     >>> project.invoiced_hours
@@ -193,6 +219,7 @@ Invoice project::
 
 Do project::
 
+    >>> config.user = project_user.id
     >>> project.state = 'done'
     >>> project.save()
 
@@ -208,6 +235,7 @@ Check project hours::
 
 Invoice again project::
 
+    >>> config.user = project_invoice_user.id
     >>> ProjectWork.invoice([project.id], config.context)
     >>> project.reload()
     >>> project.invoiced_hours
