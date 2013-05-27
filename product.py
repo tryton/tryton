@@ -49,7 +49,8 @@ class Template(ModelSQL, ModelView):
     default_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Default UOM Category',
             on_change_with=['default_uom']),
-        'on_change_with_default_uom_category')
+        'on_change_with_default_uom_category',
+        searcher='search_default_uom_category')
     active = fields.Boolean('Active', select=True)
     products = fields.One2Many('product.product', 'template', 'Variants',
         states=STATES, depends=DEPENDS)
@@ -101,6 +102,10 @@ class Template(ModelSQL, ModelView):
     def on_change_with_default_uom_category(self, name=None):
         if self.default_uom:
             return self.default_uom.category.id
+
+    @classmethod
+    def search_default_uom_category(cls, name, clause):
+        return [('default_uom.category',) + tuple(clause[1:])]
 
 
 class Product(ModelSQL, ModelView):
