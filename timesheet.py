@@ -17,6 +17,7 @@ class TimesheetLine:
     def __setup__(cls):
         super(TimesheetLine, cls).__setup__()
         cls._error_messages.update({
+                'modify_invoiced_line': 'You can not modify invoiced line.',
                 'delete_invoiced_line': 'You can not delete invoiced line.',
                 })
 
@@ -27,6 +28,12 @@ class TimesheetLine:
         default = default.copy()
         default.setdefault('invoice_line', None)
         return super(TimesheetLine, cls).copy(records, default=default)
+
+    @classmethod
+    def write(cls, records, values):
+        if any(r.invoice_line for r in records):
+            cls.raise_user_error('modify_invoiced_line')
+        super(TimesheetLine, cls).write(records, values)
 
     @classmethod
     def delete(cls, records):
