@@ -838,7 +838,6 @@ class PurchaseLine(ModelSQL, ModelView):
                 []),
             'stock_date_end': Eval('_parent_purchase', {}).get(
                 'purchase_date'),
-            'purchasable': True,
             'stock_skip_warehouse': True,
             }, depends=['type'])
     product_uom_category = fields.Function(
@@ -1319,10 +1318,6 @@ class Template:
             cls.account_expense.depends.append('account_category')
         if 'purchasable' not in cls.account_expense.depends:
             cls.account_expense.depends.append('purchasable')
-
-    @staticmethod
-    def default_purchasable():
-        return Transaction().context.get('purchasable') or False
 
     def on_change_with_purchase_uom(self):
         if self.default_uom:
