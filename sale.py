@@ -924,7 +924,6 @@ class SaleLine(ModelSQL, ModelView):
             'locations': If(Bool(Eval('_parent_sale', {}).get('warehouse')),
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
-            'salable': True,
             'stock_skip_warehouse': True,
             }, depends=['type'])
     product_uom_category = fields.Function(
@@ -1403,10 +1402,6 @@ class Template:
             cls.account_revenue.depends.append('account_category')
         if 'salable' not in cls.account_revenue.depends:
             cls.account_revenue.depends.append('salable')
-
-    @staticmethod
-    def default_salable():
-        return True if Transaction().context.get('salable') else False
 
     @staticmethod
     def default_delivery_time():
