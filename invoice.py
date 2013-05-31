@@ -128,13 +128,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
-        'get_untaxed_amount', searcher='search_untaxed_amount')
+        'get_amount', searcher='search_untaxed_amount')
     tax_amount = fields.Function(fields.Numeric('Tax', digits=(16,
                 Eval('currency_digits', 2)), depends=['currency_digits']),
-        'get_tax_amount', searcher='search_tax_amount')
+        'get_amount', searcher='search_tax_amount')
     total_amount = fields.Function(fields.Numeric('Total', digits=(16,
                 Eval('currency_digits', 2)), depends=['currency_digits']),
-        'get_total_amount', searcher='search_total_amount')
+        'get_amount', searcher='search_total_amount')
     reconciled = fields.Function(fields.Boolean('Reconciled'),
             'get_reconciled')
     lines_to_pay = fields.Function(fields.One2Many('account.move.line', None,
@@ -501,38 +501,86 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res['total_amount'] = self.currency.round(res['total_amount'])
         return res
 
-    def get_untaxed_amount(self, name):
-        amount = _ZERO
-        for line in self.lines:
-            if line.type != 'line':
-                continue
-            amount += line.amount
-        return self.currency.round(amount)
-
     @classmethod
-    def get_tax_amount(cls, invoices, name):
+    def get_amount(cls, invoices, names):
+        pool = Pool()
+        InvoiceTax = pool.get('account.invoice.tax')
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
         cursor = Transaction().cursor
-        res = {}
+
+        untaxed_amount = dict((i.id, _ZERO) for i in invoices)
+        tax_amount = dict((i.id, _ZERO) for i in invoices)
+        total_amount = dict((i.id, _ZERO) for i in invoices)
+
         type_name = FIELDS[cls.tax_amount._type].sql_type(cls.tax_amount)[0]
-        red_sql, red_ids = reduce_ids('invoice', [i.id for i in invoices])
-        cursor.execute('SELECT invoice, '
+        in_max = cursor.IN_MAX
+        for i in range(0, len(invoices), in_max):
+            sub_ids = [i.id for i in invoices[i:i + in_max]]
+            red_sql, red_ids = reduce_ids('invoice', sub_ids)
+            cursor.execute('SELECT invoice, '
                     'CAST(COALESCE(SUM(amount), 0) AS ' + type_name + ') '
-                'FROM account_invoice_tax '
+                'FROM "' + InvoiceTax._table + '" '
                 'WHERE ' + red_sql + ' '
                 'GROUP BY invoice', red_ids)
-        for invoice_id, sum in cursor.fetchall():
-            # SQLite uses float for SUM
-            if not isinstance(sum, Decimal):
-                sum = Decimal(str(sum))
-            res[invoice_id] = sum
+            for invoice_id, sum_ in cursor.fetchall():
+                # SQLite uses float for SUM
+                if not isinstance(sum_, Decimal):
+                    sum_ = Decimal(str(sum_))
+                tax_amount[invoice_id] = sum_
 
+        invoices_move = []
+        invoices_no_move = []
         for invoice in invoices:
-            res.setdefault(invoice.id, Decimal('0.0'))
-            res[invoice.id] = invoice.currency.round(res[invoice.id])
-        return res
+            if invoice.move:
+                invoices_move.append(invoice)
+            else:
+                invoices_no_move.append(invoice)
 
-    def get_total_amount(self, name):
-        return self.currency.round(self.untaxed_amount + self.tax_amount)
+        type_name = FIELDS[cls.total_amount._type].sql_type(
+            cls.total_amount)[0]
+        for i in range(0, len(invoices_move), in_max):
+            sub_ids = [i.id for i in invoices_move[i:i + in_max]]
+            red_sql, red_ids = reduce_ids('i.id', sub_ids)
+            cursor.execute('SELECT i.id, '
+                    'CAST(COALESCE(SUM(l.debit - l.credit), 0) '
+                        'AS ' + type_name + ') '
+                'FROM "' + cls._table + '" AS i '
+                'JOIN "' + Move._table + '" AS m '
+                    'ON i.move = m.id '
+                'JOIN "' + MoveLine._table + '" AS l '
+                    'ON m.id = l.move '
+                'WHERE i.account = l.account '
+                    'AND ' + red_sql + ' '
+                'GROUP BY i.id', red_ids)
+            for invoice_id, sum_ in cursor.fetchall():
+                # SQLite uses float for SUM
+                if not isinstance(sum_, Decimal):
+                    sum_ = Decimal(str(sum_))
+                total_amount[invoice_id] = sum_
+
+        for invoice in invoices_move:
+            if invoice.type in ('in_invoice', 'out_credit_note'):
+                total_amount[invoice.id] *= -1
+            untaxed_amount[invoice.id] = (
+                total_amount[invoice.id] - tax_amount[invoice.id])
+
+        for invoice in invoices_no_move:
+            untaxed_amount[invoice.id] = sum(
+                (line.amount for line in invoice.lines
+                    if line.type == 'line'), _ZERO)
+            total_amount[invoice.id] = (
+                untaxed_amount[invoice.id] + tax_amount[invoice.id])
+
+        result = {
+            'untaxed_amount': untaxed_amount,
+            'tax_amount': tax_amount,
+            'total_amount': total_amount,
+            }
+        for key in result.keys():
+            if key not in names:
+                del result[key]
+        return result
 
     def get_reconciled(self, name):
         if not self.lines_to_pay:

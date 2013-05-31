@@ -1,3 +1,5 @@
+* Use account move as cache
+
 Version 2.8.0 - 2013-04-22
 * Bug fixes (see mercurial logs for details)
 * Add origin Reference on Invoice Line
