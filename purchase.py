@@ -26,6 +26,7 @@ _STATES = {
     'readonly': Eval('state') != 'draft',
     }
 _DEPENDS = ['state']
+_ZERO = Decimal(0)
 
 
 class Purchase(Workflow, ModelSQL, ModelView):
@@ -85,19 +86,19 @@ class Purchase(Workflow, ModelSQL, ModelView):
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_untaxed_amount')
+            depends=['currency_digits']), 'get_amount')
     untaxed_amount_cache = fields.Numeric('Untaxed Cache',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
     tax_amount = fields.Function(fields.Numeric('Tax',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_tax_amount')
+            depends=['currency_digits']), 'get_amount')
     tax_amount_cache = fields.Numeric('Tax Cache',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
     total_amount = fields.Function(fields.Numeric('Total',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_total_amount')
+            depends=['currency_digits']), 'get_amount')
     total_amount_cache = fields.Numeric('Total Cache',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
@@ -387,25 +388,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 changes['total_amount'])
         return changes
 
-    def get_untaxed_amount(self, name):
-        '''
-        Return the untaxed amount for each purchases
-        '''
-        if (self.state in self._states_cached
-                and self.untaxed_amount_cache is not None):
-            return self.untaxed_amount_cache
-        amount = sum((l.amount for l in self.lines
-                if l.type == 'line'), Decimal(0))
-        return self.currency.round(amount)
-
-    def get_tax_amount(self, name):
+    def get_tax_amount(self):
         pool = Pool()
         Tax = pool.get('account.tax')
         Invoice = pool.get('account.invoice')
 
-        if (self.state in self._states_cached
-                and self.tax_amount_cache is not None):
-            return self.tax_amount_cache
         context = self.get_tax_context()
         taxes = {}
         for line in self.lines:
@@ -421,15 +408,39 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     taxes[key] = val['amount']
                 else:
                     taxes[key] += val['amount']
-        amount = sum((self.currency.round(tax) for tax in taxes.itervalues()),
-            Decimal(0))
-        return self.currency.round(amount)
+        return sum((self.currency.round(tax) for tax in taxes.values()), _ZERO)
 
-    def get_total_amount(self, name):
-        if (self.state in self._states_cached
-                and self.total_amount_cache is not None):
-            return self.total_amount_cache
-        return self.currency.round(self.untaxed_amount + self.tax_amount)
+    @classmethod
+    def get_amount(cls, purchases, names):
+        untaxed_amount = {}
+        tax_amount = {}
+        total_amount = {}
+
+        for purchase in purchases:
+            if (purchase.state in cls._states_cached
+                    and purchase.untaxed_amount_cache is not None
+                    and purchase.tax_amount_cache is not None
+                    and purchase.total_amount_cache is not None):
+                untaxed_amount[purchase.id] = purchase.untaxed_amount_cache
+                tax_amount[purchase.id] = purchase.tax_amount_cache
+                total_amount[purchase.id] = purchase.total_amount_cache
+            else:
+                untaxed_amount[purchase.id] = sum(
+                    (line.amount for line in purchase.lines
+                        if line.type == 'line'), _ZERO)
+                tax_amount[purchase.id] = purchase.get_tax_amount()
+                total_amount[purchase.id] = (
+                    untaxed_amount[purchase.id] + tax_amount[purchase.id])
+
+        result = {
+            'untaxed_amount': untaxed_amount,
+            'tax_amount': tax_amount,
+            'total_amount': total_amount,
+            }
+        for key in result.keys():
+            if key not in names:
+                del result[key]
+        return result
 
     def get_invoice_state(self):
         '''
