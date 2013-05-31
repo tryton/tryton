@@ -1637,20 +1637,23 @@ class Move:
         return ''
 
     @classmethod
-    def write(cls, moves, vals):
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, moves):
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        super(Move, cls).write(moves, vals)
-        if 'state' in vals and vals['state'] in ('cancel',):
-            with Transaction().set_user(0, set_context=True):
-                sale_lines = SaleLine.search([
-                        ('moves', 'in', [m.id for m in moves]),
-                        ])
-                if sale_lines:
-                    sales = list(set(l.sale for l in sale_lines))
-                    Sale.process(sales)
+        super(Move, cls).cancel(moves)
+
+        with Transaction().set_user(0, set_context=True):
+            sale_lines = SaleLine.search([
+                    ('moves', 'in', [m.id for m in moves]),
+                    ])
+            if sale_lines:
+                sale_ids = list(set(l.sale.id for l in sale_lines))
+                sales = Sale.browse(sale_ids)
+                Sale.process(sales)
 
     @classmethod
     def delete(cls, moves):
