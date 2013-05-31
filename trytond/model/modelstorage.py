@@ -424,7 +424,7 @@ class ModelStorage(Model):
         rec_name = cls._rec_name
         if rec_name not in cls._fields:
             return []
-        return [(rec_name,) + clause[1:]]
+        return [(rec_name,) + tuple(clause[1:])]
 
     @classmethod
     def search_global(cls, text):
