@@ -42,27 +42,20 @@ class Move:
                 'lot_required': 'Lot is required for move of product "%s".',
                 })
 
-    @classmethod
-    def check_lot(cls, moves):
+    def check_lot(self):
         "Check if lot is required"
+        if (self.state == 'done'
+                and self.internal_quantity
+                and not self.lot
+                and self.product.lot_is_required(
+                    self.from_location, self.to_location)):
+            self.raise_user_error('lot_required', self.product.rec_name)
+
+    @classmethod
+    def validate(cls, moves):
+        super(Move, cls).validate(moves)
         for move in moves:
-            if (move.state == 'done'
-                    and move.internal_quantity
-                    and not move.lot
-                    and move.product.lot_is_required(
-                        move.from_location, move.to_location)):
-                cls.raise_user_error('lot_required', (move.product.rec_name,))
-
-    @classmethod
-    def create(cls, vlist):
-        moves = super(Move, cls).create(vlist)
-        cls.check_lot(moves)
-        return moves
-
-    @classmethod
-    def write(cls, moves, values):
-        super(Move, cls).write(moves, values)
-        cls.check_lot(moves)
+            move.check_lot()
 
 
 class ShipmentIn:
