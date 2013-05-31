@@ -1772,24 +1772,22 @@ class Move(ModelSQL, ModelView):
             ('purchase.line',)]
 
     @classmethod
-    def write(cls, moves, vals):
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, moves):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
         PurchaseLine = pool.get('purchase.line')
 
-        super(Move, cls).write(moves, vals)
-        if 'state' in vals and vals['state'] in ('cancel',):
-            purchases = set()
-            purchase_lines = PurchaseLine.search([
-                    ('moves', 'in', [m.id for m in moves]),
-                    ])
-            if purchase_lines:
-                for purchase_line in purchase_lines:
-                    purchases.add(purchase_line.purchase)
-            if purchases:
-                with Transaction().set_user(0, set_context=True):
-                    purchases = Purchase.browse([p.id for p in purchases])
-                    Purchase.process(purchases)
+        super(Move, cls).cancel(moves)
+        purchase_lines = PurchaseLine.search([
+                ('moves', 'in', [m.id for m in moves]),
+                ])
+        if purchase_lines:
+            purchase_ids = list(set(l.purchase.id for l in purchase_lines))
+            with Transaction().set_user(0, set_context=True):
+                purchases = Purchase.browse(purchase_ids)
+                Purchase.process(purchases)
 
     @classmethod
     def delete(cls, moves):
