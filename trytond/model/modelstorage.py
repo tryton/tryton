@@ -516,7 +516,7 @@ class ModelStorage(Model):
         if (rec_name not in self._columns
                 and rec_name not in self._inherit_fields):
             return []
-        return [(rec_name,) + clause[1:]]
+        return [(rec_name,) + tuple(clause[1:])]
 
     def browse(self, ids):
         '''
