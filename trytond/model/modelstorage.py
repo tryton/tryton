@@ -420,7 +420,7 @@ class ModelStorage(Model):
         if (rec_name not in cls._fields
                 and rec_name not in cls._inherit_fields):
             return []
-        return [(rec_name,) + clause[1:]]
+        return [(rec_name,) + tuple(clause[1:])]
 
     @classmethod
     def browse(cls, ids):
