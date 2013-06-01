@@ -30,7 +30,19 @@ class PaymentTerm(ModelSQL, ModelView):
                     '"%(term)s".'),
                 'missing_remainder': ('Missing remainder line in payment term '
                     '"%s".'),
+                'last_remainder': ('Last line of payment term "%s" must be of '
+                    'type remainder.'),
                 })
+
+    @classmethod
+    def validate(cls, terms):
+        super(PaymentTerm, cls).validate(terms)
+        for term in terms:
+            term.check_remainder()
+
+    def check_remainder(self):
+        if not self.lines or not self.lines[-1].type == 'remainder':
+            self.raise_user_error('last_remainder', self.rec_name)
 
     @staticmethod
     def default_active():
