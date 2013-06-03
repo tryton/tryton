@@ -2737,6 +2737,7 @@ class CreditInvoice(Wizard):
                 if invoice.payment_lines:
                     self.raise_user_error('refund_with_payement',
                         (invoice.rec_name,))
+                if invoice.type in ('in_invoice', 'in_credit_note'):
                     self.raise_user_error('refund_supplier')
 
         credit_invoices = Invoice.credit(invoices, refund=refund)
