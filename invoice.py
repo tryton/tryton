@@ -2706,7 +2706,8 @@ class CreditInvoice(Wizard):
                 'refund_with_payement': ('You can not credit with refund '
                     'invoice "%s" because it has payments.'),
                 'refund_supplier': ('You can not credit with refund '
-                    'a supplier invoice/credit note.'),
+                    'invoice "%s" because it is a supplier '
+                    'invoice/credit note.'),
                 })
 
     def default_start(self, fields):
@@ -2738,7 +2739,7 @@ class CreditInvoice(Wizard):
                     self.raise_user_error('refund_with_payement',
                         (invoice.rec_name,))
                 if invoice.type in ('in_invoice', 'in_credit_note'):
-                    self.raise_user_error('refund_supplier')
+                    self.raise_user_error('refund_supplier', invoice.rec_name)
 
         credit_invoices = Invoice.credit(invoices, refund=refund)
 
