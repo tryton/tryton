@@ -377,7 +377,8 @@ class StockTestCase(unittest.TestCase):
         '''
         Test period.
         '''
-        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
             category, = self.category.create([{
                         'name': 'Test period',
                         }])
@@ -441,6 +442,19 @@ class StockTestCase(unittest.TestCase):
                         'currency': currency.id,
                         }])
             self.move.do(moves)
+            self.move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 3,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'planned_date': None,
+                        'effective_date': None,
+                        'company': company.id,
+                        'unit_price': Decimal('1'),
+                        'currency': currency.id,
+                        }])
+
 
             tests = [
                 (-5, {
@@ -454,6 +468,34 @@ class StockTestCase(unittest.TestCase):
                 })
             ]
 
+            products_by_location = partial(self.product.products_by_location,
+                [storage.id], [product.id])
+            products_by_location_zero = partial(
+                    self.product.products_by_location,
+                    [storage.id], [product.id], skip_zero=False)
+
+            tests_pbl = [
+                ({'stock_date_end': today + relativedelta(days=-6)}, 0),
+                ({'stock_date_end': today + relativedelta(days=-5)}, 10),
+                ({'stock_date_end': today + relativedelta(days=-4)}, 25),
+                ({'stock_date_end': today + relativedelta(days=-3)}, 20),
+                ({'stock_date_end': today + relativedelta(days=-2)}, 20),
+                ({'stock_date_end': today}, 20),
+                ({'stock_date_end': datetime.date.max}, 23),
+                ]
+
+            def test_products_by_location():
+                for context, quantity in tests_pbl:
+                    with transaction.set_context(context):
+                        if not quantity:
+                            self.assertEqual(products_by_location(), {})
+                            self.assertEqual(products_by_location_zero(),
+                                    {(storage.id, product.id): quantity})
+                        else:
+                            self.assertEqual(products_by_location(),
+                                    {(storage.id, product.id): quantity})
+
+            test_products_by_location()
             for days, quantities in tests:
                 period, = self.period.create([{
                             'date': today + relativedelta(days=days),
@@ -468,6 +510,8 @@ class StockTestCase(unittest.TestCase):
                     self.assertEqual(cache.product, product)
                     self.assertEqual(cache.internal_quantity,
                         quantities[cache.location.id])
+
+                test_products_by_location()
 
             # Test check_period_closed
             moves = self.move.create([{
