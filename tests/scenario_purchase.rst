@@ -282,6 +282,9 @@ Open supplier invoice::
     u'in_invoice'
     >>> len(invoice.lines)
     2
+    >>> for line in invoice.lines:
+    ...     line.quantity = 1
+    ...     line.save()
     >>> invoice.invoice_date = today
     >>> invoice.save()
     >>> Invoice.post([invoice.id], config.context)
@@ -290,12 +293,21 @@ Open supplier invoice::
     u'posted'
     >>> payable.reload()
     >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('25.00'))
+    ... (Decimal('0.00'), Decimal('10.00'))
     True
     >>> expense.reload()
     >>> (expense.debit, expense.credit) == \
-    ... (Decimal('25.00'), Decimal('0.00'))
+    ... (Decimal('10.00'), Decimal('0.00'))
     True
+
+Check second invoices::
+
+    >>> config.user = purchase_user.id
+    >>> purchase.reload()
+    >>> len(purchase.invoices)
+    2
+    >>> sum(l.quantity for i in purchase.invoices for l in i.lines)
+    5.0
 
 Create a Return::
 
@@ -357,10 +369,10 @@ Open supplier credit note::
     >>> credit_note.state
     u'posted'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == (Decimal(20), Decimal(25))
+    >>> (payable.debit, payable.credit) == (Decimal(20), Decimal(10))
     True
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == (Decimal(25), Decimal(20))
+    >>> (expense.debit, expense.credit) == (Decimal(10), Decimal(20))
     True
 
 Mixing return and purchase::
@@ -443,10 +455,10 @@ Checking the invoice::
     >>> mix_credit_note.state
     u'posted'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == (Decimal(30), Decimal(60))
+    >>> (payable.debit, payable.credit) == (Decimal(30), Decimal(45))
     True
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == (Decimal(60), Decimal(30))
+    >>> (expense.debit, expense.credit) == (Decimal(45), Decimal(30))
     True
 
 Mixing stuff with an invoice method 'on shipment'::
