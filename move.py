@@ -332,6 +332,7 @@ class Move(ModelSQL, ModelView):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Date = pool.get('ir.date')
+        Line = pool.get('account.move.line')
 
         for move in moves:
             amount = Decimal('0.0')
@@ -353,6 +354,12 @@ class Move(ModelSQL, ModelView):
                 values['post_number'] = Sequence.get_id(
                     move.period.post_move_sequence_used.id)
             cls.write([move], values)
+
+            if len(move.lines) == 1:
+                line, = move.lines
+                if ((line.debit == line.credit == Decimal('0'))
+                        and line.account.reconcile):
+                    Line.reconcile([line])
 
     @classmethod
     @ModelView.button
