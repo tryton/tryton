@@ -75,7 +75,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="attribute_view_form"/>
             <field name="act_window" ref="act_attribute_form"/>
         </record>
-        <menuitem name="Attribute Sets" parent="menu_attribute_set"
+        <menuitem name="Attributes" parent="menu_attribute_set"
             sequence="10" id="menu_attribute"
             action="act_attribute_form"/>
 
