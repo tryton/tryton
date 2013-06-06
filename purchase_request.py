@@ -73,6 +73,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         cls._error_messages.update({
                 'create_request': ('Purchase requests are only created '
                     'by the system.'),
+                'delete_purchase_line': ('You can not delete purchased '
+                    'request.'),
                 })
         cls._sql_constraints += [
             ('check_purchase_request_quantity', 'CHECK(quantity > 0)',
@@ -449,6 +451,12 @@ class PurchaseRequest(ModelSQL, ModelView):
                 if not vals.get(field_name):
                     cls.raise_user_error('create_request')
         return super(PurchaseRequest, cls).create(vlist)
+
+    @classmethod
+    def delete(cls, requests):
+        if any(r.purchase_line for r in requests):
+            cls.raise_user_error('delete_purchase_line')
+        super(PurchaseRequest, cls).delete(requests)
 
 
 class CreatePurchaseRequestStart(ModelView):
