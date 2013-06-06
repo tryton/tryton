@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from functools import wraps
+
 from trytond.model import Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -7,6 +9,18 @@ from trytond.backend import TableHandler
 
 __all__ = ['Invoice', 'InvoiceLine']
 __metaclass__ = PoolMeta
+
+
+def process_sale(func):
+    @wraps(func)
+    def wrapper(cls, invoices):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        func(cls, invoices)
+        with Transaction().set_user(0, set_context=True):
+            Sale.process([s for i in cls.browse(invoices)
+                    for s in i.sales])
+    return wrapper
 
 
 class Invoice:
@@ -68,20 +82,19 @@ class Invoice:
         super(Invoice, cls).delete(invoices)
 
     @classmethod
-    def paid(cls, invoices):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        super(Invoice, cls).paid(invoices)
-        with Transaction().set_user(0, set_context=True):
-            Sale.process([s for i in cls.browse(invoices) for s in i.sales])
+    @process_sale
+    def post(cls, invoices):
+        super(Invoice, cls).post(invoices)
 
     @classmethod
+    @process_sale
+    def paid(cls, invoices):
+        super(Invoice, cls).paid(invoices)
+
+    @classmethod
+    @process_sale
     def cancel(cls, invoices):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
         super(Invoice, cls).cancel(invoices)
-        with Transaction().set_user(0, set_context=True):
-            Sale.process([s for i in cls.browse(invoices) for s in i.sales])
 
     @classmethod
     @Workflow.transition('draft')

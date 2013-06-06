@@ -288,18 +288,30 @@ Open customer invoice::
     u'out_invoice'
     >>> len(invoice.lines)
     2
+    >>> for line in invoice.lines:
+    ...     line.quantity = 1
+    ...     line.save()
     >>> Invoice.post([invoice.id], config.context)
     >>> invoice.reload()
     >>> invoice.state
     u'posted'
     >>> receivable.reload()
     >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal('50.00'), Decimal('0.00'))
+    ... (Decimal('20.00'), Decimal('0.00'))
     True
     >>> revenue.reload()
     >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal('0.00'), Decimal('50.00'))
+    ... (Decimal('0.00'), Decimal('20.00'))
     True
+
+Check second invoices::
+
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> len(sale.invoices)
+    2
+    >>> sum(l.quantity for i in sale.invoices for l in i.lines)
+    5.0
 
 Create a Return::
 
@@ -355,10 +367,10 @@ Open customer credit note::
     >>> credit_note.state
     u'posted'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == (Decimal(50), Decimal(40))
+    >>> (receivable.debit, receivable.credit) == (Decimal(20), Decimal(40))
     True
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == (Decimal(40), Decimal(50))
+    >>> (revenue.debit, revenue.credit) == (Decimal(40), Decimal(20))
     True
 
 Mixing return and sale::
@@ -432,10 +444,10 @@ Checking the invoice::
     >>> mix_credit_note.state
     u'posted'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == (Decimal(120), Decimal(60))
+    >>> (receivable.debit, receivable.credit) == (Decimal(90), Decimal(60))
     True
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == (Decimal(60), Decimal(120))
+    >>> (revenue.debit, revenue.credit) == (Decimal(60), Decimal(90))
     True
 
 Mixing stuff with an invoice method 'on shipment'::
