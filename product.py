@@ -393,8 +393,8 @@ class Product:
             if periods:
                 period, = periods
                 state_date_clause += (' AND '
-                    '(COALESCE(effective_date, planned_date) > %s)')
-                state_date_vals.append(period.date)
+                    '(COALESCE(effective_date, planned_date, %s) > %s)')
+                state_date_vals.extend([datetime.date.max, period.date])
                 period_vals[0] = period.id
 
         if with_childs:
