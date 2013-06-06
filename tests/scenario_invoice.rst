@@ -266,3 +266,14 @@ Credit invoice with refund::
     >>> credit_note_tax_code.reload()
     >>> credit_note_tax_code.sum == Decimal(20)
     True
+
+Create empty invoice::
+
+    >>> invoice = Invoice()
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> invoice.save()
+    >>> Invoice.post([invoice.id], config.context)
+    >>> invoice.reload()
+    >>> invoice.state
+    u'paid'

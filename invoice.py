@@ -1335,10 +1335,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
         for invoice in invoices:
             invoice.set_number()
             moves.append(invoice.create_move())
-        Move.post(moves)
         cls.write(invoices, {
                 'state': 'posted',
                 })
+        Move.post(moves)
         for invoice in invoices:
             if invoice.type in ('out_invoice', 'out_credit_note'):
                 invoice.print_invoice()
