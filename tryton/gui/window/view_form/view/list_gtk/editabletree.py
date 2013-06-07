@@ -55,8 +55,6 @@ class EditableTreeView(TreeView):
 
     def on_quit_cell(self, current_record, fieldname, value, callback=None):
         field = current_record[fieldname]
-        if hasattr(field, 'editabletree_entry'):
-            del field.editabletree_entry
         cell = self.cells[fieldname]
 
         # The value has not changed and is valid ... do nothing.
@@ -226,6 +224,11 @@ class EditableTreeView(TreeView):
             # store in the record the entry widget to get the value in
             # set_value
             field.editabletree_entry = entry
+
+            def remove_widget(cell):
+                if hasattr(field, 'editabletree_entry'):
+                    del field.editabletree_entry
+            entry.connect('remove-widget', remove_widget)
             record.modified_fields.setdefault(column.name)
             return False
 
