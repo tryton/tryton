@@ -598,9 +598,8 @@ class Work:
 
                 yield sibling, delay
 
-        parent = self.parent and self.parent.id or None
         siblings = self.search([
-                ('parent', '=', parent.id)
+                ('parent', '=', self.parent.id if self.parent else None)
                 ])
 
         refkey = get_key(self)
@@ -617,8 +616,8 @@ class Work:
                     'back_leveling_delay': delay,
                     })
 
-        if parent:
-            parent.compute_dates()
+        if self.parent:
+            self.parent.compute_dates()
 
     @classmethod
     def write(cls, works, values):
