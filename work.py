@@ -185,7 +185,8 @@ class Work:
         cursor = Transaction().cursor
 
         hours = {}
-        ids = [w.id for w in works]
+        twork2work = dict((w.work.id, w.id) for w in works)
+        ids = twork2work.keys()
         for i in range(0, len(ids), cursor.IN_MAX):
             sub_ids = ids[i:i + cursor.IN_MAX]
             red_sql, red_ids = reduce_ids('work', sub_ids)
@@ -195,7 +196,8 @@ class Work:
                     'AND invoice_line IS ' + (
                     'NOT NULL ' if invoiced else 'NULL ') +
                 'GROUP BY work', red_ids)
-            hours.update(dict(i for i in cursor.fetchall()))
+            hours.update(dict((twork2work[w], h)
+                    for w, h in cursor.fetchall()))
         return hours
 
     @classmethod
