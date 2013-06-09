@@ -59,6 +59,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">production_list</field>
         </record>
 
+        <record model="ir.ui.view" id="production_view_calendar">
+            <field name="model">production</field>
+            <field name="type">calendar</field>
+            <field name="name">production_calendar</field>
+        </record>
+
         <record model="ir.ui.view" id="production_view_form">
             <field name="model">production</field>
             <field name="type">form</field>
@@ -126,6 +132,26 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_production" sequence="10"
             action="act_production_list" id="menu_production_list"/>
+
+        <record model="ir.action.act_window" id="act_production_calendar">
+            <field name="name">Productions</field>
+            <field name="res_model">production</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_calendar_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="production_view_calendar"/>
+            <field name="act_window" ref="act_production_calendar"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_production_calendar_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="production_view_form"/>
+            <field name="act_window" ref="act_production_calendar"/>
+        </record>
+
+        <menuitem parent="menu_production_list" sequence="10"
+            action="act_production_calendar" id="menu_production_calendar"/>
 
         <record model="ir.sequence.type" id="sequence_type_production">
             <field name="name">Production</field>
