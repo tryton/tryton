@@ -8,7 +8,7 @@
     'name_es_ES': 'Gestión de existencias',
     'name_fr_FR': 'Gestion des stocks',
     'name_ru_RU': 'Управление складами',
-    'version': '2.2.7',
+    'version': '2.2.8',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
