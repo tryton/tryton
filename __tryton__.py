@@ -7,7 +7,7 @@
     'name_es_CO': 'Gestión de pedidos de inventario',
     'name_es_ES': 'Gestión de suministro de existencias',
     'name_fr_FR': 'Gestion des approvisionnements de stock',
-    'version': '2.0.4',
+    'version': '2.0.5',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
