@@ -79,14 +79,14 @@ class Production:
             with Transaction().set_context(forecast=True,
                     stock_date_end=today):
                 pbl = Product.products_by_location(warehouse_ids,
-                    product_ids, with_childs=True, skip_zero=False)
+                    product_ids, with_childs=True)
 
             # order product by supply period
             products_period = sorted([(p.get_supply_period(), p)
                     for p in products[i:i + cursor.IN_MAX]])
 
             for warehouse in warehouses:
-                quantities = dict((x, pbl.pop((warehouse.id, x)))
+                quantities = dict((x, pbl.pop((warehouse.id, x), 0))
                     for x in product_ids)
                 shortages = cls.get_shortage(warehouse.id, product_ids, today,
                     quantities, products_period, product2ops)
@@ -176,7 +176,7 @@ class Production:
             with Transaction().set_context(stock_date_start=current_date,
                     stock_date_end=current_date):
                 pbl = Product.products_by_location([location_id],
-                    product_ids, with_childs=True, skip_zero=False)
+                    product_ids, with_childs=True)
             for key, qty in pbl.iteritems():
                 _, product_id = key
                 current_qties[product_id] += qty
