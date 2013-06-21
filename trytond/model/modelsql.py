@@ -2045,12 +2045,14 @@ class ModelSQL(ModelStorage):
             match = _RE_UNIQUE.match(sql)
             if match:
                 sql = match.group(1)
+                columns = sql.split(',')
                 sql_clause = ' AND '.join('%s = %%s'
-                    % i for i in sql.split(','))
+                    % i for i in columns)
                 sql_clause = '(id != %s AND ' + sql_clause + ')'
 
-                for i in range(0, len(ids), cursor.IN_MAX):
-                    sub_ids = ids[i:i + cursor.IN_MAX]
+                in_max = cursor.IN_MAX / (len(columns) + 1)
+                for i in range(0, len(ids), in_max):
+                    sub_ids = ids[i:i + in_max]
                     red_sql, red_ids = reduce_ids('id', sub_ids)
 
                     cursor.execute('SELECT id,' + sql + ' '
