@@ -541,7 +541,7 @@ class ForecastComplete(Wizard):
                 stock_date_start=self.ask.from_date,
                 stock_date_end=self.ask.to_date):
             return Product.products_by_location([forecast.warehouse.id],
-                    with_childs=True, skip_zero=False)
+                with_childs=True)
 
     def default_choose(self, fields):
         """
