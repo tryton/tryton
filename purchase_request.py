@@ -192,9 +192,9 @@ class PurchaseRequest(ModelSQL, ModelView):
                 with Transaction().set_context(forecast=True,
                         stock_date_end=min_date or datetime.date.max):
                     pbl = Product.products_by_location(warehouse_ids,
-                        product_ids, with_childs=True, skip_zero=False)
+                        product_ids, with_childs=True)
                 for warehouse_id in warehouse_ids:
-                    min_date_qties = dict((x, pbl.pop((warehouse_id, x)))
+                    min_date_qties = dict((x, pbl.pop((warehouse_id, x), 0))
                         for x in product_ids)
                     # Search for shortage between min-max
                     shortages = cls.get_shortage(warehouse_id, product_ids,
@@ -433,7 +433,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             with Transaction().set_context(stock_date_start=current_date,
                     stock_date_end=current_date):
                 pbl = Product.products_by_location([location_id],
-                    product_ids, with_childs=True, skip_zero=False)
+                    product_ids, with_childs=True)
             for key, qty in pbl.iteritems():
                 _, product_id = key
                 current_qties[product_id] += qty
