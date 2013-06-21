@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from itertools import chain
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Equal, Eval, If, In, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -9,7 +9,7 @@ from trytond.pool import Pool
 __all__ = ['Period', 'Cache']
 
 
-class Period(ModelSQL, ModelView):
+class Period(Workflow, ModelSQL, ModelView):
     'Stock Period'
     __name__ = 'stock.period'
     _rec_name = 'date'
@@ -21,7 +21,8 @@ class Period(ModelSQL, ModelView):
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
             ])
-    caches = fields.One2Many('stock.period.cache', 'period', 'Caches')
+    caches = fields.One2Many('stock.period.cache', 'period', 'Caches',
+        readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
@@ -36,6 +37,10 @@ class Period(ModelSQL, ModelView):
                 'close_period_assigned_move': ('You can not close a period when '
                     'there still are assigned moves.'),
                 })
+        cls._transitions |= set((
+                ('draft', 'closed'),
+                ('closed', 'draft'),
+                ))
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') == 'draft',
@@ -49,28 +54,37 @@ class Period(ModelSQL, ModelView):
     def default_state():
         return 'draft'
 
-    @classmethod
-    @ModelView.button
-    def draft(cls, periods):
-        Cache = Pool().get('stock.period.cache')
-        caches = []
-        for i in xrange(0, len(periods), Transaction().cursor.IN_MAX):
-            caches.append(Cache.search([
-                ('period', 'in', [p.id for p in
-                                periods[i:i + Transaction().cursor.IN_MAX]]),
-                        ], order=[]))
-        Cache.delete(list(chain(*caches)))
-        cls.write(periods, {
-                'state': 'draft',
-                })
+    @staticmethod
+    def groupings():
+        return [('product',)]
+
+    @staticmethod
+    def get_cache(grouping):
+        pool = Pool()
+        if grouping == ('product',):
+            return pool.get('stock.period.cache')
 
     @classmethod
     @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, periods):
+        for grouping in cls.groupings():
+            Cache = cls.get_cache(grouping)
+            caches = []
+            for i in xrange(0, len(periods), Transaction().cursor.IN_MAX):
+                caches.append(Cache.search([
+                    ('period', 'in', [p.id for p in
+                                    periods[i:i + Transaction().cursor.IN_MAX]]),
+                            ], order=[]))
+            Cache.delete(list(chain(*caches)))
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('closed')
     def close(cls, periods):
         pool = Pool()
         Product = pool.get('product.product')
         Location = pool.get('stock.location')
-        Cache = pool.get('stock.period.cache')
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
 
@@ -92,28 +106,30 @@ class Period(ModelSQL, ModelView):
                         ]]):
             cls.raise_user_error('close_period_assigned_move')
 
-        to_create = []
-        for period in periods:
-            with Transaction().set_context(
-                    stock_date_end=period.date,
-                    stock_date_start=None,
-                    stock_assign=False,
-                    forecast=False,
-                    stock_destinations=None,
-                    ):
-                pbl = Product.products_by_location([l.id for l in locations])
-            for (location_id, product_id), quantity in pbl.iteritems():
-                to_create.append({
+        for grouping in cls.groupings():
+            Cache = cls.get_cache(grouping)
+            to_create = []
+            for period in periods:
+                with Transaction().set_context(
+                        stock_date_end=period.date,
+                        stock_date_start=None,
+                        stock_assign=False,
+                        forecast=False,
+                        stock_destinations=None,
+                        ):
+                    pbl = Product.products_by_location(
+                        [l.id for l in locations], grouping=grouping)
+                for key, quantity in pbl.iteritems():
+                    values = {
+                        'location': key[0],
                         'period': period.id,
-                        'location': location_id,
-                        'product': product_id,
                         'internal_quantity': quantity,
-                        })
-        if to_create:
-            Cache.create(to_create)
-        cls.write(periods, {
-                'state': 'closed',
-                })
+                        }
+                    for i, field in enumerate(grouping, 1):
+                        values[field] = key[i]
+                    to_create.append(values)
+            if to_create:
+                Cache.create(to_create)
 
 
 class Cache(ModelSQL, ModelView):

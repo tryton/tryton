@@ -54,6 +54,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cls._error_messages.update({
                 'delete_cancel': ('Inventory "%s" must be cancelled before '
                     'deletion.'),
+                'unique_line': ('Line "%s" is not unique '
+                    'on Inventory "%s".'),
                 })
         cls._transitions |= set((
                 ('draft', 'done'),
@@ -116,7 +118,13 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         move_ids = []
         for inventory in inventories:
+            keys = set()
             for line in inventory.lines:
+                key = line.unique_key
+                if key in keys:
+                    self.raise_user_error('unique_line',
+                        (line.rec_name, inventory.rec_name))
+                keys.add(key)
                 move_id = line.create_move()
                 if move_id:
                     move_ids.append(move_id)
@@ -164,6 +172,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Line = pool.get('stock.inventory.line')
         Product = pool.get('product.product')
 
+        to_create = []
         for inventory in inventories:
             # Compute product quantities
             with Transaction().set_context(stock_date_end=inventory.date):
@@ -200,7 +209,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     Line.write([line], values)
 
             # Create lines if needed
-            to_create = []
             for product_id in product_qty:
                 if (product2type[product_id] != 'goods'
                         or product2consumable[product_id]):
@@ -209,8 +217,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 values = Line.create_values4complete(product_id, inventory,
                     quantity, uom_id)
                 to_create.append(values)
-            if to_create:
-                Line.create(to_create)
+        if to_create:
+            Line.create(to_create)
 
 
 class InventoryLine(ModelSQL, ModelView):
@@ -241,10 +249,18 @@ class InventoryLine(ModelSQL, ModelView):
         cls._sql_constraints += [
             ('check_line_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Line quantity must be positive.'),
-            ('inventory_product_uniq', 'UNIQUE(inventory, product)',
-                'Product must be unique by inventory.'),
             ]
         cls._order.insert(0, ('product', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
+
+        super(InventoryLine, cls).__register__(module_name)
+
+        table = TableHandler(cursor, cls, module_name)
+        # Migration from 2.8: Remove constraint inventory_product_uniq
+        table.drop_constraint('inventory_product_uniq')
 
     @staticmethod
     def default_unit_digits():
@@ -263,11 +279,18 @@ class InventoryLine(ModelSQL, ModelView):
             change['unit_digits'] = self.product.default_uom.digits
         return change
 
+    def get_rec_name(self, name):
+        return self.product.rec_name
+
     def get_uom(self, name):
         return self.product.default_uom.id
 
     def get_unit_digits(self, name):
         return self.product.default_uom.digits
+
+    @property
+    def unique_key(self):
+        return (self.product,)
 
     @classmethod
     def cancel_move(cls, lines):
@@ -278,9 +301,9 @@ class InventoryLine(ModelSQL, ModelView):
             'move': None,
             })
 
-    def create_move(self):
+    def _get_move(self):
         '''
-        Create move for an inventory line and return id
+        Return Move instance for the inventory line
         '''
         pool = Pool()
         Move = pool.get('stock.move')
@@ -291,24 +314,30 @@ class InventoryLine(ModelSQL, ModelView):
             self.uom)
         if delta_qty == 0.0:
             return
-        from_location = self.inventory.location.id
-        to_location = self.inventory.lost_found.id
+        from_location = self.inventory.location
+        to_location = self.inventory.lost_found
         if delta_qty < 0:
             (from_location, to_location, delta_qty) = \
                 (to_location, from_location, -delta_qty)
 
-        move, = Move.create([{
-                    'from_location': from_location,
-                    'to_location': to_location,
-                    'quantity': delta_qty,
-                    'product': self.product.id,
-                    'uom': self.uom.id,
-                    'company': self.inventory.company.id,
-                    'effective_date': self.inventory.date,
-                    }])
-        self.move = move
+        move = Move(
+            from_location=from_location,
+            to_location=to_location,
+            quantity=delta_qty,
+            product=self.product,
+            uom=self.uom,
+            company=self.inventory.company,
+            effective_date=self.inventory.date,
+            )
+        return move
+
+    def create_move(self):
+        '''
+        Create move for an inventory line and return id
+        '''
+        self.move = self._get_move()
         self.save()
-        return move.id
+        return self.move.id if self.move else None
 
     def update_values4complete(self, quantity, uom_id):
         '''

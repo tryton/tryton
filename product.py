@@ -2,6 +2,8 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
+from operator import itemgetter
+
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Eval, Or
@@ -141,7 +143,7 @@ class Product:
         with Transaction().set_context(context):
             pbl = cls.products_by_location(
                     location_ids=Transaction().context['locations'],
-                    with_childs=True, skip_zero=False).iteritems()
+                    with_childs=True).iteritems()
 
         processed_lines = []
         for (location, product), quantity in pbl:
@@ -174,7 +176,7 @@ class Product:
 
     @classmethod
     def products_by_location(cls, location_ids, product_ids=None,
-            with_childs=False, skip_zero=True):
+            with_childs=False, grouping=('product',)):
         """
         Compute for each location and product the stock quantity in the default
         uom of the product.
@@ -193,9 +195,9 @@ class Product:
                     the storage zone.
         If product_ids is None all products are used.
         If with_childs, it computes also for child locations.
-        If skip_zero it lists also items with zero quantity
+        grouping defines how stock moves are grouped.
 
-        Return a dictionary with (location id, product id) as key
+        Return a dictionary with location id and grouping as key
                 and quantity as value.
         """
         pool = Pool()
@@ -204,6 +206,7 @@ class Product:
         Location = pool.get('stock.location')
         Date = pool.get('ir.date')
         Period = pool.get('stock.period')
+        Move = pool.get('stock.move')
 
         today = Date.today()
 
@@ -211,6 +214,12 @@ class Product:
             return {}
         cursor = Transaction().cursor
         context = Transaction().context.copy()
+
+        for field in grouping:
+            if field not in Move._fields:
+                raise ValueError('"%s" has no field "%s"' % (Move, field))
+        assert 'product' in grouping
+
         # Skip warehouse location in favor of their storage location
         # to compute quantities. Keep track of which ids to remove
         # and to add after the query.
@@ -230,6 +239,7 @@ class Product:
         move_rule_query, move_rule_val = Rule.domain_get('stock.move')
 
         period_clause, period_vals = 'period = %s', [0]
+        PeriodCache = Period.get_cache(grouping)
 
         if not context.get('stock_date_end'):
             context['stock_date_end'] = datetime.date.max
@@ -384,7 +394,7 @@ class Product:
                     context['stock_date_start'], today,
                     context['stock_date_start'], today,
                     ])
-        else:
+        elif PeriodCache:
             with Transaction().set_user(0, set_context=True):
                 periods = Period.search([
                         ('date', '<', context['stock_date_end']),
@@ -426,11 +436,13 @@ class Product:
                 "JOIN product_template "
                     "ON (product_product.template = "
                         "product_template.id) ")
-            product_template_join_period = (
-                "JOIN product_product "
-                    "ON (stock_period_cache.product = product_product.id) "
-                "JOIN product_template "
-                    "ON (product_product.template = product_template.id) ")
+            if PeriodCache:
+                product_template_join_period = (
+                    "JOIN product_product "
+                        'ON ("' + PeriodCache._table + '".product '
+                            "= product_product.id) "
+                    "JOIN product_template "
+                        "ON (product_product.template = product_template.id) ")
 
         if context.get('stock_destinations'):
             destinations = context.get('stock_destinations')
@@ -453,44 +465,57 @@ class Product:
         # One that sums incoming moves towards locations, one that sums
         # outgoing moves and one for the period cache.  UNION ALL is used
         # because we already know that there will be no duplicates.
+        group_keys = ', '.join(grouping)
         select_clause = (
-                "SELECT location, product, sum(quantity) AS quantity "
+                "SELECT location, " + group_keys + ", "
+                    "SUM(quantity) AS quantity "
                 "FROM ( "
-                    "SELECT to_location AS location, product, "
+                    "SELECT to_location AS location, " + group_keys + ", "
                         "SUM(internal_quantity) AS quantity "
                     "FROM stock_move " + product_template_join + " "
                     "WHERE (%s) "
                         "AND to_location %s "
-                    "GROUP BY to_location, product "
-                    "UNION ALL "
-                    "SELECT from_location AS location, product, "
+                    "GROUP BY to_location, " + group_keys +
+                    " UNION ALL "
+                    "SELECT from_location AS location, " + group_keys + ", "
                         "-SUM(internal_quantity) AS quantity "
                     "FROM stock_move " + product_template_join + " "
                     "WHERE (%s) "
                         "AND from_location %s "
-                    "GROUP BY from_location, product, uom "
-                    "UNION ALL "
-                    "SELECT location, product, internal_quantity AS quantity "
-                    "FROM stock_period_cache "
+                    "GROUP BY from_location, " + group_keys +
+                    (" UNION ALL "
+                    "SELECT location, " + group_keys + ", "
+                        "internal_quantity AS quantity "
+                    'FROM "' + PeriodCache._table + '" '
                         + product_template_join_period + " "
                     "WHERE (%s) "
-                        "AND location %s "
-                ") AS T GROUP BY T.location, T.product")
+                        "AND location %s " if PeriodCache else " ") +
+                ") AS T GROUP BY T.location, " + ', '.join(
+                'T.' + x for x in grouping))
 
-        cursor.execute(select_clause % (
-            state_date_clause,
-            where_clause + move_rule_query + dest_clause_from,
-            state_date_clause,
-            where_clause + move_rule_query + dest_clause_to,
-            period_clause, where_clause + dest_clause_period),
+        cursor.execute(select_clause % ((
+                    state_date_clause,
+                    where_clause + move_rule_query + dest_clause_from,
+                    state_date_clause,
+                    where_clause + move_rule_query + dest_clause_to)
+                + ((period_clause, where_clause + dest_clause_period)
+                    if PeriodCache else ())),
             state_date_vals + where_vals + move_rule_val + dest_vals +
             state_date_vals + where_vals + move_rule_val + dest_vals +
-            period_vals + where_vals + dest_vals)
+            (period_vals + where_vals + dest_vals if PeriodCache else []))
         raw_lines = cursor.fetchall()
 
-        res_product_ids = set(product for _, product, _ in raw_lines)
-        res = dict(((location, product), quantity)
-                for location, product, quantity in raw_lines)
+        product_getter = itemgetter(grouping.index('product') + 1)
+        res_product_ids = set()
+        res = {}
+        keys = set()
+        for line in raw_lines:
+            location = line[0]
+            key = tuple(line[1:-1])
+            quantity = line[-1]
+            res[(location,) + key] = quantity
+            res_product_ids.add(product_getter(line))
+            keys.add(key)
 
         # Propagate quantities on from child locations to their parents
         if with_childs:
@@ -514,9 +539,10 @@ class Product:
                     locations.remove(l)
                     if l not in parent:
                         continue
-                    for product in res_product_ids:
-                        res.setdefault((parent[l], product), 0)
-                        res[(parent[l], product)] += res.get((l, product), 0)
+                    for key in keys:
+                        parent_key = (parent[l],) + key
+                        res.setdefault(parent_key, 0)
+                        res[parent_key] += res.get((l,) + key, 0)
                 next_leafs = set(locations)
                 for l in locations:
                     if l not in parent:
@@ -526,29 +552,19 @@ class Product:
                 leafs = next_leafs
 
             # clean result
-            for location, product in res.keys():
+            for key in res.keys():
+                location = key[0]
                 if location not in location_ids:
-                    del res[(location, product)]
+                    del res[key]
 
         # Round quantities
         default_uom = dict((p.id, p.default_uom) for p in
             cls.browse(list(res_product_ids)))
         for key, quantity in res.iteritems():
-            location, product = key
+            location = key[0]
+            product = product_getter(key)
             uom = default_uom[product]
             res[key] = Uom.round(quantity, uom.rounding)
-
-        # Complete result with missing products if asked
-        if not skip_zero:
-            # Search for all products, even if not linked with moves
-            if product_ids:
-                all_product_ids = product_ids
-            else:
-                all_product_ids = cls.search([])
-            keys = ((l, p) for l in location_ids for p in all_product_ids)
-            for location_id, product_id in keys:
-                if (location_id, product_id) not in res:
-                    res[(location_id, product_id)] = 0.0
 
         if wh_to_add:
             for wh, storage in wh_to_add.iteritems():
@@ -669,8 +685,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 }
             with Transaction().set_context(**context):
                 quantities[date] = Product.products_by_location(
-                    [warehouse_id], [product_id], with_childs=True,
-                    skip_zero=False)[(warehouse_id, product_id)]
+                    [warehouse_id], [product_id],
+                    with_childs=True).get((warehouse_id, product_id), 0)
             try:
                 date_start = date + datetime.timedelta(1)
             except OverflowError:

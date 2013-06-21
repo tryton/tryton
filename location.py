@@ -186,12 +186,13 @@ class Location(ModelSQL, ModelView):
                 context['stock_date_end'] = datetime.date.max
 
         location_ids = [l.id for l in locations]
+        product_id = Transaction().context['product']
         with Transaction().set_context(context):
             pbl = Product.products_by_location(location_ids=location_ids,
-                product_ids=[Transaction().context['product']],
-                with_childs=True, skip_zero=False).iteritems()
+                product_ids=[product_id], with_childs=True)
 
-        return dict([(loc, qty) for (loc, prod), qty in pbl])
+        return dict((loc, pbl.get((loc, product_id), 0))
+            for loc in location_ids)
 
     @classmethod
     def get_cost_value(cls, locations, name):

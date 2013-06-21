@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from functools import reduce, partial
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, Model, ModelView, ModelSQL, fields
 from trytond.backend import TableHandler
 from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
@@ -571,7 +571,7 @@ class Move(Workflow, ModelSQL, ModelView):
         return to_pick
 
     @classmethod
-    def assign_try(cls, moves):
+    def assign_try(cls, moves, grouping=('product',)):
         '''
         Try to assign moves.
         It will split the moves to assign as much possible.
@@ -593,7 +593,17 @@ class Move(Workflow, ModelSQL, ModelView):
                 stock_assign=True):
             pbl = Product.products_by_location(
                 location_ids=[l.id for l in locations],
-                product_ids=[m.product.id for m in moves])
+                product_ids=[m.product.id for m in moves],
+                grouping=grouping)
+
+        def get_key(location):
+            key = (location.id,)
+            for field in grouping:
+                value = getattr(move, field)
+                if isinstance(value, Model):
+                    value = value.id
+                key += (value,)
+            return key
 
         success = True
         for move in moves:
@@ -605,11 +615,11 @@ class Move(Workflow, ModelSQL, ModelView):
                     ('parent', 'child_of', [move.from_location.id]),
                     ])
             for location in childs:
-                if (location.id, move.product.id) in pbl:
+                key = get_key(location)
+                if key in pbl:
                     location_qties[location] = Uom.compute_qty(
-                            move.product.default_uom,
-                            pbl[(location.id, move.product.id)], move.uom,
-                            round=False)
+                        move.product.default_uom, pbl[key], move.uom,
+                        round=False)
 
             to_pick = move.pick_product(location_qties)
 
@@ -640,10 +650,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
 
-                pbl[(from_location.id, move.product.id)] = (
-                    pbl.get((from_location.id, move.product.id), 0.0)
-                    - qty_default_uom)
-                pbl[(to_location.id, move.product.id)] = (
-                    pbl.get((to_location.id, move.product.id), 0.0)
-                    + qty_default_uom)
+                from_key, to_key = get_key(from_location), get_key(to_location)
+                pbl[from_key] = pbl.get(from_key, 0.0) - qty_default_uom
+                pbl[to_key] = pbl.get(to_key, 0.0) + qty_default_uom
         return success

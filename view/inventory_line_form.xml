@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product"/>
     <label name="uom"/>
     <field name="uom"/>
+    <newline/>
     <label name="expected_quantity"/>
     <field name="expected_quantity"/>
     <label name="quantity"/>

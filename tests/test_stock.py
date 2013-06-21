@@ -210,9 +210,6 @@ class StockTestCase(unittest.TestCase):
 
             products_by_location = partial(self.product.products_by_location,
                     [storage.id], [product.id])
-            products_by_location_zero = partial(
-                    self.product.products_by_location,
-                    [storage.id], [product.id], skip_zero=False)
 
             tests = [
                 ({'stock_date_end': today + relativedelta(days=-6),
@@ -274,8 +271,6 @@ class StockTestCase(unittest.TestCase):
                     with transaction.set_context(context):
                         if not quantity:
                             self.assertEqual(products_by_location(), {})
-                            self.assertEqual(products_by_location_zero(),
-                                    {(storage.id, product.id): quantity})
                         else:
                             self.assertEqual(products_by_location(),
                                     {(storage.id, product.id): quantity})
