@@ -265,6 +265,8 @@ class Record(SignalEvent):
             self._check_load()
         value = {}
         for name, field in self.group.fields.iteritems():
+            if name not in self._loaded and self.id >= 0:
+                continue
             value[name] = field.get_on_change_value(self,
                 check_load=check_load)
         value['id'] = self.id
