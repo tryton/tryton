@@ -1,3 +1,6 @@
+* Add lot in inventory
+* Add Period Cache per lot
+
 Version 2.8.0 - 2013-04-22
 * Bug fixes (see mercurial logs for details)
 

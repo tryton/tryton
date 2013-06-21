@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Period Lot Cache" col="8">
+    <label name="period"/>
+    <field name="period" colspan="6"/>
+    <label name="location"/>
+    <field name="location"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="lot"/>
+    <field name="lot"/>
+    <label name="internal_quantity"/>
+    <field name="internal_quantity"/>
+</form>
