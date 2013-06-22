@@ -22,8 +22,9 @@ class Work(ModelSQL, ModelView):
             ('task', 'Task')
             ],
         'Type', required=True, select=True)
-    company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_company', searcher='search_comany')
+    company = fields.Function(fields.Many2One('company.company', 'Company',
+            on_change_with=['work']),
+        'on_change_with_company', searcher='search_comany')
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
@@ -34,13 +35,14 @@ class Work(ModelSQL, ModelView):
             'invisible': Eval('type') != 'project',
             }, depends=['party', 'type'])
     timesheet_available = fields.Function(
-        fields.Boolean('Available on timesheets'), 'get_timesheet_available')
+        fields.Boolean('Available on timesheets', on_change_with=['work']),
+        'on_change_with_timesheet_available')
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
             states={
                 'invisible': ~Eval('timesheet_available'),
                 },
-            depends=['timesheet_available'],
-            help="Total time spent on this work"), 'get_hours')
+            depends=['timesheet_available'], on_change_with=['work'],
+            help="Total time spent on this work"), 'on_change_with_hours')
     effort = fields.Float("Effort",
         states={
             'invisible': Eval('type') != 'task',
@@ -159,17 +161,17 @@ class Work(ModelSQL, ModelView):
     def search_active(cls, name, clause):
         return [('work.active',) + tuple(clause[1:])]
 
-    def get_company(self, name):
+    def on_change_with_company(self, name=None):
         return self.work.company.id
 
     @classmethod
     def search_comany(cls, name, clause):
         return [('work.company',) + tuple(clause[1:])]
 
-    def get_timesheet_available(self, name):
+    def on_change_with_timesheet_available(self, name=None):
         return self.work.timesheet_available
 
-    def get_hours(self, name):
+    def on_change_with_hours(self, name=None):
         return self.work.hours
 
     @classmethod
