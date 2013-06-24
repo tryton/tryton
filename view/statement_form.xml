@@ -20,11 +20,11 @@ this repository contains the full copyright notices and license terms. -->
                 <label name="state"/>
                 <field name="state"/>
                 <group col="4" colspan="2" id="buttons">
-                    <button string="Validate" name="validate_statement"/>
-                    <button string="Cancel" name="cancel"/>
-                    <button string="Post" name="post"/>
-                    <button string="Reset to Draft"
-                        name="draft"/>
+                    <button string="Cancel" name="cancel" icon="tryton-cancel"/>
+                    <button string="Draft" name="draft" icon="tryton-clear"/>
+                    <button string="Validate" name="validate_statement"
+                        icon="tryton-go-next"/>
+                    <button string="Post" name="post" icon="tryton-ok"/>
                 </group>
             </group>
         </page>
