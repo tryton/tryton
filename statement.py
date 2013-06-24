@@ -73,6 +73,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
+                ('draft', 'cancel'),
                 ('validated', 'posted'),
                 ('validated', 'cancel'),
                 ('cancel', 'draft'),
@@ -88,7 +89,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'validated',
                     },
                 'cancel': {
-                    'invisible': Eval('state') != 'validated',
+                    'invisible': ~Eval('state').in_(['draft', 'validated']),
                     },
                 })
 
