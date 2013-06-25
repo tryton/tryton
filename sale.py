@@ -207,7 +207,7 @@ class SaleLine:
                                 ]
                             ]
                 elif isinstance(arg, list):
-                    domain[i] = process(domain)
+                    domain[i] = process(arg)
                 i += 1
             return domain
         return super(SaleLine, cls).search(process(domain), *args, **kwargs)
