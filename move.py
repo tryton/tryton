@@ -100,6 +100,12 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
+            'from_location', 'to_location', 'company', 'unit_price',
+            'currency'])
+        cls._deny_modify_done_cancel = (cls._deny_modify_assigned |
+            set(['planned_date', 'effective_date', 'state']))
+
         cls._sql_constraints += [
             ('check_move_qty_pos',
                 'CHECK(quantity >= 0.0)', 'Move quantity must be positive'),
@@ -121,8 +127,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 'it is not in draft or cancelled state.'),
             'period_closed': ('You can not modify move "%(move)s" because '
                 'period "%(period)s" is closed.'),
-            'modify_assigned_done_cancel': ('You can not modify stock move '
-                '"%s" because it is in "Assigned", "Done" or "Cancel" state.'),
+            'modify_assigned': ('You can not modify stock move "%s" because '
+                'it is in "Assigned" state.'),
+            'modify_done_cancel': ('You can not modify stock move "%s" '
+                'because it is in "Done" or "Cancel" state.'),
             })
         cls._transitions |= set((
                 ('draft', 'assigned'),
@@ -515,18 +523,15 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def write(cls, moves, vals):
-        if reduce(lambda x, y: x or y in vals, ('product', 'uom', 'quantity',
-                'from_location', 'to_location', 'company', 'unit_price',
-                'currency'), False):
+        vals_set = set(vals)
+        if cls._deny_modify_assigned & vals_set:
             for move in moves:
-                if move.state in ('assigned', 'done', 'cancel'):
-                    cls.raise_user_error('modify_assigned_done_cancel',
-                        (move.rec_name,))
-        if reduce(lambda x, y: x or y in vals,
-                ('planned_date', 'effective_date', 'state'), False):
+                if move.state == 'assigned':
+                    cls.raise_user_error('modify_assigned', (move.rec_name,))
+        if cls._deny_modify_done_cancel & vals_set:
             for move in moves:
                 if move.state in ('done', 'cancel'):
-                    cls.raise_user_error('modify_assigned_done_cancel',
+                    cls.raise_user_error('modify_done_cancel',
                         (move.rec_name,))
 
         super(Move, cls).write(moves, vals)
