@@ -345,8 +345,17 @@ class TaxTemplate(ModelSQL, ModelView):
     sequence = fields.Integer('Sequence',
         order_field='(%(table)s.sequence IS NULL) %(order)s, '
         '%(table)s.sequence %(order)s')
-    amount = fields.Numeric('Amount', digits=(16, 8))
-    percentage = fields.Numeric('Percentage', digits=(16, 8))
+    amount = fields.Numeric('Amount', digits=(16, 8),
+        states={
+            'required': Eval('type') == 'fixed',
+            'invisible': Eval('type') != 'fixed',
+            },
+        depends=['type'])
+    rate = fields.Numeric('Rate', digits=(14, 10),
+        states={
+            'required': Eval('type') == 'percentage',
+            'invisible': Eval('type') != 'percentage',
+            }, depends=['type'])
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
@@ -393,6 +402,12 @@ class TaxTemplate(ModelSQL, ModelView):
         #Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 2.8: rename percentage into rate
+        if table.column_exist('percentage'):
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET rate = percentage / 100')
+            table.drop_column('percentage')
+
     @staticmethod
     def default_type():
         return 'percentage'
@@ -423,7 +438,7 @@ class TaxTemplate(ModelSQL, ModelView):
         '''
         res = {}
         for field in ('name', 'description', 'sequence', 'amount',
-                'percentage', 'type', 'invoice_base_sign', 'invoice_tax_sign',
+                'rate', 'type', 'invoice_base_sign', 'invoice_tax_sign',
                 'credit_note_base_sign', 'credit_note_tax_sign'):
             if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
@@ -532,7 +547,7 @@ class Tax(ModelSQL, ModelView):
     Account Tax
 
     Type:
-        percentage: tax = price * amount
+        percentage: tax = price * rate
         fixed: tax = amount
         none: tax = none
     '''
@@ -557,11 +572,11 @@ class Tax(ModelSQL, ModelView):
             'invisible': Eval('type') != 'fixed',
             }, help='In company\'s currency',
         depends=['type', 'currency_digits'])
-    percentage = fields.Numeric('Percentage', digits=(16, 8),
+    rate = fields.Numeric('Rate', digits=(14, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
-            }, help='In %', depends=['type'])
+            }, depends=['type'])
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
@@ -658,6 +673,12 @@ class Tax(ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 2.8: rename percentage into rate
+        if table.column_exist('percentage'):
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET rate = percentage / 100')
+            table.drop_column('percentage')
+
     @staticmethod
     def default_active():
         return True
@@ -697,7 +718,7 @@ class Tax(ModelSQL, ModelView):
 
     def _process_tax(self, price_unit):
         if self.type == 'percentage':
-            amount = price_unit * self.percentage / Decimal('100')
+            amount = price_unit * self.rate
             return {
                 'base': price_unit,
                 'amount': amount,

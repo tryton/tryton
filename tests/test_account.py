@@ -75,7 +75,7 @@ class AccountTestCase(unittest.TestCase):
                 tax = self.tax_template()
                 tax.name = tax.description = '20% VAT'
                 tax.type = 'percentage'
-                tax.percentage = Decimal(20)
+                tax.rate = Decimal('0.2')
                 tax.account = account_template
                 tax.invoice_account = tax_account
                 tax.credit_note_account = tax_account

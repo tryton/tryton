@@ -16,13 +16,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence"/>
             <label name="type"/>
             <field name="type"/>
-            <group col="1" id="label_amount_percentage">
+            <group col="1" id="label_amount_rate">
                 <label name="amount" yfill="1" xexpand="1" yexpand="1"/>
-                <label name="percentage" yfill="1" xexpand="1" yexpand="1"/>
+                <label name="rate" yfill="1" xexpand="1" yexpand="1"/>
             </group>
-            <group col="1" id="amount_percentage">
+            <group col="1" id="amount_rate">
                 <field name="amount"/>
-                <field name="percentage"/>
+                <group col="2" id="rate">
+                    <field name="rate" factor="100" xexpand="0"/>
+                    <label name="rate" string="%" xalign="0.0" xexpand="1"/>
+                </group>
             </group>
             <label name="company"/>
             <field name="company"/>
