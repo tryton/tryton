@@ -12,8 +12,8 @@ __all__ = ['URLMixin']
 
 HOSTNAME = (CONFIG['hostname_jsonrpc']
     or unicode(socket.getfqdn(), 'utf8'))
-HOSTNAME = '.'.join(encodings.idna.ToASCII(part) for part in
-    HOSTNAME.split('.'))
+HOSTNAME = '.'.join(encodings.idna.ToASCII(part) if part else ''
+    for part in HOSTNAME.split('.'))
 
 
 class URLAccessor(object):
