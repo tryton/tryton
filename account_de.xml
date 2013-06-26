@@ -10131,7 +10131,7 @@
             <field name="account" ref="root_de"/>
             <field name="description">19% USt</field>
             <field name="type">percentage</field>
-            <field name="percentage" eval="Decimal('-19')"/>
+            <field name="rate" eval="Decimal('-.19')"/>
             <field name="invoice_account" ref="account_1774"/>
             <field name="invoice_base_code" ref="tax_code_89"/>
             <field name="invoice_base_sign" eval="-1"/>
@@ -10149,7 +10149,7 @@
             <field name="account" ref="root_de"/>
             <field name="description">19% VSt</field>
             <field name="type">percentage</field>
-            <field name="percentage" eval="Decimal('19')"/>
+            <field name="rate" eval="Decimal('.19')"/>
             <field name="invoice_account" ref="account_1574"/>
             <field name="invoice_base_sign" eval="-1"/>
             <field name="invoice_tax_code" ref="tax_code_61"/>
@@ -10172,7 +10172,7 @@
             <field name="account" ref="root_de"/>
             <field name="description">7% USt</field>
             <field name="type">percentage</field>
-            <field name="percentage" eval="Decimal('-7')"/>
+            <field name="rate" eval="Decimal('-.07')"/>
             <field name="invoice_account" ref="account_1772"/>
             <field name="invoice_base_code" ref="tax_code_89"/>
             <field name="invoice_base_sign" eval="-1"/>
@@ -10190,7 +10190,7 @@
             <field name="account" ref="root_de"/>
             <field name="description">7% VSt</field>
             <field name="type">percentage</field>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="invoice_account" ref="account_1572"/>
             <field name="invoice_base_sign" eval="-1"/>
             <field name="invoice_tax_code" ref="tax_code_61"/>
@@ -10207,7 +10207,7 @@
             <field name="description">steuerfreie innergem. Lieferung</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_ust"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="rate" eval="Decimal('0')"/>
             <field name="invoice_account" ref="account_1770"/>
             <field name="invoice_base_code" ref="tax_code_41"/>
             <field name="invoice_base_sign" eval="1"/>
@@ -10223,7 +10223,7 @@
             <field name="description">steuerfreie Ausfuhr</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_ust"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="rate" eval="Decimal('0')"/>
             <field name="invoice_account" ref="account_1770"/>
             <field name="invoice_base_code" ref="tax_code_43"/>
             <field name="invoice_base_sign" eval="1"/>
@@ -10239,7 +10239,7 @@
             <field name="description">19% EUSt</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_vst"/>
-            <field name="percentage" eval="Decimal('19')"/>
+            <field name="rate" eval="Decimal('.19')"/>
             <field name="invoice_account" ref="account_1588"/>
             <field name="invoice_base_code" ref="tax_code_BAUS19"/>
             <field name="invoice_base_sign" eval="-1"/>
@@ -10257,7 +10257,7 @@
             <field name="description">7% EUSt</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_vst_reduced"/>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="invoice_account" ref="account_1588"/>
             <field name="invoice_base_code" ref="tax_code_BAUS7"/>
             <field name="invoice_base_sign" eval="-1"/>
@@ -10274,7 +10274,7 @@
             <field name="account" ref="root_de"/>
             <field name="description">nicht steuerbar</field>
             <field name="type">percentage</field>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="rate" eval="Decimal('0')"/>
             <field name="invoice_account" ref="account_1770"/>
             <field name="invoice_base_code" ref="tax_code_45"/>
             <field name="invoice_base_sign" eval="1"/>
@@ -10290,7 +10290,7 @@
             <field name="description">19% USt</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_ust"/>
-            <field name="percentage" eval="Decimal('19')"/>
+            <field name="rate" eval="Decimal('.19')"/>
             <field name="invoice_account" ref="account_1776"/>
             <field name="invoice_base_code" ref="tax_code_81"/>
             <field name="invoice_base_sign" eval="1"/>
@@ -10308,7 +10308,7 @@
             <field name="description">7% USt</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_ust"/>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="invoice_account" ref="account_1771"/>
             <field name="invoice_base_code" ref="tax_code_86"/>
             <field name="invoice_base_sign" eval="1"/>
@@ -10326,7 +10326,7 @@
             <field name="description">19% VSt</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_vst"/>
-            <field name="percentage" eval="Decimal('19')"/>
+            <field name="rate" eval="Decimal('.19')"/>
             <field name="invoice_account" ref="account_1576"/>
             <field name="invoice_base_code" ref="tax_code_BRV19"/>
             <field name="invoice_base_sign" eval="-1"/>
@@ -10344,7 +10344,7 @@
             <field name="description">7% VSt</field>
             <field name="type">percentage</field>
             <field name="group" ref="tax_group_vst_reduced"/>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="invoice_account" ref="account_1571"/>
             <field name="invoice_base_code" ref="tax_code_BRV7"/>
             <field name="invoice_base_sign" eval="-1"/>
