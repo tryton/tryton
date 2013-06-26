@@ -17,11 +17,12 @@ class ProductLocation(ModelSQL, ModelView):
     '''
     __name__ = 'stock.product.location'
     product = fields.Many2One('product.product', 'Product', required=True,
-            select=True)
+        select=True, ondelete='CASCADE')
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
-            domain=[('type', '=', 'warehouse')])
+        domain=[('type', '=', 'warehouse')], ondelete='CASCADE')
     location = fields.Many2One('stock.location', 'Storage Location',
-        required=True, domain=[
+        required=True, ondelete='CASCADE',
+        domain=[
             ('type', '=', 'storage'),
             ('parent', 'child_of', If(Bool(Eval('warehouse')),
                     [Eval('warehouse')], [])),
