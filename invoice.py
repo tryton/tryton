@@ -606,14 +606,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
 
-        computes = cls.search([
-                ('id', 'in', [i.id for i in invoices]),
-                ('state', '=', 'posted'),
-                ])
-
         today = Date.today()
         res = dict((x.id, _ZERO) for x in invoices)
-        for invoice in computes:
+        for invoice in invoices:
+            if invoice.state != 'posted':
+                continue
             amount = _ZERO
             amount_currency = _ZERO
             for line in invoice.lines_to_pay:
