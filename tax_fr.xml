@@ -564,7 +564,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('19.6')"/>
+            <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
             <field name="credit_note_account" ref="44571"/>
@@ -581,7 +581,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente 8,5%</field>
             <field name="description">T.V.A. 8,5%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('8.5')"/>
+            <field name="rate" eval="Decimal('.085')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
             <field name="credit_note_account" ref="44571"/>
@@ -598,7 +598,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
             <field name="credit_note_account" ref="44571"/>
@@ -615,7 +615,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente 5,5%</field>
             <field name="description">T.V.A. 5,5%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('5.5')"/>
+            <field name="rate" eval="Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
             <field name="credit_note_account" ref="44571"/>
@@ -632,7 +632,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente 2,1%</field>
             <field name="description">T.V.A. 2,1%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('2.1')"/>
+            <field name="rate" eval="Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
             <field name="credit_note_account" ref="44571"/>
@@ -649,7 +649,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente Intracommunautaire 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('19.6')"/>
+            <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -663,7 +663,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente Intracommunautaire 8,5%</field>
             <field name="description">T.V.A. 8,5%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('8.5')"/>
+            <field name="rate" eval="Decimal('.085')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -677,7 +677,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente Intracommunautaire 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -691,7 +691,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente Intracommunautaire 5,5%</field>
             <field name="description">T.V.A. 5,5%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('5.5')"/>
+            <field name="rate" eval="Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -705,7 +705,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente Intracommunautaire 2,1%</field>
             <field name="description">T.V.A. 2,1%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('2.1')"/>
+            <field name="rate" eval="Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -719,7 +719,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente Intracommunautaire 0%</field>
             <field name="description">T.V.A. 0%</field>
             <field name="group" ref="group_tva_vente"/>
-            <field name="percentage" eval="Decimal('0')"/>
+            <field name="rate" eval="Decimal('0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -733,7 +733,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="group" ref="group_tva_achat"/>
-            <field name="percentage" eval="Decimal('19.6')"/>
+            <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -747,7 +747,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat 8,5%</field>
             <field name="description">T.V.A. 8,5%</field>
             <field name="group" ref="group_tva_achat"/>
-            <field name="percentage" eval="Decimal('8.5')"/>
+            <field name="rate" eval="Decimal('.085')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -761,7 +761,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="group" ref="group_tva_achat"/>
-            <field name="percentage" eval="Decimal('7')"/>
+            <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -775,7 +775,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat 5,5%</field>
             <field name="description">T.V.A. 5,5%</field>
             <field name="group" ref="group_tva_achat"/>
-            <field name="percentage" eval="Decimal('5.5')"/>
+            <field name="rate" eval="Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -789,7 +789,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat 2,1%</field>
             <field name="description">T.V.A. 2,1%</field>
             <field name="group" ref="group_tva_achat"/>
-            <field name="percentage" eval="Decimal('2.1')"/>
+            <field name="rate" eval="Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -810,7 +810,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire 19,6% (1)</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_19_6"/>
-            <field name="percentage" eval="Decimal('19.6')"/>
+            <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -826,7 +826,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire 19,6% (2)</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_19_6"/>
-            <field name="percentage" eval="-Decimal('19.6')"/>
+            <field name="rate" eval="-Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -844,7 +844,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire 5,5% (1)</field>
             <field name="description">T.V.A. 5,5%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_5_5"/>
-            <field name="percentage" eval="Decimal('5.5')"/>
+            <field name="rate" eval="Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -860,7 +860,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire 5,5% (2)</field>
             <field name="description">T.V.A. 5,5%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_5_5"/>
-            <field name="percentage" eval="-Decimal('5.5')"/>
+            <field name="rate" eval="-Decimal('.055')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
@@ -878,7 +878,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire 2,1% (1)</field>
             <field name="description">T.V.A. 2,1%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_2_1"/>
-            <field name="percentage" eval="Decimal('2.1')"/>
+            <field name="rate" eval="Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
             <field name="credit_note_account" ref="44566"/>
@@ -894,7 +894,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire 2,1% (2)</field>
             <field name="description">T.V.A. 2,1%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_2_1"/>
-            <field name="percentage" eval="-Decimal('2.1')"/>
+            <field name="rate" eval="-Decimal('.021')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="4452"/>
             <field name="credit_note_account" ref="4452"/>
