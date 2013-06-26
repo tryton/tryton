@@ -15,265 +15,221 @@
             <field name="name">Capital souscrit - non appelé</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="actif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="actif_immobilise">
             <field name="name">Actifs immobilisés</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="actif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_incorporelles">
             <field name="name">Immobilisations incorporelles</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="actif_immobilise"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="frais_etablissement">
             <field name="name">Frais d'établissement</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="frais_recherche_developpement">
             <field name="name">Frais de recherche et de développement</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="concessions_brevets_licences_droits">
             <field name="name">Concessions, brevets, licences, marques, procédés, logiciels, droits et valeurs similaires</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="fonds_commercial">
             <field name="name">Fonds commercial</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_incorporelles_autres">
             <field name="name">Autres</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_incorporelles_en_cours">
             <field name="name">Immobilisations incorporelles en cours</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_incorporelles_avances_acomptes">
             <field name="name">Avances et acomptes</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="immobilisations_incorporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_corporelles">
             <field name="name">Immobilisations corporelles</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="actif_immobilise"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="terrains">
             <field name="name">Terrains</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="immobilisations_corporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="constructions">
             <field name="name">Constructions</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="immobilisations_corporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="installations_techniques_materiel_outillage">
             <field name="name">Installations techniques, matériel et outillage industriels</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="immobilisations_corporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_corporelles_autres">
             <field name="name">Autres</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="immobilisations_corporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_corporelles_en_cours">
             <field name="name">Immobilisations corporelles en cours</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="immobilisations_corporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_corporelles_avances_acomptes">
             <field name="name">Avances et acomptes</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="immobilisations_corporelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_financieres">
             <field name="name">Immobilisations financiéres</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="actif_immobilise"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="participations">
             <field name="name">Participations</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="immobilisations_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="creances_rattachees_participations">
             <field name="name">Créances rattachées à des participations</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="immobilisations_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="titres_immobilises">
             <field name="name">Titres immobilisés de l'activité de portefeuille</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="immobilisations_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="autres_titres_immobilises">
             <field name="name">Autres titres immobilisés</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="immobilisations_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="prets">
             <field name="name">Prêts</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="immobilisations_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="immobilisations_financieres_autres">
             <field name="name">Autres</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="immobilisations_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="actif_circulant">
             <field name="name">Actif circulant</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="actif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="stock_en_cours">
             <field name="name">Stock et en-cours</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="matieres_premieres">
             <field name="name">Matières premières et autres approvisionnements</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="stock_en_cours"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="en_cours_production">
             <field name="name">En-cours de production [biens et services]</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="stock_en_cours"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_intermediaires_finis">
             <field name="name">Produits intermédiaires et finis</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="stock_en_cours"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="marchandises">
             <field name="name">Marchandises</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="stock_en_cours"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="avances_acomptes">
             <field name="name">Avances et acomptes versés sur commandes</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="creances">
             <field name="name">Créances d'exploitation</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="creances_clients">
             <field name="name">Créances clients et comptes rattachés</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="creances"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="creances_autres">
             <field name="name">Autres</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="creances"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="capital_souscrit_appele">
             <field name="name">Capital souscrit - appelé, non versé</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="creances"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="valeurs_mobilieres_placement">
             <field name="name">Valeurs mobilières de placement</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="actions_propres">
             <field name="name">Actions propres</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="autres_titres">
             <field name="name">Autres titres</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="actif_circulant_instruments_tresorerie">
             <field name="name">Instruments de trésorerie</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="disponibilites">
             <field name="name">Disponibilités</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_constates_avance">
             <field name="name">Charges constatés d'avance</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="actif_circulant"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_repartir_plusieurs_exercices">
             <field name="name">Charges à répartir sur plusieurs exercices</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="actif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="primes_remboursement_emprunts">
             <field name="name">Primes de remboursement des emprunts</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="actif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="ecarts_conversion_actif">
             <field name="name">Écarts de conversion actif</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="actif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="passif">
             <field name="name">Passif</field>
@@ -285,535 +241,447 @@
             <field name="name">Capitaux propres</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="passif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="capital">
             <field name="name">Capital [dont versé...]</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="primes">
             <field name="name">Primes d'émission, de fusion, d'apport</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="ecarts_reevaluation">
             <field name="name">Écarts de réévaluation</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="ecart_equivalence">
             <field name="name">Écart d'équivalence</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="reserves">
             <field name="name">Réserves</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="reserve_legale">
             <field name="name">Réserve légale</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="reserves"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="reserves_statutaires_contractuelles">
             <field name="name">Réserves statutaires ou contractuelles</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="reserves"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="reserves_reglementees">
             <field name="name">Réserves réglementées</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="reserves"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="autres_reserves">
             <field name="name">Autres</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="reserves"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="report_a_nouveau">
             <field name="name">Report à nouveau</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="resultat">
             <field name="name">Résultat de l'exercice [bénéfice ou perte]</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
+            <field name="income_statement" eval="True"/>
         </record>
         <record model="account.account.type.template" id="compte_resultat">
             <field name="name">Compte de résultat</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultat"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges">
             <field name="name">Charges</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="compte_resultat"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_exploitation">
             <field name="name">Charges d'exploitation</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="charges"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="achat_marchandises">
             <field name="name">Achat de marchandises</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="achat_marchandises_variation_stocks">
             <field name="name">Variation des stocks de marchandises</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="achat_marchandises"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="achats_matieres_premieres">
             <field name="name">Achats de matières premières et autres approvisionnements</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="achats_matieres_premieres_variation_stocks">
             <field name="name">Variation des stocks</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="achats_matieres_premieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="autres_achats">
             <field name="name">Autres achats et charges externes</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="redevances_credit-bail_mobilier">
             <field name="name">Redevances de crédit-bail mobilier</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="autres_achats"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="redevances_credit-bail_immobilier">
             <field name="name">Redevances de crédit-bail immobilier</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="autres_achats"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="impots_taxes">
             <field name="name">Impôts, taxes et versements assimilés</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="salaires_traitements">
             <field name="name">Salaires et traitements</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_sociales">
             <field name="name">Charges sociales</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotation_amortissements_depreciations">
             <field name="name">Dotation aux amortissements et aux dépréciations</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotation_amortissements_immobilisations">
             <field name="name">Sur immobilisations : dotations aux amortissements</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dotation_amortissements_depreciations"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotation_depreciations_immobilisations">
             <field name="name">Sur immobilisations : dotations aux dépréciations</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dotation_amortissements_depreciations"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotation_depreciations_actif_circulant">
             <field name="name">Sur actif circulant : dotations aux dépréciations</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="dotation_amortissements_depreciations"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotations_provisions">
             <field name="name">Dotations aux provisions</field>
             <field name="sequence" eval="80"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="autres_charges">
             <field name="name">Autres charges</field>
             <field name="sequence" eval="90"/>
             <field name="parent" ref="charges_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_quotes-parts_resultat_operations_commun">
             <field name="name">Quotes-parts de résultat sur opérations faites en commun</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="charges"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_financieres">
             <field name="name">Charges financières</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="charges"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotations_amortissements_depreciations_provisions">
             <field name="name">Dotations aux amortissements, aux dépréciations et aux provisions</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="charges_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="interets_charges_assimilees">
             <field name="name">Intérêts et charges assimilées</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="charges_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="differences_negatives_change">
             <field name="name">Différences négatives de change</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="charges_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_nettes_cessions_valeurs_mobilieres_placement">
             <field name="name">Charges nettes sur cessions de valeurs mobilières de placement</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="charges_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_exceptionnelles">
             <field name="name">Charges exceptionnelles</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="charges"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_exceptionnelles_operations_gestion">
             <field name="name">Sur opérations de gestion</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="charges_exceptionnelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_exceptionnelles_operations_capital">
             <field name="name">Sur opérations en capital</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="charges_exceptionnelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_exceptionnelles_dotations_amortissements_depreciations_provisions">
             <field name="name">Dotations aux amortissements, aux dépréciations et aux provisions</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="charges_exceptionnelles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="participation_salaries_resultats">
             <field name="name">Participation des salariés aux résultats</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="charges"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="impots_benefices">
             <field name="name">Impôts sur les bénéfices</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="charges"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits">
             <field name="name">Produits</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="compte_resultat"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exploitation">
             <field name="name">Produits d'exploitation</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="produits"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="chiffre_affaires">
             <field name="name">Chiffre d'affaires</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="produits_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="vente_marchandises">
             <field name="name">Vente de marchandises</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="chiffre_affaires"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="production_vendue">
             <field name="name">Production vendue</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="chiffre_affaires"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="production_stockee">
             <field name="name">Production stockée</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="produits_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="production_immobilisee">
             <field name="name">Production immobilisée</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="produits_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="subventions_exploitation">
             <field name="name">Subventions d'exploitation</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="produits_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exploitation_reprises_provisions_depreciations_amortissements_transferts_charges">
             <field name="name">Reprises sur provisions, dépréciations (et amortissements) et transferts de charges</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="produits_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exploitation_autres">
             <field name="name">Autres produits</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="produits_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_quotes-parts_resultat_operations_commun">
             <field name="name">Quotes-parts de résultat sur opérations faites en commun</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="produits"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_financiers">
             <field name="name">Produits financiers</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="produits"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_participation">
             <field name="name">De participation</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="produits_financiers"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_autres_valeurs_mobilieres_creances_actif_immobilise">
             <field name="name">D'autres valeurs mobilières et créances de l'actif immobilisé</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="produits_financiers"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_autres_interets_produits_assimiles">
             <field name="name">Autres intérêts et produits assimilés</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="produits_financiers"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_financiers_reprises_provisions_depreciations_amortissements_transferts_charges">
             <field name="name">Reprises sur provisions, dépréciations (et amortissements) et transferts de charges</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="produits_financiers"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="differences_positives_change">
             <field name="name">Différences positives de change</field>
             <field name="sequence" eval="50"/>
             <field name="parent" ref="produits_financiers"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_nets_cessions_valeurs_mobilieres_placement">
             <field name="name">Produits nets sur cessions de valeurs mobilières de placement</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="produits_financiers"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exceptionnels">
             <field name="name">Produits exceptionnels</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="produits"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exceptionnels_operations_gestion">
             <field name="name">Sur opérations de gestion</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="produits_exceptionnels"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exceptionnels_operations_capital">
             <field name="name">Sur opérations en capital</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="produits_exceptionnels"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_exceptionnels_reprises_provisions_depreciations_transferts_charges">
             <field name="name">Reprises sur provisions, dépréciations et transferts de charges</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="produits_exceptionnels"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="subventions_investissement">
             <field name="name">Subventions d'investissement</field>
             <field name="sequence" eval="80"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="provisions_reglementees">
             <field name="name">Provisions réglementées</field>
             <field name="sequence" eval="90"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="provisions">
             <field name="name">Provisions</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="passif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="provisions_risques">
             <field name="name">Provisions pour risques</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="provisions"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="provisions_charges">
             <field name="name">Provisions pour charges</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="provisions"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes">
             <field name="name">Dettes</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="passif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_financieres">
             <field name="name">Dettes financières</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dettes"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="emprunts_obligataires_convertibles">
             <field name="name">Emprunts obligataires convertibles</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dettes_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="autres_emprunts_obligataires">
             <field name="name">Autres emprunts obligataires</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="emprunts_obligataires_convertibles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="emprunts_dettes_etablissements_credit">
             <field name="name">Emprunts et dettes auprès des établissements de crédit</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="emprunts_obligataires_convertibles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="emprunts_dettes_financieres_diverses">
             <field name="name">Emprunts et dettes financières diverses</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="emprunts_obligataires_convertibles"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="avances_acomptes_recus_commandes_en_cours">
             <field name="name">Avances et acomptes reçus sur commandes en cours</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dettes_financieres"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_exploitation">
             <field name="name">Dettes d'exploitation</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dettes"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_fournisseurs_comptes_rattaches">
             <field name="name">Dettes fournisseurs et comptes rattachés</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dettes_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_fiscales_sociales">
             <field name="name">Dettes fiscales et sociales</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dettes_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_exploitation_autres">
             <field name="name">Autres</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="dettes_exploitation"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_diverses">
             <field name="name">Dettes diverses</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="dettes"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_immobilisations_comptes_rattaches">
             <field name="name">Dettes sur immobilisations et comptes rattachés</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dettes_diverses"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_fiscales">
             <field name="name">Dettes fiscales (impots sur les bénéfices)</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="dettes_diverses"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_diverses_autres">
             <field name="name">Autres</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="dettes_diverses"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dettes_instruments_tresorerie">
             <field name="name">Instruments de trésorerie</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="dettes"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="produits_constates_avance">
             <field name="name">Produits constatés d'avance</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dettes_instruments_tresorerie"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="ecarts_conversion_passif">
             <field name="name">Écarts de conversion passif</field>
             <field name="sequence" eval="40"/>
             <field name="parent" ref="passif"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.type.template" id="hors_bilan">
             <field name="name">Hors bilan</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="fr"/>
-            <field name="balance_sheet" eval="True"/>
         </record>
         <record model="account.account.template" id="root">
             <field name="name">French Chart</field>
