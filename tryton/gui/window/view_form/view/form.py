@@ -183,4 +183,8 @@ class ViewForm(ParserView):
             self.screen.display()
             return
         else:
-            self.screen.button(widget.attrs)
+            widget.set_sensitive(False)
+            try:
+                self.screen.button(widget.attrs)
+            finally:
+                widget.set_sensitive(True)
