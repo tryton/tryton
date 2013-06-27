@@ -1250,9 +1250,11 @@ class ModelSQL(ModelStorage):
                 if field._type in ('many2one', 'reference'):
                     if field._type == 'many2one':
                         Target = pool.get(field.model_name)
+                        m2o_search = [(fargs[1],) + tuple(domain[i][1:])]
                     else:
                         Target = pool.get(domain[i][3])
-                    m2o_search = [(fargs[1], domain[i][1], domain[i][2])]
+                        m2o_search = [(fargs[1],) + tuple(domain[i][1:3])
+                            + tuple(domain[i][4:])]
                     if 'active' in Target._fields:
                         m2o_search += [('active', 'in', (True, False))]
                     if hasattr(field, 'search'):
