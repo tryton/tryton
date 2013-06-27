@@ -1262,8 +1262,9 @@ class SaleLine(ModelSQL, ModelView):
                 if invoice_line.account:
                     break
             if not invoice_line.account:
-                self.raise_user_error('missing_account_revenue_property',
-                    (self.sale.rec_name,))
+                self.raise_user_error('missing_account_revenue_property', {
+                        'sale': self.sale.rec_name,
+                        })
         invoice_line.origin = self
         return [invoice_line]
 
