@@ -618,7 +618,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
-            <field name="domain">[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]</field>
+            <field name="domain">[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
             <field name="sequence" eval="10"/>
