@@ -87,11 +87,9 @@
             var toolbar = this.create_toolbar();
             el.append(toolbar);
             this.el = el;
-            this.view_prm = this.screen.load_next_view().then(function() {
-                screen.switch_view().done(function() {
-                    el.append(screen.screen_container.el);
-                    screen.search_filter();
-                });
+            this.view_prm = this.screen.switch_view().done(function() {
+                el.append(screen.screen_container.el);
+                screen.search_filter();
             });
         },
         // TODO translate labels

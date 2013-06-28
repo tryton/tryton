@@ -205,11 +205,14 @@
             if ((!view_type) || (!this.current_view) ||
                     (this.current_view.view_type != view_type)) {
                 var switch_current_view = (function() {
-                    this.current_view = this.views.slice(-1);
+                    this.current_view = this.views[this.views.length - 1];
                     return this.switch_view(view_type);
                 }.bind(this));
                 for (var i = 0; i < this.number_of_views(); i++) {
                     if (this.view_to_load.length) {
+                        if (!view_type) {
+                            view_type = this.view_to_load[0];
+                        }
                         return this.load_next_view().pipe(switch_current_view);
                     }
                     this.current_view = this.views[
