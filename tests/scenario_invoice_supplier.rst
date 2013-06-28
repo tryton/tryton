@@ -120,7 +120,7 @@ Create tax::
     >>> tax.name = 'Tax'
     >>> tax.description = 'Tax'
     >>> tax.type = 'percentage'
-    >>> tax.percentage = Decimal(10)
+    >>> tax.rate = Decimal('.10')
     >>> tax.invoice_account = account_tax
     >>> tax.credit_note_account = account_tax
     >>> invoice_base_code = TaxCode(name='invoice base')
