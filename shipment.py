@@ -1,10 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['ShipmentInternal']
+__all__ = ['ShipmentInternal',
+    'CreateShipmentInternalStart', 'CreateShipmentInternal']
 __metaclass__ = PoolMeta
 
 
@@ -94,3 +96,27 @@ class ShipmentInternal(ModelSQL, ModelView):
             shipments.append(shipment)
         cls.wait(shipments)
         return shipments
+
+
+class CreateShipmentInternalStart(ModelView):
+    'Create Shipment Internal'
+    __name__ = 'stock.shipment.internal.create.start'
+
+
+class CreateShipmentInternal(Wizard):
+    'Create Shipment Internal'
+    __name__ = 'stock.shipment.internal.create'
+    start = StateView('stock.shipment.internal.create.start',
+        'stock_supply.shipment_internal_create_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Create', 'create_', 'tryton-ok', default=True),
+            ])
+    create_ = StateAction('stock.act_shipment_internal_form')
+
+    def do_create_(self, action):
+        ShipmentInternal = Pool().get('stock.shipment.internal')
+        ShipmentInternal.generate_internal_shipment()
+        return action, {}
+
+    def transition_create_(self):
+        return 'end'

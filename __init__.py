@@ -17,8 +17,10 @@ def register():
         CreatePurchaseAskTerm,
         CreatePurchaseAskParty,
         ShipmentInternal,
+        CreateShipmentInternalStart,
         module='stock_supply', type_='model')
     Pool.register(
         CreatePurchaseRequest,
         CreatePurchase,
+        CreateShipmentInternal,
         module='stock_supply', type_='wizard')

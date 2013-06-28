@@ -17,6 +17,7 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
     test_depends
 from trytond.transaction import Transaction
+from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 DATES = [
     # purchase date, delivery time, supply date
@@ -136,6 +137,16 @@ class StockSupplyTestCase(unittest.TestCase):
         return product_supplier
 
 
+def doctest_dropdb(test):
+    database = SQLiteDatabase().connect()
+    cursor = database.cursor(autocommit=True)
+    try:
+        database.drop(cursor, ':memory:')
+        cursor.commit()
+    finally:
+        cursor.close()
+
+
 def suite():
     suite = trytond.tests.test_tryton.suite()
     from trytond.modules.company.tests import test_company
@@ -148,6 +159,9 @@ def suite():
             suite.addTest(test)
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         StockSupplyTestCase))
+    suite.addTests(doctest.DocFileSuite('scenario_stock_internal_supply.rst',
+            setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
 
 if __name__ == '__main__':
