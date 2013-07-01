@@ -199,12 +199,16 @@
         };
         array.changed = function() {
             if (!this.parent) {
-                return;
+                return jQuery.when();
             }
             this.parent._changed[this.child_name] = true;
-            this.parent.model.fields[this.child_name].changed(this.parent);
-            // TODO validate parent
-            this.parent.group.changed();
+            var prm = jQuery.Deferred();
+            this.parent.model.fields[this.child_name].changed(this.parent).then(
+                    function() {
+                        // TODO validate parent
+                        this.parent.group.changed().done(prm.resolve);
+                    }.bind(this));
+            return prm;
         };
         array.root_group = function() {
             var root = this;
@@ -756,9 +760,11 @@
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
                     // TODO validate + parent
-                    record.group.changed();
-                    record.group.root_group().screens.forEach(function(screen) {
-                        screen.display();
+                    record.group.changed().done(function() {
+                        record.group.root_group().screens.forEach(
+                            function(screen) {
+                                screen.display();
+                            });
                     });
                 });
             } else if (force_change) {
