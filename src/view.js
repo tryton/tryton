@@ -119,34 +119,31 @@
         },
         create_columns: function(model, xml) {
             xml.find('tree').children().each(function(pos, child) {
-                var attributes, column;
+                var column, i, len;
+                var attributes = {};
+                for (i = 0, len = child.attributes.length; i < len; i++) {
+                    var attribute = child.attributes[i];
+                    attributes[attribute.name] = attribute.value;
+                }
+                ['readonly', 'tree_invisible', 'expand', 'completion'].forEach(
+                    function(name) {
+                        if (attributes[name]) {
+                            attributes[name] = attribute[name] == 1;
+                        }
+                    });
                 if (child.tagName == 'field') {
                     var name = child.getAttribute('name');
-                    attributes = {
-                        'name': child.getAttribute('name'),
-                        'readonly': child.getAttribute('readonly') == 1,
-                        'widget': child.getAttribute('widget'),
-                        'tree_invisible': child.getAttribute(
-                            'tree_invisible') == 1,
-                        'expand': child.getAttribute('expand') == 1,
-                        'icon': child.getAttribute('icon'),
-                        'sum': child.getAttribute('sum'),
-                        'width': child.getAttribute('width'),
-                        'orientation': child.getAttribute('orientation'),
-                        'float_time': child.getAttribute('float_time'),
-                        'completion': child.getAttribute('completion') == 1
-                    };
                     if (name == this.screen.exclude_field) {
                         // TODO is it really the way to do it
                         return;
                     }
-                    if (attributes.widget === null) {
+                    if (!attributes.widget) {
                         attributes.widget = model.fields[name].description.type;
                     }
                     var attribute_names = ['relation', 'domain', 'selection',
                         'relation_field', 'string', 'views', 'invisible',
                         'add_remove', 'sort', 'context', 'filename'];
-                    for (var i in attribute_names) {
+                    for (i in attribute_names) {
                         var attr = attribute_names[i];
                         if ((attr in model.fields[name].description) &&
                             (child.getAttribute(attr) === null)) {
@@ -159,13 +156,6 @@
                     column = new ColumnFactory(model, attributes);
                     this.fields[name] = true;
                 } else if (child.tagName == 'button') {
-                    attributes = {
-                        'help': child.getAttribute('help'),
-                        'string': child.getAttribute('string'),
-                        'confirm': child.getAttribute('confirm'),
-                        'name': child.getAttribute('name'),
-                        'states': child.getAttribute('states')
-                    };
                     column = new Sao.View.Tree.ButtonColumn(this.screen,
                             attributes);
                 }
@@ -512,16 +502,14 @@
                     Number(node.getAttribute('col') || 4));
             }
             var _parse = function(index, child) {
-                var attributes = {
-                    'name': child.getAttribute('name'),
-                    'widget': child.getAttribute('widget'),
-                    'string': child.getAttribute('string'),
-                    'states': child.getAttribute('states'),
-                    'mode': child.getAttribute('mode')
-                };
+                var attributes = {};
+                for (var i = 0, len = child.attributes.length; i < len; i++) {
+                    var attribute = child.attributes[i];
+                    attributes[attribute.name] = attribute.value;
+                }
                 ['readonly', 'invisible'].forEach(function(name) {
-                    if (child.getAttribute(name)) {
-                        attributes[name] = child.getAttribute(name) == 1;
+                    if (attributes[name]) {
+                        attributes[name] = attribute[name] == 1;
                     }
                 });
                 switch (child.tagName) {
@@ -660,7 +648,7 @@
                         Number(node.getAttribute('colspan') || 1));
                 return;
             }
-            if (attributes.widget === null) {
+            if (!attributes.widget) {
                 attributes.widget = model.fields[name]
                     .description.type;
             }
