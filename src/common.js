@@ -86,12 +86,12 @@
             }
         }
         environment.id = parent_.id;
-        if (parent_.parent)
+        if (parent_.group.parent)
             Object.defineProperty(environment, '_parent_' +
-                    parent_.parent_name, {
+                    parent_.group.parent_name, {
                 'enumerable': true,
                 'get': function() {
-                    return Sao.common.EvalEnvironment(parent_.parent,
+                    return Sao.common.EvalEnvironment(parent_.group.parent,
                         eval_type);
                 }
             });
