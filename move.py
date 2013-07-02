@@ -130,10 +130,10 @@ class Move:
 
     @classmethod
     def delete(cls, moves):
-        moves = cls.search([
+        fifo_moves = cls.search([
                 ('id', 'in', [m.id for m in moves]),
                 ('fifo_quantity', '!=', 0.0),
                 ])
-        if moves:
-            cls.raise_user_error('del_move_fifo', (moves[0].rec_name,))
+        if fifo_moves:
+            cls.raise_user_error('del_move_fifo', (fifo_moves[0].rec_name,))
         super(Move, cls).delete(moves)
