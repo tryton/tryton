@@ -1258,8 +1258,9 @@ class ModelSQL(ModelStorage):
                     if 'active' in Target._fields:
                         m2o_search += [('active', 'in', (True, False))]
                     if hasattr(field, 'search'):
+                        conv = int if field._type == 'many2one' else str
                         domain.extend([(fargs[0], 'in',
-                                    map(int, Target.search(m2o_search,
+                                    map(conv, Target.search(m2o_search,
                                             order=[])))])
                         domain.pop(i)
                     else:
