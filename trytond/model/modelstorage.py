@@ -879,11 +879,6 @@ class ModelStorage(Model):
     @classmethod
     def _validate(cls, records):
         pool = Pool()
-        if (Transaction().user == 0
-                and Transaction().context.get('user')):
-            with Transaction().set_user(Transaction().context.get('user')):
-                return cls._validate(cls.browse(records))
-
         # Ensure that records are readable
         with Transaction().set_user(0, set_context=True):
             records = cls.browse(records)
