@@ -1,29 +1,35 @@
 {
-    "name": "sao",
-    "title": "sao",
-    "description": "Tryton webclient",
-    "version": "0.0.1",
-    "homepage": "http://www.tryton.org/",
-    "author": {
-        "name": "Tryton"
-    },
-    "repository": {
-        "type": "hg",
-        "url": "http://hg.tryton.org/sandbox/sao"
-    },
-    "bugs": {
-        "url": "http://bugs.tryton.org/"
-    },
-    "licenses": ["GPL-3"],
-    "scripts": {
-        "test": "./node_modules/.bin/grunt"
-    },
-    "dependencies": {
-    },
-    "devDependencies": {
-        "grunt": "~0.4.0",
-        "grunt-contrib-jshint": "~0.1.0",
-        "grunt-contrib-nodeunit": "~0.1.0"
-    },
-    "keywords": ["tryton"]
+  "name": "sao",
+  "title": "sao",
+  "description": "Tryton webclient",
+  "version": "0.0.1",
+  "homepage": "http://www.tryton.org/",
+  "author": {
+    "name": "Tryton"
+  },
+  "repository": {
+    "type": "hg",
+    "url": "http://hg.tryton.org/sandbox/sao"
+  },
+  "bugs": {
+    "url": "http://bugs.tryton.org/"
+  },
+  "licenses": [
+    "GPL-3"
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/grunt"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.0",
+    "grunt-contrib-nodeunit": "~0.1.0",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.1"
+  },
+  "keywords": [
+    "tryton"
+  ]
 }
