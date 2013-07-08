@@ -13,4 +13,5 @@ class Product:
     locations = fields.One2Many('stock.product.location', 'product',
         'Default Locations', states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
-            })
+            },
+        depends=['type'])
