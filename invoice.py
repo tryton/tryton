@@ -2678,7 +2678,7 @@ class PayInvoice(Wizard):
 
 
 class CreditInvoiceStart(ModelView):
-    'Credit Invoice Init'
+    'Credit Invoice'
     __name__ = 'account.invoice.credit.start'
     with_refund = fields.Boolean('With Refund',
         help='If true, the current invoice(s) will be paid.')
