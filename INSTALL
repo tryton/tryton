@@ -8,6 +8,7 @@ Prerequisites
  * trytond (http://www.tryton.org/)
  * trytond_project (http://www.tryton.org/)
  * trytond_timesheet (http://www.tryton.org/)
+ * trytond_timesheet_cost (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
  * trytond_product (http://www.tryton.org/)
 
