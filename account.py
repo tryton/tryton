@@ -1016,7 +1016,7 @@ class OpenChartAccountStart(ModelView):
     __name__ = 'account.open_chart.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Leave empty for all open fiscal year')
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
+    posted = fields.Boolean('Posted Moves', help='Show posted moves only')
 
     @staticmethod
     def default_posted():
