@@ -278,7 +278,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         # Cancel before delete
         self.cancel(ids)
         for opportunity in self.browse(ids):
-            if opportunity.state != 'cancel':
+            if opportunity.state != 'cancelled':
                 self.raise_user_error('delete_cancel', opportunity.rec_name)
         return super(SaleOpportunity, self).delete(ids)
 
