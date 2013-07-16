@@ -36,9 +36,14 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     'Sale Opportunity'
     __name__ = "sale.opportunity"
     _history = True
-    _rec_name = 'description'
-    party = fields.Many2One('party.party', 'Party', required=True, select=True,
-        on_change=['party'], states=_STATES_STOP, depends=_DEPENDS_STOP)
+    _rec_name = 'reference'
+    reference = fields.Char('Reference', readonly=True, required=True,
+        select=True)
+    party = fields.Many2One('party.party', 'Party', select=True,
+        on_change=['party'], states={
+             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
+             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
+             }, depends=['state'])
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('party'))],
         select=True, depends=['party', 'state'],
@@ -90,6 +95,25 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     sale = fields.Many2One('sale.sale', 'Sale', readonly=True, states={
             'invisible': Eval('state') != 'converted',
             }, depends=['state'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
+        reference_exists = True
+        if TableHandler.table_exist(cursor, cls._table):
+            table = TableHandler(cursor, cls, module_name)
+            reference_exists = table.column_exist('reference')
+        super(SaleOpportunity, cls).__register__(module_name)
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.8: make party not required and add reference as
+        # required
+        table.not_null_action('party', action='remove')
+        if not reference_exists:
+            cursor.execute('UPDATE "' + cls._table + '" SET reference=id WHERE '
+                'reference IS NULL')
+            table.not_null_action('reference', action='add')
+
 
     @classmethod
     def __setup__(cls):
@@ -170,6 +194,27 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         payment_terms = PaymentTerm.search(cls.payment_term.domain)
         if len(payment_terms) == 1:
             return payment_terms[0].id
+
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Config = pool.get('sale.configuration')
+
+        sequence = Config(1).sale_opportunity_sequence
+        vlist = [x.copy() for x in vlist]
+        for vals in vlist:
+            vals['reference'] = Sequence.get_id(sequence.id)
+        return super(SaleOpportunity, cls).create(vlist)
+
+    @classmethod
+    def copy(cls, opportunities, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('reference', None)
+        default.setdefault('history', None)
+        return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
     def get_currency(self, name):
         return self.company.currency.id

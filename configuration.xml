@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view"
+            id="sale_opportunity_configuration_view_form">
+            <field name="model">sale.configuration</field>
+            <field name="inherit" ref="sale.sale_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
+
+        <record model="ir.property" id="property_sale_opportunity_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_opportunity_sequence')]"/>
+            <field name="value"
+                eval="'ir.sequence,' + str(ref('sequence_sale_opportunity'))"/>
+        </record>
+    </data>
+</tryton>

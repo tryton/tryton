@@ -6,6 +6,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <label name="address"/>
     <field name="address"/>
+    <label name="description"/>
+    <field name="description"/>
+    <label name="reference"/>
+    <field name="reference"/>
     <label name="amount"/>
     <group col="2" id="amount_currency">
         <field name="amount"/>
@@ -13,8 +17,6 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <label name="probability"/>
     <field name="probability"/>
-    <label name="description"/>
-    <field name="description" colspan="3"/>
     <notebook colspan="4">
         <page string="Lead/Opportunity" id="opportunity">
             <label name="company"/>

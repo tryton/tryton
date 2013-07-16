@@ -26,6 +26,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">opportunity_tree</field>
         </record>
 
+        <record model="ir.sequence.type" id="sequence_type_sale_opportunity">
+            <field name="name">Sale Opportunity</field>
+            <field name="code">sale.opportunity</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_opportunity_group_admin">
+            <field name="sequence_type" ref="sequence_type_sale_opportunity"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_sale_opportunity_group_sale_admin">
+            <field name="sequence_type" ref="sequence_type_sale_opportunity"/>
+            <field name="group" ref="sale.group_sale_admin"/>
+        </record>
+
+        <record model="ir.sequence" id="sequence_sale_opportunity">
+            <field name="name">Sale Opportunity</field>
+            <field name="code">sale.opportunity</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_opportunity_form">
             <field name="name">Leads and Opportunities</field>
             <field name="res_model">sale.opportunity</field>
