@@ -1,5 +1,5 @@
 ==================================
-Account Stock Continental Scenario
+Account Stock Anglo-Saxon Scenario
 ==================================
 
 =============
@@ -16,8 +16,8 @@ Imports::
 
 Create database::
 
-    >>> current_config = config.set_trytond()
-    >>> current_config.pool.test = True
+    >>> config = config.set_trytond()
+    >>> config.pool.test = True
 
 Install account_stock_continental, sale and purchase::
 
@@ -26,7 +26,7 @@ Install account_stock_continental, sale and purchase::
     ...         ('name', 'in', ('account_stock_anglo_saxon',
     ...             'sale', 'purchase')),
     ...     ])
-    >>> Module.install([x.id for x in modules], current_config.context)
+    >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
@@ -58,8 +58,8 @@ Create company::
 Reload the context::
 
     >>> User = Model.get('res.user')
-    >>> current_config._context = User.get_preferences(True,
-    ...     current_config.context)
+    >>> config._context = User.get_preferences(True,
+    ...     config.context)
 
 Create an accountant user::
 
@@ -95,7 +95,7 @@ Create fiscal year::
     >>> fiscalyear.out_credit_note_sequence = invoice_sequence
     >>> fiscalyear.in_credit_note_sequence = invoice_sequence
     >>> fiscalyear.save()
-    >>> FiscalYear.create_period([fiscalyear.id], current_config.context)
+    >>> FiscalYear.create_period([fiscalyear.id], config.context)
 
 Create chart of accounts::
 
@@ -187,12 +187,12 @@ Create product::
     >>> product.template = template
     >>> product.save()
     >>> template_average = ProductTemplate(ProductTemplate.copy([template.id],
-    ...         current_config.context)[0])
+    ...         config.context)[0])
     >>> template_average.cost_price_method = 'average'
     >>> template_average.save()
     >>> product_average = Product(Product.copy([product.id], {
     ...         'template': template_average.id,
-    ...         }, current_config.context)[0])
+    ...         }, config.context)[0])
 
 Create payment term::
 
@@ -222,8 +222,8 @@ Purchase 12 products::
     >>> purchase_line.quantity = 7.0
     >>> purchase_line.unit_price = Decimal(6)
     >>> purchase.save()
-    >>> Purchase.quote([purchase.id], current_config.context)
-    >>> Purchase.confirm([purchase.id], current_config.context)
+    >>> Purchase.quote([purchase.id], config.context)
+    >>> Purchase.confirm([purchase.id], config.context)
     >>> purchase.state
     u'confirmed'
 
@@ -239,8 +239,8 @@ Receive 9 products::
     >>> shipment.incoming_moves.append(move)
     >>> move.quantity = 5.0
     >>> shipment.save()
-    >>> ShipmentIn.receive([shipment.id], current_config.context)
-    >>> ShipmentIn.done([shipment.id], current_config.context)
+    >>> ShipmentIn.receive([shipment.id], config.context)
+    >>> ShipmentIn.done([shipment.id], config.context)
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
@@ -268,7 +268,7 @@ Open supplier invoice::
     >>> invoice_line.unit_price = Decimal('4')
     >>> invoice.invoice_date = today
     >>> invoice.save()
-    >>> Invoice.post([invoice.id], current_config.context)
+    >>> Invoice.post([invoice.id], config.context)
     >>> invoice.state
     u'posted'
     >>> payable.reload()
@@ -301,9 +301,9 @@ Sale 5 products::
     >>> sale_line.product = product_average
     >>> sale_line.quantity = 3.0
     >>> sale.save()
-    >>> Sale.quote([sale.id], current_config.context)
-    >>> Sale.confirm([sale.id], current_config.context)
-    >>> Sale.process([sale.id], current_config.context)
+    >>> Sale.quote([sale.id], config.context)
+    >>> Sale.confirm([sale.id], config.context)
+    >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
 
@@ -311,16 +311,16 @@ Send 5 products::
 
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment, = sale.shipments
-    >>> ShipmentOut.assign_try([shipment.id], current_config.context)
+    >>> ShipmentOut.assign_try([shipment.id], config.context)
     True
     >>> shipment.state
     u'assigned'
     >>> shipment.reload()
-    >>> ShipmentOut.pack([shipment.id], current_config.context)
+    >>> ShipmentOut.pack([shipment.id], config.context)
     >>> shipment.state
     u'packed'
     >>> shipment.reload()
-    >>> ShipmentOut.done([shipment.id], current_config.context)
+    >>> ShipmentOut.done([shipment.id], config.context)
     >>> shipment.state
     u'done'
     >>> stock_customer.reload()
@@ -336,7 +336,7 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> Invoice.post([invoice.id], current_config.context)
+    >>> Invoice.post([invoice.id], config.context)
     >>> invoice.state
     u'posted'
     >>> receivable.reload()
@@ -368,14 +368,14 @@ Now create a supplier invoice with an accountant::
     >>> purchase_line.quantity = 5.0
     >>> purchase_line.unit_price = Decimal(4)
     >>> purchase.save()
-    >>> Purchase.quote([purchase.id], current_config.context)
-    >>> Purchase.confirm([purchase.id], current_config.context)
+    >>> Purchase.quote([purchase.id], config.context)
+    >>> Purchase.confirm([purchase.id], config.context)
     >>> purchase.state
     u'confirmed'
 
-    >>> new_config = config.set_trytond(user='accountant',
-    ...     password='accountant', database_name=current_config.database_name)
-    >>> for invoice in purchase.invoices:
-    ...     invoice.invoice_date = today
-    ...     invoice.save()
-    >>> Invoice.validate_invoice([i.id for i in purchase.invoices], new_config.context)
+    >>> invoice_ids = [i.id for i in purchase.invoices]
+    >>> config.user = accountant.id
+    >>> Invoice.write(invoice_ids, {
+    ...         'invoice_date': today,
+    ...         }, config.context)
+    >>> Invoice.validate_invoice([i.id for i in purchase.invoices], config.context)
