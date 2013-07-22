@@ -645,8 +645,10 @@ class Line(ModelSQL, ModelView):
         # Migration from 1.2
         table.not_null_action('blocked', action='remove')
 
-        # Migration from 2.4: remove name
+        # Migration from 2.4: remove name, active
         table.not_null_action('name', action='remove')
+        table.not_null_action('active', action='remove')
+        table.index_action('active', action='remove')
 
     @classmethod
     def default_date(cls):
