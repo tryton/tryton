@@ -74,10 +74,17 @@ class InvoiceLine:
             type_ = 'out_supplier'
         elif self.invoice.type == 'out_credit_note':
             type_ = 'in_customer'
+        if self.quantity < 0:
+            direction, target = type_.split('_')
+            if direction == 'in':
+                direction = 'out'
+            else:
+                direction = 'in'
+            type_ = '%s_%s' % (direction, target)
 
         moves.sort(key=operator.attrgetter('effective_date'))
         cost = Move.update_anglo_saxon_quantity_product_cost(
-            self.product, moves, self.quantity, self.unit, type_)
+            self.product, moves, abs(self.quantity), self.unit, type_)
         cost = self.invoice.currency.round(cost)
 
         anglo_saxon_move_lines = self._get_anglo_saxon_move_lines(cost, type_)
