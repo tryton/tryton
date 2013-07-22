@@ -24,6 +24,7 @@ def register():
         ShipmentOutReturn,
         HandleShipmentExceptionAsk,
         HandleInvoiceExceptionAsk,
+        ReturnSaleStart,
         Configuration,
         Invoice,
         InvoiceLine,

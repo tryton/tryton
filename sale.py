@@ -19,7 +19,7 @@ __all__ = ['Sale', 'SaleInvoice', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'ShipmentOut', 'ShipmentOutReturn', 'Move', 'OpenCustomer',
     'HandleShipmentExceptionAsk', 'HandleShipmentException',
     'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
-    'ReturnSale']
+    'ReturnSaleStart', 'ReturnSale']
 __metaclass__ = PoolMeta
 
 _ZERO = Decimal(0)
@@ -1843,17 +1843,31 @@ class HandleInvoiceException(Wizard):
         return 'end'
 
 
-class ReturnSale(Wizard):
-    __name__ = 'sale.return_sale'
-    start_state = 'make_return'
-    make_return = StateTransition()
+class ReturnSaleStart(ModelView):
+    'Return Sale'
+    __name__ = 'sale.return_sale.start'
 
-    def transition_make_return(self):
+
+class ReturnSale(Wizard):
+    'Return Sale'
+    __name__ = 'sale.return_sale'
+    start = StateView('sale.return_sale.start',
+        'sale.return_sale_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Return', 'return_', 'tryton-ok', default=True),
+            ])
+    return_ = StateAction('sale.act_sale_form')
+
+    def do_return_(self, action):
         Sale = Pool().get('sale.sale')
 
-        sale = Sale(Transaction().context['active_id'])
-        new_sale, = Sale.copy([sale])
-        for new_line in new_sale.lines:
-            new_line.quantity *= -1
-            new_line.save()
-        return 'end'
+        sales = Sale.browse(Transaction().context['active_ids'])
+        return_sales = Sale.copy(sales)
+        for sale in return_sales:
+            for line in sale.lines:
+                line.quantity *= -1
+                line.save()
+        data = {'res_id': [s.id for s in return_sales]}
+        if len(return_sales) == 1:
+            action['views'].reverse()
+        return action, data

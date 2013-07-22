@@ -305,8 +305,14 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"
             id="menu_customer"/>
 
+        <record model="ir.ui.view" id="return_sale_start_view_form">
+            <field name="model">sale.return_sale.start</field>
+            <field name="type">form</field>
+            <field name="name">return_sale_start_form</field>
+        </record>
+
         <record model="ir.action.wizard" id="wizard_return_sale">
-            <field name="name">Create Return Sale</field>
+            <field name="name">Return Sale</field>
             <field name="wiz_name">sale.return_sale</field>
             <field name="model">sale.sale</field>
         </record>
