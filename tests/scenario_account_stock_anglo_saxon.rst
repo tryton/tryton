@@ -379,3 +379,23 @@ Now create a supplier invoice with an accountant::
     ...         'invoice_date': today,
     ...         }, config.context)
     >>> Invoice.validate_invoice([i.id for i in purchase.invoices], config.context)
+
+Create customer invoice with negative quantity::
+
+    >>> invoice = Invoice()
+    >>> invoice.party = customer
+    >>> invoice.payment_term = payment_term
+    >>> invoice_line = invoice.lines.new()
+    >>> invoice_line.product = product
+    >>> invoice_line.quantity = -1
+    >>> invoice.save()
+    >>> Invoice.post([invoice.id], config.context)
+    >>> invoice.state
+    u'posted'
+    >>> move = invoice.move
+    >>> line_cogs, = (l for l in move.lines if l.account == cogs)
+    >>> line_cogs.credit == Decimal('5')
+    True
+    >>> line_stock, = (l for l in move.lines if l.account == stock_customer)
+    >>> line_stock.debit == Decimal('5')
+    True
