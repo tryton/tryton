@@ -568,8 +568,8 @@ class Line(ModelSQL, ModelView):
         if self.account == account:
             self.raise_user_error('same_debit_credit_account', {
                     'account': self.account.rec_name,
-                    'line': self.account,
-                    'journal': self.journal,
+                    'line': self.rec_name,
+                    'journal': journal,
                     })
         move_lines.append(MoveLine(
                 description=self.description,
