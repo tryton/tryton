@@ -58,13 +58,13 @@ class CharField(object):
 
     def domain_get(self, record):
         screen_domain, attr_domain = self.domains_get(record)
-        return localize_domain(screen_domain) + attr_domain
+        return [localize_domain(screen_domain), attr_domain]
 
     def validation_domains(self, record):
         screen_domain, attr_domain = self.domains_get(record)
         if attr_domain:
-            return (screen_domain, screen_domain +
-                unlocalize_domain(attr_domain, self.name))
+            return (screen_domain, [screen_domain,
+                    unlocalize_domain(attr_domain, self.name)])
         else:
             return screen_domain, screen_domain
 
@@ -442,8 +442,8 @@ class M2OField(CharField):
 
     def domain_get(self, record):
         screen_domain, attr_domain = self.domains_get(record)
-        return (localize_domain(inverse_leaf(screen_domain), self.name)
-            + attr_domain)
+        return [localize_domain(inverse_leaf(screen_domain), self.name),
+            attr_domain]
 
     def get_state_attrs(self, record):
         result = super(M2OField, self).get_state_attrs(record)
@@ -750,7 +750,7 @@ class O2MField(CharField):
 
     def domain_get(self, record):
         screen_domain, attr_domain = self.domains_get(record)
-        return localize_domain(inverse_leaf(screen_domain)) + attr_domain
+        return [localize_domain(inverse_leaf(screen_domain)), attr_domain]
 
 
 class M2MField(O2MField):
