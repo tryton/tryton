@@ -1600,10 +1600,18 @@ class OpenReconcileLines(Wizard):
     open_ = StateAction('account.act_move_line_form')
 
     def do_open_(self, action):
-        action['pyson_domain'] = PYSONEncoder().encode([
+        encoder = PYSONEncoder()
+        action['pyson_domain'] = encoder.encode([
             ('account', '=', self.start.account.id),
             ('reconciliation', '=', None),
             ])
+        if self.start.account.kind == 'receivable':
+            order = [('credit', 'DESC'), ('id', 'DESC')]
+        elif self.start.account.kind == 'payable':
+            order = [('debit', 'DESC'), ('id', 'DESC')]
+        else:
+            order = None
+        action['pyson_order'] = encoder.encode(order)
         return action, {}
 
 
