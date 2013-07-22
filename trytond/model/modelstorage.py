@@ -837,10 +837,11 @@ class ModelStorage(Model):
                     for walk in walker:
                         walked.add(walk.id)
                         if walk.id == record.id:
+                            parent_rec_name = ', '.join(getattr(r, rec_name)
+                                for r in getattr(record, parent))
                             cls.raise_user_error('recursion_error', {
                                     'rec_name': getattr(record, rec_name),
-                                    'parent_rec_name': getattr(getattr(record,
-                                            parent), rec_name)
+                                    'parent_rec_name': parent_rec_name,
                                     })
                     walker = list(chain(*(getattr(walk, parent)
                                 for walk in walker if walk.id not in visited)))
