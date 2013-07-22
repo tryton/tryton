@@ -31,7 +31,6 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="info">
             <label name="company"/>
             <field name="company"/>
-            <field name="move_lines" colspan="4"/>
         </page>
     </notebook>
     <field name="currency_digits" colspan="4" invisible="1"/>

@@ -197,5 +197,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="account.group_account_admin"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_move_lines_form">
+            <field name="name">Move Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain">[('origin.statement.id', '=', Eval('id'), 'account.statement.line')]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_move_lines_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.statement,-1</field>
+            <field name="action" ref="act_move_lines_form"/>
+        </record>
+
     </data>
 </tryton>
