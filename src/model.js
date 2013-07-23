@@ -258,6 +258,45 @@
             }
             this.parent = null;
         };
+        array.domain = function() {
+            var domain = [];
+            this.screens.forEach(function(screen) {
+                if (screen.attributes.domain) {
+                    domain.push(screen.attributes.domain);
+                }
+            });
+            if (this.parent && this.child_name) {
+                var field = this.parent.model.fields[this.child_name];
+                return [domain, field.get_domain(this.parent)];
+            } else {
+                return domain;
+            }
+        };
+        array.clean4inversion = function(domain) {
+            if (jQuery.isEmptyObject(domain)) {
+                return [];
+            }
+            var inversion = new Sao.common.DomainInversion();
+            var head = domain[0];
+            var tail = domain.slice(1);
+            if (['AND', 'OR'].indexOf(head) >= 0) {
+            } else if (inversion.is_leaf(head)) {
+                var field = head[0];
+                if ((field in this.model.fields) &&
+                        (this.model.fields[field].description.readonly)) {
+                    head = [];
+                }
+            } else {
+                head = this.clean4inversion(head);
+            }
+            return [head].concat(this.clean4inversion(tail));
+        };
+        array.domain4inversion = function() {
+            if (!this.__domain4inversion) {
+                this.__domain4inversion = this.clean4inversion(this.domain());
+            }
+            return this.__domain4inversion;
+        };
         return array;
     };
 
@@ -299,22 +338,25 @@
             // TODO parent
             return prm;
         },
-        reload: function() {
-            this._values = {};
-            this._loaded = {};
-            this._changed = {};
+        reload: function(fields) {
+            if (this.id < 0) {
+                return jQuery.when();
+            }
+            return this.validate(fields);
         },
         load: function(name) {
             var self = this;
             var fname;
+            var prm;
             if ((this.id < 0) || (name in this._loaded)) {
                 return jQuery.when();
             }
             if (this.group.prm.state() == 'pending') {
-                var load = function() {
-                    return this.load(name);
-                };
-                return this.group.prm.pipe(load.bind(this));
+                prm = jQuery.Deferred();
+                this.group.prm.then(function() {
+                    this.load(name).then(prm.resolve, prm.eject);
+                }.bind(this));
+                return prm;
             }
             var id2record = {};
             id2record[this.id] = this;
@@ -393,7 +435,7 @@
             }
             fnames_to_fetch.push('_timestamp');
             // TODO size of binary
-            var prm = this.model.execute('read', [Object.keys(id2record),
+            prm = this.model.execute('read', [Object.keys(id2record),
                     fnames_to_fetch], context);
             var succeed = function(values) {
                 var id2value = {};
@@ -519,10 +561,11 @@
                 this.model.fields[fname].set_default(this, value);
                 this._loaded[fname] = true;
             }
-            // TODO validate
-            this.group.root_group().screens.forEach(function(screen) {
-                screen.display();
-            });
+            this.validate(null, true).then(function() {
+                this.group.root_group().screens.forEach(function(screen) {
+                    screen.display();
+                });
+            }.bind(this));
         },
         get_eval: function() {
             var value = {};
@@ -689,13 +732,63 @@
             });
         },
         validate: function(fields, softvalidation) {
-            var result = true;
+            var prms = [];
+            if (fields === undefined) {
+                fields = null;
+            }
+            (fields || ['*']).forEach(function(field) {
+                prms.push(this.load(field));
+            }.bind(this));
+            return jQuery.when.apply(jQuery, prms).then(function() {
+                var result = true;
+                var exclude_fields = [];
+                this.group.screens.forEach(function(screen) {
+                    if (screen.exclude_field) {
+                        exclude_fields.push(screen.exclude_field);
+                    }
+                });
+                for (var fname in this.model.fields) {
+                    if (!this.model.fields.hasOwnProperty(fname)) {
+                        continue;
+                    }
+                    var field = this.model.fields[fname];
+                    if ((fields !== null) &&
+                        (fields.indexOf(fname) < 0)) {
+                        continue;
+                    }
+                    if (field.get_state_attrs(this).readonly) {
+                        continue;
+                    }
+                    if (exclude_fields.indexOf(fname) >= 0) {
+                        continue;
+                    }
+                    if (!field.validate(this, softvalidation)) {
+                        result = false;
+                    }
+                }
+                return result;
+            }.bind(this));
+        },
+        pre_validate: function() {
             // TODO
-            return result;
+            return jQuery.when();
         },
         cancel: function() {
             this._loaded = {};
             this._changed = {};
+        },
+        get_loaded: function(fields) {
+            if (!jQuery.isEmptyObject(fields)) {
+                var result = true;
+                fields.forEach(function(field) {
+                    if (!(field in this._loaded)) {
+                        result = false;
+                    }
+                }.bind(this));
+                return result;
+            }
+            return Sao.common.compare(Object.keys(this.model.fields),
+                    Object.keys(this._loaded));
         },
         deleted: function() {
             return this.group.record_deleted.indexOf(this) != -1;
@@ -759,20 +852,24 @@
             if (previous_value != this.get(record)) {
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
-                    // TODO validate + parent
-                    record.group.changed().done(function() {
-                        record.group.root_group().screens.forEach(
-                            function(screen) {
+                    // TODO parent
+                    record.validate(null, true).then(function() {
+                        record.group.changed().done(function() {
+                            var root_group = record.group.root_group();
+                            root_group.screens.forEach(function(screen) {
                                 screen.display();
                             });
+                        });
                     });
                 });
             } else if (force_change) {
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
-                    record.validate(true);
-                    record.group.root_group().screens.forEach(function(screen) {
-                        screen.display();
+                    record.validate(null, true).then(function() {
+                        var root_group = record.group.root_group();
+                        root_group.screens.forEach(function(screen) {
+                            screen.display();
+                        });
                     });
                 });
             }
@@ -808,14 +905,36 @@
             return context;
         },
         get_domains: function(record) {
-            // TODO domain inversion
+            var inversion = new Sao.common.DomainInversion();
+            var screen_domain = inversion.domain_inversion(
+                    record.group.domain4inversion(), this.name,
+                    Sao.common.EvalEnvironment(record));
+            if ((typeof screen_domain == 'boolean') && !screen_domain) {
+                screen_domain = [['id', '=', null]];
+            } else if ((typeof screen_domain == 'boolean') && screen_domain) {
+                screen_domain = [];
+            }
             var attr_domain = record.expr_eval(this.description.domain || []);
-            return [[], attr_domain];
+            return [screen_domain, attr_domain];
         },
         get_domain: function(record) {
             var domains = this.get_domains(record);
-            // TODO localize domain[0]
-            return domains;
+            var screen_domain = domains[0];
+            var attr_domain = domains[1];
+            var inversion = new Sao.common.DomainInversion();
+            return [inversion.localize_domain(screen_domain), attr_domain];
+        },
+        validation_domains: function(record) {
+            var domains = this.get_domains(record);
+            var screen_domain = domains[0];
+            var attr_domain = domains[1];
+            var inversion = new Sao.common.DomainInversion();
+            if (!jQuery.isEmptyObject(attr_domain)) {
+                return [screen_domain, [screen_domain,
+                    inversion.unlocalize_domain(attr_domain, this.name)]];
+            } else {
+                return [screen_domain, screen_domain];
+            }
         },
         get_eval: function(record) {
             return this.get(record);
@@ -850,6 +969,77 @@
             }
             // TODO group readonly
             return record.state_attrs[this.name];
+        },
+        check_required: function(record) {
+            var state_attrs = this.get_state_attrs(record);
+            if (state_attrs.required == 1) {
+                if (!this.get(record) && (state_attrs.readonly != 1)) {
+                    return false;
+                }
+            }
+            return true;
+        },
+        validate: function(record, softvalidation) {
+            var result = true;
+            if (this.description.readonly) {
+                return true;
+            }
+            this.get_state_attrs(record).domain_readonly = false;
+            var domains = this.validation_domains(record);
+            var inverted_domain = domains[0];
+            var domain = domains[1];
+            if (!softvalidation) {
+                result &= this.check_required(record);
+            }
+            if (typeof domain == 'boolean') {
+                result &= domain;
+            } else if (Sao.common.compare(domain, [['id', '=', null]])) {
+                result = false;
+            } else {
+                var inversion = new Sao.common.DomainInversion();
+                if ((inverted_domain instanceof Array) &&
+                        (inverted_domain.length == 1) &&
+                        (inverted_domain[0][1] == '=')) {
+                    // If the inverted domain is so constraint that only one
+                    // value is possible we should use it. But we must also pay
+                    // attention to the fact that the original domain might be
+                    // a 'OR' domain and thus not preventing the modification
+                    // of fields.
+                    var leftpart = inverted_domain[0][0];
+                    var value = inverted_domain[0][2];
+                    if (value === false) {
+                        // XXX to remove once server domains are fixed
+                        value = null;
+                    }
+                    var setdefault = true;
+                    if (leftpart.contains('.')) {
+                        var recordpart = leftpart.split('.', 1)[0];
+                        var localpart = leftpart.split('.', 1)[1];
+                        var original_domain = inversion.merge(
+                                record.group.domain());
+                        var constraintfields = [];
+                        if (original_domain[0] == 'AND') {
+                            inverted_domain.localize_domain(
+                                    original_domain.slice(1))
+                                .forEach(function(leaf) {
+                                    constraintfields.push(leaf);
+                                });
+                        }
+                        if ((localpart != 'id') ||
+                                (constraintfields.indexOf(recordpart) < 0)) {
+                            setdefault = false;
+                        }
+                    }
+                    if (setdefault) {
+                        this.set_client(record, value);
+                        this.get_state_attrs(record).domain_readonly = true;
+                    }
+                }
+                result &= inversion.eval_domain(domain,
+                        Sao.common.EvalEnvironment(record));
+            }
+            this.get_state_attrs(record).valid = result;
+            return result;
         }
     });
 
@@ -901,6 +1091,16 @@
     });
 
     Sao.field.Float = Sao.class_(Sao.field.Number, {
+        check_required: function(record) {
+            var state_attrs = this.get_state_attrs(record);
+            if (state_attrs.required == 1) {
+                if ((this.get(record) === null) &&
+                    (state_attrs.readonly != 1)) {
+                    return false;
+                }
+            }
+            return true;
+        },
         set_client: function(record, value, force_change) {
             if (typeof value == 'string') {
                 value = Number(value);
@@ -1032,6 +1232,19 @@
             record._values[this.name + '.rec_name'] = rec_name;
             Sao.field.Many2One._super.set_client.call(this, record, value,
                     force_change);
+        },
+        validation_domains: function(record) {
+            var screen_domain = this.get_domains(record)[0];
+            return [screen_domain, screen_domain];
+        },
+        get_domain: function(record) {
+            var domains = this.get_domains(record);
+            var screen_domain = domains[0];
+            var attr_domain = domains[1];
+            var inversion = new Sao.common.DomainInversion();
+            return [inversion.localize_domain(
+                    inversion.inverse_leaf(screen_domain), this.name),
+                   attr_domain];
         }
     });
 
@@ -1330,6 +1543,25 @@
             if (!this.in_on_change) {
                 return Sao.field.One2Many._super.changed.call(this, record);
             }
+        },
+        get_domain: function(record) {
+            var domains = this.get_domains(record);
+            var screen_domain = domains[0];
+            var attr_domain = domains[1];
+            var inversion = new Sao.common.DomainInversion();
+            return [inversion.localize_domain(
+                    inversion.inverse_leaf(screen_domain)),
+                   attr_domain];
+        },
+        validation_domains: function(record) {
+            var screen_domain = this.get_domains(record)[0];
+            return [screen_domain, screen_domain];
+        },
+        set_state: function(record, states) {
+            this._set_default_value(record);
+            Sao.field.One2Many._super.set_state.call(this, record, states);
+            record._values[this.name].readonly = this.get_state_attrs(record)
+                .readonly;
         }
     });
 

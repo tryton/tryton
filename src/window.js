@@ -79,61 +79,68 @@
         },
         response: function(response_id) {
             var result;
-            var closing_prm = jQuery.when();
             this.screen.current_view.set_value();
 
             if (response_id == 'RESPONSE_OK' &&
                     this.screen.current_record !== null) {
-                var validate = this.screen.current_record.validate();
-                // TODO pre-validate
-                if (validate && this.save_current) {
-                    closing_prm = this.screen.save_current();
-                } else if (validate &&
-                        this.screen.current_view.view_type == 'form') {
-                    var view = this.screen.current_view;
-                    for (var name in this.widgets) {
-                        var widget = this.widgets[name];
-                        if (widget.screen && widget.screen.pre_validate) {
-                            var record = widget.screen.current_record;
-                            if (record) {
-                                validate = record.pre_validate();
+                this.screen.current_record.validate().then(function(validate) {
+                    var closing_prm = jQuery.Deferred();
+                    if (validate && this.save_current) {
+                        this.screen.save_current().then(closing_prm.resolve,
+                            closing_prm.reject);
+                    } else if (validate &&
+                            this.screen.current_view.view_type == 'form') {
+                        var view = this.screen.current_view;
+                        var validate_prms = [];
+                        for (var name in this.widgets) {
+                            var widget = this.widgets[name];
+                            if (widget.screen && widget.screen.pre_validate) {
+                                var record = widget.screen.current_record;
+                                if (record) {
+                                    validate_prms.push(record.pre_validate());
+                                }
                             }
                         }
+                        jQuery.when.apply(jQuery, validate_prms).then(
+                            closing_prm.resolve, closing_prm.reject);
+                    } else if (!validate) {
+                        closing_prm.reject();
+                    } else {
+                        closing_prm.resolve();
                     }
-                }
-                if (!validate) {
-                    closing_prm.reject();
-                }
 
-                closing_prm.fail(function() {
-                    // TODO set_cursor
-                    this.screen.display();
+                    closing_prm.fail(function() {
+                        // TODO set_cursor
+                        this.screen.display();
+                    }.bind(this));
+
+                    // TODO Add support for many
+                    closing_prm.done(function() {
+                        this.callback(result);
+                        this.destroy();
+                    }.bind(this));
                 }.bind(this));
-
-                // TODO Add support for many
+                return;
             }
 
             if (response_id == 'RESPONSE_CANCEL' &&
                     this.screen.current_record !== null) {
+                result = false;
                 if ((this.screen.current_record.id < 0) || this.save_current) {
-                    var index = this.screen.group.indexOf(
-                            this.screen.current_record);
-                    this.screen.group.splice(index, 1);
+                    this.screen.group.remove(this.screen.current_record, true);
                 } else if (this.screen.current_record.has_changed()) {
                     this.screen.current_record.cancel();
-                    this.screen.current_record.reload();
+                    this.screen.current_record.reload().always(function() {
+                        this.callback(result);
+                        this.destroy();
+                    }.bind(this));
+                    return;
                 }
-                closing_prm = jQuery.Deferred();
-                closing_prm.resolve();
-                result = false;
             } else {
                 result = response_id != 'RESPONSE_CANCEL';
             }
-
-            closing_prm.done(function() {
-                this.callback(result);
-                this.destroy();
-            }.bind(this));
+            this.callback(result);
+            this.destroy();
         },
         destroy: function() {
             this.screen.screen_container.alternate_view = false;
@@ -292,8 +299,10 @@
                 this.screen.current_record.set(preferences);
                 this.screen.current_record.id =
                     this.screen.model.session.user_id;
-                this.screen.current_record.validate(null, true);
-                this.screen.display();
+                this.screen.current_record.validate(null, true).then(
+                        function() {
+                            this.screen.display();
+                        }.bind(this));
                 this.el.append(this.screen.screen_container.el);
                 this.el.dialog('open');
             };
@@ -303,23 +312,27 @@
         },
         response: function(response_id) {
             if (response_id == 'RESPONSE_OK') {
-                if (this.screen.current_record.validate()) {
-                    var values = jQuery.extend({}, this.screen.get());
-                    var password = false;
-                    if ('password' in values) {
-                        // TODO translate
-                        password = window.prompt('Current Password:');
-                        if (!password) {
-                            return;
+                this.screen.current_record.validate().then(function(validate) {
+                    if (validate) {
+                        var values = jQuery.extend({}, this.screen.get());
+                        var password = false;
+                        if ('password' in values) {
+                            // TODO translate
+                            password = window.prompt('Current Password:');
+                            if (!password) {
+                                return;
+                            }
                         }
+                        this.screen.model.execute('set_preferences',
+                                [values, password], {}).done(function() {
+                                    this.destroy();
+                                    this.callback();
+                                }.bind(this));
+                    } else {
+                        this.destroy();
+                        this.callback();
                     }
-                    this.screen.model.execute('set_preferences',
-                            [values, password], {}).done(function() {
-                                this.destroy();
-                                this.callback();
-                            }.bind(this));
-                    return;
-                }
+                }.bind(this));
             }
             this.destroy();
             this.callback();

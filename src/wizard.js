@@ -116,13 +116,14 @@
         response: function(state) {
             this.__waiting_response = false;
             this.screen.current_view.set_value();
-            if ((!this.screen.current_record.validate()) &&
-                    state != this.end_state) {
-                this.screen.display();
-                return;
-            }
-            this.state = state;
-            this.process();
+            this.screen.current_record.validate().then(function(validate) {
+                if ((!validate) && state != this.end_state) {
+                    this.screen.display();
+                    return;
+                }
+                this.state = state;
+                this.process();
+            }.bind(this));
         },
         _get_button: function(definition) {
             var button = new Sao.common.Button(definition);

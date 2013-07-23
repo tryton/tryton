@@ -383,17 +383,20 @@
             this.current_view.set_value();
             var fields = this.current_view.get_fields();
             // TODO path
-            var prm;
+            var prm = jQuery.Deferred();
             if (this.current_view.view_type == 'tree') {
                 prm = this.group.save();
-            } else if (this.current_record.validate(fields)) {
-                prm = this.current_record.save();
             } else {
-                // TODO set_cursor
-                this.current_view.display();
-                prm = jQuery.when();
-                prm.reject();
-                return prm;
+                this.current_record.validate(fields).then(function(validate) {
+                    if (validate) {
+                        this.current_record.save().then(
+                            prm.resolve, prm.reject);
+                    } else {
+                        // TODO set_cursor
+                        this.current_view.display();
+                        prm.reject();
+                    }
+                }.bind(this));
             }
             prm.always(function() {
                 this.display();

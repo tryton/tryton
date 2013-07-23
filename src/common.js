@@ -956,4 +956,352 @@
             return value;
         }
     });
+
+    Sao.common.DomainInversion = Sao.class_(Object, {
+        and: function(a, b) {return a && b;},
+        or: function(a, b) {return a || b;},
+        OPERATORS: {
+            '=': function(a, b) {
+                if ((a instanceof Array) && (b instanceof Array)) {
+                    return Sao.common.compare(a, b);
+                } else {
+                    return (a === b);
+                }
+            },
+            '>': function(a, b) {return (a > b);},
+            '<': function(a, b) {return (a < b);},
+            '<=': function(a, b) {return (a <= b);},
+            '>=': function(a, b) {return (a >= b);},
+            '!=': function(a, b) {
+                if ((a instanceof Array) && (b instanceof Array)) {
+                    return !Sao.common.compare(a, b);
+                } else {
+                    return (a !== b);
+                }
+            },
+            'in': function(a, b) {
+                return Sao.common.DomainInversion.in_(a, b);
+            },
+            'not in': function(a, b) {
+                return !Sao.common.DomainInversion.in_(a, b);
+            },
+            // Those operators are not supported (yet ?)
+            'like': function() {return true;},
+            'ilike': function() {return true;},
+            'not like': function() {return true;},
+            'not ilike': function() {return true;},
+            'child_of': function() {return true;},
+            'not child_of': function() {return true;}
+        },
+        locale_part: function(expression, field_name) {
+            if (expression === field_name) {
+                return 'id';
+            }
+            if (expression.contains('.')) {
+                return expression.split('.').slice(1).join('.');
+            }
+            return expression;
+        },
+        is_leaf: function(expression) {
+            return ((expression instanceof Array) &&
+                (expression.length > 2) &&
+                (expression[1] in this.OPERATORS));
+        },
+        eval_leaf: function(part, context, boolop) {
+            if (boolop === undefined) {
+                boolop = this.and;
+            }
+            var field = part[0];
+            var operand = part[1];
+            var value = part[2];
+            if (field.contains('.')) {
+                // In the case where the leaf concerns a m2o then having a
+                // value in the evaluation context is deemed suffisant
+                return Boolean(context[field.split('.')[0]]);
+            }
+            if ((operand == '=') && !context[field] && (boolop === this.and)) {
+                // We should consider that other domain inversion will set a
+                // correct value to this field
+                return true;
+            }
+            var context_field = context[field];
+            if ((context_field instanceof Date) && !context_field) {
+                // TODO set value to min
+            }
+            if ((value instanceof Date) && !context_field) {
+                // TODO set context_field to min
+            }
+            if ((typeof context_field == 'string') &&
+                    (value instanceof Array) && value.length == 2) {
+                value = value.join(',');
+            } else if ((context_field instanceof Array) &&
+                    (typeof value == 'string') && context_field.length == 2) {
+                context_field = context_field.join(',');
+            }
+            return this.OPERATORS[operand](context_field, value);
+        },
+        inverse_leaf: function(domain) {
+            if (['AND', 'OR'].indexOf(domain) >= 0) {
+                return domain;
+            } else if (this.is_leaf(domain)) {
+                if (domain[1].contains('child_of')) {
+                    if (domain.length == 3) {
+                        return domain;
+                    } else {
+                        return [domain[3]].concat(domain.slice(1));
+                    }
+                }
+                return domain;
+            } else {
+                return domain.map(this.inverse_leaf.bind(this));
+            }
+        },
+        eval_domain: function(domain, context, boolop) {
+            if (boolop === undefined) {
+                boolop = this.and;
+            }
+            if (this.is_leaf(domain)) {
+                return this.eval_leaf(domain, context, boolop);
+            } else if (jQuery.isEmptyObject(domain) && boolop == this.and) {
+                return true;
+            } else if (jQuery.isEmptyObject(domain) && boolop == this.or) {
+                return false;
+            } else if (domain[0] == 'AND') {
+                return this.eval_domain(domain.slice(1), context);
+            } else if (domain[0] == 'OR') {
+                return this.eval_domain(domain.slice(1), context, this.or);
+            } else {
+                return boolop(this.eval_domain(domain[0], context),
+                        this.eval_domain(domain.slice(1), context, boolop));
+            }
+        },
+        localize_domain: function(domain, field_name) {
+            if (['AND', 'OR', true, false].indexOf(domain) >= 0) {
+                return domain;
+            } else if (this.is_leaf(domain)) {
+                if (domain[1].contains('child_of')) {
+                    if (domain.length == 3) {
+                        return domain;
+                    } else {
+                        return [domain[3]].concat(domain.slice(1, -1));
+                    }
+                }
+                return [this.locale_part(domain[0], field_name)]
+                    .concat(domain.slice(1));
+            } else {
+                return domain.map(function(e) {
+                    return this.localize_domain(e, field_name);
+                }.bind(this));
+            }
+        },
+        unlocalize_domain: function(domain, fieldname) {
+            if (['AND', 'OR', true, false].indexOf(domain) >= 0) {
+                return domain;
+            } else if (this.is_leaf(domain)) {
+                return [fieldname + '.' + domain[0]].concat(domain.slice(1));
+            } else {
+                return domain.map(function(e) {
+                    return this.unlocalize_domain(e, fieldname);
+                }.bind(this));
+            }
+        },
+        simplify: function(domain) {
+            if (this.is_leaf(domain)) {
+                return domain;
+            } else if (['OR', 'AND'].indexOf(domain) >= 0) {
+                return domain;
+            } else if ((domain instanceof Array) && (domain.length == 1) &&
+                    (!this.is_leaf(domain[0]))) {
+                return this.simplify(domain[0]);
+            } else if ((domain instanceof Array) && (domain.length == 2) &&
+                    (['AND', 'OR'].indexOf(domain[0]) >= 0)) {
+                return [this.simplify(domain[1])];
+            } else {
+                return domain.map(this.simplify.bind(this));
+            }
+        },
+        merge: function(domain, domoperator) {
+            if (jQuery.isEmptyObject(domain) ||
+                    (['AND', 'OR'].indexOf(domain) >= 0)) {
+                return [];
+            }
+            var domain_type = domain[0] == 'OR' ? 'OR' : 'AND';
+            if (this.is_leaf(domain)) {
+                return [domain];
+            } else if (domoperator === undefined) {
+                return [domain_type].concat(Array.concat.apply([],
+                        domain.map(function(e) {
+                            return this.merge(e, domain_type);
+                        }.bind(this))));
+            } else if (domain_type == domoperator) {
+                return Array.concat.apply([], domain.map(function(e) {
+                    return this.merge(e, domain_type);
+                }.bind(this)));
+            } else {
+                // without setting the domoperator
+                return [this.merge(domain)];
+            }
+        },
+        parse: function(domain) {
+            var And = Sao.common.DomainInversion.And;
+            var Or = Sao.common.DomainInversion.Or;
+            if (this.is_leaf(domain)) {
+                return domain;
+            } else if (jQuery.isEmptyObject(domain)) {
+                return new And([]);
+            } else if (domain[0] === 'OR') {
+                return new Or(domain.slice(1));
+            } else {
+                var begin = 0;
+                if (domain[0] === 'AND') {
+                    begin = 1;
+                }
+                return new And(domain.slice(begin));
+            }
+        },
+        domain_inversion: function(domain, symbol, context) {
+            if (context === undefined) {
+                context = {};
+            }
+            var expression = this.parse(domain);
+            if (expression.variables.indexOf(symbol) < 0) {
+                return true;
+            }
+            return expression.inverse(symbol, context);
+        }
+    });
+    Sao.common.DomainInversion.in_ = function(a, b) {
+        if (a instanceof Array) {
+            for (var i = 0, len = a.length; i < len; i++) {
+                if (b.indexOf(a[i]) >= 0) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return b.indexOf(a) >= 0;
+        }
+    };
+    Sao.common.DomainInversion.And = Sao.class_(Object, {
+        init: function(expressions) {
+            this.domain_inversion = new Sao.common.DomainInversion();
+            this.branches = expressions.map(this.domain_inversion.parse.bind(
+                    this.domain_inversion));
+            this.variables = [];
+            for (var i = 0, len = this.branches.length; i < len; i++) {
+                var expression = this.branches[i];
+                if (this.domain_inversion.is_leaf(expression)) {
+                    this.variables.push(this.base(expression[0]));
+                } else if (expression instanceof
+                    Sao.common.DomainInversion.And) {
+                    this.variables = this.variables.concat(
+                        expression.variables);
+                }
+            }
+        },
+        base: function(expression) {
+            if (!expression.contains('.')) {
+                return expression;
+            } else {
+                return expression.split('.')[0];
+            }
+        },
+        inverse: function(symbol, context) {
+            var DomainInversion = Sao.common.DomainInversion;
+            var result = [];
+            for (var i = 0, len = this.branches.length; i < len; i++) {
+                var part = this.branches[i];
+                if (part instanceof DomainInversion.And) {
+                    var part_inversion = part.inverse(symbol, context);
+                    var evaluated = typeof part_inversion == 'boolean';
+                    if (!evaluated) {
+                        result.push(part_inversion);
+                    } else if (part_inversion) {
+                        continue;
+                    } else {
+                        return false;
+                    }
+                } else if (this.domain_inversion.is_leaf(part) &&
+                        (this.base(part[0]) === symbol)) {
+                    result.push(part);
+                } else {
+                    var field = part[0];
+                    if ((!(field in context)) ||
+                            ((field in context) &&
+                             this.domain_inversion.eval_leaf(part, context,
+                                 this.domain_inversion.and))) {
+                        result.push(true);
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            result = result.filter(function(e) {
+                return e !== true;
+            });
+            if (jQuery.isEmptyObject(result)) {
+                return true;
+            } else {
+                return this.domain_inversion.simplify(result);
+            }
+        }
+    });
+    Sao.common.DomainInversion.Or = Sao.class_(Sao.common.DomainInversion.And, {
+        inverse: function(symbol, context) {
+            var DomainInversion = Sao.common.DomainInversion;
+            var result = [];
+            if ((this.variables.indexOf(symbol) < 0) &&
+                (!jQuery.isEmptyObject(this.variables.filter(function(e) {
+                    return !(e in context);
+                })))) {
+                // In this case we don't know anything about this OR part, we
+                // consider it to be True (because people will have the
+                // constraint on this part later).
+                return true;
+            }
+            for (var i = 0, len = this.branches.length; i < len; i++) {
+                var part = this.branches[i];
+                if (part instanceof DomainInversion.And) {
+                    var part_inversion = part.inverse(symbol, context);
+                    var evaluated = typeof part_inversion == 'boolean';
+                    if (this.variables.indexOf(symbol) < 0) {
+                        if (evaluated && part_inversion) {
+                            return true;
+                        }
+                        continue;
+                    }
+                    if (!evaluated) {
+                        result.push(part_inversion);
+                    } else if (part_inversion) {
+                        return true;
+                    } else {
+                        continue;
+                    }
+                } else if (this.domain_inversion.is_leaf(part) &&
+                        (this.base(part[0]) == symbol)) {
+                    result.push(part);
+                } else {
+                    var field = part[0];
+                    field = this.base(field);
+                    if ((field in context) &&
+                            this.domain_inversion.eval_leaf(part, context,
+                                this.domain_inversion.or)) {
+                        return true;
+                    } else if ((field in context) &&
+                            !this.domain_inversion.eval_leaf(part, context,
+                                this.domain_inversion.or)) {
+                        result.push(false);
+                    }
+                }
+            }
+            result = result.filter(function(e) {
+                return e !== false;
+            });
+            if (jQuery.isEmptyObject(result)) {
+                return false;
+            } else {
+                return this.domain_inversion.simplify(['OR'].concat(result));
+            }
+        }
+    });
 }());
