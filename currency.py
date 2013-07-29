@@ -169,7 +169,7 @@ class Currency(ModelSQL, ModelView):
             if rates:
                 res[currency.id] = rates[0].id
             else:
-                res[currency.id] = 0.0
+                res[currency.id] = 0
         rate_ids = [x for x in res.values() if x]
         rates = Rate.browse(rate_ids)
         id2rate = {}
