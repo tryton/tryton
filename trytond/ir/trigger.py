@@ -217,6 +217,8 @@ class Trigger(ModelSQL, ModelView):
                             timepart_full[0].split(":"))
                         if len(timepart_full) == 2:
                             microseconds = int(timepart_full[1])
+                        else:
+                            microseconds = 0
                         delay[record_id] = datetime.datetime(year, month, day,
                                 hours, minutes, seconds, microseconds)
                     if (datetime.datetime.now() - delay[record_id]
