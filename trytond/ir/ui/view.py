@@ -105,15 +105,10 @@ class View(ModelSQL, ModelView):
             # validate pyson attributes
             validates = {
                 'states': fields.states_validate,
-                'domain': fields.domain_validate,
-                'context': fields.context_validate,
-                'digits': fields.digits_validate,
-                'add_remove': fields.add_remove_validate,
             }
 
             def encode(element):
-                for attr in ('states', 'domain', 'context', 'digits',
-                        'add_remove', 'spell', 'colors'):
+                for attr in ('states', 'domain', 'spell', 'colors'):
                     if element.get(attr):
                         try:
                             value = safe_eval(element.get(attr), CONTEXT)
