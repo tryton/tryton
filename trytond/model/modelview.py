@@ -447,8 +447,7 @@ class ModelView(Model):
 
         # convert attributes into pyson
         encoder = PYSONEncoder()
-        for attr in ('states', 'domain', 'context', 'digits', 'add_remove',
-                'spell', 'colors'):
+        for attr in ('states', 'domain', 'spell', 'colors'):
             if element.get(attr):
                 element.set(attr, encoder.encode(safe_eval(element.get(attr),
                     CONTEXT)))
