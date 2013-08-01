@@ -5,27 +5,60 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.backend import TableHandler
 
 __all__ = ['Move']
 __metaclass__ = PoolMeta
 
 
+def _get_field(type_):
+    if type_.startswith('in_'):
+        return 'in_anglo_saxon_quantity'
+    else:
+        return 'out_anglo_saxon_quantity'
+
+
 class Move:
     __name__ = 'stock.move'
-    anglo_saxon_quantity = fields.Float('Anglo-Saxon Quantity', required=True,
-        digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
+    in_anglo_saxon_quantity = fields.Float('Input Anglo-Saxon Quantity',
+        required=True, digits=(16, Eval('unit_digits', 2)),
+        depends=['unit_digits'])
+    out_anglo_saxon_quantity = fields.Float('Output Anglo-Saxon Quantity',
+        required=True, digits=(16, Eval('unit_digits', 2)),
+        depends=['unit_digits'])
 
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
         cls._sql_constraints += [
-            ('check_anglo_saxon_quantity',
-                'CHECK(quantity >= anglo_saxon_quantity)',
+            ('check_in_anglo_saxon_quantity',
+                'CHECK(quantity >= in_anglo_saxon_quantity)',
+                'Anglo-Saxon quantity can not be greater than quantity.'),
+            ('check_out_anglo_saxon_quantity',
+                'CHECK(quantity >= out_anglo_saxon_quantity)',
                 'Anglo-Saxon quantity can not be greater than quantity.'),
             ]
 
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().cursor
+        super(Move, cls).__register__(module_name)
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.8: split anglo_saxon_quantity
+        if table.column_exist('anglo_saxon_quantity'):
+            cursor.execute('UPDATE "' + cls._table + '" '
+                'SET in_anglo_saxon_quantity = anglo_saxon_quantity, '
+                'out_anglo_saxon_quantity = anglo_saxon_quantity')
+            table.drop_constraint('check_anglo_saxon_quantity')
+            table.drop_column('anglo_saxon_quantity')
+
     @staticmethod
-    def default_anglo_saxon_quantity():
+    def default_in_anglo_saxon_quantity():
+        return 0.0
+
+    @staticmethod
+    def default_out_anglo_saxon_quantity():
         return 0.0
 
     def _get_account_stock_move_lines(self, type_):
@@ -80,10 +113,12 @@ class Move:
         Uom = pool.get('product.uom')
         Currency = pool.get('currency.currency')
 
+        as_qty_field = _get_field(type_)
+
         consumed_qty = 0.0
         for move in moves:
             qty = Uom.compute_qty(move.uom,
-                    move.quantity - move.anglo_saxon_quantity,
+                    move.quantity - getattr(move, as_qty_field),
                     move.product.default_uom, round=False)
             if qty <= 0.0:
                 continue
@@ -121,6 +156,7 @@ class Move:
         total_qty = Uom.compute_qty(uom, quantity, product.default_uom,
                 round=False)
 
+        as_qty_field = _get_field(type_)
         cost = Decimal('0.0')
         consumed_qty = 0.0
         for move, move_qty, move_cost_price in cls._get_anglo_saxon_move(
@@ -131,9 +167,9 @@ class Move:
 
             with Transaction().set_user(0, set_context=True):
                 cls.write([move], {
-                    'anglo_saxon_quantity': ((move.anglo_saxon_quantity or 0.0)
-                        + move_qty),
-                    })
+                        as_qty_field: (
+                            (getattr(move, as_qty_field) or 0.0) + move_qty),
+                        })
 
         if consumed_qty < total_qty:
             qty = total_qty - consumed_qty
@@ -146,6 +182,7 @@ class Move:
         if default is None:
             default = {}
         default = default.copy()
-        default.setdefault('anglo_saxon_quantity',
-            cls.default_anglo_saxon_quantity())
+        for prefix in ('in_', 'out_'):
+            default.setdefault(prefix + 'anglo_saxon_quantity',
+                getattr(cls, 'default_%sanglo_saxon_quantity' % prefix)())
         return super(Move, cls).copy(moves, default=default)
