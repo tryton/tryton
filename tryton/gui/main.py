@@ -928,7 +928,7 @@ class Main(object):
                 prefs = RPCExecute('model', 'res.user', 'get_preferences',
                     False)
             except RPCException:
-                prefs = None
+                prefs = {}
             common.ICONFACTORY.load_icons()
             common.MODELACCESS.load_models()
             if prefs and 'language_direction' in prefs:
