@@ -1016,7 +1016,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
         with Transaction().set_context(self._get_context_purchase_price()):
             res['unit_price'] = Product.get_purchase_price([self.product],
-                self.quantity or 0)[self.product.id]
+                abs(self.quantity or 0))[self.product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
@@ -1056,7 +1056,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
         with Transaction().set_context(self._get_context_purchase_price()):
             res['unit_price'] = Product.get_purchase_price([self.product],
-                self.quantity or 0)[self.product.id]
+                abs(self.quantity or 0))[self.product.id]
             if res['unit_price']:
                 res['unit_price'] = res['unit_price'].quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
