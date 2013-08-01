@@ -532,7 +532,9 @@ class Account(ModelSQL, ModelView):
             ('company', '=', Eval('company')),
             ], depends=['kind', 'company'])
     parent = fields.Many2One('account.account', 'Parent', select=True,
-            left="left", right="right", ondelete="RESTRICT")
+        left="left", right="right", ondelete="RESTRICT",
+        domain=[('company', '=', Eval('company'))],
+        depends=['company'])
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many('account.account', 'parent', 'Children')
@@ -624,100 +626,43 @@ class Account(ModelSQL, ModelView):
 
     @classmethod
     def get_balance(cls, accounts, name):
-        res = {}
         pool = Pool()
-        Currency = pool.get('currency.currency')
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        Deferral = pool.get('account.account.deferral')
         cursor = Transaction().cursor
+        in_max = cursor.IN_MAX
 
-        query_ids, args_ids = cls.search([
-                ('parent', 'child_of', [a.id for a in accounts]),
-                ], query_string=True)
+        ids = [a.id for a in accounts]
+        balances = dict((i, 0) for i in ids)
         line_query, fiscalyear_ids = MoveLine.query_get()
-        cursor.execute('SELECT a.id, '
+        for i in range(0, len(ids), in_max):
+            sub_ids = ids[i:i + in_max]
+            red_sql, red_ids = reduce_ids('a.id', sub_ids)
+            cursor.execute('SELECT a.id, '
                     'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
-                'FROM account_account a '
-                    'LEFT JOIN account_move_line l '
-                    'ON (a.id = l.account) '
-                'WHERE a.kind != \'view\' '
-                    'AND a.id IN (' + query_ids + ') '
+                'FROM "' + cls._table + '" AS a '
+                'JOIN "' + cls._table + '" AS c '
+                    'ON c.left >= a.left AND c.right <= a.right '
+                'LEFT JOIN "' + MoveLine._table + '" AS l '
+                    'ON l.account = c.id '
+                'WHERE ' + red_sql + ' '
                     'AND ' + line_query + ' '
-                    'AND a.active '
-                'GROUP BY a.id', args_ids)
-        account_sum = {}
-        for account_id, sum in cursor.fetchall():
-            # SQLite uses float for SUM
-            if not isinstance(sum, Decimal):
-                sum = Decimal(str(sum))
-            account_sum[account_id] = sum
+                    'AND c.active '
+                'GROUP BY a.id', red_ids)
+            result = cursor.fetchall()
+            balances.update(dict(result))
 
-        account2company = {}
-        id2company = {}
-        id2account = {}
-        all_accounts = cls.search([('parent', 'child_of',
-                    [a.id for a in accounts])])
-        for account in all_accounts:
-            account2company[account.id] = account.company.id
-            id2company[account.company.id] = account.company
-            id2account[account.id] = account
+        # SQLite uses float for SUM
+        for account_id, balance in balances.iteritems():
+            if isinstance(balance, Decimal):
+                break
+            balances[account_id] = Decimal(str(balance))
 
-        for account in accounts:
-            res.setdefault(account.id, Decimal('0.0'))
-            childs = cls.search([
-                    ('parent', 'child_of', [account.id]),
-                    ])
-            company_id = account2company[account.id]
-            to_currency = id2company[company_id].currency
-            for child in childs:
-                child_company_id = account2company[child.id]
-                from_currency = id2company[child_company_id].currency
-                res[account.id] += Currency.compute(from_currency,
-                        account_sum.get(child.id, Decimal('0.0')), to_currency,
-                        round=True)
-
-        youngest_fiscalyear = None
-        for fiscalyear in FiscalYear.browse(fiscalyear_ids):
-            if not youngest_fiscalyear \
-                    or youngest_fiscalyear.start_date > fiscalyear.start_date:
-                youngest_fiscalyear = fiscalyear
-
-        fiscalyear = None
-        if youngest_fiscalyear:
-            fiscalyears = FiscalYear.search([
-                ('end_date', '<=', youngest_fiscalyear.start_date),
-                ('company', '=', youngest_fiscalyear.company),
-                ], order=[('end_date', 'DESC')], limit=1)
-            if fiscalyears:
-                fiscalyear = fiscalyears[0]
-
-        if fiscalyear:
-            if fiscalyear.state == 'close':
-                deferrals = Deferral.search([
-                    ('fiscalyear', '=', fiscalyear.id),
-                    ('account', 'in', [a.id for a in accounts]),
-                    ])
-                id2deferral = {}
-                for deferral in deferrals:
-                    id2deferral[deferral.account.id] = deferral
-
-                for account in accounts:
-                    if account.id in id2deferral:
-                        deferral = id2deferral[account.id]
-                        res[account.id] += deferral.debit - deferral.credit
-            else:
-                with Transaction().set_context(fiscalyear=fiscalyear.id,
-                        date=None, periods=None):
-                    res2 = cls.get_balance(accounts, name)
-                for account in accounts:
-                    res[account.id] += res2[account.id]
-
-        for account in accounts:
-            company_id = account2company[account.id]
-            to_currency = id2company[company_id].currency
-            res[account.id] = to_currency.round(res[account.id])
-        return res
+        fiscalyears = FiscalYear.browse(fiscalyear_ids)
+        func = lambda accounts, names: \
+            {names[0]: cls.get_balance(accounts, names[0])}
+        return cls._cumulate(fiscalyears, accounts, {name: balances},
+            func)[name]
 
     @classmethod
     def get_credit_debit(cls, accounts, names):
@@ -726,100 +671,106 @@ class Account(ModelSQL, ModelView):
         If cumulate is set in the context, it is the cumulate amount over all
         previous fiscal year.
         '''
-        res = {}
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
-        Deferral = pool.get('account.account.deferral')
         cursor = Transaction().cursor
+        in_max = cursor.IN_MAX
 
+        result = {}
+        ids = [a.id for a in accounts]
         for name in names:
             if name not in ('credit', 'debit'):
                 raise Exception('Bad argument')
-            res[name] = {}
+            result[name] = dict((i, 0) for i in ids)
 
-        ids = [a.id for a in accounts]
         line_query, fiscalyear_ids = MoveLine.query_get()
-        for i in range(0, len(ids), cursor.IN_MAX):
-            sub_ids = ids[i:i + cursor.IN_MAX]
+        for i in range(0, len(ids), in_max):
+            sub_ids = ids[i:i + in_max]
             red_sql, red_ids = reduce_ids('a.id', sub_ids)
             cursor.execute('SELECT a.id, ' +
-                        ','.join('SUM(COALESCE(l.' + name + ', 0))'
-                            for name in names) + ' '
-                    'FROM account_account a '
-                        'LEFT JOIN account_move_line l '
-                        'ON (a.id = l.account) '
-                    'WHERE a.kind != \'view\' '
-                        'AND ' + red_sql + ' '
-                        'AND ' + line_query + ' '
-                        'AND a.active '
-                    'GROUP BY a.id', red_ids)
+                    ','.join('SUM(COALESCE(l.' + name + ', 0))'
+                        for name in names) + ' '
+                'FROM "' + cls._table + '" AS a '
+                'LEFT JOIN "' + MoveLine._table + '" AS l '
+                    'ON l.account = a.id '
+                'WHERE ' + red_sql + ' '
+                    'AND ' + line_query + ' '
+                'GROUP BY a.id', red_ids)
             for row in cursor.fetchall():
                 account_id = row[0]
-                for i in range(len(names)):
+                for i, name in enumerate(names, 1):
                     # SQLite uses float for SUM
-                    if not isinstance(row[i + 1], Decimal):
-                        res[names[i]][account_id] = Decimal(str(row[i + 1]))
+                    if not isinstance(row[i], Decimal):
+                        result[name][account_id] = Decimal(str(row[i]))
                     else:
-                        res[names[i]][account_id] = row[i + 1]
+                        result[name][account_id] = row[i]
 
-        account2company = {}
-        id2company = {}
-        for account in accounts:
-            account2company[account.id] = account.company.id
-            id2company[account.company.id] = account.company
+        if not Transaction().context.get('cumulate'):
+            return result
+        else:
+            fiscalyears = FiscalYear.browse(fiscalyear_ids)
+            return cls._cumulate(fiscalyears, accounts, result,
+                cls.get_credit_debit)
 
-        for account in accounts:
+    @classmethod
+    def _cumulate(cls, fiscalyears, accounts, values, func):
+        """
+        Cumulate previous fiscalyear values into values
+        func is the method to compute values
+        """
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        Deferral = pool.get('account.account.deferral')
+        in_max = Transaction().cursor.IN_MAX
+        names = values.keys()
+
+        youngest_fiscalyear = None
+        for fiscalyear in fiscalyears:
+            if (not youngest_fiscalyear
+                    or (youngest_fiscalyear.start_date
+                        > fiscalyear.start_date)):
+                youngest_fiscalyear = fiscalyear
+
+        fiscalyear = None
+        if youngest_fiscalyear:
+            fiscalyears = FiscalYear.search([
+                    ('end_date', '<=', youngest_fiscalyear.start_date),
+                    ('company', '=', youngest_fiscalyear.company),
+                    ], order=[('end_date', 'DESC')], limit=1)
+            if fiscalyears:
+                fiscalyear, = fiscalyears
+
+        if not fiscalyear:
+            return values
+
+        if fiscalyear.state == 'close':
+            id2deferral = {}
+            ids = [a.id for a in accounts]
+            for i in range(0, len(ids), in_max):
+                sub_ids = ids[i:i + in_max]
+                deferrals = Deferral.search([
+                    ('fiscalyear', '=', fiscalyear.id),
+                    ('account', 'in', sub_ids),
+                    ])
+                for deferral in deferrals:
+                    id2deferral[deferral.account.id] = deferral
+
+            for account in accounts:
+                if account.id in id2deferral:
+                    deferral = id2deferral[account.id]
+                    for name in names:
+                        values[name][account.id] += getattr(deferral, name)
+        else:
+            with Transaction().set_context(fiscalyear=fiscalyear.id,
+                    date=None, periods=None):
+                previous_result = func(accounts, names)
             for name in names:
-                res[name].setdefault(account.id, Decimal('0.0'))
+                vals = values[name]
+                for account in accounts:
+                    vals[account.id] += previous_result[name][account.id]
 
-        if Transaction().context.get('cumulate'):
-            youngest_fiscalyear = None
-            for fiscalyear in FiscalYear.browse(fiscalyear_ids):
-                if (not youngest_fiscalyear
-                        or (youngest_fiscalyear.start_date
-                            > fiscalyear.start_date)):
-                    youngest_fiscalyear = fiscalyear
-
-            fiscalyear = None
-            if youngest_fiscalyear:
-                fiscalyears = FiscalYear.search([
-                        ('end_date', '<=', youngest_fiscalyear.start_date),
-                        ('company', '=', youngest_fiscalyear.company),
-                        ], order=[('end_date', 'DESC')], limit=1)
-                if fiscalyears:
-                    fiscalyear, = fiscalyears
-
-            if fiscalyear:
-                if fiscalyear.state == 'close':
-                    deferrals = Deferral.search([
-                        ('fiscalyear', '=', fiscalyear.id),
-                        ('account', 'in', ids),
-                        ])
-                    id2deferral = {}
-                    for deferral in deferrals:
-                        id2deferral[deferral.account.id] = deferral
-
-                    for account in accounts:
-                        if account.id in id2deferral:
-                            deferral = id2deferral[account.id]
-                            for name in names:
-                                res[name][account.id] += getattr(deferral,
-                                    name)
-                else:
-                    with Transaction().set_context(fiscalyear=fiscalyear.id,
-                            date=None, periods=None):
-                        res2 = cls.get_credit_debit(accounts, names)
-                    for account in accounts:
-                        for name in names:
-                            res[name][account.id] += res2[name][account.id]
-
-        for account in accounts:
-            company_id = account2company[account.id]
-            currency = id2company[company_id].currency
-            for name in names:
-                res[name][account.id] = currency.round(res[name][account.id])
-        return res
+        return values
 
     def get_rec_name(self, name):
         if self.code:
@@ -978,6 +929,9 @@ class AccountDeferral(ModelSQL, ModelView):
         required=True, depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
+    balance = fields.Function(fields.Numeric('Balance',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']), 'get_balance')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
 
@@ -991,6 +945,9 @@ class AccountDeferral(ModelSQL, ModelView):
         cls._error_messages.update({
             'write_deferral': 'You can not modify Account Deferral records',
             })
+
+    def get_balance(self, name):
+        return self.debit - self.credit
 
     def get_currency_digits(self, name):
         return self.account.currency_digits
