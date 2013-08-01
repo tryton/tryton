@@ -928,7 +928,7 @@ class Main(object):
                 prefs = RPCExecute('model', 'res.user', 'get_preferences',
                     False)
             except RPCException:
-                prefs = None
+                prefs = {}
             common.ICONFACTORY.load_icons()
             if prefs and 'language_direction' in prefs:
                 translate.set_language_direction(prefs['language_direction'])
