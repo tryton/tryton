@@ -57,8 +57,8 @@ class Invoice:
             cursor.execute('SELECT id FROM purchase_invoices_rel '
                 'WHERE invoice IN (' + ','.join(('%s',) * len(invoices)) + ')',
                 [i.id for i in invoices])
-        if cursor.fetchone():
-            cls.raise_user_error('delete_purchase_invoice')
+            if cursor.fetchone():
+                cls.raise_user_error('delete_purchase_invoice')
         super(Invoice, cls).delete(invoices)
 
     @classmethod
