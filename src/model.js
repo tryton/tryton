@@ -455,7 +455,18 @@
                 }
             };
             var failed = function() {
-                // TODO  call succeed
+                var failed_values = [];
+                var default_values;
+                for (var id in id2record) {
+                    default_values = {
+                        id: id
+                    };
+                    for (var i in fnames_to_fetch) {
+                        default_values[fnames_to_fetch[i]] = null;
+                    }
+                    failed_values.push(default_values);
+                }
+                succeed(failed_values);
             };
             this.group.prm = prm.then(succeed, failed);
             return this.group.prm;
