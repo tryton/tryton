@@ -113,12 +113,12 @@ class Currency(ModelSQL, ModelView):
         ids = []
         field = None
         for field in ('code', 'numeric_code'):
-            ids = self.search([(field,) + clause[1:]], limit=1)
+            ids = self.search([(field,) + tuple(clause[1:])], limit=1)
             if ids:
                 break
         if ids:
-            return [(field,) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+            return [(field,) + tuple(clause[1:])]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def on_change_with_rate(self, vals):
         now = datetime.date.today()
