@@ -354,7 +354,7 @@
             if (this.group.prm.state() == 'pending') {
                 prm = jQuery.Deferred();
                 this.group.prm.then(function() {
-                    this.load(name).then(prm.resolve, prm.eject);
+                    this.load(name).then(prm.resolve, prm.reject);
                 }.bind(this));
                 return prm;
             }
