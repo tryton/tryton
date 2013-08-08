@@ -374,11 +374,11 @@ class AccountTemplate(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search([
-            ('code',) + clause[1:],
+            ('code',) + tuple(clause[1:]),
             ], limit=1)
         if ids:
-            return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def _get_account_value(self, template, account=None):
         '''
@@ -840,11 +840,11 @@ class Account(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search([
-            ('code',) + clause[1:],
+            ('code',) + tuple(clause[1:]),
             ], limit=1)
         if ids:
-            return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def copy(self, ids, default=None):
         if default is None:
@@ -1031,8 +1031,8 @@ class AccountDeferral(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search(['OR',
-            ('account.rec_name',) + clause[1:],
-            ('fiscalyear.rec_name',) + clause[1:],
+            ('account.rec_name',) + tuple(clause[1:]),
+            ('fiscalyear.rec_name',) + tuple(clause[1:]),
             ])
         return [('id', 'in', ids)]
 
