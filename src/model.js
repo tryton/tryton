@@ -93,7 +93,7 @@
             var record;
             for (i = 0, len = this.record_removed.length; i < len; i++) {
                 record = this.record_removed[i];
-                if (ids.indexOf(record.id) < 0) {
+                if (!~ids.indexOf(record.id)) {
                     record_removed.push(record);
                 }
             }
@@ -101,7 +101,7 @@
             var record_deleted = [];
             for (i = 0, len = this.record_deleted.length; i < len; i++) {
                 record = this.record_deleted[i];
-                if (ids.indexOf(record.id) < 0) {
+                if (!~ids.indexOf(record.id)) {
                     record_deleted.push(record);
                 }
             }
@@ -158,13 +158,13 @@
             var idx = this.indexOf(record);
             if (record.id >= 0) {
                 if (remove) {
-                    if (this.record_deleted.indexOf(record) != -1) {
+                    if (~this.record_deleted.indexOf(record)) {
                         this.record_deleted.splice(
                                 this.record_deleted.indexOf(record), 1);
                     }
                     this.record_removed.push(record);
                 } else {
-                    if (this.record_removed.indexOf(record) != -1) {
+                    if (~this.record_removed.indexOf(record)) {
                         this.record_removed.splice(
                                 this.record_removed.indexOf(record), 1);
                     }
@@ -252,7 +252,7 @@
         array.destroy = function() {
             if (this.parent) {
                 var i = this.parent.group.children.indexOf(this);
-                if (i >= 0) {
+                if (~i) {
                     this.parent.group.children.splice(i, 1);
                 }
             }
@@ -279,7 +279,7 @@
             var inversion = new Sao.common.DomainInversion();
             var head = domain[0];
             var tail = domain.slice(1);
-            if (['AND', 'OR'].indexOf(head) >= 0) {
+            if (~['AND', 'OR'].indexOf(head)) {
             } else if (inversion.is_leaf(head)) {
                 var field = head[0];
                 if ((field in this.model.fields) &&
@@ -379,7 +379,7 @@
                 loading = (this.model.fields[name].description.loading ||
                         'eager');
             }
-            if ((this.group.indexOf(this) >= 0) && (loading == 'eager')) {
+            if (~this.group.indexOf(this) && (loading == 'eager')) {
                 var idx = this.group.indexOf(this);
                 var length = this.group.length;
                 var n = 1;
@@ -427,10 +427,10 @@
             for (var i in fnames) {
                 fname = fnames[i];
                 var fdescription = this.model.fields[fname].description;
-                if (rec_named_fields.indexOf(fdescription.type) >= 0)
+                if (~rec_named_fields.indexOf(fdescription.type))
                     fnames_to_fetch.push(fname + '.rec_name');
             }
-            if (fnames.indexOf('rec_name') < 0) {
+            if (!~fnames.indexOf('rec_name')) {
                 fnames_to_fetch.push('rec_name');
             }
             fnames_to_fetch.push('_timestamp');
@@ -633,7 +633,7 @@
                 if (jQuery.isEmptyObject(on_change_with)) {
                     continue;
                 }
-                if (on_change_with.indexOf(field_name) < 0) {
+                if (!~on_change_with.indexOf(field_name)) {
                     continue;
                 }
                 if (field_name == fieldname) {
@@ -764,13 +764,13 @@
                     }
                     var field = this.model.fields[fname];
                     if ((fields !== null) &&
-                        (fields.indexOf(fname) < 0)) {
+                        (!~fields.indexOf(fname))) {
                         continue;
                     }
                     if (field.get_state_attrs(this).readonly) {
                         continue;
                     }
-                    if (exclude_fields.indexOf(fname) >= 0) {
+                    if (~exclude_fields.indexOf(fname)) {
                         continue;
                     }
                     if (!field.validate(this, softvalidation)) {
@@ -802,10 +802,10 @@
                     Object.keys(this._loaded));
         },
         deleted: function() {
-            return this.group.record_deleted.indexOf(this) != -1;
+            return Boolean(~this.group.record_deleted.indexOf(this));
         },
         removed: function() {
-            return this.group.record_removed.indexOf(this) != -1;
+            return Boolean(~this.group.record_removed.indexOf(this));
         }
     });
 
@@ -1037,7 +1037,7 @@
                                 });
                         }
                         if ((localpart != 'id') ||
-                                (constraintfields.indexOf(recordpart) < 0)) {
+                                !~constraintfields.indexOf(recordpart)) {
                             setdefault = false;
                         }
                     }
@@ -1368,8 +1368,8 @@
             var parent_name = this.description.relation_field || '';
             for (var i = 0, len = group.length; i < len; i++) {
                 var record2 = group[i];
-                if ((record_removed.indexOf(record2) >= 0) ||
-                    (record_deleted.indexOf(record2) >= 0)) {
+                if (~record_removed.indexOf(record2) ||
+                        ~record_deleted.indexOf(record2)) {
                     continue;
                 }
                 var values;
@@ -1531,8 +1531,8 @@
             for (var i = 0, len = record._values[this.name].length; i < len;
                     i++) {
                 var record2 = group[i];
-                if ((record_removed.indexOf(record2) >= 0) ||
-                        (record_deleted.indexOf(record2) >= 0))
+                if (~record_removed.indexOf(record2) ||
+                        ~record_deleted.indexOf(record2))
                     continue;
                 result.push(record2.id);
             }

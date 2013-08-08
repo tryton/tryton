@@ -303,7 +303,7 @@
                     } else if (this.escape.contains(nextchar)) {
                         escapedstate = 'a';
                         this.state = nextchar;
-                    } else if (this.nowordchars.indexOf(nextchar) == -1) {
+                    } else if (!~this.nowordchars.indexOf(nextchar)) {
                         this.token = nextchar;
                         this.state = 'a';
                     } else if (this.quotes.contains(nextchar)) {
@@ -362,7 +362,7 @@
                     } else if (this.escape.contains(nextchar)) {
                         escapedstate = 'a';
                         this.state = nextchar;
-                    } else if ((this.nowordchars.indexOf(nextchar) == -1) ||
+                    } else if ((!~this.nowordchars.indexOf(nextchar)) ||
                             this.quotes.contains(nextchar) ||
                             this.whitespace_split) {
                         this.token = this.token + nextchar;
@@ -480,9 +480,9 @@
                         }
                     }
                     var formatted_value = this.format_value(field, value);
-                    if ((this.OPERATORS.indexOf(operator) >= 0) &&
-                            (['char', 'text', 'sha', 'selection']
-                             .indexOf(field.type) >= 0) &&
+                    if (~this.OPERATORS.indexOf(operator) &&
+                            ~['char', 'text', 'sha', 'selection']
+                            .indexOf(field.type) &&
                             (value === '')) {
                         formatted_value = '""';
                     }
@@ -512,7 +512,7 @@
             var result = [];
             tokens.slice(1).forEach(function(nex) {
                 if ((nex == '=') && cur &&
-                    (this.OPERATORS.indexOf(cur + nex) >= 0)) {
+                    ~this.OPERATORS.indexOf(cur + nex)) {
                     result.push(cur + nex);
                     cur = null;
                 } else {
@@ -555,7 +555,7 @@
                     result.push([part]);
                 };
                 var i = parts.indexOf(':');
-                if (i == -1) {
+                if (!~i) {
                     parts.forEach(push_result);
                     return result;
                 }
@@ -586,7 +586,7 @@
                         }
                         name = [name];
                         if (((i + 1) < parts.length) &&
-                                (this.OPERATORS.indexOf(parts[i + 1]) >= 0)) {
+                                (~this.OPERATORS.indexOf(parts[i + 1]))) {
                             name = name.concat([parts[i + 1]]);
                             i += 1;
                         } else {
@@ -729,8 +729,8 @@
                     if (operator.contains('like')) {
                         value = this.likify(value);
                     }
-                    if (['integer', 'float', 'numeric', 'datetime', 'date',
-                            'time'].indexOf(field.type) >= 0) {
+                    if (~['integer', 'float', 'numeric', 'datetime', 'date',
+                            'time'].indexOf(field.type)) {
                         if (value && value.contains('..')) {
                             var values = value.split('..', 2);
                             var lvalue = this.convert_value(field, values[0]);
@@ -781,8 +781,8 @@
             return value;
         },
         default_operator: function(field) {
-            if (['char', 'text', 'many2one', 'many2many', 'one2many']
-                    .indexOf(field.type) >= 0) {
+            if (~['char', 'text', 'many2one', 'many2many', 'one2many']
+                    .indexOf(field.type)) {
                 return 'ilike';
             } else {
                 return '=';
@@ -1041,7 +1041,7 @@
             return this.OPERATORS[operand](context_field, value);
         },
         inverse_leaf: function(domain) {
-            if (['AND', 'OR'].indexOf(domain) >= 0) {
+            if (~['AND', 'OR'].indexOf(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
                 if (domain[1].contains('child_of')) {
@@ -1076,7 +1076,7 @@
             }
         },
         localize_domain: function(domain, field_name) {
-            if (['AND', 'OR', true, false].indexOf(domain) >= 0) {
+            if (~['AND', 'OR', true, false].indexOf(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
                 if (domain[1].contains('child_of')) {
@@ -1095,7 +1095,7 @@
             }
         },
         unlocalize_domain: function(domain, fieldname) {
-            if (['AND', 'OR', true, false].indexOf(domain) >= 0) {
+            if (~['AND', 'OR', true, false].indexOf(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
                 return [fieldname + '.' + domain[0]].concat(domain.slice(1));
@@ -1108,13 +1108,13 @@
         simplify: function(domain) {
             if (this.is_leaf(domain)) {
                 return domain;
-            } else if (['OR', 'AND'].indexOf(domain) >= 0) {
+            } else if (~['OR', 'AND'].indexOf(domain)) {
                 return domain;
             } else if ((domain instanceof Array) && (domain.length == 1) &&
                     (!this.is_leaf(domain[0]))) {
                 return this.simplify(domain[0]);
             } else if ((domain instanceof Array) && (domain.length == 2) &&
-                    (['AND', 'OR'].indexOf(domain[0]) >= 0)) {
+                    ~['AND', 'OR'].indexOf(domain[0])) {
                 return [this.simplify(domain[1])];
             } else {
                 return domain.map(this.simplify.bind(this));
@@ -1122,7 +1122,7 @@
         },
         merge: function(domain, domoperator) {
             if (jQuery.isEmptyObject(domain) ||
-                    (['AND', 'OR'].indexOf(domain) >= 0)) {
+                    ~['AND', 'OR'].indexOf(domain)) {
                 return [];
             }
             var domain_type = domain[0] == 'OR' ? 'OR' : 'AND';
@@ -1164,7 +1164,7 @@
                 context = {};
             }
             var expression = this.parse(domain);
-            if (expression.variables.indexOf(symbol) < 0) {
+            if (!~expression.variables.indexOf(symbol)) {
                 return true;
             }
             return expression.inverse(symbol, context);
@@ -1173,13 +1173,13 @@
     Sao.common.DomainInversion.in_ = function(a, b) {
         if (a instanceof Array) {
             for (var i = 0, len = a.length; i < len; i++) {
-                if (b.indexOf(a[i]) >= 0) {
+                if (~b.indexOf(a[i])) {
                     return true;
                 }
             }
             return false;
         } else {
-            return b.indexOf(a) >= 0;
+            return Boolean(~b.indexOf(a));
         }
     };
     Sao.common.DomainInversion.And = Sao.class_(Object, {
@@ -1250,10 +1250,10 @@
         inverse: function(symbol, context) {
             var DomainInversion = Sao.common.DomainInversion;
             var result = [];
-            if ((this.variables.indexOf(symbol) < 0) &&
-                (!jQuery.isEmptyObject(this.variables.filter(function(e) {
+            if (!~this.variables.indexOf(symbol) &&
+                !jQuery.isEmptyObject(this.variables.filter(function(e) {
                     return !(e in context);
-                })))) {
+                }))) {
                 // In this case we don't know anything about this OR part, we
                 // consider it to be True (because people will have the
                 // constraint on this part later).
@@ -1264,7 +1264,7 @@
                 if (part instanceof DomainInversion.And) {
                     var part_inversion = part.inverse(symbol, context);
                     var evaluated = typeof part_inversion == 'boolean';
-                    if (this.variables.indexOf(symbol) < 0) {
+                    if (!~this.variables.indexOf(symbol)) {
                         if (evaluated && part_inversion) {
                             return true;
                         }

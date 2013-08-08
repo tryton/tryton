@@ -299,8 +299,8 @@
         },
         display: function() {
             if (this.views) {
-                this.search_active(['tree', 'graph', 'calendar'].indexOf(
-                            this.current_view.view_type) > -1);
+                this.search_active(~['tree', 'graph', 'calendar'].indexOf(
+                            this.current_view.view_type));
                 for (var i = 0; i < this.views.length; i++) {
                     if (this.views[i]) {
                         this.views[i].display();
@@ -454,11 +454,11 @@
                         if (record.group.parent) {
                             prms.push(record.group.parent.save());
                         }
-                        if (record.group.record_deleted.indexOf(record) != -1) {
+                        if (~record.group.record_deleted.indexOf(record)) {
                             record.group.record_deleted.splice(
                                 record.group.record_deleted.indexOf(record), 1);
                         }
-                        if (record.group.record_removed.indexOf(record) != -1) {
+                        if (~record.group.record_removed.indexOf(record)) {
                             record.group.record_removed.splice(
                                 record.group.record_removed.indexOf(record), 1);
                         }

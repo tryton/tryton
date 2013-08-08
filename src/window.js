@@ -17,8 +17,8 @@
             for (var i = 0, len = this.screen.views.length; i < len; i++) {
                 screen_views.push(this.screen.views[i].view_type);
             }
-            if (screen_views.indexOf(view_type) == -1 &&
-                this.screen.view_to_load.indexOf(view_type) == -1) {
+            if (!~screen_views.indexOf(view_type) &&
+                !~this.screen.view_to_load.indexOf(view_type)) {
                 form_prm = this.screen.add_view_id(null, view_type);
             }
 

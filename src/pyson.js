@@ -454,7 +454,7 @@
                     throw 'key must be a string or a number';
                 }
             } else {
-                if (['string', 'number'].indexOf(typeof key) < 0) {
+                if (!~['string', 'number'].indexOf(typeof key)) {
                     throw 'key must be a string or a number';
                 }
             }
@@ -484,7 +484,7 @@
 
     Sao.PYSON.In.eval_ = function(value, context) {
         if (value.v.indexOf) {
-            return value.v.indexOf(value.k) >= 0;
+            return Boolean(~value.v.indexOf(value.k));
         } else {
             return !!value.v[value.k];
         }

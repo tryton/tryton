@@ -1480,13 +1480,13 @@
             } else if (event_.which == Sao.common.F2_KEYCODE) {
                 this.edit();
                 event_.preventDefault();
-            } else if (jQuery.inArray(event_.which, activate_keys) > -1) {
+            } else if (~activate_keys.indexOf(event_.which)) {
                 this.activate();
             } else if (this.has_target(this.record().field_get(
                             this.field_name)) && editable) {
                 var value = this.record().field_get_client(this.field_name);
                 if ((value != this.entry.val()) ||
-                        (jQuery.inArray(event_.which, delete_keys) > -1)) {
+                        ~delete_keys.indexOf(event_.which)) {
                     this.entry.val('');
                     this.record().field_set_client(this.field_name,
                         this.value_from_id(null, ''));
@@ -1951,8 +1951,7 @@
             if (event_.which == Sao.common.F3_KEYCODE) {
                 this.add();
                 event_.preventDefault();
-            } else if ((jQuery.inArray(event_.which, activate_keys) > -1) &&
-                    editable) {
+            } else if (~activate_keys.indexOf(event_.which) && editable) {
                 if (this.entry.val()) {
                     this.add();
                 }
