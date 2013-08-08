@@ -390,11 +390,11 @@ class AccountTemplate(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         templates = cls.search([
-                ('code',) + clause[1:],
+                ('code',) + tuple(clause[1:]),
                 ], limit=1)
         if templates:
-            return [('code',) + clause[1:]]
-        return [(cls._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(cls._rec_name,) + tuple(clause[1:])]
 
     def _get_account_value(self, account=None):
         '''
@@ -781,11 +781,11 @@ class Account(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         accounts = cls.search([
-                ('code',) + clause[1:],
+                ('code',) + tuple(clause[1:]),
                 ], limit=1)
         if accounts:
-            return [('code',) + clause[1:]]
-        return [(cls._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(cls._rec_name,) + tuple(clause[1:])]
 
     @classmethod
     def copy(cls, accounts, default=None):
@@ -958,8 +958,8 @@ class AccountDeferral(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         deferrals = cls.search(['OR',
-                ('account.rec_name',) + clause[1:],
-                ('fiscalyear.rec_name',) + clause[1:],
+                ('account.rec_name',) + tuple(clause[1:]),
+                ('fiscalyear.rec_name',) + tuple(clause[1:]),
                 ])
         return [('id', 'in', [d.id for d in deferrals])]
 
