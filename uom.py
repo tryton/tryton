@@ -127,8 +127,8 @@ class Uom(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search(['OR',
-            (self._rec_name,) + clause[1:],
-            ('symbol',) + clause[1:],
+            (self._rec_name,) + tuple(clause[1:]),
+            ('symbol',) + tuple(clause[1:]),
             ], order=[])
         return [('id', 'in', ids)]
 
