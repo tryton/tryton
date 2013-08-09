@@ -333,7 +333,9 @@
                             context);
                 }
             }
-            prm.done(this.reload.bind(this));
+            prm.done(function() {
+                this.reload();
+            }.bind(this));
             // TODO group written
             // TODO parent
             return prm;
