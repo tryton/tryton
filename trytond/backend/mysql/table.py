@@ -272,7 +272,8 @@ class TableHandler(TableHandlerInterface):
                     return
 
             if index_name in self._indexes:
-                self.cursor.execute('DROP INDEX `%s` ' % (index_name,))
+                self.cursor.execute('DROP INDEX `%s` ON `%s`'
+                    % (index_name, self.table_name))
                 self._update_definitions()
         else:
             raise Exception('Index action not supported!')
