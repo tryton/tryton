@@ -303,3 +303,62 @@ Test invoice state::
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     u'paid'
+
+Let's test the negative amount version of the supplier/customer invoices::
+
+    >>> customer_invoice3 = Invoice(type='out_invoice')
+    >>> customer_invoice3.party = customer
+    >>> customer_invoice3.payment_term = payment_term
+    >>> invoice_line = InvoiceLine()
+    >>> customer_invoice3.lines.append(invoice_line)
+    >>> invoice_line.quantity = 1
+    >>> invoice_line.unit_price = Decimal('-120')
+    >>> invoice_line.account = revenue
+    >>> invoice_line.description = 'Test'
+    >>> customer_invoice3.save()
+    >>> Invoice.post([customer_invoice3.id], config.context)
+    >>> customer_invoice3.state
+    u'posted'
+
+    >>> supplier_invoice2 = Invoice(type='in_invoice')
+    >>> supplier_invoice2.party = supplier
+    >>> supplier_invoice2.payment_term = payment_term
+    >>> invoice_line = InvoiceLine()
+    >>> supplier_invoice2.lines.append(invoice_line)
+    >>> invoice_line.quantity = 1
+    >>> invoice_line.unit_price = Decimal('-40')
+    >>> invoice_line.account = expense
+    >>> invoice_line.description = 'Test'
+    >>> supplier_invoice2.invoice_date = today
+    >>> supplier_invoice2.save()
+    >>> Invoice.post([supplier_invoice2.id], config.context)
+    >>> supplier_invoice2.state
+    u'posted'
+
+    >>> statement = Statement(journal=statement_journal,
+    ...     end_balance=Decimal('0'),
+    ... )
+
+    >>> statement_line = StatementLine()
+    >>> statement.lines.append(statement_line)
+    >>> statement_line.date = today
+    >>> statement_line.party = customer
+    >>> statement_line.account = receivable
+    >>> statement_line.amount = Decimal(-120)
+    >>> statement_line.invoice = customer_invoice3
+    >>> statement_line.invoice.id == customer_invoice3.id
+    True
+
+    >>> statement_line = StatementLine()
+    >>> statement.lines.append(statement_line)
+    >>> statement_line.date = today
+    >>> statement_line.party = supplier
+    >>> statement_line.account = payable
+    >>> statement_line.amount = Decimal(50)
+    >>> statement_line.invoice = supplier_invoice2
+    >>> statement_line.amount == Decimal(40)
+    True
+    >>> len(statement.lines)
+    3
+    >>> statement.lines[-1].amount == 10
+    0

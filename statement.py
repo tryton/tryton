@@ -212,27 +212,27 @@ class Statement(Workflow, ModelSQL, ModelView):
             invoice_id2amount_to_pay = {}
             for invoice in invoices:
                 with Transaction().set_context(date=invoice.currency_date):
-                    invoice_id2amount_to_pay[invoice.id] = (
+                    if invoice.type in ('out_invoice', 'in_credit_note'):
+                        sign = -1
+                    else:
+                        sign = 1
+                    invoice_id2amount_to_pay[invoice.id] = sign * (
                         Currency.compute(invoice.currency,
                             invoice.amount_to_pay, self.journal.currency))
 
             for line in self.lines or []:
                 if line.invoice and line.id:
                     amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
-                    if abs(line.amount) > amount_to_pay:
-                        res['lines'].setdefault('update', [])
-                        if self.journal.currency.is_zero(amount_to_pay):
-                            res['lines']['update'].append({
+                    res['lines'].setdefault('update', [])
+                    if (not self.journal.currency.is_zero(amount_to_pay)
+                            and (line.amount >= 0) == (amount_to_pay <= 0)):
+                        res['lines']['update'].append({
                                 'id': line.id,
-                                'invoice': None,
+                                'amount': (amount_to_pay.copy_sign(line.amount)
+                                    if abs(line.amount) > abs(amount_to_pay)
+                                    else line.amount)
                                 })
-                        else:
-                            res['lines']['update'].append({
-                                'id': line.id,
-                                'amount': (amount_to_pay
-                                        if line.amount >= 0
-                                        else -amount_to_pay),
-                                })
+                        if abs(line.amount) > abs(amount_to_pay):
                             res['lines'].setdefault('add', [])
                             vals = {}
                             for field_name, field in Line._fields.iteritems():
@@ -248,15 +248,19 @@ class Statement(Workflow, ModelSQL, ModelView):
                                 else:
                                     vals[field_name] = value
                             del vals['id']
-                            vals['amount'] = (abs(line.amount)
-                                - amount_to_pay)
-                            if line.amount < 0:
-                                vals['amount'] = - vals['amount']
+                            vals['amount'] = line.amount + amount_to_pay
                             vals['invoice'] = None
                             del vals['invoice.rec_name']
                             res['lines']['add'].append(vals)
-                    invoice_id2amount_to_pay[line.invoice.id] = \
-                        amount_to_pay - abs(line.amount)
+                            invoice_id2amount_to_pay[line.invoice.id] = 0
+                        else:
+                            invoice_id2amount_to_pay[line.invoice.id] = (
+                                line.amount + amount_to_pay)
+                    else:
+                        res['lines']['update'].append({
+                                'id': line.id,
+                                'invoice': None,
+                                })
         return res
 
     @classmethod
@@ -477,7 +481,7 @@ class Line(ModelSQL, ModelView):
                 amount_to_pay = Currency.compute(self.invoice.currency,
                     self.invoice.amount_to_pay,
                     self.statement.journal.currency)
-            if amount_to_pay < abs(self.amount):
+            if abs(amount_to_pay) < abs(self.amount):
                 lang, = Lang.search([
                         ('code', '=', Transaction().language),
                         ])
@@ -493,7 +497,7 @@ class Line(ModelSQL, ModelView):
                     self.amount, self.statement.company.currency)
 
             reconcile_lines = self.invoice.get_reconcile_lines_for_amount(
-                abs(amount))
+                amount)
 
             for move_line in move.lines:
                 if move_line.account == self.invoice.account:
