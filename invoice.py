@@ -41,6 +41,14 @@ _TYPE2JOURNAL = {
 
 _ZERO = Decimal('0.0')
 
+_CREDIT_TYPE = {
+    None: None,
+    'out_invoice': 'out_credit_note',
+    'in_invoice': 'in_credit_note',
+    'out_credit_note': 'out_invoice',
+    'in_credit_note': 'in_invoice',
+    }
+
 
 class Invoice(Workflow, ModelSQL, ModelView):
     'Invoice'
@@ -1248,14 +1256,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         Return values to credit invoice.
         '''
         res = {}
-        if self.type == 'out_invoice':
-            res['type'] = 'out_credit_note'
-        elif self.type == 'in_invoice':
-            res['type'] = 'in_credit_note'
-        elif self.type == 'out_credit_note':
-            res['type'] = 'out_invoice'
-        elif self.type == 'in_credit_note':
-            res['type'] = 'in_invoice'
+        res['type'] = _CREDIT_TYPE[self.type]
 
         for field in ('description', 'comment'):
             res[field] = getattr(self, field)
@@ -1435,7 +1436,8 @@ class InvoiceLine(ModelSQL, ModelView):
             'invisible': Bool(Eval('context', {}).get('standalone')),
             },
         depends=['invoice_type', 'party', 'company', 'currency'])
-    invoice_type = fields.Selection(_TYPE, 'Invoice Type', select=True,
+    invoice_type = fields.Selection(_TYPE + [(None, '')], 'Invoice Type',
+        select=True,
         states={
             'readonly': Eval('context', {}).get('type') | Eval('type'),
             'required': ~Eval('invoice'),
@@ -1617,10 +1619,6 @@ class InvoiceLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @staticmethod
-    def default_invoice_type():
-        return Transaction().context.get('invoice_type', 'out_invoice')
 
     @staticmethod
     def default_currency():
@@ -2033,6 +2031,7 @@ class InvoiceLine(ModelSQL, ModelView):
         Return values to credit line.
         '''
         res = {}
+        res['invoice_type'] = _CREDIT_TYPE[self.invoice_type]
 
         for field in ('sequence', 'type', 'quantity', 'unit_price',
                 'description'):
