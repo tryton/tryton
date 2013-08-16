@@ -355,11 +355,11 @@ class Move(ModelSQL, ModelView):
                     move.period.post_move_sequence_used.id)
             cls.write([move], values)
 
-            if len(move.lines) == 1:
-                line, = move.lines
+            to_reconcile = [l for l in move.lines
                 if ((line.debit == line.credit == Decimal('0'))
-                        and line.account.reconcile):
-                    Line.reconcile([line])
+                    and line.account.reconcile)]
+            if to_reconcile:
+                Line.reconcile(to_reconcile)
 
     @classmethod
     @ModelView.button
