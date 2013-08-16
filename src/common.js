@@ -72,6 +72,16 @@
         return text;
     };
 
+    Sao.common.humanize = function(size) {
+        var sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
+        for (var i =0, len = sizes.length; i < len; i++) {
+            if (size < 1000) {
+                return size.toPrecision(4) + ' ' + sizes[i];
+            }
+            size /= 1000;
+        }
+    };
+
     Sao.common.EvalEnvironment = function(parent_, eval_type) {
         if (eval_type === undefined)
             eval_type = 'eval';

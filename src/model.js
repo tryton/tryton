@@ -406,7 +406,7 @@
                             n++;
                         }
             }
-            var context = this.get_context();
+            var context = jQuery.extend({}, this.get_context());
             var fnames = [];
             if (loading == 'eager') {
                 for (fname in this.model.fields) {
@@ -436,7 +436,15 @@
                 fnames_to_fetch.push('rec_name');
             }
             fnames_to_fetch.push('_timestamp');
-            // TODO size of binary
+            for (fname in this.model.fields) {
+                if (!this.model.fields.hasOwnProperty(fname)) {
+                    continue;
+                }
+                if ((this.model.fields[fname].description.type == 'binary') &&
+                        ~fnames_to_fetch.indexOf(fname, fnames_to_fetch)) {
+                    context[this.model.name + '.' + fname] = 'size';
+                }
+            }
             prm = this.model.execute('read', [Object.keys(id2record),
                     fnames_to_fetch], context);
             var succeed = function(values) {
@@ -842,6 +850,8 @@
                 return Sao.field.One2Many;
             case 'many2many':
                 return Sao.field.Many2Many;
+            case 'binary':
+                return Sao.field.Binary;
             default:
                 return Sao.field.Char;
         }
@@ -1607,6 +1617,33 @@
         },
         get_on_change_value: function(record) {
             return this.get_eval(record);
+        }
+    });
+
+    Sao.field.Binary = Sao.class_(Sao.field.Field, {
+        _default: null,
+        get_size: function(record) {
+            var data = record._values[this.name] || 0;
+            if (data instanceof Uint8Array) {
+                return data.length;
+            }
+            return data;
+        },
+        get_data: function(record) {
+            var prm = jQuery.when();
+            var data = record._values[this.name] || 0;
+            if (!(data instanceof Uint8Array)) {
+                if (record.id < 0) {
+                    return prm;
+                }
+                var context = record.get_context();
+                prm = record.model.execute('read', [[record.id], [this.name]],
+                    context);
+                prm.done(function(data) {
+                    return data[0][this.name];
+                }.bind(this));
+                return prm;
+            }
         }
     });
 }());

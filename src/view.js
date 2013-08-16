@@ -960,6 +960,8 @@
                 return Sao.View.Form.One2Many;
             case 'many2many':
                 return Sao.View.Form.Many2Many;
+            case 'binary':
+                return Sao.View.Form.Binary;
         }
     };
 
@@ -1971,6 +1973,198 @@
                 };
                 var win = new Sao.Window.Form(this.screen,
                         callback.bind(this));
+            }
+        }
+    });
+
+    Sao.View.Form.Binary = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-binary',
+        blob_url: '',
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.Binary._super.init.call(this, field_name, model,
+                attributes);
+            this.filename = attributes.filename || null;
+
+            this.el = jQuery('<div/>', {
+                'class': this.class_
+            });
+
+            if (this.filename && attributes.filename_visible) {
+                this.text = jQuery('<input/>', {
+                    type: 'input'
+                });
+                this.text.change(this.focus_out.bind(this));
+                this.text.on('keyup', this.key_press.bind(this));
+                this.el.append(this.text);
+            }
+            this.size = jQuery('<input/>', {
+                type: 'input'
+            });
+            this.el.append(this.size);
+
+            this.but_new = jQuery('<button/>').button({
+                icons: {
+                    primary: 'ui-icon-document'
+                },
+                text: false
+            });
+            this.but_new.click(this.new_.bind(this));
+            this.el.append(this.but_new);
+
+            if (this.filename) {
+                this.but_open = jQuery('<a/>').button({
+                    icons: {
+                        primary: 'ui-icon-folder-open'
+                    },
+                    text: false
+                });
+                this.but_open.click(this.open.bind(this));
+                this.el.append(this.but_open);
+            }
+
+            this.but_save_as = jQuery('<button/>').button({
+                icons: {
+                    primary: 'ui-icon-disk'
+                },
+                text: false
+            });
+            this.but_save_as.click(this.save_as.bind(this));
+            this.el.append(this.but_save_as);
+
+            this.but_remove = jQuery('<button/>').button({
+                icons: {
+                    primary: 'ui-icon-trash'
+                },
+                text: false
+            });
+            this.but_remove.click(this.remove.bind(this));
+            this.el.append(this.but_remove);
+        },
+        filename_field: function() {
+            var record = this.record();
+            if (record) {
+                return record.model.fields[this.filename];
+            }
+        },
+        display: function(record, field) {
+            Sao.View.Form.Binary._super.display.call(this, record, field);
+            if (field === undefined) {
+                this.size.val('');
+                if (this.filename) {
+                    this.but_open.button('disable');
+                }
+                if (this.text) {
+                    this.text.val('');
+                }
+                this.but_save_as.button('disable');
+                return;
+            }
+            var size = field.get_size(record);
+            var button_sensitive;
+            if (size) {
+                button_sensitive = 'enable';
+            } else {
+                button_sensitive = 'disable';
+            }
+
+            if (this.filename) {
+                if (this.text) {
+                    this.text.val(this.filename_field().get(record) || '');
+                }
+                this.but_open.button(button_sensitive);
+            }
+            this.size.val(Sao.common.humanize(size));
+            this.but_save_as.button(button_sensitive);
+        },
+        save_as: function(evt) {
+            var field = this.field();
+            var record = this.record();
+            field.get_data(record).done(function(data) {
+                var blob = new Blob([data],
+                        {type: 'application/octet-binary'});
+                var blob_url = window.URL.createObjectURL(blob);
+                if (this.blob_url) {
+                    window.URL.revokeObjectURL(this.blob_url);
+                }
+                this.blob_url = blob_url;
+                window.open(blob_url);
+            }.bind(this));
+        },
+        open: function(evt) {
+            // TODO find a way to make the difference between downloading and
+            // opening
+            this.save_as(evt);
+        },
+        new_: function(evt) {
+            var record = this.record();
+            var file_dialog = jQuery('<div/>', {
+                'class': 'file-dialog'
+            });
+            var file_selector = jQuery('<input/>', {
+                type: 'file'
+            });
+            file_dialog.append(file_selector);
+            var save_file = function() {
+                var reader = new FileReader();
+                reader.onload = function(evt) {
+                    var uint_array = new Uint8Array(reader.result);
+                    this.field().set_client(record, uint_array);
+                }.bind(this);
+                reader.onloadend = function(evt) {
+                    file_dialog.dialog('close');
+                };
+                var file = file_selector[0].files[0];
+                reader.readAsArrayBuffer(file);
+                if (this.filename) {
+                    this.filename_field().set_client(record, file.name);
+                }
+            };
+            file_dialog.dialog({
+                modal: true,
+                title: 'Select a file', // TODO translation
+                buttons: {
+                    Cancel: function() {
+                        $(this).dialog('close');
+                    },
+                    OK: save_file.bind(this)
+                }
+            });
+            file_dialog.dialog('open');
+        },
+        remove: function(evt) {
+            this.field().set_client(this.record(), null);
+        },
+        key_press: function(evt) {
+            var editable = true; // TODO compute editable
+            if (evt.which == Sao.common.F3_KEYCODE && editable) {
+                this.new_();
+                evt.preventDefault();
+            } else if (evt.which == Sao.common.F2_KEYCODE) {
+                this.open();
+                evt.preventDefault();
+            }
+        },
+        set_value: function(record, field) {
+            if (this.text) {
+                this.filename_field().set_client(record,
+                        this.text.val() || '');
+            }
+        },
+        _get_color_el: function() {
+            if (this.text) {
+                return this.text;
+            } else {
+                return this.size;
+            }
+        },
+        set_readonly: function(readonly) {
+            if (readonly) {
+                this.but_new.hide();
+                this.but_remove.hide();
+
+            } else {
+                this.but_new.show();
+                this.but_remove.show();
             }
         }
     });

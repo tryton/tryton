@@ -81,7 +81,18 @@
                    case 'time':
                        throw new Error('Time support not implemented');
                    case 'buffer':
-                       throw new Error('Buffer support not implemented');
+                       // javascript's atob does not understand linefeed
+                       // characters
+                       var byte_string = atob(value.base64.replace(/\s/g, ''));
+                       // javascript decodes base64 string as a "DOMString", we
+                       // need to convert it to an array of bytes
+                       var array_buffer = new ArrayBuffer(byte_string.length);
+                       var uint_array = new Uint8Array(array_buffer);
+                       for (var j=0; j < byte_string.length; j++) {
+                           uint_array[j] = byte_string.charCodeAt(j);
+                       }
+                       value = uint_array;
+                       break;
                    case 'Decimal':
                        value = new Sao.Decimal(value.decimal);
                        break;
@@ -133,6 +144,14 @@
                 value = {
                     '__class__': 'Decimal',
                     'decimal': value.valueOf()
+                };
+                if (parent) {
+                    parent[index] = value;
+                }
+            } else if (value instanceof Uint8Array) {
+                value = {
+                    '__class__': 'buffer',
+                    'base64': btoa(String.fromCharCode.apply(null, value))
                 };
                 if (parent) {
                     parent[index] = value;
