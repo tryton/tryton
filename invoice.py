@@ -653,8 +653,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 with Transaction().set_context(date=invoice.currency_date):
                     amount_currency += Currency.compute(
                         invoice.company.currency, amount, invoice.currency)
-            if amount_currency < _ZERO:
-                amount_currency = _ZERO
             res[invoice.id] = amount_currency
         return res
 
@@ -1113,11 +1111,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
             payment_amount += line.debit - line.credit
             payment_lines.append(line)
 
-        if self.type in ('out_invoice', 'in_credit_note'):
-            amount = - abs(amount)
-        else:
-            amount = abs(amount)
-
         for line in self.lines_to_pay:
 
             if line.reconciliation:
@@ -1125,14 +1118,14 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if line in exclude_lines:
                 continue
 
-            test_amount = amount + (line.debit - line.credit)
+            test_amount = (line.debit - line.credit) - amount
             if self.currency.is_zero(test_amount):
                 return ([line], Decimal('0.0'))
             if abs(test_amount) < abs(remainder):
                 lines = [line]
                 remainder = test_amount
 
-            test_amount = (amount + payment_amount)
+            test_amount = payment_amount - amount
             test_amount += (line.debit - line.credit)
             if self.currency.is_zero(test_amount):
                 return ([line] + payment_lines, Decimal('0.0'))
@@ -1143,7 +1136,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             exclude_lines2 = exclude_lines[:]
             exclude_lines2.append(line)
             lines2, remainder2 = self.get_reconcile_lines_for_amount(
-                (amount + (line.debit - line.credit)),
+                ((line.debit - line.credit) - amount),
                 exclude_lines=exclude_lines2)
             if remainder2 == Decimal('0.0'):
                 lines2.append(line)
