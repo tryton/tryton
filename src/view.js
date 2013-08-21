@@ -2109,7 +2109,7 @@
             var record = this.record();
             field.get_data(record).done(function(data) {
                 var blob = new Blob([data[0].binary],
-                        {contentType: 'application/octet-binary'});
+                        {type: 'application/octet-binary'});
                 var blob_url = window.URL.createObjectURL(blob);
                 if (this.blob_url) {
                     window.URL.revokeObjectURL(this.blob_url);
