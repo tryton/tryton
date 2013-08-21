@@ -5,6 +5,7 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Not, Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import reduce_ids
 
 __all__ = ['Work', 'OpenWorkStart', 'OpenWork', 'OpenWork2', 'OpenWorkGraph']
 
@@ -96,54 +97,37 @@ class Work(ModelSQL, ModelView):
                     })
 
     @classmethod
-    def _tree_qty(cls, hours_by_wt, children, ids, to_compute):
-        res = 0
-        for h in ids:
-            if (not children.get(h)) or (not to_compute[h]):
-                res += hours_by_wt.setdefault(h, 0)
-            else:
-                sub_qty = cls._tree_qty(
-                    hours_by_wt, children, children[h], to_compute)
-                hours_by_wt.setdefault(h, 0)
-                hours_by_wt[h] += sub_qty
-                res += hours_by_wt[h]
-                to_compute[h] = False
-        return res
-
-    @classmethod
     def get_hours(cls, works, name):
+        pool = Pool()
+        Line = pool.get('timesheet.line')
+        transaction = Transaction()
+        cursor = transaction.cursor
+        in_max = cursor.IN_MAX
+        context = transaction.context
+
         ids = [w.id for w in works]
-        all_works = cls.search([
-                ('parent', 'child_of', ids),
-                ])
-        all_ids = [w.id for w in all_works]
-        # force inactive ids to be in all_ids
-        all_ids = list(set(all_ids + ids))
-        clause = ("SELECT work, sum(hours) FROM timesheet_line "
-            "WHERE work IN (%s) "
-            % ",".join(('%s',) * len(all_ids)))
-        date_cond = ""
-        args = []
-        if Transaction().context.get('from_date'):
-            date_cond = " AND date >= %s"
-            args.append(Transaction().context['from_date'])
-        if Transaction().context.get('to_date'):
-            date_cond += " AND date <= %s"
-            args.append(Transaction().context['to_date'])
-        clause += date_cond + " GROUP BY work"
-
-        Transaction().cursor.execute(clause, all_ids + args)
-
-        hours_by_wt = dict((i[0], i[1]) for i in
-            Transaction().cursor.fetchall())
-        to_compute = dict.fromkeys(all_ids, True)
-        works = cls.browse(all_ids)
-        children = {}
-        for work in works:
-            if work.parent:
-                children.setdefault(work.parent.id, []).append(work.id)
-        cls._tree_qty(hours_by_wt, children, ids, to_compute)
-        return hours_by_wt
+        hours = dict.fromkeys(ids, 0)
+        date_cond = ''
+        date_args = []
+        if context.get('from_date'):
+            date_cond = ' AND date >= %s'
+            date_args.append(context['from_date'])
+        if context.get('to_date'):
+            date_cond += ' AND date <= %s'
+            date_args.append(context['to_date'])
+        for i in range(0, len(ids), in_max):
+            sub_ids = ids[i:i + in_max]
+            red_sql, red_ids = reduce_ids('w.id', sub_ids)
+            cursor.execute('SELECT w.id, SUM(l.hours) '
+                'FROM "' + cls._table + '" AS w '
+                'JOIN "' + cls._table + '" AS c '
+                    'ON c.left >= w.left AND c.right <= w.right '
+                'LEFT JOIN "' + Line._table + '" AS l '
+                    'ON l.work = c.id '
+                'WHERE ' + red_sql + ' ' + date_cond + ' '
+                'GROUP BY w.id', red_ids + date_args)
+            hours.update(dict(cursor.fetchall()))
+        return hours
 
     def get_rec_name(self, name):
         if self.parent:
