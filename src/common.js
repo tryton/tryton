@@ -72,6 +72,43 @@
         return text;
     };
 
+    Sao.common.ModelAccess = Sao.class_(Object, {
+        init: function() {
+            this.batchnum = 100;
+            this._access = {};
+        },
+        load_models: function(refresh) {
+            var prm = jQuery.Deferred();
+            if (!refresh) {
+                this._access = {};
+            }
+            Sao.rpc({
+                'method': 'model.ir.model.list_models',
+                'params': [{}]
+            }, Sao.Session.current_session).then(function(models) {
+                var deferreds = [];
+                var update_access = function(access) {
+                    this._access = jQuery.extend(this._access, access);
+                };
+                for (var i = 0; i < models.length; i += this.batchnum) {
+                    var to_load = models.slice(i, i + this.batchnum);
+                    deferreds.push(Sao.rpc({
+                        'method': 'model.ir.model.access.get_access',
+                        'params': [to_load, {}]
+                    }, Sao.Session.current_session)
+                        .then(update_access.bind(this)));
+                }
+                jQuery.when.apply(jQuery, deferreds).then(
+                    prm.resolve, prm.reject);
+            }.bind(this));
+            return prm;
+        },
+        get: function(model) {
+            return this._access[model];
+        }
+    });
+    Sao.common.MODELACCESS = new Sao.common.ModelAccess();
+
     Sao.common.humanize = function(size) {
         var sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
         for (var i =0, len = sizes.length; i < len; i++) {

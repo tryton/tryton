@@ -50,9 +50,13 @@ var Sao = {};
                 'method': 'model.res.user.get_preferences',
                 'params': [false, {}]
             }, session).then(function(preferences) {
-                // TODO icons, modelaccess, view_search
-                Sao.menu(preferences);
-                Sao.user_menu(preferences);
+                var deferreds = [];
+                // TODO icons, view_search
+                deferreds.push(Sao.common.MODELACCESS.load_models());
+                jQuery.when.apply(jQuery, deferreds).then(function() {
+                    Sao.menu(preferences);
+                    Sao.user_menu(preferences);
+                });
             });
         });
     };

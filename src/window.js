@@ -174,7 +174,7 @@
                     this.response('RESPONSE_APPLY');
                 }.bind(this)
             });
-            if (kwargs.new_) { // TODO Add Model Acces
+            if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
                 buttons.push({
                     text: 'New',
                     click: function() {

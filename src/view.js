@@ -1360,14 +1360,21 @@
             this._set_button_sensitive();
         },
         _set_button_sensitive: function() {
-            // TODO model access
+            var model = this.get_model();
+            var access = {
+                create: true,
+                read: true
+            };
+            if (model) {
+                access = Sao.common.MODELACCESS.get(model);
+            }
             var readonly = this.entry.prop('disabled');
             var create = this.attributes.create;
             if (create === undefined) {
                 create = true;
             }
-            this.but_new.prop('disabled', readonly && create); // TODO access
-            // TODO but_open
+            this.but_new.prop('disabled', readonly || !create || !access.create);
+            this.but_open.prop('disabled', !access.read);
         },
         id_from_value: function(value) {
             return value;
@@ -1385,11 +1392,14 @@
             return value !== undefined && value !== null;
         },
         edit: function(evt) {
-            // TODO Model Access
+            var model = this.get_model();
+            if (!model || !Sao.common.MODELACCESS.get(model).read) {
+                return;
+            }
             var win;
             var record = this.record();
             var value = record.field_get(this.field_name);
-            if (this.get_model() && this.has_target(value)) {
+            if (model && this.has_target(value)) {
                 var screen = this.get_screen();
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
@@ -1408,7 +1418,7 @@
                 win = new Sao.Window.Form(screen, callback.bind(this), {
                     save_current: true
                 });
-            } else if (this.get_model()) {
+            } else if (model) {
                 var dom;
                 var domain = this.field().get_domain(record);
                 var context = this.field().get_context(record);
@@ -1418,8 +1428,8 @@
                 } else {
                     dom = domain;
                 }
-                var model = new Sao.Model(this.get_model());
-                var ids_prm = model.execute('search',
+                var sao_model = new Sao.Model(model);
+                var ids_prm = sao_model.execute('search',
                         [dom, 0, Sao.config.limit, null], context);
                 ids_prm.done(function(ids) {
                     if (ids.length == 1) {
@@ -1435,7 +1445,7 @@
                                 value, true);
                         }
                     };
-                    win = new Sao.Window.Search(this.model,
+                    win = new Sao.Window.Search(model,
                         callback.bind(this), {
                             sel_multi: false,
                             ids: ids,
@@ -1450,7 +1460,10 @@
             }
         },
         new_: function(evt) {
-            // TODO Model Access
+            var model = this.get_model();
+            if (!model || ! Sao.common.MODELACCESS.get(model).create) {
+                return;
+            }
             var screen = this.get_screen();
             var callback = function(result) {
                 if (result) {
@@ -1496,10 +1509,12 @@
             }
         },
         activate: function() {
-            // TODO Model Access
+            var model = this.get_model();
+            if (!model || !Sao.common.MODELACCESS.get(model).read) {
+                return;
+            }
             var record = this.record();
             var value = record.field_get(this.field_name);
-            var model = this.get_model();
             var sao_model = new Sao.Model(model);
 
             if (model && !this.has_target(value)) {
@@ -1723,13 +1738,22 @@
             this.edit();
         },
         add: function(event_) {
+            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+            if (!access.write || !access.read) {
+                return;
+            }
         },
         remove: function(event_) {
-            // TODO model access
+            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+            if (!access.write || !access.read) {
+                return;
+            }
             this.screen.remove(false, true, false);
         },
         new_: function(event_) {
-            // TODO model access
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
+                return;
+            }
             this.validate().done(function() {
                 var context = jQuery.extend({},
                         this.field().get_context(this.record()));
@@ -1755,7 +1779,9 @@
             this.edit();
         },
         delete_: function(event_) {
-            // TODO model access
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']) {
+                return;
+            }
             this.screen.remove(false, false, false);
         },
         undelete: function(event_) {
@@ -1776,7 +1802,9 @@
             // TODO color_set
         },
         edit: function() {
-            // TODO model access
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name).read) {
+                return;
+            }
             this.validate().done(function() {
                 var record = this.screen.current_record;
                 if (record) {

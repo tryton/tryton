@@ -86,6 +86,14 @@
             // TODO title
             var toolbar = this.create_toolbar();
             el.append(toolbar);
+
+            var access = Sao.common.MODELACCESS.get(model_name);
+            [['new', 'create'], ['save', 'write']].forEach(function(e) {
+                var button = e[0];
+                var access_type = e[1];
+                this.buttons[button].prop('disabled', !access[access_type]);
+            }.bind(this));
+
             this.el = el;
             this.view_prm = this.screen.switch_view().done(function() {
                 el.append(screen.screen_container.el);
@@ -177,7 +185,9 @@
             return true;
         },
         new_: function() {
-            // TODO test modelaccess
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
+                return;
+            }
             if (!this.modified_save()) {
                 return;
             }
@@ -186,7 +196,9 @@
             // TODO activate_save
         },
         save: function() {
-            // TODO test modelaccess
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name).write) {
+                return;
+            }
             if (this.screen.save_current()) {
                 // TODO message
                 return true;
