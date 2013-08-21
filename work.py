@@ -269,33 +269,35 @@ class Work(ModelSQL, ModelView):
 
         return [('work', 'in', tw_ids)]
 
-    @staticmethod
-    def sum_tree(works, getter):
-        leafs = set()
+    @classmethod
+    def sum_tree(cls, works, getter):
         result = {}
+        parents = {}
         for work in works:
-            if not work.children:
-                leafs.add(work)
             result[work.id] = getter(work)
-
-        works = set(works)
+            parent = work.parent
+            if parent:
+                parents[work.id] = parent.id
+        works = set((w.id for w in works))
+        leafs = works - set(parents)
         while leafs:
             for work in leafs:
                 works.remove(work)
-                if work.parent and work.parent.id in result:
-                    result[work.parent.id] += result[work.id]
-            next_leafs = set(w for w in works)
+                parent = parents.get(work)
+                if parent in result:
+                    result[parent] += result[work]
+            next_leafs = set(works)
             for work in works:
-                if not work.parent:
+                parent = parents.get(work)
+                if not parent:
                     continue
-                if work.parent.id in next_leafs and work.parent in works:
-                    next_leafs.remove(work.parent)
+                if parent in next_leafs and parent in works:
+                    next_leafs.remove(parent)
             leafs = next_leafs
         return result
 
     @classmethod
     def get_total_effort(cls, works, name):
-
         works = cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True),
