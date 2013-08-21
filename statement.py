@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from trytond.model import Workflow, ModelView, ModelSQL, fields
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.backend import TableHandler
 from trytond.pool import Pool
@@ -340,17 +340,15 @@ class Line(ModelSQL, ModelView):
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
+        on_change=['party', 'account', 'invoice'],
         domain=[
-            ('party', '=', Eval('party')),
-            ('account', '=', Eval('account')),
+            If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
+            If(Bool(Eval('party')), [('account', '=', Eval('account'))], []),
             If(Eval('_parent_statement', {}).get('state') == 'draft',
                 ('state', '=', 'posted'),
                 ('state', '!=', '')),
             ],
-        states={
-            'readonly': (~Eval('amount') | ~Eval('party') | ~Eval('account')),
-            },
-        depends=['party', 'account', 'amount'])
+        depends=['party', 'account'])
 
     @classmethod
     def __setup__(cls):
@@ -432,6 +430,17 @@ class Line(ModelSQL, ModelView):
             else:
                 res['invoice'] = None
         return res
+
+    def on_change_invoice(self):
+        changes = {}
+        if self.invoice:
+            if not self.party:
+                changes['party'] = self.invoice.party.id
+                changes['party.rec_name'] = self.invoice.party.rec_name
+            if not self.account:
+                changes['account'] = self.invoice.account.id
+                changes['account.rec_name'] = self.invoice.account.rec_name
+        return changes
 
     def get_rec_name(self, name):
         return self.statement.rec_name
