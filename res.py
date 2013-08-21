@@ -113,7 +113,9 @@ class User:
 
     @classmethod
     def get_login(cls, login, password):
-        Connection = Pool().get('ldap.connection')
+        pool = Pool()
+        Connection = pool.get('ldap.connection')
+        LoginAttempt = pool.get('res.user.login.attempt')
         with Transaction().set_user(0):
             connection, = Connection.search([], limit=1)
         try:
@@ -129,6 +131,7 @@ class User:
             if password and con.simple_bind_s(dn, password):
                 user_id, _, _ = cls._get_login(login)
                 if user_id:
+                    LoginAttempt.delete(login)
                     return user_id
                 elif connection.auth_create_user:
                     user, = cls.create([{
