@@ -1,3 +1,4 @@
+* Display write-off amount in reconciliation
 * Enforce same company for a chart of account
 * Change tax percentage into rate
 * Autoreconcile posted move with just one line of zero

@@ -1515,6 +1515,9 @@ class ReconcileLinesWriteOff(ModelView):
     date = fields.Date('Date', required=True)
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')])
+    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
+        readonly=True, depends=['currency_digits'])
+    currency_digits = fields.Integer('Currency Digits', readonly=True)
 
     @staticmethod
     def default_date():
@@ -1533,7 +1536,8 @@ class ReconcileLines(Wizard):
             ])
     reconcile = StateTransition()
 
-    def transition_start(self):
+    def get_writeoff(self):
+        "Return writeoff amount and company"
         Line = Pool().get('account.move.line')
 
         company = None
@@ -1542,11 +1546,22 @@ class ReconcileLines(Wizard):
             amount += line.debit - line.credit
             if not company:
                 company = line.account.company
+        return amount, company
+
+    def transition_start(self):
+        amount, company = self.get_writeoff()
         if not company:
             return 'end'
         if company.currency.is_zero(amount):
             return 'reconcile'
         return 'writeoff'
+
+    def default_writeoff(self, fields):
+        amount, company = self.get_writeoff()
+        return {
+            'amount': amount,
+            'currency_digits': company.currency.digits,
+            }
 
     def transition_reconcile(self):
         Line = Pool().get('account.move.line')
