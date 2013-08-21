@@ -360,5 +360,5 @@ Let's test the negative amount version of the supplier/customer invoices::
     True
     >>> len(statement.lines)
     3
-    >>> statement.lines[-1].amount == 10
-    0
+    >>> statement.lines[-1].amount == Decimal(10)
+    True
