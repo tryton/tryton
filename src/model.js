@@ -381,32 +381,6 @@
                 loading = (this.model.fields[name].description.loading ||
                         'eager');
             }
-            if (~this.group.indexOf(this) && (loading == 'eager')) {
-                var idx = this.group.indexOf(this);
-                var length = this.group.length;
-                var n = 1;
-                while (Object.keys(id2record).length &&
-                        ((idx - n >= 0) || (idx + n < length)) &&
-                        n < 100) {
-                            var record;
-                            if (idx - n >= 0) {
-                                record = this.group[idx - n];
-                                if (!(name in record._loaded) &&
-                                        (record.id >= 0)) {
-                                    id2record[record.id] = record;
-                                }
-                            }
-                            if (idx + n < length) {
-                                record = this.group[idx + n];
-                                if (!(name in record._loaded) &&
-                                        (record.id >= 0)) {
-                                    id2record[record.id] = record;
-                                }
-                            }
-                            n++;
-                        }
-            }
-            var context = jQuery.extend({}, this.get_context());
             var fnames = [];
             if (loading == 'eager') {
                 for (fname in this.model.fields) {
@@ -436,6 +410,48 @@
                 fnames_to_fetch.push('rec_name');
             }
             fnames_to_fetch.push('_timestamp');
+
+            var context = jQuery.extend({}, this.get_context());
+            if (loading == 'eager') {
+                var limit = 1000;  // TODO use config
+                if (!this.group.parent) {
+                    // If not a children no need to load too much
+                    limit = parseInt(limit / fnames_to_fetch.length, 10);
+                }
+
+                var filter_group = function(record) {
+                    return !(name in record._loaded) && (record.id >= 0);
+                };
+                // TODO pool
+                [[this.group, filter_group]].forEach(function(e) {
+                    var group = e[0];
+                    var filter = e[1];
+                    var idx = this.group.indexOf(this);
+                    if (~idx) {
+                        var length = group.length;
+                        var n = 1;
+                        while (Object.keys(id2record).length &&
+                            ((idx - n >= 0) || (idx + n < length)) &&
+                            (n < 2 * limit)) {
+                                var record;
+                                if (idx - n >= 0) {
+                                    record = group[idx - n];
+                                    if (filter(record)) {
+                                        id2record[record.id] = record;
+                                    }
+                                }
+                                if (idx + n < length) {
+                                    record = group[idx + n];
+                                    if (filter(record)) {
+                                        id2record[record.id] = record;
+                                    }
+                                }
+                                n++;
+                            }
+                    }
+                }.bind(this));
+            }
+
             for (fname in this.model.fields) {
                 if (!this.model.fields.hasOwnProperty(fname)) {
                     continue;
@@ -456,7 +472,7 @@
                     if (!id2record.hasOwnProperty(id)) {
                         continue;
                     }
-                    record = id2record[id];
+                    var record = id2record[id];
                     // TODO exception
                     var value = id2value[id];
                     if (record && value) {
