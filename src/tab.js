@@ -147,7 +147,7 @@
                             at: 'left bottom',
                             of: button
                         });
-                        jQuery(document).on('click', function() {
+                        jQuery(document).one('click', function() {
                             menu.hide();
                         });
                         return false;
