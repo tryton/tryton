@@ -3,7 +3,9 @@
 (function() {
     'use strict';
 
-    Sao.Action = {};
+    Sao.Action = {
+        report_blob_url: undefined
+    };
 
     Sao.Action.exec_action = function(action, data, context) {
         if (context === undefined) {
@@ -88,6 +90,13 @@
                 Sao.Wizard.create(params);
                 return;
             case 'ir.action.report':
+                params.name = action.report_name;
+                params.data = data;
+                params.direct_print = action.direct_print;
+                params.email_print = action.email_print;
+                params.email = action.email;
+                params.context = context;
+                Sao.Action.exec_report(params);
                 return;
             case 'ir.action.url':
                 window.open(action.url, '_blank');
@@ -130,6 +139,42 @@
             });
         };
         return prm.pipe(exec_action);
+    };
+
+    Sao.Action.exec_report = function(attributes) {
+        if (!attributes.context) {
+            attributes.context = {};
+        }
+        if (!attributes.email) {
+            attributes.email = {};
+        }
+        var data = jQuery.extend({}, attributes.data);
+        var context = jQuery.extend({}, Sao.Session.current_session.context);
+        jQuery.extend(context, attributes.context);
+        context.direct_print = attributes.direct_print;
+        context.email_print = attributes.email_print;
+        context.email = attributes.email;
+
+        var prm = Sao.rpc({
+            'method': 'report.' + attributes.name + '.execute',
+            'params': [data.ids || [], data, context]
+        }, Sao.Session.current_session);
+        prm.done(function(result) {
+            var report_type = result[0];
+            var data = result[1];
+            var print = result[2];
+            var name = result[3];
+
+            // TODO direct print
+            var blob = new Blob([data],
+                {type: Sao.common.guess_mimetype(report_type)});
+            var blob_url = window.URL.createObjectURL(blob);
+            if (Sao.Action.report_blob_url) {
+                window.URL.revokeObjectURL(Sao.Action.report_blob_url);
+            }
+            Sao.Action.report_blob_url = blob_url;
+            window.open(blob_url);
+        });
     };
 
     Sao.Action.execute = function(id, data, type, context) {

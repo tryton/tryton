@@ -1351,4 +1351,24 @@
             }
         }
     });
+
+    Sao.common.guess_mimetype = function(filename) {
+        if (/.*odt$/.test(filename)) {
+            return 'application/vnd.oasis.opendocument.text';
+        } else if (/.*ods$/.test(filename)) {
+            return 'application/vnd.oasis.opendocument.spreadsheet';
+        } else if (/.*pdf$/.test(filename)) {
+            return 'application/pdf';
+        } else if (/.*docx$/.test(filename)) {
+            return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        } else if (/.*doc/.test(filename)) {
+            return 'application/msword';
+        } else if (/.*xlsx$/.test(filename)) {
+            return 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        } else if (/.*xls/.test(filename)) {
+            return 'application/vnd.ms-excel';
+        } else {
+            return 'application/octet-binary';
+        }
+    };
 }());
