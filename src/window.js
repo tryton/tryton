@@ -261,7 +261,7 @@
             }
 
             if (response_id == 'RESPONSE_CANCEL' &&
-                    this.screen.current_record !== null) {
+                    this.screen.current_record) {
                 result = false;
                 if ((this.screen.current_record.id < 0) || this.save_current) {
                     this.screen.group.remove(this.screen.current_record, true);
