@@ -2078,7 +2078,7 @@
         },
         display: function(record, field) {
             Sao.View.Form.Binary._super.display.call(this, record, field);
-            if (field === undefined) {
+            if (!field) {
                 this.size.val('');
                 if (this.filename) {
                     this.but_open.button('disable');
