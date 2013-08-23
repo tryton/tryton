@@ -1595,6 +1595,7 @@
                     type: 'input'
                 });
                 // TODO add completion
+                this.menu.append(this.wid_text);
 
                 this.but_add = jQuery('<button/>').button({
                     icons: {
