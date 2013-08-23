@@ -43,7 +43,9 @@
 
             var buttons = [];
             buttons.push({
-                text: 'Cancel',
+                text: (!kwargs.new_ && this.screen.current_view &&
+                       this.screen.current_record.id < 0 ?
+                       'Delete' : 'Cancel'),
                 click: function() {
                     this.response('RESPONSE_CANCEL');
                 }.bind(this)
