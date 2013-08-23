@@ -128,7 +128,7 @@
                 ['readonly', 'tree_invisible', 'expand', 'completion'].forEach(
                     function(name) {
                         if (attributes[name]) {
-                            attributes[name] = attribute[name] == 1;
+                            attributes[name] = attributes[name] == 1;
                         }
                     });
                 if (child.tagName == 'field') {
