@@ -37,17 +37,24 @@
             this.callback = callback;
             this.el = jQuery('<div/>');
 
-            if (view_type == 'tree') {
-                // TODO
-            }
-
             var buttons = [];
             buttons.push({
-                text: 'Cancel',
+                text: (!kwargs.new_ && this.screen.current_view &&
+                       this.screen.current_record.id < 0 ?
+                       'Delete' : 'Cancel'),
                 click: function() {
                     this.response('RESPONSE_CANCEL');
                 }.bind(this)
             });
+
+            if (kwargs.new_ && this.many) {
+                buttons.push({
+                    text: 'New',
+                    click: function() {
+                        this.response('RESPONSE_ACCEPT');
+                    }.bind(this)
+                });
+            }
 
             if (this.save_current) {
                 buttons.push({
@@ -65,24 +72,144 @@
                 });
             }
 
+            var menu;
+            if (view_type == 'tree') {
+                menu = jQuery('<div/>');
+                var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+                if (this.domain) {
+                    this.wid_text = jQuery('<input/>', {
+                        type: 'input'
+                    });
+                    menu.append(this.wid_text);
+
+                    this.but_add = jQuery('<button/>').button({
+                        icons: {
+                            primary: 'ui-icon-plus'
+                        },
+                        label: 'Add'
+                    });
+                    this.but_add.click(this.add.bind(this));
+                    menu.append(this.but_add);
+                    this.but_add.prop('disabled', !access.read);
+
+                    this.but_remove = jQuery('<button/>').button({
+                        icons: {
+                            primary: 'ui-icon-minus'
+                        },
+                        label: 'Remove'
+                    });
+                    this.but_remove.click(this.remove.bind(this));
+                    menu.append(this.but_remove);
+                    this.but_remove.prop('disabled', !access.read);
+                }
+
+                this.but_new = jQuery('<button/>').button({
+                    icons: {
+                        primary: 'ui-icon-document'
+                    },
+                    label: 'New'
+                });
+                this.but_new.click(this.new_.bind(this));
+                menu.append(this.but_new);
+                this.but_new.prop('disabled', !access.create);
+
+                this.but_del = jQuery('<button/>').button({
+                    icons: {
+                        primary: 'ui-icon-trash'
+                    },
+                    label: 'Delete'
+                });
+                this.but_del.click(this.delete_.bind(this));
+                menu.append(this.but_del);
+                this.but_del.prop('disabled', !access['delete']);
+
+                this.but_undel = jQuery('<button/>').button({
+                    icons: {
+                        primary: 'ui-icon-arrowreturn-1-s'
+                    },
+                    label: 'Undelete'
+                });
+                this.but_undel.click(this.undelete.bind(this));
+                menu.append(this.but_undel);
+
+                this.but_previous = jQuery('<button/>').button({
+                    icons: {
+                        primary: 'ui-icon-arrowthick-1-w'
+                    },
+                    label: 'Previous'
+                });
+                this.but_previous.click(this.previous.bind(this));
+                menu.append(this.but_previous);
+
+                this.label = jQuery('<span/>');
+                this.label.text('(0, 0)');
+                menu.append(this.label);
+
+                this.but_next = jQuery('<button/>').button({
+                    icons: {
+                        primary: 'ui-icon-arrowthick-1-e'
+                    },
+                    label: 'Next'
+                });
+                this.but_next.click(this.next.bind(this));
+                menu.append(this.but_next);
+
+                this.but_switch = jQuery('<button/>').button({
+                    icons: {
+                        primary: 'ui-icon-newwin'
+                    },
+                    label: 'Switch'
+                });
+                this.but_switch.click(this.switch_.bind(this));
+                menu.append(this.but_switch);
+            }
+
+
             switch_prm.done(function() {
                 this.el.dialog({
                     autoOpen: false,
                     buttons: buttons,
                     title: '' // this.screen.current_view
                 });
+                if (menu) {
+                    this.el.append(menu);
+                }
                 this.el.append(this.screen.screen_container.alternate_viewport);
                 this.el.dialog('open');
                 this.screen.display();
             }.bind(this));
 
         },
+        add: function() {
+            // TODO
+        },
+        remove: function() {
+            this.screen.remove(false, true, false);
+        },
+        new_: function() {
+            this.screen.new_();
+        },
+        delete_: function() {
+            this.screen.remove(false, false, false);
+        },
+        undelete: function() {
+            this.screen.unremove();
+        },
+        previous: function() {
+            this.screen.display_previous();
+        },
+        next: function() {
+            this.screen.display_next();
+        },
+        switch_: function() {
+            this.screen.switch_view();
+        },
         response: function(response_id) {
             var result;
             this.screen.current_view.set_value();
 
-            if (response_id == 'RESPONSE_OK' &&
-                    this.screen.current_record !== null) {
+            if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
+                    this.screen.current_record) {
                 this.screen.current_record.validate().then(function(validate) {
                     var closing_prm = jQuery.Deferred();
                     if (validate && this.save_current) {
@@ -116,15 +243,25 @@
 
                     // TODO Add support for many
                     closing_prm.done(function() {
-                        this.callback(result);
-                        this.destroy();
+                        if (response_id == 'RESPONSE_ACCEPT') {
+                            this.screen.new_();
+                            this.screen.current_view.display();
+                            // TODO set_cursor
+                            this.many -= 1;
+                            if (this.many === 0) {
+                                this.but_new.prop('disabled', true);
+                            }
+                        } else {
+                            this.callback(result);
+                            this.destroy();
+                        }
                     }.bind(this));
                 }.bind(this));
                 return;
             }
 
             if (response_id == 'RESPONSE_CANCEL' &&
-                    this.screen.current_record !== null) {
+                    this.screen.current_record) {
                 result = false;
                 if ((this.screen.current_record.id < 0) || this.save_current) {
                     this.screen.group.remove(this.screen.current_record, true);

@@ -1595,6 +1595,7 @@
                     type: 'input'
                 });
                 // TODO add completion
+                this.menu.append(this.wid_text);
 
                 this.but_add = jQuery('<button/>').button({
                     icons: {
@@ -1742,6 +1743,7 @@
             if (!access.write || !access.read) {
                 return;
             }
+            // TODO
         },
         remove: function(event_) {
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
@@ -2076,7 +2078,7 @@
         },
         display: function(record, field) {
             Sao.View.Form.Binary._super.display.call(this, record, field);
-            if (field === undefined) {
+            if (!field) {
                 this.size.val('');
                 if (this.filename) {
                     this.but_open.button('disable');
