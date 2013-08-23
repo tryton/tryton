@@ -1226,6 +1226,9 @@
         _default: null,
         get: function(record) {
             var value = record._values[this.name];
+            if (value === undefined) {
+                value = this._default;
+            }
             // TODO force parent
             return value;
         },
