@@ -77,6 +77,7 @@
         init: function(model_name, attributes) {
             Sao.Tab.Form._super.init.call(this);
             var screen = new Sao.Screen(model_name, attributes);
+            screen.tab = this;
             this.screen = screen;
             this.attributes = jQuery.extend({}, attributes);
             this.name = attributes.name; // XXX use screen current view title
@@ -110,7 +111,7 @@
             ['previous', 'ui-icon-arrowthick-1-w', 'Previous',
             'Previous Record', 'previous'],
             ['next', 'ui-icon-arrowthick-1-e', 'Next', 'Next Record', 'next'],
-            ['attach', 'ui-icon-pin-s', 'Attachment',
+            ['attach', 'ui-icon-pin-w', 'Attachment',
             'Add an attachment to the record', 'attach']
             ],
         create_toolbar: function() {
@@ -224,6 +225,40 @@
                 // TODO message
                 // TODO activate_save
             }.bind(this));
+        },
+        attach: function() {
+            var record = this.screen.current_record;
+            if (!record || (record.id < 0)) {
+                return;
+            }
+            new Sao.Window.Attachment(record, function() {
+                this.update_attachment_count(true);
+            }.bind(this));
+        },
+        update_attachment_count: function(reload) {
+            var record = this.screen.current_record;
+            if (record) {
+                record.get_attachment_count(reload).always(
+                        this.attachment_count.bind(this));
+            } else {
+                this.attachment_count(0);
+            }
+        },
+        attachment_count: function(count) {
+            var label = 'Attachment(' + count + ')';  // TODO translate
+            this.buttons.attach.button('option', 'label', label);
+            if (count) {
+                this.buttons.attach.button('option', 'icons', {
+                    primary: 'ui-icon-pin-s'
+                });
+            } else {
+                this.buttons.attach.button('option', 'icons', {
+                    primary: 'ui-icon-pin-w'
+                });
+            }
+            var record_id = this.screen.get_id();
+            this.buttons.attach.prop('disabled',
+                record_id < 0 || record_id === null);
         }
     });
 }());

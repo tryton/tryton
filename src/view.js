@@ -176,7 +176,7 @@
             this.screen.row_activate();
         },
         select_changed: function(record) {
-            this.screen.current_record = record;
+            this.screen.set_current_record(record);
             // TODO validate if editable
             // TODO update_children
         },
@@ -1720,7 +1720,7 @@
                 }
                 if (field === undefined) {
                     this.screen.new_group();
-                    this.screen.current_record = null;
+                    this.screen.set_current_record(null);
                     this.screen.parent = true;
                     this.screen.display();
                     return;
@@ -1911,7 +1911,7 @@
                 }
                 if (field === undefined) {
                     this.screen.new_group();
-                    this.screen.current_record = null;
+                    this.screen.set_current_record(null);
                     this.screen.parent = true;
                     this.screen.display();
                     return;

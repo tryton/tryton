@@ -152,6 +152,7 @@
             }
             this.fields_view_tree = null;
             this.domain_parser = null;
+            this.tab = null;
         },
         load_next_view: function() {
             if (!jQuery.isEmptyObject(this.view_to_load)) {
@@ -285,9 +286,9 @@
             this.group = group;
             this.model = group.model;
             if (jQuery.isEmptyObject(group)) {
-                this.current_record = null;
+                this.set_current_record(null);
             } else {
-                this.current_record = group[0];
+                this.set_current_record(group[0]);
             }
         },
         new_group: function(ids) {
@@ -296,6 +297,18 @@
                 group.load(ids);
             }
             this.set_group(group);
+        },
+        set_current_record: function(record) {
+            this.current_record = record;
+            // TODO position
+            if (this.tab) {
+                if (record) {
+                    record.get_attachment_count().always(
+                            this.tab.attachment_count.bind(this.tab));
+                } else {
+                    this.tab.attachment_count(0);
+                }
+            }
         },
         display: function() {
             if (this.views) {
@@ -351,7 +364,7 @@
                 }
                 var record = group.new_(default_);
                 group.add(record, this.new_model_position());
-                this.current_record = record;
+                this.set_current_record(record);
                 this.display();
                 // TODO set_cursor
             }.bind(this));
@@ -375,7 +388,7 @@
             if (!this.current_record) {
                 if ((this.current_view.view_type == 'tree') &&
                         (!jQuery.isEmptyObject(this.group))) {
-                    this.current_record = this.group[0];
+                    this.set_current_record(this.group[0]);
                 } else {
                     return true;
                 }
@@ -466,7 +479,7 @@
                     });
                 }
                 // TODO set current_record
-                this.current_record = null;
+                this.set_current_record(null);
                 // TODO set_cursor
                 jQuery.when.apply(jQuery, prms).done(function() {
                     this.display();

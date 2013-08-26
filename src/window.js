@@ -287,6 +287,35 @@
         }
     });
 
+    Sao.Window.Attachment = Sao.class_(Sao.Window.Form, {
+        init: function(record, callback) {
+            this.resource = record.model.name + ',' + record.id;
+            this.attachment_callback = callback;
+            var screen = new Sao.Screen('ir.attachment', {
+                domain: [['resource', '=', this.resource]],
+                mode: ['tree', 'form'],
+                context: {
+                    resource: this.resource
+                },
+                exclude_field: 'resource'
+            });
+            screen.switch_view().done(function() {
+                screen.search_filter();
+                screen.parent = record;
+            });
+            Sao.Window.Attachment._super.init.call(this, screen, this.callback,
+                {view_type: 'tree'});
+        },
+        callback: function(result) {
+            if (result) {
+                this.screen.group.save();
+            }
+            if (this.attachment_callback) {
+                this.attachment_callback();
+            }
+        }
+    });
+
     Sao.Window.Search = Sao.class_(Object, {
         init: function(model, callback, kwargs) {
             kwargs = kwargs || {};

@@ -311,6 +311,7 @@
             this._loaded = {};
             this.fields = {};
             this._timestamp = null;
+            this.attachment_count = -1;
             this.state_attrs = {};
         },
         has_changed: function() {
@@ -832,6 +833,24 @@
         },
         removed: function() {
             return Boolean(~this.group.record_removed.indexOf(this));
+        },
+        get_attachment_count: function(reload) {
+            var prm = jQuery.Deferred();
+            if (this.id < 0) {
+                prm.resolve(0);
+                return prm;
+            }
+            if ((this.attachment_count < 0) || reload) {
+                prm = Sao.rpc({
+                    method: 'model.ir.attachment.search_count',
+                    params: [
+                    [['resource', '=', this.model.name + ',' + this.id]],
+                    {}]
+                }, this.model.session);
+            } else {
+                prm.resolve(this.attachment_count);
+            }
+            return prm;
         }
     });
 
