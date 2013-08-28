@@ -30,6 +30,7 @@ class Move:
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        cls._allow_modify_closed_period.add('anglo_saxon_quantity')
         cls._sql_constraints += [
             ('check_in_anglo_saxon_quantity',
                 'CHECK(quantity >= in_anglo_saxon_quantity)',
