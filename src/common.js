@@ -257,7 +257,18 @@
                 text: true,
                 label: attributes.string || ''
             });
-            // TODO icon
+            this.img = jQuery('<img/>');
+            this.el.append(this.img);
+            this.set_icon(attributes.icon);
+        },
+        set_icon: function(icon_name) {
+            if (!icon_name) {
+                return;
+            }
+            var prm = Sao.common.IconFactory.register_icon(icon_name);
+            prm.done(function(url) {
+                this.img.attr('src', url);
+            }.bind(this));
         },
         set_state: function(record) {
             var states;
@@ -272,7 +283,7 @@
                 this.el.show();
             }
             this.el.prop('disabled', states.readonly);
-            // TODO icon
+            this.set_icon(states.icon || this.attributes.icon);
             if (record) {
                 var parent = record.group.parent;
                 while (parent) {
@@ -1371,4 +1382,153 @@
             return 'application/octet-binary';
         }
     };
+
+    Sao.common.LOCAL_ICONS = [
+        'tryton-attachment-hi',
+        'tryton-attachment',
+        'tryton-bookmark',
+        'tryton-clear',
+        'tryton-close',
+        'tryton-connect',
+        'tryton-copy',
+        'tryton-delete',
+        'tryton-dialog-error',
+        'tryton-dialog-information',
+        'tryton-dialog-warning',
+        'tryton-disconnect',
+        'tryton-executable',
+        'tryton-find-replace',
+        'tryton-find',
+        'tryton-folder-new',
+        'tryton-fullscreen',
+        'tryton-go-home',
+        'tryton-go-jump',
+        'tryton-go-next',
+        'tryton-go-previous',
+        'tryton-help',
+        'tryton-icon',
+        'tryton-list-add',
+        'tryton-list-remove',
+        'tryton-locale',
+        'tryton-lock',
+        'tryton-log-out',
+        'tryton-mail-message-new',
+        'tryton-mail-message',
+        'tryton-new',
+        'tryton-open',
+        'tryton-preferences-system-session',
+        'tryton-preferences-system',
+        'tryton-preferences',
+        'tryton-print-email',
+        'tryton-print-open',
+        'tryton-print',
+        'tryton-refresh',
+        'tryton-save-as',
+        'tryton-save',
+        'tryton-star',
+        'tryton-start-here',
+        'tryton-system-file-manager',
+        'tryton-system',
+        'tryton-text-background',
+        'tryton-text-foreground',
+        'tryton-text-markup',
+        'tryton-undo',
+        'tryton-unstar',
+        'tryton-web-browser'
+    ];
+
+    Sao.common.IconFactory = Sao.class_(Object, {
+        batchnum: 10,
+        name2id: {},
+        loaded_icons: {},
+        tryton_icons: [],
+        load_icons: function(refresh) {
+            refresh = refresh || false;
+            if (!refresh) {
+                this.name2id = {};
+                for (var icon_name in this.load_icons) {
+                    if (!this.load_icons.hasOwnProperty(icon_name)) {
+                        continue;
+                    }
+                    window.URL.revokeObjectURL(this.load_icons[icon_name]);
+                }
+                this.loaded_icons = {};
+            }
+            this.tryton_icons = [];
+
+            var icon_model = new Sao.Model('ir.ui.icon');
+            return icon_model.execute('list_icons', []).then(function(icons) {
+                var icon_id, icon_name;
+                for (var i=0, len=icons.length; i < len; i++) {
+                    icon_id = icons[i][0];
+                    icon_name = icons[i][1];
+                    if (refresh && (icon_name in this.loaded_icons)) {
+                        continue;
+                    }
+                    this.tryton_icons.push([icon_id, icon_name]);
+                    this.name2id[icon_name] = icon_id;
+                }
+            }.bind(this));
+        },
+        register_icon: function(icon_name) {
+            if (!icon_name) {
+                return jQuery.when('');
+            } else if ((icon_name in this.loaded_icons) ||
+                    ~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
+                return jQuery.when(this.get_icon_url(icon_name));
+            }
+            var loaded_prm;
+            if (!(icon_name in this.name2id)) {
+                loaded_prm = this.load_icons(true);
+            } else {
+                loaded_prm = jQuery.when();
+            }
+
+            var icon_model = new Sao.Model('ir.ui.icon');
+            return loaded_prm.then(function () {
+                var find_array = function(array) {
+                    var idx, l;
+                    for (idx=0, l=this.tryton_icons.length; idx < l; idx++) {
+                        var icon = this.tryton_icons[idx];
+                        if (Sao.common.compare(icon, array)) {
+                            break;
+                        }
+                    }
+                    return idx;
+                }.bind(this);
+                var idx = find_array([this.name2id[icon_name], icon_name]);
+                var from = Math.round(idx - this.batchnum / 2);
+                from = (from < 0) ? 0 : from;
+                var to = Math.round(idx + this.batchnum / 2);
+                var ids = [];
+                this.tryton_icons.slice(from, to).forEach(function(e) {
+                    ids.push(e[0]);
+                });
+
+                var read_prm = icon_model.execute('read',
+                    [ids, ['name', 'icon']]);
+                return read_prm.then(function(icons) {
+                    icons.forEach(function(icon) {
+                        var blob = new Blob([icon.icon],
+                            {type: 'image/svg+xml'});
+                        var img_url = window.URL.createObjectURL(blob);
+                        this.loaded_icons[icon.name] = img_url;
+
+                        delete this.name2id[icon.name];
+                        this.tryton_icons.splice(
+                            find_array([icon.id, icon.name]), 1);
+                    }.bind(this));
+                    return this.get_icon_url(icon_name);
+                }.bind(this));
+            }.bind(this));
+        },
+        get_icon_url: function(icon_name) {
+            if (icon_name in this.loaded_icons) {
+                return this.loaded_icons[icon_name];
+            }
+            return "images/" + icon_name + ".svg";
+        }
+    });
+
+    Sao.common.ICONFACTORY = new Sao.common.IconFactory();
 }());

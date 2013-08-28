@@ -51,8 +51,9 @@ var Sao = {};
                 'params': [false, {}]
             }, session).then(function(preferences) {
                 var deferreds = [];
-                // TODO icons, view_search
+                // TODO view_search
                 deferreds.push(Sao.common.MODELACCESS.load_models());
+                deferreds.push(Sao.common.ICONFACTORY.load_icons());
                 jQuery.when.apply(jQuery, deferreds).then(function() {
                     Sao.menu(preferences);
                     Sao.user_menu(preferences);

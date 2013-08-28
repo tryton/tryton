@@ -119,10 +119,10 @@
         },
         create_columns: function(model, xml) {
             xml.find('tree').children().each(function(pos, child) {
-                var column, i, len;
+                var column, attribute;
                 var attributes = {};
-                for (i = 0, len = child.attributes.length; i < len; i++) {
-                    var attribute = child.attributes[i];
+                for (var i = 0, len = child.attributes.length; i < len; i++) {
+                    attribute = child.attributes[i];
                     attributes[attribute.name] = attribute.value;
                 }
                 ['readonly', 'tree_invisible', 'expand', 'completion'].forEach(
@@ -154,7 +154,34 @@
                     var ColumnFactory = Sao.View.tree_column_get(
                         attributes.widget);
                     column = new ColumnFactory(model, attributes);
+
+                    var prefixes = [], suffixes = [];
+                    // TODO support for url/email/callto/sip
+                    if ('icon' in attributes) {
+                        column.prefixes.push(new Sao.View.Tree.Affix(this,
+                                    attributes));
+                    }
+                    var affix, affix_attributes;
+                    var affixes = child.childNodes;
+                    for (i = 0; i < affixes.length; i++) {
+                        affix = affixes[i];
+                        affix_attributes = {};
+                        for (i = 0, len = affix.attributes.length; i < len;
+                                i++) {
+                            attribute = affix.attributes[i];
+                            affix_attributes[attribute.name] = attribute.value;
+                        }
+                        if (affix.tagName == 'prefix') {
+                            column.prefixes.push(new Sao.View.Tree.Affix(name,
+                                        affix_attributes));
+                        } else {
+                            column.suffixes.push(new Sao.View.Tree.Affix(name,
+                                        affix_attributes));
+                        }
+                    }
+
                     this.fields[name] = true;
+                    // TODO sum
                 } else if (child.tagName == 'button') {
                     column = new Sao.View.Tree.ButtonColumn(this.screen,
                             attributes);
@@ -251,7 +278,16 @@
                             update_expander.bind(this));
                 }
                 var column = this.tree.columns[i];
+                var j;
+                for (j = 0; j < column.prefixes.length; j++) {
+                    var prefix = column.prefixes[j];
+                    td.append(prefix.render(this.record));
+                }
                 td.append(column.render(this.record));
+                for (j = 0; j < column.suffixes.length; j++) {
+                    var suffix = column.suffixes[j];
+                    td.append(suffix.render(this.record));
+                }
                 this.el.append(td);
             }
             this.tree.tbody.append(this.el);
@@ -300,12 +336,73 @@
         }
     });
 
+    Sao.View.Tree.Affix = Sao.class_(Object, {
+        init: function(name, attributes, protocol) {
+            this.name = attributes.name || name;
+            this.attributes = attributes;
+            this.protocol = protocol || null;
+            this.icon = attributes.icon;
+            if (this.protocol && !this.icon) {
+                this.icon = 'tryton-web-browser';
+            }
+        },
+        get_cell: function() {
+            var cell;
+            if (this.protocol) {
+                cell = jQuery('<a/>');
+                cell.append(jQuery('<img/>'));
+            } else if (this.icon) {
+                cell = jQuery('<img/>');
+            } else {
+                cell = jQuery('<span/>');
+            }
+            cell.addClass('column-affix');
+            return cell;
+        },
+        render: function(record) {
+            var cell = this.get_cell();
+            record.load(this.name).done(function() {
+                var value, icon_prm;
+                var field = record.model.fields[this.name];
+                //TODO set_state
+                if (this.icon) {
+                    if (this.icon in record.model.fields) {
+                        var icon_field = record.model.fields[this.icon];
+                        value = icon_field.get_client(record);
+                    }
+                    else {
+                        value = this.icon;
+                    }
+                    icon_prm = Sao.common.ICONFACTORY.register_icon(value);
+                    icon_prm.done(function(url) {
+                        var img_tag;
+                        if (cell.children('img').length) {
+                            img_tag = cell.children('img');
+                        } else {
+                            img_tag = cell;
+                        }
+                        img_tag.attr('src', url);
+                    }.bind(this));
+                } else {
+                    value = this.attributes.string || '';
+                    if (!value) {
+                        value = field.get_client(record) || '';
+                    }
+                    cell.text(value);
+                }
+            }.bind(this));
+            return cell;
+        }
+    });
+
     Sao.View.Tree.CharColumn = Sao.class_(Object, {
         init: function(model, attributes) {
             this.type = 'field';
             this.model = model;
             this.field = model.fields[attributes.name];
             this.attributes = attributes;
+            this.prefixes = [];
+            this.suffixes = [];
         },
         get_cell: function() {
             var cell = jQuery('<div/>');
