@@ -105,6 +105,7 @@ class Move(Workflow, ModelSQL, ModelView):
             'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned |
             set(['planned_date', 'effective_date', 'state']))
+        cls._allow_modify_closed_period = set()
 
         cls._sql_constraints += [
             ('check_move_qty_pos',
@@ -344,11 +345,6 @@ class Move(Workflow, ModelSQL, ModelView):
         return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
-    def validate(cls, moves):
-        super(Move, cls).validate(moves)
-        cls.check_period_closed(moves)
-
-    @classmethod
     def check_period_closed(cls, moves):
         Period = Pool().get('stock.period')
         periods = Period.search([
@@ -533,6 +529,9 @@ class Move(Workflow, ModelSQL, ModelView):
                 if move.state in ('done', 'cancel'):
                     cls.raise_user_error('modify_done_cancel',
                         (move.rec_name,))
+
+        if any(f not in cls._allow_modify_closed_period for f in vals):
+            cls.check_period_closed(moves)
 
         super(Move, cls).write(moves, vals)
 
