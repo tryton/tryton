@@ -477,6 +477,12 @@
                     // TODO exception
                     var value = id2value[id];
                     if (record && value) {
+                        for (var key in this._changed) {
+                            if (!this._changed.hasOwnProperty(key)) {
+                                continue;
+                            }
+                            delete value[key];
+                        }
                         record.set(value);
                     }
                 }
@@ -819,7 +825,7 @@
             if (!jQuery.isEmptyObject(fields)) {
                 var result = true;
                 fields.forEach(function(field) {
-                    if (!(field in this._loaded)) {
+                    if (!(field in this._loaded) | !(field in this._changed)) {
                         result = false;
                     }
                 }.bind(this));
