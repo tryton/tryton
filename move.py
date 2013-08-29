@@ -515,7 +515,9 @@ class Move(Workflow, ModelSQL, ModelView):
             internal_quantity = cls._get_internal_quantity(vals['quantity'],
                 uom, product)
             vals['internal_quantity'] = internal_quantity
-        return super(Move, cls).create(vlist)
+        moves = super(Move, cls).create(vlist)
+        cls.check_period_closed(moves)
+        return moves
 
     @classmethod
     def write(cls, moves, vals):
