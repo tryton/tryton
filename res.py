@@ -131,7 +131,7 @@ class User:
             if password and con.simple_bind_s(dn, password):
                 user_id, _, _ = cls._get_login(login)
                 if user_id:
-                    LoginAttempt.delete(login)
+                    LoginAttempt.remove(login)
                     return user_id
                 elif connection.auth_create_user:
                     user, = cls.create([{
