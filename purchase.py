@@ -1133,8 +1133,10 @@ class PurchaseLine(ModelSQL, ModelView):
         invoice_line.type = self.type
         invoice_line.description = self.description
         invoice_line.note = self.note
+        invoice_line.origin = self
         if self.type != 'line':
             if (self.purchase.invoice_method == 'order'
+                    and not self.invoice_lines
                     and ((all(l.quantity >= 0 for l in self.purchase.lines
                                 if l.type == 'line')
                             and invoice_type == 'in_invoice')
@@ -1190,7 +1192,6 @@ class PurchaseLine(ModelSQL, ModelView):
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense_property',
                     (invoice_line.purchase.rec_name,))
-        invoice_line.origin = self
         return [invoice_line]
 
     @classmethod
