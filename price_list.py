@@ -197,7 +197,7 @@ class PriceListLine(ModelSQL, ModelView):
         for field in pattern.keys():
             if field not in self._fields:
                 continue
-            if not getattr(self, field):
+            if getattr(self, field) is None:
                 continue
             if self._fields[field]._type == 'many2one':
                 if getattr(self, field).id != pattern[field]:
