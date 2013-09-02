@@ -1216,6 +1216,7 @@ class SaleLine(ModelSQL, ModelView):
         invoice_line.note = self.note
         if self.type != 'line':
             if (self.sale.invoice_method == 'order'
+                    and not self.invoice_lines
                     and ((all(l.quantity >= 0 for l in self.sale.lines
                                 if l.type == 'line')
                             and invoice_type == 'out_invoice')
