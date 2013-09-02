@@ -102,7 +102,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data skiptest="1">
+    <data skiptest="1" grouped="1">
 
         <!--
         Output of scripts/currencies.py
