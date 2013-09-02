@@ -228,6 +228,18 @@ Purchase 5 products::
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
 
+Post invoice and check no new invoices::
+
+    >>> config.user = account_user.id
+    >>> Invoice = Model.get('account.invoice')
+    >>> purchase.invoices[0].invoice_date = today
+    >>> purchase.invoices[0].save()
+    >>> Invoice.post([i.id for i in purchase.invoices], config.context)
+    >>> config.user = purchase_user.id
+    >>> purchase.reload()
+    >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
+    (2, 0, 1)
+
 Purchase 5 products with an invoice method 'on shipment'::
 
     >>> config.user = purchase_user.id
@@ -288,17 +300,6 @@ Open supplier invoice::
     >>> invoice.invoice_date = today
     >>> invoice.save()
     >>> Invoice.post([invoice.id], config.context)
-    >>> invoice.reload()
-    >>> invoice.state
-    u'posted'
-    >>> payable.reload()
-    >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('10.00'))
-    True
-    >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('10.00'), Decimal('0.00'))
-    True
 
 Check second invoices::
 
@@ -362,18 +363,11 @@ Open supplier credit note::
     u'in_credit_note'
     >>> len(credit_note.lines)
     1
+    >>> sum(l.quantity for l in credit_note.lines)
+    4.0
     >>> credit_note.invoice_date = today
     >>> credit_note.save()
     >>> Invoice.post([credit_note.id], config.context)
-    >>> credit_note.reload()
-    >>> credit_note.state
-    u'posted'
-    >>> payable.reload()
-    >>> (payable.debit, payable.credit) == (Decimal(20), Decimal(10))
-    True
-    >>> expense.reload()
-    >>> (expense.debit, expense.credit) == (Decimal(10), Decimal(20))
-    True
 
 Mixing return and purchase::
 
@@ -442,24 +436,16 @@ Checking the invoice::
     (u'in_invoice', u'in_credit_note')
     >>> len(mix_invoice.lines), len(mix_credit_note.lines)
     (1, 1)
+    >>> sum(l.quantity for l in mix_invoice.lines)
+    7.0
+    >>> sum(l.quantity for l in mix_credit_note.lines)
+    2.0
     >>> mix_invoice.invoice_date = today
     >>> mix_invoice.save()
     >>> Invoice.post([mix_invoice.id], config.context)
-    >>> mix_invoice.reload()
-    >>> mix_invoice.state
-    u'posted'
     >>> mix_credit_note.invoice_date = today
     >>> mix_credit_note.save()
     >>> Invoice.post([mix_credit_note.id], config.context)
-    >>> mix_credit_note.reload()
-    >>> mix_credit_note.state
-    u'posted'
-    >>> payable.reload()
-    >>> (payable.debit, payable.credit) == (Decimal(30), Decimal(45))
-    True
-    >>> expense.reload()
-    >>> (expense.debit, expense.credit) == (Decimal(45), Decimal(30))
-    True
 
 Mixing stuff with an invoice method 'on shipment'::
 
