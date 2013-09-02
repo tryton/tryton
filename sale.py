@@ -1221,8 +1221,10 @@ class SaleLine(ModelSQL, ModelView):
         invoice_line.type = self.type
         invoice_line.description = self.description
         invoice_line.note = self.note
+        invoice_line.origin = self
         if self.type != 'line':
             if (self.sale.invoice_method == 'order'
+                    and not self.invoice_lines
                     and ((all(l.quantity >= 0 for l in self.sale.lines
                                 if l.type == 'line')
                             and invoice_type == 'out_invoice')
@@ -1280,7 +1282,6 @@ class SaleLine(ModelSQL, ModelView):
                 self.raise_user_error('missing_account_revenue_property', {
                         'sale': self.sale.rec_name,
                         })
-        invoice_line.origin = self
         return [invoice_line]
 
     @classmethod
