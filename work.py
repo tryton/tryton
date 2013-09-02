@@ -311,11 +311,13 @@ class Work(ModelSQL, ModelView):
         for key in timesheet_default.keys():
             if key in cls._fields:
                 del timesheet_default[key]
+        timesheet_default['children'] = None
         new_project_works = []
         for project_work in project_works:
             timesheet_work, = TimesheetWork.copy([project_work.work],
                 default=timesheet_default)
             pwdefault = default.copy()
+            pwdefault['children'] = None
             pwdefault['work'] = timesheet_work.id
             new_project_works.extend(super(Work, cls).copy([project_work],
                     default=pwdefault))
