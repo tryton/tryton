@@ -1120,6 +1120,7 @@ class PurchaseLine(ModelSQL, ModelView):
         invoice_line.note = self.note
         if self.type != 'line':
             if (self.purchase.invoice_method == 'order'
+                    and not self.invoice_lines
                     and ((all(l.quantity >= 0 for l in self.purchase.lines
                                 if l.type == 'line')
                             and invoice_type == 'in_invoice')
