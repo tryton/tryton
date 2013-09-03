@@ -27,9 +27,6 @@ class Work(ModelSQL, ModelView):
             depends=['timesheet_available'],
             help="Total time spent on this work"), 'get_hours')
     timesheet_available = fields.Boolean('Available on timesheets',
-        states={
-            'readonly': Bool(Eval('timesheet_lines', [0])),
-            },
         help="Allow to fill in timesheets with this work")
     timesheet_start_date = fields.Date('Timesheet Start',
         states={
@@ -58,6 +55,9 @@ class Work(ModelSQL, ModelView):
                 'invalid_parent_company': ('Every work must be in the same '
                     'company as it\'s parent work but "%(child)s" and '
                     '"%(parent)s" are in different companies.'),
+                'change_timesheet_available': ('You can not unset "Available '
+                    'on timesheets" for work "%s" because it already has  '
+                    'timesheets.'),
                 })
 
     @staticmethod
@@ -161,7 +161,17 @@ class Work(ModelSQL, ModelView):
 
     @classmethod
     def write(cls, works, vals):
+        pool = Pool()
+        Lines = pool.get('timesheet.line')
         childs = None
+        if not vals.get('timesheet_available', True):
+            in_max = Transaction().cursor.IN_MAX
+            for i in range(0, len(works), in_max):
+                sub_ids = [w.id for w in works[i:i + in_max]]
+                lines = Lines.search([('work', 'in', sub_ids)], limit=1)
+                if lines:
+                    cls.raise_user_error('change_timesheet_available',
+                        lines[0].work.rec_name)
         if not vals.get('active', True):
             childs = cls.search([
                     ('parent', 'child_of', [w.id for w in works]),
