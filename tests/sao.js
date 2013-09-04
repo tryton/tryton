@@ -1106,27 +1106,29 @@
         ].forEach(test_func, field);
 
         field = {
-            'type': 'float',
-            'digits': [16, 2]
+            'type': 'float'
         };
         [
-        [1, '1.00'],
-        [1.5, '1.50'],
-        [0, '0.00'],
-        [0.0, '0.00'],
+        [1, '1'],
+        [1.5, '1.5'],
+        [1.50, '1.5'],
+        [150.79, '150.79'],
+        [0, '0'],
+        [0.0, '0'],
         [false, ''],
         [null, '']
         ].forEach(test_func, field);
 
         field = {
-            'type': 'numeric',
-            'digits': [16, 2]
+            'type': 'numeric'
         };
         [
-        [new Sao.Decimal(1), '1.00'],
-        [new Sao.Decimal('1.5'), '1.50'],
-        [new Sao.Decimal(0), '0.00'],
-        [new Sao.Decimal('0.0'), '0.00'],
+        [new Sao.Decimal(1), '1'],
+        [new Sao.Decimal('1.5'), '1.5'],
+        [new Sao.Decimal('1.50'), '1.5'],
+        [new Sao.Decimal('150.79'), '150.79'],
+        [new Sao.Decimal(0), '0'],
+        [new Sao.Decimal('0.0'), '0'],
         [false, ''],
         [null, '']
         ].forEach(test_func, field);

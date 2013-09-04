@@ -933,9 +933,11 @@
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
                     return '';
                 }
-                var digit = parseInt((field.digits || [16, 2])[1], 10);
-                if (isNaN(digit)) {
-                    digit = 2;
+                var digit = String(value).split('.')[1];
+                if (digit) {
+                    digit = digit.length;
+                } else {
+                    digit = 0;
                 }
                 return value.toFixed(digit);
             };
