@@ -35,11 +35,14 @@ def logout(dbname, user, session):
     with Transaction().start(dbname, 0) as transaction:
         pool = _get_pool(dbname)
         Session = pool.get('ir.session')
-        session, = Session.search([
+        sessions = Session.search([
                 ('key', '=', session),
                 ])
+        if not sessions:
+            return
+        session, = sessions
         name = session.create_uid.login
-        Session.delete([session])
+        Session.delete(sessions)
         transaction.cursor.commit()
     return name
 
