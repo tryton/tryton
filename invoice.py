@@ -2546,10 +2546,11 @@ class PayInvoice(Wizard):
                 self.start.amount, invoice.company.currency)
 
         if invoice.company.currency.is_zero(amount):
-            default['lines'] = [x.id for x in invoice.lines_to_pay]
+            lines = invoice.lines_to_pay
         else:
-            default['lines'], _ = \
-                invoice.get_reconcile_lines_for_amount(amount)
+            lines, _ = invoice.get_reconcile_lines_for_amount(amount)
+        default['lines'] = [x.id for x in lines]
+
         for line_id in default['lines'][:]:
             if line_id not in default['lines_to_pay']:
                 default['lines'].remove(line_id)
