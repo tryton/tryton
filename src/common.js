@@ -265,7 +265,7 @@
             if (!icon_name) {
                 return;
             }
-            var prm = Sao.common.IconFactory.register_icon(icon_name);
+            var prm = Sao.common.ICONFACTORY.register_icon(icon_name);
             prm.done(function(url) {
                 this.img.attr('src', url);
             }.bind(this));
