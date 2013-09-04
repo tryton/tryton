@@ -378,10 +378,10 @@ def format_value(field, value):
                 and not isinstance(value, (float, Decimal))):
             return ''
         try:
-            digit = int(field.get('digits', (16, 2))[1])
-        except ValueError:
-            digit = 2
-        return locale.format('%.' + str(digit) + 'f', value or 0.0, True)
+            digit = len(str(value).split('.')[1])
+        except IndexError:
+            digit = 0
+        return locale.format('%.*f', (digit, value or 0), True)
 
     def format_selection():
         selections = dict(field['selection'])
@@ -447,13 +447,14 @@ def test_format_integer():
 def test_format_float():
     field = {
         'type': 'float',
-        'digits': (16, 2),
         }
     for value, result in (
-            (1, '1.00'),
-            (1.5, '1.50'),
-            (0, '0.00'),
-            (0.0, '0.00'),
+            (1, '1'),
+            (1.5, '1.5'),
+            (1.50, '1.5'),
+            (150.79, '150.79'),
+            (0, '0'),
+            (0.0, '0.0'),
             (False, ''),
             (None, ''),
             ):
@@ -463,13 +464,14 @@ def test_format_float():
 def test_format_numeric():
     field = {
         'type': 'numeric',
-        'digits': (16, 2),
         }
     for value, result in (
-            (Decimal(1), '1.00'),
-            (Decimal('1.5'), '1.50'),
-            (Decimal(0), '0.00'),
-            (Decimal('0.0'), '0.00'),
+            (Decimal(1), '1'),
+            (Decimal('1.5'), '1.5'),
+            (Decimal('1.50'), '1.50'),
+            (Decimal('150.79'), '150.79'),
+            (Decimal(0), '0'),
+            (Decimal('0.0'), '0.0'),
             (False, ''),
             (None, ''),
             ):
