@@ -166,8 +166,9 @@
             });
             key.sort();
         }
-        var selection = jQuery.extend([], this.attributes.selection || []);
+        var selection = this.attributes.selection || [];
         var prepare_selection = function(selection) {
+            selection = jQuery.extend([], selection);
             if (this.attributes.sort === undefined || this.attributes.sort) {
                 selection.sort(function(a, b) {
                     return a[1].localeCompare(b[1]);
@@ -176,7 +177,7 @@
             this.selection = jQuery.extend([], selection);
             if (callback) callback(this.selection);
         };
-        if (!(selection instanceof Object) &&
+        if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
             var prm;
             if (key) {
@@ -184,12 +185,11 @@
                 key.forEach(function(e) {
                     params[e[0]] = e[1];
                 });
-                prm = this.model.execute(selection, [params], {});
+                prm = this.model.execute(selection, [params]);
             } else {
-                prm = this.model.execute(selection, [], {});
+                prm = this.model.execute(selection, []);
             }
             prm.pipe(prepare_selection.bind(this));
-            prm.pipe(this.set_selection.bind(this));
         } else {
             if (key in this._values2selection) {
                 selection = this._values2selection.selection;
