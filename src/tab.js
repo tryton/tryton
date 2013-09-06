@@ -143,7 +143,7 @@
                         position: 'absolute'
                     });
                     button.click(function() {
-                        menu.show().position({
+                        menu.toggle().position({
                             my: 'left top',
                             at: 'left bottom',
                             of: button
