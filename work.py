@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from itertools import groupby
 from decimal import Decimal
+from sql.aggregate import Sum
 
 from trytond.model import ModelView, fields
 from trytond.pool import PoolMeta
@@ -183,19 +184,21 @@ class Work:
         pool = Pool()
         TimesheetLine = pool.get('timesheet.line')
         cursor = Transaction().cursor
+        line = TimesheetLine.__table__()
 
         hours = {}
         twork2work = dict((w.work.id, w.id) for w in works)
         ids = twork2work.keys()
         for i in range(0, len(ids), cursor.IN_MAX):
             sub_ids = ids[i:i + cursor.IN_MAX]
-            red_sql, red_ids = reduce_ids('work', sub_ids)
-            cursor.execute('SELECT work, SUM(hours) '
-                'FROM "' + TimesheetLine._table + '" '
-                'WHERE ' + red_sql + ' '
-                    'AND invoice_line IS ' + (
-                    'NOT NULL ' if invoiced else 'NULL ') +
-                'GROUP BY work', red_ids)
+            red_sql = reduce_ids(line.work, sub_ids)
+            if invoiced:
+                where = line.invoice_line != None
+            else:
+                where = line.invoice_line == None
+            cursor.execute(*line.select(line.work, Sum(line.hours),
+                    where=red_sql & where,
+                    group_by=line.work))
             hours.update(dict((twork2work[w], h)
                     for w, h in cursor.fetchall()))
         return hours
