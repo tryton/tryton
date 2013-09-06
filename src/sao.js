@@ -163,6 +163,24 @@ var Sao = {};
             'domain': domain
         });
         form.view_prm.done(function() {
+            var view = form.screen.current_view;
+            view.table.find('th').hide();
+            var display = view.display;
+            var select_row = function(event_) {
+                this.tree.select_changed(this.record);
+                this.tree.switch_(this.path);
+            };
+            var set_select_row = function(row) {
+                row.select_row = select_row;
+                row.rows.forEach(set_select_row);
+            };
+            view.display = function() {
+                display.call(this);
+                view.table.find('td:nth-child(1)').hide();
+                // TODO remove when shortcuts is implemented
+                view.table.find('td:nth-child(3)').hide();
+                view.rows.forEach(set_select_row);
+            };
             jQuery('#menu').append(
                 form.screen.screen_container.content_box.detach());
         });

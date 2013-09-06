@@ -79,9 +79,17 @@
             var thead = jQuery('<thead/>');
             this.table.append(thead);
             var tr = jQuery('<tr/>');
+            var th = jQuery('<th/>');
+            this.selection = jQuery('<input/>', {
+                'type': 'checkbox',
+                'class': 'selection'
+            });
+            this.selection.change(this.selection_changed.bind(this));
+            th.append(this.selection);
+            tr.append(th);
             thead.append(tr);
             this.columns.forEach(function(column) {
-                var th = jQuery('<th/>', {
+                th = jQuery('<th/>', {
                     'text': column.attributes.string
                 });
                 tr.append(th);
@@ -190,12 +198,13 @@
             }.bind(this));
         },
         display: function() {
+            var selected = this.selected_records();
             this.rows = [];
             this.tbody.empty();
             var add_row = function(record, pos, group) {
                 var tree_row = new Sao.View.Tree.Row(this, record, pos);
                 this.rows.push(tree_row);
-                tree_row.display();
+                tree_row.display(selected);
             };
             this.screen.group.forEach(add_row.bind(this));
         },
@@ -209,18 +218,47 @@
         },
         selected_records: function() {
             var records = [];
-            this.rows.forEach(function(row) {
+            var add_record = function(row) {
                 if (row.is_selected()) {
                     records.push(row.record);
                 }
-            });
+                row.rows.forEach(add_record);
+            };
+            this.rows.forEach(add_record);
             return records;
+        },
+        selection_changed: function() {
+            var value = this.selection.prop('checked');
+            var set_checked = function(row) {
+                row.set_selection(value);
+                row.rows.forEach(set_checked);
+            };
+            this.rows.forEach(set_checked);
+            if (value && this.rows[0]) {
+                this.select_changed(this.rows[0].record);
+            } else {
+                this.select_changed(null);
+            }
+        },
+        update_selection: function() {
+            var selected_records = this.selected_records();
+            this.selection.prop('indeterminate', false);
+            if (jQuery.isEmptyObject(selected_records)) {
+                this.selection.prop('checked', false);
+            } else if (selected_records.length == this.tbody.children().length) {
+                this.selection.prop('checked', true);
+            } else {
+                this.selection.prop('indeterminate', true);
+                // Set checked to go first unchecked after first click
+                this.selection.prop('checked', true);
+            }
         }
     });
 
     Sao.View.Tree.Row = Sao.class_(Object, {
         init: function(tree, record, pos, parent) {
             this.tree = tree;
+            this.rows = [];
             this.record = record;
             this.children_field = tree.children_field;
             this.expander = null;
@@ -232,18 +270,20 @@
             path.push(pos);
             this.path = path.join('.');
             this.el = jQuery('<tr/>');
-            this.el.click(this.select_row.bind(this));
-            var switch_ = function() {
-                this.el.addClass('ui-state-highlight');
-                this.tree.select_changed(this.record);
-                this.tree.switch_(path);
-            };
-            this.el.dblclick(switch_.bind(this));
+            var td = jQuery('<td/>');
+            this.el.append(td);
+            this.selection = jQuery('<input/>', {
+                'type': 'checkbox',
+                'class': 'selection'
+            });
+            this.selection.change(this.selection_changed.bind(this));
+            td.append(this.selection);
         },
         is_expanded: function() {
             return (this.path in this.tree.expanded);
         },
-        display: function() {
+        display: function(selected) {
+            selected = selected || [];
             var depth = this.path.split('.').length;
             var update_expander = function() {
                 if (jQuery.isEmptyObject(
@@ -253,8 +293,14 @@
                     this.expander_icon.hide();
                 }
             };
+            // Use this handler to allow customization of select_row for the
+            // menu
+            var click_handler = function(event_) {
+                this.select_row(event_);
+            };
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var td = jQuery('<td/>');
+                td.click(click_handler.bind(this));
                 if ((i === 0) && this.children_field) {
                     var expanded = 'ui-icon-plus';
                     if (this.is_expanded()) {
@@ -290,13 +336,15 @@
                 }
                 this.el.append(td);
             }
+            this.set_selection(~selected.indexOf(this.record));
             this.tree.tbody.append(this.el);
             if (this.is_expanded()) {
                 var add_children = function() {
                     var add_row = function(record, pos, group) {
                         var tree_row = new Sao.View.Tree.Row(this.tree, record,
                                 pos, this);
-                        tree_row.display();
+                        this.rows.push(tree_row);
+                        tree_row.display(selected);
                     };
                     var children = this.record.field_get_client(children_field);
                     children.forEach(add_row.bind(this));
@@ -323,16 +371,38 @@
             }
             this.tree.display();
         },
-        select_row: function() {
-            this.el.toggleClass('ui-state-highlight');
-            if (this.is_selected()) {
-                this.tree.select_changed(this.record);
-            } else {
-                this.tree.select_changed(null);
+        select_row: function(event_) {
+            if (!event_.ctrlKey) {
+                this.tree.rows.forEach(function(row) {
+                    if (row != this) {
+                        row.set_selection(false);
+                    }
+                }.bind(this));
+                this.selection_changed();
+                if (this.is_selected()) {
+                    this.tree.switch_(this.path);
+                    return;
+                }
             }
+            this.set_selection(!this.is_selected());
+            this.selection_changed();
         },
         is_selected: function() {
-            return this.el.hasClass('ui-state-highlight');
+            return this.selection.prop('checked');
+        },
+        set_selection: function(value) {
+            this.selection.prop('checked', value);
+        },
+        selection_changed: function() {
+            if (this.is_selected()) {
+                this.el.addClass('ui-state-highlight');
+                this.tree.select_changed(this.record);
+            } else {
+                this.el.removeClass('ui-state-highlight');
+                this.tree.select_changed(
+                        this.tree.selected_records()[0] || null);
+            }
+            this.tree.update_selection();
         }
     });
 
