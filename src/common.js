@@ -200,6 +200,9 @@
     Sao.common.selection_mixin.update_selection = function(record, field,
             callback) {
         if (!field) {
+            if (callback) {
+                callback(this.selection);
+            }
             return;
         }
         if (!('relation' in this.attributes)) {
@@ -221,6 +224,9 @@
             }
             if ((this._last_domain !== null) &&
                     Sao.common.compare(domain, this._last_domain)) {
+                if (callback) {
+                    callback(this.selection);
+                }
                 return;
             }
             var prm = Sao.rpc({
