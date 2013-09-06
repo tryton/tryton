@@ -3,9 +3,14 @@
 "Sales extension for managing leads and opportunities"
 import datetime
 import time
+from sql import Column, Literal
+from sql.aggregate import Min, Max, Count, Sum
+from sql.conditionals import Coalesce, Case
+from sql.functions import Extract
+
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.backend import FIELDS, TableHandler
+from trytond import backend
 from trytond.pyson import Equal, Eval, Not, In, If, Get, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -99,6 +104,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        TableHandler = backend.get('TableHandler')
+        sql_table = cls.__table__()
+
         reference_exists = True
         if TableHandler.table_exist(cursor, cls._table):
             table = TableHandler(cursor, cls, module_name)
@@ -110,8 +118,10 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         # required
         table.not_null_action('party', action='remove')
         if not reference_exists:
-            cursor.execute('UPDATE "' + cls._table + '" SET reference=id WHERE '
-                'reference IS NULL')
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.reference],
+                    values=[sql_table.id],
+                    where=sql_table.reference == None))
             table.not_null_action('reference', action='add')
 
 
@@ -361,9 +371,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     _rec_name = "product"
     _history = True
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True,
             domain=[('salable', '=', True)], on_change=['product', 'unit'])
     quantity = fields.Float('Quantity', required=True,
@@ -384,6 +392,7 @@ class SaleOpportunityLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -391,6 +400,11 @@ class SaleOpportunityLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
@@ -463,40 +477,34 @@ class SaleOpportunityHistory(ModelSQL, ModelView):
         cls._order.insert(0, ('date', 'DESC'))
 
     @classmethod
-    def _table_query_fields(cls):
-        Opportunity = Pool().get('sale.opportunity')
-        table = '%s__history' % Opportunity._table
-        return [
-            'MIN("%s".__id) AS id' % table,
-            '"%s".id AS opportunity' % table,
-            ('MIN(COALESCE("%s".write_date, "%s".create_date)) AS date'
-                % (table, table)),
-            ('COALESCE("%s".write_uid, "%s".create_uid) AS user'
-                % (table, table)),
-            ] + ['"%s"."%s"' % (table, name)
-                for name, field in cls._fields.iteritems()
-                if name not in ('id', 'opportunity', 'date', 'user')
-                and not hasattr(field, 'set')]
-
-    @classmethod
-    def _table_query_group(cls):
-        Opportunity = Pool().get('sale.opportunity')
-        table = '%s__history' % Opportunity._table
-        return [
-            '"%s".id' % table,
-            'COALESCE("%s".write_uid, "%s".create_uid)' % (table, table),
-        ] + ['"%s"."%s"' % (table, name)
-            for name, field in cls._fields.iteritems()
-            if (name not in ('id', 'opportunity', 'date', 'user')
-                and not hasattr(field, 'set'))]
-
-    @classmethod
     def table_query(cls):
         Opportunity = Pool().get('sale.opportunity')
-        return (('SELECT ' + (', '.join(cls._table_query_fields()))
-                + ' FROM "%s__history" GROUP BY '
-                + (', '.join(cls._table_query_group())))
-            % Opportunity._table, [])
+        opportunity_history = Opportunity.__table_history__()
+        columns = [
+            Min(Column(opportunity_history, '__id')).as_('id'),
+            opportunity_history.id.as_('opportunity'),
+            Min(Coalesce(opportunity_history.write_date,
+                    opportunity_history.create_date)).as_('date'),
+            Coalesce(opportunity_history.write_uid,
+                opportunity_history.create_uid).as_('user'),
+            ]
+        group_by = [
+            opportunity_history.id,
+            Coalesce(opportunity_history.write_uid,
+                opportunity_history.create_uid),
+            ]
+        for name, field in cls._fields.iteritems():
+            if name in ('id', 'opportunity', 'date', 'user'):
+                continue
+            try:
+                field.sql_type()
+            except NotImplementedError:
+                continue
+            column = Column(opportunity_history, name)
+            columns.append(column.as_(name))
+            group_by.append(column)
+
+        return opportunity_history.select(*columns, group_by=group_by)
 
     def get_lines(self, name):
         Line = Pool().get('sale.opportunity.line')
@@ -555,35 +563,33 @@ class SaleOpportunityEmployee(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         Opportunity = Pool().get('sale.opportunity')
-        clause = ' '
-        args = [True]
+        opportunity = Opportunity.__table__()
+        where = Literal(True)
         if Transaction().context.get('start_date'):
-            clause += 'AND start_date >= %s '
-            args.append(Transaction().context['start_date'])
+            where &= (opportunity.start_date >=
+                Transaction().context['start_date'])
         if Transaction().context.get('end_date'):
-            clause += 'AND start_date <= %s '
-            args.append(Transaction().context['end_date'])
-        return ('SELECT DISTINCT(employee) AS id, '
-                'MAX(create_uid) AS create_uid, '
-                'MAX(create_date) AS create_date, '
-                'MAX(write_uid) AS write_uid, '
-                'MAX(write_date) AS write_date, '
-                'employee, '
-                'company, '
-                'COUNT(1) AS number, '
-                'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._converted_state()) + ') '
-                    'THEN 1 ELSE 0 END) AS converted, '
-                'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._lost_state()) + ') '
-                    'THEN 1 ELSE 0 END) AS lost, '
-                'SUM(amount) AS amount, '
-                'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._converted_state()) + ') '
-                    'THEN amount ELSE 0 END) AS converted_amount '
-            'FROM "' + Opportunity._table + '" '
-            'WHERE %s ' + clause +
-            'GROUP BY employee, company', args)
+            where &= (opportunity.start_date <=
+                Transaction().context['end_date'])
+        return opportunity.select(
+            opportunity.employee.as_('id'),
+            Max(opportunity.create_uid).as_('create_uid'),
+            Max(opportunity.create_date).as_('create_date'),
+            Max(opportunity.write_uid).as_('write_uid'),
+            Max(opportunity.write_date).as_('write_date'),
+            opportunity.employee,
+            opportunity.company,
+            Count(Literal(1)).as_('number'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        Literal(1)), else_=Literal(0))).as_('converted'),
+            Sum(Case((opportunity.state.in_(cls._lost_state()),
+                        Literal(1)), else_=Literal(0))).as_('lost'),
+            Sum(opportunity.amount).as_('amount'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        opportunity.amount),
+                    else_=Literal(0))).as_('converted_amount'),
+            where=where,
+            group_by=(opportunity.employee, opportunity.company))
 
     def get_conversion_rate(self, name):
         if self.number:
@@ -671,36 +677,33 @@ class SaleOpportunityMonthly(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         Opportunity = Pool().get('sale.opportunity')
-        type_id = FIELDS[cls.id._type].sql_type(cls.id)[0]
-        type_year = FIELDS[cls.year._type].sql_type(cls.year)[0]
-        return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
-                'create_date, write_uid, write_date, '
-                'CAST(year AS ' + type_year + ') AS year, month, company, '
-                'number, converted, lost, amount, converted_amount '
-            'FROM ('
-                'SELECT EXTRACT(MONTH FROM start_date) + '
-                        'EXTRACT(YEAR FROM start_date) * 100 AS id, '
-                    'MAX(create_uid) AS create_uid, '
-                    'MAX(create_date) AS create_date, '
-                    'MAX(write_uid) AS write_uid, '
-                    'MAX(write_date) AS write_date, '
-                    'EXTRACT(YEAR FROM start_date) AS year, '
-                    'EXTRACT(MONTH FROM start_date) AS month, '
-                    'company, '
-                    'COUNT(1) AS number, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._converted_state()) + ') '
-                    'THEN 1 ELSE 0 END) AS converted, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._lost_state()) + ') '
-                    'THEN 1 ELSE 0 END) AS lost, '
-                    'SUM(amount) AS amount, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._converted_state()) + ') '
-                    'THEN amount ELSE 0 END) AS converted_amount '
-                'FROM "' + Opportunity._table + '" '
-                'GROUP BY year, month, company) AS "' + cls._table + '"',
-            [])
+        opportunity = Opportunity.__table__()
+        type_id = cls.id.sql_type().base
+        type_year = cls.year.sql_type().base
+        year_column = Extract('YEAR', opportunity.start_date
+            ).cast(type_year).as_('year')
+        month_column = Extract('MONTH', opportunity.start_date).as_('month')
+        return opportunity.select(
+            Max(Extract('MONTH', opportunity.start_date)
+                + Extract('YEAR', opportunity.start_date) * 100
+                ).cast(type_id).as_('id'),
+            Max(opportunity.create_uid).as_('create_uid'),
+            Max(opportunity.create_date).as_('create_date'),
+            Max(opportunity.write_uid).as_('write_uid'),
+            Max(opportunity.write_date).as_('write_date'),
+            year_column,
+            month_column,
+            opportunity.company,
+            Count(Literal(1)).as_('number'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        Literal(1)), else_=Literal(0))).as_('converted'),
+            Sum(Case((opportunity.state.in_(cls._lost_state()),
+                        Literal(1)), else_=Literal(0))).as_('lost'),
+            Sum(opportunity.amount).as_('amount'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        opportunity.amount),
+                    else_=Literal(0))).as_('converted_amount'),
+            group_by=(year_column, month_column, opportunity.company))
 
     def get_conversion_rate(self, name):
         if self.number:
@@ -766,39 +769,36 @@ class SaleOpportunityEmployeeMonthly(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         Opportunity = Pool().get('sale.opportunity')
-        type_id = FIELDS[cls.id._type].sql_type(cls.id)[0]
-        type_year = FIELDS[cls.year._type].sql_type(cls.year)[0]
-        return ('SELECT CAST(id AS ' + type_id + ') AS id, create_uid, '
-                'create_date, write_uid, write_date, '
-                'CAST(year AS ' + type_year + ') AS year, month, '
-                'employee, company, number, converted, lost, amount, '
-                'converted_amount '
-            'FROM ('
-                'SELECT EXTRACT(MONTH FROM start_date) + '
-                        'EXTRACT(YEAR FROM start_date) * 100 + '
-                        'employee * 1000000 AS id, '
-                    'MAX(create_uid) AS create_uid, '
-                    'MAX(create_date) AS create_date, '
-                    'MAX(write_uid) AS write_uid, '
-                    'MAX(write_date) AS write_date, '
-                    'EXTRACT(YEAR FROM start_date) AS year, '
-                    'EXTRACT(MONTH FROM start_date) AS month, '
-                    'employee, '
-                    'company, '
-                    'COUNT(1) AS number, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._converted_state()) + ') '
-                    'THEN 1 ELSE 0 END) AS converted, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._lost_state()) + ') '
-                    'THEN 1 ELSE 0 END) AS lost, '
-                    'SUM(amount) AS amount, '
-                    'SUM(CASE WHEN state IN (' + ','.join("'%s'" % x
-                    for x in cls._converted_state()) + ') '
-                    'THEN amount ELSE 0 END) AS converted_amount '
-                'FROM "' + Opportunity._table + '" '
-                'GROUP BY year, month, employee, company) '
-            'AS "' + cls._table + '"', [])
+        opportunity = Opportunity.__table__()
+        type_id = cls.id.sql_type().base
+        type_year = cls.year.sql_type().base
+        year_column = Extract('YEAR', opportunity.start_date
+            ).cast(type_year).as_('year')
+        month_column = Extract('MONTH', opportunity.start_date).as_('month')
+        return opportunity.select(
+            Max(Extract('MONTH', opportunity.start_date)
+                + Extract('YEAR', opportunity.start_date) * 100
+                + opportunity.employee * 1000000
+                ).cast(type_id).as_('id'),
+            Max(opportunity.create_uid).as_('create_uid'),
+            Max(opportunity.create_date).as_('create_date'),
+            Max(opportunity.write_uid).as_('write_uid'),
+            Max(opportunity.write_date).as_('write_date'),
+            year_column,
+            month_column,
+            opportunity.employee,
+            opportunity.company,
+            Count(Literal(1)).as_('number'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        Literal(1)), else_=Literal(0))).as_('converted'),
+            Sum(Case((opportunity.state.in_(cls._lost_state()),
+                        Literal(1)), else_=Literal(0))).as_('lost'),
+            Sum(opportunity.amount).as_('amount'),
+            Sum(Case((opportunity.state.in_(cls._converted_state()),
+                        opportunity.amount),
+                    else_=Literal(0))).as_('converted_amount'),
+            group_by=(year_column, month_column, opportunity.employee,
+                opportunity.company))
 
     def get_conversion_rate(self, name):
         if self.number:
