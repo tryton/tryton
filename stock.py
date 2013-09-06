@@ -3,7 +3,7 @@
 from trytond.model import fields
 from trytond.pyson import Not, Eval, Bool
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['Location']
@@ -14,8 +14,6 @@ class Location:
     "Stock Location"
     __name__ = 'stock.location'
     sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s',
         states={
             'readonly': Not(Bool(Eval('active'))),
             },
@@ -28,6 +26,7 @@ class Location:
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -35,3 +34,8 @@ class Location:
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
