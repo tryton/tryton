@@ -4,11 +4,16 @@ from decimal import Decimal
 import datetime
 from itertools import groupby, chain
 from functools import partial
+from sql import Table, Literal
+from sql.functions import Overlay, Position
+from sql.aggregate import Count
+from sql.operators import Concat
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -229,20 +234,36 @@ class Sale(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        sale_line_invoice_line_table = 'sale_line_invoice_lines_rel'
+        TableHandler = backend.get('TableHandler')
+        sale_line_invoice_line_table_name = 'sale_line_invoice_lines_rel'
         Move = pool.get('stock.move')
         cursor = Transaction().cursor
+        model_data = Table('ir_model_data')
+        model_field = Table('ir_model_field')
+        sql_table = cls.__table__()
+
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model_data "
-                "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "
-                "WHERE fs_id like '%%packing%%' AND module = %s",
-                (module_name,))
-        cursor.execute("UPDATE ir_model_field "
-                "SET relation = REPLACE(relation, 'packing', 'shipment'), "
-                    "name = REPLACE(name, 'packing', 'shipment') "
-                "WHERE (relation like '%%packing%%' "
-                    "OR name like '%%packing%%') AND module = %s",
-                (module_name,))
+        cursor.execute(*model_data.update(
+                columns=[model_data.fs_id],
+                values=[Overlay(model_data.fs_id, 'shipment',
+                        Position('packing', model_data.fs_id),
+                        len('packing'))],
+                where=model_data.fs_id.like('%packing%')
+                & (model_data.module == module_name)))
+        cursor.execute(*model_field.update(
+                columns=[model_field.relation],
+                values=[Overlay(model_field.relation, 'shipment',
+                        Position('packing', model_field.relation),
+                        len('packing'))],
+                where=model_field.relation.like('%packing%')
+                & (model_field.module == module_name)))
+        cursor.execute(*model_field.update(
+                columns=[model_field.name],
+                values=[Overlay(model_field.name, 'shipment',
+                        Position('packing', model_field.name),
+                        len('packing'))],
+                where=model_field.name.like('%packing%')
+                & (model_field.module == module_name)))
         table = TableHandler(cursor, cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
         table.column_rename('packing_method', 'shipment_method')
@@ -251,9 +272,10 @@ class Sale(Workflow, ModelSQL, ModelView):
         super(Sale, cls).__register__(module_name)
 
         # Migration from 1.2
-        cursor.execute("UPDATE " + cls._table + " "
-                "SET invoice_method = 'shipment' "
-                "WHERE invoice_method = 'packing'")
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.invoice_method],
+                values=['shipment'],
+                where=sql_table.invoice_method == 'packing'))
 
         table = TableHandler(cursor, cls, module_name)
         # Migration from 2.2
@@ -262,27 +284,30 @@ class Sale(Workflow, ModelSQL, ModelView):
         # state confirmed splitted into confirmed and processing
         if (TableHandler.table_exist(cursor, SaleLine._table)
                 and TableHandler.table_exist(cursor,
-                    sale_line_invoice_line_table)
+                    sale_line_invoice_line_table_name)
                 and TableHandler.table_exist(cursor, Move._table)):
+            sale_line = SaleLine.__table__()
+            sale_line_invoice_line = \
+                Table(sale_line_invoice_line_table_name)
+            move = Move.__table__()
             # Wrap subquery inside an other inner subquery because MySQL syntax
             # doesn't allow update a table and select from the same table in a
             # subquery.
-            cursor.execute('UPDATE "%s" '
-                "SET state = 'processing' "
-                'WHERE id IN ('
-                    'SELECT id '
-                    'FROM ('
-                        'SELECT s.id '
-                        'FROM "%s" AS s '
-                        'INNER JOIN "%s" AS l ON l.sale = s.id '
-                        'LEFT JOIN "%s" AS li ON li.sale_line = l.id '
-                        'LEFT JOIN "%s" AS m ON m.origin = \'%s,\' || l.id '
-                        "WHERE s.state = 'confirmed' "
-                            'AND (li.id IS NOT NULL '
-                                'OR m.id IS NOT NULL)) AS foo)'
-                % (cls._table, cls._table, SaleLine._table,
-                    sale_line_invoice_line_table, Move._table,
-                    SaleLine.__name__))
+            sub_query = sql_table.join(sale_line,
+                condition=sale_line.sale == sql_table.id
+                ).join(sale_line_invoice_line, 'LEFT',
+                    condition=sale_line_invoice_line.sale_line == sale_line.id
+                    ).join(move, 'LEFT',
+                        condition=(move.origin == Concat(SaleLine.__name__,
+                                sale_line.id))
+                        ).select(sql_table.id,
+                            where=(sql_table.state == 'confirmed')
+                            & ((sale_line_invoice_line.id != None)
+                                | (move.id != None)))
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.state],
+                    values=['processing'],
+                    where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
         table = TableHandler(cursor, cls, module_name)
@@ -891,9 +916,7 @@ class SaleLine(ModelSQL, ModelView):
     _rec_name = 'description'
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -1009,17 +1032,26 @@ class SaleLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(SaleLine, cls).__register__(module_name)
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
+        super(SaleLine, cls).__register__(module_name)
         table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
-            cursor.execute('UPDATE "' + cls._table + '" SET note = comment')
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.note],
+                    values=[sql_table.comment]))
             table.drop_column('comment', exception=True)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_type():
@@ -1600,7 +1632,9 @@ class Move:
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
 
         super(Move, cls).__register__(module_name)
 
@@ -1608,9 +1642,10 @@ class Move:
 
         # Migration from 2.6: remove sale_line
         if table.column_exist('sale_line'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET origin = \'sale.line,\' || sale_line '
-                'WHERE sale_line IS NOT NULL')
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.origin],
+                    values=[Concat('sale.line,', sql_table.sale_line)],
+                    where=sql_table.sale_line != None))
             table.drop_column('sale_line')
 
     @classmethod
@@ -1686,8 +1721,11 @@ class OpenCustomer(Wizard):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Wizard = pool.get('ir.action.wizard')
+        Sale = pool.get('sale.sale')
         cursor = Transaction().cursor
-        cursor.execute("SELECT DISTINCT(party) FROM sale_sale")
+        sale = Sale.__table__()
+
+        cursor.execute(*sale.select(sale.party, group_by=sale.party))
         customer_ids = [line[0] for line in Transaction().cursor.fetchall()]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', customer_ids)])
@@ -1717,11 +1755,15 @@ class HandleShipmentExceptionAsk(ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        model = Table('ir_model')
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model "
-                "SET model = REPLACE(model, 'packing', 'shipment') "
-                "WHERE model like '%%packing%%' AND module = %s",
-                (module_name,))
+        cursor.execute(*model.update(
+                columns=[model.model],
+                values=[Overlay(model.model, 'shipment',
+                        Position('packing', model.model),
+                        len('packing'))],
+                where=model.model.like('%packing%')
+                & (model.module == module_name)))
         super(HandleShipmentExceptionAsk, cls).__register__(module_name)
 
 
