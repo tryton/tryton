@@ -2,6 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import copy
+from sql import Column
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder
@@ -115,9 +119,18 @@ class Account(ModelSQL, ModelView):
     @classmethod
     def get_balance(cls, accounts, name):
         res = {}
-        Line = Pool().get('analytic_account.line')
-        Currency = Pool().get('currency.currency')
+        pool = Pool()
+        Line = pool.get('analytic_account.line')
+        MoveLine = pool.get('account.move.line')
+        Account = pool.get('account.account')
+        Company = pool.get('company.company')
+        Currency = pool.get('currency.currency')
         cursor = Transaction().cursor
+        table = cls.__table__()
+        line = Line.__table__()
+        move_line = MoveLine.__table__()
+        a_account = Account.__table__()
+        company = Company.__table__()
 
         ids = [a.id for a in accounts]
         childs = cls.search([('parent', 'child_of', ids)])
@@ -128,25 +141,22 @@ class Account(ModelSQL, ModelView):
         for account in all_accounts:
             id2account[account.id] = account
 
-        line_query = Line.query_get()
-        cursor.execute('SELECT a.id, '
-                'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))), '
-                    'c.currency '
-            'FROM analytic_account_account a '
-                'LEFT JOIN analytic_account_line l '
-                'ON (a.id = l.account) '
-                'LEFT JOIN account_move_line ml '
-                'ON (ml.id = l.move_line) '
-                'LEFT JOIN account_account aa '
-                'ON (aa.id = ml.account) '
-                'LEFT JOIN company_company c '
-                'ON (c.id = aa.company) '
-            'WHERE a.type != \'view\' '
-                'AND a.id IN (' +
-                    ','.join(('%s',) * len(all_ids)) + ') '
-                'AND ' + line_query + ' '
-                'AND a.active '
-            'GROUP BY a.id, c.currency', all_ids)
+        line_query = Line.query_get(line)
+        cursor.execute(*table.join(line, 'LEFT',
+                condition=table.id == line.account
+                ).join(move_line, 'LEFT',
+                condition=move_line.id == line.move_line
+                ).join(a_account, 'LEFT',
+                condition=a_account.id == move_line.account
+                ).join(company, 'LEFT',
+                condition=company.id == a_account.company
+                ).select(table.id,
+                Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                company.currency,
+                where=(table.type != 'view')
+                & table.id.in_(all_ids)
+                & table.active & line_query,
+                group_by=(table.id, company.currency)))
         account_sum = {}
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
@@ -185,8 +195,16 @@ class Account(ModelSQL, ModelView):
         res = {}
         pool = Pool()
         Line = pool.get('analytic_account.line')
+        MoveLine = pool.get('account.move.line')
+        Account = pool.get('account.account')
+        Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
         cursor = Transaction().cursor
+        table = cls.__table__()
+        line = Line.__table__()
+        move_line = MoveLine.__table__()
+        a_account = Account.__table__()
+        company = Company.__table__()
 
         if name not in ('credit', 'debit'):
             raise Exception('Bad argument')
@@ -197,25 +215,22 @@ class Account(ModelSQL, ModelView):
             res[account.id] = Decimal('0.0')
             id2account[account.id] = account
 
-        line_query = Line.query_get()
-        cursor.execute('SELECT a.id, '
-                'SUM(COALESCE(l.' + name + ', 0)), '
-                'c.currency '
-            'FROM analytic_account_account a '
-                'LEFT JOIN analytic_account_line l '
-                'ON (a.id = l.account) '
-                'LEFT JOIN account_move_line ml '
-                'ON (ml.id = l.move_line) '
-                'LEFT JOIN account_account aa '
-                'ON (aa.id = ml.account) '
-                'LEFT JOIN company_company c '
-                'ON (c.id = aa.company) '
-            'WHERE a.type != \'view\' '
-                'AND a.id IN (' +
-                    ','.join(('%s',) * len(ids)) + ') '
-                'AND ' + line_query + ' '
-                'AND a.active '
-            'GROUP BY a.id, c.currency', ids)
+        line_query = Line.query_get(line)
+        cursor.execute(*table.join(line, 'LEFT',
+                condition=table.id == line.account
+                ).join(move_line, 'LEFT',
+                condition=move_line.id == line.move_line
+                ).join(a_account, 'LEFT',
+                condition=a_account.id == move_line.account
+                ).join(company, 'LEFT',
+                condition=company.id == a_account.company
+                ).select(table.id,
+                Sum(Coalesce(Column(line, name), 0)),
+                company.currency,
+                where=(table.type != 'view')
+                & table.id.in_(ids)
+                & table.active & line_query,
+                group_by=(table.id, company.currency)))
 
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():

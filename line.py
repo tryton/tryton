@@ -4,7 +4,7 @@ import time
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateAction
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -53,6 +53,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(Line, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -87,23 +88,17 @@ class Line(ModelSQL, ModelView):
         return 2
 
     @staticmethod
-    def query_get(obj='l'):
+    def query_get(table):
         '''
         Return SQL clause for analytic line depending of the context.
-        obj is the SQL alias of the analytic_account_line in the query.
+        table is the SQL instance of the analytic_account_line table.
         '''
-        res = obj + '.active'
+        clause = table.active
         if Transaction().context.get('start_date'):
-            # Check start_date
-            time.strptime(str(Transaction().context['start_date']), '%Y-%m-%d')
-            res += (' AND ' + obj + '.date >= date(\''
-                + str(Transaction().context['start_date']) + '\')')
+            clause &= table.date >= Transaction().context['start_date']
         if Transaction().context.get('end_date'):
-            # Check end_date
-            time.strptime(str(Transaction().context['end_date']), '%Y-%m-%d')
-            res += (' AND ' + obj + '.date <= date(\''
-                + str(Transaction().context['end_date']) + '\')')
-        return res
+            clause &= table.date <= Transaction().context['end_date']
+        return clause
 
     @classmethod
     def validate(cls, lines):

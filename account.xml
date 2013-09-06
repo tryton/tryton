@@ -26,7 +26,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_tree">
             <field name="name">Analytic Accounts</field>
             <field name="res_model">analytic_account.account</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree_view1">
             <field name="sequence" eval="10"/>
@@ -69,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_tree2">
             <field name="name">Analytic Accounts</field>
             <field name="res_model">analytic_account.account</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_tree2_view1">
             <field name="sequence" eval="10"/>
