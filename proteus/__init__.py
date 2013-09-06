@@ -631,7 +631,8 @@ class Model(object):
     def __cmp__(self, other):
         'Compare with other'
         if isinstance(other, Model):
-            return cmp(self.id, other.id)
+            return cmp((self.__class__.__name__, self.id),
+                (other.__class__.__name__, other.id))
         if isinstance(other, (bool, NoneType)):
             return 1
         raise NotImplementedError
