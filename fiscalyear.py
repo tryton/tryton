@@ -101,17 +101,16 @@ class FiscalYear(ModelSQL, ModelView):
 
     def check_dates(self):
         cursor = Transaction().cursor
-        cursor.execute('SELECT id '
-                'FROM ' + self._table + ' '
-                'WHERE ((start_date <= %s AND end_date >= %s) '
-                        'OR (start_date <= %s AND end_date >= %s) '
-                        'OR (start_date >= %s AND end_date <= %s)) '
-                    'AND company = %s '
-                    'AND id != %s',
-                (self.start_date, self.start_date,
-                    self.end_date, self.end_date,
-                    self.start_date, self.end_date,
-                    self.company.id, self.id))
+        table = self.__table__()
+        cursor.execute(*table.select(table.id,
+                where=(((table.start_date <= self.start_date)
+                        & (table.end_date >= self.start_date))
+                    | ((table.start_date <= self.end_date)
+                        & (table.end_date >= self.end_date))
+                    | ((table.start_date >= self.start_date)
+                        & (table.end_date <= self.end_date)))
+                & (table.company == self.company.id)
+                & (table.id != self.id)))
         second_id = cursor.fetchone()
         if second_id:
             second = self.__class__(second_id[0])

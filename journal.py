@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -55,9 +55,7 @@ class JournalViewColumn(ModelSQL, ModelView):
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             domain=[('model.model', '=', 'account.move.line')])
     view = fields.Many2One('account.journal.view', 'View', select=True)
-    sequence = fields.Integer('Sequence', select=True,
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence', select=True)
     required = fields.Boolean('Required')
     readonly = fields.Boolean('Readonly')
 
@@ -68,6 +66,7 @@ class JournalViewColumn(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -75,6 +74,11 @@ class JournalViewColumn(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_required():
@@ -128,6 +132,7 @@ class Journal(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(Journal, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -135,7 +140,8 @@ class Journal(ModelSQL, ModelView):
         # Migration from 1.0 sequence Many2One change into Property
         if table.column_exist('sequence'):
             Property = Pool().get('ir.property')
-            cursor.execute('SELECT id, sequence FROM "' + cls._table + '"')
+            table = cls.__table__()
+            cursor.execute(*table.select(table.id, table.sequence))
             with Transaction().set_user(0):
                 for journal_id, sequence_id in cursor.fetchall():
                     Property.set('sequence', cls._name,

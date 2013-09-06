@@ -10,5 +10,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="post_date"/>
     <field name="origin"/>
     <field name="state"/>
-    <field name="create_date" tree_invisible="1"/>
 </tree>

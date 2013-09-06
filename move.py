@@ -5,12 +5,14 @@ import datetime
 import time
 from itertools import groupby
 from operator import itemgetter
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
 from trytond.report import Report
-from trytond.backend import TableHandler, FIELDS
+from trytond import backend
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -97,6 +99,7 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -267,6 +270,7 @@ class Move(ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         User = pool.get('res.user')
+        line = MoveLine.__table__()
 
         cursor = Transaction().cursor
 
@@ -281,18 +285,17 @@ class Move(ModelSQL, ModelView):
         for i in range(0, len(moves), cursor.IN_MAX):
             sub_moves = moves[i:i + cursor.IN_MAX]
             sub_move_ids = [m.id for m in sub_moves]
-            red_sql, red_ids = reduce_ids('move', sub_move_ids)
+            red_sql = reduce_ids(line.move, sub_move_ids)
 
-            cursor.execute('SELECT move, SUM(debit - credit) '
-                'FROM "' + MoveLine._table + '" '
-                'WHERE ' + red_sql + ' '
-                'GROUP BY move', red_ids)
+            cursor.execute(*line.select(line.move,
+                    Sum(line.debit - line.credit),
+                    where=red_sql,
+                    group_by=line.move))
             amounts.update(dict(cursor.fetchall()))
 
-            cursor.execute('SELECT move, id '
-                'FROM "' + MoveLine._table + '" '
-                'WHERE ' + red_sql + ' AND state = %s '
-                'ORDER BY move', red_ids + ['draft'])
+            cursor.execute(*line.select(line.move, line.id,
+                    where=red_sql & (line.state == 'draft'),
+                    order_by=line.move))
             move2draft_lines.update(dict((k, (j[1] for j in g))
                     for k, g in groupby(cursor.fetchall(), itemgetter(0))))
 
@@ -320,11 +323,12 @@ class Move(ModelSQL, ModelView):
             if move_ids:
                 for i in range(0, len(move_ids), cursor.IN_MAX):
                     sub_ids = move_ids[i:i + cursor.IN_MAX]
-                    red_sql, red_ids = reduce_ids('move', sub_ids)
+                    red_sql = reduce_ids(line.move, sub_ids)
                     # Use SQL to prevent double validate loop
-                    cursor.execute('UPDATE "' + MoveLine._table + '" '
-                        'SET state = %s '
-                        'WHERE ' + red_sql, [state] + red_ids)
+                    cursor.execute(*line.update(
+                            columns=[line.state],
+                            values=[state],
+                            where=red_sql))
 
     @classmethod
     @ModelView.button
@@ -578,6 +582,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -938,18 +943,15 @@ class Line(ModelSQL, ModelView):
             return res
 
         if self.party and (not self.debit) and (not self.credit):
-            type_name = FIELDS[self.__class__.debit._type].sql_type(
-                self.__class__.debit)[0]
-            query = ('SELECT '
-                'CAST(COALESCE(SUM('
-                        '(COALESCE(debit, 0) - COALESCE(credit, 0))'
-                    '), 0) AS ' + type_name + ') '
-                'FROM account_move_line '
-                'WHERE reconciliation IS NULL '
-                    'AND party = %s '
-                    'AND account = %s')
-            cursor.execute(query,
-                (self.party.id, self.party.account_receivable.id))
+            type_name = self.__class__.debit.sql_type().base
+            table = self.__table__()
+            column = Coalesce(Sum(Coalesce(table.debit, 0)
+                    - Coalesce(table.credit, 0)), 0).cast(type_name)
+            where = ((table.reconciliation == None)
+                & (table.party == self.party.id))
+            cursor.execute(*table.select(column,
+                    where=where
+                    & (table.account == self.party.account_receivable.id)))
             amount = cursor.fetchone()[0]
             # SQLite uses float for SUM
             if not isinstance(amount, Decimal):
@@ -967,8 +969,9 @@ class Line(ModelSQL, ModelView):
                 res['account.rec_name'] = \
                     self.party.account_receivable.rec_name
             else:
-                cursor.execute(query,
-                    (self.party.id, self.party.account_payable.id))
+                cursor.execute(*table.select(column,
+                        where=where
+                        & (table.account == self.party.account_payable.id)))
                 amount = cursor.fetchone()[0]
                 if not self.party.account_payable.currency.is_zero(amount):
                     if amount > Decimal('0.0'):
@@ -1056,16 +1059,20 @@ class Line(ModelSQL, ModelView):
         return [('move.' + name,) + tuple(clause[1:])]
 
     @classmethod
-    def query_get(cls, obj='l'):
+    def query_get(cls, table):
         '''
         Return SQL clause and fiscal years for account move line
         depending of the context.
-        obj is the SQL alias of account_move_line in the query
+        table is the SQL instance of account.move.line table
         '''
-        FiscalYear = Pool().get('account.fiscalyear')
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+        move = Move.__table__()
+        period = Period.__table__()
 
         if Transaction().context.get('date'):
-            time.strptime(str(Transaction().context['date']), '%Y-%m-%d')
             fiscalyears = FiscalYear.search([
                     ('start_date', '<=', Transaction().context['date']),
                     ('end_date', '>=', Transaction().context['date']),
@@ -1074,83 +1081,71 @@ class Line(ModelSQL, ModelView):
             fiscalyear_id = fiscalyears and fiscalyears[0].id or 0
 
             if Transaction().context.get('posted'):
-                return (obj + '.state != \'draft\' '
-                        'AND ' + obj + '.move IN ('
-                            'SELECT m.id FROM account_move AS m, '
-                                'account_period AS p '
-                                'WHERE m.period = p.id '
-                                    'AND p.fiscalyear = ' +
-                                        str(fiscalyear_id) + ' '
-                                    'AND m.date <= date(\'' +
-                                        str(Transaction().context['date']) +
-                                        '\') '
-                                    'AND m.state = \'posted\' '
-                            ')', [f.id for f in fiscalyears])
+                return ((table.state != 'draft')
+                    & table.move.in_(move.join(period,
+                            condition=move.period == period.id
+                            ).select(move.id,
+                            where=(move.fiscalyear == fiscalyear_id)
+                            & (move.date <= Transaction().context['date'])
+                            & (move.state == 'posted'))),
+                    [f.id for f in fiscalyears])
             else:
-                return (obj + '.state != \'draft\' '
-                        'AND ' + obj + '.move IN ('
-                            'SELECT m.id FROM account_move AS m, '
-                                'account_period AS p '
-                                'WHERE m.period = p.id '
-                                    'AND p.fiscalyear = ' +
-                                        str(fiscalyear_id) + ' '
-                                    'AND m.date <= date(\'' +
-                                        str(Transaction().context['date']) +
-                                        '\')'
-                            ')', [f.id for f in fiscalyears])
+                return ((table.state != 'draft')
+                    & table.move.in_(move.join(period,
+                            condition=move.period == period.id
+                            ).select(move.id,
+                            where=(period.fiscalyear == fiscalyear_id)
+                            & (move.date <= Transaction().context['date']))),
+                    [f.id for f in fiscalyears])
 
         if Transaction().context.get('periods'):
             if Transaction().context.get('fiscalyear'):
-                fiscalyear_ids = [int(Transaction().context['fiscalyear'])]
+                fiscalyear_ids = [Transaction().context['fiscalyear']]
             else:
                 fiscalyear_ids = []
-            ids = ','.join(
-                    str(int(x)) for x in Transaction().context['periods'])
             if Transaction().context.get('posted'):
-                return (obj + '.state != \'draft\' '
-                    'AND ' + obj + '.move IN ('
-                        'SELECT id FROM account_move '
-                        'WHERE period IN (' + ids + ') '
-                            'AND state = \'posted\' '
-                        ')', fiscalyear_ids)
+                return ((table.state != 'draft')
+                    & table.move.in_(
+                            move.select(move.id,
+                                where=period.in_(
+                                    Transaction().context['periods'])
+                                & move.state == 'posted')),
+                    fiscalyear_ids)
             else:
-                return (obj + '.state != \'draft\' '
-                    'AND ' + obj + '.move IN ('
-                        'SELECT id FROM account_move '
-                        'WHERE period IN (' + ids + ')'
-                        ')', fiscalyear_ids)
+                return ((table.state != 'draft')
+                    & table.move.in_(
+                        move.select(move.id,
+                            where=move.period.in_(
+                                Transaction().context['periods']))),
+                    fiscalyear_ids)
         else:
             if not Transaction().context.get('fiscalyear'):
                 fiscalyears = FiscalYear.search([
                     ('state', '=', 'open'),
                     ])
-                fiscalyear_ids = [f.id for f in fiscalyears]
-                fiscalyear_clause = (','.join(
-                        str(f.id) for f in fiscalyears)) or '0'
+                fiscalyear_ids = [f.id for f in fiscalyears] or [0]
             else:
-                fiscalyear_ids = [int(Transaction().context.get('fiscalyear'))]
-                fiscalyear_clause = '%s' % int(
-                        Transaction().context.get('fiscalyear'))
+                fiscalyear_ids = [Transaction().context.get('fiscalyear')]
 
             if Transaction().context.get('posted'):
-                return (obj + '.state != \'draft\' '
-                    'AND ' + obj + '.move IN ('
-                        'SELECT id FROM account_move '
-                        'WHERE period IN ('
-                            'SELECT id FROM account_period '
-                            'WHERE fiscalyear IN (' + fiscalyear_clause + ')'
-                            ') '
-                            'AND state = \'posted\' '
-                        ')', fiscalyear_ids)
+                return ((table.state != 'draft')
+                    & table.move.in_(
+                        move.select(move.id,
+                            where=move.period.in_(
+                                period.select(period.id,
+                                    where=period.fiscalyear.in_(
+                                        fiscalyear_ids)))
+                            & move.state == 'posted')),
+                    fiscalyear_ids)
             else:
-                return (obj + '.state != \'draft\' '
-                    'AND ' + obj + '.move IN ('
-                        'SELECT id FROM account_move '
-                        'WHERE period IN ('
-                            'SELECT id FROM account_period '
-                            'WHERE fiscalyear IN (' + fiscalyear_clause + ')'
-                            ')'
-                        ')', fiscalyear_ids)
+                return ((table.state != 'draft')
+                    & table.move.in_(
+                        move.select(move.id,
+                            where=move.period.in_(
+                                period.select(period.id,
+                                    where=period.fiscalyear.in_(
+                                        fiscalyear_ids))))),
+                    fiscalyear_ids)
 
     @classmethod
     def on_write(cls, lines):

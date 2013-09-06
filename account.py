@@ -4,6 +4,10 @@ from decimal import Decimal
 import datetime
 import operator
 from itertools import izip
+from sql import Column, Literal
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -12,7 +16,7 @@ from trytond.tools import reduce_ids
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.backend import TableHandler
+from trytond import backend
 
 __all__ = ['TypeTemplate', 'Type', 'OpenType', 'AccountTemplate', 'Account',
     'AccountDeferral', 'OpenChartAccountStart', 'OpenChartAccount',
@@ -34,9 +38,7 @@ class TypeTemplate(ModelSQL, ModelView):
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.type.template', 'parent',
         'Children')
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     balance_sheet = fields.Boolean('Balance Sheet')
     income_statement = fields.Boolean('Income Statement')
     display_balance = fields.Selection([
@@ -51,6 +53,7 @@ class TypeTemplate(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -63,6 +66,11 @@ class TypeTemplate(ModelSQL, ModelView):
     def validate(cls, records):
         super(TypeTemplate, cls).validate(records)
         cls.check_recursion(records, rec_name='name')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_balance_sheet():
@@ -165,8 +173,6 @@ class Type(ModelSQL, ModelView):
             ('company', '=', Eval('company')),
         ], depends=['company'])
     sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s',
         help='Use to order the account type')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
@@ -190,6 +196,7 @@ class Type(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -202,6 +209,11 @@ class Type(ModelSQL, ModelView):
     def validate(cls, types):
         super(Type, cls).validate(types)
         cls.check_recursion(types, rec_name='name')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_balance_sheet():
@@ -632,23 +644,24 @@ class Account(ModelSQL, ModelView):
         cursor = Transaction().cursor
         in_max = cursor.IN_MAX
 
+        table_a = cls.__table__()
+        table_c = cls.__table__()
+        line = MoveLine.__table__()
         ids = [a.id for a in accounts]
         balances = dict((i, 0) for i in ids)
-        line_query, fiscalyear_ids = MoveLine.query_get()
+        line_query, fiscalyear_ids = MoveLine.query_get(line)
         for i in range(0, len(ids), in_max):
             sub_ids = ids[i:i + in_max]
-            red_sql, red_ids = reduce_ids('a.id', sub_ids)
-            cursor.execute('SELECT a.id, '
-                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
-                'FROM "' + cls._table + '" AS a '
-                'JOIN "' + cls._table + '" AS c '
-                    'ON c.left >= a.left AND c.right <= a.right '
-                'LEFT JOIN "' + MoveLine._table + '" AS l '
-                    'ON l.account = c.id '
-                'WHERE ' + red_sql + ' '
-                    'AND ' + line_query + ' '
-                    'AND c.active '
-                'GROUP BY a.id', red_ids)
+            red_sql = reduce_ids(table_a.id, sub_ids)
+            cursor.execute(*table_a.join(table_c,
+                    condition=(table_c.left >= table_a.left)
+                    & (table_c.right <= table_a.right)
+                    ).join(line, condition=line.account == table_c.id
+                    ).select(
+                    table_a.id,
+                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                    where=red_sql & line_query & table_c.active,
+                    group_by=table_a.id))
             result = cursor.fetchall()
             balances.update(dict(result))
 
@@ -684,19 +697,20 @@ class Account(ModelSQL, ModelView):
                 raise Exception('Bad argument')
             result[name] = dict((i, 0) for i in ids)
 
-        line_query, fiscalyear_ids = MoveLine.query_get()
+        table = cls.__table__()
+        line = MoveLine.__table__()
+        line_query, fiscalyear_ids = MoveLine.query_get(line)
+        columns = [table.id]
+        for name in names:
+            columns.append(Sum(Coalesce(Column(line, name), 0)))
         for i in range(0, len(ids), in_max):
             sub_ids = ids[i:i + in_max]
-            red_sql, red_ids = reduce_ids('a.id', sub_ids)
-            cursor.execute('SELECT a.id, ' +
-                    ','.join('SUM(COALESCE(l.' + name + ', 0))'
-                        for name in names) + ' '
-                'FROM "' + cls._table + '" AS a '
-                'LEFT JOIN "' + MoveLine._table + '" AS l '
-                    'ON l.account = a.id '
-                'WHERE ' + red_sql + ' '
-                    'AND ' + line_query + ' '
-                'GROUP BY a.id', red_ids)
+            red_sql = reduce_ids(table.id, sub_ids)
+            cursor.execute(*table.join(line, 'LEFT',
+                    condition=line.account == table.id
+                    ).select(*columns,
+                    where=red_sql & line_query,
+                    group_by=table.id))
             for row in cursor.fetchall():
                 account_id = row[0]
                 for i, name in enumerate(names, 1):
@@ -1916,37 +1930,39 @@ class ThirdPartyBalance(Report):
         pool = Pool()
         Party = pool.get('party.party')
         MoveLine = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        Account = pool.get('account.account')
         Company = pool.get('company.company')
         Date = pool.get('ir.date')
         cursor = Transaction().cursor
+
+        line = MoveLine.__table__()
+        move = Move.__table__()
+        account = Account.__table__()
 
         company = Company(data['company'])
         localcontext['company'] = company
         localcontext['digits'] = company.currency.digits
         localcontext['fiscalyear'] = data['fiscalyear']
         with Transaction().set_context(context=localcontext):
-            line_query, _ = MoveLine.query_get()
+            line_query, _ = MoveLine.query_get(line)
         if data['posted']:
-            posted_clause = "AND m.state = 'posted' "
+            posted_clause = move.state == 'posted'
         else:
-            posted_clause = ""
+            posted_clause = Literal(True)
 
-        cursor.execute('SELECT l.party, SUM(l.debit), SUM(l.credit) '
-                'FROM account_move_line l '
-                    'JOIN account_move m ON (l.move = m.id) '
-                    'JOIN account_account a ON (l.account = a.id) '
-                'WHERE l.party IS NOT NULL '
-                    'AND a.active '
-                    'AND a.kind IN (\'payable\',\'receivable\') '
-                    'AND l.reconciliation IS NULL '
-                    'AND a.company = %s '
-                    'AND (l.maturity_date <= %s '
-                        'OR l.maturity_date IS NULL) '
-                    'AND ' + line_query + ' '
-                    + posted_clause +
-                'GROUP BY l.party '
-                'HAVING (SUM(l.debit) != 0 OR SUM(l.credit) != 0)',
-                (data['company'], Date.today()))
+        cursor.execute(*line.join(move, condition=line.move == move.id
+                ).join(account, condition=line.account == account.id
+                ).select(line.party, Sum(line.debit), Sum(line.credit),
+                where=(line.party != None)
+                & account.active
+                & account.kind.in_(('payable', 'receivable'))
+                & (account.company == data['company'])
+                & ((line.maturity_date <= Date.today())
+                    | (line.maturity_date == None))
+                & line_query & posted_clause,
+                group_by=line.party,
+                having=(Sum(line.debit) != 0) | (Sum(line.credit) != 0)))
 
         res = cursor.fetchall()
         id2party = {}
@@ -2055,15 +2071,21 @@ class AgedBalance(Report):
         pool = Pool()
         Party = pool.get('party.party')
         MoveLine = pool.get('account.move.line')
+        Move = pool.get('account.move')
+        Account = pool.get('account.account')
         Company = pool.get('company.company')
         Date = pool.get('ir.date')
         cursor = Transaction().cursor
+
+        line = MoveLine.__table__()
+        move = Move.__table__()
+        account = Account.__table__()
 
         company = Company(data['company'])
         localcontext['digits'] = company.currency.digits
         localcontext['posted'] = data['posted']
         with Transaction().set_context(context=localcontext):
-            line_query, _ = MoveLine.query_get()
+            line_query, _ = MoveLine.query_get(line)
 
         terms = (data['term1'], data['term2'], data['term3'])
         if data['unit'] == 'month':
@@ -2079,30 +2101,22 @@ class AgedBalance(Report):
 
         res = {}
         for position, term in enumerate(terms):
-            if position == 2:
-                term_query = 'l.maturity_date <= %s'
-                term_args = (Date.today() - term * coef,)
-            else:
-                term_query = '(l.maturity_date <= %s '\
-                    'AND l.maturity_date > %s) '
-                term_args = (
-                    Date.today() - term * coef,
+            term_query = line.maturity_date <= (Date.today() - term * coef)
+            if position != 2:
+                term_query &= line.maturity_date > (
                     Date.today() - terms[position + 1] * coef)
 
-            cursor.execute('SELECT l.party, SUM(l.debit) - SUM(l.credit) '
-                'FROM account_move_line l '
-                'JOIN account_move m ON (l.move = m.id) '
-                'JOIN account_account a ON (l.account = a.id) '
-                'WHERE l.party IS NOT NULL '
-                    'AND a.active '
-                    'AND a.kind IN (' + ','.join(('%s',) * len(kind)) + ") "
-                    'AND l.reconciliation IS NULL '
-                    'AND a.company = %s '
-                    'AND ' + term_query + ' '
-                    'AND ' + line_query + ' '
-                    'GROUP BY l.party '
-                    'HAVING (SUM(l.debit) - SUM(l.credit) != 0)',
-                kind + (data['company'],) + term_args)
+            cursor.execute(*line.join(move, condition=line.move == move.id
+                    ).join(account, condition=line.account == account.id
+                    ).select(line.party, Sum(line.debit) - Sum(line.credit),
+                    where=(line.party != None)
+                    & account.active
+                    & account.kind.in_(kind)
+                    & (line.reconciliation == None)
+                    & (account.company == data['company'])
+                    & term_query & line_query,
+                    group_by=line.party,
+                    having=(Sum(line.debit) - Sum(line.credit)) != 0))
             for party, solde in cursor.fetchall():
                 if party in res:
                     res[party][position] = solde

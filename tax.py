@@ -1,9 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from sql.aggregate import Sum
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -32,6 +34,7 @@ class TaxGroup(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(TaxGroup, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -183,23 +186,23 @@ class TaxCode(ModelSQL, ModelView):
         res = {}
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
+
+        code = cls.__table__()
+        tax_line = TaxLine.__table__()
+        move_line = MoveLine.__table__()
 
         childs = cls.search([
                 ('parent', 'child_of', [c.id for c in codes]),
                 ])
         all_codes = list(set(codes) | set(childs))
-        line_query, _ = MoveLine.query_get()
-        cursor.execute('SELECT c.id, SUM(tl.amount) '
-            'FROM account_tax_code c, '
-                'account_tax_line tl, '
-                'account_move_line l '
-            'WHERE c.id = tl.code '
-                'AND tl.move_line = l.id '
-                'AND c.id IN (' +
-                    ','.join(('%s',) * len(all_codes)) + ') '
-                'AND ' + line_query + ' '
-                'AND c.active '
-            'GROUP BY c.id', [c.id for c in all_codes])
+        line_query, _ = MoveLine.query_get(move_line)
+        cursor.execute(*code.join(tax_line, condition=tax_line.code == code.id
+                ).join(move_line, condition=tax_line.move_line == move_line.id
+                ).select(code.id, Sum(tax_line.amount),
+                where=code.id.in_([c.id for c in all_codes])
+                & code.active & line_query,
+                group_by=code.id))
         code_sum = {}
         for code_id, sum in cursor.fetchall():
             # SQLite uses float for SUM
@@ -342,9 +345,7 @@ class TaxTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
     description = fields.Char('Description', required=True, translate=True)
     group = fields.Many2One('account.tax.group', 'Group')
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     amount = fields.Numeric('Amount', digits=(16, 8),
         states={
             'required': Eval('type') == 'fixed',
@@ -392,6 +393,7 @@ class TaxTemplate(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(TaxTemplate, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -404,9 +406,16 @@ class TaxTemplate(ModelSQL, ModelView):
 
         # Migration from 2.8: rename percentage into rate
         if table.column_exist('percentage'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET rate = percentage / 100')
+            sql_table = cls.__table__()
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.rate],
+                    values=[sql_table.percentage / 100]))
             table.drop_column('percentage')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_type():
@@ -560,10 +569,7 @@ class Tax(ModelSQL, ModelView):
                 'invisible': Bool(Eval('parent')),
             }, depends=['parent'])
     active = fields.Boolean('Active')
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s',
-        help='Use to order the taxes')
+    sequence = fields.Integer('Sequence', help='Use to order the taxes')
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['company']), 'on_change_with_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
@@ -663,6 +669,7 @@ class Tax(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(Tax, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -675,9 +682,16 @@ class Tax(ModelSQL, ModelView):
 
         # Migration from 2.8: rename percentage into rate
         if table.column_exist('percentage'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET rate = percentage / 100')
+            sql_table = cls.__table__()
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.rate],
+                    values=[sql_table.percentage / 100]))
             table.drop_column('percentage')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_active():
@@ -1073,9 +1087,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
                 ],
             ],
         depends=['group'])
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
 
     @classmethod
     def __setup__(cls):
@@ -1085,6 +1097,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -1092,6 +1105,11 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     def _get_tax_rule_line_value(self, rule_line=None):
         '''
@@ -1181,9 +1199,7 @@ class TaxRuleLine(ModelSQL, ModelView):
                 ],
             ],
         depends=['group'])
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
     @classmethod
@@ -1194,6 +1210,7 @@ class TaxRuleLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -1201,6 +1218,11 @@ class TaxRuleLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     def match(self, pattern):
         '''

@@ -1,6 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from sql import Literal
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
+
 from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -65,9 +69,13 @@ class Party:
         res = {}
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        Account = pool.get('account.account')
         User = pool.get('res.user')
         Date = pool.get('ir.date')
         cursor = Transaction().cursor
+
+        line = MoveLine.__table__()
+        account = Account.__table__()
 
         for name in names:
             if name not in ('receivable', 'payable',
@@ -83,32 +91,27 @@ class Party:
             return res
         company_id = user.company.id
 
-        line_query, _ = MoveLine.query_get()
+        line_query, _ = MoveLine.query_get(line)
 
         for name in names:
             code = name
-            today_query = ''
-            today_value = []
+            today_query = Literal(True)
             if name in ('receivable_today', 'payable_today'):
                 code = name[:-6]
-                today_query = 'AND (l.maturity_date <= %s ' \
-                    'OR l.maturity_date IS NULL) '
-                today_value = [Date.today()]
+                today_query = ((line.maturity_date <= Date.today())
+                    | (line.maturity_date == None))
 
-            cursor.execute('SELECT l.party, '
-                    'SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
-                'FROM account_move_line AS l, account_account AS a '
-                'WHERE a.id = l.account '
-                    'AND a.active '
-                    'AND a.kind = %s '
-                    'AND l.party IN '
-                        '(' + ','.join(('%s',) * len(parties)) + ') '
-                    'AND l.reconciliation IS NULL '
-                    'AND ' + line_query + ' '
-                    + today_query +
-                    'AND a.company = %s '
-                'GROUP BY l.party',
-                [code] + [p.id for p in parties] + today_value + [company_id])
+            cursor.execute(*line.join(account,
+                    condition=account.id == line.account
+                    ).select(line.party,
+                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                    where=account.active
+                    & (account.kind == code)
+                    & line.party.in_([p.id for p in parties])
+                    & (line.reconciliation == None)
+                    & (account.company == company_id)
+                    & line_query & today_query,
+                    group_by=line.party))
             for party_id, sum in cursor.fetchall():
                 # SQLite uses float for SUM
                 if not isinstance(sum, Decimal):
@@ -120,10 +123,14 @@ class Party:
     def search_receivable_payable(cls, name, clause):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        Account = pool.get('account.account')
         Company = pool.get('company.company')
         User = pool.get('res.user')
         Date = pool.get('ir.date')
         cursor = Transaction().cursor
+
+        line = MoveLine.__table__()
+        account = Account.__table__()
 
         if name not in ('receivable', 'payable',
                 'receivable_today', 'payable_today'):
@@ -151,28 +158,25 @@ class Party:
             return []
 
         code = name
-        today_query = ''
-        today_value = []
+        today_query = Literal(True)
         if name in ('receivable_today', 'payable_today'):
             code = name[:-6]
-            today_query = 'AND (l.maturity_date <= %s ' \
-                'OR l.maturity_date IS NULL) '
-            today_value = [Date.today()]
+            today_query = ((line.maturity_date <= Date.today())
+                | (line.maturity_date == None))
 
-        line_query, _ = MoveLine.query_get()
+        line_query, _ = MoveLine.query_get(line)
+        Operator = fields.SQL_OPERATORS[clause[1]]
 
-        cursor.execute('SELECT l.party '
-            'FROM account_move_line AS l, account_account AS a '
-            'WHERE a.id = l.account '
-                'AND a.active '
-                'AND a.kind = %s '
-                'AND l.party IS NOT NULL '
-                'AND l.reconciliation IS NULL '
-                'AND ' + line_query + ' '
-                + today_query +
-                'AND a.company = %s '
-            'GROUP BY l.party '
-            'HAVING (SUM((COALESCE(l.debit, 0) - COALESCE(l.credit, 0))) '
-                + clause[1] + ' %s)',
-            [code] + today_value + [company_id] + [Decimal(clause[2] or 0)])
-        return [('id', 'in', [x[0] for x in cursor.fetchall()])]
+        query = line.join(account, condition=account.id == line.account
+                ).select(line.party,
+                    where=account.active
+                    & (account.kind == code)
+                    & (line.party != None)
+                    & (line.reconciliation == None)
+                    & (account.company == company_id)
+                    & today_query,
+                    group_by=line.party,
+                    having=Operator(Sum(Coalesce(line.debit, 0)
+                            - Coalesce(line.credit, 0)),
+                        Decimal(clause[2] or 0)))
+        return [('id', 'in', query)]

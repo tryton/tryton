@@ -6,7 +6,7 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.const import OPERATORS
-from trytond.backend import TableHandler
+from trytond import backend
 
 __all__ = ['Period', 'ClosePeriod', 'ReOpenPeriod']
 
@@ -44,6 +44,7 @@ class Period(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
 
         super(Period, cls).__register__(module_name)
@@ -108,18 +109,17 @@ class Period(ModelSQL, ModelView):
         cursor = Transaction().cursor
         if self.type != 'standard':
             return True
-        cursor.execute('SELECT id '
-                'FROM "' + self._table + '" '
-                'WHERE ((start_date <= %s AND end_date >= %s) '
-                        'OR (start_date <= %s AND end_date >= %s) '
-                        'OR (start_date >= %s AND end_date <= %s)) '
-                    'AND fiscalyear = %s '
-                    'AND type = \'standard\' '
-                    'AND id != %s',
-                (self.start_date, self.start_date,
-                    self.end_date, self.end_date,
-                    self.start_date, self.end_date,
-                    self.fiscalyear.id, self.id))
+        table = self.__table__()
+        cursor.execute(*table.select(table.id,
+                where=(((table.start_date <= self.start_date)
+                        & (table.end_date >= self.start_date))
+                    | ((table.start_date <= self.end_date)
+                        & (table.end_date >= self.end_date))
+                    | ((table.start_date >= self.start_date)
+                        & (table.end_date <= self.end_date)))
+                & (table.fiscalyear == self.fiscalyear.id)
+                & (table.type == 'standard')
+                & (table.id != self.id)))
         period_id = cursor.fetchone()
         if period_id:
             overlapping_period = self.__class__(period_id[0])
@@ -202,7 +202,7 @@ class Period(ModelSQL, ModelView):
 
     @classmethod
     def search(cls, args, offset=0, limit=None, order=None, count=False,
-            query_string=False):
+            query=False):
         args = args[:]
 
         def process_args(args):
@@ -225,7 +225,7 @@ class Period(ModelSQL, ModelView):
                 i += 1
         process_args(args)
         return super(Period, cls).search(args, offset=offset, limit=limit,
-            order=order, count=count, query_string=query_string)
+            order=order, count=count, query=query)
 
     @classmethod
     def create(cls, vlist):
