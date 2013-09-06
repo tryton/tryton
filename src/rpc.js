@@ -34,12 +34,10 @@
                     // TODO
                 } else if (data.error[0] == 'NotLogged') {
                     //Try to relog
-                    var cred_prm = jQuery.Deferred();
-                    Sao.Session.renew_credentials(session, cred_prm);
-                    cred_prm.done(function() {
-                        Sao.rpc(session, args, dfd);
-                    });
-                    cred_prm.fail(dfd.reject);
+                    Sao.Session.renew(session).then(function() {
+                        Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
+                    }, dfd.reject);
+                    return;
                 } else {
                     console.log('ERROR');
                     Sao.error(data.error[0], data.error[1]);

@@ -174,14 +174,14 @@
 
     };
 
-    Sao.Session.renew_credentials = function(session, parent_dfd) {
+    Sao.Session.renew = function(session) {
+        var dfd = jQuery.Deferred();
         var login_div, password_input;
 
         var ok_func = function() {
             var password_val = password_input.val();
-            var prm = session.do_login(session.login, password_val);
-            prm.done(function() {
-                parent_dfd.resolve();
+            session.do_login(session.login, password_val).done(function() {
+                dfd.resolve();
             });
             login_div.dialog('close');
         };
@@ -217,6 +217,7 @@
                 password_input.focus();
             }
         });
+        return dfd.promise();
     };
 
     Sao.Session.current_session = null;
