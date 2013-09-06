@@ -84,12 +84,14 @@ class PurchaseRequest(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
         super(PurchaseRequest, cls).__register__(module_name)
 
         # Migration from 2.0: empty order point origin is -1 instead of 0
-        cursor.execute('UPDATE "%s" '
-            'SET origin = %%s WHERE origin = %%s' % cls._table,
-            ('stock.order_point,-1', 'stock.order_point,0'))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.origin],
+                values=['stock.order_point,-1'],
+                where=sql_table.origin == 'stock.order_point,0'))
 
     def get_rec_name(self, name):
         if self.warehouse:
