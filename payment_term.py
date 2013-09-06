@@ -3,7 +3,7 @@
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -91,8 +91,6 @@ class PaymentTermLine(ModelSQL, ModelView):
     'Payment Term Line'
     __name__ = 'account.invoice.payment_term.line'
     sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s',
         help='Use to order lines in ascending order')
     payment = fields.Many2One('account.invoice.payment_term', 'Payment Term',
             required=True, ondelete="CASCADE")
@@ -171,20 +169,25 @@ class PaymentTermLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        sql_table = cls.__table__()
         super(PaymentTermLine, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 percent change into percentage
         if table.column_exist('percent'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET percentage = percent * 100')
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.percentage],
+                    values=[sql_table.percent * 100]))
             table.drop_column('percent', exception=True)
 
         # Migration from 2.2
         if table.column_exist('delay'):
-            cursor.execute('UPDATE "' + cls._table + '" SET day = 31 '
-                "WHERE delay = 'end_month'")
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.day],
+                    values=[31],
+                    where=sql_table.delay == 'end_month'))
             table.drop_column('delay', exception=True)
             lines = cls.search([])
             for line in lines:
@@ -196,6 +199,11 @@ class PaymentTermLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_currency_digits():

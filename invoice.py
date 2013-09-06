@@ -3,11 +3,15 @@
 from decimal import Decimal
 import base64
 import operator
+from sql import Literal
+from sql.aggregate import Count, Sum
+from sql.conditionals import Coalesce
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
-from trytond.backend import TableHandler, FIELDS
+from trytond import backend
 from trytond.pyson import If, Eval, Bool, Id
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
@@ -243,6 +247,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        sql_table = cls.__table__()
         super(Invoice, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -256,30 +262,33 @@ class Invoice(Workflow, ModelSQL, ModelView):
         if (table.column_exist('invoice_report')
                 and table.column_exist('invoice_report_cache')):
             limit = cursor.IN_MAX
-            cursor.execute('SELECT COUNT(id) '
-                'FROM "' + cls._table + '"')
+            cursor.execute(*sql_table.select(Count(Literal(1))))
             invoice_count, = cursor.fetchone()
             for offset in range(0, invoice_count, limit):
-                cursor.execute(cursor.limit_clause(
-                    'SELECT id, invoice_report '
-                    'FROM "' + cls._table + '"'
-                    'ORDER BY id',
-                    limit, offset))
+                cursor.execute(*sql_table.select(
+                        sql_table.id, sql_table.invoice_report,
+                        order_by=sql_table.id,
+                        limit=limit, offset=offset))
                 for invoice_id, report in cursor.fetchall():
                     if report:
                         report = buffer(base64.decodestring(str(report)))
-                        cursor.execute('UPDATE "' + cls._table + '" '
-                            'SET invoice_report_cache = %s '
-                            'WHERE id = %s', (report, invoice_id))
+                        cursor.execute(*sql_table.update(
+                                columns=[sql_table.invoice_report_cache],
+                                values=[report],
+                                where=sql_table.id == invoice_id))
             table.drop_column('invoice_report')
 
         # Migration from 2.6:
         # - proforma renamed into validated
         # - open renamed into posted
-        cursor.execute('UPDATE "' + cls._table + '" '
-            'SET state = %s WHERE state = %s', ('validated', 'proforma'))
-        cursor.execute('UPDATE "' + cls._table + '" '
-            'SET state = %s WHERE state = %s', ('posted', 'open'))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.state],
+                values=['validated'],
+                where=sql_table.state == 'proforma'))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.state],
+                values=['posted'],
+                where=sql_table.state == 'open'))
 
         # Add index on create_date
         table.index_action('create_date', action='add')
@@ -521,16 +530,16 @@ class Invoice(Workflow, ModelSQL, ModelView):
         tax_amount = dict((i.id, _ZERO) for i in invoices)
         total_amount = dict((i.id, _ZERO) for i in invoices)
 
-        type_name = FIELDS[cls.tax_amount._type].sql_type(cls.tax_amount)[0]
+        type_name = cls.tax_amount._field.sql_type().base
         in_max = cursor.IN_MAX
+        tax = InvoiceTax.__table__()
         for i in range(0, len(invoices), in_max):
             sub_ids = [i.id for i in invoices[i:i + in_max]]
-            red_sql, red_ids = reduce_ids('invoice', sub_ids)
-            cursor.execute('SELECT invoice, '
-                    'CAST(COALESCE(SUM(amount), 0) AS ' + type_name + ') '
-                'FROM "' + InvoiceTax._table + '" '
-                'WHERE ' + red_sql + ' '
-                'GROUP BY invoice', red_ids)
+            red_sql = reduce_ids(tax.invoice, sub_ids)
+            cursor.execute(*tax.select(tax.invoice,
+                    Coalesce(Sum(tax.amount), 0).as_(type_name),
+                    where=red_sql,
+                    group_by=tax.invoice))
             for invoice_id, sum_ in cursor.fetchall():
                 # SQLite uses float for SUM
                 if not isinstance(sum_, Decimal):
@@ -545,22 +554,20 @@ class Invoice(Workflow, ModelSQL, ModelView):
             else:
                 invoices_no_move.append(invoice)
 
-        type_name = FIELDS[cls.total_amount._type].sql_type(
-            cls.total_amount)[0]
+        type_name = cls.total_amount._field.sql_type().base
+        invoice = cls.__table__()
+        move = Move.__table__()
+        line = MoveLine.__table__()
         for i in range(0, len(invoices_move), in_max):
             sub_ids = [i.id for i in invoices_move[i:i + in_max]]
-            red_sql, red_ids = reduce_ids('i.id', sub_ids)
-            cursor.execute('SELECT i.id, '
-                    'CAST(COALESCE(SUM(l.debit - l.credit), 0) '
-                        'AS ' + type_name + ') '
-                'FROM "' + cls._table + '" AS i '
-                'JOIN "' + Move._table + '" AS m '
-                    'ON i.move = m.id '
-                'JOIN "' + MoveLine._table + '" AS l '
-                    'ON m.id = l.move '
-                'WHERE i.account = l.account '
-                    'AND ' + red_sql + ' '
-                'GROUP BY i.id', red_ids)
+            red_sql = reduce_ids(invoice.id, sub_ids)
+            cursor.execute(*invoice.join(move,
+                    condition=invoice.move == move.id
+                    ).join(line, condition=move.id == line.move
+                    ).select(invoice.id,
+                    Coalesce(Sum(line.debit - line.credit), 0).cast(type_name),
+                    where=(invoice.account == line.account) & red_sql,
+                    group_by=invoice.id))
             for invoice_id, sum_ in cursor.fetchall():
                 # SQLite uses float for SUM
                 if not isinstance(sum_, Decimal):
@@ -662,80 +669,62 @@ class Invoice(Workflow, ModelSQL, ModelView):
         Rule = pool.get('ir.rule')
         Line = pool.get('account.invoice.line')
         Tax = pool.get('account.invoice.tax')
-        type_name = FIELDS[cls.total_amount._type].sql_type(
-            cls.total_amount)[0]
-        cursor = Transaction().cursor
+        type_name = cls.total_amount._field.sql_type().base
+        line = Line.__table__()
+        tax = Tax.__table__()
 
-        invoice_query, invoice_val = Rule.domain_get('account.invoice')
+        invoice_query = Rule.domain_get('account.invoice')
+        Operator = fields.SQL_OPERATORS[clause[1]]
 
-        cursor.execute('SELECT invoice FROM ('
-                    'SELECT invoice, '
-                        'COALESCE(SUM(quantity * unit_price), 0) '
-                            'AS total_amount '
-                    'FROM "' + Line._table + '" '
-                    'JOIN "' + cls._table + '" ON '
-                        '("' + cls._table + '".id = '
-                            '"' + Line._table + '".invoice) '
-                    'WHERE ' + invoice_query + ' '
-                    'GROUP BY invoice '
-                'UNION '
-                    'SELECT invoice, COALESCE(SUM(amount), 0) AS total_amount '
-                    'FROM "' + Tax._table + '" '
-                    'JOIN "' + cls._table + '" ON '
-                        '("' + cls._table + '".id = '
-                            '"' + Tax._table + '".invoice) '
-                    'WHERE ' + invoice_query + ' '
-                    'GROUP BY invoice  '
-                ') AS u '
-                'GROUP BY u.invoice '
-                'HAVING (CAST(SUM(u.total_amount) AS ' + type_name + ') '
-                    + clause[1] + ' %s)',
-                invoice_val + invoice_val + [str(clause[2])])
-        return [('id', 'in', [x[0] for x in cursor.fetchall()])]
+        union = (line.select(line.invoice.as_('invoice'),
+                Coalesce(Sum(line.quantity * line.unit_price),0
+                    ).as_('total_amount'),
+                where=line.invoice.in_(invoice_query),
+                group_by=line.invoice)
+            | tax.select(tax.invoice.as_('invoice'),
+                Coalesce(Sum(tax.amount), 0).as_('total_amount'),
+                where=tax.invoice.in_(invoice_query),
+                group_by=tax.invoice))
+        query = union.select(union.invoice, group_by=union.invoice,
+            having=Operator(Sum(union.total_amount).cast(type_name),
+                clause[2]))
+        return [('id', 'in', query)]
 
     @classmethod
     def search_untaxed_amount(cls, name, clause):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Line = pool.get('account.invoice.line')
-        type_name = FIELDS[cls.untaxed_amount._type].sql_type(
-                cls.untaxed_amount)[0]
-        cursor = Transaction().cursor
+        type_name = cls.untaxed_amount._field.sql_type().base
+        line = Line.__table__()
 
-        invoice_query, invoice_val = Rule.domain_get('account.invoice')
+        invoice_query = Rule.domain_get('account.invoice')
+        Operator = fields.SQL_OPERATORS[clause[1]]
 
-        cursor.execute('SELECT invoice FROM "' + Line._table + '" '
-                'JOIN "' + cls._table + '" ON '
-                    '("' + cls._table + '".id = '
-                        '"' + Line._table + '".invoice) '
-                'WHERE ' + invoice_query + ' '
-                'GROUP BY invoice '
-                'HAVING (CAST(COALESCE(SUM(quantity * unit_price), 0) '
-                    'AS ' + type_name + ') ' + clause[1] + ' %s)',
-                invoice_val + [str(clause[2])])
-        return [('id', 'in', [x[0] for x in cursor.fetchall()])]
+        query = line.select(line.invoice,
+            where=line.invoice.in_(invoice_query),
+            group_by=line.invoice,
+            having=Operator(Coalesce(Sum(line.quantity * line.unit_price), 0
+                    ).cast(type_name), clause[2]))
+        return [('id', 'in', query)]
 
     @classmethod
     def search_tax_amount(cls, name, clause):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Tax = pool.get('account.invoice.tax')
-        type_name = FIELDS[cls.tax_amount._type].sql_type(
-                cls.tax_amount)[0]
-        cursor = Transaction().cursor
+        type_name = cls.tax_amount._field.sql_type().base
+        tax = Tax.__table__()
 
-        invoice_query, invoice_val = Rule.domain_get('account.invoice')
+        invoice_query = Rule.domain_get('account.invoice')
+        Operator = fields.SQL_OPERATORS[clause[1]]
 
-        cursor.execute('SELECT invoice FROM "' + Tax._table + '" '
-                'JOIN "' + cls._table + '" ON '
-                    '("' + cls._table + '".id = '
-                        '"' + Tax._table + '".invoice) '
-                'WHERE ' + invoice_query + ' '
-                'GROUP BY invoice '
-                'HAVING (CAST(COALESCE(SUM(amount), 0) '
-                    'AS ' + type_name + ') ' + clause[1] + ' %s)',
-                invoice_val + [str(clause[2])])
-        return [('id', 'in', [x[0] for x in cursor.fetchall()])]
+        query = tax.select(tax.invoice,
+            where=tax.invoice.in_(invoice_query),
+            group_by=tax.invoice,
+            having=Operator(Coalesce(Sum(tax.amount), 0).cast(type_name),
+                clause[2]))
+        return [('id', 'in', query)]
 
     def get_tax_context(self):
         context = {}
@@ -1461,8 +1450,6 @@ class InvoiceLine(ModelSQL, ModelView):
         depends=['invoice'], select=True)
 
     sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s',
         states={
             'invisible': Bool(Eval('context', {}).get('standalone')),
             })
@@ -1603,6 +1590,7 @@ class InvoiceLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(InvoiceLine, cls).__register__(module_name)
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
@@ -1612,6 +1600,11 @@ class InvoiceLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_currency():
@@ -2056,9 +2049,7 @@ class InvoiceTax(ModelSQL, ModelView):
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=True)
     description = fields.Char('Description', size=None, required=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     sequence_number = fields.Function(fields.Integer('Sequence Number'),
             'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -2115,6 +2106,7 @@ class InvoiceTax(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -2122,6 +2114,11 @@ class InvoiceTax(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_base():
