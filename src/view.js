@@ -92,6 +92,9 @@
                 th = jQuery('<th/>', {
                     'text': column.attributes.string
                 });
+                if (column.attributes.tree_invisible) {
+                    th.hide();
+                }
                 tr.append(th);
             });
             this.tbody = jQuery('<tbody/>');
@@ -334,6 +337,9 @@
                     var suffix = column.suffixes[j];
                     td.append(suffix.render(this.record));
                 }
+                if (column.attributes.tree_invisible) {
+                    td.hide();
+                }
                 this.el.append(td);
             }
             this.set_selection(~selected.indexOf(this.record));
@@ -489,6 +495,14 @@
             var cell = this.get_cell();
             record.load(this.attributes.name).done(function() {
                 this.update_text(cell, record);
+                this.field.set_state(record);
+                var state_attrs = this.field.get_state_attrs(record);
+                if (state_attrs.invisible) {
+                    cell.hide();
+                } else {
+                    cell.show();
+                }
+                // TODO editable: readonly and required
             }.bind(this));
             return cell;
         }
