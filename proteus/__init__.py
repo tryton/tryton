@@ -351,6 +351,7 @@ class MetaModelFactory(object):
         'reference': ReferenceDescriptor,
         'date': DateDescriptor,
         'datetime': DateTimeDescriptor,
+        'timestamp': DateTimeDescriptor,
         'time': TimeDescriptor,
         'dict': DictDescriptor,
         'many2one': Many2OneDescriptor,

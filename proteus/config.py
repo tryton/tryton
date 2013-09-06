@@ -181,7 +181,7 @@ class TrytondConfig(Config):
         if database_type is not None:
             CONFIG['db_type'] = database_type
         from trytond.pool import Pool
-        from trytond.backend import Database
+        from trytond import backend
         from trytond.protocols.dispatcher import create
         from trytond.cache import Cache
         from trytond.transaction import Transaction
@@ -197,7 +197,7 @@ class TrytondConfig(Config):
 
         Pool.start()
 
-        database = Database().connect()
+        database = backend.get('Database')().connect()
         cursor = database.cursor()
         try:
             databases = database.list(cursor)
