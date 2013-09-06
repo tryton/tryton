@@ -133,7 +133,7 @@ Create chart of accounts::
     >>> AccountTemplate = Model.get('account.account.template')
     >>> Account = Model.get('account.account')
     >>> AccountJournal = Model.get('account.journal')
-    >>> account_template, = AccountTemplate.find([('parent', '=', False)])
+    >>> account_template, = AccountTemplate.find([('parent', '=', None)])
     >>> create_chart = Wizard('account.create_chart')
     >>> create_chart.execute('account')
     >>> create_chart.form.account_template = account_template

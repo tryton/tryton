@@ -5,7 +5,7 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 
 __all__ = ['Move']
 __metaclass__ = PoolMeta
@@ -43,6 +43,8 @@ class Move:
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        TableHandler = backend.get('TableHandler')
+
         super(Move, cls).__register__(module_name)
         table = TableHandler(cursor, cls, module_name)
 
