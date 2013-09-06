@@ -3,10 +3,13 @@
 import datetime
 from dateutil.relativedelta import relativedelta
 import itertools
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
+
 from trytond.model import ModelView, Workflow, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool, If
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids
@@ -94,7 +97,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         Location = Pool().get('stock.location')
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
 
         table = TableHandler(cursor, cls, module_name)
         migrate_warehouse = (not table.column_exist('warehouse')
@@ -114,7 +119,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     return location.id
                 elif location.parent:
                     return find_warehouse(location.parent)
-            cursor.execute('SELECT id, location FROM "%s"' % cls._table)
+            cursor.execute(*sql_table.select(sql_table.id, sql_table.location))
             for forecast_id, location_id in cursor.fetchall():
                 warehouse_id = location_id  # default fallback
                 if location_id in location2warehouse:
@@ -123,9 +128,10 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     location = Location(location_id)
                     warehouse_id = find_warehouse(location) or location_id
                     location2warehouse[location_id] = warehouse_id
-                cursor.execute('UPDATE "%s" SET warehouse = %%s '
-                    'WHERE id = %%s' % cls._table,
-                    (warehouse_id, forecast_id))
+                cursor.execute(*sql_table.update(
+                        columns=[sql_table.warehouse],
+                        values=[warehouse_id],
+                        where=sql_table.id == forecast_id))
             table.not_null_action('warehouse',
                 action=cls.warehouse.required and 'add' or 'remove')
             table.drop_column('location', True)
@@ -159,21 +165,18 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cursor = Transaction().cursor
         if self.state != 'done':
             return True
-        cursor.execute('SELECT id '
-            'FROM stock_forecast '
-            'WHERE ((from_date <= %s AND to_date >= %s) '
-                    'OR (from_date <= %s AND to_date >= %s) '
-                    'OR (from_date >= %s AND to_date <= %s)) '
-                'AND warehouse = %s '
-                'AND destination = %s '
-                'AND state = \'done\' '
-                'AND company = %s '
-                'AND id != %s',
-            (self.from_date, self.from_date,
-             self.to_date, self.to_date,
-             self.from_date, self.to_date,
-             self.warehouse.id, self.destination.id,
-             self.company.id, self.id))
+        forcast = self.__table__()
+        cursor.execute(*forcast.select(forcast.id,
+                where=(((forcast.from_date <= self.from_date)
+                        & (forcast.to_date >= self.from_date))
+                    | ((forcast.from_date <= self.to_date)
+                        & (forcast.to_date >= self.to_date))
+                    | ((forcast.from_date >= self.from_date)
+                        & (forcast.to_date <= self.to_date)))
+                & (forcast.warehouse == self.warehouse.id)
+                & (forcast.destination == self.destination.id)
+                & (forcast.company == self.company.id)
+                & (forcast.id != self.id)))
         forecast_id = cursor.fetchone()
         if forecast_id:
             second = self.__class__(forecast_id[0])
@@ -338,6 +341,11 @@ class ForecastLine(ModelSQL, ModelView):
         Forecast = pool.get('stock.forecast')
         LineMove = pool.get('stock.forecast.line-stock.move')
 
+        move = Move.__table__()
+        location_from = Location.__table__()
+        location_to = Location.__table__()
+        line_move = LineMove.__table__()
+
         result = dict((x.id, 0) for x in lines)
         key = lambda line: line.forecast.id
         lines.sort(key=key)
@@ -347,28 +355,26 @@ class ForecastLine(ModelSQL, ModelView):
             product_ids = product2line.keys()
             for i in range(0, len(product_ids), cursor.IN_MAX):
                 sub_ids = product_ids[i:i + cursor.IN_MAX]
-                red_sql, red_ids = reduce_ids('product', sub_ids)
-                cursor.execute('SELECT m.product, '
-                        'SUM(m.internal_quantity) AS quantity '
-                    'FROM "' + Move._table + '" AS m '
-                        'JOIN "' + Location._table + '" AS fl '
-                            'ON m.from_location = fl.id '
-                        'JOIN "' + Location._table + '" AS tl '
-                            'ON m.to_location = tl.id '
-                        'LEFT JOIN "' + LineMove._table + '" AS lm '
-                            'ON m.id = lm.move '
-                    'WHERE ' + red_sql + ' '
-                        'AND fl.left >= %s AND fl.right <= %s '
-                        'AND tl.left >= %s AND tl.right <= %s '
-                        'AND m.state != %s '
-                        'AND COALESCE(m.effective_date, m.planned_date) >= %s '
-                        'AND COALESCE(m.effective_date, m.planned_date) <= %s '
-                        'AND lm.id IS NULL '
-                    'GROUP BY m.product',
-                    red_ids + [forecast.warehouse.left,
-                        forecast.warehouse.right, forecast.destination.left,
-                        forecast.destination.right, 'cancel',
-                        forecast.from_date, forecast.to_date])
+                red_sql = reduce_ids(move.product, sub_ids)
+                cursor.execute(*move.join(location_from,
+                        condition=move.from_location == location_from.id
+                        ).join(location_to,
+                        condition=move.to_location == location_to.id
+                        ).join(line_move, 'LEFT',
+                        condition=move.id == line_move.move
+                        ).select(move.product, Sum(move.internal_quantity),
+                        where=red_sql
+                        & (location_from.left >= forecast.warehouse.left)
+                        & (location_from.right <= forecast.warehouse.right)
+                        & (location_to.left >= forecast.destination.left)
+                        & (location_to.right <= forecast.destination.right)
+                        & (move.state != 'cancel')
+                        & (Coalesce(move.effective_date, move.planned_date)
+                            >= forecast.from_date)
+                        & (Coalesce(move.effective_date, move.planned_date)
+                            <= forecast.to_date)
+                        & (line_move.id == None),
+                        group_by=move.product))
                 for product_id, quantity in cursor.fetchall():
                     line = product2line[product_id]
                     result[line.id] = Uom.compute_qty(line.product.default_uom,
