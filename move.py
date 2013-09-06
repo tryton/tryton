@@ -2,8 +2,11 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 from functools import reduce, partial
+from sql import Column
+from sql.operators import Concat
+
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -158,7 +161,10 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
+
         # Migration from 1.2: packing renamed into shipment
         table = TableHandler(cursor, cls, module_name)
         table.drop_constraint('check_packing')
@@ -186,10 +192,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 for move in moves:
                     internal_quantity = cls._get_internal_quantity(
                             move.quantity, move.uom, move.product)
-                    cursor.execute(
-                        'UPDATE "' + cls._table + '" '
-                        'SET internal_quantity = %s '
-                        'WHERE id = %s', (internal_quantity, move.id))
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.internal_quantity],
+                            values=[internal_quantity],
+                            where=sql_table.id == move.id))
             table = TableHandler(cursor, cls, module_name)
             table.not_null_action('internal_quantity', action='add')
 
@@ -208,9 +214,11 @@ class Move(Workflow, ModelSQL, ModelView):
             }
         for column, model in shipments.iteritems():
             if table.column_exist(column):
-                cursor.execute('UPDATE "' + cls._table + '" '
-                    'SET shipment = \'' + model + ',\' || "' + column + '" '
-                    'WHERE "' + column + '" IS NOT NULL')
+                cursor.execute(*sql_table.update(
+                        columns=[sql_table.shipment],
+                        values=[Concat(model + ',',
+                                Column(sql_table, column))],
+                        where=Column(sql_table, column) != None))
                 table.drop_column(column)
 
         # Add index on create_date

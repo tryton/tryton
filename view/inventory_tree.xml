@@ -6,5 +6,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <field name="state"/>
     <field name="company"/>
-    <field name="create_date" tree_invisible="1"/>
 </tree>

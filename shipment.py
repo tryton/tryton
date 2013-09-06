@@ -3,12 +3,16 @@
 import operator
 import itertools
 import datetime
+from sql import Table
+from sql.functions import Overlay, Position
+from sql.aggregate import Max
+from sql.operators import Concat
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Get, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -160,22 +164,42 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        model_data = Table('ir_model_data')
+        model = Table('ir_model')
+        model_field = Table('ir_model_field')
+        sql_table = cls.__table__()
+
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model_data "
-            "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "
-            "WHERE fs_id like '%%packing%%' AND module = %s",
-            (module_name,))
-        cursor.execute("UPDATE ir_model "
-            "SET model = REPLACE(model, 'packing', 'shipment') "
-            "WHERE model like '%%packing%%' AND module = %s",
-            (module_name,))
-        cursor.execute("UPDATE ir_model_field "
-            "SET relation = REPLACE(relation, 'packing', 'shipment'), "
-                "name = REPLACE(name, 'packing', 'shipment') "
-            "WHERE (relation like '%%packing%%' "
-                "OR name like '%%packing%%') AND module = %s",
-            (module_name,))
+        cursor.execute(*model_data.update(
+                columns=[model_data.fs_id],
+                values=[Overlay(model_data.fs_id, 'shipment',
+                        Position('packing', model_data.fs_id),
+                        len('packing'))],
+                where=model_data.fs_id.like('%packing%')
+                & (model_data.module == module_name)))
+        cursor.execute(*model.update(
+                columns=[model.model],
+                values=[Overlay(model.model, 'shipment',
+                        Position('packing', model.model),
+                        len('packing'))],
+                where=model.model.like('%packing%')
+                & (model.module == module_name)))
+        cursor.execute(*model_field.update(
+                columns=[model_field.relation],
+                values=[Overlay(model_field.relation, 'shipment',
+                        Position('packing', model_field.relation),
+                        len('packing'))],
+                where=model_field.relation.like('%packing%')
+                & (model_field.module == module_name)))
+        cursor.execute(*model_field.update(
+                columns=[model_field.name],
+                values=[Overlay(model_field.name, 'shipment',
+                        Position('packing', model_field.name),
+                        len('packing'))],
+                where=model_field.name.like('%packing%')
+                & (model_field.module == module_name)))
 
         old_table = 'stock_packing_in'
         if TableHandler.table_exist(cursor, old_table):
@@ -196,22 +220,23 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         if (not created_company
                 and TableHandler.table_exist(cursor, Move._table)):
-            cursor.execute('SELECT shipment.id, MAX(move.company) '
-                'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move '
-                'ON \'%s,\' || shipment.id = move.shipment '
-                'GROUP BY shipment.id '
-                'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table, cls.__name__))
+            move = Move.__table__()
+            cursor.execute(*sql_table.join(move,
+                    condition=(Concat(cls.__name__ + ',', sql_table.id)
+                        == move.shipment)
+                    ).select(sql_table.id, Max(move.company),
+                    group_by=sql_table.id,
+                    order_by=Max(move.company)))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
                 for i in range(0, len(shipment_ids), cursor.IN_MAX):
                     sub_ids = shipment_ids[i:i + cursor.IN_MAX]
-                    red_sql, red_ids = reduce_ids('id', sub_ids)
-                    cursor.execute('UPDATE "' + cls._table + '" '
-                        'SET company = %s WHERE ' + red_sql,
-                        [company_id] + red_ids)
+                    red_sql = reduce_ids(sql_table.id, sub_ids)
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.company],
+                            values=[company_id],
+                            where=red_sql))
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -537,7 +562,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_in_return'
         if TableHandler.table_exist(cursor, old_table):
@@ -558,22 +585,23 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         if (not created_company
                 and TableHandler.table_exist(cursor, Move._table)):
-            cursor.execute('SELECT shipment.id, MAX(move.company) '
-                'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move '
-                'ON \'%s,\' || shipment.id = move.shipment '
-                'GROUP BY shipment.id '
-                'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table, cls.__name__))
+            move = Move.__table__()
+            cursor.execute(*sql_table.join(move,
+                    condition=(Concat(cls.__name__ + ',', sql_table.id)
+                        == move.shipment)
+                    ).select(sql_table.id, Max(move.company),
+                    group_by=sql_table.id,
+                    order_by=Max(move.company)))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
                 for i in range(0, len(shipment_ids), cursor.IN_MAX):
                     sub_ids = shipment_ids[i:i + cursor.IN_MAX]
-                    red_sql, red_ids = reduce_ids('id', sub_ids)
-                    cursor.execute('UPDATE "' + cls._table + '" '
-                        'SET company = %s WHERE ' + red_sql,
-                        [company_id] + red_ids)
+                    red_sql = reduce_ids(sql_table.id, sub_ids)
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.company],
+                            values=[company_id],
+                            where=red_sql))
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -876,7 +904,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_out'
         if TableHandler.table_exist(cursor, old_table):
@@ -898,22 +928,23 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         if (not created_company
                 and TableHandler.table_exist(cursor, Move._table)):
-            cursor.execute('SELECT shipment.id, MAX(move.company) '
-                'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move '
-                'ON \'%s,\' || shipment.id = move.shipment '
-                'GROUP BY shipment.id '
-                'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table, cls.__name__))
+            move = Move.__table__()
+            cursor.execute(*sql_table.join(move,
+                    condition=(Concat(cls.__name__ + ',', sql_table.id)
+                        == move.shipment)
+                    ).select(sql_table.id, Max(move.company),
+                    group_by=sql_table.id,
+                    order_by=Max(move.company)))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
                 for i in range(0, len(shipment_ids), cursor.IN_MAX):
                     sub_ids = shipment_ids[i:i + cursor.IN_MAX]
-                    red_sql, red_ids = reduce_ids('id', sub_ids)
-                    cursor.execute('UPDATE "' + cls._table + '" '
-                        'SET company = %s WHERE ' + red_sql,
-                        [company_id] + red_ids)
+                    red_sql = reduce_ids(sql_table.id, sub_ids)
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.company],
+                            values=[company_id],
+                            where=red_sql))
             table.not_null_action('company', action='add')
 
         # Migration from 1.0 customer_location is no more used
@@ -1368,7 +1399,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_out_return'
         if TableHandler.table_exist(cursor, old_table):
@@ -1390,22 +1423,23 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         if (not created_company
                 and TableHandler.table_exist(cursor, Move._table)):
-            cursor.execute('SELECT shipment.id, MAX(move.company) '
-                'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move '
-                'ON \'%s,\' || shipment.id = move.shipment '
-                'GROUP BY shipment.id '
-                'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table, cls.__name__))
+            move = Move.__table__()
+            cursor.execute(*sql_table.join(move,
+                    condition=(Concat(cls.__name__ + ',', sql_table.id)
+                        == move.shipment)
+                    ).select(sql_table.id, Max(move.company),
+                    group_by=sql_table.id,
+                    order_by=Max(move.company)))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
                 for i in range(0, len(shipment_ids), cursor.IN_MAX):
                     sub_ids = shipment_ids[i:i + cursor.IN_MAX]
-                    red_sql, red_ids = reduce_ids('id', sub_ids)
-                    cursor.execute('UPDATE "' + cls._table + '" '
-                        'SET company = %s WHERE ' + red_sql,
-                        [company_id] + red_ids)
+                    red_sql = reduce_ids(sql_table.id, sub_ids)
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.company],
+                            values=[company_id],
+                            where=red_sql))
             table.not_null_action('company', action='add')
 
         # Add index on create_date
@@ -1785,7 +1819,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
         # Migration from 1.2: packing renamed into shipment
         old_table = 'stock_packing_internal'
         if TableHandler.table_exist(cursor, old_table):
@@ -1806,22 +1842,23 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         if (not created_company
                 and TableHandler.table_exist(cursor, Move._table)):
-            cursor.execute('SELECT shipment.id, MAX(move.company) '
-                'FROM "%s" AS shipment '
-                'INNER JOIN "%s" AS move '
-                'ON \'%s,\' || shipment.id = move.shipment '
-                'GROUP BY shipment.id '
-                'ORDER BY MAX(move.company)'
-                % (cls._table, Move._table, cls.__name__))
+            move = Move.__table__()
+            cursor.execute(*sql_table.join(move,
+                    condition=(Concat(cls.__name__ + ',', sql_table.id)
+                        == move.shipment)
+                    ).select(sql_table.id, Max(move.company),
+                    group_by=sql_table.id,
+                    order_by=Max(move.company)))
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
                 for i in range(0, len(shipment_ids), cursor.IN_MAX):
                     sub_ids = shipment_ids[i:i + cursor.IN_MAX]
-                    red_sql, red_ids = reduce_ids('id', sub_ids)
-                    cursor.execute('UPDATE "' + cls._table + '" '
-                        'SET company = %s WHERE ' + red_sql,
-                        [company_id] + red_ids)
+                    red_sql = reduce_ids(sql_table.id, sub_ids)
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.company],
+                            values=[company_id],
+                            where=red_sql))
             table.not_null_action('company', action='add')
 
         # Add index on create_date

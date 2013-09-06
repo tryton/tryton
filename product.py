@@ -3,6 +3,10 @@
 import datetime
 from decimal import Decimal
 from operator import itemgetter
+from sql import Literal, Union, Column
+from sql.aggregate import Max, Sum
+from sql.functions import Now
+from sql.conditionals import Coalesce
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
@@ -207,6 +211,12 @@ class Product:
         Date = pool.get('ir.date')
         Period = pool.get('stock.period')
         Move = pool.get('stock.move')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+
+        move = Move.__table__()
+        product = Product.__table__()
+        template = Template.__table__()
 
         today = Date.today()
 
@@ -236,10 +246,14 @@ class Product:
                 wh_to_add[location.id] = location.storage_location.id
         location_ids = list(location_ids)
 
-        move_rule_query, move_rule_val = Rule.domain_get('stock.move')
+        move_rule_query = Rule.domain_get('stock.move')
+        if move_rule_query is None:
+            move_rule_query = Literal(True)
 
-        period_clause, period_vals = 'period = %s', [0]
         PeriodCache = Period.get_cache(grouping)
+        period = None
+        if PeriodCache:
+            period_cache = PeriodCache.__table__()
 
         if not context.get('stock_date_end'):
             context['stock_date_end'] = datetime.date.max
@@ -249,151 +263,104 @@ class Product:
                 or (context['stock_date_end'] == today
                     and not context.get('forecast'))):
             state_date_clause = (
-                '('
-                    '(state in (%s, %s)) '
-                'AND '
-                    '('
-                        '('
-                            '(effective_date IS NULL) '
-                        'AND '
-                            '(planned_date <= %s) '
-                        ') '
-                    'OR '
-                        '(effective_date <= %s)'
-                    ')'
-                ')')
-            state_date_vals = ["done",
-                    context.get('stock_assign') and 'assigned' or 'done',
-                    context['stock_date_end'],
-                    context['stock_date_end'],
-                    ]
+                move.state.in_(['done',
+                        context.get('stock_assign') and 'assigned' or 'done'])
+                & (
+                    (
+                        (move.effective_date == None)
+                        & (move.planned_date <= context['stock_date_end'])
+                        )
+                    | (move.effective_date <= context['stock_date_end'])
+                    )
+                )
         # future date end: filter move on state done and date
         # before today, or on all state and date between today and
         # date_end.
         else:
             state_date_clause = (
-                '('
-                    '('
-                        '(state in (%s, %s)) '
-                    'AND '
-                        '('
-                            '('
-                                '(effective_date IS NULL) '
-                            'AND '
-                                '(planned_date <= %s) '
-                            ') '
-                        'OR '
-                            '(effective_date <= %s)'
-                        ')'
-                    ')'
-                'OR '
-                    '('
-                        '(state in (%s, %s, %s)) '
-                    'AND '
-                        '('
-                            '('
-                                '(effective_date IS NULL) '
-                            'AND '
-                                '(COALESCE(planned_date, %s) <= %s) '
-                            'AND '
-                                '(COALESCE(planned_date, %s) >= %s)'
-                            ')'
-                        'OR '
-                            '('
-                                '(effective_date <= %s) '
-                            'AND '
-                                '(effective_date >= %s)'
-                            ')'
-                        ')'
-                    ')'
-                ')')
-
-            state_date_vals = [
-                'done', context.get('stock_assign') and 'assigned' or 'done',
-                today, today,
-                'done', 'assigned', 'draft',
-                datetime.date.max, context['stock_date_end'],
-                datetime.date.max, today,
-                context['stock_date_end'], today,
-                ]
+                (move.state.in_(['done',
+                            context.get('stock_assign') and 'assigned'
+                            or 'done'])
+                    & (
+                        (
+                            (move.effective_date == None)
+                            & (move.planned_date <= today)
+                            )
+                        | (move.effective_date <= today)
+                        )
+                    )
+                | (move.state.in_(['done', 'assigned', 'draft'])
+                    & (
+                        (
+                            (move.effective_date == None)
+                            & (Coalesce(move.planned_date, datetime.date.max)
+                                <= context['stock_date_end'])
+                            & (Coalesce(move.planned_date, datetime.date.max)
+                                >= today)
+                            )
+                        | (
+                            (move.effective_date <= context['stock_date_end'])
+                            & (move.effective_date >= today)
+                            )
+                        )
+                    )
+                )
 
         if context.get('stock_date_start'):
             if context['stock_date_start'] > today:
-                state_date_clause += ('AND '
-                    '('
-                        '(state in (%s, %s, %s)) '
-                    'AND '
-                        '('
-                            '('
-                                '(effective_date IS NULL) '
-                            'AND '
-                                '('
-                                    '(planned_date >= %s) '
-                                'OR '
-                                    '(planned_date IS NULL)'
-                                ')'
-                            ') '
-                        'OR '
-                            '(effective_date >= %s)'
-                        ')'
-                    ')')
-                state_date_vals.extend(['done', 'assigned', 'draft',
-                     context['stock_date_start'], context['stock_date_start']])
+                state_date_clause &= (
+                    move.state.in_(['done', 'assigned', 'draft'])
+                    & (
+                        (
+                            (move.effective_date == None)
+                            & (
+                                (move.planned_date >=
+                                    context['stock_date_start'])
+                                | (move.planned_date == None)
+                                )
+                            )
+                        | (move.effective_date >= context['stock_date_start'])
+                        )
+                    )
             else:
-                state_date_clause += ('AND '
-                    '('
-                        '('
-                            '(state in (%s, %s, %s)) '
-                        'AND '
-                            '('
-                                '('
-                                    '(effective_date IS NULL) '
-                                'AND '
-                                    '('
-                                        '(planned_date >= %s) '
-                                    'OR '
-                                        '(planned_date IS NULL)'
-                                    ') '
-                                ')'
-                            'OR '
-                                '(effective_date >= %s)'
-                            ')'
-                        ') '
-                    'OR '
-                        '('
-                            '(state in (%s, %s)) '
-                        'AND '
-                            '('
-                                '('
-                                    '(effective_date IS NULL) '
-                                'AND '
-                                    '('
-                                        '('
-                                            '(planned_date >= %s) '
-                                        'AND '
-                                            '(planned_date < %s)'
-                                        ') '
-                                    'OR '
-                                        '(planned_date IS NULL)'
-                                    ')'
-                                ') '
-                            'OR '
-                                '('
-                                    '(effective_date >= %s) '
-                                'AND '
-                                    '(effective_date < %s)'
-                                ')'
-                            ')'
-                        ')'
-                    ')')
-
-                state_date_vals.extend(['done', 'assigned', 'draft',
-                    today, today,
-                    'done',
-                    context.get('stock_assign') and 'assigned' or 'done',
-                    context['stock_date_start'], today,
-                    context['stock_date_start'], today,
-                    ])
+                state_date_clause &= (
+                    (
+                        move.state.in_(['done', 'assigned', 'draft'])
+                        & (
+                            (
+                                (move.effective_date == None)
+                                & (
+                                    (move.planned_date >= today)
+                                    | (move.planned_date == None)
+                                    )
+                                )
+                            | (move.effective_date >= today)
+                            )
+                        )
+                    | (
+                        move.state.in_(['done',
+                                context.get('stock_assign') and 'assigned'
+                                or 'done'])
+                        & (
+                            (
+                                (move.effective_date == None)
+                                & (
+                                    (
+                                        (move.planned_date >=
+                                            context['stock_date_start'])
+                                        & (move.planned_date < today)
+                                        )
+                                    | (move.planned_date == None)
+                                    )
+                                )
+                            | (
+                                (move.effective_date >=
+                                    context['stock_date_start'])
+                                & (move.effective_date < today)
+                                )
+                            )
+                        )
+                    )
         elif PeriodCache:
             with Transaction().set_user(0, set_context=True):
                 periods = Period.search([
@@ -402,107 +369,91 @@ class Product:
                         ], order=[('date', 'DESC')], limit=1)
             if periods:
                 period, = periods
-                state_date_clause += (' AND '
-                    '(COALESCE(effective_date, planned_date, %s) > %s)')
-                state_date_vals.extend([datetime.date.max, period.date])
-                period_vals[0] = period.id
+                state_date_clause &= (
+                    Coalesce(move.effective_date, move.planned_date,
+                        datetime.date.max) > period.date)
 
         if with_childs:
-            query, args = Location.search([
+            location_query = Location.search([
                     ('parent', 'child_of', location_ids),
-                    ], query_string=True, order=[])
-            where_clause = " IN (" + query + ") "
-            where_vals = args
+                    ], query=True, order=[])
         else:
-            where_clause = " IN (" + \
-                ",".join(('%s',) * len(location_ids)) + ") "
-            where_vals = location_ids[:]
+            location_query = location_ids[:]
 
-        if move_rule_query:
-            move_rule_query = " AND " + move_rule_query + " "
-
-        product_template_join = ""
-        product_template_join_period = ""
+        from_ = move
+        if PeriodCache:
+            from_period = period_cache
         if product_ids:
-            red_clause, red_vals = reduce_ids('product', product_ids)
-            where_clause += "AND " + red_clause
-            where_vals += red_vals
-        else:
-            where_clause += "AND product_template.active = %s"
-            where_vals.append(True)
-            product_template_join = (
-                "JOIN product_product "
-                    "ON (stock_move.product = product_product.id) "
-                "JOIN product_template "
-                    "ON (product_product.template = "
-                        "product_template.id) ")
+            where = reduce_ids(move.product, product_ids)
             if PeriodCache:
-                product_template_join_period = (
-                    "JOIN product_product "
-                        'ON ("' + PeriodCache._table + '".product '
-                            "= product_product.id) "
-                    "JOIN product_template "
-                        "ON (product_product.template = product_template.id) ")
+                where_period = reduce_ids(period_cache.product, product_ids)
+        else:
+            where = where_period = template.active == True
+            from_ = from_.join(product, condition=move.product == product.id)
+            from_ = from_.join(template,
+                condition=product.template == template.id)
+            if PeriodCache:
+                from_period = from_period.join(product,
+                    condition=period_cache.product == product.id)
+                from_period = from_period.join(template,
+                    condition=product.template == template.id)
 
         if context.get('stock_destinations'):
             destinations = context.get('stock_destinations')
-            dest_clause_from = " AND from_location in ("
-            dest_clause_from += ",".join(('%s',) * len(destinations))
-            dest_clause_from += ") "
-            dest_clause_to = " AND to_location in ("
-            dest_clause_to += ",".join(('%s',) * len(destinations))
-            dest_clause_to += ") "
-            dest_vals = destinations
+            dest_clause_from = move.from_location.in_(destinations)
+            dest_clause_to = move.to_location.in_(destinations)
 
-            dest_clause_period = (' AND location IN ('
-                + ','.join(('%s',) * len(destinations)) + ') ')
+            if PeriodCache:
+                dest_clause_period = period_cache.location.in_(destinations)
 
         else:
-            dest_clause_from = dest_clause_to = dest_clause_period = ""
-            dest_vals = []
+            dest_clause_from = dest_clause_to = dest_clause_period = \
+                Literal(True)
 
         # The main select clause is a union between three similar subqueries.
         # One that sums incoming moves towards locations, one that sums
         # outgoing moves and one for the period cache.  UNION ALL is used
         # because we already know that there will be no duplicates.
-        group_keys = ', '.join(grouping)
-        select_clause = (
-                "SELECT location, " + group_keys + ", "
-                    "SUM(quantity) AS quantity "
-                "FROM ( "
-                    "SELECT to_location AS location, " + group_keys + ", "
-                        "SUM(internal_quantity) AS quantity "
-                    "FROM stock_move " + product_template_join + " "
-                    "WHERE (%s) "
-                        "AND to_location %s "
-                    "GROUP BY to_location, " + group_keys +
-                    " UNION ALL "
-                    "SELECT from_location AS location, " + group_keys + ", "
-                        "-SUM(internal_quantity) AS quantity "
-                    "FROM stock_move " + product_template_join + " "
-                    "WHERE (%s) "
-                        "AND from_location %s "
-                    "GROUP BY from_location, " + group_keys +
-                    (" UNION ALL "
-                    "SELECT location, " + group_keys + ", "
-                        "internal_quantity AS quantity "
-                    'FROM "' + PeriodCache._table + '" '
-                        + product_template_join_period + " "
-                    "WHERE (%s) "
-                        "AND location %s " if PeriodCache else " ") +
-                ") AS T GROUP BY T.location, " + ', '.join(
-                'T.' + x for x in grouping))
-
-        cursor.execute(select_clause % ((
-                    state_date_clause,
-                    where_clause + move_rule_query + dest_clause_from,
-                    state_date_clause,
-                    where_clause + move_rule_query + dest_clause_to)
-                + ((period_clause, where_clause + dest_clause_period)
-                    if PeriodCache else ())),
-            state_date_vals + where_vals + move_rule_val + dest_vals +
-            state_date_vals + where_vals + move_rule_val + dest_vals +
-            (period_vals + where_vals + dest_vals if PeriodCache else []))
+        move_keys = [Column(move, key).as_(key) for key in grouping]
+        query = from_.select(move.to_location.as_('location'),
+            Sum(move.internal_quantity).as_('quantity'),
+            *move_keys,
+            where=state_date_clause
+            & where
+            & move.to_location.in_(location_query)
+            & move.id.in_(move_rule_query)
+            & dest_clause_from,
+            group_by=[move.to_location] + move_keys)
+        query = Union(query, from_.select(move.from_location.as_('location'),
+                (-Sum(move.internal_quantity)).as_('quantity'),
+                *move_keys,
+                where=state_date_clause
+                & where
+                & move.from_location.in_(location_query)
+                & move.id.in_(move_rule_query)
+                & dest_clause_to,
+                group_by=[move.from_location] + move_keys),
+            all_=True)
+        if PeriodCache:
+            period_keys = [Column(period_cache, key).as_(key)
+                for key in grouping]
+            query = Union(query, from_period.select(
+                    period_cache.location.as_('location'),
+                    period_cache.internal_quantity.as_('quantity'),
+                    *period_keys,
+                    where=(period_cache.period
+                        == (period.id if period else None))
+                    & where_period
+                    & period_cache.location.in_(location_query)
+                    & dest_clause_period),
+                all_=True)
+        query_keys = [Column(query, key).as_(key) for key in grouping]
+        columns = ([query.location.as_('location')]
+            + query_keys
+            + [Sum(query.quantity).as_('quantity')])
+        query = query.select(*columns,
+            group_by=[query.location] + query_keys)
+        cursor.execute(*query)
         raw_lines = cursor.fetchall()
 
         product_getter = itemgetter(grouping.index('product') + 1)
@@ -648,24 +599,27 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Location = pool.get('stock.location')
+        move = Move.__table__()
 
         product_id = Transaction().context.get('product')
         warehouse_id = Transaction().context.get('warehouse', -1)
-        warehouse_clause, warehouse_params = Location.search([
+        warehouse_query = Location.search([
                 ('parent', 'child_of', [warehouse_id]),
-                ], query_string=True, order=[])
-        return ('SELECT MAX(id) AS id, '
-                '0 AS create_uid, '
-                'NOW() AS create_date, '
-                'NULL AS write_uid, '
-                'NULL AS write_date, '
-                'COALESCE(effective_date, planned_date) AS date '
-            'FROM "' + Move._table + '" '
-            'WHERE product = %s '
-                'AND (from_location IN (' + warehouse_clause + ') '
-                    'OR to_location IN (' + warehouse_clause + ')) '
-                'AND COALESCE(effective_date, planned_date) IS NOT NULL '
-            'GROUP BY date, product', [product_id] + 2 * warehouse_params)
+                ], query=True, order=[])
+        date_column = Coalesce(move.effective_date, move.planned_date
+            ).as_('date')
+        return move.select(
+            Max(move.id).as_('id'),
+            Literal(0).as_('create_uid'),
+            Now().as_('create_date'),
+            Literal(None).as_('write_uid'),
+            Literal(None).as_('write_date'),
+            date_column,
+            where=(move.product == product_id)
+            & (move.from_location.in_(warehouse_query)
+                | move.to_location.in_(warehouse_query))
+            & (Coalesce(move.effective_date, move.planned_date) != None),
+            group_by=(date_column, move.product))
 
     @classmethod
     def get_quantity(cls, lines, name):

@@ -11,5 +11,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="effective_date"/>
     <field name="state"/>
     <field name="unit_digits" tree_invisible="1"/>
-    <field name="create_date" tree_invisible="1"/>
 </tree>

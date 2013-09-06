@@ -4,7 +4,7 @@ import datetime
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateAction
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -104,6 +104,7 @@ class Location(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         super(Location, cls).__register__(module_name)
         cursor = Transaction().cursor
 

@@ -9,5 +9,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="customer"/>
     <field name="delivery_address"/>
     <field name="state"/>
-    <field name="create_date" tree_invisible="1"/>
 </tree>
