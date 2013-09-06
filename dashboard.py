@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval
 
 __all__ = ['DashboardAction']
@@ -13,9 +13,7 @@ class DashboardAction(ModelSQL, ModelView):
     __name__ = "dashboard.action"
     user = fields.Many2One('res.user', 'User', required=True,
             select=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             required=True, ondelete='CASCADE', domain=[
                 ('res_model', '!=', None),
@@ -35,6 +33,7 @@ class DashboardAction(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -42,3 +41,8 @@ class DashboardAction(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
