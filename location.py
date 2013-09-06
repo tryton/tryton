@@ -3,7 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Eval, Bool
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['ProductLocation', 'ShipmentIn', 'ShipmentOutReturn']
@@ -27,9 +27,7 @@ class ProductLocation(ModelSQL, ModelView):
             ('parent', 'child_of', If(Bool(Eval('warehouse')),
                     [Eval('warehouse')], [])),
             ], depends=['warehouse'])
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
 
     @classmethod
     def __setup__(cls):
@@ -38,6 +36,7 @@ class ProductLocation(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -45,6 +44,11 @@ class ProductLocation(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
 
 class ShipmentIn:
