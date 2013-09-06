@@ -1,5 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from sql import Column
+from sql.aggregate import Max
+from sql.conditionals import Coalesce
+from sql.functions import Trim, Substring
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateAction
 from trytond.pyson import PYSONEncoder
@@ -22,28 +27,32 @@ class ProductCostHistory(ModelSQL, ModelView):
         super(ProductCostHistory, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
 
-    @staticmethod
-    def table_query():
+    @classmethod
+    def table_query(cls):
         pool = Pool()
         Property = pool.get('ir.property')
         Field = pool.get('ir.model.field')
-        return ('SELECT '
-                'MAX(h.__id) AS id, '
-                'MAX(h.create_uid) AS create_uid, '
-                'MAX(h.create_date) AS create_date, '
-                'MAX(h.write_uid) AS write_uid, '
-                'MAX(h.write_date) AS write_date, '
-                'COALESCE(h.write_date, h.create_date) AS date, '
-                'CAST(TRIM(\',\' FROM SUBSTRING(h.res FROM \',.*\')) AS '
-                    'INTEGER) AS template, '
-                'CAST(TRIM(\',\' FROM h.value) AS NUMERIC) AS cost_price '
-            'FROM "' + Property._table + '__history" h '
-                'JOIN "' + Field._table + '" f ON (f.id = h.field) '
-            'WHERE f.name = \'cost_price\' '
-                'AND h.res LIKE \'product.template,%%\' '
-            'GROUP BY h.id, COALESCE(h.write_date, h.create_date), h.res, '
-                'h.value',
-            [])
+        property_history = Property.__table_history__()
+        field = Field.__table__()
+        return property_history.join(field,
+            condition=field.id == property_history.field
+            ).select(Max(Column(property_history, '__id')).as_('id'),
+                Max(property_history.create_uid).as_('create_uid'),
+                Max(property_history.create_date).as_('create_date'),
+                Max(property_history.write_uid).as_('write_uid'),
+                Max(property_history.write_date).as_('write_date'),
+                Coalesce(property_history.write_date,
+                    property_history.create_date).as_('date'),
+                Trim(Substring(property_history.res, ',.*'), 'LEADING', ','
+                    ).cast(cls.template.sql_type().base).as_('template'),
+                Trim(property_history.value, 'LEADING', ','
+                    ).cast(cls.cost_price.sql_type().base).as_('cost_price'),
+                where=(field.name == 'cost_price')
+                & property_history.res.like('product.template,%'),
+                group_by=(property_history.id,
+                    Coalesce(property_history.write_date,
+                        property_history.create_date),
+                    property_history.res, property_history.value))
 
 
 class OpenProductCostHistory(Wizard):
