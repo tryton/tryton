@@ -4,7 +4,7 @@ from decimal import Decimal
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pool import Pool
 
 __all__ = ['Statement', 'Line']
@@ -93,6 +93,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
 
         # Migration from 1.8: new field company
