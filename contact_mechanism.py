@@ -3,7 +3,7 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 
 __all__ = ['ContactMechanism']
 
@@ -39,9 +39,7 @@ class ContactMechanism(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
     active = fields.Boolean('Active', select=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
@@ -92,6 +90,7 @@ class ContactMechanism(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -99,6 +98,11 @@ class ContactMechanism(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_type():

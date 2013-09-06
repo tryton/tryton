@@ -34,8 +34,6 @@ class Party(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, select=True,
         states=STATES, depends=DEPENDS)
     code = fields.Char('Code', required=True, select=True,
-        order_field=("%(table)s.code_length %(order)s, "
-            "%(table)s.code %(order)s"),
         states={
             'readonly': Eval('code_readonly', True),
             },
@@ -84,6 +82,11 @@ class Party(ModelSQL, ModelView):
                     '"%(party)s".'),
                 })
         cls._order.insert(0, ('name', 'ASC'))
+
+    @staticmethod
+    def order_code(tables):
+        table, _ = tables[None]
+        return [table.code_length, table.code]
 
     @staticmethod
     def default_active():
