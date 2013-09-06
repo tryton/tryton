@@ -3,11 +3,16 @@
 import datetime
 from itertools import chain
 from decimal import Decimal
+from sql import Table, Literal
+from sql.functions import Overlay, Position
+from sql.aggregate import Count
+from sql.operators import Concat
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.pyson import Eval, Bool, If, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -194,18 +199,34 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        model_data = Table('ir_model_data')
+        model_field = Table('ir_model_field')
+        sql_table = cls.__table__()
+
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model_data "
-            "SET fs_id = REPLACE(fs_id, 'packing', 'shipment') "
-            "WHERE fs_id like '%%packing%%' AND module = %s",
-            (module_name,))
-        cursor.execute("UPDATE ir_model_field "
-            "SET relation = REPLACE(relation, 'packing', 'shipment'), "
-                "name = REPLACE(name, 'packing', 'shipment') "
-            "WHERE (relation like '%%packing%%' "
-                "OR name like '%%packing%%') AND module = %s",
-            (module_name,))
+        cursor.execute(*model_data.update(
+                columns=[model_data.fs_id],
+                values=[Overlay(model_data.fs_id, 'shipment',
+                        Position('packing', model_data.fs_id),
+                        len('packing'))],
+                where=model_data.fs_id.like('%packing%')
+                & (model_data.module == module_name)))
+        cursor.execute(*model_field.update(
+                columns=[model_field.relation],
+                values=[Overlay(model_field.relation, 'shipment',
+                        Position('packing', model_field.relation),
+                        len('packing'))],
+                where=model_field.relation.like('%packing%')
+                & (model_field.module == module_name)))
+        cursor.execute(*model_field.update(
+                columns=[model_field.name],
+                values=[Overlay(model_field.name, 'shipment',
+                        Position('packing', model_field.name),
+                        len('packing'))],
+                where=model_field.name.like('%packing%')
+                & (model_field.module == module_name)))
         table = TableHandler(cursor, cls, module_name)
         table.column_rename('packing_state', 'shipment_state')
 
@@ -213,9 +234,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
         # Migration from 1.2: rename packing to shipment in
         # invoice_method values
-        cursor.execute("UPDATE " + cls._table + " "
-            "SET invoice_method = 'shipment' "
-            "WHERE invoice_method = 'packing'")
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.invoice_method],
+                values=['shipment'],
+                where=sql_table.invoice_method == 'packing'))
 
         table = TableHandler(cursor, cls, module_name)
         # Migration from 2.2: warehouse is no more required
@@ -286,6 +308,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         PaymentTerm = pool.get('account.invoice.payment_term')
         Currency = pool.get('currency.currency')
         cursor = Transaction().cursor
+        table = self.__table__()
         changes = {
             'invoice_address': None,
             'payment_term': None,
@@ -299,13 +322,13 @@ class Purchase(Workflow, ModelSQL, ModelView):
             if self.party.supplier_payment_term:
                 payment_term = self.party.supplier_payment_term
 
-            subquery = cursor.limit_clause('SELECT currency '
-                'FROM "' + self._table + '" '
-                'WHERE party = %s '
-                'ORDER BY id DESC', 10)
-            cursor.execute('SELECT currency FROM (' + subquery + ') AS p '
-                'GROUP BY currency '
-                'ORDER BY COUNT(1) DESC', (self.party.id,))
+            subquery = table.select(table.currency,
+                where=table.party == self.party.id,
+                order_by=table.id,
+                limit=10)
+            cursor.execute(*subquery.select(subquery.currency,
+                    group_by=subquery.currency,
+                    order_by=Count(Literal(1)).desc))
             row = cursor.fetchone()
             if row:
                 currency_id, = row
@@ -799,9 +822,7 @@ class PurchaseLine(ModelSQL, ModelView):
     _rec_name = 'description'
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
             ondelete='CASCADE', select=True, required=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     type = fields.Selection([
         ('line', 'Line'),
         ('subtotal', 'Subtotal'),
@@ -920,18 +941,26 @@ class PurchaseLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(PurchaseLine, cls).__register__(module_name)
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
+        super(PurchaseLine, cls).__register__(module_name)
         table = TableHandler(cursor, cls, module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET note = comment')
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.note],
+                    values=[sql_table.comment]))
             table.drop_column('comment', exception=True)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_type():
@@ -1427,9 +1456,7 @@ class ProductSupplier(ModelSQL, ModelView):
             ondelete='CASCADE', select=True, on_change=['party'])
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     prices = fields.One2Many('purchase.product_supplier.price',
             'product_supplier', 'Prices')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -1449,8 +1476,10 @@ class ProductSupplier(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
+        sql_table = cls.__table__()
 
         # Migration from 2.2 new field currency
         created_currency = table.column_exist('currency')
@@ -1460,27 +1489,32 @@ class ProductSupplier(ModelSQL, ModelView):
         # Migration from 2.2 fill currency
         if not created_currency:
             Company = Pool().get('company.company')
+            company = Company.__table__()
             limit = cursor.IN_MAX
-            cursor.execute('SELECT count(id) FROM "' + cls._table + '"')
+            cursor.execute(*sql_table.select(Count(sql_table.id)))
             product_supplier_count, = cursor.fetchone()
             for offset in range(0, product_supplier_count, limit):
-                cursor.execute(cursor.limit_clause(
-                        'SELECT p.id, c.currency '
-                        'FROM "' + cls._table + '" AS p '
-                        'INNER JOIN "' + Company._table + '" AS c '
-                            'ON p.company = c.id '
-                        'ORDER BY p.id',
-                        limit, offset))
+                cursor.execute(*sql_table.join(company,
+                        condition=sql_table.company == company.id
+                        ).select(sql_table.id, company.currency,
+                        order_by=sql_table.id,
+                        limit=limit, offset=offset))
                 for product_supplier_id, currency_id in cursor.fetchall():
-                    cursor.execute('UPDATE "' + cls._table + '" '
-                        'SET currency = %s '
-                        'WHERE id = %s', (currency_id, product_supplier_id))
+                    cursor.execute(*sql_table.update(
+                            columns=[sql_table.currency],
+                            values=[currency_id],
+                            where=sql_table.id == product_supplier_id))
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
         # Migration from 2.6: drop required on delivery_time
         table.not_null_action('delivery_time', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_company():
@@ -1499,10 +1533,11 @@ class ProductSupplier(ModelSQL, ModelView):
             'currency': self.default_currency(),
             }
         if self.party:
-            cursor.execute('SELECT currency FROM "' + self._table + '" '
-                'WHERE party = %s '
-                'GROUP BY currency '
-                'ORDER BY COUNT(1) DESC', (self.party.id,))
+            table = self.__table__()
+            cursor.execute(*table.select(table.currency,
+                    where=table.party == self.party.id,
+                    group_by=table.currency,
+                    order_by=Count(Literal(1)).desc))
             row = cursor.fetchone()
             if row:
                 changes['currency'], = row
@@ -1704,7 +1739,9 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
 
         super(Move, cls).__register__(module_name)
 
@@ -1712,9 +1749,10 @@ class Move(ModelSQL, ModelView):
 
         # Migration from 2.6: remove purchase_line
         if table.column_exist('purchase_line'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET origin = \'purchase.line,\' || purchase_line '
-                'WHERE purchase_line IS NOT NULL')
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.origin],
+                    values=[Concat('purchase.line,', sql_table.purchase_line)],
+                    where=sql_table.purchase_line != None))
             table.drop_column('purchase_line')
 
     @classmethod
@@ -1822,9 +1860,12 @@ class OpenSupplier(Wizard):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Wizard = pool.get('ir.action.wizard')
+        Purchase = pool.get('purchase.purchase')
         cursor = Transaction().cursor
+        purchase = Purchase.__table__()
 
-        cursor.execute("SELECT DISTINCT(party) FROM purchase_purchase")
+        cursor.execute(*purchase.select(purchase.party,
+                group_by=purchase.party))
         supplier_ids = [line[0] for line in cursor.fetchall()]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', supplier_ids)])
@@ -1853,11 +1894,15 @@ class HandleShipmentExceptionAsk(ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        model = Table('ir_model')
         # Migration from 1.2: packing renamed into shipment
-        cursor.execute("UPDATE ir_model "
-            "SET model = REPLACE(model, 'packing', 'shipment') "
-            "WHERE model like '%%packing%%' AND module = %s",
-            (module_name,))
+        cursor.execute(*model.update(
+                columns=[model.model],
+                values=[Overlay(model.model, 'shipment',
+                        Position('packing', model.model),
+                        len('packing'))],
+                where=model.model.like('%packing%')
+                & (model.module == module_name)))
         super(HandleShipmentExceptionAsk, cls).__register__(module_name)
 
 

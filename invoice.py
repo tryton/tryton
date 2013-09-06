@@ -1,11 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from functools import wraps
+from sql import Table
 
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.backend import TableHandler
+from trytond import backend
 
 __all__ = ['Invoice', 'InvoiceLine']
 __metaclass__ = PoolMeta
@@ -66,11 +67,14 @@ class Invoice:
 
     @classmethod
     def delete(cls, invoices):
+        pool = Pool()
+        Purchase_Invoice = pool.get('purchase.purchase-account.invoice')
+        purchase_invoice = Purchase_Invoice.__table__()
         cursor = Transaction().cursor
         if invoices:
-            cursor.execute('SELECT id FROM purchase_invoices_rel '
-                'WHERE invoice IN (' + ','.join(('%s',) * len(invoices)) + ')',
-                [i.id for i in invoices])
+            cursor.execute(*purchase_invoice.select(purchase_invoice.id,
+                    where=purchase_invoice.invoice.in_(
+                        [i.id for i in invoices])))
             if cursor.fetchone():
                 cls.raise_user_error('delete_purchase_invoice')
         super(Invoice, cls).delete(invoices)
@@ -118,22 +122,25 @@ class InvoiceLine:
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
 
         super(InvoiceLine, cls).__register__(module_name)
 
         # Migration from 2.6: remove purchase_lines
-        rel_table = 'purchase_line_invoice_lines_rel'
-        if TableHandler.table_exist(cursor, rel_table):
-            cursor.execute('SELECT purchase_line, invoice_line '
-                'FROM "' + rel_table + '"')
+        rel_table_name = 'purchase_line_invoice_lines_rel'
+        if TableHandler.table_exist(cursor, rel_table_name):
+            rel_table = Table(rel_table_name)
+            cursor.execute(*rel_table.select(
+                    rel_table.purchase_line, rel_table.invoice_line))
             for purchase_line, invoice_line in cursor.fetchall():
-                cursor.execute('UPDATE "' + cls._table + '" '
-                    'SET origin = %s '
-                    'WHERE id = %s',
-                    ('purchase.line,%s' % purchase_line, invoice_line))
+                cursor.execute(*sql_table.update(
+                        columns=[sql_table.origin],
+                        values=['purchase.line,%s' % purchase_line],
+                        where=sql_table.id == invoice_line))
             TableHandler.drop_table(cursor,
-                'purchase.line-account.invoice.line', rel_table)
+                'purchase.line-account.invoice.line', rel_table_name)
 
     @classmethod
     def _get_origin(cls):

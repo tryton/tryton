@@ -15,5 +15,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="shipment_state"/>
     <field name="description"/>
     <field name="currency_digits" tree_invisible="1"/>
-    <field name="create_date" tree_invisible="1"/>
 </tree>
