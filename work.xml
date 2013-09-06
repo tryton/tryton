@@ -25,7 +25,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_tree">
             <field name="name">Works</field>
             <field name="res_model">timesheet.work</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_tree_view1">
@@ -71,7 +71,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_tree2">
             <field name="name">Works</field>
             <field name="res_model">timesheet.work</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_tree2_view1">
@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_form2">
             <field name="name">Hours per Work</field>
             <field name="res_model">timesheet.work</field>
-            <field name="domain">[('parent', '=', Get(Eval('timesheet.act_work_tree2', {}), 'id', False))]</field>
+            <field name="domain">[('parent', '=', Get(Eval('timesheet.act_work_tree2', {}), 'id', None))]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_form2_view1">

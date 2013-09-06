@@ -1,8 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from sql import Literal
+from sql.aggregate import Max, Sum
+from sql.conditionals import Coalesce
+from sql.functions import Extract
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.backend import FIELDS
 from trytond.pyson import Eval, PYSONEncoder, Date, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -126,25 +130,24 @@ class HoursEmployee(ModelSQL, ModelView):
 
     @staticmethod
     def table_query():
-        clause = ' '
-        args = [True]
+        pool = Pool()
+        Line = pool.get('timesheet.line')
+        line = Line.__table__()
+        where = Literal(True)
         if Transaction().context.get('start_date'):
-            clause += 'AND date >= %s '
-            args.append(Transaction().context['start_date'])
+            where &= line.date >= Transaction().context['start_date']
         if Transaction().context.get('end_date'):
-            clause += 'AND date <= %s '
-            args.append(Transaction().context['end_date'])
-        return ('SELECT DISTINCT(employee) AS id, '
-                'MAX(create_uid) AS create_uid, '
-                'MAX(create_date) AS create_date, '
-                'MAX(write_uid) AS write_uid, '
-                'MAX(write_date) AS write_date, '
-                'employee, '
-                'SUM(COALESCE(hours, 0)) AS hours '
-            'FROM timesheet_line '
-            'WHERE %s '
-            + clause +
-            'GROUP BY employee', args)
+            where &= line.date <= Transaction().context['end_date']
+        return line.select(
+            line.employee.as_('id'),
+            Max(line.create_uid).as_('create_uid'),
+            Max(line.create_date).as_('create_date'),
+            Max(line.write_uid).as_('write_uid'),
+            Max(line.write_date).as_('write_date'),
+            line.employee,
+            Sum(Coalesce(line.hours, 0)).as_('hours'),
+            where=where,
+            group_by=line.employee)
 
 
 class OpenHoursEmployeeStart(ModelView):
@@ -192,23 +195,25 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
 
     @classmethod
     def table_query(cls):
-        type_name = FIELDS[cls.year._type].sql_type(cls.year)[0]
-        return ('SELECT id, create_uid, create_date, write_uid, write_date, '
-                'CAST(year AS ' + type_name + ') AS year, week, '
-                'employee, hours '
-            'FROM ('
-                'SELECT EXTRACT(WEEK FROM date) + '
-                    'EXTRACT(YEAR FROM date) * 100 + '
-                    'employee * 1000000 AS id, '
-                'MAX(create_uid) AS create_uid, '
-                'MAX(create_date) AS create_date, '
-                'MAX(write_uid) AS write_uid, '
-                'MAX(write_date) AS write_date, '
-                'EXTRACT(YEAR FROM date) AS year, '
-                'EXTRACT(WEEK FROM date) AS week, employee, '
-                'SUM(COALESCE(hours, 0)) AS hours '
-            'FROM timesheet_line '
-            'GROUP BY year, week, employee) AS ' + cls._table, [])
+        pool = Pool()
+        Line = pool.get('timesheet.line')
+        line = Line.__table__()
+        type_name = cls.year.sql_type().base
+        year_column = Extract('YEAR', line.date).cast(type_name).as_('year')
+        week_column = Extract('WEEK', line.date).as_('week')
+        return line.select(
+            Max(Extract('WEEK', line.date)
+                + Extract('YEAR', line.date) * 100
+                + line.employee * 1000000).as_('id'),
+            Max(line.create_uid).as_('create_uid'),
+            Max(line.create_date).as_('create_date'),
+            Max(line.write_uid).as_('write_uid'),
+            Max(line.write_date).as_('write_date'),
+            year_column,
+            week_column,
+            line.employee,
+            Sum(Coalesce(line.hours, 0)).as_('hours'),
+            group_by=(year_column, week_column, line.employee))
 
 
 class HoursEmployeeMonthly(ModelSQL, ModelView):
@@ -228,20 +233,22 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
 
     @classmethod
     def table_query(cls):
-        type_name = FIELDS[cls.year._type].sql_type(cls.year)[0]
-        return ('SELECT id, create_uid, create_date, write_uid, write_date, '
-                'CAST(year AS ' + type_name + ') AS year, month, '
-                'employee, hours '
-            'FROM ('
-                'SELECT EXTRACT(MONTH FROM date) + '
-                    'EXTRACT(YEAR FROM date) * 100 + '
-                    'employee * 1000000 AS id, '
-                'MAX(create_uid) AS create_uid, '
-                'MAX(create_date) AS create_date, '
-                'MAX(write_uid) AS write_uid, '
-                'MAX(write_date) AS write_date, '
-                'EXTRACT(YEAR FROM date) AS year, '
-                'EXTRACT(MONTH FROM date) AS month, employee, '
-                'SUM(COALESCE(hours, 0)) AS hours '
-            'FROM timesheet_line '
-            'GROUP BY year, month, employee) AS ' + cls._table, [])
+        pool = Pool()
+        Line = pool.get('timesheet.line')
+        line = Line.__table__()
+        type_name = cls.year.sql_type().base
+        year_column = Extract('YEAR', line.date).cast(type_name).as_('year')
+        month_column = Extract('MONTH', line.date).as_('month')
+        return line.select(
+            Max(Extract('MONTH', line.date)
+                + Extract('YEAR', line.date) * 100
+                + line.employee * 1000000).as_('id'),
+            Max(line.create_uid).as_('create_uid'),
+            Max(line.create_date).as_('create_date'),
+            Max(line.write_uid).as_('write_uid'),
+            Max(line.write_date).as_('write_date'),
+            year_column,
+            month_column,
+            line.employee,
+            Sum(Coalesce(line.hours, 0)).as_('hours'),
+            group_by=(year_column, month_column, line.employee))

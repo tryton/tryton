@@ -1,5 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from sql import Literal
+from sql.aggregate import Sum
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Not, Bool, Eval
@@ -105,27 +108,26 @@ class Work(ModelSQL, ModelView):
         in_max = cursor.IN_MAX
         context = transaction.context
 
+        table_w = cls.__table__()
+        table_c = cls.__table__()
+        line = Line.__table__()
         ids = [w.id for w in works]
         hours = dict.fromkeys(ids, 0)
-        date_cond = ''
-        date_args = []
+        where = Literal(True)
         if context.get('from_date'):
-            date_cond = ' AND date >= %s'
-            date_args.append(context['from_date'])
+            where &= line.date >= context['from_date']
         if context.get('to_date'):
-            date_cond += ' AND date <= %s'
-            date_args.append(context['to_date'])
+            where &= line.date <= context['to_date']
         for i in range(0, len(ids), in_max):
             sub_ids = ids[i:i + in_max]
-            red_sql, red_ids = reduce_ids('w.id', sub_ids)
-            cursor.execute('SELECT w.id, SUM(l.hours) '
-                'FROM "' + cls._table + '" AS w '
-                'JOIN "' + cls._table + '" AS c '
-                    'ON c.left >= w.left AND c.right <= w.right '
-                'LEFT JOIN "' + Line._table + '" AS l '
-                    'ON l.work = c.id '
-                'WHERE ' + red_sql + ' ' + date_cond + ' '
-                'GROUP BY w.id', red_ids + date_args)
+            red_sql = reduce_ids(table_w.id, sub_ids)
+            cursor.execute(*table_w.join(table_c,
+                    condition=(table_c.left >= table_w.left)
+                    & (table_c.right <= table_w.right)
+                    ).join(line, 'LEFT', condition=line.work == table_c.id
+                    ).select(table_w.id, Sum(line.hours),
+                    where=red_sql & where,
+                    group_by=table_w.id))
             hours.update(dict(cursor.fetchall()))
         return hours
 
