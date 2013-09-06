@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_work_tree">
             <field name="name">Works Efforts</field>
             <field name="res_model">project.work</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_work_tree_view1">
@@ -70,7 +70,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_project_tree">
             <field name="name">Projects</field>
             <field name="res_model">project.work</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_project_tree_view1">

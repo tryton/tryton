@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -58,9 +58,12 @@ class Work(ModelSQL, ModelView):
             ('opened', 'Opened'),
             ('done', 'Done'),
             ], 'State', required=True, select=True)
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_type():
@@ -77,6 +80,7 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TimesheetWork = Pool().get('timesheet.work')
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table_project_work = TableHandler(cursor, cls, module_name)
         table_timesheet_work = TableHandler(cursor, TimesheetWork, module_name)
@@ -87,16 +91,16 @@ class Work(ModelSQL, ModelView):
 
         # Migration from 2.0: copy sequence from timesheet to project
         if migrate_sequence:
-            cursor.execute(
-                'SELECT t.sequence, t.id '
-                'FROM "%s" AS t '
-                'JOIN "%s" AS p ON (p.work = t.id)' % (
-                    TimesheetWork._table, cls._table))
+            project = cls.__table__()
+            timesheet = TimesheetWork.__table__()
+            cursor.execute(*timesheet.join(project,
+                    condition=project.work == timesheet.id
+                    ).select(timesheet.sequence, timesheet.id))
             for sequence, id_ in cursor.fetchall():
-                sql = ('UPDATE "%s" '
-                    'SET sequence = %%s '
-                    'WHERE work = %%s' % cls._table)
-                cursor.execute(sql, (sequence, id_))
+                cursor.execute(*project.update(
+                        columns=[project.sequence],
+                        values=[sequence],
+                        where=project.work == id_))
 
         # Migration from 2.4: drop required on sequence
         table_project_work.not_null_action('sequence', action='remove')
