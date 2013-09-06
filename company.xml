@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_company_tree">
             <field name="name">Companies</field>
             <field name="res_model">company.company</field>
-            <field name="domain">[('parent', '=', False)]</field>
+            <field name="domain">[('parent', '=', None)]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_company_tree_view1">
