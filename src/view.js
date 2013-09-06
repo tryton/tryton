@@ -1387,6 +1387,9 @@
         value_get: function() {
             var val = this.el.val();
             if ('relation' in this.attributes) {
+                if (val === '') {
+                    return null;
+                }
                 return parseInt(val, 10);
             }
             return val;
