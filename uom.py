@@ -1,6 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from sql import Table
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -50,10 +52,13 @@ class Uom(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        model_data = Table('ir_model_data')
         # Migration from 1.6: corrected misspelling of ounce (was once)
-        cursor.execute("UPDATE ir_model_data "
-            "SET fs_id = REPLACE(fs_id, 'uom_once', 'uom_ounce') "
-            "WHERE fs_id = 'uom_once' AND module = 'product'")
+        cursor.execute(*model_data.update(
+                columns=[model_data.fs_id],
+                values=['uom_ounce'],
+                where=(model_data.fs_id == 'uom_once')
+                & (model_data.module == 'product')))
         super(Uom, cls).__register__(module_name)
 
     @classmethod

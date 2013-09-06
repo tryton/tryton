@@ -4,7 +4,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.backend import TableHandler
+from trytond import backend
 from trytond.const import OPERATORS
 
 __all__ = ['Template', 'Product']
@@ -57,7 +57,9 @@ class Template(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        sql_table = cls.__table__()
 
         super(Template, cls).__register__(module_name)
 
@@ -66,11 +68,14 @@ class Template(ModelSQL, ModelView):
         table.not_null_action('category', 'remove')
 
         # Migration from 2.2: new types
-        cursor.execute('UPDATE "' + cls._table + '" '
-            'SET consumable = %s WHERE type = %s', (True, 'consumable'))
-        cursor.execute('UPDATE "' + cls._table + '" '
-            'SET type = %s WHERE type IN (%s, %s)',
-            ('goods', 'stockable', 'consumable'))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.consumable],
+                values=[True],
+                where=sql_table.type == 'consumable'))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.type],
+                values=['goods'],
+                where=sql_table.type.in_(['stockable', 'consumable'])))
 
     @staticmethod
     def default_active():
@@ -131,12 +136,19 @@ class Product(ModelSQL, ModelView):
         digits=(16, 4)), 'get_price_uom')
 
     @classmethod
-    def __setup__(cls):
-        super(Product, cls).__setup__()
-        # XXX order by id until order by joined name is possible
-        # but at least products are grouped
-        cls.rec_name.order_field = ("%(table)s.code %(order)s, "
-            "%(table)s.id %(order)s")
+    def order_rec_name(cls, tables):
+        pool = Pool()
+        Template = pool.get('product.template')
+        product, _ = tables[None]
+        if 'template' not in tables:
+            template = Template.__table__()
+            tables['template'] = {
+                None: (template, product.template == template.id),
+                }
+        else:
+            template = tables['template']
+        return [product.code] + Template.name.convert_order('name',
+            tables['template'], Template)
 
     @staticmethod
     def default_active():
