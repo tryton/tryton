@@ -8,7 +8,7 @@ from trytond.tools import safe_eval
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.backend import TableHandler
+from trytond import backend
 
 __all__ = ['PriceList', 'PriceListLine']
 
@@ -117,9 +117,7 @@ class PriceListLine(ModelSQL, ModelView):
     price_list = fields.Many2One('product.price_list', 'Price List',
             required=True, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product')
-    sequence = fields.Integer('Sequence',
-        order_field='(%(table)s.sequence IS NULL) %(order)s, '
-        '%(table)s.sequence %(order)s')
+    sequence = fields.Integer('Sequence')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'])
     unit_digits = fields.Function(fields.Integer('Unit Digits',
@@ -140,6 +138,7 @@ class PriceListLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         table = TableHandler(cursor, cls, module_name)
 
@@ -147,6 +146,11 @@ class PriceListLine(ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_formula():
