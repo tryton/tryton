@@ -1,3 +1,4 @@
+* Add Mixin class with helper to setup stock quantity fields
 * Allow to customize move creation of Inventory
 * Allow to customize unique constraint on Inventory
 * Allow specific grouping Period Cache

@@ -266,6 +266,17 @@ class StockTestCase(unittest.TestCase):
                 }, 6),
             ]
 
+            def tests_product_quantity(context, quantity):
+                with transaction.set_context(locations=[storage.id]):
+                    product_reloaded = self.product(product.id)
+                    if (not context.get('stock_date_end')
+                            or context['stock_date_end'] > today
+                            or context.get('forecast')):
+                        self.assertEqual(product_reloaded.forecast_quantity,
+                            quantity)
+                    else:
+                        self.assertEqual(product_reloaded.quantity, quantity)
+
             def test_products_by_location():
                 for context, quantity in tests:
                     with transaction.set_context(context):
@@ -274,6 +285,7 @@ class StockTestCase(unittest.TestCase):
                         else:
                             self.assertEqual(products_by_location(),
                                     {(storage.id, product.id): quantity})
+                            tests_product_quantity(context, quantity)
 
             test_products_by_location()
 
@@ -283,7 +295,7 @@ class StockTestCase(unittest.TestCase):
                 today + relativedelta(days=-4),
                 today + relativedelta(days=-3),
                 today + relativedelta(days=-2),
-            ]
+                ]
 
             moves = self.move.create([{
                         'product': product.id,
@@ -449,7 +461,6 @@ class StockTestCase(unittest.TestCase):
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
                         }])
-
 
             tests = [
                 (-5, {

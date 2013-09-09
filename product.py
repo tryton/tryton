@@ -12,8 +12,10 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Eval, Or
 from trytond.transaction import Transaction
-from trytond.tools import safe_eval, reduce_ids
+from trytond.tools import reduce_ids
 from trytond.pool import Pool, PoolMeta
+
+from .move import StockMixin
 
 __all__ = ['Template', 'Product',
     'ProductByLocationStart', 'ProductByLocation',
@@ -75,7 +77,8 @@ class Template:
         super(Template, cls).write(templates, vals)
 
 
-class Product:
+class Product(object, StockMixin):
+    __metaclass__ = PoolMeta
     __name__ = "product.product"
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
             searcher='search_quantity')
@@ -86,80 +89,13 @@ class Product:
 
     @classmethod
     def get_quantity(cls, products, name):
-        Date = Pool().get('ir.date')
-
-        quantities = dict((p.id, 0.0) for p in products)
-        if not Transaction().context.get('locations'):
-            return quantities
-
-        context = {}
-        if (name == 'quantity'
-                and Transaction().context.get('stock_date_end')
-                and Transaction().context.get('stock_date_end') >
-                Date.today()):
-            context['stock_date_end'] = Date.today()
-
-        if name == 'forecast_quantity':
-            context['forecast'] = True
-            if not Transaction().context.get('stock_date_end'):
-                context['stock_date_end'] = datetime.date.max
-        with Transaction().set_context(context):
-            pbl = cls.products_by_location(
-                location_ids=Transaction().context['locations'],
-                product_ids=quantities.keys(), with_childs=True)
-
-        for location in Transaction().context['locations']:
-            for product in products:
-                quantities[product.id] += pbl.get((location, product.id), 0.0)
-        return quantities
-
-    @staticmethod
-    def _search_quantity_eval_domain(line, domain):
-        field, operator, operand = domain
-        value = line.get(field)
-        if value is None:
-            return False
-        if operator not in ("=", ">=", "<=", ">", "<", "!="):
-            return False
-        if operator == "=":
-            operator = "=="
-        return (safe_eval(str(value) + operator + str(operand)))
+        location_ids = Transaction().context.get('locations')
+        return cls._get_quantity(products, name, location_ids, products)
 
     @classmethod
     def search_quantity(cls, name, domain=None):
-        Date = Pool().get('ir.date')
-
-        if not (Transaction().context.get('locations') and domain):
-            return []
-
-        context = {}
-        if (name == 'quantity'
-                and Transaction().context.get('stock_date_end')
-                and Transaction().context.get('stock_date_end') >
-                Date.today()):
-            context['stock_date_end'] = Date.today()
-
-        if name == 'forecast_quantity':
-            context['forecast'] = True
-            if not Transaction().context.get('stock_date_end'):
-                context['stock_date_end'] = datetime.date.max
-
-        with Transaction().set_context(context):
-            pbl = cls.products_by_location(
-                    location_ids=Transaction().context['locations'],
-                    with_childs=True).iteritems()
-
-        processed_lines = []
-        for (location, product), quantity in pbl:
-            processed_lines.append({
-                    'location': location,  # XXX useful ?
-                    'product': product,
-                    name: quantity,
-                    })
-
-        res = [line['product'] for line in processed_lines
-            if cls._search_quantity_eval_domain(line, domain)]
-        return [('id', 'in', res)]
+        location_ids = Transaction().context.get('locations')
+        return cls._search_quantity(name, location_ids, domain)
 
     @classmethod
     def get_cost_value(cls, products, name):

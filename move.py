@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import datetime
+import operator
 from decimal import Decimal
 from functools import reduce, partial
 from sql import Column
@@ -11,12 +13,127 @@ from trytond.pyson import In, Eval, Not, Equal, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['Move']
+__all__ = ['StockMixin', 'Move']
 
 STATES = {
     'readonly': In(Eval('state'), ['cancel', 'assigned', 'done']),
 }
 DEPENDS = ['state']
+
+
+class StockMixin:
+    '''Mixin class with helper to setup stock quantity field.'''
+
+    @classmethod
+    def _quantity_context(cls, name):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        context = Transaction().context
+        new_context = {}
+        if name == 'quantity':
+            if (context.get('stock_date_end')
+                    and context['stock_date_end'] > Date.today()):
+                new_context['stock_date_end'] = Date.today()
+        elif name == 'forecast_quantity':
+            new_context['forecast'] = True
+            if not context.get('stock_date_end'):
+                new_context['stock_date_end'] = datetime.date.max
+        return new_context
+
+    @classmethod
+    def _get_quantity(cls, records, name, location_ids, products=None,
+            grouping=('product',), position=-1):
+        """
+        Compute for each record the stock quantity in the default uom of the
+        product.
+
+        location_ids is the list of IDs of locations to take account to compute
+            the stock. It can't be empty.
+        products restrict the stock computation to the this products (more
+            efficient), so it should be the products related to records.
+            If it is None all products are used.
+        grouping defines how stock moves are grouped.
+        position defines which field of grouping corresponds to the record
+            whose quantity is computed.
+
+        Return a dictionary with records id as key and quantity as value.
+        """
+        pool = Pool()
+        Product = pool.get('product.product')
+
+        record_ids = [r.id for r in records]
+        quantities = dict.fromkeys(record_ids, 0.0)
+        if not location_ids:
+            return quantities
+
+        product_ids = products and [p.id for p in products] or None
+
+        with Transaction().set_context(cls._quantity_context(name)):
+            pbl = Product.products_by_location(location_ids=location_ids,
+                product_ids=product_ids, with_childs=True,
+                grouping=grouping)
+
+        for key, quantity in pbl.iteritems():
+            # pbl could return None in some keys
+            if (key[position] is not None and
+                    key[position] in quantities):
+                quantities[key[position]] += quantity
+        return quantities
+
+    @staticmethod
+    @classmethod
+    def _search_quantity(cls, name, location_ids, domain=None,
+            grouping=('product',), position=-1):
+        """
+        Compute the domain to filter records which validates the domain over
+        quantity field.
+
+        location_ids is the list of IDs of locations to take account to compute
+            the stock. It can't be empty.
+        grouping defines how stock moves are grouped.
+        position defines which field of grouping corresponds to the record
+            whose quantity is computed.
+        """
+        pool = Pool()
+        Product = pool.get('product.product')
+
+        if not location_ids or not domain:
+            return []
+
+        def _search_quantity_eval_domain(line, domain):
+            operator_funcs = {
+                '=': operator.eq,
+                '>=': operator.ge,
+                '>': operator.gt,
+                '<=': operator.le,
+                '<': operator.lt,
+                '!=': operator.ne,
+                'in': lambda v, l: v in l,
+                'not in': lambda v, l: v not in l,
+                }
+
+            field, op, operand = domain
+            value = line.get(field)
+            return operator_funcs[op](value, operand)
+
+        with Transaction().set_context(cls._quantity_context(name)):
+            pbl = Product.products_by_location(
+                location_ids=location_ids,
+                with_childs=True, grouping=grouping)
+
+        processed_lines = []
+        for key, quantity in pbl.iteritems():
+            # pbl could return None in some keys
+            if key[position] is not None:
+                processed_lines.append({
+                        'record_id': key[position],
+                        name: quantity,
+                        })
+
+        record_ids = [line['record_id'] for line in processed_lines
+            if _search_quantity_eval_domain(line, domain)]
+        return [('id', 'in', record_ids)]
 
 
 class Move(Workflow, ModelSQL, ModelView):
