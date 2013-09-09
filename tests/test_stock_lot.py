@@ -141,6 +141,9 @@ class StockLotTestCase(unittest.TestCase):
                     (storage.id, product.id, lot2.id): 8,
                     (storage.id, product.id, None): 3,
                     })
+            with Transaction().set_context(locations=[storage.id]):
+                self.assertEqual(lot1.quantity, 5)
+                self.assertEqual(lot2.quantity, 8)
 
     def test0020period(self):
         '''

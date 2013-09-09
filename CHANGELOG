@@ -1,3 +1,4 @@
+* Add quantity and forecast_quantity fields on Lot
 * Add lot in inventory
 * Add Period Cache per lot
 

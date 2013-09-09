@@ -6,6 +6,7 @@ from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.modules.stock import StockMixin
 
 __all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
     'ShipmentOutReturn',
@@ -14,12 +15,29 @@ __all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
 __metaclass__ = PoolMeta
 
 
-class Lot(ModelSQL, ModelView):
+class Lot(ModelSQL, ModelView, StockMixin):
     "Stock Lot"
     __name__ = 'stock.lot'
     _rec_name = 'number'
     number = fields.Char('Number', required=True, select=True)
     product = fields.Many2One('product.product', 'Product', required=True)
+    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
+        searcher='search_quantity')
+    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
+        'get_quantity', searcher='search_quantity')
+
+    @classmethod
+    def get_quantity(cls, lots, name):
+        location_ids = Transaction().context.get('locations')
+        products = list(set(l.product for l in lots))
+        return cls._get_quantity(lots, name, location_ids, products,
+            grouping=('product', 'lot'))
+
+    @classmethod
+    def search_quantity(cls, name, domain=None):
+        location_ids = Transaction().context.get('locations')
+        return cls._search_quantity(name, location_ids, domain,
+            grouping=('product', 'lot'))
 
 
 class LotType(ModelSQL, ModelView):
