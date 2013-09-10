@@ -155,11 +155,11 @@ class Journal(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search([
-            ('code',) + clause[1:],
+            ('code',) + tuple(clause[1:]),
             ], limit=1, order=[])
         if ids:
-            return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
 Journal()
 
