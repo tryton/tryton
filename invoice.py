@@ -138,7 +138,7 @@ class InvoiceLine:
                         values=['sale.line,%s' % sale_line],
                         where=sql_table.id == invoice_line))
             TableHandler.drop_table(cursor,
-                'sale.line-account.invoice.line', rel_table)
+                'sale.line-account.invoice.line', rel_table_name)
 
     @classmethod
     def _get_origin(cls):
