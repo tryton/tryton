@@ -171,11 +171,11 @@ class Journal(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         journals = cls.search([
-                ('code',) + clause[1:],
+                ('code',) + tuple(clause[1:]),
                 ], limit=1, order=[])
         if journals:
-            return [('code',) + clause[1:]]
-        return [(cls._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(cls._rec_name,) + tuple(clause[1:])]
 
 
 class JournalPeriod(ModelSQL, ModelView):
