@@ -152,7 +152,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
     lines_to_pay = fields.Function(fields.One2Many('account.move.line', None,
         'Lines to Pay'), 'get_lines_to_pay')
     payment_lines = fields.Many2Many('account.invoice-account.move.line',
-            'invoice', 'line', readonly=True, string='Payment Lines')
+        'invoice', 'line', readonly=True, string='Payment Lines',
+        states={
+            'invisible': (Eval('state') == 'paid') | ~Eval('payment_lines'),
+            },
+        depends=['state'])
     amount_to_pay_today = fields.Function(fields.Numeric('Amount to Pay Today',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount_to_pay')
