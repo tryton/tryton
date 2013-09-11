@@ -462,7 +462,8 @@
                     context[this.model.name + '.' + fname] = 'size';
                 }
             }
-            prm = this.model.execute('read', [Object.keys(id2record),
+            prm = this.model.execute('read', [Object.keys(id2record).map(
+                        function (e) { return parseInt(e, 10); }),
                     fnames_to_fetch], context);
             var succeed = function(values) {
                 var id2value = {};
