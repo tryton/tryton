@@ -81,7 +81,6 @@ class StockMixin:
                 quantities[key[position]] += quantity
         return quantities
 
-    @staticmethod
     @classmethod
     def _search_quantity(cls, name, location_ids, domain=None,
             grouping=('product',), position=-1):
