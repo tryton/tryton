@@ -248,9 +248,10 @@ class Type(ModelSQL, ModelView):
 
         accounts = Account.search([
                 ('type', 'in', [t.id for t in childs]),
+                ('kind', '!=', 'view'),
                 ])
         for account in accounts:
-            type_sum[account.type.id] += account.balance
+            type_sum[account.type.id] += (account.debit - account.credit)
 
         for type_ in types:
             childs = cls.search([
@@ -330,10 +331,12 @@ class OpenType(Wizard):
     def do_open_(self, action):
         action['pyson_domain'] = PYSONEncoder().encode([
                 ('type', '=', Transaction().context['active_id']),
+                ('kind', '!=', 'view'),
                 ])
         action['pyson_context'] = PYSONEncoder().encode({
                 'date': Transaction().context.get('date'),
                 'posted': Transaction().context.get('posted'),
+                'cumulate': Transaction().context.get('cumulate'),
                 })
         return action, {}
 
@@ -1467,6 +1470,7 @@ class OpenBalanceSheet(Wizard):
                     self.start.date.day),
                 'posted': self.start.posted,
                 'company': company.id,
+                'cumulate': True,
                 })
         action['name'] += ' %s - %s' % (date, company.rec_name)
         return action, {}
