@@ -37,6 +37,7 @@ var Sao = {};
 
     Sao.config = {};
     Sao.config.limit = 1000;
+    Sao.config.display_size = 20;
 
     Sao.login = function() {
         var dfd = jQuery.Deferred();

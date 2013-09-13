@@ -139,7 +139,7 @@
             this.new_group();
             this.current_view = null;
             this.current_record = null;
-            this.limit = attributes.limit || 80;
+            this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
             this.search_count = 0;
             this.screen_container = new Sao.ScreenContainer(
@@ -322,10 +322,58 @@
             }
         },
         display_next: function() {
-            // TODO
+            var view = this.current_view;
+            view.set_value();
+            // TODO set cursor
+            if (~['tree', 'form'].indexOf(view.view_type) &&
+                    this.current_record && this.current_record.group) {
+                var group = this.current_record.group;
+                var record = this.current_record;
+                while (group) {
+                    var index = group.indexOf(record);
+                    if (index < group.length - 1) {
+                        record = group[index + 1];
+                        break;
+                    } else if (group.parent) {
+                        record = group.parent;
+                        group = group.parent.group;
+                    } else {
+                        break;
+                    }
+                }
+                this.set_current_record(record);
+            } else {
+                this.set_current_record(this.group[0]);
+            }
+            // TODO set cursor
+            view.display();
         },
         display_previous: function() {
-            // TODO
+            var view = this.current_view;
+            view.set_value();
+            // TODO set cursor
+            if (~['tree', 'form'].indexOf(view.view_type) &&
+                    this.current_record && this.current_record.group) {
+                var group = this.current_record.group;
+                var record = this.current_record;
+                while (group) {
+                    var index = group.indexOf(record);
+                    if (index > 0) {
+                        record = group[index - 1];
+                        break;
+                    } else if (group.parent) {
+                        record = group.parent;
+                        group = group.parent.group;
+                    } else {
+                        break;
+                    }
+                }
+                this.set_current_record(record);
+            } else {
+                this.set_current_record(this.group[0]);
+            }
+            // TODO set cursor
+            view.display();
         },
         default_row_activate: function() {
             if ((this.current_view.view_type == 'tree') &&

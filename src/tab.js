@@ -226,6 +226,20 @@
                 // TODO activate_save
             }.bind(this));
         },
+        previous: function() {
+            if (!this.modified_save()) {
+                return;
+            }
+            this.screen.display_previous();
+            // TODO message and activate_save
+        },
+        next: function() {
+            if (!this.modified_save()) {
+                return;
+            }
+            this.screen.display_next();
+            // TODO message and activate_save
+        },
         attach: function() {
             var record = this.screen.current_record;
             if (!record || (record.id < 0)) {

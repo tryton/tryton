@@ -414,7 +414,7 @@
 
             var context = jQuery.extend({}, this.get_context());
             if (loading == 'eager') {
-                var limit = 1000;  // TODO use config
+                var limit = Sao.config.limit;
                 if (!this.group.parent) {
                     // If not a children no need to load too much
                     limit = parseInt(limit / fnames_to_fetch.length, 10);
@@ -487,7 +487,7 @@
                         record.set(value);
                     }
                 }
-            };
+            }.bind(this);
             var failed = function() {
                 var failed_values = [];
                 var default_values;

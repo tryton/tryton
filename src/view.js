@@ -100,32 +100,18 @@
             this.tbody = jQuery('<tbody/>');
             this.table.append(this.tbody);
 
-            // Footer with pagination stuff
+            // Footer for more
             var footer = jQuery('<div/>', {
                 'class': 'treefooter'
             });
-            this.previous_button = jQuery('<button/>').button({
-                'disabled': true,
-                'icons': {
-                    primary: 'ui-icon-triangle-1-w'
-                },
-                'text': false,
-                'label': 'Previous' //TODO translation
-            });
-            footer.append(this.previous_button);
-            this.pagination = jQuery('<span/>', {
-                text: '0 / 0'
-            });
-            footer.append(this.pagination);
-            this.next_button = jQuery('<button/>').button({
-                'disabled': true,
-                'icons': {
-                    primary: 'ui-icon-triangle-1-e'
-                },
-                'text': false,
-                'label': 'Next' //TODO translation
-            });
-            this.pagination.append(this.next_button);
+            this.more = jQuery('<button/>').button({
+                'label': 'More' // TODO translation
+            }).click(function() {
+                this.display_size += Sao.config.display_size;
+                this.display();
+            }.bind(this));
+            footer.append(this.more);
+            this.display_size = Sao.config.display_size;
             this.el.append(footer);
         },
         create_columns: function(model, xml) {
@@ -202,6 +188,10 @@
         },
         display: function() {
             var selected = this.selected_records();
+            var current_record = this.screen.current_record;
+            if (current_record && !~selected.indexOf(current_record)) {
+                selected = [current_record];
+            }
             this.rows = [];
             this.tbody.empty();
             var add_row = function(record, pos, group) {
@@ -209,7 +199,12 @@
                 this.rows.push(tree_row);
                 tree_row.display(selected);
             };
-            this.screen.group.forEach(add_row.bind(this));
+            this.screen.group.slice(0, this.display_size).forEach(add_row.bind(this));
+            if (this.display_size >= this.screen.group.length) {
+                this.more.hide();
+            } else {
+                this.more.show();
+            }
         },
         switch_: function(path) {
             this.screen.row_activate();
@@ -228,6 +223,13 @@
                 row.rows.forEach(add_record);
             };
             this.rows.forEach(add_record);
+            if (this.selection.prop('checked') &&
+                    !this.selection.prop('indeterminate')) {
+                this.screen.group.slice(this.rows.length)
+                    .forEach(function(record) {
+                        records.push(record);
+                    });
+            }
             return records;
         },
         selection_changed: function() {
@@ -244,11 +246,16 @@
             }
         },
         update_selection: function() {
+            if (this.selection.prop('checked')) {
+                return;
+            }
             var selected_records = this.selected_records();
             this.selection.prop('indeterminate', false);
             if (jQuery.isEmptyObject(selected_records)) {
                 this.selection.prop('checked', false);
-            } else if (selected_records.length == this.tbody.children().length) {
+            } else if (selected_records.length ==
+                    this.tbody.children().length &&
+                    this.display_size >= this.screen.group.length) {
                 this.selection.prop('checked', true);
             } else {
                 this.selection.prop('indeterminate', true);
@@ -398,13 +405,19 @@
         },
         set_selection: function(value) {
             this.selection.prop('checked', value);
+            if (value) {
+                this.el.addClass('ui-state-highlight');
+            } else {
+                this.tree.selection.prop('checked', false);
+                this.el.removeClass('ui-state-highlight');
+            }
         },
         selection_changed: function() {
-            if (this.is_selected()) {
-                this.el.addClass('ui-state-highlight');
+            var is_selected = this.is_selected();
+            this.set_selection(is_selected);
+            if (is_selected) {
                 this.tree.select_changed(this.record);
             } else {
-                this.el.removeClass('ui-state-highlight');
                 this.tree.select_changed(
                         this.tree.selected_records()[0] || null);
             }
