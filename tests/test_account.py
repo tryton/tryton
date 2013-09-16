@@ -40,6 +40,9 @@ class AccountTestCase(unittest.TestCase):
         self.move = POOL.get('account.move')
         self.journal = POOL.get('account.journal')
         self.account_type = POOL.get('account.account.type')
+        self.period = POOL.get('account.period')
+        self.balance_non_deferral = POOL.get(
+            'account.fiscalyear.balance_non_deferral', type='wizard')
 
     def test0005views(self):
         '''
@@ -233,7 +236,7 @@ class AccountTestCase(unittest.TestCase):
                     (Decimal(0), Decimal(100)))
                 self.assertEqual(revenue.balance, Decimal(-100))
 
-            # Close fiscalyear
+            # Balance non-deferral
             journal_sequence, = self.sequence.search([
                     ('code', '=', 'account.journal'),
                     ])
@@ -242,6 +245,13 @@ class AccountTestCase(unittest.TestCase):
                         'code': 'CLO',
                         'type': 'situation',
                         'sequence': journal_sequence.id,
+                        }])
+            period_closing, = self.period.create([{
+                        'name': 'Closing',
+                        'start_date': fiscalyear.end_date,
+                        'end_date': fiscalyear.end_date,
+                        'fiscalyear': fiscalyear.id,
+                        'type': 'adjustment',
                         }])
             type_equity, = self.account_type.search([
                     ('name', '=', 'Equity'),
@@ -253,28 +263,25 @@ class AccountTestCase(unittest.TestCase):
                         'parent': revenue.parent.id,
                         'kind': 'other',
                         }])
-            self.move.create([{
-                        'period': fiscalyear.periods[-1].id,
-                        'journal': journal_closing.id,
-                        'date': fiscalyear.periods[-1].end_date,
-                        'lines': [
-                            ('create', [{
-                                        'account': revenue.id,
-                                        'debit': Decimal(100),
-                                        }, {
-                                        'account': expense.id,
-                                        'credit': Decimal(30),
-                                        }, {
-                                        'account': account_pl.id,
-                                        'credit': Decimal('70'),
-                                        }]),
-                            ],
-                        }])
+
+            session_id = self.balance_non_deferral.create()[0]
+            balance_non_deferral = self.balance_non_deferral(session_id)
+
+            balance_non_deferral.start.fiscalyear = fiscalyear
+            balance_non_deferral.start.journal = journal_closing
+            balance_non_deferral.start.period = period_closing
+            balance_non_deferral.start.credit_account = account_pl
+            balance_non_deferral.start.debit_account = account_pl
+
+            balance_non_deferral._execute('balance')
+
             moves = self.move.search([
                     ('state', '=', 'draft'),
                     ('period.fiscalyear', '=', fiscalyear.id),
                     ])
             self.move.post(moves)
+
+            # Close fiscalyear
             self.fiscalyear.close([fiscalyear])
 
             # Check deferral

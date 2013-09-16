@@ -15,6 +15,7 @@ from .party import *
 def register():
     Pool.register(
         FiscalYear,
+        BalanceNonDeferralStart,
         CloseFiscalYearStart,
         TypeTemplate,
         Type,
@@ -69,6 +70,7 @@ def register():
         module='account', type_='model')
     Pool.register(
         OpenType,
+        BalanceNonDeferral,
         CloseFiscalYear,
         OpenChartAccount,
         PrintGeneralLedger,

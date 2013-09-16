@@ -21,6 +21,10 @@ year will close all the corresponding periods.
 - Post Move Sequence: The sequence to use for numbering moves in this
   fiscal year.
 
+The *Balance Non-Deferral* wizard allow to create a move that will debit/credit
+each non-deferral account in such way to have a balance equals to zero for the
+fiscal year and debit/credit a counter part account.
+
 
 Period
 ******

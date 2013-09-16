@@ -57,6 +57,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_fiscalyear"/>
         </record>
 
+        <record model="ir.ui.view"
+            id="fiscalyear_balance_non_deferral_start_view_form">
+            <field
+                name="model">account.fiscalyear.balance_non_deferral.start</field>
+            <field name="type">form</field>
+            <field
+                name="name">fiscalyear_balance_non_deferral_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_balance_non_deferral">
+            <field name="name">Balance Non-Deferral</field>
+            <field
+                name="wiz_name">account.fiscalyear.balance_non_deferral</field>
+        </record>
+        <menuitem parent="menu_processing" sequence="10"
+            action="act_balance_non_deferral"
+            id="menu_balance_non_deferral"/>
+
         <record model="ir.ui.view" id="fiscalyear_close_start_view_form">
             <field name="model">account.fiscalyear.close.start</field>
             <field name="type">form</field>
@@ -67,7 +85,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Close Fiscal Year</field>
             <field name="wiz_name">account.fiscalyear.close</field>
         </record>
-        <menuitem parent="menu_processing" action="act_close_fiscalyear"
-            id="menu_close_fiscalyear"/>
+        <menuitem parent="menu_processing" sequence="20"
+            action="act_close_fiscalyear" id="menu_close_fiscalyear"/>
     </data>
 </tryton>

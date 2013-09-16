@@ -2,13 +2,16 @@
 #this repository contains the full copyright notices and license terms.
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
+    Button
 from trytond.tools import datetime_strftime
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['FiscalYear', 'CloseFiscalYearStart', 'CloseFiscalYear']
+__all__ = ['FiscalYear',
+    'BalanceNonDeferralStart', 'BalanceNonDeferral',
+    'CloseFiscalYearStart', 'CloseFiscalYear']
 
 STATES = {
     'readonly': Eval('state') == 'close',
@@ -304,6 +307,118 @@ class FiscalYear(ModelSQL, ModelView):
             cls.write([fiscalyear], {
                 'state': 'open',
                 })
+
+
+class BalanceNonDeferralStart(ModelView):
+    'Balance Non-Deferral'
+    __name__ = 'account.fiscalyear.balance_non_deferral.start'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+        required=True, domain=[('state', '=', 'open')])
+    journal = fields.Many2One('account.journal', 'Journal', required=True,
+        domain=[
+            ('type', '=', 'situation'),
+            ])
+    period = fields.Many2One('account.period', 'Period', required=True,
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('type', '=', 'adjustment'),
+            ],
+        depends=['fiscalyear'])
+    credit_account = fields.Many2One('account.account', 'Credit Account',
+        required=True,
+        domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('deferral', '=', True),
+            ])
+    debit_account = fields.Many2One('account.account', 'Debit Account',
+        required=True,
+        domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('deferral', '=', True),
+            ])
+
+
+class BalanceNonDeferral(Wizard):
+    'Balance Non-Deferral'
+    __name__ = 'account.fiscalyear.balance_non_deferral'
+    start = StateView('account.fiscalyear.balance_non_deferral.start',
+        'account.fiscalyear_balance_non_deferral_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('Ok', 'balance', 'tryton-ok', default=True),
+            ])
+    balance = StateAction('account.act_move_line_form')
+
+    def get_move_line(self, account):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        if account.company.currency.is_zero(account.balance):
+            return
+        line = Line()
+        line.account = account
+        if account.balance >= 0:
+            line.credit = abs(account.balance)
+            line.debit = 0
+        else:
+            line.credit = 0
+            line.debit = abs(account.balance)
+        return line
+
+    def get_counterpart_line(self, amount):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        if self.start.fiscalyear.company.currency.is_zero(amount):
+            return
+        line = Line()
+        if amount >= 0:
+            line.credit = abs(amount)
+            line.debit = 0
+            line.account = self.start.credit_account
+        else:
+            line.credit = 0
+            line.debit = abs(amount)
+            line.account = self.start.debit_account
+        return line
+
+    def create_move(self):
+        pool = Pool()
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+
+        with Transaction().set_context(fiscalyear=self.start.fiscalyear.id,
+                date=None, cumulate=False):
+            accounts = Account.search([
+                    ('company', '=', self.start.fiscalyear.company.id),
+                    ('deferral', '=', False),
+                    ])
+        lines = []
+        for account in accounts:
+            line = self.get_move_line(account)
+            if line:
+                lines.append(line)
+        if not lines:
+            return
+        amount = sum(l.debit - l.credit for l in lines)
+        counter_part_line = self.get_counterpart_line(amount)
+        if counter_part_line:
+            lines.append(counter_part_line)
+
+        move = Move()
+        move.period = self.start.period
+        move.journal = self.start.journal
+        move.date = self.start.period.start_date
+        move.origin = self.start.fiscalyear
+        move.lines = lines
+        move.save()
+        return move
+
+    def do_balance(self, action):
+        self.create_move()
+        action['pyson_domain'] = PYSONEncoder().encode([
+                ('origin', '=', str(self.start.fiscalyear)),
+                ])
+        return action, {}
 
 
 class CloseFiscalYearStart(ModelView):

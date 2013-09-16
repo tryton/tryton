@@ -156,7 +156,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def _get_origin(cls):
         'Return list of Model names for origin Reference'
-        return []
+        return ['account.fiscalyear']
 
     @classmethod
     def get_origin(cls):
