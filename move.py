@@ -1058,6 +1058,27 @@ class Line(ModelSQL, ModelView):
             name = 'state'
         return [('move.' + name,) + tuple(clause[1:])]
 
+    def _order_move_field(name):
+        def order_field(tables):
+            pool = Pool()
+            Move = pool.get('account.move')
+            field = Move._fields[name]
+            table, _ = tables[None]
+            move_tables = tables.get('move')
+            if move_tables is None:
+                move = Move.__table__()
+                move_tables = {
+                    None: (move, move.id == table.move),
+                    }
+                tables['move'] = move_tables
+            return field.convert_order(name, move_tables, Move)
+        return staticmethod(order_field)
+    order_journal = _order_move_field('journal')
+    order_period = _order_move_field('period')
+    order_date = _order_move_field('date')
+    order_origin = _order_move_field('origin')
+    order_move_state = _order_move_field('state')
+
     @classmethod
     def query_get(cls, table):
         '''

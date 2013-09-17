@@ -3,7 +3,7 @@
 from decimal import Decimal
 import datetime
 import operator
-from itertools import izip
+from itertools import izip, groupby
 from sql import Column, Literal
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
@@ -1169,8 +1169,8 @@ class GeneralLedger(Report):
         localcontext['end_period'] = periods[-1]
 
         if not data['empty_account']:
-            account2lines = cls.get_lines(accounts,
-                end_periods, data['posted'])
+            account2lines = dict(cls.get_lines(accounts,
+                    end_periods, data['posted']))
             for account in (set(accounts) - set(account2lines)):
                 accounts.remove(account)
 
@@ -1198,11 +1198,12 @@ class GeneralLedger(Report):
             ]
         if posted:
             clause.append(('move.state', '=', 'posted'))
-        moves = MoveLine.search(clause, order=[])
-        res = {}
-        for move in moves:
-            res.setdefault(move.account, []).append(move)
-        return res
+        lines = MoveLine.search(clause,
+            order=[
+                ('account', 'ASC'),
+                ('date', 'ASC'),
+                ])
+        return groupby(lines, operator.attrgetter('account'))
 
     @classmethod
     def lines(cls, accounts, periods, posted):
@@ -1213,8 +1214,7 @@ class GeneralLedger(Report):
         state_selections = dict(Move.fields_get(
                 fields_names=['state'])['state']['selection'])
 
-        for account, lines in account2lines.iteritems():
-            lines.sort(lambda x, y: cmp(x.date, y.date))
+        for account, lines in account2lines:
             balance = Decimal('0.0')
             for line in lines:
                 balance += line.debit - line.credit
