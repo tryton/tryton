@@ -52,9 +52,34 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
+    less: {
+        dev: {
+            options: {
+                paths: ['src']
+            },
+            files: {
+                'dist/<%= pkg.name %>.css': 'src/*.less'
+            }
+        },
+        'default': {
+            options: {
+                paths: ['src'],
+                yuicompress: true
+            },
+            files: {
+                'dist/<%= pkg.name %>.min.css': 'src/*.less'
+            }
+        }
+    },
     watch: {
-        files: ['src/*.js'],
-        tasks: 'dev'
+        scripts: {
+            files: ['src/*.js'],
+            tasks: ['concat', 'jshint']
+        },
+        styles: {
+            files: ['src/*.less'],
+            tasks: 'less:dev'
+        }
     }
   });
 
@@ -62,10 +87,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('default', ['concat', 'jshint', 'uglify']);
-  grunt.registerTask('dev', ['concat', 'jshint']);
+  grunt.registerTask('default', ['concat', 'jshint', 'uglify', 'less:default']);
+  grunt.registerTask('dev', ['concat', 'jshint', 'less:dev']);
 
 };

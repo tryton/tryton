@@ -272,7 +272,6 @@
             this.record = record;
             this.children_field = tree.children_field;
             this.expander = null;
-            this.expander_icon = null;
             var path = [];
             if (parent) {
                 path = jQuery.extend([], parent.path.split('.'));
@@ -300,7 +299,7 @@
                             this.record.field_get(
                                 this.children_field))) {
 
-                    this.expander_icon.hide();
+                    this.expander.css('background', 'none');
                 }
             };
             // Use this handler to allow customization of select_row for the
@@ -310,6 +309,9 @@
             };
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var td = jQuery('<td/>');
+                td.css('text-overflow', 'ellipsis');
+                td.css('overflow', 'hidden');
+                td.css('white-space', 'nowrap');
                 td.click(click_handler.bind(this));
                 if ((i === 0) && this.children_field) {
                     var expanded = 'ui-icon-plus';
@@ -317,18 +319,12 @@
                         expanded = 'ui-icon-minus';
                     }
                     this.expander = jQuery('<span/>', {
-                        'class': 'expander'
-                    });
-                    this.expander.html('&nbsp;');
-                    // 16 == minimum width of icon
-                    this.expander.css('width', ((depth * 10) + 16) + 'px');
-                    this.expander.css('float', 'left');
-                    this.expander.click(this.toggle_row.bind(this));
-                    this.expander_icon = jQuery('<i/>', {
                         'class': 'ui-icon ' + expanded
                     });
-                    this.expander.append(this.expander_icon);
-                    this.expander_icon.css('float', 'right');
+                    this.expander.html('&nbsp;');
+                    this.expander.css('margin-left', depth + 'em');
+                    this.expander.css('float', 'left');
+                    this.expander.click(this.toggle_row.bind(this));
                     td.append(this.expander);
                     this.record.load(this.children_field).done(
                             update_expander.bind(this));
@@ -374,12 +370,12 @@
         },
         toggle_row: function() {
             if (this.is_expanded()) {
-                this.expander_icon.removeClass('ui-icon-minus');
-                this.expander_icon.addClass('ui-icon-plus');
+                this.expander.removeClass('ui-icon-minus');
+                this.expander.addClass('ui-icon-plus');
                 delete this.tree.expanded[this.path];
             } else {
-                this.expander_icon.removeClass('ui-icon-plus');
-                this.expander_icon.addClass('ui-icon-minus');
+                this.expander.removeClass('ui-icon-plus');
+                this.expander.addClass('ui-icon-minus');
                 this.tree.expanded[this.path] = this;
             }
             this.tree.display();
@@ -405,11 +401,8 @@
         },
         set_selection: function(value) {
             this.selection.prop('checked', value);
-            if (value) {
-                this.el.addClass('ui-state-highlight');
-            } else {
+            if (!value) {
                 this.tree.selection.prop('checked', false);
-                this.el.removeClass('ui-state-highlight');
             }
         },
         selection_changed: function() {
@@ -494,10 +487,7 @@
             this.suffixes = [];
         },
         get_cell: function() {
-            var cell = jQuery('<div/>');
-            cell.css('text-overflow', 'ellipsis');
-            cell.css('overflow', 'hidden');
-            cell.css('white-space', 'nowrap');
+            var cell = jQuery('<span/>');
             cell.addClass('column-char');
             return cell;
         },

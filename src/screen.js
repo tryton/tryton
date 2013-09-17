@@ -13,15 +13,17 @@
             this.el = jQuery('<div/>', {
                 'class': 'screen-container'
             });
-            this.filter_box = jQuery('<div/>', {
+            this.filter_box = jQuery('<table/>', {
                 'class': 'filter-box'
             });
+            var tr = jQuery('<tr/>');
+            this.filter_box.append(tr);
             this.el.append(this.filter_box);
             this.filter_button = jQuery('<button/>').button({
                 'disabled': true,
                 'label': 'Filters' // TODO translation
             });
-            this.filter_box.append(this.filter_button);
+            tr.append(jQuery('<td/>').append(this.filter_button));
             this.search_entry = jQuery('<input/>');
             this.search_entry.keypress(function(e) {
                 if (e.which == 13) {
@@ -29,22 +31,22 @@
                     return false;
                 }
             }.bind(this));
-            this.filter_box.append(this.search_entry);
+            tr.append(jQuery('<td/>').append(this.search_entry));
             this.but_bookmark = jQuery('<button/>').button({
                 'disabled': true,
                 'label': 'Bookmark' // TODO translation
             });
-            this.filter_box.append(this.but_bookmark);
+            tr.append(jQuery('<td/>').append(this.but_bookmark));
             this.but_prev = jQuery('<button/>').button({
                 'label': 'Previous'
             });
             this.but_prev.click(this.search_prev.bind(this));
-            this.filter_box.append(this.but_prev);
+            tr.append(jQuery('<td/>').append(this.but_prev));
             this.but_next = jQuery('<button/>').button({
                 'label': 'Next'
             });
             this.but_next.click(this.search_next.bind(this));
-            this.filter_box.append(this.but_next);
+            tr.append(jQuery('<td/>').append(this.but_next));
 
             this.content_box = jQuery('<div/>', {
                 'class': 'content-box'

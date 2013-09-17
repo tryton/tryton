@@ -1,0 +1,76 @@
+@small-padding: .1em;
+@medium-padding: .5em;
+@large-padding: 1em;
+
+@small-font-size: .8em;
+@medium-font-size: 1em;
+@large-font-size: 2em;
+
+@grey: #dddddd;
+@light-grey: #f9f9f9;
+@highlight: #e7e7e7;
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: @small-font-size;
+}
+
+#menu {
+    vertical-align: top;
+    padding-right: @medium-padding;
+    font-size: @medium-font-size;
+    width: 20%;
+    cursor: pointer;
+}
+
+#tabs {
+    width: 100%;
+    height: 100%;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: @medium-padding @small-padding;
+}
+
+.treeview {
+    & table.tree {
+        width: 100%;
+        & th, td {
+            padding: @small-padding;
+            line-height: @large-font-size;
+        }
+        & td {
+            border-top: .1em solid @grey;
+            cursor: pointer;
+            & > * {
+                vertical-align: middle;
+            }
+        }
+
+        & tr:nth-child(odd) {
+            background-color: @light-grey;
+        }
+        & tbody tr:hover {
+            background-color: @highlight;
+        }
+        & img.column-affix {
+            width: 2em;
+            height: 2em;
+        }
+    }
+    & .expander {
+        cursor: pointer;
+    }
+    & .treefooter {
+        text-align: center;
+        padding-top: @large-padding;
+    }
+}
+
+.filter-box tr td:nth-child(2) {
+    width: 100%;
+    & input {
+        width: 100%;
+    }
+}
