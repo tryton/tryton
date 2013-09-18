@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Dunning Procedure">
+    <label name="name"/>
+    <field name="name"/>
+    <field name="levels" colspan="4"
+        view_ids="account_dunning.dunning_level_view_list_sequence"/>
+</form>
