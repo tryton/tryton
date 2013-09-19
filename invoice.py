@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import base64
+import itertools
 import operator
 from sql import Literal
 from sql.aggregate import Count, Sum
@@ -137,6 +138,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         states=_STATES, depends=_DEPENDS,
         on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     comment = fields.Text('Comment', states=_STATES, depends=_DEPENDS)
+    origins = fields.Function(fields.Char('Origins'), 'get_origins')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
@@ -995,6 +997,15 @@ class Invoice(Workflow, ModelSQL, ModelView):
         return [('party',) + clause[1:]]
 
     @classmethod
+    def get_origins(cls, invoices, name):
+        origins = {}
+        with Transaction().set_user(0, set_context=True):
+            for invoice in cls.browse(invoices):
+                origins[invoice.id] = ', '.join(set(itertools.ifilter(None,
+                            (l.origin_name for l in invoice.lines))))
+        return origins
+
+    @classmethod
     def delete(cls, invoices):
         cls.check_modify(invoices)
         # Cancel before delete
@@ -1680,6 +1691,10 @@ class InvoiceLine(ModelSQL, ModelView):
             return subtotal
         else:
             return _ZERO
+
+    @property
+    def origin_name(self):
+        return self.origin.rec_name if self.origin else None
 
     def get_invoice_taxes(self, name):
         pool = Pool()
