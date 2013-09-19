@@ -343,6 +343,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">template_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
         <record model="ir.action.wizard" id="act_open_customer">
             <field name="name">Parties associated to Sales</field>
             <field name="wiz_name">sale.open_customer</field>
