@@ -161,10 +161,10 @@ class Sale(Workflow, ModelSQL, ModelView):
             ('exception', 'Exception'),
             ], 'Shipment State', readonly=True, required=True)
     shipments = fields.Function(fields.One2Many('stock.shipment.out', None,
-        'Shipments'), 'get_shipments')
+        'Shipments'), 'get_shipments', searcher='search_shipments')
     shipment_returns = fields.Function(
         fields.One2Many('stock.shipment.out.return', None, 'Shipment Returns'),
-        'get_shipment_returns')
+        'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.Function(fields.One2Many('stock.move', None, 'Moves'),
         'get_moves')
 
@@ -549,6 +549,19 @@ class Sale(Workflow, ModelSQL, ModelView):
     get_shipments = get_shipments_returns('stock.shipment.out')
     get_shipment_returns = get_shipments_returns('stock.shipment.out.return')
 
+    def search_shipments_returns(model_name):
+        '''
+        Search on shipments or returns
+        '''
+        def method(self, name, clause):
+            return [('lines.moves.shipment.id',) + tuple(clause[1:])
+                + (model_name,)]
+        return classmethod(method)
+
+    search_shipments = search_shipments_returns('stock.shipment.out')
+    search_shipment_returns = search_shipments_returns(
+        'stock.shipment.out.return')
+
     def get_moves(self, name):
         return [m.id for l in self.lines for m in l.moves]
 
@@ -699,7 +712,6 @@ class Sale(Workflow, ModelSQL, ModelView):
             return Invoice(
                 company=self.company,
                 type=invoice_type,
-                reference=self.reference,
                 journal=journal,
                 party=self.party,
                 invoice_address=self.invoice_address,
@@ -792,7 +804,6 @@ class Sale(Workflow, ModelSQL, ModelView):
             values = {
                 'customer': self.party.id,
                 'delivery_address': self.shipment_address.id,
-                'reference': self.reference,
                 'company': self.company.id,
                 }
             values.update(dict(key))
@@ -1672,6 +1683,15 @@ class Move:
         if self in self.origin.moves_ignored:
             return 'ignored'
         return ''
+
+    @property
+    def origin_name(self):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        name = super(Move, self).origin_name
+        if isinstance(self.origin, SaleLine):
+            name = self.origin.sale.rec_name
+        return name
 
     @classmethod
     @ModelView.button

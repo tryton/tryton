@@ -140,6 +140,15 @@ class InvoiceLine:
             TableHandler.drop_table(cursor,
                 'sale.line-account.invoice.line', rel_table_name)
 
+    @property
+    def origin_name(self):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        name = super(InvoiceLine, self).origin_name
+        if isinstance(self.origin, SaleLine):
+            name = self.origin.sale.rec_name
+        return name
+
     @classmethod
     def _get_origin(cls):
         models = super(InvoiceLine, cls)._get_origin()

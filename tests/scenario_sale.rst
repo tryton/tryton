@@ -235,6 +235,12 @@ Sale 5 products::
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
+    >>> invoice, = sale.invoices
+    >>> invoice.origins == sale.rec_name
+    True
+    >>> shipment, = sale.shipments
+    >>> shipment.origins == sale.rec_name
+    True
 
 Post invoice and check no new invoices::
 
