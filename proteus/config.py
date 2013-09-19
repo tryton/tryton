@@ -197,12 +197,9 @@ class TrytondConfig(Config):
 
         Pool.start()
 
-        database = backend.get('Database')().connect()
-        cursor = database.cursor()
-        try:
-            databases = database.list(cursor)
-        finally:
-            cursor.close()
+        with Transaction().start(None, 0) as transaction:
+            cursor = transaction.cursor
+            databases = backend.get('Database').list(cursor)
         if database_name not in databases:
             create(database_name, CONFIG['admin_passwd'], language, password)
 
