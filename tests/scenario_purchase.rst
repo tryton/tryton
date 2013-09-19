@@ -227,6 +227,9 @@ Purchase 5 products::
     >>> purchase.reload()
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
+    >>> invoice, = purchase.invoices
+    >>> invoice.origins == purchase.rec_name
+    True
 
 Post invoice and check no new invoices::
 
@@ -279,6 +282,8 @@ Validate Shipments::
     ...     incoming_move = Move(id=move.id)
     ...     shipment.incoming_moves.append(incoming_move)
     >>> shipment.save()
+    >>> shipment.origins == purchase.rec_name
+    True
     >>> ShipmentIn.receive([shipment.id], config.context)
     >>> ShipmentIn.done([shipment.id], config.context)
     >>> purchase.reload()

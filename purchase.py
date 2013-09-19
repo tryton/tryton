@@ -638,7 +638,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
             return Invoice(
                 company=self.company,
                 type=invoice_type,
-                reference=self.reference,
                 journal=journal,
                 party=self.party,
                 invoice_address=self.invoice_address,
@@ -695,7 +694,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
         with Transaction().set_user(0, set_context=True):
             return ShipmentInReturn(
                 company=self.company,
-                reference=self.reference,
                 from_location=self.warehouse.storage_location,
                 to_location=self.party.supplier_location,
                 )
@@ -1804,6 +1802,15 @@ class Move(ModelSQL, ModelView):
         PurchaseLine = Pool().get('purchase.line')
         if isinstance(self.origin, PurchaseLine):
             return self.origin.purchase.party.id
+
+    @property
+    def origin_name(self):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        name = super(Move, self).origin_name
+        if isinstance(self.origin, PurchaseLine):
+            name = self.origin.purchase.rec_name
+        return name
 
     @classmethod
     def search_supplier(cls, name, clause):
