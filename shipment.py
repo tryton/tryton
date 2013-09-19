@@ -120,6 +120,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], readonly=True,
         depends=['company'])
+    origins = fields.Function(fields.Char('Origins'), 'get_origins')
     code = fields.Char("Code", size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -351,6 +352,15 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
+    def get_origins(cls, shipments, name):
+        origins = {}
+        with Transaction().set_user(0, set_context=True):
+            for shipment in cls.browse(shipments):
+                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
+                            (m.origin_name for m in shipment.moves))))
+        return origins
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
@@ -507,6 +517,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company')),
             ],
         depends=['state', 'from_location', 'to_location', 'company'])
+    origins = fields.Function(fields.Char('Origins'), 'get_origins')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('cancel', 'Canceled'),
@@ -635,6 +646,15 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                         and m.planned_date != shipment._move_planned_date)], {
                     'planned_date': shipment._move_planned_date,
                     })
+
+    @classmethod
+    def get_origins(cls, shipments, name):
+        origins = {}
+        with Transaction().set_user(0, set_context=True):
+            for shipment in cls.browse(shipments):
+                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
+                            (m.origin_name for m in shipment.moves))))
+        return origins
 
     @classmethod
     def create(cls, vlist):
@@ -837,6 +857,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
+    origins = fields.Function(fields.Char('Origins'), 'get_origins')
     code = fields.Char("Code", size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -1028,6 +1049,15 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         cls.write(shipments, {
                 'moves': value,
                 })
+
+    @classmethod
+    def get_origins(cls, shipments, name):
+        origins = {}
+        with Transaction().set_user(0, set_context=True):
+            for shipment in cls.browse(shipments):
+                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
+                            (m.origin_name for m in shipment.moves))))
+        return origins
 
     @classmethod
     @ModelView.button
@@ -1358,6 +1388,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         domain=[('company', '=', Eval('company'))], depends=['company'],
         readonly=True)
+    origins = fields.Function(fields.Char('Origins'), 'get_origins')
     code = fields.Char("Code", size=None, select=True, readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -1548,6 +1579,15 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                         and x.planned_date != inventory_date)], {
                     'planned_date': inventory_date,
                     })
+
+    @classmethod
+    def get_origins(cls, shipments, name):
+        origins = {}
+        with Transaction().set_user(0, set_context=True):
+            for shipment in cls.browse(shipments):
+                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
+                            (m.origin_name for m in shipment.moves))))
+        return origins
 
     @classmethod
     def create(cls, vlist):

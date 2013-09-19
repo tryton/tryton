@@ -468,6 +468,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
 
+    @property
+    def origin_name(self):
+        return self.origin.rec_name if self.origin else None
+
     @classmethod
     def check_period_closed(cls, moves):
         Period = Pool().get('stock.period')
