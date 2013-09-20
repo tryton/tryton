@@ -1,10 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+import datetime
+
 from trytond.model import fields
 from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import reduce_ids
 
 __all__ = ['Work']
 __metaclass__ = PoolMeta
@@ -38,12 +41,51 @@ class Work:
 
     @classmethod
     def get_cost(cls, works, name):
+        pool = Pool()
+        Employee = pool.get('company.employee')
+        Line = pool.get('timesheet.line')
+        Work = pool.get('timesheet.work')
+        transaction = Transaction()
+        cursor = transaction.cursor
+        in_max = cursor.IN_MAX
+
         works += cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
                 ('active', '=', True)]) + works
+        costs = dict.fromkeys([w.id for w in works], 0)
+        works_to_timesheet = dict((w.work.id, w.id) for w in works)
 
-        return cls.sum_tree(works, lambda w: (sum(t.compute_cost()
-                    for t in w.work.timesheet_lines) or Decimal(0)))
+        table_w = Work.__table__()
+        table_c = Work.__table__()
+        line = Line.__table__()
+
+        timesheet_work_ids = works_to_timesheet.keys()
+        employee_ids = set()
+        for i in range(0, len(timesheet_work_ids), in_max):
+            sub_ids = timesheet_work_ids[i:i + in_max]
+            red_sql = reduce_ids(table_w.id, sub_ids)
+            cursor.execute(*table_w.join(table_c,
+                    condition=(table_c.left >= table_w.left)
+                    & (table_c.right <= table_w.right)
+                    ).join(line, condition=line.work == table_c.id
+                    ).select(line.employee,
+                    where=red_sql,
+                    group_by=line.employee))
+            employee_ids |= set(r[0] for r in cursor.fetchall())
+        for employee in Employee.browse(list(employee_ids)):
+            employee_costs = employee.get_employee_costs()
+            to_date = None
+            for from_date, cost in reversed(employee_costs):
+                with transaction.set_context(
+                        from_date=from_date,
+                        to_date=to_date,
+                        employees=[employee.id]):
+                    for timesheet_work in Work.browse(timesheet_work_ids):
+                        work_id = works_to_timesheet[timesheet_work.id]
+                        costs[work_id] += (
+                            Decimal(str(timesheet_work.hours)) * cost)
+                to_date = from_date - datetime.timedelta(1)
+        return costs
 
     @classmethod
     def get_revenue(cls, works, name):
