@@ -113,7 +113,7 @@ class SaleLine:
                 purchase_date=purchase_date,
                 supply_date=self.delivery_date,
                 company=self.sale.company,
-                warehouse=self.sale.warehouse,
+                warehouse=self.warehouse,
                 origin=self.sale,
                 )
 
