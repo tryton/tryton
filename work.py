@@ -118,6 +118,8 @@ class Work(ModelSQL, ModelView):
             where &= line.date >= context['from_date']
         if context.get('to_date'):
             where &= line.date <= context['to_date']
+        if context.get('employees'):
+            where &= line.employee.in_(context['employees'])
         for i in range(0, len(ids), in_max):
             sub_ids = ids[i:i + in_max]
             red_sql = reduce_ids(table_w.id, sub_ids)
