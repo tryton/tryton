@@ -31,11 +31,10 @@ class Employee:
         ctx_date = Transaction().context.get('date', None)
         return self.compute_cost_price(ctx_date)
 
-    def compute_cost_price(self, date=None):
+    def get_employee_costs(self):
+        "Return a sorted list by date of start date and cost_price"
         pool = Pool()
-        Date = pool.get('ir.date')
         CostPrice = pool.get('company.employee_cost_price')
-
         # Get from cache employee costs or fetch them from the db
         employee_costs = self._cost_prices_cache.get(self.id)
         if employee_costs is None:
@@ -48,6 +47,14 @@ class Employee:
                 employee_costs.append(
                     (cost_price.date, cost_price.cost_price))
             self._cost_prices_cache.set(self.id, employee_costs)
+        return employee_costs
+
+    def compute_cost_price(self, date=None):
+        "Return the cost price at the given date"
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        employee_costs = self.get_employee_costs()
 
         if date is None:
             date = Date.today()
