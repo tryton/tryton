@@ -40,7 +40,7 @@ class WarningErrorMixin(object):
         if res:
             error = res
 
-        if error_args:
+        if error_args is not None:
             try:
                 error = error % error_args
             except TypeError:
