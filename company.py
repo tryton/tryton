@@ -6,6 +6,7 @@ from trytond.pyson import Eval
 from trytond.cache import Cache
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond import backend
 
 __all__ = ['Employee', 'EmployeeCostPrice']
 __metaclass__ = PoolMeta
@@ -89,10 +90,21 @@ class EmployeeCostPrice(ModelSQL, ModelView):
             on_change_with=['employee']), 'on_change_with_currency_digits')
 
     @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        super(EmployeeCostPrice, cls).__register__(module_name)
+        table = TableHandler(cursor, cls, module_name)
+
+        # Migration from 2.8 drop date_cost_price_uniq
+        table.drop_constraint('date_cost_price_uniq')
+
+    @classmethod
     def __setup__(cls):
         super(EmployeeCostPrice, cls).__setup__()
         cls._sql_constraints = [
-            ('date_cost_price_uniq', 'UNIQUE(date, cost_price)',
+            ('employee_date_cost_price_uniq',
+                'UNIQUE(employee, date, cost_price)',
                 'A employee can only have one cost price by date.'),
             ]
         cls._order.insert(0, ('date', 'DESC'))
