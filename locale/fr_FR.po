@@ -55,10 +55,6 @@ msgid "Default Locations"
 msgstr "Emplacements par défaut"
 
 msgctxt "view:product.product:"
-msgid "Default Locations"
-msgstr "Emplacements par défaut"
-
-msgctxt "view:product.product:"
 msgid "Product Location"
 msgstr "Emplacement de produit"
 
@@ -69,14 +65,6 @@ msgstr "Emplacements de produit"
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
 msgstr "Emplacement de produit"
-
-msgctxt "view:stock.product.location:"
-msgid "Product Location"
-msgstr "Emplacement de produit"
-
-msgctxt "view:stock.product.location:"
-msgid "Product Locations"
-msgstr "Emplacements de produit"
 
 msgctxt "view:stock.product.location:"
 msgid "Product Locations"
