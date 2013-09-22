@@ -11,11 +11,6 @@ msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
 "Il n'y a pas de compte charges/produits définit sur le produit %s (%d)"
 
-msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr ""
-"Il n'y a pas de compte charges/produits définit sur le produit %s (%d)"
-
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Compte de charges"
@@ -269,16 +264,8 @@ msgid "Accounting"
 msgstr "Comptabilité"
 
 msgctxt "view:product.category:"
-msgid "Accounting"
-msgstr "Comptabilité"
-
-msgctxt "view:product.category:"
 msgid "Accounts"
 msgstr "Comptes"
-
-msgctxt "view:product.category:"
-msgid "Taxes"
-msgstr "Taxes"
 
 msgctxt "view:product.category:"
 msgid "Taxes"
@@ -293,20 +280,8 @@ msgid "Accounting"
 msgstr "Comptabilité"
 
 msgctxt "view:product.template:"
-msgid "Accounting"
-msgstr "Comptabilité"
-
-msgctxt "view:product.template:"
 msgid "Accounts"
 msgstr "Comptes"
-
-msgctxt "view:product.template:"
-msgid "Accounts"
-msgstr "Comptes"
-
-msgctxt "view:product.template:"
-msgid "Taxes"
-msgstr "Taxes"
 
 msgctxt "view:product.template:"
 msgid "Taxes"
