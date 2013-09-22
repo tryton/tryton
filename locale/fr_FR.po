@@ -1150,20 +1150,8 @@ msgid "Amount"
 msgstr "Montant"
 
 msgctxt "odt:account.invoice:"
-msgid "Amount"
-msgstr "Montant"
-
-msgctxt "odt:account.invoice:"
 msgid "Base"
 msgstr "Base"
-
-msgctxt "odt:account.invoice:"
-msgid "Base"
-msgstr "Base"
-
-msgctxt "odt:account.invoice:"
-msgid "Credit Note N°:"
-msgstr "N° de note de crédit :"
 
 msgctxt "odt:account.invoice:"
 msgid "Credit Note N°:"
@@ -1174,20 +1162,8 @@ msgid "Date"
 msgstr "Date"
 
 msgctxt "odt:account.invoice:"
-msgid "Date"
-msgstr "Date"
-
-msgctxt "odt:account.invoice:"
 msgid "Date:"
 msgstr "Date :"
-
-msgctxt "odt:account.invoice:"
-msgid "Date:"
-msgstr "Date :"
-
-msgctxt "odt:account.invoice:"
-msgid "Description"
-msgstr "Description"
 
 msgctxt "odt:account.invoice:"
 msgid "Description"
@@ -1198,20 +1174,8 @@ msgid "Description:"
 msgstr "Description :"
 
 msgctxt "odt:account.invoice:"
-msgid "Description:"
-msgstr "Description :"
-
-msgctxt "odt:account.invoice:"
 msgid "Draft Credit Note"
 msgstr "Note de crédit brouillon"
-
-msgctxt "odt:account.invoice:"
-msgid "Draft Credit Note"
-msgstr "Note de crédit brouillon"
-
-msgctxt "odt:account.invoice:"
-msgid "Draft Invoice"
-msgstr "Facture brouillon"
 
 msgctxt "odt:account.invoice:"
 msgid "Draft Invoice"
@@ -1222,20 +1186,8 @@ msgid "Draft Supplier Credit Note"
 msgstr "Note de crédit fournisseur brouillon"
 
 msgctxt "odt:account.invoice:"
-msgid "Draft Supplier Credit Note"
-msgstr "Note de crédit fournisseur brouillon"
-
-msgctxt "odt:account.invoice:"
 msgid "Draft Supplier Invoice"
 msgstr "Facture fournisseur brouillon"
-
-msgctxt "odt:account.invoice:"
-msgid "Draft Supplier Invoice"
-msgstr "Facture fournisseur brouillon"
-
-msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "E-Mail:"
 
 msgctxt "odt:account.invoice:"
 msgid "E-Mail:"
@@ -1246,20 +1198,8 @@ msgid "Invoice N°:"
 msgstr "N° de facture :"
 
 msgctxt "odt:account.invoice:"
-msgid "Invoice N°:"
-msgstr "N° de facture :"
-
-msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Condition de paiement"
-
-msgctxt "odt:account.invoice:"
-msgid "Payment Term"
-msgstr "Condition de paiement"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Téléphone"
 
 msgctxt "odt:account.invoice:"
 msgid "Phone:"
@@ -1270,20 +1210,8 @@ msgid "Pro forma Credit Note"
 msgstr "Note de crédit pro forma"
 
 msgctxt "odt:account.invoice:"
-msgid "Pro forma Credit Note"
-msgstr "Note de crédit pro forma"
-
-msgctxt "odt:account.invoice:"
 msgid "Pro forma Invoice"
 msgstr "Facture pro forma"
-
-msgctxt "odt:account.invoice:"
-msgid "Pro forma Invoice"
-msgstr "Facture pro forma"
-
-msgctxt "odt:account.invoice:"
-msgid "Quantity"
-msgstr "Quantité"
 
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
@@ -1294,20 +1222,8 @@ msgid "Supplier Credit Note N°:"
 msgstr "N° de note de crédit fournisseur :"
 
 msgctxt "odt:account.invoice:"
-msgid "Supplier Credit Note N°:"
-msgstr "N° de note de crédit fournisseur :"
-
-msgctxt "odt:account.invoice:"
 msgid "Supplier Invoice N°:"
 msgstr "N° de facture fournisseur :"
-
-msgctxt "odt:account.invoice:"
-msgid "Supplier Invoice N°:"
-msgstr "N° de facture fournisseur :"
-
-msgctxt "odt:account.invoice:"
-msgid "Tax"
-msgstr "Taxe"
 
 msgctxt "odt:account.invoice:"
 msgid "Tax"
@@ -1318,20 +1234,8 @@ msgid "Taxes"
 msgstr "Taxes"
 
 msgctxt "odt:account.invoice:"
-msgid "Taxes"
-msgstr "Taxes"
-
-msgctxt "odt:account.invoice:"
 msgid "Taxes:"
 msgstr "Taxes :"
-
-msgctxt "odt:account.invoice:"
-msgid "Taxes:"
-msgstr "Taxes :"
-
-msgctxt "odt:account.invoice:"
-msgid "Total (excl. taxes):"
-msgstr "Total (hors-taxes) :"
 
 msgctxt "odt:account.invoice:"
 msgid "Total (excl. taxes):"
@@ -1342,28 +1246,12 @@ msgid "Total:"
 msgstr "Total :"
 
 msgctxt "odt:account.invoice:"
-msgid "Total:"
-msgstr "Total :"
-
-msgctxt "odt:account.invoice:"
-msgid "Unit Price"
-msgstr "Prix unitaire"
-
-msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Prix unitaire"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT Number:"
 msgstr "Numéro TVA :"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT:"
-msgstr "TVA :"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
@@ -1382,20 +1270,8 @@ msgid "Canceled"
 msgstr "Annulé"
 
 msgctxt "selection:account.invoice,state:"
-msgid "Canceled"
-msgstr "Annulé"
-
-msgctxt "selection:account.invoice,state:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "selection:account.invoice,state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:account.invoice,state:"
-msgid "Paid"
-msgstr "Payée"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Paid"
@@ -1414,28 +1290,12 @@ msgid "Credit Note"
 msgstr "Note de crédit"
 
 msgctxt "selection:account.invoice,type:"
-msgid "Credit Note"
-msgstr "Note de crédit"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Invoice"
-msgstr "Facture"
-
-msgctxt "selection:account.invoice,type:"
 msgid "Invoice"
 msgstr "Facture"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Credit Note"
 msgstr "Note de crédit fournisseur"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Supplier Credit Note"
-msgstr "Note de crédit fournisseur"
-
-msgctxt "selection:account.invoice,type:"
-msgid "Supplier Invoice"
-msgstr "Facture fournisseur"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
@@ -1446,28 +1306,12 @@ msgid "Credit Note"
 msgstr "Note de crédit"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Credit Note"
-msgstr "Note de crédit"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Invoice"
-msgstr "Facture"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Invoice"
 msgstr "Facture"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier Credit Note"
 msgstr "Note de crédit fournisseur"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier Credit Note"
-msgstr "Note de crédit fournisseur"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier Invoice"
-msgstr "Facture fournisseur"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier Invoice"
@@ -1478,28 +1322,12 @@ msgid "Comment"
 msgstr "Commentaire"
 
 msgctxt "selection:account.invoice.line,type:"
-msgid "Comment"
-msgstr "Commentaire"
-
-msgctxt "selection:account.invoice.line,type:"
-msgid "Line"
-msgstr "Ligne"
-
-msgctxt "selection:account.invoice.line,type:"
 msgid "Line"
 msgstr "Ligne"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Subtotal"
 msgstr "Sous-total"
-
-msgctxt "selection:account.invoice.line,type:"
-msgid "Subtotal"
-msgstr "Sous-total"
-
-msgctxt "selection:account.invoice.line,type:"
-msgid "Title"
-msgstr "Titre"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
@@ -1626,28 +1454,12 @@ msgid "General"
 msgstr "Général"
 
 msgctxt "view:account.invoice.line:"
-msgid "General"
-msgstr "Général"
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Line"
-msgstr "Ligne de facture"
-
-msgctxt "view:account.invoice.line:"
 msgid "Invoice Line"
 msgstr "Ligne de facture"
 
 msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
 msgstr "Lignes de facture"
-
-msgctxt "view:account.invoice.line:"
-msgid "Invoice Lines"
-msgstr "Lignes de facture"
-
-msgctxt "view:account.invoice.line:"
-msgid "Notes"
-msgstr "Notes"
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
@@ -1674,14 +1486,6 @@ msgid "Payment Term"
 msgstr "Conditions de paiement"
 
 msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Term"
-msgstr "Conditions de paiement"
-
-msgctxt "view:account.invoice.payment_term:"
-msgid "Payment Terms"
-msgstr "Conditions de paiement"
-
-msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Terms"
 msgstr "Conditions de paiement"
 
@@ -1702,20 +1506,8 @@ msgid "Invoice Tax"
 msgstr "Taxes de le facture"
 
 msgctxt "view:account.invoice.tax:"
-msgid "Invoice Tax"
-msgstr "Taxes de le facture"
-
-msgctxt "view:account.invoice.tax:"
 msgid "Invoice Taxes"
 msgstr "Taxes de le facture"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Invoice Taxes"
-msgstr "Taxes de le facture"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Tax Code"
-msgstr "Code de taxe"
 
 msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
@@ -1738,28 +1530,12 @@ msgid "Invoice"
 msgstr "Facture"
 
 msgctxt "view:account.invoice:"
-msgid "Invoice"
-msgstr "Facture"
-
-msgctxt "view:account.invoice:"
-msgid "Invoices"
-msgstr "Factures"
-
-msgctxt "view:account.invoice:"
 msgid "Invoices"
 msgstr "Factures"
 
 msgctxt "view:account.invoice:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:account.invoice:"
-msgid "Other Info"
-msgstr "Autre information"
-
-msgctxt "view:account.invoice:"
-msgid "Payment"
-msgstr "Paiement"
 
 msgctxt "view:account.invoice:"
 msgid "Payment"
@@ -1774,20 +1550,8 @@ msgid "_Cancel"
 msgstr "_Annuler"
 
 msgctxt "view:account.invoice:"
-msgid "_Cancel"
-msgstr "_Annuler"
-
-msgctxt "view:account.invoice:"
 msgid "_Draft"
 msgstr "_Brouillon"
-
-msgctxt "view:account.invoice:"
-msgid "_Draft"
-msgstr "_Brouillon"
-
-msgctxt "view:account.invoice:"
-msgid "_Pay"
-msgstr "_Payer"
 
 msgctxt "view:account.invoice:"
 msgid "_Pay"
@@ -1816,10 +1580,6 @@ msgstr "Lignes à payer"
 msgctxt "view:account.move.line:"
 msgid "Payment Lines"
 msgstr "Lignes de paiement"
-
-msgctxt "view:party.party:"
-msgid "Payment Terms"
-msgstr "Conditions de paiement"
 
 msgctxt "view:party.party:"
 msgid "Payment Terms"
