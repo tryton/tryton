@@ -6,10 +6,6 @@ msgctxt "error:timesheet.line:"
 msgid "Hours field must be positive"
 msgstr "Le champ Heures doit être positif"
 
-msgctxt "error:timesheet.line:"
-msgid "Hours field must be positive"
-msgstr "Le champ Heures doit être positif"
-
 msgctxt "error:timesheet.work:"
 msgid ""
 "Every work must be in the same company as it's parent work but \"%(child)s\""
@@ -439,28 +435,12 @@ msgid "Hours"
 msgstr "Heures"
 
 msgctxt "view:timesheet.hours_employee:"
-msgid "Hours"
-msgstr "Heures"
-
-msgctxt "view:timesheet.hours_employee:"
-msgid "Hours per Employee"
-msgstr "Heures par employé"
-
-msgctxt "view:timesheet.hours_employee:"
 msgid "Hours per Employee"
 msgstr "Heures par employé"
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
 msgstr "Nombre d'heures par employé par mois"
-
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr "Nombre d'heures par employé par mois"
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr "Nombre d'heures par employé par semaine"
 
 msgctxt "view:timesheet.hours_employee_weekly:"
 msgid "Hours per Employee per Week"
@@ -475,20 +455,8 @@ msgid "Hours"
 msgstr "Heures"
 
 msgctxt "view:timesheet.line:"
-msgid "Hours"
-msgstr "Heures"
-
-msgctxt "view:timesheet.line:"
 msgid "Timesheet Line"
 msgstr "Ligne de feuille de présence"
-
-msgctxt "view:timesheet.line:"
-msgid "Timesheet Line"
-msgstr "Ligne de feuille de présence"
-
-msgctxt "view:timesheet.line:"
-msgid "Timesheet Lines"
-msgstr "Lignes de feuille de présence"
 
 msgctxt "view:timesheet.line:"
 msgid "Timesheet Lines"
@@ -503,20 +471,8 @@ msgid "Hours per Work"
 msgstr "Heures par activité"
 
 msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr "Heures par activité"
-
-msgctxt "view:timesheet.work:"
 msgid "Work"
 msgstr "Travail"
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr "Travail"
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
-msgstr "Travaux"
 
 msgctxt "view:timesheet.work:"
 msgid "Works"
