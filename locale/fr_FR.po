@@ -19,30 +19,12 @@ msgstr ""
 "désactiver et en créer une nouvelle."
 
 msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la "
-"désactiver et en créer une nouvelle."
-
-msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
 msgstr "Facteur et taux non valides sur l'UDM \"%s\""
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "Le taux et le facteur ne peuvent pas être égaux à zéro."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "Le taux et le facteur ne peuvent pas être égaux à zéro."
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
-msgstr ""
-"Vous ne pouvez pas changer le taux, le facteur ou la catégorie d'une unité "
-"de mesure."
 
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure. "
@@ -691,14 +673,6 @@ msgid "Average"
 msgstr "Moyenne"
 
 msgctxt "selection:product.template,cost_price_method:"
-msgid "Average"
-msgstr "Moyenne"
-
-msgctxt "selection:product.template,cost_price_method:"
-msgid "Fixed"
-msgstr "Fixe"
-
-msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
 msgstr "Fixe"
 
@@ -714,14 +688,6 @@ msgctxt "selection:product.template,type:"
 msgid "Service"
 msgstr "Service"
 
-msgctxt "selection:product.template,type:"
-msgid "Service"
-msgstr "Service"
-
-msgctxt "view:product.category:"
-msgid "Children"
-msgstr "Enfants"
-
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Enfants"
@@ -729,14 +695,6 @@ msgstr "Enfants"
 msgctxt "view:product.category:"
 msgid "Product Categories"
 msgstr "Catégories de produit"
-
-msgctxt "view:product.category:"
-msgid "Product Categories"
-msgstr "Catégories de produit"
-
-msgctxt "view:product.category:"
-msgid "Product Category"
-msgstr "Catégorie de produit"
 
 msgctxt "view:product.category:"
 msgid "Product Category"
@@ -749,14 +707,6 @@ msgstr "Produit"
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Produits"
-
-msgctxt "view:product.product:"
-msgid "Products"
-msgstr "Produits"
-
-msgctxt "view:product.template:"
-msgid "General"
-msgstr "Général"
 
 msgctxt "view:product.template:"
 msgid "General"
@@ -775,28 +725,12 @@ msgid "Categories of Unit of Measure"
 msgstr "Catégories d'Unité de mesure"
 
 msgctxt "view:product.uom.category:"
-msgid "Categories of Unit of Measure"
-msgstr "Catégories d'Unité de mesure"
-
-msgctxt "view:product.uom.category:"
-msgid "Category of Unit of Measure"
-msgstr "Catégorie d'unité de mesure"
-
-msgctxt "view:product.uom.category:"
 msgid "Category of Unit of Measure"
 msgstr "Catégorie d'unité de mesure"
 
 msgctxt "view:product.uom:"
 msgid "Unit of Measure"
 msgstr "Unité de mesure"
-
-msgctxt "view:product.uom:"
-msgid "Unit of Measure"
-msgstr "Unité de mesure"
-
-msgctxt "view:product.uom:"
-msgid "Units of Measure"
-msgstr "Unités de mesure"
 
 msgctxt "view:product.uom:"
 msgid "Units of Measure"
