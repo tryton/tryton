@@ -47,20 +47,8 @@ msgid "Friday"
 msgstr "Vendredi"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Friday"
-msgstr "Vendredi"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
 msgstr "Lundi"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Monday"
-msgstr "Lundi"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Saturday"
-msgstr "Samedi"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
@@ -71,14 +59,6 @@ msgid "Sunday"
 msgstr "Dimanche"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Sunday"
-msgstr "Dimanche"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Thursday"
-msgstr "Jeudi"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
 msgstr "Jeudi"
 
@@ -87,20 +67,8 @@ msgid "Tuesday"
 msgstr "Mardi"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Tuesday"
-msgstr "Mardi"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
 msgstr "Mercredi"
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Wednesday"
-msgstr "Mercredi"
-
-msgctxt "view:purchase.product_supplier.day:"
-msgid "Week Day"
-msgstr "Jour de la semaine"
 
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
