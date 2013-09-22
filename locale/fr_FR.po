@@ -178,27 +178,11 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr "Prédécesseur - Successeur"
 
-msgctxt "model:res.request.link,name:request_link_work"
-msgid "Work"
-msgstr "Travail"
-
 msgctxt "view:project.allocation:"
 msgid "Allocation"
 msgstr "Répartition"
 
 msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Répartition"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Répartitions"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Répartitions"
-
-msgctxt "view:project.work:"
 msgid "Allocations"
 msgstr "Répartitions"
 
@@ -209,14 +193,6 @@ msgstr "Répartitions"
 msgctxt "view:project.work:"
 msgid "Plan"
 msgstr "Planification"
-
-msgctxt "view:project.work:"
-msgid "Plan"
-msgstr "Planification"
-
-msgctxt "view:project.work:"
-msgid "Requests"
-msgstr "Demandes"
 
 msgctxt "view:project.work:"
 msgid "Requests"
