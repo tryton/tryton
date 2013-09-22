@@ -7,14 +7,6 @@ msgid "Deferral must be unique by account and fiscal year"
 msgstr "Le report doit être unique par compte et par année fiscale"
 
 msgctxt "error:account.account.deferral:"
-msgid "Deferral must be unique by account and fiscal year"
-msgstr "Le report doit être unique par compte et par année fiscale"
-
-msgctxt "error:account.account.deferral:"
-msgid "You can not modify Account Deferral records"
-msgstr "Vous ne pouvez pas modifier les enregistrements de report de compte"
-
-msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
 msgstr "Vous ne pouvez pas modifier les enregistrements de report de compte"
 
@@ -3320,20 +3312,8 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "/"
-msgstr "/"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "Account"
 msgstr "Compte"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Account"
-msgstr "Compte"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Company:"
-msgstr "Société :"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Company:"
@@ -3344,20 +3324,8 @@ msgid "Credit"
 msgstr "Crédit"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Credit"
-msgstr "Crédit"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "Date:"
 msgstr "Date :"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Date:"
-msgstr "Date :"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Debit"
-msgstr "Débit"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Debit"
@@ -3372,28 +3340,12 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "From Date:"
-msgstr "De la Date :"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "From Date:"
 msgstr "De la Date :"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "General Journal"
 msgstr "Journal général"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "General Journal"
-msgstr "Journal général"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Journal Entry:"
-msgstr "Entrée journal :"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Journal Entry:"
@@ -3408,14 +3360,6 @@ msgid "Posted"
 msgstr "Posté"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Posted"
-msgstr "Posté"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Print Date:"
-msgstr "Date d'impression :"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Date d'impression :"
 
@@ -3424,20 +3368,8 @@ msgid "To Date:"
 msgstr "À la Date :"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "To Date:"
-msgstr "À la Date :"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "User:"
 msgstr "Utilisateur :"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "User:"
-msgstr "Utilisateur :"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "at"
-msgstr "à"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "at"
@@ -3548,14 +3480,6 @@ msgid "Expense"
 msgstr "Charge"
 
 msgctxt "selection:account.account,kind:"
-msgid "Expense"
-msgstr "Charge"
-
-msgctxt "selection:account.account,kind:"
-msgid "Other"
-msgstr "Autre"
-
-msgctxt "selection:account.account,kind:"
 msgid "Other"
 msgstr "Autre"
 
@@ -3564,20 +3488,8 @@ msgid "Payable"
 msgstr "À Payer"
 
 msgctxt "selection:account.account,kind:"
-msgid "Payable"
-msgstr "À Payer"
-
-msgctxt "selection:account.account,kind:"
 msgid "Receivable"
 msgstr "À recevoir"
-
-msgctxt "selection:account.account,kind:"
-msgid "Receivable"
-msgstr "À recevoir"
-
-msgctxt "selection:account.account,kind:"
-msgid "Revenue"
-msgstr "Produit"
 
 msgctxt "selection:account.account,kind:"
 msgid "Revenue"
@@ -3591,21 +3503,9 @@ msgctxt "selection:account.account,kind:"
 msgid "View"
 msgstr "Vue"
 
-msgctxt "selection:account.account,kind:"
-msgid "View"
-msgstr "Vue"
-
 msgctxt "selection:account.account.template,kind:"
 msgid "Expense"
 msgstr "Charge"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Expense"
-msgstr "Charge"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Other"
-msgstr "Autre"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Other"
@@ -3616,20 +3516,8 @@ msgid "Payable"
 msgstr "À Payer"
 
 msgctxt "selection:account.account.template,kind:"
-msgid "Payable"
-msgstr "À Payer"
-
-msgctxt "selection:account.account.template,kind:"
 msgid "Receivable"
 msgstr "À recevoir"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Receivable"
-msgstr "À recevoir"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Revenue"
-msgstr "Produit"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
@@ -3643,14 +3531,6 @@ msgctxt "selection:account.account.template,kind:"
 msgid "View"
 msgstr "Vue"
 
-msgctxt "selection:account.account.template,kind:"
-msgid "View"
-msgstr "Vue"
-
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Credit - Debit"
-msgstr "Crédit - Débit"
-
 msgctxt "selection:account.account.type,display_balance:"
 msgid "Credit - Debit"
 msgstr "Crédit - Débit"
@@ -3659,21 +3539,9 @@ msgctxt "selection:account.account.type,display_balance:"
 msgid "Debit - Credit"
 msgstr "Débit - Crédit"
 
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Debit - Credit"
-msgstr "Débit - Crédit"
-
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Credit - Debit"
 msgstr "Crédit - Débit"
-
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Credit - Debit"
-msgstr "Crédit - Débit"
-
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Debit - Credit"
-msgstr "Débit - Crédit"
 
 msgctxt "selection:account.account.type.template,display_balance:"
 msgid "Debit - Credit"
@@ -3684,14 +3552,6 @@ msgid "Close"
 msgstr "Clôturé"
 
 msgctxt "selection:account.fiscalyear,state:"
-msgid "Close"
-msgstr "Clôturé"
-
-msgctxt "selection:account.fiscalyear,state:"
-msgid "Open"
-msgstr "Ouverte"
-
-msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
 msgstr "Ouverte"
 
@@ -3700,14 +3560,6 @@ msgid "Close"
 msgstr "Clôturée"
 
 msgctxt "selection:account.journal.period,state:"
-msgid "Close"
-msgstr "Clôturée"
-
-msgctxt "selection:account.journal.period,state:"
-msgid "Open"
-msgstr "Ouverte"
-
-msgctxt "selection:account.journal.period,state:"
 msgid "Open"
 msgstr "Ouverte"
 
@@ -3716,28 +3568,12 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "selection:account.move,state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:account.move,state:"
-msgid "Posted"
-msgstr "Posté"
-
-msgctxt "selection:account.move,state:"
 msgid "Posted"
 msgstr "Posté"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "selection:account.move.line,move_state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:account.move.line,move_state:"
-msgid "Posted"
-msgstr "Posté"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Posted"
@@ -3746,14 +3582,6 @@ msgstr "Posté"
 msgctxt "selection:account.move.line,state:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "selection:account.move.line,state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:account.move.line,state:"
-msgid "Valid"
-msgstr "Valide"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Valid"
@@ -3784,28 +3612,12 @@ msgid "Close"
 msgstr "Clôturée"
 
 msgctxt "selection:account.period,state:"
-msgid "Close"
-msgstr "Clôturée"
-
-msgctxt "selection:account.period,state:"
-msgid "Open"
-msgstr "Ouverte"
-
-msgctxt "selection:account.period,state:"
 msgid "Open"
 msgstr "Ouverte"
 
 msgctxt "selection:account.period,type:"
 msgid "Adjustment"
 msgstr "Ajustement"
-
-msgctxt "selection:account.period,type:"
-msgid "Adjustment"
-msgstr "Ajustement"
-
-msgctxt "selection:account.period,type:"
-msgid "Standard"
-msgstr "Standard"
 
 msgctxt "selection:account.period,type:"
 msgid "Standard"
@@ -3816,20 +3628,8 @@ msgid "Fixed"
 msgstr "Fixé"
 
 msgctxt "selection:account.tax,type:"
-msgid "Fixed"
-msgstr "Fixé"
-
-msgctxt "selection:account.tax,type:"
 msgid "None"
 msgstr "Aucun"
-
-msgctxt "selection:account.tax,type:"
-msgid "None"
-msgstr "Aucun"
-
-msgctxt "selection:account.tax,type:"
-msgid "Percentage"
-msgstr "Pourcentage"
 
 msgctxt "selection:account.tax,type:"
 msgid "Percentage"
@@ -3884,20 +3684,8 @@ msgid "Fixed"
 msgstr "Fixe"
 
 msgctxt "selection:account.tax.template,type:"
-msgid "Fixed"
-msgstr "Fixe"
-
-msgctxt "selection:account.tax.template,type:"
 msgid "None"
 msgstr "Aucun"
-
-msgctxt "selection:account.tax.template,type:"
-msgid "None"
-msgstr "Aucun"
-
-msgctxt "selection:account.tax.template,type:"
-msgid "Percentage"
-msgstr "Pourcentage"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
@@ -3908,28 +3696,12 @@ msgid "Account Deferral"
 msgstr "Compte Report"
 
 msgctxt "view:account.account.deferral:"
-msgid "Account Deferral"
-msgstr "Compte Report"
-
-msgctxt "view:account.account.deferral:"
-msgid "Account Deferrals"
-msgstr "Comptes Report"
-
-msgctxt "view:account.account.deferral:"
 msgid "Account Deferrals"
 msgstr "Comptes Report"
 
 msgctxt "view:account.account.template:"
 msgid "Account Template"
 msgstr "Compte modèle"
-
-msgctxt "view:account.account.template:"
-msgid "Account Template"
-msgstr "Compte modèle"
-
-msgctxt "view:account.account.template:"
-msgid "Account Templates"
-msgstr "Modèles de compte"
 
 msgctxt "view:account.account.template:"
 msgid "Account Templates"
@@ -3940,20 +3712,8 @@ msgid "Account Type Template"
 msgstr "Modèle de type de compte"
 
 msgctxt "view:account.account.type.template:"
-msgid "Account Type Template"
-msgstr "Modèle de type de compte"
-
-msgctxt "view:account.account.type.template:"
 msgid "Account Types Templates"
 msgstr "Modèles de type de compte"
-
-msgctxt "view:account.account.type.template:"
-msgid "Account Types Templates"
-msgstr "Modèles de type de compte"
-
-msgctxt "view:account.account.type:"
-msgid "Account Type"
-msgstr "Type de compte"
 
 msgctxt "view:account.account.type:"
 msgid "Account Type"
@@ -3964,20 +3724,8 @@ msgid "Account Types"
 msgstr "Types de compte"
 
 msgctxt "view:account.account.type:"
-msgid "Account Types"
-msgstr "Types de compte"
-
-msgctxt "view:account.account.type:"
 msgid "Balance Sheet"
 msgstr "Bilan"
-
-msgctxt "view:account.account.type:"
-msgid "Balance Sheet"
-msgstr "Bilan"
-
-msgctxt "view:account.account.type:"
-msgid "Income Statement"
-msgstr "Compte de résultat"
 
 msgctxt "view:account.account.type:"
 msgid "Income Statement"
@@ -3988,14 +3736,6 @@ msgid "Account"
 msgstr "Compte"
 
 msgctxt "view:account.account:"
-msgid "Account"
-msgstr "Compte"
-
-msgctxt "view:account.account:"
-msgid "Accounts"
-msgstr "Comptes"
-
-msgctxt "view:account.account:"
 msgid "Accounts"
 msgstr "Comptes"
 
@@ -4004,20 +3744,8 @@ msgid "Deferrals"
 msgstr "Reports"
 
 msgctxt "view:account.account:"
-msgid "Deferrals"
-msgstr "Reports"
-
-msgctxt "view:account.account:"
 msgid "General Information"
 msgstr "Information générale"
-
-msgctxt "view:account.account:"
-msgid "General Information"
-msgstr "Information générale"
-
-msgctxt "view:account.account:"
-msgid "Notes"
-msgstr "Notes"
 
 msgctxt "view:account.account:"
 msgid "Notes"
@@ -4056,20 +3784,8 @@ msgid "Are you sure to close fiscal year?"
 msgstr "Etes-vous sûr de clôturer l'année fiscale?"
 
 msgctxt "view:account.fiscalyear:"
-msgid "Are you sure to close fiscal year?"
-msgstr "Etes-vous sûr de clôturer l'année fiscale?"
-
-msgctxt "view:account.fiscalyear:"
 msgid "Close Fiscal Year"
 msgstr "Fermer l'année fiscale"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Close Fiscal Year"
-msgstr "Fermer l'année fiscale"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Create 3 Months Periods"
-msgstr "Créer des périodes de 3 mois"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create 3 Months Periods"
@@ -4080,20 +3796,8 @@ msgid "Create Monthly Periods"
 msgstr "Créer des périodes mensuelles"
 
 msgctxt "view:account.fiscalyear:"
-msgid "Create Monthly Periods"
-msgstr "Créer des périodes mensuelles"
-
-msgctxt "view:account.fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Année fiscale"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Année fiscale"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Fiscal Years"
-msgstr "Années fiscales"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Fiscal Years"
@@ -4104,20 +3808,8 @@ msgid "Periods"
 msgstr "Périodes"
 
 msgctxt "view:account.fiscalyear:"
-msgid "Periods"
-msgstr "Périodes"
-
-msgctxt "view:account.fiscalyear:"
 msgid "Re-Open Fiscal Year"
 msgstr "Ré-ouvrir l'année fiscale"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Re-Open Fiscal Year"
-msgstr "Ré-ouvrir l'année fiscale"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Sequences"
-msgstr "Séquences"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
@@ -4128,28 +3820,12 @@ msgid "Journal - Period"
 msgstr "Journal - Période"
 
 msgctxt "view:account.journal.period:"
-msgid "Journal - Period"
-msgstr "Journal - Période"
-
-msgctxt "view:account.journal.period:"
-msgid "Journals - Periods"
-msgstr "Journaux - périodes"
-
-msgctxt "view:account.journal.period:"
 msgid "Journals - Periods"
 msgstr "Journaux - périodes"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Type"
 msgstr "Type de journal"
-
-msgctxt "view:account.journal.type:"
-msgid "Journal Type"
-msgstr "Type de journal"
-
-msgctxt "view:account.journal.type:"
-msgid "Journal Types"
-msgstr "Types de journal"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Types"
@@ -4168,20 +3844,8 @@ msgid "Journal View"
 msgstr "Vue de journal"
 
 msgctxt "view:account.journal.view:"
-msgid "Journal View"
-msgstr "Vue de journal"
-
-msgctxt "view:account.journal.view:"
 msgid "Journal Views"
 msgstr "Vues des journaux"
-
-msgctxt "view:account.journal.view:"
-msgid "Journal Views"
-msgstr "Vues des journaux"
-
-msgctxt "view:account.journal:"
-msgid "General Information"
-msgstr "Information générale"
 
 msgctxt "view:account.journal:"
 msgid "General Information"
@@ -4192,20 +3856,8 @@ msgid "Journal"
 msgstr "Journal"
 
 msgctxt "view:account.journal:"
-msgid "Journal"
-msgstr "Journal"
-
-msgctxt "view:account.journal:"
 msgid "Journals"
 msgstr "Journaux"
-
-msgctxt "view:account.journal:"
-msgid "Journals"
-msgstr "Journaux"
-
-msgctxt "view:account.move.line:"
-msgid "Account Move Line"
-msgstr "Ligne de mouvement comptable"
 
 msgctxt "view:account.move.line:"
 msgid "Account Move Line"
@@ -4216,20 +3868,8 @@ msgid "Account Move Lines"
 msgstr "Lignes de mouvement comptable"
 
 msgctxt "view:account.move.line:"
-msgid "Account Move Lines"
-msgstr "Lignes de mouvement comptable"
-
-msgctxt "view:account.move.line:"
 msgid "Credit"
 msgstr "Crédit"
-
-msgctxt "view:account.move.line:"
-msgid "Credit"
-msgstr "Crédit"
-
-msgctxt "view:account.move.line:"
-msgid "Debit"
-msgstr "Débit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
@@ -4238,10 +3878,6 @@ msgstr "Débit"
 msgctxt "view:account.move.line:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:account.move.open_journal.ask:"
-msgid "Open Journal"
-msgstr "Ouvrir journal"
 
 msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
@@ -4259,21 +3895,9 @@ msgctxt "view:account.move.reconcile_lines.writeoff:"
 msgid "Write-Off"
 msgstr "Pertes et profits"
 
-msgctxt "view:account.move.reconcile_lines.writeoff:"
-msgid "Write-Off"
-msgstr "Pertes et profits"
-
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliation"
 msgstr "Réconciliation"
-
-msgctxt "view:account.move.reconciliation:"
-msgid "Reconciliation"
-msgstr "Réconciliation"
-
-msgctxt "view:account.move.reconciliation:"
-msgid "Reconciliations"
-msgstr "Réconciliations"
 
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliations"
@@ -4284,28 +3908,12 @@ msgid "Account Move"
 msgstr "Mouvement comptable"
 
 msgctxt "view:account.move:"
-msgid "Account Move"
-msgstr "Mouvement comptable"
-
-msgctxt "view:account.move:"
-msgid "Account Moves"
-msgstr "Mouvements comptables"
-
-msgctxt "view:account.move:"
 msgid "Account Moves"
 msgstr "Mouvements comptables"
 
 msgctxt "view:account.move:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "view:account.move:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:account.move:"
-msgid "Post"
-msgstr "Posté"
 
 msgctxt "view:account.move:"
 msgid "Post"
@@ -4340,14 +3948,6 @@ msgid "Period"
 msgstr "Période"
 
 msgctxt "view:account.period:"
-msgid "Period"
-msgstr "Période"
-
-msgctxt "view:account.period:"
-msgid "Periods"
-msgstr "Périodes"
-
-msgctxt "view:account.period:"
 msgid "Periods"
 msgstr "Périodes"
 
@@ -4368,28 +3968,12 @@ msgid "Children"
 msgstr "Enfants"
 
 msgctxt "view:account.tax.code.template:"
-msgid "Children"
-msgstr "Enfants"
-
-msgctxt "view:account.tax.code.template:"
-msgid "Description"
-msgstr "Description"
-
-msgctxt "view:account.tax.code.template:"
 msgid "Description"
 msgstr "Description"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Tax Code Template"
 msgstr "Modèle de code de taxe"
-
-msgctxt "view:account.tax.code.template:"
-msgid "Tax Code Template"
-msgstr "Modèle de code de taxe"
-
-msgctxt "view:account.tax.code.template:"
-msgid "Tax Codes Templates"
-msgstr "Modèles de code de taxe"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Tax Codes Templates"
@@ -4400,28 +3984,12 @@ msgid "Children"
 msgstr "Enfants"
 
 msgctxt "view:account.tax.code:"
-msgid "Children"
-msgstr "Enfants"
-
-msgctxt "view:account.tax.code:"
-msgid "Description"
-msgstr "Description"
-
-msgctxt "view:account.tax.code:"
 msgid "Description"
 msgstr "Description"
 
 msgctxt "view:account.tax.code:"
 msgid "Tax Code"
 msgstr "Code de taxe"
-
-msgctxt "view:account.tax.code:"
-msgid "Tax Code"
-msgstr "Code de taxe"
-
-msgctxt "view:account.tax.code:"
-msgid "Tax Codes"
-msgstr "Codes de taxe"
 
 msgctxt "view:account.tax.code:"
 msgid "Tax Codes"
@@ -4432,28 +4000,12 @@ msgid "Tax Group"
 msgstr "Groupe de taxe"
 
 msgctxt "view:account.tax.group:"
-msgid "Tax Group"
-msgstr "Groupe de taxe"
-
-msgctxt "view:account.tax.group:"
-msgid "Tax Groups"
-msgstr "Groupes de taxes"
-
-msgctxt "view:account.tax.group:"
 msgid "Tax Groups"
 msgstr "Groupes de taxes"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Line"
 msgstr "Ligne comptable de taxe"
-
-msgctxt "view:account.tax.line:"
-msgid "Account Tax Line"
-msgstr "Ligne comptable de taxe"
-
-msgctxt "view:account.tax.line:"
-msgid "Account Tax Lines"
-msgstr "Lignes comptable de taxe"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Lines"
@@ -4464,28 +4016,12 @@ msgid "Tax Rule Line Template"
 msgstr "Modèle de ligne de règle de taxe"
 
 msgctxt "view:account.tax.rule.line.template:"
-msgid "Tax Rule Line Template"
-msgstr "Modèle de ligne de règle de taxe"
-
-msgctxt "view:account.tax.rule.line.template:"
-msgid "Tax Rule Line Templates"
-msgstr "Modèles de ligne de règle de taxe"
-
-msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Templates"
 msgstr "Modèles de ligne de règle de taxe"
 
 msgctxt "view:account.tax.rule.line:"
 msgid "Tax Rule Line"
 msgstr "Ligne de règle de taxe"
-
-msgctxt "view:account.tax.rule.line:"
-msgid "Tax Rule Line"
-msgstr "Ligne de règle de taxe"
-
-msgctxt "view:account.tax.rule.line:"
-msgid "Tax Rule Lines"
-msgstr "Lignes de règle de taxe"
 
 msgctxt "view:account.tax.rule.line:"
 msgid "Tax Rule Lines"
@@ -4496,14 +4032,6 @@ msgid "Tax Rule Template"
 msgstr "Modèle de règle de taxe"
 
 msgctxt "view:account.tax.rule.template:"
-msgid "Tax Rule Template"
-msgstr "Modèle de règle de taxe"
-
-msgctxt "view:account.tax.rule.template:"
-msgid "Tax Rules"
-msgstr "Règles de taxe"
-
-msgctxt "view:account.tax.rule.template:"
 msgid "Tax Rules"
 msgstr "Règles de taxe"
 
@@ -4512,20 +4040,8 @@ msgid "Tax Rule"
 msgstr "Règle de taxe"
 
 msgctxt "view:account.tax.rule:"
-msgid "Tax Rule"
-msgstr "Règle de taxe"
-
-msgctxt "view:account.tax.rule:"
 msgid "Tax Rules"
 msgstr "Règles de taxe"
-
-msgctxt "view:account.tax.rule:"
-msgid "Tax Rules"
-msgstr "Règles de taxe"
-
-msgctxt "view:account.tax.template:"
-msgid "Code"
-msgstr "Code"
 
 msgctxt "view:account.tax.template:"
 msgid "Code"
@@ -4536,20 +4052,8 @@ msgid "Credit Note"
 msgstr "Note de Crédit"
 
 msgctxt "view:account.tax.template:"
-msgid "Credit Note"
-msgstr "Note de Crédit"
-
-msgctxt "view:account.tax.template:"
 msgid "General Information"
 msgstr "Information générale"
-
-msgctxt "view:account.tax.template:"
-msgid "General Information"
-msgstr "Information générale"
-
-msgctxt "view:account.tax.template:"
-msgid "Invoice"
-msgstr "Facture"
 
 msgctxt "view:account.tax.template:"
 msgid "Invoice"
@@ -4560,20 +4064,8 @@ msgid "Tax Template"
 msgstr "Modèle de taxe"
 
 msgctxt "view:account.tax.template:"
-msgid "Tax Template"
-msgstr "Modèle de taxe"
-
-msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
 msgstr "Modèles de taxes"
-
-msgctxt "view:account.tax.template:"
-msgid "Taxes Templates"
-msgstr "Modèles de taxes"
-
-msgctxt "view:account.tax:"
-msgid "Code"
-msgstr "Code"
 
 msgctxt "view:account.tax:"
 msgid "Code"
@@ -4584,14 +4076,6 @@ msgid "Credit Note"
 msgstr "Note de crédit"
 
 msgctxt "view:account.tax:"
-msgid "Credit Note"
-msgstr "Note de crédit"
-
-msgctxt "view:account.tax:"
-msgid "General Information"
-msgstr "Information générale"
-
-msgctxt "view:account.tax:"
 msgid "General Information"
 msgstr "Information générale"
 
@@ -4600,20 +4084,8 @@ msgid "Invoice"
 msgstr "Facture"
 
 msgctxt "view:account.tax:"
-msgid "Invoice"
-msgstr "Facture"
-
-msgctxt "view:account.tax:"
 msgid "Tax"
 msgstr "Taxe"
-
-msgctxt "view:account.tax:"
-msgid "Tax"
-msgstr "Taxe"
-
-msgctxt "view:account.tax:"
-msgid "Taxes"
-msgstr "Taxes"
 
 msgctxt "view:account.tax:"
 msgid "Taxes"
@@ -4634,14 +4106,6 @@ msgstr "Mise à jour du plan comptable réussie"
 msgctxt "view:party.party:"
 msgid "Account"
 msgstr "Compte"
-
-msgctxt "view:party.party:"
-msgid "Account"
-msgstr "Compte"
-
-msgctxt "view:party.party:"
-msgid "Taxes"
-msgstr "Taxes"
 
 msgctxt "view:party.party:"
 msgid "Taxes"
