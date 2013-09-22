@@ -187,28 +187,12 @@ msgid "Done"
 msgstr "Fait"
 
 msgctxt "selection:project.work,state:"
-msgid "Done"
-msgstr "Fait"
-
-msgctxt "selection:project.work,state:"
-msgid "Opened"
-msgstr "Ouvert"
-
-msgctxt "selection:project.work,state:"
 msgid "Opened"
 msgstr "Ouvert"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
 msgstr "Projet"
-
-msgctxt "selection:project.work,type:"
-msgid "Project"
-msgstr "Projet"
-
-msgctxt "selection:project.work,type:"
-msgid "Task"
-msgstr "Tâche"
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
@@ -219,28 +203,12 @@ msgid "Children"
 msgstr "Enfants"
 
 msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Enfants"
-
-msgctxt "view:project.work:"
-msgid "General"
-msgstr "General"
-
-msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
 
 msgctxt "view:project.work:"
 msgid "Tasks"
 msgstr "Tâche"
-
-msgctxt "view:project.work:"
-msgid "Tasks"
-msgstr "Tâche"
-
-msgctxt "view:project.work:"
-msgid "Works Efforts"
-msgstr "Efforts de travail"
 
 msgctxt "view:project.work:"
 msgid "Works Efforts"
