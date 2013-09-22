@@ -251,20 +251,8 @@ msgid "Best Regards,"
 msgstr "Bien cordialement,"
 
 msgctxt "odt:party.letter:"
-msgid "Best Regards,"
-msgstr "Bien cordialement,"
-
-msgctxt "odt:party.letter:"
 msgid "Date:"
 msgstr "Date :"
-
-msgctxt "odt:party.letter:"
-msgid "Date:"
-msgstr "Date :"
-
-msgctxt "odt:party.letter:"
-msgid "Dear Madams and Sirs,"
-msgstr "Chère madame, cher monsieur,"
 
 msgctxt "odt:party.letter:"
 msgid "Dear Madams and Sirs,"
@@ -275,28 +263,12 @@ msgid "E-Mail:"
 msgstr "E-Mail :"
 
 msgctxt "odt:party.letter:"
-msgid "E-Mail:"
-msgstr "E-Mail :"
-
-msgctxt "odt:party.letter:"
-msgid "Phone:"
-msgstr "Téléphone"
-
-msgctxt "odt:party.letter:"
 msgid "Phone:"
 msgstr "Téléphone"
 
 msgctxt "odt:party.letter:"
 msgid "Subject:"
 msgstr "Sujet :"
-
-msgctxt "odt:party.letter:"
-msgid "Subject:"
-msgstr "Sujet :"
-
-msgctxt "odt:party.letter:"
-msgid "VAT Number:"
-msgstr "Numéro TVA :"
 
 msgctxt "odt:party.letter:"
 msgid "VAT Number:"
@@ -315,20 +287,8 @@ msgid "Companies"
 msgstr "Sociétés"
 
 msgctxt "view:company.company:"
-msgid "Companies"
-msgstr "Sociétés"
-
-msgctxt "view:company.company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "view:company.company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "view:company.company:"
-msgid "Reports"
-msgstr "Rapports"
 
 msgctxt "view:company.company:"
 msgid "Reports"
@@ -337,14 +297,6 @@ msgstr "Rapports"
 msgctxt "view:company.employee:"
 msgid "Employee"
 msgstr "Employé"
-
-msgctxt "view:company.employee:"
-msgid "Employee"
-msgstr "Employé"
-
-msgctxt "view:company.employee:"
-msgid "Employees"
-msgstr "Employés"
 
 msgctxt "view:company.employee:"
 msgid "Employees"
