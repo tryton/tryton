@@ -347,20 +347,8 @@ msgid "Credit - Debit"
 msgstr "Crédit - Débit"
 
 msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Credit - Debit"
-msgstr "Crédit - Débit"
-
-msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Debit - Credit"
 msgstr "Débit - Crédit"
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Debit - Credit"
-msgstr "Débit - Crédit"
-
-msgctxt "selection:analytic_account.account,state:"
-msgid "Closed"
-msgstr "Fermé"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
@@ -371,20 +359,8 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "selection:analytic_account.account,state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
 msgstr "Ouvert"
-
-msgctxt "selection:analytic_account.account,state:"
-msgid "Opened"
-msgstr "Ouvert"
-
-msgctxt "selection:analytic_account.account,type:"
-msgid "Normal"
-msgstr "Normal"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
@@ -395,20 +371,8 @@ msgid "Root"
 msgstr "Racine"
 
 msgctxt "selection:analytic_account.account,type:"
-msgid "Root"
-msgstr "Racine"
-
-msgctxt "selection:analytic_account.account,type:"
 msgid "View"
 msgstr "Vue"
-
-msgctxt "selection:analytic_account.account,type:"
-msgid "View"
-msgstr "Vue"
-
-msgctxt "view:account.move.line:"
-msgid "Analytic"
-msgstr "Analytique"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
@@ -423,28 +387,12 @@ msgid "Analytic Account"
 msgstr "Compte analytique"
 
 msgctxt "view:analytic_account.account:"
-msgid "Analytic Account"
-msgstr "Compte analytique"
-
-msgctxt "view:analytic_account.account:"
-msgid "Analytic Accounts"
-msgstr "Comptes analytiques"
-
-msgctxt "view:analytic_account.account:"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
 msgstr "Information générale"
-
-msgctxt "view:analytic_account.account:"
-msgid "General Information"
-msgstr "Information générale"
-
-msgctxt "view:analytic_account.account:"
-msgid "Notes"
-msgstr "Notes"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
@@ -455,20 +403,8 @@ msgid "Analytic Line"
 msgstr "Ligne analytique"
 
 msgctxt "view:analytic_account.line:"
-msgid "Analytic Line"
-msgstr "Ligne analytique"
-
-msgctxt "view:analytic_account.line:"
 msgid "Analytic Lines"
 msgstr "Lignes analytiques"
-
-msgctxt "view:analytic_account.line:"
-msgid "Analytic Lines"
-msgstr "Lignes analytiques"
-
-msgctxt "view:analytic_account.line:"
-msgid "General Information"
-msgstr "Information générale"
 
 msgctxt "view:analytic_account.line:"
 msgid "General Information"
