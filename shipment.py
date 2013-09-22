@@ -2171,8 +2171,8 @@ class PickingList(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_locations = Location.search(list(from_location_ids))
-        to_locations = Location.search(list(to_location_ids))
+        from_locations = Location.browse(list(from_location_ids))
+        to_locations = Location.browse(list(to_location_ids))
 
         return {
             'from_location_ids': [l.id for l in from_locations],
@@ -2218,8 +2218,8 @@ class SupplierRestockingList(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_locations = Location.search(list(from_location_ids))
-        to_locations = Location.search(list(to_location_ids))
+        from_locations = Location.browse(list(from_location_ids))
+        to_locations = Location.browse(list(to_location_ids))
 
         return {
             'from_location_ids': [l.id for l in from_locations],
@@ -2265,8 +2265,8 @@ class CustomerReturnRestockingList(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_locations = Location.search(list(from_location_ids))
-        to_locations = Location.search(list(to_location_ids))
+        from_locations = Location.browse(list(from_location_ids))
+        to_locations = Location.browse(list(to_location_ids))
 
         return {
             'from_location_ids': [l.id for l in from_locations],
@@ -2312,8 +2312,8 @@ class InteralShipmentReport(CompanyReport):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
-        from_locations = Location.search(list(from_location_ids))
-        to_locations = Location.search(list(to_location_ids))
+        from_locations = Location.browse(list(from_location_ids))
+        to_locations = Location.browse(list(to_location_ids))
 
         return {
             'from_location_ids': [l.id for l in from_locations],
