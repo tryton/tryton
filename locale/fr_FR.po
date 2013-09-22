@@ -43,28 +43,12 @@ msgid "Base"
 msgstr "Base"
 
 msgctxt "selection:ldap.connection,auth_scope:"
-msgid "Base"
-msgstr "Base"
-
-msgctxt "selection:ldap.connection,auth_scope:"
-msgid "OneLevel"
-msgstr "Un niveau"
-
-msgctxt "selection:ldap.connection,auth_scope:"
 msgid "OneLevel"
 msgstr "Un niveau"
 
 msgctxt "selection:ldap.connection,auth_scope:"
 msgid "Subtree"
 msgstr "Sous-arbre"
-
-msgctxt "selection:ldap.connection,auth_scope:"
-msgid "Subtree"
-msgstr "Sous-arbre"
-
-msgctxt "view:ldap.connection:"
-msgid "Authentication"
-msgstr "Authentification"
 
 msgctxt "view:ldap.connection:"
 msgid "Authentication"
