@@ -1258,8 +1258,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
         for field in ('description', 'comment'):
             res[field] = getattr(self, field)
 
-        res['reference'] = self.number or self.reference
-
         for field in ('company', 'party', 'invoice_address', 'currency',
                 'journal', 'account', 'payment_term'):
             res[field] = getattr(self, field).id
@@ -1694,6 +1692,8 @@ class InvoiceLine(ModelSQL, ModelView):
 
     @property
     def origin_name(self):
+        if isinstance(self.origin, self.__class__):
+            return self.origin.invoice.rec_name
         return self.origin.rec_name if self.origin else None
 
     def get_invoice_taxes(self, name):
@@ -1869,10 +1869,10 @@ class InvoiceLine(ModelSQL, ModelView):
                 taxes.append(tax.id)
         return result
 
-    @staticmethod
-    def _get_origin():
+    @classmethod
+    def _get_origin(cls):
         'Return list of Model names for origin Reference'
-        return []
+        return [cls.__name__]
 
     @classmethod
     def get_origin(cls):
@@ -2037,6 +2037,7 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         res = {}
         res['invoice_type'] = _CREDIT_TYPE[self.invoice_type]
+        res['origin'] = str(self)
 
         for field in ('sequence', 'type', 'quantity', 'unit_price',
                 'description'):
