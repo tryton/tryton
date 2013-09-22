@@ -21,7 +21,3 @@ msgstr "Heures par année de travail"
 msgctxt "view:company.company:"
 msgid "Work Time"
 msgstr "Temps de travail"
-
-msgctxt "view:company.company:"
-msgid "Work Time"
-msgstr "Temps de travail"
