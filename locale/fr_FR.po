@@ -262,20 +262,8 @@ msgid "Canceled"
 msgstr "Annulé"
 
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
-msgstr "Annulé"
-
-msgctxt "selection:account.statement,state:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "selection:account.statement,state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:account.statement,state:"
-msgid "Posted"
-msgstr "Posté"
 
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
@@ -285,21 +273,9 @@ msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validé"
 
-msgctxt "selection:account.statement,state:"
-msgid "Validated"
-msgstr "Validé"
-
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
 msgstr "Journal de relevés"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journal"
-msgstr "Journal de relevés"
-
-msgctxt "view:account.statement.journal:"
-msgid "Statement Journals"
-msgstr "Journaux de relevés"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
@@ -314,20 +290,8 @@ msgid "Statement Line"
 msgstr "Ligne de relevé"
 
 msgctxt "view:account.statement.line:"
-msgid "Statement Line"
-msgstr "Ligne de relevé"
-
-msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
 msgstr "Lignes de relevé"
-
-msgctxt "view:account.statement.line:"
-msgid "Statement Lines"
-msgstr "Lignes de relevé"
-
-msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Annuler"
 
 msgctxt "view:account.statement:"
 msgid "Cancel"
@@ -338,20 +302,8 @@ msgid "Other Info"
 msgstr "Autre information"
 
 msgctxt "view:account.statement:"
-msgid "Other Info"
-msgstr "Autre information"
-
-msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Poster"
-
-msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Poster"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Remetter en brouillon"
 
 msgctxt "view:account.statement:"
 msgid "Reset to Draft"
@@ -362,28 +314,12 @@ msgid "Statement"
 msgstr "Relevé"
 
 msgctxt "view:account.statement:"
-msgid "Statement"
-msgstr "Relevé"
-
-msgctxt "view:account.statement:"
-msgid "Statement Lines"
-msgstr "Lignes de relevé"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Lignes de relevé"
 
 msgctxt "view:account.statement:"
 msgid "Statements"
 msgstr "Relevés"
-
-msgctxt "view:account.statement:"
-msgid "Statements"
-msgstr "Relevés"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Valider"
 
 msgctxt "view:account.statement:"
 msgid "Validate"
