@@ -923,28 +923,12 @@ msgid "Currencies"
 msgstr "Devises"
 
 msgctxt "view:currency.currency:"
-msgid "Currencies"
-msgstr "Devises"
-
-msgctxt "view:currency.currency:"
-msgid "Currency"
-msgstr "Devise"
-
-msgctxt "view:currency.currency:"
 msgid "Currency"
 msgstr "Devise"
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
 msgstr "Formatage"
-
-msgctxt "view:currency.currency:"
-msgid "Formatting"
-msgstr "Formatage"
-
-msgctxt "view:currency.currency:"
-msgid "Rates"
-msgstr "Taux"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
