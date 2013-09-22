@@ -20,10 +20,6 @@ msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
 msgstr "Le service VIES n'est pas disponible, veuillez essayer plus tard."
 
-msgctxt "error:party.check_vies:"
-msgid "The VIES service is unavailable, try again later."
-msgstr "Le service VIES n'est pas disponible, veuillez essayer plus tard."
-
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Vous ne pouvez pas modifier le tier sur le moyen de contact \"%s\"."
@@ -515,20 +511,8 @@ msgid "E-Mail"
 msgstr "E-Mail"
 
 msgctxt "selection:party.contact_mechanism,type:"
-msgid "E-Mail"
-msgstr "E-Mail"
-
-msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
 msgstr "Fax"
-
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "Fax"
-msgstr "Fax"
-
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "IRC"
-msgstr "IRC"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
@@ -539,20 +523,8 @@ msgid "Jabber"
 msgstr "Jabber"
 
 msgctxt "selection:party.contact_mechanism,type:"
-msgid "Jabber"
-msgstr "Jabber"
-
-msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
 msgstr "Mobile"
-
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "Mobile"
-msgstr "Mobile"
-
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "Other"
-msgstr "Autre"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Other"
@@ -563,20 +535,8 @@ msgid "Phone"
 msgstr "Téléphone"
 
 msgctxt "selection:party.contact_mechanism,type:"
-msgid "Phone"
-msgstr "Téléphone"
-
-msgctxt "selection:party.contact_mechanism,type:"
 msgid "SIP"
 msgstr "SIP"
-
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "SIP"
-msgstr "SIP"
-
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "Skype"
-msgstr "Skype"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Skype"
@@ -586,14 +546,6 @@ msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Site web"
 
-msgctxt "selection:party.contact_mechanism,type:"
-msgid "Website"
-msgstr "Site web"
-
-msgctxt "view:party.address:"
-msgid "Addresses"
-msgstr "Adresses"
-
 msgctxt "view:party.address:"
 msgid "Addresses"
 msgstr "Adresses"
@@ -601,14 +553,6 @@ msgstr "Adresses"
 msgctxt "view:party.category:"
 msgid "Categories"
 msgstr "Catégories"
-
-msgctxt "view:party.category:"
-msgid "Categories"
-msgstr "Catégories"
-
-msgctxt "view:party.category:"
-msgid "Category"
-msgstr "Catégorie"
 
 msgctxt "view:party.category:"
 msgid "Category"
@@ -630,21 +574,9 @@ msgctxt "view:party.configuration:"
 msgid "Party Configuration"
 msgstr "Configuration des tiers"
 
-msgctxt "view:party.configuration:"
-msgid "Party Configuration"
-msgstr "Configuration des tiers"
-
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
 msgstr "Moyen de contact"
-
-msgctxt "view:party.contact_mechanism:"
-msgid "Contact Mechanism"
-msgstr "Moyen de contact"
-
-msgctxt "view:party.contact_mechanism:"
-msgid "Contact Mechanisms"
-msgstr "Moyens de contact"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
@@ -655,14 +587,6 @@ msgid "Accounting"
 msgstr "Comptabilité"
 
 msgctxt "view:party.party:"
-msgid "Accounting"
-msgstr "Comptabilité"
-
-msgctxt "view:party.party:"
-msgid "General"
-msgstr "Général"
-
-msgctxt "view:party.party:"
 msgid "General"
 msgstr "Général"
 
@@ -671,20 +595,8 @@ msgid "Parties"
 msgstr "Tiers"
 
 msgctxt "view:party.party:"
-msgid "Parties"
-msgstr "Tiers"
-
-msgctxt "view:party.party:"
 msgid "Party"
 msgstr "Tiers"
-
-msgctxt "view:party.party:"
-msgid "Party"
-msgstr "Tiers"
-
-msgctxt "view:party.party:"
-msgid "VAT"
-msgstr "TVA"
 
 msgctxt "view:party.party:"
 msgid "VAT"
