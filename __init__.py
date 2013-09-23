@@ -3,6 +3,8 @@
 
 from trytond.pool import Pool
 from .sale import *
+from .product import *
+from .stock import *
 from .configuration import *
 from .invoice import *
 
