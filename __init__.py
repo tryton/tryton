@@ -3,9 +3,10 @@
 
 from trytond.pool import Pool
 from .purchase import *
+from .product import *
+from .stock import *
 from .configuration import *
 from .invoice import *
-from .stock import *
 
 
 def register():
