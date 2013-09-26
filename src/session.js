@@ -3,12 +3,42 @@
 (function() {
     'use strict';
 
+    Sao.parse_cookie = function() {
+        var cookie = {};
+        var parts = document.cookie.split('; ');
+        for (var i = 0, length = parts.length; i < length; i++) {
+            var part = parts[i].split('=');
+            if (part.length != 2) {
+                continue;
+            }
+            cookie[part[0]] = part[1];
+        }
+        return cookie;
+    };
+
+
+    Sao.set_cookie = function(values) {
+        for (var name in values) {
+            if (!values.hasOwnProperty(name)) {
+                continue;
+            }
+            var value = values[name];
+            document.cookie = name + '=' + value;
+        }
+    };
+
     Sao.Session = Sao.class_(Object, {
-        init: function(database, login) {
-            this.database = database;
-            this.login = login;
-            this.user_id = null;
-            this.session = null;
+       init: function(database, login) {
+           this.user_id = null;
+           this.session = null;
+            if (!database && !login) {
+                var cookie = Sao.parse_cookie();
+                this.database = cookie.database;
+                this.login = cookie.login;
+            } else {
+                this.database = database;
+                this.login = login;
+            }
             this.context = {};
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
@@ -43,6 +73,10 @@
                     } else {
                         this.user_id = data.result[0];
                         this.session = data.result[1];
+                        Sao.set_cookie({
+                            'login': this.login,
+                            'database': this.database
+                        });
                     }
                     dfd.resolve();
                 }
@@ -79,7 +113,8 @@
     });
 
     Sao.Session.get_credentials = function(parent_dfd) {
-        var login;  // TODO use cookie
+        var cookie = Sao.parse_cookie();
+        var login = cookie.login;
         var database = window.location.hash.replace(
                 /^(#(!|))/, '') || null;
         var database_div, database_select;
@@ -115,6 +150,8 @@
                         'text': database
                     }));
                 });
+            }).then(function() {
+                database_select.val(cookie.database);
             });
         };
 
