@@ -818,7 +818,7 @@ class ReferenceField(CharField):
     def get(self, record, check_load=True, readonly=True, modified=False):
         if (record.value.get(self.name)
                 and record.value[self.name][0]
-                and record.value[self.name][1] >= 0):
+                and record.value[self.name][1] >= -1):
             return ','.join(map(str, record.value[self.name]))
         return None
 
