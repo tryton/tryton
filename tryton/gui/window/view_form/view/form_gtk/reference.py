@@ -111,7 +111,12 @@ class Reference(Many2One):
             return
         self.wid_text.set_text('')
         self.wid_text.set_position(0)
-        self.field.set_client(self.record, (self.get_model(), (-1, '')))
+        model = self.get_model()
+        if model:
+            value = (model, (-1, ''))
+        else:
+            value = ('', '')
+        self.field.set_client(self.record, value)
 
     def set_value(self, record, field):
         if not self.get_model():
