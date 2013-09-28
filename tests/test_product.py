@@ -230,6 +230,62 @@ class ProductTestCase(unittest.TestCase):
                     ])
             self.assertEqual(p, pt2.products[0])
 
+    def test0060search_domain_conversion(self):
+        '''
+        Test the search domain conversion
+        '''
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            category1, = self.category.create([{'name': 'Category1'}])
+            category2, = self.category.create([{'name': 'Category2'}])
+            uom, = self.uom.search([], limit=1)
+            values1 = {
+                'name': 'Some product-1',
+                'category': category1.id,
+                'type': 'goods',
+                'list_price': Decimal('10'),
+                'cost_price': Decimal('5'),
+                'default_uom': uom.id,
+                }
+            values2 = {
+                'name': 'Some product-2',
+                'category': category2.id,
+                'type': 'goods',
+                'list_price': Decimal('10'),
+                'cost_price': Decimal('5'),
+                'default_uom': uom.id,
+                }
+
+            # This is a false positive as there is 1 product with the
+            # template 1 and the same product with category 1. If you do not
+            # create two categories (or any other relation on the template
+            # model) you wont be able to check as in most cases the
+            # id of the template and the related model would be same (1).
+            # So two products have been created with same category. So that
+            # domain ('template.category', '=', 1) will return 2 records which
+            # it supposed to be.
+            template1, template2, template3, template4 = self.template.create(
+                [values1, values1.copy(), values2, values2.copy()]
+                )
+            self.assertEqual(self.product.search([], count=True), 4)
+            self.assertEqual(
+                self.product.search([
+                    ('category', '=', category1.id),
+                    ], count=True), 2)
+
+            self.assertEqual(
+                self.product.search([
+                    ('template.category', '=', category1.id),
+                    ], count=True), 2)
+
+            self.assertEqual(
+                self.product.search([
+                    ('category', '=', category2.id),
+                    ], count=True), 2)
+            self.assertEqual(
+                self.product.search([
+                    ('template.category', '=', category2.id),
+                    ], count=True), 2)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
