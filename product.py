@@ -226,7 +226,9 @@ class Product(ModelSQL, ModelView):
                     field = arg[0].split('.', 1)[0]
                     if not getattr(cls, field, None):
                         field = 'template.' + arg[0]
-                    result.append((field,) + tuple(arg[1:]))
+                        result.append((field,) + tuple(arg[1:]))
+                    else:
+                        result.append(arg)
                 elif isinstance(arg, list):
                     # sub-domain
                     result.append(convert_domain(arg))
