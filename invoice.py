@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import base64
+import itertools
 import operator
 from sql import Literal
 from sql.aggregate import Count, Sum
@@ -137,6 +138,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         states=_STATES, depends=_DEPENDS,
         on_change=['lines', 'taxes', 'currency', 'party', 'type'])
     comment = fields.Text('Comment', states=_STATES, depends=_DEPENDS)
+    origins = fields.Function(fields.Char('Origins'), 'get_origins')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
@@ -995,6 +997,15 @@ class Invoice(Workflow, ModelSQL, ModelView):
         return [('party',) + clause[1:]]
 
     @classmethod
+    def get_origins(cls, invoices, name):
+        origins = {}
+        with Transaction().set_user(0, set_context=True):
+            for invoice in cls.browse(invoices):
+                origins[invoice.id] = ', '.join(set(itertools.ifilter(None,
+                            (l.origin_name for l in invoice.lines))))
+        return origins
+
+    @classmethod
     def delete(cls, invoices):
         cls.check_modify(invoices)
         # Cancel before delete
@@ -1246,8 +1257,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         for field in ('description', 'comment'):
             res[field] = getattr(self, field)
-
-        res['reference'] = self.number or self.reference
 
         for field in ('company', 'party', 'invoice_address', 'currency',
                 'journal', 'account', 'payment_term'):
@@ -1681,6 +1690,12 @@ class InvoiceLine(ModelSQL, ModelView):
         else:
             return _ZERO
 
+    @property
+    def origin_name(self):
+        if isinstance(self.origin, self.__class__):
+            return self.origin.invoice.rec_name
+        return self.origin.rec_name if self.origin else None
+
     def get_invoice_taxes(self, name):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -1854,10 +1869,10 @@ class InvoiceLine(ModelSQL, ModelView):
                 taxes.append(tax.id)
         return result
 
-    @staticmethod
-    def _get_origin():
+    @classmethod
+    def _get_origin(cls):
         'Return list of Model names for origin Reference'
-        return []
+        return [cls.__name__]
 
     @classmethod
     def get_origin(cls):
@@ -2022,6 +2037,7 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         res = {}
         res['invoice_type'] = _CREDIT_TYPE[self.invoice_type]
+        res['origin'] = str(self)
 
         for field in ('sequence', 'type', 'quantity', 'unit_price',
                 'description'):
