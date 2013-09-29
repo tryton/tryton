@@ -28,6 +28,7 @@ class ProductTestCase(unittest.TestCase):
         self.uom_category = POOL.get('product.uom.category')
         self.template = POOL.get('product.template')
         self.product = POOL.get('product.product')
+        self.category = POOL.get('product.category')
 
     def test0005views(self):
         '''
