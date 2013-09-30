@@ -352,7 +352,7 @@ class Move(ModelSQL, ModelView):
         return res
 
     def search_rec_name(self, name, clause):
-        return [('product',) + clause[1:]]
+        return [('product',) + tuple(clause[1:])]
 
     def _update_product_cost_price(self, product_id, quantity, uom, unit_price,
             currency, company, date):
