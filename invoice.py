@@ -951,12 +951,12 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search(['OR',
-            ('number',) + clause[1:],
-            ('reference',) + clause[1:],
+            ('number',) + tuple(clause[1:]),
+            ('reference',) + tuple(clause[1:]),
             ], order=[])
         if ids:
             return [('id', 'in', ids)]
-        return [('party',) + clause[1:]]
+        return [('party',) + tuple(clause[1:])]
 
     def delete(self, ids):
         if not ids:
