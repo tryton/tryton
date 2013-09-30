@@ -101,13 +101,13 @@ class Address(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         addresses = cls.search(['OR',
-                ('zip',) + clause[1:],
-                ('city',) + clause[1:],
-                ('name',) + clause[1:],
+                ('zip',) + tuple(clause[1:]),
+                ('city',) + tuple(clause[1:]),
+                ('name',) + tuple(clause[1:]),
                 ], order=[])
         if addresses:
             return [('id', 'in', [address.id for address in addresses])]
-        return [('party',) + clause[1:]]
+        return [('party',) + tuple(clause[1:])]
 
     @classmethod
     def write(cls, addresses, vals):
