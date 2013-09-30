@@ -26,10 +26,10 @@ class Country(ModelSQL, ModelView):
         self._order.insert(0, ('name', 'ASC'))
 
     def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], limit=1)
+        ids = self.search([('code',) + tuple(clause[1:])], limit=1)
         if ids:
-            return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def create(self, vals):
         if 'code' in vals and vals['code']:
@@ -144,10 +144,10 @@ class Subdivision(ModelSQL, ModelView):
         self._order.insert(0, ('code', 'ASC'))
 
     def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], limit=1)
+        ids = self.search([('code',) + tuple(clause[1:])], limit=1)
         if ids:
-            return [('code',) + clause[1:]]
-        return [(self._rec_name,) + clause[1:]]
+            return [('code',) + tuple(clause[1:])]
+        return [(self._rec_name,) + tuple(clause[1:])]
 
     def create(self, vals):
         if 'code' in vals and vals['code']:
