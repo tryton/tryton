@@ -379,7 +379,7 @@ class Move(ModelSQL, ModelView):
         return res
 
     def search_rec_name(self, name, clause):
-        return [('product',) + clause[1:]]
+        return [('product',) + tuple(clause[1:])]
 
     def search(self, args, offset=0, limit=None, order=None, count=False,
             query_string=False):
