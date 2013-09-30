@@ -308,7 +308,7 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('product',) + clause[1:]]
+        return [('product',) + tuple(clause[1:])]
 
     @classmethod
     def _update_product_cost_price(cls, product_id, quantity, uom, unit_price,
