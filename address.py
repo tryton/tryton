@@ -92,13 +92,13 @@ class Address(ModelSQL, ModelView):
 
     def search_rec_name(self, name, clause):
         ids = self.search(['OR',
-            ('zip',) + clause[1:],
-            ('city',) + clause[1:],
-            ('name',) + clause[1:],
+            ('zip',) + tuple(clause[1:]),
+            ('city',) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
             ], order=[])
         if ids:
             return [('id', 'in', ids)]
-        return [('party',) + clause[1:]]
+        return [('party',) + tuple(clause[1:])]
 
     def write(self, ids, vals):
         if 'party' in vals:
