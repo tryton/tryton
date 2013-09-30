@@ -29,9 +29,9 @@ class Country(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if cls.search([('code',) + clause[1:]], limit=1):
-            return [('code',) + clause[1:]]
-        return [(cls._rec_name,) + clause[1:]]
+        if cls.search([('code',) + tuple(clause[1:])], limit=1):
+            return [('code',) + tuple(clause[1:])]
+        return [(cls._rec_name,) + tuple(clause[1:])]
 
     @classmethod
     def create(cls, vals):
@@ -147,9 +147,9 @@ class Subdivision(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        if cls.search([('code',) + clause[1:]], limit=1):
-            return [('code',) + clause[1:]]
-        return [(cls._rec_name,) + clause[1:]]
+        if cls.search([('code',) + tuple(clause[1:])], limit=1):
+            return [('code',) + tuple(clause[1:])]
+        return [(cls._rec_name,) + tuple(clause[1:])]
 
     @classmethod
     def create(cls, vals):
