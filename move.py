@@ -495,7 +495,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('product',) + clause[1:]]
+        return [('product',) + tuple(clause[1:])]
 
     def _update_product_cost_price(self, direction):
         """
