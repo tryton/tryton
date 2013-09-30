@@ -133,11 +133,12 @@ class Product(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        ids = map(int, cls.search([('code',) + clause[1:]], order=[]))
+        ids = map(int, cls.search([('code',) + tuple(clause[1:])], order=[]))
         if ids:
-            ids += map(int, cls.search([('name',) + clause[1:]], order=[]))
+            ids += map(int,
+                cls.search([('name',) + tuple(clause[1:])], order=[]))
             return [('id', 'in', ids)]
-        return [('name',) + clause[1:]]
+        return [('name',) + tuple(clause[1:])]
 
     @classmethod
     def delete(cls, products):
