@@ -1409,6 +1409,8 @@ class EvalEnvironment(dict):
         if item in self._model._fields:
             value = getattr(self._record, item)
             if isinstance(value, Model):
+                if self._model._fields[item]._type == 'reference':
+                    return str(value)
                 return value.id
             elif isinstance(value, (list, tuple)):
                 return [r.id for r in value]
