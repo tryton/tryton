@@ -7,7 +7,7 @@
     'name_es_AR': 'Contabilidad de existencias Anglosajona',
     'name_es_ES': 'Gestión de stock anglosajona',
     'name_fr_FR': 'Gestion de stock anglo-saxonne',
-    'version': '2.4.6',
+    'version': '2.4.7',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
