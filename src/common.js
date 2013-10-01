@@ -268,7 +268,7 @@
         }
         var prm = Sao.rpc({
             'method': 'model.' + this.attributes.relation + '.read',
-            'params': [[value], ['rec_name'], {}],
+            'params': [[value], ['rec_name'], {}]
         }, Sao.Session.current_session);
         return prm.then(function(result) {
             this.inactive_selection.push([result[0].id, result[0].rec_name]);
