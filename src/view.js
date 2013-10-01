@@ -578,11 +578,25 @@
         update_text: function(cell, record) {
             this.update_selection(record, function() {
                 var value = this.field.get(record);
-                this.selection.forEach(function(e) {
-                    if (e[0] == value) {
-                        cell.text(e[1]);
+                var prm, text, found = false;
+                for (var i = 0, len = this.selection.length; i < len; i++) {
+                    if (this.selection[i][0] === value) {
+                        found = true;
+                        text = this.selection[i][1];
+                        break;
                     }
-                });
+                }
+                if (!found) {
+                    prm = Sao.common.selection_mixin.get_inactive_selection
+                        .call(this, value).then(function(inactive) {
+                            return inactive[1];
+                        });
+                } else {
+                    prm = jQuery.when(text);
+                }
+                prm.done(function(text_value) {
+                    cell.text(text_value);
+                }.bind(this));
             }.bind(this));
         }
     });
@@ -1381,10 +1395,32 @@
                     return;
                 }
                 var value = field.get(record);
-                if (value === null) {
-                    value = '';
+                var prm, found = false;
+                for (var i = 0, len = this.selection.length; i < len; i++) {
+                    if (this.selection[i][0] === value) {
+                        found = true;
+                        break;
+                    }
                 }
-                this.el.val('' + value);
+                if (!found) {
+                    prm = Sao.common.selection_mixin.get_inactive_selection
+                        .call(this, value);
+                    prm.done(function(inactive) {
+                        this.el.append(jQuery('<option/>', {
+                            value: inactive[0],
+                            text: inactive[1],
+                            disabled: true
+                        }));
+                    }.bind(this));
+                } else {
+                    prm = jQuery.when();
+                }
+                prm.done(function() {
+                    if (value === null) {
+                        value = '';
+                    }
+                    this.el.val('' + value);
+                }.bind(this));
             }.bind(this));
         },
         value_get: function() {
@@ -1392,6 +1428,9 @@
             if ('relation' in this.attributes) {
                 if (val === '') {
                     return null;
+                } else if (val === null) {
+                    // The selected value is disabled
+                    val = this.el.find(':selected').attr('value');
                 }
                 return parseInt(val, 10);
             }

@@ -154,6 +154,7 @@
     Sao.common.selection_mixin = {};
     Sao.common.selection_mixin.init = function() {
         this.selection = null;
+        this.inactive_selection = [];
         this._last_domain = null;
         this._values2selection = {};
         this._domain_cache = {};
@@ -196,6 +197,7 @@
             }
             prepare_selection.call(this, selection);
         }
+        this.inactive_selection = [];
     };
     Sao.common.selection_mixin.update_selection = function(record, field,
             callback) {
@@ -254,6 +256,24 @@
                 }
             }.bind(this));
         }
+    };
+    Sao.common.selection_mixin.get_inactive_selection = function(value) {
+        if (!this.attributes.relation) {
+            return jQuery.when([]);
+        }
+        for (var i = 0, len = this.inactive_selection.length; i < len; i++) {
+            if (value == this.inactive_selection[i][0]) {
+                return jQuery.when(this.inactive_selection[i]);
+            }
+        }
+        var prm = Sao.rpc({
+            'method': 'model.' + this.attributes.relation + '.read',
+            'params': [[value], ['rec_name'], {}],
+        }, Sao.Session.current_session);
+        return prm.then(function(result) {
+            this.inactive_selection.push([result[0].id, result[0].rec_name]);
+            return [result[0].id, result[0].rec_name];
+        }.bind(this));
     };
 
     Sao.common.Button = Sao.class_(Object, {
