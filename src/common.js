@@ -62,9 +62,65 @@
     };
 
     Sao.common.date_format = function() {
-        // TODO
-        // http://stackoverflow.com/questions/2678230/how-to-getting-browser-current-locale-preference-using-javascript
-        return '%m/%d/%Y';
+        var context = Sao.Session.current_session.context;
+        if (context.locale && context.locale.date) {
+            return context.locale.date
+                .replace('%d', 'dd')
+                .replace('%j', 'oo')
+                .replace('%a', 'D')
+                .replace('%A', 'DD')
+                .replace('%m', 'mm')
+                .replace('%b', 'M')
+                .replace('%B', 'MM')
+                .replace('%y', 'y')
+                .replace('%Y', 'yy');
+        }
+        return jQuery.datepicker.W3C;
+    };
+
+    Sao.common.format_time = function(format, date) {
+        var pad = Sao.common.pad;
+        return format.replace('%H', pad(date.getHours(), 2))
+            .replace('%M', pad(date.getMinutes(), 2))
+            .replace('%S', pad(date.getSeconds(), 2));
+    };
+
+    Sao.common.parse_time = function(format, value) {
+        var getNumber = function(pattern) {
+            var i = format.indexOf(pattern);
+            if (~i) {
+                var number = parseInt(value.slice(i, i + pattern.length), 10);
+                if (!isNaN(number)) {
+                    return number;
+                }
+            }
+            return 0;
+        };
+        return new Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'));
+    };
+
+    Sao.common.format_datetime = function(date_format, time_format, date) {
+        return (jQuery.datepicker.formatDate(date_format, date) + ' ' +
+                Sao.common.format_time(time_format, date));
+    };
+
+    Sao.common.parse_datetime = function(date_format, time_format, value) {
+        var date = jQuery.datepicker.parseDate(date_format, value);
+        var time_value = value.replace(jQuery.datepicker.formatDate(
+                    date_format + ' ', date), '');
+        var time = Sao.common.parse_time(time_format, time_value);
+        date.setHours(time.getHours());
+        date.setMinutes(time.getMinutes());
+        date.setSeconds(time.getSeconds());
+        return date;
+    };
+
+    Sao.common.pad = function(number, length) {
+        var str = '' + number;
+        while (str.length < length) {
+            str = '0' + str;
+        }
+        return str;
     };
 
     Sao.common.text_to_float_time = function(text, conversion, digit) {

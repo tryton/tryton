@@ -1120,14 +1120,78 @@
     });
 
     Sao.field.DateTime = Sao.class_(Sao.field.Field, {
-        _default: null
+        _default: null,
+        time_format: function(record) {
+            return record.expr_eval(this.description.format);
+        },
+        set_client: function(record, value, force_change) {
+            if (!(value instanceof Date)) {
+                try {
+                    value = Sao.common.parse_datetime(
+                        Sao.common.date_format(),
+                        this.time_format(record),
+                        value);
+                } catch (e) {
+                    value = this._default;
+                }
+            }
+            Sao.field.DateTime._super.set_client.call(this, record, value,
+                force_change);
+        },
+        get_client: function(record) {
+            var value = Sao.field.Date._super.get_client.call(this, record);
+            if (value) {
+                return Sao.common.format_datetime(Sao.common.date_format(),
+                        this.time_format(record), value);
+            }
+            return '';
+        }
     });
 
     Sao.field.Date = Sao.class_(Sao.field.Field, {
-        _default: null
+        _default: null,
+        set_client: function(record, value, force_change) {
+            if (!(value instanceof Date)) {
+                try {
+                    value = jQuery.datepicker.parseDate(
+                        Sao.common.date_format(), value);
+                } catch (e) {
+                    value = this._default;
+                }
+            }
+            Sao.field.Date._super.set_client.call(this, record, value,
+                force_change);
+        },
+        get_client: function(record) {
+            var value = Sao.field.Date._super.get_client.call(this, record);
+            if (value) {
+                return jQuery.datepicker.formatDate(Sao.common.date_format(),
+                    value);
+            }
+            return '';
+        }
     });
 
     Sao.field.Time = Sao.class_(Sao.field.Field, {
+        _default: null,
+        time_format: function(record) {
+            return record.expr_eval(this.description.format);
+        },
+        set_client: function(record, value, force_change) {
+            if (!(value instanceof Sao.Time)) {
+                value = Sao.common.parse_time(this.time_format(record), value);
+            }
+            Sao.field.Time._super.set_client.call(this, record, value,
+                force_change);
+        },
+        get_client: function(record) {
+            var value = Sao.field.Time._super.get_client.call(this, record);
+            if (value) {
+                return Sao.common.format_time(this.time_format(record),
+                    value);
+            }
+            return '';
+        }
     });
 
     Sao.field.Number = Sao.class_(Sao.field.Field, {

@@ -77,7 +77,9 @@
                            value.month - 1, value.day);
                        break;
                    case 'time':
-                       throw new Error('Time support not implemented');
+                       value = new Sao.Time(value.hour, value.minute,
+                               value.second);
+                       break;
                    case 'buffer':
                        // javascript's atob does not understand linefeed
                        // characters
@@ -138,6 +140,13 @@
                 if (parent) {
                     parent[index] = value;
                 }
+            } else if (value instanceof Sao.Time) {
+                value = {
+                    '__class__': 'time',
+                    'hour': value.getHours(),
+                    'minute': value.getMinutes(),
+                    'second': value.getSeconds()
+                };
             } else if (value instanceof Sao.Decimal) {
                 value = {
                     '__class__': 'Decimal',

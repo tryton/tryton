@@ -34,6 +34,10 @@
                 return Sao.View.Tree.Many2OneColumn;
             case 'date':
                 return Sao.View.Tree.DateColumn;
+            case 'datetime':
+                return Sao.View.Tree.DateTimeColumn;
+            case 'time':
+                return Sao.View.Tree.TimeColumn;
             case 'one2many':
                 return Sao.View.Tree.One2ManyColumn;
             case 'many2many':
@@ -478,6 +482,7 @@
     });
 
     Sao.View.Tree.CharColumn = Sao.class_(Object, {
+        class_: 'column-char',
         init: function(model, attributes) {
             this.type = 'field';
             this.model = model;
@@ -488,7 +493,7 @@
         },
         get_cell: function() {
             var cell = jQuery('<span/>');
-            cell.addClass('column-char');
+            cell.addClass(this.class_);
             return cell;
         },
         update_text: function(cell, record) {
@@ -512,33 +517,25 @@
     });
 
     Sao.View.Tree.IntegerColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-integer',
         get_cell: function() {
             var cell = Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
             cell.css('text-align', 'right');
-            cell.removeClass('column-char');
-            cell.addClass('column-integer');
             return cell;
         }
     });
 
     Sao.View.Tree.FloatColumn = Sao.class_(Sao.View.Tree.IntegerColumn, {
-        init: function(model, attributes) {
-            Sao.View.Tree.FloatColumn._super.init.call(this, model, attributes);
-        },
-        get_cell: function() {
-            var cell = Sao.View.Tree.FloatColumn._super.get_cell.call(this);
-            cell.removeClass('column-integer');
-            cell.addClass('column-float');
-            return cell;
-        }
+        class_: 'column-float'
     });
 
     Sao.View.Tree.BooleanColumn = Sao.class_(Sao.View.Tree.IntegerColumn, {
+        class_: 'column-boolean',
         get_cell: function() {
             return jQuery('<input/>', {
                 'type': 'checkbox',
                 'disabled': true,
-                'class': 'column-boolean'
+                'class': this.class_
             });
         },
         update_text: function(cell, record) {
@@ -547,15 +544,11 @@
     });
 
     Sao.View.Tree.Many2OneColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        get_cell: function() {
-            var cell = Sao.View.Tree.Many2OneColumn._super.get_cell.call(this);
-            cell.removeClass('column-char');
-            cell.addClass('column-many2one');
-            return cell;
-        }
+        class_: 'column-many2one'
     });
 
     Sao.View.Tree.SelectionColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-selection',
         init: function(model, attributes) {
             Sao.View.Tree.SelectionColumn._super.init.call(this, model,
                 attributes);
@@ -568,12 +561,6 @@
         update_selection: function(record, callback) {
             Sao.common.selection_mixin.update_selection.call(this, record,
                 this.field, callback);
-        },
-        get_cell: function() {
-            var cell = Sao.View.Tree.Many2OneColumn._super.get_cell.call(this);
-            cell.removeClass('column-char');
-            cell.addClass('column-selection');
-            return cell;
         },
         update_text: function(cell, record) {
             this.update_selection(record, function() {
@@ -602,39 +589,30 @@
     });
 
     Sao.View.Tree.DateColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        init: function(model, attributes) {
-            Sao.View.Tree.DateColumn._super.init.call(this, model, attributes);
-            this.date_format = Sao.common.date_format();
-        },
-        update_text: function(cell, record) {
-            var text;
-            var value = this.field.get_client(record);
-            var pad = function(txt) {
-                return (txt.toString().length < 2) ? '0' + txt : txt;
-            };
-            if (value) {
-                text = this.date_format.replace('%d', pad(value.getDate()));
-                text = text.replace('%m', pad(value.getMonth() + 1));
-                text = text.replace('%Y', value.getFullYear());
-                text = text.replace('%y', value.getFullYear().toString()
-                    .substring(2, 4));
-            } else {
-                text = '';
-            }
-            cell.text(text);
-        }
+        class_: 'column-date'
+    });
+
+    Sao.View.Tree.DateTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-datetime'
+    });
+
+    Sao.View.Tree.TimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-time'
     });
 
     Sao.View.Tree.One2ManyColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-one2many',
         update_text: function(cell, record) {
             cell.text('( ' + this.field.get_client(record).length + ' )');
         }
     });
 
     Sao.View.Tree.Many2ManyColumn = Sao.class_(Sao.View.Tree.One2ManyColumn, {
+        class_: 'column-many2many'
     });
 
     Sao.View.Tree.FloatTimeColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-float_time',
         init: function(model, attributes) {
             Sao.View.Tree.FloatTimeColumn._super.init.call(this, model,
                 attributes);
@@ -1138,6 +1116,8 @@
                 return Sao.View.Form.Sha;
             case 'date':
                 return Sao.View.Form.Date;
+            case 'datetime':
+                return Sao.View.Form.DateTime;
             case 'integer':
             case 'biginteger':
                 return Sao.View.Form.Integer;
@@ -1280,8 +1260,7 @@
             }
         },
         set_value: function(record, field) {
-            var value = this.el.val() || '';
-            field.set_client(record, value);
+            field.set_client(record, this.el.val());
         }
     });
 
@@ -1308,33 +1287,74 @@
             this.date.datepicker({
                 showOn: 'button'
             });
+            this.date.change(this.focus_out.bind(this));
+            this._set_button();
+        },
+        _get_color_el: function() {
+            return this.date;
+        },
+        get_format: function(record, field) {
+            return Sao.common.date_format();
+        },
+        _set_button: function() {
             this.date.next('button').text('').button({
                 icons: {
                     primary: 'ui-icon-calendar'
                 },
                 text: false
             });
-            this.date.change(this.focus_out.bind(this));
-        },
-        _get_color_el: function() {
-            return this.date;
         },
         display: function(record, field) {
+            this.date.datepicker('option', 'dateFormat',
+                    this.get_format(record, field));
+            // Button must be set after changing any option
+            this._set_button();
             Sao.View.Form.Date._super.display.call(this, record, field);
-            if (record) {
-                var value = record.field_get_client(this.field_name);
-                this.date.datepicker('setDate', value);
-            } else {
-                this.date.datepicker('setDate', null);
-            }
+            this.date.val(record.field_get_client(this.field_name));
         },
         set_value: function(record, field) {
-            var value = this.date.datepicker('getDate');
-            field.set_client(record, value);
+            field.set_client(record, this.date.val());
         }
     });
 
-    // TODO DateTime, Time
+    Sao.View.Form.DateTime = Sao.class_(Sao.View.Form.Date, {
+        init: function(field_name, model, attributes) {
+            Sao.View.Form.DateTime._super.init.call(this, field_name, model,
+                attributes);
+            this.date.datepicker('option', 'beforeShow', function() {
+                var time = ' ' + Sao.common.format_time(
+                    this.field().time_format(this.record()),
+                    this._get_time());
+                this.date.datepicker('option', 'dateFormat',
+                    Sao.common.date_format() + time);
+                // Button must be set after changing any option
+                this._set_button();
+                this.date.prop('disabled', true);
+            }.bind(this));
+            this.date.datepicker('option', 'onClose', function() {
+                this.date.prop('disabled', false);
+            }.bind(this));
+            // Button must be set after changing any option
+            this._set_button();
+        },
+        _get_time: function() {
+            return Sao.common.parse_datetime(Sao.common.date_format(),
+                this.field().time_format(this.record()), this.date.val());
+        },
+        get_format: function(record, field) {
+            var time = '';
+            if (record) {
+                var value = record.field_get(this.field_name);
+                time = ' ' + Sao.common.format_time(field.time_format(record),
+                    value);
+            }
+            return Sao.common.date_format() + time;
+        }
+    });
+
+    Sao.View.Form.Time = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-time'
+    });
 
     Sao.View.Form.Integer = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-integer',
@@ -1344,8 +1364,7 @@
             this.el.css('text-align', 'right');
         },
         set_value: function(record, field) {
-            var value = Number(this.el.val());
-            field.set_client(record, value);
+            field.set_client(record, this.el.val());
         }
     });
 

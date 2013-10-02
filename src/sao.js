@@ -35,6 +35,30 @@ var Sao = {};
 
     Sao.Decimal = Number;
 
+    Sao.Time = Sao.class_(Object, {
+        init: function(hour, minute, second) {
+            this.date = new Date(0, 0, 0, hour, minute, second);
+        },
+        getHours: function() {
+            return this.date.getHours();
+        },
+        setHours: function(hour) {
+            this.date.setHours(hour);
+        },
+        getMinutes: function() {
+            return this.date.getMinutes();
+        },
+        setMinutes: function(minute) {
+            this.date.setMinutes(minute);
+        },
+        getSeconds: function() {
+            return this.date.getSeconds();
+        },
+        setSeconds: function(second) {
+            this.date.setSeconds(second);
+        }
+    });
+
     Sao.config = {};
     Sao.config.limit = 1000;
     Sao.config.display_size = 20;
