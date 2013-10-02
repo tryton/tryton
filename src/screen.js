@@ -586,6 +586,27 @@
                     xml_fields.each(function(name) {
                         dom_fields[name] = fields[name];
                     });
+                    [
+                        ['id', 'ID', 'integer'],
+                        ['create_uid', 'Creation User', 'many2one'],
+                        ['create_date', 'Creation Date', 'datetime'],
+                        ['write_uid', 'Modification User', 'many2one'],
+                        ['write_date', 'Modification Date', 'datetime']
+                            ] .forEach(function(e) {
+                                var name = e[0];
+                                var string = e[1];
+                                var type = e[2];
+                                if (!(name in fields)) {
+                                    fields[name] = {
+                                        'string': string,
+                                        'name': name,
+                                        'type': type
+                                    };
+                                    if (type == 'datetime') {
+                                        fields[name].format = '"%H:%M:%S"';
+                                    }
+                                }
+                            });
                     if (!('id' in fields)) {
                         fields.id = {
                             'string': 'ID',  // TODO translate
