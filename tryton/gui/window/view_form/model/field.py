@@ -830,6 +830,11 @@ class ReferenceField(CharField):
             if isinstance(ref_id, (tuple, list)):
                 ref_id, rec_name = ref_id
             else:
+                if ref_id:
+                    try:
+                        ref_id = int(ref_id)
+                    except ValueError:
+                        pass
                 if '%s,%s' % (ref_model, ref_id) == self.get(record):
                     rec_name = record.value.get(self.name + '.rec_name', '')
                 else:
