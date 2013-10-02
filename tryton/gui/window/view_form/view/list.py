@@ -129,7 +129,8 @@ class AdaptModelGroup(gtk.GenericTreeModel):
             # Don't remove record from previous group
             # as the new parent will change the parent
             # This prevents concurrency conflict
-            record.group.record_removed.remove(record)
+            if record in record.group.record_removed:
+                record.group.record_removed.remove(record)
             group.add(record)
             record.modified_fields.setdefault(record.parent_name or 'id')
         group.move(record, 0)
