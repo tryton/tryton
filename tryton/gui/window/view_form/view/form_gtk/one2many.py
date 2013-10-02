@@ -297,9 +297,8 @@ class One2Many(WidgetInterface):
         domain = self.field.domain_get(self.record)
         context = rpc.CONTEXT.copy()
         context.update(self.field.context_get(self.record))
-        domain = domain[:]
-        domain.extend(self.record.expr_eval(self.attrs.get('add_remove'),
-            context))
+        domain = [domain, self.record.expr_eval(self.attrs.get('add_remove'),
+                context)]
         removed_ids = self.field.get_removed_ids(self.record)
 
         try:
