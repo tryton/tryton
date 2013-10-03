@@ -3562,20 +3562,8 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "/"
-msgstr "/"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "Account"
 msgstr "Konto"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Account"
-msgstr "Konto"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Company:"
-msgstr "Podjetje:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Company:"
@@ -3586,20 +3574,8 @@ msgid "Credit"
 msgstr "Kredit"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "Date:"
 msgstr "Datum:"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Date:"
-msgstr "Datum:"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Debit"
-msgstr "Debet"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Debit"
@@ -3614,28 +3590,12 @@ msgid "Draft"
 msgstr "Osnutek"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Draft"
-msgstr "Osnutek"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "From Date:"
-msgstr "Od:"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "From Date:"
 msgstr "Od:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "General Journal"
 msgstr "Glavni dnevnik"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "General Journal"
-msgstr "Glavni dnevnik"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Journal Entry:"
-msgstr "Vknjižba"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Journal Entry:"
@@ -3650,14 +3610,6 @@ msgid "Posted"
 msgstr "Knjiženo"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "Posted"
-msgstr "Knjiženo"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "Print Date:"
-msgstr "Izpisano:"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "Print Date:"
 msgstr "Izpisano:"
 
@@ -3666,20 +3618,8 @@ msgid "To Date:"
 msgstr "Do:"
 
 msgctxt "odt:account.move.general_journal:"
-msgid "To Date:"
-msgstr "Do:"
-
-msgctxt "odt:account.move.general_journal:"
 msgid "User:"
 msgstr "Izpisal:"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "User:"
-msgstr "Izpisal:"
-
-msgctxt "odt:account.move.general_journal:"
-msgid "at"
-msgstr "ob"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "at"
