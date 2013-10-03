@@ -105,7 +105,8 @@
     };
 
     Sao.common.parse_datetime = function(date_format, time_format, value) {
-        var date = jQuery.datepicker.parseDate(date_format, value);
+        var date = Sao.DateTime(
+                jQuery.datepicker.parseDate(date_format, value));
         var time_value = value.replace(jQuery.datepicker.formatDate(
                     date_format + ' ', date), '');
         var time = Sao.common.parse_time(time_format, time_value);

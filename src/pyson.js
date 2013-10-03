@@ -26,8 +26,12 @@
                 if (v instanceof Sao.PYSON.PYSON) {
                     return v.pyson();
                 } else if (v instanceof Date) {
-                    if (v.getHours() || v.getMinutes() || v.getSeconds() ||
-                        v.getMilliseconds()) {
+                    if (v.isDate) {
+                        return Sao.PYSON.Date(
+                            v.getFullYear(),
+                            v.getMonth(),
+                            v.getDate()).pyson();
+                    } else {
                         return Sao.PYSON.DateTime(
                             v.getFullYear(),
                             v.getMonth(),
@@ -36,11 +40,6 @@
                             v.getMinutes(),
                             v.getSeconds(),
                             v.getMilliseconds()).pyson();
-                    } else {
-                        return Sao.PYSON.DateTime(
-                            v.getFullYear(),
-                            v.getMonth(),
-                            v.getDate()).pyson();
                     }
                 }
                 return v;
@@ -544,7 +543,7 @@
     });
 
     Sao.PYSON.Date.eval_ = function(value, context) {
-        var date = new Date();
+        var date = Sao.Date();
         date.setHours(0);
         date.setMinutes(0);
         date.setSeconds(0);
@@ -610,7 +609,7 @@
     });
 
     Sao.PYSON.DateTime.eval_ = function(value, context) {
-        var date = new Date();
+        var date = Sao.DateTime();
         if (value.y) date.setFullYear(value.y);
         if (value.M) date.setMonth(value.M - 1);
         if (value.d) date.setDate(value.d);

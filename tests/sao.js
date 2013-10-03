@@ -18,8 +18,8 @@
                 'foo': true,
                 'bar': false
             },
-            'datetime': new Date(2012, 11, 29, 19, 59, 10),
-            'date': new Date(2012, 11, 29),
+            'datetime': Sao.DateTime(2012, 11, 29, 19, 59, 10),
+            'date': Sao.Date(2012, 11, 29),
             'decimal': new Sao.Decimal(1.1),
             'null': null
         };

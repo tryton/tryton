@@ -1153,8 +1153,8 @@
         set_client: function(record, value, force_change) {
             if (!(value instanceof Date)) {
                 try {
-                    value = jQuery.datepicker.parseDate(
-                        Sao.common.date_format(), value);
+                    value = Sao.Date(jQuery.datepicker.parseDate(
+                            Sao.common.date_format(), value));
                 } catch (e) {
                     value = this._default;
                 }

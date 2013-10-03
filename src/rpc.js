@@ -68,12 +68,12 @@
            if (value && value.__class__) {
                switch (value.__class__) {
                    case 'datetime':
-                       value = new Date(Date.UTC(value.year,
+                       value = Sao.DateTime(Date.UTC(value.year,
                                value.month - 1, value.day, value.hour,
                                value.minute, value.second));
                        break;
                    case 'date':
-                       value = new Date(value.year,
+                       value = Sao.Date(value.year,
                            value.month - 1, value.day);
                        break;
                    case 'time':
@@ -117,9 +117,14 @@
         } else if ((typeof(value) != 'string') &&
                 (typeof(value) != 'number') && (value !== null)) {
             if (value instanceof Date) {
-                if (value.getHours() || value.getMinutes() ||
-                        value.getSeconds())
-                {
+                if (value.isDate){
+                    value = {
+                        '__class__': 'date',
+                        'year': value.getFullYear(),
+                        'month': value.getMonth() + 1,
+                        'day': value.getDate()
+                    };
+                } else {
                     value = {
                         '__class__': 'datetime',
                         'year': value.getUTCFullYear(),
@@ -128,13 +133,6 @@
                         'hour': value.getUTCHours(),
                         'minute': value.getUTCMinutes(),
                         'second': value.getUTCSeconds()
-                    };
-                } else {
-                    value = {
-                        '__class__': 'date',
-                        'year': value.getFullYear(),
-                        'month': value.getMonth() + 1,
-                        'day': value.getDate()
                     };
                 }
                 if (parent) {

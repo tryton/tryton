@@ -35,6 +35,37 @@ var Sao = {};
 
     Sao.Decimal = Number;
 
+    Sao.Date = function(year, month, day) {
+        var date;
+        if (year === undefined) {
+            date = new Date();
+        } else if (date === undefined) {
+            date = new Date(year);
+        } else {
+            date = new Date(year, month, day);
+        }
+        date.isDate = true;
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+        return date;
+    };
+
+    Sao.DateTime = function(year, month, day, hour, minute, second) {
+        var datetime;
+        if (year === undefined) {
+            datetime = new Date();
+        } else if (month === undefined) {
+            datetime = new Date(year);
+        } else {
+            datetime = new Date(year, month, day, hour, minute, second);
+        }
+        datetime.isDateTime = true;
+        datetime.setMilliseconds(0);
+        return datetime;
+    };
+
     Sao.Time = Sao.class_(Object, {
         init: function(hour, minute, second) {
             this.date = new Date(0, 0, 0, hour, minute, second);
