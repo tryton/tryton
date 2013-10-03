@@ -84,11 +84,12 @@ class StockTestCase(unittest.TestCase):
                 })
 
             tests = [
-                (kg, 10, 10),
-                (g, 100, 0.1),
-                (g, 1, 0),  # rounded
+                (kg, 10, 10, 0),
+                (g, 100, 0.1, 1),
+                (g, 1, 0, 0),  # rounded
+                (kg, 35.23, 35.23, 2),  # check infinite loop
             ]
-            for uom, quantity, internal_quantity in tests:
+            for uom, quantity, internal_quantity, ndigits in tests:
                 move, = self.move.create([{
                             'product': product.id,
                             'uom': uom.id,
@@ -99,14 +100,16 @@ class StockTestCase(unittest.TestCase):
                             'unit_price': Decimal('1'),
                             'currency': currency.id,
                             }])
-                self.assertEqual(move.internal_quantity, internal_quantity)
+                self.assertEqual(round(move.internal_quantity, ndigits),
+                    internal_quantity)
 
-                for uom, quantity, internal_quantity in tests:
+                for uom, quantity, internal_quantity, ndigits in tests:
                     self.move.write([move], {
                         'uom': uom.id,
                         'quantity': quantity,
                         })
-                    self.assertEqual(move.internal_quantity, internal_quantity)
+                    self.assertEqual(round(move.internal_quantity, ndigits),
+                        internal_quantity)
 
     def test0020products_by_location(self):
         '''
