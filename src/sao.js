@@ -39,7 +39,7 @@ var Sao = {};
         var date;
         if (year === undefined) {
             date = new Date();
-        } else if (date === undefined) {
+        } else if (month === undefined) {
             date = new Date(year);
         } else {
             date = new Date(year, month, day);
