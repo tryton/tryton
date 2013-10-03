@@ -534,7 +534,8 @@ class Move(Workflow, ModelSQL, ModelView):
         for move in moves:
             internal_quantity = cls._get_internal_quantity(move.quantity,
                     move.uom, move.product)
-            if internal_quantity != move.internal_quantity:
+            if (internal_quantity != move.internal_quantity
+                    and internal_quantity != vals.get('internal_quantity')):
                 cls.write([move], {
                         'internal_quantity': internal_quantity,
                         })
