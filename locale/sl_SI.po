@@ -1201,20 +1201,8 @@ msgid "Amount"
 msgstr "Znesek"
 
 msgctxt "odt:account.invoice:"
-msgid "Amount"
-msgstr "Znesek"
-
-msgctxt "odt:account.invoice:"
 msgid "Base"
 msgstr "Osnova"
-
-msgctxt "odt:account.invoice:"
-msgid "Base"
-msgstr "Osnova"
-
-msgctxt "odt:account.invoice:"
-msgid "Credit Note N°:"
-msgstr "Dobropis št.:"
 
 msgctxt "odt:account.invoice:"
 msgid "Credit Note N°:"
@@ -1225,20 +1213,8 @@ msgid "Date"
 msgstr "Datum"
 
 msgctxt "odt:account.invoice:"
-msgid "Date"
-msgstr "Datum"
-
-msgctxt "odt:account.invoice:"
 msgid "Date:"
 msgstr "Datum:"
-
-msgctxt "odt:account.invoice:"
-msgid "Date:"
-msgstr "Datum:"
-
-msgctxt "odt:account.invoice:"
-msgid "Description"
-msgstr "Opis"
 
 msgctxt "odt:account.invoice:"
 msgid "Description"
@@ -1249,20 +1225,8 @@ msgid "Description:"
 msgstr "Opis:"
 
 msgctxt "odt:account.invoice:"
-msgid "Description:"
-msgstr "Opis:"
-
-msgctxt "odt:account.invoice:"
 msgid "Draft Credit Note"
 msgstr "Osnutek dobropisa"
-
-msgctxt "odt:account.invoice:"
-msgid "Draft Credit Note"
-msgstr "Osnutek dobropisa"
-
-msgctxt "odt:account.invoice:"
-msgid "Draft Invoice"
-msgstr "Osnutek računa"
 
 msgctxt "odt:account.invoice:"
 msgid "Draft Invoice"
@@ -1273,20 +1237,8 @@ msgid "Draft Supplier Credit Note"
 msgstr "Osnutek dobropisa dobavitelja"
 
 msgctxt "odt:account.invoice:"
-msgid "Draft Supplier Credit Note"
-msgstr "Osnutek dobropisa dobavitelja"
-
-msgctxt "odt:account.invoice:"
 msgid "Draft Supplier Invoice"
 msgstr "Osnutek računa dobavitelja"
-
-msgctxt "odt:account.invoice:"
-msgid "Draft Supplier Invoice"
-msgstr "Osnutek računa dobavitelja"
-
-msgctxt "odt:account.invoice:"
-msgid "E-Mail:"
-msgstr "E-pošta:"
 
 msgctxt "odt:account.invoice:"
 msgid "E-Mail:"
@@ -1297,20 +1249,8 @@ msgid "Invoice N°:"
 msgstr "Račun št."
 
 msgctxt "odt:account.invoice:"
-msgid "Invoice N°:"
-msgstr "Račun št."
-
-msgctxt "odt:account.invoice:"
 msgid "Payment Term"
 msgstr "Plačilni pogoji"
-
-msgctxt "odt:account.invoice:"
-msgid "Payment Term"
-msgstr "Plačilni pogoji"
-
-msgctxt "odt:account.invoice:"
-msgid "Phone:"
-msgstr "Telefon:"
 
 msgctxt "odt:account.invoice:"
 msgid "Phone:"
@@ -1321,20 +1261,8 @@ msgid "Pro forma Credit Note"
 msgstr "Formalen dobropis"
 
 msgctxt "odt:account.invoice:"
-msgid "Pro forma Credit Note"
-msgstr "Formalen dobropis"
-
-msgctxt "odt:account.invoice:"
 msgid "Pro forma Invoice"
 msgstr "Predračun"
-
-msgctxt "odt:account.invoice:"
-msgid "Pro forma Invoice"
-msgstr "Predračun"
-
-msgctxt "odt:account.invoice:"
-msgid "Quantity"
-msgstr "Količina"
 
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
@@ -1345,20 +1273,8 @@ msgid "Supplier Credit Note N°:"
 msgstr "Prejeti dobropis št.:"
 
 msgctxt "odt:account.invoice:"
-msgid "Supplier Credit Note N°:"
-msgstr "Prejeti dobropis št.:"
-
-msgctxt "odt:account.invoice:"
 msgid "Supplier Invoice N°:"
 msgstr "Prejeti račun št.:"
-
-msgctxt "odt:account.invoice:"
-msgid "Supplier Invoice N°:"
-msgstr "Prejeti račun št.:"
-
-msgctxt "odt:account.invoice:"
-msgid "Tax"
-msgstr "Davek"
 
 msgctxt "odt:account.invoice:"
 msgid "Tax"
@@ -1369,20 +1285,8 @@ msgid "Taxes"
 msgstr "Davki"
 
 msgctxt "odt:account.invoice:"
-msgid "Taxes"
-msgstr "Davki"
-
-msgctxt "odt:account.invoice:"
 msgid "Taxes:"
 msgstr "Davki:"
-
-msgctxt "odt:account.invoice:"
-msgid "Taxes:"
-msgstr "Davki:"
-
-msgctxt "odt:account.invoice:"
-msgid "Total (excl. taxes):"
-msgstr "Skupaj (brez davkov):"
 
 msgctxt "odt:account.invoice:"
 msgid "Total (excl. taxes):"
@@ -1393,28 +1297,12 @@ msgid "Total:"
 msgstr "Skupaj:"
 
 msgctxt "odt:account.invoice:"
-msgid "Total:"
-msgstr "Skupaj:"
-
-msgctxt "odt:account.invoice:"
-msgid "Unit Price"
-msgstr "Cena"
-
-msgctxt "odt:account.invoice:"
 msgid "Unit Price"
 msgstr "Cena"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT Number:"
 msgstr "DDV številka:"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT Number:"
-msgstr "DDV številka:"
-
-msgctxt "odt:account.invoice:"
-msgid "VAT:"
-msgstr "DDV:"
 
 msgctxt "odt:account.invoice:"
 msgid "VAT:"
