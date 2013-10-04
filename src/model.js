@@ -523,8 +523,8 @@
                     continue;
                 }
                 // TODO delay O2M
-                if (this.model.fields[name] instanceof Sao.field.Many2One) {
-                    // TODO reference
+                if ((this.model.fields[name] instanceof Sao.field.Many2One) ||
+                        (this.model.fields[name] instanceof Sao.field.Reference)) {
                     var field_rec_name = name + '.rec_name';
                     if (values.hasOwnProperty(field_rec_name)) {
                         this._values[field_rec_name] = values[field_rec_name];
@@ -594,8 +594,8 @@
                 if (!(fname in this.model.fields)) {
                     continue;
                 }
-                if (this.model.fields[fname] instanceof Sao.field.Many2One) {
-                    // TODO reference
+                if ((this.model.fields[fname] instanceof Sao.field.Many2One) ||
+                        (this.model.fields[fname] instanceof Sao.field.Reference)) {
                     var field_rec_name = fname + '.rec_name';
                     if (values.hasOwnProperty(field_rec_name)) {
                         this._values[field_rec_name] = values[field_rec_name];
@@ -682,9 +682,10 @@
                 fieldnames[fieldname] = true;
                 values = jQuery.extend(values,
                         this._get_on_change_args(on_change_with));
-                if (this.model.fields[fieldname] instanceof
-                        Sao.field.Many2One) {
-                    // TODO reference
+                if ((this.model.fields[fieldname] instanceof
+                            Sao.field.Many2One) ||
+                        (this.model.fields[fieldname] instanceof
+                         Sao.field.Reference)) {
                     delete this._values[fieldname + '.rec_name'];
                 }
             }
@@ -729,9 +730,10 @@
                     later[fieldname] = value;
                     continue;
                 }
-                if (this.model.fields[fieldname] instanceof
-                        Sao.field.Many2One) {
-                    // TODO reference
+                if ((this.model.fields[fieldname] instanceof
+                            Sao.field.Many2One) ||
+                        (this.model.fields[fieldname] instanceof
+                         Sao.field.Reference)) {
                     var field_rec_name = fieldname + '.rec_name';
                     if (values.hasOwnProperty(field_rec_name)) {
                         this._values[field_rec_name] = values[field_rec_name];
@@ -892,6 +894,8 @@
                 return Sao.field.One2Many;
             case 'many2many':
                 return Sao.field.Many2Many;
+            case 'reference':
+                return Sao.field.Reference;
             case 'binary':
                 return Sao.field.Binary;
             default:
@@ -1340,7 +1344,7 @@
                 var model_name = record.model.fields[this.name].description
                     .relation;
                 Sao.rpc({
-                    'method': 'model.' + model_name + '.' + 'read',
+                    'method': 'model.' + model_name + '.read',
                     'params': [[value], ['rec_name'], record.get_context()]
                 }, record.model.session).done(store_rec_name.bind(this));
             } else {
@@ -1726,6 +1730,92 @@
         },
         get_on_change_value: function(record) {
             return this.get_eval(record);
+        }
+    });
+
+    Sao.field.Reference = Sao.class_(Sao.field.Field, {
+        _default: null,
+        get_client: function(record) {
+            if (record._values[this.name]) {
+                var model = record._values[this.name][0];
+                var name = record._values[this.name + '.rec_name'] || '';
+                return [model, name];
+            } else {
+                return null;
+            }
+        },
+        get: function(record) {
+            if (record._values[this.name] &&
+                record._values[this.name][0] &&
+                record._values[this.name][1] >= -1) {
+                return record._values[this.name].join(',');
+            }
+        },
+        set_client: function(record, value, force_change) {
+            if (value) {
+                if (typeof(value) == 'string') {
+                    value = value.split(',');
+                }
+                var ref_model = value[0];
+                var ref_id = value[1];
+                var rec_name;
+                if (ref_id instanceof Array) {
+                    rec_name = ref_id[1];
+                    ref_id = ref_id[0];
+                } else {
+                    if (ref_id && !isNaN(parseInt(ref_id, 10))) {
+                        ref_id = parseInt(ref_id, 10);
+                    }
+                    if ([ref_model, ref_id].join(',') == this.get(record)) {
+                        rec_name = record._values[this.name + '.rec_name'] || '';
+                    } else {
+                        rec_name = '';
+                    }
+                }
+                record._values[this.name + '.rec_name'] = rec_name;
+                value = [ref_model, ref_id];
+            }
+            Sao.field.Reference._super.set_client.call(
+                    this, record, value, force_change);
+        },
+        set: function(record, value) {
+            if (!value) {
+                record._values[this.name] = this._default;
+                return;
+            }
+            var ref_model, ref_id;
+            if (typeof(value) == 'string') {
+                ref_model = value.split(',')[0];
+                ref_id = value.split(',')[1];
+                if (!ref_id) {
+                    ref_id = null;
+                } else if (!isNaN(parseInt(ref_id, 10))) {
+                    ref_id = parseInt(ref_id, 10);
+                }
+            } else {
+                ref_model = value[0];
+                ref_id = value[1];
+            }
+            var rec_name = record._values[this.name + '.rec_name'] || '';
+            var store_rec_name = function(rec_name) {
+                record._values[this.name + '.rec_name'] = rec_name;
+            }.bind(this);
+            if (ref_model && ref_id >= 0) {
+                if (!rec_name && ref_id >= 0) {
+                    Sao.rpc({
+                        'method': 'model.' + ref_model + '.read',
+                        'params': [[ref_id], ['rec_name'], record.get_context()]
+                    }, record.model.session).done(function(result) {
+                        store_rec_name(result[0].rec_name);
+                    });
+                }
+            } else if (ref_model) {
+                rec_name = '';
+            } else {
+                rec_name = ref_id;
+            }
+            record._values[this.name] = [ref_model, ref_id];
+            store_rec_name(rec_name);
         }
     });
 
