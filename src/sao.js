@@ -59,7 +59,8 @@ var Sao = {};
         } else if (month === undefined) {
             datetime = new Date(year);
         } else {
-            datetime = new Date(year, month, day, hour, minute, second);
+            datetime = new Date(year, month, day,
+                    hour || 0, minute || 0, second || 0);
         }
         datetime.isDateTime = true;
         datetime.setMilliseconds(0);
@@ -87,6 +88,9 @@ var Sao = {};
         },
         setSeconds: function(second) {
             this.date.setSeconds(second);
+        },
+        valueOf: function() {
+            return this.date.valueOf();
         }
     });
 

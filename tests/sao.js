@@ -950,6 +950,15 @@
                     JSON.stringify(value) + ')');
         };
 
+        var test_valueOf_func = function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.strictEqual(parser.convert_value(this, value).valueOf(),
+                result.valueOf(),
+                'convert_value(' + JSON.stringify(this) + ', ' +
+                    JSON.stringify(value) + ')');
+        };
+
         var field = {
             'type': 'boolean'
         };
@@ -1022,6 +1031,42 @@
         ['Male', 'male'],
         ['male', 'male'],
         ['test', 'test']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'datetime',
+            'format': '"%H:%M:%S"'
+        };
+        [
+        ['2002-12-04', Sao.DateTime(2002, 11, 4)],
+        ['2002-12-04 12:30:00', Sao.DateTime(2002, 11, 4, 12, 30)]
+        ].forEach(test_valueOf_func, field);
+        [
+        ['test', null],
+        [null, null]
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'date'
+        };
+        [
+        ['2002-12-04', Sao.Date(2002, 11, 4)]
+        ].forEach(test_valueOf_func, field);
+        [
+        ['test', null],
+        [null, null]
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'time',
+            'format': '"%H:%M:%S"'
+        };
+        [
+        ['12:30:00', new Sao.Time(12, 30, 0)],
+        ['test', new Sao.Time(0, 0, 0)]
+        ].forEach(test_valueOf_func, field);
+        [
+        [null, null]
         ].forEach(test_func, field);
     });
 
@@ -1143,6 +1188,37 @@
         [
         ['male', 'Male'],
         ['test', 'test'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'datetime',
+            'format': '"%H:%M:%S"'
+        };
+        [
+        [Sao.Date(2002, 11, 4), '2002-12-04'],
+        [Sao.DateTime(2002, 11, 4), '2002-12-04'],
+        [Sao.DateTime(2002, 11, 4, 12, 30), '"2002-12-04 12:30:00"'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'date'
+        };
+        [
+        [Sao.Date(2002, 11, 4), '2002-12-04'],
+        [false, ''],
+        [null, '']
+        ].forEach(test_func, field);
+
+        field = {
+            'type': 'time',
+            'format': '"%H:%M:%S"'
+        };
+        [
+        [new Sao.Time(12, 30, 0), '"12:30:00"'],
         [false, ''],
         [null, '']
         ].forEach(test_func, field);

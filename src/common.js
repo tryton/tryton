@@ -62,18 +62,20 @@
     };
 
     Sao.common.date_format = function() {
-        var context = Sao.Session.current_session.context;
-        if (context.locale && context.locale.date) {
-            return context.locale.date
-                .replace('%d', 'dd')
-                .replace('%j', 'oo')
-                .replace('%a', 'D')
-                .replace('%A', 'DD')
-                .replace('%m', 'mm')
-                .replace('%b', 'M')
-                .replace('%B', 'MM')
-                .replace('%y', 'y')
-                .replace('%Y', 'yy');
+        if (Sao.Session.current_session) {
+            var context = Sao.Session.current_session.context;
+            if (context.locale && context.locale.date) {
+                return context.locale.date
+                    .replace('%d', 'dd')
+                    .replace('%j', 'oo')
+                    .replace('%a', 'D')
+                    .replace('%A', 'DD')
+                    .replace('%m', 'mm')
+                    .replace('%b', 'M')
+                    .replace('%B', 'MM')
+                    .replace('%y', 'y')
+                    .replace('%Y', 'yy');
+            }
         }
         return jQuery.datepicker.W3C;
     };
@@ -86,6 +88,9 @@
     };
 
     Sao.common.parse_time = function(format, value) {
+        if (jQuery.isEmptyObject(value)) {
+            return null;
+        }
         var getNumber = function(pattern) {
             var i = format.indexOf(pattern);
             if (~i) {
@@ -108,7 +113,7 @@
         var date = Sao.DateTime(
                 jQuery.datepicker.parseDate(date_format, value));
         var time_value = value.replace(jQuery.datepicker.formatDate(
-                    date_format + ' ', date), '');
+                    date_format, date), '').trim();
         var time = Sao.common.parse_time(time_format, time_value);
         date.setHours(time.getHours());
         date.setMinutes(time.getMinutes());
@@ -939,6 +944,9 @@
                     return 'not in';
             }
         },
+        time_format: function(field) {
+            return new Sao.PYSON.Decoder({}).decode(field.format);
+        },
         convert_value: function(field, value) {
             var convert_selection = function() {
                 if (typeof value == 'string') {
@@ -993,9 +1001,39 @@
                 },
                 'selection': convert_selection,
                 'reference': convert_selection,
-                // TODO datetime
-                // TODO date
-                // TODO time
+                'datetime': function() {
+                    try {
+                        return Sao.common.parse_datetime(
+                                Sao.common.date_format(),
+                                this.time_format(field),
+                                value);
+                    } catch (e1) {
+                        try {
+                            return Sao.DateTime(jQuery.datepicker.parseDate(
+                                        Sao.common.date_format(),
+                                        value));
+                        } catch (e2) {
+                            return null;
+                        }
+                    }
+                }.bind(this),
+                'date': function() {
+                    try {
+                        return Sao.Date(jQuery.datepicker.parseDate(
+                                    Sao.common.date_format(),
+                                    value));
+                    } catch (e) {
+                        return null;
+                    }
+                },
+                'time': function() {
+                    try {
+                        return Sao.common.parse_time(this.time_format(field),
+                                value);
+                    } catch (e) {
+                        return null;
+                    }
+                }.bind(this),
                 'many2one': function() {
                     if (value === '') {
                         return null;
@@ -1052,9 +1090,39 @@
                 'numeric': format_float,
                 'selection': format_selection,
                 'reference': format_selection,
-                // TODO datetime
-                // TODO date
-                // TODO time
+                'datetime': function() {
+                    if (!value) {
+                        return '';
+                    }
+                    if (value.isDate ||
+                            !(value.getHours() ||
+                             value.getMinutes() ||
+                             value.getSeconds())) {
+                        return jQuery.datepicker.formatDate(
+                                Sao.common.date_format(),
+                                value);
+                    }
+                    return Sao.common.format_datetime(
+                            Sao.common.date_format(),
+                            this.time_format(field),
+                            value);
+                }.bind(this),
+                'date': function() {
+                    if (!value) {
+                        return '';
+                    }
+                    return jQuery.datepicker.formatDate(
+                            Sao.common.date_format(),
+                            value);
+                },
+                'time': function() {
+                    if (!value) {
+                        return '';
+                    }
+                    return Sao.common.format_time(
+                            this.time_format(field),
+                            value);
+                }.bind(this),
                 'many2one': function() {
                     if (value === null) {
                         return '';
