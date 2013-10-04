@@ -988,7 +988,7 @@
                 } else {
                     this.screen.button(button.attributes);
                 }
-            });
+            }.bind(this));
         },
         selected_records: function() {
             if (this.screen.current_record) {
