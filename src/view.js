@@ -716,7 +716,7 @@
                 }
                 ['readonly', 'invisible'].forEach(function(name) {
                     if (attributes[name]) {
-                        attributes[name] = attribute[name] == 1;
+                        attributes[name] = attributes[name] == 1;
                     }
                 });
                 switch (child.tagName) {
