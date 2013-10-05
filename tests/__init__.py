@@ -2,3 +2,5 @@
 #this repository contains the full copyright notices and license terms.
 
 from .test_project_revenue import suite
+
+__all__ = ['suite']
