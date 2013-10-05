@@ -925,10 +925,10 @@ class PurchaseLine(ModelSQL, ModelView):
         super(PurchaseLine, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'supplier_location_required': ('Purchase "%(purchase)s" misses '
-                    'the supplier location for line "%(line)s".'),
-                'missing_account_expense': ('Product "%(product)s" of purchase '
-                    '%(purchase)s misses an expense account.'),
+                'supplier_location_required': ('Purchase "%(purchase)s" '
+                    'misses the supplier location for line "%(line)s".'),
+                'missing_account_expense': ('Product "%(product)s" of '
+                    'purchase %(purchase)s misses an expense account.'),
                 'missing_account_expense_property': ('Purchase "%(purchase)s" '
                     'misses an "account expense" default property.'),
                 })
