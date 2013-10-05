@@ -75,8 +75,8 @@ class Uom(ModelSQL, ModelView):
                 'change_uom_rate': ('If the UOM is still not used, you can '
                     'delete it otherwise you can deactivate it '
                     'and create a new one.'),
-                'invalid_factor_and_rate': ('Invalid Factor and Rate values in '
-                    'UOM "%s".'),
+                'invalid_factor_and_rate': (
+                    'Invalid Factor and Rate values in UOM "%s".'),
                 })
 
     @classmethod
