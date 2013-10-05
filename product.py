@@ -40,8 +40,8 @@ class Product:
             product = self
         for product_bom in self.boms:
             for input_ in product_bom.bom.inputs:
-                if (input_.product == product
-                        or input_.product.check_bom_recursion(product=product)):
+                if (input_.product == product or
+                        input_.product.check_bom_recursion(product=product)):
                     self.raise_user_error('recursive_bom', (product.rec_name,))
 
     @classmethod
