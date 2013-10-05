@@ -2,3 +2,5 @@
 #this repository contains the full copyright notices and license terms.
 
 from .test_timesheet import suite
+
+__all__ = ['suite']
