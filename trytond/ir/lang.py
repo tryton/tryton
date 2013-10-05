@@ -62,9 +62,9 @@ class Lang(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        langs = cls.search([('code',) + clause[1:]], order=[])
+        langs = cls.search([('code',) + tuple(clause[1:])], order=[])
         if langs:
-            langs += cls.search([('name',) + clause[1:]], order=[])
+            langs += cls.search([('name',) + tuple(clause[1:])], order=[])
             return [('id', 'in', [l.id for l in langs])]
         return [('name',) + tuple(clause[1:])]
 
