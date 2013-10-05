@@ -146,7 +146,7 @@ class Period(ModelSQL, ModelView):
                     'second': periods[0].rec_name,
                     })
         if (self.post_move_sequence.company and
-            self.post_move_sequence.company != self.fiscalyear.company):
+                self.post_move_sequence.company != self.fiscalyear.company):
             self.raise_user_error('check_move_sequence_company', {
                     'sequence': self.post_move_sequence.rec_name,
                     'period': self.rec_name,

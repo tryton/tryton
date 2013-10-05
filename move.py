@@ -2,7 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
-import time
 from itertools import groupby
 from operator import itemgetter
 from sql.aggregate import Sum
@@ -216,7 +215,6 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        MoveLine = pool.get('account.move.line')
         Sequence = pool.get('ir.sequence')
         Journal = pool.get('account.journal')
 
@@ -401,7 +399,8 @@ class Reconciliation(ModelSQL, ModelView):
                 'reconciliation_different_accounts': ('You can not reconcile '
                     'line "%(line)s" because it\'s account "%(account1)s" is '
                     'different from "%(account2)s".'),
-                'reconciliation_account_no_reconcile': ('You can not reconcile '
+                'reconciliation_account_no_reconcile': (
+                    'You can not reconcile '
                     'line "%(line)s" because it\'s account "%(account)s" is '
                     'configured as not reconcilable.'),
                 'reconciliation_different_parties': ('You can not reconcile '
@@ -569,14 +568,14 @@ class Line(ModelSQL, ModelView):
                     'add/modify lines in closed journal period "%s".'),
                 'modify_posted_move': ('You can not modify lines of move "%s" '
                     'because it is already posted.'),
-                'modify_reconciled': ('You can not modify line "%s" because it '
-                    'is reconciled.'),
+                'modify_reconciled': ('You can not modify line "%s" because '
+                    'it is reconciled.'),
                 'no_journal': ('Move line cannot be created because there is '
                     'no journal defined.'),
                 'move_view_account': ('You can not create a move line with '
                     'account "%s" because it is a view account.'),
-                'move_inactive_account': ('You can not create a move line with '
-                    'account "%s" because it is inactive.'),
+                'move_inactive_account': ('You can not create a move line '
+                    'with account "%s" because it is inactive.'),
                 'already_reconciled': 'Line "%s" (%d) already reconciled.',
                 })
 
