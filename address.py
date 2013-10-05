@@ -21,7 +21,8 @@ class Address:
     def __setup__(cls):
         super(Address, cls).__setup__()
         cls._error_messages.update({
-                'invalid_siret': ('Invalid SIRET number "%(siret)s" on address '
+                'invalid_siret': (
+                    'Invalid SIRET number "%(siret)s" on address '
                     '"%(address)s"'),
                 })
 
