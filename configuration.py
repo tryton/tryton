@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Eval
-from trytond.pool import  PoolMeta
+from trytond.pool import PoolMeta
 
 __all__ = ['Configuration']
 __metaclass__ = PoolMeta

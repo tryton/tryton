@@ -46,9 +46,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         select=True)
     party = fields.Many2One('party.party', 'Party', select=True,
         on_change=['party'], states={
-             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
-             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
-             }, depends=['state'])
+            'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
+            'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
+            }, depends=['state'])
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('party'))],
         select=True, depends=['party', 'state'],
@@ -123,7 +123,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                     values=[sql_table.id],
                     where=sql_table.reference == None))
             table.not_null_action('reference', action='add')
-
 
     @classmethod
     def __setup__(cls):
