@@ -97,7 +97,8 @@ class Location(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
         cls._error_messages.update({
                 'invalid_type_for_moves': ('Location "%s" with existing moves '
-                    'cannot be changed to a type that does not support moves.'),
+                    'cannot be changed to a type that does not support moves.'
+                    ),
                 'child_of_warehouse': ('Location "%(location)s" must be a '
                     'child of warehouse "%(warehouse)s".'),
                 })

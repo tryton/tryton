@@ -34,7 +34,8 @@ class Period(Workflow, ModelSQL, ModelView):
         cls._error_messages.update({
                 'close_period_future_today': ('You can not close a period '
                     'in the future or today.'),
-                'close_period_assigned_move': ('You can not close a period when '
+                'close_period_assigned_move': (
+                    'You can not close a period when '
                     'there still are assigned moves.'),
                 })
         cls._transitions |= set((
@@ -68,13 +69,14 @@ class Period(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, periods):
+        in_max = Transaction().cursor.IN_MAX
         for grouping in cls.groupings():
             Cache = cls.get_cache(grouping)
             caches = []
-            for i in xrange(0, len(periods), Transaction().cursor.IN_MAX):
+            for i in xrange(0, len(periods), in_max):
                 caches.append(Cache.search([
-                    ('period', 'in', [p.id for p in
-                                    periods[i:i + Transaction().cursor.IN_MAX]]),
+                            ('period', 'in',
+                                [p.id for p in periods[i:i + in_max]]),
                             ], order=[]))
             Cache.delete(list(chain(*caches)))
 

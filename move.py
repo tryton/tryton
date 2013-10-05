@@ -3,7 +3,7 @@
 import datetime
 import operator
 from decimal import Decimal
-from functools import reduce, partial
+from functools import partial
 from sql import Column
 from sql.operators import Concat
 
@@ -447,9 +447,9 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def get_shipment(cls):
-        Model = Pool().get('ir.model')
+        IrModel = Pool().get('ir.model')
         models = cls._get_shipment()
-        models = Model.search([
+        models = IrModel.search([
                 ('model', 'in', models),
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
@@ -461,9 +461,9 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def get_origin(cls):
-        Model = Pool().get('ir.model')
+        IrModel = Pool().get('ir.model')
         models = cls._get_origin()
-        models = Model.search([
+        models = IrModel.search([
                 ('model', 'in', models),
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
