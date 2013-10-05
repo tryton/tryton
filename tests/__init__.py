@@ -2,3 +2,5 @@
 #this repository contains the full copyright notices and license terms.
 
 from .test_stock_supply_day import suite
+
+__all__ = ['suite']
