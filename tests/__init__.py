@@ -2,3 +2,5 @@
 #this repository contains the full copyright notices and license terms.
 
 from .test_account_stock_anglo_saxon import suite
+
+__all__ = ['suite']
