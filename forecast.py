@@ -519,7 +519,8 @@ class ForecastComplete(Wizard):
     def __setup__(cls):
         super(ForecastComplete, cls).__setup__()
         cls._error_messages.update({
-                'from_to_date': '"From Date" should be smaller than "To Date".',
+                'from_to_date': (
+                    '"From Date" should be smaller than "To Date".'),
                 })
 
     def default_ask(self, fields):
