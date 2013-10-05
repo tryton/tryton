@@ -95,7 +95,6 @@ class FiscalYear:
                         'second': fiscalyears[0].rec_name,
                         })
 
-
     @classmethod
     def write(cls, fiscalyears, vals):
         Invoice = Pool().get('account.invoice')

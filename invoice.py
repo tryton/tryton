@@ -180,7 +180,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'on invoice lines.\nRe-compute the invoice.'),
                 'diff_tax_line': ('Invoice "%s" tax bases are different from '
                     'invoice lines.\nRe-compute the invoice.'),
-                'missing_tax_line2': ('Invoice "%s" has taxes on invoice lines '
+                'missing_tax_line2': (
+                    'Invoice "%s" has taxes on invoice lines '
                     'that are not in the invoice.\nRe-compute the invoice.'),
                 'no_invoice_sequence': ('There is no invoice sequence for '
                     'invoice "%(invoice)s" on the period/fiscal year '
@@ -208,9 +209,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     'deletion.'),
                 'delete_numbered': ('The numbered invoice "%s" can not be '
                     'deleted.'),
-                'customer_invoice_cancel_move': ('Customer invoice/credit note '
+                'customer_invoice_cancel_move': (
+                    'Customer invoice/credit note '
                     '"%s" can not be cancelled once posted.'),
-                'period_cancel_move': ('The period of Invoice "%s" is closed.\n'
+                'period_cancel_move': (
+                    'The period of Invoice "%s" is closed.\n'
                     'Use the today for cancel move?'),
                 })
         cls._transitions |= set((
@@ -683,7 +686,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         Operator = fields.SQL_OPERATORS[clause[1]]
 
         union = (line.select(line.invoice.as_('invoice'),
-                Coalesce(Sum(line.quantity * line.unit_price),0
+                Coalesce(Sum(line.quantity * line.unit_price), 0
                     ).as_('total_amount'),
                 where=line.invoice.in_(invoice_query),
                 group_by=line.invoice)
@@ -1592,7 +1595,8 @@ class InvoiceLine(ModelSQL, ModelView):
                     '"%(invoice)s" that is posted or paid.'),
                 'create': ('You can not add a line to invoice "%(invoice)s" '
                     'that is posted, paid or cancelled.'),
-                'account_different_company': ('You can not create invoice line '
+                'account_different_company': (
+                    'You can not create invoice line '
                     '"%(line)s" on invoice "%(invoice)s of company '
                     '"%(invoice_line_company)s because account "%(account)s '
                     'has company "%(account_company)s".'),
@@ -2116,12 +2120,13 @@ class InvoiceTax(ModelSQL, ModelView):
                     'account "%(account)s" from company '
                     '"%(account_company)s".'),
                 'invalid_base_code_company': ('You can not create invoice '
-                    '"%(invoice)s" on company "%(invoice_company)s" using base '
-                    'tax code "%(base_code)s" from company '
+                    '"%(invoice)s" on company "%(invoice_company)s" '
+                    'using base tax code "%(base_code)s" from company '
                     '"%(base_code_company)s".'),
                 'invalid_tax_code_company': ('You can not create invoice '
                     '"%(invoice)s" on company "%(invoice_company)s" using tax '
-                    'code "%(tax_code)s" from company "%(tax_code_company)s".'),
+                    'code "%(tax_code)s" from company '
+                    '"%(tax_code_company)s".'),
                 })
 
     @classmethod
