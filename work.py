@@ -94,8 +94,6 @@ class Work:
         '''
         Function to compute function fields
         '''
-        cursor = Transaction().cursor
-
         res = {}
 
         ids = [w.id for w in works]
@@ -159,8 +157,6 @@ class Work:
 
     @classmethod
     def set_function_fields(cls, works, name, value):
-        pool = Pool()
-
         fun_fields = ('actual_start_date', 'actual_finish_date',
                       'constraint_start_date', 'constraint_finish_date')
         db_fields = ('actual_start_time', 'actual_finish_time',
