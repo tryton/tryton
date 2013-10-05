@@ -173,7 +173,8 @@ class Sale(Workflow, ModelSQL, ModelView):
         cls._error_messages.update({
                 'invalid_method': ('Invalid combination of shipment and '
                     'invoicing methods on sale "%s".'),
-                'addresses_required': ('Invoice and Shipment addresses must be '
+                'addresses_required': (
+                    'Invoice and Shipment addresses must be '
                     'defined for the quotation of sale "%s".'),
                 'warehouse_required': ('Warehouse must be defined for the '
                     'quotation of sale "%s".'),
@@ -1032,7 +1033,8 @@ class SaleLine(ModelSQL, ModelView):
         super(SaleLine, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
-                'customer_location_required': ('Sale "%(sale)s" is missing the '
+                'customer_location_required': (
+                    'Sale "%(sale)s" is missing the '
                     'customer location in line "%(line)s".'),
                 'missing_account_revenue': ('Product "%(product)s" of sale '
                     '%(sale)s misses a revenue account.'),
