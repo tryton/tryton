@@ -50,9 +50,9 @@ class Lang(ModelSQL, ModelView, Cacheable):
         })
 
     def search_rec_name(self, name, clause):
-        ids = self.search([('code',) + clause[1:]], order=[])
+        ids = self.search([('code',) + tuple(clause[1:])], order=[])
         if ids:
-            ids += self.search([('name',) + clause[1:]], order=[])
+            ids += self.search([('name',) + tuple(clause[1:])], order=[])
             return [('id', 'in', ids)]
         return [('name',) + tuple(clause[1:])]
 
