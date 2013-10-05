@@ -1,6 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import time
 from decimal import Decimal
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateAction
@@ -44,7 +43,8 @@ class Line(ModelSQL, ModelView):
                 'Wrong credit/debit values.'),
             ]
         cls._error_messages.update({
-                'line_on_view_account': ('You can not create a move line using '
+                'line_on_view_account': (
+                    'You can not create a move line using '
                     'view account "%s".'),
                 'line_on_inactive_account': ('You can not create a move line '
                     'using inactive account "%s".'),
