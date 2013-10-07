@@ -45,7 +45,8 @@ setup(name='trytond_purchase',
         ],
     package_data={
         'trytond.modules.purchase': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'purchase.odt']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst',
+                'purchase.odt']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
