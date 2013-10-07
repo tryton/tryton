@@ -45,7 +45,8 @@ setup(name='trytond_purchase_invoice_line_standalone',
         ],
     package_data={
         'trytond.modules.purchase_invoice_line_standalone': (
-            info.get('xml', []) + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
+            info.get('xml', []) + ['tryton.cfg', 'view/*.xml', 'locale/*.po',
+                'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
