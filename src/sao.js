@@ -157,7 +157,8 @@ var Sao = {};
         var session = Sao.Session.current_session;
         // TODO check modified
         jQuery('#tabs').children().remove();
-        jQuery('#user-menu').children().remove();
+        jQuery('#user-preferences').children().remove();
+        jQuery('#user-logout').children().remove();
         jQuery('#menu').children().remove();
         session.do_logout();
         Sao.login();
@@ -166,7 +167,8 @@ var Sao = {};
     Sao.preferences = function() {
         // TODO check modified
         jQuery('#tabs').children().remove();
-        jQuery('#user-menu').children().remove();
+        jQuery('#user-preferences').children().remove();
+        jQuery('#user-logout').children().remove();
         jQuery('#menu').children().remove();
         new Sao.Window.Preferences(function() {
             var session = Sao.Session.current_session;
@@ -182,57 +184,12 @@ var Sao = {};
     };
 
     Sao.user_menu = function(preferences) {
-        var user_menu = jQuery('#user-menu');
-        user_menu.append(jQuery('<ul/>')
-            .append(jQuery('<li/>')
-                .append(jQuery('<a/>', {
-                    'href': '#'
-                }).append(preferences.status_bar)).append(
-                jQuery('<ul/>').append(
-                    jQuery('<li/>').append(
-                        jQuery('<a/>', {
-                            'href': '#'
-                        }).click(Sao.preferences).append('Preferences')
-                        ),
-                    jQuery('<li/>').append(
-                        jQuery('<a/>', {
-                            'href': '#'
-                        }).click(Sao.logout).append('Logout')
-                        )))));
-        user_menu.find('li')
-            .css('float', 'left')
-            .css('list-style', 'none');
-        user_menu.find('li > a')
-            .css('display', 'block')
-            .css('white-space', 'nowrap');
-        user_menu.find('li > ul')
-            .css('position', 'absolute')
-            .css('visibility', 'hidden');
-        user_menu.find('li > ul > li')
-            .css('float', 'none')
-            .css('display', 'inline');
-        var menu_timer = null;
-        var menu_timeout = 500;
-        var menu_item = null;
-        var menu_open = function() {
-            if (menu_timer) {
-                window.clearTimeout(menu_timer);
-                menu_timer = null;
-            }
-            menu_close();
-            menu_item = jQuery(this).find('ul')
-                .css('visibility', 'visible');
-        };
-        var menu_close = function() {
-            if (menu_item) {
-                menu_item.css('visibility', 'hidden');
-            }
-        };
-        user_menu.find('li').bind('mouseover', menu_open);
-        user_menu.find('li').bind('mouseout', function() {
-            menu_timer = window.setTimeout(menu_close, menu_timeout);
-        });
-        document.onclick = menu_close;
+        jQuery('#user-preferences').append(jQuery('<a/>', {
+            'href': '#'
+        }).click(Sao.preferences).append(preferences.status_bar));
+        jQuery('#user-logout').append(jQuery('<a/>', {
+            'href': '#'
+        }).click(Sao.logout).append('Logout'));
     };
 
     Sao.menu = function(preferences) {
