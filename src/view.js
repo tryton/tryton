@@ -1997,100 +1997,120 @@
             });
             this.el.append(this.menu);
 
+            var label = jQuery('<span/>', {
+                'class': this.class_ + '-string',
+                text: attributes.string
+            });
+            this.menu.append(label);
+
+            var toolbar = jQuery('<span/>', {
+                'class': this.class_ + '-toolbar'
+            });
+            this.menu.append(toolbar);
+
             if (attributes.add_remove) {
                 this.wid_text = jQuery('<input/>', {
                     type: 'input'
                 });
                 // TODO add completion
-                this.menu.append(this.wid_text);
+                toolbar.append(this.wid_text);
 
                 this.but_add = jQuery('<button/>').button({
                     icons: {
                         primary: 'ui-icon-plus'
                     },
-                    label: 'Add'
+                    label: 'Add',
+                    text: false
                 });
                 this.but_add.click(this.add.bind(this));
-                this.menu.append(this.but_add);
+                toolbar.append(this.but_add);
 
                 this.but_remove = jQuery('<button/>').button({
                     icons: {
                         primary: 'ui-icon-minus'
                     },
-                    label: 'Remove'
+                    label: 'Remove',
+                    text: false
                 });
                 this.but_remove.click(this.remove.bind(this));
-                this.menu.append(this.but_remove);
+                toolbar.append(this.but_remove);
             }
 
             this.but_new = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-document'
                 },
-                label: 'New'
+                label: 'New',
+                text: false
             });
             this.but_new.click(this.new_.bind(this));
-            this.menu.append(this.but_new);
+            toolbar.append(this.but_new);
 
             this.but_open = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-folder-open'
                 },
-                label: 'Open'
+                label: 'Open',
+                text: false
             });
             this.but_open.click(this.open.bind(this));
-            this.menu.append(this.but_open);
+            toolbar.append(this.but_open);
 
             this.but_del = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-trash'
                 },
-                label: 'Delete'
+                label: 'Delete',
+                text: false
             });
             this.but_del.click(this.delete_.bind(this));
-            this.menu.append(this.but_del);
+            toolbar.append(this.but_del);
 
             this.but_undel = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-arrowreturn-1-s'
                 },
-                label: 'Undelete'
+                label: 'Undelete',
+                text: false
             });
             this.but_undel.click(this.undelete.bind(this));
-            this.menu.append(this.but_undel);
+            toolbar.append(this.but_undel);
 
             this.but_previous = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-arrowthick-1-w'
                 },
-                label: 'Previous'
+                label: 'Previous',
+                text: false
             });
             this.but_previous.click(this.previous.bind(this));
-            this.menu.append(this.but_previous);
+            toolbar.append(this.but_previous);
 
             this.label = jQuery('<span/>', {
                 'class': this.class_ + '-label'
             });
             this.label.text('(0, 0)');
-            this.menu.append(this.label);
+            toolbar.append(this.label);
 
             this.but_next = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-arrowthick-1-e'
                 },
-                label: 'Next'
+                label: 'Next',
+                text: false
             });
             this.but_next.click(this.next.bind(this));
-            this.menu.append(this.but_next);
+            toolbar.append(this.but_next);
 
             this.but_switch = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-newwin'
                 },
-                label: 'Switch'
+                label: 'Switch',
+                text: false
             });
             this.but_switch.click(this.switch_.bind(this));
-            this.menu.append(this.but_switch);
+            toolbar.append(this.but_switch);
 
             this.content = jQuery('<div/>', {
                 'class': this.class_ + '-content'
@@ -2256,15 +2276,21 @@
             this.el.append(this.menu);
 
             var label = jQuery('<span/>', {
+                'class': this.class_ + '-string',
                 text: attributes.string
             });
             this.menu.append(label);
+
+            var toolbar = jQuery('<span/>', {
+                'class': this.class_ + '-toolbar'
+            });
+            this.menu.append(toolbar);
 
             this.entry = jQuery('<input/>', {
                 type: 'input'
             });
             this.entry.on('keyup', this.key_press.bind(this));
-            this.menu.append(this.entry);
+            toolbar.append(this.entry);
 
             // TODO completion
 
@@ -2272,19 +2298,21 @@
                 icons: {
                     primary: 'ui-icon-plus'
                 },
+                label: 'Add',
                 text: false
             });
             this.but_add.click(this.add.bind(this));
-            this.menu.append(this.but_add);
+            toolbar.append(this.but_add);
 
             this.but_remove = jQuery('<button/>').button({
                 icons: {
                     primary: 'ui-icon-minus'
                 },
+                label: 'Remove',
                 text: false
             });
             this.but_remove.click(this.remove.bind(this));
-            this.menu.append(this.but_remove);
+            toolbar.append(this.but_remove);
 
             this.content = jQuery('<div/>', {
                 'class': this.class_ + '-content'

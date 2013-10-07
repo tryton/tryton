@@ -81,4 +81,24 @@ body {
             background-size: 16px 16px;
         }
     }
+
+    & .form-one2many-menu, .form-one2many-content,
+    .form-many2many-menu, .form-many2many-content {
+        border: 1px solid rgb(170, 170, 170);
+        border-radius: 4px;
+    }
+
+    & .form-one2many-menu, .form-many2many-menu {
+        overflow: auto;
+        & .form-one2many-string, .form-many2many-string {
+            float: left;
+        }
+        & .form-one2many-toolbar, .form-many2many-toolbar {
+            float: right;
+        }
+        & .form-one2many-string, .form-one2many-label,
+        .form-many2many-string, .form-many2many-label {
+            margin-top: 8px;
+        }
+    }
 }
