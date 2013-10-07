@@ -1989,6 +1989,8 @@
             Sao.View.Form.One2Many._super.init.call(this, field_name, model,
                 attributes);
 
+            this._readonly = true;
+
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -2104,7 +2106,7 @@
 
             this.but_switch = jQuery('<button/>').button({
                 icons: {
-                    primary: 'ui-icon-newwin'
+                    primary: 'ui-icon-arrow-4-diag'
                 },
                 label: 'Switch',
                 text: false
@@ -2138,8 +2140,45 @@
             }
             return Sao.View.Form.One2Many._super._get_color_el.call(this);
         },
+        set_readonly: function(readonly) {
+            this._readonly = readonly;
+            this._set_button_sensitive();
+        },
+        _set_button_sensitive: function() {
+            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+            var size_limit = false;
+            if (this.record() && this.field()) {
+                // TODO
+            }
+            var create = this.attributes.create;
+            if (create === undefined) {
+                create = true;
+            }
+            this.but_new.prop('disabled', this._readonly || !create ||
+                    size_limit || !access.create);
+
+            var delete_ = this.attributes['delete'];
+            if (delete_ === undefined) {
+                delete_ = true;
+            }
+            // TODO position
+            this.but_del.prop('disabled', this._readonly || !delete_ ||
+                    !access['delete']);
+            this.but_undel.prop('disabled', this._readonly || size_limit);
+            this.but_open.prop('disabled', !access.read);
+            // TODO but_next, but_previous
+            if (this.attributes.add_remove) {
+                this.wid_text.prop('disabled', this._readonly);
+                this.but_add.prop('disabled', this._readonly || size_limit ||
+                        !access.write || !access.read);
+                this.but_remove.prop('disabled', this._readonly ||
+                        !access.write || !access.read);
+            }
+        },
         display: function(record, field) {
             Sao.View.Form.One2Many._super.display.call(this, record, field);
+
+            this._set_button_sensitive();
 
             this.prm.done(function() {
                 if (!record) {
@@ -2267,6 +2306,9 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Many2Many._super.init.call(this, field_name, model,
                 attributes);
+
+            this._readonly = true;
+
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -2336,6 +2378,21 @@
                 return this.screen.current_view.el;
             }
             return Sao.View.Form.Many2Many._super._get_color_el.call(this);
+        },
+        set_readonly: function(readonly) {
+            this._readonly = readonly;
+            this._set_button_sensitive();
+        },
+        _set_button_sensitive: function() {
+            var size_limit = false;
+            if (this.record() && this.field()) {
+                // TODO
+            }
+
+            this.entry.prop('disabled', this._readonly);
+            this.but_add.prop('disabled', this._readonly || size_limit);
+            // TODO position
+            this.but_remove.prop('disabled', this._readonly);
         },
         display: function(record, field) {
             Sao.View.Form.Many2Many._super.display.call(this, record, field);
