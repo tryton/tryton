@@ -76,12 +76,6 @@ body {
 }
 
 .form {
-    & button {
-        & .ui-icon-custom {
-            background-size: 16px 16px;
-        }
-    }
-
     & .form-one2many-menu, .form-one2many-content,
     .form-many2many-menu, .form-many2many-content {
         border: 1px solid rgb(170, 170, 170);
@@ -100,5 +94,11 @@ body {
         .form-many2many-string, .form-many2many-label {
             margin-top: 8px;
         }
+    }
+}
+
+button {
+    & .ui-icon-custom {
+        background-size: 16px 16px;
     }
 }
