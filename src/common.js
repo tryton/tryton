@@ -1340,12 +1340,12 @@
             if (this.is_leaf(domain)) {
                 return [domain];
             } else if (domoperator === undefined) {
-                return [domain_type].concat(Array.concat.apply([],
+                return [domain_type].concat([].concat.apply([],
                         domain.map(function(e) {
                             return this.merge(e, domain_type);
                         }.bind(this))));
             } else if (domain_type == domoperator) {
-                return Array.concat.apply([], domain.map(function(e) {
+                return [].concat.apply([], domain.map(function(e) {
                     return this.merge(e, domain_type);
                 }.bind(this)));
             } else {
