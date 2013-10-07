@@ -343,10 +343,9 @@
             this.attributes = attributes;
             this.el = jQuery('<button/>').button({
                 text: true,
-                label: attributes.string || ''
+                label: attributes.string || '',
+                icons: {primary: 'ui-icon-custom', secondary: null}
             });
-            this.img = jQuery('<img/>');
-            this.el.append(this.img);
             this.set_icon(attributes.icon);
         },
         set_icon: function(icon_name) {
@@ -355,7 +354,8 @@
             }
             var prm = Sao.common.ICONFACTORY.register_icon(icon_name);
             prm.done(function(url) {
-                this.img.attr('src', url);
+                this.el.children('.ui-button-icon-primary').css(
+                    'background-image', 'url("' + url + '")');
             }.bind(this));
         },
         set_state: function(record) {
