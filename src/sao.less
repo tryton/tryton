@@ -20,12 +20,10 @@ body {
     vertical-align: top;
     padding-right: @medium-padding;
     font-size: @medium-font-size;
-    width: 20%;
     cursor: pointer;
 }
 
 #tabs {
-    width: 100%;
     height: 100%;
 }
 
@@ -34,30 +32,40 @@ body {
 }
 
 .treeview {
-    & table.tree {
+    & > table.tree {
         width: 100%;
-        & th, td {
+        table-layout: fixed;
+
+        & > thead > tr > th, > tbody > tr > td {
             padding: @small-padding;
             line-height: @large-font-size;
+            & td {
+                padding: 0;
+                line-height: normal;
+            }
         }
-        & td {
+        & > tbody > tr > td {
             border-top: .1em solid @grey;
             cursor: pointer;
             & > * {
                 vertical-align: middle;
             }
         }
-
-        & tr:nth-child(odd) {
+        & > tbody > tr:nth-child(odd) {
             background-color: @light-grey;
         }
-        & tbody tr:hover {
+        & > tbody > tr:hover {
             background-color: @highlight;
         }
         & img.column-affix {
             width: 2em;
             height: 2em;
         }
+    }
+    & td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     & .expander {
         cursor: pointer;

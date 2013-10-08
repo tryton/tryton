@@ -315,10 +315,12 @@
             };
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var td = jQuery('<td/>');
-                td.css('text-overflow', 'ellipsis');
-                td.css('overflow', 'hidden');
-                td.css('white-space', 'nowrap');
                 td.click(click_handler.bind(this));
+                var table = jQuery('<table/>');
+                table.css('width', '100%');
+                td.append(table);
+                var row = jQuery('<tr/>');
+                table.append(row);
                 if ((i === 0) && this.children_field) {
                     var expanded = 'ui-icon-plus';
                     if (this.is_expanded()) {
@@ -328,10 +330,11 @@
                         'class': 'ui-icon ' + expanded
                     });
                     this.expander.html('&nbsp;');
-                    this.expander.css('margin-left', depth + 'em');
+                    this.expander.css('margin-left', (depth - 1) + 'em');
                     this.expander.css('float', 'left');
                     this.expander.click(this.toggle_row.bind(this));
-                    td.append(this.expander);
+                    row.append(jQuery('<td/>').append(this.expander
+                                ).css('width', 1));
                     this.record.load(this.children_field).done(
                             update_expander.bind(this));
                 }
@@ -339,12 +342,15 @@
                 var j;
                 for (j = 0; j < column.prefixes.length; j++) {
                     var prefix = column.prefixes[j];
-                    td.append(prefix.render(this.record));
+                    row.append(jQuery('<td/>').append(
+                                prefix.render(this.record)).css('width', 1));
                 }
-                td.append(column.render(this.record));
+                row.append(jQuery('<td/>').append(
+                            column.render(this.record)));
                 for (j = 0; j < column.suffixes.length; j++) {
                     var suffix = column.suffixes[j];
-                    td.append(suffix.render(this.record));
+                    row.append(jQuery('<td/>').append(
+                                suffix.render(this.record)).css('width', 1));
                 }
                 if (column.attributes.tree_invisible) {
                     td.hide();
@@ -494,7 +500,7 @@
             this.suffixes = [];
         },
         get_cell: function() {
-            var cell = jQuery('<span/>');
+            var cell = jQuery('<div/>');
             cell.addClass(this.class_);
             return cell;
         },

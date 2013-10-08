@@ -224,9 +224,11 @@ var Sao = {};
             };
             view.display = function() {
                 display.call(this);
-                view.table.find('td:nth-child(1)').hide();
+                view.table.children('tbody').children('tr'
+                    ).children('td:nth-child(1)').hide();
                 // TODO remove when shortcuts is implemented
-                view.table.find('td:nth-child(3)').hide();
+                view.table.children('tbody').children('tr'
+                    ).children('td:nth-child(3)').hide();
                 view.rows.forEach(set_select_row);
             };
             jQuery('#menu').append(

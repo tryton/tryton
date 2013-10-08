@@ -71,6 +71,7 @@
                 }));
         jQuery(tab.id).html(tab.el);
         tabs.tabs('select', tab.id);
+        jQuery(window).resize();
     };
 
     Sao.Tab.Form = Sao.class_(Sao.Tab, {

@@ -36,16 +36,31 @@ this repository contains the full copyright notices and license terms. -->
             <SPAN id="user-preferences" style="float: left;"></SPAN>
             <SPAN id="user-logout" style="float: right;"></SPAN>
         </DIV>
-        <DIV id="main" style="display: table;">
-            <DIV style="display: table-row">
-                <DIV id="menu" style="display: table-cell"></DIV>
-                <DIV id="tabs" style="display: table-cell"></DIV>
-            </DIV>
+        <DIV id="main" style="width: 100%">
+            <DIV id="menu" style="display: inline-block; overflow: hidden; width: 20%"></DIV>
+            <DIV id="tabs" style="display: inline-block;"></DIV>
         </DIV>
         <SCRIPT type="text/javascript">
             jQuery(function() {
-                Sao.login();
-            });
+                    var resize = function() {
+                        var menu = jQuery(this);
+                        var remaining_space = (menu.parent().width() -
+                            jQuery(this).outerWidth() - 5); // 5px for handler
+                        var tabs = menu.next();
+                        tabs_width = (remaining_space -
+                            (tabs.outerWidth() - tabs.width()));
+                        tabs.width(tabs_width);
+                        }
+                    jQuery('#menu').resizable({
+                        handles: 'e',
+                        resize: resize
+                        });
+                    jQuery(window).resize(function() {
+                        var menu = jQuery('#menu');
+                        resize.call(menu);
+                        });
+                    Sao.login();
+                    });
         </SCRIPT>
     </BODY>
 </HTML>
