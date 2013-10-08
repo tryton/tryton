@@ -1220,10 +1220,7 @@
                 }
             }
             return digits;
-        }
-    });
-
-    Sao.field.Float = Sao.class_(Sao.field.Number, {
+        },
         check_required: function(record) {
             var state_attrs = this.get_state_attrs(record);
             if (state_attrs.required == 1) {
@@ -1233,7 +1230,10 @@
                 }
             }
             return true;
-        },
+        }
+    });
+
+    Sao.field.Float = Sao.class_(Sao.field.Number, {
         set_client: function(record, value, force_change) {
             if (typeof value == 'string') {
                 value = Number(value);
@@ -1246,7 +1246,7 @@
         },
         get_client: function(record) {
             var value = record._values[this.name];
-            if (value) {
+            if (value || value === 0) {
                 var digits = this.digits(record);
                 return value.toFixed(digits[1]);
             } else {
@@ -1290,7 +1290,7 @@
         },
         get_client: function(record) {
             var value = record._values[this.name];
-            if (value) {
+            if (value || value === 0) {
                 return '' + value;
             } else {
                 return '';
