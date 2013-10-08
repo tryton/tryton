@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_line_out_invoice_form">
             <field name="name">Invoice Lines</field>
             <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'out_invoice'), ('invoice', '=', False)]</field>
+            <field name="domain">[('invoice_type', '=', 'out_invoice'), ('invoice', '=', None)]</field>
             <field name="context">{'invoice_type': 'out_invoice', 'standalone': True}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_line_out_invoice_form_view1">
@@ -39,7 +39,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_line_out_credit_note_form">
             <field name="name">Credit Note Lines</field>
             <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'out_credit_note'), ('invoice', '=', False)]</field>
+            <field name="domain">[('invoice_type', '=', 'out_credit_note'), ('invoice', '=', None)]</field>
             <field name="context">{'invoice_type': 'out_credit_note', 'standalone': True}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_line_out_credit_note_form_view1">
@@ -59,7 +59,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_line_in_invoice_form">
             <field name="name">Supplier Invoice Lines</field>
             <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'in_invoice'), ('invoice', '=', False)]</field>
+            <field name="domain">[('invoice_type', '=', 'in_invoice'), ('invoice', '=', None)]</field>
             <field name="context">{'invoice_type': 'in_invoice', 'standalone': True}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_line_in_invoice_form_view1">
@@ -79,7 +79,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_line_in_credit_note_form">
             <field name="name">Supplier Credit Note Lines</field>
             <field name="res_model">account.invoice.line</field>
-            <field name="domain">[('invoice_type', '=', 'in_credit_note'), ('invoice', '=', False)]</field>
+            <field name="domain">[('invoice_type', '=', 'in_credit_note'), ('invoice', '=', None)]</field>
             <field name="context">{'invoice_type': 'in_credit_note', 'standalone': True}</field>
         </record>
         <record model="ir.action.act_window.view" id="act_invoice_line_in_credit_note_form_view1">
