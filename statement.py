@@ -19,13 +19,13 @@ class Statement(Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, states=_STATES, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=_DEPENDS)
     journal = fields.Many2One('account.statement.journal', 'Journal',
         required=True,
         domain=[
-            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('company', '=', Eval('context', {}).get('company', -1)),
             ],
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines'),
