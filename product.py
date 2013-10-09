@@ -13,7 +13,7 @@ class Category:
     account_depreciation = fields.Property(fields.Many2One('account.account',
             'Account Depreciation', domain=[
                 ('kind', '=', 'other'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -26,7 +26,7 @@ class Category:
             'Account Asset',
             domain=[
                 ('kind', '=', 'expense'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -46,7 +46,7 @@ class Template:
     account_depreciation = fields.Property(fields.Many2One('account.account',
             'Account Depreciation', domain=[
                 ('kind', '=', 'other'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'readonly': ~Eval('active', True),
@@ -64,7 +64,7 @@ class Template:
             'Account Asset',
             domain=[
                 ('kind', '=', 'expense'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'readonly': ~Eval('active', True),
