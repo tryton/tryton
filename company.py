@@ -229,7 +229,7 @@ class Property:
     company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ])
 
     @classmethod
@@ -258,7 +258,7 @@ class Sequence:
     company = fields.Many2One('company.company', 'Company',
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ])
 
     @classmethod
