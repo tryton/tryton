@@ -371,7 +371,7 @@ class WinExport(object):
                             self.on_row_expanded(self.view1, iter,
                                     self.model1.get_path(iter))
                             iter = self.model1.iter_children(iter)
-                            prefix = parent + '/'
+                            prefix += parent + '/'
                             break
                         else:
                             iter = self.model1.iter_next(iter)
