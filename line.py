@@ -22,7 +22,7 @@ class Line(ModelSQL, ModelView):
     __name__ = 'timesheet.line'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
         select=True, domain=[
-            ('company', '=', Get(Eval('context', {}), 'company')),
+            ('company', '=', Eval('context', {}).get('company', -1)),
             ])
     date = fields.Date('Date', required=True, select=True)
     hours = fields.Float('Hours', digits=(16, 2), required=True)
@@ -80,7 +80,7 @@ class EnterLinesStart(ModelView):
     'Enter Lines'
     __name__ = 'timesheet.line.enter.start'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            domain=[('company', '=', Get(Eval('context', {}), 'company'))])
+            domain=[('company', '=', Eval('context', {}).get('company', -1))])
     date = fields.Date('Date', required=True)
 
     @staticmethod
