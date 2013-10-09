@@ -17,7 +17,7 @@ class Category:
     account_stock = fields.Property(fields.Many2One('account.account',
             'Account Stock', domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -27,7 +27,7 @@ class Category:
     account_stock_supplier = fields.Property(fields.Many2One('account.account',
             'Account Stock Supplier', domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -37,7 +37,7 @@ class Category:
     account_stock_customer = fields.Property(fields.Many2One('account.account',
             'Account Stock Customer', domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -48,7 +48,7 @@ class Category:
         fields.Many2One('account.account',
             'Account Stock Production', domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -58,7 +58,7 @@ class Category:
     account_stock_lost_found = fields.Property(fields.Many2One(
             'account.account', 'Account Stock Lost and Found', domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -83,7 +83,7 @@ class Template:
             'Account Stock',
             domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -99,7 +99,7 @@ class Template:
             'Account Stock Supplier',
             domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -115,7 +115,7 @@ class Template:
             'Account Stock Customer',
             domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -132,7 +132,7 @@ class Template:
             'Account Stock Production',
             domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -148,7 +148,7 @@ class Template:
             'account.account', 'Account Stock Lost and Found',
             domain=[
                 ('kind', '=', 'stock'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -201,7 +201,8 @@ class UpdateCostPriceShowMove(ModelView):
         readonly=True)
     counterpart = fields.Many2One('account.account', 'Counterpart',
         domain=[
-            ('company', 'in', [Get(Eval('context', {}), 'company'), False]),
+            ('company', 'in',
+                [Eval('context', {}).get('company', -1), None]),
             ('id', '!=', Eval('stock_account')),
             ],
         depends=['stock_account'], required=True)
