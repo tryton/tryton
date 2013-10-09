@@ -13,7 +13,7 @@ class Category:
     account_cogs = fields.Property(fields.Many2One('account.account',
             'Account Cost of Goods Sold', domain=[
                 ('kind', '!=', 'view'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': (~Eval('context', {}, ).get('company')
@@ -29,7 +29,7 @@ class Template:
     account_cogs = fields.Property(fields.Many2One('account.account',
             'Account Cost of Goods Sold', domain=[
                 ('kind', '!=', 'view'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': ((~Eval('context', {}).get('company'))
