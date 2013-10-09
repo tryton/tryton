@@ -19,7 +19,7 @@ class Configuration:
                 ('shipment', 'On Shipment'),
                 ], 'Sale Shipment Cost Method',
             states={
-                'required': Bool(Eval('context', {}).get('company', 0)),
+                'required': Bool(Eval('context', {}).get('company')),
                 }))
 
     @staticmethod
