@@ -63,7 +63,7 @@ class OrderPoint(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+                    Eval('context', {}).get('company', -1)),
             ])
     unit = fields.Function(fields.Many2One('product.uom', 'Unit'), 'get_unit')
     unit_digits = fields.Function(fields.Integer('Unit Digits'),

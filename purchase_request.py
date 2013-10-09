@@ -55,7 +55,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
             readonly=True, domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
-                    Get(Eval('context', {}), 'company', 0)),
+                    Eval('context', {}).get('company', -1)),
             ])
     origin = fields.Reference('Origin', selection='origin_get', readonly=True,
             required=True)
