@@ -16,7 +16,7 @@ class Configuration:
     shipment_drop_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Drop Shipment Sequence', domain=[
                 ('company', 'in',
-                    [Eval('context', {}).get('company'), False]),
+                    [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.drop'),
                 ], required=True))
 
@@ -35,7 +35,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     reference = fields.Char('Reference', select=1,
