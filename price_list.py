@@ -52,7 +52,7 @@ class PriceList(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ])
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
 
