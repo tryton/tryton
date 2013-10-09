@@ -13,7 +13,7 @@ class Party:
     sale_price_list = fields.Property(fields.Many2One('product.price_list',
             'Sale Price List',
             domain=[
-                ('company', '=', Eval('context', {}).get('company')),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'invisible': ~Eval('context', {}).get('company'),
