@@ -18,7 +18,7 @@ class Category:
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ], on_change=['account_expense'],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -28,7 +28,7 @@ class Category:
     account_revenue = fields.Property(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ], on_change=['account_revenue'],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -165,7 +165,7 @@ class Template:
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ], on_change=['account_category', 'account_expense'],
             states={
                 'invisible': (~Eval('context', {}).get('company')
@@ -176,7 +176,7 @@ class Template:
     account_revenue = fields.Property(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ], on_change=['account_category', 'account_revenue'],
             states={
                 'invisible': (~Eval('context', {}).get('company')
