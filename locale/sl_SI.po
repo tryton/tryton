@@ -194,7 +194,7 @@ msgstr "ID"
 
 msgctxt "field:stock.configuration,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -258,7 +258,7 @@ msgstr "Izgubljeno/najdeno"
 
 msgctxt "field:stock.inventory,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.inventory,state:"
 msgid "State"
@@ -306,7 +306,7 @@ msgstr "Količina"
 
 msgctxt "field:stock.inventory.line,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
@@ -386,7 +386,7 @@ msgstr "Količina"
 
 msgctxt "field:stock.location,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.location,right:"
 msgid "Right"
@@ -446,7 +446,7 @@ msgstr "Notranja količina"
 
 msgctxt "field:stock.move,origin:"
 msgid "Origin"
-msgstr "Vir"
+msgstr "Poreklo"
 
 msgctxt "field:stock.move,planned_date:"
 msgid "Planned Date"
@@ -466,7 +466,7 @@ msgstr "Količina"
 
 msgctxt "field:stock.move,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
@@ -530,7 +530,7 @@ msgstr "ID"
 
 msgctxt "field:stock.period,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.period,state:"
 msgid "State"
@@ -574,7 +574,7 @@ msgstr "Izdelek"
 
 msgctxt "field:stock.period.cache,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.period.cache,write_date:"
 msgid "Write Date"
@@ -606,7 +606,7 @@ msgstr "Količina"
 
 msgctxt "field:stock.product_quantities_warehouse,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.product_quantities_warehouse,write_date:"
 msgid "Write Date"
@@ -672,13 +672,17 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Promet"
 
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr "Porekla"
+
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.in,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.in,reference:"
 msgid "Reference"
@@ -748,13 +752,17 @@ msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Promet"
 
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
+msgstr "Porekla"
+
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
 msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.in.return,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -822,7 +830,7 @@ msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.internal,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
@@ -896,6 +904,10 @@ msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Promet"
 
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr "Porekla"
+
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr "Izhodni promet"
@@ -906,7 +918,7 @@ msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.out,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
@@ -992,13 +1004,17 @@ msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Promet"
 
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
+msgstr "Porekla"
+
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
 msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.out.return,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.out.return,reference:"
 msgid "Reference"
@@ -1118,7 +1134,7 @@ msgstr "Vrnjene odpremnice"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
-msgstr "Konfiguracija"
+msgstr "Konfiguracija zaloge"
 
 msgctxt "model:ir.action,name:create_shipment_out_return"
 msgid "Create Return Shipment"
@@ -1167,70 +1183,6 @@ msgstr "Dodelitev notranje odpremnice"
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Shipment Out"
 msgstr "Dodelitev odpremnice"
-
-msgctxt "model:ir.action.act_window,name:act_inventory_form"
-msgid "Inventories"
-msgstr "Popisi"
-
-msgctxt "model:ir.action.act_window,name:act_location_form"
-msgid "Locations"
-msgstr "Lokacije"
-
-msgctxt "model:ir.action.act_window,name:act_location_quantity_tree"
-msgid "Locations"
-msgstr "Lokacije"
-
-msgctxt "model:ir.action.act_window,name:act_location_tree"
-msgid "Locations"
-msgstr "Lokacije"
-
-msgctxt "model:ir.action.act_window,name:act_move_form"
-msgid "Moves"
-msgstr "Promet"
-
-msgctxt "model:ir.action.act_window,name:act_period_list"
-msgid "Periods"
-msgstr "Obdobja"
-
-msgctxt "model:ir.action.act_window,name:act_product_quantities_warehouse"
-msgid "Product Quantities By Warehouse"
-msgstr "Količine izdelkov po skladiščih"
-
-msgctxt "model:ir.action.act_window,name:act_products_by_locations"
-msgid "Products"
-msgstr "Izdelki"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_in_form"
-msgid "Supplier Shipments"
-msgstr "Prevzemnice"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_in_return_form"
-msgid "Supplier Return Shipments"
-msgstr "Vrnjene prevzemnice"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_internal_form"
-msgid "Internal Shipments"
-msgstr "Notranje odpremnice"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_out_form"
-msgid "Customer Shipments"
-msgstr "Odpremnice"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_out_form2"
-msgid "Customer Shipments"
-msgstr "Odpremnice"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_out_form3"
-msgid "Supplier Shipments"
-msgstr "Prevzemnice"
-
-msgctxt "model:ir.action.act_window,name:act_shipment_out_return_form"
-msgid "Customer Return Shipments"
-msgstr "Vrnjene odpremnice"
-
-msgctxt "model:ir.action.act_window,name:act_stock_configuration_form"
-msgid "Stock Configuration"
-msgstr "Konfiguracija"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
@@ -1355,55 +1307,6 @@ msgctxt ""
 msgid "Received"
 msgstr "Prejeto"
 
-msgctxt "model:ir.action.report,name:report_shipment_in_restocking_list"
-msgid "Restocking List"
-msgstr "Obnova zaloge"
-
-msgctxt "model:ir.action.report,name:report_shipment_internal"
-msgid "Internal Shipment"
-msgstr "Notranja odpremnica"
-
-msgctxt "model:ir.action.report,name:report_shipment_out_delivery_note"
-msgid "Delivery Note"
-msgstr "Dobavnica"
-
-msgctxt "model:ir.action.report,name:report_shipment_out_picking_list"
-msgid "Picking List"
-msgstr "Prevzemni list"
-
-msgctxt ""
-"model:ir.action.report,name:report_shipment_out_return_restocking_list"
-msgid "Restocking List"
-msgstr "Obnova zaloge"
-
-msgctxt "model:ir.action.wizard,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Izdelava vrnjene pošiljke"
-
-msgctxt "model:ir.action.wizard,name:wizard_product_by_location"
-msgid "Product by Locations"
-msgstr "Izdelek po lokacijah"
-
-msgctxt "model:ir.action.wizard,name:wizard_product_quantities_warehouse"
-msgid "Product Quantities By Warehouse"
-msgstr "Količine izdelkov po skladiščih"
-
-msgctxt "model:ir.action.wizard,name:wizard_products_by_locations"
-msgid "Products by Locations"
-msgstr "Izdelki po lokacijah"
-
-msgctxt "model:ir.action.wizard,name:wizard_shipment_in_return_assign"
-msgid "Assign Purchase Return Shipment"
-msgstr "Dodelitev vrnjene prevzemnice"
-
-msgctxt "model:ir.action.wizard,name:wizard_shipment_internal_assign"
-msgid "Assign Shipment Internal"
-msgstr "Dodelitev notranje odpremnice"
-
-msgctxt "model:ir.action.wizard,name:wizard_shipment_out_assign"
-msgid "Assign Shipment Out"
-msgstr "Dodelitev odpremnice"
-
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
 msgstr "Prevzemnica"
@@ -1514,11 +1417,11 @@ msgstr "Zaloga - vodenje"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr "Zaloga - Prisilna dodelitev"
+msgstr "Zaloga - rezervacija"
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
-msgstr "Konfiguracija"
+msgstr "Konfiguracija zaloge"
 
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
@@ -1833,8 +1736,16 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ":"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Šifra:"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
+msgstr "Terjatve do kupcev"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "E-Mail:"
@@ -1869,10 +1780,6 @@ msgid "Restocking List"
 msgstr "Obnova zaloge"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Supplier:"
-msgstr "Dobavitelj:"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
 msgstr "Na lokacijo"
 
@@ -1890,7 +1797,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
@@ -1934,7 +1841,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.move,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.move,state:"
 msgid "Draft"
@@ -1954,7 +1861,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
@@ -1974,7 +1881,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
@@ -1994,7 +1901,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
@@ -2014,7 +1921,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
@@ -2034,7 +1941,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
@@ -2058,7 +1965,7 @@ msgstr "Izdelki"
 
 msgctxt "view:stock.configuration:"
 msgid "Stock Configuration"
-msgstr "Konfiguracija"
+msgstr "Konfiguracija zaloge"
 
 msgctxt "view:stock.inventory.line:"
 msgid "Inventory Line"
@@ -2078,7 +1985,7 @@ msgstr "Preklic"
 
 msgctxt "view:stock.inventory:"
 msgid "Complete Inventory"
-msgstr "Popolni popis"
+msgstr "Izpolnitev popisa"
 
 msgctxt "view:stock.inventory:"
 msgid "Confirm"
@@ -2166,7 +2073,7 @@ msgstr "Preklic"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
@@ -2190,7 +2097,7 @@ msgstr "Preklic"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Incoming Moves"
@@ -2234,7 +2141,7 @@ msgstr "Preklic"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
@@ -2274,7 +2181,7 @@ msgstr "Vrnjene odpremnice"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
@@ -2310,7 +2217,7 @@ msgstr "Odpremnice"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Done"
-msgstr "Končano"
+msgstr "Zaključeno"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Draft"
@@ -2362,7 +2269,7 @@ msgstr "V redu"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Prisili dodelitev"
+msgstr "Rezervacija"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
 msgid "Ok"
@@ -2370,7 +2277,7 @@ msgstr "V redu"
 
 msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Prisili dodelitev"
+msgstr "Rezervacija"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
 msgid "Ok"
@@ -2378,4 +2285,4 @@ msgstr "V redu"
 
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
 msgid "Force Assign"
-msgstr "Prisili dodelitev"
+msgstr "Rezervacija"
