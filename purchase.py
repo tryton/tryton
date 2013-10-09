@@ -40,7 +40,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'], select=True)
     reference = fields.Char('Reference', size=None, readonly=True, select=True)

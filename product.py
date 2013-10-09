@@ -23,7 +23,7 @@ class Template:
         'product', 'Suppliers', states={
             'readonly': ~Eval('active', True),
             'invisible': (~Eval('purchasable', False)
-                | ~Eval('context', {}).get('company', 0)),
+                | ~Eval('context', {}).get('company')),
             }, depends=['active', 'purchasable'])
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
             'readonly': ~Eval('active'),
@@ -155,7 +155,7 @@ class ProductSupplier(ModelSQL, ModelView):
         ondelete='CASCADE', select=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ])
     delivery_time = fields.Integer('Delivery Time', help="In number of days")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
