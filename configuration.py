@@ -13,7 +13,7 @@ class Configuration:
     __name__ = 'sale.configuration'
     sale_opportunity_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Opportunity Reference Sequence', domain=[
-                ('company', 'in', [Eval('context', {}).get('company', 0),
+                ('company', 'in', [Eval('context', {}).get('company', -1),
                         None]),
                 ('code', '=', 'sale.opportunity'),
                 ], required=True))
