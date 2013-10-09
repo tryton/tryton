@@ -19,7 +19,7 @@ class Party:
     account_payable = fields.Property(fields.Many2One('account.account',
             'Account Payable', domain=[
                 ('kind', '=', 'payable'),
-                ('company', '=', Eval('context', {}).get('company')),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'required': Bool(Eval('context', {}).get('company')),
@@ -28,7 +28,7 @@ class Party:
     account_receivable = fields.Property(fields.Many2One('account.account',
             'Account Receivable', domain=[
                 ('kind', '=', 'receivable'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'required': Bool(Eval('context', {}).get('company')),
@@ -37,7 +37,7 @@ class Party:
     customer_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
             'Customer Tax Rule',
             domain=[
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ('kind', 'in', ['sale', 'both']),
                 ],
             states={
@@ -46,7 +46,7 @@ class Party:
     supplier_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
             'Supplier Tax Rule',
             domain=[
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ('kind', 'in', ['purchase', 'both']),
                 ],
             states={

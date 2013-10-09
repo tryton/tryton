@@ -15,14 +15,14 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
         'account.account', 'Default Account Receivable',
         domain=[
                 ('kind', '=', 'receivable'),
-                ('company', '=', Eval('context', {}).get('company')),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ]),
         'get_account', setter='set_account')
     default_account_payable = fields.Function(fields.Many2One(
         'account.account', 'Default Account Payable',
         domain=[
                 ('kind', '=', 'payable'),
-                ('company', '=', Eval('context', {}).get('company')),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ]),
         'get_account', setter='set_account')
 

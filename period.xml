@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_period_form">
             <field name="name">Periods</field>
             <field name="res_model">account.period</field>
-            <field name="domain">[('fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="domain">[('fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_period_form_view1">
             <field name="sequence" eval="10"/>
@@ -71,7 +71,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_period_form2">
             <field name="name">Periods</field>
             <field name="res_model">account.period</field>
-            <field name="domain">[('state', 'in', ['open']), ('fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="domain">[('state', 'in', ['open']), ('fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_period_form2_view1">
             <field name="sequence" eval="10"/>

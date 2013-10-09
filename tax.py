@@ -593,7 +593,7 @@ class Tax(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ], select=True)
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
@@ -983,7 +983,7 @@ class TaxRule(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ])
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')

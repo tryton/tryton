@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_form">
             <field name="name">Account Moves</field>
             <field name="res_model">account.move</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]</field>
             <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_move_form_view1">

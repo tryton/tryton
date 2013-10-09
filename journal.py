@@ -102,27 +102,27 @@ class Journal(ModelSQL, ModelView):
             domain=[('code', '=', 'account.journal')],
             context={'code': 'account.journal'},
             states={
-                'required': Bool(Eval('context', {}).get('company', 0)),
+                'required': Bool(Eval('context', {}).get('company', -1)),
                 }))
     credit_account = fields.Property(fields.Many2One('account.account',
             'Default Credit Account', domain=[
                 ('kind', '!=', 'view'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'required': ((Eval('type') == 'cash')
-                    & Bool(Eval('context', {}).get('company', 0))),
-                'invisible': ~Eval('context', {}).get('company', 0),
+                    & Bool(Eval('context', {}).get('company', -1))),
+                'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))
     debit_account = fields.Property(fields.Many2One('account.account',
             'Default Debit Account', domain=[
                 ('kind', '!=', 'view'),
-                ('company', '=', Eval('context', {}).get('company', 0)),
+                ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
                 'required': ((Eval('type') == 'cash')
-                    & Bool(Eval('context', {}).get('company', 0))),
-                'invisible': ~Eval('context', {}).get('company', 0),
+                    & Bool(Eval('context', {}).get('company', -1))),
+                'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))
 
     @classmethod

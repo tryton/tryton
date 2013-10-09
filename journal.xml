@@ -222,7 +222,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_period_tree">
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree_view1">
             <field name="sequence" eval="10"/>
@@ -234,7 +234,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_period_tree2">
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
-            <field name="domain">[('state', '!=', 'close'), ('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="domain">[('state', '!=', 'close'), ('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_tree2_view1">
             <field name="sequence" eval="10"/>
@@ -269,7 +269,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_journal_period_form">
             <field name="name">Journals - Periods</field>
             <field name="res_model">account.journal.period</field>
-            <field name="domain">[('period.fiscalyear.company.id', '=', Get(Eval('context', {}), 'company', False))]</field>
+            <field name="domain">[('period.fiscalyear.company.id', '=', Eval('context', {}).get('company', -1))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_journal_period_form_view1">
             <field name="sequence" eval="10"/>

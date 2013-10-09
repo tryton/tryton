@@ -48,7 +48,7 @@ class FiscalYear(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ], select=True)
 
     @classmethod
@@ -328,14 +328,14 @@ class BalanceNonDeferralStart(ModelView):
         required=True,
         domain=[
             ('kind', '!=', 'view'),
-            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('company', '=', Eval('context', {}).get('company', -1)),
             ('deferral', '=', True),
             ])
     debit_account = fields.Many2One('account.account', 'Debit Account',
         required=True,
         domain=[
             ('kind', '!=', 'view'),
-            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('company', '=', Eval('context', {}).get('company', -1)),
             ('deferral', '=', True),
             ])
 
