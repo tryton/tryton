@@ -50,7 +50,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     reference = fields.Char("Reference", size=None, select=True,
@@ -485,7 +485,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     code = fields.Char("Code", size=None, select=True, readonly=True)
@@ -791,7 +791,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
@@ -1323,7 +1323,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
@@ -1763,7 +1763,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     code = fields.Char("Code", size=None, select=True, readonly=True)

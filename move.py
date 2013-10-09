@@ -194,7 +194,7 @@ class Move(Workflow, ModelSQL, ModelView):
             },
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['state'])
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),

@@ -19,7 +19,7 @@ class Period(Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
-                Get(Eval('context', {}), 'company', 0)),
+                Eval('context', {}).get('company', -1)),
             ])
     caches = fields.One2Many('stock.period.cache', 'period', 'Caches',
         readonly=True)
