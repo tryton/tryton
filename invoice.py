@@ -62,7 +62,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         states=_STATES, select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=_DEPENDS)
     type = fields.Selection(_TYPE, 'Type', select=True, on_change=['type',
@@ -123,7 +123,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
     account = fields.Many2One('account.account', 'Account', required=True,
         states=_STATES, depends=_DEPENDS + ['type'],
         domain=[
-            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('company', '=', Eval('context', {}).get('company', -1)),
             If(Eval('type').in_(['out_invoice', 'out_credit_note']),
                 ('kind', '=', 'receivable'),
                 ('kind', '=', 'payable')),
@@ -1461,7 +1461,7 @@ class InvoiceLine(ModelSQL, ModelView):
             },
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', 0)),
+                Eval('context', {}).get('company', -1)),
             ],
         depends=['invoice'], select=True)
 
@@ -1513,7 +1513,7 @@ class InvoiceLine(ModelSQL, ModelView):
     account = fields.Many2One('account.account', 'Account',
         domain=[
             ('company', '=', Eval('_parent_invoice', {}).get('company',
-                    Eval('context', {}).get('company', 0))),
+                    Eval('context', {}).get('company', -1))),
             If(Bool(Eval('_parent_invoice')),
                 If(Eval('_parent_invoice', {}).get('type').in_(['out_invoice',
                     'out_credit_note']),
@@ -2470,7 +2470,7 @@ class PayInvoiceAsk(ModelView):
     account_writeoff = fields.Many2One('account.account', 'Write-Off Account',
         domain=[
             ('kind', '!=', 'view'),
-            ('company', '=', Eval('context', {}).get('company', 0)),
+            ('company', '=', Eval('context', {}).get('company', -1)),
             ],
         states={
             'invisible': Eval('type') != 'writeoff',
