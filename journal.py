@@ -111,7 +111,7 @@ class Journal(ModelSQL, ModelView):
                 ],
             states={
                 'required': ((Eval('type') == 'cash')
-                    & Bool(Eval('context', {}).get('company', -1))),
+                    & (Eval('context', {}).get('company', -1) != -1)),
                 'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))
     debit_account = fields.Property(fields.Many2One('account.account',
@@ -121,7 +121,7 @@ class Journal(ModelSQL, ModelView):
                 ],
             states={
                 'required': ((Eval('type') == 'cash')
-                    & Bool(Eval('context', {}).get('company', -1))),
+                    & (Eval('context', {}).get('company', -1) != -1)),
                 'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))
 
