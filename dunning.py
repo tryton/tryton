@@ -63,7 +63,7 @@ class Dunning(ModelSQL, ModelView):
                 Eval('context', {}).get('company', -1)),
             ],
         states=_STATES, depends=_DEPENDS)
-    line = fields.Many2One('account.move.line', 'Line',
+    line = fields.Many2One('account.move.line', 'Line', required=True,
         domain=[
             ('account.kind', '=', 'receivable'),
             ('account.company', '=', Eval('company', -1)),
@@ -106,6 +106,14 @@ class Dunning(ModelSQL, ModelView):
     second_currency_digits = fields.Function(fields.Integer(
             'Second Currency Digits'), 'get_second_currency_digits')
 
+    @classmethod
+    def __setup__(cls):
+        super(Dunning, cls).__setup__()
+        cls._sql_constraints = [
+            ('line_unique', 'UNIQUE(line)',
+                'Line can be used only once on dunning.'),
+            ]
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -129,30 +137,26 @@ class Dunning(ModelSQL, ModelView):
         return [('line.' + name,) + tuple(clause[1:])]
 
     def get_amount(self, name):
-        if self.line:
-            return self.line.debit - self.line.credit
+        return self.line.debit - self.line.credit
 
     def get_amount_second_currency(self, name):
-        if self.line:
-            amount = self.line.debit - self.line.credit
-            if self.line.amount_second_currency:
-                return self.line.amount_second_currency.copy_sign(amount)
-            else:
-                return amount
+        amount = self.line.debit - self.line.credit
+        if self.line.amount_second_currency:
+            return self.line.amount_second_currency.copy_sign(amount)
+        else:
+            return amount
 
     def get_second_currency(self, name):
-        if self.line:
-            if self.line.second_currency:
-                return self.line.second_currency.id
-            else:
-                return self.line.account.company.currency.id
+        if self.line.second_currency:
+            return self.line.second_currency.id
+        else:
+            return self.line.account.company.currency.id
 
     def get_second_currency_digits(self, name):
-        if self.line:
-            if self.line.second_currency:
-                return self.line.second_currency.digits
-            else:
-                return self.line.account.company.currency.digits
+        if self.line.second_currency:
+            return self.line.second_currency.digits
+        else:
+            return self.line.account.company.currency.digits
 
     @classmethod
     def search_active(cls, name, clause):
