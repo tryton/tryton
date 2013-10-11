@@ -811,6 +811,9 @@ class Main(object):
         return _MAIN[0]
 
     def favorite_set(self):
+        if not self.menu_screen:
+            return
+
         def _action_favorite(widget, id_):
             Action.exec_keyword('tree_open', {
                 'model': self.menu_screen.model_name,
