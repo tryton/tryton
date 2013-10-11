@@ -1344,12 +1344,16 @@
             });
         },
         display: function(record, field) {
-            this.date.datepicker('option', 'dateFormat',
-                    this.get_format(record, field));
-            // Button must be set after changing any option
-            this._set_button();
+            if (record && field) {
+                this.date.datepicker('option', 'dateFormat',
+                        this.get_format(record, field));
+                // Button must be set after changing any option
+                this._set_button();
+            }
             Sao.View.Form.Date._super.display.call(this, record, field);
-            this.date.val(record.field_get_client(this.field_name));
+            if (record) {
+                this.date.val(record.field_get_client(this.field_name));
+            }
         },
         set_value: function(record, field) {
             field.set_client(record, this.date.val());
