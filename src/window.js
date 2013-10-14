@@ -167,6 +167,7 @@
 
             switch_prm.done(function() {
                 this.el.dialog({
+                    modal: true,
                     autoOpen: false,
                     buttons: buttons,
                     title: '' // this.screen.current_view
@@ -356,6 +357,7 @@
             });
 
             this.el.dialog({
+                modal: true,
                 title: 'Search',  // TODO translate
                 autoOpen: false,
                 buttons: buttons
@@ -443,6 +445,7 @@
             });
 
             this.el.dialog({
+                modal: true,
                 title: 'Preferences',  // TODO translate
                 autoOpen: false,
                 buttons: buttons
