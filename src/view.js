@@ -705,6 +705,7 @@
             this.widgets = {};
             this.widget_id = 0;
             this.state_widgets = [];
+            this.containers = [];
             var root = xml.children()[0];
             var container = this.parse(screen.model, root);
             this.el.append(container.el);
@@ -713,6 +714,7 @@
             if (container === undefined) {
                 container = new Sao.View.Form.Container(
                     Number(node.getAttribute('col') || 4));
+                this.containers.push(container);
             }
             var _parse = function(index, child) {
                 var attributes = {};
@@ -725,6 +727,12 @@
                         attributes[name] = attributes[name] == 1;
                     }
                 });
+                ['yexpand', 'yfill', 'xexpand', 'xfill', 'colspan'].forEach(
+                        function(name) {
+                            if (attributes[name]) {
+                                attributes[name] = Number(attributes[name]);
+                            }
+                        });
                 switch (child.tagName) {
                     case 'image':
                         // TODO
@@ -782,17 +790,17 @@
             }
             var separator = new Sao.View.Form.Separator(text, attributes);
             this.state_widgets.push(separator);
-            container.add(
-                    Number(node.getAttribute('colspan') || 1),
-                    separator);
+            container.add(attributes, separator);
         },
         _parse_label: function(model, node, container, attributes) {
             var name = attributes.name;
             var text = attributes.string;
+            if (attributes.xexpand === undefined) {
+                attributes.xexpand = 0;
+            }
             if (name in model.fields) {
                 if (name == this.screen.exclude_field) {
-                    container.add(
-                            Number(node.getAttribute('colspan') || 1));
+                    container.add(attributes);
                     return;
                 }
                 if (!attributes.states && (name in model.fields)) {
@@ -814,26 +822,20 @@
                 label = new Sao.View.Form.Label(text, attributes);
                 this.state_widgets.push(label);
             }
-            container.add(
-                    Number(node.getAttribute('colspan') || 1),
-                    label);
+            container.add(attributes, label);
             // TODO help
         },
         _parse_button: function(node, container, attributes) {
             var button = new Sao.common.Button(attributes);
             this.state_widgets.push(button);
-            container.add(
-                    Number(node.getAttribute('colspan') || 1),
-                    button);
+            container.add(attributes, button);
             button.el.click(button, this.button_clicked.bind(this));
             // TODO help
         },
         _parse_notebook: function(model, node, container, attributes) {
             var notebook = new Sao.View.Form.Notebook(attributes);
             this.state_widgets.push(notebook);
-            container.add(
-                    Number(node.getAttribute('colspan') || 1),
-                    notebook);
+            container.add(attributes, notebook);
             this.parse(model, node, notebook);
         },
         _parse_page: function(model, node, container, attributes) {
@@ -857,8 +859,7 @@
         _parse_field: function(model, node, container, attributes) {
             var name = attributes.name;
             if (!(name in model.fields) || name == this.screen.exclude_field) {
-                container.add(
-                        Number(node.getAttribute('colspan') || 1));
+                container.add(attributes);
                 return;
             }
             if (!attributes.widget) {
@@ -880,17 +881,14 @@
             var WidgetFactory = Sao.View.form_widget_get(
                     attributes.widget);
             if (!WidgetFactory) {
-                container.add(
-                    Number(node.getAttribute('colspan') || 1));
+                container.add(attributes);
                 return;
             }
             var widget = new WidgetFactory(name, model, attributes);
             widget.position = this.widget_id += 1;
             widget.view = this;
             // TODO expand, fill, help, height, width
-            container.add(
-                    Number(node.getAttribute('colspan') || 1),
-                    widget);
+            container.add(attributes, widget);
             if (this.widgets[name] === undefined) {
                 this.widgets[name] = [];
             }
@@ -901,9 +899,7 @@
             var group = new Sao.View.Form.Group(attributes);
             group.add(this.parse(model, node));
             this.state_widgets.push(group);
-            container.add(
-                    Number(node.getAttribute('colspan') || 1),
-                    group);
+            container.add(attributes, group);
         },
         display: function() {
             var record = this.screen.current_record;
@@ -962,9 +958,14 @@
                         return p;
                     })
                 ).done(function() {
-                    for (var j in this.state_widgets) {
+                    var j;
+                    for (j in this.state_widgets) {
                         var state_widget = this.state_widgets[j];
                         state_widget.set_state(record);
+                    }
+                    for (j in this.containers) {
+                        var container = this.containers[j];
+                        container.resize();
                     }
                 }.bind(this));
         },
@@ -1008,17 +1009,27 @@
         init: function(col) {
             if (col === undefined) col = 4;
             this.col = col;
-            this.el = jQuery('<table/>');
+            this.el = jQuery('<table/>', {
+                'class': 'form-container'
+            });
             this.add_row();
         },
         add_row: function() {
             this.el.append(jQuery('<tr/>'));
         },
-        row: function() {
-            return this.el.children().children('tr').last();
+        rows: function() {
+            return this.el.children().children('tr');
         },
-        add: function(colspan, widget) {
+        row: function() {
+            return this.rows().last();
+        },
+        add: function(attributes, widget) {
+            var colspan = attributes.colspan;
             if (colspan === undefined) colspan = 1;
+            var xfill = attributes.xfill;
+            if (xfill === undefined) xfill = 1;
+            var xexpand = attributes.xexpand;
+            if (xexpand === undefined) xexpand = 1;
             var len = 0;
             var row = this.row();
             row.children().map(function(i, e) {
@@ -1032,9 +1043,57 @@
             if (widget) {
                 el = widget.el;
             }
-            var cell = row.append(jQuery('<td/>', {
-                'colspan': colspan
-            }).append(el));
+            var cell = jQuery('<td/>', {
+                'colspan': colspan,
+                'class': widget ? widget.class_ || '' : ''
+            }).append(el);
+            if (xexpand) {
+                cell.addClass('xexpand');
+            }
+            if (xfill) {
+                cell.addClass('xfill');
+                if (xexpand && el) {
+                    el.css('width', '100%');
+                }
+            }
+            row.append(cell);
+        },
+        resize: function() {
+            var rows = this.rows();
+            var widths = [];
+            var col = this.col;
+            rows.map(function() {
+                var row = jQuery(this);
+                var xexpands = [];
+                row.children().map(function(i) {
+                    var cell = jQuery(this);
+                    if (cell.hasClass('xexpand') &&
+                        (cell.children().css('display') != 'none')) {
+                        xexpands.push(cell);
+                    }
+                });
+                var width = 100 / xexpands.length;
+                for (var i = 0; i < col; i++) {
+                    if (!widths[i]) {
+                        widths[i] = width;
+                    } else {
+                        widths[i] = Math.min(widths[i], width);
+                    }
+                }
+            });
+            rows.map(function() {
+                var row = jQuery(this);
+                row.children().map(function(i) {
+                    var cell = jQuery(this);
+                    if (cell.hasClass('xexpand') &&
+                        (cell.children().css('display') != 'none')) {
+                        cell.css('width', widths[i] + '%');
+                    }
+                    if (cell.children().css('display') == 'none') {
+                        cell.hide();
+                    }
+                });
+            });
         }
     });
 
@@ -1083,11 +1142,12 @@
     });
 
     Sao.View.Form.Label = Sao.class_(StateWidget, {
+        class_: 'form-label',
         init: function(text, attributes) {
             Sao.View.Form.Label._super.init.call(this, attributes);
             this.el = jQuery('<label/>', {
                 text: text,
-                'class': 'form-label'
+                'class': this.class_
             });
         },
         set_state: function(record) {
@@ -1104,10 +1164,11 @@
     });
 
     Sao.View.Form.Notebook = Sao.class_(StateWidget, {
+        class_: 'form-notebook',
         init: function(attributes) {
             Sao.View.Form.Notebook._super.init.call(this, attributes);
             this.el = jQuery('<div/>', {
-                'class': 'form-notebook'
+                'class': this.class_
             });
             this.el.append(jQuery('<ul/>'));
             this.el.tabs();
@@ -1134,10 +1195,11 @@
     });
 
     Sao.View.Form.Group = Sao.class_(StateWidget, {
+        class_: 'form-group',
         init: function(attributes) {
             Sao.View.Form.Group._super.init.call(this, attributes);
             this.el = jQuery('<div/>', {
-                'class': 'form-group'
+                'class': this.class_
             });
         },
         add: function(widget) {
@@ -1313,11 +1375,12 @@
     });
 
     Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-date',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': 'form-date'
+                'class': this.class_
             });
             this.date = jQuery('<input/>', {
                 'type': 'input'
@@ -1416,11 +1479,12 @@
     });
 
     Sao.View.Form.Selection = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-selection',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Selection._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<select/>', {
-                'class': 'form-selection'
+                'class': this.class_
             });
             this.el.change(this.focus_out.bind(this));
             Sao.common.selection_mixin.init.call(this);
@@ -1524,12 +1588,13 @@
     });
 
     Sao.View.Form.Boolean = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-boolean',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Boolean._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<input/>', {
                 'type': 'checkbox',
-                'class': 'form-boolean'
+                'class': this.class_
             });
             this.el.change(this.focus_out.bind(this));
         },
@@ -1548,11 +1613,12 @@
     });
 
     Sao.View.Form.Text = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-text',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Text._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<textarea/>', {
-                'class': 'form-text'
+                'class': this.class_
             });
             this.el.change(this.focus_out.bind(this));
         },

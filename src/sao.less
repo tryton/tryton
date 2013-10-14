@@ -96,12 +96,25 @@ body {
 }
 
 .form {
+    width: 100%;
+    & > .form-container {
+        width: 100%;
+    }
+    & td.xexpand {
+        width: 100%;
+        &.xfill > div > .form-container {
+            width: 100%;
+        }
+    }
+    & td.form-label {
+        text-align: right;
+        white-space: nowrap;
+    }
     & .form-one2many-menu, .form-one2many-content,
     .form-many2many-menu, .form-many2many-content {
         border: 1px solid rgb(170, 170, 170);
         border-radius: 4px;
     }
-
     & .form-one2many-menu, .form-many2many-menu {
         overflow: auto;
         & .form-one2many-string, .form-many2many-string {
