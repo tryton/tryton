@@ -178,6 +178,7 @@ class TrytondConfig(Config):
         super(TrytondConfig, self).__init__()
         from trytond.config import CONFIG
         CONFIG.update_etc(config_file)
+        CONFIG.set_timezone()
         if database_type is not None:
             CONFIG['db_type'] = database_type
         from trytond.pool import Pool
