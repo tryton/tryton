@@ -1049,6 +1049,7 @@
             }).append(el);
             if (xexpand) {
                 cell.addClass('xexpand');
+                cell.css('width', '100%');
             }
             if (xfill) {
                 cell.addClass('xfill');
@@ -1062,6 +1063,7 @@
             var rows = this.rows();
             var widths = [];
             var col = this.col;
+            var has_expand = false;
             rows.map(function() {
                 var row = jQuery(this);
                 var xexpands = [];
@@ -1070,6 +1072,7 @@
                     if (cell.hasClass('xexpand') &&
                         (cell.children().css('display') != 'none')) {
                         xexpands.push(cell);
+                        has_expand = true;
                     }
                 });
                 var width = 100 / xexpands.length;
@@ -1091,9 +1094,16 @@
                     }
                     if (cell.children().css('display') == 'none') {
                         cell.hide();
+                    } else {
+                        cell.show();
                     }
                 });
             });
+            if (has_expand) {
+                this.el.css('width', '100%');
+            } else {
+                this.el.css('width', '');
+            }
         }
     });
 
