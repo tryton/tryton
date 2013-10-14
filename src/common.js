@@ -1684,4 +1684,60 @@
     });
 
     Sao.common.ICONFACTORY = new Sao.common.IconFactory();
+
+    Sao.common.UniqueDialog = Sao.class_(Object, {
+        init: function() {
+            this.running = false;
+        },
+        build_dialog: function() {
+        },
+        run: function() {
+            if (this.running) {
+                return;
+            }
+            var args = Array.slice(arguments);
+            var prm = jQuery.Deferred();
+            args.push(prm);
+            var dialog = this.build_dialog.apply(this, args);
+            this.running = true;
+            dialog.dialog('open');
+            return prm;
+        },
+        close: function(dialog) {
+            dialog.dialog('close');
+            this.running = false;
+        }
+    });
+
+    Sao.common.MessageDialog = Sao.class_(Sao.common.UniqueDialog, {
+        class_: 'message-dialog',
+        build_dialog: function(message, icon, prm) {
+            var dialog = jQuery('<div/>', {
+                'class': this.class_
+            });
+            dialog.append(jQuery('<p/>')
+                .text(message)
+                .prepend(jQuery('<span/>', {
+                    'class': 'dialog-icon'
+                }).append(jQuery('<span/>', {
+                    'class': 'ui-icon ' + icon
+                }))));
+            dialog.dialog({
+                modal: true,
+                autoOpen: false,
+                buttons: {
+                    'OK': function() {
+                        this.close(dialog);
+                        prm.resolve('ok');
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        },
+        run: function(message, icon) {
+            Sao.common.MessageDialog._super.run.call(
+                    this, message, icon || 'ui-icon-info');
+        }
+    });
+    Sao.common.message = new Sao.common.MessageDialog();
 }());

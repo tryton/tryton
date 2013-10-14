@@ -7,6 +7,78 @@
         init: function() {
             this.buttons = {};
         },
+        create_tabcontent: function() {
+            this.el = jQuery('<div/>', {
+                'class': this.class_
+            });
+
+            var title = this.make_title_bar();
+            this.el.append(title);
+
+            var toolbar = this.create_toolbar();
+            this.el.append(toolbar);
+        },
+        make_title_bar: function() {
+            var title = jQuery('<div/>', {
+                'class': 'tab-title-bar ui-widget-header ui-corner-all'
+            });
+
+            var menu = this.set_menu();
+            title.append(menu);
+            title.append(jQuery('<button/>', {
+                'class': 'tab-title'
+            }).button({
+                label: this.name,
+                text: true,
+                icons: {
+                    primary: 'ui-icon-triangle-1-s'
+                }
+            }).click(function() {
+                menu.toggle().position({
+                    my: 'left top',
+                    at: 'left bottom',
+                    of: jQuery(this)
+                });
+                // Bind hide after the processing of the current click
+                window.setTimeout(function() {
+                    jQuery(document).one('click', function() {
+                        menu.hide();
+                    });
+                }, 0);
+            }));
+
+            this.status = jQuery('<span/>', {
+                'class': 'tab-status'
+            });
+            title.append(this.status);
+
+            this.info = jQuery('<span/>', {
+                'class': 'tab-info'
+            });
+            title.append(this.info);
+            return title;
+        },
+        set_menu: function() {
+            var menu = jQuery('<ul/>');
+            this.menu_def.forEach(function(definition) {
+                var icon = definition[0];
+                var name = definition[1];
+                var func = definition[2];
+                var item = jQuery('<li/>').append(
+                    jQuery('<a/>').append(jQuery('<span/>', {
+                        'class': 'ui-icon ' + icon
+                    })).append(name));
+                menu.append(item);
+                item.click(function() {
+                    this[func]();
+                }.bind(this));
+            }.bind(this));
+            menu.menu({}).hide().css({
+                position: 'absolute',
+                'z-index': 100
+            });
+            return menu;
+        },
         create_toolbar: function() {
             var toolbar = jQuery('<div/>', {
                 'class': 'ui-widget-header ui-corner-all'
@@ -30,6 +102,14 @@
             };
             this.toolbar_def.forEach(add_button.bind(this));
             return toolbar;
+        },
+        close: function() {
+            var tabs = jQuery('#tabs > div');
+            // TODO check modified
+            tabs.tabs('remove', this.id);
+            if (!tabs.find('> ul').children().length) {
+                tabs.remove();
+            }
         }
     });
 
@@ -63,11 +143,7 @@
                         jQuery(this).css('cursor', 'default');
                     })
                 .click(function() {
-                    // TODO check modified
-                    tabs.tabs('remove', tab.id);
-                    if (!tabs.find('> ul').children().length) {
-                        tabs.remove();
-                    }
+                    tab.close();
                 }));
         jQuery(tab.id).html(tab.el);
         tabs.tabs('select', tab.id);
@@ -75,6 +151,7 @@
     };
 
     Sao.Tab.Form = Sao.class_(Sao.Tab, {
+        class_: 'tab-form',
         init: function(model_name, attributes) {
             Sao.Tab.Form._super.init.call(this);
             var screen = new Sao.Screen(model_name, attributes);
@@ -82,12 +159,8 @@
             this.screen = screen;
             this.attributes = jQuery.extend({}, attributes);
             this.name = attributes.name; // XXX use screen current view title
-            var el = jQuery('<div/>', {
-                'class': 'tab-form'
-            });
-            // TODO title
-            var toolbar = this.create_toolbar();
-            el.append(toolbar);
+
+            this.create_tabcontent();
 
             var access = Sao.common.MODELACCESS.get(model_name);
             [['new', 'create'], ['save', 'write']].forEach(function(e) {
@@ -96,11 +169,10 @@
                 this.buttons[button].prop('disabled', !access[access_type]);
             }.bind(this));
 
-            this.el = el;
             this.view_prm = this.screen.switch_view().done(function() {
-                el.append(screen.screen_container.el);
+                this.el.append(screen.screen_container.el);
                 screen.search_filter();
-            });
+            }.bind(this));
         },
         // TODO translate labels
         toolbar_def: [
@@ -114,6 +186,23 @@
             ['next', 'ui-icon-arrowthick-1-e', 'Next', 'Next Record', 'next'],
             ['attach', 'ui-icon-pin-w', 'Attachment',
             'Add an attachment to the record', 'attach']
+            ],
+        menu_def: [
+            ['ui-icon-document', 'New', 'new_'],
+            ['ui-icon-disk', 'Save', 'save'],
+            ['ui-icon-arrow-4-diag', 'Switch', 'switch_'],
+            ['ui-icon-refresh', 'Reload/Undo', 'reload'],
+            ['ui-icon-copy', 'Duplicate', 'copy'],
+            ['ui-icon-trash', 'Delete', 'delete_'],
+            ['ui-icon-arrowthick-1-w', 'Previous', 'previous'],
+            ['ui-icon-arrowthick-1-e', 'Next', 'next'],
+            ['ui-icon-search', 'Search', 'search'],
+            ['ui-icon-clock', 'View Logs', 'logs'],
+            ['ui-icon-circle-close', 'Close Tab', 'close'],
+            ['ui-icon-pin-w', 'Attachment', 'attach'],
+            ['ui-icon-gear', 'Action', 'action'],
+            ['ui-icon-arrowreturn-1-e', 'Relate', 'relate'],
+            ['ui-icon-print', 'Print', 'print']
             ],
         create_toolbar: function() {
             var toolbar = Sao.Tab.Form._super.create_toolbar.call(this);
@@ -131,7 +220,7 @@
                 ].forEach(function(menu_action) {
                     var button = jQuery('<button/>').button({
                         id: menu_action[0],
-                        text: menu_action[2],
+                        text: true,
                         icons: {
                             primary: menu_action[1],
                             secondary: 'ui-icon-triangle-1-s'
@@ -140,19 +229,19 @@
                     });
                     buttons[menu_action[0]] = button;
                     toolbar.append(button);
-                    var menu = jQuery('<ul/>').menu({}).hide().css({
-                        position: 'absolute'
-                    });
+                    var menu = jQuery('<ul/>');
                     button.click(function() {
                         menu.toggle().position({
                             my: 'left top',
                             at: 'left bottom',
                             of: button
                         });
-                        jQuery(document).one('click', function() {
-                            menu.hide();
-                        });
-                        return false;
+                        // Bind hide after the processing of the current click
+                        window.setTimeout(function() {
+                            jQuery(document).one('click', function() {
+                                menu.hide();
+                            });
+                        }, 0);
                     });
 
                     toolbars[menu_action[0]].forEach(function(action) {
@@ -172,6 +261,10 @@
                             Sao.Action.exec_action(exec_action, data,
                                 screen.context);
                         });
+                    });
+                    menu.menu({}).hide().css({
+                        position: 'absolute',
+                        'z-index': 100
                     });
                     toolbar.append(menu);
                 });
@@ -227,6 +320,25 @@
                 // TODO activate_save
             }.bind(this));
         },
+        copy: function() {
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
+                return;
+            }
+            if (!this.modified_save()) {
+                return;
+            }
+            this.screen.copy();
+            // TODO message
+        },
+        delete_: function() {
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']) {
+                return;
+            }
+            // TODO popup
+            this.screen.remove(true, false, true).done(function() {
+                // TODO message
+            });
+        },
         previous: function() {
             if (!this.modified_save()) {
                 return;
@@ -240,6 +352,53 @@
             }
             this.screen.display_next();
             // TODO message and activate_save
+        },
+        search: function() {
+            var search_entry = this.screen.screen_container.search_entry;
+            if (search_entry.is(':visible')) {
+                window.setTimeout(function() {
+                    search_entry.focus();
+                }, 0);
+            }
+        },
+        logs: function() {
+            var record = this.screen.current_record;
+            if ((!record) || (record.id < 0)) {
+                // TODO message
+                return;
+            }
+            // TODO translation
+            var fields = [
+                ['id', 'ID:'],
+                ['create_uid.rec_name', 'Creation User:'],
+                ['create_date', 'Creation Date:'],
+                ['write_uid.rec_name', 'Latest Modification by:'],
+                ['write_date', 'Latest Modification Date:']
+                ];
+
+            this.screen.model.execute('read', [[record.id],
+                    fields.map(function(field) {
+                        return field[0];
+                    })], this.screen.context)
+            .then(function(result) {
+                result = result[0];
+                var message = '';
+                fields.forEach(function(field) {
+                    var key = field[0];
+                    var label = field[1];
+                    var value = result[key] || '/';
+                    if (result[key] &&
+                        ~['create_date', 'write_date'].indexOf(key)) {
+                        value = Sao.common.format_datetime(
+                            Sao.common.date_format(),
+                            '%H:%M:%S',
+                            value);
+                    }
+                    message += label + ' ' + value + '\n';
+                });
+                message += 'Model: ' + this.screen.model.name;
+                Sao.common.message.run(message);
+            }.bind(this));
         },
         attach: function() {
             var record = this.screen.current_record;
@@ -274,6 +433,15 @@
             var record_id = this.screen.get_id();
             this.buttons.attach.prop('disabled',
                 record_id < 0 || record_id === null);
+        },
+        action: function() {
+            this.buttons.action.click();
+        },
+        relate: function() {
+            this.buttons.relate.click();
+        },
+        print: function() {
+            this.buttons.print.click();
         }
     });
 }());

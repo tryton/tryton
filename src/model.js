@@ -57,6 +57,15 @@
             });
             // TODO reload ids
             return this.execute('delete', [record_ids], context);
+        },
+        copy: function(records, context) {
+            if (jQuery.isEmptyObject(records)) {
+                return jQuery.when();
+            }
+            var record_ids = records.map(function(record) {
+                return record.id;
+            });
+            return this.execute('copy', [record_ids, {}], context);
         }
     });
 

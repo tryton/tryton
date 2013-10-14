@@ -31,6 +31,18 @@ body {
     padding: @medium-padding @small-padding;
 }
 
+.tab-title-bar {
+    padding: @medium-padding @medium-padding;
+}
+
+.tab-title .ui-button-text {
+    font-size: @large-font-size;
+}
+
+.tab-status, .tab-info {
+    float: right;
+}
+
 .treeview {
     & > table.tree {
         width: 100%;
@@ -108,5 +120,15 @@ body {
 button {
     & .ui-icon-custom {
         background-size: 16px 16px;
+    }
+}
+
+.message-dialog {
+    & .dialog-icon {
+        display: table-cell;
+    }
+    & p {
+        display: table;
+        white-space: pre;
     }
 }

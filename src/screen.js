@@ -491,7 +491,6 @@
             });
         },
         remove: function(delete_, remove, force_remove) {
-            var result = jQuery.Deferred();
             var records = null;
             if ((this.current_view.view_type == 'form') &&
                     this.current_record) {
@@ -507,7 +506,7 @@
                 // TODO delete children before parent
                 prm = this.model.delete_(records);
             }
-            prm.done(function() {
+            return prm.then(function() {
                 records.forEach(function(record) {
                     record.group.remove(record, remove, true, force_remove);
                 });
@@ -531,12 +530,20 @@
                 // TODO set current_record
                 this.set_current_record(null);
                 // TODO set_cursor
-                jQuery.when.apply(jQuery, prms).done(function() {
+                return jQuery.when.apply(jQuery, prms).then(function() {
                     this.display();
-                    result.resolve();
                 }.bind(this));
             }.bind(this));
-            return result;
+        },
+        copy: function() {
+            var records = this.current_view.selected_records();
+            return this.model.copy(records, this.context).then(function(new_ids) {
+                this.group.load(new_ids);
+                if (!jQuery.isEmptyObject(new_ids)) {
+                    this.set_current_record(this.group.get(new_ids[0]));
+                }
+                this.display();
+            }.bind(this));
         },
         search_active: function(active) {
             if (active && !this.group.parent) {
