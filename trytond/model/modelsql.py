@@ -1446,9 +1446,9 @@ class ModelSQL(ModelStorage):
 
                 if isinstance(domain[i][2], basestring):
                     # get the ids of the records of the "distant" resource
-                    ids2 = [x[0] for x in field_obj.search([
-                        ('rec_name', domain[i][1], domain[i][2]),
-                        ], order=[])]
+                    ids2 = field_obj.search([
+                            ('rec_name', domain[i][1], domain[i][2]),
+                            ], order=[])
                 else:
                     ids2 = domain[i][2]
 
@@ -1503,9 +1503,9 @@ class ModelSQL(ModelStorage):
                     target_obj = field.get_target()
                 if domain[i][1] in ('child_of', 'not child_of'):
                     if isinstance(domain[i][2], basestring):
-                        ids2 = [x[0] for x in target_obj.search([
-                            ('rec_name', 'ilike', domain[i][2]),
-                            ], order=[])]
+                        ids2 = target_obj.search([
+                                ('rec_name', 'ilike', domain[i][2]),
+                                ], order=[])
                     elif not isinstance(domain[i][2], list):
                         ids2 = [domain[i][2]]
                     else:
