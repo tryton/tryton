@@ -104,6 +104,18 @@ body {
         text-align: right;
         white-space: nowrap;
     }
+    & .form-many2one {
+        & button {
+            float: right;
+        }
+        & div {
+            overflow: hidden;
+            & input {
+                width: 100%;
+                boxing-sizing: border-box;
+            }
+        }
+    }
     & .form-one2many-menu, .form-one2many-content,
     .form-many2many-menu, .form-many2many-content {
         border: 1px solid rgb(170, 170, 170);

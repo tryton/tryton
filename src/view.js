@@ -1659,7 +1659,7 @@
                 'type': 'input'
             });
             this.entry.on('keyup', this.key_press.bind(this));
-            this.el.append(this.entry);
+            this.el.append(jQuery('<div/>').append(this.entry));
             this.but_open = jQuery('<button/>').button({
                 'icons': {
                     'primary': 'ui-icon-search'
@@ -1667,7 +1667,7 @@
                 'text': false
             });
             this.but_open.click(this.edit.bind(this));
-            this.el.append(this.but_open);
+            this.el.prepend(this.but_open);
             this.but_new = jQuery('<button/>').button({
                 'icons': {
                     'primary': 'ui-icon-document'
@@ -1675,7 +1675,7 @@
                 'text': false
             });
             this.but_new.click(this.new_.bind(this));
-            this.el.append(this.but_new);
+            this.el.prepend(this.but_new);
             // TODO autocompletion
         },
         _get_color_el: function() {
