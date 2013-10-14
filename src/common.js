@@ -1695,7 +1695,7 @@
             if (this.running) {
                 return;
             }
-            var args = Array.slice(arguments);
+            var args = Array.prototype.slice.call(arguments);
             var prm = jQuery.Deferred();
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
