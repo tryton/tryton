@@ -219,11 +219,11 @@ class Party(ModelSQL, ModelView):
         http://sima-pc.com/nif.php
         '''
         if not HAS_VATNUMBER:
-            return True
+            return
         vat_number = self.vat_number
 
         if not self.vat_country:
-            return True
+            return
 
         if not getattr(vatnumber, 'check_vat_' +
                 self.vat_country.lower())(vat_number):
