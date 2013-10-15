@@ -131,7 +131,7 @@ class Rule(ModelSQL, ModelView):
             try:
                 value = safe_eval(rule.domain, ctx)
             except Exception:
-                return False
+                cls.raise_user_error('invalid_domain', (rule.rec_name,))
             if not isinstance(value, list):
                 cls.raise_user_error('invalid_domain', (rule.rec_name,))
             else:
