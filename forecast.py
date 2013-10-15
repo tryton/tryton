@@ -164,7 +164,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
     def check_date_overlap(self):
         cursor = Transaction().cursor
         if self.state != 'done':
-            return True
+            return
         forcast = self.__table__()
         cursor.execute(*forcast.select(forcast.id,
                 where=(((forcast.from_date <= self.from_date)
