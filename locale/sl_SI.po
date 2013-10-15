@@ -380,6 +380,10 @@ msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Številka"
 
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "Porekla"
+
 msgctxt "field:account.invoice,party:"
 msgid "Party"
 msgstr "Stranka"
@@ -394,11 +398,11 @@ msgstr "Postavke plačila"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
@@ -466,7 +470,7 @@ msgstr "Postavka plačila"
 
 msgctxt "field:account.invoice-account.move.line,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice-account.move.line,write_date:"
 msgid "Write Date"
@@ -538,7 +542,7 @@ msgstr "Opomba"
 
 msgctxt "field:account.invoice.line,origin:"
 msgid "Origin"
-msgstr "Vir"
+msgstr "Poreklo"
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
@@ -562,11 +566,11 @@ msgstr "Količina"
 
 msgctxt "field:account.invoice.line,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.line,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
@@ -614,7 +618,7 @@ msgstr "Postavka računa"
 
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
@@ -742,11 +746,11 @@ msgstr "Postavke"
 
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.payment_term,write_date:"
 msgid "Write Date"
@@ -802,7 +806,7 @@ msgstr "Število mesecev"
 
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
-msgstr "Plačilni pogoj"
+msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term.line,percentage:"
 msgid "Percentage"
@@ -810,11 +814,11 @@ msgstr "Odstotek"
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.payment_term.line,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
@@ -886,15 +890,15 @@ msgstr "Ročno"
 
 msgctxt "field:account.invoice.tax,rec_name:"
 msgid "Name"
-msgstr "Ident"
+msgstr "Ime"
 
 msgctxt "field:account.invoice.tax,sequence:"
 msgid "Sequence"
-msgstr "Štetje"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
-msgstr "Številka štetja"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
@@ -938,11 +942,11 @@ msgstr "Račun"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr "Plačilni pogoji za kupca"
+msgstr "Plačilni rok kupca"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr "Plačilni pogoji dobavitelja"
+msgstr "Plačilni rok dobavitelja"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
@@ -982,11 +986,11 @@ msgstr "Plačilo računa"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Plačilni pogoj"
+msgstr "Plačilni rok"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr "Postavka plačilnega pogoja"
+msgstr "Postavka plačilnega roka"
 
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
@@ -1022,7 +1026,7 @@ msgstr "Računi"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni roki"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
@@ -1039,34 +1043,6 @@ msgstr "Račun"
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr "Plačilo računa"
-
-msgctxt "model:ir.action.act_window,name:act_invoice_form"
-msgid "Invoices"
-msgstr "Računi"
-
-msgctxt "model:ir.action.act_window,name:act_invoice_form2"
-msgid "Invoices"
-msgstr "Računi"
-
-msgctxt "model:ir.action.act_window,name:act_invoice_in_credit_note_form"
-msgid "Supplier Credit Notes"
-msgstr "Prejeti dobropisi"
-
-msgctxt "model:ir.action.act_window,name:act_invoice_in_invoice_form"
-msgid "Supplier Invoices"
-msgstr "Prejeti računi"
-
-msgctxt "model:ir.action.act_window,name:act_invoice_out_credit_note_form"
-msgid "Credit Notes"
-msgstr "Dobropisi"
-
-msgctxt "model:ir.action.act_window,name:act_invoice_out_invoice_form"
-msgid "Invoices"
-msgstr "Računi"
-
-msgctxt "model:ir.action.act_window,name:act_payment_term_form"
-msgid "Payment Terms"
-msgstr "Plačilni pogoji"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_credit_note_domain_all"
@@ -1148,22 +1124,6 @@ msgctxt ""
 msgid "Validated"
 msgstr "Odobreni"
 
-msgctxt "model:ir.action.report,name:report_invoice"
-msgid "Invoice"
-msgstr "Račun"
-
-msgctxt "model:ir.action.wizard,name:credit"
-msgid "Credit"
-msgstr "Kredit"
-
-msgctxt "model:ir.action.wizard,name:print"
-msgid "Invoice"
-msgstr "Račun"
-
-msgctxt "model:ir.action.wizard,name:wizard_pay"
-msgid "Pay Invoice"
-msgstr "Plačilo računa"
-
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "Račun"
@@ -1190,11 +1150,15 @@ msgstr "Računi"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni roki"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni roki"
+
+msgctxt "odt:account.invoice:"
+msgid ":"
+msgstr ":"
 
 msgctxt "odt:account.invoice:"
 msgid "Amount"
@@ -1250,7 +1214,7 @@ msgstr "Račun št."
 
 msgctxt "odt:account.invoice:"
 msgid "Payment Term"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni rok"
 
 msgctxt "odt:account.invoice:"
 msgid "Phone:"
@@ -1267,6 +1231,10 @@ msgstr "Predračun"
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
 msgstr "Količina"
+
+msgctxt "odt:account.invoice:"
+msgid "Reference"
+msgstr "Sklic"
 
 msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
@@ -1530,19 +1498,19 @@ msgstr "Plačilo računa"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
-msgstr "Postavka plačilnega pogoja"
+msgstr "Postavka plačilnega roka"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Lines"
-msgstr "Postavke plačilnih pogojev"
+msgstr "Postavke plačilnih rokov"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni rok"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Terms"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni roki"
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "Print Invoice"
@@ -1638,7 +1606,7 @@ msgstr "Postavke plačila"
 
 msgctxt "view:party.party:"
 msgid "Payment Terms"
-msgstr "Plačilni pogoji"
+msgstr "Plačilni roki"
 
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
