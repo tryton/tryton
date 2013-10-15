@@ -144,7 +144,7 @@ class Uom(ModelSQL, ModelView):
     def check_factor_and_rate(self):
         "Check coherence between factor and rate"
         if self.rate == self.factor == 0.0:
-            return True
+            return
         if (self.rate != round(
                     1.0 / self.factor, self.__class__.rate.digits[1])
                 and self.factor != round(
