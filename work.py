@@ -75,11 +75,7 @@ class Work:
     @classmethod
     def validate(cls, works):
         super(Work, cls).validate(works)
-        cls.check_recursion(works)
-
-    @classmethod
-    def check_recursion(cls, records, parent='successors'):
-        return super(Work, cls).check_recursion(records, parent=parent)
+        cls.check_recursion(works, parent='successors')
 
     @staticmethod
     def default_leveling_delay():
