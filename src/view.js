@@ -1398,12 +1398,21 @@
             this.date = jQuery('<input/>', {
                 'type': 'input'
             });
-            this.el.append(this.date);
+            this.el.append(jQuery('<div/>').append(this.date));
             this.date.datepicker({
-                showOn: 'button'
+                showOn: 'none'
             });
             this.date.change(this.focus_out.bind(this));
-            this._set_button();
+            this.button = jQuery('<button/>').button({
+                'icons': {
+                    'primary': 'ui-icon-calendar'
+                },
+                'text': false
+            });
+            this.el.prepend(this.button);
+            this.button.click(function() {
+                this.date.datepicker('show');
+            }.bind(this));
         },
         _get_color_el: function() {
             return this.date;
@@ -1411,20 +1420,10 @@
         get_format: function(record, field) {
             return Sao.common.date_format();
         },
-        _set_button: function() {
-            this.date.next('button').text('').button({
-                icons: {
-                    primary: 'ui-icon-calendar'
-                },
-                text: false
-            });
-        },
         display: function(record, field) {
             if (record && field) {
                 this.date.datepicker('option', 'dateFormat',
                         this.get_format(record, field));
-                // Button must be set after changing any option
-                this._set_button();
             }
             Sao.View.Form.Date._super.display.call(this, record, field);
             if (record) {
@@ -1446,15 +1445,11 @@
                     this._get_time());
                 this.date.datepicker('option', 'dateFormat',
                     Sao.common.date_format() + time);
-                // Button must be set after changing any option
-                this._set_button();
                 this.date.prop('disabled', true);
             }.bind(this));
             this.date.datepicker('option', 'onClose', function() {
                 this.date.prop('disabled', false);
             }.bind(this));
-            // Button must be set after changing any option
-            this._set_button();
         },
         _get_time: function() {
             return Sao.common.parse_datetime(Sao.common.date_format(),
@@ -1947,11 +1942,12 @@
     });
 
     Sao.View.Form.Reference = Sao.class_(Sao.View.Form.Many2One, {
+        class_: 'form-reference',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Reference._super.init.call(this, field_name, model,
                 attributes);
             this.select = jQuery('<select/>');
-            this.el.prepend('-');
+            this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
             this.select.change(this.select_changed.bind(this));
             Sao.common.selection_mixin.init.call(this);
@@ -2600,18 +2596,20 @@
                 'class': this.class_
             });
 
+            var inputs = jQuery('<div/>');
+            this.el.append(inputs);
             if (this.filename && attributes.filename_visible) {
                 this.text = jQuery('<input/>', {
                     type: 'input'
                 });
                 this.text.change(this.focus_out.bind(this));
                 this.text.on('keyup', this.key_press.bind(this));
-                this.el.append(this.text);
+                inputs.append(this.text);
             }
             this.size = jQuery('<input/>', {
                 type: 'input'
             });
-            this.el.append(this.size);
+            inputs.append(this.size);
 
             this.but_new = jQuery('<button/>').button({
                 icons: {
@@ -2620,7 +2618,7 @@
                 text: false
             });
             this.but_new.click(this.new_.bind(this));
-            this.el.append(this.but_new);
+            this.el.prepend(this.but_new);
 
             if (this.filename) {
                 this.but_open = jQuery('<a/>').button({
@@ -2630,7 +2628,7 @@
                     text: false
                 });
                 this.but_open.click(this.open.bind(this));
-                this.el.append(this.but_open);
+                this.el.prepend(this.but_open);
             }
 
             this.but_save_as = jQuery('<button/>').button({
@@ -2640,7 +2638,7 @@
                 text: false
             });
             this.but_save_as.click(this.save_as.bind(this));
-            this.el.append(this.but_save_as);
+            this.el.prepend(this.but_save_as);
 
             this.but_remove = jQuery('<button/>').button({
                 icons: {
@@ -2649,7 +2647,7 @@
                 text: false
             });
             this.but_remove.click(this.remove.bind(this));
-            this.el.append(this.but_remove);
+            this.el.prepend(this.but_remove);
         },
         filename_field: function() {
             var record = this.record();

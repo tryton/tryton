@@ -104,7 +104,7 @@ body {
         text-align: right;
         white-space: nowrap;
     }
-    & .form-many2one {
+    & .form-many2one, .form-date, .form-binary, .form-reference {
         & button {
             float: right;
         }
@@ -114,6 +114,9 @@ body {
                 width: 100%;
                 boxing-sizing: border-box;
             }
+        }
+        & select, span {
+            float: left;
         }
     }
     & .form-one2many-menu, .form-one2many-content,
