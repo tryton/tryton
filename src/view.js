@@ -833,6 +833,9 @@
             // TODO help
         },
         _parse_notebook: function(model, node, container, attributes) {
+            if (attributes.colspan === undefined) {
+                attributes.colspan = 4;
+            }
             var notebook = new Sao.View.Form.Notebook(attributes);
             this.state_widgets.push(notebook);
             container.add(attributes, notebook);
