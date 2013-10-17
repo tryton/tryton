@@ -1063,43 +1063,95 @@
             row.append(cell);
         },
         resize: function() {
-            var rows = this.rows();
+            var rows = this.rows().toArray();
             var widths = [];
             var col = this.col;
             var has_expand = false;
-            rows.map(function() {
-                var row = jQuery(this);
+            var i, j;
+            var get_xexpands = function(row) {
+                row = jQuery(row);
                 var xexpands = [];
-                row.children().map(function(i) {
+                i = 0;
+                row.children().map(function() {
                     var cell = jQuery(this);
+                    var colspan = Math.min(Number(cell.attr('colspan')), col);
                     if (cell.hasClass('xexpand') &&
+                        (!jQuery.isEmptyObject(cell.children())) &&
                         (cell.children().css('display') != 'none')) {
-                        xexpands.push(cell);
-                        has_expand = true;
+                        xexpands.push([cell, i]);
                     }
+                    i += colspan;
                 });
-                var width = 100 / xexpands.length;
-                for (var i = 0; i < col; i++) {
-                    if (!widths[i]) {
-                        widths[i] = width;
-                    } else {
-                        widths[i] = Math.min(widths[i], width);
-                    }
+                return xexpands;
+            };
+            // Sort rows to compute first the most constraining row
+            // which are the one with the more xexpand cells
+            // and with the less colspan
+            rows.sort(function(a, b) {
+                a = get_xexpands(a);
+                b = get_xexpands(b);
+                if (a.length == b.length) {
+                    var reduce = function(previous, current) {
+                        var cell = current[0];
+                        var colspan = Math.min(
+                            Number(cell.attr('colspan')), col);
+                        return previous + colspan;
+                    };
+                    return a.reduce(reduce, 0) - b.reduce(reduce, 0);
+                } else {
+                    return b.length - a.length;
                 }
             });
-            rows.map(function() {
-                var row = jQuery(this);
-                row.children().map(function(i) {
+            rows.forEach(function(row) {
+                row = jQuery(row);
+                var xexpands = get_xexpands(row);
+                var width = 100 / xexpands.length;
+                xexpands.forEach(function(e) {
+                    var cell = e[0];
+                    i = e[1];
+                    var colspan = Math.min(Number(cell.attr('colspan')), col);
+                    var current_width = 0;
+                    for (j = 0; j < colspan; j++) {
+                        current_width += widths[i + j] || 0;
+                    }
+                    for (j = 0; j < colspan; j++) {
+                        if (!current_width) {
+                            widths[i + j] = width / colspan;
+                        } else if (current_width > width) {
+                            // Split proprotionally the difference over all cells
+                            // following their current width
+                            var diff = current_width - width;
+                            if (widths[i + j]) {
+                                widths[i + j] -= (diff /
+                                    (current_width / widths[i + j]));
+                            }
+                        }
+                    }
+                });
+                if (!jQuery.isEmptyObject(xexpands)) {
+                    has_expand = true;
+                }
+            });
+            rows.forEach(function(row) {
+                row = jQuery(row);
+                i = 0;
+                row.children().map(function() {
                     var cell = jQuery(this);
+                    var colspan = Math.min(Number(cell.attr('colspan')), col);
                     if (cell.hasClass('xexpand') &&
                         (cell.children().css('display') != 'none')) {
-                        cell.css('width', widths[i] + '%');
+                        var width = 0;
+                        for (j = 0; j < colspan; j++) {
+                            width += widths[i + j] || 0;
+                        }
+                        cell.css('width', width + '%');
                     }
                     if (cell.children().css('display') == 'none') {
                         cell.hide();
                     } else {
                         cell.show();
                     }
+                    i += colspan;
                 });
             });
             if (has_expand) {
