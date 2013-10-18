@@ -17,14 +17,16 @@ msgstr ""
 " facturas confirmadas en este año fiscal."
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund a supplier invoice/credit note."
-msgstr ""
-"No puede pagar con una devolución una factura de proveedor o nota de crédito"
-" de cliente."
-
-msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr "No puede pagar con la factura de devolución «%s» porque tiene pagos."
+
+msgctxt "error:account.invoice.credit:"
+msgid ""
+"You can not credit with refund invoice \"%s\" because it is a supplier "
+"invoice/credit note."
+msgstr ""
+"No puede abonar con devolución la factura «%s» porque es una factura de "
+"proveedor."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
@@ -98,6 +100,10 @@ msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
 msgstr "La línea «%(line)s» del término de pago «%(term)s» no es correcto."
 
 msgctxt "error:account.invoice.payment_term:"
+msgid "Last line of payment term \"%s\" must be of type remainder."
+msgstr "La última línea del plazo de pago «%s» debe ser de tipo remanente."
+
+msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr "Falta la línea de resto en el término de pago «%s»."
 
@@ -147,6 +153,10 @@ msgstr ""
 "está confirmada o pagada."
 
 msgctxt "error:account.invoice:"
+msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
+msgstr "No se puede cancelar la factura «%s» porque ya está confirmada."
+
+msgctxt "error:account.invoice:"
 msgid ""
 "Invoice \"%(invoice)s\" uses the same account \"%(account)s\" for the "
 "invoice and in line \"%(line)s\"."
@@ -187,24 +197,24 @@ msgid ""
 "The credit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
 msgstr ""
-"La cuenta haber del diario «%(journal)s» tiene la misma cuenta de la factura"
-" «%(invoice)s»."
+"La cuenta crédito del diario «%(journal)s» tiene la misma cuenta de la "
+"factura «%(invoice)s»."
 
 msgctxt "error:account.invoice:"
 msgid "The credit account on journal %s\" is missing."
-msgstr "Falta la cuenta haber del diario «%s»."
+msgstr "Falta la cuenta crédito del diario «%s»."
 
 msgctxt "error:account.invoice:"
 msgid ""
 "The debit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
 msgstr ""
-"La cuenta debe del diario «%(journal)s» tiene la misma cuenta de la factura "
-"«%(invoice)s»."
+"La cuenta débito del diario «%(journal)s» tiene la misma cuenta de la "
+"factura «%(invoice)s»."
 
 msgctxt "error:account.invoice:"
 msgid "The debit account on journal \"%s\" is missing."
-msgstr "Falta la cuenta debe del diario «%s»."
+msgstr "Falta la cuenta débito del diario «%s»."
 
 msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
@@ -317,15 +327,15 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr "Fecha divisa"
+msgstr "Fecha moneda"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -370,6 +380,10 @@ msgstr "Asiento"
 msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Número"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "Origen"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -497,11 +511,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
@@ -637,19 +651,19 @@ msgstr "Empresa"
 
 msgctxt "field:account.invoice.pay.ask,currency:"
 msgid "Payment Currency"
-msgstr "Divisa de pago"
+msgstr "Moneda de pago"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr "Decimales divisa de pago"
+msgstr "Decimales moneda de pago"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr "Decimales divisa de desajuste"
+msgstr "Decimales moneda de desajuste"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
-msgstr "Divisa de desajuste"
+msgstr "Moneda de desajuste"
 
 msgctxt "field:account.invoice.pay.ask,id:"
 msgid "ID"
@@ -685,11 +699,11 @@ msgstr "Importe"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -761,11 +775,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.invoice.payment_term.line,day:"
 msgid "Day of Month"
@@ -952,7 +966,7 @@ msgid "Invoice - Payment Line"
 msgstr "Factura - Línea de pago"
 
 msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice Init"
+msgid "Credit Invoice"
 msgstr "Inicialización factura reembolso"
 
 msgctxt "model:account.invoice.line,name:"
@@ -1144,6 +1158,10 @@ msgid "Payment Terms"
 msgstr "Términos de pago"
 
 msgctxt "odt:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "odt:account.invoice:"
 msgid "Amount"
 msgstr "Importe"
 
@@ -1214,6 +1232,10 @@ msgstr "Factura pro forma"
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
 msgstr "Cantidad"
+
+msgctxt "odt:account.invoice:"
+msgid "Reference"
+msgstr "Referencia"
 
 msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
@@ -1298,6 +1320,10 @@ msgstr "Nota de crédito de proveedor"
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
 msgstr "Factura de proveedor"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"
@@ -1561,7 +1587,7 @@ msgstr "_Confirmar"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr "Importe divisa secundaria"
+msgstr "Importe moneda secundaria"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
