@@ -14,6 +14,14 @@ msgstr ""
 "Chaque travail doit être dans la même société que son parent mais "
 "\"%(child)s\" et \"%(parent)s\" ont des sociétés différentes."
 
+msgctxt "error:timesheet.work:"
+msgid ""
+"You can not unset \"Available on timesheets\" for work \"%s\" because it "
+"already has  timesheets."
+msgstr ""
+"Vous ne pouvez pas enlever \"Disponible sur les feuilles de présence\" pour "
+"le travail \"%s\" parce qu'il a déjà des feuilles de présences."
+
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -216,7 +224,7 @@ msgstr "Créé par"
 
 msgctxt "field:timesheet.work,hours:"
 msgid "Timesheet Hours"
-msgstr "Heures"
+msgstr "Heures de présence"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
@@ -248,7 +256,7 @@ msgstr "Disponible sur les feuilles de présence"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr "Fin feuille de présence"
+msgstr "Fin de feuille de présence"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid ""
@@ -256,7 +264,7 @@ msgstr ""
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr "Début feuille de présence"
+msgstr "Début de feuille de présence"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -280,11 +288,11 @@ msgstr "Date de fin"
 
 msgctxt "help:timesheet.work,hours:"
 msgid "Total time spent on this work"
-msgstr "Temps total passé sur cette activité"
+msgstr "Temps total passé sur ce travail"
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
-msgstr "Autoriser cette activité sur les feuilles de présence"
+msgstr "Autoriser ce travail sur les feuilles de présence"
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -304,7 +312,7 @@ msgstr "Nombre d'heures par employé par semaine"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Entrer la feuille de présence"
+msgstr "Entrer feuille de présence"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
@@ -316,23 +324,23 @@ msgstr "Lignes de feuille de présence"
 
 msgctxt "model:ir.action,name:act_open_work"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "model:ir.action,name:act_open_work_graph"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "model:ir.action,name:act_work_form2"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "model:ir.action,name:act_work_form3"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "model:ir.action,name:act_work_hours_board"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -364,7 +372,7 @@ msgstr "Heures par employé par semaine"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Entrer la feuille de présence"
+msgstr "Entrer feuille de présence"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
@@ -388,7 +396,7 @@ msgstr "Travaux"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree2"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
@@ -424,7 +432,7 @@ msgstr "Travail"
 
 msgctxt "model:timesheet.work.open.start,name:"
 msgid "Open Work"
-msgstr "Ouvrir la tâche"
+msgstr "Ouvrir le travail"
 
 msgctxt "view:timesheet.hours_employee.open.start:"
 msgid "Hours per Employee"
@@ -448,7 +456,7 @@ msgstr "Nombre d'heures par employé par semaine"
 
 msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
-msgstr "Entrer la feuille de présence"
+msgstr "Entrer feuille de présence"
 
 msgctxt "view:timesheet.line:"
 msgid "Hours"
@@ -464,11 +472,11 @@ msgstr "Lignes de feuille de présence"
 
 msgctxt "view:timesheet.work.open.start:"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"
-msgstr "Heures par activité"
+msgstr "Heures par travail"
 
 msgctxt "view:timesheet.work:"
 msgid "Work"
