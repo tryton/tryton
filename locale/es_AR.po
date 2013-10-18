@@ -8,7 +8,7 @@ msgstr "Método asignación costo del transportista"
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
-msgstr "Costo unitario de envío"
+msgstr "Costo unitario de Remito"
 
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
@@ -20,11 +20,11 @@ msgstr "Costo"
 
 msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
-msgstr "Divisa del costo"
+msgstr "Moneda del costo"
 
 msgctxt "field:stock.shipment.in,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Dígitos de divisa del costo"
+msgstr "Dígitos de moneda del costo"
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
