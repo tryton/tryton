@@ -20,7 +20,7 @@ msgstr "Demandes de production"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
-msgstr "Créer des demandes de production"
+msgstr "Créer les demandes de production"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
@@ -28,11 +28,11 @@ msgstr "Générer les demandes de production"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
-msgstr "Créer des demandes de production"
+msgstr "Créer les demandes de production"
 
 msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
-msgstr "Créer des demandes de production"
+msgstr "Créer les demandes de production"
 
 msgctxt "model:res.user,name:user_generate_request"
 msgid "Cron Production Request"
@@ -44,11 +44,11 @@ msgstr "Production"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Request"
-msgstr "Créer des demandes de production"
+msgstr "Créer les demandes de production"
 
 msgctxt "view:production.create_request.start:"
 msgid "Create Production Request?"
-msgstr "Créer des demandes de production ?"
+msgstr "Créer les demandes de production ?"
 
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
