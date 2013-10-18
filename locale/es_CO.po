@@ -47,7 +47,7 @@ msgstr ""
 
 msgctxt "error:purchase.purchase:"
 msgid "Missing \"Account Payable\" on party \"%s\"."
-msgstr "Falta \"Cuenta por Pagar\" en el tercero \"%s\"."
+msgstr "Falta la \"Cuenta por Pagar\" en el tercero \"%s\"."
 
 msgctxt "error:purchase.purchase:"
 msgid "Purchase \"%s\" must be cancelled before deletion."
@@ -144,7 +144,7 @@ msgstr "Recrear Movimientos"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Subtotal"
 
 msgctxt "field:purchase.line,create_date:"
 msgid "Create Date"
@@ -244,7 +244,7 @@ msgstr "Dígitos de Unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
-msgstr "Precio unitario"
+msgstr "Precio Unitario"
 
 msgctxt "field:purchase.line,write_date:"
 msgid "Write Date"
@@ -372,7 +372,7 @@ msgstr "Moneda"
 
 msgctxt "field:purchase.product_supplier,delivery_time:"
 msgid "Delivery Time"
-msgstr "Tiempo de Envío"
+msgstr "Tiempo de Entrega"
 
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
@@ -500,7 +500,7 @@ msgstr "Facturas Ignoradas"
 
 msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
-msgstr "Facturas recreadas"
+msgstr "Facturas Recreadas"
 
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
@@ -560,7 +560,7 @@ msgstr "Impuesto"
 
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
-msgstr "Impuestos Precalculado"
+msgstr "Caché de Impuestos"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
@@ -739,7 +739,7 @@ msgstr "En número de días."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
-msgstr "Cantidad mínima."
+msgstr "Cantidad mínima"
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -761,6 +761,10 @@ msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
 msgstr "Compras"
 
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
+msgid "Purchases"
+msgstr "Compras"
+
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Devolución"
@@ -775,11 +779,11 @@ msgstr "Compra"
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Excepció Manual de Factura"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar Excepción de Envío"
+msgstr "Excepción Manual de Envío"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
@@ -814,7 +818,7 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr "Compras"
+msgstr "Gestión de Compras"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
@@ -838,7 +842,7 @@ msgstr "Configuración de Compras"
 
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Excepción Manual de Factura"
 
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
@@ -894,7 +898,7 @@ msgstr "Administrador de Compras"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Subtotal"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Date:"
@@ -960,10 +964,9 @@ msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
 msgstr "NIT:"
 
-#, fuzzy
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
-msgstr "Punto de Orden"
+msgstr ""
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
@@ -1039,7 +1042,7 @@ msgstr "Ninguno"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
-msgstr "Recibida"
+msgstr "Recibido"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
@@ -1055,7 +1058,7 @@ msgstr "Confirmada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
-msgstr "Realizada"
+msgstr "Hecha"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
@@ -1065,10 +1068,9 @@ msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Cotización"
 
-#, fuzzy
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid ""
-msgstr "Punto de Orden"
+msgstr ""
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
@@ -1096,7 +1098,7 @@ msgstr "Seleccione facturas a recrear"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Excepción Manual de Factura"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
@@ -1104,7 +1106,7 @@ msgstr "Seleccione movimientos a recrear"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Handle shipment Exception"
-msgstr "Gestionar Excepción de Envío"
+msgstr "Excepción Manual de Envío"
 
 msgctxt "view:purchase.line:"
 msgid "General"
@@ -1156,11 +1158,11 @@ msgstr "Borrador"
 
 msgctxt "view:purchase.purchase:"
 msgid "Handle Invoice Exception"
-msgstr "Gestionar Excepción de Factura"
+msgstr "Excepción Manual de Factura"
 
 msgctxt "view:purchase.purchase:"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar Excepción de Envío"
+msgstr "Excepción Manual de Envío"
 
 msgctxt "view:purchase.purchase:"
 msgid "Invoices"
