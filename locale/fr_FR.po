@@ -10,6 +10,10 @@ msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
 msgstr "L'opportunité de vente \"%s\" doit être annulée avant sa suppression."
 
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Reference Sequence"
+msgstr "Séquence de référence d'opportunité"
+
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
 msgstr "Adresse"
@@ -85,6 +89,10 @@ msgstr "Probabilité de conversion"
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "Référence"
 
 msgctxt "field:sale.opportunity,sale:"
 msgid "Sale"
@@ -520,11 +528,11 @@ msgstr "Opportunités par employé"
 
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr "Opportunités"
+msgstr "Prospects et opportunités"
 
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr "Contacts commerciaux / Opportunités de vente"
+msgstr "Prospects / Opportunités de ventes"
 
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
@@ -548,7 +556,7 @@ msgstr "Convertie"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
 msgid "Leads"
-msgstr "Leads"
+msgstr "Prospects"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
@@ -560,6 +568,14 @@ msgctxt ""
 msgid "Opportunities"
 msgstr "Opportunités"
 
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Opportunité de vente"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Opportunité de vente"
+
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
 msgstr "Opportunités par employé par mois"
@@ -570,7 +586,7 @@ msgstr "Opportunités par employé"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr "Contacts et opportunités de vente"
+msgstr "Prospects et opportunités"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
@@ -666,7 +682,7 @@ msgstr "Ligne de contact / Opportunité de vente"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
-msgstr "Lignes de contacts / Opportunités de vente"
+msgstr "Lignes de prospects / opportunités de vente"
 
 msgctxt "view:sale.opportunity:"
 msgid "Cancel"
@@ -694,7 +710,7 @@ msgstr "Contact commercial / Opportunité de vente"
 
 msgctxt "view:sale.opportunity:"
 msgid "Sales Leads/Opportunities"
-msgstr "Contacts commerciaux / Opportunités"
+msgstr "Prospects / Opportunités de ventes"
 
 msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
