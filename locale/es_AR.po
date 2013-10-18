@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.account.deferral:"
 msgid "Deferral must be unique by account and fiscal year"
-msgstr "El aplazamiento debe ser único por cuenta y ejercicio fiscal."
+msgstr "El cierre debe ser único por cuenta y ejercicio fiscal."
 
 msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
-msgstr "No puede modificar los registros de cuentas aplazadas."
+msgstr "No puede modificar los registros del cierre contable."
 
 msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
@@ -161,16 +161,6 @@ msgstr ""
 "No puede conciliar el apunte «%s» porque no está en un estado correcto."
 
 msgctxt "error:account.move:"
-msgid ""
-"Move \"%(move)s\" cannot be created because there is already a move in "
-"journal \"%(journal)s\" and you cannot create more than one move per period "
-"in a centralized journal."
-msgstr ""
-"No se puede crear el asiento «%(move)s» porque ya hay un asiento en el "
-"diario «%(journal)s» y no puede crear más de un asiento por período en un "
-"diario centralizado."
-
-msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
 "No puede crear líneas de las cuentas de diferentes empresas en el asiento "
@@ -309,11 +299,11 @@ msgstr "Haber"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
@@ -321,11 +311,11 @@ msgstr "Debe"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
-msgstr "Aplazar"
+msgstr "Cierre"
 
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
-msgstr "Aplazadas"
+msgstr "Cierres"
 
 msgctxt "field:account.account,id:"
 msgid "ID"
@@ -365,7 +355,7 @@ msgstr "Derecha"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr "Divisa secundaria"
+msgstr "Moneda secundaria"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
@@ -423,6 +413,10 @@ msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Cuenta"
 
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
 msgctxt "field:account.account.deferral,create_date:"
 msgid "Create Date"
 msgstr "Fecha creación"
@@ -437,7 +431,7 @@ msgstr "Haber"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
@@ -481,7 +475,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
-msgstr "Aplazar"
+msgstr "Cierre"
 
 msgctxt "field:account.account.template,id:"
 msgid "ID"
@@ -581,7 +575,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.account.type,display_balance:"
 msgid "Display Balance"
@@ -831,6 +825,30 @@ msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "Cuenta crédito"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "Cuenta débito"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ejercicio Fiscal"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "Período"
+
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
 msgstr "Ejercicio fiscal a cerrar"
@@ -842,10 +860,6 @@ msgstr "ID"
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Activo"
-
-msgctxt "field:account.journal,centralised:"
-msgid "Centralised counterpart"
-msgstr "Contrapartida centralizada"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
@@ -861,7 +875,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.journal,credit_account:"
 msgid "Default Credit Account"
-msgstr "Cuenta haber por defecto"
+msgstr "Cuenta crédito por defecto"
 
 msgctxt "field:account.journal,debit_account:"
 msgid "Default Debit Account"
@@ -1063,10 +1077,6 @@ msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-msgctxt "field:account.move,centralised_line:"
-msgid "Centralised Line"
-msgstr "Línea centralizada"
-
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
 msgstr "Fecha creación"
@@ -1137,7 +1147,7 @@ msgstr "Cuenta"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Importe divisa secundaria"
+msgstr "Importe moneda secundaria"
 
 msgctxt "field:account.move.line,create_date:"
 msgid "Create Date"
@@ -1153,7 +1163,7 @@ msgstr "Haber"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
@@ -1209,11 +1219,11 @@ msgstr "Conciliación"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
-msgstr "Segunda divisa"
+msgstr "Segunda moneda"
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Decimales divisa secundaria"
+msgstr "Decimales moneda secundaria"
 
 msgctxt "field:account.move.line,state:"
 msgid "State"
@@ -1274,6 +1284,14 @@ msgstr "Hasta la fecha"
 msgctxt "field:account.move.reconcile_lines.writeoff,account:"
 msgid "Account"
 msgstr "Cuenta"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
@@ -1380,7 +1398,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Asiento confirmado"
 
 msgctxt "field:account.open_income_statement.start,company:"
@@ -1585,7 +1603,7 @@ msgstr "Signo del impuesto de la nota de crédito"
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
@@ -1627,9 +1645,9 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr "Padre"
 
-msgctxt "field:account.tax,percentage:"
-msgid "Percentage"
-msgstr "Porcentaje"
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "Tasa de cambio"
 
 msgctxt "field:account.tax,rec_name:"
 msgid "Name"
@@ -1681,7 +1699,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
@@ -1837,7 +1855,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.tax.line,id:"
 msgid "ID"
@@ -2119,9 +2137,9 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr "Padre"
 
-msgctxt "field:account.tax.template,percentage:"
-msgid "Percentage"
-msgstr "Porcentaje"
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "Tasa de cambio"
 
 msgctxt "field:account.tax.template,rec_name:"
 msgid "Name"
@@ -2198,7 +2216,7 @@ msgid ""
 "Force all moves for this account \n"
 "to have this secondary currency."
 msgstr ""
-"Fuerza el uso de esta divisa secundaria \n"
+"Fuerza el uso de esta moneda secundaria \n"
 "en todos los asientos de esta cuenta."
 
 msgctxt "help:account.account,taxes:"
@@ -2219,7 +2237,7 @@ msgstr "También conocido como Número de folio."
 
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
-msgstr "El importe expresado en la divisa secundaria."
+msgstr "El importe expresado en la moneda secundaria."
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
@@ -2231,7 +2249,7 @@ msgstr ""
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
-msgstr "La segunda divisa."
+msgstr "La segunda moneda"
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
@@ -2250,7 +2268,7 @@ msgid "Leave empty for all open fiscal year"
 msgstr "Dejarlo vacío para abrir todos los ejercicios fiscales."
 
 msgctxt "help:account.open_chart.start,posted:"
-msgid "Show only posted move"
+msgid "Show posted moves only"
 msgstr "Muestra sólo asientos confirmados."
 
 msgctxt "help:account.open_income_statement.start,posted:"
@@ -2279,7 +2297,7 @@ msgstr "Muestra sólo asientos confirmados."
 
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency"
-msgstr "En la divisa de la empresa."
+msgstr "En la moneda de la empresa."
 
 msgctxt "help:account.tax,credit_note_base_sign:"
 msgid "Usualy 1 or -1"
@@ -2300,10 +2318,6 @@ msgstr "Normalmente 1 o -1."
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
 msgstr "Normalmente 1 o -1."
-
-msgctxt "help:account.tax,percentage:"
-msgid "In %"
-msgstr "En %"
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
@@ -2353,7 +2367,7 @@ msgstr "Cuenta - Impuesto"
 
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
-msgstr "Cuenta de aplazamiento"
+msgstr "Cierre contable"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
@@ -2501,6 +2515,10 @@ msgstr "Ejercicio Fiscal"
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
 msgstr "Ejercicio fiscal - Línea de asiento"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "Crear asiento de regularización"
 
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
@@ -2717,6 +2735,10 @@ msgstr "Plantillas de tipo de cuenta"
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
 msgstr "Tipos de cuenta"
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Crear asiento de regularización"
 
 msgctxt "model:ir.action,name:act_close_fiscalyear"
 msgid "Close Fiscal Year"
@@ -2986,6 +3008,10 @@ msgstr "Tipos de cuenta"
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
 msgstr "Balance histórico"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Crear asiento de regularización"
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
@@ -3677,11 +3703,11 @@ msgstr "Porcentaje"
 
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferral"
-msgstr "Aplazar cuenta"
+msgstr "Cierre contable"
 
 msgctxt "view:account.account.deferral:"
 msgid "Account Deferrals"
-msgstr "Aplazamientos de cuenta"
+msgstr "Cierres contables"
 
 msgctxt "view:account.account.template:"
 msgid "Account Template"
@@ -3758,6 +3784,10 @@ msgid ""
 msgstr ""
 "Ahora puede crear un plan contable para su empresa seleccionando una "
 "plantilla de plan contable."
+
+msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
+msgid "Balance Non-Deferral"
+msgstr "Crear asiento de regularización"
 
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
@@ -4028,6 +4058,10 @@ msgid "Tax Rules"
 msgstr "Reglas de impuesto"
 
 msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
 msgid "Code"
 msgstr "Código"
 
@@ -4050,6 +4084,10 @@ msgstr "Plantilla de impuesto"
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
 msgstr "Plantillas de impuesto"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "Code"
@@ -4116,6 +4154,14 @@ msgid "Ok"
 msgstr "Aceptar"
 
 msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "Ok"
+msgstr "Aceptar"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
