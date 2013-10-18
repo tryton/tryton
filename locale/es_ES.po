@@ -8,7 +8,7 @@ msgid ""
 "allowed."
 msgstr ""
 "Está intentando crear una lista de materiales recursiva con el producto \"% "
-"s\" que no está permitido."
+"s\" lo cual no está permitido."
 
 msgctxt "error:production.bom.input:"
 msgid "Product must be unique per BOM."
@@ -420,11 +420,15 @@ msgstr "Salida producción"
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr "Listas de material"
+msgstr "Lista de material"
 
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Listas de material"
+
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Producciones"
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
@@ -492,6 +496,10 @@ msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr "Producción"
 
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Producciones"
+
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
 msgstr "Producción"
@@ -530,11 +538,11 @@ msgstr "Árbol LdM"
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"
-msgstr "Abrir arbol BOM"
+msgstr "Abrir árbol BOM"
 
 msgctxt "model:production.bom.tree.open.tree,name:"
 msgid "Open BOM Tree"
-msgstr "Abrir arbol BOM"
+msgstr "Abrir árbol BOM"
 
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
