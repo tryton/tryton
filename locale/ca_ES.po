@@ -96,7 +96,7 @@ msgid ""
 "You can use this field for quick search."
 msgstr ""
 "El codi ISO del país en dos caràcters.\n"
-"Pot usar aquest camp per a cerca ràpida."
+"Podeu usar aquest camp per una cerca més ràpida."
 
 msgctxt "help:country.country,name:"
 msgid "The full name of the country."
