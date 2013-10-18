@@ -352,7 +352,7 @@ msgstr "Codi"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
-msgstr "Companyia"
+msgstr "Empresa"
 
 msgctxt "field:purchase.product_supplier,create_date:"
 msgid "Create Date"
@@ -752,6 +752,10 @@ msgid "Purchases"
 msgstr "Compres"
 
 msgctxt "model:ir.action,name:act_purchase_form2"
+msgid "Purchases"
+msgstr "Compres"
+
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Compres"
 
