@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.forecast.complete:"
 msgid "\"From Date\" should be smaller than \"To Date\"."
-msgstr "\"Desde la fecha\" debe ser más pequeña que \"Hasta la fecha\"."
+msgstr "\"Desde la fecha\" debe ser anterior a \"Hasta la fecha\"."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be greater than the minimal quantity"
@@ -20,19 +20,19 @@ msgstr "El producto debe ser único en la previsión de stocks."
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "\"Hasta la fecha\" debe ser más grande que \"Desde la fecha\"."
+msgstr "\"Hasta la fecha\" debe ser posterior a \"Desde la fecha\"."
 
 msgctxt "error:stock.forecast:"
 msgid ""
 "Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
 " same location."
 msgstr ""
-"La previsión \"%(first)s\" se solpa con las fechas de la previsón "
+"La previsión \"%(first)s\" se solapa con las fechas de la previsón "
 "%(second)s\" en la misma ubicación."
 
 msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar la previsión \"%s\" antes de borrar."
+msgstr "Debe cancelar la previsión \"%s\" antes de borrarla."
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
@@ -301,11 +301,11 @@ msgstr "Restaurar a borrador"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
-msgstr "Seleccione productos"
+msgstr "Seleccionar productos"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
-msgstr "Completa"
+msgstr "Completar"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
@@ -313,11 +313,11 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
-msgstr "Seleccione fechas"
+msgstr "Seleccionar fechas"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
-msgstr "Completa"
+msgstr "Completar"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
