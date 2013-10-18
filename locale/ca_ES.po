@@ -70,10 +70,6 @@ msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transaccions"
 
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr "Apunts"
-
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
 msgstr "Nom"
@@ -206,6 +202,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línia d'extracte bancari"
 
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Apunts"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Tots els extractes"
@@ -294,16 +294,16 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Informació addicional"
 
 msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Confirma"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Restaura a esborrany"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
