@@ -12,7 +12,7 @@ msgstr "Transportista"
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Método de coste envío venta"
+msgstr "Método de coste envío"
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
@@ -48,16 +48,16 @@ msgstr "Coste de la línea de factura"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Order"
-msgstr "Al ordenar"
+msgstr "En el pedido"
 
 msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
 msgid "On Shipment"
-msgstr "Al enviar"
+msgstr "En el albarán"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
-msgstr "Al ordenar"
+msgstr "En el pedido"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Shipment"
-msgstr "Al enviar"
+msgstr "En el albarán"
