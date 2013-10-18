@@ -18,7 +18,7 @@ msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
 "No se ha encontrado ninguna tasa de cambio para la moneda \"%(currency)s\" "
-"en la fecha \"%(date)s\""
+"en la fecha \"%(date)s\"."
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
