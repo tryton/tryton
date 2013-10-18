@@ -497,7 +497,7 @@ msgstr "Amortització"
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "D'acord"
+msgstr "Accepta"
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
@@ -505,7 +505,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "D'acord"
+msgstr "Accepta"
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
@@ -517,4 +517,4 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "D'acord"
+msgstr "Accepta"
