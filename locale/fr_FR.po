@@ -170,11 +170,11 @@ msgstr "ID"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
-msgstr "Langue du tiers"
+msgstr "Langue des tiers"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Séquence des tiers"
+msgstr "Séquence de tiers"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
