@@ -117,7 +117,7 @@ msgstr "Contrapartida"
 
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
