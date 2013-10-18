@@ -92,7 +92,7 @@ msgstr "Name"
 
 msgctxt "field:account.asset,reference:"
 msgid "Reference"
-msgstr "Verweis"
+msgstr "Beleg"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -268,7 +268,7 @@ msgstr "Anlagenwert"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Anlagenbelegnummernkreis"
+msgstr "Nummernkreis Anlagenbelege"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
