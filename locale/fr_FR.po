@@ -138,7 +138,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
-msgstr "Recréer les mouvements"
+msgstr "Recréer des mouvements"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
@@ -759,6 +759,10 @@ msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
 msgstr "Achats"
 
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
+msgid "Purchases"
+msgstr "Achats"
+
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Retours"
@@ -896,7 +900,7 @@ msgstr "Montant"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Date:"
-msgstr "Date:"
+msgstr "Date :"
 
 msgctxt "odt:purchase.purchase:"
 msgid "Description"
@@ -952,7 +956,7 @@ msgstr "Prix unitaire"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT Number:"
-msgstr "Numéro TVA:"
+msgstr "Numéro TVA :"
 
 msgctxt "odt:purchase.purchase:"
 msgid "VAT:"
