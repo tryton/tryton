@@ -96,7 +96,7 @@ msgstr "Name"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
-msgstr "Verweis"
+msgstr "Beleg"
 
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
