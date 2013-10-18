@@ -264,7 +264,7 @@ msgstr "Carta"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Cron - Empresa"
+msgstr "Planificador - Empresa"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
