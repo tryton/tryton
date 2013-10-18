@@ -139,8 +139,8 @@ msgid "Attribute Sets"
 msgstr "Kits Atributo"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
-msgid "Attribute Sets"
-msgstr "Kits Atributo"
+msgid "Attributes"
+msgstr "Atributos"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
@@ -192,19 +192,16 @@ msgstr "Selección"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"
-msgstr ""
+msgstr "Kit de Atributos"
 
-#, fuzzy
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Sets"
-msgstr "Kits Atributo"
+msgstr "Kits de Atributo"
 
-#, fuzzy
 msgctxt "view:product.attribute:"
 msgid "Attribute"
 msgstr "Atributo"
 
-#, fuzzy
 msgctxt "view:product.attribute:"
 msgid "Attributes"
 msgstr "Atributos"
