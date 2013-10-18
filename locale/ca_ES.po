@@ -18,6 +18,10 @@ msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
 msgstr "No podeu eliminar una línia facturada."
 
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "No podeu modificar una línia facturada."
+
 msgctxt "field:project.work,hours_to_invoice:"
 msgid "Hours to Invoice"
 msgstr "Hores a facturar"
