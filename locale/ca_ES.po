@@ -7,8 +7,8 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"Si no s'ha usat la UdM, pot esborrar-la, en cas contrari, pot desactivar-la "
-"i crear-ne una de nova."
+"Si no s'ha usat la UdM, podeu esborrar-la, en cas contrari, podeu "
+"desactivar-la i crear-ne una de nova."
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
@@ -218,7 +218,7 @@ msgstr "Nom"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
-msgstr "Conversió"
+msgstr "Ràtio"
 
 msgctxt "field:product.uom,rec_name:"
 msgid "Name"
@@ -296,7 +296,6 @@ msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categories"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
 msgstr "Productes"
@@ -329,7 +328,6 @@ msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Producte"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
 msgstr "Variants"
