@@ -41,7 +41,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
