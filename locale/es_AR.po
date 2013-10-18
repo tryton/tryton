@@ -61,11 +61,11 @@ msgstr "Haber"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -212,11 +212,11 @@ msgstr "Haber"
 
 msgctxt "field:analytic_account.line,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
