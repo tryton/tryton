@@ -44,7 +44,7 @@ msgstr "ID"
 
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
-msgstr "Séparateur décimal"
+msgstr "Séparateur de décimal"
 
 msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
@@ -80,7 +80,7 @@ msgstr "Code numérique"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr "Symbole de depositif en premier"
+msgstr "Symbole positif en premier"
 
 msgctxt "field:currency.currency,p_sep_by_space:"
 msgid "Positive Separate by Space"
