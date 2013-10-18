@@ -17,14 +17,18 @@ msgstr ""
 "elle contient déjà des factures postées."
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund a supplier invoice/credit note."
-msgstr ""
-
-msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
 "Vous ne pouvez faire une note de crédit pour la facture \"%s\" car elle "
 "contient des paiements."
+
+msgctxt "error:account.invoice.credit:"
+msgid ""
+"You can not credit with refund invoice \"%s\" because it is a supplier "
+"invoice/credit note."
+msgstr ""
+"Vous ne pouvez faire une note de crédit pour la facture \"%s\" car c'est une"
+" facture/note de crédit fournisseur."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
@@ -99,6 +103,12 @@ msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
 msgstr "La ligne \"%(line)s\" de la condition de paiement \"%(term)s\" est invalide."
 
 msgctxt "error:account.invoice.payment_term:"
+msgid "Last line of payment term \"%s\" must be of type remainder."
+msgstr ""
+"La dernière ligne de la condition de paiement \"%s\" doit être de type "
+"\"reste\"."
+
+msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr ""
 "Une ligne de type \"Reste\" est manquante sur la condition de paiement "
@@ -149,6 +159,12 @@ msgid ""
 msgstr ""
 "Vous ne pouvez modifier la taxe \"%(tax)s\" de la facture \"%(invoice)s\" "
 "car elle est payée ou postée."
+
+msgctxt "error:account.invoice:"
+msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
+msgstr ""
+"La facture/note de crédit client \"%s\" ne peut pas être annullée une fois "
+"postée."
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -267,7 +283,7 @@ msgstr ""
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Séquence des notes de crédit fournisseur"
+msgstr "Séquence de note de crédit fournisseur"
 
 msgctxt "field:account.fiscalyear,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
@@ -275,7 +291,7 @@ msgstr "Séquence de facture fournisseur"
 
 msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Séquence des notes de crédit client"
+msgstr "Séquence de note de crédit client"
 
 msgctxt "field:account.fiscalyear,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
@@ -372,6 +388,10 @@ msgstr "Mouvement"
 msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Numéro"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "Origines"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -911,7 +931,7 @@ msgstr "Mis à jour par"
 
 msgctxt "field:account.period,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr "Séquence des notes de crédit fournisseur"
+msgstr "Séquence de note de crédit fournisseur"
 
 msgctxt "field:account.period,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
@@ -919,7 +939,7 @@ msgstr "Séquence de facture fournisseur"
 
 msgctxt "field:account.period,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr "Séquence des notes de crédit client"
+msgstr "Séquence de note de crédit client"
 
 msgctxt "field:account.period,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
@@ -931,11 +951,11 @@ msgstr "Facture"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr "Condition de paiement client"
+msgstr "Conditions de paiement client"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr "Conditions de paiement du fournisseur"
+msgstr "Conditions de paiement fournisseur"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
@@ -954,8 +974,8 @@ msgid "Invoice - Payment Line"
 msgstr "Facture - Ligne de paiement"
 
 msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice Init"
-msgstr "Créer les demandes d'achat - Initialisation"
+msgid "Credit Invoice"
+msgstr "Créditer la facture"
 
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
@@ -1019,7 +1039,7 @@ msgstr "Conditions de paiement"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Crédit"
+msgstr "Créditer"
 
 msgctxt "model:ir.action,name:print"
 msgid "Invoice"
@@ -1146,6 +1166,10 @@ msgid "Payment Terms"
 msgstr "Conditions de paiement"
 
 msgctxt "odt:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "odt:account.invoice:"
 msgid "Amount"
 msgstr "Montant"
 
@@ -1218,6 +1242,10 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "odt:account.invoice:"
+msgid "Reference"
+msgstr "Référence"
+
+msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
 msgstr "N° de note de crédit fournisseur :"
 
@@ -1259,11 +1287,11 @@ msgstr "TVA :"
 
 msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Credit Note"
-msgstr "Notes de crédit fournisseur validées"
+msgstr "Note de crédit fournisseur validée"
 
 msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Invoice"
-msgstr "Factures fournisseur validées"
+msgstr "Facture fournisseur validée"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
@@ -1300,6 +1328,10 @@ msgstr "Note de crédit fournisseur"
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
 msgstr "Facture fournisseur"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"
@@ -1443,7 +1475,7 @@ msgstr "Mercredi"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
-msgstr "Etes-vous sûr de créditer ces factures ?"
+msgstr "Êtes-vous sûr de créditer ces factures ?"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Credit Invoice"
