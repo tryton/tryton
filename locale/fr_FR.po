@@ -40,7 +40,7 @@ msgstr "Drop shipments"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
-msgstr "Séquence drop shipments"
+msgstr "Séquence de drop shipment"
 
 msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
@@ -163,7 +163,7 @@ msgstr "Annulée"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr "Terminée"
+msgstr "Fait"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Draft"
@@ -175,11 +175,11 @@ msgstr "En attente"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr "Annulée"
+msgstr "Annuler"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr "Terminée"
+msgstr "Fait"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Draft"
@@ -195,7 +195,7 @@ msgstr "Expéditions drop shipping"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
-msgstr "En attente"
+msgstr "Attendre"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
