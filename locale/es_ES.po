@@ -52,7 +52,7 @@ msgstr "Transportistas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Transportistas"
+msgstr "Transportista"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
