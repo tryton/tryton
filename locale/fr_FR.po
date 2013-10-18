@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:purchase.request.create:"
+msgid "There are some late supplier moves, are you sure to ignore them?"
+msgstr ""
+"Il y a des mouvements fournisseurs tardifs, êtes-vous sûr de les ignorer ?"
+
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
 msgstr "Le prix d'achat du produit \"%s\" est manquant."
@@ -17,6 +22,10 @@ msgstr "Les demandes d'achat sont uniquement crées par le sytème"
 msgctxt "error:purchase.request:"
 msgid "The requested quantity must be greater than 0"
 msgstr "La quantité requise doit être supérieure à zéro"
+
+msgctxt "error:purchase.request:"
+msgid "You can not delete purchased request."
+msgstr "Vous ne pouvez pas supprimer des demandes d'achat commandées."
 
 msgctxt "error:stock.order_point:"
 msgid "Maximal quantity must be bigger than Minimal quantity"
@@ -232,6 +241,10 @@ msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:stock.shipment.internal.create.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
 msgstr "Règles d'approvisionnement"
@@ -247,6 +260,10 @@ msgstr "Créer les demandes d'achat"
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Demandes d'achat"
+
+msgctxt "model:ir.action,name:act_shipment_internal_create"
+msgid "Create Internal Shipments"
+msgstr "Créer les expéditions internes"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
@@ -282,6 +299,10 @@ msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Demandes d'achat"
 
+msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
+msgid "Create Internal Shipments"
+msgstr "Créer les expéditions internes"
+
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
 msgstr "Demande d'achat"
@@ -313,6 +334,10 @@ msgstr "Cron expédition interne"
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Règle d'approvisionnement"
+
+msgctxt "model:stock.shipment.internal.create.start,name:"
+msgid "Create Shipment Internal"
+msgstr "Créer l'expédition interne"
 
 msgctxt "selection:purchase.request,origin:"
 msgid "Order Point"
@@ -352,11 +377,11 @@ msgstr "Créer les demandes d'achat ?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
-msgstr "Création de la commande: fournisseur absent"
+msgstr "Créer la commande: fournisseur absent"
 
 msgctxt "view:purchase.request.create_purchase.ask_term:"
 msgid "Create Purchase: Missing Payment Term"
-msgstr "Création de la commande: règle d'appro. absente"
+msgstr "Créer la commande: condition de paiement absente"
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
@@ -390,6 +415,14 @@ msgctxt "view:stock.order_point:"
 msgid "Product Info"
 msgstr "Info produit"
 
+msgctxt "view:stock.shipment.internal.create.start:"
+msgid "Create Internal Shipments"
+msgstr "Création les expéditions internes"
+
+msgctxt "view:stock.shipment.internal.create.start:"
+msgid "Create Internal Shipments?"
+msgstr "Créer les expéditions internes ?"
+
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
 msgstr "Créer"
@@ -413,3 +446,11 @@ msgstr "Annuler"
 msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr "Continuer"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
+msgid "Create"
+msgstr "Créer"
+
+msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
