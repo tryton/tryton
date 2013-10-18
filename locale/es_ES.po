@@ -45,7 +45,7 @@ msgstr "Falta una \"Cuenta a cobrar\" al tercero \"%s\"."
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar la venta \"%s\" antes de borrar."
+msgstr "Debe cancelar la venta \"%s\" antes de borrarla."
 
 msgctxt "error:sale.sale:"
 msgid "Warehouse must be defined for the quotation of sale \"%s\"."
@@ -69,7 +69,7 @@ msgstr "Ventas"
 
 msgctxt "field:product.template,delivery_time:"
 msgid "Delivery Time"
-msgstr "Tiempo de envío"
+msgstr "Plazo de entrega"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -351,6 +351,10 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
+msgctxt "field:sale.return_sale.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Comentario"
@@ -623,7 +627,7 @@ msgstr "Terceros con ventas"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Devolver"
+msgstr "Devolución"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
@@ -634,6 +638,14 @@ msgid "Sales"
 msgstr "Ventas"
 
 msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr "Ventas"
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Ventas"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
 msgstr "Ventas"
 
@@ -650,8 +662,8 @@ msgid "Handle Invoice Exception"
 msgstr "Gestionar excepción de factura"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
-msgid "Create Return Sale"
-msgstr "Crear devolución de venta"
+msgid "Return Sale"
+msgstr "Devolución venta"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -744,6 +756,10 @@ msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Línea de venta - Movimiento recreado"
 
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Devolución venta"
+
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
 msgstr "Venta"
@@ -822,7 +838,7 @@ msgstr "Precio unidad"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT Number:"
-msgstr "Número CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:sale.sale:"
 msgid "VAT:"
@@ -972,6 +988,10 @@ msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Recreated"
 msgstr "Recreado"
 
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Venta"
+
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Productos"
@@ -1015,6 +1035,14 @@ msgstr "Línea de venta"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Líneas de venta"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return those/this sale(s)?"
+msgstr "¿Está seguro de devolver estos pedidos?"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Return Sale"
+msgstr "Devolución de venta"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
@@ -1083,3 +1111,11 @@ msgstr "Cancelar"
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "Ok"
 msgstr "Aceptar"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "Devover"
