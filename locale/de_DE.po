@@ -22,9 +22,13 @@ msgctxt "field:product.template,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Verwendetes Konto Kosten verkaufte Waren"
 
-msgctxt "field:stock.move,anglo_saxon_quantity:"
-msgid "Anglo-Saxon Quantity"
-msgstr "Anzahl (Angelsächsische Bewertung)"
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr "Eingang (Angelsächsische Bewertung)"
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
+msgstr "Ausgang (Angelsächsische Bewertung)"
 
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
