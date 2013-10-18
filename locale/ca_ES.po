@@ -312,7 +312,7 @@ msgstr "Nombre CIF/NIF:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr "Ara pot afegir la seva empresa en el sistema."
+msgstr "Ara podeu afegir la vostra empresa al sistema."
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
