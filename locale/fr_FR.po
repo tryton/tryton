@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product.cost_history,cost_price:"
 msgid "Cost Price"
-msgstr "Prix de Revient"
+msgstr "Prix de revient"
 
 msgctxt "field:product.product.cost_history,create_date:"
 msgid "Create Date"
