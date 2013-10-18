@@ -16,7 +16,11 @@ msgstr "No hay ningún producto en la actividad «%s»."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
-msgstr "No puede eliminar una línea de factura."
+msgstr "No puede eliminar una línea facturada."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "No puede modificar una línea facturada."
 
 msgctxt "field:project.work,hours_to_invoice:"
 msgid "Hours to Invoice"
