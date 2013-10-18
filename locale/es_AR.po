@@ -367,7 +367,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:purchase.product_supplier,delivery_time:"
 msgid "Delivery Time"
@@ -463,11 +463,11 @@ msgstr "Usuario creación"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -535,7 +535,7 @@ msgstr "Referencia"
 
 msgctxt "field:purchase.purchase,shipment_returns:"
 msgid "Shipment Returns"
-msgstr "Envío de devolución"
+msgstr "Remitos de devolución"
 
 msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
@@ -543,7 +543,7 @@ msgstr "Estado de envío"
 
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
-msgstr "Envíos"
+msgstr "Remitos"
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
@@ -691,7 +691,7 @@ msgstr "Compra"
 
 msgctxt "field:stock.move,purchase_currency:"
 msgid "Purchase Currency"
-msgstr "Divisa de compra"
+msgstr "Moneda de compra"
 
 msgctxt "field:stock.move,purchase_exception_state:"
 msgid "Exception State"
@@ -760,13 +760,17 @@ msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
 msgstr "Compras"
 
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
+msgid "Purchases"
+msgstr "Compras"
+
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Devolución"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Envíos"
+msgstr "Remitos"
 
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
@@ -778,7 +782,7 @@ msgstr "Gestionar excepción de factura"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar excepción de envío"
+msgstr "Gestionar excepción de remito"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
@@ -841,7 +845,7 @@ msgstr "Gestionar excepción de factura"
 
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar excepción de envío"
+msgstr "Gestionar excepción de remito"
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
@@ -977,7 +981,7 @@ msgstr "Basado en la orden"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el envío"
+msgstr "Basado en el Remito"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Manual"
@@ -1005,7 +1009,7 @@ msgstr "Basado en la orden"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el envío"
+msgstr "Basado en el Remito"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
@@ -1101,7 +1105,7 @@ msgstr "Seleccione movimientos a recrear"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Handle shipment Exception"
-msgstr "Gestionar excepción de envío"
+msgstr "Gestionar excepción de remito"
 
 msgctxt "view:purchase.line:"
 msgid "General"
@@ -1157,7 +1161,7 @@ msgstr "Gestionar excepción de factura"
 
 msgctxt "view:purchase.purchase:"
 msgid "Handle Shipment Exception"
-msgstr "Gestionar excepción de envío"
+msgstr "Gestionar excepción de remito"
 
 msgctxt "view:purchase.purchase:"
 msgid "Invoices"
@@ -1181,7 +1185,7 @@ msgstr "Presupuestar"
 
 msgctxt "view:purchase.purchase:"
 msgid "Shipments"
-msgstr "Envíos"
+msgstr "Remitos"
 
 msgctxt "view:stock.move:"
 msgid "Moves"
