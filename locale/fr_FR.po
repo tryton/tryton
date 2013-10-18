@@ -8,7 +8,7 @@ msgstr "Le compte de stock doit être différent du compte de contrepartie"
 
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
-msgstr "Contrepartie prix de revient"
+msgstr "Contrepartie du prix de revient"
 
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
