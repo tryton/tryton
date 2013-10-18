@@ -32,11 +32,11 @@ msgstr "Haber"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -168,11 +168,11 @@ msgstr "Empresa"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -324,7 +324,7 @@ msgstr "Basado en la orden"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el envío"
+msgstr "Basado en el Remito"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
