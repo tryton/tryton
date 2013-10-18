@@ -24,7 +24,7 @@ msgstr "Produktionsanforderung erstellen"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
-msgstr "Produktionsanforderungen Erstellen"
+msgstr "Erstellen von Produktionsanforderungen"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
