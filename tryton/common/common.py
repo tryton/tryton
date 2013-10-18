@@ -9,6 +9,7 @@ import gettext
 import os
 import re
 import logging
+from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR, DATA_DIR
 import time
@@ -912,8 +913,9 @@ def send_bugtracker(msg):
             protocol = 'http'
             if ssl or hasattr(socket, 'ssl'):
                 protocol = 'https'
+            quote = partial(urllib.quote, safe="!$&'()*+,;=:")
             server = xmlrpclib.Server(('%s://%s:%s@' + CONFIG['roundup.xmlrpc'])
-                    % (protocol, user, password), allow_none=True)
+                    % (protocol, quote(user), quote(password)), allow_none=True)
             if hashlib:
                 msg_md5 = hashlib.md5(msg).hexdigest()
             else:
