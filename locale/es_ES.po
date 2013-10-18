@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
 msgid "There is no list price on work \"%s\"."
-msgstr "No hay ninguna lista de precio en el trabajo \"%s\"."
+msgstr "No hay precio en el trabajo \"%s\"."
 
 msgctxt "error:project.work:"
 msgid "There is no party on work \"%s\"."
@@ -16,7 +16,11 @@ msgstr "No hay ningún producto en el trabajo \"%s\"."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
-msgstr "No puede eliminar una línea de factura."
+msgstr "No puede eliminar una línea facturada."
+
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "No puede modificar una línea facturada."
 
 msgctxt "field:project.work,hours_to_invoice:"
 msgid "Hours to Invoice"
@@ -64,7 +68,7 @@ msgstr "Por el esfuerzo estimado"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Timesheet"
-msgstr "Por las horas realitzadas"
+msgstr "Por las horas realizadas"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "Manual"
@@ -76,7 +80,7 @@ msgstr "Por el esfuerzo estimado"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
-msgstr "Por las horas realitzadas"
+msgstr "Por las horas realizadas"
 
 msgctxt "view:project.work:"
 msgid "Invoice"
