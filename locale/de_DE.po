@@ -72,10 +72,6 @@ msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transaktionen"
 
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr "Buchungszeilen"
-
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
 msgstr "Name"
@@ -208,6 +204,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Zahlungsverkehr Position"
 
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Buchungsposten"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Zahlungsverkehr"
@@ -296,16 +296,16 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Sonstiges"
 
 msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Festschreiben"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
