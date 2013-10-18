@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
