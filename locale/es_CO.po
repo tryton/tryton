@@ -78,15 +78,15 @@ msgstr "Secuencia"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr "Calle"
+msgstr "Dirección"
 
 msgctxt "field:party.address,streetbis:"
 msgid "Street (bis)"
-msgstr "Calle (bis)"
+msgstr "Dirección (bis)"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr "Subdivisión"
+msgstr "Departamento"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
@@ -98,7 +98,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "Código postal"
+msgstr "Código Postal"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -150,7 +150,7 @@ msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Terceros Fallidos"
+msgstr "Terceros Incorrectos"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
@@ -334,7 +334,7 @@ msgstr "Nombre"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "NIT"
+msgstr "Cód. NIT"
 
 msgctxt "field:party.party,vat_country:"
 msgid "VAT Country"
@@ -342,7 +342,7 @@ msgstr "País del NIT"
 
 msgctxt "field:party.party,vat_number:"
 msgid "VAT Number"
-msgstr "NIT"
+msgstr "Número NIT"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
