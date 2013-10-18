@@ -139,7 +139,7 @@ msgid "Attribute Sets"
 msgstr "Grups d'atributs"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
-msgid "Attribute Sets"
+msgid "Attributes"
 msgstr "Atributs"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
