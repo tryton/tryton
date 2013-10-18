@@ -8,7 +8,7 @@ msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
 
 msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
-msgstr "La tasa de cambio de la divisa debe ser mayor o igual a 0"
+msgstr "La tasa de cambio de la moneda debe ser mayor o igual a 0"
 
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
@@ -134,7 +134,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
@@ -162,7 +162,7 @@ msgstr "Usuario modificación"
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"
@@ -874,7 +874,7 @@ msgstr "Código reservado para pruebas"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr "Sin divisa"
+msgstr "Sin moneda"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
@@ -898,19 +898,19 @@ msgstr "Tasa de cambio"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Divisas"
+msgstr "Monedas"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Divisas"
+msgstr "Moneda"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Divisas"
+msgstr "Monedas"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Administración de divisas"
+msgstr "Administración de monedas"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
@@ -922,11 +922,11 @@ msgstr "Tasas de cambio"
 
 msgctxt "view:currency.currency:"
 msgid "Currencies"
-msgstr "Divisas"
+msgstr "Monedas"
 
 msgctxt "view:currency.currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "view:currency.currency:"
 msgid "Formatting"
