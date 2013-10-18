@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "Debe cambiar a borrador el activo \"%s\" antes de borrar."
+msgstr "Debe cambiar a borrador el activo \"%s\" antes de borrarlo."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset!"
@@ -201,7 +201,7 @@ msgstr "Fecha"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "Base depreciable"
+msgstr "Base de amortizable"
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
@@ -273,7 +273,7 @@ msgstr "Activo"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Es activo despreciable"
+msgstr "Es activo amortizable"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
@@ -309,7 +309,7 @@ msgstr "Cuenta de amortización utilizada"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr "Depreciable"
+msgstr "Amortizable"
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
@@ -333,11 +333,11 @@ msgstr "Activo"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Activo - Actualizar - Movimiento"
+msgstr "Asientos de actualización"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
-msgstr "Crear inicio de asientos "
+msgstr "Crear asientos - Inicio "
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
@@ -345,11 +345,11 @@ msgstr "Línea de activo"
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
-msgstr "Actualizar vista depreciación activo"
+msgstr "Actualizar activo - Mostrar amortización"
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
-msgstr "Actualizar Inicio de activo"
+msgstr "Actualizar activo - Inicio"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
@@ -437,7 +437,7 @@ msgstr "Crear asientos de activo"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Crear movimientos activos hasta"
+msgstr "Crear asientos hasta"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
