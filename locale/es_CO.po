@@ -14,13 +14,13 @@ msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "La cantidad en la línea debe ser positiva."
 
-msgctxt "error:stock.inventory.line:"
-msgid "Product must be unique by inventory."
-msgstr "El producto debe ser único por inventario."
-
 msgctxt "error:stock.inventory:"
 msgid "Inventory \"%s\" must be cancelled before deletion."
 msgstr "El inventario \"%s\" debe ser cancelado antes de ser eliminado."
+
+msgctxt "error:stock.inventory:"
+msgid "Line \"%s\" is not unique on Inventory \"%s\"."
+msgstr "La línea \"%s\" no es única en el Inventario \"%s\"."
 
 msgctxt "error:stock.location:"
 msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
@@ -63,12 +63,18 @@ msgstr ""
 "\"%(period)s\" esta cerrado."
 
 msgctxt "error:stock.move:"
-msgid ""
-"You can not modify stock move \"%s\"because it is in \"Assigned\", \"Done\" "
-"or \"Cancel\" state."
+msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
 msgstr ""
-"Usted no puede modificar los movimientos de inventarios \"%s\" porque estan "
-"en estado \"Asignado\", \"Hecho\" o \"Cancelado\". "
+"No puede modificar el movimiento de inventario \"%s\" porque esta en estado "
+"\"Asignado\"."
+
+msgctxt "error:stock.move:"
+msgid ""
+"You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
+" state."
+msgstr ""
+"No puede modificar el movimiento de inventario \"%s\" porque esta en estado "
+"\"Hecho\" o \"Cancelado\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
@@ -203,7 +209,7 @@ msgstr "Secuencia Envío de Devolución a Proveedor"
 
 msgctxt "field:stock.configuration,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Secuencia Envío de proveedor"
+msgstr "Secuencia Envío de Proveedor"
 
 msgctxt "field:stock.configuration,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
@@ -215,7 +221,7 @@ msgstr "Secuencia Devolución de Cliente"
 
 msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Secuencia Envío a cliente"
+msgstr "Secuencia Envío a Cliente"
 
 msgctxt "field:stock.configuration,write_date:"
 msgid "Write Date"
@@ -673,6 +679,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr "Orígenes"
+
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Fecha Planeada"
@@ -748,6 +758,10 @@ msgstr "ID"
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
+msgstr "Orígenes"
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
@@ -897,6 +911,10 @@ msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr "Orígenes"
+
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr "Movimientos de Salida"
@@ -992,6 +1010,10 @@ msgstr "Movimientos de inventario"
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
+msgstr "Orígenes"
 
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
@@ -1722,8 +1744,16 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ""
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Código:"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
+msgstr "Cliente"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "E-Mail:"
@@ -1756,10 +1786,6 @@ msgstr "Referencia:"
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Lista de renovación de existencias"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Supplier:"
-msgstr "Proveedor:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
@@ -1991,7 +2017,7 @@ msgstr "Cantidad en Bodega"
 
 msgctxt "view:stock.location:"
 msgid "Locations"
-msgstr "Consultas Bodegas"
+msgstr "Bodegas"
 
 msgctxt "view:stock.move:"
 msgid "Move"
@@ -2003,11 +2029,11 @@ msgstr "Movimientos"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Cache"
-msgstr "Caché de período"
+msgstr "Caché de Período"
 
 msgctxt "view:stock.period.cache:"
 msgid "Period Caches"
-msgstr "Cachés de periodo"
+msgstr "Cachés de Periodo"
 
 msgctxt "view:stock.period:"
 msgid "Close"
@@ -2207,7 +2233,7 @@ msgstr "Borrador"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Inventory Moves"
-msgstr "Movimientos de inventario"
+msgstr "Movimientos de Inventario"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Make shipment"
