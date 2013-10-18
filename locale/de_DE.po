@@ -139,8 +139,8 @@ msgid "Attribute Sets"
 msgstr "Eigenschaftssätze"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
-msgid "Attribute Sets"
-msgstr "Eigenschaftssätze"
+msgid "Attributes"
+msgstr "Eigenschaften"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
