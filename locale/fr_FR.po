@@ -175,16 +175,6 @@ msgstr ""
 "valide."
 
 msgctxt "error:account.move:"
-msgid ""
-"Move \"%(move)s\" cannot be created because there is already a move in "
-"journal \"%(journal)s\" and you cannot create more than one move per period "
-"in a centralized journal."
-msgstr ""
-"Le mouvement \"%(move)s\" ne peut pas être créé car il y a déjà un mouvement"
-" dans le journal \"%(journal)s\" et vous ne pouvez créer plus d'un mouvement"
-" par période dans un journal centralisé."
-
-msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
 "Vous ne pouvez créer des lignes sur des comptes de différentes sociétés dans"
@@ -241,8 +231,8 @@ msgid ""
 "Company of sequence \"%(sequence)s\" does not match the company of period "
 "\"%(period)s\" to which it is assigned to."
 msgstr ""
-"La companie de la séquence \"%(sequence)s\" ne correspond à la companie de "
-"la période \"%(period)s\" à laquelle elle est assignée."
+"La société de la séquence \"%(sequence)s\" ne correspond à la société de la "
+"période \"%(period)s\" à laquelle elle est assignée."
 
 msgctxt "error:account.period:"
 msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
@@ -278,7 +268,7 @@ msgctxt "error:account.period:"
 msgid "You can not create a period on fiscal year \"%s\" because it is closed."
 msgstr ""
 "Vous ne pouvez créer une période sur l'année fiscale \"%s\" car elle est "
-"fermée."
+"clôturée."
 
 msgctxt "error:account.period:"
 msgid "You can not modify/delete period \"%s\" because it has moves."
@@ -292,7 +282,7 @@ msgid ""
 "\"%(fiscalyear)s\" is closed."
 msgstr ""
 "Vous ne pouvez ouvrir la période \"%(period)s\" car son année fiscale "
-"\"%(fiscalyear)s\" is closed."
+"\"%(fiscalyear)s\" est clôturée."
 
 msgctxt "field:account.account,active:"
 msgid "Active"
@@ -441,6 +431,10 @@ msgstr "Mis à jour par"
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Compte"
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "Balance"
 
 msgctxt "field:account.account.deferral,create_date:"
 msgid "Create Date"
@@ -850,6 +844,30 @@ msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "Compte de crédit"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "Compte de débit"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Année fiscale"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "Période"
+
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
 msgstr "Année fiscale à clôturer"
@@ -861,10 +879,6 @@ msgstr "ID"
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Actif"
-
-msgctxt "field:account.journal,centralised:"
-msgid "Centralised counterpart"
-msgstr "Contre partie centralisée"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
@@ -1082,10 +1096,6 @@ msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
-msgctxt "field:account.move,centralised_line:"
-msgid "Centralised Line"
-msgstr "Ligne centralisée"
-
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -1196,7 +1206,7 @@ msgstr "Journal"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
-msgstr "Date de maturité"
+msgstr "Date d'échéance"
 
 msgctxt "field:account.move.line,move:"
 msgid "Move"
@@ -1293,6 +1303,14 @@ msgstr "Date de fin"
 msgctxt "field:account.move.reconcile_lines.writeoff,account:"
 msgid "Account"
 msgstr "Compte"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
@@ -1399,8 +1417,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Move"
-msgstr "Mouvement posté"
+msgid "Posted Moves"
+msgstr "Mouvements postés"
 
 msgctxt "field:account.open_income_statement.start,company:"
 msgid "Company"
@@ -1646,9 +1664,9 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr "Parent"
 
-msgctxt "field:account.tax,percentage:"
-msgid "Percentage"
-msgstr "Pourcentage"
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "Taux"
 
 msgctxt "field:account.tax,rec_name:"
 msgid "Name"
@@ -2138,9 +2156,9 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr "Parent"
 
-msgctxt "field:account.tax.template,percentage:"
-msgid "Percentage"
-msgstr "Pourcentage"
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "Taux"
 
 msgctxt "field:account.tax.template,rec_name:"
 msgid "Name"
@@ -2269,7 +2287,7 @@ msgid "Leave empty for all open fiscal year"
 msgstr "laisser vide pour toute les années fiscales ouvertes"
 
 msgctxt "help:account.open_chart.start,posted:"
-msgid "Show only posted move"
+msgid "Show posted moves only"
 msgstr "Montrer seulement les mouvements postés"
 
 msgctxt "help:account.open_income_statement.start,posted:"
@@ -2319,10 +2337,6 @@ msgstr "Habituellement 1 ou -1"
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
 msgstr "Habituellement 1 ou -1"
-
-msgctxt "help:account.tax,percentage:"
-msgid "In %"
-msgstr "En %"
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
@@ -2500,15 +2514,15 @@ msgstr "Configuration comptable"
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
-msgstr "Créer le plan comptable"
+msgstr "Créer un plan"
 
 msgctxt "model:account.create_chart.properties,name:"
 msgid "Create Chart"
-msgstr "Créer le plan comptable"
+msgstr "Créer un plan"
 
 msgctxt "model:account.create_chart.start,name:"
 msgid "Create Chart"
-msgstr "Créer le plan comptable"
+msgstr "Créer un plan"
 
 msgctxt "model:account.fiscalyear,name:"
 msgid "Fiscal Year"
@@ -2518,9 +2532,13 @@ msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
 msgstr "Année fiscale - Ligne de mouvement"
 
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "Équilibrer les non-reports"
+
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
-msgstr "Fermer l'année fiscale"
+msgstr "Clôturer une année fiscale"
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
@@ -2544,7 +2562,7 @@ msgstr "Stock"
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
-msgstr "Journal - Période"
+msgstr "Journal - période"
 
 msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
@@ -2592,7 +2610,7 @@ msgstr "Ouvrir le journal - Demande"
 
 msgctxt "model:account.move.open_reconcile_lines.start,name:"
 msgid "Open Reconcile Lines"
-msgstr "Ouvrir les lignes réconciliées"
+msgstr "Ouvrir les lignes à réconcilier"
 
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
@@ -2688,11 +2706,11 @@ msgstr "Modèle de compte de taxe"
 
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
-msgstr "Mise à jour du plan comptable"
+msgstr "Mise à jour d'un plan"
 
 msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
-msgstr "Mise à jour du plan comptable"
+msgstr "Mise à jour d'un plan"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
@@ -2734,9 +2752,13 @@ msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
 msgstr "Types de compte"
 
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Équilibrer les non-reports"
+
 msgctxt "model:ir.action,name:act_close_fiscalyear"
 msgid "Close Fiscal Year"
-msgstr "Fermer l'année fiscale"
+msgstr "Clôturer une année fiscale"
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
@@ -2764,7 +2786,7 @@ msgstr "Journaux - périodes"
 
 msgctxt "model:ir.action,name:act_journal_period_reopen"
 msgid "Re-Open Journals - Periods"
-msgstr "Réouvrir les journaux - Périodes"
+msgstr "Réouvrir les journaux - périodes"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
@@ -2812,7 +2834,7 @@ msgstr "Ouvrir journal"
 
 msgctxt "model:ir.action,name:act_open_reconcile_lines"
 msgid "Open Reconcile Lines"
-msgstr "Ouvrir les lignes réconciliées"
+msgstr "Ouvrir les lignes à réconcilier"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
@@ -2944,7 +2966,7 @@ msgstr "Imprimer la balance"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Mise à jour du plan comptable depuis un modèle"
+msgstr "Mise à jour d'un plan comptable depuis un modèle"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -3003,13 +3025,17 @@ msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
 msgstr "Balance âgée"
 
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Équilibrer les non-reports"
+
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
 msgstr "Plans"
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Year"
-msgstr "Clôturer l'année fiscale"
+msgstr "Clôturer une année fiscale"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
@@ -3045,7 +3071,7 @@ msgstr "Journaux"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
 msgid "Close Journals - Periods"
-msgstr "Fermer Journaux - périodes"
+msgstr "Fermer les journaux - périodes"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
@@ -3161,7 +3187,7 @@ msgstr "Balance tiers"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Mise à jour du plan comptable depuis un modèle"
+msgstr "Mise à jour d'un plan comptable depuis un modèle"
 
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
@@ -3757,7 +3783,7 @@ msgstr "Configuration comptable"
 
 msgctxt "view:account.create_chart.account:"
 msgid "Create Chart of Accounts"
-msgstr "Créer le plan comptable"
+msgstr "Créer un plan comptable"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Create Default Properties"
@@ -3765,7 +3791,7 @@ msgstr "Créer les propriétés par défaut"
 
 msgctxt "view:account.create_chart.start:"
 msgid "Create Chart of Accounts"
-msgstr "Créer le plan comptable"
+msgstr "Créer un plan comptable"
 
 msgctxt "view:account.create_chart.start:"
 msgid ""
@@ -3775,17 +3801,21 @@ msgstr ""
 "Vous pouvez maintenant créer un plan comptable pour votre société sur base "
 "d'un modèle"
 
+msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
+msgid "Balance Non-Deferral"
+msgstr "Équilibrer les non-reports"
+
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
-msgstr "Fermer l'année fiscale"
+msgstr "Clôturer une année fiscale"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Are you sure to close fiscal year?"
-msgstr "Etes-vous sûr de clôturer l'année fiscale?"
+msgstr "Êtes-vous sûr de clôturer l'année fiscale?"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Close Fiscal Year"
-msgstr "Fermer l'année fiscale"
+msgstr "Clôturer une année fiscale"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create 3 Months Periods"
@@ -3817,7 +3847,7 @@ msgstr "Séquences"
 
 msgctxt "view:account.journal.period:"
 msgid "Journal - Period"
-msgstr "Journal - Période"
+msgstr "Journal - période"
 
 msgctxt "view:account.journal.period:"
 msgid "Journals - Periods"
@@ -3885,7 +3915,7 @@ msgstr "Ouvrir journal"
 
 msgctxt "view:account.move.open_reconcile_lines.start:"
 msgid "Open Reconcile Lines"
-msgstr "Ouvrir les lignes réconciliées"
+msgstr "Ouvrir les lignes à réconcilier"
 
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
@@ -3917,7 +3947,7 @@ msgstr "Brouillon"
 
 msgctxt "view:account.move:"
 msgid "Post"
-msgstr "Posté"
+msgstr "Poster"
 
 msgctxt "view:account.open_aged_balance.start:"
 msgid "Open Aged Balance"
@@ -4044,6 +4074,10 @@ msgid "Tax Rules"
 msgstr "Règles de taxe"
 
 msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
 msgid "Code"
 msgstr "Code"
 
@@ -4066,6 +4100,10 @@ msgstr "Modèle de taxe"
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
 msgstr "Modèles de taxes"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "Code"
@@ -4093,15 +4131,15 @@ msgstr "Taxes"
 
 msgctxt "view:account.update_chart.start:"
 msgid "Update Chart of Accounts"
-msgstr "Mise à jour du plan comptable"
+msgstr "Mise à jour d'un plan comptable"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Update Chart of Accounts"
-msgstr "Mise à jour du plan comptable"
+msgstr "Mise à jour d'un plan comptable"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Update Chart of Accounts Succeed!"
-msgstr "Mise à jour du plan comptable réussie"
+msgstr "Mise à jour du plan comptable réussie !"
 
 msgctxt "view:party.party:"
 msgid "Account"
@@ -4132,6 +4170,14 @@ msgid "Ok"
 msgstr "Ok"
 
 msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "Ok"
+msgstr "Ok"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
 msgstr "Annuler"
 
