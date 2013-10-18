@@ -171,15 +171,6 @@ msgid "You can not reconcile line \"%s\" because it is not in valid state."
 msgstr "Abstimmung von Zeile \"%s\" nicht möglich, weil sie nicht gültig ist."
 
 msgctxt "error:account.move:"
-msgid ""
-"Move \"%(move)s\" cannot be created because there is already a move in "
-"journal \"%(journal)s\" and you cannot create more than one move per period "
-"in a centralized journal."
-msgstr ""
-"Buchungssatz \"%(move)s\" kann nicht angelegt werden, weil schon ein Buchungssatz in Journal \"%(journal)s\" existiert.\n"
-"In einem Abschlussjournal kann nur ein Buchungssatz pro Buchungsperiode angelegt werden."
-
-msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
 "Erstellung von Buchungszeilen mit Konten unterschiedlicher Unternehmen in "
@@ -444,6 +435,10 @@ msgstr "Letzte Änderung durch"
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Konto"
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "Saldo"
 
 msgctxt "field:account.account.deferral,create_date:"
 msgid "Create Date"
@@ -853,6 +848,30 @@ msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr "Habenkonto"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr "Sollkonto"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Geschäftsjahr"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "Buchungszeitraum"
+
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
 msgstr "Abzuschließendes Geschäftsjahr"
@@ -864,10 +883,6 @@ msgstr "ID"
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Aktiv"
-
-msgctxt "field:account.journal,centralised:"
-msgid "Centralised counterpart"
-msgstr "Abschlussbuchung auf Gegenkonto"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
@@ -1085,10 +1100,6 @@ msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "field:account.move,centralised_line:"
-msgid "Centralised Line"
-msgstr "Abschlussbuchungszeile"
-
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -1297,6 +1308,14 @@ msgctxt "field:account.move.reconcile_lines.writeoff,account:"
 msgid "Account"
 msgstr "Konto"
 
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr "Währung (signifikante Stellen)"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr "Datum"
@@ -1402,7 +1421,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Nur festgeschriebene Buchungen"
 
 msgctxt "field:account.open_income_statement.start,company:"
@@ -1649,8 +1668,8 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr "Übergeordnet (Steuer)"
 
-msgctxt "field:account.tax,percentage:"
-msgid "Percentage"
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
 msgstr "Prozentsatz"
 
 msgctxt "field:account.tax,rec_name:"
@@ -2141,8 +2160,8 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr "Übergeordnet (Steuervorlage)"
 
-msgctxt "field:account.tax.template,percentage:"
-msgid "Percentage"
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
 msgstr "Prozentsatz"
 
 msgctxt "field:account.tax.template,rec_name:"
@@ -2270,7 +2289,7 @@ msgid "Leave empty for all open fiscal year"
 msgstr "Leer lassen für alle offenen Geschäftsjahre"
 
 msgctxt "help:account.open_chart.start,posted:"
-msgid "Show only posted move"
+msgid "Show posted moves only"
 msgstr "Nur festgeschriebene Buchungen anzeigen"
 
 msgctxt "help:account.open_income_statement.start,posted:"
@@ -2320,10 +2339,6 @@ msgstr "Üblicherweise 1 oder -1"
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
 msgstr "Üblicherweise 1 oder -1"
-
-msgctxt "help:account.tax,percentage:"
-msgid "In %"
-msgstr "In %"
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
@@ -2519,6 +2534,10 @@ msgstr "Geschäftsjahr"
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
 msgstr "Geschäftsjahr - Buchungszeile"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr "Abgleich Saldenvortrag"
 
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
@@ -2736,6 +2755,10 @@ msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
 msgstr "Kontentypen"
 
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Abgleich Saldenvortrag"
+
 msgctxt "model:ir.action,name:act_close_fiscalyear"
 msgid "Close Fiscal Year"
 msgstr "Geschäftsjahr abschließen"
@@ -2830,11 +2853,11 @@ msgstr "Buchungszeiträume abschließen"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr "Lagerperioden"
+msgstr "Buchungszeiträume"
 
 msgctxt "model:ir.action,name:act_period_form2"
 msgid "Periods"
-msgstr "Lagerperioden"
+msgstr "Buchungszeiträume"
 
 msgctxt "model:ir.action,name:act_period_reopen"
 msgid "Re-Open Periods"
@@ -3004,6 +3027,10 @@ msgstr "Kontentypen"
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
 msgstr "Fälligkeitsliste drucken"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr "Abgleich Saldenvortrag"
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
@@ -3777,6 +3804,10 @@ msgstr ""
 "Sie können nun einen Kontenplan für Ihr Unternehmen erstellen, indem Sie "
 "eine Kontenplanvorlage auswählen."
 
+msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
+msgid "Balance Non-Deferral"
+msgstr "Abgleich Saldenvortrag"
+
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
 msgstr "Geschäftsjahr abschließen"
@@ -4046,6 +4077,10 @@ msgid "Tax Rules"
 msgstr "Steuerregeln"
 
 msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:account.tax.template:"
 msgid "Code"
 msgstr "Kennziffer"
 
@@ -4068,6 +4103,10 @@ msgstr "Steuervorlage"
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
 msgstr "Steuervorlagen"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "Code"
@@ -4134,6 +4173,14 @@ msgid "Ok"
 msgstr "OK"
 
 msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "Ok"
+msgstr "OK"
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
