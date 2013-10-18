@@ -1090,13 +1090,14 @@
                         value = null;
                     }
                     var setdefault = true;
+                    var original_domain = inversion.merge(
+                            record.group.domain());
+                    var domain_readonly = original_domain[0] == 'AND';
                     if (leftpart.contains('.')) {
                         var recordpart = leftpart.split('.', 1)[0];
                         var localpart = leftpart.split('.', 1)[1];
-                        var original_domain = inversion.merge(
-                                record.group.domain());
                         var constraintfields = [];
-                        if (original_domain[0] == 'AND') {
+                        if (domain_readonly) {
                             inverted_domain.localize_domain(
                                     original_domain.slice(1))
                                 .forEach(function(leaf) {
@@ -1110,7 +1111,8 @@
                     }
                     if (setdefault) {
                         this.set_client(record, value);
-                        this.get_state_attrs(record).domain_readonly = true;
+                        this.get_state_attrs(record).domain_readonly =
+                            domain_readonly;
                     }
                 }
                 result &= inversion.eval_domain(domain,
