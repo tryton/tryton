@@ -158,10 +158,6 @@ msgctxt "field:project.work,predecessors:"
 msgid "Predecessors"
 msgstr "Prédécesseurs"
 
-msgctxt "field:project.work,requests:"
-msgid "Requests"
-msgstr "Demandes"
-
 msgctxt "field:project.work,successors:"
 msgid "Successors"
 msgstr "Successeurs"
@@ -193,7 +189,3 @@ msgstr "Répartitions"
 msgctxt "view:project.work:"
 msgid "Plan"
 msgstr "Planification"
-
-msgctxt "view:project.work:"
-msgid "Requests"
-msgstr "Demandes"
