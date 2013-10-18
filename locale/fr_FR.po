@@ -366,11 +366,11 @@ msgstr "Actifs"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actif"
+msgstr "Créer les mouvements d'actifs"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Mise à jour actifs"
+msgstr "Mise à jour des actifs"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
@@ -406,7 +406,7 @@ msgstr "Actifs"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actif"
+msgstr "Créer les mouvements d'actifs"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
@@ -434,11 +434,11 @@ msgstr "En cours"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actif"
+msgstr "Créer les mouvements d'actifs"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Créer les mouvements d'actif jusqu'a"
+msgstr "Créer les mouvements d'actifs jusqu'a"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
@@ -450,11 +450,11 @@ msgstr "Lignes d'actif"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
-msgstr "Mouvement dépréciation actifs"
+msgstr "Mouvement dépréciation d'actif"
 
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
-msgstr "Mise à jour actifs"
+msgstr "Mise à jour des actifs"
 
 msgctxt "view:account.asset:"
 msgid "Asset"
@@ -490,7 +490,7 @@ msgstr "Lancer"
 
 msgctxt "view:account.asset:"
 msgid "Update Asset"
-msgstr "Mise à jour actifs"
+msgstr "Mise à jour des actifs"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
