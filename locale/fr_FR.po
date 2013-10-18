@@ -180,7 +180,7 @@ msgstr "Mouvements"
 
 msgctxt "field:production.bom,active:"
 msgid "Active"
-msgstr "Active"
+msgstr "Actif"
 
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
@@ -426,6 +426,10 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Nomenclatures"
 
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Productions"
+
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr "Configuration de la production"
@@ -491,6 +495,10 @@ msgstr "Configuration"
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr "Production"
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Productions"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
@@ -562,7 +570,7 @@ msgstr "Annulée"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Terminée"
+msgstr "Fait"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -642,7 +650,7 @@ msgstr "Annuler"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "terminée"
+msgstr "Fait"
 
 msgctxt "view:production:"
 msgid "Draft"
@@ -654,7 +662,7 @@ msgstr "Lignes"
 
 msgctxt "view:production:"
 msgid "Other Info"
-msgstr "Autre info"
+msgstr "Autre information"
 
 msgctxt "view:production:"
 msgid "Production"
@@ -670,7 +678,7 @@ msgstr "Lancer"
 
 msgctxt "view:production:"
 msgid "Wait"
-msgstr "En attente"
+msgstr "Attendre"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "Ok"
