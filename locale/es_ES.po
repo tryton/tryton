@@ -22,11 +22,11 @@ msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "No puede modificar el tercer del contacto \"%s\"."
+msgstr "No puede modificar el tercero del contacto \"%s\"."
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "CIF/NIF \"%(vat)s\" del tercero \"%(party)s\", no es correcto."
+msgstr "El CIF/NIF \"%(vat)s\" del tercero \"%(party)s\" no es correcto."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
