@@ -141,6 +141,7 @@
             this.new_group();
             this.current_view = null;
             this.current_record = null;
+            this.domain = attributes.domain;
             this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
             this.search_count = 0;
@@ -152,6 +153,7 @@
             } else {
                 this.row_activate = attributes.row_activate;
             }
+            this.tree_states = {};
             this.fields_view_tree = null;
             this.domain_parser = null;
             this.tab = null;
@@ -322,6 +324,7 @@
                     }
                 }
             }
+            this.set_tree_state();
         },
         display_next: function() {
             var view = this.current_view;
@@ -701,6 +704,85 @@
                         function() {
                             this.reload([record.id], true);
                         }.bind(this));
+            }.bind(this));
+        },
+        save_tree_state: function(store) {
+            store = (store === undefined) ? true : store;
+            var i, len, view, widgets, wi, wlen;
+            for (i = 0, len = this.views.length; i < len; i++) {
+                view = this.views[i];
+                if (view.view_type == 'form') {
+                    for (var wid_key in view.widgets) {
+                        if (!view.widgets.hasOwnProperty(wid_key)) {
+                            continue;
+                        }
+                        widgets = view.widgets[wid_key];
+                        for (wi = 0, wlen = widgets.length; wi < wlen; wi++) {
+                            if (widgets[wi].screen) {
+                                widgets[wi].screen.save_tree_state(store);
+                            }
+                        }
+                    }
+                } else if ((view.view_type == 'tree') &&
+                        (view.children_field)) {
+                    var parent_, paths, selected_paths, tree_state_model;
+                    parent_ = this.parent ? this.parent.id : null;
+                    paths = view.get_expanded_paths();
+                    selected_paths = view.get_selected_paths();
+                    if (!(parent_ in this.tree_states)) {
+                        this.tree_states[parent_] = {};
+                    }
+                    this.tree_states[parent_][view.children_field] = [paths,
+                        selected_paths];
+                    if (store) {
+                        tree_state_model = new Sao.Model(
+                                'ir.ui.view_tree_state');
+                        tree_state_model.execute('set', [
+                                this.model_name,
+                                this.get_tree_domain(parent_),
+                                view.children_field,
+                                JSON.stringify(paths),
+                                JSON.stringify(selected_paths)], {});
+                    }
+                }
+            }
+        },
+        get_tree_domain: function(parent_) {
+            var domain;
+            if (parent_) {
+                domain = this.domain.concat([
+                        [this.exclude_field, '=', parent_]]);
+            } else {
+                domain = this.domain;
+            }
+            return JSON.stringify(Sao.rpc.prepareObject(domain));
+        },
+        set_tree_state: function() {
+            var parent_, state, state_prm, tree_state_model;
+            var view = this.current_view;
+            if (!view || (view.view_type != 'tree') || !this.group) {
+                return;
+            }
+            parent_ = this.parent ? this.parent.id : null;
+            if (!(parent_ in this.tree_states)) {
+                this.tree_states[parent_] = {};
+            }
+            state = this.tree_states[parent_][view.children_field];
+            if (state === undefined) {
+                tree_state_model = new Sao.Model('ir.ui.view_tree_state');
+                state_prm = tree_state_model.execute('get', [
+                        this.model_name,
+                        this.get_tree_domain(parent_),
+                        view.children_field], {});
+            } else {
+                state_prm = jQuery.when(state);
+            }
+            state_prm.done(function(state) {
+                var expanded_nodes, selected_nodes;
+                this.tree_states[parent_][view.children_field] = state;
+                expanded_nodes = JSON.parse(state[0]);
+                selected_nodes = JSON.parse(state[1]);
+                view.display(selected_nodes, expanded_nodes);
             }.bind(this));
         }
     });

@@ -105,10 +105,11 @@
         },
         close: function() {
             var tabs = jQuery('#tabs > div');
-            // TODO check modified
-            tabs.tabs('remove', this.id);
-            if (!tabs.find('> ul').children().length) {
-                tabs.remove();
+            if (this.modified_save()) {
+                tabs.tabs('remove', this.id);
+                if (!tabs.find('> ul').children().length) {
+                    tabs.remove();
+                }
             }
         }
     });
@@ -272,6 +273,7 @@
             return toolbar;
         },
         modified_save: function() {
+            this.screen.save_tree_state();
             this.screen.current_view.set_value();
             if (this.screen.modified()) {
                 // TODO popup
@@ -311,6 +313,7 @@
                 // TODO popup
             }
             this.screen.cancel_current().done(function() {
+                this.screen.save_tree_state(false);
                 if (this.screen.current_view.view_type != 'form') {
                     this.screen.search_filter();  // TODO set search text
                     // TODO set current_record

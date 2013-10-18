@@ -17,6 +17,24 @@
         }
     });
 
+    Sao.View.idpath2path = function(tree, idpath) {
+        var path = [];
+        var child_path;
+        if (!idpath) {
+            return [];
+        }
+        for (var i = 0, len = tree.rows.length; i < len; i++) {
+            if (tree.rows[i].record.id == idpath[0]) {
+                path.push(i);
+                child_path = Sao.View.idpath2path(tree.rows[i],
+                        idpath.slice(1, idpath.length));
+                path = path.concat(child_path);
+                break;
+            }
+        }
+        return path;
+    };
+
     Sao.View.parse = function(screen, xml, children_field) {
         switch (xml.children().prop('tagName')) {
             case 'tree':
@@ -65,6 +83,8 @@
         init: function(screen, xml, children_field) {
             Sao.View.Tree._super.init.call(this, screen, xml);
             this.view_type = 'tree';
+            this.selection_mode = (screen.attributes.selection_mode ||
+                Sao.common.SELECTION_SINGLE);
             this.el = jQuery('<div/>', {
                 'class': 'treeview'
             });
@@ -85,14 +105,16 @@
             var thead = jQuery('<thead/>');
             this.table.append(thead);
             var tr = jQuery('<tr/>');
-            var th = jQuery('<th/>');
-            this.selection = jQuery('<input/>', {
-                'type': 'checkbox',
-                'class': 'selection'
-            });
-            this.selection.change(this.selection_changed.bind(this));
-            th.append(this.selection);
-            tr.append(th);
+            if (this.selection_mode != Sao.common.SELECTION_NONE) {
+                var th = jQuery('<th/>');
+                this.selection = jQuery('<input/>', {
+                    'type': 'checkbox',
+                    'class': 'selection'
+                });
+                this.selection.change(this.selection_changed.bind(this));
+                th.append(this.selection);
+                tr.append(th);
+            }
             thead.append(tr);
             this.columns.forEach(function(column) {
                 th = jQuery('<th/>', {
@@ -192,18 +214,20 @@
                 this.columns.push(column);
             }.bind(this));
         },
-        display: function() {
-            var selected = this.selected_records();
+        display: function(selected, expanded) {
+            selected = selected || this.get_selected_paths();
+            expanded = expanded || [];
             var current_record = this.screen.current_record;
-            if (current_record && !~selected.indexOf(current_record)) {
-                selected = [current_record];
+            if (current_record && !Sao.common.contains(selected,
+                        [[current_record.id]])) {
+                selected = [[current_record.id]];
             }
             this.rows = [];
             this.tbody.empty();
             var add_row = function(record, pos, group) {
                 var tree_row = new Sao.View.Tree.Row(this, record, pos);
                 this.rows.push(tree_row);
-                tree_row.display(selected);
+                tree_row.display(selected, expanded);
             };
             this.screen.group.slice(0, this.display_size).forEach(add_row.bind(this));
             if (this.display_size >= this.screen.group.length) {
@@ -221,6 +245,9 @@
             // TODO update_children
         },
         selected_records: function() {
+            if (this.selection_mode == Sao.common.SELECTION_NONE) {
+                return [];
+            }
             var records = [];
             var add_record = function(row) {
                 if (row.is_selected()) {
@@ -268,6 +295,69 @@
                 // Set checked to go first unchecked after first click
                 this.selection.prop('checked', true);
             }
+        },
+        get_selected_paths: function() {
+            var selected_paths = [];
+            function get_selected(row, path) {
+                var i, r, len, r_path;
+                for (i = 0, len = row.rows.length; i < len; i++) {
+                    r = row.rows[i];
+                    r_path = path.concat([r.record.id]);
+                    if (r.is_selected()) {
+                        selected_paths.push(r_path);
+                    }
+                    get_selected(r, r_path);
+                }
+            }
+            get_selected(this, []);
+            return selected_paths;
+        },
+        get_expanded_paths: function(starting_path, starting_id_path) {
+            var id_path, id_paths, row, children_rows, path;
+            if (starting_path === undefined) {
+                starting_path = [];
+            }
+            if (starting_id_path === undefined) {
+                starting_id_path = [];
+            }
+            id_paths = [];
+            row = this.find_row(starting_path);
+            children_rows = row ? row.rows : this.rows;
+            for (var path_idx = 0, len = this.n_children(row) ;
+                    path_idx < len ; path_idx++) {
+                path = starting_path.concat([path_idx]);
+                row = children_rows[path_idx];
+                if (row.is_expanded()) {
+                    id_path = starting_id_path.concat(row.record.id);
+                    id_paths.push(id_path);
+                    id_paths = id_paths.concat(this.get_expanded_paths(path,
+                                id_path));
+                }
+            }
+            return id_paths;
+        },
+        find_row: function(path) {
+            var index;
+            var row = null;
+            var group = this.rows;
+            for (var i=0, len=path.length; i < len; i++) {
+                index = path[i];
+                if (!group || index >= group.length) {
+                    return null;
+                }
+                row = group[index];
+                group = row.rows;
+                if (!this.children_field) {
+                    break;
+                }
+            }
+            return row;
+        },
+        n_children: function(row) {
+            if (!row || !this.children_field) {
+                return this.rows.length;
+            }
+            return row.record._values[this.children_field].length;
         }
     });
 
@@ -276,6 +366,7 @@
             this.tree = tree;
             this.rows = [];
             this.record = record;
+            this.parent_ = parent;
             this.children_field = tree.children_field;
             this.expander = null;
             var path = [];
@@ -285,20 +376,37 @@
             path.push(pos);
             this.path = path.join('.');
             this.el = jQuery('<tr/>');
-            var td = jQuery('<td/>');
-            this.el.append(td);
-            this.selection = jQuery('<input/>', {
-                'type': 'checkbox',
-                'class': 'selection'
-            });
-            this.selection.change(this.selection_changed.bind(this));
-            td.append(this.selection);
+            if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
+                var td = jQuery('<td/>');
+                this.el.append(td);
+                this.selection = jQuery('<input/>', {
+                    'type': 'checkbox',
+                    'class': 'selection'
+                });
+                this.selection.change(this.selection_changed.bind(this));
+                td.append(this.selection);
+            }
         },
         is_expanded: function() {
             return (this.path in this.tree.expanded);
         },
-        display: function(selected) {
+        get_last_child: function() {
+            if (!this.children_field || !this.is_expanded() ||
+                    jQuery.isEmptyObject(this.rows)) {
+                return this;
+            }
+            return this.rows[this.rows.length - 1].get_last_child();
+        },
+        get_id_path: function() {
+            if (!this.parent_) {
+                return [this.record.id];
+            }
+            return this.parent_.get_id_path().concat([this.record.id]);
+        },
+        display: function(selected, expanded) {
             selected = selected || [];
+            expanded = expanded || [];
+            var idx;
             var depth = this.path.split('.').length;
             var update_expander = function() {
                 if (jQuery.isEmptyObject(
@@ -322,12 +430,13 @@
                 var row = jQuery('<tr/>');
                 table.append(row);
                 if ((i === 0) && this.children_field) {
-                    var expanded = 'ui-icon-plus';
-                    if (this.is_expanded()) {
-                        expanded = 'ui-icon-minus';
+                    var expanded_icon = 'ui-icon-plus';
+                    if (this.is_expanded() ||
+                            ~expanded.indexOf(this.record.id)) {
+                        expanded_icon = 'ui-icon-minus';
                     }
                     this.expander = jQuery('<span/>', {
-                        'class': 'ui-icon ' + expanded
+                        'class': 'ui-icon ' + expanded_icon
                     });
                     this.expander.html('&nbsp;');
                     this.expander.css('margin-left', (depth - 1) + 'em');
@@ -357,20 +466,28 @@
                 }
                 this.el.append(td);
             }
-            this.set_selection(~selected.indexOf(this.record));
-            this.tree.tbody.append(this.el);
-            if (this.is_expanded()) {
+            var row_id_path = this.get_id_path();
+            this.set_selection(Sao.common.contains(selected, row_id_path));
+            if (this.parent_) {
+                var last_child = this.parent_.get_last_child();
+                last_child.el.after(this.el);
+            } else {
+                this.tree.tbody.append(this.el);
+            }
+            if (this.is_expanded() ||
+                    Sao.common.contains(expanded, row_id_path)) {
+                this.tree.expanded[this.path] = this;
                 var add_children = function() {
                     var add_row = function(record, pos, group) {
                         var tree_row = new Sao.View.Tree.Row(this.tree, record,
                                 pos, this);
+                        tree_row.display(selected, expanded);
                         this.rows.push(tree_row);
-                        tree_row.display(selected);
                     };
-                    var children = this.record.field_get_client(children_field);
+                    var children = this.record.field_get_client(
+                            this.children_field);
                     children.forEach(add_row.bind(this));
                 };
-                var children_field = this.children_field;
                 this.record.load(this.children_field).done(
                         add_children.bind(this));
             }
@@ -393,25 +510,36 @@
             this.tree.display();
         },
         select_row: function(event_) {
-            if (!event_.ctrlKey) {
-                this.tree.rows.forEach(function(row) {
-                    if (row != this) {
-                        row.set_selection(false);
+            if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
+                this.tree.select_changed(this.record);
+                this.tree.switch_(this.path);
+            } else {
+                if (!event_.ctrlKey) {
+                    this.tree.rows.forEach(function(row) {
+                        if (row != this) {
+                            row.set_selection(false);
+                        }
+                    }.bind(this));
+                    this.selection_changed();
+                    if (this.is_selected()) {
+                        this.tree.switch_(this.path);
+                        return;
                     }
-                }.bind(this));
-                this.selection_changed();
-                if (this.is_selected()) {
-                    this.tree.switch_(this.path);
-                    return;
                 }
+                this.set_selection(!this.is_selected());
+                this.selection_changed();
             }
-            this.set_selection(!this.is_selected());
-            this.selection_changed();
         },
         is_selected: function() {
+            if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
+                return false;
+            }
             return this.selection.prop('checked');
         },
         set_selection: function(value) {
+            if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
+                return;
+            }
             this.selection.prop('checked', value);
             if (!value) {
                 this.tree.selection.prop('checked', false);
@@ -2435,6 +2563,9 @@
                 prm.resolve();
             }
             return prm;
+        },
+        set_value: function(record, field) {
+            this.screen.save_tree_state();
         }
     });
 

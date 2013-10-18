@@ -160,6 +160,10 @@ var Sao = {};
         jQuery('#user-preferences').children().remove();
         jQuery('#user-logout').children().remove();
         jQuery('#menu').children().remove();
+        if (Sao.main_menu_screen) {
+            Sao.main_menu_screen.save_tree_state();
+            Sao.main_menu_screen = null;
+        }
         session.do_logout();
         Sao.login();
     };
@@ -208,31 +212,17 @@ var Sao = {};
         var form = new Sao.Tab.Form(action.res_model, {
             'mode': ['tree'],
             'view_ids': view_ids,
-            'domain': domain
+            'domain': domain,
+            'selection_mode': Sao.common.SELECTION_NONE
         });
         form.view_prm.done(function() {
+            Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;
             view.table.find('th').hide();
-            var display = view.display;
-            var select_row = function(event_) {
-                this.tree.select_changed(this.record);
-                this.tree.switch_(this.path);
-            };
-            var set_select_row = function(row) {
-                row.select_row = select_row;
-                row.rows.forEach(set_select_row);
-            };
-            view.display = function() {
-                display.call(this);
-                view.table.children('tbody').children('tr'
-                    ).children('td:nth-child(1)').hide();
-                // TODO remove when shortcuts is implemented
-                view.table.children('tbody').children('tr'
-                    ).children('td:nth-child(3)').hide();
-                view.rows.forEach(set_select_row);
-            };
             jQuery('#menu').append(
                 form.screen.screen_container.content_box.detach());
         });
     };
+    Sao.main_menu_screen = null;
+
 }());

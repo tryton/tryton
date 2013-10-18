@@ -12,6 +12,10 @@
     Sao.common.F2_KEYCODE = 113;
     Sao.common.F3_KEYCODE = 114;
 
+    Sao.common.SELECTION_NONE = 1;
+    Sao.common.SELECTION_SINGLE = 2;  // Not implemented yet
+    Sao.common.SELECTION_MULTIPLE = 3;
+
     Sao.common.compare = function(arr1, arr2) {
         if (arr1.length != arr2.length) {
             return false;
@@ -26,6 +30,15 @@
             }
         }
         return true;
+    };
+
+    Sao.common.contains = function(array1, array2) {
+        for (var i = 0; i < array1.length; i++) {
+            if (Sao.common.compare(array1[i], array2)) {
+                return true;
+            }
+        }
+        return false;
     };
 
     // Find the intersection of two arrays.
