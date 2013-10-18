@@ -426,6 +426,10 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "LDMs"
 
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Producciones"
+
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr "Configuración de Producción"
@@ -465,7 +469,7 @@ msgstr "Solicitudes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
 msgid "Running"
-msgstr "En ejecución"
+msgstr "En Ejecución"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
@@ -490,7 +494,11 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
-msgstr "Producción"
+msgstr "Gestión de Producción"
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Producciones"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
