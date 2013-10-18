@@ -18,6 +18,10 @@ msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
 msgstr "Abgrechnete Zeilen können nicht gelöscht werden."
 
+msgctxt "error:timesheet.line:"
+msgid "You can not modify invoiced line."
+msgstr "Eine abgerechnete Zeile kann nicht geändert werden."
+
 msgctxt "field:project.work,hours_to_invoice:"
 msgid "Hours to Invoice"
 msgstr "Abrechenbare Stunden"
