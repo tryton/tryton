@@ -128,7 +128,7 @@ msgstr "Grupo"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr "A cada línea hay la clave y valor separados por \":\""
+msgstr "Clave y valor separados por \":\" en cada línea."
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
@@ -139,7 +139,7 @@ msgid "Attribute Sets"
 msgstr "Grupos de atributo"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
-msgid "Attribute Sets"
+msgid "Attributes"
 msgstr "Atributos"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
@@ -156,11 +156,11 @@ msgstr "Atributo producto - Grupo"
 
 msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
-msgstr "Grupo atributo de producto"
+msgstr "Grupo de atributos de producto"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Boolean"
-msgstr "Boleano"
+msgstr "Booleano"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Char"
