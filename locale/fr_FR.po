@@ -74,10 +74,6 @@ msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transactions"
 
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr "Lignes de mouvement comptable"
-
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
 msgstr "Nom"
@@ -210,6 +206,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Ligne de relevé comptable"
 
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Lignes de mouvement"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Relevés"
@@ -298,16 +298,16 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Autre information"
 
 msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Poster"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Remetter en brouillon"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
