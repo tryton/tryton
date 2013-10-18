@@ -12,7 +12,7 @@ msgstr "Activa"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
-msgstr "Balance"
+msgstr "Saldo"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
@@ -44,7 +44,7 @@ msgstr "Debe"
 
 msgctxt "field:analytic_account.account,display_balance:"
 msgid "Display Balance"
-msgstr "Mostrar balance"
+msgstr "Mostrar saldo"
 
 msgctxt "field:analytic_account.account,mandatory:"
 msgid "Mandatory"
@@ -100,7 +100,7 @@ msgstr "Movimientos realizados"
 
 msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
-msgstr "Exepción de movimientos"
+msgstr "Movimientos en excepción"
 
 msgctxt "field:purchase.line,moves:"
 msgid "Moves"
@@ -208,7 +208,7 @@ msgstr "Líneas"
 
 msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr "Asientos"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -280,7 +280,7 @@ msgstr "Debe - Haber"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
-msgstr "Cerrado"
+msgstr "Cerrada"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
@@ -324,7 +324,7 @@ msgstr "Basado en el pedido"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el envío"
+msgstr "Basado en el albarán"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
