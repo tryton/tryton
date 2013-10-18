@@ -8,7 +8,7 @@ msgstr "Método de Costo de Transporte"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Trasnportador de Producto"
+msgstr "Transportador de Producto"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
