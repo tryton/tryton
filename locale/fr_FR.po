@@ -99,7 +99,7 @@ msgstr "Nom"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
-msgstr "Facturation"
+msgstr "Méthod de facturation"
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Reference Sequence"
@@ -107,7 +107,7 @@ msgstr "Séquence de référence de vente"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
-msgstr "Expédition"
+msgstr "Méthod d'expédition"
 
 msgctxt "field:sale.configuration,write_date:"
 msgid "Write Date"
@@ -139,7 +139,7 @@ msgstr "ID"
 
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
-msgstr "Recréer les mouvements"
+msgstr "Recréer des mouvements"
 
 msgctxt "field:sale.line,amount:"
 msgid "Amount"
@@ -353,13 +353,17 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:sale.return_sale.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Commentaire"
 
 msgctxt "field:sale.sale,company:"
 msgid "Company"
-msgstr "Companie"
+msgstr "Société"
 
 msgctxt "field:sale.sale,create_date:"
 msgid "Create Date"
@@ -639,6 +643,14 @@ msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
 msgstr "Ventes"
 
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Ventes"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Ventes"
+
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
 msgstr "Expéditions"
@@ -652,8 +664,8 @@ msgid "Handle Invoice Exception"
 msgstr "Gérer l'exception de facture"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
-msgid "Create Return Sale"
-msgstr "Créer le retour de vente"
+msgid "Return Sale"
+msgstr "Retourner la vente"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -745,6 +757,10 @@ msgstr "Ligne de vente - Mouvement ignoré"
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Ligne de vente - Mouvement recréé"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Créer le retour de vente"
 
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
@@ -974,6 +990,10 @@ msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Recreated"
 msgstr "Recréé"
 
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Vente"
+
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "produits"
@@ -1018,6 +1038,14 @@ msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Lignes de vente"
 
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return those/this sale(s)?"
+msgstr "Êtes-vous sûr de retourner ces/cette vente(s) ?"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Return Sale"
+msgstr "Retourner la vente"
+
 msgctxt "view:sale.sale:"
 msgid "Cancel"
 msgstr "Annuler"
@@ -1048,7 +1076,7 @@ msgstr "Autre information"
 
 msgctxt "view:sale.sale:"
 msgid "Process"
-msgstr "Traitement"
+msgstr "Traiter"
 
 msgctxt "view:sale.sale:"
 msgid "Quote"
@@ -1085,3 +1113,11 @@ msgstr "Annuler"
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "Ok"
 msgstr "Ok"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "Retourner"
