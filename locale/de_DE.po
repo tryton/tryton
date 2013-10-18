@@ -46,10 +46,6 @@ msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transaktionen"
 
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr "Buchungsposten"
-
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
 msgstr "Name"
