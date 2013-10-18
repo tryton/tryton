@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
-msgstr "Envío directo"
+msgstr "Remito directo"
 
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
@@ -24,7 +24,7 @@ msgstr "Dirección envío"
 
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
@@ -36,11 +36,11 @@ msgstr "Dirección envío"
 
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
-msgstr "Secuencia de envío directo"
+msgstr "Secuencia de Remito directo"
 
 msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
@@ -116,15 +116,15 @@ msgstr "Usuario modificación"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
@@ -143,19 +143,19 @@ msgstr "En espera"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Envío directo"
+msgstr "Remito directo"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Envío directo"
+msgstr "Remito directo"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
-msgstr "Envío directo"
+msgstr "Remito directo"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
@@ -187,11 +187,11 @@ msgstr "Borrador"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipment"
-msgstr "Envío directo"
+msgstr "Remito directo"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Drop Shipments"
-msgstr "Envíos directos"
+msgstr "Remitos directos"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
