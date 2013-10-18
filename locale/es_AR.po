@@ -16,7 +16,7 @@ msgstr "Precios de costo"
 
 msgctxt "field:company.employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
@@ -32,7 +32,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:company.employee_cost_price,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de divisa"
+msgstr "Dígitos de moneda"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
