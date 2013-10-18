@@ -29,7 +29,7 @@ msgstr "El saldo final debe ser \"%s\"."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el extracto \"%s\" antes de borrar."
+msgstr "Debe cancelar el extracto \"%s\" antes de borrarlo."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -70,10 +70,6 @@ msgstr "Diario"
 msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transacciones"
-
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr "Apuntes"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -207,6 +203,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Línea de extracto bancario"
 
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr "Apuntes"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Todos los extractos"
@@ -295,16 +295,16 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Información adicional"
 
 msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Confirmar"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Restaurar a borrador"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
