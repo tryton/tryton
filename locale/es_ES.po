@@ -8,7 +8,11 @@ msgstr "La probabilidad debe estar entre 0 y 100."
 
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar la oportunidad \"%s\" antes de borrar."
+msgstr "Debe cancelar la oportunidad \"%s\" antes de borrarla."
+
+msgctxt "field:sale.configuration,sale_opportunity_sequence:"
+msgid "Opportunity Reference Sequence"
+msgstr "Secuencia referencia oportunidad"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -80,11 +84,15 @@ msgstr "Plazo de pago"
 
 msgctxt "field:sale.opportunity,probability:"
 msgid "Conversion Probability"
-msgstr "Probabilidad de conversión"
+msgstr "Probabilidad de éxito"
 
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:sale.opportunity,reference:"
+msgid "Reference"
+msgstr "Referencia"
 
 msgctxt "field:sale.opportunity,sale:"
 msgid "Sale"
@@ -164,7 +172,7 @@ msgstr "Tercero"
 
 msgctxt "field:sale.opportunity.history,probability:"
 msgid "Conversion Probability"
-msgstr "Probabilidad de conversión"
+msgstr "Probabilidad de éxito"
 
 msgctxt "field:sale.opportunity.history,rec_name:"
 msgid "Name"
@@ -252,19 +260,19 @@ msgstr "Empresa"
 
 msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
-msgstr "Tasa de importe convertido"
+msgstr "Porcentaje conseguido (sobre importe total)"
 
 msgctxt "field:sale.opportunity_employee,conversion_rate:"
 msgid "Conversion Rate"
-msgstr "Tasa de conversión"
+msgstr "Porcentaje conseguido (sobre el número)"
 
 msgctxt "field:sale.opportunity_employee,converted:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Conseguidas"
 
 msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
-msgstr "Importe convertido"
+msgstr "Importe conseguido"
 
 msgctxt "field:sale.opportunity_employee,create_date:"
 msgid "Create Date"
@@ -332,19 +340,19 @@ msgstr "Empresa"
 
 msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
-msgstr "Tasa de importe convertido"
+msgstr "Porcentaje conseguido (sobre importe total)"
 
 msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
 msgid "Conversion Rate"
-msgstr "Tasa de conversión"
+msgstr "Porcentaje conseguido (sobre el número)"
 
 msgctxt "field:sale.opportunity_employee_monthly,converted:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Conseguidas"
 
 msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
-msgstr "Importe convertido"
+msgstr "Importe conseguido"
 
 msgctxt "field:sale.opportunity_employee_monthly,create_date:"
 msgid "Create Date"
@@ -372,7 +380,7 @@ msgstr "ID"
 
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
-msgstr "Perdida"
+msgstr "Perdidas"
 
 msgctxt "field:sale.opportunity_employee_monthly,month:"
 msgid "Month"
@@ -416,11 +424,11 @@ msgstr "Tasa de conversión"
 
 msgctxt "field:sale.opportunity_monthly,converted:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Conseguidas"
 
 msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
-msgstr "Importe convertido"
+msgstr "Importe conseguido"
 
 msgctxt "field:sale.opportunity_monthly,create_date:"
 msgid "Create Date"
@@ -444,7 +452,7 @@ msgstr "ID"
 
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
-msgstr "Perdida"
+msgstr "Perdidas"
 
 msgctxt "field:sale.opportunity_monthly,month:"
 msgid "Month"
@@ -543,7 +551,7 @@ msgstr "Cancelada"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Conseguida"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
@@ -558,6 +566,14 @@ msgstr "Perdida"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
+msgstr "Oportunidades"
+
+msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
+msgid "Sale Opportunity"
+msgstr "Oportunidades"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
+msgid "Sale Opportunity"
 msgstr "Oportunidades"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
@@ -594,7 +610,7 @@ msgstr "Historial de oportunidades"
 
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
-msgstr "Línia de oportunidad"
+msgstr "Línea de oportunidad"
 
 msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
@@ -618,7 +634,7 @@ msgstr "Cancelada"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Conseguida"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
@@ -638,7 +654,7 @@ msgstr "Cancelada"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Converted"
-msgstr "Convertida"
+msgstr "Conseguida"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lead"
@@ -662,11 +678,11 @@ msgstr "Iniciativa/Oportunidad"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"
-msgstr "Línia iniciativa/oportunidad"
+msgstr "Línea iniciativa/oportunidad"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
-msgstr "Línias Iniciativas/Oportunidades"
+msgstr "Líneas Iniciativas/Oportunidades"
 
 msgctxt "view:sale.opportunity:"
 msgid "Cancel"
@@ -678,7 +694,7 @@ msgstr "Convertir a oportunidad"
 
 msgctxt "view:sale.opportunity:"
 msgid "Convert to Sale"
-msgstr "Convertir a pedido"
+msgstr "Convertir a pedido de venta"
 
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
@@ -710,7 +726,7 @@ msgstr "Oportunidades por empleado"
 
 msgctxt "view:sale.opportunity_employee_monthly:"
 msgid "Sale Opportunities per Month"
-msgstr "Oportunidades por mes"
+msgstr "Oportunidades por empleado y mes"
 
 msgctxt "view:sale.opportunity_monthly:"
 msgid "Sale Opportunities per Month"
