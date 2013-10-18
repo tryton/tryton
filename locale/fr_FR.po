@@ -8,7 +8,7 @@ msgstr "Un employé ne peut avoir qu'un seul prix de revient par date."
 
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
-msgstr "Prix de Revient"
+msgstr "Prix de revient"
 
 msgctxt "field:company.employee,cost_prices:"
 msgid "Cost Prices"
@@ -20,7 +20,7 @@ msgstr "Décimales de la devise"
 
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
-msgstr "Prix de Revient"
+msgstr "Prix de revient"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
