@@ -300,11 +300,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Parteikategorien"
+msgstr "Artikelkategorien"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Parteikategorien"
+msgstr "Artikelkategorien"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
