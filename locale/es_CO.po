@@ -52,7 +52,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
-msgstr "Formula"
+msgstr "Fórmula"
 
 msgctxt "field:product.price_list.line,id:"
 msgid "ID"
