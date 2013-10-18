@@ -426,6 +426,10 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Llistes de materials"
 
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Produccions"
+
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr "Configuració de la producció"
@@ -491,6 +495,10 @@ msgstr "Configuració"
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr "Producció"
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Produccions"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
@@ -674,7 +682,7 @@ msgstr "En espera"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "Ok"
-msgstr "D'acord"
+msgstr "Accepta"
 
 msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
@@ -686,7 +694,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "Ok"
-msgstr "D'acord"
+msgstr "Accepta"
 
 msgctxt "wizard_button:production.bom.tree.open,tree,end:"
 msgid "Close"
