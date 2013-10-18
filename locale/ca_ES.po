@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:res.user:"
 msgid "You can not set the password of ldap user \"%s\"."
 msgstr "No podeu establir la contrasenya de l'usuari \"%s\" d'ldap."
