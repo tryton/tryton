@@ -7,24 +7,23 @@ msgid ""
 "You cannot change the default uom for a product which is associated to stock"
 " moves."
 msgstr ""
-"No puede cambiar la UdM por defecto de un producto que está asociado con "
-"movimientos de stock."
+"No puede cambiar la UdM por defecto de un producto con movimientos de stock."
 
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "La cantidad de la línea debe ser positiva."
 
-msgctxt "error:stock.inventory.line:"
-msgid "Product must be unique by inventory."
-msgstr "El producto debe ser único en el inventario."
-
 msgctxt "error:stock.inventory:"
 msgid "Inventory \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el inventario \"%s\" antes de borrar."
+msgstr "Debe cancelar el inventario \"%s\" antes de borrarlo."
+
+msgctxt "error:stock.inventory:"
+msgid "Line \"%s\" is not unique on Inventory \"%s\"."
+msgstr "La línea \"%s\" no es única en el inventario \"%s\"."
 
 msgctxt "error:stock.location:"
 msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
-msgstr "La ubicación \"%(location)s\" debe ser un hijo del almacén \"%(warehouse)s\"."
+msgstr "La ubicación \"%(location)s\" debe ser hija del almacén \"%(warehouse)s\"."
 
 msgctxt "error:stock.location:"
 msgid ""
@@ -40,7 +39,7 @@ msgstr "La cantidad del movimiento interno debe ser positiva."
 
 msgctxt "error:stock.move:"
 msgid "Move quantity must be positive"
-msgstr "La cantidad a mover tiene que ser positiva."
+msgstr "La cantidad del movimiento tiene que ser positiva."
 
 msgctxt "error:stock.move:"
 msgid "Source and destination location must be different"
@@ -61,12 +60,18 @@ msgstr ""
 "\"%(period)s\" está cerrado."
 
 msgctxt "error:stock.move:"
-msgid ""
-"You can not modify stock move \"%s\"because it is in \"Assigned\", \"Done\" "
-"or \"Cancel\" state."
+msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
 msgstr ""
-"No puede modificar el movimiento de stock \"%s\" porque está en estado "
-"\"Asignado\", \"Realizado\" o \"Cancelado\"."
+"No puede establecer el movimiento de stock \"%s\" porque se encuentra en "
+"estado \"Asignado\"."
+
+msgctxt "error:stock.move:"
+msgid ""
+"You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
+" state."
+msgstr ""
+"No puede establecer el movimiento de stock \"%s\" porque se encuentra en "
+"estado \"Realizado\" o \"Cancelado\"."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
@@ -82,7 +87,7 @@ msgstr "No puede establecer el movimiento de stock \"%s\" al estado borrador."
 
 msgctxt "error:stock.period:"
 msgid "You can not close a period in the future or today."
-msgstr "No puede cerrar un período con fecha de hoy o proximamente."
+msgstr "No puede cerrar un período con fecha futura o de hoy."
 
 msgctxt "error:stock.period:"
 msgid "You can not close a period when there still are assigned moves."
@@ -91,30 +96,29 @@ msgstr ""
 
 msgctxt "error:stock.shipment.in.return:"
 msgid "Supplier Return Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el albarán devolución proveedor\"%s\" antes de borrar."
+msgstr "Debe cancelar el albarán devolución proveedor \"%s\" antes de borrarlo."
 
 msgctxt "error:stock.shipment.in:"
 msgid ""
 "Incoming Moves must have the warehouse input location as destination "
 "location."
 msgstr ""
-"Movimientos de entrada debe disponer de un almacén de entrada como ubicación"
-" destino."
+"Los movimientos de entrada indicar una ubicación de entrada como destino."
 
 msgctxt "error:stock.shipment.in:"
 msgid ""
 "Inventory Moves must have the warehouse input location as source location."
 msgstr ""
-"Los movimientos del inventario deben disponer de un almacén de entrada como "
-"ubicación incial."
+"Los movimientos de inventario deben  indicar una ubicación de entrada como "
+"origen."
 
 msgctxt "error:stock.shipment.in:"
 msgid "Supplier Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el albarán de proveedor \"%s\" antes de borrar."
+msgstr "Debe cancelar el albarán de proveedor \"%s\" antes de borrarlo."
 
 msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el albarán interno \"%s\" antes de borrar."
+msgstr "Debe cancelar el albarán interno \"%s\" antes de borrarlo."
 
 msgctxt "error:stock.shipment.out.return.create:"
 msgid "The shipment with code \"%s\" is not yet sent."
@@ -126,11 +130,11 @@ msgstr "No puede crear albarán de devolución."
 
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el albarán devolución de cliente \"%s\" antes de borrar."
+msgstr "Debe cancelar el albarán devolución de cliente \"%s\" antes de borrarlo."
 
 msgctxt "error:stock.shipment.out:"
 msgid "Customer Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el albarán de cliente \"%s\" antes de borrar."
+msgstr "Debe cancelar el albarán de cliente \"%s\" antes de borrarlo."
 
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
@@ -668,6 +672,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr "Orígen"
+
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Fecha estimada"
@@ -698,11 +706,11 @@ msgstr "Almacén"
 
 msgctxt "field:stock.shipment.in,warehouse_input:"
 msgid "Warehouse Input"
-msgstr "Almacén entrada"
+msgstr "Almacén-ubicación de entrada"
 
 msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Almacén interno"
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.shipment.in,write_date:"
 msgid "Write Date"
@@ -743,6 +751,10 @@ msgstr "ID"
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
+msgstr "Orígen"
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
@@ -886,11 +898,15 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
-msgstr "Movimientos internos"
+msgstr "Movimientos de inventario"
 
 msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr "Origen"
 
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
@@ -918,11 +934,11 @@ msgstr "Almacén"
 
 msgctxt "field:stock.shipment.out,warehouse_output:"
 msgid "Warehouse Output"
-msgstr "Almacén salida"
+msgstr "Ubicación de salida"
 
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Almacén interno"
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.shipment.out,write_date:"
 msgid "Write Date"
@@ -988,6 +1004,10 @@ msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
+msgstr "Orígen"
+
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
 msgstr "Fecha estimada"
@@ -1010,11 +1030,11 @@ msgstr "Almacén"
 
 msgctxt "field:stock.shipment.out.return,warehouse_input:"
 msgid "Warehouse Input"
-msgstr "Almacén entrada"
+msgstr "Ubicación de entrada"
 
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
-msgstr "Almacén interno"
+msgstr "Ubicación de almacenamiento"
 
 msgctxt "field:stock.shipment.out.return,write_date:"
 msgid "Write Date"
@@ -1080,7 +1100,7 @@ msgstr "Configuración de períodos"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr "Unidades de producto por almazén"
+msgstr "Unidades de producto por almacén"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
@@ -1112,7 +1132,7 @@ msgstr "Albaranes proveedor"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Albaranes cliente devolución"
+msgstr "Albaranes devolución cliente "
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
@@ -1148,7 +1168,7 @@ msgstr "Producto por ubicación"
 
 msgctxt "model:ir.action,name:wizard_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr "Unidades de producto por almazén"
+msgstr "Unidades de producto por almacén"
 
 msgctxt "model:ir.action,name:wizard_products_by_locations"
 msgid "Products by Locations"
@@ -1291,7 +1311,7 @@ msgstr "Recibido"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Albarán de proveedor"
+msgstr "Albarán proveedor"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
@@ -1363,7 +1383,7 @@ msgstr "Albaranes proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Devolución"
+msgstr "Devoluciones"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1375,7 +1395,7 @@ msgstr "Albaranes cliente"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Devolución"
+msgstr "Devoluciones"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -1427,7 +1447,7 @@ msgstr "Zona de entrada"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr "Perdido y encontrado"
+msgstr "Perdido/encontrado"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
@@ -1459,11 +1479,11 @@ msgstr "Período stock precalculado"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Unidades de producto por almazén"
+msgstr "Unidades de producto por almacén"
 
 msgctxt "model:stock.product_quantities_warehouse.start,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Unidades de producto por almazén"
+msgstr "Unidades de producto por almacén"
 
 msgctxt "model:stock.products_by_locations.start,name:"
 msgid "Products by Locations"
@@ -1655,7 +1675,7 @@ msgstr "Número de albarán:"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "VAT Number:"
-msgstr "Número CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "/"
@@ -1707,7 +1727,7 @@ msgstr "A ubicación"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "VAT Number:"
-msgstr "Número CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
@@ -1718,8 +1738,16 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ":"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Código:"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
+msgstr "Cliente"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "E-Mail:"
@@ -1754,16 +1782,12 @@ msgid "Restocking List"
 msgstr "Lista reabastecimiento"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Supplier:"
-msgstr "Proveedor:"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
 msgstr "A ubicación"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "VAT Number:"
-msgstr "Número CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
@@ -2023,11 +2047,11 @@ msgstr "Períodos"
 
 msgctxt "view:stock.product_quantities_warehouse.start:"
 msgid "Product Quantities By Warehouse"
-msgstr "Unidades de producto por almazén"
+msgstr "Unidades de producto por almacén"
 
 msgctxt "view:stock.product_quantities_warehouse:"
 msgid "Product Quantities By Warehouse"
-msgstr "Unidades de producto por almazén"
+msgstr "Unidades de producto por almacén"
 
 msgctxt "view:stock.products_by_locations.start:"
 msgid "Products by Locations"
