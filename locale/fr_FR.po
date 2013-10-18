@@ -32,11 +32,11 @@ msgstr "Le nombre limit de mouvements"
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Division du mouvement"
+msgstr "Diviser le mouvement"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Division du mouvement"
+msgstr "Diviser le mouvement"
 
 msgctxt "view:stock.move.split.start:"
 msgid "Split Move"
@@ -44,7 +44,7 @@ msgstr "Diviser le mouvement"
 
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr "diviser"
+msgstr "Diviser"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
