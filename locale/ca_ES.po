@@ -350,6 +350,10 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:sale.return_sale.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Comentari"
@@ -622,7 +626,7 @@ msgstr "Tercers amb vendes"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Retorna"
+msgstr "Devolució"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
@@ -633,6 +637,14 @@ msgid "Sales"
 msgstr "Vendes"
 
 msgctxt "model:ir.action,name:act_sale_form2"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Vendes"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
 msgstr "Vendes"
 
@@ -649,8 +661,8 @@ msgid "Handle Invoice Exception"
 msgstr "Gestiona excepció de factura"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
-msgid "Create Return Sale"
-msgstr "Crea comanda d'abonament"
+msgid "Return Sale"
+msgstr "Devolució comanda"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -742,6 +754,10 @@ msgstr "Línia de venda - Moviment ignorat"
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Línia de venda - Moviment recreat"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Devolució comanda"
 
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
@@ -971,6 +987,10 @@ msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Recreated"
 msgstr "Recreat"
 
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Venda"
+
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Productes"
@@ -1014,6 +1034,14 @@ msgstr "Línia de venda"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Línies de venda"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return those/this sale(s)?"
+msgstr "Esteu segur de retornar aquestes comandes?"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Return Sale"
+msgstr "Devolució comanda"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
@@ -1082,3 +1110,11 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "Ok"
 msgstr "Accepta"
+
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr "Devolució"
