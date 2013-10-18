@@ -7,7 +7,7 @@ msgid ""
 "Can not have many accounts with the same root or a missing mandatory root "
 "account on \"%s\"."
 msgstr ""
-"No se puede tener muchos cuentas con la misma raíz o sin una cuenta raíz "
+"No se puede tener muchas cuentas con la misma raíz o falta una cuenta raíz "
 "obligatoria en \"%s\"."
 
 msgctxt "error:analytic_account.line:"
@@ -20,7 +20,7 @@ msgstr "No puede crear una línea de movimiento usando una cuenta inactiva \"%s\
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
-msgstr "No puede crear un apunte utilizando la cuenta de vista \"%s\"."
+msgstr "No puede crear un apunte utilizando la cuenta tipo vista \"%s\"."
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
