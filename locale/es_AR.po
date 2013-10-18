@@ -16,7 +16,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
