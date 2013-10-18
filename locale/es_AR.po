@@ -14,13 +14,13 @@ msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "La cantidad de la línea debe ser positiva."
 
-msgctxt "error:stock.inventory.line:"
-msgid "Product must be unique by inventory."
-msgstr "El producto debe ser único por inventario."
-
 msgctxt "error:stock.inventory:"
 msgid "Inventory \"%s\" must be cancelled before deletion."
 msgstr "Debe cancelar el inventario «%s» antes de eliminar."
+
+msgctxt "error:stock.inventory:"
+msgid "Line \"%s\" is not unique on Inventory \"%s\"."
+msgstr "La línea «%s» no es única en el inventario «%s»."
 
 msgctxt "error:stock.location:"
 msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
@@ -63,12 +63,18 @@ msgstr ""
 "está cerrado."
 
 msgctxt "error:stock.move:"
-msgid ""
-"You can not modify stock move \"%s\"because it is in \"Assigned\", \"Done\" "
-"or \"Cancel\" state."
+msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
 msgstr ""
-"No puede modificar el movimiento de stock «%s» porque está en estado "
-"«Asignado», «Realizado» o «Cancelado»."
+"No puede modificar el movimiento de stock «%s» porque se encuentra en estado"
+" «Asignado»."
+
+msgctxt "error:stock.move:"
+msgid ""
+"You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
+" state."
+msgstr ""
+"No puede modificar el movimiento de stock «%s» porque se encuentra en estado"
+" «Realizado» o «Cancelado»."
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
@@ -94,7 +100,7 @@ msgstr ""
 msgctxt "error:stock.shipment.in.return:"
 msgid "Supplier Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Debe cancelar el envío de devolución a proveedor «%s» antes de eliminar."
+"Debe cancelar el Remito de devolución a proveedor «%s» antes de eliminar."
 
 msgctxt "error:stock.shipment.in:"
 msgid ""
@@ -113,28 +119,28 @@ msgstr ""
 
 msgctxt "error:stock.shipment.in:"
 msgid "Supplier Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el envío de proveedor «%s» antes de eliminar."
+msgstr "Debe cancelar el Remito de proveedor «%s» antes de eliminar."
 
 msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el envío interno «%s» antes de eliminar."
+msgstr "Debe cancelar el Remito interno «%s» antes de eliminar."
 
 msgctxt "error:stock.shipment.out.return.create:"
 msgid "The shipment with code \"%s\" is not yet sent."
-msgstr "El envío con código «%s» todavía no se ha enviado."
+msgstr "El remito con código «%s» todavía no se ha enviado."
 
 msgctxt "error:stock.shipment.out.return.create:"
 msgid "You can not create return shipment"
-msgstr "No puede crear paquetes de retorno"
+msgstr "No puede crear remito de devolución"
 
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Debe cancelar el envío de devolución de cliente «%s» antes de eliminar."
+"Debe cancelar el Remito de devolución de cliente «%s» antes de eliminar."
 
 msgctxt "error:stock.shipment.out:"
 msgid "Customer Shipment \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar el envío de cliente «%s» antes de eliminar."
+msgstr "Debe cancelar el Remito de cliente «%s» antes de eliminar."
 
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
@@ -198,23 +204,23 @@ msgstr "Nombre"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Secuencia de envío de devolución a proveedor"
+msgstr "Secuencia de Remito de devolución a proveedor"
 
 msgctxt "field:stock.configuration,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Secuencia de envío de proveedor"
+msgstr "Secuencia de Remito de proveedor"
 
 msgctxt "field:stock.configuration,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Secuencia de envío interno"
+msgstr "Secuencia de Remito interno"
 
 msgctxt "field:stock.configuration,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Secuencia de envío de devolución de cliente"
+msgstr "Secuencia de Remito de devolución de cliente"
 
 msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Secuencia de envío a cliente"
+msgstr "Secuencia de Remito a cliente"
 
 msgctxt "field:stock.configuration,write_date:"
 msgid "Write Date"
@@ -426,7 +432,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 msgctxt "field:stock.move,effective_date:"
 msgid "Effective Date"
@@ -470,7 +476,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
-msgstr "Envío"
+msgstr "Remito"
 
 msgctxt "field:stock.move,state:"
 msgid "State"
@@ -672,6 +678,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr "Origen"
+
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Fecha estimada"
@@ -747,6 +757,10 @@ msgstr "ID"
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
+msgstr "Origen"
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
@@ -896,6 +910,10 @@ msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Movimientos"
 
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr "Origen"
+
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr "Movimientos de salida"
@@ -991,6 +1009,10 @@ msgstr "Movimientos de inventario"
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Movimientos"
+
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
+msgstr "Origen"
 
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
@@ -1093,31 +1115,31 @@ msgstr "Productos"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Envíos de proveedor"
+msgstr "Remitos de proveedor"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Envíos de devolución a proveedor"
+msgstr "Remitos de devolución a proveedor"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Envíos internos"
+msgstr "Remitos internos"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Envíos a cliente"
+msgstr "Remitos a cliente"
 
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Envíos a cliente"
+msgstr "Remitos a cliente"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Envíos de proveedor"
+msgstr "Remitos de proveedor"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Envíos de devoluciones de cliente"
+msgstr "Remitos de devolución de cliente"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
@@ -1125,7 +1147,7 @@ msgstr "Configuración de stock"
 
 msgctxt "model:ir.action,name:create_shipment_out_return"
 msgid "Create Return Shipment"
-msgstr "Crear envío de devolución"
+msgstr "Crear Remito de devolución"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
@@ -1133,7 +1155,7 @@ msgstr "Lista reabastecimiento"
 
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Envío interno"
+msgstr "Remito interno"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
@@ -1161,15 +1183,15 @@ msgstr "Productos por ubicaciones"
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
-msgstr "Asignar envío de devolución de compra"
+msgstr "Asignar Remito de devolución de compra"
 
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
 msgid "Assign Shipment Internal"
-msgstr "Asignar envío interno"
+msgstr "Asignar Remito interno"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Shipment Out"
-msgstr "Asignación de envío de salida"
+msgstr "Asignación de Remito de salida"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
@@ -1296,43 +1318,43 @@ msgstr "Recibido"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Envío de proveedor"
+msgstr "Remito de proveedor"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Envío de devolución a proveedor"
+msgstr "Remito de devolución a proveedor"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Envío interno"
+msgstr "Remito interno"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr "Envío a cliente"
+msgstr "Remito a cliente"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Envío de devolución de cliente"
+msgstr "Remito de devolución de cliente"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Envío de proveedor"
+msgstr "Remito de proveedor"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Envío de devolución a proveedor"
+msgstr "Remito de devolución a proveedor"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Envío interno"
+msgstr "Remito interno"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr "Envío a cliente"
+msgstr "Remito a cliente"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Envío de devolución de cliente"
+msgstr "Remito de devolución de cliente"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -1364,23 +1386,23 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Envíos de proveedor"
+msgstr "Remitos de proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Envíos de devolución a proveedor"
+msgstr "Devoluciones a proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Envíos internos"
+msgstr "Remitos internos"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Envíos a cliente"
+msgstr "Remitos a cliente"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Envíos de devolución de cliente"
+msgstr "Devoluciones de cliente"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -1476,35 +1498,35 @@ msgstr "Productos por ubicaciones"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
-msgstr "Envío de proveedor"
+msgstr "Remito de proveedor"
 
 msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
-msgstr "Envío de devolución a proveedor"
+msgstr "Remito de devolución a proveedor"
 
 msgctxt "model:stock.shipment.in.return.assign.failed,name:"
 msgid "Assign Supplier Return Shipment"
-msgstr "Asignar envío de devolución de proveedor"
+msgstr "Asignar Remito de devolución de proveedor"
 
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
-msgstr "Envío interno"
+msgstr "Remito interno"
 
 msgctxt "model:stock.shipment.internal.assign.failed,name:"
 msgid "Assign Shipment Internal"
-msgstr "Asignar envío interno"
+msgstr "Asignar Remito interno"
 
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
-msgstr "Envío a cliente"
+msgstr "Remito a cliente"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
 msgid "Assign Shipment Out"
-msgstr "Asignación de envío de salida"
+msgstr "Asignación de Remito de salida"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
-msgstr "Envío de devolución de cliente"
+msgstr "Remito de devolución de cliente"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "/"
@@ -1584,7 +1606,7 @@ msgstr "Desde ubicación:"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Internal Shipment"
-msgstr "Envío interno"
+msgstr "Remito interno"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "Phone:"
@@ -1656,7 +1678,7 @@ msgstr "Referencia:"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "Shipment Number:"
-msgstr "Número de envío:"
+msgstr "Número de Remito:"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "VAT Number:"
@@ -1723,8 +1745,16 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ":"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Código:"
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
+msgstr "Cliente"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "E-Mail:"
@@ -1757,10 +1787,6 @@ msgstr "Referencia:"
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Lista reabastecimiento"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Supplier:"
-msgstr "Proveedor:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
@@ -2064,11 +2090,11 @@ msgstr "Borrador"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Supplier Return Shipment"
-msgstr "Envío de devolución a proveedor"
+msgstr "Remito de devolución a proveedor"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Supplier Return Shipments"
-msgstr "Envíos de devolución a proveedor"
+msgstr "Remitos de devolución a proveedor"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
@@ -2100,11 +2126,11 @@ msgstr "Restablecer a borrador"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Supplier Shipment"
-msgstr "Envío de proveedor"
+msgstr "Remito de proveedor"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Supplier Shipments"
-msgstr "Envíos de proveedor"
+msgstr "Remitos de proveedor"
 
 msgctxt "view:stock.shipment.internal.assign.failed:"
 msgid "Unable to Assign"
@@ -2132,11 +2158,11 @@ msgstr "Borrador"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Internal Shipment"
-msgstr "Envío interno"
+msgstr "Remito interno"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Internal Shipments"
-msgstr "Envíos internos"
+msgstr "Remitos internos"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Waiting"
@@ -2156,11 +2182,11 @@ msgstr "Cancelar"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Customer Return Shipment"
-msgstr "Envío de devolución de cliente"
+msgstr "Remito de devolución de cliente"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Customer Return Shipments"
-msgstr "Envíos de devolución de cliente"
+msgstr "Remitos de devolución de cliente"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Done"
@@ -2192,11 +2218,11 @@ msgstr "Cancelar"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Customer Shipment"
-msgstr "Envío a cliente"
+msgstr "Remito a cliente"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Customer Shipments"
-msgstr "Envíos a cliente"
+msgstr "Remitos a cliente"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Done"
