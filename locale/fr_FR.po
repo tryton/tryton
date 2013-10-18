@@ -32,7 +32,7 @@ msgstr "Sélection"
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
-msgstr "Selection JSON"
+msgstr "Sélection JSON"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
@@ -124,7 +124,7 @@ msgstr "Attributs"
 
 msgctxt "field:product.template,attribute_set:"
 msgid "Set"
-msgstr "Set"
+msgstr "Ensemble"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -139,8 +139,8 @@ msgid "Attribute Sets"
 msgstr "Ensembles d'attributs"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
-msgid "Attribute Sets"
-msgstr "Ensembles d'attributs"
+msgid "Attributes"
+msgstr "Attributs"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
@@ -148,7 +148,7 @@ msgstr "Ensembles d'attributs"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
-msgstr "Attribut produit"
+msgstr "Attribut de produit"
 
 msgctxt "model:product.attribute-product.attribute-set,name:"
 msgid "Product Attribute - Set"
@@ -160,11 +160,11 @@ msgstr "Ensemble attribut produit"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Boolean"
-msgstr "Boolean"
+msgstr "Booléen"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Char"
-msgstr "Char"
+msgstr "Caractères"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Date"
@@ -172,23 +172,23 @@ msgstr "Date"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "DateTime"
-msgstr "DateTime"
+msgstr "Date et heure"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Float"
-msgstr "Float"
+msgstr "Flotant"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Integer"
-msgstr "Integer"
+msgstr "Entier"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Numeric"
-msgstr "Numeric"
+msgstr "Numérique"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr "Selection"
+msgstr "Sélection"
 
 msgctxt "view:product.attribute.set:"
 msgid "Attribute Set"
