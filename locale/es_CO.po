@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
-msgstr "Período de Provisión"
+msgstr "Período de Abastecimiento"
 
 msgctxt "field:production.create_request.start,id:"
 msgid "ID"
@@ -12,11 +12,11 @@ msgstr "ID"
 
 msgctxt "help:production.configuration,supply_period:"
 msgid "In number of days"
-msgstr "En número de días."
+msgstr "En número de días"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr ""
+msgstr "Órdenes de Producción"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
