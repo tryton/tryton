@@ -2496,7 +2496,7 @@ msgstr "Long terme"
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_minimal"
 msgid "Minimal Account Type Chart"
-msgstr "Type de plan comptable minimal"
+msgstr "Plan de type de compte minimal"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_off_balance"
@@ -2670,7 +2670,7 @@ msgstr "Code de taxe"
 
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr "Ouvrir le plan de taxes"
+msgstr "Ouvrir le plan de codes de taxe"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
