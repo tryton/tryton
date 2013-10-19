@@ -36,15 +36,15 @@ msgstr "Impuestos del Cliente"
 
 msgctxt "field:product.category,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr "Impuestos del Cliente Usados"
+msgstr "Impuestos del Cliente Aplicados"
 
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr "Impuestos a Proveedores"
+msgstr "Impuestos del Proveedor"
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Impuestos del Cliente Usados"
+msgstr "Impuestos del Proveedor Aplicados"
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
@@ -140,19 +140,19 @@ msgstr "Impuestos del Cliente"
 
 msgctxt "field:product.template,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr "Impuestos del Cliente Usados"
+msgstr "Impuestos del Cliente Aplicados"
 
 msgctxt "field:product.template,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr "Impuestos a Proveedores"
+msgstr "Impuestos del Proveedor"
 
 msgctxt "field:product.template,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Impuestos del Cliente Usados"
+msgstr "Impuestos del Proveedor Aplicados"
 
 msgctxt "field:product.template,taxes_category:"
 msgid "Use Category's Taxes"
-msgstr "Categorías de Impuesto"
+msgstr "Usar Categorías de Impuesto"
 
 msgctxt "field:product.template-customer-account.tax,create_date:"
 msgid "Create Date"
@@ -244,11 +244,11 @@ msgstr "Usar los impuestos definidos en la categoría"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
-msgstr "Categoría - Impuestos Cliente"
+msgstr "Categoría - Impuestos de Cliente"
 
 msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
-msgstr "Categoría - Impuestos Proveedor"
+msgstr "Categoría - Impuesto de Proveedor"
 
 msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
