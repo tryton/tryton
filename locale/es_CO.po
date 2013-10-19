@@ -17,16 +17,18 @@ msgstr ""
 "porque hay actualmente facturas confirmadas en este año fiscal."
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund a supplier invoice/credit note."
-msgstr ""
-"Usted no puede abonar con un reembolso una nota credito/factura de "
-"proveedor."
-
-msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
 "Usted no puede abonar con el reembolso de la factura \"%s\" porque ha sido "
 "pagada."
+
+msgctxt "error:account.invoice.credit:"
+msgid ""
+"You can not credit with refund invoice \"%s\" because it is a supplier "
+"invoice/credit note."
+msgstr ""
+"No puede acreditar con un reembolso la factura \"%s\" porque es una nota "
+"credito/factura de proveedor."
 
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
@@ -101,6 +103,10 @@ msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
 msgstr "Línea inválida \"%(line)s\" en forma de pago \"%(term)s\"."
 
 msgctxt "error:account.invoice.payment_term:"
+msgid "Last line of payment term \"%s\" must be of type remainder."
+msgstr "La última línea de la forma de pago \"%s\" debe ser del tipo saldo."
+
+msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr "Falta linea de residuo en forma de pago \"%s\"."
 
@@ -149,6 +155,12 @@ msgid ""
 msgstr ""
 "No puede modificar los impuestos \"%(tax)s\" de la factura \"%(invoice)s\" "
 "porque esta abierta o pagada!"
+
+msgctxt "error:account.invoice:"
+msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
+msgstr ""
+"La nota crédito/factura de cliente \"%s\" no puede ser cancelada una vez "
+"registrada."
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -372,6 +384,10 @@ msgstr "Asiento"
 msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Número"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr "Orígenes"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -839,7 +855,7 @@ msgstr "Cuenta"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
@@ -954,8 +970,8 @@ msgid "Invoice - Payment Line"
 msgstr "Factura - Línea de pago"
 
 msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice Init"
-msgstr "Inicializar Factura Credito"
+msgid "Credit Invoice"
+msgstr "Factura Credito"
 
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
@@ -1146,6 +1162,10 @@ msgid "Payment Terms"
 msgstr "Formas de Pago"
 
 msgctxt "odt:account.invoice:"
+msgid ":"
+msgstr ":"
+
+msgctxt "odt:account.invoice:"
 msgid "Amount"
 msgstr "Cantidad"
 
@@ -1218,6 +1238,10 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 msgctxt "odt:account.invoice:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
 msgstr "Nota Crédito del Proveedor N°:"
 
@@ -1259,11 +1283,11 @@ msgstr "NIT:"
 
 msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Credit Note"
-msgstr ""
+msgstr "Nota Credito de Proveedor Validad"
 
 msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Invoice"
-msgstr ""
+msgstr "Factura de Proveedor Validada"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
@@ -1300,6 +1324,11 @@ msgstr "Nota Crédito del Proveedor"
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
 msgstr "Factura de Proveedor"
+
+#, fuzzy
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid ""
+msgstr "Punto de Orden"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"
@@ -1521,11 +1550,11 @@ msgstr "Impuestos"
 
 msgctxt "view:account.invoice:"
 msgid "Also known as Pro Forma"
-msgstr ""
+msgstr "Tambien conocido como Pro Forma"
 
 msgctxt "view:account.invoice:"
 msgid "Are you sure to cancel the invoice?"
-msgstr ""
+msgstr "Esta seguro que desea cancelar la factura?"
 
 msgctxt "view:account.invoice:"
 msgid "Invoice"
@@ -1543,7 +1572,6 @@ msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Pago"
 
-#, fuzzy
 msgctxt "view:account.invoice:"
 msgid "Validate"
 msgstr "Validar"
@@ -1562,7 +1590,7 @@ msgstr "_Pago"
 
 msgctxt "view:account.invoice:"
 msgid "_Post"
-msgstr ""
+msgstr "Registrar"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
