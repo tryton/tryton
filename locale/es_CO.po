@@ -430,77 +430,66 @@ msgctxt "selection:account.asset,state:"
 msgid "Running"
 msgstr "En ejecución"
 
-#, fuzzy
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves"
 msgstr "Crear Asiento de Activos"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr ""
+msgstr "Crear Asientos de Activos Hasta"
 
-#, fuzzy
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
 msgstr "Línea de Activo"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Lines"
-msgstr ""
+msgstr "Líneas de Activo"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
-msgstr ""
+msgstr "Asiento de Depreciación de Activo"
 
-#, fuzzy
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
 msgstr "Actualizar Activo"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Asset"
 msgstr "Activo"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Assets"
 msgstr "Activos"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
-msgstr ""
+msgstr "Limpiar Líneas"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Close"
 msgstr "Cerrar"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr ""
+msgstr "Crear Líneas"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Líneas de Inventario"
+msgstr "Líneas"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Other Info"
 msgstr "Información Adicional"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Run"
 msgstr "Ejecutar"
 
-#, fuzzy
 msgctxt "view:account.asset:"
 msgid "Update Asset"
 msgstr "Actualizar Activo"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Depreciation"
 msgstr "Depreciación"
