@@ -2,7 +2,7 @@
 <tryton>
     <data>
         <record model="account.account.type.template" id="fr">
-            <field name="name">French Account Type Chart</field>
+            <field name="name">Plan de types de compte (French)</field>
             <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="actif">
@@ -684,7 +684,7 @@
             <field name="parent" ref="fr"/>
         </record>
         <record model="account.account.template" id="root">
-            <field name="name">French Chart</field>
+            <field name="name">Plan comptable (French)</field>
             <field name="kind">view</field>
             <field name="type" ref="fr"/>
         </record>

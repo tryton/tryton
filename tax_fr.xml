@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="account.tax.code.template" id="tax_code_fr">
-            <field name="name">French Tax Code Chart</field>
+            <field name="name">Plan de codes de taxe (French)</field>
             <field name="account" ref="root"/>
         </record>
 
