@@ -24,6 +24,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="currency"/>
             <label name="mandatory"/>
             <field name="mandatory"/>
+            <field name="childs" colspan="4" view_ids="analytic_account.account_view_list"/>
         </page>
         <page string="Notes" id="notes">
             <field name="note"/>
