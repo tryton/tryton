@@ -44,7 +44,7 @@ setup(name='trytond_account_de_skr03',
         ],
     package_data={
         'trytond.modules.account_de_skr03': (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po']),
+            + ['tryton.cfg']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
