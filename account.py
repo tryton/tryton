@@ -287,10 +287,15 @@ class Account(ModelSQL, ModelView):
         parent.remove(element_accounts)
 
     @classmethod
-    def analytic_accounts_fields_get(cls, field, fields_names=None):
+    def analytic_accounts_fields_get(cls, field, fields_names=None,
+            states=None, required_states=None):
         res = {}
         if fields_names is None:
             fields_names = []
+        if states is None:
+            states = {}
+
+        encoder = PYSONEncoder()
 
         root_accounts = cls.search([
                 ('parent', '=', None),
@@ -299,7 +304,13 @@ class Account(ModelSQL, ModelView):
             name = 'analytic_account_' + str(account.id)
             if name in fields_names or not fields_names:
                 res[name] = field.copy()
-                res[name]['required'] = account.mandatory
+                field_states = states.copy()
+                if account.mandatory:
+                    if required_states:
+                        field_states['required'] = required_states
+                    else:
+                        field_states['required'] = True
+                res[name]['states'] = encoder.encode(field_states)
                 res[name]['string'] = account.name
                 res[name]['relation'] = cls.__name__
                 res[name]['domain'] = PYSONEncoder().encode([
