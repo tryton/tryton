@@ -42,6 +42,11 @@ msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
 msgstr "Записано от"
 
+#, fuzzy
+msgctxt "field:stock.inventory.line,lot:"
+msgid "Lot"
+msgstr "Партида"
+
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
@@ -49,6 +54,11 @@ msgstr "Създадено на"
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.lot,forecast_quantity:"
+msgid "Forecast Quantity"
+msgstr "Планирано количество"
 
 msgctxt "field:stock.lot,id:"
 msgid "ID"
@@ -61,6 +71,11 @@ msgstr "Номер"
 msgctxt "field:stock.lot,product:"
 msgid "Product"
 msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.lot,quantity:"
+msgid "Quantity"
+msgstr "Количество"
 
 msgctxt "field:stock.lot,rec_name:"
 msgid "Name"
@@ -110,6 +125,65 @@ msgctxt "field:stock.move,lot:"
 msgid "Lot"
 msgstr "Партида"
 
+msgctxt "field:stock.period,lot_caches:"
+msgid "Lot Caches"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,internal_quantity:"
+msgid "Internal Quantity"
+msgstr "Вътрешно количество"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,location:"
+msgid "Location"
+msgstr "Местоположение"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,lot:"
+msgid "Lot"
+msgstr "Партида"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,period:"
+msgid "Period"
+msgstr "Период"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,product:"
+msgid "Product"
+msgstr "Продукт"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,rec_name:"
+msgid "Name"
+msgstr "Име на прикачен файл"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:stock.period.cache.lot,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
 msgstr "Вида местонахождение за което е необходима партидата"
@@ -154,6 +228,10 @@ msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
 msgstr "Доставчик"
 
+msgctxt "model:stock.period.cache.lot,name:"
+msgid "Stock Period Cache per Lot"
+msgstr ""
+
 msgctxt "view:product.product:"
 msgid "Lots"
 msgstr "Партиди"
@@ -170,3 +248,11 @@ msgstr "Партида"
 msgctxt "view:stock.lot:"
 msgid "Lots"
 msgstr "Партиди"
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Cache"
+msgstr ""
+
+msgctxt "view:stock.period.cache.lot:"
+msgid "Period Lot Caches"
+msgstr ""
