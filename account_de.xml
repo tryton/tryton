@@ -2,7 +2,7 @@
 <tryton>
     <data>
         <record model="account.account.type.template" id="type_balance">
-            <field name="name">Chart of Account Types SKR03 (Germany)</field>
+            <field name="name">Kontentypenplan SKR03 (Germany)</field>
             <field name="balance_sheet" eval="True"/>
             <field name="sequence">10</field>
         </record>
@@ -618,7 +618,7 @@
             <field name="sequence">10</field>
         </record>
         <record model="account.account.template" id="root_de">
-            <field name="name">Chart of Accounts SKR03 (Germany)</field>
+            <field name="name">Kontenplan SKR03 (Germany)</field>
             <field name="deferral" eval="False"/>
             <field name="kind">view</field>
             <field name="type" ref="type_balance"/>
@@ -9668,7 +9668,7 @@
             <field name="parent" ref="view_income_1240"/>
         </record>
         <record model="account.tax.code.template" id="tax_code_USTVA">
-            <field name="name">Chart of Tax Codes SKR03 (Germany)</field>
+            <field name="name">Kennzifferntabelle SKR03 (Germany)</field>
             <field name="code">USTVA</field>
             <field name="account" ref="root_de"/>
         </record>
