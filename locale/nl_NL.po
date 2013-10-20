@@ -70,10 +70,6 @@ msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr "Transacties"
 
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr "Boekingsregels"
-
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
 msgstr "Naam"
@@ -206,6 +202,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr "Rekeningafschriftregel"
 
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -301,16 +301,17 @@ msgstr "Annuleren"
 
 #, fuzzy
 msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Concept"
+
+#, fuzzy
+msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Aanvullende informatie"
 
 msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Boeken"
-
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Terug naar concept"
 
 msgctxt "view:account.statement:"
 msgid "Statement"

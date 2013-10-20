@@ -77,10 +77,6 @@ msgctxt "field:account.statement,lines:"
 msgid "Transactions"
 msgstr ""
 
-msgctxt "field:account.statement,move_lines:"
-msgid "Move Lines"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -241,6 +237,10 @@ msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_move_lines_form"
+msgid "Move Lines"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr ""
@@ -340,6 +340,11 @@ msgstr "Отменить"
 
 #, fuzzy
 msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Черновик"
+
+#, fuzzy
+msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Другая информация"
 
@@ -347,11 +352,6 @@ msgstr "Другая информация"
 msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Проводка"
-
-#, fuzzy
-msgctxt "view:account.statement:"
-msgid "Reset to Draft"
-msgstr "Сброс в черновики"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
