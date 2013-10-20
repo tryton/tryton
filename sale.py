@@ -36,7 +36,9 @@ class SaleLine:
                 ['analytic_accounts'])['analytic_accounts']
 
         res.update(AnalyticAccount.analytic_accounts_fields_get(
-                analytic_accounts_field, fields_names))
+                analytic_accounts_field, fields_names,
+                states=cls.analytic_accounts.states,
+                required_states=Eval('type') == 'line'))
         return res
 
     @classmethod
