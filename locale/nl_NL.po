@@ -350,6 +350,10 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:sale.return_sale.start,id:"
+msgid "ID"
+msgstr ""
+
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Opmerking"
@@ -638,6 +642,16 @@ msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
 msgstr "Verkoop"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Verkoopbeheer"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Verkoopbeheer"
+
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
 msgstr "Leveringen"
@@ -651,7 +665,7 @@ msgid "Handle Invoice Exception"
 msgstr "Factuuruitzondering afhandelen"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
-msgid "Create Return Sale"
+msgid "Return Sale"
 msgstr ""
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
@@ -754,6 +768,10 @@ msgstr "Offerteregel - genegeerde boeking"
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Offerteregel - boeking opnieuw aanmaken"
+
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr ""
 
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
@@ -1003,6 +1021,11 @@ msgid "Recreated"
 msgstr "Opnieuw aangemaakt"
 
 #, fuzzy
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Verkoop"
+
+#, fuzzy
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Producten"
@@ -1046,6 +1069,14 @@ msgstr "Offerteregel"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Offerteregels"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return those/this sale(s)?"
+msgstr ""
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Return Sale"
+msgstr ""
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
@@ -1119,3 +1150,12 @@ msgstr "Annuleren"
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "Ok"
 msgstr "Oké"
+
+#, fuzzy
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr ""

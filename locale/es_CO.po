@@ -978,10 +978,9 @@ msgctxt "selection:sale.sale,state:"
 msgid "Quotation"
 msgstr "Cotización"
 
-#, fuzzy
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr "Punto de Orden"
+msgstr ""
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"

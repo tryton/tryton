@@ -350,6 +350,11 @@ msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
+msgctxt "field:sale.return_sale.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Комментарии"
@@ -636,6 +641,16 @@ msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
 msgstr "Продажи"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_invoice_relate"
+msgid "Sales"
+msgstr "Продажи"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Продажи"
+
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
 msgstr "Доставка"
@@ -648,8 +663,9 @@ msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
 msgstr "Обработка особых ситуаций инвойса"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_return_sale"
-msgid "Create Return Sale"
+msgid "Return Sale"
 msgstr "Создать возврат продажи"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
@@ -742,6 +758,11 @@ msgstr "Строка продажи - Игнорированные переме�
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr "Строка продажи - Созданные заново перемещения"
+
+#, fuzzy
+msgctxt "model:sale.return_sale.start,name:"
+msgid "Return Sale"
+msgstr "Создать возврат продажи"
 
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
@@ -971,6 +992,11 @@ msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Recreated"
 msgstr "Создано заново"
 
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Sale"
+msgstr "Продажа"
+
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Продукция"
@@ -1014,6 +1040,15 @@ msgstr "Строка продажи"
 msgctxt "view:sale.line:"
 msgid "Sale Lines"
 msgstr "Строки продажи"
+
+msgctxt "view:sale.return_sale.start:"
+msgid "Are you sure to return those/this sale(s)?"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:sale.return_sale.start:"
+msgid "Return Sale"
+msgstr "Создать возврат продажи"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
@@ -1082,3 +1117,12 @@ msgstr "Отменить"
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "Ok"
 msgstr "Ок"
+
+#, fuzzy
+msgctxt "wizard_button:sale.return_sale,start,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:sale.return_sale,start,return_:"
+msgid "Return"
+msgstr ""

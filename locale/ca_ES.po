@@ -845,7 +845,7 @@ msgstr "CIF/NIF:"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
@@ -977,7 +977,7 @@ msgstr "Pressupost"
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
