@@ -163,10 +163,6 @@ msgctxt "field:project.work,predecessors:"
 msgid "Predecessors"
 msgstr ""
 
-msgctxt "field:project.work,requests:"
-msgid "Requests"
-msgstr ""
-
 msgctxt "field:project.work,successors:"
 msgid "Successors"
 msgstr ""
@@ -183,11 +179,6 @@ msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
 msgstr ""
 
-#, fuzzy
-msgctxt "model:res.request.link,name:request_link_work"
-msgid "Work"
-msgstr "Werk"
-
 msgctxt "view:project.allocation:"
 msgid "Allocation"
 msgstr ""
@@ -202,8 +193,4 @@ msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Requests"
 msgstr ""
