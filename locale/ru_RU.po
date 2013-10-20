@@ -14,13 +14,13 @@ msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "Количество в строке должно быть положительным."
 
-msgctxt "error:stock.inventory.line:"
-msgid "Product must be unique by inventory."
-msgstr "Продукты должны быть уникальны в инвентаризации."
-
 msgctxt "error:stock.inventory:"
 msgid "Inventory \"%s\" must be cancelled before deletion."
 msgstr "Инвентаризация \"%s\" должна быть отменена перед удалением."
+
+msgctxt "error:stock.inventory:"
+msgid "Line \"%s\" is not unique on Inventory \"%s\"."
+msgstr ""
 
 msgctxt "error:stock.location:"
 msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
@@ -63,12 +63,14 @@ msgstr ""
 " уже закрыт."
 
 msgctxt "error:stock.move:"
-msgid ""
-"You can not modify stock move \"%s\"because it is in \"Assigned\", \"Done\" "
-"or \"Cancel\" state."
+msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
 msgstr ""
-"Вы не можете изменить проводку \"%s\" так как она находится в состоянии "
-"\"Передана\", \"Выполнена\" или \"Отменена\"."
+
+msgctxt "error:stock.move:"
+msgid ""
+"You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
+" state."
+msgstr ""
 
 msgctxt "error:stock.move:"
 msgid "You can not set stock move \"%s\" to assigned state."
@@ -669,6 +671,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr "Перемещения"
 
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr ""
+
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Плановая дата"
@@ -744,6 +750,10 @@ msgstr "ID"
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
@@ -893,6 +903,10 @@ msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr "Перемещения"
 
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr ""
+
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr "Внешнее перемещение"
@@ -988,6 +1002,10 @@ msgstr "Учет перемещений"
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
 msgstr "Перемещения"
+
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
+msgstr ""
 
 msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
@@ -1718,8 +1736,17 @@ msgid "/"
 msgstr "/"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ""
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
 msgstr "Код:"
+
+#, fuzzy
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
+msgstr "Заказчик"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "E-Mail:"
@@ -1752,10 +1779,6 @@ msgstr "Ссылка:"
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
 msgstr "Список пополнения"
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Supplier:"
-msgstr "Поставщик:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "To Location"

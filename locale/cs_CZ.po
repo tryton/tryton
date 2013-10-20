@@ -12,12 +12,12 @@ msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr ""
 
-msgctxt "error:stock.inventory.line:"
-msgid "Product must be unique by inventory."
+msgctxt "error:stock.inventory:"
+msgid "Inventory \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "error:stock.inventory:"
-msgid "Inventory \"%s\" must be cancelled before deletion."
+msgid "Line \"%s\" is not unique on Inventory \"%s\"."
 msgstr ""
 
 msgctxt "error:stock.location:"
@@ -53,9 +53,13 @@ msgid "You can not modify move \"%(move)s\" because period \"%(period)s\" is clo
 msgstr ""
 
 msgctxt "error:stock.move:"
+msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
+msgstr ""
+
+msgctxt "error:stock.move:"
 msgid ""
-"You can not modify stock move \"%s\"because it is in \"Assigned\", \"Done\" "
-"or \"Cancel\" state."
+"You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
+" state."
 msgstr ""
 
 msgctxt "error:stock.move:"
@@ -653,6 +657,10 @@ msgctxt "field:stock.shipment.in,moves:"
 msgid "Moves"
 msgstr ""
 
+msgctxt "field:stock.shipment.in,origins:"
+msgid "Origins"
+msgstr ""
+
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr ""
@@ -727,6 +735,10 @@ msgstr ""
 
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,origins:"
+msgid "Origins"
 msgstr ""
 
 msgctxt "field:stock.shipment.in.return,planned_date:"
@@ -877,6 +889,10 @@ msgctxt "field:stock.shipment.out,moves:"
 msgid "Moves"
 msgstr ""
 
+msgctxt "field:stock.shipment.out,origins:"
+msgid "Origins"
+msgstr ""
+
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
 msgstr ""
@@ -971,6 +987,10 @@ msgstr ""
 
 msgctxt "field:stock.shipment.out.return,moves:"
 msgid "Moves"
+msgstr ""
+
+msgctxt "field:stock.shipment.out.return,origins:"
+msgid "Origins"
 msgstr ""
 
 msgctxt "field:stock.shipment.out.return,planned_date:"
@@ -1695,7 +1715,15 @@ msgid "/"
 msgstr ""
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid ":"
+msgstr ""
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Code:"
+msgstr ""
+
+msgctxt "odt:stock.shipment.out.return.restocking_list:"
+msgid "Customer"
 msgstr ""
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
@@ -1728,10 +1756,6 @@ msgstr ""
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
-msgstr ""
-
-msgctxt "odt:stock.shipment.out.return.restocking_list:"
-msgid "Supplier:"
 msgstr ""
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
