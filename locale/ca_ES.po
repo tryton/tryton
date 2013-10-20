@@ -258,6 +258,7 @@ msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Final de full de treball"
 
+#, fuzzy
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid ""
 msgstr ""

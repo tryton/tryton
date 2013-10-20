@@ -14,6 +14,12 @@ msgstr ""
 "Каждая работа должна быть в той же организации, что и её предок, но "
 "\"%(child)s\" и \"%(parent)s\" принадлежат разным организациям."
 
+msgctxt "error:timesheet.work:"
+msgid ""
+"You can not unset \"Available on timesheets\" for work \"%s\" because it "
+"already has  timesheets."
+msgstr ""
+
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
