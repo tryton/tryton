@@ -426,6 +426,11 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Спецификации"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr "Производства"
+
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr "Настройки на Производство"
@@ -496,6 +501,11 @@ msgstr "Настройки"
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
 msgstr "Управление на производство"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
+msgstr "Производства"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"

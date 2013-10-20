@@ -458,6 +458,10 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_production_calendar"
+msgid "Productions"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
 msgstr ""
@@ -525,6 +529,10 @@ msgstr "Instellingen"
 
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_production_calendar"
+msgid "Productions"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
