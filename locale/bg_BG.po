@@ -9,13 +9,13 @@ msgstr ""
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
-"is already done.\""
+"is already done."
 msgstr ""
 
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
-"still opened.\""
+"still opened."
 msgstr ""
 
 #, fuzzy
