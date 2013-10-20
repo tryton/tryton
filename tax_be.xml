@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.tax.code.template"
             id="tax_code_be">
-            <field name="name">Belgium Tax Code Chart</field>
+            <field name="name">Plan de codes de taxe (Belgium)</field>
             <field name="account" ref="root"/>
         </record>
 

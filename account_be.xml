@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="account.account.type.template"
             id="be">
-            <field name="name">Belgium Account Type Chart</field>
+            <field name="name">Plan de types de compte (Belgium)</field>
             <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template"
@@ -1147,7 +1147,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.account.template" id="root">
-            <field name="name">Belgium Chart</field>
+            <field name="name">Plan comptable (Belgium)</field>
             <field name="kind">view</field>
             <field name="type" ref="be"/>
         </record>
