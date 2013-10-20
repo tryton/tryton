@@ -756,6 +756,11 @@ msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
 msgstr "Покупки"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_invoice_relate"
+msgid "Purchases"
+msgstr "Покупки"
+
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Возвраты"

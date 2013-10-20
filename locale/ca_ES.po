@@ -960,7 +960,7 @@ msgstr "IVA:"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
@@ -1064,7 +1064,7 @@ msgstr "Pressupost"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid ""
-msgstr " "
+msgstr ""
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
