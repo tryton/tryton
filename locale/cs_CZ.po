@@ -139,13 +139,6 @@ msgid "You can not reconcile line \"%s\" because it is not in valid state."
 msgstr ""
 
 msgctxt "error:account.move:"
-msgid ""
-"Move \"%(move)s\" cannot be created because there is already a move in "
-"journal \"%(journal)s\" and you cannot create more than one move per period "
-"in a centralized journal."
-msgstr ""
-
-msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
 
@@ -379,6 +372,10 @@ msgstr ""
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
+msgstr ""
+
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
 msgstr ""
 
 msgctxt "field:account.account.deferral,create_date:"
@@ -789,6 +786,30 @@ msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr ""
+
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
 msgstr ""
@@ -799,10 +820,6 @@ msgstr ""
 
 msgctxt "field:account.journal,active:"
 msgid "Active"
-msgstr ""
-
-msgctxt "field:account.journal,centralised:"
-msgid "Centralised counterpart"
 msgstr ""
 
 msgctxt "field:account.journal,code:"
@@ -1021,10 +1038,6 @@ msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "field:account.move,centralised_line:"
-msgid "Centralised Line"
-msgstr ""
-
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -1233,6 +1246,14 @@ msgctxt "field:account.move.reconcile_lines.writeoff,account:"
 msgid "Account"
 msgstr ""
 
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr ""
@@ -1338,7 +1359,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr ""
 
 msgctxt "field:account.open_income_statement.start,company:"
@@ -1585,8 +1606,8 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr ""
 
-msgctxt "field:account.tax,percentage:"
-msgid "Percentage"
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
 msgstr ""
 
 msgctxt "field:account.tax,rec_name:"
@@ -2077,8 +2098,8 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr ""
 
-msgctxt "field:account.tax.template,percentage:"
-msgid "Percentage"
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
 msgstr ""
 
 msgctxt "field:account.tax.template,rec_name:"
@@ -2202,7 +2223,7 @@ msgid "Leave empty for all open fiscal year"
 msgstr ""
 
 msgctxt "help:account.open_chart.start,posted:"
-msgid "Show only posted move"
+msgid "Show posted moves only"
 msgstr ""
 
 msgctxt "help:account.open_income_statement.start,posted:"
@@ -2251,10 +2272,6 @@ msgstr ""
 
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
-msgstr ""
-
-msgctxt "help:account.tax,percentage:"
-msgid "In %"
 msgstr ""
 
 msgctxt "help:account.tax,sequence:"
@@ -2445,6 +2462,10 @@ msgstr ""
 
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
+msgstr ""
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
 msgstr ""
 
 msgctxt "model:account.fiscalyear.close.start,name:"
@@ -2661,6 +2682,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_close_fiscalyear"
@@ -2930,6 +2955,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
@@ -3702,6 +3731,10 @@ msgid ""
 "of account template."
 msgstr ""
 
+msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
+msgid "Balance Non-Deferral"
+msgstr ""
+
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
 msgstr ""
@@ -3971,6 +4004,10 @@ msgid "Tax Rules"
 msgstr ""
 
 msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:account.tax.template:"
 msgid "Code"
 msgstr ""
 
@@ -3992,6 +4029,10 @@ msgstr ""
 
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
+msgstr ""
+
+msgctxt "view:account.tax:"
+msgid "%"
 msgstr ""
 
 msgctxt "view:account.tax:"
@@ -4059,6 +4100,14 @@ msgid "Ok"
 msgstr ""
 
 msgctxt "wizard_button:account.create_chart,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "Ok"
+msgstr ""
+
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
 msgstr ""
 

@@ -139,13 +139,6 @@ msgid "You can not reconcile line \"%s\" because it is not in valid state."
 msgstr ""
 
 msgctxt "error:account.move:"
-msgid ""
-"Move \"%(move)s\" cannot be created because there is already a move in "
-"journal \"%(journal)s\" and you cannot create more than one move per period "
-"in a centralized journal."
-msgstr ""
-
-msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
 
@@ -380,6 +373,11 @@ msgstr "Променено от"
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
 msgstr "Сметка"
+
+#, fuzzy
+msgctxt "field:account.account.deferral,balance:"
+msgid "Balance"
+msgstr "Баланс"
 
 msgctxt "field:account.account.deferral,create_date:"
 msgid "Create Date"
@@ -789,6 +787,34 @@ msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансова година"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
+msgid "Period"
+msgstr "Период"
+
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
 msgstr "Финансова година за затваряне"
@@ -800,10 +826,6 @@ msgstr "ID"
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Активен"
-
-msgctxt "field:account.journal,centralised:"
-msgid "Centralised counterpart"
-msgstr "Централизирано копие"
 
 msgctxt "field:account.journal,code:"
 msgid "Code"
@@ -1021,10 +1043,6 @@ msgctxt "field:account.journal.view.column,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:account.move,centralised_line:"
-msgid "Centralised Line"
-msgstr "Централизиран ред"
-
 msgctxt "field:account.move,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
@@ -1238,6 +1256,16 @@ msgctxt "field:account.move.reconcile_lines.writeoff,account:"
 msgid "Account"
 msgstr "Сметка"
 
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
+msgid "Amount"
+msgstr "Сума"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr "Дата"
@@ -1342,8 +1370,9 @@ msgctxt "field:account.open_chart.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.open_chart.start,posted:"
-msgid "Posted Move"
+msgid "Posted Moves"
 msgstr "Публикувано движение"
 
 msgctxt "field:account.open_income_statement.start,company:"
@@ -1590,9 +1619,10 @@ msgctxt "field:account.tax,parent:"
 msgid "Parent"
 msgstr "Родител"
 
-msgctxt "field:account.tax,percentage:"
-msgid "Percentage"
-msgstr "Процент"
+#, fuzzy
+msgctxt "field:account.tax,rate:"
+msgid "Rate"
+msgstr "Отношение"
 
 msgctxt "field:account.tax,rec_name:"
 msgid "Name"
@@ -2085,9 +2115,10 @@ msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
 msgstr "Родител"
 
-msgctxt "field:account.tax.template,percentage:"
-msgid "Percentage"
-msgstr "Процент"
+#, fuzzy
+msgctxt "field:account.tax.template,rate:"
+msgid "Rate"
+msgstr "Отношение"
 
 msgctxt "field:account.tax.template,rec_name:"
 msgid "Name"
@@ -2217,8 +2248,9 @@ msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
 msgstr "Оставете празно за всички отворени финансови години"
 
+#, fuzzy
 msgctxt "help:account.open_chart.start,posted:"
-msgid "Show only posted move"
+msgid "Show posted moves only"
 msgstr "Показване само на публикувани движения"
 
 msgctxt "help:account.open_income_statement.start,posted:"
@@ -2268,10 +2300,6 @@ msgstr "Обикновенно 1 или -1"
 msgctxt "help:account.tax,invoice_tax_sign:"
 msgid "Usualy 1 or -1"
 msgstr "Обикновенно 1 или -1"
-
-msgctxt "help:account.tax,percentage:"
-msgid "In %"
-msgstr "В %"
 
 msgctxt "help:account.tax,sequence:"
 msgid "Use to order the taxes"
@@ -2466,6 +2494,10 @@ msgstr "Финансова година"
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
 msgstr "Финансова година - Ред от движение"
+
+msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
+msgid "Balance Non-Deferral"
+msgstr ""
 
 msgctxt "model:account.fiscalyear.close.start,name:"
 msgid "Close Fiscal Year"
@@ -2683,6 +2715,10 @@ msgstr "Шаблони на вид сметка"
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
 msgstr "Видове сметки"
+
+msgctxt "model:ir.action,name:act_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_close_fiscalyear"
 msgid "Close Fiscal Year"
@@ -2953,6 +2989,10 @@ msgstr "Видове сметки"
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
 msgstr "Хронологичен баланс"
+
+msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
+msgid "Balance Non-Deferral"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
@@ -3741,6 +3781,10 @@ msgstr ""
 "Вече може да създадете сметкоплан за вашата фирма избирайки сметкоплан от "
 "шаблон"
 
+msgctxt "view:account.fiscalyear.balance_non_deferral.start:"
+msgid "Balance Non-Deferral"
+msgstr ""
+
 msgctxt "view:account.fiscalyear.close.start:"
 msgid "Close Fiscal Year"
 msgstr "Затваряне на финансова година"
@@ -4011,6 +4055,10 @@ msgid "Tax Rules"
 msgstr "Правила за данък"
 
 msgctxt "view:account.tax.template:"
+msgid "%"
+msgstr ""
+
+msgctxt "view:account.tax.template:"
 msgid "Code"
 msgstr "Код"
 
@@ -4033,6 +4081,10 @@ msgstr "Шаблон за данък"
 msgctxt "view:account.tax.template:"
 msgid "Taxes Templates"
 msgstr "Шаблони на данъци"
+
+msgctxt "view:account.tax:"
+msgid "%"
+msgstr ""
 
 msgctxt "view:account.tax:"
 msgid "Code"
@@ -4101,6 +4153,16 @@ msgstr "Добре"
 msgctxt "wizard_button:account.create_chart,start,end:"
 msgid "Cancel"
 msgstr "Отказ"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
+msgid "Ok"
+msgstr "Добре"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "Отказване"
 
 msgctxt "wizard_button:account.fiscalyear.close,start,close:"
 msgid "Close"
