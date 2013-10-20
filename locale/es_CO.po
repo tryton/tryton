@@ -1325,10 +1325,9 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
 msgstr "Factura de Proveedor"
 
-#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
-msgstr "Punto de Orden"
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"
@@ -1370,10 +1369,9 @@ msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
 msgstr "Anulado"
 
-#, fuzzy
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid ""
-msgstr "Punto de Orden"
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,month:"
 msgid "April"
@@ -1439,10 +1437,9 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Saldo"
 
-#, fuzzy
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid ""
-msgstr "Punto de Orden"
+msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid "Friday"

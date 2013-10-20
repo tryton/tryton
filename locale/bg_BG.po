@@ -13,11 +13,13 @@ msgid ""
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund a supplier invoice/credit note."
+msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund invoice \"%s\" because it has payments."
+msgid ""
+"You can not credit with refund invoice \"%s\" because it is a supplier "
+"invoice/credit note."
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
@@ -78,6 +80,10 @@ msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
 msgstr ""
 
 msgctxt "error:account.invoice.payment_term:"
+msgid "Last line of payment term \"%s\" must be of type remainder."
+msgstr ""
+
+msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr ""
 
@@ -112,6 +118,10 @@ msgctxt "error:account.invoice.tax:"
 msgid ""
 "You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
 "is posted or paid."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
 msgstr ""
 
 msgctxt "error:account.invoice:"
@@ -311,6 +321,10 @@ msgstr "Движение"
 msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Номер"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr ""
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -893,8 +907,9 @@ msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
 msgstr "Фактура - Ред от плащане"
 
+#, fuzzy
 msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice Init"
+msgid "Credit Invoice"
 msgstr "Начало на кредитна фактура"
 
 msgctxt "model:account.invoice.line,name:"
@@ -1098,6 +1113,11 @@ msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "Условия за плащане"
 
+#, fuzzy
+msgctxt "odt:account.invoice:"
+msgid ":"
+msgstr ":"
+
 msgctxt "odt:account.invoice:"
 msgid "Amount"
 msgstr "Сума"
@@ -1169,6 +1189,11 @@ msgstr "ПРО-ФОРМА фактура"
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
 msgstr "Количество"
+
+#, fuzzy
+msgctxt "odt:account.invoice:"
+msgid "Reference"
+msgstr "Препратка"
 
 msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
@@ -1255,6 +1280,10 @@ msgstr "Кредитно известие на доставчик"
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
 msgstr "Фактура за доставчик"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"

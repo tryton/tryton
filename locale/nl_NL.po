@@ -13,11 +13,13 @@ msgid ""
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund a supplier invoice/credit note."
+msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund invoice \"%s\" because it has payments."
+msgid ""
+"You can not credit with refund invoice \"%s\" because it is a supplier "
+"invoice/credit note."
 msgstr ""
 
 msgctxt "error:account.invoice.credit:"
@@ -78,6 +80,10 @@ msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
 msgstr ""
 
 msgctxt "error:account.invoice.payment_term:"
+msgid "Last line of payment term \"%s\" must be of type remainder."
+msgstr ""
+
+msgctxt "error:account.invoice.payment_term:"
 msgid "Missing remainder line in payment term \"%s\"."
 msgstr ""
 
@@ -112,6 +118,10 @@ msgctxt "error:account.invoice.tax:"
 msgid ""
 "You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
 "is posted or paid."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
 msgstr ""
 
 msgctxt "error:account.invoice:"
@@ -311,6 +321,10 @@ msgstr "Boeking"
 msgctxt "field:account.invoice,number:"
 msgid "Number"
 msgstr "Nummer"
+
+msgctxt "field:account.invoice,origins:"
+msgid "Origins"
+msgstr ""
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -906,7 +920,7 @@ msgid "Invoice - Payment Line"
 msgstr "Factuurbetalingen"
 
 msgctxt "model:account.invoice.credit.start,name:"
-msgid "Credit Invoice Init"
+msgid "Credit Invoice"
 msgstr ""
 
 msgctxt "model:account.invoice.line,name:"
@@ -1113,6 +1127,10 @@ msgid "Payment Terms"
 msgstr "Betalingstermijnen"
 
 msgctxt "odt:account.invoice:"
+msgid ":"
+msgstr ""
+
+msgctxt "odt:account.invoice:"
 msgid "Amount"
 msgstr "Bedrag"
 
@@ -1183,6 +1201,11 @@ msgstr "Pro forma verkoopfactuur"
 msgctxt "odt:account.invoice:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
+
+#, fuzzy
+msgctxt "odt:account.invoice:"
+msgid "Reference"
+msgstr "Referentie"
 
 msgctxt "odt:account.invoice:"
 msgid "Supplier Credit Note N°:"
@@ -1269,6 +1292,10 @@ msgstr "Credit inkoopnota"
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier Invoice"
 msgstr "Inkoopfactuur"
+
+msgctxt "selection:account.invoice.line,invoice_type:"
+msgid ""
+msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Credit Note"
