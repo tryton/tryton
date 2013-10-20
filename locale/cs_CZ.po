@@ -22,8 +22,12 @@ msgctxt "field:product.template,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr ""
 
-msgctxt "field:stock.move,anglo_saxon_quantity:"
-msgid "Anglo-Saxon Quantity"
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr ""
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
 msgstr ""
 
 msgctxt "help:product.template,account_cogs:"
