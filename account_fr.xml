@@ -2,7 +2,7 @@
 <tryton>
     <data>
         <record model="account.account.type.template" id="fr">
-            <field name="name">Plan de types de compte (French)</field>
+            <field name="name">Plan de types de compte (France)</field>
             <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="actif">
