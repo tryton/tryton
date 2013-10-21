@@ -1,3 +1,5 @@
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
 * Add balance non-deferral wizard
 * Display write-off amount in reconciliation
 * Enforce same company for a chart of account
