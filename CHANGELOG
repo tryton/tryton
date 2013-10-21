@@ -1,3 +1,5 @@
+Version 3.0.0 - 2013-10-21
+* Bug fixes (see mercurial logs for details)
 * Allow to use invoice to fill party and account on statement line
 * Replace move_lines by a relate
 
