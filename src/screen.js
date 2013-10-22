@@ -141,7 +141,7 @@
             this.new_group();
             this.current_view = null;
             this.current_record = null;
-            this.domain = attributes.domain;
+            this.domain = attributes.domain || null;
             this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
             this.search_count = 0;
