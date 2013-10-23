@@ -282,7 +282,7 @@ class ProcessDunning(Wizard):
     start = StateView('account.dunning.process.start',
         'account_dunning.dunning_process_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('process', 'process', 'tryton-ok', default=True),
+            Button('Process', 'process', 'tryton-ok', default=True),
         ])
     process = StateTransition()
 
