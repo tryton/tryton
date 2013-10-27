@@ -51,5 +51,22 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_carrier" action="act_carrier_form"
             id="menu_carrier_form"/>
+
+        <record model="ir.model.access" id="access_carrier">
+            <field name="model" search="[('model', '=', 'carrier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_carrier_carrier_admin">
+            <field name="model" search="[('model', '=', 'carrier')]"/>
+            <field name="group" ref="group_carrier_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
     </data>
 </tryton>
