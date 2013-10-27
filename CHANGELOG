@@ -1,3 +1,5 @@
+* Add relate from lot to moves
+
 Version 3.0.0 - 2013-10-21
 * Bug fixes (see mercurial logs for details)
 * Add quantity and forecast_quantity fields on Lot
