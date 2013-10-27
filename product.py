@@ -112,6 +112,13 @@ class Template(ModelSQL, ModelView):
     def search_default_uom_category(cls, name, clause):
         return [('default_uom.category',) + tuple(clause[1:])]
 
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            values.setdefault('products', None)
+        return super(Template, cls).create(vlist)
+
 
 class Product(ModelSQL, ModelView):
     "Product Variant"
