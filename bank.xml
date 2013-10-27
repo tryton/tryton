@@ -3,6 +3,18 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="res.group" id="group_bank_admin">
+            <field name="name">Bank Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_bank_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_bank_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_bank_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_bank_admin"/>
+        </record>
+
         <menuitem name="Banking" sequence="3" id="menu_banking"/>
 
         <record model="ir.ui.view" id="bank_view_form">
@@ -33,6 +45,22 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem parent="menu_banking" action="act_bank_form"
             sequence="10" id="menu_bank_form"/>
+
+        <record model="ir.model.access" id="access_bank">
+            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_bank_bank_admin">
+            <field name="model" search="[('model', '=', 'bank')]"/>
+            <field name="group" ref="group_bank_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
 
         <record model="ir.ui.view" id="bank_account_view_form">
             <field name="model">bank.account</field>
@@ -65,6 +93,22 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_banking" action="act_bank_account_form"
             sequence="20" id="menu_bank_account_form"/>
 
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_bank_admin">
+            <field name="model" search="[('model', '=', 'bank.account')]"/>
+            <field name="group" ref="group_bank_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.ui.view" id="bank_account_number_view_form">
             <field name="model">bank.account.number</field>
             <field name="type">form</field>
@@ -81,5 +125,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">bank_account_number_list_sequence</field>
         </record>
 
+        <record model="ir.model.access" id="access_account_number">
+            <field name="model" search="[('model', '=', 'bank.account.number')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_number_bank_admin">
+            <field name="model" search="[('model', '=', 'bank.account.number')]"/>
+            <field name="group" ref="group_bank_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>

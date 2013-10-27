@@ -63,7 +63,7 @@ class BankAccountNumber(ModelSQL, ModelView):
     # TODO validate IBAN
 
 
-class BankAccountParty(ModelSQL, ModelView):
+class BankAccountParty(ModelSQL):
     'Bank Account - Party'
     __name__ = 'bank.account-party.party'
     account = fields.Many2One('bank.account', 'Account',
