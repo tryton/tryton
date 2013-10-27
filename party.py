@@ -162,6 +162,7 @@ class Party(ModelSQL, ModelView):
                 config = Configuration(1)
                 values['code'] = Sequence.get_id(config.party_sequence.id)
             values['code_length'] = len(values['code'])
+            values.setdefault('addresses', None)
         return super(Party, cls).create(vlist)
 
     @classmethod
