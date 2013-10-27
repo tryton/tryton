@@ -339,13 +339,13 @@ class User(ModelSQL, ModelView):
         key = (Transaction().user, context_only)
         preferences = cls._get_preferences_cache.get(key)
         if preferences is not None:
-            return preferences
+            return preferences.copy()
         user = Transaction().user
         with Transaction().set_user(0):
             user = cls(user)
         preferences = cls._get_preferences(user, context_only=context_only)
         cls._get_preferences_cache.set(key, preferences)
-        return preferences
+        return preferences.copy()
 
     @classmethod
     def set_preferences(cls, values, old_password=False):
