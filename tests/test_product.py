@@ -246,6 +246,7 @@ class ProductTestCase(unittest.TestCase):
                 'list_price': Decimal('10'),
                 'cost_price': Decimal('5'),
                 'default_uom': uom.id,
+                'products': [('create', [{}])],
                 }
             values2 = {
                 'name': 'Some product-2',
@@ -254,6 +255,7 @@ class ProductTestCase(unittest.TestCase):
                 'list_price': Decimal('10'),
                 'cost_price': Decimal('5'),
                 'default_uom': uom.id,
+                'products': [('create', [{}])],
                 }
 
             # This is a false positive as there is 1 product with the
