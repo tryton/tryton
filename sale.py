@@ -1341,7 +1341,7 @@ class SaleLine(ModelSQL, ModelView):
 
     def get_move(self, shipment_type):
         '''
-        Return moves for the sale line according ot shipment_type
+        Return moves for the sale line according to shipment_type
         '''
         pool = Pool()
         Uom = pool.get('product.uom')
