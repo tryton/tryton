@@ -53,7 +53,7 @@ class BOMInput(ModelSQL, ModelView):
     _rec_name = 'product'
 
     bom = fields.Many2One('production.bom', 'BOM', required=True,
-        select=1)
+        select=1, ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product',
         required=True, domain=[
             ('type', '!=', 'service'),
