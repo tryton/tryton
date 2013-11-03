@@ -57,7 +57,8 @@ class Action(object):
         dtemp = tempfile.mkdtemp(prefix='tryton_')
         fp_name = os.path.join(dtemp,
                 name.replace(os.sep, '_').replace(os.altsep or os.sep, '_') \
-                        + os.extsep + type)
+            + os.extsep
+            + type.replace(os.sep, '_').replace(os.altsep or os.sep, '_'))
         file_d = open(fp_name, 'wb')
         file_d.write(base64.decodestring(data))
         file_d.close()
