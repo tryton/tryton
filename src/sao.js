@@ -76,7 +76,14 @@ var Sao = {};
             date = new Date(year, month, day);
         }
         date.isDate = true;
+        var previous_day = date.getDate();
+        var previous_hour = date.getHours();
         date.setHours(0);
+        // Setting hours could change the day due to local timezone
+        if (previous_day != date.getDate()) {
+            date.setDate(previous_day);
+            date.setHours(previous_hour);
+        }
         date.setMinutes(0);
         date.setSeconds(0);
         date.setMilliseconds(0);
