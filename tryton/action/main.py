@@ -42,7 +42,8 @@ class Action(object):
         dtemp = tempfile.mkdtemp(prefix='tryton_')
         fp_name = os.path.join(dtemp,
             name.replace(os.sep, '_').replace(os.altsep or os.sep, '_')
-            + os.extsep + type)
+            + os.extsep
+            + type.replace(os.sep, '_').replace(os.altsep or os.sep, '_'))
         with open(fp_name, 'wb') as file_d:
             file_d.write(data)
         if email_print:
