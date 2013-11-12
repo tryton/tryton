@@ -479,7 +479,7 @@ class DictWidget(WidgetInterface):
         context = self.field.context_get(self.record)
         try:
             key_ids = RPCExecute('model', self.schema_model, 'search',
-                [('rec_name', '=', key)], 0, CONFIG['client.limit'],
+                [('name', '=', key)], 0, CONFIG['client.limit'],
                 None, context=context)
             self.keys[key] = RPCExecute('model', self.schema_model,
                 'get_keys', key_ids, context=context)[0]
