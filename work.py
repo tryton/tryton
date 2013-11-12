@@ -166,17 +166,17 @@ class Work(ModelSQL, ModelView):
         return [('work.active',) + tuple(clause[1:])]
 
     def on_change_with_company(self, name=None):
-        return self.work.company.id
+        return self.work.company.id if self.work else None
 
     @classmethod
     def search_comany(cls, name, clause):
         return [('work.company',) + tuple(clause[1:])]
 
     def on_change_with_timesheet_available(self, name=None):
-        return self.work.timesheet_available
+        return self.work.timesheet_available if self.work else None
 
     def on_change_with_hours(self, name=None):
-        return self.work.hours
+        return self.work.hours if self.work else None
 
     @classmethod
     def get_parent(cls, project_works, name):
