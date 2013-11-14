@@ -178,6 +178,7 @@
                 closeOnEscape: false,
                 buttons: [{text: 'dummy'}]
             });
+            Sao.common.center_dialog(this.dialog);
             this.dialog.append(this.widget);
             this.buttonset = this.dialog.parent().find('.ui-dialog-buttonset');
         },

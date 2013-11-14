@@ -2921,6 +2921,7 @@
                     OK: save_file.bind(this)
                 }
             });
+            Sao.common.center_dialog(file_dialog);
             file_dialog.dialog('open');
         },
         remove: function(evt) {

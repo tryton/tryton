@@ -1753,4 +1753,30 @@
         }
     });
     Sao.common.message = new Sao.common.MessageDialog();
+
+    Sao.common.center_dialog = function(element){
+        var parents = jQuery(element).parents().find('.ui-dialog ' +
+            '.screen-container');
+        var parent;
+        for (var i=0; i < parents.length; i++){
+            var el = jQuery(parents[i]);
+            if (el != element && el.is(':visible')) {
+                parent = el;
+                break;
+            }
+        }
+        if (!parent) {
+            parent = jQuery(element).parents().find('.screen-container')[0];
+            if (!parent) {
+                parent = window;
+            }
+            parent = jQuery(parent);
+        }
+        jQuery(element).dialog('option', 'width', parent.width() * 0.8);
+        jQuery(element).dialog('option', 'position',{
+                my: 'center top',
+                at: 'center top',
+                of: parent
+            });
+   };
 }());

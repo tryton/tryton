@@ -172,6 +172,7 @@
                     buttons: buttons,
                     title: '' // this.screen.current_view
                 });
+                Sao.common.center_dialog(this.el);
                 if (menu) {
                     this.el.append(menu);
                 }
@@ -362,6 +363,7 @@
                 autoOpen: false,
                 buttons: buttons
             });
+            Sao.common.center_dialog(this.el);
             this.screen = new Sao.Screen(model, {
                 mode: ['tree'],
                 context: this.context,
@@ -450,6 +452,7 @@
                 autoOpen: false,
                 buttons: buttons
             });
+            Sao.common.center_dialog(this.el);
 
             this.screen = new Sao.Screen('res.user', {
                 mode: []
