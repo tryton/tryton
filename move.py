@@ -1127,9 +1127,9 @@ class Line(ModelSQL, ModelView):
                 return ((table.state != 'draft')
                     & table.move.in_(
                             move.select(move.id,
-                                where=period.in_(
+                                where=move.period.in_(
                                     Transaction().context['periods'])
-                                & move.state == 'posted')),
+                                & (move.state == 'posted'))),
                     fiscalyear_ids)
             else:
                 return ((table.state != 'draft')
@@ -1155,7 +1155,7 @@ class Line(ModelSQL, ModelView):
                                 period.select(period.id,
                                     where=period.fiscalyear.in_(
                                         fiscalyear_ids)))
-                            & move.state == 'posted')),
+                            & (move.state == 'posted'))),
                     fiscalyear_ids)
             else:
                 return ((table.state != 'draft')
