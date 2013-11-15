@@ -293,7 +293,8 @@ class Date:
         company_id = Transaction().context.get('company')
         if timezone is None and company_id:
             company = Company(company_id)
-            timezone = pytz.timezone(company.timezone)
+            if company.timezone:
+                timezone = pytz.timezone(company.timezone)
         return super(Date, cls).today(timezone=timezone)
 
 
