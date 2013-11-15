@@ -8,9 +8,16 @@ from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
+try:
+    import pytz
+    TIMEZONES = [(x, x) for x in pytz.common_timezones]
+except ImportError:
+    TIMEZONES = []
+TIMEZONES += [(None, '')]
+
 __all__ = ['Company', 'Employee', 'UserEmployee', 'User', 'Property',
-    'Sequence', 'SequenceStrict', 'CompanyConfigStart', 'CompanyConfig',
-    'CompanyReport', 'LetterReport']
+    'Sequence', 'SequenceStrict', 'Date', 'CompanyConfigStart',
+    'CompanyConfig', 'CompanyReport', 'LetterReport']
 __metaclass__ = PoolMeta
 
 
@@ -25,6 +32,7 @@ class Company(ModelSQL, ModelView):
     header = fields.Text('Header')
     footer = fields.Text('Footer')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
+    timezone = fields.Selection(TIMEZONES, 'Timezone', translate=False)
     employees = fields.One2Many('company.employee', 'company', 'Employees')
 
     @classmethod
@@ -273,6 +281,20 @@ class Sequence:
 
 class SequenceStrict(Sequence):
     __name__ = 'ir.sequence.strict'
+
+
+class Date:
+    __name__ = 'ir.date'
+
+    @classmethod
+    def today(cls, timezone=None):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = Transaction().context.get('company')
+        if timezone is None and company_id:
+            company = Company(company_id)
+            timezone = pytz.timezone(company.timezone)
+        return super(Date, cls).today(timezone=timezone)
 
 
 class CompanyConfigStart(ModelView):

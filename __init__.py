@@ -16,6 +16,7 @@ def register():
         Property,
         Sequence,
         SequenceStrict,
+        Date,
         CompanyConfigStart,
         Cron,
         CronCompany,

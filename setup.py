@@ -74,6 +74,9 @@ setup(name='trytond_company',
         ],
     license='GPL-3',
     install_requires=requires,
+    extras_require={
+        'timezone': ['pytz'],
+        },
     zip_safe=False,
     entry_points="""
     [trytond.modules]
