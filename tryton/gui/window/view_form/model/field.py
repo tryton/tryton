@@ -76,7 +76,7 @@ class CharField(object):
     def check_required(self, record):
         state_attrs = self.get_state_attrs(record)
         if bool(int(state_attrs.get('required') or 0)):
-            if (not self.get(record)
+            if (not self.get_eval(record)
                     and not bool(int(state_attrs.get('readonly') or 0))):
                 return False
         return True
