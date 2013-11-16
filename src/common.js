@@ -596,60 +596,65 @@
                 if (jQuery.isEmptyObject(clause)) {
                     return '';
                 }
-                var escaped;
-                if ((typeof clause[0] == 'string') &&
-                        ((clause[0] in this.fields) ||
-                         (clause[0] == 'rec_name'))) {
-                    var name = clause[0];
-                    var operator = clause[1];
-                    var value = clause[2];
-                    if (!(name in this.fields)) {
-                        escaped = value.replace('%%', '__');
-                        if (escaped.startsWith('%') && escaped.endsWith('%')) {
-                            value = value.slice(1, -1);
-                        }
-                        return this.quote(value);
-                    }
-                    var field = this.fields[name];
-                    if (operator.contains('ilike')) {
-                        escaped = value.replace('%%', '__');
-                        if (escaped.startsWith('%') && escaped.endsWith('%')) {
-                            value = value.slice(1, -1);
-                        } else if (!escaped.contains('%')) {
-                            if (operator == 'ilike') {
-                                operator = '=';
-                            } else {
-                                operator = '!';
-                            }
-                            value = value.replace('%%', '%');
-                        }
-                    }
-                    var def_operator = this.default_operator(field);
-                    if ((def_operator == operator.trim()) ||
-                            (operator.contains(def_operator) &&
-                             operator.contains('not'))) {
-                        operator = operator.replace(def_operator, '')
-                            .replace('not', '!').trim();
-                    }
-                    if (operator.endsWith('in')) {
-                        if (operator == 'not in') {
-                            operator = '!';
-                        } else {
-                            operator = '';
-                        }
-                    }
-                    var formatted_value = this.format_value(field, value);
-                    if (~this.OPERATORS.indexOf(operator) &&
-                            ~['char', 'text', 'sha', 'selection']
-                            .indexOf(field.type) &&
-                            (value === '')) {
-                        formatted_value = '""';
-                    }
-                    return (this.quote(field.string) + ': ' +
-                            operator + formatted_value);
-                } else {
+                if ((typeof clause[0] != 'string') ||
+                        ~['AND', 'OR'].indexOf(clause[0])) {
                     return '(' + this.string(clause) + ')';
                 }
+                var escaped;
+                var name = clause[0];
+                var operator = clause[1];
+                var value = clause[2];
+                if (name.endsWith('.rec_name')) {
+                    name = name.slice(0, -9);
+                }
+                if (!(name in this.fields)) {
+                    escaped = value.replace('%%', '__');
+                    if (escaped.startsWith('%') && escaped.endsWith('%')) {
+                        value = value.slice(1, -1);
+                    }
+                    return this.quote(value);
+                }
+                var field = this.fields[name];
+                var target = null;
+                if (clause.length > 3) {
+                    target = clause[3];
+                }
+                if (operator.contains('ilike')) {
+                    escaped = value.replace('%%', '__');
+                    if (escaped.startsWith('%') && escaped.endsWith('%')) {
+                        value = value.slice(1, -1);
+                    } else if (!escaped.contains('%')) {
+                        if (operator == 'ilike') {
+                            operator = '=';
+                        } else {
+                            operator = '!';
+                        }
+                        value = value.replace('%%', '%');
+                    }
+                }
+                var def_operator = this.default_operator(field);
+                if ((def_operator == operator.trim()) ||
+                        (operator.contains(def_operator) &&
+                         operator.contains('not'))) {
+                    operator = operator.replace(def_operator, '')
+                        .replace('not', '!').trim();
+                }
+                if (operator.endsWith('in')) {
+                    if (operator == 'not in') {
+                        operator = '!';
+                    } else {
+                        operator = '';
+                    }
+                }
+                var formatted_value = this.format_value(field, value, target);
+                if (~this.OPERATORS.indexOf(operator) &&
+                        ~['char', 'text', 'sha', 'selection']
+                        .indexOf(field.type) &&
+                        (value === '')) {
+                    formatted_value = '""';
+                }
+                return (this.quote(field.string) + ': ' +
+                        operator + formatted_value);
             };
             string = string.bind(this);
 
@@ -871,6 +876,14 @@
                     var operator = clause[1];
                     var value = clause[2];
                     var field = this.strings[clause[0].toLowerCase()];
+
+                    var target = null;
+                    if (field.type == 'reference') {
+                        var split = this.split_target_value(field, value);
+                        target = split[0];
+                        value = split[1];
+                    }
+
                     if (operator === null) {
                         operator = this.default_operator(field);
                     }
@@ -884,9 +897,6 @@
                     if (operator == '!') {
                         operator = this.negate_operator(
                                 this.default_operator(field));
-                    }
-                    if (operator.contains('like')) {
-                        value = this.likify(value);
                     }
                     if (~['integer', 'float', 'numeric', 'datetime', 'date',
                             'time'].indexOf(field.type)) {
@@ -908,7 +918,15 @@
                     } else {
                         value = this.convert_value(field, value);
                     }
-                    result.push([field.name, operator, value]);
+                    if (operator.contains('like')) {
+                        value = this.likify(value);
+                    }
+                    if (target) {
+                        result.push([field.name + '.rec_name', operator, value,
+                                target]);
+                    } else {
+                        result.push([field.name, operator, value]);
+                    }
                 } else {
                     result.push(this.parse_clause(clause));
                 }
@@ -940,8 +958,8 @@
             return value;
         },
         default_operator: function(field) {
-            if (~['char', 'text', 'many2one', 'many2many', 'one2many']
-                    .indexOf(field.type)) {
+            if (~['char', 'text', 'many2one', 'many2many', 'one2many',
+                    'reference'].indexOf(field.type)) {
                 return 'ilike';
             } else {
                 return '=';
@@ -959,6 +977,23 @@
         },
         time_format: function(field) {
             return new Sao.PYSON.Decoder({}).decode(field.format);
+        },
+        split_target_value: function(field, value) {
+            var target = null;
+            if (typeof value == 'string') {
+                for (var i = 0; i < field.selection.length; i++) {
+                    var selection = field.selection[i];
+                    var key = selection[0];
+                    var text = selection[1];
+                    if (value.toLowerCase().startsWith(
+                                text.toLowerCase() + ',')) {
+                        target = key;
+                        value = value.slice(text.length + 1);
+                        break;
+                    }
+                }
+            }
+            return [target, value];
         },
         convert_value: function(field, value) {
             var convert_selection = function() {
@@ -1062,7 +1097,10 @@
                 return value;
             }
         },
-        format_value: function(field, value) {
+        format_value: function(field, value, target) {
+            if (target === undefined) {
+                target = null;
+            }
             var format_float = function() {
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
                     return '';
@@ -1084,6 +1122,19 @@
                 return value || '';
             };
 
+            var format_reference = function() {
+                if (!target) {
+                    return format_selection();
+                }
+                for (var i = 0; i < field.selection.length; i++) {
+                    if (field.selection[i][0] == target) {
+                        target = field.selection[i][1];
+                        break;
+                    }
+                }
+                return target + ',' + value;
+            };
+
             var converts = {
                 'boolean': function() {
                     if (value) {
@@ -1102,7 +1153,7 @@
                 'float': format_float,
                 'numeric': format_float,
                 'selection': format_selection,
-                'reference': format_selection,
+                'reference': format_reference,
                 'datetime': function() {
                     if (!value) {
                         return '';

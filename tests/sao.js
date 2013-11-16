@@ -939,6 +939,36 @@
         });
     });
 
+    QUnit.test('DomainParser.split_target_value', function() {
+        var parser = new Sao.common.DomainParser();
+
+        var field = {
+            'type': 'reference',
+            'selection': [
+                ['spam', 'Spam'],
+                ['ham', 'Ham'],
+                ['e', 'Eggs']
+            ]
+        };
+
+        var test_func = function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(
+                    parser.split_target_value(this, value), result),
+                'split_target_value(' + JSON.stringify(this) + ', ' +
+                    JSON.stringify(value) + ')');
+        };
+
+        [
+        ['Spam', [null, 'Spam']],
+        ['foo', [null, 'foo']],
+        ['Spam,', ['spam', '']],
+        ['Ham,bar', ['ham', 'bar']],
+        ['Eggs,foo', ['e', 'foo']]
+        ].forEach(test_func, field);
+    });
+
     QUnit.test('DomainParser.convert_value', function() {
         var parser = new Sao.common.DomainParser();
 
@@ -1090,6 +1120,15 @@
                     ['male', 'Male'],
                     ['female', 'Female']
                 ]
+            },
+            'reference': {
+                'string': 'Reference',
+                'name': 'reference',
+                'type': 'reference',
+                'selection': [
+                    ['spam', 'Spam'],
+                    ['ham', 'Ham']
+                ]
             }
         });
         [
@@ -1109,7 +1148,15 @@
         [[['Integer', null, '3..5']], [[
             ['integer', '>=', 3],
             ['integer', '<', 5]
-            ]]]
+            ]]],
+        [[['Reference', null, 'foo']], [['reference', 'ilike', '%foo%']]],
+        [[['Reference', null, 'Spam']], [['reference', 'ilike', '%spam%']]],
+        [[['Reference', null, 'Spam,bar']], [
+            ['reference.rec_name', 'ilike', '%bar%', 'spam']
+            ]],
+        [[['Reference', null, ['foo', 'bar']]], [
+            ['reference', 'in', ['foo', 'bar']]
+            ]]
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
@@ -1237,6 +1284,14 @@
             'date': {
                 'string': 'Date',
                 'type': 'date'
+            },
+            'reference': {
+                'string': 'Reference',
+                'type': 'reference',
+                'selection': [
+                    ['spam', 'Spam'],
+                    ['ham', 'Ham']
+                ]
             }
         });
 
@@ -1272,8 +1327,11 @@
                 ]
             ], 'Name: Doe (Name: John or Name: Jane)'],
         [[], ''],
-        [[['surname', 'ilike', '%Doe%']], '"(Sur)Name": Doe']
-        //[[['date', '>=', new Date(2012, 10, 24)]], 'Date: >=10/24/2012']
+        [[['surname', 'ilike', '%Doe%']], '"(Sur)Name": Doe'],
+        //[[['date', '>=', new Date(2012, 10, 24)]], 'Date: >=10/24/2012'],
+        [[['reference', 'ilike', '%foo%']], 'Reference: foo'],
+        [[['reference', 'ilike', '%bar%', 'spam']], 'Reference: Spam,bar'],
+        [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar']
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
