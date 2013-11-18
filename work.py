@@ -153,7 +153,7 @@ class Work(ModelSQL, ModelView):
         return self.work.active
 
     @classmethod
-    def set_active(self, works, name, value):
+    def set_active(cls, works, name, value):
         pool = Pool()
         Work = pool.get('timesheet.work')
 
