@@ -927,7 +927,9 @@
         set_client: function(record, value, force_change) {
             var previous_value = this.get(record);
             this.set(record, value);
-            if (previous_value != this.get(record)) {
+            // Use stringify to compare object instance like Number for Decimal
+            if (JSON.stringify(previous_value) !=
+                JSON.stringify(this.get(record))) {
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
                     // TODO parent
