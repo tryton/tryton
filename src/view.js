@@ -1739,7 +1739,11 @@
         },
         value_get: function() {
             var val = this.el.val();
-            if ('relation' in this.attributes) {
+            // Some selection widgets use integer instead of string
+            var is_integer = (this.selection || []).some(function(e) {
+                return typeof(e[0]) == 'number';
+            });
+            if (('relation' in this.attributes) || is_integer) {
                 if (val === '') {
                     return null;
                 } else if (val === null) {
