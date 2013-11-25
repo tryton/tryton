@@ -679,6 +679,11 @@ class Model(object):
         self.reload()
         return True
 
+    def click(self, button):
+        'Click on button'
+        self.save()
+        return getattr(self._proxy, button)([self.id], self._config.context)
+
     def _get_values(self, fields=None):
         'Return dictionary values'
         if fields is None:
