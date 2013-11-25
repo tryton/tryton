@@ -60,7 +60,7 @@
 
             var ajax_success = function(data) {
                 if (data === null) {
-                    Sao.warning('Unable to reach the server');
+                    Sao.common.warning.run('', 'Unable to reach the server.');
                     dfd.reject();
                 } else if (data.error) {
                     console.log('ERROR');
@@ -214,6 +214,9 @@
     Sao.Session.renew = function(session) {
         var dfd = jQuery.Deferred();
         var login_div, password_input;
+        if (!session.login) {
+            return dfd.reject();
+        }
 
         var ok_func = function() {
             var password_val = password_input.val();

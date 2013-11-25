@@ -56,14 +56,6 @@ var Sao = {};
         };
     }
 
-    Sao.error = function(title, message) {
-        alert(title + '\n' + (message || ''));
-    };
-
-    Sao.warning = function(title, message) {
-        alert(title + '\n' + (message || ''));
-    };
-
     Sao.class_ = function(Parent, props) {
         var ClassConstructor = function() {
             if (!(this instanceof ClassConstructor))
@@ -155,6 +147,8 @@ var Sao = {};
     Sao.config = {};
     Sao.config.limit = 1000;
     Sao.config.display_size = 20;
+    Sao.config.roundup = {};
+    Sao.config.roundup.url = 'http://bugs.tryton.org/roundup/';
 
     Sao.login = function() {
         var dfd = jQuery.Deferred();
@@ -182,35 +176,35 @@ var Sao = {};
 
     Sao.logout = function() {
         var session = Sao.Session.current_session;
-        // TODO check modified
-        jQuery('#tabs').children().remove();
-        jQuery('#user-preferences').children().remove();
-        jQuery('#user-logout').children().remove();
-        jQuery('#menu').children().remove();
-        if (Sao.main_menu_screen) {
-            Sao.main_menu_screen.save_tree_state();
-            Sao.main_menu_screen = null;
-        }
-        session.do_logout();
-        Sao.login();
+        Sao.Tab.tabs.close(true).done(function() {
+            jQuery('#user-preferences').children().remove();
+            jQuery('#user-logout').children().remove();
+            jQuery('#menu').children().remove();
+            if (Sao.main_menu_screen) {
+                Sao.main_menu_screen.save_tree_state();
+                Sao.main_menu_screen = null;
+            }
+            session.do_logout();
+            Sao.login();
+        });
     };
 
     Sao.preferences = function() {
-        // TODO check modified
-        jQuery('#tabs').children().remove();
-        jQuery('#user-preferences').children().remove();
-        jQuery('#user-logout').children().remove();
-        jQuery('#menu').children().remove();
-        new Sao.Window.Preferences(function() {
-            var session = Sao.Session.current_session;
-            session.reload_context().done(
-                Sao.rpc({
-                    'method': 'model.res.user.get_preferences',
-                    'params': [false, {}]
-                }, session).then(function(preferences) {
-                    Sao.menu(preferences);
-                    Sao.user_menu(preferences);
-                }));
+        Sao.Tab.tabs.close(true).done(function() {
+            jQuery('#user-preferences').children().remove();
+            jQuery('#user-logout').children().remove();
+            jQuery('#menu').children().remove();
+            new Sao.Window.Preferences(function() {
+                var session = Sao.Session.current_session;
+                session.reload_context().done(
+                    Sao.rpc({
+                        'method': 'model.res.user.get_preferences',
+                        'params': [false, {}]
+                    }, session).then(function(preferences) {
+                        Sao.menu(preferences);
+                        Sao.user_menu(preferences);
+                    }));
+            });
         });
     };
 
@@ -242,6 +236,7 @@ var Sao = {};
             'domain': domain,
             'selection_mode': Sao.common.SELECTION_NONE
         });
+        Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
         form.view_prm.done(function() {
             Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;

@@ -145,12 +145,22 @@ button {
     }
 }
 
-.message-dialog {
+.unique-dialog {
+    & .ui-dialog-titlebar-close {
+        display: none;
+    }
     & .dialog-icon {
         display: table-cell;
     }
     & p {
         display: table;
-        white-space: pre;
     }
+}
+
+.message-dialog p {
+    white-space: pre;
+}
+
+.error-dialog textarea {
+    white-space: pre;
 }

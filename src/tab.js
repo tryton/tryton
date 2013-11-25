@@ -5,6 +5,7 @@
 
     Sao.Tab = Sao.class_(Object, {
         init: function() {
+            Sao.Tab.tabs.push(this);
             this.buttons = {};
         },
         create_tabcontent: function() {
@@ -105,16 +106,39 @@
         },
         close: function() {
             var tabs = jQuery('#tabs > div');
-            if (this.modified_save()) {
+            tabs.tabs('select', this.id);
+            return this.modified_save().then(function() {
                 tabs.tabs('remove', this.id);
                 if (!tabs.find('> ul').children().length) {
                     tabs.remove();
                 }
-            }
+                Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(this), 1);
+            }.bind(this));
         }
     });
 
     Sao.Tab.counter = 0;
+    Sao.Tab.tabs = [];
+    Sao.Tab.tabs.close = function(warning) {
+        if (warning && Sao.Tab.tabs.length) {
+            return Sao.common.sur.run(
+                    'The following action requires to close all tabs.\n' +
+                    'Do you want to continue?').then(function() {
+                        return Sao.Tab.tabs.close(false);
+                    });
+        }
+        if (Sao.Tab.tabs.length) {
+            var tab = Sao.Tab.tabs[0];
+            return tab.close().then(function() {
+                if (!~Sao.Tab.tabs.indexOf(tab)) {
+                    return Sao.Tab.tabs.close();
+                } else {
+                    return jQuery.Deferred().reject();
+                }
+            });
+        }
+        return jQuery.when();
+    };
 
     Sao.Tab.create = function(attributes) {
         if (attributes.context === undefined) {
@@ -172,7 +196,20 @@
 
             this.view_prm = this.screen.switch_view().done(function() {
                 this.el.append(screen.screen_container.el);
-                screen.search_filter();
+                if (attributes.res_id) {
+                    screen.group.load([attributes.res_id]);
+                    screen.set_current_record(
+                        screen.group.get(attributes.res_id));
+                    screen.display();
+                } else {
+                    if (screen.current_view.view_type == 'form') {
+                        screen.new_();
+                    }
+                    if (~['tree', 'graph', 'calendar'].indexOf(
+                            screen.current_view.view_type)) {
+                        screen.search_filter();
+                    }
+                }
             }.bind(this));
         },
         // TODO translate labels
@@ -276,85 +313,102 @@
             this.screen.save_tree_state();
             this.screen.current_view.set_value();
             if (this.screen.modified()) {
-                // TODO popup
-                return false;
+                return Sao.common.sur_3b.run('This record has been modified\n' +
+                        'do you want to save it?')
+                    .then(function(result) {
+                        switch(result) {
+                            case 'ok':
+                                return this.save();
+                            case 'ko':
+                                return this.reload(false);
+                            default:
+                                return jQuery.Deferred().reject();
+                        }
+                    }.bind(this));
             }
-            return true;
+            return jQuery.when();
         },
         new_: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
                 return;
             }
-            if (!this.modified_save()) {
-                return;
-            }
-            this.screen.new_();
-            // TODO message
-            // TODO activate_save
+            this.modified_save().done(function() {
+                this.screen.new_();
+                // TODO message
+                // TODO activate_save
+            }.bind(this));
         },
         save: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).write) {
                 return;
             }
-            if (this.screen.save_current()) {
-                // TODO message
-                return true;
-            } else {
-                // TODO message
-                return false;
-            }
+            // TODO message
+            return this.screen.save_current();
         },
         switch_: function() {
-            // TODO modified
-            this.screen.switch_view();
+            this.modified_save().done(function() {
+                this.screen.switch_view();
+            }.bind(this));
         },
         reload: function(test_modified) {
-            if (test_modified && this.screen.modified()) {
-                // TODO popup
+            if (test_modified === undefined) {
+                test_modified = true;
             }
-            this.screen.cancel_current().done(function() {
-                this.screen.save_tree_state(false);
-                if (this.screen.current_view.view_type != 'form') {
-                    this.screen.search_filter();  // TODO set search text
-                    // TODO set current_record
-                }
-                this.screen.display();
-                // TODO message
-                // TODO activate_save
-            }.bind(this));
+            var reload = function() {
+                this.screen.cancel_current().then(function() {
+                    this.screen.save_tree_state(false);
+                    if (this.screen.current_view.view_type != 'form') {
+                        this.screen.search_filter(
+                            this.screen.search_entry.val());
+                        // TODO set current_record
+                    }
+                    this.screen.display();
+                    // TODO message
+                    // TODO activate_save
+                }.bind(this));
+            }.bind(this);
+            if (test_modified) {
+                return this.modified_save().then(reload);
+            } else {
+                return reload();
+            }
         },
         copy: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
                 return;
             }
-            if (!this.modified_save()) {
-                return;
-            }
-            this.screen.copy();
-            // TODO message
+            this.modified_save().done(function() {
+                this.screen.copy();
+                // TODO message
+            }.bind(this));
         },
         delete_: function() {
             if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']) {
                 return;
             }
-            // TODO popup
-            this.screen.remove(true, false, true).done(function() {
-                // TODO message
-            });
+            var msg;
+            if (this.screen.current_view.view_type == 'form') {
+                msg = 'Are you sure to remove this record?'; // TODO translate
+            } else {
+                msg = 'Are you sure to remove those records?';
+            }
+            Sao.common.sur.run(msg).done(function() {
+                this.screen.remove(true, false, true).done(function() {
+                    // TODO message
+                });
+            }.bind(this));
         },
         previous: function() {
-            if (!this.modified_save()) {
-                return;
-            }
-            this.screen.display_previous();
-            // TODO message and activate_save
+            this.modified_save().done(function() {
+                this.screen.display_previous();
+                // TODO message and activate_save
+            }.bind(this));
         },
         next: function() {
-            if (!this.modified_save()) {
-                return;
-            }
-            this.screen.display_next();
-            // TODO message and activate_save
+            this.modified_save().done(function() {
+                this.screen.display_next();
+                // TODO message and activate_save
+            }.bind(this));
         },
         search: function() {
             var search_entry = this.screen.screen_container.search_entry;

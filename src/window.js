@@ -483,31 +483,33 @@
                 .then(set_view.bind(this), this.destroy);
         },
         response: function(response_id) {
+            var end = function() {
+                this.destroy();
+                this.callback();
+            }.bind(this);
+            var prm = jQuery.when();
             if (response_id == 'RESPONSE_OK') {
-                this.screen.current_record.validate().then(function(validate) {
-                    if (validate) {
-                        var values = jQuery.extend({}, this.screen.get());
-                        var password = false;
-                        if ('password' in values) {
-                            // TODO translate
-                            password = window.prompt('Current Password:');
-                            if (!password) {
-                                return;
+                prm = this.screen.current_record.validate()
+                    .then(function(validate) {
+                        if (validate) {
+                            var values = jQuery.extend({}, this.screen.get());
+                            var set_preferences = function(password) {
+                                return this.screen.model.execute(
+                                    'set_preferences', [values, password], {});
+                            }.bind(this);
+                            if ('password' in values) {
+                                return Sao.common.ask.run(
+                                    'Current Password:', false)
+                                    .then(function(password) {
+                                        return set_preferences(password);
+                                    });
+                            } else {
+                                return set_preferences(false);
                             }
                         }
-                        this.screen.model.execute('set_preferences',
-                                [values, password], {}).done(function() {
-                                    this.destroy();
-                                    this.callback();
-                                }.bind(this));
-                    } else {
-                        this.destroy();
-                        this.callback();
-                    }
-                }.bind(this));
+                    }.bind(this));
             }
-            this.destroy();
-            this.callback();
+            prm.done(end);
         },
         destroy: function() {
             this.el.dialog('destroy');

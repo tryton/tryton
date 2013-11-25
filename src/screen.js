@@ -464,10 +464,10 @@
                     }
                 }.bind(this));
             }
-            prm.always(function() {
+            var display = function() {
                 this.display();
-            }.bind(this));
-            return prm;
+            }.bind(this);
+            return prm.then(display, display);
         },
         modified: function() {
             var test = function(record) {

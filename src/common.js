@@ -1763,8 +1763,13 @@
             var prm = jQuery.Deferred();
             args.push(prm);
             var dialog = this.build_dialog.apply(this, args);
+            var class_ = dialog.dialog('option', 'dialogClass');
+            dialog.dialog({
+                'dialogClass': class_ + ' unique-dialog'
+            });
             this.running = true;
             dialog.dialog('open');
+            Sao.common.center_dialog(dialog);
             return prm;
         },
         close: function(dialog) {
@@ -1776,9 +1781,7 @@
     Sao.common.MessageDialog = Sao.class_(Sao.common.UniqueDialog, {
         class_: 'message-dialog',
         build_dialog: function(message, icon, prm) {
-            var dialog = jQuery('<div/>', {
-                'class': this.class_
-            });
+            var dialog = jQuery('<div/>');
             dialog.append(jQuery('<p/>')
                 .text(message)
                 .prepend(jQuery('<span/>', {
@@ -1787,6 +1790,7 @@
                     'class': 'ui-icon ' + icon
                 }))));
             dialog.dialog({
+                dialogClass: this.class_,
                 modal: true,
                 autoOpen: false,
                 buttons: {
@@ -1804,6 +1808,272 @@
         }
     });
     Sao.common.message = new Sao.common.MessageDialog();
+
+    Sao.common.WarningDialog = Sao.class_(Sao.common.UniqueDialog, {
+        class_: 'warning-dialog',
+        build_dialog: function(message, title, prm) {
+            var dialog = jQuery('<div/>');
+            dialog.append(jQuery('<p/>')
+                .text(message)
+                .prepend(jQuery('<span/>', {
+                    'class': 'dialog-icon'
+                }).append(jQuery('<span/>', {
+                    'class': 'ui-icon ui-icon-alert'
+                }))));
+            dialog.dialog({
+                dialogClass: this.class_,
+                modal: true,
+                autoOpen: false,
+                title: title,
+                buttons: {
+                    'Ok': function() {
+                        this.close(dialog);
+                        prm.resolve('ok');
+                    }.bind(this)
+                }
+
+            });
+            return dialog;
+        }
+    });
+    Sao.common.warning = new Sao.common.WarningDialog();
+
+    Sao.common.UserWarningDialog = Sao.class_(Sao.common.WarningDialog, {
+        class_: 'user-warning-dialog',
+        always: false,
+        _set_always: function() {
+            this.always = jQuery(this).prop('checked');
+        },
+        build_dialog: function(message, title, prm) {
+            var dialog = Sao.common.UserWarningDialog._super.build_dialog.call(
+                this, message, title, prm);
+            dialog.append(jQuery('<div/>')
+                .append(jQuery('<input/>', {
+                    'type': 'checkbox'
+                }).change(this._set_always.bind(this)))
+                .append(jQuery('<span/>').text('Always ignore this warning.'))
+                );
+            dialog.append(jQuery('<p/>').text('Do you want to proceed?'));
+            dialog.dialog({
+                buttons: {
+                    'No': function() {
+                        this.close(dialog);
+                        prm.reject();
+                    }.bind(this),
+                    'Yes': function() {
+                        this.close(dialog);
+                        if (this.always) {
+                            prm.resolve('always');
+                        }
+                        prm.resolve('ok');
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        }
+    });
+    Sao.common.userwarning = new Sao.common.UserWarningDialog();
+
+    Sao.common.ConfirmationDialog = Sao.class_(Sao.common.UniqueDialog, {
+        class_: 'confirmation-dialog',
+        build_dialog: function(message) {
+            var dialog = jQuery('<div/>');
+            dialog.append(jQuery('<p/>')
+                .text(message)
+                .prepend(jQuery('<span/>', {
+                    'class': 'dialog-icon'
+                }).append(jQuery('<span/>', {
+                    'class': 'ui-icon ui-icon-info'
+                }))));
+            dialog.dialog({
+                dialogClass: this.class_,
+                model: true,
+                autoOpen: false,
+                title: 'Confirmation'
+            });
+            return dialog;
+        }
+    });
+
+    Sao.common.SurDialog = Sao.class_(Sao.common.ConfirmationDialog, {
+        build_dialog: function(message, prm) {
+            var dialog = Sao.common.SurDialog._super.build_dialog.call(
+                this, message);
+            dialog.dialog({
+                buttons: {
+                    'Cancel': function() {
+                        this.close(dialog);
+                        prm.reject();
+                    }.bind(this),
+                    'Ok': function() {
+                        this.close(dialog);
+                        prm.resolve();
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        }
+    });
+    Sao.common.sur = new Sao.common.SurDialog();
+
+    Sao.common.Sur3BDialog = Sao.class_(Sao.common.ConfirmationDialog, {
+        build_dialog: function(message, prm) {
+            var dialog = Sao.common.SurDialog._super.build_dialog.call(
+                this, message);
+            dialog.dialog({
+                buttons: {
+                    'Cancel': function() {
+                        this.close(dialog);
+                        prm.resolve('cancel');
+                    }.bind(this),
+                    'No': function() {
+                        this.close(dialog);
+                        prm.resolve('ko');
+                    }.bind(this),
+                    'Yes': function() {
+                        this.close(dialog);
+                        prm.resolve('ok');
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        }
+    });
+    Sao.common.sur_3b = new Sao.common.Sur3BDialog();
+
+    Sao.common.AskDialog = Sao.class_(Sao.common.UniqueDialog, {
+        class_: 'ask-dialog',
+        run: function() {
+            var args = Array.prototype.slice.call(arguments);
+            if (args.length == 1) {
+                args.push(true);
+            }
+            return Sao.common.AskDialog._super.run.apply(this, args);
+        },
+        build_dialog: function(question, visibility, prm) {
+            var dialog = jQuery('<div/>');
+            var entry = jQuery('<input/>', {
+                'type': visibility ? 'input' : 'password'
+            });
+            dialog.append(jQuery('<p/>')
+                .text(question)
+                .prepend(jQuery('<span/>', {
+                    'class': 'dialog-icon'
+                }).append(jQuery('<span/>', {
+                    'class': 'ui-icon ui-icon-info'
+                })))
+                .append(entry));
+            dialog.dialog({
+                dialogClass: this.class_,
+                modal: true,
+                autoOpen: false,
+                buttons: {
+                    'Cancel': function() {
+                        this.close(dialog);
+                        prm.reject();
+                    }.bind(this),
+                    'Ok': function() {
+                        this.close(dialog);
+                        prm.resolve(entry.val());
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        }
+    });
+    Sao.common.ask = new Sao.common.AskDialog();
+
+    Sao.common.ConcurrencyDialog = Sao.class_(Sao.common.UniqueDialog, {
+        class_: 'ask-dialog',
+        build_dialog: function(model, record_id, context, prm) {
+            var dialog = jQuery('<div/>');
+            dialog.append(jQuery('<p/>').append(jQuery('<b/>')
+                    .text('Write Concurrency Warning:'))
+                .prepend(jQuery('<span/>', {
+                    'class': 'dialog-icon'
+                }).append(jQuery('<span/>', {
+                    'class': 'ui-icon ui-icon-info'
+                })))
+                .append(jQuery('<p/>')
+                    .text('This record has been modified ' +
+                        'while you were editing it.'))
+                .append(jQuery('<p/>').text('Choose:'))
+                .append(jQuery('<ul/>')
+                    .append(jQuery('<li/>')
+                        .text('"Cancel" to cancel saving;'))
+                    .append(jQuery('<li/>')
+                        .text('"Compare" to see the modified version;'))
+                    .append(jQuery('<li/>')
+                        .text('"Write Anyway" to save your current version.')))
+                );
+            dialog.dialog({
+                dialogClass: this.class_,
+                modal: true,
+                autoOpen: false,
+                title: 'Concurrency Exception',
+                buttons: {
+                    'Cancel': function() {
+                        this.close(dialog);
+                        prm.reject();
+                    }.bind(this),
+                    'Compare': function() {
+                        this.close(dialog);
+                        Sao.Tab.create({
+                            'model': model,
+                            'res_id': record_id,
+                            'domain': [['id', '=', record_id]],
+                            'context': context,
+                            'mode': ['form', 'tree']
+                        });
+                        prm.reject();
+                    }.bind(this),
+                    'Write Anyway': function() {
+                        this.close(dialog);
+                        prm.resolve();
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        }
+    });
+    Sao.common.concurrency = new Sao.common.ConcurrencyDialog();
+
+    Sao.common.ErrorDialog = Sao.class_(Sao.common.UniqueDialog, {
+        class_: 'error-dialog',
+        build_dialog: function(title, details, prm) {
+            var dialog = jQuery('<div/>');
+            dialog.append(jQuery('<p/>')
+                .text(title)
+                .prepend(jQuery('<span/>', {
+                    'class': 'dialog-icon'
+                }).append(jQuery('<span/>', {
+                    'class': 'ui-icon ui-icon-alert'
+                })))
+                .append(jQuery('<p/>')
+                    .append(jQuery('<textarea/>')
+                        .text(details)
+                        .prop('disabled', true)))
+                .append(jQuery('<p/>')
+                    .append(jQuery('<a/>', {
+                        href: Sao.config.roundup.url,
+                        target: '_blank'
+                    }).text('Report Bug'))));
+            dialog.dialog({
+                dialogClass: this.class_,
+                modal: true,
+                autoOpen: false,
+                title: 'Application Error!',
+                buttons: {
+                    'Close': function() {
+                        this.close(dialog);
+                        prm.resolve();
+                    }.bind(this)
+                }
+            });
+            return dialog;
+        }
+    });
+    Sao.common.error = new Sao.common.ErrorDialog();
 
     Sao.common.center_dialog = function(element){
         var parents = jQuery(element).parents().find('.ui-dialog ' +

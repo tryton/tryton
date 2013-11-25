@@ -24,14 +24,57 @@
 
         var ajax_success = function(data) {
             if (data === null) {
-                Sao.warning('Unable to reach the server');
+                Sao.common.warning.run('', 'Unable to reach the server');
                 dfd.reject();
             } else if (data.error) {
+                var name, msg, description;
                 if (data.error[0] == 'UserWarning') {
+                    name = data.error[1];
+                    msg = data.error[2];
+                    description = data.error[3];
+                    Sao.common.userwarning.run(description, msg)
+                        .done(function(result) {
+                            if (!~['always', 'ok'].indexOf(result)) {
+                                dfd.reject();
+                                return;
+                            }
+                            Sao.rpc({
+                                'method': 'model.res.user.warning.create',
+                                'params': [[{
+                                    'user': session.user_id,
+                                    'name': name,
+                                    'always': result == 'always'
+                                }], {}]
+                            }, session).done(function() {
+                                Sao.rpc(args, session).then(
+                                    dfd.resolve, dfd.reject);
+                            });
+                        });
+                    return;
                 } else if (data.error[0] == 'UserError') {
-                    // TODO
+                    msg = data.error[1];
+                    description = data.error[2];
+                    Sao.common.warning.run(description, msg)
+                        .always(dfd.reject);
+                    return;
                 } else if (data.error[0] == 'ConcurrencyException') {
-                    // TODO
+                    if (args.method.startsWith('model.') &&
+                            (args.method.endsWith('.write') ||
+                             args.method.endsWith('.delete'))) {
+                        var model = args.method.split('.').slice(1, -1).join('.');
+                        Sao.common.concurrency.run( model, args.params[1][0],
+                                args.params[-1])
+                            .then(function() {
+                                delete args.params[-1]._timestamp;
+                                Sao.rpc(args, session).then(
+                                    dfd.resolve, dfd.reject);
+                            }, dfd.reject);
+                        return;
+                    } else {
+                        Sao.common.message.run('Concurrency Exception',
+                                'ui-icon-alert').always(dfd.reject);
+                        return;
+                    }
                 } else if (data.error[0] == 'NotLogged') {
                     //Try to relog
                     Sao.Session.renew(session).then(function() {
@@ -39,8 +82,7 @@
                     }, dfd.reject);
                     return;
                 } else {
-                    console.log('ERROR');
-                    Sao.error(data.error[0], data.error[1]);
+                    Sao.common.error.run(data.error[0], data.error[1]);
                 }
                 dfd.reject();
             } else {
@@ -48,8 +90,8 @@
             }
         };
 
-        var ajax_error = function() {
-            console.log('ERROR');
+        var ajax_error = function(query, status_, error) {
+            Sao.common.error.run(status_, error);
             dfd.reject();
         };
         ajax_prm.success(ajax_success);
