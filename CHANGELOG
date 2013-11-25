@@ -1,3 +1,5 @@
+* Allow partial assignation on Supplier Shipment Return
+
 Version 3.0.0 - 2013-10-21
 * Bug fixes (see mercurial logs for details)
 * Add Mixin class with helper to setup stock quantity fields

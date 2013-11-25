@@ -738,37 +738,13 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     @ModelView.button
     def assign_try(cls, shipments):
         pool = Pool()
-        Product = pool.get('product.product')
-        Uom = pool.get('product.uom')
-        Date = pool.get('ir.date')
         Move = pool.get('stock.move')
-
-        Transaction().cursor.lock(Move._table)
-
-        moves = [m for s in shipments for m in s.moves]
-        location_ids = [m.from_location.id for m in moves]
-        with Transaction().set_context(
-                stock_date_end=Date.today(),
-                stock_assign=True):
-            pbl = Product.products_by_location(location_ids=location_ids,
-                product_ids=[m.product.id for m in moves])
-
-        for move in moves:
-            if move.state != 'draft':
-                continue
-            if (move.from_location.id, move.product.id) in pbl:
-                qty_default_uom = pbl[(move.from_location.id, move.product.id)]
-                qty = Uom.compute_qty(move.product.default_uom,
-                    qty_default_uom, move.uom, round=False)
-                if qty < move.quantity:
-                    return False
-                pbl[(move.from_location.id, move.product.id)] = (
-                    pbl[(move.from_location.id, move.product.id)]
-                    - qty_default_uom)
-            else:
-                return False
-        cls.assign(shipments)
-        return True
+        if Move.assign_try([m for s in shipments for m in s.moves],
+                with_childs=False):
+            cls.assign(shipments)
+            return True
+        else:
+            return False
 
     @classmethod
     @ModelView.button

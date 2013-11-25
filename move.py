@@ -706,7 +706,7 @@ class Move(Workflow, ModelSQL, ModelView):
         return to_pick
 
     @classmethod
-    def assign_try(cls, moves, grouping=('product',)):
+    def assign_try(cls, moves, with_childs=True, grouping=('product',)):
         '''
         Try to assign moves.
         It will split the moves to assign as much possible.
@@ -720,9 +720,13 @@ class Move(Workflow, ModelSQL, ModelView):
 
         Transaction().cursor.lock(cls._table)
 
-        locations = Location.search([
-                ('parent', 'child_of', [x.from_location.id for x in moves]),
-                ])
+        if with_childs:
+            locations = Location.search([
+                    ('parent', 'child_of',
+                        [x.from_location.id for x in moves]),
+                    ])
+        else:
+            locations = list(set((m.from_location for m in moves)))
         with Transaction().set_context(
                 stock_date_end=Date.today(),
                 stock_assign=True):
@@ -746,9 +750,12 @@ class Move(Workflow, ModelSQL, ModelView):
                 continue
             to_location = move.to_location
             location_qties = {}
-            childs = Location.search([
-                    ('parent', 'child_of', [move.from_location.id]),
-                    ])
+            if with_childs:
+                childs = Location.search([
+                        ('parent', 'child_of', [move.from_location.id]),
+                        ])
+            else:
+                childs = [move.from_location]
             for location in childs:
                 key = get_key(location)
                 if key in pbl:
