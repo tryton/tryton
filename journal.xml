@@ -51,5 +51,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_statement_journal">
+            <field name="model" search="[('model', '=', 'account.statement.journal')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_statement_journal1">
+            <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+            <field name="rule_group" ref="rule_group_statement_journal"/>
+        </record>
+
     </data>
 </tryton>

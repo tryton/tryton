@@ -174,6 +174,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="button" ref="statement_validate_button"/>
             <field name="group" ref="account.group_account"/>
         </record>
+        <record model="ir.model.button-res.group"
+            id="statement_validate_button_group_account">
+            <field name="button" ref="statement_validate_button"/>
+            <field name="group" ref="group_statement"/>
+        </record>
 
         <record model="ir.model.button" id="statement_post_button">
             <field name="name">post</field>
