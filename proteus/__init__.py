@@ -530,11 +530,11 @@ class ModelList(list):
         raise NotImplementedError
     sort.__doc__ = list.sort.__doc__
 
-    def new(self):
+    def new(self, **kwargs):
         'Adds a new record to the ModelList and returns it'
         Relation = Model.get(self.model_name, self.parent._config)
         with Relation._config.set_context(self._get_context()):
-            new_record = Relation()
+            new_record = Relation(**kwargs)
         self.append(new_record)
         return new_record
 

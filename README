@@ -75,7 +75,7 @@ Creating an address for the party
 Addresses are store on party with a `One2Many` field. So the new address just
 needs to be appended to the list `addresses`.
 
-    >>> address = party.addresses.new()
+    >>> address = party.addresses.new(zip='42')
     >>> party.save()
     >>> party.addresses #doctest: +ELLIPSIS
     [proteus.Model.get('party.address')(...)]
