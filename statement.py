@@ -180,12 +180,6 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        statements = cls.search(['OR',
-                ('start_balance',) + tuple(clause[1:]),
-                ('end_balance',) + tuple(clause[1:]),
-                ])
-        if statements:
-            return [('id', 'in', [s.id for s in statements])]
         return [('journal',) + tuple(clause[1:])]
 
     def get_end_balance(self, name):
@@ -445,6 +439,10 @@ class Line(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return self.statement.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('statement.rec_name',) + tuple(clause[1:])]
 
     @classmethod
     def copy(cls, lines, default=None):
