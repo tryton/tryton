@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
         <label string="You have selected more than one invoice to print."
             id="selected"
             yalign="0.0" xalign="0.0" xexpand="1"/>
-        <label string="The invoices will be sent &lt;i&gt;directly&lt;/i&gt; to the printer."
+        <label string="The invoices will be sent directly to the printer."
             id="printer"
             yalign="0.0" xalign="0.0" xexpand="1"/>
     </group>
