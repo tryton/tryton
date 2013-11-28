@@ -1344,7 +1344,8 @@ class Line(ModelSQL, ModelView):
         return result
 
     @classmethod
-    def reconcile(cls, lines, journal=None, date=None, account=None):
+    def reconcile(cls, lines, journal=None, date=None, account=None,
+            description=None):
         pool = Pool()
         Move = pool.get('account.move')
         Reconciliation = pool.get('account.move.reconciliation')
@@ -1372,6 +1373,7 @@ class Line(ModelSQL, ModelView):
                         'journal': journal.id,
                         'period': period_id,
                         'date': date,
+                        'description': description,
                         'lines': [
                             ('create', [{
                                         'account': reconcile_account.id,
@@ -1533,6 +1535,7 @@ class ReconcileLinesWriteOff(ModelView):
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         readonly=True, depends=['currency_digits'])
     currency_digits = fields.Integer('Currency Digits', readonly=True)
+    description = fields.Char('Description')
 
     @staticmethod
     def default_date():
@@ -1584,8 +1587,10 @@ class ReconcileLines(Wizard):
         journal = getattr(self.writeoff, 'journal', None)
         date = getattr(self.writeoff, 'date', None)
         account = getattr(self.writeoff, 'account', None)
+        description = getattr(self.writeoff, 'description', None)
         Line.reconcile(Line.browse(Transaction().context['active_ids']),
-            journal, date, account)
+            journal=journal, date=date, account=account,
+            description=description)
         return 'end'
 
 

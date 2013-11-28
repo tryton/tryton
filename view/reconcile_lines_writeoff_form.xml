@@ -10,4 +10,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="journal"/>
     <label name="account"/>
     <field name="account"/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
 </form>
