@@ -23,6 +23,7 @@ class RPC(object):
 
     def convert(self, obj, *args, **kwargs):
         args = list(args)
+        kwargs = kwargs.copy()
         if 'context' in kwargs:
             context = kwargs.pop('context')
         else:
