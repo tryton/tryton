@@ -80,6 +80,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">move_reconciliation_tree</field>
         </record>
+
+        <record model="ir.action.act_window" id="act_move_reconciliation_lines">
+            <field name="name">Reconciliation Lines</field>
+            <field name="res_model">account.move.line</field>
+            <field name="domain">[('reconciliation', '=', Eval('active_id'))]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_move_reconciliation_lines_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">account.move.reconciliation,-1</field>
+            <field name="action" ref="act_move_reconciliation_lines"/>
+        </record>
+
         <record model="ir.model.access" id="access_move_reconciliation">
             <field name="model" search="[('model', '=', 'account.move.reconciliation')]"/>
             <field name="perm_read" eval="False"/>
