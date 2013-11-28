@@ -2209,7 +2209,7 @@ class InvoiceReport(Report):
         if invoice.state in ('open', 'paid'):
             invoice_obj.write(invoice.id, {
                 'invoice_report_format': res[0],
-                'invoice_report_cache': res[1],
+                'invoice_report_cache': buffer(res[1]),
                 })
         return res
 
