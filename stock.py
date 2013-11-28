@@ -275,8 +275,8 @@ class InventoryLine:
     def unique_key(self):
         return super(InventoryLine, self).unique_key + (self.lot,)
 
-    def _get_move(self):
-        move = super(InventoryLine, self)._get_move()
+    def get_move(self):
+        move = super(InventoryLine, self).get_move()
         if move:
             move.lot = self.lot
         return move
