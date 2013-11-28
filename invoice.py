@@ -2361,7 +2361,7 @@ class InvoiceReport(Report):
                 and invoice.type in ('out_invoice', 'out_credit_note')):
             Invoice.write([Invoice(invoice.id)], {
                 'invoice_report_format': res[0],
-                'invoice_report_cache': res[1],
+                'invoice_report_cache': buffer(res[1]),
                 })
         return res
 
