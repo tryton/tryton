@@ -151,18 +151,18 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
         with Transaction().start(database_name, user,
                 readonly=rpc.readonly) as transaction:
             try:
-                args, kwargs, transaction.context, transaction.timestamp = \
-                    rpc.convert(obj, *args, **kwargs)
+                c_args, c_kwargs, transaction.context, transaction.timestamp \
+                    = rpc.convert(obj, *args, **kwargs)
                 meth = getattr(obj, method)
                 if not hasattr(meth, 'im_self') or meth.im_self:
-                    result = rpc.result(meth(*args, **kwargs))
+                    result = rpc.result(meth(*c_args, **c_kwargs))
                 else:
                     assert rpc.instantiate == 0
-                    inst = args.pop(0)
+                    inst = c_args.pop(0)
                     if hasattr(inst, method):
-                        result = rpc.result(meth(inst, *args, **kwargs))
+                        result = rpc.result(meth(inst, *c_args, **c_kwargs))
                     else:
-                        result = [rpc.result(meth(i, *args, **kwargs))
+                        result = [rpc.result(meth(i, *c_args, **c_kwargs))
                             for i in inst]
                 if not rpc.readonly:
                     transaction.cursor.commit()
