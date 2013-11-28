@@ -117,7 +117,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @Workflow.transition('done')
     def confirm(self, inventories):
         Move = Pool().get('stock.move')
-        move_ids = []
+        moves = []
         for inventory in inventories:
             keys = set()
             for line in inventory.lines:
@@ -126,11 +126,12 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     self.raise_user_error('unique_line',
                         (line.rec_name, inventory.rec_name))
                 keys.add(key)
-                move_id = line.create_move()
-                if move_id:
-                    move_ids.append(move_id)
-        if move_ids:
-            Move.do(Move.browse(move_ids))
+                move = line.get_move()
+                if move:
+                    moves.append(move)
+        if moves:
+            moves = Move.create([m._save_values for m in moves])
+            Move.do(moves)
 
     @classmethod
     @ModelView.button
@@ -240,7 +241,7 @@ class InventoryLine(ModelSQL, ModelView):
             depends=['unit_digits'])
     quantity = fields.Float('Quantity', required=True,
         digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
-    move = fields.Many2One('stock.move', 'Move', readonly=True)
+    moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
             ondelete='CASCADE')
 
@@ -257,12 +258,27 @@ class InventoryLine(ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
+        pool = Pool()
+        Move = pool.get('stock.move')
+        sql_table = cls.__table__()
+        move_table = Move.__table__()
 
         super(InventoryLine, cls).__register__(module_name)
 
         table = TableHandler(cursor, cls, module_name)
         # Migration from 2.8: Remove constraint inventory_product_uniq
         table.drop_constraint('inventory_product_uniq')
+
+        # Migration from 3.0: use Move origin
+        if table.column_exist('move'):
+            cursor.execute(*sql_table.select(sql_table.id, sql_table.move,
+                    where=sql_table.move != None))
+            for line_id, move_id in cursor.fetchall():
+                cursor.execute(*move_table.update(
+                        columns=[move_table.origin],
+                        values=['%s,%s' % (cls.__name__, line_id)],
+                        where=move_table.id == move_id))
+            table.drop_column('move')
 
     @staticmethod
     def default_unit_digits():
@@ -297,13 +313,11 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def cancel_move(cls, lines):
         Move = Pool().get('stock.move')
-        Move.cancel([l.move for l in lines if l.move])
-        Move.delete([l.move for l in lines if l.move])
-        cls.write([l for l in lines if l.move], {
-            'move': None,
-            })
+        moves = [m for l in lines for m in l.moves if l.moves]
+        Move.cancel(moves)
+        Move.delete(moves)
 
-    def _get_move(self):
+    def get_move(self):
         '''
         Return Move instance for the inventory line
         '''
@@ -322,7 +336,7 @@ class InventoryLine(ModelSQL, ModelView):
             (from_location, to_location, delta_qty) = \
                 (to_location, from_location, -delta_qty)
 
-        move = Move(
+        return Move(
             from_location=from_location,
             to_location=to_location,
             quantity=delta_qty,
@@ -330,16 +344,8 @@ class InventoryLine(ModelSQL, ModelView):
             uom=self.uom,
             company=self.inventory.company,
             effective_date=self.inventory.date,
+            origin=self,
             )
-        return move
-
-    def create_move(self):
-        '''
-        Create move for an inventory line and return id
-        '''
-        self.move = self._get_move()
-        self.save()
-        return self.move.id if self.move else None
 
     def update_values4complete(self, quantity, uom_id):
         '''
