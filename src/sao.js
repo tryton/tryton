@@ -150,6 +150,32 @@ var Sao = {};
     Sao.config.roundup = {};
     Sao.config.roundup.url = 'http://bugs.tryton.org/roundup/';
 
+    Sao.get_preferences = function() {
+        var session = Sao.Session.current_session;
+        Sao.rpc({
+            'method': 'model.res.user.get_preferences',
+            'params': [false, {}]
+        }, session).then(function(preferences) {
+            var deferreds = [];
+            // TODO view_search
+            deferreds.push(Sao.common.MODELACCESS.load_models());
+            deferreds.push(Sao.common.ICONFACTORY.load_icons());
+            jQuery.when.apply(jQuery, deferreds).then(function() {
+                Sao.menu(preferences);
+                Sao.user_menu(preferences);
+                (preferences.actions || []).forEach(function(action_id) {
+                    Sao.Action.execute(action_id, {}, null, {});
+                });
+                var title = 'Tryton';
+                if (!jQuery.isEmptyObject(preferences.status_bar)) {
+                    title += ' - ' + preferences.status_bar;
+                }
+                document.title = title;
+                // TODO language
+            });
+        });
+    };
+
     Sao.login = function() {
         var dfd = jQuery.Deferred();
         Sao.Session.get_credentials(dfd);
@@ -157,21 +183,7 @@ var Sao = {};
             Sao.Session.current_session = session;
             session.reload_context();
             return session;
-        }).then(function(session) {
-            Sao.rpc({
-                'method': 'model.res.user.get_preferences',
-                'params': [false, {}]
-            }, session).then(function(preferences) {
-                var deferreds = [];
-                // TODO view_search
-                deferreds.push(Sao.common.MODELACCESS.load_models());
-                deferreds.push(Sao.common.ICONFACTORY.load_icons());
-                jQuery.when.apply(jQuery, deferreds).then(function() {
-                    Sao.menu(preferences);
-                    Sao.user_menu(preferences);
-                });
-            });
-        });
+        }).then(Sao.get_preferences);
     };
 
     Sao.logout = function() {
@@ -184,6 +196,7 @@ var Sao = {};
                 Sao.main_menu_screen.save_tree_state();
                 Sao.main_menu_screen = null;
             }
+            document.title = 'Tryton';
             session.do_logout();
             Sao.login();
         });
@@ -194,17 +207,7 @@ var Sao = {};
             jQuery('#user-preferences').children().remove();
             jQuery('#user-logout').children().remove();
             jQuery('#menu').children().remove();
-            new Sao.Window.Preferences(function() {
-                var session = Sao.Session.current_session;
-                session.reload_context().done(
-                    Sao.rpc({
-                        'method': 'model.res.user.get_preferences',
-                        'params': [false, {}]
-                    }, session).then(function(preferences) {
-                        Sao.menu(preferences);
-                        Sao.user_menu(preferences);
-                    }));
-            });
+            new Sao.Window.Preferences(Sao.get_preferences);
         });
     };
 
