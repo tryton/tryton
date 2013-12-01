@@ -159,7 +159,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             Line.copy(inventory.lines,
                 default={
                     'inventory': new_inventory.id,
-                    'move': None,
+                    'moves': None,
                     })
             cls.complete_lines([new_inventory])
             new_inventories.append(new_inventory)
