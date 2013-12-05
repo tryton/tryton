@@ -359,7 +359,7 @@
                     this.screen.save_tree_state(false);
                     if (this.screen.current_view.view_type != 'form') {
                         this.screen.search_filter(
-                            this.screen.search_entry.val());
+                            this.screen.screen_container.search_entry.val());
                         // TODO set current_record
                     }
                     this.screen.display();
