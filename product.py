@@ -1,6 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from functools import partial
+
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval, Get
@@ -335,6 +337,14 @@ class UpdateCostPrice(Wizard):
         return 'update_price'
 
     def transition_update_price(self):
-        self.ask_price.product.cost_price = self.ask_price.cost_price
-        self.ask_price.product.save()
+        pool = Pool()
+        Product = pool.get('product.product')
+        ProductTemplate = pool.get('product.template')
+
+        if hasattr(Product, 'cost_price'):
+            write = partial(Product.write, [self.ask_price.product])
+        else:
+            write = partial(ProductTemplate.write,
+                [self.ask_price.product.template])
+        write({'cost_price': self.ask_price.cost_price})
         return 'end'
