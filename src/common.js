@@ -2076,18 +2076,23 @@
     Sao.common.error = new Sao.common.ErrorDialog();
 
     Sao.common.center_dialog = function(element){
+        var search_visible = function(parents){
+            var parent;
+            for (var i=0; i < parents.length; i++){
+                var el = jQuery(parents[i]);
+                if (el != element && el.is(':visible')) {
+                    parent = el;
+                    break;
+                }
+            }
+            return parent;
+        };
         var parents = jQuery(element).parents().find('.ui-dialog ' +
             '.screen-container');
-        var parent;
-        for (var i=0; i < parents.length; i++){
-            var el = jQuery(parents[i]);
-            if (el != element && el.is(':visible')) {
-                parent = el;
-                break;
-            }
-        }
+        var parent = search_visible(parents);
         if (!parent) {
-            parent = jQuery(element).parents().find('.screen-container')[0];
+            parents = jQuery(element).parents().find('.screen-container');
+            parent = search_visible(parents);
             if (!parent) {
                 parent = window;
             }
