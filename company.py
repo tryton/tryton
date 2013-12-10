@@ -209,8 +209,10 @@ class User:
             user_id = Transaction().context['user']
         result = super(User, cls).read(ids, fields_names=fields_names)
         if (fields_names
-                and 'company' in fields_names
-                and 'company' in Transaction().context):
+                and (('company' in fields_names
+                        and 'company' in Transaction().context)
+                    or ('employee' in fields_names
+                        and 'employee' in Transaction().context))):
             values = None
             if int(user_id) in ids:
                 for vals in result:
@@ -218,17 +220,26 @@ class User:
                         values = vals
                         break
             if values:
-                main_company_id = values.get('main_company')
-                if not main_company_id:
-                    main_company_id = cls.read([user_id],
-                        ['main_company'])[0]['main_company']
-                companies = Company.search([
-                        ('parent', 'child_of', [main_company_id]),
-                        ])
-                company_id = Transaction().context['company']
-                if ((company_id and company_id in map(int, companies))
-                        or not company_id):
-                    values['company'] = company_id
+                if 'company' in fields_names:
+                    main_company_id = values.get('main_company')
+                    if not main_company_id:
+                        main_company_id = cls.read([user_id],
+                            ['main_company'])[0]['main_company']
+                    companies = Company.search([
+                            ('parent', 'child_of', [main_company_id]),
+                            ])
+                    company_id = Transaction().context['company']
+                    if ((company_id and company_id in map(int, companies))
+                            or not company_id):
+                        values['company'] = company_id
+                if 'employee' in fields_names:
+                    employees = values.get('employees')
+                    if not employees:
+                        employees = cls.read([user_id],
+                            ['employees'])[0]['employees']
+                    employee_id = Transaction().context['employee']
+                    if employee_id and employee_id in employees:
+                        values['employee'] = employee_id
         return result
 
 
