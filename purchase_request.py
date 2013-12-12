@@ -467,7 +467,7 @@ class CreatePurchaseRequestStart(ModelView):
 
 
 class CreatePurchaseRequest(Wizard):
-    'Create Purchase Request'
+    'Create Purchase Requests'
     __name__ = 'purchase.request.create'
     start = StateView('purchase.request.create.start',
         'stock_supply.purchase_request_create_start_view_form', [
