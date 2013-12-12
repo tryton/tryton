@@ -260,10 +260,10 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     def on_change_supplier(self):
-        if not self.supplier:
-            return {'contact_address': None}
-        address = self.supplier.address_get()
-        return {'contact_address': address.id}
+        address = None
+        if self.supplier:
+            address = self.supplier.address_get()
+        return {'contact_address': address.id if address else None}
 
     def on_change_with_supplier_location(self, name=None):
         if self.supplier:
@@ -967,10 +967,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     def on_change_customer(self):
-        if not self.customer:
-            return {'delivery_address': None}
-        address = self.customer.address_get(type='delivery')
-        return {'delivery_address': address.id}
+        address = None
+        if self.customer:
+            address = self.customer.address_get(type='delivery')
+        return {'delivery_address': address.id if address else None}
 
     def on_change_with_customer_location(self, name=None):
         if self.customer:
@@ -1469,11 +1469,11 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         return Transaction().context.get('company')
 
     def on_change_customer(self):
-        if not self.customer:
-            return {'delivery_address': None}
-        address = self.customer.address_get(type='delivery')
+        address = None
+        if self.customer:
+            address = self.customer.address_get(type='delivery')
         return {
-            'delivery_address': address.id,
+            'delivery_address': address.id if address else None,
             }
 
     def on_change_with_customer_location(self, name=None):
