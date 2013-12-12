@@ -57,11 +57,12 @@ class ShipmentIn:
     @classmethod
     def _get_inventory_moves(cls, incoming_move):
         move = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
-        for product_location in incoming_move.product.locations:
-            if product_location.warehouse.id != \
-                    incoming_move.shipment.warehouse.id:
-                continue
-            move.to_location = product_location.location
+        if move:
+            for product_location in incoming_move.product.locations:
+                if product_location.warehouse.id != \
+                        incoming_move.shipment.warehouse.id:
+                    continue
+                move.to_location = product_location.location
         return move
 
 
@@ -72,8 +73,9 @@ class ShipmentOutReturn:
     def _get_inventory_moves(cls, incoming_move):
         move = super(ShipmentOutReturn, cls)._get_inventory_moves(
             incoming_move)
-        for product_location in incoming_move.product.locations:
-            if (product_location.warehouse
-                    == incoming_move.shipment.warehouse):
-                move.to_location = product_location.location
+        if move:
+            for product_location in incoming_move.product.locations:
+                if (product_location.warehouse
+                        == incoming_move.shipment.warehouse):
+                    move.to_location = product_location.location
         return move
