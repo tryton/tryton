@@ -52,9 +52,10 @@ class ShipmentIn:
     @classmethod
     def _get_inventory_moves(cls, incoming_move):
         res = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
-        for product_location in incoming_move.product.locations:
-            if product_location.warehouse.id != \
-                    incoming_move.shipment_in.warehouse.id:
-                continue
-            res['to_location'] = product_location.location.id
+        if res:
+            for product_location in incoming_move.product.locations:
+                if product_location.warehouse.id != \
+                        incoming_move.shipment_in.warehouse.id:
+                    continue
+                res['to_location'] = product_location.location.id
         return res
