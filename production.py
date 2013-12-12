@@ -197,7 +197,7 @@ class CreateProductionRequestStart(ModelView):
 
 
 class CreateProductionRequest(Wizard):
-    'Create Production Request'
+    'Create Production Requests'
     __name__ = 'production.create_request'
     start = StateView('production.create_request.start',
         'stock_supply_production.production_create_request_start_view_form', [
