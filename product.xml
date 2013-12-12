@@ -17,9 +17,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Update Cost Price</field>
             <field name="wiz_name">product.update_cost_price</field>
         </record>
-        <record model="ir.action.keyword" id="update_cost_price_keyword">
+        <record model="ir.action.keyword" id="update_cost_price_product_keyword">
             <field name="keyword">form_action</field>
             <field name="model">product.product,-1</field>
+            <field name="action" ref="wizard_update_cost_price"/>
+        </record>
+        <record model="ir.action.keyword" id="update_cost_price_template_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">product.template,-1</field>
             <field name="action" ref="wizard_update_cost_price"/>
         </record>
         <record model="ir.action-res.group"

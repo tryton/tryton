@@ -27,4 +27,4 @@ class AccountMove:
     @classmethod
     def _get_origin(cls):
         return super(AccountMove, cls)._get_origin() + ['stock.move',
-            'product.product']
+            'product.product', 'product.template']

@@ -2,8 +2,14 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form string="Update Cost Price" cursor="cost_price">
-    <label name="product"/>
-    <field name="product"/>
+    <group id="label_product_template" col="1" xexpand="0">
+        <label name="template"/>
+        <label name="product"/>
+    </group>
+    <group id="product_template" col="1">
+        <field name="template"/>
+        <field name="product"/>
+    </group>
     <label name="cost_price"/>
     <field name="cost_price"/>
 </form>

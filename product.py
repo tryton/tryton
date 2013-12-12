@@ -176,17 +176,25 @@ class Template:
     @classmethod
     def __setup__(cls):
         super(Template, cls).__setup__()
-        cls.cost_price.states['readonly'] = (
-            cls.cost_price.states.get('readonly', False)
-            | ((Eval('type', 'goods') == 'goods') & (Eval('id', -1) >= 0)))
-        if 'type' not in cls.cost_price.depends:
-            cls.cost_price.depends.append('type')
+        cls._modify_no_move.append(('cost_price', 'change_cost_price'))
+        cls._error_messages.update({
+                'change_cost_price': ('You cannot change the cost price for '
+                    'a product which is associated to stock moves.\n'
+                    'You must use the "Update Cost Price" wizard.'),
+                })
 
 
 class UpdateCostPriceAsk(ModelView):
     'Update Cost Price Ask'
     __name__ = 'product.update_cost_price.ask'
-    product = fields.Many2One('product.product', 'Product', readonly=True)
+    template = fields.Many2One('product.template', 'Product', readonly=True,
+        states={
+            'invisible': ~Eval('template'),
+            })
+    product = fields.Many2One('product.product', 'Variant', readonly=True,
+        states={
+            'invisible': ~Eval('product'),
+            })
     cost_price = fields.Numeric('Cost Price', required=True, digits=(16, 4))
 
 
@@ -238,24 +246,44 @@ class UpdateCostPrice(Wizard):
                 })
 
     def default_ask_price(self, fields):
-        if 'product' in fields:
+        context = Transaction().context
+        if ('product' in fields
+                and context['active_model'] == 'product.product'):
             return {
-                'product': Transaction().context['active_id'],
+                'product': context['active_id'],
                 }
+        elif ('template' in fields
+                and context['active_model'] == 'product.template'):
+            return {
+                'template': context['active_id'],
+                }
+        else:
+            return {}
 
     @staticmethod
-    def get_quantity():
+    def get_product():
+        'Return the product or template instance'
+        pool = Pool()
+        Product = pool.get('product.product')
+        ProductTemplate = pool.get('product.template')
+        context = Transaction().context
+        if context['active_model'] == 'product.product':
+            return Product(context['active_id'])
+        else:
+            return ProductTemplate(context['active_id'])
+
+    @classmethod
+    def get_quantity(cls):
         pool = Pool()
         Date = pool.get('ir.date')
-        Product = pool.get('product.product')
         Stock = pool.get('stock.location')
 
         locations = Stock.search([('type', '=', 'storage')])
         stock_date_end = Date.today()
         with Transaction().set_context(locations=[l.id for l in locations],
                 stock_date_end=stock_date_end):
-            product = Product(Transaction().context['active_id'])
-            if hasattr(Product, 'cost_price'):
+            product = cls.get_product()
+            if hasattr(product.__class__, 'cost_price'):
                 return product.quantity
             else:
                 return product.template.quantity
@@ -269,9 +297,8 @@ class UpdateCostPrice(Wizard):
         pool = Pool()
         User = pool.get('res.user')
         AccountConfiguration = pool.get('account.configuration')
-        Product = pool.get('product.product')
 
-        product = Product(Transaction().context['active_id'])
+        product = self.get_product()
         price_diff = (self.ask_price.cost_price
                 - product.cost_price)
         user = User(Transaction().user)
@@ -321,7 +348,7 @@ class UpdateCostPrice(Wizard):
                 period=period_id,
                 journal=self.show_move.journal,
                 date=Date.today(),
-                origin=self.ask_price.product,
+                origin=self.get_product(),
                 lines=self.get_move_lines(),
                 )
 
@@ -344,7 +371,12 @@ class UpdateCostPrice(Wizard):
         if hasattr(Product, 'cost_price'):
             write = partial(Product.write, [self.ask_price.product])
         else:
-            write = partial(ProductTemplate.write,
-                [self.ask_price.product.template])
-        write({'cost_price': self.ask_price.cost_price})
+            if self.ask_price.template:
+                template = self.ask_price.template
+            else:
+                template = self.ask_price.product.template
+            write = partial(ProductTemplate.write, [template])
+
+        with Transaction().set_user(0, set_context=True):
+            write({'cost_price': self.ask_price.cost_price})
         return 'end'
