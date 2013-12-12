@@ -221,7 +221,8 @@ class User:
                         values = vals
                         break
             if values:
-                if 'company' in fields_names:
+                if ('company' in fields_names
+                        and 'company' in Transaction().context):
                     main_company_id = values.get('main_company')
                     if not main_company_id:
                         main_company_id = cls.read([user_id],
@@ -233,7 +234,8 @@ class User:
                     if ((company_id and company_id in map(int, companies))
                             or not company_id):
                         values['company'] = company_id
-                if 'employee' in fields_names:
+                if ('employee' in fields_names
+                        and 'employee' in Transaction().context):
                     employees = values.get('employees')
                     if not employees:
                         employees = cls.read([user_id],
