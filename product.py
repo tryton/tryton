@@ -51,30 +51,29 @@ class Template:
             cls.cost_price.states.get('required', True),
             Eval('type').in_(['goods', 'assets']))
         cls.cost_price.depends.append('type')
+        cls._modify_no_move = [('default_uom', 'change_default_uom')]
 
     @classmethod
-    def write(cls, templates, vals):
+    def check_no_move(cls, templates, error):
         Move = Pool().get('stock.move')
         cursor = Transaction().cursor
-        if not vals.get("default_uom"):
-            super(Template, cls).write(templates, vals)
-            return
-
         for i in range(0, len(templates), cursor.IN_MAX):
             sub_ids = [t.id for t in templates[i:i + cursor.IN_MAX]]
-            templates_to_check = cls.search([
-                    ('id', 'in', sub_ids),
-                    ('default_uom', '!=', vals['default_uom']),
-                    ])
+            moves = Move.search([
+                    ('product.template', 'in', sub_ids),
+                    ],
+                limit=1, order=[])
+            if moves:
+                cls.raise_user_error(error)
 
-            if templates_to_check:
-                if Move.search([
-                            ('product.template', 'in',
-                                [t.id for t in templates_to_check]),
-                            ], limit=1):
-                    cls.raise_user_error('change_default_uom')
-
-        super(Template, cls).write(templates, vals)
+    @classmethod
+    def write(cls, templates, values):
+        if Transaction().user != 0:
+            for field, error in cls._modify_no_move:
+                if values.get(field):
+                    cls.check_no_move(templates, error)
+                    break
+        super(Template, cls).write(templates, values)
 
 
 class Product(object, StockMixin):
