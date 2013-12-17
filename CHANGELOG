@@ -1,3 +1,6 @@
+* Use new methods to compute quantities in StockMixin._search_quantity()
+* Split products_by_location into two methods on Move:
+  compute_quantities_query and compute_quantities
 * Use origin for inventory moves
 * Allow partial assignation on Supplier Shipment Return
 
