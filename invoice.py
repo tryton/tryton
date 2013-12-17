@@ -70,8 +70,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
         required=True, states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('context', {}).get('type')
-                | (Eval('lines') & Eval('type'))),
-            }, depends=['state', 'lines'])
+                | (Eval('lines', [0]) & Eval('type'))),
+            }, depends=['state'])
     type_name = fields.Function(fields.Char('Type'), 'get_type_name')
     number = fields.Char('Number', size=None, readonly=True, select=True)
     reference = fields.Char('Reference', size=None, states=_STATES,
@@ -107,8 +107,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines') & Eval('currency'))),
-            }, depends=['state', 'lines'])
+                | (Eval('lines', [0]) & Eval('currency'))),
+            }, depends=['state'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
         on_change_with=['currency']), 'on_change_with_currency_digits')
     currency_date = fields.Function(fields.Date('Currency Date',
