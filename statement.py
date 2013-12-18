@@ -28,10 +28,10 @@ class Statement(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('context', {}).get('company', -1)),
             ],
         states={
-            'readonly': (Eval('state') != 'draft') | Eval('lines'),
+            'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         on_change=['journal', 'state', 'lines'], select=True,
-        depends=['state', 'lines'])
+        depends=['state'])
     currency_digits = fields.Function(fields.Integer('Currency Digits',
             on_change_with=['journal']), 'on_change_with_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
