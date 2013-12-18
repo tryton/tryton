@@ -1049,24 +1049,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
         default['invoice_report_cache'] = None
         default['invoice_report_format'] = None
         default['payment_lines'] = None
-        default['lines'] = None
-        default['taxes'] = None
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
         default['lines_to_pay'] = None
         default.setdefault('origin', None)
-
-        new_invoices = []
-        for invoice in invoices:
-            new_invoice, = super(Invoice, cls).copy([invoice], default=default)
-            Line.copy(invoice.lines, default={
-                    'invoice': new_invoice.id,
-                    })
-            Tax.copy(invoice.taxes, default={
-                    'invoice': new_invoice.id,
-                    })
-            new_invoices.append(new_invoice)
-        return new_invoices
+        return super(Invoice, cls).copy(invoices, default=default)
 
     @classmethod
     def validate(cls, invoices):
