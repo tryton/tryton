@@ -17,8 +17,7 @@ from decimal import Decimal
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends
-from trytond.backend.sqlite.database import Database as SQLiteDatabase
+    test_depends, doctest_dropdb
 from trytond.transaction import Transaction
 
 
@@ -248,19 +247,6 @@ class StockLotTestCase(unittest.TestCase):
                 self.assertEqual(lot_cache.product, product)
                 self.assertEqual(lot_cache.internal_quantity,
                     quantities[(lot_cache.location, lot_cache.lot)])
-
-
-def doctest_dropdb(test):
-    '''
-    Remove sqlite memory database
-    '''
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        database.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
 
 
 def suite():
