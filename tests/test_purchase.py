@@ -12,8 +12,7 @@ if os.path.isdir(DIR):
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
-from trytond.backend.sqlite.database import Database as SQLiteDatabase
+from trytond.tests.test_tryton import test_view, test_depends, doctest_dropdb
 
 
 class PurchaseTestCase(unittest.TestCase):
@@ -35,16 +34,6 @@ class PurchaseTestCase(unittest.TestCase):
         Test depends.
         '''
         test_depends()
-
-
-def doctest_dropdb(test):
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        database.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
 
 
 def suite():
