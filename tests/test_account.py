@@ -14,9 +14,8 @@ import doctest
 import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_view, test_depends, doctest_dropdb
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
-from trytond.backend.sqlite.database import Database as SQLiteDatabase
 from trytond.transaction import Transaction
 
 
@@ -331,19 +330,6 @@ class AccountTestCase(unittest.TestCase):
                 self.assertEqual(receivable.balance, Decimal(100))
 
             transaction.cursor.rollback()
-
-
-def doctest_dropdb(test):
-    '''
-    Remove sqlite memory database
-    '''
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        database.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
 
 
 def suite():
