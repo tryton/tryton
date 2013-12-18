@@ -21,14 +21,14 @@ class Inventory(Workflow, ModelSQL, ModelView):
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+                Bool(Eval('lines', [0]))),
             },
-        depends=['state', 'lines'])
+        depends=['state'])
     date = fields.Date('Date', required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+                Bool(Eval('lines', [0]))),
             },
-        depends=['state', 'lines'])
+        depends=['state'])
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')], states=STATES, depends=DEPENDS)
@@ -38,9 +38,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+                Bool(Eval('lines', [0]))),
             },
-        depends=['state', 'lines'])
+        depends=['state'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),

@@ -60,9 +60,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
             'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
-                    Bool(Eval('incoming_moves'))), Bool(Eval('supplier'))),
+                    Bool(Eval('incoming_moves', [0]))), Bool(Eval('supplier'))),
             }, on_change=['supplier'], required=True,
-        depends=['state', 'incoming_moves', 'supplier'])
+        depends=['state', 'supplier'])
     supplier_location = fields.Function(fields.Many2One('stock.location',
             'Supplier Location', on_change_with=['supplier']),
         'on_change_with_supplier_location')
@@ -75,8 +75,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         required=True, domain=[('type', '=', 'warehouse')],
         states={
             'readonly': Or(In(Eval('state'), ['cancel', 'done']),
-                Bool(Eval('incoming_moves'))),
-            }, depends=['state', 'incoming_moves'])
+                Bool(Eval('incoming_moves', [0]))),
+            }, depends=['state'])
     warehouse_input = fields.Function(fields.Many2One('stock.location',
             'Warehouse Input', on_change_with=['warehouse']),
         'on_change_with_warehouse_input')
@@ -496,15 +496,15 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves'))),
+                Bool(Eval('moves', [0]))),
             }, domain=[('type', '=', 'storage')],
-        depends=['state', 'moves'])
+        depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves'))),
+                Bool(Eval('moves', [0]))),
             }, domain=[('type', '=', 'supplier')],
-        depends=['state', 'moves'])
+        depends=['state'])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
@@ -773,9 +773,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('outgoing_moves'))),
+                Bool(Eval('outgoing_moves', [0]))),
             }, on_change=['customer'],
-        depends=['state', 'outgoing_moves'])
+        depends=['state'])
     customer_location = fields.Function(fields.Many2One('stock.location',
             'Customer Location', on_change_with=['customer']),
         'on_change_with_customer_location')
@@ -792,9 +792,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('outgoing_moves'))),
+                Bool(Eval('outgoing_moves', [0]))),
             }, domain=[('type', '=', 'warehouse')],
-        depends=['state', 'outgoing_moves'])
+        depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
             'Warehouse Storage', on_change_with=['warehouse']),
         'on_change_with_warehouse_storage')
@@ -1305,9 +1305,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('incoming_moves'))),
+                Bool(Eval('incoming_moves', [0]))),
             }, on_change=['customer'],
-        depends=['state', 'incoming_moves'])
+        depends=['state'])
     customer_location = fields.Function(fields.Many2One('stock.location',
             'Customer Location', on_change_with=['customer']),
         'on_change_with_customer_location')
@@ -1324,9 +1324,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', "Warehouse", required=True,
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('incoming_moves'))),
+                Bool(Eval('incoming_moves', [0]))),
             }, domain=[('type', '=', 'warehouse')],
-        depends=['state', 'incoming_moves'])
+        depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
             'Warehouse Storage', on_change_with=['warehouse']),
         'on_change_with_warehouse_storage')
@@ -1750,18 +1750,18 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves'))),
+                Bool(Eval('moves', [0]))),
             },
         domain=[
             ('type', 'in', ['storage', 'lost_found']),
-            ], depends=['state', 'moves'])
+            ], depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('moves'))),
+                Bool(Eval('moves', [0]))),
             }, domain=[
             ('type', 'in', ['storage', 'lost_found']),
-            ], depends=['state', 'moves'])
+            ], depends=['state'])
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': ((Eval('state') != 'draft')
