@@ -31,9 +31,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+                Bool(Eval('lines', [0]))),
             },
-        depends=['state', 'lines'])
+        depends=['state'])
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
         domain=[('type', 'in', ['customer', 'production'])], states=STATES,
@@ -48,9 +48,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+                Bool(Eval('lines', [0]))),
             },
-        depends=['state', 'lines'])
+        depends=['state'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
