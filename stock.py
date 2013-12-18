@@ -44,10 +44,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             }, depends=['state'])
     supplier = fields.Many2One('party.party', 'Supplier',
         states={
-            'readonly': (((Eval('state') != 'draft') | Eval('moves'))
+            'readonly': (((Eval('state') != 'draft') | Eval('moves', [0]))
                 & Eval('supplier')),
             }, on_change=['supplier'], required=True,
-        depends=['state', 'moves', 'supplier'])
+        depends=['state', 'supplier'])
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
             'readonly': Eval('state') != 'draft',
@@ -56,10 +56,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         depends=['state', 'supplier'])
     customer = fields.Many2One('party.party', 'Customer', required=True,
         states={
-            'readonly': (((Eval('state') != 'draft') | Eval('moves'))
+            'readonly': (((Eval('state') != 'draft') | Eval('moves', [0]))
                 & Eval('customer')),
             }, on_change=['customer'],
-        depends=['state', 'moves'])
+        depends=['state'])
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         required=True,
         states={
