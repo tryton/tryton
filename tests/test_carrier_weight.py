@@ -13,8 +13,7 @@ import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-    test_view, test_depends
-from trytond.backend.sqlite.database import Database as SQLiteDatabase
+    test_view, test_depends, doctest_dropdb
 from trytond.transaction import Transaction
 
 
@@ -102,19 +101,6 @@ class CarrierWeightTestCase(unittest.TestCase):
                     (100, Decimal(4)),
                     ]:
                 self.assertEqual(carrier.compute_weight_price(weight), price)
-
-
-def doctest_dropdb(test):
-    '''
-    Remove sqlite memory database
-    '''
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        database.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
 
 
 def suite():
