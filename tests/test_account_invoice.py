@@ -15,9 +15,8 @@ import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-        test_depends
+    test_depends, doctest_dropdb
 from trytond.transaction import Transaction
-from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 
 class AccountInvoiceTestCase(unittest.TestCase):
@@ -91,16 +90,6 @@ class AccountInvoiceTestCase(unittest.TestCase):
                     (datetime.date(2011, 12, 01), Decimal('396.84')),
                     (datetime.date(2012, 01, 14), Decimal('396.83')),
                     ])
-
-
-def doctest_dropdb(test):
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        database.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
 
 
 def suite():
