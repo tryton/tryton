@@ -559,9 +559,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
         invoices_no_move = []
         for invoice in invoices:
             if invoice.move:
-                invoices_move.append(invoice)
+                invoices_move.append(invoice.id)
             else:
-                invoices_no_move.append(invoice)
+                invoices_no_move.append(invoice.id)
+        invoices_move = cls.browse(invoices_move)
+        invoices_no_move = cls.browse(invoices_no_move)
 
         type_name = cls.total_amount._field.sql_type().base
         invoice = cls.__table__()
