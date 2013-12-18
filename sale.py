@@ -14,17 +14,15 @@ class Sale:
         domain=[('company', '=', Eval('company'))],
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
-                Bool(Eval('lines'))),
+                Bool(Eval('lines', [0]))),
             },
-        depends=['state', 'company', 'lines'])
+        depends=['state', 'company'])
 
     @classmethod
     def __setup__(cls):
         super(Sale, cls).__setup__()
         cls.party.states['readonly'] = (cls.party.states['readonly']
-            | Eval('lines'))
-        if 'lines' not in cls.party.depends:
-            cls.party.depends.append('lines')
+            | Eval('lines', [0]))
         cls.lines.states['readonly'] = (cls.lines.states['readonly']
             | ~Eval('party'))
         if 'party' not in cls.lines.depends:
