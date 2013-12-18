@@ -15,9 +15,8 @@ import datetime
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
-    test_depends
+    test_depends, doctest_dropdb
 from trytond.transaction import Transaction
-from trytond.backend.sqlite.database import Database as SQLiteDatabase
 
 DATES = [
     # purchase date, delivery time, supply date
@@ -135,16 +134,6 @@ class StockSupplyTestCase(unittest.TestCase):
                     'delivery_time': delivery_time,
                     }])
         return product_supplier
-
-
-def doctest_dropdb(test):
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        database.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
 
 
 def suite():
