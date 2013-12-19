@@ -63,12 +63,15 @@ class Template:
                 return self.default_uom.id
 
     @classmethod
-    def write(cls, templates, vals):
-        if vals.get("purchase_uom"):
+    def write(cls, *args):
+        actions = iter(args)
+        for templates, values in zip(actions, actions):
+            if not values.get("purchase_uom"):
+                continue
             for template in templates:
                 if not template.purchase_uom:
                     continue
-                if template.purchase_uom.id == vals["purchase_uom"]:
+                if template.purchase_uom.id == values["purchase_uom"]:
                     continue
                 for product in template.products:
                     if not product.product_suppliers:
@@ -76,7 +79,7 @@ class Template:
                     cls.raise_user_warning(
                             '%s@product_template' % template.id,
                             'change_purchase_uom')
-        super(Template, cls).write(templates, vals)
+        super(Template, cls).write(*args)
 
 
 class Product:
