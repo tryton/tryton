@@ -65,13 +65,15 @@ class Template:
                 cls.raise_user_error(error)
 
     @classmethod
-    def write(cls, templates, values):
+    def write(cls, *args):
         if Transaction().user != 0:
-            for field, error in cls._modify_no_move:
-                if values.get(field):
-                    cls.check_no_move(templates, error)
-                    break
-        super(Template, cls).write(templates, values)
+            actions = iter(args)
+            for templates, values in zip(actions, actions):
+                for field, error in cls._modify_no_move:
+                    if values.get(field):
+                        cls.check_no_move(templates, error)
+                        break
+        super(Template, cls).write(*args)
 
 
 class Product(object, StockMixin):

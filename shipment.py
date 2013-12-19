@@ -375,9 +375,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         return shipments
 
     @classmethod
-    def write(cls, shipments, values):
-        super(ShipmentIn, cls).write(shipments, values)
-        cls._set_move_planned_date(shipments)
+    def write(cls, *args):
+        super(ShipmentIn, cls).write(*args)
+        cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -672,9 +672,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         return shipments
 
     @classmethod
-    def write(cls, shipments, values):
-        super(ShipmentInReturn, cls).write(shipments, values)
-        cls._set_move_planned_date(shipments)
+    def write(cls, *args):
+        super(ShipmentInReturn, cls).write(*args)
+        cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
     def delete(cls, shipments):
@@ -1223,9 +1223,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         return shipments
 
     @classmethod
-    def write(cls, shipments, values):
-        super(ShipmentOut, cls).write(shipments, values)
-        cls._set_move_planned_date(shipments)
+    def write(cls, *args):
+        super(ShipmentOut, cls).write(*args)
+        cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -1581,9 +1581,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         return shipments
 
     @classmethod
-    def write(cls, shipments, values):
-        super(ShipmentOutReturn, cls).write(shipments, values)
-        cls._set_move_planned_date(shipments)
+    def write(cls, *args):
+        super(ShipmentOutReturn, cls).write(*args)
+        cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
     def copy(cls, shipments, default=None):

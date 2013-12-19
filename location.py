@@ -244,8 +244,9 @@ class Location(ModelSQL, ModelView):
         return locations
 
     @classmethod
-    def write(cls, locations, vals):
-        super(Location, cls).write(locations, vals)
+    def write(cls, *args):
+        super(Location, cls).write(*args)
+        locations = sum(args[::2], [])
         cls._set_warehouse_parent(locations)
 
         ids = [l.id for l in locations]

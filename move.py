@@ -660,31 +660,36 @@ class Move(Workflow, ModelSQL, ModelView):
         return moves
 
     @classmethod
-    def write(cls, moves, vals):
-        vals_set = set(vals)
-        if cls._deny_modify_assigned & vals_set:
+    def write(cls, *args):
+        actions = iter(args)
+        for moves, values in zip(actions, actions):
+            vals_set = set(values)
+            if cls._deny_modify_assigned & vals_set:
+                for move in moves:
+                    if move.state == 'assigned':
+                        cls.raise_user_error('modify_assigned', move.rec_name)
+            if cls._deny_modify_done_cancel & vals_set:
+                for move in moves:
+                    if move.state in ('done', 'cancel'):
+                        cls.raise_user_error('modify_done_cancel',
+                            (move.rec_name,))
+
+            if any(f not in cls._allow_modify_closed_period for f in values):
+                cls.check_period_closed(moves)
+
+        super(Move, cls).write(*args)
+
+        actions = iter(args)
+        for moves, values in zip(actions, actions):
             for move in moves:
-                if move.state == 'assigned':
-                    cls.raise_user_error('modify_assigned', (move.rec_name,))
-        if cls._deny_modify_done_cancel & vals_set:
-            for move in moves:
-                if move.state in ('done', 'cancel'):
-                    cls.raise_user_error('modify_done_cancel',
-                        (move.rec_name,))
-
-        if any(f not in cls._allow_modify_closed_period for f in vals):
-            cls.check_period_closed(moves)
-
-        super(Move, cls).write(moves, vals)
-
-        for move in moves:
-            internal_quantity = cls._get_internal_quantity(move.quantity,
-                    move.uom, move.product)
-            if (internal_quantity != move.internal_quantity
-                    and internal_quantity != vals.get('internal_quantity')):
-                cls.write([move], {
-                        'internal_quantity': internal_quantity,
-                        })
+                internal_quantity = cls._get_internal_quantity(move.quantity,
+                        move.uom, move.product)
+                if (internal_quantity != move.internal_quantity
+                        and internal_quantity
+                        != values.get('internal_quantity')):
+                    cls.write([move], {
+                            'internal_quantity': internal_quantity,
+                            })
 
     @classmethod
     def delete(cls, moves):
