@@ -96,27 +96,30 @@ class FiscalYear:
                         })
 
     @classmethod
-    def write(cls, fiscalyears, vals):
+    def write(cls, *args):
         Invoice = Pool().get('account.invoice')
 
-        for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                'out_credit_note_sequence', 'in_credit_note_sequence'):
-            if vals.get(sequence):
-                for fiscalyear in fiscalyears:
-                    if (getattr(fiscalyear, sequence)
-                            and (getattr(fiscalyear, sequence).id !=
-                                vals[sequence])):
-                        if Invoice.search([
-                                    ('invoice_date', '>=',
-                                        fiscalyear.start_date),
-                                    ('invoice_date', '<=',
-                                        fiscalyear.end_date),
-                                    ('number', '!=', None),
-                                    ('type', '=', sequence[:-9]),
-                                    ]):
-                            cls.raise_user_error('change_invoice_sequence',
-                                (fiscalyear.rec_name,))
-        super(FiscalYear, cls).write(fiscalyears, vals)
+        actions = iter(args)
+        for fiscalyears, values in zip(actions, actions):
+            for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
+                    'out_credit_note_sequence', 'in_credit_note_sequence'):
+                    if not values.get(sequence):
+                        continue
+                    for fiscalyear in fiscalyears:
+                        if (getattr(fiscalyear, sequence)
+                                and (getattr(fiscalyear, sequence).id !=
+                                    values[sequence])):
+                            if Invoice.search([
+                                        ('invoice_date', '>=',
+                                            fiscalyear.start_date),
+                                        ('invoice_date', '<=',
+                                            fiscalyear.end_date),
+                                        ('number', '!=', None),
+                                        ('type', '=', sequence[:-9]),
+                                        ]):
+                                cls.raise_user_error('change_invoice_sequence',
+                                    (fiscalyear.rec_name,))
+        super(FiscalYear, cls).write(*args)
 
 
 class Period:
@@ -210,16 +213,19 @@ class Period:
         return super(Period, cls).create(vlist)
 
     @classmethod
-    def write(cls, periods, vals):
+    def write(cls, *args):
         Invoice = Pool().get('account.invoice')
 
-        for sequence_name in ('out_invoice_sequence', 'in_invoice_sequence',
-                'out_credit_note_sequence', 'in_credit_note_sequence'):
-            if vals.get(sequence_name):
+        actions = iter(args)
+        for periods, values in zip(actions, actions):
+            for sequence_name in ('out_invoice_sequence',
+                    'in_invoice_sequence', 'out_credit_note_sequence',
+                    'in_credit_note_sequence'):
+                if not values.get(sequence_name):
+                    continue
                 for period in periods:
                     sequence = getattr(period, sequence_name)
-                    if (sequence and
-                            sequence.id != vals[sequence]):
+                    if (sequence and sequence.id != values[sequence]):
                         if Invoice.search([
                                     ('invoice_date', '>=', period.start_date),
                                     ('invoice_date', '<=', period.end_date),
@@ -228,7 +234,7 @@ class Period:
                                     ]):
                             cls.raise_user_error('change_invoice_sequence',
                                 (period.rec_name,))
-        super(Period, cls).write(periods, vals)
+        super(Period, cls).write(*args)
 
     def get_invoice_sequence(self, invoice_type):
         sequence = getattr(self, invoice_type + '_sequence')

@@ -1023,15 +1023,15 @@ class Invoice(Workflow, ModelSQL, ModelView):
         super(Invoice, cls).delete(invoices)
 
     @classmethod
-    def write(cls, invoices, vals):
-        keys = vals.keys()
-        for key in cls._check_modify_exclude:
-            if key in keys:
-                keys.remove(key)
-        if len(keys):
-            cls.check_modify(invoices)
-        update_tax = [i for i in invoices if i.state == 'draft']
-        super(Invoice, cls).write(invoices, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        all_invoices = []
+        for invoices, values in zip(actions, actions):
+            if set(values) - set(cls._check_modify_exclude):
+                cls.check_modify(invoices)
+            all_invoices += invoices
+        update_tax = [i for i in all_invoices if i.state == 'draft']
+        super(Invoice, cls).write(*args)
         if update_tax:
             cls.update_taxes(update_tax)
 
@@ -1895,9 +1895,10 @@ class InvoiceLine(ModelSQL, ModelView):
         super(InvoiceLine, cls).delete(lines)
 
     @classmethod
-    def write(cls, lines, vals):
+    def write(cls, *args):
+        lines = sum(args[0::2], [])
         cls.check_modify(lines)
-        super(InvoiceLine, cls).write(lines, vals)
+        super(InvoiceLine, cls).write(*args)
 
     @classmethod
     def create(cls, vlist):
@@ -2221,9 +2222,10 @@ class InvoiceTax(ModelSQL, ModelView):
         super(InvoiceTax, cls).delete(taxes)
 
     @classmethod
-    def write(cls, taxes, vals):
+    def write(cls, *args):
+        taxes = sum(args[0::2], [])
         cls.check_modify(taxes)
-        super(InvoiceTax, cls).write(taxes, vals)
+        super(InvoiceTax, cls).write(*args)
 
     @classmethod
     def create(cls, vlist):
