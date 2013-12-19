@@ -153,20 +153,25 @@ class Uom(ModelSQL, ModelView):
                         self.rec_name,))
 
     @classmethod
-    def write(cls, uoms, values):
+    def write(cls, *args):
         if Transaction().user == 0:
-            return super(Uom, cls).write(uoms, values)
-        if 'rate' not in values and 'factor' not in values \
-                and 'category' not in values:
-            super(Uom, cls).write(uoms, values)
+            super(Uom, cls).write(*args)
             return
 
+        actions = iter(args)
+        all_uoms = []
+        for uoms, values in zip(actions, actions):
+            if 'rate' not in values and 'factor' not in values \
+                    and 'category' not in values:
+                continue
+            all_uoms += uoms
+
         old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id))
-            for uom in uoms)
+            for uom in all_uoms)
 
-        super(Uom, cls).write(uoms, values)
+        super(Uom, cls).write(*args)
 
-        for uom in uoms:
+        for uom in all_uoms:
             if uom.factor != old_uom[uom.id][0] \
                     or uom.rate != old_uom[uom.id][1] \
                     or uom.category.id != old_uom[uom.id][2]:
