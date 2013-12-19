@@ -23,14 +23,17 @@ class ShipmentOut:
             })
 
     @classmethod
-    def write(cls, shipments, vals):
+    def write(cls, *args):
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        super(ShipmentOut, cls).write(shipments, vals)
+        super(ShipmentOut, cls).write(*args)
 
-        if 'state' in vals and vals['state'] in ('done', 'cancel'):
+        actions = iter(args)
+        for shipments, values in zip(actions, actions):
+            if values.get('state') not in ('done', 'cancel'):
+                continue
             sales = []
             move_ids = []
             for shipment in shipments:
@@ -70,14 +73,17 @@ class ShipmentOutReturn:
             })
 
     @classmethod
-    def write(cls, shipments, vals):
+    def write(cls, *args):
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        super(ShipmentOutReturn, cls).write(shipments, vals)
+        super(ShipmentOutReturn, cls).write(*args)
 
-        if 'state' in vals and vals['state'] == 'received':
+        actions = iter(args)
+        for shipments, values in zip(actions, actions):
+            if values.get('state') != 'received':
+                continue
             sales = []
             move_ids = []
             for shipment in shipments:
