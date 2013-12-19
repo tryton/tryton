@@ -272,19 +272,25 @@ class One2OneValueDescriptor(Many2OneValueDescriptor):
 
 class One2ManyValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
-        value = [('add', [])]
+        value = []
         value_list = getattr(instance, self.name)
+        to_add = []
         to_create = []
+        to_write = []
         for record in value_list:
-            if record.id > 0:
+            if record.id >= 0:
                 if record._changed:
-                    value.append(('write', [record.id], record._get_values(
-                        fields=record._changed)))
-                value[0][1].append(record.id)
+                    to_write.extend(([record.id],
+                            record._get_values(fields=record._changed)))
+                to_add.append(record.id)
             else:
                 to_create.append(record._get_values())
+        if to_add:
+            value.append(('add', to_add))
         if to_create:
             value.append(('create', to_create))
+        if to_write:
+            value.append(('write', to_write))
         if value_list.record_removed:
             value.append(('unlink', [x.id for x in value_list.record_removed]))
         if value_list.record_deleted:
