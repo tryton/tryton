@@ -465,9 +465,9 @@ class Production(Workflow, ModelSQL, ModelView):
         return productions
 
     @classmethod
-    def write(cls, productions, values):
-        super(Production, cls).write(productions, values)
-        for production in productions:
+    def write(cls, *args):
+        super(Production, cls).write(*args)
+        for production in sum(args[::2], []):
             production._set_move_planned_date()
 
     def _get_move_planned_date(self):
