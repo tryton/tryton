@@ -29,12 +29,13 @@ class Allocation(ModelSQL, ModelView):
         return 100
 
     @classmethod
-    def write(cls, allocations, values):
+    def write(cls, *args):
         Work = Pool().get('project.work')
-        super(Allocation, cls).write(allocations, values)
+        super(Allocation, cls).write(*args)
 
         works = Work.search([
-                ('allocations', 'in', [a.id for a in allocations]),
+                ('allocations', 'in',
+                    [a.id for allocations in args[::2] for a in allocations]),
                 ])
 
         for work in works:

@@ -536,17 +536,19 @@ class Work:
             self.parent.compute_dates()
 
     @classmethod
-    def write(cls, works, values):
-        super(Work, cls).write(works, values)
+    def write(cls, *args):
+        super(Work, cls).write(*args)
 
-        if 'effort' in values:
-            for work in works:
-                work.reset_leveling()
-        fields = ('constraint_start_time', 'constraint_finish_time',
-                  'effort')
-        if reduce(lambda x, y: x or y in values, fields, False):
-            for work in works:
-                work.compute_dates()
+        actions = iter(args)
+        for works, values in zip(actions, actions):
+            if 'effort' in values:
+                for work in works:
+                    work.reset_leveling()
+            fields = ('constraint_start_time', 'constraint_finish_time',
+                      'effort')
+            if reduce(lambda x, y: x or y in values, fields, False):
+                for work in works:
+                    work.compute_dates()
 
     @classmethod
     def create(cls, vlist):
@@ -580,11 +582,14 @@ class PredecessorSuccessor(ModelSQL):
             ondelete='CASCADE', required=True, select=True)
 
     @classmethod
-    def write(cls, pred_succs, values):
+    def write(cls, *args):
         Work = Pool().get('project.work')
-        super(PredecessorSuccessor, cls).write(pred_succs, values)
+        super(PredecessorSuccessor, cls).write(*args)
 
-        works = Work.browse(values.itervalues())
+        work_ids = [v for values in args[1::2]
+            for k, v in values.itervalues()
+            if k in ('predecessor', 'successor')]
+        works = Work.browse(work_ids)
         for work in works:
             work.reset_leveling()
         for work in works:
