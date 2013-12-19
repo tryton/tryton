@@ -78,11 +78,13 @@ class User:
         return super(User, cls).create(vlist)
 
     @classmethod
-    def write(cls, users, values):
-        if values.get('password'):
-            logins = [x.login for x in users]
-            cls._check_passwd_ldap_user(logins)
-        super(User, cls).write(users, values)
+    def write(cls, *args):
+        actions = iter(args)
+        for users, values in zip(actions, actions):
+            if values.get('password'):
+                logins = [x.login for x in users]
+                cls._check_passwd_ldap_user(logins)
+        super(User, cls).write(*args)
 
     @classmethod
     def set_preferences(cls, values, old_password=False):
