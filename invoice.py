@@ -19,17 +19,20 @@ class InvoiceLine:
                 })
 
     @classmethod
-    def write(cls, lines, vals):
+    def write(cls, *args):
         Purchase = Pool().get('purchase.purchase')
 
-        if 'invoice' in vals:
+        actions = iter(args)
+        for lines, values in zip(actions, actions):
+            if 'invoice' not in values:
+                continue
             with Transaction().set_user(0, set_context=True):
                 purchases = Purchase.search([
                         ('invoice_lines', 'in', [l.id for l in lines]),
                         ])
-                if vals['invoice']:
+                if values['invoice']:
                     Purchase.write(purchases, {
-                        'invoices': [('add', [vals['invoice']])],
+                        'invoices': [('add', [values['invoice']])],
                         })
                 else:
                     for purchase in purchases:
@@ -43,7 +46,7 @@ class InvoiceLine:
                             'invoices': [('unlink', invoice_ids)],
                             })
 
-        return super(InvoiceLine, cls).write(lines, vals)
+        super(InvoiceLine, cls).write(*args)
 
     @classmethod
     def delete(cls, lines):
