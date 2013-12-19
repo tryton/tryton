@@ -48,8 +48,8 @@ class Company(ModelSQL, ModelView):
         return self.party.rec_name
 
     @classmethod
-    def write(cls, companies, vals):
-        super(Company, cls).write(companies, vals)
+    def write(cls, companies, values, *args):
+        super(Company, cls).write(companies, values, *args)
         # Restart the cache on the domain_get method
         Pool().get('ir.rule')._domain_get_cache.clear()
 
