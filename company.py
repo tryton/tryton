@@ -139,9 +139,9 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         return prices
 
     @classmethod
-    def write(cls, prices, vals):
+    def write(cls, *args):
         Employee = Pool().get('company.employee')
-        super(EmployeeCostPrice, cls).write(prices, vals)
+        super(EmployeeCostPrice, cls).write(*args)
         Employee._cost_prices_cache.clear()
 
     def on_change_with_currency_digits(self, name=None):
