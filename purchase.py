@@ -142,42 +142,47 @@ class PurchaseLine:
         return super(PurchaseLine, cls).create(vlist)
 
     @classmethod
-    def write(cls, lines, vals):
+    def write(cls, *args):
         Selection = Pool().get('analytic_account.account.selection')
-        vals = vals.copy()
-        selection_vals = {}
-        for field in vals.keys():
-            if field.startswith('analytic_account_'):
-                root_id = int(field[len('analytic_account_'):])
-                selection_vals[root_id] = vals[field]
-                del vals[field]
-        if selection_vals:
-            for line in lines:
-                if line.type != 'line':
-                    continue
-                accounts = []
-                if not line.analytic_accounts:
-                    # Create missing selection
-                    with Transaction().set_user(0):
-                        selection, = Selection.create([{}])
-                    cls.write([line], {
-                        'analytic_accounts': selection.id,
+
+        actions = iter(args)
+        args = []
+        for lines, values in zip(actions, actions):
+            values = values.copy()
+            selection_vals = {}
+            for field, value in values.items():
+                if field.startswith('analytic_account_'):
+                    root_id = int(field[len('analytic_account_'):])
+                    selection_vals[root_id] = value
+                    del values[field]
+            if selection_vals:
+                for line in lines:
+                    if line.type != 'line':
+                        continue
+                    accounts = []
+                    if not line.analytic_accounts:
+                        # Create missing selection
+                        with Transaction().set_user(0):
+                            selection, = Selection.create([{}])
+                        cls.write([line], {
+                            'analytic_accounts': selection.id,
+                            })
+                    for account in line.analytic_accounts.accounts:
+                        if account.root.id in selection_vals:
+                            value = selection_vals[account.root.id]
+                            if value:
+                                accounts.append(value)
+                        else:
+                            accounts.append(account.id)
+                    for account_id in selection_vals.values():
+                        if account_id \
+                                and account_id not in accounts:
+                            accounts.append(account_id)
+                    Selection.write([line.analytic_accounts], {
+                        'accounts': [('set', accounts)],
                         })
-                for account in line.analytic_accounts.accounts:
-                    if account.root.id in selection_vals:
-                        value = selection_vals[account.root.id]
-                        if value:
-                            accounts.append(value)
-                    else:
-                        accounts.append(account.id)
-                for account_id in selection_vals.values():
-                    if account_id \
-                            and account_id not in accounts:
-                        accounts.append(account_id)
-                Selection.write([line.analytic_accounts], {
-                    'accounts': [('set', accounts)],
-                    })
-        return super(PurchaseLine, cls).write(lines, vals)
+            args.extend((lines, values))
+        return super(PurchaseLine, cls).write(*args)
 
     @classmethod
     def delete(cls, lines):
@@ -240,8 +245,8 @@ class Account:
         return accounts
 
     @classmethod
-    def write(cls, accounts, vals):
+    def write(cls, accounts, values, *args):
         PurchaseLine = Pool().get('purchase.line')
-        super(Account, cls).write(accounts, vals)
+        super(Account, cls).write(accounts, values, *args)
         # Restart the cache on the fields_view_get method of purchase.line
         PurchaseLine._fields_view_get_cache.clear()
