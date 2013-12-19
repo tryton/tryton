@@ -166,11 +166,15 @@ class Party(ModelSQL, ModelView):
         return super(Party, cls).create(vlist)
 
     @classmethod
-    def write(cls, parties, vals):
-        if vals.get('code'):
-            vals = vals.copy()
-            vals['code_length'] = len(vals['code'])
-        super(Party, cls).write(parties, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for parties, values in zip(actions, actions):
+            if values.get('code'):
+                values = values.copy()
+                values['code_length'] = len(values['code'])
+            args.extend((parties, values))
+        super(Party, cls).write(*args)
 
     @classmethod
     def copy(cls, parties, default=None):

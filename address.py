@@ -114,12 +114,14 @@ class Address(ModelSQL, ModelView):
         return [('party',) + tuple(clause[1:])]
 
     @classmethod
-    def write(cls, addresses, vals):
-        if 'party' in vals:
-            for address in addresses:
-                if address.party.id != vals['party']:
-                    cls.raise_user_error('write_party', (address.rec_name,))
-        super(Address, cls).write(addresses, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        for addresses, values in zip(actions, actions):
+            if 'party' in values:
+                for address in addresses:
+                    if address.party.id != values['party']:
+                        cls.raise_user_error('write_party', (address.rec_name,))
+        super(Address, cls).write(*args)
 
     def on_change_country(self):
         if (self.subdivision

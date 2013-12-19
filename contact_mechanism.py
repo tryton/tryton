@@ -171,9 +171,11 @@ class ContactMechanism(ModelSQL, ModelView):
         return self._change_value(self.other_value)
 
     @classmethod
-    def write(cls, mechanisms, vals):
-        if 'party' in vals:
-            for mechanism in mechanisms:
-                if mechanism.party.id != vals['party']:
-                    cls.raise_user_error('write_party', (mechanism.rec_name,))
-        super(ContactMechanism, cls).write(mechanisms, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        for mechanisms, values in zip(actions, actions):
+            if 'party' in values:
+                for mechanism in mechanisms:
+                    if mechanism.party.id != values['party']:
+                        cls.raise_user_error('write_party', (mechanism.rec_name,))
+        super(ContactMechanism, cls).write(*args)
