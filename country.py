@@ -42,11 +42,15 @@ class Country(ModelSQL, ModelView):
         return super(Country, cls).create(vlist)
 
     @classmethod
-    def write(cls, countries, vals):
-        if 'code' in vals and vals['code']:
-            vals = vals.copy()
-            vals['code'] = vals['code'].upper()
-        super(Country, cls).write(countries, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for countries, values in zip(actions, actions):
+            if values.get('code'):
+                values = values.copy()
+                values['code'] = values['code'].upper()
+            args.extend((countries, values))
+        super(Country, cls).write(*args)
 
 
 class Subdivision(ModelSQL, ModelView):
@@ -181,7 +185,12 @@ class Subdivision(ModelSQL, ModelView):
         return super(Subdivision, cls).create(vlist)
 
     @classmethod
-    def write(cls, subdivisions, vals):
-        if 'code' in vals and vals['code']:
-            vals['code'] = vals['code'].upper()
-        super(Subdivision, cls).write(subdivisions, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for subdivisions, values in zip(actions, actions):
+            if values.get('code'):
+                values = values.copy()
+                values['code'] = values['code'].upper()
+            args.extend((subdivisions, values))
+        super(Subdivision, cls).write(*args)
