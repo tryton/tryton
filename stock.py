@@ -183,17 +183,20 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         return shipments
 
     @classmethod
-    def write(cls, shipments, values):
+    def write(cls, *args):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
         PurchaseLine = pool.get('purchase.line')
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        result = super(ShipmentDrop, cls).write(shipments, values)
-        cls._set_move_planned_date(shipments)
+        super(ShipmentDrop, cls).write(*args)
+        cls._set_move_planned_date(sum(args[::2], []))
 
-        if values.get('state', '') in ('done', 'cancel'):
+        actions = iter(args)
+        for shipments, values in zip(actions, actions):
+            if values.get('state', '') not in ('done', 'cancel'):
+                continue
             with Transaction().set_user(0, set_context=True):
                 purchases = set()
                 move_ids = [m.id for s in shipments for m in s.moves]
@@ -208,7 +211,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                         ])
                 sales = list(set(l.sale for l in sale_lines or []))
                 Sale.process(sales)
-        return result
 
     @classmethod
     def copy(cls, shipments, default=None):
