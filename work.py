@@ -164,23 +164,28 @@ class Work(ModelSQL, ModelView):
         return super(Work, cls).copy(works, default=default)
 
     @classmethod
-    def write(cls, works, vals):
+    def write(cls, *args):
         pool = Pool()
         Lines = pool.get('timesheet.line')
-        childs = None
-        if not vals.get('timesheet_available', True):
-            in_max = Transaction().cursor.IN_MAX
-            for i in range(0, len(works), in_max):
-                sub_ids = [w.id for w in works[i:i + in_max]]
-                lines = Lines.search([('work', 'in', sub_ids)], limit=1)
-                if lines:
-                    cls.raise_user_error('change_timesheet_available',
-                        lines[0].work.rec_name)
-        if not vals.get('active', True):
-            childs = cls.search([
-                    ('parent', 'child_of', [w.id for w in works]),
-                    ])
-        super(Work, cls).write(works, vals)
+
+        actions = iter(args)
+        childs = []
+        for works, values in zip(actions, actions):
+            if not values.get('timesheet_available', True):
+                in_max = Transaction().cursor.IN_MAX
+                for i in range(0, len(works), in_max):
+                    sub_ids = [w.id for w in works[i:i + in_max]]
+                    lines = Lines.search([('work', 'in', sub_ids)], limit=1)
+                    if lines:
+                        cls.raise_user_error('change_timesheet_available',
+                            lines[0].work.rec_name)
+            if not values.get('active', True):
+                childs += cls.search([
+                        ('parent', 'child_of', [w.id for w in works]),
+                        ])
+
+        super(Work, cls).write(*args)
+
         if childs:
             cls.write(childs, {
                     'active': False,
