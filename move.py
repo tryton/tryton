@@ -202,15 +202,21 @@ class Move(ModelSQL, ModelView):
         return [('id', 'in', [m.id for m in moves])]
 
     @classmethod
-    def write(cls, moves, vals):
-        keys = vals.keys()
-        for key in cls._check_modify_exclude:
-            if key in keys:
-                keys.remove(key)
-        if len(keys):
-            cls.check_modify(moves)
-        super(Move, cls).write(moves, vals)
-        cls.validate_move(moves)
+    def write(cls, *args):
+        actions = iter(args)
+        all_moves = []
+        args = []
+        for moves, values in zip(actions, actions):
+            keys = values.keys()
+            for key in cls._check_modify_exclude:
+                if key in keys:
+                    keys.remove(key)
+            if len(keys):
+                cls.check_modify(moves)
+            args.extend((moves, values))
+            all_moves.extend(moves)
+        super(Move, cls).write(*args)
+        cls.validate_move(all_moves)
 
     @classmethod
     def create(cls, vlist):
@@ -423,7 +429,7 @@ class Reconciliation(ModelSQL, ModelView):
         return super(Reconciliation, cls).create(vlist)
 
     @classmethod
-    def write(cls, moves, vals):
+    def write(cls, moves, values, *args):
         cls.raise_user_error('modify')
 
     @classmethod
@@ -1236,17 +1242,24 @@ class Line(ModelSQL, ModelView):
         Move.validate_move(moves)
 
     @classmethod
-    def write(cls, lines, vals):
+    def write(cls, *args):
         Move = Pool().get('account.move')
 
-        if any(k not in cls._check_modify_exclude for k in vals):
-            cls.check_modify(lines)
-        moves = [x.move for x in lines]
-        super(Line, cls).write(lines, vals)
+        actions = iter(args)
+        args = []
+        moves = []
+        all_lines = []
+        for lines, values in zip(actions, actions):
+            if any(k not in cls._check_modify_exclude for k in values):
+                cls.check_modify(lines)
+            moves.extend((x.move for x in lines))
+            all_lines.extend(lines)
+            args.extend((lines, values))
+
+        super(Line, cls).write(*args)
 
         Transaction().timestamp = {}
-
-        Move.validate_move(list(set(l.move for l in lines) | set(moves)))
+        Move.validate_move(list(set(l.move for l in all_lines) | set(moves)))
 
     @classmethod
     def create(cls, vlist):

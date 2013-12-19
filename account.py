@@ -816,18 +816,23 @@ class Account(ModelSQL, ModelView):
         return new_accounts
 
     @classmethod
-    def write(cls, accounts, vals):
-        if not vals.get('active', True):
-            MoveLine = Pool().get('account.move.line')
-            childs = cls.search([
-                    ('parent', 'child_of', [a.id for a in accounts]),
-                    ])
-            if MoveLine.search([
-                        ('account', 'in', [a.id for a in childs]),
-                        ]):
-                vals = vals.copy()
-                del vals['active']
-        super(Account, cls).write(accounts, vals)
+    def write(cls, *args):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        actions = iter(args)
+        args = []
+        for accounts, values in zip(actions, actions):
+            if not values.get('active', True):
+                childs = cls.search([
+                        ('parent', 'child_of', [a.id for a in accounts]),
+                        ])
+                if MoveLine.search([
+                            ('account', 'in', [a.id for a in childs]),
+                            ]):
+                    values = values.copy()
+                    del values['active']
+            args.extend((accounts, values))
+        super(Account, cls).write(*args)
 
     @classmethod
     def delete(cls, accounts):
@@ -981,7 +986,7 @@ class AccountDeferral(ModelSQL, ModelView):
         return [('id', 'in', [d.id for d in deferrals])]
 
     @classmethod
-    def write(cls, deferrals, vals):
+    def write(cls, deferrals, values, *args):
         cls.raise_user_error('write_deferral')
 
 

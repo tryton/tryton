@@ -243,31 +243,35 @@ class Period(ModelSQL, ModelView):
         return super(Period, cls).create(vlist)
 
     @classmethod
-    def write(cls, periods, vals):
+    def write(cls, *args):
         Move = Pool().get('account.move')
-        for key in vals.keys():
-            if key in ('start_date', 'end_date', 'fiscalyear'):
-                cls._check(periods)
-                break
-        if vals.get('state') == 'open':
-            for period in periods:
-                if period.fiscalyear.state == 'close':
-                    cls.raise_user_error('open_period_closed_fiscalyear', {
-                            'period': period.rec_name,
-                            'fiscalyear': period.fiscalyear.rec_name,
-                            })
-        if vals.get('post_move_sequence'):
-            for period in periods:
-                if period.post_move_sequence and \
-                        period.post_move_sequence.id != \
-                        vals['post_move_sequence']:
-                    if Move.search([
-                                ('period', '=', period.id),
-                                ('state', '=', 'posted'),
-                                ]):
-                        cls.raise_user_error('change_post_move_sequence',
-                            (period.rec_name,))
-        super(Period, cls).write(periods, vals)
+        actions = iter(args)
+        args = []
+        for periods, values in zip(actions, actions):
+            for key in values.keys():
+                if key in ('start_date', 'end_date', 'fiscalyear'):
+                    cls._check(periods)
+                    break
+            if values.get('state') == 'open':
+                for period in periods:
+                    if period.fiscalyear.state == 'close':
+                        cls.raise_user_error('open_period_closed_fiscalyear', {
+                                'period': period.rec_name,
+                                'fiscalyear': period.fiscalyear.rec_name,
+                                })
+            if values.get('post_move_sequence'):
+                for period in periods:
+                    if (period.post_move_sequence
+                            and period.post_move_sequence.id !=
+                            values['post_move_sequence']):
+                        if Move.search([
+                                    ('period', '=', period.id),
+                                    ('state', '=', 'posted'),
+                                    ]):
+                            cls.raise_user_error('change_post_move_sequence',
+                                (period.rec_name,))
+            args.extend((periods, values))
+        super(Period, cls).write(*args)
 
     @classmethod
     def delete(cls, periods):

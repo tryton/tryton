@@ -246,18 +246,20 @@ class JournalPeriod(ModelSQL, ModelView):
         return super(JournalPeriod, cls).create(vlist)
 
     @classmethod
-    def write(cls, periods, vals):
-        if vals != {'state': 'close'} \
-                and vals != {'state': 'open'}:
-            cls._check(periods)
-        if vals.get('state') == 'open':
-            for journal_period in periods:
-                if journal_period.period.state == 'close':
-                    cls.raise_user_error('open_journal_period', {
-                            'journal_period': journal_period.rec_name,
-                            'period': journal_period.period.rec_name,
-                            })
-        super(JournalPeriod, cls).write(periods, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        for journal_periods, values in zip(actions, actions):
+            if (values != {'state': 'close'}
+                    and values != {'state': 'open'}):
+                cls._check(journal_periods)
+            if values.get('state') == 'open':
+                for journal_period in journal_periods:
+                    if journal_period.period.state == 'close':
+                        cls.raise_user_error('open_journal_period', {
+                                'journal_period': journal_period.rec_name,
+                                'period': journal_period.period.rec_name,
+                                })
+        super(JournalPeriod, cls).write(*args)
 
     @classmethod
     def delete(cls, periods):

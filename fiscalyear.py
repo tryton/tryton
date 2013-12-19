@@ -134,21 +134,25 @@ class FiscalYear(ModelSQL, ModelView):
                     })
 
     @classmethod
-    def write(cls, fiscalyears, vals):
-        if vals.get('post_move_sequence'):
-            for fiscalyear in fiscalyears:
-                if fiscalyear.post_move_sequence and \
-                        fiscalyear.post_move_sequence.id != \
-                        vals['post_move_sequence']:
-                    cls.raise_user_error('change_post_move_sequence', (
-                            fiscalyear.rec_name,))
-        vals = vals.copy()
-        if 'periods' in vals:
-            operator = ['delete', 'unlink_all', 'unlink', 'create', 'write',
-                    'add', 'set']
-            vals['periods'].sort(
-                lambda x, y: cmp(operator.index(x[0]), operator.index(y[0])))
-        super(FiscalYear, cls).write(fiscalyears, vals)
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for fiscalyears, values in zip(actions, actions):
+            if values.get('post_move_sequence'):
+                for fiscalyear in fiscalyears:
+                    if (fiscalyear.post_move_sequence
+                            and fiscalyear.post_move_sequence.id !=
+                            values['post_move_sequence']):
+                        cls.raise_user_error('change_post_move_sequence', (
+                                fiscalyear.rec_name,))
+            values = values.copy()
+            if 'periods' in values:
+                operator = ['delete', 'unlink_all', 'unlink', 'create',
+                    'write', 'add', 'set']
+                values['periods'].sort(lambda x, y:
+                    cmp(operator.index(x[0]), operator.index(y[0])))
+            args.extend((fiscalyears, values))
+        super(FiscalYear, cls).write(*args)
 
     @classmethod
     def delete(cls, fiscalyears):
