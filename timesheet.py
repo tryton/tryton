@@ -30,10 +30,10 @@ class TimesheetLine:
         return super(TimesheetLine, cls).copy(records, default=default)
 
     @classmethod
-    def write(cls, records, values):
-        if any(r.invoice_line for r in records):
+    def write(cls, *args):
+        if any(l.invoice_line for lines in args[::2] for l in lines):
             cls.raise_user_error('modify_invoiced_line')
-        super(TimesheetLine, cls).write(records, values)
+        super(TimesheetLine, cls).write(*args)
 
     @classmethod
     def delete(cls, records):
