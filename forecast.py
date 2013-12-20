@@ -437,7 +437,7 @@ class ForecastLine(ModelSQL, ModelView):
         moves = []
         if to_create:
             moves = Move.create(to_create)
-        self.write([self], {'moves': [('set', [m.id for m in moves])]})
+        self.write([self], {'moves': [('add', [m.id for m in moves])]})
 
     @classmethod
     def delete_moves(cls, lines):
