@@ -2560,6 +2560,11 @@ class PayInvoice(Wizard):
                     'amount to pay.'),
                 })
 
+    def get_reconcile_lines_for_amount(self, invoice, amount):
+        if invoice.type in ('in_invoice', 'out_credit_note'):
+            amount = -amount
+        return invoice.get_reconcile_lines_for_amount(amount)
+
     def default_start(self, fields):
         Invoice = Pool().get('account.invoice')
         default = {}
@@ -2581,7 +2586,7 @@ class PayInvoice(Wizard):
         with Transaction().set_context(date=self.start.date):
             amount = Currency.compute(self.start.currency,
                 self.start.amount, invoice.company.currency)
-        _, remainder = invoice.get_reconcile_lines_for_amount(amount)
+        _, remainder = self.get_reconcile_lines_for_amount(invoice, amount)
         if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
             return 'pay'
         return 'ask'
@@ -2609,7 +2614,7 @@ class PayInvoice(Wizard):
         if invoice.company.currency.is_zero(amount):
             lines = invoice.lines_to_pay
         else:
-            lines, _ = invoice.get_reconcile_lines_for_amount(amount)
+            lines, _ = self.get_reconcile_lines_for_amount(invoice, amount)
         default['lines'] = [x.id for x in lines]
 
         for line_id in default['lines'][:]:
@@ -2650,7 +2655,7 @@ class PayInvoice(Wizard):
                 self.start.amount, invoice.company.currency)
 
         reconcile_lines, remainder = \
-            invoice.get_reconcile_lines_for_amount(amount)
+            self.get_reconcile_lines_for_amount(invoice, amount)
 
         amount_second_currency = None
         second_currency = None
