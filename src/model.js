@@ -1502,8 +1502,11 @@
             }
             var record_removed = group.record_removed;
             var record_deleted = group.record_deleted;
-            var result = [['add', []]];
+            var result = [];
             var parent_name = this.description.relation_field || '';
+            var to_add = [];
+            var to_create = [];
+            var to_write = [];
             for (var i = 0, len = group.length; i < len; i++) {
                 var record2 = group[i];
                 if (~record_removed.indexOf(record2) ||
@@ -1516,17 +1519,24 @@
                     delete values[parent_name];
                     if (record2.has_changed() &&
                             !jQuery.isEmptyObject(values)) {
-                        result.push(['write', [record2.id], values]);
+                        to_write.push([record2.id]);
+                        to_write.push(values);
                     }
-                    result[0][1].push(record2.id);
+                    to_add.push(record2.id);
                 } else {
                     values = record2.get();
                     delete values[parent_name];
-                    result.push(['create', values]);
+                    to_create.push(values);
                 }
             }
-            if (jQuery.isEmptyObject(result[0][1])) {
-                result.shift();
+            if (!jQuery.isEmptyObject(to_add)) {
+                result.push(['add', to_add]);
+            }
+            if (!jQuery.isEmptyObject(to_create)) {
+                result.push(['create', to_create]);
+            }
+            if (!jQuery.isEmptyObject(to_write)) {
+                result.push(['write'].concat(to_write));
             }
             if (!jQuery.isEmptyObject(record_removed)) {
                 result.push(['unlink', record_removed.map(function(r) {
