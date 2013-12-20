@@ -56,7 +56,7 @@ class Purchase:
                     })
                 InvoiceLine.delete(lines_to_delete)
             self.write([self], {
-                'invoices': [('unlink', [invoice.id])],
+                'invoices': [('remove', [invoice.id])],
                 'invoice_lines': [('add', invoice_line_ids)],
                 })
             with Transaction().set_user(0, set_context=True):

@@ -43,7 +43,7 @@ class InvoiceLine:
                                     in purchase.invoice_lines
                                     if x.invoice and x.id not in lines]))
                         Purchase.write([purchase], {
-                            'invoices': [('unlink', invoice_ids)],
+                            'invoices': [('remove', invoice_ids)],
                             })
 
         super(InvoiceLine, cls).write(*args)
