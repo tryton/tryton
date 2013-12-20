@@ -147,8 +147,7 @@ class FiscalYear(ModelSQL, ModelView):
                                 fiscalyear.rec_name,))
             values = values.copy()
             if 'periods' in values:
-                operator = ['delete', 'unlink_all', 'unlink', 'create',
-                    'write', 'add', 'set']
+                operator = ['delete', 'remove', 'create', 'write', 'add']
                 values['periods'].sort(lambda x, y:
                     cmp(operator.index(x[0]), operator.index(y[0])))
             args.extend((fiscalyears, values))
