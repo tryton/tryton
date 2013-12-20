@@ -1371,16 +1371,21 @@ class Line(ModelSQL, ModelView):
                         error_args=(line.move.number, line.id,))
 
         lines = lines[:]
+        reconcile_account = None
+        amount = Decimal('0.0')
+        for line in lines:
+            amount += line.debit - line.credit
+            if not reconcile_account:
+                reconcile_account = line.account
+        amount = reconcile_account.currency.round(amount)
+        if not account and journal:
+            if amount >= 0:
+                account = journal.debit_account
+            else:
+                account = journal.credit_account
         if journal and account:
             if not date:
                 date = Date.today()
-            reconcile_account = None
-            amount = Decimal('0.0')
-            for line in lines:
-                amount += line.debit - line.credit
-                if not reconcile_account:
-                    reconcile_account = line.account
-            amount = reconcile_account.currency.round(amount)
             period_id = Period.find(reconcile_account.company.id, date=date)
             move, = Move.create([{
                         'journal': journal.id,
@@ -1541,10 +1546,11 @@ class OpenAccount(Wizard):
 class ReconcileLinesWriteOff(ModelView):
     'Reconcile Lines Write-Off'
     __name__ = 'account.move.reconcile_lines.writeoff'
-    journal = fields.Many2One('account.journal', 'Journal', required=True)
+    journal = fields.Many2One('account.journal', 'Journal', required=True,
+        domain=[
+            ('type', '=', 'write-off'),
+            ])
     date = fields.Date('Date', required=True)
-    account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('kind', '!=', 'view')])
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         readonly=True, depends=['currency_digits'])
     currency_digits = fields.Integer('Currency Digits', readonly=True)
@@ -1599,11 +1605,9 @@ class ReconcileLines(Wizard):
 
         journal = getattr(self.writeoff, 'journal', None)
         date = getattr(self.writeoff, 'date', None)
-        account = getattr(self.writeoff, 'account', None)
         description = getattr(self.writeoff, 'description', None)
         Line.reconcile(Line.browse(Transaction().context['active_ids']),
-            journal=journal, date=date, account=account,
-            description=description)
+            journal=journal, date=date, description=description)
         return 'end'
 
 

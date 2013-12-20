@@ -8,8 +8,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <label name="journal"/>
     <field name="journal"/>
-    <label name="account"/>
-    <field name="account"/>
+    <newline/>
     <label name="description"/>
     <field name="description" colspan="3"/>
 </form>

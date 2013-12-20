@@ -110,7 +110,7 @@ class Journal(ModelSQL, ModelView):
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
-                'required': ((Eval('type') == 'cash')
+                'required': ((Eval('type').in_(['cash', 'write-off']))
                     & (Eval('context', {}).get('company', -1) != -1)),
                 'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))
@@ -120,7 +120,7 @@ class Journal(ModelSQL, ModelView):
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
-                'required': ((Eval('type') == 'cash')
+                'required': ((Eval('type').in_(['cash', 'write-off']))
                     & (Eval('context', {}).get('company', -1) != -1)),
                 'invisible': ~Eval('context', {}).get('company', -1),
                 }, depends=['type']))

@@ -67,6 +67,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Situation</field>
             <field name="code">situation</field>
         </record>
+        <record model="account.journal.type" id="journal_type_write_off">
+            <field name="name">Write-Off</field>
+            <field name="code">write-off</field>
+        </record>
 
         <record model="ir.ui.view" id="journal_view_view_form">
             <field name="model">account.journal.view</field>
