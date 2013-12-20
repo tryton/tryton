@@ -12,8 +12,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount_writeoff"/>
     <label name="currency_writeoff"/>
     <field name="currency_writeoff"/>
-    <label name="account_writeoff"/>
-    <field name="account_writeoff"/>
     <label name="journal_writeoff"/>
     <field name="journal_writeoff"/>
     <field name="lines" colspan="4"

@@ -2454,14 +2454,8 @@ class PayInvoiceAsk(ModelView):
         ('partial', 'Partial Payment'),
         ], 'Type', required=True)
     journal_writeoff = fields.Many2One('account.journal', 'Write-Off Journal',
-        states={
-            'invisible': Eval('type') != 'writeoff',
-            'required': Eval('type') == 'writeoff',
-            }, depends=['type'])
-    account_writeoff = fields.Many2One('account.account', 'Write-Off Account',
         domain=[
-            ('kind', '!=', 'view'),
-            ('company', '=', Eval('context', {}).get('company', -1)),
+            ('type', '=', 'write-off'),
             ],
         states={
             'invisible': Eval('type') != 'writeoff',
@@ -2678,8 +2672,7 @@ class PayInvoice(Wizard):
                 if lines:
                     MoveLine.reconcile(lines,
                         journal=self.ask.journal_writeoff,
-                        date=self.start.date,
-                        account=self.ask.account_writeoff)
+                        date=self.start.date)
         else:
             if line:
                 reconcile_lines += [line]
