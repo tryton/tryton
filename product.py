@@ -44,12 +44,17 @@ class Template:
         cls._error_messages.update({
                 'change_default_uom': ('You cannot change the default uom for '
                     'a product which is associated to stock moves.'),
+                'change_type': ('You cannot change the type for a product '
+                    'which is associated to stock moves.'),
                 })
         cls.cost_price.states['required'] = Or(
             cls.cost_price.states.get('required', True),
             Eval('type').in_(['goods', 'assets']))
         cls.cost_price.depends.append('type')
-        cls._modify_no_move = [('default_uom', 'change_default_uom')]
+        cls._modify_no_move = [
+            ('default_uom', 'change_default_uom'),
+            ('type', 'change_type'),
+            ]
 
     @classmethod
     def check_no_move(cls, templates, error):

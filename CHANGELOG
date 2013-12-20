@@ -1,3 +1,4 @@
+* Prevent changing product type if stock moves exist
 * Use new methods to compute quantities in StockMixin._search_quantity()
 * Split products_by_location into two methods on Move:
   compute_quantities_query and compute_quantities
