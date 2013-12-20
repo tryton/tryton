@@ -292,7 +292,7 @@ class One2ManyValueDescriptor(ValueDescriptor):
         if to_write:
             value.append(('write',) + tuple(to_write))
         if value_list.record_removed:
-            value.append(('unlink', [x.id for x in value_list.record_removed]))
+            value.append(('remove', [x.id for x in value_list.record_removed]))
         if value_list.record_deleted:
             value.append(('delete', [x.id for x in value_list.record_deleted]))
         return value
