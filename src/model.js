@@ -1539,7 +1539,7 @@
                 result.push(['write'].concat(to_write));
             }
             if (!jQuery.isEmptyObject(record_removed)) {
-                result.push(['unlink', record_removed.map(function(r) {
+                result.push(['remove', record_removed.map(function(r) {
                     return r.id;
                 })]);
             }
