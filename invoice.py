@@ -144,8 +144,14 @@ class InvoiceLine:
                         if account_id \
                                 and account_id not in accounts:
                             accounts.append(account_id)
+                    to_remove = list(
+                        set((a.id for a in line.analytic_accounts.accounts))
+                        - set(accounts))
                     Selection.write([line.analytic_accounts], {
-                            'accounts': [('set', accounts)],
+                            'accounts': [
+                                ('remove', to_remove),
+                                ('add', accounts),
+                                ],
                             })
             args.extend((lines, values))
         super(InvoiceLine, cls).write(*args)
