@@ -200,15 +200,16 @@ Create Moves for writeoff reconciliation::
 
 Reconcile Lines with writeoff::
 
-    >>> journal_expense, = Journal.find([
-    ...         ('code', '=', 'EXP'),
-    ...         ])
+    >>> sequence_journal, = Sequence.find([('code', '=', 'account.journal')])
+    >>> journal_writeoff = Journal(name='Write-Off', type='write-off',
+    ...     sequence=sequence_journal,
+    ...     credit_account=revenue, debit_account=expense)
+    >>> journal_writeoff.save()
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
     >>> reconcile_lines.form_state == 'writeoff'
     True
-    >>> reconcile_lines.form.journal = journal_expense
-    >>> reconcile_lines.form.account = expense
+    >>> reconcile_lines.form.journal = journal_writeoff
     >>> reconcile_lines.execute('reconcile')
     >>> reconcile1.reload()
     >>> reconcile2.reload()
