@@ -1083,12 +1083,12 @@ class ModelSQL(ModelStorage):
         table = cls.__table__()
         right = left + 1
 
-        childs = cls.search([
-                (parent, '=', parent_id),
-                ], order=[])
+        cursor.execute(*table.select(table.id,
+                where=Column(table, parent) == parent_id))
+        childs = cursor.fetchall()
 
-        for child in childs:
-            right = cls._rebuild_tree(parent, child.id, right)
+        for child_id, in childs:
+            right = cls._rebuild_tree(parent, child_id, right)
 
         field = cls._fields[parent]
 

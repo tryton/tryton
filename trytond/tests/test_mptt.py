@@ -19,9 +19,10 @@ class MPTTTestCase(unittest.TestCase):
         self.mptt = POOL.get('test.mptt')
 
     def CheckTree(self, parent_id=None, left=-1, right=sys.maxint):
-        childs = self.mptt.search([
-                ('parent', '=', parent_id),
-                ], order=[('left', 'ASC')])
+        with Transaction().set_context(active_test=False):
+            childs = self.mptt.search([
+                    ('parent', '=', parent_id),
+                    ], order=[('left', 'ASC')])
         for child in childs:
             assert child.left > left, \
                 '%s: left %d <= parent left %d' % \
@@ -105,6 +106,16 @@ class MPTTTestCase(unittest.TestCase):
                     record.save()
             self.CheckTree()
             self.ReParent()
+            self.CheckTree()
+
+            transaction.cursor.rollback()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            records = self.mptt.search([])
+            self.mptt.write(records[::2], {
+                    'active': False
+                    })
             self.CheckTree()
 
             transaction.cursor.rollback()
