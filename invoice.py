@@ -1908,6 +1908,14 @@ class InvoiceLine(ModelSQL, ModelView):
         return super(InvoiceLine, cls).create(vlist)
 
     @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('origin', None)
+        return super(InvoiceLine, cls).copy(lines, default=default)
+
+    @classmethod
     def validate(cls, lines):
         super(InvoiceLine, cls).validate(lines)
         for line in lines:
