@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from trytond.model import Workflow, ModelView, fields
+from trytond.model import Workflow, ModelView
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -12,8 +12,6 @@ __metaclass__ = PoolMeta
 
 class Move:
     __name__ = 'stock.move'
-    account_move = fields.Many2One('account.move', 'Account Move',
-            readonly=True)
 
     def _get_account_stock_move_lines(self, type_):
         '''
@@ -74,28 +72,6 @@ class Move:
             move_line.credit = Decimal('0.0')
         return move_line
 
-    def _get_account_stock_move(self, move_lines):
-        '''
-        Return account move value for stock move
-        '''
-        pool = Pool()
-        Date = pool.get('ir.date')
-        Period = pool.get('account.period')
-        AccountConfiguration = pool.get('account.configuration')
-        AccountMove = pool.get('account.move')
-
-        date = self.effective_date or Date.today()
-        period_id = Period.find(self.company.id, date=date)
-        account_configuration = AccountConfiguration(1)
-        with Transaction().set_user(0, set_context=True):
-            return AccountMove(
-                journal=account_configuration.stock_journal,
-                period=period_id,
-                date=date,
-                origin=self,
-                lines=move_lines,
-                )
-
     def _get_account_stock_move_type(self):
         '''
         Get account move type
@@ -122,17 +98,21 @@ class Move:
         elif type_ == ('production', 'storage'):
             return 'in_production'
 
-    def _create_account_stock_move(self):
+    def _get_account_stock_move(self):
         '''
-        Create account move for stock move
+        Return account move for stock move
         '''
-        AccountMove = Pool().get('account.move')
+        pool = Pool()
+        AccountMove = pool.get('account.move')
+        Date = pool.get('ir.date')
+        Period = pool.get('account.period')
+        AccountConfiguration = pool.get('account.configuration')
+
         if self.product.type != 'goods':
             return
         type_ = self._get_account_stock_move_type()
         if not type_:
             return
-        assert not self.account_move, 'account move field not empty'
         if type_ == 'supplier_customer':
             account_move_lines = self._get_account_stock_move_lines(
                 'in_supplier')
@@ -153,14 +133,17 @@ class Move:
         if move_line:
             account_move_lines.append(move_line)
 
-        account_move = self._get_account_stock_move(account_move_lines)
-        account_move.save()
+        date = self.effective_date or Date.today()
+        period_id = Period.find(self.company.id, date=date)
+        account_configuration = AccountConfiguration(1)
         with Transaction().set_user(0, set_context=True):
-            AccountMove.post([account_move])
-        self.write([self], {
-                'account_move': account_move.id,
-                })
-        return account_move
+            return AccountMove(
+                journal=account_configuration.stock_journal,
+                period=period_id,
+                date=date,
+                origin=self,
+                lines=account_move_lines,
+                )
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -174,6 +157,13 @@ class Move:
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
+        pool = Pool()
+        AccountMove = pool.get('account.move')
         super(Move, cls).do(moves)
+        account_moves = []
         for move in moves:
-            move._create_account_stock_move()
+            account_moves.append(move._get_account_stock_move())
+        with Transaction().set_user(0, set_context=True):
+            account_moves = AccountMove.create(
+                [m._save_values for m in account_moves if m])
+            AccountMove.post(account_moves)
