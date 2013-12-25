@@ -134,8 +134,9 @@ class Production(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Production, cls).__setup__()
         cls._error_messages.update({
-                'missing_cost': ('Production "%s" misses costs on '
-                    'some of its outputs.'),
+                'uneven_costs': ('The costs of the outputs (%(outputs)s) of '
+                    'production "%(production)s" do not match the cost of the '
+                    'production (%(costs)s).')
                 })
         cls._transitions |= set((
                 ('request', 'draft'),
@@ -448,7 +449,11 @@ class Production(Workflow, ModelSQL, ModelView):
             cost_price += (Decimal(str(output.quantity))
                 * output.unit_price)
         if not self.company.currency.is_zero(self.cost - cost_price):
-            self.raise_user_error('missing_cost', (self.rec_name,))
+            self.raise_user_error('uneven_costs', {
+                    'production': self.rec_name,
+                    'costs': self.cost,
+                    'outputs': cost_price,
+                    })
 
     @classmethod
     def create(cls, vlist):
