@@ -144,9 +144,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
         cls._order.insert(1, ('id', 'DESC'))
         cls._error_messages.update({
                 'invoice_address_required': ('Invoice address must be '
-                    'defined for quotation of sale "%s".'),
+                    'defined for quotation of purchase "%s".'),
                 'warehouse_required': ('A warehouse must be defined for '
-                    'quotation of sale "%s".'),
+                    'quotation of purchase "%s".'),
                 'missing_account_payable': ('Missing "Account Payable" on '
                     'party "%s".'),
                 'delete_cancel': ('Purchase "%s" must be cancelled before '
