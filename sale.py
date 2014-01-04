@@ -819,9 +819,11 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     def is_done(self):
         return ((self.invoice_state == 'paid'
-                or self.invoice_method == 'manual')
+                or self.invoice_state == 'none')
             and (self.shipment_state == 'sent'
-                or self.shipment_method == 'manual'))
+                or self.shipment_state == 'none'
+                or all(l.product.type == 'service'
+                    for l in self.lines if l.product)))
 
     @classmethod
     def delete(cls, sales):
