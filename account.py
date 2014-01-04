@@ -225,7 +225,7 @@ class Period:
                     continue
                 for period in periods:
                     sequence = getattr(period, sequence_name)
-                    if (sequence and sequence.id != values[sequence]):
+                    if (sequence and sequence.id != values[sequence_name]):
                         if Invoice.search([
                                     ('invoice_date', '>=', period.start_date),
                                     ('invoice_date', '<=', period.end_date),
