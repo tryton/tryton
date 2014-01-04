@@ -202,7 +202,7 @@ class Period:
                 for period in periods:
                     sequence = getattr(period, sequence_name)
                     if (sequence and
-                            sequence.id != vals[sequence]):
+                            sequence.id != vals[sequence_name]):
                         if Invoice.search([
                                     ('invoice_date', '>=', period.start_date),
                                     ('invoice_date', '<=', period.end_date),
