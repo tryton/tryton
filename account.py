@@ -1580,10 +1580,7 @@ class CreateChartStart(ModelView):
 class CreateChartAccount(ModelView):
     'Create Chart'
     __name__ = 'account.create_chart.account'
-    company = fields.Many2One('company.company', 'Company', required=True,
-        domain=[
-            ('parent', 'child_of', [Eval('context', {}).get('company', 0)]),
-            ])
+    company = fields.Many2One('company.company', 'Company', required=True)
     account_template = fields.Many2One('account.account.template',
             'Account Template', required=True, domain=[('parent', '=', None)])
 
