@@ -112,6 +112,7 @@ Create chart of accounts::
 
     >>> AccountTemplate = Model.get('account.account.template')
     >>> Account = Model.get('account.account')
+    >>> Journal = Model.get('account.journal')
     >>> account_template, = AccountTemplate.find([('parent', '=', None)])
     >>> create_chart = Wizard('account.create_chart')
     >>> create_chart.execute('account')
@@ -137,6 +138,15 @@ Create chart of accounts::
     >>> create_chart.form.account_receivable = receivable
     >>> create_chart.form.account_payable = payable
     >>> create_chart.execute('create_properties')
+    >>> cash, = Account.find([
+    ...         ('kind', '=', 'other'),
+    ...         ('name', '=', 'Main Cash'),
+    ...         ('company', '=', company.id),
+    ...         ])
+    >>> cash_journal, = Journal.find([('type', '=', 'cash')])
+    >>> cash_journal.credit_account = cash
+    >>> cash_journal.debit_account = cash
+    >>> cash_journal.save()
 
 Create parties::
 
@@ -167,6 +177,21 @@ Create product::
     >>> template.save()
     >>> product.template = template
     >>> product.save()
+
+    >>> service = Product()
+    >>> template = ProductTemplate()
+    >>> template.name = 'service'
+    >>> template.default_uom = unit
+    >>> template.type = 'service'
+    >>> template.purchasable = True
+    >>> template.list_price = Decimal('10')
+    >>> template.cost_price = Decimal('10')
+    >>> template.cost_price_method = 'fixed'
+    >>> template.account_expense = expense
+    >>> template.account_revenue = revenue
+    >>> template.save()
+    >>> service.template = template
+    >>> service.save()
 
 Create payment term::
 
@@ -507,3 +532,43 @@ Checking Shipments::
     u'product'
     >>> move_return.quantity
     3.0
+
+Purchase services::
+
+    >>> config.user = purchase_user.id
+    >>> service_purchase = Purchase()
+    >>> service_purchase.party = supplier
+    >>> service_purchase.payment_term = payment_term
+    >>> purchase_line = service_purchase.lines.new()
+    >>> purchase_line.product = service
+    >>> purchase_line.quantity = 1
+    >>> service_purchase.save()
+    >>> service_purchase.click('quote')
+    >>> service_purchase.click('confirm')
+    >>> service_purchase.state
+    u'confirmed'
+    >>> service_invoice, = service_purchase.invoices
+
+Pay the service invoice::
+
+    >>> config.user = account_user.id
+    >>> service_invoice.invoice_date = today
+    >>> service_invoice.click('post')
+    >>> pay = Wizard('account.invoice.pay', [service_invoice])
+    >>> pay.form.journal = cash_journal
+    >>> pay.form.amount = service_invoice.total_amount
+    >>> pay.execute('choice')
+    >>> service_invoice.reload()
+    >>> service_invoice.state
+    u'paid'
+
+Check service purchase states::
+
+    >>> config.user = purchase_user.id
+    >>> service_purchase.reload()
+    >>> service_purchase.invoice_state
+    u'paid'
+    >>> service_purchase.shipment_state
+    u'none'
+    >>> service_purchase.state
+    u'done'
