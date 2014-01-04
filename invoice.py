@@ -1037,10 +1037,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, invoices, default=None):
-        pool = Pool()
-        Line = pool.get('account.invoice.line')
-        Tax = pool.get('account.invoice.tax')
-
         if default is None:
             default = {}
         default = default.copy()
@@ -1054,7 +1050,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
         default['lines_to_pay'] = None
-        default.setdefault('origin', None)
         return super(Invoice, cls).copy(invoices, default=default)
 
     @classmethod
@@ -1911,6 +1906,14 @@ class InvoiceLine(ModelSQL, ModelView):
             if invoice.state in ('posted', 'paid', 'cancel'):
                 cls.raise_user_error('create', (invoice.rec_name,))
         return super(InvoiceLine, cls).create(vlist)
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('origin', None)
+        return super(InvoiceLine, cls).copy(lines, default=default)
 
     @classmethod
     def validate(cls, lines):
