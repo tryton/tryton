@@ -49,6 +49,14 @@ class Purchase:
             depends=['customer']),
         'get_drop_shipments')
 
+    @classmethod
+    def __setup__(cls):
+        super(Purchase, cls).__setup__()
+        cls._error_messages.update({
+                'delivery_address_required': ('A delivery address must be '
+                    'defined for quotation of purchase "%s".'),
+                })
+
     def on_change_customer(self):
         result = {
             'delivery_address': None,
@@ -66,14 +74,18 @@ class Purchase:
         return list(set(m.shipment.id for l in self.lines for m in l.moves
                 if isinstance(m.shipment, DropShipment)))
 
+    def check_for_quotation(self):
+        super(Purchase, self).check_for_quotation()
+        if self.customer and not self.delivery_address:
+            self.raise_user_error('delivery_address_required', self.rec_name)
+
 
 class PurchaseLine:
     __name__ = 'purchase.line'
 
     def get_to_location(self, name):
         result = super(PurchaseLine, self).get_to_location(name)
-        # If delivery_address is empty, it is no more a drop shipment
-        if self.purchase.customer and self.purchase.delivery_address:
+        if self.purchase.customer:
             return self.purchase.customer.customer_location.id
         return result
 
