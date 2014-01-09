@@ -777,6 +777,12 @@ class ReferenceField(CharField):
             return None
 
     def get(self, record):
+        if record.parent_name == self.name:
+            if record.parent:
+                return '%s,%s' % (record.group.parent.model_name,
+                    record.parent.id)
+            else:
+                return None
         if (record.value.get(self.name)
                 and record.value[self.name][0]
                 and record.value[self.name][1] >= -1):
