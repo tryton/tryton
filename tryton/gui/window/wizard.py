@@ -349,9 +349,13 @@ class WizardDialog(Wizard, NoModal):
             dialog = self.page
         if (hasattr(dialog, 'screen')
                 and dialog.screen.current_record
-                and self.sensible_widget != main.window
-                and self.ids):
-            dialog.screen.reload(self.ids, written=True)
+                and self.sensible_widget != main.window):
+            if dialog.screen.model_name == self.model:
+                ids = self.ids
+            else:
+                # Wizard run from a children record so reload parent record
+                ids = [dialog.screen.current_record.id]
+            dialog.screen.reload(ids, written=True)
 
     def end(self):
         super(WizardDialog, self).end()
