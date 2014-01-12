@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 import doctest
 import datetime
@@ -22,9 +13,7 @@ from trytond.transaction import Transaction
 
 
 class StockLotTestCase(unittest.TestCase):
-    '''
-    Test Stock Lot module.
-    '''
+    'Test Stock Lot module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock_lot')
@@ -40,21 +29,15 @@ class StockLotTestCase(unittest.TestCase):
         self.cache = POOL.get('stock.period.cache')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('stock_lot')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010products_by_location(self):
-        '''
-        Test products_by_location.
-        '''
+        'Test products_by_location'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             kg, = self.uom.search([('name', '=', 'Kilogram')])
             g, = self.uom.search([('name', '=', 'Gram')])
@@ -145,9 +128,7 @@ class StockLotTestCase(unittest.TestCase):
                 self.assertEqual(lot2.quantity, 8)
 
     def test0020period(self):
-        '''
-        Test period.
-        '''
+        'Test period'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             unit, = self.uom.search([('name', '=', 'Unit')])
             template, = self.template.create([{
@@ -261,6 +242,3 @@ def suite():
         setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
