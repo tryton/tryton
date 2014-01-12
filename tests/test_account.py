@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 import doctest
 import datetime
@@ -20,9 +11,7 @@ from trytond.transaction import Transaction
 
 
 class AccountTestCase(unittest.TestCase):
-    '''
-    Test Account module.
-    '''
+    'Test Account module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('account')
@@ -44,15 +33,11 @@ class AccountTestCase(unittest.TestCase):
             'account.fiscalyear.balance_non_deferral', type='wizard')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('account')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010account_chart(self):
@@ -118,9 +103,7 @@ class AccountTestCase(unittest.TestCase):
             transaction.cursor.commit()
 
     def test0020fiscalyear(self):
-        '''
-        Test fiscalyear.
-        '''
+        'Test fiscalyear'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             today = datetime.date.today()
@@ -142,9 +125,7 @@ class AccountTestCase(unittest.TestCase):
             transaction.cursor.commit()
 
     def test0030account_debit_credit(self):
-        '''
-        Test account debit/credit.
-        '''
+        'Test account debit/credit'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             fiscalyear, = self.fiscalyear.search([])
@@ -345,6 +326,3 @@ def suite():
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
