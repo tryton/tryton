@@ -143,6 +143,8 @@ class NumericDescriptor(FieldDescriptor):
 class ReferenceDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         value = super(ReferenceDescriptor, self).__get__(instance, owner)
+        if instance._parent_name == self.name:
+            value = instance._parent
         if isinstance(value, basestring):
             model_name, id = value.split(',', 1)
             if model_name:
@@ -196,6 +198,8 @@ class Many2OneDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         relation = Model.get(self.definition['relation'], instance._config)
         value = super(Many2OneDescriptor, self).__get__(instance, owner)
+        if instance._parent_name == self.name:
+            value = instance._parent
         if isinstance(value, (int, long)) and value is not False:
             value = relation(value)
         elif not value:
