@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 import datetime
 from decimal import Decimal
@@ -20,9 +11,7 @@ from trytond.transaction import Transaction
 
 
 class TimesheetCostTestCase(unittest.TestCase):
-    '''
-    Test TimesheetCost module.
-    '''
+    'Test TimesheetCost module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('timesheet_cost')
@@ -34,21 +23,15 @@ class TimesheetCostTestCase(unittest.TestCase):
         self.line = POOL.get('timesheet.line')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('timesheet_cost')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010compute_cost_price(self):
-        '''
-        Test compute_cost_price
-        '''
+        'Test compute_cost_price'
         cost_prices = [
             (datetime.date(2011, 1, 1), Decimal(10)),
             (datetime.date(2012, 1, 1), Decimal(15)),
@@ -88,6 +71,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         TimesheetCostTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
