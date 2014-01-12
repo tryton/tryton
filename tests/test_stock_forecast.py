@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-            '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 from decimal import Decimal
 import datetime
@@ -20,9 +11,7 @@ from trytond.transaction import Transaction
 
 
 class StockForecastTestCase(unittest.TestCase):
-    '''
-    Test StockForecast module.
-    '''
+    'Test StockForecast module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock_forecast')
@@ -38,21 +27,15 @@ class StockForecastTestCase(unittest.TestCase):
         self.move = POOL.get('stock.move')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('stock_forecast')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0020distribute(self):
-        '''
-        Test distribute.
-        '''
+        'Test distribute'
         for values, result in (
                 ((1, 5), {0: 5}),
                 ((4, 8), {0: 2, 1: 2, 2: 2, 3: 2}),
@@ -63,9 +46,7 @@ class StockForecastTestCase(unittest.TestCase):
             self.assertEqual(self.line.distribute(*values), result)
 
     def test0030create_moves(self):
-        '''
-        Test create_moves.
-        '''
+        'Test create_moves'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             category, = self.category.create([{
                         'name': 'Test create_moves',
@@ -152,6 +133,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             StockForecastTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
