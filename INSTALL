@@ -5,7 +5,9 @@ Prerequisites
 -------------
 
  * Python 2.6 or later (http://www.python.org/)
- * trytond (http://www.tryton.org/)
+ * python-dateutil (http://labix.org/python-dateutil)
+ * Optional: trytond (http://www.tryton.org/)
+ * Optional: simplejson (http://undefined.org/python/#simplejson)
  * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
 
 Installation
