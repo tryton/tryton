@@ -1,13 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
@@ -17,9 +9,7 @@ from trytond.transaction import Transaction
 
 
 class CurrencyTestCase(unittest.TestCase):
-    '''
-    Test Currency module.
-    '''
+    'Test Currency module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('currency')
@@ -33,21 +23,15 @@ class CurrencyTestCase(unittest.TestCase):
             ], limit=1)[0]
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('currency')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010currencies(self):
-        '''
-        Create currencies
-        '''
+        'Create currencies'
 
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
@@ -66,9 +50,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.commit()
 
     def test0020mon_grouping(self):
-        '''
-        Check grouping
-        '''
+        'Check grouping'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1 = self.get_currency('cu1')
 
@@ -85,9 +67,7 @@ class CurrencyTestCase(unittest.TestCase):
                 {'mon_grouping': '[1,"1"]'})
 
     def test0030rate(self):
-        '''
-        Create rates.
-        '''
+        'Create rates'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             cu1 = self.get_currency('cu1')
@@ -108,9 +88,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.commit()
 
     def test0040rate_unicity(self):
-        '''
-        Rate unicity
-        '''
+        'Rate unicity'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             today = self.date.today()
@@ -136,9 +114,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0050compute_simple(self):
-        '''
-        Simple conversion
-        '''
+        'Simple conversion'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             cu1 = self.get_currency('cu1')
@@ -153,9 +129,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.commit()
 
     def test0060compute_nonfinite(self):
-        '''
-        Conversion with rounding on non-finite decimal representation
-        '''
+        'Conversion with rounding on non-finite decimal representation'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1 = self.get_currency('cu1')
             cu2 = self.get_currency('cu2')
@@ -167,9 +141,7 @@ class CurrencyTestCase(unittest.TestCase):
             self.assertEqual(converted_amount, expected)
 
     def test0070compute_nonfinite_worounding(self):
-        '''
-        Same without rounding
-        '''
+        'Same without rounding'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1 = self.get_currency('cu1')
             cu2 = self.get_currency('cu2')
@@ -181,9 +153,7 @@ class CurrencyTestCase(unittest.TestCase):
             self.assertEqual(converted_amount, expected)
 
     def test0080compute_same(self):
-        '''
-        Conversion to the same currency
-        '''
+        'Conversion to the same currency'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1 = self.get_currency('cu1')
 
@@ -193,9 +163,7 @@ class CurrencyTestCase(unittest.TestCase):
             self.assertEqual(converted_amount, amount)
 
     def test0090compute_zeroamount(self):
-        '''
-        Conversion with zero amount
-        '''
+        'Conversion with zero amount'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             cu1 = self.get_currency('cu1')
             cu2 = self.get_currency('cu2')
@@ -206,9 +174,7 @@ class CurrencyTestCase(unittest.TestCase):
             self.assertEqual(converted_amount, expected)
 
     def test0100compute_zerorate(self):
-        '''
-        Conversion with zero rate
-        '''
+        'Conversion with zero rate'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             cu1 = self.get_currency('cu1')
@@ -229,9 +195,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0110compute_missingrate(self):
-        '''
-        Conversion with missing rate
-        '''
+        'Conversion with missing rate'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             cu1 = self.get_currency('cu1')
@@ -250,9 +214,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0120compute_bothmissingrate(self):
-        '''
-        Conversion with both missing rate
-        '''
+        'Conversion with both missing rate'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             cu3, cu4 = self.currency.create([{
@@ -272,9 +234,7 @@ class CurrencyTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0130delete_cascade(self):
-        '''
-        Test deletion of currency deletes rates
-        '''
+        'Test deletion of currency deletes rates'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             codes = ['cu%s' % (i + 1) for i in range(2)]
@@ -294,6 +254,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             CurrencyTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
