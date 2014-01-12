@@ -238,8 +238,9 @@ class Statement(Workflow, ModelSQL, ModelView):
                                 if (value and field._type in ('many2one',
                                             'one2one')):
                                     vals[field_name] = value.id
-                                    vals[field_name + '.rec_name'] = \
-                                        value.rec_name
+                                    if value.id >= 0:
+                                        vals[field_name + '.rec_name'] = \
+                                            value.rec_name
                                 else:
                                     vals[field_name] = value
                             del vals['id']
