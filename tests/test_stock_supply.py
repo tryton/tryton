@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 import doctest
 import datetime
@@ -31,9 +22,7 @@ DATES = [
 
 
 class StockSupplyTestCase(unittest.TestCase):
-    '''
-    Test StockSupply module.
-    '''
+    'Test StockSupply module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock_supply')
@@ -49,21 +38,15 @@ class StockSupplyTestCase(unittest.TestCase):
         self.user = POOL.get('res.user')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('stock_supply')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010compute_supply_date(self):
-        '''
-        Test compute_supply_date.
-        '''
+        'Test compute_supply_date'
         for purchase_date, delivery_time, supply_date in DATES:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 product_supplier = self.create_product_supplier(delivery_time)
@@ -72,9 +55,7 @@ class StockSupplyTestCase(unittest.TestCase):
                 self.assertEqual(date, supply_date)
 
     def test0020compute_purchase_date(self):
-        '''
-        Test compute_purchase_date.
-        '''
+        'Test compute_purchase_date'
         for purchase_date, delivery_time, supply_date in DATES:
             with Transaction().start(DB_NAME, USER, context=CONTEXT):
                 product_supplier = self.create_product_supplier(delivery_time)
@@ -152,6 +133,3 @@ def suite():
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
