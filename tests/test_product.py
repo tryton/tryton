@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
@@ -18,9 +9,7 @@ from trytond.transaction import Transaction
 
 
 class ProductTestCase(unittest.TestCase):
-    '''
-    Test Product module.
-    '''
+    'Test Product module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('product')
@@ -31,21 +20,15 @@ class ProductTestCase(unittest.TestCase):
         self.category = POOL.get('product.category')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('product')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010uom_non_zero_rate_factor(self):
-        '''
-        Test uom non_zero_rate_factor constraint.
-        '''
+        'Test uom non_zero_rate_factor constraint'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             category, = self.uom_category.create([{'name': 'Test'}])
@@ -86,9 +69,7 @@ class ProductTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0020uom_check_factor_and_rate(self):
-        '''
-        Test uom check_factor_and_rate constraint.
-        '''
+        'Test uom check_factor_and_rate constraint'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             category, = self.uom_category.search([
@@ -121,9 +102,7 @@ class ProductTestCase(unittest.TestCase):
             transaction.cursor.rollback()
 
     def test0030uom_select_accurate_field(self):
-        '''
-        Test uom select_accurate_field function.
-        '''
+        'Test uom select_accurate_field function'
         tests = [
             ('Meter', 'factor'),
             ('Kilometer', 'factor'),
@@ -138,9 +117,7 @@ class ProductTestCase(unittest.TestCase):
                 self.assertEqual(result, uom.accurate_field)
 
     def test0040uom_compute_qty(self):
-        '''
-        Test uom compute_qty function.
-        '''
+        'Test uom compute_qty function'
         tests = [
             ('Kilogram', 100, 'Gram', 100000, 100000),
             ('Gram', 1, 'Pound', 0.0022046226218487759, 0.0),
@@ -171,9 +148,7 @@ class ProductTestCase(unittest.TestCase):
                 self.uom.compute_qty(from_uom, 10, None, True))
 
     def test0050uom_compute_price(self):
-        '''
-        Test uom compute_price function.
-        '''
+        'Test uom compute_price function'
         tests = [
             ('Kilogram', Decimal('100'), 'Gram', Decimal('0.1')),
             ('Gram', Decimal('1'), 'Pound', Decimal('453.59237')),
@@ -193,9 +168,7 @@ class ProductTestCase(unittest.TestCase):
                         price, to_uom))
 
     def test0060product_search_domain(self):
-        '''
-        Test product.product search_domain function.
-        '''
+        'Test product.product search_domain function'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             kilogram, = self.uom.search([
                     ('name', '=', 'Kilogram'),
@@ -232,9 +205,7 @@ class ProductTestCase(unittest.TestCase):
             self.assertEqual(p, pt2.products[0])
 
     def test0060search_domain_conversion(self):
-        '''
-        Test the search domain conversion
-        '''
+        'Test the search domain conversion'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             category1, = self.category.create([{'name': 'Category1'}])
             category2, = self.category.create([{'name': 'Category2'}])
@@ -295,6 +266,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         ProductTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
