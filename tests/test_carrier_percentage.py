@@ -1,13 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 import doctest
 from decimal import Decimal
@@ -18,9 +10,7 @@ from trytond.transaction import Transaction
 
 
 class CarrierWeightTestCase(unittest.TestCase):
-    '''
-    Test CarrierWeight module.
-    '''
+    'Test CarrierWeight module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('carrier_percentage')
@@ -33,21 +23,15 @@ class CarrierWeightTestCase(unittest.TestCase):
         self.carrier = POOL.get('carrier')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('carrier_percentage')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010compute_percentage(self):
-        '''
-        Test compute_percentage.
-        '''
+        'Test compute_percentage'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             party, = self.party.create([{
                         'name': 'Carrier',
@@ -105,6 +89,3 @@ def suite():
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
