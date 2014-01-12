@@ -1,14 +1,5 @@
-#!/usr/bin/env python
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-
-import sys
-import os
-DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
-    '..', '..', '..', '..', '..', 'trytond')))
-if os.path.isdir(DIR):
-    sys.path.insert(0, os.path.dirname(DIR))
-
 import unittest
 import doctest
 import datetime
@@ -20,9 +11,7 @@ from trytond.transaction import Transaction
 
 
 class StockSupplyDayTestCase(unittest.TestCase):
-    '''
-    Test StockSupplyDay module.
-    '''
+    'Test StockSupplyDay module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('stock_supply_day')
@@ -39,21 +28,15 @@ class StockSupplyDayTestCase(unittest.TestCase):
         self.user = POOL.get('res.user')
 
     def test0005views(self):
-        '''
-        Test views.
-        '''
+        'Test views'
         test_view('stock_supply_day')
 
     def test0006depends(self):
-        '''
-        Test depends.
-        '''
+        'Test depends'
         test_depends()
 
     def test0010compute_supply_date(self):
-        '''
-        Test compute_supply_date.
-        '''
+        'Test compute_supply_date'
         dates = [
             # purchase date, delivery time, weekday, supply date
             (datetime.date(2011, 11, 21), 10, 0, datetime.date(2011, 12, 5)),
@@ -79,9 +62,7 @@ class StockSupplyDayTestCase(unittest.TestCase):
                 self.assertEqual(date, supply_date)
 
     def test0020compute_purchase_date(self):
-        '''
-        Test compute_purchase_date.
-        '''
+        'Test compute_purchase_date'
         dates = [
             # purchase date, delivery time, weekday, supply date
             (datetime.date(2011, 11, 25), 10, 0, datetime.date(2011, 12, 6)),
@@ -176,6 +157,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         StockSupplyDayTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
