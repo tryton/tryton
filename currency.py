@@ -187,16 +187,7 @@ class Currency(ModelSQL, ModelView):
         return res
 
     def round(self, amount, rounding=ROUND_HALF_EVEN):
-        '''
-        Round the amount depending of the currency
-
-        :param cursor: the database cursor
-        :param user: the user id
-        :param currency: a BrowseRecord of currency.currency
-        :param amout: a Decimal
-        :param rounding: the rounding option
-        :return: a Decimal
-        '''
+        'Round the amount depending of the currency'
         return (amount / self.rounding).quantize(Decimal('1.'),
                 rounding=rounding) * self.rounding
 
