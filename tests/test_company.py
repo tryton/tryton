@@ -35,7 +35,7 @@ class CompanyTestCase(unittest.TestCase):
                     ], 0, 1, None)
 
             party1, = self.party.create([{
-                        'name': 'B2CK',
+                        'name': 'Dunder Mifflin',
                         }])
             company1, = self.company.create([{
                         'party': party1.id,
@@ -52,11 +52,11 @@ class CompanyTestCase(unittest.TestCase):
                 ], 0, 1, None)
 
             company1, = self.company.search([
-                    ('rec_name', '=', 'B2CK'),
+                    ('rec_name', '=', 'Dunder Mifflin'),
                     ], 0, 1, None)
 
             party2, = self.party.create([{
-                        'name': 'B2CK Branch',
+                        'name': 'Michael Scott Paper Company',
                         }])
             company2, = self.company.create([{
                         'party': party2.id,
@@ -75,11 +75,11 @@ class CompanyTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             company1, = self.company.search([
-                    ('rec_name', '=', 'B2CK'),
+                    ('rec_name', '=', 'Dunder Mifflin'),
                     ], 0, 1, None)
 
             party, = self.party.create([{
-                        'name': 'Employee1',
+                        'name': 'Pam Beesly',
                         }])
             self.employee.create([{
                         'party': party.id,
@@ -96,11 +96,11 @@ class CompanyTestCase(unittest.TestCase):
                     ], 0, 1, None)
 
             company1, = self.company.search([
-                    ('rec_name', '=', 'B2CK'),
+                    ('rec_name', '=', 'Dunder Mifflin'),
                     ], 0, 1, None)
 
             party2, = self.party.create([{
-                        'name': 'B2CK Branch',
+                        'name': 'Michael Scott Paper Company',
                         }])
             company2, = self.company.create([{
                         'party': party2.id,
@@ -108,13 +108,13 @@ class CompanyTestCase(unittest.TestCase):
                         'currency': currency1.id,
                         }])
             user1, user2 = self.user.create([{
-                        'name': 'Test 1',
-                        'login': 'test1',
+                        'name': 'Jim Halper',
+                        'login': 'jim',
                         'main_company': company1.id,
                         'company': company1.id,
                         }, {
-                        'name': 'Test 2',
-                        'login': 'test2',
+                        'name': 'Pam Beesly',
+                        'login': 'pam',
                         'main_company': company2.id,
                         'company': company2.id,
                         }])
