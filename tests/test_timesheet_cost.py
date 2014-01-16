@@ -47,7 +47,9 @@ class TimesheetCostTestCase(unittest.TestCase):
             (datetime.date(2013, 6, 1), Decimal(20)),
             ]
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             party = self.party(name='Pam Beesly')
             party.save()
             employee = self.employee(party=party.id,
