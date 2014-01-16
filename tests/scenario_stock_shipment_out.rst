@@ -35,14 +35,14 @@ Create company::
     >>> company_config = Wizard('company.company.config')
     >>> company_config.execute('company')
     >>> company = company_config.form
-    >>> party = Party(name='OPENLABS')
+    >>> party = Party(name='Dunder Mifflin')
     >>> party.save()
     >>> company.party = party
-    >>> currencies = Currency.find([('code', '=', 'EUR')])
+    >>> currencies = Currency.find([('code', '=', 'USD')])
     >>> if not currencies:
-    ...     currency = Currency(name='Euro', symbol=u'€', code='EUR',
+    ...     currency = Currency(name='U.S. Dollar', symbol='$', code='USD',
     ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point=',')
+    ...         mon_decimal_point='.', mon_thousands_sep=',')
     ...     currency.save()
     ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
     ...         rate=Decimal('1.0'), currency=currency).save()

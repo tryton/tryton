@@ -58,7 +58,9 @@ class StockTestCase(unittest.TestCase):
                         }])
             supplier, = self.location.search([('code', '=', 'SUP')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             currency = company.currency
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
@@ -117,7 +119,9 @@ class StockTestCase(unittest.TestCase):
             supplier, = self.location.search([('code', '=', 'SUP')])
             customer, = self.location.search([('code', '=', 'CUS')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             currency = company.currency
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
@@ -371,7 +375,9 @@ class StockTestCase(unittest.TestCase):
         # Test with_childs
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
                 'company': company.id,
@@ -449,7 +455,9 @@ class StockTestCase(unittest.TestCase):
             supplier, = self.location.search([('code', '=', 'SUP')])
             customer, = self.location.search([('code', '=', 'CUS')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             currency = company.currency
             self.user.write([self.user(USER)], {
                 'main_company': company.id,
