@@ -67,7 +67,9 @@ class StockForecastTestCase(unittest.TestCase):
             customer, = self.location.search([('code', '=', 'CUS')])
             warehouse, = self.location.search([('code', '=', 'WH')])
             storage, = self.location.search([('code', '=', 'STO')])
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             self.user.write([self.user(USER)], {
                     'main_company': company.id,
                     'company': company.id,
