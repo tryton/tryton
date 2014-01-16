@@ -112,7 +112,9 @@ class StockSupplyDayTestCase(unittest.TestCase):
         product, = self.product.create([{
                     'template': template.id,
                     }])
-        company, = self.company.search([('rec_name', '=', 'B2CK')])
+        company, = self.company.search([
+                ('rec_name', '=', 'Dunder Mifflin'),
+                ])
         self.user.write([self.user(USER)], {
             'main_company': company.id,
             'company': company.id,
