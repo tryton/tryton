@@ -76,7 +76,9 @@ class AccountTestCase(unittest.TestCase):
                 tax.credit_note_tax_sign = Decimal(-1)
                 tax.save()
 
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             self.user.write([self.user(USER)], {
                     'main_company': company.id,
                     'company': company.id,
@@ -107,7 +109,9 @@ class AccountTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             today = datetime.date.today()
-            company, = self.company.search([('rec_name', '=', 'B2CK')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
             sequence, = self.sequence.create([{
                         'name': '%s' % today.year,
                         'code': 'account.move',
