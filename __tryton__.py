@@ -8,7 +8,7 @@
     'name_es_ES': 'Facturación',
     'name_fr_FR': 'Facturation',
     'name_nl_NL': 'Facturatie',
-    'version': '2.2.5',
+    'version': '2.2.6',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
