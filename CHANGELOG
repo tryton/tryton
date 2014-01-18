@@ -1,3 +1,6 @@
+Version 3.0.1 - 2014-01-18
+* Bug fixes (see mercurial logs for details)
+
 Version 3.0.0 - 2013-10-21
 * Bug fixes (see mercurial logs for details)
 * Add Mixin class with helper to setup stock quantity fields
