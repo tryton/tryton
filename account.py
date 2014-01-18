@@ -90,7 +90,7 @@ class FiscalYear:
                     ('id', '!=', self.id),
                     ])
             if fiscalyears:
-                self.raise_user_error('different_invoice_sequences', {
+                self.raise_user_error('different_invoice_sequence', {
                         'first': self.rec_name,
                         'second': fiscalyears[0].rec_name,
                         })
