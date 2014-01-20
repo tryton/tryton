@@ -1176,8 +1176,8 @@ class GeneralLedger(Report):
         if not data['empty_account']:
             account2lines = dict(cls.get_lines(accounts,
                     end_periods, data['posted']))
-            for account in (set(accounts) - set(account2lines)):
-                accounts.remove(account)
+            accounts = Account.browse([a.id for a in accounts
+                    if a in account2lines])
 
         account_id2lines = cls.lines(accounts,
             list(set(end_periods).difference(set(start_periods))),
