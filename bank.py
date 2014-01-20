@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from stdnum import iban
+
 from trytond.model import ModelView, ModelSQL, fields
 
 
@@ -54,13 +56,57 @@ class BankAccountNumber(ModelSQL, ModelView):
         super(BankAccountNumber, cls).__setup__()
         cls._order.insert(0, ('account', 'ASC'))
         cls._order.insert(1, ('sequence', 'ASC'))
+        cls._error_messages.update({
+                'invalid_iban': 'Invalid IBAN "%s".',
+                })
 
     @staticmethod
     def order_sequence(tables):
         table, _ = tables[None]
         return [table.sequence == None, table.sequence]
 
-    # TODO validate IBAN
+    @property
+    def compact_iban(self):
+        return (iban.compact(self.number) if self.type == 'iban'
+            else self.number)
+
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            if values.get('type') == 'iban' and 'number' in values:
+                values['number'] = iban.format(values['number'])
+        return super(BankAccountNumber, cls).create(vlist)
+
+    @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for numbers, values in zip(actions, actions):
+            values = values.copy()
+            if values.get('type') == 'iban' and 'number' in values:
+                values['number'] = iban.format(values['number'])
+            args.extend((numbers, values))
+
+        super(BankAccountNumber, cls).write(*args)
+
+        to_write = []
+        for number in sum(args[::2], []):
+            if number.type == 'iban':
+                formated_number = iban.format(number.number)
+                if formated_number != number.number:
+                    to_write.extend(([number], {
+                                'number': formated_number,
+                                }))
+        if to_write:
+            cls.write(*to_write)
+
+    @classmethod
+    def validate(cls, numbers):
+        super(BankAccountNumber, cls).validate(numbers)
+        for number in numbers:
+            if number.type == 'iban' and not iban.is_valid(number.number):
+                cls.raise_user_error('invalid_iban', number.number)
 
 
 class BankAccountParty(ModelSQL):

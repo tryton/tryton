@@ -1,3 +1,4 @@
+* Add IBAN format, validation and compact
 * Add default access rights
 
 Version 3.0.0 - 2013-10-21
