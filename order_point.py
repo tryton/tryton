@@ -130,6 +130,7 @@ class OrderPoint(ModelSQL, ModelView):
         query = ['OR']
         for op in self.browse(internal_ids):
             arg = ['AND',
+                   ('product', '=', op.product.id),
                    ('provisioning_location', '=', op.storage_location.id),
                    ('storage_location', '=', op.provisioning_location.id),
                    ('company', '=', op.company.id),
