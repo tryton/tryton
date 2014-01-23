@@ -1366,7 +1366,7 @@ class InvoiceLine(ModelSQL, ModelView):
         on_change=['product', 'unit', 'quantity', 'description',
             '_parent_invoice.type', '_parent_invoice.party',
             '_parent_invoice.currency', '_parent_invoice.currency_date',
-            'party', 'currency', 'invoice'],
+            'party', 'currency', 'invoice', 'invoice_type'],
         depends=['type'])
     account = fields.Many2One('account.account', 'Account',
         domain=[
