@@ -19,8 +19,8 @@ class Employee:
         help="Hourly cost price for this Employee"), 'get_cost_price')
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
             'Cost Prices', help="List of hourly cost price over time")
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['company']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     _cost_prices_cache = Cache('company_employee.cost_prices')
 
     def get_cost_price(self, name):
@@ -68,6 +68,7 @@ class Employee:
                     break
         return cost
 
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
         if self.company:
             return self.company.currency.digits
@@ -93,8 +94,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
             required=True, depends=['currency_digits'],
             help="Hourly cost price")
     employee = fields.Many2One('company.employee', 'Employee')
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['employee']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
 
     @classmethod
     def __register__(cls, module_name):
@@ -144,6 +145,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
         super(EmployeeCostPrice, cls).write(*args)
         Employee._cost_prices_cache.clear()
 
+    @fields.depends('employee')
     def on_change_with_currency_digits(self, name=None):
         if self.employee:
             return self.employee.company.currency.digits
