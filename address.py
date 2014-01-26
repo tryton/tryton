@@ -28,7 +28,7 @@ class Address(ModelSQL, ModelView):
     zip = fields.Char('Zip', states=STATES, depends=DEPENDS)
     city = fields.Char('City', states=STATES, depends=DEPENDS)
     country = fields.Many2One('country.country', 'Country',
-        on_change=['country', 'subdivision'], states=STATES, depends=DEPENDS)
+        states=STATES, depends=DEPENDS)
     subdivision = fields.Many2One("country.subdivision",
             'Subdivision', domain=[('country', '=', Eval('country'))],
             states=STATES, depends=['active', 'country'])
@@ -123,6 +123,7 @@ class Address(ModelSQL, ModelView):
                         cls.raise_user_error('write_party', (address.rec_name,))
         super(Address, cls).write(*args)
 
+    @fields.depends('subdivision', 'country')
     def on_change_country(self):
         if (self.subdivision
                 and self.subdivision.country != self.country):

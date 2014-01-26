@@ -53,9 +53,8 @@ class Party(ModelSQL, ModelView):
         depends=DEPENDS,
         help="Setting VAT country will enable validation of the VAT number.",
         translate=False)
-    vat_code = fields.Function(fields.Char('VAT Code',
-        on_change_with=['vat_number', 'vat_country']), 'get_vat_code',
-        searcher='search_vat_code')
+    vat_code = fields.Function(fields.Char('VAT Code'),
+        'on_change_with_vat_code', searcher='search_vat_code')
     addresses = fields.One2Many('party.address', 'party',
         'Addresses', states=STATES, depends=DEPENDS)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
@@ -122,10 +121,8 @@ class Party(ModelSQL, ModelView):
     def get_code_readonly(self, name):
         return True
 
-    def on_change_with_vat_code(self):
-        return (self.vat_country or '') + (self.vat_number or '')
-
-    def get_vat_code(self, name):
+    @fields.depends('vat_country', 'vat_number')
+    def on_change_with_vat_code(self, name=None):
         return (self.vat_country or '') + (self.vat_number or '')
 
     @classmethod

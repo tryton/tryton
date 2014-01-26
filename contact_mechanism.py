@@ -32,9 +32,8 @@ class ContactMechanism(ModelSQL, ModelView):
     _rec_name = 'value'
 
     type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
-        sort=False, on_change=['value', 'type'], depends=DEPENDS)
-    value = fields.Char('Value', select=True, states=STATES,
-        on_change=['value', 'type'], depends=DEPENDS)
+        sort=False, depends=DEPENDS)
+    value = fields.Char('Value', select=True, states=STATES, depends=DEPENDS)
     comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
@@ -44,32 +43,31 @@ class ContactMechanism(ModelSQL, ModelView):
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
         'readonly': ~Eval('active', True),
-        }, on_change=['email', 'type'], depends=['value', 'type', 'active']),
+        }, depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     website = fields.Function(fields.Char('Website', states={
         'invisible': Eval('type') != 'website',
         'required': Eval('type') == 'website',
         'readonly': ~Eval('active', True),
-        }, on_change=['website', 'type'], depends=['value', 'type', 'active']),
+        }, depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     skype = fields.Function(fields.Char('Skype', states={
         'invisible': Eval('type') != 'skype',
         'required': Eval('type') == 'skype',
         'readonly': ~Eval('active', True),
-        }, on_change=['skype', 'type'], depends=['value', 'type', 'active']),
+        }, depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     sip = fields.Function(fields.Char('SIP', states={
         'invisible': Eval('type') != 'sip',
         'required': Eval('type') == 'sip',
         'readonly': ~Eval('active', True),
-        }, on_change=['sip', 'type'], depends=['value', 'type', 'active']),
+        }, depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     other_value = fields.Function(fields.Char('Value', states={
         'invisible': Eval('type').in_(['email', 'website', 'skype', 'sip']),
         'required': ~Eval('type').in_(['email', 'website']),
         'readonly': ~Eval('active', True),
-        }, on_change=['other_value', 'type'],
-            depends=['value', 'type', 'active']),
+        }, depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     url = fields.Function(fields.Char('URL', states={
                 'invisible': (~Eval('type').in_(['email', 'website', 'skype',
@@ -147,26 +145,33 @@ class ContactMechanism(ModelSQL, ModelView):
             'url': self.get_url(value=value)
             }
 
+    @fields.depends('value', 'type')
     def on_change_type(self):
         return {
             'url': self.get_url(value=self.value),
             }
 
+    @fields.depends('value', 'type')
     def on_change_value(self):
         return self._change_value(self.value)
 
+    @fields.depends('website', 'type')
     def on_change_website(self):
         return self._change_value(self.website)
 
+    @fields.depends('email', 'type')
     def on_change_email(self):
         return self._change_value(self.email)
 
+    @fields.depends('skype', 'type')
     def on_change_skype(self):
         return self._change_value(self.skype)
 
+    @fields.depends('sip', 'type')
     def on_change_sip(self):
         return self._change_value(self.sip)
 
+    @fields.depends('other_value', 'type')
     def on_change_other_value(self):
         return self._change_value(self.other_value)
 
