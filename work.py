@@ -22,8 +22,7 @@ class Work(ModelSQL, ModelView):
             ('task', 'Task')
             ],
         'Type', required=True, select=True)
-    company = fields.Function(fields.Many2One('company.company', 'Company',
-            on_change_with=['work']),
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company', searcher='search_comany')
     party = fields.Many2One('party.party', 'Party',
         states={
@@ -35,13 +34,13 @@ class Work(ModelSQL, ModelView):
             'invisible': Eval('type') != 'project',
             }, depends=['party', 'type'])
     timesheet_available = fields.Function(
-        fields.Boolean('Available on timesheets', on_change_with=['work']),
+        fields.Boolean('Available on timesheets'),
         'on_change_with_timesheet_available')
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
             states={
                 'invisible': ~Eval('timesheet_available'),
                 },
-            depends=['timesheet_available'], on_change_with=['work'],
+            depends=['timesheet_available'],
             help="Total time spent on this work"), 'on_change_with_hours')
     effort = fields.Float("Effort",
         states={
@@ -165,6 +164,7 @@ class Work(ModelSQL, ModelView):
     def search_active(cls, name, clause):
         return [('work.active',) + tuple(clause[1:])]
 
+    @fields.depends('work')
     def on_change_with_company(self, name=None):
         return self.work.company.id if self.work else None
 
@@ -172,9 +172,11 @@ class Work(ModelSQL, ModelView):
     def search_comany(cls, name, clause):
         return [('work.company',) + tuple(clause[1:])]
 
+    @fields.depends('work')
     def on_change_with_timesheet_available(self, name=None):
         return self.work.timesheet_available if self.work else None
 
+    @fields.depends('work')
     def on_change_with_hours(self, name=None):
         return self.work.hours if self.work else None
 
