@@ -75,10 +75,12 @@ class Sale(Workflow, ModelSQL, ModelView):
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[('party', '=', Eval('party'))], states={
             'readonly': Eval('state') != 'draft',
+            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             }, depends=['state', 'party'])
     shipment_address = fields.Many2One('party.address', 'Shipment Address',
         domain=[('party', '=', Eval('party'))], states={
             'readonly': Eval('state') != 'draft',
+            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             },
         depends=['party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
