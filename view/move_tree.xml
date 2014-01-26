@@ -9,5 +9,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <field name="post_date"/>
     <field name="origin"/>
+    <field name="description"/>
     <field name="state"/>
 </tree>
