@@ -26,8 +26,8 @@ class Template:
             'required': Bool(Eval('length')),
             },
         depends=['type', 'length'])
-    length_digits = fields.Function(fields.Integer('Length Digits',
-            on_change_with=['length_uom']), 'on_change_with_length_digits')
+    length_digits = fields.Function(fields.Integer('Length Digits'),
+        'on_change_with_length_digits')
     height = fields.Float('Height',
         digits=(16, Eval('height_digits', 2)),
         states={
@@ -41,8 +41,8 @@ class Template:
             'required': Bool(Eval('height')),
             },
         depends=['type', 'height'])
-    height_digits = fields.Function(fields.Integer('Height Digits',
-            on_change_with=['height_uom']), 'on_change_with_height_digits')
+    height_digits = fields.Function(fields.Integer('Height Digits'),
+        'on_change_with_height_digits')
     width = fields.Float('Width',
         digits=(16, Eval('width_digits', 2)),
         states={
@@ -56,8 +56,8 @@ class Template:
             'required': Bool(Eval('width')),
             },
         depends=['type', 'width'])
-    width_digits = fields.Function(fields.Integer('Width Digits',
-            on_change_with=['width_uom']), 'on_change_with_width_digits')
+    width_digits = fields.Function(fields.Integer('Width Digits'),
+        'on_change_with_width_digits')
     weight = fields.Float('Weight',
         digits=(16, Eval('weight_digits', 2)),
         states={
@@ -71,9 +71,10 @@ class Template:
             'required': Bool(Eval('weight')),
             },
         depends=['type', 'weight'])
-    weight_digits = fields.Function(fields.Integer('Weight Digits',
-            on_change_with=['weight_uom']), 'on_change_with_weight_digits')
+    weight_digits = fields.Function(fields.Integer('Weight Digits'),
+        'on_change_with_weight_digits')
 
+    @fields.depends('length_uom')
     def on_change_with_length_digits(self, name=None):
         return (self.length_uom.digits if self.length_uom
             else self.default_length_digits())
@@ -82,6 +83,7 @@ class Template:
     def default_length_digits():
         return 2
 
+    @fields.depends('height_uom')
     def on_change_with_height_digits(self, name=None):
         return (self.height_uom.digits if self.height_uom
             else self.default_height_digits())
@@ -90,6 +92,7 @@ class Template:
     def default_height_digits():
         return 2
 
+    @fields.depends('width_uom')
     def on_change_with_width_digits(self, name=None):
         return (self.width_uom.digits if self.width_uom
             else self.default_width_digits())
@@ -98,6 +101,7 @@ class Template:
     def default_width_digits():
         return 2
 
+    @fields.depends('weight_uom')
     def on_change_with_weight_digits(self, name=None):
         return (self.weight_uom.digits if self.weight_uom
             else self.default_weight_digits())
