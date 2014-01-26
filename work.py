@@ -23,8 +23,7 @@ class Work:
         states={
             'invisible': ~Eval('timesheet_available'),
             },
-        depends=['timesheet_available'],
-        on_change=['product', 'party', 'hours', 'company'])
+        depends=['timesheet_available'])
     list_price = fields.Numeric('List Price',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     revenue = fields.Function(fields.Numeric('Revenue',
@@ -36,8 +35,8 @@ class Work:
                 },
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits', 'timesheet_available']), 'get_cost')
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['company']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
 
     @classmethod
     def get_cost(cls, works, name):
@@ -101,6 +100,7 @@ class Work:
 
         return cls.sum_tree(works, getter)
 
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
         if self.company:
             return self.company.currency.digits
@@ -115,6 +115,7 @@ class Work:
             return company.currency.digits
         return 2
 
+    @fields.depends('product', 'party', 'hours', 'company')
     def on_change_product(self):
         pool = Pool()
         User = pool.get('res.user')
