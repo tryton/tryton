@@ -44,7 +44,6 @@ class Production(Workflow, ModelSQL, ModelView):
             'readonly': (~Eval('state').in_(['request', 'draft'])
                 | Eval('inputs', True) | Eval('outputs', True)),
             },
-        on_change=['warehouse'],
         depends=['state'])
     location = fields.Many2One('stock.location', 'Location', required=True,
         domain=[
@@ -61,8 +60,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            },
-        on_change=BOM_CHANGES)
+            })
     bom = fields.Many2One('production.bom', 'BOM',
         domain=[
             ('output_products', '=', Eval('product', 0)),
@@ -71,11 +69,10 @@ class Production(Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['request', 'draft']),
             'invisible': ~Eval('product'),
             },
-        on_change=BOM_CHANGES,
         depends=['product'])
     uom_category = fields.Function(fields.Many2One(
-            'product.uom.category', 'Uom Category',
-            on_change_with=['product']), 'on_change_with_uom_category')
+            'product.uom.category', 'Uom Category'),
+        'on_change_with_uom_category')
     uom = fields.Many2One('product.uom', 'Uom',
         domain=[
             ('category', '=', Eval('uom_category')),
@@ -85,10 +82,9 @@ class Production(Workflow, ModelSQL, ModelView):
             'required': Bool(Eval('bom')),
             'invisible': ~Eval('product'),
             },
-        on_change=BOM_CHANGES,
         depends=['uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-            on_change_with=['uom']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
@@ -96,10 +92,9 @@ class Production(Workflow, ModelSQL, ModelView):
             'required': Bool(Eval('bom')),
             'invisible': ~Eval('product'),
             },
-        on_change=BOM_CHANGES,
         depends=['unit_digits'])
     cost = fields.Function(fields.Numeric('Cost', digits=(16, 4),
-            readonly=True, on_change_with=['inputs']), 'get_cost')
+            readonly=True), 'get_cost')
     inputs = fields.One2Many('stock.move', 'production_input', 'Inputs',
         domain=[
             ('from_location', 'child_of', [Eval('warehouse')], 'parent'),
@@ -309,6 +304,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 outputs['add'].append(values)
         return changes
 
+    @fields.depends('warehouse')
     def on_change_warehouse(self):
         changes = {
             'location': None,
@@ -317,6 +313,7 @@ class Production(Workflow, ModelSQL, ModelView):
             changes['location'] = self.warehouse.production_location.id
         return changes
 
+    @fields.depends(*BOM_CHANGES)
     def on_change_product(self):
         result = {}
         if self.product:
@@ -338,21 +335,26 @@ class Production(Workflow, ModelSQL, ModelView):
         result.update(self.explode_bom())
         return result
 
+    @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom.category.id
 
+    @fields.depends('uom')
     def on_change_with_unit_digits(self, name=None):
         if self.uom:
             return self.uom.digits
         return 2
 
+    @fields.depends(*BOM_CHANGES)
     def on_change_bom(self):
         return self.explode_bom()
 
+    @fields.depends(*BOM_CHANGES)
     def on_change_uom(self):
         return self.explode_bom()
 
+    @fields.depends(*BOM_CHANGES)
     def on_change_quantity(self):
         return self.explode_bom()
 
@@ -366,6 +368,7 @@ class Production(Workflow, ModelSQL, ModelView):
             cost += (Decimal(str(input_.internal_quantity)) * cost_price)
         return cost
 
+    @fields.depends('inputs')
     def on_change_with_cost(self):
         Uom = Pool().get('product.uom')
 

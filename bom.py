@@ -57,16 +57,15 @@ class BOMInput(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
         required=True, domain=[
             ('type', '!=', 'service'),
-        ], on_change=['product', 'uom'])
+        ])
     uom_category = fields.Function(fields.Many2One(
-        'product.uom.category', 'Uom Category',
-        on_change_with=['product']), 'on_change_with_uom_category')
+        'product.uom.category', 'Uom Category'), 'on_change_with_uom_category')
     uom = fields.Many2One('product.uom', 'Uom', required=True,
         domain=[
             ('category', '=', Eval('uom_category')),
         ], depends=['uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['uom']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     quantity = fields.Float('Quantity', required=True,
         digits=(16, Eval('unit_digits', 2)),
         depends=['unit_digits'])
@@ -83,6 +82,7 @@ class BOMInput(ModelSQL, ModelView):
                 'recursive_bom': 'You can not create recursive BOMs.',
                 })
 
+    @fields.depends('product', 'uom')
     def on_change_product(self):
         res = {}
         if self.product:
@@ -97,10 +97,12 @@ class BOMInput(ModelSQL, ModelView):
             res['unit_digits'] = 2
         return res
 
+    @fields.depends('product')
     def on_change_with_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom.category.id
 
+    @fields.depends('uom')
     def on_change_with_unit_digits(self, name=None):
         if self.uom:
             return self.uom.digits
@@ -175,8 +177,7 @@ class OpenBOMTreeStart(ModelView):
         domain=[
             ('category', '=', Eval('category')),
         ], depends=['category'])
-    unit_digits = fields.Integer('Unit Digits', readonly=True,
-        on_change_with=['uom'])
+    unit_digits = fields.Integer('Unit Digits', readonly=True)
     category = fields.Many2One('product.uom.category', 'Category',
         readonly=True)
     bom = fields.Many2One('product.product-production.bom',
@@ -185,6 +186,7 @@ class OpenBOMTreeStart(ModelView):
         ], depends=['product'])
     product = fields.Many2One('product.product', 'Product', readonly=True)
 
+    @fields.depends('uom')
     def on_change_with_unit_digits(self):
         if self.uom:
             return self.uom.digits
