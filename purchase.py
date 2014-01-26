@@ -67,7 +67,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-        domain=[('party', '=', Eval('party'))], states=_STATES,
+        domain=[('party', '=', Eval('party'))],
+        states={
+            'readonly': Eval('state') != 'draft',
+            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            },
         depends=['state', 'party'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
         domain=[('type', '=', 'warehouse')], states=_STATES,
