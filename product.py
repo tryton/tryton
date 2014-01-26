@@ -24,7 +24,6 @@ class Template:
         domain=[
             ('category', '=', Eval('default_uom_category')),
             ],
-        on_change_with=['default_uom', 'sale_uom', 'salable'],
         depends=['active', 'salable', 'default_uom_category'])
     delivery_time = fields.Integer('Delivery Time', states={
             'readonly': ~Eval('active', True),
@@ -52,6 +51,7 @@ class Template:
     def default_delivery_time():
         return 0
 
+    @fields.depends('default_uom', 'sale_uom', 'salable')
     def on_change_with_sale_uom(self):
         if self.default_uom:
             if self.sale_uom:

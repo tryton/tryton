@@ -68,10 +68,10 @@ class Sale(Workflow, ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True, select=True,
         states={
             'readonly': Eval('state') != 'draft',
-            }, on_change=['party', 'payment_term'],
+            },
         depends=['state'])
-    party_lang = fields.Function(fields.Char('Party Language',
-            on_change_with=['party']), 'on_change_with_party_lang')
+    party_lang = fields.Function(fields.Char('Party Language'),
+        'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[('party', '=', Eval('party'))], states={
             'readonly': Eval('state') != 'draft',
@@ -92,11 +92,11 @@ class Sale(Workflow, ModelSQL, ModelView):
                 (Eval('lines', [0]) & Eval('currency', 0)),
             },
         depends=['state'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['currency']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     lines = fields.One2Many('sale.line', 'sale', 'Lines', states={
             'readonly': Eval('state') != 'draft',
-            }, on_change=['lines', 'currency', 'party'],
+            },
         depends=['party', 'state'])
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
@@ -368,6 +368,7 @@ class Sale(Workflow, ModelSQL, ModelView):
     def default_shipment_state():
         return 'none'
 
+    @fields.depends('party', 'payment_term')
     def on_change_party(self):
         invoice_address = None
         shipment_address = None
@@ -396,6 +397,7 @@ class Sale(Workflow, ModelSQL, ModelView):
             changes['payment_term'] = self.default_payment_term()
         return changes
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits
@@ -407,12 +409,14 @@ class Sale(Workflow, ModelSQL, ModelView):
             res['language'] = self.party.lang.code
         return res
 
+    @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
         Config = Pool().get('ir.configuration')
         if self.party and self.party.lang:
             return self.party.lang.code
         return Config.get_language()
 
+    @fields.depends('lines', 'currency', 'party')
     def on_change_lines(self):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -942,9 +946,7 @@ class SaleLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': ~Eval('_parent_sale', {}),
-            }, on_change=['product', 'quantity', 'unit',
-            '_parent_sale.currency', '_parent_sale.party',
-            '_parent_sale.sale_date'],
+            },
         depends=['type', 'unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit',
             states={
@@ -957,20 +959,15 @@ class SaleLine(ModelSQL, ModelView):
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
-        on_change=['product', 'quantity', 'unit', '_parent_sale.currency',
-            '_parent_sale.party'],
         depends=['product', 'type', 'product_uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         domain=[('salable', '=', True)],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': ~Eval('_parent_sale', {}),
             },
-        on_change=['product', 'unit', 'quantity', 'description',
-            '_parent_sale.party', '_parent_sale.currency',
-            '_parent_sale.sale_date'],
         context={
             'locations': If(Bool(Eval('_parent_sale', {}).get('warehouse')),
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
@@ -978,8 +975,7 @@ class SaleLine(ModelSQL, ModelView):
             'stock_skip_warehouse': True,
             }, depends=['type'])
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category',
-            on_change_with=['product']),
+        fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
@@ -991,8 +987,7 @@ class SaleLine(ModelSQL, ModelView):
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 'readonly': ~Eval('_parent_sale'),
-                }, on_change_with=['type', 'quantity', 'unit_price', 'unit',
-                '_parent_sale.currency'],
+                },
             depends=['type']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
@@ -1021,7 +1016,6 @@ class SaleLine(ModelSQL, ModelView):
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
-            on_change_with=['product', 'quantity', '_parent_sale.sale_date'],
             states={
                 'invisible': ((Eval('type') != 'line')
                     | (If(Bool(Eval('quantity')), Eval('quantity', 0), 0)
@@ -1075,6 +1069,7 @@ class SaleLine(ModelSQL, ModelView):
     def default_unit_digits():
         return 2
 
+    @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
@@ -1131,6 +1126,9 @@ class SaleLine(ModelSQL, ModelView):
             context['uom'] = self.product.sale_uom.id
         return context
 
+    @fields.depends('product', 'unit', 'quantity', 'description',
+        '_parent_sale.party', '_parent_sale.currency',
+        '_parent_sale.sale_date')
     def on_change_product(self):
         Product = Pool().get('product.product')
 
@@ -1181,10 +1179,14 @@ class SaleLine(ModelSQL, ModelView):
         res['amount'] = self.on_change_with_amount()
         return res
 
+    @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
 
+    @fields.depends('product', 'quantity', 'unit',
+        '_parent_sale.currency', '_parent_sale.party',
+        '_parent_sale.sale_date')
     def on_change_quantity(self):
         Product = Pool().get('product.product')
 
@@ -1201,9 +1203,14 @@ class SaleLine(ModelSQL, ModelView):
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
         return res
 
+    @fields.depends('product', 'quantity', 'unit',
+        '_parent_sale.currency', '_parent_sale.party',
+        '_parent_sale.sale_date')
     def on_change_unit(self):
         return self.on_change_quantity()
 
+    @fields.depends('type', 'quantity', 'unit_price', 'unit',
+        '_parent_sale.currency')
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = self.sale.currency if self.sale else None
@@ -1248,6 +1255,7 @@ class SaleLine(ModelSQL, ModelView):
             if self.warehouse:
                 return self.warehouse.input_location.id
 
+    @fields.depends('product', 'quantity', '_parent_sale.sale_date')
     def on_change_with_delivery_date(self, name=None):
         if self.product and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
