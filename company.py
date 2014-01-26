@@ -76,11 +76,10 @@ class UserEmployee(ModelSQL):
 
 class User:
     __name__ = 'res.user'
-    main_company = fields.Many2One('company.company', 'Main Company',
-        on_change=['main_company'])
+    main_company = fields.Many2One('company.company', 'Main Company')
     company = fields.Many2One('company.company', 'Current Company',
         domain=[('parent', 'child_of', [Eval('main_company')], 'parent')],
-        depends=['main_company'], on_change=['company', 'employees'])
+        depends=['main_company'])
     companies = fields.Function(fields.One2Many('company.company', None,
         'Current Companies'), 'get_companies')
     employees = fields.Many2Many('res.user-company.employee', 'user',
@@ -137,12 +136,14 @@ class User:
                 self.company.currency.name)
         return status
 
+    @fields.depends('main_company')
     def on_change_main_company(self):
         return {
             'company': self.main_company.id if self.main_company else None,
             'employee': None,
             }
 
+    @fields.depends('company', 'employees')
     def on_change_company(self):
         Employee = Pool().get('company.employee')
         result = {
