@@ -21,8 +21,8 @@ class Carrier:
             'readonly': Bool(Eval('weight_price_list', [])),
             },
         depends=['carrier_cost_method', 'weight_price_list'])
-    weight_uom_digits = fields.Function(fields.Integer('Weight Uom Digits',
-            on_change_with=['weight_uom']), 'on_change_with_weight_uom_digits')
+    weight_uom_digits = fields.Function(fields.Integer('Weight Uom Digits'),
+        'on_change_with_weight_uom_digits')
     weight_currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
@@ -31,7 +31,7 @@ class Carrier:
             },
         depends=['carrier_cost_method', 'weight_price_list'])
     weight_currency_digits = fields.Function(fields.Integer(
-            'Weight Currency Digits', on_change_with=['weight_currency']),
+            'Weight Currency Digits'),
         'on_change_with_weight_currency_digits')
     weight_price_list = fields.One2Many('carrier.weight_price_list', 'carrier',
         'Price List',
@@ -60,11 +60,13 @@ class Carrier:
             return Company(company).currency.digits
         return 2
 
+    @fields.depends('weight_uom')
     def on_change_with_weight_uom_digits(self, name=None):
         if self.weight_uom:
             return self.weight_uom.digits
         return 2
 
+    @fields.depends('weight_currency')
     def on_change_with_weight_currency_digits(self, name=None):
         if self.weight_currency:
             return self.weight_currency.digits
