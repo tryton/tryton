@@ -231,8 +231,7 @@ class InventoryLine(ModelSQL, ModelView):
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
-            ],
-        on_change=['product'])
+            ])
     uom = fields.Function(fields.Many2One('product.uom', 'UOM'), 'get_uom')
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
@@ -288,6 +287,7 @@ class InventoryLine(ModelSQL, ModelView):
     def default_expected_quantity():
         return 0.
 
+    @fields.depends('product')
     def on_change_product(self):
         change = {}
         change['unit_digits'] = 2

@@ -153,23 +153,18 @@ class Move(Workflow, ModelSQL, ModelView):
     _order_name = 'product'
     product = fields.Many2One("product.product", "Product", required=True,
         select=True, states=STATES,
-        on_change=['product', 'currency', 'uom', 'company',
-            'from_location', 'to_location'],
         domain=[('type', '!=', 'service')],
         depends=DEPENDS)
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category',
-            on_change_with=['product']),
+        fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
         domain=[
             ('category', '=', Eval('product_uom_category')),
             ],
-        on_change=['product', 'currency', 'uom', 'company',
-            'from_location', 'to_location'],
         depends=['state', 'product_uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['uom']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     quantity = fields.Float("Quantity", required=True,
         digits=(16, Eval('unit_digits', 2)), states=STATES,
         depends=['state', 'unit_digits'])
@@ -224,8 +219,7 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': Not(Equal(Eval('state'), 'draft')),
             },
         depends=['unit_price_required', 'state'])
-    unit_price_required = fields.Function(fields.Boolean('Unit Price Required',
-        on_change_with=['from_location', 'to_location']),
+    unit_price_required = fields.Function(fields.Boolean('Unit Price Required'),
         'on_change_with_unit_price_required')
 
     @classmethod
@@ -376,11 +370,14 @@ class Move(Workflow, ModelSQL, ModelView):
     def default_unit_digits():
         return 2
 
+    @fields.depends('uom')
     def on_change_with_unit_digits(self, name=None):
         if self.uom:
             return self.uom.digits
         return 2
 
+    @fields.depends('product', 'currency', 'uom', 'company', 'from_location',
+        'to_location')
     def on_change_product(self):
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -409,10 +406,13 @@ class Move(Workflow, ModelSQL, ModelView):
                 res['unit_price'] = unit_price
         return res
 
+    @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
 
+    @fields.depends('product', 'currency', 'uom', 'company', 'from_location',
+        'to_location')
     def on_change_uom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -433,6 +433,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 res['unit_price'] = unit_price
         return res
 
+    @fields.depends('from_location', 'to_location')
     def on_change_with_unit_price_required(self, name=None):
         if (self.from_location
                 and self.from_location.type in ('supplier', 'production')):

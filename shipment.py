@@ -61,10 +61,10 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         states={
             'readonly': And(Or(Not(Equal(Eval('state'), 'draft')),
                     Bool(Eval('incoming_moves', [0]))), Bool(Eval('supplier'))),
-            }, on_change=['supplier'], required=True,
+            }, required=True,
         depends=['state', 'supplier'])
     supplier_location = fields.Function(fields.Many2One('stock.location',
-            'Supplier Location', on_change_with=['supplier']),
+            'Supplier Location'),
         'on_change_with_supplier_location')
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
@@ -78,10 +78,10 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 Bool(Eval('incoming_moves', [0]))),
             }, depends=['state'])
     warehouse_input = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Input', on_change_with=['warehouse']),
+            'Warehouse Input'),
         'on_change_with_warehouse_input')
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Storage', on_change_with=['warehouse']),
+            'Warehouse Storage'),
         'on_change_with_warehouse_storage')
     incoming_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Incoming Moves',
@@ -259,12 +259,14 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('supplier')
     def on_change_supplier(self):
         address = None
         if self.supplier:
             address = self.supplier.address_get()
         return {'contact_address': address.id if address else None}
 
+    @fields.depends('supplier')
     def on_change_with_supplier_location(self, name=None):
         if self.supplier:
             return self.supplier.supplier_location.id
@@ -275,6 +277,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         if warehouse:
             return cls(warehouse=warehouse).on_change_with_warehouse_input()
 
+    @fields.depends('warehouse')
     def on_change_with_warehouse_input(self, name=None):
         if self.warehouse:
             return self.warehouse.input_location.id
@@ -285,6 +288,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         if warehouse:
             return cls(warehouse=warehouse).on_change_with_warehouse_storage()
 
+    @fields.depends('warehouse')
     def on_change_with_warehouse_storage(self, name=None):
         if self.warehouse:
             return self.warehouse.storage_location.id
@@ -774,11 +778,10 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('outgoing_moves', [0]))),
-            }, on_change=['customer'],
+            },
         depends=['state'])
     customer_location = fields.Function(fields.Many2One('stock.location',
-            'Customer Location', on_change_with=['customer']),
-        'on_change_with_customer_location')
+            'Customer Location'), 'on_change_with_customer_location')
     delivery_address = fields.Many2One('party.address',
         'Delivery Address', required=True,
         states={
@@ -796,11 +799,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             }, domain=[('type', '=', 'warehouse')],
         depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Storage', on_change_with=['warehouse']),
-        'on_change_with_warehouse_storage')
+            'Warehouse Storage'), 'on_change_with_warehouse_storage')
     warehouse_output = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Output', on_change_with=['warehouse']),
-        'on_change_with_warehouse_output')
+            'Warehouse Output'), 'on_change_with_warehouse_output')
     outgoing_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Outgoing Moves',
             domain=[
@@ -966,12 +967,14 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('customer')
     def on_change_customer(self):
         address = None
         if self.customer:
             address = self.customer.address_get(type='delivery')
         return {'delivery_address': address.id if address else None}
 
+    @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
         if self.customer:
             return self.customer.customer_location.id
@@ -982,6 +985,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         if warehouse:
             return cls(warehouse=warehouse).on_change_with_warehouse_storage()
 
+    @fields.depends('warehouse')
     def on_change_with_warehouse_storage(self, name=None):
         if self.warehouse:
             return self.warehouse.storage_location.id
@@ -992,6 +996,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         if warehouse:
             return cls(warehouse=warehouse).on_change_with_warehouse_output()
 
+    @fields.depends('warehouse')
     def on_change_with_warehouse_output(self, name=None):
         if self.warehouse:
             return self.warehouse.output_location.id
@@ -1306,11 +1311,10 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('incoming_moves', [0]))),
-            }, on_change=['customer'],
+            },
         depends=['state'])
     customer_location = fields.Function(fields.Many2One('stock.location',
-            'Customer Location', on_change_with=['customer']),
-        'on_change_with_customer_location')
+            'Customer Location'), 'on_change_with_customer_location')
     delivery_address = fields.Many2One('party.address',
         'Delivery Address', required=True,
         states={
@@ -1328,11 +1332,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             }, domain=[('type', '=', 'warehouse')],
         depends=['state'])
     warehouse_storage = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Storage', on_change_with=['warehouse']),
-        'on_change_with_warehouse_storage')
+            'Warehouse Storage'), 'on_change_with_warehouse_storage')
     warehouse_input = fields.Function(fields.Many2One('stock.location',
-            'Warehouse Input', on_change_with=['warehouse']),
-        'on_change_with_warehouse_input')
+            'Warehouse Input'), 'on_change_with_warehouse_input')
     incoming_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Incoming Moves',
             domain=[
@@ -1468,6 +1470,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('customer')
     def on_change_customer(self):
         address = None
         if self.customer:
@@ -1476,6 +1479,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             'delivery_address': address.id if address else None,
             }
 
+    @fields.depends('customer')
     def on_change_with_customer_location(self, name=None):
         if self.customer:
             return self.customer.customer_location.id
@@ -1486,6 +1490,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         if warehouse:
             return cls(warehouse=warehouse).on_change_with_warehouse_storage()
 
+    @fields.depends('warehouse')
     def on_change_with_warehouse_storage(self, name=None):
         if self.warehouse:
             return self.warehouse.storage_location.id
@@ -1496,6 +1501,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         if warehouse:
             return cls(warehouse=warehouse).on_change_with_warehouse_input()
 
+    @fields.depends('warehouse')
     def on_change_with_warehouse_input(self, name=None):
         if self.warehouse:
             return self.warehouse.input_location.id
