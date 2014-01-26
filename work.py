@@ -37,10 +37,6 @@ class Work(ModelSQL, ModelView):
         fields.Boolean('Available on timesheets'),
         'on_change_with_timesheet_available')
     hours = fields.Function(fields.Float('Timesheet Hours', digits=(16, 2),
-            states={
-                'invisible': ~Eval('timesheet_available'),
-                },
-            depends=['timesheet_available'],
             help="Total time spent on this work"), 'on_change_with_hours')
     effort = fields.Float("Effort",
         states={
