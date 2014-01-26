@@ -16,7 +16,7 @@ class ShipmentIn:
     __name__ = 'stock.shipment.in'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state') != 'draft',
-            }, on_change=['carrier', 'incoming_moves'],
+            },
         depends=['state'])
     cost_currency = fields.Many2One('currency.currency', 'Cost Currency',
         states={
@@ -24,25 +24,14 @@ class ShipmentIn:
             'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
             }, depends=['cost', 'state'])
     cost_currency_digits = fields.Function(fields.Integer(
-            'Cost Currency Digits', on_change_with=['currency']),
+            'Cost Currency Digits'),
         'on_change_with_cost_currency_digits')
     cost = fields.Numeric('Cost', digits=(16, Eval('cost_currency_digits', 2)),
         states={
             'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
             }, depends=['carrier', 'state', 'cost_currency_digits'])
 
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentIn, cls).__setup__()
-        if not cls.incoming_moves.on_change:
-            cls.incoming_moves.on_change = []
-        for fname in ('carrier', 'incoming_moves'):
-            if fname not in cls.incoming_moves.on_change:
-                cls.incoming_moves.on_change.append(fname)
-        for fname in cls.incoming_moves.on_change:
-            if fname not in cls.carrier.on_change:
-                cls.carrier.on_change.append(fname)
-
+    @fields.depends('currency')
     def on_change_with_cost_currency_digits(self, name=None):
         if self.cost_currency:
             return self.cost_currency.digits
@@ -51,9 +40,11 @@ class ShipmentIn:
     def _get_carrier_context(self):
         return {}
 
+    @fields.depends(methods=['incoming_moves'])
     def on_change_carrier(self):
         return self.on_change_incoming_moves()
 
+    @fields.depends('carrier', 'incoming_moves')
     def on_change_incoming_moves(self):
         Currency = Pool().get('currency.currency')
 
