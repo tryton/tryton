@@ -47,8 +47,7 @@ class Template(ModelSQL, ModelView):
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
         states=STATES, depends=DEPENDS)
     default_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Default UOM Category',
-            on_change_with=['default_uom']),
+        fields.Many2One('product.uom.category', 'Default UOM Category'),
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
     active = fields.Boolean('Active', select=True)
@@ -104,6 +103,7 @@ class Template(ModelSQL, ModelView):
                 'write_uid', 'write_date'))
         return [Product.default_get(fields_names)]
 
+    @fields.depends('default_uom')
     def on_change_with_default_uom_category(self, name=None):
         if self.default_uom:
             return self.default_uom.category.id
@@ -134,8 +134,7 @@ class Product(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     default_uom = fields.Function(fields.Many2One('product.uom',
             'Default UOM'), 'get_default_uom', searcher='search_default_uom')
-    type = fields.Function(fields.Selection(TYPES, 'Type',
-            on_change_with=['template']),
+    type = fields.Function(fields.Selection(TYPES, 'Type'),
         'on_change_with_type', searcher='search_type')
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=(16, 4)), 'get_price_uom')
@@ -190,6 +189,7 @@ class Product(ModelSQL, ModelView):
     def search_default_uom(cls, name, clause):
         return [('template.default_uom',) + tuple(clause[1:])]
 
+    @fields.depends('template')
     def on_change_with_type(self, name=None):
         if self.template:
             return self.template.type

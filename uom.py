@@ -37,11 +37,11 @@ class Uom(ModelSQL, ModelView):
     category = fields.Many2One('product.uom.category', 'UOM Category',
         required=True, ondelete='RESTRICT', states=STATES, depends=DEPENDS)
     rate = fields.Float('Rate', digits=(12, 12), required=True,
-        on_change=['rate'], states=STATES, depends=DEPENDS,
+        states=STATES, depends=DEPENDS,
         help=('The coefficient for the formula:\n'
             '1 (base unit) = coef (this unit)'))
     factor = fields.Float('Factor', digits=(12, 12), states=STATES,
-        on_change=['factor'], required=True, depends=DEPENDS,
+        required=True, depends=DEPENDS,
         help=('The coefficient for the formula:\n'
             'coef (base unit) = 1 (this unit)'))
     rounding = fields.Float('Rounding Precision', digits=(12, 12),
@@ -109,6 +109,7 @@ class Uom(ModelSQL, ModelView):
     def default_digits():
         return 2
 
+    @fields.depends('factor')
     def on_change_factor(self):
         if (self.factor or 0.0) == 0.0:
             return {'rate': 0.0}
@@ -116,6 +117,7 @@ class Uom(ModelSQL, ModelView):
             'rate': round(1.0 / self.factor, self.__class__.rate.digits[1]),
             }
 
+    @fields.depends('rate')
     def on_change_rate(self):
         if (self.rate or 0.0) == 0.0:
             return {'factor': 0.0}
