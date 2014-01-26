@@ -31,7 +31,6 @@ class Template:
             'required': Eval('purchasable', False),
             },
         domain=[('category', '=', Eval('default_uom_category'))],
-        on_change_with=['default_uom', 'purchase_uom', 'purchasable'],
         depends=['active', 'purchasable', 'default_uom_category'])
 
     @classmethod
@@ -52,6 +51,7 @@ class Template:
         if 'purchasable' not in cls.account_expense.depends:
             cls.account_expense.depends.append('purchasable')
 
+    @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_with_purchase_uom(self):
         if self.default_uom:
             if self.purchase_uom:
@@ -148,7 +148,7 @@ class ProductSupplier(ModelSQL, ModelView):
     product = fields.Many2One('product.template', 'Product', required=True,
             ondelete='CASCADE', select=True)
     party = fields.Many2One('party.party', 'Supplier', required=True,
-            ondelete='CASCADE', select=True, on_change=['party'])
+        ondelete='CASCADE', select=True)
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
     sequence = fields.Integer('Sequence')
@@ -222,6 +222,7 @@ class ProductSupplier(ModelSQL, ModelView):
             company = Company(Transaction().context['company'])
             return company.currency.id
 
+    @fields.depends('party')
     def on_change_party(self):
         cursor = Transaction().cursor
         changes = {

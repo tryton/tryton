@@ -165,8 +165,8 @@ class Move:
             'Purchase Currency', states={
                 'invisible': ~Eval('purchase_visible', False),
                 }, depends=['purchase_visible']), 'get_purchase_fields')
-    purchase_visible = fields.Function(fields.Boolean('Purchase Visible',
-        on_change_with=['from_location']), 'on_change_with_purchase_visible')
+    purchase_visible = fields.Function(fields.Boolean('Purchase Visible'),
+        'on_change_with_purchase_visible')
     supplier = fields.Function(fields.Many2One('party.party', 'Supplier'),
         'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
@@ -232,6 +232,7 @@ class Move:
             elif name[9:] == 'unit_digits':
                 return 2
 
+    @fields.depends('from_location')
     def on_change_with_purchase_visible(self, name=None):
         if self.from_location:
             if self.from_location.type == 'supplier':

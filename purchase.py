@@ -62,11 +62,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
-    party = fields.Many2One('party.party', 'Party',
-            required=True, states=_STATES, on_change=['party', 'payment_term'],
-            select=True, depends=_DEPENDS)
-    party_lang = fields.Function(fields.Char('Party Language',
-            on_change_with=['party']), 'on_change_with_party_lang')
+    party = fields.Many2One('party.party', 'Party', required=True,
+        states=_STATES, select=True, depends=_DEPENDS)
+    party_lang = fields.Function(fields.Char('Party Language'),
+        'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[('party', '=', Eval('party'))], states=_STATES,
         depends=['state', 'party'])
@@ -79,11 +78,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 | (Eval('lines', [0]) & Eval('currency'))),
             },
         depends=['state'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['currency']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
-        states=_STATES, on_change=['lines', 'currency', 'party'],
-        depends=_DEPENDS)
+        states=_STATES, depends=_DEPENDS)
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
@@ -299,6 +297,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
     def default_shipment_state():
         return 'none'
 
+    @fields.depends('party', 'payment_term')
     def on_change_party(self):
         pool = Pool()
         PaymentTerm = pool.get('account.invoice.payment_term')
@@ -347,11 +346,13 @@ class Purchase(Workflow, ModelSQL, ModelView):
                     changes['payment_term']).rec_name
         return changes
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits
         return 2
 
+    @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
         Config = Pool().get('ir.configuration')
         if self.party:
@@ -365,6 +366,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
             context['language'] = self.party.lang.code
         return context
 
+    @fields.depends('lines', 'currency', 'party')
     def on_change_lines(self):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -832,9 +834,7 @@ class PurchaseLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
             'readonly': ~Eval('_parent_purchase'),
-            }, on_change=['product', 'quantity', 'unit',
-            '_parent_purchase.currency', '_parent_purchase.party',
-            '_parent_purchase.purchase_date'],
+            },
         depends=['unit_digits', 'type'])
     unit = fields.Many2One('product.uom', 'Unit',
         states={
@@ -847,19 +847,15 @@ class PurchaseLine(ModelSQL, ModelView):
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
-        on_change=['product', 'quantity', 'unit', '_parent_purchase.currency',
-            '_parent_purchase.party'],
         depends=['product', 'type', 'product_uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-            on_change_with=['unit']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         domain=[('purchasable', '=', True)],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': ~Eval('_parent_purchase'),
-            }, on_change=['product', 'unit', 'quantity', 'description',
-            '_parent_purchase.party', '_parent_purchase.currency',
-            '_parent_purchase.purchase_date'],
+            },
         context={
             'locations': If(Bool(Eval('_parent_purchase', {}).get(
                         'warehouse')),
@@ -870,8 +866,7 @@ class PurchaseLine(ModelSQL, ModelView):
             'stock_skip_warehouse': True,
             }, depends=['type'])
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category',
-            on_change_with=['product']),
+        fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     unit_price = fields.Numeric('Unit Price', digits=(16, 4),
         states={
@@ -884,8 +879,7 @@ class PurchaseLine(ModelSQL, ModelView):
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 'readonly': ~Eval('_parent_purchase'),
-                }, on_change_with=['type', 'quantity', 'unit_price', 'unit',
-                '_parent_purchase.currency'],
+                },
             depends=['type']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
@@ -913,8 +907,6 @@ class PurchaseLine(ModelSQL, ModelView):
     to_location = fields.Function(fields.Many2One('stock.location',
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
-            on_change_with=['product', 'quantity',
-                '_parent_purchase.purchase_date', '_parent_purchase.party'],
             states={
                 'invisible': ((Eval('type') != 'line')
                     | (If(Bool(Eval('quantity')), Eval('quantity', 0), 0)
@@ -993,6 +985,7 @@ class PurchaseLine(ModelSQL, ModelView):
                 return True
         return False
 
+    @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
@@ -1019,6 +1012,9 @@ class PurchaseLine(ModelSQL, ModelView):
             self.product.purchase_uom.id
         return context
 
+    @fields.depends('product', 'unit', 'quantity', 'description',
+        '_parent_purchase.party', '_parent_purchase.currency',
+        '_parent_purchase.purchase_date')
     def on_change_product(self):
         Product = Pool().get('product.product')
 
@@ -1069,10 +1065,14 @@ class PurchaseLine(ModelSQL, ModelView):
         res['amount'] = self.on_change_with_amount()
         return res
 
+    @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
 
+    @fields.depends('product', 'quantity', 'unit',
+        '_parent_purchase.currency', '_parent_purchase.party',
+        '_parent_purchase.purchase_date')
     def on_change_quantity(self):
         Product = Pool().get('product.product')
 
@@ -1088,9 +1088,13 @@ class PurchaseLine(ModelSQL, ModelView):
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
         return res
 
+    @fields.depends('product', 'quantity', 'unit',
+        '_parent_purchase.currency', '_parent_purchase.party')
     def on_change_unit(self):
         return self.on_change_quantity()
 
+    @fields.depends('type', 'quantity', 'unit_price', 'unit',
+        '_parent_purchase.currency')
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = self.purchase.currency if self.purchase else None
@@ -1131,6 +1135,8 @@ class PurchaseLine(ModelSQL, ModelView):
         else:
             return self.purchase.party.supplier_location.id
 
+    @fields.depends('product', 'quantity',
+        '_parent_purchase.purchase_date', '_parent_purchase.party')
     def on_change_with_delivery_date(self, name=None):
         if (self.product
                 and self.quantity > 0
