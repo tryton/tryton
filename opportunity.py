@@ -45,7 +45,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     reference = fields.Char('Reference', readonly=True, required=True,
         select=True)
     party = fields.Many2One('party.party', 'Party', select=True,
-        on_change=['party'], states={
+        states={
             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
             }, depends=['state'])
@@ -57,7 +57,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         select=True, states=_STATES_STOP, domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
-            ], on_change=['company'], depends=_DEPENDS_STOP)
+            ], depends=_DEPENDS_STOP)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
@@ -231,6 +231,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     def get_currency_digits(self, name):
         return self.company.currency.digits
 
+    @fields.depends('company')
     def on_change_company(self):
         res = {}
         if self.company:
@@ -239,6 +240,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             res['currency_digits'] = self.company.currency.digits
         return res
 
+    @fields.depends('party')
     def on_change_party(self):
         PaymentTerm = Pool().get('account.invoice.payment_term')
 
@@ -372,12 +374,12 @@ class SaleOpportunityLine(ModelSQL, ModelView):
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
     sequence = fields.Integer('Sequence')
     product = fields.Many2One('product.product', 'Product', required=True,
-            domain=[('salable', '=', True)], on_change=['product', 'unit'])
+        domain=[('salable', '=', True)])
     quantity = fields.Float('Quantity', required=True,
             digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit', required=True)
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     sale_line = fields.Many2One('sale.line', 'Sale Line', readonly=True,
         states={
             'invisible': (Eval('_parent_opportunity', {}).get('state')
@@ -405,11 +407,13 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         table, _ = tables[None]
         return [table.sequence == None, table.sequence]
 
+    @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
         return 2
 
+    @fields.depends('product', 'unit')
     def on_change_product(self):
         if not self.product:
             return {}
