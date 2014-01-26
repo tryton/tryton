@@ -44,7 +44,6 @@ class Asset(Workflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        on_change=['supplier_invoice_line', 'unit'],
         depends=['product', 'state'])
     customer_invoice_line = fields.Function(fields.Many2One(
             'account.invoice.line', 'Customer Invoice Line'),
@@ -62,8 +61,8 @@ class Asset(Workflow, ModelSQL, ModelView):
             },
         depends=['state'],
         required=True)
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['company']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states={
@@ -73,14 +72,13 @@ class Asset(Workflow, ModelSQL, ModelView):
             },
         depends=['state', 'unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit',
-        on_change_with=['product'],
         states={
             'readonly': (Bool(Eval('product'))
                 | (Eval('state') != 'draft')),
             },
         depends=['state'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-            on_change_with=['unit']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     value = fields.Numeric('Value',
         digits=(16, Eval('currency_digits', 2)),
         states={
@@ -108,7 +106,6 @@ class Asset(Workflow, ModelSQL, ModelView):
         required=True,
         depends=['state'])
     end_date = fields.Date('End Date',
-        on_change_with=['end_date', 'product', 'start_date'],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
@@ -210,11 +207,13 @@ class Asset(Workflow, ModelSQL, ModelView):
             return journals[0].id
         return None
 
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
         if self.company:
             return self.company.currency.digits
         return 2
 
+    @fields.depends('supplier_invoice_line', 'unit')
     def on_change_supplier_invoice_line(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
@@ -253,16 +252,19 @@ class Asset(Workflow, ModelSQL, ModelView):
 
         return new_values
 
+    @fields.depends('product')
     def on_change_with_unit(self):
         if not self.product:
             return None
         return self.product.default_uom.id
 
+    @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if not self.unit:
             return 2
         return self.unit.digits
 
+    @fields.depends('end_date', 'product', 'start_date')
     def on_change_with_end_date(self):
         if all(getattr(self, k, None) for k in ('product', 'start_date')):
             if self.product.depreciation_duration:

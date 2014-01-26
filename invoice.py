@@ -19,10 +19,9 @@ class InvoiceLine:
                 | (Eval('_parent_invoice', {}).get('type',
                         Eval('invoice_type')) != 'out_invoice')),
             },
-        on_change=['asset', 'unit'],
         depends=['product', 'is_assets_depreciable'])
     is_assets_depreciable = fields.Function(fields.Boolean(
-            'Is Assets depreciable', on_change_with=['product']),
+            'Is Assets depreciable'),
         'on_change_with_is_assets_depreciable')
 
     @classmethod
@@ -33,6 +32,7 @@ class InvoiceLine:
                 'Asset can be used only once on invoice line!'),
             ]
 
+    @fields.depends('product', 'invoice')
     def on_change_product(self):
         new_values = super(InvoiceLine, self).on_change_product()
         if (not self.product
@@ -45,6 +45,7 @@ class InvoiceLine:
                 self.product.account_asset_used.rec_name
         return new_values
 
+    @fields.depends('asset', 'unit')
     def on_change_asset(self):
         Uom = Pool().get('product.uom')
 
@@ -64,6 +65,7 @@ class InvoiceLine:
                     }
         return {}
 
+    @fields.depends('product')
     def on_change_with_is_assets_depreciable(self, name=None):
         if self.product:
             return self.product.type == 'assets' and self.product.depreciable
