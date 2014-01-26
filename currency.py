@@ -18,8 +18,8 @@ class Currency(ModelSQL, ModelView):
     symbol = fields.Char('Symbol', size=10, required=True)
     code = fields.Char('Code', size=3, required=True)
     numeric_code = fields.Char('Numeric Code', size=3)
-    rate = fields.Function(fields.Numeric('Current rate', digits=(12, 6),
-        on_change_with=['rates']), 'get_rate')
+    rate = fields.Function(fields.Numeric('Current rate', digits=(12, 6)),
+        'get_rate')
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
     rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
     digits = fields.Integer('Display Digits', required=True)
@@ -145,6 +145,7 @@ class Currency(ModelSQL, ModelView):
             return [(field,) + tuple(clause[1:])]
         return [(cls._rec_name,) + tuple(clause[1:])]
 
+    @fields.depends('rates')
     def on_change_with_rate(self):
         now = datetime.date.today()
         closer = datetime.date.min
