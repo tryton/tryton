@@ -19,7 +19,7 @@ class Category:
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
-                ], on_change=['account_expense'],
+                ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')),
@@ -29,7 +29,7 @@ class Category:
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
-                ], on_change=['account_revenue'],
+                ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')),
@@ -95,6 +95,7 @@ class Category:
         else:
             return [x.id for x in getattr(self, name[:-5])]
 
+    @fields.depends('account_expense')
     def on_change_account_expense(self):
         supplier_taxes = []
         result = {
@@ -104,6 +105,7 @@ class Category:
             supplier_taxes.extend(tax.id for tax in self.account_expense.taxes)
         return result
 
+    @fields.depends('account_revenue')
     def on_change_account_revenue(self):
         customer_taxes = []
         result = {
@@ -166,7 +168,7 @@ class Template:
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
-                ], on_change=['account_category', 'account_expense'],
+                ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')),
@@ -177,7 +179,7 @@ class Template:
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
-                ], on_change=['account_category', 'account_revenue'],
+                ],
             states={
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')),
@@ -245,6 +247,7 @@ class Template:
         else:
             return [x.id for x in getattr(self, name[:-5])]
 
+    @fields.depends('account_category', 'account_expense')
     def on_change_account_expense(self):
         result = {}
         if not self.account_category:
@@ -257,6 +260,7 @@ class Template:
                     tax.id for tax in self.account_expense.taxes)
         return result
 
+    @fields.depends('account_category', 'account_revenue')
     def on_change_account_revenue(self):
         result = {}
         if not self.account_category:
