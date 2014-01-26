@@ -260,18 +260,16 @@ class ForecastLine(ModelSQL, ModelView):
         domain=[
             ('type', '=', 'goods'),
             ('consumable', '=', False),
-            ],
-        on_change=['product'])
+            ])
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category',
-            on_change_with=['product']),
+        fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     uom = fields.Many2One('product.uom', 'UOM', required=True,
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
-            ], on_change=['uom'], depends=['product', 'product_uom_category'])
+            ], depends=['product', 'product_uom_category'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
@@ -308,6 +306,7 @@ class ForecastLine(ModelSQL, ModelView):
     def default_minimal_quantity():
         return 1.0
 
+    @fields.depends('product')
     def on_change_product(self):
         res = {}
         res['unit_digits'] = 2
@@ -317,10 +316,12 @@ class ForecastLine(ModelSQL, ModelView):
             res['unit_digits'] = self.product.default_uom.digits
         return res
 
+    @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
 
+    @fields.depends('uom')
     def on_change_uom(self):
         res = {}
         res['unit_digits'] = 2
