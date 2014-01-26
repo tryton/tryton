@@ -23,17 +23,16 @@ class Statement(Workflow, ModelSQL, ModelView):
             ],
         depends=_DEPENDS)
     journal = fields.Many2One('account.statement.journal', 'Journal',
-        required=True,
+        required=True, select=True,
         domain=[
             ('company', '=', Eval('context', {}).get('company', -1)),
             ],
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        on_change=['journal', 'state', 'lines'], select=True,
         depends=['state'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-            on_change_with=['journal']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS,
         select=True)
     start_balance = fields.Numeric('Start Balance', required=True,
@@ -45,13 +44,12 @@ class Statement(Workflow, ModelSQL, ModelView):
     balance = fields.Function(
         fields.Numeric('Balance',
             digits=(16, Eval('currency_digits', 2)),
-            on_change_with=['start_balance', 'end_balance'],
             depends=['currency_digits']),
         'on_change_with_balance')
     lines = fields.One2Many('account.statement.line', 'statement',
         'Transactions', states={
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
-            }, on_change=['lines', 'journal'],
+            },
         depends=['state', 'journal'])
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -138,6 +136,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             return company.currency.digits
         return 2
 
+    @fields.depends('journal', 'state', 'lines')
     def on_change_journal(self):
         res = {}
         if not self.journal:
@@ -155,6 +154,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         res['start_balance'] = statement.end_balance
         return res
 
+    @fields.depends('journal')
     def on_change_with_currency_digits(self, name=None):
         if self.journal:
             return self.journal.currency.digits
@@ -188,10 +188,12 @@ class Statement(Workflow, ModelSQL, ModelView):
             end_balance += line.amount
         return end_balance
 
+    @fields.depends('start_balance', 'end_balance')
     def on_change_with_balance(self, name=None):
         return ((getattr(self, 'end_balance', 0) or 0)
             - (getattr(self, 'start_balance', 0) or 0))
 
+    @fields.depends('lines', 'journal')
     def on_change_lines(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
@@ -323,20 +325,16 @@ class Line(ModelSQL, ModelView):
             required=True, ondelete='CASCADE')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)),
-        on_change=['amount', 'party', 'account', 'invoice',
-            '_parent_statement.journal'])
-    party = fields.Many2One('party.party', 'Party',
-            on_change=['amount', 'party', 'invoice'])
+        digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)))
+    party = fields.Many2One('party.party', 'Party')
     account = fields.Many2One('account.account', 'Account', required=True,
-        on_change=['account', 'invoice'], domain=[
+        domain=[
             ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
             ('kind', '!=', 'view'),
             ])
     description = fields.Char('Description')
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
     invoice = fields.Many2One('account.invoice', 'Invoice',
-        on_change=['party', 'account', 'invoice'],
         domain=[
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
             If(Bool(Eval('party')), [('account', '=', Eval('account'))], []),
@@ -367,6 +365,7 @@ class Line(ModelSQL, ModelView):
     def default_amount():
         return Decimal(0)
 
+    @fields.depends('amount', 'party', 'invoice')
     def on_change_party(self):
         res = {}
 
@@ -387,6 +386,8 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = None
         return res
 
+    @fields.depends('amount', 'party', 'account', 'invoice',
+        '_parent_statement.journal')
     def on_change_amount(self):
         Currency = Pool().get('currency.currency')
         res = {}
@@ -416,6 +417,7 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = None
         return res
 
+    @fields.depends('account', 'invoice')
     def on_change_account(self):
         res = {}
 
@@ -427,6 +429,7 @@ class Line(ModelSQL, ModelView):
                 res['invoice'] = None
         return res
 
+    @fields.depends('party', 'account', 'invoice')
     def on_change_invoice(self):
         changes = {}
         if self.invoice:
