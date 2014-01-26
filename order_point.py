@@ -24,8 +24,7 @@ class OrderPoint(ModelSQL, ModelView):
             ('purchasable', 'in', If(Equal(Eval('type'), 'purchase'),
                     [True], [True, False])),
             ],
-        depends=['type'],
-        on_change=['product'])
+        depends=['type'])
     warehouse_location = fields.Many2One('stock.location',
         'Warehouse Location', select=True,
         domain=[('type', '=', 'warehouse')],
@@ -99,6 +98,7 @@ class OrderPoint(ModelSQL, ModelView):
     def default_type():
         return "purchase"
 
+    @fields.depends('product')
     def on_change_product(self):
         res = {
             'unit': None,
