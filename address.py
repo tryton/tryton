@@ -12,10 +12,11 @@ __metaclass__ = PoolMeta
 class Address:
     __name__ = 'party.address'
 
-    google_maps_url = fields.Function(fields.Char('Google Maps',
-            on_change_with=['street', 'streetbis', 'zip', 'city', 'country',
-                'subdivision']), 'on_change_with_google_maps_url')
+    google_maps_url = fields.Function(fields.Char('Google Maps'),
+        'on_change_with_google_maps_url')
 
+    @fields.depends('street', 'streetbis', 'zip', 'city', 'country',
+        'subdivision')
     def on_change_with_google_maps_url(self, name=None):
         lang = Transaction().language[:2]
         url = ''
