@@ -43,12 +43,9 @@ class SaleLine:
     @classmethod
     def __setup__(cls):
         super(SaleLine, cls).__setup__()
-        if '_parent_sale.price_list' not in cls.quantity.on_change:
-            cls.quantity.on_change.append('_parent_sale.price_list')
-        if '_parent_sale.price_list' not in cls.unit.on_change:
-            cls.unit.on_change.append('_parent_sale.price_list')
-        if '_parent_sale.price_list' not in cls.product.on_change:
-            cls.product.on_change.append('_parent_sale.price_list')
+        cls.quantity.on_change.add('_parent_sale.price_list')
+        cls.unit.on_change.add('_parent_sale.price_list')
+        cls.product.on_change.add('_parent_sale.price_list')
 
     def _get_context_sale_price(self):
         context = super(SaleLine, self)._get_context_sale_price()
