@@ -32,8 +32,7 @@ class Purchase:
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
         states={
             'invisible': ~Eval('customer'),
-            },
-        on_change=['customer', 'delivery_address'])
+            })
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         domain=[('party', '=', Eval('customer'))],
         states={
@@ -57,6 +56,7 @@ class Purchase:
                     'defined for quotation of purchase "%s".'),
                 })
 
+    @fields.depends('customer', 'delivery_address')
     def on_change_customer(self):
         result = {
             'delivery_address': None,

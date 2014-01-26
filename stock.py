@@ -42,11 +42,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
-    supplier = fields.Many2One('party.party', 'Supplier',
+    supplier = fields.Many2One('party.party', 'Supplier', required=True,
         states={
             'readonly': (((Eval('state') != 'draft') | Eval('moves', [0]))
                 & Eval('supplier')),
-            }, on_change=['supplier'], required=True,
+            },
         depends=['state', 'supplier'])
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
@@ -58,7 +58,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         states={
             'readonly': (((Eval('state') != 'draft') | Eval('moves', [0]))
                 & Eval('customer')),
-            }, on_change=['customer'],
+            },
         depends=['state'])
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         required=True,
@@ -135,6 +135,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('supplier')
     def on_change_supplier(self):
         if self.supplier:
             address = self.supplier.address_get()
@@ -142,6 +143,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 return {'contact_address': address.id}
         return {'contact_address': None}
 
+    @fields.depends('customer')
     def on_change_customer(self):
         if self.customer:
             address = self.customer.address_get(type='delivery')
