@@ -47,7 +47,7 @@ class Move(ModelSQL, ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
-        depends=_MOVE_DEPENDS, on_change_with=['period', 'journal', 'date'])
+        depends=_MOVE_DEPENDS)
     post_date = fields.Date('Post Date', readonly=True)
     description = fields.Char('Description', states=_MOVE_STATES,
         depends=_MOVE_DEPENDS)
@@ -139,6 +139,7 @@ class Move(ModelSQL, ModelView):
             return period.start_date
         return Date.today()
 
+    @fields.depends('period', 'journal', 'date')
     def on_change_with_date(self):
         Line = Pool().get('account.move.line')
         date = self.date
@@ -494,19 +495,13 @@ class Line(ModelSQL, ModelView):
     __name__ = 'account.move.line'
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
         required=True,
-        on_change=['account', 'debit', 'credit', 'tax_lines', 'journal',
-            'move'],
         depends=['currency_digits', 'credit', 'tax_lines', 'journal'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
         required=True,
-        on_change=['account', 'debit', 'credit', 'tax_lines', 'journal',
-            'move'],
         depends=['currency_digits', 'debit', 'tax_lines', 'journal'])
     account = fields.Many2One('account.account', 'Account', required=True,
             domain=[('kind', '!=', 'view')],
-            select=True,
-            on_change=['account', 'debit', 'credit', 'tax_lines',
-                'journal', 'move'])
+            select=True)
     move = fields.Many2One('account.move', 'Move', select=True, required=True,
         states={
             'required': False,
@@ -532,10 +527,7 @@ class Line(ModelSQL, ModelView):
             depends=['second_currency_digits'])
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
             help='The second currency')
-    party = fields.Many2One('party.party', 'Party',
-            on_change=['move', 'party', 'account', 'debit', 'credit',
-                'journal'], select=True, depends=['debit', 'credit', 'account',
-                    'journal'])
+    party = fields.Many2One('party.party', 'Party', select=True)
     maturity_date = fields.Date('Maturity Date',
         help='This field is used for payable and receivable lines. \n'
         'You can put the limit date for the payment.')
@@ -840,6 +832,8 @@ class Line(ModelSQL, ModelView):
         Move = Pool().get('account.move')
         return Move.get_origin()
 
+    @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
+        'move')
     def on_change_debit(self):
         changes = {}
         Journal = Pool().get('account.journal')
@@ -853,6 +847,8 @@ class Line(ModelSQL, ModelView):
             changes['credit'] = Decimal('0.0')
         return changes
 
+    @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
+        'move')
     def on_change_credit(self):
         changes = {}
         Journal = Pool().get('account.journal')
@@ -866,6 +862,8 @@ class Line(ModelSQL, ModelView):
             changes['debit'] = Decimal('0.0')
         return changes
 
+    @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
+        'move')
     def on_change_account(self):
         Journal = Pool().get('account.journal')
 
@@ -936,6 +934,7 @@ class Line(ModelSQL, ModelView):
                     res.setdefault('add', []).append(value)
         return res
 
+    @fields.depends('move', 'party', 'account', 'debit', 'credit', 'journal')
     def on_change_party(self):
         Journal = Pool().get('account.journal')
         cursor = Transaction().cursor

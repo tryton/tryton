@@ -1032,7 +1032,7 @@ class PrintGeneralLedgerStart(ModelView):
     'Print General Ledger'
     __name__ = 'account.print_general_ledger.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, on_change=['fiscalyear'])
+        required=True)
     start_period = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -1067,6 +1067,7 @@ class PrintGeneralLedgerStart(ModelView):
     def default_empty_account():
         return False
 
+    @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
         return {
             'start_period': None,
@@ -1244,8 +1245,7 @@ class PrintTrialBalanceStart(ModelView):
     'Print Trial Balance'
     __name__ = 'account.print_trial_balance.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, on_change=['fiscalyear'],
-            depends=['start_period', 'end_period'])
+        required=True)
     start_period = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -1281,6 +1281,7 @@ class PrintTrialBalanceStart(ModelView):
     def default_empty_account():
         return False
 
+    @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
         return {
             'start_period': None,
@@ -1488,8 +1489,7 @@ class OpenIncomeStatementStart(ModelView):
     'Open Income Statement'
     __name__ = 'account.open_income_statement.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            required=True, on_change=['fiscalyear'],
-            depends=['start_period', 'end_period'])
+        required=True)
     start_period = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -1519,11 +1519,12 @@ class OpenIncomeStatementStart(ModelView):
     def default_posted():
         return False
 
+    @fields.depends('fiscalyear')
     def on_change_fiscalyear(self):
         return {
             'start_period': None,
             'end_period': None,
-        }
+            }
 
 
 class OpenIncomeStatement(Wizard):

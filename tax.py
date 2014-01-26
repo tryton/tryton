@@ -149,8 +149,8 @@ class TaxCode(ModelSQL, ModelView):
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
             domain=[('company', '=', Eval('company', 0))], depends=['company'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['company']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     sum = fields.Function(fields.Numeric('Sum',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_sum')
@@ -175,6 +175,7 @@ class TaxCode(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
         if self.company:
             return self.company.currency.digits
@@ -570,8 +571,8 @@ class Tax(ModelSQL, ModelView):
             }, depends=['parent'])
     active = fields.Boolean('Active')
     sequence = fields.Integer('Sequence', help='Use to order the taxes')
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['company']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         states={
             'required': Eval('type') == 'fixed',
@@ -725,6 +726,7 @@ class Tax(ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
         if self.company:
             return self.company.currency.digits
@@ -884,22 +886,24 @@ class TaxLine(ModelSQL, ModelView):
     'Tax Line'
     __name__ = 'account.tax.line'
     _rec_name = 'amount'
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['move_line']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
     code = fields.Many2One('account.tax.code', 'Code', select=True,
         required=True)
     tax = fields.Many2One('account.tax', 'Tax', select=True,
-        ondelete='RESTRICT', on_change=['tax'])
+        ondelete='RESTRICT')
     move_line = fields.Many2One('account.move.line', 'Move Line',
             required=True, select=True, ondelete='CASCADE')
 
+    @fields.depends('move_line')
     def on_change_with_currency_digits(self, name=None):
         if self.move_line:
             return self.move_line.currency_digits
         return 2
 
+    @fields.depends('tax')
     def on_change_tax(self):
         return {
             'code': None,
