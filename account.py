@@ -1385,17 +1385,17 @@ class TrialBalance(Report):
                 posted=data['posted']):
             end_accounts = Account.browse(accounts)
 
-        to_remove = []
+        to_remove = set()
         if not data['empty_account']:
             for account in in_accounts:
                 if account.debit == Decimal('0.0') \
                         and account.credit == Decimal('0.0'):
-                    to_remove.append(account.id)
+                    to_remove.add(account)
 
         accounts = []
         for start_account, in_account, end_account in izip(
                 start_accounts, in_accounts, end_accounts):
-            if in_account.id in to_remove:
+            if in_account in to_remove:
                 continue
             accounts.append({
                     'code': start_account.code,
