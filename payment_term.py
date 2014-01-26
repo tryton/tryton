@@ -99,18 +99,17 @@ class PaymentTermLine(ModelSQL, ModelView):
             ('percent', 'Percentage on Remainder'),
             ('percent_on_total', 'Percentage on Total'),
             ('remainder', 'Remainder'),
-            ], 'Type', required=True,
-            on_change=['type'])
+            ], 'Type', required=True)
     percentage = fields.Numeric('Percentage', digits=(16, 8),
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
-            }, on_change=['percentage'], depends=['type'])
+            }, depends=['type'])
     divisor = fields.Numeric('Divisor', digits=(16, 8),
         states={
             'invisible': ~Eval('type').in_(['percent', 'percent_on_total']),
             'required': Eval('type').in_(['percent', 'percent_on_total']),
-            }, on_change=['divisor'], depends=['type'])
+            }, depends=['type'])
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         states={
             'invisible': Eval('type') != 'fixed',
@@ -121,8 +120,8 @@ class PaymentTermLine(ModelSQL, ModelView):
             'invisible': Eval('type') != 'fixed',
             'required': Eval('type') == 'fixed',
             }, depends=['type'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     day = fields.Integer('Day of Month')
     month = fields.Selection([
             (None, ''),
@@ -225,6 +224,7 @@ class PaymentTermLine(ModelSQL, ModelView):
     def default_days():
         return 0
 
+    @fields.depends('type')
     def on_change_type(self):
         res = {}
         if self.type != 'fixed':
@@ -235,6 +235,7 @@ class PaymentTermLine(ModelSQL, ModelView):
             res['divisor'] = Decimal('0.0')
         return res
 
+    @fields.depends('percentage')
     def on_change_percentage(self):
         if not self.percentage:
             return {'divisor': 0.0}
@@ -243,6 +244,7 @@ class PaymentTermLine(ModelSQL, ModelView):
                 self.__class__.divisor.digits[1]),
             }
 
+    @fields.depends('divisor')
     def on_change_divisor(self):
         if not self.divisor:
             return {'percentage': 0.0}
@@ -251,6 +253,7 @@ class PaymentTermLine(ModelSQL, ModelView):
                 self.__class__.percentage.digits[1]),
             }
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits

@@ -65,8 +65,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 Eval('context', {}).get('company', -1)),
             ],
         depends=_DEPENDS)
-    type = fields.Selection(_TYPE, 'Type', select=True, on_change=['type',
-            'party', 'company'],
+    type = fields.Selection(_TYPE, 'Type', select=True,
         required=True, states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('context', {}).get('type')
@@ -97,10 +96,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
     accounting_date = fields.Date('Accounting Date', states=_STATES,
         depends=_DEPENDS)
     party = fields.Many2One('party.party', 'Party',
-        required=True, states=_STATES, depends=_DEPENDS,
-        on_change=['party', 'payment_term', 'type', 'company'])
-    party_lang = fields.Function(fields.Char('Party Language',
-        on_change_with=['party']), 'on_change_with_party_lang')
+        required=True, states=_STATES, depends=_DEPENDS)
+    party_lang = fields.Function(fields.Char('Party Language'),
+        'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         required=True, states=_STATES, depends=['state', 'party'],
         domain=[('party', '=', Eval('party'))])
@@ -109,10 +107,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('currency'))),
             }, depends=['state'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'on_change_with_currency_digits')
-    currency_date = fields.Function(fields.Date('Currency Date',
-        on_change_with=['invoice_date']), 'on_change_with_currency_date',)
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
+    currency_date = fields.Function(fields.Date('Currency Date'),
+        'on_change_with_currency_date')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         states=_STATES, depends=_DEPENDS)
     move = fields.Many2One('account.move', 'Move', readonly=True)
@@ -131,12 +129,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
-        states=_STATES, on_change=[
-            'lines', 'taxes', 'currency', 'party', 'type'
-        ], depends=['state', 'currency_date'])
+        states=_STATES, depends=['state', 'currency_date'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
-        states=_STATES, depends=_DEPENDS,
-        on_change=['lines', 'taxes', 'currency', 'party', 'type'])
+        states=_STATES, depends=_DEPENDS)
     comment = fields.Text('Comment', states=_STATES, depends=_DEPENDS)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
@@ -369,6 +364,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             result['payment_term.rec_name'] = payment_term.rec_name
         return result
 
+    @fields.depends('type', 'party', 'company')
     def on_change_type(self):
         Journal = Pool().get('account.journal')
         res = {}
@@ -383,6 +379,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         res.update(self.__get_account_payment_term())
         return res
 
+    @fields.depends('party', 'payment_term', 'type', 'company')
     def on_change_party(self):
         res = {
             'invoice_address': None,
@@ -395,15 +392,18 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res['invoice_address.rec_name'] = invoice_address.rec_name
         return res
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits
         return 2
 
+    @fields.depends('invoice_date')
     def on_change_with_currency_date(self, name=None):
         Date = Pool().get('ir.date')
         return self.invoice_date or Date.today()
 
+    @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
         Config = Pool().get('ir.configuration')
         if self.party:
@@ -422,9 +422,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
             type_names[invoice.id] = type2name[invoice.type]
         return type_names
 
+    @fields.depends('lines', 'taxes', 'currency', 'party', 'type')
     def on_change_lines(self):
         return self._on_change_lines_taxes()
 
+    @fields.depends('lines', 'taxes', 'currency', 'party', 'type')
     def on_change_taxes(self):
         return self._on_change_lines_taxes()
 
@@ -1430,15 +1432,15 @@ class InvoiceLine(ModelSQL, ModelView):
             'required': ~Eval('invoice'),
             },
         depends=['invoice'])
-    party_lang = fields.Function(fields.Char('Party Language',
-        on_change_with=['party']), 'on_change_with_party_lang')
+    party_lang = fields.Function(fields.Char('Party Language'),
+        'on_change_with_party_lang')
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': ~Eval('invoice'),
             },
         depends=['invoice'])
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     company = fields.Many2One('company.company', 'Company',
         states={
             'required': ~Eval('invoice'),
@@ -1479,20 +1481,15 @@ class InvoiceLine(ModelSQL, ModelView):
                 ('category', '!=', -1)),
             ],
         depends=['product', 'type', 'product_uom_category'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits',
-        on_change_with=['unit']), 'on_change_with_unit_digits')
+    unit_digits = fields.Function(fields.Integer('Unit Digits'),
+        'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         states={
             'invisible': Eval('type') != 'line',
             },
-        on_change=['product', 'unit', 'quantity', 'description',
-            '_parent_invoice.type', '_parent_invoice.party',
-            '_parent_invoice.currency', '_parent_invoice.currency_date',
-            'party', 'currency', 'invoice', 'invoice_type'],
         depends=['type'])
     product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category',
-            on_change_with=['product']),
+        fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
     account = fields.Many2One('account.account', 'Account',
         domain=[
@@ -1508,8 +1505,6 @@ class InvoiceLine(ModelSQL, ModelView):
                     ('kind', '=', 'revenue'),
                     ('kind', '=', 'expense')))
             ],
-        on_change=['account', 'product', '_parent_invoice.party',
-            '_parent_invoice.type'],
         states={
             'invisible': Eval('type') != 'line',
             'required': Eval('type') == 'line',
@@ -1527,8 +1522,6 @@ class InvoiceLine(ModelSQL, ModelView):
             states={
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
-            on_change_with=['type', 'quantity', 'unit_price',
-                '_parent_invoice.currency', 'currency'],
             depends=['type', 'currency_digits']), 'get_amount')
     description = fields.Text('Description', size=None, required=True)
     note = fields.Text('Note')
@@ -1634,22 +1627,27 @@ class InvoiceLine(ModelSQL, ModelView):
     def default_type():
         return 'line'
 
+    @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
         Config = Pool().get('ir.configuration')
         if self.party and self.party.lang:
             return self.party.lang.code
         return Config.get_language()
 
+    @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
         return 2
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits
         return 2
 
+    @fields.depends('type', 'quantity', 'unit_price',
+        '_parent_invoice.currency', 'currency')
     def on_change_with_amount(self):
         if self.type == 'line':
             currency = (self.invoice.currency if self.invoice
@@ -1718,6 +1716,10 @@ class InvoiceLine(ModelSQL, ModelView):
         '''
         return {}
 
+    @fields.depends('product', 'unit', 'quantity', 'description',
+        '_parent_invoice.type', '_parent_invoice.party',
+        '_parent_invoice.currency', '_parent_invoice.currency_date',
+        'party', 'currency', 'invoice', 'invoice_type')
     def on_change_product(self):
         pool = Pool()
         Product = pool.get('product.product')
@@ -1825,10 +1827,13 @@ class InvoiceLine(ModelSQL, ModelView):
         res['amount'] = self.on_change_with_amount()
         return res
 
+    @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
 
+    @fields.depends('account', 'product', '_parent_invoice.party',
+        '_parent_invoice.type')
     def on_change_account(self):
         if self.product:
             return {}
@@ -2078,7 +2083,6 @@ class InvoiceTax(ModelSQL, ModelView):
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)))
     amount = fields.Numeric('Amount', required=True,
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
-        on_change_with=['tax', 'base', 'amount', 'manual'],
         depends=['tax', 'base', 'manual'])
     manual = fields.Boolean('Manual')
     base_code = fields.Many2One('account.tax.code', 'Base Code',
@@ -2095,8 +2099,6 @@ class InvoiceTax(ModelSQL, ModelView):
         states={
             'readonly': ~Eval('manual', False),
             },
-        on_change=['tax', '_parent_invoice.party',
-            '_parent_invoice.type'],
         depends=['manual'])
 
     @classmethod
@@ -2158,6 +2160,7 @@ class InvoiceTax(ModelSQL, ModelView):
     def default_tax_sign():
         return Decimal('1')
 
+    @fields.depends('tax', '_parent_invoice.party', '_parent_invoice.type')
     def on_change_tax(self):
         Tax = Pool().get('account.tax')
         changes = {}
@@ -2191,6 +2194,7 @@ class InvoiceTax(ModelSQL, ModelView):
                 changes['account'] = tax.credit_note_account.id
         return changes
 
+    @fields.depends('tax', 'base', 'amount', 'manual')
     def on_change_with_amount(self):
         Tax = Pool().get('account.tax')
         if self.tax and self.manual:
@@ -2427,8 +2431,7 @@ class PayInvoiceStart(ModelView):
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'], required=True)
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    currency_digits = fields.Integer('Currency Digits', readonly=True,
-            on_change_with=['currency'])
+    currency_digits = fields.Integer('Currency Digits', readonly=True)
     description = fields.Char('Description', size=None)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             domain=[('type', '=', 'cash')])
@@ -2443,6 +2446,7 @@ class PayInvoiceStart(ModelView):
     def default_currency_digits():
         return 2
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self):
         if self.currency:
             return self.currency.digits
@@ -2490,8 +2494,7 @@ class PayInvoiceAsk(ModelView):
             ],
         states={
             'invisible': Eval('type') != 'writeoff',
-            }, on_change=['lines', 'amount', 'currency', 'currency_writeoff',
-            'invoice'],
+            },
         depends=['lines_to_pay', 'type'])
     payment_lines = fields.Many2Many('account.move.line', None, None,
         'Payment Lines', readonly=True,
@@ -2505,6 +2508,8 @@ class PayInvoiceAsk(ModelView):
     def default_type():
         return 'partial'
 
+    @fields.depends('lines', 'amount', 'currency', 'currency_writeoff',
+        'invoice')
     def on_change_lines(self):
         Currency = Pool().get('currency.currency')
 
