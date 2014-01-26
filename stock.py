@@ -85,11 +85,11 @@ class SplitMoveStart(ModelView):
             ('category', '=', Eval('uom_category')),
             ],
         depends=['uom_category'])
-    unit_digits = fields.Integer('Unit Digits', on_change_with=['uom'],
-        readonly=True)
+    unit_digits = fields.Integer('Unit Digits', readonly=True)
     uom_category = fields.Many2One('product.uom.category', 'Uom Category',
         readonly=True)
 
+    @fields.depends('uom')
     def on_change_with_unit_digits(self):
         if self.uom:
             return self.uom.digits
