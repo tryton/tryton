@@ -285,7 +285,7 @@ class Work(ModelSQL, ModelView):
             if parent:
                 parents[work.id] = parent.id
         works = set((w.id for w in works))
-        leafs = works - set(parents)
+        leafs = works - set(parents.itervalues())
         while leafs:
             for work in leafs:
                 works.remove(work)
