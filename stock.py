@@ -13,7 +13,7 @@ class ShipmentOut:
     __name__ = 'stock.shipment.out'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': Eval('state') != 'draft',
-            }, on_change=['carrier'],
+            },
         depends=['state'])
     cost_currency = fields.Many2One('currency.currency',
             'Cost Currency', states={
@@ -23,7 +23,7 @@ class ShipmentOut:
                     'packed']),
             }, depends=['carrier', 'state'])
     cost_currency_digits = fields.Function(fields.Integer(
-        'Cost Currency Digits', on_change_with=['currency']),
+        'Cost Currency Digits'),
         'on_change_with_cost_currency_digits')
     cost = fields.Numeric('Cost',
             digits=(16, Eval('cost_currency_digits', 2)), states={
@@ -41,15 +41,8 @@ class ShipmentOut:
                 'missing_account_revenue': ('Missing "Account Revenue" on '
                     'product "%s".'),
                 })
-        if not cls.inventory_moves.on_change:
-            cls.inventory_moves.on_change = []
-        for fname in ('carrier', 'customer', 'inventory_moves'):
-            if fname not in cls.inventory_moves.on_change:
-                cls.inventory_moves.on_change.append(fname)
-        for fname in cls.inventory_moves.on_change:
-            if fname not in cls.carrier.on_change:
-                cls.carrier.on_change.append(fname)
 
+    @fields.depends('currency')
     def on_change_with_cost_currency_digits(self, name=None):
         if self.cost_currency:
             return self.cost_currency.digits
@@ -61,9 +54,11 @@ class ShipmentOut:
     def get_carrier_context(self):
         return self._get_carrier_context()
 
+    @fields.depends(methods=['inventory_moves'])
     def on_change_carrier(self):
         return self.on_change_inventory_moves()
 
+    @fields.depends('carrier', 'customer', 'inventory_moves')
     def on_change_inventory_moves(self):
         Currency = Pool().get('currency.currency')
 

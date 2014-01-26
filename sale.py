@@ -31,7 +31,6 @@ class Sale:
     __name__ = 'sale.sale'
     carrier = fields.Many2One('carrier', 'Carrier',
         domain=[('carrier_product.salable', '=', True)],
-        on_change=['carrier', 'party', 'currency', 'sale_date'],
         states={
             'readonly': Eval('state') != 'draft',
         },
@@ -42,18 +41,6 @@ class Sale:
         ], 'Shipment Cost Method', required=True, states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
-
-    @classmethod
-    def __setup__(cls):
-        super(Sale, cls).__setup__()
-
-        for fname in ('carrier', 'party', 'currency', 'sale_date',
-                'shipment_cost_method', 'lines'):
-            if fname not in cls.lines.on_change:
-                cls.lines.on_change.append(fname)
-        for fname in cls.lines.on_change:
-            if fname not in cls.carrier.on_change:
-                cls.carrier.on_change.append(fname)
 
     @staticmethod
     def default_carrier():
@@ -70,9 +57,12 @@ class Sale:
     def _get_carrier_context(self):
         return {}
 
+    @fields.depends(methods=['lines'])
     def on_change_carrier(self):
         return self.on_change_lines()
 
+    @fields.depends('carrier', 'party', 'currency', 'sale_date',
+        'shipment_cost_method', 'lines')
     def on_change_lines(self):
         pool = Pool()
         Product = pool.get('product.product')
