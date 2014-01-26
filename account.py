@@ -24,8 +24,8 @@ class Account(ModelSQL, ModelView):
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company')
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['currency']), 'on_change_with_currency_digits')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     type = fields.Selection([
         ('root', 'Root'),
         ('view', 'View'),
@@ -111,6 +111,7 @@ class Account(ModelSQL, ModelView):
         super(Account, cls).validate(accounts)
         cls.check_recursion(accounts)
 
+    @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
         if self.currency:
             return self.currency.digits

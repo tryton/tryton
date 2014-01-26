@@ -19,10 +19,10 @@ class Line(ModelSQL, ModelView):
         required=True, depends=['currency_digits'])
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
-    currency = fields.Function(fields.Many2One('currency.currency', 'Currency',
-        on_change_with=['move_line']), 'on_change_with_currency')
-    currency_digits = fields.Function(fields.Integer('Currency Digits',
-        on_change_with=['move_line']), 'on_change_with_currency_digits')
+    currency = fields.Function(fields.Many2One('currency.currency',
+            'Currency'), 'on_change_with_currency')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     account = fields.Many2One('analytic_account.account', 'Account',
             required=True, select=True, domain=[('type', '!=', 'view')])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
@@ -78,10 +78,12 @@ class Line(ModelSQL, ModelView):
     def default_credit():
         return Decimal(0)
 
+    @fields.depends('move_line')
     def on_change_with_currency(self, name=None):
         if self.move_line:
             return self.move_line.account.company.currency.id
 
+    @fields.depends('move_line')
     def on_change_with_currency_digits(self, name=None):
         if self.move_line:
             return self.move_line.account.company.currency.digits
