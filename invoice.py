@@ -41,10 +41,10 @@ class InvoiceLine:
         return fields
 
     @classmethod
-    def default_get(cls, fields, with_rec_name=True):
+    def default_get(cls, fields, with_rec_name=True, with_on_change=True):
         fields = [x for x in fields if not x.startswith('analytic_account_')]
         return super(InvoiceLine, cls).default_get(fields,
-            with_rec_name=with_rec_name)
+            with_rec_name=with_rec_name, with_on_change=with_on_change)
 
     @classmethod
     def read(cls, ids, fields_names=None):
