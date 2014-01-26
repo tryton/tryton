@@ -788,10 +788,11 @@ class Model(object):
             scope = values
             for i in arg.split('.'):
                 if i not in scope:
-                    scope = False
                     break
                 scope = scope[i]
-            res[arg] = scope
+            else:
+                res[arg] = scope
+        res['id'] = self.id
         return res
 
     def _on_change_set(self, field, value):
