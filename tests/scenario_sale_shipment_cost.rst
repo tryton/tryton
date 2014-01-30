@@ -199,18 +199,18 @@ Sale products with cost on shipment::
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
     True
-    >>> cost_line.quantity == 1
-    True
-    >>> cost_line.amount == Decimal('3')
-    True
+    >>> cost_line.quantity
+    1
+    >>> cost_line.amount
+    Decimal('3.00')
     >>> sale.save()
     >>> Sale.quote([sale.id], config.context)
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
-    >>> sale.untaxed_amount == Decimal('103')
-    True
+    >>> sale.untaxed_amount
+    Decimal('103.00')
 
 Send products::
 
@@ -218,14 +218,14 @@ Send products::
     >>> shipment, = sale.shipments
     >>> shipment.carrier == carrier
     True
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.cost_currency == currency
     True
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.cost_currency == currency
     True
     >>> shipment.state
@@ -248,8 +248,8 @@ Check customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> invoice.untaxed_amount == Decimal('83')
-    True
+    >>> invoice.untaxed_amount
+    Decimal('83.00')
 
 Sale products with cost on order::
 
@@ -268,16 +268,16 @@ Sale products with cost on order::
     True
     >>> cost_line.quantity == 1
     True
-    >>> cost_line.amount == Decimal('3')
-    True
+    >>> cost_line.amount
+    Decimal('3.00')
     >>> sale.save()
     >>> Sale.quote([sale.id], config.context)
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
-    >>> sale.untaxed_amount == Decimal('63')
-    True
+    >>> sale.untaxed_amount
+    Decimal('63.00')
 
 Check customer shipment::
 
@@ -289,5 +289,5 @@ Check customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> invoice.untaxed_amount == Decimal('63')
-    True
+    >>> invoice.untaxed_amount
+    Decimal('63.00')

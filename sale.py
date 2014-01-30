@@ -89,12 +89,10 @@ class Sale:
         stockable = any(product.type in ('goods', 'assets')
             for product in products)
         if cost and currency_id and stockable:
-            if (self.currency
-                    and currency_id != self.currency.id):
-                date = self.sale_date or today
-                with Transaction().set_context(date=date):
-                    cost = Currency.compute(Currency(currency_id), cost,
-                        self.currency)
+            date = self.sale_date or today
+            with Transaction().set_context(date=date):
+                cost = Currency.compute(Currency(currency_id), cost,
+                    self.currency)
             product = self.carrier.carrier_product
             with Transaction().set_context(party_context):
                 description = Product(product.id).rec_name
