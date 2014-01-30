@@ -30,7 +30,11 @@ class Production(Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['request', 'draft']),
             },
         depends=['state'])
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
@@ -545,7 +549,7 @@ class Production(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for p in productions for m in p.outputs])
-        cls.write(productions, {
+        cls.write([p for p in productions if not p.effective_date], {
                 'effective_date': Date.today(),
                 })
 

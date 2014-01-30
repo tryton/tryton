@@ -13,6 +13,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
     >>> today = datetime.date.today()
+    >>> yesterday = today - relativedelta(days=1)
 
 Create database::
 
@@ -145,11 +146,11 @@ Create an Inventory::
     >>> inventory_line1 = InventoryLine()
     >>> inventory.lines.append(inventory_line1)
     >>> inventory_line1.product = component1
-    >>> inventory_line1.quantity = 10
+    >>> inventory_line1.quantity = 20
     >>> inventory_line2 = InventoryLine()
     >>> inventory.lines.append(inventory_line2)
     >>> inventory_line2.product = component2
-    >>> inventory_line2.quantity = 5
+    >>> inventory_line2.quantity = 6
     >>> inventory.save()
     >>> Inventory.confirm([inventory.id], config.context)
     >>> inventory.state
@@ -182,12 +183,37 @@ Make a production::
     >>> production.reload()
     >>> all(i.state == 'done' for i in production.inputs)
     True
+    >>> all(i.effective_date == today for i in production.inputs)
+    True
     >>> Production.done([production.id], config.context)
     >>> production.reload()
     >>> output, = production.outputs
     >>> output.state
     u'done'
+    >>> output.effective_date == today
+    True
     >>> config._context['locations'] = [storage.id]
     >>> product.reload()
     >>> product.quantity == 2
+    True
+
+Make a production with effective date yesterday::
+
+    >>> Production = Model.get('production')
+    >>> production = Production()
+    >>> production.effective_date = yesterday
+    >>> production.product = product
+    >>> production.bom = bom
+    >>> production.quantity = 2
+    >>> production.click('wait')
+    >>> Production.assign_try([production.id], config.context)
+    True
+    >>> production.click('run')
+    >>> production.reload()
+    >>> all(i.effective_date == yesterday for i in production.inputs)
+    True
+    >>> production.click('done')
+    >>> production.reload()
+    >>> output, = production.outputs
+    >>> output.effective_date == yesterday
     True

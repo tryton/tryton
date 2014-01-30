@@ -33,3 +33,10 @@ class Move:
         readonly=True, select=True, ondelete='CASCADE',
         domain=[('company', '=', Eval('company'))],
         depends=['company'])
+
+    def set_effective_date(self):
+        if not self.effective_date and self.production_input:
+            self.effective_date = self.production_input.effective_date
+        if not self.effective_date and self.production_output:
+            self.effective_date = self.production_output.effective_date
+        super(Move, self).set_effective_date()
