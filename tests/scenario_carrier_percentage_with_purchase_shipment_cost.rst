@@ -191,11 +191,11 @@ Receive a single product line::
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
     >>> move.quantity = 50
-    >>> move.unit_price == Decimal('8')
-    True
+    >>> move.unit_price
+    Decimal('8')
     >>> shipment.carrier = carrier
-    >>> shipment.cost == Decimal('60')
-    True
+    >>> shipment.cost
+    Decimal('60.00')
     >>> shipment.cost_currency == currency
     True
     >>> shipment.save()
@@ -204,8 +204,8 @@ Receive a single product line::
     >>> shipment.state
     u'received'
     >>> move, = shipment.incoming_moves
-    >>> move.unit_price == Decimal('9.2')
-    True
+    >>> move.unit_price
+    Decimal('9.2000')
 
 Create payment term::
 
@@ -233,18 +233,18 @@ Sale products with cost on shipment::
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
     True
-    >>> cost_line.quantity == 1
-    True
-    >>> cost_line.amount == Decimal(15)
-    True
+    >>> cost_line.quantity
+    1
+    >>> cost_line.amount
+    Decimal('15.00')
     >>> sale.save()
     >>> Sale.quote([sale.id], config.context)
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
-    >>> sale.untaxed_amount == Decimal(115)
-    True
+    >>> sale.untaxed_amount
+    Decimal('115.00')
 
 Send products::
 
@@ -252,14 +252,14 @@ Send products::
     >>> shipment, = sale.shipments
     >>> shipment.carrier == carrier
     True
-    >>> shipment.cost == Decimal(15)
-    True
+    >>> shipment.cost
+    Decimal('15.00')
     >>> shipment.cost_currency == currency
     True
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
-    >>> shipment.cost == Decimal(12)
-    True
+    >>> shipment.cost
+    Decimal('12.00')
     >>> shipment.cost_currency == currency
     True
     >>> shipment.state
@@ -282,8 +282,8 @@ Check customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> invoice.untaxed_amount == Decimal('92')
-    True
+    >>> invoice.untaxed_amount
+    Decimal('92.00')
 
 Sale products with cost on order::
 
@@ -302,16 +302,16 @@ Sale products with cost on order::
     True
     >>> cost_line.quantity == 1
     True
-    >>> cost_line.amount == Decimal(9)
-    True
+    >>> cost_line.amount
+    Decimal('9.00')
     >>> sale.save()
     >>> Sale.quote([sale.id], config.context)
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
     u'processing'
-    >>> sale.untaxed_amount == Decimal(69)
-    True
+    >>> sale.untaxed_amount
+    Decimal('69.00')
 
 Check customer shipment::
 
@@ -323,5 +323,5 @@ Check customer invoice::
 
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> invoice.untaxed_amount == Decimal(69)
-    True
+    >>> invoice.untaxed_amount
+    Decimal('69.00')
