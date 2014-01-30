@@ -394,8 +394,8 @@ Create customer invoice with negative quantity::
     u'posted'
     >>> move = invoice.move
     >>> line_cogs, = (l for l in move.lines if l.account == cogs)
-    >>> line_cogs.credit == Decimal('5')
-    True
+    >>> line_cogs.credit
+    Decimal('5.00')
     >>> line_stock, = (l for l in move.lines if l.account == stock_customer)
-    >>> line_stock.debit == Decimal('5')
-    True
+    >>> line_stock.debit
+    Decimal('5.00')
