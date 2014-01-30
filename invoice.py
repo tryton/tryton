@@ -544,6 +544,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         type_name = cls.tax_amount._field.sql_type().base
         in_max = cursor.IN_MAX
         tax = InvoiceTax.__table__()
+        to_round = False
         for i in range(0, len(invoices), in_max):
             sub_ids = [i.id for i in invoices[i:i + in_max]]
             red_sql = reduce_ids(tax.invoice, sub_ids)
@@ -555,7 +556,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 # SQLite uses float for SUM
                 if not isinstance(sum_, Decimal):
                     sum_ = Decimal(str(sum_))
+                    to_round = True
                 tax_amount[invoice_id] = sum_
+        # Float amount must be rounded to get the right precision
+        if to_round:
+            for invoice in invoices:
+                tax_amount[invoice.id] = invoice.currency.round(
+                    tax_amount[invoice.id])
 
         invoices_move = []
         invoices_no_move = []
@@ -571,6 +578,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         invoice = cls.__table__()
         move = Move.__table__()
         line = MoveLine.__table__()
+        to_round = False
         for i in range(0, len(invoices_move), in_max):
             sub_ids = [i.id for i in invoices_move[i:i + in_max]]
             red_sql = reduce_ids(invoice.id, sub_ids)
@@ -585,11 +593,16 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 # SQLite uses float for SUM
                 if not isinstance(sum_, Decimal):
                     sum_ = Decimal(str(sum_))
+                    to_round = True
                 total_amount[invoice_id] = sum_
 
         for invoice in invoices_move:
             if invoice.type in ('in_invoice', 'out_credit_note'):
                 total_amount[invoice.id] *= -1
+            # Float amount must be rounded to get the right precision
+            if to_round:
+                total_amount[invoice.id] = invoice.currency.round(
+                    total_amount[invoice.id])
             untaxed_amount[invoice.id] = (
                 total_amount[invoice.id] - tax_amount[invoice.id])
 

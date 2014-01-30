@@ -192,47 +192,50 @@ Create invoice::
     >>> line.description = 'Test'
     >>> line.quantity = 1
     >>> line.unit_price = Decimal(20)
-    >>> invoice.untaxed_amount == Decimal(220)
-    True
-    >>> invoice.tax_amount == Decimal(20)
-    True
-    >>> invoice.total_amount == Decimal(240)
-    True
+    >>> invoice.untaxed_amount
+    Decimal('220.00')
+    >>> invoice.tax_amount
+    Decimal('20.00')
+    >>> invoice.total_amount
+    Decimal('240.00')
     >>> invoice.save()
     >>> Invoice.post([invoice.id], config.context)
     >>> invoice.reload()
     >>> invoice.state
     u'posted'
-    >>> invoice.untaxed_amount == Decimal(220)
-    True
-    >>> invoice.tax_amount == Decimal(20)
-    True
-    >>> invoice.total_amount == Decimal(240)
-    True
+    >>> invoice.untaxed_amount
+    Decimal('220.00')
+    >>> invoice.tax_amount
+    Decimal('20.00')
+    >>> invoice.total_amount
+    Decimal('240.00')
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal(240), Decimal(0))
-    True
+    >>> receivable.debit
+    Decimal('240.00')
+    >>> receivable.credit
+    Decimal('0.00')
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal(0), Decimal(220))
-    True
+    >>> revenue.debit
+    Decimal('0.00')
+    >>> revenue.credit
+    Decimal('220.00')
     >>> account_tax.reload()
-    >>> (account_tax.debit, account_tax.credit) == \
-    ... (Decimal(0), Decimal(20))
-    True
+    >>> account_tax.debit
+    Decimal('0.00')
+    >>> account_tax.credit
+    Decimal('20.00')
     >>> invoice_base_code.reload()
-    >>> invoice_base_code.sum == Decimal(200)
-    True
+    >>> invoice_base_code.sum
+    Decimal('200.00')
     >>> invoice_tax_code.reload()
-    >>> invoice_tax_code.sum == Decimal(20)
-    True
+    >>> invoice_tax_code.sum
+    Decimal('20.00')
     >>> credit_note_base_code.reload()
-    >>> credit_note_base_code.sum == Decimal(0)
-    True
+    >>> credit_note_base_code.sum
+    Decimal('0.00')
     >>> credit_note_tax_code.reload()
-    >>> credit_note_tax_code.sum == Decimal(0)
-    True
+    >>> credit_note_tax_code.sum
+    Decimal('0.00')
 
 Credit invoice with refund::
 
@@ -243,29 +246,32 @@ Credit invoice with refund::
     >>> invoice.state
     u'paid'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal(240), Decimal(240))
-    True
+    >>> receivable.debit
+    Decimal('240.00')
+    >>> receivable.credit
+    Decimal('240.00')
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal(220), Decimal(220))
-    True
+    >>> revenue.debit
+    Decimal('220.00')
+    >>> revenue.credit
+    Decimal('220.00')
     >>> account_tax.reload()
-    >>> (account_tax.debit, account_tax.credit) == \
-    ... (Decimal(20), Decimal(20))
-    True
+    >>> account_tax.debit
+    Decimal('20.00')
+    >>> account_tax.credit
+    Decimal('20.00')
     >>> invoice_base_code.reload()
-    >>> invoice_base_code.sum == Decimal(200)
-    True
+    >>> invoice_base_code.sum
+    Decimal('200.00')
     >>> invoice_tax_code.reload()
-    >>> invoice_tax_code.sum == Decimal(20)
-    True
+    >>> invoice_tax_code.sum
+    Decimal('20.00')
     >>> credit_note_base_code.reload()
-    >>> credit_note_base_code.sum == Decimal(200)
-    True
+    >>> credit_note_base_code.sum
+    Decimal('200.00')
     >>> credit_note_tax_code.reload()
-    >>> credit_note_tax_code.sum == Decimal(20)
-    True
+    >>> credit_note_tax_code.sum
+    Decimal('20.00')
 
 Create empty invoice::
 

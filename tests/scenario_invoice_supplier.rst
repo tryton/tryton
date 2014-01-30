@@ -191,47 +191,50 @@ Create invoice::
     >>> line.description = 'Test'
     >>> line.quantity = 1
     >>> line.unit_price = Decimal(10)
-    >>> invoice.untaxed_amount == Decimal(110)
-    True
-    >>> invoice.tax_amount == Decimal(10)
-    True
-    >>> invoice.total_amount == Decimal(120)
-    True
+    >>> invoice.untaxed_amount
+    Decimal('110.00')
+    >>> invoice.tax_amount
+    Decimal('10.00')
+    >>> invoice.total_amount
+    Decimal('120.00')
     >>> invoice.save()
     >>> Invoice.post([invoice.id], config.context)
     >>> invoice.reload()
     >>> invoice.state
     u'posted'
-    >>> invoice.untaxed_amount == Decimal(110)
-    True
-    >>> invoice.tax_amount == Decimal(10)
-    True
-    >>> invoice.total_amount == Decimal(120)
-    True
+    >>> invoice.untaxed_amount
+    Decimal('110.00')
+    >>> invoice.tax_amount
+    Decimal('10.00')
+    >>> invoice.total_amount
+    Decimal('120.00')
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == \
-    ... (Decimal(0), Decimal(120))
-    True
+    >>> payable.debit
+    Decimal('0.00')
+    >>> payable.credit
+    Decimal('120.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal(110), Decimal(0))
-    True
+    >>> expense.debit
+    Decimal('110.00')
+    >>> expense.credit
+    Decimal('0.00')
     >>> account_tax.reload()
-    >>> (account_tax.debit, account_tax.credit) == \
-    ... (Decimal(10), Decimal(0))
-    True
+    >>> account_tax.debit
+    Decimal('10.00')
+    >>> account_tax.credit
+    Decimal('0.00')
     >>> invoice_base_code.reload()
-    >>> invoice_base_code.sum == Decimal(100)
-    True
+    >>> invoice_base_code.sum
+    Decimal('100.00')
     >>> invoice_tax_code.reload()
-    >>> invoice_tax_code.sum == Decimal(10)
-    True
+    >>> invoice_tax_code.sum
+    Decimal('10.00')
     >>> credit_note_base_code.reload()
-    >>> credit_note_base_code.sum == Decimal(0)
-    True
+    >>> credit_note_base_code.sum
+    Decimal('0.00')
     >>> credit_note_tax_code.reload()
-    >>> credit_note_tax_code.sum == Decimal(0)
-    True
+    >>> credit_note_tax_code.sum
+    Decimal('0.00')
 
 Credit invoice::
 
