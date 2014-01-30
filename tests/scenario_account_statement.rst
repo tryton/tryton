@@ -240,18 +240,18 @@ Received 180 from customer::
     >>> statement_line.account == receivable
     True
     >>> statement_line.invoice = customer_invoice1
-    >>> statement_line.amount == Decimal('100')
-    True
+    >>> statement_line.amount
+    Decimal('100.00')
     >>> statement_line = statement.lines[-1]
-    >>> statement_line.amount == Decimal('80')
-    True
+    >>> statement_line.amount
+    Decimal('80.00')
     >>> statement_line.party == customer
     True
     >>> statement_line.account == receivable
     True
     >>> statement_line.invoice = customer_invoice2
-    >>> statement_line.amount == Decimal('80')
-    True
+    >>> statement_line.amount
+    Decimal('80.00')
 
 Paid 50 to customer::
 
@@ -273,11 +273,11 @@ Paid 50 to supplier::
     >>> statement_line.account == payable
     True
     >>> statement_line.invoice = supplier_invoice
-    >>> statement_line.amount == Decimal('-50')
-    True
+    >>> statement_line.amount
+    Decimal('-50.00')
     >>> statement_line = statement.lines.pop()
-    >>> statement_line.amount == Decimal('-10')
-    True
+    >>> statement_line.amount
+    Decimal('-10.00')
 
     >>> statement.save()
 
@@ -295,8 +295,8 @@ Test invoice state::
     >>> customer_invoice2.reload()
     >>> customer_invoice2.state
     u'posted'
-    >>> customer_invoice2.amount_to_pay == Decimal('70')
-    True
+    >>> customer_invoice2.amount_to_pay
+    Decimal('70.00')
     >>> customer_credit_note.reload()
     >>> customer_credit_note.state
     u'paid'
@@ -356,9 +356,9 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> statement_line.account = payable
     >>> statement_line.amount = Decimal(50)
     >>> statement_line.invoice = supplier_invoice2
-    >>> statement_line.amount == Decimal(40)
-    True
+    >>> statement_line.amount
+    Decimal('40.00')
     >>> len(statement.lines)
     3
-    >>> statement.lines[-1].amount == Decimal(10)
-    True
+    >>> statement.lines[-1].amount
+    Decimal('10.00')
