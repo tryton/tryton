@@ -223,5 +223,5 @@ Reconcile Lines with writeoff::
     ...     if l != writeoff_line1]
     >>> writeoff_line2.account == expense
     True
-    >>> writeoff_line2.debit == Decimal(3)
-    True
+    >>> writeoff_line2.debit
+    Decimal('3.00')

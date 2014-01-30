@@ -674,6 +674,10 @@ class Account(ModelSQL, ModelView):
                 break
             balances[account_id] = Decimal(str(balance))
 
+        for account in accounts:
+            balances[account.id] = account.company.currency.round(
+                balances[account.id])
+
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
         func = lambda accounts, names: \
             {names[0]: cls.get_balance(accounts, names[0])}
@@ -722,6 +726,10 @@ class Account(ModelSQL, ModelView):
                         result[name][account_id] = Decimal(str(row[i]))
                     else:
                         result[name][account_id] = row[i]
+        for account in accounts:
+            for name in names:
+                result[name][account.id] = account.company.currency.round(
+                    result[name][account.id])
 
         if not Transaction().context.get('cumulate'):
             return result
