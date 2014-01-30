@@ -264,12 +264,6 @@ class StockTestCase(unittest.TestCase):
                     else:
                         self.assertEqual(product_reloaded.quantity, quantity)
 
-            # Python 2.6 compatibility (assertIn and assertNotIn added in 2.7)
-            assertIn = getattr(self, 'assertIn',
-                lambda a, b: self.assertTrue(a in b))
-            assertNotIn = getattr(self, 'assertNotIn',
-                lambda a, b: self.assertTrue(a not in b))
-
             def tests_product_search_quantity(context, quantity):
                 with transaction.set_context(locations=[storage.id]):
                     if (not context.get('stock_date_end')
@@ -281,50 +275,50 @@ class StockTestCase(unittest.TestCase):
                     found_products = self.product.search([
                             (fname, '=', quantity),
                             ])
-                    assertIn(product, found_products)
+                    self.assertIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, '!=', quantity),
                             ])
-                    assertNotIn(product, found_products)
+                    self.assertNotIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, 'in', (quantity, quantity + 1)),
                             ])
-                    assertIn(product, found_products)
+                    self.assertIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, 'not in', (quantity, quantity + 1)),
                             ])
-                    assertNotIn(product, found_products)
+                    self.assertNotIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, '<', quantity),
                             ])
-                    assertNotIn(product, found_products)
+                    self.assertNotIn(product, found_products)
                     found_products = self.product.search([
                             (fname, '<', quantity + 1),
                             ])
-                    assertIn(product, found_products)
+                    self.assertIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, '>', quantity),
                             ])
-                    assertNotIn(product, found_products)
+                    self.assertNotIn(product, found_products)
                     found_products = self.product.search([
                             (fname, '>', quantity - 1),
                             ])
-                    assertIn(product, found_products)
+                    self.assertIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, '>=', quantity),
                             ])
-                    assertIn(product, found_products)
+                    self.assertIn(product, found_products)
 
                     found_products = self.product.search([
                             (fname, '<=', quantity),
                             ])
-                    assertIn(product, found_products)
+                    self.assertIn(product, found_products)
 
             def test_products_by_location():
                 for context, quantity in tests:

@@ -101,8 +101,8 @@ Make 1 unit of the product available @ 100 ::
 Check Cost Price is 100::
 
     >>> product.reload()
-    >>> product.template.cost_price == Decimal('100')
-    True
+    >>> product.template.cost_price
+    Decimal('100.0000')
 
 Add 1 more unit @ 200::
 
@@ -123,5 +123,5 @@ Add 1 more unit @ 200::
 Check Cost Price Average is 150::
 
     >>> product.reload()
-    >>> product.template.cost_price == Decimal('150')
-    True
+    >>> product.template.cost_price
+    Decimal('150.0000')
