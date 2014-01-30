@@ -126,11 +126,11 @@ Receive a single product line::
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
     >>> move.quantity = 50
-    >>> move.unit_price == Decimal('8')
-    True
+    >>> move.unit_price
+    Decimal('8')
     >>> shipment.carrier = carrier
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.cost_currency == currency
     True
     >>> shipment.save()
@@ -139,8 +139,8 @@ Receive a single product line::
     >>> shipment.state
     u'received'
     >>> move, = shipment.incoming_moves
-    >>> move.unit_price == Decimal('8.0600')
-    True
+    >>> move.unit_price
+    Decimal('8.0600')
 
 Receive many product lines::
 
@@ -154,8 +154,8 @@ Receive many product lines::
     ...     move.product = product
     ...     move.quantity = quantity
     >>> shipment.carrier = carrier
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.save()
     >>> ShipmentIn.receive([shipment.id], config.context)
     >>> shipment.reload()

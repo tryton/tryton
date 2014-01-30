@@ -234,8 +234,8 @@ Receive 4 products::
     >>> move.quantity = 4.0
     >>> shipment.incoming_moves.append(move)
     >>> shipment.carrier = carrier
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.cost_currency == currency
     True
     >>> shipment.save()
@@ -244,25 +244,28 @@ Receive 4 products::
     >>> shipment.state
     u'received'
     >>> move, = shipment.incoming_moves
-    >>> move.unit_price == Decimal('5.75')
-    True
+    >>> move.unit_price
+    Decimal('5.7500')
     >>> ShipmentIn.done([shipment.id], current_config.context)
     >>> shipment.reload()
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
     >>> stock.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('0.00'), Decimal('20.00'))
-    True
+    >>> stock_supplier.debit
+    Decimal('0.00')
+    >>> stock_supplier.credit
+    Decimal('20.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('23.00'), Decimal('0.00'))
-    True
+    >>> stock.debit
+    Decimal('23.00')
+    >>> stock.credit
+    Decimal('0.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('0.00'), Decimal('3.00'))
-    True
+    >>> expense.debit
+    Decimal('0.00')
+    >>> expense.credit
+    Decimal('3.00')
 
 Open supplier invoice::
 
@@ -275,14 +278,17 @@ Open supplier invoice::
     >>> invoice.state
     u'posted'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('20.00'))
-    True
+    >>> payable.debit
+    Decimal('0.00')
+    >>> payable.credit
+    Decimal('20.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('20.00'), Decimal('23.00'))
-    True
+    >>> expense.debit
+    Decimal('20.00')
+    >>> expense.credit
+    Decimal('23.00')
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('20.00'), Decimal('20.00'))
-    True
+    >>> stock_supplier.debit
+    Decimal('20.00')
+    >>> stock_supplier.credit
+    Decimal('20.00')

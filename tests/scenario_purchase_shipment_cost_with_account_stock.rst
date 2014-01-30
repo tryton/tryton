@@ -202,19 +202,19 @@ Receive a single product line::
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
     >>> move.quantity = 30
-    >>> move.unit_price == Decimal('8')
-    True
+    >>> move.unit_price
+    Decimal('8')
     >>> move = Move()
     >>> shipment.incoming_moves.append(move)
     >>> move.from_location = supplier_location
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product_average
     >>> move.quantity = 20
-    >>> move.unit_price == Decimal('8')
-    True
+    >>> move.unit_price
+    Decimal('8')
     >>> shipment.carrier = carrier
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.cost_currency == currency
     True
     >>> shipment.save()
@@ -223,10 +223,10 @@ Receive a single product line::
     >>> shipment.state
     u'received'
     >>> move, move_average = shipment.incoming_moves
-    >>> move.unit_price == Decimal('8.0600')
-    True
-    >>> move_average.unit_price == Decimal('8.0600')
-    True
+    >>> move.unit_price
+    Decimal('8.0600')
+    >>> move_average.unit_price
+    Decimal('8.0600')
     >>> stock_supplier.reload()
     >>> (stock_supplier.debit, stock_supplier.credit) == \
     ...     (Decimal('0.00'), Decimal('398.20'))
@@ -252,8 +252,8 @@ Receive many product lines::
     ...     move.product = product
     ...     move.quantity = quantity
     >>> shipment.carrier = carrier
-    >>> shipment.cost == Decimal('3')
-    True
+    >>> shipment.cost
+    Decimal('3')
     >>> shipment.save()
     >>> ShipmentIn.receive([shipment.id], config.context)
     >>> shipment.reload()
