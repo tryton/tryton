@@ -40,7 +40,11 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
     _rec_name = 'code'
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
     planned_date = fields.Date('Planned Date', states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
             }, depends=['state'])
@@ -469,7 +473,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.inventory_moves])
-        cls.write(shipments, {
+        cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
 
@@ -478,7 +482,11 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
     _rec_name = 'code'
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -722,7 +730,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
 
         Move.do([m for s in shipments for m in s.moves])
-        cls.write(shipments, {
+        cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
 
@@ -760,7 +768,11 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
     _rec_name = 'code'
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -1175,7 +1187,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
 
         Move.do([m for s in shipments for m in s.outgoing_moves])
-        cls.write(shipments, {
+        cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
 
@@ -1293,7 +1305,11 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
     _rec_name = 'code'
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -1636,7 +1652,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.inventory_moves])
-        cls.write(shipments, {
+        cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
 
@@ -1734,7 +1750,11 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
     _rec_name = 'code'
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date('Effective Date',
+        states={
+            'readonly': Eval('state').in_(['cancel', 'done']),
+            },
+        depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
             'readonly': Not(Equal(Eval('state'), 'draft')),
@@ -1954,7 +1974,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.moves])
-        cls.write(shipments, {
+        cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
 

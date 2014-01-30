@@ -188,7 +188,11 @@ class Move(Workflow, ModelSQL, ModelView):
                 | Eval('shipment'))
             }, depends=['state', 'shipment'],
         select=True)
-    effective_date = fields.Date("Effective Date", readonly=True, select=True)
+    effective_date = fields.Date("Effective Date", readonly=True, select=True,
+        states={
+            'required': Eval('state') == 'done',
+            },
+        depends=['state'])
     state = fields.Selection([
         ('draft', 'Draft'),
         ('assigned', 'Assigned'),
@@ -578,36 +582,37 @@ class Move(Workflow, ModelSQL, ModelView):
             product.default_uom, round=True)
         return internal_quantity
 
+    def set_effective_date(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        if not self.effective_date and self.shipment:
+            self.effective_date = self.shipment.effective_date
+        if not self.effective_date:
+            self.effective_date = Date.today()
+
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, moves):
-        pass
+        cls.write(moves, {
+                'effective_date': None,
+                })
 
     @classmethod
     @ModelView.button
     @Workflow.transition('assigned')
     def assign(cls, moves):
-        pool = Pool()
-        Date = pool.get('ir.date')
-
-        today = Date.today()
         for move in moves:
-            if not move.effective_date:
-                move.effective_date = today
+            move.set_effective_date()
             move.save()
 
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
-        pool = Pool()
-        Date = pool.get('ir.date')
-
-        today = Date.today()
         for move in moves:
-            if not move.effective_date:
-                move.effective_date = today
+            move.set_effective_date()
             if (move.from_location.type in ('supplier', 'production')
                     and move.to_location.type == 'storage'
                     and move.product.cost_price_method == 'average'):
@@ -675,13 +680,12 @@ class Move(Workflow, ModelSQL, ModelView):
                         cls.raise_user_error('modify_done_cancel',
                             (move.rec_name,))
 
-            if any(f not in cls._allow_modify_closed_period for f in values):
-                cls.check_period_closed(moves)
-
         super(Move, cls).write(*args)
 
         actions = iter(args)
         for moves, values in zip(actions, actions):
+            if any(f not in cls._allow_modify_closed_period for f in values):
+                cls.check_period_closed(moves)
             for move in moves:
                 internal_quantity = cls._get_internal_quantity(move.quantity,
                         move.uom, move.product)
