@@ -101,8 +101,8 @@ Make 4 units of the product available @ 10 ::
 Check Cost Price is 10::
 
     >>> product.reload()
-    >>> product.template.cost_price == Decimal('10')
-    True
+    >>> product.template.cost_price
+    Decimal('10.0000')
 
 Add 2 more units @ 25::
 
@@ -122,8 +122,8 @@ Add 2 more units @ 25::
 Check Cost Price FIFO is 15::
 
     >>> product.reload()
-    >>> product.template.cost_price == Decimal('15')
-    True
+    >>> product.template.cost_price
+    Decimal('15.0000')
 
 Sell 3 units @ 50::
 
@@ -143,8 +143,8 @@ Sell 3 units @ 50::
 Check Cost Price FIFO is 20::
 
     >>> product.reload()
-    >>> product.template.cost_price == Decimal('20')
-    True
+    >>> product.template.cost_price
+    Decimal('20.0000')
 
 Sell 2 more units @ 50::
 
@@ -164,5 +164,5 @@ Sell 2 more units @ 50::
 Check Cost Price FIFO is 25::
 
     >>> product.reload()
-    >>> product.template.cost_price == Decimal('25')
-    True
+    >>> product.template.cost_price
+    Decimal('25.0000')
