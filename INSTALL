@@ -4,7 +4,7 @@ Installing trytond_analytic_account
 Prerequisites
 -------------
 
- * Python 2.6 or later (http://www.python.org/)
+ * Python 2.7 or later (http://www.python.org/)
  * python-sql (http://code.google.com/p/python-sql/)
  * trytond (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
