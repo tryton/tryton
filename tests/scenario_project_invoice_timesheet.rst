@@ -199,8 +199,8 @@ Check project hours::
     0.0
     >>> project.hours_to_invoice
     5.0
-    >>> project.invoiced_amount == Decimal(0)
-    True
+    >>> project.invoiced_amount
+    Decimal('0')
 
 Invoice project::
 
@@ -211,8 +211,8 @@ Invoice project::
     5.0
     >>> project.hours_to_invoice
     0.0
-    >>> project.invoiced_amount == Decimal(100)
-    True
+    >>> project.invoiced_amount
+    Decimal('100.000000000000')
 
 Create more timesheets::
 
@@ -231,8 +231,8 @@ Check project hours::
     5.0
     >>> project.hours_to_invoice
     4.0
-    >>> project.invoiced_amount == Decimal(100)
-    True
+    >>> project.invoiced_amount
+    Decimal('100.000000000000')
 
 Invoice again project::
 
@@ -243,5 +243,5 @@ Invoice again project::
     9.0
     >>> project.hours_to_invoice
     0.0
-    >>> project.invoiced_amount == Decimal(180)
-    True
+    >>> project.invoiced_amount
+    Decimal('180.000000000000')

@@ -187,8 +187,8 @@ Check project hours::
     0.0
     >>> project.hours_to_invoice
     0.0
-    >>> project.invoiced_amount == Decimal(0)
-    True
+    >>> project.invoiced_amount
+    Decimal('0')
 
 Do 1 task::
 
@@ -202,8 +202,8 @@ Check project hours::
     0.0
     >>> project.hours_to_invoice
     5.0
-    >>> project.invoiced_amount == Decimal(0)
-    True
+    >>> project.invoiced_amount
+    Decimal('0')
 
 Invoice project::
 
@@ -214,8 +214,8 @@ Invoice project::
     5.0
     >>> project.hours_to_invoice
     0.0
-    >>> project.invoiced_amount == Decimal(100)
-    True
+    >>> project.invoiced_amount
+    Decimal('100.00')
 
 Do project::
 
@@ -230,8 +230,8 @@ Check project hours::
     5.0
     >>> project.hours_to_invoice
     1.0
-    >>> project.invoiced_amount == Decimal(100)
-    True
+    >>> project.invoiced_amount
+    Decimal('100.00')
 
 Invoice again project::
 
@@ -242,5 +242,5 @@ Invoice again project::
     6.0
     >>> project.hours_to_invoice
     0.0
-    >>> project.invoiced_amount == Decimal(120)
-    True
+    >>> project.invoiced_amount
+    Decimal('120.00')
