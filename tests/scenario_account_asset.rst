@@ -187,15 +187,15 @@ Depreciate the asset::
     >>> asset = Asset()
     >>> asset.product = asset_product
     >>> asset.supplier_invoice_line = invoice_line
-    >>> asset.value == Decimal('1000')
-    True
+    >>> asset.value
+    Decimal('1000.00')
     >>> asset.start_date == supplier_invoice.invoice_date
     True
     >>> asset.end_date == (supplier_invoice.invoice_date +
     ...     relativedelta(years=2, days=-1))
     True
-    >>> asset.quantity == 1
-    True
+    >>> asset.quantity
+    1.0
     >>> asset.unit == unit
     True
     >>> asset.residual_value = Decimal('100')
@@ -206,18 +206,18 @@ Depreciate the asset::
     24
     >>> [l.depreciation for l in asset.lines] == [Decimal('37.5')] * 24
     True
-    >>> asset.lines[0].actual_value == Decimal('962.5')
-    True
-    >>> asset.lines[0].accumulated_depreciation == Decimal('37.5')
-    True
-    >>> asset.lines[11].actual_value == Decimal('550')
-    True
-    >>> asset.lines[11].accumulated_depreciation == Decimal('450')
-    True
-    >>> asset.lines[-1].actual_value == Decimal('100')
-    True
-    >>> asset.lines[-1].accumulated_depreciation == Decimal('900')
-    True
+    >>> asset.lines[0].actual_value
+    Decimal('962.50')
+    >>> asset.lines[0].accumulated_depreciation
+    Decimal('37.50')
+    >>> asset.lines[11].actual_value
+    Decimal('550.00')
+    >>> asset.lines[11].accumulated_depreciation
+    Decimal('450.00')
+    >>> asset.lines[-1].actual_value
+    Decimal('100.00')
+    >>> asset.lines[-1].accumulated_depreciation
+    Decimal('900.00')
     >>> Asset.run([asset.id], config.context)
     >>> asset.reload()
 
@@ -227,37 +227,42 @@ Create Moves for 3 months::
     >>> create_moves.form.date = (supplier_invoice.invoice_date
     ...     + relativedelta(months=3))
     >>> create_moves.execute('create_moves')
-    >>> (depreciation_account.debit, depreciation_account.credit) == \
-    ...     (Decimal('0'), Decimal('112.5'))
-    True
-    >>> (expense.debit, expense.credit) == \
-    ...     (Decimal('112.5'), Decimal('0'))
-    True
+    >>> depreciation_account.debit
+    Decimal('0.00')
+    >>> depreciation_account.credit
+    Decimal('112.50')
+    >>> expense.debit
+    Decimal('112.50')
+    >>> expense.credit
+    Decimal('0.00')
 
 Update the asset::
 
     >>> update = Wizard('account.asset.update', [asset])
     >>> update.form.value = Decimal('1100')
     >>> update.execute('update_asset')
-    >>> update.form.amount == Decimal('100')
-    True
+    >>> update.form.amount
+    Decimal('100.00')
     >>> update.execute('create_move')
     >>> asset.reload()
-    >>> asset.value == Decimal('1100')
-    True
-    >>> [l.depreciation for l in asset.lines[:3]] == [Decimal('37.5')] * 3
-    True
+    >>> asset.value
+    Decimal('1100')
+    >>> [l.depreciation for l in asset.lines[:3]]
+    [Decimal('37.50'), Decimal('37.50'), Decimal('37.50')]
     >>> [l.depreciation for l in asset.lines[3:-1]] == [Decimal('42.26')] * 20
     True
-    >>> asset.lines[-1].depreciation == Decimal('42.3')
-    True
+    >>> asset.lines[-1].depreciation
+    Decimal('42.30')
     >>> depreciation_account.reload()
-    >>> (depreciation_account.debit, depreciation_account.credit) == \
-    ...     (Decimal('100'), Decimal('112.5'))
-    True
+    >>> depreciation_account.debit
+    Decimal('100.00')
+    >>> depreciation_account.credit
+    Decimal('112.50')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == (Decimal('112.5'), Decimal('100'))
-    True
+    >>> expense.debit
+    Decimal('112.50')
+    >>> expense.credit
+    Decimal('100.00')
 
 Create Moves for 3 other months::
 
@@ -266,13 +271,15 @@ Create Moves for 3 other months::
     ...     + relativedelta(months=6))
     >>> create_moves.execute('create_moves')
     >>> depreciation_account.reload()
-    >>> (depreciation_account.debit, depreciation_account.credit) == \
-    ...     (Decimal('100'), Decimal('239.28'))
-    True
+    >>> depreciation_account.debit
+    Decimal('100.00')
+    >>> depreciation_account.credit
+    Decimal('239.28')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ...     (Decimal('239.28'), Decimal('100'))
-    True
+    >>> expense.debit
+    Decimal('239.28')
+    >>> expense.credit
+    Decimal('100.00')
 
 Sale the asset::
 
@@ -293,13 +300,17 @@ Sale the asset::
     >>> asset.reload()
     >>> asset.customer_invoice_line == customer_invoice.lines[0]
     True
-    >>> (revenue.debit, revenue.credit) == (Decimal('860.72'), Decimal('600'))
-    True
+    >>> revenue.debit
+    Decimal('860.72')
+    >>> revenue.credit
+    Decimal('600.00')
     >>> asset_account.reload()
-    >>> (asset_account.debit, asset_account.credit) == \
-    ...     (Decimal('1000'), Decimal('1100'))
-    True
+    >>> asset_account.debit
+    Decimal('1000.00')
+    >>> asset_account.credit
+    Decimal('1100.00')
     >>> depreciation_account.reload()
-    >>> (depreciation_account.debit, depreciation_account.credit) == \
-    ...     (Decimal('339.28'), Decimal('239.28'))
-    True
+    >>> depreciation_account.debit
+    Decimal('339.28')
+    >>> depreciation_account.credit
+    Decimal('239.28')
