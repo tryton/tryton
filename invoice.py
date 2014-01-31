@@ -422,11 +422,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
             type_names[invoice.id] = type2name[invoice.type]
         return type_names
 
-    @fields.depends('lines', 'taxes', 'currency', 'party', 'type')
+    @fields.depends('lines', 'taxes', 'currency', 'party', 'type',
+        'accounting_date', 'invoice_date')
     def on_change_lines(self):
         return self._on_change_lines_taxes()
 
-    @fields.depends('lines', 'taxes', 'currency', 'party', 'type')
+    @fields.depends('lines', 'taxes', 'currency', 'party', 'type',
+        'accounting_date', 'invoice_date')
     def on_change_taxes(self):
         return self._on_change_lines_taxes()
 
@@ -452,7 +454,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 with Transaction().set_context(**context):
                     taxes = Tax.compute(line.taxes,
                         line.unit_price or Decimal('0.0'),
-                        line.quantity or 0.0)
+                        line.quantity or 0.0,
+                        date=self.accounting_date or self.invoice_date)
                 for tax in taxes:
                     key, val = self._compute_tax(tax,
                         self.type or 'out_invoice')
@@ -803,7 +806,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 continue
             with Transaction().set_context(**context):
                 taxes = Tax.compute(line.taxes, line.unit_price,
-                        line.quantity)
+                    line.quantity,
+                    date=self.accounting_date or self.invoice_date)
             for tax in taxes:
                 key, val = self._compute_tax(tax, self.type)
                 val['invoice'] = self.id
