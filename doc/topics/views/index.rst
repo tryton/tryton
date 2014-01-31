@@ -290,14 +290,10 @@ Display a button.
 
     * ``string``: The string that will be displayed inside the button.
 
-    * ``name``: The name of the action:
+    * ``name``: The name of the function that will be called. The function must
+      have this syntax:
 
-        * ``object``: the name of the function that will called.  The function
-          must have this syntax:
-
-          ``button(self, ids)``
-
-        * ``action``: the id of the ir.action that will be called.
+        ``button(cls, records)``
 
     * ``icon``
 
