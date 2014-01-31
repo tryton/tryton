@@ -12,6 +12,14 @@ __metaclass__ = PoolMeta
 class Sale:
     __name__ = 'sale.sale'
 
+    def is_done(self):
+        done = super(Sale, self).is_done()
+        if done:
+            if any(l.purchase_request_state in ('', 'requested')
+                    for l in self.lines):
+                return False
+        return done
+
     def create_shipment(self, shipment_type):
         shipments = super(Sale, self).create_shipment(shipment_type)
         if shipment_type == 'out':
