@@ -187,9 +187,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="request_user" ref="res.user_admin"/>
             <field name="user" ref="user_generate_request"/>
             <field name="active" eval="True"/>
-            <field name="interval_number">1</field>
+            <field name="interval_number" eval="1"/>
             <field name="interval_type">days</field>
-            <field name="number_calls">-1</field>
+            <field name="number_calls" eval="-1"/>
             <field name="repeat_missed" eval="False"/>
             <field name="model">purchase.request</field>
             <field name="function">generate_requests</field>
