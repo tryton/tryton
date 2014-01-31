@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import datetime
 from decimal import Decimal
 from sql.aggregate import Sum
 
@@ -347,6 +348,8 @@ class TaxTemplate(ModelSQL, ModelView):
     description = fields.Char('Description', required=True, translate=True)
     group = fields.Many2One('account.tax.group', 'Group')
     sequence = fields.Integer('Sequence')
+    start_date = fields.Date('Starting Date')
+    end_date = fields.Date('Ending Date')
     amount = fields.Numeric('Amount', digits=(16, 8),
         states={
             'required': Eval('type') == 'fixed',
@@ -449,7 +452,8 @@ class TaxTemplate(ModelSQL, ModelView):
         res = {}
         for field in ('name', 'description', 'sequence', 'amount',
                 'rate', 'type', 'invoice_base_sign', 'invoice_tax_sign',
-                'credit_note_base_sign', 'credit_note_tax_sign'):
+                'credit_note_base_sign', 'credit_note_tax_sign',
+                'start_date', 'end_date'):
             if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
@@ -571,6 +575,8 @@ class Tax(ModelSQL, ModelView):
             }, depends=['parent'])
     active = fields.Boolean('Active')
     sequence = fields.Integer('Sequence', help='Use to order the taxes')
+    start_date = fields.Date('Starting Date')
+    end_date = fields.Date('Ending Date')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
@@ -749,13 +755,17 @@ class Tax(ModelSQL, ModelView):
                 }
 
     @classmethod
-    def _unit_compute(cls, taxes, price_unit):
+    def _unit_compute(cls, taxes, price_unit, date):
         res = []
         for tax in taxes:
+            start_date = tax.start_date or datetime.date.min
+            end_date = tax.end_date or datetime.date.max
+            if not (start_date <= date <= end_date):
+                continue
             if tax.type != 'none':
                 res.append(tax._process_tax(price_unit))
             if len(tax.childs):
-                res.extend(cls._unit_compute(tax.childs, price_unit))
+                res.extend(cls._unit_compute(tax.childs, price_unit, date))
         return res
 
     @classmethod
@@ -766,16 +776,20 @@ class Tax(ModelSQL, ModelView):
         return sorted(taxes, key=lambda t: (t.sequence, t.id))
 
     @classmethod
-    def compute(cls, taxes, price_unit, quantity):
+    def compute(cls, taxes, price_unit, quantity, date=None):
         '''
-        Compute taxes for price_unit and quantity.
+        Compute taxes for price_unit and quantity at the date.
         Return list of dict for each taxes and their childs with:
             base
             amount
             tax
         '''
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if date is None:
+            date = Date.today()
         taxes = cls.sort_taxes(taxes)
-        res = cls._unit_compute(taxes, price_unit)
+        res = cls._unit_compute(taxes, price_unit, date)
         quantity = Decimal(str(quantity or 0.0))
         for row in res:
             row['base'] *= quantity
