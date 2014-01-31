@@ -4,618 +4,618 @@
         <record model="account.account.type.template" id="type_balance">
             <field name="name">Kontentypenplan SKR03 (Germany)</field>
             <field name="balance_sheet" eval="True"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_960">
             <field name="name">Aktiva</field>
             <field name="parent" ref="type_balance"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1020">
             <field name="name">Ausstehende Einlagen</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1025">
             <field name="name">davon eingefordert</field>
             <field name="parent" ref="type_1020"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1050">
             <field name="name">Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1060">
             <field name="name">Aufwendungen für die Währungsumstellung auf den Euro</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1080">
             <field name="name">Anlagevermögen</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1100">
             <field name="name">Immaterielle Vermögensgegenstände</field>
             <field name="parent" ref="type_1080"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1120">
             <field name="name">Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte und Werte sowie Lizenzen an solchen Rechten und Werten</field>
             <field name="parent" ref="type_1100"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1130">
             <field name="name">Geschäfts- oder Firmenwert</field>
             <field name="parent" ref="type_1100"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1150">
             <field name="name">geleistete Anzahlungen</field>
             <field name="parent" ref="type_1100"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1180">
             <field name="name">Sachanlagen</field>
             <field name="parent" ref="type_1080"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1200">
             <field name="name">Grundstücke, grundstücksgleiche Rechte und Bauten einschließlich der Bauten auf fremden Grundstücken</field>
             <field name="parent" ref="type_1180"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1210">
             <field name="name">technische Anlagen und Maschinen</field>
             <field name="parent" ref="type_1180"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1220">
             <field name="name">andere Anlagen, Betriebs- und Geschäftsausstattung</field>
             <field name="parent" ref="type_1180"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1230">
             <field name="name">geleistete Anzahlungen und Anlagen im Bau</field>
             <field name="parent" ref="type_1180"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1260">
             <field name="name">Finanzanlagen</field>
             <field name="parent" ref="type_1080"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1280">
             <field name="name">Anteile an verbundenen Unternehmen</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1290">
             <field name="name">Ausleihungen an verbundene Unternehmen</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1300">
             <field name="name">Beteiligungen</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1310">
             <field name="name">Ausleihungen an Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1320">
             <field name="name">Wertpapiere des Anlagevermögens</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1325">
             <field name="name">sonstige Ausleihungen</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1328">
             <field name="name">Genossenschaftsanteile</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1330">
             <field name="name">Rückdeckungsansprüche aus Lebensversicherungen</field>
             <field name="parent" ref="type_1260"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1410">
             <field name="name">Umlaufvermögen</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1430">
             <field name="name">Vorräte</field>
             <field name="parent" ref="type_1410"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1450">
             <field name="name">Roh-, Hilfs- und Betriebsstoffe</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1460">
             <field name="name">unfertige Erzeugnisse, unfertige Leistungen</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1465">
             <field name="name">in Ausführung befindliche Bauaufträge</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1467">
             <field name="name">in Arbeit befindliche Aufträge</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1470">
             <field name="name">fertige Erzeugnisse und Waren</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1480">
             <field name="name">geleistete Anzahlungen</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1490">
             <field name="name">erhaltene Anzahlungen auf Bestellungen</field>
             <field name="parent" ref="type_1430"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1510">
             <field name="name">Forderungen und sonstige Vermögensgegenstände</field>
             <field name="parent" ref="type_1410"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1530">
             <field name="name">Forderungen aus Lieferungen und Leistungen</field>
             <field name="parent" ref="type_1510"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1535">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1530"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1540">
             <field name="name">Forderungen gegen verbundene Unternehmen</field>
             <field name="parent" ref="type_1510"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1545">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1540"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1550">
             <field name="name">Forderungen gegen Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="type_1510"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1555">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1550"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1580">
             <field name="name">sonstige Vermögensgegenstände</field>
             <field name="parent" ref="type_1510"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1585">
             <field name="name">davon mit einer Restlaufzeit von mehr als einem Jahr</field>
             <field name="parent" ref="type_1580"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1600">
             <field name="name">Wertpapiere</field>
             <field name="parent" ref="type_1410"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1620">
             <field name="name">Anteile an verbundenen Unternehmen</field>
             <field name="parent" ref="type_1600"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1630">
             <field name="name">eigene Anteile</field>
             <field name="parent" ref="type_1600"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1640">
             <field name="name">sonstige Wertpapiere</field>
             <field name="parent" ref="type_1600"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1660">
             <field name="name">Kassenbestand, Bundesbankguthaben, Guthaben bei Kreditinstituten und Schecks</field>
             <field name="parent" ref="type_1410"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1680">
             <field name="name">Rechnungsabgrenzungsposten</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1700">
             <field name="name">Abgrenzung latenter Steuern</field>
             <field name="parent" ref="type_960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_1960">
             <field name="name">Passiva</field>
             <field name="parent" ref="type_balance"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2020">
             <field name="name">Kapital</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2030">
             <field name="name">Anfangskapital</field>
             <field name="parent" ref="type_2020"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2050">
             <field name="name">Einlagen</field>
             <field name="parent" ref="type_2020"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2060">
             <field name="name">Entnahmen</field>
             <field name="parent" ref="type_2020"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2070">
             <field name="name">Jahresüberschuss Jahresfehlbetrag</field>
             <field name="parent" ref="type_2020"/>
             <field name="income_statement" eval="True"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2310">
             <field name="name">Einlagen stiller Gesellschafter</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2330">
             <field name="name">Sonderposten mit Rücklageanteil</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2335">
             <field name="name">Sonderposten für Zuschüsse und Zulagen</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2340">
             <field name="name">Sonderposten aus der Währungsumstellung auf den Euro</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2360">
             <field name="name">Rückstellungen</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2380">
             <field name="name">Rückstellungen für Pensionen und ähnliche Verpflichtungen</field>
             <field name="parent" ref="type_2360"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2390">
             <field name="name">Steuerrückstellungen</field>
             <field name="parent" ref="type_2360"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2410">
             <field name="name">sonstige Rückstellungen</field>
             <field name="parent" ref="type_2360"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2440">
             <field name="name">Verbindlichkeiten</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2460">
             <field name="name">Anleihen</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2465">
             <field name="name">davon konvertibel</field>
             <field name="parent" ref="type_2460"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2467">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2460"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2470">
             <field name="name">Verbindlichkeiten gegenüber Kreditinstituten</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2475">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2470"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2480">
             <field name="name">erhaltene Anzahlungen auf Bestellungen</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2485">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2480"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2490">
             <field name="name">Verbindlichkeiten aus Lieferungen und Leistungen</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2495">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2490"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2500">
             <field name="name">Verbindlichkeiten aus der Annahme gezogener Wechsel und der Ausstellung eigener Wechsel</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2505">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2500"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2510">
             <field name="name">Verbindlichkeiten gegenüber verbundenen Unternehmen</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2515">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2510"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2520">
             <field name="name">Verbindlichkeiten gegenüber Unternehmen, mit denen ein Beteiligungsverhältnis besteht</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2525">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2520"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2530">
             <field name="name">sonstige Verbindlichkeiten</field>
             <field name="parent" ref="type_2440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2535">
             <field name="name">davon aus Steuern</field>
             <field name="parent" ref="type_2530"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2537">
             <field name="name">davon im Rahmen der sozialen Sicherheit</field>
             <field name="parent" ref="type_2530"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2539">
             <field name="name">davon mit einer Restlaufzeit bis zu einem Jahr</field>
             <field name="parent" ref="type_2530"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2560">
             <field name="name">Rechnungsabgrenzungsposten</field>
             <field name="parent" ref="type_1960"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2890">
             <field name="name">Bilanzneutrale Konten</field>
             <field name="parent" ref="type_balance"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_2980">
             <field name="name">Verbindlichkeiten aus der Begebung und Übertragung von Wechseln, aus Bürgschaften, Wechsel- und Scheckbürgschaften und aus Gewährleistungsverträgen sowie Haftung aus Bestellung von Sicherheiten für fremde Verbindlichkeiten</field>
             <field name="parent" ref="type_2560"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_3010x">
             <field name="name">Ergebnis der gewöhnlichen Geschäftstätigkeit</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4020">
             <field name="name">Umsatzerlöse</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4040">
             <field name="name">Erhöhung des Bestands an fertigen und unfertigen Erzeugnissen Verminderung des Bestands an fertigen und unfertigen Erzeugnissen</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4045">
             <field name="name">Erhöhung des Bestands in Ausführung befindlicher Bauaufträge Verminderung des Bestands in Ausführung befindlicher Bauaufträge</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4050">
             <field name="name">Erhöhung des Bestands in Arbeit befindlicher Aufträge Verminderung des Bestands in Arbeit befindlicher Aufträge</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4060">
             <field name="name">andere aktivierte Eigenleistungen</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4080">
             <field name="name">sonstige betriebliche Erträge</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4100">
             <field name="name">Materialaufwand</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4120">
             <field name="name">Aufwendungen für Roh-, Hilfs- und Betriebsstoffe und für bezogene Waren</field>
             <field name="parent" ref="type_4100"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4140">
             <field name="name">Aufwendungen für bezogene Leistungen</field>
             <field name="parent" ref="type_4100"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4160">
             <field name="name">Personalaufwand</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4180">
             <field name="name">Löhne und Gehälter</field>
             <field name="parent" ref="type_4160"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4200">
             <field name="name">soziale Abgaben und Aufwendungen für Altersversorgung und für Unterstützung</field>
             <field name="parent" ref="type_4160"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4205">
             <field name="name">davon für Altersversorgung</field>
             <field name="parent" ref="type_4200"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4220">
             <field name="name">Abschreibungen</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4240">
             <field name="name">auf immaterielle Vermögensgegenstände des Anlagevermögens und Sachanlagen sowie auf aktivierte Aufwendungen für die Ingangsetzung und Erweiterung des Geschäftsbetriebs</field>
             <field name="parent" ref="type_4220"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4260">
             <field name="name">auf Vermögensgegenstände des Umlaufvermögens, soweit diese die in der Kapitalgesellschaft üblichen Abschreibungen überschreiten</field>
             <field name="parent" ref="type_4220"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4280">
             <field name="name">sonstige betriebliche Aufwendungen</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4300">
             <field name="name">Erträge aus Beteiligungen</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4305">
             <field name="name">davon aus verbundenen Unternehmen</field>
             <field name="parent" ref="type_4300"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4315">
             <field name="name">auf Grund einer Gewinngemeinschaft, eines Gewinnabführungs- oder Teilgewinnabführungsvertrags erhaltene Gewinne</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4320">
             <field name="name">Erträge aus anderen Wertpapieren und Ausleihungen des Finanzanlagevermögens</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4325">
             <field name="name">davon aus verbundenen Unternehmen</field>
             <field name="parent" ref="type_4320"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4340">
             <field name="name">sonstige Zinsen und ähnliche Erträge</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4345">
             <field name="name">davon aus verbundenen Unternehmen</field>
             <field name="parent" ref="type_4340"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4420">
             <field name="name">Abschreibungen auf Finanzanlagen und auf Wertpapiere des Umlaufvermögens</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4440">
             <field name="name">Zinsen und ähnliche Aufwendungen</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4445">
             <field name="name">davon an verbundene Unternehmen</field>
             <field name="parent" ref="type_4440"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4460">
             <field name="name">Aufwendungen aus Verlustübernahme</field>
             <field name="parent" ref="type_3010x"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4540">
             <field name="name">außerordentliche Erträge</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4560">
             <field name="name">außerordentliche Aufwendungen</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4580">
             <field name="name">außerordentliches Ergebnis</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4600">
             <field name="name">Steuern vom Einkommen und vom Ertrag</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4620">
             <field name="name">sonstige Steuern</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4635">
             <field name="name">Erträge aus Verlustübernahme</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template" id="type_4645">
             <field name="name">auf Grund einer Gewinngemeinschaft, eines Gewinnabführungs- oder Teilgewinnabführungsvertrags abgeführte Gewinne</field>
             <field name="parent" ref="type_2070"/>
-            <field name="sequence">10</field>
+            <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.template" id="root_de">
             <field name="name">Kontenplan SKR03 (Germany)</field>
