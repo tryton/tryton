@@ -101,12 +101,10 @@ class BankAccountNumber(ModelSQL, ModelView):
         if to_write:
             cls.write(*to_write)
 
-    @classmethod
-    def validate(cls, numbers):
-        super(BankAccountNumber, cls).validate(numbers)
-        for number in numbers:
-            if number.type == 'iban' and not iban.is_valid(number.number):
-                cls.raise_user_error('invalid_iban', number.number)
+    def pre_validate(self):
+        super(BankAccountNumber, self).pre_validate()
+        if self.type == 'iban' and not iban.is_valid(self.number):
+            self.raise_user_error('invalid_iban', self.number)
 
 
 class BankAccountParty(ModelSQL):
