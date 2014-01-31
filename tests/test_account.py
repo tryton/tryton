@@ -4,6 +4,7 @@ import unittest
 import doctest
 import datetime
 from decimal import Decimal
+from dateutil.relativedelta import relativedelta
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends, doctest_dropdb
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
@@ -31,6 +32,7 @@ class AccountTestCase(unittest.TestCase):
         self.period = POOL.get('account.period')
         self.balance_non_deferral = POOL.get(
             'account.fiscalyear.balance_non_deferral', type='wizard')
+        self.tax = POOL.get('account.tax')
 
     def test0005views(self):
         'Test views'
@@ -315,6 +317,111 @@ class AccountTestCase(unittest.TestCase):
                 self.assertEqual(receivable.balance, Decimal(100))
 
             transaction.cursor.rollback()
+
+    def test0040tax_compute(self):
+        'Test tax compute'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            today = datetime.date.today()
+
+            tax_account, = self.account.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+            tax = self.tax()
+            tax.name = tax.description = 'Test'
+            tax.type = 'none'
+            tax.invoice_account = tax_account
+            tax.credit_note_account = tax_account
+
+            child1 = self.tax()
+            child1.name = child1.description = 'Child 1'
+            child1.type = 'percentage'
+            child1.rate = Decimal('0.2')
+            child1.invoice_account = tax_account
+            child1.credit_note_account = tax_account
+            child1.save()
+
+            child2 = self.tax()
+            child2.name = child2.description = 'Child 1'
+            child2.type = 'fixed'
+            child2.amount = Decimal('10')
+            child2.invoice_account = tax_account
+            child2.credit_note_account = tax_account
+            child2.save()
+
+            tax.childs = [child1, child2]
+            tax.save()
+
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2),
+                [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('40.0'),
+                        'tax': child1,
+                        }, {
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
+
+            child1.end_date = today + relativedelta(days=5)
+            child1.save()
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2, today),
+                [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('40.0'),
+                        'tax': child1,
+                        }, {
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
+
+            child1.start_date = today + relativedelta(days=1)
+            child1.save()
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2, today),
+                [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+                    today + relativedelta(days=1)), [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('40.0'),
+                        'tax': child1,
+                        }, {
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+                    today + relativedelta(days=5)), [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('40.0'),
+                        'tax': child1,
+                        }, {
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+                    today + relativedelta(days=6)), [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
+
+            child1.end_date = None
+            child1.save()
+            self.assertEqual(self.tax.compute([tax], Decimal('100'), 2,
+                    today + relativedelta(days=6)), [{
+                        'base': Decimal('200'),
+                        'amount': Decimal('40.0'),
+                        'tax': child1,
+                        }, {
+                        'base': Decimal('200'),
+                        'amount': Decimal('20'),
+                        'tax': child2,
+                        }])
 
 
 def suite():
