@@ -196,11 +196,10 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        moves = cls.search(['OR',
-                ('post_number',) + tuple(clause[1:]),
-                (cls._rec_name,) + tuple(clause[1:]),
-                ])
-        return [('id', 'in', [m.id for m in moves])]
+        return ['OR',
+            ('post_number',) + tuple(clause[1:]),
+            (cls._rec_name,) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def write(cls, *args):

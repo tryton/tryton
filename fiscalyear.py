@@ -311,6 +311,13 @@ class FiscalYear(ModelSQL, ModelView):
                 'state': 'open',
                 })
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('code',) + tuple(clause[1:]),
+            (cls._rec_name,) + tuple(clause[1:]),
+            ]
+
 
 class BalanceNonDeferralStart(ModelView):
     'Balance Non-Deferral'

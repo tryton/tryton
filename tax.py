@@ -230,10 +230,10 @@ class TaxCode(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        codes = cls.search([('code',) + tuple(clause[1:])], limit=1, order=[])
-        if codes:
-            return [('code',) + tuple(clause[1:])]
-        return [('name',) + tuple(clause[1:])]
+        return ['OR',
+            ('code',) + tuple(clause[1:]),
+            (cls._rec_name,) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def delete(cls, codes):

@@ -312,6 +312,13 @@ class Period(ModelSQL, ModelView):
     def post_move_sequence_used(self):
         return self.post_move_sequence or self.fiscalyear.post_move_sequence
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('code',) + tuple(clause[1:]),
+            (cls._rec_name,) + tuple(clause[1:]),
+            ]
+
 
 class ClosePeriod(Wizard):
     'Close Period'
