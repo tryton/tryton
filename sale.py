@@ -190,6 +190,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                 ('quotation', 'confirmed'),
                 ('confirmed', 'processing'),
                 ('processing', 'processing'),
+                ('done', 'processing'),
                 ('draft', 'cancel'),
                 ('quotation', 'cancel'),
                 ('quotation', 'draft'),
@@ -883,8 +884,6 @@ class Sale(Workflow, ModelSQL, ModelView):
     def process(cls, sales):
         done = []
         for sale in sales:
-            if sale.state in ('done', 'cancel'):
-                continue
             sale.create_invoice('out_invoice')
             sale.create_invoice('out_credit_note')
             sale.set_invoice_state()
