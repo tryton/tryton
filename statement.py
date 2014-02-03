@@ -66,6 +66,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                 'wrong_end_balance': 'End Balance must be "%s".',
                 'delete_cancel': ('Statement "%s" must be cancelled before '
                     'deletion.'),
+                'paid_invoice_draft_statement': ('There are paid invoices on '
+                    'draft statements, do you want to proceed?'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -280,8 +282,11 @@ class Statement(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('validated')
     def validate_statement(cls, statements):
-        Lang = Pool().get('ir.lang')
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Line = pool.get('account.statement.line')
 
+        statement_lines = []
         for statement in statements:
             computed_end_balance = statement.start_balance
             for line in statement.lines:
@@ -298,6 +303,20 @@ class Statement(Workflow, ModelSQL, ModelView):
                     error_args=(amount,))
             for line in statement.lines:
                 line.create_move()
+                statement_lines.append(line.id)
+        cls.write(statements, {
+                'state': 'validated',
+                })
+        common_lines = Line.search([
+                ('statement.state', '=', 'draft'),
+                ('invoice.state', '=', 'paid'),
+                ])
+        if common_lines:
+            warning_key = '_'.join(str(l.id) for l in common_lines)
+            cls.raise_user_warning(warning_key, 'paid_invoice_draft_statement')
+            Line.write(common_lines, {
+                    'invoice': None,
+                    })
 
     @classmethod
     @ModelView.button

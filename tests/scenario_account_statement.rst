@@ -362,3 +362,57 @@ Let's test the negative amount version of the supplier/customer invoices::
     3
     >>> statement.lines[-1].amount
     Decimal('10.00')
+
+Testing the use of an invoice in multiple statements::
+
+    >>> customer_invoice4 = Invoice(type='out_invoice')
+    >>> customer_invoice4.party = customer
+    >>> customer_invoice4.payment_term = payment_term
+    >>> invoice_line = InvoiceLine()
+    >>> customer_invoice4.lines.append(invoice_line)
+    >>> invoice_line.quantity = 1
+    >>> invoice_line.unit_price = Decimal('300')
+    >>> invoice_line.account = revenue
+    >>> invoice_line.description = 'Test'
+    >>> customer_invoice4.save()
+    >>> customer_invoice4.click('post')
+    >>> customer_invoice4.state
+    u'posted'
+
+    >>> statement1 = Statement(journal=statement_journal)
+    >>> statement1.end_balance = Decimal(380)
+    >>> statement_line = statement1.lines.new()
+    >>> statement_line.date = today
+    >>> statement_line.party = customer
+    >>> statement_line.account = receivable
+    >>> statement_line.amount = Decimal(300)
+    >>> statement_line.invoice = customer_invoice4
+    >>> statement1.save()
+
+    >>> statement2 = Statement(journal=statement_journal)
+    >>> statement2.end_balance = Decimal(680)
+    >>> statement_line = statement2.lines.new()
+    >>> statement_line.date = today
+    >>> statement_line.party = customer
+    >>> statement_line.account = receivable
+    >>> statement_line.amount = Decimal(300)
+    >>> statement_line.invoice = customer_invoice4
+    >>> statement2.save()
+
+    >>> statement1.click('validate_statement') # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserWarning: ...
+    >>> statement2.reload()
+    >>> Model.get('res.user.warning')(user=config.user,
+    ...     name=str(statement2.lines[0].id), always=True).save()
+    >>> statement1.click('validate_statement')
+    >>> statement1.state
+    u'validated'
+
+    >>> statement1.reload()
+    >>> bool(statement1.lines[0].invoice)
+    True
+    >>> statement2.reload()
+    >>> bool(statement2.lines[0].invoice)
+    False
