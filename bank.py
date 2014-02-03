@@ -101,9 +101,11 @@ class BankAccountNumber(ModelSQL, ModelView):
         if to_write:
             cls.write(*to_write)
 
+    @fields.depends('type', 'number')
     def pre_validate(self):
         super(BankAccountNumber, self).pre_validate()
-        if self.type == 'iban' and not iban.is_valid(self.number):
+        if (self.type == 'iban' and self.number
+                and not iban.is_valid(self.number)):
             self.raise_user_error('invalid_iban', self.number)
 
 
