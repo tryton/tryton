@@ -968,7 +968,7 @@
         changed: function(record) {
             var prms = [];
             // TODO check readonly
-            if (this.description.on_change) {
+            if (!jQuery.isEmptyObject(this.description.on_change)) {
                 prms.push(record.on_change(this.name,
                             this.description.on_change));
             }
