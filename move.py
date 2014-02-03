@@ -520,6 +520,9 @@ class Line(ModelSQL, ModelView):
             selection='get_origin'),
         'get_move_field', searcher='search_move_field')
     description = fields.Char('Description')
+    move_description = fields.Function(fields.Char('Move Description'),
+        'get_move_field', setter='set_move_field',
+        searcher='search_move_field')
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, Eval('second_currency_digits', 2)),
             help='The amount expressed in a second currency',
@@ -1032,9 +1035,9 @@ class Line(ModelSQL, ModelView):
         return res
 
     def get_move_field(self, name):
-        if name == 'move_state':
-            name = 'state'
-        if name in ('date', 'state'):
+        if name.startswith('move_'):
+            name = name[5:]
+        if name in ('date', 'state', 'description'):
             return getattr(self.move, name)
         elif name == 'origin':
             origin = getattr(self.move, name)
@@ -1046,8 +1049,8 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def set_move_field(cls, lines, name, value):
-        if name == 'move_state':
-            name = 'state'
+        if name.startswith('move_'):
+            name = name[5:]
         if not value:
             return
         Move = Pool().get('account.move')
@@ -1057,8 +1060,8 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def search_move_field(cls, name, clause):
-        if name == 'move_state':
-            name = 'state'
+        if name.startswith('move_'):
+            name = name[5:]
         return [('move.' + name,) + tuple(clause[1:])]
 
     def _order_move_field(name):
