@@ -158,6 +158,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
                 ('confirmed', 'confirmed'),
+                ('done', 'confirmed'),
                 ('draft', 'cancel'),
                 ('quotation', 'cancel'),
                 ('quotation', 'draft'),
@@ -771,8 +772,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
     def process(cls, purchases):
         done = []
         for purchase in purchases:
-            if purchase.state in ('done', 'cancel'):
-                continue
             purchase.create_invoice('in_invoice')
             purchase.create_invoice('in_credit_note')
             purchase.set_invoice_state()
