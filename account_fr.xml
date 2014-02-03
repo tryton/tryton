@@ -6184,21 +6184,21 @@
         <record model="account.account.template" id="5121">
             <field name="name">Comptes en monnaie nationale</field>
             <field name="code">5121</field>
-            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="type" ref="disponibilites"/>
             <field name="kind">other</field>
             <field name="parent" ref="fr_pcg_cash"/>
         </record>
         <record model="account.account.template" id="5124">
             <field name="name">Comptes en devises</field>
             <field name="code">5124</field>
-            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="type" ref="disponibilites"/>
             <field name="kind">other</field>
             <field name="parent" ref="fr_pcg_cash"/>
         </record>
         <record model="account.account.template" id="514">
             <field name="name">Chèques postaux</field>
             <field name="code">514</field>
-            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="type" ref="disponibilites"/>
             <field name="kind">other</field>
             <field name="parent" ref="51"/>
         </record>
