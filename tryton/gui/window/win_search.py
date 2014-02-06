@@ -109,10 +109,8 @@ class WinSearch(NoModal):
         if response_id == gtk.RESPONSE_OK:
             res = self.screen.sel_ids_get()
         elif response_id == gtk.RESPONSE_APPLY:
-            if not self.screen.search_filter():
-                res = self.screen.sel_ids_get()
-            else:
-                return
+            self.screen.search_filter(self.screen.screen_container.get_text())
+            return
         elif response_id == gtk.RESPONSE_ACCEPT:
             screen = Screen(self.model_name, domain=self.domain,
                 context=self.context, mode=['form'])
