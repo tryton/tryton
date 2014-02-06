@@ -52,7 +52,7 @@ class StockMixin:
         product.
 
         location_ids is the list of IDs of locations to take account to compute
-            the stock. It can't be empty.
+            the stock.
         products restrict the stock computation to the this products (more
             efficient), so it should be the products related to records.
             If it is None all products are used.
@@ -96,7 +96,7 @@ class StockMixin:
                 quantities of all child locations but quantities of the storage
                 zone.
         location_ids is the list of IDs of locations to take account to compute
-            the stock. It can't be empty.
+            the stock.
         grouping defines how stock moves are grouped.
         position defines which field of grouping corresponds to the record
             whose quantity is computed.
