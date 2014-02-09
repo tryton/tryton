@@ -21,7 +21,7 @@ class TreeView(gtk.TreeView):
     def next_column(self, path, column=None, editable=True, _sign=1):
         columns = self.get_columns()
         if column is None:
-            column = columns[-1 * _sign]
+            column = columns[-1 if _sign > 0 else 0]
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
         if _sign < 0:
