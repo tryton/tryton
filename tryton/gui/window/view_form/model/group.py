@@ -398,9 +398,6 @@ class Group(SignalEvent, list):
                     to_add.keys(), main_iteration=False, context=self.context)
             except RPCException:
                 return False
-            for name in to_add:
-                if name not in values:
-                    values[name] = False
             for record in new:
                 record.set_default(values, signal=signal)
 
