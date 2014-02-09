@@ -791,7 +791,7 @@ class Translation(ModelSQL, ModelView):
             if len(module_translations) <= RECORD_CACHE_SIZE:
                 id2translation[translation.id] = translation
 
-        def override_translation(ressource_id, new_translation, fuzzy):
+        def override_translation(ressource_id, new_translation, src, fuzzy):
             res_id_module, res_id = ressource_id.split('.')
             if res_id:
                 model_data, = ModelData.search([
@@ -803,13 +803,17 @@ class Translation(ModelSQL, ModelView):
                 res_id = -1
             with contextlib.nested(Transaction().set_user(0),
                     Transaction().set_context(module=res_id_module)):
-                translation, = cls.search([
-                        ('name', '=', name),
-                        ('res_id', '=', res_id),
-                        ('lang', '=', lang),
-                        ('type', '=', ttype),
-                        ('module', '=', res_id_module),
-                        ])
+                domain = [
+                    ('name', '=', name),
+                    ('res_id', '=', res_id),
+                    ('lang', '=', lang),
+                    ('type', '=', ttype),
+                    ('module', '=', res_id_module),
+                    ]
+                if ttype in ('odt', 'view', 'wizard_button', 'selection',
+                        'error'):
+                    domain.append(('src', '=', src))
+                translation, = cls.search(domain)
                 if translation.value != new_translation:
                     translation.value = new_translation
                     translation.overriding_module = module
@@ -835,7 +839,7 @@ class Translation(ModelSQL, ModelView):
                 noupdate = False
 
                 if '.' in res_id:
-                    override_translation(res_id, value, fuzzy)
+                    override_translation(res_id, value, ttype, fuzzy)
                     continue
 
                 model = name.split(',')[0]
