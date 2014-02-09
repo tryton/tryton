@@ -49,8 +49,10 @@ class Char(WidgetInterface, TranslateMixin):
     def translate_widget(self):
         entry = gtk.Entry()
         entry.set_property('activates_default', True)
-        entry.set_width_chars(int(self.attrs.get('size', -1)))
-        entry.set_max_length(int(self.attrs.get('size', 0)))
+        if self.record:
+            field_size = self.record.expr_eval(self.attrs.get('size'))
+            entry.set_width_chars(field_size or -1)
+            entry.set_max_length(field_size or 0)
         return entry
 
     @staticmethod
