@@ -121,7 +121,8 @@ class Letter(CompanyReport):
                         ],
                     order=[('party', 'ASC'), ('id', 'ASC')]))
         payments = list(chain(*payments))
-        return dict(groupby(payments, attrgetter('party')))
+        return dict((party, list(payments))
+            for party, payments in groupby(payments, attrgetter('party')))
 
     @staticmethod
     def get_payment_amount(payment):
