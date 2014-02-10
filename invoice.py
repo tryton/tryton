@@ -2445,7 +2445,7 @@ class PayInvoiceAsk(ModelView):
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
         domain=[
             ('id', 'in', Eval('lines_to_pay')),
-            ('reconciliation', '=', False),
+            ('reconciliation', '=', None),
             ],
         states={
             'invisible': Eval('type') != 'writeoff',
