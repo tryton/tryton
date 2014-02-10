@@ -866,10 +866,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
             term_lines = [(Date.today(), total)]
         for date, amount in term_lines:
             val = self._get_move_line(date, amount)
-            remainder_total_currency -= val['amount_second_currency']
+            remainder_total_currency += val['amount_second_currency']
             move_lines.append(val)
         if not self.currency.is_zero(remainder_total_currency):
-            move_lines[-1]['amount_second_currency'] += \
+            move_lines[-1]['amount_second_currency'] -= \
                 remainder_total_currency
 
         accounting_date = self.accounting_date or self.invoice_date
