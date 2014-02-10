@@ -6,7 +6,8 @@ import itertools
 import operator
 from sql import Literal
 from sql.aggregate import Count, Sum
-from sql.conditionals import Coalesce
+from sql.conditionals import Coalesce, Case
+from sql.functions import Abs
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.report import Report
@@ -574,7 +575,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     condition=invoice.move == move.id
                     ).join(line, condition=move.id == line.move
                     ).select(invoice.id,
-                    Coalesce(Sum(line.debit - line.credit), 0).cast(type_name),
+                    Coalesce(Sum(
+                            Case((line.second_currency == invoice.currency,
+                                    Abs(line.amount_second_currency)
+                                    * Abs(line.debit - line.credit)
+                                    / (line.debit - line.credit)),
+                                else_=line.debit - line.credit)),
+                        0).cast(type_name),
                     where=(invoice.account == line.account) & red_sql,
                     group_by=invoice.id))
             for invoice_id, sum_ in cursor.fetchall():
