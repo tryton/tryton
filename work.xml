@@ -133,7 +133,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Tasks</field>
             <field name="res_model">project.work</field>
             <field name="context"></field>
-            <field name="domain">[('parent', '=', Eval('active_id')), ('type', '=', 'task')]</field>
+            <field name="domain">[('parent', 'in', Eval('active_ids')), ('type', '=', 'task')]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_project_work_keyword1">
