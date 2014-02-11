@@ -39,7 +39,8 @@
                     <button name="run"
                         string="Run" icon="tryton-go-next"/>
                     <button name="close"
-                        string="Close" icon="tryton-close"/>
+                        string="Close" icon="tryton-close"
+                        confirm="Are you sure to close the asset?"/>
                 </group>
             </group>
         </page>
