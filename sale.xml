@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_sale_drop_shipment_form">
             <field name="name">Drop Shipments</field>
             <field name="res_model">stock.shipment.drop</field>
-            <field name="domain">[("id", "in", Eval('drop_shipments'))]</field>
+            <field name="domain">[('moves.sale', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_sale_drop_shipment_keyword1">
