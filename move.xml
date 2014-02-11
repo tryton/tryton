@@ -84,7 +84,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_reconciliation_lines">
             <field name="name">Reconciliation Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('reconciliation', '=', Eval('active_id'))]</field>
+            <field name="domain">[('reconciliation', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.keyword" id="act_move_reconciliation_lines_keyword1">
             <field name="keyword">form_relate</field>
@@ -191,7 +191,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_line_payable">
             <field name="name">Payable Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('party', '=', Eval('active_id')), ('account.kind', '=', 'payable'), ('reconciliation', '=', None)]</field>
+            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', '=', 'payable'), ('reconciliation', '=', None)]</field>
         </record>
         <record model="ir.action.keyword" id="act_move_line_payable_keyword1">
             <field name="keyword">form_relate</field>
@@ -207,7 +207,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_move_line_receivable">
             <field name="name">Receivable Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('party', '=', Eval('active_id')), ('account.kind', '=', 'receivable'), ('reconciliation', '=', None)]</field>
+            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', '=', 'receivable'), ('reconciliation', '=', None)]</field>
         </record>
         <record model="ir.action.keyword" id="act_move_line_receivable_keyword1">
             <field name="keyword">form_relate</field>
