@@ -69,7 +69,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_shipment_form">
             <field name="name">Shipments</field>
             <field name="res_model">stock.shipment.in</field>
-            <field name="domain">[("id", "in", Eval('shipments'))]</field>
+            <field name="domain">[('moves.purchase', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_shipment_keyword1">
@@ -80,7 +80,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_return_form">
             <field name="name">Returns</field>
             <field name="res_model">stock.shipment.in.return</field>
-            <field name="domain">[("id", "in", Eval('shipment_returns'))]</field>
+            <field name="domain">[('moves.purchase', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.keyword"
             id="act_open_shipment_return_keyword1">
@@ -91,8 +91,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="domain">[("id", "in", Eval('invoices'))]</field>
-            <field name="context">{'type': 'in_invoice'}</field>
+            <field name="domain">[('lines.origin.purchase.id', 'in', Eval('active_ids'), 'purchase.line')]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
@@ -166,7 +165,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_purchase_invoice_relate">
             <field name="name">Purchases</field>
             <field name="res_model">purchase.purchase</field>
-            <field name="domain">[('invoices', 'in', [Eval('id')])]</field>
+            <field name="domain">[('invoices', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_purchase_invoice_relate_view1">
