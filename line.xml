@@ -35,7 +35,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_line_form_work">
             <field name="name">Timesheet Lines</field>
             <field name="res_model">timesheet.line</field>
-            <field name="domain">[('work', '=', Eval('id'))]</field>
+            <field name="domain">[('work', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.act_window.view"
             id="act_line_form_work_view1">
