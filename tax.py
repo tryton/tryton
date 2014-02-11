@@ -818,48 +818,60 @@ class Tax(ModelSQL, ModelView):
 
         if self.template:
             vals = self.template._get_tax_value(tax=self)
-            if (self.template.invoice_account
-                    and self.invoice_account.id != template2account.get(
-                        self.template.invoice_account.id)):
+            invoice_account_id = (self.invoice_account.id
+                if self.invoice_account else None)
+            if (self.template.invoice_account and
+                    invoice_account_id != template2account.get(
+                            self.template.invoice_account.id)):
                 vals['invoice_account'] = template2account.get(
                     self.template.invoice_account.id)
             elif (not self.template.invoice_account
                     and self.invoice_account):
                 vals['invoice_account'] = None
-            if (self.template.credit_note_account
-                    and self.credit_note_account.id != template2account.get(
+            credit_note_account_id = (self.credit_note_account.id
+                if self.credit_note_account else None)
+            if (self.template.credit_note_account and
+                    credit_note_account_id != template2account.get(
                         self.template.credit_note_account.id)):
                 vals['credit_note_account'] = template2account.get(
                     self.template.credit_note_account.id)
             elif (not self.template.credit_note_account
                     and self.credit_note_account):
                 vals['credit_note_account'] = None
-            if (self.template.invoice_base_code
-                    and self.invoice_base_code.id != template2tax_code.get(
-                        self.template.invoice_base_code.id)):
+            invoice_base_code_id = (self.invoice_base_code.id
+                if self.invoice_base_code else None)
+            if (self.template.invoice_base_code and
+                    invoice_base_code_id != template2tax_code.get(
+                            self.template.invoice_base_code.id)):
                 vals['invoice_base_code'] = template2tax_code.get(
                     self.template.invoice_base_code.id)
             elif (not self.template.invoice_base_code
                     and self.invoice_base_code):
                 vals['invoice_base_code'] = None
+            invoice_tax_code_id = (self.invoice_tax_code.id
+                if self.invoice_tax_code else None)
             if (self.template.invoice_tax_code
-                    and self.invoice_tax_code.id != template2tax_code.get(
+                    and invoice_tax_code_id != template2tax_code.get(
                         self.template.invoice_tax_code.id)):
                 vals['invoice_tax_code'] = template2tax_code.get(
                     self.template.invoice_tax_code.id)
             elif (not self.template.invoice_tax_code
                     and self.invoice_tax_code):
                 vals['invoice_tax_code'] = None
+            credit_note_base_code_id = (self.credit_note_base_code.id
+                if self.credit_note_base_code else None)
             if (self.template.credit_note_base_code
-                    and self.credit_note_base_code.id != template2tax_code.get(
+                    and credit_note_base_code_id != template2tax_code.get(
                         self.template.credit_note_base_code.id)):
                 vals['credit_note_base_code'] = template2tax_code.get(
                     self.template.credit_note_base_code.id)
             elif (not self.template.credit_note_base_code
                     and self.credit_note_base_code):
                 vals['credit_note_base_code'] = None
+            credit_note_tax_code_id = (self.credit_note_tax_code.id
+                if self.credit_note_tax_code else None)
             if (self.template.credit_note_tax_code
-                    and self.credit_note_tax_code.id != template2tax_code.get(
+                    and credit_note_tax_code_id != template2tax_code.get(
                         self.template.credit_note_tax_code.id)):
                 vals['credit_note_tax_code'] = template2tax_code.get(
                     self.template.credit_note_tax_code.id)
@@ -1136,8 +1148,6 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         res = {}
         if not rule_line or rule_line.group != self.group:
             res['group'] = self.group.id if self.group else None
-        if not rule_line or rule_line.origin_tax != self.origin_tax:
-            res['origin_tax'] = self.origin_tax.id if self.origin_tax else None
         if not rule_line or rule_line.sequence != self.sequence:
             res['sequence'] = self.sequence
         if not rule_line or rule_line.template != self:
@@ -1291,14 +1301,22 @@ class TaxRuleLine(ModelSQL, ModelView):
                 vals['rule'] = template2rule[self.template.rule.id]
             if self.origin_tax:
                 if self.template.origin_tax:
-                    if self.origin_tax.id != \
-                            template2tax[self.template.origin_tax.id]:
+                    if (self.origin_tax.id !=
+                            template2tax[self.template.origin_tax.id]):
                         vals['origin_tax'] = template2tax[
                             self.template.origin_tax.id]
+                else:
+                    vals['origin_tax'] = None
+            elif self.template.origin_tax:
+                vals['origin_tax'] = template2tax[self.template.origin_tax.id]
             if self.tax:
                 if self.template.tax:
                     if self.tax.id != template2tax[self.template.tax.id]:
                         vals['tax'] = template2tax[self.template.tax.id]
+                else:
+                    vals['tax'] = None
+            elif self.template.tax:
+                vals['tax'] = template2tax[self.template.tax.id]
             if vals:
                 self.write([self], vals)
             template2rule_line[self.template.id] = self.id
