@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_invoice_form2">
             <field name="name">Invoices</field>
             <field name="res_model">account.invoice</field>
-            <field name="domain">[("party", "=", Eval('active_id'))]</field>
+            <field name="domain">[('party', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
