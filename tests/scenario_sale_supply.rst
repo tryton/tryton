@@ -59,6 +59,7 @@ Reload the context::
     >>> User = Model.get('res.user')
     >>> Group = Model.get('res.group')
     >>> config._context = User.get_preferences(True, config.context)
+    >>> admin_user, = User.find([('login', '=', 'admin')])
 
 Create sale user::
 
@@ -276,3 +277,71 @@ Receive 100 products::
     ...     if x.state == 'draft']
     >>> move.quantity
     150.0
+
+Switching from not supplying on sale to supplying on sale for product should
+not create a new purchase request::
+
+    >>> config.user = admin_user.id
+    >>> changing_product = Product()
+    >>> changing_template = ProductTemplate()
+    >>> changing_template.name = 'product'
+    >>> changing_template.category = category
+    >>> changing_template.default_uom = unit
+    >>> changing_template.type = 'goods'
+    >>> changing_template.purchasable = True
+    >>> changing_template.salable = True
+    >>> changing_template.list_price = Decimal('10')
+    >>> changing_template.cost_price = Decimal('5')
+    >>> changing_template.account_expense = expense
+    >>> changing_template.account_revenue = revenue
+    >>> changing_template.supply_on_sale = False
+    >>> changing_template.save()
+    >>> changing_product.template = changing_template
+    >>> changing_product.save()
+
+    >>> config.user = sale_user.id
+    >>> Sale = Model.get('sale.sale')
+    >>> SaleLine = Model.get('sale.line')
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = changing_product
+    >>> sale_line.quantity = 100
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+    >>> shipment, = sale.shipments
+    >>> config.user = stock_user.id
+    >>> Inventory = Model.get('stock.inventory')
+    >>> InventoryLine = Model.get('stock.inventory.line')
+    >>> Location = Model.get('stock.location')
+    >>> storage, = Location.find([
+    ...         ('code', '=', 'STO'),
+    ...         ])
+    >>> inventory = Inventory()
+    >>> inventory.location = storage
+    >>> inventory.save()
+    >>> inventory_line = inventory.lines.new()
+    >>> inventory_line.product = changing_product
+    >>> inventory_line.quantity = 100.0
+    >>> inventory_line.expected_quantity = 0.0
+    >>> inventory.save()
+    >>> inventory.click('confirm')
+    >>> inventory.state
+    u'done'
+    >>> ShipmentOut = Model.get('stock.shipment.out')
+    >>> ShipmentOut.assign_try([shipment.id], config.context)
+    True
+    >>> ShipmentOut.pack([shipment.id], config.context)
+
+    >>> config.user = admin_user.id
+    >>> changing_template.supply_on_sale = True
+    >>> changing_template.save()
+
+    >>> config.user = stock_user.id
+    >>> shipment.click('done')
+    >>> len(PurchaseRequest.find([('product', '=', changing_product.id)]))
+    0
