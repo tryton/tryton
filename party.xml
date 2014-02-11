@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_opportunity_form2">
             <field name="name">Sales Leads/Opportunities</field>
             <field name="res_model">sale.opportunity</field>
-            <field name="domain">[("party", "=", Eval('active_id'))]</field>
+            <field name="domain">[('party', '=', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_sale_keyword1">
