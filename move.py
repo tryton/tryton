@@ -1112,7 +1112,7 @@ class Line(ModelSQL, ModelView):
                     & table.move.in_(move.join(period,
                             condition=move.period == period.id
                             ).select(move.id,
-                            where=(move.fiscalyear == fiscalyear_id)
+                            where=(period.fiscalyear == fiscalyear_id)
                             & (move.date <= Transaction().context['date'])
                             & (move.state == 'posted'))),
                     [f.id for f in fiscalyears])
