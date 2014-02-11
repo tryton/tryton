@@ -171,7 +171,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_dunning_party">
             <field name="name">Dunnings</field>
             <field name="res_model">account.dunning</field>
-            <field name="domain">[('line.party', '=', Eval('active_id'))]</field>
+            <field name="domain">[('line.party', 'in', Eval('active_ids'))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_dunning_party_view1">
             <field name="sequence" eval="10"/>
