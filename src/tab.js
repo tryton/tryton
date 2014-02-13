@@ -274,6 +274,21 @@
                             at: 'left bottom',
                             of: button
                         });
+                        if (menu_action[0] == 'action') {
+                            menu.find('.action_button').remove();
+                            var buttons = screen.get_buttons();
+                            buttons.forEach(function(button) {
+                                var item = jQuery('<li/>', {
+                                    'class': 'ui-menu-item action_button'
+                                }).append(
+                                    jQuery('<a/>').append(
+                                        button.attributes.string || ''));
+                                menu.append(item);
+                                item.click(function() {
+                                    screen.button(button.attributes);
+                                });
+                            });
+                        }
                         // Bind hide after the processing of the current click
                         window.setTimeout(function() {
                             jQuery(document).one('click', function() {

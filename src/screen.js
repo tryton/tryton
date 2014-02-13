@@ -684,25 +684,39 @@
             }
             this.display();
         },
+        get_buttons: function() {
+            var buttons = this.current_view.get_buttons();
+            this.current_view.selected_records().forEach(function(record) {
+                buttons = buttons.filter(function(button) {
+                    var states = record.expr_eval(
+                        button.attributes.states || {});
+                    return !(states.invisible || states.readonly);
+                });
+            });
+            return buttons;
+        },
         button: function(attributes) {
             // TODO confirm
             var record = this.current_record;
             record.save().done(function() {
-                var context = record.get_context();
+                var ids = this.current_view.selected_records().map(
+                    function(record) {
+                        return record.id;
+                    });
                 record.model.execute(attributes.name,
-                    [[record.id]], context).then(
+                    [ids], this.context).then(
                         function(action_id) {
                             if (action_id) {
                                 Sao.Action.execute(action_id, {
                                     model: this.model_name,
                                     id: record.id,
                                     ids: [record.id]
-                                }, null, context);
+                                }, null, this.context);
                             }
-                            this.reload([record.id], true);
+                            this.reload(ids, true);
                         }.bind(this),
                         function() {
-                            this.reload([record.id], true);
+                            this.reload(ids, true);
                         }.bind(this));
             }.bind(this));
         },

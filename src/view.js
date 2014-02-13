@@ -14,6 +14,9 @@
         },
         get_fields: function() {
             return Object.keys(this.fields);
+        },
+        get_buttons: function() {
+            return [];
         }
     });
 
@@ -213,6 +216,15 @@
                 }
                 this.columns.push(column);
             }.bind(this));
+        },
+        get_buttons: function() {
+            var buttons = [];
+            this.columns.forEach(function(column) {
+                if (column instanceof Sao.View.Tree.ButtonColumn) {
+                    buttons.push(column);
+                }
+            });
+            return buttons;
         },
         display: function(selected, expanded) {
             selected = selected || this.get_selected_paths();
@@ -1031,6 +1043,16 @@
             group.add(this.parse(model, node));
             this.state_widgets.push(group);
             container.add(attributes, group);
+        },
+        get_buttons: function() {
+            var buttons = [];
+            for (var j in this.state_widgets) {
+                var widget = this.state_widgets[j];
+                if (widget instanceof Sao.common.Button) {
+                    buttons.push(widget);
+                }
+            }
+            return buttons;
         },
         display: function() {
             var record = this.screen.current_record;
