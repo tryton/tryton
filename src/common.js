@@ -1268,9 +1268,12 @@
             'child_of': function() {return true;},
             'not child_of': function() {return true;}
         },
-        locale_part: function(expression, field_name) {
+        locale_part: function(expression, field_name, locale_name) {
+            if (locale_name === undefined) {
+                locale_name = 'id';
+            }
             if (expression === field_name) {
-                return 'id';
+                return locale_name;
             }
             if (expression.contains('.')) {
                 return expression.split('.').slice(1).join('.');
@@ -1312,6 +1315,14 @@
             } else if ((context_field instanceof Array) &&
                     (typeof value == 'string') && context_field.length == 2) {
                 context_field = context_field.join(',');
+            }
+            if (~['=', '!='].indexOf(operand) &&
+                    context_field instanceof Array &&
+                    typeof value == 'number') {
+                operand = {
+                    '=': 'in',
+                    '!=': 'not in'
+                }[operand];
             }
             return this.OPERATORS[operand](context_field, value);
         },
@@ -1361,7 +1372,11 @@
                         return [domain[3]].concat(domain.slice(1, -1));
                     }
                 }
-                return [this.locale_part(domain[0], field_name)]
+                var local_name = 'id';
+                if (typeof domain[2] == 'string') {
+                    local_name = 'rec_name';
+                }
+                return [this.locale_part(domain[0], field_name, local_name)]
                     .concat(domain.slice(1));
             } else {
                 return domain.map(function(e) {
@@ -1447,12 +1462,16 @@
     });
     Sao.common.DomainInversion.in_ = function(a, b) {
         if (a instanceof Array) {
-            for (var i = 0, len = a.length; i < len; i++) {
-                if (~b.indexOf(a[i])) {
-                    return true;
+            if (b instanceof Array) {
+                for (var i = 0, len = a.length; i < len; i++) {
+                    if (~b.indexOf(a[i])) {
+                        return true;
+                    }
                 }
+                return false;
+            } else {
+                return Boolean(~a.indexOf(b));
             }
-            return false;
         } else {
             return Boolean(~b.indexOf(a));
         }

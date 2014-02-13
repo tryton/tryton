@@ -1100,7 +1100,7 @@
                         var localpart = leftpart.split('.', 1)[1];
                         var constraintfields = [];
                         if (domain_readonly) {
-                            inverted_domain.localize_domain(
+                            inversion.localize_domain(
                                     original_domain.slice(1))
                                 .forEach(function(leaf) {
                                     constraintfields.push(leaf);
@@ -1551,6 +1551,43 @@
             return result;
         },
         set_client: function(record, value, force_change) {
+            // domain inversion could try to set id as value
+            if (typeof value == 'number') {
+                value = [value];
+            }
+
+            var previous_group = record._values[this.name];
+            var previous_ids = [];
+            if (!jQuery.isEmptyObject(previous_group)) {
+                previous_group.forEach(function(r) {
+                    previous_ids.push(r.id);
+                });
+            }
+            this._set_value(record, value);
+            if (!Sao.common.compare(previous_ids, value)) {
+                record._changed[this.name] = true;
+                this.changed(record).done(function() {
+                    // TODO parent
+                    record.validate(null, true).then(function() {
+                        record.group.changed().done(function() {
+                            var root_group = record.group.root_group();
+                            root_group.screens.forEach(function(screen) {
+                                screen.display();
+                            });
+                        });
+                    });
+                });
+            } else if (force_change) {
+                record._changed[this.name] = true;
+                this.changed(record).done(function() {
+                    record.validate(null, true).then(function() {
+                        var root_group = record.group.root_group();
+                        root_group.screens.forEach(function(screen) {
+                            screen.display();
+                        });
+                    });
+                });
+            }
         },
         get_client: function(record) {
             this._set_default_value(record);
@@ -1709,7 +1746,7 @@
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
             return [inversion.localize_domain(
-                    inversion.inverse_leaf(screen_domain)),
+                    inversion.inverse_leaf(screen_domain), this.name),
                    attr_domain];
         },
         validation_domains: function(record) {

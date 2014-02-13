@@ -1754,7 +1754,9 @@
         [[['x', '=', ['test', 1]]], {'x': ['test', 1]}, true],
         [[['x', '=', ['test', 1]]], {'x': 'test,1'}, true],
         [[['x', '=', ['test', 1]]], {'x': ['test', 2]}, false],
-        [[['x', '=', ['test', 1]]], {'x': 'test,2'}, false]
+        [[['x', '=', ['test', 1]]], {'x': 'test,2'}, false],
+        [[['x', '=', 1]], {'x': [1, 2]}, true],
+        [[['x', '=', 1]], {'x': [2]}, false]
         ].forEach(function(test) {
             var domain = test[0];
             var context = test[1];
@@ -1778,6 +1780,11 @@
         domain = [['x', '=', 5], ['x.code', '=', 7]];
         QUnit.ok(compare(localize_domain(domain, 'x'),
                 [['id', '=', 5], ['code', '=', 7]]),
+            'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
+
+        domain = [['x', 'ilike', 'foo%'], ['x.code', '=', 'test']];
+        QUnit.ok(compare(localize_domain(domain, 'x'),
+                [['rec_name', 'ilike', 'foo%'], ['code', '=', 'test']]),
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
 
         domain = ['OR', ['AND', ['x', '>', 7], ['x', '<', 15]],
