@@ -7,7 +7,7 @@ import operator
 from sql import Literal
 from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
-from sql.functions import Abs
+from sql.functions import Abs, Sign
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.report import Report
@@ -593,8 +593,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     Coalesce(Sum(
                             Case((line.second_currency == invoice.currency,
                                     Abs(line.amount_second_currency)
-                                    * Abs(line.debit - line.credit)
-                                    / (line.debit - line.credit)),
+                                    * Sign(line.debit - line.credit)),
                                 else_=line.debit - line.credit)),
                         0).cast(type_name),
                     where=(invoice.account == line.account) & red_sql,
