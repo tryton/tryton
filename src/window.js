@@ -254,6 +254,7 @@
                                 this.but_new.prop('disabled', true);
                             }
                         } else {
+                            result = true;
                             this.callback(result);
                             this.destroy();
                         }
