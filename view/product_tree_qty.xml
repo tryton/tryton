@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="template"/>
     <field name="code"/>
     <field name="quantity"/>
-    <field name="cost_value"/>
     <field name="forecast_quantity"/>
     <field name="default_uom"/>
+    <field name="cost_value" sum="Cost Value"/>
     <field name="active"/>
 </tree>

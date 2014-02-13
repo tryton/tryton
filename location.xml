@@ -86,6 +86,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">stock.location,-1</field>
             <field name="action" ref="wizard_products_by_locations"/>
         </record>
+        <record model="ir.action.keyword"
+                id="act_products_by_locations_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.location,-1</field>
+            <field name="action" ref="wizard_products_by_locations"/>
+        </record>
 
         <record model="ir.model.access" id="access_location">
             <field name="model" search="[('model', '=', 'stock.location')]"/>
