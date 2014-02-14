@@ -5569,16 +5569,16 @@
         <record model="account.account.template" id="4551">
             <field name="name">Principal</field>
             <field name="code">4551</field>
-            <field name="type" ref="creances_autres"/>
-            <field name="kind">receivable</field>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="kind">payable</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="455"/>
         </record>
         <record model="account.account.template" id="4558">
             <field name="name">Intérêts courus</field>
             <field name="code">4558</field>
-            <field name="type" ref="creances_autres"/>
-            <field name="kind">receivable</field>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="kind">payable</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="455"/>
         </record>
