@@ -220,13 +220,15 @@ Receive 9 products::
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('0.00'), Decimal('50.00'))
-    True
+    >>> stock_supplier.debit
+    Decimal('0.00')
+    >>> stock_supplier.credit
+    Decimal('50.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('50.00'), Decimal('0.00'))
-    True
+    >>> stock.debit
+    Decimal('50.00')
+    >>> stock.credit
+    Decimal('0.00')
 
 Open supplier invoice::
 
@@ -243,13 +245,15 @@ Open supplier invoice::
     >>> invoice.state
     u'posted'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('44.00'))
-    True
+    >>> payable.debit
+    Decimal('0.00')
+    >>> payable.credit
+    Decimal('44.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('44.00'), Decimal('0.00'))
-    True
+    >>> expense.debit
+    Decimal('44.00')
+    >>> expense.credit
+    Decimal('0.00')
 
 Sale 5 products::
 
@@ -291,13 +295,15 @@ Send 5 products::
     >>> shipment.state
     u'done'
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('28.00'), Decimal('0.00'))
-    True
+    >>> stock_customer.debit
+    Decimal('28.00')
+    >>> stock_customer.credit
+    Decimal('0.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('50.00'), Decimal('28.00'))
-    True
+    >>> stock.debit
+    Decimal('50.00')
+    >>> stock.credit
+    Decimal('28.00')
 
 Open customer invoice::
 
@@ -307,13 +313,15 @@ Open customer invoice::
     >>> invoice.state
     u'posted'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal('50.00'), Decimal('0.00'))
-    True
+    >>> receivable.debit
+    Decimal('50.00')
+    >>> receivable.credit
+    Decimal('0.00')
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal('0.00'), Decimal('50.00'))
-    True
+    >>> revenue.debit
+    Decimal('0.00')
+    >>> revenue.credit
+    Decimal('50.00')
 
 Create an Inventory::
 
@@ -335,13 +343,15 @@ Create an Inventory::
     >>> inventory.state
     u'done'
     >>> stock_lost_found.reload()
-    >>> (stock_lost_found.debit, stock_lost_found.credit) == \
-    ... (Decimal('11.00'), Decimal('0.00'))
-    True
+    >>> stock_lost_found.debit
+    Decimal('11.00')
+    >>> stock_lost_found.credit
+    Decimal('0.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('50.00'), Decimal('39.00'))
-    True
+    >>> stock.debit
+    Decimal('50.00')
+    >>> stock.credit
+    Decimal('39.00')
 
 Create Move from Supplier to Customer::
 
@@ -358,13 +368,15 @@ Create Move from Supplier to Customer::
     >>> move.save()
     >>> Move.do([move.id], config.context)
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal(0), Decimal(68))
-    True
+    >>> stock_supplier.debit
+    Decimal('0.00')
+    >>> stock_supplier.credit
+    Decimal('68.00')
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal(46), Decimal(0))
-    True
+    >>> stock_customer.debit
+    Decimal('46.00')
+    >>> stock_customer.credit
+    Decimal('0.00')
     >>> move = Move()
     >>> move.product = product_average
     >>> move.quantity = 4
@@ -376,10 +388,12 @@ Create Move from Supplier to Customer::
     >>> move.save()
     >>> Move.do([move.id], config.context)
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal(0), Decimal(88))
-    True
+    >>> stock_supplier.debit
+    Decimal('0.00')
+    >>> stock_supplier.credit
+    Decimal('88.00')
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('66'), Decimal(0))
-    True
+    >>> stock_customer.debit
+    Decimal('66.00')
+    >>> stock_customer.credit
+    Decimal('0.00')
