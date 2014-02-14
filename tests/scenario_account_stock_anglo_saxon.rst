@@ -245,17 +245,20 @@ Receive 9 products::
     u'done'
     >>> stock_supplier.reload()
     >>> stock.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('0.00'), Decimal('46.00'))
-    True
+    >>> stock_supplier.debit
+    Decimal('0.00')
+    >>> stock_supplier.credit
+    Decimal('46.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('50.00'), Decimal('0.00'))
-    True
+    >>> stock.debit
+    Decimal('50.00')
+    >>> stock.credit
+    Decimal('0.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('0.00'), Decimal('4.00'))
-    True
+    >>> expense.debit
+    Decimal('0.00')
+    >>> expense.credit
+    Decimal('4.00')
 
 Open supplier invoice::
 
@@ -272,17 +275,20 @@ Open supplier invoice::
     >>> invoice.state
     u'posted'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('44.00'))
-    True
+    >>> payable.debit
+    Decimal('0.00')
+    >>> payable.credit
+    Decimal('44.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('44.00'), Decimal('50.00'))
-    True
+    >>> expense.debit
+    Decimal('44.00')
+    >>> expense.credit
+    Decimal('50.00')
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('46.00'), Decimal('46.00'))
-    True
+    >>> stock_supplier.debit
+    Decimal('46.00')
+    >>> stock_supplier.credit
+    Decimal('46.00')
 
 Sale 5 products::
 
@@ -324,13 +330,15 @@ Send 5 products::
     >>> shipment.state
     u'done'
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('28.00'), Decimal('0.00'))
-    True
+    >>> stock_customer.debit
+    Decimal('28.00')
+    >>> stock_customer.credit
+    Decimal('0.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('50.00'), Decimal('28.00'))
-    True
+    >>> stock.debit
+    Decimal('50.00')
+    >>> stock.credit
+    Decimal('28.00')
 
 Open customer invoice::
 
@@ -340,21 +348,25 @@ Open customer invoice::
     >>> invoice.state
     u'posted'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal('50.00'), Decimal('0.00'))
-    True
+    >>> receivable.debit
+    Decimal('50.00')
+    >>> receivable.credit
+    Decimal('0.00')
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal('0.00'), Decimal('50.00'))
-    True
+    >>> revenue.debit
+    Decimal('0.00')
+    >>> revenue.credit
+    Decimal('50.00')
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('28.00'), Decimal('28.00'))
-    True
+    >>> stock_customer.debit
+    Decimal('28.00')
+    >>> stock_customer.credit
+    Decimal('28.00')
     >>> cogs.reload()
-    >>> (cogs.debit, cogs.credit) == \
-    ... (Decimal('28.00'), Decimal('0.00'))
-    True
+    >>> cogs.debit
+    Decimal('28.00')
+    >>> cogs.credit
+    Decimal('0.00')
 
 Now create a supplier invoice with an accountant::
 

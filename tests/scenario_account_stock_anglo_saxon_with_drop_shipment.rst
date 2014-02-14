@@ -280,17 +280,20 @@ Receive 50 products::
     >>> shipment.state
     u'done'
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('0'), Decimal('150'))
-    True
+    >>> stock_supplier.debit
+    Decimal('0.00')
+    >>> stock_supplier.credit
+    Decimal('150.00')
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('150'), Decimal('0'))
-    True
+    >>> stock_customer.debit
+    Decimal('150.00')
+    >>> stock_customer.credit
+    Decimal('0.00')
     >>> stock.reload()
-    >>> (stock.debit, stock.credit) == \
-    ... (Decimal('0'), Decimal('0'))
-    True
+    >>> stock.debit
+    Decimal('0.00')
+    >>> stock.credit
+    Decimal('0.00')
 
 Open supplier invoice::
 
@@ -305,17 +308,20 @@ Open supplier invoice::
     >>> invoice.state
     u'posted'
     >>> payable.reload()
-    >>> (payable.debit, payable.credit) == \
-    ... (Decimal('0.00'), Decimal('150.00'))
-    True
+    >>> payable.debit
+    Decimal('0.00')
+    >>> payable.credit
+    Decimal('150.00')
     >>> expense.reload()
-    >>> (expense.debit, expense.credit) == \
-    ... (Decimal('150.00'), Decimal('150.00'))
-    True
+    >>> expense.debit
+    Decimal('150.00')
+    >>> expense.credit
+    Decimal('150.00')
     >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
-    ... (Decimal('150.00'), Decimal('150.00'))
-    True
+    >>> stock_supplier.debit
+    Decimal('150.00')
+    >>> stock_supplier.credit
+    Decimal('150.00')
 
 Open customer invoice::
 
@@ -327,18 +333,22 @@ Open customer invoice::
     >>> invoice.state
     u'posted'
     >>> receivable.reload()
-    >>> (receivable.debit, receivable.credit) == \
-    ... (Decimal('500.00'), Decimal('0.00'))
-    True
+    >>> receivable.debit
+    Decimal('500.00')
+    >>> receivable.credit
+    Decimal('0.00')
     >>> revenue.reload()
-    >>> (revenue.debit, revenue.credit) == \
-    ... (Decimal('0.00'), Decimal('500.00'))
-    True
+    >>> revenue.debit
+    Decimal('0.00')
+    >>> revenue.credit
+    Decimal('500.00')
     >>> stock_customer.reload()
-    >>> (stock_customer.debit, stock_customer.credit) == \
-    ... (Decimal('150.00'), Decimal('150.00'))
-    True
+    >>> stock_customer.debit
+    Decimal('150.00')
+    >>> stock_customer.credit
+    Decimal('150.00')
     >>> cogs.reload()
-    >>> (cogs.debit, cogs.credit) == \
-    ... (Decimal('150.00'), Decimal('0.00'))
-    True
+    >>> cogs.debit
+    Decimal('150.00')
+    >>> cogs.credit
+    Decimal('0.00')
