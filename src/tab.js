@@ -139,6 +139,11 @@
         }
         return jQuery.when();
     };
+    Sao.Tab.tabs.close_current = function() {
+        var tabs = jQuery('#tabs > div');
+        var tab = Sao.Tab.tabs[tabs.tabs('option', 'active')];
+        tab.close();
+    };
 
     Sao.Tab.create = function(attributes) {
         if (attributes.context === undefined) {

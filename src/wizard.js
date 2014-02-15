@@ -103,7 +103,7 @@
             // TODO
         },
         end: function() {
-            Sao.rpc({
+            return Sao.rpc({
                 'method': 'wizard.' + this.action + '.delete',
                 'params': [this.session_id, this.session.context]
             }, this.session);
@@ -202,15 +202,15 @@
             // TODO set size
             this.dialog.dialog('open');
         },
-        destroy: function() {
+        destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
             this.dialog.dialog('destroy');
             // TODO other dialogs
-            // TODO reload under screen
+            // TODO reload under screen and action
         },
         end: function() {
-            Sao.Wizard.Dialog._super.end.call(this);
-            this.destroy();
+            Sao.Wizard.Dialog._super.end.call(this).then(
+                    this.destroy.bind(this));
         },
         show: function() {
             this.dialog.dialog('open');
