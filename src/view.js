@@ -2777,19 +2777,33 @@
             }
         },
         edit: function() {
-            if (this.screen.current_record) {
-                var callback = function(result) {
-                    if (result) {
-                        this.screen.current_record.save().done(function() {
-                            this.screen.display();
-                        }.bind(this));
-                    } else {
-                        this.screen.current_record.cancel();
-                    }
-                };
-                var win = new Sao.Window.Form(this.screen,
-                        callback.bind(this));
+            if (jQuery.isEmptyObject(this.screen.current_record)) {
+                return;
             }
+            // Create a new screen that is not linked to the parent otherwise
+            // on the save of the record will trigger the save of the parent
+            var domain = this.field().get_domain(this.record());
+            var add_remove = this.record().expr_eval(
+                    this.attributes.add_remove);
+            if (!jQuery.isEmptyObject(add_remove)) {
+                domain = [domain, add_remove];
+            }
+            var screen = new Sao.Screen(this.attributes.relation, {
+                'domain': domain,
+                //'view_ids': (this.attributes.view_ids || '').split(','),
+                'mode': ['form']
+                //'views_preload': this.attributes.views
+            });
+            screen.new_group([this.screen.current_record.id]);
+            var callback = function(result) {
+                if (result) {
+                    screen.current_record.save().done(function() {
+                        // Force a reload on next display
+                        this.screen.current_record.cancel();
+                    }.bind(this));
+                }
+            };
+            var win = new Sao.Window.Form(screen, callback.bind(this));
         }
     });
 
