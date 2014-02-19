@@ -309,8 +309,9 @@ class Location(ModelSQL, ModelView):
                     default=default)
                 warehouse_locations = Transaction().context.get(
                     'cp_warehouse_locations') or {}
-                cp_warehouse = cls(Transaction().context['cp_warehouse_id'])
                 if location.id in warehouse_locations.values():
+                    cp_warehouse = cls(
+                        Transaction().context['cp_warehouse_id'])
                     for field, loc_id in warehouse_locations.iteritems():
                         if loc_id == location.id:
                             cls.write([cp_warehouse], {
