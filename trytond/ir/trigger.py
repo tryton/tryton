@@ -21,8 +21,8 @@ class Trigger(ModelSQL, ModelView):
     model = fields.Many2One('ir.model', 'Model', required=True, select=1)
     on_time = fields.Boolean('On Time', select=1, states={
             'invisible': (Eval('on_create', False)
-                or Eval('on_write', False)
-                or Eval('on_delete', False)),
+                | Eval('on_write', False)
+                | Eval('on_delete', False)),
         }, depends=['on_create', 'on_write', 'on_delete'],
         on_change=['on_time'])
     on_create = fields.Boolean('On Create', select=1, states={
