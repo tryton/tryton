@@ -134,6 +134,12 @@ class Currency(ModelSQL, ModelView):
         return True
 
     @classmethod
+    def search_global(cls, text):
+        for id_, rec_name, icon in super(Currency, cls).search_global(text):
+            icon = icon or 'tryton-currency'
+            yield id_, rec_name, icon
+
+    @classmethod
     def search_rec_name(cls, name, clause):
         currencies = None
         field = None
