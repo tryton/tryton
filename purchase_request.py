@@ -183,10 +183,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         # compute requests
         new_requests = []
         cursor = Transaction().cursor
-        for dates, products in date2products.iteritems():
+        for dates, sub_products in date2products.iteritems():
             min_date, max_date = dates
-            for i in range(0, len(products), cursor.IN_MAX):
-                product_ids = [p.id for p in products[i:i + cursor.IN_MAX]]
+            for i in range(0, len(sub_products), cursor.IN_MAX):
+                product_ids = [p.id for p in sub_products[i:i + cursor.IN_MAX]]
                 with Transaction().set_context(forecast=True,
                         stock_date_end=min_date or datetime.date.max):
                     pbl = Product.products_by_location(warehouse_ids,
@@ -199,7 +199,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                         min_date, max_date, min_date_qties=min_date_qties,
                         order_points=product2ops)
 
-                    for product in products[i:i + cursor.IN_MAX]:
+                    for product in sub_products[i:i + cursor.IN_MAX]:
                         shortage_date, product_quantity = shortages[product.id]
                         if shortage_date is None or product_quantity is None:
                             continue
