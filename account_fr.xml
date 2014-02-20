@@ -5147,7 +5147,7 @@
         <record model="account.account.template" id="4282">
             <field name="name">Dettes provisionnées pour congés à payer</field>
             <field name="code">4282</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="428"/>
@@ -5155,7 +5155,7 @@
         <record model="account.account.template" id="4284">
             <field name="name">Dettes provisionnées pour participation des salariés aux résultats</field>
             <field name="code">4284</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="428"/>
@@ -5163,7 +5163,7 @@
         <record model="account.account.template" id="4286">
             <field name="name">Autres charges à payer</field>
             <field name="code">4286</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="428"/>
@@ -5208,7 +5208,7 @@
         <record model="account.account.template" id="4382">
             <field name="name">Charges sociales sur congés à payer</field>
             <field name="code">4382</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="438"/>
@@ -5216,7 +5216,7 @@
         <record model="account.account.template" id="4386">
             <field name="name">Autres charges à payer</field>
             <field name="code">4386</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="438"/>
@@ -5323,7 +5323,7 @@
         <record model="account.account.template" id="444">
             <field name="name">État - Impôts sur les bénéfices</field>
             <field name="code">444</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="44"/>
@@ -5353,7 +5353,7 @@
         <record model="account.account.template" id="44551">
             <field name="name">T.V.A. à décaisser</field>
             <field name="code">44551</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4455"/>
@@ -5361,7 +5361,7 @@
         <record model="account.account.template" id="44558">
             <field name="name">Taxes assimilées à la T.V.A.</field>
             <field name="code">44558</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4455"/>
@@ -5422,7 +5422,7 @@
         <record model="account.account.template" id="44571">
             <field name="name">T.V.A. collectée</field>
             <field name="code">44571</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4457"/>
@@ -5430,7 +5430,7 @@
         <record model="account.account.template" id="44578">
             <field name="name">Taxes assimilées à la T.V.A.</field>
             <field name="code">44578</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4457"/>
@@ -5469,7 +5469,7 @@
         <record model="account.account.template" id="44584">
             <field name="name">T.V.A. récupérée d'avance</field>
             <field name="code">44584</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4458"/>
@@ -5485,7 +5485,7 @@
         <record model="account.account.template" id="44587">
             <field name="name">Taxes sur le chiffre d'affaires sur factures à établir</field>
             <field name="code">44587</field>
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
             <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4458"/>
