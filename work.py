@@ -339,3 +339,9 @@ class Work(ModelSQL, ModelView):
         super(Work, cls).delete(project_works)
 
         TimesheetWork.delete(timesheet_works)
+
+    @classmethod
+    def search_global(cls, text):
+        for id_, rec_name, icon in super(Work, cls).search_global(text):
+            icon = icon or 'tryton-project'
+            yield id_, rec_name, icon
