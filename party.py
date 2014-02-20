@@ -182,6 +182,12 @@ class Party(ModelSQL, ModelView):
         return super(Party, cls).copy(parties, default=default)
 
     @classmethod
+    def search_global(cls, text):
+        for id_, rec_name, icon in super(Party, cls).search_global(text):
+            icon = icon or 'tryton-party'
+            yield id_, rec_name, icon
+
+    @classmethod
     def search_rec_name(cls, name, clause):
         parties = cls.search([('code',) + tuple(clause[1:])], order=[])
         if parties:
