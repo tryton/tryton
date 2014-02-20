@@ -190,6 +190,7 @@ class Sale(Workflow, ModelSQL, ModelView):
                 ('quotation', 'confirmed'),
                 ('confirmed', 'processing'),
                 ('processing', 'processing'),
+                ('processing', 'done'),
                 ('done', 'processing'),
                 ('draft', 'cancel'),
                 ('quotation', 'cancel'),
@@ -879,11 +880,23 @@ class Sale(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
-    @ModelView.button
     @Workflow.transition('processing')
+    def proceed(cls, sales):
+        pass
+
+    @classmethod
+    @Workflow.transition('done')
+    def do(cls, sales):
+        pass
+
+    @classmethod
+    @ModelView.button
     def process(cls, sales):
         done = []
+        process = []
         for sale in sales:
+            if sale.state not in ('confirmed', 'processing', 'done'):
+                continue
             sale.create_invoice('out_invoice')
             sale.create_invoice('out_credit_note')
             sale.set_invoice_state()
@@ -891,11 +904,14 @@ class Sale(Workflow, ModelSQL, ModelView):
             sale.create_shipment('return')
             sale.set_shipment_state()
             if sale.is_done():
-                done.append(sale)
+                if sale.state != 'done':
+                    done.append(sale)
+            elif sale.state != 'processing':
+                process.append(sale)
+        if process:
+            cls.proceed(process)
         if done:
-            cls.write(done, {
-                    'state': 'done',
-                    })
+            cls.do(done)
 
 
 class SaleInvoice(ModelSQL):
