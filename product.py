@@ -119,6 +119,12 @@ class Template(ModelSQL, ModelView):
             values.setdefault('products', None)
         return super(Template, cls).create(vlist)
 
+    @classmethod
+    def search_global(cls, text):
+        for id_, rec_name, icon in super(Template, cls).search_global(text):
+            icon = icon or 'tryton-product'
+            yield id_, rec_name, icon
+
 
 class Product(ModelSQL, ModelView):
     "Product Variant"
@@ -210,6 +216,12 @@ class Product(ModelSQL, ModelView):
             for product in products:
                 res[product.id] = getattr(product, field)
         return res
+
+    @classmethod
+    def search_global(cls, text):
+        for id_, rec_name, icon in super(Product, cls).search_global(text):
+            icon = icon or 'tryton-product'
+            yield id_, rec_name, icon
 
     @classmethod
     def search_domain(cls, domain, active_test=True):
