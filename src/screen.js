@@ -446,9 +446,8 @@
                 if ((this.current_view.view_type == 'tree') &&
                         (!jQuery.isEmptyObject(this.group))) {
                     this.set_current_record(this.group[0]);
-                } else {
-                    return true;
                 }
+                return jQuery.when();
             }
             this.current_view.set_value();
             var fields = this.current_view.get_fields();
@@ -689,8 +688,12 @@
             this.display();
         },
         get_buttons: function() {
+            var selected_records = this.current_view.selected_records();
+            if (jQuery.isEmptyObject(selected_records)) {
+                return [];
+            }
             var buttons = this.current_view.get_buttons();
-            this.current_view.selected_records().forEach(function(record) {
+            selected_records.forEach(function(record) {
                 buttons = buttons.filter(function(button) {
                     var states = record.expr_eval(
                         button.attributes.states || {});

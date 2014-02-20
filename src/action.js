@@ -37,7 +37,7 @@
                 }
                 var ctx = {
                     active_model: data.res_model,
-                    active_id: data.id || false,
+                    active_id: data.id || null,
                     active_ids: data.ids
                 };
                 var session = Sao.Session.current_session;
