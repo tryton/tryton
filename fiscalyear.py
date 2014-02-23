@@ -401,6 +401,7 @@ class BalanceNonDeferral(Wizard):
             accounts = Account.search([
                     ('company', '=', self.start.fiscalyear.company.id),
                     ('deferral', '=', False),
+                    ('kind', '!=', 'view'),
                     ])
         lines = []
         for account in accounts:
