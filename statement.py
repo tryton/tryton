@@ -559,8 +559,9 @@ class Line(ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
         Currency = Pool().get('currency.currency')
         zero = Decimal("0.0")
-        amount = Currency.compute(self.statement.journal.currency, self.amount,
-            self.statement.company.currency)
+        with Transaction().set_context(date=self.date):
+            amount = Currency.compute(self.statement.journal.currency,
+                self.amount, self.statement.company.currency)
         if self.statement.journal.currency != self.statement.company.currency:
             second_currency = self.statement.journal.currency.id
             amount_second_currency = abs(self.amount)
