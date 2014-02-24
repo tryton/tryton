@@ -32,7 +32,8 @@ requires.append('trytond >= %s.%s, < %s.%s' %
 
 tests_require = ['proteus >= %s.%s, < %s.%s' %
     (major_version, minor_version, major_version, minor_version + 1)]
-for dep in ['sale', 'purchase', 'account_invoice']:
+for dep in ['sale', 'purchase', 'account_invoice',
+        'sale_supply_drop_shipment']:
     tests_require.append('trytond_%s >= %s.%s, < %s.%s' %
         (dep, major_version, minor_version, major_version,
             minor_version + 1))

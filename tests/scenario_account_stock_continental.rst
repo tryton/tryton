@@ -24,7 +24,7 @@ Install account_stock_continental, sale and purchase::
     >>> Module = Model.get('ir.module.module')
     >>> modules = Module.find([
     ...         ('name', 'in', ('account_stock_continental',
-    ...             'sale', 'purchase')),
+    ...             'sale', 'purchase', 'sale_supply_drop_shipment')),
     ...     ])
     >>> Module.install([x.id for x in modules], config.context)
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
@@ -353,20 +353,49 @@ Create an Inventory::
     >>> stock.credit
     Decimal('39.00')
 
-Create Move from Supplier to Customer::
+Create Drop Shipment Move::
 
-    >>> supplier_location, = Location.find([('code', '=', 'SUP')])
-    >>> customer_location, = Location.find([('code', '=', 'CUS')])
-    >>> move = Move()
-    >>> move.product = product
-    >>> move.quantity = 3
-    >>> move.from_location = supplier_location
-    >>> move.to_location = customer_location
-    >>> move.unit_price = Decimal(6)
-    >>> move.cost_price = move.unit_price
-    >>> move.currency = currency
-    >>> move.save()
-    >>> Move.do([move.id], config.context)
+    >>> ProductSupplier = Model.get('purchase.product_supplier')
+    >>> product_supplier = ProductSupplier()
+    >>> product_supplier.product = product.template
+    >>> product_supplier.party = supplier
+    >>> product_supplier.drop_shipment = True
+    >>> product_supplier.delivery_time = 0
+    >>> product_supplier.save()
+    >>> product.template.supply_on_sale = True
+    >>> product.template.save()
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 3
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+    >>> PurchaseRequest = Model.get('purchase.request')
+    >>> purchase_request, = PurchaseRequest.find()
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [purchase_request])
+    >>> create_purchase.form.payment_term = payment_term
+    >>> create_purchase.execute('start')
+    >>> purchase = purchase_request.purchase
+    >>> purchase_line, = purchase.lines
+    >>> purchase_line.unit_price = Decimal(6)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.state
+    u'confirmed'
+
+    >>> shipment, = sale.drop_shipments
+    >>> shipment.click('done')
+    >>> shipment.state
+    u'done'
+
     >>> stock_supplier.reload()
     >>> stock_supplier.debit
     Decimal('0.00')
@@ -377,16 +406,45 @@ Create Move from Supplier to Customer::
     Decimal('46.00')
     >>> stock_customer.credit
     Decimal('0.00')
-    >>> move = Move()
-    >>> move.product = product_average
-    >>> move.quantity = 4
-    >>> move.from_location = supplier_location
-    >>> move.to_location = customer_location
-    >>> move.unit_price = Decimal(5)
-    >>> move.cost_price = move.unit_price
-    >>> move.currency = currency
-    >>> move.save()
-    >>> Move.do([move.id], config.context)
+
+    >>> product_supplier = ProductSupplier()
+    >>> product_supplier.product = product_average.template
+    >>> product_supplier.party = supplier
+    >>> product_supplier.drop_shipment = True
+    >>> product_supplier.delivery_time = 0
+    >>> product_supplier.save()
+    >>> product_average.template.supply_on_sale = True
+    >>> product_average.template.save()
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product_average
+    >>> sale_line.quantity = 4
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+    >>> purchase_request, = [p for p in PurchaseRequest.find()
+    ...     if p.state == 'draft']
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [purchase_request])
+    >>> purchase = purchase_request.purchase
+    >>> purchase_line, = purchase.lines
+    >>> purchase_line.unit_price = Decimal(5)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.state
+    u'confirmed'
+
+    >>> shipment, = sale.drop_shipments
+    >>> shipment.click('done')
+    >>> shipment.state
+    u'done'
+
     >>> stock_supplier.reload()
     >>> stock_supplier.debit
     Decimal('0.00')
