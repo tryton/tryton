@@ -127,11 +127,10 @@ class Uom(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        ids = map(int, cls.search(['OR',
-                    (cls._rec_name,) + tuple(clause[1:]),
-                    ('symbol',) + tuple(clause[1:]),
-                    ], order=[]))
-        return [('id', 'in', ids)]
+        return ['OR',
+            (cls._rec_name,) + tuple(clause[1:]),
+            ('symbol',) + tuple(clause[1:]),
+            ]
 
     @staticmethod
     def round(number, precision=1.0):
