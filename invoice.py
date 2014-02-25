@@ -1018,13 +1018,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        invoices = cls.search(['OR',
-                ('number',) + tuple(clause[1:]),
-                ('reference',) + tuple(clause[1:]),
-                ], order=[])
-        if invoices:
-            return [('id', 'in', [i.id for i in invoices])]
-        return [('party',) + tuple(clause[1:])]
+        return ['OR',
+            ('number',) + tuple(clause[1:]),
+            ('reference',) + tuple(clause[1:]),
+            ('party',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def get_origins(cls, invoices, name):
