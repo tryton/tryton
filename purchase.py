@@ -541,15 +541,15 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        names = clause[2].split(' - ', 1)
-        purchases = cls.search(['OR',
-                ('reference', clause[1], names[0]),
-                ('supplier_reference', clause[1], names[0]),
-                ], order=[])
-        res = [('id', 'in', [p.id for p in purchases])]
+        _, operator, value = clause
+        names = value.split(' - ', 1)
+        domain = ['OR',
+            ('reference', operator, names[0]),
+            ('supplier_reference', operator, names[0]),
+            ]
         if len(names) != 1 and names[1]:
-            res.append(('party', clause[1], names[1]))
-        return res
+            domain = [domain, ('party', operator, names[1])]
+        return domain
 
     @classmethod
     def copy(cls, purchases, default=None):
