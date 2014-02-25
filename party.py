@@ -189,12 +189,10 @@ class Party(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        parties = cls.search([('code',) + tuple(clause[1:])], order=[])
-        if parties:
-            parties += cls.search([('name',) + tuple(clause[1:])], order=[])
-
-            return [('id', 'in', [party.id for party in parties])]
-        return [('name',) + tuple(clause[1:])]
+        return ['OR',
+            ('code',) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
+            ]
 
     def address_get(self, type=None):
         """
