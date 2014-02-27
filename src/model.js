@@ -1457,19 +1457,6 @@
                 if (!jQuery.isEmptyObject(fields)) {
                     group.model.add_fields(fields);
                 }
-                if (record._values[this.name] !== undefined) {
-                    for (var i = 0, len = record._values[this.name].length;
-                            i < len; i++) {
-                        var r = record._values[this.name][i];
-                        if (r.id >= 0) {
-                            group.record_deleted.push(r);
-                        }
-                    }
-                    jQuery.extend(group.record_deleted,
-                            record._values[this.name].record_deleted);
-                    jQuery.extend(group.record_removed,
-                            record._values[this.name].record_removed);
-                }
                 record._values[this.name] = group;
                 if (mode == 'list ids') {
                     group.load(value);
