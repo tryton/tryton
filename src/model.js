@@ -769,7 +769,7 @@
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
             var ctx = jQuery.extend({}, this.get_context());
-            ctx.context = jQuery.extend(this.model.session.context, ctx);
+            ctx.context = jQuery.extend({}, this.model.session.context, ctx);
             jQuery.extend(ctx, this.get_eval());
             ctx.active_model = this.model.name;
             ctx.active_id = this.id;

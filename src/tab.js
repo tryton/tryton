@@ -307,17 +307,26 @@
                             jQuery('<a/>').append(action.name));
                         menu.append(item);
                         item.click(function() {
-                            var exec_action = jQuery.extend({}, action);
-                            // TODO test save
-                            exec_action = Sao.Action.evaluate(exec_action,
-                                menu_action[0], screen.current_record);
-                            var data = {
-                                model: screen.model_name,
-                                id: screen.get_id(),
-                                ids: [screen.get_id()] // TODO ids selected
-                            };
-                            Sao.Action.exec_action(exec_action, data,
-                                screen.context);
+                            screen.save_current().then(function() {
+                                var exec_action = jQuery.extend({}, action);
+                                var record_id = null;
+                                if (screen.current_record) {
+                                    record_id = screen.current_record.id;
+                                }
+                                var record_ids = screen.current_view
+                                .selected_records().map(function(record) {
+                                    return record.id;
+                                });
+                                exec_action = Sao.Action.evaluate(exec_action,
+                                    menu_action[0], screen.current_record);
+                                var data = {
+                                    model: screen.model_name,
+                                    id: record_id,
+                                    ids: record_ids
+                                };
+                                Sao.Action.exec_action(exec_action, data,
+                                    screen.context);
+                            });
                         });
                     });
                     menu.menu({}).hide().css({

@@ -778,6 +778,33 @@
                 new Date(2010, 1, 22, 10, 30, 20, 2).valueOf());
     });
 
+    QUnit.test('PYSON Len', function() {
+        var value = new Sao.PYSON.Len([1, 2, 3]).pyson();
+        QUnit.strictEqual(value.__class__, 'Len', 'Len([1, 2, 3]).pyson()');
+        QUnit.ok(Sao.common.compare(value.v, [1, 2, 3]),
+            'Len([1, 2, 3]).pyson()');
+
+        QUnit.throws(function() {
+            new Sao.PYSON.Len(1);
+        }, 'value must be an object or a string', 'Len(1)');
+
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Len([1, 2, 3]).types(),
+                ['integer']), 'Len([1, 2, 3]).types()');
+
+        var eval_;
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Len([1, 2, 3]));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 3,
+            'decode(Len([1, 2, 3]))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Len({1: 2, 3: 4}));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 2,
+            'decode(Len({1: 2, 3: 4}))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Len('foo bar'));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 7,
+            "decode(Len('foo bar'))");
+    });
+
     QUnit.test('DomainParser.group_operator', function() {
         var parser = new Sao.common.DomainParser();
         QUnit.ok(Sao.common.compare(parser.group_operator(['a', '>', '=']),
@@ -1805,6 +1832,7 @@
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
     });
 
+        /*
     QUnit.test('CRUD', function() {
         var run_tests = function() {
             var User = new Sao.Model('res.user');
@@ -1884,6 +1912,7 @@
             login_prm.done(run_tests);
         });
     });
+    */
 
     Sao.Session.renew_credentials = function(session, parent_dfd) {
         session.do_login(SaoTest.login, SaoTest.password, parent_dfd);
