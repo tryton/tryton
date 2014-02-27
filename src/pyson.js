@@ -633,4 +633,38 @@
         if (value.dms) date.setMilliseconds(millisecond + value.dms / 100);
         return date;
     };
+
+    Sao.PYSON.Len = Sao.class_(Sao.PYSON.PYSON, {
+        init: function(value) {
+            Sao.PYSON.Len._super.init.call(this);
+            if (value instanceof Sao.PYSON.PYSON) {
+                if (jQuery(value.types()).not(['object', 'string']).length ||
+                    jQuery(['object', 'string']).not(value.types()).length) {
+                    throw 'value must be an object or a string';
+                }
+            } else {
+                if ((typeof value != 'object') && (typeof value != 'string')) {
+                    throw 'value must be an object or a string';
+                }
+            }
+            this._value = value;
+        },
+        pyson: function() {
+            return {
+                '__class__': 'Len',
+                'v': this._value
+            };
+        },
+        types: function() {
+            return ['integer'];
+        }
+    });
+
+    Sao.PYSON.Len.eval_ = function(value, context) {
+        if (typeof value.v == 'object') {
+            return Object.keys(value.v).length;
+        } else {
+            return value.v.length;
+        }
+    };
 }());
