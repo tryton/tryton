@@ -890,7 +890,8 @@ class Model(object):
 class Wizard(object):
     'Wizard class for Tryton wizards'
 
-    def __init__(self, name, models=None, config=None, context=None):
+    def __init__(self, name, models=None, action=None, config=None,
+            context=None):
         if models:
             assert len(set(type(x) for x in models)) == 1
         super(Wizard, self).__init__()
@@ -904,6 +905,7 @@ class Wizard(object):
         self.session_id, self.start_state, self.end_state = result
         self.states = [self.start_state]
         self.models = models
+        self.action = action
         self.execute(self.start_state)
 
     def execute(self, state):
@@ -921,6 +923,10 @@ class Wizard(object):
                 ctx['active_id'] = None
                 ctx['active_ids'] = None
                 ctx['active_model'] = None
+            if self.action:
+                ctx['action_id'] = self.action.id
+            else:
+                ctx['action_id'] = None
 
             if self.form:
                 # Filter only modified values
