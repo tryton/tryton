@@ -556,13 +556,15 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     sum_ = Decimal(str(sum_))
                 tax_amount[invoice_id] = sum_
 
-        invoices_move = []
-        invoices_no_move = []
+        invoices_move = set()
+        invoices_no_move = set()
         for invoice in invoices:
             if invoice.move:
-                invoices_move.append(invoice)
+                invoices_move.add(invoice.id)
             else:
-                invoices_no_move.append(invoice)
+                invoices_no_move.add(invoice.id)
+        invoices_move = cls.browse(invoices_move)
+        invoices_no_move = cls.browse(invoices_no_move)
 
         type_name = cls.total_amount._field.sql_type().base
         invoice = cls.__table__()
