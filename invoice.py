@@ -568,13 +568,13 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 tax_amount[invoice.id] = invoice.currency.round(
                     tax_amount[invoice.id])
 
-        invoices_move = []
-        invoices_no_move = []
+        invoices_move = set()
+        invoices_no_move = set()
         for invoice in invoices:
             if invoice.move:
-                invoices_move.append(invoice.id)
+                invoices_move.add(invoice.id)
             else:
-                invoices_no_move.append(invoice.id)
+                invoices_no_move.add(invoice.id)
         invoices_move = cls.browse(invoices_move)
         invoices_no_move = cls.browse(invoices_no_move)
 
