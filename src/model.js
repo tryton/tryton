@@ -212,11 +212,17 @@
             }
             this.parent._changed[this.child_name] = true;
             var prm = jQuery.Deferred();
-            this.parent.model.fields[this.child_name].changed(this.parent).then(
-                    function() {
-                        // TODO validate parent
-                        this.parent.group.changed().done(prm.resolve);
-                    }.bind(this));
+            var changed_prm = this.parent.model.fields[this.child_name]
+                .changed(this.parent);
+            // One2Many.changed could return undefined
+            if (changed_prm) {
+                changed_prm.then(function() {
+                    // TODO validate parent
+                    this.parent.group.changed().done(prm.resolve);
+                }.bind(this));
+            } else {
+                prm.resolve();
+            }
             return prm;
         };
         array.root_group = function() {
