@@ -65,6 +65,8 @@ class Purchase(ModelSQL, ModelView):
                     and all(l.invoice for l in invoice_lines)
                     and all(l.invoice.state == 'paid' for l in invoice_lines)):
                 return 'paid'
+            else:
+                return 'waiting'
         return state
 
     def copy(self, ids, default=None):
