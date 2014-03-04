@@ -54,23 +54,31 @@ class Action(object):
 
     @staticmethod
     def execute(act_id, data, action_type=None, context=None):
-        if not action_type:
-            res = False
+        def get_action_type(actions):
             try:
-                res, = RPCExecute('model', 'ir.action', 'read', [act_id],
-                    ['type'], context=context)
+                action, = actions()
             except RPCException:
                 return
-            if not res:
-                raise Exception('ActionNotFound')
-            action_type = res['type']
-        try:
-            res, = RPCExecute('model', action_type, 'search_read',
+            action_type = action['type']
+            exec_action(action_type)
+
+        def exec_action(action_type):
+            def callback(actions):
+                try:
+                    action, = actions()
+                except RPCException:
+                    return
+                Action._exec_action(action, data)
+
+            RPCExecute('model', action_type, 'search_read',
                 [('action', '=', act_id)], 0, 1, None, None,
-                context=context)
-        except RPCException:
-            return
-        Action._exec_action(res, data)
+                context=context, callback=callback)
+
+        if not action_type:
+            RPCExecute('model', 'ir.action', 'read', [act_id],
+                ['type'], context=context, callback=get_action_type)
+        else:
+            exec_action(action_type)
 
     @staticmethod
     def _exec_action(action, data=None, context=None):

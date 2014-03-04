@@ -39,20 +39,23 @@ def update_completion(entry, record, field, model, domain=None):
             domain = field.domain_get(record)
         context = field.context_get(record)
         domain = [('rec_name', 'ilike', '%' + search_text + '%'), domain]
-        try:
-            results = RPCExecute('model', model, 'search_read', domain, 0,
-                CONFIG['client.limit'], None, ['rec_name'], context=context,
-                process_exception=False)
-        except (TrytonError, TrytonServerError):
-            results = []
-        if search_text != entry.get_text().decode('utf-8'):
-            return False
-        completion_model.clear()
-        for result in results:
-            completion_model.append([result['rec_name'], result['id']])
-        completion_model.search_text = search_text
-        # Force display of popup
-        entry.emit('changed')
+
+        def callback(results):
+            try:
+                results = results()
+            except (TrytonError, TrytonServerError):
+                results = []
+            if search_text != entry.get_text().decode('utf-8'):
+                return False
+            completion_model.clear()
+            for result in results:
+                completion_model.append([result['rec_name'], result['id']])
+            completion_model.search_text = search_text
+            # Force display of popup
+            entry.emit('changed')
+        RPCExecute('model', model, 'search_read', domain, 0,
+            CONFIG['client.limit'], None, ['rec_name'], context=context,
+            process_exception=False, callback=callback)
         return False
     search_text = entry.get_text().decode('utf-8')
     gobject.timeout_add(300, update, search_text, domain)

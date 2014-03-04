@@ -203,7 +203,7 @@ class Group(SignalEvent, list):
         for fnct in self.on_write:
             try:
                 res += RPCExecute('model', self.model_name, fnct, ids,
-                    main_iteration=False, context=self.context)
+                    context=self.context)
             except RPCException:
                 return []
         return list({}.fromkeys(res))
@@ -392,7 +392,7 @@ class Group(SignalEvent, list):
         if len(new) and len(to_add):
             try:
                 values = RPCExecute('model', self.model_name, 'default_get',
-                    to_add.keys(), main_iteration=False, context=self.context)
+                    to_add.keys(), context=self.context)
             except RPCException:
                 return False
             for record in new:

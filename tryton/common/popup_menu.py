@@ -23,10 +23,6 @@ def populate(menu, model, record, title=''):
             return
     elif record.id < 0:
         return
-    try:
-        toolbar = RPCExecute('model', model, 'view_toolbar_get')
-    except RPCException:
-        return
 
     def load(record):
         if isinstance(record, (int, long)):
@@ -72,31 +68,37 @@ def populate(menu, model, record, title=''):
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)
 
-    for atype, icon, label, flavor in (
-            ('action', 'tryton-executable', _('Actions...'), None),
-            ('relate', 'tryton-go-jump', _('Relate...'), None),
-            ('print', 'tryton-print-open', _('Report...'), 'open'),
-            ('print', 'tryton-print-email', _('E-Mail...'), 'email'),
-            ('print', 'tryton-print', _('Print...'), 'print'),
-            ):
-        if len(action_menu):
-            action_menu.append(gtk.SeparatorMenuItem())
-        title_item = gtk.ImageMenuItem(icon)
-        title_item.set_label(label)
-        action_menu.append(title_item)
-        if not toolbar[atype]:
-            title_item.set_sensitive(False)
-            continue
-        submenu = gtk.Menu()
-        title_item.set_submenu(submenu)
-        for action in toolbar[atype]:
-            action = action.copy()
-            item = gtk.MenuItem(action['name'])
-            submenu.append(item)
-            if flavor == 'print':
-                action['direct_print'] = True
-            elif flavor == 'email':
-                action['email_print'] = True
-            item.connect('activate', activate, action, atype)
-
+    def set_toolbar(toolbar):
+        try:
+            toolbar = toolbar()
+        except RPCException:
+            return
+        for atype, icon, label, flavor in (
+                ('action', 'tryton-executable', _('Actions...'), None),
+                ('relate', 'tryton-go-jump', _('Relate...'), None),
+                ('print', 'tryton-print-open', _('Report...'), 'open'),
+                ('print', 'tryton-print-email', _('E-Mail...'), 'email'),
+                ('print', 'tryton-print', _('Print...'), 'print'),
+                ):
+            if len(action_menu):
+                action_menu.append(gtk.SeparatorMenuItem())
+            title_item = gtk.ImageMenuItem(icon)
+            title_item.set_label(label)
+            action_menu.append(title_item)
+            if not toolbar[atype]:
+                title_item.set_sensitive(False)
+                continue
+            submenu = gtk.Menu()
+            title_item.set_submenu(submenu)
+            for action in toolbar[atype]:
+                action = action.copy()
+                item = gtk.MenuItem(action['name'])
+                submenu.append(item)
+                if flavor == 'print':
+                    action['direct_print'] = True
+                elif flavor == 'email':
+                    action['email_print'] = True
+                item.connect('activate', activate, action, atype)
+            menu.show_all()
+    RPCExecute('model', model, 'view_toolbar_get', callback=set_toolbar)
     menu.show_all()

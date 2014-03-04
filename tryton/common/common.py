@@ -14,7 +14,6 @@ import unicodedata
 from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
-import time
 import sys
 import xmlrpclib
 try:
@@ -1276,42 +1275,59 @@ class RPCProgress(object):
             self.error = True
             self.res = False
             self.exception = exception
-            return True
-        if not self.res:
-            self.error = True
+        else:
+            if not self.res:
+                self.error = True
+        if self.callback:
+            # Post to GTK queue to be run by the main thread
+            gobject.idle_add(self.process)
         return True
 
-    def run(self, process_exception_p=True, main_iteration_p=True):
-        session = rpc._SESSION
-        thread.start_new_thread(self.start, ())
+    def run(self, process_exception_p=True, callback=None):
+        self.process_exception_p = process_exception_p
+        self.callback = callback
+        self.session = rpc._SESSION
+        if self.parent.window:
+            watch = gtk.gdk.Cursor(gtk.gdk.WATCH)
+            self.parent.window.set_cursor(watch)
 
-        watch = None
-        i = 0
-        while (not self.res) and (not self.error):
-            i += 1
-            if i > 1:
-                watch = gtk.gdk.Cursor(gtk.gdk.WATCH)
-                self.parent.window.set_cursor(watch)
-                if main_iteration_p:
-                    with gtk.gdk.lock:
-                        while gtk.events_pending():
-                            gtk.main_iteration()
-            time.sleep(0.1)
+        if callback:
+            thread.start_new_thread(self.start, ())
+            return
+        else:
+            self.start()
+            return self.process()
+
+    def process(self):
         if self.parent.window:
             self.parent.window.set_cursor(None)
         if self.exception:
-            if process_exception_p:
+            if self.process_exception_p:
                 def rpc_execute(*args):
                     return RPCProgress('execute',
-                        args).run(process_exception_p, main_iteration_p)
+                        args).run(self.process_exception_p, self.callback)
                 result = process_exception(self.exception, *self.args,
-                    rpc_execute=rpc_execute, session=session)
+                    rpc_execute=rpc_execute, session=self.session)
+                if self.callback:
+                    return
                 if result is False:
-                    raise RPCException(self.exception)
-                return result
+                    self.exception = RPCException(self.exception)
+                else:
+                    self.exception = None
+                    self.res = result
             else:
+                self.exception
+
+        def return_():
+            if self.exception:
                 raise self.exception
-        return self.res
+            else:
+                return self.res
+
+        if self.callback:
+            self.callback(return_)
+        else:
+            return return_()
 
 
 def RPCExecute(*args, **kwargs):
@@ -1320,8 +1336,17 @@ def RPCExecute(*args, **kwargs):
         rpc_context.update(kwargs['context'])
     args = args + (rpc_context,)
     process_exception = kwargs.get('process_exception', True)
-    main_iteration = kwargs.get('main_iteration', True)
-    return RPCProgress('execute', args).run(process_exception, main_iteration)
+    callback = kwargs.get('callback')
+    return RPCProgress('execute', args).run(process_exception, callback)
+
+
+def RPCContextReload(callback=None):
+    def update(context):
+        rpc.CONTEXT.clear()
+        rpc.CONTEXT.update(context())
+        if callback:
+            callback()
+    RPCExecute('model', 'res.user', 'get_preferences', True, callback=update)
 
 
 class Tooltips(object):

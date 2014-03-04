@@ -3,17 +3,16 @@
 import gtk
 import pango
 import gettext
-import socket
 
 from tryton.signal_event import SignalEvent
-import tryton.rpc as rpc
 import tryton.common as common
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui import Main
-from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
+from tryton.exceptions import TrytonServerError
 from tryton.gui.window.nomodal import NoModal
 from tryton.common.button import Button
-from tryton.common import RPCExecute, RPCException, TRYTON_ICON
+from tryton.common import RPCExecute, RPCException, RPCContextReload
+from tryton.common import TRYTON_ICON
 _ = gettext.gettext
 
 
@@ -55,83 +54,85 @@ class Wizard(object):
         self.email_print = email_print
         self.email = email
         self.context = context
-        try:
-            result = RPCExecute('wizard', action, 'create')
-        except RPCException:
-            return
-        self.session_id, self.start_state, self.end_state = result
-        self.state = self.start_state
-        self.process()
+
+        def callback(result):
+            try:
+                result = result()
+            except RPCException:
+                return
+            self.session_id, self.start_state, self.end_state = result
+            self.state = self.start_state
+            self.process()
+        RPCExecute('wizard', action, 'create', callback=callback)
 
     def process(self):
         from tryton.action import Action
         if self.__processing or self.__waiting_response:
             return
-        try:
-            self.__processing = True
-            while self.state != self.end_state:
-                ctx = self.context.copy()
-                ctx['active_id'] = self.id
-                ctx['active_ids'] = self.ids
-                ctx['active_model'] = self.model
-                ctx['action_id'] = self.action_id
-                if self.screen:
-                    data = {
-                        self.screen_state: self.screen.get_on_change_value(),
-                        }
-                else:
-                    data = {}
-                try:
-                    result = RPCExecute('wizard', self.action, 'execute',
-                        self.session_id, data, self.state, context=ctx)
-                except RPCException, rpc_exception:
-                    if (not isinstance(rpc_exception.exception,
-                            TrytonServerError)
-                            or not self.screen):
-                        self.state = self.end_state
-                    break
+        self.__processing = True
 
-                if 'view' in result:
-                    self.clean()
-                    view = result['view']
-                    self.update(view['fields_view'], view['defaults'],
-                        view['buttons'])
-                    self.screen_state = view['state']
-                    self.__waiting_response = True
-                else:
+        ctx = self.context.copy()
+        ctx['active_id'] = self.id
+        ctx['active_ids'] = self.ids
+        ctx['active_model'] = self.model
+        ctx['action_id'] = self.action_id
+        if self.screen:
+            data = {
+                self.screen_state: self.screen.get_on_change_value(),
+                }
+        else:
+            data = {}
+
+        def callback(result):
+            try:
+                result = result()
+            except RPCException, rpc_exception:
+                if (not isinstance(rpc_exception.exception,
+                        TrytonServerError)
+                        or not self.screen):
                     self.state = self.end_state
+                    self.end()
+                self.__processing = False
+                return
 
-                if 'actions' in result:
-                    sensitive_widget = self.widget.get_toplevel()
-                    if not 'view' in result:
-                        self.end()
-                    for action in result['actions']:
-                        Action._exec_action(*action, context=ctx)
-                    if (not 'view' in result
-                            or (action[0]['type'] == 'ir.action.wizard'
-                                and not sensitive_widget.props.sensitive)):
-                        return
-                if self.__waiting_response:
-                    break
+            if 'view' in result:
+                self.clean()
+                view = result['view']
+                self.update(view['fields_view'], view['defaults'],
+                    view['buttons'])
+                self.screen_state = view['state']
+                self.__waiting_response = True
+            else:
+                self.state = self.end_state
+
+            if 'actions' in result:
+                sensitive_widget = self.widget.get_toplevel()
+                if not 'view' in result:
+                    self.end()
+                for action in result['actions']:
+                    Action._exec_action(*action, context=ctx)
+                if (not 'view' in result
+                        or (action[0]['type'] == 'ir.action.wizard'
+                            and not sensitive_widget.props.sensitive)):
+                    self.__processing = False
+                    return
 
             if self.state == self.end_state:
                 self.end()
-        finally:
             self.__processing = False
+
+        RPCExecute('wizard', self.action, 'execute', self.session_id, data,
+            self.state, context=ctx, callback=callback)
 
     def destroy(self):
         if self.screen:
             self.screen.destroy()
 
-    def end(self):
-        try:
-            return RPCExecute('wizard', self.action, 'delete', self.session_id,
-                process_exception=False)
-            if self.action == 'ir.module.module.config_wizard':
-                rpc.context_reload()
-                Main.get_main().sig_win_menu()
-        except (TrytonServerError, socket.error, TrytonServerUnavailable):
-            pass
+    def end(self, callback=None):
+        RPCExecute('wizard', self.action, 'delete', self.session_id,
+            process_exception=False, callback=callback)
+        if self.action == 'ir.module.module.config_wizard':
+            RPCContextReload(Main.get_main().sig_win_menu)
 
     def clean(self):
         for widget in self.widget.get_children():
@@ -360,8 +361,9 @@ class WizardDialog(Wizard, NoModal):
                 dialog.screen.client_action(action)
 
     def end(self):
-        action = super(WizardDialog, self).end()
-        self.destroy(action=action)
+        def callback(action):
+            self.destroy(action=action())
+        super(WizardDialog, self).end(callback=callback)
 
     def close(self, widget, event=None):
         if self.end_state in self.states:

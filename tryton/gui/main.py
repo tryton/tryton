@@ -16,7 +16,7 @@ import webbrowser
 import threading
 
 import tryton.rpc as rpc
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCExecute, RPCException, RPCContextReload
 from tryton.config import CONFIG, TRYTON_ICON, get_config_dir
 import tryton.common as common
 from tryton.pyson import PYSONDecoder
@@ -325,31 +325,35 @@ class Main(object):
                 return False
             if getattr(gmodel, 'search_text', None) == search_text:
                 return False
-            try:
-                result = RPCExecute('model', 'ir.model', 'global_search',
+
+            def callback(result):
+                try:
+                    result = result()
+                except RPCException:
+                    result = []
+                if search_text != widget.get_text().decode('utf-8'):
+                    return False
+                gmodel.clear()
+                for r in result:
+                    _, model, model_name, record_id, record_name, icon = r
+                    if icon:
+                        text = common.to_xml(record_name)
+                        common.ICONFACTORY.register_icon(icon)
+                        pixbuf = widget.render_icon(stock_id=icon,
+                            size=gtk.ICON_SIZE_BUTTON, detail=None)
+                    else:
+                        text = '<b>%s:</b>\n %s' % (
+                            common.to_xml(model_name),
+                            common.to_xml(record_name))
+                        pixbuf = None
+                    gmodel.append([pixbuf, text, model, record_id])
+                gmodel.search_text = search_text
+                # Force display of popup
+                widget.emit('changed')
+
+            RPCExecute('model', 'ir.model', 'global_search',
                     search_text, CONFIG['client.limit'],
-                    self.menu_screen.model_name)
-            except RPCException:
-                result = []
-            if search_text != widget.get_text().decode('utf-8'):
-                return False
-            gmodel.clear()
-            for r in result:
-                _, model, model_name, record_id, record_name, icon = r
-                if icon:
-                    text = common.to_xml(record_name)
-                    common.ICONFACTORY.register_icon(icon)
-                    pixbuf = widget.render_icon(stock_id=icon,
-                        size=gtk.ICON_SIZE_BUTTON, detail=None)
-                else:
-                    text = '<b>%s:</b>\n %s' % (
-                        common.to_xml(model_name),
-                        common.to_xml(record_name))
-                    pixbuf = None
-                gmodel.append([pixbuf, text, model, record_id])
-            gmodel.search_text = search_text
-            # Force display of popup
-            widget.emit('changed')
+                    self.menu_screen.model_name, callback=callback)
             return False
 
         def changed(widget):
@@ -842,38 +846,43 @@ class Main(object):
         self.notebook.set_current_page(page - 1)
 
     def get_preferences(self):
-        rpc.context_reload()
-        try:
-            prefs = RPCExecute('model', 'res.user', 'get_preferences',
-                False)
-        except RPCException:
-            prefs = {}
-        threads = []
-        for target in (
-                common.ICONFACTORY.load_icons,
-                common.MODELACCESS.load_models,
-                common.VIEW_SEARCH.load_searches,
-                ):
-            t = threading.Thread(target=target)
-            threads.append(t)
-            t.start()
-        for t in threads:
-            t.join()
-        if prefs and 'language_direction' in prefs:
-            translate.set_language_direction(prefs['language_direction'])
-            CONFIG['client.language_direction'] = \
-                prefs['language_direction']
-        self.sig_win_menu(prefs=prefs)
-        for action_id in prefs.get('actions', []):
-            Action.execute(action_id, {})
-        self.set_title(prefs.get('status_bar', ''))
-        if prefs and 'language' in prefs:
-            translate.setlang(prefs['language'], prefs.get('locale'))
-            if CONFIG['client.lang'] != prefs['language']:
-                self.set_menubar()
-                self.favorite_unset()
-            CONFIG['client.lang'] = prefs['language']
-        CONFIG.save()
+        def _set_preferences(prefs):
+            try:
+                prefs = prefs()
+            except RPCException:
+                prefs = {}
+            threads = []
+            for target in (
+                    common.ICONFACTORY.load_icons,
+                    common.MODELACCESS.load_models,
+                    common.VIEW_SEARCH.load_searches,
+                    ):
+                t = threading.Thread(target=target)
+                threads.append(t)
+                t.start()
+            for t in threads:
+                t.join()
+            if prefs and 'language_direction' in prefs:
+                translate.set_language_direction(prefs['language_direction'])
+                CONFIG['client.language_direction'] = \
+                    prefs['language_direction']
+            self.sig_win_menu(prefs=prefs)
+            for action_id in prefs.get('actions', []):
+                Action.execute(action_id, {})
+            self.set_title(prefs.get('status_bar', ''))
+            if prefs and 'language' in prefs:
+                translate.setlang(prefs['language'], prefs.get('locale'))
+                if CONFIG['client.lang'] != prefs['language']:
+                    self.set_menubar()
+                    self.favorite_unset()
+                CONFIG['client.lang'] = prefs['language']
+            CONFIG.save()
+
+        def _get_preferences():
+            RPCExecute('model', 'res.user', 'get_preferences', False,
+                callback=_set_preferences)
+
+        RPCContextReload(_get_preferences)
 
     def sig_user_preferences(self, widget):
         if not self.close_pages():
