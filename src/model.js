@@ -1414,22 +1414,13 @@
         },
         _default: null,
         _set_value: function(record, value, default_) {
+            this._set_default_value(record);
+            var group = record._values[this.name];
             var mode;
             if ((value instanceof Array) && !isNaN(parseInt(value[0], 10))) {
                 mode = 'list ids';
             } else {
                 mode = 'list values';
-            }
-            var group = record._values[this.name];
-            var model;
-            if (group !== undefined) {
-                model = group.model;
-                group.destroy();
-                // TODO unconnect
-            } else if (record.model.name == this.description.relation) {
-                model = record.model;
-            } else {
-                model = new Sao.Model(this.description.relation);
             }
             var prm = jQuery.when();
             if ((mode == 'list values') && !jQuery.isEmptyObject(value)) {
@@ -1456,15 +1447,15 @@
                 }
             }
             var set_value = function(fields) {
-                var group = Sao.Group(model, this.context, []);
-                group.set_parent(record);
-                group.parent_name = this.description.relation_field;
-                group.child_name = this.name;
                 if (!jQuery.isEmptyObject(fields)) {
                     group.model.add_fields(fields);
                 }
                 record._values[this.name] = group;
                 if (mode == 'list ids') {
+                    for (var i = 0, len = group.length; i < len; i++) {
+                        var old_record = group[i];
+                        group.remove(old_record, true);
+                    }
                     group.load(value);
                 } else {
                     for (var vals in value) {
@@ -1485,8 +1476,26 @@
             };
             return prm.pipe(set_value.bind(this));
         },
-        set: function(record, value) {
-            return this._set_value(record, value, false);
+        set: function(record, value, _default) {
+            if (_default === undefined) {
+                _default = false;
+            }
+            var group = record._values[this.name];
+            var model;
+            if (group !== undefined) {
+                model = group.model;
+                // TODO unconnect
+                group.destroy();
+            } else if (record.model.name == this.description.relation) {
+                model = record.model;
+            } else {
+                model = new Sao.Model(this.description.relation);
+            }
+            record._values[this.name] = undefined;
+            this._set_default_value(record, model);
+            // TODO unconnect
+            return this._set_value(record, value, _default);
+            // TODO connect
         },
         get: function(record) {
             var group = record._values[this.name];
@@ -1588,25 +1597,10 @@
         },
         set_default: function(record, value) {
             var previous_group = record._values[this.name];
-            var prm = this._set_value(record, value, true);
-            prm.done(function() {
-                var group = record._values[this.name];
-                if (previous_group) {
-                    previous_group.forEach(function(r) {
-                        if (r.id >= 0) {
-                            group.record_deleted.push(r);
-                        }
-                    });
-                    group.record_deleted = group.record_deleted.concat(
-                        previous_group.record_deleted);
-                    group.record_removed = group.record_removed.concat(
-                        previous_group.record_removed);
-                }
-            }.bind(this));
+            this.set(record, value, true);
             record._changed[this.name] = true;
         },
         set_on_change: function(record, value) {
-            this._set_default_value(record);
             if (value instanceof Array) {
                 this._set_value(record, value);
                 record._changed[this.name] = true;
@@ -1685,19 +1679,22 @@
                 }.bind(this));
             }
         },
-        _set_default_value: function(record) {
+        _set_default_value: function(record, model) {
             if (record._values[this.name] !== undefined) {
                 return;
             }
-            var group = Sao.Group(new Sao.Model(this.description.relation),
-                    this.context, []);
+            if (!model) {
+                model = new Sao.Model(this.description.relation);
+            }
+            if (record.model.name == this.description.relation) {
+                model = record.model;
+            }
+            var group = Sao.Group(model, this.context, []);
             group.set_parent(record);
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
-            if (record.model.name == this.description.relation) {
-                group.fields = record.model.fields;
-            }
             record._values[this.name] = group;
+            // TODO signal
         },
         get_eval: function(record) {
             var result = [];
@@ -1755,32 +1752,6 @@
     });
 
     Sao.field.Many2Many = Sao.class_(Sao.field.One2Many, {
-        set: function(record, value) {
-            var group = record._values[this.name];
-            var model;
-            if (group !== undefined) {
-                model = group.model;
-                group.destroy();
-                // TODO unconnect
-            } else if (record.model.name == this.description.relation) {
-                model = record.model;
-            } else {
-                model = new Sao.Model(this.description.relation);
-            }
-            group = Sao.Group(model, this.context, []);
-            group.set_parent(record);
-            group.parent_name = this.description.relation_field;
-            group.child_name = this.name;
-            if (record._values[this.name] !== undefined) {
-                jQuery.extend(group.record_removed, record._values[this.name]);
-                jQuery.extend(group.record_deleted,
-                    record._values[this.name].record_deleted);
-                jQuery.extend(group.record_removed,
-                    record._values[this.name].record_removed);
-            }
-            record._values[this.name] = group;
-            group.load(value);
-        },
         get_on_change_value: function(record) {
             return this.get_eval(record);
         }
