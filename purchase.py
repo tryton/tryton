@@ -70,6 +70,8 @@ class Purchase:
                     and all(l.invoice for l in invoice_lines)
                     and all(l.invoice.state == 'paid' for l in invoice_lines)):
                 return 'paid'
+            else:
+                return 'waiting'
         return state
 
     @classmethod
