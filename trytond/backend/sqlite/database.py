@@ -356,23 +356,21 @@ class Cursor(CursorInterface):
         self._conn.rollback()
 
     def test(self):
-        sqlite_master = Table('sqlite_master')
-        select = sqlite_master.select(sqlite_master.name)
-        select.where = sqlite_master.type == 'table'
-        select.where &= sqlite_master.name.in_([
-                'ir_model',
-                'ir_model_field',
-                'ir_ui_view',
-                'ir_ui_menu',
-                'res_user',
-                'res_group',
-                'ir_module_module',
-                'ir_module_module_dependency',
-                'ir_translation',
-                'ir_lang',
-                ])
         try:
-            self.cursor.execute(*select)
+            self.cursor.execute("SELECT name "
+                "FROM sqlite_master "
+                "WHERE type = 'table' AND name in ("
+                    "'ir_model', "
+                    "'ir_model_field', "
+                    "'ir_ui_view', "
+                    "'ir_ui_menu', "
+                    "'res_user', "
+                    "'res_group', "
+                    "'ir_module_module', "
+                    "'ir_module_module_dependency', "
+                    "'ir_translation', "
+                    "'ir_lang'"
+                    ")")
         except Exception:
             return False
         return len(self.cursor.fetchall()) != 0
