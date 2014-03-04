@@ -1,7 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import operator
+import math
+
 import gtk
+import gobject
 
 from tryton.common import RPCExecute, RPCException
 
@@ -102,3 +105,72 @@ def selection_shortcuts(entry):
             widget.popup()
     entry.connect('key_press_event', key_press)
     return entry
+
+
+class PopdownMixin(object):
+
+    def set_popdown(self, selection, entry):
+        if not entry.child:  # entry is destroyed
+            return
+        model, lengths = self.get_model(selection)
+        entry.set_model(model)
+        # GTK 2.24 and above use a ComboBox instead of a ComboBoxEntry
+        if hasattr(entry, 'set_text_column'):
+            entry.set_text_column(0)
+        else:
+            entry.set_entry_text_column(0)
+        completion = gtk.EntryCompletion()
+        completion.set_inline_selection(True)
+        completion.set_model(model)
+        entry.child.set_completion(completion)
+        if lengths:
+            pop = sorted(lengths, reverse=True)
+            average = sum(pop) / len(pop)
+            deviation = int(math.sqrt(sum((x - average) ** 2 for x in pop) /
+                    len(pop)))
+            width = max(next((x for x in pop if x < (deviation * 4)), 10), 10)
+        else:
+            width = 10
+        entry.child.set_width_chars(width)
+        if lengths:
+            entry.child.set_max_length(max(lengths))
+        completion.set_text_column(0)
+        completion.connect('match-selected', self.match_selected, entry)
+
+    def get_model(self, selection):
+        model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
+        lengths = []
+        for (value, name) in selection:
+            name = str(name)
+            model.append((name, value))
+            lengths.append(len(name))
+        return model, lengths
+
+    def match_selected(self, completion, model, iter_, entry):
+        value, = model.get(iter_, 1)
+        model = entry.get_model()
+        for i, values in enumerate(model):
+            if values[1] == value:
+                entry.set_active(i)
+                break
+
+    def get_popdown_value(self, entry):
+        active = entry.get_active()
+        if active < 0:
+            return None
+        else:
+            model = entry.get_model()
+            return model[active][1]
+
+    def set_popdown_value(self, entry, value):
+        active = -1
+        model = entry.get_model()
+        for i, selection in enumerate(model):
+            if selection[1] == value:
+                active = i
+                break
+        else:
+            if value:
+                return False
+        entry.set_active(active)
+        return True

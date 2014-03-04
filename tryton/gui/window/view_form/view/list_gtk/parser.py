@@ -2,7 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 
 import os
-import gobject
 import tempfile
 import gtk
 import locale
@@ -34,7 +33,7 @@ from tryton.common.cellrendererclickablepixbuf import \
 from tryton.translate import date_format
 from tryton.common import RPCExecute, RPCException
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.selection import SelectionMixin
+from tryton.common.selection import SelectionMixin, PopdownMixin
 
 _ = gettext.gettext
 
@@ -923,40 +922,26 @@ class M2M(O2M):
             context=context)
 
 
-class Selection(Char, SelectionMixin):
+class Selection(Char, SelectionMixin, PopdownMixin):
 
     def __init__(self, *args):
         super(Selection, self).__init__(*args)
         self.renderer = CellRendererCombo()
         self.renderer.connect('editing-started', self.editing_started)
         self.init_selection()
-        self.renderer.set_property('model', self.get_model(self.selection))
+        self.renderer.set_property('model', self.get_model(self.selection)[0])
         self.renderer.set_property('text-column', 0)
-
-    def get_model(self, selection):
-        model = gtk.ListStore(gobject.TYPE_STRING)
-        self._selection = {}
-        lst = []
-        for (value, name) in selection:
-            name = str(name)
-            lst.append(name)
-            self._selection[name] = value
-            i = model.append()
-            model.set(i, 0, name)
-        return model
 
     def get_textual_value(self, record):
         field = record[self.field_name]
         self.update_selection(record, field)
-        value = record[self.field_name].get(record)
+        value = field.get(record)
         text = dict(self.selection).get(value, '')
         if value and not text:
             text = self.get_inactive_selection(value)
         return text
 
     def value_from_text(self, record, text, callback=None):
-        field = record[self.field_name]
-        field.set_client(record, self._selection.get(text, False))
         if callback:
             callback()
 
@@ -965,17 +950,26 @@ class Selection(Char, SelectionMixin):
         store = self.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
         field = record[self.field_name]
+
+        set_value = lambda *a: self.set_value(editable, record, field)
+        editable.child.connect('activate', set_value)
+        editable.child.connect('focus-out-event', set_value)
+        editable.connect('changed', set_value)
+
         self.update_selection(record, field)
-        model = self.get_model(self.selection)
-        editable.set_model(model)
-        # GTK 2.24 and above use a ComboBox instead of a ComboBoxEntry
-        if hasattr(editable, 'set_text_column'):
-            editable.set_text_column(0)
-        completion = gtk.EntryCompletion()
-        completion.set_inline_selection(True)
-        completion.set_model(model)
-        editable.get_child().set_completion(completion)
-        completion.set_text_column(0)
+        self.set_popdown(self.selection, editable)
+
+        value = field.get(record)
+        if not self.set_popdown_value(editable, value):
+            self.get_inactive_selection(value)
+            self.set_popdown_value(editable, value)
+        return False
+
+    def set_value(self, editable, record, field):
+        value = self.get_popdown_value(editable)
+        if 'relation' in self.attrs and value:
+            value = (value, editable.get_active_text())
+        field.set_client(record, value)
         return False
 
 
@@ -986,16 +980,17 @@ class Reference(Char, SelectionMixin):
         super(Reference, self).__init__(field_name, model_name, treeview,
             attrs=attrs, renderer=renderer)
         self.init_selection()
-        self._selection = dict(self.selection)
 
     def get_textual_value(self, record):
-        value = record[self.field_name].get_client(record)
+        field = record[self.field_name]
+        self.update_selection(record, field)
+        value = field.get_client(record)
         if not value:
             model, name = '', ''
         else:
             model, name = value
         if model:
-            return self._selection.get(model, model) + ',' + name
+            return dict(self.selection).get(model, model) + ',' + name
         else:
             return name
 

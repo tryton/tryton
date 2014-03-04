@@ -4,8 +4,7 @@ import gtk
 import gettext
 
 from many2one import Many2One
-from .selection import PopdownMixin
-from tryton.common.selection import SelectionMixin
+from tryton.common.selection import SelectionMixin, PopdownMixin
 
 _ = gettext.gettext
 
@@ -32,9 +31,12 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         return self.widget_combo.grab_focus()
 
     def get_model(self):
-        child = self.widget_combo.get_child()
-        res = child.get_text()
-        return self._selection.get(res, '')
+        active = self.widget_combo.get_active()
+        if active < 0:
+            return ''
+        else:
+            model = self.widget_combo.get_model()
+            return model[active][1]
 
     def _readonly_set(self, value):
         super(Reference, self)._readonly_set(value)
@@ -116,15 +118,14 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         else:
             model, value = None, None
         super(Reference, self).set_text(value)
-        child = self.widget_combo.get_child()
-        reverse_selection = dict((v, k)
-            for k, v in self._selection.iteritems())
-        if model:
-            child.set_text(reverse_selection[model])
-            child.set_position(len(reverse_selection[model]))
-        else:
-            child.set_text('')
-            child.set_position(0)
+
+        active = -1
+        combo_model = self.widget_combo.get_model()
+        for i, selection in enumerate(combo_model):
+            if selection[1] == model:
+                active = i
+                break
+        self.widget_combo.set_active(active)
 
     def display(self, record, field):
         self.update_selection(record, field)
