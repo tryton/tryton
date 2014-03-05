@@ -9,6 +9,7 @@
                 'class': 'wizard'
             });
             this.name = name;
+            this.action_id = null;
             this.id = null;
             this.ids = null;
             this.action = null;
@@ -26,6 +27,7 @@
         },
         run: function(attributes) {
             this.action = attributes.action;
+            this.action_id = attributes.data.action_id;
             this.id = attributes.data.id;
             this.ids = attributes.data.ids;
             this.model = attributes.data.model;
@@ -53,6 +55,7 @@
                 ctx.active_id = this.id;
                 ctx.active_ids = this.ids;
                 ctx.active_model = this.model;
+                ctx.action_id = this.action_id;
                 var data = {};
                 if (this.screen) {
                     data[this.screen_state] = this.screen.get_on_change_value();

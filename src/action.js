@@ -16,6 +16,7 @@
         } else {
             data = jQuery.extend({}, data);
         }
+        data.action_id = action.id;
         var params = {};
         switch (action.type) {
             case 'ir.action.act_window':
