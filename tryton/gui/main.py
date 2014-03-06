@@ -1069,8 +1069,12 @@ class Main(object):
                 size=gtk.ICON_SIZE_MENU, detail=None)
             cell.set_property('pixbuf', pixbuf)
         column.set_cell_data_func(favorite_renderer, favorite_setter)
+
+        def toggle_favorite(renderer, path, treeview):
+            if treeview.props.window:
+                self.toggle_favorite(renderer, path, treeview)
         favorite_renderer.connect('clicked',
-            lambda *a: gobject.idle_add(self.toggle_favorite, *a), treeview)
+            lambda *a: gobject.idle_add(toggle_favorite, *a), treeview)
         # Unset fixed height mode to add column
         treeview.set_fixed_height_mode(False)
         treeview.append_column(column)

@@ -2,7 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 import gtk
 import gettext
-import operator
 import gobject
 
 import tryton.common as common
@@ -348,6 +347,8 @@ class ScreenContainer(object):
 
     def match_selected(self, completion, model, iter):
         def callback():
+            if not self.search_entry.props.window:
+                return
             self.update()
             self.search_entry.emit('changed')
         gobject.idle_add(callback)
@@ -364,8 +365,12 @@ class ScreenContainer(object):
             self.search_entry.grab_focus()
 
     def key_press(self, widget, event):
-        gobject.idle_add(self.update)
-        gobject.idle_add(self.bookmark_match)
+        def keypress():
+            if not self.search_entry.props.window:
+                return
+            self.update()
+            self.bookmark_match()
+        gobject.idle_add(keypress)
 
     def icon_press(self, widget, icon_pos, event):
         if icon_pos == 1:

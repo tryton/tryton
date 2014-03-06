@@ -138,8 +138,12 @@ class Form(SignalEvent, TabContent):
 
         self.screen.signal_connect(self, 'record-message',
             self._record_message)
+
+        def record_modified(*args):
+            if self.widget_get().props.window:
+                self.record_modified(*args)
         self.screen.signal_connect(self, 'record-modified',
-            lambda *a: gobject.idle_add(self._record_modified, *a))
+            lambda *a: gobject.idle_add(record_modified, *a))
         self.screen.signal_connect(self, 'record-saved', self._record_saved)
         self.screen.signal_connect(self, 'attachment-count',
                 self._attachment_count)

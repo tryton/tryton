@@ -67,10 +67,14 @@ class WidgetInterface(object):
 
     def send_modified(self, *args):
         def send(value):
+            if not self.widget.props.window:
+                return
             if self.record and self.get_value() == value:
                 self.record.signal('record-modified')
 
         def get_value():
+            if not self.widget.props.window:
+                return
             gobject.timeout_add(300, send, self.get_value())
         # Wait the current event is finished to retreive the value
         gobject.idle_add(get_value)

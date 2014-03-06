@@ -123,6 +123,8 @@ class DBCreate(object):
             entry.handler_unblock(_hid)
 
             def _move_cursor():
+                if not entry.props.window:
+                    return
                 with gtk.gdk.lock:
                     entry.set_position(_pos)
                     return False
