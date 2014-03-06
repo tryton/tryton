@@ -641,7 +641,7 @@ class ViewList(ParserView):
                     if not model:
                         continue
                     label = field.attrs['string']
-                    populate(menu, model, record_id, title=label)
+                    populate(menu, model, record_id, title=label, field=field)
                 menu.show_all()
             # Delay filling of popup as it can take time
             gobject.idle_add(pop, menu, group, record)

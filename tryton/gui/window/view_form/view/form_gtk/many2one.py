@@ -364,7 +364,7 @@ class Many2One(WidgetInterface):
         if self.has_target(value):
             # Delay filling of popup as it can take time
             gobject.idle_add(populate, menu, self.get_model(),
-                self.id_from_value(value))
+                self.id_from_value(value), '', self.field)
         return True
 
     def _completion_match_selected(self, completion, model, iter_):

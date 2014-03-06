@@ -11,7 +11,7 @@ from tryton.gui.window.attachment import Attachment
 _ = gettext.gettext
 
 
-def populate(menu, model, record, title=''):
+def populate(menu, model, record, title='', field=None):
     '''
     Fill menu with the actions of model for the record.
     If title is filled, the actions will be put in a submenu.
@@ -50,6 +50,11 @@ def populate(menu, model, record, title=''):
     def attachment(menuitem):
         Attachment(record, None)
 
+    def edit(menuitem):
+        with Window(hide_current=True, allow_similar=True):
+            Window.create(field.attrs.get('view_ids'), model, record,
+                mode=['form'])
+
     if title:
         if len(menu):
             menu.append(gtk.SeparatorMenuItem())
@@ -62,6 +67,11 @@ def populate(menu, model, record, title=''):
         action_menu = menu
 
     if len(action_menu):
+        action_menu.append(gtk.SeparatorMenuItem())
+    if field:
+        edit_item = gtk.MenuItem(_('Edit...'))
+        edit_item.connect('activate', edit)
+        action_menu.append(edit_item)
         action_menu.append(gtk.SeparatorMenuItem())
     attachment_item = gtk.ImageMenuItem('tryton-attachment')
     attachment_item.set_label(_('Attachments...'))
