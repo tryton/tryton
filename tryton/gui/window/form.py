@@ -578,7 +578,8 @@ class Form(SignalEvent, TabContent):
                 menuitem.set_use_underline(True)
                 menuitem.connect('activate', lambda m, func: func({
                             'model': self.model,
-                            'ids': self.id_get(),
+                            'ids': [r.id
+                                for r in self.screen.selected_records],
                             'id': self.id_get(),
                             }), func)
                 menuitem._update_action = True
