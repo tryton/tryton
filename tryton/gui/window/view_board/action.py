@@ -140,4 +140,7 @@ class Action(SignalEvent):
         if hasattr(self, 'screen'):  # Catch early update
             # Using idle_add to prevent corruption of the event who triggered
             # the update.
-            gtk.idle_add(self.display)
+            def display():
+                if self.screen.widget.props.window:
+                    self.display()
+            gtk.idle_add(display)

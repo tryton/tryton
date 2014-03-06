@@ -310,6 +310,8 @@ class Many2One(WidgetInterface):
         value = self.field.get(self.record)
         if self.has_target(value):
             def clean():
+                if not self.wid_text.props.window:
+                    return
                 text = self.wid_text.get_text()
                 position = self.wid_text.get_position()
                 self.field.set_client(self.record,
