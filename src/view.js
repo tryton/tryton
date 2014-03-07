@@ -1426,8 +1426,8 @@
         switch (type) {
             case 'char':
                 return Sao.View.Form.Char;
-            case 'sha':
-                return Sao.View.Form.Sha;
+            case 'password':
+                return Sao.View.Form.Password;
             case 'date':
                 return Sao.View.Form.Date;
             case 'datetime':
@@ -1580,10 +1580,10 @@
         }
     });
 
-    Sao.View.Form.Sha = Sao.class_(Sao.View.Form.Char, {
-        class_: 'form-sha',
+    Sao.View.Form.Password = Sao.class_(Sao.View.Form.Char, {
+        class_: 'form-password',
         init: function(field_name, model, attributes) {
-            Sao.View.Form.Sha._super.init.call(this, field_name, model,
+            Sao.View.Form.Password._super.init.call(this, field_name, model,
                 attributes);
             this.el.prop('type', 'password');
         }

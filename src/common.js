@@ -648,7 +648,7 @@
                 }
                 var formatted_value = this.format_value(field, value, target);
                 if (~this.OPERATORS.indexOf(operator) &&
-                        ~['char', 'text', 'sha', 'selection']
+                        ~['char', 'text', 'selection']
                         .indexOf(field.type) &&
                         (value === '')) {
                     formatted_value = '""';
