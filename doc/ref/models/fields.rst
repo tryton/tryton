@@ -257,15 +257,6 @@ A single line string field.
     ComboboxEntry in the client.
     The set of field names could be filled by using the decorator :meth:`depends`.
 
-Sha
----
-
-.. class:: Sha(string[, \**options])
-
-A string field which value will be stored with a `secure hash algorithm`_.
-
-.. _`secure hash algorithm`: http://en.wikipedia.org/wiki/Secure_Hash_Algorithm
-
 Text
 ----
 

@@ -13,7 +13,6 @@ __all__ = [
     'Numeric', 'NumericDefault', 'NumericRequired', 'NumericDigits',
     'Char', 'CharDefault', 'CharRequired', 'CharSize', 'CharTranslate',
     'Text', 'TextDefault', 'TextRequired', 'TextSize', 'TextTranslate',
-    'Sha', 'ShaDefault', 'ShaRequired',
     'Date', 'DateDefault', 'DateRequired',
     'DateTime', 'DateTimeDefault', 'DateTimeRequired', 'DateTimeFormat',
     'Time', 'TimeDefault', 'TimeRequired', 'TimeFormat',
@@ -224,31 +223,6 @@ class TextTranslate(ModelSQL):
     __name__ = 'test.text_translate'
     text = fields.Text(string='Text', size=None, help='Test text',
             required=False, translate=True)
-
-
-class Sha(ModelSQL):
-    'Sha'
-    __name__ = 'test.sha'
-    sha = fields.Sha(string='Sha', help='Test sha',
-            required=False)
-
-
-class ShaDefault(ModelSQL):
-    'Sha Default'
-    __name__ = 'test.sha_default'
-    sha = fields.Sha(string='Sha', help='Test sha',
-            required=False)
-
-    @staticmethod
-    def default_sha():
-        return 'Sha'
-
-
-class ShaRequired(ModelSQL):
-    'Sha Required'
-    __name__ = 'test.sha_required'
-    sha = fields.Sha(string='Sha', help='Test sha',
-            required=True)
 
 
 class Date(ModelSQL):

@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="email"/>
             <field name="email" widget="email"/>
             <label name="password"/>
-            <field name="password" widget="sha"/>
+            <field name="password" widget="password"/>
             <separator name="signature" colspan="4"/>
             <field name="signature" colspan="4"/>
         </page>

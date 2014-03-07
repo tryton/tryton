@@ -25,7 +25,6 @@ class ExportData(ModelSQL):
     numeric = fields.Numeric('Numeric')
     char = fields.Char('Char')
     text = fields.Text('Text')
-    sha = fields.Sha('Sha')
     date = fields.Date('Date')
     datetime = fields.DateTime('DateTime')
     selection = fields.Selection([

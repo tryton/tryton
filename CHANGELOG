@@ -1,3 +1,5 @@
+* Remove Sha field
+* Add password widget
 * Add Len to PYSON
 * Use bcrypt to hash password if possible
 * Use a sequence of ids, values to set fields

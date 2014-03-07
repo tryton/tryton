@@ -48,7 +48,7 @@ attlist.field &=
     | "integer"
     | "selection"
     | "char"
-    | "sha"
+    | "password"
     | "float_time"
     | "boolean"
     | "reference"

@@ -7,7 +7,7 @@ __all__ = [
     'ImportDataBoolean', 'ImportDataInteger', 'ImportDataIntegerRequired',
     'ImportDataFloat', 'ImportDataFloatRequired',
     'ImportDataNumeric', 'ImportDataNumericRequired',
-    'ImportDataChar', 'ImportDataText', 'ImportDataSha',
+    'ImportDataChar', 'ImportDataText',
     'ImportDataDate', 'ImportDataDateTime', 'ImportDataSelection',
     'ImportDataMany2OneTarget', 'ImportDataMany2One',
     'ImportDataMany2ManyTarget', 'ImportDataMany2Many',
@@ -69,12 +69,6 @@ class ImportDataText(ModelSQL):
     "Import Data Text"
     __name__ = 'test.import_data.text'
     text = fields.Text('Text')
-
-
-class ImportDataSha(ModelSQL):
-    "Import Data Sha"
-    __name__ = 'test.import_data.sha'
-    sha = fields.Sha('Sha')
 
 
 class ImportDataDate(ModelSQL):

@@ -162,19 +162,6 @@ class ExportDataTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
-    def test0070sha(self):
-        'Test sha'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            export1, = self.export_data.create([{
-                        'sha': 'Test',
-                        }])
-            self.assertEqual(
-                self.export_data.export_data([export1], ['sha']),
-                [['640ab2bae07bedc4c163f679a746f7ab7fb5d1fa']])
-
-            transaction.cursor.rollback()
-
     def test0080date(self):
         'Test date'
         with Transaction().start(DB_NAME, USER,

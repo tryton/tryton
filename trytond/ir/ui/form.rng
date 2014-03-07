@@ -147,7 +147,7 @@
           <value>integer</value>
           <value>selection</value>
           <value>char</value>
-          <value>sha</value>
+          <value>password</value>
           <value>float_time</value>
           <value>boolean</value>
           <value>reference</value>

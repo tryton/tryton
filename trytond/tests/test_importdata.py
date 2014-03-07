@@ -21,7 +21,6 @@ class ImportDataTestCase(unittest.TestCase):
         self.numeric_required = POOL.get('test.import_data.numeric_required')
         self.char = POOL.get('test.import_data.char')
         self.text = POOL.get('test.import_data.text')
-        self.sha = POOL.get('test.import_data.sha')
         self.date = POOL.get('test.import_data.date')
         self.datetime = POOL.get('test.import_data.datetime')
         self.selection = POOL.get('test.import_data.selection')
@@ -264,21 +263,6 @@ class ImportDataTestCase(unittest.TestCase):
 
             self.assertEqual(self.text.import_data(['text'],
                 [['test'], ['foo'], ['bar']]), (3, 0, 0, 0))
-
-            transaction.cursor.rollback()
-
-    def test0070sha(self):
-        'Test sha'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
-            self.assertEqual(self.sha.import_data(['sha'],
-                [['test']]), (1, 0, 0, 0))
-
-            self.assertEqual(self.sha.import_data(['sha'],
-                [['']]), (1, 0, 0, 0))
-
-            self.assertEqual(self.sha.import_data(['sha'],
-                [['test'], ['foo']]), (2, 0, 0, 0))
 
             transaction.cursor.rollback()
 

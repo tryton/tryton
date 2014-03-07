@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="login"/>
             <field name="login"/>
             <label name="password"/>
-            <field name="password" widget="sha"/>
+            <field name="password" widget="password"/>
             <label name="email"/>
             <field name="email" widget="email"/>
             <separator name="signature" colspan="4"/>
