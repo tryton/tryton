@@ -902,7 +902,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res['amount_second_currency'] = abs(res['amount_second_currency'])
             res['second_currency'] = self.currency.id
         else:
-            res['amount_second_currency'] = Decimal('0.0')
+            res['amount_second_currency'] = None
             res['second_currency'] = None
         if amount >= Decimal('0.0'):
             res['debit'] = Decimal('0.0')
@@ -935,7 +935,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
         total_currency = Decimal('0.0')
         for line in move_lines:
             total += line['debit'] - line['credit']
-            total_currency += line['amount_second_currency']
+            if line['amount_second_currency']:
+                total_currency += line['amount_second_currency']
 
         term_lines = self.payment_term.compute(total, self.company.currency,
             self.invoice_date)
@@ -944,7 +945,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             term_lines = [(Date.today(), total)]
         for date, amount in term_lines:
             val = self._get_move_line(date, amount)
-            remainder_total_currency += val['amount_second_currency']
+            if val['amount_second_currency']:
+                remainder_total_currency += val['amount_second_currency']
             move_lines.append(val)
         if not self.currency.is_zero(remainder_total_currency):
             move_lines[-1]['amount_second_currency'] -= \
@@ -2029,7 +2031,7 @@ class InvoiceLine(ModelSQL, ModelView):
             res['second_currency'] = self.invoice.currency.id
         else:
             amount = self.amount
-            res['amount_second_currency'] = Decimal('0.0')
+            res['amount_second_currency'] = None
             res['second_currency'] = None
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
@@ -2038,12 +2040,16 @@ class InvoiceLine(ModelSQL, ModelView):
             else:
                 res['debit'] = Decimal('0.0')
                 res['credit'] = - amount
-                res['amount_second_currency'] = - res['amount_second_currency']
+                if res['amount_second_currency']:
+                    res['amount_second_currency'] = \
+                        - res['amount_second_currency']
         else:
             if amount >= Decimal('0.0'):
                 res['debit'] = Decimal('0.0')
                 res['credit'] = amount
-                res['amount_second_currency'] = - res['amount_second_currency']
+                if res['amount_second_currency']:
+                    res['amount_second_currency'] = \
+                        - res['amount_second_currency']
             else:
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
@@ -2316,7 +2322,7 @@ class InvoiceTax(ModelSQL, ModelView):
             res['second_currency'] = self.invoice.currency.id
         else:
             amount = self.amount
-            res['amount_second_currency'] = Decimal('0.0')
+            res['amount_second_currency'] = None
             res['second_currency'] = None
         if self.invoice.type in ('in_invoice', 'out_credit_note'):
             if amount >= Decimal('0.0'):
@@ -2325,12 +2331,16 @@ class InvoiceTax(ModelSQL, ModelView):
             else:
                 res['debit'] = Decimal('0.0')
                 res['credit'] = - amount
-                res['amount_second_currency'] = - res['amount_second_currency']
+                if res['amount_second_currency']:
+                    res['amount_second_currency'] = \
+                        - res['amount_second_currency']
         else:
             if amount >= Decimal('0.0'):
                 res['debit'] = Decimal('0.0')
                 res['credit'] = amount
-                res['amount_second_currency'] = - res['amount_second_currency']
+                if res['amount_second_currency']:
+                    res['amount_second_currency'] = \
+                        - res['amount_second_currency']
             else:
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
