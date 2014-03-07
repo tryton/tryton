@@ -44,6 +44,7 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        cls._order.insert(0, ('date', 'DESC'))
         cls._sql_constraints += [
             ('check_move_hours_pos',
              'CHECK(hours >= 0.0)', 'Hours field must be positive'),
