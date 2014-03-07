@@ -350,7 +350,6 @@ class MetaModelFactory(object):
         'boolean': BooleanDescriptor,
         'char': CharDescriptor,
         'text': CharDescriptor,
-        'sha': CharDescriptor,
         'binary': BinaryDescriptor,
         'selection': CharDescriptor,  # TODO implement its own descriptor
         'integer': IntegerDescriptor,
