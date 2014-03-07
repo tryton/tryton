@@ -1,3 +1,4 @@
+* Replace sha widget by password
 * Add Len to PYSON
 * Use a pool of connection
 * Manage client actions from button and wizard

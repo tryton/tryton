@@ -898,7 +898,6 @@ class DictField(CharField):
 
 TYPES = {
     'char': CharField,
-    'sha': CharField,
     'float_time': FloatField,
     'integer': IntegerField,
     'biginteger': IntegerField,

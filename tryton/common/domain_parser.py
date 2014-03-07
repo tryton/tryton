@@ -862,7 +862,7 @@ class DomainParser(object):
                     operator = ''
             formatted_value = format_value(field, value, target)
             if (operator in OPERATORS and
-                    field['type'] in ('char', 'text', 'sha', 'selection')
+                    field['type'] in ('char', 'text', 'selection')
                     and value == ''):
                 formatted_value = '""'
             return '%s: %s%s' % (quote(field['string']), operator,

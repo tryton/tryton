@@ -522,7 +522,7 @@ from calendar import Calendar, DateTime, Time
 from float import Float
 from integer import Integer
 from selection import Selection
-from char import Char, Sha
+from char import Char, Password
 from float_time import FloatTime
 from checkbox import CheckBox
 from reference import Reference
@@ -549,7 +549,7 @@ WIDGETS_TYPE = {
     'biginteger': (Integer, 1, False, False),
     'selection': (Selection, 1, False, False),
     'char': (Char, 1, False, False),
-    'sha': (Sha, 1, False, False),
+    'password': (Password, 1, False, False),
     'float_time': (FloatTime, 1, False, False),
     'boolean': (CheckBox, 1, False, False),
     'reference': (Reference, 1, False, False),

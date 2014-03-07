@@ -150,10 +150,10 @@ class Char(WidgetInterface, TranslateMixin):
             self.widget.set_focus_chain([self.entry])
 
 
-class Sha(Char):
+class Password(Char):
 
     def __init__(self, field_name, model_name, attrs=None):
-        super(Sha, self).__init__(field_name, model_name, attrs=attrs)
+        super(Password, self).__init__(field_name, model_name, attrs=attrs)
         self.entry.props.visibility = False
 
         self.visibility_checkbox = gtk.CheckButton()
