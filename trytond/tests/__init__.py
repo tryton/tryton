@@ -130,6 +130,12 @@ def register():
         CopyOne2ManyTarget,
         CopyOne2ManyReference,
         CopyOne2ManyReferenceTarget,
+        CopyMany2Many,
+        CopyMany2ManyTarget,
+        CopyMany2ManyRelation,
+        CopyMany2ManyReference,
+        CopyMany2ManyReferenceTarget,
+        CopyMany2ManyReferenceRelation,
         Many2OneTarget,
         Many2OneDomainValidation,
         module='tests', type_='model')

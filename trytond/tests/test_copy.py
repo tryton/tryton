@@ -17,11 +17,16 @@ class CopyTestCase(unittest.TestCase):
         self.one2many_reference = POOL.get('test.copy.one2many_reference')
         self.one2many_reference_target = \
             POOL.get('test.copy.one2many_reference.target')
+        self.many2many = POOL.get('test.copy.many2many')
+        self.many2many_target = POOL.get('test.copy.many2many.target')
+        self.many2many_reference = POOL.get('test.copy.many2many_reference')
+        self.many2many_reference_target = \
+            POOL.get('test.copy.many2many_reference.target')
 
     def test0130one2many(self):
         'Test one2many'
         with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
+                context=CONTEXT):
             for One2many, Target in (
                     (self.one2many, self.one2many_target),
                     (self.one2many_reference, self.one2many_reference_target),
@@ -42,7 +47,30 @@ class CopyTestCase(unittest.TestCase):
                 self.assertEqual([x.name for x in one2many.one2many],
                     [x.name for x in one2many_copy.one2many])
 
-            transaction.cursor.rollback()
+    def test0140many2many(self):
+        'Test many2many'
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT):
+            for Many2many, Target in (
+                    (self.many2many, self.many2many_target),
+                    (self.many2many_reference,
+                        self.many2many_reference_target),
+                    ):
+                many2many = Many2many(name='Test')
+                many2many.many2many = [
+                    Target(name='Target 1'),
+                    Target(name='Target 2'),
+                    ]
+                many2many.save()
+
+                many2many_copy, = Many2many.copy([many2many])
+
+                self.assertNotEqual(many2many, many2many_copy)
+                self.assertEqual(len(many2many.many2many),
+                    len(many2many_copy.many2many))
+                self.assertEqual(many2many.many2many, many2many_copy.many2many)
+                self.assertEqual([x.name for x in many2many.many2many],
+                    [x.name for x in many2many_copy.many2many])
 
 
 def suite():
