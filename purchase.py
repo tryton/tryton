@@ -1205,7 +1205,7 @@ class PurchaseLine(ModelSQL, ModelView):
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense', {
                         'product': invoice_line.product.rec_name,
-                        'purchase': invoice_line.purchase.rec_name,
+                        'purchase': self.purchase.rec_name,
                         })
         else:
             for model in ('product.template', 'product.category'):
@@ -1214,7 +1214,7 @@ class PurchaseLine(ModelSQL, ModelView):
                     break
             if not invoice_line.account:
                 self.raise_user_error('missing_account_expense_property',
-                    (invoice_line.purchase.rec_name,))
+                    {'purchase': self.purchase.rec_name})
         return [invoice_line]
 
     @classmethod
