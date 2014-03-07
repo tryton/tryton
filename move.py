@@ -12,7 +12,7 @@ from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     Button
 from trytond.report import Report
 from trytond import backend
-from trytond.pyson import Eval, PYSONEncoder
+from trytond.pyson import Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
@@ -526,9 +526,16 @@ class Line(ModelSQL, ModelView):
     amount_second_currency = fields.Numeric('Amount Second Currency',
             digits=(16, Eval('second_currency_digits', 2)),
             help='The amount expressed in a second currency',
-            depends=['second_currency_digits'])
+        states={
+            'required': Bool(Eval('second_currency')),
+            },
+        depends=['second_currency_digits', 'second_currency'])
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
-            help='The second currency')
+            help='The second currency',
+        states={
+            'required': Bool(Eval('amount_second_currency')),
+            },
+        depends=['amount_second_currency'])
     party = fields.Many2One('party.party', 'Party', select=True)
     maturity_date = fields.Date('Maturity Date',
         help='This field is used for payable and receivable lines. \n'
