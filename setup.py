@@ -118,16 +118,29 @@ elif sys.platform == 'darwin':
         },
     }
 
+PACKAGE, VERSION, LICENSE, WEBSITE = None, None, None, None
 execfile(os.path.join('tryton', 'version.py'))
+
+major_version, minor_version, _ = VERSION.split('.', 2)
+major_version = int(major_version)
+minor_version = int(minor_version)
+
+download_url = 'http://downloads.tryton.org/%s.%s/' % (
+    major_version, minor_version)
+if minor_version % 2:
+    VERSION = '%s.%s.dev0' % (major_version, minor_version)
+    download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
+        PACKAGE, PACKAGE, VERSION)
 
 dist = setup(name=PACKAGE,
     version=VERSION,
     description='Tryton client',
     long_description=read('README'),
     author='Tryton',
+    author_email='issue_tracker@tryton.org',
     url=WEBSITE,
-    download_url=("http://downloads.tryton.org/" +
-        VERSION.rsplit('.', 1)[0] + '/'),
+    download_url=download_url,
+    keywords='business application ERP',
     packages=find_packages(),
     data_files=data_files,
     scripts=['bin/tryton'],
@@ -153,6 +166,7 @@ dist = setup(name=PACKAGE,
         'Programming Language :: Python :: 2.7',
         'Topic :: Office/Business',
         ],
+    platforms='any',
     license=LICENSE,
     install_requires=[
         #"pygtk >= 2.6",
@@ -163,6 +177,7 @@ dist = setup(name=PACKAGE,
         'cdecimal': ['cdecimal'],
         'calendar': ['GooCalendar'],
         },
+    zip_safe=False,
     **args
     )
 
