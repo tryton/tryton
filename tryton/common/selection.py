@@ -27,7 +27,7 @@ class SelectionMixin(object):
         if (not isinstance(selection, (list, tuple))
                 and key not in self._values2selection):
             try:
-                if key:
+                if self.attrs.get('selection_change_with'):
                     selection = RPCExecute('model', self.model_name, selection,
                         dict(key))
                 else:
