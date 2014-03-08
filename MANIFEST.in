@@ -6,7 +6,6 @@ include LICENSE
 include tryton.cfg
 include *.xml
 include view/*.xml
-include *.odt
 include locale/*.po
 include doc/*
 include tests/*.rst
