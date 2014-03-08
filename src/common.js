@@ -256,7 +256,7 @@
         if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
             var prm;
-            if (key) {
+            if (this.attributes.selection_change_with) {
                 var params = {};
                 key.forEach(function(e) {
                     params[e[0]] = e[1];
