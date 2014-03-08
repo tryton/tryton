@@ -16,7 +16,7 @@ class Sale:
         done = super(Sale, self).is_done()
         if done:
             if any(l.purchase_request_state in ('', 'requested')
-                    for l in self.lines):
+                    for l in self.lines if l.supply_on_sale):
                 return False
         return done
 
