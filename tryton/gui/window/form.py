@@ -486,6 +486,13 @@ class Form(SignalEvent, TabContent):
     def create_toolbar(self, toolbars):
         gtktoolbar = super(Form, self).create_toolbar(toolbars)
 
+        attach_btn = self.buttons['attach']
+        attach_btn.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
+                ('text/uri-list', 0, 0),
+                ], gtk.gdk.ACTION_MOVE)
+        attach_btn.connect('drag_data_received',
+            self.attach_drag_data_received)
+
         iconstock = {
             'print': 'tryton-print',
             'action': 'tryton-executable',
@@ -589,3 +596,17 @@ class Form(SignalEvent, TabContent):
     def set_cursor(self):
         if self.screen:
             self.screen.set_cursor(reset_view=False)
+
+    def attach_drag_data_received(self, widget, context, x, y, selection, info,
+            timestamp):
+        record = self.screen.current_record
+        if not record or record.id < 0:
+            return
+        win_attach = Attachment(record,
+            lambda: self.update_attachment_count(reload=True))
+        if info == 0:
+            for uri in selection.data.splitlines():
+                # Win32 cut&paste terminates the list with a NULL character
+                if not uri or uri == '\0':
+                    continue
+                win_attach.add_uri(uri)

@@ -1,3 +1,4 @@
+* Allow drag & drop on the attachment button
 * Replace sha widget by password
 * Add Len to PYSON
 * Use a pool of connection
