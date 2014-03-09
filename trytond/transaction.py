@@ -100,7 +100,8 @@ class Transaction(local):
     def set_context(self, context=None, **kwargs):
         if context is None:
             context = {}
-        manager = _AttributeManager(context=self.context.copy())
+        manager = _AttributeManager(context=self.context)
+        self.context = self.context.copy()
         self.context.update(context)
         if kwargs:
             self.context.update(kwargs)
