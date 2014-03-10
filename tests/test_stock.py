@@ -10,6 +10,7 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, test_view,\
     test_depends, doctest_dropdb
 from trytond.transaction import Transaction
+from trytond.exceptions import UserWarning
 
 
 class StockTestCase(unittest.TestCase):
@@ -600,6 +601,43 @@ class StockTestCase(unittest.TestCase):
                         'company': company.id,
                         }])
             self.assertRaises(Exception, self.period.close, [period])
+
+    def test0040check_origin(self):
+        'Test Move check_origin'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            uom, = self.uom.search([('name', '=', 'Unit')])
+            template, = self.template.create([{
+                        'name': 'Test Move.check_origin',
+                        'type': 'goods',
+                        'list_price': Decimal(1),
+                        'cost_price': Decimal(0),
+                        'cost_price_method': 'fixed',
+                        'default_uom': uom.id,
+                        }])
+            product, = self.product.create([{
+                        'template': template.id,
+                        }])
+            storage, = self.location.search([('code', '=', 'STO')])
+            customer, = self.location.search([('code', '=', 'CUS')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
+
+            moves = self.move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+
+            self.move.check_origin(moves, set())
+            self.move.check_origin(moves, {'supplier'})
+            self.assertRaises(UserWarning, self.move.check_origin, moves,
+                {'customer'})
 
 
 def suite():

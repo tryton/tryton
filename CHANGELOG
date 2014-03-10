@@ -1,3 +1,4 @@
+* Add warning for moves without origin
 * Allow to define the effective date of shipments
 * Prevent changing product type if stock moves exist
 * Use new methods to compute quantities in StockMixin._search_quantity()

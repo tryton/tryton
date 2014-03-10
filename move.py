@@ -261,6 +261,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 'it is in "Assigned" state.'),
             'modify_done_cancel': ('You can not modify stock move "%s" '
                 'because it is in "Done" or "Cancel" state.'),
+            'no_origin': 'The stock move "%s" has no origin.',
             })
         cls._transitions |= set((
                 ('draft', 'assigned'),
@@ -603,6 +604,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('assigned')
     def assign(cls, moves):
+        cls.check_origin(moves)
         for move in moves:
             move.set_effective_date()
             move.save()
@@ -611,6 +613,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
+        cls.check_origin(moves)
         for move in moves:
             move.set_effective_date()
             if (move.from_location.type in ('supplier', 'production')
@@ -702,6 +705,24 @@ class Move(Workflow, ModelSQL, ModelView):
             if move.state not in ('draft', 'cancel'):
                 cls.raise_user_error('del_draft_cancel', (move.rec_name,))
         super(Move, cls).delete(moves)
+
+    @staticmethod
+    def check_origin_types():
+        "Location types to check for origin"
+        return set()
+
+    @classmethod
+    def check_origin(cls, moves, types=None):
+        if types is None:
+            types = cls.check_origin_types()
+        if not types:
+            return
+        for move in moves:
+            if ((move.from_location.type in types
+                        or move.to_location.type in types)
+                    and not move.origin):
+                cls.raise_user_warning('%s.done' % move,
+                    'no_origin', move.rec_name)
 
     def pick_product(self, location_quantities):
         """
