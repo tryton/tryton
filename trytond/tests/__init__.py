@@ -131,11 +131,11 @@ def register():
         CopyOne2ManyReference,
         CopyOne2ManyReferenceTarget,
         CopyMany2Many,
-        CopyMany2ManyRelation,
         CopyMany2ManyTarget,
+        CopyMany2ManyRelation,
         CopyMany2ManyReference,
-        CopyMany2ManyReferenceRelation,
         CopyMany2ManyReferenceTarget,
+        CopyMany2ManyReferenceRelation,
         Many2OneTarget,
         Many2OneDomainValidation,
         module='tests', type_='model')

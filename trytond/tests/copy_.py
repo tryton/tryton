@@ -57,8 +57,6 @@ class CopyMany2ManyTarget(ModelSQL):
     "Copy Many2Many Target"
     __name__ = 'test.copy.many2many.target'
     name = fields.Char('Name')
-    many2one = fields.Many2One('test.copy.many2many.rel', 'many2many_target',
-        'Many2Many')
 
 
 class CopyMany2ManyRelation(ModelSQL):
@@ -82,8 +80,6 @@ class CopyMany2ManyReferenceTarget(ModelSQL):
     "Copy Many2ManyReference Target"
     __name__ = 'test.copy.many2many_reference.target'
     name = fields.Char('Name')
-    many2many = fields.Many2One('test.copy.many2many_reference.rel',
-        'many2many_target', 'Many2Many')
 
 
 class CopyMany2ManyReferenceRelation(ModelSQL):
