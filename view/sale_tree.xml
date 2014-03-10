@@ -8,7 +8,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="warehouse"/>
     <field name="currency"/>
     <field name="untaxed_amount"/>
-    <field name="total_amount"/>
     <field name="state"/>
     <field name="invoice_state"/>
     <field name="shipment_state"/>

@@ -488,21 +488,31 @@ class Sale(Workflow, ModelSQL, ModelView):
         tax_amount = {}
         total_amount = {}
 
+        if {'tax_amount', 'total_amount'} & set(names):
+            compute_taxes = True
+        else:
+            compute_taxes = False
+        # Sort cached first and re-instanciate to optimize cache management
+        sales = sorted(sales, key=lambda s: s.state in cls._states_cached,
+            reverse=True)
+        sales = cls.browse(sales)
         for sale in sales:
             if (sale.state in cls._states_cached
                     and sale.untaxed_amount_cache is not None
                     and sale.tax_amount_cache is not None
                     and sale.total_amount_cache is not None):
                 untaxed_amount[sale.id] = sale.untaxed_amount_cache
-                tax_amount[sale.id] = sale.tax_amount_cache
-                total_amount[sale.id] = sale.total_amount_cache
+                if compute_taxes:
+                    tax_amount[sale.id] = sale.tax_amount_cache
+                    total_amount[sale.id] = sale.total_amount_cache
             else:
                 untaxed_amount[sale.id] = sum(
                     (line.amount for line in sale.lines
                         if line.type == 'line'), _ZERO)
-                tax_amount[sale.id] = sale.get_tax_amount()
-                total_amount[sale.id] = (
-                    untaxed_amount[sale.id] + tax_amount[sale.id])
+                if compute_taxes:
+                    tax_amount[sale.id] = sale.get_tax_amount()
+                    total_amount[sale.id] = (
+                        untaxed_amount[sale.id] + tax_amount[sale.id])
 
         result = {
             'untaxed_amount': untaxed_amount,
