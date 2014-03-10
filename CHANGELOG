@@ -1,3 +1,5 @@
+* Add warning for customer moves without origin
+
 Version 3.0.0 - 2013-10-21
 * Bug fixes (see mercurial logs for details)
 * Replace reference copying by relate

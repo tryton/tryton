@@ -149,6 +149,12 @@ class Move:
         models.append('sale.line')
         return models
 
+    @classmethod
+    def check_origin_types(cls):
+        types = super(Move, cls).check_origin_types()
+        types.add('customer')
+        return types
+
     def get_sale(self, name):
         SaleLine = Pool().get('sale.line')
         if isinstance(self.origin, SaleLine):
