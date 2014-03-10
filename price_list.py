@@ -99,7 +99,7 @@ class PriceList(ModelSQL, ModelView):
         pattern = pattern.copy()
         pattern['product'] = product and product.id or None
         pattern['quantity'] = Uom.compute_qty(uom, quantity,
-                product.default_uom, round=False)
+            product.default_uom, round=False) if product else quantity
 
         for line in self.lines:
             if line.match(pattern):
