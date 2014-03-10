@@ -248,7 +248,7 @@ class Record(SignalEvent):
     def save(self, force_reload=True):
         if self.id < 0 or self.modified:
             if self.id < 0:
-                value = self.get(get_readonly=True)
+                value = self.get(check_load=False, get_readonly=True)
                 args = ('model', self.model_name, 'create', value,
                     self.context_get())
                 try:
