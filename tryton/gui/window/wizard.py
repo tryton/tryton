@@ -179,6 +179,7 @@ class Wizard(object):
         title.set_label(self.screen.current_view.title)
         title.set_padding(20, 4)
         title.set_alignment(0.0, 0.5)
+        title.set_size_request(0, -1)  # Allow overflow
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
