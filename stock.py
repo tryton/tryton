@@ -199,6 +199,12 @@ class Move:
         models.append('purchase.line')
         return models
 
+    @classmethod
+    def check_origin_types(cls):
+        types = super(Move, cls).check_origin_types()
+        types.add('supplier')
+        return types
+
     def get_purchase(self, name):
         PurchaseLine = Pool().get('purchase.line')
         if isinstance(self.origin, PurchaseLine):
