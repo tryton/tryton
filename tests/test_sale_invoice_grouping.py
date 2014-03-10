@@ -6,8 +6,8 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends, doctest_dropdb
 
 
-class SaleTestCase(unittest.TestCase):
-    'Test Sale module'
+class SaleInvoiceGroupingTestCase(unittest.TestCase):
+    'Test Sale Invoice Grouping module'
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('sale_invoice_grouping')
@@ -23,7 +23,8 @@ class SaleTestCase(unittest.TestCase):
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(SaleTestCase))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            SaleInvoiceGroupingTestCase))
     suite.addTests(doctest.DocFileSuite('scenario_sale_invoice_grouping.rst',
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
