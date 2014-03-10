@@ -105,20 +105,14 @@ class Wizard(object):
             else:
                 self.state = self.end_state
 
-            if 'actions' in result:
-                sensitive_widget = self.widget.get_toplevel()
-                if not 'view' in result:
-                    self.end()
-                for action in result['actions']:
+            def execute_actions():
+                for action in result.get('actions', []):
                     Action._exec_action(*action, context=ctx)
-                if (not 'view' in result
-                        or (action[0]['type'] == 'ir.action.wizard'
-                            and not sensitive_widget.props.sensitive)):
-                    self.__processing = False
-                    return
 
             if self.state == self.end_state:
-                self.end()
+                self.end(execute_actions)
+            else:
+                execute_actions()
             self.__processing = False
 
         RPCExecute('wizard', self.action, 'execute', self.session_id, data,
@@ -278,8 +272,8 @@ class WizardForm(Wizard, SignalEvent):
             self.toolbar_box.remove(toolbar)
         super(WizardForm, self).destroy()
 
-    def end(self):
-        super(WizardForm, self).end()
+    def end(self, callback=None):
+        super(WizardForm, self).end(callback=callback)
         Main.get_main()._win_del(self.widget)
 
     def set_cursor(self):
@@ -349,7 +343,7 @@ class WizardDialog(Wizard, NoModal):
             dialog = self.page.dialogs[-1]
         else:
             dialog = self.page
-        if (hasattr(dialog, 'screen')
+        if (getattr(dialog, 'screen', None)
                 and dialog.screen.current_record
                 and self.sensible_widget != main.window):
             if dialog.screen.model_name == self.model:
@@ -361,10 +355,12 @@ class WizardDialog(Wizard, NoModal):
             if action:
                 dialog.screen.client_action(action)
 
-    def end(self):
-        def callback(action):
+    def end(self, callback=None):
+        def end_callback(action):
             self.destroy(action=action())
-        super(WizardDialog, self).end(callback=callback)
+            if callback:
+                callback()
+        super(WizardDialog, self).end(callback=end_callback)
 
     def close(self, widget, event=None):
         if self.end_state in self.states:
