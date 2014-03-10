@@ -458,7 +458,7 @@ class ModelSQL(ModelStorage):
             table = cls.__table_history__()
             column = Coalesce(table.write_date, table.create_date)
             history_clause = (column <= Transaction().context['_datetime'])
-            history_order = column.desc
+            history_order = (column.desc, Column(table, '__id').desc)
             history_limit = 1
 
         columns = []

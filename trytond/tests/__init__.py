@@ -12,6 +12,7 @@ from .access import *
 from .wizard import *
 from .workflow import *
 from .copy_ import *
+from history import *
 
 
 def register():
@@ -138,6 +139,7 @@ def register():
         CopyMany2ManyReferenceRelation,
         Many2OneTarget,
         Many2OneDomainValidation,
+        TestHistory,
         module='tests', type_='model')
     Pool.register(
         TestWizard,
