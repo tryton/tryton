@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Payments">
+    <field name="journal"/>
+    <field name="kind"/>
+    <field name="party"/>
+    <field name="amount"/>
+    <field name="currency"/>
+    <field name="date"/>
+    <field name="state"/>
+    <button string="Draft" name="draft"/>
+    <button string="Approve" name="approve"/>
+    <button string="Fail" name="fail"/>
+    <button string="Succeed" name="succeed"/>
+</tree>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree string="Account Move Lines">
+    <field name="move"/>
+    <field name="origin"/>
+    <field name="description"/>
+    <field name="party"/>
+    <field name="maturity_date"/>
+    <field name="payment_amount"/>
+    <field name="second_currency"/>
+    <field name="account"/>
+    <field name="debit"/>
+    <field name="credit"/>
+    <field name="amount_second_currency"/>
+    <field name="payment_kind" tree_invisible="1"/>
+    <button name="pay" string="Pay Lines" tree_invisible="1"/>
+</tree>
