@@ -442,21 +442,31 @@ class Purchase(Workflow, ModelSQL, ModelView):
         tax_amount = {}
         total_amount = {}
 
+        if {'tax_amount', 'total_amount'} & set(names):
+            compute_taxes = True
+        else:
+            compute_taxes = False
+        # Sort cached first and re-instanciate to optimize cache management
+        purchases = sorted(purchases,
+            key=lambda p: p.state in cls._states_cached, reverse=True)
+        purchases = cls.browse(purchases)
         for purchase in purchases:
             if (purchase.state in cls._states_cached
                     and purchase.untaxed_amount_cache is not None
                     and purchase.tax_amount_cache is not None
                     and purchase.total_amount_cache is not None):
                 untaxed_amount[purchase.id] = purchase.untaxed_amount_cache
-                tax_amount[purchase.id] = purchase.tax_amount_cache
-                total_amount[purchase.id] = purchase.total_amount_cache
+                if compute_taxes:
+                    tax_amount[purchase.id] = purchase.tax_amount_cache
+                    total_amount[purchase.id] = purchase.total_amount_cache
             else:
                 untaxed_amount[purchase.id] = sum(
                     (line.amount for line in purchase.lines
                         if line.type == 'line'), _ZERO)
-                tax_amount[purchase.id] = purchase.get_tax_amount()
-                total_amount[purchase.id] = (
-                    untaxed_amount[purchase.id] + tax_amount[purchase.id])
+                if compute_taxes:
+                    tax_amount[purchase.id] = purchase.get_tax_amount()
+                    total_amount[purchase.id] = (
+                        untaxed_amount[purchase.id] + tax_amount[purchase.id])
 
         result = {
             'untaxed_amount': untaxed_amount,
