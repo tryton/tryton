@@ -104,6 +104,7 @@ class EditableTreeView(TreeView):
         self.grab_focus()
         if focus_column and (focus_column._type in ('boolean')):
             start_editing = False
+        self.scroll_to_cell(path, focus_column, use_align=False)
         super(EditableTreeView, self).set_cursor(path, focus_column,
                 start_editing)
 
