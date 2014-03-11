@@ -1,6 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
+import gobject
+
 from interface import WidgetInterface
 from tryton.common.selection import SelectionMixin, selection_shortcuts, \
     PopdownMixin
@@ -20,8 +22,8 @@ class Selection(WidgetInterface, SelectionMixin, PopdownMixin):
 
         selection_shortcuts(self.entry)
         child.connect('activate', lambda *a: self._focus_out())
-        child.connect_after('focus-out-event', lambda *a: self._focus_out())
-        child.connect('changed', self.send_modified)
+        child.connect('focus-out-event', lambda *a: self._focus_out())
+        self.entry.connect('changed', self.changed)
         self.widget.pack_start(self.entry)
         self.widget.set_focus_chain([child])
 
@@ -29,6 +31,13 @@ class Selection(WidgetInterface, SelectionMixin, PopdownMixin):
         self.attrs = attrs
         self.init_selection()
         self.set_popdown(self.selection, self.entry)
+
+    def changed(self, combobox):
+        def focus_out():
+            if combobox.props.window:
+                self._focus_out()
+        # Must be deferred because it triggers a display of the form
+        gobject.idle_add(focus_out)
 
     def grab_focus(self):
         return self.entry.grab_focus()
