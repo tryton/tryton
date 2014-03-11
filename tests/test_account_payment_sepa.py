@@ -74,10 +74,11 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
                                         'type': 'iban',
                                         'number': 'ES3600000000050000000001',
                                         }])]}])
+            customer_account_number, = customer_account.numbers
             self.mandate.create([{
                         'company': company,
                         'party': customer,
-                        'account_number': customer_account,
+                        'account_number': customer_account_number,
                         'identification': 'MANDATE',
                         'type': 'recurrent',
                         'signature_date': self.date.today(),
