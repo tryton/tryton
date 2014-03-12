@@ -842,6 +842,7 @@ class Account(ModelSQL, ModelView):
             default = {}
         default['left'] = 0
         default['right'] = 0
+        default.setdefault('template')
         default.setdefault('deferrals', [])
         new_accounts = super(Account, cls).copy(accounts, default=default)
         cls._rebuild_tree('parent', None, 0)
