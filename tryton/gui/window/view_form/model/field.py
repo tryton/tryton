@@ -496,14 +496,14 @@ class O2MField(CharField):
         from group import Group
         parent_name = self.attrs.get('relation_field', '')
         fields = fields or {}
-        if not fields and record.model_name == self.attrs['relation']:
-            fields = record.group.fields
         group = Group(self.attrs['relation'], fields,
                 parent=record,
                 parent_name=parent_name,
                 child_name=self.name,
                 context=self.context,
                 parent_datetime_field=self.attrs.get('datetime_field'))
+        if not fields and record.model_name == self.attrs['relation']:
+            group.fields = record.group.fields
         record.value[self.name] = group
         self._connect_value(group)
 
