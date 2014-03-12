@@ -112,7 +112,7 @@ class PopdownMixin(object):
     def set_popdown(self, selection, entry):
         if not entry.child:  # entry is destroyed
             return
-        model, lengths = self.get_model(selection)
+        model, lengths = self.get_popdown_model(selection)
         entry.set_model(model)
         # GTK 2.24 and above use a ComboBox instead of a ComboBoxEntry
         if hasattr(entry, 'set_text_column'):
@@ -137,7 +137,7 @@ class PopdownMixin(object):
         completion.set_text_column(0)
         completion.connect('match-selected', self.match_selected, entry)
 
-    def get_model(self, selection):
+    def get_popdown_model(self, selection):
         model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
         lengths = []
         for (value, name) in selection:
