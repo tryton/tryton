@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="relation_type_view_tree">
+            <field name="model">party.relation.type</field>
+            <field name="type">tree</field>
+            <field name="name">relation_type_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="relation_type_view_form">
+            <field name="model">party.relation.type</field>
+            <field name="type">form</field>
+            <field name="name">relation_type_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_relation_type">
+            <field name="name">Relation Types</field>
+            <field name="res_model">party.relation.type</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_relation_type_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="relation_type_view_tree"/>
+            <field name="act_window" ref="act_relation_type"/>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_relation_type_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="relation_type_view_form"/>
+            <field name="act_window" ref="act_relation_type"/>
+        </record>
+
+        <menuitem parent="party.menu_configuration" action="act_relation_type"
+            id="menu_relation_type" sequence="20"/>
+
+        <record model="ir.model.access" id="access_relation_type">
+            <field name="model"
+                search="[('model', '=', 'party.relation.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_relation_type_admin">
+            <field name="model"
+                search="[('model', '=', 'party.relation.type')]"/>
+            <field name="group" ref="party.group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="relation_view_tree">
+            <field name="model">party.relation.all</field>
+            <field name="type">tree</field>
+            <field name="name">relation_tree</field>
+        </record>
+
+        <record model="ir.ui.view" id="relation_view_form">
+            <field name="model">party.relation.all</field>
+            <field name="type">form</field>
+            <field name="name">relation_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_relation_all">
+            <field name="name">Party Relations</field>
+            <field name="res_model">party.relation.all</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_relation_all_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="relation_view_tree"/>
+            <field name="act_window" ref="act_relation_all"/>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_relation_all_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="relation_view_form"/>
+            <field name="act_window" ref="act_relation_all"/>
+        </record>
+
+        <menuitem parent="party.menu_party" action="act_relation_all"
+            id="menu_relation_all" sequence="20"/>
+
+
+        <record model="ir.ui.view" id="party_view_form">
+            <field name="model">party.party</field>
+            <field name="inherit" ref="party.party_view_form"/>
+            <field name="name">party_form</field>
+        </record>
+
+    </data>
+</tryton>
