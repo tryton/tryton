@@ -276,6 +276,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     'loading',
                     'filename',
                     'selection_change_with',
+                    'domain',
                     ):
                 if getattr(cls._fields[field], arg, None) is not None:
                     value = getattr(cls._fields[field], arg)
@@ -352,7 +353,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     relation = copy.copy(
                         cls._fields[field].get_target().__name__)
                 res[field]['relation'] = relation
-                res[field]['domain'] = copy.copy(cls._fields[field].domain)
                 res[field]['context'] = copy.copy(cls._fields[field].context)
                 res[field]['create'] = accesses.get(field, {}).get('create',
                     True)

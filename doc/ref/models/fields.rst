@@ -49,12 +49,6 @@ If ``True``, the field is not editable in the client. Default is ``False``.
 A :ref:`domain <topics-domain>` constraint that will be applied on the field
 value.
 
-.. warning::
-
-    For now it only works on relational fields like :class:`Many2One`,
-    :class:`One2Many` and :class:`Many2Many`.
-..
-
 ``states``
 ----------
 

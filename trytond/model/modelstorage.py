@@ -920,6 +920,51 @@ class ModelStorage(Model):
                             return True
             return False
 
+        def validate_domain(field):
+            if not field.domain:
+                return
+            if field._type in ('many2one', 'one2many'):
+                Relation = pool.get(field.model_name)
+            elif field._type in ('many2many', 'one2one'):
+                Relation = field.get_target()
+            else:
+                Relation = cls
+            if is_pyson(field.domain):
+                pyson_domain = PYSONEncoder().encode(field.domain)
+                for record in records:
+                    env = EvalEnvironment(record, cls)
+                    env.update(Transaction().context)
+                    env['current_date'] = datetime.datetime.today()
+                    env['time'] = time
+                    env['context'] = Transaction().context
+                    env['active_id'] = record.id
+                    domain = PYSONDecoder(env).decode(pyson_domain)
+                    validate_relation_domain(
+                        field, [record], Relation, domain)
+            else:
+                validate_relation_domain(
+                    field, records, Relation, field.domain)
+
+        def validate_relation_domain(field, records, Relation, domain):
+            if Relation != cls:
+                relations = []
+                for record in records:
+                    if getattr(record, field.name):
+                        if field._type in ('many2one', 'one2one'):
+                            relations.append(getattr(record, field.name))
+                        else:
+                            relations.extend(getattr(record, field.name))
+            else:
+                relations = records
+            if relations:
+                finds = Relation.search(['AND',
+                        [('id', 'in', [r.id for r in relations])],
+                        domain,
+                        ])
+                if set(relations) != set(finds):
+                    cls.raise_user_error('domain_validation_record',
+                        error_args=cls._get_error_args(field.name))
+
         field_names = set(field_names or [])
         ctx_pref['active_test'] = False
         with Transaction().set_context(ctx_pref):
@@ -931,65 +976,8 @@ class ModelStorage(Model):
                 if isinstance(field, fields.Function) and \
                         not field.setter:
                     continue
-                # validate domain
-                if (field._type in
-                        ('many2one', 'many2many', 'one2many', 'one2one')
-                        and field.domain):
-                    if field._type in ('many2one', 'one2many'):
-                        Relation = pool.get(field.model_name)
-                    else:
-                        Relation = field.get_target()
-                    if is_pyson(field.domain):
-                        pyson_domain = PYSONEncoder().encode(field.domain)
-                        for record in records:
-                            env = EvalEnvironment(record, cls)
-                            env.update(Transaction().context)
-                            env['current_date'] = datetime.datetime.today()
-                            env['time'] = time
-                            env['context'] = Transaction().context
-                            env['active_id'] = record.id
-                            domain = PYSONDecoder(env).decode(pyson_domain)
-                            relation_ids = []
-                            if getattr(record, field_name):
-                                if field._type in ('many2one', 'one2one'):
-                                    relation_ids.append(
-                                        getattr(record, field_name).id)
-                                else:
-                                    relation_ids.extend(
-                                        [x.id for x in getattr(record,
-                                                field_name)])
-                            if relation_ids and not Relation.search([
-                                        'AND',
-                                        [('id', 'in', relation_ids)],
-                                        domain,
-                                        ]):
-                                cls.raise_user_error(
-                                        'domain_validation_record',
-                                        error_args=cls._get_error_args(
-                                            field_name))
-                    else:
-                        relation_ids = []
-                        for record in records:
-                            if getattr(record, field_name):
-                                if field._type in ('many2one', 'one2one'):
-                                    relation_ids.append(
-                                        getattr(record, field_name).id)
-                                else:
-                                    relation_ids.extend(
-                                        [x.id for x in getattr(record,
-                                                field_name)])
-                        if relation_ids:
-                            finds = Relation.search([
-                                'AND',
-                                [('id', 'in', relation_ids)],
-                                field.domain,
-                                ])
-                            find_ids = map(int, finds)
-                            if not set(relation_ids) == set(find_ids):
-                                cls.raise_user_error(
-                                        'domain_validation_record',
-                                        error_args=cls._get_error_args(
-                                            field_name))
+
+                validate_domain(field)
 
                 def required_test(value, field_name):
                     if (isinstance(value, (type(None), type(False), list,

@@ -8,7 +8,7 @@ from trytond.pyson import Eval
 
 __all__ = [
     'Boolean', 'BooleanDefault',
-    'Integer', 'IntegerDefault', 'IntegerRequired',
+    'Integer', 'IntegerDefault', 'IntegerRequired', 'IntegerDomain',
     'Float', 'FloatDefault', 'FloatRequired', 'FloatDigits',
     'Numeric', 'NumericDefault', 'NumericRequired', 'NumericDigits',
     'Char', 'CharDefault', 'CharRequired', 'CharSize', 'CharTranslate',
@@ -77,6 +77,12 @@ class IntegerRequired(ModelSQL):
     __name__ = 'test.integer_required'
     integer = fields.Integer(string='Integer', help='Test integer',
             required=True)
+
+
+class IntegerDomain(ModelSQL):
+    'Integer Domain'
+    __name__ = 'test.integer_domain'
+    integer = fields.Integer('Integer', domain=[('integer', '>', 42)])
 
 
 class Float(ModelSQL):

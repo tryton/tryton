@@ -22,6 +22,7 @@ def register():
         Integer,
         IntegerDefault,
         IntegerRequired,
+        IntegerDomain,
         Float,
         FloatDefault,
         FloatRequired,

@@ -29,6 +29,7 @@ class FieldsTestCase(unittest.TestCase):
         self.integer = POOL.get('test.integer')
         self.integer_default = POOL.get('test.integer_default')
         self.integer_required = POOL.get('test.integer_required')
+        self.integer_domain = POOL.get('test.integer_domain')
 
         self.float = POOL.get('test.float')
         self.float_default = POOL.get('test.float_default')
@@ -388,6 +389,16 @@ class FieldsTestCase(unittest.TestCase):
             self.assertEqual(integer5.integer, 0)
 
             transaction.cursor.rollback()
+
+    def test0021integer(self):
+        'Test Integer with domain'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            self.integer_domain.create([{
+                        'integer': 100,
+                        }])
+            self.assertRaises(UserError, self.integer_domain.create, [{
+                        'integer': 10,
+                        }])
 
     def test0030float(self):
         'Test Float'
