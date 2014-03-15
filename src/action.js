@@ -78,7 +78,6 @@
                 params.model = action.res_model || data.res_model;
                 params.res_id = action.res_id || data.res_id;
                 params.limit = action.limit;
-                params.auto_refresh = action.auto_refresh;
                 params.icon = action['icon.rec_name'] || '';
                 Sao.Tab.create(params);
                 return;
