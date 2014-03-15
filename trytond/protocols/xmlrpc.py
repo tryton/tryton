@@ -49,6 +49,7 @@ def dump_time(self, value, write):
         'hour': value.hour,
         'minute': value.minute,
         'second': value.second,
+        'microsecond': value.microsecond,
         }
     self.dump_struct(value, write)
 
@@ -84,7 +85,8 @@ def end_struct(self, data):
         if dct['__class__'] == 'date':
             dct = datetime.date(dct['year'], dct['month'], dct['day'])
         elif dct['__class__'] == 'time':
-            dct = datetime.time(dct['hour'], dct['minute'], dct['second'])
+            dct = datetime.time(dct['hour'], dct['minute'], dct['second'],
+                dct['microsecond'])
         elif dct['__class__'] == 'Decimal':
             dct = Decimal(dct['decimal'])
     self._stack[mark:] = [dct]
