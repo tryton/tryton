@@ -143,15 +143,6 @@ def localize_domain(domain, field_name=None):
         return [localize_domain(part, field_name) for part in domain]
 
 
-def unlocalize_domain(domain, fieldname):
-    if domain in ('AND', 'OR', True, False):
-        return domain
-    elif is_leaf(domain):
-        return ['%s.%s' % (fieldname, domain[0])] + list(domain[1:])
-    else:
-        return [unlocalize_domain(part, fieldname) for part in domain]
-
-
 def simplify(domain):
     "remove unused domain delimiter"
     if is_leaf(domain):

@@ -3,5 +3,5 @@
 from common import *
 from datetime_strftime import *
 from domain_inversion import domain_inversion, eval_domain, localize_domain, \
-        unlocalize_domain, merge, inverse_leaf
+        merge, inverse_leaf
 from environment import EvalEnvironment

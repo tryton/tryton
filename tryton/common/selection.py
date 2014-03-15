@@ -7,6 +7,7 @@ import gtk
 import gobject
 
 from tryton.common import RPCExecute, RPCException
+from tryton.common import eval_domain
 
 
 class SelectionMixin(object):
@@ -46,6 +47,7 @@ class SelectionMixin(object):
         if not field:
             return
 
+        domain = field.domain_get(record)
         if 'relation' not in self.attrs:
             change_with = self.attrs.get('selection_change_with') or []
             args = record._get_on_change_args(change_with)
@@ -53,8 +55,8 @@ class SelectionMixin(object):
             key = args.items()
             key.sort()
             self.init_selection(tuple(key))
+            self.filter_selection(domain, record, field)
         else:
-            domain = field.domain_get(record)
             context = record[self.field_name].context_get(record)
             domain_cache_key = str(domain) + str(context)
             if domain_cache_key in self._domain_cache:
@@ -79,6 +81,14 @@ class SelectionMixin(object):
                 self._last_domain = None
             self.selection = selection[:]
             self.inactive_selection = []
+
+    def filter_selection(self, domain, record, field):
+        if not domain:
+            return
+        test = lambda value: eval_domain(domain, {
+                self.field_name: value[0],
+                })
+        self.selection = filter(test, self.selection)
 
     def get_inactive_selection(self, value):
         if 'relation' not in self.attrs:

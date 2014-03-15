@@ -4,7 +4,7 @@ import os
 import tempfile
 import locale
 from tryton.common import datetime_strftime, \
-        domain_inversion, eval_domain, localize_domain, unlocalize_domain, \
+        domain_inversion, eval_domain, localize_domain, \
         merge, inverse_leaf, EvalEnvironment
 import tryton.common as common
 import time
@@ -62,8 +62,7 @@ class CharField(object):
     def validation_domains(self, record):
         screen_domain, attr_domain = self.domains_get(record)
         if attr_domain:
-            return (screen_domain, [screen_domain,
-                    unlocalize_domain(attr_domain, self.name)])
+            return (screen_domain, [screen_domain, attr_domain])
         else:
             return screen_domain, screen_domain
 
