@@ -87,7 +87,7 @@ class Form(SignalEvent, TabContent):
 
     def __init__(self, model, res_id=False, domain=None, order=None, mode=None,
             view_ids=None, context=None, name=False, limit=None,
-            auto_refresh=False, search_value=None, tab_domain=None):
+            search_value=None, tab_domain=None):
         super(Form, self).__init__()
 
         if not mode:
@@ -104,14 +104,12 @@ class Form(SignalEvent, TabContent):
         self.domain = domain
         self.mode = mode
         self.context = context
-        self.auto_refresh = auto_refresh
         self.view_ids = view_ids
         self.dialogs = []
 
         self.screen = Screen(self.model, mode=mode, context=self.context,
             view_ids=view_ids, domain=domain, limit=limit, order=order,
-            readonly=bool(auto_refresh), search_value=search_value,
-            tab_domain=tab_domain)
+            search_value=search_value, tab_domain=tab_domain)
         self.screen.widget.show()
 
         if not name:
@@ -156,9 +154,6 @@ class Form(SignalEvent, TabContent):
                     in ('tree', 'graph', 'calendar'):
                 self.screen.search_filter()
 
-        if auto_refresh and int(auto_refresh):
-            gobject.timeout_add(int(auto_refresh) * 1000, self.sig_reload)
-
     def get_toolbars(self):
         try:
             return RPCExecute('model', self.model, 'view_toolbar_get',
@@ -182,7 +177,6 @@ class Form(SignalEvent, TabContent):
             and self.context == value.context
             and self.name == value.name
             and self.screen.limit == value.screen.limit
-            and self.auto_refresh == value.auto_refresh
             and self.screen.search_value == value.screen.search_value)
 
     def destroy(self):
@@ -337,8 +331,6 @@ class Form(SignalEvent, TabContent):
         self.activate_save()
 
     def sig_reload(self, test_modified=True):
-        if not hasattr(self, 'screen'):
-            return False
         if test_modified and not self.modified_save():
                 return False
         self.screen.cancel_current()

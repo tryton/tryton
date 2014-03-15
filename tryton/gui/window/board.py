@@ -37,8 +37,7 @@ class Board(SignalEvent, TabContent):
             '<tryton>/Form/Close'),
     ]
 
-    def __init__(self, model, view_id, context=None, name=False,
-            auto_refresh=False):
+    def __init__(self, model, view_id, context=None, name=False):
         super(Board, self).__init__()
 
         try:
@@ -51,7 +50,6 @@ class Board(SignalEvent, TabContent):
         self.model = model
         self.view_id = view_id
         self.context = context
-        self.auto_refresh = auto_refresh
         self.dialogs = []
         if not name:
             self.name = self.board.name
@@ -81,8 +79,7 @@ class Board(SignalEvent, TabContent):
         return (self.model == value.model
             and self.view_id == value.view_id
             and self.context == value.context
-            and self.name == value.name
-            and self.auto_refresh == value.auto_refresh)
+            and self.name == value.name)
 
     def sig_win_close(self, widget):
         Main.get_main().sig_win_close(widget)

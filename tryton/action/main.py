@@ -131,7 +131,6 @@ class Action(object):
             Window.create(view_ids, res_model, res_id, domain,
                     action_ctx, order, view_mode, name=name,
                     limit=action.get('limit'),
-                    auto_refresh=action.get('auto_refresh'),
                     search_value=search_value,
                     icon=(action.get('icon.rec_name') or ''),
                     tab_domain=tab_domain)

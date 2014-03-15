@@ -1,3 +1,4 @@
+* Remove auto-refresh
 * Add support of domain for non-relation field
 * Allow drag & drop on the attachment button
 * Replace sha widget by password
