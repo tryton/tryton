@@ -102,24 +102,26 @@ var Sao = {};
         return date;
     };
 
-    Sao.DateTime = function(year, month, day, hour, minute, second) {
+    Sao.DateTime = function(year, month, day, hour, minute, second,
+            millisecond) {
         var datetime;
         if (year === undefined) {
             datetime = new Date();
+            datetime.setMilliseconds(0);
         } else if (month === undefined) {
             datetime = new Date(year);
         } else {
             datetime = new Date(year, month, day,
-                    hour || 0, minute || 0, second || 0);
+                    hour || 0, minute || 0, second || 0, millisecond || 0);
         }
         datetime.isDateTime = true;
-        datetime.setMilliseconds(0);
         return datetime;
     };
 
     Sao.Time = Sao.class_(Object, {
-        init: function(hour, minute, second) {
-            this.date = new Date(0, 0, 0, hour, minute, second);
+        init: function(hour, minute, second, millisecond) {
+            this.date = new Date(0, 0, 0, hour, minute, second,
+                millisecond || 0);
         },
         getHours: function() {
             return this.date.getHours();
@@ -138,6 +140,12 @@ var Sao = {};
         },
         setSeconds: function(second) {
             this.date.setSeconds(second);
+        },
+        getMilliseconds: function() {
+            return this.date.getMilliseconds();
+        },
+        setMilliseconds: function(millisecond) {
+            this.date.setMilliseconds(millisecond);
         },
         valueOf: function() {
             return this.date.valueOf();

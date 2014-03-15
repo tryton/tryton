@@ -112,7 +112,8 @@
                    case 'datetime':
                        value = Sao.DateTime(Date.UTC(value.year,
                                value.month - 1, value.day, value.hour,
-                               value.minute, value.second));
+                               value.minute, value.second,
+                               value.microsecond / 1000));
                        break;
                    case 'date':
                        value = Sao.Date(value.year,
@@ -120,7 +121,7 @@
                        break;
                    case 'time':
                        value = new Sao.Time(value.hour, value.minute,
-                               value.second);
+                               value.second, value.microsecond / 1000);
                        break;
                    case 'buffer':
                        // javascript's atob does not understand linefeed
@@ -174,7 +175,8 @@
                         'day': value.getUTCDate(),
                         'hour': value.getUTCHours(),
                         'minute': value.getUTCMinutes(),
-                        'second': value.getUTCSeconds()
+                        'second': value.getUTCSeconds(),
+                        'microsecond': value.getUTCMilliseconds() * 1000
                     };
                 }
                 if (parent) {
@@ -185,7 +187,8 @@
                     '__class__': 'time',
                     'hour': value.getHours(),
                     'minute': value.getMinutes(),
-                    'second': value.getSeconds()
+                    'second': value.getSeconds(),
+                    'microsecond': value.getMilliseconds()
                 };
             } else if (value instanceof Sao.Decimal) {
                 value = {

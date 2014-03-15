@@ -97,7 +97,8 @@
         var pad = Sao.common.pad;
         return format.replace('%H', pad(date.getHours(), 2))
             .replace('%M', pad(date.getMinutes(), 2))
-            .replace('%S', pad(date.getSeconds(), 2));
+            .replace('%S', pad(date.getSeconds(), 2))
+            .replace('%f', pad(date.getMilliseconds(), 3));
     };
 
     Sao.common.parse_time = function(format, value) {
@@ -114,7 +115,8 @@
             }
             return 0;
         };
-        return new Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'));
+        return new Sao.Time(getNumber('%H'), getNumber('%M'), getNumber('%S'),
+                getNumber('%f'));
     };
 
     Sao.common.format_datetime = function(date_format, time_format, date) {
