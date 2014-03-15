@@ -389,7 +389,7 @@ class MetaModelFactory(object):
         self.config = config or proteus.config.get_config()
 
     def __call__(self):
-        models_key = 'c%s' % id(self.config)
+        models_key = 'c%su%s' % (id(self.config), self.config.user)
         if not hasattr(_MODELS, models_key):
             setattr(_MODELS, models_key, {})
 
@@ -617,7 +617,7 @@ class Model(object):
     def reset(cls, config=None, *names):
         'Reset class definition for Models named'
         config = config or proteus.config.get_config()
-        models_key = 'c%s' % id(config)
+        models_key = 'c%su%s' % (id(config), config.user)
         if not names:
             setattr(_MODELS, models_key, {})
         else:
