@@ -284,6 +284,7 @@
             }
             return;
         }
+        var domain = field.get_domain(record);
         if (!('relation' in this.attributes)) {
             var change_with = this.attributes.selection_change_with || [];
             var key = [];
@@ -293,9 +294,14 @@
             }
             key.sort();
             Sao.common.selection_mixin.init_selection.call(this, key,
-                    callback);
+                    function() {
+                        Sao.common.selection_mixin.filter_selection.call(this,
+                            domain, record, field);
+                        if (callback) {
+                            callback(this.selection);
+                        }
+                    }.bind(this));
         } else {
-            var domain = field.get_domain(record);
             var jdomain = JSON.stringify(domain);
             if (jdomain in this._domain_cache) {
                 this.selection = this._domain_cache[jdomain];
@@ -333,6 +339,18 @@
                 }
             }.bind(this));
         }
+    };
+    Sao.common.selection_mixin.filter_selection = function(
+            domain, record, field) {
+        if (jQuery.isEmptyObject(domain)) {
+            return;
+        }
+        var inversion = new Sao.common.DomainInversion();
+        this.selection = this.selection.filter(function(value) {
+            var context = {};
+            context[this.field_name] = value[0];
+            return inversion.eval_domain(domain, context);
+        }.bind(this));
     };
     Sao.common.selection_mixin.get_inactive_selection = function(value) {
         if (!this.attributes.relation) {
@@ -1383,17 +1401,6 @@
             } else {
                 return domain.map(function(e) {
                     return this.localize_domain(e, field_name);
-                }.bind(this));
-            }
-        },
-        unlocalize_domain: function(domain, fieldname) {
-            if (~['AND', 'OR', true, false].indexOf(domain)) {
-                return domain;
-            } else if (this.is_leaf(domain)) {
-                return [fieldname + '.' + domain[0]].concat(domain.slice(1));
-            } else {
-                return domain.map(function(e) {
-                    return this.unlocalize_domain(e, fieldname);
                 }.bind(this));
             }
         },

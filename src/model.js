@@ -1016,8 +1016,7 @@
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
             if (!jQuery.isEmptyObject(attr_domain)) {
-                return [screen_domain, [screen_domain,
-                    inversion.unlocalize_domain(attr_domain, this.name)]];
+                return [screen_domain, [screen_domain, attr_domain]];
             } else {
                 return [screen_domain, screen_domain];
             }
