@@ -527,6 +527,38 @@ class ModelAccess(ModelSQL, ModelView):
         return True
 
     @classmethod
+    def check_relation(cls, model_name, field_name, mode='read'):
+        'Check access to relation field for model_name and mode'
+        pool = Pool()
+        Model = pool.get(model_name)
+        field = getattr(Model, field_name)
+        if field._type in ('one2many', 'many2one'):
+            return cls.check(field.model_name, mode=mode,
+                raise_exception=False)
+        elif field._type in ('many2many', 'one2one'):
+            if (field.target
+                    and not cls.check(field.target, mode=mode,
+                        raise_exception=False)):
+                return False
+            elif (field.relation_name
+                    and not cls.check(field.relation_name, mode=mode,
+                        raise_exception=False)):
+                return False
+            else:
+                return True
+        elif field._type == 'reference':
+            selection = field.selection
+            if isinstance(selection, basestring):
+                selection = getattr(Model, field.selection)()
+            for model_name, _ in selection:
+                if not cls.check(model_name, mode=mode,
+                        raise_exception=False):
+                    return False
+            return True
+        else:
+            return True
+
+    @classmethod
     def write(cls, accesses, values, *args):
         super(ModelAccess, cls).write(accesses, values, *args)
         # Restart the cache

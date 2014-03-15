@@ -120,9 +120,15 @@ class ModelStorage(Model):
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
 
+        if not fields_names:
+            fields_names = []
+            for field_name in cls._fields.keys():
+                if ModelAccess.check_relation(cls.__name__, field_name,
+                        mode='read'):
+                    fields_names.append(field_name)
+
         ModelAccess.check(cls.__name__, 'read')
-        ModelFieldAccess.check(cls.__name__,
-                fields_names or cls._fields.keys(), 'read')
+        ModelFieldAccess.check(cls.__name__, fields_names, 'read')
         return []
 
     @classmethod

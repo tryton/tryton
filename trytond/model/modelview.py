@@ -295,33 +295,9 @@ class ModelView(Model):
         fields_to_remove = list(x for x, y in fread_accesses.iteritems()
                 if not y)
 
-        def check_relation(model, field):
-            if field._type in ('one2many', 'many2one'):
-                if not ModelAccess.check(field.model_name, mode='read',
-                        raise_exception=False):
-                    return False
-            if field._type in ('many2many', 'one2one'):
-                if (field.target
-                        and not ModelAccess.check(field.target, mode='read',
-                            raise_exception=False)):
-                    return False
-                elif (field.relation_name
-                        and not ModelAccess.check(field.relation_name,
-                            mode='read', raise_exception=False)):
-                    return False
-            if field._type == 'reference':
-                selection = field.selection
-                if isinstance(selection, basestring):
-                    selection = getattr(model, field.selection)()
-                for model_name, _ in selection:
-                    if not ModelAccess.check(model_name, mode='read',
-                            raise_exception=False):
-                        return False
-            return True
-
         # Find relation field without read access
         for name, field in cls._fields.iteritems():
-            if not check_relation(cls, field):
+            if not ModelAccess.check_relation(cls.__name__, name, mode='read'):
                 fields_to_remove.append(name)
 
         for name, field in cls._fields.iteritems():

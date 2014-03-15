@@ -226,6 +226,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         pool = Pool()
         Translation = pool.get('ir.translation')
         FieldAccess = pool.get('ir.model.field.access')
+        ModelAccess = pool.get('ir.model.access')
 
         #Add translation to cache
         language = Transaction().language
@@ -389,11 +390,13 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                 if attr in res[field]:
                     res[field][attr] = encoder.encode(res[field][attr])
 
-        if fields_names:
+        for i in res.keys():
             # filter out fields which aren't in the fields_names list
-            for i in res.keys():
+            if fields_names:
                 if i not in fields_names:
                     del res[i]
+            elif not ModelAccess.check_relation(cls.__name__, i, mode='read'):
+                del res[i]
         return res
 
     def on_change_with(self, fieldnames):

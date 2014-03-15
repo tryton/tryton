@@ -417,11 +417,15 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Translation = pool.get('ir.translation')
+        ModelAccess = pool.get('ir.model.access')
+        if not fields_names:
+            fields_names = []
+            for field_name in cls._fields.keys():
+                if ModelAccess.check_relation(cls.__name__, field_name,
+                        mode='read'):
+                    fields_names.append(field_name)
         super(ModelSQL, cls).read(ids, fields_names=fields_names)
         cursor = Transaction().cursor
-
-        if not fields_names:
-            fields_names = cls._fields.keys()
 
         if not ids:
             return []
