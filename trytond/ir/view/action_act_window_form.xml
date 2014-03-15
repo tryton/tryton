@@ -28,8 +28,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="search_value" colspan="5"/>
             <label name="limit"/>
             <field name="limit"/>
-            <label name="auto_refresh"/>
-            <field name="auto_refresh"/>
             <label name="window_name"/>
             <field name="window_name"/>
         </page>

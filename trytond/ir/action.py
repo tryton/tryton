@@ -686,8 +686,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     domains = fields.Function(fields.Binary('Domains'), 'get_domains')
     limit = fields.Integer('Limit', required=True,
             help='Default limit for the list view')
-    auto_refresh = fields.Integer('Auto-Refresh', required=True,
-            help='Add an auto-refresh on the view')
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     window_name = fields.Boolean('Window Name',
@@ -719,13 +717,19 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().cursor
+        TableHandler = backend.get('TableHandler')
         act_window = cls.__table__()
         super(ActionActWindow, cls).__register__(module_name)
+
+        table = TableHandler(cursor, cls, module_name)
 
         # Migration from 2.0: new search_value format
         cursor.execute(*act_window.update(
                 [act_window.search_value], ['[]'],
                 where=act_window.search_value == '{}'))
+
+        # Migration from 3.0: auto_refresh removed
+        table.drop_column('auto_refresh')
 
     @staticmethod
     def default_type():
@@ -737,10 +741,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
 
     @staticmethod
     def default_limit():
-        return 0
-
-    @staticmethod
-    def default_auto_refresh():
         return 0
 
     @staticmethod

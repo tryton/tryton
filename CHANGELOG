@@ -1,3 +1,4 @@
+* Remove auto-refresh on Action Window
 * Add support of domain for non-relation field
 * Manage microseconds in JSON-RPC and XML-RPC
 * Remove Sha field
