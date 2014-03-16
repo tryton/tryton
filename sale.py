@@ -85,7 +85,7 @@ class Sale:
 
         cost_line = {}
         products = [line.product for line in self.lines or []
-                if line.product]
+                if getattr(line, 'product', None)]
         stockable = any(product.type in ('goods', 'assets')
             for product in products)
         if cost and currency_id and stockable:
@@ -128,12 +128,13 @@ class Sale:
         if not self.lines:
             self.lines = []
         for line in self.lines:
-            if line.shipment_cost:
+            if getattr(line, 'shipment_cost', None):
                 if line.shipment_cost != cost_line.get('shipment_cost'):
                     to_remove = line.id
                     self.lines.remove(line)
                     if cost_line:
-                        cost_line['description'] = line.description
+                        cost_line['description'] = getattr(line, 'description',
+                            '')
                 else:
                     cost_line = {}
                 break
