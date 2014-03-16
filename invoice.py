@@ -451,11 +451,11 @@ class Invoice(Workflow, ModelSQL, ModelView):
             for line in self.lines:
                 if (line.type or 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.amount or 0
+                res['untaxed_amount'] += getattr(line, 'amount', None) or 0
                 with Transaction().set_context(**context):
-                    taxes = Tax.compute(line.taxes,
-                        line.unit_price or Decimal('0.0'),
-                        line.quantity or 0.0,
+                    taxes = Tax.compute(getattr(line, 'taxes', []) or [],
+                        getattr(line, 'unit_price', None) or Decimal('0.0'),
+                        getattr(line, 'quantity', None) or 0.0,
                         date=self.accounting_date or self.invoice_date)
                 for tax in taxes:
                     key, val = self._compute_tax(tax,
