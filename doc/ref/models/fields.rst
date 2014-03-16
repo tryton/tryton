@@ -66,6 +66,8 @@ with the values of the record.
 
 If true, the content of the field will be indexed.
 
+.. _ref-models-fields-on_change:
+
 ``on_change``
 -------------
 

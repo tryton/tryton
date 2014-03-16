@@ -12,6 +12,7 @@ Introduction to all the key parts of trytond:
     install
     models/index
     models/fields_default_value
+    models/fields_on_change
     domain
     pyson
     actions
