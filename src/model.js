@@ -1611,7 +1611,11 @@
                 var context = this.get_context(record);
                 var fields = record._values[this.name].model.fields;
                 var field_names = {};
-                [value.add, value.update].forEach(function(l) {
+                var adding_values = [];
+                for (var i=0; i < value.add.length; i++) {
+                    adding_values.push(value.add[i][1]);
+                }
+                [adding_values, value.update].forEach(function(l) {
                     if (!jQuery.isEmptyObject(l)) {
                         l.forEach(function(v) {
                             Object.keys(v).forEach(function(f) {
@@ -1659,9 +1663,11 @@
                     group.model.add_fields(fields);
                     if (value.add) {
                         value.add.forEach(function(vals) {
+                            var index = vals[0];
+                            var data = vals[1];
                             var new_record = group.new_(false);
-                            group.add(new_record);
-                            new_record.set_on_change(vals);
+                            group.add(new_record, index);
+                            new_record.set_on_change(data);
                         });
                     }
                     if (value.update) {
