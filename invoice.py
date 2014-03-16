@@ -524,7 +524,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     if value.get(field):
                         value[field + '.rec_name'] = \
                             Target(value[field]).rec_name
-                res['taxes']['add'].append(value)
+                res['taxes']['add'].append((-1, value))
         if self.currency:
             res['untaxed_amount'] = self.currency.round(res['untaxed_amount'])
             res['tax_amount'] = self.currency.round(res['tax_amount'])
