@@ -36,7 +36,9 @@ class Sale:
         for key, parcel in groupby(lines, key=keyfunc):
             weight = 0
             for line in parcel:
-                if line.product and line.quantity and line.unit:
+                if (getattr(line, 'product', None)
+                        and getattr(line, 'quantity', None)
+                        and getattr(line, 'unit', None)):
                     quantity = Uom.compute_qty(line.unit, line.quantity,
                         line.product.default_uom, round=False)
                     if line.product.weight:

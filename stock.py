@@ -37,9 +37,9 @@ class ShipmentIn:
         for key, parcel in groupby(lines, key=keyfunc):
             weight = 0
             for line in parcel:
-                if (line.product
-                        and line.quantity
-                        and line.uom
+                if (getattr(line, 'product', None)
+                        and getattr(line, 'quantity', None)
+                        and getattr(line, 'uom', None)
                         and line.product.weight):
                     quantity = Uom.compute_qty(line.uom, line.quantity,
                         line.product.default_uom, round=False)
