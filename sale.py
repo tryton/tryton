@@ -437,12 +437,13 @@ class Sale(Workflow, ModelSQL, ModelView):
             for line in self.lines:
                 if getattr(line, 'type', 'line') != 'line':
                     continue
-                res['untaxed_amount'] += line.amount or Decimal(0)
+                res['untaxed_amount'] += (getattr(line, 'amount', None)
+                    or Decimal(0))
                 tax_list = ()
                 with Transaction().set_context(self.get_tax_context()):
                     tax_list = Tax.compute(getattr(line, 'taxes', []),
-                        line.unit_price or Decimal('0.0'),
-                        line.quantity or 0.0)
+                        getattr(line, 'unit_price', None) or Decimal('0.0'),
+                        getattr(line, 'quantity', None) or 0.0)
                 for tax in tax_list:
                     key, val = Invoice._compute_tax(tax, 'out_invoice')
                     if not key in taxes:
