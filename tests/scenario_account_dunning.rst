@@ -309,6 +309,7 @@ Create dunnings on 30 days::
 Pay dunning::
 
     >>> config.user = account_user.id
+    >>> MoveLine = Model.get('account.move.line')
     >>> move = Move()
     >>> move.period = period
     >>> move.journal = journal_cash
@@ -323,7 +324,7 @@ Pay dunning::
     >>> move.save()
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
-    ...     [dunning.line, reconcile2])
+    ...     [MoveLine(dunning.line.id), reconcile2])
     >>> Dunning.find([])
     []
 
