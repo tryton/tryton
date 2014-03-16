@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import os
+from itertools import chain
 import tempfile
 import locale
 from tryton.common import datetime_strftime, \
@@ -669,8 +670,9 @@ class O2MField(CharField):
         if value and (value.get('add') or value.get('update')):
             context = self.context_get(record)
             fields = record.value[self.name].fields
-            field_names = set(f for v in (
-                    value.get('add', []) + value.get('update', []))
+            values = chain(value.get('update', []),
+                (d for _, d in value.get('add', [])))
+            field_names = set(f for v in values
                 for f in v if f not in fields and f != 'id')
             if field_names:
                 try:
@@ -696,9 +698,9 @@ class O2MField(CharField):
 
         if value and (value.get('add') or value.get('update', [])):
             record.value[self.name].add_fields(fields, signal=False)
-            for vals in value.get('add', []):
+            for index, vals in value.get('add', []):
                 new_record = record.value[self.name].new(default=False)
-                record.value[self.name].add(new_record)
+                record.value[self.name].add(new_record, index)
                 new_record.set_on_change(vals)
 
             for vals in value.get('update', []):
