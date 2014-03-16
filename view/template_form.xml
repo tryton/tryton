@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/notebook/page[@id='general']" position="after">
         <page string="Lots" id="lots"
             states="{'invisible': ~Eval('type').in_(['goods', 'assets'])}">
-            <field name="lot_required" colspan="4"/>
+            <field name="lot_required" colspan="4" widget="multiselection"/>
         </page>
     </xpath>
 </data>
