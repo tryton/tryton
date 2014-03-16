@@ -952,7 +952,7 @@ class ModelStorage(Model):
                     field, records, Relation, field.domain)
 
         def validate_relation_domain(field, records, Relation, domain):
-            if Relation != cls:
+            if field._type in ('many2one', 'one2many', 'many2many', 'one2one'):
                 relations = []
                 for record in records:
                     if getattr(record, field.name):
