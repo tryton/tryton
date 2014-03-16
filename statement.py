@@ -219,7 +219,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                         Currency.compute(invoice.currency,
                             invoice.amount_to_pay, self.journal.currency))
 
-            for line in self.lines or []:
+            line_offset = 0
+            for index, line in enumerate(self.lines or []):
                 if getattr(line, 'invoice', None) and line.id:
                     amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
                     res['lines'].setdefault('update', [])
@@ -252,7 +253,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                             vals['amount'] = line.amount + amount_to_pay
                             vals['invoice'] = None
                             del vals['invoice.rec_name']
-                            res['lines']['add'].append(vals)
+                            line_offset += 1
+                            res['lines']['add'].append((index + line_offset, vals))
                             invoice_id2amount_to_pay[line.invoice.id] = 0
                         else:
                             invoice_id2amount_to_pay[line.invoice.id] = (
