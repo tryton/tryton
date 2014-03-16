@@ -770,11 +770,14 @@ class Model(object):
         return values
 
     def _get_on_change_value(self):
-        values = self._get_eval()
+        values = {'id': self.id}
         for field, definition in self._fields.iteritems():
-            if definition['type'] == 'one2many':
-                values[field] = [x._get_on_change_value()
-                    for x in getattr(self, field)]
+            if field in self._values and field != 'id':
+                if definition['type'] == 'one2many':
+                    values[field] = [x._get_on_change_value()
+                        for x in getattr(self, field)]
+                else:
+                    values[field] = getattr(self, '__%s_eval' % field)
         return values
 
     def _on_change_args(self, args):
