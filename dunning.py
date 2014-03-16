@@ -67,7 +67,7 @@ class Letter(CompanyReport):
             current_payments = list(payments.get(party, []))
             payment_amount = sum((l.credit - l.debit
                     for l in current_payments))
-            if dunning_amount < payment_amount:
+            if dunning_amount <= payment_amount:
                 continue
             letters[party] = PartyLetter(dunnings=current_dunnings,
                 payments=current_payments)
