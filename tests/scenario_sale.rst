@@ -323,9 +323,10 @@ Open customer invoice::
 
     >>> config.user = sale_user.id
     >>> sale.reload()
-    >>> Invoice = Model.get('account.invoice')
     >>> invoice, = sale.invoices
     >>> config.user = account_user.id
+    >>> Invoice = Model.get('account.invoice')
+    >>> invoice = Invoice(invoice.id)
     >>> invoice.type
     u'out_invoice'
     >>> len(invoice.lines)
@@ -389,6 +390,7 @@ Open customer credit note::
     >>> return_.reload()
     >>> credit_note, = return_.invoices
     >>> config.user = account_user.id
+    >>> credit_note = Invoice(credit_note.id)
     >>> credit_note.type
     u'out_credit_note'
     >>> len(credit_note.lines)
@@ -455,6 +457,8 @@ Checking the invoice::
     >>> mix_invoice, mix_credit_note = sorted(mix.invoices,
     ...     key=attrgetter('type'), reverse=True)
     >>> config.user = account_user.id
+    >>> mix_invoice = Invoice(mix_invoice.id)
+    >>> mix_credit_note = Invoice(mix_credit_note.id)
     >>> mix_invoice.type, mix_credit_note.type
     (u'out_invoice', u'out_credit_note')
     >>> len(mix_invoice.lines), len(mix_credit_note.lines)
