@@ -810,7 +810,7 @@ class Model(object):
                 # remove without signal
                 list.remove(getattr(self, field), record)
             if value and value.get('add') or value.get('update'):
-                for vals in value.get('add', []):
+                for index, vals in value.get('add', []):
                     relation = Model.get(self._fields[field]['relation'],
                             self._config)
                     record = relation(_default=False)
@@ -820,7 +820,10 @@ class Model(object):
                         record._values[i] = j
                         record._changed.add(i)
                     # append without signal
-                    list.append(getattr(self, field), record)
+                    if index == -1:
+                        list.append(getattr(self, field), record)
+                    else:
+                        list.insert(getattr(self, field), index, record)
                 for vals in value.get('update', []):
                     if 'id' not in vals:
                         continue
