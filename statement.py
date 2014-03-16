@@ -206,7 +206,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         if self.journal and self.lines:
             invoices = set()
             for line in self.lines:
-                if line.invoice:
+                if getattr(line, 'invoice', None):
                     invoices.add(line.invoice)
             invoice_id2amount_to_pay = {}
             for invoice in invoices:
@@ -220,10 +220,11 @@ class Statement(Workflow, ModelSQL, ModelView):
                             invoice.amount_to_pay, self.journal.currency))
 
             for line in self.lines or []:
-                if line.invoice and line.id:
+                if getattr(line, 'invoice', None) and line.id:
                     amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
                     res['lines'].setdefault('update', [])
                     if (not self.journal.currency.is_zero(amount_to_pay)
+                            and getattr(line, 'amount', None)
                             and (line.amount >= 0) == (amount_to_pay <= 0)):
                         res['lines']['update'].append({
                                 'id': line.id,
