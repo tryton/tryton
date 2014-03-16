@@ -16,6 +16,7 @@ except ImportError:
 from decimal import Decimal
 from itertools import islice, ifilter, chain, izip
 from functools import reduce
+from operator import itemgetter
 
 from trytond.model import Model
 from trytond.model import fields
@@ -749,6 +750,7 @@ class ModelStorage(Model):
         done = 0
 
         warning = ''
+        to_create, translations, languages = [], [], set()
         while len(data):
             res = {}
             try:
@@ -759,10 +761,9 @@ class ModelStorage(Model):
                     # XXX should raise Exception
                     Transaction().cursor.rollback()
                     return (-1, res, warning, '')
-                new_id, = cls.create([res])
-                for lang in translate:
-                    with Transaction().set_context(language=lang):
-                        cls.write(new_id, translate[lang])
+                to_create.append(res)
+                translations.append(translate)
+                languages.update(translate)
             except Exception, exp:
                 logger = logging.getLogger('import')
                 logger.error(exp)
@@ -772,6 +773,12 @@ class ModelStorage(Model):
                 warning = '%s\n%s' % (tb_s, warning)
                 return (-1, res, exp, warning)
             done += 1
+        new_records = cls.create(to_create)
+        for language in languages:
+            translated = [t.get(language, {}) for t in translations]
+            with Transaction().set_context(language=language):
+                cls.write(*chain(*ifilter(itemgetter(1),
+                            izip(([r] for r in new_records), translated))))
         return (done, 0, 0, 0)
 
     @classmethod
