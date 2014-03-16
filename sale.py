@@ -21,7 +21,9 @@ class Sale:
         context = context.copy()
         amount = 0
         for line in self.lines or []:
-            if line.unit_price and line.quantity and not line.shipment_cost:
+            if (getattr(line, 'unit_price', None)
+                    and getattr(line, 'quantity', None)
+                    and not getattr(line, 'shipment_cost', None)):
                 amount += (line.unit_price
                     * Decimal(str(line.quantity or 0)))
         context['amount'] = amount
