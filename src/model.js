@@ -1565,7 +1565,7 @@
                 });
             }
             this._set_value(record, value);
-            if (!Sao.common.compare(previous_ids, value)) {
+            if (!Sao.common.compare(previous_ids.sort(), value.sort())) {
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
                     // TODO parent

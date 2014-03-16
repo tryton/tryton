@@ -235,6 +235,7 @@
         this._last_domain = null;
         this._values2selection = {};
         this._domain_cache = {};
+        this.nullable_widget = true;
     };
     Sao.common.selection_mixin.init_selection = function(key, callback) {
         if (!key) {
@@ -323,7 +324,9 @@
                 result.forEach(function(x) {
                     selection.push([x.id, x.rec_name]);
                 });
-                selection.push([null, '']);
+                if (this.nullable_widget) {
+                    selection.push([null, '']);
+                }
                 this._last_domain = domain;
                 this._domain_cache[jdomain] = selection;
                 this.selection = jQuery.extend([], selection);
