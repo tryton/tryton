@@ -929,6 +929,8 @@ class ModelStorage(Model):
         def validate_domain(field):
             if not field.domain:
                 return
+            if field._type == 'dict':
+                return
             if field._type in ('many2one', 'one2many'):
                 Relation = pool.get(field.model_name)
             elif field._type in ('many2many', 'one2one'):
