@@ -147,7 +147,7 @@ class Sale:
         if to_remove:
             lines.setdefault('remove', []).append(to_remove)
         if cost_line:
-            lines.setdefault('add', []).append(cost_line)
+            lines.setdefault('add', []).append((-1, cost_line))
         return result
 
     def create_shipment(self, shipment_type):
