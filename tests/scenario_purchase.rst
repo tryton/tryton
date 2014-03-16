@@ -260,9 +260,9 @@ Post invoice and check no new invoices::
 
     >>> config.user = account_user.id
     >>> Invoice = Model.get('account.invoice')
-    >>> purchase.invoices[0].invoice_date = today
-    >>> purchase.invoices[0].save()
-    >>> Invoice.post([i.id for i in purchase.invoices], config.context)
+    >>> invoice = Invoice(purchase.invoices[0].id)
+    >>> invoice.invoice_date = today
+    >>> invoice.click('post')
     >>> config.user = purchase_user.id
     >>> purchase.reload()
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
@@ -317,9 +317,10 @@ Validate Shipments::
 
 Open supplier invoice::
 
-    >>> Invoice = Model.get('account.invoice')
+    >>> config.user = purchase_user.id
     >>> invoice, = purchase.invoices
     >>> config.user = account_user.id
+    >>> invoice = Invoice(invoice.id)
     >>> invoice.type
     u'in_invoice'
     >>> len(invoice.lines)
@@ -387,8 +388,10 @@ Check Return Shipments::
 
 Open supplier credit note::
 
+    >>> config.user = purchase_user.id
     >>> credit_note, = return_.invoices
     >>> config.user = account_user.id
+    >>> credit_note = Invoice(credit_note.id)
     >>> credit_note.type
     u'in_credit_note'
     >>> len(credit_note.lines)
@@ -462,6 +465,8 @@ Checking the invoice::
     >>> mix_invoice, mix_credit_note = sorted(mix.invoices,
     ...     key=attrgetter('type'), reverse=True)
     >>> config.user = account_user.id
+    >>> mix_invoice = Invoice(mix_invoice.id)
+    >>> mix_credit_note = Invoice(mix_credit_note.id)
     >>> mix_invoice.type, mix_credit_note.type
     (u'in_invoice', u'in_credit_note')
     >>> len(mix_invoice.lines), len(mix_credit_note.lines)
