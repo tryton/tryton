@@ -1,3 +1,4 @@
+* Add the multi selection widget
 * Add index to one2many's on_change
 * Remove auto-refresh on Action Window
 * Add support of domain for non-relation field

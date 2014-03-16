@@ -165,6 +165,7 @@
           <value>one2one</value>
           <value>richtext</value>
           <value>dict</value>
+          <value>multiselection</value>
         </choice>
       </attribute>
     </optional>
