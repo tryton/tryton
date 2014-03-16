@@ -603,7 +603,8 @@ class O2MField(CharField):
 
         if mode == 'list ids':
             for old_record in group:
-                group.remove(old_record, remove=True, signal=False)
+                if old_record.id not in value:
+                    group.remove(old_record, remove=True, signal=False)
             group.load(value)
         else:
             for vals in value:
@@ -645,7 +646,8 @@ class O2MField(CharField):
 
         previous_ids = [r.id for r in record.value.get(self.name) or []]
         self._set_value(record, value)
-        if previous_ids != value:
+        # The order of the ids is not significant
+        if set(previous_ids) != set(value):
             record.modified_fields.setdefault(self.name)
             record.signal('record-modified')
             self.sig_changed(record)

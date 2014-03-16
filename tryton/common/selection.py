@@ -14,6 +14,7 @@ class SelectionMixin(object):
 
     def __init__(self, *args, **kwargs):
         super(SelectionMixin, self).__init__(*args, **kwargs)
+        self.nullable_widget = True
         self.selection = None
         self.inactive_selection = []
         self._last_domain = None
@@ -73,7 +74,8 @@ class SelectionMixin(object):
                 result = False
             if isinstance(result, list):
                 selection = [(x['id'], x['rec_name']) for x in result]
-                selection.append((None, ''))
+                if self.nullable_widget:
+                    selection.append((None, ''))
                 self._last_domain = (domain, context)
                 self._domain_cache[domain_cache_key] = selection
             else:
