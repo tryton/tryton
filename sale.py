@@ -797,6 +797,15 @@ class Sale(Workflow, ModelSQL, ModelView):
 
     _group_return_key = _group_shipment_key
 
+    def _get_shipment_sale(self, Shipment, key):
+        values = {
+            'customer': self.party.id,
+            'delivery_address': self.shipment_address.id,
+            'company': self.company.id,
+            }
+        values.update(dict(key))
+        return Shipment(**values)
+
     def create_shipment(self, shipment_type):
         '''
         Create and return shipments of type shipment_type
@@ -820,15 +829,10 @@ class Sale(Workflow, ModelSQL, ModelView):
 
         shipments = []
         for key, grouped_moves in groupby(moves, key=keyfunc):
-            values = {
-                'customer': self.party.id,
-                'delivery_address': self.shipment_address.id,
-                'company': self.company.id,
-                }
-            values.update(dict(key))
             with Transaction().set_user(0, set_context=True):
-                shipment = Shipment(**values)
-                shipment.moves = [x[1] for x in grouped_moves]
+                shipment = self._get_shipment_sale(Shipment, key)
+                shipment.moves = (list(getattr(shipment, 'moves', []))
+                    + [x[1] for x in grouped_moves])
                 shipment.save()
                 shipments.append(shipment)
         if shipment_type == 'out':
