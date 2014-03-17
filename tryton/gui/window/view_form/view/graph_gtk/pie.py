@@ -108,6 +108,9 @@ class Pie(Graph):
     def motion(self, widget, event):
         super(Pie, self).motion(widget, event)
 
+        if not getattr(self, 'area', None):
+            return
+
         d = (event.x - self.centerx) ** 2 + (event.y - self.centery) ** 2
         if d > self.radius ** 2:
             self.popup.hide()

@@ -154,6 +154,9 @@ class Line(Graph):
         cr.restore()
 
     def motion(self, widget, event):
+        if not getattr(self, 'area', None):
+            return
+
         nearest = None
         for point in self.points:
             x = point.x * self.area.w + self.area.x
