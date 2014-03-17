@@ -16,7 +16,7 @@ from trytond.pyson import Eval, Bool, If, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Purchase', 'PurchaseInvoice', 'PurchaseIgnoredInvoice',
+__all__ = ['Purchase', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
     'PurchaseLineIgnoredMove', 'PurchaseLineRecreatedMove', 'PurchaseReport',
     'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
@@ -117,8 +117,8 @@ class Purchase(Workflow, ModelSQL, ModelView):
             ('paid', 'Paid'),
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True)
-    invoices = fields.Many2Many('purchase.purchase-account.invoice',
-            'purchase', 'invoice', 'Invoices', readonly=True)
+    invoices = fields.Function(fields.One2Many('account.invoice', None,
+            'Invoices'), 'get_invoices', searcher='search_invoices')
     invoices_ignored = fields.Many2Many(
             'purchase.purchase-ignored-account.invoice',
             'purchase', 'invoice', 'Ignored Invoices', readonly=True)
@@ -479,6 +479,18 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 del result[key]
         return result
 
+    def get_invoices(self, name):
+        invoices = set()
+        for line in self.lines:
+            for invoice_line in line.invoice_lines:
+                if invoice_line.invoice:
+                    invoices.add(invoice_line.invoice.id)
+        return list(invoices)
+
+    @classmethod
+    def search_invoices(cls, name, clause):
+        return [('lines.invoice_lines.invoice.id',) + tuple(clause[1:])]
+
     def get_invoice_state(self):
         '''
         Return the invoice state for the purchase.
@@ -570,7 +582,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
         default['state'] = 'draft'
         default['reference'] = None
         default['invoice_state'] = 'none'
-        default['invoices'] = None
         default['invoices_ignored'] = None
         default['shipment_state'] = 'none'
         default.setdefault('purchase_date', None)
@@ -684,10 +695,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
         with Transaction().set_user(0, set_context=True):
             Invoice.update_taxes([invoice])
-
-        self.write([self], {
-                'invoices': [('add', [invoice.id])],
-                })
         return invoice
 
     def create_move(self, move_type):
@@ -797,16 +804,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
             cls.write(done, {
                     'state': 'done',
                     })
-
-
-class PurchaseInvoice(ModelSQL):
-    'Purchase - Invoice'
-    __name__ = 'purchase.purchase-account.invoice'
-    _table = 'purchase_invoices_rel'
-    purchase = fields.Many2One('purchase.purchase', 'Purchase',
-            ondelete='CASCADE', select=True, required=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=True, required=True)
 
 
 class PurchaseIgnoredInvoice(ModelSQL):

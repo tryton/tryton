@@ -13,7 +13,6 @@ def register():
     Pool.register(
         Move,
         Purchase,
-        PurchaseInvoice,
         PurchaseIgnoredInvoice,
         PurchaseRecreadtedInvoice,
         PurchaseLine,
