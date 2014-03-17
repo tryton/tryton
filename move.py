@@ -364,8 +364,8 @@ class Move(ModelSQL, ModelView):
             cls.write([move], values)
 
             to_reconcile = [l for l in move.lines
-                if ((line.debit == line.credit == Decimal('0'))
-                    and line.account.reconcile)]
+                if ((l.debit == l.credit == Decimal('0'))
+                    and l.account.reconcile)]
             if to_reconcile:
                 Line.reconcile(to_reconcile)
 
