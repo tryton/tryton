@@ -311,9 +311,9 @@ class TestModel(TestCase):
         test._on_change_set('groups', {'remove': [group_ids[0]]})
         self.assertEqual([x.id for x in test.groups], group_ids[1:])
 
-        test._on_change_set('groups', {'add': [{
-            'name': 'Bar',
-            }]})
+        test._on_change_set('groups', {'add': [(-1, {
+                            'name': 'Bar',
+                            })]})
         self.assert_([x for x in test.groups if x.name == 'Bar'])
 
         test.groups.extend(Group.find())
