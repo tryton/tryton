@@ -16,7 +16,7 @@ from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Sale', 'SaleInvoice', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
+__all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLine', 'SaleLineTax', 'SaleLineIgnoredMove',
     'SaleLineRecreatedMove', 'SaleReport', 'OpenCustomer',
     'HandleShipmentExceptionAsk', 'HandleShipmentException',
@@ -137,8 +137,8 @@ class Sale(Workflow, ModelSQL, ModelView):
             ('paid', 'Paid'),
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True)
-    invoices = fields.Many2Many('sale.sale-account.invoice',
-            'sale', 'invoice', 'Invoices', readonly=True)
+    invoices = fields.Function(fields.One2Many('account.invoice', None,
+            'Invoices'), 'get_invoices', searcher='search_invoices')
     invoices_ignored = fields.Many2Many('sale.sale-ignored-account.invoice',
             'sale', 'invoice', 'Ignored Invoices', readonly=True)
     invoices_recreated = fields.Many2Many(
@@ -525,6 +525,18 @@ class Sale(Workflow, ModelSQL, ModelView):
                 del result[key]
         return result
 
+    def get_invoices(self, name):
+        invoices = set()
+        for line in self.lines:
+            for invoice_line in line.invoice_lines:
+                if invoice_line.invoice:
+                    invoices.add(invoice_line.invoice.id)
+        return list(invoices)
+
+    @classmethod
+    def search_invoices(cls, name, clause):
+        return [('lines.invoice_lines.invoice.id',) + tuple(clause[1:])]
+
     def get_invoice_state(self):
         '''
         Return the invoice state for the sale.
@@ -642,7 +654,6 @@ class Sale(Workflow, ModelSQL, ModelView):
         default['state'] = 'draft'
         default['reference'] = None
         default['invoice_state'] = 'none'
-        default['invoices'] = None
         default['invoices_ignored'] = None
         default['shipment_state'] = 'none'
         default.setdefault('sale_date', None)
@@ -762,10 +773,6 @@ class Sale(Workflow, ModelSQL, ModelView):
 
         with Transaction().set_user(0, set_context=True):
             Invoice.update_taxes([invoice])
-
-        self.write([self], {
-                'invoices': [('add', [invoice.id])],
-                })
         return invoice
 
     def _get_move_sale_line(self, shipment_type):
@@ -927,16 +934,6 @@ class Sale(Workflow, ModelSQL, ModelView):
             cls.proceed(process)
         if done:
             cls.do(done)
-
-
-class SaleInvoice(ModelSQL):
-    'Sale - Invoice'
-    __name__ = 'sale.sale-account.invoice'
-    _table = 'sale_invoices_rel'
-    sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
-        select=True, required=True)
-    invoice = fields.Many2One('account.invoice', 'Invoice',
-            ondelete='RESTRICT', select=True, required=True)
 
 
 class SaleIgnoredInvoice(ModelSQL):
