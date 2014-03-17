@@ -129,11 +129,12 @@ class Work:
 
                 total_allocation = 0
                 if not work.allocations:
-                    durations[work.id] = work.effort
+                    durations[work.id] = (work.effort or 0)
                     continue
                 for allocation in work.allocations:
                     total_allocation += allocation.percentage
-                durations[work.id] = work.effort / (total_allocation / 100.0)
+                durations[work.id] = ((work.effort or 0)
+                    / (total_allocation / 100.0))
 
             while leafs:
                 for work_id in leafs:
