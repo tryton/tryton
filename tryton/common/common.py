@@ -1305,18 +1305,14 @@ class RPCProgress(object):
             if self.process_exception_p:
                 def rpc_execute(*args):
                     return RPCProgress('execute',
-                        args).run(self.process_exception_p, self.callback)
+                        args).run(self.process_exception_p)
                 result = process_exception(self.exception, *self.args,
                     rpc_execute=rpc_execute, session=self.session)
-                if self.callback:
-                    return
                 if result is False:
                     self.exception = RPCException(self.exception)
                 else:
                     self.exception = None
                     self.res = result
-            else:
-                self.exception
 
         def return_():
             if self.exception:
