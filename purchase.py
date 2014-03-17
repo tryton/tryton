@@ -14,8 +14,9 @@ __metaclass__ = PoolMeta
 
 class Purchase:
     __name__ = 'purchase.purchase'
-    invoice_lines = fields.Many2Many('purchase.purchase-account.invoice.line',
-            'purchase', 'line', 'Invoice Lines', readonly=True)
+    invoice_lines = fields.Function(fields.One2Many('account.invoice.line',
+            None, 'Invoice Lines'), 'get_invoice_lines',
+        searcher='search_invoice_lines')
     invoice_lines_ignored = fields.Many2Many(
             'purchase.purchase-ignored-account.invoice.line',
             'purchase', 'invoice', 'Invoice Lines Ignored', readonly=True)
@@ -34,6 +35,13 @@ class Purchase:
                 & (model_data.module == module_name)))
 
         super(Purchase, cls).__register__(module_name)
+
+    def get_invoice_lines(self, name):
+        return list({il.id for l in self.lines for il in l.invoice_lines})
+
+    @classmethod
+    def search_invoice_lines(cls, name, clause):
+        return [('lines.invoice_lines',) + tuple(clause[1:])]
 
     def create_invoice(self, invoice_type):
         pool = Pool()
@@ -55,11 +63,6 @@ class Purchase:
                     'company': invoice.company.id,
                     })
                 InvoiceLine.delete(lines_to_delete)
-            self.write([self], {
-                'invoices': [('remove', [invoice.id])],
-                'invoice_lines': [('add', invoice_line_ids)],
-                })
-            with Transaction().set_user(0, set_context=True):
                 Invoice.cancel([invoice])
                 Invoice.delete([invoice])
             return None
@@ -86,7 +89,6 @@ class Purchase:
         if default is None:
             default = {}
         default = default.copy()
-        default['invoice_lines'] = None
         default['invoice_lines_ignored'] = None
         return super(Purchase, cls).copy(purchases, default=default)
 
