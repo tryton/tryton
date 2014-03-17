@@ -65,6 +65,9 @@ class Bar(Graph):
     def motion(self, widget, event):
         super(Bar, self).motion(widget, event)
 
+        if not getattr(self, 'area', None):
+            return
+
         def intersect(bar, event):
             x = self.area.w * bar.x + self.area.x
             y = self.area.h * bar.y + self.area.y
