@@ -285,7 +285,7 @@ class Production(Workflow, ModelSQL, ModelView):
             values = self._explode_move_values(storage_location, self.location,
                 self.company, input_, quantity)
             if values:
-                inputs['add'].append(values)
+                inputs['add'].append((-1, values))
                 quantity = Uom.compute_qty(input_.uom, quantity,
                     input_.product.default_uom)
                 changes['cost'] += (Decimal(str(quantity)) *
@@ -305,7 +305,7 @@ class Production(Workflow, ModelSQL, ModelView):
                     values['unit_price'] = Decimal(
                         changes['cost'] / Decimal(str(quantity))
                         ).quantize(Decimal(str(10 ** -digits[1])))
-                outputs['add'].append(values)
+                outputs['add'].append((-1, values))
         return changes
 
     @fields.depends('warehouse')
