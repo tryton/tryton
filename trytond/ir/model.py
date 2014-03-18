@@ -68,6 +68,7 @@ class Model(ModelSQL, ModelView):
         cls._order.insert(0, ('model', 'ASC'))
         cls.__rpc__.update({
                 'list_models': RPC(),
+                'list_history': RPC(),
                 'global_search': RPC(),
                 })
 
@@ -128,6 +129,12 @@ class Model(ModelSQL, ModelView):
                     ('id', 'ASC'),
                     ])
             return [m.model for m in models]
+
+    @classmethod
+    def list_history(cls):
+        'Return a list of all models with history'
+        return [name for name, model in Pool().iterobject()
+            if getattr(model, '_history', False)]
 
     @classmethod
     def create(cls, vlist):

@@ -401,6 +401,11 @@ Class methods:
     Could be overrided to use a custom SQL query instead of a table of the
     database. It should return a SQL FromItem.
 
+.. classmethod:: ModelSQL.history_revisions(ids)
+
+    Return a sorted list of all revisions for ids. The list is composed of
+    the date, id and username of the revision.
+
 .. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
     Return a list of records that match the :ref:`domain <topics-domain>` or
