@@ -271,7 +271,8 @@ class FieldTranslate(Field):
         language = Transaction().language
         if Model.__name__ == 'ir.model':
             return table.join(translation, 'LEFT',
-                condition=(translation.name == Concat(table.model, name))
+                condition=(translation.name == Concat(Concat(
+                            table.model, ','), name))
                 & (translation.res_id == -1)
                 & (translation.lang == language)
                 & (translation.type == 'model')
