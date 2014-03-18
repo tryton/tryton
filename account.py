@@ -1,0 +1,35 @@
+#This file is part of Tryton.  The COPYRIGHT file at the top level of
+#this repository contains the full copyright notices and license terms.
+from trytond.model import ModelSQL, fields
+from trytond.pool import Pool, PoolMeta
+
+
+__all__ = ['InvoiceLineStockMove', 'InvoiceLine']
+__metaclass__ = PoolMeta
+
+
+class InvoiceLineStockMove(ModelSQL):
+    'Invoice Line - Stock Move'
+    __name__ = 'account.invoice.line-stock.move'
+
+    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
+        required=True, select=True)
+    stock_move = fields.Many2One('stock.move', 'Stock Move', required=True,
+        select=True)
+
+
+class InvoiceLine:
+    __name__ = 'account.invoice.line'
+    stock_moves = fields.Many2Many('account.invoice.line-stock.move',
+        'invoice_line', 'stock_move', 'Stock Moves')
+
+    @property
+    def moved_quantity(self):
+        'The quantity from linked stock moves in line unit'
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        quantity = 0
+        for stock_move in self.stock_moves:
+            quantity += Uom.compute_qty(stock_move.uom, stock_move.quantity,
+                self.uom)
+        return quantity
