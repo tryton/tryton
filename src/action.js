@@ -49,6 +49,7 @@
                         action.pyson_context || '{}');
                 ctx = jQuery.extend(ctx, params.context);
                 ctx = jQuery.extend(ctx, context);
+                params.context = jQuery.extend(params.context, context);
 
                 var domain_context = jQuery.extend({}, ctx);
                 domain_context.context = ctx;

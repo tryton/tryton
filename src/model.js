@@ -81,9 +81,23 @@
         array.parent_datetime_field = undefined;
         array.record_removed = [];
         array.record_deleted = [];
+        array.__readonly = false;
+        array.skip_model_access = false;
         array.forEach(function(e, i, a) {
             e.group = a;
         });
+        array.get_readonly = function() {
+            // Must skip res.user for Preference windows
+            if (this.context._datetime ||
+                    (!Sao.common.MODELACCESS.get(this.model.name).write &&
+                     !this.skip_model_access)) {
+                return true;
+            }
+            return this.__readonly;
+        };
+        array.set_readonly = function(value) {
+            this.__readonly = value;
+        };
         array.load = function(ids, modified) {
             var new_records = [];
             var i, len;
@@ -869,7 +883,7 @@
                     method: 'model.ir.attachment.search_count',
                     params: [
                     [['resource', '=', this.model.name + ',' + this.id]],
-                    {}]
+                    this.get_context()]
                 }, this.model.session);
             } else {
                 prm.resolve(this.attachment_count);
@@ -1044,15 +1058,19 @@
                         this.description[state];
                 }
             }.bind(this));
-            // TODO group readonly
-            // TODO domain readonly
+            if (record.group.get_readonly() ||
+                    this.get_state_attrs(record).domain_readonly) {
+                this.get_state_attrs(record).readonly = true;
+            }
         },
         get_state_attrs: function(record) {
             if (!(this.name in record.state_attrs)) {
                 record.state_attrs[this.name] = jQuery.extend(
                         {}, this.description);
             }
-            // TODO group readonly
+            if (record.group.get_readonly() || record.readonly) {
+                record.state_attrs[this.name].readonly = true;
+            }
             return record.state_attrs[this.name];
         },
         check_required: function(record) {

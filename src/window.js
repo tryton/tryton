@@ -76,6 +76,7 @@
             if (view_type == 'tree') {
                 menu = jQuery('<div/>');
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+                var readonly = this.screen.group.get_readonly();
                 if (this.domain) {
                     this.wid_text = jQuery('<input/>', {
                         type: 'input'
@@ -90,7 +91,7 @@
                     });
                     this.but_add.click(this.add.bind(this));
                     menu.append(this.but_add);
-                    this.but_add.prop('disabled', !access.read);
+                    this.but_add.prop('disabled', !access.read || readonly);
 
                     this.but_remove = jQuery('<button/>').button({
                         icons: {
@@ -100,7 +101,7 @@
                     });
                     this.but_remove.click(this.remove.bind(this));
                     menu.append(this.but_remove);
-                    this.but_remove.prop('disabled', !access.read);
+                    this.but_remove.prop('disabled', !access.read || readonly);
                 }
 
                 this.but_new = jQuery('<button/>').button({
@@ -111,7 +112,7 @@
                 });
                 this.but_new.click(this.new_.bind(this));
                 menu.append(this.but_new);
-                this.but_new.prop('disabled', !access.create);
+                this.but_new.prop('disabled', !access.create || readonly);
 
                 this.but_del = jQuery('<button/>').button({
                     icons: {
@@ -121,7 +122,7 @@
                 });
                 this.but_del.click(this.delete_.bind(this));
                 menu.append(this.but_del);
-                this.but_del.prop('disabled', !access['delete']);
+                this.but_del.prop('disabled', !access['delete'] || readonly);
 
                 this.but_undel = jQuery('<button/>').button({
                     icons: {
@@ -131,6 +132,7 @@
                 });
                 this.but_undel.click(this.undelete.bind(this));
                 menu.append(this.but_undel);
+                this.but_undel.prop('disabled', !access['delete'] || readonly);
 
                 this.but_previous = jQuery('<button/>').button({
                     icons: {
@@ -294,12 +296,12 @@
         init: function(record, callback) {
             this.resource = record.model.name + ',' + record.id;
             this.attachment_callback = callback;
+            var context = jQuery.extend({}, record.get_context());
+            context.resource = this.resource;
             var screen = new Sao.Screen('ir.attachment', {
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
-                context: {
-                    resource: this.resource
-                },
+                context: context,
                 exclude_field: 'resource'
             });
             screen.switch_view().done(function() {
@@ -458,7 +460,8 @@
             this.screen = new Sao.Screen('res.user', {
                 mode: []
             });
-            // TODO fix readonly from modelaccess
+            this.screen.group.set_readonly(false);
+            this.screen.group.skip_model_access = true;
 
             var set_view = function(view) {
                 this.screen.add_view(view);
@@ -517,4 +520,65 @@
         }
     });
 
+    Sao.Window.Revision = Sao.class_(Object, {
+        init: function(revisions, callback) {
+            this.callback = callback;
+            this.el = jQuery('<div/>');
+
+            var buttons = [];
+            buttons.push({
+                text: 'Cancel', // TODO translate
+                click: function() {
+                    this.response('RESPONSE_CANCEL');
+                }.bind(this)
+            });
+            buttons.push({
+                text: 'Ok', // TODO translate
+                click: function() {
+                    this.response('RESPONSE_OK');
+                }.bind(this)
+            });
+
+            this.el.dialog({
+                model: true,
+                title: 'Revision', // TODO translate
+                autoOpen: false,
+                buttons: buttons
+            });
+            Sao.common.center_dialog(this.el);
+
+            this.el.append(jQuery('<label/>', {
+                'text': 'Revision:' // TODO translate
+            }));
+            this.select = jQuery('<select/>');
+            var date_format = Sao.common.date_format();
+            var time_format = '%H:%M:%S.%f';
+            this.select.append(jQuery('<option/>', {
+                value: null,
+                text: ''
+            }));
+            revisions.forEach(function(revision) {
+                var name = revision[2];
+                revision = revision[0];
+                this.select.append(jQuery('<option/>', {
+                    value: revision.valueOf(),
+                    text: Sao.common.format_datetime(
+                        date_format, time_format, revision) + ' ' + name
+                }));
+            }.bind(this));
+            this.el.append(this.select);
+            this.el.dialog('open');
+        },
+        response: function(response_id) {
+            var revision = null;
+            if (response_id == 'RESPONSE_OK') {
+                revision = this.select.val();
+                if (revision) {
+                    revision = Sao.DateTime(parseInt(revision, 10));
+                }
+            }
+            this.el.dialog('destroy');
+            this.callback(revision);
+        }
+    });
 }());

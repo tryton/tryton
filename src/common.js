@@ -186,6 +186,25 @@
     });
     Sao.common.MODELACCESS = new Sao.common.ModelAccess();
 
+    Sao.common.ModelHistory = Sao.class_(Object, {
+        init: function() {
+            this._models = [];
+        },
+        load_history: function() {
+            this._models = [];
+            return Sao.rpc({
+                'method': 'model.ir.model.list_history',
+                'params': [{}]
+            }, Sao.Session.current_session).then(function(models) {
+                this._models = models;
+            }.bind(this));
+        },
+        contains: function(model) {
+            return ~this._models.indexOf(model);
+        }
+    });
+    Sao.common.MODELHISTORY = new Sao.common.ModelHistory();
+
     Sao.common.humanize = function(size) {
         var sizes = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB'];
         for (var i =0, len = sizes.length; i < len; i++) {

@@ -168,6 +168,7 @@ var Sao = {};
             // TODO view_search
             deferreds.push(Sao.common.MODELACCESS.load_models());
             deferreds.push(Sao.common.ICONFACTORY.load_icons());
+            deferreds.push(Sao.common.MODELHISTORY.load_history());
             jQuery.when.apply(jQuery, deferreds).then(function() {
                 Sao.menu(preferences);
                 Sao.user_menu(preferences);
