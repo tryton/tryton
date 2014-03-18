@@ -339,11 +339,9 @@ class WinImport(NoModal):
             }
             self.destroy()
             if csv_data['fname']:
-                return self.import_csv(csv_data, fields, self.model)
-            return False
+                self.import_csv(csv_data, fields, self.model)
         else:
             self.destroy()
-            return False
 
     def import_csv(self, csv_data, fields, model):
         # TODO: make it works with references
@@ -358,21 +356,11 @@ class WinImport(NoModal):
             datas.append([x.decode(csv_data['combo']).encode('utf-8')
                     for x in line])
         try:
-            res = RPCExecute('model', model, 'import_data', fields, datas,
+            count = RPCExecute('model', model, 'import_data', fields, datas,
                 context=self.context)
         except RPCException:
-            return False
-        if res[0] >= 0:
-            if res[0] == 1:
-                common.message(_('%d record imported!') % res[0])
-            else:
-                common.message(_('%d records imported!') % res[0])
+            return
+        if count == 1:
+            common.message(_('%d record imported!') % count)
         else:
-            buf = ''
-            for key, val in res[1].items():
-                buf += ('\t%s: %s\n' % (str(key), str(val)))
-            common.error(_('Importation Error!'),
-                _('Error importing record %(record)s\n'
-                    '%(error_title)s\n\n%(traceback)s') %
-                {'record': buf, 'error_title': res[2], 'traceback': res[3]})
-        return True
+            common.message(_('%d records imported!') % count)
