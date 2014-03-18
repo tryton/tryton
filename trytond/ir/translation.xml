@@ -60,15 +60,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="module">ir</field>
             <field name="fuzzy" eval="False"/>
         </record>
-        <record model="ir.translation" id="translation_not_found_in_selection">
-            <field name="name">not_found_in_selection</field>
-            <field name="lang">en_US</field>
-            <field name="type">error</field>
-            <field name="src">Key %r not found in selection field %r</field>
-            <field name="value">Key %r not found in selection field %r</field>
-            <field name="module">ir</field>
-            <field name="fuzzy" eval="False"/>
-        </record>
         <record model="ir.translation" id="translation_relation_not_found">
             <field name="name">relation_not_found</field>
             <field name="lang">en_US</field>

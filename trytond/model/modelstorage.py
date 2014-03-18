@@ -3,9 +3,6 @@
 
 import datetime
 import time
-import logging
-import traceback
-import sys
 import csv
 import warnings
 try:
@@ -517,30 +514,8 @@ class ModelStorage(Model):
         '''
         Create records for all values in data.
         The field names of values must be defined in fields_names.
-        It returns a tuple with
-            - the number of records imported
-            - the last values if failed
-            - the exception if failed
-            - the warning if failed
         '''
         pool = Pool()
-
-        def warn(msgname, *args):
-            msg = cls.raise_user_error(msgname, args,
-                    raise_exception=False)
-            logger.warn(msg)
-
-        def get_selection(selection, value, field):
-            res = None
-            if not isinstance(selection, (tuple, list)):
-                selection = getattr(cls, selection)()
-            for key, _ in selection:
-                if str(key) == value:
-                    res = key
-                    break
-            if value and not res:
-                warn('not_found_in_selection', value, '/'.join(field))
-            return res
 
         @memoize(1000)
         def get_many2one(relation, value):
@@ -551,11 +526,10 @@ class ModelStorage(Model):
                 ('rec_name', '=', value),
                 ], limit=2)
             if len(res) < 1:
-                warn('relation_not_found', value, relation)
-                res = None
+                cls.raise_user_error('relation_not_found', (value, relation))
             elif len(res) > 1:
-                warn('too_many_relations_found', value, relation)
-                res = None
+                cls.raise_user_error('too_many_relations_found',
+                    (value, relation))
             else:
                 res = res[0].id
             return res
@@ -572,9 +546,11 @@ class ModelStorage(Model):
                     ('rec_name', '=', word),
                     ], limit=2)
                 if len(res2) < 1:
-                    warn('relation_not_found', word, relation)
+                    cls.raise_user_error('relation_not_found',
+                        (word, relation))
                 elif len(res2) > 1:
-                    warn('too_many_relations_found', word, relation)
+                    cls.raise_user_error('too_many_relations_found',
+                        (word, relation))
                 else:
                     res.extend(res2)
             if len(res):
@@ -591,18 +567,17 @@ class ModelStorage(Model):
             try:
                 relation, value = value.split(',', 1)
             except Exception:
-                warn('reference_syntax_error', value, '/'.join(field))
-                return None
+                cls.raise_user_error('reference_syntax_error',
+                    (value, '/'.join(field)))
             Relation = pool.get(relation)
             res = Relation.search([
                 ('rec_name', '=', value),
                 ], limit=2)
             if len(res) < 1:
-                warn('relation_not_found', value, relation)
-                res = None
+                cls.raise_user_error('relation_not_found', (value, relation))
             elif len(res) > 1:
-                warn('too_many_relations_found', value, relation)
-                res = None
+                cls.raise_user_error('too_many_relations_found',
+                    (value, relation))
             else:
                 res = '%s,%s' % (relation, res[0].id)
             return res
@@ -620,8 +595,8 @@ class ModelStorage(Model):
                 try:
                     relation, value = value.split(',', 1)
                 except Exception:
-                    warn('reference_syntax_error', value, '/'.join(field))
-                    return None
+                    cls.raise_user_error('reference_syntax_error',
+                        (value, '/'.join(field)))
                 value = [value]
             else:
                 value = [value]
@@ -630,8 +605,8 @@ class ModelStorage(Model):
                 try:
                     module, xml_id = word.rsplit('.', 1)
                 except Exception:
-                    warn('xml_id_syntax_error', word, '/'.join(field))
-                    continue
+                    cls.raise_user_error('xml_id_syntax_error',
+                        (word, '/'.join(field)))
                 db_id = ModelData.get_id(module, xml_id)
                 res_ids.append(db_id)
             if ftype == 'many2many' and res_ids:
@@ -679,16 +654,13 @@ class ModelStorage(Model):
                     elif field_type == 'numeric':
                         res = Decimal(value) if value else None
                     elif field_type == 'date':
-                        res = (datetime.date(
-                                *time.strptime(value, '%Y-%m-%d')[:3])
+                        res = (datetime.datetime.strptime(value,
+                                '%Y-%m-%d').date()
                             if value else None)
                     elif field_type == 'datetime':
-                        res = (datetime.datetime(
-                                *time.strptime(value, '%Y-%m-%d %H:%M:%S')[:6])
+                        res = (datetime.datetime.strptime(value,
+                                '%Y-%m-%d %H:%M:%S')
                             if value else None)
-                    elif field_type == 'selection':
-                        res = get_selection(this_field_def['selection'],
-                            value, field)
                     elif field_type == 'many2one':
                         res = get_many2one(this_field_def['relation'], value)
                     elif field_type == 'many2many':
@@ -738,48 +710,25 @@ class ModelStorage(Model):
 
         ModelData = pool.get('ir.model.data')
 
-        # logger for collecting warnings for the client
-        logger = logging.Logger("import")
-        warning_stream = StringIO.StringIO()
-        logger.addHandler(logging.StreamHandler(warning_stream))
-
         len_fields_names = len(fields_names)
         assert all(len(x) == len_fields_names for x in data)
         fields_names = [x.split('/') for x in fields_names]
         fields_def = cls.fields_get()
-        done = 0
 
-        warning = ''
         to_create, translations, languages = [], [], set()
         while len(data):
-            res = {}
-            try:
-                (res, _, translate) = \
-                    process_lines(data, [], fields_def)
-                warning = warning_stream.getvalue()
-                if warning:
-                    # XXX should raise Exception
-                    Transaction().cursor.rollback()
-                    return (-1, res, warning, '')
-                to_create.append(res)
-                translations.append(translate)
-                languages.update(translate)
-            except Exception, exp:
-                logger = logging.getLogger('import')
-                logger.error(exp)
-                # XXX should raise Exception
-                Transaction().cursor.rollback()
-                tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-                warning = '%s\n%s' % (tb_s, warning)
-                return (-1, res, exp, warning)
-            done += 1
+            (res, _, translate) = \
+                process_lines(data, [], fields_def)
+            to_create.append(res)
+            translations.append(translate)
+            languages.update(translate)
         new_records = cls.create(to_create)
         for language in languages:
             translated = [t.get(language, {}) for t in translations]
             with Transaction().set_context(language=language):
                 cls.write(*chain(*ifilter(itemgetter(1),
                             izip(([r] for r in new_records), translated))))
-        return (done, 0, 0, 0)
+        return len(new_records)
 
     @classmethod
     def check_xml_record(cls, records, values):

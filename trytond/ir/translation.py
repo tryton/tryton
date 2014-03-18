@@ -1357,7 +1357,6 @@ class TranslationClean(Wizard):
                 'delete_xml_record',
                 'xml_record_desc',
                 'write_xml_record',
-                'not_found_in_selection',
                 'relation_not_found',
                 'too_many_relations_found',
                 'xml_id_syntax_error',
