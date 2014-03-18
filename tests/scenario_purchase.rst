@@ -256,6 +256,21 @@ Purchase 5 products::
     >>> invoice.origins == purchase.rec_name
     True
 
+Invoice line must be linked to stock move::
+
+    >>> _, invoice_line1, invoice_line2 = sorted(invoice.lines,
+    ...     key=lambda l: l.quantity)
+    >>> stock_move1, stock_move2 = sorted(purchase.moves,
+    ...     key=lambda m: m.quantity)
+    >>> invoice_line1.stock_moves == [stock_move1]
+    True
+    >>> stock_move1.invoice_lines == [invoice_line1]
+    True
+    >>> invoice_line2.stock_moves == [stock_move2]
+    True
+    >>> stock_move2.invoice_lines == [invoice_line2]
+    True
+
 Post invoice and check no new invoices::
 
     >>> config.user = account_user.id
@@ -296,6 +311,15 @@ Purchase 5 products with an invoice method 'on shipment'::
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 0)
 
+Not yet linked to invoice lines::
+
+    >>> stock_move1, stock_move2 = sorted(purchase.moves,
+    ...     key=lambda m: m.quantity)
+    >>> len(stock_move1.invoice_lines)
+    0
+    >>> len(stock_move2.invoice_lines)
+    0
+
 Validate Shipments::
 
     >>> config.user = stock_user.id
@@ -323,14 +347,21 @@ Open supplier invoice::
     >>> invoice = Invoice(invoice.id)
     >>> invoice.type
     u'in_invoice'
-    >>> len(invoice.lines)
-    2
+    >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
+    ...     key=lambda l: l.quantity)
     >>> for line in invoice.lines:
     ...     line.quantity = 1
     ...     line.save()
     >>> invoice.invoice_date = today
     >>> invoice.save()
     >>> Invoice.post([invoice.id], config.context)
+
+Invoice lines must be linked to each stock moves::
+
+    >>> invoice_line1.stock_moves == [stock_move1]
+    True
+    >>> invoice_line2.stock_moves == [stock_move2]
+    True
 
 Check second invoices::
 

@@ -1192,16 +1192,21 @@ class PurchaseLine(ModelSQL, ModelView):
         if (invoice_type == 'in_invoice') != (self.quantity >= 0):
             return []
 
+        stock_moves = []
         if (self.purchase.invoice_method == 'order'
                 or not self.product
                 or self.product.type == 'service'):
             quantity = abs(self.quantity)
+            stock_moves = self.moves
         else:
             quantity = 0.0
             for move in self.moves:
                 if move.state == 'done':
                     quantity += Uom.compute_qty(move.uom, move.quantity,
                         self.unit)
+                    if move.invoiced_quantity < move.quantity:
+                        stock_moves.append(move)
+        invoice_line.stock_moves = stock_moves
 
         skip_ids = set(l.id for i in self.purchase.invoices_recreated
             for l in i.lines)
@@ -1287,6 +1292,8 @@ class PurchaseLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.purchase.currency
         move.planned_date = self.delivery_date
+        move.invoice_lines = [l for l in self.invoice_lines
+            if not l.stock_moves]
         move.origin = self
         return move
 
