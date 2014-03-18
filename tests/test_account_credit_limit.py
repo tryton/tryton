@@ -30,7 +30,7 @@ class AccountCreditLimitTestCase(unittest.TestCase):
 
     def test0010check_credit_limit(self):
         'Test check_credit_limit'
-        with Transaction().start(DB_NAME, USER, CONTEXT):
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             receivable, = self.account.search([
                     ('kind', '=', 'receivable'),
                     ])
