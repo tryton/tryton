@@ -1321,16 +1321,21 @@ class SaleLine(ModelSQL, ModelView):
         if (invoice_type == 'out_invoice') != (self.quantity >= 0):
             return []
 
+        stock_moves = []
         if (self.sale.invoice_method == 'order'
                 or not self.product
                 or self.product.type == 'service'):
             quantity = abs(self.quantity)
+            stock_moves = self.moves
         else:
             quantity = 0.0
             for move in self.moves:
                 if move.state == 'done':
                     quantity += Uom.compute_qty(move.uom, move.quantity,
                         self.unit)
+                    if move.invoiced_quantity < move.quantity:
+                        stock_moves.append(move)
+        invoice_line.stock_moves = stock_moves
 
         skip_ids = set(l.id for i in self.sale.invoices_recreated
             for l in i.lines)
@@ -1395,14 +1400,18 @@ class SaleLine(ModelSQL, ModelView):
         if (shipment_type == 'out') != (self.quantity >= 0):
             return
 
+        invoice_lines = []
         if self.sale.shipment_method == 'order':
             quantity = abs(self.quantity)
+            invoice_lines = self.invoice_lines
         else:
             quantity = 0.0
             for invoice_line in self.invoice_lines:
                 if invoice_line.invoice.state == 'paid':
                     quantity += Uom.compute_qty(invoice_line.unit,
                         invoice_line.quantity, self.unit)
+                    if invoice_line.moved_quantity < invoice_line.quantity:
+                        invoice_lines.append(invoice_line)
 
         skip_ids = set(x.id for x in self.moves_recreated)
         for move in self.moves:
@@ -1428,6 +1437,7 @@ class SaleLine(ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
         move.planned_date = self.delivery_date
+        move.invoice_lines = invoice_lines
         move.origin = self
         return move
 

@@ -267,6 +267,21 @@ Sale 5 products::
     >>> shipment.origins == sale.rec_name
     True
 
+Invoice line must be linked to stock move::
+
+    >>> _, invoice_line1, invoice_line2 = sorted(invoice.lines,
+    ...     key=lambda l: l.quantity)
+    >>> stock_move1, stock_move2 = sorted(shipment.outgoing_moves,
+    ...     key=lambda m: m.quantity)
+    >>> invoice_line1.stock_moves == [stock_move1]
+    True
+    >>> stock_move1.invoice_lines == [invoice_line1]
+    True
+    >>> invoice_line2.stock_moves == [stock_move2]
+    True
+    >>> stock_move2.invoice_lines == [invoice_line2]
+    True
+
 Post invoice and check no new invoices::
 
 
@@ -309,10 +324,19 @@ Sale 5 products with an invoice method 'on shipment'::
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 0)
 
-Validate Shipments::
+Not yet linked to invoice lines::
 
     >>> shipment, = sale.shipments
     >>> config.user = stock_user.id
+    >>> stock_move1, stock_move2 = sorted(shipment.outgoing_moves,
+    ...     key=lambda m: m.quantity)
+    >>> len(stock_move1.invoice_lines)
+    0
+    >>> len(stock_move2.invoice_lines)
+    0
+
+Validate Shipments::
+
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> ShipmentOut.assign_try([shipment.id], config.context)
     True
@@ -329,12 +353,19 @@ Open customer invoice::
     >>> invoice = Invoice(invoice.id)
     >>> invoice.type
     u'out_invoice'
-    >>> len(invoice.lines)
-    2
+    >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
+    ...     key=lambda l: l.quantity)
     >>> for line in invoice.lines:
     ...     line.quantity = 1
     ...     line.save()
     >>> Invoice.post([invoice.id], config.context)
+
+Invoice lines must be linked to each stock moves::
+
+    >>> invoice_line1.stock_moves == [stock_move1]
+    True
+    >>> invoice_line2.stock_moves == [stock_move2]
+    True
 
 Check second invoices::
 
