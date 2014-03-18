@@ -154,7 +154,11 @@ class DateEntry(gtk.Entry):
     def set_text(self, text):
         self._interactive_input = False
         try:
+            # Force position as _on_insert_text use it
+            position = self.get_position()
+            self.set_position(0)
             gtk.Entry.set_text(self, text)
+            self.idle_set_position(position)
         finally:
             self._interactive_input = True
 
@@ -217,7 +221,7 @@ class DateEntry(gtk.Entry):
         res = None
         date = self.compute_date(self.get_text())
         try:
-            res = datetime.datetime(*time.strptime(date, self.format)[:6])
+            res = datetime.datetime.strptime(date, self.format)
         except ValueError:
             return None
         if set_text:

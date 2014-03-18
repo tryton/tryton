@@ -15,11 +15,12 @@ class Attachment(WinForm):
     def __init__(self, record, callback=None):
         self.resource = '%s,%s' % (record.model_name, record.id)
         self.attachment_callback = callback
+        context = record.context_get()
+        context['resource'] = self.resource
         screen = Screen('ir.attachment', domain=[
             ('resource', '=', self.resource),
-            ], mode=['tree', 'form'], context={
-                'resource': self.resource,
-            }, exclude_field='resource')
+            ], mode=['tree', 'form'], context=context,
+            exclude_field='resource')
         screen.search_filter()
         screen.parent = record
         super(Attachment, self).__init__(screen, self.callback,

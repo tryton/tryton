@@ -113,6 +113,7 @@ class Action(object):
             action_ctx = decoder.decode(action.get('pyson_context') or '{}')
             ctx.update(action_ctx)
             ctx.update(context)
+            action_ctx.update(context)
 
             ctx['context'] = ctx
             decoder = PYSONDecoder(ctx)

@@ -855,6 +855,7 @@ class Main(object):
             for target in (
                     common.ICONFACTORY.load_icons,
                     common.MODELACCESS.load_models,
+                    common.MODELHISTORY.load_history,
                     common.VIEW_SEARCH.load_searches,
                     ):
                 t = threading.Thread(target=target)

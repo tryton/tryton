@@ -168,6 +168,23 @@ class ModelAccess(object):
 MODELACCESS = ModelAccess()
 
 
+class ModelHistory(object):
+    _models = set()
+
+    def load_history(self):
+        self._models.clear()
+        try:
+            self._models.update(rpc.execute('model', 'ir.model',
+                    'list_history', rpc.CONTEXT))
+        except TrytonServerError:
+            pass
+
+    def __contains__(self, model):
+        return model in self._models
+
+MODELHISTORY = ModelHistory()
+
+
 class ViewSearch(object):
     searches = None
 

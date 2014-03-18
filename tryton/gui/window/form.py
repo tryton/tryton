@@ -11,11 +11,13 @@ from tryton.gui.window import Window
 from tryton.gui.window.win_export import WinExport
 from tryton.gui.window.win_import import WinImport
 from tryton.gui.window.attachment import Attachment
+from tryton.gui.window.revision import Revision
 from tryton.signal_event import SignalEvent
 from tryton.common import message, sur, sur_3b, COLOR_SCHEMES, timezoned_date
 import tryton.common as common
 from tryton.translate import date_format
 from tryton.common import RPCExecute, RPCException
+from tryton.common.datetime_strftime import datetime_strftime
 from tryton import plugins
 
 from tabcontent import TabContent
@@ -61,6 +63,7 @@ class Form(SignalEvent, TabContent):
         (_('_Next'), 'tryton-go-next', 'sig_next', '<tryton>/Form/Next'),
         (_('_Search'), 'tryton-find', 'sig_search', '<tryton>/Form/Search'),
         (_('View _Logs...'), None, 'sig_logs', None),
+        (_('Show revisions...'), 'tryton-clock', 'revision', None),
         (None,) * 4,
         (_('_Close Tab'), 'tryton-close', 'sig_win_close',
             '<tryton>/Form/Close'),
@@ -96,8 +99,6 @@ class Form(SignalEvent, TabContent):
             domain = []
         if view_ids is None:
             view_ids = []
-        if context is None:
-            context = {}
 
         self.model = model
         self.res_id = res_id
@@ -107,7 +108,7 @@ class Form(SignalEvent, TabContent):
         self.view_ids = view_ids
         self.dialogs = []
 
-        self.screen = Screen(self.model, mode=mode, context=self.context,
+        self.screen = Screen(self.model, mode=mode, context=context,
             view_ids=view_ids, domain=domain, limit=limit, order=order,
             search_value=search_value, tab_domain=tab_domain)
         self.screen.widget.show()
@@ -116,6 +117,12 @@ class Form(SignalEvent, TabContent):
             self.name = self.screen.current_view.title
         else:
             self.name = name
+
+        if self.model not in common.MODELHISTORY:
+            self.menu_def = self.menu_def[:]
+            # Remove callback to revision
+            self.menu_def[11] = (self.menu_def[11][:2] + (None,)
+                + self.menu_def[11][3:])
 
         self.create_tabcontent()
 
@@ -154,10 +161,12 @@ class Form(SignalEvent, TabContent):
                     in ('tree', 'graph', 'calendar'):
                 self.screen.search_filter()
 
+        self.update_revision()
+
     def get_toolbars(self):
         try:
             return RPCExecute('model', self.model, 'view_toolbar_get',
-                context=self.context)
+                context=self.screen.context)
         except RPCException:
             return {}
 
@@ -174,7 +183,7 @@ class Form(SignalEvent, TabContent):
             and self.domain == value.domain
             and self.mode == value.mode
             and self.view_ids == value.view_ids
-            and self.context == value.context
+            and self.screen.context == value.screen.context
             and self.name == value.name
             and self.screen.limit == value.screen.limit
             and self.screen.search_value == value.screen.search_value)
@@ -235,7 +244,7 @@ class Form(SignalEvent, TabContent):
 
         try:
             res = RPCExecute('model', self.model, 'read', [obj_id],
-                [x[0] for x in fields], context=self.context)
+                [x[0] for x in fields], context=self.screen.context)
         except RPCException:
             return
         message_str = ''
@@ -251,6 +260,42 @@ class Form(SignalEvent, TabContent):
         message_str += _('Model:') + ' ' + self.model
         message(message_str)
         return True
+
+    def revision(self, widget=None):
+        if not self.modified_save():
+            return
+        current_id = (self.screen.current_record.id
+            if self.screen.current_record else None)
+        try:
+            revisions = RPCExecute('model', self.model, 'history_revisions',
+                [r.id for r in self.screen.selected_records])
+        except RPCException:
+            return
+        revision = self.screen.context.get('_datetime')
+        revision = Revision(revisions, revision).run()
+        if revision != self.screen.context.get('_datetime'):
+            self.screen.clear()
+            # Update root group context that will be propagated
+            self.screen.group._context['_datetime'] = revision
+            if self.screen.current_view.view_type != 'form':
+                self.screen.search_filter(
+                    self.screen.screen_container.get_text())
+            else:
+                # Test if record exist in revisions
+                self.screen.load([current_id])
+            self.screen.display(set_cursor=True)
+            self.update_revision()
+
+    def update_revision(self):
+        revision = self.screen.context.get('_datetime')
+        if revision:
+            format_ = date_format() + ' %H:%M:%S.%f'
+            revision = datetime_strftime(revision, format_)
+            self.title.set_label('%s @ %s' % (self.name, revision))
+        else:
+            self.title.set_label(self.name)
+        for button in ('new', 'save'):
+            self.buttons[button].props.sensitive = not revision
 
     def sig_remove(self, widget=None):
         if not common.MODELACCESS[self.model]['delete']:
@@ -271,7 +316,7 @@ class Form(SignalEvent, TabContent):
         fields = {}
         for name, field in self.screen.group.fields.iteritems():
             fields[name] = field.attrs
-        WinImport(self.model, self.context)
+        WinImport(self.model, self.screen.context)
 
     def sig_save_as(self, widget=None):
         while self.screen.view_to_load:
@@ -279,7 +324,7 @@ class Form(SignalEvent, TabContent):
         fields = {}
         for name, field in self.screen.group.fields.iteritems():
             fields[name] = field.attrs
-        WinExport(self.model, self.ids_get(), context=self.context)
+        WinExport(self.model, self.ids_get(), context=self.screen.context)
 
     def sig_new(self, widget=None, autosave=True):
         if not common.MODELACCESS[self.model]['create']:
@@ -296,13 +341,7 @@ class Form(SignalEvent, TabContent):
             return
         if not self.modified_save():
             return
-        ids = [r.id for r in self.screen.selected_records]
-        try:
-            new_ids = RPCExecute('model', self.model, 'copy', ids, {},
-                context=self.context)
-        except RPCException:
-            return
-        self.screen.load(new_ids)
+        self.screen.copy()
         self.message_info(_('Working now on the duplicated record(s)!'),
             'green')
 
@@ -336,11 +375,12 @@ class Form(SignalEvent, TabContent):
         self.screen.cancel_current()
         set_cursor = False
         self.screen.save_tree_state(store=False)
+        record_id = (self.screen.current_record.id
+            if self.screen.current_record else None)
         if self.screen.current_view.view_type != 'form':
-            obj_id = self.id_get()
             self.screen.search_filter(self.screen.screen_container.get_text())
             for record in self.screen.group:
-                if record.id == obj_id:
+                if record.id == record_id:
                     self.screen.current_record = record
                     set_cursor = True
                     break
@@ -467,7 +507,7 @@ class Form(SignalEvent, TabContent):
             'id': record_id,
             'ids': record_ids,
         }
-        Action._exec_action(action, data, self.context)
+        Action._exec_action(action, data, self.screen.context)
 
     def activate_save(self):
         self.buttons['save'].props.sensitive = self.screen.modified()

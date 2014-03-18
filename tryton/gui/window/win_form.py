@@ -122,6 +122,7 @@ class WinForm(NoModal):
             hbox = gtk.HBox(homogeneous=False, spacing=0)
             tooltips = common.Tooltips()
             access = common.MODELACCESS[screen.model_name]
+            readonly = self.screen.group.readonly
 
             if domain is not None:
                 self.wid_text = gtk.Entry()
@@ -140,7 +141,7 @@ class WinForm(NoModal):
                 self.but_add.add(img_add)
                 self.but_add.set_relief(gtk.RELIEF_NONE)
                 hbox.pack_start(self.but_add, expand=False, fill=False)
-                if not access['read']:
+                if not access['read'] or readonly:
                     self.but_add.set_sensitive(False)
 
                 self.but_remove = gtk.Button()
@@ -153,7 +154,7 @@ class WinForm(NoModal):
                 self.but_remove.add(img_remove)
                 self.but_remove.set_relief(gtk.RELIEF_NONE)
                 hbox.pack_start(self.but_remove, expand=False, fill=False)
-                if not access['read']:
+                if not access['read'] or readonly:
                     self.but_remove.set_sensitive(False)
 
                 hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
@@ -167,7 +168,7 @@ class WinForm(NoModal):
             self.but_new.add(img_new)
             self.but_new.set_relief(gtk.RELIEF_NONE)
             hbox.pack_start(self.but_new, expand=False, fill=False)
-            if not access['create']:
+            if not access['create'] or readonly:
                 self.but_new.set_sensitive(False)
 
             self.but_del = gtk.Button()
@@ -180,7 +181,7 @@ class WinForm(NoModal):
             self.but_del.add(img_del)
             self.but_del.set_relief(gtk.RELIEF_NONE)
             hbox.pack_start(self.but_del, expand=False, fill=False)
-            if not access['delete']:
+            if not access['delete'] or readonly:
                 self.but_del.set_sensitive(False)
 
             self.but_undel = gtk.Button()
@@ -194,6 +195,8 @@ class WinForm(NoModal):
             self.but_undel.add(img_undel)
             self.but_undel.set_relief(gtk.RELIEF_NONE)
             hbox.pack_start(self.but_undel, expand=False, fill=False)
+            if not access['delete'] or readonly:
+                self.but_undel.set_sensitive(False)
 
             hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
 
@@ -355,9 +358,10 @@ class WinForm(NoModal):
 
     def _sig_label(self, screen, signal_data):
         name = '_'
+        access = common.MODELACCESS[screen.model_name]
+        readonly = screen.group.readonly
         if signal_data[0] >= 1:
             name = str(signal_data[0])
-            self.but_del.set_sensitive(True)
             if self.domain is not None:
                 self.but_remove.set_sensitive(True)
             if signal_data[0] < signal_data[1]:
@@ -368,8 +372,9 @@ class WinForm(NoModal):
                 self.but_pre.set_sensitive(True)
             else:
                 self.but_pre.set_sensitive(False)
-            self.but_del.set_sensitive(True)
-            self.but_undel.set_sensitive(True)
+            if access['delete'] and not readonly:
+                self.but_del.set_sensitive(True)
+                self.but_undel.set_sensitive(True)
         else:
             self.but_del.set_sensitive(False)
             self.but_undel.set_sensitive(False)

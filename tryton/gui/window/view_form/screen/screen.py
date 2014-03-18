@@ -46,8 +46,6 @@ class Screen(SignalEvent):
             view_ids = []
         if mode is None:
             mode = ['tree', 'form']
-        if context is None:
-            context = {}
         if views_preload is None:
             views_preload = {}
         if domain is None:
@@ -69,7 +67,6 @@ class Screen(SignalEvent):
         self.size_limit = None
         self.views_preload = views_preload
         self.model_name = model_name
-        self.context = context
         self.views = []
         self.view_ids = view_ids[:]
         self.parent = None
@@ -80,7 +77,7 @@ class Screen(SignalEvent):
             lambda: collections.defaultdict(lambda: None))
         self.tree_states_done = set()
         self.__group = None
-        self.new_group()
+        self.new_group(context or {})
         self.__current_record = None
         self.current_record = None
         self.screen_container = ScreenContainer(tab_domain)
@@ -230,6 +227,10 @@ class Screen(SignalEvent):
         self.load(ids)
         return bool(ids)
 
+    @property
+    def context(self):
+        return self.group.context
+
     def __get_group(self):
         return self.__group
 
@@ -260,9 +261,10 @@ class Screen(SignalEvent):
 
     group = property(__get_group, __set_group)
 
-    def new_group(self):
+    def new_group(self, context=None):
+        context = context if context is not None else self.context
         self.group = Group(self.model_name, {}, domain=self.domain,
-            context=self.context, readonly=self.readonly)
+            context=context, readonly=self.readonly)
 
     def _group_cleared(self, group, signal):
         for view in self.views:

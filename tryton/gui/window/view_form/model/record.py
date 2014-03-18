@@ -602,7 +602,7 @@ class Record(SignalEvent):
                     'search_count', [
                         ('resource', '=',
                             '%s,%s' % (self.model_name, self.id)),
-                        ])
+                        ], context=self.context_get())
             except RPCException:
                 return 0
         return self.attachment_count

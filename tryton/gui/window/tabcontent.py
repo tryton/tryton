@@ -43,7 +43,7 @@ class TabContent(object):
         self.widget.pack_start(self.scrolledwindow)
 
     def make_title_bar(self):
-        title = gtk.Label()
+        self.title = title = gtk.Label()
         title.modify_font(pango.FontDescription("bold 14"))
         title.set_label(self.name)
         title.set_padding(10, 4)
