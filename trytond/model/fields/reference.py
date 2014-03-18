@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from types import NoneType
-from sql import Cast, Literal, Column, Query, Expression
+from sql import Cast, Literal, Query, Expression
 from sql.functions import Substring, Position
 
 from .field import Field, SQLType
@@ -119,7 +119,8 @@ class Reference(Field):
         Target = pool.get(target)
         table, _ = tables[None]
         name, target_name = name.split('.', 1)
-        column = Column(table, name)
+        assert name == self.name
+        column = self.sql_column(table)
         target_domain = [(target_name,) + tuple(domain[1:3])
             + tuple(domain[4:])]
         if 'active' in Target._fields:

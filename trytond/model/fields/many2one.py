@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from types import NoneType
-from sql import Column, Query, Expression
+from sql import Query, Expression
 from sql.operators import Or
 
 from .field import Field, SQLType
@@ -99,8 +99,9 @@ class Many2One(Field):
         table, _ = tables[None]
         name, operator, ids = domain
         red_sql = reduce_ids(table.id, ids)
-        left = Column(table, self.left)
-        right = Column(table, self.right)
+        Target = self.get_target()
+        left = getattr(Target, self.left).sql_column(table)
+        right = getattr(Target, self.right).sql_column(table)
         cursor.execute(*table.select(left, right, where=red_sql))
         where = Or()
         for l, r in cursor.fetchall():
@@ -133,7 +134,7 @@ class Many2One(Field):
         Target = self.get_target()
         table, _ = tables[None]
         name, operator, value = domain[:3]
-        column = Column(table, name.split('.', 1)[0])
+        column = self.sql_column(table)
         if '.' not in name:
             if operator in ('child_of', 'not child_of'):
                 if Target != Model:
@@ -180,6 +181,7 @@ class Many2One(Field):
     def convert_order(self, name, tables, Model):
         if getattr(Model, 'order_%s' % name, None):
             return super(Many2One, self).convert_order(name, tables, Model)
+        assert name == self.name
 
         Target = self.get_target()
 
@@ -195,7 +197,7 @@ class Many2One(Field):
         if target_tables is None:
             target = Target.__table__()
             target_tables = {
-                None: (target, target.id == Column(table, name)),
+                None: (target, target.id == self.sql_column(table)),
                 }
             tables[name] = target_tables
         return ofield.convert_order(oname, target_tables, Target)

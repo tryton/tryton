@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from itertools import chain
-from sql import Cast, Literal, Column
+from sql import Cast, Literal
 from sql.functions import Substring, Position
 
 from .field import Field, size_validate
@@ -231,7 +231,7 @@ class One2Many(Field):
         name, operator, value = domain[:3]
 
         origin_field = Target._fields[self.field]
-        origin = Column(target, self.field)
+        origin = getattr(Target, self.field).sql_column(target)
         origin_where = None
         if origin_field._type == 'reference':
             origin_where = origin.like(Model.__name__ + ',%')

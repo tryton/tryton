@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from sql import Query, Expression
+from sql import Query, Expression, Cast, Literal, Select, CombiningQuery
 
 from ...config import CONFIG
 from .field import SQLType
@@ -30,3 +30,25 @@ class Numeric(Float):
         if db_type == 'mysql':
             return SQLType('DECIMAL', 'DECIMAL(65, 30)')
         return SQLType('NUMERIC', 'NUMERIC')
+
+    def sql_column(self, table):
+        column = super(Numeric, self).sql_column(table)
+        db_type = CONFIG['db_type']
+        if db_type == 'sqlite':
+            # Must be casted as Decimal is stored as bytes
+            column = Cast(column, self.sql_type().base)
+        return column
+
+    def _domain_value(self, operator, value):
+        value = super(Numeric, self)._domain_value(operator, value)
+        db_type = CONFIG['db_type']
+        if db_type == 'sqlite':
+            if isinstance(value, (Select, CombiningQuery)):
+                return value
+            # Must be casted as Decimal is adapted to bytes
+            type_ = self.sql_type().base
+            if operator in ('in', 'not in'):
+                return [Cast(Literal(v), type_) for v in value]
+            else:
+                return Cast(Literal(value), type_)
+        return value

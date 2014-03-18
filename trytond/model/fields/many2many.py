@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from itertools import chain
-from sql import Cast, Literal, Column
+from sql import Cast, Literal
 from sql.functions import Substring, Position
 
 from .field import Field, size_validate
@@ -269,7 +269,7 @@ class Many2Many(Field):
         name, operator, value = domain[:3]
 
         origin_field = Relation._fields[self.origin]
-        origin = Column(relation, self.origin)
+        origin = getattr(Relation, self.origin).sql_column(relation)
         origin_where = None
         if origin_field._type == 'reference':
             origin_where = origin.like(Model.__name__ + ',%')
@@ -277,13 +277,13 @@ class Many2Many(Field):
                     Position(',', origin) + Literal(1)),
                 Relation.id.sql_type().base)
 
+        target = getattr(Relation, self.target).sql_column(relation)
         if '.' not in name:
             if operator in ('child_of', 'not child_of'):
                 if Target != Model:
                     query = Target.search([(domain[3], 'child_of', value)],
                         order=[], query=True)
-                    where = (Column(relation, self.target).in_(query)
-                        & (Column(relation, self.origin) != None))
+                    where = (target.in_(query) & (origin != None))
                     if origin_where:
                         where &= origin_where
                     query = relation.select(origin, where=where)
@@ -326,7 +326,7 @@ class Many2Many(Field):
             _, target_name = name.split('.', 1)
         target_domain = [(target_name,) + tuple(domain[1:])]
         query = Target.search(target_domain, order=[], query=True)
-        where = Column(relation, self.target).in_(query)
+        where = target.in_(query)
         if origin_where:
             where &= origin_where
         query = relation.select(origin, where=where)

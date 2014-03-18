@@ -173,6 +173,10 @@ could be updated to add new joins)::
     Return the namedtuple('SQLType', 'base type') which defines the SQL type to
     use for creation and casting.
 
+.. method:: Field.sql_column(table)
+
+    Return the Column instance based on table.
+
 Default value
 =============
 

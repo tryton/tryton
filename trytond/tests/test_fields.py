@@ -812,6 +812,19 @@ class FieldsTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
+    def test0041numeric(self):
+        'Test numeric search cast'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            numeric1, numeric2 = self.numeric.create([{
+                        'numeric': Decimal('1.1'),
+                        }, {
+                        'numeric': Decimal('100.0'),
+                        }])
+            numerics = self.numeric.search([
+                    ('numeric', '<', Decimal('5')),
+                    ])
+            self.assertEqual(numerics, [numeric1])
+
     def test0050char(self):
         'Test Char'
         with Transaction().start(DB_NAME, USER,

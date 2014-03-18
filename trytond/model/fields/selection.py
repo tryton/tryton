@@ -2,7 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 import warnings
 
-from sql import Column
 from sql.conditionals import Case
 
 from ...config import CONFIG
@@ -54,11 +53,12 @@ class Selection(Field):
         if getattr(Model, 'order_%s' % name, None):
             return super(Selection, self).convert_order(name, tables, Model)
 
+        assert name == self.name
         table, _ = tables[None]
         selections = Model.fields_get([name])[name]['selection']
         if not isinstance(selections, (tuple, list)):
             selections = getattr(Model, selections)()
-        column = Column(table, name)
+        column = self.sql_column(table)
         whens = []
         for key, value in selections:
             whens.append((column == key, value))
