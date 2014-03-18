@@ -304,6 +304,62 @@ class ModelSQL(ModelStorage):
                         [[id_, Now(), user] for id_ in sub_ids]))
 
     @classmethod
+    def restore_history(cls, ids, datetime):
+        'Restore record ids from history at the date time'
+        if not cls._history:
+            return
+        transaction = Transaction()
+        cursor = transaction.cursor
+        in_max = cursor.IN_MAX
+        table = cls.__table__()
+        history = cls.__table_history__()
+        columns = []
+        hcolumns = []
+        for fname, field in sorted(cls._fields.iteritems()):
+            if hasattr(field, 'set'):
+                continue
+            columns.append(Column(table, fname))
+            if fname == 'write_uid':
+                hcolumns.append(Literal(transaction.user))
+            elif fname == 'write_date':
+                hcolumns.append(Now())
+            else:
+                hcolumns.append(Column(history, fname))
+
+        to_delete = []
+        to_update = []
+        for id_ in ids:
+            column_datetime = Coalesce(history.write_date, history.create_date)
+            hwhere = (column_datetime <= datetime) & (history.id == id_)
+            horder = column_datetime.desc
+            cursor.execute(*history.select(*hcolumns,
+                    where=hwhere, order_by=horder, limit=1))
+            values = cursor.fetchone()
+            if not values:
+                to_delete.append(id_)
+            else:
+                to_update.append(id_)
+                values = list(values)
+                cursor.execute(*table.update(columns, values,
+                        where=table.id == id_))
+                rowcount = cursor.rowcount
+                if rowcount == -1 or rowcount is None:
+                    cursor.execute(*table.select(table.id,
+                            where=table.id == id_))
+                    rowcount = len(cursor.fetchall())
+                if rowcount < 1:
+                    cursor.execute(*table.insert(columns, [values]))
+
+        if to_delete:
+            for i in range(0, len(to_delete), in_max):
+                sub_ids = to_delete[i:i + in_max]
+                where = reduce_ids(table.id, sub_ids)
+                cursor.execute(*table.delete(where=where))
+            cls.__insert_history(to_delete, True)
+        if to_update:
+            cls.__insert_history(to_update)
+
+    @classmethod
     def __check_timestamp(cls, ids):
         transaction = Transaction()
         cursor = transaction.cursor

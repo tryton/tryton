@@ -1,3 +1,4 @@
+* Add restore_history to ModelSQL
 * Add history revisions
 * Add the multi selection widget
 * Add index to one2many's on_change

@@ -406,6 +406,15 @@ Class methods:
     Return a sorted list of all revisions for ids. The list is composed of
     the date, id and username of the revision.
 
+.. classmethod:: ModelSQL.restore_history(ids, datetime)
+
+    Restore the record ids from history at the specified date time.
+    Restoring a record will still generate an entry in the history table.
+
+    .. warning::
+        No access rights are verified and the records are not validated.
+    ..
+
 .. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
     Return a list of records that match the :ref:`domain <topics-domain>` or

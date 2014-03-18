@@ -143,6 +143,36 @@ class HistoryTestCase(unittest.TestCase):
                     (first, history_id, u'Administrator'),
                     ])
 
+    def test0040restore_history(self):
+        'Test restore history'
+        History = POOL.get('test.history')
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(value=1)
+            history.save()
+            history_id = history.id
+            first = history.create_date
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(history_id)
+            history.value = 2
+            history.save()
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            History.restore_history([history_id], first)
+            history = History(history_id)
+            self.assertEqual(history.value, 1)
+
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            History.restore_history([history_id], datetime.datetime.min)
+            self.assertRaises(UserError, History.read, [history_id])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(HistoryTestCase)
