@@ -24,7 +24,7 @@ from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
 from tryton.jsonrpc import JSONEncoder
 from tryton.common.domain_parser import DomainParser
 from tryton.common import RPCExecute, RPCException, MODELACCESS, \
-    node_attributes, sur
+    node_attributes, sur, RPCContextReload
 from tryton.action import Action
 import tryton.rpc as rpc
 
@@ -919,6 +919,11 @@ class Screen(SignalEvent):
         elif action.startswith('switch'):
             _, view_type = action.split(None, 1)
             self.switch_view(view_type=view_type)
+        elif action == 'reload menu':
+            from tryton.gui import Main
+            RPCContextReload(Main.get_main().sig_win_menu)
+        elif action == 'reload context':
+            RPCContextReload()
 
     def get_url(self):
         query_string = []
