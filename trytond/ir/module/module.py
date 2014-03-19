@@ -452,6 +452,9 @@ class ModuleConfigWizard(Wizard):
             return 'other'
         return 'done'
 
+    def end(self):
+        return 'reload menu'
+
 
 class ModuleInstallUpgradeStart(ModelView):
     'Module Install Upgrade Start'
