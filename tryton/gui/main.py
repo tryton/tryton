@@ -315,23 +315,29 @@ class Main(object):
 
         global_search_completion.connect('match-selected', match_selected)
 
-        def update(widget, search_text):
-            if search_text != widget.get_text().decode('utf-8'):
+        def update(widget, search_text, callback=None):
+            def end():
+                if callback:
+                    callback()
                 return False
+            if search_text != widget.get_text().decode('utf-8'):
+                return end()
             gmodel = global_search_completion.get_model()
             if not search_text or not gmodel:
                 gmodel.clear()
                 gmodel.search_text = search_text
-                return False
+                return end()
             if getattr(gmodel, 'search_text', None) == search_text:
-                return False
+                return end()
 
-            def callback(result):
+            def set_result(result):
                 try:
                     result = result()
                 except RPCException:
                     result = []
                 if search_text != widget.get_text().decode('utf-8'):
+                    if callback:
+                        callback()
                     return False
                 gmodel.clear()
                 for r in result:
@@ -350,10 +356,11 @@ class Main(object):
                 gmodel.search_text = search_text
                 # Force display of popup
                 widget.emit('changed')
+                end()
 
             RPCExecute('model', 'ir.model', 'global_search',
                     search_text, CONFIG['client.limit'],
-                    self.menu_screen.model_name, callback=callback)
+                    self.menu_screen.model_name, callback=set_result)
             return False
 
         def changed(widget):
@@ -361,13 +368,14 @@ class Main(object):
             gobject.timeout_add(300, update, widget, search_text)
 
         def activate(widget):
+            def message():
+                gmodel = global_search_completion.get_model()
+                if not len(gmodel):
+                    common.message(_('No result found.'))
+                else:
+                    widget.emit('changed')
             search_text = widget.get_text().decode('utf-8')
-            update(widget, search_text)
-            gmodel = global_search_completion.get_model()
-            if not len(gmodel):
-                common.message(_('No result found.'))
-            else:
-                widget.emit('changed')
+            update(widget, search_text, message)
 
         self.global_search_entry.connect('changed', changed)
         self.global_search_entry.connect('activate', activate)
