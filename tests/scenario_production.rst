@@ -183,14 +183,14 @@ Make a production::
     >>> production.reload()
     >>> all(i.state == 'done' for i in production.inputs)
     True
-    >>> all(i.effective_date == today for i in production.inputs)
-    True
+    >>> len(set(i.effective_date == today for i in production.inputs))
+    1
     >>> Production.done([production.id], config.context)
     >>> production.reload()
     >>> output, = production.outputs
     >>> output.state
     u'done'
-    >>> output.effective_date == today
+    >>> output.effective_date == production.effective_date
     True
     >>> config._context['locations'] = [storage.id]
     >>> product.reload()
