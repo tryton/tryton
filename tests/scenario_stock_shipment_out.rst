@@ -161,12 +161,12 @@ Assign the shipment now::
     [u'assigned', u'draft']
     >>> effective_dates = [m.effective_date for m in
     ...     shipment_out.inventory_moves]
-    >>> effective_dates == [today, None]
-    True
+    >>> len(set(effective_dates))
+    2
     >>> planned_dates = [m.planned_date for m in
     ...     shipment_out.outgoing_moves]
-    >>> planned_dates == [today, today]
-    True
+    >>> len(set(planned_dates))
+    1
 
 Delete the draft move, assign and pack shipment::
 
@@ -203,8 +203,8 @@ Set the state as Done::
     True
     >>> effective_dates = [m.effective_date for m in
     ...     shipment_out.outgoing_moves]
-    >>> effective_dates == [today, today]
-    True
+    >>> len(set(effective_dates))
+    1
     >>> len(shipment_out.outgoing_moves)
     2
     >>> len(shipment_out.inventory_moves)
