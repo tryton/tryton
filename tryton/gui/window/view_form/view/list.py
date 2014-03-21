@@ -781,12 +781,14 @@ class ViewList(ParserView):
             self.widget_tree.set_model(self.store)
             # __select_changed resets current_record to None
             self.screen.current_record = current_record
+            if current_record:
+                selection = self.widget_tree.get_selection()
+                path = self.store.on_get_path(current_record)
+                selection.select_path(path)
         self.reload = False
         if not current_record:
-            # Should find a simpler solution to do something like
-            #self.widget.set_cursor(None,None,False)
-            if self.store:
-                self.widget_tree.set_model(self.store)
+            selection = self.widget_tree.get_selection()
+            selection.unselect_all()
         self.widget_tree.queue_draw()
         if self.editable:
             self.set_state()
