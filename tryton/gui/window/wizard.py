@@ -361,11 +361,9 @@ class WizardDialog(Wizard, NoModal):
         super(WizardDialog, self).end(callback=end_callback)
 
     def close(self, widget, event=None):
+        widget.emit_stop_by_name('close')
         if self.end_state in self.states:
-            self.state = self.end_state
-            self.process()
-        else:
-            widget.emit_stop_by_name('close')
+            self.states[self.end_state].clicked()
         return True
 
     def show(self):
