@@ -42,7 +42,8 @@ class Configuration:
             prop, = properties
             return Decimal(prop.value.split(',')[1])
 
-    def set_default_credit_limit_amount(self, ids, name, value):
+    @classmethod
+    def set_default_credit_limit_amount(cls, configurations, name, value):
         pool = Pool()
         Property = pool.get('ir.property')
         ModelField = pool.get('ir.model.field')
