@@ -598,9 +598,9 @@ class Screen(SignalEvent):
         return True
 
     def copy(self):
-        res_ids = self.sel_ids_get()
+        ids = [r.id for r in self.selected_records]
         try:
-            new_ids = RPCExecute('model', self.model_name, 'copy', res_ids, {},
+            new_ids = RPCExecute('model', self.model_name, 'copy', ids, {},
                 context=self.context)
         except RPCException:
             return
