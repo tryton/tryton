@@ -1789,6 +1789,7 @@
             }
         },
         get: function(record) {
+            // TODO force parent
             if (record._values[this.name] &&
                 record._values[this.name][0] &&
                 record._values[this.name][1] >= -1) {
@@ -1823,6 +1824,7 @@
                     this, record, value, force_change);
         },
         set: function(record, value) {
+            // TODO force parent
             if (!value) {
                 record._values[this.name] = this._default;
                 return;
