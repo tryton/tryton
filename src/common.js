@@ -682,7 +682,8 @@
                 var def_operator = this.default_operator(field);
                 if ((def_operator == operator.trim()) ||
                         (operator.contains(def_operator) &&
-                         operator.contains('not'))) {
+                         (operator.contains('not') ||
+                          operator.contains('!')))) {
                     operator = operator.replace(def_operator, '')
                         .replace('not', '!').trim();
                 }

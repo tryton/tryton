@@ -1084,11 +1084,18 @@
                 ['female', 'Female']
             ]
         };
-        [
+        var field_with_empty = jQuery.extend({}, field);
+        field_with_empty.selection = jQuery.extend(
+                [['', '']], field_with_empty.selection);
+        var tests = [
         ['Male', 'male'],
         ['male', 'male'],
-        ['test', 'test']
-        ].forEach(test_func, field);
+        ['test', 'test'],
+        [null, null],
+        ['', '']
+        ];
+        tests.forEach(test_func, field);
+        tests.forEach(test_func, field_with_empty);
 
         field = {
             'type': 'datetime',
@@ -1169,6 +1176,8 @@
             [['name', 'in', ['John', 'Jane']]]],
         [[['Name', '!', ['John', 'Jane']]],
             [['name', 'not in', ['John', 'Jane']]]],
+        [[['Selection', null, null]], [['selection', '=', null]]],
+        [[['Selection', null, '']], [['selection', '=', '']]],
         [[['Selection', null, ['Male', 'Female']]],
             [['selection', 'in', ['male', 'female']]]],
         [[['Integer', null, null]], [['integer', '=', null]]],
@@ -1270,13 +1279,18 @@
             'type': 'datetime',
             'format': '"%H:%M:%S"'
         };
-        [
+        var field_with_empty = jQuery.extend({}, field);
+        field_with_empty.selection = jQuery.extend(
+                [['', '']], field_with_empty.selection);
+        var tests = [
         [Sao.Date(2002, 11, 4), '2002-12-04'],
         [Sao.DateTime(2002, 11, 4), '2002-12-04'],
         [Sao.DateTime(2002, 11, 4, 12, 30), '"2002-12-04 12:30:00"'],
         [false, ''],
         [null, '']
-        ].forEach(test_func, field);
+        ];
+        tests.forEach(test_func, field);
+        tests.forEach(test_func, field_with_empty);
 
         field = {
             'type': 'date'
@@ -1311,6 +1325,14 @@
             'date': {
                 'string': 'Date',
                 'type': 'date'
+            },
+            'selection': {
+                'string': 'Selection',
+                'type': 'selection',
+                'selection': [
+                    ['male', 'Male'],
+                    ['femal', 'Femal']
+                ]
             },
             'reference': {
                 'string': 'Reference',
@@ -1356,6 +1378,11 @@
         [[], ''],
         [[['surname', 'ilike', '%Doe%']], '"(Sur)Name": Doe'],
         //[[['date', '>=', new Date(2012, 10, 24)]], 'Date: >=10/24/2012'],
+        [[['selection', '=', '']], 'Selection: '],
+        [[['selection', '=', null]], 'Selection: '],
+        [[['selection', '!=', '']], 'Selection: !""'],
+        [[['selection', '=', 'male']], 'Selection: Male'],
+        [[['selection', '!=', 'male']], 'Selection: !Male'],
         [[['reference', 'ilike', '%foo%']], 'Reference: foo'],
         [[['reference', 'ilike', '%bar%', 'spam']], 'Reference: Spam,bar'],
         [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar']
