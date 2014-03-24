@@ -806,6 +806,12 @@ class ReferenceField(Field):
             force_change=force_change)
 
     def set(self, record, value):
+        if record.parent_name == self.name:
+            if record.parent:
+                value = '%s,%s' % (record.group.parent.model_name,
+                    record.parent.id)
+            else:
+                value = None
         if not value:
             record.value[self.name] = self._default
             return
@@ -832,7 +838,7 @@ class ReferenceField(Field):
         elif ref_model:
             rec_name = ''
         else:
-            rec_name = ref_id
+            rec_name = str(ref_id)
         record.value[self.name] = ref_model, ref_id
         record.value[self.name + '.rec_name'] = rec_name
 
