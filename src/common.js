@@ -305,6 +305,11 @@
             return;
         }
         var domain = field.get_domain(record);
+        if (field.description.type == 'reference') {
+            // The domain on reference field is not only based on the selection
+            // so the selection can not be filtered.
+            domain = [];
+        }
         if (!('relation' in this.attributes)) {
             var change_with = this.attributes.selection_change_with || [];
             var key = [];
