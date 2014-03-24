@@ -361,13 +361,18 @@ def test_convert_selection():
             ('female', 'Female'),
             ],
         }
+    field_with_empty = field.copy()
+    field_with_empty['selection'] = (field_with_empty['selection']
+        + [('', '')])
     for value, result in (
             ('Male', 'male'),
             ('male', 'male'),
             ('test', 'test'),
             (None, None),
+            ('', ''),
             ):
         assert convert_value(field, value) == result
+        assert convert_value(field_with_empty, value) == result
 
 
 def test_convert_datetime():
@@ -553,13 +558,18 @@ def test_format_selection():
             ('female', 'Female'),
             ],
         }
+    field_with_empty = field.copy()
+    field_with_empty['selection'] = (field_with_empty['selection']
+        + [('', '')])
     for value, result in (
             ('male', 'Male'),
             ('test', 'test'),
             (False, ''),
             (None, ''),
+            ('', ''),
             ):
         assert format_value(field, value) == result
+        assert format_value(field_with_empty, value) == result
 
 
 def test_format_datetime():
@@ -672,6 +682,18 @@ def test_complete_selection():
             (['male', 'f'], [['male', 'female']]),
             ):
         assert list(complete_value(field, value)) == result
+
+    field_with_empty = field.copy()
+    field_with_empty['selection'] = (field_with_empty['selection']
+        + [('', '')])
+    for value, result in (
+            ('m', ['male']),
+            ('test', []),
+            ('', ['male', 'female', '']),
+            (None, ['male', 'female', '']),
+            (['male', 'f'], [['male', 'female']]),
+            ):
+        assert list(complete_value(field_with_empty, value)) == result
 
 
 def parenthesize(tokens):
@@ -852,7 +874,8 @@ class DomainParser(object):
             def_operator = default_operator(field)
             if (def_operator == operator.strip()
                     or (def_operator in operator
-                        and 'not' in operator)):
+                        and ('not' in operator
+                            or '!' in operator))):
                 operator = operator.rstrip(def_operator
                     ).replace('not', '!').strip()
             if operator.endswith('in'):
@@ -1108,6 +1131,15 @@ def test_string():
                 'string': 'Date',
                 'type': 'date',
                 },
+            'selection': {
+                'string': 'Selection',
+                'type': 'selection',
+                'selection': [
+                    ('male', 'Male'),
+                    ('female', 'Female'),
+                    ('', ''),
+                    ],
+                },
             'reference': {
                 'string': 'Reference',
                 'type': 'reference',
@@ -1153,6 +1185,11 @@ def test_string():
     assert dom.string([('surname', 'ilike', '%Doe%')]) == '"(Sur)Name": Doe'
     assert dom.string([('date', '>=', datetime.date(2012, 10, 24))]) == \
         'Date: >=10/24/2012'
+    assert dom.string([('selection', '=', '')]) == 'Selection: '
+    assert dom.string([('selection', '=', None)]) == 'Selection: '
+    assert dom.string([('selection', '!=', '')]) == 'Selection: !""'
+    assert dom.string([('selection', '=', 'male')]) == 'Selection: Male'
+    assert dom.string([('selection', '!=', 'male')]) == 'Selection: !Male'
     assert dom.string([('reference', 'ilike', '%foo%')]) == \
         'Reference: foo'
     assert dom.string([('reference.rec_name', 'ilike', '%bar%', 'spam')]) == \
@@ -1302,6 +1339,12 @@ def test_parse_clause():
         ]
     assert rlist(dom.parse_clause([('Name', '!', ['John', 'Jane'])])) == [
         ('name', 'not in', ['John', 'Jane']),
+        ]
+    assert rlist(dom.parse_clause([('Selection', None, None)])) == [
+        ('selection', '=', None),
+        ]
+    assert rlist(dom.parse_clause([('Selection', None, '')])) == [
+        ('selection', '=', ''),
         ]
     assert rlist(dom.parse_clause([('Selection', None, ['Male', 'Female'])])) \
         == [

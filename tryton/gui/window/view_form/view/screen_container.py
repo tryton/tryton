@@ -61,6 +61,8 @@ class Selection(gtk.ScrolledWindow):
     def get_value(self):
         values = []
         model, paths = self.treeview.get_selection().get_selected_rows()
+        if not paths:
+            return
         for path in paths:
             iter_ = model.get_iter(path)
             values.append(model.get_value(iter_, 0))
@@ -100,7 +102,6 @@ class ScreenContainer(object):
         self.completion = gtk.EntryCompletion()
         self.completion.set_model(gtk.ListStore(str))
         self.completion.set_text_column(0)
-        self.completion.props.inline_completion = True
         self.completion.props.inline_selection = True
         self.completion.props.popup_set_width = False
         self.completion.set_match_func(lambda *a: True)
@@ -409,12 +410,12 @@ class ScreenContainer(object):
             text = ''
             for label, entry in self.search_table.fields:
                 if isinstance(entry, gtk.ComboBox):
-                    value = quote(entry.get_active_text())
+                    value = quote(entry.get_active_text()) or None
                 elif isinstance(entry, (Dates, Selection)):
                     value = entry.get_value()
                 else:
-                    value = quote(entry.get_text())
-                if value:
+                    value = quote(entry.get_text()) or None
+                if value is not None:
                     text += quote(label) + ': ' + value + ' '
             self.set_text(text)
             self.last_search_text = self.get_text()
