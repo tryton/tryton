@@ -246,7 +246,6 @@ class Many2Many(WidgetInterface):
         return True
 
     def set_value(self, record, field):
-        self.screen.save_tree_state()
         self.screen.current_view.set_value()
         return True
 
