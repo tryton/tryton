@@ -255,7 +255,7 @@ class TimeField(Field):
                 value = datetime.time(*time.strptime(value,
                         self.time_format(record))[3:6])
             except ValueError:
-                value = None
+                value = self._default
         super(TimeField, self).set_client(record, value,
             force_change=force_change)
 
