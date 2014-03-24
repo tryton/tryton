@@ -150,7 +150,7 @@ class Group(SignalEvent, list):
 
     def load_fields(self, fields):
         for name, attr in fields.iteritems():
-            field = Field(attr['type'])
+            field = Field.get_field(attr['type'])
             attr['name'] = name
             self.fields[name] = field(attr)
             if isinstance(self.fields[name], O2MField) \

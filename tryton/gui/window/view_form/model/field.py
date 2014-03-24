@@ -24,15 +24,11 @@ class Field(object):
     set: save the value from the server
     set_client: save the value from the widget
     '''
+    _default = None
 
-    def __new__(cls, ctype):
-        klass = TYPES.get(ctype, CharField)
-        return klass
-
-
-class CharField(object):
-
-    _default = ''
+    @staticmethod
+    def get_field(ctype):
+        return TYPES.get(ctype, CharField)
 
     def __init__(self, attrs):
         self.attrs = attrs
@@ -129,7 +125,7 @@ class CharField(object):
         record.value[self.name] = value
 
     def get(self, record):
-        return record.value.get(self.name) or self._default
+        return record.value.get(self.name, self._default)
 
     def get_eval(self, record):
         return self.get(record)
@@ -152,7 +148,7 @@ class CharField(object):
             record.signal('record-changed')
 
     def get_client(self, record):
-        return record.value.get(self.name) or self._default
+        return self.get(record)
 
     def set_default(self, record, value):
         self.set(record, value)
@@ -186,7 +182,14 @@ class CharField(object):
         return {}
 
 
-class SelectionField(CharField):
+class CharField(Field):
+    _default = ''
+
+    def get(self, record):
+        return super(CharField, self).get(record) or self._default
+
+
+class SelectionField(Field):
 
     _default = None
 
@@ -194,7 +197,7 @@ class SelectionField(CharField):
         return record.value.get(self.name)
 
 
-class DateTimeField(CharField):
+class DateTimeField(Field):
 
     _default = None
 
@@ -221,7 +224,7 @@ class DateTimeField(CharField):
         return record.expr_eval(self.attrs['format'])
 
 
-class DateField(CharField):
+class DateField(Field):
 
     _default = None
 
@@ -242,7 +245,7 @@ class DateField(CharField):
         return ''
 
 
-class TimeField(CharField):
+class TimeField(Field):
 
     _default = None
 
@@ -266,7 +269,7 @@ class TimeField(CharField):
         return record.expr_eval(self.attrs['format'])
 
 
-class FloatField(CharField):
+class FloatField(Field):
     _default = None
     default_digits = (16, 2)
 
@@ -346,7 +349,7 @@ class IntegerField(FloatField):
         return super(IntegerField, self).get_client(record, factor=int(factor))
 
 
-class BooleanField(CharField):
+class BooleanField(Field):
 
     _default = False
 
@@ -362,7 +365,7 @@ class BooleanField(CharField):
         return bool(record.value.get(self.name))
 
 
-class M2OField(CharField):
+class M2OField(Field):
     '''
     internal = (id, name)
     '''
@@ -451,7 +454,7 @@ class O2OField(M2OField):
     pass
 
 
-class O2MField(CharField):
+class O2MField(Field):
     '''
     internal = Group of the related objects
     '''
@@ -755,7 +758,7 @@ class M2MField(O2MField):
         return self.get_eval(record)
 
 
-class ReferenceField(CharField):
+class ReferenceField(Field):
 
     _default = None
 
@@ -834,12 +837,12 @@ class ReferenceField(CharField):
         record.value[self.name + '.rec_name'] = rec_name
 
 
-class BinaryField(CharField):
+class BinaryField(Field):
 
     _default = None
 
     def get(self, record):
-        result = record.value.get(self.name) or self._default
+        result = record.value.get(self.name, self._default)
         if isinstance(result, basestring):
             try:
                 with open(result, 'rb') as fp:
@@ -887,7 +890,7 @@ class BinaryField(CharField):
         return self.get(record)
 
 
-class DictField(CharField):
+class DictField(Field):
 
     _default = {}
 
