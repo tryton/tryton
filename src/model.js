@@ -942,7 +942,11 @@
             record._values[this.name] = value;
         },
         get: function(record) {
-            return record._values[this.name] || this._default;
+            var value = record._values[this.name];
+            if (value === undefined) {
+                value = this._default;
+            }
+            return value;
         },
         set_client: function(record, value, force_change) {
             var previous_value = this.get(record);
@@ -1149,7 +1153,10 @@
     });
 
     Sao.field.Char = Sao.class_(Sao.field.Field, {
-        _default: ''
+        _default: '',
+        get: function(record) {
+            return Sao.field.Char._super.get(record) || this._default;
+        }
     });
 
     Sao.field.Selection = Sao.class_(Sao.field.Field, {
@@ -1236,13 +1243,6 @@
 
     Sao.field.Number = Sao.class_(Sao.field.Field, {
         _default: null,
-        get: function(record) {
-            if (record._values[this.name] === undefined) {
-                return this._default;
-            } else {
-                return record._values[this.name];
-            }
-        },
         digits: function(record) {
             var digits = [];
             var default_ = [16, 2];
@@ -1355,10 +1355,7 @@
     Sao.field.Many2One = Sao.class_(Sao.field.Field, {
         _default: null,
         get: function(record) {
-            var value = record._values[this.name];
-            if (value === undefined) {
-                value = this._default;
-            }
+            var value = Sao.field.Many2One._super.get.call(this, record);
             // TODO force parent
             return value;
         },
