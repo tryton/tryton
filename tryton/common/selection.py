@@ -49,6 +49,10 @@ class SelectionMixin(object):
             return
 
         domain = field.domain_get(record)
+        if field.attrs['type'] == 'reference':
+            # The domain on reference field is not only based on the selection
+            # so the selection can not be filtered.
+            domain = []
         if 'relation' not in self.attrs:
             change_with = self.attrs.get('selection_change_with') or []
             args = record._get_on_change_args(change_with)
