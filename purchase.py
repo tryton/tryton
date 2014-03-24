@@ -1851,7 +1851,7 @@ class HandleShipmentException(Wizard):
                 if move.state == 'cancel' and move not in skip:
                     moves.append(move.id)
         return {
-            'to_recreate': moves,
+            'recreate_moves': moves,
             'domain_moves': moves,
             }
 
@@ -1921,7 +1921,7 @@ class HandleInvoiceException(Wizard):
             if invoice.state == 'cancel' and invoice not in skip:
                 invoices.append(invoice.id)
         return {
-            'to_recreate': invoices,
+            'recreate_invoices': invoices,
             'domain_invoices': invoices,
             }
 
