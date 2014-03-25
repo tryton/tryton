@@ -99,7 +99,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="product.uom" id="uom_pound">
             <field name="name">Pound</field>
-            <field name="symbol">lbs</field>
+            <field name="symbol">lb</field>
             <field name="category" ref="uom_cat_weight"/>
             <field name="factor" eval="0.45359237"/>
             <field name="rate" eval="round(1.0 / 0.45359237, 12)"/>
