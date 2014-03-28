@@ -221,3 +221,48 @@ Create invoice with alternate currency::
     Decimal('40.00')
     >>> invoice.total_amount
     Decimal('460.00')
+
+Create negative tax::
+
+    >>> negative_tax = Tax()
+    >>> negative_tax.name = 'Negative Tax'
+    >>> negative_tax.description = 'Negative Tax'
+    >>> negative_tax.type = 'percentage'
+    >>> negative_tax.rate = Decimal('-.10')
+    >>> negative_tax.invoice_account = account_tax
+    >>> negative_tax.credit_note_account = account_tax
+    >>> negative_tax.invoice_base_code = invoice_base_code
+    >>> negative_tax.invoice_tax_code = invoice_tax_code
+    >>> negative_tax.credit_note_base_code = credit_note_base_code
+    >>> negative_tax.credit_note_tax_code = credit_note_tax_code
+    >>> negative_tax.save()
+
+Create invoice with alternate currency and negative taxes::
+
+    >>> invoice = Invoice()
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> invoice.currency = eur
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 5
+    >>> _ = line.taxes.pop(0)
+    >>> line.taxes.append(negative_tax)
+    >>> line.amount
+    Decimal('400.00')
+    >>> invoice.untaxed_amount
+    Decimal('400.00')
+    >>> invoice.tax_amount
+    Decimal('-40.00')
+    >>> invoice.total_amount
+    Decimal('360.00')
+    >>> invoice.click('post')
+    >>> invoice.state
+    u'posted'
+    >>> invoice.untaxed_amount
+    Decimal('400.00')
+    >>> invoice.tax_amount
+    Decimal('-40.00')
+    >>> invoice.total_amount
+    Decimal('360.00')
+
