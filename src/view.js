@@ -255,6 +255,7 @@
         },
         construct: function(selected, expanded) {
             this.rows = [];
+            this.tbody.empty();
             var add_row = function(record, pos, group) {
                 var RowBuilder;
                 if (this.editable) {
