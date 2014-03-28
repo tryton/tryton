@@ -151,8 +151,8 @@
             return record;
         };
         array.add = function(record, position) {
-            if (position === undefined) {
-                position = -1;
+            if ((position === undefined) || (position == -1)) {
+                position = this.length;
             }
             if (record.group != this) {
                 record.group = this;
