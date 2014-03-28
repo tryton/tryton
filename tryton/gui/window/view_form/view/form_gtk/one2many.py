@@ -178,6 +178,7 @@ class One2Many(WidgetInterface):
             view_ids=attrs.get('view_ids', '').split(','),
             views_preload=attrs.get('views', {}),
             row_activate=self._on_activate,
+            readonly=self.attrs.get('readonly', False),
             exclude_field=attrs.get('relation_field', None))
         self.screen.pre_validate = bool(int(attrs.get('pre_validate', 0)))
         self.screen.signal_connect(self, 'record-message', self._sig_label)

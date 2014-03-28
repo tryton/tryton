@@ -150,10 +150,12 @@ class WidgetInterface(object):
             self._readonly_set(self.attrs.get('readonly', True))
             self.invisible_set(self.attrs.get('invisible', False))
             return
-        self._readonly_set(self.attrs.get('readonly',
-            field.get_state_attrs(record).get('readonly', False)))
-        if self.attrs.get('readonly',
-                field.get_state_attrs(record).get('readonly', False)):
+        readonly = self.attrs.get('readonly',
+            field.get_state_attrs(record).get('readonly', False))
+        if self.view.screen.readonly:
+            readonly = True
+        self._readonly_set(readonly)
+        if readonly:
             self.color_set('readonly')
         elif not field.get_state_attrs(record).get('valid', True):
             self.color_set('invalid')
