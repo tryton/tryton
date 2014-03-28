@@ -8,6 +8,8 @@
     Sao.common.BACKSPACE_KEYCODE = 8;
     Sao.common.TAB_KEYCODE = 9;
     Sao.common.RETURN_KEYCODE = 13;
+    Sao.common.UP_KEYCODE = 38;
+    Sao.common.DOWN_KEYCODE = 40;
     Sao.common.DELETE_KEYCODE = 46;
     Sao.common.F2_KEYCODE = 113;
     Sao.common.F3_KEYCODE = 114;
