@@ -90,7 +90,11 @@ Create stock user::
     >>> stock_user.login = 'stock'
     >>> stock_user.main_company = company
     >>> stock_group, = Group.find([('name', '=', 'Stock')])
+    >>> stock_force_group, = Group.find([
+    ...     ('name', '=', 'Stock Force Assignment'),
+    ...     ])
     >>> stock_user.groups.append(stock_group)
+    >>> stock_user.groups.append(stock_force_group)
     >>> stock_user.save()
 
 Create fiscal year::
@@ -276,3 +280,126 @@ Receive 100 products::
     150.0
     >>> move.unit_price == move.cost_price
     True
+
+The purchase is now waiting for this new drop shipment::
+
+    >>> config.user = purchase_user.id
+    >>> purchase.reload()
+    >>> purchase.shipment_state
+    u'waiting'
+
+Let's cancel it and handle the problem from the sale order::
+
+    >>> config.user = stock_user.id
+    >>> shipment.click('cancel')
+
+    >>> config.user = purchase_user.id
+    >>> purchase.reload()
+    >>> purchase.shipment_state
+    u'exception'
+    >>> handle_exception = Wizard('purchase.handle.shipment.exception',
+    ...     [purchase])
+    >>> _ = handle_exception.form.recreate_moves.pop()
+    >>> handle_exception.execute('handle')
+    >>> purchase.reload()
+    >>> purchase.shipment_state
+    u'received'
+
+    >>> config.user = sale_user.id
+    >>> sale.shipment_state
+    u'exception'
+    >>> handle_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> handle_exception.execute('handle')
+    >>> sale.reload()
+    >>> sale.shipment_state
+    u'waiting'
+
+The sale has created a new outgoing shipment::
+
+    >>> shipment, = sale.shipments
+    >>> move, = shipment.outgoing_moves
+    >>> move.quantity
+    150.0
+
+Cancelling the workflow on the purchase step::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 125
+    >>> sale.save()
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+    >>> sale.shipments
+    []
+    >>> sale.drop_shipments
+    []
+
+    >>> config.user = purchase_user.id
+    >>> purchase_request, = PurchaseRequest.find([('purchase_line', '=', None)])
+    >>> purchase_request.quantity
+    125.0
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [purchase_request])
+    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> purchase.click('cancel')
+
+The sale just created a new outgoing shipment for the sale::
+
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> shipment, = sale.shipments
+
+If the shipment is cancelled then the shipement state of the sale will be
+considered as 'sent'::
+
+    >>> config.user = stock_user.id
+    >>> shipment.click('cancel')
+    >>> config.user = sale_user.id
+    >>> sale.shipment_state
+    u'exception'
+
+    >>> handle_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> _ = handle_exception.form.recreate_moves.pop()
+    >>> handle_exception.execute('handle')
+    >>> sale.reload()
+    >>> sale.shipment_state
+    u'sent'
+
+If we opt not to cancel the shipment and deliver from stock::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 125
+    >>> sale.save()
+    >>> Sale.quote([sale.id], config.context)
+    >>> Sale.confirm([sale.id], config.context)
+    >>> Sale.process([sale.id], config.context)
+    >>> config.user = purchase_user.id
+    >>> purchase_request, = PurchaseRequest.find([('purchase_line', '=', None)])
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [purchase_request])
+    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> purchase.click('cancel')
+
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> shipment, = sale.shipments
+
+    >>> config.user = stock_user.id
+    >>> shipment.click('assign_force')
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+
+    >>> config.user = sale_user.id
+    >>> sale.shipment_state
+    u'sent'
