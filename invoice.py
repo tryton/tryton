@@ -917,7 +917,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
         total_currency = Decimal('0.0')
         for line in move_lines:
             total += line['debit'] - line['credit']
-            total_currency += line['amount_second_currency']
+            total_currency += line['amount_second_currency'].copy_sign(
+                line['debit'] - line['credit'])
 
         term_lines = self.payment_term.compute(total, self.company.currency,
             self.invoice_date)
