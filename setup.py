@@ -56,7 +56,7 @@ setup(name=name,
     url='http://www.tryton.org/',
     download_url=download_url,
     keywords='tryton account invoice stock',
-    package_dir={'trytond.modules.account_product': '.'},
+    package_dir={'trytond.modules.account_invoice_stock': '.'},
     packages=[
         'trytond.modules.account_invoice_stock',
         'trytond.modules.account_invoice_stock.tests',
