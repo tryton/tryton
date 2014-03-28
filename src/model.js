@@ -1155,7 +1155,7 @@
     Sao.field.Char = Sao.class_(Sao.field.Field, {
         _default: '',
         get: function(record) {
-            return Sao.field.Char._super.get(record) || this._default;
+            return Sao.field.Char._super.get.call(this, record) || this._default;
         }
     });
 
