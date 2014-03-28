@@ -115,28 +115,6 @@ class SaleLine:
                 request.delivery_address = self.sale.shipment_address
         return request
 
-    def get_move_done(self, name):
-        result = super(SaleLine, self).get_move_done(name)
-        with Transaction().set_user(0, set_context=True):
-            # TODO make it work in bunch
-            line = self.__class__(self.id)
-            if (line.purchase_request
-                    and line.purchase_request.customer):
-                if line.purchase_request.purchase_line:
-                    return line.purchase_request.purchase_line.move_done
-                else:
-                    return False
-        return result
-
-    def get_move_exception(self, name):
-        result = super(SaleLine, self).get_move_exception(name)
-        with Transaction().set_user(0, set_context=True):
-            # TODO make it work in bunch
-            line = self.__class__(self.id)
-            if line.purchase_request and line.purchase_request.customer:
-                return False
-        return result
-
     def get_drop_moves(self):
         if (self.type != 'line'
                 or not self.product):
