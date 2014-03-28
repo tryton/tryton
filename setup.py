@@ -72,6 +72,7 @@ setup(name=name,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
+        'Framework :: Tryton',
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
