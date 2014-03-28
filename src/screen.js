@@ -144,6 +144,9 @@
             this.domain = attributes.domain || null;
             this.limit = attributes.limit || Sao.config.limit;
             this.offset = 0;
+            if (!Sao.common.MODELACCESS.get(model_name).write) {
+                this.attributes.readonly = true;
+            }
             this.search_count = 0;
             this.screen_container = new Sao.ScreenContainer(
                 attributes.tab_domain);
@@ -297,6 +300,7 @@
         },
         new_group: function(ids) {
             var group = new Sao.Group(this.model, this.context, []);
+            group.set_readonly(this.attributes.readonly || false);
             if (ids) {
                 group.load(ids);
             }

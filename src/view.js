@@ -1749,6 +1749,9 @@
                     readonly = false;
                 }
             }
+            if (this.view.screen.attributes.readonly) {
+                readonly = true;
+            }
             this.set_readonly(readonly);
             var valid = true;
             if (state_attrs.valid !== undefined) {
@@ -2674,6 +2677,7 @@
                 view_ids: (attributes.view_ids || '').split(','),
                 views_preload: attributes.views || {},
                 row_activate: this.activate.bind(this),
+                readonly: attributes.readonly || false,
                 exclude_field: attributes.relation_field || null
             });
             this.prm = this.screen.switch_view(modes[0]).done(function() {
@@ -3049,8 +3053,9 @@
             var screen = new Sao.Screen(this.attributes.relation, {
                 'domain': domain,
                 //'view_ids': (this.attributes.view_ids || '').split(','),
-                'mode': ['form']
+                'mode': ['form'],
                 //'views_preload': this.attributes.views
+                readonly: this.attributes.readonly || false
             });
             screen.new_group([this.screen.current_record.id]);
             var callback = function(result) {

@@ -37,15 +37,20 @@
             this.callback = callback;
             this.el = jQuery('<div/>');
 
+            var readonly = (this.screen.attributes.readonly ||
+                    this.screen.group.get_readonly());
+
             var buttons = [];
-            buttons.push({
-                text: (!kwargs.new_ && this.screen.current_view &&
-                       this.screen.current_record.id < 0 ?
-                       'Delete' : 'Cancel'),
-                click: function() {
-                    this.response('RESPONSE_CANCEL');
-                }.bind(this)
-            });
+
+            if ((view_type == 'form') && !readonly) {
+                buttons.push({
+                    text: (!kwargs.new_ && this.screen.current_record.id < 0 ?
+                           'Delete' : 'Cancel'),
+                        click: function() {
+                            this.response('RESPONSE_CANCEL');
+                        }.bind(this)
+                });
+            }
 
             if (kwargs.new_ && this.many) {
                 buttons.push({
@@ -76,7 +81,6 @@
             if (view_type == 'tree') {
                 menu = jQuery('<div/>');
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-                var readonly = this.screen.group.get_readonly();
                 if (this.domain) {
                     this.wid_text = jQuery('<input/>', {
                         type: 'input'
@@ -211,8 +215,9 @@
         response: function(response_id) {
             var result;
             this.screen.current_view.set_value();
-
+            var readonly = this.screen.group.get_readonly();
             if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
+                    !readonly &&
                     this.screen.current_record) {
                 this.screen.current_record.validate().then(function(validate) {
                     var closing_prm = jQuery.Deferred();
@@ -266,6 +271,7 @@
             }
 
             if (response_id == 'RESPONSE_CANCEL' &&
+                    !readonly &&
                     this.screen.current_record) {
                 result = false;
                 if ((this.screen.current_record.id < 0) || this.save_current) {
