@@ -905,6 +905,9 @@ class DictField(Field):
 
     _default = {}
 
+    def get_client(self, record):
+        return super(DictField, self).get_client(record) or self._default
+
     def validation_domains(self, record):
         screen_domain, attr_domain = self.domains_get(record)
         return screen_domain, screen_domain
