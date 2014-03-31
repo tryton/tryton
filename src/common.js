@@ -1471,6 +1471,18 @@
                 return [this.merge(domain)];
             }
         },
+        concat: function(domains, domoperator) {
+            var result = [];
+            if (domoperator) {
+                result.push(domoperator);
+            }
+            domains.forEach(function append(domain) {
+                if (!jQuery.isEmptyObject(domain)) {
+                    result.push(domain);
+                }
+            });
+            return this.simplify(this.merge(result));
+        },
         parse: function(domain) {
             var And = Sao.common.DomainInversion.And;
             var Or = Sao.common.DomainInversion.Or;

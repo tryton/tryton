@@ -1753,6 +1753,28 @@
         });
     });
 
+    QUnit.test('DomainInversion concat', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var concat = domain_inversion.concat.bind(domain_inversion);
+        var compare = Sao.common.compare;
+
+        var domain1 = [['a', '=', 1]];
+        var domain2 = [['b', '=', 2]];
+
+        QUnit.ok(compare(concat([domain1, domain2]),
+                ['AND', ['a', '=', 1], ['b', '=', 2]]),
+            'compare(' + JSON.stringify([domain1, domain2]) + ')');
+        QUnit.ok(compare(concat([[], domain1]), domain1),
+            'compare(' + JSON.stringify([[], domain1]) + ')');
+        QUnit.ok(compare(concat([domain2, []]), domain2),
+            'compare(' + JSON.stringify([domain2, []]) + ')');
+        QUnit.ok(compare(concat([[], []]), []),
+            'compare(' + JSON.stringify([[], []]) + ')');
+        QUnit.ok(compare(concat([domain1, domain2], 'OR'),
+                ['OR', [['a', '=', 1]], [['b', '=', 2]]]),
+            'compare(' + JSON.stringify([domain1, domain2]) + ', \'OR\')');
+    });
+
     QUnit.test('DomainInversion evaldomain', function() {
         var domain_inversion = new Sao.common.DomainInversion();
         var eval_domain = domain_inversion.eval_domain.bind(domain_inversion);

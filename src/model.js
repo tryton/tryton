@@ -1026,18 +1026,12 @@
             var screen_domain = domains[0];
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
-            return [inversion.localize_domain(screen_domain), attr_domain];
+            return inversion.concat(
+                    [inversion.localize_domain(screen_domain), attr_domain]);
         },
         validation_domains: function(record) {
-            var domains = this.get_domains(record);
-            var screen_domain = domains[0];
-            var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
-            if (!jQuery.isEmptyObject(attr_domain)) {
-                return [screen_domain, [screen_domain, attr_domain]];
-            } else {
-                return [screen_domain, screen_domain];
-            }
+            return inversion.concat(this.get_domains(record));
         },
         get_eval: function(record) {
             return this.get(record);
@@ -1092,9 +1086,7 @@
                 return true;
             }
             this.get_state_attrs(record).domain_readonly = false;
-            var domains = this.validation_domains(record);
-            var inverted_domain = domains[0];
-            var domain = domains[1];
+            var domain = this.validation_domains(record);
             if (!softvalidation) {
                 result &= this.check_required(record);
             }
@@ -1104,23 +1096,27 @@
                 result = false;
             } else {
                 var inversion = new Sao.common.DomainInversion();
-                if ((inverted_domain instanceof Array) &&
-                        (inverted_domain.length == 1) &&
-                        (inverted_domain[0][1] == '=')) {
+                if ((domain instanceof Array) &&
+                        (domain.length == 1) &&
+                        (domain[0][1] == '=')) {
                     // If the inverted domain is so constraint that only one
                     // value is possible we should use it. But we must also pay
                     // attention to the fact that the original domain might be
                     // a 'OR' domain and thus not preventing the modification
                     // of fields.
-                    var leftpart = inverted_domain[0][0];
-                    var value = inverted_domain[0][2];
+                    var leftpart = domain[0][0];
+                    var value = domain[0][2];
                     if (value === false) {
                         // XXX to remove once server domains are fixed
                         value = null;
                     }
                     var setdefault = true;
-                    var original_domain = inversion.merge(
-                            record.group.domain());
+                    var original_domain;
+                    if (!jQuery.isEmptyObject(record.group.domain())) {
+                        original_domain = inversion.merge(record.group.domain());
+                    } else {
+                        original_domain = inversion.merge(domain);
+                    }
                     var domain_readonly = original_domain[0] == 'AND';
                     if (leftpart.contains('.')) {
                         var recordpart = leftpart.split('.', 1)[0];
@@ -1403,17 +1399,16 @@
                     force_change);
         },
         validation_domains: function(record) {
-            var screen_domain = this.get_domains(record)[0];
-            return [screen_domain, screen_domain];
+            return this.get_domains(record)[0];
         },
         get_domain: function(record) {
             var domains = this.get_domains(record);
             var screen_domain = domains[0];
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
-            return [inversion.localize_domain(
-                    inversion.inverse_leaf(screen_domain), this.name),
-                   attr_domain];
+            return inversion.concat([inversion.localize_domain(
+                        inversion.inverse_leaf(screen_domain), this.name),
+                    attr_domain]);
         }
     });
 
@@ -1755,13 +1750,12 @@
             var screen_domain = domains[0];
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
-            return [inversion.localize_domain(
-                    inversion.inverse_leaf(screen_domain), this.name),
-                   attr_domain];
+            return inversion.concat([inversion.localize_domain(
+                        inversion.inverse_leaf(screen_domain), this.name),
+                    attr_domain]);
         },
         validation_domains: function(record) {
-            var screen_domain = this.get_domains(record)[0];
-            return [screen_domain, screen_domain];
+            return this.get_domains(record)[0];
         },
         set_state: function(record, states) {
             this._set_default_value(record);
