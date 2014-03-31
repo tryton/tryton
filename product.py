@@ -14,7 +14,9 @@ class Product:
     boms = fields.One2Many('product.product-production.bom', 'product',
         'BOMs', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
-            'invisible': Eval('type', 'service') == 'service',
+            'invisible': (Eval('type', 'service').in_(['service', None])
+                & (Eval('_parent_template', {}).get(
+                        'type', 'service').in_(['service', None]))),
             },
         depends=['type'])
 
