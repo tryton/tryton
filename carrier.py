@@ -15,6 +15,7 @@ class Carrier(ModelSQL, ModelView):
     carrier_product = fields.Many2One('product.product', 'Carrier Product',
             required=True, domain=[
                 ('type', '=', 'service'),
+                ('template.type', '=', 'service'),
             ])
     carrier_cost_method = fields.Selection([
         ('product', 'Product Price'),
