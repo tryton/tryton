@@ -175,6 +175,17 @@ def merge(domain, domoperator=None):
         return [merge(domain)]
 
 
+def concat(*domains, **kwargs):
+    domoperator = kwargs.get('domoperator')
+    result = []
+    if domoperator:
+        result.append(domoperator)
+    for domain in domains:
+        if domain:
+            result.append(domain)
+    return simplify(merge(result))
+
+
 def parse(domain):
     if is_leaf(domain):
         return domain
@@ -444,6 +455,17 @@ def test_merge():
     assert merge(domain) == ['AND', ['OR', ['a', '=', 1], ['b', '=', 2]],
         ['OR', ['c', '=', 3], ['AND', ['d', '=', 4], ['d2', '=', 6]]],
         ['d', '=', 5], ['e', '=', 6], ['f', '=', 7]]
+
+
+def test_concat():
+    domain1 = [['a', '=', 1]]
+    domain2 = [['b', '=', 2]]
+    assert concat(domain1, domain2) == ['AND', ['a', '=', 1], ['b', '=', 2]]
+    assert concat([], domain1) == domain1
+    assert concat(domain2, []) == domain2
+    assert concat([], []) == []
+    assert concat(domain1, domain2, domoperator='OR') == [
+        'OR', [['a', '=', 1]], [['b', '=', 2]]]
 
 
 def test_evaldomain():
