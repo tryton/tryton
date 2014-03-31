@@ -107,7 +107,8 @@ class PartyRelationAll(PartyRelation, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Relation = pool.get('party.relation')
-        return Relation.create(vlist)
+        relations = Relation.create(vlist)
+        return cls.browse([r.id * 2 for r in relations])
 
     @classmethod
     def write(cls, *args):
