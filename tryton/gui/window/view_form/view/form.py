@@ -130,14 +130,13 @@ class ViewForm(ParserView):
         return True
 
     def set_cursor(self, new=False, reset_view=True):
+        focus_widget = None
         if reset_view or not self.widget.has_focus():
             if reset_view:
                 for notebook in self.notebooks:
                     notebook.set_current_page(0)
             if self.cursor_widget in self.widgets:
                 focus_widget = self.widgets[self.cursor_widget][0]
-        else:
-            focus_widget = None
         record = self.screen.current_record
         position = reduce(lambda x, y: x + len(y), self.widgets, 0)
         if record:
