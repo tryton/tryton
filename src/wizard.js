@@ -75,24 +75,19 @@
                         this.state = this.end_state;
                     }
 
-                    if (result.actions) {
-                        if (!result.view) {
-                            this.end();
+                    var execute_actions = function execute_actions() {
+                        if (result.actions) {
+                            result.actions.forEach(function(action) {
+                                Sao.Action.exec_action(action[0], action[1],
+                                    ctx);
+                            });
                         }
-                        result.actions.forEach(function(action) {
-                            Sao.Action.exec_action(action[0], action[1], ctx);
-                        });
-                        if ((!result.view) ||
-                            (result.actions[result.actions.length - 1].type ==
-                             'ir.action.wizard')) {
-                            return;
-                        }
-                    }
+                    };
 
-                    if (!this.__waiting_response) {
-                        process();
-                    } else if (this.state == this.end_state) {
-                        this.end();
+                    if (this.state == this.end_state) {
+                        this.end().then(execute_actions);
+                    } else {
+                        execute_actions();
                     }
                     this.__processing = false;
                 }.bind(this), function(result) {
@@ -212,7 +207,7 @@
             // TODO reload under screen and action
         },
         end: function() {
-            Sao.Wizard.Dialog._super.end.call(this).then(
+            return Sao.Wizard.Dialog._super.end.call(this).then(
                     this.destroy.bind(this));
         },
         show: function() {
