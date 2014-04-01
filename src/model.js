@@ -44,7 +44,7 @@
                 return jQuery.when();
             }
             var record = records[0];
-            var root_group = record.group.root_group;
+            var root_group = record.group.root_group();
             // TODO test same model
             // TODO test same root group
             records = records.filter(function(record) {
