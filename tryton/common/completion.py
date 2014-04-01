@@ -26,6 +26,8 @@ def get_completion():
 def update_completion(entry, record, field, model, domain=None):
     "Update entry completion"
     def update(search_text, domain):
+        if not entry.props.window:
+            return False
         if search_text != entry.get_text().decode('utf-8'):
             return False
         completion_model = entry.get_completion().get_model()
