@@ -7,7 +7,7 @@ from dateutil import relativedelta
 from dateutil import rrule
 
 from trytond.model import Workflow, ModelSQL, ModelView, fields
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
@@ -38,7 +38,10 @@ class Asset(Workflow, ModelSQL, ModelView):
     supplier_invoice_line = fields.Many2One('account.invoice.line',
         'Supplier Invoice Line',
         domain=[
-            ('product', '=', Eval('product', -1)),
+            If(Eval('product', None) == None,
+                ('product', '=', -1),
+                ('product', '=', Eval('product', -1)),
+                ),
             ('invoice.type', '=', 'in_invoice'),
             ],
         states={
@@ -236,13 +239,14 @@ class Asset(Workflow, ModelSQL, ModelView):
                     invoice.currency)
         else:
             new_values['value'] = invoice_line.amount
-        new_values['purchase_date'] = invoice.invoice_date
-        new_values['start_date'] = invoice.invoice_date
-        if invoice_line.product.depreciation_duration:
-            duration = relativedelta.relativedelta(
-                months=int(invoice_line.product.depreciation_duration),
-                days=-1)
-            new_values['end_date'] = new_values['start_date'] + duration
+        if invoice.invoice_date:
+            new_values['purchase_date'] = invoice.invoice_date
+            new_values['start_date'] = invoice.invoice_date
+            if invoice_line.product.depreciation_duration:
+                duration = relativedelta.relativedelta(
+                    months=int(invoice_line.product.depreciation_duration),
+                    days=-1)
+                new_values['end_date'] = new_values['start_date'] + duration
 
         if not self.unit:
             new_values['quantity'] = invoice_line.quantity
