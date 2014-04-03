@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:res.group:"
 msgid "The name of the group must be unique!"
-msgstr "¡El nombre del grupo debe ser único!"
+msgstr "El nombre del grupo debe ser único!"
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
@@ -12,7 +12,7 @@ msgstr "¡Contraseña incorrecta!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
-msgstr "No puede tener dos usuarios con el mismo nombre de usuario"
+msgstr "No puede tener dos usuarios con el mismo nombre de usuario!"
 
 msgctxt "error:res.user:"
 msgid ""
@@ -82,7 +82,7 @@ msgstr "ID"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
@@ -190,15 +190,15 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
-msgstr "Grupos de usuarios"
+msgstr "Grupos de Usuarios"
 
 msgctxt "field:ir.sequence.strict,groups:"
 msgid "User Groups"
-msgstr "Grupos de usuarios"
+msgstr "Grupos de Usuarios"
 
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
-msgstr "Grupos de usuarios"
+msgstr "Grupos de Usuarios"
 
 msgctxt "field:ir.sequence.type-res.group,create_date:"
 msgid "Create Date"
@@ -210,7 +210,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
-msgstr "Grupos de usuarios"
+msgstr "Grupos de Usuarios"
 
 msgctxt "field:ir.sequence.type-res.group,id:"
 msgid "ID"
@@ -218,11 +218,11 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
-msgstr "Tipo de secuencia"
+msgstr "Tipo de Secuencia"
 
 msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
@@ -354,7 +354,7 @@ msgstr "Nombre de usuario"
 
 msgctxt "field:res.user,menu:"
 msgid "Menu Action"
-msgstr "Menú de acciones"
+msgstr "Menú de Acciones"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
@@ -363,6 +363,10 @@ msgstr "Nombre"
 msgctxt "field:res.user,password:"
 msgid "Password"
 msgstr "Contraseña"
+
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Contraseña Hash"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
@@ -376,10 +380,6 @@ msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
 msgstr "Reglas"
 
-msgctxt "field:res.user,salt:"
-msgid "Salt"
-msgstr "Sal"
-
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
 msgstr "Sesiones"
@@ -390,11 +390,7 @@ msgstr "Firma"
 
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
-msgstr "Barra de estado"
-
-msgctxt "field:res.user,timezone:"
-msgid "Timezone"
-msgstr "Zona horaria"
+msgstr "Barra de Estado"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
@@ -426,7 +422,7 @@ msgstr "ID"
 
 msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
@@ -494,7 +490,7 @@ msgstr "Nombre de usuario"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Name"
-msgstr "Nombre del campo"
+msgstr "Nombre"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
@@ -542,7 +538,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
-msgstr "Los grupos son autorizados para editar secuencias en este tipo"
+msgstr "Grupos autorizados para editar secuencias en este tipo"
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
@@ -566,7 +562,7 @@ msgstr "Acción - Grupo"
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Ejecutar Disparadores Al Tiempo"
+msgstr "Ejecutar Disparadores a Tiempo"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -578,11 +574,11 @@ msgstr "Relación entre grupo y campo del modelo"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
-msgstr "Regla de grupo - grupo"
+msgstr "Regla de Grupo - Grupo"
 
 msgctxt "model:ir.rule.group-res.user,name:"
 msgid "Rule Group - User"
-msgstr "Regla de grupo - usuario"
+msgstr "Regla de Grupo - Usuario"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
@@ -642,31 +638,31 @@ msgstr "Intento de Login"
 
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
-msgstr "Aviso al usuario"
+msgstr "Aviso a Usuario"
 
 msgctxt "view:ir.module.module:"
 msgid "Cancel Installation"
-msgstr "Cancelar instalación"
+msgstr "Cancelar Instalación"
 
 msgctxt "view:ir.module.module:"
 msgid "Cancel Uninstallation"
-msgstr "Cancelar la desinstalación"
+msgstr "Cancelar la Desinstalación"
 
 msgctxt "view:ir.module.module:"
 msgid "Cancel Upgrade"
-msgstr "Cancelar actualización"
+msgstr "Cancelar Actualización"
 
 msgctxt "view:ir.module.module:"
 msgid "Mark for Installation"
-msgstr "Marcar para Instalación"
+msgstr "Instalar"
 
 msgctxt "view:ir.module.module:"
 msgid "Mark for Uninstallation (beta)"
-msgstr "Marcar para desinstalar (beta)"
+msgstr "Desinstalar (beta)"
 
 msgctxt "view:ir.module.module:"
 msgid "Mark for Upgrade"
-msgstr "Marcar para actualizar"
+msgstr "Actualizar"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
@@ -690,7 +686,7 @@ msgstr "Agregar Usuarios"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
-msgstr "¡Asegúrese de hacer los nombres de usuario únicos!"
+msgstr "Asegúrese de que los nombres de usuario sean únicos!"
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
@@ -714,7 +710,7 @@ msgstr "Acciones"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
-msgstr "Membresía del grupo"
+msgstr "Miembro del Grupo"
 
 msgctxt "view:res.user:"
 msgid "Preferences"
