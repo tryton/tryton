@@ -4,6 +4,7 @@ from sql import Union, As, Column
 
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.transaction import Transaction
 
 __all__ = ['RelationType', 'PartyRelation', 'PartyRelationAll', 'Party']
 __metaclass__ = PoolMeta
@@ -103,6 +104,13 @@ class PartyRelationAll(PartyRelation, ModelView):
         Relation = pool.get('party.relation')
         return Relation.browse([x.id // 2 for x in relations])
 
+    @property
+    def reverse_id(self):
+        if self.id % 2:
+            return self.id - 1
+        else:
+            return self.id + 1
+
     @classmethod
     def create(cls, vlist):
         pool = Pool()
@@ -114,17 +122,66 @@ class PartyRelationAll(PartyRelation, ModelView):
     def write(cls, *args):
         pool = Pool()
         Relation = pool.get('party.relation')
+
+        all_records = sum(args[0:None:2], [])
+
+        # Increase transaction counter
+        Transaction().counter += 1
+
+        # Clean local cache
+        for record in all_records:
+            for record_id in (record.id, record.reverse_id):
+                local_cache = record._local_cache.get(record_id)
+                if local_cache:
+                    local_cache.clear()
+
+        # Clean cursor cache
+        for cache in Transaction().cursor.cache.itervalues():
+            if cls.__name__ in cache:
+                for record in all_records:
+                    for record_id in (record.id, record.reverse_id):
+                        if record_id in cache[cls.__name__]:
+                            cache[cls.__name__][record_id].clear()
+
         actions = iter(args)
         args = []
         for relations, values in zip(actions, actions):
-            args.extend((cls.convert_instances(relations), values))
-        return Relation.write(*args)
+            reverse_values = values.copy()
+            if 'from_' in values and 'to' in values:
+                reverse_values['from_'], reverse_values['to'] = \
+                    reverse_values['to'], reverse_values['from_']
+            elif 'from_' in values:
+                reverse_values['to'] = reverse_values.pop('from_')
+            elif 'to' in values:
+                reverse_values['from_'] = reverse_values.pop('to')
+            straight_relations = [r for r in relations if not r.id % 2]
+            reverse_relations = [r for r in relations if r.id % 2]
+            if straight_relations:
+                args.extend(
+                    (cls.convert_instances(straight_relations), values))
+            if reverse_relations:
+                args.extend(
+                    (cls.convert_instances(reverse_relations), reverse_values))
+        Relation.write(*args)
 
     @classmethod
     def delete(cls, relations):
         pool = Pool()
         Relation = pool.get('party.relation')
-        return Relation.delete(cls.convert_instances(relations))
+
+        # Increase transaction counter
+        Transaction().counter += 1
+
+        # Clean cursor cache
+        for cache in Transaction().cursor.cache.values():
+            for cache in (cache, cache.get('_language_cache', {}).values()):
+                if cls.__name__ in cache:
+                    for record in relations:
+                        for record_id in (record.id, record.reverse_id):
+                            if record_id in cache[cls.__name__]:
+                                del cache[cls.__name__][record_id]
+
+        Relation.delete(cls.convert_instances(relations))
 
 
 class Party:
