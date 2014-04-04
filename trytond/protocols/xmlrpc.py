@@ -203,7 +203,7 @@ class SimpleThreadedXMLRPCServer(SocketServer.ThreadingMixIn,
 
     def server_close(self):
         SimpleXMLRPCServer.SimpleXMLRPCServer.server_close(self)
-        for handler in self.handlers:
+        for handler in self.handlers.copy():
             self.shutdown_request(handler.request)
 
     if sys.version_info[:2] <= (2, 6):
