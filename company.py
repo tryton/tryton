@@ -86,7 +86,7 @@ class User:
         'employee', 'Employees')
     employee = fields.Many2One('company.employee', 'Current Employee',
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ('id', 'in', Eval('employees', [])),
             ],
         depends=['company', 'employees'])
