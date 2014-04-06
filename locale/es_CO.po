@@ -88,7 +88,7 @@ msgstr "Disponibilidad en los registros de tiempos"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Esfuerzo total"
+msgstr "Esfuerzo tTotal"
 
 msgctxt "field:project.work,type:"
 msgid "Type"
@@ -172,7 +172,7 @@ msgstr "Actividades"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Tareas"
+msgstr "Actividades"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
