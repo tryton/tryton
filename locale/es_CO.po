@@ -4,23 +4,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:company.employee_cost_price:"
 msgid "A employee can only have one cost price by date."
-msgstr ""
+msgstr "Un empleado solo puede tener un costo por fecha."
 
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
-msgstr "Precio de Costo"
+msgstr "Costo"
 
 msgctxt "field:company.employee,cost_prices:"
 msgid "Cost Prices"
-msgstr "Precios de Costo"
+msgstr "Costos"
 
 msgctxt "field:company.employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Gestión de Moneda"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
-msgstr "Precio de Costo"
+msgstr "Costo"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
@@ -48,7 +48,7 @@ msgstr "ID"
 
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Name"
-msgstr "Nombre de Contacto"
+msgstr "Nombre"
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
@@ -80,4 +80,4 @@ msgstr "Costo"
 
 msgctxt "view:company.employee_cost_price:"
 msgid "Cost Prices"
-msgstr "Precio de Costo"
+msgstr "Costos"
