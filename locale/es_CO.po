@@ -20,7 +20,7 @@ msgstr "ID"
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Name"
-msgstr "Nombre de Contacto"
+msgstr "Nombre"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
@@ -40,16 +40,15 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr "Acciones del Escritorio"
+msgstr "Acciones de Escritorio"
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
 msgstr "Diseño del Escritorio"
 
-#, fuzzy
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "Acción"
+msgstr "Acción del Escritorio"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
@@ -85,7 +84,7 @@ msgstr "Acción del Escritorio"
 
 msgctxt "view:dashboard.action:"
 msgid "Dashboard Actions"
-msgstr "Acción del Escritorio"
+msgstr "Acciones de Escritorio"
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
