@@ -20,7 +20,7 @@ msgstr "Cuenta de Gastos Usada"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr "Usar cuenta del Padre"
+msgstr "Usar Cuenta Padre"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
@@ -116,7 +116,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:product.template,account_category:"
 msgid "Use Category's accounts"
-msgstr "Use las cuentas de Categoría"
+msgstr "Use Cuentas de la Categoría"
 
 msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
@@ -152,7 +152,7 @@ msgstr "Impuestos del Proveedor Aplicados"
 
 msgctxt "field:product.template,taxes_category:"
 msgid "Use Category's Taxes"
-msgstr "Usar Categorías de Impuesto"
+msgstr "Usar Impuestos de la Categoría"
 
 msgctxt "field:product.template-customer-account.tax,create_date:"
 msgid "Create Date"
