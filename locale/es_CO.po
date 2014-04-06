@@ -28,7 +28,7 @@ msgstr "Descripción"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Fecha Debida"
+msgstr "Fecha Esperada"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "E-Mail:"
@@ -52,4 +52,4 @@ msgstr "Aviso Recordatorio"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "VAT Number:"
-msgstr "Número NIT:"
+msgstr "Número Identificación:"
