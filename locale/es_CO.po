@@ -12,7 +12,7 @@ msgstr "DN base"
 
 msgctxt "field:ldap.connection,auth_create_user:"
 msgid "Create User"
-msgstr "Crear usuario"
+msgstr "Creado por Usuario"
 
 msgctxt "field:ldap.connection,auth_require_filter:"
 msgid "Require Filter"
