@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "EL lote es requerido para el movimiento de producto \"%s\"."
+msgstr "EL lote es requerido para el movimiento del producto \"%s\"."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
@@ -68,7 +68,7 @@ msgstr "Número"
 
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
@@ -156,7 +156,7 @@ msgstr "Período"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Name"
@@ -164,7 +164,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
@@ -177,6 +177,10 @@ msgstr "El tipo de bodega para la cual el lote es requerido"
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lotes"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Movimientos"
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
