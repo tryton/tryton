@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "Usted no puede modificar la dirección del  tercero \"%s\" "
+msgstr "Usted no puede modificar la dirección del tercero \"%s\" "
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
@@ -22,7 +22,7 @@ msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde"
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "Usted no puede modificar los medios de contacto del  tercero \"%s\" "
+msgstr "Usted no puede modificar los medios de contacto del tercero \"%s\" "
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
@@ -334,7 +334,7 @@ msgstr "Nombre"
 
 msgctxt "field:party.party,vat_code:"
 msgid "VAT Code"
-msgstr "Cód. NIT"
+msgstr "Núm. Id."
 
 msgctxt "field:party.party,vat_country:"
 msgid "VAT Country"
@@ -342,7 +342,7 @@ msgstr "País del NIT"
 
 msgctxt "field:party.party,vat_number:"
 msgid "VAT Number"
-msgstr "Número NIT"
+msgstr "Número Identificación"
 
 msgctxt "field:party.party,website:"
 msgid "Website"
@@ -401,7 +401,7 @@ msgstr ""
 
 msgctxt "help:party.party,vat_number:"
 msgid "Value Added Tax number"
-msgstr "Número de Identificación Tributaria"
+msgstr "Número de Identificación"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -417,7 +417,7 @@ msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Terceros por categoría"
+msgstr "Terceros por Categoría"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
