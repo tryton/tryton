@@ -40,10 +40,6 @@ msgstr ""
 "El valor del campo \"%(field)s\" en \"%(model)s\" no es válido según su "
 "dominio."
 
-msgctxt "error:domain_validation_record:"
-msgid "The value of the field \"%s\" on \"%s\" is not valid according to its domain."
-msgstr "El valor del campo \"%s\" en \"%s\" no es válido según su dominio."
-
 msgctxt "error:foreign_model_exist:"
 msgid "Could not delete \"%s\" records because they are used on field \"%s\" of \"%s\"."
 msgstr ""
