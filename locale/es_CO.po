@@ -20,7 +20,8 @@ msgstr "No puede crear una línea de asiento usando la cuenta inactiva \"%s\"."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
-msgstr "No puede crear una línea de asiento usando la cuenta de vista \"%s\"."
+msgstr ""
+"No puede crear una línea de asiento usando una cuenta de tipo vista \"%s\"."
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
@@ -231,7 +232,7 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.line,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
