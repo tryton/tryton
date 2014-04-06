@@ -70,7 +70,7 @@ msgstr "Código"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr "Precio de Costo"
+msgstr "Costo"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -130,7 +130,7 @@ msgstr "Consumible"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr "Precio de Costo"
+msgstr "Costo"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
@@ -166,7 +166,7 @@ msgstr "Nombre"
 
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Variantes"
+msgstr "Variedades"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Name"
@@ -298,7 +298,7 @@ msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Variantes"
+msgstr "Variedades"
 
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
@@ -306,7 +306,7 @@ msgstr "Producto por Categoría"
 
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Catálogo de Productos"
+msgstr "Productos"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
@@ -326,7 +326,7 @@ msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Productos"
+msgstr "Catálogo de Productos"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
@@ -334,7 +334,7 @@ msgstr "Variedades"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Catálogo de Productos"
+msgstr "Productos"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
@@ -577,7 +577,7 @@ msgid "oz"
 msgstr "oz"
 
 msgctxt "model:product.uom,symbol:uom_pound"
-msgid "lbs"
+msgid "lb"
 msgstr "lbs"
 
 msgctxt "model:product.uom,symbol:uom_second"
