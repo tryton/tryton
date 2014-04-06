@@ -24,11 +24,11 @@ msgstr "ID"
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Terceros"
+msgstr "Tercero"
 
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
-msgstr "Nombre de Contacto"
+msgstr "Nombre"
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
