@@ -42,12 +42,11 @@ msgid ""
 "You can not define two order points on the same product with opposite "
 "locations."
 msgstr ""
-"No puede definir dos puntos de orden del mismo producto con lugares "
-"opuestos."
+"No puede definir dos requisiciones del mismo producto con lugares opuestos."
 
 msgctxt "field:product.product,order_points:"
 msgid "Order Points"
-msgstr "Puntos de Orden"
+msgstr "Requisiciones"
 
 msgctxt "field:purchase.request,company:"
 msgid "Company"
@@ -119,7 +118,7 @@ msgstr "Fecha Esperada de Abastecimiento"
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
-msgstr "UdM"
+msgstr "UDM"
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
@@ -231,7 +230,7 @@ msgstr "Decimales de Unidad"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr "Bodega de Depósito"
+msgstr "Bodega"
 
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
@@ -245,13 +244,13 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "model:ir.action,name:act_order_point_form"
-msgid "Order Points"
-msgstr "Puntos de Orden"
-
-msgctxt "model:ir.action,name:act_purchase_form"
+msgctxt "model:ir.action,name:"
 msgid "Purchases"
 msgstr "Compras"
+
+msgctxt "model:ir.action,name:act_order_point_form"
+msgid "Order Points"
+msgstr "Requisiciones"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -259,7 +258,7 @@ msgstr "Crear Ordenes de Compras"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Solicitudes de Compra"
+msgstr "Ordenes de Compra"
 
 msgctxt "model:ir.action,name:act_shipment_internal_create"
 msgid "Create Internal Shipments"
@@ -289,7 +288,7 @@ msgstr "Generar Envío Interno"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
-msgstr "Puntos de Orden"
+msgstr "Requisiciones"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -313,11 +312,11 @@ msgstr "Crear Orden de Compra"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
-msgstr "Crear Pregunta a Tercero de Compra"
+msgstr "Crear Compra Pregunta Tercero"
 
 msgctxt "model:purchase.request.create_purchase.ask_term,name:"
 msgid "Create Purchase Ask Term"
-msgstr "Crear Pregunta a Tercero de Término"
+msgstr "Crear Compra Pregunta Forma de Pago"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -333,7 +332,7 @@ msgstr "Cron Envío Interno"
 
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
-msgstr "Punto de Orden"
+msgstr "Requisición"
 
 msgctxt "model:stock.shipment.internal.create.start,name:"
 msgid "Create Shipment Internal"
@@ -341,7 +340,7 @@ msgstr "Crear Envío Interno"
 
 msgctxt "selection:purchase.request,origin:"
 msgid "Order Point"
-msgstr "Punto de Orden"
+msgstr "Requisición"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
@@ -368,12 +367,12 @@ msgid "Purchase"
 msgstr "Compra"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request"
-msgstr "Crear Orden de Compra"
+msgid "Create Purchase Requests"
+msgstr "Crear Ordenes de Compras"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request?"
-msgstr "Crear Orden de Compra?"
+msgid "Create Purchase Requests?"
+msgstr "Crear Ordenes de Compras?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
@@ -381,7 +380,7 @@ msgstr "Crear Compra: Sin Proveedor"
 
 msgctxt "view:purchase.request.create_purchase.ask_term:"
 msgid "Create Purchase: Missing Payment Term"
-msgstr "Crear Compra: Sin Término de Pago"
+msgstr "Crear Compra: Sin Forma de Pago"
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
@@ -389,7 +388,7 @@ msgstr "Información de Producto"
 
 msgctxt "view:purchase.request:"
 msgid "Purchase Request"
-msgstr "Solicitud de Compra"
+msgstr "Orden de Compra"
 
 msgctxt "view:purchase.request:"
 msgid "Purchase Requests"
@@ -401,15 +400,15 @@ msgstr "Información de Proveedor"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point"
-msgstr "Punto de Orden"
+msgstr "Requisición"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
-msgstr "Tipo de Punto de Orden"
+msgstr "Tipo de Requisición"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Points"
-msgstr "Puntos de Orden"
+msgstr "Requisiciones"
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
