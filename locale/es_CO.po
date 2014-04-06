@@ -36,7 +36,7 @@ msgstr "Moneda"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de Moneda"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -80,7 +80,7 @@ msgstr "Tipo"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
@@ -172,7 +172,7 @@ msgstr "Moneda"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
-msgstr "Dígitos de Moneda"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -252,7 +252,7 @@ msgstr "Total"
 
 msgctxt "field:purchase.purchase,untaxed_amount:"
 msgid "Untaxed"
-msgstr "Sin Impuesto"
+msgstr "Base"
 
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
@@ -320,11 +320,11 @@ msgstr "Título"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Order"
-msgstr "Basado En La Orden"
+msgstr "Basado en la Orden"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado En El Envío"
+msgstr "Basado en el Envío"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
@@ -348,7 +348,7 @@ msgstr "En Espera"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Canceled"
-msgstr "Cancelado"
+msgstr "Anulada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
