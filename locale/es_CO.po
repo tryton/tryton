@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr "Días de la Semana"
+msgstr "Días de Semana"
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
@@ -28,7 +28,7 @@ msgstr "Nombre"
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
-msgstr "Día de la Semana"
+msgstr "Día de Semana"
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
@@ -72,8 +72,8 @@ msgstr "Miércoles"
 
 msgctxt "view:purchase.product_supplier.day:"
 msgid "Week Day"
-msgstr "Día de la Semana"
+msgstr "Día de Semana"
 
 msgctxt "view:purchase.product_supplier:"
 msgid "Week Days"
-msgstr "Días de la Semana"
+msgstr "Días de Semana"
