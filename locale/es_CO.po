@@ -12,11 +12,11 @@ msgstr ""
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr "Cantidad \"%s\" es mayor que la cantidad a pagar en la factura."
+msgstr "El valor \"%s\" es mayor que el valor a pagar en la factura."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
-msgstr "La cantidad debe ser un valor positivo o negativo!"
+msgstr "El valor debería ser positivo o negativo!"
 
 msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
@@ -26,11 +26,16 @@ msgstr ""
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
-msgstr "El Balance debe ser %s!"
+msgstr "El Saldo Final debe ser \"%s!\"."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr "El estado de cuenta \"%s\" debe ser cancelado antes de ser eliminado."
+
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgstr ""
+"Hay facturas pagadas en estados de cuenta en borrador, desea continuar?"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -58,7 +63,7 @@ msgstr "Fecha"
 
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
-msgstr "Balance Final"
+msgstr "Saldo Final"
 
 msgctxt "field:account.statement,id:"
 msgid "ID"
@@ -66,7 +71,7 @@ msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.statement,lines:"
 msgid "Transactions"
@@ -114,7 +119,7 @@ msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.statement.journal,name:"
 msgid "Name"
@@ -138,7 +143,7 @@ msgstr "Cuenta"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
@@ -228,7 +233,7 @@ msgstr "Borrador"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Contabilizado"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
@@ -245,7 +250,7 @@ msgstr "Estados de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Diarios de Estados de Cuenta"
+msgstr "Libros de Estados de Cuenta"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
@@ -257,7 +262,7 @@ msgstr "Estado de Cuenta"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
-msgstr "Cancelado"
+msgstr "Anulado"
 
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
@@ -265,7 +270,7 @@ msgstr "Borrador"
 
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Contabilizado"
 
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
@@ -281,7 +286,7 @@ msgstr "Libros de Estados de Cuenta"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
@@ -305,7 +310,7 @@ msgstr "Info Adicional"
 
 msgctxt "view:account.statement:"
 msgid "Post"
-msgstr "Confirmar"
+msgstr "Contabilizar"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
