@@ -16,7 +16,7 @@ msgstr "El producto debe ser único en la LDM!"
 
 msgctxt "error:production.bom.input:"
 msgid "You can not create recursive BOMs."
-msgstr "No puede crear LDMs recursivas!"
+msgstr "No puede crear LDMs recursivas."
 
 msgctxt "error:production.bom.input:"
 msgid "product_bom_uniq"
@@ -35,8 +35,12 @@ msgid "product_bom_uniq"
 msgstr "El producto debe ser único en la LDM."
 
 msgctxt "error:production:"
-msgid "Production \"%s\" misses costs on some of its outputs."
-msgstr "A la producción \"%s\" le faltan algunos costos en sus salidas."
+msgid ""
+"The costs of the outputs (%(outputs)s) of production \"%(production)s\" do "
+"not match the cost of the production (%(costs)s)."
+msgstr ""
+"El costo de las salidas (%(output)s) de la producción \"%(production)s\" no "
+"coincide con el costo de producción (%(costs)s)."
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
@@ -60,7 +64,7 @@ msgstr "ID"
 
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:product.product-production.bom,rec_name:"
 msgid "Name"
@@ -124,11 +128,11 @@ msgstr "Salidas"
 
 msgctxt "field:production,planned_date:"
 msgid "Planned Date"
-msgstr "Fecha Estimada"
+msgstr "Fecha Planeada"
 
 msgctxt "field:production,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:production,quantity:"
 msgid "Quantity"
@@ -240,7 +244,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
@@ -288,7 +292,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
@@ -328,7 +332,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
@@ -356,7 +360,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.tree.open.start,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
@@ -474,7 +478,7 @@ msgstr "En Ejecución"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
-msgstr "Esperando"
+msgstr "En Espera"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -566,11 +570,11 @@ msgstr "Asignado"
 
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr "Cancelado"
+msgstr "Anulado"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Hecho"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -578,7 +582,7 @@ msgstr "Borrador"
 
 msgctxt "selection:production,state:"
 msgid "Request"
-msgstr "Solicitud"
+msgstr "Solicitado"
 
 msgctxt "selection:production,state:"
 msgid "Running"
@@ -586,7 +590,7 @@ msgstr "En ejecución"
 
 msgctxt "selection:production,state:"
 msgid "Waiting"
-msgstr "En espera"
+msgstr "En Espera"
 
 msgctxt "view:product.product-production.bom:"
 msgid "Product - BOM"
@@ -650,7 +654,7 @@ msgstr "Cancelar"
 
 msgctxt "view:production:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Hecho"
 
 msgctxt "view:production:"
 msgid "Draft"
