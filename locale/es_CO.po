@@ -8,11 +8,11 @@ msgstr "Los diferidos deben ser únicos por cuenta y año fiscal"
 
 msgctxt "error:account.account.deferral:"
 msgid "You can not modify Account Deferral records"
-msgstr "No puede modificar los registros de cuentas diferidas."
+msgstr "No puede modificar los registros de Cuentas Diferidas."
 
 msgctxt "error:account.account:"
 msgid "You can not delete account \"%s\" because it has move lines."
-msgstr "No puede eliminar una cuenta \"%s\" porque tiene líneas de asiento."
+msgstr "No puede eliminar la cuenta \"%s\" porque tiene líneas de asiento."
 
 msgctxt "error:account.account:"
 msgid "You can not delete accounts that have children."
@@ -54,17 +54,17 @@ msgid ""
 "You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
 "years."
 msgstr ""
-"No puede reabir el año fiscal \"%s\" hasta que reabra todos los años "
+"No puede reabrir el año fiscal \"%s\" hasta que reabra todos los años "
 "fiscales posteriores."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not create a journal - period on closed period \"%s\"."
-msgstr "No puede crear un libro diario - período en el período cerrado \"%s\"."
+msgstr "No puede crear un libro contable - período en el período cerrado \"%s\"."
 
 msgctxt "error:account.journal.period:"
 msgid "You can not modify/delete journal - period \"%s\" because it has moves."
 msgstr ""
-"No puede modificar/eliminar un libro diario - período \"%s\" porque tiene "
+"No puede modificar/eliminar un libro contable - período \"%s\" porque tiene "
 "asientos."
 
 msgctxt "error:account.journal.period:"
@@ -72,7 +72,7 @@ msgid ""
 "You can not open journal - period \"%(journal_period)s\" because period "
 "\"%(period)s\" is closed."
 msgstr ""
-"No puede abrir el libro diario - período \"%(journal_period)s\" porque el "
+"No puede abrir el libro contable - período \"%(journal_period)s\" porque el "
 "período \"%(period)s\" esta cerrado."
 
 msgctxt "error:account.journal.period:"
@@ -122,7 +122,9 @@ msgstr "No puede modificar una línea \"%s\" porque esta conciliada."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify lines of move \"%s\" because it is already posted."
-msgstr "No puede modificar líneas del asiento \"%s\" porque esta confirmado!"
+msgstr ""
+"No puede modificar las líneas del asiento \"%s\" porque estan "
+"contabilizadas."
 
 msgctxt "error:account.move.reconciliation:"
 msgid ""
@@ -162,12 +164,12 @@ msgstr ""
 
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not reconcile line \"%s\" because it is not in valid state."
-msgstr "No puede conciliar líneas \"%s\" porque no está en en un estado válido."
+msgstr "No puede conciliar las líneas \"%s\" porque no estan en estado válido."
 
 msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
 msgstr ""
-"No puede crear lineas en facturas de diferentes compañias en el asiento "
+"No puede crear lineas con cuentas de diferentes compañias en el asiento "
 "\"%s\"."
 
 msgctxt "error:account.move:"
@@ -180,11 +182,12 @@ msgstr ""
 
 msgctxt "error:account.move:"
 msgid "You can not modify move \"%s\" because it is already posted."
-msgstr "No puede modificar el asiento \"%s\" porque esta actualmente confirmado!"
+msgstr ""
+"No puede modificar el asiento \"%s\" porque esta actualmente contabilizado."
 
 msgctxt "error:account.move:"
 msgid "You can not post move \"%s\" because it is an unbalanced."
-msgstr "No puede confirmar el asiento \"%s\" porque esta descuadrado."
+msgstr "No puede contabilizar el asiento \"%s\" porque esta descuadrado."
 
 msgctxt "error:account.move:"
 msgid "You can not post move \"%s\" because it is empty."
@@ -193,8 +196,8 @@ msgstr "No puede confirmar el asiento \"%s\" porque esta vacío."
 msgctxt "error:account.move:"
 msgid "You can not set posted move \"%(move)s\" to draft in journal \"%(journal)s\"."
 msgstr ""
-"No puede convertir le asiento confirmado \"%(move)s\" a borrador en el libro"
-" diario \"%(journal)s\"."
+"No puede convertir el asiento contabilizado \"%(move)s\" a borrador en el "
+"libro contable \"%(journal)s\"."
 
 msgctxt "error:account.move:"
 msgid ""
@@ -226,7 +229,7 @@ msgstr ""
 
 msgctxt "error:account.period:"
 msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
-msgstr "Fechas del periodo \"%s\" estan fuera de las fechas del Año Fiscal. "
+msgstr "Las fechas del periodo \"%s\" estan fuera del Año Fiscal. "
 
 msgctxt "error:account.period:"
 msgid "No period defined for date \"%s\"."
@@ -241,16 +244,16 @@ msgid ""
 "You can not change the post move sequence of period \"%s\" because there are"
 " already posted moves in the period."
 msgstr ""
-"No puede cambiar la secuencia de asiento confirmado el periodo \"%s\" porque"
-" hay asientos confirmados en el período."
+"No puede cambiar la secuencia de asientos contabilizados para periodo \"%s\""
+" porque ya tiene asientos contabilizados."
 
 msgctxt "error:account.period:"
 msgid ""
 "You can not close period \"%s\" because there are non posted moves in this "
 "period."
 msgstr ""
-"No puede cerrar el período \"%s\" porque hay asientos no confirmados en este"
-" período."
+"No puede cerrar el período \"%s\" porque hay asientos no contabilizados en "
+"este período."
 
 msgctxt "error:account.period:"
 msgid "You can not create a period on fiscal year \"%s\" because it is closed."
@@ -298,7 +301,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
@@ -310,7 +313,7 @@ msgstr "Decimales de Moneda"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
@@ -430,7 +433,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
@@ -438,7 +441,7 @@ msgstr "Decimales de Moneda"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
@@ -554,11 +557,11 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.account.type,balance_sheet:"
 msgid "Balance Sheet"
-msgstr "Balance General"
+msgstr "Estado de Situación Financiera"
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
@@ -622,7 +625,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:account.account.type.template,balance_sheet:"
 msgid "Balance Sheet"
-msgstr "Balance General"
+msgstr "Estado de Situación Financiera"
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
@@ -646,7 +649,7 @@ msgstr "ID"
 
 msgctxt "field:account.account.type.template,income_statement:"
 msgid "Income Statement"
-msgstr "Estado de Resultados"
+msgstr "Estado de Resultado Integral"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
@@ -758,7 +761,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
-msgstr "Fecha final"
+msgstr "Fecha Final"
 
 msgctxt "field:account.fiscalyear,id:"
 msgid "ID"
@@ -774,7 +777,7 @@ msgstr "Períodos"
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr "Secuencia de Asiento Confirmado"
+msgstr "Secuencia de Asiento Contabilizado"
 
 msgctxt "field:account.fiscalyear,rec_name:"
 msgid "Name"
@@ -846,7 +849,7 @@ msgstr "ID"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
@@ -854,7 +857,7 @@ msgstr "Período"
 
 msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
 msgid "Fiscal Year to close"
-msgstr "Año fiscal a cerrar"
+msgstr "Año Fiscal a cerrar"
 
 msgctxt "field:account.fiscalyear.close.start,id:"
 msgid "ID"
@@ -906,7 +909,7 @@ msgstr "Tipo"
 
 msgctxt "field:account.journal,update_posted:"
 msgid "Allow cancelling moves"
-msgstr "Permitir cancelar asientos"
+msgstr "Permitir anular asientos"
 
 msgctxt "field:account.journal,view:"
 msgid "View"
@@ -942,7 +945,7 @@ msgstr "ID"
 
 msgctxt "field:account.journal.period,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.journal.period,name:"
 msgid "Name"
@@ -1102,7 +1105,7 @@ msgstr "ID"
 
 msgctxt "field:account.move,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
@@ -1126,7 +1129,7 @@ msgstr "Fecha Confirmación"
 
 msgctxt "field:account.move,post_number:"
 msgid "Post Number"
-msgstr "Número de Confirmación"
+msgstr "Folio"
 
 msgctxt "field:account.move,rec_name:"
 msgid "Name"
@@ -1150,7 +1153,7 @@ msgstr "Cuenta"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Cantidad Segunda Moneda"
+msgstr "Valor en Segunda Moneda"
 
 msgctxt "field:account.move.line,create_date:"
 msgid "Create Date"
@@ -1162,7 +1165,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1174,7 +1177,7 @@ msgstr "Fecha Efectiva"
 
 msgctxt "field:account.move.line,debit:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "field:account.move.line,description:"
 msgid "Description"
@@ -1186,7 +1189,7 @@ msgstr "ID"
 
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
@@ -1196,9 +1199,13 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Asiento"
 
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr "Descripción"
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
-msgstr "Estado Asiento"
+msgstr "Estado de Asiento"
 
 msgctxt "field:account.move.line,origin:"
 msgid "Origin"
@@ -1250,7 +1257,7 @@ msgstr "ID"
 
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
@@ -1278,15 +1285,11 @@ msgstr "ID"
 
 msgctxt "field:account.move.print_general_journal.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "Fecha Final"
-
-msgctxt "field:account.move.reconcile_lines.writeoff,account:"
-msgid "Account"
-msgstr "Cuenta"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
@@ -1300,13 +1303,17 @@ msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr "Fecha"
 
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "Descripción"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
@@ -1358,7 +1365,7 @@ msgstr "ID"
 
 msgctxt "field:account.open_aged_balance.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.open_aged_balance.start,term1:"
 msgid "First Term"
@@ -1390,7 +1397,7 @@ msgstr "ID"
 
 msgctxt "field:account.open_balance_sheet.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -1402,7 +1409,7 @@ msgstr "ID"
 
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.open_income_statement.start,company:"
 msgid "Company"
@@ -1410,7 +1417,7 @@ msgstr "Compañia"
 
 msgctxt "field:account.open_income_statement.start,end_period:"
 msgid "End Period"
-msgstr "Período final"
+msgstr "Período Final"
 
 msgctxt "field:account.open_income_statement.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -1422,7 +1429,7 @@ msgstr "ID"
 
 msgctxt "field:account.open_income_statement.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.open_income_statement.start,start_period:"
 msgid "Start Period"
@@ -1442,7 +1449,7 @@ msgstr "ID"
 
 msgctxt "field:account.open_third_party_balance.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.period,code:"
 msgid "Code"
@@ -1462,7 +1469,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.period,end_date:"
 msgid "Ending Date"
-msgstr "Fecha final"
+msgstr "Fecha Final"
 
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
@@ -1478,7 +1485,7 @@ msgstr "Nombre"
 
 msgctxt "field:account.period,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr "Secuencia de Asiento Confirmado"
+msgstr "Secuencia de Asiento Contabilizado"
 
 msgctxt "field:account.period,rec_name:"
 msgid "Name"
@@ -1510,11 +1517,11 @@ msgstr "Compañia"
 
 msgctxt "field:account.print_general_ledger.start,empty_account:"
 msgid "Empty Account"
-msgstr "Cuenta vacía"
+msgstr "Cuenta Vacía"
 
 msgctxt "field:account.print_general_ledger.start,end_period:"
 msgid "End Period"
-msgstr "Período final"
+msgstr "Período Final"
 
 msgctxt "field:account.print_general_ledger.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -1526,7 +1533,7 @@ msgstr "ID"
 
 msgctxt "field:account.print_general_ledger.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.print_general_ledger.start,start_period:"
 msgid "Start Period"
@@ -1538,11 +1545,11 @@ msgstr "Compañia"
 
 msgctxt "field:account.print_trial_balance.start,empty_account:"
 msgid "Empty Account"
-msgstr "Cuenta vacía"
+msgstr "Cuenta Vacía"
 
 msgctxt "field:account.print_trial_balance.start,end_period:"
 msgid "End Period"
-msgstr "Período final"
+msgstr "Período Final"
 
 msgctxt "field:account.print_trial_balance.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -1554,7 +1561,7 @@ msgstr "ID"
 
 msgctxt "field:account.print_trial_balance.start,posted:"
 msgid "Posted Move"
-msgstr "Asiento Confirmado"
+msgstr "Asiento Contabilizado"
 
 msgctxt "field:account.print_trial_balance.start,start_period:"
 msgid "Start Period"
@@ -1566,7 +1573,7 @@ msgstr "Activo"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.tax,childs:"
 msgid "Children"
@@ -1586,7 +1593,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.tax,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "Cuenta de Nota Crédito"
+msgstr "Cuenta Nota Crédito"
 
 msgctxt "field:account.tax,credit_note_base_code:"
 msgid "Credit Note Base Code"
@@ -1598,11 +1605,11 @@ msgstr "Signo Base de la Nota Crédito"
 
 msgctxt "field:account.tax,credit_note_tax_code:"
 msgid "Credit Note Tax Code"
-msgstr "Código de Impuesto de Nota Crédito"
+msgstr "Código de Impuesto Nota Crédito"
 
 msgctxt "field:account.tax,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
-msgstr "Signo de Impuesto de Nota Crédito"
+msgstr "Signo de Impuesto Nota Crédito"
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
@@ -1611,6 +1618,10 @@ msgstr "Decimales de Moneda"
 msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Descripción"
+
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "Fecha Final"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1626,11 +1637,11 @@ msgstr "Cuenta de la Factura"
 
 msgctxt "field:account.tax,invoice_base_code:"
 msgid "Invoice Base Code"
-msgstr "Código Base de la Factura"
+msgstr "Código de la Base en Factura"
 
 msgctxt "field:account.tax,invoice_base_sign:"
 msgid "Invoice Base Sign"
-msgstr "Signo Base de la Factura"
+msgstr "Signo de la Base en Factura"
 
 msgctxt "field:account.tax,invoice_tax_code:"
 msgid "Invoice Tax Code"
@@ -1659,6 +1670,10 @@ msgstr "Nombre"
 msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
+
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "Fecha Inicial"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -1842,7 +1857,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:account.tax.line,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.tax.line,code:"
 msgid "Code"
@@ -1994,7 +2009,7 @@ msgstr "ID"
 
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
-msgstr "Impuesto original"
+msgstr "Impuesto Original"
 
 msgctxt "field:account.tax.rule.line.template,rec_name:"
 msgid "Name"
@@ -2066,7 +2081,7 @@ msgstr "Plantilla de Cuenta"
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.tax.template,childs:"
 msgid "Children"
@@ -2082,7 +2097,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.tax.template,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "Cuenta de Nota Crédito"
+msgstr "Cuenta Nota Crédito"
 
 msgctxt "field:account.tax.template,credit_note_base_code:"
 msgid "Credit Note Base Code"
@@ -2094,15 +2109,19 @@ msgstr "Signo Base de la Nota Crédito"
 
 msgctxt "field:account.tax.template,credit_note_tax_code:"
 msgid "Credit Note Tax Code"
-msgstr "Código de Impuesto de Nota Crédito"
+msgstr "Código de Impuesto Nota Crédito"
 
 msgctxt "field:account.tax.template,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
-msgstr "Signo de Impuesto de Nota Crédito"
+msgstr "Signo de Impuesto Nota Crédito"
 
 msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Descripción"
+
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "Fecha Final"
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
@@ -2118,11 +2137,11 @@ msgstr "Cuenta de la Factura"
 
 msgctxt "field:account.tax.template,invoice_base_code:"
 msgid "Invoice Base Code"
-msgstr "Código Base de la Factura"
+msgstr "Código de la Base en Factura"
 
 msgctxt "field:account.tax.template,invoice_base_sign:"
 msgid "Invoice Base Sign"
-msgstr "Signo Base de la Factura"
+msgstr "Signo de la Base en Factura"
 
 msgctxt "field:account.tax.template,invoice_tax_code:"
 msgid "Invoice Tax Code"
@@ -2142,7 +2161,7 @@ msgstr "Padre"
 
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr "Tasa de Cambio"
+msgstr "Porcentaje"
 
 msgctxt "field:account.tax.template,rec_name:"
 msgid "Name"
@@ -2151,6 +2170,10 @@ msgstr "Nombre"
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
 msgstr "Secuencia"
+
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "Fecha Inicial"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2190,7 +2213,7 @@ msgstr "Regla de Impuesto a Cliente"
 
 msgctxt "field:party.party,payable:"
 msgid "Payable"
-msgstr "Por pagar"
+msgstr "Por Pagar"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
@@ -2198,7 +2221,7 @@ msgstr "Por Pagar Hoy"
 
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
-msgstr "Por cobrar"
+msgstr "Por Cobrar"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
@@ -2206,7 +2229,7 @@ msgstr "Por Cobrar Hoy"
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr "Regla de impuesto de proveedor"
+msgstr "Regla de Impuesto a Proveedor"
 
 msgctxt "help:account.account,reconcile:"
 msgid ""
@@ -2220,7 +2243,7 @@ msgid ""
 "to have this secondary currency."
 msgstr ""
 "Fuerza el uso de la segunda moneda \n"
-"en todos los asientos de esta cuenta."
+"a todos los asientos de esta cuenta."
 
 msgctxt "help:account.account,taxes:"
 msgid ""
@@ -2228,7 +2251,7 @@ msgid ""
 "for journal types: \"expense\" and \"revenue\""
 msgstr ""
 "Impuesto por defecto para la codificación manual\n"
-"de líneas de asientos para diarios de tipo: \"gastos\" e \"ingresos\"."
+"de líneas de asientos para libros de tipo: \"gastos\" e \"ingresos\"."
 
 msgctxt "help:account.account.type,sequence:"
 msgid "Use to order the account type"
@@ -2268,7 +2291,7 @@ msgstr "Muestra sólo asientos confirmados."
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr "Dejarlo vacío para abrir todos los años fiscales."
+msgstr "Dejar vacío para abrir todos los años fiscales."
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
@@ -2328,7 +2351,7 @@ msgstr "Usar para ordenar los impuestos."
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr "Dejarlo vacío para abrir todos los años fiscales."
+msgstr "Dejar vacío para abrir todos los años fiscales."
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
@@ -2417,7 +2440,7 @@ msgstr "Plantilla de Tipo de Cuenta"
 
 msgctxt "model:account.account.type.template,name:account_type_template_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_current"
@@ -2432,7 +2455,7 @@ msgstr "Efectivo"
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_current_receivable"
 msgid "Receivable"
-msgstr "Por cobrar"
+msgstr "Por Cobrar"
 
 msgctxt ""
 "model:account.account.type.template,name:account_type_template_asset_long_term"
@@ -2516,7 +2539,7 @@ msgstr "Año Fiscal"
 
 msgctxt "model:account.fiscalyear-account.move.line,name:"
 msgid "Fiscal Year - Move Line"
-msgstr "Año fiscal - Línea de asiento"
+msgstr "Año Fiscal - Línea de Asiento"
 
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
@@ -2528,7 +2551,7 @@ msgstr "Cerrar Año Fiscal"
 
 msgctxt "model:account.journal,name:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
@@ -2544,15 +2567,15 @@ msgstr "Ingresos"
 
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
-msgstr "Existencias"
+msgstr "Inventarios"
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
-msgstr "Libro Diario - Período"
+msgstr "Libro Contable - Período"
 
 msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
-msgstr "Tipo de Libro Diario"
+msgstr "Tipo de Libro"
 
 msgctxt "model:account.journal.type,name:journal_type_cash"
 msgid "Cash"
@@ -2574,9 +2597,13 @@ msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
 msgstr "Situación"
 
+msgctxt "model:account.journal.type,name:journal_type_write_off"
+msgid "Write-Off"
+msgstr "Anulado"
+
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
-msgstr "Vista de Libro Diario"
+msgstr "Vista de Libro Contable"
 
 msgctxt "model:account.journal.view.column,name:"
 msgid "Journal View Column"
@@ -2592,15 +2619,15 @@ msgstr "Línea de Asiento"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr "Abrir el Libro Diario Pregunta"
+msgstr "Abrir Libro Contable Pregunta"
 
 msgctxt "model:account.move.open_reconcile_lines.start,name:"
 msgid "Open Reconcile Lines"
-msgstr "Abrir Líneas de Conciliación"
+msgstr "Abrir Conciliación de Lineas"
 
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
-msgstr "Imprimir Libro Diario General"
+msgstr "Imprimir Libro General"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -2612,7 +2639,7 @@ msgstr "Líneas Conciliación de Asiento"
 
 msgctxt "model:account.move.unreconcile_lines.start,name:"
 msgid "Unreconcile Lines"
-msgstr "Desconciliar líneas"
+msgstr "Desconciliar Líneas"
 
 msgctxt "model:account.open_aged_balance.start,name:"
 msgid "Open Aged Balance"
@@ -2620,7 +2647,7 @@ msgstr "Abrir Cartera Vencida"
 
 msgctxt "model:account.open_balance_sheet.start,name:"
 msgid "Open Balance Sheet"
-msgstr "Abrir Balance General"
+msgstr "Abrir Estado de Situación Financiera"
 
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
@@ -2628,11 +2655,11 @@ msgstr "Abrir Plan de Cuentas"
 
 msgctxt "model:account.open_income_statement.start,name:"
 msgid "Open Income Statement"
-msgstr "Abrir Estado de Resultados"
+msgstr "Abrir Estado de Resultado Integral"
 
 msgctxt "model:account.open_third_party_balance.start,name:"
 msgid "Open Third Party Balance"
-msgstr "Abrir Balance de un Tercero"
+msgstr "Abrir Balance de Tercero"
 
 msgctxt "model:account.period,name:"
 msgid "Period"
@@ -2656,7 +2683,7 @@ msgstr "Código de Impuesto"
 
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr "Abrir Plan de Cuentas de Códigos de Impuesto"
+msgstr "Abrir Plan de Códigos de Impuesto"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
@@ -2700,11 +2727,11 @@ msgstr "Actualizar Plan de Cuentas"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Balance General"
+msgstr "Estado de Situación Financiera"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr "Estado de Resultados"
+msgstr "Estado de Resultado Integral"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
@@ -2748,7 +2775,7 @@ msgstr "Cerrar Año Fiscal"
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Abrir Plan de Cuentas de Códigos de Impuesto"
+msgstr "Abrir Plan de Códigos de Impuesto"
 
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
@@ -2760,7 +2787,7 @@ msgstr "Años Fiscales"
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr "Libros Diarios"
+msgstr "Libros Contables"
 
 msgctxt "model:ir.action,name:act_journal_period_close"
 msgid "Close Journals - Periods"
@@ -2768,27 +2795,27 @@ msgstr "Cerrar Libros - Períodos"
 
 msgctxt "model:ir.action,name:act_journal_period_form"
 msgid "Journals - Periods"
-msgstr "Libros Diarios - Períodos"
+msgstr "Libros Contables - Períodos"
 
 msgctxt "model:ir.action,name:act_journal_period_reopen"
 msgid "Re-Open Journals - Periods"
-msgstr "Reabrir Libros Diarios - Períodos"
+msgstr "Reabrir Libros - Períodos"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Libros Diarios - Períodos"
+msgstr "Libros Contables - Períodos"
 
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Libros Diarios - Períodos"
+msgstr "Libros Contables - Períodos"
 
 msgctxt "model:ir.action,name:act_journal_type_form"
 msgid "Journal Types"
-msgstr "Tipos de Libro Diario"
+msgstr "Tipos de Libros"
 
 msgctxt "model:ir.action,name:act_journal_view_form"
 msgid "Journal Views"
-msgstr "Vistas de Libros Diarios"
+msgstr "Vistas de Libros"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
@@ -2806,9 +2833,13 @@ msgctxt "model:ir.action,name:act_move_line_receivable"
 msgid "Receivable Lines"
 msgstr "Líneas de Cuentas por Cobrar"
 
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr "Conciliación de Líneas"
+
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr "Abrir Cuenta del Asiento"
+msgstr "Abrir  Asiento Contable"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Accounts"
@@ -2816,11 +2847,11 @@ msgstr "Abrir Plan de Cuentas"
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr "Abrir Libro Diario"
+msgstr "Abrir Libro Contable"
 
 msgctxt "model:ir.action,name:act_open_reconcile_lines"
 msgid "Open Reconcile Lines"
-msgstr "Abrir Líneas de Conciliación"
+msgstr "Abrir Conciliación de Lineas"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
@@ -2852,7 +2883,7 @@ msgstr "Conciliar Líneas"
 
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
-msgstr "Códigos de impuesto"
+msgstr "Códigos de Impuesto"
 
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
@@ -2860,11 +2891,11 @@ msgstr "Plantillas de Códigos de Impuesto"
 
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Códigos de impuesto"
+msgstr "Códigos de Impuesto"
 
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
-msgstr "Códigos de impuesto"
+msgstr "Códigos de Impuesto"
 
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Tax Groups"
@@ -2896,7 +2927,7 @@ msgstr "Impuestos"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Desconciliar líneas"
+msgstr "Desconciliar Líneas"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
@@ -2904,7 +2935,7 @@ msgstr "Cartera Vencida"
 
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
@@ -2928,15 +2959,15 @@ msgstr "Abrir Cartera Vencida"
 
 msgctxt "model:ir.action,name:wizard_open_balance_sheet"
 msgid "Open Balance Sheet"
-msgstr "Abrir Balance General"
+msgstr "Abrir Estado de Situación Financiera"
 
 msgctxt "model:ir.action,name:wizard_open_income_statement"
 msgid "Open Income Statement"
-msgstr "Abrir Estado de Resultados"
+msgstr "Abrir Estado de Resultado Integral"
 
 msgctxt "model:ir.action,name:wizard_open_third_party_balance"
 msgid "Open Third Party Balance"
-msgstr "Abrir Balance de un Tercero"
+msgstr "Abrir Balance de Tercero"
 
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
@@ -2952,7 +2983,7 @@ msgstr "Imprimir Balance de Prueba"
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Actualizar Plan de Cuentas Desde Plantilla"
+msgstr "Actualizar Plan de Cuentas desde Plantilla"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -3025,7 +3056,7 @@ msgstr "Cerrar Año Fiscal"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Abrir Plan de Cuentas de Códigos de Impuesto"
+msgstr "Abrir Plan de Códigos de Impuesto"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -3045,15 +3076,15 @@ msgstr "Años Fiscales"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "Cuentas"
+msgstr "Plan de Cuentas"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr "Libros Diarios"
+msgstr "Libros Contables"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr "Libros Diarios"
+msgstr "Libros Contables"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
 msgid "Close Journals - Periods"
@@ -3061,19 +3092,19 @@ msgstr "Cerrar Libros - Períodos"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Libros Diarios - Períodos"
+msgstr "Libros Contables - Períodos"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Libros Diarios - Períodos"
+msgstr "Libros Contables - Períodos"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
 msgid "Journal Types"
-msgstr "Tipos de Libro Diario"
+msgstr "Tipos de Libros"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_view_form"
 msgid "Journal Views"
-msgstr "Vistas de Libros Diarios"
+msgstr "Vistas de Libros"
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
@@ -3081,7 +3112,7 @@ msgstr "Asientos Contables"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Balance General"
+msgstr "Estado de Situación Financiera"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
@@ -3089,11 +3120,11 @@ msgstr "Abrir Plan de Cuentas"
 
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr "Estado de Resultados"
+msgstr "Estado de Resultado Integral"
 
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Abrir Libro Diario"
+msgstr "Abrir Libro Contable"
 
 msgctxt "model:ir.ui.menu,name:menu_open_reconcile_lines"
 msgid "Reconcile Lines"
@@ -3109,7 +3140,7 @@ msgstr "Cerrar Períodos"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
-msgstr "Imprimir Libro Diario General"
+msgstr "Imprimir Libro General"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_ledger"
 msgid "Print General Legder"
@@ -3121,7 +3152,7 @@ msgstr "Imprimir Balance de Prueba"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Procesamiento"
+msgstr "Procesos"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -3129,7 +3160,7 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
-msgstr "Códigos de impuesto"
+msgstr "Códigos de Impuesto"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
@@ -3137,7 +3168,7 @@ msgstr "Plantillas de Códigos de Impuesto"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Códigos de impuesto"
+msgstr "Códigos de Impuesto"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
@@ -3173,7 +3204,7 @@ msgstr "Balance de Tercero"
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Actualizar Plan de Cuentas Desde Plantilla"
+msgstr "Actualizar Plan de Cuentas desde Plantilla"
 
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
@@ -3261,7 +3292,7 @@ msgstr "Compañia:"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Date"
@@ -3269,7 +3300,7 @@ msgstr "Fecha"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Descr."
@@ -3297,7 +3328,7 @@ msgstr "Origen"
 
 msgctxt "odt:account.general_ledger:"
 msgid "Print Date:"
-msgstr "Fecha de impresión:"
+msgstr "Fecha de Impresión:"
 
 msgctxt "odt:account.general_ledger:"
 msgid "State"
@@ -3333,7 +3364,7 @@ msgstr "Compañia:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Date:"
@@ -3341,7 +3372,7 @@ msgstr "Fecha:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Description"
@@ -3357,11 +3388,11 @@ msgstr "Fecha inicial:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "General Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Journal Entry:"
-msgstr "Asiento de Libro Diario:"
+msgstr "Asiento en Libro:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Origin:"
@@ -3369,11 +3400,11 @@ msgstr "Origen:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Contabilizado"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Print Date:"
-msgstr "Fecha impresión:"
+msgstr "Fecha de Impresión:"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "To Date:"
@@ -3401,11 +3432,11 @@ msgstr "Compañia:"
 
 msgctxt "odt:account.third_party_balance:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "odt:account.third_party_balance:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "odt:account.third_party_balance:"
 msgid "Party"
@@ -3413,7 +3444,7 @@ msgstr "Tercero"
 
 msgctxt "odt:account.third_party_balance:"
 msgid "Print Date:"
-msgstr "Fecha de impresión:"
+msgstr "Fecha de Impresión:"
 
 msgctxt "odt:account.third_party_balance:"
 msgid "Third Party Balance"
@@ -3445,15 +3476,15 @@ msgstr "Compañia:"
 
 msgctxt "odt:account.trial_balance:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "odt:account.trial_balance:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "odt:account.trial_balance:"
 msgid "End Balance"
-msgstr "Balance Final"
+msgstr "Saldo Final"
 
 msgctxt "odt:account.trial_balance:"
 msgid "From Period:"
@@ -3509,7 +3540,7 @@ msgstr "Ingresos"
 
 msgctxt "selection:account.account,kind:"
 msgid "Stock"
-msgstr "Existencias"
+msgstr "Inventarios"
 
 msgctxt "selection:account.account,kind:"
 msgid "View"
@@ -3529,7 +3560,7 @@ msgstr "Por pagar"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Receivable"
-msgstr "Por cobrar"
+msgstr "Por Cobrar"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Revenue"
@@ -3537,7 +3568,7 @@ msgstr "Ingresos"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Stock"
-msgstr "Existencias"
+msgstr "Inventarios"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "View"
@@ -3581,7 +3612,7 @@ msgstr "Borrador"
 
 msgctxt "selection:account.move,state:"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Contabilizado"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Draft"
@@ -3589,7 +3620,7 @@ msgstr "Borrador"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Contabilizado"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Draft"
@@ -3737,7 +3768,7 @@ msgstr "Tipos de cuenta"
 
 msgctxt "view:account.account.type:"
 msgid "Balance Sheet"
-msgstr "Balance General"
+msgstr "Estado de Situación Financiera"
 
 msgctxt "view:account.account.type:"
 msgid "Income Statement"
@@ -3797,7 +3828,7 @@ msgstr "Cerrar Año Fiscal"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Are you sure to close fiscal year?"
-msgstr "¿Está seguro que quiere cerrar el año fiscal?"
+msgstr "Está seguro que quiere cerrar el año fiscal?"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Close Fiscal Year"
@@ -3833,19 +3864,19 @@ msgstr "Secuencias"
 
 msgctxt "view:account.journal.period:"
 msgid "Journal - Period"
-msgstr "Libro Diario - Período"
+msgstr "Libro Contable - Período"
 
 msgctxt "view:account.journal.period:"
 msgid "Journals - Periods"
-msgstr "Libros Diarios - Períodos"
+msgstr "Libros Contables - Períodos"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Type"
-msgstr "Tipo de Libro Diario"
+msgstr "Tipo de Libro"
 
 msgctxt "view:account.journal.type:"
 msgid "Journal Types"
-msgstr "Tipos de Libro Diario"
+msgstr "Tipos de Libros"
 
 msgctxt "view:account.journal.view.column:"
 msgid "View Column"
@@ -3857,23 +3888,23 @@ msgstr "Ver Columnas"
 
 msgctxt "view:account.journal.view:"
 msgid "Journal View"
-msgstr "Vista de Libro Diario"
+msgstr "Vista de Libro Contable"
 
 msgctxt "view:account.journal.view:"
 msgid "Journal Views"
-msgstr "Vistas de Libros Diarios"
+msgstr "Vistas de Libros"
 
 msgctxt "view:account.journal:"
 msgid "General Information"
-msgstr "Información general"
+msgstr "Información General"
 
 msgctxt "view:account.journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "view:account.journal:"
 msgid "Journals"
-msgstr "Libros Diarios"
+msgstr "Libros Contables"
 
 msgctxt "view:account.move.line:"
 msgid "Account Move Line"
@@ -3885,11 +3916,11 @@ msgstr "Líneas de Asiento"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Haber"
+msgstr "Crédito"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débito"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
@@ -3897,11 +3928,11 @@ msgstr "Info Adicional"
 
 msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
-msgstr "Abrir Libro Diario"
+msgstr "Abrir Libro Contable"
 
 msgctxt "view:account.move.open_reconcile_lines.start:"
 msgid "Open Reconcile Lines"
-msgstr "Abrir Líneas de Conciliación"
+msgstr "Abrir Conciliación de Lineas"
 
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
@@ -3933,7 +3964,7 @@ msgstr "Borrador"
 
 msgctxt "view:account.move:"
 msgid "Post"
-msgstr "Confirmar"
+msgstr "Contabilizar"
 
 msgctxt "view:account.open_aged_balance.start:"
 msgid "Open Aged Balance"
@@ -3945,7 +3976,7 @@ msgstr "Plazos"
 
 msgctxt "view:account.open_balance_sheet.start:"
 msgid "Open Balance Sheet"
-msgstr "Abrir Balance General"
+msgstr "Abrir Estado de Situación Financiera"
 
 msgctxt "view:account.open_chart.start:"
 msgid "Open Chart of Accounts"
@@ -3953,11 +3984,11 @@ msgstr "Abrir Plan de Cuentas"
 
 msgctxt "view:account.open_income_statement.start:"
 msgid "Open Income Statement"
-msgstr "Abrir Estado de Resultados"
+msgstr "Abrir Estado de Resultado Integral"
 
 msgctxt "view:account.open_third_party_balance.start:"
 msgid "Open Third Party Balance"
-msgstr "Abrir Balance de un Tercero"
+msgstr "Abrir Balance de Tercero"
 
 msgctxt "view:account.period:"
 msgid "Period"
@@ -3977,7 +4008,7 @@ msgstr "Imprimir Balance de Prueba"
 
 msgctxt "view:account.tax.code.open_chart.start:"
 msgid "Open Chart of Tax Codes"
-msgstr "Abrir Plan de Cuentas de Códigos de Impuesto"
+msgstr "Abrir Plan de Códigos de Impuesto"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Children"
@@ -4005,11 +4036,11 @@ msgstr "Descripción"
 
 msgctxt "view:account.tax.code:"
 msgid "Tax Code"
-msgstr "Código de impuesto"
+msgstr "Código de Impuesto"
 
 msgctxt "view:account.tax.code:"
 msgid "Tax Codes"
-msgstr "Códigos de impuesto"
+msgstr "Códigos de Impuesto"
 
 msgctxt "view:account.tax.group:"
 msgid "Tax Group"
