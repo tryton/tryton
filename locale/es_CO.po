@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "Activo \"%s\" debe estar en borrador antes de ser eliminado!"
+msgstr "El activo fijo \"%s\" debe estar en borrador antes de ser eliminado!"
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset!"
@@ -16,11 +16,11 @@ msgstr "El activo solo puede ser usado una vez en línea de factura!"
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"!"
-msgstr "Falta una \"Cuenta de Activo\" en producto \"%s\"!"
+msgstr "Falta la \"Cuenta de Activo Fijo\" en el producto \"%s\"!"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "Libro Diario"
+msgstr "Libro Contable"
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
@@ -64,7 +64,7 @@ msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "Líneas de Inventario"
+msgstr "Líneas"
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
@@ -72,7 +72,7 @@ msgstr "Asiento Contable"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
@@ -132,7 +132,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
@@ -184,7 +184,7 @@ msgstr "Valor Actual"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
@@ -228,7 +228,7 @@ msgstr "Modificado por Usuario"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "Cantidad"
+msgstr "Valor"
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
@@ -260,19 +260,19 @@ msgstr "Valor Residual"
 
 msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
-msgstr "Valor de Activo"
+msgstr "Valor de Activo Fijo"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Secuencia de Activos"
+msgstr "Secuencia de Activo Fijo"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Es activo depreciable."
+msgstr "Es activo fijo depreciable."
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
@@ -328,11 +328,11 @@ msgstr "Depreciación"
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Activo - Actualizar - Asiento"
+msgstr "Activo Fijo - Actualizar - Asiento"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
@@ -352,23 +352,23 @@ msgstr "Empezar a Actualizar Activo"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Activos Fijos"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Crear Asiento de Activos"
+msgstr "Crear Asiento de Activos Fijos"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Actualizar Activo"
+msgstr "Actualizar Activo Fijo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
@@ -388,23 +388,23 @@ msgstr "En ejecución"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Activos Fijos"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Activos Fijos"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Crear Asiento de Activos"
+msgstr "Crear Asiento de Activos Fijos"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
@@ -432,11 +432,11 @@ msgstr "En ejecución"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves"
-msgstr "Crear Asiento de Activos"
+msgstr "Crear Asiento de Activos Fijos"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Crear Asientos de Activos Hasta"
+msgstr "Crear Asientos de Activos Fijos Hasta"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
@@ -448,15 +448,19 @@ msgstr "Líneas de Activo"
 
 msgctxt "view:account.asset.update.show_depreciation:"
 msgid "Asset Depreciation Move"
-msgstr "Asiento de Depreciación de Activo"
+msgstr "Asiento de Depreciación de Activo Fijo"
 
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
-msgstr "Actualizar Activo"
+msgstr "Actualizar Activo Fijo"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Está seguro que quiere cerrar el año fiscal?"
 
 msgctxt "view:account.asset:"
 msgid "Asset"
-msgstr "Activo"
+msgstr "Activo Fijo"
 
 msgctxt "view:account.asset:"
 msgid "Assets"
@@ -480,7 +484,7 @@ msgstr "Líneas"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "Información Adicional"
+msgstr "Info Adicional"
 
 msgctxt "view:account.asset:"
 msgid "Run"
@@ -488,7 +492,7 @@ msgstr "Ejecutar"
 
 msgctxt "view:account.asset:"
 msgid "Update Asset"
-msgstr "Actualizar Activo"
+msgstr "Actualizar Activo Fijo"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
