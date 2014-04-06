@@ -40,7 +40,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Gestión de Moneda"
+msgstr "Decimales de Moneda"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -60,11 +60,11 @@ msgstr "Fecha Vencimiento"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Terceros"
+msgstr "Tercero"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
-msgstr "Proceso"
+msgstr "Procedimiento"
 
 msgctxt "field:account.dunning,rec_name:"
 msgid "Name"
@@ -84,7 +84,7 @@ msgstr "Estado"
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
@@ -116,7 +116,7 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
-msgstr "Proceso"
+msgstr "Procedimiento"
 
 msgctxt "field:account.dunning.level,rec_name:"
 msgid "Name"
@@ -128,7 +128,7 @@ msgstr "Secuencia"
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
@@ -160,7 +160,7 @@ msgstr "Nombre"
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
@@ -176,7 +176,7 @@ msgstr "Cobros"
 
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "Proceso de Cobro"
+msgstr "Procedimiento de Cobro"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
@@ -208,7 +208,7 @@ msgstr "Cobros"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procesos de Cobro"
+msgstr "Procedimientos de Cobro"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
@@ -224,7 +224,7 @@ msgstr "Todo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Terminado"
+msgstr "Hecho"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -244,7 +244,7 @@ msgstr "Cobros"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Proceso de Cobro"
+msgstr "Procedimientos de Cobro"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
@@ -256,7 +256,7 @@ msgstr "Cobro"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Terminado"
+msgstr "Hecho"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
@@ -280,11 +280,11 @@ msgstr "niveles de cobro"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedure"
-msgstr "Proceso de Cobro"
+msgstr "Procedimiento de Cobro"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedures"
-msgstr "Procedimiento de Cobro"
+msgstr "Procedimientos de Cobro"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning"
@@ -317,6 +317,10 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Procesar"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "process"
