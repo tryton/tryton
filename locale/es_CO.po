@@ -120,19 +120,19 @@ msgstr "Duración"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Final Temprano"
+msgstr "Finalizar Temprano"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Tiempo del Temprano Final"
+msgstr "Tiempo de Finalización Temprana"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Comienzo Temprano"
+msgstr "Iniciar Temprano"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Tiempo el Temprano Comienzo"
+msgstr "Tiempo de Inicio Temprano"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
@@ -152,7 +152,7 @@ msgstr "Tiempo del Tardío Comienzo"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
-msgstr "Retardo del Escalamiento"
+msgstr "Retardo de Nivel"
 
 msgctxt "field:project.work,predecessors:"
 msgid "Predecessors"
@@ -164,7 +164,7 @@ msgstr "Sucesores"
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Escalamiento de Tareas"
+msgstr "Niveles de Tareas"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
