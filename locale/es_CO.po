@@ -60,7 +60,7 @@ msgstr "ID"
 
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
-msgstr "Líneas de Inventario"
+msgstr "Líneas"
 
 msgctxt "field:stock.forecast,rec_name:"
 msgid "Name"
@@ -132,7 +132,7 @@ msgstr "Movimientos"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
-msgstr "Productos"
+msgstr "Producto"
 
 msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
@@ -152,7 +152,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la Unidad"
+msgstr "Decimales de Unidad"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
@@ -192,7 +192,7 @@ msgstr "Nombre"
 
 msgctxt "field:stock.forecast.line-stock.move,write_date:"
 msgid "Write Date"
-msgstr "Fecha de Creación"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:stock.forecast.line-stock.move,write_uid:"
 msgid "Write User"
@@ -313,7 +313,7 @@ msgstr "Cancelar"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
 msgid "Choose Dates"
-msgstr "Escoja las Fechas"
+msgstr "Escoger Fechas"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
