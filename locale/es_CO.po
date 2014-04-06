@@ -92,7 +92,7 @@ msgstr "Atributos"
 
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
-msgstr "Creado por Usuario"
+msgstr "Fecha de Creación"
 
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
