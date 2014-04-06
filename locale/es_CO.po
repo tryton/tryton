@@ -48,7 +48,7 @@ msgstr "Nombre"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
@@ -96,7 +96,7 @@ msgstr "Nombre"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
 msgid "Write User"
@@ -136,7 +136,7 @@ msgstr "Semana"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
 msgid "Write User"
@@ -184,7 +184,7 @@ msgstr "Trabajo"
 
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:timesheet.line,write_uid:"
 msgid "Write User"
@@ -268,7 +268,7 @@ msgstr "Inicio de Registro de Tiempo"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
-msgstr "Modificado por Usuario"
+msgstr "Fecha de Modificación"
 
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
