@@ -6,7 +6,7 @@ import tempfile
 import locale
 from tryton.common import datetime_strftime, \
         domain_inversion, eval_domain, localize_domain, \
-        merge, inverse_leaf, concat, EvalEnvironment
+        merge, inverse_leaf, concat, simplify, EvalEnvironment
 import tryton.common as common
 import time
 import datetime
@@ -79,7 +79,7 @@ class Field(object):
             return True
         res = True
         self.get_state_attrs(record)['domain_readonly'] = False
-        domain = self.validation_domains(record)
+        domain = simplify(self.validation_domains(record))
         if not softvalidation:
             res = res and self.check_required(record)
         if isinstance(domain, bool):
