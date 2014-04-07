@@ -50,7 +50,7 @@ class WinForm(NoModal):
         self.but_ok = None
         self.but_new = None
 
-        if view_type == 'form' and not readonly:
+        if view_type == 'form':
             if not new and self.screen.current_record.id < 0:
                 stock_id = gtk.STOCK_DELETE
             else:
