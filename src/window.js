@@ -42,7 +42,7 @@
 
             var buttons = [];
 
-            if ((view_type == 'form') && !readonly) {
+            if (view_type == 'form') {
                 buttons.push({
                     text: (!kwargs.new_ && this.screen.current_record.id < 0 ?
                            'Delete' : 'Cancel'),
