@@ -1086,7 +1086,8 @@
                 return true;
             }
             this.get_state_attrs(record).domain_readonly = false;
-            var domain = this.validation_domains(record);
+            var inversion = new Sao.common.DomainInversion();
+            var domain = inversion.simplify(this.validation_domains(record));
             if (!softvalidation) {
                 result &= this.check_required(record);
             }
@@ -1095,7 +1096,6 @@
             } else if (Sao.common.compare(domain, [['id', '=', null]])) {
                 result = false;
             } else {
-                var inversion = new Sao.common.DomainInversion();
                 if ((domain instanceof Array) &&
                         (domain.length == 1) &&
                         (domain[0][1] == '=')) {
