@@ -410,6 +410,7 @@ class User(ModelSQL, ModelView):
 
         def convert2selection(definition, name):
             del definition[name]['relation']
+            del definition[name]['domain']
             definition[name]['type'] = 'selection'
             selection = []
             definition[name]['selection'] = selection
