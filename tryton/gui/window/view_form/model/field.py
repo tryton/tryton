@@ -50,7 +50,7 @@ class CharField(object):
         screen_domain = domain_inversion(record.group.domain4inversion,
             self.name, EvalEnvironment(record, False))
         if isinstance(screen_domain, bool) and not screen_domain:
-            screen_domain = [('id', '=', False)]
+            screen_domain = [('id', '=', None)]
         elif isinstance(screen_domain, bool) and screen_domain:
             screen_domain = []
         attr_domain = record.expr_eval(self.attrs.get('domain', []))
