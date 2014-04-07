@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="company"/>
         <field name="company" widget="selection"/>
         <label name="employee"/>
-        <field name="employee"/>
+        <field name="employee" widget="selection"/>
         <field name="employees" colspan="4"/>
     </xpath>
 </data>
