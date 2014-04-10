@@ -687,7 +687,7 @@
                 this.group.written(ids);
             }
             if (this.parent) {
-                this.parent.reload();
+                this.parent.root_parent().reload();
             }
             this.display();
         },

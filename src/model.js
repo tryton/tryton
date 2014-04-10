@@ -866,6 +866,13 @@
             return Sao.common.compare(Object.keys(this.model.fields),
                     Object.keys(this._loaded));
         },
+        root_parent: function root_parent() {
+            var parent = this;
+            while (!parent.group.parent) {
+                parent = parent.group.parent;
+            }
+            return parent;
+        },
         deleted: function() {
             return Boolean(~this.group.record_deleted.indexOf(this));
         },
