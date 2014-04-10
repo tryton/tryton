@@ -542,7 +542,7 @@ class Screen(SignalEvent):
         if written:
             self.group.written(ids)
         if self.parent:
-            self.parent.reload()
+            self.parent.root_parent.reload()
         self.display()
 
     def unremove(self):

@@ -160,6 +160,13 @@ class Record(SignalEvent):
         return self.group.parent_name
 
     @property
+    def root_parent(self):
+        parent = self
+        while parent.parent:
+            parent = parent.parent
+        return parent
+
+    @property
     def depth(self):
         parent = self.parent
         i = 0
