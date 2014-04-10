@@ -186,7 +186,7 @@ MODELHISTORY = ModelHistory()
 
 
 class ViewSearch(object):
-    searches = None
+    searches = {}
 
     def load_searches(self):
         try:
