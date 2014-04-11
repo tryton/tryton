@@ -108,8 +108,6 @@ class Many2Many(Field):
             (``copy``, ``<ids>``, ``[{<field name>: value}, ...]``)
         '''
         pool = Pool()
-        if not values:
-            return
         Relation = pool.get(self.relation_name)
         Target = self.get_target()
         origin_field = Relation._fields[self.origin]
