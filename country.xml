@@ -899,7 +899,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="country.country" id="ps">
-            <field name="name">Palestinian Territory, Occupied</field>
+            <field name="name">Palestine, State of</field>
             <field name="code">PS</field>
         </record>
 
@@ -21118,7 +21118,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="country.subdivision" id="se-z">
-            <field name="name">Jämtlande län</field>
+            <field name="name">Jämtlands län</field>
             <field name="code">SE-Z</field>
             <field name="type">county</field>
             <field name="country" ref="se"/>
@@ -21264,25 +21264,25 @@ this repository contains the full copyright notices and license terms. -->
             <field name="country" ref="sg"/>
         </record>
 
-        <record model="country.subdivision" id="sg-ac">
+        <record model="country.subdivision" id="sh-ac">
             <field name="name">Ascension</field>
-            <field name="code">SG-AC</field>
+            <field name="code">SH-AC</field>
             <field name="type">geographical entity</field>
-            <field name="country" ref="sg"/>
+            <field name="country" ref="sh"/>
         </record>
 
-        <record model="country.subdivision" id="sg-hl">
+        <record model="country.subdivision" id="sh-hl">
             <field name="name">Saint Helena</field>
-            <field name="code">SG-HL</field>
+            <field name="code">SH-HL</field>
             <field name="type">geographical entity</field>
-            <field name="country" ref="sg"/>
+            <field name="country" ref="sh"/>
         </record>
 
-        <record model="country.subdivision" id="sg-ta">
+        <record model="country.subdivision" id="sh-ta">
             <field name="name">Tristan da Cunha</field>
-            <field name="code">SG-TA</field>
+            <field name="code">SH-TA</field>
             <field name="type">geographical entity</field>
-            <field name="country" ref="sg"/>
+            <field name="country" ref="sh"/>
         </record>
 
         <record model="country.subdivision" id="si-001">
@@ -23196,74 +23196,74 @@ this repository contains the full copyright notices and license terms. -->
             <field name="country" ref="sr"/>
         </record>
 
-        <record model="country.subdivision" id="sd-ec">
+        <record model="country.subdivision" id="ss-ec">
             <field name="name">Central Equatoria</field>
-            <field name="code">SD-EC</field>
+            <field name="code">SS-EC</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-ee8">
+        <record model="country.subdivision" id="ss-ee8">
             <field name="name">Eastern Equatoria</field>
-            <field name="code">SD-EE8</field>
+            <field name="code">SS-EE8</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-jg">
+        <record model="country.subdivision" id="ss-jg">
             <field name="name">Jonglei</field>
-            <field name="code">SD-JG</field>
+            <field name="code">SS-JG</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-lk">
+        <record model="country.subdivision" id="ss-lk">
             <field name="name">Lakes</field>
-            <field name="code">SD-LK</field>
+            <field name="code">SS-LK</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-bn">
+        <record model="country.subdivision" id="ss-bn">
             <field name="name">Northern Bahr el-Ghazal</field>
-            <field name="code">SD-BN</field>
+            <field name="code">SS-BN</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-uy">
+        <record model="country.subdivision" id="ss-uy">
             <field name="name">Unity</field>
-            <field name="code">SD-UY</field>
+            <field name="code">SS-UY</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-nu">
+        <record model="country.subdivision" id="ss-nu">
             <field name="name">Upper Nile</field>
-            <field name="code">SD-NU</field>
+            <field name="code">SS-NU</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-wr">
+        <record model="country.subdivision" id="ss-wr">
             <field name="name">Warrap</field>
-            <field name="code">SD-WR</field>
+            <field name="code">SS-WR</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-bw">
+        <record model="country.subdivision" id="ss-bw">
             <field name="name">Western Bahr el-Ghazal</field>
-            <field name="code">SD-BW</field>
+            <field name="code">SS-BW</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
-        <record model="country.subdivision" id="sd-ew">
+        <record model="country.subdivision" id="ss-ew">
             <field name="name">Western Equatoria</field>
-            <field name="code">SD-EW</field>
+            <field name="code">SS-EW</field>
             <field name="type">state</field>
-            <field name="country" ref="sd"/>
+            <field name="country" ref="ss"/>
         </record>
 
         <record model="country.subdivision" id="st-p">
