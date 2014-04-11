@@ -874,7 +874,7 @@ msgstr "Código reservado para pruebas"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr "Sin moneda"
+msgstr "Sin divisa"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"

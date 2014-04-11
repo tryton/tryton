@@ -36,7 +36,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
-msgstr "Decimales a Mostrar"
+msgstr "Dígitos a Mostrar"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
