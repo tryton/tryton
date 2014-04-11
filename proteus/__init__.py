@@ -691,6 +691,7 @@ class Model(object):
     def click(self, button):
         'Click on button'
         self.save()
+        self.reload()  # Force reload because save doesn't always
         return getattr(self._proxy, button)([self.id], self._config.context)
 
     def _get_values(self, fields=None):
