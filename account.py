@@ -31,5 +31,5 @@ class InvoiceLine:
         quantity = 0
         for stock_move in self.stock_moves:
             quantity += Uom.compute_qty(stock_move.uom, stock_move.quantity,
-                self.uom)
+                self.unit)
         return quantity
