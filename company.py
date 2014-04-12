@@ -193,6 +193,7 @@ class User:
 
         if 'company' in res['fields']:
             selection = convert2selection(res['fields'], 'company')
+            selection.append((None, ''))
             user = cls(Transaction().user)
             if user.main_company:
                 companies = Company.search([
