@@ -930,12 +930,16 @@ class ModelStorage(Model):
                         error_args=cls._get_error_args(field.name))
 
         field_names = set(field_names or [])
+        function_fields = {name for name, field in cls._fields.iteritems()
+            if isinstance(field, fields.Function)}
         ctx_pref['active_test'] = False
         with Transaction().set_context(ctx_pref):
             for field_name, field in cls._fields.iteritems():
+                depends = set(field.depends)
                 if (field_names
                         and field_name not in field_names
-                        and not (set(field.depends) & field_names)):
+                        and not (depends & field_names)
+                        and not (depends & function_fields)):
                     continue
                 if isinstance(field, fields.Function) and \
                         not field.setter:
