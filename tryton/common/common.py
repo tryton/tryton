@@ -1359,7 +1359,9 @@ def RPCContextReload(callback=None):
         rpc.CONTEXT.update(context())
         if callback:
             callback()
-    RPCExecute('model', 'res.user', 'get_preferences', True, callback=update)
+    # Use RPCProgress to not send rpc.CONTEXT
+    RPCProgress('execute', ('model', 'res.user', 'get_preferences', True, {})
+        ).run(True, update)
 
 
 class Tooltips(object):
