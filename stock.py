@@ -96,18 +96,11 @@ class ShipmentOut:
     __name__ = 'stock.shipment.out'
 
     @classmethod
-    @ModelView.button
-    @Workflow.transition('packed')
-    def pack(cls, shipments):
+    def _sync_inventory_to_outgoing(cls, shipments):
         pool = Pool()
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
-
-        super(ShipmentOut, cls).pack(shipments)
-
-        # Unassign move to allow update
-        Move.draft([m for s in shipments for m in s.outgoing_moves])
-
+        super(ShipmentOut, cls)._sync_inventory_to_outgoing(shipments)
         for shipment in shipments:
             outgoing_by_product = {}
             for move in shipment.outgoing_moves:
@@ -136,8 +129,6 @@ class ShipmentOut:
                             })
                     quantity -= out_quantity
                 assert quantity <= 0
-
-        Move.assign([m for s in shipments for m in s.outgoing_moves])
 
 
 class ShipmentOutReturn:
