@@ -1079,22 +1079,26 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             for move in shipment.outgoing_moves:
                 if move.state in ('cancel', 'done'):
                     continue
-                to_create.append({
-                        'from_location': (
-                            move.shipment.warehouse.storage_location.id),
-                        'to_location': move.from_location.id,
-                        'product': move.product.id,
-                        'uom': move.uom.id,
-                        'quantity': move.quantity,
-                        'shipment': str(shipment),
-                        'planned_date': move.planned_date,
-                        'state': 'draft',
-                        'company': move.company.id,
-                        'currency': move.currency.id,
-                        'unit_price': move.unit_price,
-                        })
+                to_create.append(shipment._get_inventory_move(move))
         if to_create:
-            Move.create(to_create)
+            Move.create([m._save_values for m in to_create])
+
+    def _get_inventory_move(self, move):
+        'Return inventory move for the outgoing move'
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move(
+            from_location=move.shipment.warehouse.storage_location,
+            to_location=move.from_location,
+            product=move.product,
+            uom=move.uom,
+            quantity=move.quantity,
+            shipment=self,
+            planned_date=move.planned_date,
+            company=move.company,
+            currency=move.currency,
+            unit_price=move.unit_price,
+            )
 
     @classmethod
     @Workflow.transition('assigned')
@@ -1107,9 +1111,33 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def pack(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
-        Uom = pool.get('product.uom')
         Move.do([m for s in shipments for m in s.inventory_moves])
+        cls._sync_inventory_to_outgoing(shipments)
+        Move.assign([m for s in shipments for m in s.outgoing_moves])
 
+    def _get_outgoing_move(self, move):
+        'Return outgoing move for the inventory move'
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move(
+            from_location=move.to_location,
+            to_location=self.customer.customer_location,
+            product=move.product,
+            uom=move.uom,
+            quantity=move.quantity,
+            shipment=self,
+            planned_date=self.planned_date,
+            company=move.company,
+            currency=move.company.currency,
+            unit_price=move.unit_price,
+            )
+
+    @classmethod
+    def _sync_inventory_to_outgoing(cls, shipments):
+        'Synchronise outgoing moves with inventory moves'
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Uom = pool.get('product.uom')
         for shipment in shipments:
             # Sum all outgoing quantities
             outgoing_qty = {}
@@ -1145,21 +1173,11 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
                 unit_price = Uom.compute_price(move.product.default_uom,
                         move.product.list_price, move.uom)
-                to_create.append({
-                        'from_location': move.to_location.id,
-                        'to_location': shipment.customer.customer_location.id,
-                        'product': move.product.id,
-                        'uom': move.uom.id,
-                        'quantity': out_quantity,
-                        'shipment': str(shipment),
-                        'state': 'draft',
-                        'planned_date': shipment.planned_date,
-                        'company': move.company.id,
-                        'currency': move.company.currency.id,
-                        'unit_price': unit_price,
-                        })
+                to_create.append(shipment._get_outgoing_move(move))
+                to_create[-1].quantity = out_quantity
+                to_create[-1].unit_price = unit_price
             if to_create:
-                Move.create(to_create)
+                Move.create([m._save_values for m in to_create])
 
             #Re-read the shipment and remove exceeding quantities
             for move in shipment.outgoing_moves:
@@ -1175,8 +1193,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                             'quantity': max(0.0, move.quantity - exc_qty),
                             })
                     outgoing_qty[move.product.id] -= removed_qty
-
-        Move.assign([m for s in shipments for m in s.outgoing_moves])
 
     @classmethod
     @ModelView.button
