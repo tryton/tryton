@@ -284,6 +284,7 @@ class XmlrpcConfig(Config):
         self.url = url
         self.server = xmlrpclib.ServerProxy(url, allow_none=1, use_datetime=1)
         # TODO add user
+        self.user = None
         self._context = self.server.model.res.user.get_preferences(True, {})
     __init__.__doc__ = object.__init__.__doc__
 
