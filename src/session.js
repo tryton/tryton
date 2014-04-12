@@ -105,7 +105,10 @@
                 'method': 'model.res.user.get_preferences',
                 'params': [true, {}]
             };
-            var prm = Sao.rpc(args, this);
+            // Call with custom session to not send context
+            var session = jQuery.extend({}, session);
+            session.context = {};
+            var prm = Sao.rpc(args, session);
             return prm.then(function(context) {
                 this.context = context;
             }.bind(this));
