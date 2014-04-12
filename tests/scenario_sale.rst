@@ -376,6 +376,96 @@ Check second invoices::
     >>> sum(l.quantity for i in sale.invoices for l in i.lines)
     5.0
 
+Sale 5 products with shipment method 'on invoice'::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale.shipment_method = 'invoice'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 5.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+    >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
+    (0, 0, 1)
+
+Not yet linked to stock moves::
+
+    >>> invoice, = sale.invoices
+    >>> config.user = account_user.id
+    >>> invoice_line, = invoice.lines
+    >>> len(invoice_line.stock_moves)
+    0
+
+Post and Pay Invoice for 4 products::
+
+    >>> Invoice = Model.get('account.invoice')
+    >>> invoice = Invoice(invoice.id)
+    >>> invoice_line, = invoice.lines
+    >>> invoice_line.quantity
+    5.0
+    >>> invoice_line.quantity = 4.0
+    >>> invoice.click('post')
+    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay.form.journal = cash_journal
+    >>> pay.execute('choice')
+    >>> invoice.reload()
+    >>> invoice.state
+    u'paid'
+
+Invoice lines linked to 1 move::
+
+    >>> config.user = account_user.id
+    >>> invoice_line, = invoice.lines
+    >>> len(invoice_line.stock_moves)
+    1
+
+Stock moves must be linked to invoice line::
+
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> shipment, = sale.shipments
+    >>> config.user = stock_user.id
+    >>> shipment = ShipmentOut(shipment.id)
+    >>> stock_move, = shipment.outgoing_moves
+    >>> stock_move.quantity
+    4.0
+    >>> stock_move.invoice_lines == [invoice_line]
+    True
+
+Ship 3 products::
+
+    >>> stock_inventory_move, = shipment.inventory_moves
+    >>> stock_inventory_move.quantity
+    4.0
+    >>> stock_inventory_move.quantity = 3.0
+    >>> shipment.click('assign_try')
+    True
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> shipment.state
+    u'done'
+
+New shipments created::
+
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> len(sale.shipments)
+    2
+
+Invoice lines linked to new moves::
+
+    >>> config.user = account_user.id
+    >>> invoice.reload()
+    >>> invoice_line, = invoice.lines
+    >>> len(invoice_line.stock_moves)
+    2
+
 Create a Return::
 
     >>> config.user = sale_user.id
