@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "Strankin naslov \"%s\" ni možno popravljati."
+msgstr "Partnerjev naslov \"%s\" ni možno popravljati."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
@@ -12,7 +12,7 @@ msgstr "Neveljavno ime kategorije \"%s\": V imenu uporaba znaka \" / \" ni možn
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
-msgstr "Naziv kategorije stranke mora biti edinstven na matično kategorijo."
+msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
 
 msgctxt "error:party.check_vies:"
 msgid "The VIES service is unavailable, try again later."
@@ -20,15 +20,15 @@ msgstr "VIES storitev je nedostopna, poskusite kasneje."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "Strankinega kontakta \"%s\" ni možno popravljati."
+msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "Neveljavna DDV številka \"%(vat)s\" pri stranki \"%(party)s\"."
+msgstr "Neveljavna DDV številka \"%(vat)s\" pri partnerju \"%(party)s\"."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
-msgstr "Šifra stranke mora biti edinstvena."
+msgstr "Šifra partnerja mora biti edinstvena."
 
 msgctxt "field:party.address,active:"
 msgid "Active"
@@ -64,7 +64,7 @@ msgstr "Naziv"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Name"
@@ -148,11 +148,11 @@ msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Stranke neuspešno preverjene"
+msgstr "Partnerji neuspešno preverjeni"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "Stranke uspešno preverjene"
+msgstr "Partnerji uspešno preverjeni"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
@@ -168,11 +168,11 @@ msgstr "ID"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
-msgstr "Jezik stranke"
+msgstr "Jezik partnerja"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Štetje strank"
+msgstr "Štetje partnerjev"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
@@ -216,7 +216,7 @@ msgstr "Drugo"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Name"
@@ -372,7 +372,7 @@ msgstr "ID"
 
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Name"
@@ -388,7 +388,7 @@ msgstr "Zapisal"
 
 msgctxt "help:party.configuration,party_lang:"
 msgid "The value set on this field will preset the language on new parties"
-msgstr "Vrednost v tem polju bo nastavila jezik za nove stranke."
+msgstr "Vrednost v tem polju bo nastavila jezik za nove partnerje."
 
 msgctxt "help:party.party,vat_country:"
 msgid "Setting VAT country will enable validation of the VAT number."
@@ -412,15 +412,15 @@ msgstr "Kategorije"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Stranke po kategorijah"
+msgstr "Partnerji po kategorijah"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Konfiguracija strank"
+msgstr "Konfiguracija partnerjev"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr "Stranke"
+msgstr "Partnerji"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
@@ -432,11 +432,11 @@ msgstr "Preveri z VIES sistemom"
 
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
@@ -456,7 +456,7 @@ msgstr "Nastavitve"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
@@ -464,7 +464,7 @@ msgstr "Konfiguracija"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr "Stranke"
+msgstr "Partnerji"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
@@ -484,7 +484,7 @@ msgstr "Preveri z VIES sistemom"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Konfiguracija strank"
+msgstr "Konfiguracija partnerjev"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
@@ -492,15 +492,15 @@ msgstr "Kontakt"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Stranka - Kategorija"
+msgstr "Partner - Kategorija"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr "Stranka - vodenje"
+msgstr "Partner - vodenje"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
@@ -568,7 +568,7 @@ msgstr "Rezultati sistem za izmenjavo DDV informacij"
 
 msgctxt "view:party.configuration:"
 msgid "Party Configuration"
-msgstr "Konfiguracija strank"
+msgstr "Konfiguracija partnerjev"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
@@ -588,11 +588,11 @@ msgstr "Splošno"
 
 msgctxt "view:party.party:"
 msgid "Parties"
-msgstr "Stranke"
+msgstr "Partnerji"
 
 msgctxt "view:party.party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "view:party.party:"
 msgid "VAT"
