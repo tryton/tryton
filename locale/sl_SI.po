@@ -24,7 +24,7 @@ msgstr "ID"
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:carrier,rec_name:"
 msgid "Name"
