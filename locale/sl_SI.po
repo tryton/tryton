@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "Sredstvo \"%s\" je možno brisati samo v stanju osnutka."
+msgstr "Sredstvo \"%s\" je možno brisati samo v stanju priprave."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset!"
@@ -28,7 +28,7 @@ msgstr "Opomba"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
@@ -380,7 +380,7 @@ msgstr "Zaprta"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Osnutki"
+msgstr "Priprava"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
@@ -424,7 +424,7 @@ msgstr "Zaprto"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "V pripravi"
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
@@ -453,6 +453,10 @@ msgstr "Prikaz amortizacije"
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
 msgstr "Popravek sredstev"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Ali res želite zapreti sredstvo?"
 
 msgctxt "view:account.asset:"
 msgid "Asset"
