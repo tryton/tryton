@@ -363,6 +363,10 @@ msgctxt "field:res.user,password:"
 msgid "Password"
 msgstr "Geslo"
 
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Zgoščena vrednost gesla"
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr "PySON meni"
@@ -375,10 +379,6 @@ msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
 msgstr "Pravila"
 
-msgctxt "field:res.user,salt:"
-msgid "Salt"
-msgstr "Sol"
-
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
 msgstr "Seje"
@@ -390,10 +390,6 @@ msgstr "Podpis"
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
 msgstr "Statusna vrstica"
-
-msgctxt "field:res.user,timezone:"
-msgid "Timezone"
-msgstr "Časovni pas"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
