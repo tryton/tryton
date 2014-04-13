@@ -8,7 +8,7 @@ msgstr "Pri dejavnosti \"%s\" ni cenika."
 
 msgctxt "error:project.work:"
 msgid "There is no party on work \"%s\"."
-msgstr "Pri dejavnosti \"%s\" ni stranke."
+msgstr "Pri dejavnosti \"%s\" ni partnerja."
 
 msgctxt "error:project.work:"
 msgid "There is no product on work \"%s\"."
