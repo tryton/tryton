@@ -44,7 +44,7 @@ msgstr "Šifra"
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
@@ -243,7 +243,7 @@ msgstr "Naziv"
 
 msgctxt "field:analytic_account.line,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Name"
@@ -352,7 +352,7 @@ msgstr "Zaprto"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "V pripravi"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
