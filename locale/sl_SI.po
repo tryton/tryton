@@ -31,13 +31,17 @@ msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr "Izpisek \"%s\" mora biti pred izbrisom preklican."
 
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgstr "Na pripravljenih izpiskih so plačani računi. Ali želite nadaljevati?"
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "Bilanca"
 
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
@@ -93,7 +97,7 @@ msgstr "Zapisal"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
@@ -169,7 +173,7 @@ msgstr "Knjižba"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
@@ -222,7 +226,7 @@ msgstr "Vse"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Osnutki"
+msgstr "Priprava"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
@@ -260,7 +264,7 @@ msgstr "Preklicano"
 
 msgctxt "selection:account.statement,state:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "V pripravi"
 
 msgctxt "selection:account.statement,state:"
 msgid "Posted"
@@ -296,7 +300,7 @@ msgstr "Preklic"
 
 msgctxt "view:account.statement:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "Priprava"
 
 msgctxt "view:account.statement:"
 msgid "Other Info"
