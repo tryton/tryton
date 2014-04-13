@@ -28,7 +28,7 @@ msgstr "Zamrznjeno"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
@@ -60,7 +60,7 @@ msgstr "Datum dospelosti"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
@@ -228,7 +228,7 @@ msgstr "Zaključeno"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr "Osnutki"
+msgstr "Priprava"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
@@ -260,7 +260,7 @@ msgstr "Zaključeno"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "V pripravi"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning"
@@ -317,6 +317,10 @@ msgstr "Prekliči"
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Obdelava"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "process"
