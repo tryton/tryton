@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Nabavne cene izdelka, povezanega s prometom zaloge, ni možno popravljati.\n"
+"Uporabiti morate čarovnika za posodobitev nabavnih cen."
+
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr "Konto in protikonto zaloge ne moreta biti isti konto"
@@ -103,6 +111,10 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Različica"
+
+msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
 msgstr "Izdelek"
 
@@ -137,10 +149,6 @@ msgstr "Razlika v ceni"
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Konto zaloge"
-
-msgctxt "field:stock.move,account_move:"
-msgid "Account Move"
-msgstr "Knjižba"
 
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
