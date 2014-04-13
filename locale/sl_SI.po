@@ -8,7 +8,7 @@ msgstr "Neveljavna formula \"%(formula)s\" v postavki cenika \"%(line)s\"."
 
 msgctxt "field:product.price_list,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:product.price_list,create_date:"
 msgid "Create Date"
