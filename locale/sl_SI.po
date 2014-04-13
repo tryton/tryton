@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "Hčerinska podjetja"
+msgstr "Hčerinske družbe"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
@@ -36,15 +36,19 @@ msgstr "ID"
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "Matično podjetje"
+msgstr "Matična družba"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:company.company,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Časovni pas"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
@@ -60,7 +64,7 @@ msgstr "ID"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
@@ -76,7 +80,7 @@ msgstr "ID"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:company.employee,rec_name:"
 msgid "Name"
@@ -92,11 +96,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Podjetja"
+msgstr "Družbe"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
@@ -128,23 +132,23 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.property,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:res.user,companies:"
 msgid "Current Companies"
-msgstr "Trenutna podjetja"
+msgstr "Trenutne družbe"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Trenutno podjetje"
+msgstr "Trenutno družba"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
@@ -156,7 +160,7 @@ msgstr "Zaposlenci"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Glavno podjetje"
+msgstr "Glavno družba"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
@@ -192,15 +196,15 @@ msgstr "Zapisal"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr "Podjetja, registrirana na ta razporejevalnik"
+msgstr "Družbe, registrirana na ta razporejevalnik"
 
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Konfiguracija podjetja"
+msgstr "Konfiguracija družbe"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
@@ -208,15 +212,15 @@ msgstr "Zaposlenec"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Konfiguracija podjetja"
+msgstr "Konfiguracija družbe"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Podjetja"
+msgstr "Družbe"
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Podjetja"
+msgstr "Družbe"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
@@ -228,15 +232,15 @@ msgstr "Pismo"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Razporejevalnik - Podjetje"
+msgstr "Razporejevalnik - Družba"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Podjetja"
+msgstr "Družbe"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Podjetja"
+msgstr "Družbe"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
@@ -276,19 +280,19 @@ msgstr "DDV številka:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
-msgstr "Ustvari podjetje"
+msgstr "Ustvari družbo"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr "Zdaj je možno v sistem dodati podjetje."
+msgstr "Zdaj je možno v sistem dodati družbo."
 
 msgctxt "view:company.company:"
 msgid "Companies"
-msgstr "Podjetja"
+msgstr "Družbe"
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "view:company.company:"
 msgid "Reports"
