@@ -50,7 +50,7 @@ msgstr "Točke naročanja"
 
 msgctxt "field:purchase.request,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
@@ -78,7 +78,7 @@ msgstr "Poreklo"
 
 msgctxt "field:purchase.request,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:purchase.request,product:"
 msgid "Product"
@@ -142,7 +142,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,id:"
 msgid "ID"
@@ -158,7 +158,7 @@ msgstr "Izdelek"
 
 msgctxt "field:purchase.request.create_purchase.ask_term,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:purchase.request.create_purchase.ask_term,id:"
 msgid "ID"
@@ -174,7 +174,7 @@ msgstr "Plačilni rok"
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
@@ -244,13 +244,13 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "model:ir.action,name:"
+msgid "Purchases"
+msgstr "Nabavni nalogi"
+
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
 msgstr "Točke naročanja"
-
-msgctxt "model:ir.action,name:act_purchase_form"
-msgid "Purchases"
-msgstr "Nabavni nalogi"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -276,7 +276,7 @@ msgstr "Vse"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr "Osnutki"
+msgstr "Priprava"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
@@ -312,7 +312,7 @@ msgstr "Izdelava nabavnega zahtevka"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
-msgstr "Izdelava nabavnega naloga: Stranka"
+msgstr "Izdelava nabavnega naloga: Partner"
 
 msgctxt "model:purchase.request.create_purchase.ask_term,name:"
 msgid "Create Purchase Ask Term"
@@ -348,7 +348,7 @@ msgstr "Zaključeno"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "V pripravi"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
@@ -363,12 +363,12 @@ msgid "Purchase"
 msgstr "Nabavni nalog"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request"
-msgstr "Izdelava nabavnega zahtevka"
+msgid "Create Purchase Requests"
+msgstr "Izdelava nabavnih zahtevkov"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request?"
-msgstr "Izdelava nabavnega zahtevka?"
+msgid "Create Purchase Requests?"
+msgstr "Izdelava nabavnih zahtevkov?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
