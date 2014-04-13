@@ -36,7 +36,7 @@ msgstr "Napoved \"%s\" mora biti pred brisanjem preklicana."
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:stock.forecast,create_date:"
 msgid "Create Date"
@@ -213,7 +213,7 @@ msgstr "Vse"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
-msgstr "Osnutki"
+msgstr "Priprava"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
@@ -253,7 +253,7 @@ msgstr "Zaključeno"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
-msgstr "Osnutek"
+msgstr "V pripravi"
 
 msgctxt "view:stock.forecast.complete.ask:"
 msgid "Choose dates"
