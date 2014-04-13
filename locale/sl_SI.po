@@ -36,7 +36,7 @@ msgstr "Opomba"
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
@@ -64,7 +64,7 @@ msgstr "Matičnia dejavnost"
 
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
