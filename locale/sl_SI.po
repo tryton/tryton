@@ -1,0 +1,51 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the credit limit amount (%s)"
+msgstr "Pri \"%s\" je dosežen odobreni limit (%s)"
+
+msgctxt "error:party.party:"
+msgid "\"%s\" has reached the dunning credit limit (%s)"
+msgstr "Pri \"%s\" je dosežen odobreni limit za izterjevo (%s)"
+
+msgctxt "field:account.configuration,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "Privzeti znesek odobrenega limita"
+
+msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "field:account.dunning.level,credit_limit:"
+msgid "Credit Limit"
+msgstr "Odobreni limit"
+
+msgctxt "field:party.party,credit_amount:"
+msgid "Credit Amount"
+msgstr "Odobreni limit"
+
+msgctxt "field:party.party,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "Znesek odobrenega limita"
+
+msgctxt "field:party.party,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "Decimalke"
+
+msgctxt "help:account.dunning.level,credit_limit:"
+msgid "Has reached the credit limit"
+msgstr "Je odobreni limit dosežen?"
+
+msgctxt "model:res.group,name:group_credit_limit"
+msgid "Account Credit Limit"
+msgstr "Računovodstvo - odobreni limit"
+
+msgctxt "view:account.configuration:"
+msgid "Credit Limit"
+msgstr "Odobreni limit"
+
+msgctxt "view:party.party:"
+msgid "Credit Limit"
+msgstr "Odobreni limit"
