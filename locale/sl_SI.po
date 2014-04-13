@@ -8,7 +8,7 @@ msgstr "Neveljavna SIRET številka \"%(siret)s\" za naslov \"%(address)s\""
 
 msgctxt "error:party.party:"
 msgid "Invalid SIREN number \"%(siren)s\" on party \"%(party)s\"."
-msgstr "Neveljavna SIREN številka \"%(siren)s\" za stranko \"%(party)s\"."
+msgstr "Neveljavna SIREN številka \"%(siren)s\" pri partnerju \"%(party)s\"."
 
 msgctxt "field:party.address,siret:"
 msgid "SIRET"
