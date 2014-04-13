@@ -28,7 +28,7 @@ msgstr "Opomba"
 
 msgctxt "field:sale.opportunity,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
@@ -76,7 +76,7 @@ msgstr "Razlog za zapravljeno priložnost"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
@@ -124,7 +124,7 @@ msgstr "Opomba"
 
 msgctxt "field:sale.opportunity.history,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:sale.opportunity.history,create_date:"
 msgid "Create Date"
@@ -168,7 +168,7 @@ msgstr "Prodajna priložnost"
 
 msgctxt "field:sale.opportunity.history,party:"
 msgid "Party"
-msgstr "Stranka"
+msgstr "Partner"
 
 msgctxt "field:sale.opportunity.history,probability:"
 msgid "Conversion Probability"
@@ -256,7 +256,7 @@ msgstr "Znesek"
 
 msgctxt "field:sale.opportunity_employee,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:sale.opportunity_employee,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
@@ -336,7 +336,7 @@ msgstr "Znesek"
 
 msgctxt "field:sale.opportunity_employee_monthly,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:sale.opportunity_employee_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
@@ -412,7 +412,7 @@ msgstr "Znesek"
 
 msgctxt "field:sale.opportunity_monthly,company:"
 msgid "Company"
-msgstr "Podjetje"
+msgstr "Družba"
 
 msgctxt "field:sale.opportunity_monthly,conversion_amount_rate:"
 msgid "Conversion Amount Rate"
