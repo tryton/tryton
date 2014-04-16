@@ -84,7 +84,7 @@ class Field(object):
             res = res and self.check_required(record)
         if isinstance(domain, bool):
             res = res and domain
-        elif domain == [('id', '=', False)]:
+        elif domain == [('id', '=', None)]:
             res = False
         else:
             if (isinstance(domain, list)
