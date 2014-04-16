@@ -498,7 +498,7 @@ class AccountTemplate(ModelSQL, ModelView):
             if self.taxes:
                 Account.write([Account(template2account[self.id])], {
                         'taxes': [
-                            ('add', template2tax[x.id]) for x in self.taxes],
+                            ('add', [template2tax[x.id] for x in self.taxes])],
                         })
             template_done.append(self.id)
 
