@@ -550,6 +550,15 @@ class ViewList(ParserView):
                     return
         if not selection.data:
             return
+
+        # Don't received if the treeview was editing because it breaks the
+        # internal state of the cursor.
+        cursor, column = treeview.get_cursor()
+        if column:
+            for renderer in column.get_cell_renderers():
+                if renderer.props.editing:
+                    return
+
         store = treeview.get_model()
         try:
             data = json.loads(selection.data)
