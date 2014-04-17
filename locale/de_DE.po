@@ -16,7 +16,7 @@ msgstr "ID"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
-msgstr "Orte"
+msgstr "Lagerorte"
 
 msgctxt "field:stock.inventory.create.start,lost_found:"
 msgid "Lost and Found"
