@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
-msgstr "Imprimir a una carta"
+msgstr "Imprimeix en una carta"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
@@ -60,4 +60,4 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "process"
-msgstr "processa"
+msgstr "Processa"
