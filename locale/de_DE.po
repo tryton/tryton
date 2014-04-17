@@ -260,8 +260,8 @@ msgid "Timesheet End"
 msgstr "Zeiterfassung Ende"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr ""
+msgid "Timesheet Lines"
+msgstr "Zeitpositionen"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
