@@ -180,7 +180,7 @@ msgstr "Proyecto y tarea"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Administración de proyecto"
+msgstr "Administración de proyectos"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
@@ -188,7 +188,7 @@ msgstr "Realizado"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Abierta"
+msgstr "Abierto"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
