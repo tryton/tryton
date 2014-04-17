@@ -336,7 +336,7 @@ msgstr "Obre pla analític"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Administració analítica"
+msgstr "Administració d'analítica"
 
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
