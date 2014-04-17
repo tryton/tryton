@@ -40,7 +40,7 @@ msgstr "Währung Kosten"
 
 msgctxt "field:stock.shipment.out,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr "Kosten Stellen Währung"
+msgstr "Nachkommastellen Währung Kosten"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
