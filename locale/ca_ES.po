@@ -60,7 +60,7 @@ msgstr "Transportistes"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administració transportistes"
+msgstr "Administració de transportistes"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
