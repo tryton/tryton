@@ -27,7 +27,7 @@ msgid ""
 "Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
 " same location."
 msgstr ""
-"La previsión \"%(first)s\" se solapa con las fechas de la previsón "
+"La previsión \"%(first)s\" se solapa con las fechas de la previsión "
 "%(second)s\" en la misma ubicación."
 
 msgctxt "error:stock.forecast:"
@@ -245,7 +245,7 @@ msgstr "Línea de previsión - Movimiento"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Cancelada"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
