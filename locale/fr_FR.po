@@ -192,7 +192,7 @@ msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid "Invoice \"%s\" must be cancelled before deletion."
-msgstr "La facture \"%s\" doit être annulée pour être supprimée."
+msgstr "La facture \"%s\" doit être annulée avant suppression."
 
 msgctxt "error:account.invoice:"
 msgid ""
@@ -640,10 +640,6 @@ msgstr "Date de mise à jour"
 msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
-
-msgctxt "field:account.invoice.pay.ask,account_writeoff:"
-msgid "Write-Off Account"
-msgstr "Compte de pertes et profits"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
@@ -1526,8 +1522,8 @@ msgid "Print Invoice"
 msgstr "Imprimer la facture"
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent <i>directly</i> to the printer."
-msgstr "Les factures seront envoyées  <i>directement </i> à l'imprimente"
+msgid "The invoices will be sent directly to the printer."
+msgstr "Les factures seront envoyées directement à l'imprimante."
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "You have selected more than one invoice to print."
