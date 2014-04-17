@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.forecast.complete:"
 msgid "\"From Date\" should be smaller than \"To Date\"."
-msgstr "\"Desde de la data\" ha de ser més petit que \"Fins a la data\"."
+msgstr "\"Des de de la data\" ha de ser més petit que \"Fins a la data\"."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Line quantity must be greater than the minimal quantity"
@@ -16,18 +16,18 @@ msgstr "La quantitat de la línia ha de ser positiva."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forecast"
-msgstr "El producte ha de ser únic en la previssió d'estocs."
+msgstr "El producte ha de ser únic en la previsió d'estocs."
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "\"Fins a la data\" ha de ser més gran que \"Desde de la data\"."
+msgstr "\"Fins a la data\" ha de ser més gran que \"Des de de la data\"."
 
 msgctxt "error:stock.forecast:"
 msgid ""
 "Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
 " same location."
 msgstr ""
-"La previsó \"%(first)s\" es solapa amb les dates de la pervisió "
+"La previsió \"%(first)s\" es solapa amb les dates de la previsió "
 "\"%(second)s\" a la mateixa ubicació."
 
 msgctxt "error:stock.forecast:"
@@ -221,11 +221,11 @@ msgstr "Previsions"
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
-msgstr "Previsió d'existències"
+msgstr "Previsió d'estoc"
 
 msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
-msgstr "Previsió d'existències"
+msgstr "Previsió d'estoc"
 
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
@@ -237,15 +237,15 @@ msgstr "Triar previsió completa"
 
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
-msgstr "Línia de previsió d'existències"
+msgstr "Línia de previsió d'estoc"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
-msgstr "Línea de previsió - Moviment"
+msgstr "Línia de previsió - Moviment"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancel·lada"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
