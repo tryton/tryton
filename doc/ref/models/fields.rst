@@ -89,6 +89,8 @@ This method must return a dictionary with the values of fields to be updated.
 
 The set of field names could be filled by using the decorator :meth:`depends`.
 
+.. _ref-models-fields-on_change_with:
+
 ``on_change_with``
 ------------------
 
