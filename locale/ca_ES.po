@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"No podeu canviar el preu de cost d'un producte que està associat amb moviments d'estoc.\n"
+"Per actualitzar el cost heu d'utilitzar l'assistent \"Actualitza preu de cost\"."
+
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr "El compte d'estoc i la contrapartida no poden ser el mateix compte."
@@ -103,6 +111,10 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
 msgstr "Producte"
 
@@ -137,10 +149,6 @@ msgstr "Diferència de preu"
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Compte d'estoc"
-
-msgctxt "field:stock.move,account_move:"
-msgid "Account Move"
-msgstr "Assentament comptable"
 
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
