@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
 msgid "There is no list price on work \"%s\"."
-msgstr "No hi ha cap producte al treball \"%s\"."
+msgstr "No hi ha cap preu al treball \"%s\"."
 
 msgctxt "error:project.work:"
 msgid "There is no party on work \"%s\"."
