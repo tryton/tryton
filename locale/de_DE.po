@@ -34,8 +34,12 @@ msgid "product_bom_uniq"
 msgstr ""
 
 msgctxt "error:production:"
-msgid "Production \"%s\" misses costs on some of its outputs."
-msgstr "Fehlende Angaben für Kosten für einige Ausgänge von Produktion \"%s\"."
+msgid ""
+"The costs of the outputs (%(outputs)s) of production \"%(production)s\" do "
+"not match the cost of the production (%(costs)s)."
+msgstr ""
+"Die Kosten der Ausgänge (%(outputs)s) von Produktion \"%(production)s\" "
+"stimmen nicht mit den Kosten der Produktion (%(costs)s) überein."
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
@@ -147,7 +151,7 @@ msgstr "Status"
 
 msgctxt "field:production,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:production,uom:"
 msgid "Uom"
@@ -251,7 +255,7 @@ msgstr "Name"
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:production.bom.input,uom:"
 msgid "Uom"
@@ -299,7 +303,7 @@ msgstr "Name"
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:production.bom.output,uom:"
 msgid "Uom"
@@ -335,7 +339,7 @@ msgstr "Menge"
 
 msgctxt "field:production.bom.tree,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:production.bom.tree,uom:"
 msgid "Uom"
@@ -363,7 +367,7 @@ msgstr "Menge"
 
 msgctxt "field:production.bom.tree.open.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:production.bom.tree.open.start,uom:"
 msgid "Unit"
@@ -371,7 +375,7 @@ msgstr "Stück"
 
 msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
-msgstr "Stückliste Baum"
+msgstr "Stücklistenbaum"
 
 msgctxt "field:production.bom.tree.open.tree,id:"
 msgid "ID"
@@ -443,7 +447,7 @@ msgstr "Produktion zuweisen"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
-msgstr "Stückliste Baum"
+msgstr "Stücklistenbaum"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -533,7 +537,7 @@ msgstr "Stückliste Ausgang"
 
 msgctxt "model:production.bom.tree,name:"
 msgid "BOM Tree"
-msgstr "Stückliste Baum"
+msgstr "Stücklistenbaum"
 
 msgctxt "model:production.bom.tree.open.start,name:"
 msgid "Open BOM Tree"
@@ -613,15 +617,15 @@ msgstr "Stückliste Ausgänge"
 
 msgctxt "view:production.bom.tree.open.start:"
 msgid "BOM Tree"
-msgstr "Stückliste Baum"
+msgstr "Stücklistenbaum"
 
 msgctxt "view:production.bom.tree.open.tree:"
 msgid "BOM Tree"
-msgstr "Stückliste Baum"
+msgstr "Stücklistenbaum"
 
 msgctxt "view:production.bom.tree:"
 msgid "BOM Tree"
-msgstr "Stückliste Baum"
+msgstr "Stücklistenbaum"
 
 msgctxt "view:production.bom:"
 msgid "BOM"
