@@ -326,7 +326,7 @@ msgstr "Währung"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
@@ -378,7 +378,7 @@ msgstr "Rechts"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr "Zweitwährung"
+msgstr "Fremdwährung"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
@@ -454,7 +454,7 @@ msgstr "Haben"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
-msgstr "Stellen Währung"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
@@ -598,7 +598,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.account.type,display_balance:"
 msgid "Display Balance"
@@ -1170,7 +1170,7 @@ msgstr "Konto"
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Betrag Zweitwährung"
+msgstr "Fremdwährungsbetrag"
 
 msgctxt "field:account.move.line,create_date:"
 msgid "Create Date"
@@ -1186,7 +1186,7 @@ msgstr "Haben"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Stellen Währung"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
@@ -1216,6 +1216,10 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Buchung"
 
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr "Buchung Beschreibung"
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "Buchungsstatus"
@@ -1242,11 +1246,11 @@ msgstr "Abstimmung"
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
-msgstr "Zweitwährung"
+msgstr "Fremdwährung"
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Stellen Zweitwährung"
+msgstr "Nachkommastellen Fremdwährung"
 
 msgctxt "field:account.move.line,state:"
 msgid "State"
@@ -1304,21 +1308,21 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "Bis Datum"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,account:"
-msgid "Account"
-msgstr "Konto"
-
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "Betrag"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr "Datum"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "Beschreibung"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
@@ -1626,11 +1630,15 @@ msgstr "Vorzeichen für Steuern in Gutschriften"
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Beschreibung"
+
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "Enddatum"
 
 msgctxt "field:account.tax,group:"
 msgid "Group"
@@ -1680,6 +1688,10 @@ msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
 msgstr "Reihenfolge"
 
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "Anfangsdatum"
+
 msgctxt "field:account.tax,template:"
 msgid "Template"
 msgstr "Vorlage für Steuerkonto"
@@ -1722,11 +1734,11 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
@@ -1798,7 +1810,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
@@ -1878,7 +1890,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.tax.line,id:"
 msgid "ID"
@@ -2124,6 +2136,10 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Beschreibung"
 
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "Enddatum"
+
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
 msgstr "Gruppe"
@@ -2171,6 +2187,10 @@ msgstr "Name"
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
 msgstr "Reihenfolge"
+
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2238,7 +2258,7 @@ msgctxt "help:account.account,second_currency:"
 msgid ""
 "Force all moves for this account \n"
 "to have this secondary currency."
-msgstr "Für alle Buchungen auf dieses Konto die Zeitwährung verwenden"
+msgstr "Für alle Buchungen auf dieses Konto diese Fremdwährung verwenden"
 
 msgctxt "help:account.account,taxes:"
 msgid ""
@@ -2258,7 +2278,8 @@ msgstr "Auch bekannt als Folio Nummer"
 
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
-msgstr "Der Betrag in einer Zweitwährung"
+msgstr ""
+"Der Betrag in einer Fremdwährung (bezogen auf die Währung des Unternehmens)"
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
@@ -2270,7 +2291,7 @@ msgstr ""
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
-msgstr "Die Zweitwährung"
+msgstr "Die Fremdwährung"
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
@@ -2591,6 +2612,10 @@ msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
 msgstr "Saldenvortrag"
 
+msgctxt "model:account.journal.type,name:journal_type_write_off"
+msgid "Write-Off"
+msgstr "Ausbuchung"
+
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
 msgstr "Journal Sicht"
@@ -2609,7 +2634,7 @@ msgstr "Buchungszeile"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr "Dialogbuchen Nachfrage"
+msgstr "Nachfrage Dialogbuchen"
 
 msgctxt "model:account.move.open_reconcile_lines.start,name:"
 msgid "Open Reconcile Lines"
@@ -2822,6 +2847,10 @@ msgstr "Verbindlichkeiten"
 msgctxt "model:ir.action,name:act_move_line_receivable"
 msgid "Receivable Lines"
 msgstr "Forderungen"
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr "Abstimmungszeilen"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
@@ -3362,7 +3391,7 @@ msgstr "Soll"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "odt:account.move.general_journal:"
 msgid "Draft"
@@ -4002,7 +4031,7 @@ msgstr "Untergeordnet (Kennziffervorlagen)"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "view:account.tax.code.template:"
 msgid "Tax Code Template"
@@ -4018,7 +4047,7 @@ msgstr "Untergeordnet (Kennziffern)"
 
 msgctxt "view:account.tax.code:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "view:account.tax.code:"
 msgid "Tax Code"
@@ -4038,11 +4067,11 @@ msgstr "Steuergruppen"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Line"
-msgstr "Position Steuerkonto"
+msgstr "Steuerkontozeile"
 
 msgctxt "view:account.tax.line:"
 msgid "Account Tax Lines"
-msgstr "Positionen Steuerkonto"
+msgstr "Steuerkontozeilen"
 
 msgctxt "view:account.tax.rule.line.template:"
 msgid "Tax Rule Line Template"
