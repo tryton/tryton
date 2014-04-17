@@ -245,13 +245,13 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "model:ir.action,name:"
+msgid "Purchases"
+msgstr "Achats"
+
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
 msgstr "Règles d'approvisionnement"
-
-msgctxt "model:ir.action,name:act_purchase_form"
-msgid "Purchases"
-msgstr "Achats"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -317,7 +317,7 @@ msgstr "Créer l'achat - Demande de tiers"
 
 msgctxt "model:purchase.request.create_purchase.ask_term,name:"
 msgid "Create Purchase Ask Term"
-msgstr "Créer l'achat - Demande de condition de paiment"
+msgstr "Créer l'achat - Demande de condition de paiement"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -368,11 +368,11 @@ msgid "Purchase"
 msgstr "Achat"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request"
+msgid "Create Purchase Requests"
 msgstr "Créer les demandes d'achat"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request?"
+msgid "Create Purchase Requests?"
 msgstr "Créer les demandes d'achat ?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
