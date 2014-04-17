@@ -95,7 +95,7 @@ msgstr "Bestes Einkaufsdatum"
 
 msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
-msgstr "Position Bestellvorschlag"
+msgstr "Einkaufsposition"
 
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
@@ -227,7 +227,7 @@ msgstr "Einheit"
 
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
@@ -245,13 +245,13 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "model:ir.action,name:"
+msgid "Purchases"
+msgstr "Einkäufe"
+
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
 msgstr "Bestellpunkte"
-
-msgctxt "model:ir.action,name:act_purchase_form"
-msgid "Purchases"
-msgstr "Einkäufe"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -313,11 +313,11 @@ msgstr "Bestellvorschlag erstellen"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
-msgstr "Verkauf Nachfrage Partei"
+msgstr "Nachfrage Partei Einkauf"
 
 msgctxt "model:purchase.request.create_purchase.ask_term,name:"
 msgid "Create Purchase Ask Term"
-msgstr "Verkauf Nachfrage Zahlungsbedingung"
+msgstr "Nachfrage Zahlungsbedingung Einkauf"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -368,12 +368,12 @@ msgid "Purchase"
 msgstr "Bestellvorschlag"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request"
-msgstr "Bestellvorschlag erstellen"
+msgid "Create Purchase Requests"
+msgstr "Bestellvorschläge erstellen"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request?"
-msgstr "Bestellvorschlag erstellen?"
+msgid "Create Purchase Requests?"
+msgstr "Bestellvorschläge erstellen?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
