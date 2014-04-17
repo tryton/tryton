@@ -8,7 +8,7 @@ msgstr "Méthode de regroupement des factures de vente"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"
-msgstr "Aucun"
+msgstr "Aucune"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "Standard"
