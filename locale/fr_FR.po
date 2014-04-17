@@ -340,7 +340,7 @@ msgstr "Ouvrir le plan comptable analytique"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Administration analytique"
+msgstr "Administration de l'analytique"
 
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
