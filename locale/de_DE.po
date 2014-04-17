@@ -12,7 +12,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
-msgstr "Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"
