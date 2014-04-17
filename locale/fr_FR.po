@@ -34,6 +34,12 @@ msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr "Le relevé \"%s\" doit être annulé avant suppression."
 
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgstr ""
+"Il y a des factures payées sur des relevés en brouillon, souhaitez-vous "
+"continuer ?"
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "Balance"
