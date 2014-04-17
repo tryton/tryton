@@ -36,7 +36,7 @@ msgstr "Falta la secuencia."
 
 msgctxt "error:res.user:"
 msgid "You can not set the password of ldap user \"%s\"."
-msgstr "No puede establecer la contraseña del usuario \"%s\" de ldap."
+msgstr "No puede cambiar la contraseña del usuario \"%s\" de LDAP."
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
@@ -81,6 +81,10 @@ msgstr "Tercero"
 msgctxt "field:company.company,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Zona horaria"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
