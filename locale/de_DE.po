@@ -80,7 +80,7 @@ msgstr "Reihenfolge"
 
 msgctxt "field:product.price_list.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:product.price_list.line,write_date:"
 msgid "Write Date"
