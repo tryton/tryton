@@ -7,7 +7,7 @@ msgid ""
 "You can not create an attachment named \"%(attachment)s in collection "
 "\"%(collection)s\" because there is already a collection with that name."
 msgstr ""
-"No puede crear el adjunto con el nombre \"%(attachment)s al directorio "
+"No puede crear el adjunto con el nombre \"%(attachment)s en el directorio "
 "\"%(collection)s\" porque ya existe otro con este nombre."
 
 msgctxt "error:webdav.collection:"
@@ -124,7 +124,7 @@ msgstr "Usuario"
 
 msgctxt "field:webdav.share,write_date:"
 msgid "Write Date"
-msgstr "Fecha modicación"
+msgstr "Fecha modificación"
 
 msgctxt "field:webdav.share,write_uid:"
 msgid "Write User"
