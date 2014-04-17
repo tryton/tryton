@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:bank.account.number:"
+msgid "Invalid IBAN \"%s\"."
+msgstr "IBAN no vàlid \"%s\"."
+
 msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
@@ -92,7 +96,7 @@ msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
-msgstr "Propietari"
+msgstr "Titular"
 
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
@@ -152,7 +156,7 @@ msgstr "Comptes bancaris"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code"
-msgstr "Codi Identificador de Banc/Negoci (BIC)"
+msgstr "Codi Identificador de Banc/Negoci (BIC)."
 
 msgctxt "model:bank,name:"
 msgid "Bank"
@@ -190,6 +194,10 @@ msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
 msgstr "Banca"
 
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Administració de bancs"
+
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
 msgstr "IBAN"
@@ -224,4 +232,4 @@ msgstr "Bancs"
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Bancs"
+msgstr "Banca"
