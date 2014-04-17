@@ -28,7 +28,7 @@ msgstr "Kostenstelle Zeilen"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Stellen Währung"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -152,7 +152,7 @@ msgstr "Währung"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
@@ -303,7 +303,7 @@ msgstr "Währung"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
@@ -363,15 +363,15 @@ msgstr "Anfangsdatum"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
-msgstr "Zahlungsverkehr"
+msgstr "Bankauszug"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
-msgstr "Journal Zahlungsverkehr"
+msgstr "Bankauszugsjournal"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
-msgstr "Zahlungsverkehr Position"
+msgstr "Bankauszugsposition"
 
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
@@ -496,11 +496,11 @@ msgstr "Kostenstelle"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
-msgstr "Journal Zahlungsverkehr"
+msgstr "Bankauszugsjournal"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
-msgstr "Journale Zahlungsverkehr"
+msgstr "Bankauszugsjournale"
 
 msgctxt "view:account.statement.line:"
 msgid "Bank Statement Line"
@@ -552,7 +552,7 @@ msgstr "Zahlungsposten"
 
 msgctxt "view:account.statement:"
 msgid "Statements"
-msgstr "Zahlungsverkehr"
+msgstr "Bankauszüge"
 
 msgctxt "view:account.statement:"
 msgid "Validate"
