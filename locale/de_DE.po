@@ -35,7 +35,7 @@ msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it is not posted."
 msgstr ""
 "Rechnung \"%s\" kann nicht mit Verrechnung gutgeschrieben werden, da sie "
-"nocht nicht festgeschrieben ist."
+"nicht in Status 'Festgeschrieben' ist."
 
 msgctxt "error:account.invoice.line:"
 msgid "Line with \"line\" type must have an account."
@@ -351,7 +351,7 @@ msgstr "Währungsdatum"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -531,11 +531,11 @@ msgstr "Währung"
 
 msgctxt "field:account.invoice.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Stellen Währung"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "field:account.invoice.line,id:"
 msgid "ID"
@@ -603,7 +603,7 @@ msgstr "Einheit"
 
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
@@ -649,10 +649,6 @@ msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "field:account.invoice.pay.ask,account_writeoff:"
-msgid "Write-Off Account"
-msgstr "Konto Ausbuchung"
-
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
 msgstr "Betrag"
@@ -671,11 +667,11 @@ msgstr "Währung"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr "Stellen Währung"
+msgstr "Nachkommastellen Währung Zahlung"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr "Stellen Währung Ausbuchung"
+msgstr "Nachkommastellen Währung Ausbuchung"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -719,7 +715,7 @@ msgstr "Währungen"
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
@@ -727,7 +723,7 @@ msgstr "Zeitpunkt"
 
 msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
@@ -759,7 +755,7 @@ msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
-msgstr "Positionen Zahlungsbedingung"
+msgstr "Positionen"
 
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Payment Term"
@@ -795,7 +791,7 @@ msgstr "Währung"
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.invoice.payment_term.line,day:"
 msgid "Day of Month"
@@ -1009,7 +1005,7 @@ msgstr "Zahlungsbedingung"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr "Zahlungsbedingung Position"
+msgstr "Zahlungsbedingungsposition"
 
 msgctxt "model:account.invoice.print.warning,name:"
 msgid "Print Invoice Report Warning"
@@ -1165,7 +1161,7 @@ msgstr "Rechnungsausgang"
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Rechnungen"
+msgstr "Fakturierung"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
@@ -1273,11 +1269,11 @@ msgstr "Steuern"
 
 msgctxt "odt:account.invoice:"
 msgid "Taxes:"
-msgstr "Steuern:"
+msgstr "Steuern"
 
 msgctxt "odt:account.invoice:"
 msgid "Total (excl. taxes):"
-msgstr "Netto:"
+msgstr "Netto"
 
 msgctxt "odt:account.invoice:"
 msgid "Total:"
@@ -1517,11 +1513,11 @@ msgstr "Rechnung bezahlen"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Line"
-msgstr "Zahlungsbedingung Position"
+msgstr "Zahlungsbedingungsposition"
 
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "Payment Term Lines"
-msgstr "Positionen Zahlungsbedingung"
+msgstr "Zahlungsbedingungspositionen"
 
 msgctxt "view:account.invoice.payment_term:"
 msgid "Payment Term"
@@ -1536,8 +1532,8 @@ msgid "Print Invoice"
 msgstr "Rechnung drucken"
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent <i>directly</i> to the printer."
-msgstr "Die Rechnungen werden <i>direkt</i> an den Drucker gesendet."
+msgid "The invoices will be sent directly to the printer."
+msgstr "Die Rechnungen werden direkt zum Drucker gesendet."
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "You have selected more than one invoice to print."
@@ -1605,7 +1601,7 @@ msgstr "_Festschreiben"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr "Betrag Zweitwährung"
+msgstr "Fremdwährungsbetrag"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
@@ -1633,7 +1629,7 @@ msgstr "Gutschrift erstellen"
 
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr "Annulliert"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
@@ -1649,7 +1645,7 @@ msgstr "OK"
 
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr "Annulliert"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
