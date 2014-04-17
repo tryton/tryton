@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Vous ne pouvez pas changer le prix de revient pour un produit qui a déjà fait l'objet de mouvements de stock.\n"
+"Vous devez utiliser l'assistant \"Mise à jour du prix de revient\"."
+
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr "Le compte de stock doit être différent du compte de contrepartie"
@@ -103,6 +111,10 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
 msgstr "Produit"
 
@@ -137,10 +149,6 @@ msgstr "Différence de prix"
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Compte de stock"
-
-msgctxt "field:stock.move,account_move:"
-msgid "Account Move"
-msgstr "Mouvement comptable"
 
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
