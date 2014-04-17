@@ -319,5 +319,5 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
-msgid "process"
+msgid "Process"
 msgstr "Procesar"
