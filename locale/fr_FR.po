@@ -457,6 +457,10 @@ msgid "Update Asset"
 msgstr "Mise à jour des actifs"
 
 msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Êtes-vous sûr de cloturer l'actif ?"
+
+msgctxt "view:account.asset:"
 msgid "Asset"
 msgstr "Actif"
 
