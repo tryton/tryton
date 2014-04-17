@@ -180,7 +180,7 @@ msgstr "Effort de travail"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Administrion de projets"
+msgstr "Administration des projets"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
