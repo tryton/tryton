@@ -498,7 +498,7 @@ msgstr "Yard"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
-msgstr "un"
+msgstr "a"
 
 msgctxt "model:product.uom,symbol:uom_carat"
 msgid "c"
@@ -510,15 +510,15 @@ msgstr "cm"
 
 msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
 msgid "cm³"
-msgstr "cm ³"
+msgstr "cm³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_foot"
 msgid "ft³"
-msgstr "ft ³"
+msgstr "ft³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_inch"
 msgid "in³"
-msgstr "in ³"
+msgstr "in³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
@@ -526,7 +526,7 @@ msgstr "m³"
 
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
-msgstr "d"
+msgstr "j"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
@@ -550,7 +550,7 @@ msgstr "h"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr "in"
+msgstr "po"
 
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
@@ -585,8 +585,8 @@ msgid "oz"
 msgstr "oz"
 
 msgctxt "model:product.uom,symbol:uom_pound"
-msgid "lbs"
-msgstr "lbs"
+msgid "lb"
+msgstr "lb"
 
 msgctxt "model:product.uom,symbol:uom_second"
 msgid "s"
@@ -594,15 +594,15 @@ msgstr "s"
 
 msgctxt "model:product.uom,symbol:uom_square_centimeter"
 msgid "cm²"
-msgstr "cm ²"
+msgstr "cm²"
 
 msgctxt "model:product.uom,symbol:uom_square_foot"
 msgid "ft²"
-msgstr "pi ²"
+msgstr "pi²"
 
 msgctxt "model:product.uom,symbol:uom_square_inch"
 msgid "in²"
-msgstr "in ²"
+msgstr "po²"
 
 msgctxt "model:product.uom,symbol:uom_square_meter"
 msgid "m²"
@@ -610,7 +610,7 @@ msgstr "m²"
 
 msgctxt "model:product.uom,symbol:uom_square_yard"
 msgid "yd²"
-msgstr "yd ²"
+msgstr "yd²"
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
@@ -618,7 +618,7 @@ msgstr "u"
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "wd"
+msgstr "jt"
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
@@ -654,7 +654,7 @@ msgstr "Poids"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Administration de produits"
+msgstr "Administration des produits"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
