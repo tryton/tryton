@@ -28,7 +28,7 @@ msgstr "Categoria de la UdM"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr "El número màxim de moviments"
+msgstr "El número màxim de moviments."
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
