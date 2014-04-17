@@ -31,6 +31,10 @@ msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr "Debe cancelar el extracto «%s» antes de eliminar."
 
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgstr "Hay facturas pagadas en extractos en borrador, ¿desea continuar?"
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "Saldo"
