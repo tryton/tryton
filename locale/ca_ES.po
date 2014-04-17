@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.opportunity:"
 msgid "Probability must be between 0 and 100."
-msgstr "La provabilitat ha de ser entre 0 i 100."
+msgstr "La probabilitat ha de ser entre 0 i 100."
 
 msgctxt "error:sale.opportunity:"
 msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
@@ -630,11 +630,11 @@ msgstr "Oportunitats per mes"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"
-msgstr "Cancel·lat"
+msgstr "Cancel·lada"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Converted"
-msgstr "Convertit"
+msgstr "Convertida"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
@@ -642,7 +642,7 @@ msgstr "Oportunitat"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
-msgstr "Perdut"
+msgstr "Perduda"
 
 msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
@@ -650,19 +650,19 @@ msgstr "Oportunitat"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Cancelled"
-msgstr "Cancel·lat"
+msgstr "Cancel·lada"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Converted"
-msgstr "Convertit"
+msgstr "Convertida"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lead"
-msgstr "Oportunitat"
+msgstr "Iniciativa"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Lost"
-msgstr "Perdut"
+msgstr "Perduda"
 
 msgctxt "selection:sale.opportunity.history,state:"
 msgid "Opportunity"
@@ -678,11 +678,11 @@ msgstr "Iniciativa/Oportunitat"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sale Lead/Opportunity Line"
-msgstr "Línias Iniciatives/Oportunitats"
+msgstr "Línies Iniciatives/Oportunitats"
 
 msgctxt "view:sale.opportunity.line:"
 msgid "Sales Leads/Opportunities Lines"
-msgstr "Línias Iniciatives/Oportunitats"
+msgstr "Línies Iniciatives/Oportunitats"
 
 msgctxt "view:sale.opportunity:"
 msgid "Cancel"
