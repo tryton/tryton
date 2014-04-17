@@ -28,7 +28,7 @@ msgstr "Catégorie d'unité de mesure"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr "Le nombre limit de mouvements"
+msgstr "Le nombre limite de mouvements"
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
