@@ -8,7 +8,7 @@ msgstr "Währung"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr "Gewicht Währung Stellen"
+msgstr "Nachkommastellen Währung Gewicht"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
@@ -20,7 +20,7 @@ msgstr "Gewicht Maßeinheit"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr "Gewicht Maßeinheit Stellen"
+msgstr "Nachkommastellen Maßeinheit Gewicht"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
