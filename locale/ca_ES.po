@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr "La línia només ha de ser utilitzada una vegada en la reclamació."
+msgstr "L'apunt només pot ser utilitzat una vegada en les reclamacions."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
@@ -24,7 +24,7 @@ msgstr "Import segona moneda"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Bloquejat"
+msgstr "Bloquejada"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
@@ -180,23 +180,23 @@ msgstr "Procediment de reclamació"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr "Compte de reclamació"
+msgstr "Reclamació comptable"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crea compte de reclamació"
+msgstr "Crea reclamació comptable"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr "Nivell de compte de reclamació"
+msgstr "Nivell de reclamació comptable"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr "Procediment de compte de reclamació"
+msgstr "Procediment de reclamació comptable"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr "Crea compte de reclamació"
+msgstr "Crea reclamació comptable"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
@@ -224,7 +224,7 @@ msgstr "Totes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Fetes"
+msgstr "Realitzada"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -256,7 +256,7 @@ msgstr "Reclamació"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr "Feta"
+msgstr "Realitzada"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
@@ -276,7 +276,7 @@ msgstr "Nivell de reclamació"
 
 msgctxt "view:account.dunning.level:"
 msgid "dunning levels"
-msgstr "nivells de reclamació"
+msgstr "Nivells de reclamació"
 
 msgctxt "view:account.dunning.procedure:"
 msgid "Dunning Procedure"
@@ -319,5 +319,9 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "process"
-msgstr "processa"
+msgstr "Processa"
