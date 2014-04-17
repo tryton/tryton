@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Der Kostenpreis kann nicht direkt aktualisiert werden für Artikel, die Lagerbewegungen zugeordnet sind.\n"
+"Es muss die Aktion 'Kostenpreis aktualisieren' gewählt werden."
+
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr "Lagerkonto und Gegenkonto können nicht dasselbe Konto sein"
@@ -103,6 +111,10 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Artikel"
+
+msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
 msgstr "Artikel"
 
@@ -116,7 +128,7 @@ msgstr "Gegenkonto"
 
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
@@ -137,10 +149,6 @@ msgstr "Preisdifferenz"
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Lagerkonto"
-
-msgctxt "field:stock.move,account_move:"
-msgid "Account Move"
-msgstr "Buchungssatz"
 
 msgctxt "help:product.template,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
@@ -209,7 +217,7 @@ msgstr "Kostenpreis aktualisieren"
 
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"
-msgstr "Kostenpreis Aktualisierung Nachfrage"
+msgstr "Nachfrage Kostenpreisaktualisierung"
 
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
