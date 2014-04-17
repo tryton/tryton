@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "El lot es requerit pel moviment del producte \"%s\"."
+msgstr "El lot és requerit pel moviment del producte \"%s\"."
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
@@ -172,11 +172,15 @@ msgstr "Usuari modificació"
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr "Tipus d'ubicació per la qual el lot és obligatori"
+msgstr "Tipus d'ubicació per la qual el lot és obligatori."
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lots"
+
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Moviments"
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
