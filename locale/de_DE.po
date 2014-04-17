@@ -8,7 +8,7 @@ msgstr "Höhe"
 
 msgctxt "field:product.template,height_digits:"
 msgid "Height Digits"
-msgstr "Höhe Stellen"
+msgstr "Nachkommastellen Höhe"
 
 msgctxt "field:product.template,height_uom:"
 msgid "Height Uom"
@@ -20,7 +20,7 @@ msgstr "Länge"
 
 msgctxt "field:product.template,length_digits:"
 msgid "Length Digits"
-msgstr "Länge Stellen"
+msgstr "Nachkommastellen Länge"
 
 msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
@@ -32,7 +32,7 @@ msgstr "Gewicht"
 
 msgctxt "field:product.template,weight_digits:"
 msgid "Weight Digits"
-msgstr "Gewicht Stellen"
+msgstr "Nachkommastellen Gewicht"
 
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight Uom"
@@ -44,7 +44,7 @@ msgstr "Breite"
 
 msgctxt "field:product.template,width_digits:"
 msgid "Width Digits"
-msgstr "Breite Stellen"
+msgstr "Nachkommastellen Breite"
 
 msgctxt "field:product.template,width_uom:"
 msgid "Width Uom"
