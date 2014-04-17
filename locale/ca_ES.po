@@ -96,4 +96,4 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "Ok"
-msgstr "Dacord"
+msgstr "D'acord"
