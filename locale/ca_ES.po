@@ -12,7 +12,7 @@ msgstr "Sufix \"%(sufix)s\" de la seqüència \"%(sequence)s\" no és correcte."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "La darrera data-hora no pot ser del futur a la seqüència \"%s\"."
+msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Missing sequence."
@@ -28,7 +28,7 @@ msgstr "Sufix \"%(sufix)s\" de la seqüència \"%(sequence)s\" no és correcte."
 
 msgctxt "error:ir.sequence:"
 msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "La darrera data-hora no pot ser del futur a la seqüència \"%s\"."
+msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
 
 msgctxt "error:ir.sequence:"
 msgid "Missing sequence."
@@ -36,7 +36,7 @@ msgstr "No es troba la seqüència."
 
 msgctxt "error:res.user:"
 msgid "You can not set the password of ldap user \"%s\"."
-msgstr "No podeu establir la contrasenya de l'usuari \"%s\" d'ldap."
+msgstr "No podeu canviar la contrasenya de l'usuari \"%s\" d'LDAP."
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
@@ -81,6 +81,10 @@ msgstr "Tercer"
 msgctxt "field:company.company,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:company.company,timezone:"
+msgid "Timezone"
+msgstr "Zona horària"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
@@ -228,7 +232,7 @@ msgstr "Usuari modificació"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr "Empreses registrades en aquest planificador"
+msgstr "Empreses registrades en aquest planificador."
 
 msgctxt "model:company.company,name:"
 msgid "Company"
@@ -264,7 +268,7 @@ msgstr "Carta"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Cron - Empresa"
+msgstr "Planificador - Empresa"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
