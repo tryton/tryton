@@ -12,7 +12,7 @@ msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Artikel %s (%d)!"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
-msgstr "Konto Aufwand"
+msgstr "Aufwandskonto"
 
 msgctxt "field:product.category,account_expense_used:"
 msgid "Account Expense Used"
@@ -24,7 +24,7 @@ msgstr "Konten der übergeordneten Kategorie anwenden"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr "Konto Ertrag"
+msgstr "Ertragskonto"
 
 msgctxt "field:product.category,account_revenue_used:"
 msgid "Account Revenue Used"
@@ -120,7 +120,7 @@ msgstr "Konten der Kategorie anwenden"
 
 msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
-msgstr "Konto Aufwand"
+msgstr "Aufwandskonto"
 
 msgctxt "field:product.template,account_expense_used:"
 msgid "Account Expense Used"
@@ -128,7 +128,7 @@ msgstr "Verwendetes Aufwandskonto"
 
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
-msgstr "Konto Ertrag"
+msgstr "Ertragskonto"
 
 msgctxt "field:product.template,account_revenue_used:"
 msgid "Account Revenue Used"
