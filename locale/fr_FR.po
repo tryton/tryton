@@ -43,11 +43,11 @@ msgid "Production"
 msgstr "Production"
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request"
+msgid "Create Production Requests"
 msgstr "Créer les demandes de production"
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request?"
+msgid "Create Production Requests?"
 msgstr "Créer les demandes de production ?"
 
 msgctxt "wizard_button:production.create_request,start,create_:"
