@@ -111,6 +111,7 @@ Here is the list of the tags:
 
     * ``data``: Define a set of data inside the file. It can have the
       attributes:
+
         * ``noupdate`` to prevent the framework to update the records,
         * ``skiptest`` to prevent import of data when running tests,
         * ``depends`` to import data only if all modules in the comma separated
