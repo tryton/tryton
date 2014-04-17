@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
-msgstr "Lieferzeitraum"
+msgstr "Auslieferungszeitraum"
 
 msgctxt "field:production.create_request.start,id:"
 msgid "ID"
@@ -16,11 +16,11 @@ msgstr "In Anzahl von Tagen"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr "Prouktionen anfragen"
+msgstr "Produktionen anfordern"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
-msgstr "Produktionsanforderung erstellen"
+msgstr "Produktionsanforderungen erstellen"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
@@ -28,7 +28,7 @@ msgstr "Erstellen von Produktionsanforderungen"
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
-msgstr "Produktionsanforderung erstellen"
+msgstr "Produktionsanforderungen erstellen"
 
 msgctxt "model:production.create_request.start,name:"
 msgid "Create Production Request"
@@ -43,12 +43,12 @@ msgid "Production"
 msgstr "Produktion"
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request"
-msgstr "Produktionsanforderung erstellen"
+msgid "Create Production Requests"
+msgstr "Produktionsanforderungen erstellen"
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request?"
-msgstr "Produktionsanforderung erstellen?"
+msgid "Create Production Requests?"
+msgstr "Produktionsanforderungen erstellen?"
 
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"
