@@ -188,7 +188,7 @@ msgstr "Método de facturación"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
-msgstr "Estado de factura"
+msgstr "Estado factura"
 
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
@@ -208,7 +208,7 @@ msgstr "Líneas"
 
 msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
-msgstr "Asientos"
+msgstr "Movimientos"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
@@ -244,7 +244,7 @@ msgstr "Referencia del proveedor"
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
-msgstr "Impuesto"
+msgstr "Impuestos"
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
@@ -324,7 +324,7 @@ msgstr "Basado en el pedido"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basado en el albarán"
+msgstr "Basado en el envío"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
