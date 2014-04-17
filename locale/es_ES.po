@@ -35,8 +35,12 @@ msgid "product_bom_uniq"
 msgstr "El producto debe ser único en la LdM."
 
 msgctxt "error:production:"
-msgid "Production \"%s\" misses costs on some of its outputs."
-msgstr "La producción \"%s\" pierde costes en alguna de sus salidas."
+msgid ""
+"The costs of the outputs (%(outputs)s) of production \"%(production)s\" do "
+"not match the cost of the production (%(costs)s)."
+msgstr ""
+"Los costes de los movimientos de salida (%(outputs)s) de la producción "
+"\"%(production)s\" no coinciden con el coste de la producción (%(cost)s)."
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
@@ -554,7 +558,7 @@ msgstr "Producción"
 
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr "Administración producción"
+msgstr "Administración de producción"
 
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
@@ -562,15 +566,15 @@ msgstr "Producción"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
-msgstr "Reservado"
+msgstr "Reservada"
 
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr "Cancelado"
+msgstr "Cancelada"
 
 msgctxt "selection:production,state:"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Realizada"
 
 msgctxt "selection:production,state:"
 msgid "Draft"
@@ -678,7 +682,7 @@ msgstr "Ejecutar"
 
 msgctxt "view:production:"
 msgid "Wait"
-msgstr "Esperando"
+msgstr "En espera"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "Ok"
