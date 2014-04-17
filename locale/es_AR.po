@@ -205,7 +205,3 @@ msgstr "Atributo"
 msgctxt "view:product.attribute:"
 msgid "Attributes"
 msgstr "Atributos"
-
-msgctxt "view:product.template:"
-msgid "Attributes"
-msgstr "Atributos"
