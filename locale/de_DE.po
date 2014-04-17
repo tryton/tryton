@@ -7,8 +7,8 @@ msgid ""
 "Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
 "one configured as credit or debit on journal \"%(journal)s\"."
 msgstr ""
-"Konto \"%(account)s\" in Kontoauszugszeile \"%(line)s\" ist dasselbe wie das"
-" als Soll oder Haben eingetragene in Journal \"%(journal)s\"."
+"Konto \"%(account)s\" in Bankauszugszeile \"%(line)s\" ist dasselbe wie das "
+"für Soll oder Haben eingetragene in Journal \"%(journal)s\"."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
@@ -21,8 +21,7 @@ msgstr "Der Betrag sollte einen positiven oder negativen Wert aufweisen."
 msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
-"Bitte tragen Sie Soll- und Habenkonto für das Kontoauszugsjournal \"%s\" "
-"ein."
+"Bitte tragen Sie Soll- und Habenkonto für das Bankauszugsjournal \"%s\" ein."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
@@ -30,7 +29,13 @@ msgstr "Endsaldo muss \"%s\" sein."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr "Kontoauszug \"%s\" muss annulliert werden, bevor er gelöscht werden kann."
+msgstr "Bankauszug \"%s\" muss annulliert werden, bevor er gelöscht werden kann."
+
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgstr ""
+"Es existieren bezahlte Rechnungen in Entwürfen von Bankauszügen.\n"
+"Trotzdem fortfahren?"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -50,7 +55,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr "Stellen Währung"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -178,7 +183,7 @@ msgstr "Name"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr "Kontoauszug"
+msgstr "Bankauszug"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -190,31 +195,31 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr "Kontoauszug"
+msgstr "Bankauszug"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
-msgstr "Zahlungsverkehr"
+msgstr "Bankauszug"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
-msgstr "Journal Kontoauszug"
+msgstr "Bankauszugsjournal"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
-msgstr "Zahlungsverkehr Position"
+msgstr "Bankauszugszeile"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr "Buchungsposten"
+msgstr "Buchungszeilen"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Zahlungsverkehr"
+msgstr "Bankauszüge"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Journale Zahlungsverkehr"
+msgstr "Bankauszugsjournale"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -237,23 +242,23 @@ msgstr "Geprüft"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Zahlungsverkehr"
+msgstr "Bankauszüge"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Alle Kontoauszüge"
+msgstr "Bankauszüge"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Journale Kontoauszüge"
+msgstr "Bankauszugsjournale"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Zahlungsverkehr"
+msgstr "Bankauszüge"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Kontoauszug"
+msgstr "Bankauszug"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
@@ -273,11 +278,11 @@ msgstr "Geprüft"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
-msgstr "Journal Kontoauszug"
+msgstr "Bankauszugsjournal"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journals"
-msgstr "Journale Kontoauszüge"
+msgstr "Bankauszugsjournale"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
@@ -285,11 +290,11 @@ msgstr "Betrag"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Line"
-msgstr "Kontoauszug Position"
+msgstr "Bankauszug Zeile"
 
 msgctxt "view:account.statement.line:"
 msgid "Statement Lines"
-msgstr "Kontoauszug Positionen"
+msgstr "Bankauszug Zeile"
 
 msgctxt "view:account.statement:"
 msgid "Cancel"
@@ -309,15 +314,15 @@ msgstr "Festschreiben"
 
 msgctxt "view:account.statement:"
 msgid "Statement"
-msgstr "Kontoauszug"
+msgstr "Bankauszug"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Kontoauszug Positionen"
+msgstr "Bankauszug Zeilen"
 
 msgctxt "view:account.statement:"
 msgid "Statements"
-msgstr "Kontoauszüge"
+msgstr "Bankauszüge"
 
 msgctxt "view:account.statement:"
 msgid "Validate"
