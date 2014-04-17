@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
-msgstr "Auf Mahnung drucken"
+msgstr "Auf Mahnschreiben drucken"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
@@ -16,7 +16,7 @@ msgstr "Betrag"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Date"
-msgstr "Zeitpunkt"
+msgstr "Datum"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Date:"
@@ -24,7 +24,7 @@ msgstr "Datum:"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Due Date"
@@ -48,7 +48,7 @@ msgstr "Beleg"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Erinnerungsnachricht"
+msgstr "Erinnerung"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "VAT Number:"
