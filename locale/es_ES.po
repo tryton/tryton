@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted!"
-msgstr "Debe cambiar a borrador el activo \"%s\" antes de borrarlo."
+msgstr "Debe cambiar el activo \"%s\" a borrador antes de borrarlo."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset!"
@@ -17,7 +17,7 @@ msgstr "El activo sólo se puede usar una vez en la línea de factura."
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"!"
-msgstr "Falta una \"Cuenta de activos\" en el producto \"%s\"."
+msgstr "Falta una \"Cuenta de activo\" en el producto \"%s\"."
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -113,7 +113,7 @@ msgstr "Unidad"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos unidad"
+msgstr "Decimales de la unidad"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -149,7 +149,7 @@ msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "Movimiento"
+msgstr "Asiento"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Name"
@@ -177,7 +177,7 @@ msgstr "Amortización acumulada"
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "Valor adquirido"
+msgstr "Valor adquisición"
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
@@ -201,7 +201,7 @@ msgstr "Fecha"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "Base de amortizable"
+msgstr "Base de amortización"
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
@@ -333,7 +333,7 @@ msgstr "Activo"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Asientos de actualización"
+msgstr "Activo - Actualización - Asiento"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
@@ -437,7 +437,7 @@ msgstr "Crear asientos de activo"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Crear asientos hasta"
+msgstr "Crear asientos de activo hasta"
 
 msgctxt "view:account.asset.line:"
 msgid "Asset Line"
@@ -456,6 +456,10 @@ msgid "Update Asset"
 msgstr "Actualizar activo"
 
 msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "¿Está seguro que quiere cerrar el activo?"
+
+msgctxt "view:account.asset:"
 msgid "Asset"
 msgstr "Activo"
 
@@ -465,7 +469,7 @@ msgstr "Activos"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
-msgstr "Borrar apuntes"
+msgstr "Borrar líneas"
 
 msgctxt "view:account.asset:"
 msgid "Close"
@@ -473,7 +477,7 @@ msgstr "Cerrar"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr "Crear apuntes"
+msgstr "Crear líneas"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
