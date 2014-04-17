@@ -33,7 +33,7 @@ msgstr ""
 
 msgctxt "error:stock.forecast:"
 msgid "Forecast \"%s\" must be cancelled before deletion."
-msgstr "La prévision \"%s\" doit être anullée pour pouvoir être supprimée."
+msgstr "La prévision \"%s\" doit être anullée avant suppression."
 
 msgctxt "field:stock.forecast,company:"
 msgid "Company"
