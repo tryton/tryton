@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning:"
 msgid "Line can be used only once on dunning."
-msgstr "La línea puede ser utilizada sólo una vez en la reclamación."
+msgstr "El apunte puede ser utilizado sólo una vez en las reclamaciones."
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
@@ -24,7 +24,7 @@ msgstr "Importe segunda moneda"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr "Bloqueado"
+msgstr "Bloqueada"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
@@ -44,7 +44,7 @@ msgstr "Decimales de moneda"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
@@ -96,7 +96,7 @@ msgstr "Fecha"
 
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
@@ -112,7 +112,7 @@ msgstr "Número de días de atraso"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
@@ -144,7 +144,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
@@ -168,7 +168,7 @@ msgstr "Usuario modificación"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
@@ -192,7 +192,7 @@ msgstr "Nivel de reclamación contable"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr "Procedimiento de reclamación"
+msgstr "Procedimiento de reclamación contable"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
@@ -317,6 +317,10 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Procesar"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "process"
