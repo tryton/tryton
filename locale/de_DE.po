@@ -36,7 +36,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
-msgstr "Angezeigte Stellen"
+msgstr "Angezeigte Nachkommastellen"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
@@ -56,11 +56,11 @@ msgstr "Tausendertrennzeichen Währung"
 
 msgctxt "field:currency.currency,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
-msgstr "Negativer Wert: Symbol führend"
+msgstr "Negativer Wert mit führendem Symbol"
 
 msgctxt "field:currency.currency,n_sep_by_space:"
 msgid "Negative Separate by Space"
-msgstr "Negativer Wert: durch Leerzeichen getrennt"
+msgstr "Negativer Wert durch Leerzeichen getrennt"
 
 msgctxt "field:currency.currency,n_sign_posn:"
 msgid "Negative Sign Position"
@@ -80,11 +80,11 @@ msgstr "Numerischer Code"
 
 msgctxt "field:currency.currency,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr "Positiver Wert: Symbol führend"
+msgstr "Positiver Wert mit führendem Symbol"
 
 msgctxt "field:currency.currency,p_sep_by_space:"
 msgid "Positive Separate by Space"
-msgstr "Positiver Wert: durch Leerzeichen getrennt"
+msgstr "Positiver Wert durch Leerzeichen getrennt"
 
 msgctxt "field:currency.currency,p_sign_posn:"
 msgid "Positive Sign Position"
