@@ -112,15 +112,15 @@ msgstr "Línies de full de treball"
 
 msgctxt "help:project.work,effort:"
 msgid "Estimated Effort for this work"
-msgstr "L'esforç estimat per a aquest treball"
+msgstr "L'esforç estimat per a aquest treball."
 
 msgctxt "help:project.work,hours:"
 msgid "Total time spent on this work"
-msgstr "Temps total empleat en aquest treball"
+msgstr "Temps total empleat en aquest treball."
 
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works"
-msgstr "Esforç total estimat per a aquest treball i les seves subactivitats"
+msgstr "Esforç total estimat per a aquest treball i les seves subactivitats."
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -180,7 +180,7 @@ msgstr "Projecte i tasca"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Administració de projecte"
+msgstr "Administració de projectes"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
