@@ -178,6 +178,10 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lotes"
 
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Movimientos"
+
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lotes"
