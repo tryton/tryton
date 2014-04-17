@@ -46,11 +46,11 @@ msgstr "Währung"
 
 msgctxt "field:sale.opportunity,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:sale.opportunity,description:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "field:sale.opportunity,employee:"
 msgid "Employee"
@@ -142,7 +142,7 @@ msgstr "Änderungsdatum"
 
 msgctxt "field:sale.opportunity.history,description:"
 msgid "Description"
-msgstr "Bezeichnung"
+msgstr "Beschreibung"
 
 msgctxt "field:sale.opportunity.history,employee:"
 msgid "Employee"
@@ -230,7 +230,7 @@ msgstr "Name"
 
 msgctxt "field:sale.opportunity.line,sale_line:"
 msgid "Sale Line"
-msgstr "Position Verkauf"
+msgstr "Verkaufsposition"
 
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
@@ -242,7 +242,7 @@ msgstr "Einheit"
 
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Einheit Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:sale.opportunity.line,write_date:"
 msgid "Write Date"
@@ -290,7 +290,7 @@ msgstr "Währung"
 
 msgctxt "field:sale.opportunity_employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
@@ -370,7 +370,7 @@ msgstr "Währung"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
@@ -446,7 +446,7 @@ msgstr "Währung"
 
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:sale.opportunity_monthly,id:"
 msgid "ID"
@@ -612,7 +612,7 @@ msgstr "Verkaufschancen Historie"
 
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
-msgstr "Verkaufschance Position"
+msgstr "Verkaufschancenposition"
 
 msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
