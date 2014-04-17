@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
 msgid "Hours field must be positive"
-msgstr "El camp d'hores ha de ser positiu"
+msgstr "El camp Hores ha de ser positiu."
 
 msgctxt "error:timesheet.work:"
 msgid ""
@@ -258,10 +258,9 @@ msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Final de full de treball"
 
-#, fuzzy
 msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr ""
+msgid "Timesheet Lines"
+msgstr "Línies del full de treball"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
@@ -289,7 +288,7 @@ msgstr "Fins a la data"
 
 msgctxt "help:timesheet.work,hours:"
 msgid "Total time spent on this work"
-msgstr "Temps total empleat en aquest treball"
+msgstr "Temps total empleat en aquest treball."
 
 msgctxt "help:timesheet.work,timesheet_available:"
 msgid "Allow to fill in timesheets with this work"
