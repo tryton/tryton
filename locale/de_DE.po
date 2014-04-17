@@ -154,7 +154,7 @@ msgstr "Name"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
@@ -206,7 +206,7 @@ msgstr "Bedarfsermittlung"
 
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
-msgstr "Bedarfsermittlung Durchführen Nachfrage"
+msgstr "Nachfrage Bedarfsermittlung durchführen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
@@ -231,7 +231,7 @@ msgstr "Bedarfsermittlung Lagerhaltung"
 
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
-msgstr "Bedarfsermittlung Durchführen Nachfrage"
+msgstr "Nachfrage Bedarfsermittlung durchführen"
 
 msgctxt "model:stock.forecast.complete.choose,name:"
 msgid "Complete Forecast"
@@ -239,7 +239,7 @@ msgstr "Bedarfsermittlung Durchführen Auswahl"
 
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
-msgstr "Position Bedarfsermittlung Lagerhaltung"
+msgstr "Bedarfsermittlungsposition"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
