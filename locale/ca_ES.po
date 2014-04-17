@@ -12,7 +12,7 @@ msgstr "Transportista"
 
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
-msgstr "Mètode de cost enviament venda"
+msgstr "Mètode de cost enviament"
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
