@@ -28,7 +28,7 @@ msgstr "Nombre"
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
-msgstr "Plantila"
+msgstr "Plantilla"
 
 msgctxt "field:product.template-stock.lot.type,type:"
 msgid "Type"
@@ -178,13 +178,17 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lotes"
 
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Movimientos"
+
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lotes"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr "Plantilla - Tipo lote stock"
+msgstr "Plantilla - Tipo de lote"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
