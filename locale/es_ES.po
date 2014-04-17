@@ -166,11 +166,11 @@ msgstr "Moneda"
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"
-msgstr "Dirham de los Emiratos Árabes Unidos"
+msgstr "Dírham de los Emiratos Árabes Unidos"
 
 msgctxt "model:currency.currency,name:afn"
 msgid "Afghani"
-msgstr "Afganí"
+msgstr "Afgano"
 
 msgctxt "model:currency.currency,name:all"
 msgid "Lek"
@@ -530,7 +530,7 @@ msgstr "Dinar libio"
 
 msgctxt "model:currency.currency,name:mad"
 msgid "Moroccan Dirham"
-msgstr "Dirham marroquí"
+msgstr "Dírham marroquí"
 
 msgctxt "model:currency.currency,name:mdl"
 msgid "Moldovan Leu"
@@ -874,7 +874,7 @@ msgstr "Código reservado para pruebas"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
-msgstr "Sin divisa"
+msgstr "Sin moneda"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
