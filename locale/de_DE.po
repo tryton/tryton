@@ -44,7 +44,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
@@ -112,11 +112,11 @@ msgstr "Rechnungsposition Lieferant"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr "Stück"
+msgstr "Einheit"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Einheit Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -400,7 +400,7 @@ msgstr "Anlage"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Anlagen"
+msgstr "Anlagenverwaltung"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
@@ -457,6 +457,10 @@ msgstr "Anlage Abschreibung Buchungssatz"
 msgctxt "view:account.asset.update.start:"
 msgid "Update Asset"
 msgstr "Anlage aktualisieren"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Anlage wirklich schließen?"
 
 msgctxt "view:account.asset:"
 msgid "Asset"
