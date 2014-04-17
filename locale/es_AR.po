@@ -245,13 +245,13 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "model:ir.action,name:"
+msgid "Purchases"
+msgstr "Compras"
+
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
 msgstr "Reglas de abastecimiento"
-
-msgctxt "model:ir.action,name:act_purchase_form"
-msgid "Purchases"
-msgstr "Compras"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -345,7 +345,7 @@ msgstr "Regla de abastecimiento"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Cancelado"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
@@ -368,12 +368,12 @@ msgid "Purchase"
 msgstr "Compra"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request"
-msgstr "Crear solicitud de compra"
+msgid "Create Purchase Requests"
+msgstr "Crear solicitudes de compra"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request?"
-msgstr "¿Crear solicitud de compra?"
+msgid "Create Purchase Requests?"
+msgstr "¿Crear solicitudes de compra?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
