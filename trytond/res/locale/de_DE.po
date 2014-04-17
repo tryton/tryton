@@ -363,6 +363,10 @@ msgctxt "field:res.user,password:"
 msgid "Password"
 msgstr "Passwort"
 
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Passwort Hash"
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr "PySON Menü"
@@ -375,10 +379,6 @@ msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
 msgstr "Datensatzregeln"
 
-msgctxt "field:res.user,salt:"
-msgid "Salt"
-msgstr "Salt"
-
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
 msgstr "Sitzungen"
@@ -390,10 +390,6 @@ msgstr "Signatur"
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
 msgstr "Status Anzeige"
-
-msgctxt "field:res.user,timezone:"
-msgid "Timezone"
-msgstr "Zeitzone"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
@@ -546,7 +542,7 @@ msgstr ""
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
-msgstr "Aktionen, die nach dem Login ausgeführt werden"
+msgstr "Diese Aktionen werden nach dem Login ausgeführt"
 
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
