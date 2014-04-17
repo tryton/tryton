@@ -900,7 +900,7 @@ msgstr "Devises"
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Devises"
+msgstr "Devise"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
@@ -908,7 +908,7 @@ msgstr "Devises"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Administration Devises"
+msgstr "Administration des devises"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
