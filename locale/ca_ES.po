@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:res.user:"
 msgid "You can not set the password of ldap user \"%s\"."
-msgstr "No podeu establir la contrasenya de l'usuari \"%s\" d'ldap."
+msgstr "No podeu canviar la contrasenya de l'usuari \"%s\" d'LDAP."
 
 msgctxt "field:ldap.connection,auth_base_dn:"
 msgid "Base DN"
@@ -28,15 +28,15 @@ msgstr "UID"
 
 msgctxt "help:ldap.connection,auth_base_dn:"
 msgid "Base DN for authentication"
-msgstr "DN base per a l'autenticació"
+msgstr "DN base per a l'autenticació."
 
 msgctxt "help:ldap.connection,auth_create_user:"
 msgid "Create user if not in database"
-msgstr "Crea l'usuari si no existeix a la base de dades"
+msgstr "Crea l'usuari si no existeix a la base de dades."
 
 msgctxt "help:ldap.connection,auth_uid:"
 msgid "UID Attribute for authentication"
-msgstr "Atribut UID per a l'autenticació"
+msgstr "Atribut UID per a l'autenticació."
 
 msgctxt "selection:ldap.connection,auth_scope:"
 msgid "Base"
