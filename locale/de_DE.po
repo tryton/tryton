@@ -16,7 +16,7 @@ msgstr "Menge"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
