@@ -32,7 +32,7 @@ msgstr "Fecha de vencimiento"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "E-Mail:"
-msgstr "Correo electrónico"
+msgstr "Correo electrónico:"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Pending Payments Received"
