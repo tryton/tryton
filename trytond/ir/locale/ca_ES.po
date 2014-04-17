@@ -24,15 +24,37 @@ msgstr "No podeu eliminar aquest registre."
 
 msgctxt "error:digits_validation_record:"
 msgid "The field \"%s\" on \"%s\" has too many decimal digits."
-msgstr "El camp \"%s\" de \"%s\" té massa decimals."
+msgstr "El camp \"%s\" de \"%s\" té masses decimals."
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
+"exceeds it's limit."
+msgstr ""
+"El nombre de dígits \"%(digits)s\" del camp \"%(field)s\" de %\"(value)s\" "
+"és superior al límit."
 
 msgctxt "error:domain_validation_record:"
-msgid "The value of the field \"%s\" on \"%s\" is not valid according to its domain."
+msgid ""
+"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
+" to its domain."
 msgstr "El valor del camp \"%s\" de \"%s\" no és correcte segons aquest domini."
 
 msgctxt "error:foreign_model_exist:"
 msgid "Could not delete \"%s\" records because they are used on field \"%s\" of \"%s\"."
 msgstr "No podeu eliminar \"%s\" perquè s'utilitzen en els camps \"%s\" de \"%s\"."
+
+msgctxt "error:foreign_model_exist:"
+msgid ""
+"Could not delete the records because they are used on field \"%(field)s\" of"
+" \"%(model)s\"."
+msgstr ""
+"No es poden eliminar els registres perquè es fan servir al camp "
+"\"%(field)s\" de \"%(models)\"."
+
+msgctxt "error:foreign_model_missing:"
+msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr "El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no existeix."
 
 msgctxt "error:foreign_model_missing:"
 msgid "The value of field \"%s\" on \"%s\" doesn't exist."
@@ -83,13 +105,13 @@ msgid ""
 msgstr ""
 "Ha fallat l'acció quan s'executava: \"%s\"\n"
 "%s\n"
-" Traceback: \n"
+" Traça del programa: \n"
 "\n"
 "%s\n"
 
 msgctxt "error:ir.lang:"
 msgid "Default language can not be deleted."
-msgstr "El idioma per defecte no es pot eliminar."
+msgstr "L'idioma per defecte no es pot eliminar."
 
 msgctxt "error:ir.lang:"
 msgid "Invalid date format \"%(format)s\" on \"%(language)s\" language."
@@ -97,7 +119,7 @@ msgstr "El format de la data \"%(format)s\" de \"%(language)s\" no és correcte.
 
 msgctxt "error:ir.lang:"
 msgid "Invalid grouping \"%(grouping)s\" on \"%(language)s\" language."
-msgstr "La agrupació \"%(grouping)s\" de \"%(language)s\" no és correcte."
+msgstr "L'agrupació \"%(grouping)s\" de \"%(language)s\" no és correcte."
 
 msgctxt "error:ir.lang:"
 msgid "The default language must be translatable."
@@ -105,15 +127,15 @@ msgstr "L'idioma per defecte ha de ser traduïble."
 
 msgctxt "error:ir.lang:"
 msgid "decimal_point and thousands_sep must be different!"
-msgstr "decimal_point i thousands_sep han de ser diferents."
+msgstr "El punt decimal i el separador de milers han de ser diferents."
 
 msgctxt "error:ir.model.access:"
 msgid "You can not create this kind of document! (%s)"
-msgstr "No podeu crear aquest tipus de document. (%s)"
+msgstr "No podeu crear aquest tipus de document (%s)."
 
 msgctxt "error:ir.model.access:"
 msgid "You can not delete this document! (%s)"
-msgstr "No podeu eliminar aquest document (%s)"
+msgstr "No podeu eliminar aquest document (%s)."
 
 msgctxt "error:ir.model.access:"
 msgid "You can not read this document! (%s)"
@@ -125,7 +147,7 @@ msgstr "No podeu modificar aquest document (%s)."
 
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
-msgstr "El nom del butó del model ha de ser únic."
+msgstr "El nom del botó del model ha de ser únic."
 
 msgctxt "error:ir.model.data:"
 msgid "The triple (fs_id, module, model) must be unique!"
@@ -141,7 +163,7 @@ msgstr "No podeu modificar el camp (%s.%s)."
 
 msgctxt "error:ir.model.field:"
 msgid "Model Field name \"%s\" is not a valid python identifier."
-msgstr "El nom del model \"%s\" no és un identificador de python correcte."
+msgstr "El nom del model \"%s\" no és un identificador de Python correcte."
 
 msgctxt "error:ir.model.field:"
 msgid "The field name in model must be unique!"
@@ -149,7 +171,7 @@ msgstr "El nom del camp ha de ser únic."
 
 msgctxt "error:ir.model:"
 msgid "Module name \"%s\" is not a valid python identifier."
-msgstr "El nom del model \"%s\" no és un identificador de python correcte."
+msgstr "El nom del model \"%s\" no és un identificador de Python correcte."
 
 msgctxt "error:ir.model:"
 msgid "The model must be unique!"
@@ -161,12 +183,13 @@ msgstr "La dependència ha de ser únic en el mòdul."
 
 msgctxt "error:ir.module.module:"
 msgid "Missing dependencies %s for module \"%s\""
-msgstr "No es troba la dependècia %s pel mòdul \"%s\"."
+msgstr "No es troba la dependència %s pel mòdul \"%s\"."
 
 msgctxt "error:ir.module.module:"
 msgid "The modules you are trying to uninstall depends on installed modules:"
 msgstr ""
-"Els mòduls que està intentant desinstal·lar depenen de mòduls instal·lats:"
+"Els mòduls que esteu intentant desinstal·lar depenen d'altres mòduls "
+"instal·lats:"
 
 msgctxt "error:ir.module.module:"
 msgid "The name of the module must be unique!"
@@ -194,7 +217,7 @@ msgstr "Sufix \"%(sufix)s\" de la seqüència \"%(sequence)s\" no és correcte."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "La darrera data-hora no pot ser del futur a la seqüència \"%s\"."
+msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Missing sequence."
@@ -202,7 +225,7 @@ msgstr "No es troba la seqüència."
 
 msgctxt "error:ir.sequence.strict:"
 msgid "Timestamp rounding should be greater than 0"
-msgstr "L'arrodiment Timestamp ha de ser mes gran que 0."
+msgstr "L'arrodoniment de data-hora ha de ser més gran que 0."
 
 msgctxt "error:ir.sequence:"
 msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
@@ -214,7 +237,7 @@ msgstr "Sufix \"%(sufix)s\" de la seqüència \"%(sequence)s\" no és correcte."
 
 msgctxt "error:ir.sequence:"
 msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "La darrera data-hora no pot ser del futur a la seqüència \"%s\"."
+msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
 
 msgctxt "error:ir.sequence:"
 msgid "Missing sequence."
@@ -222,7 +245,7 @@ msgstr "No es troba la seqüència."
 
 msgctxt "error:ir.sequence:"
 msgid "Timestamp rounding should be greater than 0"
-msgstr "L'arrodiment Timestamp ha de ser mes gran que 0."
+msgstr "L'arrodoniment de data-hora ha de ser més gran que 0."
 
 msgctxt "error:ir.translation:"
 msgid "Translation must be unique"
@@ -234,18 +257,18 @@ msgid ""
 "translation by module %(overriding_module)s"
 msgstr ""
 "No podeu exportar la traducció %(name)s perquè s'utilitza en el mòdul "
-"%(overriding_module)s"
+"%(overriding_module)s."
 
 msgctxt "error:ir.trigger:"
 msgid "\"On Time\" and others are mutually exclusive!"
-msgstr "\"Al moment\" i altres son mutuament exclusius."
+msgstr "\"Al moment\" i altres són mútuament exclusius."
 
 msgctxt "error:ir.trigger:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid python expression on trigger "
 "\"%(trigger)s\"."
 msgstr ""
-"La condició \"%(condition)s\" no és una expressió python correcte en el "
+"La condició \"%(condition)s\" no és una expressió Python correcte en el "
 "disparador \"%(trigger)s\"."
 
 msgctxt "error:ir.ui.menu:"
@@ -255,10 +278,6 @@ msgstr "\"%s\" no és un menú correcte perquè no pot contenir \" /\"."
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
 msgstr "XML en les vistes \"%s\" no és correcte."
-
-msgctxt "error:not_found_in_selection:"
-msgid "Key %r not found in selection field %r"
-msgstr "No es troba la clau %r en la selecció del camp %r."
 
 msgctxt "error:read_error:"
 msgid ""
@@ -281,24 +300,32 @@ msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
-"Error de recurssió: El registre \"%(rec_name)s\" amb el pare "
+"Error de recursivitat: El registre \"%(rec_name)s\" amb el pare "
 "\"%(parent_rec_name)s\" es va configurar com pare de si mateix."
 
 msgctxt "error:reference_syntax_error:"
 msgid "Syntax error for reference %r in %s"
-msgstr "Error de sintaxis en la referència %r a %s"
+msgstr "Error de sintaxi en la referència %r a %s."
 
 msgctxt "error:relation_not_found:"
 msgid "Relation not found: %r in %s"
-msgstr "No s'ha trobat la relació: %r a %s"
+msgstr "No s'ha trobat la relació: %r a %s."
+
+msgctxt "error:required_field:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "El camp \"%(field)s\" de \"%(model)s\" es obligatori."
 
 msgctxt "error:required_field:"
 msgid "The field \"%s\" on \"%s\" is required."
-msgstr "El camp \"%s\" de \"%s\" es requerit."
+msgstr "El camp \"%s\" de \"%s\" és requerit."
+
+msgctxt "error:required_validation_record:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "El camp \"%(field)s\" de \"%(model)s\" es obligatori."
 
 msgctxt "error:required_validation_record:"
 msgid "The field \"%s\" on \"%s\" is required."
-msgstr "El camp \"%s\" de \"%s\" es requerit."
+msgstr "El camp \"%s\" de \"%s\" és requerit."
 
 msgctxt "error:search_function_missing:"
 msgid "Missing search function on field \"%s\"."
@@ -308,6 +335,14 @@ msgctxt "error:selection_validation_record:"
 msgid "The field \"%s\" on \"%s\" is not in the selection."
 msgstr "El camp \"%s\" de \"%s\" no es troba en la selecció."
 
+msgctxt "error:selection_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
+"the selection."
+msgstr ""
+"El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no està a la "
+"selecció."
+
 msgctxt "error:selection_value_notfound:"
 msgid "Value not in the selection for field \"%s\"."
 msgstr "El valor no es troba en la selecció en el camp \"%s\"."
@@ -315,6 +350,16 @@ msgstr "El valor no es troba en la selecció en el camp \"%s\"."
 msgctxt "error:size_validation_record:"
 msgid "The field \"%s\" on \"%s\" is too long."
 msgstr "El camp \"%s\" de \"%s\" és massa llarg."
+
+msgctxt "error:size_validation_record:"
+msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
+msgstr "La mida \"%(size)s\" del camp \"%(field)s\" de \"%(model)s\" es massa gran."
+
+msgctxt "error:time_format_validation_record:"
+msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
+msgstr ""
+"El valor de temps \"%(value)s\" del camp %(field)s\" de \"%(model)s\" no és "
+"vàlid."
 
 msgctxt "error:time_format_validation_record:"
 msgid "The time value of field \"%s\" on \"%s\" is not valid."
@@ -346,7 +391,7 @@ msgstr "No podeu modificar aquest registre."
 
 msgctxt "error:xml_id_syntax_error:"
 msgid "Syntax error for XML id %r in %s"
-msgstr "Error de sintaxis XML id %r a %s"
+msgstr "Error de sintaxi XML id %r a %s."
 
 msgctxt "error:xml_record_desc:"
 msgid "This record is part of the base configuration."
@@ -420,10 +465,6 @@ msgctxt "field:ir.action.act_window,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:ir.action.act_window,auto_refresh:"
-msgid "Auto-Refresh"
-msgstr "Actualizació automatitzada"
-
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Context"
@@ -478,7 +519,7 @@ msgstr "PySON Context"
 
 msgctxt "field:ir.action.act_window,pyson_domain:"
 msgid "PySON Domain"
-msgstr "PySON Domain"
+msgstr "Domini PySON"
 
 msgctxt "field:ir.action.act_window,pyson_order:"
 msgid "PySON Order"
@@ -486,7 +527,7 @@ msgstr "Ordre PySON"
 
 msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
-msgstr "PySON Search Criteria"
+msgstr "Criteri de cerca PySON"
 
 msgctxt "field:ir.action.act_window,rec_name:"
 msgid "Name"
@@ -666,7 +707,7 @@ msgstr "Direcció impressió"
 
 msgctxt "field:ir.action.report,email:"
 msgid "Email"
-msgstr "Email"
+msgstr "Correu electrònic"
 
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
@@ -702,7 +743,7 @@ msgstr "Nom"
 
 msgctxt "field:ir.action.report,pyson_email:"
 msgid "PySON Email"
-msgstr "PySON Email"
+msgstr "Correu electrònic PySON"
 
 msgctxt "field:ir.action.report,rec_name:"
 msgid "Name"
@@ -719,6 +760,10 @@ msgstr "Contingut"
 msgctxt "field:ir.action.report,report_content_custom:"
 msgid "Content"
 msgstr "Contingut"
+
+msgctxt "field:ir.action.report,report_content_name:"
+msgid "Content Name"
+msgstr "Nom del contingut"
 
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
@@ -830,7 +875,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:ir.action.wizard,email:"
 msgid "Email"
-msgstr "Email"
+msgstr "Correu electrònic"
 
 msgctxt "field:ir.action.wizard,groups:"
 msgid "Groups"
@@ -874,7 +919,7 @@ msgstr "Finestra"
 
 msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
-msgstr "Nom del assistent"
+msgstr "Nom de l'assistent"
 
 msgctxt "field:ir.action.wizard,write_date:"
 msgid "Write Date"
@@ -886,7 +931,7 @@ msgstr "Usuari modificació"
 
 msgctxt "field:ir.attachment,collision:"
 msgid "Collision"
-msgstr "Col·lissió"
+msgstr "Col·lisió"
 
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
@@ -978,7 +1023,7 @@ msgstr "Nom"
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
-msgstr "Timestamp"
+msgstr "Data-hora"
 
 msgctxt "field:ir.cache,write_date:"
 msgid "Write Date"
@@ -1042,7 +1087,7 @@ msgstr "ID"
 
 msgctxt "field:ir.cron,interval_number:"
 msgid "Interval Number"
-msgstr "Número d'intèrval"
+msgstr "Número d'interval"
 
 msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Unit"
@@ -1058,7 +1103,7 @@ msgstr "Nom"
 
 msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
-msgstr "Següent execussió"
+msgstr "Següent execució"
 
 msgctxt "field:ir.cron,number_calls:"
 msgid "Number of Calls"
@@ -1074,11 +1119,11 @@ msgstr "Repeteix perduts"
 
 msgctxt "field:ir.cron,request_user:"
 msgid "Request User"
-msgstr "Sol·licitud usuari"
+msgstr "Usuari sol·licitant"
 
 msgctxt "field:ir.cron,user:"
 msgid "Execution User"
-msgstr "Usuari execussió"
+msgstr "Usuari execució"
 
 msgctxt "field:ir.cron,write_date:"
 msgid "Write Date"
@@ -1210,7 +1255,7 @@ msgstr "Separador de milers"
 
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
-msgstr "Traduible"
+msgstr "Traduïble"
 
 msgctxt "field:ir.lang,write_date:"
 msgid "Write Date"
@@ -1580,6 +1625,10 @@ msgctxt "field:ir.module.module,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:ir.module.module.config_wizard.done,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:ir.module.module.config_wizard.first,id:"
 msgid "ID"
 msgstr "ID"
@@ -1834,7 +1883,7 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
-msgstr "Últim Timestamp"
+msgstr "Última data-hora"
 
 msgctxt "field:ir.sequence,name:"
 msgid "Sequence Name"
@@ -1854,7 +1903,7 @@ msgstr "Següent número"
 
 msgctxt "field:ir.sequence,padding:"
 msgid "Number padding"
-msgstr "Omplenat del número"
+msgstr "Emplenat del número"
 
 msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
@@ -1866,15 +1915,15 @@ msgstr "Nom"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
-msgstr "Suffix"
+msgstr "Sufix"
 
 msgctxt "field:ir.sequence,timestamp_offset:"
 msgid "Timestamp Offset"
-msgstr "Timestamp Offset"
+msgstr "Desfasament de data-hora"
 
 msgctxt "field:ir.sequence,timestamp_rounding:"
 msgid "Timestamp Rounding"
-msgstr "Arrondiment Tmestamp"
+msgstr "Arronodiment de data-hora"
 
 msgctxt "field:ir.sequence,type:"
 msgid "Type"
@@ -1910,7 +1959,7 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
-msgstr "Últim Timestamp"
+msgstr "Última data-hora"
 
 msgctxt "field:ir.sequence.strict,name:"
 msgid "Sequence Name"
@@ -1930,7 +1979,7 @@ msgstr "Següent número"
 
 msgctxt "field:ir.sequence.strict,padding:"
 msgid "Number padding"
-msgstr "Omplenat del número"
+msgstr "Emplenat del número"
 
 msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
@@ -1942,15 +1991,15 @@ msgstr "Nom"
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
-msgstr "Suffix"
+msgstr "Sufix"
 
 msgctxt "field:ir.sequence.strict,timestamp_offset:"
 msgid "Timestamp Offset"
-msgstr "Timestamp Offset"
+msgstr "Desfasament de data-hora"
 
 msgctxt "field:ir.sequence.strict,timestamp_rounding:"
 msgid "Timestamp Rounding"
-msgstr "Arrondiment Tmestamp"
+msgstr "Arronodiment de data-hora"
 
 msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
@@ -2082,7 +2131,7 @@ msgstr "Mòdul"
 
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
@@ -2326,7 +2375,7 @@ msgstr "Fills"
 
 msgctxt "field:ir.ui.menu,complete_name:"
 msgid "Complete Name"
-msgstr "Nom compet"
+msgstr "Nom complet"
 
 msgctxt "field:ir.ui.menu,create_date:"
 msgid "Create Date"
@@ -2442,7 +2491,7 @@ msgstr "ID"
 
 msgctxt "field:ir.ui.view,inherit:"
 msgid "Inherited View"
-msgstr "Vista heredada"
+msgstr "Vista heretada"
 
 msgctxt "field:ir.ui.view,model:"
 msgid "Model"
@@ -2608,21 +2657,17 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "help:ir.action.act_window,auto_refresh:"
-msgid "Add an auto-refresh on the view"
-msgstr "Afegeix un actualizació a la vista automatitzada"
-
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
-msgstr "Limit per defecte en les vistes de llista"
+msgstr "Límit per defecte en les vistes de llista."
 
 msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
-msgstr "Cerca per defecte en les vistes de llista"
+msgstr "Criteri de cerca per defecte en les vistes de llista."
 
 msgctxt "help:ir.action.act_window,window_name:"
 msgid "Use the action name as window name"
-msgstr "Utilitza el nom de l'acció pel nom de la finestra"
+msgstr "Utilitza el nom de l'acció pel nom de la finestra."
 
 msgctxt "help:ir.action.report,email:"
 msgid ""
@@ -2638,27 +2683,27 @@ msgid ""
 "compatible format"
 msgstr ""
 "Deixeu-ho en blanc per mantenir el mateix que a la plantilla, veieu la "
-"documentació de l'unoconv per conèixer formats compatibles"
+"documentació de l'unoconv per conèixer formats compatibles."
 
 msgctxt "help:ir.action.report,style:"
 msgid "Define the style to apply on the report."
-msgstr "Defineix un esti per aplicar en els informes."
+msgstr "Defineix un estil per aplicar als informes."
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
-msgstr "Executa l'assistent en una nova finestra"
+msgstr "Executa l'assistent en una nova finestra."
 
 msgctxt "help:ir.cron,number_calls:"
 msgid ""
 "Number of times the function is called, a negative number indicates that the"
 " function will always be called"
 msgstr ""
-"Número d'execussions de la funció, un número negatiu indica que aqusta "
-"funció sempre s'executarà."
+"Número d'execucions de la funció, un número negatiu indica que aquesta "
+"funció s'executarà sempre."
 
 msgctxt "help:ir.cron,request_user:"
 msgid "The user who will receive requests in case of failure"
-msgstr "L'usuari que rebrà solicituds en cas d'errors."
+msgstr "L'usuari que rebrà sol·licituds en cas d'errors."
 
 msgctxt "help:ir.cron,user:"
 msgid "The user used to execute this action"
@@ -2674,15 +2719,15 @@ msgstr "Mòdul en què es defineix aquest model."
 
 msgctxt "help:ir.model.data,db_id:"
 msgid "The id of the record in the database."
-msgstr "El id del registre de la base de dades."
+msgstr "L'id del registre de la base de dades."
 
 msgctxt "help:ir.model.data,fs_id:"
 msgid "The id of the record as known on the file system."
-msgstr "El id del registre que es conneix en el sistema de fitxers."
+msgstr "L'id del registre com es coneix al sistema de fitxers."
 
 msgctxt "help:ir.model.field,module:"
 msgid "Module in which this field is defined"
-msgstr "Mòdul en el qual es defineix aquest camp"
+msgstr "Mòdul en el qual es defineix aquest camp."
 
 msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
@@ -2692,11 +2737,11 @@ msgstr "Una expressió regular de Python per excloure models de les gràfiques."
 
 msgctxt "help:ir.rule,domain:"
 msgid "Domain is evaluated with \"user\" as the current user"
-msgstr "El domini es evaluat amb el usuari \"user\" que es el usuari actual."
+msgstr "El domini s'avalua amb \"user\" com l'usuari actual."
 
 msgctxt "help:ir.rule.group,default_p:"
 msgid "Add this rule to all users by default"
-msgstr "Afegeix aquesta regla a tots els usuaris per defecte"
+msgstr "Afegeix aquesta regla a tots els usuaris per defecte."
 
 msgctxt "help:ir.rule.group,global_p:"
 msgid ""
@@ -2704,18 +2749,18 @@ msgid ""
 "so every users must follow this rule"
 msgstr ""
 "Marcar la regla global \n"
-"per tant els usuari podràn seguir aquesta regla"
+"per tant tots els usuari hauran de seguir aquesta regla."
 
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
-msgstr "La regla es correcta si l'últim test és cert."
+msgstr "La regla es compleix si almenys un test és cert."
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A Python statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
-"Una declaració de Python evaluat amb el registre representat per \"self\".\n"
+"Una declaració de Python avaluat amb el registre representat per \"self\".\n"
 "Llença l'acció si la condició es certa."
 
 msgctxt "help:ir.trigger,limit_number:"
@@ -2731,12 +2776,12 @@ msgid ""
 "Set a minimum delay in minutes between call to \"Action Function\" for the same record.\n"
 "0 for no delay."
 msgstr ""
-"Intérval mínim en minuts entre les crides \"Acció de funció\" pel mateix registre.\n"
-"0 per no intérval."
+"Interval mínim en minuts entre les crides \"Acció de funció\" pel mateix registre.\n"
+"0 per no interval."
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
-msgstr "El domini PYSON"
+msgstr "El domini PYSON."
 
 msgctxt "model:ir.action,name:"
 msgid "Action"
@@ -2800,7 +2845,7 @@ msgstr "Accés model"
 
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "Butons"
+msgstr "Botons"
 
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
@@ -2972,7 +3017,7 @@ msgstr "Espanyol (Argentina)"
 
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "Bulgaria"
+msgstr "Búlgar"
 
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
@@ -2980,7 +3025,7 @@ msgstr "Català"
 
 msgctxt "model:ir.lang,name:lang_cs"
 msgid "Czech"
-msgstr "Check"
+msgstr "Txec"
 
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
@@ -2996,7 +3041,7 @@ msgstr "Espanyol (Espanya)"
 
 msgctxt "model:ir.lang,name:lang_es_CO"
 msgid "Spanish (Colombia)"
-msgstr "Espanyol (Colombia)"
+msgstr "Espanyol (Colòmbia)"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
@@ -3028,7 +3073,7 @@ msgstr "Accés model"
 
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
-msgstr "Butó model"
+msgstr "Botó model"
 
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
@@ -3050,6 +3095,10 @@ msgctxt "model:ir.module.module,name:"
 msgid "Module"
 msgstr "Mòdul"
 
+msgctxt "model:ir.module.module.config_wizard.done,name:"
+msgid "Module Config Wizard Done"
+msgstr "Assistent de configuració del modul finalitzat"
+
 msgctxt "model:ir.module.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Inicialització de l'assistent de configuració del mòdul"
@@ -3060,7 +3109,7 @@ msgstr "Assistent configuració després d'instal·lar un mòdul"
 
 msgctxt "model:ir.module.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Un altre asistent de configuració del mòdul"
+msgstr "Un altre assistent de configuració del mòdul"
 
 msgctxt "model:ir.module.module.dependency,name:"
 msgid "Module dependency"
@@ -3076,7 +3125,7 @@ msgstr "Inici instal·lació/actualització mòdul"
 
 msgctxt "model:ir.property,name:"
 msgid "Property"
-msgstr "Property"
+msgstr "Propietat"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3128,11 +3177,11 @@ msgstr "Exporta traducció"
 
 msgctxt "model:ir.translation.set.start,name:"
 msgid "Set Translation"
-msgstr "Estableix traduccions"
+msgstr "Defineix traduccions"
 
 msgctxt "model:ir.translation.set.succeed,name:"
 msgid "Set Translation"
-msgstr "Estableix traduccions"
+msgstr "Defineix traduccions"
 
 msgctxt "model:ir.translation.update.start,name:"
 msgid "Update translation"
@@ -3224,7 +3273,7 @@ msgstr "Accés model"
 
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "Butons"
+msgstr "Botons"
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
@@ -3292,7 +3341,7 @@ msgstr "Traduccions"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "Estableix traduccions"
+msgstr "Defineix traduccions"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
@@ -3436,7 +3485,7 @@ msgstr "Realitzat"
 
 msgctxt "selection:ir.module.module.config_wizard.item,state:"
 msgid "Open"
-msgstr "Per obrir"
+msgstr "Pendent"
 
 msgctxt "selection:ir.module.module.dependency,state:"
 msgid "Installed"
@@ -3464,11 +3513,11 @@ msgstr "No es coneix"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Decimal Timestamp"
-msgstr "Decimal Tiemstamp"
+msgstr "Data-hora decimal"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Hexadecimal Timestamp"
-msgstr "Marca de temps hexadecimal"
+msgstr "Data-hora hexadecimal"
 
 msgctxt "selection:ir.sequence,type:"
 msgid "Incremental"
@@ -3476,11 +3525,11 @@ msgstr "Increment"
 
 msgctxt "selection:ir.sequence.strict,type:"
 msgid "Decimal Timestamp"
-msgstr "Decimal Tiemstamp"
+msgstr "Data-hora decimal"
 
 msgctxt "selection:ir.sequence.strict,type:"
 msgid "Hexadecimal Timestamp"
-msgstr "Marca de temps hexadecimal"
+msgstr "Data-hora hexadecimal"
 
 msgctxt "selection:ir.sequence.strict,type:"
 msgid "Incremental"
@@ -3516,7 +3565,7 @@ msgstr "Vista"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
-msgstr "Butó del assistent"
+msgstr "Botó de l'assistent"
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
@@ -3656,7 +3705,7 @@ msgstr "Exportacions"
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
-msgstr "Formateig data"
+msgstr "Format data"
 
 msgctxt "view:ir.lang:"
 msgid "Language"
@@ -3676,11 +3725,11 @@ msgstr "Control accés"
 
 msgctxt "view:ir.model.button:"
 msgid "Button"
-msgstr "Butons"
+msgstr "Botons"
 
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
-msgstr "Butons"
+msgstr "Botons"
 
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"
@@ -3701,6 +3750,14 @@ msgstr "Imprimeix gràfica del model"
 msgctxt "view:ir.model:"
 msgid "Model Description"
 msgstr "Descripció model"
+
+msgctxt "view:ir.module.module.config_wizard.done:"
+msgid "Module configuration"
+msgstr "Configuració del mòdul"
+
+msgctxt "view:ir.module.module.config_wizard.done:"
+msgid "The configuration is done."
+msgstr "S'ha realitzat la configuració correctament."
 
 msgctxt "view:ir.module.module.config_wizard.first:"
 msgid "Welcome to the module configuration wizard!"
@@ -3788,14 +3845,13 @@ msgstr "Propietats"
 
 msgctxt "view:ir.property:"
 msgid "Property"
-msgstr "Property"
+msgstr "Propietat"
 
 msgctxt "view:ir.rule.group:"
 msgid ""
 "If there is no test defined, the rule is always satisfied if not global"
 msgstr ""
-"Si no hi ha un test definit, la regla es sempre satisfactoria si no és "
-"global."
+"Si no hi ha un test definit, la regla es compleix sempre si no és global."
 
 msgctxt "view:ir.rule.group:"
 msgid "Record rules"
@@ -3803,7 +3859,7 @@ msgstr "Regles dels registres"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
-msgstr "La regla es correcta si l'últim test és cert."
+msgstr "La regla es compleix si almenys un test és cert."
 
 msgctxt "view:ir.rule:"
 msgid "Test"
@@ -3847,7 +3903,7 @@ msgstr "Seqüències"
 
 msgctxt "view:ir.sequence:"
 msgid "Timestamp"
-msgstr "Timestamp"
+msgstr "Data-hora"
 
 msgctxt "view:ir.sequence:"
 msgid "Year:"
@@ -3879,7 +3935,7 @@ msgstr "Exporta traducció"
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Set Translations"
-msgstr "Estableix traduccions"
+msgstr "Defineix traduccions"
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
@@ -3891,7 +3947,7 @@ msgstr "Les traduccions s'han realitzat correctament."
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Translations"
-msgstr "Estableix traduccions"
+msgstr "Defineix traduccions"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
@@ -3969,9 +4025,13 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
 
+msgctxt "wizard_button:ir.module.module.config_wizard,done,end:"
+msgid "Ok"
+msgstr "D'acord"
+
 msgctxt "wizard_button:ir.module.module.config_wizard,first,action:"
 msgid "Ok"
-msgstr "Dacord"
+msgstr "D'acord"
 
 msgctxt "wizard_button:ir.module.module.config_wizard,first,end:"
 msgid "Cancel"
@@ -3987,7 +4047,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:ir.module.module.install_upgrade,done,config:"
 msgid "Ok"
-msgstr "Dacord"
+msgstr "D'acord"
 
 msgctxt "wizard_button:ir.module.module.install_upgrade,start,end:"
 msgid "Cancel"
@@ -4007,7 +4067,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:ir.translation.clean,succeed,end:"
 msgid "Ok"
-msgstr "Dacord"
+msgstr "D'acord"
 
 msgctxt "wizard_button:ir.translation.export,result,end:"
 msgid "Close"
@@ -4027,7 +4087,7 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:ir.translation.set,start,set_:"
 msgid "Set"
-msgstr "Estableix"
+msgstr "Defineix"
 
 msgctxt "wizard_button:ir.translation.set,succeed,end:"
 msgid "Ok"

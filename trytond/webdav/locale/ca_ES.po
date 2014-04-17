@@ -28,7 +28,7 @@ msgstr "Ruta"
 
 msgctxt "field:ir.attachment,shares:"
 msgid "Shares"
-msgstr "Directori compartit"
+msgstr "Directoris compartits"
 
 msgctxt "field:ir.attachment,url:"
 msgid "URL"
@@ -124,7 +124,7 @@ msgstr "Usuari"
 
 msgctxt "field:webdav.share,write_date:"
 msgid "Write Date"
-msgstr "Data modicación"
+msgstr "Data modificació"
 
 msgctxt "field:webdav.share,write_uid:"
 msgid "Write User"

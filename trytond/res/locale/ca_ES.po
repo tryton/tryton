@@ -12,7 +12,7 @@ msgstr "Contrasenya incorrecta."
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
-msgstr "No podeu tenir dos usuaris amb el mateix identificador d'entrada!"
+msgstr "No podeu tenir dos usuaris amb el mateix nom d'usuari."
 
 msgctxt "error:res.user:"
 msgid ""
@@ -20,9 +20,9 @@ msgid ""
 "as it is used internally for resources\n"
 "created by the system (updates, module installation, ...)"
 msgstr ""
-"No podeu eliminar l'usuari del sistema\n"
-"que es utilitzat per recursos del sistema\n"
-"(actualitzacions, instal·lacions,...)"
+"No podeu eliminar l'usuari principal que\n"
+"s'utilitza internament pels recursos creats\n"
+"pel sistema (actualitzacions, instal·lacions,...)."
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -62,7 +62,7 @@ msgstr "Actiu"
 
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
-msgstr "Butons"
+msgstr "Botó"
 
 msgctxt "field:ir.model.button-res.group,create_date:"
 msgid "Create Date"
@@ -274,7 +274,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
-msgstr "Camp accés"
+msgstr "Accés a camps"
 
 msgctxt "field:res.group,id:"
 msgid "ID"
@@ -282,11 +282,11 @@ msgstr "ID"
 
 msgctxt "field:res.group,menu_access:"
 msgid "Access Menu"
-msgstr "Permís menú"
+msgstr "Accés a menús"
 
 msgctxt "field:res.group,model_access:"
 msgid "Access Model"
-msgstr "Permís model"
+msgstr "Accés a models"
 
 msgctxt "field:res.group,name:"
 msgid "Name"
@@ -330,7 +330,7 @@ msgstr "Usuari creació"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "Email"
+msgstr "Correu electrònic"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"
@@ -364,9 +364,13 @@ msgctxt "field:res.user,password:"
 msgid "Password"
 msgstr "Contrasenya"
 
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Hash de la contrasenya"
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
-msgstr "PySON Menú"
+msgstr "Menú PySON"
 
 msgctxt "field:res.user,rec_name:"
 msgid "Name"
@@ -375,10 +379,6 @@ msgstr "Nom"
 msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
 msgstr "Regles"
-
-msgctxt "field:res.user,salt:"
-msgid "Salt"
-msgstr "Salt"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
@@ -391,10 +391,6 @@ msgstr "Firma"
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
 msgstr "Progrés"
-
-msgctxt "field:res.user,timezone:"
-msgid "Timezone"
-msgstr "Zona horaria"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
@@ -542,11 +538,11 @@ msgstr "Usuari modificació"
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
-msgstr "Grups permesos per editar les seqüències d'aquest tipus"
+msgstr "Els grups permesos per editar les seqüències d'aquest tipus."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
-msgstr "Accions que seràn executades al identificar-se"
+msgstr "Les accions que s'executaran quan s'identifiqui."
 
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
@@ -566,11 +562,11 @@ msgstr "Acció - grup"
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Executa al moment del disparador"
+msgstr "Executa disparadors per temps"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "Model butó - grup"
+msgstr "Model Botó - Grup"
 
 msgctxt "model:ir.model.field-res.group,name:"
 msgid "Model Field Group Rel"
@@ -602,7 +598,7 @@ msgstr "Usuaris"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
-msgstr "UI menú - Grup"
+msgstr "Menú UI - Grup"
 
 msgctxt "model:res.group,name:"
 msgid "Group"
@@ -618,11 +614,11 @@ msgstr "Usuari"
 
 msgctxt "model:res.user,name:user_admin"
 msgid "Administrator"
-msgstr "Administració"
+msgstr "Administrador"
 
 msgctxt "model:res.user,name:user_trigger"
 msgid "Cron Trigger"
-msgstr "Cron disparador"
+msgstr "Planificador de disparadors"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
@@ -634,7 +630,7 @@ msgstr "Usuari - Grup"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
-msgstr "Configuració usuari"
+msgstr "Configuració inicial usuari"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
@@ -646,7 +642,7 @@ msgstr "Alerta usuari"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr "Accés permisos"
+msgstr "Permisos d'accés"
 
 msgctxt "view:res.group:"
 msgid "Group"
@@ -666,7 +662,7 @@ msgstr "Afegir usuaris"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
-msgstr "El identificador ha de ser únic."
+msgstr "L'identificador ha de ser únic."
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
@@ -674,7 +670,7 @@ msgstr "Ara podeu afegir usuaris al sistema."
 
 msgctxt "view:res.user.warning:"
 msgid "Warning"
-msgstr "Esperant"
+msgstr "Alerta"
 
 msgctxt "view:res.user.warning:"
 msgid "Warnings"
@@ -682,7 +678,7 @@ msgstr "Alertes"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "Accés permisos"
+msgstr "Permisos d'accés"
 
 msgctxt "view:res.user:"
 msgid "Actions"
@@ -710,12 +706,12 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:res.user.config,start,user:"
 msgid "Ok"
-msgstr "Dacord"
+msgstr "D'acord"
 
 msgctxt "wizard_button:res.user.config,user,add:"
 msgid "Add"
-msgstr "Afegir"
+msgstr "Afegeix"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "Finalitzat"
+msgstr "Finalitza"
