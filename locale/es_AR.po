@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:bank.account.number:"
+msgid "Invalid IBAN \"%s\"."
+msgstr "IBAN «%s» incorrecto."
+
 msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "CIB"
@@ -188,7 +192,11 @@ msgstr "Bancos"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Banca"
+msgstr "Bancos"
+
+msgctxt "model:res.group,name:group_bank_admin"
+msgid "Bank Administration"
+msgstr "Administración de bancos"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -224,4 +232,4 @@ msgstr "Bancos"
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Banca"
+msgstr "Bancos"
