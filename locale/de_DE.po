@@ -8,7 +8,7 @@ msgstr "Kosten"
 
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
