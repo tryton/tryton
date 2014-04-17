@@ -36,7 +36,7 @@ msgstr "Selecció JSON"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr "Grups"
+msgstr "Grups d'atributs"
 
 msgctxt "field:product.attribute,string:"
 msgid "String"
@@ -60,7 +60,7 @@ msgstr "Atribut"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr "Grup"
+msgstr "Grup d'atributs"
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
@@ -124,11 +124,11 @@ msgstr "Atributs"
 
 msgctxt "field:product.template,attribute_set:"
 msgid "Set"
-msgstr "Grup"
+msgstr "Grup d'atributs"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr "A cada línia hi ha la clau i valor separats per \":\""
+msgstr "Clau i valor separats per \":\" a cada línia."
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
