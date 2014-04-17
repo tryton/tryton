@@ -16,7 +16,7 @@ msgstr "Lignes de note de crédit"
 
 msgctxt "model:ir.action,name:act_invoice_line_out_invoice_form"
 msgid "Invoice Lines"
-msgstr "Lignes de factures"
+msgstr "Lignes de facture"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_credit_note_form"
 msgid "Supplier Credit Note Lines"
@@ -32,4 +32,4 @@ msgstr "Lignes de note de crédit"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_invoice_form"
 msgid "Invoice Lines"
-msgstr "Lignes de factures"
+msgstr "Lignes de facture"
