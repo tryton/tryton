@@ -259,8 +259,8 @@ msgid "Timesheet End"
 msgstr "Fin de parte de trabajo"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr ""
+msgid "Timesheet Lines"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
