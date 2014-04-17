@@ -10,6 +10,13 @@ msgstr ""
 "Die Standardmaßeinheit kann nicht für einen Artikel geändert werden, der "
 "Lagerbewegungen zugeordnet ist."
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the type for a product which is associated to stock moves."
+msgstr ""
+"Für Artikel, die Lagerbewegungen zugeordnet sind, kann der Typ nicht "
+"geändert werden."
+
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "Anzahl auf der Zeile muss einen positiven Wert aufweisen."
@@ -49,6 +56,10 @@ msgstr "Zu bewegende Anzahl muss positiv sein"
 msgctxt "error:stock.move:"
 msgid "Source and destination location must be different"
 msgstr "Herkunfts- und Bestimmungsort müssen unterschiedlich sein"
+
+msgctxt "error:stock.move:"
+msgid "The stock move \"%s\" has no origin."
+msgstr "Die Lagerbewegung \"%s\" hat keinen Ursprung."
 
 msgctxt "error:stock.move:"
 msgid ""
@@ -311,9 +322,9 @@ msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
 msgstr "Lagerbestand"
 
-msgctxt "field:stock.inventory.line,move:"
-msgid "Move"
-msgstr "Bewegung"
+msgctxt "field:stock.inventory.line,moves:"
+msgid "Moves"
+msgstr "Lagerbewegungen"
 
 msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
@@ -329,7 +340,7 @@ msgstr "Name"
 
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
@@ -433,7 +444,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
-msgstr "Einkaufspreis"
+msgstr "Kostenpreis"
 
 msgctxt "field:stock.move,create_date:"
 msgid "Create Date"
@@ -501,7 +512,7 @@ msgstr "Zu Lagerort"
 
 msgctxt "field:stock.move,unit_digits:"
 msgid "Unit Digits"
-msgstr "Anzahl Stellen"
+msgstr "Nachkommastellen"
 
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
@@ -1097,15 +1108,15 @@ msgstr "Bestandskorrekturen"
 
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
-msgstr "Orte"
+msgstr "Lagerorte"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations"
-msgstr "Orte"
+msgstr "Lagerorte"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
-msgstr "Orte"
+msgstr "Lagerorte"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
@@ -1448,7 +1459,7 @@ msgstr "Lager Lagerbestand"
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
-msgstr "Lager Lagerbestand Position"
+msgstr "Lagerbestandsposition"
 
 msgctxt "model:stock.location,name:"
 msgid "Stock Location"
@@ -1979,6 +1990,10 @@ msgid "Product by Location"
 msgstr "Artikel nach Lagerort"
 
 msgctxt "view:product.product:"
+msgid "Cost Value"
+msgstr "Kosten"
+
+msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Artikel"
 
@@ -2175,8 +2190,8 @@ msgid "Internal Shipments"
 msgstr "Interne Lieferposten"
 
 msgctxt "view:stock.shipment.internal:"
-msgid "Waiting"
-msgstr "Wartend"
+msgid "Wait"
+msgstr "Warten"
 
 msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to Assign"
@@ -2255,8 +2270,8 @@ msgid "Outgoing Moves"
 msgstr "Ausgehende Bewegungen"
 
 msgctxt "view:stock.shipment.out:"
-msgid "Waiting"
-msgstr "Wartend"
+msgid "Wait"
+msgstr "Warten"
 
 msgctxt "wizard_button:product.by_location,start,end:"
 msgid "Cancel"
