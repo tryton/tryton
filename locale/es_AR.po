@@ -179,7 +179,7 @@ msgstr "Secuencia de entidades"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
-msgstr "Nombre campo"
+msgstr "Nombre"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
