@@ -18,11 +18,11 @@ msgstr "Kostenpreise"
 
 msgctxt "field:company.employee,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
-msgstr "Einkaufspreis"
+msgstr "Kostenpreis"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
@@ -34,7 +34,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:company.employee_cost_price,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
