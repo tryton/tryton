@@ -112,7 +112,7 @@ msgstr "Ruta"
 
 msgctxt "field:webdav.share,rec_name:"
 msgid "Name"
-msgstr "Nombre campo"
+msgstr "Nombre"
 
 msgctxt "field:webdav.share,url:"
 msgid "URL"

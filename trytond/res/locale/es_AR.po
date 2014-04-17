@@ -82,7 +82,7 @@ msgstr "ID"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
 msgid "Name"
-msgstr "Nombre campo"
+msgstr "Nombre"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
@@ -218,7 +218,7 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
 msgid "Name"
-msgstr "Nombre campo"
+msgstr "Nombre"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -364,6 +364,10 @@ msgctxt "field:res.user,password:"
 msgid "Password"
 msgstr "Contraseña"
 
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr "Hash de contraseña"
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr "Menú PySON"
@@ -376,10 +380,6 @@ msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
 msgstr "Reglas"
 
-msgctxt "field:res.user,salt:"
-msgid "Salt"
-msgstr "Sal"
-
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
 msgstr "Sesiones"
@@ -391,10 +391,6 @@ msgstr "Firma"
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
 msgstr "Barra de estado"
-
-msgctxt "field:res.user,timezone:"
-msgid "Timezone"
-msgstr "Zona horaria"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
@@ -426,7 +422,7 @@ msgstr "ID"
 
 msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Name"
-msgstr "Nombre campo"
+msgstr "Nombre"
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
@@ -494,7 +490,7 @@ msgstr "Nombre de usuario"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Name"
-msgstr "Nombre campo"
+msgstr "Nombre"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
@@ -670,7 +666,7 @@ msgstr "Marcar para actualizar"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr "Permisos de Acceso"
+msgstr "Permisos de acceso"
 
 msgctxt "view:res.group:"
 msgid "Group"
@@ -698,15 +694,15 @@ msgstr "Ahora puede agregar algunos usuarios al sistema."
 
 msgctxt "view:res.user.warning:"
 msgid "Warning"
-msgstr "Advertencia"
+msgstr "Aviso"
 
 msgctxt "view:res.user.warning:"
 msgid "Warnings"
-msgstr "Advertencias"
+msgstr "Avisos"
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "Permisos de Acceso"
+msgstr "Permisos de acceso"
 
 msgctxt "view:res.user:"
 msgid "Actions"
