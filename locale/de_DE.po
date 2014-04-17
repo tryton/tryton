@@ -20,7 +20,7 @@ msgstr "Betrag"
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Betrag Zweitwährung"
+msgstr "Fremdwährungsbetrag"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
@@ -40,7 +40,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Währung (signifikante Stellen)"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
@@ -72,11 +72,11 @@ msgstr "Name"
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr "Zweitwährung"
+msgstr "Fremdwährung"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Stellen Zweitwährung"
+msgstr "Nachkommastellen Fremdwährung"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
@@ -232,7 +232,7 @@ msgstr "Entwurf"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "Mahnwesen"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
@@ -248,7 +248,7 @@ msgstr "Mahnmethoden"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Mahnungen"
+msgstr "Mahnwesen"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
@@ -317,6 +317,10 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.dunning.process,start,process:"
+msgid "Process"
+msgstr "Ausführen"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "process"
