@@ -89,7 +89,7 @@ msgstr "Achat - Ligne de facture ignorée"
 
 msgctxt "view:account.invoice.line:"
 msgid "Invoice Lines"
-msgstr "Lignes de factures"
+msgstr "Lignes de facture"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
