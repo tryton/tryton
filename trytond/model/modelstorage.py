@@ -1354,10 +1354,10 @@ class ModelStorage(Model):
                             to_remove.remove(target.id)
                         else:
                             to_add.append(target.id)
-                            target_values = target._save_values
-                            if target_values:
-                                to_write.append(
-                                    ('write', [target.id], target_values))
+                        target_values = target._save_values
+                        if target_values:
+                            to_write.append(
+                                ('write', [target.id], target_values))
                 value = []
                 if to_remove:
                     value.append(('remove', to_remove))
