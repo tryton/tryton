@@ -551,6 +551,8 @@ class Product:
                     res[(location_id, product_id)] = 0.0
 
         if wh_to_add:
+            if product_ids is None:
+                product_ids = set((p for s, p in res))
             for wh, storage in wh_to_add.iteritems():
                 for product in product_ids:
                     if (storage, product) in res:
