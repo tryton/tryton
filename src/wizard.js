@@ -79,7 +79,7 @@
                         if (result.actions) {
                             result.actions.forEach(function(action) {
                                 Sao.Action.exec_action(action[0], action[1],
-                                    ctx);
+                                    jQuery.extend({}, this.context));
                             });
                         }
                     };
