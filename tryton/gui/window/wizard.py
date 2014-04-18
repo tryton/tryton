@@ -107,7 +107,7 @@ class Wizard(object):
 
             def execute_actions():
                 for action in result.get('actions', []):
-                    Action._exec_action(*action, context=ctx)
+                    Action._exec_action(*action, context=self.context.copy())
 
             if self.state == self.end_state:
                 self.end(execute_actions)
