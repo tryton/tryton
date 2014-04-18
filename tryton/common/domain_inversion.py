@@ -23,7 +23,7 @@ OPERATORS = {
     '>=': operator.ge,
     '!=': operator.ne,
     'in': in_,
-    'not in': lambda a, b: not in_(b, a),
+    'not in': lambda a, b: not in_(a, b),
     # Those operators are not supported (yet ?)
     'like': lambda a, b: True,
     'ilike': lambda a, b: True,
@@ -488,6 +488,13 @@ def test_evaldomain():
     assert eval_domain(domain, {'x': [3]})
     assert eval_domain(domain, {'x': [3, 4]})
     assert not eval_domain(domain, {'x': [1, 2]})
+
+    domain = [['x', 'not in', [3, 5]]]
+    assert not eval_domain(domain, {'x': 3})
+    assert eval_domain(domain, {'x': 4})
+    assert not eval_domain(domain, {'x': [3]})
+    assert not eval_domain(domain, {'x': [3, 4]})
+    assert eval_domain(domain, {'x': [1, 2]})
 
     domain = ['OR', ['x', '>', 10], ['x', '<', 0]]
     assert eval_domain(domain, {'x': 11})
