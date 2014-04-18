@@ -205,9 +205,9 @@ class DateTimeField(Field):
             try:
                 value = datetime.datetime(*time.strptime(value,
                         date_format() + ' ' + self.time_format(record))[:6])
-                value = common.untimezoned_date(value)
             except ValueError:
                 value = self._default
+        value = common.untimezoned_date(value)
         super(DateTimeField, self).set_client(record, value,
             force_change=force_change)
 
