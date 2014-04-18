@@ -367,7 +367,7 @@ class StockTestCase(unittest.TestCase):
                 self.period.close([period])
                 test_products_by_location()
 
-        # Test with_childs
+        # Test with_childs and stock_skip_warehouse
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
             company, = self.company.search([
@@ -394,6 +394,7 @@ class StockTestCase(unittest.TestCase):
             lost_found, = self.location.search([('type', '=', 'lost_found')])
             warehouse, = self.location.search([('type', '=', 'warehouse')])
             storage, = self.location.search([('code', '=', 'STO')])
+            input_, = self.location.search([('code', '=', 'IN')])
             storage1, = self.location.create([{
                         'name': 'Storage 1',
                         'type': 'view',
@@ -419,6 +420,15 @@ class StockTestCase(unittest.TestCase):
                         'planned_date': today,
                         'effective_date': today,
                         'company': company.id,
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': input_.id,
+                        'to_location': storage.id,
+                        'planned_date': today,
+                        'effective_date': today,
+                        'company': company.id,
                         }])
             self.move.do(moves)
 
@@ -426,6 +436,16 @@ class StockTestCase(unittest.TestCase):
                 [warehouse.id], [product.id], with_childs=True)
             self.assertEqual(products_by_location[(warehouse.id, product.id)],
                 1)
+
+            with Transaction().set_context(stock_skip_warehouse=True):
+                products_by_location = self.product.products_by_location(
+                    [warehouse.id], [product.id], with_childs=True)
+                products_by_location_all = self.product.products_by_location(
+                    [warehouse.id], None, with_childs=True)
+            self.assertEqual(products_by_location[(warehouse.id, product.id)],
+                2)
+            self.assertEqual(
+                products_by_location_all[(warehouse.id, product.id)], 2)
 
     def test0030period(self):
         'Test period'
