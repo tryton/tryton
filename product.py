@@ -454,6 +454,8 @@ class Product(object, StockMixin):
             res[key] = Uom.round(quantity, uom.rounding)
 
         if wh_to_add:
+            if product_ids is None:
+                product_ids = set((p for s, p in res))
             for wh, storage in wh_to_add.iteritems():
                 for product in product_ids:
                     if (storage, product) in res:
