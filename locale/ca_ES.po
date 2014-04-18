@@ -434,7 +434,7 @@ msgstr "New Israeli Sheqel"
 
 msgctxt "model:currency.currency,name:inr"
 msgid "Indian Rupee"
-msgstr "Rupia índia"
+msgstr "Rúpia índia"
 
 msgctxt "model:currency.currency,name:iqd"
 msgid "Iraqi Dinar"
@@ -458,11 +458,11 @@ msgstr "Dinar de Jordània"
 
 msgctxt "model:currency.currency,name:jpy"
 msgid "Yen"
-msgstr "Ien"
+msgstr "Yen"
 
 msgctxt "model:currency.currency,name:kes"
 msgid "Kenyan Shilling"
-msgstr "Xíling de Kènia"
+msgstr "Shilling de Kènia"
 
 msgctxt "model:currency.currency,name:kgs"
 msgid "Som"
@@ -474,7 +474,7 @@ msgstr "Riel"
 
 msgctxt "model:currency.currency,name:kmf"
 msgid "Comoro Franc"
-msgstr "Franc de Comores"
+msgstr "Franc de Comoros"
 
 msgctxt "model:currency.currency,name:kpw"
 msgid "North Korean Won"
@@ -506,7 +506,7 @@ msgstr "Lliura libanesa"
 
 msgctxt "model:currency.currency,name:lkr"
 msgid "Sri Lanka Rupee"
-msgstr "Rupia de Sri Lanka"
+msgstr "Rúpia de Sri Lanka"
 
 msgctxt "model:currency.currency,name:lrd"
 msgid "Liberian Dollar"
@@ -566,7 +566,7 @@ msgstr "Lira de Malta"
 
 msgctxt "model:currency.currency,name:mur"
 msgid "Mauritius Rupee"
-msgstr "Rupia de les Maurici"
+msgstr "Rúpia de les Maurici"
 
 msgctxt "model:currency.currency,name:mvr"
 msgid "Rufiyaa"
@@ -610,7 +610,7 @@ msgstr "Corona noruega"
 
 msgctxt "model:currency.currency,name:npr"
 msgid "Nepalese Rupee"
-msgstr "Rupia del Nepal"
+msgstr "Rúpia del Nepal"
 
 msgctxt "model:currency.currency,name:nzd"
 msgid "New Zealand Dollar"
@@ -634,11 +634,11 @@ msgstr "Kina"
 
 msgctxt "model:currency.currency,name:php"
 msgid "Philippine Peso"
-msgstr "Peso Filipí"
+msgstr "Philippine Peso"
 
 msgctxt "model:currency.currency,name:pkr"
 msgid "Pakistan Rupee"
-msgstr "Rupia del Paquistan"
+msgstr "Rúpia del Paquistan"
 
 msgctxt "model:currency.currency,name:pln"
 msgid "Zloty"
@@ -678,7 +678,7 @@ msgstr "Dòlar de les illes Salomó"
 
 msgctxt "model:currency.currency,name:scr"
 msgid "Seychelles Rupee"
-msgstr "Rupia de les Seixelles"
+msgstr "Rúpia de les Seixelles"
 
 msgctxt "model:currency.currency,name:sdg"
 msgid "Sudanese Pound"
@@ -702,7 +702,7 @@ msgstr "Leone"
 
 msgctxt "model:currency.currency,name:sos"
 msgid "Somali Shilling"
-msgstr "Xíling de Somàlia"
+msgstr "Somali Shilling"
 
 msgctxt "model:currency.currency,name:srd"
 msgid "Surinam Dollar"
@@ -758,7 +758,7 @@ msgstr "Nou dòlar de Taiwan"
 
 msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
-msgstr "Xíling de Tanzània"
+msgstr "Tanzanian Shilling"
 
 msgctxt "model:currency.currency,name:uah"
 msgid "Hryvnia"
@@ -766,7 +766,7 @@ msgstr "Hryvnia"
 
 msgctxt "model:currency.currency,name:ugx"
 msgid "Uganda Shilling"
-msgstr "Xíling d'Uganda"
+msgstr "Uganda Shilling"
 
 msgctxt "model:currency.currency,name:usd"
 msgid "US Dollar"
@@ -870,7 +870,7 @@ msgstr "Platinum"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Code for testing purposes"
-msgstr "Codi per a proves"
+msgstr "Code for testing purposes"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "No currency"
