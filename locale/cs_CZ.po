@@ -574,10 +574,6 @@ msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "field:account.invoice.pay.ask,account_writeoff:"
-msgid "Write-Off Account"
-msgstr ""
-
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
 msgstr ""
@@ -1459,7 +1455,7 @@ msgid "Print Invoice"
 msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent <i>directly</i> to the printer."
+msgid "The invoices will be sent directly to the printer."
 msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"

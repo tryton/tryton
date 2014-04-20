@@ -632,10 +632,6 @@ msgctxt "field:account.invoice.line-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
-msgctxt "field:account.invoice.pay.ask,account_writeoff:"
-msgid "Write-Off Account"
-msgstr "Счет списания"
-
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
 msgstr "Сумма оплаты"
@@ -1519,8 +1515,8 @@ msgid "Print Invoice"
 msgstr "Распечатать инвойс"
 
 msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent <i>directly</i> to the printer."
-msgstr "Инвойсы будут отправлены <i>напрямую</i> на принтер."
+msgid "The invoices will be sent directly to the printer."
+msgstr ""
 
 msgctxt "view:account.invoice.print.warning:"
 msgid "You have selected more than one invoice to print."
