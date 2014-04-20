@@ -194,6 +194,11 @@ msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_relate_lot"
+msgid "Moves"
+msgstr "Boekingen"
+
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr ""
