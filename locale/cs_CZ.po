@@ -28,6 +28,10 @@ msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr ""
 
+msgctxt "error:account.statement:"
+msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgstr ""
+
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr ""
