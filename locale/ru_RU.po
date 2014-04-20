@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the cost price for a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr ""
@@ -106,6 +112,11 @@ msgstr "ID"
 
 #, fuzzy
 msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Товарно материальные ценности (ТМЦ)"
+
+#, fuzzy
+msgctxt "field:product.update_cost_price.ask,template:"
 msgid "Product"
 msgstr "Товарно материальные ценности (ТМЦ)"
 
@@ -145,11 +156,6 @@ msgstr ""
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.move,account_move:"
-msgid "Account Move"
-msgstr "Проводка"
 
 #, fuzzy
 msgctxt "help:product.template,account_stock:"
