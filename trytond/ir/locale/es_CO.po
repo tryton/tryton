@@ -21,10 +21,6 @@ msgid "You are not allowed to delete this record."
 msgstr "No está autorizado a borrar este registro."
 
 msgctxt "error:digits_validation_record:"
-msgid "The field \"%s\" on \"%s\" has too many decimal digits."
-msgstr "El campo \"%s\" en \"%s\" tiene demasiados dígitos decimales."
-
-msgctxt "error:digits_validation_record:"
 msgid ""
 "The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
 "exceeds it's limit."
@@ -41,12 +37,6 @@ msgstr ""
 "dominio."
 
 msgctxt "error:foreign_model_exist:"
-msgid "Could not delete \"%s\" records because they are used on field \"%s\" of \"%s\"."
-msgstr ""
-"No se pudieron borrar los registros \"%s\" porque son usados en el campo "
-"\"%s\" de \"%s\"."
-
-msgctxt "error:foreign_model_exist:"
 msgid ""
 "Could not delete the records because they are used on field \"%(field)s\" of"
 " \"%(model)s\"."
@@ -59,10 +49,6 @@ msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't e
 msgstr ""
 "El valor \"%(value)s\" en el campo \"%(field)s\" en el modelo \"%(model)s\" "
 "no existe."
-
-msgctxt "error:foreign_model_missing:"
-msgid "The value of field \"%s\" on \"%s\" doesn't exist."
-msgstr "El valor del campo \"%s\" en \"%s\" no existe."
 
 msgctxt "error:ir.action.act_window:"
 msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
@@ -320,25 +306,13 @@ msgctxt "error:required_field:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
 msgstr "El campo \"%(field)s\" en el modelo \"%(model)s\" es obligatorio."
 
-msgctxt "error:required_field:"
-msgid "The field \"%s\" on \"%s\" is required."
-msgstr "El campo \"%s\" en \"%s\" es necesario."
-
 msgctxt "error:required_validation_record:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
 msgstr "El campo \"%(field)s\" en el modelo \"%(model)s\" es obligatorio."
 
-msgctxt "error:required_validation_record:"
-msgid "The field \"%s\" on \"%s\" is required."
-msgstr "El campo \"%s\" en \"%s\" es necesario."
-
 msgctxt "error:search_function_missing:"
 msgid "Missing search function on field \"%s\"."
 msgstr "Falta la función en el campo \"%s\"."
-
-msgctxt "error:selection_validation_record:"
-msgid "The field \"%s\" on \"%s\" is not in the selection."
-msgstr "El campo \"%s\" en \"%s\" no esta en la selección."
 
 msgctxt "error:selection_validation_record:"
 msgid ""
@@ -353,10 +327,6 @@ msgid "Value not in the selection for field \"%s\"."
 msgstr "El valor no esta en la selección para el campo \"%s\"."
 
 msgctxt "error:size_validation_record:"
-msgid "The field \"%s\" on \"%s\" is too long."
-msgstr "El campo «%s» en «%s» es muy largo."
-
-msgctxt "error:size_validation_record:"
 msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
 msgstr ""
 "El tamaño \"%(size)s\" del campo \"%(field)s\" en el modelo \"%(model)s\" is"
@@ -367,10 +337,6 @@ msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is n
 msgstr ""
 "El valor del tiempo \"%(value)s\" del campo \"%(field)s\" en \"%(model)s\" "
 "no es válido."
-
-msgctxt "error:time_format_validation_record:"
-msgid "The time value of field \"%s\" on \"%s\" is not valid."
-msgstr "El valor del tiempo en el campo \"%s\" en \"%s\" no es válido."
 
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"

@@ -39,12 +39,6 @@ msgstr ""
 "Wertebereich (Domain)."
 
 msgctxt "error:foreign_model_exist:"
-msgid "Could not delete \"%s\" records because they are used on field \"%s\" of \"%s\"."
-msgstr ""
-"\"%s\" Datensätze konnten nicht gelöscht werden, weil sie in Feld \"%s\" in "
-"\"%s\" verwendet werden."
-
-msgctxt "error:foreign_model_exist:"
 msgid ""
 "Could not delete the records because they are used on field \"%(field)s\" of"
 " \"%(model)s\"."

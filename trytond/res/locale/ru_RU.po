@@ -364,6 +364,10 @@ msgctxt "field:res.user,password:"
 msgid "Password"
 msgstr "Пароль"
 
+msgctxt "field:res.user,password_hash:"
+msgid "Password Hash"
+msgstr ""
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr "Меню PySON"
@@ -376,10 +380,6 @@ msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
 msgstr "Правила"
 
-msgctxt "field:res.user,salt:"
-msgid "Salt"
-msgstr "Соль"
-
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
 msgstr "Сессии"
@@ -391,10 +391,6 @@ msgstr "Подпись"
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
 msgstr "Строка состояния"
-
-msgctxt "field:res.user,timezone:"
-msgid "Timezone"
-msgstr "Часовой пояс"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
