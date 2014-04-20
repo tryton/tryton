@@ -254,9 +254,10 @@ msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:timesheet.work,timesheet_lines:"
-msgid ""
-msgstr ""
+msgid "Timesheet Lines"
+msgstr "Редове от график"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
