@@ -1195,6 +1195,10 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Перемещение"
 
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr ""
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "Статус проводки"
@@ -1283,10 +1287,6 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "Конечная дата"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,account:"
-msgid "Account"
-msgstr "Счет"
-
 #, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
@@ -1300,6 +1300,11 @@ msgstr "Кол-во цифр валюты"
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "Описание"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
@@ -1614,6 +1619,11 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Описание"
 
+#, fuzzy
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "Конечная дата"
+
 msgctxt "field:account.tax,group:"
 msgid "Group"
 msgstr "Группа"
@@ -1662,6 +1672,11 @@ msgstr "Наименование"
 msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
 msgstr "Нумерация"
+
+#, fuzzy
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "Начальная дата"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2107,6 +2122,11 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Описание"
 
+#, fuzzy
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "Конечная дата"
+
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
 msgstr "Группа"
@@ -2155,6 +2175,11 @@ msgstr "Наименование"
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
 msgstr "Нумерация"
+
+#, fuzzy
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "Начальная дата"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2575,6 +2600,11 @@ msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
 msgstr "Ситуационный"
 
+#, fuzzy
+msgctxt "model:account.journal.type,name:journal_type_write_off"
+msgid "Write-Off"
+msgstr "Списание"
+
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
 msgstr "Вид журнала"
@@ -2806,6 +2836,10 @@ msgstr "Строки оплаты"
 msgctxt "model:ir.action,name:act_move_line_receivable"
 msgid "Receivable Lines"
 msgstr "Строки получения"
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"

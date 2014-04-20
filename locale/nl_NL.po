@@ -1167,6 +1167,10 @@ msgctxt "field:account.move.line,move:"
 msgid "Move"
 msgstr "Boeking"
 
+msgctxt "field:account.move.line,move_description:"
+msgid "Move Description"
+msgstr ""
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "Status boeking"
@@ -1259,10 +1263,6 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "Tot datum"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,account:"
-msgid "Account"
-msgstr "Rekening"
-
 #, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
@@ -1276,6 +1276,11 @@ msgstr "Valuta decimalen"
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
 msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,description:"
+msgid "Description"
+msgstr "Specificatie"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
@@ -1604,6 +1609,11 @@ msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Omschrijving"
 
+#, fuzzy
+msgctxt "field:account.tax,end_date:"
+msgid "Ending Date"
+msgstr "Einddatum"
+
 msgctxt "field:account.tax,group:"
 msgid "Group"
 msgstr "Groep"
@@ -1652,6 +1662,11 @@ msgstr "Naam"
 msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
 msgstr "Reeks"
+
+#, fuzzy
+msgctxt "field:account.tax,start_date:"
+msgid "Starting Date"
+msgstr "Start datum"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
@@ -2102,6 +2117,11 @@ msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Omschrijving"
 
+#, fuzzy
+msgctxt "field:account.tax.template,end_date:"
+msgid "Ending Date"
+msgstr "Einddatum"
+
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
 msgstr "Groep"
@@ -2150,6 +2170,11 @@ msgstr "Naam"
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
 msgstr "Reeks"
+
+#, fuzzy
+msgctxt "field:account.tax.template,start_date:"
+msgid "Starting Date"
+msgstr "Start datum"
 
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
@@ -2570,6 +2595,11 @@ msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
 msgstr "Situatie"
 
+#, fuzzy
+msgctxt "model:account.journal.type,name:journal_type_write_off"
+msgid "Write-Off"
+msgstr "Afschrijven"
+
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
 msgstr "Dagboek indeling"
@@ -2812,6 +2842,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_move_line_receivable"
 msgid "Receivable Lines"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_move_reconciliation_lines"
+msgid "Reconciliation Lines"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_account"
