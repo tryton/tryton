@@ -10,6 +10,11 @@ msgstr ""
 "Вы не можете изменить единицу измерения по умолчанию для продукта, который "
 "связан со складом перемещения."
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the type for a product which is associated to stock moves."
+msgstr ""
+
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "Количество в строке должно быть положительным."
@@ -47,6 +52,10 @@ msgstr "Кол-во должно быть положительным"
 msgctxt "error:stock.move:"
 msgid "Source and destination location must be different"
 msgstr "Исходное и принимающее местоположения должны быть разными"
+
+msgctxt "error:stock.move:"
+msgid "The stock move \"%s\" has no origin."
+msgstr ""
 
 msgctxt "error:stock.move:"
 msgid ""
@@ -291,9 +300,10 @@ msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
 msgstr "Инвентаризация"
 
-msgctxt "field:stock.inventory.line,move:"
-msgid "Move"
-msgstr "Перемещение"
+#, fuzzy
+msgctxt "field:stock.inventory.line,moves:"
+msgid "Moves"
+msgstr "Перемещения"
 
 msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
@@ -1960,6 +1970,11 @@ msgctxt "view:product.by_location.start:"
 msgid "Product by Location"
 msgstr "Продукция по местоположению"
 
+#, fuzzy
+msgctxt "view:product.product:"
+msgid "Cost Value"
+msgstr "Цена"
+
 msgctxt "view:product.product:"
 msgid "Products"
 msgstr "Продукция"
@@ -2156,9 +2171,10 @@ msgctxt "view:stock.shipment.internal:"
 msgid "Internal Shipments"
 msgstr "Внутренние перемещения"
 
+#, fuzzy
 msgctxt "view:stock.shipment.internal:"
-msgid "Waiting"
-msgstr "Ожидание"
+msgid "Wait"
+msgstr "Ожидают"
 
 msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to Assign"
@@ -2236,9 +2252,10 @@ msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
 msgstr "Внешнее перемещение"
 
+#, fuzzy
 msgctxt "view:stock.shipment.out:"
-msgid "Waiting"
-msgstr "Ожидание"
+msgid "Wait"
+msgstr "Ожидают"
 
 msgctxt "wizard_button:product.by_location,start,end:"
 msgid "Cancel"

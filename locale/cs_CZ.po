@@ -8,6 +8,11 @@ msgid ""
 " moves."
 msgstr ""
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the type for a product which is associated to stock moves."
+msgstr ""
+
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr ""
@@ -40,6 +45,10 @@ msgstr ""
 
 msgctxt "error:stock.move:"
 msgid "Source and destination location must be different"
+msgstr ""
+
+msgctxt "error:stock.move:"
+msgid "The stock move \"%s\" has no origin."
 msgstr ""
 
 msgctxt "error:stock.move:"
@@ -277,8 +286,8 @@ msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
 msgstr ""
 
-msgctxt "field:stock.inventory.line,move:"
-msgid "Move"
+msgctxt "field:stock.inventory.line,moves:"
+msgid "Moves"
 msgstr ""
 
 msgctxt "field:stock.inventory.line,product:"
@@ -1939,6 +1948,10 @@ msgid "Product by Location"
 msgstr ""
 
 msgctxt "view:product.product:"
+msgid "Cost Value"
+msgstr ""
+
+msgctxt "view:product.product:"
 msgid "Products"
 msgstr ""
 
@@ -2135,7 +2148,7 @@ msgid "Internal Shipments"
 msgstr ""
 
 msgctxt "view:stock.shipment.internal:"
-msgid "Waiting"
+msgid "Wait"
 msgstr ""
 
 msgctxt "view:stock.shipment.out.assign.failed:"
@@ -2215,7 +2228,7 @@ msgid "Outgoing Moves"
 msgstr ""
 
 msgctxt "view:stock.shipment.out:"
-msgid "Waiting"
+msgid "Wait"
 msgstr ""
 
 msgctxt "wizard_button:product.by_location,start,end:"

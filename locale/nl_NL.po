@@ -8,6 +8,11 @@ msgid ""
 " moves."
 msgstr ""
 
+msgctxt "error:product.template:"
+msgid ""
+"You cannot change the type for a product which is associated to stock moves."
+msgstr ""
+
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr ""
@@ -40,6 +45,10 @@ msgstr ""
 
 msgctxt "error:stock.move:"
 msgid "Source and destination location must be different"
+msgstr ""
+
+msgctxt "error:stock.move:"
+msgid "The stock move \"%s\" has no origin."
 msgstr ""
 
 msgctxt "error:stock.move:"
@@ -286,9 +295,9 @@ msgid "Inventory"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.inventory.line,move:"
-msgid "Move"
-msgstr "Boeking"
+msgctxt "field:stock.inventory.line,moves:"
+msgid "Moves"
+msgstr "Boekingen"
 
 #, fuzzy
 msgctxt "field:stock.inventory.line,product:"
@@ -2107,6 +2116,10 @@ msgctxt "view:product.by_location.start:"
 msgid "Product by Location"
 msgstr ""
 
+msgctxt "view:product.product:"
+msgid "Cost Value"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:product.product:"
 msgid "Products"
@@ -2321,10 +2334,9 @@ msgctxt "view:stock.shipment.internal:"
 msgid "Internal Shipments"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.shipment.internal:"
-msgid "Waiting"
-msgstr "In afwachting"
+msgid "Wait"
+msgstr ""
 
 msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to Assign"
@@ -2408,10 +2420,9 @@ msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.shipment.out:"
-msgid "Waiting"
-msgstr "In afwachting"
+msgid "Wait"
+msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:product.by_location,start,end:"
