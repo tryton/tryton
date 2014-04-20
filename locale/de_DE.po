@@ -321,7 +321,3 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
 msgstr "Ausführen"
-
-msgctxt "wizard_button:account.dunning.process,start,process:"
-msgid "process"
-msgstr "Durchführen"

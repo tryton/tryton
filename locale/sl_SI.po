@@ -321,7 +321,3 @@ msgstr "Prekliči"
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
 msgstr "Obdelava"
-
-msgctxt "wizard_button:account.dunning.process,start,process:"
-msgid "process"
-msgstr "Obdelava"

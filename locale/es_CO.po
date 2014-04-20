@@ -321,7 +321,3 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
 msgstr "Procesar"
-
-msgctxt "wizard_button:account.dunning.process,start,process:"
-msgid "process"
-msgstr "procesar"
