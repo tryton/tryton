@@ -569,7 +569,7 @@ msgid "oz"
 msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_pound"
-msgid "lbs"
+msgid "lb"
 msgstr ""
 
 msgctxt "model:product.uom,symbol:uom_second"
