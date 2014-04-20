@@ -42,13 +42,14 @@ msgctxt "selection:stock.order_point,type:"
 msgid "Production"
 msgstr "Proizvodni nalog"
 
+#, fuzzy
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request"
-msgstr "Izdelava proizvodnega zahtevka"
+msgid "Create Production Requests"
+msgstr "Izdelava proizvodnih zahtevkov"
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request?"
-msgstr "Izdelava proizvodnega zahtevka?"
+msgid "Create Production Requests?"
+msgstr ""
 
 msgctxt "wizard_button:production.create_request,start,create_:"
 msgid "Create"

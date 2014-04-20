@@ -46,11 +46,11 @@ msgid "Production"
 msgstr "Управление на производство"
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request"
+msgid "Create Production Requests"
 msgstr ""
 
 msgctxt "view:production.create_request.start:"
-msgid "Create Production Request?"
+msgid "Create Production Requests?"
 msgstr ""
 
 #, fuzzy
