@@ -33,7 +33,9 @@ msgid "product_bom_uniq"
 msgstr ""
 
 msgctxt "error:production:"
-msgid "Production \"%s\" misses costs on some of its outputs."
+msgid ""
+"The costs of the outputs (%(outputs)s) of production \"%(production)s\" do "
+"not match the cost of the production (%(costs)s)."
 msgstr ""
 
 msgctxt "field:product.product,boms:"
