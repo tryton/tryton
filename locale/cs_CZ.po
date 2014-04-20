@@ -82,9 +82,10 @@ msgctxt "field:party.address,streetbis:"
 msgid "Street (bis)"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr ""
+msgstr "Ascension"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
