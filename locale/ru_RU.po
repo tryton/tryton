@@ -244,13 +244,13 @@ msgctxt "field:stock.shipment.internal.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "model:ir.action,name:"
+msgid "Purchases"
+msgstr "Покупки"
+
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
 msgstr "Точки заказа"
-
-msgctxt "model:ir.action,name:act_purchase_form"
-msgid "Purchases"
-msgstr "Покупки"
 
 msgctxt "model:ir.action,name:act_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -362,13 +362,14 @@ msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
 msgstr "Покупки"
 
+#, fuzzy
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request"
-msgstr "Создать запрос на покупку"
+msgid "Create Purchase Requests"
+msgstr "Создать запросы на покупку"
 
 msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Request?"
-msgstr "Создать запрос на покупку?"
+msgid "Create Purchase Requests?"
+msgstr ""
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
