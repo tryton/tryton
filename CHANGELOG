@@ -1,3 +1,5 @@
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
 * Add option to show revisions
 * Add a multi selection widget for many2many
 * Remove auto-refresh
