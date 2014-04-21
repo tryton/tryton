@@ -57,7 +57,7 @@ setup(name=name,
     author_email='issue_tracker@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
-    keyword='tryton party relationship',
+    keywords='tryton party relationship',
     package_dir={'trytond.modules.party_relationship': '.'},
     packages=[
         'trytond.modules.party_relationship',
