@@ -1,3 +1,5 @@
+Version 3.2.0 - 2014-04-21
+* Bug fixes (see mercurial logs for details)
 * Read employee according to the context
 * Add timezone on company to compute today
 
