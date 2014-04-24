@@ -217,7 +217,8 @@ class DateTimeField(CharField):
                         date_format() + ' ' + HM_FORMAT)[:6])
             except ValueError:
                 value = self._default
-        value = common.untimezoned_date(value)
+        if value:
+            value = common.untimezoned_date(value)
         super(DateTimeField, self).set_client(record, value,
             force_change=force_change)
 
