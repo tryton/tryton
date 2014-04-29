@@ -40,6 +40,7 @@ class Journal:
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
             },
+        translate=False,
         depends=['process_method'])
     sepa_receivable_flavor = fields.Selection([
             (None, ''),
@@ -49,6 +50,7 @@ class Journal:
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
             },
+        translate=False,
         depends=['process_method'])
     sepa_batch_booking = fields.Boolean('Batch Booking', states={
             'invisible': Eval('process_method') != 'sepa',
