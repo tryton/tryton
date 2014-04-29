@@ -67,7 +67,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                 'delete_cancel': ('Statement "%s" must be cancelled before '
                     'deletion.'),
                 'paid_invoice_draft_statement': ('There are paid invoices on '
-                    'draft statements, do you want to proceed?'),
+                    'draft statements.'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
