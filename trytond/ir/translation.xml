@@ -127,8 +127,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">digits_validation_record</field>
             <field name="lang">en_US</field>
             <field name="type">error</field>
-            <field name="src">The number of digits "%(digits)s" of field "%(field)s" on "%(value)s" exceeds it's limit.</field>
-            <field name="value">The number of digits "%(digits)s" of field "%(field)s" on "%(value)s" exceeds it's limit.</field>
+            <field name="src">The number of digits "%(digits)s" of field "%(field)s" on "%(value)s" exceeds its limit.</field>
+            <field name="value">The number of digits "%(digits)s" of field "%(field)s" on "%(value)s" exceeds its limit.</field>
             <field name="module">ir</field>
             <field name="fuzzy" eval="False"/>
         </record>

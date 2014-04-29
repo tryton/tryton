@@ -23,7 +23,7 @@ msgstr "Нямате права да изтривате този запис."
 msgctxt "error:digits_validation_record:"
 msgid ""
 "The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds it's limit."
+"exceeds its limit."
 msgstr ""
 
 msgctxt "error:domain_validation_record:"
