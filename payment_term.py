@@ -14,8 +14,7 @@ __all__ = ['PaymentTerm', 'PaymentTermLine']
 class PaymentTerm(ModelSQL, ModelView):
     'Payment Term'
     __name__ = 'account.invoice.payment_term'
-    name = fields.Char('Payment Term', size=None, required=True,
-        translate=True)
+    name = fields.Char('Name', size=None, required=True, translate=True)
     active = fields.Boolean('Active')
     description = fields.Text('Description', translate=True)
     lines = fields.One2Many('account.invoice.payment_term.line', 'payment',
