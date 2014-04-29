@@ -38,7 +38,7 @@ class Template:
         super(Template, cls).__setup__()
         cls._error_messages.update({
                 'change_purchase_uom': ('Purchase prices are based '
-                    'on the purchase uom, are you sure to change it?'),
+                    'on the purchase uom.'),
                 })
         required = ~Eval('account_category') & Eval('purchasable', False)
         if not cls.account_expense.states.get('required'):
