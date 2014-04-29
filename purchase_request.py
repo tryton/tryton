@@ -480,8 +480,7 @@ class CreatePurchaseRequest(Wizard):
     def __setup__(cls):
         super(CreatePurchaseRequest, cls).__setup__()
         cls._error_messages.update({
-                'late_supplier_moves': ('There are some late supplier moves, '
-                    'are you sure to ignore them?'),
+                'late_supplier_moves': 'There are some late supplier moves.',
                 })
 
     def do_create_(self, action):
