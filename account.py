@@ -162,6 +162,9 @@ class Account(ModelSQL, ModelView):
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
             account_sum.setdefault(account_id, Decimal('0.0'))
+            # SQLite uses float for SUM
+            if not isinstance(sum, Decimal):
+                sum = Decimal(str(sum))
             if currency_id != id2account[account_id].currency.id:
                 currency = None
                 if currency_id in id2currency:
@@ -235,6 +238,9 @@ class Account(ModelSQL, ModelView):
 
         id2currency = {}
         for account_id, sum, currency_id in cursor.fetchall():
+            # SQLite uses float for SUM
+            if not isinstance(sum, Decimal):
+                sum = Decimal(str(sum))
             if currency_id != id2account[account_id].currency.id:
                 currency = None
                 if currency_id in id2currency:
