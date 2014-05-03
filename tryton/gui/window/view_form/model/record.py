@@ -73,10 +73,7 @@ class Record(SignalEvent):
 
             record_context = self.context_get()
             if loading == 'eager':
-                limit = CONFIG['client.limit']
-                if not self.parent:
-                    # If not a children no need to load too much
-                    limit = int(limit / len(fnames))
+                limit = int(CONFIG['client.limit'] / len(fnames))
 
                 def filter_group(record):
                     return name not in record._loaded and record.id >= 0
