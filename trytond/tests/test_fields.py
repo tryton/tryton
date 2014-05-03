@@ -603,6 +603,42 @@ class FieldsTestCase(unittest.TestCase):
 
             transaction.cursor.rollback()
 
+    def test0031float(self):
+        'Test float search with None'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            float_none, float0, float1 = self.float.create([{
+                        'float': None,
+                        }, {
+                        'float': 0,
+                        }, {
+                        'float': 1,
+                        }])
+            self.assertEqual([float_none], self.float.search([
+                        ('float', '=', None),
+                        ]))
+            self.assertEqual([float0], self.float.search([
+                        ('float', '=', 0),
+                        ]))
+            self.assertEqual([float1], self.float.search([
+                        ('float', '>', 0),
+                        ]))
+
+            self.assertEqual([float0, float1], self.float.search([
+                        ('float', '!=', None),
+                        ]))
+            self.assertEqual([float1], self.float.search([
+                        ('float', '!=', 0),
+                        ]))
+            self.assertEqual([float0], self.float.search([
+                        ('float', '<', 1),
+                        ]))
+
+            self.assertEqual([float_none, float1], self.float.search([
+                        'OR',
+                        ('float', '>', 0),
+                        ('float', '=', None),
+                        ]))
+
     def test0040numeric(self):
         'Test Numeric'
         with Transaction().start(DB_NAME, USER,
