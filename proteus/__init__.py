@@ -97,23 +97,16 @@ class CharDescriptor(FieldDescriptor):
     default = None
 
     def __set__(self, instance, value):
-        assert isinstance(value, basestring) or value in (None, False)
+        assert isinstance(value, basestring) or value is None
         super(CharDescriptor, self).__set__(instance, value or '')
-
-    def __get__(self, instance, owner):
-        value = super(CharDescriptor, self).__get__(instance, owner)
-        if value is False:
-            value = None
-        return value
 
 
 class BinaryDescriptor(FieldDescriptor):
     default = None
 
     def __set__(self, instance, value):
-        assert (isinstance(value, (basestring, buffer))
-            or value in (None, False))
-        super(BinaryDescriptor, self).__set__(instance, value or '')
+        assert isinstance(value, (basestring, buffer)) or value is None
+        super(BinaryDescriptor, self).__set__(instance, value)
 
 
 class IntegerDescriptor(FieldDescriptor):
@@ -172,25 +165,25 @@ class DateDescriptor(FieldDescriptor):
         return value
 
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.date) or value in (None, False)
+        assert isinstance(value, datetime.date) or value is None
         super(DateDescriptor, self).__set__(instance, value)
 
 
 class DateTimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.datetime) or value in (None, False)
+        assert isinstance(value, datetime.datetime) or value is None
         super(DateTimeDescriptor, self).__set__(instance, value)
 
 
 class TimeDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
-        assert isinstance(value, datetime.time) or value in (None, False)
+        assert isinstance(value, datetime.time) or value is None
         super(TimeDescriptor, self).__set__(instance, value)
 
 
 class DictDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
-        assert isinstance(value, dict) or value in (None, False)
+        assert isinstance(value, dict) or value is None
         super(DictDescriptor, self).__set__(instance, value)
 
 
@@ -200,10 +193,8 @@ class Many2OneDescriptor(FieldDescriptor):
         value = super(Many2OneDescriptor, self).__get__(instance, owner)
         if instance._parent_name == self.name:
             value = instance._parent
-        if isinstance(value, (int, long)) and value is not False:
+        if isinstance(value, (int, long)):
             value = relation(value)
-        elif not value:
-            value = None
         if self.name in instance._values:
             instance._values[self.name] = value
         return value
@@ -595,11 +586,9 @@ class Model(object):
                 getattr(self, field_name).extend(value)
             else:
                 if definition['type'] == 'many2one':
-                    if (isinstance(value, (int, long)) and value is not False):
+                    if isinstance(value, (int, long)):
                         relation = Model.get(definition['relation'])
                         value = relation(value)
-                    elif value is False:
-                        value = None
                 setattr(self, field_name, value)
     __init__.__doc__ = object.__init__.__doc__
 
