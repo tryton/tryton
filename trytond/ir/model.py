@@ -600,7 +600,7 @@ class ModelFieldAccess(ModelSQL, ModelView):
     perm_create = fields.Boolean('Create Access')
     perm_delete = fields.Boolean('Delete Access')
     description = fields.Text('Description')
-    _get_access_cache = Cache('ir_model_field_access.check')
+    _get_access_cache = Cache('ir_model_field_access.check', context=False)
 
     @classmethod
     def __setup__(cls):

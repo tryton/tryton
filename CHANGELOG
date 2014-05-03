@@ -1,3 +1,5 @@
+* Remove context, current_date and time from record rule evaluation
+
 Version 3.2.0 - 2014-04-21
 * Bug fixes (see mercurial logs for details)
 * Add restore_history to ModelSQL

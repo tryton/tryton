@@ -1,8 +1,5 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import time
-import datetime
-
 from ..model import ModelView, ModelSQL, fields
 from ..tools import safe_eval
 from ..transaction import Transaction
@@ -99,7 +96,7 @@ class Rule(ModelSQL, ModelView):
        required=True, ondelete="CASCADE")
     domain = fields.Char('Domain', required=True,
         help='Domain is evaluated with "user" as the current user')
-    _domain_get_cache = Cache('ir_rule.domain_get')
+    _domain_get_cache = Cache('ir_rule.domain_get', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -148,10 +145,11 @@ class Rule(ModelSQL, ModelView):
             user = User(user_id)
         return {
             'user': user,
-            'current_date': datetime.datetime.today(),
-            'time': time,
-            'context': Transaction().context,
             }
+
+    @staticmethod
+    def _get_cache_key():
+        return (Transaction().user,)
 
     @classmethod
     def domain_get(cls, model_name, mode='read'):
@@ -165,7 +163,7 @@ class Rule(ModelSQL, ModelView):
             with Transaction().set_user(Transaction().context['user']):
                 return cls.domain_get(model_name, mode=mode)
 
-        key = (model_name, mode)
+        key = (model_name, mode) + cls._get_cache_key()
         domain = cls._domain_get_cache.get(key, False)
         if domain is not False:
             return domain
