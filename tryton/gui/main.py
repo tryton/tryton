@@ -358,9 +358,9 @@ class Main(object):
                 widget.emit('changed')
                 end()
 
-            RPCExecute('model', 'ir.model', 'global_search',
-                    search_text, CONFIG['client.limit'],
-                    self.menu_screen.model_name, callback=set_result)
+            RPCExecute('model', 'ir.model', 'global_search', search_text,
+                CONFIG['client.limit'], self.menu_screen.model_name,
+                context=self.menu_screen.context, callback=set_result)
             return False
 
         def changed(widget):
@@ -1044,9 +1044,11 @@ class Main(object):
         elif action.get('view_id', False):
             view_ids = [action['view_id'][0]]
         ctx = rpc.CONTEXT.copy()
-        domain = PYSONDecoder(ctx).decode(action['pyson_domain'])
-        screen = Screen(action['res_model'], mode=['tree'],
-            view_ids=view_ids, domain=domain, readonly=True)
+        decoder = PYSONDecoder(ctx)
+        action_ctx = decoder.decode(action.get('pyson_context') or '{}')
+        domain = decoder.decode(action['pyson_domain'])
+        screen = Screen(action['res_model'], mode=['tree'], view_ids=view_ids,
+            domain=domain, context=action_ctx, readonly=True)
         # Use alternate view to not show search box
         screen.screen_container.alternate_view = True
         screen.switch_view(view_type=screen.current_view.view_type)
