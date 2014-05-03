@@ -278,6 +278,17 @@ class TestModel(TestCase):
         test.save()
         test.delete()
 
+    def test_duplicate(self):
+        User = Model.get('res.user')
+        test = User()
+        test.name = 'Test duplicate'
+        test.login = 'test duplicate'
+        test.save()
+        copy, = User.duplicate([test], {'name': 'Test copy'})
+        self.assertEqual(copy.name, 'Test copy')
+        self.assertEqual(copy.login, 'test duplicate (copy)')
+        self.assertNotEqual(copy.id, test.id)
+
     def test_on_change(self):
         Trigger = Model.get('ir.trigger')
 

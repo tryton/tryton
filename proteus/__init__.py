@@ -688,6 +688,13 @@ class Model(object):
         self.reload()
         return True
 
+    @classmethod
+    def duplicate(cls, records, default=None):
+        'Duplicate the record'
+        ids = cls._proxy.copy([r.id for r in records], default,
+            cls._config.context)
+        return [cls(id) for id in ids]
+
     def click(self, button):
         'Click on button'
         self.save()
