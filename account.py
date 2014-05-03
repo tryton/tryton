@@ -195,8 +195,7 @@ class Account(ModelSQL, ModelView):
         return res
 
     @classmethod
-    def get_credit_debit(cls, accounts, name):
-        res = {}
+    def get_credit_debit(cls, accounts, names):
         pool = Pool()
         Line = pool.get('analytic_account.line')
         MoveLine = pool.get('account.move.line')
@@ -210,16 +209,21 @@ class Account(ModelSQL, ModelView):
         a_account = Account.__table__()
         company = Company.__table__()
 
-        if name not in ('credit', 'debit'):
-            raise Exception('Bad argument')
+        result = {}
+        ids = [a.id for a in accounts]
+        for name in names:
+            if name not in ('credit', 'debit'):
+                raise Exception('Bad argument')
+            result[name] = {}.fromkeys(ids, Decimal('0.0'))
 
         id2account = {}
-        ids = [a.id for a in accounts]
         for account in accounts:
-            res[account.id] = Decimal('0.0')
             id2account[account.id] = account
 
         line_query = Line.query_get(line)
+        columns = [table.id, company.currency]
+        for name in names:
+            columns.append(Sum(Coalesce(Column(line, name), 0)))
         cursor.execute(*table.join(line, 'LEFT',
                 condition=table.id == line.account
                 ).join(move_line, 'LEFT',
@@ -228,31 +232,33 @@ class Account(ModelSQL, ModelView):
                 condition=a_account.id == move_line.account
                 ).join(company, 'LEFT',
                 condition=company.id == a_account.company
-                ).select(table.id,
-                Sum(Coalesce(Column(line, name), 0)),
-                company.currency,
+                ).select(*columns,
                 where=(table.type != 'view')
                 & table.id.in_(ids)
                 & table.active & line_query,
                 group_by=(table.id, company.currency)))
 
         id2currency = {}
-        for account_id, sum, currency_id in cursor.fetchall():
-            # SQLite uses float for SUM
-            if not isinstance(sum, Decimal):
-                sum = Decimal(str(sum))
-            if currency_id != id2account[account_id].currency.id:
-                currency = None
-                if currency_id in id2currency:
-                    currency = id2currency[currency_id]
+        for row in cursor.fetchall():
+            account = id2account[row[0]]
+            currency_id = row[1]
+            for i, name in enumerate(names, 2):
+                # SQLite uses float for SUM
+                sum = row[i]
+                if not isinstance(sum, Decimal):
+                    sum = Decimal(str(sum))
+                if currency_id != account.currency.id:
+                    currency = None
+                    if currency_id in id2currency:
+                        currency = id2currency[currency_id]
+                    else:
+                        currency = Currency(currency_id)
+                        id2currency[currency.id] = currency
+                    result[name][account.id] += Currency.compute(currency, sum,
+                            account.currency, round=True)
                 else:
-                    currency = Currency(currency_id)
-                    id2currency[currency.id] = currency
-                res[account_id] += Currency.compute(currency, sum,
-                        id2account[account_id].currency, round=True)
-            else:
-                res[account_id] += id2account[account_id].currency.round(sum)
-        return res
+                    result[name][account.id] += account.currency.round(sum)
+        return result
 
     def get_rec_name(self, name):
         if self.code:
