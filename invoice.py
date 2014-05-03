@@ -1405,7 +1405,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('cancel')
     def cancel(cls, invoices):
-        Move = Pool().get('account.move')
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
 
         cancel_moves = []
         delete_moves = []
@@ -1422,6 +1424,23 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 Move.delete(delete_moves)
         if cancel_moves:
             Move.post(cancel_moves)
+        # Write state before reconcile to prevent invoice to go to paid state
+        cls.write(invoices, {
+                'state': 'cancel',
+                })
+        # Reconcile lines to pay with the cancellation ones if possible
+        for invoice in invoices:
+            if not invoice.move or not invoice.cancel_move:
+                continue
+            to_reconcile = []
+            for line in invoice.move.lines + invoice.cancel_move.lines:
+                if line.account == invoice.account:
+                    if line.reconciliation:
+                        break
+                    to_reconcile.append(line)
+            else:
+                if to_reconcile:
+                    Line.reconcile(to_reconcile)
 
 
 class InvoicePaymentLine(ModelSQL):

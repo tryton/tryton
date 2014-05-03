@@ -250,3 +250,36 @@ Credit invoice::
     True
     >>> credit_note.total_amount == invoice.total_amount
     True
+
+Create a posted and a draft invoice  to cancel::
+
+    >>> invoice = Invoice()
+    >>> invoice.type = 'in_invoice'
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> invoice.invoice_date = today
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 1
+    >>> invoice.save()
+    >>> invoice.click('post')
+    >>> invoice_draft = Invoice(Invoice.copy([invoice.id], config.context)[0])
+
+Cancel draft invoice::
+
+    >>> invoice_draft.click('cancel')
+    >>> invoice_draft.state
+    u'cancel'
+    >>> invoice_draft.move
+    >>> invoice_draft.reconciled
+    False
+
+Cancel posted invoice::
+
+    >>> invoice.click('cancel')
+    >>> invoice.state
+    u'cancel'
+    >>> invoice.cancel_move is not None
+    True
+    >>> invoice.reconciled
+    True
