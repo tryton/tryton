@@ -10,8 +10,7 @@ from sql.operators import Concat
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
-from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
-    Button
+from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond import backend
 from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Get, Id
 from trytond.transaction import Transaction
@@ -25,7 +24,6 @@ __all__ = ['ShipmentIn', 'ShipmentInReturn',
     'Address',
     'AssignShipmentInternalAssignFailed', 'AssignShipmentInternal',
     'AssignShipmentInReturnAssignFailed', 'AssignShipmentInReturn',
-    'CreateShipmentOutReturn',
     'DeliveryNote', 'PickingList',
     'SupplierRestockingList', 'CustomerReturnRestockingList',
     'InteralShipmentReport']
@@ -2123,66 +2121,6 @@ class AssignShipmentInReturn(Wizard):
         Shipment = Pool().get('stock.shipment.in.return')
 
         Shipment.assign_force([Shipment(Transaction().context['active_id'])])
-        return 'end'
-
-
-class CreateShipmentOutReturn(Wizard):
-    'Create Customer Return Shipment'
-    __name__ = 'stock.shipment.out.return.create'
-    start = StateAction('stock.act_shipment_out_return_form')
-
-    @classmethod
-    def __setup__(cls):
-        super(CreateShipmentOutReturn, cls).__setup__()
-        cls._error_messages.update({
-                'shipment_done_title': 'You can not create return shipment',
-                'shipment_done_msg': ('The shipment with code "%s" is not yet '
-                    'sent.'),
-                })
-
-    def do_start(self, action):
-        pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-        ShipmentOutReturn = pool.get('stock.shipment.out.return')
-
-        shipment_ids = Transaction().context['active_ids']
-        shipment_outs = ShipmentOut.browse(shipment_ids)
-
-        to_create = []
-        for shipment_out in shipment_outs:
-            if shipment_out.state != 'done':
-                self.raise_user_error('shipment_done_title',
-                        error_description='shipment_done_msg',
-                        error_description_args=shipment_out.code)
-
-            incoming_moves = []
-            moves_to_create = []
-            for move in shipment_out.outgoing_moves:
-                moves_to_create.append({
-                        'product': move.product.id,
-                        'quantity': move.quantity,
-                        'uom': move.uom.id,
-                        'from_location': move.to_location.id,
-                        'to_location': (
-                            shipment_out.warehouse.input_location.id),
-                        'company': move.company.id,
-                        })
-            if moves_to_create:
-                incoming_moves.append(('create', moves_to_create))
-            to_create.append({
-                    'customer': shipment_out.customer.id,
-                    'delivery_address': shipment_out.delivery_address.id,
-                    'warehouse': shipment_out.warehouse.id,
-                    'incoming_moves': incoming_moves,
-                    })
-        shipment_out_returns = ShipmentOutReturn.create(to_create)
-
-        data = {'res_id': [x.id for x in shipment_out_returns]}
-        if len(shipment_out_returns) == 1:
-            action['views'].reverse()
-        return action, data
-
-    def transition_start(self):
         return 'end'
 
 

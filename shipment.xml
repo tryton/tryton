@@ -140,17 +140,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">shipment_out_tree</field>
         </record>
 
-        <record model="ir.action.wizard" id="create_shipment_out_return">
-            <field name="name">Create Return Shipment</field>
-            <field name="wiz_name">stock.shipment.out.return.create</field>
-            <field name="model">stock.shipment.out</field>
-        </record>
-        <record model="ir.action.keyword" id="create_shipment_out_return_keyword">
-            <field name="keyword">form_action</field>
-            <field name="model">stock.shipment.out,-1</field>
-            <field name="action" ref="create_shipment_out_return"/>
-        </record>
-
         <record model="ir.action.act_window" id="act_shipment_out_form">
             <field name="name">Customer Shipments</field>
             <field name="res_model">stock.shipment.out</field>

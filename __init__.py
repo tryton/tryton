@@ -42,7 +42,6 @@ def register():
         AssignShipmentOut,
         AssignShipmentInternal,
         AssignShipmentInReturn,
-        CreateShipmentOutReturn,
         ProductByLocation,
         OpenProductQuantitiesByWarehouse,
         module='stock', type_='wizard')

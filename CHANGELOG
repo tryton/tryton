@@ -1,3 +1,5 @@
+* Remove return shipment out wizard
+
 Version 3.2.0 - 2014-04-21
 * Bug fixes (see mercurial logs for details)
 * Add warning for moves without origin
