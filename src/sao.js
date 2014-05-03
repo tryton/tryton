@@ -241,11 +241,13 @@ var Sao = {};
             view_ids = [action.view_id[0]];
         }
         decoder = new Sao.PYSON.Decoder(Sao.Session.current_session.context);
+        var action_ctx = decoder.decode(action.pyson_context || '{}');
         var domain = decoder.decode(action.pyson_domain);
         var form = new Sao.Tab.Form(action.res_model, {
             'mode': ['tree'],
             'view_ids': view_ids,
             'domain': domain,
+            'context': action_ctx,
             'selection_mode': Sao.common.SELECTION_NONE
         });
         Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
