@@ -46,6 +46,8 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = [get_require_version('proteus')]
+
 setup(name=name,
     version=version,
     description='Tryton module to group sale stock moves',
@@ -95,4 +97,5 @@ setup(name=name,
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )
