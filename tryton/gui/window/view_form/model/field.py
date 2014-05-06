@@ -377,13 +377,6 @@ class M2OField(Field):
 
     _default = None
 
-    def get(self, record):
-        value = record.value.get(self.name)
-        if (record.parent_name == self.name
-                and self.attrs['relation'] == record.group.parent.model_name):
-            value = record.parent.id if record.parent else None
-        return value
-
     def get_client(self, record):
         rec_name = record.value.get(self.name + '.rec_name')
         if rec_name is None:
@@ -407,14 +400,6 @@ class M2OField(Field):
         rec_name = record.value.get(self.name + '.rec_name') or ''
         if value is False:
             value = None
-        if (record.parent_name == self.name
-                and self.attrs['relation'] == record.group.parent.model_name):
-            if record.parent:
-                value = record.parent.id
-                if 'rec_name' in record.parent.value:
-                    rec_name = record.parent.value['rec_name'] or ''
-            else:
-                value = None
         if not rec_name and value >= 0:
             try:
                 result, = RPCExecute('model', self.attrs['relation'], 'read',
@@ -424,11 +409,6 @@ class M2OField(Field):
             rec_name = result['rec_name'] or ''
         record.value[self.name + '.rec_name'] = rec_name
         record.value[self.name] = value
-        if (record.parent_name == self.name
-                and self.attrs['relation'] == record.group.parent.model_name):
-            if record.parent:
-                if 'rec_name' not in record.parent.value:
-                    record.parent.value['rec_name'] = rec_name
 
     def context_get(self, record):
         context = super(M2OField, self).context_get(record)
@@ -446,13 +426,11 @@ class M2OField(Field):
         return concat(localize_domain(inverse_leaf(screen_domain), self.name),
             attr_domain)
 
-    def get_state_attrs(self, record):
-        result = super(M2OField, self).get_state_attrs(record)
-        if (record.parent_name == self.name
-                and self.attrs['relation'] == record.group.parent.model_name):
-            result = result.copy()
-            result['readonly'] = True
-        return result
+    def get_on_change_value(self, record):
+        if record.parent_name == self.name and record.parent:
+            return record.parent.get_on_change_value(
+                skip={self.attrs.get('relation_field')})
+        return super(M2OField, self).get_on_change_value(record)
 
 
 class O2OField(M2OField):
@@ -776,12 +754,6 @@ class ReferenceField(Field):
             return None
 
     def get(self, record):
-        if record.parent_name == self.name:
-            if record.parent:
-                return '%s,%s' % (record.group.parent.model_name,
-                    record.parent.id)
-            else:
-                return None
         if (record.value.get(self.name)
                 and record.value[self.name][0]
                 and record.value[self.name][1] >= -1):
@@ -811,12 +783,6 @@ class ReferenceField(Field):
             force_change=force_change)
 
     def set(self, record, value):
-        if record.parent_name == self.name:
-            if record.parent:
-                value = '%s,%s' % (record.group.parent.model_name,
-                    record.parent.id)
-            else:
-                value = None
         if not value:
             record.value[self.name] = self._default
             return
@@ -846,6 +812,12 @@ class ReferenceField(Field):
             rec_name = str(ref_id)
         record.value[self.name] = ref_model, ref_id
         record.value[self.name + '.rec_name'] = rec_name
+
+    def get_on_change_value(self, record):
+        if record.parent_name == self.name and record.parent:
+            return record.parent.get_on_change_value(
+                skip={self.attrs.get('relation_field')})
+        return super(ReferenceField, self).get_on_change_value(record)
 
 
 class BinaryField(Field):
