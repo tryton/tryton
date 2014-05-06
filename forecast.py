@@ -537,7 +537,7 @@ class ForecastComplete(Wizard):
             self.raise_user_error('from_to_date')
 
         with Transaction().set_context(
-                stock_destination=[forecast.destination.id],
+                stock_destinations=[forecast.destination.id],
                 stock_date_start=self.ask.from_date,
                 stock_date_end=self.ask.to_date):
             return Product.products_by_location([forecast.warehouse.id],
