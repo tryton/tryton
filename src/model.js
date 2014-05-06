@@ -172,6 +172,18 @@
             }
             record._changed.id = true;
             this.changed();
+            // Set parent field to trigger on_change
+            if (this.parent && this.model.fields[this.parent_name]) {
+                var field = this.model.fields[this.parent_name];
+                if ((field instanceof Sao.field.Many2One) ||
+                        field instanceof Sao.field.Reference) {
+                    var value = [this.parent.id, ''];
+                    if (field instanceof Sao.field.Reference) {
+                        value = [this.parent.model_name, value];
+                    }
+                    field.set_client(record, value);
+                }
+            }
             return record;
         };
         array.remove = function(record, remove, modified, force_remove) {
@@ -646,13 +658,19 @@
             }
             return value;
         },
-        get_on_change_value: function() {
+        get_on_change_value: function(skip) {
             var value = {};
             for (var key in this.model.fields) {
-                if (!this.model.fields.hasOwnProperty(key) && this.id >= 0)
+                if (skip && ~skip.indexOf(key)) {
                     continue;
+                }
+                if ((this.id >= 0) &&
+                        (!this._loaded[key] || !this._changed[key])) {
+                    continue;
+                }
                 value[key] = this.model.fields[key].get_on_change_value(this);
             }
+            value.id = this.id;
             return value;
         },
         _get_on_change_args: function(args) {
@@ -1353,11 +1371,6 @@
 
     Sao.field.Many2One = Sao.class_(Sao.field.Field, {
         _default: null,
-        get: function(record) {
-            var value = Sao.field.Many2One._super.get.call(this, record);
-            // TODO force parent
-            return value;
-        },
         get_client: function(record) {
             var rec_name = record._values[this.name + '.rec_name'];
             if (rec_name === undefined) {
@@ -1368,7 +1381,6 @@
         },
         set: function(record, value) {
             var rec_name = record._values[this.name + '.rec_name'] || '';
-            // TODO force parent
             var store_rec_name = function(rec_name) {
                 record._values[this.name + '.rec_name'] = rec_name[0].rec_name;
             };
@@ -1383,7 +1395,6 @@
                 store_rec_name.call(this, [{'rec_name': rec_name}]);
             }
             record._values[this.name] = value;
-            // TODO force parent
         },
         set_client: function(record, value, force_change) {
             var rec_name;
@@ -1412,6 +1423,15 @@
             return inversion.concat([inversion.localize_domain(
                         inversion.inverse_leaf(screen_domain), this.name),
                     attr_domain]);
+        },
+        get_on_change_value: function(record) {
+            if ((record.group.parent_name == this.name) &&
+                    record.group.parent) {
+                return record.group.parent.get_on_change_value(
+                        [this.description.relation_field]);
+            }
+            return Sao.field.Many2One._super.get_on_change_value.call(
+                    this, record);
         }
     });
 
@@ -1786,7 +1806,6 @@
             }
         },
         get: function(record) {
-            // TODO force parent
             if (record._values[this.name] &&
                 record._values[this.name][0] &&
                 record._values[this.name][1] >= -1) {
@@ -1821,7 +1840,6 @@
                     this, record, value, force_change);
         },
         set: function(record, value) {
-            // TODO force parent
             if (!value) {
                 record._values[this.name] = this._default;
                 return;
@@ -1859,6 +1877,15 @@
             }
             record._values[this.name] = [ref_model, ref_id];
             store_rec_name(rec_name);
+        },
+        get_on_change_value: function(record) {
+            if ((record.group.parent_name == this.name) &&
+                    record.group.parent) {
+                return record.group.parent.get_on_change_value(
+                        [this.description.relation_field]);
+            }
+            return Sao.field.Reference._super.get_on_change_value.call(
+                    this, record);
         }
     });
 
