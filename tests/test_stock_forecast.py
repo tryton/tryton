@@ -25,6 +25,8 @@ class StockForecastTestCase(unittest.TestCase):
         self.forecast = POOL.get('stock.forecast')
         self.line = POOL.get('stock.forecast.line')
         self.move = POOL.get('stock.move')
+        self.forecast_complete = POOL.get('stock.forecast.complete',
+            type='wizard')
 
     def test0005views(self):
         'Test views'
@@ -124,6 +126,90 @@ class StockForecastTestCase(unittest.TestCase):
             self.assertEqual(line.quantity_executed, 2)
             self.assertEqual(len(line.moves), 4)
             self.assertEqual(sum(move.quantity for move in line.moves), 8)
+
+    def test0040complete(self):
+        '''
+        Test complete.
+        '''
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            category, = self.category.create([{
+                        'name': 'Test complete',
+                        }])
+            unit, = self.uom.search([('name', '=', 'Unit')])
+            template, = self.template.create([{
+                        'name': 'Test complete',
+                        'type': 'goods',
+                        'category': category.id,
+                        'cost_price_method': 'fixed',
+                        'default_uom': unit.id,
+                        'list_price': Decimal('1'),
+                        'cost_price': Decimal(0),
+                        }])
+            product, = self.product.create([{
+                        'template': template.id,
+                        }])
+            customer, = self.location.search([('code', '=', 'CUS')])
+            supplier, = self.location.search([('code', '=', 'SUP')])
+            warehouse, = self.location.search([('code', '=', 'WH')])
+            storage, = self.location.search([('code', '=', 'STO')])
+            company, = self.company.search([
+                    ('rec_name', '=', 'Dunder Mifflin'),
+                    ])
+            self.user.write([self.user(USER)], {
+                    'main_company': company.id,
+                    'company': company.id,
+                    })
+
+            today = datetime.date.today()
+
+            moves = self.move.create([{
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 10,
+                        'effective_date': (today
+                            + relativedelta(months=-1, day=1)),
+                        'company': company.id,
+                        'currency': company.currency.id,
+                        'unit_price': Decimal('1'),
+                        }, {
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 5,
+                        'effective_date': (today
+                            + relativedelta(months=-1, day=15)),
+                        'company': company.id,
+                        'currency': company.currency.id,
+                        'unit_price': Decimal('1'),
+                        }])
+            self.move.do(moves)
+
+            forecast, = self.forecast.create([{
+                        'warehouse': warehouse.id,
+                        'destination': customer.id,
+                        'from_date': today + relativedelta(months=1, day=1),
+                        'to_date': today + relativedelta(months=1, day=20),
+                        'company': company.id,
+                        }])
+
+            with Transaction().set_context(active_id=forecast.id):
+                session_id, _, _ = self.forecast_complete.create()
+                forecast_complete = self.forecast_complete(session_id)
+                forecast_complete.ask.from_date = (today
+                        + relativedelta(months=-1, day=1))
+                forecast_complete.ask.to_date = (today
+                        + relativedelta(months=-1, day=20))
+                forecast_complete.transition_complete()
+
+            self.assertEqual(len(forecast.lines), 1)
+            forecast_line, = forecast.lines
+            self.assertEqual(forecast_line.product, product)
+            self.assertEqual(forecast_line.uom, unit)
+            self.assertEqual(forecast_line.quantity, 5)
+            self.assertEqual(forecast_line.minimal_quantity, 1)
 
 
 def suite():
