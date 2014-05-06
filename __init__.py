@@ -46,7 +46,6 @@ def register():
         Line,
         OpenJournalAsk,
         ReconcileLinesWriteOff,
-        UnreconcileLinesStart,
         OpenReconcileLinesStart,
         FiscalYearLine,
         FiscalYear2,

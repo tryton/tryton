@@ -20,7 +20,7 @@ from trytond.tools import reduce_ids
 
 __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount', 'ReconcileLinesWriteOff', 'ReconcileLines',
-    'UnreconcileLinesStart', 'UnreconcileLines', 'OpenReconcileLinesStart',
+    'UnreconcileLines', 'OpenReconcileLinesStart',
     'OpenReconcileLines', 'FiscalYearLine', 'FiscalYear2',
     'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
 __metaclass__ = PoolMeta
@@ -1617,11 +1617,6 @@ class ReconcileLines(Wizard):
         Line.reconcile(Line.browse(Transaction().context['active_ids']),
             journal=journal, date=date, description=description)
         return 'end'
-
-
-class UnreconcileLinesStart(ModelView):
-    'Unreconcile Lines'
-    __name__ = 'account.move.unreconcile_lines.start'
 
 
 class UnreconcileLines(Wizard):
