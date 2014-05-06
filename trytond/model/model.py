@@ -47,7 +47,14 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
             if not isinstance(getattr(cls, attr), fields.Field):
                 continue
             field_name = attr
-            field = copy.deepcopy(getattr(cls, field_name))
+            field = getattr(cls, field_name)
+            # Copy the original field definition to prevent side-effect with
+            # the mutable attributes
+            for parent_cls in cls.__mro__:
+                parent_field = getattr(parent_cls, field_name, None)
+                if isinstance(parent_field, fields.Field):
+                    field = parent_field
+            field = copy.deepcopy(field)
             setattr(cls, field_name, field)
 
             for attribute in ('on_change', 'on_change_with', 'autocomplete',
