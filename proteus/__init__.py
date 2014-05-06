@@ -136,8 +136,6 @@ class NumericDescriptor(FieldDescriptor):
 class ReferenceDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         value = super(ReferenceDescriptor, self).__get__(instance, owner)
-        if instance._parent_name == self.name:
-            value = instance._parent
         if isinstance(value, basestring):
             model_name, id = value.split(',', 1)
             if model_name:
@@ -151,7 +149,6 @@ class ReferenceDescriptor(FieldDescriptor):
         if isinstance(value, basestring):
             assert value.startswith(',')
         elif isinstance(value, Model):
-            assert value.id > 0 and not value._changed
             assert value._config == instance._config
         super(ReferenceDescriptor, self).__set__(instance, value)
 
@@ -191,8 +188,6 @@ class Many2OneDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         relation = Model.get(self.definition['relation'], instance._config)
         value = super(Many2OneDescriptor, self).__get__(instance, owner)
-        if instance._parent_name == self.name:
-            value = instance._parent
         if isinstance(value, (int, long)):
             value = relation(value)
         if self.name in instance._values:
@@ -202,7 +197,6 @@ class Many2OneDescriptor(FieldDescriptor):
     def __set__(self, instance, value):
         assert isinstance(value, (Model, NoneType))
         if value:
-            assert value.id > 0 and not value._changed
             assert value._config == instance._config
         super(Many2OneDescriptor, self).__set__(instance, value)
 
@@ -456,27 +450,9 @@ class ModelList(list):
         ctx.update(decoder.decode(self.context) if self.context else {})
         return ctx
 
-    def append(self, record):
-        assert isinstance(record, Model)
-        if self.parent:
-            assert record._config == self.parent._config
-        elif self:
-            assert record._config == self[0]._config
-        assert record._parent is None
-        assert not record._parent_field_name
-        assert not record._parent_name
-        record._parent = self.parent
-        record._parent_field_name = self.parent_field_name
-        record._parent_name = self.parent_name
-        res = super(ModelList, self).append(record)
-        self._changed()
-        return res
-    append.__doc__ = list.append.__doc__
-
-    def extend(self, iterable):
-        iterable = list(iterable)
+    def __check(self, records):
         config = None
-        for record in iterable:
+        for record in records:
             assert isinstance(record, Model)
             if self.parent:
                 assert record._config == self.parent._config
@@ -486,13 +462,30 @@ class ModelList(list):
                 assert record._config == config
             else:
                 config = record._config
-        for record in iterable:
+        for record in records:
             assert record._parent is None
             assert not record._parent_field_name
             assert not record._parent_name
             record._parent = self.parent
             record._parent_field_name = self.parent_field_name
             record._parent_name = self.parent_name
+
+            # Set parent field to trigger on_change
+            if self.parent and self.parent_name in record._fields:
+                definition = record._fields[self.parent_name]
+                if definition['type'] in ('many2one', 'reference'):
+                    setattr(record, self.parent_name, self.parent)
+
+    def append(self, record):
+        self.__check([record])
+        res = super(ModelList, self).append(record)
+        self._changed()
+        return res
+    append.__doc__ = list.append.__doc__
+
+    def extend(self, iterable):
+        iterable = list(iterable)
+        self.__check(iterable)
         res = super(ModelList, self).extend(iterable)
         self._changed()
         return res
@@ -766,15 +759,24 @@ class Model(object):
         values['id'] = self.id
         return values
 
-    def _get_on_change_value(self):
+    def _get_on_change_value(self, skip=None):
         values = {'id': self.id}
         for field, definition in self._fields.iteritems():
-            if field in self._values and field != 'id':
-                if definition['type'] == 'one2many':
-                    values[field] = [x._get_on_change_value()
-                        for x in getattr(self, field)]
-                else:
-                    values[field] = getattr(self, '__%s_eval' % field)
+            if field == 'id' or (skip and field in skip):
+                continue
+            if (field not in self._values
+                    or (self.id >= 0 and field not in self._changed)):
+                continue
+            if definition['type'] == 'one2many':
+                values[field] = [x._get_on_change_value()
+                    for x in getattr(self, field)]
+            elif (definition['type'] in ('many2one', 'reference')
+                    and self._parent_name == definition['name']
+                    and self._parent):
+                values[field] = self._parent._get_on_change_value(
+                    skip={definition.get('relation_field')})
+            else:
+                values[field] = getattr(self, '__%s_eval' % field)
         return values
 
     def _on_change_args(self, args):
