@@ -382,9 +382,11 @@ class Many2One(WidgetInterface):
             return
         if not self.record:
             return
-        id_ = self.id_from_value(self.field.get(self.record))
-        if id_ is not None and id_ >= 0:
-            return
+        value = self.field.get(self.record)
+        if self.has_target(value):
+            id_ = self.id_from_value(value)
+            if id_ is not None and id_ >= 0:
+                return
         model = self.get_model()
         update_completion(self.wid_text, self.record, self.field, model)
 
