@@ -15,7 +15,7 @@ Create database::
     >>> config = config.set_trytond()
     >>> config.pool.test = True
 
-Install account_invoice::
+Install account_payment::
 
     >>> Module = Model.get('ir.module.module')
     >>> account_payment_module, = Module.find(
@@ -119,8 +119,8 @@ Create payable move::
     >>> move = Move()
     >>> move.journal = expense
     >>> line = move.lines.new(account=payable, party=supplier,
-    ...     credit=Decimal(50))
-    >>> line = move.lines.new(account=expense, debit=Decimal(50))
+    ...     credit=Decimal('50.00'))
+    >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
     >>> move.click('post')
 
 Partially pay line::
@@ -133,9 +133,9 @@ Partially pay line::
     >>> payment, = Payment.find()
     >>> payment.party == supplier
     True
-    >>> payment.amount == Decimal(50)
-    True
-    >>> payment.amount = Decimal(20)
+    >>> payment.amount
+    Decimal('50.00')
+    >>> payment.amount = Decimal('20.00')
     >>> payment.click('approve')
     >>> payment.state
     u'approved'
@@ -145,8 +145,8 @@ Partially pay line::
     >>> payment.state
     u'processing'
     >>> line.reload()
-    >>> line.payment_amount == Decimal(30)
-    True
+    >>> line.payment_amount
+    Decimal('30.00')
 
 Partially fail to pay the remaining::
 
@@ -154,18 +154,18 @@ Partially fail to pay the remaining::
     >>> pay_line.form.journal = payment_journal
     >>> pay_line.execute('pay')
     >>> payment, = Payment.find([('state', '=', 'draft')])
-    >>> payment.amount == Decimal(30)
-    True
+    >>> payment.amount
+    Decimal('30.00')
     >>> payment.click('approve')
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> line.reload()
-    >>> line.payment_amount == Decimal(0)
-    True
+    >>> line.payment_amount
+    Decimal('0.00')
     >>> payment.reload()
     >>> payment.click('fail')
     >>> payment.state
     u'failed'
     >>> line.reload()
-    >>> line.payment_amount == Decimal(30)
-    True
+    >>> line.payment_amount
+    Decimal('30.00')
