@@ -201,10 +201,6 @@ var Sao = {};
             jQuery('#user-preferences').children().remove();
             jQuery('#user-logout').children().remove();
             jQuery('#menu').children().remove();
-            if (Sao.main_menu_screen) {
-                Sao.main_menu_screen.save_tree_state();
-                Sao.main_menu_screen = null;
-            }
             document.title = 'Tryton';
             session.do_logout();
             Sao.login();
