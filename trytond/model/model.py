@@ -367,7 +367,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                 res[field]['delete'] = accesses.get(field, {}).get('delete',
                     True)
             if res[field]['type'] == 'one2many' \
-                    and hasattr(cls._fields[field], 'field'):
+                    and getattr(cls._fields[field], 'field', None):
                 res[field]['relation_field'] = copy.copy(
                         cls._fields[field].field)
             if res[field]['type'] == 'many2one':
