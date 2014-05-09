@@ -543,5 +543,22 @@ Instance methods:
 
     Getter for the :attr:`selection_json`.
 
+==========
+MatchMixin
+==========
+
+.. class:: MatchMixin
+
+A mixin_ to add to a :class:`Model` a match method on pattern.
+The pattern is a dictionary with field name as key and the value to compare.
+The record matches the pattern if for all dictionary entries, the value of the
+record is equal or not defined.
+
+Instance methods:
+
+.. method:: MatchMixin.match(pattern)
+
+    Return if the instance match the pattern
+
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json

@@ -7,6 +7,7 @@ from .modelsingleton import ModelSingleton
 from .modelsql import ModelSQL
 from .workflow import Workflow
 from .dictschema import DictSchemaMixin
+from .match import MatchMixin
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Workflow', 'DictSchemaMixin']
+    'Workflow', 'DictSchemaMixin', 'MatchMixin']
