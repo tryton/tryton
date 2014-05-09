@@ -372,12 +372,15 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                         cls._fields[field].field)
             if res[field]['type'] == 'many2one':
                 target = cls._fields[field].get_target()
+                relation_fields = []
                 for target_name, target_field in target._fields.iteritems():
                     if (target_field._type == 'one2many'
                             and target_field.model_name == cls.__name__
                             and target_field.field == field):
-                        res[field]['relation_field'] = target_name
-                        break
+                        relation_fields.append(target_name)
+                # Set relation_field only if there is no ambiguity
+                if len(relation_fields) == 1:
+                    res[field]['relation_field'], = relation_fields
             if res[field]['type'] in ('datetime', 'time'):
                 res[field]['format'] = copy.copy(cls._fields[field].format)
             if res[field]['type'] == 'selection':
