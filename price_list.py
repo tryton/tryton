@@ -191,32 +191,11 @@ class PriceListLine(ModelSQL, ModelView):
                         })
 
     def match(self, pattern):
-        '''
-        Match line on pattern
-
-        :param pattern: a dictonary with price list line field as key
-                and match value as value
-        :return: a boolean
-        '''
-        res = True
-        for field in pattern.keys():
-            if field not in self._fields:
-                continue
-            if getattr(self, field) is None:
-                continue
-            if self._fields[field]._type == 'many2one':
-                if getattr(self, field).id != pattern[field]:
-                    res = False
-                    break
-            elif field == 'quantity':
-                if getattr(self, field) > pattern[field]:
-                    res = False
-                    break
-            else:
-                if getattr(self, field) != pattern[field]:
-                    res = False
-                    break
-        return res
+        if 'quantity' in pattern:
+            pattern = pattern.copy()
+            if self.quantity > pattern.pop('quantity'):
+                return False
+        return super(PriceListLine, self).match(pattern)
 
     def get_unit_price(self):
         '''
