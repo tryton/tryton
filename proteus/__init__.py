@@ -502,8 +502,8 @@ class ModelList(list):
     def pop(self, index=-1):
         self.record_removed.add(self[index])
         self[index]._parent = None
-        self[index]._parent_field_name = None
-        self[index]._parent_name = None
+        self[index]._parent_field_name = ''
+        self[index]._parent_name = ''
         res = super(ModelList, self).pop(index)
         self._changed()
         return res
@@ -512,8 +512,8 @@ class ModelList(list):
     def remove(self, record):
         self.record_deleted.add(record)
         record._parent = None
-        record._parent_field_name = None
-        record._parent_name = None
+        record._parent_field_name = ''
+        record._parent_name = ''
         res = super(ModelList, self).remove(record)
         self._changed()
         return res
