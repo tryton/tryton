@@ -17,5 +17,6 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
     <label name="currency"/>
     <field name="currency"/>
-    <field name="prices" colspan="4"/>
+    <field name="prices" colspan="4"
+        view_ids="purchase.product_supplier_price_view_list_sequence"/>
 </form>

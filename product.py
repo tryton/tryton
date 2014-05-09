@@ -4,7 +4,7 @@ import datetime
 from sql import Literal
 from sql.aggregate import Count
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -99,50 +99,51 @@ class Product:
         User = pool.get('res.user')
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
+        ProductSupplier = pool.get('purchase.product_supplier')
+        ProductSupplierPrice = pool.get('purchase.product_supplier.price')
 
         today = Date.today()
-        res = {}
+        context = Transaction().context
+        prices = {}
 
         uom = None
-        if Transaction().context.get('uom'):
-            uom = Uom(Transaction().context['uom'])
+        if context.get('uom'):
+            uom = Uom(context['uom'])
 
         currency = None
-        if Transaction().context.get('currency'):
-            currency = Currency(Transaction().context['currency'])
+        if context.get('currency'):
+            currency = Currency(context['currency'])
 
         user = User(Transaction().user)
 
         for product in products:
-            res[product.id] = product.cost_price
+            prices[product.id] = product.cost_price
             default_uom = product.default_uom
             default_currency = (user.company.currency if user.company
                 else None)
             if not uom:
                 uom = default_uom
-            if (Transaction().context.get('supplier')
-                    and product.product_suppliers):
-                supplier_id = Transaction().context['supplier']
-                for product_supplier in product.product_suppliers:
-                    if product_supplier.party.id == supplier_id:
-                        for price in product_supplier.prices:
-                            if Uom.compute_qty(product.purchase_uom,
-                                    price.quantity, uom) <= quantity:
-                                res[product.id] = price.unit_price
-                                default_uom = product.purchase_uom
-                                default_currency = product_supplier.currency
-                        break
-            res[product.id] = Uom.compute_price(default_uom, res[product.id],
-                uom)
+            pattern = ProductSupplier.get_pattern()
+            for product_supplier in product.product_suppliers:
+                if product_supplier.match(pattern):
+                    pattern = ProductSupplierPrice.get_pattern()
+                    for price in product_supplier.prices:
+                        if price.match(quantity, uom, pattern):
+                            prices[product.id] = price.unit_price
+                            default_uom = product_supplier.uom
+                            default_currency = product_supplier.currency
+                    break
+            prices[product.id] = Uom.compute_price(
+                default_uom, prices[product.id], uom)
             if currency and default_currency:
-                date = Transaction().context.get('purchase_date') or today
+                date = context.get('purchase_date') or today
                 with Transaction().set_context(date=date):
-                    res[product.id] = Currency.compute(default_currency,
-                        res[product.id], currency, round=False)
-        return res
+                    prices[product.id] = Currency.compute(default_currency,
+                        prices[product.id], currency, round=False)
+        return prices
 
 
-class ProductSupplier(ModelSQL, ModelView):
+class ProductSupplier(ModelSQL, ModelView, MatchMixin):
     'Product Supplier'
     __name__ = 'purchase.product_supplier'
     product = fields.Many2One('product.template', 'Product', required=True,
@@ -239,6 +240,10 @@ class ProductSupplier(ModelSQL, ModelView):
                 changes['currency'], = row
         return changes
 
+    @property
+    def uom(self):
+        return self.product.purchase_uom
+
     def compute_supply_date(self, date=None):
         '''
         Compute the supply date for the Product Supplier at the given date
@@ -261,20 +266,62 @@ class ProductSupplier(ModelSQL, ModelView):
             return Date.today()
         return date - datetime.timedelta(self.delivery_time)
 
+    @staticmethod
+    def get_pattern():
+        context = Transaction().context
+        return {
+            'party': context.get('supplier'),
+            }
 
-class ProductSupplierPrice(ModelSQL, ModelView):
+
+class ProductSupplierPrice(ModelSQL, ModelView, MatchMixin):
     'Product Supplier Price'
     __name__ = 'purchase.product_supplier.price'
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')
     quantity = fields.Float('Quantity', required=True, help='Minimal quantity')
     unit_price = fields.Numeric('Unit Price', required=True, digits=(16, 4))
+    sequence = fields.Integer('Sequence')
 
     @classmethod
     def __setup__(cls):
         super(ProductSupplierPrice, cls).__setup__()
-        cls._order.insert(0, ('quantity', 'ASC'))
+        cls._order.insert(0, ('sequence', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        table = TableHandler(cursor, cls, module_name)
+        sql_table = cls.__table__()
+
+        fill_sequence = not table.column_exist('sequence')
+
+        super(ProductSupplierPrice, cls).__register__(module_name)
+
+        # Migration from 3.2: replace quantity by sequence for order
+        if fill_sequence:
+            cursor.execute(*sql_table.update(
+                    [sql_table.sequence], [sql_table.quantity]))
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_quantity():
         return 0.0
+
+    @staticmethod
+    def get_pattern():
+        return {}
+
+    def match(self, quantity, uom, pattern):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        test_quantity = Uom.compute_qty(
+            self.product_supplier.uom, self.quantity, uom)
+        if test_quantity > quantity:
+            return False
+        return super(ProductSupplierPrice, self).match(pattern)

@@ -388,6 +388,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">product_supplier_price_tree</field>
         </record>
+        <record model="ir.ui.view" id="product_supplier_price_view_list_sequence">
+            <field name="model">purchase.product_supplier.price</field>
+            <field name="type">tree</field>
+            <field name="name">product_supplier_price_list_sequence</field>
+        </record>
 
         <record model="ir.model.access" id="access_product_supplier_price">
             <field name="model" search="[('model', '=', 'purchase.product_supplier.price')]"/>
