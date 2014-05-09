@@ -31,7 +31,7 @@ class _EvalEnvironment(dict):
         self.parent = parent
 
     def __getitem__(self, item):
-        if item == '_parent_' + self.parent._parent_field_name \
+        if item == '_parent_' + self.parent._parent_name \
                 and self.parent.parent:
             return _EvalEnvironment(self.parent.parent)
         return self.parent._get_eval()[item]
