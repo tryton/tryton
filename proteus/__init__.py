@@ -774,7 +774,7 @@ class Model(object):
                     and self._parent_name == definition['name']
                     and self._parent):
                 values[field] = self._parent._get_on_change_value(
-                    skip={definition.get('relation_field')})
+                    skip={self._parent_field_name})
             else:
                 values[field] = getattr(self, '__%s_eval' % field)
         return values
