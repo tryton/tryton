@@ -274,15 +274,19 @@ class One2ManyValueDescriptor(ValueDescriptor):
     def __get__(self, instance, owner):
         value = [('add', [])]
         value_list = getattr(instance, self.name)
+        parent_name = self.definition.get('relation_field', '')
         to_create = []
         for record in value_list:
-            if record.id > 0:
-                if record._changed:
-                    value.append(('write', [record.id], record._get_values(
-                        fields=record._changed)))
+            if record.id >= 0:
+                values = record._get_values(fields=record._changed)
+                values.pop(parent_name, None)
+                if record._changed and values:
+                    value.append(('write', [record.id], values))
                 value[0][1].append(record.id)
             else:
-                to_create.append(record._get_values())
+                values = record._get_values()
+                values.pop(parent_name, None)
+                to_create.append(values)
         if to_create:
             value.append(('create', to_create))
         if value_list.record_removed:
