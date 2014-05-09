@@ -552,7 +552,7 @@ class Model(WarningErrorMixin, URLMixin):
                 res[field]['domain'] = copy.copy(self._columns[field].domain)
                 res[field]['context'] = copy.copy(self._columns[field].context)
             if res[field]['type'] == 'one2many' \
-                    and hasattr(self._columns[field], 'field'):
+                    and getattr(self._columns[field], 'field', None):
                 res[field]['relation_field'] = copy.copy(
                         self._columns[field].field)
 
