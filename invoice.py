@@ -208,9 +208,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 'customer_invoice_cancel_move': (
                     'Customer invoice/credit note '
                     '"%s" can not be cancelled once posted.'),
-                'period_cancel_move': (
-                    'The period of Invoice "%s" is closed.\n'
-                    'Use the today for cancel move?'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -1373,34 +1370,6 @@ class Invoice(Workflow, ModelSQL, ModelView):
     def paid(cls, invoices):
         pass
 
-    def get_cancel_move(self):
-        pool = Pool()
-        Date = pool.get('ir.date')
-        Move = pool.get('account.move')
-        Period = pool.get('account.period')
-
-        move = self.move
-        default = {}
-        if move.period.state == 'close':
-            self.raise_user_warning('%s.get_cancel_move' % self,
-                'period_cancel_move', self.rec_name)
-            date = Date.today()
-            period_id = Period.find(self.company.id, date=date)
-            default.update({
-                    'date': date,
-                    'period': period_id,
-                    })
-
-        cancel_move, = Move.copy([move], default=default)
-        for line in cancel_move.lines:
-            line.debit *= -1
-            line.credit *= -1
-            line.save()
-            for tax_line in line.tax_lines:
-                tax_line.amount *= -1
-                tax_line.save()
-        return cancel_move
-
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
@@ -1416,7 +1385,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 if invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
                 elif not invoice.cancel_move:
-                    invoice.cancel_move = invoice.get_cancel_move()
+                    invoice.cancel_move = invoice.move.cancel()
                     invoice.save()
                     cancel_moves.append(invoice.cancel_move)
         if delete_moves:
