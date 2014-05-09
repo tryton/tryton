@@ -429,7 +429,7 @@ class M2OField(Field):
     def get_on_change_value(self, record):
         if record.parent_name == self.name and record.parent:
             return record.parent.get_on_change_value(
-                skip={self.attrs.get('relation_field')})
+                skip={record.group.child_name})
         return super(M2OField, self).get_on_change_value(record)
 
 
@@ -816,7 +816,7 @@ class ReferenceField(Field):
     def get_on_change_value(self, record):
         if record.parent_name == self.name and record.parent:
             return record.parent.get_on_change_value(
-                skip={self.attrs.get('relation_field')})
+                skip={record.group.child_name})
         return super(ReferenceField, self).get_on_change_value(record)
 
 
