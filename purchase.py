@@ -302,7 +302,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
     def default_shipment_state():
         return 'none'
 
-    @fields.depends('party', 'payment_term')
+    @fields.depends('party', 'payment_term', 'lines')
     def on_change_party(self):
         pool = Pool()
         PaymentTerm = pool.get('account.invoice.payment_term')
@@ -312,9 +312,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
         changes = {
             'invoice_address': None,
             'payment_term': None,
-            'currency': self.default_currency(),
-            'currency_digits': self.default_currency_digits(),
             }
+        if not self.lines:
+            changes['currency'] = self.default_currency()
+            changes['currency_digits'] = self.default_currency_digits()
         invoice_address = None
         payment_term = None
         if self.party:
@@ -322,19 +323,20 @@ class Purchase(Workflow, ModelSQL, ModelView):
             if self.party.supplier_payment_term:
                 payment_term = self.party.supplier_payment_term
 
-            subquery = table.select(table.currency,
-                where=table.party == self.party.id,
-                order_by=table.id,
-                limit=10)
-            cursor.execute(*subquery.select(subquery.currency,
-                    group_by=subquery.currency,
-                    order_by=Count(Literal(1)).desc))
-            row = cursor.fetchone()
-            if row:
-                currency_id, = row
-                currency = Currency(currency_id)
-                changes['currency'] = currency.id
-                changes['currency_digits'] = currency.digits
+            if not self.lines:
+                subquery = table.select(table.currency,
+                    where=table.party == self.party.id,
+                    order_by=table.id,
+                    limit=10)
+                cursor.execute(*subquery.select(subquery.currency,
+                        group_by=subquery.currency,
+                        order_by=Count(Literal(1)).desc))
+                row = cursor.fetchone()
+                if row:
+                    currency_id, = row
+                    currency = Currency(currency_id)
+                    changes['currency'] = currency.id
+                    changes['currency_digits'] = currency.digits
 
         if invoice_address:
             changes['invoice_address'] = invoice_address.id
