@@ -1428,7 +1428,7 @@
             if ((record.group.parent_name == this.name) &&
                     record.group.parent) {
                 return record.group.parent.get_on_change_value(
-                        [this.description.relation_field]);
+                        [record.group.child_name]);
             }
             return Sao.field.Many2One._super.get_on_change_value.call(
                     this, record);
@@ -1882,7 +1882,7 @@
             if ((record.group.parent_name == this.name) &&
                     record.group.parent) {
                 return record.group.parent.get_on_change_value(
-                        [this.description.relation_field]);
+                        [record.group.child_name]);
             }
             return Sao.field.Reference._super.get_on_change_value.call(
                     this, record);
