@@ -92,7 +92,8 @@ class Char(WidgetInterface, TranslateMixin):
         return field.set_client(record, value)
 
     def get_value(self):
-        return self.entry.get_text()
+        entry = self.entry.get_child() if self.autocomplete else self.entry
+        return entry.get_text()
 
     def display(self, record, field):
         super(Char, self).display(record, field)
