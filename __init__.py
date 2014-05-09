@@ -89,6 +89,7 @@ def register():
         ReconcileLines,
         UnreconcileLines,
         OpenReconcileLines,
+        CancelMoves,
         PrintGeneralJournal,
         OpenChartTaxCode,
         OpenTaxCode,

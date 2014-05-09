@@ -436,4 +436,8 @@ def suite():
             'scenario_account_reconciliation.rst',
             setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
+            'scenario_move_cancel.rst',
+            setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite

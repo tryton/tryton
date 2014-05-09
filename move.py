@@ -4,6 +4,8 @@ from decimal import Decimal
 import datetime
 from itertools import groupby
 from operator import itemgetter
+from collections import defaultdict
+
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -21,7 +23,8 @@ from trytond.tools import reduce_ids
 __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount', 'ReconcileLinesWriteOff', 'ReconcileLines',
     'UnreconcileLines', 'OpenReconcileLinesStart',
-    'OpenReconcileLines', 'FiscalYearLine', 'FiscalYear2',
+    'OpenReconcileLines', 'CancelMoves',
+    'FiscalYearLine', 'FiscalYear2',
     'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
 __metaclass__ = PoolMeta
 
@@ -86,6 +89,9 @@ class Move(ModelSQL, ModelView):
                     'because it\'s date is outside its period.'),
                 'draft_closed_period': ('You can not set to draft move '
                     '"%(move)s" because period "%(period)s" is closed.'),
+                'period_cancel': (
+                    'The period of move "%s" is closed.\n'
+                    'Use the current period?'),
                 })
         cls._buttons.update({
                 'post': {
@@ -156,7 +162,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def _get_origin(cls):
         'Return list of Model names for origin Reference'
-        return ['account.fiscalyear']
+        return ['account.fiscalyear', 'account.move']
 
     @classmethod
     def get_origin(cls):
@@ -333,6 +339,50 @@ class Move(ModelSQL, ModelView):
                             columns=[line.state],
                             values=[state],
                             where=red_sql))
+
+    def _cancel_default(self):
+        'Return default dictionary to cancel move'
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Period = pool.get('account.period')
+
+        default = {
+            'origin': str(self),
+            }
+        if self.period.state == 'close':
+            self.raise_user_warning('%s.cancel' % self,
+                'period_cancel', self.rec_name)
+            date = Date.today()
+            period_id = Period.find(self.company.id, date=date)
+            default.update({
+                    'date': date,
+                    'period': period_id,
+                    })
+        return default
+
+    def cancel(self):
+        'Return a cancel move'
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
+        default = self._cancel_default()
+        cancel_move, = Move.copy([self], default=default)
+        lines = []
+        tax_lines = []
+        for line in cancel_move.lines:
+            line.debit *= -1
+            line.credit *= -1
+            lines.extend(([line], line._save_values))
+            line._values = None
+            for tax_line in line.tax_lines:
+                tax_line.amount *= -1
+                tax_lines.extend(([tax_line], tax_line._save_values))
+                tax_line._values = None
+        if lines:
+            Line.write(*lines)
+        if tax_lines:
+            TaxLine.write(*tax_lines)
+        return cancel_move
 
     @classmethod
     @ModelView.button
@@ -1668,6 +1718,29 @@ class OpenReconcileLines(Wizard):
             order = None
         action['pyson_order'] = encoder.encode(order)
         return action, {}
+
+
+class CancelMoves(Wizard):
+    'Cancel Moves'
+    __name__ = 'account.move.cancel'
+    start_state = 'cancel'
+    cancel = StateTransition()
+
+    def transition_cancel(self):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+
+        moves = Move.browse(Transaction().context['active_ids'])
+        for move in moves:
+            cancel_move = move.cancel()
+            to_reconcile = defaultdict(list)
+            for line in move.lines + cancel_move.lines:
+                if line.account.reconcile:
+                    to_reconcile[line.account].append(line)
+            for lines in to_reconcile.itervalues():
+                Line.reconcile(lines)
+        return 'end'
 
 
 class FiscalYearLine(ModelSQL):
