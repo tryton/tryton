@@ -4,7 +4,7 @@ import datetime
 from decimal import Decimal
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
@@ -1188,7 +1188,7 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
         return template2rule_line[self.id]
 
 
-class TaxRuleLine(ModelSQL, ModelView):
+class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
     'Tax Rule Line'
     __name__ = 'account.tax.rule.line'
     _rec_name = 'tax'
@@ -1253,24 +1253,10 @@ class TaxRuleLine(ModelSQL, ModelView):
         return [table.sequence == None, table.sequence]
 
     def match(self, pattern):
-        '''
-        Match line on pattern
-        pattern is a dictonary with rule line field as key and match value as
-        value.
-        '''
-        for field in pattern.keys():
-            if field not in self._fields:
-                continue
-            if not getattr(self, field) and field != 'group':
-                continue
-            if self._fields[field]._type == 'many2one':
-                if ((getattr(self, field).id if getattr(self, field) else None)
-                        != pattern[field]):
-                    return False
-            else:
-                if getattr(self, field) != pattern[field]:
-                    return False
-        return True
+        if 'group' in pattern and not self.group:
+            if pattern['group']:
+                return False
+        return super(TaxRuleLine, self).match(pattern)
 
     def get_taxes(self):
         '''
