@@ -815,7 +815,7 @@ class ReferenceField(Field):
 
     def get_on_change_value(self, record):
         if record.parent_name == self.name and record.parent:
-            return record.parent.get_on_change_value(
+            return record.parent.model_name, record.parent.get_on_change_value(
                 skip={record.group.child_name})
         return super(ReferenceField, self).get_on_change_value(record)
 
