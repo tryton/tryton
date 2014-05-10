@@ -89,11 +89,14 @@ class Reference(Field):
         from ..model import Model
         if not isinstance(value, (Model, NoneType)):
             if isinstance(value, basestring):
-                target, id_ = value.split(',')
+                target, value = value.split(',')
             else:
-                target, id_ = value
+                target, value = value
             Target = Pool().get(target)
-            value = Target(id_)
+            if isinstance(value, dict):
+                value = Target(**value)
+            else:
+                value = Target(value)
         super(Reference, self).__set__(inst, value)
 
     @staticmethod
