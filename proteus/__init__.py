@@ -26,23 +26,32 @@ _MODELS = threading.local()
 
 class _EvalEnvironment(dict):
     'Dictionary for evaluation'
-    def __init__(self, parent):
+    def __init__(self, parent, eval_type='eval'):
         super(_EvalEnvironment, self).__init__()
         self.parent = parent
+        assert eval_type in ('eval', 'on_change')
+        self.eval_type = eval_type
 
     def __getitem__(self, item):
         if item == '_parent_' + self.parent._parent_name \
-                and self.parent.parent:
-            return _EvalEnvironment(self.parent.parent)
-        return self.parent._get_eval()[item]
+                and self.parent._parent:
+            return _EvalEnvironment(self.parent._parent,
+                eval_type=self.eval_type)
+        if self.eval_type == 'eval':
+            return self.parent._get_eval()[item]
+        else:
+            return self.parent._get_on_change_values(fields=[item])[item]
 
     def __getattr__(self, item):
-        return self.__getitem__(item)
+        try:
+            return self.__getitem__(item)
+        except KeyError:
+            raise AttributeError(item)
 
     def get(self, item, default=None):
         try:
-            return self.__getattr__(item)
-        except:
+            return self.__getitem__(item)
+        except KeyError:
             pass
         return super(_EvalEnvironment, self).get(item, default)
 
@@ -55,7 +64,13 @@ class _EvalEnvironment(dict):
     __repr__ = __str__
 
     def __contains__(self, item):
-        return item in self.parent._fields
+        if item == '_parent_' + self.parent._parent_name \
+                and self.parent._parent:
+            return True
+        if self.eval_type == 'eval':
+            return item in self.parent._get_eval()
+        else:
+            return item in self.parent._fields
 
 
 class FieldDescriptor(object):
@@ -327,7 +342,14 @@ class One2OneEvalDescriptor(Many2OneEvalDescriptor):
 
 class One2ManyEvalDescriptor(EvalDescriptor):
     def __get__(self, instance, owner):
-        return [x.id for x in getattr(instance, self.name)]
+        # Directly use _values to prevent infinite recursion with
+        # One2ManyDescriptor which could evaluate this field to decode the
+        # context
+        value = instance._values.get(self.name, [])
+        if isinstance(value, ModelList):
+            return [x.id for x in value]
+        else:
+            return value
 
 
 class Many2ManyEvalDescriptor(One2ManyEvalDescriptor):
@@ -763,21 +785,27 @@ class Model(object):
         values['id'] = self.id
         return values
 
-    def _get_on_change_value(self, skip=None):
+    def _get_on_change_values(self, skip=None, fields=None):
         values = {'id': self.id}
-        for field, definition in self._fields.iteritems():
-            if field == 'id' or (skip and field in skip):
-                continue
-            if (field not in self._values
-                    or (self.id >= 0 and field not in self._changed)):
-                continue
+        if fields:
+            definitions = ((f, self._fields[f]) for f in fields)
+        else:
+            definitions = self._fields.iteritems()
+        for field, definition in definitions:
+            if not fields:
+                if field == 'id' or (skip and field in skip):
+                    continue
+                if (self.id >= 0
+                        and (field not in self._values
+                            or field not in self._changed)):
+                    continue
             if definition['type'] == 'one2many':
-                values[field] = [x._get_on_change_value()
+                values[field] = [x._get_on_change_values()
                     for x in getattr(self, field)]
             elif (definition['type'] in ('many2one', 'reference')
                     and self._parent_name == definition['name']
                     and self._parent):
-                values[field] = self._parent._get_on_change_value(
+                values[field] = self._parent._get_on_change_values(
                     skip={self._parent_field_name})
                 if definition['type'] == 'reference':
                     values[field] = (
@@ -788,10 +816,7 @@ class Model(object):
 
     def _on_change_args(self, args):
         res = {}
-        values = self._get_on_change_value()
-        if self._parent:
-            values['_parent_%s' % self._parent_name] = \
-                _EvalEnvironment(self._parent)
+        values = _EvalEnvironment(self, 'on_change')
         for arg in args:
             scope = values
             for i in arg.split('.'):
@@ -943,7 +968,7 @@ class Wizard(object):
                 # Filter only modified values
                 data = {self.form_state:
                     dict((k, v) for k, v in
-                        self.form._get_on_change_value().iteritems()
+                        self.form._get_on_change_values().iteritems()
                         if k in self.form._values)}
             else:
                 data = {}
