@@ -779,6 +779,9 @@ class Model(object):
                     and self._parent):
                 values[field] = self._parent._get_on_change_value(
                     skip={self._parent_field_name})
+                if definition['type'] == 'reference':
+                    values[field] = (
+                        self._parent.__class__.__name__, values[field])
             else:
                 values[field] = getattr(self, '__%s_eval' % field)
         return values
