@@ -1881,8 +1881,9 @@
         get_on_change_value: function(record) {
             if ((record.group.parent_name == this.name) &&
                     record.group.parent) {
-                return record.group.parent.get_on_change_value(
-                        [record.group.child_name]);
+                return [record.group.parent.model_name,
+                    record.group.parent.get_on_change_value(
+                        [record.group.child_name])];
             }
             return Sao.field.Reference._super.get_on_change_value.call(
                     this, record);
