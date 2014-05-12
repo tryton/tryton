@@ -366,7 +366,7 @@ class Move(ModelSQL, ModelView):
         Line = pool.get('account.move.line')
         TaxLine = pool.get('account.tax.line')
         default = self._cancel_default()
-        cancel_move, = Move.copy([self], default=default)
+        cancel_move, = self.copy([self], default=default)
         lines = []
         tax_lines = []
         for line in cancel_move.lines:
