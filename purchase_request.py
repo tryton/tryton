@@ -141,10 +141,16 @@ class PurchaseRequest(ModelSQL, ModelView):
         return res
 
     @classmethod
-    def generate_requests(cls, products=None):
+    def generate_requests(cls, products=None, warehouses=None):
         """
         For each product compute the purchase request that must be
-        create today to meet product outputs.
+        created today to meet product outputs.
+
+        If products is specified it will compute the purchase requests
+        for the selected products.
+
+        If warehouses is specified it will compute the purchase request
+        necessary for the selected warehouses.
         """
         pool = Pool()
         OrderPoint = pool.get('stock.order_point')
@@ -153,10 +159,11 @@ class PurchaseRequest(ModelSQL, ModelView):
         User = pool.get('res.user')
         company = User(Transaction().user).company
 
-        # fetch warehouses:
-        warehouses = Location.search([
-                ('type', '=', 'warehouse'),
-                ])
+        if warehouses is None:
+            # fetch warehouses:
+            warehouses = Location.search([
+                    ('type', '=', 'warehouse'),
+                    ])
         warehouse_ids = [w.id for w in warehouses]
         # fetch order points
         order_points = OrderPoint.search([
@@ -483,6 +490,10 @@ class CreatePurchaseRequest(Wizard):
                 'late_supplier_moves': 'There are some late supplier moves.',
                 })
 
+    @property
+    def _requests_parameters(self):
+        return {}
+
     def do_create_(self, action):
         pool = Pool()
         PurchaseRequest = pool.get('purchase.request')
@@ -497,7 +508,7 @@ class CreatePurchaseRequest(Wizard):
                     ], order=[]):
             self.raise_user_warning('%s@%s' % (self.__name__, today),
                 'late_supplier_moves')
-        PurchaseRequest.generate_requests()
+        PurchaseRequest.generate_requests(**self._requests_parameters)
         return action, {}
 
     def transition_create_(self):
