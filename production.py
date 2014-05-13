@@ -27,12 +27,15 @@ class Production:
     __name__ = 'production'
 
     @classmethod
-    def generate_requests(cls, clean=True):
+    def generate_requests(cls, clean=True, warehouses=None):
         """
         For each product compute the production request that must be created
         today to meet product outputs.
 
         If clean is set, it will remove all previous requests.
+
+        If warehouses is specified it will compute the production requests
+        only for the selected warehouses.
         """
         pool = Pool()
         OrderPoint = pool.get('stock.order_point')
@@ -48,10 +51,11 @@ class Production:
                     ])
             cls.delete(reqs)
 
-        # fetch warehouse
-        warehouses = Location.search([
-                ('type', '=', 'warehouse'),
-                ])
+        if warehouses is None:
+            # fetch warehouse
+            warehouses = Location.search([
+                    ('type', '=', 'warehouse'),
+                    ])
         warehouse_ids = [w.id for w in warehouses]
         # fetch order points
         order_points = OrderPoint.search([
@@ -99,7 +103,7 @@ class Production:
                         req.set_moves()
                         requests.append(req)
         if requests:
-            cls.generate_requests(clean=False)
+            cls.generate_requests(False, warehouses)
         return requests
 
     @classmethod
@@ -206,10 +210,14 @@ class CreateProductionRequest(Wizard):
             ])
     create_ = StateAction('stock_supply_production.act_production_request')
 
+    @property
+    def _requests_parameters(self):
+        return {}
+
     def do_create_(self, action):
         pool = Pool()
         Production = pool.get('production')
-        Production.generate_requests()
+        Production.generate_requests(**self._requests_parameters)
         return action, {}
 
     def transition_create_(self):
