@@ -800,7 +800,8 @@ class Model(object):
                             or field not in self._changed)):
                     continue
             if definition['type'] == 'one2many':
-                values[field] = [x._get_on_change_values()
+                values[field] = [x._get_on_change_values(
+                        skip={definition.get('relation_field', '')})
                     for x in getattr(self, field)]
             elif (definition['type'] in ('many2one', 'reference')
                     and self._parent_name == definition['name']
