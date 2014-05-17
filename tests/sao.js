@@ -1451,7 +1451,7 @@
         QUnit.strictEqual(domain_inversion(domain, 'z', context), true,
             'domain_inversion(' + JSON.stringify(domain) + ', \'z\', ' +
                 JSON.stringify(context) + ')');
-        context = {y: false};
+        context = {y: null};
         QUnit.ok(compare(domain_inversion(domain, 'x', context),
                 [['x', '=', 3]]),
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\', ' +
@@ -1507,7 +1507,7 @@
                 JSON.stringify(context) + ')');
 
         domain = ['OR', ['x', '=', 3], ['y', '=', 5]];
-        context = {y: false};
+        context = {y: null};
         QUnit.ok(compare(domain_inversion(domain, 'x', context),
                 [['x', '=', 3]]),
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\', ' +
@@ -1801,6 +1801,10 @@
         [['OR', ['x', '>', 10], ['x', '<', 0]], {'x': 11}, true],
         [['OR', ['x', '>', 10], ['x', '<', 0]], {'x': -4}, true],
         [['OR', ['x', '>', 10], ['x', '<', 0]], {'x': 5}, false],
+        [['OR', ['x', '>', 0], ['x', '=', null]], {'x': 1}, true],
+        [['OR', ['x', '>', 0], ['x', '=', null]], {'x': null}, true],
+        [['OR', ['x', '>', 0], ['x', '=', null]], {'x': -1}, false],
+        [['OR', ['x', '>', 0], ['x', '=', null]], {'x': 0}, false],
         [[['x', '>', 0], ['OR', ['x', '=', 3], ['x', '=', 2]]],
             {'x': 1}, false],
         [[['x', '>', 0], ['OR', ['x', '=', 3], ['x', '=', 2]]],

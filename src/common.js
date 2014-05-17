@@ -1347,7 +1347,9 @@
                 // value in the evaluation context is deemed suffisant
                 return Boolean(context[field.split('.')[0]]);
             }
-            if ((operand == '=') && !context[field] && (boolop === this.and)) {
+            if ((operand == '=') &&
+                    (context[field] === null || context[field] === undefined) &&
+                    (boolop === this.and)) {
                 // We should consider that other domain inversion will set a
                 // correct value to this field
                 return true;
