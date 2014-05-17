@@ -1759,7 +1759,8 @@
                     i++) {
                 var record2 = group[i];
                 if (!record2.deleted() || !record2.removed())
-                    result.push(record2.get_on_change_value());
+                    result.push(record2.get_on_change_value(
+                                [this.description.relation_field || '']));
             }
             return result;
         },
