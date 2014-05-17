@@ -56,7 +56,9 @@ def eval_leaf(part, context, boolop=operator.and_):
         # In the case where the leaf concerns a m2o then having a value in the
         # evaluation context is deemed suffisant
         return bool(context.get(field.split('.')[0]))
-    if operand == '=' and not context.get(field) and boolop == operator.and_:
+    if (operand == '='
+            and context.get(field) is None
+            and boolop == operator.and_):
         # We should consider that other domain inversion will set a correct
         # value to this field
         return True
@@ -323,7 +325,7 @@ def test_and_inversion():
     domain = [['x', '=', 3], ['y', '=', 5]]
     assert domain_inversion(domain, 'z') is True
     assert domain_inversion(domain, 'z', {'x': 2, 'y': 7}) is True
-    assert domain_inversion(domain, 'x', {'y': False}) == [['x', '=', 3]]
+    assert domain_inversion(domain, 'x', {'y': None}) == [['x', '=', 3]]
 
     domain = [['x.id', '>', 5], ['y', '<', 3]]
     assert domain_inversion(domain, 'y') == [['y', '<', 3]]
@@ -343,7 +345,7 @@ def test_or_inversion():
     assert domain_inversion(domain, 'x', {'y': 4, 'z': 'abc'}) is True
 
     domain = ['OR', ['x', '=', 3], ['y', '=', 5]]
-    assert domain_inversion(domain, 'x', {'y': False}) == [['x', '=', 3]]
+    assert domain_inversion(domain, 'x', {'y': None}) == [['x', '=', 3]]
 
     domain = ['OR', ['x', '=', 3], ['y', '>', 5]]
     assert domain_inversion(domain, 'z') is True
@@ -500,6 +502,12 @@ def test_evaldomain():
     assert eval_domain(domain, {'x': 11})
     assert eval_domain(domain, {'x': -4})
     assert not eval_domain(domain, {'x': 5})
+
+    domain = ['OR', ['x', '>', 0], ['x', '=', None]]
+    assert eval_domain(domain, {'x': 1})
+    assert eval_domain(domain, {'x': None})
+    assert not eval_domain(domain, {'x': -1})
+    assert not eval_domain(domain, {'x': 0})
 
     domain = [['x', '>', 0], ['OR', ['x', '=', 3], ['x', '=', 2]]]
     assert not eval_domain(domain, {'x': 1})
