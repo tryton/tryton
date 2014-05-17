@@ -37,5 +37,6 @@ class TemplateLotType(ModelSQL):
     __name__ = 'product.template-stock.lot.type'
 
     template = fields.Many2One('product.template', 'Template', required=True,
-        select=True)
-    type = fields.Many2One('stock.lot.type', 'Type', required=True)
+        select=True, ondelete='CASCADE')
+    type = fields.Many2One('stock.lot.type', 'Type', required=True,
+        ondelete='CASCADE')
