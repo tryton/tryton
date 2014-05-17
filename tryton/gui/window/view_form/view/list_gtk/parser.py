@@ -1057,6 +1057,8 @@ class Button(object):
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
         states = record.expr_eval(self.attrs.get('states', {}))
+        if record.group.readonly or record.readonly:
+            states['readonly'] = True
         invisible = states.get('invisible', False)
         cell.set_property('visible', not invisible)
         readonly = states.get('readonly', False)
