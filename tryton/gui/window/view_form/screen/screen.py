@@ -616,7 +616,12 @@ class Screen(SignalEvent):
         if id(view) in self.tree_states_done:
             return
         parent = self.parent.id if self.parent else None
+        timestamp = self.parent._timestamp if self.parent else None
         state = self.tree_states[parent][view.children_field]
+        if state:
+            state_timestamp, expanded_nodes, selected_nodes = state
+            if timestamp != state_timestamp:
+                state = None
         if state is None:
             json_domain = self.get_tree_domain(parent)
             try:
@@ -632,9 +637,7 @@ class Screen(SignalEvent):
                 expanded_nodes = []
                 selected_nodes = []
             self.tree_states[parent][view.children_field] = (
-                expanded_nodes, selected_nodes)
-        else:
-            expanded_nodes, selected_nodes = state
+                timestamp, expanded_nodes, selected_nodes)
         view.expand_nodes(expanded_nodes)
         view.select_nodes(selected_nodes)
         self.tree_states_done.add(id(view))
@@ -650,10 +653,11 @@ class Screen(SignalEvent):
                             widget.screen.save_tree_state(store)
             elif (view.view_type == 'tree' and view.children_field):
                 parent = self.parent.id if self.parent else None
+                timestamp = self.parent._timestamp if self.parent else None
                 paths = view.get_expanded_paths()
                 selected_paths = view.get_selected_paths()
                 self.tree_states[parent][view.children_field] = (
-                    paths, selected_paths)
+                    timestamp, paths, selected_paths)
                 if store:
                     json_domain = self.get_tree_domain(parent)
                     json_paths = json.dumps(paths)
