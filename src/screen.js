@@ -699,6 +699,9 @@
             var buttons = this.current_view.get_buttons();
             selected_records.forEach(function(record) {
                 buttons = buttons.filter(function(button) {
+                    if (record.group.get_readonly() || record.readonly) {
+                        return false;
+                    }
                     var states = record.expr_eval(
                         button.attributes.states || {});
                     return !(states.invisible || states.readonly);
