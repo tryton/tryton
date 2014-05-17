@@ -1590,13 +1590,7 @@
                 value = [value];
             }
 
-            var previous_group = record._values[this.name];
-            var previous_ids = [];
-            if (!jQuery.isEmptyObject(previous_group)) {
-                previous_group.forEach(function(r) {
-                    previous_ids.push(r.id);
-                });
-            }
+            var previous_ids = this.get_eval(record);
             this._set_value(record, value);
             if (!Sao.common.compare(previous_ids.sort(), value.sort())) {
                 record._changed[this.name] = true;
