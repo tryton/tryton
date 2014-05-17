@@ -346,11 +346,22 @@ class FieldTranslate(Field):
             model = IrModel.__table__()
             join = self._get_translation_join(Model, name,
                 translation, model, table)
-            tables[key] = {
-                None: (join.right, join.condition),
-                }
+            if join.left == table:
+                tables[key] = {
+                    None: (join.right, join.condition),
+                    }
+            else:
+                tables[key] = {
+                    None: (join.left.right, join.left.condition),
+                    'translation': {
+                        None: (join.right, join.condition),
+                        },
+                    }
         else:
-            translation, _ = tables[key][None]
+            if 'translation' not in tables[key]:
+                translation, _ = tables[key][None]
+            else:
+                translation, _ = tables[key]['translation'][None]
 
         return [Coalesce(NullIf(translation.value, ''),
                 self.sql_column(table))]
