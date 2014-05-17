@@ -631,7 +631,7 @@ class O2MField(Field):
         if isinstance(value, (int, long)):
             value = [value]
 
-        previous_ids = [r.id for r in record.value.get(self.name) or []]
+        previous_ids = self.get_eval(record)
         self._set_value(record, value)
         # The order of the ids is not significant
         if set(previous_ids) != set(value):
