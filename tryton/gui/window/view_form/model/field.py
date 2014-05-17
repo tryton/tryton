@@ -564,7 +564,8 @@ class O2MField(Field):
         for record2 in record.value[self.name]:
             if not (record2.deleted or record2.removed):
                 result.append(
-                    record2.get_on_change_value())
+                    record2.get_on_change_value(
+                        skip={self.attrs.get('relation_field', '')}))
         return result
 
     def _set_value(self, record, value, default=False):
