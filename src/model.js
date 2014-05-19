@@ -685,6 +685,7 @@
                 });
                 result[arg] = scope;
             });
+            result.id = this.id;
             return result;
         },
         on_change: function(fieldname, attr) {

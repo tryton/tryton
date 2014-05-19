@@ -316,6 +316,7 @@
             var change_with = this.attributes.selection_change_with || [];
             var key = [];
             var args = record._get_on_change_args(change_with);
+            delete args.id;
             for (var k in args) {
                 key.push([k, args[k]]);
             }
