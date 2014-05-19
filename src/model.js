@@ -389,7 +389,6 @@
             return this.validate(fields);
         },
         load: function(name) {
-            var self = this;
             var fname;
             var prm;
             if ((this.id < 0) || (name in this._loaded)) {
@@ -438,8 +437,8 @@
                 fnames = Object.keys(this.model.fields);
             }
             fnames = fnames.filter(function(e, i, a) {
-                return !(e in self._loaded);
-            });
+                return !(e in this._loaded);
+            }.bind(this));
             var fnames_to_fetch = fnames.slice();
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             for (var i in fnames) {
