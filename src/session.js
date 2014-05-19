@@ -106,7 +106,7 @@
                 'params': [true, {}]
             };
             // Call with custom session to not send context
-            var session = jQuery.extend({}, session);
+            var session = jQuery.extend({}, this);
             session.context = {};
             var prm = Sao.rpc(args, session);
             return prm.then(function(context) {
