@@ -454,7 +454,8 @@
 
             var context = jQuery.extend({}, this.get_context());
             if (loading == 'eager') {
-                var limit = parseInt(limit / fnames_to_fetch.length, 10);
+                var limit = parseInt(Sao.config.limit / fnames_to_fetch.length,
+                        10);
 
                 var filter_group = function(record) {
                     return !(name in record._loaded) && (record.id >= 0);
