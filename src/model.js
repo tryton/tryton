@@ -468,7 +468,7 @@
                     if (~idx) {
                         var length = group.length;
                         var n = 1;
-                        while (Object.keys(id2record).length &&
+                        while (Object.keys(id2record).length < limit &&
                             ((idx - n >= 0) || (idx + n < length)) &&
                             (n < 2 * limit)) {
                                 var record;
