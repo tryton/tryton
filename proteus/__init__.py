@@ -219,7 +219,7 @@ class One2ManyDescriptor(FieldDescriptor):
         if not isinstance(value, ModelList):
             value = ModelList((relation(id)
                 for id in value or []), instance, self.name,
-                self.definition.get('relation_field'))
+                self.definition.get('relation_field', ''))
             instance._values[self.name] = value
         return value
 
