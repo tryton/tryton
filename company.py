@@ -7,6 +7,7 @@ from trytond.report import Report
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.backend.database import CursorInterface
 
 try:
     import pytz
@@ -14,6 +15,8 @@ try:
 except ImportError:
     TIMEZONES = []
 TIMEZONES += [(None, '')]
+
+CursorInterface.cache_keys.update({'company', 'employee'})
 
 __all__ = ['Company', 'Employee', 'UserEmployee', 'User', 'Property',
     'Sequence', 'SequenceStrict', 'Date', 'CompanyConfigStart',
