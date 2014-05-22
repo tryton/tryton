@@ -13,9 +13,9 @@ class InvoiceLineStockMove(ModelSQL):
     __name__ = 'account.invoice.line-stock.move'
 
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-        required=True, select=True)
+        required=True, select=True, ondelete='CASCADE')
     stock_move = fields.Many2One('stock.move', 'Stock Move', required=True,
-        select=True)
+        select=True, ondelete='CASCADE')
 
 
 class InvoiceLine:
