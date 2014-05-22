@@ -7,6 +7,7 @@ import gobject
 import tryton.common as common
 from tryton.common.domain_parser import quote
 from tryton.common.placeholder_entry import PlaceholderEntry
+from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.translate import date_format
 from tryton.config import TRYTON_ICON
 from tryton.pyson import PYSONDecoder
@@ -42,7 +43,7 @@ class Selection(gtk.ScrolledWindow):
 
     def __init__(self, selections):
         super(Selection, self).__init__()
-        self.treeview = gtk.TreeView()
+        self.treeview = TreeViewControl()
         model = gtk.ListStore(gobject.TYPE_STRING)
         for selection in selections:
             model.append((selection,))

@@ -5,12 +5,7 @@ import gobject
 
 from .interface import WidgetInterface
 from tryton.common.selection import SelectionMixin
-
-MOVEMENT_KEYS = {gtk.keysyms.Up, gtk.keysyms.Down, gtk.keysyms.space,
-    gtk.keysyms.Left, gtk.keysyms.KP_Left,
-    gtk.keysyms.Right, gtk.keysyms.KP_Right,
-    gtk.keysyms.Home, gtk.keysyms.KP_Home,
-    gtk.keysyms.End, gtk.keysyms.KP_End}
+from tryton.common.treeviewcontrol import TreeViewControl
 
 
 class MultiSelection(WidgetInterface, SelectionMixin):
@@ -27,12 +22,10 @@ class MultiSelection(WidgetInterface, SelectionMixin):
         viewport.add(scroll)
 
         self.model = gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING)
-        self.tree = gtk.TreeView()
+        self.tree = TreeViewControl()
         self.tree.set_model(self.model)
         self.tree.set_search_column(1)
         self.tree.connect('focus-out-event', lambda *a: self._focus_out())
-        self.tree.connect('button-press-event', self.__button_press)
-        self.tree.connect('key_press_event', self.__key_press)
         selection = self.tree.get_selection()
         selection.set_mode(gtk.SELECTION_MULTIPLE)
         selection.connect('changed', self.send_modified)
@@ -89,11 +82,3 @@ class MultiSelection(WidgetInterface, SelectionMixin):
             if (element not in group.record_removed
                     and element not in group.record_deleted):
                 selection.select_path(id2path[element.id])
-
-    def __button_press(self, treeview, event):
-        if event.button == 1:
-            event.state |= gtk.gdk.CONTROL_MASK
-
-    def __key_press(self, treeview, event):
-        if event.keyval in MOVEMENT_KEYS:
-            event.state |= gtk.gdk.CONTROL_MASK
