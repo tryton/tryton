@@ -171,6 +171,8 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ('processing', 'succeeded'),
                 ('processing', 'failed'),
                 ('approved', 'draft'),
+                ('succeeded', 'failed'),
+                ('failed', 'succeeded'),
                 ))
         cls._buttons.update({
                 'draft': {
@@ -182,11 +184,13 @@ class Payment(Workflow, ModelSQL, ModelView):
                     'icon': 'tryton-go-next',
                     },
                 'succeed': {
-                    'invisible': Eval('state') != 'processing',
+                    'invisible': ~Eval('state').in_(
+                        ['processing', 'failed']),
                     'icon': 'tryton-ok',
                     },
                 'fail': {
-                    'invisible': Eval('state') != 'processing',
+                    'invisible': ~Eval('state').in_(
+                        ['processing', 'succeeded']),
                     'icon': 'tryton-cancel',
                     },
                 })
