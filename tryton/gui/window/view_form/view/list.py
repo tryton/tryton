@@ -91,7 +91,7 @@ class AdaptModelGroup(gtk.GenericTreeModel):
             group.add(record)
             if not record.parent_name:
                 record.modified_fields.setdefault(prev_group.parent_name)
-                record.value[prev_group.parent_name] = False
+                record.value[prev_group.parent_name] = None
             else:
                 record.modified_fields.setdefault(record.parent_name)
         group.move(record, pos)
