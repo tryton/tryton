@@ -8,7 +8,7 @@ Prerequisites
 =============
 
     * Python 2.7 or later (http://www.python.org/)
-    * lxml 2.0 or later (http://codespeak.net/lxml/)
+    * lxml 2.0 or later (http://lxml.de/)
     * relatorio 0.2.0 or later (http://code.google.com/p/python-relatorio/)
     * python-dateutil (http://labix.org/python-dateutil)
     * polib (https://bitbucket.org/izi/polib/wiki/Home)
