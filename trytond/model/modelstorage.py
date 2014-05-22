@@ -1137,7 +1137,7 @@ class ModelStorage(Model):
         else:
             self._ids = [id]
 
-        self._cursor_cache = self._cursor.get_cache(self._context)
+        self._cursor_cache = self._cursor.get_cache()
 
         if _local_cache is not None:
             self._local_cache = _local_cache
@@ -1300,7 +1300,7 @@ class ModelStorage(Model):
                     if data['id'] == self.id and fname == name:
                         value = fvalue
                     if (field._type not in ('many2one', 'one2one', 'one2many',
-                                'many2many', 'reference')
+                                'many2many', 'reference', 'binary')
                             and not isinstance(field, fields.Function)):
                         continue
                     if data['id'] not in self._local_cache:

@@ -1053,7 +1053,7 @@ class ModelSQL(ModelStorage):
         cursor.execute(*select)
 
         rows = cursor.dictfetchmany(cursor.IN_MAX)
-        cache = cursor.get_cache(transaction.context)
+        cache = cursor.get_cache()
         if cls.__name__ not in cache:
             cache[cls.__name__] = LRUDict(RECORD_CACHE_SIZE)
         delete_records = transaction.delete_records.setdefault(cls.__name__,

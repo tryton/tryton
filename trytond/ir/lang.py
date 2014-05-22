@@ -9,10 +9,13 @@ from ..tools import safe_eval, datetime_strftime
 from ..transaction import Transaction
 from ..pool import Pool
 from .time_locale import TIME_LOCALE
+from ..backend.database import CursorInterface
 
 warnings.filterwarnings('ignore', "", ImportWarning)
 from locale import CHAR_MAX
 warnings.resetwarnings()
+
+CursorInterface.cache_keys.add('translate_name')
 
 __all__ = [
     'Lang',

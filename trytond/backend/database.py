@@ -105,29 +105,19 @@ class CursorInterface(object):
     Define generic interface for database cursor
     '''
     IN_MAX = 1000
+    cache_keys = {'language', 'fuzzy_translation', '_datetime'}
 
     def __init__(self):
         self.cache = {}
 
-    def get_cache(self, context=None):
-        '''
-        Return cache for the context
-
-        :param context: the context
-        :return: the cache dictionary
-        '''
+    def get_cache(self):
         from trytond.cache import LRUDict
         from trytond.transaction import Transaction
         user = Transaction().user
-        if context is None:
-            context = {}
-        cache_ctx = context.copy()
-        for i in ('_timestamp', '_delete', '_create_records',
-                '_delete_records'):
-            if i in cache_ctx:
-                del cache_ctx[i]
-        return self.cache.setdefault((user, repr(cache_ctx)),
-            LRUDict(MODEL_CACHE_SIZE))
+        context = Transaction().context
+        keys = tuple(((key, context[key]) for key in sorted(self.cache_keys)
+                if key in context))
+        return self.cache.setdefault((user, keys), LRUDict(MODEL_CACHE_SIZE))
 
     def execute(self, sql, params=None):
         '''
