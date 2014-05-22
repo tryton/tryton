@@ -472,13 +472,13 @@ class ParserForm(ParserInterface):
                 hpaned = gtk.HPaned()
                 container.wid_add(hpaned, colspan=int(attrs.get('colspan', 4)),
                         yexpand=True, yfill=True)
-                (widget, widgets, state_widgets, spam, notebook_list2,
+                (widget, widgets, state_widgets2, spam, notebook_list2,
                     cursor_widget2) = self.parse(model_name, node, fields,
                         paned=hpaned, tooltips=tooltips)
                 if not cursor_widget:
                     cursor_widget = cursor_widget2
                 notebook_list.extend(notebook_list2)
-                state_widgets += state_widgets
+                state_widgets += state_widgets2
                 for widget_name, widgets in widgets.iteritems():
                     dict_widget.setdefault(widget_name, [])
                     dict_widget[widget_name].extend(widgets)
@@ -488,7 +488,7 @@ class ParserForm(ParserInterface):
                 vpaned = gtk.VPaned()
                 container.wid_add(vpaned, colspan=int(attrs.get('colspan', 4)),
                         yexpand=True, yfill=True)
-                (widget, widgets, state_widgets2, spam, notebook_list,
+                (widget, widgets, state_widgets2, spam, notebook_list2,
                     cursor_widget2) = self.parse(model_name, node, fields,
                         paned=vpaned, tooltips=tooltips)
                 if not cursor_widget:
