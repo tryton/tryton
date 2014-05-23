@@ -25,9 +25,11 @@ class FiscalYear(ModelSQL, ModelView):
     name = fields.Char('Name', size=None, required=True, depends=DEPENDS)
     code = fields.Char('Code', size=None)
     start_date = fields.Date('Starting Date', required=True, states=STATES,
-            depends=DEPENDS)
+        domain=[('start_date', '<=', Eval('end_date', None))],
+        depends=DEPENDS + ['end_date'])
     end_date = fields.Date('Ending Date', required=True, states=STATES,
-            depends=DEPENDS)
+        domain=[('end_date', '>=', Eval('start_date', None))],
+        depends=DEPENDS + ['start_date'])
     periods = fields.One2Many('account.period', 'fiscalyear', 'Periods',
             states=STATES, depends=DEPENDS)
     state = fields.Selection([

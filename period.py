@@ -22,9 +22,11 @@ class Period(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     code = fields.Char('Code')
     start_date = fields.Date('Starting Date', required=True, states=_STATES,
-        depends=_DEPENDS, select=True)
+        domain=[('start_date', '<=', Eval('end_date', None))],
+        depends=_DEPENDS + ['end_date'], select=True)
     end_date = fields.Date('Ending Date', required=True, states=_STATES,
-        depends=_DEPENDS, select=True)
+        domain=[('end_date', '>=', Eval('start_date', None))],
+        depends=_DEPENDS + ['start_date'], select=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         required=True, states=_STATES, depends=_DEPENDS, select=True)
     state = fields.Selection([
