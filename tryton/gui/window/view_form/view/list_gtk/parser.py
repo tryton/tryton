@@ -85,6 +85,60 @@ def realized(func):
     return wrapper
 
 
+class CellCache(list):
+
+    methods = ('set_active', 'set_sensitive', 'set_property')
+
+    def apply(self, cell):
+        for method, args, kwargs in self:
+            getattr(cell, method)(*args, **kwargs)
+
+    def decorate(self, cell):
+        def decorate(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                self.append((func.__name__, args, kwargs))
+                return func(*args, **kwargs)
+            wrapper.previous = func
+            return wrapper
+
+        for method in self.methods:
+            if getattr(cell, method, None):
+                setattr(cell, method, decorate(getattr(cell, method)))
+        cell.decorated = True
+        return cell
+
+    def undecorate(self, cell):
+        for method in self.methods:
+            if getattr(cell, method, None):
+                setattr(cell, method, getattr(cell, method).previous)
+        del cell.decorated
+
+    @classmethod
+    def cache(cls, func):
+        @wraps(func)
+        def wrapper(self, column, cell, store, iter):
+            if not hasattr(self, 'display_counters'):
+                self.display_counters = {}
+            if not hasattr(self, 'cell_caches'):
+                self.cell_caches = {}
+            record = store.get_value(iter, 0)
+            counter = self.treeview.display_counter
+            if (self.display_counters.get(record.id) != counter):
+                if getattr(cell, 'decorated', None):
+                    func(self, column, cell, store, iter)
+                else:
+                    cache = cls()
+                    cache.decorate(cell)
+                    func(self, column, cell, store, iter)
+                    cache.undecorate(cell)
+                    self.cell_caches[record.id] = cache
+                    self.display_counters[record.id] = counter
+            else:
+                self.cell_caches[record.id].apply(cell)
+        return wrapper
+
+
 class ParserTree(ParserInterface):
 
     def __init__(self, parent=None, attrs=None, screen=None,
@@ -104,6 +158,7 @@ class ParserTree(ParserInterface):
         else:
             treeview = TreeView()
             treeview.cells = {}
+        treeview.display_counter = 0
         treeview.sequence = attrs.get('sequence', False)
         treeview.colors = attrs.get('colors', '"black"')
         treeview.keyword_open = attrs.get('keyword_open', False)
@@ -316,6 +371,7 @@ class Affix(object):
         self.treeview = treeview
 
     @realized
+    @CellCache.cache
     def setter(self, column, cell, store, iter_):
         record = store.get_value(iter_, 0)
         field = record[self.field_name]
@@ -366,6 +422,7 @@ class Char(object):
         self.treeview = treeview
 
     @realized
+    @CellCache.cache
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
         text = self.get_textual_value(record)
@@ -510,6 +567,7 @@ class Boolean(Char):
 class URL(Char):
 
     @realized
+    @CellCache.cache
     def setter(self, column, cell, store, iter):
         super(URL, self).setter(column, cell, store, iter)
         record = store.get_value(iter, 0)
@@ -616,6 +674,7 @@ class Binary(Char):
             callback()
 
     @realized
+    @CellCache.cache
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
         field = record[self.field_name]
@@ -1019,6 +1078,7 @@ class ProgressBar(object):
         self.treeview = treeview
 
     @realized
+    @CellCache.cache
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
         field = record[self.field_name]
@@ -1054,6 +1114,7 @@ class Button(object):
         self.renderer.connect('clicked', self.button_clicked)
 
     @realized
+    @CellCache.cache
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
         states = record.expr_eval(self.attrs.get('states', {}))

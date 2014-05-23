@@ -128,6 +128,7 @@ class EditableTreeView(TreeView):
         path, column = self.get_cursor()
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
+        self.display_counter += 1  # Force a display
 
         leaving = False
         if event.keyval == gtk.keysyms.Right:
