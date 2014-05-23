@@ -1985,8 +1985,7 @@
                 }));
             });
         },
-        display: function(record, field) {
-            Sao.View.Form.Selection._super.display.call(this, record, field);
+        display_update_selection: function(record, field) {
             this.update_selection(record, field, function() {
                 if (!field) {
                     this.el.val('');
@@ -2020,6 +2019,10 @@
                     this.el.val('' + value);
                 }.bind(this));
             }.bind(this));
+        },
+        display: function(record, field) {
+            Sao.View.Form.Selection._super.display.call(this, record, field);
+            this.display_update_selection(record, field);
         },
         value_get: function() {
             var val = this.el.val();
@@ -3266,55 +3269,15 @@
         }
     });
 
-    Sao.View.Form.MultiSelection = Sao.class_(Sao.View.Form.Widget, {
+    Sao.View.Form.MultiSelection = Sao.class_(Sao.View.Form.Selection, {
         class_: 'form-multiselection',
         init: function(field_name, model, attributes) {
+            this.nullable_widget = false;
             Sao.View.Form.MultiSelection._super.init.call(this, field_name,
                 model, attributes);
-            this.el = jQuery('<div/>', {
-                'class': this.class_
-            });
-            var label = jQuery('<span/>', {
-                'class': this.class_ + '-string',
-                'text': attributes.string
-            });
-            this.el.append(label);
-            this.select = jQuery('<select/>', {
-                'class': this.class_ + '-select',
-                'multiple': true
-            });
-            this.select.change(this.focus_out.bind(this));
-            this.el.append(this.select);
-            Sao.common.selection_mixin.init.call(this);
-            this.nullable_widget = false;
-            this.init_selection();
+            this.el.prop('multiple', true);
         },
-        _get_color_el: function() {
-            return this.select;
-        },
-        init_selection: function(key) {
-            Sao.common.selection_mixin.init_selection.call(this, key,
-                this.set_selection.bind(this));
-        },
-        update_selection: function(record, field, callbak) {
-            Sao.common.selection_mixin.update_selection.call(this, record,
-                field, function(selection) {
-                    this.set_selection(selection);
-                    if (callbak) {
-                        callbak();
-                    }
-                }.bind(this));
-        },
-        set_selection: function(selection) {
-            this.select.empty();
-            selection.forEach(function(e) {
-                this.select.append(jQuery('<option/>', {
-                    'value': e[0],
-                    'text': e[1]
-                }));
-            }.bind(this));
-        },
-        display: function(record, field) {
+        display_update_selection: function(record, field) {
             var i, len, element;
             this.update_selection(record, field, function() {
                 if (!field) {
@@ -3329,13 +3292,11 @@
                             value.push(element.id);
                     }
                 }
-                this.select.val(value);
+                this.el.val(value);
             }.bind(this));
-            Sao.View.Form.MultiSelection._super.display.call(this, record,
-                field);
         },
         set_value: function(record, field) {
-            var value = this.select.val();
+            var value = this.el.val();
             if (value) {
                 value = value.map(function(e) { return parseInt(e, 10); });
             } else {

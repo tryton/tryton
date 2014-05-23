@@ -256,7 +256,9 @@
         this._last_domain = null;
         this._values2selection = {};
         this._domain_cache = {};
-        this.nullable_widget = true;
+        if (this.nullable_widget === undefined) {
+            this.nullable_widget = true;
+        }
     };
     Sao.common.selection_mixin.init_selection = function(key, callback) {
         if (!key) {
