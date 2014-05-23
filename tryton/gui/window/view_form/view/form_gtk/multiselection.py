@@ -28,7 +28,7 @@ class MultiSelection(WidgetInterface, SelectionMixin):
         self.tree.connect('focus-out-event', lambda *a: self._focus_out())
         selection = self.tree.get_selection()
         selection.set_mode(gtk.SELECTION_MULTIPLE)
-        selection.connect('changed', self.send_modified)
+        selection.connect('changed', self.changed)
         scroll.add(self.tree)
         name_column = gtk.TreeViewColumn(attrs.get('string', ''))
         name_cell = gtk.CellRendererText()
@@ -54,9 +54,12 @@ class MultiSelection(WidgetInterface, SelectionMixin):
             return value != group
         return False
 
-    def send_modified(self, *args):
-        if self.record:
-            self.record.signal('record-modified')
+    def changed(self, selection):
+        def focus_out():
+            if self.widget.props.window:
+                self._focus_out()
+        # Must be deferred because it triggers a display of the form
+        gobject.idle_add(focus_out)
 
     def get_value(self):
         model, paths = self.tree.get_selection().get_selected_rows()
@@ -66,19 +69,23 @@ class MultiSelection(WidgetInterface, SelectionMixin):
         field.set_client(record, self.get_value())
 
     def display(self, record, field):
-        self.update_selection(record, field)
-        super(MultiSelection, self).display(record, field)
-        self.model.clear()
-        if field is None:
-            return
-        id2path = {}
-        for idx, (value, name) in enumerate(self.selection):
-            self.model.append((value, name))
-            id2path[value] = idx
         selection = self.tree.get_selection()
-        selection.unselect_all()
-        group = field.get_client(record)
-        for element in group:
-            if (element not in group.record_removed
-                    and element not in group.record_deleted):
-                selection.select_path(id2path[element.id])
+        selection.handler_block_by_func(self.changed)
+        try:
+            self.update_selection(record, field)
+            super(MultiSelection, self).display(record, field)
+            self.model.clear()
+            if field is None:
+                return
+            id2path = {}
+            for idx, (value, name) in enumerate(self.selection):
+                self.model.append((value, name))
+                id2path[value] = idx
+            selection.unselect_all()
+            group = field.get_client(record)
+            for element in group:
+                if (element not in group.record_removed
+                        and element not in group.record_deleted):
+                    selection.select_path(id2path[element.id])
+        finally:
+            selection.handler_unblock_by_func(self.changed)
