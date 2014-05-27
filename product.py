@@ -106,7 +106,7 @@ class Product(object, StockMixin):
         cost_values = {}
         context = {}
         trans_context = Transaction().context
-        if 'stock_date_end' in context:
+        if trans_context.get('stock_date_end'):
             context['_datetime'] = trans_context['stock_date_end']
         with Transaction().set_context(context):
             for product in products:
