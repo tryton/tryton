@@ -162,15 +162,12 @@ class Product(object, StockMixin):
             grouping=grouping, grouping_filter=grouping_filter)
 
         if wh_to_add:
-            if product_ids is None:
-                product_ids = set((p for s, p in quantities))
             for wh, storage in wh_to_add.iteritems():
-                for product in product_ids:
-                    if (storage, product) in quantities:
-                        quantities[(wh, product)] = quantities[
-                            (storage, product)]
+                for key in quantities:
+                    if key[0] == storage:
+                        quantities[(wh,) + key[1:]] = quantities[key]
                         if storage in storage_to_remove:
-                            del quantities[(storage, product)]
+                            del quantities[key]
         return quantities
 
 
