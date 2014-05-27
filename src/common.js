@@ -1739,22 +1739,27 @@
         name2id: {},
         loaded_icons: {},
         tryton_icons: [],
+        register_prm: jQuery.when(),
         load_icons: function(refresh) {
             refresh = refresh || false;
             if (!refresh) {
-                this.name2id = {};
                 for (var icon_name in this.load_icons) {
                     if (!this.load_icons.hasOwnProperty(icon_name)) {
                         continue;
                     }
                     window.URL.revokeObjectURL(this.load_icons[icon_name]);
                 }
-                this.loaded_icons = {};
             }
-            this.tryton_icons = [];
 
             var icon_model = new Sao.Model('ir.ui.icon');
-            return icon_model.execute('list_icons', []).then(function(icons) {
+            return icon_model.execute('list_icons', [], {})
+            .then(function(icons) {
+                if (!refresh) {
+                    this.name2id = {};
+                    this.loaded_icons = {};
+                }
+                this.tryton_icons = [];
+
                 var icon_id, icon_name;
                 for (var i=0, len=icons.length; i < len; i++) {
                     icon_id = icons[i][0];
@@ -1774,6 +1779,14 @@
                     ~Sao.common.LOCAL_ICONS.indexOf(icon_name)) {
                 return jQuery.when(this.get_icon_url(icon_name));
             }
+            if (this.register_prm.state() == 'pending') {
+                var waiting_prm = jQuery.Deferred();
+                this.register_prm.then(function() {
+                    this.register_icon(icon_name).then(
+                        waiting_prm.resolve, waiting_prm.reject);
+                }.bind(this));
+                return waiting_prm;
+            }
             var loaded_prm;
             if (!(icon_name in this.name2id)) {
                 loaded_prm = this.load_icons(true);
@@ -1782,7 +1795,7 @@
             }
 
             var icon_model = new Sao.Model('ir.ui.icon');
-            return loaded_prm.then(function () {
+            this.register_prm = loaded_prm.then(function () {
                 var find_array = function(array) {
                     var idx, l;
                     for (idx=0, l=this.tryton_icons.length; idx < l; idx++) {
@@ -1803,7 +1816,7 @@
                 });
 
                 var read_prm = icon_model.execute('read',
-                    [ids, ['name', 'icon']]);
+                    [ids, ['name', 'icon']], {});
                 return read_prm.then(function(icons) {
                     icons.forEach(function(icon) {
                         var blob = new Blob([icon.icon],
@@ -1818,6 +1831,7 @@
                     return this.get_icon_url(icon_name);
                 }.bind(this));
             }.bind(this));
+            return this.register_prm;
         },
         get_icon_url: function(icon_name) {
             if (icon_name in this.loaded_icons) {
