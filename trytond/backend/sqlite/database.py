@@ -22,7 +22,8 @@ except ImportError:
     from sqlite3 import IntegrityError as DatabaseIntegrityError
     from sqlite3 import OperationalError as DatabaseOperationalError
 from sql import Flavor, Table
-from sql.functions import Function, Extract, Position, Now, Substring, Overlay
+from sql.functions import (Function, Extract, Position, Now, Substring,
+    Overlay, CharLength)
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError',
     'Cursor']
@@ -133,6 +134,11 @@ class SQLiteOverlay(Function):
         return string[:from_ - 1] + placing_string + string[from_ - 1 + for_:]
 
 
+class SQLiteCharLength(Function):
+    __slots__ = ()
+    _function = 'LENGTH'
+
+
 def sign(value):
     return math.copysign(1, value)
 
@@ -142,6 +148,7 @@ MAPPING = {
     Position: SQLitePosition,
     Substring: SQLiteSubstring,
     Overlay: SQLiteOverlay,
+    CharLength: SQLiteCharLength,
     }
 
 
