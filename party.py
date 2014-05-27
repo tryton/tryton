@@ -1,6 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import logging
+
+from sql.functions import CharLength
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Bool, Eval
@@ -38,7 +41,6 @@ class Party(ModelSQL, ModelView):
             'readonly': Eval('code_readonly', True),
             },
         depends=['code_readonly'])
-    code_length = fields.Integer('Code Length', select=True, readonly=True)
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
     lang = fields.Many2One("ir.lang", 'Language', states=STATES,
@@ -85,7 +87,7 @@ class Party(ModelSQL, ModelView):
     @staticmethod
     def order_code(tables):
         table, _ = tables[None]
-        return [table.code_length, table.code]
+        return [CharLength(table.code), table.code]
 
     @staticmethod
     def default_active():
@@ -158,20 +160,8 @@ class Party(ModelSQL, ModelView):
             if not values.get('code'):
                 config = Configuration(1)
                 values['code'] = Sequence.get_id(config.party_sequence.id)
-            values['code_length'] = len(values['code'])
             values.setdefault('addresses', None)
         return super(Party, cls).create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        actions = iter(args)
-        args = []
-        for parties, values in zip(actions, actions):
-            if values.get('code'):
-                values = values.copy()
-                values['code_length'] = len(values['code'])
-            args.extend((parties, values))
-        super(Party, cls).write(*args)
 
     @classmethod
     def copy(cls, parties, default=None):
