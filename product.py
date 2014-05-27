@@ -454,14 +454,12 @@ class Product(object, StockMixin):
             res[key] = Uom.round(quantity, uom.rounding)
 
         if wh_to_add:
-            if product_ids is None:
-                product_ids = set((p for s, p in res))
             for wh, storage in wh_to_add.iteritems():
-                for product in product_ids:
-                    if (storage, product) in res:
-                        res[(wh, product)] = res[(storage, product)]
+                for key in res:
+                    if key[0] == storage:
+                        res[(wh,) + key[1:]] = res[key]
                         if storage in storage_to_remove:
-                            del res[(storage, product)]
+                            del res[key]
 
         return res
 
