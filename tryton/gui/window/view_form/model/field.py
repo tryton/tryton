@@ -155,7 +155,7 @@ class Field(object):
 
     def set_on_change(self, record, value):
         record.modified_fields.setdefault(self.name)
-        return self.set(record, value)
+        self.set(record, value)
 
     def state_set(self, record, states=('readonly', 'required', 'invisible')):
         state_changes = record.expr_eval(self.attrs.get('states', {}))
@@ -398,14 +398,12 @@ class M2OField(Field):
 
     def set(self, record, value):
         rec_name = record.value.get(self.name + '.rec_name') or ''
-        if value is False:
-            value = None
         if not rec_name and value >= 0:
             try:
                 result, = RPCExecute('model', self.attrs['relation'], 'read',
                     [value], ['rec_name'])
             except RPCException:
-                return False
+                return
             rec_name = result['rec_name'] or ''
         record.value[self.name + '.rec_name'] = rec_name
         record.value[self.name] = value
@@ -654,7 +652,7 @@ class O2MField(Field):
             self._set_value(record, value)
             record.modified_fields.setdefault(self.name)
             record.signal('record-modified')
-            return True
+            return
 
         if value and (value.get('add') or value.get('update')):
             context = self.context_get(record)
@@ -668,7 +666,7 @@ class O2MField(Field):
                     fields = RPCExecute('model', self.attrs['relation'],
                         'fields_get', list(field_names), context=context)
                 except RPCException:
-                    return False
+                    return
             else:
                 fields = {}
 
@@ -698,7 +696,6 @@ class O2MField(Field):
                 record2 = record.value[self.name].get(vals['id'])
                 if record2 is not None:
                     record2.set_on_change(vals)
-        return True
 
     def validation_domains(self, record):
         screen_domain, attr_domain = self.domains_get(record)
