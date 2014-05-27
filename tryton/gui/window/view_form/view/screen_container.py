@@ -58,6 +58,7 @@ class Selection(gtk.ScrolledWindow):
         self.treeview.set_headers_visible(False)
         self.add(self.treeview)
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        self.set_shadow_type(gtk.SHADOW_ETCHED_IN)
 
     def get_value(self):
         values = []
@@ -450,8 +451,9 @@ class ScreenContainer(object):
             self.search_table.fields = []
             for i, field in enumerate(fields):
                 label = gtk.Label(field['string'])
-                label.set_alignment(0.0, 0.5)
-                self.search_table.attach(label, 0, 1, i, i + 1, yoptions=False)
+                label.set_alignment(0.0, 0.0)
+                self.search_table.attach(label, 0, 1, i, i + 1,
+                    yoptions=gtk.FILL)
                 yoptions = False
                 if field['type'] == 'boolean':
                     if hasattr(gtk, 'ComboBoxText'):
