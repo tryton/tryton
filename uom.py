@@ -34,7 +34,7 @@ class Uom(ModelSQL, ModelView):
         translate=True, depends=DEPENDS)
     symbol = fields.Char('Symbol', size=10, required=True, states=STATES,
         translate=True, depends=DEPENDS)
-    category = fields.Many2One('product.uom.category', 'UOM Category',
+    category = fields.Many2One('product.uom.category', 'Category',
         required=True, ondelete='RESTRICT', states=STATES, depends=DEPENDS)
     rate = fields.Float('Rate', digits=(12, 12), required=True,
         states=STATES, depends=DEPENDS,
