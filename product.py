@@ -240,6 +240,16 @@ class ProductSupplier(ModelSQL, ModelView, MatchMixin):
                 changes['currency'], = row
         return changes
 
+    def get_rec_name(self, name):
+        return '%s @ %s' % (self.product.rec_name, self.party.rec_name)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('product',) + tuple(clause[1:]),
+            ('party',) + tuple(clause[1:]),
+            ]
+
     @property
     def uom(self):
         return self.product.purchase_uom
