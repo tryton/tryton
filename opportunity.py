@@ -63,7 +63,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits'], help='Estimated revenue amount')
+        STATES=_STATES_STOP, depends=_DEPENDS_STOP + ['currency_digits'],
+        help='Estimated revenue amount')
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
             'required': Eval('state') == 'converted',
