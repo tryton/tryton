@@ -1,3 +1,4 @@
+* Always succeed assignation from lost and found on internal shipments
 * Remove return shipment out wizard
 
 Version 3.2.0 - 2014-04-21

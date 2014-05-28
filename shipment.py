@@ -2008,8 +2008,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @ModelView.button
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
-        if Move.assign_try([m for s in shipments
-                    for m in s.moves]):
+        to_assign = [m for s in shipments for m in s.moves
+            if m.from_location.type != 'lost_found']
+        if not to_assign or Move.assign_try(to_assign):
             cls.assign(shipments)
             return True
         else:
