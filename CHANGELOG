@@ -1,3 +1,4 @@
+* Add active field to views of action window
 * Make global cache depends on explicit context keys
 * Don't add to global cache Binary fields
 * Add MachMixin
