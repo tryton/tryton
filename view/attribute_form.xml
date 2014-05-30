@@ -11,5 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="digits"/>
     <field name="digits"/>
     <separator name="selection" colspan="4"/>
+    <label name="selection_sorted"/>
+    <field name="selection_sorted"/>
     <field name="selection" colspan="4"/>
 </form>
