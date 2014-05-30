@@ -1,6 +1,6 @@
 * Make global cache depends on explicit context keys
 * Don't add to global cache Binary fields
-* Add MachMixin
+* Add MatchMixin
 * Remove context, current_date and time from record rule evaluation
 
 Version 3.2.0 - 2014-04-21
