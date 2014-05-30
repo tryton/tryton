@@ -520,6 +520,10 @@ Class attributes are:
     couple of key and label when the type is `selection`.
     The format is a key/label separated by ":" per line.
 
+.. attribute:: DictSchemaMixin.selection_sorted
+
+    If the :attr:`selection` must be sorted on label by the client.
+
 .. attribute:: DictSchemaMixin.selection_json
 
     The definition of the :class:`trytond.model.fields.Function` field to

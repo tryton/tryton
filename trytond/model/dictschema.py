@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
+from collections import OrderedDict
 try:
     import simplejson as json
 except ImportError:
@@ -33,6 +34,10 @@ class DictSchemaMixin(object):
             'invisible': Eval('type_') != 'selection',
             }, translate=True, depends=['type_'],
         help='A couple of key and label separated by ":" per line')
+    selection_sorted = fields.Boolean('Selection Sorted', states={
+            'invisible': Eval('type_') != 'selection',
+            }, depends=['type_'],
+        help='If the selection must be sorted on label')
     selection_json = fields.Function(fields.Char('Selection JSON',
             states={
                 'invisible': Eval('type_') != 'selection',
@@ -49,6 +54,10 @@ class DictSchemaMixin(object):
     @staticmethod
     def default_digits():
         return 2
+
+    @staticmethod
+    def default_selection_sorted():
+        return True
 
     def get_selection_json(self, name):
         db_selection = self.selection or ''
@@ -71,9 +80,11 @@ class DictSchemaMixin(object):
             if record.type_ == 'selection':
                 with Transaction().set_context(language=Config.get_language()):
                     english_key = cls(record.id)
-                    selection = dict(json.loads(english_key.selection_json))
+                    selection = OrderedDict(json.loads(
+                            english_key.selection_json))
                 selection.update(dict(json.loads(record.selection_json)))
                 new_key['selection'] = selection.items()
+                new_key['sorted'] = record.selection_sorted
             elif record.type_ in ('float', 'numeric'):
                 new_key['digits'] = (16, record.digits)
             keys.append(new_key)
