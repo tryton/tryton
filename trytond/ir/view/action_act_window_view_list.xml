@@ -5,4 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="act_window"/>
     <field name="sequence"/>
     <field name="view"/>
+    <field name="active" tree_invisible="1"/>
 </tree>

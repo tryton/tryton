@@ -902,11 +902,16 @@ class ActionActWindowView(ModelSQL, ModelView):
             ondelete='CASCADE')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             ondelete='CASCADE')
+    active = fields.Boolean('Active', select=True)
 
     @classmethod
     def __setup__(cls):
         super(ActionActWindowView, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
+
+    @staticmethod
+    def default_active():
+        return True
 
     @classmethod
     def __register__(cls, module_name):
