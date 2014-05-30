@@ -544,6 +544,9 @@
 
     Sao.PYSON.Date.eval_ = function(value, context) {
         var date = Sao.Date();
+        // Force the day before setting the month to prevent switch to the next
+        // month if the current day doesn't exist in the target month.
+        date.setDate(1);
         date.setHours(0);
         date.setMinutes(0);
         date.setSeconds(0);
@@ -610,6 +613,9 @@
 
     Sao.PYSON.DateTime.eval_ = function(value, context) {
         var date = Sao.DateTime();
+        // Force the day before setting the month to prevent switch to the next
+        // month if the current day doesn't exist in the target month.
+        date.setDate(1);
         if (value.y) date.setFullYear(value.y);
         if (value.M) date.setMonth(value.M - 1);
         if (value.d) date.setDate(value.d);
