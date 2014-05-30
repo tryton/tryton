@@ -94,8 +94,10 @@ class DictSelectionEntry(DictEntry):
         model.append(('',))
         self._selection = {'': None}
         width = 10
-        for value, name in sorted(self.definition['selection'],
-                key=operator.itemgetter(1)):
+        selection = self.definition['selection']
+        if self.definition.get('sorted', True):
+            selection.sort(key=operator.itemgetter(1))
+        for value, name in selection:
             name = str(name)
             self._selection[name] = value
             model.append((name,))
