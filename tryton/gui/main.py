@@ -144,9 +144,6 @@ class Main(object):
         self.menuitem_user = None
         self.menuitem_favorite = None
 
-        if self.macapp is not None:
-            self.macapp.ready()
-
         self.buttons = {}
 
         self.pane = gtk.HPaned()
@@ -203,6 +200,9 @@ class Main(object):
 
         # Register plugins
         tryton.plugins.register()
+
+        if self.macapp is not None:
+            self.macapp.ready()
 
         _MAIN.append(self)
 
