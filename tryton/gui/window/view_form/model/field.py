@@ -201,7 +201,7 @@ class DateTimeField(Field):
     _default = None
 
     def set_client(self, record, value, force_change=False):
-        if not isinstance(value, datetime.datetime) and value is not None:
+        if isinstance(value, basestring):
             try:
                 value = datetime.datetime(*time.strptime(value,
                         date_format() + ' ' + self.time_format(record))[:6])
@@ -229,7 +229,7 @@ class DateField(Field):
     _default = None
 
     def set_client(self, record, value, force_change=False):
-        if not isinstance(value, datetime.date) and value is not None:
+        if isinstance(value, basestring):
             try:
                 value = datetime.date(*time.strptime(value,
                         date_format())[:3])
@@ -253,7 +253,7 @@ class TimeField(Field):
     _default = None
 
     def set_client(self, record, value, force_change=False):
-        if not isinstance(value, datetime.time) and value is not None:
+        if isinstance(value, basestring):
             try:
                 value = datetime.time(*time.strptime(value,
                         self.time_format(record))[3:6])
