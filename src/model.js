@@ -1190,7 +1190,7 @@
             return record.expr_eval(this.description.format);
         },
         set_client: function(record, value, force_change) {
-            if (!(value instanceof Date)) {
+            if (typeof value == 'string') {
                 try {
                     value = Sao.common.parse_datetime(
                         Sao.common.date_format(),
@@ -1216,7 +1216,7 @@
     Sao.field.Date = Sao.class_(Sao.field.Field, {
         _default: null,
         set_client: function(record, value, force_change) {
-            if (!(value instanceof Date)) {
+            if (typeof value == 'string') {
                 try {
                     value = Sao.Date(jQuery.datepicker.parseDate(
                             Sao.common.date_format(), value));
@@ -1243,7 +1243,7 @@
             return record.expr_eval(this.description.format);
         },
         set_client: function(record, value, force_change) {
-            if (!(value instanceof Sao.Time)) {
+            if (typeof value == 'string') {
                 value = Sao.common.parse_time(this.time_format(record), value);
             }
             Sao.field.Time._super.set_client.call(this, record, value,
