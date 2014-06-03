@@ -80,9 +80,9 @@
                             result.actions.forEach(function(action) {
                                 Sao.Action.exec_action(action[0], action[1],
                                     jQuery.extend({}, this.context));
-                            });
+                            }.bind(this));
                         }
-                    };
+                    }.bind(this);
 
                     if (this.state == this.end_state) {
                         this.end().then(execute_actions);
