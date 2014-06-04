@@ -23,8 +23,17 @@ class Line(ModelSQL, ModelView):
             'Currency'), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
+    company = fields.Function(fields.Many2One('company.company', 'Company'),
+        'on_change_with_company')
     account = fields.Many2One('analytic_account.account', 'Account',
-            required=True, select=True, domain=[('type', '!=', 'view')])
+            required=True, select=True, domain=[
+            ('type', '!=', 'view'),
+            ['OR',
+                ('company', '=', None),
+                ('company', '=', Eval('company', -1)),
+                ],
+            ],
+        depends=['company'])
     move_line = fields.Many2One('account.move.line', 'Account Move Line',
             ondelete='CASCADE', required=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -88,6 +97,11 @@ class Line(ModelSQL, ModelView):
         if self.move_line:
             return self.move_line.account.company.currency.digits
         return 2
+
+    @fields.depends('move_line')
+    def on_change_with_company(self, name=None):
+        if self.move_line:
+            return self.move_line.account.company.id
 
     @staticmethod
     def query_get(table):
