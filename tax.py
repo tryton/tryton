@@ -1084,7 +1084,8 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
     __name__ = 'account.tax.rule.line.template'
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
             ondelete='CASCADE')
-    group = fields.Many2One('account.tax.group', 'Tax Group')
+    group = fields.Many2One('account.tax.group', 'Tax Group',
+        ondelete='RESTRICT')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
         domain=[
             ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
@@ -1101,7 +1102,8 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
             ],
         help=('If the original tax template is filled, the rule will be '
             'applied only for this tax template.'),
-        depends=['group'])
+        depends=['group'],
+        ondelete='RESTRICT')
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
         domain=[
             ('account', '=', Eval('_parent_rule', {}).get('account', 0)),
@@ -1116,7 +1118,8 @@ class TaxRuleLineTemplate(ModelSQL, ModelView):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        depends=['group'])
+        depends=['group'],
+        ondelete='RESTRICT')
     sequence = fields.Integer('Sequence')
 
     @classmethod
@@ -1194,7 +1197,8 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
     _rec_name = 'tax'
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
             select=True, ondelete='CASCADE')
-    group = fields.Many2One('account.tax.group', 'Tax Group')
+    group = fields.Many2One('account.tax.group', 'Tax Group',
+        ondelete='RESTRICT')
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
         domain=[
             ('company', '=', Eval('_parent_rule', {}).get('company')),
@@ -1211,7 +1215,8 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
             ],
         help=('If the original tax is filled, the rule will be applied '
             'only for this tax.'),
-        depends=['group'])
+        depends=['group'],
+        ondelete='RESTRICT')
     tax = fields.Many2One('account.tax', 'Substitution Tax',
         domain=[
             ('company', '=', Eval('_parent_rule', {}).get('company')),
@@ -1226,7 +1231,8 @@ class TaxRuleLine(ModelSQL, ModelView, MatchMixin):
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
             ],
-        depends=['group'])
+        depends=['group'],
+        ondelete='RESTRICT')
     sequence = fields.Integer('Sequence')
     template = fields.Many2One('account.tax.rule.line.template', 'Template')
 
