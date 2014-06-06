@@ -1000,9 +1000,10 @@ class ModelStorage(Model):
                                 error_args=error_args)
 
                 def digits_test(value, digits, field_name):
-                    def raise_user_error():
+                    def raise_user_error(value):
                         error_args = cls._get_error_args(field_name)
                         error_args['digits'] = digits[1]
+                        error_args['value'] = value
                         cls.raise_user_error('digits_validation_record',
                             error_args=error_args)
                     if value is None:
@@ -1010,10 +1011,10 @@ class ModelStorage(Model):
                     if isinstance(value, Decimal):
                         if (value.quantize(Decimal(str(10.0 ** -digits[1])))
                                 != value):
-                            raise_user_error()
+                            raise_user_error(value)
                     elif CONFIG.options['db_type'] != 'mysql':
                         if not (round(value, digits[1]) == float(value)):
-                            raise_user_error()
+                            raise_user_error(value)
                 # validate digits
                 if hasattr(field, 'digits') and field.digits:
                     if is_pyson(field.digits):
