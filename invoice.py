@@ -1,9 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from collections import defaultdict
 import base64
 import itertools
-import operator
 from sql import Literal
 from sql.aggregate import Count, Sum
 from sql.conditionals import Coalesce, Case
@@ -637,15 +637,28 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 return False
         return True
 
-    def get_lines_to_pay(self, name):
-        lines = []
-        if self.move:
-            for line in self.move.lines:
-                if (line.account.id == self.account.id
-                        and line.maturity_date):
-                    lines.append(line)
-        lines.sort(key=operator.attrgetter('maturity_date'))
-        return [x.id for x in lines]
+    @classmethod
+    def get_lines_to_pay(cls, invoices, name):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+        line = MoveLine.__table__()
+        invoice = cls.__table__()
+        cursor = Transaction().cursor
+        in_max = cursor.IN_MAX
+
+        lines = defaultdict(list)
+        for i in range(0, len(invoices), in_max):
+            sub_ids = [i.id for i in invoices[i:i + in_max]]
+            red_sql = reduce_ids(invoice.id, sub_ids)
+            cursor.execute(*invoice.join(line,
+                condition=((invoice.move == line.move)
+                    & (invoice.account == line.account))).select(
+                        invoice.id, line.id,
+                        where=(line.maturity_date != None) & red_sql,
+                        order_by=(invoice.id, line.maturity_date)))
+            for invoice_id, line_id in cursor.fetchall():
+                lines[invoice_id].append(line_id)
+        return lines
 
     @classmethod
     def get_amount_to_pay(cls, invoices, name):
