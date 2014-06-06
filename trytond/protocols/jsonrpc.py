@@ -33,63 +33,86 @@ except ImportError:
     from StringIO import StringIO
 
 
-def object_hook(dct):
-    if '__class__' in dct:
-        if dct['__class__'] == 'datetime':
-            return datetime.datetime(dct['year'], dct['month'], dct['day'],
-                dct['hour'], dct['minute'], dct['second'], dct['microsecond'])
-        elif dct['__class__'] == 'date':
-            return datetime.date(dct['year'], dct['month'], dct['day'])
-        elif dct['__class__'] == 'time':
-            return datetime.time(dct['hour'], dct['minute'], dct['second'],
-                dct['microsecond'])
-        elif dct['__class__'] == 'buffer':
-            return buffer(base64.decodestring(dct['base64']))
-        elif dct['__class__'] == 'Decimal':
-            return Decimal(dct['decimal'])
-    return dct
+class JSONDecoder(object):
+
+    decoders = {}
+
+    @classmethod
+    def register(cls, klass, decoder):
+        assert klass not in cls.decoders
+        cls.decoders[klass] = decoder
+
+    def __call__(self, dct):
+        if dct.get('__class__') in self.decoders:
+            return self.decoders[dct['__class__']](dct)
+        return dct
+
+JSONDecoder.register('datetime',
+    lambda dct: datetime.datetime(dct['year'], dct['month'], dct['day'],
+        dct['hour'], dct['minute'], dct['second'], dct['microsecond']))
+JSONDecoder.register('date',
+    lambda dct: datetime.date(dct['year'], dct['month'], dct['day']))
+JSONDecoder.register('time',
+    lambda dct: datetime.time(dct['hour'], dct['minute'], dct['second'],
+        dct['microsecond']))
+JSONDecoder.register('buffer', lambda dct: Decimal(dct['decimal']))
 
 
 class JSONEncoder(json.JSONEncoder):
+
+    serializers = {}
 
     def __init__(self, *args, **kwargs):
         super(JSONEncoder, self).__init__(*args, **kwargs)
         # Force to use our custom decimal with simplejson
         self.use_decimal = False
 
+    @classmethod
+    def register(cls, klass, encoder):
+        assert klass not in cls.serializers
+        cls.serializers[klass] = encoder
+
     def default(self, obj):
-        if isinstance(obj, datetime.date):
-            if isinstance(obj, datetime.datetime):
-                return {'__class__': 'datetime',
-                        'year': obj.year,
-                        'month': obj.month,
-                        'day': obj.day,
-                        'hour': obj.hour,
-                        'minute': obj.minute,
-                        'second': obj.second,
-                        'microsecond': obj.microsecond,
-                        }
-            return {'__class__': 'date',
-                    'year': obj.year,
-                    'month': obj.month,
-                    'day': obj.day,
-                    }
-        elif isinstance(obj, datetime.time):
-            return {'__class__': 'time',
-                'hour': obj.hour,
-                'minute': obj.minute,
-                'second': obj.second,
-                'microsecond': obj.microsecond,
-                }
-        elif isinstance(obj, buffer):
-            return {'__class__': 'buffer',
-                'base64': base64.encodestring(obj),
-                }
-        elif isinstance(obj, Decimal):
-            return {'__class__': 'Decimal',
-                'decimal': str(obj),
-                }
-        return super(JSONEncoder, self).default(obj)
+        marshaller = self.serializers.get(type(obj),
+            super(JSONEncoder, self).default)
+        return marshaller(obj)
+
+JSONEncoder.register(datetime.datetime,
+    lambda o: {
+        '__class__': 'datetime',
+        'year': o.year,
+        'month': o.month,
+        'day': o.day,
+        'hour': o.hour,
+        'minute': o.minute,
+        'second': o.second,
+        'microsecond': o.microsecond,
+        })
+JSONEncoder.register(datetime.date,
+    lambda o: {
+        '__class__': 'date',
+        'year': o.year,
+        'month': o.month,
+        'day': o.day,
+        })
+JSONEncoder.register(datetime.time,
+    lambda o: {
+        '__class__': 'time',
+        'hour': o.hour,
+        'minute': o.minute,
+        'second': o.second,
+        'microsecond': o.microsecond,
+        })
+JSONEncoder.register(buffer,
+    lambda o: {
+        '__class__': 'buffer',
+        'base64': base64.encodestring(o),
+        })
+JSONEncoder.register(Decimal,
+    lambda o: {
+        '__class__': 'Decimal',
+        'decimal': str(o),
+        })
 
 
 class SimpleJSONRPCDispatcher(SimpleXMLRPCServer.SimpleXMLRPCDispatcher):
@@ -111,7 +134,7 @@ class SimpleJSONRPCDispatcher(SimpleXMLRPCServer.SimpleXMLRPCDispatcher):
         existing method through subclassing is the prefered means
         of changing method dispatch behavior.
         """
-        rawreq = json.loads(data, object_hook=object_hook)
+        rawreq = json.loads(data, object_hook=JSONDecoder())
 
         req_id = rawreq.get('id', 0)
         method = rawreq['method']

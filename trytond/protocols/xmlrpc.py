@@ -74,6 +74,28 @@ def dump_struct(self, value, write, escape=xmlrpclib.escape):
 xmlrpclib.Marshaller.dispatch[DictType] = dump_struct
 
 
+class XMLRPCDecoder(object):
+
+    decoders = {}
+
+    @classmethod
+    def register(cls, klass, decoder):
+        assert klass not in cls.decoders
+        cls.decoders[klass] = decoder
+
+    def __call__(self, dct):
+        if dct.get('__class__') in self.decoders:
+            return self.decoders[dct['__class__']](dct)
+        return dct
+
+XMLRPCDecoder.register('datetime',
+    lambda dct: datetime.date(dct['year'], dct['month'], dct['day']))
+XMLRPCDecoder.register('time',
+    lambda dct: datetime.time(dct['hour'], dct['minute'], dct['second'],
+        dct['microsecond']))
+XMLRPCDecoder.register('Decimal', lambda dct: Decimal(dct['decimal']))
+
+
 def end_struct(self, data):
     mark = self._marks.pop()
     # map structs to Python dictionaries
@@ -81,14 +103,7 @@ def end_struct(self, data):
     items = self._stack[mark:]
     for i in range(0, len(items), 2):
         dct[xmlrpclib._stringify(items[i])] = items[i + 1]
-    if '__class__' in dct:
-        if dct['__class__'] == 'date':
-            dct = datetime.date(dct['year'], dct['month'], dct['day'])
-        elif dct['__class__'] == 'time':
-            dct = datetime.time(dct['hour'], dct['minute'], dct['second'],
-                dct['microsecond'])
-        elif dct['__class__'] == 'Decimal':
-            dct = Decimal(dct['decimal'])
+    dct = XMLRPCDecoder()(dct)
     self._stack[mark:] = [dct]
     self._value = 0
 

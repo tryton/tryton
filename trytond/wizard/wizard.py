@@ -13,7 +13,7 @@ from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
 from trytond.error import WarningErrorMixin
 from trytond.url import URLMixin
-from trytond.protocols.jsonrpc import object_hook, JSONEncoder
+from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.model.fields import states_validate
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
@@ -265,7 +265,7 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
         self._session_id = session_id
         session = Session(session_id)
         data = json.loads(session.data.encode('utf-8'),
-            object_hook=object_hook)
+            object_hook=JSONDecoder())
         for state_name, state in self.states.iteritems():
             if isinstance(state, StateView):
                 Target = pool.get(state.model_name)

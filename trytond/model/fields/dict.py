@@ -7,7 +7,7 @@ except ImportError:
 from sql import Query, Expression
 
 from .field import Field, SQLType
-from ...protocols.jsonrpc import object_hook, JSONEncoder
+from ...protocols.jsonrpc import JSONDecoder, JSONEncoder
 
 
 class Dict(Field):
@@ -28,7 +28,7 @@ class Dict(Field):
         for value in values or []:
             if value[name]:
                 dicts[value['id']] = json.loads(value[name],
-                    object_hook=object_hook)
+                    object_hook=JSONDecoder())
         return dicts
 
     @staticmethod
