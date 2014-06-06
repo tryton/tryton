@@ -4,6 +4,7 @@
 import copy
 import collections
 import warnings
+from functools import total_ordering
 
 from trytond.model import fields
 from trytond.error import WarningErrorMixin
@@ -16,6 +17,7 @@ from trytond.rpc import RPC
 __all__ = ['Model']
 
 
+@total_ordering
 class Model(WarningErrorMixin, URLMixin, PoolBase):
     """
     Define a model in Tryton.
@@ -489,11 +491,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         if not isinstance(other, Model) or self.__name__ != other.__name__:
             return NotImplemented
         return self.id < other.id
-
-    # TODO: replace by total_ordering when 2.6 will be dropped
-    __gt__ = lambda self, other: not (self < other or self == other)
-    __le__ = lambda self, other: self < other or self == other
-    __ge__ = lambda self, other: not self < other
 
     def __ne__(self, other):
         if not isinstance(other, Model):
