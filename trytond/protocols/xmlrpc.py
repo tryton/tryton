@@ -88,7 +88,7 @@ class XMLRPCDecoder(object):
             return self.decoders[dct['__class__']](dct)
         return dct
 
-XMLRPCDecoder.register('datetime',
+XMLRPCDecoder.register('date',
     lambda dct: datetime.date(dct['year'], dct['month'], dct['day']))
 XMLRPCDecoder.register('time',
     lambda dct: datetime.time(dct['hour'], dct['minute'], dct['second'],
