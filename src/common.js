@@ -1448,6 +1448,9 @@
             } else if (~['OR', 'AND'].indexOf(domain)) {
                 return domain;
             } else if ((domain instanceof Array) && (domain.length == 1) &&
+                    (~['OR', 'AND'].indexOf(domain[0]))) {
+                return [];
+            } else if ((domain instanceof Array) && (domain.length == 1) &&
                     (!this.is_leaf(domain[0]))) {
                 return this.simplify(domain[0]);
             } else if ((domain instanceof Array) && (domain.length == 2) &&
