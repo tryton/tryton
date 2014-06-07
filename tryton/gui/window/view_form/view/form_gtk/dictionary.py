@@ -484,8 +484,13 @@ class DictWidget(WidgetInterface):
             key_ids = RPCExecute('model', self.schema_model, 'search',
                 [('name', '=', key)], 0, CONFIG['client.limit'],
                 None, context=context)
-            self.keys[key] = RPCExecute('model', self.schema_model,
-                'get_keys', key_ids, context=context)[0]
+            if not key_ids:
+                return
+            keys = RPCExecute('model', self.schema_model,
+                'get_keys', key_ids, context=context)
+            if not keys:
+                return
+            self.keys[key] = keys[0]
         except RPCException:
             pass
 
@@ -506,6 +511,8 @@ class DictWidget(WidgetInterface):
             val = value[key]
             if key not in self.keys:
                 self.add_key(key)
+            if key not in self.keys:
+                continue
             if key not in self.fields:
                 self.add_line(key)
             widget = self.fields[key]
