@@ -1,3 +1,4 @@
+* Add UnionMixin
 * Allow to disable sorting of dictionary field's selection
 * Add active field to views of action window
 * Make global cache depends on explicit context keys

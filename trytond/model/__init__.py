@@ -8,6 +8,7 @@ from .modelsql import ModelSQL
 from .workflow import Workflow
 from .dictschema import DictSchemaMixin
 from .match import MatchMixin
+from .union import UnionMixin
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Workflow', 'DictSchemaMixin', 'MatchMixin']
+    'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin']

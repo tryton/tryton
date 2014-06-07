@@ -564,5 +564,41 @@ Instance methods:
 
     Return if the instance match the pattern
 
+==========
+UnionMixin
+==========
+
+.. class:: UnionMixin
+
+A mixin_ to create a :class:`ModelSQL` which is the UNION_ of some
+:class:`ModelSQL`'s. The ids of each models are sharded to be unique.
+
+Static methods:
+
+.. staticmethod:: UnionMixin.union_models()
+
+    Return the list of :class:`ModelSQL`'s names
+
+Class methods:
+
+.. classmethod:: UnionMixin.union_shard(column, model)
+
+    Return a SQL expression that shards the column containing record id of
+    model name.
+
+.. classmethod:: UnionMixin.union_unshard(record_id)
+
+    Return the original instance of the record for the sharded id.
+
+.. classmethod:: UnionMixin.union_column(field, table, Model)
+
+    Return the SQL column that corresponds to the field on the union model.
+
+.. classmethod:: UnionMixin.union_columns(model)
+
+    Return the SQL table and columns to use for the UNION for the model name.
+
+
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
+.. _UNION: http://en.wikipedia.org/wiki/Union_(SQL)#UNION_operator
