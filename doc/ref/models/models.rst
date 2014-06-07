@@ -76,19 +76,27 @@ Class methods:
         warning states by users.
     ..
 
-.. classmethod:: Model.default_get(fields_names[, with_rec_name[, with_on_change]])
+.. classmethod:: Model.default_get(fields_names[, with_rec_name])
 
-    Return a dictionary with the default values for each field in
+    Returns a dictionary with the default values for each field in
     ``fields_names``. Default values are defined by the returned value of each
     instance method with the pattern ``default_`field_name`()``.
     ``with_rec_name`` allow to add `rec_name` value for each many2one field.
-    ``with_on_change`` allow to add ``on_change`` value for each default value.
 
 .. classmethod:: Model.fields_get([fields_names])
 
     Return the definition of each field on the model.
 
 Instance methods:
+
+.. method:: Model.on_change(fieldnames)
+
+    Returns the list of changes by calling `on_change` method of each field.
+
+.. method:: Model.on_change_with(fieldnames)
+
+    Returns the new values of all fields by calling `on_change_with` method of
+    each field.
 
 .. method:: Model.pre_validate()
 

@@ -1,3 +1,5 @@
+* Remove on_change calls in Model.default_get
+* Add group call to on_change
 * Add UnionMixin
 * Allow to disable sorting of dictionary field's selection
 * Add active field to views of action window
