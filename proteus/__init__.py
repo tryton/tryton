@@ -760,6 +760,7 @@ class Model(object):
             self._config.context))
 
     def _default_set(self, values):
+        fieldnames = []
         for field, value in values.iteritems():
             if '.' in field:
                 continue
@@ -778,6 +779,9 @@ class Model(object):
                     field)
             else:
                 self._values[field] = value
+            fieldnames.append(field)
+        for field in sorted(fieldnames):
+            self._on_change(field)
 
     def _get_eval(self):
         values = dict((x, getattr(self, '__%s_eval' % x))
