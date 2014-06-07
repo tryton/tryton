@@ -14,6 +14,7 @@ from decimal import Decimal
 from itertools import islice, ifilter, chain, izip
 from functools import reduce
 from operator import itemgetter
+from collections import defaultdict
 
 from trytond.model import Model
 from trytond.model import fields
@@ -882,6 +883,12 @@ class ModelStorage(Model):
                             return True
             return False
 
+        def freeze(domain):
+            if isinstance(domain, (list, tuple)):
+                return tuple(freeze(d) for d in domain)
+            else:
+                return domain
+
         def validate_domain(field):
             if not field.domain:
                 return
@@ -893,6 +900,7 @@ class ModelStorage(Model):
                 Relation = field.get_target()
             else:
                 Relation = cls
+            domains = defaultdict(list)
             if is_pyson(field.domain):
                 pyson_domain = PYSONEncoder().encode(field.domain)
                 for record in records:
@@ -902,12 +910,13 @@ class ModelStorage(Model):
                     env['time'] = time
                     env['context'] = Transaction().context
                     env['active_id'] = record.id
-                    domain = PYSONDecoder(env).decode(pyson_domain)
-                    validate_relation_domain(
-                        field, [record], Relation, domain)
+                    domain = freeze(PYSONDecoder(env).decode(pyson_domain))
+                    domains[domain].append(record)
             else:
-                validate_relation_domain(
-                    field, records, Relation, field.domain)
+                domains[freeze(field.domain)].extend(records)
+
+            for domain, sub_records in domains.iteritems():
+                validate_relation_domain(field, sub_records, Relation, domain)
 
         def validate_relation_domain(field, records, Relation, domain):
             if field._type in ('many2one', 'one2many', 'many2many', 'one2one'):
