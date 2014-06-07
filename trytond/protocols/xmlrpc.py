@@ -118,6 +118,14 @@ def _end_dateTime(self, data):
 xmlrpclib.Unmarshaller.dispatch["dateTime.iso8601"] = _end_dateTime
 
 
+def _end_base64(self, data):
+    value = xmlrpclib.Binary()
+    value.decode(data)
+    self.append(buffer(value.data))
+    self._value = 0
+xmlrpclib.Unmarshaller.dispatch['base64'] = _end_base64
+
+
 class GenericXMLRPCRequestHandler:
 
     def _dispatch(self, method, params):
