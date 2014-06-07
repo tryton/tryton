@@ -37,9 +37,8 @@ class Field(object):
     def sig_changed(self, record):
         if self.get_state_attrs(record).get('readonly', False):
             return
-        if self.attrs.get('on_change', False):
-            record.on_change(self.name, self.attrs['on_change'])
-        record.on_change_with(self.name)
+        record.on_change([self.name])
+        record.on_change_with([self.name])
         record.autocomplete_with(self.name)
 
     def domains_get(self, record):
@@ -648,6 +647,7 @@ class O2MField(Field):
         record.modified_fields.setdefault(self.name)
 
     def set_on_change(self, record, value):
+        self._set_default_value(record)
         if isinstance(value, (list, tuple)):
             self._set_value(record, value)
             record.modified_fields.setdefault(self.name)

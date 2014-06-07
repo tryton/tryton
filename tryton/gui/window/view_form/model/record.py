@@ -418,6 +418,7 @@ class Record(SignalEvent):
         return self.group.context
 
     def set_default(self, val, signal=True):
+        fieldnames = []
         for fieldname, value in val.items():
             if fieldname not in self.group.fields:
                 continue
@@ -432,6 +433,9 @@ class Record(SignalEvent):
                     del self.value[field_rec_name]
             self.group.fields[fieldname].set_default(self, value)
             self._loaded.add(fieldname)
+            fieldnames.append(fieldname)
+        self.on_change(fieldnames)
+        self.on_change_with(fieldnames)
         self.validate(softvalidation=True)
         if signal:
             self.signal('record-changed')
@@ -529,18 +533,25 @@ class Record(SignalEvent):
         res['id'] = self.id
         return res
 
-    def on_change(self, fieldname, attr):
-        if isinstance(attr, basestring):
-            attr = PYSONDecoder().decode(attr)
-        args = self._get_on_change_args(attr)
-        try:
-            res = RPCExecute('model', self.model_name, 'on_change_' +
-                fieldname, args, context=self.context_get())
-        except RPCException:
-            return
-        self.set_on_change(res)
+    def on_change(self, fieldnames):
+        values = {}
+        for fieldname in fieldnames:
+            on_change = self.group.fields[fieldname].attrs.get('on_change')
+            if not on_change:
+                continue
+            values.update(self._get_on_change_args(on_change))
 
-    def on_change_with(self, field_name):
+        if values:
+            try:
+                changes = RPCExecute('model', self.model_name, 'on_change',
+                    values, fieldnames, context=self.context_get())
+            except RPCException:
+                return
+            for change in changes:
+                self.set_on_change(change)
+
+    def on_change_with(self, field_names):
+        field_names = set(field_names)
         fieldnames = set()
         values = {}
         later = set()
@@ -549,9 +560,7 @@ class Record(SignalEvent):
                     'on_change_with')
             if not on_change_with:
                 continue
-            if field_name not in on_change_with:
-                continue
-            if field_name == fieldname:
+            if not field_names & set(on_change_with):
                 continue
             if fieldnames & set(on_change_with):
                 later.add(fieldname)
