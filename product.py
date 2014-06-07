@@ -225,32 +225,24 @@ class Product(ModelSQL, ModelView):
 
     @classmethod
     def search_domain(cls, domain, active_test=True):
+        def is_leaf(expression):
+            return (isinstance(expression, (list, tuple))
+                and len(expression) > 2
+                and isinstance(expression[1], basestring)
+                and expression[1] in OPERATORS)  # TODO remove OPERATORS test
+
         def convert_domain(domain):
             'Replace missing product field by the template one'
-            if not domain:
-                return []
-            operator = 'AND'
-            if isinstance(domain[0], basestring):
-                operator = domain[0]
-                domain = domain[1:]
-            result = [operator]
-            for arg in domain:
-                if (isinstance(arg, (list, tuple))
-                        and len(arg) > 2
-                        and isinstance(arg[1], basestring)
-                        and arg[1] in OPERATORS):
-                    # clause
-                    field = arg[0].split('.', 1)[0]
-                    if not getattr(cls, field, None):
-                        field = 'template.' + arg[0]
-                        result.append((field,) + tuple(arg[1:]))
-                    else:
-                        result.append(arg)
-                elif isinstance(arg, list):
-                    # sub-domain
-                    result.append(convert_domain(arg))
+            if is_leaf(domain):
+                field = domain[0].split('.', 1)[0]
+                if not getattr(cls, field, None):
+                    field = 'template.' + domain[0]
+                    return (field,) + tuple(domain[1:])
                 else:
-                    result.append(arg)
-            return result
+                    return domain
+            elif domain in ['OR', 'AND']:
+                return domain
+            else:
+                return [convert_domain(d) for d in domain]
         return super(Product, cls).search_domain(convert_domain(domain),
             active_test=active_test)
