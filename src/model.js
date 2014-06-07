@@ -623,6 +623,7 @@
             return prm;
         },
         set_default: function(values) {
+            var fieldnames = [];
             for (var fname in values) {
                 if (!values.hasOwnProperty(fname)) {
                     continue;
@@ -642,7 +643,10 @@
                 }
                 this.model.fields[fname].set_default(this, value);
                 this._loaded[fname] = true;
+                fieldnames.push(fname);
             }
+            this.on_change(fieldnames);
+            this.on_change_with(fieldnames);
             this.validate(null, true).then(function() {
                 this.group.root_group().screens.forEach(function(screen) {
                     screen.display();
@@ -688,16 +692,27 @@
             result.id = this.id;
             return result;
         },
-        on_change: function(fieldname, attr) {
-            if (typeof(attr) == 'string') {
-                attr = new Sao.PYSON.Decoder().decode(attr);
+        on_change: function(fieldnames) {
+            var values = {};
+            fieldnames.forEach(function(fieldname) {
+                var on_change = this.model.fields[fieldname]
+                .description.on_change;
+                if (!jQuery.isEmptyObject(on_change)) {
+                    values = jQuery.extend(values,
+                        this._get_on_change_args(on_change));
+                }
+            }.bind(this));
+            if (!jQuery.isEmptyObject(values)) {
+                var prm = this.model.execute('on_change',
+                        [values, fieldnames], this.get_context());
+                return prm.then(function(changes) {
+                    changes.forEach(this.set_on_change.bind(this));
+                }.bind(this));
+            } else {
+                return jQuery.when();
             }
-            var args = this._get_on_change_args(attr);
-            var prm = this.model.execute('on_change_' + fieldname,
-                   [args], this.get_context());
-            return prm.then(this.set_on_change.bind(this));
         },
-        on_change_with: function(field_name) {
+        on_change_with: function(field_names) {
             var fieldnames = {};
             var values = {};
             var later = {};
@@ -711,10 +726,12 @@
                 if (jQuery.isEmptyObject(on_change_with)) {
                     continue;
                 }
-                if (!~on_change_with.indexOf(field_name)) {
-                    continue;
+                for (var i = 0; i < field_names.length; i++) {
+                    if (~on_change_with.indexOf(field_names[i])) {
+                        break;
+                    }
                 }
-                if (field_name == fieldname) {
+                if (i >= field_names.length) {
                     continue;
                 }
                 if (!jQuery.isEmptyObject(Sao.common.intersect(
@@ -1014,11 +1031,8 @@
         changed: function(record) {
             var prms = [];
             // TODO check readonly
-            if (!jQuery.isEmptyObject(this.description.on_change)) {
-                prms.push(record.on_change(this.name,
-                            this.description.on_change));
-            }
-            prms.push(record.on_change_with(this.name));
+            prms.push(record.on_change([this.name]));
+            prms.push(record.on_change_with([this.name]));
             // TODO autocomplete_with
             return jQuery.when.apply(jQuery, prms);
         },
@@ -1628,6 +1642,7 @@
             record._changed[this.name] = true;
         },
         set_on_change: function(record, value) {
+            this._set_default_value(record);
             if (value instanceof Array) {
                 this._set_value(record, value);
                 record._changed[this.name] = true;
