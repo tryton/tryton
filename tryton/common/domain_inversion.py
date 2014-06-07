@@ -151,6 +151,8 @@ def simplify(domain):
         return domain
     elif domain in ('OR', 'AND'):
         return domain
+    elif domain in (['OR'], ['AND']):
+        return []
     elif (isinstance(domain, list) and len(domain) == 1
             and not is_leaf(domain[0])):
         return simplify(domain[0])
@@ -429,6 +431,10 @@ def test_simplify():
     assert simplify(domain) == ['OR', [['x', '=', 3]], [['y', '=', 5]]]
     domain = ['OR', ['x', '=', 3], ['AND', ['y', '=', 5]]]
     assert simplify(domain) == ['OR', ['x', '=', 3], [['y', '=', 5]]]
+    domain = ['AND']
+    assert simplify(domain) == []
+    domain = ['OR']
+    assert simplify(domain) == []
 
 
 def test_merge():
