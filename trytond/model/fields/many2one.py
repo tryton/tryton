@@ -114,6 +114,7 @@ class Many2One(Field):
         Target = self.get_target()
         table, _ = tables[None]
         name, operator, ids = domain
+        ids = list(ids)  # Ensure it is a list for concatenation
 
         def get_child(ids):
             if not ids:
