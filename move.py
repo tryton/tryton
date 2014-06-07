@@ -702,14 +702,14 @@ class Line(ModelSQL, ModelView):
         return Decimal(0)
 
     @classmethod
-    def default_get(cls, fields, with_rec_name=True, with_on_change=True):
+    def default_get(cls, fields, with_rec_name=True):
         pool = Pool()
         Move = pool.get('account.move')
         Tax = pool.get('account.tax')
         Account = pool.get('account.account')
         TaxCode = pool.get('account.tax.code')
         values = super(Line, cls).default_get(fields,
-                with_rec_name=with_rec_name, with_on_change=with_on_change)
+                with_rec_name=with_rec_name)
 
         if 'move' not in fields:
             #Not manual entry
