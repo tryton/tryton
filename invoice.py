@@ -840,12 +840,15 @@ class Invoice(Workflow, ModelSQL, ModelView):
     @classmethod
     def update_taxes(cls, invoices, exception=False):
         Tax = Pool().get('account.invoice.tax')
+        to_create = []
+        to_delete = []
+        to_write = []
         for invoice in invoices:
             if invoice.state in ('posted', 'paid', 'cancel'):
                 continue
             computed_taxes = invoice._compute_taxes()
             if not invoice.taxes:
-                Tax.create([tax for tax in computed_taxes.values()])
+                to_create.extend([tax for tax in computed_taxes.values()])
             else:
                 tax_keys = []
                 for tax in invoice.taxes:
@@ -861,7 +864,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                         if exception:
                             cls.raise_user_error('missing_tax_line',
                                 (invoice.rec_name,))
-                        Tax.delete([tax])
+                        to_delete.append(tax)
                         continue
                     tax_keys.append(key)
                     if not invoice.currency.is_zero(
@@ -869,13 +872,19 @@ class Invoice(Workflow, ModelSQL, ModelView):
                         if exception:
                             cls.raise_user_error('diff_tax_line',
                                 (invoice.rec_name,))
-                        Tax.write([tax], computed_taxes[key])
+                        to_write.extend(([tax], computed_taxes[key]))
                 for key in computed_taxes:
                     if not key in tax_keys:
                         if exception:
                             cls.raise_user_error('missing_tax_line2',
                                 (invoice.rec_name,))
-                        Tax.create([computed_taxes[key]])
+                        to_create.append(computed_taxes[key])
+        if to_create:
+            Tax.create(to_create)
+        if to_delete:
+            Tax.delete(to_delete)
+        if to_write:
+            Tax.write(*to_write)
 
     def _get_move_line_invoice_line(self):
         '''
