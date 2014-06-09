@@ -1208,8 +1208,8 @@
                     text = model.fields[name]
                         .description.string + ':';
                 }
-                if (node.getAttribute('xalign') === undefined) {
-                    node.setAttribute('xalign', 1.0);
+                if (attributes.xalign === undefined) {
+                    attributes.xalign = 1.0;
                 }
             } else if (!text) {
                 // TODO get content
@@ -1455,8 +1455,12 @@
             }
             var cell = jQuery('<td/>', {
                 'colspan': colspan,
-                'class': widget ? widget.class_ || '' : ''
+                'class': widget ? widget.class_ || '' : '',
             }).append(el);
+            if (attributes.xalign !== undefined) {
+                // TODO replace by start/end when supported
+                cell.css('text-align', attributes.xalign >= 0.5? 'right': 'left');
+            }
             if (xexpand) {
                 cell.addClass('xexpand');
                 cell.css('width', '100%');
