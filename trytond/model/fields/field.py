@@ -81,6 +81,9 @@ def depends(*fields, **kwargs):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
             for field in fields:
+                field = field.split('.')[0]
+                if field.startswith('_parent_'):
+                    field = field[8:]  # Strip '_parent_'
                 if not hasattr(self, field):
                     setattr(self, field, None)
             return func(self, *args, **kwargs)
