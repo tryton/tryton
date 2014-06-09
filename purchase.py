@@ -1220,7 +1220,8 @@ class PurchaseLine(ModelSQL, ModelView):
                         old_invoice_line.quantity, self.unit)
         invoice_line.quantity = quantity
 
-        if invoice_line.quantity <= 0.0:
+        rounding = self.unit.rounding if self.unit else 0
+        if invoice_line.quantity < rounding:
             return []
         invoice_line.unit = self.unit
         invoice_line.product = self.product
@@ -1275,7 +1276,7 @@ class PurchaseLine(ModelSQL, ModelView):
             if move not in skip:
                 quantity -= Uom.compute_qty(move.uom, move.quantity,
                     self.unit)
-        if quantity <= 0.0:
+        if quantity < self.unit.rounding:
             return
         if not self.purchase.party.supplier_location:
             self.raise_user_error('supplier_location_required', {
