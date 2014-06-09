@@ -341,17 +341,20 @@ class WizardDialog(Wizard, NoModal):
             dialog = self.page.dialogs[-1]
         else:
             dialog = self.page
-        if (getattr(dialog, 'screen', None)
-                and dialog.screen.current_record
-                and self.sensible_widget != main.window):
-            if dialog.screen.model_name == self.model:
-                ids = self.ids
-            else:
-                # Wizard run from a children record so reload parent record
-                ids = [dialog.screen.current_record.id]
-            dialog.screen.reload(ids, written=True)
+        screen = getattr(dialog, 'screen', None)
+        if self.sensible_widget == main.window:
+            screen = main.menu_screen
+        if screen:
+            if (screen.current_record
+                    and self.sensible_widget != main.window):
+                if screen.model_name == self.model:
+                    ids = self.ids
+                else:
+                    # Wizard run from a children record so reload parent record
+                    ids = [screen.current_record.id]
+                screen.reload(ids, written=True)
             if action:
-                dialog.screen.client_action(action)
+                screen.client_action(action)
 
     def end(self, callback=None):
         def end_callback(action):
