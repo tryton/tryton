@@ -2,14 +2,14 @@
 #this repository contains the full copyright notices and license terms.
 import gtk
 import locale
-from integer import Integer
+from .integer import Integer
 
 
 class Float(Integer):
     "Float"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Float, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Float, self).__init__(view, attrs)
         self.entry.connect('key-press-event', self.key_press_event)
 
     def display(self, record, field):

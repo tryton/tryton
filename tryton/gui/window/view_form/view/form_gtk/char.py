@@ -4,18 +4,18 @@ import gettext
 
 import gobject
 import gtk
-from interface import WidgetInterface, TranslateMixin
+from .widget import Widget, TranslateMixin
 from tryton.common import Tooltips
 from tryton.common.entry_position import manage_entry_position
 
 _ = gettext.gettext
 
 
-class Char(WidgetInterface, TranslateMixin):
+class Char(Widget, TranslateMixin):
     "Char"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Char, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Char, self).__init__(view, attrs)
 
         self.widget = gtk.HBox()
         self.autocomplete = bool(attrs.get('autocomplete'))
@@ -153,8 +153,8 @@ class Char(WidgetInterface, TranslateMixin):
 
 class Password(Char):
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Password, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Password, self).__init__(view, attrs)
         self.entry.props.visibility = False
 
         self.visibility_checkbox = gtk.CheckButton()

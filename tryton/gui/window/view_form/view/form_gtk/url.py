@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
-from char import Char
+from .char import Char
 import webbrowser
 import tryton.common as common
 
@@ -9,8 +9,8 @@ import tryton.common as common
 class URL(Char):
     "url"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(URL, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(URL, self).__init__(view, attrs)
 
         self.tooltips = common.Tooltips()
         self.button = gtk.Button()

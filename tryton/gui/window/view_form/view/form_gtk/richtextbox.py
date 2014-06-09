@@ -5,7 +5,7 @@ import gtk
 import pango
 import re
 from gettext import gettext as _
-from textbox import TextBox
+from .textbox import TextBox
 from tryton.common import get_toplevel_window
 
 
@@ -64,8 +64,8 @@ def formalize_text_markup(text):
 class RichTextBox(TextBox):
     '''Implements a rich text editor as widget to Tryton Client'''
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(RichTextBox, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(RichTextBox, self).__init__(view, attrs)
         self.table_tag = gtk.TextTagTable()
         self.text_buffer = gtk.TextBuffer(self.table_tag)
         self.textview.set_buffer(self.text_buffer)

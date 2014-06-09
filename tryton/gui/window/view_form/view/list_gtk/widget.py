@@ -10,14 +10,11 @@ import webbrowser
 
 from functools import wraps, partial
 
-from editabletree import EditableTreeView, TreeView
-from tryton.gui.window.view_form.view.interface import ParserInterface
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 from tryton.gui.window.view_form.screen import Screen
 import tryton.rpc as rpc
-from tryton.common import COLORS, node_attributes, \
-        file_selection, file_open, slugify
+from tryton.common import COLORS, file_selection, file_open, slugify
 import tryton.common as common
 from tryton.common.cellrendererbutton import CellRendererButton
 from tryton.common.cellrendererdate import CellRendererDate
@@ -46,40 +43,12 @@ def send_keys(renderer, editable, position, treeview):
         editable.connect('changed', treeview.on_editing_done)
 
 
-def sort_model(column, treeview, screen):
-    for col in treeview.get_columns():
-        if col != column:
-            col.arrow_show = False
-            col.arrow.hide()
-    screen.order = None
-    if not column.arrow_show:
-        column.arrow_show = True
-        column.arrow.set(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-        column.arrow.show()
-        screen.order = [(column.name, 'ASC')]
-    else:
-        if column.arrow.get_property('arrow-type') == gtk.ARROW_DOWN:
-            column.arrow.set(gtk.ARROW_UP, gtk.SHADOW_IN)
-            screen.order = [(column.name, 'DESC')]
-        else:
-            column.arrow_show = False
-            column.arrow.hide()
-    store = treeview.get_model()
-    unsaved_records = [x for x in store.group if x.id < 0]
-    search_string = screen.screen_container.get_text() or None
-    if screen.search_count == len(store) or unsaved_records or screen.parent:
-        ids = screen.search_filter(search_string=search_string, only_ids=True)
-        store.sort(ids)
-    else:
-        screen.search_filter(search_string=search_string)
-
-
 def realized(func):
     "Decorator for treeview realized"
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        if (hasattr(self.treeview, 'get_realized')
-                and not self.treeview.get_realized()):
+        if (hasattr(self.view.treeview, 'get_realized')
+                and not self.view.treeview.get_realized()):
             return
         return func(self, *args, **kwargs)
     return wrapper
@@ -123,7 +92,7 @@ class CellCache(list):
             if not hasattr(self, 'cell_caches'):
                 self.cell_caches = {}
             record = store.get_value(iter, 0)
-            counter = self.treeview.display_counter
+            counter = self.view.treeview.display_counter
             if (self.display_counters.get(record.id) != counter):
                 if getattr(cell, 'decorated', None):
                     func(self, column, cell, store, iter)
@@ -139,223 +108,10 @@ class CellCache(list):
         return wrapper
 
 
-class ParserTree(ParserInterface):
-
-    def __init__(self, parent=None, attrs=None, screen=None,
-            children_field=None):
-        super(ParserTree, self).__init__(parent, attrs, screen,
-            children_field=children_field)
-        self.treeview = None
-
-    def parse(self, model_name, root_node, fields):
-        dict_widget = {}
-        state_widgets = []
-        attrs = node_attributes(root_node)
-        on_write = attrs.get('on_write', '')
-        editable = attrs.get('editable', False)
-        if editable:
-            treeview = EditableTreeView(editable)
-        else:
-            treeview = TreeView()
-            treeview.cells = {}
-        treeview.display_counter = 0
-        treeview.sequence = attrs.get('sequence', False)
-        treeview.colors = attrs.get('colors', '"black"')
-        treeview.keyword_open = attrs.get('keyword_open', False)
-        self.treeview = treeview
-        treeview.set_property('rules-hint', True)
-        if not self.title:
-            self.title = attrs.get('string', 'Unknown')
-        tooltips = common.Tooltips()
-        expandable = False
-
-        for node in root_node.childNodes:
-            node_attrs = node_attributes(node)
-            if node.localName == 'field':
-                fname = str(node_attrs['name'])
-                for boolean_fields in ('readonly', 'required', 'expand'):
-                    if boolean_fields in node_attrs:
-                        node_attrs[boolean_fields] = \
-                            bool(int(node_attrs[boolean_fields]))
-                if fname not in fields:
-                    continue
-                for attr_name in ('relation', 'domain', 'selection',
-                        'relation_field', 'string', 'views', 'invisible',
-                        'add_remove', 'sort', 'context', 'filename',
-                        'selection_change_with'):
-                    if attr_name in fields[fname].attrs and \
-                            not attr_name in node_attrs:
-                        node_attrs[attr_name] = fields[fname].attrs[attr_name]
-                cell_type = node_attrs.get('widget',
-                    fields[fname].attrs['type'])
-                cell = CELLTYPES.get(cell_type)(fname, model_name,
-                    treeview, node_attrs)
-                treeview.cells[fname] = cell
-                renderer = cell.renderer
-
-                readonly = not (editable and not node_attrs.get('readonly',
-                    fields[fname].attrs.get('readonly', False)))
-                if isinstance(renderer, CellRendererToggle):
-                    renderer.set_property('activatable', not readonly)
-                elif isinstance(renderer,
-                        (gtk.CellRendererProgress, CellRendererButton)):
-                    pass
-                else:
-                    renderer.set_property('editable', not readonly)
-                if (not readonly
-                        and not isinstance(renderer, CellRendererBinary)):
-                    renderer.connect_after('editing-started', send_keys,
-                            treeview)
-
-                col = gtk.TreeViewColumn(fields[fname].attrs['string'])
-
-                prefixes = []
-                suffixes = []
-                if cell_type in ('url', 'email', 'callto', 'sip'):
-                    prefixes.append(Affix(fname, self.treeview, node_attrs,
-                            protocol=cell_type))
-                if 'icon' in node_attrs:
-                    prefixes.append(Affix(fname, self.treeview, node_attrs))
-                for affix in node.childNodes:
-                    affix_attrs = node_attributes(affix)
-                    if affix.localName == 'prefix':
-                        list_ = prefixes
-                    else:
-                        list_ = suffixes
-                    list_.append(Affix(fname, self.treeview, affix_attrs))
-
-                for prefix in prefixes:
-                    col.pack_start(prefix.renderer, expand=False)
-                    col.set_cell_data_func(prefix.renderer, prefix.setter)
-
-                col.pack_start(renderer, expand=True)
-                col.set_cell_data_func(renderer, cell.setter)
-                col.name = fname
-
-                for suffix in suffixes:
-                    col.pack_start(suffix.renderer, expand=False)
-                    col.set_cell_data_func(suffix.renderer, suffix.setter)
-
-                hbox = gtk.HBox(False, 2)
-                label = gtk.Label(fields[fname].attrs['string'])
-                label.show()
-                help = fields[fname].attrs['string']
-                if fields[fname].attrs.get('help'):
-                    help += '\n' + fields[fname].attrs['help']
-                tooltips.set_tip(label, help)
-                tooltips.enable()
-                arrow = gtk.Arrow(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-                col.arrow = arrow
-                col.arrow_show = False
-                hbox.pack_start(label, True, True, 0)
-                hbox.pack_start(arrow, False, False, 0)
-                hbox.show()
-                col.set_widget(hbox)
-
-                col._type = fields[fname].attrs['type']
-                col.set_clickable(True)
-                twidth = {
-                    'integer': 60,
-                    'biginteger': 60,
-                    'float': 80,
-                    'numeric': 80,
-                    'float_time': 100,
-                    'date': 110,
-                    'datetime': 160,
-                    'selection': 90,
-                    'char': 100,
-                    'one2many': 50,
-                    'many2many': 50,
-                    'boolean': 20,
-                    'binary': 200,
-                }
-                width = self.screen.tree_column_width[model_name].get(fname)
-                if not width:
-                    if 'width' in node_attrs:
-                        width = int(node_attrs['width'])
-                    else:
-                        width = twidth.get(fields[fname].attrs['type'], 100)
-                col.width = width
-                if width > 0:
-                    col.set_fixed_width(width)
-                col.set_min_width(1)
-                expand = node_attrs.get('expand', False)
-                col.set_expand(expand)
-                expandable |= expand
-                if (not treeview.sequence
-                        and not self.children_field
-                        and fields[fname].attrs.get('sortable', True)):
-                    col.connect('clicked', sort_model, treeview, self.screen)
-                col.set_resizable(True)
-                col.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
-                col.set_visible(not node_attrs.get('tree_invisible',
-                    fields[fname].attrs.get('tree_invisible', False)))
-                if fname == self.screen.exclude_field:
-                    col.set_visible(False)
-                i = treeview.append_column(col)
-                if 'sum' in node_attrs and fields[fname].attrs['type'] \
-                        in ('integer', 'biginteger', 'float', 'numeric',
-                            'float_time'):
-                    label = gtk.Label(node_attrs['sum'] + _(': '))
-                    label_sum = gtk.Label()
-                    if isinstance(fields[fname].attrs.get('digits'),
-                            basestring):
-                        digits = 2
-                    else:
-                        digits = fields[fname].attrs.get('digits', (16, 2))[1]
-                    dict_widget[i] = (fname, label, label_sum, digits)
-            elif node.localName == 'button':
-                #TODO add shortcut
-                cell = Button(treeview, self.screen, node_attrs)
-                state_widgets.append(cell)
-                renderer = cell.renderer
-                string = node_attrs.get('string', _('Unknown'))
-                col = gtk.TreeViewColumn(string, renderer)
-                col.name = None
-                col.set_visible(not node_attrs.get('tree_invisible', False))
-
-                label = gtk.Label(string)
-                label.show()
-                help = string
-                if node_attrs.get('help'):
-                    help += '\n' + node_attrs['help']
-                tooltips.set_tip(label, help)
-                tooltips.enable()
-                arrow = gtk.Arrow(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-                col.arrow = arrow
-                col.arrow_show = False
-                col.set_widget(label)
-
-                col._type = 'button'
-                col.set_cell_data_func(renderer, cell.setter)
-                if 'width' in node_attrs:
-                    width = int(node_attrs['width'])
-                else:
-                    width = 80
-                col.width = width
-                if width > 0:
-                    col.set_fixed_width(width)
-                col.set_resizable(True)
-                col.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
-                i = treeview.append_column(col)
-        if not expandable:
-            col = gtk.TreeViewColumn()
-            col.name = None
-            arrow = gtk.Arrow(gtk.ARROW_DOWN, gtk.SHADOW_IN)
-            col.arrow = arrow
-            col.arrow_show = False
-            col._type = 'fill'
-            col.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
-            treeview.append_column(col)
-        treeview.set_fixed_height_mode(True)
-        return treeview, dict_widget, state_widgets, on_write, [], None
-
-
 class Affix(object):
 
-    def __init__(self, field_name, treeview, attrs, protocol=None):
+    def __init__(self, view, attrs, protocol=None):
         super(Affix, self).__init__()
-        self.field_name = attrs.get('name', field_name)
         self.attrs = attrs
         self.protocol = protocol
         self.icon = attrs.get('icon')
@@ -368,13 +124,13 @@ class Affix(object):
             self.renderer = gtk.CellRendererPixbuf()
         else:
             self.renderer = gtk.CellRendererText()
-        self.treeview = treeview
+        self.view = view
 
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter_):
         record = store.get_value(iter_, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         field.state_set(record, states=('invisible',))
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
@@ -384,7 +140,7 @@ class Affix(object):
             else:
                 value = self.icon
             common.ICONFACTORY.register_icon(value)
-            pixbuf = self.treeview.render_icon(stock_id=value,
+            pixbuf = self.view.treeview.render_icon(stock_id=value,
                 size=gtk.ICON_SIZE_BUTTON, detail=None)
             cell.set_property('pixbuf', pixbuf)
         else:
@@ -394,9 +150,9 @@ class Affix(object):
             cell.set_property('text', text)
 
     def clicked(self, renderer, path):
-        store = self.treeview.get_model()
+        store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
-        value = record[self.field_name].get(record)
+        value = record[self.attrs['name']].get(record)
         if value:
             if self.protocol == 'email':
                 value = 'mailto:%s' % value
@@ -409,17 +165,25 @@ class Affix(object):
 
 class Char(object):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
+    def __init__(self, view, attrs, renderer=None):
         super(Char, self).__init__()
-        self.field_name = field_name
-        self.model_name = model_name
-        self.attrs = attrs or {}
+        self.attrs = attrs
         if renderer is None:
             renderer = CellRendererText
         self.renderer = renderer()
         self.renderer.connect('editing-started', self.editing_started)
-        self.treeview = treeview
+        if not isinstance(self.renderer, CellRendererBinary):
+            self.renderer.connect_after('editing-started', send_keys,
+                view.treeview)
+        self.view = view
+
+    @property
+    def field_name(self):
+        return self.attrs['name']
+
+    @property
+    def model_name(self):
+        return self.view.screen.model_name
 
     @realized
     @CellCache.cache
@@ -442,7 +206,7 @@ class Char(object):
             else:
                 cell.set_property('foreground-set', True)
 
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
 
         if self.attrs.get('type', field.attrs.get('type')) in \
                 ('float', 'integer', 'biginteger', 'boolean',
@@ -451,17 +215,16 @@ class Char(object):
         else:
             align = 0
 
+        editable = getattr(self.view.treeview, 'editable', False)
         states = ('invisible',)
-        if hasattr(self.treeview, 'editable') \
-                and self.treeview.editable:
+        if editable:
             states = ('readonly', 'required', 'invisible')
 
         field.state_set(record, states=states)
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
 
-        if hasattr(self.treeview, 'editable') \
-                and self.treeview.editable:
+        if editable:
             readonly = self.attrs.get('readonly',
                 field.get_state_attrs(record).get('readonly', False))
             if invisible:
@@ -493,7 +256,7 @@ class Char(object):
         cell.set_property('xalign', align)
 
     def get_color(self, record):
-        return record.expr_eval(self.treeview.colors)
+        return record.expr_eval(self.view.attributes.get('colors', '"black"'))
 
     def open_remote(self, record, create, changed=False, text=None,
             callback=None):
@@ -502,10 +265,10 @@ class Char(object):
     def get_textual_value(self, record):
         if not record:
             return ''
-        return record[self.field_name].get_client(record)
+        return record[self.attrs['name']].get_client(record)
 
     def value_from_text(self, record, text, callback=None):
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         field.set_client(record, text)
         if callback:
             callback()
@@ -514,29 +277,28 @@ class Char(object):
         return False
 
     def _get_record_field(self, path):
-        store = self.treeview.get_model()
+        store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
-        field = record.group.fields[self.field_name]
+        field = record.group.fields[self.attrs['name']]
         return record, field
 
 
 class Int(Char):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
+    def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererInteger
-        super(Int, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+        super(Int, self).__init__(view, attrs, renderer=renderer)
         self.factor = float(attrs.get('factor', 1))
 
     def get_textual_value(self, record):
         if not record:
             return ''
-        return record[self.field_name].get_client(record, factor=self.factor)
+        return record[self.attrs['name']].get_client(
+            record, factor=self.factor)
 
     def value_from_text(self, record, text, callback=None):
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         field.set_client(record, text, factor=self.factor)
         if callback:
             callback()
@@ -544,23 +306,22 @@ class Int(Char):
 
 class Boolean(Char):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
+    def __init__(self, view, attrs=None,
             renderer=None):
         if renderer is None:
             renderer = CellRendererToggle
-        super(Boolean, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+        super(Boolean, self).__init__(view, attrs, renderer=renderer)
         self.renderer.connect('toggled', self._sig_toggled)
 
     def _sig_toggled(self, renderer, path):
-        store = self.treeview.get_model()
+        store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         if not self.attrs.get('readonly',
                 field.get_state_attrs(record).get('readonly', False)):
-            value = record[self.field_name].get_client(record)
-            record[self.field_name].set_client(record, int(not value))
-            self.treeview.set_cursor(path)
+            value = record[self.attrs['name']].get_client(record)
+            record[self.attrs['name']].set_client(record, int(not value))
+            self.view.treeview.set_cursor(path)
         return True
 
 
@@ -571,7 +332,7 @@ class URL(Char):
     def setter(self, column, cell, store, iter):
         super(URL, self).setter(column, cell, store, iter)
         record = store.get_value(iter, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         field.state_set(record, states=('readonly',))
         readonly = field.get_state_attrs(record).get('readonly', False)
         cell.set_property('visible', not readonly)
@@ -579,12 +340,10 @@ class URL(Char):
 
 class Date(Char):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
+    def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = partial(CellRendererDate, date_format())
-        super(Date, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+        super(Date, self).__init__(view, attrs, renderer=renderer)
         self.renderer.connect('editing-started', self.editing_started)
 
 
@@ -594,7 +353,7 @@ class Datetime(Date):
     def setter(self, column, cell, store, iter):
         super(Datetime, self).setter(column, cell, store, iter)
         record = store.get_value(iter, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         time_format = field.time_format(record)
         self.renderer.format = date_format() + ' ' + time_format
 
@@ -605,45 +364,41 @@ class Time(Date):
     def setter(self, column, cell, store, iter):
         super(Time, self).setter(column, cell, store, iter)
         record = store.get_value(iter, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         time_format = field.time_format(record)
         self.renderer.format = time_format
 
 
 class Float(Int):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
+    def __init__(self, view, attrs, renderer=None):
         if renderer is None:
             renderer = CellRendererFloat
-        super(Float, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+        super(Float, self).__init__(view, attrs, renderer=renderer)
 
     @realized
     def setter(self, column, cell, store, iter):
         super(Float, self).setter(column, cell, store, iter)
         record = store.get_value(iter, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         digits = field.digits(record, factor=self.factor)
         cell.digits = digits
 
 
 class FloatTime(Char):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
-        super(FloatTime, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+    def __init__(self, view, attrs, renderer=None):
+        super(FloatTime, self).__init__(view, attrs, renderer=renderer)
         self.conv = None
         if attrs and attrs.get('float_time'):
             self.conv = rpc.CONTEXT.get(attrs['float_time'])
 
     def get_textual_value(self, record):
-        val = record[self.field_name].get(record)
+        val = record[self.attrs['name']].get(record)
         return common.float_time_to_text(val, self.conv)
 
     def value_from_text(self, record, text, callback=None):
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         digits = field.digits(record)
         field.set_client(record,
             common.text_to_float_time(text, self.conv, digits[1]))
@@ -653,13 +408,11 @@ class FloatTime(Char):
 
 class Binary(Char):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
+    def __init__(self, view, attrs, renderer=None):
         self.filename = attrs.get('filename')
         if renderer is None:
             renderer = partial(CellRendererBinary, bool(self.filename))
-        super(Binary, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+        super(Binary, self).__init__(view, attrs, renderer=renderer)
         self.renderer.connect('new', self.new_binary)
         self.renderer.connect('open', self.open_binary)
         self.renderer.connect('save', self.save_binary)
@@ -677,7 +430,7 @@ class Binary(Char):
     @CellCache.cache
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
         else:
@@ -685,14 +438,14 @@ class Binary(Char):
         cell.set_property('size', common.humanize(size) if size else '')
 
         states = ('invisible',)
-        if getattr(self.treeview, 'editable', False):
+        if getattr(self.view.treeview, 'editable', False):
             states = ('readonly', 'required', 'invisible')
 
         field.state_set(record, states=states)
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
 
-        if getattr(self.treeview, 'editable', False):
+        if getattr(self.view.treeview, 'editable', False):
             readonly = self.attrs.get('readonly',
                 field.get_state_attrs(record).get('readonly', False))
             if invisible:
@@ -758,24 +511,22 @@ class Binary(Char):
 
 class M2O(Char):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
+    def __init__(self, view, attrs, renderer=None):
         if renderer is None and int(attrs.get('completion', 1)):
             renderer = partial(CellRendererTextCompletion, self.set_completion)
-        super(M2O, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+        super(M2O, self).__init__(view, attrs, renderer=renderer)
 
     def value_from_text(self, record, text, callback=None):
-        field = record.group.fields[self.field_name]
+        field = record.group.fields[self.attrs['name']]
         if not text:
             field.set_client(record, (None, ''))
             if callback:
                 callback()
             return
 
-        relation = record[self.field_name].attrs['relation']
-        domain = record[self.field_name].domain_get(record)
-        context = record[self.field_name].context_get(record)
+        relation = record[self.attrs['name']].attrs['relation']
+        domain = record[self.attrs['name']].domain_get(record)
+        context = record[self.attrs['name']].context_get(record)
         dom = [('rec_name', 'ilike', '%' + text + '%'), domain]
         try:
             ids = RPCExecute('model', relation, 'search', dom, 0, None, None,
@@ -795,7 +546,7 @@ class M2O(Char):
 
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
-        field = record.group.fields[self.field_name]
+        field = record.group.fields[self.attrs['name']]
         relation = field.attrs['relation']
 
         access = common.MODELACCESS[relation]
@@ -849,7 +600,7 @@ class M2O(Char):
 
     def search_remote(self, record, relation, ids=None, domain=None,
             context=None, callback=None):
-        field = record.group.fields[self.field_name]
+        field = record.group.fields[self.attrs['name']]
 
         def search_callback(found):
             value = None
@@ -917,12 +668,6 @@ class O2O(M2O):
     pass
 
 
-class UnsettableColumn(Exception):
-
-    def __init__(self):
-        Exception.__init__()
-
-
 class O2M(Char):
 
     @realized
@@ -931,7 +676,7 @@ class O2M(Char):
         cell.set_property('xalign', 0.5)
 
     def get_textual_value(self, record):
-        return '( ' + str(len(record[self.field_name]
+        return '( ' + str(len(record[self.attrs['name']]
                 .get_eval(record))) + ' )'
 
     def value_from_text(self, record, text, callback=None):
@@ -940,8 +685,8 @@ class O2M(Char):
 
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
-        group = record.value[self.field_name]
-        field = record.group.fields[self.field_name]
+        group = record.value[self.attrs['name']]
+        field = record.group.fields[self.attrs['name']]
         relation = field.attrs['relation']
         context = field.context_get(record)
 
@@ -964,8 +709,8 @@ class M2M(O2M):
 
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
-        group = record.value[self.field_name]
-        field = record.group.fields[self.field_name]
+        group = record.value[self.attrs['name']]
+        field = record.group.fields[self.attrs['name']]
         relation = field.attrs['relation']
         context = field.context_get(record)
         domain = field.domain_get(record)
@@ -988,11 +733,12 @@ class Selection(Char, SelectionMixin, PopdownMixin):
         self.renderer = CellRendererCombo()
         self.renderer.connect('editing-started', self.editing_started)
         self.init_selection()
-        self.renderer.set_property('model', self.get_popdown_model(self.selection)[0])
+        self.renderer.set_property('model',
+            self.get_popdown_model(self.selection)[0])
         self.renderer.set_property('text-column', 0)
 
     def get_textual_value(self, record):
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         self.update_selection(record, field)
         value = field.get(record)
         text = dict(self.selection).get(value, '')
@@ -1006,9 +752,9 @@ class Selection(Char, SelectionMixin, PopdownMixin):
 
     def editing_started(self, cell, editable, path):
         super(Selection, self).editing_started(cell, editable, path)
-        store = self.treeview.get_model()
+        store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
 
         set_value = lambda *a: self.set_value(editable, record, field)
         editable.child.connect('activate', set_value)
@@ -1034,14 +780,12 @@ class Selection(Char, SelectionMixin, PopdownMixin):
 
 class Reference(Char, SelectionMixin):
 
-    def __init__(self, field_name, model_name, treeview, attrs=None,
-            renderer=None):
-        super(Reference, self).__init__(field_name, model_name, treeview,
-            attrs=attrs, renderer=renderer)
+    def __init__(self, view, attrs, renderer=None):
+        super(Reference, self).__init__(view, attrs, renderer=renderer)
         self.init_selection()
 
     def get_textual_value(self, record):
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         self.update_selection(record, field)
         value = field.get_client(record)
         if not value:
@@ -1066,22 +810,19 @@ class ProgressBar(object):
         'top_to_bottom': gtk.PROGRESS_TOP_TO_BOTTOM,
     }
 
-    def __init__(self, field_name, model_name, treeview, attrs=None):
+    def __init__(self, view, attrs):
         super(ProgressBar, self).__init__()
-        self.field_name = field_name
-        self.model_name = model_name
-        self.attrs = attrs or {}
+        self.attrs = attrs
         self.renderer = gtk.CellRendererProgress()
         orientation = self.orientations.get(self.attrs.get('orientation',
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
         self.renderer.set_property('orientation', orientation)
-        self.treeview = treeview
 
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter):
         record = store.get_value(iter, 0)
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         value = float(self.get_textual_value(record) or 0.0)
         cell.set_property('value', value)
         digit = field.digits(record)[1]
@@ -1093,10 +834,10 @@ class ProgressBar(object):
         raise NotImplementedError
 
     def get_textual_value(self, record):
-        return record[self.field_name].get_client(record) or ''
+        return record[self.attrs['name']].get_client(record) or ''
 
     def value_from_text(self, record, text, callback=None):
-        field = record[self.field_name]
+        field = record[self.attrs['name']]
         field.set_client(record, float(text))
         if callback:
             callback()
@@ -1104,12 +845,11 @@ class ProgressBar(object):
 
 class Button(object):
 
-    def __init__(self, treeview, screen, attrs=None):
+    def __init__(self, view, attrs):
         super(Button, self).__init__()
-        self.attrs = attrs or {}
+        self.attrs = attrs
         self.renderer = CellRendererButton(attrs.get('string', _('Unknown')))
-        self.treeview = treeview
-        self.screen = screen
+        self.view = view
 
         self.renderer.connect('clicked', self.button_clicked)
 
@@ -1135,7 +875,7 @@ class Button(object):
     def button_clicked(self, widget, path):
         if not path:
             return True
-        store = self.treeview.get_model()
+        store = self.view.treeview.get_model()
         record = store.get_value(store.get_iter(path), 0)
 
         state_changes = record.expr_eval(
@@ -1143,30 +883,4 @@ class Button(object):
         if state_changes.get('invisible') \
                 or state_changes.get('readonly'):
             return True
-        self.screen.button(self.attrs)
-
-CELLTYPES = {
-    'char': Char,
-    'many2one': M2O,
-    'date': Date,
-    'one2many': O2M,
-    'many2many': M2M,
-    'selection': Selection,
-    'float': Float,
-    'numeric': Float,
-    'float_time': FloatTime,
-    'integer': Int,
-    'biginteger': Int,
-    'datetime': Datetime,
-    'time': Time,
-    'boolean': Boolean,
-    'text': Char,
-    'url': URL,
-    'email': URL,
-    'callto': URL,
-    'sip': URL,
-    'progressbar': ProgressBar,
-    'reference': Reference,
-    'one2one': O2O,
-    'binary': Binary,
-}
+        self.view.screen.button(self.attrs)

@@ -3,7 +3,7 @@
 import gtk
 import gettext
 
-from interface import WidgetInterface
+from .widget import Widget
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
@@ -16,10 +16,11 @@ from tryton.common.completion import get_completion, update_completion
 _ = gettext.gettext
 
 
-class One2Many(WidgetInterface):
+class One2Many(Widget):
+    expand = True
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(One2Many, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(One2Many, self).__init__(view, attrs)
 
         self.widget = gtk.VBox(homogeneous=False, spacing=2)
         self._readonly = True
@@ -192,8 +193,8 @@ class One2Many(WidgetInterface):
         but_switch.props.sensitive = self.screen.number_of_views > 1
 
     def _color_widget(self):
-        if hasattr(self.screen.current_view, 'widget_tree'):
-            return self.screen.current_view.widget_tree
+        if hasattr(self.screen.current_view, 'treeview'):
+            return self.screen.current_view.treeview
         return super(One2Many, self)._color_widget()
 
     def grab_focus(self):
@@ -324,7 +325,7 @@ class One2Many(WidgetInterface):
         sequence = None
         for view in self.screen.views:
             if view.view_type == 'tree':
-                sequence = view.widget_tree.sequence
+                sequence = view.attributes.get('sequence')
                 if sequence:
                     break
 
@@ -402,7 +403,7 @@ class One2Many(WidgetInterface):
 
         sequence = None
         if self.screen.current_view.view_type == 'tree':
-            sequence = self.screen.current_view.widget_tree.sequence
+            sequence = self.screen.current_view.attributes.get('sequence')
 
         def callback(result):
             self.focus_out = True

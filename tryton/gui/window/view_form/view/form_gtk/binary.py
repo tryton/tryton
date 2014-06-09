@@ -6,16 +6,16 @@ import os
 import tempfile
 from tryton.common import common
 from tryton.common import file_selection, Tooltips, file_open, slugify
-from interface import WidgetInterface
+from .widget import Widget
 
 _ = gettext.gettext
 
 
-class Binary(WidgetInterface):
+class Binary(Widget):
     "Binary"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Binary, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Binary, self).__init__(view, attrs)
 
         self.filename = attrs.get('filename')
 

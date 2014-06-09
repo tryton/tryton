@@ -1,7 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
-import parser
 import gettext
 import gobject
 from itertools import islice, cycle
@@ -13,10 +12,7 @@ _ = gettext.gettext
 
 
 class TreeView(gtk.TreeView):
-
-    def __init__(self):
-        super(TreeView, self).__init__()
-        self.cells = {}
+    display_counter = 0
 
     def next_column(self, path, column=None, editable=True, _sign=1):
         columns = self.get_columns()
@@ -53,44 +49,41 @@ class EditableTreeView(TreeView):
     leaving_events = leaving_record_events + (gtk.keysyms.Tab,
             gtk.keysyms.ISO_Left_Tab, gtk.keysyms.KP_Enter)
 
-    def __init__(self, position):
+    def __init__(self, position, view):
         super(EditableTreeView, self).__init__()
         self.editable = position
+        self.view = view
 
     def on_quit_cell(self, current_record, fieldname, value, callback=None):
         field = current_record[fieldname]
-        cell = self.cells[fieldname]
+        widget = self.view.widgets[fieldname]
 
         # The value has not changed and is valid ... do nothing.
-        if value == cell.get_textual_value(current_record) \
+        if value == widget.get_textual_value(current_record) \
                 and field.validate(current_record):
             if callback:
                 callback()
             return
-
-        try:
-            cell.value_from_text(current_record, value, callback=callback)
-        except parser.UnsettableColumn:
-            return
+        widget.value_from_text(current_record, value, callback=callback)
 
     def on_open_remote(self, current_record, fieldname, create, value,
             entry=None, callback=None):
-        cell = self.cells[fieldname]
-        if value != cell.get_textual_value(current_record) or not value:
+        widget = self.view.widgets[fieldname]
+        if value != widget.get_textual_value(current_record) or not value:
             changed = True
         else:
             changed = False
         try:
-            cell.open_remote(current_record, create, changed, value,
+            widget.open_remote(current_record, create, changed, value,
                 callback=callback)
         except NotImplementedError:
             pass
 
     def on_create_line(self):
-        access = MODELACCESS[self.screen.model_name]
+        access = MODELACCESS[self.view.screen.model_name]
         model = self.get_model()
-        if not access['create'] or (self.screen.size_limit is not None
-                and (len(model) >= self.screen.size_limit >= 0)):
+        if not access['create'] or (self.view.screen.size_limit is not None
+                and (len(model) >= self.view.screen.size_limit >= 0)):
             return
         if self.editable == 'top':
             method = model.prepend
@@ -171,7 +164,7 @@ class EditableTreeView(TreeView):
                         gobject.idle_add(self.set_cursor, path,
                             self.prev_column(path, column), True)
                     elif keyval in self.leaving_record_events:
-                        fields = self.cells.keys()
+                        fields = self.view.widgets.keys()
                         if not record.validate(fields):
                             invalid_fields = record.invalid_fields
                             col = None
@@ -180,9 +173,9 @@ class EditableTreeView(TreeView):
                                     break
                             gobject.idle_add(self.set_cursor, path, col, True)
                             return
-                        if ((self.screen.pre_validate
+                        if ((self.view.screen.pre_validate
                                     and not record.pre_validate())
-                                or (not self.screen.parent
+                                or (not self.view.screen.parent
                                     and not record.save())):
                             gobject.idle_add(self.set_cursor, path, column,
                                 True)
@@ -212,8 +205,8 @@ class EditableTreeView(TreeView):
             entry.handler_block(entry.editing_done_id)
 
             def callback():
-                cell = self.cells[column.name]
-                value = cell.get_textual_value(record)
+                widget = self.view.widgets[column.name]
+                value = widget.get_textual_value(record)
                 if isinstance(entry, gtk.Entry):
                     entry.set_text(value)
                 else:
@@ -230,7 +223,7 @@ class EditableTreeView(TreeView):
             # set_value
             field.editabletree_entry = entry
 
-            def remove_widget(cell):
+            def remove_widget(widget):
                 if hasattr(field, 'editabletree_entry'):
                     del field.editabletree_entry
             entry.connect('remove-widget', remove_widget)

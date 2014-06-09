@@ -3,16 +3,16 @@
 import gtk
 import gobject
 
-from .interface import WidgetInterface
+from .widget import Widget
 from tryton.common.selection import SelectionMixin
 from tryton.common.treeviewcontrol import TreeViewControl
 
 
-class MultiSelection(WidgetInterface, SelectionMixin):
+class MultiSelection(Widget, SelectionMixin):
+    expand = True
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(MultiSelection, self).__init__(field_name, model_name,
-            attrs=attrs)
+    def __init__(self, view, attrs):
+        super(MultiSelection, self).__init__(view, attrs)
 
         self.widget = gtk.ScrolledWindow()
         self.widget.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)

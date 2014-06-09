@@ -60,7 +60,7 @@ class WinSearch(NoModal):
         self.view.unset_editable()
         # Prevent to set tree_state
         self.screen.tree_states_done.add(id(self.view))
-        sel = self.view.widget_tree.get_selection()
+        sel = self.view.treeview.get_selection()
 
         if not sel_multi:
             sel.set_mode(gtk.SELECTION_SINGLE)
@@ -89,7 +89,7 @@ class WinSearch(NoModal):
         common.center_window(self.win, self.parent, self.sensible_widget)
 
     def sig_activate(self, *args):
-        self.view.widget_tree.emit_stop_by_name('row_activated')
+        self.view.treeview.emit_stop_by_name('row_activated')
         self.win.response(gtk.RESPONSE_OK)
         return True
 

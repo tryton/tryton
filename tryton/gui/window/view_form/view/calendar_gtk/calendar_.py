@@ -3,27 +3,22 @@
 import calendar
 import datetime
 import goocalendar
-import tryton.common as common
 from dates_period import DatesPeriod
 
 
 class Calendar_(goocalendar.Calendar):
     'Calendar'
 
-    def __init__(self, attrs, model, root_node, fields, screen,
-            event_store=None):
+    def __init__(self, attrs, screen, fields, event_store=None):
         super(Calendar_, self).__init__(event_store)
         self.attrs = attrs
-        self.model = model
-        self.root_node = root_node
-        self.fields = fields
         self.screen = screen
+        self.fields = fields
         self.event_store = event_store
         self.current_domain_period = self.get_displayed_period()
 
     def set_default_date(self, record, selected_date):
-        attrs = common.node_attributes(self.root_node)
-        dtstart = attrs.get('dtstart')
+        dtstart = self.attrs.get('dtstart')
         record[dtstart].set(record, datetime.datetime.combine(selected_date,
             datetime.time(0)))
 
@@ -54,9 +49,8 @@ class Calendar_(goocalendar.Calendar):
     def current_domain(self):
         first_datetime, last_datetime = \
             self.current_domain_period.get_dates(True)
-        attrs = common.node_attributes(self.root_node)
-        dtstart = attrs.get('dtstart')
-        dtend = attrs.get('dtend') or dtstart
+        dtstart = self.attrs.get('dtstart')
+        dtend = self.attrs.get('dtend') or dtstart
         domain = ['OR',
             ['AND', (dtstart, '>=', first_datetime),
                 (dtstart, '<', last_datetime)],
@@ -67,9 +61,8 @@ class Calendar_(goocalendar.Calendar):
         return domain
 
     def display(self, group):
-        attrs = common.node_attributes(self.root_node)
-        dtstart = attrs.get('dtstart')
-        dtend = attrs.get('dtend') or dtstart
+        dtstart = self.attrs.get('dtstart')
+        dtend = self.attrs.get('dtend') or dtstart
         if self.screen.current_record:
             record = self.screen.current_record
             date = record[dtstart].get(record)
@@ -81,14 +74,6 @@ class Calendar_(goocalendar.Calendar):
         else:
             event_store = goocalendar.EventStore()
             self.event_store = event_store
-
-        fields = []
-        for node in self.root_node.childNodes:
-            if not node.nodeType == node.ELEMENT_NODE:
-                continue
-            if node.localName == 'field':
-                attrs = common.node_attributes(node)
-                fields.append(attrs.get('name'))
 
         for record in group:
             if not record[dtstart].get(record):
@@ -107,8 +92,8 @@ class Calendar_(goocalendar.Calendar):
                 all_day = True
 
             # TODO define color code
-            label = '\n'.join(record[name].get_client(record)
-                for name in fields).rstrip()
+            label = '\n'.join(record[attrs['name']].get_client(record)
+                for attrs in self.fields).rstrip()
             event = goocalendar.Event(label, start, end,
                 bg_color='lightblue', all_day=all_day)
             event.record = record

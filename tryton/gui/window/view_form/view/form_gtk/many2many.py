@@ -3,7 +3,7 @@
 import gtk
 
 from tryton.gui.window.view_form.screen import Screen
-from interface import WidgetInterface
+from .widget import Widget
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 from tryton.config import CONFIG
@@ -16,10 +16,11 @@ from tryton.common.completion import get_completion, update_completion
 _ = gettext.gettext
 
 
-class Many2Many(WidgetInterface):
+class Many2Many(Widget):
+    expand = True
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Many2Many, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Many2Many, self).__init__(view, attrs)
 
         self.widget = gtk.VBox(homogeneous=False, spacing=5)
         self._readonly = True
@@ -97,8 +98,8 @@ class Many2Many(WidgetInterface):
         self.wid_text.connect('key_press_event', self.on_keypress)
 
     def _color_widget(self):
-        if hasattr(self.screen.current_view, 'widget_tree'):
-            return self.screen.current_view.widget_tree
+        if hasattr(self.screen.current_view, 'treeview'):
+            return self.screen.current_view.treeview
         return super(Many2Many, self)._color_widget()
 
     def grab_focus(self):

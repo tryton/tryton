@@ -71,8 +71,9 @@ class Graph(gtk.DrawingArea):
 
     __gsignals__ = {"expose-event": "override"}
 
-    def __init__(self, xfield, yfields, attrs, model):
+    def __init__(self, view, xfield, yfields):
         super(Graph, self).__init__()
+        self.view = view
         self.xfield = xfield
         self.yfields = yfields
         self.datas = {}
@@ -84,8 +85,14 @@ class Graph(gtk.DrawingArea):
         self.connect('motion-notify-event', self.motion)
         self.connect('leave-notify-event', self.leave)
         self.popup = Popup(self)
-        self.attrs = attrs
-        self.model = model
+
+    @property
+    def attrs(self):
+        return self.view.attributes
+
+    @property
+    def model(self):
+        return self.view.screen.model_name
 
     def destroy(self):
         self.popup.destroy()

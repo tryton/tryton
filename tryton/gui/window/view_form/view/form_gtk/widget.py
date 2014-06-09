@@ -13,34 +13,35 @@ from tryton.common import RPCExecute, RPCException
 _ = gettext.gettext
 
 
-class WidgetInterface(object):
+class Widget(object):
+    expand = False
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(WidgetInterface, self).__init__()
-        self.field_name = field_name
-        self.model_name = model_name
-        self.view = None  # Filled by ViewForm
-        self.attrs = attrs or {}
-        for attr_name in ('readonly', 'invisible'):
-            if attr_name in self.attrs:
-                self.attrs[attr_name] = bool(int(self.attrs[attr_name]))
+    def __init__(self, view, attrs):
+        super(Widget, self).__init__()
+        self.view = view
+        self.attrs = attrs
         self.widget = None
         self.position = 0
         self.colors = {}
         self.visible = True
         self.color_name = None
 
-    def __get_record(self):
-        if self.view and self.view.screen:
-            return self.view.screen.current_record
+    @property
+    def field_name(self):
+        return self.attrs['name']
 
-    record = property(__get_record)
+    @property
+    def model_name(self):
+        return self.view.screen.model_name
 
-    def __get_field(self):
+    @property
+    def record(self):
+        return self.view.screen.current_record
+
+    @property
+    def field(self):
         if self.record:
             return self.record.group.fields[self.field_name]
-
-    field = property(__get_field)
 
     def destroy(self):
         pass

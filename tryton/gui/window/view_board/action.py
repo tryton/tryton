@@ -94,7 +94,7 @@ class Action(SignalEvent):
             return
 
         if (self.screen.current_view.view_type == 'tree' and
-                self.screen.current_view.widget_tree.keyword_open):
+                self.screen.current_view.treeview.keyword_open):
             GenericAction.exec_keyword('tree_open', {
                 'model': self.screen.model_name,
                 'id': self.screen.id_get(),

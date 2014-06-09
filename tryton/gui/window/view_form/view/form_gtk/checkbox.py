@@ -1,16 +1,16 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
-from interface import WidgetInterface
+from .widget import Widget
 import gettext
 
 _ = gettext.gettext
 
 
-class CheckBox(WidgetInterface):
+class CheckBox(Widget):
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(CheckBox, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(CheckBox, self).__init__(view, attrs)
         self.widget = gtk.CheckButton()
         self.widget.connect('focus-out-event', lambda x, y: self._focus_out())
         self.widget.connect_after('toggled', self.sig_activate)

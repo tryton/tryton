@@ -3,18 +3,18 @@
 import gtk
 import gettext
 
-from interface import WidgetInterface
+from .widget import Widget
 from tryton.common.date_widget import DateEntry
 from tryton.translate import date_format
 
 _ = gettext.gettext
 
 
-class Calendar(WidgetInterface):
+class Calendar(Widget):
     "Calendar"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Calendar, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Calendar, self).__init__(view, attrs)
 
         self.widget = gtk.HBox()
         self.entry = DateEntry('')
@@ -76,9 +76,6 @@ class Calendar(WidgetInterface):
 class DateTime(Calendar):
     "DateTime"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(DateTime, self).__init__(field_name, model_name, attrs=attrs)
-
     def get_format(self, record, field):
         return date_format() + ' ' + field.time_format(record)
 
@@ -86,8 +83,8 @@ class DateTime(Calendar):
 class Time(Calendar):
     "Time"
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Time, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Time, self).__init__(view, attrs)
         self.entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY, None)
 
     def get_format(self, record, field):

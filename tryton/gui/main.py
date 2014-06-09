@@ -1054,13 +1054,13 @@ class Main(object):
         screen.switch_view(view_type=screen.current_view.view_type)
 
         vbox.pack_start(screen.screen_container.alternate_viewport, True, True)
-        screen.current_view.widget_tree.set_headers_visible(False)
+        treeview = screen.current_view.treeview
+        treeview.set_headers_visible(False)
 
         self.menu_expander.add(vbox)
         self.menu_expander.show()
 
         # Favorite column
-        treeview = screen.current_view.widget_tree
         column = gtk.TreeViewColumn()
         column.name = None
         column._type = None

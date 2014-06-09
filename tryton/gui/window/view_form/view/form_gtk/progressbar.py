@@ -1,11 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
-from interface import WidgetInterface
+from .widget import Widget
 import locale
 
 
-class ProgressBar(WidgetInterface):
+class ProgressBar(Widget):
     'Progress Bar'
     orientations = {
         'left_to_right': gtk.PROGRESS_LEFT_TO_RIGHT,
@@ -14,8 +14,8 @@ class ProgressBar(WidgetInterface):
         'top_to_bottom': gtk.PROGRESS_TOP_TO_BOTTOM,
     }
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(ProgressBar, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(ProgressBar, self).__init__(view, attrs)
         self.widget = gtk.ProgressBar()
         orientation = self.orientations.get(attrs.get('orientation',
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)

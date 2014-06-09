@@ -7,7 +7,7 @@ import os
 import tempfile
 from tryton.common import file_selection, Tooltips, file_open, slugify
 from tryton.config import PIXMAPS_DIR
-from interface import WidgetInterface
+from .widget import Widget
 import urllib
 
 _ = gettext.gettext
@@ -15,10 +15,10 @@ _ = gettext.gettext
 NOIMAGE = open(os.path.join(PIXMAPS_DIR, 'tryton-noimage.png'), 'rb').read()
 
 
-class Image(WidgetInterface):
+class Image(Widget):
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Image, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Image, self).__init__(view, attrs)
 
         self.filename = attrs.get('filename')
         self.height = int(attrs.get('img_height', 100))

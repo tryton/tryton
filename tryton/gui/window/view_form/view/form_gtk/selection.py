@@ -3,15 +3,15 @@
 import gtk
 import gobject
 
-from interface import WidgetInterface
+from .widget import Widget
 from tryton.common.selection import SelectionMixin, selection_shortcuts, \
     PopdownMixin
 
 
-class Selection(WidgetInterface, SelectionMixin, PopdownMixin):
+class Selection(Widget, SelectionMixin, PopdownMixin):
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(Selection, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(Selection, self).__init__(view, attrs)
 
         self.widget = gtk.HBox(spacing=3)
         self.entry = gtk.ComboBoxEntry()

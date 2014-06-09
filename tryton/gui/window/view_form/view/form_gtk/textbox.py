@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
-from interface import WidgetInterface, TranslateMixin
+from .widget import Widget, TranslateMixin
 from tryton.config import CONFIG
 
 try:
@@ -10,10 +10,11 @@ except ImportError:
     gtkspell = None
 
 
-class TextBox(WidgetInterface, TranslateMixin):
+class TextBox(Widget, TranslateMixin):
+    expand = True
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(TextBox, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(TextBox, self).__init__(view, attrs)
 
         self.widget = gtk.VBox()
         self.scrolledwindow = gtk.ScrolledWindow()

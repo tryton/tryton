@@ -9,7 +9,7 @@ import decimal
 import gettext
 from decimal import Decimal
 
-from interface import WidgetInterface
+from .widget import Widget
 from tryton.config import CONFIG
 from tryton.gui.window.win_search import WinSearch
 from tryton.common import RPCExecute, RPCException, timezoned_date, \
@@ -306,10 +306,10 @@ DICT_ENTRIES = {
     }
 
 
-class DictWidget(WidgetInterface):
+class DictWidget(Widget):
 
-    def __init__(self, field_name, model_name, attrs=None):
-        super(DictWidget, self).__init__(field_name, model_name, attrs=attrs)
+    def __init__(self, view, attrs):
+        super(DictWidget, self).__init__(view, attrs)
         self.schema_model = attrs['schema_model']
         self.keys = {}
         self.fields = {}
