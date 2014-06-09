@@ -478,21 +478,24 @@ class DictWidget(Widget):
         self.rows[key] = [label, alignment, remove_but]
         self.buttons[key] = remove_but
 
-    def add_key(self, key):
+    def add_keys(self, keys):
         context = self.field.context_get(self.record)
-        try:
-            key_ids = RPCExecute('model', self.schema_model, 'search',
-                [('name', '=', key)], 0, CONFIG['client.limit'],
-                None, context=context)
-            if not key_ids:
-                return
-            keys = RPCExecute('model', self.schema_model,
-                'get_keys', key_ids, context=context)
-            if not keys:
-                return
-            self.keys[key] = keys[0]
-        except RPCException:
-            pass
+        batchlen = min(10, CONFIG['client.limit'])
+        for i in xrange(0, len(keys), batchlen):
+            sub_keys = keys[i:i + batchlen]
+            try:
+                key_ids = RPCExecute('model', self.schema_model, 'search',
+                    [('name', 'in', sub_keys)], 0, CONFIG['client.limit'],
+                    None, context=context)
+                if not key_ids:
+                    continue
+                values = RPCExecute('model', self.schema_model,
+                    'get_keys', key_ids, context=context)
+                if not values:
+                    continue
+            except RPCException:
+                pass
+            self.keys.update({k['name']: k for k in values})
 
     def display(self, record, field):
         super(DictWidget, self).display(record, field)
@@ -507,14 +510,14 @@ class DictWidget(Widget):
             self._record_id = record_id
 
         value = field.get_client(record) if field else {}
-        for key in sorted(value.iterkeys()):
-            val = value[key]
-            if key not in self.keys:
-                self.add_key(key)
-            if key not in self.keys:
-                continue
+        new_key_names = set(value.iterkeys()) - set(self.keys)
+        if new_key_names:
+            self.add_keys(list(new_key_names))
+        for key, val in sorted(value.iteritems()):
             if key not in self.fields:
                 self.add_line(key)
+            if key not in self.keys:
+                continue
             widget = self.fields[key]
             widget.set_value(val)
             widget.set_readonly(self._readonly)
