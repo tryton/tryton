@@ -105,7 +105,6 @@
                 'method': 'wizard.' + this.action + '.delete',
                 'params': [this.session_id, this.session.context]
             }, this.session);
-            // TODO reload context if config_wizard
         },
         clean: function() {
             this.widget.children().remove();
@@ -203,8 +202,41 @@
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
             this.dialog.dialog('destroy');
-            // TODO other dialogs
-            // TODO reload under screen and action
+            var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
+            var is_menu = false;
+            var screen;
+            if (!dialog) {
+                dialog = Sao.Tab.tabs.get_current();
+                if (dialog) {
+                    if (dialog.screen &&
+                           dialog.screen.model_name != this.model) {
+                        is_menu = true;
+                        screen = Sao.main_menu_screen;
+                    }
+                } else {
+                    is_menu = true;
+                    screen = Sao.main_menu_screen;
+                }
+            }
+            if (dialog && dialog.screen) {
+                screen = dialog.screen;
+            }
+            if (screen) {
+                if (screen.current_record && !is_menu) {
+                    var ids;
+                    if (screen.model_name == this.model) {
+                        ids = this.ids;
+                    } else {
+                        // Wizard run form a children record so reload parent
+                        // record
+                        ids = [screen.current_record.id];
+                    }
+                    screen.reload(ids, true);
+                }
+                if (action) {
+                    screen.client_action(action);
+                }
+            }
         },
         end: function() {
             return Sao.Wizard.Dialog._super.end.call(this).then(

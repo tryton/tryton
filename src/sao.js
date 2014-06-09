@@ -160,7 +160,7 @@ var Sao = {};
 
     Sao.get_preferences = function() {
         var session = Sao.Session.current_session;
-        Sao.rpc({
+        return Sao.rpc({
             'method': 'model.res.user.get_preferences',
             'params': [false, {}]
         }, session).then(function(preferences) {
@@ -169,9 +169,7 @@ var Sao = {};
             deferreds.push(Sao.common.MODELACCESS.load_models());
             deferreds.push(Sao.common.ICONFACTORY.load_icons());
             deferreds.push(Sao.common.MODELHISTORY.load_history());
-            jQuery.when.apply(jQuery, deferreds).then(function() {
-                Sao.menu(preferences);
-                Sao.user_menu(preferences);
+            return jQuery.when.apply(jQuery, deferreds).then(function() {
                 (preferences.actions || []).forEach(function(action_id) {
                     Sao.Action.execute(action_id, {}, null, {});
                 });
@@ -181,6 +179,7 @@ var Sao = {};
                 }
                 document.title = title;
                 // TODO language
+                return jQuery.when(preferences);
             });
         });
     };
@@ -191,8 +190,10 @@ var Sao = {};
         dfd.then(function(session) {
             Sao.Session.current_session = session;
             session.reload_context();
-            return session;
-        }).then(Sao.get_preferences);
+        }).then(Sao.get_preferences).then(function(preferences) {
+            Sao.menu(preferences);
+            Sao.user_menu(preferences);
+        });
     };
 
     Sao.logout = function() {
@@ -212,11 +213,18 @@ var Sao = {};
             jQuery('#user-preferences').children().remove();
             jQuery('#user-logout').children().remove();
             jQuery('#menu').children().remove();
-            new Sao.Window.Preferences(Sao.get_preferences);
+            new Sao.Window.Preferences(function() {
+                Sao.get_preferences().then(function(preferences) {
+                    Sao.menu(preferences);
+                    Sao.user_menu(preferences);
+                });
+            });
         });
     };
 
     Sao.user_menu = function(preferences) {
+        jQuery('#user-preferences').children().remove();
+        jQuery('#user-logout').children().remove();
         jQuery('#user-preferences').append(jQuery('<a/>', {
             'href': '#'
         }).click(Sao.preferences).append(preferences.status_bar));
@@ -251,6 +259,7 @@ var Sao = {};
             Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;
             view.table.find('th').hide();
+            jQuery('#menu').children().remove();
             jQuery('#menu').append(
                 form.screen.screen_container.content_box.detach());
         });

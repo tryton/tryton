@@ -714,33 +714,7 @@
             var process_action = function(action) {
                 this.reload(ids, true);
                 if (typeof action == 'string') {
-                    var access = Sao.common.MODELACCESS.get(this.model_name);
-                    if (action == 'new') {
-                        if (access.create) {
-                            this.new_();
-                        }
-                    } else if (action == 'delete') {
-                        if (access['delete']) {
-                            this.remove(!this.parent, false, !this.parent);
-                        }
-                    } else if (action == 'remove') {
-                        if (access.write && access.read && this.parent) {
-                            this.remove(false, true, false);
-                        }
-                    } else if (action == 'copy') {
-                        if (access.create) {
-                            this.copy();
-                        }
-                    } else if (action == 'next') {
-                        this.display_next();
-                    } else if (action == 'previous') {
-                        this.display_previous();
-                    } else if (action == 'close') {
-                        Sao.Tab.close_current();
-                    } else if (action.startsWith('switch')) {
-                        var view_type = action.split(' ')[1];
-                        this.switch_view(view_type);
-                    }
+                    this.client_action(action);
                 }
                 else if (action) {
                     Sao.Action.execute(action, {
@@ -750,6 +724,9 @@
                     }, null, this.context);
                 }
             };
+            var reload_ids = function() {
+                this.reload(ids, true);
+            };
 
             var record = this.current_record;
             var ids = this.current_view.selected_records().map(
@@ -758,11 +735,44 @@
                 });
             record.save().done(function() {
                 record.model.execute(attributes.name,
-                    [ids], this.context).then(process_action.bind(this),
-                        function() {
-                            this.reload(ids, true);
-                        }.bind(this));
+                    [ids], this.context).then(process_action.bind(this))
+                    .then(reload_ids);
             }.bind(this));
+        },
+        client_action: function(action) {
+            var access = Sao.common.MODELACCESS.get(this.model_name);
+            if (action == 'new') {
+                if (access.create) {
+                    this.new_();
+                }
+            } else if (action == 'delete') {
+                if (access['delete']) {
+                    this.remove(!this.parent, false, !this.parent);
+                }
+            } else if (action == 'remove') {
+                if (access.write && access.read && this.parent) {
+                    this.remove(false, true, false);
+                }
+            } else if (action == 'copy') {
+                if (access.create) {
+                    this.copy();
+                }
+            } else if (action == 'next') {
+                this.display_next();
+            } else if (action == 'previous') {
+                this.display_previous();
+            } else if (action == 'close') {
+                Sao.Tab.close_current();
+            } else if (action.startsWith('switch')) {
+                var view_type = action.split(' ')[1];
+                this.switch_view(view_type);
+            } else if (action == 'reload menu') {
+                Sao.get_preferences().then(function(preferences) {
+                    Sao.menu(preferences);
+                });
+            } else if (action == 'reload context') {
+                Sao.get_preferences();
+            }
         },
         save_tree_state: function(store) {
             store = (store === undefined) ? true : store;

@@ -146,9 +146,12 @@
         }
         return jQuery.when();
     };
-    Sao.Tab.tabs.close_current = function() {
+    Sao.Tab.tabs.get_current = function() {
         var tabs = jQuery('#tabs > div');
-        var tab = Sao.Tab.tabs[tabs.tabs('option', 'active')];
+        return Sao.Tab.tabs[tabs.tabs('option', 'active')];
+    };
+    Sao.Tab.tabs.close_current = function() {
+        var tab = this.get_current();
         tab.close();
     };
 
