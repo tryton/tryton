@@ -4,7 +4,7 @@ from trytond.model import fields
 from trytond.pyson import Eval, Bool, Get
 from trytond.pool import PoolMeta
 
-__all__ = ['Configuration', 'AccountMove']
+__all__ = ['Configuration', 'FiscalYear', 'AccountMove']
 __metaclass__ = PoolMeta
 
 
@@ -19,6 +19,14 @@ class Configuration:
             'account.account', 'Cost Price Counterpart Account', domain=[
                 ('company', 'in', [Get(Eval('context', {}), 'company'), None]),
                 ]))
+
+
+class FiscalYear:
+    __name__ = 'account.fiscalyear'
+    account_stock_method = fields.Selection([
+            (None, 'None'),
+            ('continental', 'Continental'),
+            ], 'Account Stock Method')
 
 
 class AccountMove:

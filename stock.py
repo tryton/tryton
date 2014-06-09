@@ -110,6 +110,13 @@ class Move:
 
         if self.product.type != 'goods':
             return
+
+        date = self.effective_date or Date.today()
+        period_id = Period.find(self.company.id, date=date)
+        period = Period(period_id)
+        if not period.fiscalyear.account_stock_method:
+            return
+
         type_ = self._get_account_stock_move_type()
         if not type_:
             return
@@ -133,8 +140,6 @@ class Move:
         if move_line:
             account_move_lines.append(move_line)
 
-        date = self.effective_date or Date.today()
-        period_id = Period.find(self.company.id, date=date)
         account_configuration = AccountConfiguration(1)
         with Transaction().set_user(0, set_context=True):
             return AccountMove(

@@ -13,6 +13,7 @@ def register():
         Category,
         Template,
         Configuration,
+        FiscalYear,
         AccountMove,
         UpdateCostPriceAsk,
         UpdateCostPriceShowMove,

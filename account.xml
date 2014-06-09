@@ -15,6 +15,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="value" eval="'account.journal,' + str(ref('account.journal_stock'))"/>
         </record>
 
+        <record model="ir.ui.view" id="fiscalyear_view_form">
+            <field name="model">account.fiscalyear</field>
+            <field name="inherit" ref="account.fiscalyear_view_form"/>
+            <field name="name">fiscalyear_form</field>
+        </record>
+
         <record model="account.account.type.template"
             id="account_type_template_asset_current_inventories">
             <field name="name">Inventories</field>

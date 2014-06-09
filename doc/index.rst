@@ -20,9 +20,10 @@ Four new fields are added to Product and Category:
 As usual, if the "Use Category's accounts" is checked it is the category one
 that is used otherwise it is the product one.
 
-An Account Move is created for each Stock Move for which one Stock Location has
-the type "Storage" and an the other has the type "Supplier", "Customer",
-"Production" or "Lost and Found".
+An Account Move is created for each Stock Move done under a fiscal year with
+the account stock method set and for which one Stock Location has the type
+"Storage" and an the other has the type "Supplier", "Customer", "Production" or
+"Lost and Found".
 
 If the Stock Move has a "Supplier" Location as origin, then the Account Stock
 of the Product is debited and the Account Stock Supplier of the Product is

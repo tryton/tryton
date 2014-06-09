@@ -91,9 +91,6 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')
                     | (Eval('type') != 'goods')),
-                'required': ((Eval('type') == 'goods')
-                    & Eval('context', {}).get('company')
-                    & ~Eval('account_category')),
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
@@ -107,9 +104,6 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')
                     | (Eval('type') != 'goods')),
-                'required': ((Eval('type') == 'goods')
-                    & Eval('context', {}).get('company')
-                    & ~Eval('account_category')),
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
@@ -123,9 +117,6 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')
                     | (Eval('type') != 'goods')),
-                'required': ((Eval('type') == 'goods')
-                    & Eval('context', {}).get('company')
-                    & ~Eval('account_category')),
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
@@ -140,9 +131,6 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')
                     | (Eval('type') != 'goods')),
-                'required': ((Eval('type') == 'goods')
-                    & Eval('context', {}).get('company')
-                    & ~Eval('account_category')),
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
@@ -156,9 +144,6 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_category')
                     | (Eval('type') != 'goods')),
-                'required': ((Eval('type') == 'goods')
-                    & Eval('context', {}).get('company')
-                    & ~Eval('account_category')),
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
