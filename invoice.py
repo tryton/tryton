@@ -51,6 +51,7 @@ class InvoiceLine:
         Move = pool.get('stock.move')
         PurchaseLine = pool.get('purchase.line')
         SaleLine = pool.get('sale.line')
+        Period = pool.get('account.period')
 
         result = super(InvoiceLine, self).get_move_line()
 
@@ -59,6 +60,13 @@ class InvoiceLine:
         if not self.product:
             return result
         if self.product.type != 'goods':
+            return result
+
+        accounting_date = (self.invoice.accounting_date
+            or self.invoice.invoice_date)
+        period_id = Period.find(self.invoice.company.id, date=accounting_date)
+        period = Period(period_id)
+        if period.fiscalyear.account_stock_method != 'anglo_saxon':
             return result
 
         moves = []

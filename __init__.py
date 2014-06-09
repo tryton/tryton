@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from .product import *
 from .stock import *
 from .invoice import *
+from .account import *
 
 
 def register():
@@ -13,4 +14,5 @@ def register():
         Template,
         Move,
         InvoiceLine,
+        FiscalYear,
         module='account_stock_anglo_saxon', type_='model')

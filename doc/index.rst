@@ -12,7 +12,8 @@ A new field is added to Product and Category:
 As usual, if the account is not defined on Product, it is the category one that
 is used.
 
-The Account Moves of Invoices are modified.
+The Account Moves of Invoices are modified for fiscal year with the account
+stock method set.
 
 On Supplier Invoice, the cost of the Product at reception is debited on the
 Account Stock Supplier and only the difference is debited to the Account

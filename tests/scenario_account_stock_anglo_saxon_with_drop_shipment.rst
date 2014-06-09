@@ -112,6 +112,7 @@ Create fiscal year::
     >>> fiscalyear.start_date = today + relativedelta(month=1, day=1)
     >>> fiscalyear.end_date = today + relativedelta(month=12, day=31)
     >>> fiscalyear.company = company
+    >>> fiscalyear.account_stock_method = 'anglo_saxon'
     >>> post_move_sequence = Sequence(name='%s' % today.year,
     ...     code='account.move',
     ...     company=company)
