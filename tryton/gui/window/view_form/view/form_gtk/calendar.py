@@ -73,7 +73,8 @@ class Calendar(WidgetInterface):
         return self.entry.grab_focus()
 
     def set_value(self, record, field):
-        field.set_client(record, self.get_value())
+        field.set_client(record, self.entry.get_text())
+        return True
 
     def display(self, record, field):
         if not field:
