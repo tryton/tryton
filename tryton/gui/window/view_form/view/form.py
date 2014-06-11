@@ -340,6 +340,8 @@ class ViewForm(View):
         container.add(frame, attributes)
 
     def _parse_paned(self, node, container, attributes, Paned):
+        attributes.setdefault('yexpand', True)
+        attributes.setdefault('yfill', True)
         paned = Paned()
         if 'position' in attributes:
             paned.set_position(attributes['position'])
