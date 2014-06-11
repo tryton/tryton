@@ -433,7 +433,9 @@ class ViewList(ParserView):
             if not col.get_visible() or not col.name:
                 continue
             cell = self.widget_tree.cells[col.name]
-            values.append('"' + str(cell.get_textual_value(record)) + '"')
+            values.append('"'
+                + str(cell.get_textual_value(record)).replace('"', '""')
+                + '"')
         data.append('\t'.join(values))
         return
 
