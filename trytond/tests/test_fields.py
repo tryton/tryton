@@ -567,7 +567,7 @@ class FieldsTestCase(unittest.TestCase):
                     'float': 'test',
                     })
 
-            self.assertRaises(Exception, self.float_required.create, [{}])
+            self.assertRaises(UserError, self.float_required.create, [{}])
             transaction.cursor.rollback()
 
             float5, = self.float_required.create([{
@@ -581,17 +581,17 @@ class FieldsTestCase(unittest.TestCase):
                         }])
             self.assert_(float6)
 
-            self.assertRaises(Exception, self.float_digits.create, [{
+            self.assertRaises(UserError, self.float_digits.create, [{
                         'digits': 1,
                         'float': 1.11,
                         }])
 
-            self.assertRaises(Exception, self.float_digits.write,
+            self.assertRaises(UserError, self.float_digits.write,
                 [float6], {
                     'float': 1.11,
                     })
 
-            self.assertRaises(Exception, self.float_digits.write,
+            self.assertRaises(UserError, self.float_digits.write,
                 [float6], {
                     'digits': 0,
                     })
@@ -806,7 +806,7 @@ class FieldsTestCase(unittest.TestCase):
                     'numeric': 'test',
                     })
 
-            self.assertRaises(Exception, self.numeric_required.create, [{}])
+            self.assertRaises(UserError, self.numeric_required.create, [{}])
             transaction.cursor.rollback()
 
             numeric5, = self.numeric_required.create([{
@@ -820,22 +820,22 @@ class FieldsTestCase(unittest.TestCase):
                         }])
             self.assert_(numeric6)
 
-            self.assertRaises(Exception, self.numeric_digits.create, [{
+            self.assertRaises(UserError, self.numeric_digits.create, [{
                         'digits': 1,
                         'numeric': Decimal('1.11'),
                         }])
 
-            self.assertRaises(Exception, self.numeric_digits.write,
+            self.assertRaises(UserError, self.numeric_digits.write,
                 [numeric6], {
                     'numeric': Decimal('1.11'),
                     })
 
-            self.assertRaises(Exception, self.numeric_digits.write,
+            self.assertRaises(UserError, self.numeric_digits.write,
                 [numeric6], {
                     'numeric': Decimal('0.10000000000000001'),
                     })
 
-            self.assertRaises(Exception, self.numeric_digits.write,
+            self.assertRaises(UserError, self.numeric_digits.write,
                 [numeric6], {
                     'digits': 0,
                     })
@@ -1061,10 +1061,10 @@ class FieldsTestCase(unittest.TestCase):
                     })
             self.assertEqual(char2.char, 'Test')
 
-            self.assertRaises(Exception, self.char_required.create, [{}])
+            self.assertRaises(UserError, self.char_required.create, [{}])
             transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.char_required.create, [{
+            self.assertRaises(UserError, self.char_required.create, [{
                     'char': '',
                     }])
             transaction.cursor.rollback()
@@ -1311,7 +1311,7 @@ class FieldsTestCase(unittest.TestCase):
                     })
             self.assertEqual(text2.text, 'Test')
 
-            self.assertRaises(Exception, self.text_required.create, [{}])
+            self.assertRaises(UserError, self.text_required.create, [{}])
             transaction.cursor.rollback()
 
             text5, = self.text_required.create([{
@@ -1324,11 +1324,11 @@ class FieldsTestCase(unittest.TestCase):
                         }])
             self.assert_(text6)
 
-            self.assertRaises(Exception, self.text_size.create, [{
+            self.assertRaises(UserError, self.text_size.create, [{
                         'text': 'foobar',
                         }])
 
-            self.assertRaises(Exception, self.text_size.write, [text6], {
+            self.assertRaises(UserError, self.text_size.write, [text6], {
                     'text': 'foobar',
                     })
 
@@ -1582,7 +1582,7 @@ class FieldsTestCase(unittest.TestCase):
             self.assert_(date5)
             self.assertEqual(date5.date, datetime.date(2009, 1, 1))
 
-            self.assertRaises(Exception, self.date_required.create, [{}])
+            self.assertRaises(UserError, self.date_required.create, [{}])
             transaction.cursor.rollback()
 
             date6, = self.date_required.create([{
@@ -1834,7 +1834,7 @@ class FieldsTestCase(unittest.TestCase):
             self.assertEqual(datetime5.datetime,
                 datetime.datetime(2009, 1, 1, 12, 0, 0))
 
-            self.assertRaises(Exception, self.datetime_required.create, [{}])
+            self.assertRaises(UserError, self.datetime_required.create, [{}])
             transaction.cursor.rollback()
 
             datetime6, = self.datetime_required.create([{
@@ -1862,7 +1862,7 @@ class FieldsTestCase(unittest.TestCase):
             self.assert_(self.datetime_format.create([{
                             'datetime': datetime.datetime(2009, 1, 1, 12, 30),
                             }]))
-            self.assertRaises(Exception, self.datetime_format.create, [{
+            self.assertRaises(UserError, self.datetime_format.create, [{
                         'datetime': datetime.datetime(2009, 1, 1, 12, 30, 25),
                         }])
 
@@ -2081,7 +2081,7 @@ class FieldsTestCase(unittest.TestCase):
             self.assert_(time5)
             self.assertEqual(time5.time, datetime.time(12, 0))
 
-            self.assertRaises(Exception, self.time_required.create, [{}])
+            self.assertRaises(UserError, self.time_required.create, [{}])
             transaction.cursor.rollback()
 
             time6, = self.time_required.create([{
@@ -2104,7 +2104,7 @@ class FieldsTestCase(unittest.TestCase):
             self.assert_(self.time_format.create([{
                         'time': datetime.time(12, 30),
                         }]))
-            self.assertRaises(Exception, self.time_format.create, [{
+            self.assertRaises(UserError, self.time_format.create, [{
                     'time': datetime.time(12, 30, 25),
                     }])
 
@@ -2191,18 +2191,18 @@ class FieldsTestCase(unittest.TestCase):
                     })
             self.assertEqual(one2one2.one2one, None)
 
-            self.assertRaises(Exception, self.one2one.create, [{
+            self.assertRaises(UserError, self.one2one.create, [{
                         'name': 'one2one3',
                         'one2one': target1.id,
                         }])
             transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.one2one.write, [one2one2], {
+            self.assertRaises(UserError, self.one2one.write, [one2one2], {
                     'one2one': target1.id,
                     })
             transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.one2one_required.create, [{
+            self.assertRaises(UserError, self.one2one_required.create, [{
                         'name': 'one2one3',
                         }])
             transaction.cursor.rollback()
@@ -2220,7 +2220,7 @@ class FieldsTestCase(unittest.TestCase):
             target4, = self.one2one_target.create([{
                         'name': 'target4',
                         }])
-            self.assertRaises(Exception, self.one2one_domain.create, [{
+            self.assertRaises(UserError, self.one2one_domain.create, [{
                         'name': 'one2one4',
                         'one2one': target4.id,
                         }])
@@ -2403,7 +2403,7 @@ class FieldsTestCase(unittest.TestCase):
 
                 transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.one2many_required.create, [{
+            self.assertRaises(UserError, self.one2many_required.create, [{
                         'name': 'origin3',
                         }])
             transaction.cursor.rollback()
@@ -2421,14 +2421,14 @@ class FieldsTestCase(unittest.TestCase):
             self.one2many_size.create([{
                         'targets': [('create', [{}])] * 3,
                         }])
-            self.assertRaises(Exception, self.one2many_size.create, [{
+            self.assertRaises(UserError, self.one2many_size.create, [{
                         'targets': [('create', [{}])] * 4,
                         }])
             self.one2many_size_pyson.create([{
                         'limit': 4,
                         'targets': [('create', [{}])] * 4,
                         }])
-            self.assertRaises(Exception, self.one2many_size_pyson.create, [{
+            self.assertRaises(UserError, self.one2many_size_pyson.create, [{
                         'limit': 2,
                         'targets': [('create', [{}])] * 4,
                         }])
@@ -2597,7 +2597,7 @@ class FieldsTestCase(unittest.TestCase):
 
                 transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.many2many_required.create, [{
+            self.assertRaises(UserError, self.many2many_required.create, [{
                         'name': 'origin3',
                         }])
             transaction.cursor.rollback()
@@ -2733,7 +2733,7 @@ class FieldsTestCase(unittest.TestCase):
                         }])
             self.assert_(reference3)
 
-            self.assertRaises(Exception, self.reference_required.create, [{
+            self.assertRaises(UserError, self.reference_required.create, [{
                         'name': 'reference4',
                         }])
             transaction.cursor.rollback()
@@ -3029,7 +3029,7 @@ class FieldsTestCase(unittest.TestCase):
             self.assert_(selection2)
             self.assertEqual(selection2.select, None)
 
-            self.assertRaises(Exception, self.selection.create,
+            self.assertRaises(UserError, self.selection.create,
                 [{'select': 'chinese'}])
 
             selection3, = self.selection.create(
@@ -3050,15 +3050,15 @@ class FieldsTestCase(unittest.TestCase):
             self.assertEqual(selection5.select, 'hexa')
             self.assertEqual(selection5.dyn_select, None)
 
-            self.assertRaises(Exception, self.selection.create,
+            self.assertRaises(UserError, self.selection.create,
                 [{'select': 'arabic', 'dyn_select': '0x3'}])
-            self.assertRaises(Exception, self.selection.create,
+            self.assertRaises(UserError, self.selection.create,
                 [{'select': 'hexa', 'dyn_select': '3'}])
 
-            self.assertRaises(Exception, self.selection_required.create, [{}])
+            self.assertRaises(UserError, self.selection_required.create, [{}])
             transaction.cursor.rollback()
 
-            self.assertRaises(Exception, self.selection_required.create,
+            self.assertRaises(UserError, self.selection_required.create,
                 [{'select': None}])
             transaction.cursor.rollback()
 
@@ -3084,13 +3084,13 @@ class FieldsTestCase(unittest.TestCase):
             dict3, = self.dict_default.create([{}])
             self.assert_(dict3.dico == {'a': 1})
 
-            self.assertRaises(Exception, self.dict_required.create, [{}])
+            self.assertRaises(UserError, self.dict_required.create, [{}])
             transaction.cursor.rollback()
 
             dict4, = self.dict_required.create([{'dico': dict(a=1)}])
             self.assert_(dict4.dico == {'a': 1})
 
-            self.assertRaises(Exception, self.dict_required.create,
+            self.assertRaises(UserError, self.dict_required.create,
                 [{'dico': {}}])
             transaction.cursor.rollback()
 
@@ -3117,13 +3117,13 @@ class FieldsTestCase(unittest.TestCase):
             bin3, = self.binary_default.create([{}])
             self.assert_(bin3.binary == buffer('default'))
 
-            self.assertRaises(Exception, self.binary_required.create, [{}])
+            self.assertRaises(UserError, self.binary_required.create, [{}])
             transaction.cursor.rollback()
 
             bin4, = self.binary_required.create([{'binary': buffer('baz')}])
             self.assert_(bin4.binary == buffer('baz'))
 
-            self.assertRaises(Exception, self.binary_required.create,
+            self.assertRaises(UserError, self.binary_required.create,
                 [{'binary': buffer('')}])
 
             transaction.cursor.rollback()

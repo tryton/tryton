@@ -5,6 +5,7 @@ import unittest
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
         install_module
 from trytond.transaction import Transaction
+from trytond.exceptions import UserError
 
 
 class ModelAccessTestCase(unittest.TestCase):
@@ -42,7 +43,7 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_read': False,
                     })
-            self.assertRaises(Exception, self.test_access.read, [test.id])
+            self.assertRaises(UserError, self.test_access.read, [test.id])
 
             # Two access rules with one group allowed
             group, = self.group.search([('users', '=', USER)])
@@ -70,11 +71,11 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_read': False,
                     })
-            self.assertRaises(Exception, self.test_access.read, [test.id])
+            self.assertRaises(UserError, self.test_access.read, [test.id])
 
             # One access disallowed for one group
             self.model_access.delete([model_access_wo_group])
-            self.assertRaises(Exception, self.test_access.read, [test.id])
+            self.assertRaises(UserError, self.test_access.read, [test.id])
 
             # One access allowed for one group
             self.model_access.write([model_access_w_group], {
@@ -123,7 +124,7 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_write': False,
                     })
-            self.assertRaises(Exception, self.test_access.write, [test], {})
+            self.assertRaises(UserError, self.test_access.write, [test], {})
 
             # Two access rules with one group allowed
             group, = self.group.search([('users', '=', USER)])
@@ -150,11 +151,11 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_write': False,
                     })
-            self.assertRaises(Exception, self.test_access.write, [test], {})
+            self.assertRaises(UserError, self.test_access.write, [test], {})
 
             # One access disallowed for one group
             self.model_access.delete([model_access_wo_group])
-            self.assertRaises(Exception, self.test_access.write, [test], {})
+            self.assertRaises(UserError, self.test_access.write, [test], {})
 
             # One access allowed for one group
             self.model_access.write([model_access_w_group], {
@@ -201,7 +202,7 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_create': False,
                     })
-            self.assertRaises(Exception, self.test_access.create, {})
+            self.assertRaises(UserError, self.test_access.create, {})
 
             # Two access rules with one group allowed
             group, = self.group.search([('users', '=', USER)])
@@ -229,11 +230,11 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_create': False,
                     })
-            self.assertRaises(Exception, self.test_access.create, [{}])
+            self.assertRaises(UserError, self.test_access.create, [{}])
 
             # One access disallowed for one group
             self.model_access.delete([model_access_wo_group])
-            self.assertRaises(Exception, self.test_access.create, [{}])
+            self.assertRaises(UserError, self.test_access.create, [{}])
 
             # One access allowed for one group
             self.model_access.write([model_access_w_group], {
@@ -282,7 +283,7 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_delete': False,
                     })
-            self.assertRaises(Exception, self.test_access.delete,
+            self.assertRaises(UserError, self.test_access.delete,
                 [tests.pop()])
 
             # Two access rules with one group allowed
@@ -311,12 +312,12 @@ class ModelAccessTestCase(unittest.TestCase):
             self.model_access.write([model_access_wo_group], {
                     'perm_delete': False,
                     })
-            self.assertRaises(Exception, self.test_access.delete,
+            self.assertRaises(UserError, self.test_access.delete,
                 [tests.pop()])
 
             # One access disallowed for one group
             self.model_access.delete([model_access_wo_group])
-            self.assertRaises(Exception, self.test_access.delete,
+            self.assertRaises(UserError, self.test_access.delete,
                 [tests.pop()])
 
             # One access allowed for one group
@@ -400,11 +401,11 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                     'perm_read': False,
                     })
 
-            self.assertRaises(Exception, self.test_access.read, [test.id],
+            self.assertRaises(UserError, self.test_access.read, [test.id],
                 ['field1'])
             self.test_access.read([test.id], ['field2'])
-            self.assertRaises(Exception, self.test_access.read, [test.id])
-            self.assertRaises(Exception, getattr, test, 'field1')
+            self.assertRaises(UserError, self.test_access.read, [test.id])
+            self.assertRaises(UserError, getattr, test, 'field1')
             test.field2
             transaction.cursor.cache.clear()
             test = self.test_access(test.id)
@@ -453,22 +454,22 @@ class ModelFieldAccessTestCase(unittest.TestCase):
             self.field_access.write([field_access_wo_group], {
                 'perm_read': False,
                 })
-            self.assertRaises(Exception, self.test_access.read, [test.id],
+            self.assertRaises(UserError, self.test_access.read, [test.id],
                 ['field1'])
             self.test_access.read([test.id], ['field2'])
-            self.assertRaises(Exception, self.test_access.read, [test.id])
-            self.assertRaises(Exception, getattr, test, 'field1')
+            self.assertRaises(UserError, self.test_access.read, [test.id])
+            self.assertRaises(UserError, getattr, test, 'field1')
             test.field2
             transaction.cursor.cache.clear()
             test = self.test_access(test.id)
 
             # One access disallowed for one group
             self.field_access.delete([field_access_wo_group])
-            self.assertRaises(Exception, self.test_access.read, [test.id],
+            self.assertRaises(UserError, self.test_access.read, [test.id],
                 ['field1'])
             self.test_access.read([test.id], ['field2'])
-            self.assertRaises(Exception, self.test_access.read, [test.id])
-            self.assertRaises(Exception, getattr, test, 'field1')
+            self.assertRaises(UserError, self.test_access.read, [test.id])
+            self.assertRaises(UserError, getattr, test, 'field1')
             test.field2
             transaction.cursor.cache.clear()
             test = self.test_access(test.id)
@@ -537,11 +538,11 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                 'perm_read': False,
                 })
             self.test_access.read([test.id], ['field1'])
-            self.assertRaises(Exception, self.test_access.read, [test.id],
+            self.assertRaises(UserError, self.test_access.read, [test.id],
                 ['field2'])
-            self.assertRaises(Exception, self.test_access.read, [test.id])
+            self.assertRaises(UserError, self.test_access.read, [test.id])
             test.field1
-            self.assertRaises(Exception, getattr, test, 'field2')
+            self.assertRaises(UserError, getattr, test, 'field2')
             transaction.cursor.cache.clear()
             test = self.test_access(test.id)
 
@@ -549,13 +550,13 @@ class ModelFieldAccessTestCase(unittest.TestCase):
             self.field_access.write([field_access1], {
                     'perm_read': False,
                     })
-            self.assertRaises(Exception, self.test_access.read, [test.id],
+            self.assertRaises(UserError, self.test_access.read, [test.id],
                 ['field1'])
-            self.assertRaises(Exception, self.test_access.read, [test.id],
+            self.assertRaises(UserError, self.test_access.read, [test.id],
                 ['field2'])
-            self.assertRaises(Exception, self.test_access.read, [test.id])
-            self.assertRaises(Exception, getattr, test, 'field1')
-            self.assertRaises(Exception, getattr, test, 'field2')
+            self.assertRaises(UserError, self.test_access.read, [test.id])
+            self.assertRaises(UserError, getattr, test, 'field1')
+            self.assertRaises(UserError, getattr, test, 'field2')
             transaction.cursor.cache.clear()
             test = self.test_access(test.id)
 
@@ -607,10 +608,10 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                     })
 
             self.test_access.write([test], {})
-            self.assertRaises(Exception, self.test_access.write, [test],
+            self.assertRaises(UserError, self.test_access.write, [test],
                 {'field1': 'ham'})
             self.test_access.write([test], {'field2': 'spam'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field1': 'ham',
                     'field2': 'spam',
                     })
@@ -660,10 +661,10 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                     'perm_write': False,
                     })
             self.test_access.write([test], {})
-            self.assertRaises(Exception, self.test_access.write, [test],
+            self.assertRaises(UserError, self.test_access.write, [test],
                 {'field1': 'ham'})
             self.test_access.write([test], {'field2': 'spam'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field1': 'ham',
                     'field2': 'spam',
                     })
@@ -671,10 +672,10 @@ class ModelFieldAccessTestCase(unittest.TestCase):
             # One access disallowed for one group
             self.field_access.delete([field_access_wo_group])
             self.test_access.write([test], {})
-            self.assertRaises(Exception, self.test_access.write, [test],
+            self.assertRaises(UserError, self.test_access.write, [test],
                 {'field1': 'ham'})
             self.test_access.write([test], {'field2': 'ham'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field1': 'ham',
                     'field2': 'spam',
                     })
@@ -744,9 +745,9 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                     })
             self.test_access.write([test], {})
             self.test_access.write([test], {'field1': 'ham'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field2': 'spam'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field1': 'ham',
                     'field2': 'spam',
                     })
@@ -756,11 +757,11 @@ class ModelFieldAccessTestCase(unittest.TestCase):
                     'perm_write': False,
                     })
             self.test_access.write([test], {})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field1': 'ham'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field2': 'spam'})
-            self.assertRaises(Exception, self.test_access.write, [test], {
+            self.assertRaises(UserError, self.test_access.write, [test], {
                     'field1': 'ham',
                     'field2': 'spam',
                     })

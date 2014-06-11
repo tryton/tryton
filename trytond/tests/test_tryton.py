@@ -13,6 +13,7 @@ from trytond import backend
 from trytond.protocols.dispatcher import create
 from trytond.transaction import Transaction
 from trytond.pyson import PYSONEncoder, Eval
+from trytond.exceptions import UserError
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'USER_PASSWORD', 'CONTEXT',
     'install_module', 'test_view', 'test_depends', 'doctest_dropdb',
@@ -38,8 +39,8 @@ class ModelViewTestCase(unittest.TestCase):
 
     def test0000test(self):
         'Test test'
-        self.assertRaises(Exception, install_module, 'nosuchmodule')
-        self.assertRaises(Exception, test_view, 'nosuchmodule')
+        self.assertRaises(UserError, install_module, 'nosuchmodule')
+        self.assertRaises(UserError, test_view, 'nosuchmodule')
 
     def test0010ir(self):
         'Test ir'

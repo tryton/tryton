@@ -60,20 +60,20 @@ class ToolsTestCase(unittest.TestCase):
 
     def test0060safe_eval_builtin(self):
         'Attempt to access a unsafe builtin'
-        self.assertRaises(Exception, safe_eval, "open('test.txt', 'w')")
+        self.assertRaises(NameError, safe_eval, "open('test.txt', 'w')")
 
     def test0061safe_eval_getattr(self):
         'Attempt to get arround direct attr access'
-        self.assertRaises(Exception, safe_eval, "getattr(int, '__abs__')")
+        self.assertRaises(NameError, safe_eval, "getattr(int, '__abs__')")
 
     def test0062safe_eval_func_globals(self):
         'Attempt to access global enviroment where fun was defined'
-        self.assertRaises(Exception, safe_eval,
+        self.assertRaises(SyntaxError, safe_eval,
                 "def x(): pass; print x.func_globals")
 
     def test0063safe_eval_lowlevel(self):
         "Lowlevel tricks to access 'object'"
-        self.assertRaises(Exception, safe_eval,
+        self.assertRaises(ValueError, safe_eval,
                 "().__class__.mro()[1].__subclasses__()")
 
     def test0070datetime_strftime(self):

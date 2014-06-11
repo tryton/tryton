@@ -10,6 +10,7 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
         install_module
 from trytond.tests.trigger import TRIGGER_LOGS
 from trytond.transaction import Transaction
+from trytond.exceptions import UserError
 
 
 class TriggerTestCase(unittest.TestCase):
@@ -50,13 +51,13 @@ class TriggerTestCase(unittest.TestCase):
                     combination_values = values.copy()
                     for mode in combination:
                         combination_values['on_%s' % mode] = True
-                    self.assertRaises(Exception, self.trigger.create,
+                    self.assertRaises(UserError, self.trigger.create,
                         [combination_values])
 
             # check_condition
             condition_values = values.copy()
             condition_values['condition'] = '='
-            self.assertRaises(Exception, self.trigger.create,
+            self.assertRaises(UserError, self.trigger.create,
                 [condition_values])
 
             # Restart the cache on the get_triggers method of ir.trigger
