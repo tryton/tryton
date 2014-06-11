@@ -197,7 +197,7 @@
                     var prefixes = [], suffixes = [];
                     // TODO support for url/email/callto/sip
                     if ('icon' in attributes) {
-                        column.prefixes.push(new Sao.View.Tree.Affix(this,
+                        column.prefixes.push(new Sao.View.Tree.Affix(
                                     attributes));
                     }
                     var affix, affix_attributes;
@@ -210,11 +210,14 @@
                             attribute = affix.attributes[i];
                             affix_attributes[attribute.name] = attribute.value;
                         }
+                        if (!affix_attributes.name) {
+                            affix_attributes.name = name;
+                        }
                         if (affix.tagName == 'prefix') {
-                            column.prefixes.push(new Sao.View.Tree.Affix(name,
+                            column.prefixes.push(new Sao.View.Tree.Affix(
                                         affix_attributes));
                         } else {
-                            column.suffixes.push(new Sao.View.Tree.Affix(name,
+                            column.suffixes.push(new Sao.View.Tree.Affix(
                                         affix_attributes));
                         }
                     }
@@ -828,8 +831,7 @@
     });
 
     Sao.View.Tree.Affix = Sao.class_(Object, {
-        init: function(name, attributes, protocol) {
-            this.name = attributes.name || name;
+        init: function(attributes, protocol) {
             this.attributes = attributes;
             this.protocol = protocol || null;
             this.icon = attributes.icon;
@@ -852,9 +854,9 @@
         },
         render: function(record) {
             var cell = this.get_cell();
-            record.load(this.name).done(function() {
+            record.load(this.attributes.name).done(function() {
                 var value, icon_prm;
-                var field = record.model.fields[this.name];
+                var field = record.model.fields[this.attributes.name];
                 //TODO set_state
                 if (this.icon) {
                     if (this.icon in record.model.fields) {
