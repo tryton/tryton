@@ -341,6 +341,8 @@ class ViewTree(View):
             prefixes.append(Affix(self, node_attrs))
         for affix in node.childNodes:
             affix_attrs = node_attributes(affix)
+            if 'name' not in affix_attrs:
+                affix_attrs['name'] = name
             if affix.tagName == 'prefix':
                 list_ = prefixes
             else:
