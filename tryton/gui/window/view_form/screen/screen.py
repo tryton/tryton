@@ -751,7 +751,7 @@ class Screen(SignalEvent):
             self.current_record = record
         elif view.view_type == 'calendar':
             record = self.current_record
-            goocalendar = view.children['goocalendar']
+            goocalendar = view.widgets['goocalendar']
             date = goocalendar.selected_date
             year = date.year
             month = date.month
@@ -806,7 +806,7 @@ class Screen(SignalEvent):
             self.current_record = record
         elif view.view_type == 'calendar':
             record = self.current_record
-            goocalendar = view.children['goocalendar']
+            goocalendar = view.widgets['goocalendar']
             date = goocalendar.selected_date
             year = date.year
             month = date.month
