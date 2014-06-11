@@ -688,7 +688,9 @@ class ViewTree(View):
             if not col.get_visible() or not col.name:
                 continue
             widget = self.treeview.widgets[col.name]
-            values.append('"' + str(widget.get_textual_value(record)) + '"')
+            values.append('"'
+                + str(widget.get_textual_value(record)).replace('"', '""')
+                + '"')
         data.append('\t'.join(values))
         return
 
