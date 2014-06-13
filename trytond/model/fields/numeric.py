@@ -49,6 +49,6 @@ class Numeric(Float):
             type_ = self.sql_type().base
             if operator in ('in', 'not in'):
                 return [Cast(Literal(v), type_) for v in value]
-            else:
+            elif value is not None:
                 return Cast(Literal(value), type_)
         return value
