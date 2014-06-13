@@ -64,6 +64,10 @@ class XMLTestCase(unittest.TestCase):
         'Test time'
         self.dumps_loads(datetime.datetime.now().time())
 
+    def test_none(self):
+        'Test None'
+        self.dumps_loads(None)
+
 
 def suite():
     suite_ = unittest.TestSuite()
