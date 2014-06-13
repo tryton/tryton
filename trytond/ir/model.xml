@@ -173,5 +173,49 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_model_access_form"
             action="act_model_button_form" id="menu_model_button_form"/>
 
+        <record model="ir.ui.view" id="model_data_view_list">
+            <field name="model">ir.model.data</field>
+            <field name="type">tree</field>
+            <field name="name">model_data_list</field>
+        </record>
+        <record model="ir.ui.view" id="model_data_view_form">
+            <field name="model">ir.model.data</field>
+            <field name="type">form</field>
+            <field name="name">model_data_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_model_data_form">
+            <field name="name">Data</field>
+            <field name="res_model">ir.model.data</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_data_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="model_data_view_list"/>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_model_data_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="model_data_view_form"/>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_model_data_form_domain_out_of_sync">
+            <field name="name">Out of Sync</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('out_of_sync', '=', True)]</field>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+            id="act_model_data_form_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_model_data_form"/>
+        </record>
+        <menuitem parent="menu_model_form" action="act_model_data_form"
+            id="menu_model_data_form"/>
+
     </data>
 </tryton>

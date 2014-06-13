@@ -2,8 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 import time
 from xml import sax
-from decimal import Decimal
-import datetime
 import logging
 import traceback
 import sys
@@ -604,10 +602,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             if not old_values:
                 old_values = {}
             else:
-                old_values = safe_eval(old_values, {
-                    'Decimal': Decimal,
-                    'datetime': datetime,
-                    })
+                old_values = self.ModelData.load_values(old_values)
 
             for key in old_values:
                 if isinstance(old_values[key], str):
@@ -691,6 +686,9 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             else:
                 self.write_records(module, model, record, to_update,
                     old_values, fs_id, mdata_id)
+            self.grouped_model_data.extend(([self.ModelData(mdata_id)], {
+                        'fs_values': self.ModelData.dump_values(values),
+                        }))
         else:
             if self.grouped:
                 self.grouped_creations[model][fs_id] = values
@@ -713,7 +711,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     'model': model,
                     'module': self.module,
                     'db_id': record.id,
-                    'values': str(values),
+                    'values': self.ModelData.dump_values(values),
+                    'fs_values': self.ModelData.dump_values(values),
                     'noupdate': self.noupdate,
                     })
 
@@ -725,7 +724,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                     'db_id': record.id,
                     'model': model,
                     'id': mdata.id,
-                    'values': str(values),
+                    'values': self.ModelData.dump_values(values),
                     })
         self.fs2db.reset_browsercord(self.module, model,
             [r.id for r in records])
@@ -774,8 +773,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                             'model': model,
                             'module': module,
                             'db_id': record.id,
-                            'values': str(values),
-                            'date_update': datetime.datetime.now(),
+                            'values': self.ModelData.dump_values(values),
                             }))
 
         # reset_browsercord to keep cache memory low

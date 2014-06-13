@@ -1,11 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import datetime
 import re
 import heapq
 from sql.aggregate import Max
 from sql.conditionals import Case
 from collections import defaultdict
+try:
+    import simplejson as json
+except ImportError:
+    import json
 
 from ..model import ModelView, ModelSQL, fields
 from ..report import Report
@@ -16,6 +19,7 @@ from ..pool import Pool
 from ..pyson import Bool, Eval
 from ..rpc import RPC
 from .. import backend
+from ..protocols.jsonrpc import object_hook, JSONEncoder
 try:
     from ..tools.StringMatcher import StringMatcher
 except ImportError:
@@ -813,10 +817,11 @@ class ModelData(ModelSQL, ModelView):
     db_id = fields.Integer('Resource ID',
         help="The id of the record in the database.", select=True,
         required=True)
-    date_update = fields.DateTime('Update Date')
-    date_init = fields.DateTime('Init Date')
     values = fields.Text('Values')
+    fs_values = fields.Text('Values on File System')
     noupdate = fields.Boolean('No Update')
+    out_of_sync = fields.Function(fields.Boolean('Out of Sync'),
+        'get_out_of_sync', searcher='search_out_of_sync')
     _get_id_cache = Cache('ir_model_data.get_id', context=False)
 
     @classmethod
@@ -826,6 +831,11 @@ class ModelData(ModelSQL, ModelView):
             ('fs_id_module_model_uniq', 'UNIQUE("fs_id", "module", "model")',
                 'The triple (fs_id, module, model) must be unique!'),
         ]
+        cls._buttons.update({
+                'sync': {
+                    'invisible': ~Eval('out_of_sync'),
+                    },
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -844,12 +854,22 @@ class ModelData(ModelSQL, ModelView):
             table.drop_column('inherit', True)
 
     @staticmethod
-    def default_date_init():
-        return datetime.datetime.now()
-
-    @staticmethod
     def default_noupdate():
         return False
+
+    def get_out_of_sync(self, name):
+        return self.values != self.fs_values and self.fs_values is not None
+
+    @classmethod
+    def search_out_of_sync(cls, name, clause):
+        table = cls.__table__()
+        name, operator, value = clause
+        Operator = fields.SQL_OPERATORS[operator]
+        query = table.select(table.id,
+            where=Operator(
+                (table.fs_values != table.values) & (table.fs_values != None),
+                value))
+        return [('id', 'in', query)]
 
     @classmethod
     def write(cls, data, values, *args):
@@ -876,6 +896,46 @@ class ModelData(ModelSQL, ModelView):
         id_ = cls.read([d.id for d in data], ['db_id'])[0]['db_id']
         cls._get_id_cache.set(key, id_)
         return id_
+
+    @classmethod
+    def dump_values(cls, values):
+        return json.dumps(sorted(values.iteritems()), cls=JSONEncoder)
+
+    @classmethod
+    def load_values(cls, values):
+        try:
+            return dict(json.loads(values, object_hook=object_hook))
+        except ValueError:
+            # Migration from 3.2
+            from ..tools import safe_eval
+            from decimal import Decimal
+            import datetime
+            return safe_eval(values, {
+                    'Decimal': Decimal,
+                    'datetime': datetime,
+                    })
+
+    @classmethod
+    @ModelView.button
+    def sync(cls, records):
+        pool = Pool()
+        to_write = []
+        with Transaction().set_user(0):
+            for data in records:
+                Model = pool.get(data.model)
+                values = cls.load_values(data.values)
+                fs_values = cls.load_values(data.fs_values)
+                # values could be the same once loaded
+                # if they come from version < 3.2
+                if values != fs_values:
+                    record = Model(data.db_id)
+                    Model.write([record], fs_values)
+                    values.update(fs_values)
+                to_write.extend([[data], {
+                            'values': cls.dump_values(values),
+                            }])
+            if to_write:
+                cls.write(*to_write)
 
 
 class PrintModelGraphStart(ModelView):
