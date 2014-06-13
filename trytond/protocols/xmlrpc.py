@@ -55,7 +55,7 @@ def dump_time(self, value, write):
 
 xmlrpclib.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpclib.Marshaller.dispatch[type(None)] = \
-        lambda self, value, write: self.dump_bool(bool(value), write)
+        lambda self, value, write: write("<value><nil/></value>")
 xmlrpclib.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpclib.Marshaller.dispatch[datetime.time] = dump_time
 xmlrpclib.Marshaller.dispatch[buffer] = dump_buffer
