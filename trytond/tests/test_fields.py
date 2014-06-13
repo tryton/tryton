@@ -861,6 +861,42 @@ class FieldsTestCase(unittest.TestCase):
                     ])
             self.assertEqual(numerics, [numeric1])
 
+    def test0042numeric(self):
+        'Test numeric search with None'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            numeric_none, numeric0, numeric1 = self.numeric.create([{
+                        'numeric': None,
+                        }, {
+                        'numeric': 0,
+                        }, {
+                        'numeric': 1,
+                        }])
+            self.assertEqual([numeric_none], self.numeric.search([
+                        ('numeric', '=', None),
+                        ]))
+            self.assertEqual([numeric0], self.numeric.search([
+                        ('numeric', '=', 0),
+                        ]))
+            self.assertEqual([numeric1], self.numeric.search([
+                        ('numeric', '>', 0),
+                        ]))
+
+            self.assertEqual([numeric0, numeric1], self.numeric.search([
+                        ('numeric', '!=', None),
+                        ]))
+            self.assertEqual([numeric1], self.numeric.search([
+                        ('numeric', '!=', 0),
+                        ]))
+            self.assertEqual([numeric0], self.numeric.search([
+                        ('numeric', '<', 1),
+                        ]))
+
+            self.assertEqual([numeric_none, numeric1], self.numeric.search([
+                        'OR',
+                        ('numeric', '>', 0),
+                        ('numeric', '=', None),
+                        ]))
+
     def test0050char(self):
         'Test Char'
         with Transaction().start(DB_NAME, USER,
