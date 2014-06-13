@@ -676,7 +676,7 @@ class Screen(SignalEvent):
         self.tree_states_done.clear()
         self.group.load(ids, modified=modified)
         self.current_view.reset()
-        if ids:
+        if ids and self.current_view.view_type != 'calendar':
             self.display(ids[0])
         else:
             self.current_record = None
@@ -691,7 +691,7 @@ class Screen(SignalEvent):
             if (self.current_record
                     and self.current_record in self.current_record.group):
                 pass
-            elif self.group:
+            elif self.group and self.current_view.view_type != 'calendar':
                 self.current_record = self.group[0]
             else:
                 self.current_record = None
