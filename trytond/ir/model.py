@@ -19,7 +19,7 @@ from ..pool import Pool
 from ..pyson import Bool, Eval
 from ..rpc import RPC
 from .. import backend
-from ..protocols.jsonrpc import object_hook, JSONEncoder
+from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
 try:
     from ..tools.StringMatcher import StringMatcher
 except ImportError:
@@ -904,7 +904,7 @@ class ModelData(ModelSQL, ModelView):
     @classmethod
     def load_values(cls, values):
         try:
-            return dict(json.loads(values, object_hook=object_hook))
+            return dict(json.loads(values, object_hook=JSONDecoder()))
         except ValueError:
             # Migration from 3.2
             from ..tools import safe_eval
