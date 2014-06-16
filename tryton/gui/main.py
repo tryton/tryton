@@ -1125,6 +1125,7 @@ class Main(object):
         gtk.accel_map_save(os.path.join(get_config_dir(), 'accel.map'))
 
         cls.tryton_client.quit_mainloop()
+        sys.exit()
 
     def sig_close(self, widget, event=None):
         if not self.sig_logout(widget):
