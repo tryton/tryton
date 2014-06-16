@@ -32,7 +32,7 @@ class Many2One(WidgetInterface):
         self.wid_text.connect('populate-popup', self._populate_popup)
         self.wid_text.connect('focus-out-event',
             lambda x, y: self._focus_out())
-        self.wid_text.connect_after('changed', self.sig_changed)
+        self.wid_text.connect('changed', self.sig_changed)
         self.changed = True
         self.focus_out = True
 
@@ -305,7 +305,7 @@ class Many2One(WidgetInterface):
         if not self.changed:
             return False
         value = self.field.get(self.record)
-        if self.has_target(value):
+        if self.has_target(value) and self.modified:
             def clean():
                 text = self.wid_text.get_text()
                 position = self.wid_text.get_position()
