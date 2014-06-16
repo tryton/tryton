@@ -35,6 +35,11 @@ def populate(menu, model, record, title=''):
             record = screen.current_record
         return record
 
+    def id_(record):
+        if not isinstance(record, (int, long)):
+            return record.id
+        return record
+
     def activate(menuitem, action, atype):
         rec = load(record)
         action = Action.evaluate(action, atype, rec)
@@ -52,7 +57,7 @@ def populate(menu, model, record, title=''):
             Action._exec_action(action, data, {})
 
     def attachment(menuitem):
-        Attachment(record, None)
+        Attachment(load(record), None)
 
     if title:
         if len(menu):
