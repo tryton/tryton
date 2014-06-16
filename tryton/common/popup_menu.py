@@ -31,6 +31,11 @@ def populate(menu, model, record, title='', field=None):
             record = screen.current_record
         return record
 
+    def id_(record):
+        if not isinstance(record, (int, long)):
+            return record.id
+        return record
+
     def activate(menuitem, action, atype):
         rec = load(record)
         action = Action.evaluate(action, atype, rec)
@@ -48,11 +53,11 @@ def populate(menu, model, record, title='', field=None):
             Action._exec_action(action, data, {})
 
     def attachment(menuitem):
-        Attachment(record, None)
+        Attachment(load(record), None)
 
     def edit(menuitem):
         with Window(hide_current=True, allow_similar=True):
-            Window.create(field.attrs.get('view_ids'), model, record,
+            Window.create(field.attrs.get('view_ids'), model, id_(record),
                 mode=['form'])
 
     if title:
