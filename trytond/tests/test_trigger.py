@@ -25,8 +25,7 @@ class TriggerTestCase(unittest.TestCase):
 
     def test0010constraints(self):
         'Test constraints'
-        with Transaction().start(DB_NAME, USER,
-                context=CONTEXT) as transaction:
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             model, = self.model.search([
                     ('model', '=', 'test.triggered'),
                     ])
@@ -44,25 +43,27 @@ class TriggerTestCase(unittest.TestCase):
                 }
             self.assert_(self.trigger.create([values]))
 
-            # on_exclusive
-            for i in range(1, 4):
-                for combination in combinations(
-                        ['create', 'write', 'delete'], i):
+        # on_exclusive
+        for i in range(1, 4):
+            for combination in combinations(
+                    ['create', 'write', 'delete'], i):
+                with Transaction().start(DB_NAME, USER, context=CONTEXT):
                     combination_values = values.copy()
                     for mode in combination:
                         combination_values['on_%s' % mode] = True
                     self.assertRaises(UserError, self.trigger.create,
                         [combination_values])
 
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             # check_condition
             condition_values = values.copy()
             condition_values['condition'] = '='
             self.assertRaises(UserError, self.trigger.create,
                 [condition_values])
 
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
             # Restart the cache on the get_triggers method of ir.trigger
             self.trigger._get_triggers_cache.clear()
-            transaction.cursor.rollback()
 
     def test0020on_create(self):
         'Test on_create'
