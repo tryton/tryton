@@ -116,6 +116,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         if self.purchase_line:
             return self.purchase_line.purchase.id
 
+    @property
+    def currency(self):
+        return self.company.currency
+
     def get_state(self, name):
         if self.purchase_line:
             if self.purchase_line.purchase.state == 'cancel':
@@ -599,8 +603,7 @@ class CreatePurchase(Wizard):
             ('party', request.party),
             ('payment_term', request.party.supplier_payment_term),
             ('warehouse', request.warehouse),
-            # XXX use function field
-            ('currency', request.company.currency),
+            ('currency', request.currency),
             ('invoice_address', request.party.address_get(type='invoice')),
             )
 
@@ -705,7 +708,7 @@ class CreatePurchase(Wizard):
         # XXX purchase with several lines of the same product
         with Transaction().set_context(uom=request.uom.id,
                 supplier=request.party.id,
-                currency=request.company.currency.id):
+                currency=request.currency.id):
             product_price = Product.get_purchase_price(
                 [request.product], request.quantity)[request.product.id]
             product_price = product_price.quantize(
