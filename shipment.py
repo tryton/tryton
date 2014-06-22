@@ -1792,7 +1792,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 | ~Eval('from_location') | ~Eval('to_location')),
             },
         domain=[
-            ('from_location', '=', Eval('from_location')),
+            ('from_location', 'child_of', [Eval('from_location', -1)],
+                'parent'),
             ('to_location', '=', Eval('to_location')),
             ('company', '=', Eval('company')),
             ],
