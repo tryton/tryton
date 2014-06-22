@@ -3,7 +3,7 @@
 import re
 import datetime
 from functools import reduce
-from itertools import islice, izip, chain
+from itertools import islice, izip, chain, ifilter
 
 from sql import Table, Column, Literal, Desc, Asc, Expression, Flavor
 from sql.functions import Now, Extract
@@ -1033,6 +1033,7 @@ class ModelSQL(ModelStorage):
             columns.append(Coalesce(
                     main_table.write_date,
                     main_table.create_date).as_('_datetime'))
+            columns.append(Column(main_table, '__id'))
         if not query:
             columns += [Column(main_table, name).as_(name)
                 for name, field in cls._fields.iteritems()
@@ -1057,6 +1058,46 @@ class ModelSQL(ModelStorage):
             cache[cls.__name__] = LRUDict(RECORD_CACHE_SIZE)
         delete_records = transaction.delete_records.setdefault(cls.__name__,
             set())
+
+        def filter_history(rows):
+            if not (cls._history and transaction.context.get('_datetime')):
+                return rows
+
+            def history_key(row):
+                return row['_datetime'], row['__id']
+
+            ids_history = {}
+            for row in rows:
+                key = history_key(row)
+                if row['id'] in ids_history:
+                    if key < ids_history[row['id']]:
+                        continue
+                ids_history[row['id']] = key
+
+            to_delete = set()
+            history = cls.__table_history__()
+            for i in range(0, len(rows), in_max):
+                sub_ids = [r['id'] for r in rows[i:i + in_max]]
+                where = reduce_ids(history.id, sub_ids)
+                cursor.execute(*history.select(history.id, history.write_date,
+                        where=where
+                        & (history.write_date != None)
+                        & (history.create_date == None)
+                        & (history.write_date
+                            <= transaction.context['_datetime'])))
+                for deleted_id, delete_date in cursor.fetchall():
+                    history_date, _ = ids_history[deleted_id]
+                    if isinstance(history_date, basestring):
+                        strptime = datetime.datetime.strptime
+                        format_ = '%Y-%m-%d %H:%M:%S.%f'
+                        history_date = strptime(history_date, format_)
+                    if history_date <= delete_date:
+                        to_delete.add(deleted_id)
+
+            return ifilter(lambda r: history_key(r) == ids_history[r['id']]
+                and r['id'] not in to_delete, rows)
+
+        rows = list(filter_history(rows))
         keys = None
         for data in islice(rows, 0, cache.size_limit):
             if data['id'] in delete_records:
@@ -1064,7 +1105,7 @@ class ModelSQL(ModelStorage):
             if keys is None:
                 keys = data.keys()
                 for k in keys[:]:
-                    if k in ('_timestamp', '_datetime'):
+                    if k in ('_timestamp', '_datetime', '__id'):
                         keys.remove(k)
                         continue
                     field = cls._fields[k]
@@ -1085,34 +1126,7 @@ class ModelSQL(ModelStorage):
             cursor.execute(*table.select(*columns,
                     where=expression, order_by=order_by,
                     limit=limit, offset=offset))
-            rows = cursor.dictfetchall()
-
-        if cls._history and transaction.context.get('_datetime'):
-            ids = []
-            ids_date = {}
-            for data in rows:
-                if data['id'] in ids_date:
-                    if data['_datetime'] <= ids_date[data['id']]:
-                        continue
-                if data['id'] in ids:
-                    ids.remove(data['id'])
-                ids.append(data['id'])
-                ids_date[data['id']] = data['_datetime']
-            to_delete = set()
-            history = cls.__table_history__()
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
-                where = reduce_ids(history.id, sub_ids)
-                cursor.execute(*history.select(history.id, history.write_date,
-                        where=where
-                        & (history.write_date != None)
-                        & (history.create_date == None)
-                        & (history.write_date
-                            <= transaction.context['_datetime'])))
-                for deleted_id, delete_date in cursor.fetchall():
-                    if ids_date[deleted_id] < delete_date:
-                        to_delete.add(deleted_id)
-            return cls.browse(filter(lambda x: x not in to_delete, ids))
+            rows = filter_history(cursor.dictfetchall())
 
         return cls.browse([x['id'] for x in rows])
 

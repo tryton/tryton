@@ -16,6 +16,17 @@ class HistoryTestCase(unittest.TestCase):
     def setUp(self):
         install_module('tests')
 
+    def tearDown(self):
+        History = POOL.get('test.history')
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            cursor = transaction.cursor
+            table = History.__table__()
+            history_table = History.__table_history__()
+            cursor.execute(*table.delete())
+            cursor.execute(*history_table.delete())
+            cursor.commit()
+
     def test0010read(self):
         'Test read history'
         History = POOL.get('test.history')
@@ -172,6 +183,109 @@ class HistoryTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             History.restore_history([history_id], datetime.datetime.min)
             self.assertRaises(UserError, History.read, [history_id])
+
+    def test0050ordered_search(self):
+        'Test ordered search of history models'
+        History = POOL.get('test.history')
+        order = [('value', 'ASC')]
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(value=1)
+            history.save()
+            first_id = history.id
+            first_stamp = history.create_date
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(value=2)
+            history.save()
+            second_id = history.id
+            second_stamp = history.create_date
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            first, second = History.search([], order=order)
+
+            self.assertEqual(first.id, first_id)
+            self.assertEqual(second.id, second_id)
+
+            first.value = 3
+            first.save()
+            third_stamp = first.write_date
+            transaction.cursor.commit()
+
+        results = [
+            (first_stamp, [first]),
+            (second_stamp, [first, second]),
+            (third_stamp, [second, first]),
+            (datetime.datetime.now(), [second, first]),
+            (datetime.datetime.max, [second, first]),
+            ]
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for timestamp, instances in results:
+                with Transaction().set_context(_datetime=timestamp):
+                    records = History.search([], order=order)
+                    self.assertEqual(records, instances)
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            to_delete, _ = History.search([], order=order)
+
+            self.assertEqual(to_delete.id, second.id)
+
+            History.delete([to_delete])
+            transaction.cursor.commit()
+
+        results = [
+            (first_stamp, [first]),
+            (second_stamp, [first, second]),
+            (third_stamp, [second, first]),
+            (datetime.datetime.now(), [first]),
+            (datetime.datetime.max, [first]),
+            ]
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for timestamp, instances in results:
+                with Transaction().set_context(_datetime=timestamp,
+                        from_test=True):
+                    records = History.search([], order=order)
+                    self.assertEqual(records, instances)
+
+    @unittest.skipIf(CONFIG['db_type'] in ('sqlite', 'mysql'),
+        'now() is not the start of the transaction')
+    def test0060_ordered_search_same_timestamp(self):
+        'Test ordered search  with same timestamp'
+        History = POOL.get('test.history')
+        order = [('value', 'ASC')]
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(value=1)
+            history.save()
+            first_stamp = history.create_date
+            history.value = 4
+            history.save()
+            second_stamp = history.write_date
+
+            self.assertEqual(first_stamp, second_stamp)
+            transaction.cursor.commit()
+
+        results = [
+            (second_stamp, [history], [4]),
+            (datetime.datetime.now(), [history], [4]),
+            (datetime.datetime.max, [history], [4]),
+            ]
+
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            for timestamp, instances, values in results:
+                with Transaction().set_context(_datetime=timestamp,
+                        last_test=True):
+                    records = History.search([], order=order)
+                    self.assertEqual(records, instances)
+                    self.assertEqual([x.value for x in records], values)
 
 
 def suite():
