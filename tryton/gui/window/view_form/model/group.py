@@ -261,7 +261,7 @@ class Group(SignalEvent, list):
 
     context = property(_get_context)
 
-    def add(self, record, position=-1):
+    def add(self, record, position=-1, signal=True):
         if record.group is not self:
             record.signal_unconnect(record.group)
             record.group = self
@@ -281,7 +281,8 @@ class Group(SignalEvent, list):
         self.current_idx = position
         record.modified_fields.setdefault('id')
         record.signal('record-modified')
-        self.signal('group-changed', record)
+        if signal:
+            self.signal('group-changed', record)
         # Set parent field to trigger on_change
         if self.parent and self.parent_name in self.fields:
             field = self.fields[self.parent_name]

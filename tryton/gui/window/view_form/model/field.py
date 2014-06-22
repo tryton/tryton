@@ -687,8 +687,10 @@ class O2MField(Field):
             record.value[self.name].add_fields(fields, signal=False)
             for index, vals in value.get('add', []):
                 new_record = record.value[self.name].new(default=False)
-                record.value[self.name].add(new_record, index)
+                record.value[self.name].add(new_record, index, signal=False)
                 new_record.set_on_change(vals)
+            if value.get('add'):
+                record.value[self.name].signal('group-changed', new_record)
 
             for vals in value.get('update', []):
                 if 'id' not in vals:
