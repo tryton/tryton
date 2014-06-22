@@ -260,14 +260,14 @@
             this.nullable_widget = true;
         }
     };
-    Sao.common.selection_mixin.init_selection = function(key, callback) {
-        if (!key) {
-            key = [];
+    Sao.common.selection_mixin.init_selection = function(value, callback) {
+        if (!value) {
+            value = {};
             (this.attributes.selection_change_with || []).forEach(function(e) {
-                key.push([e, null]);
+                value[e] = null;
             });
-            key.sort();
         }
+        var key = JSON.stringify(value);
         var selection = this.attributes.selection || [];
         var prepare_selection = function(selection) {
             selection = jQuery.extend([], selection);
@@ -283,11 +283,7 @@
                 !(key in this._values2selection)) {
             var prm;
             if (this.attributes.selection_change_with) {
-                var params = {};
-                key.forEach(function(e) {
-                    params[e[0]] = e[1];
-                });
-                prm = this.model.execute(selection, [params]);
+                prm = this.model.execute(selection, [value]);
             } else {
                 prm = this.model.execute(selection, []);
             }
@@ -316,14 +312,9 @@
         }
         if (!('relation' in this.attributes)) {
             var change_with = this.attributes.selection_change_with || [];
-            var key = [];
-            var args = record._get_on_change_args(change_with);
-            delete args.id;
-            for (var k in args) {
-                key.push([k, args[k]]);
-            }
-            key.sort();
-            Sao.common.selection_mixin.init_selection.call(this, key,
+            var value = record._get_on_change_args(change_with);
+            delete value.id;
+            Sao.common.selection_mixin.init_selection.call(this, value,
                     function() {
                         Sao.common.selection_mixin.filter_selection.call(this,
                             domain, record, field);
@@ -332,13 +323,16 @@
                         }
                     }.bind(this));
         } else {
-            var jdomain = JSON.stringify(domain);
+            var context = field.get_context(record);
+            var jdomain = JSON.stringify([domain, context]);
             if (jdomain in this._domain_cache) {
                 this.selection = this._domain_cache[jdomain];
-                this._last_domain = domain;
+                this._last_domain = [domain, context];
             }
             if ((this._last_domain !== null) &&
-                    Sao.common.compare(domain, this._last_domain)) {
+                    Sao.common.compare(domain, this._last_domain[0]) &&
+                    (JSON.stringify(context) ==
+                     JSON.stringify(this._last_domain[1]))) {
                 if (callback) {
                     callback(this.selection);
                 }
@@ -346,7 +340,7 @@
             }
             var prm = Sao.rpc({
                 'method': 'model.' + this.attributes.relation + '.search_read',
-                'params': [domain, 0, null, null, ['rec_name'], {}]
+                'params': [domain, 0, null, null, ['rec_name'], context]
             }, record.model.session);
             prm.done(function(result) {
                 var selection = [];
