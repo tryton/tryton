@@ -253,7 +253,7 @@ class ModelView(Model):
             - relate: a list of available relations
         """
         Action = Pool().get('ir.action.keyword')
-        key = (cls.__name__, repr(Transaction().context))
+        key = cls.__name__
         result = cls._view_toolbar_get_cache.get(key)
         if result:
             return result
