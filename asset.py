@@ -107,13 +107,15 @@ class Asset(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
         required=True,
-        depends=['state'])
+        domain=[('start_date', '<=', Eval('end_date', None))],
+        depends=['state', 'end_date'])
     end_date = fields.Date('End Date',
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
         required=True,
-        depends=['state'])
+        domain=[('end_date', '>=', Eval('start_date', None))],
+        depends=['state', 'start_date'])
     depreciation_method = fields.Selection([
             ('linear', 'Linear'),
             ], 'Depreciation Method',
