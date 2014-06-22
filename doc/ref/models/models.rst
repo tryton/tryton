@@ -598,7 +598,7 @@ Class methods:
 
     Return the original instance of the record for the sharded id.
 
-.. classmethod:: UnionMixin.union_column(field, table, Model)
+.. classmethod:: UnionMixin.union_column(name, field, table, Model)
 
     Return the SQL column that corresponds to the field on the union model.
 

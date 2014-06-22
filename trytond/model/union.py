@@ -30,9 +30,9 @@ class UnionMixin:
         return Model(record_id)
 
     @classmethod
-    def union_column(cls, field, table, Model):
+    def union_column(cls, name, field, table, Model):
         column = Literal(None)
-        union_field = Model._fields.get(field.name)
+        union_field = Model._fields.get(name)
         if union_field:
             column = Column(table, union_field.name)
             if (isinstance(field, fields.Many2One)
@@ -54,7 +54,7 @@ class UnionMixin:
             field = cls._fields[name]
             if name == 'id' or hasattr(field, 'set'):
                 continue
-            column = cls.union_column(field, table, Model)
+            column = cls.union_column(name, field, table, Model)
             columns.append(Cast(column, field.sql_type().base).as_(name))
         return table, columns
 
