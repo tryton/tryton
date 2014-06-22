@@ -21,17 +21,18 @@ class SelectionMixin(object):
         self._values2selection = {}
         self._domain_cache = {}
 
-    def init_selection(self, key=None):
-        if key is None:
-            key = tuple(sorted((k, None)
-                    for k in self.attrs.get('selection_change_with') or []))
+    def init_selection(self, value=None):
+        if value is None:
+            value = dict((k, None)
+                for k in self.attrs.get('selection_change_with') or [])
+        key = freeze_value(value)
         selection = self.attrs.get('selection', [])[:]
         if (not isinstance(selection, (list, tuple))
                 and key not in self._values2selection):
             try:
                 if self.attrs.get('selection_change_with'):
                     selection = RPCExecute('model', self.model_name, selection,
-                        dict(key))
+                        value)
                 else:
                     selection = RPCExecute('model', self.model_name, selection)
             except RPCException:
@@ -55,15 +56,13 @@ class SelectionMixin(object):
             domain = []
         if 'relation' not in self.attrs:
             change_with = self.attrs.get('selection_change_with') or []
-            args = record._get_on_change_args(change_with)
-            del args['id']
-            key = args.items()
-            key.sort()
-            self.init_selection(tuple(key))
+            value = record._get_on_change_args(change_with)
+            del value['id']
+            self.init_selection(value)
             self.filter_selection(domain, record, field)
         else:
-            context = record[self.field_name].context_get(record)
-            domain_cache_key = str(domain) + str(context)
+            context = field.context_get(record)
+            domain_cache_key = (freeze_value(domain), freeze_value(context))
             if domain_cache_key in self._domain_cache:
                 self.selection = self._domain_cache[domain_cache_key]
                 self._last_domain = (domain, context)
@@ -121,6 +120,16 @@ def selection_shortcuts(entry):
             widget.popup()
     entry.connect('key_press_event', key_press)
     return entry
+
+
+def freeze_value(value):
+    if isinstance(value, dict):
+        return tuple(sorted((k, freeze_value(v))
+                for k, v in value.iteritems()))
+    elif isinstance(value, (list, set)):
+        return tuple(freeze_value(v) for v in value)
+    else:
+        return value
 
 
 class PopdownMixin(object):
@@ -190,3 +199,10 @@ class PopdownMixin(object):
                 return False
         entry.set_active(active)
         return True
+
+
+def test_freeze_value():
+    assert freeze_value({'foo': 'bar'}) == (('foo', 'bar'),)
+    assert freeze_value([1, 42, 2, 3]) == (1, 42, 2, 3)
+    assert freeze_value('foo') == 'foo'
+    assert freeze_value({'foo': {'bar': 42}}) == (('foo', (('bar', 42),)),)
