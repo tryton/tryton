@@ -124,13 +124,10 @@ class Translation(ModelSQL, ModelView):
             table = TableHandler(cursor, cls, module_name)
             table.not_null_action('src_md5', action='add')
 
-        # Migration from 2.2
+        # Migration from 2.2 and 2.8
         cursor.execute(*ir_translation.update([ir_translation.res_id],
-                [None], where=ir_translation.res_id == 0))
-
-        # Migration from 2.8
-        cursor.execute(*ir_translation.update([ir_translation.res_id],
-                [-1], where=ir_translation.res_id == None))
+                [-1], where=(ir_translation.res_id == None)
+                | (ir_translation.res_id == 0)))
 
         table = TableHandler(Transaction().cursor, cls, module_name)
         table.index_action(['lang', 'type', 'name'], 'add')
