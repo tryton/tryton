@@ -10,9 +10,9 @@ BUTTON_SPACING = 2
 
 class CellRendererBinary(gtk.GenericCellRenderer):
     __gproperties__ = {
-        'visible': (gobject.TYPE_INT, 'Visible', 'Visible', 0, 10, 0,
+        'visible': (gobject.TYPE_BOOLEAN, 'Visible', 'Visible', True,
             gobject.PARAM_READWRITE),
-        'editable': (gobject.TYPE_INT, 'Editable', 'Editable', 0, 10, 0,
+        'editable': (gobject.TYPE_BOOLEAN, 'Editable', 'Editable', False,
             gobject.PARAM_READWRITE),
         'size': (gobject.TYPE_STRING, 'Size', 'Size', '',
             gobject.PARAM_READWRITE),
@@ -31,6 +31,7 @@ class CellRendererBinary(gtk.GenericCellRenderer):
     def __init__(self, use_filename):
         self.__gobject_init__()
         self.visible = True
+        self.editable = False
         self.set_property('mode', gtk.CELL_RENDERER_MODE_EDITABLE)
         self.use_filename = use_filename
         if use_filename:
