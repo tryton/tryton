@@ -10,6 +10,7 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
+from trytond.exceptions import UserError
 
 
 class AccountPaymentSepaTestCase(unittest.TestCase):
@@ -135,6 +136,57 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
     def test_pain008_001_04(self):
         'Test pain008.001.04 xsd validation'
         self.validate_file('pain.008.001.04', 'receivable')
+
+    def test_sepa_mandate_sequence(self):
+        'Test SEPA mandate sequence'
+        Configuration = POOL.get('account.configuration')
+        Sequence = POOL.get('ir.sequence')
+        Party = POOL.get('party.party')
+        Mandate = POOL.get('account.payment.sepa.mandate')
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            party = Party(name='Test')
+            party.save()
+            mandate = Mandate(party=party)
+            mandate.save()
+            self.assertFalse(mandate.identification)
+
+            sequence = Sequence(name='Test',
+                code='account.payment.sepa.mandate')
+            sequence.save()
+            config = Configuration(1)
+            config.sepa_mandate_sequence = sequence
+            config.save()
+
+            mandate = Mandate(party=party)
+            mandate.save()
+            self.assertTrue(mandate.identification)
+
+    def test_identification_unique(self):
+        'Test unique identification constraint'
+        Party = POOL.get('party.party')
+        Mandate = POOL.get('account.payment.sepa.mandate')
+        same_id = '1'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            party = Party(name='Test')
+            party.save()
+            mandate = Mandate(party=party, identification=same_id)
+            mandate.save()
+
+            for i in range(2):
+                mandate = Mandate(party=party)
+                mandate.save()
+
+            mandate = Mandate(party=party, identification='')
+            mandate.save()
+
+            self.assertRaises(UserError, Mandate.create, [{
+                        'party': party.id,
+                        'identification': same_id,
+                        }])
+
+            Mandate.write([mandate], {
+                    'identification': '',
+                    })
 
 
 def suite():

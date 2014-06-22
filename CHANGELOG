@@ -1,3 +1,5 @@
+* Add sequence for Mandate identification
+* Add unique constraint on Mandate identification
 * Add Direct Debit Business to Business scheme
 
 Version 3.2.0 - 2014-04-21

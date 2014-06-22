@@ -235,10 +235,12 @@ class Mandate(Workflow, ModelSQL, ModelView):
         depends=['state', 'party'])
     identification = fields.Char('Identification', size=35,
         states={
-            'readonly': Eval('state').in_(['validated', 'canceled']),
+            'readonly': Eval('identification_readonly', True),
             'required': Eval('state') == 'validated',
             },
-        depends=['state'])
+        depends=['state', 'identification_readonly'])
+    identification_readonly = fields.Function(fields.Boolean(
+            'Identification Readonly'), 'get_identification_readonly')
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True,
         domain=[
@@ -302,6 +304,11 @@ class Mandate(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'requested',
                     },
                 })
+        cls._sql_constraints = [
+            ('identification_unique', 'UNIQUE(company, identification)',
+                'The identification of the SEPA mandate must be unique '
+                'in a company.'),
+            ]
         cls._error_messages.update({
                 'delete_draft_canceled': ('You can not delete mandate "%s" '
                     'because it is not in draft or canceled state.'),
@@ -322,6 +329,46 @@ class Mandate(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_state():
         return 'draft'
+
+    @staticmethod
+    def default_identification_readonly():
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        return bool(config.sepa_mandate_sequence)
+
+    def get_identification_readonly(self, name):
+        return bool(self.identification)
+
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            if (config.sepa_mandate_sequence
+                    and not values.get('identification')):
+                values['identification'] = Sequence.get_id(
+                    config.sepa_mandate_sequence.id)
+            # Prevent raising false unique constraint
+            if values.get('identification') == '':
+                values['identification'] = None
+        return super(Mandate, cls).create(vlist)
+
+    @classmethod
+    def write(cls, *args):
+        actions = iter(args)
+        args = []
+        for mandates, values in zip(actions, actions):
+            # Prevent raising false unique constraint
+            if values.get('identification') == '':
+                values = values.copy()
+                values['identification'] = None
+            args.extend((mandates, values))
+        super(Mandate, cls).write(*args)
 
     @property
     def is_valid(self):

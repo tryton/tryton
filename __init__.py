@@ -3,6 +3,7 @@
 from trytond.pool import Pool
 from .payment import *
 from .party import *
+from .account import *
 
 
 def register():
@@ -12,4 +13,5 @@ def register():
         Mandate,
         Payment,
         Party,
+        Configuration,
         module='account_payment_sepa', type_='model')
