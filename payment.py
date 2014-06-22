@@ -154,6 +154,7 @@ class Group:
         key = (('date', payment.date),)
         if self.kind == 'receivable':
             key += (('sequence_type', payment.sepa_mandate.sequence_type),)
+            key += (('scheme', payment.sepa_mandate.scheme),)
         return key
 
     def sepa_group_payment_id(self, key):
@@ -256,6 +257,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state').in_(['validated', 'canceled']),
             },
         depends=['state'])
+    scheme = fields.Selection([
+            ('CORE', 'Core'),
+            ('B2B', 'Business to Business'),
+            ], 'Scheme', required=True)
     signature_date = fields.Date('Signature Date',
         states={
             'readonly': Eval('state').in_(['validated', 'canceled']),
@@ -309,6 +314,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'recurrent'
+
+    @staticmethod
+    def default_scheme():
+        return 'CORE'
 
     @staticmethod
     def default_state():

@@ -11,10 +11,12 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
     <label name="identification"/>
     <field name="identification"/>
-    <label name="type"/>
-    <field name="type"/>
     <label name="signature_date"/>
     <field name="signature_date"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="scheme"/>
+    <field name="scheme"/>
     <newline/>
     <label name="state"/>
     <field name="state"/>

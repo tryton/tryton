@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
                     <!-- Prtry -->
                 </SvcLvl>
                 <LclInstrm>
-                    <Cd>CORE</Cd>
+                    <Cd>${key['scheme']}</Cd>
                     <!-- Prtry -->
                 </LclInstrm>
                 <SeqTp>${key['sequence_type']}</SeqTp>

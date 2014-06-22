@@ -40,6 +40,9 @@ The Mandate stores information for the Direct Debit. It is mainly defined by:
 - Type:
   - Recurrent
   - One-off
+- Scheme:
+  - CORE
+  - Business to Business
 - Signature Date
 
 The mandate can be in one of this states:
