@@ -418,7 +418,8 @@ class MetaModelFactory(object):
                 for field_name, definition in dict['_fields'].iteritems():
                     if field_name == 'id':
                         continue
-                    Descriptor = self.descriptors[definition['type']]
+                    Descriptor = self.descriptors.get(definition['type'],
+                        FieldDescriptor)
                     dict[field_name] = Descriptor(field_name, definition)
                     VDescriptor = self.value_descriptors.get(
                             definition['type'], ValueDescriptor)
