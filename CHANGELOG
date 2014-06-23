@@ -1,3 +1,5 @@
+* Switch journal debit/credit account usage
+
 Version 3.2.0 - 2014-04-21
 * Bug fixes (see mercurial logs for details)
 * Append new line under the original one

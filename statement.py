@@ -585,9 +585,9 @@ class Line(ModelSQL, ModelView):
 
         journal = self.statement.journal.journal
         if self.amount >= zero:
-            account = journal.credit_account
-        else:
             account = journal.debit_account
+        else:
+            account = journal.credit_account
         if not account:
             self.raise_user_error('debit_credit_account_statement_journal',
                 (journal.rec_name,))
