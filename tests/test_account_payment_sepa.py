@@ -178,6 +178,12 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
 
             mandate = Mandate(party=party, identification='')
             mandate.save()
+            self.assertEqual(mandate.identification, None)
+
+            Mandate.write([mandate], {
+                    'identification': '',
+                    })
+            self.assertEqual(mandate.identification, None)
 
             self.assertRaises(UserError, Mandate.create, [{
                         'party': party.id,
