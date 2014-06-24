@@ -190,10 +190,6 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
                         'identification': same_id,
                         }])
 
-            Mandate.write([mandate], {
-                    'identification': '',
-                    })
-
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
