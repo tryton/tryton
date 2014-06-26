@@ -31,6 +31,7 @@ from tryton.translate import date_format
 from tryton.common import RPCExecute, RPCException
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.selection import SelectionMixin, PopdownMixin
+from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -567,8 +568,8 @@ class M2O(Char):
             else:
                 dom = domain
             try:
-                ids = RPCExecute('model', relation, 'search', dom, 0, None,
-                    None, context=context)
+                ids = RPCExecute('model', relation, 'search', dom, 0,
+                    CONFIG['client.limit'], None, context=context)
             except RPCException:
                 field.set_client(record, False)
                 if callback:
