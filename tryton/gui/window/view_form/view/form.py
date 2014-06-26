@@ -299,7 +299,7 @@ class ViewForm(View):
             attributes['widget'] = field.attrs['type']
 
         for attr in ('relation', 'domain', 'selection',
-                'relation_field', 'string', 'views',
+                'relation_field', 'string', 'help', 'views',
                 'add_remove', 'sort', 'context', 'size', 'filename',
                 'autocomplete', 'translate', 'create', 'delete',
                 'selection_change_with', 'schema_model'):
