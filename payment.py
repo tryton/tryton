@@ -208,10 +208,14 @@ class Payment:
 
     @property
     def sepa_bank_account_number(self):
-        for account in self.party.bank_accounts:
-            for number in account.numbers:
-                if number.type == 'iban':
-                    return number
+        if self.kind == 'receivable':
+            if self.sepa_mandate:
+                return self.sepa_mandate.account_number
+        else:
+            for account in self.party.bank_accounts:
+                for number in account.numbers:
+                    if number.type == 'iban':
+                        return number
 
 
 class Mandate(Workflow, ModelSQL, ModelView):
