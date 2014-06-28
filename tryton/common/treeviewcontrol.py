@@ -22,11 +22,11 @@ class TreeViewControl(gtk.TreeView):
         self.grab_focus()  # grab focus because it doesn't whith CONTROL MASK
         if event.button == 1:
             event.state ^= gtk.gdk.CONTROL_MASK
-        return super(TreeViewControl, self).do_button_press_event(self, event)
+        return gtk.TreeView.do_button_press_event(self, event)
 
     def do_key_press_event(self, event):
         if event.keyval in MOVEMENT_KEYS:
             event.state ^= gtk.gdk.CONTROL_MASK
-        return super(TreeViewControl, self).do_key_press_event(self, event)
+        return gtk.TreeView.do_key_press_event(self, event)
 
 gobject.type_register(TreeViewControl)
