@@ -78,6 +78,8 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             # Compatibility with Many2One
             value = value[0]
 
+        self.entry.handler_block_by_func(self.changed)
         if not self.set_popdown_value(self.entry, value):
             self.get_inactive_selection(value)
             self.set_popdown_value(self.entry, value)
+        self.entry.handler_unblock_by_func(self.changed)
