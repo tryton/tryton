@@ -170,11 +170,7 @@ class ActionKeyword(ModelSQL, ModelView):
     def models_get():
         pool = Pool()
         Model = pool.get('ir.model')
-        models = Model.search([])
-        res = []
-        for model in models:
-            res.append([model.model, model.name])
-        return res
+        return [(m.model, m.name) for m in Model.search([])]
 
     @classmethod
     def delete(cls, keywords):
