@@ -7,11 +7,12 @@ import gtk
 from .widget import Widget, TranslateMixin
 from tryton.common import Tooltips
 from tryton.common.entry_position import manage_entry_position
+from tryton.common.selection import PopdownMixin, selection_shortcuts
 
 _ = gettext.gettext
 
 
-class Char(Widget, TranslateMixin):
+class Char(Widget, TranslateMixin, PopdownMixin):
     "Char"
 
     def __init__(self, view, attrs):
@@ -21,14 +22,10 @@ class Char(Widget, TranslateMixin):
         self.autocomplete = bool(attrs.get('autocomplete'))
         if self.autocomplete:
             self.entry = gtk.ComboBoxEntry()
-            self.entry_store = gtk.ListStore(gobject.TYPE_STRING)
-            self.entry.set_model(self.entry_store)
-            self.entry.set_text_column(0)
-            completion = gtk.EntryCompletion()
-            completion.set_model(self.entry_store)
-            completion.set_text_column(0)
-            self.entry.get_child().set_completion(completion)
+            selection_shortcuts(self.entry)
             focus_entry = self.entry.get_child()
+            self.set_popdown([], self.entry)
+            self.entry.connect('changed', self.changed)
         else:
             self.entry = gtk.Entry()
             focus_entry = self.entry
@@ -70,6 +67,15 @@ class Char(Widget, TranslateMixin):
         widget.set_editable(not value)
         widget.props.sensitive = not value
 
+    def changed(self, combobox):
+        def focus_out():
+            if combobox.props.window:
+                self._focus_out()
+        # Only when changed from pop list
+        if not combobox.get_child().has_focus():
+            # Must be deferred because it triggers a display of the form
+            gobject.idle_add(focus_out)
+
     def _color_widget(self):
         if self.autocomplete:
             return self.entry.get_child()
@@ -97,15 +103,12 @@ class Char(Widget, TranslateMixin):
 
     def display(self, record, field):
         super(Char, self).display(record, field)
-        if record and self.autocomplete:
-            autocompletion = record.autocompletion.get(self.field_name, [])
-            current = [elem[0] for elem in self.entry_store]
-            if autocompletion != current:
-                self.entry_store.clear()
-                for row in autocompletion:
-                    self.entry_store.append((row,))
-        elif self.autocomplete:
-            self.entry_store.clear()
+        if self.autocomplete:
+            if record:
+                selection = record.autocompletion.get(self.field_name, [])
+            else:
+                selection = []
+            self.set_popdown([(x, x) for x in selection], self.entry)
 
         # Set size
         if self.autocomplete:
@@ -128,12 +131,10 @@ class Char(Widget, TranslateMixin):
         if not self.autocomplete:
             self.entry.set_text(value)
         else:
-            for idx, row in enumerate(self.entry_store):
-                if row[0] == value:
-                    self.entry.set_active(idx)
-                    return
-            else:
+            self.entry.handler_block_by_func(self.changed)
+            if not self.set_popdown_value(self.entry, value) or not value:
                 self.entry.get_child().set_text(value)
+            self.entry.handler_unblock_by_func(self.changed)
 
     def _readonly_set(self, value):
         sensitivity = {True: gtk.SENSITIVITY_OFF, False: gtk.SENSITIVITY_AUTO}
