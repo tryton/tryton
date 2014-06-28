@@ -211,7 +211,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.domain" id="act_payment_form_domain_all">
             <field name="name">All</field>
-            <field name="sequence" eval="60"/>
+            <field name="sequence" eval="9999"/>
             <field name="domain"></field>
             <field name="act_window" ref="act_payment_form"/>
         </record>
