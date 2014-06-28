@@ -298,6 +298,8 @@ class ActionMixin(ModelSQL):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
+        ModelView._fields_view_get_cache.clear()
+        ModelView._view_toolbar_get_cache.clear()
         Action = pool.get('ir.action')
         ir_action = cls.__table__()
         new_records = []
@@ -336,11 +338,15 @@ class ActionMixin(ModelSQL):
         pool = Pool()
         ActionKeyword = pool.get('ir.action.keyword')
         super(ActionMixin, cls).write(records, values, *args)
+        ModelView._fields_view_get_cache.clear()
+        ModelView._view_toolbar_get_cache.clear()
         ActionKeyword._get_keyword_cache.clear()
 
     @classmethod
     def delete(cls, records):
         pool = Pool()
+        ModelView._fields_view_get_cache.clear()
+        ModelView._view_toolbar_get_cache.clear()
         Action = pool.get('ir.action')
         actions = [x.action for x in records]
         super(ActionMixin, cls).delete(records)
