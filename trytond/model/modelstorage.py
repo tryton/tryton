@@ -18,7 +18,7 @@ from collections import defaultdict
 
 from trytond.model import Model
 from trytond.model import fields
-from trytond.tools import safe_eval, reduce_domain, memoize
+from trytond.tools import reduce_domain, memoize
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS, RECORD_CACHE_SIZE, BROWSE_FIELD_TRESHOLD
 from trytond.transaction import Transaction
@@ -759,10 +759,7 @@ class ModelStorage(Model):
             for model_data in models_data:
                 if not model_data.values:
                     continue
-                xml_values = safe_eval(model_data.values, {
-                    'Decimal': Decimal,
-                    'datetime': datetime,
-                    })
+                xml_values = ModelData.load_values(model_data.values)
                 for key, val in values.iteritems():
                     if key in xml_values and val != xml_values[key]:
                         return False
