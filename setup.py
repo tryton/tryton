@@ -374,8 +374,14 @@ elif sys.platform == 'darwin':
         with open(immodules_path, 'w') as immodules:
             immodules.write(query_immodules)
 
-        shutil.copy(os.path.join(gtk_dir, 'share', 'themes', 'Clearlooks',
-            'gtk-2.0', 'gtkrc'), os.path.join(resources_dir, 'gtkrc'))
+        with open(os.path.join(resources_dir, 'gtkrc'), 'w') as gtkrc:
+            for name, dirname in (
+                    ('Clearlooks', 'gtk-2.0'),
+                    ('Mac', 'gtk-2.0-key'),
+                    ):
+                rcfile = os.path.join(gtk_dir, 'share', 'themes', name,
+                    dirname, 'gtkrc')
+                gtkrc.write(open(rcfile).read())
 
         for lang in all_languages():
             if os.path.isdir(os.path.join(resources_dir, 'share', 'locale',
