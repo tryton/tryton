@@ -198,11 +198,11 @@ Purchase 12 products::
     >>> purchase_line.product = product_average
     >>> purchase_line.quantity = 7.0
     >>> purchase_line.unit_price = Decimal(6)
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
 
 Receive 9 products::
 
@@ -389,8 +389,9 @@ Create Drop Shipment Move::
     >>> purchase_line.unit_price = Decimal(6)
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
 
     >>> shipment, = sale.drop_shipments
     >>> shipment.click('done')
@@ -438,8 +439,9 @@ Create Drop Shipment Move::
     >>> purchase_line.unit_price = Decimal(5)
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
 
     >>> shipment, = sale.drop_shipments
     >>> shipment.click('done')
