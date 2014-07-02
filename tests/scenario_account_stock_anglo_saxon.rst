@@ -222,11 +222,11 @@ Purchase 12 products::
     >>> purchase_line.product = product_average
     >>> purchase_line.quantity = 7.0
     >>> purchase_line.unit_price = Decimal(6)
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
 
 Receive 9 products::
 
@@ -380,11 +380,11 @@ Now create a supplier invoice with an accountant::
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
     >>> purchase_line.unit_price = Decimal(4)
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
 
     >>> invoice_ids = [i.id for i in purchase.invoices]
     >>> config.user = accountant.id

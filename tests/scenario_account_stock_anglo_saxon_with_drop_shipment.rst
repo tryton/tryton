@@ -261,12 +261,11 @@ Create Purchase from Request::
     >>> purchase, = Purchase.find()
     >>> purchase_line, = purchase.lines
     >>> purchase_line.unit_price = Decimal('3')
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
-    >>> purchase.reload()
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> sale.shipments
