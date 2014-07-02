@@ -183,11 +183,11 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.type = 'subtotal'
     >>> purchase_line.description = 'Subtotal'
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], current_config.context)
-    >>> Purchase.confirm([purchase.id], current_config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
     >>> purchase.reload()
     >>> len(purchase.moves)
     3
