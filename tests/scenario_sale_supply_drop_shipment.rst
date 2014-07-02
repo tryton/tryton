@@ -247,11 +247,11 @@ Create Purchase from Request::
     True
     >>> purchase.delivery_address == sale.shipment_address
     True
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
-    >>> purchase.reload()
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> sale.shipments
