@@ -244,10 +244,11 @@ Create Purchase from Request::
     >>> create_purchase.form.payment_term = payment_term
     >>> create_purchase.execute('start')
     >>> purchase, = Purchase.find()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> shipment, = sale.shipments

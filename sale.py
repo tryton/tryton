@@ -65,7 +65,7 @@ class SaleLine:
                         purchase = purchase_line.purchase
                         if purchase.state == 'cancel':
                             states[line.id] = 'cancel'
-                        elif purchase.state in ('confirmed', 'done'):
+                        elif purchase.state in ('processing', 'done'):
                             states[line.id] = 'purchased'
         return states
 

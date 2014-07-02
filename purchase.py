@@ -80,17 +80,9 @@ class Purchase:
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('confirmed')
-    def confirm(cls, purchases):
-        super(Purchase, cls).confirm(purchases)
-        cls._sale_supply_process(purchases)
-
-    @classmethod
     def process(cls, purchases):
         super(Purchase, cls).process(purchases)
-        # If not yet confirmed, it will be processed by confirm
-        if any(p.state == 'confirmed' for p in purchases):
-            cls._sale_supply_process(purchases)
+        cls._sale_supply_process(purchases)
 
     @classmethod
     @ModelView.button
