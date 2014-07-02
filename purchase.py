@@ -6,6 +6,7 @@ from decimal import Decimal
 from sql import Table, Literal
 from sql.functions import Overlay, Position
 from sql.aggregate import Count
+from sql.operators import Concat
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
@@ -51,6 +52,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('quotation', 'Quotation'),
         ('confirmed', 'Confirmed'),
+        ('processing', 'Processing'),
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], 'State', readonly=True, required=True)
@@ -157,8 +159,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
-                ('confirmed', 'confirmed'),
-                ('done', 'confirmed'),
+                ('confirmed', 'processing'),
+                ('processing', 'processing'),
+                ('processing', 'done'),
+                ('done', 'processing'),
                 ('draft', 'cancel'),
                 ('quotation', 'cancel'),
                 ('quotation', 'draft'),
@@ -180,6 +184,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
                 'confirm': {
                     'invisible': Eval('state') != 'quotation',
                     },
+                'process': {
+                    'invisible': Eval('state') != 'confirmed',
+                    },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
                         | (Eval('state') == 'cancel')),
@@ -198,6 +205,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        Move = pool.get('stock.move')
+        InvoiceLine = pool.get('account.invoice.line')
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().cursor
         model_data = Table('ir_model_data')
@@ -244,6 +255,34 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
         # Migration from 2.2: purchase_date is no more required
         table.not_null_action('purchase_date', 'remove')
+
+        # Migration from 3.2
+        # state confirmed splitted into confirmed and processing
+        if (TableHandler.table_exist(cursor, PurchaseLine._table)
+                and TableHandler.table_exist(cursor, Move._table)
+                and TableHandler.table_exist(cursor, InvoiceLine.table)):
+            purchase_line = PurchaseLine.__table__()
+            move = Move.__table__()
+            invoice_line = InvoiceLine.__table__()
+            # Wrap subquery inside an other inner subquery because MySQL syntax
+            # doesn't allow update a table and select from the same table in a
+            # subquery.
+            sub_query = sql_table.join(purchase_line,
+                condition=purchase_line.purchase == sql_table.id
+                ).join(invoice_line, 'LEFT',
+                    condition=(invoice_line.origin ==
+                        Concat(PurchaseLine.__name__, purchase_line.id))
+                    ).join(move, 'LEFT',
+                        condition=(move.origin == Concat(PurchaseLine.__name__,
+                                purchase_line.id))
+                        ).select(sql_table.id,
+                            where=((sql_table.state == 'confirmed')
+                                & ((invoice_line.id != None)
+                                    | (move.id != None))))
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.state],
+                    values=['processing'],
+                    where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
         table = TableHandler(cursor, cls, module_name)
@@ -776,7 +815,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
     def confirm(cls, purchases):
         cls.set_purchase_date(purchases)
         cls.store_cache(purchases)
-        cls.process(purchases)
+
+    @classmethod
+    @Workflow.transition('processing')
+    def proceed(cls, purchases):
+        pass
 
     @classmethod
     @ModelView.button_action('purchase.wizard_invoice_handle_exception')
@@ -789,8 +832,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    @ModelView.button
     def process(cls, purchases):
-        done = []
+        process, done = [], []
         for purchase in purchases:
             purchase.create_invoice('in_invoice')
             purchase.create_invoice('in_credit_note')
@@ -802,6 +846,10 @@ class Purchase(Workflow, ModelSQL, ModelView):
             purchase.set_shipment_state()
             if purchase.is_done():
                 done.append(purchase)
+            elif purchase.state != 'processing':
+                process.append(purchase)
+        if process:
+            cls.proceed(process)
         if done:
             cls.write(done, {
                     'state': 'done',

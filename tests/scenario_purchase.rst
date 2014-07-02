@@ -244,12 +244,11 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 3.0
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
-    >>> purchase.reload()
+    u'processing'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
     >>> invoice, = purchase.invoices
@@ -302,12 +301,9 @@ Purchase 5 products with an invoice method 'on shipment'::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 3.0
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], config.context)
-    >>> Purchase.confirm([purchase.id], config.context)
-    >>> purchase.state
-    u'confirmed'
-    >>> purchase.reload()
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 0)
 
@@ -387,11 +383,11 @@ Create a Return::
     >>> return_.lines.append(return_line)
     >>> return_line.type = 'comment'
     >>> return_line.description = 'Comment'
-    >>> return_.save()
-    >>> Purchase.quote([return_.id], config.context)
-    >>> Purchase.confirm([return_.id], config.context)
+    >>> return_.click('quote')
+    >>> return_.click('confirm')
+    >>> return_.click('process')
     >>> return_.state
-    u'confirmed'
+    u'processing'
     >>> return_.reload()
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
@@ -452,11 +448,11 @@ Mixing return and purchase::
     >>> mix.lines.append(mixline2)
     >>> mixline2.product = product
     >>> mixline2.quantity = -2.
-    >>> mix.save()
-    >>> Purchase.quote([mix.id], config.context)
-    >>> Purchase.confirm([mix.id], config.context)
+    >>> mix.click('quote')
+    >>> mix.click('confirm')
+    >>> mix.click('process')
     >>> mix.state
-    u'confirmed'
+    u'processing'
     >>> mix.reload()
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 2)
@@ -532,11 +528,11 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.lines.append(mixline2)
     >>> mixline2.product = product
     >>> mixline2.quantity = -3.
-    >>> mix.save()
-    >>> Purchase.quote([mix.id], config.context)
-    >>> Purchase.confirm([mix.id], config.context)
+    >>> mix.click('quote')
+    >>> mix.click('confirm')
+    >>> mix.click('process')
     >>> mix.state
-    u'confirmed'
+    u'processing'
     >>> mix.reload()
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 0)
@@ -581,8 +577,9 @@ Purchase services::
     >>> service_purchase.save()
     >>> service_purchase.click('quote')
     >>> service_purchase.click('confirm')
+    >>> service_purchase.click('process')
     >>> service_purchase.state
-    u'confirmed'
+    u'processing'
     >>> service_invoice, = service_purchase.invoices
 
 Pay the service invoice::
