@@ -220,11 +220,11 @@ Purchase 5 products::
     >>> purchase.lines.append(purchase_line)
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5.0
-    >>> purchase.save()
-    >>> Purchase.quote([purchase.id], current_config.context)
-    >>> Purchase.confirm([purchase.id], current_config.context)
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
     >>> purchase.state
-    u'confirmed'
+    u'processing'
 
 Receive 4 products::
 
