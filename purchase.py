@@ -260,7 +260,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         # state confirmed splitted into confirmed and processing
         if (TableHandler.table_exist(cursor, PurchaseLine._table)
                 and TableHandler.table_exist(cursor, Move._table)
-                and TableHandler.table_exist(cursor, InvoiceLine.table)):
+                and TableHandler.table_exist(cursor, InvoiceLine._table)):
             purchase_line = PurchaseLine.__table__()
             move = Move.__table__()
             invoice_line = InvoiceLine.__table__()
