@@ -216,6 +216,8 @@ class Inventory(Workflow, ModelSQL, ModelView):
                         or product2consumable[product_id]):
                     continue
                 quantity, uom_id = product_qty[product_id]
+                if not quantity:
+                    continue
                 values = Line.create_values4complete(product_id, inventory,
                     quantity, uom_id)
                 to_create.append(values)

@@ -62,6 +62,7 @@ Get stock locations::
     >>> Location = Model.get('stock.location')
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
+    >>> customer_loc, = Location.find([('code', '=', 'CUS')])
 
 Create product::
 
@@ -119,3 +120,28 @@ Create an inventory::
     True
     >>> move.to_location == inventory.location
     True
+
+Empty storage::
+
+    >>> StockMove = Model.get('stock.move')
+    >>> outgoing_move = StockMove()
+    >>> outgoing_move.product = product
+    >>> outgoing_move.uom = unit
+    >>> outgoing_move.quantity = 2
+    >>> outgoing_move.from_location = storage_loc
+    >>> outgoing_move.to_location = customer_loc
+    >>> outgoing_move.planned_date = today
+    >>> outgoing_move.effective_date = today
+    >>> outgoing_move.company = company
+    >>> outgoing_move.unit_price = Decimal('100')
+    >>> outgoing_move.currency = currency
+    >>> outgoing_move.click('do')
+
+Create an inventory that should be empty after completion::
+
+    >>> Inventory = Model.get('stock.inventory')
+    >>> inventory = Inventory()
+    >>> inventory.location = storage_loc
+    >>> inventory.click('complete_lines')
+    >>> len(inventory.lines)
+    0
