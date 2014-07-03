@@ -746,7 +746,7 @@ class ViewTree(View):
                 group.add(record)
             record = group[idx]
             for col, value in zip(columns, line):
-                widget = self.treeview.widgets[col.name]
+                widget = self.widgets[col.name]
                 if widget.get_textual_value(record) != value:
                     widget.value_from_text(record, value)
                     if value and not widget.get_textual_value(record):
