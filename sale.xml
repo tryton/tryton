@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_purchase_request_form">
             <field name="name">Purchase Requests</field>
             <field name="res_model">purchase.request</field>
-            <field name="domain">[('origin', '=', ('sale.sale', Eval('id'))]</field>
+            <field name="domain">[('origin', '=', ('sale.sale', Eval('id')))]</field>
         </record>
         <record model="ir.action.keyword"
             id="act_open_purchase_request_keyword">
