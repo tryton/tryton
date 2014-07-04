@@ -345,6 +345,8 @@ class Line(ModelSQL, ModelView):
     __name__ = 'account.statement.line'
     statement = fields.Many2One('account.statement', 'Statement',
             required=True, ondelete='CASCADE')
+    sequence = fields.Integer('Sequence')
+    number = fields.Char('Number')
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', required=True,
         digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)))
@@ -369,6 +371,7 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'debit_credit_account_statement_journal': ('Please provide '
                     'debit and credit account on statement journal "%s".'),
@@ -382,6 +385,11 @@ class Line(ModelSQL, ModelView):
             ('check_statement_line_amount', 'CHECK(amount != 0)',
                 'Amount should be a positive or negative value.'),
             ]
+
+    @staticmethod
+    def order_sequence(tables):
+        table, _ = tables[None]
+        return [table.sequence == None, table.sequence]
 
     @staticmethod
     def default_amount():

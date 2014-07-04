@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Statement Lines">
     <field name="statement"/>
+    <field name="number"/>
     <field name="date"/>
     <field name="amount"/>
     <field name="party"/>
