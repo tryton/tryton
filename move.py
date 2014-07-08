@@ -895,8 +895,6 @@ class Move(Workflow, ModelSQL, ModelView):
         assert grouping_filter is None or len(grouping_filter) == len(grouping)
 
         move_rule_query = Rule.domain_get('stock.move')
-        if move_rule_query is None:
-            move_rule_query = Literal(True)
 
         PeriodCache = Period.get_cache(grouping)
         period = None
@@ -1081,7 +1079,8 @@ class Move(Workflow, ModelSQL, ModelView):
             where=state_date_clause
             & where
             & move.to_location.in_(location_query)
-            & move.id.in_(move_rule_query)
+            & (move.id.in_(move_rule_query) if move_rule_query
+                else Literal(True))
             & dest_clause_from,
             group_by=[move.to_location] + move_keys)
         query = Union(query, from_.select(move.from_location.as_('location'),
@@ -1090,7 +1089,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 where=state_date_clause
                 & where
                 & move.from_location.in_(location_query)
-                & move.id.in_(move_rule_query)
+                & (move.id.in_(move_rule_query) if move_rule_query
+                    else Literal(True))
                 & dest_clause_to,
                 group_by=[move.from_location] + move_keys),
             all_=True)
