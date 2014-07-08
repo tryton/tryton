@@ -792,15 +792,17 @@
                     }
                 } else if ((view.view_type == 'tree') &&
                         (view.children_field)) {
-                    var parent_, paths, selected_paths, tree_state_model;
+                    var parent_, timestamp, paths, selected_paths,
+                        tree_state_model;
                     parent_ = this.group.parent ? this.group.parent.id : null;
+                    timestamp = this.parent ? this._timestamp : null;
                     paths = view.get_expanded_paths();
                     selected_paths = view.get_selected_paths();
                     if (!(parent_ in this.tree_states)) {
                         this.tree_states[parent_] = {};
                     }
-                    this.tree_states[parent_][view.children_field] = [paths,
-                        selected_paths];
+                    this.tree_states[parent_][view.children_field] = [
+                        timestamp, paths, selected_paths];
                     if (store) {
                         tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
@@ -825,30 +827,40 @@
             return JSON.stringify(Sao.rpc.prepareObject(domain));
         },
         set_tree_state: function() {
-            var parent_, state, state_prm, tree_state_model;
+            var parent_, timestamp, state, state_prm, tree_state_model;
             var view = this.current_view;
             if (!view || (view.view_type != 'tree') || !this.group) {
                 return;
             }
             parent_ = this.group.parent ? this.group.parent.id : null;
+            timestamp = parent ? parent._timestamp : null;
             if (!(parent_ in this.tree_states)) {
                 this.tree_states[parent_] = {};
             }
             state = this.tree_states[parent_][view.children_field];
+            if (state) {
+                if (timestamp != state[0]) {
+                    state = undefined;
+                }
+            }
             if (state === undefined) {
                 tree_state_model = new Sao.Model('ir.ui.view_tree_state');
                 state_prm = tree_state_model.execute('get', [
                         this.model_name,
                         this.get_tree_domain(parent_),
-                        view.children_field], {});
+                        view.children_field], {})
+                    .then(function(state) {
+                        return [timestamp,
+                            JSON.parse(state[0]), JSON.parse(state[1])];
+                    });
             } else {
                 state_prm = jQuery.when(state);
             }
             state_prm.done(function(state) {
                 var expanded_nodes, selected_nodes;
                 this.tree_states[parent_][view.children_field] = state;
-                expanded_nodes = JSON.parse(state[0]);
-                selected_nodes = JSON.parse(state[1]);
+                expanded_nodes = state[0];
+                selected_nodes = state[1];
                 view.display(selected_nodes, expanded_nodes);
             }.bind(this));
         }
