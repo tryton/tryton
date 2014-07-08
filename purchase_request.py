@@ -57,7 +57,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
                     Eval('context', {}).get('company', -1)),
             ])
-    origin = fields.Reference('Origin', selection='origin_get', readonly=True,
+    origin = fields.Reference('Origin', selection='get_origin', readonly=True,
             required=True)
     state = fields.Function(fields.Selection([
         ('purchased', 'Purchased'),
@@ -134,15 +134,18 @@ class PurchaseRequest(ModelSQL, ModelView):
         return self.product.type in ('goods', 'assets')
 
     @staticmethod
-    def origin_get():
-        Model = Pool().get('ir.model')
-        res = []
-        models = Model.search([
-                ('model', '=', 'stock.order_point'),
+    def _get_origin():
+        'Return the set of Model names for origin Reference'
+        return {'stock.order_point'}
+
+    @classmethod
+    def get_origin(cls):
+        pool = Pool()
+        IrModel = pool.get('ir.model')
+        models = IrModel.search([
+                ('model', 'in', list(cls._get_origin())),
                 ])
-        for model in models:
-            res.append([model.model, model.name])
-        return res
+        return [(m.model, m.name) for m in models]
 
     @classmethod
     def generate_requests(cls, products=None, warehouses=None):
