@@ -131,7 +131,7 @@ class User:
             [(dn, attrs)] = cls.ldap_search_user(login, con, connection,
                 attrs=[str(connection.auth_uid)])
             if password and con.simple_bind_s(dn, password):
-                user_id, _, _ = cls._get_login(login)
+                user_id, _ = cls._get_login(login)
                 if user_id:
                     LoginAttempt.remove(login)
                     return user_id
