@@ -3,6 +3,11 @@
 import os
 import sys
 import logging
+try:
+    import simplejson as json
+except ImportError:
+    import json
+
 from lxml import etree
 from trytond.model import ModelView, ModelSQL, fields
 from trytond import backend
@@ -354,6 +359,8 @@ class ViewTreeState(ModelSQL, ModelView):
 
     @classmethod
     def get(cls, model, domain, child_name):
+        # Normalize the json domain
+        domain = json.dumps(json.loads(domain))
         current_user = Transaction().user
         with Transaction().set_user(0):
             try:
