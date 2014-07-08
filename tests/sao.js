@@ -1183,7 +1183,7 @@
         [[['Integer', null, null]], [['integer', '=', null]]],
         [[['Integer', null, '3..5']], [[
             ['integer', '>=', 3],
-            ['integer', '<', 5]
+            ['integer', '<=', 5]
             ]]],
         [[['Reference', null, 'foo']], [['reference', 'ilike', '%foo%']]],
         [[['Reference', null, 'Spam']], [['reference', 'ilike', '%spam%']]],

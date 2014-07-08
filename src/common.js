@@ -959,7 +959,7 @@
                             var rvalue = this.convert_value(field, values[1]);
                             result.push([
                                     [field.name, '>=', lvalue],
-                                    [field.name, '<', rvalue]
+                                    [field.name, '<=', rvalue]
                                     ]);
                             return;
                         }
