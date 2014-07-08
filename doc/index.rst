@@ -27,7 +27,7 @@ The Journal has some fields when the process method is SEPA:
 Group
 *****
 
-The Group has a field `SEPA Message` containing the XML file.
+The Group has a field `SEPA Messages` containing the XML messages.
 
 Mandate
 *******
@@ -50,6 +50,18 @@ The mandate can be in one of this states:
 * Draft
 * Requested
 * Validated
+* Canceled
+
+Message
+*******
+
+The Message stores the incoming and outgoing XML message.
+
+The message can be in one of this states:
+
+* Draft
+* Waiting
+* Done
 * Canceled
 
 Party

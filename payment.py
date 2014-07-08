@@ -13,9 +13,10 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.tools import reduce_ids
+from trytond import backend
 
 __metaclass__ = PoolMeta
-__all__ = ['Journal', 'Group', 'Payment', 'Mandate']
+__all__ = ['Journal', 'Group', 'Payment', 'Mandate', 'Message']
 
 
 class Journal:
@@ -106,11 +107,13 @@ loader = genshi.template.TemplateLoader(
 
 class Group:
     __name__ = 'account.payment.group'
-    sepa_message = fields.Text('SEPA Message', readonly=True, states={
-            'invisible': ~Eval('sepa_message'),
-            })
-    sepa_filename = fields.Function(fields.Char('SEPA Filename'),
-        'get_sepa_filename')
+    sepa_messages = fields.One2Many('account.payment.sepa.message', 'origin',
+        'SEPA Messages', readonly=True,
+        domain=[('company', '=', Eval('company', -1))],
+        states={
+            'invisible': ~Eval('sepa_messages'),
+            },
+        depends=['company'])
 
     @classmethod
     def __setup__(cls):
@@ -118,9 +121,6 @@ class Group:
         cls._error_messages.update({
                 'no_mandate': 'No valid mandate for payment "%s"',
                 })
-
-    def get_sepa_filename(self, name):
-        return self.rec_name + '.xml'
 
     def get_sepa_template(self):
         if self.kind == 'payable':
@@ -131,6 +131,7 @@ class Group:
     def process_sepa(self):
         pool = Pool()
         Payment = pool.get('account.payment')
+        Message = pool.get('account.payment.sepa.message')
         if self.kind == 'receivable':
             payments = [p for p in self.payments if not p.sepa_mandate]
             mandates = Payment.get_sepa_mandates(payments)
@@ -143,8 +144,12 @@ class Group:
         tmpl = self.get_sepa_template()
         if not tmpl:
             raise NotImplementedError
-        self.sepa_message = tmpl.generate(group=self,
+        if not self.sepa_messages:
+            self.sepa_messages = ()
+        message = tmpl.generate(group=self,
             datetime=datetime).filter(remove_comment).render()
+        message = Message(message=message, type='in', state='waiting')
+        self.sepa_messages += (message,)
 
     @property
     def sepa_initiating_party(self):
@@ -444,3 +449,143 @@ class Mandate(Workflow, ModelSQL, ModelView):
             if mandate.state not in ('draft', 'canceled'):
                 cls.raise_user_error('delete_draft_canceled', mandate.rec_name)
         super(Mandate, cls).delete(mandates)
+
+
+class Message(Workflow, ModelSQL, ModelView):
+    'SEPA Message'
+    __name__ = 'account.payment.sepa.message'
+    _states = {
+        'readonly': Eval('state') != 'draft',
+        }
+    _depends = ['state']
+    message = fields.Text('Message', states=_states, depends=_depends)
+    filename = fields.Function(fields.Char('Filename'), 'get_filename')
+    type = fields.Selection([
+            ('in', 'IN'),
+            ('out', 'OUT'),
+            ], 'Type', required=True, states=_states, depends=_depends)
+    company = fields.Many2One('company.company', 'Company', required=True,
+        select=True,
+        domain=[
+            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
+                Eval('context', {}).get('company', -1)),
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
+    origin = fields.Reference('Origin', selection='get_origin', select=True,
+        states=_states, depends=_depends)
+    state = fields.Selection([
+            ('draft', 'Draft'),
+            ('waiting', 'Waiting'),
+            ('done', 'Done'),
+            ('canceled', 'Canceled'),
+            ], 'State', readonly=True, select=True)
+
+    @classmethod
+    def __setup__(cls):
+        super(Message, cls).__setup__()
+        cls._transitions |= {
+            ('draft', 'waiting'),
+            ('waiting', 'done'),
+            ('waiting', 'draft'),
+            ('draft', 'canceled'),
+            ('waiting', 'canceled'),
+            }
+        cls._buttons.update({
+                'cancel': {
+                    'invisible': ~Eval('state').in_(['draft', 'waiting']),
+                    },
+                'draft': {
+                    'invisible': Eval('state') != 'waiting',
+                    },
+                'wait': {
+                    'invisible': Eval('state') != 'draft',
+                    },
+                'do': {
+                    'invisible': Eval('state') != 'waiting',
+                    },
+                })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+        pool = Pool()
+        Group = pool.get('account.payment.group')
+
+        super(Message, cls).__register__(module_name)
+
+        # Migration from 3.2
+        if TableHandler.table_exist(cursor, Group._table):
+            group_table = TableHandler(cursor, Group, module_name)
+            if group_table.column_exist('sepa_message'):
+                group = Group.__table__()
+                table = cls.__table__()
+                cursor.execute(*group.select(
+                        group.id, group.sepa_message, group.company))
+                for group_id, message, company_id in cursor.fetchall():
+                    cursor.execute(*table.insert(
+                            [table.message, table.type, table.company,
+                                table.origin, table.state],
+                            [[message, 'out', company_id,
+                                    'account.payment.group,%s' % group_id,
+                                    'done']]))
+                group_table.drop_column('sepa_message')
+
+    @staticmethod
+    def default_type():
+        return 'in'
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
+    @staticmethod
+    def default_state():
+        return 'draft'
+
+    def get_filename(self, name):
+        pool = Pool()
+        Group = pool.get('account.payment.group')
+        if isinstance(self.origin, Group):
+            return self.origin.rec_name + '.xml'
+
+    @staticmethod
+    def _get_origin():
+        'Return list of Model names for origin Reference'
+        return ['account.payment.group']
+
+    @classmethod
+    def get_origin(cls):
+        IrModel = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = IrModel.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, messages):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('waiting')
+    def wait(cls, messages):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    def do(cls, messages):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('canceled')
+    def cancel(cls, messages):
+        pass

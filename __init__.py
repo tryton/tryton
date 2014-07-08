@@ -12,6 +12,7 @@ def register():
         Group,
         Mandate,
         Payment,
+        Message,
         Party,
         Configuration,
         module='account_payment_sepa', type_='model')

@@ -114,12 +114,13 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
             with Transaction().set_context(active_ids=[payment.id]):
                 _, data = process_payment.do_process(None)
             group, = self.payment_group.browse(data['res_id'])
-            sepa_string = group.sepa_message.encode('utf-8')
-            sepa_file = etree.fromstring(sepa_string)
+            message, = group.sepa_messages
+            sepa_string = message.message.encode('utf-8')
+            sepa_xml = etree.fromstring(sepa_string)
             schema_file = os.path.join(os.path.dirname(__file__),
                 '%s.xsd' % flavor)
             schema = etree.XMLSchema(etree.parse(schema_file))
-            schema.assertValid(sepa_file)
+            schema.assertValid(sepa_xml)
 
     def test_pain001_001_03(self):
         'Test pain001.001.03 xsd validation'
