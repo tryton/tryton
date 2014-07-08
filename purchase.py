@@ -14,14 +14,8 @@ class PurchaseRequest:
     __name__ = 'purchase.request'
 
     @classmethod
-    def origin_get(cls):
-        Model = Pool().get('ir.model')
-        result = super(PurchaseRequest, cls).origin_get()
-        model, = Model.search([
-                ('model', '=', 'sale.sale'),
-                ])
-        result.append([model.model, model.name])
-        return result
+    def _get_origin(cls):
+        return super(PurchaseRequest, cls)._get_origin() | {'sale.sale'}
 
     @classmethod
     def delete(cls, requests):
