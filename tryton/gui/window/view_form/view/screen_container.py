@@ -36,7 +36,7 @@ class Dates(gtk.HBox):
         elif from_:
             return '>=%s' % quote(from_)
         elif to:
-            return '<%s' % quote(to)
+            return '<=%s' % quote(to)
 
 
 class Selection(gtk.ScrolledWindow):

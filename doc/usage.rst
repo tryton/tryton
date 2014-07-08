@@ -794,8 +794,7 @@ A range of number values can be set using `..`.
 
     For example: ``Amount: 100..500``
 
-    It will find all records with `Amount` between `100` and `500` (left
-    included and right excluded)
+    It will find all records with `Amount` between `100` and `500` included.
 
 There are two wildcards:
 

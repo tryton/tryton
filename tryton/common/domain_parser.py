@@ -1082,7 +1082,7 @@ class DomainParser(object):
                             rvalue = convert_value(field, rvalue)
                             yield iter([
                                     (field_name, '>=', lvalue),
-                                    (field_name, '<', rvalue),
+                                    (field_name, '<=', rvalue),
                                     ])
                             continue
                     if isinstance(value, list):
@@ -1355,7 +1355,7 @@ def test_parse_clause():
         ]
     assert rlist(dom.parse_clause([('Integer', None, '3..5')])) == [[
             ('integer', '>=', 3),
-            ('integer', '<', 5),
+            ('integer', '<=', 5),
             ]]
     assert rlist(dom.parse_clause([('Reference', None, 'foo')])) == [
         ('reference', 'ilike', '%foo%'),
