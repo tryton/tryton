@@ -925,10 +925,17 @@
 
     Sao.View.Tree.IntegerColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-integer',
+        init: function(model, attributes) {
+            Sao.View.Tree.IntegerColumn._super.init.call(this, model, attributes);
+            this.factor = Number(attributes.factor || 1);
+        },
         get_cell: function() {
             var cell = Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
             cell.css('text-align', 'right');
             return cell;
+        },
+        update_text: function(cell, record) {
+            cell.text(this.field.get_client(record, this.factor));
         }
     });
 
@@ -936,7 +943,7 @@
         class_: 'column-float'
     });
 
-    Sao.View.Tree.BooleanColumn = Sao.class_(Sao.View.Tree.IntegerColumn, {
+    Sao.View.Tree.BooleanColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-boolean',
         get_cell: function() {
             return jQuery('<input/>', {
@@ -1946,9 +1953,21 @@
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
             this.el.css('text-align', 'right');
+            this.factor = Number(attributes.factor || 1);
         },
         set_value: function(record, field) {
-            field.set_client(record, this.el.val());
+            field.set_client(record, this.el.val(), undefined, this.factor);
+        },
+        display: function(record, field) {
+            // Skip Char call
+            Sao.View.Form.Char._super.display.call(this, record, field);
+            if (record) {
+                var value = record.model.fields[this.field_name]
+                    .get_client(record, this.factor);
+                this.el.val(value || '');
+            } else {
+                this.el.val('');
+            }
         }
     });
 

@@ -1273,9 +1273,13 @@
         }
     });
 
-    Sao.field.Number = Sao.class_(Sao.field.Field, {
+    Sao.field.Float = Sao.class_(Sao.field.Field, {
         _default: null,
-        digits: function(record) {
+        default_digits: [16, 2],
+        digits: function(record, factor) {
+            if (factor === undefined) {
+                factor = 1;
+            }
             var digits = [];
             var default_ = [16, 2];
             var record_digits = record.expr_eval(
@@ -1287,7 +1291,8 @@
                     digits.push(default_[idx]);
                 }
             }
-            return digits;
+            var shift = Math.round(Math.log(Math.abs(factor)) / Math.LN10);
+            return [digits[0] + shift, digits[1] - shift];
         },
         check_required: function(record) {
             var state_attrs = this.get_state_attrs(record);
@@ -1298,74 +1303,57 @@
                 }
             }
             return true;
-        }
-    });
-
-    Sao.field.Float = Sao.class_(Sao.field.Number, {
-        set_client: function(record, value, force_change) {
-            if (typeof value == 'string') {
-                value = Number(value);
-                if (isNaN(value)) {
-                    value = this._default;
-                }
+        },
+        convert: function(value) {
+            value = Number(value);
+            if (isNaN(value)) {
+                value = this._default;
+            }
+            return value;
+        },
+        set_client: function(record, value, force_change, factor) {
+            if (factor === undefined) {
+                factor = 1;
+            }
+            value = this.convert(value);
+            if (value !== null) {
+                value /= factor;
             }
             Sao.field.Float._super.set_client.call(this, record, value,
                 force_change);
         },
-        get_client: function(record) {
+        get_client: function(record, factor) {
+            if (factor === undefined) {
+                factor = 1;
+            }
             var value = record._values[this.name];
-            if (value || value === 0) {
-                var digits = this.digits(record);
-                return value.toFixed(digits[1]);
+            if (value !== null) {
+                var digits = this.digits(record, factor);
+                return (value * factor).toFixed(digits[1]);
             } else {
                 return '';
             }
         }
     });
 
-    Sao.field.Numeric = Sao.class_(Sao.field.Number, {
-        set_client: function(record, value, force_change) {
-            if (typeof value == 'string') {
-                value = new Sao.Decimal(value);
-                if (isNaN(value.valueOf())) {
-                    value = this._default;
-                }
+    Sao.field.Numeric = Sao.class_(Sao.field.Float, {
+        convert: function(value) {
+            value = new Sao.Decimal(value);
+            if (isNaN(value.valueOf())) {
+                value = this._default;
             }
-            Sao.field.Float._super.set_client.call(this, record, value,
-                force_change);
-        },
-        get_client: function(record) {
-            var value = record._values[this.name];
-            if (value) {
-                var digits = this.digits(record);
-                return value.toFixed(digits[1]);
-            } else {
-                return '';
-            }
+            return value;
         }
     });
 
-    Sao.field.Integer = Sao.class_(Sao.field.Number, {
-        set_client: function(record, value, force_change) {
-            if (typeof value == 'string') {
-                value = parseInt(value, 10);
-                if (isNaN(value)) {
-                    value = this._default;
-                }
+    Sao.field.Integer = Sao.class_(Sao.field.Float, {
+        default_digits: [16, 0],
+        convert: function(value) {
+            value = parseInt(value, 10);
+            if (isNaN(value)) {
+                value = this._default;
             }
-            Sao.field.Integer._super.set_client.call(this, record, value,
-                force_change);
-        },
-        get_client: function(record) {
-            var value = record._values[this.name];
-            if (value || value === 0) {
-                return '' + value;
-            } else {
-                return '';
-            }
-        },
-        digits: function(record) {
-            return [16, 0];
+            return value;
         }
     });
 
