@@ -292,7 +292,7 @@ class FloatField(CharField):
                 record.expr_eval(
                     self.attrs.get('digits', self.default_digits)),
                 self.default_digits))
-        shift = int(round(math.log(factor, 10)))
+        shift = int(round(math.log(abs(factor), 10)))
         return (digits[0] + shift, digits[1] - shift)
 
     def convert(self, value):
