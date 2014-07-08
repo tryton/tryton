@@ -184,6 +184,39 @@ class HistoryTestCase(unittest.TestCase):
             History.restore_history([history_id], datetime.datetime.min)
             self.assertRaises(UserError, History.read, [history_id])
 
+    @unittest.skipIf(CONFIG['db_type'] in ('sqlite', 'mysql'),
+        'now() is not the start of the transaction')
+    def test0045restore_history_same_timestamp(self):
+        'Test restore history with same timestamp'
+        History = POOL.get('test.history')
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(value=1)
+            history.save()
+            history_id = history.id
+            first = history.create_date
+            history.value = 2
+            history.save()
+            second = history.create_date
+
+            self.assertEqual(first, second)
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(history_id)
+            history.value = 3
+            history.save()
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            History.restore_history([history_id], first)
+            history = History(history_id)
+            self.assertEqual(history.value, 2)
+
     def test0050ordered_search(self):
         'Test ordered search of history models'
         History = POOL.get('test.history')

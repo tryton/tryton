@@ -331,7 +331,7 @@ class ModelSQL(ModelStorage):
         for id_ in ids:
             column_datetime = Coalesce(history.write_date, history.create_date)
             hwhere = (column_datetime <= datetime) & (history.id == id_)
-            horder = column_datetime.desc
+            horder = (column_datetime.desc, Column(history, '__id').desc)
             cursor.execute(*history.select(*hcolumns,
                     where=hwhere, order_by=horder, limit=1))
             values = cursor.fetchone()
