@@ -1,11 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import logging
+
 import ldap
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['User']
 __metaclass__ = PoolMeta
+
+logger = logging.getLogger(__name__)
 
 
 class User:
@@ -41,6 +45,8 @@ class User:
                     filter, attrs)
         if connection.active_directory:
             result = [x for x in result if x[0]]
+        if result and len(result) > 1:
+            logger.info('ldap_search_user found more than 1 user')
         return result
 
     @classmethod
@@ -62,8 +68,8 @@ class User:
                         con, connection, attrs=[]):
                     find = True
                     break
-        except Exception:
-            pass
+        except ldap.LDAPError, e:
+            logger.error('LDAPError: %s' % str(e))
         if find:
             cls.raise_user_error('set_passwd_ldap_user', (login.rec_name,))
 
@@ -101,16 +107,18 @@ class User:
                 if connection.bind_dn:
                     con.simple_bind_s(connection.bind_dn, connection.bind_pass)
                 user = cls(Transaction().user)
-                [(dn, attrs)] = cls.ldap_search_user(user.login, con,
+                users = cls.ldap_search_user(user.login, con,
                     connection, attrs=[str(connection.auth_uid)])
-                if con.simple_bind_s(dn, old_password):
-                    con.passwd_s(dn, old_password, values['password'])
-                    values = values.copy()
-                    del values['password']
-                else:
-                    cls.raise_user_error('wrong_password')
-            except Exception:
-                pass
+                if users and len(users) == 1:
+                    [(dn, attrs)] = users
+                    if con.simple_bind_s(dn, old_password):
+                        con.passwd_s(dn, old_password, values['password'])
+                        values = values.copy()
+                        del values['password']
+                    else:
+                        cls.raise_user_error('wrong_password')
+            except ldap.LDAPError, e:
+                logger.error('LDAPError: %s' % str(e))
         super(User, cls).set_preferences(values, old_password=old_password)
 
     @classmethod
@@ -128,20 +136,22 @@ class User:
                 con.start_tls_s()
             if connection.bind_dn:
                 con.simple_bind_s(connection.bind_dn, connection.bind_pass)
-            [(dn, attrs)] = cls.ldap_search_user(login, con, connection,
+            users = cls.ldap_search_user(login, con, connection,
                 attrs=[str(connection.auth_uid)])
-            if password and con.simple_bind_s(dn, password):
-                user_id, _ = cls._get_login(login)
-                if user_id:
-                    LoginAttempt.remove(login)
-                    return user_id
-                elif connection.auth_create_user:
-                    user, = cls.create([{
-                                'name': attrs.get(str(connection.auth_uid),
-                                    [login])[0],
-                                'login': login,
-                                }])
-                    return user.id
-        except Exception:
-            pass
+            if users and len(users) == 1:
+                [(dn, attrs)] = users
+                if password and con.simple_bind_s(dn, password):
+                    user_id, _ = cls._get_login(login)
+                    if user_id:
+                        LoginAttempt.remove(login)
+                        return user_id
+                    elif connection.auth_create_user:
+                        user, = cls.create([{
+                                    'name': attrs.get(str(connection.auth_uid),
+                                        [login])[0],
+                                    'login': login,
+                                    }])
+                        return user.id
+        except ldap.LDAPError, e:
+            logger.error('LDAPError: %s' % str(e))
         return super(User, cls).get_login(login, password)
