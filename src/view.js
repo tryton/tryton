@@ -2769,7 +2769,7 @@
                 if (field === undefined) {
                     this.screen.new_group();
                     this.screen.set_current_record(null);
-                    this.screen.parent = true;
+                    this.screen.group.parent = null;
                     this.screen.display();
                     return;
                 }
@@ -2989,7 +2989,7 @@
                 if (field === undefined) {
                     this.screen.new_group();
                     this.screen.set_current_record(null);
-                    this.screen.parent = true;
+                    this.screen.group.parent = null;
                     this.screen.display();
                     return;
                 }

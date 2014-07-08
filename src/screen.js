@@ -150,7 +150,6 @@
             this.search_count = 0;
             this.screen_container = new Sao.ScreenContainer(
                 attributes.tab_domain);
-            this.parent = null;
             if (!attributes.row_activate) {
                 this.row_activate = this.default_row_activate;
             } else {
@@ -241,7 +240,7 @@
         search_filter: function(search_string) {
             var domain = [];
 
-            if (this.domain_parser && !this.parent) {
+            if (this.domain_parser && !this.group.parent) {
                 if (search_string || search_string === '') {
                     domain = this.domain_parser.parse(search_string);
                 } else {
@@ -686,8 +685,8 @@
             if (written) {
                 this.group.written(ids);
             }
-            if (this.parent) {
-                this.parent.root_parent().reload();
+            if (this.group.parent) {
+                this.group.parent.root_parent().reload();
             }
             this.display();
         },
@@ -747,10 +746,10 @@
                 }
             } else if (action == 'delete') {
                 if (access['delete']) {
-                    this.remove(!this.parent, false, !this.parent);
+                    this.remove(!this.group.parent, false, !this.group.parent);
                 }
             } else if (action == 'remove') {
-                if (access.write && access.read && this.parent) {
+                if (access.write && access.read && this.group.parent) {
                     this.remove(false, true, false);
                 }
             } else if (action == 'copy') {
@@ -794,7 +793,7 @@
                 } else if ((view.view_type == 'tree') &&
                         (view.children_field)) {
                     var parent_, paths, selected_paths, tree_state_model;
-                    parent_ = this.parent ? this.parent.id : null;
+                    parent_ = this.group.parent ? this.group.parent.id : null;
                     paths = view.get_expanded_paths();
                     selected_paths = view.get_selected_paths();
                     if (!(parent_ in this.tree_states)) {
@@ -831,7 +830,7 @@
             if (!view || (view.view_type != 'tree') || !this.group) {
                 return;
             }
-            parent_ = this.parent ? this.parent.id : null;
+            parent_ = this.group.parent ? this.group.parent.id : null;
             if (!(parent_ in this.tree_states)) {
                 this.tree_states[parent_] = {};
             }

@@ -312,7 +312,7 @@
             });
             screen.switch_view().done(function() {
                 screen.search_filter();
-                screen.parent = record;
+                screen.group.parent = record;
             });
             Sao.Window.Attachment._super.init.call(this, screen, this.callback,
                 {view_type: 'tree'});
