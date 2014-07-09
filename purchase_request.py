@@ -680,7 +680,7 @@ class CreatePurchase(Wizard):
                     setattr(purchase, f, v)
                 purchase.save()
                 for request in grouped_requests:
-                    line = self.compute_purchase_line(request)
+                    line = self.compute_purchase_line(request, purchase)
                     line.purchase = purchase
                     line.save()
                     Request.write([request], {
@@ -696,7 +696,7 @@ class CreatePurchase(Wizard):
         return {}
 
     @classmethod
-    def compute_purchase_line(cls, request):
+    def compute_purchase_line(cls, request, purchase):
         pool = Pool()
         Product = pool.get('product.product')
         Line = pool.get('purchase.line')
