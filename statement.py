@@ -47,7 +47,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             depends=['currency_digits']),
         'on_change_with_balance')
     lines = fields.One2Many('account.statement.line', 'statement',
-        'Transactions', states={
+        'Lines', states={
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
             },
         depends=['state', 'journal'])
