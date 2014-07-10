@@ -53,6 +53,8 @@ this repository contains the full copyright notices and license terms. -->
                             icon="tryton-go-next"/>
                     <button name="confirm" string="Confirm"
                         icon="tryton-ok"/>
+                    <button name="process" string="Process"
+                        icon="tryton-go-next"/>
                 </group>
             </group>
         </page>
