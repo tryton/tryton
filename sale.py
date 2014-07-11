@@ -67,7 +67,8 @@ class Sale(Workflow, ModelSQL, ModelView):
         depends=['state'])
     party = fields.Many2One('party.party', 'Party', required=True, select=True,
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ((Eval('state') != 'draft')
+                | (Eval('lines', [0]) & Eval('party'))),
             },
         depends=['state'])
     party_lang = fields.Function(fields.Char('Party Language'),
