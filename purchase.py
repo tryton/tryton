@@ -65,7 +65,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
-        states=_STATES, select=True, depends=_DEPENDS)
+        states={
+            'readonly': ((Eval('state') != 'draft')
+                | (Eval('lines', [0]) & Eval('party'))),
+            },
+        select=True, depends=['state'])
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
