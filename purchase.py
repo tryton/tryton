@@ -63,7 +63,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
-        'Payment Term', required=True, states=_STATES, depends=_DEPENDS)
+        'Payment Term', states={
+            'readonly': ~Eval('state').in_(['draft', 'quotation']),
+            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            },
+        depends=['state'])
     party = fields.Many2One('party.party', 'Party', required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
