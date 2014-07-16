@@ -11,7 +11,7 @@ See INSTALL
 Example of usage
 ----------------
 
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import config, Model, Wizard, Report
 
 Creating a database
 ~~~~~~~~~~~~~~~~~~~
@@ -98,6 +98,17 @@ Append it to categories of the party
     >>> party.save()
     >>> party.categories #doctest: +ELLIPSIS
     [proteus.Model.get('party.category')(...)]
+
+Print party label
+~~~~~~~~~~~~~~~~~
+
+There is a label report on `Party`.
+
+    >>> label = Report('party.label')
+
+The report is executed with a list of records and some extra data.
+
+    >>> type_, data, print_, name = label.execute([party], {})
 
 Support
 -------

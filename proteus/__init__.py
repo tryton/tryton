@@ -4,7 +4,7 @@
 A library to access Tryton's models like a client.
 '''
 __version__ = "3.3.0"
-__all__ = ['Model', 'Wizard']
+__all__ = ['Model', 'Wizard', 'Report']
 import sys
 try:
     import cdecimal
@@ -997,3 +997,17 @@ class Wizard(object):
 
         if self.state == self.end_state:
             self._proxy.delete(self.session_id, self._config.context)
+
+
+class Report(object):
+    'Report class for Tryton reports'
+
+    def __init__(self, name, config=None, context=None):
+        super(Report, self).__init__()
+        self.name = name
+        self._config = config or proteus.config.get_config()
+        self._context = context or {}
+        self._proxy = self._config.get_proxy(name, type='report')
+
+    def execute(self, models, data):
+        return self._proxy.execute([m.id for m in models], data, self._context)
