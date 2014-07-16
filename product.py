@@ -299,7 +299,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 class ProductQuantitiesByWarehouseStart(ModelView):
     'Product Quantities By Warehouse'
     __name__ = 'stock.product_quantities_warehouse.start'
-    warehouse = fields.Many2One('stock.location', 'Warehouse', domain=[
+    warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
+        domain=[
             ('type', '=', 'warehouse'),
             ])
 
