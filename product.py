@@ -12,6 +12,7 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Eval, Or
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import grouped_slice
 
 from .move import StockMixin
 
@@ -59,11 +60,9 @@ class Template:
     @classmethod
     def check_no_move(cls, templates, error):
         Move = Pool().get('stock.move')
-        cursor = Transaction().cursor
-        for i in range(0, len(templates), cursor.IN_MAX):
-            sub_ids = [t.id for t in templates[i:i + cursor.IN_MAX]]
+        for sub_templates in grouped_slice(templates):
             moves = Move.search([
-                    ('product.template', 'in', sub_ids),
+                    ('product.template', 'in', [t.id for t in sub_templates]),
                     ],
                 limit=1, order=[])
             if moves:

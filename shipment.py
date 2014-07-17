@@ -15,7 +15,7 @@ from trytond import backend
 from trytond.pyson import Eval, Not, Equal, If, Or, And, Bool, In, Get, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['ShipmentIn', 'ShipmentInReturn',
     'ShipmentOut', 'ShipmentOutReturn',
@@ -233,8 +233,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                for i in range(0, len(shipment_ids), cursor.IN_MAX):
-                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(shipment_ids):
                     red_sql = reduce_ids(sql_table.id, sub_ids)
                     cursor.execute(*sql_table.update(
                             columns=[sql_table.company],
@@ -616,8 +615,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                for i in range(0, len(shipment_ids), cursor.IN_MAX):
-                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(shipment_ids):
                     red_sql = reduce_ids(sql_table.id, sub_ids)
                     cursor.execute(*sql_table.update(
                             columns=[sql_table.company],
@@ -946,8 +944,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                for i in range(0, len(shipment_ids), cursor.IN_MAX):
-                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(shipment_ids):
                     red_sql = reduce_ids(sql_table.id, sub_ids)
                     cursor.execute(*sql_table.update(
                             columns=[sql_table.company],
@@ -1472,8 +1469,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                for i in range(0, len(shipment_ids), cursor.IN_MAX):
-                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(shipment_ids):
                     red_sql = reduce_ids(sql_table.id, sub_ids)
                     cursor.execute(*sql_table.update(
                             columns=[sql_table.company],
@@ -1909,8 +1905,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             for company_id, values in itertools.groupby(cursor.fetchall(),
                     operator.itemgetter(1)):
                 shipment_ids = [x[0] for x in values]
-                for i in range(0, len(shipment_ids), cursor.IN_MAX):
-                    sub_ids = shipment_ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(shipment_ids):
                     red_sql = reduce_ids(sql_table.id, sub_ids)
                     cursor.execute(*sql_table.update(
                             columns=[sql_table.company],

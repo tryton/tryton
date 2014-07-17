@@ -5,6 +5,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Equal, Eval, If, In, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import grouped_slice
 
 __all__ = ['Period', 'Cache']
 
@@ -69,14 +70,13 @@ class Period(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, periods):
-        in_max = Transaction().cursor.IN_MAX
         for grouping in cls.groupings():
             Cache = cls.get_cache(grouping)
             caches = []
-            for i in xrange(0, len(periods), in_max):
+            for sub_periods in grouped_slice(periods):
                 caches.append(Cache.search([
                             ('period', 'in',
-                                [p.id for p in periods[i:i + in_max]]),
+                                [p.id for p in sub_periods]),
                             ], order=[]))
             Cache.delete(list(chain(*caches)))
 
