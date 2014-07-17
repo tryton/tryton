@@ -11,6 +11,7 @@ from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.tools import grouped_slice
 
 __all__ = ['Asset', 'AssetLine', 'AssetUpdateMove',
     'CreateMovesStart', 'CreateMoves',
@@ -454,14 +455,12 @@ class Asset(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.asset.line')
-        cursor = Transaction().cursor
 
         moves = []
         lines = []
-        for i in range(0, len(assets), cursor.IN_MAX):
-            asset_ids = [a.id for a in assets[i:i + cursor.IN_MAX]]
+        for asset_ids in grouped_slice(assets):
             lines += Line.search([
-                    ('asset', 'in', asset_ids),
+                    ('asset', 'in', list(asset_ids)),
                     ('date', '<=', date),
                     ('move', '=', None),
                     ])
