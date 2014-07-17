@@ -15,7 +15,7 @@ from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from trytond import backend
 from trytond.pyson import If, Eval, Bool, Id
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -543,11 +543,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
         total_amount = dict((i.id, _ZERO) for i in invoices)
 
         type_name = cls.tax_amount._field.sql_type().base
-        in_max = cursor.IN_MAX
         tax = InvoiceTax.__table__()
         to_round = False
-        for i in range(0, len(invoices), in_max):
-            sub_ids = [i.id for i in invoices[i:i + in_max]]
+        for sub_ids in grouped_slice(invoices):
             red_sql = reduce_ids(tax.invoice, sub_ids)
             cursor.execute(*tax.select(tax.invoice,
                     Coalesce(Sum(tax.amount), 0).as_(type_name),
@@ -580,8 +578,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
         move = Move.__table__()
         line = MoveLine.__table__()
         to_round = False
-        for i in range(0, len(invoices_move), in_max):
-            sub_ids = [i.id for i in invoices_move[i:i + in_max]]
+        for sub_ids in grouped_slice(invoices_move):
             red_sql = reduce_ids(invoice.id, sub_ids)
             cursor.execute(*invoice.join(move,
                     condition=invoice.move == move.id
