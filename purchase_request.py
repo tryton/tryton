@@ -11,6 +11,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
 from trytond.pyson import If, In, Eval, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import grouped_slice
 
 __all__ = ['PurchaseRequest',
     'CreatePurchaseRequestStart', 'CreatePurchaseRequest',
@@ -200,11 +201,10 @@ class PurchaseRequest(ModelSQL, ModelView):
 
         # compute requests
         new_requests = []
-        cursor = Transaction().cursor
-        for dates, sub_products in date2products.iteritems():
+        for dates, dates_products in date2products.iteritems():
             min_date, max_date = dates
-            for i in range(0, len(sub_products), cursor.IN_MAX):
-                product_ids = [p.id for p in sub_products[i:i + cursor.IN_MAX]]
+            for sub_products in grouped_slice(dates_products):
+                product_ids = [p.id for p in sub_products]
                 with Transaction().set_context(forecast=True,
                         stock_date_end=min_date or datetime.date.max):
                     pbl = Product.products_by_location(warehouse_ids,
@@ -217,7 +217,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                         min_date, max_date, min_date_qties=min_date_qties,
                         order_points=product2ops)
 
-                    for product in sub_products[i:i + cursor.IN_MAX]:
+                    for product in sub_products:
                         shortage_date, product_quantity = shortages[product.id]
                         if shortage_date is None or product_quantity is None:
                             continue
