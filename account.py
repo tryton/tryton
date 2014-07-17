@@ -12,7 +12,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -643,7 +643,6 @@ class Account(ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
         cursor = Transaction().cursor
-        in_max = cursor.IN_MAX
 
         table_a = cls.__table__()
         table_c = cls.__table__()
@@ -651,8 +650,7 @@ class Account(ModelSQL, ModelView):
         ids = [a.id for a in accounts]
         balances = dict((i, 0) for i in ids)
         line_query, fiscalyear_ids = MoveLine.query_get(line)
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
+        for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table_a.id, sub_ids)
             cursor.execute(*table_a.join(table_c,
                     condition=(table_c.left >= table_a.left)
@@ -693,7 +691,6 @@ class Account(ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
         FiscalYear = pool.get('account.fiscalyear')
         cursor = Transaction().cursor
-        in_max = cursor.IN_MAX
 
         result = {}
         ids = [a.id for a in accounts]
@@ -708,8 +705,7 @@ class Account(ModelSQL, ModelView):
         columns = [table.id]
         for name in names:
             columns.append(Sum(Coalesce(Column(line, name), 0)))
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
+        for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(line, 'LEFT',
                     condition=line.account == table.id
@@ -745,7 +741,6 @@ class Account(ModelSQL, ModelView):
         pool = Pool()
         FiscalYear = pool.get('account.fiscalyear')
         Deferral = pool.get('account.account.deferral')
-        in_max = Transaction().cursor.IN_MAX
         names = values.keys()
 
         youngest_fiscalyear = None
@@ -770,11 +765,10 @@ class Account(ModelSQL, ModelView):
         if fiscalyear.state == 'close':
             id2deferral = {}
             ids = [a.id for a in accounts]
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
+            for sub_ids in grouped_slice(ids):
                 deferrals = Deferral.search([
                     ('fiscalyear', '=', fiscalyear.id),
-                    ('account', 'in', sub_ids),
+                    ('account', 'in', list(sub_ids)),
                     ])
                 for deferral in deferrals:
                     id2deferral[deferral.account.id] = deferral

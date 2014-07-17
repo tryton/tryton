@@ -18,7 +18,7 @@ from trytond.pyson import Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount', 'ReconcileLinesWriteOff', 'ReconcileLines',
@@ -292,9 +292,7 @@ class Move(ModelSQL, ModelView):
         company = User(user).company
         amounts = {}
         move2draft_lines = {}
-        for i in range(0, len(moves), cursor.IN_MAX):
-            sub_moves = moves[i:i + cursor.IN_MAX]
-            sub_move_ids = [m.id for m in sub_moves]
+        for sub_move_ids in grouped_slice([m.id for m in moves]):
             red_sql = reduce_ids(line.move, sub_move_ids)
 
             cursor.execute(*line.select(line.move,
@@ -331,8 +329,7 @@ class Move(ModelSQL, ModelView):
                 (draft_moves, 'draft'),
                 ):
             if move_ids:
-                for i in range(0, len(move_ids), cursor.IN_MAX):
-                    sub_ids = move_ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(move_ids):
                     red_sql = reduce_ids(line.move, sub_ids)
                     # Use SQL to prevent double validate loop
                     cursor.execute(*line.update(
