@@ -12,7 +12,7 @@ from trytond.pyson import Not, Equal, Eval, Or, Bool, If
 from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Forecast', 'ForecastLine', 'ForecastLineMove',
     'ForecastCompleteAsk', 'ForecastCompleteChoose', 'ForecastComplete']
@@ -354,8 +354,7 @@ class ForecastLine(ModelSQL, ModelView):
             forecast = Forecast(forecast_id)
             product2line = dict((line.product.id, line) for line in lines)
             product_ids = product2line.keys()
-            for i in range(0, len(product_ids), cursor.IN_MAX):
-                sub_ids = product_ids[i:i + cursor.IN_MAX]
+            for sub_ids in grouped_slice(product_ids):
                 red_sql = reduce_ids(move.product, sub_ids)
                 cursor.execute(*move.join(location_from,
                         condition=move.from_location == location_from.id
