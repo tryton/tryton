@@ -5,6 +5,7 @@ from itertools import chain
 from trytond.model import ModelView, Workflow
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.tools import grouped_slice
 
 __all__ = ['PurchaseRequest', 'Purchase']
 __metaclass__ = PoolMeta
@@ -22,15 +23,13 @@ class PurchaseRequest:
         pool = Pool()
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
-        cursor = Transaction().cursor
 
         sale_ids = list(set(r.origin.id for r in requests
                 if isinstance(r.origin, Sale)))
 
         with Transaction().set_user(0, set_context=True):
             sale_lines = []
-            for i in range(0, len(requests), cursor.IN_MAX):
-                sub_requests = requests[i:i + cursor.IN_MAX]
+            for sub_requests in grouped_slice(requests):
                 sale_lines.append(SaleLine.search([
                             ('purchase_request', 'in',
                                 [r.id for r in sub_requests]),
@@ -56,13 +55,12 @@ class Purchase:
         pool = Pool()
         Request = pool.get('purchase.request')
         Sale = pool.get('sale.sale')
-        cursor = Transaction().cursor
 
         requests = []
-        for i in range(0, len(purchases), cursor.IN_MAX):
-            purchase_ids = [p.id for p in purchases[i:i + cursor.IN_MAX]]
+        for sub_purchases in grouped_slice(purchases):
             requests.append(Request.search([
-                        ('purchase_line.purchase.id', 'in', purchase_ids),
+                        ('purchase_line.purchase.id', 'in',
+                            [x.id for x in sub_purchases]),
                         ('origin', 'like', 'sale.sale,%'),
                         ]))
         requests = list(chain(*requests))
