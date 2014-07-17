@@ -7,7 +7,7 @@ from trytond.model import fields
 from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Work']
 __metaclass__ = PoolMeta
@@ -46,7 +46,6 @@ class Work:
         Work = pool.get('timesheet.work')
         transaction = Transaction()
         cursor = transaction.cursor
-        in_max = cursor.IN_MAX
 
         works += cls.search([
                 ('parent', 'child_of', [w.id for w in works]),
@@ -60,8 +59,7 @@ class Work:
 
         timesheet_work_ids = works_to_timesheet.keys()
         employee_ids = set()
-        for i in range(0, len(timesheet_work_ids), in_max):
-            sub_ids = timesheet_work_ids[i:i + in_max]
+        for sub_ids in grouped_slice(timesheet_work_ids):
             red_sql = reduce_ids(table_w.id, sub_ids)
             cursor.execute(*table_w.join(table_c,
                     condition=(table_c.left >= table_w.left)
