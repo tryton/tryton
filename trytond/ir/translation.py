@@ -21,7 +21,7 @@ from sql.aggregate import Max
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
-from ..tools import file_open, reduce_ids
+from ..tools import file_open, reduce_ids, grouped_slice
 from .. import backend
 from ..pyson import PYSONEncoder
 from ..transaction import Transaction
@@ -430,8 +430,7 @@ class Translation(ModelSQL, ModelView):
             if Transaction().context.get('fuzzy_translation', False):
                 fuzzy_sql = None
             in_max = cursor.IN_MAX / 7
-            for i in range(0, len(to_fetch), in_max):
-                sub_to_fetch = to_fetch[i:i + in_max]
+            for sub_to_fetch in grouped_slice(to_fetch, in_max):
                 red_sql = reduce_ids(table.res_id, sub_to_fetch)
                 where = And(((table.lang == lang),
                         (table.type == ttype),
@@ -584,14 +583,12 @@ class Translation(ModelSQL, ModelView):
     @classmethod
     def delete_ids(cls, model, ttype, ids):
         "Delete translation for each id"
-        cursor = Transaction().cursor
         translations = []
-        for i in range(0, len(ids), cursor.IN_MAX):
-            sub_ids = ids[i:i + cursor.IN_MAX]
+        for sub_ids in grouped_slice(ids):
             translations += cls.search([
                     ('type', '=', ttype),
                     ('name', 'like', model + ',%'),
-                    ('res_id', 'in', sub_ids),
+                    ('res_id', 'in', list(sub_ids)),
                     ])
         with Transaction().set_user(0):
             cls.delete(translations)
@@ -640,9 +637,8 @@ class Translation(ModelSQL, ModelView):
         cursor = Transaction().cursor
         table = cls.__table__()
         if len(args) > cursor.IN_MAX:
-            for i in range(0, len(args), cursor.IN_MAX):
-                sub_args = args[i:i + cursor.IN_MAX]
-                res.update(cls.get_sources(sub_args))
+            for sub_args in grouped_slice(args):
+                res.update(cls.get_sources(list(sub_args)))
             return res
         for name, ttype, lang, source in args:
             name = unicode(name)
@@ -669,11 +665,11 @@ class Translation(ModelSQL, ModelView):
                 clause.append(where)
         if clause:
             in_max = cursor.IN_MAX / 7
-            for i in range(0, len(clause), in_max):
+            for sub_clause in grouped_slice(clause, in_max):
                 cursor.execute(*table.select(
                         table.lang, table.type, table.name, table.src,
                         table.value,
-                        where=Or(clause[i:i + in_max])))
+                        where=Or(list(sub_clause))))
                 for lang, ttype, name, source, value in cursor.fetchall():
                     if (name, ttype, lang, source) not in args:
                         source = None

@@ -7,7 +7,7 @@ from sql.aggregate import Count, Max
 
 from ..model import ModelView, ModelSQL, fields
 from ..pyson import Eval
-from ..tools import safe_eval
+from ..tools import safe_eval, grouped_slice
 from .. import backend
 from ..tools import reduce_ids
 from ..transaction import Transaction
@@ -172,15 +172,14 @@ class Trigger(ModelSQL, ModelView):
         Model = pool.get(trigger.model.model)
         ActionModel = pool.get(trigger.action_model.model)
         cursor = Transaction().cursor
-        in_max = cursor.IN_MAX
         trigger_log = TriggerLog.__table__()
         ids = map(int, records)
 
         # Filter on limit_number
         if trigger.limit_number:
             new_ids = []
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
+            for sub_ids in grouped_slice(ids):
+                sub_ids = list(sub_ids)
                 red_sql = reduce_ids(trigger_log.record_id, sub_ids)
                 cursor.execute(*trigger_log.select(
                         trigger_log.record_id, Count(Literal(1)),
@@ -198,8 +197,8 @@ class Trigger(ModelSQL, ModelView):
         # Filter on minimum_delay
         if trigger.minimum_delay:
             new_ids = []
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
+            for sub_ids in grouped_slice(ids):
+                sub_ids = list(sub_ids)
                 red_sql = reduce_ids(trigger_log.record_id, sub_ids)
                 cursor.execute(*trigger_log.select(
                         trigger_log.record_id, Max(trigger_log.create_date),

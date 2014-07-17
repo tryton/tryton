@@ -12,10 +12,12 @@ import smtplib
 import dis
 from decimal import Decimal
 from array import array
+from itertools import islice
 from sql import Literal
 from sql.operators import Or
 from trytond.config import CONFIG
 from trytond.const import OPERATORS
+from trytond.transaction import Transaction
 
 
 def find_in_path(name):
@@ -328,6 +330,7 @@ def reduce_ids(field, ids):
     '''
     Return a small SQL expression for the list of ids and the sql column
     '''
+    ids = list(ids)
     if not ids:
         return Literal(False)
     assert all(x.is_integer() for x in ids if isinstance(x, float)), \
@@ -442,3 +445,11 @@ def reduce_domain(domain):
         else:
             result.append(arg)
     return result
+
+
+def grouped_slice(records, count=None):
+    'Grouped slice'
+    if count is None:
+        count = Transaction().cursor.IN_MAX
+    for i in xrange(0, len(records), count):
+        yield islice(records, i, i + count)

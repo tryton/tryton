@@ -5,8 +5,8 @@ from sql import Cast, Literal
 from sql.functions import Substring, Position
 
 from .field import Field, size_validate
-from ...transaction import Transaction
 from ...pool import Pool
+from ...tools import grouped_slice
 
 
 def add_remove_validate(value):
@@ -87,13 +87,12 @@ class One2Many(Field):
             res[i] = []
 
         targets = []
-        for i in range(0, len(ids), Transaction().cursor.IN_MAX):
-            sub_ids = ids[i:i + Transaction().cursor.IN_MAX]
+        for sub_ids in grouped_slice(ids):
             if field._type == 'reference':
                 references = ['%s,%s' % (model.__name__, x) for x in sub_ids]
                 clause = [(self.field, 'in', references)]
             else:
-                clause = [(self.field, 'in', sub_ids)]
+                clause = [(self.field, 'in', list(sub_ids))]
             targets.append(Relation.search(clause, order=self.order))
         targets = list(chain(*targets))
 
@@ -162,12 +161,10 @@ class One2Many(Field):
             target_ids = map(int, target_ids)
             if not target_ids:
                 return
-            in_max = Transaction().cursor.IN_MAX
-            for i in range(0, len(target_ids), in_max):
-                sub_ids = target_ids[i:i + in_max]
+            for sub_ids in grouped_slice(target_ids):
                 targets = Target.search([
                         search_clause(ids),
-                        ('id', 'in', sub_ids),
+                        ('id', 'in', list(sub_ids)),
                         ])
                 to_write.extend((targets, {
                             self.field: None,

@@ -18,6 +18,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import CONFIG
 from trytond.pyson import Eval
+from trytond.tools import grouped_slice
 
 __all__ = [
     'Collection', 'Share', 'Attachment',
@@ -432,8 +433,7 @@ class Collection(ModelSQL, ModelView):
                 res = None
                 cursor = Transaction().cursor
                 table = Model.__table__()
-                for i in range(0, len(ids), cursor.IN_MAX):
-                    sub_ids = ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(ids):
                     red_sql = reduce_ids(table.id, sub_ids)
                     cursor.execute(*table.select(table.id,
                             Extract('EPOCH', table.create_date),
@@ -469,8 +469,7 @@ class Collection(ModelSQL, ModelView):
                 res = None
                 cursor = Transaction().cursor
                 table = Model.__table__()
-                for i in range(0, len(ids), cursor.IN_MAX):
-                    sub_ids = ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(ids):
                     red_sql = reduce_ids(table.id, sub_ids)
                     cursor.execute(*table.select(table.id,
                             Extract('EPOCH',

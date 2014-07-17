@@ -21,7 +21,7 @@ except ImportError:
 
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, Button, StateTransition
-from ..tools import safe_eval
+from ..tools import safe_eval, grouped_slice
 from .. import backend
 from ..transaction import Transaction
 from ..cache import Cache
@@ -196,13 +196,10 @@ class User(ModelSQL, ModelView):
     @staticmethod
     def get_sessions(users, name):
         Session = Pool().get('ir.session')
-        cursor = Transaction().cursor
         now = datetime.datetime.now()
         timeout = datetime.timedelta(seconds=int(CONFIG['session_timeout']))
         result = dict((u.id, 0) for u in users)
-        for i in range(0, len(users), cursor.IN_MAX):
-            sub_ids = [u.id for u in users[i:i + cursor.IN_MAX]]
-
+        for sub_ids in grouped_slice(users):
             with Transaction().set_user(0):
                 sessions = Session.search([
                         ('create_uid', 'in', sub_ids),

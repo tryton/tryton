@@ -14,7 +14,7 @@ from sql.aggregate import Count, Max
 from trytond.model import ModelStorage, ModelView
 from trytond.model import fields
 from trytond import backend
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 from trytond.const import OPERATORS, RECORD_CACHE_SIZE
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -246,9 +246,7 @@ class ModelSQL(ModelStorage):
         table = cls.__table_history__()
         user = User.__table__()
         revisions = []
-        in_max = cursor.IN_MAX
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
+        for sub_ids in grouped_slice(ids):
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(user, 'LEFT',
                     Coalesce(table.write_uid, table.create_uid) == user.id)
@@ -272,7 +270,6 @@ class ModelSQL(ModelStorage):
     def __insert_history(cls, ids, deleted=False):
         transaction = Transaction()
         cursor = transaction.cursor
-        in_max = cursor.IN_MAX
         if not cls._history:
             return
         user = transaction.user
@@ -293,8 +290,7 @@ class ModelSQL(ModelStorage):
                 continue
             columns.append(Column(table, fname))
             hcolumns.append(Column(history, fname))
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
+        for sub_ids in grouped_slice(ids):
             if not deleted:
                 where = reduce_ids(table.id, sub_ids)
                 cursor.execute(*history.insert(hcolumns,
@@ -310,7 +306,6 @@ class ModelSQL(ModelStorage):
             return
         transaction = Transaction()
         cursor = transaction.cursor
-        in_max = cursor.IN_MAX
         table = cls.__table__()
         history = cls.__table_history__()
         columns = []
@@ -351,8 +346,7 @@ class ModelSQL(ModelStorage):
                     cursor.execute(*table.insert(columns, [values]))
 
         if to_delete:
-            for i in range(0, len(to_delete), in_max):
-                sub_ids = to_delete[i:i + in_max]
+            for sub_ids in grouped_slice(to_delete):
                 where = reduce_ids(table.id, sub_ids)
                 cursor.execute(*table.delete(where=where))
             cls.__insert_history(to_delete, True)
@@ -363,12 +357,10 @@ class ModelSQL(ModelStorage):
     def __check_timestamp(cls, ids):
         transaction = Transaction()
         cursor = transaction.cursor
-        in_max = cursor.IN_MAX
         table = cls.__table__()
         if not transaction.timestamp:
             return
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
+        for sub_ids in grouped_slice(ids):
             where = Or()
             for id_ in sub_ids:
                 try:
@@ -394,7 +386,6 @@ class ModelSQL(ModelStorage):
         cursor = transaction.cursor
         pool = Pool()
         Translation = pool.get('ir.translation')
-        in_max = cursor.IN_MAX
 
         super(ModelSQL, cls).create(vlist)
 
@@ -461,8 +452,8 @@ class ModelSQL(ModelStorage):
         domain = pool.get('ir.rule').domain_get(cls.__name__,
                 mode='create')
         if domain:
-            for i in range(0, len(new_ids), in_max):
-                sub_ids = new_ids[i:i + in_max]
+            for sub_ids in grouped_slice(new_ids):
+                sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
 
                 cursor.execute(*table.select(table.id,
@@ -498,8 +489,8 @@ class ModelSQL(ModelStorage):
         cls.__insert_history(new_ids)
 
         records = cls.browse(new_ids)
-        for i in range(0, len(records), RECORD_CACHE_SIZE):
-            cls._validate(records[i:i + RECORD_CACHE_SIZE])
+        for sub_records in grouped_slice(records, RECORD_CACHE_SIZE):
+            cls._validate(sub_records)
 
         field_names = cls._fields.keys()
         cls._update_mptt(field_names, [new_ids] * len(field_names))
@@ -574,8 +565,8 @@ class ModelSQL(ModelStorage):
             if 'id' not in fields_names:
                 columns.append(table.id.as_('id'))
 
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
+            for sub_ids in grouped_slice(ids, in_max):
+                sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
                 where = red_sql
                 if history_clause:
@@ -744,7 +735,6 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
-        in_max = cursor.IN_MAX
 
         assert not len(args) % 2
         all_records = sum(((records, values) + args)[0:None:2], [])
@@ -786,8 +776,8 @@ class ModelSQL(ModelStorage):
                         update_values.append(field.sql_format(value))
 
             domain = pool.get('ir.rule').domain_get(cls.__name__, mode='write')
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
+            for sub_ids in grouped_slice(ids):
+                sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
                 where = red_sql
                 if domain:
@@ -834,9 +824,8 @@ class ModelSQL(ModelStorage):
             field.set(cls, fname, *fargs)
 
         cls.__insert_history(all_ids)
-        for i in range(0, len(all_records), RECORD_CACHE_SIZE):
-            cls._validate(all_records[i:i + RECORD_CACHE_SIZE],
-                field_names=all_field_names)
+        for sub_records in grouped_slice(all_records, RECORD_CACHE_SIZE):
+            cls._validate(sub_records, field_names=all_field_names)
         cls.trigger_write(trigger_eligibles)
 
     @classmethod
@@ -847,7 +836,6 @@ class ModelSQL(ModelStorage):
         pool = Pool()
         Translation = pool.get('ir.translation')
         ids = map(int, records)
-        in_max = cursor.IN_MAX
 
         if not ids:
             return
@@ -870,8 +858,7 @@ class ModelSQL(ModelStorage):
                     and field.model_name == cls.__name__
                     and field.left and field.right):
                 tree_ids[fname] = []
-                for i in range(0, len(ids), in_max):
-                    sub_ids = ids[i:i + in_max]
+                for sub_ids in grouped_slice(ids):
                     where = reduce_ids(Column(table, fname), sub_ids)
                     cursor.execute(*table.select(table.id, where=where))
                     tree_ids[fname] += [x[0] for x in cursor.fetchall()]
@@ -902,8 +889,8 @@ class ModelSQL(ModelStorage):
         domain = pool.get('ir.rule').domain_get(cls.__name__, mode='delete')
 
         if domain:
-            for i in range(0, len(ids), in_max):
-                sub_ids = ids[i:i + in_max]
+            for sub_ids in grouped_slice(ids):
+                sub_ids = list(sub_ids)
                 red_sql = reduce_ids(table.id, sub_ids)
                 cursor.execute(*table.select(table.id,
                         where=red_sql & table.id.in_(domain)))
@@ -915,9 +902,9 @@ class ModelSQL(ModelStorage):
 
         cls.trigger_delete(records)
 
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
-            sub_records = records[i:i + in_max]
+        for sub_ids, sub_records in izip(
+                grouped_slice(ids), grouped_slice(records)):
+            sub_ids = list(sub_ids)
             red_sql = reduce_ids(table.id, sub_ids)
 
             transaction.delete_records.setdefault(cls.__name__,
@@ -960,7 +947,7 @@ class ModelSQL(ModelStorage):
                         cls.raise_user_error('foreign_model_exist',
                             error_args=error_args)
 
-            super(ModelSQL, cls).delete(sub_records)
+            super(ModelSQL, cls).delete(list(sub_records))
 
             try:
                 cursor.execute(*table.delete(where=red_sql))
@@ -982,7 +969,6 @@ class ModelSQL(ModelStorage):
         Rule = pool.get('ir.rule')
         transaction = Transaction()
         cursor = transaction.cursor
-        in_max = cursor.IN_MAX
 
         # Get domain clauses
         tables, expression = cls.search_domain(domain)
@@ -1076,8 +1062,7 @@ class ModelSQL(ModelStorage):
 
             to_delete = set()
             history = cls.__table_history__()
-            for i in range(0, len(rows), in_max):
-                sub_ids = [r['id'] for r in rows[i:i + in_max]]
+            for sub_ids in grouped_slice([r['id'] for r in rows]):
                 where = reduce_ids(history.id, sub_ids)
                 cursor.execute(*history.select(history.id, history.write_date,
                         where=where
@@ -1304,8 +1289,7 @@ class ModelSQL(ModelStorage):
                 sql_clause = '(id != ' + param + ' AND ' + sql_clause + ')'
 
                 in_max = cursor.IN_MAX / (len(columns) + 1)
-                for i in range(0, len(ids), in_max):
-                    sub_ids = ids[i:i + in_max]
+                for sub_ids in grouped_slice(ids, in_max):
                     red_sql = reduce_ids(table.id, sub_ids)
 
                     cursor.execute('SELECT id,' + sql + ' '
@@ -1325,8 +1309,7 @@ class ModelSQL(ModelStorage):
             match = _RE_CHECK.match(sql)
             if match:
                 sql = match.group(1)
-                for i in range(0, len(ids), cursor.IN_MAX):
-                    sub_ids = ids[i:i + cursor.IN_MAX]
+                for sub_ids in grouped_slice(ids):
                     red_sql = reduce_ids(table.id, sub_ids)
                     cursor.execute('SELECT id '
                         'FROM "' + cls._table + '" '

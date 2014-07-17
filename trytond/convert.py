@@ -11,7 +11,7 @@ from itertools import izip
 from collections import defaultdict
 
 from .version import VERSION
-from .tools import safe_eval
+from .tools import safe_eval, grouped_slice
 from .transaction import Transaction
 
 CDATA_START = re.compile('^\s*\<\!\[cdata\[', re.IGNORECASE)
@@ -352,7 +352,6 @@ class Fs2bdAccessor:
             self.browserecord[module][model_name][model.id] = model
 
     def fetch_new_module(self, module):
-        cursor = Transaction().cursor
         self.fs2db[module] = {}
         module_data_ids = self.ModelData.search([
                 ('module', '=', module),
@@ -375,11 +374,10 @@ class Fs2bdAccessor:
                 continue
             Model = self.pool.get(model_name)
             self.browserecord[module][model_name] = {}
-            for i in range(0, len(record_ids[model_name]), cursor.IN_MAX):
-                sub_record_ids = record_ids[model_name][i:i + cursor.IN_MAX]
+            for sub_record_ids in grouped_slice(record_ids[model_name]):
                 with Transaction().set_context(active_test=False):
                     records = Model.search([
-                        ('id', 'in', sub_record_ids),
+                        ('id', 'in', list(sub_record_ids)),
                         ])
                 with Transaction().set_context(language='en_US'):
                     models = Model.browse(map(int, records))

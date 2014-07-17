@@ -5,8 +5,8 @@ from sql import Cast, Literal
 from sql.functions import Substring, Position
 
 from .field import Field, size_validate
-from ...transaction import Transaction
 from ...pool import Pool
+from ...tools import grouped_slice
 
 
 class Many2Many(Field):
@@ -79,13 +79,12 @@ class Many2Many(Field):
         origin_field = Relation._fields[self.origin]
 
         relations = []
-        for i in range(0, len(ids), Transaction().cursor.IN_MAX):
-            sub_ids = ids[i:i + Transaction().cursor.IN_MAX]
+        for sub_ids in grouped_slice(ids):
             if origin_field._type == 'reference':
                 references = ['%s,%s' % (model.__name__, x) for x in sub_ids]
                 clause = [(self.origin, 'in', references)]
             else:
-                clause = [(self.origin, 'in', sub_ids)]
+                clause = [(self.origin, 'in', list(sub_ids))]
             clause += [(self.target + '.id', '!=', None)]
             relations.append(Relation.search(clause, order=order))
         relations = list(chain(*relations))
@@ -150,12 +149,10 @@ class Many2Many(Field):
             if not target_ids:
                 return
             existing_ids = set()
-            in_max = Transaction().cursor.IN_MAX
-            for i in range(0, len(target_ids), in_max):
-                sub_ids = target_ids[i:i + in_max]
+            for sub_ids in grouped_slice(target_ids):
                 relations = Relation.search([
                         search_clause(ids),
-                        (self.target, 'in', sub_ids),
+                        (self.target, 'in', list(sub_ids)),
                         ])
                 for relation in relations:
                     existing_ids.add(getattr(relation, self.target).id)
@@ -172,12 +169,10 @@ class Many2Many(Field):
             target_ids = map(int, target_ids)
             if not target_ids:
                 return
-            in_max = Transaction().cursor.IN_MAX
-            for i in range(0, len(target_ids), in_max):
-                sub_ids = target_ids[i:i + in_max]
+            for sub_ids in grouped_slice(target_ids):
                 relation_to_delete.extend(Relation.search([
                             search_clause(ids),
-                            (self.target, 'in', sub_ids),
+                            (self.target, 'in', list(sub_ids)),
                             ]))
 
         def copy(ids, copy_ids, default=None):

@@ -3,8 +3,8 @@
 "Group"
 from itertools import chain
 from ..model import ModelView, ModelSQL, fields
-from ..transaction import Transaction
 from ..pool import Pool, PoolMeta
+from ..tools import grouped_slice
 
 __all__ = [
     'Group', 'Group2',
@@ -19,8 +19,7 @@ class MenuMany2Many(fields.Many2Many):
                 values=values)
         menu_ids = list(set(chain(*res.values())))
         test_ids = []
-        for i in range(0, len(menu_ids), Transaction().cursor.IN_MAX):
-            sub_ids = menu_ids[i:i + Transaction().cursor.IN_MAX]
+        for sub_ids in grouped_slice(menu_ids):
             test_ids.append(map(int, Menu.search([
                             ('id', 'in', sub_ids),
                             ])))
