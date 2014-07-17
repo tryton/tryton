@@ -12,7 +12,7 @@ from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 from trytond import backend
 
 __metaclass__ = PoolMeta
@@ -405,11 +405,9 @@ class Mandate(Workflow, ModelSQL, ModelView):
         Payment = pool.get('account.payment')
         payment = Payment.__table__
         cursor = Transaction().cursor
-        in_max = cursor.IN_MAX
 
         has_payments = dict.fromkeys([m.id for m in mandates], False)
-        for i in range(0, len(mandates), in_max):
-            sub_ids = [i.id for i in mandates[i:i + in_max]]
+        for sub_ids in grouped_slice(mandates):
             red_sql = reduce_ids(payment.sepa_mandate, sub_ids)
             cursor.execute(*payment.select(payment.sepa_mandate, Literal(True),
                     where=red_sql,
