@@ -9,6 +9,7 @@ from trytond.wizard import StateAction
 from trytond.modules.company import CompanyReport
 from trytond.pool import Pool
 from trytond.transaction import Transaction
+from trytond.tools import grouped_slice
 
 
 __all__ = ['Level', 'ProcessDunning', 'Letter']
@@ -106,10 +107,8 @@ class Letter(CompanyReport):
         """
         pool = Pool()
         Line = pool.get('account.move.line')
-        in_max = Transaction().cursor.IN_MAX
         payments = []
-        for i in range(0, len(parties), in_max):
-            sub_parties = parties[i:i + in_max]
+        for sub_parties in grouped_slice(parties):
             payments.append(Line.search([
                         ('account.kind', '=', 'receivable'),
                         ['OR',
