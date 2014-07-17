@@ -75,7 +75,7 @@ class Template:
             actions = iter(args)
             for templates, values in zip(actions, actions):
                 for field, error in cls._modify_no_move:
-                    if values.get(field):
+                    if field in values:
                         cls.check_no_move(templates, error)
                         break
         super(Template, cls).write(*args)
