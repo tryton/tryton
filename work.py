@@ -10,7 +10,7 @@ from trytond.pyson import Eval, Bool, PYSONEncoder
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateAction
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 
 
 __all__ = ['Work', 'OpenInvoice']
@@ -189,8 +189,7 @@ class Work:
         hours = {}
         twork2work = dict((w.work.id, w.id) for w in works)
         ids = twork2work.keys()
-        for i in range(0, len(ids), cursor.IN_MAX):
-            sub_ids = ids[i:i + cursor.IN_MAX]
+        for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(line.work, sub_ids)
             if invoiced:
                 where = line.invoice_line != None
