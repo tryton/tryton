@@ -7,6 +7,7 @@ from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, Button
+from trytond.tools import grouped_slice
 
 __all__ = ['Configuration', 'Production',
     'CreateProductionRequestStart', 'CreateProductionRequest']
@@ -75,11 +76,10 @@ class Production:
                 ('purchasable', '=', False),
                 ])
         # compute requests
-        cursor = Transaction().cursor
         today = Date.today()
         requests = []
-        for i in range(0, len(products), cursor.IN_MAX):
-            product_ids = [p.id for p in products[i:i + cursor.IN_MAX]]
+        for sub_products in grouped_slice(products):
+            product_ids = [p.id for p in sub_products]
             with Transaction().set_context(forecast=True,
                     stock_date_end=today):
                 pbl = Product.products_by_location(warehouse_ids,
@@ -87,7 +87,7 @@ class Production:
 
             # order product by supply period
             products_period = sorted([(p.get_supply_period(), p)
-                    for p in products[i:i + cursor.IN_MAX]])
+                    for p in list(sub_products)])
 
             for warehouse in warehouses:
                 quantities = dict((x, pbl.pop((warehouse.id, x), 0))
@@ -95,7 +95,7 @@ class Production:
                 shortages = cls.get_shortage(warehouse.id, product_ids, today,
                     quantities, products_period, product2ops)
 
-                for product in products[i:i + cursor.IN_MAX]:
+                for product in sub_products:
                     for date, quantity in shortages[product.id]:
                         req = cls.compute_request(product, warehouse,
                             quantity, date, company)
