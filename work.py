@@ -8,7 +8,7 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import PYSONEncoder, Not, Bool, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['Work', 'OpenWorkStart', 'OpenWork', 'OpenWork2', 'OpenWorkGraph']
 
@@ -101,7 +101,6 @@ class Work(ModelSQL, ModelView):
         Line = pool.get('timesheet.line')
         transaction = Transaction()
         cursor = transaction.cursor
-        in_max = cursor.IN_MAX
         context = transaction.context
 
         table_w = cls.__table__()
@@ -116,8 +115,7 @@ class Work(ModelSQL, ModelView):
             where &= line.date <= context['to_date']
         if context.get('employees'):
             where &= line.employee.in_(context['employees'])
-        for i in range(0, len(ids), in_max):
-            sub_ids = ids[i:i + in_max]
+        for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table_w.id, sub_ids)
             cursor.execute(*table_w.join(table_c,
                     condition=(table_c.left >= table_w.left)
@@ -168,10 +166,10 @@ class Work(ModelSQL, ModelView):
         childs = []
         for works, values in zip(actions, actions):
             if not values.get('timesheet_available', True):
-                in_max = Transaction().cursor.IN_MAX
-                for i in range(0, len(works), in_max):
-                    sub_ids = [w.id for w in works[i:i + in_max]]
-                    lines = Lines.search([('work', 'in', sub_ids)], limit=1)
+                for sub_works in grouped_slice(works):
+                    lines = Lines.search([
+                            ('work', 'in', [x.id for x in sub_works]),
+                            ], limit=1)
                     if lines:
                         cls.raise_user_error('change_timesheet_available',
                             lines[0].work.rec_name)
