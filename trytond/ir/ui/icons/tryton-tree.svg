@@ -14,7 +14,7 @@
    height="48px"
    id="svg4198"
    sodipodi:version="0.32"
-   inkscape:version="0.48.0 r9654"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="tryton-tree.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    version="1.1">
@@ -207,15 +207,15 @@
      borderopacity="1.0000000"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="16.5"
-     inkscape:cx="24"
-     inkscape:cy="24"
+     inkscape:zoom="6.51"
+     inkscape:cx="22.261972"
+     inkscape:cy="12.80998"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:document-units="px"
-     inkscape:window-width="1278"
-     inkscape:window-height="1007"
+     inkscape:window-width="1364"
+     inkscape:window-height="751"
      inkscape:window-x="0"
      inkscape:window-y="15"
      inkscape:showpageshadow="false"
@@ -244,11 +244,6 @@
         </dc:subject>
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
-        <dc:contributor>
-          <cc:Agent>
-            <dc:title>Cédric Krier</dc:title>
-          </cc:Agent>
-        </dc:contributor>
       </cc:Work>
       <cc:License
          rdf:about="http://creativecommons.org/licenses/publicdomain/">
@@ -297,43 +292,43 @@
        rx="0.56650788"
        ry="0.56650823" />
     <rect
-       style="color:#000000;fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible"
+       style="opacity:1;color:#000000;fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
        id="rect4248"
-       width="26"
+       width="30"
        height="2"
-       x="-34"
+       x="-39"
        y="10"
-       transform="scale(-1,1)" />
+       transform="scale(-1.000000,1.000000)" />
     <rect
        y="16"
-       x="-31"
+       x="-39"
        height="2"
-       width="23"
+       width="25.5"
        id="rect4250"
        style="color:#000000;fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible"
        transform="scale(-1,1)" />
     <rect
        style="color:#000000;fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible"
        id="rect4252"
-       width="21"
+       width="19"
        height="2"
-       x="-29"
+       x="-39"
        y="22"
        transform="scale(-1,1)" />
     <rect
        y="28"
-       x="-34"
+       x="-39"
        height="2"
-       width="26"
+       width="12.5"
        id="rect4254"
        style="color:#000000;fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible"
        transform="scale(-1,1)" />
     <rect
        style="color:#000000;fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible"
        id="rect4256"
-       width="17"
+       width="6"
        height="2"
-       x="-25"
+       x="-38.5"
        y="34"
        transform="scale(-1,1)" />
     <rect
