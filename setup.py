@@ -46,6 +46,7 @@ for dep in info.get('depends', []):
     if not re.match(r'(ir|res|webdav)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
+requires.append('pyhton-sql')
 
 tests_require = [get_require_version('proteus')]
 
@@ -65,7 +66,8 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_statement': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst',
+                'statement.odt']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

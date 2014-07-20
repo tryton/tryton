@@ -1,16 +1,36 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from collections import namedtuple
+from itertools import groupby
+
+from sql.aggregate import Sum
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond import backend
 from trytond.pool import Pool
+from trytond.modules.company import CompanyReport
+from trytond.tools import reduce_ids
 
-__all__ = ['Statement', 'Line']
+__all__ = ['Statement', 'Line', 'StatementReport']
 
 _STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
+
+
+class Null(object):
+    "Always different"
+
+    def __eq__(self, other):
+        return False
+
+    def __ne__(self, other):
+        return True
+
+    def __str__(self):
+        return ''
 
 
 class Statement(Workflow, ModelSQL, ModelView):
@@ -265,6 +285,42 @@ class Statement(Workflow, ModelSQL, ModelView):
                                 'invoice': None,
                                 })
         return res
+
+    def _group_key(self, line):
+        key = (
+            ('number', line.number or Null()),
+            ('date', line.date),
+            ('party', line.party),
+            )
+        return key
+
+    def _get_grouped_line(self):
+        "Return Line class for grouped lines"
+        assert self.lines
+
+        keys = [k[0] for k in self._group_key(self.lines[0])]
+
+        class Line(namedtuple('Line', keys + ['lines'])):
+
+            @property
+            def amount(self):
+                return sum((l.amount for l in self.lines))
+
+            @property
+            def descriptions(self):
+                done = set()
+                for line in self.lines:
+                    if line.description and line.description not in done:
+                        done.add(line.description)
+                        yield line.description
+        return Line
+
+    @property
+    def grouped_lines(self):
+        if self.lines:
+            Line = self._get_grouped_line()
+            for key, lines in groupby(self.lines, key=self._group_key):
+                yield Line(**dict(key + (('lines', list(lines)),)))
 
     @classmethod
     def delete(cls, statements):
@@ -615,3 +671,7 @@ class Line(ModelSQL, ModelView):
                 amount_second_currency=amount_second_currency,
                 ))
         return move_lines
+
+
+class StatementReport(CompanyReport):
+    __name__ = 'account.statement'

@@ -11,7 +11,7 @@ Imports::
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import config, Model, Wizard, Report
     >>> today = datetime.date.today()
 
 Create database::
@@ -303,6 +303,11 @@ Test invoice state::
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     u'paid'
+
+Test statement report::
+
+    >>> report = Report('account.statement')
+    >>> _ = report.execute([statement], {})
 
 Let's test the negative amount version of the supplier/customer invoices::
 

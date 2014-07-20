@@ -14,3 +14,6 @@ def register():
         Line,
         Move,
         module='account_statement', type_='model')
+    Pool.register(
+        StatementReport,
+        module='account_statement', type_='report')
