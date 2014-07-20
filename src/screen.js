@@ -156,6 +156,7 @@
                 this.row_activate = attributes.row_activate;
             }
             this.tree_states = {};
+            this.tree_states_done = [];
             this.fields_view_tree = null;
             this.domain_parser = null;
             this.tab = null;
@@ -289,6 +290,7 @@
                         this.group.screens.indexOf(this), 1);
             }
             group.screens.push(this);
+            this.tree_states_done = [];
             this.group = group;
             this.model = group.model;
             if (jQuery.isEmptyObject(group)) {
@@ -776,6 +778,7 @@
         save_tree_state: function(store) {
             store = (store === undefined) ? true : store;
             var i, len, view, widgets, wi, wlen;
+            var parent_ = this.group.parent ? this.group.parent.id : null;
             for (i = 0, len = this.views.length; i < len; i++) {
                 view = this.views[i];
                 if (view.view_type == 'form') {
@@ -790,10 +793,15 @@
                             }
                         }
                     }
-                } else if ((view.view_type == 'tree') &&
-                        (view.children_field)) {
-                    var parent_, timestamp, paths, selected_paths,
-                        tree_state_model;
+                    if ((this.views.length == 1) && this.current_record) {
+                        if (!(parent_ in this.tree_states)) {
+                            this.tree_states[parent_] = {};
+                        }
+                        this.tree_states[parent_][
+                            view.children_field || null] = [
+                            [], [[this.current_record.id]]];
+                    }
+                } else if (view.view_type == 'tree') {
                     parent_ = this.group.parent ? this.group.parent.id : null;
                     timestamp = this.parent ? this._timestamp : null;
                     paths = view.get_expanded_paths();
@@ -801,9 +809,9 @@
                     if (!(parent_ in this.tree_states)) {
                         this.tree_states[parent_] = {};
                     }
-                    this.tree_states[parent_][view.children_field] = [
+                    this.tree_states[parent_][view.children_field || null] = [
                         timestamp, paths, selected_paths];
-                    if (store) {
+                    if (store && view.attributes.tree_state) {
                         tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
                         tree_state_model.execute('set', [
@@ -819,7 +827,7 @@
         get_tree_domain: function(parent_) {
             var domain;
             if (parent_) {
-                domain = this.domain.concat([
+                domain = (this.domain || []).concat([
                         [this.exclude_field, '=', parent_]]);
             } else {
                 domain = this.domain;
@@ -829,15 +837,24 @@
         set_tree_state: function() {
             var parent_, timestamp, state, state_prm, tree_state_model;
             var view = this.current_view;
-            if (!view || (view.view_type != 'tree') || !this.group) {
+            if (!~['tree', 'form'].indexOf(view.view_type)) {
                 return;
             }
+
+            if (~this.tree_states_done.indexOf(view)) {
+                return;
+            }
+            if (view.view_type == 'form' &&
+                    !jQuery.isEmptyObject(this.tree_states_done)) {
+                return;
+            }
+
             parent_ = this.group.parent ? this.group.parent.id : null;
             timestamp = parent ? parent._timestamp : null;
             if (!(parent_ in this.tree_states)) {
                 this.tree_states[parent_] = {};
             }
-            state = this.tree_states[parent_][view.children_field];
+            state = this.tree_states[parent_][view.children_field || null];
             if (state) {
                 if (timestamp != state[0]) {
                     state = undefined;
@@ -857,12 +874,32 @@
                 state_prm = jQuery.when(state);
             }
             state_prm.done(function(state) {
-                var expanded_nodes, selected_nodes;
-                this.tree_states[parent_][view.children_field] = state;
+                var expanded_nodes, selected_nodes, record;
+                this.tree_states[parent_][view.children_field || null] = state;
                 expanded_nodes = state[0];
                 selected_nodes = state[1];
-                view.display(selected_nodes, expanded_nodes);
+                if (view.view_type == 'tree') {
+                    view.display(selected_nodes, expanded_nodes);
+                } else {
+                    if (!jQuery.isEmptyObject(selected_nodes)) {
+                        for (var i = 0; i < selected_nodes[0].length; i++) {
+                            var new_record = this.group.get(selected_nodes[0][i]);
+                            if (!new_record) {
+                                break;
+                            } else {
+                                record = new_record;
+                            }
+                        }
+                        if (record && (record != this.current_record)) {
+                            this.set_current_record(record);
+                            // Force a display of the view to synchronize the
+                            // widgets with the new record
+                            view.display();
+                        }
+                    }
+                }
             }.bind(this));
+            this.tree_states_done.push(view);
         }
     });
 }());

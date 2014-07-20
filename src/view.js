@@ -96,6 +96,7 @@
             var top_node = xml.children()[0];
             this.keyword_open = top_node.getAttribute('keyword_open');
             this.editable = top_node.getAttribute('editable');
+            this.attributes = top_node.attributes;
 
             // Columns
             this.columns = [];
@@ -241,13 +242,15 @@
             return buttons;
         },
         display: function(selected, expanded) {
-            selected = selected || this.get_selected_paths();
-            expanded = expanded || [];
             var current_record = this.screen.current_record;
-            if (current_record && !Sao.common.contains(selected,
-                        [[current_record.id]])) {
-                selected = [[current_record.id]];
+            if (!selected) {
+                selected = this.get_selected_paths();
+                if (current_record && !Sao.common.contains(selected,
+                            [[current_record.id]])) {
+                    selected = [[current_record.id]];
+                }
             }
+            expanded = expanded || [];
 
             if (this.screen.group.length != this.rows.length) {
                 this.construct(selected, expanded);
