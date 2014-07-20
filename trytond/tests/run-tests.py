@@ -6,6 +6,7 @@ import argparse
 import os
 import time
 import unittest
+import sys
 
 from trytond.config import CONFIG
 
@@ -39,4 +40,5 @@ if not opt.modules:
     suite = all_suite(opt.tests)
 else:
     suite = modules_suite(opt.tests)
-unittest.TextTestRunner(verbosity=opt.verbosity).run(suite)
+result = unittest.TextTestRunner(verbosity=opt.verbosity).run(suite)
+sys.exit(not result.wasSuccessful())
