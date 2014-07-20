@@ -718,9 +718,9 @@ class Screen(SignalEvent):
             start, end = view.treeview.get_visible_range()
             vadjustment = view.treeview.get_vadjustment()
             vadjustment.value = vadjustment.value + vadjustment.page_increment
-            store = view.store
-            iter_ = store.get_iter(end)
-            self.current_record = store.get_value(iter_, 0)
+            model = view.treeview.get_model()
+            iter_ = model.get_iter(end)
+            self.current_record = model.get_value(iter_, 0)
         elif (view.view_type == 'form'
                 and self.current_record
                 and self.current_record.group):
@@ -783,9 +783,9 @@ class Screen(SignalEvent):
             start, end = view.treeview.get_visible_range()
             vadjustment = view.treeview.get_vadjustment()
             vadjustment.value = vadjustment.value - vadjustment.page_increment
-            store = view.store
-            iter_ = store.get_iter(start)
-            self.current_record = store.get_value(iter_, 0)
+            model = view.treeview.get_model()
+            iter_ = model.get_iter(start)
+            self.current_record = model.get_value(iter_, 0)
         elif (view.view_type == 'form'
                 and self.current_record
                 and self.current_record.group):
