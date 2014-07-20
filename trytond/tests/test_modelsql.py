@@ -20,13 +20,12 @@ class ModelSQLTestCase(unittest.TestCase):
         self.modelsql = POOL.get('test.modelsql')
         self.modelsql_timestamp = POOL.get('test.modelsql.timestamp')
 
+    @unittest.skipIf(CONFIG['db_type'] == 'sqlite',
+        'SQLite not concerned because tryton don\'t set "NOT NULL"'
+        'constraint: "ALTER TABLE" don\'t support NOT NULL constraint'
+        'without default value')
     def test0010required_field_missing(self):
         'Test error message when a required field is missing'
-        if CONFIG['db_type'] not in ('postgresql', 'mysql'):
-            # SQLite not concerned because tryton don't set "NOT NULL"
-            # constraint: 'ALTER TABLE' don't support NOT NULL constraint
-            # without default value
-            return
         fields = {
             'desc': '',
             'integer': 0,
