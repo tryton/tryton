@@ -320,6 +320,59 @@ class HistoryTestCase(unittest.TestCase):
                     self.assertEqual(records, instances)
                     self.assertEqual([x.value for x in records], values)
 
+    def test0070_browse(self):
+        'Test browsing history'
+        History = POOL.get('test.history')
+        Line = POOL.get('test.history.line')
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(value=1)
+            history.save()
+            history_id = history.id
+            line_a = Line(name='a', history=history)
+            line_a.save()
+            line_a_id = line_a.id
+            line_b = Line(name='b', history=history)
+            line_b.save()
+            line_b_id = line_b.id
+
+            first_stamp = line_b.create_date
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(history_id)
+            history.value = 2
+            history.save()
+
+            Line.delete([Line(line_b_id)])
+
+            line_a = Line(line_a_id)
+            line_a.name = 'c'
+            line_a.save()
+
+            second_stamp = line_a.write_date
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER,
+                context=CONTEXT) as transaction:
+            history = History(history_id)
+            self.assertEqual(history.value, 2)
+            self.assertEqual([l.name for l in history.lines], ['c'])
+
+            with Transaction().set_context(_datetime=first_stamp):
+                history = History(history_id)
+            self.assertEqual(history.value, 1)
+            self.assertEqual([l.name for l in history.lines], ['a', 'b'])
+
+            with Transaction().set_context(_datetime=second_stamp):
+                history = History(history_id)
+            self.assertEqual(history.value, 2)
+            self.assertEqual([l.name for l in history.lines], ['c'])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(HistoryTestCase)

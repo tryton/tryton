@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
 
-__all__ = ['TestHistory']
+__all__ = ['TestHistory', 'TestHistoryLine']
 
 
 class TestHistory(ModelSQL):
@@ -10,3 +10,12 @@ class TestHistory(ModelSQL):
     __name__ = 'test.history'
     _history = True
     value = fields.Integer('Value')
+    lines = fields.One2Many('test.history.line', 'history', 'Lines')
+
+
+class TestHistoryLine(ModelSQL):
+    'Test History Line'
+    __name__ = 'test.history.line'
+    _history = True
+    history = fields.Many2One('test.history', 'History')
+    name = fields.Char('Name')

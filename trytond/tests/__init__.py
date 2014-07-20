@@ -150,6 +150,7 @@ def register():
         Many2OneTarget,
         Many2OneDomainValidation,
         TestHistory,
+        TestHistoryLine,
         module='tests', type_='model')
     Pool.register(
         TestWizard,
