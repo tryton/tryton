@@ -222,10 +222,12 @@ Create statement::
 
     >>> statement_journal = StatementJournal(name='Test',
     ...     journal=account_journal,
+    ...     validation='balance',
     ... )
     >>> statement_journal.save()
 
-    >>> statement = Statement(journal=statement_journal,
+    >>> statement = Statement(name='test',
+    ...     journal=statement_journal,
     ...     start_balance=Decimal('0'),
     ...     end_balance=Decimal('80'),
     ... )
@@ -340,7 +342,8 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> supplier_invoice2.state
     u'posted'
 
-    >>> statement = Statement(journal=statement_journal,
+    >>> statement = Statement(name='test negative',
+    ...     journal=statement_journal,
     ...     end_balance=Decimal('0'),
     ... )
 
@@ -384,7 +387,7 @@ Testing the use of an invoice in multiple statements::
     >>> customer_invoice4.state
     u'posted'
 
-    >>> statement1 = Statement(journal=statement_journal)
+    >>> statement1 = Statement(name='1', journal=statement_journal)
     >>> statement1.end_balance = Decimal(380)
     >>> statement_line = statement1.lines.new()
     >>> statement_line.date = today
@@ -394,7 +397,7 @@ Testing the use of an invoice in multiple statements::
     >>> statement_line.invoice = customer_invoice4
     >>> statement1.save()
 
-    >>> statement2 = Statement(journal=statement_journal)
+    >>> statement2 = Statement(name='2', journal=statement_journal)
     >>> statement2.end_balance = Decimal(680)
     >>> statement_line = statement2.lines.new()
     >>> statement_line.date = today
@@ -421,3 +424,82 @@ Testing the use of an invoice in multiple statements::
     >>> statement2.reload()
     >>> bool(statement2.lines[0].invoice)
     False
+
+Testing balance validation::
+
+    >>> journal_balance = StatementJournal(name='Balance',
+    ...     journal=account_journal,
+    ...     validation='balance',
+    ...     )
+    >>> journal_balance.save()
+
+    >>> statement = Statement(name='balance')
+    >>> statement.journal = journal_balance
+    >>> statement.start_balance = Decimal('50.00')
+    >>> statement.end_balance = Decimal('150.00')
+    >>> line = statement.lines.new()
+    >>> line.date = today
+    >>> line.amount = Decimal('60.00')
+    >>> line.account = receivable
+    >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserError: ...
+
+    >>> second_line = statement.lines.new()
+    >>> second_line.date = today
+    >>> second_line.amount = Decimal('40.00')
+    >>> second_line.account = receivable
+    >>> statement.click('validate_statement')
+
+Testing amount validation::
+
+    >>> journal_amount = StatementJournal(name='Amount',
+    ...     journal=account_journal,
+    ...     validation='amount',
+    ...     )
+    >>> journal_amount.save()
+
+    >>> statement = Statement(name='amount')
+    >>> statement.journal = journal_amount
+    >>> statement.total_amount = Decimal('80.00')
+    >>> line = statement.lines.new()
+    >>> line.date = today
+    >>> line.amount = Decimal('50.00')
+    >>> line.account = receivable
+    >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserError: ...
+
+    >>> second_line = statement.lines.new()
+    >>> second_line.date = today
+    >>> second_line.amount = Decimal('30.00')
+    >>> second_line.account = receivable
+    >>> statement.click('validate_statement')
+
+Test number of lines validation::
+
+    >>> journal_number = StatementJournal(name='Number',
+    ...     journal=account_journal,
+    ...     validation='number_of_lines',
+    ...     )
+    >>> journal_number.save()
+
+    >>> statement = Statement(name='number')
+    >>> statement.journal = journal_number
+    >>> statement.number_of_lines = 2
+    >>> line = statement.lines.new()
+    >>> line.date = today
+    >>> line.amount = Decimal('50.00')
+    >>> line.account = receivable
+    >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserError: ...
+
+    >>> second_line = statement.lines.new()
+    >>> second_line.date = today
+    >>> second_line.amount = Decimal('10.00')
+    >>> second_line.account = receivable
+    >>> statement.click('validate_statement')

@@ -16,6 +16,11 @@ class Journal(ModelSQL, ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             select=True)
+    validation = fields.Selection([
+            ('balance', 'Balance'),
+            ('amount', 'Amount'),
+            ('number_of_lines', 'Number of Lines'),
+            ], 'Validation Type', required=True)
 
     @staticmethod
     def default_currency():
@@ -27,3 +32,7 @@ class Journal(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @staticmethod
+    def default_validation():
+        return 'balance'

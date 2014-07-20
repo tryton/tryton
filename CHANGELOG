@@ -1,3 +1,5 @@
+* Add different validation type on journal
+* Add explicit name on statement
 * Add report to statement
 * Add number and sequence on statement line
 * Switch journal debit/credit account usage

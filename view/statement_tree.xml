@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree string="Statements">
     <field name="journal"/>
+    <field name="name"/>
     <field name="date"/>
-    <field name="start_balance"/>
-    <field name="end_balance"/>
     <field name="state"/>
 </tree>
