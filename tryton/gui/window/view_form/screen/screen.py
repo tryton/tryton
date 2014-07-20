@@ -600,57 +600,73 @@ class Screen(SignalEvent):
 
     def set_tree_state(self):
         view = self.current_view
-        if (not CONFIG['client.save_tree_state']
-                or not view
-                or view.view_type != 'tree'
-                or not self.group):
+        if view.view_type not in ('tree', 'form'):
             return
         if id(view) in self.tree_states_done:
             return
+        if view.view_type == 'form' and self.tree_states_done:
+            return
         parent = self.parent.id if self.parent else None
+        expanded_nodes, selected_nodes = [], []
         timestamp = self.parent._timestamp if self.parent else None
         state = self.tree_states[parent][view.children_field]
         if state:
             state_timestamp, expanded_nodes, selected_nodes = state
             if timestamp != state_timestamp:
                 state = None
-        if state is None:
+        if state is None and CONFIG['client.save_tree_state']:
             json_domain = self.get_tree_domain(parent)
             try:
                 expanded_nodes, selected_nodes = RPCExecute('model',
                     'ir.ui.view_tree_state', 'get',
                     self.model_name, json_domain,
-                    self.current_view.children_field)
+                    view.children_field)
                 expanded_nodes = json.loads(expanded_nodes)
                 selected_nodes = json.loads(selected_nodes)
             except RPCException:
                 logging.getLogger(__name__).warn(
                     _('Unable to get view tree state'))
-                expanded_nodes = []
-                selected_nodes = []
             self.tree_states[parent][view.children_field] = (
                 timestamp, expanded_nodes, selected_nodes)
-        view.expand_nodes(expanded_nodes)
-        view.select_nodes(selected_nodes)
+        if view.view_type == 'tree':
+            view.expand_nodes(expanded_nodes)
+            view.select_nodes(selected_nodes)
+        else:
+            if selected_nodes:
+                record = None
+                for node in selected_nodes[0]:
+                    new_record = self.group.get(node)
+                    if not new_record:
+                        break
+                    else:
+                        record = new_record
+                if record and record != self.current_record:
+                    self.current_record = record
+                    # Force a display of the view to synchronize the
+                    # widgets with the new record
+                    view.display()
         self.tree_states_done.add(id(view))
 
     def save_tree_state(self, store=True):
         if not CONFIG['client.save_tree_state']:
             return
+        parent = self.parent.id if self.parent else None
+        timestamp = self.parent._timestamp if self.parent else None
         for view in self.views:
             if view.view_type == 'form':
                 for widgets in view.widgets.itervalues():
                     for widget in widgets:
                         if hasattr(widget, 'screen'):
                             widget.screen.save_tree_state(store)
-            elif (view.view_type == 'tree' and view.children_field):
-                parent = self.parent.id if self.parent else None
-                timestamp = self.parent._timestamp if self.parent else None
+                if len(self.views) == 1 and self.current_record:
+                    self.tree_states[parent][view.children_field] = (
+                        timestamp, [], [[self.current_record.id]])
+            elif view.view_type == 'tree':
                 paths = view.get_expanded_paths()
                 selected_paths = view.get_selected_paths()
                 self.tree_states[parent][view.children_field] = (
                     timestamp, paths, selected_paths)
-                if store:
+                if store and view.attributes.get('tree_state', False):
                     json_domain = self.get_tree_domain(parent)
                     json_paths = json.dumps(paths)
                     json_selected_path = json.dumps(selected_paths)

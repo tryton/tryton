@@ -1,3 +1,5 @@
+* Manage tree_state attribute
+* Add simple tree_state support on form view
 * Change range operator of search widget to be included
 * Explicitly set value of parent field
 

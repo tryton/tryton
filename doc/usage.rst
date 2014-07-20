@@ -474,7 +474,7 @@ Save Width/Height:
 .. _Menu-Options-Form-Save_Tree_State:
 
 Save Tree Expanded State:
-  Check box to enable saving of manually expanded nodes in trees.
+  Check box to enable saving of expanded and selected nodes in trees/lists.
 
 .. _Menu-Options-Form-Spell_Checking:
 
