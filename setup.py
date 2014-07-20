@@ -45,7 +45,7 @@ setup(name='trytond_account_dunning',
         ],
     package_data={
         'trytond.modules.account_dunning': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
