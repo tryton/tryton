@@ -491,6 +491,9 @@ Each tree view must start with this tag.
     * ``keyword_open``: A boolean to specify if the client should look for a
       tree_open action on double click instead of switching view.
 
+    * ``tree_state``: A boolean to specify if the client should save the state
+      of the tree.
+
 field
 ^^^^^
 
