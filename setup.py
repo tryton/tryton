@@ -63,7 +63,8 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_invoice': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'invoice.odt']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'invoice.odt',
+                'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
