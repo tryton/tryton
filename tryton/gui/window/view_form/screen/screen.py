@@ -568,12 +568,13 @@ class Screen(SignalEvent):
 
         if delete:
             for record in records:
-                if record.parent:
-                    record.parent.save(force_reload=False)
                 if record in record.group.record_deleted:
                     record.group.record_deleted.remove(record)
                 if record in record.group.record_removed:
                     record.group.record_removed.remove(record)
+                if record.parent:
+                    # Save parent without deleted children
+                    record.parent.save(force_reload=False)
                 record.destroy()
 
         if idx > 0:
