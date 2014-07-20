@@ -366,6 +366,7 @@ def load_modules(database_name, pool, update=False, lang=None):
     res = True
 
     def _load_modules():
+        global res
         cursor = Transaction().cursor
         if update:
             # Migration from 2.2: workflow module removed
