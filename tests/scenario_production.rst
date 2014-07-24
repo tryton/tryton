@@ -217,3 +217,23 @@ Make a production with effective date yesterday::
     >>> output, = production.outputs
     >>> output.effective_date == yesterday
     True
+
+
+Make a production with a bom of zero quantity::
+
+    >>> zero_bom, = BOM.duplicate([bom])
+    >>> for input_ in bom.inputs:
+    ...     input_.quantity = 0.0
+    >>> bom_output, = bom.outputs
+    >>> bom_output.quantity = 0.0
+    >>> bom.save()
+    >>> production = Production()
+    >>> production.effective_date = yesterday
+    >>> production.product = product
+    >>> production.bom = bom
+    >>> production.quantity = 2
+    >>> [i.quantity for i in production.inputs]
+    [0.0, 0.0]
+    >>> output, = production.outputs
+    >>> output.quantity
+    0.0
