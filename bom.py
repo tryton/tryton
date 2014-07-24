@@ -33,6 +33,8 @@ class BOM(ModelSQL, ModelView):
         Uom = Pool().get('product.uom')
         for output in self.outputs:
             if output.product == product:
+                if not output.quantity:
+                    return 0.0
                 quantity = Uom.compute_qty(uom, quantity,
                     output.uom, round=False)
                 return quantity / output.quantity
