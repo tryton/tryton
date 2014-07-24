@@ -1673,8 +1673,9 @@ class ReturnSale(Wizard):
         return_sales = Sale.copy(sales)
         for sale in return_sales:
             for line in sale.lines:
-                line.quantity *= -1
-                line.save()
+                if line.type == 'line':
+                    line.quantity *= -1
+                    line.save()
         data = {'res_id': [s.id for s in return_sales]}
         if len(return_sales) == 1:
             action['views'].reverse()
