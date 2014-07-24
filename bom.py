@@ -29,6 +29,8 @@ class BOM(ModelSQL, ModelView):
         uom_obj = Pool().get('product.uom')
         for output in bom.outputs:
             if output.product == product:
+                if not output.quantity:
+                    return 0.0
                 quantity = uom_obj.compute_qty(uom, quantity,
                     output.uom, round=False)
                 return quantity / output.quantity
