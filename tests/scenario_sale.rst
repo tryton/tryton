@@ -679,3 +679,28 @@ Check service sale states::
     u'none'
     >>> service_sale.state
     u'done'
+
+Return sales using the wizard::
+
+    >>> config.user = sale_user.id
+    >>> sale_to_return = Sale()
+    >>> sale_to_return.party = customer
+    >>> sale_to_return.payment_term = payment_term
+    >>> sale_line = sale_to_return.lines.new()
+    >>> sale_line.product = service
+    >>> sale_line.quantity = 1
+    >>> sale_line = sale_to_return.lines.new()
+    >>> sale_line.type = 'comment'
+    >>> sale_line.description = 'Test comment'
+    >>> sale_to_return.click('quote')
+    >>> sale_to_return.click('confirm')
+    >>> sale_to_return.click('process')
+    >>> sale_to_return.state
+    u'processing'
+    >>> return_sale = Wizard('sale.return_sale', [sale_to_return])
+    >>> return_sale.execute('return_')
+    >>> returned_sale, = Sale.find([
+    ...     ('state', '=', 'draft'),
+    ...     ])
+    >>> sorted([x.quantity for x in returned_sale.lines])
+    [None, -1.0]
