@@ -80,12 +80,6 @@ class Uom(ModelSQL, ModelView):
                 })
 
     @classmethod
-    def __post_setup__(cls):
-        super(Uom, cls).__post_setup__()
-        if 'category' not in cls._fields:
-            print cls, cls._fields
-
-    @classmethod
     def check_xml_record(cls, records, values):
         return True
 
