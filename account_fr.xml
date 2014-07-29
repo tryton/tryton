@@ -5376,7 +5376,8 @@
         <record model="account.account.template" id="44562">
             <field name="name">T.V.A. sur immobilisations</field>
             <field name="code">44562</field>
-            <field name="kind">view</field>
+            <field name="type" ref="creances_autres"/>
+            <field name="kind">other</field>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4456"/>
         </record>
