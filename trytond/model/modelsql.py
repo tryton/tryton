@@ -189,10 +189,6 @@ class ModelSQL(ModelStorage):
 
     @staticmethod
     def table_query():
-        '''
-        Return None if the model is a real table in the database
-        or return a tuple with the SQL query and the arguments.
-        '''
         return None
 
     @classmethod
