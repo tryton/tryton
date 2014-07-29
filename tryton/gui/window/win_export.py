@@ -289,7 +289,7 @@ class WinExport(NoModal):
             return
         try:
             lines = RPCExecute('model', 'ir.export.line', 'read',
-                sum((x['export_fields'] for x in exports), []), None)
+                sum((list(x['export_fields']) for x in exports), []), None)
         except RPCException:
             return
         id2lines = {}
