@@ -79,6 +79,7 @@ class Production:
         today = Date.today()
         requests = []
         for sub_products in grouped_slice(products):
+            sub_products = list(sub_products)
             product_ids = [p.id for p in sub_products]
             with Transaction().set_context(forecast=True,
                     stock_date_end=today):
@@ -86,8 +87,8 @@ class Production:
                     product_ids, with_childs=True)
 
             # order product by supply period
-            products_period = sorted([(p.get_supply_period(), p)
-                    for p in list(sub_products)])
+            products_period = sorted((p.get_supply_period(), p)
+                for p in sub_products)
 
             for warehouse in warehouses:
                 quantities = dict((x, pbl.pop((warehouse.id, x), 0))
