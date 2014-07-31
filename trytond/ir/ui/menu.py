@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from itertools import groupby
+
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -89,6 +91,8 @@ class UIMenu(ModelSQL, ModelView):
                 ('ir.action.wizard', 'ir.action.wizard'),
                 ('ir.action.url', 'ir.action.url'),
                 ]), 'get_action', setter='set_action')
+    action_keywords = fields.One2Many('ir.action.keyword', 'model',
+        'Action Keywords')
     active = fields.Boolean('Active')
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
 
@@ -190,25 +194,27 @@ class UIMenu(ModelSQL, ModelView):
     @classmethod
     def get_action(cls, menus, name):
         pool = Pool()
-        ActionKeyword = pool.get('ir.action.keyword')
         actions = dict((m.id, None) for m in menus)
         with Transaction().set_context(active_test=False):
-            action_keywords = ActionKeyword.search([
-                    ('keyword', '=', 'tree_open'),
-                    ('model', 'in', [str(m) for m in menus]),
-                    ])
-        for action_keyword in action_keywords:
-            model = action_keyword.model
-            Action = pool.get(action_keyword.action.type)
+            menus = cls.browse(menus)
+        action_keywords = sum((list(m.action_keywords) for m in menus), [])
+        key = lambda k: k.action.type
+        action_keywords.sort(key=key)
+        for type, action_keywords in groupby(action_keywords, key=key):
+            action_keywords = list(action_keywords)
+            for action_keyword in action_keywords:
+                model = action_keyword.model
+                actions[model.id] = '%s,-1' % type
+
+            Action = pool.get(type)
+            action2keyword = {k.action.id: k for k in action_keywords}
             with Transaction().set_context(active_test=False):
                 factions = Action.search([
-                        ('action', '=', action_keyword.action.id),
-                        ], limit=1)
-            if factions:
-                action, = factions
-            else:
-                action = '%s,0' % action_keyword.action.type
-            actions[model.id] = str(action)
+                        ('action', 'in', action2keyword.keys()),
+                        ])
+            for action in factions:
+                model = action2keyword[action.id].model
+                actions[model.id] = str(action)
         return actions
 
     @classmethod
