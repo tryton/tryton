@@ -36,7 +36,6 @@ class Record(SignalEvent):
         self.autocompletion = {}
         self.exception = False
         self.destroyed = False
-        self.pool.add(self)
 
     def __getitem__(self, name):
         if name not in self._loaded and self.id >= 0:
@@ -78,35 +77,34 @@ class Record(SignalEvent):
                 def filter_group(record):
                     return name not in record._loaded and record.id >= 0
 
-                def filter_pool(record):
+                def filter_parent_group(record):
                     return (filter_group(record)
                         and record.id not in id2record
-                        and record.context_get() == record_context)
+                        and ((record.group == self.group)
+                            # Don't compute context for same group
+                            or (record.context_get() == record_context)))
 
                 if self.parent:
-                    pool = list(self.pool)
+                    group = sum(self.parent.group.children, [])
+                    filter_ = filter_parent_group
                 else:
-                    # Don't look at the pool if it is the root
-                    pool = []
-                for group, filter_ in (
-                        (self.group, filter_group),
-                        (pool, filter_pool),
-                        ):
-                    if self in group:
-                        idx = group.index(self)
-                        length = len(group)
-                        n = 1
-                        while len(id2record) < limit and (idx - n >= 0
-                                or idx + n < length) and n < 2 * limit:
-                            if idx - n >= 0:
-                                record = group[idx - n]
-                                if filter_(record):
-                                    id2record[record.id] = record
-                            if idx + n < length:
-                                record = group[idx + n]
-                                if filter_(record):
-                                    id2record[record.id] = record
-                            n += 1
+                    group = self.group
+                    filter_ = filter_group
+                if self in group:
+                    idx = group.index(self)
+                    length = len(group)
+                    n = 1
+                    while len(id2record) < limit and (idx - n >= 0
+                            or idx + n < length) and n < 2 * limit:
+                        if idx - n >= 0:
+                            record = group[idx - n]
+                            if filter_(record):
+                                id2record[record.id] = record
+                        if idx + n < length:
+                            record = group[idx + n]
+                            if filter_(record):
+                                id2record[record.id] = record
+                        n += 1
 
             ctx = record_context.copy()
             ctx.update(dict(('%s.%s' % (self.model_name, fname), 'size')
@@ -139,14 +137,6 @@ class Record(SignalEvent):
     @property
     def modified(self):
         return bool(self.modified_fields)
-
-    @property
-    def pool(self):
-        group = self.group
-        while (group.parent is not None
-                and group.parent.model_name == self.model_name):
-            group = group.parent
-        return group.pool
 
     @property
     def parent(self):
@@ -625,11 +615,8 @@ class Record(SignalEvent):
         return self.attachment_count
 
     def destroy(self):
-        # Get reference to pool before unref group
-        pool = self.pool
         for v in self.value.itervalues():
             if hasattr(v, 'destroy'):
                 v.destroy()
         super(Record, self).destroy()
         self.destroyed = True
-        pool.remove(self)
