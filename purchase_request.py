@@ -204,6 +204,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         for dates, dates_products in date2products.iteritems():
             min_date, max_date = dates
             for sub_products in grouped_slice(dates_products):
+                sub_products = list(sub_products)
                 product_ids = [p.id for p in sub_products]
                 with Transaction().set_context(forecast=True,
                         stock_date_end=min_date or datetime.date.max):
