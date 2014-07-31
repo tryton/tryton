@@ -378,7 +378,7 @@ class Fs2bdAccessor:
                 with Transaction().set_context(active_test=False):
                     records = Model.search([
                         ('id', 'in', list(sub_record_ids)),
-                        ])
+                        ], order=[('id', 'ASC')])
                 with Transaction().set_context(language='en_US'):
                     models = Model.browse(map(int, records))
                 for model in models:
@@ -489,7 +489,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 module, model = key
                 self.write_records(module, model, *actions)
             self.grouped_write.clear()
-        if self.grouped_model_data:
+        if name == 'data' and self.grouped_model_data:
             self.ModelData.write(*self.grouped_model_data)
             del self.grouped_model_data[:]
 
