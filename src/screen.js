@@ -803,9 +803,9 @@
                     }
                 } else if (view.view_type == 'tree') {
                     parent_ = this.group.parent ? this.group.parent.id : null;
-                    timestamp = this.parent ? this._timestamp : null;
-                    paths = view.get_expanded_paths();
-                    selected_paths = view.get_selected_paths();
+                    var timestamp = this.parent ? this._timestamp : null;
+                    var paths = view.get_expanded_paths();
+                    var selected_paths = view.get_selected_paths();
                     if (!(parent_ in this.tree_states)) {
                         this.tree_states[parent_] = {};
                     }
