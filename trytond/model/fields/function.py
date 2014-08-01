@@ -37,14 +37,11 @@ class Function(Field):
 
     def __copy__(self):
         return Function(copy.copy(self._field), self.getter,
-                setter=self.setter, searcher=self.searcher)
+            setter=self.setter, searcher=self.searcher, loading=self.loading)
 
     def __deepcopy__(self, memo):
-        return Function(copy.deepcopy(self._field, memo),
-            copy.deepcopy(self.getter, memo),
-            setter=copy.deepcopy(self.setter, memo),
-            searcher=copy.deepcopy(self.searcher, memo),
-            loading=copy.deepcopy(self.loading, memo))
+        return Function(copy.deepcopy(self._field, memo), self.getter,
+            setter=self.setter, searcher=self.searcher, loading=self.loading)
 
     def __getattr__(self, name):
         return getattr(self._field, name)
