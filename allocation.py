@@ -11,9 +11,9 @@ class Allocation(ModelSQL, ModelView):
     __name__ = 'project.allocation'
     _rec_name = 'employee'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
-            select=True)
+            select=True, ondelete='CASCADE')
     work = fields.Many2One('project.work', 'Work', required=True,
-            select=True)
+            select=True, ondelete='CASCADE')
     percentage = fields.Float('Percentage', digits=(16, 2), required=True)
 
     @classmethod
