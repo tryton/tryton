@@ -40,7 +40,7 @@ msgid ""
 "not match the cost of the production (%(costs)s)."
 msgstr ""
 "Los costes de los movimientos de salida (%(outputs)s) de la producción "
-"\"%(production)s\" no coinciden con el coste de la producción (%(cost)s)."
+"\"%(production)s\" no coinciden con el coste de la producción (%(costs)s)."
 
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
