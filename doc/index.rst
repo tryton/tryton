@@ -64,6 +64,13 @@ The message can be in one of this states:
 * Done
 * Canceled
 
+Bank to Customer Debit Credit Notification (camt.054)
+-----------------------------------------------------
+
+For incoming message camt.054, each booked entry will succeed the corresponding
+payment if any return information is found. Otherwise it will fail and the
+return reason will be stored on it.
+
 Party
 *****
 

@@ -1,3 +1,4 @@
+* Handle camt.054
 * Add generic SEPA Message
 * Add sequence for Mandate identification
 * Add unique constraint on Mandate identification

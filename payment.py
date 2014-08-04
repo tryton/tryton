@@ -3,9 +3,11 @@
 import datetime
 import os
 from itertools import groupby
+from io import BytesIO
 
 import genshi
 import genshi.template
+from lxml import etree
 from sql import Literal
 
 from trytond.pool import PoolMeta, Pool
@@ -14,6 +16,7 @@ from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.tools import reduce_ids, grouped_slice
 from trytond import backend
+from .sepa_handler import CAMT054
 
 __metaclass__ = PoolMeta
 __all__ = ['Journal', 'Group', 'Payment', 'Mandate', 'Message']
@@ -185,6 +188,23 @@ class Payment:
             ('party', '=', Eval('party', -1)),
             ],
         depends=['party'])
+    sepa_return_reason_code = fields.Char('Return Reason Code', readonly=True,
+        states={
+            'invisible': (~Eval('sepa_return_reason_code')
+                & (Eval('state') != 'failed')),
+            },
+        depends=['state'])
+    sepa_return_reason_information = fields.Text('Return Reason Information',
+        readonly=True,
+        states={
+            'invisible': (~Eval('sepa_return_reason_information')
+                & (Eval('state') != 'failed')),
+            },
+        depends=['state'])
+    sepa_end_to_end_id = fields.Function(fields.Char('SEPA End To End ID'),
+        'get_sepa_end_to_end_id', searcher='search_end_to_end_id')
+    sepa_instruction_id = fields.Function(fields.Char('SEPA Instruction ID'),
+        'get_sepa_instruction_id', searcher='search_sepa_instruction_id')
 
     @classmethod
     def get_sepa_mandates(cls, payments):
@@ -198,11 +218,21 @@ class Payment:
             mandates.append(mandate)
         return mandates
 
-    @property
-    def sepa_end_to_end_id(self):
-        return str(self.id)
+    def get_sepa_end_to_end_id(self, name):
+        return str(id)
 
-    sepa_instruction_id = sepa_end_to_end_id
+    @classmethod
+    def search_end_to_end_id(cls, name, domain):
+        table = cls.__table__()
+        _, operator, value = domain
+        cast = cls.sepa_end_to_end_id.sql_type().base
+        Operator = fields.SQL_OPERATORS[operator]
+        query = table.select(table.id,
+            where=Operator(table.id.cast(cast), value))
+        return [('id', 'in', query)]
+
+    get_sepa_instruction_id = get_sepa_end_to_end_id
+    search_sepa_instruction_id = search_end_to_end_id
 
     @property
     def sepa_remittance_information(self):
@@ -580,10 +610,49 @@ class Message(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, messages):
-        pass
+        for message in messages:
+            if message.type == 'in':
+                message.parse()
+            else:
+                message.send()
 
     @classmethod
     @ModelView.button
     @Workflow.transition('canceled')
     def cancel(cls, messages):
+        pass
+
+    @staticmethod
+    def _get_handlers():
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        return {
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.01':
+            lambda f: CAMT054(f, Payment),
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.02':
+            lambda f: CAMT054(f, Payment),
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.03':
+            lambda f: CAMT054(f, Payment),
+            'urn:iso:std:iso:20022:tech:xsd:camt.054.001.04':
+            lambda f: CAMT054(f, Payment),
+            }
+
+    @staticmethod
+    def get_namespace(message):
+        f = BytesIO(message)
+        for _, element in etree.iterparse(f, events=('start',)):
+            tag = etree.QName(element)
+            if tag.localname == 'Document':
+                return tag.namespace
+
+    def parse(self):
+        message = self.message.encode('utf-8')
+        f = BytesIO(message)
+        namespace = self.get_namespace(message)
+        handlers = self._get_handlers()
+        if namespace not in handlers:
+            raise  # TODO UserError
+        handlers[namespace](f)
+
+    def send(self):
         pass

@@ -6,11 +6,16 @@ import doctest
 from itertools import chain
 from lxml import etree
 from decimal import Decimal
+from io import BytesIO
+
+from mock import Mock, patch
+
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
+from trytond.modules.account_payment_sepa.payment import CAMT054
 
 
 class AccountPaymentSepaTestCase(unittest.TestCase):
@@ -217,6 +222,56 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
 
             self.assertEqual(id(payment.sepa_bank_account_number),
                 id(iban_account_number))
+
+    def handle_camt054(self, flavor):
+        'Handle camt.054'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            Message = POOL.get('account.payment.sepa.message')
+
+            message_file = os.path.join(os.path.dirname(__file__),
+                '%s.xml' % flavor)
+            message = open(message_file).read()
+            namespace = Message.get_namespace(message)
+            self.assertEqual(namespace,
+                'urn:iso:std:iso:20022:tech:xsd:%s' % flavor)
+
+            payment = Mock()
+            Payment = Mock()
+            Payment.search.return_value = [payment]
+
+            handler = CAMT054(BytesIO(message), Payment)
+
+            self.assertEqual(handler.msg_id, 'AAAASESS-FP-00001')
+            Payment.search.assert_called_with([
+                    ('sepa_end_to_end_id', '=', 'MUELL/FINP/RA12345'),
+                    ('kind', '=', 'payable'),
+                    ])
+            Payment.succeed.assert_called_with([payment])
+
+            payment.reset_mock()
+            Payment.reset_mock()
+            with patch.object(CAMT054, 'is_returned') as is_returned:
+                is_returned.return_value = True
+                handler = CAMT054(BytesIO(message), Payment)
+
+                payment.save.assert_called_with()
+                Payment.fail.assert_called_with([payment])
+
+    def test_camt054_001_01(self):
+        'Test camt.054.001.01 handling'
+        self.handle_camt054('camt.054.001.01')
+
+    def test_camt054_001_02(self):
+        'Test camt.054.001.02 handling'
+        self.handle_camt054('camt.054.001.02')
+
+    def test_camt054_001_03(self):
+        'Test camt.054.001.03 handling'
+        self.handle_camt054('camt.054.001.03')
+
+    def test_camt054_001_04(self):
+        'Test camt.054.001.04 handling'
+        self.handle_camt054('camt.054.001.04')
 
 
 def suite():
