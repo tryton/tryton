@@ -3,7 +3,7 @@
 from decimal import Decimal
 import tokenize
 from StringIO import StringIO
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, MatchMixin, fields
 from trytond.tools import safe_eval
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
@@ -110,7 +110,7 @@ class PriceList(ModelSQL, ModelView):
         return unit_price
 
 
-class PriceListLine(ModelSQL, ModelView):
+class PriceListLine(ModelSQL, ModelView, MatchMixin):
     'Price List Line'
     __name__ = 'product.price_list.line'
 
