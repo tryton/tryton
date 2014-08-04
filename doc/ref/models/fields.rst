@@ -413,6 +413,13 @@ A string field with limited values to choice.
     If true, the human-readable values will be translated. Default value is
     ``True``.
 
+Instance methods:
+
+.. method:: Selection.translated([name])
+
+    Returns a descriptor for the translated value of the field. The descriptor
+    must be used on the same class as the field.
+
 Reference
 ---------
 

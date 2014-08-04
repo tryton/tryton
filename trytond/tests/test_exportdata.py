@@ -216,8 +216,9 @@ class ExportDataTestCase(unittest.TestCase):
                         'selection': 'select1',
                         }])
             self.assertEqual(
-                self.export_data.export_data([export1], ['selection']),
-                [['select1']])
+                self.export_data.export_data([export1], ['selection',
+                        'selection.translated']),
+                [['select1', 'Select 1']])
 
             export2, = self.export_data.create([{
                         'selection': None,

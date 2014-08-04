@@ -63,3 +63,29 @@ class Selection(Field):
         for key, value in selections:
             whens.append((column == key, value))
         return [Case(*whens, else_=column)]
+
+    def translated(self, name=None):
+        "Return a descriptor for the translated value of the field"
+        if name is None:
+            name = self.name
+        if name is None:
+            raise ValueError('Missing name argument')
+        return TranslatedSelection(name)
+
+
+class TranslatedSelection(object):
+    'A descriptor for translated value of Selection field'
+
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, inst, cls):
+        if inst is None:
+            return self
+        selection = dict(cls.fields_get([self.name])[self.name]['selection'])
+        value = getattr(inst, self.name)
+        # None and '' are equivalent
+        if value is None or value == '':
+            if value not in selection:
+                value = {None: '', '': None}[value]
+        return selection[value]

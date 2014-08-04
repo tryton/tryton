@@ -604,6 +604,7 @@ class Selection(ModelSQL):
     select = fields.Selection([
             ('', ''), ('arabic', 'Arabic'), ('hexa', 'Hexadecimal')],
         'Selection')
+    select_string = select.translated('select')
     dyn_select = fields.Selection('get_selection',
         'Instance Dynamic Selection')
     dyn_select_static = fields.Selection('static_selection',

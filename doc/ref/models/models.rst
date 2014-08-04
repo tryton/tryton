@@ -309,6 +309,8 @@ CLass methods:
     Return a list of list of values for each ``records``.
     The list of values follows ``fields_names``.
     Relational fields are defined with ``/`` at any depth.
+    Descriptor on fields are available by appending ``.`` and the name of the
+    method on the field that returns the descriptor.
 
 .. classmethod:: ModelStorage.import_data(fields_names, data)
 

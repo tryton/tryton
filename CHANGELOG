@@ -1,3 +1,4 @@
+* Add translated descriptor for Selection field
 * Add tree_state attribute on tree view
 * Allow to sync XML data
 * Remove on_change calls in Model.default_get

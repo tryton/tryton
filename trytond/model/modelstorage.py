@@ -452,6 +452,9 @@ class ModelStorage(Model):
                 if not isinstance(value, ModelStorage):
                     break
                 field_name = fields_tree[i]
+                descriptor = None
+                if '.' in field_name:
+                    field_name, descriptor = field_name.split('.')
                 eModel = pool.get(value.__name__)
                 field = eModel._fields[field_name]
                 if field.states and 'invisible' in field.states:
@@ -467,7 +470,10 @@ class ModelStorage(Model):
                     if invisible:
                         value = ''
                         break
-                value = getattr(value, field_name)
+                if descriptor:
+                    value = getattr(field, descriptor)().__get__(value, eModel)
+                else:
+                    value = getattr(value, field_name)
                 if isinstance(value, (list, tuple)):
                     first = True
                     child_fields_names = [(x[:i + 1] == fields_tree[:i + 1] and

@@ -3060,10 +3060,12 @@ class FieldsTestCase(unittest.TestCase):
             selection1, = self.selection.create([{'select': 'arabic'}])
             self.assert_(selection1)
             self.assertEqual(selection1.select, 'arabic')
+            self.assertEqual(selection1.select_string, 'Arabic')
 
             selection2, = self.selection.create([{'select': None}])
             self.assert_(selection2)
             self.assertEqual(selection2.select, None)
+            self.assertEqual(selection2.select_string, '')
 
             self.assertRaises(UserError, self.selection.create,
                 [{'select': 'chinese'}])
