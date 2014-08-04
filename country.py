@@ -1,8 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Eval
 
-__all__ = ['Country', 'Subdivision']
+__all__ = ['Country', 'Subdivision', 'Zip']
 
 
 class Country(ModelSQL, ModelView):
@@ -194,3 +195,22 @@ class Subdivision(ModelSQL, ModelView):
                 values['code'] = values['code'].upper()
             args.extend((subdivisions, values))
         super(Subdivision, cls).write(*args)
+
+
+class Zip(ModelSQL, ModelView):
+    "Zip"
+    __name__ = 'country.zip'
+    country = fields.Many2One('country.country', 'Country', required=True,
+        select=True, ondelete='CASCADE')
+    subdivision = fields.Many2One('country.subdivision', 'Subdivision',
+        select=True, ondelete='CASCADE',
+        domain=[('country', '=', Eval('country', -1))],
+        depends=['country'])
+    zip = fields.Char('Zip')
+    city = fields.Char('City')
+
+    @classmethod
+    def __setup__(cls):
+        super(Zip, cls).__setup__()
+        cls._order.insert(0, ('country', 'ASC'))
+        cls._order.insert(0, ('zip', 'ASC'))

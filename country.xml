@@ -46,6 +46,39 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">subdivision_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="zip_view_form">
+            <field name="model">country.zip</field>
+            <field name="type">form</field>
+            <field name="name">zip_form</field>
+        </record>
+        <record model="ir.ui.view" id="zip_view_list">
+            <field name="model">country.zip</field>
+            <field name="type">tree</field>
+            <field name="name">zip_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_zip_form">
+            <field name="name">Zip</field>
+            <field name="res_model">country.zip</field>
+            <field name="domain">[('country', 'in', Eval('active_ids'))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_zip_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="zip_view_list"/>
+            <field name="act_window" ref="act_zip_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_zip_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="zip_view_form"/>
+            <field name="act_window" ref="act_zip_form"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_zip_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">country.country,-1</field>
+            <field name="action" ref="act_zip_form"/>
+        </record>
+
     </data>
 
     <!--
@@ -36338,6 +36371,22 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_country_subdivision_admin">
             <field name="model" search="[('model', '=', 'country.subdivision')]"/>
+            <field name="group" ref="res.group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.access" id="access_country_zip">
+            <field name="model" search="[('model', '=', 'country.zip')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_country_zip_admin">
+            <field name="model" search="[('model', '=', 'country.zip')]"/>
             <field name="group" ref="res.group_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

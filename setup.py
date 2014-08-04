@@ -65,6 +65,7 @@ setup(name=name,
         'trytond.modules.country': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
+    scripts=['scripts/trytond_import_zip'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -90,6 +91,9 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    extras_require={
+        'GeoNames': [get_require_version('proteus')],
+        },
     zip_safe=False,
     entry_points="""
     [trytond.modules]

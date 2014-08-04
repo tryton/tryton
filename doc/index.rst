@@ -20,3 +20,9 @@ Subdivision
 
 A subdivision is defined by a name, a code and a type (e.g, Capital
 City, Province, Emirate, etc)
+
+
+Zip
+***
+
+A zip links a zip code of a country to a city.

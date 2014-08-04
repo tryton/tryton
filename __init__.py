@@ -9,4 +9,5 @@ def register():
     Pool.register(
         Country,
         Subdivision,
+        Zip,
         module='country', type_='model')
