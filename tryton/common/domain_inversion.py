@@ -50,18 +50,21 @@ def is_leaf(expression):
         and expression[1] in OPERATORS)
 
 
+def constrained_leaf(part, boolop=operator.and_):
+    field, operand, value = part[:3]
+    if operand == '=' and boolop == operator.and_:
+        # We should consider that other domain inversion will set a correct
+        # value to this field
+        return True
+    return False
+
+
 def eval_leaf(part, context, boolop=operator.and_):
     field, operand, value = part[:3]
     if '.' in field:
         # In the case where the leaf concerns a m2o then having a value in the
         # evaluation context is deemed suffisant
         return bool(context.get(field.split('.')[0]))
-    if (operand == '='
-            and context.get(field) is None
-            and boolop == operator.and_):
-        # We should consider that other domain inversion will set a correct
-        # value to this field
-        return True
     context_field = context.get(field)
     if isinstance(context_field, datetime.date) and not value:
         if isinstance(context_field, datetime.datetime):
@@ -247,7 +250,8 @@ class And(object):
                 field = part[0]
                 if (field not in context
                         or field in context
-                        and eval_leaf(part, context, operator.and_)):
+                        and (eval_leaf(part, context, operator.and_)
+                            or constrained_leaf(part, operator.and_))):
                     result.append(True)
                 else:
                     return False
@@ -290,7 +294,8 @@ class Or(And):
                 field = part[0]
                 field = self.base(field)
                 if (field in context
-                        and eval_leaf(part, context, operator.or_)):
+                        and (eval_leaf(part, context, operator.or_)
+                                or constrained_leaf(part, operator.or_))):
                     return True
                 elif (field in context
                         and not eval_leaf(part, context, operator.or_)):
@@ -383,7 +388,7 @@ def test_andor_inversion():
 def test_andand_inversion():
     domain = [[['x', '=', 4], ['y', '>', 6]], ['z', '=', 3]]
     assert domain_inversion(domain, 'z') == [['z', '=', 3]]
-    assert domain_inversion(domain, 'z', {'x': 5}) is False
+    assert domain_inversion(domain, 'z', {'x': 5}) == [['z', '=', 3]]
     assert domain_inversion(domain, 'z', {'y': 5}) is False
     assert domain_inversion(domain, 'z', {'x': 4, 'y': 7}) == [['z', '=', 3]]
 
