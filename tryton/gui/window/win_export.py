@@ -159,7 +159,6 @@ class WinExport(NoModal):
 
         self.ids = ids
         self.model = model
-        self.fields_data = {}
         self.context = context
 
         self.view1 = gtk.TreeView()
@@ -221,23 +220,33 @@ class WinExport(NoModal):
 
     def model_populate(self, fields, parent_node=None, prefix_field='',
             prefix_name=''):
-        fields_order = fields.keys()
-        fields_order.sort(lambda x, y: -cmp(fields[x].get('string', ''),
-            fields[y].get('string', '')))
-        for field in fields_order:
-            self.fields_data[prefix_field + field] = fields[field]
-            name = fields[field]['string'] or field
-            if prefix_field:
-                self.fields_data[prefix_field + field]['string'] = '%s%s' % \
-                    (prefix_name, self.fields_data[prefix_field +
-                        field]['string'])
-            node = self.model1.insert(parent_node, 0, [name, prefix_field +
-                field, (fields[field].get('required', False) and
-                    common.COLORS['required']) or 'white'])
-            self.fields[prefix_field + field] = (name,
-                    fields[field].get('relation'))
-            if fields[field].get('relation'):
-                self.model1.insert(node, 0, [None, '', 'white'])
+        key = lambda (n, f): f.get('string') or n
+        for name, field in sorted(fields.items(), key=key, reverse=True):
+
+            string_ = field['string'] or name
+
+            items = [(name, field, string_)]
+            if field['type'] == 'selection':
+                items.insert(0, ('%s.translated' % name, field,
+                        _('%s (string)') % string_))
+
+            for name, field, string_ in items:
+                path = prefix_field + name
+                color = 'white'
+                if field.get('required'):
+                    color = common.COLORS['required']
+                long_string = string_
+                if prefix_field:
+                    long_string = prefix_name + string_
+                node = self.model1.insert(parent_node, 0,
+                    [string_, path, color])
+
+                self.fields[path] = (string_, long_string,
+                    field.get('relation'))
+                # Insert relation only to real field
+                if '.' not in name:
+                    if field.get('relation'):
+                        self.model1.insert(node, 0, [None, '', 'white'])
 
     def _get_fields(self, model):
         try:
@@ -250,10 +259,9 @@ class WinExport(NoModal):
         child = self.model1.iter_children(iter)
         if self.model1.get_value(child, 0) is None:
             prefix_field = self.model1.get_value(iter, 1)
-            _, model = self.fields[prefix_field]
-            name = self.fields_data[prefix_field]['string']
-            self.model_populate(self._get_fields(model), iter, prefix_field +
-                    '/', name + '/')
+            string_, long_string, relation = self.fields[prefix_field]
+            self.model_populate(self._get_fields(relation), iter,
+                prefix_field + '/', string_ + '/')
             self.model1.remove(child)
 
     def sig_sel(self, widget=None):
@@ -261,12 +269,12 @@ class WinExport(NoModal):
         sel.selected_foreach(self._sig_sel_add)
 
     def _sig_sel_add(self, store, path, iter):
-        relation = self.fields[store.get_value(iter, 1)][1]
+        name = store.get_value(iter, 1)
+        string_, long_string, relation = self.fields[name]
         if relation:
             return
         num = self.model2.append()
-        name = self.fields_data[store.get_value(iter, 1)]['string']
-        self.model2.set(num, 0, name, 1, store.get_value(iter, 1))
+        self.model2.set(num, 0, long_string, 1, name)
 
     def sig_unsel(self, widget=None):
         store, paths = self.view2.get_selection().get_selected_rows()
@@ -352,11 +360,11 @@ class WinExport(NoModal):
 
     def sel_predef(self, widget, path, column):
         self.model2.clear()
-        for field in self.predef_model[path[0]][1]:
-            if field not in self.fields_data:
+        for name in self.predef_model[path[0]][1]:
+            if name not in self.fields:
                 iter = self.model1.get_iter_first()
                 prefix = ''
-                for parent in field.split('/')[:-1]:
+                for parent in name.split('/')[:-1]:
                     while iter:
                         if self.model1.get_value(iter, 1) == \
                                 (prefix + parent):
@@ -368,9 +376,10 @@ class WinExport(NoModal):
                         else:
                             iter = self.model1.iter_next(iter)
 
-            if field not in self.fields_data:
+            if name not in self.fields:
                 continue
-            self.model2.append((self.fields_data[field]['string'], field))
+            long_string = self.fields[name][1]
+            self.model2.append((long_string, name))
 
     def destroy(self):
         super(WinExport, self).destroy()

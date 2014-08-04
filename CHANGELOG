@@ -1,3 +1,4 @@
+* Add export of selection string
 * Load plugins from local user directory
 * Manage tree_state attribute
 * Add simple tree_state support on form view
