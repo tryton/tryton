@@ -5,6 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond import backend
+from trytond.pool import Pool
 
 __all__ = ['Address']
 
@@ -65,6 +66,42 @@ class Address(ModelSQL, ModelView):
     @staticmethod
     def default_active():
         return True
+
+    _autocomplete_limit = 100
+
+    def _autocomplete_domain(self):
+        domain = []
+        if self.country:
+            domain.append(('country', '=', self.country.id))
+        if self.subdivision:
+            domain.append(['OR',
+                    ('subdivision', '=', self.subdivision.id),
+                    ('subdivision', '=', None),
+                    ])
+        return domain
+
+    def _autocomplete_search(self, domain, name):
+        pool = Pool()
+        Zip = pool.get('country.zip')
+        if domain:
+            records = Zip.search(domain, limit=self._autocomplete_limit)
+            if len(records) < self._autocomplete_limit:
+                return sorted({getattr(z, 'name') for z in records})
+        return []
+
+    @fields.depends('city', 'country', 'subdivision')
+    def autocomplete_zip(self):
+        domain = self._autocomplete_domain()
+        if self.city:
+            domain.append(('city', 'ilike', '%%%s%%' % self.city))
+        return self._autocomplete_search(domain, 'zip')
+
+    @fields.depends('zip', 'country', 'subdivision')
+    def autocomplete_city(self):
+        domain = self._autocomplete_domain()
+        if self.zip:
+            domain.append(('zip', 'ilike', '%s%%' % self.zip))
+        return self._autocomplete_search(domain, 'city')
 
     def get_full_address(self, name):
         full_address = ''
