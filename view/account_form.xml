@@ -28,6 +28,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="second_currency"/>
             <field name="taxes" colspan="4"/>
         </page>
+        <page string="Children" id="children">
+            <field name="childs" colspan="4"/>
+        </page>
         <page string="Deferrals" id="deferrals">
             <field name="deferrals"/>
         </page>
