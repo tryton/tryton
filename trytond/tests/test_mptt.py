@@ -3,6 +3,7 @@
 #this repository contains the full copyright notices and license terms.
 import sys
 import unittest
+from mock import patch
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
         install_module
 from trytond.transaction import Transaction
@@ -162,6 +163,23 @@ class MPTTTestCase(unittest.TestCase):
             self.CheckTree()
 
             transaction.cursor.rollback()
+
+    def test0060_update_only_if_parent_is_modified(self):
+        'The left and right fields must only be updated if parent is modified'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            records = self.mptt.search([
+                    ('parent', '=', None),
+                    ])
+            with patch.object(self.mptt, '_update_tree') as mock:
+                self.mptt.write(records, {'name': 'Parent Records'})
+                self.assertFalse(mock.called)
+
+                first_parent, second_parent = records[:2]
+                self.mptt.write(list(first_parent.childs), {
+                        'parent': second_parent.id,
+                        })
+
+                self.assertTrue(mock.called)
 
 
 def suite():

@@ -811,9 +811,9 @@ class ModelSQL(ModelStorage):
                 if hasattr(field, 'set'):
                     fields_to_set.setdefault(fname, []).extend((ids, value))
 
-            field_names = cls._fields.keys()
+            field_names = values.keys()
             cls._update_mptt(field_names, [ids] * len(field_names), values)
-            all_field_names |= set(values.keys())
+            all_field_names |= set(field_names)
 
         for fname, fargs in fields_to_set.iteritems():
             field = cls._fields[fname]
