@@ -70,7 +70,8 @@ class Production(Workflow, ModelSQL, ModelView):
             ('output_products', '=', Eval('product', 0)),
             ],
         states={
-            'readonly': ~Eval('state').in_(['request', 'draft']),
+            'readonly': (~Eval('state').in_(['request', 'draft'])
+                | ~Eval('warehouse', 0) | ~Eval('location', 0)),
             'invisible': ~Eval('product'),
             },
         depends=['product'])
@@ -106,7 +107,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (~Eval('state').in_(['request', 'draft', 'waiting'])
-                | ~Eval('location')),
+                | ~Eval('warehouse') | ~Eval('location')),
             },
         depends=['warehouse', 'location'])
     outputs = fields.One2Many('stock.move', 'production_output', 'Outputs',
@@ -116,7 +117,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (Eval('state').in_(['done', 'cancel'])
-                | ~Eval('location')),
+                | ~Eval('warehouse') | ~Eval('location')),
             },
         depends=['warehouse', 'location'])
     state = fields.Selection([
