@@ -1389,7 +1389,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         self._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
-                ('received', 'draf'),
+                ('received', 'draft'),
                 ('draft', 'cancel'),
                 ('received', 'cancel'),
                 ('cancel', 'draft'),
