@@ -1015,7 +1015,7 @@ class ModelStorage(Model):
                     def raise_user_error(value):
                         error_args = cls._get_error_args(field_name)
                         error_args['digits'] = digits[1]
-                        error_args['value'] = value
+                        error_args['value'] = repr(value)
                         cls.raise_user_error('digits_validation_record',
                             error_args=error_args)
                     if value is None:
