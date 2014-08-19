@@ -706,19 +706,14 @@ class O2MField(Field):
     def validate(self, record, softvalidation=False):
         if self.attrs.get('readonly'):
             return True
-        res = True
+        test = True
         for record2 in record.value.get(self.name, []):
             if not record2.loaded and record2.id >= 0:
                 continue
-            if not record2.validate(softvalidation=softvalidation):
-                if not record2.modified:
-                    record.value[self.name].remove(record2)
-                else:
-                    res = False
-        if not super(O2MField, self).validate(record, softvalidation):
-            res = False
-        self.get_state_attrs(record)['valid'] = res
-        return res
+            test &= record2.validate(softvalidation=softvalidation)
+        test &= super(O2MField, self).validate(record, softvalidation)
+        self.get_state_attrs(record)['valid'] = test
+        return test
 
     def state_set(self, record, states=('readonly', 'required', 'invisible')):
         self._set_default_value(record)
