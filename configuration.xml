@@ -23,5 +23,24 @@ this repository contains the full copyright notices and license terms. -->
             action="act_configuration_form"
             id="menuitem_account_configuration"
             sequence="0" icon="tryton-list"/>
+
+        <record model="ir.model.access" id="access_account_configuration">
+            <field name="model"
+                search="[('model', '=', 'account.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access"
+            id="access_account_configuration_account_admin">
+            <field name="model"
+                search="[('model', '=', 'account.configuration')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>
