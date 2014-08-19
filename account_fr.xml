@@ -2275,21 +2275,21 @@
             <field name="name">Matériel industriel</field>
             <field name="code">2154</field>
             <field name="type" ref="installations_techniques_materiel_outillage"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="215"/>
         </record>
         <record model="account.account.template" id="2155">
             <field name="name">Outillage industriel</field>
             <field name="code">2155</field>
             <field name="type" ref="installations_techniques_materiel_outillage"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="215"/>
         </record>
         <record model="account.account.template" id="2157">
             <field name="name">Agencements et aménagements du matériel et outillage industriels</field>
             <field name="code">2157</field>
             <field name="type" ref="installations_techniques_materiel_outillage"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="215"/>
         </record>
         <record model="account.account.template" id="218">
@@ -2302,42 +2302,42 @@
             <field name="name">Installations générales agencements aménagements divers</field>
             <field name="code">2181</field>
             <field name="type" ref="immobilisations_corporelles_autres"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="218"/>
         </record>
         <record model="account.account.template" id="2182">
             <field name="name">Matériel de transport</field>
             <field name="code">2182</field>
             <field name="type" ref="immobilisations_corporelles_autres"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="218"/>
         </record>
         <record model="account.account.template" id="2183">
             <field name="name">Matériel de bureau et matériel informatique</field>
             <field name="code">2183</field>
             <field name="type" ref="immobilisations_corporelles_autres"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="218"/>
         </record>
         <record model="account.account.template" id="2184">
             <field name="name">Mobilier</field>
             <field name="code">2184</field>
             <field name="type" ref="immobilisations_corporelles_autres"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="218"/>
         </record>
         <record model="account.account.template" id="2185">
             <field name="name">Cheptel</field>
             <field name="code">2185</field>
             <field name="type" ref="immobilisations_corporelles_autres"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="218"/>
         </record>
         <record model="account.account.template" id="2186">
             <field name="name">Emballages récupérables</field>
             <field name="code">2186</field>
             <field name="type" ref="immobilisations_corporelles_autres"/>
-            <field name="kind">other</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="218"/>
         </record>
         <record model="account.account.template" id="22">
