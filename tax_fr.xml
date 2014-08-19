@@ -1231,6 +1231,118 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.template"
+            id="tva_achat_immobilisations_taux_normal">
+            <field name="name">T.V.A. Achat Immobilisations Taux Normal</field>
+            <field name="description">T.V.A. Taux Normal</field>
+            <field name="group" ref="group_tva_achat"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="None"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_immobilisations_20">
+            <field name="name">T.V.A. Achat Immobilisations 20%</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_achat_immobilisations_taux_normal"/>
+            <field name="start_date">2014-01-01</field>
+            <field name="rate" eval="Decimal('.20')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44562"/>
+            <field name="credit_note_account" ref="44562"/>
+            <field name="invoice_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_immobilisations_19_6">
+            <field name="name">T.V.A. Achat Immobilisations 19,6%</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_achat_immobilisations_taux_normal"/>
+            <field name="end_date">2013-12-31</field>
+            <field name="rate" eval="Decimal('.196')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44562"/>
+            <field name="credit_note_account" ref="44562"/>
+            <field name="invoice_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+	<record model="account.tax.template"
+	    id="tva_achat_immobilisations_taux_intermediaire">
+            <field name="name">T.V.A. Achat Immobilisations Taux Intermédiaire</field>
+            <field name="description">T.V.A. Taux Intermédiaire</field>
+            <field name="group" ref="group_tva_achat"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="invoice_base_code" eval="None"/>
+            <field name="invoice_tax_code" eval="None"/>
+            <field name="credit_note_base_code" eval="None"/>
+            <field name="credit_note_base_sign" eval="None"/>
+            <field name="credit_note_tax_code" eval="None"/>
+            <field name="credit_note_tax_sign" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_immobilisations_10">
+            <field name="name">T.V.A. Achat 10%</field>
+            <field name="description">T.V.A. 10%</field>
+	    <field name="parent"
+	        ref="tva_achat_immobilisations_taux_intermediaire"/>
+            <field name="start_date">2014-01-01</field>
+            <field name="rate" eval="Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44562"/>
+            <field name="credit_note_account" ref="44562"/>
+            <field name="invoice_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_immobilisations_7">
+            <field name="name">T.V.A. Achat Immobilisations 7%</field>
+            <field name="description">T.V.A. 7%</field>
+	    <field name="parent"
+	        ref="tva_achat_immobilisations_taux_intermediaire"/>
+            <field name="end_date">2013-12-31</field>
+            <field name="rate" eval="Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44562"/>
+            <field name="credit_note_account" ref="44562"/>
+            <field name="invoice_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_immobilisations_5_5">
+            <field name="name">T.V.A. Achat Immobilisations 5,5%</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="group" ref="group_tva_achat"/>
+            <field name="rate" eval="Decimal('.055')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44562"/>
+            <field name="credit_note_account" ref="44562"/>
+            <field name="invoice_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_code" ref="tax_code_0703"/>
+            <field name="credit_note_tax_sign" eval="Decimal('-1')"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template"
             id="tva_achat_intracommunautaire_taux_normal">
             <field name="name">T.V.A. Achat Intracommunautaire Taux Normal</field>
             <field name="description">T.V.A. Taux Normal</field>
