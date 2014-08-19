@@ -7467,6 +7467,34 @@
             <field name="kind">expense</field>
             <field name="parent" ref="64"/>
         </record>
+        <record model="account.account.template" id="6461">
+            <field name="name">Cotisations de l'exploitant à l'URSSAF</field>
+            <field name="code">6461</field>
+            <field name="type" ref="charges_sociales"/>
+            <field name="kind">expense</field>
+            <field name="parent" ref="646"/>
+        </record>
+        <record model="account.account.template" id="6462">
+            <field name="name">Cotisations de l'exploitant aux mutuelles</field>
+            <field name="code">6462</field>
+            <field name="type" ref="charges_sociales"/>
+            <field name="kind">expense</field>
+            <field name="parent" ref="646"/>
+        </record>
+        <record model="account.account.template" id="6463">
+            <field name="name">Cotisations de l'exploitant aux caisses de retraites</field>
+            <field name="code">6463</field>
+            <field name="type" ref="charges_sociales"/>
+            <field name="kind">expense</field>
+            <field name="parent" ref="646"/>
+        </record>
+        <record model="account.account.template" id="6468">
+            <field name="name">Cotisations de l'exploitant aux autres organismes sociaux</field>
+            <field name="code">6468</field>
+            <field name="type" ref="charges_sociales"/>
+            <field name="kind">expense</field>
+            <field name="parent" ref="646"/>
+        </record>
         <record model="account.account.template" id="647">
             <field name="name">Autres charges sociales</field>
             <field name="code">647</field>
