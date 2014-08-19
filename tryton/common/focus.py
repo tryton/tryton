@@ -1,5 +1,8 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from functools import cmp_to_key
+
+import gtk
 
 
 def get_invisible_ancestor(widget):
@@ -21,6 +24,23 @@ def find_focused_child(widget):
             return focused_widget
 
 
+def tab_compare(a, b):
+    text_direction = gtk.widget_get_default_direction()
+    y1 = a.allocation.y + a.allocation.height / 2.
+    y2 = b.allocation.y + b.allocation.height / 2.
+
+    if y1 == y2:
+        x1 = a.allocation.x + a.allocation.width / 2.
+        x2 = b.allocation.x + b.allocation.width / 2.
+
+        if text_direction == gtk.TEXT_DIR_RTL:
+            return (x2 > x1) - (x2 < x1)
+        else:
+            return (x1 > x2) - (x1 < x2)
+    else:
+        return (y1 > y2) - (y1 < y2)
+
+
 def find_focusable_child(widget):
     if not widget.get_visible():
         return None
@@ -33,7 +53,7 @@ def find_focusable_child(widget):
     # search into all its children widgets
     widgets = (focus_chain
         if focus_chain is not None
-        else widget.get_children())
+        else sorted(widget.get_children(), key=cmp_to_key(tab_compare)))
     for child in widgets:
         focusable = find_focusable_child(child)
         if focusable:
