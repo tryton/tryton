@@ -8,7 +8,7 @@ from collections import defaultdict
 
 from . import View
 from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
-    next_focus_widget)
+    next_focus_widget, find_focusable_child)
 from tryton.common import Tooltips, node_attributes, ICONFACTORY
 from tryton.common.button import Button
 from tryton.config import CONFIG
@@ -122,6 +122,7 @@ class ViewForm(View):
         vbox.pack_start(viewport, expand=True, fill=True)
 
         self.widget = vbox
+        self._viewport = vp
 
     def parse(self, node, container=None):
         if not container:
@@ -483,6 +484,10 @@ class ViewForm(View):
                     notebook.set_current_page(0)
             if self.attributes.get('cursor') in self.widgets:
                 focus_widget = self.widgets[self.attributes['cursor']][0]
+            else:
+                child = find_focusable_child(self._viewport)
+                if child:
+                    child.grab_focus()
         record = self.screen.current_record
         position = reduce(lambda x, y: x + len(y), self.widgets, 0)
         if record:

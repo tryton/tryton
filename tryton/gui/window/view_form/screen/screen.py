@@ -373,7 +373,8 @@ class Screen(SignalEvent):
                     break
         self.screen_container.set(self.current_view.widget)
         self.display()
-        self.set_cursor()
+        # Postpone set of the cursor to ensure widgets are allocated
+        gobject.idle_add(self.set_cursor)
 
     def load_view_to_load(self):
         if len(self.view_to_load):
@@ -444,7 +445,8 @@ class Screen(SignalEvent):
             previous_view.set_default_date(record, selected_date)
         self.current_record = record
         self.display()
-        self.set_cursor(new=True)
+        # Postpone set of the cursor to ensure widgets are allocated
+        gobject.idle_add(self.set_cursor, True)
         return self.current_record
 
     def new_model_position(self):
