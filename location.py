@@ -8,6 +8,7 @@ from trytond import backend
 from trytond.pyson import Not, Bool, Eval, Equal, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import grouped_slice
 
 __all__ = ['Location', 'Party', 'ProductsByLocationsStart',
     'ProductsByLocations']
@@ -187,14 +188,17 @@ class Location(ModelSQL, ModelView):
             if not Transaction().context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
 
-        location_ids = [l.id for l in locations]
         product_id = Transaction().context['product']
-        with Transaction().set_context(context):
-            pbl = Product.products_by_location(location_ids=location_ids,
-                product_ids=[product_id], with_childs=True)
+        pbl = {}
+        for sub_locations in grouped_slice(locations):
+            location_ids = [l.id for l in sub_locations]
+            with Transaction().set_context(context):
+                pbl.update(Product.products_by_location(
+                        location_ids=location_ids, product_ids=[product_id],
+                        with_childs=True))
 
-        return dict((loc, pbl.get((loc, product_id), 0))
-            for loc in location_ids)
+        return dict((loc.id, pbl.get((loc.id, product_id), 0))
+            for loc in locations)
 
     @classmethod
     def get_cost_value(cls, locations, name):
