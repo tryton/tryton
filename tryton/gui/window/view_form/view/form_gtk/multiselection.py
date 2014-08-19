@@ -87,7 +87,8 @@ class MultiSelection(WidgetInterface, SelectionMixin):
         group = field.get_client(record)
         for element in group:
             if (element not in group.record_removed
-                    and element not in group.record_deleted):
+                    and element not in group.record_deleted
+                    and element.id in id2path):
                 selection.select_path(id2path[element.id])
 
     def __button_press(self, treeview, event):
