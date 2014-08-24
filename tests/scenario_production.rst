@@ -58,14 +58,6 @@ Reload the context::
     >>> User = Model.get('res.user')
     >>> config._context = User.get_preferences(True, config.context)
 
-Configuration production location::
-
-    >>> Location = Model.get('stock.location')
-    >>> warehouse, = Location.find([('code', '=', 'WH')])
-    >>> production_location, = Location.find([('code', '=', 'PROD')])
-    >>> warehouse.production_location = production_location
-    >>> warehouse.save()
-
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -138,6 +130,7 @@ Create an Inventory::
 
     >>> Inventory = Model.get('stock.inventory')
     >>> InventoryLine = Model.get('stock.inventory.line')
+    >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
     ...         ('code', '=', 'STO'),
     ...         ])
