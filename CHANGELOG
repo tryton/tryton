@@ -1,3 +1,4 @@
+* Use a configuration field for logging
 * Add translated descriptor for Selection field
 * Add tree_state attribute on tree view
 * Allow to sync XML data

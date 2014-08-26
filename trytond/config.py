@@ -61,7 +61,7 @@ class ConfigManager(object):
             'verbose': False,
             'debug_mode': False,
             'pidfile': None,
-            'logfile': None,
+            'logconf': None,
             'privatekey': '/etc/ssl/trytond/server.key',
             'certificate': '/etc/ssl/trytond/server.pem',
             'smtp_server': 'localhost',
@@ -89,10 +89,10 @@ class ConfigManager(object):
     def update_cmdline(self, cmdline_options):
         self.options.update(cmdline_options)
 
-        # Verify that we want to log or not,
+        # Verify that logging configuration is defined in an external file,
         # if not the output will go to stdout
-        if self.options['logfile'] in ('None', 'False'):
-            self.options['logfile'] = False
+        if self.options['logconf'] in ('None', 'False'):
+            self.options['logconf'] = False
         # the same for the pidfile
         if self.options['pidfile'] in ('None', 'False'):
             self.options['pidfile'] = False

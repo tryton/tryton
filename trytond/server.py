@@ -4,6 +4,7 @@
 %prog [options]
 """
 import logging
+import logging.config
 import logging.handlers
 import sys
 import os
@@ -22,45 +23,21 @@ from .transaction import Transaction
 class TrytonServer(object):
 
     def __init__(self, options):
-        format = '[%(asctime)s] %(levelname)s:%(name)s:%(message)s'
-        datefmt = '%a %b %d %H:%M:%S %Y'
-        logging.basicConfig(level=logging.INFO, format=format,
-                datefmt=datefmt)
 
         CONFIG.update_etc(options['configfile'])
         CONFIG.update_cmdline(options)
 
-        if CONFIG['logfile']:
-            logf = CONFIG['logfile']
-            # test if the directories exist, else create them
-            try:
-                diff = 0
-                if os.path.isfile(logf):
-                    diff = int(time.time()) - int(os.stat(logf)[-1])
-                handler = logging.handlers.TimedRotatingFileHandler(
-                    logf, 'D', 1, 30)
-                handler.rolloverAt -= diff
-            except Exception, exception:
-                sys.stderr.write(
-                    "ERROR: couldn't create the logfile directory:"
-                    + str(exception))
-            else:
-                formatter = logging.Formatter(format, datefmt)
-                # tell the handler to use this format
-                handler.setFormatter(formatter)
+        if CONFIG['logconf']:
+            logging.config.fileConfig(CONFIG['logconf'])
+            logging.getLogger('server').info('using %s as logging '
+                'configuration file', CONFIG['logconf'])
+        else:
+            logformat = '[%(asctime)s] %(levelname)s:%(name)s:%(message)s'
+            datefmt = '%a %b %d %H:%M:%S %Y'
+            logging.basicConfig(level=logging.INFO, format=logformat,
+                datefmt=datefmt)
 
-                # add the handler to the root logger
-                logging.getLogger().addHandler(handler)
-                logging.getLogger().setLevel(logging.INFO)
-        elif os.name != 'nt':
-            reverse = '\x1b[7m'
-            reset = '\x1b[0m'
-            # reverse color for error and critical messages
-            for level in logging.ERROR, logging.CRITICAL:
-                msg = reverse + logging.getLevelName(level) + reset
-                logging.addLevelName(level, msg)
-
-        self.logger = logging.getLogger("server")
+        self.logger = logging.getLogger('server')
 
         if CONFIG.configfile:
             self.logger.info('using %s as configuration file'
