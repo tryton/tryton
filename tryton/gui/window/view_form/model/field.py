@@ -40,6 +40,7 @@ class Field(object):
         record.on_change([self.name])
         record.on_change_with([self.name])
         record.autocomplete_with(self.name)
+        record.set_field_context()
 
     def domains_get(self, record):
         screen_domain = domain_inversion(record.group.domain4inversion,
@@ -444,7 +445,6 @@ class O2MField(Field):
     def __init__(self, attrs):
         super(O2MField, self).__init__(attrs)
         self.in_on_change = False
-        self.context = {}
 
     def sig_changed(self, record):
         if not self.in_on_change:
@@ -479,11 +479,12 @@ class O2MField(Field):
         from group import Group
         parent_name = self.attrs.get('relation_field', '')
         fields = fields or {}
+        context = record.expr_eval(self.attrs.get('context', {}))
         group = Group(self.attrs['relation'], fields,
                 parent=record,
                 parent_name=parent_name,
                 child_name=self.name,
-                context=self.context,
+                context=context,
                 parent_datetime_field=self.attrs.get('datetime_field'))
         if not fields and record.model_name == self.attrs['relation']:
             group.fields = record.group.fields

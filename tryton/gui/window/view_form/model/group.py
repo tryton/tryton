@@ -243,7 +243,8 @@ class Group(SignalEvent, list):
         self.current_idx = 0
         return True
 
-    def _get_context(self):
+    @property
+    def context(self):
         ctx = self._context.copy()
         if self.parent:
             ctx.update(self.parent.context_get())
@@ -256,7 +257,9 @@ class Group(SignalEvent, list):
                 )[self.parent_datetime_field]
         return ctx
 
-    context = property(_get_context)
+    @context.setter
+    def context(self, value):
+        self._context = value.copy()
 
     def add(self, record, position=-1, signal=True):
         if record.group is not self:

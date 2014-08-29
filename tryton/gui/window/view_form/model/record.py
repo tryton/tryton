@@ -600,6 +600,16 @@ class Record(SignalEvent):
             res = []
         self.autocompletion[fieldname] = res
 
+    def set_field_context(self):
+        from .group import Group
+        for name, field in self.group.fields.iteritems():
+            value = self.value.get(name)
+            if not isinstance(value, Group):
+                continue
+            context = field.attrs.get('context')
+            if context:
+                value.context = self.expr_eval(context)
+
     def get_attachment_count(self, reload=False):
         if self.id < 0:
             return 0
