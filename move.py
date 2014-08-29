@@ -109,24 +109,7 @@ class Move:
     @ModelView.button
     @Workflow.transition('cancel')
     def cancel(cls, moves):
-        pool = Pool()
-        Date = pool.get('ir.date')
-
-        today = Date.today()
-        for move in moves:
-            move.effective_date = today
-            if (move.from_location.type in ('supplier', 'production')
-                    and move.to_location.type == 'storage'
-                    and move.product.cost_price_method == 'fifo'):
-                move._update_product_cost_price('out')
-            elif (move.to_location.type == 'supplier'
-                    and move.from_location.type == 'storage'
-                    and move.product.cost_price_method == 'fifo'):
-                move._update_product_cost_price('in')
-            move.effective_date = None
-            move.save()
-
-        super(Move, cls).cancel(moves)
+        pass
 
     @classmethod
     def delete(cls, moves):
