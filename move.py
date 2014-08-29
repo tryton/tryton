@@ -616,17 +616,21 @@ class Move(Workflow, ModelSQL, ModelView):
         cls.check_origin(moves)
         for move in moves:
             move.set_effective_date()
-            if (move.from_location.type in ('supplier', 'production')
-                    and move.to_location.type == 'storage'
-                    and move.product.cost_price_method == 'average'):
-                move._update_product_cost_price('in')
-            elif (move.to_location.type == 'supplier'
-                    and move.from_location.type == 'storage'
-                    and move.product.cost_price_method == 'average'):
-                move._update_product_cost_price('out')
-            if not move.cost_price:
-                move.cost_price = move.product.cost_price
+            move._do()
+            move.state = 'done'
             move.save()
+
+    def _do(self):
+        if (self.from_location.type in ('supplier', 'production')
+                and self.to_location.type == 'storage'
+                and self.product.cost_price_method == 'average'):
+            self._update_product_cost_price('in')
+        elif (self.to_location.type == 'supplier'
+                and self.from_location.type == 'storage'
+                and self.product.cost_price_method == 'average'):
+            self._update_product_cost_price('out')
+        if not self.cost_price:
+            self.cost_price = self.product.cost_price
 
     @classmethod
     @ModelView.button

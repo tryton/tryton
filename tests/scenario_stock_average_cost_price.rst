@@ -125,3 +125,42 @@ Check Cost Price Average is 150::
     >>> product.reload()
     >>> product.template.cost_price
     Decimal('150.0000')
+
+Add twice 1 more unit @ 200::
+
+    >>> incoming_moves = []
+    >>> incoming_move = StockMove()
+    >>> incoming_move.product = product
+    >>> incoming_move.uom = unit
+    >>> incoming_move.quantity = 1
+    >>> incoming_move.from_location = supplier_loc
+    >>> incoming_move.to_location = storage_loc
+    >>> incoming_move.planned_date = today
+    >>> incoming_move.effective_date = today
+    >>> incoming_move.company = company
+    >>> incoming_move.unit_price = Decimal('200')
+    >>> incoming_move.currency = currency
+    >>> incoming_move.save()
+    >>> incoming_moves.append(incoming_move)
+
+    >>> incoming_move = StockMove()
+    >>> incoming_move.product = product
+    >>> incoming_move.uom = unit
+    >>> incoming_move.quantity = 1
+    >>> incoming_move.from_location = supplier_loc
+    >>> incoming_move.to_location = storage_loc
+    >>> incoming_move.planned_date = today
+    >>> incoming_move.effective_date = today
+    >>> incoming_move.company = company
+    >>> incoming_move.unit_price = Decimal('200')
+    >>> incoming_move.currency = currency
+    >>> incoming_move.save()
+    >>> incoming_moves.append(incoming_move)
+
+    >>> StockMove.do([m.id for m in incoming_moves], config.context)
+
+Check Cost Price Average is 125::
+
+    >>> product.reload()
+    >>> product.template.cost_price
+    Decimal('175.0000')
