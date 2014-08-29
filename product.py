@@ -9,6 +9,8 @@ from trytond.pyson import Eval, Get
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
+from trytond.modules.account_product import MissingFunction
+
 __all__ = ['Category', 'Template', 'UpdateCostPriceAsk',
     'UpdateCostPriceShowMove', 'UpdateCostPrice']
 __metaclass__ = PoolMeta
@@ -67,16 +69,20 @@ class Category:
                     | Eval('account_parent')),
                 },
             depends=['account_parent']))
-    account_stock_used = fields.Function(fields.Many2One('account.account',
-        'Account Stock Used'), 'get_account')
-    account_stock_supplier_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Supplier Used'), 'get_account')
-    account_stock_customer_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Customer Used'), 'get_account')
-    account_stock_production_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Production Used'), 'get_account')
-    account_stock_lost_found_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Lost and Found'), 'get_account')
+    account_stock_used = MissingFunction(fields.Many2One('account.account',
+        'Account Stock Used'), 'missing_account', 'get_account')
+    account_stock_supplier_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Supplier Used'),
+        'missing_account', 'get_account')
+    account_stock_customer_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Customer Used'),
+        'missing_account', 'get_account')
+    account_stock_production_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Production Used'),
+        'missing_account', 'get_account')
+    account_stock_lost_found_used = MissingFunction(fields.Many2One(
+        'account.account', 'Account Stock Lost and Found'),
+        'missing_account', 'get_account')
 
 
 class Template:
@@ -147,16 +153,20 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_stock_used = fields.Function(fields.Many2One('account.account',
-        'Account Stock Used'), 'get_account')
-    account_stock_supplier_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Supplier Used'), 'get_account')
-    account_stock_customer_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Customer Used'), 'get_account')
-    account_stock_production_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Production Used'), 'get_account')
-    account_stock_lost_found_used = fields.Function(fields.Many2One(
-        'account.account', 'Account Stock Lost and Found'), 'get_account')
+    account_stock_used = MissingFunction(fields.Many2One('account.account',
+        'Account Stock Used'), 'missing_account', 'get_account')
+    account_stock_supplier_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Supplier Used'),
+        'missing_account', 'get_account')
+    account_stock_customer_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Customer Used'),
+        'missing_account', 'get_account')
+    account_stock_production_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Production Used'),
+        'missing_account', 'get_account')
+    account_stock_lost_found_used = MissingFunction(fields.Many2One(
+            'account.account', 'Account Stock Lost and Found'),
+        'missing_account', 'get_account')
 
     @classmethod
     def __setup__(cls):
