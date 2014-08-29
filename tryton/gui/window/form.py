@@ -346,6 +346,9 @@ class Form(SignalEvent, TabContent):
             'green')
 
     def sig_save(self, widget=None):
+        if widget:
+            # Called from button so we must save the tree state
+            self.screen.save_tree_state()
         if not common.MODELACCESS[self.model]['write']:
             return
         if self.screen.save_current():
@@ -370,11 +373,13 @@ class Form(SignalEvent, TabContent):
         self.activate_save()
 
     def sig_reload(self, test_modified=True):
-        if test_modified and not self.modified_save():
+        if test_modified:
+            if not self.modified_save():
                 return False
+        else:
+            self.screen.save_tree_state(store=False)
         self.screen.cancel_current()
         set_cursor = False
-        self.screen.save_tree_state(store=False)
         record_id = (self.screen.current_record.id
             if self.screen.current_record else None)
         if self.screen.current_view.view_type != 'form':

@@ -615,7 +615,8 @@ class Screen(SignalEvent):
         state = self.tree_states[parent][view.children_field]
         if state:
             state_timestamp, expanded_nodes, selected_nodes = state
-            if timestamp != state_timestamp:
+            if (timestamp != state_timestamp
+                    and view.view_type != 'form'):
                 state = None
         if state is None and CONFIG['client.save_tree_state']:
             json_domain = self.get_tree_domain(parent)
@@ -639,6 +640,9 @@ class Screen(SignalEvent):
                 record = None
                 for node in selected_nodes[0]:
                     new_record = self.group.get(node)
+                    if node < 0 and -node < len(self.group):
+                        # Negative id is the index of the new record
+                        new_record = self.group[-node]
                     if not new_record:
                         break
                     else:
@@ -662,8 +666,12 @@ class Screen(SignalEvent):
                         if hasattr(widget, 'screen'):
                             widget.screen.save_tree_state(store)
                 if len(self.views) == 1 and self.current_record:
+                    path = self.current_record.id
+                    if path < 0:
+                        path = -self.current_record.group.index(
+                            self.current_record)
                     self.tree_states[parent][view.children_field] = (
-                        timestamp, [], [[self.current_record.id]])
+                        timestamp, [], [[path]])
             elif view.view_type == 'tree':
                 paths = view.get_expanded_paths()
                 selected_paths = view.get_selected_paths()
