@@ -102,9 +102,6 @@ class Many2Many(Widget):
             return self.screen.current_view.treeview
         return super(Many2Many, self)._color_widget()
 
-    def grab_focus(self):
-        return self.wid_text.grab_focus()
-
     def on_keypress(self, widget, event):
         editable = self.wid_text.get_editable()
         activate_keys = [gtk.keysyms.Tab, gtk.keysyms.ISO_Left_Tab]

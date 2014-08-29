@@ -28,9 +28,6 @@ class FloatTime(Widget):
     def _color_widget(self):
         return self.entry
 
-    def grab_focus(self):
-        return self.entry.grab_focus()
-
     @property
     def modified(self):
         if self.record and self.field:

@@ -1,14 +1,14 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import operator
-from functools import reduce
+from functools import cmp_to_key
 import gtk
 import gettext
 from collections import defaultdict
 
 from . import View
 from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
-    next_focus_widget, find_focusable_child)
+    next_focus_widget, find_focusable_child, tab_compare)
 from tryton.common import Tooltips, node_attributes, ICONFACTORY
 from tryton.common.button import Button
 from tryton.config import CONFIG
@@ -101,7 +101,6 @@ class ViewForm(View):
     def __init__(self, screen, xml):
         super(ViewForm, self).__init__(screen, xml)
         self.view_type = 'form'
-        self.widget_id = 0
         self.widgets = defaultdict(list)
         self.state_widgets = []
         self.notebooks = []
@@ -309,8 +308,6 @@ class ViewForm(View):
 
         Widget = self.get_widget(attributes['widget'])
         widget = Widget(self, attributes)
-        self.widget_id += 1
-        widget.position = self.widget_id
         self.widgets[name].append(widget)
 
         if Widget.expand:
@@ -483,29 +480,31 @@ class ViewForm(View):
                 for notebook in self.notebooks:
                     notebook.set_current_page(0)
             if self.attributes.get('cursor') in self.widgets:
-                focus_widget = self.widgets[self.attributes['cursor']][0]
+                focus_widget = find_focused_child(self.widgets[
+                        self.attributes['cursor']][0].widget)
             else:
                 child = find_focusable_child(self._viewport)
                 if child:
                     child.grab_focus()
         record = self.screen.current_record
-        position = reduce(lambda x, y: x + len(y), self.widgets, 0)
         if record:
+            invalid_widgets = []
             for name, widgets in self.widgets.iteritems():
                 for widget in widgets:
                     field = record.group.fields.get(name)
                     if not field:
                         continue
                     if not field.get_state_attrs(record).get('valid', True):
-                        if widget.position > position:
-                            continue
-                        position = widget.position
-                        focus_widget = widget
+                        invalid_widgets.append(
+                            find_focusable_child(widget.widget))
+            invalid_widgets.sort(key=cmp_to_key(tab_compare))
+            if invalid_widgets:
+                focus_widget = invalid_widgets[0]
         if focus_widget:
             for notebook in self.notebooks:
                 for i in range(notebook.get_n_pages()):
                     child = notebook.get_nth_page(i)
-                    if focus_widget.widget.is_ancestor(child):
+                    if focus_widget.is_ancestor(child):
                         notebook.set_current_page(i)
             focus_widget.grab_focus()
 

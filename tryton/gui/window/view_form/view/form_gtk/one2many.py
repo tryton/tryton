@@ -197,9 +197,6 @@ class One2Many(Widget):
             return self.screen.current_view.treeview
         return super(One2Many, self)._color_widget()
 
-    def grab_focus(self):
-        return self.screen.widget.grab_focus()
-
     def on_keypress(self, widget, event):
         if (event.keyval == gtk.keysyms.F3) \
                 and self.but_new.get_property('sensitive'):

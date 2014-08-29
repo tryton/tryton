@@ -39,9 +39,6 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         # Must be deferred because it triggers a display of the form
         gobject.idle_add(focus_out)
 
-    def grab_focus(self):
-        return self.entry.grab_focus()
-
     def _readonly_set(self, value):
         super(Selection, self)._readonly_set(value)
         self.entry.set_sensitive(not value)

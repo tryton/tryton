@@ -27,9 +27,6 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
 
         self.widget.set_focus_chain([self.widget_combo, self.wid_text])
 
-    def grab_focus(self):
-        return self.widget_combo.grab_focus()
-
     def get_model(self):
         active = self.widget_combo.get_active()
         if active < 0:

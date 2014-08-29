@@ -103,12 +103,6 @@ class Binary(Widget):
                 focus_chain = [self.but_new, self.but_save_as, self.but_remove]
             self.widget.set_focus_chain(focus_chain)
 
-    def grab_focus(self):
-        if self.wid_text:
-            return self.wid_text.grab_focus()
-        else:
-            return self.wid_size.grab_focus()
-
     def sig_new(self, widget=None):
         filename = ''
         if self.last_open_file:

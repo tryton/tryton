@@ -102,9 +102,6 @@ class Image(Widget):
     def filename_field(self):
         return self.record.group.fields.get(self.filename)
 
-    def grab_focus(self):
-        return self.image.grab_focus()
-
     def _readonly_set(self, value):
         self._readonly = value
         if self.but_add:

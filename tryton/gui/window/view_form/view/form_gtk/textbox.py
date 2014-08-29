@@ -77,9 +77,6 @@ class TextBox(Widget, TranslateMixin):
         textview.set_editable(not value)
         textview.props.sensitive = not value
 
-    def grab_focus(self):
-        return self.textview.grab_focus()
-
     def _readonly_set(self, value):
         super(TextBox, self)._readonly_set(value)
         self.textview.set_editable(not value)

@@ -79,9 +79,6 @@ class Many2One(Widget):
 
         self._readonly = False
 
-    def grab_focus(self):
-        return self.wid_text.grab_focus()
-
     def get_model(self):
         return self.attrs['relation']
 

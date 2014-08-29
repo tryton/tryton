@@ -44,9 +44,6 @@ class Calendar(Widget):
     def sig_key_press(self, widget, event):
         self.send_modified()
 
-    def grab_focus(self):
-        return self.entry.grab_focus()
-
     def set_value(self, record, field):
         field.set_client(record, self.get_value())
 

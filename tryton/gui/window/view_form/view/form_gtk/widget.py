@@ -21,7 +21,6 @@ class Widget(object):
         self.view = view
         self.attrs = attrs
         self.widget = None
-        self.position = 0
         self.colors = {}
         self.visible = True
         self.color_name = None
@@ -58,9 +57,6 @@ class Widget(object):
 
     def _invisible_widget(self):
         return self.widget
-
-    def grab_focus(self):
-        return self.widget.grab_focus()
 
     @property
     def modified(self):

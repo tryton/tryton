@@ -41,9 +41,6 @@ class MultiSelection(Widget, SelectionMixin):
     def _color_widget(self):
         return self.tree
 
-    def grab_focus(self):
-        self.tree.grab_focus()
-
     @property
     def modified(self):
         if self.record and self.field:
