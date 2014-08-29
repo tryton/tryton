@@ -1,5 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import copy
+
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or
 from trytond import backend
@@ -7,8 +9,34 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
-    'Template', 'TemplateCustomerTax', 'TemplateSupplierTax']
+    'Template', 'TemplateCustomerTax', 'TemplateSupplierTax',
+    'MissingFunction']
 __metaclass__ = PoolMeta
+
+
+class MissingFunction(fields.Function):
+    '''Function field that will raise the error
+    when the value is accessed and is None'''
+
+    def __init__(self, field, error, getter, setter=None, searcher=None,
+            loading='lazy'):
+        super(MissingFunction, self).__init__(field, getter, setter=setter,
+            searcher=searcher, loading=loading)
+        self.error = error
+
+    def __copy__(self):
+        return MissingFunction(copy.copy(self._field), self.error, self.getter,
+            setter=self.setter, searcher=self.searcher)
+
+    def __deepcopy__(self, memo):
+        return MissingFunction(copy.deepcopy(self._field, memo), self.error,
+            self.getter, setter=self.setter, searcher=self.searcher)
+
+    def __get__(self, inst, cls):
+        value = super(MissingFunction, self).__get__(inst, cls)
+        if inst is not None and value is None:
+            inst.raise_user_error(self.error, (inst.name, inst.id))
+        return value
 
 
 class Category:
@@ -35,10 +63,10 @@ class Category:
                     | Eval('account_parent')),
                 },
             depends=['account_parent']))
-    account_expense_used = fields.Function(fields.Many2One('account.account',
-            'Account Expense Used'), 'get_account')
-    account_revenue_used = fields.Function(fields.Many2One('account.account',
-            'Account Revenue Used'), 'get_account')
+    account_expense_used = MissingFunction(fields.Many2One('account.account',
+            'Account Expense Used'), 'missing_account', 'get_account')
+    account_revenue_used = MissingFunction(fields.Many2One('account.account',
+            'Account Revenue Used'), 'missing_account', 'get_account')
     taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
         help='Use the taxes defined on the parent category')
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
@@ -83,11 +111,11 @@ class Category:
 
     def get_account(self, name):
         if self.account_parent:
-            return getattr(self.parent, name).id
-        elif getattr(self, name[:-5]):
-            return getattr(self, name[:-5]).id
+            # Use __getattr__ to avoid raise of exception
+            account = self.parent.__getattr__(name)
         else:
-            self.raise_user_error('missing_account', (self.name, self.id))
+            account = getattr(self, name[:-5])
+        return account.id if account else None
 
     def get_taxes(self, name):
         if self.taxes_parent:
@@ -186,10 +214,10 @@ class Template:
                 },
             help='This account will be used instead of the one defined'
             ' on the category.', depends=['account_category']))
-    account_expense_used = fields.Function(fields.Many2One('account.account',
-        'Account Expense Used'), 'get_account')
-    account_revenue_used = fields.Function(fields.Many2One('account.account',
-        'Account Revenue Used'), 'get_account')
+    account_expense_used = MissingFunction(fields.Many2One('account.account',
+        'Account Expense Used'), 'missing_account', 'get_account')
+    account_revenue_used = MissingFunction(fields.Many2One('account.account',
+        'Account Revenue Used'), 'missing_account', 'get_account')
     taxes_category = fields.Boolean('Use Category\'s Taxes',
             help='Use the taxes defined on the category')
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
@@ -235,11 +263,10 @@ class Template:
 
     def get_account(self, name):
         if self.account_category:
-            return getattr(self.category, name).id
-        elif getattr(self, name[:-5]):
-            return getattr(self, name[:-5]).id
+            account = self.category.__getattr__(name)
         else:
-            self.raise_user_error('missing_account', (self.name, self.id))
+            account = getattr(self, name[:-5])
+        return account.id if account else None
 
     def get_taxes(self, name):
         if self.taxes_category:
