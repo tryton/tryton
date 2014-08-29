@@ -3,6 +3,7 @@
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
+from trytond.modules.account_product import MissingFunction
 
 __all__ = ['Category', 'Template']
 __metaclass__ = PoolMeta
@@ -19,9 +20,9 @@ class Category:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')),
                 }))
-    account_depreciation_used = fields.Function(
+    account_depreciation_used = MissingFunction(
         fields.Many2One('account.account', 'Account Depreciation Used'),
-        'get_account')
+        'missing_account', 'get_account')
     account_asset = fields.Property(fields.Many2One('account.account',
             'Account Asset',
             domain=[
@@ -32,9 +33,9 @@ class Category:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('account_parent')),
                 }))
-    account_asset_used = fields.Function(
+    account_asset_used = MissingFunction(
         fields.Many2One('account.account', 'Account Asset Used'),
-        'get_account')
+        'missing_account', 'get_account')
 
 
 class Template:
@@ -57,9 +58,9 @@ class Template:
                     | Eval('account_category')),
                 },
             depends=['active', 'depreciable', 'type', 'account_category']))
-    account_depreciation_used = fields.Function(
+    account_depreciation_used = MissingFunction(
         fields.Many2One('account.account', 'Account Depreciation Used'),
-        'get_account')
+        'missing_account', 'get_account')
     account_asset = fields.Property(fields.Many2One('account.account',
             'Account Asset',
             domain=[
@@ -75,9 +76,9 @@ class Template:
                     | Eval('account_category')),
                 },
             depends=['active', 'depreciable', 'type', 'account_category']))
-    account_asset_used = fields.Function(
+    account_asset_used = MissingFunction(
         fields.Many2One('account.account', 'Account Asset Used'),
-        'get_account')
+        'missing_account', 'get_account')
     depreciation_duration = fields.Property(fields.Numeric(
             'Depreciation Duration', digits=(16, 0),
             states={
