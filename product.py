@@ -4,6 +4,8 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
+from trytond.modules.account_product import MissingFunction
+
 __all__ = ['Category', 'Template']
 __metaclass__ = PoolMeta
 
@@ -20,8 +22,9 @@ class Category:
                     | Eval('account_parent')),
                 },
             depends=['account_parent']))
-    account_cogs_used = fields.Function(fields.Many2One('account.account',
-        'Account Cost of Goods Sold Used'), 'get_account')
+    account_cogs_used = MissingFunction(fields.Many2One('account.account',
+            'Account Cost of Goods Sold Used'), 'missing_account',
+        'get_account')
 
 
 class Template:
@@ -39,5 +42,6 @@ class Template:
             help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_cogs_used = fields.Function(fields.Many2One('account.account',
-        'Account Cost of Goods Sold Used'), 'get_account')
+    account_cogs_used = MissingFunction(fields.Many2One('account.account',
+            'Account Cost of Goods Sold Used'), 'missing_account',
+        'get_account')
