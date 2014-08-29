@@ -76,34 +76,22 @@ class Move:
         else:
             return self.product.cost_price
 
-    @classmethod
-    @ModelView.button
-    @Workflow.transition('done')
-    def do(cls, moves):
-        pool = Pool()
-        Date = pool.get('ir.date')
-
-        today = Date.today()
-        for move in moves:
-            if not move.effective_date:
-                move.effective_date = today
-            if (move.from_location.type in ('supplier', 'production')
-                    and move.to_location.type == 'storage'
-                    and move.product.cost_price_method == 'fifo'):
-                move._update_product_cost_price('in')
-            elif (move.to_location.type == 'supplier'
-                    and move.from_location.type == 'storage'
-                    and move.product.cost_price_method == 'fifo'):
-                move._update_product_cost_price('out')
-            elif (move.from_location.type == 'storage'
-                    and move.to_location.type != 'storage'
-                    and move.product.cost_price_method == 'fifo'):
-                cost_price = move._update_fifo_out_product_cost_price()
-                if not move.cost_price:
-                    move.cost_price = cost_price
-            move.save()
-
-        super(Move, cls).do(moves)
+    def _do(self):
+        if (self.from_location.type in ('supplier', 'production')
+                and self.to_location.type == 'storage'
+                and self.product.cost_price_method == 'fifo'):
+            self._update_product_cost_price('in')
+        elif (self.to_location.type == 'supplier'
+                and self.from_location.type == 'storage'
+                and self.product.cost_price_method == 'fifo'):
+            self._update_product_cost_price('out')
+        elif (self.from_location.type == 'storage'
+                and self.to_location.type != 'storage'
+                and self.product.cost_price_method == 'fifo'):
+            cost_price = self._update_fifo_out_product_cost_price()
+            if not self.cost_price:
+                self.cost_price = cost_price
+        super(Move, self)._do()
 
     @classmethod
     @ModelView.button

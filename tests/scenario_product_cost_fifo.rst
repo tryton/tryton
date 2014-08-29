@@ -146,12 +146,13 @@ Check Cost Price FIFO is 20::
     >>> product.template.cost_price
     Decimal('20.0000')
 
-Sell 2 more units @ 50::
+Sell twice 1 more units @ 50::
 
+    >>> outgoing_moves = []
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = product
     >>> outgoing_move.uom = unit
-    >>> outgoing_move.quantity = 2
+    >>> outgoing_move.quantity = 1
     >>> outgoing_move.from_location = storage_loc
     >>> outgoing_move.to_location = customer_loc
     >>> outgoing_move.planned_date = today
@@ -159,7 +160,22 @@ Sell 2 more units @ 50::
     >>> outgoing_move.unit_price = Decimal('50')
     >>> outgoing_move.currency = currency
     >>> outgoing_move.save()
-    >>> StockMove.do([outgoing_move.id], config.context)
+    >>> outgoing_moves.append(outgoing_move)
+
+    >>> outgoing_move = StockMove()
+    >>> outgoing_move.product = product
+    >>> outgoing_move.uom = unit
+    >>> outgoing_move.quantity = 1
+    >>> outgoing_move.from_location = storage_loc
+    >>> outgoing_move.to_location = customer_loc
+    >>> outgoing_move.planned_date = today
+    >>> outgoing_move.company = company
+    >>> outgoing_move.unit_price = Decimal('50')
+    >>> outgoing_move.currency = currency
+    >>> outgoing_move.save()
+    >>> outgoing_moves.append(outgoing_move)
+
+    >>> StockMove.do([m.id for m in outgoing_moves], config.context)
 
 Check Cost Price FIFO is 25::
 
