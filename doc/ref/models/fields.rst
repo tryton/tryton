@@ -129,8 +129,12 @@ client will also read these fields even if they are not defined on the view.
 
 .. attribute:: Field.context
 
-A dictionary which will update the current context when opening a *relation
-field*.
+A dictionary which will update the current context for *relation field*.
+
+.. warning::
+    The context could only depend on direct field of the record and without
+    context.
+..
 
 ``loading``
 -----------

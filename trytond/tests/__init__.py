@@ -13,6 +13,7 @@ from .wizard import *
 from .workflow import *
 from .copy_ import *
 from history import *
+from .field_context import *
 
 
 def register():
@@ -151,6 +152,8 @@ def register():
         Many2OneDomainValidation,
         TestHistory,
         TestHistoryLine,
+        FieldContextChild,
+        FieldContextParent,
         module='tests', type_='model')
     Pool.register(
         TestWizard,

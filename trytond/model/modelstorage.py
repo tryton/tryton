@@ -23,7 +23,7 @@ from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS, RECORD_CACHE_SIZE, BROWSE_FIELD_TRESHOLD
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.cache import LRUDict
+from trytond.cache import LRUDict, freeze
 from trytond.config import CONFIG
 from trytond.rpc import RPC
 from .modelview import ModelView
@@ -886,12 +886,6 @@ class ModelStorage(Model):
                             return True
             return False
 
-        def freeze(domain):
-            if isinstance(domain, (list, tuple)):
-                return tuple(freeze(d) for d in domain)
-            else:
-                return domain
-
         def validate_domain(field):
             if not field.domain:
                 return
@@ -1235,6 +1229,14 @@ class ModelStorage(Model):
                 datetime_field = self._fields[field.datetime_field]
                 ffields[field.datetime_field] = datetime_field
 
+        # add depends of field with context
+        for field in ffields.values():
+            if field.context:
+                for context_field_name in field.depends:
+                    context_field = self._fields.get(context_field_name)
+                    if context_field not in ffields:
+                        ffields[context_field_name] = context_field
+
         def filter_(id_):
             return (name not in self._cache.get(id_, {})
                 and name not in self._local_cache.get(id_, {}))
@@ -1270,14 +1272,18 @@ class ModelStorage(Model):
             except KeyError:
                 return value
             ctx = {}
+            if field.context:
+                pyson_context = PYSONEncoder().encode(field.context)
+                ctx.update(PYSONDecoder(data).decode(pyson_context))
             datetime_ = None
             if getattr(field, 'datetime_field', None):
                 datetime_ = data.get(field.datetime_field)
                 ctx = {'_datetime': datetime_}
             with Transaction().set_context(**ctx):
-                local_cache = model2cache.setdefault((Model, datetime_),
+                key = (Model, freeze(ctx))
+                local_cache = model2cache.setdefault(key,
                     LRUDict(RECORD_CACHE_SIZE))
-                ids = model2ids.setdefault((Model, datetime_), [])
+                ids = model2ids.setdefault(key, [])
                 if field._type in ('many2one', 'one2one', 'reference'):
                     ids.append(value)
                     return Model(value, _ids=ids, _local_cache=local_cache)
@@ -1320,6 +1326,7 @@ class ModelStorage(Model):
                         self._local_cache[data['id']] = {}
                     self._local_cache[data['id']][fname] = fvalue
                     if (field._type not in ('many2one', 'reference')
+                            or field.context
                             or getattr(field, 'datetime_field', None)
                             or isinstance(field, fields.Function)):
                         del data[fname]

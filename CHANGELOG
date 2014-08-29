@@ -1,3 +1,4 @@
+* Use the context of the relation field for instanciation
 * Use a configuration field for logging
 * Add translated descriptor for Selection field
 * Add tree_state attribute on tree view
