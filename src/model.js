@@ -72,7 +72,7 @@
     Sao.Group = function(model, context, array) {
         array.prm = jQuery.when();
         array.model = model;
-        array.context = context;
+        array._context = context;
         array.parent = undefined;
         array.screens = [];
         array.parent_name = '';
@@ -312,6 +312,25 @@
             } else {
                 return domain;
             }
+        };
+        array.context = function() {
+            var context = jQuery.extend({}, this._context);
+            if (this.parent) {
+                jQuery.extend(context, this.parent.get_context());
+                if (this.child_name in this.parent.model.fields) {
+                    var field = this.parent.model.fields[this.child_name];
+                    jQuery.extend(context, field.get_context(this.parent));
+                }
+            }
+            jQuery.extend(context, this._context);
+            if (this.parent_datetime_field) {
+                context._datetime = this.parent.get_eval()
+                    [this.parent_datetime_field];
+            }
+            return context;
+        };
+        array.set_context = function(context) {
+            this._context = jQuery.extend({}, context);
         };
         array.clean4inversion = function(domain) {
             if (jQuery.isEmptyObject(domain)) {
@@ -592,7 +611,7 @@
             return value;
         },
         get_context: function() {
-            return this.group.context;
+            return this.group.context();
         },
         field_get: function(name) {
             return this.model.fields[name].get(this);
@@ -911,6 +930,22 @@
         removed: function() {
             return Boolean(~this.group.record_removed.indexOf(this));
         },
+        set_field_context: function() {
+            for (var name in this.model.fields) {
+                if (!this.model.fields.hasOwnProperty(name)) {
+                    continue;
+                }
+                var field = this.model.fields[name];
+                var value = this._values[name];
+                if (!value || !value.set_context) {
+                    continue;
+                }
+                var context = field.description.context;
+                if (context) {
+                    value.set_context(this.expr_eval(context));
+                }
+            }
+        },
         get_attachment_count: function(reload) {
             var prm = jQuery.Deferred();
             if (this.id < 0) {
@@ -1034,6 +1069,7 @@
             prms.push(record.on_change([this.name]));
             prms.push(record.on_change_with([this.name]));
             // TODO autocomplete_with
+            record.set_field_context();
             return jQuery.when.apply(jQuery, prms);
         },
         get_context: function(record) {
@@ -1041,7 +1077,8 @@
             if (record.group.parent) {
                 jQuery.extend(context, record.group.parent.get_context());
             }
-            // TODO eval context attribute
+            jQuery.extend(context,
+                record.expr_eval(this.description.context || {}));
             return context;
         },
         get_domains: function(record) {
@@ -1448,7 +1485,6 @@
         init: function(description) {
             Sao.field.One2Many._super.init.call(this, description);
             this.in_on_change = false;
-            this.context = {};
         },
         _default: null,
         _set_value: function(record, value, default_) {
@@ -1728,7 +1764,8 @@
             if (record.model.name == this.description.relation) {
                 model = record.model;
             }
-            var group = Sao.Group(model, this.context, []);
+            var context = record.expr_eval(this.description.context || {});
+            var group = Sao.Group(model, context, []);
             group.set_parent(record);
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
