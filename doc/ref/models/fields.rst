@@ -611,6 +611,10 @@ This field accepts as written value a list of tuples like the :class:`One2Many`.
     An integer or a PYSON expression denoting the maximum number of records
     allowed in the relation.
 
+.. attribute:: Many2Many.add_remove
+
+    An alias to the :attr:`domain` for compatibility with the :class:`One2Many`.
+
 Instance methods:
 
 .. method:: Many2Many.get_target()

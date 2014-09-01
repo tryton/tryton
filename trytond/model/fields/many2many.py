@@ -58,6 +58,10 @@ class Many2Many(Field):
 
     size = property(_get_size, _set_size)
 
+    @property
+    def add_remove(self):
+        return self.domain
+
     def get(self, ids, model, name, values=None):
         '''
         Return target records ordered.
