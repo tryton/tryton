@@ -1,13 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from unittest import TestCase
-from proteus import config, Model
+from proteus import Model
+from .common import ProteusTestCase
 
 
-class TestModel(TestCase):
-
-    def setUp(self):
-        config.set_trytond(database_type='sqlite')
+class TestModel(ProteusTestCase):
 
     def test_class_cache(self):
         User1 = Model.get('res.user')

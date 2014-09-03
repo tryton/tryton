@@ -9,7 +9,8 @@ import xmlrpclib
 import threading
 from decimal import Decimal
 import datetime
-import time
+import os
+import urlparse
 
 
 def dump_decimal(self, value, write):
@@ -169,7 +170,7 @@ class _TrytondMethod(object):
                         for i in inst]
             if not rpc.readonly:
                 transaction.cursor.commit()
-        Cache.resets(self._config.database_name)
+            Cache.resets(self._config.database_name)
         return result
 
 
@@ -190,40 +191,32 @@ class TrytondProxy(object):
 class TrytondConfig(Config):
     'Configuration for trytond'
 
-    def __init__(self, database_name=None, user='admin', database_type=None,
-            language='en_US', password='', config_file=None):
+    def __init__(self, database=None, user='admin', language='en_US',
+            password='', config_file=None):
         super(TrytondConfig, self).__init__()
-        from trytond.config import CONFIG
-        CONFIG.update_etc(config_file)
-        if database_type is not None:
-            CONFIG['db_type'] = database_type
+        if not database:
+            database = os.environ.get('TRYTOND_DATABASE_URI')
+        else:
+            os.environ['TRYTOND_DATABASE_URI'] = database
+        from trytond.config import config
+        config.update_etc(config_file)
         from trytond.pool import Pool
-        from trytond import backend
-        from trytond.protocols.dispatcher import create
         from trytond.cache import Cache
         from trytond.transaction import Transaction
-        self.database_type = CONFIG['db_type']
-        if database_name is None:
-            if self.database_type == 'sqlite':
-                database_name = ':memory:'
-            else:
-                database_name = 'test_%s' % int(time.time())
+        self.database = database
+        database_name = None
+        if database:
+            uri = urlparse.urlparse(database)
+            database_name = uri.path.strip('/')
+        if not database_name:
+            database_name = os.environ['DB_NAME']
         self.database_name = database_name
         self._user = user
         self.config_file = config_file
 
         Pool.start()
-
-        with Transaction().start(None, 0) as transaction:
-            cursor = transaction.cursor
-            databases = backend.get('Database').list(cursor)
-        if database_name not in databases:
-            create(database_name, CONFIG['admin_passwd'], language, password)
-
-        database_list = Pool.database_list()
         self.pool = Pool(database_name)
-        if database_name not in database_list:
-            self.pool.init()
+        self.pool.init()
 
         with Transaction().start(self.database_name, 0) as transaction:
             Cache.clean(database_name)
@@ -234,14 +227,13 @@ class TrytondConfig(Config):
                 ], limit=1)[0].id
             with transaction.set_user(self.user):
                 self._context = User.get_preferences(context_only=True)
-        Cache.resets(database_name)
+            Cache.resets(database_name)
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):
         return "proteus.config.TrytondConfig"\
             "('%s', '%s', '%s', config_file=%s)"\
-            % (self.database_name, self._user, self.database_type,
-                self.config_file)
+            % (self.database, self._user, self.config_file)
     __repr__.__doc__ = object.__repr__.__doc__
 
     def __eq__(self, other):
@@ -249,12 +241,12 @@ class TrytondConfig(Config):
             raise NotImplementedError
         return (self.database_name == other.database_name
             and self._user == other._user
-            and self.database_type == other.database_type
+            and self.database == other.database
             and self.config_file == other.config_file)
 
     def __hash__(self):
         return hash((self.database_name, self._user,
-            self.database_type, self.config_file))
+            self.database, self.config_file))
 
     def get_proxy(self, name, type='model'):
         'Return Proxy class'
@@ -269,11 +261,11 @@ class TrytondConfig(Config):
         return methods
 
 
-def set_trytond(database_name=None, user='admin', database_type=None,
-        language='en_US', password='', config_file=None):
+def set_trytond(database=None, user='admin', language='en_US', password='',
+        config_file=None):
     'Set trytond package as backend'
-    _CONFIG.current = TrytondConfig(database_name, user, database_type,
-            language=language, password=password, config_file=config_file)
+    _CONFIG.current = TrytondConfig(database, user, language=language,
+        password=password, config_file=config_file)
     return _CONFIG.current
 
 

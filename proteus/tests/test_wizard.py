@@ -1,13 +1,10 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from unittest import TestCase
-from proteus import config, Wizard, Model
+from proteus import Wizard, Model
+from .common import ProteusTestCase
 
 
-class TestWizard(TestCase):
-
-    def setUp(self):
-        config.set_trytond(database_type='sqlite')
+class TestWizard(ProteusTestCase):
 
     def test_translation_clean(self):
         translation_clean = Wizard('ir.translation.clean')
