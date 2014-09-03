@@ -1,12 +1,12 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import datetime
 from threading import Lock
 from collections import OrderedDict
 
+from sql import Table
+from sql.functions import Now
+
 from trytond.transaction import Transaction
-from trytond.config import CONFIG
-from trytond import backend
 
 __all__ = ['Cache', 'LRUDict']
 
@@ -74,18 +74,13 @@ class Cache(object):
 
     @staticmethod
     def clean(dbname):
-        if not CONFIG['multi_server']:
-            return
-        database = backend.get('Database')(dbname).connect()
-        cursor = database.cursor()
-        try:
-            cursor.execute('SELECT "timestamp", "name" FROM ir_cache')
+        with Transaction().new_cursor():
+            cursor = Transaction().cursor
+            table = Table('ir_cache')
+            cursor.execute(*table.select(table.timestamp, table.name))
             timestamps = {}
             for timestamp, name in cursor.fetchall():
                 timestamps[name] = timestamp
-        finally:
-            cursor.commit()
-            cursor.close()
         for inst in Cache._cache_instance:
             if inst._name in timestamps:
                 with inst._lock:
@@ -96,36 +91,30 @@ class Cache(object):
 
     @staticmethod
     def reset(dbname, name):
-        if not CONFIG['multi_server']:
-            return
         with Cache._resets_lock:
             Cache._resets.setdefault(dbname, set())
             Cache._resets[dbname].add(name)
 
     @staticmethod
     def resets(dbname):
-        if not CONFIG['multi_server']:
-            return
-        database = backend.get('Database')(dbname).connect()
-        cursor = database.cursor()
-        try:
+        with Transaction().new_cursor():
+            cursor = Transaction().cursor
+            table = Table('ir_cache')
             with Cache._resets_lock:
                 Cache._resets.setdefault(dbname, set())
                 for name in Cache._resets[dbname]:
-                    cursor.execute('SELECT name FROM ir_cache WHERE name = %s',
-                        (name,))
+                    cursor.execute(*table.select(table.name,
+                            where=table.name == name))
                     if cursor.fetchone():
                         # It would be better to insert only
-                        cursor.execute('UPDATE ir_cache SET "timestamp" = %s '
-                            'WHERE name = %s', (datetime.datetime.now(), name))
+                        cursor.execute(*table.update([table.timestamp],
+                                [Now()], where=table.name == name))
                     else:
-                        cursor.execute('INSERT INTO ir_cache '
-                            '("timestamp", "name") '
-                            'VALUES (%s, %s)', (datetime.datetime.now(), name))
+                        cursor.execute(*table.insert(
+                                [table.timestamp, table.name],
+                                [[Now(), name]]))
                 Cache._resets[dbname].clear()
-        finally:
             cursor.commit()
-            cursor.close()
 
 
 class LRUDict(OrderedDict):

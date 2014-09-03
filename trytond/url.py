@@ -5,12 +5,12 @@ import encodings.idna
 import urllib
 import socket
 
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.transaction import Transaction
 
 __all__ = ['URLMixin']
 
-HOSTNAME = (CONFIG['hostname_jsonrpc']
+HOSTNAME = (config.get('jsonrpc', 'hostname')
     or unicode(socket.getfqdn(), 'utf8'))
 HOSTNAME = '.'.join(encodings.idna.ToASCII(part) if part else ''
     for part in HOSTNAME.split('.'))

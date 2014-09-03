@@ -5,7 +5,7 @@ import hashlib
 from sql.operators import Concat
 
 from ..model import ModelView, ModelSQL, fields
-from ..config import CONFIG
+from ..config import config
 from .. import backend
 from ..transaction import Transaction
 from ..pyson import Eval
@@ -117,7 +117,7 @@ class Attachment(ModelSQL, ModelView):
             filename = self.digest
             if self.collision:
                 filename = filename + '-' + str(self.collision)
-            filename = os.path.join(CONFIG['data_path'], db_name,
+            filename = os.path.join(config.get('database', 'path'), db_name,
                     filename[0:2], filename[2:4], filename)
             if name == 'data_size' or format_ == 'size':
                 try:
@@ -140,7 +140,7 @@ class Attachment(ModelSQL, ModelView):
         cursor = Transaction().cursor
         table = cls.__table__()
         db_name = cursor.dbname
-        directory = os.path.join(CONFIG['data_path'], db_name)
+        directory = os.path.join(config.get('database', 'path'), db_name)
         if not os.path.isdir(directory):
             os.makedirs(directory, 0770)
         digest = hashlib.md5(value).hexdigest()

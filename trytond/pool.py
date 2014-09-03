@@ -128,7 +128,7 @@ class Pool(object):
         '''
         return self._locks[self.database_name]
 
-    def init(self, update=False, lang=None):
+    def init(self, update=None, lang=None):
         '''
         Init pool
         Set update to proceed to update

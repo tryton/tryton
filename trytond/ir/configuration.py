@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from ..model import ModelSQL, ModelSingleton, fields
 from ..cache import Cache
-from ..config import CONFIG
+from ..config import config
 
 __all__ = ['Configuration']
 
@@ -15,7 +15,7 @@ class Configuration(ModelSingleton, ModelSQL):
 
     @staticmethod
     def default_language():
-        return CONFIG['language']
+        return config.get('database', 'language')
 
     @classmethod
     def get_language(cls):
@@ -25,6 +25,6 @@ class Configuration(ModelSingleton, ModelSQL):
         config = cls(1)
         language = config.language
         if not language:
-            language = CONFIG['language']
+            language = config.get('database', 'language')
         cls._get_language_cache.set(None, language)
         return language

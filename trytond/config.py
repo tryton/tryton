@@ -1,18 +1,11 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-import sys
-try:
-    import cdecimal
-    # Use cdecimal globally
-    if 'decimal' not in sys.modules:
-        sys.modules['decimal'] = cdecimal
-except ImportError:
-    import decimal
-    sys.modules['cdecimal'] = decimal
 import os
 import ConfigParser
-import getpass
-import socket
+import urlparse
+
+__all__ = ['config', 'get_hostname', 'get_port', 'split_netloc',
+    'parse_listen', 'parse_uri']
 
 
 def get_hostname(netloc):
@@ -24,119 +17,77 @@ def get_hostname(netloc):
         return netloc
 
 
-def get_port(netloc, protocol):
+def get_port(netloc):
     netloc = netloc.split(']')[-1]
-    if ':' in netloc:
-        return int(netloc.split(':')[1])
-    else:
-        return {
-            'jsonrpc': 8000,
-            'xmlrpc': 8069,
-            'webdav': 8080,
-        }.get(protocol)
+    return int(netloc.split(':')[1])
 
 
-class ConfigManager(object):
-    def __init__(self, fname=None):
-        self.options = {
-            'jsonrpc': [('localhost', 8000)],
-            'ssl_jsonrpc': False,
-            'hostname_jsonrpc': None,
-            'xmlrpc': [],
-            'ssl_xmlrpc': False,
-            'jsondata_path': '/var/www/localhost/tryton',
-            'webdav': [],
-            'ssl_webdav': False,
-            'hostname_webdav': None,
-            'db_type': 'postgresql',
-            'db_host': False,
-            'db_port': False,
-            'db_name': False,
-            'db_user': False,
-            'db_password': False,
-            'db_minconn': 1,
-            'db_maxconn': 64,
-            'pg_path': None,
-            'admin_passwd': 'admin',
-            'verbose': False,
-            'debug_mode': False,
-            'pidfile': None,
-            'logconf': None,
-            'privatekey': '/etc/ssl/trytond/server.key',
-            'certificate': '/etc/ssl/trytond/server.pem',
-            'smtp_server': 'localhost',
-            'smtp_port': 25,
-            'smtp_ssl': False,
-            'smtp_tls': False,
-            'smtp_user': False,
-            'smtp_password': False,
-            'smtp_default_from_email': '%s@%s' % (
-                getpass.getuser(), socket.getfqdn()),
-            'data_path': '/var/lib/trytond',
-            'multi_server': False,
-            'session_timeout': 600,
-            'auto_reload': True,
-            'prevent_dblist': False,
-            'init': {},
-            'update': {},
-            'cron': True,
-            'unoconv': 'pipe,name=trytond;urp;StarOffice.ComponentContext',
-            'retry': 5,
-            'language': 'en_US',
-        }
-        self.configfile = None
+def split_netloc(netloc):
+    return get_hostname(netloc).replace('*', ''), get_port(netloc)
 
-    def update_cmdline(self, cmdline_options):
-        self.options.update(cmdline_options)
 
-        # Verify that logging configuration is defined in an external file,
-        # if not the output will go to stdout
-        if self.options['logconf'] in ('None', 'False'):
-            self.options['logconf'] = False
-        # the same for the pidfile
-        if self.options['pidfile'] in ('None', 'False'):
-            self.options['pidfile'] = False
-        if self.options['data_path'] in ('None', 'False'):
-            self.options['data_path'] = False
+def parse_listen(value):
+    for netloc in value.split(','):
+        yield split_netloc(netloc)
 
-    def update_etc(self, configfile=None):
-        if configfile is None:
-            configfile = os.environ.get('TRYTOND_CONFIG')
-            if not configfile:
-                prefixdir = os.path.abspath(os.path.normpath(os.path.join(
-                    os.path.dirname(sys.prefix), '..')))
-                configfile = os.path.join(prefixdir, 'etc', 'trytond.conf')
-                if not os.path.isfile(configfile):
-                    configdir = os.path.abspath(os.path.normpath(os.path.join(
-                        os.path.dirname(__file__), '..')))
-                    configfile = os.path.join(configdir, 'etc', 'trytond.conf')
-                if not os.path.isfile(configfile):
-                    configfile = None
 
-        self.configfile = configfile
-        if not self.configfile:
+def parse_uri(uri):
+    return urlparse.urlparse(uri)
+
+
+class TrytonConfigParser(ConfigParser.RawConfigParser):
+
+    def __init__(self):
+        ConfigParser.RawConfigParser.__init__(self)
+        self.add_section('jsonrpc')
+        self.set('jsonrpc', 'listen', 'localhost:8000')
+        self.set('jsonrpc', 'data', '/var/www/localhost/tryton')
+        self.add_section('xmlrpc')
+        self.add_section('webdav')
+        self.add_section('database')
+        self.set('database', 'uri',
+            os.environ.get('TRYTOND_DATABASE_URI', 'sqlite://'))
+        self.set('database', 'path', '/var/lib/trytond')
+        self.set('database', 'list', 'True')
+        self.set('database', 'retry', 5)
+        self.set('database', 'language', 'en_US')
+        self.add_section('ssl')
+        self.add_section('email')
+        self.set('email', 'uri', 'smtp://localhost:25')
+        self.add_section('session')
+        self.set('session', 'timeout', 600)
+        self.add_section('report')
+        self.set('report', 'unoconv',
+            'pipe,name=trytond;urp;StarOffice.ComponentContext')
+
+    def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):
+        if not configfile:
             return
+        self.read(configfile)
 
-        parser = ConfigParser.ConfigParser()
-        with open(self.configfile) as fp:
-            parser.readfp(fp)
-        for (name, value) in parser.items('options'):
-            if value == 'True' or value == 'true':
-                value = True
-            if value == 'False' or value == 'false':
-                value = False
-            if name in ('xmlrpc', 'jsonrpc', 'webdav') and value:
-                value = [(get_hostname(netloc).replace('*', ''),
-                    get_port(netloc, name)) for netloc in value.split(',')]
-            self.options[name] = value
+    def get(self, section, option, default=None):
+        try:
+            return ConfigParser.RawConfigParser.get(self, section, option)
+        except ConfigParser.NoOptionError:
+            return default
 
-    def get(self, key, default=None):
-        return self.options.get(key, default)
+    def getint(self, section, option, default=None):
+        try:
+            return ConfigParser.RawConfigParser.getint(self, section, option)
+        except (ConfigParser.NoOptionError, TypeError):
+            return default
 
-    def __setitem__(self, key, value):
-        self.options[key] = value
+    def getfloat(self, section, option, default=None):
+        try:
+            return ConfigParser.RawConfigParser.getfloat(self, section, option)
+        except (ConfigParser.NoOptionError, TypeError):
+            return default
 
-    def __getitem__(self, key):
-        return self.options[key]
+    def getboolean(self, section, option, default=None):
+        try:
+            return ConfigParser.RawConfigParser.getboolean(
+                self, section, option)
+        except ConfigParser.NoOptionError:
+            return default
 
-CONFIG = ConfigManager()
+config = TrytonConfigParser()

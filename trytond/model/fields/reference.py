@@ -8,7 +8,7 @@ from .field import Field, SQLType
 from .char import Char
 from ...transaction import Transaction
 from ...pool import Pool
-from ...config import CONFIG
+from ... import backend
 
 
 class Reference(Field):
@@ -109,7 +109,7 @@ class Reference(Field):
         return Char.sql_format(value)
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'mysql':
             return SQLType('CHAR', 'VARCHAR(255)')
         return SQLType('VARCHAR', 'VARCHAR')

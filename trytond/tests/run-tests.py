@@ -8,7 +8,8 @@ import time
 import unittest
 import sys
 
-from trytond.config import CONFIG
+from trytond.config import config
+from trytond import backend
 
 if __name__ != '__main__':
     raise ImportError('%s can not be imported' % __name__)
@@ -22,18 +23,17 @@ parser.add_argument("-m", "--modules", action="store_true", dest="modules",
 parser.add_argument("-v", action="count", default=0, dest="verbosity",
     help="Increase verbosity")
 parser.add_argument('tests', metavar='test', nargs='*')
+parser.epilog = ('The database name can be specified in the DB_NAME '
+    'environment variable.')
 opt = parser.parse_args()
 
-CONFIG['db_type'] = 'sqlite'
-CONFIG.update_etc(opt.config)
-if not CONFIG['admin_passwd']:
-    CONFIG['admin_passwd'] = 'admin'
+config.update_etc(opt.config)
 
-if CONFIG['db_type'] == 'sqlite':
+if backend.name() == 'sqlite':
     database_name = ':memory:'
 else:
     database_name = 'test_' + str(int(time.time()))
-os.environ['DB_NAME'] = database_name
+os.environ.setdefault('DB_NAME', database_name)
 
 from trytond.tests.test_tryton import all_suite, modules_suite
 if not opt.modules:

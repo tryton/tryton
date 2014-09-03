@@ -8,7 +8,7 @@ import uuid
 import datetime
 
 from trytond.model import ModelSQL, fields
-from trytond.config import CONFIG
+from trytond.config import config
 from .. import backend
 from ..transaction import Transaction
 
@@ -45,7 +45,8 @@ class Session(ModelSQL):
     def check(cls, user, key):
         "Check user key and delete old one"
         now = datetime.datetime.now()
-        timeout = datetime.timedelta(seconds=int(CONFIG['session_timeout']))
+        timeout = datetime.timedelta(
+            seconds=config.getint('session', 'timeout'))
         sessions = cls.search([
                 ('create_uid', '=', user),
                 ])

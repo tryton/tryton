@@ -21,7 +21,7 @@ except ImportError:
     Manifest, MANIFEST = None, None
 from genshi.filters import Translator
 import lxml.etree
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
@@ -295,7 +295,7 @@ class Report(URLMixin, PoolBase):
         oext = FORMAT2EXT.get(output_format, output_format)
         with os.fdopen(fd, 'wb+') as fp:
             fp.write(data)
-        cmd = ['unoconv', '--connection=%s' % CONFIG['unoconv'],
+        cmd = ['unoconv', '--connection=%s' % config.get('report', 'unoconv'),
             '-f', oext, '--stdout', path]
         try:
             proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)

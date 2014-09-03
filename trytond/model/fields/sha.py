@@ -3,7 +3,7 @@
 import hashlib
 from sql import Query, Expression
 
-from ...config import CONFIG
+from ... import backend
 from .field import SQLType
 from .char import Char
 
@@ -22,7 +22,7 @@ class Sha(Char):
         return super(Sha, self).sql_format(value)
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'mysql':
             return SQLType('CHAR', 'VARCHAR(40)')
         return SQLType('VARCHAR', 'VARCHAR(40)')

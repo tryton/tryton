@@ -7,7 +7,6 @@ import urlparse
 import time
 import urllib
 import sys
-import traceback
 import logging
 from threading import local
 import xml.dom.minidom
@@ -21,7 +20,6 @@ from pywebdav.lib.davcmd import copyone, copytree, moveone, movetree, \
     delone, deltree
 from trytond.protocols.sslsocket import SSLSocket
 from trytond.protocols.common import daemon
-from trytond.config import CONFIG
 from trytond.security import login
 from trytond.version import PACKAGE, VERSION, WEBSITE
 from trytond.tools.misc import LocalDict
@@ -35,6 +33,8 @@ domimpl = xml.dom.minidom.getDOMImplementation()
 
 DAV_VERSION_1['version'] += ',access-control'
 DAV_VERSION_2['version'] += ',access-control'
+
+logger = logging.getLogger(__name__)
 
 
 # Local int for multi-thread
@@ -131,12 +131,12 @@ class TrytonDAVInterface(iface.dav_interface):
         self.verbose = False
 
     def _log_exception(self, exception):
-        if CONFIG['verbose'] and not isinstance(exception, (
-                    NotLogged, ConcurrencyException, UserError, UserWarning,
-                    DAV_Error, DAV_NotFound, DAV_Secret, DAV_Forbidden)):
-            tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-            logger = logging.getLogger('webdav')
-            logger.error('Exception:\n' + tb_s)
+        if isinstance(exception, (NotLogged, ConcurrencyException, UserError,
+                    UserWarning, DAV_Error, DAV_NotFound, DAV_Secret,
+                    DAV_Forbidden)):
+            logger.debug('Exception', exc_info=sys.exc_info())
+        else:
+            logger.error('Exception', exc_info=sys.exc_info())
 
     @staticmethod
     def get_dburi(uri):

@@ -14,7 +14,7 @@ from sql import Table
 from sql.functions import Now
 
 import trytond.tools as tools
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 import trytond.convert as convert
@@ -135,11 +135,11 @@ class Node(Singleton):
 
 def get_module_info(name):
     "Return the content of the tryton.cfg"
-    config = ConfigParser.ConfigParser()
+    module_config = ConfigParser.ConfigParser()
     with tools.file_open(os.path.join(name, 'tryton.cfg')) as fp:
-        config.readfp(fp)
+        module_config.readfp(fp)
         directory = os.path.dirname(fp.name)
-    info = dict(config.items('tryton'))
+    info = dict(module_config.items('tryton'))
     info['directory'] = directory
     for key in ('depends', 'extras_depend', 'xml'):
         if key in info:
@@ -193,18 +193,17 @@ def create_graph(module_list):
     return graph, packages, later
 
 
-def is_module_to_install(module):
-    for kind in ('init', 'update'):
-        if 'all' in CONFIG[kind] and module != 'tests':
-            return True
-        elif module in CONFIG[kind]:
-            return True
+def is_module_to_install(module, update):
+    if 'all' in update and module != 'tests':
+        return True
+    elif module in update:
+        return True
     return False
 
 
-def load_module_graph(graph, pool, lang=None):
+def load_module_graph(graph, pool, update=None, lang=None):
     if lang is None:
-        lang = [CONFIG['language']]
+        lang = [config.get('database', 'language')]
     modules_todo = []
     models_to_update_history = set()
     logger = logging.getLogger('modules')
@@ -222,7 +221,7 @@ def load_module_graph(graph, pool, lang=None):
         logger.info(module)
         classes = pool.setup(module)
         package_state = module2state.get(module, 'uninstalled')
-        if (is_module_to_install(module)
+        if (is_module_to_install(module, update)
                 or package_state in ('to install', 'to upgrade')):
             if package_state not in ('to install', 'to upgrade'):
                 if package_state == 'installed':
@@ -362,7 +361,7 @@ def register_classes():
         MODULES.append(module)
 
 
-def load_modules(database_name, pool, update=False, lang=None):
+def load_modules(database_name, pool, update=None, lang=None):
     res = True
 
     def _load_modules():
@@ -372,7 +371,7 @@ def load_modules(database_name, pool, update=False, lang=None):
             # Migration from 2.2: workflow module removed
             cursor.execute(*ir_module.delete(
                     where=(ir_module.name == 'workflow')))
-            if 'all' in CONFIG['init']:
+            if 'all' in update:
                 cursor.execute(*ir_module.select(ir_module.name,
                         where=(ir_module.name != 'tests')))
             else:
@@ -385,16 +384,11 @@ def load_modules(database_name, pool, update=False, lang=None):
                             'to remove'))))
         module_list = [name for (name,) in cursor.fetchall()]
         if update:
-            for module in CONFIG['init'].keys():
-                if CONFIG['init'][module]:
-                    module_list.append(module)
-            for module in CONFIG['update'].keys():
-                if CONFIG['update'][module]:
-                    module_list.append(module)
+            module_list += update
         graph = create_graph(module_list)[0]
 
         try:
-            load_module_graph(graph, pool, lang)
+            load_module_graph(graph, pool, update, lang)
         except Exception:
             cursor.rollback()
             raise
@@ -423,6 +417,7 @@ def load_modules(database_name, pool, update=False, lang=None):
             Module = pool.get('ir.module.module')
             Module.update_list()
         cursor.commit()
+        Cache.resets(database_name)
 
     if not Transaction().cursor:
         with Transaction().start(database_name, 0):
@@ -433,5 +428,4 @@ def load_modules(database_name, pool, update=False, lang=None):
                 Transaction().reset_context():
             _load_modules()
 
-    Cache.resets(database_name)
     return res

@@ -26,7 +26,7 @@ from .. import backend
 from ..transaction import Transaction
 from ..cache import Cache
 from ..pool import Pool
-from ..config import CONFIG
+from ..config import config
 from ..pyson import PYSONEncoder
 from ..rpc import RPC
 
@@ -197,7 +197,8 @@ class User(ModelSQL, ModelView):
     def get_sessions(users, name):
         Session = Pool().get('ir.session')
         now = datetime.datetime.now()
-        timeout = datetime.timedelta(seconds=int(CONFIG['session_timeout']))
+        timeout = datetime.timedelta(
+            seconds=config.getint('session', 'timeout'))
         result = dict((u.id, 0) for u in users)
         for sub_ids in grouped_slice(users):
             with Transaction().set_user(0):
@@ -553,7 +554,7 @@ class LoginAttempt(ModelSQL):
     @staticmethod
     def delay():
         return (datetime.datetime.now()
-            - datetime.timedelta(seconds=int(CONFIG['session_timeout'])))
+            - datetime.timedelta(seconds=config.getint('session', 'timeout')))
 
     @classmethod
     def add(cls, login):

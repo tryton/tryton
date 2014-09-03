@@ -10,14 +10,13 @@ from ..tools import datetime_strftime
 from ..pyson import Eval, And
 from ..transaction import Transaction
 from ..pool import Pool
-from ..config import CONFIG
 from .. import backend
 
 __all__ = [
     'SequenceType', 'Sequence', 'SequenceStrict',
     ]
 
-sql_sequence = CONFIG.options['db_type'] == 'postgresql'
+sql_sequence = backend.name() == 'postgresql'
 
 
 class SequenceType(ModelSQL, ModelView):

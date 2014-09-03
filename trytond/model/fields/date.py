@@ -3,7 +3,7 @@
 import datetime
 from sql import Query, Expression
 
-from ...config import CONFIG
+from ... import backend
 from .field import Field, SQLType
 
 
@@ -71,7 +71,7 @@ class DateTime(Field):
         return value.replace(microsecond=0)
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'sqlite':
             return SQLType('TIMESTAMP', 'TIMESTAMP')
         elif db_type == 'mysql':
@@ -106,7 +106,7 @@ class Timestamp(Field):
         return value
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'sqlite':
             return SQLType('TIMESTAMP', 'TIMESTAMP')
         elif db_type == 'mysql':

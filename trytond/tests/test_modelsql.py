@@ -5,7 +5,7 @@
 import unittest
 import time
 
-from trytond.config import CONFIG
+from trytond import backend
 from trytond.exceptions import UserError, ConcurrencyException
 from trytond.transaction import Transaction
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
@@ -20,7 +20,7 @@ class ModelSQLTestCase(unittest.TestCase):
         self.modelsql = POOL.get('test.modelsql')
         self.modelsql_timestamp = POOL.get('test.modelsql.timestamp')
 
-    @unittest.skipIf(CONFIG['db_type'] == 'sqlite',
+    @unittest.skipIf(backend.name == 'sqlite',
         'SQLite not concerned because tryton don\'t set "NOT NULL"'
         'constraint: "ALTER TABLE" don\'t support NOT NULL constraint'
         'without default value')
@@ -55,7 +55,7 @@ class ModelSQLTestCase(unittest.TestCase):
             timestamp = self.modelsql_timestamp.read([record.id],
                 ['_timestamp'])[0]['_timestamp']
 
-            if CONFIG['db_type'] in ('sqlite', 'mysql'):
+            if backend.name() in ('sqlite', 'mysql'):
                 # timestamp precision of sqlite is the second
                 time.sleep(1)
 

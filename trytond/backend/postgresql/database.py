@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.backend.database import DatabaseInterface, CursorInterface
-from trytond.config import CONFIG
+from trytond.config import config, parse_uri
 from psycopg2.pool import ThreadedConnectionPool
 from psycopg2.extensions import cursor as PsycopgCursor
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
@@ -54,14 +54,15 @@ class Database(DatabaseInterface):
             return self
         logger = logging.getLogger('database')
         logger.info('connect to "%s"' % self.database_name)
-        host = CONFIG['db_host'] and "host=%s" % CONFIG['db_host'] or ''
-        port = CONFIG['db_port'] and "port=%s" % CONFIG['db_port'] or ''
+        uri = parse_uri(config.get('database', 'uri'))
+        assert uri.scheme == 'postgresql'
+        host = uri.hostname and "host=%s" % uri.hostname or ''
+        port = uri.port and "port=%s" % uri.port or ''
         name = "dbname=%s" % self.database_name
-        user = CONFIG['db_user'] and "user=%s" % CONFIG['db_user'] or ''
-        password = (CONFIG['db_password']
-            and "password=%s" % CONFIG['db_password'] or '')
-        minconn = int(CONFIG['db_minconn']) or 1
-        maxconn = int(CONFIG['db_maxconn']) or 64
+        user = uri.username and "user=%s" % uri.username or ''
+        password = uri.password and "password=%s" % uri.password or ''
+        minconn = config.getint('database', 'minconn', 1)
+        maxconn = config.getint('database', 'maxconn', 64)
         dsn = '%s %s %s %s %s' % (host, port, name, user, password)
         self._connpool = ThreadedConnectionPool(minconn, maxconn, dsn)
         return self
@@ -106,18 +107,25 @@ class Database(DatabaseInterface):
 
     @staticmethod
     def dump(database_name):
-        from trytond.tools import exec_pg_command_pipe
+        from trytond.tools import exec_command_pipe
 
         cmd = ['pg_dump', '--format=c', '--no-owner']
-        if CONFIG['db_user']:
-            cmd.append('--username=' + CONFIG['db_user'])
-        if CONFIG['db_host']:
-            cmd.append('--host=' + CONFIG['db_host'])
-        if CONFIG['db_port']:
-            cmd.append('--port=' + CONFIG['db_port'])
+        env = {}
+        uri = parse_uri(config.get('database', 'uri'))
+        if uri.username:
+            cmd.append('--username=' + uri.username)
+        if uri.hostname:
+            cmd.append('--host=' + uri.hostname)
+        if uri.port:
+            cmd.append('--port=' + uri.port)
+        if uri.password:
+            # if db_password is set in configuration we should pass
+            # an environment variable PGPASSWORD to our subprocess
+            # see libpg documentation
+            env['PGPASSWORD'] = uri.password
         cmd.append(database_name)
 
-        pipe = exec_pg_command_pipe(*tuple(cmd))
+        pipe = exec_command_pipe(*tuple(cmd), env=env)
         pipe.stdin.close()
         data = pipe.stdout.read()
         res = pipe.wait()
@@ -127,7 +135,7 @@ class Database(DatabaseInterface):
 
     @staticmethod
     def restore(database_name, data):
-        from trytond.tools import exec_pg_command_pipe
+        from trytond.tools import exec_command_pipe
 
         database = Database().connect()
         cursor = database.cursor(autocommit=True)
@@ -136,12 +144,16 @@ class Database(DatabaseInterface):
         cursor.close()
 
         cmd = ['pg_restore', '--no-owner']
-        if CONFIG['db_user']:
-            cmd.append('--username=' + CONFIG['db_user'])
-        if CONFIG['db_host']:
-            cmd.append('--host=' + CONFIG['db_host'])
-        if CONFIG['db_port']:
-            cmd.append('--port=' + CONFIG['db_port'])
+        env = {}
+        uri = parse_uri(config.get('database', 'uri'))
+        if uri.username:
+            cmd.append('--username=' + uri.username)
+        if uri.hostname:
+            cmd.append('--host=' + uri.hostname)
+        if uri.port:
+            cmd.append('--port=' + uri.port)
+        if uri.password:
+            env['PGPASSWORD'] = uri.password
         cmd.append('--dbname=' + database_name)
         args2 = tuple(cmd)
 
@@ -153,7 +165,7 @@ class Database(DatabaseInterface):
             args2.append(' ' + tmpfile)
             args2 = tuple(args2)
 
-        pipe = exec_pg_command_pipe(*args2)
+        pipe = exec_command_pipe(*args2, env=env)
         if not os.name == "nt":
             pipe.stdin.write(data)
         pipe.stdin.close()
@@ -175,23 +187,14 @@ class Database(DatabaseInterface):
     @staticmethod
     def list(cursor):
         now = time.time()
-        timeout = int(CONFIG['session_timeout'])
+        timeout = config.getint('session', 'timeout')
         res = Database._list_cache
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res
-        db_user = CONFIG['db_user']
+        uri = parse_uri(config.get('database', 'uri'))
+        db_user = uri.username
         if not db_user and os.name == 'posix':
             db_user = pwd.getpwuid(os.getuid())[0]
-        if not db_user:
-            cursor.execute("SELECT usename "
-                "FROM pg_user "
-                "WHERE usesysid = ("
-                    "SELECT datdba "
-                    "FROM pg_database "
-                    "WHERE datname = %s)",
-                (CONFIG["db_name"],))
-            res = cursor.fetchone()
-            db_user = res and res[0]
         if db_user:
             cursor.execute("SELECT datname "
                 "FROM pg_database "

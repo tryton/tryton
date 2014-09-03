@@ -21,72 +21,39 @@ def parse_commandline():
 
     parser.add_argument('--version', action='version',
         version='%(prog)s ' + VERSION)
-    parser.add_argument("-c", "--config", dest="config",
+    parser.add_argument("-c", "--config", dest="configfile",
         help="specify config file")
-    parser.add_argument('--debug', dest='debug_mode', action='store_true',
-        help='enable debug mode (start post-mortem debugger if exceptions'
-        ' occur)')
+    parser.add_argument('--debug', dest='debug', action='store_true',
+        help='enable debug mode')
     parser.add_argument("-v", "--verbose", action="store_true",
         dest="verbose", help="enable verbose mode")
 
-    parser.add_argument("-d", "--database", dest="db_name",
-        help="specify the database name")
-    parser.add_argument("-i", "--init", dest="init",
+    parser.add_argument("-d", "--database", dest="database_names", nargs='+',
+        default=[], help="specify the database name")
+    parser.add_argument("-i", "--init", dest="init", nargs='+', default=[],
         help="init a module (use \"all\" for all modules)")
-    parser.add_argument("-u", "--update", dest="update",
+    parser.add_argument("-u", "--update", dest="update", nargs='+', default=[],
         help="update a module (use \"all\" for all modules)")
 
     parser.add_argument("--pidfile", dest="pidfile",
         help="file where the server pid will be stored")
     parser.add_argument("--logconf", dest="logconf",
         help="logging configuration file (ConfigParser format)")
-    parser.add_argument("--disable-cron", dest="cron",
-        action="store_false", help="disable cron")
+    parser.add_argument("--cron", dest="cron", action="store_true",
+        help="enable cron")
 
     parser.epilog = ('The first time a database is initialized with "-i" admin'
         ' password is read from file defined by TRYTONPASSFILE '
-        'environment variable or interactively ask user. '
+        'environment variable or interactively ask user.\n'
         'The config file can be specified in the TRYTOND_CONFIG '
+        'environment variable.\n'
+        'The database URI can be specified in the TRYTOND_DATABASE_URI '
         'environment variable.')
 
-    opt = parser.parse_args()
+    options = parser.parse_args()
 
-    if opt.config:
-        options['configfile'] = opt.config
-    else:
-        # No config file speficified, it will be guessed
-        options['configfile'] = None
-
-    for arg in (
-            'verbose',
-            'debug_mode',
-            'pidfile',
-            'logconf',
-            'cron',
-            ):
-        if getattr(opt, arg) is not None:
-            options[arg] = getattr(opt, arg)
-
-    db_name = []
-    if opt.db_name:
-        for i in opt.db_name.split(','):
-            db_name.append(i)
-    options['db_name'] = db_name
-
-    init = {}
-    if opt.init:
-        for i in opt.init.split(','):
-            if i != 'test':
-                init[i] = 1
-    options['init'] = init
-
-    update = {}
-    if opt.update:
-        for i in opt.update.split(','):
-            if i != 'test':
-                update[i] = 1
-    options['update'] = update
-
+    if not options.database_names and bool(options.init or options.update):
+        parser.error('Missing database option')
     return options
 
 

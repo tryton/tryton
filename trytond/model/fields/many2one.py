@@ -6,7 +6,7 @@ from sql.operators import Or
 
 from .field import Field, SQLType
 from ...pool import Pool
-from ...config import CONFIG
+from ... import backend
 from ...tools import reduce_ids
 from ...transaction import Transaction
 
@@ -86,7 +86,7 @@ class Many2One(Field):
         return int(value)
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'postgresql':
             return SQLType('INT4', 'INT4')
         elif db_type == 'mysql':

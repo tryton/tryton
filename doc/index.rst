@@ -25,6 +25,7 @@ First steps
 
     * **Installation:**
       :ref:`Installation <topics-install>`
+      :ref:`Configuration <topics-configuration>`
 
 The model layer
 ===============

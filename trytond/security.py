@@ -1,7 +1,13 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+import os
+try:
+    import crypt
+except ImportError:
+    pass
+
 from trytond.pool import Pool
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.exceptions import NotLogged
 
@@ -48,10 +54,10 @@ def logout(dbname, user, session):
 
 
 def check_super(passwd):
-    if passwd == CONFIG['admin_passwd']:
+    cryptedpasswd = config.get('session', 'super_pwd')
+    if cryptedpasswd and crypt.crypt(passwd, cryptedpasswd) == cryptedpasswd:
         return True
-    else:
-        raise Exception('AccessDenied')
+    raise Exception('AccessDenied')
 
 
 def check(dbname, user, session):

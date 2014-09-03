@@ -4,7 +4,7 @@ import warnings
 
 from sql import Query, Expression
 
-from ...config import CONFIG
+from ... import backend
 from .field import Field, FieldTranslate, size_validate, SQLType
 
 
@@ -59,7 +59,7 @@ class Char(FieldTranslate):
         return value
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if self.size and db_type != 'sqlite':
             return SQLType('VARCHAR', 'VARCHAR(%s)' % self.size)
         elif db_type == 'mysql':

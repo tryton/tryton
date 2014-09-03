@@ -8,7 +8,6 @@ include doc/*
 recursive-include doc *.rst
 recursive-include doc *.po
 recursive-include doc *.pot
-include etc/*
 include trytond/backend/*/init.sql
 include trytond/ir/tryton.cfg
 include trytond/ir/*.xml

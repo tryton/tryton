@@ -7,7 +7,7 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
         install_module
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
-from trytond.config import CONFIG
+from trytond import backend
 
 
 class HistoryTestCase(unittest.TestCase):
@@ -76,7 +76,7 @@ class HistoryTestCase(unittest.TestCase):
             with Transaction().set_context(_datetime=datetime.datetime.min):
                 self.assertRaises(UserError, History.read, [history_id])
 
-    @unittest.skipIf(CONFIG['db_type'] in ('sqlite', 'mysql'),
+    @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
         'now() is not the start of the transaction')
     def test0020read_same_timestamp(self):
         'Test read history with same timestamp'
@@ -184,7 +184,7 @@ class HistoryTestCase(unittest.TestCase):
             History.restore_history([history_id], datetime.datetime.min)
             self.assertRaises(UserError, History.read, [history_id])
 
-    @unittest.skipIf(CONFIG['db_type'] in ('sqlite', 'mysql'),
+    @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
         'now() is not the start of the transaction')
     def test0045restore_history_same_timestamp(self):
         'Test restore history with same timestamp'
@@ -287,7 +287,7 @@ class HistoryTestCase(unittest.TestCase):
                     records = History.search([], order=order)
                     self.assertEqual(records, instances)
 
-    @unittest.skipIf(CONFIG['db_type'] in ('sqlite', 'mysql'),
+    @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
         'now() is not the start of the transaction')
     def test0060_ordered_search_same_timestamp(self):
         'Test ordered search  with same timestamp'

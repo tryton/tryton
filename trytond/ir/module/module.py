@@ -509,13 +509,14 @@ class ModuleInstallUpgrade(Wizard):
             modules = Module.search([
                 ('state', 'in', ['to upgrade', 'to remove', 'to install']),
                 ])
+            update = [m.name for m in modules]
             langs = Lang.search([
                 ('translatable', '=', True),
                 ])
             lang = [x.code for x in langs]
             transaction.cursor.commit()
-        if modules:
-            pool.init(update=True, lang=lang)
+        if update:
+            pool.init(update=update, lang=lang)
         return 'done'
 
 

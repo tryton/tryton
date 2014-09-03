@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.backend.database import DatabaseInterface, CursorInterface
-from trytond.config import CONFIG
+from trytond.config import config, parse_uri
 import MySQLdb
 import MySQLdb.cursors
 import MySQLdb.converters
@@ -91,14 +91,16 @@ class Database(DatabaseInterface):
             'charset': 'utf8',
             'conv': conv,
         }
-        if CONFIG['db_host']:
-            args['host'] = CONFIG['db_host']
-        if CONFIG['db_port']:
-            args['port'] = int(CONFIG['db_port'])
-        if CONFIG['db_user']:
-            args['user'] = CONFIG['db_user']
-        if CONFIG['db_password']:
-            args['passwd'] = CONFIG['db_password']
+        uri = parse_uri(config.get('database', 'uri'))
+        assert uri.scheme == 'mysql'
+        if uri.hostname:
+            args['host'] = uri.hostname
+        if uri.port:
+            args['port'] = uri.port
+        if uri.username:
+            args['user'] = uri.username
+        if uri.password:
+            args['passwd'] = uri.password
         conn = MySQLdb.connect(**args)
         cursor = Cursor(conn, self.database_name)
         cursor.execute('SET time_zone = `UTC`')
@@ -120,20 +122,21 @@ class Database(DatabaseInterface):
 
     @staticmethod
     def dump(database_name):
-        from trytond.tools import exec_pg_command_pipe
+        from trytond.tools import exec_command_pipe
 
         cmd = ['mysqldump', '--no-create-db']
-        if CONFIG['db_user']:
-            cmd.append('--user=' + CONFIG['db_user'])
-        if CONFIG['db_host']:
-            cmd.append('--host=' + CONFIG['db_host'])
-        if CONFIG['db_port']:
-            cmd.append('--port=' + CONFIG['db_port'])
-        if CONFIG['db_password']:
-            cmd.append('--password=' + CONFIG['db_password'])
+        uri = parse_uri(config.get('database', 'uri'))
+        if uri.username:
+            cmd.append('--user=' + uri.username)
+        if uri.hostname:
+            cmd.append('--host=' + uri.hostname)
+        if uri.port:
+            cmd.append('--port=' + uri.port)
+        if uri.password:
+            cmd.append('--password=' + uri.password)
         cmd.append(database_name)
 
-        pipe = exec_pg_command_pipe(*tuple(cmd))
+        pipe = exec_command_pipe(*tuple(cmd))
         pipe.stdin.close()
         data = pipe.stdout.read()
         res = pipe.wait()
@@ -143,7 +146,7 @@ class Database(DatabaseInterface):
 
     @staticmethod
     def restore(database_name, data):
-        from trytond.tools import exec_pg_command_pipe
+        from trytond.tools import exec_command_pipe
 
         database = Database().connect()
         cursor = database.cursor(autocommit=True)
@@ -152,14 +155,15 @@ class Database(DatabaseInterface):
         cursor.close()
 
         cmd = ['mysql']
-        if CONFIG['db_user']:
-            cmd.append('--user=' + CONFIG['db_user'])
-        if CONFIG['db_host']:
-            cmd.append('--host=' + CONFIG['db_host'])
-        if CONFIG['db_port']:
-            cmd.append('--port=' + CONFIG['db_port'])
-        if CONFIG['db_password']:
-            cmd.append('--password=' + CONFIG['db_password'])
+        uri = parse_uri(config.get('database', 'uri'))
+        if uri.username:
+            cmd.append('--user=' + uri.username)
+        if uri.hostname:
+            cmd.append('--host=' + uri.hostname)
+        if uri.port:
+            cmd.append('--port=' + uri.port)
+        if uri.password:
+            cmd.append('--password=' + uri.password)
         cmd.append(database_name)
 
         fd, file_name = tempfile.mkstemp()
@@ -171,7 +175,7 @@ class Database(DatabaseInterface):
 
         args2 = tuple(cmd)
 
-        pipe = exec_pg_command_pipe(*args2)
+        pipe = exec_command_pipe(*args2)
         pipe.stdin.close()
         res = pipe.wait()
         os.remove(file_name)
@@ -192,7 +196,7 @@ class Database(DatabaseInterface):
     @staticmethod
     def list(cursor):
         now = time.time()
-        timeout = int(CONFIG['session_timeout'])
+        timeout = config.getint('session', 'timeout')
         res = Database._list_cache
         if res and abs(Database._list_cache_timestamp - now) < timeout:
             return res

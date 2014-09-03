@@ -4,7 +4,7 @@ from sql import Query, Expression
 
 from .field import Field, SQLType
 from ...transaction import Transaction
-from ...config import CONFIG
+from ... import backend
 
 
 class Binary(Field):
@@ -59,14 +59,14 @@ class Binary(Field):
     def sql_format(value):
         if isinstance(value, (Query, Expression)):
             return value
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'postgresql' and value is not None:
             import psycopg2
             return psycopg2.Binary(value)
         return value
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'postgresql':
             return SQLType('BYTEA', 'BYTEA')
         elif db_type == 'mysql':

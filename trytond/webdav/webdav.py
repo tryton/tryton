@@ -16,7 +16,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.tools import reduce_ids, safe_eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice
 
@@ -26,11 +26,11 @@ __all__ = [
 
 
 def get_webdav_url():
-    if CONFIG['ssl_webdav']:
+    if config.get('ssl', 'privatekey'):
         protocol = 'https'
     else:
         protocol = 'http'
-    hostname = (CONFIG['hostname_webdav']
+    hostname = (config.get('webdav', 'hostname')
         or unicode(socket.getfqdn(), 'utf8'))
     hostname = '.'.join(encodings.idna.ToASCII(part) for part in
         hostname.split('.'))

@@ -13,7 +13,7 @@ from ..tools import safe_eval, get_smtp_server
 from ..transaction import Transaction
 from ..pool import Pool
 from .. import backend
-from ..config import CONFIG
+from ..config import config
 
 __all__ = [
     'Cron',
@@ -132,7 +132,7 @@ class Cron(ModelSQL, ModelView):
             (cron.name, cron.__url__, tb_s),
             raise_exception=False)
 
-        from_addr = CONFIG['smtp_default_from_email']
+        from_addr = config.get('email', 'from')
         to_addr = cron.request_user.email
 
         msg = MIMEText(body, _charset='utf-8')

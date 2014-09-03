@@ -2,7 +2,6 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.protocols.sslsocket import SSLSocket
 from trytond.protocols.dispatcher import dispatch
-from trytond.config import CONFIG
 from trytond.protocols.common import daemon, RegisterHandlerMixin
 from trytond.exceptions import UserError, UserWarning, NotLogged, \
     ConcurrencyException
@@ -10,15 +9,17 @@ from trytond import security
 import SimpleXMLRPCServer
 import SocketServer
 import xmlrpclib
-import traceback
 import socket
 import sys
 import base64
 import datetime
 from types import DictType
+import logging
 
 # convert decimal to float before marshalling:
 from decimal import Decimal
+
+logger = logging.getLogger(__name__)
 
 
 def dump_decimal(self, value, write):
@@ -133,6 +134,7 @@ class GenericXMLRPCRequestHandler:
         database_name = self.path[1:]
         user = self.tryton['user']
         session = self.tryton['session']
+        exception_message = 'Exception calling %s%s' % (method, params)
         try:
             try:
                 method_list = method.split('.')
@@ -150,21 +152,15 @@ class GenericXMLRPCRequestHandler:
                 return dispatch(host, port, 'XML-RPC', database_name, user,
                         session, object_type, object_name, method, *params)
             except (NotLogged, ConcurrencyException), exception:
-                raise xmlrpclib.Fault(exception.code,
-                    '\n'.join(exception.args))
+                logger.debug(exception_message, exc_info=sys.exc_info())
+                raise xmlrpclib.Fault(exception.code, str(exception))
             except (UserError, UserWarning), exception:
+                logger.debug(exception_message, exc_info=sys.exc_info())
                 error, description = exception.args
-                raise xmlrpclib.Fault(exception.code,
-                    '\n'.join((error,) + description))
-            except Exception:
-                tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
-                for path in sys.path:
-                    tb_s = tb_s.replace(path, '')
-                if CONFIG['debug_mode']:
-                    import pdb
-                    traceb = sys.exc_info()[2]
-                    pdb.post_mortem(traceb)
-                raise xmlrpclib.Fault(255, str(sys.exc_value) + '\n' + tb_s)
+                raise xmlrpclib.Fault(exception.code, str(exception))
+            except Exception, exception:
+                logger.error(exception_message, exc_info=sys.exc_info())
+                raise xmlrpclib.Fault(255, str(exception))
         finally:
             security.logout(database_name, user, session)
 

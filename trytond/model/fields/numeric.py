@@ -3,7 +3,7 @@
 from decimal import Decimal
 from sql import Query, Expression, Cast, Literal, Select, CombiningQuery
 
-from ...config import CONFIG
+from ... import backend
 from .field import SQLType
 from .float import Float
 
@@ -26,14 +26,14 @@ class Numeric(Float):
         return value
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'mysql':
             return SQLType('DECIMAL', 'DECIMAL(65, 30)')
         return SQLType('NUMERIC', 'NUMERIC')
 
     def sql_column(self, table):
         column = super(Numeric, self).sql_column(table)
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'sqlite':
             # Must be casted as Decimal is stored as bytes
             column = Cast(column, self.sql_type().base)
@@ -41,7 +41,7 @@ class Numeric(Float):
 
     def _domain_value(self, operator, value):
         value = super(Numeric, self)._domain_value(operator, value)
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'sqlite':
             if isinstance(value, (Select, CombiningQuery)):
                 return value

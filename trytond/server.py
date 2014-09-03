@@ -13,7 +13,7 @@ import time
 from getpass import getpass
 import threading
 
-from trytond.config import CONFIG
+from trytond.config import config, parse_listen
 from trytond import backend
 from trytond.pool import Pool
 from trytond.monitor import monitor
@@ -24,13 +24,12 @@ class TrytonServer(object):
 
     def __init__(self, options):
 
-        CONFIG.update_etc(options['configfile'])
-        CONFIG.update_cmdline(options)
+        config.update_etc(options.configfile)
 
-        if CONFIG['logconf']:
-            logging.config.fileConfig(CONFIG['logconf'])
+        if options.logconf:
+            logging.config.fileConfig(options.logconf)
             logging.getLogger('server').info('using %s as logging '
-                'configuration file', CONFIG['logconf'])
+                'configuration file', options.logconf)
         else:
             logformat = '[%(asctime)s] %(levelname)s:%(name)s:%(message)s'
             datefmt = '%a %b %d %H:%M:%S %Y'
@@ -39,19 +38,20 @@ class TrytonServer(object):
 
         self.logger = logging.getLogger('server')
 
-        if CONFIG.configfile:
+        if options.configfile:
             self.logger.info('using %s as configuration file'
-                % CONFIG.configfile)
+                % options.configfile)
         else:
             self.logger.info('using default configuration')
         self.logger.info('initialising distributed objects services')
         self.xmlrpcd = []
         self.jsonrpcd = []
         self.webdavd = []
+        self.options = options
 
     def run(self):
         "Run the server and never return"
-        update = bool(CONFIG['init'] or CONFIG['update'])
+        update = self.options.init + self.options.update
         init = {}
 
         signal.signal(signal.SIGINT, lambda *a: self.stop())
@@ -61,22 +61,18 @@ class TrytonServer(object):
         if hasattr(signal, 'SIGUSR1'):
             signal.signal(signal.SIGUSR1, lambda *a: self.restart())
 
-        if CONFIG['pidfile']:
-            with open(CONFIG['pidfile'], 'w') as fd_pid:
+        if self.options.pidfile:
+            with open(self.options.pidfile, 'w') as fd_pid:
                 fd_pid.write("%d" % (os.getpid()))
-
-        if not CONFIG["db_name"] \
-                and bool(CONFIG['init'] or CONFIG['update']):
-            raise Exception('Missing database option!')
 
         if not update:
             self.start_servers()
 
-        for db_name in CONFIG["db_name"]:
+        for db_name in self.options.database_names:
             init[db_name] = False
             with Transaction().start(db_name, 0) as transaction:
                 cursor = transaction.cursor
-                if CONFIG['init']:
+                if self.options.init:
                     if not cursor.test():
                         self.logger.info("init db")
                         backend.get('Database').init(cursor)
@@ -85,7 +81,7 @@ class TrytonServer(object):
                 elif not cursor.test():
                     raise Exception("'%s' is not a Tryton database!" % db_name)
 
-        for db_name in CONFIG["db_name"]:
+        for db_name in self.options.database_names:
             if update:
                 with Transaction().start(db_name, 0) as transaction:
                     cursor = transaction.cursor
@@ -99,10 +95,7 @@ class TrytonServer(object):
                 lang = None
             Pool(db_name).init(update=update, lang=lang)
 
-        for kind in ('init', 'update'):
-            CONFIG[kind] = {}
-
-        for db_name in CONFIG['db_name']:
+        for db_name in self.options.database_names:
             if init[db_name]:
                 # try to read password from environment variable
                 # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
@@ -145,7 +138,7 @@ class TrytonServer(object):
 
         threads = {}
         while True:
-            if CONFIG['cron']:
+            if self.options.cron:
                 for dbname in Pool.database_list():
                     thread = threads.get(dbname)
                     if thread and thread.is_alive():
@@ -164,7 +157,7 @@ class TrytonServer(object):
                             args=(dbname,), kwargs={})
                     thread.start()
                     threads[dbname] = thread
-            if CONFIG['auto_reload']:
+            if self.options.debug:
                 for _ in range(60):
                     if monitor():
                         self.restart()
@@ -173,33 +166,31 @@ class TrytonServer(object):
                 time.sleep(60)
 
     def start_servers(self):
+        ssl = config.get('ssl', 'privatekey')
         # Launch Server
-        if CONFIG['jsonrpc']:
+        if config.get('jsonrpc', 'listen'):
             from trytond.protocols.jsonrpc import JSONRPCDaemon
-            for hostname, port in CONFIG['jsonrpc']:
-                self.jsonrpcd.append(JSONRPCDaemon(hostname, port,
-                    CONFIG['ssl_jsonrpc']))
+            for hostname, port in parse_listen(
+                    config.get('jsonrpc', 'listen')):
+                self.jsonrpcd.append(JSONRPCDaemon(hostname, port, ssl))
                 self.logger.info("starting JSON-RPC%s protocol on %s:%d" %
-                    (CONFIG['ssl_jsonrpc'] and ' SSL' or '', hostname or '*',
-                        port))
+                    (ssl and ' SSL' or '', hostname or '*', port))
 
-        if CONFIG['xmlrpc']:
+        if config.get('xmlrpc', 'listen'):
             from trytond.protocols.xmlrpc import XMLRPCDaemon
-            for hostname, port in CONFIG['xmlrpc']:
-                self.xmlrpcd.append(XMLRPCDaemon(hostname, port,
-                    CONFIG['ssl_xmlrpc']))
+            for hostname, port in parse_listen(
+                    config.get('xmlrpc', 'listen')):
+                self.xmlrpcd.append(XMLRPCDaemon(hostname, port, ssl))
                 self.logger.info("starting XML-RPC%s protocol on %s:%d" %
-                    (CONFIG['ssl_xmlrpc'] and ' SSL' or '', hostname or '*',
-                        port))
+                    (ssl and ' SSL' or '', hostname or '*', port))
 
-        if CONFIG['webdav']:
+        if config.get('webdav', 'listen'):
             from trytond.protocols.webdav import WebDAVServerThread
-            for hostname, port in CONFIG['webdav']:
-                self.webdavd.append(WebDAVServerThread(hostname, port,
-                    CONFIG['ssl_webdav']))
+            for hostname, port in parse_listen(
+                    config.get('webdav', 'listen')):
+                self.webdavd.append(WebDAVServerThread(hostname, port, ssl))
                 self.logger.info("starting WebDAV%s protocol on %s:%d" %
-                    (CONFIG['ssl_webdav'] and ' SSL' or '', hostname or '*',
-                        port))
+                    (ssl and ' SSL' or '', hostname or '*', port))
 
         for servers in (self.xmlrpcd, self.jsonrpcd, self.webdavd):
             for server in servers:
@@ -211,8 +202,8 @@ class TrytonServer(object):
                 server.stop()
                 server.join()
         if exit:
-            if CONFIG['pidfile']:
-                os.unlink(CONFIG['pidfile'])
+            if self.options.pidfile:
+                os.unlink(self.options.pidfile)
             logging.getLogger('server').info('stopped')
             logging.shutdown()
             sys.exit(0)

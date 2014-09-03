@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from sql import Query, Expression
 
-from ...config import CONFIG
+from ... import backend
 from .field import Field, SQLType
 from ...pyson import PYSON
 
@@ -59,7 +59,7 @@ class Float(Field):
         return float(value)
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'postgresql':
             return SQLType('FLOAT8', 'FLOAT8')
         elif db_type == 'mysql':

@@ -10,6 +10,7 @@ Introduction to all the key parts of trytond:
     :maxdepth: 1
 
     install
+    configuration
     logs
     models/index
     models/fields_default_value

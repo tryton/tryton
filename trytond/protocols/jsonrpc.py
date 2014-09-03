@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from trytond.protocols.sslsocket import SSLSocket
 from trytond.protocols.dispatcher import dispatch
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.protocols.common import daemon, RegisterHandlerMixin
 from trytond.exceptions import UserError, UserWarning, NotLogged, \
     ConcurrencyException
@@ -157,10 +157,6 @@ class SimpleJSONRPCDispatcher(SimpleXMLRPCServer.SimpleXMLRPCDispatcher):
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
             for path in sys.path:
                 tb_s = tb_s.replace(path, '')
-            if CONFIG['debug_mode']:
-                import pdb
-                traceb = sys.exc_info()[2]
-                pdb.post_mortem(traceb)
             # report exception back to server
             response['error'] = (str(sys.exc_value), tb_s)
 
@@ -229,7 +225,7 @@ class SimpleJSONRPCRequestHandler(RegisterHandlerMixin,
         path = posixpath.normpath(urllib.unquote(path))
         words = path.split('/')
         words = filter(None, words)
-        path = CONFIG['jsondata_path']
+        path = config.get('jsonrpc', 'data')
         for word in words:
             drive, word = os.path.splitdrive(word)
             head, word = os.path.split(word)
@@ -247,7 +243,8 @@ class SimpleJSONRPCRequestHandler(RegisterHandlerMixin,
 
     def send_tryton_url(self, path):
         self.send_response(300)
-        hostname = CONFIG['hostname'] or unicode(socket.getfqdn(), 'utf8')
+        hostname = (config.get('jsonrpc', 'hostname')
+            or unicode(socket.getfqdn(), 'utf8'))
         hostname = '.'.join(encodings.idna.ToASCII(part) for part in
             hostname.split('.'))
         values = {

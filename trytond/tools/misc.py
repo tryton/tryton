@@ -15,8 +15,9 @@ from array import array
 from itertools import islice
 from sql import Literal
 from sql.operators import Or
-from trytond.config import CONFIG
+
 from trytond.const import OPERATORS
+from trytond.config import config, parse_uri
 from trytond.transaction import Transaction
 
 
@@ -34,42 +35,7 @@ def find_in_path(name):
     return name
 
 
-def find_pg_tool(name):
-    if CONFIG['pg_path'] and CONFIG['pg_path'] != 'None':
-        return os.path.join(CONFIG['pg_path'], name)
-    else:
-        return find_in_path(name)
-
-
-def exec_pg_command(name, *args):
-    prog = find_pg_tool(name)
-    if not prog:
-        raise Exception('Couldn\'t find %s' % name)
-    args2 = (os.path.basename(prog),) + args
-    return os.spawnv(os.P_WAIT, prog, args2)
-
-
-def exec_pg_command_pipe(name, *args):
-    prog = find_pg_tool(name)
-    if not prog:
-        raise Exception('Couldn\'t find %s' % name)
-    if os.name == "nt":
-        cmd = '"' + prog + '" ' + ' '.join(args)
-    else:
-        cmd = prog + ' ' + ' '.join(args)
-
-    # if db_password is set in configuration we should pass
-    # an environment variable PGPASSWORD to our subprocess
-    # see libpg documentation
-    child_env = dict(os.environ)
-    if CONFIG['db_password']:
-        child_env['PGPASSWORD'] = CONFIG['db_password']
-    pipe = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE, env=child_env)
-    return pipe
-
-
-def exec_command_pipe(name, *args):
+def exec_command_pipe(name, *args, **kwargs):
     prog = find_in_path(name)
     if not prog:
         raise Exception('Couldn\'t find %s' % name)
@@ -77,7 +43,11 @@ def exec_command_pipe(name, *args):
         cmd = '"' + prog + '" ' + ' '.join(args)
     else:
         cmd = prog + ' ' + ' '.join(args)
-    return os.popen2(cmd, 'b')
+    child_env = dict(os.environ)
+    if kwargs.get('env'):
+        child_env.update(kwargs['env'])
+    return subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE, env=child_env)
 
 
 def file_open(name, mode="r", subdir='modules'):
@@ -134,17 +104,17 @@ def get_smtp_server():
     :return: A SMTP instance. The quit() method must be call when all
     the calls to sendmail() have been made.
     """
-    if CONFIG['smtp_ssl']:
-        smtp_server = smtplib.SMTP_SSL(CONFIG['smtp_server'],
-                CONFIG['smtp_port'])
+    uri = parse_uri(config.get('email', 'uri'))
+    if uri.scheme.startswith('smtps'):
+        smtp_server = smtplib.SMTP_SSL(uri.hostname, uri.port)
     else:
-        smtp_server = smtplib.SMTP(CONFIG['smtp_server'], CONFIG['smtp_port'])
+        smtp_server = smtplib.SMTP(uri.hostname, uri.port)
 
-    if CONFIG['smtp_tls']:
+    if 'tls' in uri.scheme:
         smtp_server.starttls()
 
-    if CONFIG['smtp_user'] and CONFIG['smtp_password']:
-        smtp_server.login(CONFIG['smtp_user'], CONFIG['smtp_password'])
+    if uri.username and uri.password:
+        smtp_server.login(uri.username, uri.password)
 
     return smtp_server
 

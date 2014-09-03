@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from trytond.backend.database import DatabaseInterface, CursorInterface
-from trytond.config import CONFIG
+from trytond.config import config
 import os
 from decimal import Decimal
 import datetime
@@ -174,7 +174,7 @@ class Database(DatabaseInterface):
             path = ':memory:'
         else:
             db_filename = self.database_name + '.sqlite'
-            path = os.path.join(CONFIG['data_path'], db_filename)
+            path = os.path.join(config.get('database', 'path'), db_filename)
             if not os.path.isfile(path):
                 raise IOError('Database "%s" doesn\'t exist!' % db_filename)
         if self._conn is not None:
@@ -216,7 +216,7 @@ class Database(DatabaseInterface):
         else:
             if os.sep in database_name:
                 return
-            path = os.path.join(CONFIG['data_path'],
+            path = os.path.join(config.get('database', 'path'),
                     database_name + '.sqlite')
         with sqlite.connect(path) as conn:
             cursor = conn.cursor()
@@ -229,7 +229,7 @@ class Database(DatabaseInterface):
             return
         if os.sep in database_name:
             return
-        os.remove(os.path.join(CONFIG['data_path'],
+        os.remove(os.path.join(config.get('database', 'path'),
             database_name + '.sqlite'))
 
     @staticmethod
@@ -238,7 +238,7 @@ class Database(DatabaseInterface):
             raise Exception('Unable to dump memory database!')
         if os.sep in database_name:
             raise Exception('Wrong database name!')
-        path = os.path.join(CONFIG['data_path'],
+        path = os.path.join(config.get('database', 'path'),
                 database_name + '.sqlite')
         with open(path, 'rb') as file_p:
             data = file_p.read()
@@ -250,7 +250,7 @@ class Database(DatabaseInterface):
             raise Exception('Unable to restore memory database!')
         if os.sep in database_name:
             raise Exception('Wrong database name!')
-        path = os.path.join(CONFIG['data_path'],
+        path = os.path.join(config.get('database', 'path'),
                 database_name + '.sqlite')
         if os.path.isfile(path):
             raise Exception('Database already exists!')
@@ -262,7 +262,7 @@ class Database(DatabaseInterface):
         res = []
         listdir = [':memory:']
         try:
-            listdir += os.listdir(CONFIG['data_path'])
+            listdir += os.listdir(config.get('database', 'path'))
         except OSError:
             pass
         for db_file in listdir:

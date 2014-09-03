@@ -2,7 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 from sql import Query, Expression
 
-from ...config import CONFIG
+from ... import backend
 from .field import Field, SQLType
 
 
@@ -13,7 +13,7 @@ class Integer(Field):
     _type = 'integer'
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'postgresql':
             return SQLType('INT4', 'INT4')
         elif db_type == 'mysql':
@@ -22,7 +22,7 @@ class Integer(Field):
             return SQLType('INTEGER', 'INTEGER')
 
     def sql_format(self, value):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if (db_type == 'sqlite'
                 and value is not None
                 and not isinstance(value, (Query, Expression))):
@@ -37,7 +37,7 @@ class BigInteger(Integer):
     _type = 'biginteger'
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'postgresql':
             return SQLType('INT8', 'INT8')
         return super(BigInteger, self).sql_type()

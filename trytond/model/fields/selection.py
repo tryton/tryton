@@ -4,7 +4,7 @@ import warnings
 
 from sql.conditionals import Case
 
-from ...config import CONFIG
+from ... import backend
 from .field import Field, SQLType
 
 
@@ -44,7 +44,7 @@ class Selection(Field):
     __init__.__doc__ += Field.__init__.__doc__
 
     def sql_type(self):
-        db_type = CONFIG['db_type']
+        db_type = backend.name()
         if db_type == 'mysql':
             return SQLType('CHAR', 'VARCHAR(255)')
         return SQLType('VARCHAR', 'VARCHAR')

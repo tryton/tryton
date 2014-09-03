@@ -7,16 +7,17 @@ import unittest
 import doctest
 from lxml import etree
 
-from trytond.config import CONFIG
 from trytond.pool import Pool
 from trytond import backend
-from trytond.protocols.dispatcher import create
+from trytond.protocols.dispatcher import create, drop
 from trytond.transaction import Transaction
 from trytond.pyson import PYSONEncoder, Eval
 from trytond.exceptions import UserError
+from trytond import security
 
 __all__ = ['POOL', 'DB_NAME', 'USER', 'USER_PASSWORD', 'CONTEXT',
-    'install_module', 'test_view', 'test_depends', 'doctest_dropdb',
+    'install_module', 'test_view', 'test_depends',
+    'doctest_setup', 'doctest_teardown',
     'suite', 'all_suite', 'modules_suite']
 
 Pool.start()
@@ -27,6 +28,7 @@ DB_NAME = os.environ['DB_NAME']
 DB = backend.get('Database')(DB_NAME)
 Pool.test = True
 POOL = Pool(DB_NAME)
+security.check_super = lambda *a, **k: True
 
 
 class ModelViewTestCase(unittest.TestCase):
@@ -72,13 +74,7 @@ def install_module(name):
     '''
     Install module for the tested database
     '''
-    Database = backend.get('Database')
-    database = Database().connect()
-    cursor = database.cursor()
-    databases = database.list(cursor)
-    cursor.close()
-    if DB_NAME not in databases:
-        create(DB_NAME, CONFIG['admin_passwd'], 'en_US', USER_PASSWORD)
+    create_db()
     with Transaction().start(DB_NAME, USER,
             context=CONTEXT) as transaction:
         Module = POOL.get('ir.module.module')
@@ -177,16 +173,32 @@ def test_depends():
                         list(depends - set(model._fields)), mname, fname))
 
 
-def doctest_dropdb(test):
-    '''Remove SQLite memory database'''
-    from trytond.backend.sqlite.database import Database as SQLiteDatabase
-    database = SQLiteDatabase().connect()
-    cursor = database.cursor(autocommit=True)
-    try:
-        SQLiteDatabase.drop(cursor, ':memory:')
-        cursor.commit()
-    finally:
-        cursor.close()
+def db_exist():
+    Database = backend.get('Database')
+    database = Database().connect()
+    cursor = database.cursor()
+    databases = database.list(cursor)
+    cursor.close()
+    return DB_NAME in databases
+
+
+def create_db():
+    if not db_exist():
+        create(DB_NAME, None, 'en_US', USER_PASSWORD)
+
+
+def drop_db():
+    if db_exist():
+        drop(DB_NAME, None)
+
+
+def drop_create():
+    if db_exist:
+        drop_db()
+    create_db()
+
+doctest_setup = lambda test: drop_create()
+doctest_teardown = lambda test: drop_db()
 
 
 def suite():
