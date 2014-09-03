@@ -342,4 +342,4 @@ class Cursor(CursorInterface):
 
     def update_auto_increment(self, table, value):
         self.cursor.execute('ALTER TABLE `%s` AUTO_INCREMENT = %%s' % table,
-                value)
+                (value,))
