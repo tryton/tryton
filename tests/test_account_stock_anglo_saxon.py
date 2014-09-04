@@ -2,9 +2,15 @@
 #this repository contains the full copyright notices and license terms.
 import unittest
 import doctest
+
+from mock import Mock, patch
+
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import DB_NAME, USER, CONTEXT
 from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class AccountStockAngloSaxonTestCase(unittest.TestCase):
@@ -20,6 +26,39 @@ class AccountStockAngloSaxonTestCase(unittest.TestCase):
     def test0006depends(self):
         'Test depends'
         test_depends()
+
+    def test_get_anglo_saxon_move(self):
+        'Test _get_anglo_saxon_move'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            pool = Pool()
+            Move = pool.get('stock.move')
+            Uom = pool.get('product.uom')
+            Currency = pool.get('currency.currency')
+
+            def move(quantity, price):
+                move = Mock()
+                move.quantity = quantity
+                move.unit_price = price
+                move.cost_price = price
+                move.in_anglo_saxon_quantity = 0
+                move.out_anglo_saxon_quantity = 0
+                return move
+
+            with patch.object(Uom, 'compute_qty') as compute_qty, \
+                    patch.object(Currency, 'compute') as compute:
+                compute_qty.side_effect = lambda *args, **kwargs: args[1]
+                compute.side_effect = lambda *args, **kwargs: args[1]
+
+                moves = [move(1, 3), move(2, 2)]
+                result = list(Move._get_anglo_saxon_move(
+                        moves, 1, 'in_supplier'))
+                self.assertEqual(result, [(moves[0], 1, 3)])
+
+                moves = [move(1, 3), move(2, 2)]
+                result = list(Move._get_anglo_saxon_move(
+                        moves, 2, 'in_supplier'))
+                self.assertEqual(result,
+                    [(moves[0], 1, 3), (moves[1], 1, 2)])
 
 
 def suite():
