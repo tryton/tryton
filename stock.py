@@ -141,6 +141,7 @@ class Move:
                 cost_price = move.cost_price
 
             yield (move, qty, cost_price)
+            consumed_qty += qty
 
     @classmethod
     def update_anglo_saxon_quantity_product_cost(cls, product, moves,
