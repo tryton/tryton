@@ -211,8 +211,7 @@ Create a supplier invoice::
 
 Create a supplier invoice with an accountant::
 
-    >>> current_config = config.set_trytond(user='accountant',
-    ...     password='accountant', database_name=current_config.database_name)
+    >>> current_config.user = accountant.id
     >>> Invoice = Model.get('account.invoice')
     >>> Partner = Model.get('party.party')
     >>> supplier, = Partner.find([('name', '=', 'Supplier')])

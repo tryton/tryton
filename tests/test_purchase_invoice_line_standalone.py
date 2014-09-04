@@ -3,7 +3,8 @@
 import unittest
 import doctest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends, doctest_dropdb
+from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import doctest_setup, doctest_teardown
 
 
 class PurchaseInvoiceLineStandaloneTestCase(unittest.TestCase):
@@ -28,6 +29,6 @@ def suite():
             PurchaseInvoiceLineStandaloneTestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_purchase_invoice_line_standalone.rst',
-            setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='UTF-8',
+            setUp=doctest_setup, tearDown=doctest_teardown, encoding='UTF-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
