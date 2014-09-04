@@ -2,12 +2,10 @@
 #this repository contains the full copyright notices and license terms.
 from unittest import TestCase
 from proteus import config, Report, Model
+from .common import ProteusTestCase
 
 
-class TestReport(TestCase):
-
-    def setUp(self):
-        config.set_trytond(database_type='sqlite')
+class TestReport(ProteusTestCase):
 
     def test_model_graph(self):
         IrModel = Model.get('ir.model')
