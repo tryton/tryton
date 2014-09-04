@@ -9,6 +9,7 @@ except ImportError:
     import json
 import locale
 import gettext
+from functools import wraps
 
 from tryton.config import CONFIG
 from tryton.common.cellrendererbutton import CellRendererButton
@@ -23,6 +24,21 @@ from .list_gtk.widget import (Affix, Char, Int, Boolean, URL, Date, Datetime,
     ProgressBar, Button)
 
 _ = gettext.gettext
+
+
+def delay(func):
+    """Decorator for ViewTree method to delay execution when idle and if
+    display counter did not change"""
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        def wait():
+            if not self.treeview.props.window:
+                return
+            if self.treeview.display_counter == display_counter:
+                func(self, *args, **kwargs)
+        display_counter = self.treeview.display_counter
+        gobject.idle_add(wait)
+    return wrapper
 
 
 def path_convert_id2pos(model, id_path):
@@ -1068,6 +1084,7 @@ class ViewTree(View):
                 if field:
                     field.state_set(record)
 
+    @delay
     def update_sum(self):
         selected_records = self.selected_records
         for name, label in self.sum_widgets:
@@ -1076,7 +1093,7 @@ class ViewTree(View):
             loaded = True
             digit = 0
             for record in self.screen.group:
-                if not record.get_loaded([name]):
+                if not record.get_loaded([name]) and record.id >= 0:
                     loaded = False
                     break
                 field = record[name]
