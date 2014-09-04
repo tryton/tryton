@@ -90,6 +90,7 @@ class Move:
             if consumed_qty >= quantity:
                 break
             yield (move, qty)
+            consumed_qty += qty
 
     @classmethod
     def update_anglo_saxon_quantity_product_cost(cls, product, moves,
