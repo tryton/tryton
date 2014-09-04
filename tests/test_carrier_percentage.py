@@ -5,7 +5,7 @@ import doctest
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
-    test_view, test_depends, doctest_dropdb
+    test_view, test_depends, doctest_setup, doctest_teardown
 from trytond.transaction import Transaction
 
 
@@ -86,6 +86,6 @@ def suite():
             CarrierWeightTestCase))
     suite.addTests(doctest.DocFileSuite(
             'scenario_carrier_percentage_with_purchase_shipment_cost.rst',
-            setUp=doctest_dropdb, tearDown=doctest_dropdb, encoding='utf-8',
+            setUp=doctest_setup, tearDown=doctest_teardown, encoding='utf-8',
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
