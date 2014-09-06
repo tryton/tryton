@@ -204,6 +204,8 @@ def is_module_to_install(module, update):
 def load_module_graph(graph, pool, update=None, lang=None):
     if lang is None:
         lang = [config.get('database', 'language')]
+    if update is None:
+        update = []
     modules_todo = []
     models_to_update_history = set()
     logger = logging.getLogger('modules')
