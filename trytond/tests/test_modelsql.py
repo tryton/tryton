@@ -20,7 +20,7 @@ class ModelSQLTestCase(unittest.TestCase):
         self.modelsql = POOL.get('test.modelsql')
         self.modelsql_timestamp = POOL.get('test.modelsql.timestamp')
 
-    @unittest.skipIf(backend.name == 'sqlite',
+    @unittest.skipIf(backend.name() == 'sqlite',
         'SQLite not concerned because tryton don\'t set "NOT NULL"'
         'constraint: "ALTER TABLE" don\'t support NOT NULL constraint'
         'without default value')
