@@ -43,14 +43,12 @@ def dispatch(host, port, protocol, database_name, user, session, object_type,
             with Transaction().start(database_name, 0):
                 Cache.clean(database_name)
                 Cache.resets(database_name)
-            logger = logging.getLogger('dispatcher')
             msg = res and 'successful login' or 'bad login or password'
             logger.info('%s \'%s\' from %s:%d using %s on database \'%s\''
                 % (msg, user, host, port, protocol, database_name))
             return res or False
         elif method == 'logout':
             name = security.logout(database_name, user, session)
-            logger = logging.getLogger('dispatcher')
             logger.info(('logout \'%s\' from %s:%d '
                     'using %s on database \'%s\'')
                 % (name, host, port, protocol, database_name))
@@ -210,7 +208,6 @@ def create(database_name, password, lang, admin_password):
     Database = backend.get('Database')
     security.check_super(password)
     res = False
-    logger = logging.getLogger('database')
 
     try:
         with Transaction().start(None, 0, close=True, autocommit=True) \
@@ -260,7 +257,6 @@ def drop(database_name, password):
     Database(database_name).close()
     # Sleep to let connections close
     time.sleep(1)
-    logger = logging.getLogger('database')
 
     with Transaction().start(None, 0, close=True, autocommit=True) \
         as transaction:
@@ -284,7 +280,6 @@ def dump(database_name, password):
     Database(database_name).close()
     # Sleep to let connections close
     time.sleep(1)
-    logger = logging.getLogger('database')
 
     data = Database.dump(database_name)
     logger.info('DUMP DB: %s' % (database_name))
@@ -293,7 +288,6 @@ def dump(database_name, password):
 
 def restore(database_name, password, data, update=False):
     Database = backend.get('Database')
-    logger = logging.getLogger('database')
     security.check_super(password)
     try:
         database = Database().connect()
