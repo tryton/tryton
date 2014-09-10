@@ -17,6 +17,7 @@ Imports::
 Create database::
 
     >>> config = config.set_trytond()
+    >>> config.pool.test = True
 
 Install carrier_weight, purchase_shipment_cost and sale_shipment_cost::
 
