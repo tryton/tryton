@@ -704,3 +704,70 @@ Return sales using the wizard::
     ...     ])
     >>> sorted([x.quantity for x in returned_sale.lines])
     [None, -1.0]
+
+Create a sale to be invoiced on shipment partialy and check correctly linked
+to invoices::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale.invoice_method = 'shipment'
+    >>> line = sale.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 10.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> shipment, = sale.shipments
+    >>> config.user = stock_user.id
+    >>> for move in shipment.inventory_moves:
+    ...     move.quantity = 5.0
+    >>> shipment.click('assign_try')
+    True
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> invoice, = sale.invoices
+    >>> invoice_line, = invoice.lines
+    >>> invoice_line.quantity
+    5.0
+    >>> stock_move, = invoice_line.stock_moves
+    >>> stock_move.quantity
+    5.0
+    >>> stock_move.state
+    u'done'
+
+Create a sale to be sent on invoice partialy and check correctly linked to
+invoices::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale.shipment_method = 'invoice'
+    >>> line = sale.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 10.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> invoice, = sale.invoices
+    >>> config.user = account_user.id
+    >>> invoice_line, = invoice.lines
+    >>> invoice_line.stock_moves == []
+    True
+    >>> invoice_line.quantity = 5.0
+    >>> invoice.click('post')
+    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay.form.journal = cash_journal
+    >>> pay.execute('choice')
+    >>> invoice.reload()
+    >>> invoice.state
+    u'paid'
+    >>> config.user = sale_user.id
+    >>> invoice_line.reload()
+    >>> stock_move, = invoice_line.stock_moves
+    >>> stock_move.quantity
+    5.0
+    >>> stock_move.state
+    u'draft'
