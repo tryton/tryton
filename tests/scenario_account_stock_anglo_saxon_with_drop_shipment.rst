@@ -17,6 +17,7 @@ Imports::
 Create database::
 
     >>> config = config.set_trytond()
+    >>> config.pool.test = True
 
 Install sale_supply, sale, purchase::
 
