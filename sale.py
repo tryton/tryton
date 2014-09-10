@@ -1336,7 +1336,8 @@ class SaleLine(ModelSQL, ModelView):
                         self.unit)
                     if move.invoiced_quantity < move.quantity:
                         stock_moves.append(move)
-        invoice_line.stock_moves = stock_moves
+        if self.sale.shipment_method == 'order':
+            invoice_line.stock_moves = stock_moves
 
         skip_ids = set(l.id for i in self.sale.invoices_recreated
             for l in i.lines)
@@ -1405,7 +1406,8 @@ class SaleLine(ModelSQL, ModelView):
         invoice_lines = []
         if self.sale.shipment_method == 'order':
             quantity = abs(self.quantity)
-            invoice_lines = self.invoice_lines
+            if self.sale.invoice_method == 'order':
+                invoice_lines = self.invoice_lines
         else:
             quantity = 0.0
             for invoice_line in self.invoice_lines:
