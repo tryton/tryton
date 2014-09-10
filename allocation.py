@@ -1,7 +1,9 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
+from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 __all__ = ['Allocation']
 
@@ -14,15 +16,19 @@ class Allocation(ModelSQL, ModelView):
             select=True, ondelete='CASCADE')
     work = fields.Many2One('project.work', 'Work', required=True,
             select=True, ondelete='CASCADE')
-    percentage = fields.Float('Percentage', digits=(16, 2), required=True)
+    percentage = fields.Float('Percentage', digits=(16, 2), required=True,
+        domain=[('percentage', '>', 0.0)])
 
     @classmethod
-    def __setup__(cls):
-        super(Allocation, cls).__setup__()
-        cls._sql_constraints += [
-            ('percentage_positive', 'CHECK(percentage > 0)',
-                'Percentage must be greater than zero')
-            ]
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().cursor
+
+        super(Allocation, cls).__register__(module_name)
+
+        # Migration from 3.2:
+        table = TableHandler(cursor, cls, module_name)
+        table.drop_constraint('percentage_positive')
 
     @staticmethod
     def default_percentage():
