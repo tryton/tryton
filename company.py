@@ -64,6 +64,10 @@ class Employee(ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
 
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
+
     def get_rec_name(self, name):
         return self.party.rec_name
 
