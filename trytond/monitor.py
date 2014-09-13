@@ -32,14 +32,17 @@ def _modified(path):
     return False
 
 
-def monitor():
+def monitor(files):
     '''
-    Monitor module files for change
+    Monitor files and module files for change
 
     :return: True if at least one file has changed
     '''
     global _MODULES
     modified = False
+    for file_ in files:
+        if _modified(file_):
+            modified = True
     directories = set()
     for module in sys.modules.keys():
         if not module.startswith('trytond.'):

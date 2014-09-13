@@ -158,7 +158,8 @@ class TrytonServer(object):
                     threads[dbname] = thread
             if self.options.dev:
                 for _ in range(60):
-                    if monitor():
+                    if monitor([self.options.configfile]
+                            if self.options.configfile else []):
                         self.restart()
                     time.sleep(1)
             else:
