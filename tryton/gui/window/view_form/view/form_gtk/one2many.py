@@ -27,7 +27,7 @@ class One2Many(Widget):
         self._position = 0
         self._length = 0
 
-        hbox = gtk.HBox(homogeneous=False, spacing=0)
+        self.title_box = hbox = gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
         label = gtk.Label(attrs.get('string', ''))
@@ -262,6 +262,7 @@ class One2Many(Widget):
             size_limit = (field_size is not None
                 and o2m_size >= field_size >= 0)
         else:
+            o2m_size = None
             size_limit = False
 
         self.but_new.set_sensitive(bool(
@@ -299,6 +300,17 @@ class One2Many(Widget):
                     and self._position
                     and access['write']
                     and access['read']))
+
+        # New button must be added to focus chain to allow keyboard only
+        # creation when there is no existing record on form view.
+        focus_chain = self.title_box.get_focus_chain()
+        if o2m_size == 0 and self.screen.current_view.view_type == 'form':
+            if self.but_new not in focus_chain:
+                focus_chain.append(self.but_new)
+        else:
+            if self.but_new in focus_chain:
+                focus_chain.remove(self.but_new)
+        self.title_box.set_focus_chain(focus_chain)
 
     def _validate(self):
         self.view.set_value()
