@@ -1176,8 +1176,7 @@ class PurchaseLine(ModelSQL, ModelView):
 
     def get_amount(self, name):
         if self.type == 'line':
-            return self.purchase.currency.round(
-                Decimal(str(self.quantity)) * self.unit_price)
+            return self.on_change_with_amount()
         elif self.type == 'subtotal':
             amount = Decimal('0.0')
             for line2 in self.purchase.lines:
