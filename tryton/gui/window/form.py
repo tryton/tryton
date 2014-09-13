@@ -311,20 +311,13 @@ class Form(SignalEvent, TabContent):
                 self.message_info(_('Records removed!'), 'green')
 
     def sig_import(self, widget=None):
-        while(self.screen.view_to_load):
-            self.screen.load_view_to_load()
-        fields = {}
-        for name, field in self.screen.group.fields.iteritems():
-            fields[name] = field.attrs
         WinImport(self.model, self.screen.context)
 
     def sig_save_as(self, widget=None):
-        while self.screen.view_to_load:
-            self.screen.load_view_to_load()
-        fields = {}
-        for name, field in self.screen.group.fields.iteritems():
-            fields[name] = field.attrs
-        WinExport(self.model, self.ids_get(), context=self.screen.context)
+        export = WinExport(self.model, self.ids_get(),
+            context=self.screen.context)
+        for name in self.screen.current_view.get_fields():
+            export.sel_field(name)
 
     def sig_new(self, widget=None, autosave=True):
         if not common.MODELACCESS[self.model]['create']:

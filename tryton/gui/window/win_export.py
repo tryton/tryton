@@ -378,8 +378,13 @@ class WinExport(NoModal):
 
             if name not in self.fields:
                 continue
-            long_string = self.fields[name][1]
-            self.model2.append((long_string, name))
+            self.sel_field(name)
+
+    def sel_field(self, name):
+        _, long_string, relation = self.fields[name]
+        if relation:
+            return
+        self.model2.append((long_string, name))
 
     def destroy(self):
         super(WinExport, self).destroy()
