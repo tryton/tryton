@@ -82,7 +82,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="tax_code_II_44">
             <field name="name">Services intra-communautaires</field>
-            <field name="code">45</field>
+            <field name="code">44</field>
             <field name="parent" ref="tax_code_II"/>
             <field name="account" ref="root"/>
         </record>

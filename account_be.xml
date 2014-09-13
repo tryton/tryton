@@ -1460,18 +1460,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="06"/>
         </record>
 
-        <record model="account.account.template" id="067">
+        <record model="account.account.template" id="066">
             <field name="name">Débiteurs pour devises vendues à terme</field>
-            <field name="code">067</field>
+            <field name="code">066</field>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="hors_bilan"/>
             <field name="parent" ref="06"/>
         </record>
 
-        <record model="account.account.template" id="068">
+        <record model="account.account.template" id="067">
             <field name="name">Devises vendues à terme - à livrer</field>
-            <field name="code">068</field>
+            <field name="code">067</field>
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="hors_bilan"/>
