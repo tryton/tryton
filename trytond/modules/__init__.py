@@ -190,9 +190,7 @@ def create_graph(module_list):
 
 
 def is_module_to_install(module, update):
-    if module != 'tests':
-        return True
-    elif module in update:
+    if module in update:
         return True
     return False
 
