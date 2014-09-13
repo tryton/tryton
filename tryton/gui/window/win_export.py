@@ -1,5 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of this
 #repository contains the full copyright notices and license terms.
+import sys
 import gtk
 import gobject
 import gettext
@@ -97,7 +98,7 @@ class WinExport(NoModal):
         img_button = gtk.Image()
         img_button.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
         button_save_export.set_image(img_button)
-        button_save_export.connect_after('clicked', self.add_predef)
+        button_save_export.connect_after('clicked', self.addreplace_predef)
         vbox_buttons.pack_start(button_save_export, False, False, 0)
 
         button_del_export = gtk.Button(_("Delete Export"), stock=None,
@@ -189,7 +190,23 @@ class WinExport(NoModal):
         self.model_populate(self._get_fields(model))
 
         self.view1.set_model(self.model1)
+        self.view1.connect('row-activated', self.sig_sel)
         self.view2.set_model(self.model2)
+        self.view2.connect('row-activated', self.sig_unsel)
+        if sys.platform != 'darwin':
+            self.view2.drag_source_set(
+                gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
+                [('EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
+                gtk.gdk.ACTION_MOVE)
+            self.view2.drag_dest_set(gtk.DEST_DEFAULT_ALL,
+                [('EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
+                gtk.gdk.ACTION_MOVE)
+            self.view2.connect('drag-begin', self.drag_begin)
+            self.view2.connect('drag-motion', self.drag_motion)
+            self.view2.connect('drag-drop', self.drag_drop)
+            self.view2.connect("drag-data-get", self.drag_data_get)
+            self.view2.connect('drag-data-received', self.drag_data_received)
+            self.view2.connect('drag-data-delete', self.drag_data_delete)
 
         self.wid_action = combo_saveas
         self.wid_write_field_names = checkbox_add_field_names
@@ -201,7 +218,8 @@ class WinExport(NoModal):
             gtk.CellRendererText(), text=2))
         scrolledwindow_exports.add(self.pref_export)
 
-        self.pref_export.connect("row-activated", self.sel_predef)
+        self.pref_export.connect("button-press-event", self.export_click)
+        self.pref_export.connect("key-press-event", self.export_keypress)
 
         # Fill the predefined export tree view
         self.predef_model = gtk.ListStore(
@@ -264,7 +282,7 @@ class WinExport(NoModal):
                 prefix_field + '/', string_ + '/')
             self.model1.remove(child)
 
-    def sig_sel(self, widget=None):
+    def sig_sel(self, *args):
         sel = self.view1.get_selection()
         sel.selected_foreach(self._sig_sel_add)
 
@@ -276,7 +294,7 @@ class WinExport(NoModal):
         num = self.model2.append()
         self.model2.set(num, 0, long_string, 1, name)
 
-    def sig_unsel(self, widget=None):
+    def sig_unsel(self, *args):
         store, paths = self.view2.get_selection().get_selected_rows()
         while paths:
             store.remove(store.get_iter(paths[0]))
@@ -313,16 +331,31 @@ class WinExport(NoModal):
                 export['name']))
         self.pref_export.set_model(self.predef_model)
 
-    def add_predef(self, widget):
-        name = common.ask(_('What is the name of this export?'))
-        if not name:
-            return
+    def addreplace_predef(self, widget):
         iter = self.model2.get_iter_root()
         fields = []
         while iter:
             field_name = self.model2.get_value(iter, 1)
             fields.append(field_name)
             iter = self.model2.iter_next(iter)
+        if not fields:
+            return
+
+        selection = self.pref_export.get_selection().get_selected()
+        if selection is None:
+            return
+        model, iter_ = selection
+        if iter_ is None:
+            pref_id = None
+            name = common.ask(_('What is the name of this export?'))
+            if not name:
+                return
+        else:
+            pref_id = model.get_value(iter_, 0)
+            name = model.get_value(iter_, 2)
+            override = common.sur(_("Override '%s' definition?") % name)
+            if not override:
+                return
         try:
             new_id, = RPCExecute('model', 'ir.export', 'create', [{
                     'name': name,
@@ -331,13 +364,16 @@ class WinExport(NoModal):
                                         'name': x,
                                         } for x in fields])],
                     }], context=self.context)
+            if pref_id:
+                RPCExecute('model', 'ir.export', 'delete', [pref_id],
+                    context=self.context)
         except RPCException:
             return
-        self.predef_model.append((
-            new_id,
-            fields,
-            name))
-        self.pref_export.set_model(self.predef_model)
+        if iter_ is None:
+            self.predef_model.append((new_id, fields, name))
+        else:
+            model.set_value(iter_, 0, new_id)
+            model.set_value(iter_, 1, fields)
 
     def remove_predef(self, widget):
         sel = self.pref_export.get_selection().get_selected()
@@ -358,7 +394,7 @@ class WinExport(NoModal):
                 break
         self.pref_export.set_model(self.predef_model)
 
-    def sel_predef(self, widget, path, column):
+    def sel_predef(self, path):
         self.model2.clear()
         for name in self.predef_model[path[0]][1]:
             if name not in self.fields:
@@ -455,3 +491,84 @@ class WinExport(NoModal):
             common.warning(_("Operation failed!\nError message:\n%s")
                 % (exception.faultCode,), _('Error'))
             return False
+
+    def drag_begin(self, treeview, context):
+        return True
+
+    def drag_motion(self, treeview, context, x, y, time):
+        try:
+            treeview.set_drag_dest_row(*treeview.get_dest_row_at_pos(x, y))
+        except TypeError:
+            treeview.set_drag_dest_row(len(treeview.get_model()) - 1,
+                gtk.TREE_VIEW_DROP_AFTER)
+        context.drag_status(gtk.gdk.ACTION_MOVE, time)
+        return True
+
+    def drag_drop(self, treeview, context, x, y, time):
+        treeview.emit_stop_by_name('drag-drop')
+        return True
+
+    def drag_data_get(self, treeview, context, selection, target_id,
+            etime):
+        treeview.emit_stop_by_name('drag-data-get')
+
+        def _func_sel_get(store, path, iter_, data):
+            data.append(path[0])
+        data = []
+        treeselection = treeview.get_selection()
+        treeselection.selected_foreach(_func_sel_get, data)
+        if not data:
+            return
+        selection.set('STRING', 8, ','.join(str(x) for x in data))
+        return True
+
+    def drag_data_received(self, treeview, context, x, y, selection,
+            info, etime):
+        treeview.emit_stop_by_name('drag-data-received')
+        if not selection.data:
+            return
+        store = treeview.get_model()
+
+        data_iters = [store.get_iter((int(i),))
+            for i in selection.data.split(',')]
+        drop_info = treeview.get_dest_row_at_pos(x, y)
+        if drop_info:
+            path, position = drop_info
+            pos = store.get_iter(path)
+        else:
+            pos = store.get_iter((len(store) - 1,))
+            position = gtk.TREE_VIEW_DROP_AFTER
+        if position == gtk.TREE_VIEW_DROP_AFTER:
+            data_iters = reversed(data_iters)
+        for item in data_iters:
+            if position == gtk.TREE_VIEW_DROP_BEFORE:
+                store.move_before(item, pos)
+            else:
+                store.move_after(item, pos)
+        context.drop_finish(False, etime)
+        return True
+
+    def drag_data_delete(self, treeview, context):
+        treeview.emit_stop_by_name('drag-data-delete')
+
+    def export_click(self, treeview, event):
+        path_at_pos = treeview.get_path_at_pos(int(event.x), int(event.y))
+        if not path_at_pos or event.button != 1:
+            return
+        path, col, x, y = path_at_pos
+        selection = treeview.get_selection()
+        if event.type == gtk.gdk._2BUTTON_PRESS:
+            self.sel_predef(path)
+            selection.select_path(path)
+            return True
+        elif selection.path_is_selected(path):
+            selection.unselect_path(path)
+            return True
+
+    def export_keypress(self, treeview, event):
+        if event.keyval not in (gtk.keysyms.Return, gtk.keysyms.space):
+            return
+        model, selected = treeview.get_selection().get_selected()
+        if not selected:
+            return
+        self.sel_predef(model.get_path(selected))

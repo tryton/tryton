@@ -1,3 +1,5 @@
+* Add DnD on export window
+* Allow to overide predefined export
 * Prefill export window with current view fields
 * Manage field context on Group value
 * Add export of selection string
