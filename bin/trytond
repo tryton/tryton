@@ -21,23 +21,26 @@ def parse_commandline():
 
     parser.add_argument('--version', action='version',
         version='%(prog)s ' + VERSION)
-    parser.add_argument("-c", "--config", dest="configfile",
+    parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
         help="specify config file")
-    parser.add_argument('--debug', dest='debug', action='store_true',
-        help='enable debug mode')
+    parser.add_argument('--dev', dest='dev', action='store_true',
+        help='enable development mode')
     parser.add_argument("-v", "--verbose", action="store_true",
         dest="verbose", help="enable verbose mode")
 
     parser.add_argument("-d", "--database", dest="database_names", nargs='+',
-        default=[], help="specify the database name")
-    parser.add_argument("-i", "--init", dest="init", nargs='+', default=[],
-        help="init a module (use \"all\" for all modules)")
+        default=[], metavar='DATABASE', help="specify the database name")
     parser.add_argument("-u", "--update", dest="update", nargs='+', default=[],
-        help="update a module (use \"all\" for all modules)")
+        metavar='MODULE', help="update a module")
+    parser.add_argument("-i", "--init", dest="update", nargs='+',
+        action="append", metavar='MODULE',
+        help="init a module (deprecated use --update)")
+    parser.add_argument("--all", dest="update", action="append_const",
+        const="ir", help="update all installed modules")
 
-    parser.add_argument("--pidfile", dest="pidfile",
+    parser.add_argument("--pidfile", dest="pidfile", metavar='FILE',
         help="file where the server pid will be stored")
-    parser.add_argument("--logconf", dest="logconf",
+    parser.add_argument("--logconf", dest="logconf", metavar='FILE',
         help="logging configuration file (ConfigParser format)")
     parser.add_argument("--cron", dest="cron", action="store_true",
         help="enable cron")
@@ -52,7 +55,7 @@ def parse_commandline():
 
     options = parser.parse_args()
 
-    if not options.database_names and bool(options.init or options.update):
+    if not options.database_names and options.update:
         parser.error('Missing database option')
     return options
 

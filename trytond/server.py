@@ -51,7 +51,6 @@ class TrytonServer(object):
 
     def run(self):
         "Run the server and never return"
-        update = self.options.init + self.options.update
         init = {}
 
         signal.signal(signal.SIGINT, lambda *a: self.stop())
@@ -65,14 +64,14 @@ class TrytonServer(object):
             with open(self.options.pidfile, 'w') as fd_pid:
                 fd_pid.write("%d" % (os.getpid()))
 
-        if not update:
+        if not self.options.update:
             self.start_servers()
 
         for db_name in self.options.database_names:
             init[db_name] = False
             with Transaction().start(db_name, 0) as transaction:
                 cursor = transaction.cursor
-                if self.options.init:
+                if self.options.update:
                     if not cursor.test():
                         self.logger.info("init db")
                         backend.get('Database').init(cursor)
@@ -82,7 +81,7 @@ class TrytonServer(object):
                     raise Exception("'%s' is not a Tryton database!" % db_name)
 
         for db_name in self.options.database_names:
-            if update:
+            if self.options.update:
                 with Transaction().start(db_name, 0) as transaction:
                     cursor = transaction.cursor
                     if not cursor.test():
@@ -93,7 +92,7 @@ class TrytonServer(object):
                     lang = [x[0] for x in cursor.fetchall()]
             else:
                 lang = None
-            Pool(db_name).init(update=update, lang=lang)
+            Pool(db_name).init(update=self.options.update, lang=lang)
 
         for db_name in self.options.database_names:
             if init[db_name]:
@@ -131,7 +130,7 @@ class TrytonServer(object):
                             })
                     transaction.cursor.commit()
 
-        if update:
+        if self.options.update:
             self.logger.info('Update/Init succeed!')
             logging.shutdown()
             sys.exit(0)
@@ -157,7 +156,7 @@ class TrytonServer(object):
                             args=(dbname,), kwargs={})
                     thread.start()
                     threads[dbname] = thread
-            if self.options.debug:
+            if self.options.dev:
                 for _ in range(60):
                     if monitor():
                         self.restart()

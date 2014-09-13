@@ -152,11 +152,7 @@ def create_graph(module_list):
     packages = []
 
     for module in module_list:
-        try:
-            info = get_module_info(module)
-        except IOError:
-            if module != 'all':
-                raise Exception('Module %s not found' % module)
+        info = get_module_info(module)
         packages.append((module, info.get('depends', []),
                 info.get('extras_depend', []), info))
 
@@ -194,7 +190,7 @@ def create_graph(module_list):
 
 
 def is_module_to_install(module, update):
-    if 'all' in update and module != 'tests':
+    if module != 'tests':
         return True
     elif module in update:
         return True
@@ -373,13 +369,9 @@ def load_modules(database_name, pool, update=None, lang=None):
             # Migration from 2.2: workflow module removed
             cursor.execute(*ir_module.delete(
                     where=(ir_module.name == 'workflow')))
-            if 'all' in update:
-                cursor.execute(*ir_module.select(ir_module.name,
-                        where=(ir_module.name != 'tests')))
-            else:
-                cursor.execute(*ir_module.select(ir_module.name,
-                        where=ir_module.state.in_(('installed', 'to install',
-                                'to upgrade', 'to remove'))))
+            cursor.execute(*ir_module.select(ir_module.name,
+                    where=ir_module.state.in_(('installed', 'to install',
+                            'to upgrade', 'to remove'))))
         else:
             cursor.execute(*ir_module.select(ir_module.name,
                     where=ir_module.state.in_(('installed', 'to upgrade',
