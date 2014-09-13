@@ -1,3 +1,4 @@
+* Add support for domain_<field name> method
 * Refactor configuration file and command line
 * Use the context of the relation field for instanciation
 * Use a configuration field for logging

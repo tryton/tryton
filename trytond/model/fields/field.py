@@ -251,6 +251,9 @@ class Field(object):
         table, _ = tables[None]
         name, operator, value = domain
         assert name == self.name
+        method = getattr(Model, 'domain_%s' % name, None)
+        if method:
+            return method(domain, tables)
         Operator = SQL_OPERATORS[operator]
         column = self.sql_column(table)
         expression = Operator(column, self._domain_value(operator, value))

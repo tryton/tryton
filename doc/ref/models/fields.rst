@@ -188,6 +188,18 @@ Default value
 
 See :ref:`default value <topics-fields_default_value>`
 
+Searching
+=========
+
+A class method could be defined for each field which must return a SQL
+expression for the given domain instead of the default one.
+The method signature is::
+
+    domain_<field name>(domain, tables)
+
+Where ``domain`` is the simple :ref:`domain <topics-domain>` clause and
+``tables`` is a nested dictionary, see :meth:`~Field.convert_domain`.
+
 Ordering
 ========
 
