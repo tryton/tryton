@@ -764,7 +764,7 @@ class Main(object):
 
     def favorite_set(self):
         if not self.menu_screen:
-            return
+            return False
 
         def _action_favorite(widget, id_):
             Action.exec_keyword('tree_open', {
@@ -801,11 +801,18 @@ class Main(object):
         menu.add(manage_favorites)
         menu.show_all()
         self.menuitem_favorite.set_submenu(menu)
+        return True
 
     def favorite_unset(self):
+        had_submenu = self.menuitem_favorite.get_submenu()
         self.menuitem_favorite.remove_submenu()
         # Set a submenu to get keyboard shortcut working
         self.menuitem_favorite.set_submenu(gtk.Menu())
+
+        if self.macapp and had_submenu:
+            # As the select event is not managed by the mac menu,
+            # it is done using a timeout
+            gobject.timeout_add(1000, lambda: not self.favorite_set())
 
     def sig_accel_change(self, value):
         CONFIG['client.can_change_accelerators'] = value
