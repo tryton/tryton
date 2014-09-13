@@ -11,6 +11,7 @@ Introduction to all the key parts of trytond:
 
     install
     configuration
+    setup_database
     logs
     models/index
     models/fields_default_value

@@ -25,7 +25,8 @@ First steps
 
     * **Installation:**
       :ref:`Installation <topics-install>` |
-      :ref:`Configuration <topics-configuration>`
+      :ref:`Configuration <topics-configuration>` |
+      :ref:`Setup a database <topics-setup-database>`
 
 The model layer
 ===============
