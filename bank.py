@@ -1,6 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from stdnum import iban
+from sql import operators, Literal
 
 from trytond.model import ModelView, ModelSQL, fields
 
@@ -49,6 +50,7 @@ class BankAccountNumber(ModelSQL, ModelView):
             ('other', 'Other'),
             ], 'Type', required=True)
     number = fields.Char('Number')
+    number_compact = fields.Char('Number Compact', readonly=True)
     sequence = fields.Integer('Sequence')
 
     @classmethod
@@ -65,6 +67,28 @@ class BankAccountNumber(ModelSQL, ModelView):
         table, _ = tables[None]
         return [table.sequence == None, table.sequence]
 
+    @classmethod
+    def domain_number(cls, domain, tables):
+        table, _ = tables[None]
+        name, operator, value = domain
+        Operator = fields.SQL_OPERATORS[operator]
+        result = None
+        for field in (cls.number, cls.number_compact):
+            column = field.sql_column(table)
+            expression = Operator(column, field._domain_value(operator, value))
+            if isinstance(expression, operators.In) and not expression.right:
+                expression = Literal(False)
+            elif (isinstance(expression, operators.NotIn)
+                    and not expression.right):
+                expression = Literal(True)
+            expression = field._domain_add_null(
+                column, operator, value, expression)
+            if result:
+                result |= expression
+            else:
+                result = expression
+        return result
+
     @property
     def compact_iban(self):
         return (iban.compact(self.number) if self.type == 'iban'
@@ -76,6 +100,7 @@ class BankAccountNumber(ModelSQL, ModelView):
         for values in vlist:
             if values.get('type') == 'iban' and 'number' in values:
                 values['number'] = iban.format(values['number'])
+                values['number_compact'] = iban.compact(values['number'])
         return super(BankAccountNumber, cls).create(vlist)
 
     @classmethod
@@ -86,6 +111,7 @@ class BankAccountNumber(ModelSQL, ModelView):
             values = values.copy()
             if values.get('type') == 'iban' and 'number' in values:
                 values['number'] = iban.format(values['number'])
+                values['number_compact'] = iban.compact(values['number'])
             args.extend((numbers, values))
 
         super(BankAccountNumber, cls).write(*args)
@@ -94,9 +120,12 @@ class BankAccountNumber(ModelSQL, ModelView):
         for number in sum(args[::2], []):
             if number.type == 'iban':
                 formated_number = iban.format(number.number)
-                if formated_number != number.number:
+                compacted_number = iban.compact(number.number)
+                if ((formated_number != number.number)
+                        or (compacted_number != number.number_compact)):
                     to_write.extend(([number], {
                                 'number': formated_number,
+                                'number_compact': compacted_number,
                                 }))
         if to_write:
             cls.write(*to_write)
