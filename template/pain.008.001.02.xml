@@ -61,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
             </PmtTpInf>
             <ReqdColltnDt>${key['date'].isoformat()}</ReqdColltnDt>
             <Cdtr>
-                ${PartyIdentification(group.company.party)}
+                ${PartyIdentification(group.company.party, id=False)}
             </Cdtr>
             <CdtrAcct>
                 ${Account(group.journal.sepa_bank_account_number)}

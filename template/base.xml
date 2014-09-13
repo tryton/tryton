@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <py:strip xmlns:py="http://genshi.edgewall.org/">
-    <py:def function="PartyIdentification(party)">
+    <py:def function="PartyIdentification(party, id=True)">
         <!-- EPC limits to 70 instead of 140 -->
         <Nm>${party.name[:70]}</Nm>
         <py:with vars="address = party.address_get()">
