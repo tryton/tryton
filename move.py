@@ -1089,17 +1089,15 @@ class Line(ModelSQL, ModelView):
         return res
 
     def get_move_field(self, name):
+        field = getattr(self.__class__, name)
         if name.startswith('move_'):
             name = name[5:]
-        if name in ('date', 'state', 'description'):
-            return getattr(self.move, name)
-        elif name == 'origin':
-            origin = getattr(self.move, name)
-            if origin:
-                return str(origin)
-            return None
-        else:
-            return getattr(self.move, name).id
+        value = getattr(self.move, name)
+        if isinstance(value, ModelSQL):
+            if field._type == 'reference':
+                return str(value)
+            return value.id
+        return value
 
     @classmethod
     def set_move_field(cls, lines, name, value):
