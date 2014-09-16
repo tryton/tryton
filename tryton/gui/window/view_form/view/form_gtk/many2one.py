@@ -50,32 +50,12 @@ class Many2One(Widget):
         else:
             self.wid_completion = None
 
-        self.but_open = gtk.Button()
-        img_find = gtk.Image()
-        img_find.set_from_stock('tryton-find', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.but_open.set_image(img_find)
-        self.but_open.set_relief(gtk.RELIEF_NONE)
-        self.but_open.connect('clicked', self.sig_edit)
-        self.but_open.set_alignment(0.5, 0.5)
+        self.wid_text.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
+            'tryton-find')
+        self.wid_text.connect('icon-press', self.sig_edit)
 
-        self.but_new = gtk.Button()
-        img_new = gtk.Image()
-        img_new.set_from_stock('tryton-new', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.but_new.set_image(img_new)
-        self.but_new.set_relief(gtk.RELIEF_NONE)
-        self.but_new.connect('clicked', self.sig_new)
-        self.but_new.set_alignment(0.5, 0.5)
-
-        self.widget.pack_end(self.but_new, expand=False, fill=False)
-        self.widget.pack_end(self.but_open, expand=False, fill=False)
-        self.widget.pack_end(self.wid_text, expand=True, fill=True)
-
+        self.widget.pack_start(self.wid_text, expand=True, fill=True)
         self.widget.set_focus_chain([self.wid_text])
-
-        self.tooltips = common.Tooltips()
-        self.tooltips.set_tip(self.but_new, _('Create a new record <F3>'))
-        self.tooltips.set_tip(self.but_open, _('Open a record <F2>'))
-        self.tooltips.enable()
 
         self._readonly = False
 
@@ -91,21 +71,24 @@ class Many2One(Widget):
             self.widget.set_focus_chain([self.wid_text])
 
     def _set_button_sensitive(self):
+        self.wid_text.set_editable(not self._readonly)
+        self.wid_text.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY,
+            self.read_access)
+
+    def get_access(self, type_):
         model = self.get_model()
         if model:
-            access = common.MODELACCESS[model]
+            return common.MODELACCESS[model][type_]
         else:
-            access = {
-                'create': True,
-                'read': True,
-                }
-        self.wid_text.set_editable(not self._readonly)
-        self.but_new.set_sensitive(bool(
-                not self._readonly
-                and self.attrs.get('create', True)
-                and access['create']))
-        self.but_open.set_sensitive(bool(
-                access['read']))
+            return True
+
+    @property
+    def read_access(self):
+        return self.get_access('read')
+
+    @property
+    def create_access(self):
+        return self.attrs.get('create', True) and self.get_access('create')
 
     @property
     def modified(self):
@@ -184,7 +167,7 @@ class Many2One(Widget):
                     ids=ids, context=context, domain=domain,
                     view_ids=self.attrs.get('view_ids', '').split(','),
                     views_preload=self.attrs.get('views', {}),
-                    new=self.but_new.get_property('sensitive'))
+                    new=self.create_access)
                 return
         self.focus_out = True
         self.changed = True
@@ -272,7 +255,7 @@ class Many2One(Widget):
                 ids=ids, context=context, domain=domain,
                 view_ids=self.attrs.get('view_ids', '').split(','),
                 views_preload=self.attrs.get('views', {}),
-                new=self.but_new.get_property('sensitive'))
+                new=self.create_access)
             return
         self.focus_out = True
         self.changed = True
@@ -285,11 +268,10 @@ class Many2One(Widget):
             activate_keys.append(gtk.keysyms.Return)
         if (event.keyval == gtk.keysyms.F3
                 and editable
-                and self.but_new.get_property('sensitive')):
+                and self.create_access):
             self.sig_new(widget, event)
             return True
-        elif (event.keyval == gtk.keysyms.F2
-                and self.but_open.get_property('sensitive')):
+        elif event.keyval == gtk.keysyms.F2 and self.read_access:
             self.sig_edit(widget)
             return True
         elif (event.keyval in activate_keys
@@ -345,16 +327,13 @@ class Many2One(Widget):
             self.wid_text.set_position(0)
             self.changed = True
             return False
-        img = self.but_open.get_image()
-        current_stock = img.get_stock()[0]
         self.set_text(field.get_client(record))
-        value = field.get(record)
-        if self.has_target(value) and current_stock != 'tryton-open':
-            img.set_from_stock('tryton-open', gtk.ICON_SIZE_SMALL_TOOLBAR)
-            self.tooltips.set_tip(self.but_open, _('Open a record <F2>'))
-        elif not self.has_target(value) and current_stock != 'tryton-find':
-            img.set_from_stock('tryton-find', gtk.ICON_SIZE_SMALL_TOOLBAR)
-            self.tooltips.set_tip(self.but_open, _('Search a record <F2>'))
+        if self.has_target(field.get(record)):
+            stock, tooltip = 'tryton-open', _('Open a record <F2>')
+        else:
+            stock, tooltip = 'tryton-find', _('Search a record <F2>')
+        self.wid_text.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY, stock)
+        self.wid_text.set_icon_tooltip_text(gtk.ENTRY_ICON_SECONDARY, tooltip)
         self.changed = True
 
     def _populate_popup(self, widget, menu):

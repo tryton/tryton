@@ -299,7 +299,7 @@ class TranslateMixin:
         button.connect('clicked', self.translate)
         return button
 
-    def translate(self, widget):
+    def translate(self, *args):
         if self.record.id < 0 or self.record.modified:
             common.message(
                 _('You need to save the record before adding translations!'))

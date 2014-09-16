@@ -42,8 +42,9 @@ class Char(Widget, TranslateMixin, PopdownMixin):
 
         self.button = None
         if attrs.get('translate'):
-            self.button = self.translate_button()
-            self.widget.pack_start(self.button, False, False)
+            self.entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
+                'tryton-locale')
+            self.entry.connect('icon-press', self.translate)
 
     def translate_widget(self):
         entry = gtk.Entry()
