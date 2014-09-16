@@ -2165,15 +2165,8 @@
             });
             this.but_open.click(this.edit.bind(this));
             this.el.prepend(this.but_open);
-            this.but_new = jQuery('<button/>').button({
-                'icons': {
-                    'primary': 'ui-icon-document'
-                },
-                'text': false
-            });
-            this.but_new.click(this.new_.bind(this));
-            this.el.prepend(this.but_new);
             // TODO autocompletion
+            this._readonly = false;
         },
         _get_color_el: function() {
             return this.entry;
@@ -2186,7 +2179,8 @@
                 'domain': domain,
                 'mode': ['form'],
                 'view_ids': (this.attributes.view_ids || '').split(','),
-                'views_preload': this.attributes.views
+                'views_preload': this.attributes.views,
+                'readonly': this._readonly
             });
         },
         set_text: function(value) {
@@ -2220,25 +2214,25 @@
             }
         },
         set_readonly: function(readonly) {
-            this.entry.prop('disabled', readonly);
+            this._readonly = readonly;
             this._set_button_sensitive();
         },
         _set_button_sensitive: function() {
+            this.entry.prop('disabled', this._readonly);
+            this.but_open.prop('disabled', !this.read_access());
+        },
+        get_access: function(type) {
             var model = this.get_model();
-            var access = {
-                create: true,
-                read: true
-            };
             if (model) {
-                access = Sao.common.MODELACCESS.get(model);
+                return Sao.common.MODELACCESS.get(model)[type];
             }
-            var readonly = this.entry.prop('disabled');
-            var create = this.attributes.create;
-            if (create === undefined) {
-                create = true;
-            }
-            this.but_new.prop('disabled', readonly || !create || !access.create);
-            this.but_open.prop('disabled', !access.read);
+            return true;
+        },
+        read_access: function() {
+            return this.get_access('read');
+        },
+        create_access: function() {
+            return this.attributes.create && this.get_access('create');
         },
         id_from_value: function(value) {
             return value;
@@ -2318,7 +2312,7 @@
                             view_ids: (this.attributes.view_ids ||
                                 '').split(','),
                             views_preload: (this.attributes.views || {}),
-                            new_: !this.but_new.prop('disabled')
+                            new_: this.create_access()
                     });
                 }.bind(this));
             }
@@ -2353,10 +2347,13 @@
                 activate_keys.push(Sao.common.RETURN_KEYCODE);
             }
 
-            if (event_.which == Sao.common.F3_KEYCODE && editable) {
+            if (event_.which == Sao.common.F3_KEYCODE &&
+                    editable &&
+                    this.create_access()) {
                 this.new_();
                 event_.preventDefault();
-            } else if (event_.which == Sao.common.F2_KEYCODE) {
+            } else if (event_.which == Sao.common.F2_KEYCODE &&
+                    this.read_access()) {
                 this.edit();
                 event_.preventDefault();
             } else if (~activate_keys.indexOf(event_.which)) {
@@ -2431,8 +2428,7 @@
                                         '').split(','),
                                     views_preload: (this.attributes.views ||
                                         {}),
-                                    new_: false
-                                    // TODO compute from but_new status
+                                    new_: this.create_access()
                                 });
                     }.bind(this));
                 }
