@@ -32,9 +32,6 @@ def parse_commandline():
         default=[], metavar='DATABASE', help="specify the database name")
     parser.add_argument("-u", "--update", dest="update", nargs='+', default=[],
         metavar='MODULE', help="update a module")
-    parser.add_argument("-i", "--init", dest="update", nargs='+',
-        action="append", metavar='MODULE',
-        help="init a module (deprecated use --update)")
     parser.add_argument("--all", dest="update", action="append_const",
         const="ir", help="update all installed modules")
 
