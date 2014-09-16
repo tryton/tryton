@@ -44,6 +44,7 @@ class Move(Model):
                         'state': state,
                         }))
             remainder -= quantity
+            remainder = uom_obj.round(remainder, uom.rounding)
             if count:
                 count -= 1
         assert remainder >= 0
