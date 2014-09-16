@@ -305,7 +305,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         # dateutil >= 2.0 has replace __nonzero__ by __bool__ which doesn't
         # work in Python < 3
         if delta == relativedelta.relativedelta():
-            return []
+            return [self.end_date]
         if self.frequency == 'monthly':
             rule = rrule.rrule(rrule.MONTHLY, dtstart=self.start_date,
                 bymonthday=-1)
@@ -329,7 +329,10 @@ class Asset(Workflow, ModelSQL, ModelView):
                     - relativedelta.relativedelta(days=1)]
                 + [l.date for l in self.lines])
             first_delta = dates[0] - start_date
-            last_delta = dates[-1] - dates[-2]
+            if len(dates) > 1:
+                last_delta = dates[-1] - dates[-2]
+            else:
+                last_delta = first_delta
             if self.frequency == 'monthly':
                 _, first_ndays = calendar.monthrange(
                     dates[0].year, dates[0].month)
