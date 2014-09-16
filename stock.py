@@ -59,6 +59,7 @@ class Move:
                         'uom': uom.id,
                         }))
             remainder -= quantity
+            remainder = Uom.round(remainder, uom.rounding)
             if count:
                 count -= 1
         assert remainder >= 0
