@@ -376,6 +376,7 @@
             this.screen = new Sao.Screen(model, {
                 mode: ['tree'],
                 context: this.context,
+                domain: this.domain,
                 view_ids: kwargs.view_ids,
                 views_preload: views_preload
             });
