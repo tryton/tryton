@@ -33,7 +33,9 @@ class ContactMechanism(ModelSQL, ModelView):
 
     type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
         sort=False, depends=DEPENDS)
-    value = fields.Char('Value', select=True, states=STATES, depends=DEPENDS)
+    value = fields.Char('Value', select=True, states=STATES, depends=DEPENDS
+        # Add all function fields to ensure to always fill them via on_change
+        + ['email', 'website', 'skype', 'sip', 'other_value'])
     comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
