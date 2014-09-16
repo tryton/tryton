@@ -150,8 +150,7 @@ class Wizard(object):
         button.show()
         return button
 
-    def _record_modified(self, screen, signal):
-        record = screen.current_record
+    def _record_modified(self, screen, record):
         for button in self.states.itervalues():
             button.state_set(record)
 

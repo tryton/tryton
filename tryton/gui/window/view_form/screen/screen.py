@@ -277,8 +277,8 @@ class Screen(SignalEvent):
             if hasattr(view, 'group_list_changed'):
                 view.group_list_changed(group, signal)
 
-    def _record_modified(self, group, signal, *args):
-        self.signal('record-modified')
+    def _record_modified(self, group, signal):
+        self.signal('record-modified', signal)
 
     def _group_changed(self, group, record):
         if not self.parent:
