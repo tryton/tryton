@@ -15,7 +15,7 @@ from trytond.tools import grouped_slice
 
 __all__ = ['PurchaseRequest',
     'CreatePurchaseRequestStart', 'CreatePurchaseRequest',
-    'CreatePurchaseAskTerm', 'CreatePurchaseAskParty', 'CreatePurchase']
+    'CreatePurchaseAskParty', 'CreatePurchase']
 
 STATES = {
     'readonly': Eval('state') != 'draft',
@@ -523,15 +523,6 @@ class CreatePurchaseRequest(Wizard):
         return 'end'
 
 
-class CreatePurchaseAskTerm(ModelView):
-    'Create Purchase Ask Term'
-    __name__ = 'purchase.request.create_purchase.ask_term'
-    party = fields.Many2One('party.party', 'Supplier', readonly=True)
-    company = fields.Many2One('company.company', 'Company', readonly=True)
-    payment_term = fields.Many2One(
-        'account.invoice.payment_term', 'Payment Term', required=True)
-
-
 class CreatePurchaseAskParty(ModelView):
     'Create Purchase Ask Party'
     __name__ = 'purchase.request.create_purchase.ask_party'
@@ -546,11 +537,6 @@ class CreatePurchase(Wizard):
     start = StateTransition()
     ask_party = StateView('purchase.request.create_purchase.ask_party',
         'stock_supply.purchase_request_create_purchase_ask_party', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Continue', 'start', 'tryton-go-next', default=True),
-            ])
-    ask_term = StateView('purchase.request.create_purchase.ask_term',
-        'stock_supply.purchase_request_create_purchase_ask_term_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Continue', 'start', 'tryton-go-next', default=True),
             ])
@@ -580,22 +566,6 @@ class CreatePurchase(Wizard):
             'company': request.company.id,
             }
 
-    def default_ask_term(self, fields):
-        Request = Pool().get('purchase.request')
-        requests = Request.browse(Transaction().context['active_ids'])
-        for request in requests:
-            if (not request.party) or request.purchase_line:
-                continue
-            if not request.party.supplier_payment_term:
-                return {
-                    'party': request.party.id,
-                    'company': request.company.id,
-                    }
-        return {
-            'party': request.party.id,
-            'company': request.company.id,
-            }
-
     @staticmethod
     def _group_purchase_key(requests, request):
         '''
@@ -614,7 +584,6 @@ class CreatePurchase(Wizard):
     def transition_start(self):
         pool = Pool()
         Request = pool.get('purchase.request')
-        Party = pool.get('party.party')
         Purchase = pool.get('purchase.purchase')
         Date = pool.get('ir.date')
 
@@ -634,18 +603,6 @@ class CreatePurchase(Wizard):
             self.ask_party.product = None
             self.ask_party.party = None
             self.ask_party.company = None
-        elif (getattr(self.ask_term, 'payment_term', None)
-                and getattr(self.ask_term, 'party', None)
-                and getattr(self.ask_term, 'company', None)):
-            with Transaction().set_context(
-                    company=self.ask_term.company.id):
-                Party.write([self.ask_term.party], {
-                        'supplier_payment_term': (
-                            self.ask_term.payment_term.id),
-                        })
-            self.ask_term.payment_term = None
-            self.ask_term.party = None
-            self.ask_term.company = None
 
         reqs = Request.search([
                 ('id', 'in', request_ids),
@@ -659,8 +616,6 @@ class CreatePurchase(Wizard):
         requests = Request.browse(request_ids)
 
         requests = [r for r in requests if not r.purchase_line]
-        if any(r for r in requests if not r.party.supplier_payment_term):
-            return 'ask_term'
 
         keyfunc = partial(self._group_purchase_key, requests)
         requests = sorted(requests, key=keyfunc)

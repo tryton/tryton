@@ -14,7 +14,6 @@ def register():
         Product,
         PurchaseRequest,
         CreatePurchaseRequestStart,
-        CreatePurchaseAskTerm,
         CreatePurchaseAskParty,
         ShipmentInternal,
         CreateShipmentInternalStart,

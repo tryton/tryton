@@ -76,11 +76,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase_request"/>
         </record>
 
-        <record model="ir.ui.view" id="purchase_request_create_purchase_ask_term_view_form">
-            <field name="model">purchase.request.create_purchase.ask_term</field>
-            <field name="type">form</field>
-            <field name="name">purchase_request_create_purchase_ask_term_form</field>
-        </record>
         <record model="ir.ui.view" id="purchase_request_create_purchase_ask_party">
             <field name="model">purchase.request.create_purchase.ask_party</field>
             <field name="type">form</field>
