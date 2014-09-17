@@ -57,14 +57,13 @@ class Configuration:
                 ('res', '=', None),
                 ('company', '=', company_id),
                 ])
-        with Transaction().set_user(0):
-            Property.delete(properties)
-            if value:
-                Property.create([{
-                            'field': field.id,
-                            'value': ',%s' % value,
-                            'company': company_id,
-                            }])
+        Property.delete(properties)
+        if value:
+            Property.create([{
+                        'field': field.id,
+                        'value': ',%s' % value,
+                        'company': company_id,
+                        }])
 
     def get_default_credit_limit_amount_digits(self, name):
         pool = Pool()
