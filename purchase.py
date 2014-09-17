@@ -155,8 +155,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
         cls._order.insert(0, ('purchase_date', 'DESC'))
         cls._order.insert(1, ('id', 'DESC'))
         cls._error_messages.update({
-                'invoice_address_required': ('Invoice address must be '
-                    'defined for quotation of purchase "%s".'),
                 'warehouse_required': ('A warehouse must be defined for '
                     'quotation of purchase "%s".'),
                 'missing_account_payable': ('Missing "Account Payable" on '
@@ -186,6 +184,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
                         'tryton-go-previous'),
                     },
                 'quote': {
+                    'pre_validate': [
+                        ('purchase_date', '!=', None),
+                        ('payment_term', '!=', None),
+                        ('invoice_address', '!=', None),
+                        ],
                     'invisible': Eval('state') != 'draft',
                     'readonly': ~Eval('lines', []),
                     },
@@ -637,8 +640,6 @@ class Purchase(Workflow, ModelSQL, ModelView):
         return super(Purchase, cls).copy(purchases, default=default)
 
     def check_for_quotation(self):
-        if not self.invoice_address:
-            self.raise_user_error('invoice_address_required', (self.rec_name,))
         for line in self.lines:
             if (not line.to_location
                     and line.product
