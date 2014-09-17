@@ -278,18 +278,17 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         Return sale for an opportunity
         '''
         Sale = Pool().get('sale.sale')
-        with Transaction().set_user(0, set_context=True):
-            return Sale(
-                description=self.description,
-                party=self.party,
-                payment_term=self.payment_term,
-                company=self.company,
-                invoice_address=self.address,
-                shipment_address=self.address,
-                currency=self.company.currency,
-                comment=self.comment,
-                sale_date=None,
-                )
+        return Sale(
+            description=self.description,
+            party=self.party,
+            payment_term=self.payment_term,
+            company=self.company,
+            invoice_address=self.address,
+            shipment_address=self.address,
+            currency=self.company.currency,
+            comment=self.comment,
+            sale_date=None,
+            )
 
     def create_sale(self):
         '''
@@ -433,15 +432,14 @@ class SaleOpportunityLine(ModelSQL, ModelView):
         Return sale line for opportunity line
         '''
         SaleLine = Pool().get('sale.line')
-        with Transaction().set_user(0, set_context=True):
-            sale_line = SaleLine(
-                type='line',
-                quantity=self.quantity,
-                unit=self.unit,
-                product=self.product,
-                sale=sale,
-                description=None,
-                )
+        sale_line = SaleLine(
+            type='line',
+            quantity=self.quantity,
+            unit=self.unit,
+            product=self.product,
+            sale=sale,
+            description=None,
+            )
         for k, v in sale_line.on_change_product().iteritems():
             setattr(sale_line, k, v)
         return sale_line
