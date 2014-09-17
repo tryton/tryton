@@ -141,10 +141,9 @@ class Work:
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
 
-        with Transaction().set_user(0, set_context=True):
-            invoice_lines = InvoiceLine.browse([
-                    w.invoice_line.id for w in works
-                    if w.invoice_line])
+        invoice_lines = InvoiceLine.browse([
+                w.invoice_line.id for w in works
+                if w.invoice_line])
 
         id2invoice_lines = dict((l.id, l) for l in invoice_lines)
         amounts = {}
@@ -161,11 +160,10 @@ class Work:
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
 
-        with Transaction().set_user(0, set_context=True):
-            invoice_lines = InvoiceLine.browse([
-                    t.invoice_line.id for w in works
-                    for t in w.work.timesheet_lines
-                    if t.invoice_line])
+        invoice_lines = InvoiceLine.browse([
+                t.invoice_line.id for w in works
+                for t in w.work.timesheet_lines
+                if t.invoice_line])
 
         id2invoice_lines = dict((l.id, l) for l in invoice_lines)
         amounts = {}
@@ -248,8 +246,7 @@ class Work:
                     klass.write(records, {
                             'invoice_line': invoice_line.id,
                             })
-        with Transaction().set_user(0, set_context=True):
-            Invoice.update_taxes(invoices)
+        Invoice.update_taxes(invoices)
 
     def _get_invoice(self):
         "Return invoice for the work"
@@ -268,18 +265,17 @@ class Work:
         if not self.party:
             self.raise_user_error('missing_party', (self.rec_name,))
 
-        with Transaction().set_user(0, set_context=True):
-            return Invoice(
-                company=self.company,
-                type='out_invoice',
-                journal=journal,
-                party=self.party,
-                invoice_address=self.party.address_get(type='invoice'),
-                currency=self.company.currency,
-                account=self.party.account_receivable,
-                payment_term=self.party.customer_payment_term,
-                description=self.work.name,
-                )
+        return Invoice(
+            company=self.company,
+            type='out_invoice',
+            journal=journal,
+            party=self.party,
+            invoice_address=self.party.address_get(type='invoice'),
+            currency=self.company.currency,
+            account=self.party.account_receivable,
+            payment_term=self.party.customer_payment_term,
+            description=self.work.name,
+            )
 
     def _group_lines_to_invoice_key(self, line):
         "The key to group lines"
@@ -298,8 +294,7 @@ class Work:
         quantity = sum(l['quantity'] for l in lines)
         product = key['product']
 
-        with Transaction().set_user(0, set_context=True):
-            invoice_line = InvoiceLine()
+        invoice_line = InvoiceLine()
         invoice_line.type = 'line'
         invoice_line.quantity = Uom.compute_qty(hour, quantity,
             product.default_uom)
