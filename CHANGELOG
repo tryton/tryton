@@ -1,3 +1,4 @@
+* Add pre-validation on button
 * Model and Field access checked only if _check_access is set
 * Add check_access to RPC
 * Add check_access to Wizard and Report

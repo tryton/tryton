@@ -113,6 +113,9 @@ List of attributes shared by many form elements:
         * ``icon``: Only for button, it must return the icon name to use or
           False.
 
+        * ``pre_validate``: Only for button, it contains a domain to apply
+          on the record before calling the button.
+
     .. _common-attributes-help:
 
     * ``help``: The string that will be displayed when the cursor hovers over
