@@ -45,11 +45,9 @@ class Sale:
         shipment = super(Sale, self)._get_shipment_sale(shipment_type, values)
         Shipment = shipment.__class__
         if self.shipment_grouping_method:
-            with Transaction().set_user(0, set_context=True):
-                domain = self._get_grouped_shipment_domain(shipment)
-                order = self._get_grouped_shipment_order()
-                grouped_shipments = Shipment.search(domain, order=order,
-                    limit=1)
+            domain = self._get_grouped_shipment_domain(shipment)
+            order = self._get_grouped_shipment_order()
+            grouped_shipments = Shipment.search(domain, order=order, limit=1)
             if grouped_shipments:
                 shipment, = grouped_shipments
         return shipment
