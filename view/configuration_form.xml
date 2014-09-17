@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='default_account_payable']" position="after">
+        <group id="tax_roundings" col="2" colspan="4">
+            <field name="tax_roundings" colspan="2"/>
+            <label name="tax_rounding"/>
+            <field name="tax_rounding"/>
+        </group>
+    </xpath>
+</data>

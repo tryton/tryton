@@ -27,6 +27,8 @@ def register():
         Period,
         Move,
         Reconciliation,
+        Configuration,
+        ConfigurationTaxRounding,
         module='account_invoice', type_='model')
     Pool.register(
         PrintInvoice,
