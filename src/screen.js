@@ -727,17 +727,49 @@
             };
             var reload_ids = function() {
                 this.reload(ids, true);
-            };
+            }.bind(this);
 
             var record = this.current_record;
-            var ids = this.current_view.selected_records().map(
+            var selected_records = this.current_view.selected_records();
+            var ids = selected_records.map(
                 function(record) {
                     return record.id;
                 });
+            this.current_view.set_value();
+            var fields = this.current_view.get_fields();
             record.save().done(function() {
-                record.model.execute(attributes.name,
-                    [ids], this.context).then(process_action.bind(this))
-                    .then(reload_ids);
+                var prms = [];
+                var reset_state = function(record, domain) {
+                    return function(result) {
+                        if (!result) {
+                            this.display();
+                            if (!jQuery.isEmptyObject(domain)) {
+                                // Reset valid state with normal domain
+                                record.validate(fields);
+                            }
+                        }
+                        return result;
+                    }.bind(this);
+                }.bind(this);
+
+                for (var i = 0; i < selected_records.length; i++) {
+                    var record = selected_records[i];
+                    var domain = record.expr_eval(
+                        (attributes.states || {})).pre_validate || [];
+                    var prm = record.validate(fields, false, domain);
+                    prms.push(prm.then(reset_state(record, domain)));
+                }
+                jQuery.when.apply(jQuery, prms).then(function() {
+                    var test = function(result) {
+                        return !result;
+                    };
+                    if (Array.prototype.some.call(arguments, test)) {
+                        return;
+                    }
+                    record.model.execute(attributes.name,
+                        [ids], this.context).then(process_action.bind(this))
+                        .then(reload_ids);
+                }.bind(this));
             }.bind(this));
         },
         client_action: function(action) {

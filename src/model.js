@@ -858,7 +858,7 @@
                 return values[0].rec_name;
             });
         },
-        validate: function(fields, softvalidation) {
+        validate: function(fields, softvalidation, pre_validate) {
             var prms = [];
             if (fields === undefined) {
                 fields = null;
@@ -889,7 +889,7 @@
                     if (~exclude_fields.indexOf(fname)) {
                         continue;
                     }
-                    if (!field.validate(this, softvalidation)) {
+                    if (!field.validate(this, softvalidation, pre_validate)) {
                         result = false;
                     }
                 }
@@ -1081,11 +1081,11 @@
                 record.expr_eval(this.description.context || {}));
             return context;
         },
-        get_domains: function(record) {
+        get_domains: function(record, pre_validate) {
             var inversion = new Sao.common.DomainInversion();
             var screen_domain = inversion.domain_inversion(
-                    record.group.domain4inversion(), this.name,
-                    Sao.common.EvalEnvironment(record));
+                    [record.group.domain4inversion(), pre_validate || []],
+                    this.name, Sao.common.EvalEnvironment(record));
             if ((typeof screen_domain == 'boolean') && !screen_domain) {
                 screen_domain = [['id', '=', null]];
             } else if ((typeof screen_domain == 'boolean') && screen_domain) {
@@ -1102,9 +1102,9 @@
             return inversion.concat(
                     [inversion.localize_domain(screen_domain), attr_domain]);
         },
-        validation_domains: function(record) {
+        validation_domains: function(record, pre_validate) {
             var inversion = new Sao.common.DomainInversion();
-            return inversion.concat(this.get_domains(record));
+            return inversion.concat(this.get_domains(record), pre_validate);
         },
         get_eval: function(record) {
             return this.get(record);
@@ -1153,14 +1153,15 @@
             }
             return true;
         },
-        validate: function(record, softvalidation) {
+        validate: function(record, softvalidation, pre_validate) {
             var result = true;
             if (this.description.readonly) {
                 return true;
             }
             this.get_state_attrs(record).domain_readonly = false;
             var inversion = new Sao.common.DomainInversion();
-            var domain = inversion.simplify(this.validation_domains(record));
+            var domain = inversion.simplify(this.validation_domains(record,
+                        pre_validate));
             if (!softvalidation) {
                 result &= this.check_required(record);
             }
@@ -1455,8 +1456,8 @@
             Sao.field.Many2One._super.set_client.call(this, record, value,
                     force_change);
         },
-        validation_domains: function(record) {
-            return this.get_domains(record)[0];
+        validation_domains: function(record, pre_validate) {
+            return this.get_domains(record, pre_validate)[0];
         },
         get_domain: function(record) {
             var domains = this.get_domains(record);
@@ -1816,8 +1817,39 @@
                         inversion.inverse_leaf(screen_domain), this.name),
                     attr_domain]);
         },
-        validation_domains: function(record) {
-            return this.get_domains(record)[0];
+        validation_domains: function(record, pre_validate) {
+            return this.get_domains(record, pre_validate)[0];
+        },
+        validate: function(record, softvalidation, pre_validate) {
+            var result = true;
+            if (this.description.readonly) {
+                return true;
+            }
+            var inversion = new Sao.common.DomainInversion();
+            var ldomain = inversion.localize_domain(inversion.domain_inversion(
+                        record.group.clean4inversion(pre_validate || []), this.name,
+                        Sao.common.EvalEnvironment(record)), this.name);
+            if (typeof ldomain == 'boolean') {
+                if (ldomain) {
+                    ldomain = [];
+                } else {
+                    ldomain = [['id', '=', null]];
+                }
+            }
+            for (var i = 0, len = record._values[this.name] || []; i < len; i++) {
+                var record2 = record._values[i];
+                if (jQuery.isEmptyObject(record2._loaded) && (record2.id >= 0)) {
+                    continue;
+                }
+                // XXX manage promises
+                record2.validate(undefined, softvalidation, ldomain);
+            }
+            if (!Sao.field.One2Many._super.validate.call(this, record,
+                        softvalidation, pre_validate)) {
+                result = false;
+            }
+            this.get_state_attrs(record).valid = result;
+            return result;
         },
         set_state: function(record, states) {
             this._set_default_value(record);

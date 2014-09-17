@@ -1408,16 +1408,7 @@
         },
         button_clicked: function(event) {
             var button = event.data;
-            var record = this.screen.current_record;
-            var fields = Object.keys(this.fields);
-            record.validate(fields).then(function(validate) {
-                if (!validate) {
-                    this.screen.display();
-                    return;
-                } else {
-                    this.screen.button(button.attributes);
-                }
-            }.bind(this));
+            this.screen.button(button.attributes);
         },
         selected_records: function() {
             if (this.screen.current_record) {
