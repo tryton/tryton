@@ -1043,14 +1043,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
             ('party',) + tuple(clause[1:]),
             ]
 
-    @classmethod
-    def get_origins(cls, invoices, name):
-        origins = {}
-        with Transaction().set_user(0, set_context=True):
-            for invoice in cls.browse(invoices):
-                origins[invoice.id] = ', '.join(set(itertools.ifilter(None,
-                            (l.origin_name for l in invoice.lines))))
-        return origins
+    def get_origins(self, name):
+        return ', '.join(set(itertools.ifilter(None,
+                    (l.origin_name for l in self.lines))))
 
     @classmethod
     def delete(cls, invoices):
@@ -1335,8 +1330,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if invoice.move:
                 moves.append(invoice.move)
         if moves:
-            with Transaction().set_user(0, set_context=True):
-                Move.delete(moves)
+            Move.delete(moves)
 
     @classmethod
     @ModelView.button
@@ -1408,8 +1402,7 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     invoice.save()
                     cancel_moves.append(invoice.cancel_move)
         if delete_moves:
-            with Transaction().set_user(0, set_context=True):
-                Move.delete(delete_moves)
+            Move.delete(delete_moves)
         if cancel_moves:
             Move.post(cancel_moves)
         # Write state before reconcile to prevent invoice to go to paid state
