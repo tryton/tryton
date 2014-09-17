@@ -128,8 +128,7 @@ class InvoiceLine:
                     accounts = []
                     if not line.analytic_accounts:
                         # Create missing selection
-                        with Transaction().set_user(0):
-                                selection, = Selection.create([{}])
+                        selection, = Selection.create([{}])
                         cls.write([line], {
                                 'analytic_accounts': selection.id,
                                 })
