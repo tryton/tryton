@@ -21,19 +21,18 @@ class ShipmentIn:
         super(ShipmentIn, cls).done(shipments)
 
         # Assigned sale move lines
-        with Transaction().set_user(0, set_context=True):
-            for shipment in shipments:
-                move_ids = [x.id for x in shipment.incoming_moves]
-                sale_lines = SaleLine.search([
-                        ('purchase_request.purchase_line.moves',
-                            'in', move_ids),
-                        ('purchase_request.origin', 'like', 'sale.sale,%'),
-                        ])
-                pbl = {}
-                for move in shipment.inventory_moves:
-                    pbl.setdefault(move.product, {}).setdefault(
-                        move.to_location, 0.0)
-                    pbl[move.product][move.to_location] += \
-                        move.internal_quantity
-                for sale_line in sale_lines:
-                    sale_line.assign_supplied(pbl[sale_line.product])
+        for shipment in shipments:
+            move_ids = [x.id for x in shipment.incoming_moves]
+            sale_lines = SaleLine.search([
+                    ('purchase_request.purchase_line.moves',
+                        'in', move_ids),
+                    ('purchase_request.origin', 'like', 'sale.sale,%'),
+                    ])
+            pbl = {}
+            for move in shipment.inventory_moves:
+                pbl.setdefault(move.product, {}).setdefault(
+                    move.to_location, 0.0)
+                pbl[move.product][move.to_location] += \
+                    move.internal_quantity
+            for sale_line in sale_lines:
+                sale_line.assign_supplied(pbl[sale_line.product])

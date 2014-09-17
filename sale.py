@@ -53,21 +53,17 @@ class SaleLine:
                 'invisible': ~Eval('purchase_request_state'),
                 }), 'get_purchase_request_state')
 
-    @classmethod
-    def get_purchase_request_state(cls, lines, name):
-        states = dict((l.id, '') for l in lines)
-        with Transaction().set_user(0, set_context=True):
-            for line in cls.browse(states.keys()):
-                if line.purchase_request is not None:
-                    states[line.id] = 'requested'
-                    purchase_line = line.purchase_request.purchase_line
-                    if purchase_line is not None:
-                        purchase = purchase_line.purchase
-                        if purchase.state == 'cancel':
-                            states[line.id] = 'cancel'
-                        elif purchase.state in ('processing', 'done'):
-                            states[line.id] = 'purchased'
-        return states
+    def get_purchase_request_state(self, name):
+        if self.purchase_request is not None:
+            purchase_line = self.purchase_request.purchase_line
+            if purchase_line is not None:
+                purchase = purchase_line.purchase
+                if purchase.state == 'cancel':
+                    return 'cancel'
+                elif purchase.state in ('processing', 'done'):
+                    return 'purchased'
+            return 'requested'
+        return ''
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -111,20 +107,19 @@ class SaleLine:
             self.delivery_date)
         uom = product.purchase_uom or product.default_uom
         quantity = Uom.compute_qty(self.unit, self.quantity, uom)
-        with Transaction().set_user(0, set_context=True):
-            return Request(
-                product=product,
-                party=supplier,
-                quantity=quantity,
-                uom=uom,
-                computed_quantity=quantity,
-                computed_uom=uom,
-                purchase_date=purchase_date,
-                supply_date=self.delivery_date,
-                company=self.sale.company,
-                warehouse=self.warehouse,
-                origin=self.sale,
-                )
+        return Request(
+            product=product,
+            party=supplier,
+            quantity=quantity,
+            uom=uom,
+            computed_quantity=quantity,
+            computed_uom=uom,
+            purchase_date=purchase_date,
+            supply_date=self.delivery_date,
+            company=self.sale.company,
+            warehouse=self.warehouse,
+            origin=self.sale,
+            )
 
     def assign_supplied(self, location_quantities):
         '''

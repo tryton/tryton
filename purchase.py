@@ -27,7 +27,7 @@ class PurchaseRequest:
         sale_ids = list(set(r.origin.id for r in requests
                 if isinstance(r.origin, Sale)))
 
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False):
             sale_lines = []
             for sub_requests in grouped_slice(requests):
                 sale_lines.append(SaleLine.search([
@@ -43,7 +43,7 @@ class PurchaseRequest:
         super(PurchaseRequest, cls).delete(requests)
 
         if sale_ids:
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 Sale.process(Sale.browse(sale_ids))
 
 
@@ -67,8 +67,7 @@ class Purchase:
 
         if requests:
             sale_ids = list(set(req.origin.id for req in requests))
-            with Transaction().set_user(0, set_context=True):
-                Sale.process(Sale.browse(sale_ids))
+            Sale.process(Sale.browse(sale_ids))
 
     @classmethod
     @ModelView.button
