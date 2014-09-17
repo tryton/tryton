@@ -356,14 +356,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                     'planned_date': inventory_date,
                     })
 
-    @classmethod
-    def get_origins(cls, shipments, name):
-        origins = {}
-        with Transaction().set_user(0, set_context=True):
-            for shipment in cls.browse(shipments):
-                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
-                            (m.origin_name for m in shipment.moves))))
-        return origins
+    def get_origins(self, name):
+        return ', '.join(set(itertools.ifilter(None,
+                    (m.origin_name for m in self.moves))))
 
     @classmethod
     def create(cls, vlist):
@@ -655,14 +650,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     'planned_date': shipment._move_planned_date,
                     })
 
-    @classmethod
-    def get_origins(cls, shipments, name):
-        origins = {}
-        with Transaction().set_user(0, set_context=True):
-            for shipment in cls.browse(shipments):
-                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
-                            (m.origin_name for m in shipment.moves))))
-        return origins
+    def get_origins(self, name):
+        return ', '.join(set(itertools.ifilter(None,
+                    (m.origin_name for m in self.moves))))
 
     @classmethod
     def create(cls, vlist):
@@ -1038,15 +1028,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 'moves': value,
                 })
 
-    @classmethod
-    def get_origins(cls, shipments, name):
-        origins = {}
-        with Transaction().set_user(0, set_context=True):
-            for shipment in cls.browse(shipments):
-                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
-                            (m.origin_name for m in shipment.moves))))
-        return origins
-
+    def get_origins(self, name):
+        return ', '.join(set(itertools.ifilter(None,
+                    (m.origin_name for m in self.moves))))
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
@@ -1588,14 +1572,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                     'planned_date': inventory_date,
                     })
 
-    @classmethod
-    def get_origins(cls, shipments, name):
-        origins = {}
-        with Transaction().set_user(0, set_context=True):
-            for shipment in cls.browse(shipments):
-                origins[shipment.id] = ', '.join(set(itertools.ifilter(None,
-                            (m.origin_name for m in shipment.moves))))
-        return origins
+    def get_origins(self, name):
+        return ', '.join(set(itertools.ifilter(None,
+                    (m.origin_name for m in self.moves))))
 
     @classmethod
     def create(cls, vlist):

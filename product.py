@@ -70,7 +70,8 @@ class Template:
 
     @classmethod
     def write(cls, *args):
-        if Transaction().user != 0:
+        if (Transaction().user != 0
+                and Transaction().context.get('_check_access')):
             actions = iter(args)
             for templates, values in zip(actions, actions):
                 for field, error in cls._modify_no_move:

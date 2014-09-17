@@ -571,10 +571,9 @@ class Move(Workflow, ModelSQL, ModelView):
         new_cost_price = new_cost_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
 
-        with Transaction().set_user(0, set_context=True):
-            write({
-                    'cost_price': new_cost_price,
-                    })
+        write({
+                'cost_price': new_cost_price,
+                })
 
     @staticmethod
     def _get_internal_quantity(quantity, uom, product):
@@ -997,11 +996,10 @@ class Move(Workflow, ModelSQL, ModelView):
                         )
                     )
         elif PeriodCache:
-            with Transaction().set_user(0, set_context=True):
-                periods = Period.search([
-                        ('date', '<', context['stock_date_end']),
-                        ('state', '=', 'closed'),
-                        ], order=[('date', 'DESC')], limit=1)
+            periods = Period.search([
+                    ('date', '<', context['stock_date_end']),
+                    ('state', '=', 'closed'),
+                    ], order=[('date', 'DESC')], limit=1)
             if periods:
                 period, = periods
                 state_date_clause &= (
