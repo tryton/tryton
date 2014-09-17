@@ -665,28 +665,27 @@ class CreatePurchase(Wizard):
         keyfunc = partial(self._group_purchase_key, requests)
         requests = sorted(requests, key=keyfunc)
 
-        with Transaction().set_user(0, set_context=True):
-            for key, grouped_requests in groupby(requests, key=keyfunc):
-                grouped_requests = list(grouped_requests)
-                try:
-                    purchase_date = min(r.purchase_date
-                        for r in grouped_requests
-                        if r.purchase_date)
-                except ValueError:
-                    purchase_date = today
-                if purchase_date < today:
-                    purchase_date = today
-                purchase = Purchase(purchase_date=purchase_date)
-                for f, v in key:
-                    setattr(purchase, f, v)
-                purchase.save()
-                for request in grouped_requests:
-                    line = self.compute_purchase_line(request, purchase)
-                    line.purchase = purchase
-                    line.save()
-                    Request.write([request], {
-                            'purchase_line': line.id,
-                            })
+        for key, grouped_requests in groupby(requests, key=keyfunc):
+            grouped_requests = list(grouped_requests)
+            try:
+                purchase_date = min(r.purchase_date
+                    for r in grouped_requests
+                    if r.purchase_date)
+            except ValueError:
+                purchase_date = today
+            if purchase_date < today:
+                purchase_date = today
+            purchase = Purchase(purchase_date=purchase_date)
+            for f, v in key:
+                setattr(purchase, f, v)
+            purchase.save()
+            for request in grouped_requests:
+                line = self.compute_purchase_line(request, purchase)
+                line.purchase = purchase
+                line.save()
+                Request.write([request], {
+                        'purchase_line': line.id,
+                        })
         return 'end'
 
     @staticmethod
