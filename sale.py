@@ -74,13 +74,11 @@ class Sale:
                 'company': self.company.id,
                 }
             values.update(dict(key))
-            with Transaction().set_user(0, set_context=True):
-                shipment = Shipment(**values)
-                shipment.moves = [m for m in grouped_moves]
-                shipment.save()
-                shipments.append(shipment)
-        with Transaction().set_user(0, set_context=True):
-            Shipment.wait(shipments)
+            shipment = Shipment(**values)
+            shipment.moves = [m for m in grouped_moves]
+            shipment.save()
+            shipments.append(shipment)
+        Shipment.wait(shipments)
         return shipments
 
 
@@ -91,12 +89,9 @@ class SaleLine:
         result = super(SaleLine, self).get_move(shipment_type)
         if (shipment_type == 'out'
                 and self.supply_on_sale):
-            with Transaction().set_user(0, set_context=True):
-                # TODO make it works in bunch
-                line = self.__class__(self.id)
-                if (line.purchase_request and line.purchase_request.customer
-                        and self.purchase_request_state != 'cancel'):
-                    return {}
+            if (self.purchase_request and self.purchase_request.customer
+                    and self.purchase_request_state != 'cancel'):
+                return {}
         return result
 
     def get_purchase_request(self):
@@ -120,14 +115,11 @@ class SaleLine:
                 or not self.product):
             return []
         moves = []
-        with Transaction().set_user(0, set_context=True):
-            # TODO make it work in bunch
-            line = self.__class__(self.id)
-            if line.purchase_request and line.purchase_request.customer:
-                if line.purchase_request.purchase_line:
-                    moves = [m
-                        for m in line.purchase_request.purchase_line.moves
-                        if m.state == 'draft' and not m.shipment]
+        if self.purchase_request and self.purchase_request.customer:
+            if self.purchase_request.purchase_line:
+                moves = [m
+                    for m in self.purchase_request.purchase_line.moves
+                    if m.state == 'draft' and not m.shipment]
         return moves
 
     @classmethod
@@ -142,7 +134,7 @@ class SaleLine:
                 added = True
         values = super(SaleLine, cls).read(ids, fields_names=fields_names)
         if 'moves' in fields_names or []:
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 purchase_requests = PurchaseRequest.browse(
                     list(set(v['purchase_request']
                             for v in values if v['purchase_request'])))

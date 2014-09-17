@@ -199,7 +199,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         for shipments, values in zip(actions, actions):
             if values.get('state', '') not in ('done', 'cancel'):
                 continue
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 purchases = set()
                 move_ids = [m.id for s in shipments for m in s.moves]
                 purchase_lines = PurchaseLine.search([
