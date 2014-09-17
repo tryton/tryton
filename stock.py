@@ -88,8 +88,7 @@ class ShipmentOut:
 
         if not self.cost:
             return {}
-        with Transaction().set_user(0, set_context=True):
-            invoice_line = InvoiceLine()
+        invoice_line = InvoiceLine()
         product = self.carrier.carrier_product
         invoice_line.type = 'line'
 

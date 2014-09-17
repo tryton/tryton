@@ -160,12 +160,11 @@ class Sale:
                 with Transaction().set_context(
                         shipment.get_carrier_context()):
                     cost, currency_id = self.carrier.get_sale_price()
-                with Transaction().set_user(0, set_context=True):
-                    Shipment.write([shipment], {
-                            'carrier': self.carrier.id,
-                            'cost': cost,
-                            'cost_currency': currency_id,
-                            })
+                Shipment.write([shipment], {
+                        'carrier': self.carrier.id,
+                        'cost': cost,
+                        'cost_currency': currency_id,
+                        })
         return shipments
 
     def _get_invoice_line_sale_line(self, invoice_type):
@@ -185,8 +184,6 @@ class Sale:
         if (invoice
                 and invoice_type == 'out_invoice'
                 and self.shipment_cost_method == 'shipment'):
-            with Transaction().set_user(0, set_context=True):
-                invoice = Invoice(invoice.id)
             for shipment in self.shipments:
                 if (shipment.state == 'done'
                         and shipment.carrier
@@ -200,8 +197,7 @@ class Sale:
                     Shipment.write([shipment], {
                             'cost_invoice_line': invoice_line.id,
                             })
-            with Transaction().set_user(0, set_context=True):
-                Invoice.update_taxes([invoice])
+            Invoice.update_taxes([invoice])
         return invoice
 
 
