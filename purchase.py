@@ -428,6 +428,9 @@ class Purchase(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Tax = pool.get('account.tax')
         Invoice = pool.get('account.invoice')
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
 
         changes = {
             'untaxed_amount': Decimal('0.0'),
@@ -437,6 +440,12 @@ class Purchase(Workflow, ModelSQL, ModelView):
         if self.lines:
             context = self.get_tax_context()
             taxes = {}
+
+            def round_taxes():
+                if self.currency:
+                    for key, value in taxes.iteritems():
+                        taxes[key] = self.currency.round(value)
+
             for line in self.lines:
                 if getattr(line, 'type', 'line') != 'line':
                     continue
@@ -449,13 +458,15 @@ class Purchase(Workflow, ModelSQL, ModelView):
                         getattr(line, 'quantity', None) or 0.0)
                 for tax in tax_list:
                     key, val = Invoice._compute_tax(tax, 'in_invoice')
-                    if not key in taxes:
+                    if key not in taxes:
                         taxes[key] = val['amount']
                     else:
                         taxes[key] += val['amount']
-            if self.currency:
-                for value in taxes.itervalues():
-                    changes['tax_amount'] += self.currency.round(value)
+                if config.tax_rounding == 'line':
+                    round_taxes()
+            if config.tax_rounding == 'document':
+                round_taxes()
+            changes['tax_amount'] = sum(taxes.itervalues(), Decimal('0.0'))
         if self.currency:
             changes['untaxed_amount'] = self.currency.round(
                 changes['untaxed_amount'])
@@ -471,23 +482,34 @@ class Purchase(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Tax = pool.get('account.tax')
         Invoice = pool.get('account.invoice')
+        Configuration = pool.get('account.configuration')
+
+        config = Configuration(1)
 
         context = self.get_tax_context()
         taxes = {}
+
+        def round_taxes():
+            for key, value in taxes.iteritems():
+                taxes[key] = self.currency.round(value)
+
         for line in self.lines:
             if line.type != 'line':
                 continue
             with Transaction().set_context(context):
                 tax_list = Tax.compute(line.taxes, line.unit_price,
                     line.quantity)
-            # Don't round on each line to handle rounding error
             for tax in tax_list:
                 key, val = Invoice._compute_tax(tax, 'in_invoice')
-                if not key in taxes:
+                if key not in taxes:
                     taxes[key] = val['amount']
                 else:
                     taxes[key] += val['amount']
-        return sum((self.currency.round(tax) for tax in taxes.values()), _ZERO)
+            if config.tax_rounding == 'line':
+                round_taxes()
+        if config.tax_rounding == 'document':
+            round_taxes()
+        return sum(taxes.itervalues(), _ZERO)
 
     @classmethod
     def get_amount(cls, purchases, names):
