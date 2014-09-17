@@ -42,10 +42,9 @@ class Sale:
         Invoice = Pool().get('account.invoice')
         invoice = super(Sale, self)._get_invoice_sale(invoice_type)
         if self.invoice_grouping_method:
-            with Transaction().set_user(0, set_context=True):
-                domain = self._get_grouped_invoice_domain(invoice)
-                order = self._get_grouped_invoice_order()
-                grouped_invoices = Invoice.search(domain, order=order, limit=1)
+            domain = self._get_grouped_invoice_domain(invoice)
+            order = self._get_grouped_invoice_order()
+            grouped_invoices = Invoice.search(domain, order=order, limit=1)
             if grouped_invoices:
                 invoice, = grouped_invoices
         return invoice
