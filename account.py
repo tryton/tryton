@@ -44,13 +44,12 @@ class Configuration:
                 ('field', '=', dunning_field.id),
                 ('res', '=', None),
                 ])
-        with Transaction().set_user(0):
-            Property.delete(properties)
-            if value:
-                Property.create([{
-                            'field': dunning_field.id,
-                            'value': 'account.dunning.procedure,%s' % value,
-                            }])
+        Property.delete(properties)
+        if value:
+            Property.create([{
+                        'field': dunning_field.id,
+                        'value': 'account.dunning.procedure,%s' % value,
+                        }])
 
 
 class MoveLine:
