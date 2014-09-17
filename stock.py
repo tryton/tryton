@@ -65,7 +65,7 @@ class ShipmentIn:
                     if purchase_line.purchase not in purchases:
                         purchases.append(purchase_line.purchase)
 
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 purchases = Purchase.browse([p.id for p in purchases])
                 Purchase.process(purchases)
 
@@ -118,7 +118,7 @@ class ShipmentInReturn:
                 for purchase_line in purchase_lines:
                     purchases.add(purchase_line.purchase)
 
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 purchases = Purchase.browse([p.id for p in purchases])
                 Purchase.process(purchases)
 
@@ -278,9 +278,8 @@ class Move:
                 ])
         if purchase_lines:
             purchase_ids = list(set(l.purchase.id for l in purchase_lines))
-            with Transaction().set_user(0, set_context=True):
-                purchases = Purchase.browse(purchase_ids)
-                Purchase.process(purchases)
+            purchases = Purchase.browse(purchase_ids)
+            Purchase.process(purchases)
 
     @classmethod
     def delete(cls, moves):
@@ -299,7 +298,7 @@ class Move:
             for purchase_line in purchase_lines:
                 purchases.add(purchase_line.purchase)
             if purchases:
-                with Transaction().set_user(0, set_context=True):
+                with Transaction().set_context(_check_access=False):
                     purchases = Purchase.browse([p.id for p in purchases])
                     Purchase.process(purchases)
 

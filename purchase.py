@@ -708,17 +708,16 @@ class Purchase(Workflow, ModelSQL, ModelView):
         else:
             journal = None
 
-        with Transaction().set_user(0, set_context=True):
-            return Invoice(
-                company=self.company,
-                type=invoice_type,
-                journal=journal,
-                party=self.party,
-                invoice_address=self.invoice_address,
-                currency=self.currency,
-                account=self.party.account_payable,
-                payment_term=self.payment_term,
-                )
+        return Invoice(
+            company=self.company,
+            type=invoice_type,
+            journal=journal,
+            party=self.party,
+            invoice_address=self.invoice_address,
+            currency=self.currency,
+            account=self.party.account_payable,
+            payment_term=self.payment_term,
+            )
 
     def create_invoice(self, invoice_type):
         '''
@@ -742,8 +741,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         invoice.lines = list(chain.from_iterable(invoice_lines.itervalues()))
         invoice.save()
 
-        with Transaction().set_user(0, set_context=True):
-            Invoice.update_taxes([invoice])
+        Invoice.update_taxes([invoice])
         return invoice
 
     def create_move(self, move_type):
@@ -761,12 +759,11 @@ class Purchase(Workflow, ModelSQL, ModelView):
 
     def _get_return_shipment(self):
         ShipmentInReturn = Pool().get('stock.shipment.in.return')
-        with Transaction().set_user(0, set_context=True):
-            return ShipmentInReturn(
-                company=self.company,
-                from_location=self.warehouse.storage_location,
-                to_location=self.party.supplier_location,
-                )
+        return ShipmentInReturn(
+            company=self.company,
+            from_location=self.warehouse.storage_location,
+            to_location=self.party.supplier_location,
+            )
 
     def create_return_shipment(self, return_moves):
         '''
@@ -776,8 +773,7 @@ class Purchase(Workflow, ModelSQL, ModelView):
         return_shipment = self._get_return_shipment()
         return_shipment.moves = return_moves
         return_shipment.save()
-        with Transaction().set_user(0, set_context=True):
-            ShipmentInReturn.wait([return_shipment])
+        ShipmentInReturn.wait([return_shipment])
         return return_shipment
 
     def is_done(self):
@@ -1228,8 +1224,7 @@ class PurchaseLine(ModelSQL, ModelView):
         Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
 
-        with Transaction().set_user(0, set_context=True):
-            invoice_line = InvoiceLine()
+        invoice_line = InvoiceLine()
         invoice_line.type = self.type
         invoice_line.description = self.description
         invoice_line.note = self.note
@@ -1338,8 +1333,7 @@ class PurchaseLine(ModelSQL, ModelView):
                     'purchase': self.purchase.rec_name,
                     'line': self.rec_name,
                     })
-        with Transaction().set_user(0, set_context=True):
-            move = Move()
+        move = Move()
         move.quantity = quantity
         move.uom = self.unit
         move.product = self.product
