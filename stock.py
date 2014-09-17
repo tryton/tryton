@@ -170,11 +170,10 @@ class Move:
 
             cost += move_cost_price * Decimal(str(move_qty))
 
-            with Transaction().set_user(0, set_context=True):
-                cls.write([move], {
-                        as_qty_field: (
-                            (getattr(move, as_qty_field) or 0.0) + move_qty),
-                        })
+            cls.write([move], {
+                    as_qty_field: (
+                        (getattr(move, as_qty_field) or 0.0) + move_qty),
+                    })
 
         if consumed_qty < total_qty:
             qty = total_qty - consumed_qty
