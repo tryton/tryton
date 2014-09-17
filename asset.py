@@ -366,11 +366,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         asset_line = None
         for date in dates:
             depreciation = self.compute_depreciation(date, dates)
-            with Transaction().set_user(0, set_context=True):
-                amounts[date] = asset_line = Line(
-                    acquired_value=self.value,
-                    depreciable_basis=amount,
-                    )
+            amounts[date] = asset_line = Line(
+                acquired_value=self.value,
+                depreciable_basis=amount,
+                )
             if depreciation > residual_value:
                 asset_line.depreciation = residual_value
                 asset_line.accumulated_depreciation = (
@@ -430,25 +429,24 @@ class Asset(Workflow, ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
 
         period_id = Period.find(self.company.id, line.date)
-        with Transaction().set_user(0, set_context=True):
-            expense_line = MoveLine(
-                credit=0,
-                debit=line.depreciation,
-                account=self.product.account_expense_used,
-                )
-            depreciation_line = MoveLine(
-                debit=0,
-                credit=line.depreciation,
-                account=self.product.account_depreciation_used,
-                )
+        expense_line = MoveLine(
+            credit=0,
+            debit=line.depreciation,
+            account=self.product.account_expense_used,
+            )
+        depreciation_line = MoveLine(
+            debit=0,
+            credit=line.depreciation,
+            account=self.product.account_depreciation_used,
+            )
 
-            return Move(
-                origin=line,
-                period=period_id,
-                journal=self.account_journal,
-                date=line.date,
-                lines=[expense_line, depreciation_line],
-                )
+        return Move(
+            origin=line,
+            period=period_id,
+            journal=self.account_journal,
+            date=line.date,
+            lines=[expense_line, depreciation_line],
+            )
 
     @classmethod
     def create_moves(cls, assets, date):
@@ -474,8 +472,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             Line.write([line], {
                     'move': move.id,
                     })
-        with Transaction().set_user(0, set_context=True):
-            Move.post(moves)
+        Move.post(moves)
 
     def get_closing_move(self, account):
         """
@@ -494,37 +491,34 @@ class Asset(Workflow, ModelSQL, ModelView):
         else:
             account_asset = self.product.account_asset_used
 
-        with Transaction().set_user(0, set_context=True):
-            asset_line = MoveLine(
-                debit=0,
-                credit=self.value,
-                account=account_asset,
-                )
-            depreciation_line = MoveLine(
-                debit=self.get_depreciated_amount(),
-                credit=0,
-                account=self.product.account_depreciation_used,
-                )
+        asset_line = MoveLine(
+            debit=0,
+            credit=self.value,
+            account=account_asset,
+            )
+        depreciation_line = MoveLine(
+            debit=self.get_depreciated_amount(),
+            credit=0,
+            account=self.product.account_depreciation_used,
+            )
         lines = [asset_line, depreciation_line]
         square_amount = asset_line.credit - depreciation_line.debit
         if square_amount:
             if not account:
                 account = self.product.account_revenue_used
-            with Transaction().set_user(0, set_context=True):
-                counter_part_line = MoveLine(
-                    debit=square_amount if square_amount > 0 else 0,
-                    credit=-square_amount if square_amount < 0 else 0,
-                    account=account,
-                    )
-            lines.append(counter_part_line)
-        with Transaction().set_user(0, set_context=True):
-            return Move(
-                origin=self,
-                period=period_id,
-                journal=self.account_journal,
-                date=date,
-                lines=lines,
+            counter_part_line = MoveLine(
+                debit=square_amount if square_amount > 0 else 0,
+                credit=-square_amount if square_amount < 0 else 0,
+                account=account,
                 )
+            lines.append(counter_part_line)
+        return Move(
+            origin=self,
+            period=period_id,
+            journal=self.account_journal,
+            date=date,
+            lines=lines,
+            )
 
     @classmethod
     def set_reference(cls, assets):
@@ -570,8 +564,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             cls.write([asset], {
                     'move': move.id,
                     })
-        with Transaction().set_user(0, set_context=True):
-            Move.post(moves)
+        Move.post(moves)
 
     def get_rec_name(self, name):
         return '%s - %s' % (self.reference, self.product.rec_name)
