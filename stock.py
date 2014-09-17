@@ -39,7 +39,7 @@ class ShipmentOut:
             for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.outgoing_moves])
 
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 sale_lines = SaleLine.search([
                         ('moves', 'in', move_ids),
                         ])
@@ -89,7 +89,7 @@ class ShipmentOutReturn:
             for shipment in shipments:
                 move_ids.extend([x.id for x in shipment.incoming_moves])
 
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 sale_lines = SaleLine.search([
                         ('moves', 'in', move_ids),
                         ])
@@ -193,14 +193,13 @@ class Move:
 
         super(Move, cls).cancel(moves)
 
-        with Transaction().set_user(0, set_context=True):
-            sale_lines = SaleLine.search([
-                    ('moves', 'in', [m.id for m in moves]),
-                    ])
-            if sale_lines:
-                sale_ids = list(set(l.sale.id for l in sale_lines))
-                sales = Sale.browse(sale_ids)
-                Sale.process(sales)
+        sale_lines = SaleLine.search([
+                ('moves', 'in', [m.id for m in moves]),
+                ])
+        if sale_lines:
+            sale_ids = list(set(l.sale.id for l in sale_lines))
+            sales = Sale.browse(sale_ids)
+            Sale.process(sales)
 
     @classmethod
     def delete(cls, moves):
@@ -208,7 +207,7 @@ class Move:
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False):
             sale_lines = SaleLine.search([
                     ('moves', 'in', [m.id for m in moves]),
                     ])
@@ -217,5 +216,5 @@ class Move:
 
         if sale_lines:
             sales = list(set(l.sale for l in sale_lines))
-            with Transaction().set_user(0, set_context=True):
+            with Transaction().set_context(_check_access=False):
                 Sale.process(sales)

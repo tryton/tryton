@@ -17,10 +17,10 @@ def process_sale(func):
     def wrapper(cls, invoices):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False):
             sales = [s for i in cls.browse(invoices) for s in i.sales]
         func(cls, invoices)
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False):
             Sale.process(sales)
     return wrapper
 
@@ -46,10 +46,9 @@ class Invoice:
     @classmethod
     def get_sale_exception_state(cls, invoices, name):
         Sale = Pool().get('sale.sale')
-        with Transaction().set_user(0, set_context=True):
-            sales = Sale.search([
-                    ('invoices', 'in', [i.id for i in invoices]),
-                    ])
+        sales = Sale.search([
+                ('invoices', 'in', [i.id for i in invoices]),
+                ])
 
         recreated = tuple(i for p in sales for i in p.invoices_recreated)
         ignored = tuple(i for p in sales for i in p.invoices_ignored)
@@ -109,10 +108,9 @@ class Invoice:
     @Workflow.transition('draft')
     def draft(cls, invoices):
         Sale = Pool().get('sale.sale')
-        with Transaction().set_user(0, set_context=True):
-            sales = Sale.search([
-                    ('invoices', 'in', [i.id for i in invoices]),
-                    ])
+        sales = Sale.search([
+                ('invoices', 'in', [i.id for i in invoices]),
+                ])
         if sales and any(i.state == 'cancel' for i in invoices):
             cls.raise_user_error('reset_invoice_sale')
 

@@ -737,17 +737,16 @@ class Sale(Workflow, ModelSQL, ModelView):
         else:
             journal = None
 
-        with Transaction().set_user(0, set_context=True):
-            return Invoice(
-                company=self.company,
-                type=invoice_type,
-                journal=journal,
-                party=self.party,
-                invoice_address=self.invoice_address,
-                currency=self.currency,
-                account=self.party.account_receivable,
-                payment_term=self.payment_term,
-                )
+        return Invoice(
+            company=self.company,
+            type=invoice_type,
+            journal=journal,
+            party=self.party,
+            invoice_address=self.invoice_address,
+            currency=self.currency,
+            account=self.party.account_receivable,
+            payment_term=self.payment_term,
+            )
 
     def create_invoice(self, invoice_type):
         '''
@@ -772,8 +771,7 @@ class Sale(Workflow, ModelSQL, ModelView):
             + list(chain.from_iterable(invoice_lines.itervalues())))
         invoice.save()
 
-        with Transaction().set_user(0, set_context=True):
-            Invoice.update_taxes([invoice])
+        Invoice.update_taxes([invoice])
         return invoice
 
     def _get_move_sale_line(self, shipment_type):
@@ -837,15 +835,13 @@ class Sale(Workflow, ModelSQL, ModelView):
 
         shipments = []
         for key, grouped_moves in groupby(moves, key=keyfunc):
-            with Transaction().set_user(0, set_context=True):
-                shipment = self._get_shipment_sale(Shipment, key)
-                shipment.moves = (list(getattr(shipment, 'moves', []))
-                    + [x[1] for x in grouped_moves])
-                shipment.save()
-                shipments.append(shipment)
+            shipment = self._get_shipment_sale(Shipment, key)
+            shipment.moves = (list(getattr(shipment, 'moves', []))
+                + [x[1] for x in grouped_moves])
+            shipment.save()
+            shipments.append(shipment)
         if shipment_type == 'out':
-            with Transaction().set_user(0, set_context=True):
-                Shipment.wait(shipments)
+            Shipment.wait(shipments)
         return shipments
 
     def is_done(self):
@@ -1299,8 +1295,7 @@ class SaleLine(ModelSQL, ModelView):
         Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
 
-        with Transaction().set_user(0, set_context=True):
-            invoice_line = InvoiceLine()
+        invoice_line = InvoiceLine()
         invoice_line.type = self.type
         invoice_line.description = self.description
         invoice_line.note = self.note
@@ -1428,8 +1423,7 @@ class SaleLine(ModelSQL, ModelView):
                     'sale': self.sale.rec_name,
                     'line': self.rec_name,
                     })
-        with Transaction().set_user(0, set_context=True):
-            move = Move()
+        move = Move()
         move.quantity = quantity
         move.uom = self.unit
         move.product = self.product
