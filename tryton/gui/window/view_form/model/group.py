@@ -1,7 +1,7 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 from record import Record
-from field import Field, O2MField, M2OField, ReferenceField
+from field import Field, M2OField, ReferenceField
 from tryton.signal_event import SignalEvent
 from tryton.common.domain_inversion import is_leaf
 from tryton.common import RPCExecute, RPCException, MODELACCESS
@@ -150,11 +150,6 @@ class Group(SignalEvent, list):
             field = Field.get_field(attr['type'])
             attr['name'] = name
             self.fields[name] = field(attr)
-            if isinstance(self.fields[name], O2MField) \
-                    and '_datetime' in self._context:
-                self.fields[name].context.update({
-                    '_datetime': self._context['_datetime'],
-                    })
 
     def save(self):
         saved = []
