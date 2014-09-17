@@ -52,8 +52,7 @@ class User:
     @classmethod
     def _check_passwd_ldap_user(cls, logins):
         Connection = Pool().get('ldap.connection')
-        with Transaction().set_user(0):
-            connection, = Connection.search([], limit=1)
+        connection, = Connection.search([], limit=1)
         find = False
         try:
             con = ldap.initialize(connection.uri)
@@ -80,7 +79,8 @@ class User:
             if values.get('password') and 'login' in values:
                 tocheck.append(values['login'])
         if tocheck:
-            cls._check_passwd_ldap_user(tocheck)
+            with Transaction().set_context(_check_access=False):
+                cls._check_passwd_ldap_user(tocheck)
         return super(User, cls).create(vlist)
 
     @classmethod
@@ -96,8 +96,7 @@ class User:
     def set_preferences(cls, values, old_password=False):
         Connection = Pool().get('ldap.connection')
         if 'password' in values:
-            with Transaction().set_user(0):
-                connection, = Connection.search([], limit=1)
+            connection, = Connection.search([], limit=1)
             try:
                 con = ldap.initialize(connection.uri)
                 if connection.active_directory:
@@ -126,8 +125,7 @@ class User:
         pool = Pool()
         Connection = pool.get('ldap.connection')
         LoginAttempt = pool.get('res.user.login.attempt')
-        with Transaction().set_user(0):
-            connection, = Connection.search([], limit=1)
+        connection, = Connection.search([], limit=1)
         try:
             con = ldap.initialize(connection.uri)
             if connection.active_directory:
