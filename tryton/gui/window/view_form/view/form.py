@@ -509,15 +509,8 @@ class ViewForm(View):
             focus_widget.grab_focus()
 
     def button_clicked(self, widget):
-        record = self.screen.current_record
-        self.set_value()
-        fields = self.get_fields()
-        if not record.validate(fields):
-            self.screen.display(set_cursor=True)
-            return
-        else:
-            widget.handler_block_by_func(self.button_clicked)
-            try:
-                self.screen.button(widget.attrs)
-            finally:
-                widget.handler_unblock_by_func(self.button_clicked)
+        widget.handler_block_by_func(self.button_clicked)
+        try:
+            self.screen.button(widget.attrs)
+        finally:
+            widget.handler_unblock_by_func(self.button_clicked)

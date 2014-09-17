@@ -897,12 +897,22 @@ class Screen(SignalEvent):
         return buttons
 
     def button(self, button):
-        'Execute button on the current record'
+        'Execute button on the selected records'
         if button.get('confirm', False) and not sur(button['confirm']):
             return
-        record = self.current_record
-        if not record.save(force_reload=False):
+        self.current_view.set_value()
+        if not self.current_record.save(force_reload=False):
             return
+        fields = self.current_view.get_fields()
+        for record in self.selected_records:
+            domain = record.expr_eval(
+                button.get('states', {})).get('pre_validate', [])
+            if not record.validate(fields, pre_validate=domain):
+                self.display(set_cursor=True)
+                if domain:
+                    # Reset valid state with normal domain
+                    record.validate(fields)
+                return
         ids = [r.id for r in self.selected_records]
         try:
             action = RPCExecute('model', self.model_name, button['name'],

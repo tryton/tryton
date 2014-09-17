@@ -378,7 +378,7 @@ class Record(SignalEvent):
         except RPCException:
             return ''
 
-    def validate(self, fields=None, softvalidation=False):
+    def validate(self, fields=None, softvalidation=False, pre_validate=None):
         if isinstance(fields, list) and fields:
             self._check_load(fields)
         elif fields is None:
@@ -391,7 +391,7 @@ class Record(SignalEvent):
                 continue
             if field_name == self.group.exclude_field:
                 continue
-            if not field.validate(self, softvalidation):
+            if not field.validate(self, softvalidation, pre_validate):
                 res = False
         return res
 

@@ -42,8 +42,9 @@ class Field(object):
         record.autocomplete_with(self.name)
         record.set_field_context()
 
-    def domains_get(self, record):
-        screen_domain = domain_inversion(record.group.domain4inversion,
+    def domains_get(self, record, pre_validate=None):
+        screen_domain = domain_inversion(
+            [record.group.domain4inversion, pre_validate or []],
             self.name, EvalEnvironment(record))
         if isinstance(screen_domain, bool) and not screen_domain:
             screen_domain = [('id', '=', None)]
@@ -56,8 +57,8 @@ class Field(object):
         screen_domain, attr_domain = self.domains_get(record)
         return concat(localize_domain(screen_domain), attr_domain)
 
-    def validation_domains(self, record):
-        return concat(*self.domains_get(record))
+    def validation_domains(self, record, pre_validate=None):
+        return concat(*self.domains_get(record, pre_validate))
 
     def context_get(self, record):
         context = record.context_get().copy()
@@ -74,12 +75,12 @@ class Field(object):
                 return False
         return True
 
-    def validate(self, record, softvalidation=False):
+    def validate(self, record, softvalidation=False, pre_validate=None):
         if self.attrs.get('readonly'):
             return True
         res = True
         self.get_state_attrs(record)['domain_readonly'] = False
-        domain = simplify(self.validation_domains(record))
+        domain = simplify(self.validation_domains(record, pre_validate))
         if not softvalidation:
             res = res and self.check_required(record)
         if isinstance(domain, bool):
@@ -415,8 +416,8 @@ class M2OField(Field):
                 )[self.attrs.get('datetime_field')]
         return context
 
-    def validation_domains(self, record):
-        screen_domain, attr_domain = self.domains_get(record)
+    def validation_domains(self, record, pre_validate=None):
+        screen_domain, attr_domain = self.domains_get(record, pre_validate)
         return screen_domain
 
     def domain_get(self, record):
@@ -700,19 +701,29 @@ class O2MField(Field):
                 if record2 is not None:
                     record2.set_on_change(vals)
 
-    def validation_domains(self, record):
-        screen_domain, attr_domain = self.domains_get(record)
+    def validation_domains(self, record, pre_validate=None):
+        screen_domain, attr_domain = self.domains_get(record, pre_validate)
         return screen_domain
 
-    def validate(self, record, softvalidation=False):
+    def validate(self, record, softvalidation=False, pre_validate=None):
         if self.attrs.get('readonly'):
             return True
         test = True
+        ldomain = localize_domain(domain_inversion(
+                record.group.clean4inversion(pre_validate or []), self.name,
+                EvalEnvironment(record)), self.name)
+        if isinstance(ldomain, bool):
+            if ldomain:
+                ldomain = []
+            else:
+                ldomain = [('id', '=', None)]
         for record2 in record.value.get(self.name, []):
             if not record2.loaded and record2.id >= 0:
                 continue
-            test &= record2.validate(softvalidation=softvalidation)
-        test &= super(O2MField, self).validate(record, softvalidation)
+            test &= record2.validate(softvalidation=softvalidation,
+                pre_validate=ldomain)
+        test &= super(O2MField, self).validate(record, softvalidation,
+            pre_validate)
         self.get_state_attrs(record)['valid'] = test
         return test
 
@@ -876,8 +887,8 @@ class DictField(Field):
     def get_client(self, record):
         return super(DictField, self).get_client(record) or self._default
 
-    def validation_domains(self, record):
-        screen_domain, attr_domain = self.domains_get(record)
+    def validation_domains(self, record, pre_validate=None):
+        screen_domain, attr_domain = self.domains_get(record, pre_validate)
         return screen_domain
 
     def domain_get(self, record):
