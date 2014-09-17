@@ -24,8 +24,7 @@ class Move:
         assert type_.startswith('in_') or type_.startswith('out_'), \
             'wrong type'
 
-        with Transaction().set_user(0, set_context=True):
-            move_line = AccountMoveLine()
+        move_line = AccountMoveLine()
         if ((type_.endswith('supplier')
                     or type_ == 'in_production')
                 and self.product.cost_price_method != 'fixed'):
@@ -58,10 +57,9 @@ class Move:
         '''
         pool = Pool()
         AccountMoveLine = pool.get('account.move.line')
-        with Transaction().set_user(0, set_context=True):
-            move_line = AccountMoveLine(
-                account=self.product.account_stock_used,
-                )
+        move_line = AccountMoveLine(
+            account=self.product.account_stock_used,
+            )
         if not amount:
             return
         if amount >= Decimal('0.0'):
@@ -141,14 +139,13 @@ class Move:
             account_move_lines.append(move_line)
 
         account_configuration = AccountConfiguration(1)
-        with Transaction().set_user(0, set_context=True):
-            return AccountMove(
-                journal=account_configuration.stock_journal,
-                period=period_id,
-                date=date,
-                origin=self,
-                lines=account_move_lines,
-                )
+        return AccountMove(
+            journal=account_configuration.stock_journal,
+            period=period_id,
+            date=date,
+            origin=self,
+            lines=account_move_lines,
+            )
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -168,7 +165,6 @@ class Move:
         account_moves = []
         for move in moves:
             account_moves.append(move._get_account_stock_move())
-        with Transaction().set_user(0, set_context=True):
-            account_moves = AccountMove.create(
-                [m._save_values for m in account_moves if m])
-            AccountMove.post(account_moves)
+        account_moves = AccountMove.create(
+            [m._save_values for m in account_moves if m])
+        AccountMove.post(account_moves)

@@ -337,15 +337,14 @@ class UpdateCostPrice(Wizard):
 
         user = User(Transaction().user)
         period_id = Period.find(user.company.id)
-        with Transaction().set_user(0, set_context=True):
-            return Move(
-                description=self.show_move.description,
-                period=period_id,
-                journal=self.show_move.journal,
-                date=Date.today(),
-                origin=self.get_product(),
-                lines=self.get_move_lines(),
-                )
+        return Move(
+            description=self.show_move.description,
+            period=period_id,
+            journal=self.show_move.journal,
+            date=Date.today(),
+            origin=self.get_product(),
+            lines=self.get_move_lines(),
+            )
 
     def transition_create_move(self):
         Move = Pool().get('account.move')
@@ -354,8 +353,7 @@ class UpdateCostPrice(Wizard):
             self.raise_user_error('same_account')
         move = self.get_move()
         move.save()
-        with Transaction().set_user(0, set_context=True):
-            Move.post([move])
+        Move.post([move])
         return 'update_price'
 
     def transition_update_price(self):
@@ -372,6 +370,5 @@ class UpdateCostPrice(Wizard):
                 template = self.ask_price.product.template
             write = partial(ProductTemplate.write, [template])
 
-        with Transaction().set_user(0, set_context=True):
-            write({'cost_price': self.ask_price.cost_price})
+        write({'cost_price': self.ask_price.cost_price})
         return 'end'
