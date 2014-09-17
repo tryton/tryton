@@ -126,13 +126,12 @@ class Model(ModelSQL, ModelView):
     @classmethod
     def list_models(cls):
         'Return a list of all models names'
-        with Transaction().set_user(0):
-            models = cls.search([], order=[
-                    ('module', 'ASC'),  # Optimization assumption
-                    ('model', 'ASC'),
-                    ('id', 'ASC'),
-                    ])
-            return [m.model for m in models]
+        models = cls.search([], order=[
+                ('module', 'ASC'),  # Optimization assumption
+                ('model', 'ASC'),
+                ('id', 'ASC'),
+                ])
+        return [m.model for m in models]
 
     @classmethod
     def list_history(cls):
@@ -526,7 +525,9 @@ class ModelAccess(ModelSQL, ModelView):
         'Check access for model_name and mode'
         assert mode in ['read', 'write', 'create', 'delete'], \
             'Invalid access mode for security'
-        if Transaction().user == 0:
+        if ((Transaction().user == 0)
+                or (raise_exception
+                    and not Transaction().context.get('_check_access'))):
             return True
 
         access = cls.get_access([model_name])[model_name][mode]
@@ -706,7 +707,9 @@ class ModelFieldAccess(ModelSQL, ModelView):
         '''
         assert mode in ('read', 'write', 'create', 'delete'), \
             'Invalid access mode'
-        if Transaction().user == 0:
+        if ((Transaction().user == 0)
+                or (raise_exception
+                    and not Transaction().context.get('_check_access'))):
             if access:
                 return dict((x, True) for x in fields)
             return True
@@ -920,22 +923,21 @@ class ModelData(ModelSQL, ModelView):
     def sync(cls, records):
         pool = Pool()
         to_write = []
-        with Transaction().set_user(0):
-            for data in records:
-                Model = pool.get(data.model)
-                values = cls.load_values(data.values)
-                fs_values = cls.load_values(data.fs_values)
-                # values could be the same once loaded
-                # if they come from version < 3.2
-                if values != fs_values:
-                    record = Model(data.db_id)
-                    Model.write([record], fs_values)
-                    values.update(fs_values)
-                to_write.extend([[data], {
-                            'values': cls.dump_values(values),
-                            }])
-            if to_write:
-                cls.write(*to_write)
+        for data in records:
+            Model = pool.get(data.model)
+            values = cls.load_values(data.values)
+            fs_values = cls.load_values(data.fs_values)
+            # values could be the same once loaded
+            # if they come from version < 3.2
+            if values != fs_values:
+                record = Model(data.db_id)
+                Model.write([record], fs_values)
+                values.update(fs_values)
+            to_write.extend([[data], {
+                        'values': cls.dump_values(values),
+                        }])
+        if to_write:
+            cls.write(*to_write)
 
 
 class PrintModelGraphStart(ModelView):

@@ -313,20 +313,18 @@ class Sequence(ModelSQL, ModelView):
                 #Pre-fetch number_next
                 number_next = sequence.number_next_internal
 
-                with Transaction().set_user(0):
-                    cls.write([sequence], {
-                            'number_next_internal': (number_next
-                                + sequence.number_increment),
-                            })
+                cls.write([sequence], {
+                        'number_next_internal': (number_next
+                            + sequence.number_increment),
+                        })
             return '%%0%sd' % sequence.padding % number_next
         elif sequence.type in ('decimal timestamp', 'hexadecimal timestamp'):
             timestamp = sequence.last_timestamp
             while timestamp == sequence.last_timestamp:
                 timestamp = cls._timestamp(sequence)
-            with Transaction().set_user(0):
-                cls.write([sequence], {
-                    'last_timestamp': timestamp,
-                    })
+            cls.write([sequence], {
+                'last_timestamp': timestamp,
+                })
             if sequence.type == 'decimal timestamp':
                 return '%d' % timestamp
             else:
@@ -344,18 +342,18 @@ class Sequence(ModelSQL, ModelView):
             domain = [('id', '=', domain)]
 
         # bypass rules on sequences
-        with Transaction().set_context(user=False):
+        with Transaction().set_context(user=False, _check_access=False):
             with Transaction().set_user(0):
                 try:
                     sequence, = cls.search(domain, limit=1)
                 except TypeError:
                     cls.raise_user_error('missing')
-            date = Transaction().context.get('date')
-            return '%s%s%s' % (
-                cls._process(sequence.prefix, date=date),
-                cls._get_sequence(sequence),
-                cls._process(sequence.suffix, date=date),
-                )
+                date = Transaction().context.get('date')
+                return '%s%s%s' % (
+                    cls._process(sequence.prefix, date=date),
+                    cls._get_sequence(sequence),
+                    cls._process(sequence.suffix, date=date),
+                    )
 
     @classmethod
     def get(cls, code):

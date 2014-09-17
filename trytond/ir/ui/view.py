@@ -310,8 +310,8 @@ class ViewTreeState(ModelSQL, ModelView):
     def __setup__(cls):
         super(ViewTreeState, cls).__setup__()
         cls.__rpc__.update({
-                'set': RPC(readonly=False),
-                'get': RPC(),
+                'set': RPC(readonly=False, check_access=False),
+                'get': RPC(check_access=False),
                 })
 
     @classmethod
@@ -340,42 +340,40 @@ class ViewTreeState(ModelSQL, ModelView):
     @classmethod
     def set(cls, model, domain, child_name, nodes, selected_nodes):
         current_user = Transaction().user
-        with Transaction().set_user(0):
-            records = cls.search([
-                    ('user', '=', current_user),
-                    ('model', '=', model),
-                    ('domain', '=', domain),
-                    ('child_name', '=', child_name),
-                    ])
-            cls.delete(records)
-            cls.create([{
-                        'user': current_user,
-                        'model': model,
-                        'domain': domain,
-                        'child_name': child_name,
-                        'nodes': nodes,
-                        'selected_nodes': selected_nodes,
-                        }])
+        records = cls.search([
+                ('user', '=', current_user),
+                ('model', '=', model),
+                ('domain', '=', domain),
+                ('child_name', '=', child_name),
+                ])
+        cls.delete(records)
+        cls.create([{
+                    'user': current_user,
+                    'model': model,
+                    'domain': domain,
+                    'child_name': child_name,
+                    'nodes': nodes,
+                    'selected_nodes': selected_nodes,
+                    }])
 
     @classmethod
     def get(cls, model, domain, child_name):
         # Normalize the json domain
         domain = json.dumps(json.loads(domain))
         current_user = Transaction().user
-        with Transaction().set_user(0):
-            try:
-                expanded_info, = cls.search([
-                        ('user', '=', current_user),
-                        ('model', '=', model),
-                        ('domain', '=', domain),
-                        ('child_name', '=', child_name),
-                        ],
-                    limit=1)
-            except ValueError:
-                return (cls.default_nodes(), cls.default_selected_nodes())
-            state = cls(expanded_info)
-            return (state.nodes or cls.default_nodes(),
-                state.selected_nodes or cls.default_selected_nodes())
+        try:
+            expanded_info, = cls.search([
+                    ('user', '=', current_user),
+                    ('model', '=', model),
+                    ('domain', '=', domain),
+                    ('child_name', '=', child_name),
+                    ],
+                limit=1)
+        except ValueError:
+            return (cls.default_nodes(), cls.default_selected_nodes())
+        state = cls(expanded_info)
+        return (state.nodes or cls.default_nodes(),
+            state.selected_nodes or cls.default_selected_nodes())
 
 
 class ViewSearch(ModelSQL, ModelView):

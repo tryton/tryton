@@ -1,3 +1,6 @@
+* Model and Field access checked only if _check_access is set
+* Add check_access to RPC
+* Add check_access to Wizard and Report
 * Add support for domain_<field name> method
 * Refactor configuration file and command line
 * Use the context of the relation field for instanciation

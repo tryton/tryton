@@ -753,7 +753,7 @@ class ModelStorage(Model):
         # Allow root user to update/delete
         if Transaction().user == 0:
             return True
-        with Transaction().set_user(0):
+        with Transaction().set_context(_check_access=False):
             models_data = ModelData.search([
                 ('model', '=', cls.__name__),
                 ('db_id', 'in', map(int, records)),
@@ -843,7 +843,7 @@ class ModelStorage(Model):
     def _validate(cls, records, field_names=None):
         pool = Pool()
         # Ensure that records are readable
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False):
             records = cls.browse(records)
 
         def call(name):

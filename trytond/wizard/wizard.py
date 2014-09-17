@@ -17,6 +17,7 @@ from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.model.fields import states_validate
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
+from trytond.exceptions import UserError
 
 
 class Button(object):
@@ -152,7 +153,7 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
         cls.__rpc__ = {
             'create': RPC(readonly=False),
             'delete': RPC(readonly=False),
-            'execute': RPC(readonly=False),
+            'execute': RPC(readonly=False, check_access=False),
             }
         cls._error_messages = {}
 
@@ -181,9 +182,31 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
         Translation.register_error_messages(cls, module_name)
 
     @classmethod
+    def check_access(cls):
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        ActionWizard = pool.get('ir.action.wizard')
+        User = pool.get('res.user')
+        context = Transaction().context
+
+        if Transaction().user == 0:
+            return
+
+        model = context.get('active_model')
+        if model:
+            ModelAccess.check(model, 'read')
+            ModelAccess.check(model, 'write')
+        groups = set(User.get_groups())
+        wizard_groups = ActionWizard.get_groups(cls.__name__,
+            action_id=context.get('action_id'))
+        if wizard_groups and not groups & wizard_groups:
+            raise UserError('Calling wizard %s is not allowed!' % cls.__name__)
+
+    @classmethod
     def create(cls):
         "Create a session"
         Session = Pool().get('ir.session.wizard')
+        cls.check_access()
         return (Session.create([{}])[0].id, cls.start_state, cls.end_state)
 
     @classmethod
@@ -215,6 +238,7 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
                 - ``defaults``: a dictionary with default values
                 - ``buttons``: a list of buttons
         '''
+        cls.check_access()
         wizard = cls(session_id)
         for key, values in data.iteritems():
             record = getattr(wizard, key)

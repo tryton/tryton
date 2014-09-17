@@ -135,8 +135,7 @@ class Property(ModelSQL, ModelView):
             ('field', '=', model_field.id),
             ('res', 'in', [model + ',' + str(res_id) for res_id in ids]),
             ], order=[])
-        with Transaction().set_user(0, set_context=True):
-            cls.delete(properties)
+        cls.delete(properties)
 
         defaults = cls.search([
             ('field', '=', model_field.id),
@@ -160,5 +159,4 @@ class Property(ModelSQL, ModelView):
         if (val != default_val):
             for res_id in ids:
                 vals = cls._set_values(model, res_id, val, model_field.id)
-                with Transaction().set_user(0, set_context=True):
-                    cls.create([vals])
+                cls.create([vals])

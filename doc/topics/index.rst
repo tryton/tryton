@@ -18,6 +18,7 @@ Introduction to all the key parts of trytond:
     models/fields_on_change
     domain
     pyson
+    access_rights
     actions
     views/index
     views/extension

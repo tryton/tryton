@@ -26,6 +26,7 @@ from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
 from trytond.rpc import RPC
+from trytond.exceptions import UserError
 
 MIMETYPES = {
     'odt': 'application/vnd.oasis.opendocument.text',
@@ -102,6 +103,20 @@ class Report(URLMixin, PoolBase):
             }
 
     @classmethod
+    def check_access(cls):
+        pool = Pool()
+        ActionReport = pool.get('ir.action.report')
+        User = pool.get('res.user')
+
+        if Transaction().user == 0:
+            return
+
+        groups = set(User.get_groups())
+        report_groups = ActionReport.get_groups(cls.__name__)
+        if report_groups and not groups & report_groups:
+            raise UserError('Calling report %s is not allowed!' % cls.__name__)
+
+    @classmethod
     def execute(cls, ids, data):
         '''
         Execute the report on record ids.
@@ -120,6 +135,7 @@ class Report(URLMixin, PoolBase):
                 ])
         if not action_reports:
             raise Exception('Error', 'Report (%s) not find!' % cls.__name__)
+        cls.check_access()
         action_report = action_reports[0]
         records = None
         model = action_report.model or data.get('model')

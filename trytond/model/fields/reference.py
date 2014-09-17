@@ -68,7 +68,7 @@ class Reference(Field):
 
         # Check if reference ids still exist
         with Transaction().set_context(active_test=False), \
-                Transaction().set_user(0):
+                Transaction().set_context(_check_access=False):
             for ref_model, (ref_ids, ids) in ref_to_check.iteritems():
                 try:
                     pool.get(ref_model)

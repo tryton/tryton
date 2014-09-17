@@ -237,6 +237,7 @@ class ActionKeyword(ModelSQL, ModelView):
 
 class ActionMixin(ModelSQL):
     _order_name = 'action'
+    _action_name = 'name'
 
     @classmethod
     def __setup__(cls):
@@ -362,10 +363,23 @@ class ActionMixin(ModelSQL):
                     default=default))
         return new_records
 
+    @classmethod
+    def get_groups(cls, name, action_id=None):
+        # TODO add cache
+        domain = [
+            (cls._action_name, '=', name),
+            ]
+        if action_id:
+            domain.append(('id', '=', action_id))
+        actions = cls.search(domain)
+        groups = {g.id for a in actions for g in a.groups}
+        return groups
+
 
 class ActionReport(ActionMixin, ModelSQL, ModelView):
     "Action report"
     __name__ = 'ir.action.report'
+    _action_name = 'report_name'
     model = fields.Char('Model')
     report_name = fields.Char('Internal Name', required=True)
     report = fields.Char('Path')
@@ -493,10 +507,9 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                     where=outputformat.format == 'pdf'))
 
             ids = [x[0] for x in cursor.fetchall()]
-            with Transaction().set_user(0):
-                cls.write(cls.browse(ids), {'extension': 'pdf'})
-                ids = cls.search([('id', 'not in', ids)])
-                cls.write(cls.browse(ids), {'extension': 'odt'})
+            cls.write(cls.browse(ids), {'extension': 'pdf'})
+            ids = cls.search([('id', 'not in', ids)])
+            cls.write(cls.browse(ids), {'extension': 'odt'})
 
             table.drop_column("output_format")
             TableHandler.dropTable(cursor, 'ir.action.report.outputformat',
@@ -967,6 +980,7 @@ class ActionActWindowDomain(ModelSQL, ModelView):
 class ActionWizard(ActionMixin, ModelSQL, ModelView):
     "Action wizard"
     __name__ = 'ir.action.wizard'
+    _action_name = 'wiz_name'
     wiz_name = fields.Char('Wizard name', required=True)
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')

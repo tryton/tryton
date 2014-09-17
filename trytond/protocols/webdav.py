@@ -581,7 +581,9 @@ class WebDAVAuthRequestHandler(WebDAVServer.DAVRequestHandler):
             if not user:
                 return None
 
-        Transaction().start(dbname, user)
+        Transaction().start(dbname, user, {
+                '_check_access': True,
+                })
         Cache.clean(dbname)
         return user
 

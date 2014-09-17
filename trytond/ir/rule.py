@@ -26,6 +26,7 @@ class RuleGroup(ModelSQL, ModelView):
         help="The rule is satisfied if at least one test is True")
     groups = fields.Many2Many('ir.rule.group-res.group',
         'rule_group', 'group', 'Groups')
+    # TODO remove to only use groups
     users = fields.Many2Many('ir.rule.group-res.user',
         'rule_group', 'user', 'Users')
     perm_read = fields.Boolean('Read Access')
@@ -141,7 +142,7 @@ class Rule(ModelSQL, ModelView):
     def _get_context():
         User = Pool().get('res.user')
         user_id = Transaction().user
-        with Transaction().set_user(0, set_context=True):
+        with Transaction().set_context(_check_access=False):
             user = User(user_id)
         return {
             'user': user,

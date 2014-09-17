@@ -139,8 +139,7 @@ class ModelSQL(ModelStorage):
             if isinstance(field, fields.Many2One) \
                     and field.model_name == cls.__name__ \
                     and field.left and field.right:
-                with Transaction().set_user(0):
-                    cls._rebuild_tree(field_name, None, 0)
+                cls._rebuild_tree(field_name, None, 0)
 
         for ident, constraint, _ in cls._sql_constraints:
             table.add_constraint(ident, constraint)
@@ -441,7 +440,7 @@ class ModelSQL(ModelStorage):
                 new_ids.append(id_new)
             except DatabaseIntegrityError, exception:
                 with Transaction().new_cursor(), \
-                        Transaction().set_user(0):
+                        Transaction().set_context(_check_access=False):
                     cls.__raise_integrity_error(exception, values)
                 raise
 
@@ -796,7 +795,7 @@ class ModelSQL(ModelStorage):
                             where=red_sql))
                 except DatabaseIntegrityError, exception:
                     with Transaction().new_cursor(), \
-                            Transaction().set_user(0):
+                            Transaction().set_context(_check_access=False):
                         cls.__raise_integrity_error(exception, values,
                             values.keys())
                     raise
@@ -935,7 +934,7 @@ class ModelSQL(ModelStorage):
                     Model.delete(models)
 
             for Model, field_name in foreign_keys_tocheck:
-                with Transaction().set_user(0):
+                with Transaction().set_context(_check_access=False):
                     if Model.search([
                                 (field_name, 'in', sub_ids),
                                 ], order=[]):
@@ -1178,8 +1177,7 @@ class ModelSQL(ModelStorage):
                         cls._update_tree(id_, field_name,
                             field.left, field.right)
                 else:
-                    with Transaction().set_user(0):
-                        cls._rebuild_tree(field_name, None, 0)
+                    cls._rebuild_tree(field_name, None, 0)
 
     @classmethod
     def _rebuild_tree(cls, parent, parent_id, left):

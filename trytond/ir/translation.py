@@ -384,7 +384,7 @@ class Translation(ModelSQL, ModelView):
         lang = unicode(lang)
         if name.split(',')[0] in ('ir.model.field', 'ir.model'):
             field_name = name.split(',')[1]
-            with Transaction().set_user(0):
+            with Transaction().set_context(_check_access=False):
                 if name.split(',')[0] == 'ir.model.field':
                     if field_name == 'field_description':
                         ttype = u'field'
@@ -514,14 +514,14 @@ class Translation(ModelSQL, ModelView):
                             'fuzzy': False,
                             })
                 else:
-                    with Transaction().set_user(0):
+                    with Transaction().set_context(_check_access=False):
                         cls.write([translation], {
                             'src': getattr(record, field_name),
                             'value': value,
                             'fuzzy': False,
                             })
             if to_create:
-                with Transaction().set_user(0):
+                with Transaction().set_context(_check_access=False):
                     cls.create(to_create)
             return
 
@@ -564,7 +564,7 @@ class Translation(ModelSQL, ModelView):
                         'fuzzy': False,
                         })
             else:
-                with Transaction().set_user(0):
+                with Transaction().set_context(_check_access=False):
                     cls.write([translation], {
                         'value': value,
                         'src': getattr(record, field_name),
@@ -577,7 +577,7 @@ class Translation(ModelSQL, ModelView):
                                 'fuzzy': True,
                                 })
         if to_create:
-            with Transaction().set_user(0):
+            with Transaction().set_context(_check_access=False):
                 cls.create(to_create)
 
     @classmethod
@@ -590,7 +590,7 @@ class Translation(ModelSQL, ModelView):
                     ('name', 'like', model + ',%'),
                     ('res_id', 'in', list(sub_ids)),
                     ])
-        with Transaction().set_user(0):
+        with Transaction().set_context(_check_access=False):
             cls.delete(translations)
 
     @classmethod
@@ -808,8 +808,7 @@ class Translation(ModelSQL, ModelView):
                 res_id = model_data.db_id
             else:
                 res_id = -1
-            with Transaction().set_user(0), \
-                    Transaction().set_context(module=res_id_module):
+            with Transaction().set_context(module=res_id_module):
                 domain = [
                     ('name', '=', new_translation.name),
                     ('res_id', '=', res_id),
@@ -882,8 +881,7 @@ class Translation(ModelSQL, ModelView):
                                 or old_translation.fuzzy !=
                                 translation.fuzzy):
                             to_write.append(old_translation)
-                    with Transaction().set_user(0), \
-                            Transaction().set_context(module=module):
+                    with Transaction().set_context(module=module):
                         if to_write and not noupdate:
                             cls.write(to_write, {
                                     'value': translation.value,
@@ -892,8 +890,7 @@ class Translation(ModelSQL, ModelView):
                         translations |= set(cls.browse(ids))
 
         if to_create:
-            with Transaction().set_user(0), \
-                    Transaction().set_context(module=module):
+            with Transaction().set_context(module=module):
                 translations |= set(cls.create(to_create))
 
         if translations:
@@ -1486,8 +1483,7 @@ class TranslationUpdate(Wizard):
                 'module': row['module'],
                 })
         if to_create:
-            with Transaction().set_user(0):
-                Translation.create(to_create)
+            Translation.create(to_create)
         columns = [translation.name.as_('name'),
             translation.res_id.as_('res_id'), translation.type.as_('type'),
             translation.module.as_('module')]
@@ -1507,8 +1503,7 @@ class TranslationUpdate(Wizard):
                 'module': row['module'],
                 })
         if to_create:
-            with Transaction().set_user(0):
-                Translation.create(to_create)
+            Translation.create(to_create)
         columns = [translation.name.as_('name'),
             translation.res_id.as_('res_id'), translation.type.as_('type'),
             translation.src.as_('src'), translation.module.as_('module')]

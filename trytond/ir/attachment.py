@@ -191,13 +191,9 @@ class Attachment(ModelSQL, ModelView):
         return (self.write_date if self.write_date else self.create_date
             ).replace(microsecond=0)
 
-    @classmethod
-    def get_last_user(cls, attachments, name):
-        with Transaction().set_user(0):
-            return dict(
-                (x.id, x.write_uid.rec_name
-                    if x.write_uid else x.create_uid.rec_name)
-                for x in cls.browse(attachments))
+    def get_last_user(self, name):
+        return (self.write_uid.rec_name if self.write_uid
+            else self.create_uid.rec_name)
 
     @classmethod
     def check_access(cls, ids, mode='read'):
@@ -206,21 +202,22 @@ class Attachment(ModelSQL, ModelView):
         if Transaction().user == 0:
             return
         model_names = set()
-        with Transaction().set_user(0):
-            for attachment in cls.browse(ids):
-                if attachment.resource:
-                    model_names.add(attachment.resource.__name__)
+        for attachment in cls.browse(ids):
+            if attachment.resource:
+                model_names.add(attachment.resource.__name__)
         for model_name in model_names:
             ModelAccess.check(model_name, mode=mode)
 
     @classmethod
     def read(cls, ids, fields_names=None):
-        cls.check_access(ids, mode='read')
+        with Transaction().set_context(_check_access=False):
+            cls.check_access(ids, mode='read')
         return super(Attachment, cls).read(ids, fields_names=fields_names)
 
     @classmethod
     def delete(cls, attachments):
-        cls.check_access([a.id for a in attachments], mode='delete')
+        with Transaction().set_context(_check_access=False):
+            cls.check_access([a.id for a in attachments], mode='delete')
         super(Attachment, cls).delete(attachments)
 
     @classmethod
@@ -229,9 +226,11 @@ class Attachment(ModelSQL, ModelView):
         actions = iter((attachments, values) + args)
         for records, _ in zip(actions, actions):
             all_attachments += records
-        cls.check_access([a.id for a in all_attachments], mode='write')
+        with Transaction().set_context(_check_access=False):
+            cls.check_access([a.id for a in all_attachments], mode='write')
         super(Attachment, cls).write(attachments, values, *args)
-        cls.check_access(all_attachments, mode='write')
+        with Transaction().set_context(_check_access=False):
+            cls.check_access(all_attachments, mode='write')
 
     @classmethod
     def create(cls, vlist):

@@ -10,16 +10,19 @@ class RPC(object):
     readonly: The transaction mode
     instantiate: The position or the slice of the arguments to be instanciated
     result: The function to transform the result
+    check_access: If access right must be checked
     '''
 
-    __slots__ = ('readonly', 'instantiate', 'result')
+    __slots__ = ('readonly', 'instantiate', 'result', 'check_access')
 
-    def __init__(self, readonly=True, instantiate=None, result=None):
+    def __init__(self, readonly=True, instantiate=None, result=None,
+            check_access=True):
         self.readonly = readonly
         self.instantiate = instantiate
         if result is None:
             result = lambda r: r
         self.result = result
+        self.check_access = check_access
 
     def convert(self, obj, *args, **kwargs):
         args = list(args)
@@ -32,6 +35,8 @@ class RPC(object):
         if '_timestamp' in context:
             timestamp = context['_timestamp']
             del context['_timestamp']
+        if self.check_access:
+            context['_check_access'] = True
         if self.instantiate is not None:
 
             def instance(data):

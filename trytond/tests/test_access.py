@@ -7,6 +7,9 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT, \
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 
+CONTEXT = CONTEXT.copy()
+CONTEXT['_check_access'] = True
+
 
 class ModelAccessTestCase(unittest.TestCase):
     'Test Model Access'

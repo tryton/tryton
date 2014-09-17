@@ -4,6 +4,7 @@
 import inspect
 import copy
 from trytond.model.fields.field import Field
+from trytond.transaction import Transaction
 
 
 class Function(Field):
@@ -68,36 +69,38 @@ class Function(Field):
         If the function has ``names`` in the function definition then
         it will call it with a list of name.
         '''
-        method = getattr(Model, self.getter)
+        with Transaction().set_context(_check_access=False):
+            method = getattr(Model, self.getter)
 
-        def call(name):
-            records = Model.browse(ids)
-            if not hasattr(method, 'im_self') or method.im_self:
-                return method(records, name)
+            def call(name):
+                records = Model.browse(ids)
+                if not hasattr(method, 'im_self') or method.im_self:
+                    return method(records, name)
+                else:
+                    return dict((r.id, method(r, name)) for r in records)
+            if isinstance(name, list):
+                names = name
+                # Test is the function works with a list of names
+                if 'names' in inspect.getargspec(method)[0]:
+                    return call(names)
+                return dict((name, call(name)) for name in names)
             else:
-                return dict((r.id, method(r, name)) for r in records)
-        if isinstance(name, list):
-            names = name
-            # Test is the function works with a list of names
-            if 'names' in inspect.getargspec(method)[0]:
-                return call(names)
-            return dict((name, call(name)) for name in names)
-        else:
-            # Test is the function works with a list of names
-            if 'names' in inspect.getargspec(method)[0]:
-                name = [name]
-            return call(name)
+                # Test is the function works with a list of names
+                if 'names' in inspect.getargspec(method)[0]:
+                    name = [name]
+                return call(name)
 
     def set(self, Model, name, ids, value, *args):
         '''
         Call the setter.
         '''
-        if self.setter:
-            # TODO change setter API to use sequence of records, value
-            setter = getattr(Model, self.setter)
-            args = iter((ids, value) + args)
-            for ids, value in zip(args, args):
-                setter(Model.browse(ids), name, value)
+        with Transaction().set_context(_check_access=False):
+            if self.setter:
+                # TODO change setter API to use sequence of records, value
+                setter = getattr(Model, self.setter)
+                args = iter((ids, value) + args)
+                for ids, value in zip(args, args):
+                    setter(Model.browse(ids), name, value)
 
     def __set__(self, inst, value):
         self._field.__set__(inst, value)

@@ -5,7 +5,7 @@
 RPC
 ===
 
-.. class:: RPC([readonly[, instantiate[, result]]])
+.. class:: RPC([readonly[, instantiate[, result[, check_access]]]])
 
 RPC is an object to define the behavior of Remote Procedur Call.
 
@@ -22,3 +22,8 @@ Instance attributes are:
 .. attribute:: RPC.result
 
     The function to transform the result
+
+.. attribute:: RPC.check_access
+
+    Set `_check_access` in the context to activate the access right on model
+    and field. Default is `True`.
