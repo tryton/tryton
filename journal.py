@@ -142,11 +142,10 @@ class Journal(ModelSQL, ModelView):
             Property = Pool().get('ir.property')
             table = cls.__table__()
             cursor.execute(*table.select(table.id, table.sequence))
-            with Transaction().set_user(0):
-                for journal_id, sequence_id in cursor.fetchall():
-                    Property.set('sequence', cls._name,
-                            journal_id, (sequence_id and
-                                'ir.sequence,' + str(sequence_id) or False))
+            for journal_id, sequence_id in cursor.fetchall():
+                Property.set('sequence', cls._name,
+                        journal_id, (sequence_id and
+                            'ir.sequence,' + str(sequence_id) or False))
             table.drop_column('sequence', exception=True)
 
     @staticmethod

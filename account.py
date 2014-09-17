@@ -1719,15 +1719,14 @@ class CreateChart(Wizard):
                     ('res', '=', None),
                     ('company', '=', self.properties.company.id),
                     ])
-            with Transaction().set_user(0):
-                Property.delete(properties)
-                if self.properties.account_receivable:
-                    Property.create([{
-                                'field': account_receivable_field.id,
-                                'value': str(
-                                    self.properties.account_receivable),
-                                'company': self.properties.company.id,
-                                }])
+            Property.delete(properties)
+            if self.properties.account_receivable:
+                Property.create([{
+                            'field': account_receivable_field.id,
+                            'value': str(
+                                self.properties.account_receivable),
+                            'company': self.properties.company.id,
+                            }])
 
             account_payable_field, = ModelField.search([
                     ('model.model', '=', 'party.party'),
@@ -1738,14 +1737,13 @@ class CreateChart(Wizard):
                     ('res', '=', None),
                     ('company', '=', self.properties.company.id),
                     ])
-            with Transaction().set_user(0):
-                Property.delete(properties)
-                if self.properties.account_payable:
-                    Property.create([{
-                                'field': account_payable_field.id,
-                                'value': str(self.properties.account_payable),
-                                'company': self.properties.company.id,
-                                }])
+            Property.delete(properties)
+            if self.properties.account_payable:
+                Property.create([{
+                            'field': account_payable_field.id,
+                            'value': str(self.properties.account_payable),
+                            'company': self.properties.company.id,
+                            }])
         return 'end'
 
 
