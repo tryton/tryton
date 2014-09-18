@@ -110,7 +110,7 @@ class Wizard(object):
                     Action._exec_action(*action, context=self.context.copy())
 
             if self.state == self.end_state:
-                self.end(execute_actions)
+                self.end(lambda *a: execute_actions())
             else:
                 execute_actions()
             self.__processing = False
