@@ -1,4 +1,4 @@
-.. _topcis-setup-database:
+.. _topics-setup-database:
 
 =======================
 How to setup a database
