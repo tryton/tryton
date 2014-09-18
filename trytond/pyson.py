@@ -28,25 +28,25 @@ class PYSON(object):
             return Not(self)
 
     def __and__(self, other):
+        if (isinstance(other, PYSON)
+                and other.types() != set([bool])):
+            other = Bool(other)
         if (isinstance(self, And)
                 and not isinstance(self, Or)):
             self._statements.append(other)
             return self
-        if (isinstance(other, PYSON)
-                and other.types() != set([bool])):
-            other = Bool(other)
         if self.types() != set([bool]):
             return And(Bool(self), other)
         else:
             return And(self, other)
 
     def __or__(self, other):
-        if isinstance(self, Or):
-            self._statements.append(other)
-            return self
         if (isinstance(other, PYSON)
                 and other.types() != set([bool])):
             other = Bool(other)
+        if isinstance(self, Or):
+            self._statements.append(other)
+            return self
         if self.types() != set([bool]):
             return Or(Bool(self), other)
         else:
