@@ -241,13 +241,12 @@ Create Purchase from Request::
     250.0
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
-    >>> create_purchase.form.payment_term = payment_term
-    >>> create_purchase.execute('start')
     >>> purchase, = Purchase.find()
     >>> purchase.customer == customer
     True
     >>> purchase.delivery_address == sale.shipment_address
     True
+    >>> purchase.payment_term = payment_term
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
