@@ -2245,7 +2245,7 @@
             if (!model || !Sao.common.MODELACCESS.get(model).read) {
                 return;
             }
-            var win;
+            var win, callback;
             var record = this.record();
             var value = record.field_get(this.field_name);
             if (model && this.has_target(value)) {
@@ -2253,7 +2253,7 @@
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
                 screen.new_group([m2o_id]);
-                var callback = function(result) {
+                callback = function(result) {
                     if (result) {
                         var rec_name_prm = screen.current_record.rec_name();
                         rec_name_prm.done(function(name) {
@@ -2272,40 +2272,25 @@
                 var domain = this.field().get_domain(record);
                 var context = this.field().get_context(record);
                 var text = this.entry.val();
-                if (text) {
-                    dom = [['rec_name', 'ilike', '%' + text + '%'], domain];
-                } else {
-                    dom = domain;
-                }
-                var sao_model = new Sao.Model(model);
-                var ids_prm = sao_model.execute('search',
-                        [dom, 0, Sao.config.limit, null], context);
-                ids_prm.done(function(ids) {
-                    if (ids.length == 1) {
-                        this.record().field_set_client(this.field_name,
-                            this.id_from_value(ids[0]), true);
-                        return;
-                    }
-                    var callback = function(result) {
-                        if (!jQuery.isEmptyObject(result)) {
-                            var value = this.value_from_id(result[0][0],
+                callback = function(result) {
+                    if (!jQuery.isEmptyObject(result)) {
+                        var value = this.value_from_id(result[0][0],
                                 result[0][1]);
-                            this.record().field_set_client(this.field_name,
+                        this.record().field_set_client(this.field_name,
                                 value, true);
-                        }
-                    };
-                    win = new Sao.Window.Search(model,
+                    }
+                };
+                win = new Sao.Window.Search(model,
                         callback.bind(this), {
                             sel_multi: false,
-                            ids: ids,
                             context: context,
                             domain: domain,
                             view_ids: (this.attributes.view_ids ||
                                 '').split(','),
                             views_preload: (this.attributes.views || {}),
-                            new_: this.create_access()
-                    });
-                }.bind(this));
+                            new_: this.create_access(),
+                            search_filter: text
+                        });
             }
         },
         new_: function(evt) {
@@ -2378,50 +2363,28 @@
                     var domain = this.field().get_domain(record);
                     var context = this.field().get_context(record);
 
-                    if (text) {
-                        dom = [['rec_name', 'ilike', '%' + text + '%'], domain];
-                    } else {
-                        dom = domain;
-                    }
-                    var ids_prm = sao_model.execute('search',
-                            [dom, 0, Sao.config.limit, null], context);
-                    ids_prm.done(function(ids) {
-                        if (ids.length == 1) {
-                            Sao.rpc({
-                                'method': 'model.' + model + '.read',
-                                'params': [[this.id_from_value(ids[0])],
-                                ['rec_name'], context]
-                            }, this.record().model.session
-                            ).then(function(values) {
-                                this.record().field_set_client(this.field_name,
-                                    this.value_from_id(ids[0],
-                                        values[0].rec_name), true);
-                            }.bind(this));
-                            return;
+                    var callback = function(result) {
+                        if (!jQuery.isEmptyObject(result)) {
+                            var value = this.value_from_id(result[0][0],
+                                result[0][1]);
+                            this.record().field_set_client(this.field_name,
+                                value, true);
+                        } else {
+                            this.entry.val('');
                         }
-                        var callback = function(result) {
-                            if (!jQuery.isEmptyObject(result)) {
-                                var value = this.value_from_id(result[0][0],
-                                    result[0][1]);
-                                this.record().field_set_client(this.field_name,
-                                    value, true);
-                            } else {
-                                this.entry.val('');
-                            }
-                        };
-                        var win = new Sao.Window.Search(model,
-                                callback.bind(this), {
-                                    sel_multi: false,
-                                    ids: ids,
-                                    context: context,
-                                    domain: domain,
-                                    view_ids: (this.attributes.view_ids ||
-                                        '').split(','),
-                                    views_preload: (this.attributes.views ||
-                                        {}),
-                                    new_: this.create_access()
-                                });
-                    }.bind(this));
+                    };
+                    var win = new Sao.Window.Search(model,
+                            callback.bind(this), {
+                                sel_multi: false,
+                                context: context,
+                                domain: domain,
+                                view_ids: (this.attributes.view_ids ||
+                                    '').split(','),
+                                views_preload: (this.attributes.views ||
+                                    {}),
+                                new_: this.create_access(),
+                                search_filter: text
+                            });
                 }
             }
         }
@@ -2998,11 +2961,6 @@
             var domain = this.field().get_domain(this.record());
             var context = this.field().get_context(this.record());
             var value = this.entry.val();
-            if (value) {
-                dom = [['rec_name', 'ilike', '%' + value + '%']].concat(domain);
-            } else {
-                dom = domain;
-            }
 
             var callback = function(result) {
                 if (!jQuery.isEmptyObject(result)) {
@@ -3016,26 +2974,17 @@
                 }
                 this.entry.val('');
             }.bind(this);
-            var model = new Sao.Model(this.attributes.relation);
-            var ids_prm = model.execute('search',
-                    [dom, 0, Sao.config.limit, null], context);
-            ids_prm.done(function(ids) {
-               if (ids.length != 1) {
-                   var win = new Sao.Window.Search(this.attributes.relation,
-                       callback, {
-                           sel_multi: true,
-                           ids: ids,
-                           context: context,
-                           domain: domain,
-                           view_ids: (this.attributes.view_ids ||
-                               '').split(','),
-                           views_preload: this.attributes.views || {},
-                           new_: this.attributes.create
-                   });
-               } else {
-                   callback([[ids[0], null]]);
-               }
-            }.bind(this));
+            var win = new Sao.Window.Search(this.attributes.relation,
+                    callback, {
+                        sel_multi: true,
+                        context: context,
+                        domain: domain,
+                        view_ids: (this.attributes.view_ids ||
+                            '').split(','),
+                        views_preload: this.attributes.views || {},
+                        new_: this.attributes.create,
+                        search_filter: text
+                    });
         },
         remove: function() {
             this.screen.remove(false, true, false);

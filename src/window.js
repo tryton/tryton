@@ -388,6 +388,9 @@
                     this.el.append(this.screen.screen_container.el);
                     this.el.dialog('open');
                     this.screen.display();
+                    if (kwargs.search_filter !== undefined) {
+                        this.screen.search_filter(kwargs.search_filter);
+                    }
                 }.bind(this));
             }.bind(this));
         },
