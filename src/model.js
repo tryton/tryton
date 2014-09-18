@@ -352,10 +352,12 @@
             return [head].concat(this.clean4inversion(tail));
         };
         array.domain4inversion = function() {
-            if (!this.__domain4inversion) {
-                this.__domain4inversion = this.clean4inversion(this.domain());
+            var domain = this.domain();
+            if (!this.__domain4inversion ||
+                    !Sao.common.compare(this.__domain4inversion[0], domain)) {
+                this.__domain4inversion = [domain, this.clean4inversion(domain)];
             }
-            return this.__domain4inversion;
+            return this.__domain4inversion[1];
         };
         return array;
     };
