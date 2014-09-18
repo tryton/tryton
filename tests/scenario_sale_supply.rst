@@ -242,9 +242,8 @@ Create Purchase from Request::
     ...     [purchase_request])
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
-    >>> create_purchase.form.payment_term = payment_term
-    >>> create_purchase.execute('start')
     >>> purchase, = Purchase.find()
+    >>> purchase.payment_term = payment_term
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
