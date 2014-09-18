@@ -257,9 +257,8 @@ Create Purchase from Request::
     >>> purchase_request, = PurchaseRequest.find()
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
-    >>> create_purchase.form.payment_term = payment_term
-    >>> create_purchase.execute('start')
     >>> purchase, = Purchase.find()
+    >>> purchase.payment_term = payment_term
     >>> purchase_line, = purchase.lines
     >>> purchase_line.unit_price = Decimal('3')
     >>> purchase.click('quote')
