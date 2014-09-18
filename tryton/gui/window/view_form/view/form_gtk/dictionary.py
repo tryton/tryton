@@ -369,16 +369,8 @@ class DictWidget(Widget):
 
     def _sig_add(self, *args):
         context = self.field.context_get(self.record)
-        value = self.wid_text.get_text()
+        value = self.wid_text.get_text().decode('utf-8')
         domain = self.field.domain_get(self.record)
-        dom = [('rec_name', 'ilike', '%%%s%%' % value)] if value else []
-        dom.append(('id', 'not in',
-                [self.keys[f]['id'] for f in self.fields]))
-        try:
-            ids = RPCExecute('model', self.schema_model, 'search',
-                domain + dom, 0, CONFIG['client.limit'], None, context=context)
-        except RPCException:
-            return False
 
         def callback(result):
             if result:
@@ -395,11 +387,9 @@ class DictWidget(Widget):
                         self.add_line(new_field['name'])
             self.wid_text.set_text('')
 
-        if len(ids) != 1:
-            WinSearch(self.schema_model, callback, sel_multi=True, ids=ids,
-                context=context, domain=domain, new=False)
-        else:
-            callback([(id, None) for id in ids])
+        win = WinSearch(self.schema_model, callback, sel_multi=True,
+            context=context, domain=domain, new=False)
+        win.screen.search_filter(value)
 
     def _sig_remove(self, button, key, modified=True):
         del self.fields[key]

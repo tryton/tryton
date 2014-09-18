@@ -6,10 +6,8 @@ from tryton.gui.window.view_form.screen import Screen
 from .widget import Widget
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
-from tryton.config import CONFIG
 import tryton.common as common
 import gettext
-from tryton.common import RPCExecute, RPCException
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
 
@@ -138,7 +136,7 @@ class Many2Many(Widget):
             widget.modify_text(gtk.STATE_INSENSITIVE,
                     self.colors['text_color_insensitive'])
 
-    def _sig_add(self, *args, **kwargs):
+    def _sig_add(self, *args):
         if not self.focus_out:
             return
         domain = self.field.domain_get(self.record)
@@ -146,19 +144,9 @@ class Many2Many(Widget):
         if add_remove:
             domain = [domain, add_remove]
         context = self.field.context_get(self.record)
-        value = self.wid_text.get_text()
+        value = self.wid_text.get_text().decode('utf-8')
 
         self.focus_out = False
-        try:
-            if value:
-                dom = [('rec_name', 'ilike', '%' + value + '%'), domain]
-            else:
-                dom = domain
-            ids = RPCExecute('model', self.attrs['relation'], 'search',
-                dom, 0, CONFIG['client.limit'], None, context=context)
-        except RPCException:
-            self.focus_out = True
-            return False
 
         def callback(result):
             self.focus_out = True
@@ -168,14 +156,12 @@ class Many2Many(Widget):
                 self.screen.display(res_id=ids[0])
             self.screen.set_cursor()
             self.wid_text.set_text('')
-        if len(ids) != 1 or not value or kwargs.get('win_search', False):
-            WinSearch(self.attrs['relation'], callback, sel_multi=True,
-                ids=ids, context=context, domain=domain,
-                view_ids=self.attrs.get('view_ids', '').split(','),
-                views_preload=self.attrs.get('views', {}),
-                new=self.attrs.get('create', True))
-        else:
-            callback([(i, None) for i in ids])
+        win = WinSearch(self.attrs['relation'], callback, sel_multi=True,
+            context=context, domain=domain,
+            view_ids=self.attrs.get('view_ids', '').split(','),
+            views_preload=self.attrs.get('views', {}),
+            new=self.attrs.get('create', True))
+        win.screen.search_filter(value)
 
     def _sig_remove(self, *args):
         self.screen.remove(remove=True)
@@ -269,7 +255,7 @@ class Many2Many(Widget):
 
     def _completion_action_activated(self, completion, index):
         if index == 0:
-            self._sig_add(win_search=True)
+            self._sig_add()
             self.wid_text.grab_focus()
         elif index == 1:
             model = self.attrs['relation']

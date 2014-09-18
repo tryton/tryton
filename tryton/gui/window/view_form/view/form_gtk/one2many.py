@@ -7,9 +7,7 @@ from .widget import Widget
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
-from tryton.config import CONFIG
 import tryton.common as common
-from tryton.common import RPCExecute, RPCException
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
 
@@ -384,7 +382,7 @@ class One2Many(Widget):
     def _sig_undelete(self, button):
         self.screen.unremove()
 
-    def _sig_add(self, *args, **kwargs):
+    def _sig_add(self, *args):
         if not self.focus_out:
             return
         access = common.MODELACCESS[self.screen.model_name]
@@ -395,20 +393,10 @@ class One2Many(Widget):
         context = self.field.context_get(self.record)
         domain = [domain, self.record.expr_eval(self.attrs.get('add_remove'))]
         removed_ids = self.field.get_removed_ids(self.record)
+        domain = ['OR', domain, ('id', 'in', removed_ids)]
+        text = self.wid_text.get_text().decode('utf-8')
 
         self.focus_out = False
-        try:
-            if self.wid_text.get_text():
-                dom = [('rec_name', 'ilike',
-                        '%' + self.wid_text.get_text() + '%'),
-                    ['OR', domain, ('id', 'in', removed_ids)]]
-            else:
-                dom = ['OR', domain, ('id', 'in', removed_ids)]
-            ids = RPCExecute('model', self.attrs['relation'], 'search', dom,
-                    0, CONFIG['client.limit'], None, context=context)
-        except RPCException:
-            self.focus_out = True
-            return False
 
         sequence = None
         if self.screen.current_view.view_type == 'tree':
@@ -425,14 +413,12 @@ class One2Many(Widget):
             self.screen.set_cursor()
             self.wid_text.set_text('')
 
-        if len(ids) != 1 or kwargs.get('win_search', False):
-            WinSearch(self.attrs['relation'], callback, sel_multi=True,
-                ids=ids, context=context, domain=domain,
-                view_ids=self.attrs.get('view_ids', '').split(','),
-                views_preload=self.attrs.get('views', {}),
-                new=self.but_new.get_property('sensitive'))
-        else:
-            callback([(i, None) for i in ids])
+        win = WinSearch(self.attrs['relation'], callback, sel_multi=True,
+            context=context, domain=domain,
+            view_ids=self.attrs.get('view_ids', '').split(','),
+            views_preload=self.attrs.get('views', {}),
+            new=self.but_new.get_property('sensitive'))
+        win.screen.search_filter(text)
 
     def _sig_label(self, screen, signal_data):
         self._position = signal_data[0]
@@ -511,7 +497,7 @@ class One2Many(Widget):
 
     def _completion_action_activated(self, completion, index):
         if index == 0:
-            self._sig_add(win_search=True)
+            self._sig_add()
             self.wid_text.grab_focus()
         elif index == 1:
             self._sig_new()

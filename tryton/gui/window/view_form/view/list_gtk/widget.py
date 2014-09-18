@@ -28,10 +28,8 @@ from tryton.common.cellrendererbinary import CellRendererBinary
 from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
 from tryton.translate import date_format
-from tryton.common import RPCExecute, RPCException
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.selection import SelectionMixin, PopdownMixin
-from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -528,22 +526,8 @@ class M2O(Char):
         relation = record[self.attrs['name']].attrs['relation']
         domain = record[self.attrs['name']].domain_get(record)
         context = record[self.attrs['name']].context_get(record)
-        dom = [('rec_name', 'ilike', '%' + text + '%'), domain]
-        try:
-            ids = RPCExecute('model', relation, 'search', dom, 0, None, None,
-                context=context)
-        except RPCException:
-            field.set_client(record, (None, ''))
-            if callback:
-                callback()
-            return
-        if len(ids) != 1:
-            self.search_remote(record, relation, ids, domain=domain,
-                context=context, callback=callback)
-            return
-        field.set_client(record, ids[0])
-        if callback:
-            callback()
+        self.search_remote(record, relation, text, domain=domain,
+            context=context, callback=callback)
 
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
@@ -563,24 +547,7 @@ class M2O(Char):
         elif not changed:
             obj_id = field.get(record)
         else:
-            if text:
-                dom = [('rec_name', 'ilike', '%' + text + '%'), domain]
-            else:
-                dom = domain
-            try:
-                ids = RPCExecute('model', relation, 'search', dom, 0,
-                    CONFIG['client.limit'], None, context=context)
-            except RPCException:
-                field.set_client(record, False)
-                if callback:
-                    callback()
-                return
-            if len(ids) == 1:
-                field.set_client(record, ids[0])
-                if callback:
-                    callback()
-                return
-            self.search_remote(record, relation, ids, domain=domain,
+            self.search_remote(record, relation, text, domain=domain,
                 context=context, callback=callback)
             return
         screen = Screen(relation, domain=domain, context=context,
@@ -599,7 +566,7 @@ class M2O(Char):
         else:
             WinForm(screen, open_callback, new=True, save_current=True)
 
-    def search_remote(self, record, relation, ids=None, domain=None,
+    def search_remote(self, record, relation, text, domain=None,
             context=None, callback=None):
         field = record.group.fields[self.attrs['name']]
 
@@ -610,8 +577,9 @@ class M2O(Char):
             field.set_client(record, value)
             if callback:
                 callback()
-        WinSearch(relation, search_callback, sel_multi=False, ids=ids,
+        win = WinSearch(relation, search_callback, sel_multi=False,
             context=context, domain=domain)
+        win.screen.search_filter(text.decode('utf-8'))
 
     def set_completion(self, entry, path):
         if entry.get_completion():

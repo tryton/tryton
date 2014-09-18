@@ -9,9 +9,7 @@ import tryton.common as common
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
-from tryton.config import CONFIG
 from tryton.common.popup_menu import populate
-from tryton.common import RPCExecute, RPCException
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.entry_position import manage_entry_position
 
@@ -132,27 +130,7 @@ class Many2One(Widget):
                             self.record)['required'])):
                 domain = self.field.domain_get(self.record)
                 context = self.field.context_get(self.record)
-                self.wid_text.grab_focus()
-
-                try:
-                    if self.wid_text.get_text():
-                        dom = [('rec_name', 'ilike',
-                            '%' + self.wid_text.get_text() + '%'),
-                            domain]
-                    else:
-                        dom = domain
-                    ids = RPCExecute('model', model, 'search', dom, 0,
-                        CONFIG['client.limit'], None, context=context)
-                except RPCException:
-                    self.focus_out = True
-                    self.changed = True
-                    return
-                if len(ids) == 1:
-                    self.field.set_client(self.record,
-                        self.value_from_id(ids[0]), force_change=True)
-                    self.focus_out = True
-                    self.changed = True
-                    return
+                text = self.wid_text.get_text().decode('utf-8')
 
                 def callback(result):
                     if result:
@@ -163,11 +141,12 @@ class Many2One(Widget):
                     self.focus_out = True
                     self.changed = True
 
-                WinSearch(model, callback, sel_multi=False,
-                    ids=ids, context=context, domain=domain,
+                win = WinSearch(model, callback, sel_multi=False,
+                    context=context, domain=domain,
                     view_ids=self.attrs.get('view_ids', '').split(','),
                     views_preload=self.attrs.get('views', {}),
                     new=self.create_access)
+                win.screen.search_filter(text)
                 return
         self.focus_out = True
         self.changed = True
@@ -224,26 +203,7 @@ class Many2One(Widget):
         elif model and not self._readonly:
             domain = self.field.domain_get(self.record)
             context = self.field.context_get(self.record)
-            self.wid_text.grab_focus()
-
-            try:
-                if self.wid_text.get_text():
-                    dom = [('rec_name', 'ilike',
-                        '%' + self.wid_text.get_text() + '%'),
-                        domain]
-                else:
-                    dom = domain
-                ids = RPCExecute('model', model, 'search', dom, 0,
-                    CONFIG['client.limit'], None, context=context)
-            except RPCException:
-                self.focus_out = True
-                self.changed = True
-                return False
-            if len(ids) == 1:
-                self.field.set_client(self.record, self.value_from_id(ids[0]),
-                    force_change=True)
-                self.focus_out = True
-                return True
+            text = self.wid_text.get_text().decode('utf-8')
 
             def callback(result):
                 if result:
@@ -251,11 +211,12 @@ class Many2One(Widget):
                         self.value_from_id(*result[0]), force_change=True)
                 self.focus_out = True
                 self.changed = True
-            WinSearch(model, callback, sel_multi=False,
-                ids=ids, context=context, domain=domain,
+            win = WinSearch(model, callback, sel_multi=False,
+                context=context, domain=domain,
                 view_ids=self.attrs.get('view_ids', '').split(','),
                 views_preload=self.attrs.get('views', {}),
                 new=self.create_access)
+            win.screen.search_filter(text)
             return
         self.focus_out = True
         self.changed = True
