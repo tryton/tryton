@@ -68,26 +68,28 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
     def get(self, section, option, default=None):
         try:
             return ConfigParser.RawConfigParser.get(self, section, option)
-        except ConfigParser.NoOptionError:
+        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
             return default
 
     def getint(self, section, option, default=None):
         try:
             return ConfigParser.RawConfigParser.getint(self, section, option)
-        except (ConfigParser.NoOptionError, TypeError):
+        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError,
+                TypeError):
             return default
 
     def getfloat(self, section, option, default=None):
         try:
             return ConfigParser.RawConfigParser.getfloat(self, section, option)
-        except (ConfigParser.NoOptionError, TypeError):
+        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError,
+                TypeError):
             return default
 
     def getboolean(self, section, option, default=None):
         try:
             return ConfigParser.RawConfigParser.getboolean(
                 self, section, option)
-        except ConfigParser.NoOptionError:
+        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
             return default
 
 config = TrytonConfigParser()
