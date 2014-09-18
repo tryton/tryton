@@ -199,25 +199,25 @@ class Attachment(ModelSQL, ModelView):
     def check_access(cls, ids, mode='read'):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        if Transaction().user == 0:
+        if ((Transaction().user == 0)
+                or not Transaction().context.get('_check_access')):
             return
         model_names = set()
-        for attachment in cls.browse(ids):
-            if attachment.resource:
-                model_names.add(attachment.resource.__name__)
+        with Transaction().set_context(_check_access=False):
+            for attachment in cls.browse(ids):
+                if attachment.resource:
+                    model_names.add(attachment.resource.__name__)
         for model_name in model_names:
             ModelAccess.check(model_name, mode=mode)
 
     @classmethod
     def read(cls, ids, fields_names=None):
-        with Transaction().set_context(_check_access=False):
-            cls.check_access(ids, mode='read')
+        cls.check_access(ids, mode='read')
         return super(Attachment, cls).read(ids, fields_names=fields_names)
 
     @classmethod
     def delete(cls, attachments):
-        with Transaction().set_context(_check_access=False):
-            cls.check_access([a.id for a in attachments], mode='delete')
+        cls.check_access([a.id for a in attachments], mode='delete')
         super(Attachment, cls).delete(attachments)
 
     @classmethod
@@ -226,11 +226,9 @@ class Attachment(ModelSQL, ModelView):
         actions = iter((attachments, values) + args)
         for records, _ in zip(actions, actions):
             all_attachments += records
-        with Transaction().set_context(_check_access=False):
-            cls.check_access([a.id for a in all_attachments], mode='write')
+        cls.check_access([a.id for a in all_attachments], mode='write')
         super(Attachment, cls).write(attachments, values, *args)
-        with Transaction().set_context(_check_access=False):
-            cls.check_access(all_attachments, mode='write')
+        cls.check_access(all_attachments, mode='write')
 
     @classmethod
     def create(cls, vlist):
