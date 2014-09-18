@@ -77,9 +77,13 @@ class Group(SignalEvent, list):
         return [head] + self.clean4inversion(tail)
 
     def __get_domain4inversion(self):
-        if self.__domain4inversion is None:
-            self.__domain4inversion = self.clean4inversion(self.domain)
-        return self.__domain4inversion
+        domain = self.domain
+        if (self.__domain4inversion is None
+                or self.__domain4inversion[0] != domain):
+            self.__domain4inversion = (
+                domain, self.clean4inversion(domain))
+        domain, domain4inversion = self.__domain4inversion
+        return domain4inversion
 
     domain4inversion = property(__get_domain4inversion)
 
