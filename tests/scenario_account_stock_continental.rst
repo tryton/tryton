@@ -382,9 +382,8 @@ Create Drop Shipment Move::
     >>> purchase_request, = PurchaseRequest.find()
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
-    >>> create_purchase.form.payment_term = payment_term
-    >>> create_purchase.execute('start')
     >>> purchase = purchase_request.purchase
+    >>> purchase.payment_term = payment_term
     >>> purchase_line, = purchase.lines
     >>> purchase_line.unit_price = Decimal(6)
     >>> purchase.click('quote')
@@ -435,6 +434,7 @@ Create Drop Shipment Move::
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
     >>> purchase = purchase_request.purchase
+    >>> purchase.payment_term = payment_term
     >>> purchase_line, = purchase.lines
     >>> purchase_line.unit_price = Decimal(5)
     >>> purchase.click('quote')
