@@ -22,7 +22,7 @@ def parse_commandline():
     parser.add_argument('--version', action='version',
         version='%(prog)s ' + VERSION)
     parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
-        help="specify config file")
+        default=os.environ.get('TRYTOND_CONFIG'), help="specify config file")
     parser.add_argument('--dev', dest='dev', action='store_true',
         help='enable development mode')
     parser.add_argument("-v", "--verbose", action="store_true",
