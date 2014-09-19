@@ -238,10 +238,13 @@ class Move:
             elif name[9:] == 'unit_digits':
                 return 2
 
-    @fields.depends('from_location')
+    @fields.depends('from_location', 'to_location')
     def on_change_with_purchase_visible(self, name=None):
         if self.from_location:
             if self.from_location.type == 'supplier':
+                return True
+        elif self.to_location:
+            if self.to_location.type == 'supplier':
                 return True
         return False
 
