@@ -2968,6 +2968,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
@@ -2978,6 +2979,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
@@ -2987,6 +2989,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">404</field>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
@@ -2996,6 +2999,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">406</field>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
@@ -3005,6 +3009,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">407</field>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
@@ -3014,6 +3019,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">409</field>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="actif_VII_A"/>
             <field name="parent" ref="40"/>
         </record>
@@ -3310,6 +3316,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">4250</field>
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="425"/>
         </record>
@@ -3319,6 +3326,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">4251</field>
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="passif_IX_A"/>
             <field name="parent" ref="425"/>
         </record>
@@ -3439,6 +3447,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="passif_IX_C_1"/>
             <field name="parent" ref="44"/>
         </record>
@@ -3448,6 +3457,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">441</field>
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="passif_IX_C_2"/>
             <field name="parent" ref="44"/>
         </record>
@@ -3457,6 +3467,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">444</field>
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="passif_IX_C_1"/>
             <field name="parent" ref="44"/>
         </record>
