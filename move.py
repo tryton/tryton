@@ -1859,7 +1859,7 @@ class ReconcileShow(ModelView):
             ('party', '=', Eval('party')),
             ('reconciliation', '=', None),
             ],
-        depends=['domain_lines'])
+        depends=['account', 'party'])
 
     _write_off_states = {
         'required': Bool(Eval('write_off', 0)),
