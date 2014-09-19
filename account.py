@@ -311,10 +311,13 @@ class Reconciliation:
         Invoice = Pool().get('account.invoice')
         reconciliations = super(Reconciliation, cls).create(vlist)
         move_ids = set()
+        account_ids = set()
         for reconciliation in reconciliations:
-            move_ids |= set(l.move.id for l in reconciliation.lines)
+            move_ids |= {l.move.id for l in reconciliation.lines}
+            account_ids |= {l.account.id for l in reconciliation.lines}
         invoices = Invoice.search([
                 ('move', 'in', list(move_ids)),
+                ('account', 'in', list(account_ids)),
                 ])
         Invoice.process(invoices)
         return reconciliations
