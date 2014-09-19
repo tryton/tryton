@@ -1458,7 +1458,7 @@
             }
             var cell = jQuery('<td/>', {
                 'colspan': colspan,
-                'class': widget ? widget.class_ || '' : '',
+                'class': widget ? widget.class_ || '' : ''
             }).append(el);
             if (attributes.xalign !== undefined) {
                 // TODO replace by start/end when supported
