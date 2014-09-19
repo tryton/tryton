@@ -592,7 +592,14 @@ class Line(ModelSQL, ModelView):
             'required': Bool(Eval('amount_second_currency')),
             },
         depends=['amount_second_currency'])
-    party = fields.Many2One('party.party', 'Party', select=True)
+    party = fields.Many2One('party.party', 'Party', select=True,
+        states={
+            'required': Eval('party_required', False),
+            'invisible': ~Eval('party_required', False),
+            },
+        depends=['party_required'])
+    party_required= fields.Function(fields.Boolean('Party Required'),
+        'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
         help='This field is used for payable and receivable lines. \n'
         'You can put the limit date for the payment.')
@@ -643,6 +650,8 @@ class Line(ModelSQL, ModelView):
                 'move_inactive_account': ('You can not create a move line '
                     'with account "%s" because it is inactive.'),
                 'already_reconciled': 'Line "%s" (%d) already reconciled.',
+                'party_required': 'Party is required on line "%s"',
+                'party_set': 'Party must not be set on line "%s"',
                 })
 
     @classmethod
@@ -949,6 +958,12 @@ class Line(ModelSQL, ModelView):
                 changes['second_currency_digits'] = \
                     self.account.second_currency.digits
         return changes
+
+    @fields.depends('account')
+    def on_change_with_party_required(self, name=None):
+        if self.account:
+            return self.account.party_required
+        return False
 
     def _compute_tax_lines(self, journal_type):
         res = {}
@@ -1265,6 +1280,9 @@ class Line(ModelSQL, ModelView):
         if not self.account.active:
             self.raise_user_error('move_inactive_account', (
                     self.account.rec_name,))
+        if bool(self.party) != self.account.party_required:
+            error = 'party_set' if self.party else 'party_required'
+            self.raise_user_error(error, self.rec_name)
 
     @classmethod
     def check_journal_period_modify(cls, period, journal):
@@ -1454,11 +1472,14 @@ class Line(ModelSQL, ModelView):
 
         lines = lines[:]
         reconcile_account = None
+        reconcile_party = None
         amount = Decimal('0.0')
         for line in lines:
             amount += line.debit - line.credit
             if not reconcile_account:
                 reconcile_account = line.account
+            if not reconcile_party:
+                reconcile_party = line.party
         amount = reconcile_account.currency.round(amount)
         if not account and journal:
             if amount >= 0:
@@ -1477,12 +1498,18 @@ class Line(ModelSQL, ModelView):
                         'lines': [
                             ('create', [{
                                         'account': reconcile_account.id,
+                                        'party': (reconcile_party.id
+                                            if reconcile_party else None),
                                         'debit': (amount < Decimal('0.0')
                                             and - amount or Decimal('0.0')),
                                         'credit': (amount > Decimal('0.0')
                                             and amount or Decimal('0.0')),
                                         }, {
                                         'account': account.id,
+                                        'party': (reconcile_party.id
+                                            if (account.party_required and
+                                                reconcile_party)
+                                            else None),
                                         'debit': (amount > Decimal('0.0')
                                             and amount or Decimal('0.0')),
                                         'credit': (amount < Decimal('0.0')

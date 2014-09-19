@@ -26,6 +26,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="currency"/>
             <label name="second_currency"/>
             <field name="second_currency"/>
+            <label name="party_required"/>
+            <field name="party_required"/>
             <field name="taxes" colspan="4"/>
         </page>
         <page string="Children" id="children">

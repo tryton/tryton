@@ -34,6 +34,7 @@ class AccountTestCase(unittest.TestCase):
         self.balance_non_deferral = POOL.get(
             'account.fiscalyear.balance_non_deferral', type='wizard')
         self.tax = POOL.get('account.tax')
+        self.party = POOL.get('party.party')
 
     def test0005views(self):
         'Test views'
@@ -135,6 +136,8 @@ class AccountTestCase(unittest.TestCase):
         'Test account debit/credit'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
+            party = self.party(name='Party')
+            party.save()
             fiscalyear, = self.fiscalyear.search([])
             period = fiscalyear.periods[0]
             journal_revenue, = self.journal.search([
@@ -168,6 +171,7 @@ class AccountTestCase(unittest.TestCase):
                                     }, {
                                     'account': receivable.id,
                                     'debit': Decimal(100),
+                                    'party': party.id,
                                     }]),
                         ],
                     },
@@ -182,6 +186,7 @@ class AccountTestCase(unittest.TestCase):
                                     }, {
                                     'account': payable.id,
                                     'credit': Decimal(30),
+                                    'party': party.id,
                                     }]),
                         ],
                     },

@@ -372,6 +372,11 @@ class AccountTemplate(ModelSQL, ModelView):
     deferral = fields.Boolean('Deferral', states={
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
+    party_required = fields.Boolean('Party Required',
+        states={
+            'invisible': Eval('kind') == 'view',
+            },
+        depends=['kind'])
 
     @classmethod
     def __setup__(cls):
@@ -424,6 +429,8 @@ class AccountTemplate(ModelSQL, ModelView):
             res['reconcile'] = self.reconcile
         if not account or account.deferral != self.deferral:
             res['deferral'] = self.deferral
+        if not account or account.party_required != self.party_required:
+            res['party_required'] = self.party_required
         if not account or account.template != self:
             res['template'] = self.id
         return res
@@ -582,6 +589,11 @@ class Account(ModelSQL, ModelView):
         'Deferrals', readonly=True, states={
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
+    party_required = fields.Boolean('Party Required',
+        states={
+            'invisible': Eval('kind') == 'view',
+            },
+        depends=['kind'])
     template = fields.Many2One('account.account.template', 'Template')
 
     @classmethod

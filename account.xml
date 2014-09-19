@@ -326,6 +326,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" ref="account_type_template_asset_current_receivable"/>
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="parent" ref="account_template_root"/>
             <field name="kind">receivable</field>
         </record>
@@ -334,6 +335,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" ref="account_type_template_liability_current_payable"/>
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
             <field name="parent" ref="account_template_root"/>
             <field name="kind">payable</field>
         </record>
