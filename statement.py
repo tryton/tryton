@@ -686,7 +686,7 @@ class Line(ModelSQL, ModelView):
                 debit=amount < zero and -amount or zero,
                 credit=amount >= zero and amount or zero,
                 account=self.account,
-                party=self.party,
+                party=self.party if self.account.party_required else None,
                 second_currency=second_currency,
                 amount_second_currency=amount_second_currency,
                 ))
@@ -710,7 +710,7 @@ class Line(ModelSQL, ModelView):
                 debit=amount >= zero and amount or zero,
                 credit=amount < zero and -amount or zero,
                 account=account,
-                party=self.party,
+                party=self.party if account.party_required else None,
                 second_currency=second_currency,
                 amount_second_currency=amount_second_currency,
                 ))

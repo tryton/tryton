@@ -441,6 +441,7 @@ Testing balance validation::
     >>> line.date = today
     >>> line.amount = Decimal('60.00')
     >>> line.account = receivable
+    >>> line.party = customer
     >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -450,6 +451,7 @@ Testing balance validation::
     >>> second_line.date = today
     >>> second_line.amount = Decimal('40.00')
     >>> second_line.account = receivable
+    >>> second_line.party = customer
     >>> statement.click('validate_statement')
 
 Testing amount validation::
@@ -467,6 +469,7 @@ Testing amount validation::
     >>> line.date = today
     >>> line.amount = Decimal('50.00')
     >>> line.account = receivable
+    >>> line.party = customer
     >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -476,6 +479,7 @@ Testing amount validation::
     >>> second_line.date = today
     >>> second_line.amount = Decimal('30.00')
     >>> second_line.account = receivable
+    >>> second_line.party = customer
     >>> statement.click('validate_statement')
 
 Test number of lines validation::
@@ -493,6 +497,7 @@ Test number of lines validation::
     >>> line.date = today
     >>> line.amount = Decimal('50.00')
     >>> line.account = receivable
+    >>> line.party = customer
     >>> statement.click('validate_statement')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -502,4 +507,5 @@ Test number of lines validation::
     >>> second_line.date = today
     >>> second_line.amount = Decimal('10.00')
     >>> second_line.account = receivable
+    >>> second_line.party = customer
     >>> statement.click('validate_statement')
