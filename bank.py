@@ -44,7 +44,7 @@ class BankAccountNumber(ModelSQL, ModelView):
     __name__ = 'bank.account.number'
     _rec_name = 'number'
     account = fields.Many2One('bank.account', 'Account', required=True,
-        ondelete='CASCADE')
+        ondelete='CASCADE', select=True)
     type = fields.Selection([
             ('iban', 'IBAN'),
             ('other', 'Other'),
