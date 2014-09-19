@@ -616,6 +616,9 @@ class Line(ModelSQL, ModelView):
     def __setup__(cls):
         super(Line, cls).__setup__()
         cls._check_modify_exclude = ['reconciliation']
+        cls._reconciliation_modify_disallow = {
+            'account', 'debit', 'credit', 'party',
+            }
         cls._sql_constraints += [
             ('credit_debit',
                 'CHECK(credit * debit = 0.0)',
@@ -1296,9 +1299,6 @@ class Line(ModelSQL, ModelView):
             if line.move.state == 'posted':
                 cls.raise_user_error('modify_posted_move', (
                         line.move.rec_name,))
-            if line.reconciliation:
-                cls.raise_user_error('modify_reconciled', (
-                        line.rec_name,))
             journal_period = (line.journal.id, line.period.id)
             if journal_period not in journal_period_done:
                 cls.check_journal_period_modify(line.period,
@@ -1306,9 +1306,19 @@ class Line(ModelSQL, ModelView):
                 journal_period_done.append(journal_period)
 
     @classmethod
+    def check_reconciliation(cls, lines, modified_fields=None):
+        if (modified_fields is not None
+                and not modified_fields & cls._reconciliation_modify_disallow):
+            return
+        for line in lines:
+            if line.reconciliation:
+                cls.raise_user_error('modify_reconciled', line.rec_name)
+
+    @classmethod
     def delete(cls, lines):
         Move = Pool().get('account.move')
         cls.check_modify(lines)
+        cls.check_reconciliation(lines)
         moves = [x.move for x in lines]
         super(Line, cls).delete(lines)
         Move.validate_move(moves)
@@ -1322,8 +1332,8 @@ class Line(ModelSQL, ModelView):
         moves = []
         all_lines = []
         for lines, values in zip(actions, actions):
-            if any(k not in cls._check_modify_exclude for k in values):
-                cls.check_modify(lines)
+            cls.check_modify(lines)
+            cls.check_reconciliation(lines, set(values.keys()))
             moves.extend((x.move for x in lines))
             all_lines.extend(lines)
             args.extend((lines, values))
