@@ -77,6 +77,8 @@
                 return Sao.View.Tree.IntegerColumn;
             case 'boolean':
                 return Sao.View.Tree.BooleanColumn;
+            case 'image':
+                return Sao.View.Tree.ImageColumn;
             default:
                 return Sao.View.Tree.CharColumn;
         }
@@ -1067,6 +1069,42 @@
         update_text: function(cell, record) {
             cell.text(Sao.common.text_to_float_time(
                     this.field.get_client(record), this.conv));
+        }
+    });
+
+    Sao.View.Tree.ImageColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-image',
+        get_cell: function() {
+            var cell = jQuery('<img/>');
+            cell.addClass(this.class_);
+            cell.css('width', '100%');
+            return cell;
+        },
+        render: function(record) {
+            var cell = this.get_cell();
+            record.load(this.attributes.name).done(function() {
+                var value = this.field.get_client(record);
+                if (value) {
+                    if (value > Sao.common.BIG_IMAGE_SIZE) {
+                        value = jQuery.when(null);
+                    } else {
+                        value = this.field.get_data(record);
+                    }
+                } else {
+                    value = jQuery.when(null);
+                }
+                value.done(function(data) {
+                    var img_url, blob;
+                    if (!data) {
+                        img_url = null;
+                    } else {
+                        blob = new Blob([data[0][this.field.name]]);
+                        img_url = window.URL.createObjectURL(blob);
+                    }
+                    cell.attr('src', img_url);
+                }.bind(this));
+            }.bind(this));
+            return cell;
         }
     });
 
