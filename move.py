@@ -2,12 +2,16 @@
 #this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
-from itertools import groupby
+from itertools import groupby, combinations
 from operator import itemgetter
 from collections import defaultdict
 
+try:
+    from sql import Null
+except ImportError:
+    Null = None
 from sql.aggregate import Sum
-from sql.conditionals import Coalesce
+from sql.conditionals import Coalesce, Case
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
@@ -19,11 +23,14 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.rpc import RPC
 from trytond.tools import reduce_ids, grouped_slice
+from trytond.config import config
 
 __all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
-    'OpenJournal', 'OpenAccount', 'ReconcileLinesWriteOff', 'ReconcileLines',
-    'UnreconcileLines', 'OpenReconcileLinesStart',
-    'OpenReconcileLines', 'CancelMoves',
+    'OpenJournal', 'OpenAccount',
+    'ReconcileLinesWriteOff', 'ReconcileLines',
+    'UnreconcileLines',
+    'Reconcile', 'ReconcileShow',
+    'CancelMoves',
     'FiscalYearLine', 'FiscalYear2',
     'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
 __metaclass__ = PoolMeta
@@ -1694,37 +1701,196 @@ class UnreconcileLines(Wizard):
         return 'end'
 
 
-class OpenReconcileLinesStart(ModelView):
-    'Open Reconcile Lines'
-    __name__ = 'account.move.open_reconcile_lines.start'
-    account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('kind', '!=', 'view'), ('reconcile', '=', True)])
-
-
-class OpenReconcileLines(Wizard):
-    'Open Reconcile Lines'
-    __name__ = 'account.move.open_reconcile_lines'
-    start = StateView('account.move.open_reconcile_lines.start',
-        'account.open_reconcile_lines_start_view_form', [
+class Reconcile(Wizard):
+    'Reconcile'
+    __name__ = 'account.reconcile'
+    start_state = 'next_'
+    next_ = StateTransition()
+    show = StateView('account.reconcile.show',
+        'account.reconcile_show_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Open', 'open_', 'tryton-ok', default=True),
+            Button('Skip', 'next_', 'tryton-go-next'),
+            Button('Reconcile', 'reconcile', 'tryton-ok', default=True),
             ])
-    open_ = StateAction('account.act_move_line_form')
+    reconcile = StateTransition()
 
-    def do_open_(self, action):
-        encoder = PYSONEncoder()
-        action['pyson_domain'] = encoder.encode([
-            ('account', '=', self.start.account.id),
+    def get_accounts(self):
+        'Return a list of account id to reconcile'
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        line = Line.__table__()
+        Account = pool.get('account.account')
+        account = Account.__table__()
+        cursor = Transaction().cursor
+
+        balance = line.debit - line.credit
+        cursor.execute(*line.join(account,
+                condition=line.account == account.id).select(
+                account.id,
+                where=(line.reconciliation == Null) & account.reconcile,
+                group_by=account.id,
+                having=(
+                    Sum(Case((balance > 0, 1), else_=0)) > 0)
+                & (Sum(Case((balance < 0, 1), else_=0)) > 0)
+                ))
+        return [a for a, in cursor.fetchall()]
+
+    def get_parties(self, account):
+        'Return a list party to reconcile for the account'
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        line = Line.__table__()
+        cursor = Transaction().cursor
+
+        balance = line.debit - line.credit
+        cursor.execute(*line.select(line.party,
+                where=(line.reconciliation == Null)
+                & (line.account == account.id),
+                group_by=line.party,
+                having=(
+                    Sum(Case((balance > 0, 1), else_=0)) > 0)
+                & (Sum(Case((balance < 0, 1), else_=0)) > 0)
+                ))
+        return [p for p, in cursor.fetchall()]
+
+    def transition_next_(self):
+
+        def next_account():
+            accounts = list(self.show.accounts)
+            if not accounts:
+                return
+            account = accounts.pop()
+            self.show.account = account
+            self.show.parties = self.get_parties(account)
+            self.show.accounts = accounts
+            return account
+
+        def next_party():
+            parties = list(self.show.parties)
+            if not parties:
+                return
+            party = parties.pop()
+            self.show.party = party
+            self.show.parties = parties
+            return party
+
+        if getattr(self.show, 'accounts', None) is None:
+            self.show.accounts = self.get_accounts()
+            if not next_account():
+                return 'end'
+        if getattr(self.show, 'parties', None) is None:
+            self.show.parties = self.get_parties(self.show.account)
+
+        while not next_party():
+            if not next_account():
+                return 'end'
+        return 'show'
+
+    def default_show(self, fields):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        defaults = {}
+        defaults['accounts'] = [a.id for a in self.show.accounts]
+        defaults['account'] = self.show.account.id
+        defaults['parties'] = [p.id for p in self.show.parties]
+        defaults['party'] = self.show.party.id if self.show.party else None
+        defaults['currency_digits'] = self.show.account.company.currency.digits
+        defaults['lines'] = self._default_lines()
+        defaults['write_off'] = Decimal(0)
+        defaults['date'] = Date.today()
+        return defaults
+
+    def _all_lines(self):
+        'Return all lines to reconcile for the current state'
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        return Line.search([
+                ('account', '=', self.show.account.id),
+                ('party', '=',
+                    self.show.party.id if self.show.party else None),
+                ('reconciliation', '=', None),
+                ])
+
+    def _default_lines(self):
+        'Return the larger list of lines which can be reconciled'
+        currency = self.show.account.company.currency
+        chunk = config.getint('account', 'reconciliation_chunk', 10)
+        # Combination is exponential so it must be limited to small number
+        default = []
+        for lines in grouped_slice(self._all_lines(), chunk):
+            lines = list(lines)
+            best = None
+            for n in xrange(len(lines), 1, -1):
+                for comb_lines in combinations(lines, n):
+                    amount = sum((l.debit - l.credit) for l in comb_lines)
+                    if currency.is_zero(amount):
+                        best = [l.id for l in comb_lines]
+                        break
+                if best:
+                    break
+            if best:
+                default.extend(best)
+        return default
+
+    def transition_reconcile(self):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        if self.show.lines:
+            Line.reconcile(self.show.lines,
+                journal=self.show.journal,
+                date=self.show.date,
+                description=self.show.description)
+        return 'next_'
+
+
+class ReconcileShow(ModelView):
+    'Reconcile'
+    __name__ = 'account.reconcile.show'
+    accounts = fields.One2Many('account.account', None, 'Account',
+        readonly=True)
+    account = fields.Many2One('account.account', 'Account', readonly=True)
+    parties = fields.One2Many('party.party', None, 'Parties', readonly=True)
+    party = fields.Many2One('party.party', 'Party', readonly=True)
+    lines = fields.Many2Many('account.move.line', None, None, 'Lines',
+        domain=[
+            ('account', '=', Eval('account')),
+            ('party', '=', Eval('party')),
             ('reconciliation', '=', None),
+            ],
+        depends=['domain_lines'])
+
+    _write_off_states = {
+        'required': Bool(Eval('write_off', 0)),
+        'invisible': ~Eval('write_off', 0),
+        }
+    _write_off_depends = ['write_off']
+
+    write_off = fields.Function(fields.Numeric('Write-Off',
+            digits=(16, Eval('currency_digits', 2)),
+            states=_write_off_states,
+            depends=_write_off_depends + ['currency_digits']),
+        'on_change_with_write_off')
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
+    journal = fields.Many2One('account.journal', 'Journal',
+        states=_write_off_states, depends=_write_off_depends,
+        domain=[
+            ('type', '=', 'write-off'),
             ])
-        if self.start.account.kind == 'receivable':
-            order = [('credit', 'DESC'), ('id', 'DESC')]
-        elif self.start.account.kind == 'payable':
-            order = [('debit', 'DESC'), ('id', 'DESC')]
-        else:
-            order = None
-        action['pyson_order'] = encoder.encode(order)
-        return action, {}
+    date = fields.Date('Date',
+        states=_write_off_states, depends=_write_off_depends)
+    description = fields.Char('Description',
+        states=_write_off_states, depends=_write_off_depends)
+
+    @fields.depends('lines')
+    def on_change_with_write_off(self, name=None):
+        return sum((l.debit - l.credit) for l in self.lines)
+
+    @fields.depends('account')
+    def on_change_with_currency_digits(self, name=None):
+        return self.account.company.currency.digits
 
 
 class CancelMoves(Wizard):

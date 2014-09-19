@@ -166,6 +166,12 @@ The *Unreconcile Lines* wizard allow to do the inverse operation (but
 doesn't reverse other operations that could have triggered by the
 reconciliation).
 
+The *Reconcile Accounts* wizard allow to process one by one each party and
+account for reconciliation. The wizard tries to propose the best reconciliation
+possible. The configuration `reconciliation_chunk` in `account` section allow
+to define the length of lines that is allowed to search for proposal. The
+default is 10.
+
 
 Tax Code
 ********

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Reconcile">
+    <label name="account"/>
+    <field name="account"/>
+    <label name="party"/>
+    <field name="party"/>
+    <field name="lines" colspan="4"/>
+    <separator name="write_off" colspan="4"/>
+    <label name="write_off" string="Amount"/>
+    <field name="write_off"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="journal"/>
+    <field name="journal"/>
+    <newline/>
+    <label name="description"/>
+    <field name="description" colspan="3"/>
+</form>
