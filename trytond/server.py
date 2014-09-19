@@ -36,7 +36,7 @@ class TrytonServer(object):
             logging.basicConfig(level=logging.INFO, format=logformat,
                 datefmt=datefmt)
 
-        self.logger = logging.getLogger('server')
+        self.logger = logging.getLogger(__name__)
 
         if options.configfile:
             self.logger.info('using %s as configuration file'
@@ -48,6 +48,9 @@ class TrytonServer(object):
         self.jsonrpcd = []
         self.webdavd = []
         self.options = options
+
+        if time.tzname != ('UTC', 'UTC'):
+            self.logger.error('timezeone is not set to UTC')
 
     def run(self):
         "Run the server and never return"
