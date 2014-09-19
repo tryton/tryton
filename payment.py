@@ -409,6 +409,17 @@ class Mandate(Workflow, ModelSQL, ModelView):
             args.extend((mandates, values))
         super(Mandate, cls).write(*args)
 
+    @classmethod
+    def copy(cls, mandates, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('state', 'draft')
+        default.setdefault('payments', [])
+        default.setdefault('signature_date', None)
+        default.setdefault('identification', None)
+        return super(Mandate, cls).copy(mandates, default=default)
+
     @property
     def is_valid(self):
         if self.state == 'validated':
