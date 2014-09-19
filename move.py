@@ -410,11 +410,13 @@ class Move(ModelSQL, ModelView):
                     move.period.post_move_sequence_used.id)
             cls.write([move], values)
 
+            keyfunc = lambda l: (l.party, l.account)
             to_reconcile = [l for l in move.lines
                 if ((l.debit == l.credit == Decimal('0'))
                     and l.account.reconcile)]
-            if to_reconcile:
-                Line.reconcile(to_reconcile)
+            to_reconcile = sorted(to_reconcile, key=keyfunc)
+            for _, zero_lines in groupby(to_reconcile, keyfunc):
+                Line.reconcile(list(zero_lines))
 
     @classmethod
     @ModelView.button
