@@ -2119,6 +2119,7 @@
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="type_1530"/>
             <field name="parent" ref="view_balance_1530"/>
         </record>
@@ -7480,6 +7481,7 @@
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="type" ref="type_2495"/>
             <field name="parent" ref="view_balance_2495"/>
         </record>
