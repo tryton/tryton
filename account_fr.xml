@@ -4801,6 +4801,7 @@
             <field name="code">400</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="40"/>
         </record>
@@ -4809,6 +4810,7 @@
             <field name="code">401</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="40"/>
         </record>
@@ -4817,6 +4819,7 @@
             <field name="code">4011</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="401"/>
         </record>
@@ -4825,6 +4828,7 @@
             <field name="code">4017</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="401"/>
         </record>
@@ -4833,6 +4837,7 @@
             <field name="code">403</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="40"/>
         </record>
@@ -4848,6 +4853,7 @@
             <field name="code">4041</field>
             <field name="type" ref="dettes_immobilisations_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="404"/>
         </record>
@@ -4856,6 +4862,7 @@
             <field name="code">4047</field>
             <field name="type" ref="dettes_immobilisations_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="404"/>
         </record>
@@ -4864,6 +4871,7 @@
             <field name="code">405</field>
             <field name="type" ref="dettes_immobilisations_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="40"/>
         </record>
@@ -4879,6 +4887,7 @@
             <field name="code">4081</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="408"/>
         </record>
@@ -4887,6 +4896,7 @@
             <field name="code">4084</field>
             <field name="type" ref="dettes_immobilisations_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="408"/>
         </record>
@@ -4895,6 +4905,7 @@
             <field name="code">4088</field>
             <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="408"/>
         </record>
@@ -4964,6 +4975,7 @@
             <field name="code">410</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="41"/>
         </record>
@@ -4979,6 +4991,7 @@
             <field name="code">4111</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="411"/>
         </record>
@@ -4987,6 +5000,7 @@
             <field name="code">4117</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="411"/>
         </record>
@@ -4995,6 +5009,7 @@
             <field name="code">413</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="41"/>
         </record>
@@ -5003,6 +5018,7 @@
             <field name="code">416</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="41"/>
         </record>
@@ -5018,6 +5034,7 @@
             <field name="code">4181</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="418"/>
         </record>
@@ -5026,6 +5043,7 @@
             <field name="code">4188</field>
             <field name="type" ref="creances_clients"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="418"/>
         </record>
@@ -5118,6 +5136,7 @@
             <field name="code">425</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="42"/>
         </record>
@@ -5173,6 +5192,7 @@
             <field name="code">4287</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="428"/>
         </record>
@@ -5226,6 +5246,7 @@
             <field name="code">4387</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="438"/>
         </record>
@@ -5247,6 +5268,7 @@
             <field name="code">4411</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="441"/>
         </record>
@@ -5255,6 +5277,7 @@
             <field name="code">4417</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="441"/>
         </record>
@@ -5263,6 +5286,7 @@
             <field name="code">4418</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="441"/>
         </record>
@@ -5271,6 +5295,7 @@
             <field name="code">4419</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="441"/>
         </record>
@@ -5309,6 +5334,7 @@
             <field name="code">4431</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="443"/>
         </record>
@@ -5557,6 +5583,7 @@
             <field name="code">451</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="45"/>
         </record>
@@ -5572,6 +5599,7 @@
             <field name="code">4551</field>
             <field name="type" ref="emprunts_dettes_financieres_diverses"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="455"/>
         </record>
@@ -5580,6 +5608,7 @@
             <field name="code">4558</field>
             <field name="type" ref="emprunts_dettes_financieres_diverses"/>
             <field name="kind">payable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="455"/>
         </record>
@@ -5602,6 +5631,7 @@
             <field name="code">45611</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4561"/>
         </record>
@@ -5610,6 +5640,7 @@
             <field name="code">45615</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4561"/>
         </record>
@@ -5625,6 +5656,7 @@
             <field name="code">45621</field>
             <field name="type" ref="capital_souscrit_appele"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4562"/>
         </record>
@@ -5633,6 +5665,7 @@
             <field name="code">45625</field>
             <field name="type" ref="capital_souscrit_appele"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="4562"/>
         </record>
@@ -5641,6 +5674,7 @@
             <field name="code">4563</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="456"/>
         </record>
@@ -5649,6 +5683,7 @@
             <field name="code">4564</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="456"/>
         </record>
@@ -5657,6 +5692,7 @@
             <field name="code">4566</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="456"/>
         </record>
@@ -5665,6 +5701,7 @@
             <field name="code">4567</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="456"/>
         </record>
@@ -5688,6 +5725,7 @@
             <field name="code">4581</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="458"/>
         </record>
@@ -5696,6 +5734,7 @@
             <field name="code">4588</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="458"/>
         </record>
@@ -5710,6 +5749,7 @@
             <field name="code">462</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="46"/>
         </record>
@@ -5726,6 +5766,7 @@
             <field name="code">465</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="46"/>
         </record>
@@ -5755,6 +5796,7 @@
             <field name="code">4687</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="468"/>
         </record>
@@ -5769,6 +5811,7 @@
             <field name="code">471</field>
             <field name="type" ref="hors_bilan"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="47"/>
         </record>
@@ -5777,6 +5820,7 @@
             <field name="code">472</field>
             <field name="type" ref="hors_bilan"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="47"/>
         </record>
@@ -5785,6 +5829,7 @@
             <field name="code">473</field>
             <field name="type" ref="hors_bilan"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="47"/>
         </record>
@@ -5793,6 +5838,7 @@
             <field name="code">474</field>
             <field name="type" ref="hors_bilan"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="47"/>
         </record>
@@ -5801,6 +5847,7 @@
             <field name="code">475</field>
             <field name="type" ref="hors_bilan"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="47"/>
         </record>
@@ -5816,6 +5863,7 @@
             <field name="code">4761</field>
             <field name="type" ref="ecarts_conversion_actif"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="476"/>
         </record>
@@ -5824,6 +5872,7 @@
             <field name="code">4762</field>
             <field name="type" ref="ecarts_conversion_actif"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="476"/>
         </record>
@@ -5832,6 +5881,7 @@
             <field name="code">4768</field>
             <field name="type" ref="ecarts_conversion_actif"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="476"/>
         </record>
@@ -5890,6 +5940,7 @@
             <field name="code">4816</field>
             <field name="type" ref="charges_repartir_plusieurs_exercices"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="481"/>
         </record>
@@ -5898,6 +5949,7 @@
             <field name="code">486</field>
             <field name="type" ref="charges_constates_avance"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="48"/>
         </record>
@@ -5928,6 +5980,7 @@
             <field name="code">4887</field>
             <field name="type" ref="hors_bilan"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="488"/>
         </record>
@@ -5936,6 +5989,7 @@
             <field name="code">489</field>
             <field name="type" ref="concessions_brevets_licences_droits"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="48"/>
         </record>
@@ -5996,6 +6050,7 @@
             <field name="code">4962</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="496"/>
         </record>
@@ -6004,6 +6059,7 @@
             <field name="code">4965</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="496"/>
         </record>
@@ -6012,6 +6068,7 @@
             <field name="code">4967</field>
             <field name="type" ref="creances_autres"/>
             <field name="kind">receivable</field>
+            <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
             <field name="parent" ref="496"/>
         </record>
