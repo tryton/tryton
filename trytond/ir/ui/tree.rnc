@@ -41,6 +41,7 @@ attlist.field &=
     | "reference"
     | "one2one"
     | "binary"
+    | "image"
   }?
 attlist.field &=
   [ a:defaultValue = "0" ] attribute tree_invisible { "0" | "1" }?
@@ -49,6 +50,7 @@ attlist.field &=
 attlist.field &= attribute icon { text }?
 attlist.field &= attribute sum { text }?
 attlist.field &= attribute width { text }?
+attlist.field &= attribute height { text }?
 attlist.field &=
   [ a:defaultValue = "left_to_right" ] attribute orientation {
     "left_to_right"
