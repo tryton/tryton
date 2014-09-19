@@ -115,13 +115,14 @@ class User(ModelSQL, ModelView):
         with Transaction().set_user(0):
             connection = connection_obj.browse(connection_ids[0])
         try:
-            con = ldap.initialize(connection.uri)
+            con = ldap.initialize(connection.uri or '')
             if connection.active_directory:
                 con.set_option(ldap.OPT_REFERRALS, 0)
             if connection.secure == 'tls':
                 con.start_tls_s()
             if connection.bind_dn:
-                con.simple_bind_s(connection.bind_dn, connection.bind_pass)
+                con.simple_bind_s(connection.bind_dn or '',
+                    connection.bind_pass or '')
             [(dn, attrs)] = self.ldap_search_user(login, con, connection,
                     attrs=[str(connection.auth_uid)])
             if password and con.simple_bind_s(dn, password):
