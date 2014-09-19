@@ -21,7 +21,7 @@ from . import View
 from .list_gtk.editabletree import EditableTreeView, TreeView
 from .list_gtk.widget import (Affix, Char, Int, Boolean, URL, Date, Datetime,
     Time, Float, FloatTime, Binary, M2O, O2O, O2M, M2M, Selection, Reference,
-    ProgressBar, Button)
+    ProgressBar, Button, Image)
 
 _ = gettext.gettext
 
@@ -327,6 +327,9 @@ class ViewTree(View):
         for b_field in ('readonly', 'expand', 'tree_invisible'):
             if b_field in node_attrs:
                 node_attrs[b_field] = bool(int(node_attrs[b_field]))
+        for i_field in ('width', 'height'):
+            if i_field in node_attrs:
+                node_attrs[i_field] = int(node_attrs[i_field])
         if 'widget' not in node_attrs:
             node_attrs['widget'] = field.attrs['type']
 
@@ -435,6 +438,7 @@ class ViewTree(View):
         'reference': Reference,
         'one2one': O2O,
         'binary': Binary,
+        'image': Image,
         }
 
     @classmethod

@@ -1532,3 +1532,36 @@ def humanize(size):
         if size < 1000:
             return '%3.1f%s' % (size, x)
         size /= 1000.0
+
+
+def resize_pixbuf(pixbuf, width, height):
+    img_height = pixbuf.get_height()
+    height = min(img_height, height) if height != -1 else img_height
+    img_width = pixbuf.get_width()
+    width = min(img_width, width) if width != -1 else img_width
+
+    if img_width / width < img_height / height:
+        width = float(img_width) / float(img_height) * float(height)
+    else:
+        height = float(img_height) / float(img_width) * float(width)
+    return pixbuf.scale_simple(int(width), int(height),
+        gtk.gdk.INTERP_BILINEAR)
+
+
+def _data2pixbuf(data):
+    loader = gtk.gdk.PixbufLoader()
+    loader.write(data, len(data))
+    loader.close()
+    return loader.get_pixbuf()
+
+BIG_IMAGE_SIZE = 10 ** 6
+with open(os.path.join(PIXMAPS_DIR, 'tryton-noimage.png'), 'rb') as no_image:
+    NO_IMG_PIXBUF = _data2pixbuf(no_image.read())
+
+
+def data2pixbuf(data):
+    try:
+        pixbuf = _data2pixbuf(data)
+    except glib.GError:
+        pixbuf = NO_IMG_PIXBUF
+    return pixbuf

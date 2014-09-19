@@ -1,18 +1,15 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import gtk
-import glib
 import gettext
 import os
 import tempfile
-from tryton.common import file_selection, Tooltips, file_open, slugify
-from tryton.config import PIXMAPS_DIR
+from tryton.common import (file_selection, Tooltips, file_open, slugify,
+    resize_pixbuf, data2pixbuf, BIG_IMAGE_SIZE)
 from .widget import Widget
 import urllib
 
 _ = gettext.gettext
-
-NOIMAGE = open(os.path.join(PIXMAPS_DIR, 'tryton-noimage.png'), 'rb').read()
 
 
 class Image(Widget):
@@ -196,52 +193,12 @@ class Image(Widget):
         if self.field:
             value = self.field.get_client(self.record)
         if isinstance(value, (int, long)):
-            if value > 10 ** 6:
+            if value > BIG_IMAGE_SIZE:
                 value = False
             else:
                 value = self.field.get_data(self.record)
-        if not value:
-            data = NOIMAGE
-        else:
-            data = value
-
-        pixbuf = None
-        for ftype in ('jpeg', 'gif', 'png', 'bmp', 'svg'):
-            try:
-                loader = gtk.gdk.PixbufLoader(ftype)
-                loader.write(data, len(data))
-                loader.close()
-                pixbuf = loader.get_pixbuf()
-            except glib.GError:
-                continue
-            if pixbuf:
-                break
-        if not pixbuf:
-            loader = gtk.gdk.PixbufLoader('png')
-            loader.write(NOIMAGE, len(NOIMAGE))
-            loader.close()
-            pixbuf = loader.get_pixbuf()
-
-        img_height = pixbuf.get_height()
-        if img_height > self.height:
-            height = self.height
-        else:
-            height = img_height
-
-        img_width = pixbuf.get_width()
-        if img_width > self.width:
-            width = self.width
-        else:
-            width = img_width
-
-        if (img_width / width) < (img_height / height):
-            width = float(img_width) / float(img_height) * float(height)
-        else:
-            height = float(img_height) / float(img_width) * float(width)
-
-        scaled = pixbuf.scale_simple(int(width), int(height),
-                gtk.gdk.INTERP_BILINEAR)
-        self.image.set_from_pixbuf(scaled)
+        pixbuf = resize_pixbuf(data2pixbuf(value), self.width, self.height)
+        self.image.set_from_pixbuf(pixbuf)
 
     def display(self, record, field):
         if not field:

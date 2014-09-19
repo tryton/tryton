@@ -298,6 +298,10 @@ class ViewForm(View):
         if 'widget' not in attributes:
             attributes['widget'] = field.attrs['type']
 
+        for i_field in ('width', 'height'):
+            if i_field in attributes:
+                attributes[i_field] = int(attributes[i_field])
+
         for attr in ('relation', 'domain', 'selection',
                 'relation_field', 'string', 'help', 'views',
                 'add_remove', 'sort', 'context', 'size', 'filename',

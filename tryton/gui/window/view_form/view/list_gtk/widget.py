@@ -28,6 +28,7 @@ from tryton.common.cellrendererbinary import CellRendererBinary
 from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
 from tryton.translate import date_format
+from tryton.common import data2pixbuf
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.selection import SelectionMixin, PopdownMixin
 
@@ -246,8 +247,8 @@ class Char(object):
 
             if isinstance(cell, CellRendererToggle):
                 cell.set_property('activatable', not readonly)
-            elif isinstance(cell,
-                    (gtk.CellRendererProgress, CellRendererButton)):
+            elif isinstance(cell, (gtk.CellRendererProgress,
+                        CellRendererButton, gtk.CellRendererPixbuf)):
                 pass
             else:
                 cell.set_property('editable', not readonly)
@@ -506,6 +507,33 @@ class Binary(Char):
     def clear_binary(self, renderer, path):
         record, field = self._get_record_field(path)
         field.set_client(record, False)
+
+
+class Image(Char):
+
+    def __init__(self, view, attrs=None, renderer=None):
+        if renderer is None:
+            renderer = gtk.CellRendererPixbuf
+        super(Image, self).__init__(view, attrs, renderer)
+        self.renderer.set_fixed_size(self.attrs.get('width', -1),
+            self.attrs.get('height', -1))
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_):
+        record = store.get_value(iter_, 0)
+        field = record[self.field_name]
+        value = field.get_client(record)
+        if isinstance(value, (int, long)):
+            if value > common.BIG_IMAGE_SIZE:
+                value = None
+            else:
+                value = field.get_data(record)
+        pixbuf = data2pixbuf(value)
+        if self.attrs['width'] != -1 or self.attrs['height'] != -1:
+            pixbuf = common.resize_pixbuf(pixbuf,
+                self.attrs['width'], self.attrs['height'])
+        cell.set_property('pixbuf', pixbuf)
 
 
 class M2O(Char):
