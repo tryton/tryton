@@ -127,13 +127,14 @@ class User:
         LoginAttempt = pool.get('res.user.login.attempt')
         connection, = Connection.search([], limit=1)
         try:
-            con = ldap.initialize(connection.uri)
+            con = ldap.initialize(connection.uri or '')
             if connection.active_directory:
                 con.set_option(ldap.OPT_REFERRALS, 0)
             if connection.secure == 'tls':
                 con.start_tls_s()
             if connection.bind_dn:
-                con.simple_bind_s(connection.bind_dn, connection.bind_pass)
+                con.simple_bind_s(connection.bind_dn or '',
+                    connection.bind_pass or '')
             users = cls.ldap_search_user(login, con, connection,
                 attrs=[str(connection.auth_uid)])
             if users and len(users) == 1:
