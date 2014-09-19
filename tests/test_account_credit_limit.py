@@ -54,7 +54,6 @@ class AccountCreditLimitTestCase(unittest.TestCase):
                                         }, {
                                         'credit': Decimal(100),
                                         'account': revenue.id,
-                                        'party': party.id,
                                         }]),
                             ],
                         }])
