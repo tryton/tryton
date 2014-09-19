@@ -46,62 +46,82 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
         'Test depends'
         test_depends()
 
+    def setup_environment(self):
+        company, = self.company.search([
+                ('rec_name', '=', 'Dunder Mifflin'),
+                ])
+        euro, = self.currency.create([{
+                    'name': 'Euro',
+                    'symbol': 'EUR',
+                    'code': 'EUR',
+                    }])
+        company.currency = euro
+        company.party.sepa_creditor_identifier = 'BE68539007547034'
+        company.party.save()
+        company.save()
+        bank_party = self.party(name='European Bank')
+        bank_party.save()
+        bank = self.bank(party=bank_party, bic='BICODEBBXXX')
+        bank.save()
+        customer = self.party(name='Customer')
+        customer.save()
+        return {
+            'company': company,
+            'bank': bank,
+            'customer': customer,
+            }
+
+    def setup_accounts(self, bank, company, customer):
+        return self.bank_account.create([{
+                    'bank': bank,
+                    'owners': [('add', [company.party])],
+                    'numbers': [('create', [{
+                                    'type': 'iban',
+                                    'number': 'ES8200000000000000000000',
+                                    }])]}, {
+                    'bank': bank,
+                    'owners': [('add', [customer])],
+                    'numbers': [('create', [{
+                                    'type': 'iban',
+                                    'number': 'ES3600000000050000000001',
+                                    }])]}])
+
+    def setup_mandate(self, company, customer, account):
+        return self.mandate.create([{
+                    'company': company,
+                    'party': customer,
+                    'account_number': account.numbers[0],
+                    'identification': 'MANDATE',
+                    'type': 'recurrent',
+                    'signature_date': self.date.today(),
+                    'state': 'validated',
+                    }])[0]
+
+    def setup_journal(self, flavor, kind, company, account):
+        journal = self.payment_journal()
+        journal.name = flavor
+        journal.company = company
+        journal.currency = company.currency
+        journal.process_method = 'sepa'
+        journal.sepa_bank_account_number = account.numbers[0]
+        journal.sepa_payable_flavor = 'pain.001.001.03'
+        journal.sepa_receivable_flavor = 'pain.008.001.02'
+        setattr(journal, 'sepa_%s_flavor' % kind, flavor)
+        journal.save()
+        return journal
+
     def validate_file(self, flavor, kind):
         'Test generated files are valid'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
-            company, = self.company.search([
-                    ('rec_name', '=', 'Dunder Mifflin'),
-                    ])
-            euro, = self.currency.create([{
-                        'name': 'Euro',
-                        'symbol': 'EUR',
-                        'code': 'EUR',
-                        }])
-            company.currency = euro
-            company.party.sepa_creditor_identifier = 'BE68539007547034'
-            company.party.save()
-            company.save()
-            bank_party = self.party(name='European Bank')
-            bank_party.save()
-            bank = self.bank(party=bank_party, bic='BICODEBBXXX')
-            bank.save()
-            customer = self.party(name='Customer')
-            customer.save()
-            company_account, customer_account = self.bank_account.create([{
-                        'bank': bank,
-                        'owners': [('add', [company.party])],
-                        'numbers': [('create', [{
-                                        'type': 'iban',
-                                        'number': 'ES8200000000000000000000',
-                                        }])]}, {
-                        'bank': bank,
-                        'owners': [('add', [customer])],
-                        'numbers': [('create', [{
-                                        'type': 'iban',
-                                        'number': 'ES3600000000050000000001',
-                                        }])]}])
-            customer_account_number, = customer_account.numbers
-            self.mandate.create([{
-                        'company': company,
-                        'party': customer,
-                        'account_number': customer_account_number,
-                        'identification': 'MANDATE',
-                        'type': 'recurrent',
-                        'signature_date': self.date.today(),
-                        'state': 'validated',
-                        }])
-
-            company_bank_number, = company_account.numbers
-            journal = self.payment_journal()
-            journal.name = flavor
-            journal.company = company
-            journal.currency = company.currency
-            journal.process_method = 'sepa'
-            journal.sepa_bank_account_number = company_bank_number
-            journal.sepa_payable_flavor = 'pain.001.001.03'
-            journal.sepa_receivable_flavor = 'pain.008.001.02'
-            setattr(journal, 'sepa_%s_flavor' % kind, flavor)
-            journal.save()
+            environment = self.setup_environment()
+            company = environment['company']
+            bank = environment['bank']
+            customer = environment['customer']
+            company_account, customer_account = self.setup_accounts(bank,
+                company, customer)
+            self.setup_mandate(company, customer, customer_account)
+            journal = self.setup_journal(flavor, kind, company,
+                company_account)
 
             payment, = self.payment.create([{
                         'company': company,
@@ -222,6 +242,67 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
 
             self.assertEqual(id(payment.sepa_bank_account_number),
                 id(iban_account_number))
+
+    def test_payment_sequence_type(self):
+        'Test payment sequence type'
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            environment = self.setup_environment()
+            company = environment['company']
+            bank = environment['bank']
+            customer = environment['customer']
+            company_account, customer_account = self.setup_accounts(bank,
+                company, customer)
+            self.setup_mandate(company, customer, customer_account)
+            journal = self.setup_journal('pain.008.001.02', 'receivable',
+                company, company_account)
+
+            payment, = self.payment.create([{
+                        'company': company,
+                        'party': customer,
+                        'journal': journal,
+                        'kind': 'receivable',
+                        'amount': Decimal('1000.0'),
+                        'state': 'approved',
+                        'description': 'PAYMENT',
+                        'date': self.date.today(),
+                        }])
+
+            session_id, _, _ = self.process_payment.create()
+            process_payment = self.process_payment(session_id)
+            with Transaction().set_context(active_ids=[payment.id]):
+                _, data = process_payment.do_process(None)
+
+            self.assertEqual(payment.sepa_mandate_sequence_type, 'FRST')
+
+            payments = self.payment.create([{
+                        'company': company,
+                        'party': customer,
+                        'journal': journal,
+                        'kind': 'receivable',
+                        'amount': Decimal('2000.0'),
+                        'state': 'approved',
+                        'description': 'PAYMENT',
+                        'date': self.date.today(),
+                        }, {
+                        'company': company,
+                        'party': customer,
+                        'journal': journal,
+                        'kind': 'receivable',
+                        'amount': Decimal('3000.0'),
+                        'state': 'approved',
+                        'description': 'PAYMENT',
+                        'date': self.date.today(),
+                        },
+                    ])
+
+            session_id, _, _ = self.process_payment.create()
+            process_payment = self.process_payment(session_id)
+            payment_ids = [p.id for p in payments]
+            with Transaction().set_context(active_ids=payment_ids):
+                _, data = process_payment.do_process(None)
+
+            for payment in payments:
+                self.assertEqual(payment.sepa_mandate_sequence_type, 'RCUR')
 
     def handle_camt054(self, flavor):
         'Handle camt.054'

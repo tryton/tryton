@@ -141,8 +141,11 @@ class Group:
             for payment, mandate in zip(payments, mandates):
                 if not mandate:
                     self.raise_user_error('no_mandate', payment.rec_name)
+                # Write one by one becasue mandate.sequence_type must be
+                # recomputed each time
                 Payment.write([payment], {
                         'sepa_mandate': mandate,
+                        'sepa_mandate_sequence_type': mandate.sequence_type,
                         })
         tmpl = self.get_sepa_template()
         if not tmpl:
@@ -161,7 +164,7 @@ class Group:
     def sepa_group_payment_key(self, payment):
         key = (('date', payment.date),)
         if self.kind == 'receivable':
-            key += (('sequence_type', payment.sepa_mandate.sequence_type),)
+            key += (('sequence_type', payment.sepa_mandate_sequence_type),)
             key += (('scheme', payment.sepa_mandate.scheme),)
         return key
 
@@ -188,6 +191,8 @@ class Payment:
             ('party', '=', Eval('party', -1)),
             ],
         depends=['party'])
+    sepa_mandate_sequence_type = fields.Char('Mandate Sequence Type',
+        readonly=True)
     sepa_return_reason_code = fields.Char('Return Reason Code', readonly=True,
         states={
             'invisible': (~Eval('sepa_return_reason_code')
@@ -434,7 +439,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def sequence_type(self):
         if self.type == 'one-off':
             return 'OOFF'
-        elif len(self.payments) == 1:
+        elif not self.payments:
             return 'FRST'
         # TODO manage FNAL
         else:
