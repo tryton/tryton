@@ -18,6 +18,7 @@ class AnalyticAccountTestCase(unittest.TestCase):
         self.move = POOL.get('account.move')
         self.account = POOL.get('account.account')
         self.analytic_account = POOL.get('analytic_account.account')
+        self.party = POOL.get('party.party')
 
     def test0005views(self):
         'Test views'
@@ -31,6 +32,8 @@ class AnalyticAccountTestCase(unittest.TestCase):
         'Test account debit/credit'
         with Transaction().start(DB_NAME, USER,
                 context=CONTEXT) as transaction:
+            party = self.party(name='Party')
+            party.save()
             root, = self.analytic_account.create([{
                         'type': 'root',
                         'name': 'Root',
@@ -97,6 +100,7 @@ class AnalyticAccountTestCase(unittest.TestCase):
                         ('create', [first_account_line, {
                                     'account': receivable.id,
                                     'debit': Decimal(100),
+                                    'party': party.id,
                                     }]),
                         ],
                     }, {
@@ -107,6 +111,7 @@ class AnalyticAccountTestCase(unittest.TestCase):
                         ('create', [second_account_line, {
                                     'account': payable.id,
                                     'credit': Decimal(30),
+                                    'party': party.id,
                                     }]),
                         ],
                     },
