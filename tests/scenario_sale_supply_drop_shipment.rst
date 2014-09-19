@@ -288,7 +288,8 @@ The purchase is now waiting for this new drop shipment::
     >>> purchase.shipment_state
     u'waiting'
 
-Let's cancel it and handle the problem from the sale order::
+Let's cancel the shipment and handle the issue from the purchase.
+As a consequence the sale order is over::
 
     >>> config.user = stock_user.id
     >>> shipment.click('cancel')
@@ -306,20 +307,9 @@ Let's cancel it and handle the problem from the sale order::
     u'received'
 
     >>> config.user = sale_user.id
-    >>> sale.shipment_state
-    u'exception'
-    >>> handle_exception = Wizard('sale.handle.shipment.exception', [sale])
-    >>> handle_exception.execute('handle')
     >>> sale.reload()
     >>> sale.shipment_state
-    u'waiting'
-
-The sale has created a new outgoing shipment::
-
-    >>> shipment, = sale.shipments
-    >>> move, = shipment.outgoing_moves
-    >>> move.quantity
-    150.0
+    u'sent'
 
 Cancelling the workflow on the purchase step::
 
@@ -403,3 +393,51 @@ If we opt not to cancel the shipment and deliver from stock::
     >>> config.user = sale_user.id
     >>> sale.shipment_state
     u'sent'
+
+Now let's handle the exception on the sale side::
+
+    >>> config.user = sale_user.id
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.payment_term = payment_term
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 375
+    >>> sale.save()
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+
+    >>> config.user = purchase_user.id
+    >>> purchase_request, = PurchaseRequest.find([('purchase_line', '=', None)])
+    >>> purchase_request.quantity
+    375.0
+    >>> create_purchase = Wizard('purchase.request.create_purchase',
+    ...     [purchase_request])
+    >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> purchase.payment_term = payment_term
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
+    >>> purchase.shipment_state
+    u'waiting'
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> shipment, = sale.drop_shipments
+    >>> config.user = stock_user.id
+    >>> shipment.click('cancel')
+
+    >>> config.user = sale_user.id
+    >>> sale.shipment_state
+    u'exception'
+    >>> handle_exception = Wizard('sale.handle.shipment.exception', [sale])
+    >>> _ = handle_exception.form.recreate_moves.pop()
+    >>> handle_exception.execute('handle')
+    >>> sale.reload()
+    >>> sale.shipment_state
+    u'sent'
+
+    >>> config.user = purchase_user.id
+    >>> purchase.reload()
+    >>> purchase.shipment_state
+    u'received'

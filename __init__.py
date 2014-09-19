@@ -21,4 +21,6 @@ def register():
         module='sale_supply_drop_shipment', type_='model')
     Pool.register(
         CreatePurchase,
+        PurchaseHandleShipmentException,
+        SaleHandleShipmentException,
         module='sale_supply_drop_shipment', type_='wizard')

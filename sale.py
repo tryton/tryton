@@ -1,6 +1,6 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
-from itertools import groupby
+from itertools import groupby, chain
 from functools import partial
 from trytond.model import fields
 from trytond.pyson import Eval
@@ -8,7 +8,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.const import OPERATORS
 
-__all__ = ['Sale', 'SaleLine']
+__all__ = ['Sale', 'SaleLine', 'SaleHandleShipmentException']
 __metaclass__ = PoolMeta
 
 
@@ -181,3 +181,47 @@ class SaleLine:
                 i += 1
             return domain
         return super(SaleLine, cls).search(process(domain), *args, **kwargs)
+
+
+class SaleHandleShipmentException:
+    __name__ = 'sale.handle.shipment.exception'
+
+    def transition_handle(self):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
+        Sale = pool.get('sale.sale')
+
+        super(SaleHandleShipmentException, self).transition_handle()
+
+        to_recreate = self.ask.recreate_moves
+        domain_moves = self.ask.domain_moves
+        purchases, purchaseline_write = set(), []
+        sale = Sale(Transaction().context['active_id'])
+        for line in sale.lines:
+            if not line.purchase_request:
+                continue
+            purchase_line = line.purchase_request.purchase_line
+            if not purchase_line:
+                continue
+
+            moves_ignored = []
+            moves_recreated = []
+            skip = set(purchase_line.moves_ignored)
+            skip.update(purchase_line.moves_recreated)
+            for move in purchase_line.moves:
+                if move not in domain_moves or move in skip:
+                    continue
+                if move in to_recreate:
+                    moves_recreated.append(move.id)
+                else:
+                    moves_ignored.append(move.id)
+                purchases.add(purchase_line.purchase)
+            purchaseline_write.append(([purchase_line], {
+                        'moves_ignored': [('add', moves_ignored)],
+                        'moves_recreated': [('add', moves_recreated)],
+                        }))
+
+            PurchaseLine.write(*chain(*purchaseline_write))
+            Purchase.process(list(purchases))
+        return 'end'

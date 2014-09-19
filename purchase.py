@@ -3,10 +3,11 @@
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 __all__ = ['PurchaseRequest', 'Purchase', 'PurchaseLine', 'ProductSupplier',
-    'CreatePurchase']
+    'CreatePurchase', 'PurchaseHandleShipmentException']
 __metaclass__ = PoolMeta
 
 
@@ -119,3 +120,45 @@ class CreatePurchase:
                 if request.delivery_address else None),
             )
         return result
+
+
+class PurchaseHandleShipmentException:
+    __name__ = 'purchase.handle.shipment.exception'
+
+    def transition_handle(self):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
+
+        super(PurchaseHandleShipmentException, self).transition_handle()
+
+        to_recreate = self.ask.recreate_moves
+        domain_moves = self.ask.domain_moves
+        sales, saleline_write = set(), []
+        sale_lines = SaleLine.search([
+                ('purchase_request.purchase_line.purchase', '=',
+                    Transaction().context['active_id']),
+                ])
+        saleline_write = []
+        for sale_line in sale_lines:
+            moves_ignored = []
+            moves_recreated = []
+            skip = set(sale_line.moves_ignored)
+            skip.update(sale_line.moves_recreated)
+            for move in sale_line.moves:
+                if move not in domain_moves or move in skip:
+                    continue
+                if move in to_recreate:
+                    moves_recreated.append(move.id)
+                else:
+                    moves_ignored.append(move.id)
+                sales.add(sale_line.sale)
+            saleline_write.append([sale_line])
+            saleline_write.append({
+                    'moves_ignored': [('add', moves_ignored)],
+                    'moves_recreated': [('add', moves_recreated)],
+                    })
+
+            SaleLine.write(*saleline_write)
+            Sale.process(list(sales))
+        return 'end'
