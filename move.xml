@@ -188,35 +188,41 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_open_account"/>
         </record>
 
-        <record model="ir.action.act_window" id="act_move_line_payable">
-            <field name="name">Payable Lines</field>
+        <record model="ir.action.act_window"
+                id="act_move_line_payable_receivable">
+            <field name="name">Payable/Receivable Lines</field>
             <field name="res_model">account.move.line</field>
-            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', '=', 'payable'), ('reconciliation', '=', None)]</field>
+            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', 'in', ['payable', 'receivable']), ('reconciliation', '=', None)]</field>
         </record>
-        <record model="ir.action.keyword" id="act_move_line_payable_keyword1">
+        <record model="ir.action.act_window.domain"
+                id="act_move_line_payable_receivable_domain_payable">
+            <field name="name">Payable</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('account.kind', '=', 'payable')]</field>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_move_line_payable_receivable_domain_receivable">
+            <field name="name">Receivable</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('account.kind', '=', 'receivable')]</field>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.act_window.domain"
+                id="act_move_line_payable_receivable_domain_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="act_window" ref="act_move_line_payable_receivable"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_move_line_payable_receivable_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">party.party,-1</field>
-            <field name="action" ref="act_move_line_payable"/>
+            <field name="action" ref="act_move_line_payable_receivable"/>
         </record>
         <record model="ir.action-res.group"
             id="act_move_line_payable-group_account">
             <field name="action" ref="act_move_line_payable"/>
-            <field name="group" ref="group_account"/>
-        </record>
-
-        <record model="ir.action.act_window" id="act_move_line_receivable">
-            <field name="name">Receivable Lines</field>
-            <field name="res_model">account.move.line</field>
-            <field name="domain">[('party', 'in', Eval('active_ids')), ('account.kind', '=', 'receivable'), ('reconciliation', '=', None)]</field>
-        </record>
-        <record model="ir.action.keyword" id="act_move_line_receivable_keyword1">
-            <field name="keyword">form_relate</field>
-            <field name="model">party.party,-1</field>
-            <field name="action" ref="act_move_line_receivable"/>
-        </record>
-        <record model="ir.action-res.group"
-            id="act_move_line_receivable-group_account">
-            <field name="action" ref="act_move_line_receivable"/>
             <field name="group" ref="group_account"/>
         </record>
 
