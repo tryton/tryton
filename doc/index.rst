@@ -154,6 +154,9 @@ an account. The fields are:
 - Tax Lines. Gives the distribution of the amount line on the account
   chart
 
+The Move Line is displayed using the account's name eventualy surrounded by
+parenthesis when it is a credit line.
+
 The *Reconcile Lines* wizard allow to link move lines of the same
 acount for whose the credit sum is equal to the debit sum. If the
 selected lines are not balanced, the wizard offer to create a

@@ -1139,6 +1139,16 @@ class Line(ModelSQL, ModelView):
     order_origin = _order_move_field('origin')
     order_move_state = _order_move_field('state')
 
+    def get_rec_name(self, name):
+        if self.debit > self.credit:
+            return self.account.rec_name
+        else:
+            return '(%s)' % self.account.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('account.rec_name',) + tuple(clause[1:])]
+
     @classmethod
     def query_get(cls, table):
         '''
