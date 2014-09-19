@@ -89,7 +89,8 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         try:
             return ConfigParser.RawConfigParser.getboolean(
                 self, section, option)
-        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError):
+        except (ConfigParser.NoOptionError, ConfigParser.NoSectionError,
+                AttributeError):
             return default
 
 config = TrytonConfigParser()
