@@ -177,5 +177,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.action.report" id="report_mandate">
+            <field name="name">Mandate</field>
+            <field name="model">account.payment.sepa.mandate</field>
+            <field name="report_name">account.payment.sepa.mandate</field>
+            <field name="report">account_payment_sepa/mandate.odt</field>
+            <field name="style">company/header_A4.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_mandate_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.payment.sepa.mandate,-1</field>
+            <field name="action" ref="report_mandate"/>
+        </record>
     </data>
 </tryton>

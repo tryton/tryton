@@ -16,3 +16,6 @@ def register():
         Party,
         Configuration,
         module='account_payment_sepa', type_='model')
+    Pool.register(
+        MandateReport,
+        module='account_payment_sepa', type_='report')

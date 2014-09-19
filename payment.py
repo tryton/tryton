@@ -16,10 +16,13 @@ from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.tools import reduce_ids, grouped_slice
 from trytond import backend
+from trytond.modules.company import CompanyReport
+
 from .sepa_handler import CAMT054
 
 __metaclass__ = PoolMeta
-__all__ = ['Journal', 'Group', 'Payment', 'Mandate', 'Message']
+__all__ = ['Journal', 'Group', 'Payment', 'Mandate', 'Message',
+    'MandateReport']
 
 
 class Journal:
@@ -307,6 +310,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('CORE', 'Core'),
             ('B2B', 'Business to Business'),
             ], 'Scheme', required=True)
+    scheme_string = scheme.translated('scheme')
     signature_date = fields.Date('Signature Date',
         states={
             'readonly': Eval('state').in_(['validated', 'canceled']),
@@ -493,6 +497,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
             if mandate.state not in ('draft', 'canceled'):
                 cls.raise_user_error('delete_draft_canceled', mandate.rec_name)
         super(Mandate, cls).delete(mandates)
+
+
+class MandateReport(CompanyReport):
+    __name__ = 'account.payment.sepa.mandate'
 
 
 class Message(Workflow, ModelSQL, ModelView):

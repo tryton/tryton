@@ -1,3 +1,4 @@
+* Add mandate report
 * Use FRST sequence type only for the first payment ever processed
 * Handle camt.054
 * Add generic SEPA Message
