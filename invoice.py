@@ -948,9 +948,10 @@ class Invoice(Workflow, ModelSQL, ModelView):
             res['debit'] = - amount
             res['credit'] = Decimal('0.0')
         res['account'] = self.account.id
+        if self.account.party_required:
+            res['party'] = self.party.id
         res['maturity_date'] = date
         res['description'] = self.description
-        res['party'] = self.party.id
         return res
 
     def create_move(self):
@@ -1222,7 +1223,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             lines.append({
                     'description': description,
                     'account': self.account.id,
-                    'party': self.party.id,
+                    'party': (self.party.id
+                        if self.account.party_required else None),
                     'debit': Decimal('0.0'),
                     'credit': amount,
                     'amount_second_currency': amount_second_currency,
@@ -1231,7 +1233,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             lines.append({
                     'description': description,
                     'account': journal.debit_account.id,
-                    'party': self.party.id,
+                    'party': (self.party.id
+                        if journal.debit_account.party_required else None),
                     'debit': amount,
                     'credit': Decimal('0.0'),
                     'amount_second_currency': amount_second_currency,
@@ -1250,7 +1253,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             lines.append({
                     'description': description,
                     'account': self.account.id,
-                    'party': self.party.id,
+                    'party': (self.party.id
+                        if self.account.party_required else None),
                     'debit': amount,
                     'credit': Decimal('0.0'),
                     'amount_second_currency': amount_second_currency,
@@ -1259,7 +1263,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             lines.append({
                     'description': description,
                     'account': journal.credit_account.id,
-                    'party': self.party.id,
+                    'party': (self.party.id
+                        if journal.credit_account.party_required else None),
                     'debit': Decimal('0.0'),
                     'credit': amount,
                     'amount_second_currency': amount_second_currency,
@@ -2076,7 +2081,8 @@ class InvoiceLine(ModelSQL, ModelView):
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
         res['account'] = self.account.id
-        res['party'] = self.invoice.party.id
+        if self.account.party_required:
+            res['party'] = self.invoice.party.id
         computed_taxes = self._compute_taxes()
         if computed_taxes:
             res['tax_lines'] = [('create', [tax for tax in computed_taxes])]
@@ -2367,7 +2373,8 @@ class InvoiceTax(ModelSQL, ModelView):
                 res['debit'] = - amount
                 res['credit'] = Decimal('0.0')
         res['account'] = self.account.id
-        res['party'] = self.invoice.party.id
+        if self.account.party_required:
+            res['party'] = self.invoice.party.id
         if self.tax_code:
             res['tax_lines'] = [('create', [{
                             'code': self.tax_code.id,
