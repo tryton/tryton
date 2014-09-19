@@ -222,7 +222,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action-res.group"
             id="act_move_line_payable-group_account">
-            <field name="action" ref="act_move_line_payable"/>
+            <field name="action" ref="act_move_line_payable_receivable"/>
             <field name="group" ref="group_account"/>
         </record>
 
