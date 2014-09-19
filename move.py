@@ -500,7 +500,8 @@ class Reconciliation(ModelSQL, ModelView):
             debit = Decimal('0.0')
             credit = Decimal('0.0')
             account = None
-            party = None
+            if reconciliation.lines:
+                party = reconciliation.lines[0].party
             for line in reconciliation.lines:
                 if line.state != 'valid':
                     cls.raise_user_error('reconciliation_line_not_valid',
@@ -521,9 +522,7 @@ class Reconciliation(ModelSQL, ModelView):
                             'line': line.rec_name,
                             'account': line.account.rec_name,
                             })
-                if not party:
-                    party = line.party
-                elif line.party and party.id != line.party.id:
+                if line.party != party:
                     cls.raise_user_error('reconciliation_different_parties', {
                             'line': line.rec_name,
                             'party1': line.party.rec_name,
