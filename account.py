@@ -22,6 +22,10 @@ class Configuration:
     tax_roundings = fields.One2Many('account.configuration.tax_rounding',
         'configuration', 'Tax Roundings')
 
+    @staticmethod
+    def default_tax_rounding():
+        return 'document'
+
     @fields.depends('tax_roundings')
     def on_change_with_tax_rounding(self, name=None, pattern=None):
         context = Transaction().context
@@ -33,7 +37,7 @@ class Configuration:
         for line in self.tax_roundings:
             if line.match(pattern):
                 return line.method
-        return 'document'
+        return self.default_tax_rounding()
 
 
 class ConfigurationTaxRounding(ModelSQL, ModelView, MatchMixin):
