@@ -86,7 +86,7 @@ class Address(ModelSQL, ModelView):
         if domain:
             records = Zip.search(domain, limit=self._autocomplete_limit)
             if len(records) < self._autocomplete_limit:
-                return sorted({getattr(z, 'name') for z in records})
+                return sorted({getattr(z, name) for z in records})
         return []
 
     @fields.depends('city', 'country', 'subdivision')
