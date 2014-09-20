@@ -1,15 +1,56 @@
 #This file is part of Tryton.  The COPYRIGHT file at the top level of
 #this repository contains the full copyright notices and license terms.
 import logging
+import urlparse
 
 import ldap
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+from trytond.config import config, parse_uri
 
 __all__ = ['User']
 __metaclass__ = PoolMeta
 
 logger = logging.getLogger(__name__)
+section = 'ldap_authentication'
+
+
+def parse_ldap_url(uri):
+    unquote = urlparse.unquote
+    uri = parse_uri(uri)
+    dn = unquote(uri.path)[1:]
+    attributes, scope, filter_, extensions = (
+        uri.query.split('?') + [''] * 4)[:4]
+    if not scope:
+        scope = 'base'
+    extensions = urlparse.parse_qs(extensions)
+    return (uri, dn, unquote(attributes), unquote(scope), unquote(filter_),
+        extensions)
+
+
+def ldap_connection():
+    uri = config.get(section, 'uri')
+    if not uri:
+        return
+    uri, _, _, _, _, extensions = parse_ldap_url(uri)
+    if uri.scheme.startswith('ldaps'):
+        scheme, port = 'ldaps', 636
+    else:
+        scheme, port = 'ldap', 389
+    conn = ldap.initialize('%s://%s:%s/' % (
+            scheme, uri.hostname, uri.port or port))
+    if config.getboolean(section, 'active_directory', 'False'):
+        conn.set_option(ldap.OPT_REFERRALS, 0)
+    if 'tls' in uri.scheme:
+        conn.start_tls_s()
+
+    bindname = extensions.get('bindname')
+    if not bindname:
+        bindname = extensions.get('!bindname')
+    if bindname:
+        # XXX find better way to get the password
+        conn.simple_bind_s(bindname, config.get(section, 'bind_pass'))
+    return conn
 
 
 class User:
@@ -24,26 +65,27 @@ class User:
                 })
 
     @staticmethod
-    def ldap_search_user(login, con, connection, attrs=None):
+    def ldap_search_user(login, con, attrs=None):
         '''
         Return the result of a ldap search for the login using the ldap
         connection con based on connection.
         The attributes values defined in attrs will be return.
         '''
+        _, dn, _, scope, filter_, _ = parse_ldap_url(
+            config.get(section, 'uri'))
         scope = {
             'base': ldap.SCOPE_BASE,
             'onelevel': ldap.SCOPE_ONELEVEL,
             'subtree': ldap.SCOPE_SUBTREE,
-            }.get(connection.auth_scope)
-        if connection.auth_require_filter:
-            filter = '(&(%s=%s)%s)' % (connection.auth_uid, login,
-                    connection.auth_require_filter)
+            }.get(scope)
+        uid = config.get(section, 'uid', 'uid')
+        if filter_:
+            filter_ = '(&(%s=%s)%s)' % (uid, login, filter_)
         else:
-            filter = '(%s=%s)' % (connection.auth_uid, login)
+            filter_ = '(%s=%s)' % (uid, login)
 
-        result = con.search_s(connection.auth_base_dn or '', scope,
-                    filter, attrs)
-        if connection.active_directory:
+        result = con.search_s(dn, scope, filter_, attrs)
+        if config.get(section, 'active_directory'):
             result = [x for x in result if x[0]]
         if result and len(result) > 1:
             logger.info('ldap_search_user found more than 1 user')
@@ -51,20 +93,11 @@ class User:
 
     @classmethod
     def _check_passwd_ldap_user(cls, logins):
-        Connection = Pool().get('ldap.connection')
-        connection, = Connection.search([], limit=1)
         find = False
         try:
-            con = ldap.initialize(connection.uri)
-            if connection.active_directory:
-                con.set_option(ldap.OPT_REFERRALS, 0)
-            if connection.secure == 'tls':
-                con.start_tls_s()
-            if connection.bind_dn:
-                con.simple_bind_s(connection.bind_dn, connection.bind_pass)
+            con = ldap_connection()
             for login in logins:
-                if cls.ldap_search_user(login,
-                        con, connection, attrs=[]):
+                if cls.ldap_search_user(login, con, attrs=[]):
                     find = True
                     break
         except ldap.LDAPError, e:
@@ -94,20 +127,12 @@ class User:
 
     @classmethod
     def set_preferences(cls, values, old_password=False):
-        Connection = Pool().get('ldap.connection')
         if 'password' in values:
-            connection, = Connection.search([], limit=1)
             try:
-                con = ldap.initialize(connection.uri)
-                if connection.active_directory:
-                    con.set_option(ldap.OPT_REFERRALS, 0)
-                if connection.secure == 'tls':
-                    con.start_tls_s()
-                if connection.bind_dn:
-                    con.simple_bind_s(connection.bind_dn, connection.bind_pass)
+                con = ldap_connection()
                 user = cls(Transaction().user)
-                users = cls.ldap_search_user(user.login, con,
-                    connection, attrs=[str(connection.auth_uid)])
+                uid = config.get(section, 'uid', 'uid')
+                users = cls.ldap_search_user(user.login, con, attrs=[uid])
                 if users and len(users) == 1:
                     [(dn, attrs)] = users
                     if con.simple_bind_s(dn, old_password):
@@ -123,20 +148,11 @@ class User:
     @classmethod
     def get_login(cls, login, password):
         pool = Pool()
-        Connection = pool.get('ldap.connection')
         LoginAttempt = pool.get('res.user.login.attempt')
-        connection, = Connection.search([], limit=1)
         try:
-            con = ldap.initialize(connection.uri or '')
-            if connection.active_directory:
-                con.set_option(ldap.OPT_REFERRALS, 0)
-            if connection.secure == 'tls':
-                con.start_tls_s()
-            if connection.bind_dn:
-                con.simple_bind_s(connection.bind_dn or '',
-                    connection.bind_pass or '')
-            users = cls.ldap_search_user(login, con, connection,
-                attrs=[str(connection.auth_uid)])
+            con = ldap_connection()
+            uid = config.get(section, 'uid', 'uid')
+            users = cls.ldap_search_user(login, con, attrs=[uid])
             if users and len(users) == 1:
                 [(dn, attrs)] = users
                 if password and con.simple_bind_s(dn, password):
@@ -144,10 +160,9 @@ class User:
                     if user_id:
                         LoginAttempt.remove(login)
                         return user_id
-                    elif connection.auth_create_user:
+                    elif config.getboolean(section, 'create_user'):
                         user, = cls.create([{
-                                    'name': attrs.get(str(connection.auth_uid),
-                                        [login])[0],
+                                    'name': attrs.get(uid, [login])[0],
                                     'login': login,
                                     }])
                         return user.id

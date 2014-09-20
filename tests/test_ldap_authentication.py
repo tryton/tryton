@@ -6,9 +6,14 @@ from mock import patch
 import ldap
 
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_depends
 from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
+from trytond.config import config
+
+from trytond.modules.ldap_authentication.res import parse_ldap_url
+
+section = 'ldap_authentication'
 
 
 class LDAPAuthenticationTestCase(unittest.TestCase):
@@ -16,10 +21,11 @@ class LDAPAuthenticationTestCase(unittest.TestCase):
 
     def setUp(self):
         trytond.tests.test_tryton.install_module('ldap_authentication')
+        config.add_section(section)
+        config.set(section, 'uri', 'ldap://localhost/dc=tryton,dc=org')
 
-    def test0005views(self):
-        'Test views'
-        test_view('ldap_authentication')
+    def tearDown(self):
+        config.remove_section(section)
 
     def test0006depends(self):
         'Test depends'
@@ -29,11 +35,6 @@ class LDAPAuthenticationTestCase(unittest.TestCase):
         'Test User.get_login'
         with Transaction().start(DB_NAME, USER, context=CONTEXT):
             User = POOL.get('res.user')
-            Connection = POOL.get('ldap.connection')
-
-            connection = Connection(server='localhost',
-                auth_base_dn='dc=tryton,dc=org')
-            connection.save()
 
             @patch.object(ldap, 'initialize')
             @patch.object(User, 'ldap_search_user')
@@ -55,12 +56,40 @@ class LDAPAuthenticationTestCase(unittest.TestCase):
             self.assertFalse(get_login('foo', 'bar', True))
 
             # Test create new user
-            connection.auth_create_user = True
-            connection.save()
+            config.set(section, 'create_user', 'True')
             user_id = get_login('foo', 'bar', True)
             foo, = User.search([('login', '=', 'foo')])
             self.assertEqual(user_id, foo.id)
             self.assertEqual(foo.name, 'foo')
+
+    def test_parse_ldap_url(self):
+        'Test parse_ldap_url'
+        self.assertEqual(
+            parse_ldap_url('ldap:///o=University%20of%20Michigan,c=US')[1],
+            'o=University of Michigan,c=US')
+        self.assertEqual(
+            parse_ldap_url(
+                'ldap://ldap.itd.umich.edu/o=University%20of%20Michigan,c=US'
+                )[1],
+            'o=University of Michigan,c=US')
+        self.assertEqual(
+            parse_ldap_url(
+                'ldap://ldap.itd.umich.edu/o=University%20of%20Michigan,'
+                'c=US?postalAddress')[2],
+            'postalAddress')
+        self.assertEqual(
+            parse_ldap_url(
+                'ldap://host.com:6666/o=University%20of%20Michigan,'
+                'c=US??sub?(cn=Babs%20Jensen)')[3:5],
+            ('sub', '(cn=Babs Jensen)'))
+        self.assertEqual(
+            parse_ldap_url(
+                'ldap:///??sub??bindname=cn=Manager%2co=Foo')[5],
+            {'bindname': ['cn=Manager,o=Foo']})
+        self.assertEqual(
+            parse_ldap_url(
+                'ldap:///??sub??!bindname=cn=Manager%2co=Foo')[5],
+            {'!bindname': ['cn=Manager,o=Foo']})
 
 
 def suite():
