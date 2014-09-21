@@ -726,6 +726,9 @@ class Screen(SignalEvent):
             start, end = view.widget_tree.get_visible_range()
             vadjustment = view.widget_tree.get_vadjustment()
             vadjustment.value = vadjustment.value + vadjustment.page_increment
+            vadjustment.value = min(
+                vadjustment.value + vadjustment.page_increment,
+                vadjustment.get_upper())
             store = view.store
             iter_ = store.get_iter(end)
             self.current_record = store.get_value(iter_, 0)
@@ -790,7 +793,9 @@ class Screen(SignalEvent):
         if view.view_type == 'tree' and len(self.group):
             start, end = view.widget_tree.get_visible_range()
             vadjustment = view.widget_tree.get_vadjustment()
-            vadjustment.value = vadjustment.value - vadjustment.page_increment
+            vadjustment.value = min(
+                vadjustment.value - vadjustment.page_increment,
+                vadjustment.get_lower())
             store = view.store
             iter_ = store.get_iter(start)
             self.current_record = store.get_value(iter_, 0)
