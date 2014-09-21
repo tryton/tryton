@@ -621,7 +621,7 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
-        cls._check_modify_exclude = ['reconciliation']
+        cls._check_modify_exclude = {'reconciliation'}
         cls._reconciliation_modify_disallow = {
             'account', 'debit', 'credit', 'party',
             }
@@ -1307,15 +1307,18 @@ class Line(ModelSQL, ModelView):
                         }])
 
     @classmethod
-    def check_modify(cls, lines):
+    def check_modify(cls, lines, modified_fields=None):
         '''
         Check if the lines can be modified
         '''
+        if (modified_fields is not None
+                and modified_fields <= cls._check_modify_exclude):
+            return
         journal_period_done = []
         for line in lines:
             if line.move.state == 'posted':
                 cls.raise_user_error('modify_posted_move', (
-                        line.move.rec_name,))
+                        modified_fields,)) #line.move.rec_name,))
             journal_period = (line.journal.id, line.period.id)
             if journal_period not in journal_period_done:
                 cls.check_journal_period_modify(line.period,
@@ -1349,7 +1352,7 @@ class Line(ModelSQL, ModelView):
         moves = []
         all_lines = []
         for lines, values in zip(actions, actions):
-            cls.check_modify(lines)
+            cls.check_modify(lines, set(values.keys()))
             cls.check_reconciliation(lines, set(values.keys()))
             moves.extend((x.move for x in lines))
             all_lines.extend(lines)
