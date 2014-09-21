@@ -528,9 +528,9 @@ class DBLogin(object):
 
     def clear_profile_combo(self, entry, event):
         netloc = self.entry_host.get_text()
-        host = self.get_hostname(netloc)
+        host = common.get_hostname(netloc)
         try:
-            port = str(self.get_port(netloc))
+            port = str(common.get_port(netloc))
         except ValueError:
             host = ''
             port = ''
@@ -554,21 +554,6 @@ class DBLogin(object):
         self.label_host.props.visible = visibility
         self.entry_database.props.visible = visibility
         self.label_database.props.visible = visibility
-
-    def get_hostname(self, netloc):
-        if '[' in netloc and ']' in netloc:
-            return netloc.split(']')[0][1:]
-        elif ':' in netloc:
-            return netloc.split(':')[0]
-        else:
-            return netloc
-
-    def get_port(self, netloc):
-        netloc = netloc.split(']')[-1]
-        if ':' in netloc:
-            return int(netloc.split(':')[1])
-        else:
-            return 8000
 
     def run(self):
         profile_name = CONFIG['login.profile']
@@ -620,9 +605,9 @@ class DBLogin(object):
                 profile = self.profile_store[active_profile][0]
                 CONFIG['login.profile'] = profile
             netloc = self.entry_host.get_text()
-            host = self.get_hostname(netloc)
+            host = common.get_hostname(netloc)
             try:
-                port = self.get_port(netloc)
+                port = common.get_port(netloc)
             except ValueError:
                 continue
             try:

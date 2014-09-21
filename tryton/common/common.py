@@ -322,19 +322,17 @@ def request_server(server_widget):
     dialog.show_all()
     dialog.set_default_response(gtk.RESPONSE_OK)
 
-    url_m = re.match('^([\w.-]+):(\d{1,5})',
-        server_widget.get_text())
-    if url_m:
-        entry_server.set_text(url_m.group(1))
-        entry_port.set_text(url_m.group(2))
+    netloc = server_widget.get_text()
+    entry_server.set_text(get_hostname(netloc))
+    entry_port.set_text(str(get_port(netloc)))
 
     res = dialog.run()
     if res == gtk.RESPONSE_OK:
         host = entry_server.get_text()
-        port = int(entry_port.get_text())
-        url = '%s:%d' % (host, port)
+        port = entry_port.get_text()
+        url = '%s:%s' % (host, port)
         server_widget.set_text(url)
-        result = (host, port)
+        result = (get_hostname(url), get_port(url))
     parent.present()
     dialog.destroy()
     return result
@@ -1532,6 +1530,25 @@ def humanize(size):
         if size < 1000:
             return '%3.1f%s' % (size, x)
         size /= 1000.0
+
+
+def get_hostname(netloc):
+    if '[' in netloc and ']' in netloc:
+        return netloc.split(']')[0][1:]
+    elif ':' in netloc:
+        return netloc.split(':')[0]
+    else:
+        return netloc
+
+
+def get_port(netloc):
+    netloc = netloc.split(']')[-1]
+    if ':' in netloc:
+        try:
+            return int(netloc.split(':')[1])
+        except ValueError:
+            pass
+    return 8000
 
 
 def resize_pixbuf(pixbuf, width, height):

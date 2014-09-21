@@ -3,7 +3,7 @@
 import gtk
 import gobject
 import gettext
-import re
+
 import tryton.common as common
 from tryton.config import CONFIG, TRYTON_ICON
 from tryton.exceptions import TrytonServerError
@@ -320,95 +320,72 @@ class DBCreate(object):
             self.dialog.props.sensitive = True
             res = self.dialog.run()
             dbname = self.entry_dbname.get_text()
-            url = self.entry_server_connection.get_text()
-            url_m = re.match('^([\w.\-]+):(\d{1,5})', url or '')
+            netloc = self.entry_server_connection.get_text()
+            host = common.get_hostname(netloc)
+            port = common.get_port(netloc)
             langidx = self.combo_language.get_active_iter()
             langreal = langidx \
                 and self.combo_language.get_model().get_value(langidx, 1)
             passwd = pass_widget.get_text()
             if res == gtk.RESPONSE_OK:
-                if (not dbname
-                        or not re.match('^[a-zA-Z0-9_]+$', dbname)):
-                    common.warning(_('The database name is restricted to '
-                            'alpha-nummerical characters '
-                            'and "_" (underscore). '
-                            'Avoid all accents, space '
-                            'and any other special characters.'),
-                        _('Wrong characters in database name!'))
-                    continue
-                elif admin_passwd.get_text() != admin_passwd2.get_text():
+                if admin_passwd.get_text() != admin_passwd2.get_text():
                     common.warning(
                         _("The new admin password "
                             "doesn't match the confirmation field.\n"),
                         _("Passwords doesn't match!"))
                     continue
-                elif not admin_passwd.get_text():
-                    common.warning(_("Admin password and confirmation are "
-                            "required to create a new database."),
-                        _('Missing admin password!'))
+                try:
+                    exist = rpc.db_exec(host, port, 'db_exist', dbname)
+                except TrytonServerError, exception:
+                    common.process_exception(exception)
                     continue
-                elif url_m.group(1) \
-                        and int(url_m.group(2)) \
-                        and dbname \
-                        and langreal \
-                        and passwd \
-                        and admin_passwd.get_text():
+                if exist:
+                    common.warning(_("A database with the same name "
+                            "already exists.\n"
+                            "Try another database name."),
+                        _("This database name already exist!"))
+                    self.entry_dbname.set_text("")
+                    self.entry_dbname.grab_focus()
+                    continue
+                else:  # Everything runs fine, break the block here
+                    self.dialog.props.sensitive = False
                     try:
-                        exist = rpc.db_exec(url_m.group(1),
-                                int(url_m.group(2)), 'db_exist', dbname)
+                        rpcprogress = common.RPCProgress('db_exec',
+                            (host, port, 'create', dbname, passwd, langreal,
+                                admin_passwd.get_text()))
+                        rpcprogress.run(False)
                     except TrytonServerError, exception:
-                        common.process_exception(exception)
-                        continue
-                    if exist:
-                        common.warning(_("A database with the same name "
-                                "already exists.\n"
-                                "Try another database name."),
-                            _("This database name already exist!"))
-                        self.entry_dbname.set_text("")
-                        self.entry_dbname.grab_focus()
-                        continue
-                    else:  # Everything runs fine, break the block here
-                        host = url_m.group(1)
-                        port = url_m.group(2)
-                        self.dialog.props.sensitive = False
-                        try:
-                            rpcprogress = common.RPCProgress('db_exec',
-                                    (host, int(port), 'create', dbname, passwd,
-                                        langreal, admin_passwd.get_text()))
-                            rpcprogress.run(False)
-                        except TrytonServerError, exception:
-                            if str(exception.faultCode) == "AccessDenied":
-                                common.warning(_("Sorry, wrong password for "
-                                        "the Tryton server. "
-                                        "Please try again."),
-                                    _("Access denied!"))
-                                self.entry_serverpasswd.set_text("")
-                                self.entry_serverpasswd.grab_focus()
-                                continue
-                            else:  # Unclassified error
-                                common.warning(_("Can't create the "
-                                    "database, caused by an unknown reason.\n"
-                                    "If there is a database created, it could "
-                                    "be broken. Maybe drop this database! "
-                                    "Please check the error message for "
-                                    "possible informations.\n"
-                                    "Error message:\n")
-                                    + str(exception.faultCode),
-                                    _("Error creating database!"))
-                            parent.present()
-                            self.dialog.destroy()
-                            rpc.logout()
-                            break
+                        if str(exception.faultCode) == "AccessDenied":
+                            common.warning(_("Sorry, wrong password for "
+                                    "the Tryton server. "
+                                    "Please try again."),
+                                _("Access denied!"))
+                            self.entry_serverpasswd.set_text("")
+                            self.entry_serverpasswd.grab_focus()
+                            continue
+                        else:  # Unclassified error
+                            common.warning(_("Can't create the "
+                                "database, caused by an unknown reason.\n"
+                                "If there is a database created, it could "
+                                "be broken. Maybe drop this database! "
+                                "Please check the error message for "
+                                "possible informations.\n"
+                                "Error message:\n")
+                                + str(exception.faultCode),
+                                _("Error creating database!"))
                         parent.present()
                         self.dialog.destroy()
-                        if self.sig_login:
-                            CONFIG['login.server'] = host
-                            CONFIG['login.port'] = port
-                            CONFIG['login.db'] = dbname
-                            CONFIG['login.login'] = 'admin'
-                            self.sig_login()
+                        rpc.logout()
                         break
-
+                    parent.present()
+                    self.dialog.destroy()
+                    if self.sig_login:
+                        CONFIG['login.server'] = host
+                        CONFIG['login.port'] = str(port)
+                        CONFIG['login.db'] = dbname
+                        CONFIG['login.login'] = 'admin'
+                        self.sig_login()
+                    break
             break
         parent.present()
         self.dialog.destroy()
