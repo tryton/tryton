@@ -299,14 +299,14 @@ def restore(database_name, password, data, update=False):
     Database.restore(database_name, data)
     logger.info('RESTORE DB: %s' % (database_name))
     if update:
-        cursor = Database(database_name).connect().cursor()
-        cursor.execute(*ir_lang.select(ir_lang.code,
-                where=ir_lang.translatable))
-        lang = [x[0] for x in cursor.fetchall()]
-        cursor.execute(*ir_module.update([ir_module.state], ['to upgrade'],
-                where=(ir_module.state == 'installed')))
-        cursor.commit()
-        cursor.close()
+        with Transaction().start(database_name, 0) as transaction:
+            cursor = transaction.cursor
+            cursor.execute(*ir_lang.select(ir_lang.code,
+                    where=ir_lang.translatable))
+            lang = [x[0] for x in cursor.fetchall()]
+            cursor.execute(*ir_module.select(ir_module.name,
+                    where=(ir_module.state == 'installed')))
+            update = [x[0] for x in cursor.fetchall()]
         Pool(database_name).init(update=update, lang=lang)
         logger.info('Update/Init succeed!')
     return True
