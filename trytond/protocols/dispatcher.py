@@ -23,7 +23,7 @@ from trytond.rpc import RPC
 
 ir_configuration = Table('ir_configuration')
 ir_lang = Table('ir_lang')
-ir_module = Table('ir_module')
+ir_module = Table('ir_module_module')
 res_user = Table('res_user')
 
 
