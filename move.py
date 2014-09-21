@@ -1318,7 +1318,7 @@ class Line(ModelSQL, ModelView):
         for line in lines:
             if line.move.state == 'posted':
                 cls.raise_user_error('modify_posted_move', (
-                        modified_fields,)) #line.move.rec_name,))
+                        line.move.rec_name,))
             journal_period = (line.journal.id, line.period.id)
             if journal_period not in journal_period_done:
                 cls.check_journal_period_modify(line.period,
