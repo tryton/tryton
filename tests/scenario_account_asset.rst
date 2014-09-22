@@ -243,6 +243,21 @@ Update the asset::
     >>> update.execute('update_asset')
     >>> update.form.amount
     Decimal('100.00')
+    >>> update.form.date = (supplier_invoice.invoice_date
+    ...     + relativedelta(months=2))
+    >>> update.form.latest_move_date == (supplier_invoice.invoice_date
+    ...     + relativedelta(months=3, days=-1))
+    True
+    >>> update.form.next_depreciation_date == (supplier_invoice.invoice_date
+    ...     + relativedelta(months=4, days=-1))
+    True
+    >>> update.execute('create_move')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    ValueError: ...
+
+    >>> update.form.date = (supplier_invoice.invoice_date
+    ...     + relativedelta(months=3))
     >>> update.execute('create_move')
     >>> asset.reload()
     >>> asset.value

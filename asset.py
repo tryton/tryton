@@ -667,7 +667,17 @@ class UpdateAssetShowDepreciation(ModelView):
     'Update Asset Show Depreciation'
     __name__ = 'account.asset.update.show_depreciation'
     amount = fields.Numeric('Amount', readonly=True)
-    date = fields.Date('Date', required=True)
+    date = fields.Date('Date', required=True,
+        domain=[
+            ('date', '>', Eval('latest_move_date')),
+            ('date', '<', Eval('next_depreciation_date')),
+            ],
+        depends=['latest_move_date', 'next_depreciation_date'],
+        help=('The date must be between the last update/depreciation date '
+            'and the next depreciation date.'))
+    latest_move_date = fields.Date('Latest Move Date', readonly=True)
+    next_depreciation_date = fields.Date('Next Depreciation Date',
+        readonly=True)
     depreciation_account = fields.Many2One('account.account',
         'Depreciation Account', readonly=True)
     counterpart_account = fields.Many2One('account.account',
@@ -707,6 +717,21 @@ class UpdateAsset(Wizard):
             return 'show_move'
         return 'create_lines'
 
+    def get_latest_move_date(self, asset):
+        previous_dates = [datetime.date.min]
+        previous_dates += [m.date for m in asset.update_moves
+            if m.state == 'posted']
+        previous_dates += [l.date for l in asset.lines
+                if l.move and l.move.state == 'posted']
+        return max(previous_dates)
+
+    def get_next_depreciation_date(self, asset):
+        next_dates = [datetime.date.max]
+        next_dates += [l.date for l in asset.lines
+            if not l.move or l.move.state != 'posted']
+
+        return min(next_dates)
+
     def default_show_move(self, fields):
         Asset = Pool().get('account.asset')
         asset = Asset(Transaction().context['active_id'])
@@ -715,6 +740,8 @@ class UpdateAsset(Wizard):
             'date': datetime.date.today(),
             'depreciation_account': asset.product.account_depreciation_used.id,
             'counterpart_account': asset.product.account_expense_used.id,
+            'latest_move_date': self.get_latest_move_date(asset),
+            'next_depreciation_date': self.get_next_depreciation_date(asset),
             }
 
     def get_move(self, asset):
@@ -749,6 +776,10 @@ class UpdateAsset(Wizard):
         Asset = pool.get('account.asset')
 
         asset = Asset(Transaction().context['active_id'])
+        latest_move_date = self.show_move.latest_move_date
+        next_date = self.show_move.next_depreciation_date
+        if not (latest_move_date < self.show_move.date < next_date):
+            raise ValueError('The update move date is invalid')
         move = self.get_move(asset)
         move.lines = self.get_move_lines(asset)
         move.save()

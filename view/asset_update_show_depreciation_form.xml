@@ -6,6 +6,10 @@
     <field name="amount"/>
     <label name="date"/>
     <field name="date"/>
+    <label name="latest_move_date"/>
+    <field name="latest_move_date"/>
+    <label name="next_depreciation_date"/>
+    <field name="next_depreciation_date"/>
     <label name="depreciation_account"/>
     <field name="depreciation_account"/>
     <label name="counterpart_account"/>
