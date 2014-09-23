@@ -26,12 +26,12 @@ def find_focused_child(widget):
 
 def tab_compare(a, b):
     text_direction = gtk.widget_get_default_direction()
-    y1 = a.allocation.y + a.allocation.height / 2.
-    y2 = b.allocation.y + b.allocation.height / 2.
+    y1 = a.allocation.y + a.allocation.height // 2
+    y2 = b.allocation.y + b.allocation.height // 2
 
     if y1 == y2:
-        x1 = a.allocation.x + a.allocation.width / 2.
-        x2 = b.allocation.x + b.allocation.width / 2.
+        x1 = a.allocation.x + a.allocation.width // 2
+        x2 = b.allocation.x + b.allocation.width // 2
 
         if text_direction == gtk.TEXT_DIR_RTL:
             return (x2 > x1) - (x2 < x1)
