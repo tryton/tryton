@@ -461,7 +461,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
                     continue
                 res['untaxed_amount'] += getattr(line, 'amount', None) or 0
                 with Transaction().set_context(**context):
-                    taxes = Tax.compute(getattr(line, 'taxes', []) or [],
+                    taxes = Tax.compute(
+                        Tax.browse(getattr(line, 'taxes', []) or []),
                         getattr(line, 'unit_price', None) or Decimal('0.0'),
                         getattr(line, 'quantity', None) or 0.0,
                         date=self.accounting_date or self.invoice_date)
@@ -838,8 +839,8 @@ class Invoice(Workflow, ModelSQL, ModelView):
             if line.type != 'line':
                 continue
             with Transaction().set_context(**context):
-                tax_list = Tax.compute(line.taxes, line.unit_price,
-                    line.quantity,
+                tax_list = Tax.compute(Tax.browse(line.taxes),
+                    line.unit_price, line.quantity,
                     date=self.accounting_date or self.invoice_date)
             for tax in tax_list:
                 key, val = self._compute_tax(tax, self.type)
@@ -1742,7 +1743,8 @@ class InvoiceLine(ModelSQL, ModelView):
         context = self.invoice.get_tax_context()
         taxes_keys = []
         with Transaction().set_context(**context):
-            taxes = Tax.compute(self.taxes, self.unit_price, self.quantity)
+            taxes = Tax.compute(Tax.browse(self.taxes),
+                self.unit_price, self.quantity)
         for tax in taxes:
             key, _ = Invoice._compute_tax(tax, self.invoice.type)
             taxes_keys.append(key)
@@ -2019,7 +2021,8 @@ class InvoiceLine(ModelSQL, ModelView):
         if self.type != 'line':
             return res
         with Transaction().set_context(**context):
-            taxes = Tax.compute(self.taxes, self.unit_price, self.quantity)
+            taxes = Tax.compute(Tax.browse(self.taxes),
+                self.unit_price, self.quantity)
         for tax in taxes:
             if self.invoice.type in ('out_invoice', 'in_invoice'):
                 base_code_id = (tax['tax'].invoice_base_code.id
