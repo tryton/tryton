@@ -42,9 +42,18 @@ class Product:
     __name__ = 'product.product'
     attributes = fields.Dict('product.attribute', 'Attributes',
         domain=[
-            ('sets', '=',
-                Eval('_parent_template', {}).get('attribute_set', -1)),
+            ('sets', '=', Eval('_parent_template', {}).get('attribute_set',
+                    Eval('attribute_set', -1))),
             ],
         states={
-            'readonly': ~Eval('_parent_template', {}),
-            })
+            'readonly': (~Eval('attribute_set')
+                & ~Eval('_parent_template', {}).get('attribute_set')),
+            },
+        depends=['attribute_set'])
+    attribute_set = fields.Function(fields.Many2One('product.attribute.set',
+            'Set'), 'on_change_with_attribute_set')
+
+    @fields.depends('template')
+    def on_change_with_attribute_set(self, name=None):
+        if self.template and getattr(self.template, 'attribute_set', None):
+            return self.template.attribute_set.id
