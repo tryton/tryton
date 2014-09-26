@@ -72,7 +72,8 @@ class Period(ModelSQL, ModelView):
                     'move sequence of period "%s" because there are already '
                     'posted moves in the period.'),
                 'close_period_non_posted_move': ('You can not close period '
-                    '"%s" because there are non posted moves in this period.'),
+                    '"%(period)s" because there are non posted moves '
+                    '"%(move)s" in this period.'),
                 'periods_overlap': ('"%(first)s" and "%(second)s" periods '
                     'overlap.'),
                 'check_move_sequence': ('Period "%(first)s" and "%(second)s" '
@@ -286,13 +287,16 @@ class Period(ModelSQL, ModelView):
         JournalPeriod = pool.get('account.journal.period')
         Move = pool.get('account.move')
 
-        unposted_periods = Move.search([
+        unposted_moves = Move.search([
                 ('period', 'in', [p.id for p in periods]),
                 ('state', '!=', 'posted'),
                 ], limit=1)
-        if unposted_periods:
-            cls.raise_user_error('close_period_non_posted_move',
-                (unposted_periods[0].rec_name,))
+        if unposted_moves:
+            unposted_move, = unposted_moves
+            cls.raise_user_error('close_period_non_posted_move', {
+                    'period': unposted_move.period.rec_name,
+                    'move':  unposted_move.rec_name,
+                    })
         #First close the period to be sure
         #it will not have new journal.period created between.
         cls.write(periods, {
