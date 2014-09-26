@@ -198,7 +198,9 @@ class Move(ModelSQL, ModelView):
     def check_date(self):
         if (self.date < self.period.start_date
                 or self.date > self.period.end_date):
-            self.raise_user_error('date_outside_period', (self.rec_name,))
+            self.raise_user_error('date_outside_period', {
+                        'move': self.rec_name,
+                        })
 
     @classmethod
     def check_modify(cls, moves):
