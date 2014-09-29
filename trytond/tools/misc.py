@@ -369,8 +369,8 @@ def _compile_source(source):
 
 
 def safe_eval(source, data=None):
-    if '__subclasses__' in source:
-        raise ValueError('__subclasses__ not allowed')
+    if '__' in source:
+        raise ValueError('Double underscores not allowed')
 
     comp = _compile_source(source)
     return eval(comp, {'__builtins__': {

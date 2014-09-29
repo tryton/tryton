@@ -64,7 +64,7 @@ class ToolsTestCase(unittest.TestCase):
 
     def test0061safe_eval_getattr(self):
         'Attempt to get arround direct attr access'
-        self.assertRaises(NameError, safe_eval, "getattr(int, '__abs__')")
+        self.assertRaises(NameError, safe_eval, "getattr(int, 'real')")
 
     def test0062safe_eval_func_globals(self):
         'Attempt to access global enviroment where fun was defined'
