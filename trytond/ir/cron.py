@@ -6,9 +6,9 @@ from dateutil.relativedelta import relativedelta
 import traceback
 import sys
 import logging
+from ast import literal_eval
 
 from ..model import ModelView, ModelSQL, fields
-from ..tools import safe_eval
 from ..transaction import Transaction
 from ..pool import Pool
 from ..backend import TableHandler
@@ -149,7 +149,7 @@ class Cron(ModelSQL, ModelView):
         pool = Pool()
         Config = pool.get('ir.configuration')
         try:
-            args = (cron.args or []) and safe_eval(cron.args)
+            args = (cron.args or []) and literal_eval(cron.args)
             Model = pool.get(cron.model)
             with Transaction().set_user(cron.user.id):
                 getattr(Model, cron.function)(*args)
