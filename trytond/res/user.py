@@ -13,10 +13,11 @@ import time
 import datetime
 from itertools import groupby, ifilter
 from operator import attrgetter
+from ast import literal_eval
+
 
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, Button, StateTransition
-from ..tools import safe_eval
 from ..backend import TableHandler
 from ..transaction import Transaction
 from ..cache import Cache
@@ -327,7 +328,7 @@ class User(ModelSQL, ModelView):
                 date = date.replace(i, j)
             res['locale'] = {
                 'date': date,
-                'grouping': safe_eval(user.language.grouping),
+                'grouping': literal_eval(user.language.grouping),
                 'decimal_point': user.language.decimal_point,
                 'thousands_sep': user.language.thousands_sep,
             }

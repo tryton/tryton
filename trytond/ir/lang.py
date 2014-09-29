@@ -2,10 +2,11 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 import warnings
+from ast import literal_eval
 
 from ..model import ModelView, ModelSQL, fields
 from ..cache import Cache
-from ..tools import safe_eval, datetime_strftime
+from ..tools import datetime_strftime
 from ..transaction import Transaction
 from ..pool import Pool
 from ..config import CONFIG
@@ -124,7 +125,7 @@ class Lang(ModelSQL, ModelView):
         '''
         for lang in langs:
             try:
-                grouping = safe_eval(lang.grouping)
+                grouping = literal_eval(lang.grouping)
                 for i in grouping:
                     if not isinstance(i, int):
                         return False
@@ -215,10 +216,10 @@ class Lang(ModelSQL, ModelView):
 
         if monetary:
             thousands_sep = monetary.mon_thousands_sep
-            grouping = safe_eval(monetary.mon_grouping)
+            grouping = literal_eval(monetary.mon_grouping)
         else:
             thousands_sep = lang.thousands_sep
-            grouping = safe_eval(lang.grouping)
+            grouping = literal_eval(lang.grouping)
         if not grouping:
             return (s, 0)
         if s[-1] == ' ':
