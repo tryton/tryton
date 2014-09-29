@@ -10,7 +10,7 @@
     'name_es_ES': 'Stocks',
     'name_fr_FR': 'Gestion des stocks',
     'name_ru_RU': 'Управление складами',
-    'version': '2.4.11',
+    'version': '2.4.12',
     'author': 'B2CK',
     'email': 'info@b2ck.com',
     'website': 'http://www.tryton.org/',
