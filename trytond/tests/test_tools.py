@@ -82,10 +82,8 @@ class ToolsTestCase(unittest.TestCase):
         self.assertRaises(Exception, safe_eval, "open('test.txt', 'w')")
 
     def test0061safe_eval_getattr(self):
-        '''
-        Attempt to get arround direct attr access.
-        '''
-        self.assertRaises(Exception, safe_eval, "getattr(int, '__abs__')")
+        'Attempt to get arround direct attr access'
+        self.assertRaises(NameError, safe_eval, "getattr(int, 'real')")
 
     def test0062safe_eval_func_globals(self):
         '''
