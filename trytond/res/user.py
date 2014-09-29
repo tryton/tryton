@@ -10,9 +10,11 @@ except ImportError:
     hashlib = None
     import sha
 import time
+from ast import literal_eval
+
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, Button, StateTransition
-from ..tools import safe_eval, reduce_ids
+from ..tools import reduce_ids
 from ..backend import TableHandler
 from ..transaction import Transaction
 from ..cache import Cache
@@ -321,7 +323,7 @@ class User(ModelSQL, ModelView):
                 date = date.replace(i, j)
             res['locale'] = {
                 'date': date,
-                'grouping': safe_eval(user.language.grouping),
+                'grouping': literal_eval(user.language.grouping),
                 'decimal_point': user.language.decimal_point,
                 'thousands_sep': user.language.thousands_sep,
             }

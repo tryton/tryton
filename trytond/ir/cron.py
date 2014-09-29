@@ -7,8 +7,9 @@ import traceback
 import sys
 import logging
 from ..config import CONFIG
+from ast import literal_eval
+
 from ..model import ModelView, ModelSQL, fields
-from ..tools import safe_eval
 from ..transaction import Transaction
 from ..pool import Pool
 from ..backend import TableHandler
@@ -133,7 +134,7 @@ class Cron(ModelSQL, ModelView):
     def _callback(self, cron):
         pool = Pool()
         try:
-            args = (cron.args or []) and safe_eval(cron.args)
+            args = (cron.args or []) and literal_eval(cron.args)
             model_obj = pool.get(cron.model)
             with Transaction().set_user(cron.user.id):
                 getattr(model_obj, cron.function)(*args)

@@ -8,9 +8,11 @@ import socket
 import encodings
 import uuid
 import datetime
+from ast import literal_eval
+
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.tools import reduce_ids, safe_eval
+from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import CONFIG
@@ -300,7 +302,7 @@ class Collection(ModelSQL, ModelView):
                 if not model_obj:
                     return res
                 model_ids = model_obj.search(
-                        safe_eval(collection.domain or "[]"))
+                        literal_eval(collection.domain or "[]"))
                 for child in model_obj.browse(model_ids):
                     if '/' in child.rec_name:
                         continue
@@ -736,7 +738,7 @@ class Attachment(ModelSQL, ModelView):
             model_name = collection.model.model
             model_obj = pool.get(model_name)
             ids = list(resources[model_name])
-            domain = safe_eval(collection.domain or '[]')
+            domain = literal_eval(collection.domain)
             domain = [domain, ('id', 'in', ids)]
             record_ids = model_obj.search(domain)
             for record in model_obj.browse(record_ids):
