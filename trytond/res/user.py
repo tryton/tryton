@@ -9,6 +9,8 @@ import time
 import datetime
 from itertools import groupby, ifilter
 from operator import attrgetter
+from ast import literal_eval
+
 from sql import Literal
 from sql.conditionals import Coalesce
 from sql.aggregate import Count
@@ -344,7 +346,7 @@ class User(ModelSQL, ModelView):
                 date = date.replace(i, j)
             res['locale'] = {
                 'date': date,
-                'grouping': safe_eval(user.language.grouping),
+                'grouping': literal_eval(user.language.grouping),
                 'decimal_point': user.language.decimal_point,
                 'thousands_sep': user.language.thousands_sep,
             }
