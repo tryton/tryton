@@ -504,10 +504,10 @@ class DictWidget(Widget):
         if new_key_names:
             self.add_keys(list(new_key_names))
         for key, val in sorted(value.iteritems()):
-            if key not in self.fields:
-                self.add_line(key)
             if key not in self.keys:
                 continue
+            if key not in self.fields:
+                self.add_line(key)
             widget = self.fields[key]
             widget.set_value(val)
             widget.set_readonly(self._readonly)
