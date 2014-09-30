@@ -42,8 +42,8 @@ def parse_commandline():
     parser.add_argument("--cron", dest="cron", action="store_true",
         help="enable cron")
 
-    parser.epilog = ('The first time a database is initialized with "-i" admin'
-        ' password is read from file defined by TRYTONPASSFILE '
+    parser.epilog = ('The first time a database is initialized admin '
+        'password is read from file defined by TRYTONPASSFILE '
         'environment variable or interactively ask user.\n'
         'The config file can be specified in the TRYTOND_CONFIG '
         'environment variable.\n'
