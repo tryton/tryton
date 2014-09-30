@@ -1367,11 +1367,12 @@ class SaleLine(ModelSQL, ModelView):
             if old_invoice_line.id not in skip_ids:
                 quantity -= Uom.compute_qty(old_invoice_line.unit,
                     old_invoice_line.quantity, self.unit)
-        invoice_line.quantity = quantity
 
-        rounding = self.unit.rounding if self.unit else 0
-        if invoice_line.quantity < rounding:
+        rounding = self.unit.rounding if self.unit else 0.01
+        invoice_line.quantity = Uom.round(quantity, rounding)
+        if invoice_line.quantity <= 0:
             return []
+
         invoice_line.unit = self.unit
         invoice_line.product = self.product
         invoice_line.unit_price = self.unit_price
@@ -1442,8 +1443,11 @@ class SaleLine(ModelSQL, ModelView):
             if move.id not in skip_ids:
                 quantity -= Uom.compute_qty(move.uom, move.quantity,
                     self.unit)
-        if quantity < self.unit.rounding:
+
+        quantity = Uom.round(quantity, self.unit.rounding)
+        if quantity <= 0:
             return
+
         if not self.sale.party.customer_location:
             self.raise_user_error('customer_location_required', {
                     'sale': self.sale.rec_name,
