@@ -70,8 +70,14 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                         continue
                 else:
                     function_name = '%s_%s' % (attribute, field_name)
-                function = getattr(cls, function_name, None)
-                if function:
+                if not getattr(cls, function_name, None):
+                    continue
+                # Search depends on all parent class because field has been
+                # copied with the original definition
+                for parent_cls in cls.__mro__:
+                    function = getattr(parent_cls, function_name, None)
+                    if not function:
+                        continue
                     if getattr(function, 'depends', None):
                         setattr(field, attribute,
                             getattr(field, attribute) | function.depends)
