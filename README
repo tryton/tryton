@@ -13,8 +13,8 @@ Example of usage
 
     >>> from proteus import config, Model, Wizard, Report
 
-Creating a database
-~~~~~~~~~~~~~~~~~~~
+Configuration
+~~~~~~~~~~~~~
 
 Configuration to connect to a sqlite memory database using trytond as module.
 
