@@ -227,7 +227,7 @@ class Payment:
         return mandates
 
     def get_sepa_end_to_end_id(self, name):
-        return str(id)
+        return str(self.id)
 
     @classmethod
     def search_end_to_end_id(cls, name, domain):
