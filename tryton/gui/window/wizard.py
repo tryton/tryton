@@ -151,6 +151,9 @@ class Wizard(object):
         return button
 
     def _record_modified(self, screen, record):
+        self.update_buttons(record)
+
+    def update_buttons(self, record):
         for button in self.states.itervalues():
             button.state_set(record)
 
@@ -222,6 +225,7 @@ class Wizard(object):
 
         self.screen.new(default=False)
         self.screen.current_record.set_default(defaults)
+        self.update_buttons(self.screen.current_record)
         self.screen.set_cursor()
 
 
