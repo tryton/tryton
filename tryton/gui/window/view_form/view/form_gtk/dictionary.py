@@ -470,13 +470,14 @@ class DictWidget(Widget):
 
     def add_keys(self, keys):
         context = self.field.context_get(self.record)
+        domain = self.field.domain_get(self.record)
         batchlen = min(10, CONFIG['client.limit'])
         for i in xrange(0, len(keys), batchlen):
             sub_keys = keys[i:i + batchlen]
             try:
                 key_ids = RPCExecute('model', self.schema_model, 'search',
-                    [('name', 'in', sub_keys)], 0, CONFIG['client.limit'],
-                    None, context=context)
+                    [('name', 'in', sub_keys), domain], 0,
+                    CONFIG['client.limit'], None, context=context)
                 if not key_ids:
                     continue
                 values = RPCExecute('model', self.schema_model,
