@@ -40,6 +40,7 @@ languages = (
     'de_DE',
     'es_AR',
     'es_CO',
+    'es_EC',
     'es_ES',
     'fr_FR',
     'ja_JP',
