@@ -195,6 +195,7 @@ if __name__ == '__main__':
                 'de_DE',
                 'en_US',
                 'es_AR',
+                'es_EC',
                 'es_ES',
                 'es_CO',
                 'fr_FR',
