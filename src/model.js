@@ -1853,6 +1853,7 @@
             this.get_state_attrs(record).valid = result;
             return result;
         },
+        // TODO validate
         set_state: function(record, states) {
             this._set_default_value(record);
             Sao.field.One2Many._super.set_state.call(this, record, states);
