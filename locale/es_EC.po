@@ -1648,7 +1648,7 @@ msgstr "Código del Impuesto de la Factura"
 
 msgctxt "field:account.tax,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
-msgstr "Signo del Impuesto de la la Factura"
+msgstr "Signo del Impuesto de la Factura"
 
 msgctxt "field:account.tax,name:"
 msgid "Name"
@@ -2602,7 +2602,7 @@ msgstr "Situación"
 
 msgctxt "model:account.journal.type,name:journal_type_write_off"
 msgid "Write-Off"
-msgstr "Anulado"
+msgstr "Desajuste"
 
 msgctxt "model:account.journal.view,name:"
 msgid "Journal View"
@@ -2634,7 +2634,7 @@ msgstr "Imprimir Libro Diario General"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
-msgstr "Conciliar Líneas Perdidas"
+msgstr "Conciliar Líneas con Desajuste"
 
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
@@ -3946,7 +3946,7 @@ msgstr "Imprimir Libro Diario General"
 
 msgctxt "view:account.move.reconcile_lines.writeoff:"
 msgid "Write-Off"
-msgstr "Anulado"
+msgstr "Desajuste"
 
 msgctxt "view:account.move.reconciliation:"
 msgid "Reconciliation"
