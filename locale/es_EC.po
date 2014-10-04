@@ -48,7 +48,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr "Monedas"
+msgstr "Moneda"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
