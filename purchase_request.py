@@ -432,16 +432,19 @@ class PurchaseRequest(ModelSQL, ModelView):
                     if (not res_qty) or (current_qty < res_qty):
                         res_qties[product_id] = current_qty
 
-            with Transaction().set_context(stock_date_start=current_date,
+            if current_date == datetime.date.max:
+                break
+            current_date += datetime.timedelta(1)
+
+            # Update current quantities with next moves
+            with Transaction().set_context(forecast=True,
+                    stock_date_start=current_date,
                     stock_date_end=current_date):
                 pbl = Product.products_by_location([location_id],
                     product_ids, with_childs=True)
             for key, qty in pbl.iteritems():
                 _, product_id = key
                 current_qties[product_id] += qty
-            if current_date == datetime.date.max:
-                break
-            current_date += datetime.timedelta(1)
 
         return dict((x, (res_dates.get(x), res_qties.get(x)))
             for x in product_ids)
