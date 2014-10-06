@@ -96,6 +96,8 @@ class User:
         find = False
         try:
             con = ldap_connection()
+            if not con:
+                return
             for login in logins:
                 if cls.ldap_search_user(login, con, attrs=[]):
                     find = True
@@ -130,17 +132,18 @@ class User:
         if 'password' in values:
             try:
                 con = ldap_connection()
-                user = cls(Transaction().user)
-                uid = config.get(section, 'uid', 'uid')
-                users = cls.ldap_search_user(user.login, con, attrs=[uid])
-                if users and len(users) == 1:
-                    [(dn, attrs)] = users
-                    if con.simple_bind_s(dn, old_password):
-                        con.passwd_s(dn, old_password, values['password'])
-                        values = values.copy()
-                        del values['password']
-                    else:
-                        cls.raise_user_error('wrong_password')
+                if con:
+                    user = cls(Transaction().user)
+                    uid = config.get(section, 'uid', 'uid')
+                    users = cls.ldap_search_user(user.login, con, attrs=[uid])
+                    if users and len(users) == 1:
+                        [(dn, attrs)] = users
+                        if con.simple_bind_s(dn, old_password):
+                            con.passwd_s(dn, old_password, values['password'])
+                            values = values.copy()
+                            del values['password']
+                        else:
+                            cls.raise_user_error('wrong_password')
             except ldap.LDAPError, e:
                 logger.error('LDAPError: %s' % str(e))
         super(User, cls).set_preferences(values, old_password=old_password)
@@ -151,21 +154,22 @@ class User:
         LoginAttempt = pool.get('res.user.login.attempt')
         try:
             con = ldap_connection()
-            uid = config.get(section, 'uid', 'uid')
-            users = cls.ldap_search_user(login, con, attrs=[uid])
-            if users and len(users) == 1:
-                [(dn, attrs)] = users
-                if password and con.simple_bind_s(dn, password):
-                    user_id, _ = cls._get_login(login)
-                    if user_id:
-                        LoginAttempt.remove(login)
-                        return user_id
-                    elif config.getboolean(section, 'create_user'):
-                        user, = cls.create([{
-                                    'name': attrs.get(uid, [login])[0],
-                                    'login': login,
-                                    }])
-                        return user.id
+            if con:
+                uid = config.get(section, 'uid', 'uid')
+                users = cls.ldap_search_user(login, con, attrs=[uid])
+                if users and len(users) == 1:
+                    [(dn, attrs)] = users
+                    if password and con.simple_bind_s(dn, password):
+                        user_id, _ = cls._get_login(login)
+                        if user_id:
+                            LoginAttempt.remove(login)
+                            return user_id
+                        elif config.getboolean(section, 'create_user'):
+                            user, = cls.create([{
+                                        'name': attrs.get(uid, [login])[0],
+                                        'login': login,
+                                        }])
+                            return user.id
         except ldap.LDAPError, e:
             logger.error('LDAPError: %s' % str(e))
         return super(User, cls).get_login(login, password)
