@@ -35,11 +35,14 @@ class InvoiceLine:
 
     def on_change_product(self):
         new_values = super(InvoiceLine, self).on_change_product()
-        if (not self.product
-                or self.invoice.type not in ('in_invoice', 'in_credit_note')):
-            return new_values
+        if self.invoice and self.invoice.type:
+            type_ = self.invoice.type
+        else:
+            type_ = self.invoice_type
 
-        if self.product.type == 'assets' and self.product.depreciable:
+        if (self.product and type_ in ('in_invoice', 'in_credit_note')
+                and self.product.type == 'assets'
+                and self.product.depreciable):
             new_values['account'] = self.product.account_asset_used.id
             new_values['account.rec_name'] = \
                 self.product.account_asset_used.rec_name
