@@ -483,6 +483,12 @@ class ModuleInstallUpgrade(Wizard):
             ])
     config = StateAction('ir.act_module_config_wizard')
 
+    @classmethod
+    def check_access(cls):
+        # Use new cursor to prevent lock when installing modules
+        with Transaction().new_cursor():
+            super(ModuleInstallUpgrade, cls).check_access()
+
     @staticmethod
     def default_start(fields):
         pool = Pool()
