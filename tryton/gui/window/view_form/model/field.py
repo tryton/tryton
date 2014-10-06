@@ -905,6 +905,9 @@ class DictField(Field):
 
     _default = {}
 
+    def get(self, record):
+        return super(DictField, self).get(record) or self._default
+
     def get_client(self, record):
         return super(DictField, self).get_client(record) or self._default
 
