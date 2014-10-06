@@ -472,7 +472,9 @@ class ModelView(Model):
         # convert attributes into pyson
         encoder = PYSONEncoder()
         for attr in ('states', 'domain', 'spell', 'colors'):
-            if element.get(attr):
+            if (element.get(attr)
+                    # Avoid double evaluation from inherit with different model
+                    and '__' not in element.get(attr)):
                 element.set(attr, encoder.encode(safe_eval(element.get(attr),
                     CONTEXT)))
 
