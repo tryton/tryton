@@ -172,21 +172,22 @@ class Production:
                     shortages[product_id].append((current_date, quantity))
                     current_qties[product_id] += quantity
 
-            # Update current quantities
-            with Transaction().set_context(stock_date_start=current_date,
-                    stock_date_end=current_date):
-                pbl = Product.products_by_location([location_id],
-                    product_ids, with_childs=True, skip_zero=False)
-            for key, qty in pbl.iteritems():
-                _, product_id = key
-                current_qties[product_id] += qty
-
             # Remove product with smaller period
             while (products_period
                     and products_period[0][0] <= (current_date - date).days):
                 _, product = products_period.pop(0)
                 product_ids.remove(product.id)
             current_date += datetime.timedelta(1)
+
+            # Update current quantities with next moves
+            with Transaction().set_context(forecast=True,
+                    stock_date_start=current_date,
+                    stock_date_end=current_date):
+                pbl = Product.products_by_location([location_id],
+                    product_ids, with_childs=True, skip_zero=False)
+            for key, qty in pbl.iteritems():
+                _, product_id = key
+                current_qties[product_id] += qty
 
         return shortages
 
