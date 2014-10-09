@@ -1387,14 +1387,6 @@ msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
 msgstr "Creado por Usuario"
 
-msgctxt "field:ir.model.data,date_init:"
-msgid "Init Date"
-msgstr "Fecha de Inicio"
-
-msgctxt "field:ir.model.data,date_update:"
-msgid "Update Date"
-msgstr "Fecha de Actualización"
-
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
 msgstr "ID del recurso"
@@ -1405,7 +1397,7 @@ msgstr "Identificador en el Sistema de Archivos"
 
 msgctxt "field:ir.model.data,fs_values:"
 msgid "Values on File System"
-msgstr ""
+msgstr "Valores del Sistema de Archivos"
 
 msgctxt "field:ir.model.data,id:"
 msgid "ID"
@@ -1425,7 +1417,7 @@ msgstr "No Actualizar"
 
 msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
-msgstr ""
+msgstr "Fuera de Sincronización"
 
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
@@ -2353,7 +2345,7 @@ msgstr "Acción"
 
 msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
-msgstr ""
+msgstr "Teclas de Acción"
 
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
@@ -2965,7 +2957,7 @@ msgstr "Todo"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
-msgstr ""
+msgstr "Fuera de Sincronización"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -2973,7 +2965,7 @@ msgstr "Acción en vista de ventana de acción"
 
 msgctxt "model:ir.action.keyword,name:"
 msgid "Action keyword"
-msgstr "Teclas de acción "
+msgstr "Tecla de acción "
 
 msgctxt "model:ir.action.report,name:"
 msgid "Action report"
@@ -3750,11 +3742,11 @@ msgstr "Botones"
 
 msgctxt "view:ir.model.data:"
 msgid "Model Data"
-msgstr ""
+msgstr "Datos de Modelo"
 
 msgctxt "view:ir.model.data:"
 msgid "Sync"
-msgstr ""
+msgstr "Sincronizar"
 
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"
