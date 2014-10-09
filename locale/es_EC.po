@@ -56,7 +56,7 @@ msgstr "Línea"
 
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Fecha Vencimiento"
+msgstr "Fecha de Vencimiento"
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
@@ -232,7 +232,7 @@ msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Cobranzas"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
@@ -248,11 +248,11 @@ msgstr "Procedimientos de Cobro"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr "Cobranzas"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Cobro"
+msgstr "Cobranzas"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
@@ -292,7 +292,7 @@ msgstr "Procesar Cobro"
 
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "Procesar Cobro?"
+msgstr "¿Procesar Cobro?"
 
 msgctxt "view:account.dunning:"
 msgid "Dunning"
