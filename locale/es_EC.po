@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "model:ir.action,name:act_invoice_line_in_credit_note_form"
 msgid "Supplier Credit Note Lines"
-msgstr "Líneas de Nota Crédito de Proveedor"
+msgstr "Líneas de Nota de Crédito de Proveedor"
 
 msgctxt "model:ir.action,name:act_invoice_line_in_invoice_form"
 msgid "Supplier Invoice Lines"
