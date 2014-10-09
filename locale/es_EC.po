@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" ha alcanzado el limite del valor de crédito (%s)."
+msgstr "\"%s\" ha alcanzado el valor límite de crédito (%s)."
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" ha alcanzado el limite de crédito reclamado (%s)."
+msgstr "\"%s\" ha alcanzado el límite de crédito de cobranzas (%s)."
 
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
@@ -24,11 +24,11 @@ msgstr "Límite de Crédito"
 
 msgctxt "field:party.party,credit_amount:"
 msgid "Credit Amount"
-msgstr "Cantidad de Crédito"
+msgstr "Valor de Crédito"
 
 msgctxt "field:party.party,credit_limit_amount:"
 msgid "Credit Limit Amount"
-msgstr "Cantidad del Límite de Crédito"
+msgstr "Valor Límite de Crédito"
 
 msgctxt "field:party.party,credit_limit_digits:"
 msgid "Currency Digits"
@@ -40,7 +40,7 @@ msgstr "Ha alcanzado el límite de crédito"
 
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Cuenta de Límite de Crédito"
+msgstr "Límite de Crédito Contable"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"
