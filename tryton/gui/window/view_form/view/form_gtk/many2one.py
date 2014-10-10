@@ -257,9 +257,12 @@ class Many2One(Widget):
                 position = self.wid_text.get_position()
                 self.field.set_client(self.record,
                     self.value_from_id(None, ''))
-                # Restore text and position after display
-                self.wid_text.set_text(text)
-                self.wid_text.set_position(position)
+                # The value of the field could be different of None
+                # in such case, the original text should not be restored
+                if not self.wid_text.get_text():
+                    # Restore text and position after display
+                    self.wid_text.set_text(text)
+                    self.wid_text.set_position(position)
             gobject.idle_add(clean)
         return False
 
