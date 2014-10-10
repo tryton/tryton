@@ -1807,7 +1807,7 @@ class InvoiceLine(ModelSQL, ModelView):
 
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
-        elif self.invoice_type:
+        else:
             type_ = self.invoice_type
         if type_ in ('in_invoice', 'in_credit_note'):
             if company and currency:
