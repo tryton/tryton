@@ -2195,6 +2195,7 @@
             parent = jQuery(parent);
         }
         jQuery(element).dialog('option', 'width', parent.width() * 0.8);
+        jQuery(element).dialog('option', 'height', parent.height());
         jQuery(element).dialog('option', 'position',{
                 my: 'center top',
                 at: 'center top',
