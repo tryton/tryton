@@ -510,26 +510,32 @@
             if (this.screen.current_record) {
                 current_id = this.screen.current_record.id;
             }
-            var set_revision = function(revision) {
-                if (revision) {
-                    // Add a millisecond as microseconds are truncated
-                    revision.setMilliseconds(revision.getMilliseconds() + 1);
-                }
-                if (revision != this.screen.context._datetime) {
-                    // Update screen context that will be propagated by
-                    // recreating new group
-                    this.screen.context._datetime = revision;
-                    if (this.screen.current_view.view_type != 'form') {
-                        this.screen.search_filter(
-                                this.screen.screen_container
-                                .search_entry.val());
-                    } else {
-                        // Test if record exist in revisions
-                        this.screen.new_group([current_id]);
+            var set_revision = function(revisions) {
+                return function(revision) {
+                    if (revision) {
+                        // Add a millisecond as microseconds are truncated
+                        revision.setMilliseconds(revision.getMilliseconds() + 1);
                     }
-                    this.screen.display();
-                    this.update_revision();
-                }
+                    if ((this.screen.current_view.view_type == 'form') &&
+                            (revision < revisions[revisions.length - 1][0])) {
+                        revision = revisions[revisions.length - 1][0];
+                    }
+                    if (revision != this.screen.context._datetime) {
+                        // Update screen context that will be propagated by
+                        // recreating new group
+                        this.screen.context._datetime = revision;
+                        if (this.screen.current_view.view_type != 'form') {
+                            this.screen.search_filter(
+                                    this.screen.screen_container
+                                    .search_entry.val());
+                        } else {
+                            // Test if record exist in revisions
+                            this.screen.new_group([current_id]);
+                        }
+                        this.screen.display();
+                        this.update_revision();
+                    }
+                }.bind(this);
             }.bind(this);
             this.modified_save().done(function() {
                 var ids = this.screen.current_view.selected_records().map(
@@ -539,7 +545,7 @@
                 this.screen.model.execute('history_revisions',
                     [ids], this.screen.context)
                     .then(function(revisions) {
-                        new Sao.Window.Revision(revisions, set_revision);
+                        new Sao.Window.Revision(revisions, set_revision(revisions));
                     });
             }.bind(this));
         },
