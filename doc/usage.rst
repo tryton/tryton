@@ -616,10 +616,10 @@ Search:
 View Logs...:
   Shows generic information of the current record.
 
-.. _Toolbar-Go_to_Record_ID:
+.. _Toolbar-Show revisions:
 
-Go to Record ID...:
-  Opens specific record id in the current view.
+Show revisions...:
+  Reload the current view/record at a specific revision.
 
 .. _Toolbar-Close:
 
