@@ -114,7 +114,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_posted">
             <field name="name">Posted</field>
             <field name="sequence" eval="30"/>
-            <field name="domain">[('state', '=', 'post')]</field>
+            <field name="domain">[('state', '=', 'posted')]</field>
             <field name="act_window" ref="act_invoice_out_credit_note_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_invoice_out_credit_note_domain_all">
