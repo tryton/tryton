@@ -52,15 +52,20 @@ class Template:
             cls.account_expense.depends.append('purchasable')
 
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
-    def on_change_with_purchase_uom(self):
+    def on_change_default_uom(self):
+        try:
+            changes = super(Template, self).on_change_default_uom()
+        except AttributeError:
+            changes = {}
         if self.default_uom:
             if self.purchase_uom:
                 if self.default_uom.category == self.purchase_uom.category:
-                    return self.purchase_uom.id
+                    changes['purchase_uom'] = self.purchase_uom.id
                 else:
-                    return self.default_uom.id
+                    changes['purchase_uom'] = self.default_uom.id
             else:
-                return self.default_uom.id
+                changes['purchase_uom'] = self.default_uom.id
+        return changes
 
     @classmethod
     def write(cls, *args):
