@@ -22,11 +22,11 @@ msgstr "El servicio VIES no está disponible, inténtelo de nuevo más tarde."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "No puede modificar el tercero de los medios de contacto \"%s\"."
+msgstr "No puede modificar el tercero del medio de contacto \"%s\"."
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "El RUC \"%(vat)s\" del tercero \"%(party)s\" no es válido."
+msgstr "El número de RUC \"%(vat)s\" del tercero \"%(party)s\" no es válido."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -150,7 +150,7 @@ msgstr "ID"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Terceros Incorrectos"
+msgstr "Terceros Erróneos"
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
@@ -397,7 +397,7 @@ msgstr ""
 
 msgctxt "help:party.party,vat_number:"
 msgid "Value Added Tax number"
-msgstr "Número de RUC"
+msgstr "Número de Registro Único de Contribuyente"
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -497,7 +497,7 @@ msgstr "Tercero"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Tercero - Categoría"
+msgstr "Terceros - Categoría"
 
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
