@@ -192,7 +192,7 @@ class TrytondConfig(Config):
     'Configuration for trytond'
 
     def __init__(self, database=None, user='admin', language='en_US',
-            password='', config_file=None):
+            password='', config_file=os.environ.get('TRYTOND_CONFIG')):
         super(TrytondConfig, self).__init__()
         if not database:
             database = os.environ.get('TRYTOND_DATABASE_URI')
