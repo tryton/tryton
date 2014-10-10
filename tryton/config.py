@@ -10,6 +10,7 @@ import logging
 import sys
 import locale
 import gtk
+import site
 
 from tryton.exceptions import TrytonError
 
@@ -179,9 +180,11 @@ else:
     CURRENT_DIR = os.path.abspath(os.path.normpath(os.path.join(
         unicode(os.path.dirname(__file__), sys.getfilesystemencoding()),
         '..')))
-PIXMAPS_DIR = os.path.join(CURRENT_DIR, 'share', 'pixmaps', 'tryton')
-if not os.path.isdir(PIXMAPS_DIR):
-    PIXMAPS_DIR = os.path.join(sys.prefix, 'share', 'pixmaps', 'tryton')
+
+for dir in [CURRENT_DIR, site.USER_BASE, sys.prefix]:
+    PIXMAPS_DIR = os.path.join(dir, 'share', 'pixmaps', 'tryton')
+    if os.path.isdir(PIXMAPS_DIR):
+        break
 
 TRYTON_ICON = gtk.gdk.pixbuf_new_from_file(
         os.path.join(PIXMAPS_DIR, 'tryton-icon.png').encode('utf-8'))
