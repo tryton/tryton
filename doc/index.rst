@@ -83,6 +83,7 @@ An Account is defined by these fields:
 - Second currency: Force all moves for the account to have this
   secondary currency.
 - Reconcile: Allow move lines of this account to be reconciled.
+- Party Required: Make party required for move lines of this account.
 - Taxes: This list of tax auto-complete move with new moves lines
   corresponding to thoses taxes if the user create a line linked to
   the current account and if the journal type is *Expense* or
