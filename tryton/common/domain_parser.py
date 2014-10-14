@@ -117,10 +117,18 @@ def quote(value):
     "Quote string if needed"
     if not isinstance(value, basestring):
         return value
+    if '"' in value:
+        value = value.replace('"', '\\"')
     for test in (':', ' ', '(', ')') + OPERATORS:
         if test in value:
             return '"%s"' % value
     return value
+
+
+def test_quote():
+    assert quote('test') == 'test'
+    assert quote('foo bar') == '"foo bar"'
+    assert quote('"foo"') == '\\\"foo\\\"'
 
 
 def ending_clause(domain, deep=0):
@@ -1090,6 +1098,9 @@ def test_group():
         ]
     assert rlist(dom.group(udlex(u'Name:'))) == [
         ('Name', None, ''),
+        ]
+    assert rlist(dom.group(udlex(u'Name: \\"foo\\"'))) == [
+        ('Name', None, '"foo"'),
         ]
 
 
