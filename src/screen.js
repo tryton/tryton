@@ -24,7 +24,9 @@
                 'label': 'Filters' // TODO translation
             });
             tr.append(jQuery('<td/>').append(this.filter_button));
-            this.search_entry = jQuery('<input/>');
+            this.search_entry = jQuery('<input/>', {
+                'class': 'ui-widget ui-widget-content ui-corner-all'
+            });
             this.search_entry.keypress(function(e) {
                 if (e.which == 13) {
                     this.do_search();

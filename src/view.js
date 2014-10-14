@@ -91,7 +91,7 @@
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_SINGLE);
             this.el = jQuery('<div/>', {
-                'class': 'treeview'
+                'class': 'treeview ui-widget'
             });
             this.expanded = {};
             this.children_field = children_field;
@@ -111,14 +111,16 @@
                 'class': 'tree'
             });
             this.el.append(this.table);
-            var thead = jQuery('<thead/>');
+            var thead = jQuery('<thead/>', {
+                'class': 'ui-widget ui-widget-header'
+            });
             this.table.append(thead);
             var tr = jQuery('<tr/>');
             if (this.selection_mode != Sao.common.SELECTION_NONE) {
                 var th = jQuery('<th/>');
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
-                    'class': 'selection'
+                    'class': 'selection ui-widget ui-widget-content'
                 });
                 this.selection.change(this.selection_changed.bind(this));
                 th.append(this.selection);
@@ -127,19 +129,21 @@
             thead.append(tr);
             this.columns.forEach(function(column) {
                 th = jQuery('<th/>', {
-                    'text': column.attributes.string
+                    text: column.attributes.string
                 });
                 if (column.attributes.tree_invisible) {
                     th.hide();
                 }
                 tr.append(th);
             });
-            this.tbody = jQuery('<tbody/>');
+            this.tbody = jQuery('<tbody/>', {
+                'class': 'ui-widget'
+            });
             this.table.append(this.tbody);
 
             // Footer for more
             var footer = jQuery('<div/>', {
-                'class': 'treefooter'
+                'class': 'treefooter ui-widget'
             });
             this.more = jQuery('<button/>').button({
                 'label': 'More' // TODO translation
@@ -469,7 +473,7 @@
                 this.el.append(td);
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
-                    'class': 'selection'
+                    'class': 'selection ui-widget ui-widget-content'
                 });
                 this.selection.change(this.selection_changed.bind(this));
                 td.append(this.selection);
@@ -477,7 +481,9 @@
 
             var depth = this.path.split('.').length;
             for (var i = 0; i < this.tree.columns.length; i++) {
-                td = jQuery('<td/>');
+                td = jQuery('<td/>', {
+                    'class': 'ui-widget'
+                });
                 td.one('click', {column: i, td: td},
                         this.select_row.bind(this));
                 var widgets = this.build_widgets();
@@ -1650,7 +1656,7 @@
                 'class': 'form-separator'
             });
             if (text) {
-                this.el.append(jQuery('<p/>', {
+                this.el.append(jQuery('<span/>', {
                     'text': text
                 }));
             }
@@ -1851,6 +1857,7 @@
         set_color: function(color) {
             var el = this._get_color_el();
             el.css('background-color', color);
+            el.css('background-image', 'none'); // Remove from ui-widget-content
         },
         set_invisible: function(invisible) {
             this.visible = !invisible;
@@ -1869,7 +1876,8 @@
                 attributes);
             this.el = jQuery('<input/>', {
                 'type': 'input',
-                'class': this.class_
+                'class': this.class_ +
+                ' ui-widget ui-widget-content ui-corner-all'
             });
             this.el.change(this.focus_out.bind(this));
         },
@@ -1902,10 +1910,11 @@
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_
+                'class': this.class_ + ' ui-widget'
             });
             this.date = jQuery('<input/>', {
-                'type': 'input'
+                'type': 'input',
+                'class': 'ui-widget-content ui-corner-all'
             });
             this.el.append(jQuery('<div/>').append(this.date));
             this.date.datepicker({
@@ -2012,10 +2021,14 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Selection._super.init.call(this, field_name, model,
                 attributes);
-            this.el = jQuery('<select/>', {
-                'class': this.class_
+            this.el = jQuery('<div/>', {
+                'class': this.class_ + ' ui-widget'
             });
-            this.el.change(this.focus_out.bind(this));
+            this.select = jQuery('<select/>', {
+                'class': 'ui-widget-content ui-corner-all'
+            });
+            this.el.append(this.select);
+            this.select.change(this.focus_out.bind(this));
             Sao.common.selection_mixin.init.call(this);
             this.init_selection();
         },
@@ -2033,7 +2046,7 @@
                 }.bind(this));
         },
         set_selection: function(selection) {
-            var select = this.el;
+            var select = this.select;
             select.empty();
             selection.forEach(function(e) {
                 select.append(jQuery('<option/>', {
@@ -2045,7 +2058,7 @@
         display_update_selection: function(record, field) {
             this.update_selection(record, field, function() {
                 if (!field) {
-                    this.el.val('');
+                    this.select.val('');
                     return;
                 }
                 var value = field.get(record);
@@ -2060,7 +2073,7 @@
                     prm = Sao.common.selection_mixin.get_inactive_selection
                         .call(this, value);
                     prm.done(function(inactive) {
-                        this.el.append(jQuery('<option/>', {
+                        this.select.append(jQuery('<option/>', {
                             value: inactive[0],
                             text: inactive[1],
                             disabled: true
@@ -2073,7 +2086,7 @@
                     if (value === null) {
                         value = '';
                     }
-                    this.el.val('' + value);
+                    this.select.val('' + value);
                 }.bind(this));
             }.bind(this));
         },
@@ -2082,7 +2095,7 @@
             this.display_update_selection(record, field);
         },
         value_get: function() {
-            var val = this.el.val();
+            var val = this.select.val();
             // Some selection widgets use integer instead of string
             var is_integer = (this.selection || []).some(function(e) {
                 return typeof(e[0]) == 'number';
@@ -2092,7 +2105,7 @@
                     return null;
                 } else if (val === null) {
                     // The selected value is disabled
-                    val = this.el.find(':selected').attr('value');
+                    val = this.select.find(':selected').attr('value');
                 }
                 return parseInt(val, 10);
             }
@@ -2130,7 +2143,7 @@
                 attributes);
             this.el = jQuery('<input/>', {
                 'type': 'checkbox',
-                'class': this.class_
+                'class': this.class_ + 'ui-widget ui-widget-content'
             });
             this.el.change(this.focus_out.bind(this));
         },
@@ -2154,7 +2167,8 @@
             Sao.View.Form.Text._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<textarea/>', {
-                'class': this.class_
+                'class': this.class_ +
+                'ui-widget ui-widget-content ui-corner-all'
             });
             this.el.change(this.focus_out.bind(this));
         },
@@ -2179,10 +2193,11 @@
             Sao.View.Form.Many2One._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_
+                'class': this.class_ + ' ui-widget'
             });
             this.entry = jQuery('<input/>', {
-                'type': 'input'
+                'type': 'input',
+                'class': 'ui-widget-content ui-corner-all'
             });
             this.entry.on('keyup', this.key_press.bind(this));
             this.el.append(jQuery('<div/>').append(this.entry));
@@ -2433,7 +2448,9 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Reference._super.init.call(this, field_name, model,
                 attributes);
-            this.select = jQuery('<select/>');
+            this.select = jQuery('<select/>', {
+                'class': 'ui-widget-content ui-corner-all'
+            });
             this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
             this.select.change(this.select_changed.bind(this));
@@ -2564,10 +2581,10 @@
             this._readonly = true;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_
+                'class': this.class_ + ' ui-widget'
             });
             this.menu = jQuery('<div/>', {
-                'class': this.class_ + '-menu'
+                'class': this.class_ + '-menu ui-widget-header'
             });
             this.el.append(this.menu);
 
@@ -2584,7 +2601,8 @@
 
             if (attributes.add_remove) {
                 this.wid_text = jQuery('<input/>', {
-                    type: 'input'
+                    type: 'input',
+                    'class': 'ui-widget ui-widget-content ui-corner-all'
                 });
                 // TODO add completion
                 toolbar.append(this.wid_text);
@@ -2687,7 +2705,7 @@
             toolbar.append(this.but_switch);
 
             this.content = jQuery('<div/>', {
-                'class': this.class_ + '-content'
+                'class': this.class_ + '-content ui-widget-content'
             });
             this.el.append(this.content);
 
@@ -2886,10 +2904,10 @@
             this._readonly = true;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_
+                'class': this.class_ + ' ui-widget'
             });
             this.menu = jQuery('<div/>', {
-                'class': this.class_ + '-menu'
+                'class': this.class_ + '-menu ui-widget-header'
             });
             this.el.append(this.menu);
 
@@ -2905,7 +2923,8 @@
             this.menu.append(toolbar);
 
             this.entry = jQuery('<input/>', {
-                type: 'input'
+                type: 'input',
+                'class': 'ui-widget ui-widget-content ui-corner-all'
             });
             this.entry.on('keyup', this.key_press.bind(this));
             toolbar.append(this.entry);
@@ -2933,7 +2952,7 @@
             toolbar.append(this.but_remove);
 
             this.content = jQuery('<div/>', {
-                'class': this.class_ + '-content'
+                'class': this.class_ + '-content ui-widget-content'
             });
             this.el.append(this.content);
 
@@ -3085,21 +3104,23 @@
             this.filename = attributes.filename || null;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_
+                'class': this.class_ + 'ui-widget'
             });
 
             var inputs = jQuery('<div/>');
             this.el.append(inputs);
             if (this.filename && attributes.filename_visible) {
                 this.text = jQuery('<input/>', {
-                    type: 'input'
+                    type: 'input',
+                    'class': 'ui-widget-content ui-corner-all'
                 });
                 this.text.change(this.focus_out.bind(this));
                 this.text.on('keyup', this.key_press.bind(this));
                 inputs.append(this.text);
             }
             this.size = jQuery('<input/>', {
-                type: 'input'
+                type: 'input',
+                'class': 'ui-widget ui-widget-content ui-corner-all'
             });
             inputs.append(this.size);
 

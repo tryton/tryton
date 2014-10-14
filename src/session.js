@@ -120,7 +120,7 @@
         var login = cookie.login;
         var database = window.location.hash.replace(
                 /^(#(!|))/, '') || null;
-        var database_div, database_select;
+        var database_select;
         var login_div, login_input, password_input;
 
         var ok_func = function() {
@@ -162,37 +162,37 @@
             'class': 'login'
         });
         if (!database) {
-            login_div.append(jQuery('<label/>', {
-                'text': 'Database:' // TODO translation
-            }));
             database_select = jQuery('<select/>');
-            login_div.append(database_select);
+            login_div.append(jQuery('<div/>')
+                    .append(jQuery('<label/>', {
+                        'text': 'Database:' // TODO translation
+                    }))
+                    .append(database_select));
             fill_database();
-            login_div.append(jQuery('<br/>'));
         }
 
-        login_div.append(jQuery('<label/>', {
-            'text': 'Login:' // TODO translation
-        }));
         login_input = jQuery('<input/>', {
             'type': 'input',
                     'id': 'login',
                     'val': login
         });
+        login_div.append(jQuery('<div/>')
+                .append( jQuery('<label/>', {
+                    'text': 'Login:' // TODO translation
+                }))
+                .append(login_input));
         login_input.keydown(keydown);
-        login_div.append(login_input);
-        login_div.append(jQuery('<br/>'));
 
-        login_div.append(jQuery('<label/>', {
-            'text': 'Password:'
-        }));
         password_input = jQuery('<input/>', {
             'type': 'password',
                        'id': 'password'
         });
+        login_div.append(jQuery('<div/>')
+                .append(jQuery('<label/>', {
+                    'text': 'Password:' // TODO translation
+                }))
+                .append(password_input));
         password_input.keydown(keydown);
-        login_div.append(password_input);
-        login_div.append(jQuery('<br/>'));
 
         login_div.dialog({
             'title': 'Login', // TODO translation

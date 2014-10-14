@@ -16,6 +16,20 @@ body {
     font-size: @small-font-size;
 }
 
+.login div {
+    display: table-row;
+
+    & label {
+        text-align: right;
+        display: table-cell;
+    }
+
+    & input {
+        text-align: left;
+        display: table-cell;
+    }
+}
+
 #menu {
     vertical-align: top;
     padding-right: @medium-padding;
@@ -133,7 +147,7 @@ body {
         }
         & .form-one2many-string, .form-one2many-label,
         .form-many2many-string, .form-many2many-label {
-            margin-top: 8px;
+            margin: 8px;
         }
     }
     & .form-multiselection {
