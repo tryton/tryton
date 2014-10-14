@@ -1369,7 +1369,7 @@
             if (factor === undefined) {
                 factor = 1;
             }
-            var value = record._values[this.name];
+            var value = this.get(record);
             if (value !== null) {
                 var digits = this.digits(record, factor);
                 return (value * factor).toFixed(digits[1]);
