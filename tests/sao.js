@@ -919,6 +919,9 @@
         ['Name: = Name: Doe', [
             ['Name', '=', null],
             ['Name', null, 'Doe']
+            ]],
+        ['Name: \\"foo\\"', [
+            ['Name', null, '"foo"']
             ]]
         ].forEach(function(test) {
             var value = test[0];
@@ -963,6 +966,21 @@
             var result = test[1];
             QUnit.ok(Sao.common.compare(parser.operatorize(value), result),
                 'operatorize(' + JSON.stringify(value) + ')');
+        });
+    });
+
+    QUnit.test('DomainParser.quote', function() {
+        var parser = new Sao.common.DomainParser();
+
+        [
+        ['test', 'test'],
+        ['foo bar', '"foo bar"'],
+        ['"foo"', '\\\"foo\\\"']
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(parser.quote(value), result),
+                'quote(' + JSON.stringify(value) + ')');
         });
     });
 

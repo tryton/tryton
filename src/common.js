@@ -1003,6 +1003,9 @@
             if (typeof value != 'string') {
                 return value;
             }
+            if (value.contains('"')) {
+                value = value.replace(new RegExp('"', 'g'), '\\"');
+            }
             var tests = [':', ' ', '(', ')'].concat(this.OPERATORS);
             for (var i = 0; i < tests.length; i++) {
                 var test = tests[i];
