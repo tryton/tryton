@@ -844,7 +844,7 @@
                     this.tree_states[parent_][view.children_field || null] = [
                         timestamp, paths, selected_paths];
                     if (store && view.attributes.tree_state) {
-                        tree_state_model = new Sao.Model(
+                        var tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
                         tree_state_model.execute('set', [
                                 this.model_name,
