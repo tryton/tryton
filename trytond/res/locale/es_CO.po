@@ -8,7 +8,7 @@ msgstr "El nombre del grupo debe ser único!"
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
-msgstr "¡Contraseña incorrecta!"
+msgstr "Contraseña incorrecta!"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
@@ -394,7 +394,7 @@ msgstr "Barra de Estado"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
-msgstr "Avisos"
+msgstr "Advertencias"
 
 msgctxt "field:res.user,write_date:"
 msgid "Write Date"
@@ -478,7 +478,7 @@ msgstr "Fecha de Creación"
 
 msgctxt "field:res.user.login.attempt,create_uid:"
 msgid "Create User"
-msgstr "Usuario creación"
+msgstr "Creado por Usuario"
 
 msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
@@ -618,11 +618,11 @@ msgstr "Administrador"
 
 msgctxt "model:res.user,name:user_trigger"
 msgid "Cron Trigger"
-msgstr "Disparador del Programador de tareas"
+msgstr "Disparador del Programador de Tareas"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
-msgstr "res.user-ir.action"
+msgstr "Usuario - Acción"
 
 msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
@@ -638,7 +638,7 @@ msgstr "Intento de Login"
 
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
-msgstr "Aviso a Usuario"
+msgstr "Advertencia a Usuario"
 
 msgctxt "view:ir.module.module:"
 msgid "Cancel Installation"
