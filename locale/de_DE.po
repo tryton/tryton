@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
 msgid "There is no list price on work \"%s\"."
-msgstr "Fehlender Listenpreis für Arbeit \"%s\"."
+msgstr "Fehlender Listenpreis für Aufgabe \"%s\"."
 
 msgctxt "error:project.work:"
 msgid "There is no party on work \"%s\"."
-msgstr "Fehlende Partei für Arbeit \"%s\"."
+msgstr "Fehlende Partei für Aufgabe \"%s\"."
 
 msgctxt "error:project.work:"
 msgid "There is no product on work \"%s\"."
-msgstr "Fehlender Artikel für Arbeit \"%s\"."
+msgstr "Fehlender Artikel für Aufgabe \"%s\"."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
@@ -56,7 +56,7 @@ msgstr "Rechnungsausgang"
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr "Projekte Fakturierung"
+msgstr "Projekt Fakturierung"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"
@@ -64,11 +64,11 @@ msgstr "Manuell"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Effort"
-msgstr "Nach Arbeitsaufwand"
+msgstr "Nach veranschlagtem Aufwand"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Timesheet"
-msgstr "Nach Zeitaufwand"
+msgstr "Nach erfasstem Aufwand"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "Manual"
@@ -76,12 +76,12 @@ msgstr "Manuell"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Effort"
-msgstr "Nach Arbeitsaufwand"
+msgstr "Nach veranschlagtem Aufwand"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
-msgstr "Nach Zeitaufwand"
+msgstr "Nach erfasstem Aufwand"
 
 msgctxt "view:project.work:"
 msgid "Invoice"
-msgstr "Rechnung"
+msgstr "Rechnung erstellen"
