@@ -90,6 +90,46 @@ msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr "Ville"
+
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr "Pays"
+
+msgctxt "field:country.zip,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:country.zip,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:country.zip,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:country.zip,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Subdivision"
+
+msgctxt "field:country.zip,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:country.zip,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr "Code postal"
+
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
@@ -20494,9 +20534,17 @@ msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
 msgstr "Mashonaland occidental"
 
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr "Code postal"
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Pays"
+
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
+msgstr "Code postal"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -20917,3 +20965,7 @@ msgstr "Subdivision"
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Subdivisions"
+
+msgctxt "view:country.zip:"
+msgid "Zip"
+msgstr "Code postal"
