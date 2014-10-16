@@ -5,7 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:product.price_list.line:"
 msgid "Invalid formula \"%(formula)s\" in price list line \"%(line)s\"."
 msgstr ""
-"La formule \"%(formula)s\" de la ligne de liste de prix \"%(line)s\" est "
+"La formule « %(formula)s » de la ligne de liste de prix « %(line)s » est "
 "invalide."
 
 msgctxt "field:product.price_list,company:"
