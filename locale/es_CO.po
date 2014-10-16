@@ -56,11 +56,11 @@ msgstr "Transportadora"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "Transportadoras"
+msgstr "Transportadores"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Administración Transportadora"
+msgstr "Administración Transporte"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
