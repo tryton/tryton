@@ -12,11 +12,11 @@ msgstr "Družba"
 
 msgctxt "field:product.price_list,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.price_list,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.price_list,id:"
 msgid "ID"
@@ -44,11 +44,11 @@ msgstr "Zapisal"
 
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.price_list.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
