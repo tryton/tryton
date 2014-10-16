@@ -24,11 +24,11 @@ msgstr "Strošek"
 
 msgctxt "field:company.employee_cost_price,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:company.employee_cost_price,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:company.employee_cost_price,currency_digits:"
 msgid "Currency Digits"
