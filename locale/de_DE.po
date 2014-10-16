@@ -146,14 +146,6 @@ msgstr ""
 "Der Interne Lieferposten \"%s\" muss annulliert werden, bevor er gelöscht "
 "werden kann."
 
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "The shipment with code \"%s\" is not yet sent."
-msgstr "Der Lieferposten mit Code \"%s\" ist noch nicht versendet."
-
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "You can not create return shipment"
-msgstr "Erstellung einer Warenrücknahme nicht möglich."
-
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
@@ -1102,6 +1094,10 @@ msgstr ""
 "* ein leerer Wert ist ein unbegrenztes Datum in der Zukunft\n"
 "* ein Datum in der Vergangenheit berechnet historische Werte\n"
 
+msgctxt "model:ir.action,name:"
+msgid "Create Return Shipment"
+msgstr "Lieferpostenrückgabe erstellen"
+
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Bestandskorrekturen"
@@ -1165,10 +1161,6 @@ msgstr "Warenrücknahmen (von Kunden)"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
 msgstr "Lager"
-
-msgctxt "model:ir.action,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Lieferpostenrückgabe erstellen"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
