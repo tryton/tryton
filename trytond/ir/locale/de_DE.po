@@ -591,6 +591,10 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Aktion"
 
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr "Aktiv"
+
 msgctxt "field:ir.action.act_window.view,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -965,7 +969,7 @@ msgstr "Ressource"
 
 msgctxt "field:ir.attachment,summary:"
 msgid "Summary"
-msgstr "Zusammenfassung"
+msgstr "Beschreibung"
 
 msgctxt "field:ir.attachment,type:"
 msgid "Type"
@@ -1387,14 +1391,6 @@ msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
-msgctxt "field:ir.model.data,date_init:"
-msgid "Init Date"
-msgstr "Initialdatum"
-
-msgctxt "field:ir.model.data,date_update:"
-msgid "Update Date"
-msgstr "Aktualisierungsdatum"
-
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
 msgstr "ID Ressource"
@@ -1402,6 +1398,10 @@ msgstr "ID Ressource"
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
 msgstr "Identifikator im Dateisystem"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "Werte im Dateisystem"
 
 msgctxt "field:ir.model.data,id:"
 msgid "ID"
@@ -1417,7 +1417,11 @@ msgstr "Modul"
 
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
-msgstr "Ohne Update"
+msgstr "Kein Update"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "Nicht synchronisiert"
 
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
@@ -2343,6 +2347,10 @@ msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr "Aktion"
 
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "Aktionsschlüsselwörter"
+
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -2830,6 +2838,10 @@ msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Knöpfe"
 
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Daten"
+
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Zugriffsberechtigungen Felder"
@@ -2896,11 +2908,11 @@ msgstr "Übersetzungen"
 
 msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Report Translations"
-msgstr "Übersetzungen für Berichte aktualisieren"
+msgstr "Übersetzungen aktualisieren"
 
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
-msgstr "Übersetzungen aktualisieren"
+msgstr "Übersetzungen eingeben"
 
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
@@ -2941,6 +2953,16 @@ msgstr "Aktion aktives Fenster"
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Wertebereich Aktion Aktuelles Fenster"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "Nicht synchronisiert"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3258,6 +3280,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "Knöpfe"
 
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Daten"
+
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
 msgstr "Zugriffsberechtigungen Felder"
@@ -3324,11 +3350,11 @@ msgstr "Übersetzungen"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "Übersetzungen für Berichte aktualisieren"
+msgstr "Übersetzungen aktualisieren"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
-msgstr "Übersetzungen aktualisieren"
+msgstr "Übersetzungen eingeben"
 
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
@@ -3714,6 +3740,14 @@ msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "Knöpfe"
 
+msgctxt "view:ir.model.data:"
+msgid "Model Data"
+msgstr "Modelldaten"
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "Synchronisation"
+
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"
 msgstr "Zugriffsberechtigung Felder"
@@ -3939,7 +3973,7 @@ msgstr "Übersetzungen bereinigen"
 
 msgctxt "view:ir.translation.clean.succeed:"
 msgid "Clean Translations Succeed!"
-msgstr "Bereinigung der Übersetzungen erfolgreich durchgeführt!"
+msgstr "Bereinigung der Übersetzungen erfolgreich durchgeführt"
 
 msgctxt "view:ir.translation.export.result:"
 msgid "Export Translation"
@@ -3951,7 +3985,7 @@ msgstr "Übersetzung exportieren"
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Set Translations"
-msgstr "Übersetzungen für Berichte aktualisieren"
+msgstr "Übersetzungen aktualisieren"
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
@@ -3959,15 +3993,15 @@ msgstr "Übersetzungen aktualisieren?"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
-msgstr "Aktualisierung erfolgreich."
+msgstr "Aktualisierung erfolgreich"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Translations"
-msgstr "Übersetzungen für Berichte aktualisieren"
+msgstr "Übersetzungen aktualisieren"
 
 msgctxt "view:ir.translation.update.start:"
 msgid "Synchronize Translations"
-msgstr "Übersetzungen aktualisieren"
+msgstr "Übersetzungen eingeben"
 
 msgctxt "view:ir.translation:"
 msgid "Translations"
@@ -4115,7 +4149,7 @@ msgstr "Abbrechen"
 
 msgctxt "wizard_button:ir.translation.update,start,update:"
 msgid "Update"
-msgstr "Aktualisieren"
+msgstr "Eingeben"
 
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"

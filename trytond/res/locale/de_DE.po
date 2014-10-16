@@ -739,4 +739,4 @@ msgstr "Hinzufügen"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "Ende"
+msgstr "Fertig"
