@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:project.allocation:"
-msgid "Percentage must be greater than zero"
-msgstr "Prozentsatz muss größer als 0 sein."
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -32,7 +28,7 @@ msgstr "Name"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Arbeit"
+msgstr "Tätigkeit"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
@@ -96,7 +92,7 @@ msgstr "Zuordnungen"
 
 msgctxt "field:project.work,back_leveling_delay:"
 msgid "Back Leveling Delay"
-msgstr "Verzögerung Abgleich"
+msgstr "Verzögerung Abgleich Rückstand"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
@@ -188,4 +184,4 @@ msgstr "Zuordnungen"
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "Plan"
+msgstr "Planung"
