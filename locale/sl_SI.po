@@ -24,11 +24,11 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
@@ -68,11 +68,11 @@ msgstr "Začetni datum"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
@@ -108,11 +108,11 @@ msgstr "Leto"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
@@ -148,11 +148,11 @@ msgstr "Leto"
 
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:timesheet.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -216,11 +216,11 @@ msgstr "Družba"
 
 msgctxt "field:timesheet.work,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:timesheet.work,hours:"
 msgid "Timesheet Hours"
