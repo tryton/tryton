@@ -129,14 +129,6 @@ msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
 msgstr "Notranja odpremnica \"%s\" mora biti pred brisanjem preklicana."
 
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "The shipment with code \"%s\" is not yet sent."
-msgstr "Pošiljka s šifro \"%s\" še ni odposlana."
-
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "You can not create return shipment"
-msgstr "Vrnjene pošiljke ni možno izdelati."
-
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr "Vrnjena odpremnica \"%s\" mora biti pred brisanjem preklicana."
@@ -191,11 +183,11 @@ msgstr "Količina"
 
 msgctxt "field:stock.configuration,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.configuration,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.configuration,id:"
 msgid "ID"
@@ -239,11 +231,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.inventory,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.inventory,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
@@ -283,11 +275,11 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.inventory.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.inventory.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
@@ -355,11 +347,11 @@ msgstr "Nabavna vrednost"
 
 msgctxt "field:stock.location,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.location,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -427,11 +419,11 @@ msgstr "Nabavna cena"
 
 msgctxt "field:stock.move,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.move,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
@@ -523,11 +515,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.period,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.period,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.period,date:"
 msgid "Date"
@@ -555,11 +547,11 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.period.cache,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.period.cache,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.period.cache,id:"
 msgid "ID"
@@ -595,11 +587,11 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.product_quantities_warehouse,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.product_quantities_warehouse,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
@@ -655,11 +647,11 @@ msgstr "Kontakt"
 
 msgctxt "field:stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
@@ -739,11 +731,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.shipment.in.return,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.in.return,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
 msgid "Effective Date"
@@ -811,11 +803,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.shipment.internal,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.internal,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.internal,effective_date:"
 msgid "Effective Date"
@@ -879,11 +871,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.shipment.out,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.out,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
@@ -975,11 +967,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.shipment.out.return,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.out.return,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
@@ -1144,10 +1136,6 @@ msgstr "Vrnjene odpremnice"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
 msgstr "Konfiguracija zaloge"
-
-msgctxt "model:ir.action,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Izdelava vrnjene pošiljke"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
