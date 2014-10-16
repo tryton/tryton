@@ -52,7 +52,7 @@ msgstr "Creado por Usuario"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr "Monedas"
+msgstr "Moneda"
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
@@ -130,6 +130,10 @@ msgctxt "field:bank.account.number,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Número Compacto"
+
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
 msgstr "Nombre"
@@ -188,7 +192,7 @@ msgstr "Cuentas Bancarias"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Banco"
+msgstr "Bancos"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
@@ -224,7 +228,7 @@ msgstr "Cuentas Bancaria"
 
 msgctxt "view:bank:"
 msgid "Bank"
-msgstr "Bancos"
+msgstr "Banco"
 
 msgctxt "view:bank:"
 msgid "Banks"
