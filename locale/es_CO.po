@@ -137,14 +137,6 @@ msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
 msgstr "El envío interno \"%s\" debe ser cancelado antes de ser eliminado."
 
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "The shipment with code \"%s\" is not yet sent."
-msgstr "El envío con código \"%s\" no se ha enviado todavía."
-
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "You can not create return shipment"
-msgstr "No puede crear devoluciones"
-
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
@@ -1092,6 +1084,10 @@ msgstr ""
 "* Un valor vacío es una fecha infinita en el futuro.\n"
 "* Una fecha del pasado proporcionará valores históricos."
 
+msgctxt "model:ir.action,name:"
+msgid "Create Return Shipment"
+msgstr "Crear Devolución"
+
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Inventarios"
@@ -1155,10 +1151,6 @@ msgstr "Devoluciones de Clientes"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
 msgstr "Configuración Inventarios"
-
-msgctxt "model:ir.action,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Crear Devolución"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
