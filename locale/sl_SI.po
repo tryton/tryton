@@ -40,7 +40,7 @@ msgstr "Izdelava popisov"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr "Ustvari"
+msgstr "Izdelaj"
 
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
