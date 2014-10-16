@@ -9,10 +9,8 @@ msgstr ""
 "priprave."
 
 msgctxt "error:product.template:"
-msgid ""
-"Purchase prices are based on the purchase uom, are you sure to change it?"
-msgstr ""
-"Nabavne cene so zasnovane na nabavni ME. Ali jo res želite spremeniti?"
+msgid "Purchase prices are based on the purchase uom."
+msgstr "Nabavne cene temeljijo na nabavni merski enoti."
 
 msgctxt "error:purchase.line:"
 msgid ""
@@ -36,10 +34,6 @@ msgstr ""
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
 msgstr "Skladišče mora biti navedeno za nabavno ponudbo \"%s\"."
-
-msgctxt "error:purchase.purchase:"
-msgid "Invoice address must be defined for quotation of purchase \"%s\"."
-msgstr "Naslov plačnika mora biti naveden za nabavno ponudbo \"%s\"."
 
 msgctxt "error:purchase.purchase:"
 msgid "Missing \"Account Payable\" on party \"%s\"."
@@ -85,11 +79,11 @@ msgstr "Nabavna ME"
 
 msgctxt "field:purchase.configuration,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.configuration,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.configuration,id:"
 msgid "ID"
@@ -125,7 +119,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
-msgstr "Poustvarjeni računi"
+msgstr "Ponovno izdelani računi"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
@@ -137,7 +131,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
-msgstr "Poustvarjen promet"
+msgstr "Ponovno izdelan promet"
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
@@ -145,11 +139,11 @@ msgstr "Znesek"
 
 msgctxt "field:purchase.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -189,7 +183,7 @@ msgstr "Prezrt promet"
 
 msgctxt "field:purchase.line,moves_recreated:"
 msgid "Recreated Moves"
-msgstr "Poustvarjen promet"
+msgstr "Ponovno izdelan promet"
 
 msgctxt "field:purchase.line,note:"
 msgid "Note"
@@ -253,11 +247,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.line-account.tax,id:"
 msgid "ID"
@@ -285,11 +279,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.line-ignored-stock.move,id:"
 msgid "ID"
@@ -317,11 +311,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.line-recreated-stock.move,id:"
 msgid "ID"
@@ -357,11 +351,11 @@ msgstr "Družba"
 
 msgctxt "field:purchase.product_supplier,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.product_supplier,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
@@ -409,11 +403,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.product_supplier.price,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.product_supplier.price,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.product_supplier.price,id:"
 msgid "ID"
@@ -430,6 +424,10 @@ msgstr "Količina"
 msgctxt "field:purchase.product_supplier.price,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+msgctxt "field:purchase.product_supplier.price,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
@@ -453,11 +451,11 @@ msgstr "Družba"
 
 msgctxt "field:purchase.purchase,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.purchase,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -497,7 +495,7 @@ msgstr "Prezrti računi"
 
 msgctxt "field:purchase.purchase,invoices_recreated:"
 msgid "Recreated Invoices"
-msgstr "Poustvarjeni računi"
+msgstr "Ponovno izdelani računi"
 
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
@@ -589,11 +587,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
 msgid "ID"
@@ -621,11 +619,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
 msgid "ID"
@@ -690,11 +688,11 @@ msgstr "Dobavitelj"
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
-msgstr "Izbrani računi bodo poustvarjeni, ostali bodo prezrti."
+msgstr "Izbrani računi bodo ponovno izdelani, ostali bodo prezrti."
 
 msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
-msgstr "Izbran promet bo poustvarjen, ostali bo prezrt."
+msgstr "Izbran promet bo ponovno izdelan, ostalo bo prezrto."
 
 msgctxt "help:purchase.product_supplier,delivery_time:"
 msgid "In number of days"
@@ -711,6 +709,14 @@ msgstr "Računi"
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Partnerji, povezani z nabavo"
+
+msgctxt "model:ir.action,name:act_product_supplier_form"
+msgid "Product Suppliers"
+msgstr "Dobavitelji izdelkov"
+
+msgctxt "model:ir.action,name:act_product_supplier_price_form"
+msgid "Prices"
+msgstr "Cene"
 
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
@@ -779,6 +785,10 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Nastavitve"
 
+msgctxt "model:ir.ui.menu,name:menu_product_supplier"
+msgid "Product Suppliers"
+msgstr "Dobavitelji izdelkov"
+
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
 msgstr "Nabava"
@@ -845,7 +855,7 @@ msgstr "Nabavni nalog - Prezrt račun"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
-msgstr "Nabavni nalog - Poustvarjeni račun"
+msgstr "Nabavni nalog - Ponovno izdelan račun"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
@@ -933,7 +943,7 @@ msgstr "Prezrto"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
-msgstr "Poustvarjeno"
+msgstr "Ponovno izdelano"
 
 msgctxt "selection:purchase.configuration,purchase_invoice_method:"
 msgid "Based On Order"
@@ -1024,6 +1034,10 @@ msgid "Draft"
 msgstr "V pripravi"
 
 msgctxt "selection:purchase.purchase,state:"
+msgid "Processing"
+msgstr "Obdelava"
+
+msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Ponudba"
 
@@ -1037,7 +1051,7 @@ msgstr "Prezrto"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
-msgstr "Poustvarjeno"
+msgstr "Ponovno izdelano"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -1053,7 +1067,7 @@ msgstr "Nabavna konfiguracija"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
-msgstr "Izbor računov za poustvaritev"
+msgstr "Izbor računov za ponovno izdelavo"
 
 msgctxt "view:purchase.handle.invoice.exception.ask:"
 msgid "Handle Invoice Exception"
@@ -1061,7 +1075,7 @@ msgstr "Obravnava pridržanih računov"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
-msgstr "Izbor prometa za poustvaritev"
+msgstr "Izbor prometa za ponovno izdelavo"
 
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Handle shipment Exception"
@@ -1130,6 +1144,10 @@ msgstr "Računi"
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Drugo"
+
+msgctxt "view:purchase.purchase:"
+msgid "Process"
+msgstr "Obdelava"
 
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
