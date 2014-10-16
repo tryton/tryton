@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Facteur et taux non valides sur l'UDM \"%s\""
+msgstr "Facteur et taux non valides sur l'UDM « %s »."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
@@ -134,7 +134,7 @@ msgstr "Catégorie"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr "Consomable"
+msgstr "Consommable"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
@@ -197,8 +197,8 @@ msgid "Active"
 msgstr "Actif"
 
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
-msgstr "Catégorie d'UDM"
+msgid "Category"
+msgstr "Catégorie"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
