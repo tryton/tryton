@@ -34,6 +34,10 @@ msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
 msgstr "Sélection JSON"
 
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Sélection triée"
+
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
 msgstr "Ensembles"
@@ -118,6 +122,10 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:product.product,attribute_set:"
+msgid "Set"
+msgstr "Ensemble"
+
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Attributs"
@@ -128,7 +136,12 @@ msgstr "Ensemble"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr "Un couple composé d'une clé et d'un label séparé par \":\" sur une ligne"
+msgstr ""
+"Un couple composé d'une clé et d'un label séparé par « : » sur une ligne"
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Si la selection doit être triée par label"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
