@@ -7,13 +7,13 @@ msgid ""
 "Account \"%(account)s\" in statement line \"%(line)s\" is the same as the "
 "one configured as credit or debit on journal \"%(journal)s\"."
 msgstr ""
-"Le compte \"%(account)s\" sur la ligne de relevé  \"%(line)s\" que celui "
-"configuré comme crédit ou débit sur le journal \"%(journal)s\"."
+"Le compte « %(account)s » sur la ligne de relevé  « %(line)s » que celui "
+"configuré comme crédit ou débit sur le journal « %(journal)s »."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
 msgstr ""
-"Le montant \"%s\" est plus grand que le montant restant à payer de la "
+"Le montant « %s » est plus grand que le montant restant à payer de la "
 "facture."
 
 msgctxt "error:account.statement.line:"
@@ -23,22 +23,28 @@ msgstr "Le montant doit être une valeur positive ou négative."
 msgctxt "error:account.statement.line:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
-"Veuillez remplir les comptes de débit et crédit sur le journal des relevés "
-"\"%s\"."
+"Veuillez remplir les comptes de débit et crédit sur le journal des relevés «"
+" %s »."
 
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
-msgstr "La balance de fin doit valoir \"%s\""
+msgstr "La balance de fin doit valoir « %s »."
+
+msgctxt "error:account.statement:"
+msgid "Number of Lines must be \"%s\"."
+msgstr "Le nombre de lignes doit être « %s »."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr "Le relevé \"%s\" doit être annulé avant suppression."
+msgstr "Le relevé « %s » doit être annulé avant suppression."
 
 msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements, do you want to proceed?"
-msgstr ""
-"Il y a des factures payées sur des relevés en brouillon, souhaitez-vous "
-"continuer ?"
+msgid "There are paid invoices on draft statements."
+msgstr "Il y a des factures payées sur des relevés brouillons."
+
+msgctxt "error:account.statement:"
+msgid "Total Amount must be \"%s\"."
+msgstr "Le montant total doit être de « %s »."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -77,8 +83,16 @@ msgid "Journal"
 msgstr "Journal"
 
 msgctxt "field:account.statement,lines:"
-msgid "Transactions"
-msgstr "Transactions"
+msgid "Lines"
+msgstr "Lignes"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Nombre de lignes"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -91,6 +105,14 @@ msgstr "Solde initial"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "État"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Montant total"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "Validation"
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
@@ -131,6 +153,10 @@ msgstr "Nom"
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Type de validation"
 
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
@@ -176,6 +202,10 @@ msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Mouvement comptable"
 
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Numéro"
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Tiers"
@@ -183,6 +213,10 @@ msgstr "Tiers"
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:account.statement.line,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -224,6 +258,10 @@ msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Journaux de relevés"
 
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Relevé"
+
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
 msgstr "Tous"
@@ -263,6 +301,66 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Relevé"
 
+msgctxt "odt:account.statement:"
+msgid "#"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "odt:account.statement:"
+msgid "Canceled"
+msgstr "Annulé"
+
+msgctxt "odt:account.statement:"
+msgid "Date"
+msgstr "Date"
+
+msgctxt "odt:account.statement:"
+msgid "Date:"
+msgstr "Date :"
+
+msgctxt "odt:account.statement:"
+msgid "Description"
+msgstr "Description"
+
+msgctxt "odt:account.statement:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "odt:account.statement:"
+msgid "E-Mail:"
+msgstr "E-Mail:"
+
+msgctxt "odt:account.statement:"
+msgid "Journal:"
+msgstr "Journal :"
+
+msgctxt "odt:account.statement:"
+msgid "Number"
+msgstr "Numéro"
+
+msgctxt "odt:account.statement:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "odt:account.statement:"
+msgid "Phone:"
+msgstr "Téléphone :"
+
+msgctxt "odt:account.statement:"
+msgid "Statement"
+msgstr "Relevé"
+
+msgctxt "odt:account.statement:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "odt:account.statement:"
+msgid "VAT Number:"
+msgstr "Numéro TVA :"
+
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
 msgstr "Annulé"
@@ -278,6 +376,18 @@ msgstr "Posté"
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validé"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Nombre de lignes"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
