@@ -32,11 +32,11 @@ msgstr "Družba"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
@@ -136,11 +136,11 @@ msgstr "Sredstvo"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
@@ -188,11 +188,11 @@ msgstr "Sredstvo"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -245,6 +245,14 @@ msgstr "Amortizacijski konto"
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
+msgid "Latest Move Date"
+msgstr "Datum zadnje knjižbe"
+
+msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
+msgid "Next Depreciation Date"
+msgstr "Datum naslednje amortizacije"
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
@@ -313,6 +321,14 @@ msgstr "Amortizirljivo"
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Trajanje amortizacije"
+
+msgctxt "help:account.asset.update.show_depreciation,date:"
+msgid ""
+"The date must be between the last update/depreciation date and the next "
+"depreciation date."
+msgstr ""
+"Naslednji datum mora biti med datumom zadnje amortizacije in datumom "
+"naslednje amortizacije."
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
@@ -476,7 +492,7 @@ msgstr "Zaključitev"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr "Ustvari postavke"
+msgstr "Izdelava postavk"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
