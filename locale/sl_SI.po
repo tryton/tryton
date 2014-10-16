@@ -44,11 +44,11 @@ msgstr "Država"
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
@@ -108,11 +108,11 @@ msgstr "Podkategorije"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
@@ -156,11 +156,11 @@ msgstr "Partnerji uspešno preverjeni"
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
@@ -196,11 +196,11 @@ msgstr "Komentar"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
@@ -274,10 +274,6 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Šifra"
 
-msgctxt "field:party.party,code_length:"
-msgid "Code Length"
-msgstr "Dolžina šifre"
-
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr "Šifra samo za branje"
@@ -288,11 +284,11 @@ msgstr "Kontakti"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
@@ -360,11 +356,11 @@ msgstr "Kategorija"
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
