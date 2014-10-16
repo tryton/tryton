@@ -198,6 +198,10 @@ msgctxt "field:analytic_account.line,active:"
 msgid "Active"
 msgstr "Activo"
 
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Compañía"
+
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
 msgstr "Fecha de Creación"
@@ -329,7 +333,7 @@ msgstr "Cuentas Analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr "Cuenta Analítica"
+msgstr "Centros de Costos"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
