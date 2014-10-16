@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%s\" overpays the Line \"%s\"."
-msgstr "La paiement \"%s\" excède le montant de la ligne \"%s\"."
+msgstr "La paiement « %s » excède le montant de la ligne « %s »."
 
 msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
-msgstr "Le paiement \"%s\" doit être en brouillon avant suppression."
+msgstr "Le paiement « %s » doit être en brouillon avant suppression."
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
@@ -402,7 +402,7 @@ msgstr "Traitement des paiements"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
-msgstr "Traiter les paiements ?"
+msgstr "Traiter les paiements ?"
 
 msgctxt "view:account.payment:"
 msgid "Approve"
