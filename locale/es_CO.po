@@ -189,8 +189,8 @@ msgid "Active"
 msgstr "Activo"
 
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
-msgstr "Categoría de UdM"
+msgid "Category"
+msgstr "Categoría"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
@@ -326,7 +326,7 @@ msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Catálogo de Productos"
+msgstr "Administración de Productos"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
@@ -650,11 +650,11 @@ msgstr "Administración de Productos"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Activo Fijo"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
-msgstr "Artículos"
+msgstr "Artículo"
 
 msgctxt "selection:product.product,type:"
 msgid "Service"
@@ -670,11 +670,11 @@ msgstr "Fijo"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Activos"
+msgstr "Activo Fijo"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr "Artículos"
+msgstr "Artículo"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
