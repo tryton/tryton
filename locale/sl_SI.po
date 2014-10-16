@@ -40,11 +40,11 @@ msgstr "Družba"
 
 msgctxt "field:project.work,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:project.work,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:project.work,effort:"
 msgid "Effort"
