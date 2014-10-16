@@ -34,6 +34,10 @@ msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
 msgstr "Selección JSON"
 
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Selección Ordenada"
+
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
 msgstr "Kits"
@@ -129,6 +133,10 @@ msgstr "Kit"
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
 msgstr "Un par de claves y rótulos separados por \":\" por línea."
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Si la selección debe estar ordenada en la etiqueta"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
