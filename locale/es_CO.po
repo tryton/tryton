@@ -46,7 +46,6 @@ msgctxt "field:company.company,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-#, fuzzy
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zona Horaria"
