@@ -32,11 +32,11 @@ msgstr "Družba"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
@@ -100,11 +100,11 @@ msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.dunning.level,days:"
 msgid "Number of Overdue Days"
@@ -136,11 +136,11 @@ msgstr "Zapisal"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -308,7 +308,7 @@ msgstr "Izterjava"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
-msgstr "Ustvari"
+msgstr "Izdelaj"
 
 msgctxt "wizard_button:account.dunning.create,start,end:"
 msgid "Cancel"
