@@ -48,11 +48,11 @@ msgstr "Družba"
 
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -127,13 +127,13 @@ msgctxt ""
 "field:analytic_account.account-"
 "analytic_account.account.selection,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt ""
 "field:analytic_account.account-"
 "analytic_account.account.selection,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt ""
 "field:analytic_account.account-analytic_account.account.selection,id:"
@@ -167,11 +167,11 @@ msgstr "Konti"
 
 msgctxt "field:analytic_account.account.selection,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:analytic_account.account.selection,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:analytic_account.account.selection,id:"
 msgid "ID"
@@ -197,13 +197,17 @@ msgctxt "field:analytic_account.line,active:"
 msgid "Active"
 msgstr "Aktivno"
 
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Družba"
+
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
