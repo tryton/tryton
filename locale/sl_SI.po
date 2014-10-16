@@ -222,14 +222,6 @@ msgstr "Oštevilčenega računa \"%s\" ni možno brisati."
 
 msgctxt "error:account.invoice:"
 msgid ""
-"The period of Invoice \"%s\" is closed.\n"
-"Use the today for cancel move?"
-msgstr ""
-"Obdobje računa \"%s\" je zaključeno.\n"
-"Se naj uporabi današnji dan za preklic knjižbe?"
-
-msgctxt "error:account.invoice:"
-msgid ""
 "There is no invoice sequence for invoice \"%(invoice)s\" on the "
 "period/fiscal year \"%(period)s\"."
 msgstr ""
@@ -269,6 +261,54 @@ msgid ""
 msgstr ""
 "Štetja računov v obdobju \"%s\" ni možno popravljati, ker je račun že "
 "knjižen v tem obdobju."
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "Zaokrožitev davka"
+
+msgctxt "field:account.configuration,tax_roundings:"
+msgid "Tax Roundings"
+msgstr "Zaokrožitve davka"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "Nastavitve"
+
+msgctxt "field:account.configuration.tax_rounding,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.configuration.tax_rounding,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.configuration.tax_rounding,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.tax_rounding,method:"
+msgid "Method"
+msgstr "Metoda"
+
+msgctxt "field:account.configuration.tax_rounding,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.configuration.tax_rounding,sequence:"
+msgid "Sequence"
+msgstr "Štetje"
+
+msgctxt "field:account.configuration.tax_rounding,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.configuration.tax_rounding,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -316,11 +356,11 @@ msgstr "Družba"
 
 msgctxt "field:account.invoice,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
@@ -448,11 +488,11 @@ msgstr "Zapisal"
 
 msgctxt "field:account.invoice-account.move.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice-account.move.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice-account.move.line,id:"
 msgid "ID"
@@ -500,11 +540,11 @@ msgstr "Družba"
 
 msgctxt "field:account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
@@ -600,11 +640,11 @@ msgstr "Zapisal"
 
 msgctxt "field:account.invoice.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.line-account.tax,id:"
 msgid "ID"
@@ -720,11 +760,11 @@ msgstr "Aktivno"
 
 msgctxt "field:account.invoice.payment_term,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.payment_term,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
@@ -739,7 +779,7 @@ msgid "Lines"
 msgstr "Postavke"
 
 msgctxt "field:account.invoice.payment_term,name:"
-msgid "Payment Term"
+msgid "Name"
 msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
@@ -760,11 +800,11 @@ msgstr "Znesek"
 
 msgctxt "field:account.invoice.payment_term.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.payment_term.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
@@ -860,11 +900,11 @@ msgstr "Predznak osnove"
 
 msgctxt "field:account.invoice.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -949,6 +989,10 @@ msgstr "Če resnično, bo(do) trenutni račun(i) plačan(i)."
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
 msgstr "Za naraščajoče razvrščanje postavk"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Kontno zaokroževanje davkov"
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
@@ -1278,6 +1322,22 @@ msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Invoice"
 msgstr "Odobreni prejeti račun"
 
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "Na dokument"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "Na postavko"
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Document"
+msgstr "Na dokument"
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Line"
+msgstr "Na postavko"
+
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Preklicano"
@@ -1457,6 +1517,14 @@ msgstr "Torek"
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid "Wednesday"
 msgstr "Sreda"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Zaokroževanje davkov"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Roundings"
+msgstr "Zaokroževanja davkov"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
