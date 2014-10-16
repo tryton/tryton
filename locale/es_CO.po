@@ -264,7 +264,7 @@ msgstr "Porcentaje de Valor Ganado"
 
 msgctxt "field:sale.opportunity_employee,conversion_rate:"
 msgid "Conversion Rate"
-msgstr "Tasa de Ganacia"
+msgstr "Tasa de Ganancia"
 
 msgctxt "field:sale.opportunity_employee,converted:"
 msgid "Converted"
@@ -344,7 +344,7 @@ msgstr "Porcentaje de Valor Ganado"
 
 msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
 msgid "Conversion Rate"
-msgstr "Tasa de Ganacia"
+msgstr "Tasa de Ganancia"
 
 msgctxt "field:sale.opportunity_employee_monthly,converted:"
 msgid "Converted"
@@ -420,7 +420,7 @@ msgstr "Porcentaje de Valor Ganado"
 
 msgctxt "field:sale.opportunity_monthly,conversion_rate:"
 msgid "Conversion Rate"
-msgstr "Tasa de Ganacia"
+msgstr "Tasa de Ganancia"
 
 msgctxt "field:sale.opportunity_monthly,converted:"
 msgid "Converted"
