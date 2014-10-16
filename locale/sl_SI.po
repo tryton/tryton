@@ -8,11 +8,11 @@ msgstr "Ukrep"
 
 msgctxt "field:dashboard.action,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
