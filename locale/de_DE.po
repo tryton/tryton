@@ -9,11 +9,8 @@ msgstr ""
 "zurückgesetzt werden."
 
 msgctxt "error:product.template:"
-msgid ""
-"Purchase prices are based on the purchase uom, are you sure to change it?"
-msgstr ""
-"Einkaufspreise basieren auf der Maßeinheit für den Einkauf.\n"
-"Soll sie wirklich geändert werden?"
+msgid "Purchase prices are based on the purchase uom."
+msgstr "Einkaufspreise werden auf Basis der Einkaufseinheit berechnet."
 
 msgctxt "error:purchase.line:"
 msgid ""
@@ -37,10 +34,6 @@ msgstr ""
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
 msgstr "Für Angebotsanfrage \"%s\" muss ein Warenlager angegeben werden."
-
-msgctxt "error:purchase.purchase:"
-msgid "Invoice address must be defined for quotation of purchase \"%s\"."
-msgstr "Für Angebotsanfrage \"%s\" muss eine Rechnungsadresse angegeben werden."
 
 msgctxt "error:purchase.purchase:"
 msgid "Missing \"Account Payable\" on party \"%s\"."
@@ -370,7 +363,7 @@ msgstr "Währung"
 
 msgctxt "field:purchase.product_supplier,delivery_time:"
 msgid "Delivery Time"
-msgstr "Lieferfrist"
+msgstr "Lieferzeitraum"
 
 msgctxt "field:purchase.product_supplier,id:"
 msgid "ID"
@@ -431,6 +424,10 @@ msgstr "Anzahl"
 msgctxt "field:purchase.product_supplier.price,rec_name:"
 msgid "Name"
 msgstr "Name"
+
+msgctxt "field:purchase.product_supplier.price,sequence:"
+msgid "Sequence"
+msgstr "Reihenfolge"
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
@@ -717,6 +714,14 @@ msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Parteien: Einkäufen zugeordnet"
 
+msgctxt "model:ir.action,name:act_product_supplier_form"
+msgid "Product Suppliers"
+msgstr "Lieferanten"
+
+msgctxt "model:ir.action,name:act_product_supplier_price_form"
+msgid "Prices"
+msgstr "Preise"
+
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
 msgstr "Einstellungen Einkauf"
@@ -783,6 +788,10 @@ msgstr "Einkauf"
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Einstellungen"
+
+msgctxt "model:ir.ui.menu,name:menu_product_supplier"
+msgid "Product Suppliers"
+msgstr "Lieferanten"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
@@ -1029,6 +1038,10 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "selection:purchase.purchase,state:"
+msgid "Processing"
+msgstr "In Ausführung"
+
+msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
 msgstr "Angebot"
 
@@ -1135,6 +1148,10 @@ msgstr "Rechnungen"
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Sonstiges"
+
+msgctxt "view:purchase.purchase:"
+msgid "Process"
+msgstr "Ausführen"
 
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
