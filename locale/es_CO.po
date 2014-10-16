@@ -570,7 +570,7 @@ msgstr "Asignado"
 
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr "Anulado"
+msgstr "Anulada"
 
 msgctxt "selection:production,state:"
 msgid "Done"
