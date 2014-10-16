@@ -3,10 +3,8 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
-msgid "There are some late supplier moves, are you sure to ignore them?"
-msgstr ""
-"Obstaja nekaj zapoznelega prometa pri dobavitelju. Ali ste prepričani, da ga"
-" želite prezreti?"
+msgid "There are some late supplier moves."
+msgstr "Obstaja nekaj poznih knjižb dobaviteljev."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
@@ -62,11 +60,11 @@ msgstr "Izračunana ME"
 
 msgctxt "field:purchase.request,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.request,id:"
 msgid "ID"
@@ -156,33 +154,17 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Izdelek"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,company:"
-msgid "Company"
-msgstr "Družba"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,party:"
-msgid "Supplier"
-msgstr "Dobavitelj"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
-msgid "Payment Term"
-msgstr "Plačilni rok"
-
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Družba"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
@@ -269,6 +251,21 @@ msgid "Create Purchase"
 msgstr "Izdelava nabavnega naloga"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "Vse"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Interno"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Nabavni nalogi"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
 msgstr "Vse"
@@ -313,10 +310,6 @@ msgstr "Izdelava nabavnega zahtevka"
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
 msgstr "Izdelava nabavnega naloga: Partner"
-
-msgctxt "model:purchase.request.create_purchase.ask_term,name:"
-msgid "Create Purchase Ask Term"
-msgstr "Izdelava nabavnega naloga: Plačilni rok"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -374,10 +367,6 @@ msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Izdelava nabavnega naloga: Dobavitelj manjka"
 
-msgctxt "view:purchase.request.create_purchase.ask_term:"
-msgid "Create Purchase: Missing Payment Term"
-msgstr "Izdelava nabavnega naloga: Plačilni rok manjka"
-
 msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr "Podatek o izdelku"
@@ -420,7 +409,7 @@ msgstr "Izdelava notranjih odpremnic?"
 
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
-msgstr "Ustvari"
+msgstr "Izdelaj"
 
 msgctxt "wizard_button:purchase.request.create,start,end:"
 msgid "Cancel"
@@ -434,17 +423,9 @@ msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
 msgstr "Naprej"
 
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
-msgid "Continue"
-msgstr "Naprej"
-
 msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
 msgid "Create"
-msgstr "Ustvari"
+msgstr "Izdelaj"
 
 msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
