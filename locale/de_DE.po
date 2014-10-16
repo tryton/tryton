@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Lieferung bei Verkauf"
+msgstr "Beschaffung bei Verkauf"
 
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
@@ -13,6 +13,10 @@ msgstr "Bestellvorschlag"
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
 msgstr "Bestellvorschlag Status"
+
+msgctxt "model:ir.action,name:act_purchase_request_form"
+msgid "Purchase Requests"
+msgstr "Bestellvorschläge"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
