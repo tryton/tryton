@@ -189,7 +189,7 @@ msgid "Active"
 msgstr "Activo"
 
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
+msgid "Category"
 msgstr "Categoría de UdM"
 
 msgctxt "field:product.uom,create_date:"
