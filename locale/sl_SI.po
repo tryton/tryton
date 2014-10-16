@@ -12,11 +12,11 @@ msgstr "Izdelek"
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
