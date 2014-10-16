@@ -120,7 +120,7 @@ msgstr "decimal_point in thousands_sep morata biti različna."
 
 msgctxt "error:ir.model.access:"
 msgid "You can not create this kind of document! (%s)"
-msgstr "Te vrste dokumenta ni možno ustvariti. (%s)"
+msgstr "Te vrste dokumenta ni možno izdelati. (%s)"
 
 msgctxt "error:ir.model.access:"
 msgid "You can not delete this document! (%s)"
@@ -369,11 +369,11 @@ msgstr "Aktivno"
 
 msgctxt "field:ir.action,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action,groups:"
 msgid "Groups"
@@ -437,11 +437,11 @@ msgstr "Vrednost konteksta"
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.act_window,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
@@ -541,11 +541,11 @@ msgstr "Aktivno"
 
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.act_window.domain,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.act_window.domain,domain:"
 msgid "Domain"
@@ -579,13 +579,17 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Ukrep"
 
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr "Aktivno"
+
 msgctxt "field:ir.action.act_window.view,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.act_window.view,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.act_window.view,id:"
 msgid "ID"
@@ -617,11 +621,11 @@ msgstr "Ukrep"
 
 msgctxt "field:ir.action.keyword,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.keyword,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.keyword,groups:"
 msgid "Groups"
@@ -661,11 +665,11 @@ msgstr "Aktivno"
 
 msgctxt "field:ir.action.report,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.report,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
@@ -773,11 +777,11 @@ msgstr "Aktivno"
 
 msgctxt "field:ir.action.url,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.url,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.url,groups:"
 msgid "Groups"
@@ -833,11 +837,11 @@ msgstr "Aktivno"
 
 msgctxt "field:ir.action.wizard,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action.wizard,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action.wizard,email:"
 msgid "Email"
@@ -901,11 +905,11 @@ msgstr "Prekrivanje"
 
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.attachment,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -969,11 +973,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.cache,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.cache,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.cache,id:"
 msgid "ID"
@@ -1001,11 +1005,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.configuration,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -1037,11 +1041,11 @@ msgstr "Argumenti"
 
 msgctxt "field:ir.cron,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.cron,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.cron,function:"
 msgid "Function"
@@ -1105,11 +1109,11 @@ msgstr "ID"
 
 msgctxt "field:ir.export,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.export,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -1141,11 +1145,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.export.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.export.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
@@ -1181,11 +1185,11 @@ msgstr "Šifra"
 
 msgctxt "field:ir.lang,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.lang,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.lang,date:"
 msgid "Date"
@@ -1233,11 +1237,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
@@ -1281,11 +1285,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model.access,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.access,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.access,description:"
 msgid "Description"
@@ -1305,7 +1309,7 @@ msgstr "Model"
 
 msgctxt "field:ir.model.access,perm_create:"
 msgid "Create Access"
-msgstr "Ustvarjanje"
+msgstr "Izdelava"
 
 msgctxt "field:ir.model.access,perm_delete:"
 msgid "Delete Access"
@@ -1333,11 +1337,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.button,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
@@ -1369,19 +1373,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model.data,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
-
-msgctxt "field:ir.model.data,date_init:"
-msgid "Init Date"
-msgstr "Začetni datum"
-
-msgctxt "field:ir.model.data,date_update:"
-msgid "Update Date"
-msgstr "Datum posodobitve"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
@@ -1390,6 +1386,10 @@ msgstr "ID vira"
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
 msgstr "Identifikator v datotečnem sistemu"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "Vrednosti v datotečnem sistemu"
 
 msgctxt "field:ir.model.data,id:"
 msgid "ID"
@@ -1406,6 +1406,10 @@ msgstr "Modul"
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
 msgstr "Brez posodabljanja"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "Izven sinhronizacije"
 
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
@@ -1425,11 +1429,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model.field,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.field,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
@@ -1481,11 +1485,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model.field.access,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.field.access,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.field.access,description:"
 msgid "Description"
@@ -1505,7 +1509,7 @@ msgstr "ID"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
-msgstr "Ustvarjanje"
+msgstr "Izdelava"
 
 msgctxt "field:ir.model.field.access,perm_delete:"
 msgid "Delete Access"
@@ -1549,11 +1553,11 @@ msgstr "Podmoduli"
 
 msgctxt "field:ir.module.module,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.module.module,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.module.module,dependencies:"
 msgid "Dependencies"
@@ -1605,11 +1609,11 @@ msgstr "Ukrep"
 
 msgctxt "field:ir.module.module.config_wizard.item,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.module.module.config_wizard.item,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.module.module.config_wizard.item,id:"
 msgid "ID"
@@ -1645,11 +1649,11 @@ msgstr "Odstotek"
 
 msgctxt "field:ir.module.module.dependency,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.module.module.dependency,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.module.module.dependency,id:"
 msgid "ID"
@@ -1693,11 +1697,11 @@ msgstr "Moduli za posodobitev"
 
 msgctxt "field:ir.property,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.property,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.property,field:"
 msgid "Field"
@@ -1729,11 +1733,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.rule,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
@@ -1761,11 +1765,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.rule.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.rule.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.rule.group,default_p:"
 msgid "Default"
@@ -1793,7 +1797,7 @@ msgstr "Naziv"
 
 msgctxt "field:ir.rule.group,perm_create:"
 msgid "Create Access"
-msgstr "Ustvarjanje"
+msgstr "Izdelava"
 
 msgctxt "field:ir.rule.group,perm_delete:"
 msgid "Delete Access"
@@ -1837,11 +1841,11 @@ msgstr "Šifra"
 
 msgctxt "field:ir.sequence,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.sequence,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.sequence,id:"
 msgid "ID"
@@ -1913,11 +1917,11 @@ msgstr "Šifra"
 
 msgctxt "field:ir.sequence.strict,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.sequence.strict,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.sequence.strict,id:"
 msgid "ID"
@@ -1985,11 +1989,11 @@ msgstr "Šifra"
 
 msgctxt "field:ir.sequence.type,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.sequence.type,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.sequence.type,id:"
 msgid "ID"
@@ -2013,11 +2017,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.session,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.session,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.session,id:"
 msgid "ID"
@@ -2041,11 +2045,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.session.wizard,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.session.wizard,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
@@ -2069,11 +2073,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.translation,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.translation,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
@@ -2197,11 +2201,11 @@ msgstr "Pogoj"
 
 msgctxt "field:ir.trigger,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.trigger,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.trigger,id:"
 msgid "ID"
@@ -2225,7 +2229,7 @@ msgstr "Naziv"
 
 msgctxt "field:ir.trigger,on_create:"
 msgid "On Create"
-msgstr "Ob ustvarjanju"
+msgstr "Ob izdelavi"
 
 msgctxt "field:ir.trigger,on_delete:"
 msgid "On Delete"
@@ -2253,11 +2257,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.trigger.log,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.trigger.log,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.trigger.log,id:"
 msgid "ID"
@@ -2285,11 +2289,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.ui.icon,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.icon,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.icon,icon:"
 msgid "Icon"
@@ -2331,6 +2335,10 @@ msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr "Ukrep"
 
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "Ključne besede ukrepov"
+
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
 msgstr "Aktivno"
@@ -2345,11 +2353,11 @@ msgstr "Polno ime"
 
 msgctxt "field:ir.ui.menu,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.menu,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
@@ -2393,11 +2401,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.ui.menu.favorite,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.menu.favorite,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.menu.favorite,id:"
 msgid "ID"
@@ -2433,11 +2441,11 @@ msgstr "Zgradba"
 
 msgctxt "field:ir.ui.view,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.view,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
@@ -2497,11 +2505,11 @@ msgstr "ID"
 
 msgctxt "field:ir.ui.view_search,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.view_search,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.view_search,domain:"
 msgid "Domain"
@@ -2541,11 +2549,11 @@ msgstr "Ime poddrevesa"
 
 msgctxt "field:ir.ui.view_tree_state,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.view_tree_state,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.view_tree_state,domain:"
 msgid "Domain"
@@ -2585,11 +2593,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.ui.view_tree_width,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.view_tree_width,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
@@ -2813,6 +2821,10 @@ msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Gumbi"
 
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Podatki"
+
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Dostop do polj"
@@ -2925,6 +2937,16 @@ msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Domena okna za ukrepe"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Vse"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "Nesinhronizirano"
+
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
 msgstr "Pogled ukrepa za okna"
@@ -2996,6 +3018,10 @@ msgstr "Češčina"
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Nemščina"
+
+msgctxt "model:ir.lang,name:lang_ec"
+msgid "Spanish (Ecuador)"
+msgstr "Španščina (Ekvador)"
 
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
@@ -3240,6 +3266,10 @@ msgstr "Dostop do modelov"
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "Gumbi"
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Podatki"
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
@@ -3696,6 +3726,14 @@ msgstr "Gumb"
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "Gumbi"
+
+msgctxt "view:ir.model.data:"
+msgid "Model Data"
+msgstr "Podatki modela"
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "Sinhronizacija"
 
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"

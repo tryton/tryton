@@ -21,7 +21,7 @@ msgid ""
 "created by the system (updates, module installation, ...)"
 msgstr ""
 "Skrbnika ni možno odstraniti, ker se interno uporablja za vire, \n"
-"ki jih ustvarja sistem (posodobitve, nameščanje modulov, ...)"
+"ki jih izdeluje sistem (posodobitve, nameščanje modulov, ...)"
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
@@ -29,11 +29,11 @@ msgstr "Ukrep"
 
 msgctxt "field:ir.action-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.action-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
@@ -65,11 +65,11 @@ msgstr "Gumb"
 
 msgctxt "field:ir.model.button-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.button-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
@@ -93,11 +93,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.model.field-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.model.field-res.group,field:"
 msgid "Model Field"
@@ -125,11 +125,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.rule.group-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
@@ -157,11 +157,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.rule.group-res.user,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.rule.group-res.user,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.rule.group-res.user,id:"
 msgid "ID"
@@ -201,11 +201,11 @@ msgstr "Uporabniške skupine"
 
 msgctxt "field:ir.sequence.type-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.sequence.type-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
@@ -233,11 +233,11 @@ msgstr "Zapisal"
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.ui.menu-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
@@ -265,11 +265,11 @@ msgstr "Zapisal"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
@@ -321,11 +321,11 @@ msgstr "Aktivno"
 
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.user,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -409,11 +409,11 @@ msgstr "Ukrep"
 
 msgctxt "field:res.user-ir.action,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.user-ir.action,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.user-ir.action,id:"
 msgid "ID"
@@ -437,11 +437,11 @@ msgstr "Zapisal"
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.user-res.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.user-res.group,group:"
 msgid "Group"
@@ -473,11 +473,11 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.user.login.attempt,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
@@ -505,11 +505,11 @@ msgstr "Vedno"
 
 msgctxt "field:res.user.warning,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.user.warning,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.user.warning,id:"
 msgid "ID"
