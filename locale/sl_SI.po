@@ -28,11 +28,11 @@ msgstr "Špediter"
 
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
