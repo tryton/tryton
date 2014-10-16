@@ -8,11 +8,11 @@ msgstr "Promet zaloge"
 
 msgctxt "field:account.invoice.line-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.invoice.line-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.invoice.line-stock.move,id:"
 msgid "ID"
