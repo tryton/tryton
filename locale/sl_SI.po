@@ -50,11 +50,11 @@ msgstr "Kosovnica"
 
 msgctxt "field:product.product-production.bom,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.product-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.product-production.bom,id:"
 msgid "ID"
@@ -98,11 +98,11 @@ msgstr "Strošek"
 
 msgctxt "field:production,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:production,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -186,11 +186,11 @@ msgstr "Aktivno"
 
 msgctxt "field:production.bom,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:production.bom,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:production.bom,id:"
 msgid "ID"
@@ -230,11 +230,11 @@ msgstr "Kosovnica"
 
 msgctxt "field:production.bom.input,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:production.bom.input,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:production.bom.input,id:"
 msgid "ID"
@@ -278,11 +278,11 @@ msgstr "Kosovnica"
 
 msgctxt "field:production.bom.output,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:production.bom.output,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:production.bom.output,id:"
 msgid "ID"
@@ -382,11 +382,11 @@ msgstr "ID"
 
 msgctxt "field:production.configuration,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:production.configuration,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:production.configuration,id:"
 msgid "ID"
