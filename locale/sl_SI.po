@@ -28,12 +28,20 @@ msgid "End Balance must be \"%s\"."
 msgstr "Končni saldo mora biti \"%s\"."
 
 msgctxt "error:account.statement:"
+msgid "Number of Lines must be \"%s\"."
+msgstr "Število postavk mora biti \"%s\"."
+
+msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr "Izpisek \"%s\" mora biti pred izbrisom preklican."
 
 msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements, do you want to proceed?"
-msgstr "Na pripravljenih izpiskih so plačani računi. Ali želite nadaljevati?"
+msgid "There are paid invoices on draft statements."
+msgstr "Na pripravljenih izpiskih obstajajo plačani računi."
+
+msgctxt "error:account.statement:"
+msgid "Total Amount must be \"%s\"."
+msgstr "Skupni znesek mora biti \"%s\"."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -45,11 +53,11 @@ msgstr "Družba"
 
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
@@ -72,8 +80,16 @@ msgid "Journal"
 msgstr "Dnevnik"
 
 msgctxt "field:account.statement,lines:"
-msgid "Transactions"
-msgstr "Transakcije"
+msgid "Lines"
+msgstr "Postavke"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Plačilni rok"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Število postavk"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -86,6 +102,14 @@ msgstr "Začetni saldo"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Stanje"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Skupni znesek"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "Odobritev"
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
@@ -101,11 +125,11 @@ msgstr "Družba"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
@@ -127,6 +151,10 @@ msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Vrsta odobritve"
+
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
@@ -145,11 +173,11 @@ msgstr "Znesek"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -171,6 +199,10 @@ msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Knjižba"
 
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Številka"
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Partner"
@@ -178,6 +210,10 @@ msgstr "Partner"
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
 msgstr "Ime"
+
+msgctxt "field:account.statement.line,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -219,6 +255,10 @@ msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Dnevniki izpiskov"
 
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Izpisek"
+
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
 msgstr "Vse"
@@ -258,6 +298,66 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Izpisek"
 
+msgctxt "odt:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "odt:account.statement:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "odt:account.statement:"
+msgid "Canceled"
+msgstr "Preklicano"
+
+msgctxt "odt:account.statement:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "odt:account.statement:"
+msgid "Date:"
+msgstr "Datum:"
+
+msgctxt "odt:account.statement:"
+msgid "Description"
+msgstr "Opis"
+
+msgctxt "odt:account.statement:"
+msgid "Draft"
+msgstr "V pripravi"
+
+msgctxt "odt:account.statement:"
+msgid "E-Mail:"
+msgstr "E-pošta:"
+
+msgctxt "odt:account.statement:"
+msgid "Journal:"
+msgstr "Dnevnik:"
+
+msgctxt "odt:account.statement:"
+msgid "Number"
+msgstr "Številka"
+
+msgctxt "odt:account.statement:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "odt:account.statement:"
+msgid "Phone:"
+msgstr "Telefon:"
+
+msgctxt "odt:account.statement:"
+msgid "Statement"
+msgstr "Izpisek"
+
+msgctxt "odt:account.statement:"
+msgid "Total"
+msgstr "Skupaj"
+
+msgctxt "odt:account.statement:"
+msgid "VAT Number:"
+msgstr "DDV številka:"
+
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
 msgstr "Preklicano"
@@ -273,6 +373,18 @@ msgstr "Knjiženo"
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Odobreno"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Znesek"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Bilanca"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Število postavk"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
