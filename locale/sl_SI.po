@@ -40,11 +40,11 @@ msgstr "Družba"
 
 msgctxt "field:stock.forecast,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.forecast,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
@@ -108,11 +108,11 @@ msgstr "Izdelki"
 
 msgctxt "field:stock.forecast.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.forecast.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
@@ -168,11 +168,11 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.forecast.line-stock.move,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.forecast.line-stock.move,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.forecast.line-stock.move,id:"
 msgid "ID"
