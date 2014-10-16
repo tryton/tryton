@@ -8,11 +8,11 @@ msgstr "Hčerinske družbe"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:company.company,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
@@ -68,11 +68,11 @@ msgstr "Družba"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -104,11 +104,11 @@ msgstr "Družba"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:ir.cron-company.company,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
@@ -164,11 +164,11 @@ msgstr "Glavno družba"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
