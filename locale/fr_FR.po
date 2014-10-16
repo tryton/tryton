@@ -9,7 +9,7 @@ msgstr "La quantité FIFO ne peut être plus grande que la quantité."
 msgctxt "error:stock.move:"
 msgid "You can not delete move \"%s\" that is used for FIFO cost price."
 msgstr ""
-"Vous ne pouvez supprimer le mouvement \"%s\" qui est utilisé pour le calcul "
+"Vous ne pouvez supprimer le mouvement « %s » qui est utilisé pour le calcul "
 "FIFO du prix de revient."
 
 msgctxt "field:stock.move,fifo_quantity:"
