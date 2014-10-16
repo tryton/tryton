@@ -92,7 +92,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
-msgstr "Zeitpunkt"
+msgstr "Datum"
 
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
