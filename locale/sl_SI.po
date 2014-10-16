@@ -37,3 +37,7 @@ msgstr "Namesto konta v kategoriji se bo uporabil ta konto prihodkov."
 msgctxt "model:account.account.template,name:account_template_cogs"
 msgid "COGS"
 msgstr "COGS"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr "Anglosaški"
