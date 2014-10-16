@@ -23,6 +23,10 @@ msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr "Diario de existencias"
 
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Método de contabilización de existencias"
+
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr "Cuenta de existencias"
@@ -209,6 +213,18 @@ msgstr "Solicitar actualizar precio de costo"
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
 msgstr "Actualizar precio de costo - Mostrar asiento"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Ninguno"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Cuenta de existencias"
 
 msgctxt "view:product.update_cost_price.ask:"
 msgid "Update Cost Price"
