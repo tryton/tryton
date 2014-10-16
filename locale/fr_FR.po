@@ -20,7 +20,7 @@ msgstr "Date"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Date:"
-msgstr "Date :"
+msgstr "Date :"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Description"
@@ -40,7 +40,7 @@ msgstr "Paiements en attente reçus"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Phone:"
-msgstr "Téléphone :"
+msgstr "Téléphone :"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "Reference"
@@ -52,4 +52,4 @@ msgstr "Avis de rappel"
 
 msgctxt "odt:account.dunning.letter:"
 msgid "VAT Number:"
-msgstr "Numéro TVA :"
+msgstr "Numéro TVA :"
