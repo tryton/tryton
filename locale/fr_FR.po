@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr "IBAN invalide \"%s\"."
+msgstr "IBAN invalide « %s »."
 
 msgctxt "field:bank,bic:"
 msgid "BIC"
@@ -129,6 +129,10 @@ msgstr "ID"
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
 msgstr "Numéro"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Numéro compact"
 
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
