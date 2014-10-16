@@ -24,9 +24,8 @@ msgstr "Cuenta de Costo de Mercaderías Vendidas Utilizada"
 
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"
-msgstr "Cantidad Anglosajona a Ingresar "
+msgstr "Cantidad Anglosajona de Ingreso"
 
-#, fuzzy
 msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
 msgstr "Cantidad Anglosajona de Salida"
