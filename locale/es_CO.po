@@ -352,7 +352,7 @@ msgstr "Anulada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
-msgstr "Confirmado"
+msgstr "Confirmada"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
