@@ -34,6 +34,10 @@ msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
 msgstr "Auswahl JSON"
 
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Sortierte Auswahl"
+
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
 msgstr "Sätze"
@@ -118,6 +122,10 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:product.product,attribute_set:"
+msgid "Set"
+msgstr "Eigenschaftssatz"
+
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Eigenschaften"
@@ -129,6 +137,10 @@ msgstr "Eigenschaftssatz"
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
 msgstr "Ein Paar pro Zeile für Schlüssel und Bezeichner getrennt durch \":\" "
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Ob die Auswahl nach Bezeichner sortiert werden soll"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
