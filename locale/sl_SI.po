@@ -56,11 +56,11 @@ msgstr "Kategorija"
 
 msgctxt "field:product.category-customer-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.category-customer-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
@@ -88,11 +88,11 @@ msgstr "Kategorija"
 
 msgctxt "field:product.category-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.category-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
@@ -156,11 +156,11 @@ msgstr "Uporabi davke iz kategorije"
 
 msgctxt "field:product.template-customer-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.template-customer-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.template-customer-account.tax,id:"
 msgid "ID"
@@ -188,11 +188,11 @@ msgstr "Zapisal"
 
 msgctxt "field:product.template-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.template-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.template-supplier-account.tax,id:"
 msgid "ID"
