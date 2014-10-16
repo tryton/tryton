@@ -32,11 +32,11 @@ msgstr "Družba"
 
 msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:sale.opportunity,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -128,11 +128,11 @@ msgstr "Družba"
 
 msgctxt "field:sale.opportunity.history,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:sale.opportunity.history,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:sale.opportunity.history,date:"
 msgid "Change Date"
@@ -200,11 +200,11 @@ msgstr "Zapisal"
 
 msgctxt "field:sale.opportunity.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:sale.opportunity.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:sale.opportunity.line,id:"
 msgid "ID"
@@ -276,11 +276,11 @@ msgstr "Pretvorjen znesek"
 
 msgctxt "field:sale.opportunity_employee,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:sale.opportunity_employee,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
@@ -356,11 +356,11 @@ msgstr "Pretvorjen znesek"
 
 msgctxt "field:sale.opportunity_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
@@ -432,11 +432,11 @@ msgstr "Pretvorjen znesek"
 
 msgctxt "field:sale.opportunity_monthly,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:sale.opportunity_monthly,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
