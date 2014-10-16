@@ -4,12 +4,12 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "Vous ne pouvez modifier le tier de l'adresse \"%s\"."
+msgstr "Vous ne pouvez modifier le tiers de l'adresse « %s »."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
 msgstr ""
-"Nom de catégorie \"%s\" invalide: vous ne pouvez utiliser \"/\" dans le "
+"Nom de catégorie « %s » invalide: vous ne pouvez utiliser « / » dans le "
 "champ nom. "
 
 msgctxt "error:party.category:"
@@ -22,11 +22,11 @@ msgstr "Le service VIES n'est pas disponible, veuillez essayer plus tard."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "Vous ne pouvez pas modifier le tier sur le moyen de contact \"%s\"."
+msgstr "Vous ne pouvez pas modifier le tiers sur le moyen de contact « %s »."
 
 msgctxt "error:party.party:"
 msgid "Invalid VAT number \"%(vat)s\" on party \"%(party)s\"."
-msgstr "Le numéro de TVA \"%(vat)s\" sur le tiers \"%(party)s\" est invalide."
+msgstr "Le numéro de TVA « %(vat)s » sur le tiers « %(party)s » est invalide."
 
 msgctxt "error:party.party:"
 msgid "The code of the party must be unique."
@@ -98,7 +98,7 @@ msgstr "Mis à jour par"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "Code Postal"
+msgstr "Code postal"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -275,10 +275,6 @@ msgstr "Catégories"
 msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Code"
-
-msgctxt "field:party.party,code_length:"
-msgid "Code Length"
-msgstr "Longueur du code"
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
@@ -564,7 +560,7 @@ msgstr "VIES"
 
 msgctxt "view:party.check_vies.no_result:"
 msgid "You must have a recent version of \"vatnumber\" installed!"
-msgstr "Vous devez avoir une version récente de \"vatnumber\" installée"
+msgstr "Vous devez avoir une version récente de « vatnumber » installée !"
 
 msgctxt "view:party.check_vies.result:"
 msgid "VAT Information Exchange System Results"
