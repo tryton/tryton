@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr "Neveljave IBAN \"%s\""
+msgstr "Neveljaven IBAN \"%s\""
 
 msgctxt "field:bank,bic:"
 msgid "BIC"
@@ -12,11 +12,11 @@ msgstr "BIC"
 
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:bank,id:"
 msgid "ID"
@@ -44,11 +44,11 @@ msgstr "Banka"
 
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
@@ -84,11 +84,11 @@ msgstr "Bančni račun"
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
@@ -116,11 +116,11 @@ msgstr "Bančni račun"
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
@@ -129,6 +129,10 @@ msgstr "ID"
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
 msgstr "Številka"
+
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Račun skrčeno"
 
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
