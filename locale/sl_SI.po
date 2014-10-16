@@ -64,11 +64,11 @@ msgstr "Kontakt"
 
 msgctxt "field:stock.shipment.drop,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.shipment.drop,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
