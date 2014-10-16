@@ -306,7 +306,7 @@ msgstr "Verlust"
 
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Name"
@@ -390,7 +390,7 @@ msgstr "Monat"
 
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Name"
@@ -462,7 +462,7 @@ msgstr "Monat"
 
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Name"
@@ -486,7 +486,7 @@ msgstr "Jahr-Monat"
 
 msgctxt "help:sale.opportunity,amount:"
 msgid "Estimated revenue amount"
-msgstr "Geschätzter Ertrag"
+msgstr "Veranschlagter Ertrag"
 
 msgctxt "help:sale.opportunity,probability:"
 msgid "Percentage between 0 and 100"
