@@ -256,7 +256,7 @@ msgstr "Bien cordialement,"
 
 msgctxt "odt:party.letter:"
 msgid "Date:"
-msgstr "Date :"
+msgstr "Date :"
 
 msgctxt "odt:party.letter:"
 msgid "Dear Madams and Sirs,"
@@ -264,7 +264,7 @@ msgstr "Chère madame, cher monsieur,"
 
 msgctxt "odt:party.letter:"
 msgid "E-Mail:"
-msgstr "E-Mail :"
+msgstr "Email :"
 
 msgctxt "odt:party.letter:"
 msgid "Phone:"
@@ -272,11 +272,11 @@ msgstr "Téléphone"
 
 msgctxt "odt:party.letter:"
 msgid "Subject:"
-msgstr "Sujet :"
+msgstr "Sujet :"
 
 msgctxt "odt:party.letter:"
 msgid "VAT Number:"
-msgstr "Numéro TVA :"
+msgstr "Numéro TVA :"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
