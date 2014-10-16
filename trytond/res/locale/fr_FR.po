@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:res.group:"
 msgid "The name of the group must be unique!"
-msgstr "Le nom du groupe doit être unique !"
+msgstr "Le nom du groupe doit être unique !"
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
-msgstr "Mauvais mot de passe !"
+msgstr "Mauvais mot de passe !"
 
 msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
-msgstr "Vous ne pouvez pas créer deux utilisateur avec le même identifiant !"
+msgstr "Vous ne pouvez pas créer deux utilisateur avec le même identifiant !"
 
 msgctxt "error:res.user:"
 msgid ""
@@ -330,7 +330,7 @@ msgstr "Créé par"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"
@@ -562,7 +562,7 @@ msgstr "Action - Groupe"
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Lance les déclencheurs \"À temps\""
+msgstr "Lance les déclencheurs « À temps »"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
