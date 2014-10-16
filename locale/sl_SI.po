@@ -16,11 +16,11 @@ msgstr "Prezrte postavke računa"
 
 msgctxt "field:purchase.purchase-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.purchase-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.purchase-account.invoice.line,id:"
 msgid "ID"
@@ -48,11 +48,11 @@ msgstr "Zapisal"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
 msgid "ID"
