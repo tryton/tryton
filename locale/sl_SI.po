@@ -2,17 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:project.allocation:"
-msgid "Percentage must be greater than zero"
-msgstr "Odstotek mora biti večji od nič"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
@@ -44,11 +40,11 @@ msgstr "Zapisal"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
