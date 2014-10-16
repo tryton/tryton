@@ -76,7 +76,7 @@ msgstr "Verkäufe"
 
 msgctxt "field:product.template,delivery_time:"
 msgid "Delivery Time"
-msgstr "Lieferfrist"
+msgstr "Lieferzeitraum"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
