@@ -16,11 +16,11 @@ msgstr "Šifra"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
@@ -56,11 +56,11 @@ msgstr "Dežela"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
@@ -89,6 +89,46 @@ msgstr "Zapisano"
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
+
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr "Mesto"
+
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr "Država"
+
+msgctxt "field:country.zip,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:country.zip,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:country.zip,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:country.zip,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Regija"
+
+msgctxt "field:country.zip,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:country.zip,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr "Poštna številka"
 
 msgctxt "help:country.country,code:"
 msgid ""
@@ -835,7 +875,7 @@ msgid "Puerto Rico"
 msgstr "Portoriko"
 
 msgctxt "model:country.country,name:ps"
-msgid "Palestine, State of"
+msgid "Palestinsko ozemlje, zasedeno"
 msgstr "Palestina, država"
 
 msgctxt "model:country.country,name:pt"
@@ -16475,7 +16515,7 @@ msgid "Västernorrlands län"
 msgstr "Västernorrlands län"
 
 msgctxt "model:country.subdivision,name:se-z"
-msgid "Jämtlands län"
+msgid "Jämtlande län"
 msgstr "Jämtlands län"
 
 msgctxt "model:country.subdivision,name:sg-01"
@@ -20494,9 +20534,17 @@ msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
 msgstr "Mashonaland West"
 
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr "Poštna številka"
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Dežele"
+
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
+msgstr "Poštna številka"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -20917,3 +20965,7 @@ msgstr "Razdelba"
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Razdelbe"
+
+msgctxt "view:country.zip:"
+msgid "Zip"
+msgstr "Poštna številka"
