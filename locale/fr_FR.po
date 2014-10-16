@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" a atteint le montant de la limite de crédit (%s)"
+msgstr "« %s » a atteint le montant de la limite de crédit (%s)"
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" a atteint la limite de crédit de relance (%s)"
+msgstr "« %s » a atteint la limite de crédit de relance (%s)"
 
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
