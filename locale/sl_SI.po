@@ -28,11 +28,11 @@ msgstr "Oznaka"
 
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
@@ -124,11 +124,11 @@ msgstr "Zapisal"
 
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
