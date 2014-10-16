@@ -8,11 +8,11 @@ msgstr "Dnevi v tednu"
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
