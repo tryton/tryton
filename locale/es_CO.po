@@ -21,7 +21,11 @@ msgstr "Cuenta Equivalente del Costo"
 
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
-msgstr "Inventario Diario "
+msgstr "Libro Contable de Inventarios"
+
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Método Contabilización de Inventario"
 
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
@@ -209,6 +213,18 @@ msgstr "Pregunta Actualiza Precio de Costo"
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
 msgstr "Actualizar Costo Precio del Asiento Mostrado"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Ninguno"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Cuenta de Inventarios"
 
 msgctxt "view:product.update_cost_price.ask:"
 msgid "Update Cost Price"
