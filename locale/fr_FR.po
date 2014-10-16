@@ -12,11 +12,13 @@ msgstr "Le taux de la devise doit être plus grand ou égal à zéro"
 
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on  currency \"%(currency)s\"."
-msgstr "Le groupement \"%(grouping)s\" de la devise \"%(currency)s\" est invalide."
+msgstr ""
+"Le groupement « %(grouping)s » de la devise « %(currency)s » est invalide."
 
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr "Aucun taux trouvé pour la devise \"%s\" à la date \"%s\"."
+msgstr ""
+"Aucun taux trouvé pour la devise « %(currency)s » à la date « %(date)s »."
 
 msgctxt "field:currency.currency,active:"
 msgid "Active"
