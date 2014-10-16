@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:project.work:"
 msgid "There is no list price on work \"%s\"."
-msgstr "Il n'y a pas de liste de prix pour le travail \"%s\"."
+msgstr "Il n'y a pas de liste de prix pour le travail « %s »."
 
 msgctxt "error:project.work:"
 msgid "There is no party on work \"%s\"."
-msgstr "Il n'y a pas de tiers sur le travail \"%s\"."
+msgstr "Il n'y a pas de tiers sur le travail « %s »."
 
 msgctxt "error:project.work:"
 msgid "There is no product on work \"%s\"."
-msgstr "Il n'y a pas de produit sur le travail \"%s\"."
+msgstr "Il n'y a pas de produit sur le travail « %s »."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
