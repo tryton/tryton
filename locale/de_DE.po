@@ -130,6 +130,10 @@ msgctxt "field:bank.account.number,number:"
 msgid "Number"
 msgstr "Nummer"
 
+msgctxt "field:bank.account.number,number_compact:"
+msgid "Number Compact"
+msgstr "Nummer Kompaktformat"
+
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
 msgstr "Name"
