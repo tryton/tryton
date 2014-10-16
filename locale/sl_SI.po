@@ -40,11 +40,11 @@ msgstr "Družba"
 
 msgctxt "field:account.payment,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.payment,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
@@ -108,11 +108,11 @@ msgstr "Družba"
 
 msgctxt "field:account.payment.group,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.payment.group,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.payment.group,id:"
 msgid "ID"
@@ -152,11 +152,11 @@ msgstr "Družba"
 
 msgctxt "field:account.payment.journal,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:account.payment.journal,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
