@@ -28,12 +28,20 @@ msgid "End Balance must be \"%s\"."
 msgstr "El saldo final debe ser «%s»."
 
 msgctxt "error:account.statement:"
+msgid "Number of Lines must be \"%s\"."
+msgstr "Número de Líneas debe ser «%s»."
+
+msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr "Debe cancelar el extracto «%s» antes de eliminar."
 
 msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements, do you want to proceed?"
-msgstr "Hay facturas pagadas en extractos en borrador, ¿desea continuar?"
+msgid "There are paid invoices on draft statements."
+msgstr "Hay facturas pagadas sobre los extractos en borrador."
+
+msgctxt "error:account.statement:"
+msgid "Total Amount must be \"%s\"."
+msgstr "Importe Total debe ser «%s»."
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
@@ -72,8 +80,16 @@ msgid "Journal"
 msgstr "Diario"
 
 msgctxt "field:account.statement,lines:"
-msgid "Transactions"
+msgid "Lines"
 msgstr "Transacciones"
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
+msgstr "Número de Líneas"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Name"
@@ -86,6 +102,14 @@ msgstr "Saldo inicial"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Estado"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr "Importe Total"
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr "Validación"
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
@@ -126,6 +150,10 @@ msgstr "Nombre"
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr "Tipo de validación"
 
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
@@ -171,6 +199,10 @@ msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr "Asiento contable"
 
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Número"
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Entidad"
@@ -178,6 +210,10 @@ msgstr "Entidad"
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
 msgstr "Nombre"
+
+msgctxt "field:account.statement.line,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -219,6 +255,10 @@ msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr "Diarios de extracto"
 
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr "Extracto"
+
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
 msgstr "Todo"
@@ -258,6 +298,66 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr "Extracto"
 
+msgctxt "odt:account.statement:"
+msgid "#"
+msgstr "#"
+
+msgctxt "odt:account.statement:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "odt:account.statement:"
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgctxt "odt:account.statement:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "odt:account.statement:"
+msgid "Date:"
+msgstr "Fecha:"
+
+msgctxt "odt:account.statement:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "odt:account.statement:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "odt:account.statement:"
+msgid "E-Mail:"
+msgstr "Correo electrónico:"
+
+msgctxt "odt:account.statement:"
+msgid "Journal:"
+msgstr "Diario:"
+
+msgctxt "odt:account.statement:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "odt:account.statement:"
+msgid "Party"
+msgstr "Entidad"
+
+msgctxt "odt:account.statement:"
+msgid "Phone:"
+msgstr "Teléfono:"
+
+msgctxt "odt:account.statement:"
+msgid "Statement"
+msgstr "Extracto"
+
+msgctxt "odt:account.statement:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "odt:account.statement:"
+msgid "VAT Number:"
+msgstr "CUIT:"
+
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
 msgstr "Cancelado"
@@ -273,6 +373,18 @@ msgstr "Confirmado"
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validado"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Saldo"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr "Número de Líneas"
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
