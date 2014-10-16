@@ -22,6 +22,11 @@ msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
 msgstr "Crear Ordenes de Producción"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
+msgid "Production"
+msgstr "Producción"
+
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
 msgstr "Generar Ordenes de Producción"
