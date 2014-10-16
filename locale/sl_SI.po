@@ -8,11 +8,11 @@ msgstr "Privzete lokacije"
 
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
