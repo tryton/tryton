@@ -3,13 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
-msgid "There are some late supplier moves, are you sure to ignore them?"
-msgstr ""
-"Il y a des mouvements fournisseurs tardifs, êtes-vous sûr de les ignorer ?"
+msgid "There are some late supplier moves."
+msgstr "Il y a des mouvements de fournisseur tardifs."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
-msgstr "Le prix d'achat du produit \"%s\" est manquant."
+msgstr "Le prix d'achat du produit « %s » est manquant."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "This price is necessary for creating purchases."
@@ -157,22 +156,6 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,company:"
-msgid "Company"
-msgstr "Société"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,party:"
-msgid "Supplier"
-msgstr "Fournisseur"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
-msgid "Payment Term"
-msgstr "Condition de paiement"
-
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Société"
@@ -270,6 +253,21 @@ msgid "Create Purchase"
 msgstr "Créer achat"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "Toutes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Interne"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Achats"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
 msgstr "Toutes"
@@ -314,10 +312,6 @@ msgstr "Créer les demandes d'achat"
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
 msgstr "Créer l'achat - Demande de tiers"
-
-msgctxt "model:purchase.request.create_purchase.ask_term,name:"
-msgid "Create Purchase Ask Term"
-msgstr "Créer l'achat - Demande de condition de paiement"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -373,15 +367,11 @@ msgstr "Créer les demandes d'achat"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
-msgstr "Créer les demandes d'achat ?"
+msgstr "Créer les demandes d'achat ?"
 
 msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Créer la commande: fournisseur absent"
-
-msgctxt "view:purchase.request.create_purchase.ask_term:"
-msgid "Create Purchase: Missing Payment Term"
-msgstr "Créer la commande: condition de paiement absente"
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
@@ -421,7 +411,7 @@ msgstr "Création les expéditions internes"
 
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"
-msgstr "Créer les expéditions internes ?"
+msgstr "Créer les expéditions internes ?"
 
 msgctxt "wizard_button:purchase.request.create,start,create_:"
 msgid "Create"
@@ -436,14 +426,6 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Continuer"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr "Continuer"
 
