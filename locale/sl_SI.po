@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
@@ -33,6 +33,10 @@ msgstr "Izbor"
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
 msgstr "JSON izbor"
+
+msgctxt "field:product.attribute,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Izbor razvrščen"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
@@ -64,11 +68,11 @@ msgstr "Nabor"
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
@@ -92,11 +96,11 @@ msgstr "Atributi"
 
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
@@ -118,6 +122,10 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:product.product,attribute_set:"
+msgid "Set"
+msgstr "Nabor"
+
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Atributi"
@@ -129,6 +137,10 @@ msgstr "Nabor"
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
 msgstr "Za vsako vrstico en par ključa in oznake, ločena z \":\""
+
+msgctxt "help:product.attribute,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "V primeru ko mora biti izbor razvrščen po oznaki"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
