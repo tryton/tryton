@@ -197,8 +197,8 @@ msgid "Active"
 msgstr "Aktiv"
 
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
-msgstr "Kategorie Maßeinheit"
+msgid "Category"
+msgstr "Kategorie"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
