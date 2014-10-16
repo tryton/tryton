@@ -8,11 +8,11 @@ msgstr "Razmerja"
 
 msgctxt "field:party.relation,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
@@ -44,11 +44,11 @@ msgstr "Zapisal"
 
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
@@ -80,11 +80,11 @@ msgstr "Zapisal"
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
