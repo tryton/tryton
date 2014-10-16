@@ -8,7 +8,7 @@ msgid ""
 " it and create a new one."
 msgstr ""
 "Če ME še vendno ni uporabljena, jo lahko zbrišete ali pa izklopite in "
-"ustvarite novo."
+"izdelate novo."
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
@@ -29,11 +29,11 @@ msgstr "Podkategorije"
 
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
@@ -73,11 +73,11 @@ msgstr "Nabavna cena"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
@@ -137,11 +137,11 @@ msgstr "Obračun"
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
@@ -188,16 +188,16 @@ msgid "Active"
 msgstr "Aktivno"
 
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
+msgid "Category"
 msgstr "Kategorija"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
@@ -241,11 +241,11 @@ msgstr "Zapisal"
 
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr "Ustvarjeno"
+msgstr "Izdelano"
 
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Ustvaril"
+msgstr "Izdelal"
 
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
@@ -575,9 +575,8 @@ msgctxt "model:product.uom,symbol:uom_ounce"
 msgid "oz"
 msgstr "oz"
 
-#, fuzzy
 msgctxt "model:product.uom,symbol:uom_pound"
-msgid "lb"
+msgid "lbs"
 msgstr "lbs"
 
 msgctxt "model:product.uom,symbol:uom_second"
