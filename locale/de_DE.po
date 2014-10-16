@@ -467,7 +467,7 @@ msgstr "Entwurf"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Anfragen"
+msgstr "Anforderungen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
