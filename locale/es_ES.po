@@ -16,7 +16,7 @@ msgstr "Importe del pago"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
-msgstr "Tipo de pago"
+msgstr "Clase de pago"
 
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
