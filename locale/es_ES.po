@@ -222,14 +222,6 @@ msgstr "No se puede borrar la factura numerada \"%s\"."
 
 msgctxt "error:account.invoice:"
 msgid ""
-"The period of Invoice \"%s\" is closed.\n"
-"Use the today for cancel move?"
-msgstr ""
-"El período de la factura \"%s\" está cerrado.\n"
-"¿Desea usar el actual para el asiento de cancelación?"
-
-msgctxt "error:account.invoice:"
-msgid ""
 "There is no invoice sequence for invoice \"%(invoice)s\" on the "
 "period/fiscal year \"%(period)s\"."
 msgstr ""
@@ -272,6 +264,54 @@ msgid ""
 msgstr ""
 "No puede cambiar la secuencia de facturas en el período \"%s\" porque ya hay"
 " facturas confirmadas en este período."
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "Redondeo impuestos"
+
+msgctxt "field:account.configuration,tax_roundings:"
+msgid "Tax Roundings"
+msgstr "Redondeo impuestos"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "field:account.configuration.tax_rounding,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:account.configuration.tax_rounding,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:account.configuration.tax_rounding,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.tax_rounding,method:"
+msgid "Method"
+msgstr "Método"
+
+msgctxt "field:account.configuration.tax_rounding,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.configuration.tax_rounding,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:account.configuration.tax_rounding,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.configuration.tax_rounding,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -742,8 +782,8 @@ msgid "Lines"
 msgstr "Líneas"
 
 msgctxt "field:account.invoice.payment_term,name:"
-msgid "Payment Term"
-msgstr "Plazo de pago"
+msgid "Name"
+msgstr "Nombre"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
 msgid "Name"
@@ -952,6 +992,10 @@ msgstr "Si está marcada, se pagarán las facturas actuales."
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
 msgstr "Sirve para ordenar las líneas de forma ascendente."
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Configuración redondeo impuestos"
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
@@ -1281,6 +1325,22 @@ msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Invoice"
 msgstr "Factura de proveedor validada"
 
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "Por documento"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "Por línea"
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Document"
+msgstr "Por documento"
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Line"
+msgstr "Por línea"
+
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Cancelada"
@@ -1460,6 +1520,14 @@ msgstr "Martes"
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid "Wednesday"
 msgstr "Miércoles"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Configuración redondeo impuestos"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Roundings"
+msgstr "Configuración redondeo impuestos"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
