@@ -247,6 +247,14 @@ msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
+msgid "Latest Move Date"
+msgstr "Data últim assentament"
+
+msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
+msgid "Next Depreciation Date"
+msgstr "Següent data amortització"
+
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr "Data final"
@@ -315,6 +323,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durada de l'amortització"
 
+msgctxt "help:account.asset.update.show_depreciation,date:"
+msgid ""
+"The date must be between the last update/depreciation date and the next "
+"depreciation date."
+msgstr ""
+"La data ha d'estar compresa entre l'últim dia de la data de "
+"amortització/actualització i la següent data de amortització."
+
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
 msgstr "En mesos"
@@ -333,7 +349,7 @@ msgstr "Actiu"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Actiu - Actualitza - Moviment"
+msgstr "Actiu - Actualitza - Assentament"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
