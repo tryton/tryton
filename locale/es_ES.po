@@ -16,7 +16,7 @@ msgstr "Valores de haber/debe erróneos."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using inactive account \"%s\"."
-msgstr "No puede crear una línea de movimiento usando una cuenta inactiva \"%s\"."
+msgstr "No puede crear un apunte usando una cuenta inactiva \"%s\"."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
@@ -196,6 +196,10 @@ msgstr "Cuenta"
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
 msgstr "Activa"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
