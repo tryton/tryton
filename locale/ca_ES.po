@@ -16,7 +16,7 @@ msgstr "Valors d'haver/deure erronis."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using inactive account \"%s\"."
-msgstr "No podeu crear una línia de moviment utilitzant un compte \"%s\" inactiu."
+msgstr "No podeu crear un apunt utilitzant un compte \"%s\" inactiu."
 
 msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
@@ -196,6 +196,10 @@ msgstr "Compte"
 msgctxt "field:analytic_account.line,active:"
 msgid "Active"
 msgstr "Actiu"
+
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
