@@ -22,6 +22,10 @@ msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr "Diari d'estoc"
 
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr "Mètode comptabilització de l'estoc"
+
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr "Compte d'estoc"
@@ -208,6 +212,18 @@ msgstr "Demana actualitzar preu de cost"
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
 msgstr "Actualitza preu de cost. Mostra assentament"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Cap"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Comptabilització de l'estoc"
 
 msgctxt "view:product.update_cost_price.ask:"
 msgid "Update Cost Price"
