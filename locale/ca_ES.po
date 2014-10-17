@@ -8,7 +8,7 @@ msgstr "El codi del pais ha de ser únic."
 
 msgctxt "error:country.country:"
 msgid "The name of the country must be unique."
-msgstr "El nom del pais ha de ser únic."
+msgstr "El nom del país ha de ser únic."
 
 msgctxt "field:country.country,code:"
 msgid "Code"
@@ -89,6 +89,46 @@ msgstr "Data modificació"
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
+
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr "Ciutat"
+
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr "País"
+
+msgctxt "field:country.zip,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:country.zip,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:country.zip,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:country.zip,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Subdivisió"
+
+msgctxt "field:country.zip,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:country.zip,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
+
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr "Codi postal"
 
 msgctxt "help:country.country,code:"
 msgid ""
@@ -20494,9 +20534,17 @@ msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
 msgstr "Mashonaland West"
 
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr "Codi postal"
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Països"
+
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
+msgstr "Codi postal"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -20917,3 +20965,7 @@ msgstr "Subdivisió"
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Subdivisions"
+
+msgctxt "view:country.zip:"
+msgid "Zip"
+msgstr "Codi postal"
