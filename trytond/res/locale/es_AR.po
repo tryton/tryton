@@ -102,7 +102,7 @@ msgstr "Usuario creación"
 
 msgctxt "field:ir.model.field-res.group,field:"
 msgid "Model Field"
-msgstr "Model de Campo"
+msgstr "Campo del modelo"
 
 msgctxt "field:ir.model.field-res.group,group:"
 msgid "Group"
@@ -562,11 +562,11 @@ msgstr "Acción - Grupo"
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Ejecutar Disparadores Al Tiempo"
+msgstr "Ejecutar disparadores por tiempo"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "Modelo de Botón - Grupo"
+msgstr "Modelo Botón - Grupo"
 
 msgctxt "model:ir.model.field-res.group,name:"
 msgid "Model Field Group Rel"
@@ -574,11 +574,11 @@ msgstr "Relación entre grupo y campo del modelo"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
-msgstr "Regla de grupo - grupo"
+msgstr "Regla de grupo - Grupo"
 
 msgctxt "model:ir.rule.group-res.user,name:"
 msgid "Rule Group - User"
-msgstr "Regla de grupo - usuario"
+msgstr "Regla de grupo - Usuario"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
@@ -618,7 +618,7 @@ msgstr "Administrador"
 
 msgctxt "model:res.user,name:user_trigger"
 msgid "Cron Trigger"
-msgstr "Disparador del Programador de tareas"
+msgstr "Programador de disparadores"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
@@ -630,7 +630,7 @@ msgstr "Usuario - Grupo"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
-msgstr "Inicio de Configuración de Usuario"
+msgstr "Configuración inicial de Usuario"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"

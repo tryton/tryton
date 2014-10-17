@@ -254,7 +254,7 @@ msgstr ""
 
 msgctxt "error:ir.trigger:"
 msgid "\"On Time\" and others are mutually exclusive!"
-msgstr "¡\"Al Tiempo\" y otros son mutuamente excluyentes!"
+msgstr "¡«Al Tiempo» y otros son mutuamente excluyentes!"
 
 msgctxt "error:ir.trigger:"
 msgid ""
@@ -398,7 +398,7 @@ msgstr "ID"
 
 msgctxt "field:ir.action,keywords:"
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr "Acciones de teclado"
 
 msgctxt "field:ir.action,name:"
 msgid "Name"
@@ -474,7 +474,7 @@ msgstr "ID"
 
 msgctxt "field:ir.action.act_window,keywords:"
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr "Acciones de teclado"
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
@@ -588,6 +588,10 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Acción"
 
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr "Activo"
+
 msgctxt "field:ir.action.act_window.view,create_date:"
 msgid "Create Date"
 msgstr "Fecha creación"
@@ -642,7 +646,7 @@ msgstr "ID"
 
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
-msgstr "Palabra clave"
+msgstr "Acción de teclado"
 
 msgctxt "field:ir.action.keyword,model:"
 msgid "Model"
@@ -702,7 +706,7 @@ msgstr "ID"
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr "Acciones de teclado"
 
 msgctxt "field:ir.action.report,model:"
 msgid "Model"
@@ -802,7 +806,7 @@ msgstr "ID"
 
 msgctxt "field:ir.action.url,keywords:"
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr "Acciones de teclado"
 
 msgctxt "field:ir.action.url,name:"
 msgid "Name"
@@ -866,7 +870,7 @@ msgstr "ID"
 
 msgctxt "field:ir.action.wizard,keywords:"
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr "Acciones de teclado"
 
 msgctxt "field:ir.action.wizard,model:"
 msgid "Model"
@@ -950,7 +954,7 @@ msgstr "Enlace"
 
 msgctxt "field:ir.attachment,name:"
 msgid "Name"
-msgstr "Nombre del adjunto"
+msgstr "Nombre"
 
 msgctxt "field:ir.attachment,rec_name:"
 msgid "Name"
@@ -1384,21 +1388,17 @@ msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
 msgstr "Usuario creación"
 
-msgctxt "field:ir.model.data,date_init:"
-msgid "Init Date"
-msgstr "Fecha de inicio"
-
-msgctxt "field:ir.model.data,date_update:"
-msgid "Update Date"
-msgstr "Fecha de actualización"
-
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
 msgstr "ID del recurso"
 
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
-msgstr "Identificador en el sistema de archivos"
+msgstr "Identificador en el Sistema de Archivos"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr "Valores en el Sistema de Archivos"
 
 msgctxt "field:ir.model.data,id:"
 msgid "ID"
@@ -1415,6 +1415,10 @@ msgstr "Módulo"
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
 msgstr "No Actualizar"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr "Sin sincronizar"
 
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
@@ -2340,6 +2344,10 @@ msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr "Acción"
 
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr "Acciones de teclado"
+
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
 msgstr "Activo"
@@ -2824,6 +2832,10 @@ msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Botones"
 
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Datos"
+
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Campos de Acceso"
@@ -2862,7 +2874,7 @@ msgstr "Propiedades predeterminadas"
 
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "Grabar reglas"
+msgstr "Reglas de registros"
 
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
@@ -2936,13 +2948,23 @@ msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Dominio de acción de ventana"
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Todo"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr "Sin sincronizar"
+
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
 msgstr "Acción de vista de ventana"
 
 msgctxt "model:ir.action.keyword,name:"
 msgid "Action keyword"
-msgstr "Palabra clave de acción"
+msgstr "Acción de teclado"
 
 msgctxt "model:ir.action.report,name:"
 msgid "Action report"
@@ -3008,6 +3030,10 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Alemán"
 
+msgctxt "model:ir.lang,name:lang_ec"
+msgid "Spanish (Ecuador)"
+msgstr "Español (Ecuador)"
+
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Inglés"
@@ -3066,7 +3092,7 @@ msgstr "Modelo de Acceso a Campo"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
-msgstr "Imprimir Gráfico del Modelo"
+msgstr "Imprimir gráfico de modelos"
 
 msgctxt "model:ir.module.module,name:"
 msgid "Module"
@@ -3253,9 +3279,13 @@ msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "Botones"
 
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Datos"
+
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "Campos de Acceso"
+msgstr "Acceso a los campos"
 
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
@@ -3287,7 +3317,7 @@ msgstr "Propiedades predeterminadas"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "Grabar reglas"
+msgstr "Reglas de registros"
 
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
@@ -3379,11 +3409,11 @@ msgstr "Ancho vista de árbol"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
-msgstr "Formulario de acción"
+msgstr "Acción de formulario"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action tree"
-msgstr "Árbol de acciones"
+msgstr "Acción de árbol"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Form relate"
@@ -3619,11 +3649,11 @@ msgstr "Abrir una ventana"
 
 msgctxt "view:ir.action.keyword:"
 msgid "Keyword"
-msgstr "Palabra clave"
+msgstr "Acción de teclado"
 
 msgctxt "view:ir.action.keyword:"
 msgid "Keywords"
-msgstr "Palabras clave"
+msgstr "Acciones de teclado"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -3709,6 +3739,14 @@ msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "Botones"
 
+msgctxt "view:ir.model.data:"
+msgid "Model Data"
+msgstr "Modelo de Datos"
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "Sincronizar"
+
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"
 msgstr "Acceso al Campo"
@@ -3723,7 +3761,7 @@ msgstr "Campos"
 
 msgctxt "view:ir.model.print_model_graph.start:"
 msgid "Print Model Graph"
-msgstr "Imprimir Gráfico del Modelo"
+msgstr "Imprimir gráfico de modelos"
 
 msgctxt "view:ir.model:"
 msgid "Model Description"
@@ -3833,7 +3871,7 @@ msgstr ""
 
 msgctxt "view:ir.rule.group:"
 msgid "Record rules"
-msgstr "Grabar reglas"
+msgstr "Reglas de registros"
 
 msgctxt "view:ir.rule.group:"
 msgid "The rule is satisfied if at least one test is True"
