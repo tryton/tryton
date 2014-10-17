@@ -136,14 +136,6 @@ msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
 msgstr "Heu de cancel·lar l'albarà intern \"%s\" abans de ser eliminat."
 
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "The shipment with code \"%s\" is not yet sent."
-msgstr "L'albarà amb codi \"%s\" encara no s'ha enviat."
-
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "You can not create return shipment"
-msgstr "No podeu crear un albarà de devolució."
-
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
@@ -1092,6 +1084,10 @@ msgstr ""
 "* Un valor buit és un data infinita en el futur.\n"
 "* Una data en el passat proporcionarà valors històrics."
 
+msgctxt "model:ir.action,name:"
+msgid "Create Return Shipment"
+msgstr "Crea albarà de devolució"
+
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Inventaris"
@@ -1155,10 +1151,6 @@ msgstr "Albarans devolució client"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
 msgstr "Configuració d'estoc"
-
-msgctxt "model:ir.action,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Crea albarà de devolució"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
@@ -1589,7 +1581,7 @@ msgstr "A la ubicació"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "VAT Number:"
-msgstr "Magatzem:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
@@ -1649,7 +1641,7 @@ msgstr "A la ubicació:"
 
 msgctxt "odt:stock.shipment.internal.report:"
 msgid "VAT Number:"
-msgstr "Nombre CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "/"
@@ -1693,7 +1685,7 @@ msgstr "Número d'albarà:"
 
 msgctxt "odt:stock.shipment.out.delivery_note:"
 msgid "VAT Number:"
-msgstr "Nombre CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "/"
@@ -1745,7 +1737,7 @@ msgstr "A la ubicació"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "VAT Number:"
-msgstr "Magatzem:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
@@ -1805,7 +1797,7 @@ msgstr "A la ubicació"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "VAT Number:"
-msgstr "Magatzem:"
+msgstr "CIF/NIF:"
 
 msgctxt "odt:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
