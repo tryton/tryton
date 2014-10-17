@@ -209,11 +209,3 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
 msgstr "Continua"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
-msgid "Continue"
-msgstr "Continua"
