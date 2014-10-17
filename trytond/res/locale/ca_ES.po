@@ -350,7 +350,7 @@ msgstr "Direcció idioma"
 
 msgctxt "field:res.user,login:"
 msgid "Login"
-msgstr "Nom d'usuari"
+msgstr "Nom usuari"
 
 msgctxt "field:res.user,menu:"
 msgid "Menu Action"
@@ -486,7 +486,7 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
-msgstr "Nom d'usuari"
+msgstr "Nom usuari"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Name"
