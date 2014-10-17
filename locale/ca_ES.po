@@ -226,14 +226,6 @@ msgstr "No es pot esborrar la factura numerada \"%s\"."
 
 msgctxt "error:account.invoice:"
 msgid ""
-"The period of Invoice \"%s\" is closed.\n"
-"Use the today for cancel move?"
-msgstr ""
-"El període de la factura \"%s\" està tancat.\n"
-"Voleu usar l'actual per l'assentament de cancel·lació?"
-
-msgctxt "error:account.invoice:"
-msgid ""
 "There is no invoice sequence for invoice \"%(invoice)s\" on the "
 "period/fiscal year \"%(period)s\"."
 msgstr ""
@@ -276,6 +268,54 @@ msgid ""
 msgstr ""
 "No podeu canviar la seqüència de factures al període \"%s\" perquè ja hi ha "
 "factures confirmades en aquest període."
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr "Arrodoniment impostos"
+
+msgctxt "field:account.configuration,tax_roundings:"
+msgid "Tax Roundings"
+msgstr "Arrodoniment impostos"
+
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "Configuració"
+
+msgctxt "field:account.configuration.tax_rounding,create_date:"
+msgid "Create Date"
+msgstr "Data creació"
+
+msgctxt "field:account.configuration.tax_rounding,create_uid:"
+msgid "Create User"
+msgstr "Usuari creació"
+
+msgctxt "field:account.configuration.tax_rounding,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.tax_rounding,method:"
+msgid "Method"
+msgstr "Mètode"
+
+msgctxt "field:account.configuration.tax_rounding,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.configuration.tax_rounding,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:account.configuration.tax_rounding,write_date:"
+msgid "Write Date"
+msgstr "Data modificació"
+
+msgctxt "field:account.configuration.tax_rounding,write_uid:"
+msgid "Write User"
+msgstr "Usuari modificació"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -746,8 +786,8 @@ msgid "Lines"
 msgstr "Línies"
 
 msgctxt "field:account.invoice.payment_term,name:"
-msgid "Payment Term"
-msgstr "Termini de pagament"
+msgid "Name"
+msgstr "Nom"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
 msgid "Name"
@@ -956,6 +996,10 @@ msgstr "Si està marcada, les factures actuals es pagaran."
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
 msgstr "Serveix per ordenar les línies de forma ascendent."
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Configuració arrodoniment impostos"
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
@@ -1285,6 +1329,22 @@ msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Invoice"
 msgstr "Factura de proveïdor validada"
 
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr "Per document"
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr "Per línia"
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Document"
+msgstr "Per document"
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Line"
+msgstr "Per línia"
+
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Cancel·lada"
@@ -1464,6 +1524,14 @@ msgstr "Dimarts"
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid "Wednesday"
 msgstr "Dimecres"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Rounding"
+msgstr "Configuració arrodoniment impostos"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Roundings"
+msgstr "Configuració arrodoniment impostos"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
