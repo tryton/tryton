@@ -312,7 +312,7 @@ msgstr "Asunto:"
 
 msgctxt "odt:party.letter:"
 msgid "VAT Number:"
-msgstr "Número CIF/NIF:"
+msgstr "CIF/NIF:"
 
 msgctxt "view:company.company.config.start:"
 msgid "Create Company"
