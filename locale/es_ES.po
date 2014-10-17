@@ -28,7 +28,7 @@ msgstr "Activo"
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Tareas"
+msgstr "Hijos"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
@@ -200,7 +200,7 @@ msgstr "Tarea"
 
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Tareas"
+msgstr "Hijos"
 
 msgctxt "view:project.work:"
 msgid "General"
