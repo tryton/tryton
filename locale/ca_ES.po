@@ -65,7 +65,7 @@ msgstr "Vendes"
 
 msgctxt "field:product.template,delivery_time:"
 msgid "Delivery Time"
-msgstr "Temps d'enviament"
+msgstr "Termini de lliurament"
 
 msgctxt "field:product.template,salable:"
 msgid "Salable"
@@ -754,7 +754,7 @@ msgstr "Descripció:"
 
 msgctxt "odt:sale.sale:"
 msgid "Draft Sale Order"
-msgstr "Comanda de Venda Esborrany"
+msgstr "Comanda de venda esborrany"
 
 msgctxt "odt:sale.sale:"
 msgid "E-Mail:"
