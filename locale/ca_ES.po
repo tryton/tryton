@@ -189,8 +189,8 @@ msgid "Active"
 msgstr "Actiu"
 
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
-msgstr "Categoria d'UdM"
+msgid "Category"
+msgstr "Categoria"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
@@ -326,7 +326,7 @@ msgstr "Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Producte"
+msgstr "Productes"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
@@ -694,7 +694,7 @@ msgstr "Categoria de producte"
 
 msgctxt "view:product.product:"
 msgid "Product"
-msgstr "Producte"
+msgstr "Productes"
 
 msgctxt "view:product.product:"
 msgid "Products"
@@ -706,7 +706,7 @@ msgstr "General"
 
 msgctxt "view:product.template:"
 msgid "Product"
-msgstr "Producte"
+msgstr "Productes"
 
 msgctxt "view:product.template:"
 msgid "Products"
