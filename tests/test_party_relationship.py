@@ -125,6 +125,24 @@ class TestCase(unittest.TestCase):
             self.assertEqual(relation.from_, party1)
             self.assertEqual(relation.to, party3)
 
+            reverse_relation.type = reverse_relation_type
+            reverse_relation.save()
+            self.assertEqual(reverse_relation.from_, party3)
+            self.assertEqual(reverse_relation.to, party1)
+            self.assertEqual(reverse_relation.type, reverse_relation_type)
+            self.assertEqual(relation.from_, party1)
+            self.assertEqual(relation.to, party3)
+            self.assertEqual(relation.type, relation_type)
+
+            relation.type = relation_type
+            relation.save()
+            self.assertEqual(reverse_relation.from_, party3)
+            self.assertEqual(reverse_relation.to, party1)
+            self.assertEqual(reverse_relation.type, reverse_relation_type)
+            self.assertEqual(relation.from_, party1)
+            self.assertEqual(relation.to, party3)
+            self.assertEqual(relation.type, relation_type)
+
             reverse_relation.to = party2
             reverse_relation.save()
             relation.save()  # clear cache
