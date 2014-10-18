@@ -122,6 +122,7 @@ class PartyRelationAll(PartyRelation, ModelView):
     def write(cls, *args):
         pool = Pool()
         Relation = pool.get('party.relation')
+        RelationType = pool.get('party.relation.type')
 
         all_records = sum(args[0:None:2], [])
 
@@ -154,6 +155,10 @@ class PartyRelationAll(PartyRelation, ModelView):
                 reverse_values['to'] = reverse_values.pop('from_')
             elif 'to' in values:
                 reverse_values['from_'] = reverse_values.pop('to')
+            if values.get('type'):
+                type_ = RelationType(values['type'])
+                reverse_values['type'] = (type_.reverse.id
+                    if type_.reverse else None)
             straight_relations = [r for r in relations if not r.id % 2]
             reverse_relations = [r for r in relations if r.id % 2]
             if straight_relations:
