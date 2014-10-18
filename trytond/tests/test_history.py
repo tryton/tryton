@@ -184,6 +184,15 @@ class HistoryTestCase(unittest.TestCase):
             History.restore_history([history_id], datetime.datetime.min)
             self.assertRaises(UserError, History.read, [history_id])
 
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            History.delete([History(history_id)])
+
+            transaction.cursor.commit()
+
+        with Transaction().start(DB_NAME, USER, context=CONTEXT):
+            History.restore_history([history_id], datetime.datetime.max)
+            self.assertRaises(UserError, History.read, [history_id])
+
     @unittest.skipIf(backend.name() in ('sqlite', 'mysql'),
         'now() is not the start of the transaction')
     def test0045restore_history_same_timestamp(self):

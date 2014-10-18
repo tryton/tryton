@@ -305,9 +305,9 @@ class ModelSQL(ModelStorage):
         history = cls.__table_history__()
         columns = []
         hcolumns = []
-        for fname, field in sorted(cls._fields.iteritems()):
-            if hasattr(field, 'set'):
-                continue
+        fnames = sorted(n for n, f in cls._fields.iteritems()
+            if not hasattr(f, 'set'))
+        for fname in fnames:
             columns.append(Column(table, fname))
             if fname == 'write_uid':
                 hcolumns.append(Literal(transaction.user))
@@ -315,6 +315,10 @@ class ModelSQL(ModelStorage):
                 hcolumns.append(Now())
             else:
                 hcolumns.append(Column(history, fname))
+
+        def is_deleted(values):
+            return all(not v for n, v in zip(fnames, values)
+                if n not in ['id', 'write_uid', 'write_date'])
 
         to_delete = []
         to_update = []
@@ -325,7 +329,7 @@ class ModelSQL(ModelStorage):
             cursor.execute(*history.select(*hcolumns,
                     where=hwhere, order_by=horder, limit=1))
             values = cursor.fetchone()
-            if not values:
+            if not values or is_deleted(values):
                 to_delete.append(id_)
             else:
                 to_update.append(id_)
