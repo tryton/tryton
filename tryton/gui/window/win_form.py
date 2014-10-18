@@ -267,7 +267,7 @@ class WinForm(NoModal):
             self.screen.screen_container.alternate_viewport.connect(
                     'key-press-event', self.on_keypress)
 
-        if self.save_current:
+        if self.save_current and not new:
             self.screen.signal_connect(self, 'record-message',
                 self.activate_save)
             self.screen.signal_connect(self, 'record-modified',
