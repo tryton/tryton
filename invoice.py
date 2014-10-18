@@ -363,8 +363,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
 
         if self.party:
             invoice_address = self.party.address_get(type='invoice')
-            res['invoice_address'] = invoice_address.id
-            res['invoice_address.rec_name'] = invoice_address.rec_name
+            if invoice_address:
+                res['invoice_address'] = invoice_address.id
+                res['invoice_address.rec_name'] = invoice_address.rec_name
         return res
 
     def on_change_with_currency_digits(self, name=None):
