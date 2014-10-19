@@ -34,12 +34,6 @@ msgid "A warehouse must be defined for quotation of purchase \"%s\"."
 msgstr "Debe definir una bodega para la cotización de compra \"%s\"."
 
 msgctxt "error:purchase.purchase:"
-msgid "Invoice address must be defined for quotation of purchase \"%s\"."
-msgstr ""
-"La dirección de la factura debe definirse en la cotización de la compra "
-"\"%s\"."
-
-msgctxt "error:purchase.purchase:"
 msgid "Missing \"Account Payable\" on party \"%s\"."
 msgstr "Falta la \"Cuenta por Pagar\" en el tercero \"%s\"."
 
