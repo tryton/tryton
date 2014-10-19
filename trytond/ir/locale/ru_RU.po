@@ -562,6 +562,11 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "Действие"
 
+#, fuzzy
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr "Действующий"
+
 msgctxt "field:ir.action.act_window.view,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
@@ -1358,14 +1363,6 @@ msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
 
-msgctxt "field:ir.model.data,date_init:"
-msgid "Init Date"
-msgstr "Дата уставки"
-
-msgctxt "field:ir.model.data,date_update:"
-msgid "Update Date"
-msgstr "Дата обновления"
-
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
 msgstr "Ресурс ID"
@@ -1373,6 +1370,10 @@ msgstr "Ресурс ID"
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
 msgstr "Идентификатор в файловой системе"
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
+msgstr ""
 
 msgctxt "field:ir.model.data,id:"
 msgid "ID"
@@ -1389,6 +1390,10 @@ msgstr "Модуль"
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
 msgstr "Нет обновлений"
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
+msgstr ""
 
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Name"
@@ -2315,6 +2320,10 @@ msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr "Действие"
 
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr ""
+
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
 msgstr "Действующий"
@@ -2808,6 +2817,11 @@ msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Кнопки"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr "Данные"
+
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr "Доступ к полям"
@@ -2920,6 +2934,17 @@ msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "Действие окна домен"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr "Все"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr ""
+
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
 msgstr "Действие окна вида"
@@ -2991,6 +3016,10 @@ msgstr "Чешский"
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Немецкий"
+
+msgctxt "model:ir.lang,name:lang_ec"
+msgid "Spanish (Ecuador)"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
@@ -3235,6 +3264,11 @@ msgstr "Доступ к моделям"
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "Кнопки"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
+msgstr "Данные"
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
@@ -3692,6 +3726,14 @@ msgstr "Кнопка"
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
 msgstr "Кнопки"
+
+msgctxt "view:ir.model.data:"
+msgid "Model Data"
+msgstr ""
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr ""
 
 msgctxt "view:ir.model.field.access:"
 msgid "Field Access"

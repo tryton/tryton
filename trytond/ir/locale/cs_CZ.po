@@ -545,6 +545,10 @@ msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr ""
 
+msgctxt "field:ir.action.act_window.view,active:"
+msgid "Active"
+msgstr ""
+
 msgctxt "field:ir.action.act_window.view,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -1341,20 +1345,16 @@ msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
 msgstr ""
 
-msgctxt "field:ir.model.data,date_init:"
-msgid "Init Date"
-msgstr ""
-
-msgctxt "field:ir.model.data,date_update:"
-msgid "Update Date"
-msgstr ""
-
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
 msgstr ""
 
 msgctxt "field:ir.model.data,fs_id:"
 msgid "Identifier on File System"
+msgstr ""
+
+msgctxt "field:ir.model.data,fs_values:"
+msgid "Values on File System"
 msgstr ""
 
 msgctxt "field:ir.model.data,id:"
@@ -1371,6 +1371,10 @@ msgstr ""
 
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
+msgstr ""
+
+msgctxt "field:ir.model.data,out_of_sync:"
+msgid "Out of Sync"
 msgstr ""
 
 msgctxt "field:ir.model.data,rec_name:"
@@ -2297,6 +2301,10 @@ msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr ""
 
+msgctxt "field:ir.ui.menu,action_keywords:"
+msgid "Action Keywords"
+msgstr ""
+
 msgctxt "field:ir.ui.menu,active:"
 msgid "Active"
 msgstr ""
@@ -2765,6 +2773,10 @@ msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_model_data_form"
+msgid "Data"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
 msgstr ""
@@ -2877,6 +2889,16 @@ msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr ""
 
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
+msgid "Out of Sync"
+msgstr ""
+
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
 msgstr ""
@@ -2947,6 +2969,10 @@ msgstr ""
 
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
+msgstr ""
+
+msgctxt "model:ir.lang,name:lang_ec"
+msgid "Spanish (Ecuador)"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_en"
@@ -3191,6 +3217,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_model_data_form"
+msgid "Data"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
@@ -3647,6 +3677,14 @@ msgstr ""
 
 msgctxt "view:ir.model.button:"
 msgid "Buttons"
+msgstr ""
+
+msgctxt "view:ir.model.data:"
+msgid "Model Data"
+msgstr ""
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
 msgstr ""
 
 msgctxt "view:ir.model.field.access:"

@@ -3036,6 +3036,10 @@ msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
 msgstr "Deutsch"
 
+msgctxt "model:ir.lang,name:lang_ec"
+msgid "Spanish (Ecuador)"
+msgstr "Spanisch (Ecuador)"
+
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Englisch"
