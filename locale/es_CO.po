@@ -122,6 +122,10 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Modificado por Usuario"
 
+msgctxt "field:product.product,attribute_set:"
+msgid "Set"
+msgstr "Kit"
+
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Atributos"
