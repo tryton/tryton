@@ -575,8 +575,9 @@ msgctxt "model:product.uom,symbol:uom_ounce"
 msgid "oz"
 msgstr "oz"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_pound"
-msgid "lbs"
+msgid "lb"
 msgstr "lbs"
 
 msgctxt "model:product.uom,symbol:uom_second"

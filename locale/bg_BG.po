@@ -193,8 +193,9 @@ msgctxt "field:product.uom,active:"
 msgid "Active"
 msgstr "Активен"
 
+#, fuzzy
 msgctxt "field:product.uom,category:"
-msgid "UOM Category"
+msgid "Category"
 msgstr "Категория мер. ед."
 
 msgctxt "field:product.uom,create_date:"
