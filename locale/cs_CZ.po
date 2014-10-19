@@ -195,6 +195,10 @@ msgctxt "field:analytic_account.line,active:"
 msgid "Active"
 msgstr ""
 
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
 msgstr ""

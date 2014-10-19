@@ -197,6 +197,11 @@ msgctxt "field:analytic_account.line,active:"
 msgid "Active"
 msgstr "Действующий"
 
+#, fuzzy
+msgctxt "field:analytic_account.line,company:"
+msgid "Company"
+msgstr "Учет.орг."
+
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
