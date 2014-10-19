@@ -38,3 +38,7 @@ msgstr "Ще се използва тази сметка вместо тази �
 msgctxt "model:account.account.template,name:account_template_cogs"
 msgid "COGS"
 msgstr ""
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr ""
