@@ -178,12 +178,6 @@ msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
-"The period of Invoice \"%s\" is closed.\n"
-"Use the today for cancel move?"
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid ""
 "There is no invoice sequence for invoice \"%(invoice)s\" on the "
 "period/fiscal year \"%(period)s\"."
 msgstr ""
@@ -213,6 +207,64 @@ msgid ""
 "You can not change the invoice sequence in period \"%s\" because there is "
 "already an invoice posted in this period"
 msgstr ""
+
+msgctxt "field:account.configuration,tax_rounding:"
+msgid "Tax Rounding"
+msgstr ""
+
+msgctxt "field:account.configuration,tax_roundings:"
+msgid "Tax Roundings"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,configuration:"
+msgid "Configuration"
+msgstr "Настройки"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,method:"
+msgid "Method"
+msgstr "Метод"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
 
 msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -683,8 +735,9 @@ msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
 msgstr "Редове"
 
+#, fuzzy
 msgctxt "field:account.invoice.payment_term,name:"
-msgid "Payment Term"
+msgid "Name"
 msgstr "Условие за плащане"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
@@ -894,6 +947,10 @@ msgstr "Ако е истина текущата(те) сметка(и) ще бъ
 msgctxt "help:account.invoice.payment_term.line,sequence:"
 msgid "Use to order lines in ascending order"
 msgstr "За подреждане на редовете във възходящ ред"
+
+msgctxt "model:account.configuration.tax_rounding,name:"
+msgid "Account Configuration Tax Rounding"
+msgstr ""
 
 msgctxt "model:account.invoice,name:"
 msgid "Invoice"
@@ -1239,6 +1296,22 @@ msgctxt "odt:account.invoice:"
 msgid "Validated Supplier Invoice"
 msgstr ""
 
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Document"
+msgstr ""
+
+msgctxt "selection:account.configuration,tax_rounding:"
+msgid "Per Line"
+msgstr ""
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Document"
+msgstr ""
+
+msgctxt "selection:account.configuration.tax_rounding,method:"
+msgid "Per Line"
+msgstr ""
+
 msgctxt "selection:account.invoice,state:"
 msgid "Canceled"
 msgstr "Отказан"
@@ -1420,6 +1493,14 @@ msgstr "Вторник"
 msgctxt "selection:account.invoice.payment_term.line,weekday:"
 msgid "Wednesday"
 msgstr "Сряда"
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Rounding"
+msgstr ""
+
+msgctxt "view:account.configuration.tax_rounding:"
+msgid "Account Configuration Tax Roundings"
+msgstr ""
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"
