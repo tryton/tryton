@@ -25,11 +25,19 @@ msgid "End Balance must be \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
+msgid "Number of Lines must be \"%s\"."
+msgstr ""
+
+msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgid "There are paid invoices on draft statements."
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid "Total Amount must be \"%s\"."
 msgstr ""
 
 msgctxt "field:account.statement,balance:"
@@ -69,7 +77,15 @@ msgid "Journal"
 msgstr ""
 
 msgctxt "field:account.statement,lines:"
-msgid "Transactions"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
 msgstr ""
 
 msgctxt "field:account.statement,rec_name:"
@@ -82,6 +98,14 @@ msgstr ""
 
 msgctxt "field:account.statement,state:"
 msgid "State"
+msgstr ""
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr ""
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
 msgstr ""
 
 msgctxt "field:account.statement,write_date:"
@@ -122,6 +146,10 @@ msgstr ""
 
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
+msgstr ""
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
 msgstr ""
 
 msgctxt "field:account.statement.journal,write_date:"
@@ -168,12 +196,20 @@ msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
 msgstr ""
 
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr ""
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr ""
 
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
+msgstr ""
+
+msgctxt "field:account.statement.line,sequence:"
+msgid "Sequence"
 msgstr ""
 
 msgctxt "field:account.statement.line,statement:"
@@ -216,6 +252,10 @@ msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
 msgstr ""
 
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
+msgstr ""
+
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
 msgstr ""
@@ -255,6 +295,66 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr ""
 
+msgctxt "odt:account.statement:"
+msgid "#"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Canceled"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Date"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Date:"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Description"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "E-Mail:"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Journal:"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Number"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Party"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Phone:"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Statement"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "Total"
+msgstr ""
+
+msgctxt "odt:account.statement:"
+msgid "VAT Number:"
+msgstr ""
+
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
 msgstr ""
@@ -269,6 +369,18 @@ msgstr ""
 
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
+msgstr ""
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr ""
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
 msgstr ""
 
 msgctxt "view:account.statement.journal:"

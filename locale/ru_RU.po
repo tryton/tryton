@@ -25,11 +25,19 @@ msgid "End Balance must be \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
+msgid "Number of Lines must be \"%s\"."
+msgstr ""
+
+msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements, do you want to proceed?"
+msgid "There are paid invoices on draft statements."
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid "Total Amount must be \"%s\"."
 msgstr ""
 
 #, fuzzy
@@ -77,8 +85,18 @@ msgctxt "field:account.statement,journal:"
 msgid "Journal"
 msgstr "Журнал"
 
+#, fuzzy
 msgctxt "field:account.statement,lines:"
-msgid "Transactions"
+msgid "Lines"
+msgstr "Строки"
+
+#, fuzzy
+msgctxt "field:account.statement,name:"
+msgid "Name"
+msgstr "Правило оплаты"
+
+msgctxt "field:account.statement,number_of_lines:"
+msgid "Number of Lines"
 msgstr ""
 
 #, fuzzy
@@ -95,6 +113,14 @@ msgstr "Начальный баланс"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Статус"
+
+msgctxt "field:account.statement,total_amount:"
+msgid "Total Amount"
+msgstr ""
+
+msgctxt "field:account.statement,validation:"
+msgid "Validation"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.statement,write_date:"
@@ -145,6 +171,10 @@ msgstr "Наименование"
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Name"
 msgstr "Наименование"
+
+msgctxt "field:account.statement.journal,validation:"
+msgid "Validation Type"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.statement.journal,write_date:"
@@ -202,6 +232,11 @@ msgid "Account Move"
 msgstr "Проводка"
 
 #, fuzzy
+msgctxt "field:account.statement.line,number:"
+msgid "Number"
+msgstr "Номер"
+
+#, fuzzy
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Организации"
@@ -210,6 +245,11 @@ msgstr "Организации"
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Name"
 msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:account.statement.line,sequence:"
+msgid "Sequence"
+msgstr "Последовательность"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
@@ -251,6 +291,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_statement"
+msgid "Statement"
 msgstr ""
 
 #, fuzzy
@@ -296,6 +340,78 @@ msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
 msgstr ""
 
+msgctxt "odt:account.statement:"
+msgid "#"
+msgstr ""
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Canceled"
+msgstr "Отменено"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Date:"
+msgstr "Дата:"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Draft"
+msgstr "Черновик"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "E-Mail:"
+msgstr "Эл.почта:"
+
+msgctxt "odt:account.statement:"
+msgid "Journal:"
+msgstr ""
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Number"
+msgstr "Номер"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Party"
+msgstr "Организации"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Phone:"
+msgstr "Телефон:"
+
+msgctxt "odt:account.statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "Total"
+msgstr "Итого"
+
+#, fuzzy
+msgctxt "odt:account.statement:"
+msgid "VAT Number:"
+msgstr "ИНН:"
+
 #, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
@@ -315,6 +431,20 @@ msgstr "Проведен"
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Утвержденный"
+
+#, fuzzy
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Balance"
+msgstr "Баланс"
+
+msgctxt "selection:account.statement.journal,validation:"
+msgid "Number of Lines"
+msgstr ""
 
 msgctxt "view:account.statement.journal:"
 msgid "Statement Journal"
