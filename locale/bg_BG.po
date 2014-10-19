@@ -116,14 +116,6 @@ msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
 
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "The shipment with code \"%s\" is not yet sent."
-msgstr ""
-
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "You can not create return shipment"
-msgstr "Не може да създадете връщане на пратка"
-
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
@@ -1084,6 +1076,10 @@ msgstr ""
 "* Празна дата е неизвестна дата в бъдещето.\n"
 "* Дата от минал период показва исторически данни."
 
+msgctxt "model:ir.action,name:"
+msgid "Create Return Shipment"
+msgstr "Създаване на върната пратка"
+
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Инвентаризации"
@@ -1149,10 +1145,6 @@ msgstr "Пратки върнати от клиент"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
 msgstr "Конфигуриране на наличност"
-
-msgctxt "model:ir.action,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Създаване на върната пратка"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"

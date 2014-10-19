@@ -128,14 +128,6 @@ msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
 msgstr "Внутренее перемещение \"%s\" должно быть отменено перед удалением."
 
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "The shipment with code \"%s\" is not yet sent."
-msgstr "Доставка с кодом \"%s\" ещё не отправлена."
-
-msgctxt "error:stock.shipment.out.return.create:"
-msgid "You can not create return shipment"
-msgstr "Вы не можете создать возврат"
-
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr "Возврат от заказчика \"%s\" должен быть отменен перед удалением."
@@ -1082,6 +1074,10 @@ msgstr ""
 "* Пустое значение - бесконечная дата в будущем\n"
 "* Дата в прошлом - бывшие значения"
 
+msgctxt "model:ir.action,name:"
+msgid "Create Return Shipment"
+msgstr "Создать обратную отправку"
+
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "Инвентаризация"
@@ -1145,10 +1141,6 @@ msgstr "Возвраты от заказчика"
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
 msgstr "Конфигурация склада"
-
-msgctxt "model:ir.action,name:create_shipment_out_return"
-msgid "Create Return Shipment"
-msgstr "Создать обратную отправку"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
