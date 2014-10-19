@@ -93,6 +93,14 @@ msgstr ""
 "журнала."
 
 msgctxt "error:account.move.line:"
+msgid "Party is required on line \"%s\""
+msgstr ""
+
+msgctxt "error:account.move.line:"
+msgid "Party must not be set on line \"%s\""
+msgstr ""
+
+msgctxt "error:account.move.line:"
 msgid "Wrong credit/debit values."
 msgstr "Некорректные значения кредит/дебет."
 
@@ -159,6 +167,12 @@ msgstr ""
 msgctxt "error:account.move.reconciliation:"
 msgid "You can not reconcile line \"%s\" because it is not in valid state."
 msgstr "Вы не можете сверить строку \"%s\" так как она в ошибочном состоянии."
+
+msgctxt "error:account.move:"
+msgid ""
+"The period of move \"%s\" is closed.\n"
+"Use the current period?"
+msgstr ""
 
 msgctxt "error:account.move:"
 msgid "You can not create lines on accountsof different companies in move \"%s\"."
@@ -239,11 +253,9 @@ msgstr ""
 
 msgctxt "error:account.period:"
 msgid ""
-"You can not close period \"%s\" because there are non posted moves in this "
-"period."
+"You can not close period \"%(period)s\" because there are non posted moves "
+"\"%(move)s\" in this period."
 msgstr ""
-"Вы не можете закрыть период \"%s\" так как в нём есть не отправленные "
-"проводки."
 
 msgctxt "error:account.period:"
 msgid "You can not create a period on fiscal year \"%s\" because it is closed."
@@ -337,6 +349,10 @@ msgstr "Комментарий"
 msgctxt "field:account.account,parent:"
 msgid "Parent"
 msgstr "Предок"
+
+msgctxt "field:account.account,party_required:"
+msgid "Party Required"
+msgstr ""
 
 msgctxt "field:account.account,rec_name:"
 msgid "Name"
@@ -490,6 +506,10 @@ msgstr "Наименование"
 msgctxt "field:account.account.template,parent:"
 msgid "Parent"
 msgstr "Предок"
+
+msgctxt "field:account.account.template,party_required:"
+msgid "Party Required"
+msgstr ""
 
 msgctxt "field:account.account.template,rec_name:"
 msgid "Name"
@@ -1211,6 +1231,10 @@ msgctxt "field:account.move.line,party:"
 msgid "Party"
 msgstr "Контрагент"
 
+msgctxt "field:account.move.line,party_required:"
+msgid "Party Required"
+msgstr ""
+
 msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Период"
@@ -1258,14 +1282,6 @@ msgstr "Журнал"
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
 msgstr "Период"
-
-msgctxt "field:account.move.open_reconcile_lines.start,account:"
-msgid "Account"
-msgstr "Счет"
-
-msgctxt "field:account.move.open_reconcile_lines.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.move.print_general_journal.start,company:"
 msgid "Company"
@@ -1345,10 +1361,6 @@ msgstr "Дата изменения"
 msgctxt "field:account.move.reconciliation,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
-
-msgctxt "field:account.move.unreconcile_lines.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.open_aged_balance.start,balance_type:"
 msgid "Type"
@@ -1566,6 +1578,61 @@ msgstr "Проведенная операция"
 msgctxt "field:account.print_trial_balance.start,start_period:"
 msgid "Start Period"
 msgstr "Начальный период"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,account:"
+msgid "Account"
+msgstr "Счет"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,accounts:"
+msgid "Account"
+msgstr "Счет"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,currency_digits:"
+msgid "Currency Digits"
+msgstr "Кол-во цифр валюты"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,date:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,description:"
+msgid "Description"
+msgstr "Описание"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,journal:"
+msgid "Journal"
+msgstr "Журнал"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,lines:"
+msgid "Lines"
+msgstr "Строки"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,parties:"
+msgid "Parties"
+msgstr "Контрагенты"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,party:"
+msgid "Party"
+msgstr "Организации"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,write_off:"
+msgid "Write-Off"
+msgstr "Списание"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
@@ -2625,10 +2692,6 @@ msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
 msgstr "Открыть журнал запросов"
 
-msgctxt "model:account.move.open_reconcile_lines.start,name:"
-msgid "Open Reconcile Lines"
-msgstr "Открыть строки сверки"
-
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
 msgstr "Распечатать основной журнал"
@@ -2640,10 +2703,6 @@ msgstr "Списание строк сверки"
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
 msgstr "Строчки сверки проводок"
-
-msgctxt "model:account.move.unreconcile_lines.start,name:"
-msgid "Unreconcile Lines"
-msgstr "Несверенные строки"
 
 msgctxt "model:account.open_aged_balance.start,name:"
 msgid "Open Aged Balance"
@@ -2676,6 +2735,11 @@ msgstr "Распечатать главную приходно-расходну�
 msgctxt "model:account.print_trial_balance.start,name:"
 msgid "Print Trial Balance"
 msgstr "Распечатать проверочный баланс"
+
+#, fuzzy
+msgctxt "model:account.reconcile.show,name:"
+msgid "Reconcile"
+msgstr "Сверка"
 
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
@@ -2729,6 +2793,10 @@ msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
 msgstr "Обновить схему"
 
+msgctxt "model:ir.action,name:"
+msgid "Payable Lines"
+msgstr "Строки оплаты"
+
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
 msgstr "Балансовый отчет"
@@ -2771,6 +2839,10 @@ msgstr "Типы счетов"
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_cancel_moves"
+msgid "Cancel Moves"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_close_fiscalyear"
@@ -2829,13 +2901,9 @@ msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
 msgstr "Строчки проводки"
 
-msgctxt "model:ir.action,name:act_move_line_payable"
-msgid "Payable Lines"
-msgstr "Строки оплаты"
-
-msgctxt "model:ir.action,name:act_move_line_receivable"
-msgid "Receivable Lines"
-msgstr "Строки получения"
+msgctxt "model:ir.action,name:act_move_line_payable_receivable"
+msgid "Payable/Receivable Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
@@ -2852,10 +2920,6 @@ msgstr "Открыть схему счетов"
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
 msgstr "Открыть журнал"
-
-msgctxt "model:ir.action,name:act_open_reconcile_lines"
-msgid "Open Reconcile Lines"
-msgstr "Открыть строки сверки"
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
@@ -2880,6 +2944,10 @@ msgstr "Периоды"
 msgctxt "model:ir.action,name:act_period_reopen"
 msgid "Re-Open Periods"
 msgstr "Открыть заново Периоды"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
@@ -2989,6 +3057,24 @@ msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
 msgstr "Обновить схему счетов из шаблона"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
+msgid "All"
+msgstr "Все"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
+msgid "Payable"
+msgstr "Подлежащий уплате"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
+msgid "Receivable"
+msgstr "Подлежащий получению"
+
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
 msgstr "Журнал счета по умолчанию"
@@ -3009,6 +3095,10 @@ msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
 msgstr "Сверка проводок"
+
+msgctxt "model:ir.ui.menu,name:"
+msgid "Reconcile Lines"
+msgstr "Строки сверки"
 
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
@@ -3130,10 +3220,6 @@ msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
 msgstr "Открыть журнал"
 
-msgctxt "model:ir.ui.menu,name:menu_open_reconcile_lines"
-msgid "Reconcile Lines"
-msgstr "Строки сверки"
-
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
 msgstr "Периоды"
@@ -3157,6 +3243,10 @@ msgstr "Распечатать проверочный баланс"
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
 msgstr "Обслуживание"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile"
+msgid "Reconcile Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -3786,6 +3876,11 @@ msgctxt "view:account.account:"
 msgid "Accounts"
 msgstr "Счета"
 
+#, fuzzy
+msgctxt "view:account.account:"
+msgid "Children"
+msgstr "Подчиненый"
+
 msgctxt "view:account.account:"
 msgid "Deferrals"
 msgstr "Отсрочки"
@@ -3934,10 +4029,6 @@ msgctxt "view:account.move.open_journal.ask:"
 msgid "Open Journal"
 msgstr "Открыть журнал"
 
-msgctxt "view:account.move.open_reconcile_lines.start:"
-msgid "Open Reconcile Lines"
-msgstr "Открыть строки сверки"
-
 msgctxt "view:account.move.print_general_journal.start:"
 msgid "Print General Journal"
 msgstr "Распечатать основной журнал"
@@ -4009,6 +4100,16 @@ msgstr "Распечатать главную приходно-расходну�
 msgctxt "view:account.print_trial_balance.start:"
 msgid "Print Trial Balance"
 msgstr "Распечатать проверочный баланс"
+
+#, fuzzy
+msgctxt "view:account.reconcile.show:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "view:account.reconcile.show:"
+msgid "Reconcile"
+msgstr "Сверка"
 
 msgctxt "view:account.tax.code.open_chart.start:"
 msgid "Open Chart of Tax Codes"
@@ -4220,14 +4321,6 @@ msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
 msgstr "Открыть"
 
-msgctxt "wizard_button:account.move.open_reconcile_lines,start,end:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "wizard_button:account.move.open_reconcile_lines,start,open_:"
-msgid "Open"
-msgstr "Открыть"
-
 msgctxt "wizard_button:account.move.print_general_journal,start,end:"
 msgid "Cancel"
 msgstr "Отменить"
@@ -4299,6 +4392,20 @@ msgstr "Отменить"
 msgctxt "wizard_button:account.print_trial_balance,start,print_:"
 msgid "Print"
 msgstr "Печать"
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,show,end:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "wizard_button:account.reconcile,show,next_:"
+msgid "Skip"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.reconcile,show,reconcile:"
+msgid "Reconcile"
+msgstr "Сверка"
 
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"
