@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
-msgid "There are some late supplier moves, are you sure to ignore them?"
+msgid "There are some late supplier moves."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
@@ -155,22 +155,6 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,company:"
-msgid "Company"
-msgstr "Организация"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,party:"
-msgid "Supplier"
-msgstr "Поставщик"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
-msgid "Payment Term"
-msgstr "Правило оплаты"
-
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Организация"
@@ -268,6 +252,24 @@ msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
 msgstr "Создать покупку"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr "Все"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Внутренний"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Покупки"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
@@ -313,10 +315,6 @@ msgstr "Создать запрос на покупку"
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
 msgstr "Создать покупку, Запрос контрагента"
-
-msgctxt "model:purchase.request.create_purchase.ask_term,name:"
-msgid "Create Purchase Ask Term"
-msgstr "Создать покупку, Запрос правила"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -375,10 +373,6 @@ msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Создать покупку: Отсутствует поставщик"
 
-msgctxt "view:purchase.request.create_purchase.ask_term:"
-msgid "Create Purchase: Missing Payment Term"
-msgstr "Создать покупку: Отсутствует правило оплаты"
-
 msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr "Информация о продукте"
@@ -432,14 +426,6 @@ msgid "Cancel"
 msgstr "Отменить"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Продолжить"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr "Продолжить"
 

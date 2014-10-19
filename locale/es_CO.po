@@ -154,22 +154,6 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,company:"
-msgid "Company"
-msgstr "Compañía"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,party:"
-msgid "Supplier"
-msgstr "Proveedor"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
-msgid "Payment Term"
-msgstr "Forma de Pago"
-
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Compañía"
@@ -327,10 +311,6 @@ msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
 msgstr "Crear Compra Pregunta Tercero"
 
-msgctxt "model:purchase.request.create_purchase.ask_term,name:"
-msgid "Create Purchase Ask Term"
-msgstr "Crear Compra Pregunta Forma de Pago"
-
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "Orden de Compra"
@@ -391,10 +371,6 @@ msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Crear Compra: Sin Proveedor"
 
-msgctxt "view:purchase.request.create_purchase.ask_term:"
-msgid "Create Purchase: Missing Payment Term"
-msgstr "Crear Compra: Sin Forma de Pago"
-
 msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr "Información de Producto"
@@ -448,14 +424,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Continuar"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr "Continuar"
 

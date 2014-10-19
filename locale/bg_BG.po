@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
-msgid "There are some late supplier moves, are you sure to ignore them?"
+msgid "There are some late supplier moves."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
@@ -156,22 +156,6 @@ msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Продукт"
 
-msgctxt "field:purchase.request.create_purchase.ask_term,company:"
-msgid "Company"
-msgstr "Фирма"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,party:"
-msgid "Supplier"
-msgstr "Доставчик"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
-msgid "Payment Term"
-msgstr "Условие за плащане"
-
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Фирма"
@@ -270,6 +254,23 @@ msgid "Create Purchase"
 msgstr "Създаване на покупка"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr "Вътрешно"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr "Управление на покупки"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
 msgstr ""
@@ -315,10 +316,6 @@ msgstr "Създаване на заявка за покупка"
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
 msgstr "Създаване на покупка - питане на партньор"
-
-msgctxt "model:purchase.request.create_purchase.ask_term,name:"
-msgid "Create Purchase Ask Term"
-msgstr "Запитване за създаване на условие за плащане"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
@@ -377,10 +374,6 @@ msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr "Създаване на покупка; липсва доставчик"
 
-msgctxt "view:purchase.request.create_purchase.ask_term:"
-msgid "Create Purchase: Missing Payment Term"
-msgstr "Създаване на покупка: Липсва условие за плащане"
-
 msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr "Информация за продукт"
@@ -434,14 +427,6 @@ msgid "Cancel"
 msgstr "Отказ"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr "Продължаване"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr "Продължаване"
 

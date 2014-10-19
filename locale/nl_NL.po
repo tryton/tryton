@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.request.create:"
-msgid "There are some late supplier moves, are you sure to ignore them?"
+msgid "There are some late supplier moves."
 msgstr ""
 
 msgctxt "error:purchase.request.create_purchase:"
@@ -163,25 +163,6 @@ msgid "Product"
 msgstr "Producten"
 
 #, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_term,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:purchase.request.create_purchase.ask_term,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_term,party:"
-msgid "Supplier"
-msgstr "Leverancier"
-
-#, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_term,payment_term:"
-msgid "Payment Term"
-msgstr "Betalingstermijn"
-
-#, fuzzy
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -284,6 +265,21 @@ msgid "Create Purchase"
 msgstr ""
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
+msgid "Internal"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
+msgid "Purchase"
+msgstr ""
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
 msgstr ""
@@ -328,10 +324,6 @@ msgstr ""
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
-msgstr ""
-
-msgctxt "model:purchase.request.create_purchase.ask_term,name:"
-msgid "Create Purchase Ask Term"
 msgstr ""
 
 msgctxt "model:res.group,name:group_purchase_request"
@@ -393,10 +385,6 @@ msgctxt "view:purchase.request.create_purchase.ask_party:"
 msgid "Create Purchase: Missing Supplier"
 msgstr ""
 
-msgctxt "view:purchase.request.create_purchase.ask_term:"
-msgid "Create Purchase: Missing Payment Term"
-msgstr ""
-
 msgctxt "view:purchase.request:"
 msgid "Product Info"
 msgstr ""
@@ -452,15 +440,6 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
-msgid "Continue"
-msgstr ""
-
-#, fuzzy
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,end:"
-msgid "Cancel"
-msgstr "Annuleren"
-
-msgctxt "wizard_button:purchase.request.create_purchase,ask_term,start:"
 msgid "Continue"
 msgstr ""
 
