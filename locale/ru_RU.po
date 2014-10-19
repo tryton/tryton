@@ -20,6 +20,10 @@ msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr ""
 
+msgctxt "field:account.fiscalyear,account_stock_method:"
+msgid "Account Stock Method"
+msgstr ""
+
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr ""
@@ -221,6 +225,19 @@ msgstr ""
 
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
+msgstr ""
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Отсутствует"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
 msgstr ""
 
 msgctxt "view:product.update_cost_price.ask:"
