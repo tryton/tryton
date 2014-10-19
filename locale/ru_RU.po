@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:project.allocation:"
-msgid "Percentage must be greater than zero"
-msgstr "Процент должен быть больше нуля"
-
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
