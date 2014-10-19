@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tryton 3.0\n"
 "Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
-"POT-Creation-Date: 2014-10-15 11:13+0200\n"
+"POT-Creation-Date: 2014-10-19 12:07+0200\n"
 "PO-Revision-Date: 2014-10-15 11:36+0200\n"
 "Last-Translator: Venceslav Vezjak <vezjakv@gmail.com>\n"
 "Language-Team: sl_SI <LL@li.org>\n"
@@ -93,7 +93,7 @@ msgstr "Izbira"
 msgid "Your selection:"
 msgstr "Vaša izbira:"
 
-#: tryton/common/common.py:526 tryton/gui/main.py:1430
+#: tryton/common/common.py:526 tryton/gui/main.py:1422
 #: tryton/gui/window/win_export.py:459
 #: tryton/gui/window/view_form/view/graph.py:178
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:69
@@ -527,11 +527,11 @@ msgstr ""
 "Za naslednji ukrep morajo biti vsi zavihki zaprti.\n"
 "Ali želite nadaljevati?"
 
-#: tryton/gui/main.py:1216
+#: tryton/gui/main.py:1208
 msgid "Close Tab"
 msgstr "Zapri zavihek"
 
-#: tryton/gui/main.py:1337
+#: tryton/gui/main.py:1329
 msgid ""
 "You are going to delete a Tryton database.\n"
 "Are you really sure to proceed?"
@@ -539,7 +539,7 @@ msgstr ""
 "Nameravate izbrisati Tryton podatkovno bazo.\n"
 "Ali ste res želite nadaljevati?"
 
-#: tryton/gui/main.py:1347
+#: tryton/gui/main.py:1339
 msgid ""
 "Wrong Tryton Server Password\n"
 "Please try again."
@@ -547,28 +547,28 @@ msgstr ""
 "Napačno geslo za Tryton strežnik.\n"
 "Prosimo, poskusite še enkrat."
 
-#: tryton/gui/main.py:1349 tryton/gui/main.py:1385 tryton/gui/main.py:1421
+#: tryton/gui/main.py:1341 tryton/gui/main.py:1377 tryton/gui/main.py:1413
 #: tryton/gui/window/dbcreate.py:362
 msgid "Access denied!"
 msgstr "Dostop zavrnjen!"
 
-#: tryton/gui/main.py:1352
+#: tryton/gui/main.py:1344
 msgid "Database drop failed with error message:\n"
 msgstr "Brisanje podatkovne baze je odpovedalo z napako:\n"
 
-#: tryton/gui/main.py:1353
+#: tryton/gui/main.py:1345
 msgid "Database drop failed!"
 msgstr "Brisanje podatkovne baze je odpovedalo!"
 
-#: tryton/gui/main.py:1355
+#: tryton/gui/main.py:1347
 msgid "Database dropped successfully!"
 msgstr "Brisanje podatkovne baze uspešno zaključeno!"
 
-#: tryton/gui/main.py:1360
+#: tryton/gui/main.py:1352
 msgid "Open Backup File to Restore..."
 msgstr "Odpri varnostno kopijo za obnovitev..."
 
-#: tryton/gui/main.py:1377
+#: tryton/gui/main.py:1369
 msgid ""
 "It is not possible to restore a password protected database.\n"
 "Backup and restore needed to be proceed manual."
@@ -576,11 +576,11 @@ msgstr ""
 "Ni možno obnoviti podatkovne baze, ki so zaščitene z geslom.\n"
 "Varnostno kopiranje in obnovitev se mora ročno izvesti."
 
-#: tryton/gui/main.py:1381 tryton/gui/main.py:1417
+#: tryton/gui/main.py:1373 tryton/gui/main.py:1409
 msgid "Database is password protected!"
 msgstr "Podatkovna baza je zaščitena z geslom!"
 
-#: tryton/gui/main.py:1383 tryton/gui/main.py:1419
+#: tryton/gui/main.py:1375 tryton/gui/main.py:1411
 msgid ""
 "Wrong Tryton Server Password.\n"
 "Please try again."
@@ -588,19 +588,19 @@ msgstr ""
 "Napačno geslo za Tryton strežnik.\n"
 "Prosimo, poskusite še enkrat."
 
-#: tryton/gui/main.py:1388
+#: tryton/gui/main.py:1380
 msgid "Database restore failed with error message:\n"
 msgstr "Obnovitev podatkovne baze je odpovedala z napako:\n"
 
-#: tryton/gui/main.py:1390 tryton/gui/main.py:1395
+#: tryton/gui/main.py:1382 tryton/gui/main.py:1387
 msgid "Database restore failed!"
 msgstr "Obnovitev podatkovne baze je odpovedala!"
 
-#: tryton/gui/main.py:1393
+#: tryton/gui/main.py:1385
 msgid "Database restored successfully!"
 msgstr "Obnovitev podatkovne baze uspešno zaključena!"
 
-#: tryton/gui/main.py:1414
+#: tryton/gui/main.py:1406
 msgid ""
 "It is not possible to dump a password protected Database.\n"
 "Backup and restore needed to be proceed manual."
@@ -608,15 +608,15 @@ msgstr ""
 "Ni možno zapisati podatkovne baze, ki je zaščitena z geslom.\n"
 "Varnostno kopiranje in obnovitev se mora ročno izvesti."
 
-#: tryton/gui/main.py:1424
+#: tryton/gui/main.py:1416
 msgid "Database dump failed with error message:\n"
 msgstr "Zapisovanje podatkovne baze je odpovedalo z napako:\n"
 
-#: tryton/gui/main.py:1426
+#: tryton/gui/main.py:1418
 msgid "Database dump failed!"
 msgstr "Zapisovanje podatkovne baze odpovedalo!"
 
-#: tryton/gui/main.py:1437
+#: tryton/gui/main.py:1429
 msgid "Database backuped successfully!"
 msgstr "Varnostno kopiranje podatkovne baze uspešno zaključeno!"
 

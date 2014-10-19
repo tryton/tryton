@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tryton 3.3.dev0\n"
 "Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
-"POT-Creation-Date: 2014-10-04 16:54+0200\n"
+"POT-Creation-Date: 2014-10-19 12:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,44 +17,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: tryton/config.py:83
+#: tryton/config.py:84
 msgid "specify alternate config file"
 msgstr ""
 
-#: tryton/config.py:86
+#: tryton/config.py:87
 msgid "development mode"
 msgstr ""
 
-#: tryton/config.py:89
+#: tryton/config.py:90
 msgid "logging everything at INFO level"
 msgstr ""
 
-#: tryton/config.py:91
+#: tryton/config.py:92
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 
-#: tryton/config.py:94
+#: tryton/config.py:95
 msgid "specify the login user"
 msgstr ""
 
-#: tryton/config.py:96
+#: tryton/config.py:97
 msgid "specify the server port"
 msgstr ""
 
-#: tryton/config.py:98
+#: tryton/config.py:99
 msgid "specify the server hostname"
 msgstr ""
 
-#: tryton/config.py:102
+#: tryton/config.py:103
 msgid "Too much arguments"
 msgstr ""
 
-#: tryton/config.py:105
+#: tryton/config.py:106
 #, python-format
 msgid "File \"%s\" not found"
 msgstr ""
 
-#: tryton/config.py:143
+#: tryton/config.py:144
 #, python-format
 msgid "Unable to write config file %s!"
 msgstr ""
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Your selection:"
 msgstr ""
 
-#: tryton/common/common.py:526 tryton/gui/main.py:1430
+#: tryton/common/common.py:526 tryton/gui/main.py:1422
 #: tryton/gui/window/win_export.py:459
 #: tryton/gui/window/view_form/view/graph.py:178
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:69
@@ -255,28 +255,28 @@ msgstr ""
 msgid "Date Selection"
 msgstr ""
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "y"
 msgstr ""
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "yes"
 msgstr ""
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "true"
 msgstr ""
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "t"
 msgstr ""
 
-#: tryton/common/domain_parser.py:422
+#: tryton/common/domain_parser.py:430
 #: tryton/gui/window/view_form/view/screen_container.py:464
 msgid "True"
 msgstr ""
 
-#: tryton/common/domain_parser.py:422
+#: tryton/common/domain_parser.py:430
 #: tryton/gui/window/view_form/view/screen_container.py:464
 msgid "False"
 msgstr ""
@@ -507,86 +507,86 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: tryton/gui/main.py:1216
+#: tryton/gui/main.py:1208
 msgid "Close Tab"
 msgstr ""
 
-#: tryton/gui/main.py:1337
+#: tryton/gui/main.py:1329
 msgid ""
 "You are going to delete a Tryton database.\n"
 "Are you really sure to proceed?"
 msgstr ""
 
-#: tryton/gui/main.py:1347
+#: tryton/gui/main.py:1339
 msgid ""
 "Wrong Tryton Server Password\n"
 "Please try again."
 msgstr ""
 
-#: tryton/gui/main.py:1349 tryton/gui/main.py:1385 tryton/gui/main.py:1421
+#: tryton/gui/main.py:1341 tryton/gui/main.py:1377 tryton/gui/main.py:1413
 #: tryton/gui/window/dbcreate.py:362
 msgid "Access denied!"
 msgstr ""
 
-#: tryton/gui/main.py:1352
+#: tryton/gui/main.py:1344
 msgid "Database drop failed with error message:\n"
 msgstr ""
 
-#: tryton/gui/main.py:1353
+#: tryton/gui/main.py:1345
 msgid "Database drop failed!"
 msgstr ""
 
-#: tryton/gui/main.py:1355
+#: tryton/gui/main.py:1347
 msgid "Database dropped successfully!"
 msgstr ""
 
-#: tryton/gui/main.py:1360
+#: tryton/gui/main.py:1352
 msgid "Open Backup File to Restore..."
 msgstr ""
 
-#: tryton/gui/main.py:1377
+#: tryton/gui/main.py:1369
 msgid ""
 "It is not possible to restore a password protected database.\n"
 "Backup and restore needed to be proceed manual."
 msgstr ""
 
-#: tryton/gui/main.py:1381 tryton/gui/main.py:1417
+#: tryton/gui/main.py:1373 tryton/gui/main.py:1409
 msgid "Database is password protected!"
 msgstr ""
 
-#: tryton/gui/main.py:1383 tryton/gui/main.py:1419
+#: tryton/gui/main.py:1375 tryton/gui/main.py:1411
 msgid ""
 "Wrong Tryton Server Password.\n"
 "Please try again."
 msgstr ""
 
-#: tryton/gui/main.py:1388
+#: tryton/gui/main.py:1380
 msgid "Database restore failed with error message:\n"
 msgstr ""
 
-#: tryton/gui/main.py:1390 tryton/gui/main.py:1395
+#: tryton/gui/main.py:1382 tryton/gui/main.py:1387
 msgid "Database restore failed!"
 msgstr ""
 
-#: tryton/gui/main.py:1393
+#: tryton/gui/main.py:1385
 msgid "Database restored successfully!"
 msgstr ""
 
-#: tryton/gui/main.py:1414
+#: tryton/gui/main.py:1406
 msgid ""
 "It is not possible to dump a password protected Database.\n"
 "Backup and restore needed to be proceed manual."
 msgstr ""
 
-#: tryton/gui/main.py:1424
+#: tryton/gui/main.py:1416
 msgid "Database dump failed with error message:\n"
 msgstr ""
 
-#: tryton/gui/main.py:1426
+#: tryton/gui/main.py:1418
 msgid "Database dump failed!"
 msgstr ""
 
-#: tryton/gui/main.py:1437
+#: tryton/gui/main.py:1429
 msgid "Database backuped successfully!"
 msgstr ""
 
@@ -1129,85 +1129,85 @@ msgstr ""
 msgid "Model:"
 msgstr ""
 
-#: tryton/gui/window/form.py:304
+#: tryton/gui/window/form.py:308
 msgid "Are you sure to remove this record?"
 msgstr ""
 
-#: tryton/gui/window/form.py:306
+#: tryton/gui/window/form.py:310
 msgid "Are you sure to remove those records?"
 msgstr ""
 
-#: tryton/gui/window/form.py:309
+#: tryton/gui/window/form.py:313
 msgid "Records not removed!"
 msgstr ""
 
-#: tryton/gui/window/form.py:311
+#: tryton/gui/window/form.py:315
 msgid "Records removed!"
 msgstr ""
 
-#: tryton/gui/window/form.py:338
+#: tryton/gui/window/form.py:342
 msgid "Working now on the duplicated record(s)!"
 msgstr ""
 
-#: tryton/gui/window/form.py:348
+#: tryton/gui/window/form.py:352
 msgid "Record saved!"
 msgstr ""
 
-#: tryton/gui/window/form.py:351
+#: tryton/gui/window/form.py:355
 msgid "Invalid form!"
 msgstr ""
 
-#: tryton/gui/window/form.py:460
+#: tryton/gui/window/form.py:464
 msgid " of "
 msgstr ""
 
-#: tryton/gui/window/form.py:481
+#: tryton/gui/window/form.py:485
 msgid ""
 "This record has been modified\n"
 "do you want to save it ?"
 msgstr ""
 
-#: tryton/gui/window/form.py:534
+#: tryton/gui/window/form.py:538
 msgid "Action"
 msgstr ""
 
-#: tryton/gui/window/form.py:534
+#: tryton/gui/window/form.py:538
 msgid "Launch action"
 msgstr ""
 
-#: tryton/gui/window/form.py:535
+#: tryton/gui/window/form.py:539
 msgid "Relate"
 msgstr ""
 
-#: tryton/gui/window/form.py:535
+#: tryton/gui/window/form.py:539
 msgid "Open related records"
 msgstr ""
 
-#: tryton/gui/window/form.py:537
+#: tryton/gui/window/form.py:541
 msgid "Report"
 msgstr ""
 
-#: tryton/gui/window/form.py:537
+#: tryton/gui/window/form.py:541
 msgid "Open report"
 msgstr ""
 
-#: tryton/gui/window/form.py:538
+#: tryton/gui/window/form.py:542
 msgid "E-Mail"
 msgstr ""
 
-#: tryton/gui/window/form.py:538
+#: tryton/gui/window/form.py:542
 msgid "E-Mail report"
 msgstr ""
 
-#: tryton/gui/window/form.py:539
+#: tryton/gui/window/form.py:543
 msgid "Print"
 msgstr ""
 
-#: tryton/gui/window/form.py:539
+#: tryton/gui/window/form.py:543
 msgid "Print report"
 msgstr ""
 
-#: tryton/gui/window/form.py:605
+#: tryton/gui/window/form.py:609
 #: tryton/gui/window/view_form/view/list_gtk/widget.py:848
 msgid "Unknown"
 msgstr ""
@@ -1688,11 +1688,11 @@ msgstr ""
 msgid "Remove selected record <Del>"
 msgstr ""
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:293
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:296
 msgid "Open a record <F2>"
 msgstr ""
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:295
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:298
 msgid "Search a record <F2>"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tryton 2.3.0\n"
 "Report-Msgid-Bugs-To: issue_tracker@tryton.org\n"
-"POT-Creation-Date: 2014-04-18 22:49+0200\n"
+"POT-Creation-Date: 2014-10-19 12:07+0200\n"
 "PO-Revision-Date: 2013-04-18 11:37+0300\n"
 "Last-Translator: Giedrius Slavinskas <giedrius@inovera.lt>\n"
 "Language-Team: lt_LT <LL@li.org>\n"
@@ -16,46 +16,46 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 0.9.6\n"
+"Generated-By: Babel 1.3\n"
 
-#: tryton/config.py:83
+#: tryton/config.py:84
 msgid "specify alternate config file"
 msgstr ""
 
-#: tryton/config.py:86
+#: tryton/config.py:87
 msgid "development mode"
 msgstr ""
 
-#: tryton/config.py:89
+#: tryton/config.py:90
 msgid "logging everything at INFO level"
 msgstr ""
 
-#: tryton/config.py:91
+#: tryton/config.py:92
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 
-#: tryton/config.py:94
+#: tryton/config.py:95
 msgid "specify the login user"
 msgstr ""
 
-#: tryton/config.py:96
+#: tryton/config.py:97
 msgid "specify the server port"
 msgstr ""
 
-#: tryton/config.py:98
+#: tryton/config.py:99
 msgid "specify the server hostname"
 msgstr ""
 
-#: tryton/config.py:102
+#: tryton/config.py:103
 msgid "Too much arguments"
 msgstr ""
 
-#: tryton/config.py:105
+#: tryton/config.py:106
 #, python-format
 msgid "File \"%s\" not found"
 msgstr ""
 
-#: tryton/config.py:143
+#: tryton/config.py:144
 #, python-format
 msgid "Unable to write config file %s!"
 msgstr ""
@@ -85,42 +85,42 @@ msgstr "Serveris:"
 msgid "Port:"
 msgstr "Prievadas:"
 
-#: tryton/common/common.py:383
+#: tryton/common/common.py:381
 msgid "Selection"
 msgstr "Pasirinkimas"
 
-#: tryton/common/common.py:392
+#: tryton/common/common.py:390
 msgid "Your selection:"
 msgstr "Jūsų pasirinkimas:"
 
-#: tryton/common/common.py:528 tryton/gui/main.py:1420
-#: tryton/gui/window/win_export.py:409
+#: tryton/common/common.py:526 tryton/gui/main.py:1422
+#: tryton/gui/window/win_export.py:459
+#: tryton/gui/window/view_form/view/graph.py:178
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:69
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:150
-#: tryton/gui/window/view_form/view/form_gtk/image.py:74
-#: tryton/gui/window/view_form/view/form_gtk/image.py:161
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:105
-#: tryton/gui/window/view_form/view/list_gtk/parser.py:686
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:144
+#: tryton/gui/window/view_form/view/form_gtk/image.py:71
+#: tryton/gui/window/view_form/view/form_gtk/image.py:155
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:498
 msgid "Save As..."
 msgstr "Įrašyti kaip..."
 
-#: tryton/common/common.py:675
+#: tryton/common/common.py:673
 msgid "Always ignore this warning."
 msgstr "Daugiau nepaisyti šio pranešimo."
 
-#: tryton/common/common.py:680
+#: tryton/common/common.py:678
 msgid "Do you want to proceed?"
 msgstr "Ar tikrai norite vykdyti?"
 
-#: tryton/common/common.py:699
+#: tryton/common/common.py:697
 msgid "Confirmation"
 msgstr "Patvirtinimas"
 
-#: tryton/common/common.py:805 tryton/common/common.py:1114
+#: tryton/common/common.py:803 tryton/common/common.py:1111
 msgid "Concurrency Exception"
 msgstr "Lygiagretaus duomenų rašymo klaida"
 
-#: tryton/common/common.py:819
+#: tryton/common/common.py:817
 msgid ""
 "<b>Write Concurrency Warning:</b>\n"
 "\n"
@@ -138,50 +138,50 @@ msgstr ""
 "    - \"Palyginti\", kad peržiūrėti pakeistą versiją;\n"
 "    - \"Rašyti visvien\", kad išsaugoti jūsų turimą versiją."
 
-#: tryton/common/common.py:828
+#: tryton/common/common.py:826
 msgid "Compare"
 msgstr "Palyginti"
 
-#: tryton/common/common.py:833
+#: tryton/common/common.py:831
 msgid "Write Anyway"
 msgstr "Rašyti visvien"
 
-#: tryton/common/common.py:859 tryton/gui/window/win_export.py:442
+#: tryton/common/common.py:857 tryton/gui/window/win_export.py:492
 #: tryton/gui/window/win_import.py:262 tryton/gui/window/win_import.py:290
 msgid "Error"
 msgstr "Klaida"
 
-#: tryton/common/common.py:863
+#: tryton/common/common.py:861
 msgid "Report Bug"
 msgstr "Pranešti apie klaidą"
 
-#: tryton/common/common.py:870
+#: tryton/common/common.py:868
 msgid "Application Error!"
 msgstr "Programos klaida!"
 
-#: tryton/common/common.py:893
+#: tryton/common/common.py:891
 msgid "Error: "
 msgstr "Klaida: "
 
-#: tryton/common/common.py:913
+#: tryton/common/common.py:911
 #, python-format
 msgid "To report bugs you must have an account on <u>%s</u>"
 msgstr "Klaidų pranešimui reikalinga naudotojo paskyra <u>%s</u>"
 
-#: tryton/common/common.py:943
+#: tryton/common/common.py:941
 msgid "Bug Tracker"
 msgstr "Klaidų pėdsekys"
 
-#: tryton/common/common.py:961
+#: tryton/common/common.py:959
 msgid "User:"
 msgstr "Naudotojas:"
 
-#: tryton/common/common.py:969 tryton/common/common.py:1132
+#: tryton/common/common.py:967 tryton/common/common.py:1129
 #: tryton/gui/window/dblogin.py:462
 msgid "Password:"
 msgstr "Slaptažodis:"
 
-#: tryton/common/common.py:1024
+#: tryton/common/common.py:1022
 msgid ""
 "The same bug was already reported by another user.\n"
 "To keep you informed your username is added to the nosy-list of this issue"
@@ -190,11 +190,11 @@ msgstr ""
 "Norėdami informuoti apie klaidos tvarkymo eigą, jūsų naudotojo vardas "
 "buvo pridėtas prie klaidos pranešimo sąrašo"
 
-#: tryton/common/common.py:1035
+#: tryton/common/common.py:1033
 msgid "Created new bug with ID "
 msgstr "Užregistruoti naują klaidą su ID"
 
-#: tryton/common/common.py:1043 tryton/gui/main.py:928
+#: tryton/common/common.py:1041 tryton/gui/main.py:935
 msgid ""
 "Connection error!\n"
 "Bad username or password!"
@@ -202,11 +202,11 @@ msgstr ""
 "Prisijungimo klaida!\n"
 "Neteisingas naudotojo vardas arba slaptažodis!"
 
-#: tryton/common/common.py:1048
+#: tryton/common/common.py:1046
 msgid "Exception:"
 msgstr "Klaida:"
 
-#: tryton/common/common.py:1065
+#: tryton/common/common.py:1063
 msgid ""
 "The server fingerprint has changed since last connection!\n"
 "The application will stop connecting to this server until its fingerprint"
@@ -217,12 +217,12 @@ msgstr ""
 "Programa nustos jungtis su šiuos serveriui, kol bus sutvarkytas "
 "identifikatorius."
 
-#: tryton/common/common.py:1067
+#: tryton/common/common.py:1065
 msgid "Security risk!"
 msgstr "Saugumo pavojus!"
 
-#: tryton/common/common.py:1073 tryton/common/common.py:1139
-#: tryton/gui/main.py:925
+#: tryton/common/common.py:1070 tryton/common/common.py:1135
+#: tryton/gui/main.py:932
 msgid ""
 "Connection error!\n"
 "Unable to connect to the server!"
@@ -230,31 +230,31 @@ msgstr ""
 "Prisijungimo klaida!\n"
 "Nepavyko prisijungti prie serverio!"
 
-#: tryton/common/common.py:1154
+#: tryton/common/common.py:1150
 msgid "Network Error!"
 msgstr "Tinklo klaida!"
 
-#: tryton/common/common.py:1409
+#: tryton/common/common.py:1405
 msgid "Y"
 msgstr "Y"
 
-#: tryton/common/common.py:1410
+#: tryton/common/common.py:1406
 msgid "M"
 msgstr "M"
 
-#: tryton/common/common.py:1411
+#: tryton/common/common.py:1407
 msgid "w"
 msgstr "w"
 
-#: tryton/common/common.py:1412
+#: tryton/common/common.py:1408
 msgid "d"
 msgstr "d"
 
-#: tryton/common/common.py:1413
+#: tryton/common/common.py:1409
 msgid "h"
 msgstr "h"
 
-#: tryton/common/common.py:1414
+#: tryton/common/common.py:1410
 msgid "m"
 msgstr "m"
 
@@ -274,58 +274,58 @@ msgstr "Atverti kalendorių <F2>"
 msgid "Date Selection"
 msgstr "Datos pasirinkimas"
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "y"
 msgstr "t"
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "yes"
 msgstr "taip"
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "true"
 msgstr "teisa"
 
-#: tryton/common/domain_parser.py:221
+#: tryton/common/domain_parser.py:229
 msgid "t"
 msgstr "t"
 
-#: tryton/common/domain_parser.py:422
-#: tryton/gui/window/view_form/view/screen_container.py:461
+#: tryton/common/domain_parser.py:430
+#: tryton/gui/window/view_form/view/screen_container.py:464
 msgid "True"
 msgstr "Tiesa"
 
-#: tryton/common/domain_parser.py:422
-#: tryton/gui/window/view_form/view/screen_container.py:461
+#: tryton/common/domain_parser.py:430
+#: tryton/gui/window/view_form/view/screen_container.py:464
 msgid "False"
 msgstr "Netiesa"
 
-#: tryton/common/popup_menu.py:72
+#: tryton/common/popup_menu.py:77
 #, fuzzy
 msgid "Edit..."
 msgstr "Išei_ti..."
 
-#: tryton/common/popup_menu.py:77
+#: tryton/common/popup_menu.py:82
 msgid "Attachments..."
 msgstr "Priedai..."
 
-#: tryton/common/popup_menu.py:87
+#: tryton/common/popup_menu.py:92
 msgid "Actions..."
 msgstr "Veiksmai..."
 
-#: tryton/common/popup_menu.py:88
+#: tryton/common/popup_menu.py:93
 msgid "Relate..."
 msgstr "Susiję įrašai..."
 
-#: tryton/common/popup_menu.py:89
+#: tryton/common/popup_menu.py:94
 msgid "Report..."
 msgstr "Ataskaita..."
 
-#: tryton/common/popup_menu.py:90
+#: tryton/common/popup_menu.py:95
 msgid "E-Mail..."
 msgstr "El. paštas..."
 
-#: tryton/common/popup_menu.py:91
+#: tryton/common/popup_menu.py:96
 msgid "Print..."
 msgstr "Spausdinti..."
 
@@ -350,10 +350,10 @@ msgid "_Help"
 msgstr "_Žinynas"
 
 #: tryton/gui/main.py:286 tryton/gui/window/win_search.py:26
-#: tryton/gui/window/view_form/view/screen_container.py:100
-#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:332
-#: tryton/gui/window/view_form/view/form_gtk/many2many.py:40
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:45
+#: tryton/gui/window/view_form/view/screen_container.py:102
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:334
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:39
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:44
 msgid "Search"
 msgstr "Ieškoti"
 
@@ -522,7 +522,7 @@ msgstr "_Apie..."
 msgid "Manage Favorites"
 msgstr "_Tvarkyti mėgstamus"
 
-#: tryton/gui/main.py:942
+#: tryton/gui/main.py:949
 msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
@@ -530,11 +530,11 @@ msgstr ""
 "Atliekant šį veiksmą bus uždarytos visos kortelės.\n"
 "Ar norite tęsti?"
 
-#: tryton/gui/main.py:1206
+#: tryton/gui/main.py:1208
 msgid "Close Tab"
 msgstr "Uždaryti kortelę"
 
-#: tryton/gui/main.py:1327
+#: tryton/gui/main.py:1329
 msgid ""
 "You are going to delete a Tryton database.\n"
 "Are you really sure to proceed?"
@@ -542,7 +542,7 @@ msgstr ""
 "Bus ištrinta Tryton duomenų bazė.\n"
 "Ar jūs tikrai norite tęsti?"
 
-#: tryton/gui/main.py:1337
+#: tryton/gui/main.py:1339
 msgid ""
 "Wrong Tryton Server Password\n"
 "Please try again."
@@ -550,28 +550,28 @@ msgstr ""
 "Neteisingas Tryon serverio slaptažodis\n"
 "Bandykite iš naujo."
 
-#: tryton/gui/main.py:1339 tryton/gui/main.py:1375 tryton/gui/main.py:1411
-#: tryton/gui/window/dbcreate.py:384
+#: tryton/gui/main.py:1341 tryton/gui/main.py:1377 tryton/gui/main.py:1413
+#: tryton/gui/window/dbcreate.py:362
 msgid "Access denied!"
 msgstr "Neturite teisių!"
 
-#: tryton/gui/main.py:1342
+#: tryton/gui/main.py:1344
 msgid "Database drop failed with error message:\n"
 msgstr "Nepavyko sunaikinti duomenų bazės. Klaidos pranešimas:\n"
 
-#: tryton/gui/main.py:1343
+#: tryton/gui/main.py:1345
 msgid "Database drop failed!"
 msgstr "Nepavyko sunaikinti duomenų bazės!"
 
-#: tryton/gui/main.py:1345
+#: tryton/gui/main.py:1347
 msgid "Database dropped successfully!"
 msgstr "Sėkmingai sunaikinta duomenų bazė!"
 
-#: tryton/gui/main.py:1350
+#: tryton/gui/main.py:1352
 msgid "Open Backup File to Restore..."
 msgstr "Atverti atsarginę kopiją atkūrimui..."
 
-#: tryton/gui/main.py:1367
+#: tryton/gui/main.py:1369
 msgid ""
 "It is not possible to restore a password protected database.\n"
 "Backup and restore needed to be proceed manual."
@@ -579,11 +579,11 @@ msgstr ""
 "Negalima atkurti duomenų bazės apsaugotos slaptažodžiu.\n"
 "Atsarginės kopijos sukūrimą bei atkūrimą atlikite savarankiškai."
 
-#: tryton/gui/main.py:1371 tryton/gui/main.py:1407
+#: tryton/gui/main.py:1373 tryton/gui/main.py:1409
 msgid "Database is password protected!"
 msgstr "Duomenų bazės slaptažodis yra apsaugotas!"
 
-#: tryton/gui/main.py:1373 tryton/gui/main.py:1409
+#: tryton/gui/main.py:1375 tryton/gui/main.py:1411
 msgid ""
 "Wrong Tryton Server Password.\n"
 "Please try again."
@@ -591,19 +591,19 @@ msgstr ""
 "Neteisingas Tryton serverio slaptažodis.\n"
 "Bandykite iš naujo."
 
-#: tryton/gui/main.py:1378
+#: tryton/gui/main.py:1380
 msgid "Database restore failed with error message:\n"
 msgstr "Nepavyko sunaikinti duomenų bazės. Klaidos pranešimas:\n"
 
-#: tryton/gui/main.py:1380 tryton/gui/main.py:1385
+#: tryton/gui/main.py:1382 tryton/gui/main.py:1387
 msgid "Database restore failed!"
 msgstr "Nepavyko sunaikinti duomenų bazės!"
 
-#: tryton/gui/main.py:1383
+#: tryton/gui/main.py:1385
 msgid "Database restored successfully!"
 msgstr "Sėkmingai sunaikinta duomenų bazė!"
 
-#: tryton/gui/main.py:1404
+#: tryton/gui/main.py:1406
 msgid ""
 "It is not possible to dump a password protected Database.\n"
 "Backup and restore needed to be proceed manual."
@@ -612,15 +612,15 @@ msgstr ""
 "kopijos.\n"
 "Atsarginės kopijos sukūrimą bei atkūrimą atlikite savarankiškai."
 
-#: tryton/gui/main.py:1414
+#: tryton/gui/main.py:1416
 msgid "Database dump failed with error message:\n"
 msgstr "Nepavyko padaryti duomenų bazės atsarginės kopijos.Klaidos pranešimas:\n"
 
-#: tryton/gui/main.py:1416
+#: tryton/gui/main.py:1418
 msgid "Database dump failed!"
 msgstr "Nepavyko padaryti duomenų bazės atsarginės kopijos!"
 
-#: tryton/gui/main.py:1427
+#: tryton/gui/main.py:1429
 msgid "Database backuped successfully!"
 msgstr "Sėkmingai padaryta duomenų bazės atsarginė kopija!"
 
@@ -633,7 +633,7 @@ msgid "Create a new record"
 msgstr "Sukurti naują įrašą"
 
 #: tryton/gui/window/board.py:20 tryton/gui/window/form.py:34
-#: tryton/gui/window/win_export.py:142
+#: tryton/gui/window/win_export.py:143
 msgid "Save"
 msgstr "Išsaugoti"
 
@@ -643,7 +643,7 @@ msgstr "Išsaugoti šį įrašą"
 
 #: tryton/gui/window/board.py:21 tryton/gui/window/form.py:36
 #: tryton/gui/window/win_form.py:232
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:154
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:153
 msgid "Switch"
 msgstr "Perjungti"
 
@@ -828,38 +828,15 @@ msgstr "Pakartokite slaptažodį:"
 msgid "Type the Admin password again"
 msgstr "Pakartotinai įrašykite administratoriaus slaptažodį"
 
-#: tryton/gui/window/dbcreate.py:332
-msgid ""
-"The database name is restricted to alpha-nummerical characters and \"_\" "
-"(underscore). Avoid all accents, space and any other special characters."
-msgstr ""
-"Duomenų bazės pavadinime leidžiami simboliai yra šie: lotyniškos raidės, "
-"skaičiai ir \"_\" (pabraukimas). Venkite nelotyniškų raidžių, tarpų bei "
-"skyrybos ženklų."
-
-#: tryton/gui/window/dbcreate.py:337
-msgid "Wrong characters in database name!"
-msgstr "Negalima simbolis duomenų bazės pavadinime!"
-
-#: tryton/gui/window/dbcreate.py:341
+#: tryton/gui/window/dbcreate.py:333
 msgid "The new admin password doesn't match the confirmation field.\n"
 msgstr "Naujas administratoriaus slaptažodis nesutampa su pakartotinu.\n"
 
-#: tryton/gui/window/dbcreate.py:343
+#: tryton/gui/window/dbcreate.py:335
 msgid "Passwords doesn't match!"
 msgstr "Slaptažodžiai nesutampa!"
 
-#: tryton/gui/window/dbcreate.py:346
-msgid "Admin password and confirmation are required to create a new database."
-msgstr ""
-"Administratoriaus slaptažodis kartu su pakartotinu slaptažodžiu yrabūtini"
-" norint sukurti naują duomenų bazę."
-
-#: tryton/gui/window/dbcreate.py:348
-msgid "Missing admin password!"
-msgstr "Neįvestas administratoriaus slaptažodis!"
-
-#: tryton/gui/window/dbcreate.py:363
+#: tryton/gui/window/dbcreate.py:343
 msgid ""
 "A database with the same name already exists.\n"
 "Try another database name."
@@ -867,15 +844,15 @@ msgstr ""
 "Duomenų bazė tokiu pavadinimu jau yra sukurta.\n"
 "Pasirinkite kitą pavadinimą."
 
-#: tryton/gui/window/dbcreate.py:366
+#: tryton/gui/window/dbcreate.py:346
 msgid "This database name already exist!"
 msgstr "Duomenų bazė tokiu pavadinimu jau yra sukurta!"
 
-#: tryton/gui/window/dbcreate.py:381
+#: tryton/gui/window/dbcreate.py:359
 msgid "Sorry, wrong password for the Tryton server. Please try again."
 msgstr "Neteisingas Tryton serverio slaptažodis. Bandykite iš naujo."
 
-#: tryton/gui/window/dbcreate.py:389
+#: tryton/gui/window/dbcreate.py:367
 msgid ""
 "Can't create the database, caused by an unknown reason.\n"
 "If there is a database created, it could be broken. Maybe drop this "
@@ -888,7 +865,7 @@ msgstr ""
 "papildomos informacijos.\n"
 "Klaidos pranešimas:\n"
 
-#: tryton/gui/window/dbcreate.py:397
+#: tryton/gui/window/dbcreate.py:375
 msgid "Error creating database!"
 msgstr "Klaida kuriant duomenų bazę!"
 
@@ -953,12 +930,12 @@ msgstr "Profilių tvarkymas"
 msgid "Profile"
 msgstr "Profilis"
 
-#: tryton/gui/window/dblogin.py:52 tryton/gui/window/win_export.py:65
+#: tryton/gui/window/dblogin.py:52 tryton/gui/window/win_export.py:66
 #: tryton/gui/window/win_import.py:47
 msgid "_Add"
 msgstr "_Pridėti"
 
-#: tryton/gui/window/dblogin.py:57 tryton/gui/window/win_export.py:73
+#: tryton/gui/window/dblogin.py:57 tryton/gui/window/win_export.py:74
 #: tryton/gui/window/win_import.py:55
 msgid "_Remove"
 msgstr "_Ištrinti"
@@ -983,7 +960,7 @@ msgstr "Naudotojas:"
 msgid "Could not connect to the server"
 msgstr "Nepavyko prisijungti prie serverio"
 
-#: tryton/gui/window/dblogin.py:310 tryton/gui/window/dblogin.py:631
+#: tryton/gui/window/dblogin.py:310 tryton/gui/window/dblogin.py:616
 msgid "Incompatible version of the server"
 msgstr "Nesuderinama serverio versija"
 
@@ -1110,8 +1087,8 @@ msgstr "Priedas:"
 
 #: tryton/gui/window/form.py:41 tryton/gui/window/tips.py:74
 #: tryton/gui/window/win_form.py:205
-#: tryton/gui/window/view_form/view/screen_container.py:163
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:128
+#: tryton/gui/window/view_form/view/screen_container.py:165
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:127
 msgid "Previous"
 msgstr "Buvęs"
 
@@ -1121,8 +1098,8 @@ msgstr "Buvęs įrašas"
 
 #: tryton/gui/window/form.py:43 tryton/gui/window/tips.py:81
 #: tryton/gui/window/win_form.py:219
-#: tryton/gui/window/view_form/view/screen_container.py:175
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:142
+#: tryton/gui/window/view_form/view/screen_container.py:177
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:141
 msgid "Next"
 msgstr "Kitas"
 
@@ -1227,23 +1204,23 @@ msgstr "Paskutinio redagavimo data:"
 msgid "Model:"
 msgstr "Modelis:"
 
-#: tryton/gui/window/form.py:304
+#: tryton/gui/window/form.py:308
 msgid "Are you sure to remove this record?"
 msgstr "Ar tikrai norite ištrinti šį įrašą?"
 
-#: tryton/gui/window/form.py:306
+#: tryton/gui/window/form.py:310
 msgid "Are you sure to remove those records?"
 msgstr "Ar tikrai norite ištrinti šiuos įrašus?"
 
-#: tryton/gui/window/form.py:309
+#: tryton/gui/window/form.py:313
 msgid "Records not removed!"
 msgstr "Įrašai nebuvo ištrinti!"
 
-#: tryton/gui/window/form.py:311
+#: tryton/gui/window/form.py:315
 msgid "Records removed!"
 msgstr "Įrašai ištrinti!"
 
-#: tryton/gui/window/form.py:345
+#: tryton/gui/window/form.py:342
 msgid "Working now on the duplicated record(s)!"
 msgstr "Dabar dirbate su įrašo(-ų) kopija(-omis)!"
 
@@ -1255,11 +1232,11 @@ msgstr "Įrašas išsaugotas!"
 msgid "Invalid form!"
 msgstr "Netinkama forma!"
 
-#: tryton/gui/window/form.py:462
+#: tryton/gui/window/form.py:464
 msgid " of "
 msgstr " iš "
 
-#: tryton/gui/window/form.py:483
+#: tryton/gui/window/form.py:485
 msgid ""
 "This record has been modified\n"
 "do you want to save it ?"
@@ -1267,49 +1244,48 @@ msgstr ""
 "Šis įrašas buvo pakeistas\n"
 "Ar norite jį išsaugoti?"
 
-#: tryton/gui/window/form.py:536
+#: tryton/gui/window/form.py:538
 msgid "Action"
 msgstr "Veiksmai"
 
-#: tryton/gui/window/form.py:536
+#: tryton/gui/window/form.py:538
 msgid "Launch action"
 msgstr "Vykdyti veiksmą"
 
-#: tryton/gui/window/form.py:537
+#: tryton/gui/window/form.py:539
 msgid "Relate"
 msgstr "Susijęs"
 
-#: tryton/gui/window/form.py:537
+#: tryton/gui/window/form.py:539
 msgid "Open related records"
 msgstr "Atverti susijusius įrašus"
 
-#: tryton/gui/window/form.py:539
+#: tryton/gui/window/form.py:541
 msgid "Report"
 msgstr "Ataskaitos"
 
-#: tryton/gui/window/form.py:539
+#: tryton/gui/window/form.py:541
 msgid "Open report"
 msgstr "Atverti ataskaitą"
 
-#: tryton/gui/window/form.py:540
+#: tryton/gui/window/form.py:542
 msgid "E-Mail"
 msgstr "Siuntimas"
 
-#: tryton/gui/window/form.py:540
+#: tryton/gui/window/form.py:542
 msgid "E-Mail report"
 msgstr "Siųsti ataskaitą el. paštu"
 
-#: tryton/gui/window/form.py:541
+#: tryton/gui/window/form.py:543
 msgid "Print"
 msgstr "Spausdinimas"
 
-#: tryton/gui/window/form.py:541
+#: tryton/gui/window/form.py:543
 msgid "Print report"
 msgstr "Spausdinti ataskaitą"
 
-#: tryton/gui/window/form.py:607
-#: tryton/gui/window/view_form/view/list_gtk/parser.py:257
-#: tryton/gui/window/view_form/view/list_gtk/parser.py:1050
+#: tryton/gui/window/form.py:609
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:848
 msgid "Unknown"
 msgstr "Nežinomas"
 
@@ -1492,67 +1468,77 @@ msgstr "Patarimai"
 msgid "_Display a new tip next time"
 msgstr "_Rodyti patarimus ir kitą kartą"
 
-#: tryton/gui/window/win_export.py:24
+#: tryton/gui/window/win_export.py:25
 msgid "Export to CSV"
 msgstr "Eksportuoti CSV formatu"
 
-#: tryton/gui/window/win_export.py:39
+#: tryton/gui/window/win_export.py:40
 msgid "<b>Predefined exports</b>"
 msgstr "<b>Išsaugoti eksportavimo šablonai</b>"
 
-#: tryton/gui/window/win_export.py:51 tryton/gui/window/win_import.py:38
+#: tryton/gui/window/win_export.py:52 tryton/gui/window/win_import.py:38
 msgid "<b>All fields</b>"
 msgstr "<b>Galimi laukai</b>"
 
-#: tryton/gui/window/win_export.py:82 tryton/gui/window/win_import.py:64
+#: tryton/gui/window/win_export.py:83 tryton/gui/window/win_import.py:64
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:78
-#: tryton/gui/window/view_form/view/form_gtk/image.py:84
+#: tryton/gui/window/view_form/view/form_gtk/image.py:81
 msgid "Clear"
 msgstr "Valyti"
 
-#: tryton/gui/window/win_export.py:94
+#: tryton/gui/window/win_export.py:95
 msgid "Save Export"
 msgstr "Išsaugoti šabloną"
 
-#: tryton/gui/window/win_export.py:103
+#: tryton/gui/window/win_export.py:104
 msgid "Delete Export"
 msgstr "Ištrinti šabloną"
 
-#: tryton/gui/window/win_export.py:114
+#: tryton/gui/window/win_export.py:115
 msgid "<b>Fields to export</b>"
 msgstr "<b>Eksportuojami laukai</b>"
 
-#: tryton/gui/window/win_export.py:131
+#: tryton/gui/window/win_export.py:132
 msgid "<b>Options</b>"
 msgstr "<b>Nustatymai</b>"
 
-#: tryton/gui/window/win_export.py:141
+#: tryton/gui/window/win_export.py:142
 msgid "Open"
 msgstr "Atvėrimas"
 
-#: tryton/gui/window/win_export.py:146
+#: tryton/gui/window/win_export.py:147
 msgid "Add _field names"
 msgstr "Pridėti laukų pavadinimus"
 
-#: tryton/gui/window/win_export.py:201
+#: tryton/gui/window/win_export.py:217
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: tryton/gui/window/win_export.py:309
+#: tryton/gui/window/win_export.py:249
+#, python-format
+msgid "%s (string)"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:350
 msgid "What is the name of this export?"
 msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"
 
-#: tryton/gui/window/win_export.py:436
+#: tryton/gui/window/win_export.py:356
+#, python-format
+msgid "Override '%s' definition?"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:486
 #, python-format
 msgid "%d record saved!"
 msgstr "%d įrašas išsaugotas!"
 
-#: tryton/gui/window/win_export.py:438
+#: tryton/gui/window/win_export.py:488
 #, python-format
 msgid "%d records saved!"
 msgstr "%d įrašai išsaugoti!"
 
-#: tryton/gui/window/win_export.py:441
+#: tryton/gui/window/win_export.py:491
 #, python-format
 msgid ""
 "Operation failed!\n"
@@ -1576,18 +1562,17 @@ msgid "Remove <Del>"
 msgstr "Šalinti <Del>"
 
 #: tryton/gui/window/win_form.py:164
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:75
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:86
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:85
 msgid "Create a new record <F3>"
 msgstr "Sukurti naują įrašą <F3>"
 
 #: tryton/gui/window/win_form.py:176
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:106
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:105
 msgid "Delete selected record <Del>"
 msgstr "Pašalinti pasirinktą įrašą <Del>"
 
 #: tryton/gui/window/win_form.py:190
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:116
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:115
 msgid "Undelete selected record <Ins>"
 msgstr "Atkurti pasirinktą įrašą <Ins>"
 
@@ -1609,10 +1594,10 @@ msgstr "Importuoti iš failo:"
 
 #: tryton/gui/window/win_import.py:111
 #: tryton/gui/window/view_form/view/form_gtk/binary.py:57
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:118
-#: tryton/gui/window/view_form/view/form_gtk/image.py:62
-#: tryton/gui/window/view_form/view/form_gtk/image.py:131
-#: tryton/gui/window/view_form/view/list_gtk/parser.py:650
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:112
+#: tryton/gui/window/view_form/view/form_gtk/image.py:59
+#: tryton/gui/window/view_form/view/form_gtk/image.py:125
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:462
 msgid "Open..."
 msgstr "Atverti..."
 
@@ -1663,73 +1648,103 @@ msgstr "%d įrašas importuotas!"
 msgid "%d records imported!"
 msgstr "%d įrašai importuoti!"
 
-#: tryton/gui/window/wizard.py:286
+#: tryton/gui/window/wizard.py:289
 msgid "Wizard"
 msgstr "Vedlys"
 
-#: tryton/gui/window/view_board/parser.py:108
-#: tryton/gui/window/view_form/view/form_gtk/parser.py:354
-msgid "No String Attr."
-msgstr "Be pavadinimo"
-
-#: tryton/gui/window/view_form/screen/screen.py:129
+#: tryton/gui/window/view_form/screen/screen.py:130
 msgid "ID"
 msgstr "ID"
 
-#: tryton/gui/window/view_form/screen/screen.py:130
+#: tryton/gui/window/view_form/screen/screen.py:131
 #, fuzzy
 msgid "Creation User"
 msgstr "Sukūrė naudotojas:"
 
-#: tryton/gui/window/view_form/screen/screen.py:131
+#: tryton/gui/window/view_form/screen/screen.py:132
 #, fuzzy
 msgid "Creation Date"
 msgstr "Sukūrimo data:"
 
-#: tryton/gui/window/view_form/screen/screen.py:132
+#: tryton/gui/window/view_form/screen/screen.py:133
 #, fuzzy
 msgid "Modification User"
 msgstr "Paskutinio redagavimo data:"
 
-#: tryton/gui/window/view_form/screen/screen.py:133
+#: tryton/gui/window/view_form/screen/screen.py:134
 #, fuzzy
 msgid "Modification Date"
 msgstr "Paskutinio redagavimo data:"
 
-#: tryton/gui/window/view_form/screen/screen.py:631
+#: tryton/gui/window/view_form/screen/screen.py:632
 msgid "Unable to get view tree state"
 msgstr ""
 
-#: tryton/gui/window/view_form/screen/screen.py:668
+#: tryton/gui/window/view_form/screen/screen.py:691
 #, fuzzy
 msgid "Unable to set view tree state"
 msgstr "Nepavyko nustatyti lokalės %s"
 
-#: tryton/gui/window/view_form/view/screen_container.py:23
+#: tryton/gui/window/view_form/view/form.py:180
+#: tryton/gui/window/view_form/view/form.py:182
+#: tryton/gui/window/view_form/view/list.py:511
+#: tryton/gui/window/view_form/view/list.py:513
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:450
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:452
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:199
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:201
+msgid ":"
+msgstr ":"
+
+#: tryton/gui/window/view_form/view/graph.py:100
+msgid "Save As"
+msgstr "Įrašyti kaip"
+
+#: tryton/gui/window/view_form/view/graph.py:111
+msgid "Image Size"
+msgstr "Paveiklėlio dydis"
+
+#: tryton/gui/window/view_form/view/graph.py:120
+msgid "Width:"
+msgstr "Plotis:"
+
+#: tryton/gui/window/view_form/view/graph.py:127
+msgid "Height:"
+msgstr "Aukštis"
+
+#: tryton/gui/window/view_form/view/graph.py:139
+msgid "PNG image (*.png)"
+msgstr "PNG paveikslėlis (*.png)"
+
+#: tryton/gui/window/view_form/view/graph.py:168
+msgid "Image size too large!"
+msgstr "Paveikslėlis yra per didelis!"
+
+#: tryton/gui/window/view_form/view/screen_container.py:24
 msgid ".."
 msgstr ".."
 
-#: tryton/gui/window/view_form/view/screen_container.py:93
+#: tryton/gui/window/view_form/view/screen_container.py:95
 msgid "F_ilters"
 msgstr "F_iltras"
 
-#: tryton/gui/window/view_form/view/screen_container.py:147
+#: tryton/gui/window/view_form/view/screen_container.py:149
 msgid "Show bookmarks of filters"
 msgstr "Rodyti filtrų žymeles"
 
-#: tryton/gui/window/view_form/view/screen_container.py:312
+#: tryton/gui/window/view_form/view/screen_container.py:314
 msgid "Remove this bookmark"
 msgstr "Šalinti šią žymelę"
 
-#: tryton/gui/window/view_form/view/screen_container.py:319
+#: tryton/gui/window/view_form/view/screen_container.py:321
 msgid "Bookmark this filter"
 msgstr "Sukurti šio filtro žymelę"
 
-#: tryton/gui/window/view_form/view/screen_container.py:384
+#: tryton/gui/window/view_form/view/screen_container.py:386
 msgid "Bookmark Name:"
 msgstr "Žymelės pavadinimas:"
 
-#: tryton/gui/window/view_form/view/screen_container.py:490
+#: tryton/gui/window/view_form/view/screen_container.py:493
 msgid "Find"
 msgstr "Rasti"
 
@@ -1760,79 +1775,49 @@ msgstr "Pasirinkite failą..."
 msgid "Show plain text"
 msgstr "Rodyti paprastą tekstą"
 
-#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:348
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:350
 msgid "Add value"
 msgstr "Pridėti reikšmę"
 
-#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:458
-#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:460
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:202
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:204
-#: tryton/gui/window/view_form/view/form_gtk/parser.py:255
-#: tryton/gui/window/view_form/view/form_gtk/parser.py:259
-msgid ":"
-msgstr ":"
-
-#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:470
+#: tryton/gui/window/view_form/view/form_gtk/dictionary.py:462
 #, python-format
 msgid "Remove \"%s\""
 msgstr "Šalinti \"%s\""
 
-#: tryton/gui/window/view_form/view/form_gtk/image.py:51
+#: tryton/gui/window/view_form/view/form_gtk/image.py:48
 msgid "Select an Image..."
 msgstr "Pasirinkite paveikslėlį..."
 
-#: tryton/gui/window/view_form/view/form_gtk/image.py:121
+#: tryton/gui/window/view_form/view/form_gtk/image.py:115
 msgid "All files"
 msgstr "Visi failai"
 
-#: tryton/gui/window/view_form/view/form_gtk/image.py:125
+#: tryton/gui/window/view_form/view/form_gtk/image.py:119
 msgid "Images"
 msgstr "Paveikslėliai"
 
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:178
-msgid "Translation"
-msgstr "Vertimas"
-
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:234
-msgid "Edit"
-msgstr "Keisti"
-
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:239
-msgid "Fuzzy"
-msgstr "Neaiškus"
-
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:308
-msgid "You need to save the record before adding translations!"
-msgstr "Išsaugokite įrašą prieš pridedant vertimą!"
-
-#: tryton/gui/window/view_form/view/form_gtk/interface.py:319
-msgid "No other language available!"
-msgstr "Jokia kita kalba nėra prieinama!"
-
-#: tryton/gui/window/view_form/view/form_gtk/many2many.py:58
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:61
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:57
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:60
 msgid "Add existing record"
 msgstr "Pridėti turimą įrašą"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2many.py:69
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:68
 msgid "Remove selected record <Del>"
 msgstr "Pašalinti pasirinktą įrašą <Del>"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:76
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:356
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:296
 msgid "Open a record <F2>"
 msgstr "Atverti įrašą <F2>"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:359
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:298
 msgid "Search a record <F2>"
 msgstr "Ieškoti įrašo <F2>"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:73
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:72
 msgid "Remove selected record"
 msgstr "Pašalinti pasirinktą įrašą"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:96
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:95
 msgid "Edit selected record <F2>"
 msgstr "Keisti pasirinktą įrašą <F2>"
 
@@ -1892,33 +1877,25 @@ msgstr "Pasirinkite teksto spalvą"
 msgid "Select a background color"
 msgstr "Pasirinkite fono spalvą"
 
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:26
-msgid "Save As"
-msgstr "Įrašyti kaip"
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:175
+msgid "Translation"
+msgstr "Vertimas"
 
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:36
-msgid "Image Size"
-msgstr "Paveiklėlio dydis"
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:231
+msgid "Edit"
+msgstr "Keisti"
 
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:45
-msgid "Width:"
-msgstr "Plotis:"
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:236
+msgid "Fuzzy"
+msgstr "Neaiškus"
 
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:52
-msgid "Height:"
-msgstr "Aukštis"
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:305
+msgid "You need to save the record before adding translations!"
+msgstr "Išsaugokite įrašą prieš pridedant vertimą!"
 
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:64
-msgid "PNG image (*.png)"
-msgstr "PNG paveikslėlis (*.png)"
-
-#: tryton/gui/window/view_form/view/graph_gtk/parser.py:93
-msgid "Image size too large!"
-msgstr "Paveikslėlis yra per didelis!"
-
-#: tryton/gui/window/view_form/view/list_gtk/parser.py:244
-msgid ": "
-msgstr ": "
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:316
+msgid "No other language available!"
+msgstr "Jokia kita kalba nėra prieinama!"
 
 #: tryton/plugins/translation/__init__.py:18
 msgid "Translate view"
