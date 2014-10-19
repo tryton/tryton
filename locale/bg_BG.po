@@ -275,10 +275,6 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Код"
 
-msgctxt "field:party.party,code_length:"
-msgid "Code Length"
-msgstr "Дължина на кода"
-
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr "Код (само за четене)"

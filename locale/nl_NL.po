@@ -276,10 +276,6 @@ msgctxt "field:party.party,code:"
 msgid "Code"
 msgstr "Code"
 
-msgctxt "field:party.party,code_length:"
-msgid "Code Length"
-msgstr "Lengte code"
-
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
 msgstr ""
