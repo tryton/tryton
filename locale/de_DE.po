@@ -186,7 +186,7 @@ msgstr "Argentinien"
 
 msgctxt "model:country.country,name:as"
 msgid "American Samoa"
-msgstr "Samoa"
+msgstr "Amerikanisch-Samoa"
 
 msgctxt "model:country.country,name:at"
 msgid "Austria"
@@ -350,7 +350,7 @@ msgstr "Kuba"
 
 msgctxt "model:country.country,name:cv"
 msgid "Cape Verde"
-msgstr "Kap Verde"
+msgstr "Cabo Verde"
 
 msgctxt "model:country.country,name:cw"
 msgid "Curaçao"
@@ -3232,7 +3232,7 @@ msgctxt "model:country.subdivision,name:br-to"
 msgid "Tocantins"
 msgstr "Tocantins"
 
-msgctxt "model:country.subdivision,name:bs-ac"
+msgctxt "model:country.subdivision,name:bs-ak"
 msgid "Acklins"
 msgstr "Acklins"
 
@@ -3462,7 +3462,7 @@ msgstr "North-East"
 
 msgctxt "model:country.subdivision,name:bw-nw"
 msgid "North-West"
-msgstr "North-West"
+msgstr "Nordwest"
 
 msgctxt "model:country.subdivision,name:bw-se"
 msgid "South-East"
@@ -3470,7 +3470,7 @@ msgstr "South-East"
 
 msgctxt "model:country.subdivision,name:bw-so"
 msgid "Southern"
-msgstr "Southern"
+msgstr "Süd"
 
 msgctxt "model:country.subdivision,name:by-br"
 msgid "Brèsckaja voblasc'"
@@ -16514,7 +16514,7 @@ msgstr "Provinz Västernorrland"
 
 msgctxt "model:country.subdivision,name:se-z"
 msgid "Jämtlands län"
-msgstr "Provinz Jämtlands"
+msgstr "Provinz Jämtland"
 
 msgctxt "model:country.subdivision,name:sg-01"
 msgid "Central Singapore"

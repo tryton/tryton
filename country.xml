@@ -3776,9 +3776,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="country" ref="br"/>
         </record>
 
-        <record model="country.subdivision" id="bs-ac">
+        <record model="country.subdivision" id="bs-ak">
             <field name="name">Acklins</field>
-            <field name="code">BS-AC</field>
+            <field name="code">BS-AK</field>
             <field name="type">district</field>
             <field name="country" ref="bs"/>
         </record>

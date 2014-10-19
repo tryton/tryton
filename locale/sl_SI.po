@@ -875,7 +875,7 @@ msgid "Puerto Rico"
 msgstr "Portoriko"
 
 msgctxt "model:country.country,name:ps"
-msgid "Palestinsko ozemlje, zasedeno"
+msgid "Palestine, State of"
 msgstr "Palestina, država"
 
 msgctxt "model:country.country,name:pt"
@@ -3234,7 +3234,7 @@ msgctxt "model:country.subdivision,name:br-to"
 msgid "Tocantins"
 msgstr "Tocantins"
 
-msgctxt "model:country.subdivision,name:bs-ac"
+msgctxt "model:country.subdivision,name:bs-ak"
 msgid "Acklins"
 msgstr "Acklins"
 
@@ -16515,7 +16515,7 @@ msgid "Västernorrlands län"
 msgstr "Västernorrlands län"
 
 msgctxt "model:country.subdivision,name:se-z"
-msgid "Jämtlande län"
+msgid "Jämtlands län"
 msgstr "Jämtlands län"
 
 msgctxt "model:country.subdivision,name:sg-01"

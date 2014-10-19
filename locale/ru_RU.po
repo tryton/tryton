@@ -90,6 +90,56 @@ msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr "Город"
+
+#, fuzzy
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr "Страны мира"
+
+#, fuzzy
+msgctxt "field:country.zip,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:country.zip,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:country.zip,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:country.zip,rec_name:"
+msgid "Name"
+msgstr "Правило оплаты"
+
+#, fuzzy
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Подраздел"
+
+#, fuzzy
+msgctxt "field:country.zip,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:country.zip,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr "Индекс"
+
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
@@ -3194,7 +3244,7 @@ msgctxt "model:country.subdivision,name:br-to"
 msgid "Tocantins"
 msgstr ""
 
-msgctxt "model:country.subdivision,name:bs-ac"
+msgctxt "model:country.subdivision,name:bs-ak"
 msgid "Acklins"
 msgstr ""
 
@@ -20494,9 +20544,19 @@ msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr "Индекс"
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Страны"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
+msgstr "Индекс"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -20917,3 +20977,8 @@ msgstr "Подраздел"
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Области"
+
+#, fuzzy
+msgctxt "view:country.zip:"
+msgid "Zip"
+msgstr "Индекс"

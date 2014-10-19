@@ -3234,7 +3234,7 @@ msgctxt "model:country.subdivision,name:br-to"
 msgid "Tocantins"
 msgstr "Tocantins"
 
-msgctxt "model:country.subdivision,name:bs-ac"
+msgctxt "model:country.subdivision,name:bs-ak"
 msgid "Acklins"
 msgstr "Acklins"
 

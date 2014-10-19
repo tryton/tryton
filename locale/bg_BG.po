@@ -90,6 +90,56 @@ msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+#, fuzzy
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr "Град"
+
+#, fuzzy
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr "Държава"
+
+#, fuzzy
+msgctxt "field:country.zip,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:country.zip,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:country.zip,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:country.zip,rec_name:"
+msgid "Name"
+msgstr "Условие за плащане"
+
+#, fuzzy
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Подразделение"
+
+#, fuzzy
+msgctxt "field:country.zip,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:country.zip,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr "Пощ. код"
+
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
@@ -836,7 +886,7 @@ msgstr "Пуерто Рико"
 
 msgctxt "model:country.country,name:ps"
 msgid "Palestine, State of"
-msgstr "Палестинска държава"
+msgstr "Палестина, държава"
 
 msgctxt "model:country.country,name:pt"
 msgid "Portugal"
@@ -3194,7 +3244,7 @@ msgctxt "model:country.subdivision,name:br-to"
 msgid "Tocantins"
 msgstr "Tocantins"
 
-msgctxt "model:country.subdivision,name:bs-ac"
+msgctxt "model:country.subdivision,name:bs-ak"
 msgid "Acklins"
 msgstr "Acklins"
 
@@ -20494,9 +20544,19 @@ msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
 msgstr "Mashonaland West"
 
+#, fuzzy
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr "Пощ. код"
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
 msgstr "Държави"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
+msgstr "Пощ. код"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
@@ -20917,3 +20977,8 @@ msgstr "Подразделение"
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
 msgstr "Подразделения"
+
+#, fuzzy
+msgctxt "view:country.zip:"
+msgid "Zip"
+msgstr "Пощ. код"

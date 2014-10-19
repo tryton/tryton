@@ -90,6 +90,47 @@ msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:country.zip,city:"
+msgid "City"
+msgstr ""
+
+msgctxt "field:country.zip,country:"
+msgid "Country"
+msgstr ""
+
+msgctxt "field:country.zip,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:country.zip,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:country.zip,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:country.zip,rec_name:"
+msgid "Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:country.zip,subdivision:"
+msgid "Subdivision"
+msgstr "Ascension"
+
+msgctxt "field:country.zip,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:country.zip,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:country.zip,zip:"
+msgid "Zip"
+msgstr ""
+
 msgctxt "help:country.country,code:"
 msgid ""
 "The ISO country code in two chars.\n"
@@ -3193,7 +3234,7 @@ msgctxt "model:country.subdivision,name:br-to"
 msgid "Tocantins"
 msgstr "Tocantins"
 
-msgctxt "model:country.subdivision,name:bs-ac"
+msgctxt "model:country.subdivision,name:bs-ak"
 msgid "Acklins"
 msgstr "Acklins"
 
@@ -20493,8 +20534,16 @@ msgctxt "model:country.subdivision,name:zw-mw"
 msgid "Mashonaland West"
 msgstr "Mashonaland West"
 
+msgctxt "model:country.zip,name:"
+msgid "Zip"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_zip_form"
+msgid "Zip"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
@@ -20916,4 +20965,8 @@ msgstr "Ascension"
 
 msgctxt "view:country.subdivision:"
 msgid "Subdivisions"
+msgstr ""
+
+msgctxt "view:country.zip:"
+msgid "Zip"
 msgstr ""
