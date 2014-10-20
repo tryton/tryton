@@ -673,7 +673,7 @@ class O2MField(Field):
                 fields = {}
 
         to_remove = []
-        for record2 in record.value[self.name]:
+        for record2 in record.value.get(self.name, []):
             if not record2.id:
                 to_remove.append(record2)
         if value and value.get('remove'):
