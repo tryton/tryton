@@ -181,7 +181,7 @@ else:
         unicode(os.path.dirname(__file__), sys.getfilesystemencoding()),
         '..')))
 
-for dir in [CURRENT_DIR, site.USER_BASE, sys.prefix]:
+for dir in [CURRENT_DIR, getattr(site, 'USER_BASE', sys.prefix), sys.prefix]:
     PIXMAPS_DIR = os.path.join(dir, 'share', 'pixmaps', 'tryton')
     if os.path.isdir(PIXMAPS_DIR):
         break
