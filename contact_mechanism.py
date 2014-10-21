@@ -132,9 +132,8 @@ class ContactMechanism(ModelSQL, ModelView):
 
     @classmethod
     def set_value(cls, mechanisms, name, value):
-        cls.write(mechanisms, {
-            'value': value,
-            })
+        #  Setting value is done by on_changes
+        pass
 
     def _change_value(self, value):
         return {
