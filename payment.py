@@ -2,6 +2,7 @@
 #this repository contains the full copyright notices and license terms.
 import datetime
 import os
+import unicodedata
 from itertools import groupby
 from io import BytesIO
 
@@ -43,6 +44,7 @@ class Journal:
             (None, ''),
             ('pain.001.001.03', 'pain.001.001.03'),
             ('pain.001.001.05', 'pain.001.001.05'),
+            ('pain.001.003.03', 'pain.001.003.03'),
             ], 'Payable Flavor', states={
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
@@ -53,6 +55,7 @@ class Journal:
             (None, ''),
             ('pain.008.001.02', 'pain.008.001.02'),
             ('pain.008.001.04', 'pain.008.001.04'),
+            ('pain.008.003.02', 'pain.008.003.02'),
             ], 'Receivable Flavor', states={
             'required': Eval('process_method') == 'sepa',
             'invisible': Eval('process_method') != 'sepa',
@@ -156,7 +159,8 @@ class Group:
         if not self.sepa_messages:
             self.sepa_messages = ()
         message = tmpl.generate(group=self,
-            datetime=datetime).filter(remove_comment).render()
+            datetime=datetime, normalize=unicodedata.normalize,
+            ).filter(remove_comment).render()
         message = Message(message=message, type='in', state='waiting')
         self.sepa_messages += (message,)
 

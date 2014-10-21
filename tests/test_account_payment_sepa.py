@@ -16,6 +16,7 @@ from trytond.tests.test_tryton import POOL, DB_NAME, USER, CONTEXT
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 from trytond.modules.account_payment_sepa.payment import CAMT054
+from trytond.pool import Pool
 
 
 class AccountPaymentSepaTestCase(unittest.TestCase):
@@ -47,6 +48,9 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
         test_depends()
 
     def setup_environment(self):
+        pool = Pool()
+        Address = pool.get('party.address')
+
         company, = self.company.search([
                 ('rec_name', '=', 'Dunder Mifflin'),
                 ])
@@ -64,6 +68,9 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
         bank = self.bank(party=bank_party, bic='BICODEBBXXX')
         bank.save()
         customer = self.party(name='Customer')
+        address = Address(street='street', streetbis='street bis',
+            zip='1234', city='City')
+        customer.addresses = [address]
         customer.save()
         return {
             'company': company,
@@ -75,12 +82,14 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
         return self.bank_account.create([{
                     'bank': bank,
                     'owners': [('add', [company.party])],
+                    'currency': company.currency.id,
                     'numbers': [('create', [{
                                     'type': 'iban',
                                     'number': 'ES8200000000000000000000',
                                     }])]}, {
                     'bank': bank,
                     'owners': [('add', [customer])],
+                    'currency': company.currency.id,
                     'numbers': [('create', [{
                                     'type': 'iban',
                                     'number': 'ES3600000000050000000001',
@@ -155,6 +164,10 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
         'Test pain001.001.05 xsd validation'
         self.validate_file('pain.001.001.05', 'payable')
 
+    def test_pain001_003_03(self):
+        'Test pain001.003.03 xsd validation'
+        self.validate_file('pain.001.003.03', 'payable')
+
     def test_pain008_001_02(self):
         'Test pain008.001.02 xsd validation'
         self.validate_file('pain.008.001.02', 'receivable')
@@ -162,6 +175,10 @@ class AccountPaymentSepaTestCase(unittest.TestCase):
     def test_pain008_001_04(self):
         'Test pain008.001.04 xsd validation'
         self.validate_file('pain.008.001.04', 'receivable')
+
+    def test_pain008_003_02(self):
+        'Test pain008.003.02 xsd validation'
+        self.validate_file('pain.008.003.02', 'receivable')
 
     def test_sepa_mandate_sequence(self):
         'Test SEPA mandate sequence'
