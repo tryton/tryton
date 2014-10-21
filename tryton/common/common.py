@@ -1577,8 +1577,10 @@ with open(os.path.join(PIXMAPS_DIR, 'tryton-noimage.png'), 'rb') as no_image:
 
 
 def data2pixbuf(data):
-    try:
-        pixbuf = _data2pixbuf(data)
-    except glib.GError:
-        pixbuf = NO_IMG_PIXBUF
+    pixbuf = NO_IMG_PIXBUF
+    if data:
+        try:
+            pixbuf = _data2pixbuf(data)
+        except glib.GError:
+            pass
     return pixbuf
