@@ -246,6 +246,10 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         table.index_action('create_date', action='add')
 
     @staticmethod
+    def default_planned_date():
+        return Pool().get('ir.date').today()
+
+    @staticmethod
     def default_state():
         return 'draft'
 
