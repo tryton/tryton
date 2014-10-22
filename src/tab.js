@@ -85,7 +85,7 @@
         },
         create_toolbar: function() {
             var toolbar = jQuery('<div/>', {
-                'class': 'ui-widget-header ui-corner-all'
+                'class': 'tab-toolbar ui-widget-header ui-corner-all'
             });
             var add_button = function(tool) {
                 var click_func = function() {
@@ -109,9 +109,15 @@
         },
         close: function() {
             var tabs = jQuery('#tabs > div');
-            tabs.tabs('select', this.id);
+            var tab = tabs.find(
+                    '.ui-tabs-nav li[aria-controls="' + this.id + '"]');
+            tabs.tabs('option', 'active',
+                    tabs.find('li').index(jQuery('#nav-' + this.id)));
+            tabs.tabs('refresh');
             return this.modified_save().then(function() {
-                tabs.tabs('remove', this.id);
+                tab.remove();
+                jQuery('#' + this.id).remove();
+                tabs.tabs('refresh');
                 if (!tabs.find('> ul').children().length) {
                     tabs.remove();
                 }
@@ -170,23 +176,34 @@
         }
         var tabs = jQuery('#tabs > div');
         tabs.tabs();
-        tab.id = '#tab-' + Sao.Tab.counter++;
-        tabs.tabs('add', tab.id, tab.name);
-        tabs.find('> ul li').last().append(jQuery('<a href="#">' +
-                    '<span class="ui-icon ui-icon-circle-close"></span>' +
-                    '</a>')
-                .hover(
-                    function() {
-                        jQuery(this).css('cursor', 'pointer');
-                    },
-                    function() {
-                        jQuery(this).css('cursor', 'default');
-                    })
-                .click(function() {
-                    tab.close();
-                }));
-        jQuery(tab.id).html(tab.el);
-        tabs.tabs('select', tab.id);
+        tab.id = 'tab-' + Sao.Tab.counter++;
+        var tab_link = jQuery('<a/>', {
+            href: '#' + tab.id
+        }).append(tab.name);
+        var close_link = jQuery('<a/>', {
+            href: '#',
+            'class': 'ui-tabs-anchor'
+        }).append(jQuery('<span/>', {
+            'class': 'ui-icon ui-icon-circle-close'
+        })).hover(
+        function() {
+            jQuery(this).css('cursor', 'pointer');
+        },
+        function() {
+            jQuery(this).css('cursor', 'default');
+        })
+        .click(function() {
+            tab.close();
+        });
+        jQuery('<li/>', {
+            id: 'nav-' + tab.id
+        }).append(tab_link).append(close_link)
+        .appendTo(tabs.find('> .ui-tabs-nav'));
+        jQuery('<div/>', {
+            id: tab.id
+        }).html(tab.el).appendTo(tabs);
+        tabs.tabs('refresh');
+        tabs.tabs('option', 'active', -1);
         jQuery(window).resize();
     };
 

@@ -1699,14 +1699,20 @@
             this.counter = 0;
         },
         add: function(tab, text) {
-            var tab_id = '#tab-form-' + this.counter++;
-            this.el.tabs('add', tab_id, text);
-            this.el.children(tab_id).html(tab);
+            var tab_id = 'tab-form-' + this.counter++;
+            var page = jQuery('<li/>').append(
+                jQuery('<a/>', {
+                    href: '#' + tab_id
+                }).append(text)).appendTo(this.el.find('> .ui-tabs-nav'));
+            jQuery('<div/>', {
+                id: tab_id
+            }).html(tab).appendTo(this.el);
+            this.el.tabs('refresh');
             if (!this.selected) {
-                this.el.tabs('select', tab_id);
+                this.el.tabs('option', 'active', -1);
                 this.selected = true;
             }
-            return jQuery('> ul li', this.el).last();
+            return page;
         }
     });
 

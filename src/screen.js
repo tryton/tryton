@@ -57,14 +57,20 @@
             if (!jQuery.isEmptyObject(this.tab_domain)) {
                 this.tab = jQuery('<div/>', {
                     'class': 'tab-domain'
-                }).append(jQuery('<div/>').append(jQuery('<ul/>')));
+                }).append(jQuery('<ul/>'));
                 this.tab.tabs();
                 this.tab_domain.forEach(function(tab_domain, i) {
                     var name = tab_domain[0];
-                    this.tab.tabs('add', '#' + i, name);
+                    jQuery('<li/>').append(jQuery('<a/>', {
+                        href: '#' + i
+                    }).append(name)).appendTo(this.tab.find('> .ui-tabs-nav'));
+                    jQuery('<div/>', {
+                        id: i
+                    }).appendTo(this.tab);
                 }.bind(this));
                 this.tab.find('#0').append(this.content_box);
-                this.tab.tabs('select', '#0');
+                this.tab.tabs('refresh');
+                this.tab.tabs('option', 'active', 0);
                 this.tab.tabs({
                     'activate': this.switch_page.bind(this)
                 });
