@@ -709,7 +709,7 @@ class Attachment(ModelSQL, ModelView):
         super(Attachment, cls).__setup__()
         cls._error_messages.update({
                 'collection_attachment_name': ('You can not create an '
-                    'attachment named "%(attachment)s in collection '
+                    'attachment named "%(attachment)s" in collection '
                     '"%(collection)s" because there is already a collection '
                     'with that name.')
                 })
