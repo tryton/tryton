@@ -152,6 +152,7 @@
                 this.display();
             }.bind(this));
             footer.append(this.more);
+            this.more.hide();
             this.display_size = Sao.config.display_size;
             this.el.append(footer);
         },
