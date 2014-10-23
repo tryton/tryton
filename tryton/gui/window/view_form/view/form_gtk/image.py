@@ -18,8 +18,8 @@ class Image(Widget):
         super(Image, self).__init__(view, attrs)
 
         self.filename = attrs.get('filename')
-        self.height = int(attrs.get('img_height', 100))
-        self.width = int(attrs.get('img_width', 300))
+        self.height = int(attrs.get('height', 100))
+        self.width = int(attrs.get('width', 300))
 
         self.widget = gtk.VBox(spacing=3)
         self.event = gtk.EventBox()
