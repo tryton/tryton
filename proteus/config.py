@@ -192,7 +192,7 @@ class TrytondConfig(Config):
     'Configuration for trytond'
 
     def __init__(self, database=None, user='admin', language='en_US',
-            password='', config_file=os.environ.get('TRYTOND_CONFIG')):
+            config_file=os.environ.get('TRYTOND_CONFIG')):
         super(TrytondConfig, self).__init__()
         if not database:
             database = os.environ.get('TRYTOND_DATABASE_URI')
@@ -261,11 +261,11 @@ class TrytondConfig(Config):
         return methods
 
 
-def set_trytond(database=None, user='admin', language='en_US', password='',
+def set_trytond(database=None, user='admin', language='en_US',
         config_file=None):
     'Set trytond package as backend'
     _CONFIG.current = TrytondConfig(database, user, language=language,
-        password=password, config_file=config_file)
+        config_file=config_file)
     return _CONFIG.current
 
 

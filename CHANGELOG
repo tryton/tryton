@@ -1,3 +1,4 @@
+* Remove password on set_trytond
 * Manage reload, save, delete, duplicate and click as class and instance method
 
 Version 3.4.0 - 2014-10-20
