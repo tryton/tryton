@@ -99,8 +99,6 @@ attlist.field &=
   }?
 attlist.field &= attribute spell { text }?
 attlist.field &= attribute float_time { text }?
-attlist.field &= attribute img_width { text }?
-attlist.field &= attribute img_height { text }?
 attlist.field &=
   [a:defaultValue = "0"] attribute filename_visible { "0" | "1" }?
 attlist.field &= [a:defaultValue = "0"] attribute pre_validate { "0" | "1" }?
