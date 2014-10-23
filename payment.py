@@ -313,7 +313,8 @@ class ProcessPayment(Wizard):
     def __setup__(cls):
         super(ProcessPayment, cls).__setup__()
         cls._error_messages.update({
-                'overpay': 'The Payment "%s" overpays the Line "%s".',
+                'overpay': 'The Payment "%(payment)s" overpays '
+                'the Line "%(line)s".',
                 })
 
     def _group_payment_key(self, payment):
@@ -332,7 +333,10 @@ class ProcessPayment(Wizard):
         for payment in payments:
             if payment.line and payment.line.payment_amount < 0:
                 self.raise_user_warning(str(payment),
-                    'overpay', (payment.rec_name, payment.line.rec_name))
+                    'overpay', {
+                        'payment': payment.rec_name,
+                        'line': payment.line.rec_name,
+                        })
 
         groups = []
         payments = sorted(payments, key=self._group_payment_key)
