@@ -469,7 +469,7 @@ class Reconciliation(ModelSQL, ModelView):
                     'configured as not reconcilable.'),
                 'reconciliation_different_parties': ('You can not reconcile '
                     'line "%(line)s" because it\'s party "%(party1)s" is '
-                    'different from %(party2)s".'),
+                    'different from "%(party2)s".'),
                 'reconciliation_unbalanced': ('You can not create a '
                     'reconciliation where debit "%(debit)s" and credit '
                     '"%(credit)s" differ.'),
