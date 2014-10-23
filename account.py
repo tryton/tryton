@@ -877,7 +877,7 @@ class Account(ModelSQL, ModelView):
             current_type = self.type.id if self.type else None
             template_type = (template2type.get(self.template.type.id)
                 if self.template.type else None)
-            if current_type != template2type:
+            if current_type != template_type:
                 vals['type'] = template_type
             if vals:
                 self.write([self], vals)
