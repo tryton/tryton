@@ -27,7 +27,6 @@ import threading
 import tryton.rpc as rpc
 import locale
 import socket
-import tempfile
 from tryton.version import VERSION
 import thread
 import urllib
@@ -111,20 +110,10 @@ class TrytonIconFactory(gtk.IconFactory):
         except TrytonServerError:
             icons = []
         for icon in icons:
-            # svg file cannot be loaded from data into a pixbuf
-            fileno, path = tempfile.mkstemp()
-            with os.fdopen(fileno, 'w') as svgfile:
-                svgfile.write(icon['icon'])
-            try:
-                pixbuf = gtk.gdk.pixbuf_new_from_file(path.decode(
-                    sys.getfilesystemencoding().encode('utf-8')))
-            except glib.GError:
-                continue
-            finally:
-                os.remove(path)
-                self._tryton_icons.remove((icon['id'], icon['name']))
-                del self._name2id[icon['name']]
-                self._loaded_icons.add(icon['name'])
+            pixbuf = _data2pixbuf(icon['icon'])
+            self._tryton_icons.remove((icon['id'], icon['name']))
+            del self._name2id[icon['name']]
+            self._loaded_icons.add(icon['name'])
             iconset = gtk.IconSet(pixbuf)
             self.add(icon['name'], iconset)
 
