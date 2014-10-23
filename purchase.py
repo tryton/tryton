@@ -14,7 +14,7 @@ class PurchaseLine:
         super(PurchaseLine, cls).__setup__()
         cls._error_messages.update({
                 'missing_account_asset': ('It misses '
-                    'an "Account Asset" on product "%s"!'),
+                    'an "Account Asset" on product "%s".'),
                 })
 
     def get_invoice_line(self, invoice_type):

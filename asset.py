@@ -154,10 +154,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         super(Asset, cls).__setup__()
         cls._sql_constraints = [
             ('invoice_line_uniq', 'UNIQUE(supplier_invoice_line)',
-                'Supplier Invoice Line can be used only once on asset!'),
+                'Supplier Invoice Line can be used only once on asset.'),
             ]
         cls._error_messages.update({
-                'delete_draft': 'Asset "%s" must be in draft to be deleted!',
+                'delete_draft': 'Asset "%s" must be in draft to be deleted.',
                 })
         cls._transitions |= set((
                 ('draft', 'running'),
