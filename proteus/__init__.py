@@ -16,6 +16,7 @@ except ImportError:
     sys.modules['cdecimal'] = decimal
 import threading
 import datetime
+import functools
 from decimal import Decimal
 from types import NoneType
 
@@ -71,6 +72,37 @@ class _EvalEnvironment(dict):
             return item in self.parent._get_eval()
         else:
             return item in self.parent._fields
+
+
+class dualmethod(object):
+    """Descriptor implementing combination of class and instance method
+
+    When called on an instance, the class is passed as the first argument and a
+    list with the instance as the second.
+    When called on a class, the class itself is passed as the first argument.
+
+    >>> class Example(object):
+    ...     @dualmethod
+    ...     def method(cls, instances):
+    ...         print len(instances)
+    ...
+    >>> Example.method([Example()])
+    1
+    >>> Example().method()
+    1
+    """
+    def __init__(self, func):
+        self.func = func
+
+    def __get__(self, instance, owner):
+
+        @functools.wraps(self.func)
+        def newfunc(*args, **kwargs):
+            if instance:
+                return self.func(owner, [instance], *args, **kwargs)
+            else:
+                return self.func(owner, *args, **kwargs)
+        return newfunc
 
 
 class FieldDescriptor(object):
@@ -660,6 +692,11 @@ class Model(object):
         'The unique ID'
         return self.__id
 
+    @id.setter
+    def id(self, value):
+        assert self.__id < 0
+        self.__id = int(value)
+
     @classmethod
     def find(cls, condition=None, offset=0, limit=None, order=None):
         'Return records matching condition'
@@ -669,46 +706,84 @@ class Model(object):
                 cls._config.context)
         return [cls(id) for id in ids]
 
-    def reload(self):
+    @dualmethod
+    def reload(cls, records):
         'Reload record'
-        self._values = {}
-        self._changed = set()
+        for record in records:
+            record._values = {}
+            record._changed = set()
 
-    def save(self):
-        'Save the record'
-        context = self._config.context
-        if self.id < 0:
-            values = self._get_values()
-            self.__id, = self._proxy.create([values], context)
-        else:
-            if not self._changed:
-                return
-            values = self._get_values(fields=self._changed)
-            context['_timestamp'] = self._get_timestamp()
-            self._proxy.write([self.id], values, context)
-        self.reload()
+    @dualmethod
+    def save(cls, records):
+        'Save records'
+        if not records:
+            return
+        proxy = records[0]._proxy
+        config = records[0]._config
+        context = config.context
+        create, write = [], []
+        for record in records:
+            assert proxy == record._proxy
+            assert config == record._config
+            if record.id < 0:
+                create.append(record)
+            elif record._changed:
+                write.append(record)
 
-    def delete(self):
-        'Delete the record'
-        if self.id > 0:
-            context = self._config.context
-            context['_timestamp'] = self._get_timestamp()
-            return self._proxy.delete([self.id], context)
-        self.reload()
-        return True
+        if create:
+            values = [r._get_values() for r in create]
+            ids = proxy.create(values, context)
+            for record, id_ in zip(create, ids):
+                record.id = id_
+        if write:
+            values = []
+            context['_timestamp'] = {}
+            for record in write:
+                values.append([record.id])
+                values.append(record._get_values(fields=record._changed))
+                context['_timestamp'].update(record._get_timestamp())
+            values.append(context)
+            proxy.write(*values)
+        for record in records:
+            record.reload()
 
-    @classmethod
+    @dualmethod
+    def delete(cls, records):
+        'Delete records'
+        if not records:
+            return
+        proxy = records[0]._proxy
+        config = records[0]._config
+        context = config.context
+        context['_timestamp'] = {}
+        delete = []
+        for record in records:
+            assert proxy == record._proxy
+            assert config == record._config
+            if record.id > 0:
+                context['_timestamp'].update(record._get_timestamp())
+                delete.append(record.id)
+        if delete:
+            proxy.delete(delete, context)
+        cls.reload(records)
+
+    @dualmethod
     def duplicate(cls, records, default=None):
         'Duplicate the record'
         ids = cls._proxy.copy([r.id for r in records], default,
             cls._config.context)
         return [cls(id) for id in ids]
 
-    def click(self, button):
+    @dualmethod
+    def click(cls, records, button):
         'Click on button'
-        self.save()
-        self.reload()  # Force reload because save doesn't always
-        return getattr(self._proxy, button)([self.id], self._config.context)
+        if not records:
+            return
+        cls.save(records)
+        cls.reload(records)  # Force reload because save doesn't always
+        proxy = records[0]._proxy
+        context = records[0]._config.context
+        return getattr(proxy, button)([r.id for r in records], context)
 
     def _get_values(self, fields=None):
         'Return dictionary values'

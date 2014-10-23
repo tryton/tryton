@@ -126,6 +126,15 @@ class TestModel(ProteusTestCase):
         self.assertEqual(test2.name, 'Test 2')
         self.assertEqual(test2.login, 'test2')
 
+        test.signature = 'classmethod save'
+        test2.name = 'Test 2 classmethod'
+        test3 = User(name='Test 3', login='test3')
+        User.save([test, test2, test3])
+        self.assertEqual(test.signature, 'classmethod save')
+        self.assertEqual(test2.name, 'Test 2 classmethod')
+        self.assert_(test3.id > 0)
+        self.assertEqual(test3.name, 'Test 3')
+
     def test_save_many2one(self):
         User = Model.get('res.user')
         test = User()

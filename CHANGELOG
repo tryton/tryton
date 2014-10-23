@@ -1,3 +1,5 @@
+* Manage reload, save, delete, duplicate and click as class and instance method
+
 Version 3.4.0 - 2014-10-20
 * Bug fixes (see mercurial logs for details)
 * New configuration syntax
