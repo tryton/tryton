@@ -195,9 +195,9 @@ class Invoice(Workflow, ModelSQL, ModelView):
                 'missing_credit_account': ('The credit account on journal %s" '
                     'is missing.'),
                 'account_different_company': ('You can not create invoice '
-                    '"%(invoice)s" on company "%(invoice_company)s because '
-                    'account "%(account)s has a different company '
-                    '(%(account_company)s.)'),
+                    '"%(invoice)s" on company "%(invoice_company)s" because '
+                    'account "%(account)s" has a different company '
+                    '(%(account_company)s).'),
                 'same_account_on_line': ('Invoice "%(invoice)s" uses the same '
                     'account "%(account)s" for the invoice and in line '
                     '"%(line)s".'),
