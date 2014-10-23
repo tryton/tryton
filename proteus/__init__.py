@@ -814,7 +814,7 @@ class Model(object):
             for record in to_remove:
                 # remove without signal
                 list.remove(getattr(self, field), record)
-            if value and value.get('add') or value.get('update'):
+            if value and (value.get('add') or value.get('update')):
                 for index, vals in value.get('add', []):
                     relation = Model.get(self._fields[field]['relation'],
                             self._config)
