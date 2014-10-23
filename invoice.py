@@ -1626,8 +1626,8 @@ class InvoiceLine(ModelSQL, ModelView):
                     'that is posted, paid or cancelled.'),
                 'account_different_company': (
                     'You can not create invoice line '
-                    '"%(line)s" on invoice "%(invoice)s of company '
-                    '"%(invoice_line_company)s because account "%(account)s '
+                    '"%(line)s" on invoice "%(invoice)s" of company '
+                    '"%(invoice_line_company)s" because account "%(account)s" '
                     'has company "%(account_company)s".'),
                 'same_account_on_invoice': ('You can not create invoice line '
                     '"%(line)s" on invoice "%(invoice)s" because the invoice '
