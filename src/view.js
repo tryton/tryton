@@ -261,10 +261,8 @@
 
             if (this.screen.group.length != this.rows.length) {
                 this.construct(selected, expanded);
-                this.redraw(selected, expanded);
-            } else {
-                this.redraw(selected, expanded);
             }
+            this.redraw(selected, expanded);
         },
         construct: function(selected, expanded) {
             this.rows = [];
