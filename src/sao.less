@@ -88,6 +88,12 @@ body {
             height: 2em;
         }
     }
+    & .editabletree-char, .editabletree-date, .editabletree-datetime,
+    .editabletree-integer, .editabletree-float, .editabletree-selection,
+    .editabletree-float_time, .editabletree-boolean, .editabletree-many2one,
+    .editabletree-one2many {
+        width: 100%;
+    }
     & td {
         white-space: nowrap;
         overflow: hidden;
@@ -120,21 +126,6 @@ body {
     & td.form-one2many, td.form-many2many {
         vertical-align: top;
     }
-    & .form-many2one, .form-date, .form-binary, .form-reference {
-        & button {
-            float: right;
-        }
-        & div {
-            overflow: hidden;
-            & input {
-                width: 100%;
-                boxing-sizing: border-box;
-            }
-        }
-        & select, span {
-            float: left;
-        }
-    }
     & .form-one2many-menu, .form-one2many-content,
     .form-many2many-menu, .form-many2many-content {
         border: 1px solid rgb(170, 170, 170);
@@ -161,6 +152,41 @@ body {
             width: 100%;
         }
     }
+}
+.form-date, .form-datetime, .form-many2one, .form-binary, .form-reference,
+.editabletree-date, .editabletree-datetime, .editabletree-many2one,
+.editabletree-binary, .editabletree-reference {
+    & button {
+        height: 1.5em;
+        float: right;
+        border: 0;
+    }
+    & div {
+        overflow: hidden;
+        & input {
+            width: 100%;
+            height: 1.5em;
+            border: 0;
+            padding: 0;
+            background-color: inherit;
+        }
+    }
+    & select, span {
+        float: left;
+    }
+    & select {
+        max-width: 50%;
+    }
+}
+
+.form-binary, .editabletree-binary {
+    min-width: calc(5 * 2.4em);
+}
+
+.form-integer, .form-float, .form-float-time,
+.column-integer, .column-float, .column-float_time,
+.editabletree-integer, .editabletree-float, .editabletree-float_time {
+    text-align: right;
 }
 
 button {

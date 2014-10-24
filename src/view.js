@@ -940,9 +940,7 @@
             this.factor = Number(attributes.factor || 1);
         },
         get_cell: function() {
-            var cell = Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
-            cell.css('text-align', 'right');
-            return cell;
+            return Sao.View.Tree.IntegerColumn._super.get_cell.call(this);
         },
         update_text: function(cell, record) {
             cell.text(this.field.get_client(record, this.factor));
@@ -1915,11 +1913,11 @@
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_ + ' ui-widget'
+                'class': this.class_ +
+                ' ui-widget ui-widget-content ui-corner-all'
             });
             this.date = jQuery('<input/>', {
-                'type': 'input',
-                'class': 'ui-widget-content ui-corner-all'
+                'type': 'input'
             });
             this.el.append(jQuery('<div/>').append(this.date));
             this.date.datepicker({
@@ -1936,9 +1934,6 @@
             this.button.click(function() {
                 this.date.datepicker('show');
             }.bind(this));
-        },
-        _get_color_el: function() {
-            return this.date;
         },
         get_format: function(record, field) {
             return Sao.common.date_format();
@@ -1959,6 +1954,7 @@
     });
 
     Sao.View.Form.DateTime = Sao.class_(Sao.View.Form.Date, {
+        class_: 'form-datetime',
         init: function(field_name, model, attributes) {
             Sao.View.Form.DateTime._super.init.call(this, field_name, model,
                 attributes);
@@ -1998,7 +1994,6 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
-            this.el.css('text-align', 'right');
             this.factor = Number(attributes.factor || 1);
         },
         set_value: function(record, field) {
@@ -2036,6 +2031,9 @@
             this.select.change(this.focus_out.bind(this));
             Sao.common.selection_mixin.init.call(this);
             this.init_selection();
+        },
+        _get_color_el: function() {
+            return this.select;
         },
         init_selection: function(key) {
             Sao.common.selection_mixin.init_selection.call(this, key,
@@ -2127,7 +2125,6 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.FloatTime._super.init.call(this, field_name, model,
                 attributes);
-            this.el.css('text-align', 'right');
             this.conv = null; // TODO
         },
         display: function(record, field) {
@@ -2198,11 +2195,11 @@
             Sao.View.Form.Many2One._super.init.call(this, field_name, model,
                 attributes);
             this.el = jQuery('<div/>', {
-                'class': this.class_ + ' ui-widget'
+                'class': this.class_ +
+                ' ui-widget ui-widget-content ui-corner-all'
             });
             this.entry = jQuery('<input/>', {
-                'type': 'input',
-                'class': 'ui-widget-content ui-corner-all'
+                'type': 'input'
             });
             this.entry.on('keyup', this.key_press.bind(this));
             this.el.append(jQuery('<div/>').append(this.entry));
@@ -2216,9 +2213,6 @@
             this.el.prepend(this.but_open);
             // TODO autocompletion
             this._readonly = false;
-        },
-        _get_color_el: function() {
-            return this.entry;
         },
         get_screen: function() {
             var domain = this.field().get_domain(this.record());
@@ -2453,9 +2447,7 @@
         init: function(field_name, model, attributes) {
             Sao.View.Form.Reference._super.init.call(this, field_name, model,
                 attributes);
-            this.select = jQuery('<select/>', {
-                'class': 'ui-widget-content ui-corner-all'
-            });
+            this.select = jQuery('<select/>');
             this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
             this.select.change(this.select_changed.bind(this));
@@ -3109,23 +3101,22 @@
             this.filename = attributes.filename || null;
 
             this.el = jQuery('<div/>', {
-                'class': this.class_ + 'ui-widget'
+                'class': this.class_ +
+                ' ui-widget ui-widget-content ui-corner-all'
             });
 
             var inputs = jQuery('<div/>');
             this.el.append(inputs);
             if (this.filename && attributes.filename_visible) {
                 this.text = jQuery('<input/>', {
-                    type: 'input',
-                    'class': 'ui-widget-content ui-corner-all'
+                    type: 'input'
                 });
                 this.text.change(this.focus_out.bind(this));
                 this.text.on('keyup', this.key_press.bind(this));
                 inputs.append(this.text);
             }
             this.size = jQuery('<input/>', {
-                type: 'input',
-                'class': 'ui-widget ui-widget-content ui-corner-all'
+                type: 'input'
             });
             inputs.append(this.size);
 
@@ -3139,7 +3130,7 @@
             this.el.prepend(this.but_new);
 
             if (this.filename) {
-                this.but_open = jQuery('<a/>').button({
+                this.but_open = jQuery('<button/>').button({
                     icons: {
                         primary: 'ui-icon-folder-open'
                     },
