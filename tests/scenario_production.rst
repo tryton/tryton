@@ -2,16 +2,14 @@
 Production Scenario
 ===================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.modules.company.tests.tools import create_company, \
+    ...     get_company
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
@@ -23,35 +21,14 @@ Create database::
 Install production Module::
 
     >>> Module = Model.get('ir.module.module')
-    >>> modules = Module.find([('name', '=', 'production')])
-    >>> Module.install([x.id for x in modules], config.context)
+    >>> module, = Module.find([('name', '=', 'production')])
+    >>> module.click('install')
     >>> Wizard('ir.module.module.install_upgrade').execute('upgrade')
 
 Create company::
 
-    >>> Currency = Model.get('currency.currency')
-    >>> CurrencyRate = Model.get('currency.currency.rate')
-    >>> Company = Model.get('company.company')
-    >>> Party = Model.get('party.party')
-    >>> company_config = Wizard('company.company.config')
-    >>> company_config.execute('company')
-    >>> company = company_config.form
-    >>> party = Party(name='Dunder Mifflin')
-    >>> party.save()
-    >>> company.party = party
-    >>> currencies = Currency.find([('code', '=', 'USD')])
-    >>> if not currencies:
-    ...     currency = Currency(name='Euro', symbol=u'$', code='USD',
-    ...         rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-    ...         mon_decimal_point=',')
-    ...     currency.save()
-    ...     CurrencyRate(date=today + relativedelta(month=1, day=1),
-    ...         rate=Decimal('1.0'), currency=currency).save()
-    ... else:
-    ...     currency, = currencies
-    >>> company.currency = currency
-    >>> company_config.execute('add')
-    >>> company, = Company.find()
+    >>> _ = create_company()
+    >>> company = get_company()
 
 Reload the context::
 
@@ -144,8 +121,7 @@ Create an Inventory::
     >>> inventory.lines.append(inventory_line2)
     >>> inventory_line2.product = component2
     >>> inventory_line2.quantity = 6
-    >>> inventory.save()
-    >>> Inventory.confirm([inventory.id], config.context)
+    >>> inventory.click('confirm')
     >>> inventory.state
     u'done'
 
@@ -163,23 +139,19 @@ Make a production::
     True
     >>> production.cost
     Decimal('25.0')
-    >>> production.save()
-    >>> Production.wait([production.id], config.context)
+    >>> production.click('wait')
     >>> production.state
     u'waiting'
-    >>> Production.assign_try([production.id], config.context)
+    >>> production.click('assign_try')
     True
-    >>> production.reload()
     >>> all(i.state == 'assigned' for i in production.inputs)
     True
-    >>> Production.run([production.id], config.context)
-    >>> production.reload()
+    >>> production.click('run')
     >>> all(i.state == 'done' for i in production.inputs)
     True
     >>> len(set(i.effective_date == today for i in production.inputs))
     1
-    >>> Production.done([production.id], config.context)
-    >>> production.reload()
+    >>> production.click('done')
     >>> output, = production.outputs
     >>> output.state
     u'done'
@@ -199,7 +171,7 @@ Make a production with effective date yesterday::
     >>> production.bom = bom
     >>> production.quantity = 2
     >>> production.click('wait')
-    >>> Production.assign_try([production.id], config.context)
+    >>> production.click('assign_try')
     True
     >>> production.click('run')
     >>> production.reload()
